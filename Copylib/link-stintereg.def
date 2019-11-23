@@ -1,0 +1,7 @@
+      *
+       01 stintereg-linkage.
+           03 stintereg-anno       pic  9(4).
+           03 stintereg-num-reg    pic  9(8).
+           03 stintereg-pag-ini    pic  9(5).
+           03 stintereg-pag-st     pic  9(5).
+           03 stintereg-path       pic  x(256).

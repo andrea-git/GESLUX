@@ -1,0 +1,9 @@
+      *
+       01 storart-linkage.   
+           03 storart-tipo-op  PIC  9.           
+              88 storart-storicizzazione value 1.
+              88 storart-ripristino      value 2.
+           03 storart-anno-da    PIC 9999.
+           03 storart-anno-a     PIC 9999.
+           03 storart-handle
+                      USAGE IS HANDLE OF WINDOW.

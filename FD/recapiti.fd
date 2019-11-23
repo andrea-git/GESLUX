@@ -1,0 +1,35 @@
+       FD  recapiti.
+       01 rec-rec.
+           05 rec-chiave.
+               10 rec-codice       PIC  9(5).
+           05 rec-dati.
+               10 rec-ragsoc-1     PIC  x(40).
+               10 rec-ragsoc-2     PIC  x(40).
+               10 rec-indirizzo    PIC  x(40).
+               10 rec-cap          PIC  x(5).
+               10 rec-localita     PIC  x(35).
+               10 rec-provincia    PIC  x(2).
+               10 rec-nazione      PIC  x(3).
+               10 rec-invio        PIC  x.
+                   88 rec-invio-manuale VALUE IS "M". 
+                   88 rec-invio-postel-OLD VALUE IS "P". 
+                   88 rec-invio-EDI VALUE IS "E". 
+                   88 rec-invio-nessuno VALUE IS "N". 
+               10 rec-dati-comuni.
+                   15 rec-data-creazione           PIC  9(8).
+                   15 rec-ora-creazione            PIC  9(8).
+                   15 rec-utente-creazione         PIC  X(10).
+                   15 rec-data-ultima-modifica     PIC  9(8).
+                   15 rec-ora-ultima-modifica      PIC  9(8).
+                   15 rec-utente-ultima-modifica   PIC  X(10).
+               10 rec-vuoti.
+                   15 rec-num-vuoto-1  PIC  9(15).
+                   15 rec-num-vuoto-2  PIC  9(15).
+                   15 rec-num-vuoto-3  PIC  9(15).
+                   15 rec-dett-dest-SDI            PIC  x.
+                       88 rec-dett-dest-SDI-si VALUE IS "S". 
+                       88 rec-dett-dest-SDI-no VALUE IS "N"," ". 
+      *(( XFD NAME = rec-alfa-vuoto-1_1 ))
+                   15 rec-alfa-vuoto-1 PIC  X(19).
+                   15 rec-alfa-vuoto-2 PIC  X(20).
+                   15 rec-alfa-vuoto-3 PIC  X(20).

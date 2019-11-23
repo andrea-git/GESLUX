@@ -1,0 +1,27 @@
+      *(( XFD FILE = line-dhl ))
+       FD  line-dhl.
+       01 dhl-rec.
+           05 FILLER           PIC  x.
+           05 dhl-num-bolla    PIC  9(7).
+           05 dhl-data-bolla   PIC  9(8).
+           05 dhl-dati-consegna.
+               10 dhl-pdc-c        PIC  x(10).
+               10 dhl-ragsoc-c     PIC  x(30).
+               10 dhl-indirizzo-c  PIC  x(30).
+               10 dhl-localita-c   PIC  x(30).
+               10 dhl-prov-c       PIC  x(2).
+               10 dhl-cap-c        PIC  x(5).
+           05 dhl-dati-fatt.
+               10 dhl-pdc-codice-f PIC  x(10).
+               10 dhl-ragsoc-f     PIC  x(30).
+               10 dhl-indirizzo-f  PIC  x(30).
+               10 dhl-localita-f   PIC  x(30).
+               10 dhl-prov-f       PIC  x(2).
+               10 dhl-cap-f        PIC  x(5).
+           05 dhl-data-cons-tax            PIC  9(8).
+           05 dhl-tot-colli    PIC  9(5).
+           05 dhl-tot-peso     PIC  9(9).
+           05 dhl-volume       PIC  9(9).
+           05 dhl-cod          PIC  9(11).
+           05 dhl-num-evasione PIC  9(6).
+           05 FILLER           PIC  x(22).

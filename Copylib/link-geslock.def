@@ -1,0 +1,20 @@
+      *
+       01 geslock-linkage.
+           05 geslock-messaggio            PIC  x(200).
+           05 geslock-nome-file            PIC  x(20).
+           05 geslock-scelta   PIC  x.
+               88 riprova VALUE IS "R". 
+               88 ignora VALUE IS "I". 
+               88 termina VALUE IS "T". 
+               88 annulla VALUE IS "A". 
+               88 salva VALUE IS "S". 
+           05 geslock-v-riprova            PIC  9.
+           05 geslock-v-ignora PIC  9.
+           05 geslock-v-termina            PIC  9.
+           05 geslock-v-annulla            PIC  9.
+           05 geslock-v-salva  PIC  9.
+           05 geslock-tipo-messaggio       PIC  9.
+               88 geslock-lock VALUE IS 0. 
+               88 geslock-righe VALUE IS 1. 
+               88 geslock-omom VALUE IS 2. 
+               88 geslock-contatore VALUE IS 3. 

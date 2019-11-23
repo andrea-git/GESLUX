@@ -1,0 +1,3345 @@
+; CaseMaker Totem Layout Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[DATALAYOUT_CONTENT]
+DATALAYOUT_UNIQUE_CODE=TOTEM-7DF2982150-29-27434566
+[DSNENTITY_]
+[CStoAcucobolFileDefinition_]
+m_nType=1
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+m_strPrefix=DOCDI
+{{@FD_m_strDescription
+
+    societa' gestite         tipo record=DI
+
+
+ tplvar zmm_title=Società gestite
+ tplvar zmm_ver=09.01.00
+ tplvar zmm_class=anagraphic
+
+ ds 12.10.04 inserito valore I nella variabile DOCDI-REGISTRO-LIQUIDAZIONE
+ 31.01.05 - aggiunto campo "visualizza solo email predisposte dall'utente" (pg)
+ 01.06.05 - aggiunto campo "attiva log invio email" (pg)
+ 11.01.06 - aggiunto campo "blocco q.tà"                                                          |pm 11/01/2006 10.41
+ 01.02.06 - aggiunto campo "posizione taglia" (nb)
+ aggiunto campo "Elabora allegati"                                                                |ms 07/06/06 15.12
+
+ ampliato DAB                                                                                     | mxm 08/09/2006 8.41
+
+ valuta di conto                                                                                  | mxm 15/03/2007 8.57
+
+ s.r. 1507 - allungato il codice di iscrizione CCIAA da 10 a 11 caratteri in quanto corrisponde alla partita iva
+             aggiunta la provincia del registro delle imprese                                     |or 12/03/07   15.30
+ aggiunti campi per l'impegno alla presentazione telematica: lav.3787                             |sq 11/07/2007
+ cambiato "type=date" in "type=date," per generare correttamente le date che altrimenti non erano |sq 17/07/2007 11.44
+ visualizzate: lav.4111                                                                           |sq 27/08/2007 14.24
+
+ punto vendita: aggiunto flag "accorpa scritture contabili corr.giornalieri"                      | mxm 17/10/2007 17.12
+ punto vendita: aggiunto flag "contropartite vendite differenziate per articoli"                  | mxm 17/10/2007 17.12
+
+ s.r. 1101 - inserita richieste ai fini RAEE :                                                    |or 14/11/2007
+             1 - se ditta produttrice e/o rivenditore                                             |or 14/11/2007
+             2 - se ditta produttrice > codice produttore                                         |or 14/11/2007
+------------------------------------------------------------------------------------------------------------------------
+ lav.4443 sr.2256 (produzione documenti da scontrino)                                             | mxm 23/01/2008 10.05
+------------------------------------------------------------------------------------------------------------------------
+ lav.4451 sr.2242 inserimento nuovo campo per comunicazione iva annuale    |ds 25/01/2008 9.58
+------------------------------------------------------------------------------------------------------------------------
+ tk.805 (agg.to magazzino in tempo reale da vendita al banco)                                     | mxm 14/05/2008 9.35
+ nuova colonna docdi-magscr-realtime
+------------------------------------------------------------------------------------------------------------------------
+ Tk 1023 - (input porta smtp in anagrafica della ditta)                                            |ms 27/06/2008 16.54
+            nuova colonna "docdi-smtp-port"
+------------------------------------------------------------------------------------------------------------------------
+ Tk 433 - esclusione omaggi - sconti merce dal warehouse delle vendite                            |ms 04/12/2008 11.29
+        - nuova colonna "docdi-exclude-omaggi-dw"
+        - aggiunti livelli 88 per colonna "docdi-periodicita-iva"
+------------------------------------------------------------------------------------------------------------------------
+ Tk 240 - new prima nota                                                                          |ms 19/11/2008 15.57
+        - aggiunti livelli 88 per colonna "docdi-protocollo-vendite"
+        - nuova colonna "docdi-squad-pnt"
+------------------------------------------------------------------------------------------------------------------------
+ Ticket 1780 - aggiunto campo docdi-data-inizio-procedura per indicare l'inizio di una eventuale  |ds 01/04/2009 9.20
+               procedura concorsuale o esecutiva                                                  |DS 01/04/2009 9.20
+------------------------------------------------------------------------------------------------------------------------
+ tk. 1704 - Nuovi data warehouse via Kettle                                                       | mxm 07/09/2009 11.22
+            aggiunto docdi-ktrun flag di estrazione verso warehosue
+------------------------------------------------------------------------------------------------------------------------
+ ticket 1857 - aggiunto flag "invio a repository"                                                 |gm 05/10/2009 16.26
+------------------------------------------------------------------------------------------------------------------------
+ ticket 2312 - acquisizione campi dati 'Registro Imprese' per norma                               |mc 22/10/2009 14.43
+               lex.nuova norma lex. 88/09 art. 42                                                 |mc 22/10/2009 14.43
+               Inserito livello 88 per il campo docdi-stampa-partita-iva                          |mc 22/10/2009 14.43
+               Inserito livello 88 per il campo docdi-capitale-versato                            |mc 22/10/2009 14.43
+------------------------------------------------------------------------------------------------------------------------
+ tk.2779 - Eseguire spedizione mail via CblJmail.jar                                              | mxm 25/02/2010
+           .nuovi campi
+            docdi-sendmail-ssl       trasmetti mail via connessione SSL
+            docdi-sendmail-receipt   richiedi ricevuta di lettura per le mail trasmesse
+------------------------------------------------------------------------------------------------------------------------
+ Tk 3194 - Black List                                                                            | scamar 09/07/2010 11:15:29
+         - aggiunti nuovi campi per la compilazione del frontespizio
+           del modello BlackList
+         - corretta clausola di generazione per campo docdi-tipo-fornitore-iva
+------------------------------------------------------------------------------------------------------------------------
+ Tk 3266 - In importazione documenti di vendita raggruppare le righe omogenee con taglie in una solo riga doc.   |or 30/08/2010
+         - aggiunto nuovo check box che permette in fase di importazioone documenti
+           di vendita con taglie (CARDOV03) di accumulare le quantità ricevute
+           per righe omogenee in un'unica riga di vendita che riepiloga tutte
+           le quantità per taglia.
+------------------------------------------------------------------------------------------------------------------------
+ Tk 3594 Primanota: registrazione pagamento/incasso con oscillazione cambi                          | scamar 25/02/2011 09:29:35
+                    . nuovo campo "docdi-richiedi-cambio"
+------------------------------------------------------------------------------------------------------------------------
+ tk.3630 - Comunicazioni telematiche (operazioni > 3000 euro)
+           .nuovo campo data inizio applicazione 122/2010 su scontrino                              | maxime 15/04/2011
+           .nuovo campo applica 122/2010 a tutti i tipi pagamento                                   | maxime 15/04/2011
+------------------------------------------------------------------------------------------------------------------------
+ tk.3881 - Allineare i campi del tracciato record del file DOCDI con quello della release 2012/2011  | rososv 11/05/2011 15:31:07
+ - Release 2009.01 e 2010.00:
+           . i campi aggiunti per il ticket 3194 (black list) hanno creato un disallineamento con il
+             tracciato delle release 2011.00, 2012.00, wip.
+             Nella 2009.01 e nella 2010.00, infatti, mancano le implementazioni portate con il ticket 2779,
+             che aggiungono i due nuovi campi "docdi-sendmail-ssl" e "docdi-sendmail-receipt" prima
+             di quelli della black list.
+             Occorre quindi inserire i campi "docdi-sendmail-ssl" e "docdi-sendmail-receipt" anche se
+             non utilizzati ed eseguire un programma di migrazione (S_MIG_DOC) per sciftare di due posizioni
+             i valori inerenti la black list.
+             Il programma di migrazione può essere eseguito UNA SOLA VOLTA.
+             Per questo motivo viene aggiunto lo switch "docdi-mig_tk3881" che viene valorizzato a true
+             in fase di migrazione e, se già valorizzato, esclude il record da una futura migrazione.
+             Il programma R_HNDPOST_DOC si preoccupa di valorizzare a true il nuovo flag in caso
+             di creazione nuovo record (file-write), per evitare che venga sottoposto a migrazione
+             che rovinerebbe il contenuto dei campi della black list.
+ - Release 2011.00 2012.00 wip:
+           . i campi aggiunti per il ticket 3194 (black list) sono stati inseriti dopo "docdi-sendmail-ssl"
+             e "docdi-sendmail-receipt" (ticket 2779).
+             Questo ha creato un disallineamento con le release 2009.01 e 2010.01, non aggiornate con
+             il ticket 2779.
+             Con il ticket 3881 è stata eseguita un'operazione di allineamento sulle release 2009.01 e
+             2010.01, con relativo programma di migrazione per salvare il contenuto dei campi della
+             black list.
+             Sulle release 2009.01 e 2010.01 è stato aggiunto lo switch "docdi-mig_tk3881" per non
+             permettere una seconda migrazione del record.
+             Nelle release 2011.00, 2012.00 e wip viene aggiunto lo switch "docdi-mig_tk3881" per
+             pareggiare il record.
+             Il programma R_HNDPOST_DOC si preoccupa di valorizzare sempre a true il nuovo flag
+             in quanto queste release non necessitano di alcuna migrazione.
+------------------------------------------------------------------------------------------------------------------------
+ tk 3097 - Inserimento righe Iva/primanota in nuova Prima Nota                                      | scamar 18/05/2011 10:32:10
+           . new column "docdi-zucchetti-mode"
+           . rettifica filler
+------------------------------------------------------------------------------------------------------------------------
+ tk 3673 - tracciabilità flussi finanziari - CIG e CUP su documenti                                 | suadal 06/06/2011 10:49:23
+         - aggiunto nuovo check-box docdi-contratti-pubblici
+------------------------------------------------------------------------------------------------------------------------
+ tk 3958 - Nuove disposizioni normativa antievasione (122/2010) - telematico operazioni > 3000 euro
+                                                                                                    | rososv 13/06/2011 10:11:54
+           CAMPO "DOCDI-1222010-ALLPAGS" : NON VIENE PIU' UTILIZZATO IN GESTIONE DITTA
+           IN SEGUITO A NUOVE SPECIFICHE DELLA NORMATIVA CHE LO RENDONO OBSOLETO
+
+------------------------------------------------------------------------------------------------------------------------
+ tk 4040 - invii mail fatti con Javamail verso sistemi Mac causano ricezione mail priva di allegato. | scamar 26/08/2011
+           Sistema interessato   Mac OS 10.5.8 – MAIL ver. 3.6
+          (Mac OS 10.4.11 – MAIL ver. 2.1.3 riceve regolarmente).
+          l'utilizzo della SEE32 per l'invio non produce questo tipo di problema
+          . new column "docdi-force-multipart-mixed"
+------------------------------------------------------------------------------
+ tk 4157  - Non è prevista la gestione invio posta certificata con protocollo TLS.                  | scamar 02/11/2011
+           . inserita $GEN per il campo docdi-sendmail-ssl
+           . nuovi liv 88 per il campo docdi-sendmail-ssl
+-----------------------------------------------------------------------------------------------------------------------
+ tk.4313 - Velocizzare esposizione griglie "storico vendite/acquisti" nei property sheet            | maxime 02/02/2012
+           nuovi campi per nr.giorni "fa" per visualizzazione storici nei property sheet
+-----------------------------------------------------------------------------------------------------------------------
+ Tk. 4366 - Contabilizzazione ft acquisto con aggiornamento tempo reale (controllare esercizio)     | suadal 13/02/2012
+          - inserito livello 88 su campo docdi-aggiornamenti-acq
+-----------------------------------------------------------------------------------------------------------------------
+ tk.3498 - Casella posta certificata (PEC): le credenziali autenticazione                           | maxime 13/03/2012
+           devono essere quelle del mittente
+           nuova clausola generazione su DOCDI-WE-E-MAIL per type=code validato su G2MAIL
+
+           1.le credenziali di spedizione vengono risolte attraverso le nuove tabelle G2MAIL, G2CMAIL:
+             a.DOCDI-WE-E-MAIL (e-mail-mittente) risolve il record G2MAIL
+             b.G2MAIL risolve il record G2CMAIL con le credenziali
+           2.di conseguenza sono obsoletati i campi:
+             docdi-we-server (server smtp)
+             docdi-we-richiesta-password ("con autenticazione")
+             docdi-smtp-port (porta smtp)
+             docdi-we-user (utente)
+             docdi-we-password (password)
+             docdi-sendmail-ssl-e ("sicurezza della connessione")
+             docdi-sendmail-receipt ("ricevuta di lettura")
+             docdi-force-multipart-mixed ("Forza 'Multipart/mixed' per l'invio email")
+           3.questi campi vengono rimossi dall'interfaccia ma mantenuti aggiornati automaticamente
+             in fm_docdi, data-patch-in (r_hndpost_doc)
+             (perchè non si sa mai ci sarà aggiro qualche furbone che fa read docdi ...)
+
+-----------------------------------------------------------------------------------------------------------------------
+ tk 3963 - modello 770m2012                                                                         | quasil 06/06/2012
+  - Adeguamento tracciati modello 770 semplificato 2012.
+  - aggiunto il campo nazione del rappresentante estero.
+  - Inoltre portato il campo "codice carica del rappresentante" da 1 a 2 caratteri.
+-----------------------------------------------------------------------------------------------------------------------
+ tk. 3338 - Aggiungere flag in anagrafica ditta per decidere di non effettuare in fase di           | cermic 02/08/2012
+            caricamento documento di vendita i controlli su presenza giacenza di magazzino
+            - Aggiunto campo 'docdi-esclude-contr-esist'
+-----------------------------------------------------------------------------------------------------------------------
+ tk. 4583 - Evasione preventivi con cambio flag situazione                                          | rososv 22/08/2012
+ Implementazione:
+ - Aggiunto chek-box per chiudere in automatico i preventivi in fase di evasione o stampa ordine cliente
+-----------------------------------------------------------------------------------------------------------------------
+ tk.4799 - Supportare quanto disposto dall'art. 62 D.L. 1/2012                                      | rososv 11/01/2013
+
+ Aggiunto flag (docdi-lancio-u03dvtabc) che viene aggiornato in automatico dal programma "u03dvtabc"
+(Utility per generare le dipendenze DVT_XA DVT_XB DVT-XC, per le testate e DVR_XA DVR_XB DVR_XC,
+ per le righe, in base ai ragionamenti per la casistica agroalimentari).
+ Serve per eseguire una sola volta il programma di avviamento iniziale della procedura agroalimentare.
+
+-----------------------------------------------------------------------------------------------------------------------
+ tk 2195 - Assegnare opzionalmente provvigioni su incassi anticipati                                | SUADAL 11/02/2013
+         - aggiunto flag per assegnazione provvigioni su incassi anticipati e cioè
+           considerando le scadenze incassate in base alla data di incasso e non in base alla data di
+           scadenza.
+-----------------------------------------------------------------------------------------------------------------------
+ tk 4700 - Si propone implementazione filtri su "Archivio documenti" in proprietà clienti/fornitori | quasil 11/03/2013
+ . nuovo campo per nr.giorni "fa" per filtri su archivio documenti nei property sheet cli/for
+-----------------------------------------------------------------------------------------------------------------------
+ Ticket 5066 - Aggiunto flag per differenziare le note di variazione dalle fatture                  | MACGIU 24/04/2013
+               nei documenti inviati al repository
+-----------------------------------------------------------------------------------------------------------------------
+ Tk. 5080 - RID e BONIFICO europei - SEPA                                                           | SUADAL 20/06/2013
+          - inserito campo per r.i.d. con circuito SEPA
+-----------------------------------------------------------------------------------------------------------------------
+ tk 4941 - spesometro: novita' 2013                                                                 | rososv 17/10/2013
+
+ Aggiunti nuovi campi:
+
+            Dichiarante diverso dal contribuente: data di inizio procedura (o data di decesso del contribuente) e
+            data di fine procedura utili ai fini delle dichiarazioni da trasmettere in via telematica
+          . data inizio procedura (o decesso del contribuente)
+          . data fine   procedura
+          . denominazione dati dichiarante se diverso dal contribuente
+-----------------------------------------------------------------------------------------------------------------------
+ tk. 4780 - art 32 bis dl giugno 2012 n.83                                                          | SUADAL 12/11/2013
+          - aggiunto campo per indicare ultimo periodo di regime iva per cassa
+-----------------------------------------------------------------------------------------------------------------------
+ tk. 5511 - "Dichiarante diverso dal contribuente" in spesometro e "Firmatario" in altri telematici
+                                                                                                    | rososv 31/01/2014
+          - aggiunto nuovo campo "docdi-ddc-telem-dicpol",  radio-button, con i seguenti valori
+                    1 - il "dichiarante diverso da contribuente" (pagina "telematico"),  non è da considerarsi
+                        il dichiarante nella comunicazione polivalente (spesometro, black list, san marino)
+                    2 - il "dichiarante diverso da contribuente" (pagina "telematico"),  è da considerarse
+                        come dichiarante nella comunicazione polivalente (spesometro, black list, san marino)
+                        e verranno utilizzati i dati inerenti la persona fisica, cioè codice fiscale e dati anagrafici.
+                    3 - il "dichiarante diverso da contribuente" (pagina "telematico"),  è da considerarse
+                        come dichiarante nella comunicazione polivalente (spesometro, black list, san marino)
+                        e verranno utilizzati i dati inerenti la persona giuridica, cioè partita iva e denominazione.
+-----------------------------------------------------------------------------------------------------------------------
+ tk.5508 - Assegnazione provvigioni su incassi anticipati                                           | SUADAL 14/03/2014
+         - inserito campo per indicare se si vuole l'assegnazione delle provvigioni su scadenze incassate
+           parzialmente oppure se si aspetta l'incasso a saldo per assegnare le provvigioni all'agente.
+---------------------------------------------------------------------------------------------
+ tk 5599 - G2Mobile: collegamento con applicazioni InfinityMobile                                   | scamar 09/06/2014
+           .new column docdi-FVCodazi
+
+
+@}}
+[FDITEM0_]
+m_strName=record-docdi
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_
+
+@}}
+[FDITEM1_]
+m_strName=docdi-codice
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1_
+
+@}}
+[FDITEM2_]
+m_strName=docdi-codice1
+m_strRawPic=x(02)
+m_strPic=X(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM2_
+
+@}}
+[FDITEM3_]
+m_strName=docdi-codice2
+m_strRawPic=x(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM3_
+
+$GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=08,zmm_align=L,zmm_pos=1,zmm_entity=docdi
+
+@}}
+[FDITEM4_]
+m_strName=docdi-codice3
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM4_
+
+@}}
+[FDITEM5_]
+m_strName=resto-record-docdi
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM5_
+
+@}}
+[FDITEM6_]
+m_strName=docdi-nome1
+m_strRawPic=x(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM6_
+
+$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=2
+
+@}}
+[FDITEM7_]
+m_strName=docdi-nome2
+m_strRawPic=x(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM7_
+
+$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=3
+
+@}}
+[FDITEM8_]
+m_strName=docdi-via
+m_strRawPic=x(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM8_
+
+@}}
+[FDITEM9_]
+m_strName=docdi-cap
+m_strRawPic=x(05)
+m_strPic=X(05)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM9_
+
+@}}
+[FDITEM10_]
+m_strName=docdi-citta
+m_strRawPic=x(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM10_
+
+@}}
+[FDITEM11_]
+m_strName=docdi-provincia
+m_strRawPic=x(02)
+m_strPic=X(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM11_
+
+@}}
+[FDITEM12_]
+m_strName=docdi-via-f
+m_strRawPic=x(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM12_
+
+@}}
+[FDITEM13_]
+m_strName=docdi-cap-f
+m_strRawPic=x(05)
+m_strPic=X(05)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM13_
+
+@}}
+[FDITEM14_]
+m_strName=docdi-citta-f
+m_strRawPic=x(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM14_
+
+@}}
+[FDITEM15_]
+m_strName=docdi-provincia-f
+m_strRawPic=x(02)
+m_strPic=X(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM15_
+
+@}}
+[FDITEM16_]
+m_strName=docdi-partita-iva
+m_strRawPic=x(11)
+m_strPic=X(11)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM16_
+
+$GEN zmm=on,zmm_title=Partita IVA,zmm_datatype=x,zmm_size=11,zmm_align=L,zmm_pos=4
+
+@}}
+[FDITEM17_]
+m_strName=docdi-codice-fiscale
+m_strRawPic=x(16)
+m_strPic=X(16)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM17_
+$GEN zmm=on,zmm_title=Codice fiscale,zmm_datatype=x,zmm_size=16,zmm_align=L,zmm_pos=5
+
+@}}
+[FDITEM18_]
+m_strName=docdi-persona-fisica
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM18_
+$GEN type=checkbox,truevalue="S", falsevalue=" "
+
+@}}
+[FDITEM19_]
+m_strName=docdi-persona-fisica-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM19_
+
+@}}
+[FDITEM20_]
+m_strName=docdi-comune-nascita
+m_strRawPic=x(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM20_
+
+@}}
+[FDITEM21_]
+m_strName=docdi-data-nascita
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM21_
+ copy "groupdate.xfc". | DBMaker
+@}}
+[FDITEM22_]
+m_strName=aa
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=DOCDI-NASCITA-AA
+{{@DataItem_m_strDescriptionFDITEM22_
+
+@}}
+[FDITEM23_]
+m_strName=MM
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=DOCDI-NASCITA-MM
+{{@DataItem_m_strDescriptionFDITEM23_
+
+@}}
+[FDITEM24_]
+m_strName=GG
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=DOCDI-NASCITA-GG
+{{@DataItem_m_strDescriptionFDITEM24_
+
+@}}
+[FDITEM25_]
+m_strName=filler
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=DOCDI-DATA-nascita
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM25_
+
+@}}
+[FDITEM26_]
+m_strName=docdi-data-nascita-n
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM26_
+$GEN type=date,
+
+@}}
+[FDITEM27_]
+m_strName=DOCDI-PROVINCIA-NASCITA
+m_strRawPic=X(02)
+m_strPic=X(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM27_
+
+
+@}}
+[FDITEM28_]
+m_strName=DOCDI-SESSO
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM28_
+$GEN type=radiobutton,value_1="M",image_1=1,value_2="F",image_2=2
+@}}
+[FDITEM29_]
+m_strName=DOCDI-SESSO-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="M" "F" " "
+{{@DataItem_m_strDescriptionFDITEM29_
+
+@}}
+[FDITEM30_]
+m_strName=DOCDI-SESSO-88-M
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="M"
+{{@DataItem_m_strDescriptionFDITEM30_
+
+@}}
+[FDITEM31_]
+m_strName=DOCDI-PREFISSO-TELEFONO
+m_strRawPic=X(04)
+m_strPic=X(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM31_
+
+@}}
+[FDITEM32_]
+m_strName=DOCDI-NUMERO-TELEFONO
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM32_
+
+@}}
+[FDITEM33_]
+m_strName=DOCDI-CAPITALE-SOCIALE
+m_strRawPic=S9(13)V9(02)
+m_strPic=S9(13)V9(02)
+m_nItemLevel=10
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM33_
+$GEN type=num,dec=02,size=21
+
+@}}
+[FDITEM34_]
+m_strName=DOCDI-TRIBUNALE-CITTA
+m_strRawPic=X(20)
+m_strPic=X(20)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM34_
+
+@}}
+[FDITEM35_]
+m_strName=DOCDI-TRIBUNALE-SOC
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM35_
+
+@}}
+[FDITEM36_]
+m_strName=DOCDI-TRIBUNALE-VOL
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM36_
+
+@}}
+[FDITEM37_]
+m_strName=DOCDI-TRIBUNALE-FAS
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM37_
+
+@}}
+[FDITEM38_]
+m_strName=DOCDI-CCIAA-old
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM38_
+
+@}}
+[FDITEM39_]
+m_strName=DOCDI-DATA-INIZIO-ATTIVITA
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM39_
+ copy "groupdate.xfc". | DBMaker
+@}}
+[FDITEM40_]
+m_strName=AA
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=INIZIO-ATTIVITA-AA
+{{@DataItem_m_strDescriptionFDITEM40_
+
+@}}
+[FDITEM41_]
+m_strName=MM
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=INIZIO-ATTIVITA-MM
+{{@DataItem_m_strDescriptionFDITEM41_
+
+@}}
+[FDITEM42_]
+m_strName=GG
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=INIZIO-ATTIVITA-GG
+{{@DataItem_m_strDescriptionFDITEM42_
+
+@}}
+[FDITEM43_]
+m_strName=filler
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=DOCDI-DATA-INIZIO-ATTIVITA
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM43_
+
+@}}
+[FDITEM44_]
+m_strName=docdi-data-inizio-attivita-n
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM44_
+$GEN type=date,
+
+@}}
+[FDITEM45_]
+m_strName=DOCDI-CODICE-ATTIVITA
+m_strRawPic=X(05)
+m_strPic=X(05)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM45_
+
+
+@}}
+[FDITEM46_]
+m_strName=DOCDI-DESCRIZIONE-ATTIVITA
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM46_
+
+@}}
+[FDITEM47_]
+m_strName=DOCDI-NATURA-GIURIDICA
+m_strRawPic=X(02)
+m_strPic=X(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM47_
+
+@}}
+[FDITEM48_]
+m_strName=DOCDI-ESATTORIA
+m_strRawPic=X(20)
+m_strPic=X(20)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM48_
+
+@}}
+[FDITEM49_]
+m_strName=DOCDI-COMUNE-ESATTORIA
+m_strRawPic=X(20)
+m_strPic=X(20)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM49_
+
+@}}
+[FDITEM50_]
+m_strName=DOCDI-CODICE-SIA
+m_strRawPic=X(05)
+m_strPic=X(05)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM50_
+
+@}}
+[FDITEM51_]
+m_strName=DOCDI-PERIODICITA-IVA
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM51_
+$GEN type=radiobutton,value_1=" ",image_1=1,value_2="M",image_2=2,value_3="T",image_3=3
+
+@}}
+[FDITEM52_]
+m_strName=DOCDI-PERIODICITA-IVA-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="M" "T" " "
+{{@DataItem_m_strDescriptionFDITEM52_
+
+@}}
+[FDITEM53_]
+m_strName=docdi-periodicita-iva-mensile
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="M"
+{{@DataItem_m_strDescriptionFDITEM53_
+
+@}}
+[FDITEM54_]
+m_strName=docdi-periodicita-iva-trimestrale
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="T"
+{{@DataItem_m_strDescriptionFDITEM54_
+
+@}}
+[FDITEM55_]
+m_strName=docdi-periodicita-iva-nessuna
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=space
+{{@DataItem_m_strDescriptionFDITEM55_
+
+@}}
+[FDITEM56_]
+m_strName=DOCDI-ARCHIVI
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM56_
+
+
+@}}
+[FDITEM57_]
+m_strName=DOCDI-DATA-GIORNALE
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM57_
+ copy "groupdate.xfc". | DBMaker
+@}}
+[FDITEM58_]
+m_strName=AA
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=DOCDI-GIORNALE-AA
+{{@DataItem_m_strDescriptionFDITEM58_
+
+@}}
+[FDITEM59_]
+m_strName=MM
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=DOCDI-GIORNALE-MM
+{{@DataItem_m_strDescriptionFDITEM59_
+
+@}}
+[FDITEM60_]
+m_strName=GG
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=DOCDI-GIORNALE-GG
+{{@DataItem_m_strDescriptionFDITEM60_
+
+@}}
+[FDITEM61_]
+m_strName=filler
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=DOCDI-DATA-GIORNALE
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM61_
+
+@}}
+[FDITEM62_]
+m_strName=docdi-data-giornale-n
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM62_
+$GEN type=date,
+
+@}}
+[FDITEM63_]
+m_strName=DOCDI-GIORNI-CLIENTI
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM63_
+$GEN type=num,dec=0,size=06
+
+@}}
+[FDITEM64_]
+m_strName=DOCDI-GIORNI-FORNITORI
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM64_
+$GEN type=num,dec=0,size=06
+
+@}}
+[FDITEM65_]
+m_strName=DOCDI-INTESTAZIONE
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM65_
+$GEN type=checkbox,truevalue="S", falsevalue=" "
+
+@}}
+[FDITEM66_]
+m_strName=DOCDI-INTESTAZIONE-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM66_
+
+@}}
+[FDITEM67_]
+m_strName=DOCDI-AGGIORNAMENTI
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM67_
+$GEN type=checkbox,truevalue="S", falsevalue=" "
+@}}
+[FDITEM68_]
+m_strName=DOCDI-AGGIORNAMENTI-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM68_
+
+@}}
+[FDITEM69_]
+m_strName=DOCDI-VALUTA
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM69_
+$GEN type=checkbox,truevalue="S", falsevalue=" "
+@}}
+[FDITEM70_]
+m_strName=DOCDI-VALUTA-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM70_
+
+@}}
+[FDITEM71_]
+m_strName=DOCDI-GIORNI-RISCHIO
+m_strRawPic=9(03)
+m_strPic=9(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM71_
+$GEN type=num,dec=0,size=04
+@}}
+[FDITEM72_]
+m_strName=DOCDI-COD-CONCESSIONE
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM72_
+
+@}}
+[FDITEM73_]
+m_strName=DOCDI-TRIBUTO-IVA
+m_strRawPic=X(04)
+m_strPic=X(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM73_
+
+@}}
+[FDITEM74_]
+m_strName=DOCDI-COD-ARR
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM74_
+$GEN type=code,entity=mas
+
+@}}
+[FDITEM75_]
+m_strName=docdi-tabella-ma-x
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM75_
+
+@}}
+[FDITEM76_]
+m_strName=DOCDI-TABELLA-MA
+m_nItemLevel=15
+m_nSync=-1
+m_bOccurs=1
+m_bFixed=1
+m_strRawSize=10
+m_nSize=10
+{{@DataItem_m_strDescriptionFDITEM76_
+
+@}}
+[FDITEM77_]
+m_strName=DOCDI-CODICE-MA
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM77_
+$GEN entity=tblma
+@}}
+[FDITEM78_]
+m_strName=filler
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=docdi-tabella-ma-x
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM78_
+
+@}}
+[FDITEM79_]
+m_strName=docdi-codice-ma-01
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM79_
+$GEN type=code,entity=tblma,blanknull=on
+
+@}}
+[FDITEM80_]
+m_strName=docdi-codice-ma-02
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM80_
+$GEN type=code,entity=tblma,blanknull=on
+@}}
+[FDITEM81_]
+m_strName=docdi-codice-ma-03
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM81_
+$GEN type=code,entity=tblma,blanknull=on
+@}}
+[FDITEM82_]
+m_strName=docdi-codice-ma-04
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM82_
+$GEN type=code,entity=tblma,blanknull=on
+
+@}}
+[FDITEM83_]
+m_strName=docdi-codice-ma-05
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM83_
+$GEN type=code,entity=tblma,blanknull=on
+@}}
+[FDITEM84_]
+m_strName=docdi-codice-ma-06
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM84_
+$GEN type=code,entity=tblma,blanknull=on
+
+@}}
+[FDITEM85_]
+m_strName=docdi-codice-ma-07
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM85_
+$GEN type=code,entity=tblma,blanknull=on
+@}}
+[FDITEM86_]
+m_strName=docdi-codice-ma-08
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM86_
+$GEN type=code,entity=tblma,blanknull=on
+@}}
+[FDITEM87_]
+m_strName=docdi-codice-ma-09
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM87_
+$GEN type=code,entity=tblma,blanknull=on
+@}}
+[FDITEM88_]
+m_strName=docdi-codice-ma-10
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM88_
+$GEN type=code,entity=tblma,blanknull=on
+
+@}}
+[FDITEM89_]
+m_strName=DOCDI-TBLPC-CLI
+m_strRawPic=X(04)
+m_strPic=X(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM89_
+$GEN type=code,entity=tblpc
+
+@}}
+[FDITEM90_]
+m_strName=DOCDI-TBLCE-CLI
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM90_
+$GEN type=code,entity=tblce
+
+@}}
+[FDITEM91_]
+m_strName=DOCDI-TBLPC-FRN
+m_strRawPic=X(04)
+m_strPic=X(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM91_
+$GEN type=code,entity=tblpc
+
+@}}
+[FDITEM92_]
+m_strName=DOCDI-TBLCE-FRN
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM92_
+$GEN type=code,entity=tblce
+
+@}}
+[FDITEM93_]
+m_strName=DOCDI-PROPOSTA-DOCA
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM93_
+$GEN type=checkbox,truevalue="S", falsevalue=" "
+
+@}}
+[FDITEM94_]
+m_strName=DOCDI-PROPOSTA-DOCA-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "S"
+{{@DataItem_m_strDescriptionFDITEM94_
+
+@}}
+[FDITEM95_]
+m_strName=DOCDI-FAX
+m_strRawPic=X(15)
+m_strPic=X(15)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM95_
+
+@}}
+[FDITEM96_]
+m_strName=DOCDI-TELEX
+m_strRawPic=X(15)
+m_strPic=X(15)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM96_
+
+@}}
+[FDITEM97_]
+m_strName=DOCDI-P-IVA-CITTA
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM97_
+
+@}}
+[FDITEM98_]
+m_strName=DOCDI-PROFESSIONISTA
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM98_
+$GEN type=radiobutton,value_1=" ",image_1=1,value_2="O",image_2=2,value_3="S",image_3=3
+
+@}}
+[FDITEM99_]
+m_strName=DOCDI-PROFESSIONISTA-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "S" "O"
+{{@DataItem_m_strDescriptionFDITEM99_
+
+@}}
+[FDITEM100_]
+m_strName=docdi-lifo
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM100_
+$GEN type=checkbox,truevalue="S", falsevalue=" "
+
+@}}
+[FDITEM101_]
+m_strName=docdi-lifo-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM101_
+
+@}}
+[FDITEM102_]
+m_strName=docdi-lifo-gruppi-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+m_strFalse=space
+{{@DataItem_m_strDescriptionFDITEM102_
+
+@}}
+[FDITEM103_]
+m_strName=DOCDI-COLORE
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM103_
+$GEN type=num,dec=0,size=03
+@}}
+[FDITEM104_]
+m_strName=DOCDI-COLORE-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0 06 THRU 14
+{{@DataItem_m_strDescriptionFDITEM104_
+
+@}}
+[FDITEM105_]
+m_strName=DOCDI-PROTOCOLLO-VENDITE
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM105_
+$GEN type=checkbox,truevalue="S", falsevalue=" "
+
+@}}
+[FDITEM106_]
+m_strName=DOCDI-PROTOCOLLO-VENDITE-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM106_
+
+@}}
+[FDITEM107_]
+m_strName=docdi-protocollo-vendite-88-on
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM107_
+
+@}}
+[FDITEM108_]
+m_strName=docdi-protocollo-vendite-88-off
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" "
+{{@DataItem_m_strDescriptionFDITEM108_
+
+@}}
+[FDITEM109_]
+m_strName=docdi-chiudi-ordine
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM109_
+
+
+
+$GEN type=checkbox,truevalue="S", falsevalue=" "
+
+@}}
+[FDITEM110_]
+m_strName=docdi-chiudi-ordine-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM110_
+
+@}}
+[FDITEM111_]
+m_strName=docdi-stampa-partita-iva
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM111_
+$GEN type=checkbox,truevalue="S", falsevalue=" "
+@}}
+[FDITEM112_]
+m_strName=docdi-stampa-partita-iva-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM112_
+
+@}}
+[FDITEM113_]
+m_strName=docdi-stampa-partita-iva-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM113_
+
+@}}
+[FDITEM114_]
+m_strName=docdi-mas-utile-precedente
+m_strRawPic=x(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM114_
+$GEN type=code,entity=mas
+@}}
+[FDITEM115_]
+m_strName=docdi-mas-perdita-precedente
+m_strRawPic=x(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM115_
+$GEN type=code,entity=mas
+@}}
+[FDITEM116_]
+m_strName=docdi-val-stat-vendite
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM116_
+$GEN type=checkbox,truevalue="N", falsevalue=" "
+@}}
+[FDITEM117_]
+m_strName=docdi-val-stat-vendite-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="N" " "
+{{@DataItem_m_strDescriptionFDITEM117_
+
+@}}
+[FDITEM118_]
+m_strName=docdi-val-stat-acquisti
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM118_
+$GEN type=checkbox,truevalue="N", falsevalue=" "
+@}}
+[FDITEM119_]
+m_strName=docdi-val-stat-acquisti-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="N" " "
+{{@DataItem_m_strDescriptionFDITEM119_
+
+@}}
+[FDITEM120_]
+m_strName=docdi-aggiornamenti-acq
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=DOCDI-AGG-ACQ
+{{@DataItem_m_strDescriptionFDITEM120_
+$GEN type=checkbox,truevalue="S", falsevalue=" "
+
+@}}
+[FDITEM121_]
+m_strName=docdi-aggiornamenti-acq-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM121_
+
+@}}
+[FDITEM122_]
+m_strName=docdi-aggiornamenti-acq-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM122_
+
+@}}
+[FDITEM123_]
+m_strName=docdi-tblva-lire
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM123_
+$GEN type=code,entity=tblva
+
+@}}
+[FDITEM124_]
+m_strName=docdi-mas-euro
+m_strRawPic=x(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM124_
+$GEN type=code,entity=mas
+@}}
+[FDITEM125_]
+m_strName=docdi-carica-iva-old
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM125_
+
+@}}
+[FDITEM126_]
+m_strName=docdi-codice-fiscale-iva
+m_strRawPic=x(16)
+m_strPic=X(16)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=DOCDI-COD-FIS-IVA
+{{@DataItem_m_strDescriptionFDITEM126_
+
+@}}
+[FDITEM127_]
+m_strName=DOCDI-ULTIMO-MESE-LIFO
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM127_
+$GEN type=checkbox,truevalue=" ", falsevalue="N"
+@}}
+[FDITEM128_]
+m_strName=DOCDI-ULTIMO-MESE-LIFO-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="N" " "
+{{@DataItem_m_strDescriptionFDITEM128_
+
+@}}
+[FDITEM129_]
+m_strName=DOCDI-BAN-CODICE
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM129_
+$GEN type=code,entity=ban
+@}}
+[FDITEM130_]
+m_strName=DOCDI-ORDINE-GIORNALE
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM130_
+$GEN type=radiobutton,value_1=" ",image_1=1,value_2="P",image_2=2
+
+@}}
+[FDITEM131_]
+m_strName=DOCDI-ORDINE-GIORNALE-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="P" " "
+{{@DataItem_m_strDescriptionFDITEM131_
+
+@}}
+[FDITEM132_]
+m_strName=DOCDI-ORDINE-GIORNALE-88-P
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="P"
+{{@DataItem_m_strDescriptionFDITEM132_
+
+@}}
+[FDITEM133_]
+m_strName=DOCDI-TBLIV-CODICE
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM133_
+$GEN type=code,entity=tbliv
+
+@}}
+[FDITEM134_]
+m_strName=DOCDI-TIPO-FORNITORE-IVA
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM134_
+|****************$GEN type=radiobutton,value_1=0,image_1=1,value_2=1,image_2=2,value_2=10,image_2=3
+$GEN type=radiobutton,value_1=0,image_1=1,value_2=1,image_2=2,value_3=10,image_3=3
+
+@}}
+[FDITEM135_]
+m_strName=filler
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM135_
+
+ obsoleti                                                                                         | mxm 26/02/2007 17.27
+ obsoleti                                                                                         | mxm 26/02/2007 17.27
+ obsoleti                                                                                         | mxm 26/02/2007 17.27
+
+**        10  DOCDI-DOMINIO-WWP               PIC  X(30).                                         | mxm 26/02/2007 17.27
+**        10  DOCDI-CARTELLA-WWP              PIC  X(50).                                         | mxm 26/02/2007 17.27
+@}}
+[FDITEM136_]
+m_strName=filler
+m_strRawPic=X(50)
+m_strPic=X(50)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM136_
+
+@}}
+[FDITEM137_]
+m_strName=DOCDI-INIZIO-CODICE-WWP
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM137_
+
+@}}
+[FDITEM138_]
+m_strName=DOCDI-FINE-CODICE-WWP
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM138_
+
+@}}
+[FDITEM139_]
+m_strName=DOCDI-FILLER
+m_strRawPic=X(05)
+m_strPic=X(05)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM139_
+
+@}}
+[FDITEM140_]
+m_strName=DOCDI-CODICE-AZIENDA-SIPED
+m_strRawPic=9(06)
+m_strPic=9(06)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=DOCDI-COD-SIPED
+{{@DataItem_m_strDescriptionFDITEM140_
+
+ obsoleti                                                                                         | mxm 26/02/2007 17.27
+ obsoleti                                                                                         | mxm 26/02/2007 17.27
+ obsoleti                                                                                         | mxm 26/02/2007 17.27*
+
+
+
+sato (obsoleto) mxm 11.11.02
+sato (obsoleto) mxm 11.11.02
+$XFD  NAME=DOCDI-COD-GIOVE                                     | ds 18.09.03
+       10  DOCDI-CODICE-AZIENDA-GIOVE      PIC  9(05).         | ds 18.09.03
+.09.03
+$GEN type=num,dec=0,size=08
+
+@}}
+[FDITEM141_]
+m_strName=DOCDI-WE-SERVER
+m_strRawPic=X(42)
+m_strPic=X(42)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM141_
+
+@}}
+[FDITEM142_]
+m_strName=DOCDI-WE-USER
+m_strRawPic=X(42)
+m_strPic=X(42)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM142_
+
+@}}
+[FDITEM143_]
+m_strName=DOCDI-WE-RICHIESTA-PASSWORD
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM143_
+
+campi per collegamento WE (ac)
+
+**     10  DOCDI-WE-SERVER                 PIC  X(64).    | mxm 13.05.03
+**     10  DOCDI-WE-USER                   PIC  X(20).    | mxm 13.05.03
+3.05.03
+
+3.05.03
+
+@}}
+[FDITEM144_]
+m_strName=DOCDI-WE-RICHIESTA-PASSWORD-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM144_
+
+@}}
+[FDITEM145_]
+m_strName=DOCDI-WE-PASSWORD
+m_strRawPic=X(20)
+m_strPic=X(20)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM145_
+
+@}}
+[FDITEM146_]
+m_strName=DOCDI-WE-E-MAIL
+m_strRawPic=X(50)
+m_strPic=X(50)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM146_
+$GEN type=code,entity=g2mail
+
+@}}
+[FDITEM147_]
+m_strName=DOCDI-WE-OC-MAIL
+m_strRawPic=x(41)
+m_strPic=X(41)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM147_
+
+@}}
+[FDITEM148_]
+m_strName=DOCDI-WE-OC-USER
+m_strRawPic=x(41)
+m_strPic=X(41)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM148_
+
+@}}
+[FDITEM149_]
+m_strName=DOCDI-WE-OC-PASSWORD
+m_strRawPic=x(20)
+m_strPic=X(20)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM149_
+
+ casella di posta e account per ricezione ordini WE
+
+**     10  DOCDI-WE-OC-MAIL                pic x(62).     | mxm 13.05.03
+**     10  DOCDI-WE-OC-USER                pic x(20).     | mxm 13.05.03
+3.05.03
+3.05.03
+
+@}}
+[FDITEM150_]
+m_strName=docdi-codice-fiscale-dichiarante
+m_strRawPic=x(11)
+m_strPic=X(11)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=docdi-codice-fisca
+{{@DataItem_m_strDescriptionFDITEM150_
+
+
+fine campi per collegamento WE (ac)
+
+
+
+comunicazione annuale iva (dal 2003)
+
+
+@}}
+[FDITEM151_]
+m_strName=DOCDI-CODICE-AZIENDA-GIOVE
+m_strRawPic=9(06)
+m_strPic=9(06)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM151_
+
+@}}
+[FDITEM152_]
+m_strName=DOCDI-CODICE-IBAN
+m_strRawPic=X(34)
+m_strPic=X(34)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM152_
+
+@}}
+[FDITEM153_]
+m_strName=DOCDI-CODICE-BIC
+m_strRawPic=X(11)
+m_strPic=X(11)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM153_
+
+@}}
+[FDITEM154_]
+m_strName=DOCDI-FILLER-02
+m_strRawPic=X(11)
+m_strPic=X(11)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=DOCDI-COD-GIOVE
+{{@DataItem_m_strDescriptionFDITEM154_
+
+fine comunicazione annuale iva (dal 2003)
+
+$GEN type=num,dec=0,size=08
+09.03
+09.03
+09.03
+        10  DOCDI-AUTOFATTURA-CO              PIC  X(03).      |ds 23.10.03
+        10  DOCDI-AUTOFATTURA-CLI             PIC  X(08).      |ds 23.10.03
+
+@}}
+[FDITEM155_]
+m_strName=DOCDI-REGISTRO-LIQUIDAZIONE
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM155_
+$GEN type=radiobutton,value_1=" ",image_1=1,value_2="V",image_2=2,value_3="C",image_3=3,value_4="I",image_4=4
+
+@}}
+[FDITEM156_]
+m_strName=DOCDI-REGISTRO-LIQUIDAZIONE-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="V" "C" "I" " "
+{{@DataItem_m_strDescriptionFDITEM156_
+
+@}}
+[FDITEM157_]
+m_strName=DOCDI-WE-SERVER-POP3
+m_strRawPic=X(42)
+m_strPic=X(42)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM157_
+
+@}}
+[FDITEM158_]
+m_strName=DOCDI-TIPO-CONTAB
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM158_
+11.03
+server posta in entrata
+01.04
+
+
+$GEN type=radiobutton,value_1="O",image_1=1,value_2="S",image_2=2
+
+@}}
+[FDITEM159_]
+m_strName=DOCDI-TIPO-CONTAB-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "O" "S"
+{{@DataItem_m_strDescriptionFDITEM159_
+
+@}}
+[FDITEM160_]
+m_strName=DOCDI-TIPO-CONTAB-88-O
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="O"
+{{@DataItem_m_strDescriptionFDITEM160_
+
+@}}
+[FDITEM161_]
+m_strName=DOCDI-TIPO-SUDDIV-GIOVE
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM161_
+
+@}}
+[FDITEM162_]
+m_strName=DOCDI-TIPO-SUDDIV-GIOVE-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "1" "2" "3" "4" "5"
+{{@DataItem_m_strDescriptionFDITEM162_
+07.04
+@}}
+[FDITEM163_]
+m_strName=DOCDI-REG-UNI-INV
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM163_
+
+@}}
+[FDITEM164_]
+m_strName=DOCDI-REG-UNI-INV-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "N"
+{{@DataItem_m_strDescriptionFDITEM164_
+
+@}}
+[FDITEM165_]
+m_strName=DOCDI-NUM-LIB-IVA
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM165_
+
+@}}
+[FDITEM166_]
+m_strName=DOCDI-NUM-LIB-IVA-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "S"
+{{@DataItem_m_strDescriptionFDITEM166_
+
+@}}
+[FDITEM167_]
+m_strName=docdi-num-lib-iva-88-s
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM167_
+07.04
+$GEN type=checkbox,truevalue=" ", falsevalue="N"
+10.04
+10.04
+$GEN type=checkbox,truevalue="S", falsevalue=" "
+10.04
+10.04
+
+@}}
+[FDITEM168_]
+m_strName=DOCDI-SW-EMAIL-UTENTE
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM168_
+$GEN type=checkbox,truevalue="S", falsevalue=" "
+@}}
+[FDITEM169_]
+m_strName=DOCDI-SOLO-EMAIL-UTENTE
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+m_strFalse=SPACE
+{{@DataItem_m_strDescriptionFDITEM169_
+
+@}}
+[FDITEM170_]
+m_strName=DOCDI-CAPITALE-VERSATO
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM170_
+$GEN type=checkbox,truevalue="S", falsevalue=" "
+
+@}}
+[FDITEM171_]
+m_strName=DOCDI-CAPITALE-VERSATO-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM171_
+
+@}}
+[FDITEM172_]
+m_strName=docdi-capitale-versato-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM172_
+
+@}}
+[FDITEM173_]
+m_strName=DOCDI-CODICE-CATASTALE
+m_strRawPic=X(04)
+m_strPic=X(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM173_
+
+@}}
+[FDITEM174_]
+m_strName=DOCDI-SW-LOG-MAIL
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM174_
+$GEN type=checkbox,truevalue="S", falsevalue=" "
+
+@}}
+[FDITEM175_]
+m_strName=DOCDI-ATTIVA-LOG-MAIL
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+m_strFalse=SPACE
+{{@DataItem_m_strDescriptionFDITEM175_
+
+@}}
+[FDITEM176_]
+m_strName=DOCDI-TIPO-MITTENTE
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM176_
+
+@}}
+[FDITEM177_]
+m_strName=DOCDI-TIPO-MITTENTE-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "D" "P"
+{{@DataItem_m_strDescriptionFDITEM177_
+
+@}}
+[FDITEM178_]
+m_strName=DOCDI-ID-MITTENTE
+m_strRawPic=X(11)
+m_strPic=X(11)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM178_
+
+@}}
+[FDITEM179_]
+m_strName=DOCDI-BLOCCO-QTA
+m_strRawPic=X
+m_strPic=X
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM179_
+$GEN type=checkbox,truevalue="S", falsevalue="N"
+
+@}}
+[FDITEM180_]
+m_strName=DOCDI-BLOCCO-QTA-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" "N" " "
+{{@DataItem_m_strDescriptionFDITEM180_
+
+@}}
+[FDITEM181_]
+m_strName=DOCDI-BLOCCO-QTA-SI
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM181_
+
+@}}
+[FDITEM182_]
+m_strName=DOCDI-BLOCCO-QTA-NO
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="N"
+{{@DataItem_m_strDescriptionFDITEM182_
+
+@}}
+[FDITEM183_]
+m_strName=DOCDI-TAGLIA
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM183_
+
+@}}
+[FDITEM184_]
+m_strName=DOCDI-TAGLIA-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0 07 THRU 14
+{{@DataItem_m_strDescriptionFDITEM184_
+
+@}}
+[FDITEM185_]
+m_strName=DOCDI-CREA-FT-DIFFERITA
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM185_
+$GEN type=checkbox,truevalue="S", falsevalue=" "
+
+@}}
+[FDITEM186_]
+m_strName=DOCDI-CREA-FT-DIFFERITA-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM186_
+
+@}}
+[FDITEM187_]
+m_strName=docdi-elabora-allegati
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM187_
+
+@}}
+[FDITEM188_]
+m_strName=DOCDI-ELABORA-ALLEGATI-SI
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM188_
+
+@}}
+[FDITEM189_]
+m_strName=docdi-tblva
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM189_
+
+$GEN type=code,entity=tblva
+
+@}}
+[FDITEM190_]
+m_strName=docdi-cciaa
+m_strRawPic=x(11)
+m_strPic=X(11)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM190_
+
+@}}
+[FDITEM191_]
+m_strName=docdi-prov-cciaa
+m_strRawPic=x(02)
+m_strPic=X(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM191_
+
+@}}
+[FDITEM192_]
+m_strName=docdi-datint-cfis
+m_strRawPic=x(16)
+m_strPic=X(16)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM192_
+
+@}}
+[FDITEM193_]
+m_strName=docdi-datint-caf
+m_strRawPic=9(05)
+m_strPic=9(05)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM193_
+
+@}}
+[FDITEM194_]
+m_strName=docdi-datint-tipo-com
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM194_
+$GEN type=radiobutton,value_1=0,image_1=1,value_2=1,image_2=2,value_3=2,image_3=3
+
+@}}
+[FDITEM195_]
+m_strName=docdi-datint-tipo-com-null
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM195_
+
+@}}
+[FDITEM196_]
+m_strName=docdi-datint-tipo-com-1
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM196_
+
+@}}
+[FDITEM197_]
+m_strName=docdi-datint-tipo-com-2
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=2
+{{@DataItem_m_strDescriptionFDITEM197_
+
+@}}
+[FDITEM198_]
+m_strName=docdi-datint-dataimp
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM198_
+ copy "groupdate.xfc". | DBMaker
+@}}
+[FDITEM199_]
+m_strName=aa
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=DOCDI-IMPEGNO-AA
+{{@DataItem_m_strDescriptionFDITEM199_
+
+@}}
+[FDITEM200_]
+m_strName=MM
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=DOCDI-IMPEGNO-MM
+{{@DataItem_m_strDescriptionFDITEM200_
+
+@}}
+[FDITEM201_]
+m_strName=GG
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=DOCDI-IMPEGNO-GG
+{{@DataItem_m_strDescriptionFDITEM201_
+
+@}}
+[FDITEM202_]
+m_strName=filler
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=docdi-datint-dataimp
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM202_
+
+@}}
+[FDITEM203_]
+m_strName=docdi-datint-datai
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM203_
+$GEN type=date,
+@}}
+[FDITEM204_]
+m_strName=docdi-accorpa-corr
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM204_
+
+
+
+ punto vendita: "accorpa scritture contabili corr.giornalieri"                                    | mxm 17/10/2007 17.13
+
+@}}
+[FDITEM205_]
+m_strName=docdi-split-cven
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM205_
+
+ punto vendita: aggiunto flag "contropartite vendite differenziate per articoli"
+
+@}}
+[FDITEM206_]
+m_strName=docdi-raee-prod
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM206_
+
+    10  docdi-filler-01                   pic  x(805).                       | mxm 17/10/2007 17.12  |or 14/11/2007
+
+
+@}}
+[FDITEM207_]
+m_strName=docdi-raee-prod-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM207_
+
+@}}
+[FDITEM208_]
+m_strName=docdi-raee-prod-ko
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM208_
+
+@}}
+[FDITEM209_]
+m_strName=docdi-raee-riv
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM209_
+
+@}}
+[FDITEM210_]
+m_strName=docdi-raee-riv-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM210_
+
+@}}
+[FDITEM211_]
+m_strName=docdi-raee-riv-ko
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM211_
+
+@}}
+[FDITEM212_]
+m_strName=docdi-raee-cod-produttore
+m_strRawPic=x(50)
+m_strPic=X(50)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM212_
+
+@}}
+[FDITEM213_]
+m_strName=docdi-docscr-differito
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM213_
+
+ punto vendita: aggiunto flag "generazione differita documenti legati allo scontrino di cassa"
+
+@}}
+[FDITEM214_]
+m_strName=docdi-cod-ateco
+m_strRawPic=x(06)
+m_strPic=X(06)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM214_
+
+ nuovo codice attivita' da passare a comunicazione iva annuale
+
+@}}
+[FDITEM215_]
+m_strName=docdi-magscr-realtime
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM215_
+
+ punto vendita: aggiunto flag "generazione in tempo reale mov.magazzino"
+
+@}}
+[FDITEM216_]
+m_strName=docdi-smtp-port
+m_strRawPic=9(05)
+m_strPic=9(05)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM216_
+
+ porta server smtp
+
+@}}
+[FDITEM217_]
+m_strName=docdi-smtp-port-default
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=25
+{{@DataItem_m_strDescriptionFDITEM217_
+
+@}}
+[FDITEM218_]
+m_strName=docdi-exclude-omaggi-dw
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM218_
+
+
+
+
+**    10  docdi-filler-01                   pic  x(746).                                          | mxm 14/05/2008 9.35
+**    10  docdi-filler-01                   pic  x(745).          | mxm 14/05/2008 9.35           |ms 27/06/2008 16.50
+
+
+   check box per l'esclusione dei movimenti di vendita/acquisto dal warehouse
+   delle vendite
+
+
+@}}
+[FDITEM219_]
+m_strName=docdi-exclude-omaggi-dw-on
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM219_
+
+@}}
+[FDITEM220_]
+m_strName=docdi-squad-pnt
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM220_
+
+@}}
+[FDITEM221_]
+m_strName=docdi-squad-pnt-allowed
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM221_
+
+@}}
+[FDITEM222_]
+m_strName=docdi-data-inizio-procedura
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=docdi-data-inizio-
+m_bDataType_Xfd=1
+m_nDataType_Xfd=2
+m_strDateFormat_Xfd=yyyymmdd
+{{@DataItem_m_strDescriptionFDITEM222_
+$GEN type=date,
+
+@}}
+[FDITEM223_]
+m_strName=docdi-ktrun
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM223_
+
+
+@}}
+[FDITEM224_]
+m_strName=docdi-invio-repository
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM224_
+
+
+@}}
+[FDITEM225_]
+m_strName=docdi-invio-repository-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM225_
+
+@}}
+[FDITEM226_]
+m_strName=docdi-sendmail-ssl
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM226_
+
+$GEN type=combobox,comboclass=docdi_sendmail_ssl,
+
+@}}
+[FDITEM227_]
+m_strName=docdi-sendmail-ssl-none
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM227_
+
+@}}
+[FDITEM228_]
+m_strName=docdi-sendmail-ssl-tls
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM228_
+
+@}}
+[FDITEM229_]
+m_strName=docdi-sendmail-starttls
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=2
+{{@DataItem_m_strDescriptionFDITEM229_
+
+@}}
+[FDITEM230_]
+m_strName=docdi-sendmail-receipt
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM230_
+
+
+
+@}}
+[FDITEM231_]
+m_strName=docdi-codice-tblna
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM231_
+
+
+$GEN type=code,entity=tblna
+@}}
+[FDITEM232_]
+m_strName=docdi-codice-iva-estero
+m_strRawPic=x(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM232_
+
+@}}
+[FDITEM233_]
+m_strName=docdi-cognome-dich
+m_strRawPic=x(24)
+m_strPic=X(24)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM233_
+
+@}}
+[FDITEM234_]
+m_strName=docdi-nome-dich
+m_strRawPic=x(20)
+m_strPic=X(20)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM234_
+
+@}}
+[FDITEM235_]
+m_strName=docdi-sesso-dich
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM235_
+$GEN type=radiobutton,value_1="M",image_1=1,value_2="F",image_2=2,
+
+@}}
+[FDITEM236_]
+m_strName=docdi-sesso-dich-m
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="M"
+{{@DataItem_m_strDescriptionFDITEM236_
+
+@}}
+[FDITEM237_]
+m_strName=docdi-sesso-dich-f
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="F"
+{{@DataItem_m_strDescriptionFDITEM237_
+
+@}}
+[FDITEM238_]
+m_strName=docdi-sesso-dich-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="M" "F"
+{{@DataItem_m_strDescriptionFDITEM238_
+
+@}}
+[FDITEM239_]
+m_strName=docdi-data-nascita-dich
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=docdi-data-nascita
+m_bDataType_Xfd=1
+m_nDataType_Xfd=2
+m_strDateFormat_Xfd=yyyymmdd
+{{@DataItem_m_strDescriptionFDITEM239_
+$GEN type=date,
+
+@}}
+[FDITEM240_]
+m_strName=docdi-comune-nascita-dich
+m_strRawPic=x(40)
+m_strPic=X(40)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=docdi-comune-nasci
+{{@DataItem_m_strDescriptionFDITEM240_
+
+@}}
+[FDITEM241_]
+m_strName=docdi-prov-nascita-dich
+m_strRawPic=x(02)
+m_strPic=X(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM241_
+
+@}}
+[FDITEM242_]
+m_strName=docdi-via-residenza-dich
+m_strRawPic=x(35)
+m_strPic=X(35)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM242_
+
+@}}
+[FDITEM243_]
+m_strName=docdi-comune-residenza-dich
+m_strRawPic=x(40)
+m_strPic=X(40)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM243_
+
+@}}
+[FDITEM244_]
+m_strName=docdi-prov-residenza-dich
+m_strRawPic=x(02)
+m_strPic=X(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM244_
+
+@}}
+[FDITEM245_]
+m_strName=docdi-cap-residenza-dich
+m_strRawPic=x(05)
+m_strPic=X(05)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM245_
+
+@}}
+[FDITEM246_]
+m_strName=docdi-telefono-dich
+m_strRawPic=x(12)
+m_strPic=X(12)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM246_
+
+@}}
+[FDITEM247_]
+m_strName=docdi-cardov03-riep-taglie
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM247_
+
+@}}
+[FDITEM248_]
+m_strName=docdi-cardov03-riep-taglie-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM248_
+
+@}}
+[FDITEM249_]
+m_strName=docdi-cardov03-riep-taglie-ko
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM249_
+
+@}}
+[FDITEM250_]
+m_strName=docdi-richiedi-cambio
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM250_
+
+@}}
+[FDITEM251_]
+m_strName=docdi-1222010-startdate
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_bDataType_Xfd=1
+m_nDataType_Xfd=2
+m_strDateFormat_Xfd=yyyymmdd
+{{@DataItem_m_strDescriptionFDITEM251_
+
+$GEN type=date,
+@}}
+[FDITEM252_]
+m_strName=docdi-1222010-allPags
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM252_
+
+** IL CAMPO DOCDI-1222010-ALLPAGS NON VIENE PIU' UTILIZZATO IN GESTIONE DITTA                       | rososv 13/06/2011 10:36:20
+** IN SEGUITO A NUOVE SPECIFICHE DELLA NORMATIVA CHE LO RENDONO OBSOLETO                            | rososv 13/06/2011 10:37:30
+
+@}}
+[FDITEM253_]
+m_strName=docdi-mig-tk3881
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM253_
+
+**   10  docdi-filler-01                  pic  x(493).                | maxime 15/04/2011 08:44:12  | rososv 11/05/2011 17:21:12
+
+
+@}}
+[FDITEM254_]
+m_strName=docdi-mig-tk3881-eseguita
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM254_
+
+@}}
+[FDITEM255_]
+m_strName=docdi-zucchetti-mode
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM255_
+
+@}}
+[FDITEM256_]
+m_strName=docdi-contratti-pubblici
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM256_
+
+@}}
+[FDITEM257_]
+m_strName=docdi-contratti-pubblici-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM257_
+
+@}}
+[FDITEM258_]
+m_strName=docdi-contratti-pubblici-ko
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM258_
+
+@}}
+[FDITEM259_]
+m_strName=docdi-force-multipart-mixed
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM259_
+
+
+@}}
+[FDITEM260_]
+m_strName=docdi-ps-days-ven
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM260_
+
+i "fa" per visualizzazione storici nei property sheet
+@}}
+[FDITEM261_]
+m_strName=docdi-ps-days-acq
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM261_
+
+@}}
+[FDITEM262_]
+m_strName=docdi-carica-iva
+m_strRawPic=x(02)
+m_strPic=X(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM262_
+
+@}}
+[FDITEM263_]
+m_strName=docdi-codice-tblna-dich
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=docdi-codice-tblna
+{{@DataItem_m_strDescriptionFDITEM263_
+$GEN type=code,entity=tblna
+@}}
+[FDITEM264_]
+m_strName=docdi-nascondi-msg-ctr-esis
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM264_
+
+@}}
+[FDITEM265_]
+m_strName=docdi-nascondi-msg-ctr-esis-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM265_
+
+@}}
+[FDITEM266_]
+m_strName=docdi-nascondi-msg-ctr-esis-no
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM266_
+
+@}}
+[FDITEM267_]
+m_strName=docdi-chiudi-preventivo
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM267_
+
+@}}
+[FDITEM268_]
+m_strName=docdi-chiudi-preventivo-on
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM268_
+
+@}}
+[FDITEM269_]
+m_strName=docdi-chiudi-preventivo-off
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM269_
+
+@}}
+[FDITEM270_]
+m_strName=docdi-lancio-u03dvtabc
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM270_
+
+@}}
+[FDITEM271_]
+m_strName=docdi-lancio-u03dvtabc-on
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM271_
+
+@}}
+[FDITEM272_]
+m_strName=docdi-lancio-u03dvtabc-off
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM272_
+
+@}}
+[FDITEM273_]
+m_strName=docdi-asspro14-incassi-ant
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM273_
+ito                                        | rososv 11/01/2013
+eguire                                     | rososv 11/01/2013
+
+
+@}}
+[FDITEM274_]
+m_strName=docdi-asspro14-incassi-ant-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM274_
+
+@}}
+[FDITEM275_]
+m_strName=docdi-asspro14-incassi-ant-ko
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM275_
+
+@}}
+[FDITEM276_]
+m_strName=docdi-ps-days-arc-doc
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM276_
+i "fa" per filtri su archivio documenti nei property sheet cli/for
+
+@}}
+[FDITEM277_]
+m_strName=docdi-note-variazione
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM277_
+
+@}}
+[FDITEM278_]
+m_strName=docdi-identificativo-creditore
+m_strRawPic=x(23)
+m_strPic=X(23)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM278_
+
+@}}
+[FDITEM279_]
+m_strName=docdi-data-inizio-proc
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=docdi-data-inizio-
+m_bDataType_Xfd=1
+m_nDataType_Xfd=2
+m_strDateFormat_Xfd=yyyymmdd
+{{@DataItem_m_strDescriptionFDITEM279_
+
+$GEN type=date,
+@}}
+[FDITEM280_]
+m_strName=docdi-data-fine-proc
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_bDataType_Xfd=1
+m_nDataType_Xfd=2
+m_strDateFormat_Xfd=yyyymmdd
+{{@DataItem_m_strDescriptionFDITEM280_
+$GEN type=date,
+@}}
+[FDITEM281_]
+m_strName=docdi-denom-sogg-tenuto-com
+m_strRawPic=x(50)
+m_strPic=X(50)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM281_
+
+@}}
+[FDITEM282_]
+m_strName=docdi-data-ultima-ivs
+m_strRawPic=9(06)
+m_strPic=9(06)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_bDataType_Xfd=1
+m_nDataType_Xfd=2
+m_strDateFormat_Xfd=yyyymm
+{{@DataItem_m_strDescriptionFDITEM282_
+$GEN type=dateyyyymm,
+@}}
+[FDITEM283_]
+m_strName=docdi-ddc-telem-dicpol
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM283_
+
+** Firmatario/dichiarante frame "dichiarante diverso da contribuente" (pagina "telematico")
+** è da considerarsi il dichiarante nella comunicazione polivalente (spesometro, black list, san marino)
+
+@}}
+[FDITEM284_]
+m_strName=docdi-ddc-telem-dicpol-nopol
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM284_
+
+@}}
+[FDITEM285_]
+m_strName=docdi-ddc-telem-dicpol-pf
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=2
+{{@DataItem_m_strDescriptionFDITEM285_
+
+@}}
+[FDITEM286_]
+m_strName=docdi-ddc-telem-dicpol-pg
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=3
+{{@DataItem_m_strDescriptionFDITEM286_
+
+@}}
+[FDITEM287_]
+m_strName=docdi-asspro14-incassi-parz
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=docdi-asspro14-inc
+{{@DataItem_m_strDescriptionFDITEM287_
+** indica se si vuole l'assegnazione delle provvigioni a fronte di incassi parziali                 | SUADAL 14/03/2014
+
+@}}
+[FDITEM288_]
+m_strName=docdi-asspro14-incassi-parz-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM288_
+
+@}}
+[FDITEM289_]
+m_strName=docdi-asspro14-incassi-parz-ko
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM289_
+
+@}}
+[FDITEM290_]
+m_strName=docdi-FVCodazi
+m_strRawPic=x(10)
+m_strPic=X(10)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM290_
+
+@}}
+[FDITEM291_]
+m_strName=docdi-filler-01
+m_strRawPic=x(360)
+m_strPic=X(360)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM291_
+
+mento a codice azienda su app mobileFV   | scamar 09/06/2014
+
+    10  docdi-filler-01                  pic  x(481).         | maxime 02/02/2012                   | quasil 06/06/2012
+**    10  docdi-filler-01                  pic  x(476).       | quasil 06/06/2012                   | cermic 02/08/2012
+**    10  docdi-filler-01                  pic  x(475).                                             | cermic 02/08/2012 | rososv 22/08/2012
+**    10  docdi-filler-01                  pic  x(474).                                             | rososv 22/08/2012 | rososv 11/01/2013
+    10  docdi-filler-01                  pic  x(473).                      | rososv 11/01/2013      | SUADAL 11/02/2013
+    10  docdi-filler-01                  pic  x(472).                      | SUADAL 11/02/2013      | quasil 11/03/2013
+**    10  docdi-filler-01                  pic  x(468).                    | quasil 11/03/2013      | MACGIU 24/04/2013
+    10  docdi-filler-01                  pic  x(467).                      | MACGIU 24/04/2013      | SUADAL 20/06/2013
+    10  docdi-filler-01                  pic  x(444).                                               | SUADAL 20/06/2013 | rososv 17/10/2013
+    10  docdi-filler-01                  pic  x(378).                       | rososv 17/10/2013     | SUADAL 12/11/2013
+    10  docdi-filler-01                  pic  x(372).                       | SUADAL 12/11/2013     | rososv 31/01/2014
+    10  docdi-filler-01                  pic  x(371).                       | rososv 31/01/2014     | SUADAL 14/03/2014
+**    10  docdi-filler-01                  pic  x(370).                     | SUADAL 14/03/2014     | scamar 09/06/2014
+@}}
+[FDITEM292_]
+m_strName=DOCDI-FILLER-RIS
+m_strRawPic=X(40)
+m_strPic=X(40)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM292_
+
+   10  docdi-filler-01                  pic  x(504).                                        | scamar 09/07/2010 15:18:36   |or 30/08/2010
+**    10  docdi-filler-01                   pic  x(726).      | mxm 25/02/2010 14.04                | scamar 12/07/2010 15:19:07
+
+
+@}}
+[CStoAcucobolSL_]
+m_nType=1
+m_bOptional=1
+m_strAssignToName="DOC"
+m_nDevice=4
+m_nFormat=3
+m_nAccessMode=3
+m_strFileStatus=STATUS-DOCDI
+m_nCompression=70
+{{@SL_m_strDescription
+
+@}}
+[SLPKEY_]
+m_strName=DOCDI-CODICE
+m_bUnique=1
+{{@Key_m_strDescription
+
+@}}
+[SLKEYATOM0_]
+m_strName=DOCDI-CODICE

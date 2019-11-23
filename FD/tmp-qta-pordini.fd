@@ -1,0 +1,14 @@
+       FD  tmp-qta-pordini.
+       01 qp-rec.
+           05 qp-chiave.
+               10 qp-articolo      PIC  9(6).
+               10 qp-anno          PIC  9(4).
+               10 qp-mese          PIC  99.
+               10 qp-prog          PIC  99.
+           05 qp-dati.
+               10 qp-qta           PIC  s9(9).
+               10 qp-qta-ass       PIC  9(9).
+               10 qp-note          PIC  x(5000).
+               10 qp-data-import   PIC  9(8).
+               10 tpq-ora-import   PIC  9(8).
+               10 FILLER           PIC  x(2000).

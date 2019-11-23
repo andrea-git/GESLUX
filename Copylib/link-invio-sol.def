@@ -1,0 +1,10 @@
+      *
+       01 isol-linkage.
+           03 isol-chiave.
+               05 isol-anno        PIC  9(4).
+               05 isol-numero      PIC  9(8).
+           03 isol-user        PIC  x(10).
+           03 isol-status      PIC  s9.
+           03 isol-oper        PIC  9.
+               88 isol-invio VALUE IS 1. 
+               88 isol-stato VALUE IS 2. 

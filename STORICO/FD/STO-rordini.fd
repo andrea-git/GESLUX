@@ -1,0 +1,80 @@
+      *(( XFD FILE = STO-rordini ))
+       FD  STO-rordini.
+       01 STO-ror-rec.
+           05 STO-ror-chiave.
+               10 STO-ror-anno     PIC  9(4).
+               10 STO-ror-num-ordine           PIC  9(8).
+               10 STO-ror-num-riga PIC  9(5).
+           05 STO-ror-dati.
+               10 STO-ror-cod-articolo         PIC  9(6).
+               10 STO-ror-des-libera           PIC  x(150).
+               10 STO-ror-qta      PIC  9(8).
+               10 STO-ror-prz-unitario         PIC  9(9)v9(2).
+               10 STO-ror-imp-consumo          PIC  9(4)v9(2).
+               10 STO-ror-imp-cou-cobat        PIC  9(4)v9(2).
+               10 STO-ror-imponib-merce        PIC  9(9)v9(2).
+               10 STO-ror-perce-sconto         PIC  9(2)v9(2).
+               10 STO-ror-omaggio  PIC  X(1).
+                   88 STO-ror-si-omaggio VALUE IS "S". 
+                   88 STO-ror-no-omaggio VALUE IS "N". 
+               10 STO-ror-peso-utf PIC  9(5)v9(3).
+               10 STO-ror-peso-non-utf         PIC  9(5)v9(3).
+               10 STO-ror-num-colli            PIC  9(5).
+               10 STO-ror-cod-imballo          PIC  X(3).
+               10 STO-ror-des-imballo          PIC  X(50).
+               10 STO-ror-qta-imballi          PIC  9(4).
+               10 STO-ror-cod-art-cli          PIC  X(15).
+               10 STO-ror-cod-iva  PIC  x(3).
+               10 STO-ror-prz-commle           PIC  9(9)v9(2).
+               10 STO-ror-prg-chiave.
+                   15 STO-ror-prg-cod-articolo     PIC  9(6).
+                   15 STO-ror-prg-cod-magazzino    PIC  X(3).
+                   15 STO-ror-prg-tipo-imballo     PIC  X(3).
+                   15 STO-ror-prg-peso PIC  9(5)v9(3).
+               10 STO-ror-stato    PIC  X(1).
+                   88 STO-ror-attivo VALUE IS "A". 
+                   88 STO-ror-disattivo VALUE IS "D". 
+                   88 STO-ror-bloccato VALUE IS "B". 
+               10 STO-ror-dati-comuni.
+                   15 STO-ror-data-creazione       PIC  9(8).
+                   15 STO-ror-ora-creazione        PIC  9(8).
+                   15 STO-ror-utente-creazione     PIC  X(10).
+                   15 STO-ror-data-ultima-modifica PIC  9(8).
+                   15 STO-ror-ora-ultima-modifica  PIC  9(8).
+                   15 STO-ror-utente-ultima-modifica           PIC  
+           X(10).
+               10 STO-ror-vuoti.
+                   15 STO-ror-qta-omaggi           PIC  9(8).
+                   15 STO-ror-blister  PIC  9.
+                       88 STO-ror-si-blister VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+                   15 STO-ror-promo    PIC  9(15).
+                   15 STO-ror-flag-cancellato      PIC  9.
+                       88 STO-ror-cancellato VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+                   15 STO-ror-add-piombo           PIC  9(4)v9(2).
+                   15 STO-ror-riservato-split      PIC  9(8).
+      *NON USATO
+                   15 FILLER           PIC  9.
+                   15 STO-ror-prz-promo            PIC  9.
+                       88 STO-ror-si-prz-promo VALUE IS 1. 
+                       88 STO-ror-no-prz-promo VALUE IS 0. 
+                   15 STO-ror-chiave-ordine.
+                       20 STO-ror-chiave-ordine-testa.
+                           25 STO-ror-anno-master          PIC  9(4).
+                           25 STO-ror-numero-master        PIC  9(8).
+      *(( XFD NAME = STO-ror-progr-mste ))
+                       20 STO-ror-progr-master         PIC  9(5).
+                   15 STO-ror-bli-codice           PIC  9(6).
+                   15 STO-ror-prz-manuale          PIC  9.
+                       88 STO-ror-prz-manuale-si VALUE IS 1. 
+                       88 STO-ror-prz-manuale-no VALUE IS 0. 
+      *(( XFD NAME = STO-ror-prz-manual ))
+                   15 STO-ror-evasa-SHI            PIC  9.
+                       88 STO-ror-evasa-SHI-si VALUE IS 1. 
+                       88 STO-ror-evasa-SHI-no VALUE IS 0. 
+      *(( XFD NAME = STO-ror-prz-manual ))
+                   15 STO-ror-evasa-GET            PIC  9.
+                       88 STO-ror-evasa-GET-si VALUE IS 1. 
+                       88 STO-ror-evasa-GET-no VALUE IS 0. 
+                   15 STO-ror-alfa-vuoto           PIC  X(200).

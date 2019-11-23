@@ -1,0 +1,16 @@
+      *
+       01 riordino-linkage.
+           05 riord-data       PIC  9(8).
+           05 riord-cliente    PIC  9(5).
+           05 riord-ragsoc     pic x(40).
+           05 riord-destino    PIC  9(5).
+           05 riord-localita   pic x(35).
+           05 riord-handle
+                      USAGE IS HANDLE OF WINDOW.
+           05 riord-tipo       PIC  x.
+              88 riord-inevasi VALUE IS "I". 
+              88 riord-bolle VALUE IS "B". 
+              88 riord-fatture VALUE IS "F". 
+              88 riord-tutti VALUE IS "T". 
+           05 riord-articoli  occurs 99 indexed by riord-idx.
+              10 riord-el-articolo pic 9(6).

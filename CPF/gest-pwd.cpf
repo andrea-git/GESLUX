@@ -1,0 +1,4514 @@
+; CaseMaker Totem Program Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[MONITOR_FILE]
+
+
+[PROGRAM_CONTENT]
+QUIT_CONFIRM=0
+ANSI_FORMAT=1
+MAIN_SCREEN_NAME=Form1
+BEFORE_PROGRAM=Gest-Pwd-Ev-Before-Program
+AFTER_PROGRAM=I-O-BLOCCO
+PROGRAM_UNIQUE_CODE=TOTEM-7E3AA205623-634-2693528687
+
+{{@DESCRIPTION:
+
+@}}
+
+[WORKING_STORAGE]
+m_nType=1
+m_strName=Working Storage
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionWK
+
+@}}
+[FDITEM0_WK]
+m_strName=Form1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_WK
+
+@}}
+[FDITEM1_WK]
+m_strName=Small-Font
+m_nUsage=37
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1_WK
+
+@}}
+[FDITEM2_WK]
+m_strName=usr-tel-linkage
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-USR-TEL.DEF
+m_strCopyFile=link-usr-tel.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-USR-TEL.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM2_WK
+
+
+@}}
+[FDITEM3_WK]
+m_strName=link-user
+m_strRawPic=x(20)
+m_strPic=X(20)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-USR-TEL.DEF
+m_strCopyFile=link-usr-tel.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-USR-TEL.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM3_WK
+
+@}}
+[FDITEM4_WK]
+m_strName=link-mod
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-USR-TEL.DEF
+m_strCopyFile=link-usr-tel.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-USR-TEL.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM4_WK
+
+@}}
+[FDITEM5_WK]
+m_strName=STATUS-USER
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM5_WK
+
+@}}
+[FDITEM6_WK]
+m_strName=VALID-STATUS-USER
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM6_WK
+
+@}}
+[FDITEM7_WK]
+m_strName=Form1-Tb-1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM7_WK
+
+@}}
+[FDITEM8_WK]
+m_strName=UTENTI15X16-bmp
+m_nUsage=45
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM8_WK
+
+@}}
+[FDITEM9_WK]
+m_strName=PWD15X16-bmp
+m_nUsage=45
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM9_WK
+
+@}}
+[FDITEM10_WK]
+m_strName=Form1-St-1-Handle
+m_nUsage=51
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM10_WK
+
+@}}
+[FDITEM11_WK]
+m_strName=BitmapNumScheda
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM11_WK
+
+@}}
+[FDITEM12_WK]
+m_strName=Times-New-Roman9B
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM12_WK
+
+@}}
+[FDITEM13_WK]
+m_strName=toolbar-bmp
+m_nUsage=45
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM13_WK
+
+@}}
+[FDITEM14_WK]
+m_strName=como-pwd
+m_strRawPic=x(20)
+m_strPic=x(20)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM14_WK
+
+@}}
+[FDITEM15_WK]
+m_strName=toolbar-pwd-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM15_WK
+
+@}}
+[FDITEM16_WK]
+m_strName=como-anno
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM16_WK
+
+@}}
+[FDITEM17_WK]
+m_strName=UtenteInUso
+m_strRawPic=x(20)
+m_strPic=x(20)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM17_WK
+
+@}}
+[FDITEM18_WK]
+m_strName=UtenteFrom
+m_strRawPic=x(20)
+m_strPic=x(20)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM18_WK
+
+@}}
+[FDITEM19_WK]
+m_strName=BitmapNumScad
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM19_WK
+
+@}}
+[FDITEM20_WK]
+m_strName=como-record
+m_strRawPic=x(1000)
+m_strPic=x(1000)
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM20_WK
+
+@}}
+[FDITEM21_WK]
+m_strName=messaggio
+m_strRawPic=x(80)
+m_strPic=x(80)
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM21_WK
+
+@}}
+[FDITEM22_WK]
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM22_WK
+
+@}}
+[FDITEM23_WK]
+m_strName=bisestile
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM23_WK
+
+@}}
+[FDITEM24_WK]
+m_strName=data-validita
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM24_WK
+
+@}}
+[FDITEM25_WK]
+m_strName=anno
+m_strRawPic=9999
+m_strPic=9999
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM25_WK
+
+@}}
+[FDITEM26_WK]
+m_strName=mese
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM26_WK
+
+@}}
+[FDITEM27_WK]
+m_strName=giorno
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM27_WK
+
+@}}
+[FDITEM28_WK]
+m_strName=counter
+m_strRawPic=9(3)
+m_strPic=9(3)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM28_WK
+
+@}}
+[FDITEM29_WK]
+m_strName=E-SALVA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM29_WK
+
+@}}
+[FDITEM30_WK]
+m_strName=Verdana10-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM30_WK
+
+@}}
+[FDITEM31_WK]
+m_strName=Verdana12-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM31_WK
+
+@}}
+[FDITEM32_WK]
+m_strName=bottone-gestutenti-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM32_WK
+
+@}}
+[FDITEM33_WK]
+m_strName=titolo
+m_strDefaultValue="GESLUX - Gestione utenti"
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM33_WK
+
+@}}
+[FDITEM34_WK]
+m_strName=v-boss
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM34_WK
+
+@}}
+[FDITEM35_WK]
+m_strName=cambio-pwd-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM35_WK
+
+@}}
+[FDITEM36_WK]
+m_strName=win-lines
+m_strRawPic=S9(4)V9(2)
+m_strPic=S9(4)V9(2)
+m_strDefaultValue=35,00
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM36_WK
+
+@}}
+[FDITEM37_WK]
+m_strName=OLD-PASS
+m_strRawPic=X(20)
+m_strPic=X(20)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM37_WK
+
+@}}
+[FDITEM38_WK]
+m_strName=NEW-PASS
+m_strRawPic=X(20)
+m_strPic=X(20)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM38_WK
+
+@}}
+[FDITEM39_WK]
+m_strName=PASS
+m_strRawPic=X(20)
+m_strPic=X(20)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM39_WK
+
+@}}
+[FDITEM40_WK]
+m_strName=Default-Font
+m_nUsage=38
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM40_WK
+
+@}}
+[FDITEM41_WK]
+m_strName=AUTO-ID
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_strDefaultValue=0,00
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM41_WK
+
+@}}
+[FDITEM42_WK]
+m_strName=BitmapNumModuli
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=3
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM42_WK
+
+@}}
+[FDITEM43_WK]
+m_strName=BitmapNumImporta
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=3
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM43_WK
+
+@}}
+[FDITEM44_WK]
+m_strName=BitmapNumChange
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM44_WK
+
+@}}
+[FDITEM45_WK]
+m_strName=e-altri
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM45_WK
+
+@}}
+[FDITEM46_WK]
+m_strName=ABIL-MODULI-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM46_WK
+
+@}}
+[FDITEM47_WK]
+m_strName=descr
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM47_WK
+
+@}}
+[FDITEM48_WK]
+m_strName=e-id
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM48_WK
+
+@}}
+[FDITEM49_WK]
+m_strName=e-pwd
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM49_WK
+
+@}}
+[FDITEM50_WK]
+m_strName=validita
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM50_WK
+
+@}}
+[FDITEM51_WK]
+m_strName=data-pass
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM51_WK
+
+@}}
+[FDITEM52_WK]
+m_strName=modifica-dati-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM52_WK
+
+@}}
+[FDITEM53_WK]
+m_strName=v-cancella
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM53_WK
+
+@}}
+[FDITEM54_WK]
+m_strName=v-scorr
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM54_WK
+
+@}}
+[FDITEM55_WK]
+m_strName=e-scorr
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM55_WK
+
+@}}
+[FDITEM56_WK]
+m_strName=e-cancella
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM56_WK
+
+@}}
+[FDITEM57_WK]
+m_strName=STATUS-user-pgm
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM57_WK
+
+@}}
+[FDITEM58_WK]
+m_strName=Valid-STATUS-user-pgm
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM58_WK
+
+@}}
+[FDITEM59_WK]
+m_strName=STATUS-USER1
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM59_WK
+
+@}}
+[FDITEM60_WK]
+m_strName=VALID-STATUS-USER1
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM60_WK
+
+@}}
+[FDITEM61_WK]
+m_strName=STATUS-user-pgm-USER-PGM1
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM61_WK
+
+@}}
+[FDITEM62_WK]
+m_strName=VALID-STATUS-user-pgm-USER-PGM1
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM62_WK
+
+@}}
+[FDITEM63_WK]
+m_strName=importa-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM63_WK
+
+@}}
+[FDITEM64_WK]
+m_strName=v-boss-salvato
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM64_WK
+
+@}}
+[FDITEM65_WK]
+m_strName=scadute-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM65_WK
+
+@}}
+[FDITEM66_WK]
+m_strName=scheda-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM66_WK
+
+@}}
+[FDITEM67_WK]
+m_strName=tel-dir
+m_strRawPic=X(20)
+m_strPic=X(20)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM67_WK
+
+@}}
+[FDITEM68_WK]
+m_strName=cbo-SO-buf
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM68_WK
+
+@}}
+[FDITEM69_WK]
+m_strName=cbo-office-buf
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM69_WK
+
+@}}
+[FDITEM70_WK]
+m_strName=ef-path-bullzip-buf
+m_strRawPic=X(128)
+m_strPic=X(128)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM70_WK
+
+@}}
+[FDITEM71_WK]
+m_strName=ef-path-acuthin-buf
+m_strRawPic=X(200)
+m_strPic=X(200)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM71_WK
+
+@}}
+
+
+[LINKAGE_SECTION]
+m_nType=1
+m_strName=Linkage Section
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionLK
+
+@}}
+[FDITEM0_LK]
+m_strName=LK-BLOCKPGM
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM0_LK
+
+@}}
+[FDITEM1_LK]
+m_strName=LK-BL-PROG-ID
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM1_LK
+
+@}}
+[FDITEM2_LK]
+m_strName=LK-BL-DATA
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM2_LK
+
+@}}
+[FDITEM3_LK]
+m_strName=LK-BL-ORA
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM3_LK
+
+@}}
+[FDITEM4_LK]
+m_strName=LK-BL-TIPO-OP
+m_strRawPic=9(1)
+m_strPic=9(1)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM4_LK
+
+@}}
+[FDITEM5_LK]
+m_strName=LK-BL-LETTURA
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM5_LK
+
+@}}
+[FDITEM6_LK]
+m_strName=LK-BL-SCRITTURA
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=2
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM6_LK
+
+@}}
+[FDITEM7_LK]
+m_strName=LK-BL-CANCELLAZIONE
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=3
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM7_LK
+
+@}}
+[FDITEM8_LK]
+m_strName=LK-BL-USO
+m_strRawPic=9(1)
+m_strPic=9(1)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM8_LK
+
+@}}
+[FDITEM9_LK]
+m_strName=LK-BL-IN-USO
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM9_LK
+
+@}}
+[FDITEM10_LK]
+m_strName=LK-HND-WIN
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM10_LK
+
+@}}
+[FDITEM11_LK]
+m_strName=USER-CODI
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=common-linkage.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM11_LK
+
+@}}
+[FDITEM12_LK]
+m_strName=LIVELLO-ABIL
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=common-linkage.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM12_LK
+
+@}}
+
+
+{{@SCREEN:
+*   Screen Painter Data
+*   Schema 6.0
+*
+BEGIN-SPDATA-6.1A
+
+GRAPHICAL-SCREEN
+
+Begin Screen Form1
+   PREFIX            = Form1
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = Form1
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = TRUE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = TRUE
+   Cell Height       = 18
+   Cell Width        = 10
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = DataSet1
+   Erase Screen      = FALSE
+   Font              = Verdana/12/C0/@Occidentale
+   Font Variable     = Verdana12-Occidentale
+   Handle Variable   = Form1-Handle
+   Height in Cells   = FALSE
+   Help ID           = 0
+   Label Offset      = 23
+   Lines             = 35,00
+   Lines Variable    = win-lines
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = TRUE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 46,80
+   System Menu       = TRUE
+   Title Bar         = TRUE
+   Title Variable    = titolo
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = FALSE
+   Width in Cells    = FALSE
+   Window Type       = Independent
+   Wrap              = FALSE
+   Event Procedure   = Form1-Event-Proc
+   Begin Entry-Field EF-id
+      SCREEN-COL        = 17,00
+      SCREEN-LINE       = 1,50
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-id
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 17,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = e-id
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = User ID
+      ID                = 667
+      ID Variable       = AUTO-ID
+      Justification     = Unaligned
+      Line              = 1,50
+      Lines             = 1,33
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 10
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 21,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 1
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Value Picture     = X(12)
+      Value Variable    = USER-ID
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = EF-id-BeforeProcedure
+      After Procedure   = EF-id-AfterProcedure
+   End
+   Begin Entry-Field EF-OLD-PASS
+      SCREEN-COL        = 17,00
+      SCREEN-LINE       = 3,28
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-OLD-PASS
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 17,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = e-pwd
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare la password
+      ID                = 4
+      ID Variable       = AUTO-ID
+      Justification     = Unaligned
+      Line              = 3,28
+      Lines             = 1,33
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 20
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = TRUE
+      Size              = 21,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 2
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Value Picture     = X(20)
+      Value Variable    = OLD-PASS
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = EF-OLD-PASS-BeforeProcedure
+      After Procedure   = EF-OLD-PASS-AfterProcedure
+   End
+   Begin Push-Button pb-cambio
+      SCREEN-COL        = 39,00
+      SCREEN-LINE       = 3,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-cambio
+      Bitmap            = "..\RESOURCE\MODIFICA_DATI.BMP"
+      Bitmap Frame      = TRUE
+      Bitmap Handle     = MODIFICA_DATI-BMP
+      Bitmap Number     = 3
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 39,00
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = e-pwd
+      Exception Value   = 1001
+      Flat              = TRUE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 11
+      Line              = 3,00
+      Lines             = 2,06
+      Lines in Pixels   = 30
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 8,10
+      Size in Pixels    = 73
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 3
+      Termination Value = 0
+      Title             = "&Modifica Dati"
+      Visible           = NONE
+      Width in Cells    = FALSE
+      Additional Properties = "BITMAP-NUMBER BitmapNumChange"
+      Before Procedure  = pb-cambio-BeforeProcedure
+      After Procedure   = pb-cambio-AfterProcedure
+      Link To           = pb-cambio-LinkTo
+   End
+   Begin Push-Button pb-scadute
+      SCREEN-COL        = 39,00
+      SCREEN-LINE       = 1,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-scadute
+      Bitmap            = "..\RESOURCE\SCADUTE.BMP"
+      Bitmap Frame      = TRUE
+      Bitmap Handle     = SCADUTE-BMP
+      Bitmap Number     = 3
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 39,00
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = e-pwd
+      Exception Value   = 1005
+      Flat              = TRUE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 666
+      Line              = 1,00
+      Lines             = 2,06
+      Lines in Pixels   = 30
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 8,10
+      Size in Pixels    = 73
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 4
+      Termination Value = 0
+      Title             = "Stampa un elenco delle password scadute"
+      Visible           = NONE
+      Width in Cells    = FALSE
+      Additional Properties = "BITMAP-NUMBER BitmapNumScad"
+      Before Procedure  = pb-scadute-BeforeProcedure
+      After Procedure   = pb-scadute-AfterProcedure
+      Link To           = pb-scadute-LinkTo
+   End
+   Begin Entry-Field ef-nome
+      SCREEN-COL        = 17,00
+      SCREEN-LINE       = 6,33
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-nome
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 17,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = e-altri
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare la descrizione
+      ID                = 668
+      ID Variable       = AUTO-ID
+      Justification     = Unaligned
+      Line              = 6,33
+      Lines             = 1,33
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 20
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 30,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 5
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Value Picture     = X(30)
+      Value Variable    = descr
+      Visible           = TRUE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-nome-BeforeProcedure
+      After Procedure   = ef-nome-AfterProcedure
+   End
+   Begin Entry-Field ef-tel-dir
+      SCREEN-COL        = 17,00
+      SCREEN-LINE       = 8,33
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-tel-dir
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 17,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = e-altri
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare la descrizione
+      ID                = 0
+      ID Variable       = AUTO-ID
+      Justification     = Unaligned
+      Line              = 8,33
+      Lines             = 1,33
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 20
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 30,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 6
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Value Picture     = X(20)
+      Value Variable    = tel-dir
+      Visible           = TRUE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-nome-BeforeProcedure
+      After Procedure   = ef-nome-AfterProcedure
+   End
+   Begin Entry-Field EF-NEW-PASS
+      SCREEN-COL        = 17,00
+      SCREEN-LINE       = 10,33
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-NEW-PASS
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 17,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = e-altri
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare la nuova password
+      ID                = 7
+      ID Variable       = AUTO-ID
+      Justification     = Unaligned
+      Line              = 10,33
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 20
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = TRUE
+      Size              = 21,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 7
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Value Picture     = X(20)
+      Value Variable    = NEW-PASS
+      Visible           = TRUE
+      Width in Cells    = TRUE
+      Before Procedure  = EF-NEW-PASS-BeforeProcedure
+      After Procedure   = EF-NEW-PASS-AfterProcedure
+   End
+   Begin Entry-Field EF-PASS
+      SCREEN-COL        = 17,00
+      SCREEN-LINE       = 12,33
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-PASS
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 17,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = e-altri
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Confermare la password
+      ID                = 8
+      ID Variable       = AUTO-ID
+      Justification     = Unaligned
+      Line              = 12,33
+      Lines             = 1,33
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 20
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = TRUE
+      Size              = 21,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 8
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Value Picture     = X(20)
+      Value Variable    = PASS
+      Visible           = TRUE
+      Width in Cells    = TRUE
+      Before Procedure  = EF-PASS-BeforeProcedure
+      After Procedure   = EF-PASS-AfterProcedure
+   End
+   Begin Data.Check-Box chk-msg
+      SCREEN-COL        = 17,00
+      SCREEN-LINE       = 14,78
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = chk-msg
+      Bitmap Frame      = FALSE
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Check Off Value   = "0"
+      Check On Value    = "1"
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 17,00
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Enable Variable   = e-altri
+      Exception Value   = 0
+      Field Variable    = user-msg-promo
+      File              = USER
+      Flat              = TRUE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 27
+      Left Text         = FALSE
+      Line              = 14,78
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Tab            = FALSE
+      Notify            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 1,60
+      Size Unit         = Default
+      Tab Order         = 9
+      Termination Value = 0
+      Value             = 0:FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = Form1-DaCb-1-BeforeProcedure
+      After Procedure   = Form1-DaCb-1-AfterProcedure
+   End
+   Begin Data.Check-Box chk-banner-t
+      SCREEN-COL        = 17,00
+      SCREEN-LINE       = 16,50
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = chk-banner-t
+      Bitmap Frame      = FALSE
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Check Off Value   = "0"
+      Check On Value    = "1"
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 17,00
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Enable Variable   = e-altri
+      Exception Value   = 0
+      Field Variable    = user-msg-banner-t
+      File              = USER
+      Flat              = TRUE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 28
+      Left Text         = FALSE
+      Line              = 16,50
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Tab            = FALSE
+      Notify            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 1,60
+      Size Unit         = Default
+      Tab Order         = 10
+      Termination Value = 0
+      Value             = 0:FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = Form1-DaCb-1-BeforeProcedure
+      After Procedure   = Form1-DaCb-1-AfterProcedure
+   End
+   Begin Data.Check-Box chk-banner-g
+      SCREEN-COL        = 17,00
+      SCREEN-LINE       = 18,22
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = chk-banner-g
+      Bitmap Frame      = FALSE
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Check Off Value   = "0"
+      Check On Value    = "1"
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 17,00
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Enable Variable   = e-altri
+      Exception Value   = 0
+      Field Variable    = user-msg-banner-g
+      File              = USER
+      Flat              = TRUE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 29
+      Left Text         = FALSE
+      Line              = 18,22
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Tab            = FALSE
+      Notify            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 1,60
+      Size Unit         = Default
+      Tab Order         = 11
+      Termination Value = 0
+      Value             = 0:FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = Form1-DaCb-1-BeforeProcedure
+      After Procedure   = Form1-DaCb-1-AfterProcedure
+   End
+   Begin Combo-Box cbo-office
+      SCREEN-COL        = 17,00
+      SCREEN-LINE       = 20,17
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = cbo-office
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 17,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 0
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 31
+      ID Variable       = AUTO-ID
+      Line              = 20,17
+      Lines             = 5,00
+      Lines Unit        = Default
+      Mass Update       = 0:Fast-Update
+      Max Text          = 0
+      No Tab            = FALSE
+      Notify DblClick   = FALSE
+      Notify SelChange  = FALSE
+      Occurs            = 0
+      Size              = 12,80
+      Size Unit         = Default
+      Style             = Drop List
+      Tab Order         = 12
+      Termination Value = 0
+      Unsorted          = TRUE
+      Value Picture     = X(30)
+      Value Variable    = cbo-office-buf
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = Form1-Cm-1-BeforeProcedure
+      After Procedure   = Form1-Cm-1-AfterProcedure
+   End
+   Begin Combo-Box cbo-SO
+      SCREEN-COL        = 37,00
+      SCREEN-LINE       = 20,17
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = cbo-SO
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 37,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 0
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 32
+      ID Variable       = AUTO-ID
+      Line              = 20,17
+      Lines             = 5,00
+      Lines Unit        = Default
+      Mass Update       = 0:Fast-Update
+      Max Text          = 0
+      No Tab            = FALSE
+      Notify DblClick   = FALSE
+      Notify SelChange  = FALSE
+      Occurs            = 0
+      Size              = 10,00
+      Size Unit         = Default
+      Style             = Drop List
+      Tab Order         = 13
+      Termination Value = 0
+      Unsorted          = TRUE
+      Value Picture     = X(30)
+      Value Variable    = cbo-SO-buf
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = Form1-Cm-1-BeforeProcedure
+      After Procedure   = Form1-Cm-1-AfterProcedure
+   End
+   Begin Data.Check-Box chk-ev-man
+      SCREEN-COL        = 38,00
+      SCREEN-LINE       = 14,78
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = chk-ev-man
+      Bitmap Frame      = FALSE
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Check Off Value   = "0"
+      Check On Value    = "1"
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 38,00
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Enable Variable   = e-altri
+      Exception Value   = 0
+      Field Variable    = user-ev-man
+      File              = USER
+      Flat              = TRUE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 30
+      ID Variable       = AUTO-ID
+      Left Text         = FALSE
+      Line              = 14,78
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Tab            = FALSE
+      Notify            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 1,60
+      Size Unit         = Default
+      Tab Order         = 14
+      Termination Value = 0
+      Value             = 0:FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = Form1-DaCb-1-BeforeProcedure
+      After Procedure   = Form1-DaCb-1-AfterProcedure
+   End
+   Begin Push-Button pb-moduli
+      SCREEN-COL        = 29,60
+      SCREEN-LINE       = 22,06
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-moduli
+      Bitmap            = "..\RESOURCE\ABIL_MODULI.BMP"
+      Bitmap Frame      = FALSE
+      Bitmap Handle     = ABIL_MODULI-BMP
+      Bitmap Number     = 3
+      Bitmap Square     = TRUE
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 29,60
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Enable Variable   = e-altri
+      Exception Value   = 1000
+      Flat              = TRUE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 9
+      Line              = 22,06
+      Lines             = 2,06
+      Lines in Pixels   = 30
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 17,50
+      Size in Pixels    = 167
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 15
+      Termination Value = 0
+      Title             = "&Abilitazione moduli"
+      Visible           = NONE
+      Visible Variable  = v-boss-salvato
+      Width in Cells    = FALSE
+      Additional Properties = "BITMAP-NUMBER=BitmapNumModuli"
+      Before Procedure  = pb-moduli-BeforeProcedure
+      After Procedure   = pb-moduli-AfterProcedure
+      Link To           = Form1-Pb-1-LinkTo
+   End
+   Begin Push-Button pb-importa
+      SCREEN-COL        = 34,90
+      SCREEN-LINE       = 24,06
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-importa
+      Bitmap            = "..\RESOURCE\IMPORTA.BMP"
+      Bitmap Frame      = FALSE
+      Bitmap Handle     = IMPORTA-BMP
+      Bitmap Number     = 3
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 34,90
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 1004
+      Flat              = TRUE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 3
+      Line              = 24,06
+      Lines             = 2,06
+      Lines in Pixels   = 30
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 12,20
+      Size in Pixels    = 114
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 16
+      Termination Value = 0
+      Title             = "Importa le abilitazioni del menu da un altro utente"
+      Visible           = FALSE
+      Visible Variable  = v-boss-salvato
+      Width in Cells    = FALSE
+      Additional Properties = "BITMAP-NUMBER=BitmapNumImporta"
+      Before Procedure  = pb-importa-BeforeProcedure
+      After Procedure   = pb-importa-AfterProcedure
+      Link To           = pb-importa-LinkTo
+   End
+   Begin Push-Button pb-scheda
+      SCREEN-COL        = 29,70
+      SCREEN-LINE       = 26,06
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-scheda
+      Bitmap            = "..\RESOURCE\SCHEDA.BMP"
+      Bitmap Frame      = FALSE
+      Bitmap Handle     = SCHEDA-BMP
+      Bitmap Number     = 3
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 29,70
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 1006
+      Flat              = TRUE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 26
+      Line              = 26,06
+      Lines             = 2,06
+      Lines in Pixels   = 30
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 17,40
+      Size in Pixels    = 166
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 17
+      Termination Value = 0
+      Title             = "Gestione dati configurazione mail"
+      Visible           = NONE
+      Visible Variable  = v-boss-salvato
+      Width in Cells    = FALSE
+      Additional Properties = "BITMAP-NUMBER=BitmapNumScheda"
+      Before Procedure  = pb-scheda-BeforeProcedure
+      After Procedure   = pb-scheda-AfterProcedure
+      Link To           = pb-scheda-LinkTo
+   End
+   Begin Label Form1-La-1
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 1,50
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-1
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 512
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 1
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 1,50
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 8,60
+      Size Unit         = Default
+      Tab Order         = 18
+      Title             = "User-ID"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-2
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 3,28
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-2
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 512
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 2
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 3,28
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 12,86
+      Size Unit         = Default
+      Tab Order         = 19
+      Title             = "Password"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-3
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 10,33
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-3
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 512
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 5
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 10,33
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 14,00
+      Size Unit         = Default
+      Tab Order         = 20
+      Title             = "Nuova Password"
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-3a
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 12,33
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-3a
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 512
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 6
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 12,33
+      Lines             = 2,00
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 14,00
+      Size Unit         = Default
+      Tab Order         = 21
+      Title             = "Conferma nuova Password"
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin CsCtrl.blockpgm Label Form1-blockpgm-1
+      CUST-SYMBOL       = blockpgm
+      CUST-MODIFYFLAG   = 000000000000110000000000000000000000000000000000000
+      SCREEN-COL        = 7,80
+      SCREEN-LINE       = 1,17
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-blockpgm-1
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 7,80
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 15
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 1,17
+      Lines             = 0,61
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 2,10
+      Size Unit         = Default
+      Tab Order         = 22
+      Title             = "BlockPgm"
+      Transparent       = TRUE
+      Visible           = NONE
+      Visible Variable  = v-custom
+      Width in Cells    = TRUE
+   End
+   Begin Bar Form1-Br-1
+      SCREEN-COL        = 1,00
+      SCREEN-LINE       = 5,17
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-Br-1
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1.00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 13
+      Kind              = Horizontal
+      Line              = 5,17
+      Line Styles       = Solid
+      Occurs            = 0
+      Position Shift    = 0
+      COLORS            = ( 1 )
+      SHADING           = ( -1 )
+      Size (Lines)      = 46,80
+      Size (Lines) in Pixels = 468
+      Size (Lines) Unit = Default
+      Tab Order         = 23
+      Visible           = NONE
+      Width             = 1
+      Width in Cells    = TRUE
+   End
+   Begin Bar Form1-Br-1a
+      SCREEN-COL        = 1,00
+      SCREEN-LINE       = 5,61
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-Br-1a
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1.00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 14
+      Kind              = Horizontal
+      Line              = 5,61
+      Line Styles       = Solid
+      Occurs            = 0
+      Position Shift    = 0
+      COLORS            = ( 1 )
+      SHADING           = ( -1 )
+      Size (Lines)      = 46,80
+      Size (Lines) in Pixels = 468
+      Size (Lines) Unit = Default
+      Tab Order         = 24
+      Visible           = NONE
+      Width             = 1
+      Width in Cells    = TRUE
+   End
+   Begin CsCtrl.Custom1 Label Form1-Custom1-1
+      CUST-SYMBOL       = Custom1
+      CUST-MODIFYFLAG   = 000000000000000000000000000000000000000000000000000
+      SCREEN-COL        = 2,60
+      SCREEN-LINE       = 1,28
+      LOCK-CONTROL      = FALSE
+      LEVEL             = 5
+      (Name)            = Form1-Custom1-1
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,60
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Font Variable     = Default-Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 16
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 1,28
+      Lines             = 1,00
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 1,00
+      Size Unit         = Default
+      Tab Order         = 25
+      Title             = "CUSTOM CONTROL"
+      Transparent       = TRUE
+      Visible           = NONE
+      Visible Variable  = v-custom
+      Width in Cells    = FALSE
+   End
+   Begin Label Form1-La-3aa
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 23,44
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-3aa
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 512
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 17
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 23,44
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 14,00
+      Size Unit         = Default
+      Tab Order         = 26
+      Title             = "Data Password"
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-3aaa
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 25,17
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-3aaa
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 512
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 18
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 25,17
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 14,00
+      Size Unit         = Default
+      Tab Order         = 27
+      Title             = "Valida fino al"
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin Label lab-data
+      SCREEN-COL        = 17,00
+      SCREEN-LINE       = 23,44
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lab-data
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 517
+      Column            = 17,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 19
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 23,44
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 10,00
+      Size Unit         = Default
+      Tab Order         = 28
+      Title Picture     = 99/99/9999
+      Title Variable    = data-pass
+      Transparent       = FALSE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin Label lab-validita
+      SCREEN-COL        = 17,00
+      SCREEN-LINE       = 25,17
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lab-validita
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 517
+      Column            = 17,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 20
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 25,17
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 10,00
+      Size Unit         = Default
+      Tab Order         = 29
+      Title Picture     = 99/99/9999
+      Title Variable    = validita
+      Transparent       = FALSE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-3b
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 6,33
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-3b
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 512
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 669
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 6,33
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 14,00
+      Size Unit         = Default
+      Tab Order         = 30
+      Title             = "Descrizione"
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-3c
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 14,78
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-3c
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 512
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 670
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 14,78
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 14,00
+      Size Unit         = Default
+      Tab Order         = 31
+      Title             = "Mess. promo"
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-3ca
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 18,22
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-3ca
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 512
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 671
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 18,22
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 14,00
+      Size Unit         = Default
+      Tab Order         = 32
+      Title             = "Mess. Banner G"
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-3caa
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 16,50
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-3caa
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 512
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 672
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 16,50
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 14,00
+      Size Unit         = Default
+      Tab Order         = 33
+      Title             = "Mess. Banner T"
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-3ba
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 8,33
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-3ba
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 512
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 673
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 8,33
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 14,00
+      Size Unit         = Default
+      Tab Order         = 34
+      Title             = "Tel. Diretto"
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-3cab
+      SCREEN-COL        = 21,00
+      SCREEN-LINE       = 14,61
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-3cab
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 512
+      Column            = 21,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 674
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 14,61
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 15,00
+      Size Unit         = Default
+      Tab Order         = 35
+      Title             = "Evasione manuale"
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-3cac
+      SCREEN-COL        = 1,90
+      SCREEN-LINE       = 20,17
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-3cac
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 512
+      Column            = 1,90
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 675
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 20,17
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 14,00
+      Size Unit         = Default
+      Tab Order         = 36
+      Title             = "Office"
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-3caca
+      SCREEN-COL        = 31,90
+      SCREEN-LINE       = 20,17
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-3caca
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 512
+      Column            = 31,90
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 676
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 20,17
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 4,00
+      Size Unit         = Default
+      Tab Order         = 37
+      Title             = "S.O."
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-3aaaa
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 27,89
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-3aaaa
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 512
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 677
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 27,89
+      Lines             = 1,00
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 26,70
+      Size Unit         = Default
+      Tab Order         = 38
+      Title             = "Path Bullzip (terminare con ""\"")"
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin Entry-Field ef-path-bullzip
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 29,22
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-path-bullzip
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = e-altri
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Se impostata verrà usata come PATH_INI
+      ID                = 678
+      ID Variable       = AUTO-ID
+      Justification     = Unaligned
+      Line              = 29,22
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 128
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 45,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 39
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Value Picture     = X(128)
+      Value Variable    = ef-path-bullzip-buf
+      Visible           = TRUE
+      Width in Cells    = TRUE
+      Before Procedure  = EF-NEW-PASS-BeforeProcedure
+      After Procedure   = EF-NEW-PASS-AfterProcedure
+   End
+   Begin Label Form1-La-3aaaaa
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 31,22
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-3aaaaa
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 512
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 677
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 31,22
+      Lines             = 1,00
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 26,70
+      Size Unit         = Default
+      Tab Order         = 40
+      Title             = "Path ACUTHIN installato"
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin Entry-Field ef-path-acuthin
+      SCREEN-COL        = 1,80
+      SCREEN-LINE       = 32,56
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-path-acuthin
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,80
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = e-altri
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Se impostata verrà usata come PATH_INI
+      ID                = 678
+      Justification     = Unaligned
+      Line              = 32,56
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 128
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 45,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 41
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Value Picture     = X(200)
+      Value Variable    = ef-path-acuthin-buf
+      Visible           = TRUE
+      Width in Cells    = TRUE
+      Before Procedure  = EF-NEW-PASS-BeforeProcedure
+      After Procedure   = EF-NEW-PASS-AfterProcedure
+   End
+   Begin Toolbar Form1-Tb-1
+      SCREEN-LINE       = 1,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 1
+      (Name)            = Form1-Tb-1
+      Cell              = FALSE
+      Color             = 0
+      Font              = Default Font
+      Handle Variable   = Form1-Tb-1-Handle
+      Help ID           = 0
+      Lines             = 1,94
+      Tab Order         = 42
+      Begin Push-Button PB-ESCI
+         SCREEN-COL        = 1,00
+         SCREEN-LINE       = 1,28
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = PB-ESCI
+         Bitmap            = "..\RESOURCE\TOOLBAR.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = TOOLBAR-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 1,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = TRUE
+         Exception Value   = 27
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 12
+         Line              = 1,28
+         Lines             = 1,67
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 3,20
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Escape Button
+         Tab Order         = 1
+         Termination Value = 0
+         Title             = "Esci  "
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Link To           = PB-ESCI-LinkTo
+      End
+      Begin Push-Button TOOL-SALVA
+         SCREEN-COL        = 4,30
+         SCREEN-LINE       = 1,28
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-SALVA
+         Bitmap            = "..\RESOURCE\TOOLBAR.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = TOOLBAR-BMP
+         Bitmap Number     = 15
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 4,30
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = FALSE
+         Enable Variable   = E-SALVA
+         Exception Value   = 3
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 10
+         Line              = 1,28
+         Lines             = 1,67
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 3,20
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 2
+         Termination Value = 0
+         Title             = "Salva (F3) "
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Additional Properties = "BITMAP-NUMBER BitmapNumSave"
+         Link To           = PB-SALVA-LinkTo
+      End
+      Begin Push-Button TOOL-CANCELLA
+         SCREEN-COL        = 7,60
+         SCREEN-LINE       = 1,28
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-CANCELLA
+         Bitmap            = "..\RESOURCE\TOOLBAR.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = TOOLBAR-BMP
+         Bitmap Number     = 16
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 7,60
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = FALSE
+         Enable Variable   = e-cancella
+         Exception Value   = 4
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 21
+         Line              = 1,28
+         Lines             = 1,67
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 3,20
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 3
+         Termination Value = 0
+         Title             = "Salva (F3) "
+         Visible           = FALSE
+         Visible Variable  = v-cancella
+         Width in Cells    = FALSE
+         Additional Properties = "BITMAP-NUMBER BitmapNumDelete"
+         Link To           = TOOL-CANCELLA-LinkTo
+      End
+      Begin Push-Button TOOL-PRIMO
+         SCREEN-COL        = 10,90
+         SCREEN-LINE       = 1,28
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-PRIMO
+         Bitmap            = "..\RESOURCE\TOOLBAR.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = TOOLBAR-BMP
+         Bitmap Number     = 10
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 10,90
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = TRUE
+         Enable Variable   = e-scorr
+         Exception Value   = 1002
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 22
+         Line              = 1,28
+         Lines             = 1,67
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 3,20
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 4
+         Termination Value = 0
+         Title             = "Salva (F3) "
+         Visible           = FALSE
+         Visible Variable  = v-scorr
+         Width in Cells    = FALSE
+         Link To           = TOOL-PRIMO-LinkTo
+      End
+      Begin Push-Button TOOL-PRECEDENTE
+         SCREEN-COL        = 14,10
+         SCREEN-LINE       = 1,28
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-PRECEDENTE
+         Bitmap            = "..\RESOURCE\TOOLBAR.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = TOOLBAR-BMP
+         Bitmap Number     = 11
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 14,10
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = TRUE
+         Enable Variable   = e-scorr
+         Exception Value   = 67
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 23
+         Line              = 1,28
+         Lines             = 1,67
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 3,20
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 5
+         Termination Value = 0
+         Title             = "Salva (F3) "
+         Visible           = FALSE
+         Visible Variable  = v-scorr
+         Width in Cells    = FALSE
+         Link To           = TOOL-PRECEDENTE-LinkTo
+      End
+      Begin Push-Button TOOL-SUCCESSIVO
+         SCREEN-COL        = 17,30
+         SCREEN-LINE       = 1,28
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-SUCCESSIVO
+         Bitmap            = "..\RESOURCE\TOOLBAR.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = TOOLBAR-BMP
+         Bitmap Number     = 12
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 17,30
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = TRUE
+         Enable Variable   = e-scorr
+         Exception Value   = 68
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 24
+         Line              = 1,28
+         Lines             = 1,67
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 3,20
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 6
+         Termination Value = 0
+         Title             = "Salva (F3) "
+         Visible           = FALSE
+         Visible Variable  = v-scorr
+         Width in Cells    = FALSE
+         Link To           = TOOL-SUCCESSIVO-LinkTo
+      End
+      Begin Push-Button TOOL-ULTIMO
+         SCREEN-COL        = 20,50
+         SCREEN-LINE       = 1,28
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-ULTIMO
+         Bitmap            = "..\RESOURCE\TOOLBAR.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = TOOLBAR-BMP
+         Bitmap Number     = 13
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 20,50
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = TRUE
+         Enable Variable   = e-scorr
+         Exception Value   = 1003
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 25
+         Line              = 1,28
+         Lines             = 1,67
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 3,20
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 7
+         Termination Value = 0
+         Title             = "Salva (F3) "
+         Visible           = FALSE
+         Visible Variable  = v-scorr
+         Width in Cells    = FALSE
+         Link To           = TOOL-ULTIMO-LinkTo
+      End
+   End
+   Begin Status-Bar Form1-St-1
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 1
+      (Name)            = Form1-St-1
+      Font              = Default Font
+      Grip              = TRUE
+      Handle Variable   = Form1-St-1-Handle
+      PANEL-WIDTHS      = ( 47 )
+      PANEL-STYLE       = ( 1 )
+      Tab Order         = 43
+   End
+End
+
+END-SPDATA
+
+@}}
+
+{{@REPORT:
+*   Report Writer Data
+*   Schema 6.0
+*
+BEGIN-RWDATA-6.0A
+
+END-RWDATA
+
+@}}
+
+{{@EMBEDDING_CODE:
+BEGIN-DATA
+   BASETYPE          = 6
+   NODESTYLE         = 7
+   PARAGRAPH         = DeletedCode
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterCreateWin
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeExit
+BEGIN-TEXT
+           if win-lines = 23,00
+              display message "Uscire dalla modifica dati?"
+                        title titolo
+                         type mb-yes-no
+                       giving scelta
+                      default mb-no
+              if scelta = mb-yes
+                 perform TORNA-IN-VISUA
+              end-if
+              move 26 to key-status
+              exit paragraph
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+           move 0 to v-cancella v-boss-salvato.
+           set vecchio to true.
+           if user-codi = "BOSS"
+              move  1 to v-boss
+              move  1 to e-id
+              move  0 to e-pwd
+              move  1 to v-scorr
+              move  3 to BitmapNumChange BitmapNumScad
+              move 16 to BitmapNumDelete
+              move  1 to v-cancella
+           else
+              move 0 to v-boss
+              move 0 to e-id
+              move 1 to e-pwd
+              move 1 to BitmapNumChange BitmapNumScad
+              move 0 to v-cancella
+           end-if.
+           display tool-primo 
+                   tool-successivo 
+                   tool-precedente 
+                   tool-ultimo
+                   tool-cancella.
+
+           move 5,2 to win-lines.
+           modify form1-handle lines win-lines.
+
+           move 0 to e-salva.
+
+           move 15 to BitmapNumSave.
+           move  5 to BitmapNumEdit.
+
+           move user-codi to user-id.
+
+           display form1.
+
+           display tool-salva.
+
+           move user-codi to user-cod.
+           read user no lock invalid continue end-read.
+           modify form1-handle, visible true.
+
+           modify cbo-office, reset-list = 1.
+           modify cbo-office, item-to-add = "2003".
+           modify cbo-office, item-to-add = "2007". 
+           modify cbo-office, item-to-add = "2010".
+
+           modify cbo-SO,     reset-list = 1.
+           modify cbo-SO,     item-to-add = "XP".
+           modify cbo-SO,     item-to-add = "Vista".
+           modify cbo-SO,     item-to-add = "7".
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 0
+   PARENT            = gest-pwd
+   ACTOBJ            = gest-pwd
+   ENTRYPOINT        = BeforeDeclarative
+BEGIN-TEXT
+       USER-ERR SECTION.
+           use after error procedure on user.
+           set RecLocked to false.
+           evaluate status-user
+           when "35"
+                display message "File [USER] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [USER] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[USER] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "99"
+           when "93"
+                set RecLocked to true
+                set errori    to true
+
+                display message MSG-Record-gia-in-uso
+                          title tit-err
+                           icon 2
+           end-evaluate.
+
+      ***---
+       USER-PGM-ERROR SECTION.
+           use after error procedure on user-pgm.
+           set RecLocked to false.
+           evaluate status-user-pgm
+           when "35"
+                display message "File [USER-PGM] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [USER-PGM] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[USER-PGM] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "99"
+           when "93"
+                set RecLocked to true
+                set errori    to true
+           end-evaluate.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterDisplay
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = AGGIUNGI-6-MESI
+BEGIN-TEXT
+           move user-pass-data to como-data.
+           move como-data(1:4) to anno.
+           move como-data(5:2) to mese.
+           move como-data(7:2) to giorno.
+           add  6 to mese.
+
+           if mese > 12
+              subtract 12 from mese
+              add 1 to anno
+           end-if.
+
+           if mese = 2
+              divide        anno by 4 giving como-anno
+              multiply como-anno by 4 giving como-anno
+              if como-anno = anno
+                 set bisestile to true
+              else
+                 set bisestile to false
+              end-if
+              evaluate true
+              when giorno >= 29
+                   if bisestile
+                      move 29 to giorno
+                   else
+                      move 28 to giorno
+                   end-if
+              end-evaluate
+           else
+              if giorno = 31
+                 evaluate mese
+                 when  4
+                 when  6
+                 when  9
+                 when 11  move 30 to giorno
+                 end-evaluate
+              end-if
+           end-if.
+
+           move data-validita to como-data.
+           perform DATE-TO-SCREEN.
+           move como-data to validita.
+           display lab-validita.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CANCELLA
+BEGIN-TEXT
+           display message "Cancellare l'utente in uso?"
+                     title titolo
+                      type mb-yes-no
+                    giving scelta
+                   default mb-no.
+
+           if scelta = mb-yes
+              inquire ef-id, value in user-cod
+              delete user record invalid continue end-delete
+
+              move low-value to up-chiave  of user-pgm
+              move user-cod  to up-user-id of user-pgm
+              start user-pgm key is >= up-chiave of user-pgm
+                    invalid continue
+                not invalid
+                    perform until 1 = 2
+                       read user-pgm next no lock at end exit perform end-read
+                       if up-user-id of user-pgm not = user-cod
+                          exit perform
+                       end-if
+                       delete user-pgm record invalid continue end-delete
+                    end-perform
+              end-start
+              perform TORNA-IN-VISUA
+              move user-codi to user-id
+              display ef-id
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CONTROLLO
+BEGIN-TEXT
+           set tutto-ok to true.
+
+           evaluate control-id
+           when 78-ID-ef-id
+                inquire ef-id, value in user-cod
+                read user no lock
+                     invalid
+                     if user-codi not = "BOSS"
+                        display message "Utente NON valido"
+                                  title tit-err
+                                   icon 2
+                        move 0 to e-pwd
+                        move 3 to BitmapNumChange BitmapNumScad
+                        set errori to true
+                     else
+                        display message "Utente non trovato. Inserirlo?"
+                                  title titolo
+                                   type mb-yes-no
+                                 giving scelta
+                        if scelta = mb-no      
+                           move 0 to e-pwd
+                           move 3 to BitmapNumChange BitmapNumScad
+                           set errori to true
+                        else
+                           set nuovo to true
+                           perform PORTA-IN-MODIFICA
+                        end-if
+                     end-if
+                 not invalid
+                     set vecchio to true
+                     move 1 to e-pwd
+                     move 1 to BitmapNumChange BitmapNumScad
+                end-read
+                move spaces to old-pass
+                display form1
+
+           when 78-ID-ef-old-pass
+                inquire ef-old-pass, value in old-pass
+                if old-pass not = user-pass
+                   set errori to true
+                   display message "Password errata!"
+                             title tit-err
+                              icon 2
+                end-if
+
+           when 78-ID-ef-new-pass
+                inquire ef-new-pass, value in new-pass
+                if new-pass not = spaces
+                   if new-pass = old-pass
+                      set errori to true
+                      display message "La nuova password dev'essere diversa da quella vecchia"
+                                title tit-err
+                                 icon 2
+                   else
+                      move 0 to Counter
+                      move new-pass to como-pwd
+                      inspect como-pwd 
+                              replacing trailing spaces by low-value
+                      inspect como-pwd
+                              tallying counter 
+                              for characters before low-value
+                      if counter < 8
+                         set errori to true
+                         display message "La password deve contenere almeno 8 caratteri"
+                                   title tit-err
+                                    icon 2
+                      end-if
+                   end-if
+                else
+                   if nuovo
+                      set errori to true
+                      display message "Inserire la password"
+                                title tit-err
+                                 icon 2
+                   end-if
+                end-if
+
+           when 78-ID-ef-pass
+                inquire ef-pass,     value in pass
+                inquire ef-new-pass, value in new-pass
+                if new-pass = spaces
+                   move spaces to pass
+                   modify ef-pass, value pass
+                else
+                   if pass not = new-pass
+                      set errori to true
+                      display message "Conferma passowrd errata"
+                                title tit-err
+                                 icon 2
+                   end-if
+                end-if
+
+           end-evaluate.
+
+           if errori
+              perform CANCELLA-COLORE
+              move 4        to accept-control
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = PARAGRAFO-COPY
+BEGIN-TEXT
+           copy "color-custom.cpy".
+           copy "utydata.cpy".
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = PORTA-IN-MODIFICA
+BEGIN-TEXT
+           move 35,00 to win-lines.
+           modify form1-handle, lines win-lines.
+           move 0 to e-pwd.
+           move 3 to BitmapNumChange BitmapNumScad.
+           move 0 to e-id.
+           move 1 to BitmapNumModuli BitmapNumImporta BitmapNumScheda.
+           move 1 to e-altri.                                 
+
+           move "2003"    to cbo-office-buf.
+           move "XP"      to cbo-SO-buf.
+
+           if vecchio
+              move user-pass-data    to como-data
+              move user-name         to descr
+              move user-msg-promo    to chk-msg-buf
+              move user-msg-banner-t to chk-banner-t-buf
+              move user-msg-banner-g to chk-banner-g-buf
+              move user-ev-man       to chk-ev-man-buf     
+              move user-path-bullzip to ef-path-bullzip-buf
+              move user-path-acuthin to ef-path-acuthin-buf
+              move user-tel-diretto  to tel-dir
+              evaluate true
+              when user-office-2003 move "2003" to cbo-office-buf
+              when user-office-2007 move "2007" to cbo-office-buf
+              when user-office-2010 move "2010" to cbo-office-buf
+              end-evaluate
+              evaluate true
+              when user-SO-XP      move "XP"    to cbo-SO-buf
+              when user-SO-Vista   move "Vista" to cbo-SO-buf
+              when user-SO-7       move "7"     to cbo-SO-buf
+              end-evaluate
+           else
+              move 0 to chk-msg-buf
+                        chk-banner-t-buf
+                        chk-banner-g-buf
+              move spaces to descr 
+                             tel-dir
+                             pass 
+                             new-pass
+              accept como-data from century-date
+              move   como-data to user-pass-data
+           end-if.
+           modify cbo-office,    value cbo-office-buf.
+           modify cbo-SO,        value cbo-SO-buf.
+
+           perform DATE-TO-SCREEN.
+           move como-data to data-pass.
+           perform AGGIUNGI-6-MESI.
+           move 1 to e-salva.
+           move 3 to BitmapNumSave.
+           display tool-salva.
+
+           if user-codi = "BOSS"
+              if user-id not = "BOSS"
+                 move  1 to e-cancella
+                 move  4 to BitmapNumDelete
+                 display tool-cancella
+              end-if
+              if vecchio
+                 move 1 to v-boss-salvato
+              else
+                 move 0 to v-boss-salvato
+              end-if
+              move 0 to e-scorr
+              display tool-primo
+                      tool-successivo
+                      tool-precedente
+                      tool-ultimo
+           end-if.
+
+           move 78-ID-ef-nome to control-id.
+           move 4             to accept-control.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = SALVA
+BEGIN-TEXT
+           set tutto-ok to true.
+
+           perform varying control-id from 78-ID-ef-nome by 1
+                     until control-id > 78-ID-ef-pass
+              perform CONTROLLO
+              if errori
+                 exit perform
+              end-if
+           end-perform.
+
+           if tutto-ok
+              accept como-data from century-date
+              accept como-ora  from time
+              move user-id     to user-cod
+              move descr       to user-name
+              move tel-dir     to user-tel-diretto
+              if pass = spaces
+                 move old-pass to pass
+              else
+                 if user-codi not = "BOSS"
+                    display message "Notificare al gestore delle password la modifica!"
+                              title titolo
+                 end-if
+                 perform DATE-TO-SCREEN
+                 move como-data to data-pass
+              end-if
+              move pass              to user-pass
+              move data-pass         to como-data
+              perform DATE-TO-FILE
+              move como-data         to user-pass-data
+              move chk-msg-buf       to user-msg-promo
+              move chk-banner-t-buf  to user-msg-banner-t
+              move chk-banner-g-buf  to user-msg-banner-g
+              move chk-ev-man-buf    to user-ev-man
+
+              evaluate cbo-office-buf
+              when "2003" set user-office-2003 to true
+              when "2007" set user-office-2007 to true
+              when "2010" set user-office-2010 to true
+              end-evaluate
+
+              evaluate cbo-SO-buf
+              when "XP"    set user-SO-XP    to true
+              when "Vista" set user-SO-Vista to true
+              when "7"     set user-SO-7     to true
+              end-evaluate
+
+              if nuovo
+                 accept user-data-creazione from century-date
+                 accept user-ora-creazione  from time
+                 move   user-codi to user-utente-creazione
+              else
+                 accept user-data-ultima-modifica from century-date
+                 accept user-ora-ultima-modifica  from time
+                 move   user-codi to user-utente-ultima-modifica
+              end-if
+
+              move ef-path-bullzip-buf to user-path-bullzip
+              move ef-path-acuthin-buf to user-path-acuthin
+              write user-rec invalid rewrite user-rec end-write
+              perform TORNA-IN-VISUA
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = TORNA-IN-VISUA
+BEGIN-TEXT
+           modify ef-nome,     color colore-or.
+           modify ef-new-pass, color colore-or.
+           modify ef-pass,     color colore-or.
+
+           move 0 to e-salva.
+           move spaces to old-pass descr new-pass pass.
+           if user-codi = "BOSS"
+              move 1 to e-id
+              move 0 to e-pwd
+              move 3 to BitmapNumChange BitmapNumScad
+           else
+              move 0 to e-id
+              move 1 to e-pwd
+              move 1 to BitmapNumChange BitmapNumScad
+           end-if.
+           move 6,4 to win-lines.
+           modify form1-handle, lines win-lines.
+           move 0 to e-altri.
+           display form1.
+           move 78-ID-ef-id to control-id.
+           move  4 to accept-control.
+           move 15 to BitmapNumSave.
+           display tool-salva.
+           if user-codi = "BOSS" 
+              if user-id not = "BOSS"
+                 move  0 to e-cancella
+                 move 16 to BitmapNumDelete
+                 display tool-cancella
+              end-if
+              move 1 to e-scorr
+              display tool-primo 
+                      tool-successivo 
+                      tool-precedente 
+                      tool-ultimo
+           end-if.
+           perform CANCELLA-COLORE.
+
+           unlock user all records.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = PB-SALVA-LinkTo
+BEGIN-TEXT
+           inquire tool-salva, enabled in e-salva.
+           if e-salva = 1
+              perform SALVA
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = PB-ESCI-LinkTo
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = EF-PASS-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-2 **>>
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = EF-NEW-PASS-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-2 **>>
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = EF-OLD-PASS-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-2 **>>
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = I-O-BLOCCO
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Gest-Pwd-Ev-Before-Program
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = EF-OLD-PASS-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-2 **>>
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+           perform CONTROLLO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = EF-NEW-PASS-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-2 **>>
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+           perform CONTROLLO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = EF-PASS-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-2 **>>
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+           perform CONTROLLO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-cambio-BeforeProcedure
+BEGIN-TEXT
+           move 2 to BitmapNumChange.
+           modify pb-cambio, bitmap-number = 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-cambio-AfterProcedure
+BEGIN-TEXT
+           move 1 to BitmapNumChange.
+           modify pb-cambio, bitmap-number = 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-cambio-LinkTo
+BEGIN-TEXT
+           inquire ef-old-pass, value in old-pass.
+           if old-pass = user-pass
+              set tutto-ok to true
+              if vecchio
+                 move user-id to user-cod
+                 read user lock invalid continue end-read
+              end-if
+              if tutto-ok
+                 perform PORTA-IN-MODIFICA
+              end-if
+           else
+              display message "Password errata!"
+                        title tit-err
+                         icon 2
+              move 78-ID-ef-old-pass to control-id
+              move 4                 to accept-control
+           end-if.
+
+           display form1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-moduli-BeforeProcedure
+BEGIN-TEXT
+           move 2 to BitmapNumModuli.
+           display pb-moduli.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-moduli-AfterProcedure
+BEGIN-TEXT
+           move 1 to BitmapNumModuli.
+           display pb-moduli.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Pb-1-LinkTo
+BEGIN-TEXT
+           modify form1-handle, visible 0.
+           call   "gest-abil" using user-cod,
+                                    user-name.
+           cancel "gest-abil".
+           modify form1-handle, visible 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-nome-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-nome-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = EF-id-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = EF-id-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+           perform CONTROLLO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = TOOL-CANCELLA-LinkTo
+BEGIN-TEXT
+           inquire tool-cancella, enabled in e-cancella.
+           if e-cancella = 1
+              perform CANCELLA
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = TOOL-PRIMO-LinkTo
+BEGIN-TEXT
+           if v-scorr + e-scorr = 2 |Visibile ed abilitato
+              move low-value to user-rec
+              start user key is >= user-chiave
+                    invalid continue
+                not invalid
+                    read user next no lock
+                    move user-cod to user-id
+                    move spaces   to old-pass
+                    move 1 to e-id
+                    move 0 to e-pwd
+                    move 3 to BitmapNumChange BitmapNumScad
+                    perform CANCELLA-COLORE
+                    display form1
+              end-start
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = TOOL-ULTIMO-LinkTo
+BEGIN-TEXT
+           if v-scorr + e-scorr = 2 |Visibile ed abilitato
+              move high-value to user-rec
+              start user key is <= user-chiave
+                    invalid continue
+                not invalid
+                    read user previous no lock
+                    move user-cod to user-id
+                    move spaces   to old-pass
+                    move 1 to e-id
+                    move 0 to e-pwd
+                    move 3 to BitmapNumChange BitmapNumScad
+                    perform CANCELLA-COLORE
+                    display form1
+              end-start
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = TOOL-PRECEDENTE-LinkTo
+BEGIN-TEXT
+           if v-scorr + e-scorr = 2 |Visibile ed abilitato
+              inquire ef-id, value in user-cod
+              start user key is < user-chiave
+                    invalid continue
+                not invalid
+                    read user previous no lock
+                    move user-cod to user-id
+                    move spaces   to old-pass
+                    move 1 to e-id
+                    move 0 to e-pwd
+                    move 3 to BitmapNumChange BitmapNumScad
+                    perform CANCELLA-COLORE
+                    display form1
+              end-start
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = TOOL-SUCCESSIVO-LinkTo
+BEGIN-TEXT
+           if v-scorr + e-scorr = 2 |Visibile ed abilitato
+              inquire ef-id, value in user-cod
+              start user key is > user-chiave
+                    invalid continue
+                not invalid
+                    read user next no lock
+                    move user-cod to user-id
+                    move spaces   to old-pass
+                    move 1 to e-id
+                    move 0 to e-pwd
+                    move 3 to BitmapNumChange BitmapNumScad
+                    perform CANCELLA-COLORE
+                    display form1
+              end-start
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-importa-LinkTo
+BEGIN-TEXT
+           move user-id to como-record(1:10).
+           move "user-diversi" to como-file.
+           call "zoom-gt"   using como-file, como-record
+                           giving stato-zoom
+           end-call.
+           cancel "zoom-gt".
+           if stato-zoom = 0
+              move user-id           to UtenteInUso
+              move como-record(1:10) to UtenteFrom
+              inspect UtenteInUso replacing trailing spaces by low-value
+              inspect UtenteFrom  replacing trailing spaces by low-value
+              initialize messaggio
+              string "Effettuare l'importazione" delimited size
+                     " delle abilitazioni da "   delimited size
+                    x"0d0a"                      delimited size
+                     UtenteFrom                  delimited low-value
+                     " verso l'utente "          delimited size
+                     UtenteInUso                 delimited low-value
+                     "?"                         delimited size
+                     into messaggio
+              end-string
+              display message messaggio
+                        title titolo
+                         type mb-yes-no
+                       giving scelta
+              if scelta = mb-yes
+                 move como-record(1:10) to up-user-id of user-pgm1
+                 move low-value         to up-prog-id of user-pgm1
+                 start user-pgm1 key is >= up-chiave of user-pgm1
+                       invalid continue
+                   not invalid
+                       move 0 to idx
+                       call "W$MOUSE" using set-mouse-shape, wait-pointer
+                       perform until 1 = 2
+                          read user-pgm1 next no lock at end exit perform end-read
+                          if up-user-id of user-pgm1 not =  como-record(1:10)
+                             exit perform
+                          end-if
+                          add 1 to idx
+                          move user-id                 
+                            to up-user-id      of user-pgm
+                          move up-prog-id      of user-pgm1
+                            to up-prog-id      of user-pgm
+                          move up-livello-abil of user-pgm1
+                            to up-livello-abil of user-pgm
+                          write up-record of user-pgm 
+                                invalid rewrite up-record of user-pgm 
+                          end-write
+                       end-perform
+                       if idx > 0
+                          display message "Operazione effettuata!"
+                                    title titolo
+                       else
+                          display message "Nessun abilitazione trovata!"
+                                    title titolo
+                                     icon 2
+                       end-if
+                       call "W$MOUSE" using set-mouse-shape, arrow-pointer
+                 end-start
+              end-if
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-importa-BeforeProcedure
+BEGIN-TEXT
+           move 2 to BitmapNumImporta.
+           display pb-importa.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-importa-AfterProcedure
+BEGIN-TEXT
+           move 1 to BitmapNumImporta.
+           display pb-importa.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-scadute-BeforeProcedure
+BEGIN-TEXT
+           move 2 to BitmapNumScad.
+           modify pb-scadute, bitmap-number = BitmapNumScad.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-scadute-AfterProcedure
+BEGIN-TEXT
+           move 1 to BitmapNumScad.
+           modify pb-scadute, bitmap-number = BitmapNumScad.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-scadute-LinkTo
+BEGIN-TEXT
+           if user-codi = "BOSS"
+              call   "st-pwd-scad"
+              cancel "st-pwd-scad"
+              move 666 to control-id
+              move   4 to accept-control
+           else
+              display message "SOLO PER UTENTE BOSS!"
+                        title titolo
+                         icon 2
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-scheda-BeforeProcedure
+BEGIN-TEXT
+           modify pb-scheda, bitmap-number = 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-scheda-AfterProcedure
+BEGIN-TEXT
+           modify pb-scheda, bitmap-number = 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-scheda-LinkTo
+BEGIN-TEXT
+           move 1               to link-mod.
+           inquire ef-id, value in link-user.
+           modify form1-handle, visible false.
+           call   "gusr-tel" using usr-tel-linkage.
+           cancel "gusr-tel".
+           modify form1-handle, visible true.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-DaCb-1-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-DaCb-1-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Cm-1-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Cm-1-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+END-TEXT
+END-DATA
+
+@}}
+
+[KEY_STATUS_FIELD_FORMAT]
+PIC=9(5)
+USAGE=[None]
+
+[KEYSTATUS_CONTENT:KS1]
+CONDITION=Enter-Pushed
+VALUE=13
+
+[KEYSTATUS_CONTENT:KS2]
+CONDITION=Exit-Pushed
+VALUE=27
+
+[KEYSTATUS_CONTENT:KS3]
+CONDITION=Message-Received
+VALUE=95
+
+[KEYSTATUS_CONTENT:KS4]
+CONDITION=Event-Occurred
+VALUE=96
+
+[KEYSTATUS_CONTENT:KS5]
+CONDITION=Screen-No-Input-Field
+VALUE=97
+
+[COBOLAID_DATASET_INFO]
+COUNT=1
+NAME_0=DataSet1
+
+[DRAW_DOCUMENT_INDEX]
+OBJ_NAME_0=8001
+OBJ_ID_0=1971575575
+
+[MULTIPLE_KEY_0]
+COUNT=1
+KEY_0=user-chiave
+
+[DRAW_DOCUMENT_8001_1971575575]
+OBJ_NAME=8001
+OBJ_ID=1971575575
+TYPE=2
+VERSION=
+DOC_SIZE_X=5100
+DOC_SIZE_Y=5160
+PAGE_LEFT=150
+PAGE_TOP=150
+PAGE_RIGHT=1850
+PAGE_BOTTOM=2730
+MARGIN_LEFT=150
+MARGIN_TOP=150
+MARGIN_RIGHT=150
+MARGIN_BOTTOM=150
+PROP_DOCU_TYPE=ø
+PROP_DOCU_TYPE2=ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+PROP_DOCU_NAME=DataSet - DataSet1[gest-pwd(GESLUX)]
+PROP_DOCU_OWNER=Person A
+PROP_DOCU_CDATE=07/06/01
+PROP_DOCU_MODIFIER=Person B
+PROP_DOCU_MDATE=07/06/01
+PROP_DOCU_DESCR=Caseaid DocuCaseaid Document
+PROP_DOCU_HEADER=Caseaid Document
+PROP_DOCU_FOOTER=Page # 
+PROP_DOCU_DIM_H=2
+PROP_DOCU_DIM_W=3
+PROP_DOCU_LOC_H=1
+PROP_DOCU_LOC_W=1
+PROP_DOCU_EDGE_T=150
+PROP_DOCU_EDGE_B=150
+PROP_DOCU_EDGE_L=150
+PROP_DOCU_EDGE_R=150
+PROP_DOCU_ZOOM=75
+PROP_DOCU_SIZE_TYPE=0
+PROP_DOCU_SIZE_PAPER=9
+PROP_DOCU_SIZE_H=2580
+PROP_DOCU_SIZE_W=1700
+PROP_DOCU_RULER_EBL=0
+PROP_DOCU_GRID_EBL=0
+PROP_DOCU_GRID=20
+PROP_DOCU_ALIGN=0
+REL_SYM_SIZE=22
+REL_SYM_INFO_L=3
+REL_SYM_INFO_X0=2301
+REL_SYM_INFO_Y0=2089425562
+REL_SYM_INFO_X1=2301
+REL_SYM_INFO_Y1=2125919554
+REL_SYM_INFO_X2=2301
+REL_SYM_INFO_Y2=2137862081
+
+[DRAW_BASESYMBOL_2301_2089425562]
+OBJ_NAME=2301
+OBJ_ID=2089425562
+KIND=1
+{{@LABEL_2301_2089425562
+USER
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=899
+TOP=566
+RIGHT=1299
+BOTTOM=788
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_2125919554]
+OBJ_NAME=2301
+OBJ_ID=2125919554
+KIND=1
+{{@LABEL_2301_2125919554
+USER-PGM1
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=637
+TOP=153
+RIGHT=1037
+BOTTOM=375
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_2137862081]
+OBJ_NAME=2301
+OBJ_ID=2137862081
+KIND=1
+{{@LABEL_2301_2137862081
+USER-PGM
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=136
+TOP=149
+RIGHT=536
+BOTTOM=371
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DMD_DOCUMENT_0_1971575575]
+OBJ_NAME=0
+OBJ_ID=1971575575
+FILE_TITLE_TYPE=8136
+FILE_SHOW_ITEM=0
+FILE_SHOW_KEY=0
+FILE_SHOW_PIC=0
+FILE_SHOW_HEAD=0
+FILE_SHOW_LEVEL=0
+FILE_SHOW_TREE=0
+FILE_SHOW_CLPS=0
+FILE_SHOW_BMP=0
+FILE_SHOW_LINE=0
+FILE_SHOW_MINIZE=0
+
+[DMD_FILE_0_2089425562]
+OBJ_NAME=0
+OBJ_ID=2089425562
+REL_M_OBJ_ID=0
+ENTITY=USER
+LINK=0
+LINK_NAME=
+DSN_SIZE=43
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=2
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=user-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_2089425562
+
+@}}
+DSN_INFO_PRIMARY=1
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_2125919554]
+OBJ_NAME=0
+OBJ_ID=2125919554
+REL_M_OBJ_ID=0
+ENTITY=USER-PGM1
+LINK=0
+LINK_NAME=
+DSN_SIZE=54
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=UP-CHIAVE OF USER-PGM1
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_2125919554
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=1
+DSN_INFO_LOGICAL_FDNAME=USER-PGM1
+DSN_INFO_ORIGINAL_FDNAME=USER-PGM
+DSN_INFO_REPLACEBY_FILESTATUS=STATUS-user-pgm-USER-PGM1
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_2137862081]
+OBJ_NAME=0
+OBJ_ID=2137862081
+REL_M_OBJ_ID=0
+ENTITY=USER-PGM
+LINK=0
+LINK_NAME=
+DSN_SIZE=53
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=2
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=UP-CHIAVE OF USER-PGM
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_2137862081
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=

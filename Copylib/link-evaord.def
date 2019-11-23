@@ -1,0 +1,8 @@
+      *
+       01 evaord-linkage.
+           03 evaord-chiave.
+               05 evaord-anno      PIC  9(4).
+               05 evaord-numero    PIC  9(8).
+           03 evaord-user      PIC  x(10).
+           03 evaord-status
+                      USAGE IS SIGNED-SHORT.

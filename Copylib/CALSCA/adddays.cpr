@@ -1,0 +1,14 @@
+      *----------------------------------------------------------------
+      *
+      *  adddays
+      *
+      *----------------------------------------------------------------
+       madd-adddays.
+           if       madd-id             equal  spaces
+                    set      madd-id-set   to  true
+                    move     madd-id       to  pname-name
+      *              perform  pname-normalize
+                    move     r-adddays    to  madd-id.
+
+           call     madd-id             using   madd-link-area.
+      *----------------------------------------------------------------

@@ -1,0 +1,13 @@
+      *(( XFD FILE = tmp-sellout-qta ))
+       FD  tmp-sellout-qta.
+       01 tsq-rec.
+           05 tsq-chiave.
+               10 tsq-promo        PIC  9(15).
+               10 tsq-articolo     PIC  9(6).
+           05 tsq-dati.
+               15 tsq-qta-b        PIC  9(8).
+               15 tsq-qta-t        PIC  9(8).
+               10 tsq-mesi
+                          OCCURS 6 TIMES.
+                   15 tsq-qta-b-mese   PIC  9(6).
+                   15 tsq-qta-t-mese   PIC  9(6).

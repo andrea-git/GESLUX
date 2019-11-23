@@ -1,0 +1,10 @@
+      *
+       01 listmov-linkage.
+           03 listmov-data-from  PIC  9(8).
+           03 listmov-data-to    PIC  9(8).
+           03 listmov-num-reg    PIC  9(8).
+           03 listmov-tipo-data  PIC  9.
+              88 listmov-data-from-anautf value 1.
+              88 listmov-data-from-accept value 2.
+           03 listmov-path       PIC  x(256).
+           03 link-finale        pic s9(12)v999.

@@ -1,0 +1,103 @@
+      *
+      *
+      * Record scadenze effetti e spese
+      *
+      * ------------------------------------------------------------------
+      *
+      * tk 240 - new prima nota                                                                          |ms 19/11/2008 8.47
+      *        - aggiunto livello 88 per colonna "tbltr-rischio"
+      *
+      * ------------------------------------------------------------------
+      * tk.2684 - adeguamento nuova normativa intra 2010                                                 |ds 02/02/2010 11.43
+      *           aggiunto campo "tbltr-modalita-inc"                                                    |ds 02/02/2010 11.17
+      * ------------------------------------------------------------------
+      *
+      *
+      *
+      *
+      * tplvar zmm_title=Tabella tipi pagamento
+      * tplvar zmm_ver=09.01.00
+      * tplvar zmm_class=anagraphic
+      * tplvar zmm_returnkey=tbltr-codice2
+      *
+      * ZoomFields seq:
+      *   01.tbltr-codice2
+      *   02.tbltr-descrizione1
+      *   03.tbltr-descrizione2
+      *
+      *
+      * tbltr-importo-p eliminata clausola sign trailing perchè NON segnato                              | mxm 11/05/2006 16.49
+      *
+      *
+       FD  TBLTR.
+       01 record-tbltr.
+           05 tbltr-codice.
+               10 tbltr-codice1    PIC  x(02).
+      *$GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=20,zmm_align=L,zmm_pos=1,zmm_entity=tbltr
+               10 tbltr-codice2    PIC  x(20).
+           05 resto-record-tbltr.
+      *$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=2
+               10 tbltr-descrizione1           PIC  x(30).
+      *$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=3
+      *
+               10 tbltr-descrizione2           PIC  x(30).
+      *$GEN type=checkbox,truevalue="N", falsevalue=" "
+      *
+               10 tbltr-rischio    PIC  x(01).
+                   88 tbltr-rischio-88 VALUE IS "N" " ". 
+                   88 tbltr-rischio-no VALUE IS "N"    WHEN SET TO 
+           FALSE  space. 
+                   88 tbltr-rischio-si VALUE IS " ". 
+               10 tbltr-valore.
+      *$GEN type=num,dec=02,size=21
+                   15 tbltr-importo-v  PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=code,entity=art
+                   15 tbltr-codice-art-v           PIC  x(15).
+               10 tbltr-percentuale.
+      *$GEN type=num,dec=02,size=07
+      *
+                   15 tbltr-importo-p  PIC  9(03)v9(02).
+      *$GEN type=code,entity=art
+      *
+                   15 tbltr-codice-art-p           PIC  x(15).
+               10 tbltr-scaglioni.
+                   15 tbtr-tabella-s
+                              OCCURS 05 TIMES.
+                       20 tbltr-limite-s   PIC  s9(13)v9(02)
+                                  SIGN IS TRAILING SEPARATE CHARACTER.
+      *sed
+      *
+                       20 tbltr-importo-s  PIC  s9(13)v9(02)
+                                  SIGN IS TRAILING SEPARATE CHARACTER.
+      *sed
+      *
+                   15 tbltr-codice-art-s           PIC  x(15).
+      *$GEN type=num,dec=0,size=4
+               10 tbltr-giorni-rischio         PIC  9(03).
+               10 tbltr-importo-v-lire         PIC  s9(15)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *sed
+               10 tbtr-tabella-s-lire
+                          OCCURS 05 TIMES.
+                   15 tbltr-importo-s-lire         PIC  s9(15)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *sed
+      *$GEN type=radiobutton,value_1=" ",image_1=1,value_2="I",image_2=2
+      *
+               10 tbltr-appoggio-incasso       PIC  x(01).
+                   88 tbltr-appoggio-incasso-88 VALUE IS "I" " ". 
+      *$GEN type=checkbox,truevalue="S", falsevalue=" "
+               10 tbltr-rid-veloci PIC  x(01).
+                   88 tbltr-rid-veloci-88 VALUE IS " " "S". 
+      *$GEN type=combobox,comboclass=tbltr_modalita_inc,
+               10 tbltr-modalita-inc           PIC  x(01).
+                   88 tbltr-modalita-inc-88 VALUE IS "A" "B" "X" " ". 
+                   88 tbltr-modalita-inc-n VALUE IS " ". 
+                   88 tbltr-modalita-inc-a VALUE IS "A". 
+                   88 tbltr-modalita-inc-b VALUE IS "B". 
+                   88 tbltr-modalita-inc-x VALUE IS "X". 
+      *        10  tbltr-filler                    pic  x(930).                                          |ds 02/02/2010 11.24
+      *
+               10 tbltr-filler     PIC  x(929).
+               10 tbltr-filler-ris PIC  x(40).

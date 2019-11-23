@@ -1,0 +1,14 @@
+      *
+       01 gesdelete-linkage.
+           05 gesdelete-nome-file  pic x(20).
+           05 gesdelete-scelta     pic 9.
+           05 gesdelete-v-tasto1   pic 9.
+           05 gesdelete-v-tasto2   pic 9.
+           05 gesdelete-v-tasto3   pic 9.
+           05 gesdelete-delete        pic x.
+              88 gesdelete-yes-delete value "Y".
+              88 gesdelete-no-delete  value "N".
+           05 gesdelete-bitmap-tasto1 pic 9(3).
+           05 gesdelete-bitmap-tasto2 pic 9(3).
+           05 gesdelete-bitmap-tasto3 pic 9(3).
+           05 gesdelete-titolo        pic x(50).

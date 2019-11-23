@@ -1,0 +1,80 @@
+       FD  param.
+       01 prm-rec.
+           05 prm-chiave.
+               10 prm-lubex        PIC  x(2).
+               10 prm-tipocli      PIC  x(2).
+               10 prm-gdo          PIC  x(5).
+               10 prm-cliente      PIC  9(5).
+               10 prm-destino      PIC  9(5).
+           05 prm-dati.
+               10 prm-gestisci     PIC  9.
+                   88 prm-gestisci-si VALUE IS 1. 
+                   88 prm-gestisci-no VALUE IS 0. 
+               10 prm-gg-inizio-vol            PIC  9(3).
+               10 prm-gg-parziale  PIC  9(3).
+               10 prm-gg-per-cons  PIC  9(3).
+               10 prm-gg-val-vol   PIC  9(3).
+               10 prm-gg-cons-max  PIC  9(3).
+               10 prm-vet-maggiore-kg          PIC  9(5).
+               10 prm-maggiore-kg  PIC  9(5)v9(3).
+               10 prm-vet-minore-kg2           PIC  9(5).
+               10 prm-minore-kg2   PIC  9(5)v9(3).
+               10 prm-blocco-kg    PIC  9(5)v999.
+               10 prm-prenotazione-qta         PIC  9.
+                   88 prm-prenotazione-qta-si VALUE IS 1. 
+                   88 prm-prenotazione-qta-no VALUE IS 0. 
+               10 prm-accorpa      PIC  9.
+                   88 prm-accorpa-si VALUE IS 1. 
+                   88 prm-accorpa-no VALUE IS 0. 
+               10 prm-saldi-banco  PIC  9.
+                   88 prm-saldi-banco-si VALUE IS 1. 
+                   88 prm-saldi-banco-no VALUE IS 0. 
+               10 prm-saldi-promo  PIC  9.
+                   88 prm-saldi-promo-si VALUE IS 1. 
+                   88 prm-saldi-promo-no VALUE IS 0. 
+               10 prm-escludi-tutto            PIC  9.
+                   88 prm-escludi-tutto-si VALUE IS 1. 
+                   88 prm-escludi-tutto-no VALUE IS 0. 
+               10 prm-tab-depositi.
+                   15 prm-mag-codice   PIC  x(3)
+                              OCCURS 50 TIMES.
+                   15 prm-mag-ev-intera            PIC  x
+                              OCCURS 50 TIMES.
+                       88 prm-mag-ev-intera-si VALUE IS "S". 
+                       88 prm-mag-ev-intera-no VALUE IS "N" " ". 
+               10 prm-imb-minimo   PIC  9.
+                   88 prm-imb-minimo-si VALUE IS 1. 
+                   88 prm-imb-minimo-no VALUE IS 0. 
+               10 prm-cod-art-forn PIC  9.
+                   88 prm-cod-art-forn-si VALUE IS 1. 
+                   88 prm-cod-art-forn-no VALUE IS 0. 
+               10 prm-vet-minore-kg1           PIC  9(5).
+               10 prm-minore-kg1   PIC  9(5)v9(3).
+               10 FILLER           PIC  x(85).
+               10 prm-dati-comuni.
+                   15 prm-data-creazione           PIC  9(8).
+                   15 prm-ora-creazione            PIC  9(8).
+                   15 prm-utente-creazione         PIC  x(10).
+                   15 prm-data-modifica            PIC  9(8).
+                   15 prm-ora-modifica PIC  9(8).
+                   15 prm-utente-modifica          PIC  x(10).
+               10 prm-vuoti.
+                   15 prm-add-piombo.
+                       20 prm-add-piombo-perce         PIC  9.
+                           88 prm-add-piombo-perce-si VALUE IS 1. 
+                           88 prm-add-piombo-perce-no VALUE IS 0. 
+                       20 prm-add-piombo-ampere        PIC  9.
+                           88 prm-add-piombo-ampere-si VALUE IS 1. 
+                           88 prm-add-piombo-ampere-no VALUE IS 0. 
+                       20 prm-add-piombo-bosch         PIC  9.
+                           88 prm-add-piombo-bosch-si VALUE IS 1. 
+                           88 prm-add-piombo-bosch-no VALUE IS 0. 
+                   15 prm-layout-pers  PIC  9.
+                       88 prm-layout-pers-si VALUE IS 1. 
+                       88 prm-layout-pers-no VALUE IS 0. 
+                   15 prm-num-vuoto-2  PIC  9(14).
+                   15 prm-num-vuoto-3  PIC  9(18).
+                   15 prm-stampante    PIC  x(100).
+                   15 prm-path-logo    PIC  x(200).
+                   15 prm-alfa-vuoto   PIC  x(200).
+                   15 prm-num-vuoto-1  PIC  9(18).

@@ -1,0 +1,60 @@
+      *
+       01 formato-data     PIC  9.
+           88 aaaa-mm-gg VALUE IS 1. 
+           88 aaaa-gg-mm VALUE IS 2. 
+           88 mm-gg-aaaa VALUE IS 3. 
+           88 mm-aaaa-gg VALUE IS 4. 
+           88 gg-mm-aaaa VALUE IS 5. 
+           88 gg-aaaa-mm VALUE IS 6. 
+       78 agg-giorni VALUE IS "1". 
+       78 sottr-giorni VALUE IS "2". 
+       78 test-validita VALUE IS "3". 
+       78 conv-in-data VALUE IS "4". 
+       78 conv-in-seriale VALUE IS "5". 
+       78 sottr-date VALUE IS "6". 
+       78 dom-lun VALUE IS "7". 
+       78 settimane VALUE IS "8". 
+       78 giorni-da-data VALUE IS "9". 
+       78 data-da-giorni VALUE IS "A". 
+       78 conversione VALUE IS "B". 
+       01 redefine-1.
+           03 FILLER           PIC  x(10)
+                      VALUE IS "Lunedi`   ".
+           03 FILLER           PIC  x(10)
+                      VALUE IS "Martedi`  ".
+           03 FILLER           PIC  x(10)
+                      VALUE IS "Mercoledi`".
+           03 FILLER           PIC  x(10)
+                      VALUE IS "Giovedi`  ".
+           03 FILLER           PIC  x(10)
+                      VALUE IS "Venerdi`  ".
+           03 FILLER           PIC  x(10)
+                      VALUE IS "Sabato    ".
+           03 FILLER           PIC  x(10)
+                      VALUE IS "Domenica  ".
+       01 FILLER REDEFINES redefine-1.
+           03 g-sett           PIC  x(10)
+                      OCCURS 7 TIMES.
+       01 redefine-2.
+           03 FILLER           PIC  x(8)
+                      VALUE IS "aa/mm/gg".
+           03 FILLER           PIC  x(8)
+                      VALUE IS "aa/gg/mm".
+           03 FILLER           PIC  x(8)
+                      VALUE IS "mm/gg/aa".
+           03 FILLER           PIC  x(8)
+                      VALUE IS "mm/aa/gg".
+           03 FILLER           PIC  x(8)
+                      VALUE IS "gg/mm/aa".
+           03 FILLER           PIC  x(8)
+                      VALUE IS "gg/aa/mm".
+       01 FILLER REDEFINES redefine-2.
+           03 tipo-form        PIC  x(8)
+                      OCCURS 6 TIMES.
+       01 error-level      PIC  99
+                  USAGE IS COMP-X.
+           88 e-no-errors VALUE IS 0. 
+           88 e-invalid-date VALUE IS 1. 
+           88 e-missing-parms VALUE IS 2. 
+       77 como-data        PIC 9(8).
+       77 como-ora         PIC 9(8).

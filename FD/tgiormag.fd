@@ -1,0 +1,22 @@
+       FD  tgiormag.
+       01 tgm-rec.
+           05 tgm-chiave.
+               10 tgm-mag          PIC  x(3).
+           05 tgm-dati.
+               10 tgm-anno         PIC  9(4).
+               10 tgm-mese         PIC  9(2).
+               10 tgm-pagina       PIC  9(4).
+               10 tgm-dati-comuni.
+                   15 tgm-data-creazione           PIC  9(8).
+                   15 tgm-ora-creazione            PIC  9(8).
+                   15 tgm-utente-creazione         PIC  X(10).
+                   15 tgm-data-ultima-modifica     PIC  9(8).
+                   15 tgm-ora-ultima-modifica      PIC  9(8).
+                   15 tgm-utente-ultima-modifica   PIC  X(10).
+               10 tgm-vuoti.
+                   15 tgm-num-vuoto-1  PIC  9(15).
+                   15 tgm-num-vuoto-2  PIC  9(15).
+                   15 tgm-num-vuoto-3  PIC  9(15).
+                   15 tgm-alfa-vuoto-1 PIC  X(20).
+                   15 tgm-alfa-vuoto-2 PIC  X(20).
+                   15 tgm-alfa-vuoto-3 PIC  X(20).

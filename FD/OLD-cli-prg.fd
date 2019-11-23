@@ -1,0 +1,20 @@
+       FD  OLD-cli-prg.
+       01 OLD-cp-rec.
+           05 OLD-cp-chiave.
+               10 OLD-cp-cli-chiave.
+                   15 OLD-cp-tipo-CF       PIC  x.
+                       88 OLD-cp-tipo-C VALUE IS "C". 
+                       88 OLD-cp-tipo-F VALUE IS "F". 
+                   15 OLD-cp-clifor        PIC  9(5).
+               10 OLD-cp-articolo      PIC  9(6).
+           05 OLD-cp-dati.
+               10 OLD-cp-prg-chiave.
+                   15 OLD-cp-cod-articolo  PIC  9(6).
+                   15 OLD-cp-cod-magazzino PIC  X(3).
+                   15 OLD-cp-tipo-imballo  PIC  X(3).
+                   15 OLD-cp-peso          PIC  9(3)v9(3).
+               10 OLD-cp-filler        PIC  x(500).
+           05 OLD-cp-vuoti.
+               10 OLD-cp-num-vuoto-1   PIC  9(15).
+               10 OLD-cp-num-vuoto-2   PIC  9(15).
+               10 OLD-cp-num-vuoto-3   PIC  9(15).

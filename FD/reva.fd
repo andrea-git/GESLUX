@@ -1,0 +1,42 @@
+       FD  reva.
+       01 reva-rec.
+           05 reva-chiave.
+               10 reva-chiave-testa.
+                   15 reva-anno        PIC  9(4).
+                   15 reva-numero      PIC  9(8).
+               10 reva-riga        PIC  9(5).
+           05 reva-dati.
+               10 reva-chiave-progmag.
+                   15 reva-articolo    PIC  9(6).
+                   15 reva-codmag      PIC  x(3).
+                   15 reva-imballo     PIC  x(3).
+                   15 reva-peso        PIC  9(5)v9(3).
+               10 reva-qta         PIC  9(8).
+               10 reva-prz-unit    PIC  9(9)v99.
+               10 reva-netto       PIC  9(9)v99.
+               10 reva-imp-cons    PIC  9(4)v99.
+               10 reva-coubat      PIC  9(4)v99.
+               10 reva-add-pb      PIC  9(4)v99.
+               10 reva-chiave-ordf.
+                   15 reva-chiave-testa-ordf.
+                       20 reva-anno-ordf   PIC  9(4).
+                       20 reva-numero-ordf PIC  9(8).
+                   15 reva-riga-ordf   PIC  9(5).
+               10 reva-stato       PIC  x.
+                   88 reva-attivo VALUE IS "A". 
+                   88 reva-disattivo VALUE IS "D". 
+                   88 reva-bloccato VALUE IS "B". 
+               10 reva-dati-comuni.
+                   15 reva-data-creazione          PIC  9(8).
+                   15 reva-ora-creazione           PIC  9(8).
+                   15 reva-utente-creazione        PIC  X(10).
+                   15 reva-data-modifica           PIC  9(8).
+                   15 reva-ora-modifica            PIC  9(8).
+                   15 reva-utente-modifica         PIC  X(10).
+               10 reva-vuoti.
+                   15 reva-num-vuoto-1 PIC  9(15).
+                   15 reva-num-vuoto-2 PIC  9(15).
+                   15 reva-num-vuoto-3 PIC  9(15).
+                   15 reva-alfa-vuoto-1            PIC  x(20).
+                   15 reva-alfa-vuoto-2            PIC  x(20).
+                   15 reva-alfa-vuoto-3            PIC  x(20).

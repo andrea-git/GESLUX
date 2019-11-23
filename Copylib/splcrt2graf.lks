@@ -1,0 +1,27 @@
+      *
+       01 splcrt2graf-link.
+           05 splcrt2graf-operazione       PIC  x.
+               88 splcrt2graf-anteprima VALUE IS "a". 
+               88 splcrt2graf-stampa VALUE IS "s". 
+           05 splcrt2graf-so   PIC  x.
+               88 splcrt2graf-windows VALUE IS "w" " ".              
+              |Usato dalla stampa bolle A4 per indicare il secondo giro 
+               88 splcrt2graf-unix VALUE IS "u". 
+           05 splcrt2graf-percorso-stampa  PIC  x(256).
+           |Usato dalla stampa bolle A4 per il nome della stampante
+           05 splcrt2graf-percorso-stampa-u            PIC  x(256).
+           05 splcrt2graf-orientamento     PIC  x.
+               88 splcrt2graf-orizzontale VALUE IS "o". 
+               88 splcrt2graf-verticale VALUE IS "v" " ". 
+           05 filler           PIC  9.
+               88 splcrt2graf-forza-crt VALUE IS 1,    WHEN SET TO 
+           FALSE  0. 
+           05 splcrt2graf-dim-crt          PIC  99.
+               88 splcrt2graf-6pt VALUE IS 6. 
+               88 splcrt2graf-7pt VALUE IS 7. 
+               88 splcrt2graf-8pt VALUE IS 8. 
+               88 splcrt2graf-10pt VALUE IS 10. 
+               88 splcrt2graf-12pt VALUE IS 12. 
+           05 splcrt2graf-grassetto        PIC  x.
+               88 splcrt2graf-si-grasssetto VALUE IS "S"    WHEN SET TO 
+           FALSE  space. 

@@ -1,0 +1,147 @@
+      *
+      *
+      *
+       FD  tscorte.
+       01 sco-rec.
+           05 sco-chiave.
+               10 sco-codice       PIC  9(2).
+           05 sco-dati.
+               10 sco-descrizione  PIC  X(30).
+               10 sco-m-rif        PIC  9.
+               10 sco-liv-scorta   PIC  s9(3)v99.
+               10 sco-articolo     PIC  9.
+                   88 sco-art-attivo VALUE IS 1    WHEN SET TO FALSE  
+           0. 
+               10 sco-dati-comuni.
+                   15 sco-data-creazione           PIC  9(8).
+                   15 sco-ora-creazione            PIC  9(8).
+                   15 sco-utente-creazione         PIC  X(10).
+                   15 sco-data-ultima-modifica     PIC  9(8).
+                   15 sco-ora-ultima-modifica      PIC  9(8).
+                   15 sco-utente-ultima-modifica   PIC  X(10).
+               10 sco-vuoti.
+                   15 sco-programmazione           PIC  9.
+                       88 sco-programmazione-si VALUE IS 1. 
+                       88 sco-programmazione-no VALUE IS 0. 
+                   15 sco-immediato    PIC  9.
+                       88 sco-immediato-si VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+                   15 sco-forzata      PIC  9.
+                       88 sco-forzata-si VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+                       88 sco-forzata-no VALUE IS 0    WHEN SET TO 
+           FALSE  0. 
+      *(( XFD NAME = sco-forzata_1 ))
+                   15 sco-prese        PIC  9.
+                       88 sco-prese-si VALUE IS 1    WHEN SET TO FALSE  
+           0. 
+                       88 sco-prese-no VALUE IS 0    WHEN SET TO FALSE  
+           0. 
+      *(( XFD NAME = sco-forzata_1_1 ))
+                   15 sco-ordine-auto  PIC  9.
+                       88 sco-ordine-auto-si VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+                       88 sco-ordine-auto-no VALUE IS 0    WHEN SET TO 
+           FALSE  0. 
+      *(( XFD NAME = sco-forzata_1_1_1 ))
+                   15 sco-chiu-forzata PIC  9.
+                       88 sco-chiu-forzata-si VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+                       88 sco-chiu-forzata-no VALUE IS 0    WHEN SET TO 
+           FALSE  0. 
+      *(( XFD NAME = sco-forzata_2 ))
+                   15 sco-chiu-forzata2            PIC  9.
+                       88 sco-chiu-forzata2-si VALUE IS 1    WHEN SET 
+           TO FALSE  0. 
+                       88 sco-chiu-forzata2-no VALUE IS 0    WHEN SET 
+           TO FALSE  0. 
+                   15 sco-avviso-promo PIC  9(1).
+                       88 sco-avviso-promo-si VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+                       88 sco-avviso-promo-no VALUE IS 0    WHEN SET TO 
+           FALSE  0. 
+                   15 sco-giorni-invio-automatico.
+                       20 sco-lun          PIC  9.
+                           88 sco-lun-si VALUE IS 1. 
+                           88 sco-lun-no VALUE IS 0. 
+                       20 sco-mar          PIC  9.
+                           88 sco-mar-si VALUE IS 1. 
+                           88 sco-mar-no VALUE IS 0. 
+                       20 sco-mer          PIC  9.
+                           88 sco-mer-si VALUE IS 1. 
+                           88 sco-mer-no VALUE IS 0. 
+                       20 sco-gio          PIC  9.
+                           88 sco-gio-si VALUE IS 1. 
+                           88 sco-gio-no VALUE IS 0. 
+                       20 sco-ven          PIC  9.
+                           88 sco-ven-si VALUE IS 1. 
+                           88 sco-ven-no VALUE IS 0. 
+                       20 sco-sab          PIC  9.
+                           88 sco-sab-si VALUE IS 1. 
+                           88 sco-sab-no VALUE IS 0. 
+                       20 sco-dom          PIC  9.
+                           88 sco-dom-si VALUE IS 1. 
+                           88 sco-dom-no VALUE IS 0. 
+                   15 sco-produzione   PIC  9(1).
+                       88 sco-produzione-si VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+                       88 sco-produzione-no VALUE IS 0    WHEN SET TO 
+           FALSE  0. 
+                   15 sco-mesi-invio-automatico.
+                       20 sco-gen          PIC  9.
+                           88 sco-gen-si VALUE IS 1. 
+                           88 sco-gen-no VALUE IS 0. 
+                       20 sco-feb          PIC  9.
+                           88 sco-feb-si VALUE IS 1. 
+                           88 sco-feb-no VALUE IS 0. 
+      *(( XFD NAME = sco-mar_1 ))
+                       20 sco-marz         PIC  9.
+                           88 sco-marz-si VALUE IS 1. 
+                           88 sco-marz-no VALUE IS 0. 
+                       20 sco-apr          PIC  9.
+                           88 sco-apr-si VALUE IS 1. 
+                           88 sco-apr-no VALUE IS 0. 
+                       20 sco-mag          PIC  9.
+                           88 sco-mag-si VALUE IS 1. 
+                           88 sco-mag-no VALUE IS 0. 
+                       20 sco-giu          PIC  9.
+                           88 sco-giu-si VALUE IS 1. 
+                           88 sco-giu-no VALUE IS 0. 
+                       20 sco-lug          PIC  9.
+                           88 sco-lug-si VALUE IS 1. 
+                           88 sco-lug-no VALUE IS 0. 
+                       20 sco-ago          PIC  9.
+                           88 sco-ago-si VALUE IS 1. 
+                           88 sco-ago-no VALUE IS 0. 
+                       20 sco-set          PIC  9.
+                           88 sco-set-si VALUE IS 1. 
+                           88 sco-set-no VALUE IS 0. 
+                       20 sco-ott          PIC  9.
+                           88 sco-ott-si VALUE IS 1. 
+                           88 sco-otto-no VALUE IS 0. 
+                       20 sco-nov          PIC  9.
+                           88 sco-nov-si VALUE IS 1. 
+                           88 sco-nov-no VALUE IS 0. 
+                       20 sco-dic          PIC  9.
+                           88 sco-dic-si VALUE IS 1. 
+                           88 sco-dic-no VALUE IS 0. 
+                   15 sco-permetti-sost            PIC  9(1).
+                       88 sco-permetti-sost-si VALUE IS 1    WHEN SET 
+           TO FALSE  0. 
+                       88 sco-permetti-sost-no VALUE IS 0    WHEN SET 
+           TO FALSE  0. 
+                   15 sco-forzata-saldi            PIC  9.
+                       88 sco-forzata-saldi-si VALUE IS 1    WHEN SET 
+           TO FALSE  0. 
+                       88 sco-forzata-saldi-no VALUE IS 0    WHEN SET 
+           TO FALSE  0. 
+                   15 sco-no-gdo       PIC  9(1).
+                       88 sco-no-gdo-si VALUE IS 1    WHEN SET TO FALSE 
+            0. 
+                       88 sco-no-gdo-no VALUE IS 0    WHEN SET TO FALSE 
+            0. 
+                   15 sco-num-vuoto-2  PIC  9(5).
+                   15 sco-num-vuoto-3  PIC  9(18).
+                   15 sco-alfa-vuoto-1 PIC  X(20).
+                   15 sco-alfa-vuoto-2 PIC  X(20).
+                   15 sco-alfa-vuoto-3 PIC  X(20).

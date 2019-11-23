@@ -1,0 +1,51 @@
+      *(( XFD FILE = FRZ ))
+      *
+      * tk 5643 - eliminare type amount e price dai dpb/dab (sono tipi non gestiti)                        | QUASIL 09/04/2014
+      * . Trasformati i type=amount in type=num,dec=2,size=21
+      *-----------------------------------------------------------------
+      * 
+      *
+      *
+      *----------
+      *      * 
+      *
+       FD  FRZ
+           RECORD IS VARYING IN SIZE TO 256 CHARACTERS.
+      *
+      *
+      *
+       01 RECORD-FRZ.
+           05 FRZ-CODICE       PIC  X(08).
+      *
+      *
+      *
+           05 RESTO-RECORD-FRZ.
+      *$GEN type=num,dec=2,size=21
+               10 FRZ-DARE-APERTURA            PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,dec=2,size=21
+      *
+               10 FRZ-AVERE-APERTURA           PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,dec=2,size=21
+               10 FRZ-DARE-CHIUSURA            PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,dec=2,size=21
+               10 FRZ-AVERE-CHIUSURA           PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,dec=2,size=21
+      *
+               10 FRZ-DARE-PRECEDENTE          PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,dec=2,size=21
+      *
+               10 FRZ-AVERE-PRECEDENTE         PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,dec=2,size=21
+               10 FRZ-DARE         PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,dec=2,size=21
+               10 FRZ-AVERE        PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+               10 FRZ-FILLER       PIC  X(80).
+               10 FRZ-FILLER-RIS   PIC  X(40).

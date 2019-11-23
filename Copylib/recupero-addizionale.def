@@ -1,0 +1,11 @@
+      *
+       77  add-pb                pic 9(6)v99.
+       77  cod-iva               pic x(3).
+       01  filler                pic 9.
+         88 trovato-ordine       value 1 false 0.
+
+       01  filler                pic 9.
+         88 trovato-nota         value 1 false 0.
+
+       01  filler                pic 9.
+         88 trovato-articolo     value 1 false 0.

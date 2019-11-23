@@ -1,0 +1,12 @@
+      *
+       01 notacr-linkage.
+           03 NotaChiave.
+               05 NotaAnno         PIC  9(4).
+               05 NotaNumero       PIC  9(8).
+           03 Link-TipoNota    PIC  x(4).
+           03 Link-TipoDoc     PIC  x.
+               88 LinkNota VALUE IS "N". 
+               88 LinkBozza VALUE IS "B". 
+               88 LinkFatt VALUE IS "F". 
+           03 LinkStatusNota
+                      USAGE IS SIGNED-SHORT.

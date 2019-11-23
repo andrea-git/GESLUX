@@ -1,0 +1,11 @@
+      *
+       01 chvet-linkage.
+           03 chvet-reg        PIC  9(3).
+           03 chvet-prov       PIC  x(2).
+           03 chvet-tipo       PIC  xx.
+           03 chvet-old-vet    PIC  9(5).
+           03 chvet-new-vet    PIC  9(5).
+           03 chvet-c-counter  PIC  9(10).
+           03 chvet-d-counter  PIC  9(10).
+           03 chvet-handle
+                      USAGE IS HANDLE OF WINDOW.

@@ -1,0 +1,23 @@
+      *----------------------------------------------------------------
+      *
+      * adddays.clk
+      *
+      * madd ? --> method add days to date
+      *
+      *----------------------------------------------------------------
+       01  madd-link-area.
+      *
+      *
+           05  madd-id                      pic x(32).
+               88  madd-id-set              value "r_adddays".
+      *
+      * date (yyymmdd)
+      * days
+      *
+           05  madd-in.
+               10  madd-in-date             pic 9(08).
+               10  madd-in-days             pic 9(08).
+           05  madd-out.
+               10  madd-out-date            pic 9(08).
+      *
+      *----------------------------------------------------------------

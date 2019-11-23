@@ -1,0 +1,57 @@
+       FD  timposte.
+       01 imp-rec.
+           05 imp-chiave.
+      *Fisso a SPACES (mono record)
+      *
+      *
+      *
+      *
+      *
+      *
+               10 imp-data         PIC  9(8).
+           05 imp-dati.
+               10 imp-imposta-consumo          PIC  9(2)v9(6).
+               10 imp-cou          PIC  9(2)v9(6).
+               10 imp-co-bat-auto.
+                   15 imp-cb-auto-sca-1-da         PIC  9(3).
+                   15 imp-cb-auto-sca-1-a          PIC  9(3).
+                   15 imp-cb-auto-sca-1-euro       PIC  9(3)v9(3).
+                   15 imp-cb-auto-sca-2-da         PIC  9(3).
+                   15 imp-cb-auto-sca-2-a          PIC  9(3).
+                   15 imp-cb-auto-sca-2-euro       PIC  9(3)v9(3).
+                   15 imp-cb-auto-sca-3-da         PIC  9(3).
+                   15 imp-cb-auto-sca-3-a          PIC  9(3).
+      *
+      *
+      *
+      *
+      *
+                   15 imp-cb-auto-sca-3-euro       PIC  9(3)v9(3).
+                   15 imp-cb-auto-sca-4-da         PIC  9(3).
+                   15 imp-cb-auto-sca-4-a          PIC  9(3).
+                   15 imp-cb-auto-sca-4-euro       PIC  9(3)v9(3).
+                   15 imp-cb-auto-sca-5-da         PIC  9(3).
+                   15 imp-cb-auto-sca-5-a          PIC  9(3).
+                   15 imp-cb-auto-sca-5-euro       PIC  9(3)v9(3).
+               10 imp-co-bat-scooter.
+                   15 imp-cb-scooter-sca-1-da      PIC  9(3).
+                   15 imp-cb-scooter-sca-1-a       PIC  9(3).
+                   15 imp-cb-scooter-sca-1-euro    PIC  9(3)v9(3).
+                   15 imp-cb-scooter-sca-2-da      PIC  9(3).
+                   15 imp-cb-scooter-sca-2-a       PIC  9(3).
+                   15 imp-cb-scooter-sca-2-euro    PIC  9(3)v9(3).
+                   15 imp-cb-scooter-sca-3-da      PIC  9(3).
+                   15 imp-cb-scooter-sca-3-a       PIC  9(3).
+                   15 imp-cb-scooter-sca-3-euro    PIC  9(3)v9(3).
+               10 imp-dati-comuni.
+                   15 imp-data-creazione           PIC  9(8).
+                   15 imp-ora-creazione            PIC  9(8).
+                   15 imp-utente-creazione         PIC  X(10).
+                   15 imp-data-modifica            PIC  9(8).
+                   15 imp-ora-modifica PIC  9(8).
+                   15 imp-utente-modifica          PIC  X(10).
+               10 imp-vuoti.
+                   15 imp-num-vuoto-1  PIC  9(15).
+                   15 imp-num-vuoto-2  PIC  9(15).
+                   15 imp-num-vuoto-3  PIC  9(15).
+               10 FILLER           PIC  x(500).

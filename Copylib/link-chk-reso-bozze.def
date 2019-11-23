@@ -1,0 +1,8 @@
+      *
+       01  chk-bz-cli-linkage.
+         05 chk-bz-chiave.
+           10 chk-bz-anno      pic 9(4).
+           10 chk-bz-numero    pic 9(8).
+         05 chk-bz-status      pic s9.
+         05 chk-bz-num-reso    pic 9(8).
+         05 chk-bz-mese        pic 9(2).

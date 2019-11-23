@@ -1,0 +1,27 @@
+      *
+      *
+       FD  ttipoavv.
+       01 tav-rec.
+           05 tav-chiave.
+               10 tav-codice       PIC  X(2).
+           05 tav-dati.
+               10 tav-messaggio    PIC  X(100).
+               10 tav-automatismi  PIC  X(2).
+                   88 tav-no-auto VALUE IS " ". 
+                   88 tav-promo VALUE IS "P". 
+                   88 tav-banner-trad VALUE IS "T". 
+                   88 tav-banner-gdo VALUE IS "G". 
+               10 tav-dati-comuni.
+                   15 tav-data-creazione           PIC  9(8).
+                   15 tav-ora-creazione            PIC  9(8).
+                   15 tav-utente-creazione         PIC  X(10).
+                   15 tav-data-ultima-modifica     PIC  9(8).
+                   15 tav-ora-ultima-modifica      PIC  9(8).
+                   15 tav-utente-ultima-modifica   PIC  X(10).
+               10 tav-vuoti.
+                   15 tcl-num-vuoto-1  PIC  9(18).
+                   15 tcl-num-vuoto-2  PIC  9(18).
+                   15 tcl-num-vuoto-3  PIC  9(18).
+                   15 tcl-alfa-vuoto-1 PIC  X(20).
+                   15 tcl-alfa-vuoto-2 PIC  X(20).
+                   15 tcl-alfa-vuoto-3 PIC  X(20).

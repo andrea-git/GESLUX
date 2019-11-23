@@ -1,0 +1,8 @@
+      *
+       01 genbil-linkage.
+           03 genbil-mese-from pic 9(2).
+           03 genbil-anno-from pic 9(4).
+           03 genbil-mese-to   pic 9(2).
+           03 genbil-anno-to   pic 9(4).
+           03 genbil-user      pic x(20).
+           03 genbil-handle    handle of window.

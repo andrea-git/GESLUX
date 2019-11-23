@@ -1,0 +1,23 @@
+      *
+       01 stbrogcpm-limiti.
+           05 stbrogcpm-tipologie.
+               10 stbrogcpm-tipologie-elemento
+                          OCCURS 70 TIMES.
+                   15 stbrogcpm-tipologia          PIC  xx.
+                   15 stbrogcpm-YesNo  PIC  9.
+           05 stbrogcm-da-anno PIC  9(4).
+           05 stbrogcm-a-anno  PIC  9(4).
+           05 stbrogcm-da-num  PIC  9(8).
+           05 stbrogcm-a-num   PIC  9(8).
+      *     05 stbrogcm-tipo-cli            PIC  9.
+      *         88 ClienteGDO VALUE IS 1    WHEN SET TO FALSE  2. 
+           05 stbrogcm-path    PIC  x(256).
+           05 stbrogcm-handle
+                      USAGE IS HANDLE OF WINDOW.
+      *     05 stbrogcm-fm      PIC  9.
+      *         88 stbrogcm-tutte VALUE IS 1. 
+      *         88 stbrogcm-solo-fm VALUE IS 2. 
+      *         88 stbrogcm-no-fm VALUE IS 3. 
+      *     05 stbrogcm-fattu   PIC  9.
+      *         88 stbrogcm-no-fattu VALUE IS 0. 
+      *         88 stbrogcm-si-fattu VALUE IS 1. 

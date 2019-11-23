@@ -1,0 +1,19 @@
+       FD  tgruppi.
+       01 tgr-rec.
+           05 tgr-chiave.
+               10 tgr-codice       PIC  9(5).
+           05 tgr-dati.
+               10 tgr-descrizione  PIC  x(100).
+               10 tgr-email        PIC  x(2500).
+               10 tgr-comuni.
+                   15 tgr-data-creazione           PIC  9(8).
+                   15 tgr-ora-creazione            PIC  9(8).
+                   15 tgr-utente-creazione         PIC  x(10).
+                   15 tgr-data-modifica            PIC  9(8).
+                   15 tgr-ora-modifica PIC  9(8).
+                   15 tgr-utente-modifica          PIC  x(10).
+               10 tgr-vuoti.
+                   15 tgr-num-vuoto-1  PIC  9(15).
+                   15 tgrr-num-vuoto-2 PIC  9(15).
+                   15 tgrr-num-vuoto-3 PIC  9(15).
+                   15 tgr-alfa-vuoto-1 PIC  x(500).

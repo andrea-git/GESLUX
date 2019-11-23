@@ -1,0 +1,15 @@
+                                          
+       77  como-numero           pic 9(12)v9(5).
+       77  como-numero-z         pic z(12)vz(5).
+       01  como-numero-x.
+           05 como-int           pic x(12).
+           05 como-dec           pic x(5).
+       77  NumericEDI            pic x(20).
+                                            
+       77  CountChar             pic 9(3).
+       77  CountCharBeforeDot    pic 9(3).
+       77  CountDot              pic 9(3).
+       77  IdxChar               pic 9(3).
+                                                        
+       01 filler                 pic 9 value 0.
+           88 NotNumericFound    value 1, false 0.  

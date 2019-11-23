@@ -1,0 +1,3629 @@
+; CaseMaker Totem Program Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[PROGRAM_CONTENT]
+QUIT_CONFIRM=0
+ANSI_FORMAT=1
+MAIN_SCREEN_NAME=Form2
+BEFORE_PROGRAM=selnota-Ev-Before-Program
+AFTER_PROGRAM=selnota-Ev-After-Program
+PROGRAM_UNIQUE_CODE=TOTEM-7DBB1719653-503-219214027
+
+{{@DESCRIPTION:
+
+@}}
+
+[WORKING_STORAGE]
+m_nType=1
+m_strName=Working Storage
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionWK
+
+@}}
+[FDITEM0_WK]
+m_strName=gordcvar-linkage
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
+m_strCopyFile=link-gordcvar.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM0_WK
+
+@}}
+[FDITEM1_WK]
+m_strName=LinkChiave
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
+m_strCopyFile=link-gordcvar.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM1_WK
+
+@}}
+[FDITEM2_WK]
+m_strName=LinkAnno
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
+m_strCopyFile=link-gordcvar.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM2_WK
+
+@}}
+[FDITEM3_WK]
+m_strName=linkNumero
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
+m_strCopyFile=link-gordcvar.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM3_WK
+
+@}}
+[FDITEM4_WK]
+m_strName=LinkPgm
+m_strRawPic=x(20)
+m_strPic=X(20)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
+m_strCopyFile=link-gordcvar.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM4_WK
+
+@}}
+[FDITEM5_WK]
+m_strName=LinkStatus
+m_nUsage=17
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
+m_strCopyFile=link-gordcvar.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM5_WK
+
+@}}
+[FDITEM6_WK]
+m_strName=notacr-linkage
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-NOTACR.DEF
+m_strCopyFile=LINK-NOTACR.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-NOTACR.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM6_WK
+
+@}}
+[FDITEM7_WK]
+m_strName=NotaChiave
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-NOTACR.DEF
+m_strCopyFile=LINK-NOTACR.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-NOTACR.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM7_WK
+
+@}}
+[FDITEM8_WK]
+m_strName=NotaAnno
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-NOTACR.DEF
+m_strCopyFile=LINK-NOTACR.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-NOTACR.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM8_WK
+
+@}}
+[FDITEM9_WK]
+m_strName=NotaNumero
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-NOTACR.DEF
+m_strCopyFile=LINK-NOTACR.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-NOTACR.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM9_WK
+
+@}}
+[FDITEM10_WK]
+m_strName=Link-TipoNota
+m_strRawPic=x(4)
+m_strPic=X(4)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-NOTACR.DEF
+m_strCopyFile=LINK-NOTACR.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-NOTACR.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM10_WK
+
+@}}
+[FDITEM11_WK]
+m_strName=LinkNCNC
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="NCNC"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-NOTACR.DEF
+m_strCopyFile=LINK-NOTACR.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-NOTACR.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM11_WK
+
+@}}
+[FDITEM12_WK]
+m_strName=LinkNCPZ
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="NCPZ"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-NOTACR.DEF
+m_strCopyFile=LINK-NOTACR.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-NOTACR.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM12_WK
+
+@}}
+[FDITEM13_WK]
+m_strName=LinkNCRE
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="NCRE"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-NOTACR.DEF
+m_strCopyFile=LINK-NOTACR.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-NOTACR.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM13_WK
+
+@}}
+[FDITEM14_WK]
+m_strName=Link-TipoDoc
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-NOTACR.DEF
+m_strCopyFile=LINK-NOTACR.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-NOTACR.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM14_WK
+
+@}}
+[FDITEM15_WK]
+m_strName=LinkBozza
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="B"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-NOTACR.DEF
+m_strCopyFile=LINK-NOTACR.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-NOTACR.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM15_WK
+
+@}}
+[FDITEM16_WK]
+m_strName=LinkFatt
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="F"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-NOTACR.DEF
+m_strCopyFile=LINK-NOTACR.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-NOTACR.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM16_WK
+
+@}}
+[FDITEM17_WK]
+m_strName=LinkStatusNota
+m_nUsage=17
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-NOTACR.DEF
+m_strCopyFile=LINK-NOTACR.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-NOTACR.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM17_WK
+
+@}}
+[FDITEM18_WK]
+m_strName=Screen1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM18_WK
+
+@}}
+[FDITEM19_WK]
+m_strName=save-anno
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM19_WK
+
+@}}
+[FDITEM20_WK]
+m_strName=Small-Font
+m_nUsage=37
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM20_WK
+
+@}}
+[FDITEM21_WK]
+m_strName=STATUS-tordini
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM21_WK
+
+@}}
+[FDITEM22_WK]
+m_strName=Valid-STATUS-tordini
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM22_WK
+
+@}}
+[FDITEM23_WK]
+m_strName=anno
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM23_WK
+
+@}}
+[FDITEM24_WK]
+m_strName=numero
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM24_WK
+
+@}}
+[FDITEM25_WK]
+m_strName=numero-edit
+m_strRawPic=z(8)
+m_strPic=z(8)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM25_WK
+
+@}}
+[FDITEM26_WK]
+m_strName=Default-Font
+m_nUsage=38
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM26_WK
+
+@}}
+[FDITEM27_WK]
+m_strName=OK_73X21-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM27_WK
+
+@}}
+[FDITEM28_WK]
+m_strName=CANCEL_73X21-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM28_WK
+
+@}}
+[FDITEM29_WK]
+m_strName=Form1-Tb-1-Handlea
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM29_WK
+
+@}}
+[FDITEM30_WK]
+m_strName=toolbar-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM30_WK
+
+@}}
+[FDITEM31_WK]
+m_strName=titolo
+m_strDefaultValue="Creazione Nota Credito"
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM31_WK
+
+@}}
+[FDITEM32_WK]
+m_strName=E-ESCI
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM32_WK
+
+@}}
+[FDITEM33_WK]
+m_strName=E-CERCA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM33_WK
+
+@}}
+[FDITEM34_WK]
+m_strName=BOTTONE-OK-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM34_WK
+
+@}}
+[FDITEM35_WK]
+m_strName=BOTTONE-CANCEL-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM35_WK
+
+@}}
+[FDITEM36_WK]
+m_strName=Verdana12-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM36_WK
+
+@}}
+[FDITEM37_WK]
+m_strName=Form2-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM37_WK
+
+@}}
+[FDITEM38_WK]
+m_strName=strip_notacr-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM38_WK
+
+@}}
+[FDITEM39_WK]
+m_strName=sav-livello-abil
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM39_WK
+
+@}}
+[FDITEM40_WK]
+m_strName=STATUS-tparamge
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM40_WK
+
+@}}
+[FDITEM41_WK]
+m_strName=Valid-STATUS-tparamge
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM41_WK
+
+@}}
+[FDITEM42_WK]
+m_strName=Form1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM42_WK
+
+@}}
+[FDITEM43_WK]
+m_strName=path-zoom-tordini
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM43_WK
+
+@}}
+[FDITEM44_WK]
+m_strName=STATUS-zoom-tordini
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM44_WK
+
+@}}
+[FDITEM45_WK]
+m_strName=Valid-STATUS-zoom-tordini
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM45_WK
+
+@}}
+[FDITEM46_WK]
+m_strName=filler
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM46_WK
+
+@}}
+[FDITEM47_WK]
+m_strName=record-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1,
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM47_WK
+
+@}}
+[FDITEM48_WK]
+m_strName=ext-file
+m_strRawPic=x(256)
+m_strPic=X(256)
+m_nItemLevel=77
+m_nExternal=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM48_WK
+
+@}}
+[FDITEM49_WK]
+m_strName=STATUS-tcaumag
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM49_WK
+
+@}}
+[FDITEM50_WK]
+m_strName=Valid-STATUS-tcaumag
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM50_WK
+
+@}}
+[FDITEM51_WK]
+m_strName=STATUS-clienti
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM51_WK
+
+@}}
+[FDITEM52_WK]
+m_strName=Valid-STATUS-clienti
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM52_WK
+
+@}}
+[FDITEM53_WK]
+m_strName=STATUS-destini
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM53_WK
+
+@}}
+[FDITEM54_WK]
+m_strName=Valid-STATUS-destini
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM54_WK
+
+@}}
+[FDITEM55_WK]
+m_strName=scr-nota-handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM55_WK
+
+@}}
+[FDITEM56_WK]
+m_strName=STATUS-btnotacr
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM56_WK
+
+@}}
+[FDITEM57_WK]
+m_strName=Valid-STATUS-btnotacr
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM57_WK
+
+@}}
+[FDITEM58_WK]
+m_strName=STATUS-contestazioni
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM58_WK
+
+@}}
+[FDITEM59_WK]
+m_strName=Valid-STATUS-contestazioni
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM59_WK
+
+@}}
+[FDITEM60_WK]
+m_strName=STATUS-tnotacr
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM60_WK
+
+@}}
+[FDITEM61_WK]
+m_strName=Valid-STATUS-tnotacr
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM61_WK
+
+@}}
+[FDITEM62_WK]
+m_strName=numero-nota
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM62_WK
+
+@}}
+[FDITEM63_WK]
+m_strName=STATUS-note-cont
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM63_WK
+
+@}}
+[FDITEM64_WK]
+m_strName=Valid-STATUS-note-cont
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM64_WK
+
+@}}
+[FDITEM65_WK]
+m_strName=numero-bolla
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM65_WK
+
+@}}
+[FDITEM66_WK]
+m_strName=path-zoom-bolle
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM66_WK
+
+@}}
+[FDITEM67_WK]
+m_strName=STATUS-zoom-bolle
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM67_WK
+
+@}}
+[FDITEM68_WK]
+m_strName=Valid-STATUS-zoom-bolle
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM68_WK
+
+@}}
+[FDITEM69_WK]
+m_strName=cont
+m_strRawPic=9(3)
+m_strPic=9(3)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM69_WK
+
+@}}
+
+
+[LINKAGE_SECTION]
+m_nType=1
+m_strName=Linkage Section
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionLK
+
+@}}
+[FDITEM0_LK]
+m_strName=LK-BLOCKPGM
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM0_LK
+
+@}}
+[FDITEM1_LK]
+m_strName=LK-BL-PROG-ID
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM1_LK
+
+@}}
+[FDITEM2_LK]
+m_strName=LK-BL-DATA
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM2_LK
+
+@}}
+[FDITEM3_LK]
+m_strName=LK-BL-ORA
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM3_LK
+
+@}}
+[FDITEM4_LK]
+m_strName=LK-BL-TIPO-OP
+m_strRawPic=9(1)
+m_strPic=9(1)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM4_LK
+
+@}}
+[FDITEM5_LK]
+m_strName=LK-BL-LETTURA
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM5_LK
+
+@}}
+[FDITEM6_LK]
+m_strName=LK-BL-SCRITTURA
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=2
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM6_LK
+
+@}}
+[FDITEM7_LK]
+m_strName=LK-BL-CANCELLAZIONE
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=3
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM7_LK
+
+@}}
+[FDITEM8_LK]
+m_strName=LK-BL-USO
+m_strRawPic=9(1)
+m_strPic=9(1)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM8_LK
+
+@}}
+[FDITEM9_LK]
+m_strName=LK-BL-IN-USO
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM9_LK
+
+@}}
+[FDITEM10_LK]
+m_strName=LK-HND-WIN
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM10_LK
+
+@}}
+[FDITEM11_LK]
+m_strName=USER-CODI
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=common-linkage.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM11_LK
+
+@}}
+[FDITEM12_LK]
+m_strName=LIVELLO-ABIL
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=common-linkage.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM12_LK
+
+@}}
+
+
+{{@SCREEN:
+*   Screen Painter Data
+*   Schema 6.0
+*
+BEGIN-SPDATA-6.1A
+
+GRAPHICAL-SCREEN
+
+Begin Screen Form2
+   PREFIX            = Screen1
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = Form2
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 18
+   Cell Width        = 10
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = FALSE
+   Font              = Verdana/12/C0/@Occidentale
+   Font Variable     = Verdana12-Occidentale
+   Handle Variable   = Form2-Handle
+   Height in Cells   = TRUE
+   Help ID           = 0
+   Label Offset      = 20
+   Lines             = 11,94
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = TRUE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 23,00
+   System Menu       = TRUE
+   Title             = "GESLUX  - Sel. Documento"
+   Title Bar         = TRUE
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = TRUE
+   Window Type       = Independent
+   Wrap              = FALSE
+   Event Procedure   = Screen1-Event-Proc
+   Begin Entry-Field ef-anno
+      SCREEN-COL        = 18,00
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-anno
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 18,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 1001
+      Justification     = Right
+      Line              = 2,00
+      Lines             = 1,33
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 0
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 5,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 1
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Value Picture     = 9(4)
+      Value Variable    = anno
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-anno-BeforeProcedure
+      After Procedure   = ef-anno-AfterProcedure
+   End
+   Begin Entry-Field ef-num
+      SCREEN-COL        = 15,00
+      SCREEN-LINE       = 4,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-num
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 15,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 1002
+      Justification     = Right
+      Line              = 4,00
+      Lines             = 1,33
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 0
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 8,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 2
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Value Picture     = 9(8)
+      Value Variable    = numero
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-num-BeforeProcedure
+      After Procedure   = ef-num-AfterProcedure
+   End
+   Begin Entry-Field ef-nota
+      SCREEN-COL        = 15,00
+      SCREEN-LINE       = 6,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-nota
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 15,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 1003
+      Justification     = Right
+      Line              = 6,00
+      Lines             = 1,33
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 0
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 8,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 3
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Value Picture     = 9(8)
+      Value Variable    = numero-nota
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-num-BeforeProcedure
+      After Procedure   = ef-num-AfterProcedure
+   End
+   Begin Entry-Field ef-bolla
+      SCREEN-COL        = 15,00
+      SCREEN-LINE       = 8,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-bolla
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 15,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 1004
+      Justification     = Right
+      Line              = 8,00
+      Lines             = 1,33
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 0
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 8,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 4
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Value Picture     = 9(8)
+      Value Variable    = numero-bolla
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-bolla-BeforeProcedure
+      After Procedure   = ef-bolla-AfterProcedure
+   End
+   Begin Frame Screen1-Fr-1
+      SCREEN-COL        = 1,00
+      SCREEN-LINE       = 10,17
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-Fr-1
+      3D Style          = Lowered
+      Alternate         = FALSE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1.00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Font              = Default Font
+      Full Height       = FALSE
+      Height in Cells   = TRUE
+      Help ID           = 0
+      High Color        = 0
+      ID                = 1
+      Line              = 10,17
+      Lines             = 2,78
+      Lines Unit        = Default
+      Low Color         = 0
+      Size              = 23,00
+      Size Unit         = Default
+      Tab Order         = 5
+      Thickness         = Default
+      Title Position    = 0:Unaligned
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Begin Push-Button PB-ESEGUI
+         SCREEN-COL        = 8,00
+         SCREEN-LINE       = 10,84
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = PB-ESEGUI
+         Bitmap            = "..\RESOURCE\BOTTONE-OK.BMP"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = BOTTONE-OK-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 8,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 1001
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 500
+         Line              = 1,67
+         Lines             = 1,56
+         Lines in Pixels   = 30
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 7,10
+         Size in Pixels    = 73
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 1
+         Termination Value = 13
+         Title             = "E&segue il programma selezionato"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Before Procedure  = PB-ESEGUI-BeforeProcedure
+         After Procedure   = PB-ESEGUI-AfterProcedure
+         Link To           = PB-ESEGUI-LinkTo
+      End
+      Begin Push-Button pb-cancel
+         SCREEN-COL        = 15,90
+         SCREEN-LINE       = 10,84
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = pb-cancel
+         Bitmap            = "..\RESOURCE\BOTTONE-CANCEL.BMP"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = BOTTONE-CANCEL-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 15,90
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 27
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 501
+         Line              = 1,67
+         Lines             = 1,56
+         Lines in Pixels   = 30
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 7,10
+         Size in Pixels    = 73
+         Size Unit         = Default
+         Style             = Escape Button
+         Tab Order         = 2
+         Termination Value = 0
+         Title             = "&Esce dall'applicativo"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Before Procedure  = Form1-Pb-2-BeforeProcedure
+         After Procedure   = Form1-Pb-2-AfterProcedure
+      End
+   End
+   Begin Label Screen1-La-1
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-La-1
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 6
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 2,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 5,00
+      Size Unit         = Default
+      Tab Order         = 6
+      Title             = "Anno"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Screen1-La-2
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 4,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-La-2
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 2
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 4,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 11,00
+      Size Unit         = Default
+      Tab Order         = 7
+      Title             = "Num. Fattura"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Screen1-La-2a
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 6,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-La-2a
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 502
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 6,00
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 12,00
+      Size Unit         = Default
+      Tab Order         = 8
+      Title             = "Num. Nota Cr."
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin CsCtrl.blockpgm Label Screen1-blockpgm-1
+      CUST-SYMBOL       = blockpgm
+      CUST-MODIFYFLAG   = 000000000000000000000000000000000000000000000000000
+      SCREEN-COL        = 2,80
+      SCREEN-LINE       = 1,00
+      LOCK-CONTROL      = FALSE
+      LEVEL             = 5
+      (Name)            = Screen1-blockpgm-1
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,80
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 13
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 1.00
+      Lines             = 0,72
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 2,60
+      Size Unit         = Default
+      Tab Order         = 9
+      Title             = "BlockPgm"
+      Transparent       = TRUE
+      Visible           = NONE
+      Visible Variable  = v-custom
+      Width in Cells    = TRUE
+   End
+   Begin CsCtrl.Custom1 Label Screen1-Custom1-1
+      CUST-SYMBOL       = Custom1
+      CUST-MODIFYFLAG   = 000000000000000000000000000000000000000000000000000
+      SCREEN-COL        = 12,00
+      SCREEN-LINE       = 1,28
+      LOCK-CONTROL      = FALSE
+      LEVEL             = 5
+      (Name)            = Screen1-Custom1-1
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 12,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Font Variable     = Default-Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 14
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 1,28
+      Lines             = 0,61
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 2,40
+      Size Unit         = Default
+      Tab Order         = 10
+      Title             = "CUSTOM CONTROL"
+      Transparent       = TRUE
+      Visible           = NONE
+      Visible Variable  = v-custom
+      Width in Cells    = FALSE
+   End
+   Begin Label Screen1-La-2aa
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 8,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-La-2aa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 1005
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 8,00
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 12,00
+      Size Unit         = Default
+      Tab Order         = 11
+      Title             = "Num. Bolla"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Toolbar Form1-Tb-1a
+      SCREEN-LINE       = 1,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 1
+      (Name)            = Form1-Tb-1a
+      Cell              = FALSE
+      Color             = 0
+      Font              = Default Font
+      Handle Variable   = Form1-Tb-1-Handlea
+      Help ID           = 0
+      Lines             = 2,67
+      Tab Order         = 12
+      Begin Push-Button TOOL-ESCI
+         SCREEN-COL        = 1,00
+         SCREEN-LINE       = 1,08
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-ESCI
+         Bitmap            = "..\resource\toolbar.bmp"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = toolbar-bmp
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 1,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Enable Variable   = E-ESCI
+         Exception Value   = 27
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 11
+         Line              = 1,08
+         Lines             = 1,17
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 2,20
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Escape Button
+         Tab Order         = 1
+         Termination Value = 0
+         Title             = "&Esci"
+         Visible           = NONE
+         Width in Cells    = FALSE
+      End
+      Begin Push-Button TOOL-CERCA
+         SCREEN-COL        = 6,00
+         SCREEN-LINE       = 1,08
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-CERCA
+         Bitmap            = "..\RESOURCE\TOOLBAR.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = TOOLBAR-BMP
+         Bitmap Number     = 8
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 6,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Enable Variable   = E-CERCA
+         Exception Value   = 8
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 12
+         Line              = 1,08
+         Lines             = 1,17
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 2,20
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 2
+         Termination Value = 0
+         Title             = "Cerca (F8)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Link To           = TOOL-CERCA-LinkTo
+      End
+   End
+End
+
+END-SPDATA
+
+@}}
+
+{{@REPORT:
+*   Report Writer Data
+*   Schema 6.0
+*
+BEGIN-RWDATA-6.0A
+
+END-RWDATA
+
+@}}
+
+{{@EMBEDDING_CODE:
+BEGIN-DATA
+   BASETYPE          = 6
+   NODESTYLE         = 7
+   PARAGRAPH         = DeletedCode
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form2
+   ACTOBJ            = Form2
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterDisplay
+BEGIN-TEXT
+
+      *<<** Customized_Default, SP-G, Screen1-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 0
+   PARENT            = selcont
+   ACTOBJ            = selcont
+   ENTRYPOINT        = BeforeDeclarative
+BEGIN-TEXT
+       TORDINI-ERR SECTION.
+           use after error procedure on tordini.
+           evaluate status-tordini
+           when "35"
+                display message "File [TORDINI] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [TORDINI] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[TORDINI] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "93"
+           when "99"
+                set RecLocked to true
+           end-evaluate.
+
+      ***---
+       CONTESTAZIONI-ERR SECTION.
+           use after error procedure on contestazioni.
+           evaluate status-contestazioni
+           when "35"
+                display message "File [CONTESTAZIONI] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [CONTESTAZIONI] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[CONTESTAZIONI] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "93"
+           when "99"
+                set RecLocked to true
+           end-evaluate.
+
+      ***---
+       TNOTACR-ERR SECTION.
+           use after error procedure on tnotacr.
+           evaluate status-tnotacr
+           when "35"
+                display message "File [TNOTACR] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [TNOTACR] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[TNOTACR] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "93"
+           when "99"
+                set RecLocked to true
+           end-evaluate.
+ 
+      ***---
+       ZOOM-TORDINI-ERR SECTION.
+           use after error procedure on zoom-tordini.
+           set tutto-ok  to true.
+           evaluate status-zoom-tordini
+           when "35"
+                display message "File [ZOOM-TORDINI] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [ZOOM-TORDINI] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[ZOOM-TORDINI] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           end-evaluate.
+ 
+      ***---
+       TCAUMAG-ERR SECTION.
+           use after error procedure on tcaumag.
+           set tutto-ok  to true.
+           evaluate status-tcaumag
+           when "35"
+                display message "File [TCAUMAG] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [TCAUMAG] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[TCAUMAG] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           end-evaluate.
+ 
+      ***---
+       DESTINI-ERR SECTION.
+           use after error procedure on destini.
+           set tutto-ok  to true.
+           evaluate status-destini
+           when "35"
+                display message "File [DESTINI] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [DESTINI] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[DESTINI] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           end-evaluate.
+ 
+      ***---
+       CLIENTI-ERR SECTION.
+           use after error procedure on clienti.
+           set tutto-ok  to true.
+           evaluate status-clienti
+           when "35"
+                display message "File [CLIENTI] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [CLIENTI] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[CLIENTI] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           end-evaluate.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form2
+   ACTOBJ            = Form2
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+           move esercizio to anno save-anno.
+           display ef-anno.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CANCELLA-TMP
+BEGIN-TEXT
+           delete file zoom-tordini.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CERCA
+BEGIN-TEXT
+           evaluate control-id
+           when 1002
+                perform RIEMPI-TMP
+
+                inquire ef-anno, value in zoom-tor-anno
+                inquire ef-num,  value in zoom-tor-numero
+
+                move "zoom-fatture"    to como-file
+
+                if trovato
+                   move path-zoom-tordini to ext-file
+                   call   "zoom-gt"   using como-file, zoom-tor-rec
+                                     giving stato-zoom
+
+                   cancel "zoom-gt"
+                else
+                   move 1 to stato-zoom
+                end-if
+                perform CANCELLA-TMP
+
+                if stato-zoom = 0
+                   move zoom-tor-numero to numero
+                   display ef-num
+                end-if
+
+           when 1003
+                perform RIEMPI-TMP-NOTE
+
+                inquire ef-anno,  value in zoom-tor-anno
+                inquire ef-nota,  value in zoom-tor-numero
+
+                move "zoom-note-fatt" to como-file
+
+                if trovato
+                   move path-zoom-tordini to ext-file
+                   call   "zoom-gt"   using como-file, zoom-tor-rec
+                                     giving stato-zoom
+
+                   cancel "zoom-gt"
+                else
+                   move 1 to stato-zoom
+                end-if
+                perform CANCELLA-TMP
+
+                if stato-zoom = 0
+                   move zoom-tor-numero to numero-nota
+                   display ef-nota
+                end-if
+           when 1004
+                perform RIEMPI-TMP-BOLLE
+
+                inquire ef-anno, value in zoom-bol-anno
+                inquire ef-bolla,  value in zoom-bol-numero
+
+                move "zoom-bolle"    to como-file
+
+                if trovato
+                   move path-zoom-bolle to ext-file
+                   call   "zoom-gt"   using como-file, zoom-bol-rec
+                                     giving stato-zoom
+
+                   cancel "zoom-gt"
+                else
+                   move 1 to stato-zoom
+                end-if
+                delete file zoom-bolle
+
+                if stato-zoom = 0
+                   move zoom-bol-numero to numero-bolla
+                   display ef-bolla
+                end-if
+           end-evaluate.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CREA-CONTESTAZIONE
+BEGIN-TEXT
+           if tor-num-fattura not = 0
+              move tor-anno-fattura to NotaAnno
+              move tor-num-fattura  to NotaNumero
+              set LinkFatt to true
+           end-if.
+
+           if tno-num-fattura not = 0
+              move tno-anno-fattura to NotaAnno
+              move tno-num-fattura  to NotaNumero
+              set LinkNota to true
+           end-if.
+
+           call   "gcontest" using lk-blockpgm,
+                                   user-codi,
+                                   livello-abil,
+                                   notacr-linkage
+           cancel "gcontest".
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = PARAGRAFO-COPY
+BEGIN-TEXT
+           copy "utydata.cpy".
+           copy "color-custom.cpy".
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = RIEMPI-TMP
+BEGIN-TEXT
+           call "W$MOUSE" using set-mouse-shape, wait-pointer.
+           set record-ok to true
+
+           accept  path-zoom-tordini      from environment "PATH_ST".
+           accept  como-data              from century-date.
+           accept  como-ora               from time.
+           inspect path-zoom-tordini      replacing trailing
+                                          spaces by low-value.
+           string path-zoom-tordini       delimited by low-value
+                  "zoom-tordini"          delimited by size
+                  "_"                     delimited by size
+                  como-data               delimited by size
+                  "_"                     delimited by size
+                  como-ora                delimited by size
+                  into path-zoom-tordini
+           end-string.
+
+           set trovato to false.
+           open output zoom-tordini.
+           initialize tor-rec.
+           move esercizio to tor-anno-fattura.
+
+           start tordini key  is >= k4
+                 invalid continue 
+             not invalid
+                 perform until 1 = 2
+                    read tordini next no lock at end exit perform end-read
+                    
+                    if tor-anno-fattura not = esercizio or
+                       tor-data-fattura     = 0         or
+                       tor-num-prenot       = 0
+                       exit perform
+                    end-if
+
+                    set record-ok to true
+
+                    if tor-fattura-manuale
+                       set record-ok to false
+                    end-if
+
+                    if record-ok
+                       move tor-anno-fattura  to zoom-tor-anno
+                       move tor-num-fattura   to zoom-tor-numero
+                       move tor-data-fattura  to zoom-tor-data-ordine
+                       move tor-causale       to tca-codice
+                       read tcaumag 
+                            invalid initialize tca-caus-trasporto 
+                       end-read
+                       move tca-caus-trasporto to zoom-tor-causale
+                       move tor-cod-cli        to zoom-tor-cod-cli
+                                                  cli-codice
+                                                  des-codice
+                       set cli-tipo-C          to true
+                       move tor-prg-destino    to zoom-tor-prg-destino
+                                                  des-prog
+
+                       read clienti no lock
+                            invalid initialize cli-rec
+                       end-read
+                       move cli-ragsoc-1       to zoom-tor-cli-ragsoc-1
+
+                       read destini no lock
+                            invalid
+                            initialize des-rec
+                            move cli-localita to des-localita
+                       end-read
+                       move des-localita       to zoom-tor-des-localita
+
+                       write zoom-tor-rec invalid continue end-write
+                       set trovato to true
+                    end-if
+
+                 end-perform
+           end-start.
+
+           close zoom-tordini.
+
+           call "W$MOUSE" using set-mouse-shape, arrow-pointer.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = RIEMPI-TMP-NOTE
+BEGIN-TEXT
+           call "W$MOUSE" using set-mouse-shape, wait-pointer.
+           set record-ok to true
+
+           accept  path-zoom-tordini      from environment "PATH_ST".
+           accept  como-data              from century-date.
+           accept  como-ora               from time.
+           inspect path-zoom-tordini      replacing trailing
+                                          spaces by low-value.
+           string path-zoom-tordini       delimited by low-value
+                  "zoom-tordini"          delimited by size
+                  "_"                     delimited by size
+                  como-data               delimited by size
+                  "_"                     delimited by size
+                  como-ora                delimited by size
+                  into path-zoom-tordini
+           end-string.
+
+           set trovato to false.
+           open output zoom-tordini.
+           initialize tno-rec.
+           move esercizio to tno-anno-fattura.
+
+           start tnotacr key  is >= k4
+                 invalid continue 
+             not invalid
+                 perform until 1 = 2
+                    read tnotacr next no lock at end exit perform end-read
+                    
+                    if tno-anno-fattura not = esercizio or
+                       tno-data-fattura     = 0         or
+                       tno-num-prenot       = 0
+                       exit perform
+                    end-if
+
+                    set record-ok to true
+
+                    if record-ok
+                       move tno-anno-fattura  to zoom-tor-anno
+                       move tno-num-fattura   to zoom-tor-numero
+                       move tno-data-fattura  to zoom-tor-data-ordine
+                       move tno-causale       to tca-codice
+                       read tcaumag 
+                            invalid initialize tca-caus-trasporto 
+                       end-read
+                       move tca-caus-trasporto to zoom-tor-causale
+                       move tno-cod-cli        to zoom-tor-cod-cli
+                                                  cli-codice
+                                                  des-codice
+                       set cli-tipo-C          to true
+                       move tno-prg-destino    to zoom-tor-prg-destino
+                                                  des-prog
+
+                       read clienti no lock
+                            invalid initialize cli-rec
+                       end-read
+                       move cli-ragsoc-1       to zoom-tor-cli-ragsoc-1
+
+                       read destini no lock
+                            invalid
+                            initialize des-rec
+                            move cli-localita to des-localita
+                       end-read
+                       move des-localita       to zoom-tor-des-localita
+
+                       write zoom-tor-rec invalid continue end-write
+                       set trovato to true
+                    end-if
+
+                 end-perform
+           end-start.
+
+           close zoom-tordini.
+
+           call "W$MOUSE" using set-mouse-shape, arrow-pointer.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = TRATTA-BOLLA
+BEGIN-TEXT
+           move zero   to cont
+           start tordini key not < k-bolla
+              invalid
+                 continue
+              not invalid
+                 perform until 1 = 2
+                    read tordini next no lock
+                       at end
+                          exit perform
+                    end-read
+                    if numero-bolla not = tor-num-bolla or 
+                       anno         not = tor-anno-bolla
+                       exit perform
+                    end-if
+                    add 1 to cont
+                    if cont > 1
+                       exit perform
+                    end-if
+                 end-perform
+           end-start
+
+           evaluate cont 
+           when zero
+                set errori to true
+                display message "Bolla non caricata"
+                        title = tit-err
+                        icon mb-warning-icon
+           when 1 
+                move numero-bolla  to tor-num-bolla
+                move anno          to tor-anno-bolla
+                read tordini no lock key is k-bolla
+                   invalid 
+                      set errori to true
+                      display message "Bolla non caricata"
+                              title = tit-err
+                              icon mb-warning-icon
+                end-read
+           when other
+                perform SCEGLI-ORDINE-BOLLA
+           end-evaluate
+
+           if tutto-ok
+              if tor-data-fattura = 0 or
+                 tor-num-fattura  = 0 or
+                 tor-anno-fattura = 0 or
+                 tor-num-prenot   = 0
+                 set errori to true
+                 display message "Documento non fatturato"
+                         title tit-err
+                         icon mb-warning-icon
+              else
+                 if tor-fattura-manuale
+                    set errori to true
+                    display message "Documento non valido"
+                            title tit-err
+                            icon mb-warning-icon
+                 else
+                    move tor-anno-fattura to cnt-anno-fatt
+                    move tor-num-fattura  to cnt-num-fatt
+                    read contestazioni key k-fattura
+                       invalid 
+                          continue
+                       not invalid
+                          move cnt-numero to numero-edit
+                          display message   "ATTENZIONE!!"
+                                   x"0d0a"
+                                   "Esiste già la contestazione n. " 
+                                      numero-edit 
+                                      " anno " 
+                                      cnt-anno
+                                   x"0d0a"
+                          "che fa riferimento alla bolla indicata."
+                                   x"0d0a"
+                                   "Procedere comunque?"
+                                  title titolo
+                                   type mb-yes-no
+                                   icon 2
+                                 giving scelta
+                          if scelta = mb-no
+                           set errori to true
+                        end-if
+                   end-read
+                end-if
+              end-if
+           end-if.
+
+      ***---
+       SCEGLI-ORDINE-BOLLA.
+           call "W$MOUSE" using set-mouse-shape, wait-pointer.
+
+           accept  path-zoom-bolle        from environment "PATH_ST".
+           accept  como-data              from century-date.
+           accept  como-ora               from time.
+           inspect path-zoom-bolle        replacing trailing
+                                          spaces by low-value.
+           string path-zoom-bolle         delimited by low-value
+                  "zoom-bolle"            delimited by size
+                  "_"                     delimited by size
+                  como-data               delimited by size
+                  "_"                     delimited by size
+                  como-ora                delimited by size
+                  into path-zoom-bolle
+           end-string.
+
+           set trovato to false.
+           open output zoom-bolle.
+           initialize tor-rec.
+           move numero-bolla to tor-num-bolla
+           move anno         to tor-anno-bolla
+
+           start tordini key  not < k-bolla
+              invalid 
+                 continue 
+              not invalid
+                 perform until 1 = 2
+                    read tordini next no lock 
+                       at end 
+                          exit perform 
+                    end-read
+                    
+                    if numero-bolla not = tor-num-bolla or 
+                       anno         not = tor-anno-bolla
+                       exit perform
+                    end-if
+
+                    move tor-anno           to zoom-bol-anno
+                    move tor-numero         to zoom-bol-numero
+                    move tor-data-ordine    to zoom-bol-data-ordine
+                    move tor-causale        to tca-codice
+                    read tcaumag 
+                       invalid 
+                          initialize tca-caus-trasporto 
+                    end-read
+                    move tca-caus-trasporto to zoom-bol-causale
+                    move tor-cod-cli        to zoom-bol-cod-cli
+                                               cli-codice
+                                               des-codice
+                    set cli-tipo-C          to true
+                    move tor-prg-destino    to zoom-bol-prg-destino
+                                               des-prog
+
+                    read clienti no lock
+                       invalid 
+                          initialize cli-rec
+                    end-read
+                    move cli-ragsoc-1       to zoom-bol-cli-ragsoc-1
+
+                    read destini no lock
+                       invalid
+                          initialize des-rec
+                          move cli-localita to des-localita
+                    end-read
+                    move des-localita       to zoom-bol-des-localita
+
+                    move tor-num-fattura    to zoom-bol-num-fat
+                    move tor-data-fattura   to zoom-bol-data-fat
+
+                    write zoom-bol-rec
+                       invalid 
+                          continue 
+                    end-write
+                    set trovato to true
+                 end-perform
+           end-start.
+           close zoom-bolle.
+
+           call "W$MOUSE" using set-mouse-shape, arrow-pointer.
+
+           if trovato
+              move low-value to zoom-bol-anno
+                                zoom-bol-numero
+
+              move "tordini-bolla" to como-file
+              move path-zoom-bolle to ext-file
+              call   "zoom-gt" using como-file, zoom-bol-rec
+                               giving stato-zoom
+              cancel "zoom-gt"
+           else
+               move 1 to stato-zoom
+           end-if
+           delete file zoom-bolle
+
+           if stato-zoom = 0
+              move zoom-bol-chiave to tor-chiave
+              read tordini no lock
+                 invalid
+                    continue
+              end-read
+           else
+              set errori  to true
+           end-if.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = RIEMPI-TMP-BOLLE
+BEGIN-TEXT
+           call "W$MOUSE" using set-mouse-shape, wait-pointer.
+           set record-ok to true
+
+           accept  path-zoom-bolle        from environment "PATH_ST".
+           accept  como-data              from century-date.
+           accept  como-ora               from time.
+           inspect path-zoom-bolle        replacing trailing
+                                          spaces by low-value.
+           string path-zoom-bolle         delimited by low-value
+                  "zoom-bolle"            delimited by size
+                  "_"                     delimited by size
+                  como-data               delimited by size
+                  "_"                     delimited by size
+                  como-ora                delimited by size
+                  into path-zoom-bolle
+           end-string.
+
+           set trovato to false.
+           open output zoom-bolle.
+           initialize tor-rec.
+           move esercizio to tor-anno-bolla.
+
+           move 1         to tor-num-bolla
+
+           start tordini key  not < k-bolla
+              invalid 
+                 continue 
+              not invalid
+                 perform until 1 = 2
+                    read tordini next no lock 
+                       at end 
+                          exit perform 
+                    end-read
+                    
+                    if tor-anno-bolla not = esercizio
+                       exit perform
+                    end-if
+
+                    set record-ok to true
+
+                    if tor-fattura-manuale
+                       set record-ok to false
+                    end-if
+
+                    if tor-data-fattura = 0 or
+                       tor-num-fattura  = 0 or
+                       tor-anno-fattura = 0 or
+                       tor-num-prenot   = 0
+                       set record-ok to false
+                    end-if
+
+                    if record-ok
+
+                       move tor-anno-bolla  to zoom-bol-anno
+                       move tor-num-bolla   to zoom-bol-numero
+
+                       move tor-chiave      to zoom-bol-tor-chiave
+
+                       move tor-anno-fattura  to zoom-bol-anno
+                       move tor-num-fattura   to zoom-bol-numero
+                       move tor-data-fattura  to zoom-bol-data-ordine
+                       move tor-causale       to tca-codice
+                       read tcaumag 
+                          invalid 
+                             initialize tca-caus-trasporto 
+                       end-read
+                       move tca-caus-trasporto to zoom-bol-causale
+                       move tor-cod-cli        to zoom-bol-cod-cli
+                                                  cli-codice
+                                                  des-codice
+                       set cli-tipo-C          to true
+                       move tor-prg-destino    to zoom-bol-prg-destino
+                                                  des-prog
+
+                       read clienti no lock
+                          invalid 
+                             initialize cli-rec
+                       end-read
+                       move cli-ragsoc-1       to zoom-bol-cli-ragsoc-1
+
+                       read destini no lock
+                          invalid
+                             initialize des-rec
+                             move cli-localita to des-localita
+                       end-read
+                       move des-localita       to zoom-bol-des-localita
+
+                       write zoom-bol-rec
+                          invalid 
+                             continue 
+                       end-write
+                       set trovato to true
+                    end-if
+
+                 end-perform
+           end-start.
+
+           close zoom-bolle.
+
+           call "W$MOUSE" using set-mouse-shape, arrow-pointer.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-anno-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-anno-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-num-BeforeProcedure
+BEGIN-TEXT
+           move 1 to e-cerca.
+           modify tool-cerca, enabled = e-cerca.
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-num-AfterProcedure
+BEGIN-TEXT
+           move 0 to e-cerca.
+           modify tool-cerca, enabled = e-cerca.
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = TOOL-CERCA-LinkTo
+BEGIN-TEXT
+           inquire tool-cerca, enabled in e-cerca.
+
+           if e-cerca = 1 
+              perform CERCA 
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = PB-ESEGUI-BeforeProcedure
+BEGIN-TEXT
+           modify PB-ESEGUI, bitmap-number 2
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = PB-ESEGUI-AfterProcedure
+BEGIN-TEXT
+           modify PB-ESEGUI, bitmap-number 1
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = PB-ESEGUI-LinkTo
+BEGIN-TEXT
+           set tutto-ok     to true.
+           move 0 to tor-anno-fattura tno-num-fattura.
+
+           inquire ef-anno,  value in anno.
+           move       anno         to tor-anno-fattura 
+                                      tno-anno-fattura
+                                      tor-anno-bolla.
+           inquire ef-num,   value in numero.
+           move       numero       to tor-num-fattura. 
+           inquire ef-nota,  value in numero-nota.
+           move       numero-nota  to tno-num-fattura.
+           inquire ef-bolla, value in numero-bolla.
+           move       numero-bolla to tor-num-bolla.
+
+           if tor-num-fattura not = 0 and
+              tno-num-fattura not = 0 and
+              tor-num-bolla   not = 0
+              set errori to true
+              display message 
+                          "Selezionare fattura, nota credito o bolla"
+                        title tit-err
+                         icon 2
+           end-if
+
+           if tutto-ok
+              if tor-num-fattura not = 0
+                 read tordini no lock key is k-fattura
+                      invalid 
+                      set errori to true
+                      display message "Fattura non caricata"
+                              title = tit-err
+                              icon mb-warning-icon
+                  not invalid
+                      if tor-data-fattura = 0 or
+                         tor-num-fattura  = 0 or
+                         tor-anno-fattura = 0 or
+                         tor-num-prenot   = 0
+                         set errori to true
+                         display message "Documento non fatturato"
+                                 title tit-err
+                                 icon mb-warning-icon
+                      else
+                         if tor-fattura-manuale
+                            set errori to true
+                            display message "Documento non valido"
+                                    title tit-err
+                                     icon mb-warning-icon
+                         else
+                            move tor-anno-fattura to cnt-anno-fatt
+                            move tor-num-fattura  to cnt-num-fatt
+                            read contestazioni key k-fattura
+                                 invalid continue
+                             not invalid
+                                 move cnt-numero to numero-edit
+                                 display message
+                                "ATTENZIONE!!"
+                         x"0d0a""Esiste già la contestazione n. " numero-edit " anno " cnt-anno
+                         x"0d0a""che fa riferimento alla fattura indicata."
+                         x"0d0a""Procedere comunque?"
+                                           title titolo
+                                            type mb-yes-no
+                                            icon 2
+                                          giving scelta
+                                 if scelta = mb-no
+                                    set errori to true
+                                 end-if
+                            end-read
+                         end-if
+                      end-if
+                 end-read
+              end-if
+              if tno-num-fattura not = 0
+                 read tnotacr no lock key k-fattura
+                      invalid 
+                      set errori to true
+                      display message "Nota cr. non caricata"
+                                title tit-err
+                                 icon 2
+                  not invalid
+                      if tno-data-fattura = 0 or
+                         tno-num-fattura  = 0 or
+                         tno-anno-fattura = 0 or
+                         tno-num-prenot   = 0
+                         set errori to true
+                         display message "Documento non fatturato"
+                                 title tit-err
+                                 icon mb-warning-icon
+                      else
+                         move tno-anno-fattura to cnt-anno-nota
+                         move tno-num-fattura  to cnt-num-nota
+                         read contestazioni key k-nota
+                              invalid
+                              move tno-anno   to noco-anno
+                              move tno-numero to noco-numero
+                              read note-cont  no lock 
+                                   invalid continue
+                               not invalid
+                                   if noco-anno-cont(1)   not = 0 or
+                                      noco-numero-cont(1) not = 0 or
+                                      noco-anno-cont(2)   not = 0 or
+                                      noco-numero-cont(2) not = 0 or
+                                      noco-anno-cont(3)   not = 0 or
+                                      noco-numero-cont(3) not = 0 or
+                                      noco-anno-cont(4)   not = 0 or
+                                      noco-numero-cont(4) not = 0 or
+                                      noco-anno-cont(5)   not = 0 or
+                                      noco-numero-cont(5) not = 0
+                                      display message
+                                      "ATTENZIONE!!"
+                         x"0d0a""Esistono già contestazioni collegate "
+                         x"0d0a""alla nota credito indicata."
+                         x"0d0a""Procedere comunque?"
+                                           title titolo
+                                            type mb-yes-no
+                                            icon 2
+                                          giving scelta
+                                      if scelta = mb-no
+                                         set errori to true
+                                      end-if
+                                   end-if
+                              end-read
+                          not invalid
+                              move cnt-numero to numero-edit
+                              display message
+                                "ATTENZIONE!!"
+                         x"0d0a""Esiste già la bozza n. " numero-edit " anno " cnt-anno
+                         x"0d0a""che fa riferimento alla nota cr. indicata."
+                         x"0d0a""Procedere comunque?"
+                                        title titolo
+                                         type mb-yes-no
+                                         icon 2
+                                       giving scelta
+                              if scelta = mb-no
+                                 set errori to true
+                              end-if
+                         end-read
+                      end-if
+                 end-read
+              end-if
+
+              if tor-num-bolla not = 0 and tor-num-fattura = 0 |Altrimenti vuol dire che ho scelto la fattura
+                 perform TRATTA-BOLLA
+              end-if
+           end-if.
+
+           perform CANCELLA-COLORE.
+
+           if tutto-ok
+              modify Form2-Handle, visible = 0
+              evaluate true
+              when tor-num-fattura not = 0
+                   move livello-abil     to sav-livello-abil
+                   move 1                to livello-abil
+                   move tor-anno         to LinkAnno
+                   move tor-numero       to LinkNumero
+                   move "selcont"        to LinkPgm
+                   call "gordcvar"    using lk-blockpgm,
+                                            user-codi,
+                                            livello-abil,
+                                            gordcvar-linkage
+                   cancel "gordcvar"
+                   move sav-livello-abil to livello-abil
+                   if LinkStatus = 1
+                      move mb-yes to scelta
+                   else
+                      move mb-no  to scelta
+                   end-if
+              when tno-num-fattura not = 0
+                   move livello-abil     to sav-livello-abil
+                   move 1                to livello-abil
+                   move tno-anno         to NotaAnno
+                   move tno-numero       to NotaNumero
+                   move "NCPZ"           to Link-TipoNota |FITTIZIA!!!
+                   move "selcont"        to LinkPgm
+                   call "notavar"     using lk-blockpgm,
+                                            user-codi,
+                                            livello-abil,
+                                            notacr-linkage
+                   cancel "notavar"
+                   move sav-livello-abil to livello-abil
+                   if LinkStatusNota = 1
+                      move mb-yes to scelta
+                   else
+                      move mb-no  to scelta
+                   end-if
+              when other
+                   move mb-yes to scelta
+              end-evaluate
+              if scelta = mb-yes
+                 perform CREA-CONTESTAZIONE
+              end-if
+              modify Form2-Handle, visible = 1
+              move 27 to key-status
+           else
+              move 1002 to control-id
+           end-if.
+
+           move    4    to accept-control.
+           modify pb-esegui, bitmap-number = 1.
+           modify pb-cancel, bitmap-number = 1 
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Pb-2-BeforeProcedure
+BEGIN-TEXT
+           modify pb-cancel, bitmap-number 2
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Pb-2-AfterProcedure
+BEGIN-TEXT
+           modify pb-cancel, bitmap-number 1
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = selnota-Ev-Before-Program
+BEGIN-TEXT
+           accept esercizio-x  from environment "ESERCIZIO".
+           move   esercizio-x  to esercizio 
+      *<<** Customized_Default, SP-G, Screen1-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = selnota-Ev-After-Program
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-bolla-BeforeProcedure
+BEGIN-TEXT
+           move 1 to e-cerca.
+           modify tool-cerca, enabled = e-cerca.
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-bolla-AfterProcedure
+BEGIN-TEXT
+           move 0 to e-cerca.
+           modify tool-cerca, enabled = e-cerca.
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+
+@}}
+
+[KEY_STATUS_FIELD_FORMAT]
+PIC=9(5)
+USAGE=[None]
+
+[KEYSTATUS_CONTENT:KS1]
+CONDITION=Enter-Pushed
+VALUE=13
+
+[KEYSTATUS_CONTENT:KS2]
+CONDITION=Exit-Pushed
+VALUE=27
+
+[KEYSTATUS_CONTENT:KS3]
+CONDITION=Message-Received
+VALUE=95
+
+[KEYSTATUS_CONTENT:KS4]
+CONDITION=Event-Occurred
+VALUE=96
+
+[KEYSTATUS_CONTENT:KS5]
+CONDITION=Screen-No-Input-Field
+VALUE=97
+
+[KEYSTATUS_CONTENT:KS6]
+CONDITION=Screen-Time-Out
+VALUE=99
+
+[COBOLAID_DATASET_INFO]
+COUNT=1
+NAME_0=DataSet1
+
+[DRAW_DOCUMENT_INDEX]
+OBJ_NAME_0=8001
+OBJ_ID_0=230635550
+
+[MULTIPLE_KEY_0]
+COUNT=1
+KEY_0=tor-chiave
+
+[DRAW_DOCUMENT_8001_230635550]
+OBJ_NAME=8001
+OBJ_ID=230635550
+TYPE=2
+VERSION=
+DOC_SIZE_X=5100
+DOC_SIZE_Y=5160
+PAGE_LEFT=150
+PAGE_TOP=150
+PAGE_RIGHT=1850
+PAGE_BOTTOM=2730
+MARGIN_LEFT=150
+MARGIN_TOP=150
+MARGIN_RIGHT=150
+MARGIN_BOTTOM=150
+PROP_DOCU_TYPE=ø
+PROP_DOCU_TYPE2=ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+PROP_DOCU_NAME=DataSet - DataSet1[selcont(GESLUX)]
+PROP_DOCU_OWNER=Person A
+PROP_DOCU_CDATE=02/25/04
+PROP_DOCU_MODIFIER=Person B
+PROP_DOCU_MDATE=02/25/04
+PROP_DOCU_DESCR=Caseaid DocuCaseaid Document
+PROP_DOCU_HEADER=Caseaid Document
+PROP_DOCU_FOOTER=Page # 
+PROP_DOCU_DIM_H=2
+PROP_DOCU_DIM_W=3
+PROP_DOCU_LOC_H=1
+PROP_DOCU_LOC_W=1
+PROP_DOCU_EDGE_T=150
+PROP_DOCU_EDGE_B=150
+PROP_DOCU_EDGE_L=150
+PROP_DOCU_EDGE_R=150
+PROP_DOCU_ZOOM=75
+PROP_DOCU_SIZE_TYPE=0
+PROP_DOCU_SIZE_PAPER=1
+PROP_DOCU_SIZE_H=2580
+PROP_DOCU_SIZE_W=1700
+PROP_DOCU_RULER_EBL=0
+PROP_DOCU_GRID_EBL=0
+PROP_DOCU_GRID=20
+PROP_DOCU_ALIGN=0
+REL_SYM_SIZE=58
+REL_SYM_INFO_L=9
+REL_SYM_INFO_X0=2301
+REL_SYM_INFO_Y0=99520804
+REL_SYM_INFO_X1=2301
+REL_SYM_INFO_Y1=246362381
+REL_SYM_INFO_X2=2301
+REL_SYM_INFO_Y2=1903260004
+REL_SYM_INFO_X3=2301
+REL_SYM_INFO_Y3=1992964159
+REL_SYM_INFO_X4=2301
+REL_SYM_INFO_Y4=1702536115
+REL_SYM_INFO_X5=2301
+REL_SYM_INFO_Y5=629631401
+REL_SYM_INFO_X6=2301
+REL_SYM_INFO_Y6=1860389107
+REL_SYM_INFO_X7=2301
+REL_SYM_INFO_Y7=2045923361
+REL_SYM_INFO_X8=2301
+REL_SYM_INFO_Y8=1014492578
+
+[DRAW_BASESYMBOL_2301_99520804]
+OBJ_NAME=2301
+OBJ_ID=99520804
+KIND=1
+{{@LABEL_2301_99520804
+tordini
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=16
+TOP=16
+RIGHT=416
+BOTTOM=238
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_246362381]
+OBJ_NAME=2301
+OBJ_ID=246362381
+KIND=1
+{{@LABEL_2301_246362381
+zoom-tordini
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1030
+TOP=23
+RIGHT=1430
+BOTTOM=245
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1903260004]
+OBJ_NAME=2301
+OBJ_ID=1903260004
+KIND=1
+{{@LABEL_2301_1903260004
+tcaumag
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=26
+TOP=277
+RIGHT=426
+BOTTOM=499
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1992964159]
+OBJ_NAME=2301
+OBJ_ID=1992964159
+KIND=1
+{{@LABEL_2301_1992964159
+clienti
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1019
+TOP=271
+RIGHT=1419
+BOTTOM=493
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1702536115]
+OBJ_NAME=2301
+OBJ_ID=1702536115
+KIND=1
+{{@LABEL_2301_1702536115
+destini
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=534
+TOP=274
+RIGHT=934
+BOTTOM=496
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_629631401]
+OBJ_NAME=2301
+OBJ_ID=629631401
+KIND=1
+{{@LABEL_2301_629631401
+tnotacr
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=16
+TOP=862
+RIGHT=416
+BOTTOM=1084
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1860389107]
+OBJ_NAME=2301
+OBJ_ID=1860389107
+KIND=1
+{{@LABEL_2301_1860389107
+contestazioni
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=446
+TOP=859
+RIGHT=846
+BOTTOM=1081
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_2045923361]
+OBJ_NAME=2301
+OBJ_ID=2045923361
+KIND=1
+{{@LABEL_2301_2045923361
+note-cont
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1684
+TOP=566
+RIGHT=2084
+BOTTOM=788
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1014492578]
+OBJ_NAME=2301
+OBJ_ID=1014492578
+KIND=1
+{{@LABEL_2301_1014492578
+zoom-bolle
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=130
+TOP=1330
+RIGHT=530
+BOTTOM=1552
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DMD_DOCUMENT_0_230635550]
+OBJ_NAME=0
+OBJ_ID=230635550
+FILE_TITLE_TYPE=8136
+FILE_SHOW_ITEM=0
+FILE_SHOW_KEY=0
+FILE_SHOW_PIC=0
+FILE_SHOW_HEAD=0
+FILE_SHOW_LEVEL=0
+FILE_SHOW_TREE=0
+FILE_SHOW_CLPS=0
+FILE_SHOW_BMP=0
+FILE_SHOW_LINE=0
+FILE_SHOW_MINIZE=0
+
+[DMD_FILE_0_99520804]
+OBJ_NAME=0
+OBJ_ID=99520804
+REL_M_OBJ_ID=0
+ENTITY=tordini
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tor-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_99520804
+
+@}}
+DSN_INFO_PRIMARY=1
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_246362381]
+OBJ_NAME=0
+OBJ_ID=246362381
+REL_M_OBJ_ID=0
+ENTITY=zoom-tordini
+LINK=0
+LINK_NAME=
+DSN_SIZE=46
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=1
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=zoom-tor-key01
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_246362381
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1903260004]
+OBJ_NAME=0
+OBJ_ID=1903260004
+REL_M_OBJ_ID=0
+ENTITY=tcaumag
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tca-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1903260004
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1992964159]
+OBJ_NAME=0
+OBJ_ID=1992964159
+REL_M_OBJ_ID=0
+ENTITY=clienti
+LINK=0
+LINK_NAME=
+DSN_SIZE=53
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=cli-chiave OF clienti
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1992964159
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1702536115]
+OBJ_NAME=0
+OBJ_ID=1702536115
+REL_M_OBJ_ID=0
+ENTITY=destini
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=des-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1702536115
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_629631401]
+OBJ_NAME=0
+OBJ_ID=629631401
+REL_M_OBJ_ID=0
+ENTITY=tnotacr
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tno-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_629631401
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1860389107]
+OBJ_NAME=0
+OBJ_ID=1860389107
+REL_M_OBJ_ID=0
+ENTITY=contestazioni
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=cnt-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1860389107
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_2045923361]
+OBJ_NAME=0
+OBJ_ID=2045923361
+REL_M_OBJ_ID=0
+ENTITY=note-cont
+LINK=0
+LINK_NAME=
+DSN_SIZE=43
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=noco-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_2045923361
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1014492578]
+OBJ_NAME=0
+OBJ_ID=1014492578
+REL_M_OBJ_ID=0
+ENTITY=zoom-bolle
+LINK=0
+LINK_NAME=
+DSN_SIZE=47
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=2
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=zoom-bol-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1014492578
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=

@@ -1,0 +1,35 @@
+       FD  coperfab.
+       01 cpf-rec.
+           05 cpf-chiave.
+               10 cpf-articolo     PIC  9(6).
+               10 cpf-listino      PIC  9(5).
+           05 cpf-dati.
+               10 cpf-tipo         PIC  x.
+                   88 cpf-auto VALUE IS "A". 
+                   88 cpf-manuale VALUE IS "M". 
+               10 cpf-fornitore    PIC  9(5).
+               10 cpf-destino      PIC  9(5).
+               10 cpf-data-ini     PIC  9(8).
+               10 cpf-data-fine    PIC  9(8).
+               10 cpf-qta          PIC  9(9).
+      *prezzo listino + premio + costi + imposte
+      *
+      *
+               10 cpf-totale       PIC  9(9)v99.
+               10 cpf-prz-listino  PIC  9(9)v99.
+               10 cpf-prz-confronto            PIC  9(9)v99.
+               10 cpf-lead-time    PIC  9(3).
+               10 cpf-dati-comuni.
+                   15 cpf-data-creazione           PIC  9(8).
+                   15 cpf-ora-creazione            PIC  9(8).
+                   15 cpf-utente-creazione         PIC  X(10).
+                   15 cpf-data-modifica            PIC  9(8).
+                   15 cpf-ora-modifica PIC  9(8).
+                   15 cpf-utente-modifica          PIC  X(10).
+               10 cpf-vuoti.
+                   15 cpf-num-vuoto-1  PIC  9(18).
+                   15 cpf-num-vuoto-2  PIC  9(18).
+                   15 cpf-num-vuoto-3  PIC  9(18).
+                   15 cpf-alfa-vuoto-1 PIC  x(20).
+                   15 cpf-alfa-vuoto-2 PIC  X(20).
+                   15 cpf-alfa-vuoto-3 PIC  X(20).

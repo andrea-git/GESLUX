@@ -1,0 +1,12 @@
+       FD  pgmexe.
+       01 pge-rec.
+           05 pge-chiave.
+               10 pge-pid          PIC  9(10).
+               10 pge-pgm          PIC  x(15).
+           05 pge-dati.
+               10 pge-utente       PIC  x(10).
+               10 pge-nome-utente  PIC  x(30).
+               10 pge-nome-pgm     PIC  x(30).
+               10 pge-postazione   PIC  x(20).
+               10 pge-data         PIC  9(8).
+               10 pge-ora          PIC  9(8).

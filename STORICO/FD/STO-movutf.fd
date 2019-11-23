@@ -1,0 +1,39 @@
+      *(( XFD FILE = STO-movutf ))
+       FD  STO-movutf.
+       01 STO-mov-rec.
+           05 STO-mov-chiave.
+               10 STO-mov-anno     PIC  9(4).
+               10 STO-mov-num-reg  PIC  9(8).
+               10 STO-mov-prog-reg PIC  9(10).
+           05 STO-mov-dati.
+               10 STO-mov-data     PIC  9(8).
+               10 STO-mov-tipo     PIC  x.
+                   88 STO-mov-entrata VALUE IS "+". 
+                   88 STO-mov-uscita VALUE IS "-". 
+               10 STO-mov-col-reg-utf          PIC  x.
+                   88 STO-mov-col-A VALUE IS "A". 
+                   88 STO-mov-col-B VALUE IS "B". 
+                   88 STO-mov-col-C VALUE IS "C". 
+                   88 STO-mov-col-D VALUE IS "D". 
+               10 STO-mov-kg       PIC  s9(9)v999.
+               10 STO-mov-tipo-CF  PIC  x.
+                   88 STO-mov-cliente VALUE IS "C". 
+                   88 STO-mov-fornitore VALUE IS "F". 
+               10 STO-mov-cod-clifor           PIC  9(5).
+               10 STO-mov-num-doc  PIC  9(10).
+               10 STO-mov-dati-comuni.
+                   15 STO-mov-data-creazione       PIC  9(8).
+                   15 STO-mov-ora-creazione        PIC  9(8).
+                   15 STO-mov-utente-creazione     PIC  X(10).
+                   15 STO-mov-data-ultima-modifica PIC  9(8).
+                   15 STO-mov-ora-ultima-modifica  PIC  9(8).
+                   15 STO-mov-utente-ultima-modifica           PIC  
+           X(10).
+               10 STO-mov-vuoti.
+                   15 STO-mov-num-movim            PIC  9(8).
+                   15 STO-mov-num-vuoto-1          PIC  9(7).
+                   15 STO-mov-num-vuoto-2          PIC  9(15).
+                   15 STO-mov-num-vuoto-3          PIC  9(15).
+                   15 STO-mov-alfa-vuoto-1         PIC  X(20).
+                   15 STO-mov-alfa-vuoto-2         PIC  X(20).
+                   15 STO-mov-alfa-vuoto-3         PIC  X(20).

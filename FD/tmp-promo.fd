@@ -1,0 +1,16 @@
+      *(( XFD FILE = tmp-promo ))
+       FD  tmp-promo.
+       01 promo-rec.
+           05 promo-chiave.
+               10 promo-marca      PIC  9(4).
+               10 promo-art-descrizione        PIC  X(50).
+               10 promo-articolo   PIC  9(6).
+           05 promo-dati.
+               10 promo-codice     PIC  9(4).
+               10 promo-sconto     PIC  9(2)v99.
+               10 promo-prezzo     PIC  9(9)v99.
+               10 promo-ic         PIC  9(9)v99.
+               10 promo-cou        PIC  9(9)v99.
+               10 promo-totale     PIC  9(9)v99.
+               10 promo-data-inizio            PIC  9(8).
+               10 promo-data-fine  PIC  9(8).

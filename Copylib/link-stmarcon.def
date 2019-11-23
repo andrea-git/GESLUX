@@ -1,0 +1,14 @@
+      *
+       01 stmarcon-linkage.
+           03 link-stm-data-da PIC  9(8).
+           03 link-stm-data-a  PIC  9(8).
+           03 link-stm-CF      PIC  x.
+               88 link-stm-C VALUE IS "C". 
+               88 link-stm-F VALUE IS "F". 
+               88 link-stm-E VALUE IS "E". 
+           03 link-stm-codice  PIC  9(5).
+           03 link-stm-tipo    PIC  x(2).
+           03 link-stm-gdo     PIC  x(5).
+           03 link-stm-articolo            PIC  9(6).
+           03 link-stm-marca   PIC  9(5).
+           03 link-stm-user    PIC  x(20).

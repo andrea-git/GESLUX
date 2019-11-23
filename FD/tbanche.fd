@@ -1,0 +1,23 @@
+       FD  tbanche.
+       01 ban-rec.
+           05 ban-chiave.
+               10 ban-codice-abi   PIC  X(5).
+               10 ban-codice-cab   PIC  X(5).
+           05 ban-dati.
+               10 ban-descrizione-abi          PIC  X(80).
+               10 ban-descrizione-cab          PIC  X(40).
+               10 ban-citta        PIC  X(30).
+               10 ban-dati-comuni.
+                   15 ban-data-creazione           PIC  9(8).
+                   15 ban-ora-creazione            PIC  9(8).
+                   15 ban-utente-creazione         PIC  X(10).
+                   15 ban-data-ultima-modifica     PIC  9(8).
+                   15 ban-ora-ultima-modifica      PIC  9(8).
+                   15 ban-utente-ultima-modifica   PIC  X(10).
+               10 ban-vuoti.
+                   15 ban-num-vuoto-1  PIC  9(15).
+                   15 ban-num-vuoto-2  PIC  9(15).
+                   15 ban-num-vuoto-3  PIC  9(15).
+                   15 ban-alfa-vuoto-1 PIC  X(20).
+                   15 ban-alfa-vuoto-2 PIC  X(20).
+                   15 ban-alfa-vuoto-3 PIC  X(20).

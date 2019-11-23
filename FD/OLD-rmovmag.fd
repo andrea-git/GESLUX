@@ -1,0 +1,56 @@
+       FD  OLD-rmovmag.
+       01 OLD-rmo-rec.
+           05 OLD-rmo-chiave.
+               10 OLD-rmo-anno         PIC  9(4).
+               10 OLD-rmo-movim        PIC  9(8).
+               10 OLD-rmo-riga         PIC  9(5).
+           05 OLD-rmo-dati.
+               10 OLD-rmo-dati-ricerca.
+                   15 OLD-rmo-tipo         PIC  x.
+                       88 OLD-rmo-cliente VALUE IS "C". 
+                       88 OLD-rmo-fornitore VALUE IS "F". 
+                   15 OLD-rmo-cod-clifor   PIC  9(5).
+                   15 OLD-rmo-causale      PIC  x(4).
+                   15 OLD-rmo-data-movim   PIC  9(8).
+               10 OLD-rmo-destino      PIC  9(5).
+               10 OLD-rmo-chiave-progmag.
+                   15 OLD-rmo-articolo     PIC  9(6).
+                   15 OLD-rmo-codmag       PIC  x(3).
+                   15 OLD-rmo-imballo      PIC  x(3).
+                   15 OLD-rmo-peso         PIC  9(3)v9(3).
+               10 OLD-rmo-udm          PIC  xx.
+               10 OLD-rmo-qta          PIC  9(8).
+               10 OLD-rmo-peso-udm     PIC  9(3)v999.
+               10 OLD-rmo-peso-tot-utf PIC  9(11)v999.
+               10 OLD-rmo-peso-tot     PIC  9(11)v999.
+               10 OLD-rmo-listino      PIC  9(9)v99.
+               10 OLD-rmo-sconto       PIC  99v99.
+               10 OLD-rmo-netto        PIC  9(9)v99.
+               10 OLD-rmo-imp-cons     PIC  9(4)v99.
+               10 OLD-rmo-coubat       PIC  9(4)v99.
+               10 OLD-rmo-marca-prodotto           PIC  9(4).
+               10 OLD-rmo-stato        PIC  x.
+                   88 OLD-rmo-attivo VALUE IS "A". 
+                   88 OLD-rmo-disattivo VALUE IS "D". 
+                   88 OLD-rmo-bloccato VALUE IS "B". 
+               10 OLD-rmo-dati-comuni.
+                   15 OLD-rmo-data-creazione           PIC  9(8).
+                   15 OLD-rmo-ora-creazione            PIC  9(8).
+                   15 OLD-rmo-utente-creazione         PIC  X(10).
+                   15 OLD-rmo-data-ultima-modifica     PIC  9(8).
+                   15 OLD-rmo-ora-ultima-modifica      PIC  9(8).
+                   15 OLD-rmo-utente-ultima-modifica   PIC  X(10).
+               10 OLD-rmo-vuoti.
+                   15 OLD-rmo-flag-cancellato          PIC  9.
+                       88 OLD-rmo-cancellato VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+                   15 OLD-rmo-chiave-eva.
+                       20 OLD-rmo-anno-eva     PIC  9(4).
+                       20 OLD-rmo-num-eva      PIC  9(8).
+                       20 OLD-rmo-riga-eva     PIC  9(5).
+      *(( XFD NAME = OLD-rmo-num-vuoto-2_1 ))
+                   15 OLD-rmo-num-vuoto-2  PIC  9(12).
+                   15 OLD-rmo-num-vuoto-3  PIC  9(15).
+                   15 OLD-rmo-alfa-vuoto-1 PIC  x(20).
+                   15 OLD-rmo-alfa-vuoto-2 PIC  x(20).
+                   15 OLD-rmo-alfa-vuoto-3 PIC  x(20).

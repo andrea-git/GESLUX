@@ -1,0 +1,19 @@
+      *(( XFD FILE = tmp-promo-art ))
+       FD  tmp-promo-art.
+       01 tpa-rec.
+           05 tpa-codice       PIC  9(15).
+           05 tpa-rec-grid.
+               10 tpa-col-art      PIC  9(6).
+               10 tpa-tipo         PIC  x.
+                   88 tpa-nazionale VALUE IS "N". 
+                   88 tpa-locale VALUE IS "L". 
+               10 tpa-col-des      PIC  x(50).
+               10 tpa-col-prz      PIC  zzz.zz9,99.
+               10 tpa-col-gdo      PIC  x(5).
+               10 tpa-col-ini-dpo  PIC  x(10).
+               10 tpa-col-fine-dpo PIC  x(10).
+               10 tpa-col-ini-vol  PIC  x(10).
+               10 tpa-col-fine-vol PIC  x(10).
+               10 tpa-col-nome     PIC  X(50).
+      *(( XFD NAME = tpa-col-nome_1 ))
+               10 tpa-col-nome     PIC  X(50).

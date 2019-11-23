@@ -1,0 +1,12 @@
+      *(( XFD FILE = zoom-assorcli ))
+       FD  zoom-assorcli.
+       01 zoom-ass-rec.
+           05 zoom-ass-id      PIC  9(9).
+           05 zoom-ass-gdo     PIC  x(5).
+           05 zoom-ass-gdo-des PIC  x(30).
+           05 zoom-ass-cli     PIC  9(5).
+           05 zoom-ass-cli-ragsoc          PIC  x(40).
+           05 zoom-ass-des     PIC  9(5).
+           05 zoom-ass-des-dest            PIC  x(35).
+           05 zoom-ass-art     PIC  9(6).
+           05 zoom-ass-art-des PIC  x(50).

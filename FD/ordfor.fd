@@ -1,0 +1,42 @@
+       FD  ordfor.
+       01 ord-rec.
+           05 ord-chiave.
+               10 ord-mag          PIC  x(3).
+               10 ord-articolo     PIC  9(6).
+           05 ord-dati.
+               10 ord-art-descrizione          PIC  x(50).
+               10 ord-marca        PIC  9(4).
+               10 ord-qta-imb      PIC  9(4).
+               10 ord-scost        PIC  9(3)v99.
+               10 ord-lead-time    PIC  9(3).
+               10 ord-giac         PIC  s9(8).
+               10 ord-scorta       PIC  s9(8).
+               10 ord-prz-acq      PIC  9(9)v99.
+               10 ord-ultimo-costo PIC  S9(9)V9(2).
+               10 ord-prz-medio    PIC  S9(9)V9(2).
+               10 ord-qta-vendita-anno-corrente.
+                   15 ord-qta-corr-m   PIC  s9(9)
+                              OCCURS 12 TIMES.
+               10 ord-qta-vendita-anno-passsato.
+                   15 ord-qta-past-m   PIC  s9(9)
+                              OCCURS 12 TIMES.
+               10 ord-media-vend   PIC  S9(9)V9(2).
+               10 ord-consegna     PIC  S9(9)V9(2).
+               10 ord-riordino     PIC  S9(9)V9(2).
+               10 ord-fabbisogno-prox-6-mesi.
+                   15 ord-fabb-qta     PIC  S9(9)
+                              OCCURS 6 TIMES.
+               10 ord-dati-comuni.
+                   15 ord-data-creazione           PIC  9(8).
+                   15 ord-ora-creazione            PIC  9(8).
+                   15 ord-utente-creazione         PIC  X(10).
+                   15 ord-data-ultima-modifica     PIC  9(8).
+                   15 ord-ora-ultima-modifica      PIC  9(8).
+                   15 ord-utente-ultima-modifica   PIC  X(10).
+               10 ord-vuoti.
+                   15 ord-num-vuoto-1  PIC  9(15).
+                   15 ord-num-vuoto-2  PIC  9(15).
+                   15 ord-num-vuoto-3  PIC  9(15).
+                   15 ord-alfa-vuoto-1 PIC  X(20).
+                   15 ord-alfa-vuoto-2 PIC  X(20).
+                   15 ord-alfa-vuoto-3 PIC  X(20).

@@ -1,0 +1,20 @@
+           copy "splcrt2graf.lks".
+           copy "link-imp.def".
+           copy "link-esegui-ftp.def".
+
+       78  barra value "\".
+
+       77  pattern                 pic X(50)   value SPACES.
+      *
+       77  dir-Handle              handle.
+       77  MSG-Folder-Name         pic X(256)  value SPACES.
+       77  origine                 pic X(256)  value SPACES.
+       77  destinazione            pic X(256)  value SPACES.
+       77  RENAME-STATUS            pic 9(9)            comp-4.
+
+       77  como-nome               pic x(50).
+       77  como-nome-2             pic x(50).
+       77  como-estensione         pic x(3).
+       77  cont                    pic 9(3).
+
+

@@ -1,0 +1,21 @@
+       FD  EDI-tiva.
+       01 eiv-rec.
+           05 eiv-chiave.
+               10 eiv-codice       PIC  x(3).
+           05 eiv-dati.
+               10 eiv-descrizione  PIC  x(100).
+               10 eiv-collegato    PIC  x(3).
+               10 eiv-dati-comuni.
+                   15 eiv-data-creazione           PIC  9(8).
+                   15 eiv-ora-creazione            PIC  9(8).
+                   15 eiv-utente-creazione         PIC  x(10).
+                   15 eiv-data-ultima-modifica     PIC  9(8).
+                   15 eiv-ora-ultima-modifica      PIC  9(8).
+                   15 eiv-utente-ultima-modifica   PIC  x(10).
+               10 eiv-vuoti.
+                   15 eiv-num-vuoto-1  PIC  9(15).
+                   15 eiv-num-vuoto-2  PIC  9(15).
+                   15 eiv-num-vuoto-3  PIC  9(15).
+                   15 eiv-alfa-vuoto-1 PIC  x(20).
+                   15 eiv-alfa-vuoto-2 PIC  x(20).
+                   15 eiv-alfa-vuoto-3 PIC  x(20).

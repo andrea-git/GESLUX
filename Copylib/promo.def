@@ -1,0 +1,59 @@
+       copy "spooler.def".
+       copy "fonts.def".
+
+       77  messaggio             pic x(150) value SPACES.
+       77  font-size-dply        pic z(5).      
+       77  Verdana12B            handle of font.
+       77  Verdana12I            handle of font.
+       77  Verdana10B            handle of font.
+       77  Verdana10I            handle of font.
+       77  Verdana10             handle of font.
+       77  Verdana8I             handle of font.
+       77  WFONT-STATUS          pic s9(5) value ZERO.
+       
+       77  passo                 pic 9v99.
+       77  save-riga             pic 9(7)v99.
+       77  save-altezza-pagina   pic 9(7)v99.
+       77  tipo-riga             pic 99.
+
+       01  promo-valore          pic s9(12)v99.
+       77  como-perce            pic  9(2)v99.
+
+       01  filler                pic 9.
+         88 YesString            value 1, false 0.
+
+      * RIGHE PER LA STAMPA DEL PROMO e DEL PERSONALIZZATO
+       01  intestazione-promo.
+         05 filler                    pic x(32)
+            value "***  PRODOTTI IN PROMOZIONE  ***".     
+
+       01  intestazione-pers.
+         05 filler                    pic x(29)
+            value "***  PRODOTTI DA LISTINO  N° ".
+         05 pers-codice               pic z(4) value spaces.
+         05 filler                    pic x(4) value " ***".
+
+       01  intestazione2-promo.
+         05 filler                    pic x(13).
+         05 filler                    pic x(13) value "Validità dal ".
+         05 promo-da                  pic x(8)  value spaces.
+         05 filler                    pic x(4)  value " al ".
+         05 promo-a                   pic x(8)  value spaces.
+
+       01  titolo-promo.
+         05 filler                    pic x(6)  value "Codice".
+         05 filler                    pic x(16) value"PRODOTTI NORMALI".
+         05 filler                    pic x(4)  value "Sc.%".
+         05 filler                    pic x(6)  value "Prezzo".
+         05 filler                    pic x(7)  value "Imposta".
+         05 filler                    pic x(3)  value "COU".
+         05 filler                    pic x(6)  value "TOTALE".
+
+       01 riga-promo.
+         05 rp-articolo               pic z(6).
+         05 rp-des                    pic x(27).
+         05 rp-sc                     pic z9,99.
+         05 rp-prezzo                 pic zzz.zz9,99.
+         05 rp-ic                     pic zzz.zz9,99.
+         05 rp-cou                    pic zzz.zz9,99.
+         05 rp-totale                 pic zzz.zz9,99.

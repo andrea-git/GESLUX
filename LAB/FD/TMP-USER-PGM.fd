@@ -1,0 +1,8 @@
+      *(( XFD FILE = TMP-USER-PGM ))
+       FD  TMP-USER-PGM.
+       01 tmp-UP-RECORD.
+           05 tmp-UP-CHIAVE.
+               10 tmp-UP-USER-ID   PIC  X(10).
+               10 tmp-UP-PROG-ID   PIC  X(15).
+           05 tmp-UP-DATI.
+               10 tmp-UP-LIVELLO-ABIL          PIC  9.

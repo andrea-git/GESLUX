@@ -1,0 +1,5550 @@
+; CaseMaker Totem Program Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[MONITOR_FILE]
+
+
+[PROGRAM_CONTENT]
+QUIT_CONFIRM=0
+ANSI_FORMAT=1
+MAIN_SCREEN_NAME=Screen1
+BEFORE_PROGRAM=wprogmag-Ev-Before-Program
+AFTER_PROGRAM=wprogmag-Ev-After-Program
+PROGRAM_UNIQUE_CODE=TOTEM-7E3AA20570-608-492817281
+
+{{@DESCRIPTION:
+
+@}}
+
+[WORKING_STORAGE]
+m_nType=1
+m_strName=Working Storage
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionWK
+
+@}}
+[FDITEM0_WK]
+m_strName=Screen1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_WK
+
+@}}
+[FDITEM1_WK]
+m_strName=pgm-chiamante
+m_strRawPic=x(20)
+m_strPic=x(20)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1_WK
+
+@}}
+[FDITEM2_WK]
+m_strName=geslock-linkage
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM2_WK
+
+
+@}}
+[FDITEM3_WK]
+m_strName=geslock-messaggio
+m_strRawPic=x(200)
+m_strPic=X(200)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM3_WK
+
+@}}
+[FDITEM4_WK]
+m_strName=geslock-nome-file
+m_strRawPic=x(20)
+m_strPic=X(20)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM4_WK
+
+@}}
+[FDITEM5_WK]
+m_strName=geslock-scelta
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM5_WK
+
+@}}
+[FDITEM6_WK]
+m_strName=riprova
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="R"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM6_WK
+
+@}}
+[FDITEM7_WK]
+m_strName=ignora
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="I"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM7_WK
+
+@}}
+[FDITEM8_WK]
+m_strName=termina
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="T"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM8_WK
+
+@}}
+[FDITEM9_WK]
+m_strName=annulla
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="A"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM9_WK
+
+@}}
+[FDITEM10_WK]
+m_strName=salva
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM10_WK
+
+@}}
+[FDITEM11_WK]
+m_strName=geslock-v-riprova
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM11_WK
+
+@}}
+[FDITEM12_WK]
+m_strName=geslock-v-ignora
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM12_WK
+
+@}}
+[FDITEM13_WK]
+m_strName=geslock-v-termina
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM13_WK
+
+@}}
+[FDITEM14_WK]
+m_strName=geslock-v-annulla
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM14_WK
+
+@}}
+[FDITEM15_WK]
+m_strName=geslock-v-salva
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM15_WK
+
+@}}
+[FDITEM16_WK]
+m_strName=geslock-tipo-messaggio
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM16_WK
+
+@}}
+[FDITEM17_WK]
+m_strName=geslock-lock
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM17_WK
+
+@}}
+[FDITEM18_WK]
+m_strName=geslock-righe
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM18_WK
+
+@}}
+[FDITEM19_WK]
+m_strName=geslock-omom
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=2
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM19_WK
+
+@}}
+[FDITEM20_WK]
+m_strName=STATUS-progmag
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM20_WK
+
+@}}
+[FDITEM21_WK]
+m_strName=Valid-STATUS-progmag
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM21_WK
+
+@}}
+[FDITEM22_WK]
+m_strName=STATUS-tmagaz
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM22_WK
+
+@}}
+[FDITEM23_WK]
+m_strName=Valid-STATUS-tmagaz
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM23_WK
+
+@}}
+[FDITEM24_WK]
+m_strName=Small-Font
+m_nUsage=37
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM24_WK
+
+@}}
+[FDITEM25_WK]
+m_strName=Form1-Tb-1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM25_WK
+
+@}}
+[FDITEM26_WK]
+m_strName=toolbar-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM26_WK
+
+@}}
+[FDITEM27_WK]
+m_strName=E-ESCI
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM27_WK
+
+@}}
+[FDITEM28_WK]
+m_strName=E-SALVA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM28_WK
+
+@}}
+[FDITEM29_WK]
+m_strName=v-screen
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM29_WK
+
+@}}
+[FDITEM30_WK]
+m_strName=Default-Font
+m_nUsage=38
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM30_WK
+
+@}}
+[FDITEM31_WK]
+m_strName=como-peso
+m_strRawPic=S9(9)v999
+m_strPic=S9(9)v999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM31_WK
+
+@}}
+[FDITEM32_WK]
+m_strName=como-valore-monetario
+m_strRawPic=s9(12)v99
+m_strPic=s9(12)v99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM32_WK
+
+@}}
+[FDITEM33_WK]
+m_strName=como-giacenza
+m_strRawPic=s9(8)
+m_strPic=s9(8)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM33_WK
+
+@}}
+[FDITEM34_WK]
+m_strName=como-mess
+m_strRawPic=x(50)
+m_strPic=x(50)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM34_WK
+
+@}}
+[FDITEM35_WK]
+m_strName=tge-perce-prog-ed
+m_strRawPic=z9,99
+m_strPic=z9,99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM35_WK
+
+@}}
+[FDITEM36_WK]
+m_strName=STATUS-timballi
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM36_WK
+
+@}}
+[FDITEM37_WK]
+m_strName=Valid-STATUS-timballi
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM37_WK
+
+@}}
+[FDITEM38_WK]
+m_strName=AUTO-ID
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM38_WK
+
+@}}
+[FDITEM39_WK]
+m_strName=Screen1-St-1-Handle
+m_nUsage=51
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM39_WK
+
+@}}
+[FDITEM40_WK]
+m_strName=E-CERCA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM40_WK
+
+@}}
+[FDITEM41_WK]
+m_strName=Form1-St-1-Handle
+m_nUsage=51
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM41_WK
+
+@}}
+[FDITEM42_WK]
+m_strName=peso-ed
+m_strRawPic=zz9,999
+m_strPic=zz9,999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM42_WK
+
+@}}
+[FDITEM43_WK]
+m_strName=codice-ed
+m_strRawPic=z(5)
+m_strPic=z(5)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM43_WK
+
+@}}
+[FDITEM44_WK]
+m_strName=como-valore
+m_strRawPic=s9(15)v999
+m_strPic=s9(15)v999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM44_WK
+
+@}}
+[FDITEM45_WK]
+m_strName=SaveCostoUltimo
+m_strRawPic=S9(12)V9(2)
+m_strPic=S9(12)V9(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM45_WK
+
+@}}
+[FDITEM46_WK]
+m_strName=imb-qta-edit
+m_strRawPic=z.zzz
+m_strPic=z.zzz
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM46_WK
+
+@}}
+[FDITEM47_WK]
+m_strName=nome-pgm
+m_strRawPic=x(20)
+m_strPic=x(20)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM47_WK
+
+@}}
+[FDITEM48_WK]
+m_strName=titolo
+m_strDefaultValue="Gestione progressivi di magazzino"
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM48_WK
+
+@}}
+[FDITEM49_WK]
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM49_WK
+
+@}}
+[FDITEM50_WK]
+m_strName=ProgmagAlreadyOpen
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM50_WK
+
+@}}
+[FDITEM51_WK]
+m_strName=SaveKey
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM51_WK
+
+@}}
+[FDITEM52_WK]
+m_strName=SaveArticolo
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM52_WK
+
+@}}
+[FDITEM53_WK]
+m_strName=SaveMagazzino
+m_strRawPic=x(3)
+m_strPic=x(3)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM53_WK
+
+@}}
+[FDITEM54_WK]
+m_strName=SaveImballo
+m_strRawPic=x(3)
+m_strPic=x(3)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM54_WK
+
+@}}
+[FDITEM55_WK]
+m_strName=SavePeso
+m_strRawPic=9(5)V9(3)
+m_strPic=9(5)V9(3)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM55_WK
+
+@}}
+[FDITEM56_WK]
+m_strName=STATUS-tcaumag
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM56_WK
+
+@}}
+[FDITEM57_WK]
+m_strName=Valid-STATUS-tcaumag
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM57_WK
+
+@}}
+[FDITEM58_WK]
+m_strName=STATUS-timbalqta
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM58_WK
+
+@}}
+[FDITEM59_WK]
+m_strName=Valid-STATUS-timbalqta
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM59_WK
+
+@}}
+[FDITEM60_WK]
+m_strName=STATUS-articoli
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM60_WK
+
+@}}
+[FDITEM61_WK]
+m_strName=Valid-STATUS-articoli
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM61_WK
+
+@}}
+[FDITEM62_WK]
+m_strName=v-misto
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM62_WK
+
+@}}
+[FDITEM63_WK]
+m_strName=lab-imballo-buf
+m_strRawPic=x(100)
+m_strPic=x(100)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM63_WK
+
+@}}
+[FDITEM64_WK]
+m_strName=OLD-prg-rec
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM64_WK
+
+@}}
+[FDITEM65_WK]
+m_strName=OLD-prg-chiave
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM65_WK
+
+@}}
+[FDITEM66_WK]
+m_strName=OLD-prg-cod-articolo
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM66_WK
+
+@}}
+[FDITEM67_WK]
+m_strName=OLD-prg-cod-magazzino
+m_strRawPic=X(3)
+m_strPic=X(3)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM67_WK
+
+@}}
+[FDITEM68_WK]
+m_strName=OLD-prg-tipo-imballo
+m_strRawPic=X(3)
+m_strPic=X(3)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM68_WK
+
+@}}
+[FDITEM69_WK]
+m_strName=OLD-prg-peso
+m_strRawPic=9(5)V9(3)
+m_strPic=9(5)V9(3)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM69_WK
+
+@}}
+[FDITEM70_WK]
+m_strName=OLD-prg-dati
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM70_WK
+
+@}}
+[FDITEM71_WK]
+m_strName=OLD-prg-peso-utf
+m_strRawPic=9(5)V9(3)
+m_strPic=9(5)V9(3)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM71_WK
+
+@}}
+[FDITEM72_WK]
+m_strName=OLD-prg-peso-non-utf
+m_strRawPic=9(5)V9(3)
+m_strPic=9(5)V9(3)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM72_WK
+
+@}}
+[FDITEM73_WK]
+m_strName=OLD-prg-sezione-dinamici
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM73_WK
+
+@}}
+[FDITEM74_WK]
+m_strName=OLD-prg-costo-ultimo
+m_strRawPic=S9(9)V9(2)
+m_strPic=S9(9)V9(2)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM74_WK
+
+@}}
+[FDITEM75_WK]
+m_strName=OLD-prg-costo-medio
+m_strRawPic=S9(9)V9(2)
+m_strPic=S9(9)V9(2)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM75_WK
+
+@}}
+[FDITEM76_WK]
+m_strName=OLD-prg-scorta
+m_strRawPic=S9(8)
+m_strPic=S9(8)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM76_WK
+
+@}}
+[FDITEM77_WK]
+m_strName=OLD-prg-giacenza
+m_strRawPic=S9(8)
+m_strPic=S9(8)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM77_WK
+
+@}}
+[FDITEM78_WK]
+m_strName=OLD-prg-impegnato
+m_strRawPic=S9(8)
+m_strPic=S9(8)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM78_WK
+
+@}}
+[FDITEM79_WK]
+m_strName=OLD-prg-impegnati
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM79_WK
+
+@}}
+[FDITEM80_WK]
+m_strName=OLD-prg-imp-master
+m_strRawPic=s9(8)
+m_strPic=S9(8)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM80_WK
+
+@}}
+[FDITEM81_WK]
+m_strName=OLD-prg-imp-GDO
+m_strRawPic=s9(8)
+m_strPic=S9(8)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM81_WK
+
+@}}
+[FDITEM82_WK]
+m_strName=OLD-prg-imp-TRAD
+m_strRawPic=s9(8)
+m_strPic=S9(8)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM82_WK
+
+@}}
+[FDITEM83_WK]
+m_strName=OLD-prg-ordinato-1
+m_strRawPic=S9(8)
+m_strPic=S9(8)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM83_WK
+
+@}}
+[FDITEM84_WK]
+m_strName=OLD-prg-ordinato-2
+m_strRawPic=S9(8)
+m_strPic=S9(8)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM84_WK
+
+@}}
+[FDITEM85_WK]
+m_strName=OLD-prg-ordinato-3
+m_strRawPic=S9(8)
+m_strPic=S9(8)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM85_WK
+
+@}}
+[FDITEM86_WK]
+m_strName=OLD-prg-ordinato-4
+m_strRawPic=S9(8)
+m_strPic=S9(8)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM86_WK
+
+@}}
+[FDITEM87_WK]
+m_strName=OLD-prg-ordinato-5
+m_strRawPic=S9(8)
+m_strPic=S9(8)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM87_WK
+
+@}}
+[FDITEM88_WK]
+m_strName=OLD-prg-ordinato-6
+m_strRawPic=S9(8)
+m_strPic=S9(8)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM88_WK
+
+@}}
+[FDITEM89_WK]
+m_strName=OLD-prg-sezione-consolidati
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM89_WK
+
+@}}
+[FDITEM90_WK]
+m_strName=OLD-prg-iniziali
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM90_WK
+
+@}}
+[FDITEM91_WK]
+m_strName=OLD-prg-ini-udm
+m_strRawPic=S9(8)
+m_strPic=S9(8)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM91_WK
+
+@}}
+[FDITEM92_WK]
+m_strName=OLD-prg-ini-kg
+m_strRawPic=S9(9)V9(3)
+m_strPic=S9(9)V9(3)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM92_WK
+
+@}}
+[FDITEM93_WK]
+m_strName=OLD-prg-ini-valore
+m_strRawPic=S9(9)V9(2)
+m_strPic=S9(9)V9(2)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM93_WK
+
+@}}
+[FDITEM94_WK]
+m_strName=OLD-prg-acquisti
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM94_WK
+
+@}}
+[FDITEM95_WK]
+m_strName=OLD-prg-acq-udm
+m_strRawPic=S9(8)
+m_strPic=S9(8)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM95_WK
+
+@}}
+[FDITEM96_WK]
+m_strName=OLD-prg-acq-kg
+m_strRawPic=S9(9)V9(3)
+m_strPic=S9(9)V9(3)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM96_WK
+
+@}}
+[FDITEM97_WK]
+m_strName=OLD-prg-acq-valore
+m_strRawPic=S9(9)V9(2)
+m_strPic=S9(9)V9(2)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM97_WK
+
+@}}
+[FDITEM98_WK]
+m_strName=OLD-prg-vendite
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM98_WK
+
+@}}
+[FDITEM99_WK]
+m_strName=OLD-prg-ven-udm
+m_strRawPic=S9(8)
+m_strPic=S9(8)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM99_WK
+
+@}}
+[FDITEM100_WK]
+m_strName=OLD-prg-ven-kg
+m_strRawPic=S9(9)V9(3)
+m_strPic=S9(9)V9(3)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM100_WK
+
+@}}
+[FDITEM101_WK]
+m_strName=OLD-prg-ven-valore
+m_strRawPic=S9(9)V9(2)
+m_strPic=S9(9)V9(2)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM101_WK
+
+@}}
+[FDITEM102_WK]
+m_strName=OLD-prg--variazioni
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM102_WK
+
+@}}
+[FDITEM103_WK]
+m_strName=OLD-prg-var-inv-udm
+m_strRawPic=S9(8)
+m_strPic=S9(8)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM103_WK
+
+@}}
+[FDITEM104_WK]
+m_strName=OLD-prg-var-inv-kg
+m_strRawPic=S9(9)V9(3)
+m_strPic=S9(9)V9(3)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM104_WK
+
+@}}
+[FDITEM105_WK]
+m_strName=OLD-prg-var-inv-valore
+m_strRawPic=S9(9)V9(2)
+m_strPic=S9(9)V9(2)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=prg-var-inv-val
+{{@DataItem_m_strDescriptionFDITEM105_WK
+
+@}}
+[FDITEM106_WK]
+m_strName=OLD-prg-resi-a-fornitori
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM106_WK
+
+@}}
+[FDITEM107_WK]
+m_strName=OLD-prg-resi-fornitori-udm
+m_strRawPic=S9(8)
+m_strPic=S9(8)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=prg-resi-f-udm
+{{@DataItem_m_strDescriptionFDITEM107_WK
+
+@}}
+[FDITEM108_WK]
+m_strName=OLD-prg-resi-fornitori-kg
+m_strRawPic=S9(9)V9(3)
+m_strPic=S9(9)V9(3)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=prg-resi-f-kg
+{{@DataItem_m_strDescriptionFDITEM108_WK
+
+@}}
+[FDITEM109_WK]
+m_strName=OLD-prg-resi-fornitori-valore
+m_strRawPic=S9(9)V9(2)
+m_strPic=S9(9)V9(2)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=prg-resi-f
+{{@DataItem_m_strDescriptionFDITEM109_WK
+
+@}}
+[FDITEM110_WK]
+m_strName=OLD-prg-resi-da-cliente
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM110_WK
+
+@}}
+[FDITEM111_WK]
+m_strName=OLD-prg-resi-da-cli-udm
+m_strRawPic=S9(8)
+m_strPic=S9(8)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM111_WK
+
+@}}
+[FDITEM112_WK]
+m_strName=OLD-prg-resi-da-cli-kg
+m_strRawPic=S9(9)V9(3)
+m_strPic=S9(9)V9(3)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM112_WK
+
+@}}
+[FDITEM113_WK]
+m_strName=OLD-prg-resi-da-cli-valore
+m_strRawPic=S9(9)V9(2)
+m_strPic=S9(9)V9(2)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM113_WK
+
+@}}
+[FDITEM114_WK]
+m_strName=OLD-prg-giacenza-periodo
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM114_WK
+
+@}}
+[FDITEM115_WK]
+m_strName=OLD-prg-giacenza-udm
+m_strRawPic=s9(8)
+m_strPic=S9(8)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM115_WK
+
+@}}
+[FDITEM116_WK]
+m_strName=OLD-prg-giacenza-kg
+m_strRawPic=S9(9)V9(3)
+m_strPic=S9(9)V9(3)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM116_WK
+
+@}}
+[FDITEM117_WK]
+m_strName=OLD-prg-entrate
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM117_WK
+
+@}}
+[FDITEM118_WK]
+m_strName=OLD-prg-udm-el
+m_strRawPic=s9(8)
+m_strPic=S9(8)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM118_WK
+
+@}}
+[FDITEM119_WK]
+m_strName=OLD-prg-kg-el
+m_strRawPic=S9(9)V9(3)
+m_strPic=S9(9)V9(3)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM119_WK
+
+@}}
+[FDITEM120_WK]
+m_strName=OLD-prg-valore-el
+m_strRawPic=S9(9)V9(2)
+m_strPic=S9(9)V9(2)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM120_WK
+
+@}}
+[FDITEM121_WK]
+m_strName=OLD-prg-entrate2
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM121_WK
+
+@}}
+[FDITEM122_WK]
+m_strName=OLD-prg-udm-el2
+m_strRawPic=s9(8)
+m_strPic=S9(8)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM122_WK
+
+@}}
+[FDITEM123_WK]
+m_strName=OLD-prg-kg-el2
+m_strRawPic=S9(9)V9(3)
+m_strPic=S9(9)V9(3)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM123_WK
+
+@}}
+[FDITEM124_WK]
+m_strName=OLD-prg-valore-el2
+m_strRawPic=S9(9)V9(2)
+m_strPic=S9(9)V9(2)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM124_WK
+
+@}}
+[FDITEM125_WK]
+m_strName=OLD-prg-uscite
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM125_WK
+
+@}}
+[FDITEM126_WK]
+m_strName=OLD-prg-udm-ul
+m_strRawPic=s9(8)
+m_strPic=S9(8)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM126_WK
+
+@}}
+[FDITEM127_WK]
+m_strName=OLD-prg-kg-ul
+m_strRawPic=S9(9)V9(3)
+m_strPic=S9(9)V9(3)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM127_WK
+
+@}}
+[FDITEM128_WK]
+m_strName=OLD-prg-valore-ul
+m_strRawPic=S9(9)V9(2)
+m_strPic=S9(9)V9(2)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM128_WK
+
+@}}
+[FDITEM129_WK]
+m_strName=OLD-prg-uscite2
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM129_WK
+
+@}}
+[FDITEM130_WK]
+m_strName=OLD-prg-udm-ul2
+m_strRawPic=s9(8)
+m_strPic=S9(8)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM130_WK
+
+@}}
+[FDITEM131_WK]
+m_strName=OLD-prg-kg-ul2
+m_strRawPic=S9(9)V9(3)
+m_strPic=S9(9)V9(3)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM131_WK
+
+@}}
+[FDITEM132_WK]
+m_strName=OLD-prg-valore-ul2
+m_strRawPic=S9(9)V9(2)
+m_strPic=S9(9)V9(2)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM132_WK
+
+@}}
+[FDITEM133_WK]
+m_strName=OLD-prg-giac-day
+m_strRawPic=s9(8)
+m_strPic=S9(8)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM133_WK
+
+@}}
+[FDITEM134_WK]
+m_strName=OLD-prg-stato
+m_strRawPic=X(1)
+m_strPic=X(1)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM134_WK
+
+@}}
+[FDITEM135_WK]
+m_strName=OLD-prg-attivo
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="A"
+{{@DataItem_m_strDescriptionFDITEM135_WK
+
+@}}
+[FDITEM136_WK]
+m_strName=OLD-prg-disattivo
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="D"
+{{@DataItem_m_strDescriptionFDITEM136_WK
+
+@}}
+[FDITEM137_WK]
+m_strName=OLD-prg-bloccato
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="B"
+{{@DataItem_m_strDescriptionFDITEM137_WK
+
+@}}
+[FDITEM138_WK]
+m_strName=OLD-prg-dati-comuni
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM138_WK
+
+@}}
+[FDITEM139_WK]
+m_strName=OLD-prg-data-creazione
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM139_WK
+
+@}}
+[FDITEM140_WK]
+m_strName=OLD-prg-ora-creazione
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM140_WK
+
+@}}
+[FDITEM141_WK]
+m_strName=OLD-prg-utente-creazione
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM141_WK
+
+@}}
+[FDITEM142_WK]
+m_strName=OLD-prg-data-ultima-modifica
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM142_WK
+
+@}}
+[FDITEM143_WK]
+m_strName=OLD-prg-ora-ultima-modifica
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM143_WK
+
+@}}
+[FDITEM144_WK]
+m_strName=OLD-prg-utente-ultima-modifica
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM144_WK
+
+@}}
+[FDITEM145_WK]
+m_strName=OLD-prg-vuoti
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM145_WK
+
+@}}
+[FDITEM146_WK]
+m_strName=OLD-prg-num-vuoto-1
+m_strRawPic=9(15)
+m_strPic=9(15)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM146_WK
+
+@}}
+[FDITEM147_WK]
+m_strName=OLD-prg-num-vuoto-2
+m_strRawPic=9(15)
+m_strPic=9(15)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM147_WK
+
+@}}
+[FDITEM148_WK]
+m_strName=OLD-prg-num-vuoto-3
+m_strRawPic=9(15)
+m_strPic=9(15)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM148_WK
+
+@}}
+[FDITEM149_WK]
+m_strName=OLD-prg-alfa-vuoto-1
+m_strRawPic=X(20)
+m_strPic=X(20)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM149_WK
+
+@}}
+[FDITEM150_WK]
+m_strName=OLD-prg-alfa-vuoto-2
+m_strRawPic=X(20)
+m_strPic=X(20)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM150_WK
+
+@}}
+[FDITEM151_WK]
+m_strName=OLD-prg-alfa-vuoto-3
+m_strRawPic=X(20)
+m_strPic=X(20)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM151_WK
+
+@}}
+[FDITEM152_WK]
+m_strName=STATUS-tordforn
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM152_WK
+
+@}}
+[FDITEM153_WK]
+m_strName=Valid-STATUS-tordforn
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM153_WK
+
+@}}
+[FDITEM154_WK]
+m_strName=STATUS-mtordini
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM154_WK
+
+@}}
+[FDITEM155_WK]
+m_strName=Valid-STATUS-mtordini
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM155_WK
+
+@}}
+[FDITEM156_WK]
+m_strName=STATUS-tparamge
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM156_WK
+
+@}}
+[FDITEM157_WK]
+m_strName=Valid-STATUS-tparamge
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM157_WK
+
+@}}
+
+
+[LINKAGE_SECTION]
+m_nType=1
+m_strName=Linkage Section
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionLK
+
+@}}
+[FDITEM0_LK]
+m_strName=link-wprogmag
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM0_LK
+
+
+@}}
+[FDITEM1_LK]
+m_strName=LinkFunction
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM1_LK
+
+@}}
+[FDITEM2_LK]
+m_strName=link-accept
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="A"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM2_LK
+
+@}}
+[FDITEM3_LK]
+m_strName=link-batch
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="B"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM3_LK
+
+@}}
+[FDITEM4_LK]
+m_strName=link-update
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="U"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM4_LK
+
+@}}
+[FDITEM5_LK]
+m_strName=link-delete
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="D"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM5_LK
+
+@}}
+[FDITEM6_LK]
+m_strName=link-value-changed
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="V"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM6_LK
+
+@}}
+[FDITEM7_LK]
+m_strName=link-costo-ultimo
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="C"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM7_LK
+
+@}}
+[FDITEM8_LK]
+m_strName=link-close
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="K"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM8_LK
+
+@}}
+[FDITEM9_LK]
+m_strName=link-update-um-flag
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM9_LK
+
+@}}
+[FDITEM10_LK]
+m_strName=link-update-um
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1,
+m_strFalse=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM10_LK
+
+@}}
+[FDITEM11_LK]
+m_strName=link-update-peso-flag
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM11_LK
+
+@}}
+[FDITEM12_LK]
+m_strName=link-update-peso
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1,
+m_strFalse=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM12_LK
+
+@}}
+[FDITEM13_LK]
+m_strName=link-update-valore-flag
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM13_LK
+
+@}}
+[FDITEM14_LK]
+m_strName=link-update-valore
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1,
+m_strFalse=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM14_LK
+
+@}}
+[FDITEM15_LK]
+m_strName=link-key
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM15_LK
+
+@}}
+[FDITEM16_LK]
+m_strName=link-articolo
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM16_LK
+
+@}}
+[FDITEM17_LK]
+m_strName=link-magazzino
+m_strRawPic=x(3)
+m_strPic=X(3)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM17_LK
+
+@}}
+[FDITEM18_LK]
+m_strName=link-imballo
+m_strRawPic=x(3)
+m_strPic=X(3)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM18_LK
+
+@}}
+[FDITEM19_LK]
+m_strName=link-peso
+m_strRawPic=9(5)v9(3)
+m_strPic=9(5)V9(3)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM19_LK
+
+@}}
+[FDITEM20_LK]
+m_strName=link-utf
+m_strRawPic=9(5)v9(3)
+m_strPic=9(5)V9(3)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM20_LK
+
+@}}
+[FDITEM21_LK]
+m_strName=link-non-utf
+m_strRawPic=9(5)v9(3)
+m_strPic=9(5)V9(3)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM21_LK
+
+@}}
+[FDITEM22_LK]
+m_strName=link-new-imballo
+m_strRawPic=x(3)
+m_strPic=X(3)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM22_LK
+
+@}}
+[FDITEM23_LK]
+m_strName=link-new-peso
+m_strRawPic=9(5)v9(3)
+m_strPic=9(5)V9(3)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM23_LK
+
+@}}
+[FDITEM24_LK]
+m_strName=link-des-articolo
+m_strRawPic=x(50)
+m_strPic=X(50)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM24_LK
+
+@}}
+[FDITEM25_LK]
+m_strName=link-causale
+m_strRawPic=x(4)
+m_strPic=X(4)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM25_LK
+
+@}}
+[FDITEM26_LK]
+m_strName=link-valore
+m_strRawPic=s9(8)
+m_strPic=S9(8)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM26_LK
+
+@}}
+[FDITEM27_LK]
+m_strName=link-valore-peso
+m_strRawPic=s9(9)v999
+m_strPic=S9(9)V999
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM27_LK
+
+@}}
+[FDITEM28_LK]
+m_strName=link-valore-monetario
+m_strRawPic=s9(9)v99
+m_strPic=S9(9)V99
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM28_LK
+
+@}}
+[FDITEM29_LK]
+m_strName=link-valore-costo
+m_strRawPic=s9(9)v9(2)
+m_strPic=S9(9)V9(2)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM29_LK
+
+@}}
+[FDITEM30_LK]
+m_strName=link-user
+m_strRawPic=x(20)
+m_strPic=X(20)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM30_LK
+
+@}}
+[FDITEM31_LK]
+m_strName=link-open-with-lock-flag
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM31_LK
+
+@}}
+[FDITEM32_LK]
+m_strName=link-open-with-lock
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1,
+m_strFalse=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM32_LK
+
+@}}
+[FDITEM33_LK]
+m_strName=link-array
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM33_LK
+
+@}}
+[FDITEM34_LK]
+m_strName=multiplyer
+m_strRawPic=s9
+m_strPic=S9
+m_nItemLevel=5
+m_nSync=-1
+m_bOccurs=1
+m_bFixed=1
+m_strRawSize=16
+m_nSize=16
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM34_LK
+
+@}}
+[FDITEM35_LK]
+m_strName=link-wprogmag-status
+m_nUsage=17
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM35_LK
+
+@}}
+[FDITEM36_LK]
+m_strName=link-tipo-chiamata
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM36_LK
+
+@}}
+[FDITEM37_LK]
+m_strName=link-chiamata-batch
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1,
+m_strFalse=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM37_LK
+
+@}}
+[FDITEM38_LK]
+m_strName=link-msg-err-ritorno
+m_strRawPic=x(60)
+m_strPic=X(60)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM38_LK
+
+@}}
+[FDITEM39_LK]
+m_strName=link-mese-rif
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM39_LK
+    mi serve per collocare/stornare l'ordinato dal mese corretto
+
+@}}
+[FDITEM40_LK]
+m_strName=link-master
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM40_LK
+
+@}}
+[FDITEM41_LK]
+m_strName=link-imp-master
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="M"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM41_LK
+
+@}}
+[FDITEM42_LK]
+m_strName=link-imp-trad
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="T"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM42_LK
+
+@}}
+[FDITEM43_LK]
+m_strName=link-imp-GDO
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="G"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM43_LK
+
+@}}
+[FDITEM44_LK]
+m_strName=link-impegnato
+m_strRawPic=s9(8)
+m_strPic=S9(8)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM44_LK
+
+@}}
+[FDITEM45_LK]
+m_strName=link-chiave-origine
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM45_LK
+    mi serve per leggere:
+    - l'ordine fornitore e sapere se l'ordine ha il flag di
+      aperto attivato e quindi non lavoro sull'ordinato
+
+
+@}}
+[FDITEM46_LK]
+m_strName=link-anno-origine
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM46_LK
+
+@}}
+[FDITEM47_LK]
+m_strName=link-numero-origine
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=LINK-WPROGMAG.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM47_LK
+
+@}}
+
+
+{{@SCREEN:
+*   Screen Painter Data
+*   Schema 6.0
+*
+BEGIN-SPDATA-6.1A
+
+GRAPHICAL-SCREEN
+
+Begin Screen Screen1
+   PREFIX            = Screen1
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = Screen1
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 13
+   Cell Width        = 6
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = FALSE
+   Font              = Small Font
+   Font Variable     = Small-Font
+   Handle Variable   = Screen1-Handle
+   Height in Cells   = TRUE
+   Help ID           = 0
+   Label Offset      = 20
+   Lines             = 11,15
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = FALSE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 86,50
+   System Menu       = TRUE
+   Title             = "Creazione progressivi di magazzino"
+   Title Bar         = TRUE
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = FALSE
+   Visible Variable  = v-screen
+   Width in Cells    = TRUE
+   Window Type       = Floating
+   Wrap              = FALSE
+   Event Procedure   = Screen1-Event-Proc
+   Begin Data.Entry-Field EF-COD-ARTICOLO
+      SCREEN-COL        = 18,00
+      SCREEN-LINE       = 2,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-COD-ARTICOLO
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 18,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = TRUE
+      Field Edited (Style) = 1
+      Field Edited Format = zzzzz9
+      Field Picture     = 9(6)
+      Field Variable    = prg-cod-articolo OF progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare il Codice dell'Articolo
+      ID                = 0
+      ID Variable       = AUTO-ID
+      Justification     = Left
+      Line              = 2,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 6
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 10,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 1
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+      My Property       = "CONTROLLO=;ZOOM="
+      Before Procedure  = EF-COD-ARTICOLO-BeforeProcedure
+      After Procedure   = EF-COD-ARTICOLO-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-COD-MAGAZZ
+      SCREEN-COL        = 18,00
+      SCREEN-LINE       = 4,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-COD-MAGAZZ
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 18,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = TRUE
+      Field Edited (Style) = 1
+      Field Edited Format = X(3)
+      Field Picture     = X(3)
+      Field Variable    = prg-cod-magazzino OF progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare il Codice del Magazzino
+      ID                = 0
+      ID Variable       = AUTO-ID
+      Justification     = Left
+      Line              = 4,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 3
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 10,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 2
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+      My Property       = "CONTROLLO=;ZOOM="
+      Before Procedure  = EF-COD-MAGAZZ-BeforeProcedure
+      After Procedure   = EF-COD-MAGAZZ-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-TIPO-IMBALLO
+      SCREEN-COL        = 18,00
+      SCREEN-LINE       = 6,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-TIPO-IMBALLO
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 18,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = TRUE
+      Field Edited (Style) = 1
+      Field Edited Format = X(3)
+      Field Picture     = X(3)
+      Field Variable    = prg-tipo-imballo OF progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare il Codice del Tipo Imballo
+      ID                = 0
+      ID Variable       = AUTO-ID
+      Justification     = Left
+      Line              = 6,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 3
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 10,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 3
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+      My Property       = "CONTROLLO=;ZOOM="
+      Before Procedure  = EF-TIPO-IMBALLO-BeforeProcedure
+      After Procedure   = EF-TIPO-IMBALLO-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-PESO
+      SCREEN-COL        = 18,00
+      SCREEN-LINE       = 8,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-PESO
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 18,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = TRUE
+      Field Edited (Style) = 1
+      Field Edited Format = zz.zz9,999
+      Field Picture     = 9(5)v9(3)
+      Field Variable    = prg-peso OF PROGMAG
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare il Peso
+      ID                = 0
+      ID Variable       = AUTO-ID
+      Justification     = Right
+      Line              = 8,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 10
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = TRUE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 10,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 4
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+      My Property       = "CONTROLLO=;VIRGOLA="
+      Before Procedure  = EF-PESO-BeforeProcedure
+      After Procedure   = EF-PESO-AfterProcedure
+   End
+   Begin Frame Screen1-Fr-1
+      SCREEN-COL        = 35,00
+      SCREEN-LINE       = 7,77
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-Fr-1
+      3D Style          = Normal
+      Alternate         = FALSE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 35,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Font              = Default Font
+      Full Height       = FALSE
+      Height in Cells   = TRUE
+      Help ID           = 0
+      High Color        = 0
+      ID                = 1
+      Line              = 7,77
+      Lines             = 2,54
+      Lines Unit        = Default
+      Low Color         = 0
+      Size              = 40,00
+      Size Unit         = Default
+      Tab Order         = 5
+      Thickness         = Default
+      Title Position    = 0:Unaligned
+      Visible           = NONE
+      Visible Variable  = v-misto
+      Width in Cells    = TRUE
+      Begin Data.Entry-Field ef-peso-utf
+         SCREEN-COL        = 42,00
+         SCREEN-LINE       = 8,54
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = ef-peso-utf
+         Auto              = FALSE
+         Auto Decimal      = 0
+         Border            = Boxed
+         Case              = Upper
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 513
+         Column            = 8,00
+         Csize             = 0
+         Csize Unit        = Default
+         Cursor            = 0
+         Cursor Col        = 0
+         Cursor Row        = 0
+         Destroy Type      = Automatic
+         Enable            = TRUE
+         Field Edited (Style) = 1
+         Field Edited Format = zz.zz9,999
+         Field Picture     = 9(5)v9(3)
+         Field Variable    = prg-peso-utf OF PROGMAG
+         File              = progmag
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         Hint              = Digitare il Peso
+         ID                = 0
+         ID Variable       = AUTO-ID
+         Justification     = Right
+         Line              = 1,77
+         Lines             = 1,31
+         Lines Unit        = Default
+         Max Lines         = 0
+         Max Text          = 10
+         Max Value         = 0
+         Min Value         = 0
+         No AutoSel        = FALSE
+         No Tab            = FALSE
+         Notify Change     = FALSE
+         Numeric           = TRUE
+         Occurs            = 0
+         Read Only         = FALSE
+         Required          = FALSE
+         Secure            = FALSE
+         Size              = 10,00
+         Size Unit         = Default
+         Style             = Singleline
+         Tab Order         = 1
+         Use Return        = FALSE
+         Use Tab           = FALSE
+         Value Multiple    = FALSE
+         Visible           = NONE
+         Visible Variable  = v-misto
+         Width in Cells    = TRUE
+         My Property       = "CONTROLLO=;VIRGOLA="
+         Before Procedure  = EF-PESO-BeforeProcedure
+         After Procedure   = EF-PESO-AfterProcedure
+      End
+      Begin Data.Entry-Field ef-peso-non-utf
+         SCREEN-COL        = 63,00
+         SCREEN-LINE       = 8,54
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = ef-peso-non-utf
+         Auto              = FALSE
+         Auto Decimal      = 0
+         Border            = Boxed
+         Case              = Upper
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 513
+         Column            = 29,00
+         Csize             = 0
+         Csize Unit        = Default
+         Cursor            = 0
+         Cursor Col        = 0
+         Cursor Row        = 0
+         Destroy Type      = Automatic
+         Enable            = TRUE
+         Field Edited (Style) = 1
+         Field Edited Format = zz.zz9,999
+         Field Picture     = 9(5)v9(3)
+         Field Variable    = prg-peso-non-utf OF PROGMAG
+         File              = progmag
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         Hint              = Digitare il Peso
+         ID                = 0
+         ID Variable       = AUTO-ID
+         Justification     = Right
+         Line              = 1,77
+         Lines             = 1,31
+         Lines Unit        = Default
+         Max Lines         = 0
+         Max Text          = 10
+         Max Value         = 0
+         Min Value         = 0
+         No AutoSel        = FALSE
+         No Tab            = FALSE
+         Notify Change     = FALSE
+         Numeric           = TRUE
+         Occurs            = 0
+         Read Only         = FALSE
+         Required          = FALSE
+         Secure            = FALSE
+         Size              = 10,00
+         Size Unit         = Default
+         Style             = Singleline
+         Tab Order         = 2
+         Use Return        = FALSE
+         Use Tab           = FALSE
+         Value Multiple    = FALSE
+         Visible           = NONE
+         Visible Variable  = v-misto
+         Width in Cells    = TRUE
+         My Property       = "CONTROLLO=;VIRGOLA="
+         Before Procedure  = EF-PESO-BeforeProcedure
+         After Procedure   = EF-PESO-AfterProcedure
+      End
+      Begin Label Screen1-La-1
+         SCREEN-COL        = 37,00
+         SCREEN-LINE       = 8,54
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen1-La-1
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 3,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Small Font
+         Font Variable     = Small-Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 2
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 1,77
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 4,00
+         Size Unit         = Default
+         Tab Order         = 3
+         Title             = "UTF"
+         Transparent       = TRUE
+         Visible           = NONE
+         Visible Variable  = v-misto
+         Width in Cells    = TRUE
+      End
+      Begin Label Screen1-La-1a
+         SCREEN-COL        = 54,00
+         SCREEN-LINE       = 8,54
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen1-La-1a
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 20,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Small Font
+         Font Variable     = Small-Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 3
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 1,77
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 8,00
+         Size Unit         = Default
+         Tab Order         = 4
+         Title             = "Non UTF"
+         Transparent       = TRUE
+         Visible           = NONE
+         Visible Variable  = v-misto
+         Width in Cells    = TRUE
+      End
+   End
+   Begin Label Form1-La-5
+      SCREEN-COL        = 1,83
+      SCREEN-LINE       = 2,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,83
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 103
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 2,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 15,00
+      Size Unit         = Default
+      Tab Order         = 6
+      Title             = "Codice Articolo"
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5a
+      SCREEN-COL        = 1,83
+      SCREEN-LINE       = 4,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5a
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,83
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 105
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 4,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 15,00
+      Size Unit         = Default
+      Tab Order         = 7
+      Title             = "Codice Magazzino"
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aa
+      SCREEN-COL        = 1,83
+      SCREEN-LINE       = 6,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,83
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 102
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 6,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 15,00
+      Size Unit         = Default
+      Tab Order         = 8
+      Title             = "Tipo Imballo"
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaa
+      SCREEN-COL        = 1,83
+      SCREEN-LINE       = 8,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,83
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 200
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 8,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 15,00
+      Size Unit         = Default
+      Tab Order         = 9
+      Title             = "Peso (KG)"
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin Data.Label LBL-DES-ARTICOLO
+      SCREEN-COL        = 29,00
+      SCREEN-LINE       = 2,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = LBL-DES-ARTICOLO
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 5
+      Column            = 29,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Field Edited (Style) = 0
+      Field Edited Format = X(50)
+      Field Picture     = X(50)
+      Field Variable    = art-descrizione
+      File              = articoli
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 13
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 2,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 57,00
+      Size Unit         = Default
+      Tab Order         = 10
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin Data.Label LBL-DES-MAGAZZ
+      SCREEN-COL        = 29,00
+      SCREEN-LINE       = 4,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = LBL-DES-MAGAZZ
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 5
+      Column            = 29,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Field Edited (Style) = 0
+      Field Edited Format = X(50)
+      Field Picture     = X(50)
+      Field Variable    = mag-descrizione
+      File              = tmagaz
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 14
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 4,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 57,00
+      Size Unit         = Default
+      Tab Order         = 11
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin CsCtrl.Custom1 Label Screen1-Custom1-1
+      CUST-SYMBOL       = Custom1
+      CUST-MODIFYFLAG   = 000000000000000000001000010000000000000000000000000
+      SCREEN-COL        = 83,50
+      SCREEN-LINE       = 1,15
+      LOCK-CONTROL      = FALSE
+      LEVEL             = 5
+      (Name)            = Screen1-Custom1-1
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 83,50
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Font Variable     = Default-Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 16
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 1,15
+      Lines             = 1,15
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 2,00
+      Size Unit         = Default
+      Tab Order         = 12
+      Title             = "CUSTOM CONTROL"
+      Transparent       = TRUE
+      Visible           = NONE
+      Visible Variable  = v-custom
+      Width in Cells    = FALSE
+   End
+   Begin Label lab-imballo
+      SCREEN-COL        = 29,00
+      SCREEN-LINE       = 6,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lab-imballo
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 5
+      Column            = 29,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 4
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 6,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 57,00
+      Size Unit         = Default
+      Tab Order         = 13
+      Title Picture     = x(100)
+      Title Variable    = lab-imballo-buf
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Toolbar Form1-Tb-1
+      SCREEN-LINE       = 1,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 1
+      (Name)            = Form1-Tb-1
+      Cell              = FALSE
+      Color             = 0
+      Font              = Default Font
+      Handle Variable   = Form1-Tb-1-Handle
+      Help ID           = 0
+      Lines             = 2,69
+      Tab Order         = 14
+      Begin Push-Button TOOL-ESCI
+         SCREEN-COL        = 1,00
+         SCREEN-LINE       = 1,08
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-ESCI
+         Bitmap            = "..\resource\toolbar.bmp"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = toolbar-bmp
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 1,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Enable Variable   = E-ESCI
+         Exception Value   = 27
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 2223
+         Line              = 1,08
+         Lines             = 1,81
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 4,33
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Escape Button
+         Tab Order         = 1
+         Termination Value = 0
+         Title             = "Esci (Esc)"
+         Visible           = TRUE
+         Width in Cells    = FALSE
+      End
+      Begin Push-Button TOOL-SALVA
+         SCREEN-COL        = 6,00
+         SCREEN-LINE       = 1,08
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-SALVA
+         Bitmap            = "..\resource\toolbar.bmp"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = toolbar-bmp
+         Bitmap Number     = 3
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 6,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Enable Variable   = E-SALVA
+         Exception Value   = 3
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 75
+         Line              = 1,08
+         Lines             = 1,81
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 4,33
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 2
+         Termination Value = 0
+         Title             = "Salva (F3)"
+         Visible           = TRUE
+         Width in Cells    = FALSE
+         Link To           = TOOL-SALVA-LinkTo
+      End
+      Begin Push-Button TOOL-CERCA
+         SCREEN-COL        = 11,00
+         SCREEN-LINE       = 1,08
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-CERCA
+         Bitmap            = "..\resource\toolbar.bmp"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = toolbar-bmp
+         Bitmap Number     = 8
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 11,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Enable Variable   = E-CERCA
+         Exception Value   = 8
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 79
+         Line              = 1,08
+         Lines             = 1,81
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 4,33
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 3
+         Termination Value = 0
+         Title             = "Cerca (F8)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Additional Properties = "BITMAP-NUMBER BitmapNumZoom"
+         Link To           = TOOL-CERCA-LinkTo
+      End
+   End
+   Begin Status-Bar Form1-St-1
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 1
+      (Name)            = Form1-St-1
+      Font              = Default Font
+      Grip              = TRUE
+      Handle Variable   = Form1-St-1-Handle
+      PANEL-WIDTHS      = ( 35, 30, 999 )
+      PANEL-STYLE       = ( 1, 1, 1 )
+      Tab Order         = 15
+   End
+End
+
+END-SPDATA
+
+@}}
+
+{{@REPORT:
+*   Report Writer Data
+*   Schema 6.0
+*
+BEGIN-RWDATA-6.0A
+
+END-RWDATA
+
+@}}
+
+{{@EMBEDDING_CODE:
+BEGIN-DATA
+   BASETYPE          = 6
+   NODESTYLE         = 7
+   PARAGRAPH         = DeletedCode
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Screen1
+   ACTOBJ            = Screen1
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+           move 0 to link-wprogmag-status.
+           if link-magazzino = spaces
+              move low-value to mag-rec
+              start tmagaz key is >= mag-chiave invalid continue end-start
+              perform until 1 = 2
+                 read tmagaz next at end exit perform end-read
+                 if si-mag-principale exit perform end-if
+              end-perform
+              move mag-codice     to prg-cod-magazzino
+           else
+              move link-magazzino to prg-cod-magazzino
+           end-if.
+
+           move link-articolo     to art-codice.
+           read articoli no lock invalid continue end-read.
+           if art-misto 
+              move 1 to v-misto
+              move art-peso-utf     to ef-peso-utf-buf
+              move art-peso-non-utf to ef-peso-non-utf-buf
+           else         
+              move 0 to v-misto
+           end-if.
+           move link-articolo     to ef-cod-articolo-buf.
+           move link-imballo      to ef-tipo-imballo-buf imq-codice.
+           move link-peso         to ef-peso-buf.
+           move prg-cod-magazzino to ef-cod-magazz-buf mag-codice.
+           perform QTA-IMBALLI.
+
+           read tmagaz invalid move spaces to mag-descrizione end-read.
+           move mag-descrizione to lbl-des-magazz-buf.
+           move 1 to v-screen.
+           modify Screen1-Handle, visible = v-screen.
+           display screen1.
+
+           call "C$CALLEDBY" using pgm-chiamante.
+
+LUBEXX     if pgm-chiamante = "garticoli"
+LUBEXX        modify ef-cod-articolo, read-only
+LUBEXX     end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 0
+   PARENT            = wprogmag
+   ACTOBJ            = wprogmag
+   ENTRYPOINT        = BeforeDeclarative
+BEGIN-TEXT
+      ***---
+       PROGMAG-ERR SECTION.
+           use after error procedure on progmag.
+           set RecLocked to false.
+           set tutto-ok  to true.
+           evaluate status-progmag
+           when "35"
+LUBEXX          if not link-chiamata-batch
+                   display message "File [PROGMAG] not found!"
+                             title titolo
+                              icon 3
+                   set errori to true
+LUBEXX          else
+LUBEXX             move "File [PROGMAG] not found!" to link-msg-err-ritorno
+LUBEXX             move -2 to link-wprogmag-status
+LUBEXX          end-if
+           when "39"
+LUBEXX          if not link-chiamata-batch
+                   display message "File [PROGMAG] Mismatch size!"
+                             title titolo
+                              icon 3
+                   set errori to true
+LUBEXX          else
+LUBEXX             move "File [PROGMAG] Mismatch size!" to link-msg-err-ritorno
+LUBEXX             move -2 to link-wprogmag-status
+LUBEXX          end-if
+           when "98"
+LUBEXX          if not link-chiamata-batch
+                   display message "[PROGMAG] Indexed file corrupt!"
+                             title titolo
+                              icon 3
+                   set errori to true
+LUBEXX          else
+LUBEXX             move "[PROGMAG] Indexed file corrupt!" to link-msg-err-ritorno
+LUBEXX             move -2 to link-wprogmag-status
+LUBEXX          end-if
+           when "93"
+           when "99" set RecLocked to true
+           end-evaluate.
+
+      ***---
+       TMAGAZ-ERR SECTION.
+           use after error procedure on tmagaz.
+           set RecLocked to false.
+           set tutto-ok  to true.
+           evaluate status-tmagaz
+           when "35"
+LUBEXX          if not link-chiamata-batch
+                   display message "File [TMAGAZ] not found!"
+                             title titolo
+                              icon 3
+                   set errori to true
+LUBEXX          else
+LUBEXX             move "File [TMAGAZ] not found!" to link-msg-err-ritorno
+LUBEXX             move -2 to link-wprogmag-status
+LUBEXX          end-if
+           when "39"
+LUBEXX          if not link-chiamata-batch
+                   display message "File [TMAGAZ] Mismatch size!"
+                             title titolo
+                              icon 3
+                   set errori to true
+LUBEXX          else
+LUBEXX             move "File [TMAGAZ] Mismatch size!" to link-msg-err-ritorno
+LUBEXX             move -2 to link-wprogmag-status
+LUBEXX          end-if
+           when "98"
+LUBEXX          if not link-chiamata-batch
+                   display message "[TMAGAZ] Indexed file corrupt!"
+                             title titolo
+                              icon 3
+                   set errori to true
+LUBEXX          else
+LUBEXX             move "[TMAGAZ] Indexed file corrupt!" to link-msg-err-ritorno
+LUBEXX             move -2 to link-wprogmag-status
+LUBEXX          end-if
+           when "93"
+           when "99" set RecLocked to true
+           end-evaluate.
+
+      ***---
+       TCAUMAG-ERR SECTION.
+           use after error procedure on tcaumag.
+           set RecLocked to false.
+           set tutto-ok  to true.
+           evaluate status-tcaumag
+           when "35"
+LUBEXX          if not link-chiamata-batch
+                   display message "File [TCAUMAG] not found!"
+                             title titolo
+                              icon 3
+                   set errori to true
+LUBEXX          else
+LUBEXX             move "File [TCAUMAG] not found!" to link-msg-err-ritorno
+LUBEXX             move -2 to link-wprogmag-status
+LUBEXX          end-if
+           when "39"
+LUBEXX          if not link-chiamata-batch
+                   display message "File [TCAUMAG] Mismatch size!"
+                             title titolo
+                              icon 3
+                   set errori to true
+LUBEXX          else
+LUBEXX             move "File [TCAUMAG] Mismatch size!" to link-msg-err-ritorno
+LUBEXX             move -2 to link-wprogmag-status
+LUBEXX          end-if
+           when "98"
+LUBEXX          if not link-chiamata-batch
+                   display message "[TCAUMAG] Indexed file corrupt!"
+                             title titolo
+                              icon 3
+                   set errori to true
+LUBEXX          else
+LUBEXX             move "[TCAUMAG] Indexed file corrupt!" to link-msg-err-ritorno
+LUBEXX             move -2 to link-wprogmag-status
+LUBEXX          end-if
+           when "93"
+           when "99" set RecLocked to true
+           end-evaluate.
+
+      ***---
+       ARTICOLI-ERR SECTION.
+           use after error procedure on articoli.
+           set RecLocked to false.
+           set tutto-ok  to true.
+           evaluate status-articoli
+           when "35"
+LUBEXX          if not link-chiamata-batch
+                   display message "File [ARTICOLI] not found!"
+                             title titolo
+                              icon 3
+                   set errori to true
+LUBEXX          else
+LUBEXX             move "File [ARTICOLI] not found!" to link-msg-err-ritorno
+LUBEXX             move -2 to link-wprogmag-status
+LUBEXX          end-if
+           when "39"
+LUBEXX          if not link-chiamata-batch
+                   display message "File [ARTICOLI] Mismatch size!"
+                             title titolo
+                              icon 3
+                   set errori to true
+LUBEXX          else
+LUBEXX             move "File [ARTICOLI] Mismatch size!" to link-msg-err-ritorno
+LUBEXX             move -2 to link-wprogmag-status
+LUBEXX          end-if
+           when "98"
+LUBEXX          if not link-chiamata-batch
+                   display message "[ARTICOLI] Indexed file corrupt!"
+                             title titolo
+                              icon 3
+                   set errori to true
+LUBEXX          else
+LUBEXX             move "[ARTICOLI] Indexed file corrupt!" to link-msg-err-ritorno
+LUBEXX             move -2 to link-wprogmag-status
+LUBEXX          end-if
+           when "93"
+           when "99" set RecLocked to true
+           end-evaluate.
+
+      ***---
+       TIMBALQTA-ERR SECTION.
+           use after error procedure on timbalqta.
+           set RecLocked to false.
+           set tutto-ok  to true.
+           evaluate status-timbalqta
+           when "35"
+LUBEXX          if not link-chiamata-batch
+                   display message "File [TIMBALQTA] not found!"
+                             title titolo
+                              icon 3
+                   set errori to true
+LUBEXX          else
+LUBEXX             move "File [TIMBALQTA] not found!" to link-msg-err-ritorno
+LUBEXX             move -2 to link-wprogmag-status
+LUBEXX          end-if
+           when "39"
+LUBEXX          if not link-chiamata-batch
+                   display message "File [TIMBALQTA] Mismatch size!"
+                             title titolo
+                              icon 3
+                   set errori to true
+LUBEXX          else
+LUBEXX             move "File [TIMBALQTA] Mismatch size!" to link-msg-err-ritorno
+LUBEXX             move -2 to link-wprogmag-status
+LUBEXX          end-if
+           when "98"
+LUBEXX          if not link-chiamata-batch
+                   display message "[TIMBALQTA] Indexed file corrupt!"
+                             title titolo
+                              icon 3
+                   set errori to true
+LUBEXX          else
+LUBEXX             move "[TIMBALQTA] Indexed file corrupt!" to link-msg-err-ritorno
+LUBEXX             move -2 to link-wprogmag-status
+LUBEXX          end-if
+           when "93"
+           when "99" set RecLocked to true
+           end-evaluate.
+
+      ***---
+       TIMBALLI-ERR SECTION.
+           use after error procedure on timballi.
+           set RecLocked to false.
+           set tutto-ok  to true.
+           evaluate status-timballi
+           when "35"
+LUBEXX          if not link-chiamata-batch
+                   display message "File [TIMBALLI] not found!"
+                             title titolo
+                              icon 3
+                   set errori to true
+LUBEXX          else
+LUBEXX             move "File [TIMBALLI] not found!" to link-msg-err-ritorno
+LUBEXX             move -2 to link-wprogmag-status
+LUBEXX          end-if
+           when "39"
+LUBEXX          if not link-chiamata-batch
+                   display message "File [TIMBALLI] Mismatch size!"
+                             title titolo
+                              icon 3
+                   set errori to true
+LUBEXX          else
+LUBEXX             move "File [TIMBALLI] Mismatch size!" to link-msg-err-ritorno
+LUBEXX             move -2 to link-wprogmag-status
+LUBEXX          end-if
+           when "98"
+LUBEXX          if not link-chiamata-batch
+                   display message "[TIMBALLI] Indexed file corrupt!"
+                             title titolo
+                              icon 3
+                   set errori to true
+LUBEXX          else
+LUBEXX             move "[TIMBALLI] Indexed file corrupt!" to link-msg-err-ritorno
+LUBEXX             move -2 to link-wprogmag-status
+LUBEXX          end-if
+           when "93"
+           when "99" set RecLocked to true
+           end-evaluate.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = AGGIORNA-COSTO-ULTIMO
+BEGIN-TEXT
+           set tutto-ok to true.
+           initialize prg-rec replacing numeric data by zeroes
+                                   alphanumeric data by spaces.
+           |Aggiorno il record indicato dalla 
+           |chiave passatami in linkage
+           move link-key     to prg-chiave.
+           |Controllo che il record ci sia altrimenti lo creo...
+           read progmag no lock
+                invalid |NON DOVREBBE MAI PASSARE DI QUI!!!
+                move 0             to SaveCostoUltimo
+                set prg-attivo     to true
+                move link-utf      to prg-peso-utf
+                move link-non-utf  to prg-peso-non-utf
+                move link-user     to prg-utente-creazione
+                accept prg-data-creazione from century-date
+                accept prg-ora-creazione  from time
+                write prg-rec invalid continue end-write
+                |.. ed eventualmente creo il padre
+                set prg-attivo     to true
+                move spaces        to prg-cod-magazzino
+                move spaces        to prg-tipo-imballo
+                move 0             to prg-peso 
+                                      prg-peso-utf 
+                                      prg-peso-non-utf
+                move link-user     to prg-utente-creazione
+                accept prg-data-creazione from century-date
+                accept prg-ora-creazione  from time
+                write prg-rec invalid continue end-write
+           end-read.
+
+           move link-key to prg-chiave.
+           perform READ-PROGMAG-LOCK.
+           if not RecLocked
+              if link-valore-costo not = 0
+                 move link-valore-costo to prg-costo-ultimo
+              end-if
+              |Aggiorno il record di progmag ed...
+              rewrite prg-rec  invalid continue end-rewrite
+LUBEXX        move prg-costo-ultimo to SaveCostoUltimo
+              unlock progmag all record
+
+              |...aggiorno il record "PADRE"
+              move spaces     to prg-cod-magazzino
+              move spaces     to prg-tipo-imballo
+              move 0          to prg-peso
+              perform READ-PROGMAG-LOCK
+              if not RecLocked
+                 if trovato
+                    move SaveCostoUltimo to prg-costo-ultimo
+                    rewrite prg-rec invalid continue end-rewrite
+                    unlock progmag all record
+                 end-if   
+              end-if
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = AGGIORNA-PROGMAG-CAUSALE
+BEGIN-TEXT
+                 set tutto-ok to true.
+           initialize prg-rec.   
+           move link-causale to tca-codice.
+           read tcaumag no lock 
+                invalid 
+                set errori to true 
+LUBEXX          if link-chiamata-batch
+LUBEXX             move -1 to link-wprogmag-status
+LUBEXX             initialize link-msg-err-ritorno
+LUBEXX             string "ERRORE: Causale " delimited size
+LUBEXX                    tca-codice         delimited size
+LUBEXX                    " NON TROVATA!"    delimited size
+LUBEXX                    into link-msg-err-ritorno
+LUBEXX             end-string
+LUBEXX          else
+LUBEXX             display message"Operazione impossibile."
+LUBEXX                     x"0d0a""Causale: " tca-codice, " NON TROVATA"
+LUBEXX                       title tit-err
+LUBEXX                        icon 2
+LUBEXX          end-if
+           end-read.
+           if tutto-ok
+              set trovato to true
+              |Aggiorno il record indicato dalla 
+              |chiave passatami in linkage
+              move link-key     to prg-chiave
+              perform READ-PROGMAG-LOCK
+              if not RecLocked
+                 if trovato
+                    if link-update-um 
+                       perform AGGIORNA-VALORI-UM 
+                    end-if
+                    if link-update-peso
+                       perform AGGIORNA-VALORI-PESO
+                    end-if
+                    if link-update-valore
+                       perform AGGIORNA-VALORI-VALORE-MONETARIO
+                    end-if
+                    move link-user to prg-utente-ultima-modifica
+                    accept prg-data-ultima-modifica from century-date
+                    accept prg-ora-ultima-modifica  from time
+                    rewrite prg-rec invalid continue end-rewrite
+                 end-if
+                 unlock progmag all record
+
+                 |Aggiorno il record "PADRE"
+                 move spaces to prg-cod-magazzino
+                 move spaces to prg-tipo-imballo
+                 move 0      to prg-peso
+                 perform READ-PROGMAG-LOCK
+                 if not RecLocked
+                    if trovato
+                       if link-update-um 
+                          perform AGGIORNA-VALORI-UM 
+                       end-if
+                       if link-update-peso
+                          perform AGGIORNA-VALORI-PESO
+                       end-if
+                       if link-update-valore
+                          perform AGGIORNA-VALORI-VALORE-MONETARIO
+                       end-if
+                       rewrite prg-rec invalid continue end-rewrite
+                       if multiplyer(16) not = 0
+                          if tca-si-aggiorna
+                             multiply link-valore-costo
+                                   by multiplyer(16)
+                             unlock progmag all records
+                             perform AGGIORNA-COSTO-ULTIMO
+                          end-if
+                       end-if
+                    end-if
+                    unlock progmag all record
+                 end-if
+              end-if   
+           end-if.
+
+      ***---
+       AGGIORNA-VALORI-UM.
+           multiply link-valore by multiplyer(1)
+             giving como-valore.
+           evaluate true
+           when tca-movim-giac-pos 
+                add      como-valore to   prg-giacenza
+           when tca-movim-giac-neg 
+                subtract como-valore from prg-giacenza
+           end-evaluate.
+
+           multiply link-valore by multiplyer(2)
+             giving como-valore.
+           evaluate true
+           when tca-movim-imp-pos 
+                add      como-valore to   prg-impegnato
+                if link-impegnato not = 0
+                   multiply link-impegnato by multiplyer(2)
+                     giving como-valore
+                   evaluate true
+                   when link-imp-MASTER
+                        add como-valore to prg-imp-master
+                   when link-imp-GDO
+                        add como-valore to prg-imp-GDO
+                   when link-imp-TRAD
+                        add como-valore to prg-imp-TRAD
+                   end-evaluate
+                end-if
+           when tca-movim-imp-neg 
+                subtract como-valore from prg-impegnato
+                if link-impegnato not = 0
+                   multiply link-impegnato by multiplyer(2)
+                     giving como-valore
+                   evaluate true
+                   when link-imp-MASTER
+                        subtract como-valore from prg-imp-master
+                   when link-imp-GDO
+                        subtract como-valore from prg-imp-GDO
+                   when link-imp-TRAD
+                        subtract como-valore from prg-imp-TRAD
+                   end-evaluate
+                end-if
+           end-evaluate.
+
+           multiply link-valore by multiplyer(3)
+             giving como-valore.
+                                 
+           move link-chiave-origine to tof-chiave
+           read tordforn no lock 
+                invalid continue
+            not invalid
+                if tof-aperto-si
+                   move 0 to link-mese-rif
+                end-if
+           end-read.
+           evaluate true
+           when tca-movim-ord-pos
+                evaluate link-mese-rif
+                when 1 add como-valore to prg-ordinato-1
+                       add como-valore to prg-ordinato-2
+                       add como-valore to prg-ordinato-3
+                       add como-valore to prg-ordinato-4
+                       add como-valore to prg-ordinato-5
+                       add como-valore to prg-ordinato-6
+                when 2 add como-valore to prg-ordinato-2
+                       add como-valore to prg-ordinato-3
+                       add como-valore to prg-ordinato-4
+                       add como-valore to prg-ordinato-5
+                       add como-valore to prg-ordinato-6
+                when 3 add como-valore to prg-ordinato-3
+                       add como-valore to prg-ordinato-4
+                       add como-valore to prg-ordinato-5
+                       add como-valore to prg-ordinato-6
+                when 4 add como-valore to prg-ordinato-4
+                       add como-valore to prg-ordinato-5
+                       add como-valore to prg-ordinato-6
+                when 5 add como-valore to prg-ordinato-5
+                       add como-valore to prg-ordinato-6
+                when 6 add como-valore to prg-ordinato-6
+                end-evaluate
+           when tca-movim-ord-neg 
+                evaluate link-mese-rif
+                when 1 subtract como-valore from prg-ordinato-1
+                       subtract como-valore from prg-ordinato-2
+                       subtract como-valore from prg-ordinato-3
+                       subtract como-valore from prg-ordinato-4
+                       subtract como-valore from prg-ordinato-5
+                       subtract como-valore from prg-ordinato-6
+                when 2 subtract como-valore from prg-ordinato-2
+                       subtract como-valore from prg-ordinato-3
+                       subtract como-valore from prg-ordinato-4
+                       subtract como-valore from prg-ordinato-5
+                       subtract como-valore from prg-ordinato-6
+                when 3 subtract como-valore from prg-ordinato-3
+                       subtract como-valore from prg-ordinato-4
+                       subtract como-valore from prg-ordinato-5
+                       subtract como-valore from prg-ordinato-6
+                when 4 subtract como-valore from prg-ordinato-4
+                       subtract como-valore from prg-ordinato-5
+                       subtract como-valore from prg-ordinato-6
+                when 5 subtract como-valore from prg-ordinato-5
+                       subtract como-valore from prg-ordinato-6
+                when 6 subtract como-valore from prg-ordinato-6
+                end-evaluate
+           end-evaluate.
+
+           multiply link-valore by multiplyer(4)
+             giving como-valore.
+           evaluate true
+           when tca-movim-iniz-pos 
+                add      como-valore to   prg-ini-udm
+           when tca-movim-iniz-neg 
+                subtract como-valore from prg-ini-udm
+           end-evaluate.
+
+           multiply link-valore by multiplyer(5)
+             giving como-valore.
+           evaluate true                       
+           when tca-movim-acq-pos 
+                add      como-valore to   prg-acq-udm
+           when tca-movim-acq-neg 
+                subtract como-valore from prg-acq-udm
+           end-evaluate.
+
+           multiply link-valore by multiplyer(6)
+             giving como-valore.
+           evaluate true
+           when tca-movim-ven-pos 
+                add      como-valore to   prg-ven-udm
+           when tca-movim-ven-neg 
+                subtract como-valore from prg-ven-udm
+           end-evaluate.
+
+           multiply link-valore by multiplyer(7)
+             giving como-valore.
+           evaluate true                       
+           when tca-movim-var-inv-pos 
+                add      como-valore to   prg-var-inv-udm
+           when tca-movim-var-inv-neg 
+                subtract como-valore from prg-var-inv-udm
+           end-evaluate.
+
+           multiply link-valore by multiplyer(8)
+             giving como-valore.
+           evaluate true
+           when tca-movim-resi-for-pos 
+                add      como-valore to   prg-resi-fornitori-udm
+           when tca-movim-resi-for-neg 
+                subtract como-valore from prg-resi-fornitori-udm
+           end-evaluate.
+
+           multiply link-valore by multiplyer(9)
+             giving como-valore.
+           evaluate true
+           when tca-movim-resi-cli-pos 
+                add      como-valore to   prg-resi-da-cli-udm
+           when tca-movim-resi-cli-neg 
+                subtract como-valore from prg-resi-da-cli-udm
+           end-evaluate.
+
+           multiply link-valore by multiplyer(10)
+             giving como-valore.
+           evaluate true
+           when tca-movim-giac-periodo-pos 
+                add      como-valore to   prg-giacenza-udm
+           when tca-movim-giac-periodo-neg 
+                subtract como-valore from prg-giacenza-udm
+           end-evaluate.
+
+           multiply link-valore by multiplyer(11)
+             giving como-valore.
+           evaluate true
+           when tca-entrate-lav-pos
+                add      como-valore to   prg-udm-el
+           when tca-entrate-lav-neg
+                subtract como-valore from prg-udm-el
+           end-evaluate.
+
+           multiply link-valore by multiplyer(12)
+             giving como-valore.
+           evaluate true
+           when tca-uscite-lav-pos
+                add      como-valore to   prg-udm-ul
+           when tca-uscite-lav-neg
+                subtract como-valore from prg-udm-ul
+           end-evaluate.
+
+           multiply link-valore by multiplyer(13)
+             giving como-valore.
+           evaluate true
+           when tca-entrate-lav2-pos
+                add      como-valore to   prg-udm-el2
+           when tca-entrate-lav2-neg
+                subtract como-valore from prg-udm-el2
+           end-evaluate.
+
+           multiply link-valore by multiplyer(14)
+             giving como-valore.
+           evaluate true
+           when tca-uscite-lav2-pos
+                add      como-valore to   prg-udm-ul2
+           when tca-uscite-lav2-neg
+                subtract como-valore from prg-udm-ul2
+           end-evaluate.
+
+           multiply link-valore by multiplyer(15)
+             giving como-valore.
+           evaluate true
+           when tca-giac-bloc-pos
+                add      como-valore to   prg-giacenza-bloc
+           when tca-giac-bloc-neg
+                subtract como-valore from prg-giacenza-bloc
+           end-evaluate.
+
+      ***---
+       AGGIORNA-VALORI-PESO.                   
+           multiply link-valore-peso by multiplyer(4)
+             giving como-peso.
+           evaluate true
+           when tca-movim-iniz-pos 
+                add      como-peso to   prg-ini-kg
+           when tca-movim-iniz-neg 
+                subtract como-peso from prg-ini-kg
+           end-evaluate.
+
+           multiply link-valore-peso by multiplyer(5)
+             giving como-peso.
+           evaluate true
+           when tca-movim-acq-pos
+                add      como-peso to   prg-acq-kg
+           when tca-movim-acq-neg
+                subtract como-peso from prg-acq-kg
+           end-evaluate.
+
+           multiply link-valore-peso by multiplyer(6)
+             giving como-peso.
+           evaluate true
+           when tca-movim-ven-pos
+                add      como-peso to   prg-ven-kg
+           when tca-movim-ven-neg
+                subtract como-peso from prg-ven-kg
+           end-evaluate.
+
+           multiply link-valore-peso by multiplyer(7)
+             giving como-peso.
+           evaluate true
+           when tca-movim-var-inv-pos
+                add      como-peso to   prg-var-inv-kg
+           when tca-movim-var-inv-neg
+                subtract como-peso from prg-var-inv-kg
+           end-evaluate.
+
+           multiply link-valore-peso by multiplyer(8)
+             giving como-peso.
+           evaluate true
+           when tca-movim-resi-for-pos
+                add      como-peso to   prg-resi-fornitori-kg
+           when tca-movim-resi-for-neg
+                subtract como-peso from prg-resi-fornitori-kg
+           end-evaluate.
+
+           multiply link-valore-peso by multiplyer(9)
+             giving como-peso.
+           evaluate true
+           when tca-movim-resi-cli-pos
+                add      como-peso to   prg-resi-da-cli-kg
+           when tca-movim-resi-cli-neg
+                subtract como-peso from prg-resi-da-cli-kg
+           end-evaluate.
+
+           multiply link-valore-peso by multiplyer(10)
+             giving como-peso.
+           evaluate true
+           when tca-movim-giac-periodo-pos
+                add      como-peso to   prg-giacenza-kg
+           when tca-movim-giac-periodo-neg
+                subtract como-peso from prg-giacenza-kg
+           end-evaluate.
+
+           multiply link-valore-peso by multiplyer(11)
+             giving como-peso.
+           evaluate true
+           when tca-entrate-lav-pos
+                add      como-peso to   prg-kg-el
+           when tca-entrate-lav-neg
+                subtract como-peso from prg-kg-el
+           end-evaluate.
+
+           multiply link-valore-peso by multiplyer(12)
+             giving como-peso.
+           evaluate true
+           when tca-uscite-lav-pos
+                add      como-peso to   prg-kg-ul
+           when tca-uscite-lav-neg
+                subtract como-peso from prg-kg-ul
+           end-evaluate.
+
+           multiply link-valore-peso by multiplyer(13)
+             giving como-peso.
+           evaluate true
+           when tca-entrate-lav2-pos
+                add      como-peso to   prg-kg-el2
+           when tca-entrate-lav2-neg
+                subtract como-peso from prg-kg-el2
+           end-evaluate.
+
+           multiply link-valore-peso by multiplyer(14)
+             giving como-peso.
+           evaluate true
+           when tca-uscite-lav2-pos
+                add      como-peso to   prg-kg-ul2
+           when tca-uscite-lav2-neg
+                subtract como-peso from prg-kg-ul2
+           end-evaluate.
+
+      ***---
+       AGGIORNA-VALORI-VALORE-MONETARIO.
+           multiply link-valore-monetario by multiplyer(4)
+             giving como-valore-monetario.
+           evaluate true
+           when tca-movim-iniz-pos 
+                add      como-valore-monetario to   prg-ini-valore
+           when tca-movim-iniz-neg 
+                subtract como-valore-monetario from prg-ini-valore
+           end-evaluate.
+
+           multiply link-valore-monetario by multiplyer(5)
+             giving como-valore-monetario.
+           evaluate true                       
+           when tca-movim-acq-pos 
+                add      como-valore-monetario to   prg-acq-valore
+           when tca-movim-acq-neg 
+                subtract como-valore-monetario from prg-acq-valore
+           end-evaluate.
+
+           multiply link-valore-monetario by multiplyer(6)
+             giving como-valore-monetario.
+           evaluate true
+           when tca-movim-ven-pos 
+                add      como-valore-monetario to   prg-ven-valore
+           when tca-movim-ven-neg 
+                subtract como-valore-monetario from prg-ven-valore
+           end-evaluate.
+
+           multiply link-valore-monetario by multiplyer(7)
+             giving como-valore-monetario.
+           evaluate true                       
+           when tca-movim-var-inv-pos 
+                add      como-valore-monetario to   prg-var-inv-valore
+           when tca-movim-var-inv-neg 
+                subtract como-valore-monetario from prg-var-inv-valore
+           end-evaluate.
+
+           multiply link-valore-monetario by multiplyer(8)
+             giving como-valore-monetario.
+           evaluate true
+           when tca-movim-resi-for-pos 
+                add como-valore-monetario to prg-resi-fornitori-valore
+           when tca-movim-resi-for-neg 
+                subtract como-valore-monetario 
+                    from prg-resi-fornitori-valore
+           end-evaluate.
+
+           multiply link-valore-monetario by multiplyer(9)
+             giving como-valore-monetario.
+           evaluate true
+           when tca-movim-resi-cli-pos 
+                add como-valore-monetario to prg-resi-da-cli-valore
+           when tca-movim-resi-cli-neg 
+                subtract como-valore-monetario 
+                    from prg-resi-da-cli-valore
+           end-evaluate.
+
+           multiply link-valore-monetario by multiplyer(11)
+             giving como-valore-monetario.
+           evaluate true
+           when tca-entrate-lav-pos
+                add      como-valore-monetario to   prg-valore-el
+           when tca-entrate-lav-neg
+                subtract como-valore-monetario from prg-valore-el
+           end-evaluate.
+
+           multiply link-valore-monetario by multiplyer(12)
+             giving como-valore-monetario.
+           evaluate true
+           when tca-uscite-lav-pos
+                add      como-valore-monetario to   prg-valore-ul
+           when tca-uscite-lav-neg
+                subtract como-valore-monetario from prg-valore-ul
+           end-evaluate.
+
+           multiply link-valore-monetario by multiplyer(13)
+             giving como-valore-monetario.
+           evaluate true
+           when tca-entrate-lav2-pos
+                add      como-valore-monetario to   prg-valore-el2
+           when tca-entrate-lav2-neg
+                subtract como-valore-monetario from prg-valore-el2
+           end-evaluate.
+
+           multiply link-valore-monetario by multiplyer(14)
+             giving como-valore-monetario.
+           evaluate true
+           when tca-uscite-lav2-pos
+                add      como-valore-monetario to   prg-valore-ul2
+           when tca-uscite-lav2-neg
+                subtract como-valore-monetario from prg-valore-ul2
+           end-evaluate.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CAMBIO-VALORI-ARTICOLO
+BEGIN-TEXT
+           move link-articolo to prg-cod-articolo.
+           move link-imballo  to prg-tipo-imballo.
+           move link-peso     to prg-peso.
+           move mag-codice    to prg-cod-magazzino.
+           read progmag no lock
+                invalid
+                move link-new-imballo to prg-tipo-imballo
+                move link-new-peso    to prg-peso
+                initialize prg-dati   replacing numeric data by zeroes
+                                           alphanumeric data by spaces
+                accept prg-data-creazione from century-date
+                accept prg-ora-creazione  from time
+                set    prg-attivo         to true
+                write  prg-rec invalid continue end-write
+            not invalid
+                perform READ-PROGMAG-LOCK
+                if not RecLocked
+                   |Controllo l'esistenza di valori consolidati
+                   if prg-ini-udm        not = 0 or 
+                      prg-ini-kg         not = 0 or
+                      prg-ini-valore     not = 0 or 
+                      prg-acq-udm        not = 0 or
+                      prg-acq-kg         not = 0 or 
+                      prg-acq-valore     not = 0 or
+                      prg-ven-udm        not = 0 or 
+                      prg-ven-kg         not = 0 or
+                      prg-ven-valore     not = 0 or 
+                      prg-var-inv-udm    not = 0 or
+                      prg-var-inv-kg     not = 0 or 
+                      prg-var-inv-valore not = 0
+                   
+                      move link-new-imballo to prg-tipo-imballo
+                      move link-new-peso    to prg-peso
+                      initialize prg-dati 
+                                 replacing numeric data by zeroes
+                                      alphanumeric data by spaces
+                      accept prg-data-creazione from century-date
+                      accept prg-ora-creazione  from time
+                      move   link-user          to prg-utente-creazione
+                      set    prg-attivo to true
+                      write prg-rec invalid continue end-write
+                   else
+                      delete progmag record invalid continue end-delete
+                      move prg-dati         to old-prg-dati
+                      move link-new-imballo to prg-tipo-imballo
+                      move link-new-peso    to prg-peso
+                      move old-prg-dati     to prg-dati
+                      write prg-rec invalid continue end-write
+                   end-if
+                   unlock progmag all records
+                end-if
+           end-read.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CANCELLA-PROGMAG
+BEGIN-TEXT
+           if link-magazzino = 0 and
+              link-imballo   = 0 and
+              link-peso      = 0
+              perform CANCELLAZIONE-SINGOLA
+           else
+              perform CANCELLAZIONE-GRUPPO
+           end-if.
+
+      ***---
+       CANCELLAZIONE-SINGOLA.
+           move link-articolo   to prg-cod-articolo.
+           move link-magazzino  to prg-cod-magazzino.
+           move link-imballo    to prg-tipo-imballo.
+           move link-peso       to prg-peso.
+           
+           set RecLocked to false.      
+
+           perform until 1 = 2          
+              delete progmag record invalid continue end-delete
+              if not RecLocked 
+                 exit perform
+              end-if
+              move "progmag" to geslock-nome-file
+              initialize geslock-messaggio
+              string   "Il progressivo di magazzino: "           
+              delimited size
+                     x"0d0a" prg-chiave                               
+              delimited size
+                     x"0d0a"" risulta in uso su altro terminale."
+              delimited size
+                      into geslock-messaggio
+             end-string
+             move 0     to geslock-v-termina
+             move 1     to geslock-v-riprova
+             move 0     to geslock-v-ignora
+             call   "geslock" using geslock-linkage
+             cancel "geslock"
+             set RecLocked to false
+           end-perform.
+
+      ***---
+       CANCELLAZIONE-GRUPPO.
+           move link-articolo   to prg-cod-articolo.
+           move low-value       to prg-cod-magazzino
+                                   prg-tipo-imballo
+                                   prg-peso.
+
+           start progmag key >= prg-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read progmag next no lock at end exit perform end-read
+                    if link-articolo not = prg-cod-articolo
+                       exit perform
+                    else   
+           
+                       set RecLocked to false
+
+                       perform until 1 = 2          
+                          delete progmag record invalid continue end-delete
+                          if not RecLocked 
+                             exit perform
+                          end-if
+                          move "progmag" to geslock-nome-file
+                          initialize geslock-messaggio
+                          string   "Il progressivo di magazzino: "           
+                          delimited size
+                                 x"0d0a" prg-chiave                               
+                          delimited size
+                                 x"0d0a"" risulta in uso su altro terminale."
+                          delimited size
+                                  into geslock-messaggio
+                         end-string
+                         move 0     to geslock-v-termina
+                         move 1     to geslock-v-riprova
+                         move 0     to geslock-v-ignora
+                         call   "geslock" using geslock-linkage
+                         cancel "geslock"   
+                         set RecLocked to false
+                       end-perform          
+                    end-if
+                 end-perform
+           end-start.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CERCA
+BEGIN-TEXT
+           evaluate control-id
+           when 78-id-ef-cod-magazz
+                inquire ef-cod-magazz      value mag-codice
+                move "tmagaz"      to Como-File
+                call   "zoom-gt" using como-file, mag-rec
+                                giving stato-zoom
+                cancel "zoom-gt"
+                if stato-zoom = ZERO  
+                   modify ef-cod-magazz,   value mag-codice
+                   move mag-descrizione  to lbl-des-magazz-buf
+                   display lbl-des-magazz
+                   move 78-id-ef-cod-magazz to store-id
+                end-if               
+      
+           when 78-id-ef-tipo-imballo
+                inquire ef-tipo-imballo   value imq-codice
+                move "timbalqta"   to Como-File
+                call   "zoom-gt" using como-file, imq-rec
+                                giving stato-zoom
+                cancel "zoom-gt"
+                if stato-zoom = 0
+                   modify ef-tipo-imballo, value imq-codice
+                   perform QTA-IMBALLI
+                   display lab-imballo
+                   move 78-id-ef-tipo-imballo to store-id
+                end-if
+           end-evaluate.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CONTROLLO
+BEGIN-TEXT
+           set tutto-ok to true.
+
+           evaluate control-id
+           when 78-ID-ef-cod-articolo
+                if pgm-chiamante not = "garticoli"
+                   inquire ef-cod-articolo value art-codice
+                   read articoli no lock
+                        invalid
+                        set errori to true
+                        display message "Articolo NON valido"
+                                  title tit-err
+                                   icon 2
+                        move spaces to art-descrizione
+                    not invalid
+                        |Posso creare un figlio solo
+                        |su un articolo confermato
+                        if art-disattivo
+                           set errori to true
+                           display message "Articolo NON attivo"
+                                     title tit-err
+                                      icon 2
+                           move spaces to art-descrizione
+                        end-if
+                   end-read
+                   if link-peso = 0
+                      move art-peso-standard to link-peso
+                   end-if
+                   move art-descrizione to lbl-des-articolo-buf
+                   display lbl-des-articolo
+                end-if
+
+           when 78-ID-ef-cod-magazz
+                inquire ef-cod-magazz,   value in mag-codice
+                move spaces to lbl-des-magazz-buf
+                read tmagaz
+                     invalid 
+                     set errori to true
+                     display message "Codice magazzino NON valido"
+                               title tit-err
+                                icon 2
+                 not invalid 
+                     move mag-descrizione to lbl-des-magazz-buf
+                end-read
+                display lbl-des-magazz
+           when 78-ID-ef-tipo-imballo
+                inquire ef-tipo-imballo, value in imq-codice
+                move spaces to lab-imballo-buf
+                read timbalqta
+                     invalid 
+                     set errori to true
+                     display message "Codice imballo NON valido"
+                               title tit-err
+                                icon 2
+                 not invalid
+                     move imq-tipo   to imq-codice
+                     perform QTA-IMBALLI
+                end-read
+                display lab-imballo
+
+           when 78-ID-ef-peso
+                move spaces to tge-chiave
+                read tparamge
+                inquire ef-peso,         value in como-peso
+                evaluate true
+                when como-peso > link-peso
+                     if como-peso > ( link-peso + ( ( link-peso * tge-perce-prog ) / 100 ) )
+                        move tge-perce-prog to tge-perce-prog-ed
+                        set errori to true
+                        initialize como-mess
+                        string "Peso superiore del "  delimited size
+                               tge-perce-prog-ed      delimited size
+                               "% di quello standard" delimited size
+                          into como-mess
+                        end-string
+                        display message como-mess
+                                  title tit-err
+                                   icon 2
+                     end-if
+                when como-peso < link-peso
+                     if como-peso < ( link-peso - ( ( link-peso * tge-perce-prog ) / 100 ) )
+                        move tge-perce-prog to tge-perce-prog-ed
+                        set errori to true
+                        initialize como-mess
+                        string "Peso inferiore del "  delimited size
+                               tge-perce-prog-ed      delimited size
+                               "% di quello standard" delimited size
+                          into como-mess
+                        end-string
+                        display message como-mess
+                                  title tit-err
+                                   icon 2
+                     end-if
+                when como-peso = 0
+                     set errori to true
+                     display message box "Inserimento peso mancante"
+                             title = tit-err
+                             icon mb-warning-icon
+                when other continue
+                end-evaluate
+
+           when 78-ID-ef-peso-utf
+                if v-misto = 1
+                   inquire ef-peso-utf, value in art-peso-utf
+                   if art-peso-utf = 0 
+                      set errori to true
+                      display message "Inserimento peso UTF mancante"
+                                title tit-err
+                                 icon 2
+                   end-if
+                end-if
+
+           when 78-ID-ef-peso-non-utf
+                if v-misto = 1
+                   inquire ef-peso,         value in prg-peso
+                   inquire ef-peso-utf,     value in art-peso-utf
+                   inquire ef-peso-non-utf, value in art-peso-non-utf
+                   if art-peso-non-utf = 0
+                      set errori to true
+                      display message"Inserimento peso non UTF mancante"
+                                title tit-err
+                                 icon 2
+                   else
+                      if (art-peso-utf + art-peso-non-utf) not = prg-peso
+                         set errori to true
+                         display message "Il peso dev'essere la somma "
+                                         "di UTF e non UTF"
+                                   title tit-err
+                                    icon 2
+                         move 78-ID-ef-peso to control-id store-id
+                      end-if
+                   end-if
+                end-if
+           end-evaluate.
+
+           if errori 
+              move control-id to store-id
+              move 4          to accept-control 
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = OPEN-IO-PROGMAG
+BEGIN-TEXT
+           set tutto-ok  to true.
+           set RecLocked to false.
+           if link-open-with-lock
+              if not ProgmagAlreadyOpen
+                 open i-o progmag allowing readers
+                 set ProgmagAlreadyOpen to true
+              end-if
+           else
+              open i-o progmag
+           end-if.
+
+           if RecLocked
+              set errori to true
+LUBEXX        if link-chiamata-batch
+LUBEXX           move -2 to link-wprogmag-status
+LUBEXX           move "File [PROGMAG] già in uso!" to link-msg-err-ritorno
+LUBEXX        else
+                 move "progmag" to geslock-nome-file
+                 initialize geslock-messaggio
+                 string   "Il file dei progressivi di magazzino" 
+                   x"0d0a""risulta in uso su altro terminale."
+                   x"0d0a""Impossibile procedere!" delimited size
+                       into geslock-messaggio
+                 end-string
+                 move 1     to geslock-v-riprova
+                 move 0     to geslock-v-termina
+                 move 0     to geslock-v-ignora
+                 call   "geslock" using geslock-linkage
+                 cancel "geslock"
+       
+                 evaluate true
+                 when riprova perform OPEN-IO-PROGMAG
+                 when other   move -1 to link-wprogmag-status
+                 end-evaluate
+              end-if
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = PARAGRAFO-COPY
+BEGIN-TEXT
+           copy "status.cpy".
+           copy "color-custom.cpy".
+           copy "wprogmag.cpy".
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = QTA-IMBALLI
+BEGIN-TEXT
+           initialize lab-imballo-buf.
+           if imq-codice not = spaces
+              read timbalqta no lock invalid continue end-read
+              move imq-qta-imb to imb-qta-edit
+              move imq-tipo    to imb-codice
+              read timballi no lock 
+                   invalid  initialize imb-descrizione
+              end-read
+              inspect imb-descrizione replacing trailing spaces 
+                                                      by low-value
+              call "C$JUSTIFY" using imb-qta-edit, "L"
+              string  imb-descrizione delimited by low-value
+                      " da "          delimited by size
+                      imb-qta-edit    delimited by spaces
+                      " x "           delimited by size
+                      art-udm-imballo delimited by size
+                 into lab-imballo-buf
+              end-string
+              display lab-imballo
+           end-if
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = READ-PROGMAG-LOCK
+BEGIN-TEXT
+           set RecLocked to false.
+           set trovato to true.
+
+           perform until 1 = 2
+              set RecLocked to false
+              read progmag lock invalid set trovato to false end-read
+
+              evaluate status-progmag
+              when "99"  set RecLocked to true
+              when other exit perform
+              end-evaluate
+
+LUBEXX        if link-chiamata-batch
+LUBEXX           move -1 to link-wprogmag-status
+LUBEXX           initialize link-msg-err-ritorno
+LUBEXX           string "Record "      delimited size
+LUBEXX                  "progressivi " delimited size
+LUBEXX                  prg-chiave     delimited size 
+LUBEXX                  "già in uso!"  delimited size
+LUBEXX                  into link-msg-err-ritorno
+LUBEXX           end-string
+LUBEXX           exit perform
+LUBEXX        else
+                 perform 5 times
+                    move prg-cod-articolo to codice-ed
+                    move prg-peso         to peso-ed
+                    move "progmag"        to geslock-nome-file
+                    initialize geslock-messaggio
+                    string "Articolo:       ", codice-ed
+                    x"0d0a""Magazzino:  ",     prg-cod-magazzino
+                    x"0d0a""Imballo:       ",  prg-tipo-imballo
+                    x"0d0a""Peso:           ", peso-ed 
+                    x"0d0a""Record già in uso su altro terminale." delimited size
+                           into geslock-messaggio
+                    end-string
+                    set errori to true
+                    move 1     to geslock-v-riprova
+                    move 0     to geslock-v-termina
+                    move 0     to geslock-v-ignora
+                    call   "geslock" using geslock-linkage
+                    cancel "geslock"
+                    |Non valuto il risultato in uscita
+                    |perchè solo "riprova" è possibila
+                 end-perform
+LUBEXX        end-if
+           end-perform.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = SALVA
+BEGIN-TEXT
+           set tutto-ok to true.
+           perform varying control-id from 78-ID-ef-cod-articolo by 1
+                     until control-id > 78-ID-ef-peso-non-utf
+              perform CONTROLLO
+              if errori exit perform end-if
+           end-perform.
+
+           if errori
+              move store-id to control-id
+              move 4 to ACCEPT-CONTROL
+           else
+              initialize prg-rec
+              |26/11/2013 se l'articolo NON è disattivo, SEMPRE ATTIVO
+      *****        move art-stato to prg-stato
+              if art-disattivo set prg-disattivo to true
+              else             set prg-attivo    to true
+              end-if
+              inquire ef-cod-articolo, value in prg-cod-articolo
+              inquire ef-cod-magazz,   value in prg-cod-magazzino
+              inquire ef-tipo-imballo, value in prg-tipo-imballo
+              inquire ef-peso,         value in prg-peso
+              evaluate true
+              when art-si-utf move prg-peso         to prg-peso-utf
+              when art-misto  move art-peso-utf     to prg-peso-utf
+                              move art-peso-non-utf to prg-peso-non-utf
+              when art-no-utf move prg-peso         to prg-peso-non-utf
+              end-evaluate
+              move link-user     to prg-utente-creazione
+              accept prg-data-creazione from century-date
+              accept prg-ora-creazione  from time
+              write prg-rec 
+                    invalid 
+                    display message "Progressivo di "
+                                    "magazzino GIA' esistente"
+                              title tit-err
+                               icon mb-warning-icon
+                not invalid
+                    display message "Progressivo creato correttamente"
+                              title "Creazione progressivi di magazzino"
+                               icon mb-warning-icon
+              end-write
+           end-if.
+           perform CANCELLA-COLORE.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = TOOL-SALVA-LinkTo
+BEGIN-TEXT
+           perform SALVA.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = TOOL-CERCA-LinkTo
+BEGIN-TEXT
+           inquire tool-cerca, enabled in e-cerca.
+           if e-cerca = 1 perform CERCA end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = EF-COD-MAGAZZ-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = EF-TIPO-IMBALLO-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = EF-PESO-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = EF-COD-ARTICOLO-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = EF-COD-MAGAZZ-AfterProcedure
+BEGIN-TEXT
+      *<<** Default_Code **>>
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = EF-TIPO-IMBALLO-AfterProcedure
+BEGIN-TEXT
+      *<<** Default_Code **>>
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = EF-PESO-AfterProcedure
+BEGIN-TEXT
+      *<<** Default_Code **>>
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = EF-COD-ARTICOLO-AfterProcedure
+BEGIN-TEXT
+      *<<** Default_Code **>>
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = wprogmag-Ev-Before-Program
+BEGIN-TEXT
+           set tutto-ok to true.
+           open input tordforn.
+           perform OPEN-IO-PROGMAG.
+           if errori goback end-if.
+                                     
+           |Devo reimpostarlo perchè c'è un caso COMUNE DALL'AGGIORNAMENTO
+           |STATO MASTER in cui non viene settato il flag link-chiamata-batch
+           call "C$CALLEDBY" using pgm-chiamante.
+           if pgm-chiamante = "ricaldin-bat"     or
+                            = "wuseravv"         or
+                            = "agg-stato-master" or
+                            = "impordini"
+              set link-chiamata-batch to true
+           end-if.
+           |Ottimizzazione del programma. Esso infatti viene 
+           |richiamato più volte (es. contabilizzazione e 
+           |consolidamento) ma, nel caso di esecuzione batch senza 
+           |bisogno di screen eseguo tutto qui dentro evitando di
+           |passare attraverso le perform di totem lente ed inutili
+           if link-accept
+              |Controllo che, prima di creare un figlio
+              |sia presente il padre
+LUBEXX        move link-articolo to prg-cod-articolo
+LUBEXX        move spaces        to prg-tipo-imballo
+LUBEXX        move spaces        to prg-cod-magazzino
+LUBEXX        move 0             to prg-peso
+LUBEXX        read progmag no lock
+LUBEXX             invalid 
+                   |Potrebbe essere che creoi figli subito senza
+                   |aver selezionato il figlio di riferimento
+                   if pgm-chiamante not = "evasione"
+LUBEXX                display message "Padre del progressivo non presente"
+LUBEXX                         x"0d0a""Creazione impossibile"
+LUBEXX                          title tit-err
+LUBEXX                           icon 2
+LUBEXX                close  progmag
+LUBEXX                unlock progmag all records
+LUBEXX                goback
+                   end-if
+LUBEXX        end-read
+           else
+              open i-o   articoli
+              open input tmagaz
+                         tcaumag
+                         timbalqta
+                         timballi
+              if tutto-ok
+                 perform WPROGMAG-BATCH
+                 close   tmagaz
+                         tcaumag 
+                         articoli 
+                         timbalqta 
+                         timballi
+              end-if
+              goback
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = wprogmag-Ev-After-Program
+BEGIN-TEXT
+           if not link-open-with-lock
+              close progmag
+           end-if.
+           close tordforn.
+END-TEXT
+END-DATA
+
+@}}
+
+[KEY_STATUS_FIELD_FORMAT]
+PIC=9(5)
+USAGE=[None]
+
+[KEYSTATUS_CONTENT:KS1]
+CONDITION=Enter-Pushed
+VALUE=13
+
+[KEYSTATUS_CONTENT:KS2]
+CONDITION=Exit-Pushed
+VALUE=27
+
+[KEYSTATUS_CONTENT:KS3]
+CONDITION=Message-Received
+VALUE=95
+
+[KEYSTATUS_CONTENT:KS4]
+CONDITION=Event-Occurred
+VALUE=96
+
+[KEYSTATUS_CONTENT:KS5]
+CONDITION=Screen-No-Input-Field
+VALUE=97
+
+[KEYSTATUS_CONTENT:KS6]
+CONDITION=Screen-Time-Out
+VALUE=99
+
+[COBOLAID_DATASET_INFO]
+COUNT=1
+NAME_0=DataSet1
+
+[DRAW_DOCUMENT_INDEX]
+OBJ_NAME_0=8001
+OBJ_ID_0=1485463487
+
+[MULTIPLE_KEY_0]
+COUNT=1
+KEY_0=prg-chiave OF progmag
+
+[DRAW_DOCUMENT_8001_1485463487]
+OBJ_NAME=8001
+OBJ_ID=1485463487
+TYPE=2
+VERSION=
+DOC_SIZE_X=5100
+DOC_SIZE_Y=5160
+PAGE_LEFT=150
+PAGE_TOP=150
+PAGE_RIGHT=1850
+PAGE_BOTTOM=2730
+MARGIN_LEFT=150
+MARGIN_TOP=150
+MARGIN_RIGHT=150
+MARGIN_BOTTOM=150
+PROP_DOCU_TYPE=ø
+PROP_DOCU_TYPE2=ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+PROP_DOCU_NAME=DataSet - DataSet1[wprogmag(GESLUX)]
+PROP_DOCU_OWNER=Person A
+PROP_DOCU_CDATE=02/23/04
+PROP_DOCU_MODIFIER=Person B
+PROP_DOCU_MDATE=02/23/04
+PROP_DOCU_DESCR=Caseaid DocuCaseaid Document
+PROP_DOCU_HEADER=Caseaid Document
+PROP_DOCU_FOOTER=Page # 
+PROP_DOCU_DIM_H=2
+PROP_DOCU_DIM_W=3
+PROP_DOCU_LOC_H=1
+PROP_DOCU_LOC_W=1
+PROP_DOCU_EDGE_T=150
+PROP_DOCU_EDGE_B=150
+PROP_DOCU_EDGE_L=150
+PROP_DOCU_EDGE_R=150
+PROP_DOCU_ZOOM=75
+PROP_DOCU_SIZE_TYPE=0
+PROP_DOCU_SIZE_PAPER=1
+PROP_DOCU_SIZE_H=2580
+PROP_DOCU_SIZE_W=1700
+PROP_DOCU_RULER_EBL=0
+PROP_DOCU_GRID_EBL=0
+PROP_DOCU_GRID=20
+PROP_DOCU_ALIGN=0
+REL_SYM_SIZE=52
+REL_SYM_INFO_L=8
+REL_SYM_INFO_X0=2301
+REL_SYM_INFO_Y0=1309082312
+REL_SYM_INFO_X1=2301
+REL_SYM_INFO_Y1=1556154020
+REL_SYM_INFO_X2=2301
+REL_SYM_INFO_Y2=1669332440
+REL_SYM_INFO_X3=2301
+REL_SYM_INFO_Y3=1154318464
+REL_SYM_INFO_X4=2301
+REL_SYM_INFO_Y4=1976156817
+REL_SYM_INFO_X5=2301
+REL_SYM_INFO_Y5=1744635898
+REL_SYM_INFO_X6=2301
+REL_SYM_INFO_Y6=826543339
+REL_SYM_INFO_X7=2301
+REL_SYM_INFO_Y7=924492512
+
+[DRAW_BASESYMBOL_2301_1309082312]
+OBJ_NAME=2301
+OBJ_ID=1309082312
+KIND=1
+{{@LABEL_2301_1309082312
+progmag
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=16
+TOP=16
+RIGHT=416
+BOTTOM=238
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1556154020]
+OBJ_NAME=2301
+OBJ_ID=1556154020
+KIND=1
+{{@LABEL_2301_1556154020
+tmagaz
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1466
+TOP=16
+RIGHT=1866
+BOTTOM=238
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1669332440]
+OBJ_NAME=2301
+OBJ_ID=1669332440
+KIND=1
+{{@LABEL_2301_1669332440
+tcaumag
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1068
+TOP=16
+RIGHT=1468
+BOTTOM=238
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1154318464]
+OBJ_NAME=2301
+OBJ_ID=1154318464
+KIND=1
+{{@LABEL_2301_1154318464
+timbalqta
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=616
+TOP=50
+RIGHT=1016
+BOTTOM=272
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1976156817]
+OBJ_NAME=2301
+OBJ_ID=1976156817
+KIND=1
+{{@LABEL_2301_1976156817
+timballi
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=566
+TOP=412
+RIGHT=966
+BOTTOM=634
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1744635898]
+OBJ_NAME=2301
+OBJ_ID=1744635898
+KIND=1
+{{@LABEL_2301_1744635898
+articoli
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1045
+TOP=376
+RIGHT=1445
+BOTTOM=598
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_826543339]
+OBJ_NAME=2301
+OBJ_ID=826543339
+KIND=1
+{{@LABEL_2301_826543339
+tordforn
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1542
+TOP=409
+RIGHT=1942
+BOTTOM=631
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_924492512]
+OBJ_NAME=2301
+OBJ_ID=924492512
+KIND=1
+{{@LABEL_2301_924492512
+tparamge
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1182
+TOP=1082
+RIGHT=1582
+BOTTOM=1304
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DMD_DOCUMENT_0_1485463487]
+OBJ_NAME=0
+OBJ_ID=1485463487
+FILE_TITLE_TYPE=8136
+FILE_SHOW_ITEM=0
+FILE_SHOW_KEY=0
+FILE_SHOW_PIC=0
+FILE_SHOW_HEAD=0
+FILE_SHOW_LEVEL=0
+FILE_SHOW_TREE=0
+FILE_SHOW_CLPS=0
+FILE_SHOW_BMP=0
+FILE_SHOW_LINE=0
+FILE_SHOW_MINIZE=0
+
+[DMD_FILE_0_1309082312]
+OBJ_NAME=0
+OBJ_ID=1309082312
+REL_M_OBJ_ID=0
+ENTITY=progmag
+LINK=0
+LINK_NAME=
+DSN_SIZE=53
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=2
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=prg-chiave OF progmag
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1309082312
+
+@}}
+DSN_INFO_PRIMARY=1
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1556154020]
+OBJ_NAME=0
+OBJ_ID=1556154020
+REL_M_OBJ_ID=0
+ENTITY=tmagaz
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=mag-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1556154020
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1669332440]
+OBJ_NAME=0
+OBJ_ID=1669332440
+REL_M_OBJ_ID=0
+ENTITY=tcaumag
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tca-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1669332440
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1154318464]
+OBJ_NAME=0
+OBJ_ID=1154318464
+REL_M_OBJ_ID=0
+ENTITY=timbalqta
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=imq-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1154318464
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1976156817]
+OBJ_NAME=0
+OBJ_ID=1976156817
+REL_M_OBJ_ID=0
+ENTITY=timballi
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=imb-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1976156817
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1744635898]
+OBJ_NAME=0
+OBJ_ID=1744635898
+REL_M_OBJ_ID=0
+ENTITY=articoli
+LINK=0
+LINK_NAME=
+DSN_SIZE=54
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=2
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=art-chiave OF articoli
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1744635898
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_826543339]
+OBJ_NAME=0
+OBJ_ID=826543339
+REL_M_OBJ_ID=0
+ENTITY=tordforn
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tof-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_826543339
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_924492512]
+OBJ_NAME=0
+OBJ_ID=924492512
+REL_M_OBJ_ID=0
+ENTITY=tparamge
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tge-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_924492512
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=

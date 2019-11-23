@@ -1,0 +1,1037 @@
+; CaseMaker Totem Program Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[MONITOR_FILE]
+
+
+[PROGRAM_CONTENT]
+QUIT_CONFIRM=0
+ANSI_FORMAT=1
+MAIN_SCREEN_NAME=Screen1
+PROGRAM_UNIQUE_CODE=TOTEM-7E3AA205633-264-827731970
+
+{{@DESCRIPTION:
+
+@}}
+
+[WORKING_STORAGE]
+m_nType=1
+m_strName=Working Storage
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionWK
+
+@}}
+[FDITEM0_WK]
+m_strName=Screen1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_WK
+
+@}}
+[FDITEM1_WK]
+m_strName=TITOLO
+m_strDefaultValue="Modifica imballo"
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1_WK
+
+@}}
+[FDITEM2_WK]
+m_strName=Small-Font
+m_nUsage=37
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM2_WK
+
+@}}
+[FDITEM3_WK]
+m_strName=Verdana10-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM3_WK
+
+@}}
+[FDITEM4_WK]
+m_strName=Form1-Tb-1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM4_WK
+
+@}}
+[FDITEM5_WK]
+m_strName=toolbar-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM5_WK
+
+@}}
+[FDITEM6_WK]
+m_strName=E-ESCI
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM6_WK
+
+@}}
+[FDITEM7_WK]
+m_strName=E-NUOVO
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM7_WK
+
+@}}
+[FDITEM8_WK]
+m_strName=E-SALVA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM8_WK
+
+@}}
+[FDITEM9_WK]
+m_strName=Form1-Tb-1-Handlea
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM9_WK
+
+@}}
+[FDITEM10_WK]
+m_strName=Screen1-St-1-Handle
+m_nUsage=51
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM10_WK
+
+@}}
+[FDITEM11_WK]
+m_strName=AUTO-ID
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_strDefaultValue=78
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM11_WK
+
+@}}
+[FDITEM12_WK]
+m_strName=Default-Font
+m_nUsage=38
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM12_WK
+
+@}}
+[FDITEM13_WK]
+m_strName=ris
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM13_WK
+
+@}}
+[FDITEM14_WK]
+m_strName=des-imballo
+m_strRawPic=x(50)
+m_strPic=x(50)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM14_WK
+
+@}}
+[FDITEM15_WK]
+m_strName=qta-imballo
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM15_WK
+
+@}}
+[FDITEM16_WK]
+m_strName=lab-udm-buf
+m_strRawPic=X(20)
+m_strPic=X(20)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM16_WK
+
+@}}
+[FDITEM17_WK]
+m_strName=lab1-buf
+m_strRawPic=X(5)
+m_strPic=X(5)
+m_strDefaultValue="Colli"
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM17_WK
+
+@}}
+
+
+[LINKAGE_SECTION]
+m_nType=1
+m_strName=Linkage Section
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionLK
+
+@}}
+[FDITEM0_LK]
+m_strName=imballo-linkage
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-IMBALLO.DEF
+m_strCopyFile=LINK-IMBALLO.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-IMBALLO.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM0_LK
+
+@}}
+[FDITEM1_LK]
+m_strName=link-des
+m_strRawPic=x(50)
+m_strPic=X(50)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-IMBALLO.DEF
+m_strCopyFile=LINK-IMBALLO.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-IMBALLO.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM1_LK
+
+@}}
+[FDITEM2_LK]
+m_strName=link-qta
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-IMBALLO.DEF
+m_strCopyFile=LINK-IMBALLO.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-IMBALLO.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM2_LK
+
+@}}
+[FDITEM3_LK]
+m_strName=link-udm
+m_strRawPic=x(5)
+m_strPic=X(5)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-IMBALLO.DEF
+m_strCopyFile=LINK-IMBALLO.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-IMBALLO.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM3_LK
+
+@}}
+[FDITEM4_LK]
+m_strName=filler
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-IMBALLO.DEF
+m_strCopyFile=LINK-IMBALLO.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-IMBALLO.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM4_LK
+
+@}}
+[FDITEM5_LK]
+m_strName=link-blister
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1,
+m_strFalse=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-IMBALLO.DEF
+m_strCopyFile=LINK-IMBALLO.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-IMBALLO.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM5_LK
+
+@}}
+[FDITEM6_LK]
+m_strName=link-imballo-saved
+m_nUsage=17
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-IMBALLO.DEF
+m_strCopyFile=LINK-IMBALLO.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-IMBALLO.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM6_LK
+
+@}}
+
+
+{{@SCREEN:
+*   Screen Painter Data
+*   Schema 6.0
+*
+BEGIN-SPDATA-6.1A
+
+GRAPHICAL-SCREEN
+
+Begin Screen Screen1
+   PREFIX            = Screen1
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = Screen1
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 16
+   Cell Width        = 8
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = FALSE
+   Font              = Verdana/10/C0/@Occidentale
+   Font Variable     = Verdana10-Occidentale
+   Handle Variable   = Screen1-Handle
+   Height in Cells   = TRUE
+   Help ID           = 0
+   Label Offset      = 20
+   Lines             = 6,50
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = FALSE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 50,00
+   System Menu       = TRUE
+   Title Bar         = TRUE
+   Title Variable    = TITOLO
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = TRUE
+   Window Type       = Floating
+   Wrap              = FALSE
+   Event Procedure   = Screen1-Event-Proc
+   Begin Data.Entry-Field ef-des
+      SCREEN-COL        = 13,00
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-des
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 13,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Field Edited (Style) = 0
+      Field Edited Format = x(50)
+      Field Picture     = x(50)
+      Field Variable    = des-imballo
+      File              = Working Storage
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Immettere la descrizione
+      ID                = 78
+      ID Variable       = AUTO-ID
+      Justification     = Unaligned
+      Line              = 2,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 50
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 37,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 1
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      My Property       = "CONTROLLO="
+      Before Procedure  = ef-des-BeforeProcedure
+      After Procedure   = ef-des-AfterProcedure
+   End
+   Begin Data.Entry-Field ef-da
+      SCREEN-COL        = 13,00
+      SCREEN-LINE       = 4,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-da
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 13,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Field Edited (Style) = 1
+      Field Edited Format = zz.zz9
+      Field Picture     = 9(5)
+      Field Variable    = qta-imballo
+      File              = Working Storage
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Immettere la quantit
+      ID                = 79
+      ID Variable       = AUTO-ID
+      Justification     = Right
+      Line              = 4,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 5
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 7,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 2
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      My Property       = "CONTROLLO="
+      Before Procedure  = ef-da-BeforeProcedure
+      After Procedure   = ef-da-AfterProcedure
+   End
+   Begin Label Screen1-La-1
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-La-1
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 76
+      Justification     = Right
+      Label Offset      = 20
+      Line              = 2,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 10,00
+      Size Unit         = Default
+      Tab Order         = 3
+      Title             = "Descrizione"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label lab1
+      SCREEN-COL        = 8,50
+      SCREEN-LINE       = 4,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lab1
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 8,50
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 77
+      Justification     = Right
+      Label Offset      = 20
+      Line              = 4,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 3,50
+      Size Unit         = Default
+      Tab Order         = 4
+      Title             = "Colli"
+      Title Picture     = X(5)
+      Title Variable    = lab1-buf
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label lab-udm
+      SCREEN-COL        = 21,25
+      SCREEN-LINE       = 4,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lab-udm
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 21,25
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 81
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 4,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 20,00
+      Size Unit         = Default
+      Tab Order         = 5
+      Title Picture     = X(20)
+      Title Variable    = lab-udm-buf
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin CsCtrl.Custom1 Label Screen1-Custom1-1
+      CUST-SYMBOL       = Custom1
+      CUST-MODIFYFLAG   = 000000000000000000000000000000000000000000000000000
+      SCREEN-COL        = 46,75
+      SCREEN-LINE       = 4,31
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-Custom1-1
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 46,75
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Font Variable     = Default-Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 82
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 4,31
+      Lines             = 0,50
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 3,00
+      Size Unit         = Default
+      Tab Order         = 6
+      Title             = "CUSTOM CONTROL"
+      Transparent       = TRUE
+      Visible           = NONE
+      Visible Variable  = v-custom
+      Width in Cells    = FALSE
+   End
+   Begin Toolbar Form1-Tb-1
+      SCREEN-LINE       = 1,00
+      LOCK-CONTROL      = FALSE
+      LEVEL             = 1
+      (Name)            = Form1-Tb-1
+      Cell              = FALSE
+      Color             = 0
+      Font              = Default Font
+      Handle Variable   = Form1-Tb-1-Handle
+      Help ID           = 0
+      Lines             = 2,69
+      Tab Order         = 7
+      Begin Push-Button TOOL-ESCI
+         SCREEN-COL        = 1,00
+         SCREEN-LINE       = 1,38
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-ESCI
+         Bitmap            = "..\resource\toolbar.bmp"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = toolbar-bmp
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 1,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Enable Variable   = E-ESCI
+         Exception Value   = 27
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 2223
+         Line              = 1,38
+         Lines             = 1,38
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 3,00
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Escape Button
+         Tab Order         = 1
+         Termination Value = 0
+         Title             = "Esci (Esc)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+      End
+      Begin Push-Button TOOL-NUOVO
+         SCREEN-COL        = 6,00
+         SCREEN-LINE       = 1,38
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-NUOVO
+         Bitmap            = "..\resource\toolbar.bmp"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = toolbar-bmp
+         Bitmap Number     = 2
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 6,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Enable Variable   = E-NUOVO
+         Exception Value   = 2
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 208
+         Line              = 1,38
+         Lines             = 1,38
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 3,00
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 2
+         Termination Value = 0
+         Title             = "Nuovo (F2)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Link To           = NUOVO-LinkTo
+      End
+      Begin Push-Button TOOL-SALVA
+         SCREEN-COL        = 11,00
+         SCREEN-LINE       = 1,38
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-SALVA
+         Bitmap            = "..\resource\toolbar.bmp"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = toolbar-bmp
+         Bitmap Number     = 3
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 11,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Enable Variable   = E-SALVA
+         Exception Value   = 3
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 75
+         Line              = 1,38
+         Lines             = 1,38
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 3,00
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 3
+         Termination Value = 0
+         Title             = "Salva (F3)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Link To           = TOOL-SALVA-LinkTo
+      End
+   End
+   Begin Status-Bar Screen1-St-1
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 1
+      (Name)            = Screen1-St-1
+      Font              = Default Font
+      Grip              = TRUE
+      Handle Variable   = Screen1-St-1-Handle
+      PANEL-WIDTHS      = ( 999 )
+      PANEL-STYLE       = ( 1 )
+      Tab Order         = 8
+   End
+End
+
+END-SPDATA
+
+@}}
+
+{{@REPORT:
+*   Report Writer Data
+*   Schema 6.0
+*
+BEGIN-RWDATA-6.0A
+
+END-RWDATA
+
+@}}
+
+{{@EMBEDDING_CODE:
+BEGIN-DATA
+   BASETYPE          = 6
+   NODESTYLE         = 7
+   PARAGRAPH         = DeletedCode
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Screen1
+   ACTOBJ            = Screen1
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+           move link-des to des-imballo.
+           move link-qta to qta-imballo.
+           perform SCREEN1-FLD-TO-BUF.
+           if link-blister
+              move "Colli" to lab1-buf
+           else
+              move "da"    to lab1-buf
+           end-if.
+           display screen1.
+           move 0 to link-imballo-saved.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Screen1
+   ACTOBJ            = Screen1
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterFldToBuf
+BEGIN-TEXT
+           initialize lab-udm-buf.
+           if not link-blister
+              string "per "   delimited by size
+                     link-udm delimited by size
+                     into lab-udm-buf
+              end-string
+           else
+              move "Solo per prima riga" to lab-udm-buf
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = PARAGRAFO-COPY
+BEGIN-TEXT
+           copy "color-custom.cpy".
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CONTROLLO
+BEGIN-TEXT
+           set tutto-ok to true.
+
+      * Paragrafo per la struttura dei controlli sulla screen Screen1
+           evaluate control-id
+           |78-ID-ef-des è l'ID del control ef-des
+           when 78-ID-ef-des
+                inquire ef-des, value in ef-des-buf
+BLISTR          if not link-blister
+                   if ef-des-buf = spaces
+                      set errori to true
+                      display message "Inserimento descrizione mancante"
+                                title tit-err
+                                 icon 2
+                      move 78-ID-ef-des to control-id
+                   end-if
+                end-if
+
+           |78-ID-ef-da è l'ID del control ef-da
+           when 78-ID-ef-da
+                inquire ef-da, value in ef-da-buf
+                move ef-da-buf to qta-imballo
+BLISTR          if not link-blister
+                   if qta-imballo = 0
+                      set errori to true
+                      display message "Inserimento quantità mancante"
+                                title tit-err
+                                 icon 2
+                      move 78-ID-ef-da to control-id
+                   else
+                      if qta-imballo > link-qta
+                         set errori to true
+                         display message 
+                         "La quantità digitata non può essere superiore"
+                  x"0d0a""di quella inserita nella gestione ordini"
+                                   title tit-err
+                                    icon 2
+                         move 78-ID-ef-da to control-id
+                      else
+                         divide link-qta by qta-imballo giving ris
+                         multiply ris    by qta-imballo giving ris
+                         if ris not = link-qta
+                            set errori to true
+                            display message 
+                            "La quantità digitata dev'essere uguale o un" 
+                     x"0d0a""multiplo di quella inserita nella gestione ordini"
+                                      title tit-err
+                                       icon 2
+                            move 78-ID-ef-da to control-id
+                         end-if
+                      end-if
+                   end-if
+                end-if
+
+           end-evaluate.
+      *
+           if errori
+              perform CANCELLA-COLORE
+              move CONTROL-ID to store-id
+              move 4          to ACCEPT-CONTROL
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = NUOVO-LinkTo
+BEGIN-TEXT
+           move link-des to des-imballo.
+           move link-qta to qta-imballo.
+           perform SCREEN1-FLD-TO-BUF.
+           display screen1.
+           move 0 to link-imballo-saved.
+           perform CANCELLA-COLORE.
+           move 78-ID-ef-des to control-id.
+           move 4            to accept-control.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = TOOL-SALVA-LinkTo
+BEGIN-TEXT
+           set tutto-ok to true.
+           perform varying control-id from 78-ID-ef-des by 1
+                     until control-id > 78-ID-ef-da
+              perform CONTROLLO
+              if errori
+                 exit perform
+              end-if
+           end-perform.
+
+           if errori
+              move store-id to control-id
+              move 4        to accept-control
+           else
+              move ef-des-buf to link-des
+              move ef-da-buf  to link-qta
+              move 1  to link-imballo-saved
+              move 27 to key-status
+           end-if.
+              
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-des-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-da-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-des-AfterProcedure
+BEGIN-TEXT
+      *<<** Default_Code **>>
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-da-AfterProcedure
+BEGIN-TEXT
+      *<<** Default_Code **>>
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+
+@}}
+
+[KEY_STATUS_FIELD_FORMAT]
+PIC=9(5)
+USAGE=[None]
+
+[KEYSTATUS_CONTENT:KS1]
+CONDITION=Enter-Pushed
+VALUE=13
+
+[KEYSTATUS_CONTENT:KS2]
+CONDITION=Exit-Pushed
+VALUE=27
+
+[KEYSTATUS_CONTENT:KS3]
+CONDITION=Message-Received
+VALUE=95
+
+[KEYSTATUS_CONTENT:KS4]
+CONDITION=Event-Occurred
+VALUE=96
+
+[KEYSTATUS_CONTENT:KS5]
+CONDITION=Screen-No-Input-Field
+VALUE=97
+
+[KEYSTATUS_CONTENT:KS6]
+CONDITION=Screen-Time-Out
+VALUE=99
+
+[COBOLAID_DATASET_INFO]

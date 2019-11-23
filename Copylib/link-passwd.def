@@ -1,0 +1,5 @@
+      *
+       01 passwd-linkage.
+           03 Passwd-status    PIC  9.
+               88 Passwd-StatusOk VALUE IS 1    WHEN SET TO FALSE  0. 
+           03 Passwd-password  PIC  9(4).

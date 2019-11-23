@@ -1,0 +1,12 @@
+      *(( XFD FILE = tmp-utf-dayllist ))
+       FD  tmp-utf-dayllist.
+       01 tutf-dati.
+           05 tutf-chiave.
+               10 tutf-col         PIC  bx.
+               10 tutf-ndoc        PIC  9(10).
+               10 tutf-data        PIC  99/99/99.
+               10 tutf-prog        PIC  9(5).
+           05 tutf-dati.
+               10 tutf-ragsoc      PIC  x(30).
+               10 tutf-nmov        PIC  z(10).
+               10 tutf-kg          PIC  s9(9)v999.

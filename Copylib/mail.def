@@ -1,0 +1,16 @@
+       77  StatusInvioMail         pic s9.
+       77  PathInvioMail           pic x(80).
+       77  NomeProgramma           pic x(30).  
+
+      * PER LE MAIL
+       01  LinkMail.
+         05 LinkSubject      pic x(100).
+         05 LinkBody         pic x(10000).
+         05 LinkAddressFrom  pic x(3000).
+         05 LinkAddress      pic x(3000).
+         05 LinkAddressCC    pic x(3000).
+         05 LinkAttach       pic x(1000).
+         05 LinkPorta        pic x(3).
+         05 LinkSSL          pic x.
+         05 LinkUser         pic x(200).
+         05 LinkPassword     pic x(200).

@@ -1,0 +1,53 @@
+      *(( XFD FILE = STO-tmovmag ))
+       FD  STO-tmovmag.
+       01 STO-tmo-rec.
+           05 STO-tmo-chiave.
+               10 STO-tmo-anno     PIC  9(4).
+               10 STO-tmo-numero   PIC  9(8).
+           05 STO-tmo-dati.
+               10 STO-tmo-data-movim           PIC  9(8).
+               10 STO-tmo-causale  PIC  x(4).
+               10 STO-tmo-tipo     PIC  x.
+                   88 STO-tmo-cliente VALUE IS "C". 
+                   88 STO-tmo-fornitore VALUE IS "F". 
+               10 STO-tmo-cod-clifor           PIC  9(5).
+               10 STO-tmo-destino  PIC  9(5).
+               10 STO-tmo-vettore  PIC  9(5).
+               10 STO-tmo-numdoc-clifor        PIC  9(8).
+               10 STO-tmo-data-doc PIC  9(8).
+               10 STO-tmo-codpag   PIC  x(3).
+               10 STO-tmo-peso-utf PIC  9(11)v999.
+               10 STO-tmo-gdo      PIC  x(5).
+               10 STO-tmo-fattura.
+                   15 STO-tmo-anno-fattura         PIC  9(4).
+                   15 STO-tmo-num-fattura          PIC  9(8).
+                   15 STO-tmo-data-fattura         PIC  9(8).
+               10 STO-tmo-stato    PIC  x.
+                   88 STO-tmo-attivo VALUE IS "A". 
+                   88 STO-tmo-disattivo VALUE IS "D". 
+                   88 STO-tmo-bloccato VALUE IS "B". 
+               10 STO-tmo-dati-comuni.
+                   15 STO-tmo-data-creazione       PIC  9(8).
+                   15 STO-tmo-ora-creazione        PIC  9(8).
+                   15 STO-tmo-utente-creazione     PIC  X(10).
+                   15 STO-tmo-data-ultima-modifica PIC  9(8).
+                   15 STO-tmo-ora-ultima-modifica  PIC  9(8).
+                   15 STO-tmo-utente-ultima-modifica           PIC  
+           X(10).
+               10 STO-tmo-vuoti.
+                   15 STO-tmo-tor-chiave.
+                       20 STO-tmo-tor-anno PIC  9(4).
+                       20 STO-tmo-tor-numero           PIC  9(8).
+                   15 STO-tmo-teva-chiave.
+                       20 STO-tmo-teva-anno            PIC  9(4).
+                       20 STO-tmo-teva-numero          PIC  9(8).
+                   15 STO-tmo-num-via  PIC  9(8).
+                   15 STO-tmo-dt-via   PIC  9(8).
+                   15 STO-tmo-num-vuoto-3          PIC  9(5).
+                   15 STO-tmo-esercizio            PIC  x(2).
+                   15 STO-tmo-btno-chiave.
+                       20 STO-tmo-btno-anno            PIC  9(4).
+                       20 STO-tmo-btno-numero          PIC  9(8).
+                   15 STO-tmo-alfa-vuoto-1         PIC  x(6).
+                   15 STO-tmo-alfa-vuoto-2         PIC  x(20).
+                   15 STO-tmo-alfa-vuoto-3         PIC  x(20).

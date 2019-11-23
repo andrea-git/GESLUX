@@ -1,0 +1,10 @@
+      *
+       01 extmovedi-linkage.
+           03 extmovedi-mov-gen-da       PIC  9(8).
+           03 extmovedi-mov-gen-a        PIC  9(8).
+           03 extmovedi-tot-EDI          PIC  9(10).
+           03 extmovedi-user             PIC  x(20).
+           03                            pic 9.
+              88 extmovedi-problemi-art  value 1 false zero.              
+           03 extmovedi-path-no-art      pic x(256).
+           03 extmovedi-handle           USAGE IS HANDLE OF WINDOW.

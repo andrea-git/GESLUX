@@ -1,0 +1,22 @@
+      *
+       01  r-rec.
+         05 r-filler      pic x.
+         05 r-cod-cli     pic x(5).
+         05 r-destino     pic x(5).
+         05 r-data        pic 9(8).
+         05 r-blister     pic 9(6).
+         05 r-articolo    pic 9(6).
+         05 r-peso        pic 9(5)v999.
+         05 r-colli       pic 9(8).
+         05 r-tot-colli   pic 9(8).
+         05 r-ritiro      pic x.
+         05 r-i-consumo   pic 9(6)v99.
+         05 r-i-cou-cobat pic 9(6)v99.
+         05 r-perce-pb    pic 9(3)v999.
+         05 r-perce-bli   pic 9(3)v99.
+         05 r-prezzo      pic 9(6)v99.
+         05 r-prz-promo   pic x. |Valorizzato da Walter al ritorno
+
+       77  tot-colli      pic 9(8).
+       77  status-call   signed-short.
+       77  comando       pic x(500).

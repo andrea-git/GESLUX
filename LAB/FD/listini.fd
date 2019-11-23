@@ -1,0 +1,28 @@
+       FD  listini.
+       01 lst-rec.
+           05 lst-chiave.
+               10 lst-gdo          PIC  x(5).
+               10 lst-data         PIC  9(8).
+               10 lst-articolo     PIC  9(6).
+           05 lst-dati.
+               10 lst-cod-art-cli  PIC  x(15).
+               10 lst-prezzo       PIC  9(12)v99.
+               10 lst-comuni.
+                   15 lst-data-creazione           PIC  9(8).
+                   15 lst-ora-creazione            PIC  9(8).
+                   15 lst-utente-creazione         PIC  x(10).
+                   15 lst-data-modifica            PIC  9(8).
+                   15 lst-ora-modifica PIC  9(8).
+                   15 lst-utente-modifica          PIC  x(10).
+               10 lst-vuoti.
+                   15 lst-num-vuoto-1  PIC  9(15).
+                   15 lst-num-vuoto-2  PIC  9(15).
+                   15 lst-num-vuoto-3  PIC  9(15).
+                   15 lst-prg-chiave.
+                       20 lst-prg-cod-articolo         PIC  9(6).
+                       20 lst-prg-cod-magazzino        PIC  X(3).
+                       20 lst-prg-tipo-imballo         PIC  X(3).
+                       20 lst-prg-peso     PIC  9(5)v9(3).
+                   15 lst-alfa-vuoto-1 PIC  x(2).
+                   15 lst-alfa-vuoto-2 PIC  x(20).
+                   15 lst-alfa-vuoto-3 PIC  x(20).

@@ -1,0 +1,33 @@
+      *(( XFD FILE = tmp-progmag ))
+       FD  tmp-progmag-old.
+       01 tmp-prg-rec.
+           05 tmp-prg-chiave.
+               10 tmp-prg-cod-articolo         PIC  9(6).
+               10 tmp-prg-cod-magazzino        PIC  X(3).
+               10 tmp-prg-tipo-imballo         PIC  X(3).
+               10 tmp-prg-peso     PIC  9(5)V9(3).
+           05 tmp-prg-dati.
+               10 tmp-prg-art-des  PIC  x(40).
+               10 tmp-prg-imb-des  PIC  x(30).
+               10 tmp-prg-imballi  PIC  s9(10)v9.
+               10 tmp-prg-giacenza PIC  S9(8).
+               10 tmp-prg-impegnato            PIC  S9(8).
+               10 tmp-prg-ordinato-1           PIC  S9(8).
+               10 tmp-prg-ordinato-2           PIC  S9(8).
+               10 tmp-prg-ordinato-3           PIC  S9(8).
+               10 tmp-prg-ordinato-4           PIC  S9(8).
+               10 tmp-prg-ordinato-5           PIC  S9(8).
+               10 tmp-prg-ordinato-6           PIC  S9(8).
+               10 tmp-prg-giac-bloc            PIC  S9(8).
+               10 tmp-prg-costo-medio          PIC  s9(10)v99.
+               10 tmp-prg-giac-MTN PIC  S9(8).
+               10 tmp-prg-giac-GIC PIC  S9(8).
+               10 tmp-prg-giac-SLI PIC  S9(8).
+               10 tmp-prg-giac-SHI PIC  S9(8).
+               10 tmp-prg-giac-GET PIC  S9(8).
+               10 tmp-prg-ord-SLI  PIC  S9(8).
+               10 tmp-prg-ord-GIC  PIC  S9(8).
+               10 tmp-prg-ord-MTN  PIC  S9(8).
+               10 tmp-prg-ord-LBX  PIC  S9(8).
+               10 tmp-prg-ord-SHI  PIC  S9(8).
+               10 tmp-prg-ord-GET  PIC  S9(8).

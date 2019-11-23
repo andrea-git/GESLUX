@@ -1,0 +1,35 @@
+; CaseMaker Totem Layout Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[DATALAYOUT_CONTENT]
+DATALAYOUT_UNIQUE_CODE=TOTEM-7D99E154449-125-57816770
+[DSNENTITY_]
+[CStoAcucobolFileDefinition_]
+m_nType=1
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+m_strXfdFile=STA-INPUT
+m_strPrefix=STA-INPU
+{{@FD_m_strDescription
+
+@}}
+[FDITEM0_]
+m_strName=STA-INPUT-RIGO
+m_strRawPic=X(900)
+m_strPic=X(900)
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_
+
+@}}
+[CStoAcucobolSL_]
+m_nType=1
+m_strAssignToName=WSTAMPA
+m_nAccessMode=1
+m_strFileStatus=STATUS-FD1
+m_nCompression=70
+{{@SL_m_strDescription
+
+@}}

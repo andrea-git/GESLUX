@@ -1,0 +1,15 @@
+      *(( XFD FILE = tmp-destini ))
+       FD  tmp-destini.
+       01 stdes-rec.
+           05 stdes-chiave.
+               10 stdes-cli-ragsoc PIC  x(40).
+               10 stdes-ragsoc-1   PIC  x(40).
+           05 stdes-dati.
+               10 stdes-ragsoc-2   PIC  x(40).
+               10 stdes-indirizzo  PIC  x(40).
+               10 stdes-cap        PIC  x(5).
+               10 stdes-localita   PIC  x(35).
+               10 stdes-telef-1    PIC  x(15).
+               10 stdes-telef-2    PIC  x(15).
+               10 stdes-fax        PIC  X(15).
+               10 stdes-mail       PIC  X(30).

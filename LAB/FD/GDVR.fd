@@ -1,0 +1,428 @@
+      *-----------------------------------------------------------------
+      * righe documenti di vendita
+      *-----------------------------------------------------------------
+      *-----------------------------------------------------------------------------------------------------
+      * tk.1416
+      * Allineamento vinicoli a 2009.01                                                                  | mxm 17/11/2008 14.47
+      * .nuovi campi
+      *----------------------------------------------------------------
+      * Ticket 1829                                                                                      |or 15/04/2009
+      * - Aggiunto campo "dvr-dav-progressivo-mas" (indice progressivo tabella mastri DAV-TABELLA-CP su DAV)
+      *   aggiornata dalla riga documento sul file DAV dal programma Z_COMIVV per
+      *   aggiornamento automatico commesse
+      *------------------------------------------------------------------------------------------------------------------------
+      *
+      * s.r. 1101 - Inserita gestione RAEE                                           |or 14/11/2007
+      *
+      * tplvar zmm_title=Righe documenti di vendita
+      * tplvar zmm_ver=09.01.00
+      * tplvar zmm_class=detail
+      * tplvar zmm_masterkey=dvr-progressivo-x
+      * tplvar zmm_returnkey=dvr-codice
+      *
+      * ZoomFields seq:
+      *   01.dvr-progressivo
+      *   02.dvr-riga
+      *   03.dvr-codice-art
+      *   04.dvr-descrizione1
+      *   05.dvr-descrizione2
+      *   06.dvr-codice-um
+      *   07.dvr-quantita
+      *   08.dvr-prezzo
+      *   09.dvr-codice-conto-x
+      *   10.dvr-codice-cf-d
+      *   11.dvr-data-documento-num
+      *   12.dvr-numero-documento
+      *   13.dvr-num-documento
+      *   14.dvr-tipo-vendita-d
+      *   15.dvr-saldo-acconto-d
+      *   16.dvr-sconto-cli
+      *   17.dvr-sconto-cli-d
+      *   18.dvr-sconto-art
+      *   19.dvr-sconto-art-d
+      *   20.dvr-codice-iv
+      *   21.dvr-codice-iv-d
+      *   22.dvr-codice-mas
+      *   23.dvr-codice-mas-d
+      *   24.dvr-riferimento-cli
+      *   25.dvr-aspetto
+      *   26.dvr-sconto
+      *   27.dvr-importo
+      *   28.dvr-importo-iva
+      *   29.dvr-progressivo-mmt
+      *   30.dvr-progressivo-oct
+      *   31.dvr-codice-ag
+      *   32.dvr-codice-ag-d
+      *   33.dvr-calcolo-provv-d
+      *   34.dvr-conteggio-provv-d
+      *   35.dvr-provvigioni
+      *   36.dvr-importo-provvigioni
+      *   37.dvr-codice-lot
+      *   38.dvr-codice-lot-d
+      *   39.dvr-codice-va
+      *   40.dvr-codice-va-d
+      *   41.dvr-prezzo-netto
+      *   42.dvr-provvigioni-extra
+      *   43.dvr-cen-codice
+      *   44.dvr-codice-cen-d
+      *   45.dvr-codice-sc-cli
+      *   46.dvr-codice-sc-cli-d
+      *   47.dvr-codice-intestazione-x
+      *   48.dvr-codice-cfi-d
+      *
+      *
+      *
+      *
+      *
+      *D
+       FD  GDVR.
+       01 RECORD-DVR.
+           05 DVR-CODICE.
+               10 DVR-PROGRESSIVO-X.
+      *$GEN type=num,dec=0,size=11,zmm=on,zmm_title=Progressivo,zmm_datatype=n,zmm_key=1,zmm_size=13,zmm_align=R,zmm_pos=1,zmm_entity=dvt
+      *
+                   15 DVR-PROGRESSIVO  PIC  9(08).
+      *$GEN type=num,dec=0,size=7,zmm=on,zmm_title=Riga,zmm_datatype=n,zmm_size=10,zmm_align=R,zmm_pos=2
+               10 DVR-RIGA         PIC  9(05).
+           05 RESTO-RECORD-DVR.
+               10 DVR-DOCUMENTO.
+      *$GEN type=num,dec=0,size=08,zmm=on,zmm_title=Nr.documento,zmm_datatype=n,zmm_size=08,zmm_align=R,zmm_pos=12
+                   15 DVR-NUMERO-DOCUMENTO         PIC  9(06).
+      *$GEN zmm=on,zmm_title=Nu,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=13
+                   15 DVR-NUM-DOCUMENTO            PIC  X(02).
+      *
+      *
+      * copy "groupdate.xfc". | DBMaker
+      *
+               10 DVR-DATA-DOCUMENTO.
+      *(( XFD NAME = DVR-DOCUMENTO-AA ))
+                   15 AA   PIC  9(04).
+      *(( XFD NAME = DVR-DOCUMENTO-MM ))
+                   15 MM   PIC  9(02).
+      *(( XFD NAME = DVR-DOCUMENTO-GG ))
+                   15 GG   PIC  9(02).
+               10 FILLER REDEFINES DVR-DATA-DOCUMENTO.
+      *$GEN type=date,zmm=on,zmm_title=Data documento,zmm_datatype=d,zmm_key=2,zmm_size=11,zmm_align=R,zmm_pos=11
+                   15 DVR-DATA-DOCUMENTO-NUM       PIC  9(08).
+      *
+      *
+      *
+      *
+               10 DVR-CODICE-CONTO.
+                   15 DVR-TIPO-CF      PIC  X(01).
+                       88 DVR-TIPO-CF-CLI VALUE IS "C". 
+                       88 DVR-TIPO-CF-FRN VALUE IS "F". 
+      *$GEN type=code,entity=var(dvr-codice-cf-entity of dab-dvr)
+                   15 DVR-CODICE-CF    PIC  X(08).
+               10 DVR-CODICE-CONTO-RED REDEFINES DVR-CODICE-CONTO.
+      *$GEN type=codecfm,zmm=on,zmm_title=Conto,zmm_datatype=m,zmm_key=3,zmm_size=11,zmm_align=L,zmm_pos=9,zmm_entity=codecfm
+      *
+                   15 DVR-CODICE-CONTO-X           PIC  x(09).
+      *
+      *
+      *
+      *$GEN type=code,entity=art,zmm=on,zmm_title=Articolo,zmm_datatype=x,zmm_size=15,zmm_key=4,zmm_align=L,zmm_pos=3,zmm_entity=art
+      *
+               10 DVR-CODICE-ART   PIC  X(15).
+      *$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=4
+      *
+      *
+               10 DVR-DESCRIZIONE1 PIC  X(30).
+      *$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=5
+      *
+      *
+               10 DVR-DESCRIZIONE2 PIC  X(30).
+      *$GEN type=code,entity=tblum,zmm=on,zmm_title=Um,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=6,zmm_entity=tblum
+      *
+               10 DVR-CODICE-UM    PIC  X(03).
+               10 DVR-NUMERO-COLLI PIC  9(06).
+               10 DVR-NUMERO-PEZZI PIC  S9(05)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+               10 DVR-DIMENSIONE1  PIC  9(09)V9(04).
+               10 DVR-DIMENSIONE2  PIC  9(09)V9(04).
+               10 DVR-DIMENSIONE3  PIC  9(09)V9(04).
+               10 DVR-PESO-LORDO   PIC  S9(12)V9(04)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+               10 DVR-TARA         PIC  S9(12)V9(04)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=qty,unm=DVR-CODICE-UM OF DAB-DVR,zmm=on,zmm_title=Quantità,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=7
+      *
+               10 DVR-QUANTITA     PIC  S9(12)V9(04)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=price,val=dvr-codice-va of dab-dvr,zmm=on,zmm_title=Prezzo,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=8
+      *
+               10 DVR-PREZZO       PIC  S9(10)V9(06)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+               10 DVR-QUANTITA-UM  PIC  S9(12)V9(04)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+               10 DVR-PREZZO-UM    PIC  S9(10)V9(06)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=code,entity=tblsc,zmm=on,zmm_title=Sconto cliente,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=16,zmm_entity=tblsc
+      *
+               10 DVR-SCONTO-CLI   PIC  X(03).
+      *$GEN type=code,entity=tblsc,zmm=on,zmm_title=Sconto articolo,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=18,zmm_entity=tblsc
+      *
+               10 DVR-SCONTO-ART   PIC  X(03).
+               10 DVR-TIPO-VENDITA PIC  X(01).
+                   88 DVR-TIPO-VENDITA-88 VALUE IS "O" "M" "N". 
+                   88 DVR-TIPO-VENDITA-OMAGGIO VALUE IS "O". 
+                   88 DVR-TIPO-VENDITA-SCONTO-MERCE VALUE IS "M". 
+                   88 DVR-TIPO-VENDITA-NORMALE VALUE IS "N". 
+                   88 DVR-TIPO-VENDITA-65-88 VALUE IS "O" "M" "N" "R" "S
+      -    "". 
+      *
+      *
+      *
+               10 DVR-SALDO-ACCONTO            PIC  X(01).
+                   88 DVR-SALDO-ACCONTO-88 VALUE IS "S" "A" " ". 
+                   88 DVR-SALDO-ACCONTO-ACCONTO VALUE IS "A". 
+                   88 DVR-SALDO-ACCONTO-SALDO VALUE IS "S". 
+      *
+      *
+      *$GEN type=code,entity=tbliv,zmm=on,zmm_title=Codice iva,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=20,zmm_entity=tbliv
+      *
+               10 DVR-CODICE-IV    PIC  X(03).
+      *$GEN type=code,entity=mas,zmm=on,zmm_title=Codice mastro,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=22,zmm_entity=mas
+      *
+               10 DVR-CODICE-MAS   PIC  X(08).
+      *$GEN zmm=on,zmm_title=Riferimento cliente,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=24
+      *
+               10 DVR-RIFERIMENTO-CLI          PIC  X(30).
+      *$GEN zmm=on,zmm_title=Aspetto,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=25
+      *
+               10 DVR-ASPETTO      PIC  X(30).
+      *$GEN type=amount,val=dvr-codice-va of dab-dvr,zmm=on,zmm_title=Sconto,zmm_datatype=9,zmm_size=24,zmm_align=R,zmm_pos=26
+      *
+               10 DVR-SCONTO       PIC  S9(15)V9(03)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=amount,val=dvr-codice-va of dab-dvr,zmm=on,zmm_title=Importo,zmm_datatype=9,zmm_size=24,zmm_align=R,zmm_pos=27
+               10 DVR-IMPORTO      PIC  S9(15)V9(03)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+               10 DVR-IMPORTO-LIRE PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=amount,val=dvr-codice-va of dab-dvr,zmm=on,zmm_title=Importo iva,zmm_datatype=9,zmm_size=24,zmm_align=R,zmm_pos=28
+      *
+               10 DVR-IMPORTO-IVA  PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+               10 DVR-NOTE         PIC  X(01).
+               10 DVR-CODICE-MMR   PIC  X(13).
+               10 FILLER REDEFINES DVR-CODICE-MMR.
+      *$GEN type=num,dec=0,size=11,zmm=on,zmm_title=Progressivo mov. magazzino,zmm_datatype=n,zmm_size=13,zmm_align=R,zmm_pos=29,zmm_entity=mmt
+      *
+                   15 DVR-PROGRESSIVO-MMT          PIC  9(08).
+                   15 FILLER           PIC  X(05).
+               10 DVR-CODICE-OCR   PIC  X(13).
+               10 FILLER REDEFINES DVR-CODICE-OCR.
+      *$GEN type=num,dec=0,size=11,zmm=on,zmm_title=Progressivo ordine cliente,zmm_datatype=n,zmm_size=13,zmm_align=R,zmm_pos=30,zmm_entity=oct
+      *
+                   15 DVR-PROGRESSIVO-OCT          PIC  9(08).
+                   15 FILLER           PIC  X(05).
+      *$GEN type=code,entity=tblag,zmm=on,zmm_title=Codice agente,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=31,zmm_entity=tblag
+      *
+               10 DVR-CODICE-AG    PIC  X(03).
+               10 DVR-CALCOLO-PROVV            PIC  9(01).
+                   88 DVR-CALCOLO-PROVV-88 VALUE IS 1 2 3 4. 
+                   88 DVR-CALCOLO-PROVV-88-1 VALUE IS 1. 
+                   88 DVR-CALCOLO-PROVV-88-2 VALUE IS 2. 
+                   88 DVR-CALCOLO-PROVV-88-3 VALUE IS 3. 
+                   88 DVR-CALCOLO-PROVV-88-4 VALUE IS 4. 
+               10 DVR-CONTEGGIO-PROVV          PIC  9(01).
+                   88 DVR-CONTEGGIO-PROVV-88 VALUE IS 1 2. 
+                   88 DVR-CONTEGGIO-PROVV-88-1 VALUE IS 1. 
+                   88 DVR-CONTEGGIO-PROVV-88-2 VALUE IS 2. 
+      *$GEN type=num,dec=03,size=24,zmm=on,zmm_title=Quota provvigione,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=35
+      *
+               10 DVR-PROVVIGIONI  PIC  S9(15)V9(03)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=amount,val=dvr-codice-va of dab-dvr,zmm=on,zmm_title=Importo provvigioni,zmm_datatype=9,zmm_size=24,zmm_align=R,zmm_pos=36
+      *
+               10 DVR-IMPORTO-PROVVIGIONI      PIC  S9(15)V9(03)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=code,entity=lot,zmm=on,zmm_title=Codice lotto,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=37,zmm_entity=lot
+      *
+               10 DVR-CODICE-LOT   PIC  X(15).
+               10 DVR-OSCILLAZIONE-CAMBI.
+      *$GEN type=code,entity=tblva,zmm=on,zmm_title=Codice valuta,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=39,zmm_entity=tblva
+      *
+                   15 DVR-CODICE-VA    PIC  X(03).
+      *(( XFD NAME = DVR-CAMBIO-RIF-OLD ))
+                   15 DVR-CAMBIO-RIFERIMENTO-OLD   PIC  9(05)V9(04).
+                   15 DVR-PERC-OSCILLAZIONE        PIC  9(03)V9(02).
+      *(( XFD NAME = DVR-CAMBIO-APP-OLD ))
+                   15 DVR-CAMBIO-APPLICATO-OLD     PIC  9(05)V9(04).
+                   15 DVR-75           PIC  X(01).
+                   15 DVR-IMPORTO-LIRE75           PIC  S9(13)V9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+                   15 DVR-IMPORTO-IVA75            PIC  S9(13)V9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=price,val=dvr-codice-va of dab-dvr,zmm=on,zmm_title=Prezzo netto,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=41
+      *
+               10 DVR-PREZZO-NETTO PIC  S9(10)V9(06)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,dec=03,size=24,zmm=on,zmm_title=Quota provvigione extra,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=42
+      *
+               10 DVR-PROVVIGIONI-EXTRA        PIC  S9(15)V9(03)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=code,entity=cen,zmm=on,zmm_title=Codice centro di costo,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=43,zmm_entity=cen
+      *
+               10 DVR-CEN-CODICE   PIC  X(08).
+               10 DVR-AZIENDE-VINICOLE.
+                   15 DVR-PRODOTTO-ANNATA          PIC  X(01).
+                   15 DVR-PROVINCIA-PROVENIENZA    PIC  X(02).
+                   15 DVR-MARCHE-NUMERI            PIC  X(04).
+                   15 DVR-ZONA-VITICOLA            PIC  X(07).
+                   15 DVR-MANIPOLAZIONI            PIC  X(01).
+                   15 DVR-TITOLO-ALCOL PIC  S9(02)V9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+               10 DVR-IMBALLI.
+                   15 DVR-TABELLA-IMB
+                              OCCURS 02 TIMES.
+                       20 DVR-CODICE-IMB   PIC  X(15).
+                       20 DVR-QUANTITA-IMB PIC  S9(06)
+                                  SIGN IS TRAILING SEPARATE CHARACTER.
+                       20 DVR-CAUZIONE-IMB PIC  S9(07)V9(02)
+                                  SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN entity=tblmo
+      *
+               10 DVR-CODICE-MO    PIC  X(03).
+               10 DVR-DIMENSIONE1-VETRERIE     PIC  9(08)V9(04).
+               10 DVR-DIMENSIONE2-VETRERIE     PIC  9(08)V9(04).
+               10 DVR-CODICE-MMT-LOTTI-OLD     PIC  9(05).
+               10 DVR-IMPORTO-CONTRASS         PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+               10 DVR-IMPORTO-IMPOSTA-F        PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+               10 DVR-PROMOZIONI   PIC  X(01).
+                   88 DVR-PROMOZIONI-88 VALUE IS "S" " ". 
+      * copy "groupdate.xfc". | DBMaker
+               10 DVR-DATA-PROMOZIONI.
+      *(( XFD NAME = DVR-PROMOZIONI-AA ))
+                   15 AA   PIC  9(04).
+      *(( XFD NAME = DVR-PROMOZIONI-MM ))
+                   15 MM   PIC  9(02).
+      *(( XFD NAME = DVR-PROMOZIONI-GG ))
+                   15 GG   PIC  9(02).
+               10 FILLER REDEFINES DVR-DATA-PROMOZIONI.
+                   15 DVR-DATA-PROMOZIONI-NUM      PIC  9(08).
+      *
+      *
+               10 DVR-VARIANTE-RAME            PIC  S9(10)V9(06)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+               10 DVR-IMPORTO-STAT-INTRA-A.
+                   15 DVR-IMPORTO-STAT-INTRA       PIC  S9(13)V9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+               10 DVR-CONTRIBUTO-ASSOLTO       PIC  X(01).
+               10 DVR-CAMBIO-RIFERIMENTO       PIC  9(05)V9(06).
+               10 DVR-CAMBIO-APPLICATO         PIC  9(05)V9(06).
+               10 DVR-CODICE-CNR   PIC  X(13).
+               10 DVR-CODICE-AGC   PIC  X(03).
+               10 DVR-CALCOLO-PROVVC           PIC  9(01).
+                   88 DVR-CALCOLO-PROVVC-88 VALUE IS 1 2 3 4. 
+               10 DVR-CONTEGGIO-PROVVC         PIC  9(01).
+                   88 DVR-CONTEGGIO-PROVVC-88 VALUE IS 1 2. 
+      *$GEN entity=tblag
+      *04.04
+      *04.04
+      *04.04
+      *04.04
+      *04.04
+               10 DVR-PROVVIGIONIC PIC  S9(15)V9(03)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *04.04
+      *
+               10 DVR-IMPORTO-PROVVIGIONIC     PIC  S9(15)V9(03)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *04.04
+      *
+      *        10  DVR-FILLER                      PIC  X(28).   |ds 06.04.04
+      *
+               10 DVR-PESO-NETTO-A.
+                   15 DVR-PESO-NETTO   PIC  S9(12)V9(04)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *07/2005
+      *        10  DVR-FILLER-91                   PIC  X(512).   | mxm 06.04.04
+               10 DVR-TRASFERITO   PIC  X(01).
+                   88 DVR-TRASFERITO-88 VALUE IS " " "T" "R" "E". 
+      *        10  DVR-FILLER-91                   PIC  X(495).   | mxm 06.04.04  |DS 18/11/2005 9.31           |SQ 22/07/2005
+      *        10  DVR-FILLER-91                   PIC  X(494).   | mxm 06.04.04  |DS 18/11/2005 9.31           |SQ 22/07/2005
+      *
+               10 DVR-CREATO-MOVIMB            PIC  X(01).
+      *$GEN type=code,entity=tblsc,zmm=on,zmm_title=Sconto cliente aggiunt.,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=45,zmm_entity=tblsc
+               10 DVR-CODICE-SC-CLI            PIC  X(03).
+      *        10  DVR-FILLER-91                   PIC  X(490).                                           |rb 22/03/2006 11.40
+      * campi per consord                                                                                |ep 21/04/2006
+      *
+               10 DVR-CODICE-INTESTAZIONE.
+                   15 DVR-TIPO-CFI     PIC  X(01).
+                       88 DVR-TIPO-CFI-88 VALUE IS "C" "F". 
+                       88 DVR-TIPO-CFI-CLI VALUE IS "C". 
+                       88 DVR-TIPO-CFI-FRN VALUE IS "F". 
+      *$GEN type=code,entity=var(dvr-codice-cfi-entity of dab-dvr)
+      *
+      *
+                   15 DVR-CODICE-CFI   PIC  X(08).
+               10 DVR-CODICE-INTESTAZIONE-RED REDEFINES 
+           DVR-CODICE-INTESTAZIONE.
+      *$GEN type=codecfm,zmm=on,zmm_title=Intestazione,zmm_datatype=m,zmm_key=5,zmm_size=11,zmm_align=L,zmm_pos=47,zmm_entity=codecfm
+      *
+                   15 DVR-CODICE-INTESTAZIONE-X    PIC  x(09).
+               10 DVR-CODICE-MMT-LOTTI         PIC  9(08).
+      *
+      *
+      *$GEN type=num,size=21,dec=2
+      *
+      *
+               10 dvr-41rmov-imp-unitario-raee PIC  s9(13)v9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *11/2007
+      *
+      *
+                   88 dvr-raee-ko VALUE IS 0. 
+      *GEN type=code,entity=tbliv                                                               |or 14/11/2007
+      *
+               10 dvr-41rmov-tbliv PIC  x(03).
+      *GEN type=code,entity=41rcfh                                                              |or 14/11/2007
+      *
+               10 dvr-41rmov-41rcfh            PIC  x(20).
+      *GEN type=code,entity=41rcfr                                                              |or 14/11/2007
+      *
+      *
+               10 dvr-41rmov-41rcfr            PIC  x(10).
+               10 dvr-41rmov-raee-fee          PIC  9(01).
+                   88 dvr-41rmov-raee-fee-on VALUE IS 1. 
+                   88 dvr-41rmov-raee-fee-off VALUE IS 0. 
+      *GEN type=code,entity=41rpch                                                              |or 14/11/2007
+      *
+               10 dvr-41rmov-41rpch            PIC  x(20).
+      *GEN type=code,entity=41rcmh                                                              |or 14/11/2007
+      *
+               10 dvr-41rmov-41rcmh            PIC  x(20).
+      *GEN type=code,entity=art                                                                 |or 14/11/2007
+      *
+               10 dvr-41rmov-art-spesa         PIC  x(15).
+      *GEN type=code,entity=tblma                                                               |or 14/11/2007
+      *
+               10 dvr-41rmov-tblma PIC  x(03).
+      *GEN type=code,entity=41rtp                                                               |or 14/11/2007
+      *
+               10 dvr-41rtp        PIC  x(20).
+      *
+      *
+      *
+      *
+      *
+               10 dvr-codice-mmt-movimb        PIC  9(08).
+      *
+      *
+      *
+      *
+      ***        10  DVR-FILLER-91                   PIC  X(345).                               | mxm 17/11/2008 15.12
+      ***        10  DVR-FILLER-91                   PIC  X(337).                               | mxm 17/11/2008 15.12  |or 15/04/2009
+      *
+      *** indice progressivo tabella mastri aggiornata dalla riga documento sul file DAV dal programma Z_COMIVV
+      *
+               10 dvr-dav-progressivo-mas      PIC  9(04).
+      *
+      *
+               10 dvr-filler-91    PIC  x(333).
+               10 DVR-FILLER-91-RIS            PIC  X(512).

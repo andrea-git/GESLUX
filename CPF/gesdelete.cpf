@@ -1,0 +1,775 @@
+; CaseMaker Totem Program Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[MONITOR_FILE]
+
+
+[PROGRAM_CONTENT]
+QUIT_CONFIRM=0
+ANSI_FORMAT=1
+MAIN_SCREEN_NAME=Form1
+PROGRAM_UNIQUE_CODE=TOTEM-7E3AA205623-234-2338717867
+
+{{@DESCRIPTION:
+
+@}}
+
+[WORKING_STORAGE]
+m_nType=1
+m_strName=Working Storage
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionWK
+
+@}}
+[FDITEM0_WK]
+m_strName=Screen1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_WK
+
+@}}
+[FDITEM1_WK]
+m_strName=Default-Font
+m_nUsage=38
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1_WK
+
+@}}
+[FDITEM2_WK]
+m_strName=Small-Font
+m_nUsage=37
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM2_WK
+
+@}}
+[FDITEM3_WK]
+m_strName=titolo
+m_strRawPic=x(50)
+m_strPic=x(50)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM3_WK
+
+@}}
+[FDITEM4_WK]
+m_strName=FORM1-HANDLE
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM4_WK
+
+@}}
+[FDITEM5_WK]
+m_strName=Screen1-Bt-1-Handle
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM5_WK
+
+@}}
+[FDITEM6_WK]
+m_strName=lab-messaggio-buf
+m_strRawPic=X(50)
+m_strPic=X(50)
+m_strDefaultValue="Cancellazione file TARIFVET"
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM6_WK
+
+@}}
+[FDITEM7_WK]
+m_strName=Verdana12-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM7_WK
+
+@}}
+[FDITEM8_WK]
+m_strName=strip_gesdelete-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM8_WK
+
+@}}
+
+
+[LINKAGE_SECTION]
+m_nType=1
+m_strName=Linkage Section
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionLK
+
+@}}
+[FDITEM0_LK]
+m_strName=gesdelete-linkage
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESDELETE.DEF
+m_strCopyFile=link-gesdelete.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESDELETE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM0_LK
+
+
+@}}
+[FDITEM1_LK]
+m_strName=gesdelete-nome-file
+m_strRawPic=x(20)
+m_strPic=X(20)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESDELETE.DEF
+m_strCopyFile=link-gesdelete.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESDELETE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM1_LK
+
+@}}
+[FDITEM2_LK]
+m_strName=gesdelete-scelta
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESDELETE.DEF
+m_strCopyFile=link-gesdelete.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESDELETE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM2_LK
+
+@}}
+[FDITEM3_LK]
+m_strName=gesdelete-v-tasto1
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESDELETE.DEF
+m_strCopyFile=link-gesdelete.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESDELETE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM3_LK
+
+@}}
+[FDITEM4_LK]
+m_strName=gesdelete-v-tasto2
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESDELETE.DEF
+m_strCopyFile=link-gesdelete.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESDELETE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM4_LK
+
+@}}
+[FDITEM5_LK]
+m_strName=gesdelete-v-tasto3
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESDELETE.DEF
+m_strCopyFile=link-gesdelete.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESDELETE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM5_LK
+
+@}}
+[FDITEM6_LK]
+m_strName=gesdelete-delete
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESDELETE.DEF
+m_strCopyFile=link-gesdelete.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESDELETE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM6_LK
+
+@}}
+[FDITEM7_LK]
+m_strName=gesdelete-yes-delete
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="Y"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESDELETE.DEF
+m_strCopyFile=link-gesdelete.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESDELETE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM7_LK
+
+@}}
+[FDITEM8_LK]
+m_strName=gesdelete-no-delete
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="N"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESDELETE.DEF
+m_strCopyFile=link-gesdelete.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESDELETE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM8_LK
+
+@}}
+[FDITEM9_LK]
+m_strName=gesdelete-bitmap-tasto1
+m_strRawPic=9(3)
+m_strPic=9(3)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESDELETE.DEF
+m_strCopyFile=link-gesdelete.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESDELETE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM9_LK
+
+@}}
+[FDITEM10_LK]
+m_strName=gesdelete-bitmap-tasto2
+m_strRawPic=9(3)
+m_strPic=9(3)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESDELETE.DEF
+m_strCopyFile=link-gesdelete.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESDELETE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM10_LK
+
+@}}
+[FDITEM11_LK]
+m_strName=gesdelete-bitmap-tasto3
+m_strRawPic=9(3)
+m_strPic=9(3)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESDELETE.DEF
+m_strCopyFile=link-gesdelete.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESDELETE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM11_LK
+
+@}}
+[FDITEM12_LK]
+m_strName=gesdelete-titolo
+m_strRawPic=x(50)
+m_strPic=X(50)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESDELETE.DEF
+m_strCopyFile=link-gesdelete.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESDELETE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM12_LK
+
+@}}
+
+
+{{@SCREEN:
+*   Screen Painter Data
+*   Schema 6.0
+*
+BEGIN-SPDATA-6.1A
+
+GRAPHICAL-SCREEN
+
+Begin Screen Form1
+   PREFIX            = Screen1
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = Form1
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 18
+   Cell Width        = 10
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = FALSE
+   Font              = Verdana/12/C0/@Occidentale
+   Font Variable     = Verdana12-Occidentale
+   Handle Variable   = FORM1-HANDLE
+   Height in Cells   = TRUE
+   Help ID           = 0
+   Label Offset      = 20
+   Lines             = 12,56
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = FALSE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 30,00
+   System Menu       = TRUE
+   Title Bar         = TRUE
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = TRUE
+   Window Type       = Independent
+   Wrap              = FALSE
+   Event Procedure   = Screen1-Event-Proc
+   Begin Label Screen1-La-1
+      SCREEN-COL        = 1,00
+      SCREEN-LINE       = 3,22
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-La-1
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 1
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 3,22
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 30,00
+      Size Unit         = Default
+      Tab Order         = 1
+      Title             = "Cosa s'intende cancellare?"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label lab-messaggio
+      SCREEN-COL        = 1,00
+      SCREEN-LINE       = 1,44
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lab-messaggio
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 3
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 1,44
+      Lines             = 1,13
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 30,00
+      Size Unit         = Default
+      Tab Order         = 2
+      Title             = "Cancellazione file TARIFVET"
+      Title Picture     = X(50)
+      Title Variable    = lab-messaggio-buf
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Frame Screen1-Fr-1
+      SCREEN-COL        = 2,10
+      SCREEN-LINE       = 4,33
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-Fr-1
+      3D Style          = Normal
+      Alternate         = FALSE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,10
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Font              = Default Font
+      Full Height       = FALSE
+      Height in Cells   = TRUE
+      Help ID           = 0
+      High Color        = 0
+      ID                = 2
+      Line              = 4,33
+      Lines             = 8,44
+      Lines Unit        = Default
+      Low Color         = 0
+      Size              = 27,80
+      Size Unit         = Default
+      Tab Order         = 3
+      Thickness         = Default
+      Title Position    = 2:Top center
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Begin Push-Button pb-tasto1
+         SCREEN-COL        = 6,90
+         SCREEN-LINE       = 5,33
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = pb-tasto1
+         Bitmap            = "..\RESOURCE\STRIP_GESDELETE.BMP"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = STRIP_GESDELETE-BMP
+         Bitmap Number     = 3
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 5,80
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = TRUE
+         Exception Value   = 1001
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 1000
+         Line              = 2,00
+         Lines             = 1,56
+         Lines in Pixels   = 30
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 17,20
+         Size in Pixels    = 174
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 1
+         Termination Value = 13
+         Visible           = TRUE
+         Visible Variable  = gesdelete-v-tasto1
+         Width in Cells    = FALSE
+         Additional Properties = "BITMAP-NUMBER gesdelete-bitmap-tasto1"
+         Before Procedure  = pb-tasto1-BeforeProcedure
+         After Procedure   = pb-tasto1-AfterProcedure
+         Link To           = pb-tasto1-LinkTo
+      End
+      Begin Push-Button pb-tasto2
+         SCREEN-COL        = 6,90
+         SCREEN-LINE       = 7,83
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = pb-tasto2
+         Bitmap            = "..\RESOURCE\STRIP_GESDELETE.BMP"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = STRIP_GESDELETE-BMP
+         Bitmap Number     = 5
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 5,80
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = TRUE
+         Exception Value   = 1002
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 2000
+         Line              = 4,50
+         Lines             = 1,56
+         Lines in Pixels   = 30
+         Lines Unit        = Default
+         No Auto Default   = TRUE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 17,20
+         Size in Pixels    = 174
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 2
+         Termination Value = 0
+         Visible           = TRUE
+         Visible Variable  = gesdelete-v-tasto2
+         Width in Cells    = FALSE
+         Additional Properties = "BITMAP-NUMBER gesdelete-bitmap-tasto2"
+         Before Procedure  = pb-tasto2-BeforeProcedure
+         After Procedure   = pb-tasto2-AfterProcedure
+         Link To           = pb-tasto2-LinkTo
+      End
+      Begin Push-Button pb-tasto3
+         SCREEN-COL        = 6,90
+         SCREEN-LINE       = 10,33
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = pb-tasto3
+         Bitmap            = "..\RESOURCE\STRIP_GESDELETE.BMP"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = STRIP_GESDELETE-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 5,80
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = TRUE
+         Exception Value   = 1000
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 3000
+         Line              = 7,00
+         Lines             = 1,56
+         Lines in Pixels   = 30
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 17,20
+         Size in Pixels    = 174
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 3
+         Termination Value = 13
+         Visible           = TRUE
+         Visible Variable  = gesdelete-v-tasto3
+         Width in Cells    = FALSE
+         Additional Properties = "BITMAP-NUMBER gesdelete-bitmap-tasto3"
+         Before Procedure  = pb-tasto3-BeforeProcedure
+         After Procedure   = pb-tasto3-AfterProcedure
+         Link To           = pb-tasto3-LinkTo
+      End
+   End
+End
+
+END-SPDATA
+
+@}}
+
+{{@REPORT:
+*   Report Writer Data
+*   Schema 6.0
+*
+BEGIN-RWDATA-6.0A
+
+END-RWDATA
+
+@}}
+
+{{@EMBEDDING_CODE:
+BEGIN-DATA
+   BASETYPE          = 6
+   NODESTYLE         = 7
+   PARAGRAPH         = DeletedCode
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+           move gesdelete-titolo to titolo.
+                  
+           initialize lab-messaggio-buf.
+           call "C$TOUPPER" using gesdelete-nome-file, value 20
+           string "Cancellazione file " delimited size
+                  gesdelete-nome-file   delimited size
+                  into lab-messaggio-buf
+           end-string.
+
+           move 3000 to control-id.
+           move    4 to accept-control.
+
+           display form1.
+
+           modify form1-handle, title = titolo.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeExit
+BEGIN-TEXT
+           perform PB-TASTO3-LINKTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-tasto1-BeforeProcedure
+BEGIN-TEXT
+           modify pb-tasto1, bitmap-number = gesdelete-bitmap-tasto1 + 1
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-tasto2-BeforeProcedure
+BEGIN-TEXT
+           modify pb-tasto2, bitmap-number = gesdelete-bitmap-tasto2 + 1
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-tasto3-BeforeProcedure
+BEGIN-TEXT
+           modify pb-tasto3, bitmap-number = gesdelete-bitmap-tasto3 + 1
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-tasto1-AfterProcedure
+BEGIN-TEXT
+           modify pb-tasto1, bitmap-number = gesdelete-bitmap-tasto1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-tasto2-AfterProcedure
+BEGIN-TEXT
+           modify pb-tasto2, bitmap-number = gesdelete-bitmap-tasto2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-tasto3-AfterProcedure
+BEGIN-TEXT
+           modify pb-tasto3, bitmap-number = gesdelete-bitmap-tasto3.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-tasto3-LinkTo
+BEGIN-TEXT
+           set gesdelete-no-delete to true.
+           move 27 to key-status.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-tasto1-LinkTo
+BEGIN-TEXT
+           set gesdelete-yes-delete to true.
+           move  1 to gesdelete-scelta.
+           move 27 to key-status.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-tasto2-LinkTo
+BEGIN-TEXT
+           set gesdelete-yes-delete to true.
+           move  2 to gesdelete-scelta.
+           move 27 to key-status.
+END-TEXT
+END-DATA
+
+@}}
+
+[KEY_STATUS_FIELD_FORMAT]
+PIC=9(5)
+USAGE=[None]
+
+[KEYSTATUS_CONTENT:KS1]
+CONDITION=Enter-Pushed
+VALUE=13
+
+[KEYSTATUS_CONTENT:KS2]
+CONDITION=Exit-Pushed
+VALUE=27
+
+[KEYSTATUS_CONTENT:KS3]
+CONDITION=Message-Received
+VALUE=95
+
+[KEYSTATUS_CONTENT:KS4]
+CONDITION=Event-Occurred
+VALUE=96
+
+[KEYSTATUS_CONTENT:KS5]
+CONDITION=Screen-No-Input-Field
+VALUE=97
+
+[KEYSTATUS_CONTENT:KS6]
+CONDITION=Screen-Time-Out
+VALUE=99
+
+[COBOLAID_DATASET_INFO]

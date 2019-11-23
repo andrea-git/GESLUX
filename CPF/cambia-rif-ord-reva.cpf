@@ -1,0 +1,5728 @@
+; CaseMaker Totem Program Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[MONITOR_FILE]
+
+
+[PROGRAM_CONTENT]
+QUIT_CONFIRM=0
+ANSI_FORMAT=1
+MAIN_SCREEN_NAME=Form1
+BEFORE_PROGRAM=bprepb-Ev-Before-Program
+AFTER_PROGRAM=accetordforn-Ev-After-Program
+PROGRAM_UNIQUE_CODE=TOTEM-7E3AA205613-249-21634154
+
+{{@DESCRIPTION:
+
+@}}
+
+[WORKING_STORAGE]
+m_nType=1
+m_strName=Working Storage
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionWK
+
+@}}
+[FDITEM0_WK]
+m_strName=Screen1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_WK
+
+@}}
+[FDITEM1_WK]
+m_strName=tot-pz-ord
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\AGGIORNA-STATO-ORDF.DEF
+m_strCopyFile=aggiorna-stato-ordf.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\AGGIORNA-STATO-ORDF.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM1_WK
+
+@}}
+[FDITEM2_WK]
+m_strName=tot-pz-arr
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\AGGIORNA-STATO-ORDF.DEF
+m_strCopyFile=aggiorna-stato-ordf.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\AGGIORNA-STATO-ORDF.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM2_WK
+
+@}}
+[FDITEM3_WK]
+m_strName=filler
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\AGGIORNA-STATO-ORDF.DEF
+m_strCopyFile=aggiorna-stato-ordf.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\AGGIORNA-STATO-ORDF.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM3_WK
+
+@}}
+[FDITEM4_WK]
+m_strName=evaso-tutto
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1,
+m_strFalse=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\AGGIORNA-STATO-ORDF.DEF
+m_strCopyFile=aggiorna-stato-ordf.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\AGGIORNA-STATO-ORDF.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM4_WK
+
+@}}
+[FDITEM5_WK]
+m_strName=link-wprogmag
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM5_WK
+
+@}}
+[FDITEM6_WK]
+m_strName=LinkFunction
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM6_WK
+
+@}}
+[FDITEM7_WK]
+m_strName=link-accept
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="A"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM7_WK
+
+@}}
+[FDITEM8_WK]
+m_strName=link-batch
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="B"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM8_WK
+
+@}}
+[FDITEM9_WK]
+m_strName=link-update
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="U"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM9_WK
+
+@}}
+[FDITEM10_WK]
+m_strName=link-delete
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="D"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM10_WK
+
+@}}
+[FDITEM11_WK]
+m_strName=link-value-changed
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="V"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM11_WK
+
+@}}
+[FDITEM12_WK]
+m_strName=link-costo-ultimo
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="C"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM12_WK
+
+@}}
+[FDITEM13_WK]
+m_strName=link-close
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="K"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM13_WK
+
+@}}
+[FDITEM14_WK]
+m_strName=link-update-um-flag
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM14_WK
+
+@}}
+[FDITEM15_WK]
+m_strName=link-update-um
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1,
+m_strFalse=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM15_WK
+
+@}}
+[FDITEM16_WK]
+m_strName=link-update-peso-flag
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM16_WK
+
+@}}
+[FDITEM17_WK]
+m_strName=link-update-peso
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1,
+m_strFalse=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM17_WK
+
+@}}
+[FDITEM18_WK]
+m_strName=link-update-valore-flag
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM18_WK
+
+@}}
+[FDITEM19_WK]
+m_strName=link-update-valore
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1,
+m_strFalse=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM19_WK
+
+@}}
+[FDITEM20_WK]
+m_strName=link-key
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM20_WK
+
+@}}
+[FDITEM21_WK]
+m_strName=link-articolo
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM21_WK
+
+@}}
+[FDITEM22_WK]
+m_strName=link-magazzino
+m_strRawPic=x(3)
+m_strPic=X(3)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM22_WK
+
+@}}
+[FDITEM23_WK]
+m_strName=link-imballo
+m_strRawPic=x(3)
+m_strPic=X(3)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM23_WK
+
+@}}
+[FDITEM24_WK]
+m_strName=link-peso
+m_strRawPic=9(3)v9(3)
+m_strPic=9(3)V9(3)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM24_WK
+
+@}}
+[FDITEM25_WK]
+m_strName=link-utf
+m_strRawPic=9(3)v9(3)
+m_strPic=9(3)V9(3)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM25_WK
+
+@}}
+[FDITEM26_WK]
+m_strName=link-non-utf
+m_strRawPic=9(3)v9(3)
+m_strPic=9(3)V9(3)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM26_WK
+
+@}}
+[FDITEM27_WK]
+m_strName=link-new-imballo
+m_strRawPic=x(3)
+m_strPic=X(3)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM27_WK
+
+@}}
+[FDITEM28_WK]
+m_strName=link-new-peso
+m_strRawPic=9(3)v9(3)
+m_strPic=9(3)V9(3)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM28_WK
+
+@}}
+[FDITEM29_WK]
+m_strName=link-des-articolo
+m_strRawPic=x(50)
+m_strPic=X(50)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM29_WK
+
+@}}
+[FDITEM30_WK]
+m_strName=link-causale
+m_strRawPic=x(4)
+m_strPic=X(4)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM30_WK
+
+@}}
+[FDITEM31_WK]
+m_strName=link-valore
+m_strRawPic=s9(8)
+m_strPic=S9(8)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM31_WK
+
+@}}
+[FDITEM32_WK]
+m_strName=link-valore-peso
+m_strRawPic=s9(9)v999
+m_strPic=S9(9)V999
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM32_WK
+
+@}}
+[FDITEM33_WK]
+m_strName=link-valore-monetario
+m_strRawPic=s9(9)v99
+m_strPic=S9(9)V99
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM33_WK
+
+@}}
+[FDITEM34_WK]
+m_strName=link-valore-costo
+m_strRawPic=s9(9)v9(2)
+m_strPic=S9(9)V9(2)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM34_WK
+
+@}}
+[FDITEM35_WK]
+m_strName=link-user
+m_strRawPic=x(20)
+m_strPic=X(20)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM35_WK
+
+@}}
+[FDITEM36_WK]
+m_strName=link-open-with-lock-flag
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM36_WK
+
+@}}
+[FDITEM37_WK]
+m_strName=link-open-with-lock
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1,
+m_strFalse=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM37_WK
+
+@}}
+[FDITEM38_WK]
+m_strName=link-array
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM38_WK
+
+@}}
+[FDITEM39_WK]
+m_strName=multiplyer
+m_strRawPic=s9
+m_strPic=S9
+m_nItemLevel=5
+m_nSync=-1
+m_bOccurs=1
+m_bFixed=1
+m_strRawSize=15
+m_nSize=15
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM39_WK
+
+@}}
+[FDITEM40_WK]
+m_strName=link-wprogmag-status
+m_nUsage=17
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM40_WK
+
+@}}
+[FDITEM41_WK]
+m_strName=link-tipo-chiamata
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM41_WK
+
+@}}
+[FDITEM42_WK]
+m_strName=link-chiamata-batch
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1,
+m_strFalse=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM42_WK
+
+@}}
+[FDITEM43_WK]
+m_strName=link-msg-err-ritorno
+m_strRawPic=x(60)
+m_strPic=X(60)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM43_WK
+
+@}}
+[FDITEM44_WK]
+m_strName=link-mese-rif
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM44_WK
+    mi serve per collocare/stornare l'ordinato dal mese corretto
+@}}
+[FDITEM45_WK]
+m_strName=link-master
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM45_WK
+
+@}}
+[FDITEM46_WK]
+m_strName=link-imp-master
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="M"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM46_WK
+
+@}}
+[FDITEM47_WK]
+m_strName=link-imp-trad
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="T"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM47_WK
+
+@}}
+[FDITEM48_WK]
+m_strName=link-imp-GDO
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="G"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM48_WK
+
+@}}
+[FDITEM49_WK]
+m_strName=link-impegnato
+m_strRawPic=s9(8)
+m_strPic=S9(8)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM49_WK
+
+@}}
+[FDITEM50_WK]
+m_strName=geslock-linkage
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM50_WK
+
+
+@}}
+[FDITEM51_WK]
+m_strName=geslock-messaggio
+m_strRawPic=x(200)
+m_strPic=X(200)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM51_WK
+
+@}}
+[FDITEM52_WK]
+m_strName=geslock-nome-file
+m_strRawPic=x(20)
+m_strPic=X(20)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM52_WK
+
+@}}
+[FDITEM53_WK]
+m_strName=geslock-scelta
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM53_WK
+
+@}}
+[FDITEM54_WK]
+m_strName=riprova
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="R"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM54_WK
+
+@}}
+[FDITEM55_WK]
+m_strName=ignora
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="I"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM55_WK
+
+@}}
+[FDITEM56_WK]
+m_strName=termina
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="T"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM56_WK
+
+@}}
+[FDITEM57_WK]
+m_strName=annulla
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="A"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM57_WK
+
+@}}
+[FDITEM58_WK]
+m_strName=salva
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM58_WK
+
+@}}
+[FDITEM59_WK]
+m_strName=geslock-v-riprova
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM59_WK
+
+@}}
+[FDITEM60_WK]
+m_strName=geslock-v-ignora
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM60_WK
+
+@}}
+[FDITEM61_WK]
+m_strName=geslock-v-termina
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM61_WK
+
+@}}
+[FDITEM62_WK]
+m_strName=geslock-v-annulla
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM62_WK
+
+@}}
+[FDITEM63_WK]
+m_strName=geslock-v-salva
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM63_WK
+
+@}}
+[FDITEM64_WK]
+m_strName=geslock-tipo-messaggio
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM64_WK
+
+@}}
+[FDITEM65_WK]
+m_strName=geslock-lock
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM65_WK
+
+@}}
+[FDITEM66_WK]
+m_strName=geslock-righe
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM66_WK
+
+@}}
+[FDITEM67_WK]
+m_strName=geslock-omom
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=2
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM67_WK
+
+@}}
+[FDITEM68_WK]
+m_strName=risultato-imposte
+m_strRawPic=9(15)v999
+m_strPic=9(15)V999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_strCopyFile=imposte.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM68_WK
+
+@}}
+[FDITEM69_WK]
+m_strName=imposta-cobat
+m_strRawPic=9(15)v99
+m_strPic=9(15)V99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_strCopyFile=imposte.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM69_WK
+
+@}}
+[FDITEM70_WK]
+m_strName=imposta-cou
+m_strRawPic=9(15)v99
+m_strPic=9(15)V99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_strCopyFile=imposte.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM70_WK
+
+@}}
+[FDITEM71_WK]
+m_strName=imposta-consumo
+m_strRawPic=9(15)v99
+m_strPic=9(15)V99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_strCopyFile=imposte.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM71_WK
+
+@}}
+[FDITEM72_WK]
+m_strName=add-piombo
+m_strRawPic=9(15)v99
+m_strPic=9(15)V99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_strCopyFile=imposte.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM72_WK
+
+@}}
+[FDITEM73_WK]
+m_strName=add-piombo-3dec
+m_strRawPic=9(15)v999
+m_strPic=9(15)V999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_strCopyFile=imposte.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM73_WK
+
+@}}
+[FDITEM74_WK]
+m_strName=como-data-ordine
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_strCopyFile=imposte.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM74_WK
+
+@}}
+[FDITEM75_WK]
+m_strName=como-prz-unitario
+m_strRawPic=9(15)v99
+m_strPic=9(15)V99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_strCopyFile=imposte.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM75_WK
+
+@}}
+[FDITEM76_WK]
+m_strName=como-imp-cou-cobat
+m_strRawPic=9(15)v99
+m_strPic=9(15)V99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_strCopyFile=imposte.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM76_WK
+
+@}}
+[FDITEM77_WK]
+m_strName=como-imposta
+m_strRawPic=9(15)v999
+m_strPic=9(15)V999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_strCopyFile=imposte.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM77_WK
+
+@}}
+[FDITEM78_WK]
+m_strName=TipoImposta
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_strCopyFile=imposte.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM78_WK
+
+@}}
+[FDITEM79_WK]
+m_strName=ImpostaCou
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_strCopyFile=imposte.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM79_WK
+
+@}}
+[FDITEM80_WK]
+m_strName=ImpostaCobat
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=2
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_strCopyFile=imposte.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM80_WK
+
+@}}
+[FDITEM81_WK]
+m_strName=ImpostaCouCobat
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=3
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_strCopyFile=imposte.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM81_WK
+
+@}}
+[FDITEM82_WK]
+m_strName=TipoTrattamento
+m_strRawPic=x(3)
+m_strPic=X(3)
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_strCopyFile=imposte.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM82_WK
+
+@}}
+[FDITEM83_WK]
+m_strName=TrattamentoGDO
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="GDO"
+m_strFalse="   "
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_strCopyFile=imposte.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM83_WK
+
+@}}
+[FDITEM84_WK]
+m_strName=TipoPiombo
+m_strRawPic=x(1)
+m_strPic=X(1)
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_strCopyFile=imposte.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM84_WK
+
+@}}
+[FDITEM85_WK]
+m_strName=TrattamentoPiombo
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+m_strFalse="N"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_strCopyFile=imposte.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM85_WK
+
+@}}
+[FDITEM86_WK]
+m_strName=como-prm-destino
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\TROVA-PARAMETRO.DEF
+m_strCopyFile=trova-parametro.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\TROVA-PARAMETRO.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM86_WK
+
+@}}
+[FDITEM87_WK]
+m_strName=como-prm-cliente
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\TROVA-PARAMETRO.DEF
+m_strCopyFile=trova-parametro.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\TROVA-PARAMETRO.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM87_WK
+
+@}}
+[FDITEM88_WK]
+m_strName=Small-Font
+m_nUsage=37
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM88_WK
+
+@}}
+[FDITEM89_WK]
+m_strName=titolo
+m_strDefaultValue="GESLUX - Cambio riferimenti ordine"
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM89_WK
+
+@}}
+[FDITEM90_WK]
+m_strName=orig-imp-cons
+m_strRawPic=s9(12)v9999
+m_strPic=s9(12)v9999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM90_WK
+
+@}}
+[FDITEM91_WK]
+m_strName=orig-coubat
+m_strRawPic=s9(12)v9999
+m_strPic=s9(12)v9999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM91_WK
+
+@}}
+[FDITEM92_WK]
+m_strName=orig-add-pb
+m_strRawPic=s9(12)v9999
+m_strPic=s9(12)v9999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM92_WK
+
+@}}
+[FDITEM93_WK]
+m_strName=STATUS-clienti
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM93_WK
+
+@}}
+[FDITEM94_WK]
+m_strName=Valid-STATUS-clienti
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM94_WK
+
+@}}
+[FDITEM95_WK]
+m_strName=Default-Font
+m_nUsage=38
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM95_WK
+
+@}}
+[FDITEM96_WK]
+m_strName=Form1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM96_WK
+
+@}}
+[FDITEM97_WK]
+m_strName=STATUS-articoli
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM97_WK
+
+@}}
+[FDITEM98_WK]
+m_strName=Valid-STATUS-articoli
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM98_WK
+
+@}}
+[FDITEM99_WK]
+m_strName=Form1-Tb-1-Handlea
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM99_WK
+
+@}}
+[FDITEM100_WK]
+m_strName=toolbar-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM100_WK
+
+@}}
+[FDITEM101_WK]
+m_strName=como-imballo
+m_strRawPic=x(30)
+m_strPic=x(30)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM101_WK
+
+@}}
+[FDITEM102_WK]
+m_strName=E-ESCI
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM102_WK
+
+@}}
+[FDITEM103_WK]
+m_strName=E-CERCA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM103_WK
+
+@}}
+[FDITEM104_WK]
+m_strName=bottone-ok-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM104_WK
+
+@}}
+[FDITEM105_WK]
+m_strName=bottone-cancel-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM105_WK
+
+@}}
+[FDITEM106_WK]
+m_strName=Verdana12-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM106_WK
+
+@}}
+[FDITEM107_WK]
+m_strName=STATUS-tparamge
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM107_WK
+
+@}}
+[FDITEM108_WK]
+m_strName=Valid-STATUS-tparamge
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM108_WK
+
+@}}
+[FDITEM109_WK]
+m_strName=STATUS-rordforn
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM109_WK
+
+@}}
+[FDITEM110_WK]
+m_strName=Valid-STATUS-rordforn
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM110_WK
+
+@}}
+[FDITEM111_WK]
+m_strName=STATUS-tordforn
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM111_WK
+
+@}}
+[FDITEM112_WK]
+m_strName=Valid-STATUS-tordforn
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM112_WK
+
+@}}
+[FDITEM113_WK]
+m_strName=AUTO-ID
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_strDefaultValue=1003
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM113_WK
+
+@}}
+[FDITEM114_WK]
+m_strName=STATUS-reva
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM114_WK
+
+@}}
+[FDITEM115_WK]
+m_strName=Valid-STATUS-reva
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM115_WK
+
+@}}
+[FDITEM116_WK]
+m_strName=STATUS-teva
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM116_WK
+
+@}}
+[FDITEM117_WK]
+m_strName=Valid-STATUS-teva
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM117_WK
+
+@}}
+[FDITEM118_WK]
+m_strName=STATUS-progmag
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM118_WK
+
+@}}
+[FDITEM119_WK]
+m_strName=Valid-STATUS-progmag
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM119_WK
+
+@}}
+[FDITEM120_WK]
+m_strName=STATUS-timposte
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM120_WK
+
+@}}
+[FDITEM121_WK]
+m_strName=Valid-STATUS-timposte
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM121_WK
+
+@}}
+[FDITEM122_WK]
+m_strName=STATUS-tmarche
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM122_WK
+
+@}}
+[FDITEM123_WK]
+m_strName=Valid-STATUS-tmarche
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM123_WK
+
+@}}
+[FDITEM124_WK]
+m_strName=STATUS-tpromo
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM124_WK
+
+@}}
+[FDITEM125_WK]
+m_strName=Valid-STATUS-tpromo
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM125_WK
+
+@}}
+[FDITEM126_WK]
+m_strName=STATUS-tpiombo
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM126_WK
+
+@}}
+[FDITEM127_WK]
+m_strName=Valid-STATUS-tpiombo
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM127_WK
+
+@}}
+[FDITEM128_WK]
+m_strName=STATUS-tcaumag
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM128_WK
+
+@}}
+[FDITEM129_WK]
+m_strName=Valid-STATUS-tcaumag
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM129_WK
+
+@}}
+[FDITEM130_WK]
+m_strName=STATUS-sordforn
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM130_WK
+
+@}}
+[FDITEM131_WK]
+m_strName=Valid-STATUS-sordforn
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM131_WK
+
+@}}
+[FDITEM132_WK]
+m_strName=anno-ordf
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM132_WK
+
+@}}
+[FDITEM133_WK]
+m_strName=numero-ordf
+m_strRawPic=z(8)
+m_strPic=z(8)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM133_WK
+
+@}}
+[FDITEM134_WK]
+m_strName=riga-ordf
+m_strRawPic=z(5)
+m_strPic=z(5)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM134_WK
+
+@}}
+[FDITEM135_WK]
+m_strName=lab-stato-ord-buf
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM135_WK
+
+@}}
+[FDITEM136_WK]
+m_strName=anno-eva
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM136_WK
+
+@}}
+[FDITEM137_WK]
+m_strName=numero-eva
+m_strRawPic=z(8)
+m_strPic=z(8)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM137_WK
+
+@}}
+[FDITEM138_WK]
+m_strName=riga-eva
+m_strRawPic=z(5)
+m_strPic=z(5)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM138_WK
+
+@}}
+[FDITEM139_WK]
+m_strName=ef-anno-buf
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM139_WK
+
+@}}
+[FDITEM140_WK]
+m_strName=ef-riga-buf
+m_strRawPic=z(4)
+m_strPic=z(4)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM140_WK
+
+@}}
+[FDITEM141_WK]
+m_strName=ef-numero-buf
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM141_WK
+
+@}}
+[FDITEM142_WK]
+m_strName=STATUS-paramshi
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM142_WK
+
+@}}
+[FDITEM143_WK]
+m_strName=Valid-STATUS-paramshi
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM143_WK
+
+@}}
+[FDITEM144_WK]
+m_strName=STATUS-paramget
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM144_WK
+
+@}}
+[FDITEM145_WK]
+m_strName=Valid-STATUS-paramget
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM145_WK
+
+@}}
+[FDITEM146_WK]
+m_strName=STATUS-param
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM146_WK
+
+@}}
+[FDITEM147_WK]
+m_strName=Valid-STATUS-param
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM147_WK
+
+@}}
+
+
+[LINKAGE_SECTION]
+m_nType=1
+m_strName=Linkage Section
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionLK
+
+@}}
+[FDITEM0_LK]
+m_strName=cambia-rif-ord-reva-linkage
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-CAMBIA-RIF-ORD-REVA.DEF
+m_strCopyFile=link-cambia-rif-ord-reva.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CAMBIA-RIF-ORD-REVA.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM0_LK
+
+
+@}}
+[FDITEM1_LK]
+m_strName=cror-reva-chiave
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-CAMBIA-RIF-ORD-REVA.DEF
+m_strCopyFile=link-cambia-rif-ord-reva.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CAMBIA-RIF-ORD-REVA.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM1_LK
+
+@}}
+[FDITEM2_LK]
+m_strName=cror-reva-chiave-testa
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-CAMBIA-RIF-ORD-REVA.DEF
+m_strCopyFile=link-cambia-rif-ord-reva.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CAMBIA-RIF-ORD-REVA.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM2_LK
+
+@}}
+[FDITEM3_LK]
+m_strName=cror-reva-anno
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-CAMBIA-RIF-ORD-REVA.DEF
+m_strCopyFile=link-cambia-rif-ord-reva.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CAMBIA-RIF-ORD-REVA.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM3_LK
+
+@}}
+[FDITEM4_LK]
+m_strName=cror-reva-numero
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-CAMBIA-RIF-ORD-REVA.DEF
+m_strCopyFile=link-cambia-rif-ord-reva.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CAMBIA-RIF-ORD-REVA.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM4_LK
+
+@}}
+[FDITEM5_LK]
+m_strName=cror-reva-riga
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-CAMBIA-RIF-ORD-REVA.DEF
+m_strCopyFile=link-cambia-rif-ord-reva.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CAMBIA-RIF-ORD-REVA.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM5_LK
+
+@}}
+[FDITEM6_LK]
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-CAMBIA-RIF-ORD-REVA.DEF
+m_strCopyFile=link-cambia-rif-ord-reva.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CAMBIA-RIF-ORD-REVA.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM6_LK
+
+@}}
+[FDITEM7_LK]
+m_strName=cror-ricarica
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=zero
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-CAMBIA-RIF-ORD-REVA.DEF
+m_strCopyFile=link-cambia-rif-ord-reva.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CAMBIA-RIF-ORD-REVA.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM7_LK
+
+@}}
+[FDITEM8_LK]
+m_strName=LK-BLOCKPGM
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM8_LK
+
+@}}
+[FDITEM9_LK]
+m_strName=LK-BL-PROG-ID
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM9_LK
+
+@}}
+[FDITEM10_LK]
+m_strName=LK-BL-DATA
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM10_LK
+
+@}}
+[FDITEM11_LK]
+m_strName=LK-BL-ORA
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM11_LK
+
+@}}
+[FDITEM12_LK]
+m_strName=LK-BL-TIPO-OP
+m_strRawPic=9(1)
+m_strPic=9(1)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM12_LK
+
+@}}
+[FDITEM13_LK]
+m_strName=LK-BL-LETTURA
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM13_LK
+
+@}}
+[FDITEM14_LK]
+m_strName=LK-BL-SCRITTURA
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=2
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM14_LK
+
+@}}
+[FDITEM15_LK]
+m_strName=LK-BL-CANCELLAZIONE
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=3
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM15_LK
+
+@}}
+[FDITEM16_LK]
+m_strName=LK-BL-USO
+m_strRawPic=9(1)
+m_strPic=9(1)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM16_LK
+
+@}}
+[FDITEM17_LK]
+m_strName=LK-BL-IN-USO
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM17_LK
+
+@}}
+[FDITEM18_LK]
+m_strName=LK-HND-WIN
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM18_LK
+
+@}}
+[FDITEM19_LK]
+m_strName=USER-CODI
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=common-linkage.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM19_LK
+
+@}}
+[FDITEM20_LK]
+m_strName=LIVELLO-ABIL
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=common-linkage.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM20_LK
+
+@}}
+
+
+{{@SCREEN:
+*   Screen Painter Data
+*   Schema 6.0
+*
+BEGIN-SPDATA-6.1A
+
+GRAPHICAL-SCREEN
+
+Begin Screen Form1
+   PREFIX            = Screen1
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = Form1
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 18
+   Cell Width        = 10
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = FALSE
+   Font              = Verdana/12/C0/@Occidentale
+   Font Variable     = Verdana12-Occidentale
+   Handle Variable   = Form1-Handle
+   Height in Cells   = TRUE
+   Help ID           = 0
+   Label Offset      = 20
+   Lines             = 22,28
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = TRUE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 54,60
+   System Menu       = TRUE
+   Title Bar         = TRUE
+   Title Variable    = titolo
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = TRUE
+   Window Type       = Floating
+   Wrap              = FALSE
+   Event Procedure   = Screen1-Event-Proc
+   Begin Entry-Field ef-anno
+      SCREEN-COL        = 13,00
+      SCREEN-LINE       = 14,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-anno
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 13,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 1001
+      ID Variable       = AUTO-ID
+      Justification     = Right
+      Line              = 14,00
+      Lines             = 1,33
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 5
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 8,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 1
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Value Picture     = 9(4)
+      Value Variable    = ef-anno-buf
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-anno-BeforeProcedure
+      After Procedure   = ef-anno-AfterProcedure
+   End
+   Begin Entry-Field ef-numero
+      SCREEN-COL        = 13,00
+      SCREEN-LINE       = 16,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-numero
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 13,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 1002
+      ID Variable       = AUTO-ID
+      Justification     = Right
+      Line              = 16,00
+      Lines             = 1,33
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 5
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 8,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 2
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Value Picture     = 9(5)
+      Value Variable    = ef-numero-buf
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-dest-BeforeProcedure
+      After Procedure   = ef-dest-AfterProcedure
+   End
+   Begin Entry-Field ef-riga
+      SCREEN-COL        = 13,00
+      SCREEN-LINE       = 18,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-riga
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 13,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 1003
+      ID Variable       = AUTO-ID
+      Justification     = Right
+      Line              = 18,00
+      Lines             = 1,33
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 3
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 8,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 3
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Value Picture     = z(4)
+      Value Variable    = ef-riga-buf
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-num-BeforeProcedure
+      After Procedure   = ef-num-AfterProcedure
+   End
+   Begin CsCtrl.Custom1 Label Screen1-Custom1-1
+      CUST-SYMBOL       = Custom1
+      CUST-MODIFYFLAG   = 000000000000000000000000000000000000000000000000000
+      SCREEN-COL        = 2,10
+      SCREEN-LINE       = 1,17
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-Custom1-1
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,10
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Font Variable     = Default-Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 5
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 1,17
+      Lines             = 0,89
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 1,60
+      Size Unit         = Default
+      Tab Order         = 4
+      Title             = "CUSTOM CONTROL"
+      Transparent       = TRUE
+      Visible           = NONE
+      Visible Variable  = v-custom
+      Width in Cells    = FALSE
+   End
+   Begin Label Screen1-La-1
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 14,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-La-1
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 6
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 14,00
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 9,00
+      Size Unit         = Default
+      Tab Order         = 5
+      Title             = "Anno"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Screen1-La-2
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 18,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-La-2
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 2
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 18,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 9,00
+      Size Unit         = Default
+      Tab Order         = 6
+      Title             = "Riga"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Frame Screen1-Fr-1
+      SCREEN-COL        = 1,00
+      SCREEN-LINE       = 20,50
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-Fr-1
+      3D Style          = Lowered
+      Alternate         = FALSE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Font              = Default Font
+      Full Height       = FALSE
+      Height in Cells   = TRUE
+      Help ID           = 0
+      High Color        = 0
+      ID                = 1
+      Line              = 20,50
+      Lines             = 2,78
+      Lines Unit        = Default
+      Low Color         = 0
+      Size              = 54,60
+      Size Unit         = Default
+      Tab Order         = 7
+      Thickness         = Default
+      Title Position    = 0:Unaligned
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Begin Push-Button PB-ESEGUI
+         SCREEN-COL        = 39,30
+         SCREEN-LINE       = 21,17
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = PB-ESEGUI
+         Bitmap            = "..\RESOURCE\BOTTONE-OK.BMP"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = BOTTONE-OK-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 39,30
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = TRUE
+         Exception Value   = 1001
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 500
+         Line              = 1,67
+         Lines             = 1,56
+         Lines in Pixels   = 30
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 7,10
+         Size in Pixels    = 73
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 1
+         Termination Value = 13
+         Title             = "E&segue il programma selezionato"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Before Procedure  = PB-ESEGUI-BeforeProcedure
+         After Procedure   = PB-ESEGUI-AfterProcedure
+         Link To           = PB-ESEGUI-LinkTo
+      End
+      Begin Push-Button pb-cancel
+         SCREEN-COL        = 47,30
+         SCREEN-LINE       = 21,17
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = pb-cancel
+         Bitmap            = "..\RESOURCE\BOTTONE-CANCEL.BMP"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = BOTTONE-CANCEL-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 47,30
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = TRUE
+         Exception Value   = 27
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 501
+         Line              = 1,67
+         Lines             = 1,56
+         Lines in Pixels   = 30
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 7,10
+         Size in Pixels    = 73
+         Size Unit         = Default
+         Style             = Escape Button
+         Tab Order         = 2
+         Termination Value = 0
+         Title             = "&Esce dall'applicativo"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Before Procedure  = Form1-Pb-2-BeforeProcedure
+         After Procedure   = Form1-Pb-2-AfterProcedure
+      End
+   End
+   Begin CsCtrl.blockpgm Label Screen1-blockpgm-1
+      CUST-SYMBOL       = blockpgm
+      CUST-MODIFYFLAG   = 000000000000000000000000000000000000000000000000000
+      SCREEN-COL        = 6,10
+      SCREEN-LINE       = 1,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-blockpgm-1
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 6,10
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 3
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 1,00
+      Lines             = 0,44
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 4,00
+      Size Unit         = Default
+      Tab Order         = 8
+      Title             = "BlockPgm"
+      Transparent       = TRUE
+      Visible           = NONE
+      Visible Variable  = v-custom
+      Width in Cells    = TRUE
+   End
+   Begin Label Screen1-La-1a
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 16,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-La-1a
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 8
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 16,00
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 9,00
+      Size Unit         = Default
+      Tab Order         = 9
+      Title             = "Numero"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Screen2-La-1ba
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 8,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-La-1ba
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/12/C0/@Occidentale
+      Font Variable     = Verdana12-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 21
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 8,00
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 7,00
+      Size Unit         = Default
+      Tab Order         = 10
+      Title             = "Numero:"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label lab-anno-eva
+      SCREEN-COL        = 10,00
+      SCREEN-LINE       = 3,78
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lab-anno-eva
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 10,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/12/C0/@Occidentale
+      Font Variable     = Verdana12-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 22
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 3,78
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 4,00
+      Size Unit         = Default
+      Tab Order         = 11
+      Title             = "2010"
+      Title Picture     = 9(4)
+      Title Variable    = anno-eva
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Screen2-La-4
+      SCREEN-COL        = 15,00
+      SCREEN-LINE       = 8,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-La-4
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 15,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/12/C0/@Occidentale
+      Font Variable     = Verdana12-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 23
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 8,00
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 1,00
+      Size Unit         = Default
+      Tab Order         = 12
+      Title             = "-"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label lab-num-ordf
+      SCREEN-COL        = 17,00
+      SCREEN-LINE       = 8,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lab-num-ordf
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 17,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/12/C0/@Occidentale
+      Font Variable     = Verdana12-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 24
+      Justification     = Left
+      Label Offset      = 20
+      Line              = 8,00
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 8,00
+      Size Unit         = Default
+      Tab Order         = 13
+      Title             = "12345678"
+      Title Picture     = z(8)
+      Title Variable    = numero-ordf
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaacaad
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 6,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaacaad
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 80
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 139
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 6,00
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 15,00
+      Size Unit         = Default
+      Tab Order         = 14
+      Title             = "Ordine Originale"
+      Transparent       = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Bar Form1-Br-2aaad
+      SCREEN-COL        = 17,00
+      SCREEN-LINE       = 6,70
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-Br-2aaad
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 17,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 140
+      Kind              = Horizontal
+      Line              = 6,70
+      Line Styles       = Solid
+      Occurs            = 0
+      Position Shift    = 0
+      COLORS            = ( 8, 8 )
+      SHADING           = ( -1, 1 )
+      Size (Lines)      = 38,00
+      Size (Lines) in Pixels = 380
+      Size (Lines) Unit = Default
+      Tab Order         = 15
+      Visible           = NONE
+      Width             = 2
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaacaada
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaacaada
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 80
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 141
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 2,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 15,00
+      Size Unit         = Default
+      Tab Order         = 16
+      Title             = "Dati Evasione"
+      Transparent       = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Bar Form1-Br-2aaada
+      SCREEN-COL        = 17,00
+      SCREEN-LINE       = 2,70
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-Br-2aaada
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 17,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 142
+      Kind              = Horizontal
+      Line              = 2,70
+      Line Styles       = Solid
+      Occurs            = 0
+      Position Shift    = 0
+      COLORS            = ( 8, 8 )
+      SHADING           = ( -1, 1 )
+      Size (Lines)      = 38,00
+      Size (Lines) in Pixels = 380
+      Size (Lines) Unit = Default
+      Tab Order         = 17
+      Visible           = NONE
+      Width             = 2
+      Width in Cells    = TRUE
+   End
+   Begin Label Screen2-La-1baa
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 3,78
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-La-1baa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/12/C0/@Occidentale
+      Font Variable     = Verdana12-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 143
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 3,78
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 7,00
+      Size Unit         = Default
+      Tab Order         = 18
+      Title             = "Numero:"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label lab-anno-ordfa
+      SCREEN-COL        = 10,00
+      SCREEN-LINE       = 8,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lab-anno-ordfa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 10,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/12/C0/@Occidentale
+      Font Variable     = Verdana12-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 144
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 8,00
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 4,00
+      Size Unit         = Default
+      Tab Order         = 19
+      Title             = "2010"
+      Title Picture     = 9(4)
+      Title Variable    = anno-ordf
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Screen2-La-4a
+      SCREEN-COL        = 15,00
+      SCREEN-LINE       = 3,78
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-La-4a
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 15,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/12/C0/@Occidentale
+      Font Variable     = Verdana12-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 145
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 3,78
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 1,00
+      Size Unit         = Default
+      Tab Order         = 20
+      Title             = "-"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label lab-num-eva
+      SCREEN-COL        = 17,00
+      SCREEN-LINE       = 3,78
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lab-num-eva
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 17,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/12/C0/@Occidentale
+      Font Variable     = Verdana12-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 146
+      Justification     = Left
+      Label Offset      = 20
+      Line              = 3,78
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 8,00
+      Size Unit         = Default
+      Tab Order         = 21
+      Title             = "12345678"
+      Title Picture     = z(8)
+      Title Variable    = numero-eva
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label lab-num-ordfaa
+      SCREEN-COL        = 27,00
+      SCREEN-LINE       = 8,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lab-num-ordfaa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 27,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/12/C0/@Occidentale
+      Font Variable     = Verdana12-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 25
+      Justification     = Left
+      Label Offset      = 20
+      Line              = 8,00
+      Lines             = 1,17
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 4,00
+      Size Unit         = Default
+      Tab Order         = 22
+      Title             = "Riga:"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label lab-riga-ordf
+      SCREEN-COL        = 32,10
+      SCREEN-LINE       = 8,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lab-riga-ordf
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 32,10
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/12/C0/@Occidentale
+      Font Variable     = Verdana12-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 26
+      Justification     = Left
+      Label Offset      = 20
+      Line              = 8,00
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 6,00
+      Size Unit         = Default
+      Tab Order         = 23
+      Title Picture     = z(5)
+      Title Variable    = riga-ordf
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label lab-riga-eva
+      SCREEN-COL        = 32,10
+      SCREEN-LINE       = 3,78
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lab-riga-eva
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 32,10
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/12/C0/@Occidentale
+      Font Variable     = Verdana12-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 27
+      Justification     = Left
+      Label Offset      = 20
+      Line              = 3,78
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 6,00
+      Size Unit         = Default
+      Tab Order         = 24
+      Title Picture     = z(5)
+      Title Variable    = riga-eva
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label lab-num-ordfaaa
+      SCREEN-COL        = 27,00
+      SCREEN-LINE       = 3,78
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lab-num-ordfaaa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 27,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/12/C0/@Occidentale
+      Font Variable     = Verdana12-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 28
+      Justification     = Left
+      Label Offset      = 20
+      Line              = 3,78
+      Lines             = 1,17
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 4,00
+      Size Unit         = Default
+      Tab Order         = 25
+      Title             = "Riga:"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label lab-num-ordfaab
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 10,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lab-num-ordfaab
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/12/C0/@Occidentale
+      Font Variable     = Verdana12-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 30
+      Justification     = Left
+      Label Offset      = 20
+      Line              = 10,00
+      Lines             = 1,17
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 4,80
+      Size Unit         = Default
+      Tab Order         = 26
+      Title             = "Stato:"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label lab-stato-ord
+      SCREEN-COL        = 10,00
+      SCREEN-LINE       = 10,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lab-stato-ord
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 10,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/12/C0/@Occidentale
+      Font Variable     = Verdana12-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 31
+      Justification     = Left
+      Label Offset      = 20
+      Line              = 10,00
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 40,00
+      Size Unit         = Default
+      Tab Order         = 27
+      Title Picture     = X(30)
+      Title Variable    = lab-stato-ord-buf
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaacaadb
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 12,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaacaadb
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 80
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 32
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 12,00
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 15,00
+      Size Unit         = Default
+      Tab Order         = 28
+      Title             = "Nuovo Ordine"
+      Transparent       = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Bar Form1-Br-2aaadb
+      SCREEN-COL        = 17,00
+      SCREEN-LINE       = 12,70
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-Br-2aaadb
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 17,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 33
+      Kind              = Horizontal
+      Line              = 12,70
+      Line Styles       = Solid
+      Occurs            = 0
+      Position Shift    = 0
+      COLORS            = ( 8, 8 )
+      SHADING           = ( -1, 1 )
+      Size (Lines)      = 38,00
+      Size (Lines) in Pixels = 380
+      Size (Lines) Unit = Default
+      Tab Order         = 29
+      Visible           = NONE
+      Width             = 2
+      Width in Cells    = TRUE
+   End
+   Begin Toolbar Form1-Tb-1a
+      SCREEN-LINE       = 1,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 1
+      (Name)            = Form1-Tb-1a
+      Cell              = FALSE
+      Color             = 0
+      Font              = Default Font
+      Handle Variable   = Form1-Tb-1-Handlea
+      Help ID           = 0
+      Lines             = 2,67
+      Tab Order         = 30
+      Begin Push-Button TOOL-ESCI
+         SCREEN-COL        = 1,00
+         SCREEN-LINE       = 1,08
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-ESCI
+         Bitmap            = "..\resource\toolbar.bmp"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = toolbar-bmp
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 1,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Enable Variable   = E-ESCI
+         Exception Value   = 27
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 11
+         Line              = 1,08
+         Lines             = 1,17
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 2,20
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Escape Button
+         Tab Order         = 1
+         Termination Value = 0
+         Title             = "&Esci"
+         Visible           = NONE
+         Width in Cells    = FALSE
+      End
+      Begin Push-Button TOOL-CERCA
+         SCREEN-COL        = 6,00
+         SCREEN-LINE       = 1,08
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-CERCA
+         Bitmap            = "..\RESOURCE\TOOLBAR.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = TOOLBAR-BMP
+         Bitmap Number     = 8
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 6,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = FALSE
+         Enable Variable   = E-CERCA
+         Exception Value   = 8
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 12
+         Line              = 1,08
+         Lines             = 1,17
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 2,20
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 2
+         Termination Value = 0
+         Title             = "Cerca (F8)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Link To           = TOOL-CERCA-LinkTo
+      End
+   End
+End
+
+END-SPDATA
+
+@}}
+
+{{@REPORT:
+*   Report Writer Data
+*   Schema 6.0
+*
+BEGIN-RWDATA-6.0A
+
+END-RWDATA
+
+@}}
+
+{{@EMBEDDING_CODE:
+BEGIN-DATA
+   BASETYPE          = 13
+   NODESTYLE         = 13
+   PARAGRAPH         = Other Working
+BEGIN-TEXT
+       77  save-tof-cod-forn    pic 9(5).
+       77  save-tof-causale     pic x(4).
+       77  como-prz-unit        PIC  9(9)v9999.
+
+       01                       pic 9.
+           88 controllo-finale  value 1 false zero.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 6
+   NODESTYLE         = 7
+   PARAGRAPH         = DeletedCode
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 6
+   NODESTYLE         = 7
+   PARAGRAPH         = DeletedCode
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterDisplay
+BEGIN-TEXT
+
+      *<<** Customized_Default, SP-G, Screen1-blockpgm-1, Disable **>>
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 0
+   PARENT            = cambia-rif-ord-reva
+   ACTOBJ            = cambia-rif-ord-reva
+   ENTRYPOINT        = BeforeDeclarative
+BEGIN-TEXT
+       TORDFORN-ERR SECTION.
+           use after error procedure on TORDFORN.
+           evaluate status-TORDFORN
+           when "35"
+                display message "File [TORDFORN] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [TORDFORN] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[TORDFORN] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "93"
+           when "99"
+                set RecLocked to true
+           end-evaluate.
+ 
+      ***---
+       RORDFORN-ERR SECTION.
+           use after error procedure on RORDFORN.
+           set tutto-ok  to true.
+           evaluate status-RORDFORN
+           when "35"
+                display message "File [RORDFORN] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [RORDFORN] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[RORDFORN] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "93"
+           when "99"
+                set RecLocked to true
+           end-evaluate.
+ 
+      ***---
+       CLIENTI-ERR SECTION.
+           use after error procedure on clienti.
+           set tutto-ok  to true.
+           evaluate status-clienti
+           when "35"
+                display message "File [CLIENTI] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [CLIENTI] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[CLIENTI] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           end-evaluate.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = SetDefault
+BEGIN-TEXT
+           move space  to shi-codice
+           read paramSHI
+              invalid
+                 continue
+           end-read
+
+           move space  to get-codice
+           read paramGET
+              invalid
+                 continue
+           end-read
+
+           set cror-ricarica to false
+
+      *    metto in linea i dati di partenza. i Lock li faccio quando 
+      *    confermo il cambiamento
+           move cror-reva-chiave         to reva-chiave
+           move cror-reva-chiave-testa   to teva-chiave
+
+           read teva no lock
+              invalid
+                 continue
+           end-read
+
+           read reva no lock
+              invalid
+                 continue
+           end-read
+
+           move reva-chiave-ordf   to rof-chiave
+           read rordforn no lock
+              invalid
+                 initialize rof-dati
+           end-read
+
+           move reva-chiave-testa-ordf   to tof-chiave
+           read tordforn no lock
+              invalid
+                 initialize tof-dati
+           end-read
+
+           move teva-anno    to anno-eva
+           move teva-numero  to numero-eva
+           move reva-riga    to riga-eva
+
+           move tof-anno     to anno-ordf
+           move tof-numero   to numero-ordf
+           move rof-riga     to riga-ordf
+
+           evaluate true
+           when tof-inserito
+                move "Inserito" to lab-stato-ord-buf
+           when tof-inviato
+                move "Inviato" to lab-stato-ord-buf
+           when tof-in-lavorazione
+                move "In Lavorazione" to lab-stato-ord-buf
+           when tof-chiuso
+                evaluate true 
+                when tof-chiusura-man
+                     move "Chiuso Manualmente"      to lab-stato-ord-buf
+                when tof-chiusura-auto
+                     move "Chiuso Automaticamente"  to lab-stato-ord-buf
+                end-evaluate
+           end-evaluate
+
+           move teva-cod-forn   to save-tof-cod-forn
+           if reva-chiave-testa-ordf = zero
+              move tof-causale to tca-codice
+              read tcaumag no lock
+              evaluate tca-cod-magaz
+              when "SHI"
+                   move shi-causale-impcar to save-tof-causale
+              when "GET"
+                   move get-causale-impcar to save-tof-causale
+              end-evaluate
+           else
+              move tof-causale        to save-tof-causale
+           end-if
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CAMBIA-RIFERIMENTO
+BEGIN-TEXT
+      *    blocco per prima cosa l'evasione
+           perform READ-RECORD-LOCK
+
+      *    se l'ordine originale è valorizzato faccio lo storno
+           if tutto-ok
+              if reva-chiave-ordf not = zero
+                 perform AGGIORNA-ORDINE-ORIGINALE
+              end-if
+           end-if.
+
+           if tutto-ok
+              perform AGGIORNA-ORDINE-DESTINAZIONE
+           end-if.
+
+           if tutto-ok
+              set cror-ricarica to true
+           end-if.
+
+
+      ***---
+       READ-RECORD-LOCK.
+           set tutto-ok  to true.
+           set RecLocked to false.
+           initialize geslock-linkage.
+           move "teva" to geslock-nome-file.
+
+           set tutto-ok    to true.
+           read teva lock key teva-chiave 
+              invalid 
+                 continue 
+           end-read.
+
+           perform until 1 = 2
+              if not RecLocked
+                 exit perform
+              end-if
+              set RecLocked to false
+              move 1 to geslock-v-riprova
+              move 1 to geslock-v-ignora
+              move 0 to geslock-v-termina
+              call   "geslock" using geslock-linkage
+              cancel "geslock"
+              evaluate true
+              when riprova 
+                   read teva lock key teva-chiave
+                        invalid continue 
+                   end-read
+              when ignora  exit perform
+              end-evaluate
+           end-perform.
+
+           if RecLocked
+              set errori to true
+           end-if.
+
+
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = SCRIVI-RORDFORN
+BEGIN-TEXT
+           set tutto-ok  to true.
+           set RecLocked to false.
+           initialize geslock-linkage.
+           move "rordforn" to geslock-nome-file.
+
+           set tutto-ok to true.
+           move reva-chiave-ordf to rof-chiave.
+           read rordforn lock key rof-chiave 
+                invalid continue 
+           end-read.
+
+           perform until 1 = 2
+              if not RecLocked
+                 exit perform
+              end-if
+              set RecLocked to false
+              move 1 to geslock-v-riprova
+              move 1 to geslock-v-ignora
+              move 0 to geslock-v-termina
+              call   "geslock" using geslock-linkage
+              cancel "geslock"
+              evaluate true
+              when riprova 
+                   read rordforn lock key rof-chiave
+                        invalid continue 
+                   end-read
+              when ignora  exit perform
+              end-evaluate
+           end-perform.
+
+           if not RecLocked
+              perform STORNA-ORDINATO-AUMENTA-GIACENZA
+              add  reva-qta             to rof-qta-evasa
+
+              move reva-chiave-progmag  to prg-chiave
+              read progmag no lock invalid continue end-read
+      *    Luciano fine
+              move reva-imballo         to rof-imb-ordinato
+
+              accept rof-data-ultima-modifica from century-date
+              accept rof-ora-ultima-modifica  from time
+              move user-codi to rof-utente-ultima-modifica
+              rewrite rof-rec invalid continue end-rewrite
+              unlock rordforn all records
+
+              move rof-chiave to sof-chiave
+              delete sordforn record invalid continue end-delete
+           end-if.
+
+      ***---
+       STORNA-ORDINATO-AUMENTA-GIACENZA.
+           |Adesso devo stornare l'ordinato
+           move rof-chiave-testa to tof-chiave.
+           read tordforn no lock invalid continue end-read.
+           move tof-causale      to link-causale.
+           set link-update       to true.
+           move rof-prg-chiave   to link-key.
+           move tof-mese-rif     to link-mese-rif.
+           move tof-chiave       to link-chiave-origine.
+
+           move user-codi to link-user of link-wprogmag.
+      *    Lo tolgo dal vecchio progressivo
+           move reva-qta           to link-valore.
+           set link-update-um     to true.
+           set link-update-peso   to false.
+           set link-update-valore to false.
+
+           |Se è scoperto (non ho ancora scritto)
+           if rof-qta-ord > rof-qta-evasa
+              if reva-qta > rof-qta-ord - rof-qta-evasa
+                 compute link-valore = rof-qta-ord - rof-qta-evasa
+              else
+                 move reva-qta to link-valore
+              end-if
+           end-if.
+
+           if link-valore > 0
+              move "0000000000000000"   to link-array
+              move -1 to multiplyer(3)
+              call   "wprogmag" using link-wprogmag
+              cancel "wprogmag"
+           end-if.
+
+      **    Dopodiché aggiungo direttamente la qta alla giacenza
+      *     move tmp-eva-chiave-progmag to link-key.
+      *     move tmp-eva-qta            to link-valore.
+      *     move "1000000000000010"     to link-array.
+      *     call   "wprogmag"        using link-wprogmag.
+      *     cancel "wprogmag".
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CERCA
+BEGIN-TEXT
+           evaluate control-id
+           when 78-ID-ef-anno
+           when 78-ID-ef-numero
+                move save-tof-cod-forn   to tof-cod-forn
+                move "tordforn-forn" to como-file
+
+                inquire ef-anno, VALUE tof-anno
+                inquire ef-numero, value in tof-numero
+                call "zoom-gt"   using como-file, tof-rec
+                                giving stato-zoom
+                cancel "zoom-gt"
+                if stato-zoom = 0
+                   move tof-anno   to ef-anno-buf
+                   modify ef-anno value ef-anno-buf
+                   move tof-numero to ef-numero-buf
+                   modify ef-numero value ef-numero-buf
+                end-if
+
+           end-evaluate.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CONTROLLO
+BEGIN-TEXT
+           set tutto-ok to true.
+           evaluate control-id
+           when 78-ID-ef-numero
+                inquire ef-anno, VALUE tof-anno
+                inquire ef-numero, value in tof-numero
+
+                if tof-numero = zero
+                   if controllo-finale
+                      set errori to true
+                      display message "Ordine non valido"
+                              title tit-err
+                              icon 2
+                   end-if
+                else
+                   read tordforn no lock
+                      invalid
+                         set errori to true
+                         display message "Ordine non valido"
+                                 title tit-err
+                                 icon 2
+                   end-read
+                   if tutto-ok
+                      evaluate true
+                      when tof-inserito
+                      when tof-chiuso 
+                           set errori to true
+                           display message "Stato Ordine non valido"
+                                   title tit-err
+                                   icon 2
+                      end-evaluate
+                   end-if
+                   if tutto-ok
+                      if tof-cod-forn not = save-tof-cod-forn
+                         set errori to true
+                         display message "Fornitore diverso dall'originale"
+                                   title tit-err
+                                   icon 2
+                      end-if
+                   end-if
+                   
+                   if tutto-ok
+                      if tof-causale not = save-tof-causale
+                         set errori to true
+                         display message "Causale diversa dall'originale"
+                                   title tit-err
+                                   icon 2
+                      end-if
+                   end-if
+                end-if
+
+           when 78-ID-ef-riga
+                inquire ef-anno, VALUE rof-anno
+                inquire ef-numero, value in rof-numero
+                inquire ef-riga, VALUE rof-riga
+
+                if rof-riga = zero
+                   if controllo-finale
+                      set errori to true
+                      display message "Ordine non valido"
+                              title tit-err
+                              icon 2
+                   end-if
+                 else
+                   read rordforn no lock
+                      invalid
+                         set errori to true
+                         display message "Ordine non valido"
+                                 title tit-err
+                                 icon 2
+                   end-read
+                   if tutto-ok
+                      if reva-articolo not = rof-cod-articolo
+                         set errori to true
+                         display message "Articolo diverso dall'originale"
+                                   title tit-err
+                                   icon 2
+                      end-if
+                   end-if
+                   if tutto-ok
+                      if reva-qta > (rof-qta-ord - rof-qta-evasa)
+                         set errori to true
+                         display message "Riga con quantità insufficiente"
+                                   title tit-err
+                                   icon 2
+                      end-if
+                   end-if
+                end-if
+           end-evaluate.
+
+           if errori
+              perform CANCELLA-COLORE
+              move 4 to accept-control
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = PARAGRAFO-COPY
+BEGIN-TEXT
+           copy "utydata.cpy".
+           copy "color-custom.cpy".
+           copy "aggiorna-stato-ordf.cpy".
+           copy "imposte.cpy".
+           copy "addizionale-piombo.cpy".
+           copy "trova-parametro.cpy".
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = AGGIORNA-ORDINE-ORIGINALE
+BEGIN-TEXT
+           set tutto-ok  to true.
+           set RecLocked to false.
+           initialize geslock-linkage.
+           move "rordforn" to geslock-nome-file.
+
+           set tutto-ok to true.
+           move reva-chiave-ordf to rof-chiave.
+           read rordforn lock key rof-chiave 
+                invalid continue 
+           end-read.
+
+           perform until 1 = 2
+              if not RecLocked
+                 exit perform
+              end-if
+              set RecLocked to false
+              move 1 to geslock-v-riprova
+              move 1 to geslock-v-ignora
+              move 0 to geslock-v-termina
+              call   "geslock" using geslock-linkage
+              cancel "geslock"
+              evaluate true
+              when riprova 
+                   read rordforn lock key rof-chiave
+                        invalid continue 
+                   end-read
+              when ignora  exit perform
+              end-evaluate
+           end-perform.
+
+           if not RecLocked
+              perform STORNA-ORDINATO
+              subtract reva-qta from rof-qta-evasa
+
+              accept rof-data-ultima-modifica from century-date
+              accept rof-ora-ultima-modifica  from time
+              move user-codi to rof-utente-ultima-modifica
+              rewrite rof-rec invalid continue end-rewrite
+              unlock rordforn all records
+
+      *        move rof-chiave to sof-chiave
+      *        delete sordforn record invalid continue end-delete
+           end-if.
+
+           perform AGGIORNA-STATO-ORDF.
+
+
+      ***---
+       STORNA-ORDINATO.
+           |Adesso devo stornare l'ordinato
+           move rof-chiave-testa to tof-chiave.
+           read tordforn no lock invalid continue end-read.
+           move tof-causale      to link-causale.
+           set link-update       to true.
+           move rof-prg-chiave   to link-key.
+           move tof-mese-rif     to link-mese-rif.
+           move tof-chiave       to link-chiave-origine.
+
+           move user-codi to link-user of link-wprogmag.
+      *    Lo tolgo dal vecchio progressivo
+           move reva-qta       to link-valore.
+           set link-update-um     to true.
+           set link-update-peso   to false.
+           set link-update-valore to false.
+
+           |Se è scoperto (non ho ancora scritto)
+           if rof-qta-ord > rof-qta-evasa
+              if reva-qta > rof-qta-ord - rof-qta-evasa
+                 compute link-valore = rof-qta-ord - rof-qta-evasa
+              else
+                 move reva-qta to link-valore
+              end-if
+           end-if.
+
+           if link-valore > 0
+              move "0000000000000000"   to link-array
+              move 1 to multiplyer(3)
+              call   "wprogmag" using link-wprogmag
+              cancel "wprogmag"
+           end-if.
+
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = AGGIORNA-ORDINE-DESTINAZIONE
+BEGIN-TEXT
+      *    rimetto in linea il record dell'evasione che si 
+           move cror-reva-chiave         to reva-chiave
+
+           read reva no lock
+              invalid
+                 continue
+           end-read
+
+           if reva-chiave-ordf = zero
+              move ef-anno-buf     to reva-anno-ordf
+              move ef-numero-buf   to reva-numero-ordf
+              move ef-riga-buf     to reva-riga-ordf
+              move reva-chiave-ordf to rof-chiave
+              read rordforn no lock key rof-chiave                 
+                 invalid 
+                    continue            
+              end-read
+              perform VALORIZZA-IMPOSTE
+           end-if
+
+
+      *    valorizzo la nuova chiave di rordforn
+           move ef-anno-buf     to reva-anno-ordf
+           move ef-numero-buf   to reva-numero-ordf
+           move ef-riga-buf     to reva-riga-ordf
+
+           perform SCRIVI-RORDFORN
+
+           accept reva-data-modifica from century-date
+           accept reva-ora-modifica  from time
+           move user-codi to reva-utente-modifica
+           rewrite reva-rec 
+              invalid 
+                 continue 
+           end-rewrite
+
+           perform AGGIORNA-STATO-ORDF.
+
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = VALORIZZA-IMPOSTE
+BEGIN-TEXT
+           accept imp-data from century-date.
+
+           start timposte key <= imp-chiave
+                 invalid continue
+             not invalid
+                 read timposte previous
+           end-start.
+
+           move reva-articolo   to art-codice.
+           read articoli invalid continue end-read.
+
+           compute como-prz-unit =   rof-imponib-merce +
+                                     rof-imp-consumo   +
+                                     rof-imp-cou-cobat +
+                                     rof-add-piombo
+
+           move como-prz-unit   to como-prz-unitario
+
+           if reva-chiave-progmag not = rof-prg-chiave
+              perform RICALCOLO-IMPOSTE
+           end-if
+
+           add 0,0005 to como-prz-unit
+           add 0,005  to como-prz-unit
+           move como-prz-unit to reva-prz-unit
+           
+           add 0,0005 to rof-imp-consumo
+           add 0,005  to rof-imp-consumo
+           move rof-imp-consumo to reva-imp-cons
+           
+           add 0,0005 to rof-imp-cou-cobat
+           add 0,005  to rof-imp-cou-cobat
+           move rof-imp-cou-cobat to reva-coubat
+
+           add 0,0005 to rof-add-piombo
+           add 0,005  to rof-add-piombo
+           move rof-add-piombo to reva-add-pb
+           
+           compute reva-netto = reva-prz-unit -
+                                reva-imp-cons -
+                                reva-coubat   -
+                                reva-add-pb.
+
+      ***---
+       RICALCOLO-IMPOSTE.
+           move reva-chiave-progmag   to prg-chiave.
+           read progmag no lock
+                invalid move 0 to prg-peso-utf
+           end-read.
+           set TrattamentoGDO to true.
+           accept como-data-ordine from century-date.
+           move art-marca-prodotto to tpb-marca.
+           move como-data-ordine   to tpb-data.
+           move 0 to como-prm-cliente como-prm-destino.
+
+           if como-prz-unitario not = 0
+              perform CALCOLA-IMPOSTE
+              perform ADDIZIONALE-PIOMBO
+              |Se erano a zero significa che per qualche motivo 
+              |(listino o manuale) non vanno impostate perciò
+              |le lascio a zero 
+              if orig-imp-cons = 0
+                 move 0 to imposta-consumo
+              end-if
+              if orig-coubat = 0
+                 move 0 to imposta-cou imposta-cobat
+              end-if
+              if orig-add-pb = 0
+                 move 0 to add-piombo
+              end-if
+              move imposta-consumo to rof-imp-consumo
+              add imposta-cou      to imposta-cobat giving imposta-cou
+              move imposta-cou     to rof-imp-cou-cobat
+              move add-piombo      to rof-add-piombo
+              if como-prz-unitario < ( imposta-cou     + 
+                                       imposta-consumo + 
+                                       add-piombo )
+                 compute como-prz-unitario = 
+                         imposta-cou       +
+                         imposta-consumo   +
+                         add-piombo
+                 move 0 to como-imposta
+              else
+                 compute como-imposta = como-prz-unitario - 
+                                        imposta-cou       -
+                                        imposta-consumo   -
+                                        add-piombo
+              end-if
+              move como-imposta to rof-imponib-merce
+           else
+              move 0 to imposta-consumo rof-imp-consumo
+                        imposta-cou     rof-imp-cou-cobat
+                        add-piombo      rof-add-piombo rof-imponib-merce
+           end-if.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = bprepb-Ev-Before-Program
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-blockpgm-1 **>>
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-anno-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+           move 1 to e-cerca.
+           modify tool-cerca, enabled = e-cerca.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-anno-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+           move 0 to e-cerca.
+           modify tool-cerca, enabled = e-cerca.
+           perform CONTROLLO.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-num-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+      *     move 1 to e-cerca.
+      *     modify tool-cerca, enabled = e-cerca.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-num-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+      *     move 0 to e-cerca.
+      *     modify tool-cerca, enabled = e-cerca.
+           perform CONTROLLO.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = TOOL-CERCA-LinkTo
+BEGIN-TEXT
+           inquire tool-cerca, enabled in e-cerca.
+           if e-cerca = 1 perform CERCA end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = PB-ESEGUI-BeforeProcedure
+BEGIN-TEXT
+           modify PB-ESEGUI, bitmap-number 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = PB-ESEGUI-AfterProcedure
+BEGIN-TEXT
+           modify PB-ESEGUI, bitmap-number 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = PB-ESEGUI-LinkTo
+BEGIN-TEXT
+           set controllo-finale to true
+           perform varying control-id from 78-ID-ef-anno by 1
+                     until control-id > 78-ID-ef-riga
+              perform CONTROLLO
+              if errori
+                 exit perform
+              end-if
+           end-perform.
+           set controllo-finale to false
+
+           if tutto-ok
+              display message "Confermi il cambiamento di riferimento ordine?"
+                   title titolo
+                   type 2
+                   default mb-no
+                   giving scelta
+              if scelta = mb-yes
+                 perform CAMBIA-RIFERIMENTO
+                 move 27 to key-status
+              end-if
+           end-if.
+
+
+           perform CANCELLA-COLORE.
+           modify pb-esegui, bitmap-number = 1.
+           modify pb-cancel, bitmap-number = 1.
+
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Pb-2-BeforeProcedure
+BEGIN-TEXT
+           modify pb-cancel, bitmap-number 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Pb-2-AfterProcedure
+BEGIN-TEXT
+           modify pb-cancel, bitmap-number 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = accetordforn-Ev-After-Program
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-blockpgm-1 **>>
+           set environment "KEYSTROKE" to "DATA=46   46".
+           set environment "KEYSTROKE" to "DATA=44   44".
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-dest-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+           move 1 to e-cerca.
+           modify tool-cerca, enabled = e-cerca.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-dest-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+           move 0 to e-cerca.
+           modify tool-cerca, enabled = e-cerca.
+           perform CONTROLLO.
+
+END-TEXT
+END-DATA
+
+@}}
+
+[KEY_STATUS_FIELD_FORMAT]
+PIC=9(5)
+USAGE=[None]
+
+[KEYSTATUS_CONTENT:KS1]
+CONDITION=Enter-Pushed
+VALUE=13
+
+[KEYSTATUS_CONTENT:KS2]
+CONDITION=Exit-Pushed
+VALUE=27
+
+[KEYSTATUS_CONTENT:KS3]
+CONDITION=Message-Received
+VALUE=95
+
+[KEYSTATUS_CONTENT:KS4]
+CONDITION=Event-Occurred
+VALUE=96
+
+[KEYSTATUS_CONTENT:KS5]
+CONDITION=Screen-No-Input-Field
+VALUE=97
+
+[KEYSTATUS_CONTENT:KS6]
+CONDITION=Screen-Time-Out
+VALUE=99
+
+[COBOLAID_DATASET_INFO]
+COUNT=1
+NAME_0=DataSet1
+
+[DRAW_DOCUMENT_INDEX]
+OBJ_NAME_0=8001
+OBJ_ID_0=230635550
+
+[MULTIPLE_KEY_0]
+COUNT=1
+KEY_0=tof-chiave
+
+[DRAW_DOCUMENT_8001_230635550]
+OBJ_NAME=8001
+OBJ_ID=230635550
+TYPE=2
+VERSION=
+DOC_SIZE_X=5100
+DOC_SIZE_Y=5160
+PAGE_LEFT=150
+PAGE_TOP=150
+PAGE_RIGHT=1850
+PAGE_BOTTOM=2730
+MARGIN_LEFT=150
+MARGIN_TOP=150
+MARGIN_RIGHT=150
+MARGIN_BOTTOM=150
+PROP_DOCU_TYPE=ø
+PROP_DOCU_TYPE2=ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+PROP_DOCU_NAME=DataSet - DataSet1[cambia-rif-ord-reva(GESLUX)]
+PROP_DOCU_OWNER=Person A
+PROP_DOCU_CDATE=02/25/04
+PROP_DOCU_MODIFIER=Person B
+PROP_DOCU_MDATE=02/25/04
+PROP_DOCU_DESCR=Caseaid DocuCaseaid Document
+PROP_DOCU_HEADER=Caseaid Document
+PROP_DOCU_FOOTER=Page # 
+PROP_DOCU_DIM_H=2
+PROP_DOCU_DIM_W=3
+PROP_DOCU_LOC_H=1
+PROP_DOCU_LOC_W=1
+PROP_DOCU_EDGE_T=150
+PROP_DOCU_EDGE_B=150
+PROP_DOCU_EDGE_L=150
+PROP_DOCU_EDGE_R=150
+PROP_DOCU_ZOOM=75
+PROP_DOCU_SIZE_TYPE=0
+PROP_DOCU_SIZE_PAPER=1
+PROP_DOCU_SIZE_H=2580
+PROP_DOCU_SIZE_W=1700
+PROP_DOCU_RULER_EBL=0
+PROP_DOCU_GRID_EBL=0
+PROP_DOCU_GRID=20
+PROP_DOCU_ALIGN=0
+REL_SYM_SIZE=100
+REL_SYM_INFO_L=16
+REL_SYM_INFO_X0=2301
+REL_SYM_INFO_Y0=824151404
+REL_SYM_INFO_X1=2301
+REL_SYM_INFO_Y1=2069691792
+REL_SYM_INFO_X2=2301
+REL_SYM_INFO_Y2=2135680422
+REL_SYM_INFO_X3=2301
+REL_SYM_INFO_Y3=947049683
+REL_SYM_INFO_X4=2301
+REL_SYM_INFO_Y4=1017336768
+REL_SYM_INFO_X5=2301
+REL_SYM_INFO_Y5=1626275958
+REL_SYM_INFO_X6=2301
+REL_SYM_INFO_Y6=1021013318
+REL_SYM_INFO_X7=2301
+REL_SYM_INFO_Y7=1059863322
+REL_SYM_INFO_X8=2301
+REL_SYM_INFO_Y8=1273738903
+REL_SYM_INFO_X9=2301
+REL_SYM_INFO_Y9=1128553632
+REL_SYM_INFO_X10=2301
+REL_SYM_INFO_Y10=494414036
+REL_SYM_INFO_X11=2301
+REL_SYM_INFO_Y11=563112796
+REL_SYM_INFO_X12=2301
+REL_SYM_INFO_Y12=1584620146
+REL_SYM_INFO_X13=2301
+REL_SYM_INFO_Y13=1946946845
+REL_SYM_INFO_X14=2301
+REL_SYM_INFO_Y14=461712971
+REL_SYM_INFO_X15=2301
+REL_SYM_INFO_Y15=975242292
+
+[DRAW_BASESYMBOL_2301_824151404]
+OBJ_NAME=2301
+OBJ_ID=824151404
+KIND=1
+{{@LABEL_2301_824151404
+clienti
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=950
+TOP=347
+RIGHT=1350
+BOTTOM=569
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_2069691792]
+OBJ_NAME=2301
+OBJ_ID=2069691792
+KIND=1
+{{@LABEL_2301_2069691792
+tordforn
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=16
+TOP=51
+RIGHT=416
+BOTTOM=273
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_2135680422]
+OBJ_NAME=2301
+OBJ_ID=2135680422
+KIND=1
+{{@LABEL_2301_2135680422
+rordforn
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=485
+TOP=58
+RIGHT=885
+BOTTOM=280
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_947049683]
+OBJ_NAME=2301
+OBJ_ID=947049683
+KIND=1
+{{@LABEL_2301_947049683
+reva
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=16
+TOP=357
+RIGHT=416
+BOTTOM=579
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1017336768]
+OBJ_NAME=2301
+OBJ_ID=1017336768
+KIND=1
+{{@LABEL_2301_1017336768
+teva
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=536
+TOP=646
+RIGHT=936
+BOTTOM=868
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1626275958]
+OBJ_NAME=2301
+OBJ_ID=1626275958
+KIND=1
+{{@LABEL_2301_1626275958
+progmag
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1076
+TOP=71
+RIGHT=1476
+BOTTOM=293
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1021013318]
+OBJ_NAME=2301
+OBJ_ID=1021013318
+KIND=1
+{{@LABEL_2301_1021013318
+tcaumag
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1630
+TOP=637
+RIGHT=2030
+BOTTOM=859
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1059863322]
+OBJ_NAME=2301
+OBJ_ID=1059863322
+KIND=1
+{{@LABEL_2301_1059863322
+sordforn
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=4295
+TOP=1082
+RIGHT=4695
+BOTTOM=1304
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1273738903]
+OBJ_NAME=2301
+OBJ_ID=1273738903
+KIND=1
+{{@LABEL_2301_1273738903
+tparamge
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=105
+TOP=1374
+RIGHT=505
+BOTTOM=1596
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1128553632]
+OBJ_NAME=2301
+OBJ_ID=1128553632
+KIND=1
+{{@LABEL_2301_1128553632
+articoli
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1182
+TOP=1082
+RIGHT=1582
+BOTTOM=1304
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_494414036]
+OBJ_NAME=2301
+OBJ_ID=494414036
+KIND=1
+{{@LABEL_2301_494414036
+timposte
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1748
+TOP=1082
+RIGHT=2148
+BOTTOM=1304
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_563112796]
+OBJ_NAME=2301
+OBJ_ID=563112796
+KIND=1
+{{@LABEL_2301_563112796
+tmarche
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=2031
+TOP=1598
+RIGHT=2431
+BOTTOM=1820
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1584620146]
+OBJ_NAME=2301
+OBJ_ID=1584620146
+KIND=1
+{{@LABEL_2301_1584620146
+tpiombo
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1182
+TOP=1598
+RIGHT=1582
+BOTTOM=1820
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1946946845]
+OBJ_NAME=2301
+OBJ_ID=1946946845
+KIND=1
+{{@LABEL_2301_1946946845
+paramSHI
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=333
+TOP=2114
+RIGHT=733
+BOTTOM=2336
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_461712971]
+OBJ_NAME=2301
+OBJ_ID=461712971
+KIND=1
+{{@LABEL_2301_461712971
+paramGET
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=3446
+TOP=566
+RIGHT=3846
+BOTTOM=788
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_975242292]
+OBJ_NAME=2301
+OBJ_ID=975242292
+KIND=1
+{{@LABEL_2301_975242292
+param
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=2314
+TOP=50
+RIGHT=2714
+BOTTOM=272
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DMD_DOCUMENT_0_230635550]
+OBJ_NAME=0
+OBJ_ID=230635550
+FILE_TITLE_TYPE=8136
+FILE_SHOW_ITEM=0
+FILE_SHOW_KEY=0
+FILE_SHOW_PIC=0
+FILE_SHOW_HEAD=0
+FILE_SHOW_LEVEL=0
+FILE_SHOW_TREE=0
+FILE_SHOW_CLPS=0
+FILE_SHOW_BMP=0
+FILE_SHOW_LINE=0
+FILE_SHOW_MINIZE=0
+
+[DMD_FILE_0_824151404]
+OBJ_NAME=0
+OBJ_ID=824151404
+REL_M_OBJ_ID=0
+ENTITY=clienti
+LINK=0
+LINK_NAME=
+DSN_SIZE=53
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=cli-chiave OF clienti
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_824151404
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_2069691792]
+OBJ_NAME=0
+OBJ_ID=2069691792
+REL_M_OBJ_ID=0
+ENTITY=tordforn
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=2
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tof-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_2069691792
+
+@}}
+DSN_INFO_PRIMARY=1
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_2135680422]
+OBJ_NAME=0
+OBJ_ID=2135680422
+REL_M_OBJ_ID=0
+ENTITY=rordforn
+LINK=0
+LINK_NAME=
+DSN_SIZE=54
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=2
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=rof-chiave OF rordforn
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_2135680422
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_947049683]
+OBJ_NAME=0
+OBJ_ID=947049683
+REL_M_OBJ_ID=0
+ENTITY=reva
+LINK=0
+LINK_NAME=
+DSN_SIZE=43
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=2
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=reva-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_947049683
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1017336768]
+OBJ_NAME=0
+OBJ_ID=1017336768
+REL_M_OBJ_ID=0
+ENTITY=teva
+LINK=0
+LINK_NAME=
+DSN_SIZE=51
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=2
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=teva-chiave OF teva
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1017336768
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1626275958]
+OBJ_NAME=0
+OBJ_ID=1626275958
+REL_M_OBJ_ID=0
+ENTITY=progmag
+LINK=0
+LINK_NAME=
+DSN_SIZE=53
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=prg-chiave OF progmag
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1626275958
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1021013318]
+OBJ_NAME=0
+OBJ_ID=1021013318
+REL_M_OBJ_ID=0
+ENTITY=tcaumag
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tca-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1021013318
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1059863322]
+OBJ_NAME=0
+OBJ_ID=1059863322
+REL_M_OBJ_ID=0
+ENTITY=sordforn
+LINK=0
+LINK_NAME=
+DSN_SIZE=54
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=2
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=sof-chiave OF sordforn
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1059863322
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1273738903]
+OBJ_NAME=0
+OBJ_ID=1273738903
+REL_M_OBJ_ID=0
+ENTITY=tparamge
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tge-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1273738903
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1128553632]
+OBJ_NAME=0
+OBJ_ID=1128553632
+REL_M_OBJ_ID=0
+ENTITY=articoli
+LINK=0
+LINK_NAME=
+DSN_SIZE=54
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=art-chiave OF articoli
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1128553632
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_494414036]
+OBJ_NAME=0
+OBJ_ID=494414036
+REL_M_OBJ_ID=0
+ENTITY=timposte
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=imp-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_494414036
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_563112796]
+OBJ_NAME=0
+OBJ_ID=563112796
+REL_M_OBJ_ID=0
+ENTITY=tmarche
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=mar-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_563112796
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1584620146]
+OBJ_NAME=0
+OBJ_ID=1584620146
+REL_M_OBJ_ID=0
+ENTITY=tpiombo
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tpb-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1584620146
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1946946845]
+OBJ_NAME=0
+OBJ_ID=1946946845
+REL_M_OBJ_ID=0
+ENTITY=paramSHI
+LINK=0
+LINK_NAME=
+DSN_SIZE=54
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=shi-chiave OF PARAMSHI
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1946946845
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_461712971]
+OBJ_NAME=0
+OBJ_ID=461712971
+REL_M_OBJ_ID=0
+ENTITY=paramGET
+LINK=0
+LINK_NAME=
+DSN_SIZE=54
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=get-chiave OF paramGET
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_461712971
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_975242292]
+OBJ_NAME=0
+OBJ_ID=975242292
+REL_M_OBJ_ID=0
+ENTITY=param
+LINK=0
+LINK_NAME=
+DSN_SIZE=51
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=prm-chiave OF param
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_975242292
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=

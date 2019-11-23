@@ -1,0 +1,10 @@
+      *(( XFD FILE = tmp-eva-riep ))
+       FD  tmp-eva-riep.
+       01 ter-rec.
+           05 ter-chiave.
+               10 ter-mag          PIC  x(3).
+               10 ter-art          PIC  9(6).
+           05 ter-dati.
+               10 ter-colli        PIC  9(10).
+               10 ter-quintali     PIC  9(10)v99999.
+               10 ter-codici       PIC  9(5).

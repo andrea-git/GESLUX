@@ -1,0 +1,30 @@
+      *(( XFD FILE = andamento ))
+      *
+      *
+      *
+       FD  andamento.
+       01 and-rec.
+           05 and-chiave.
+               10 and-cliente      PIC  9(5).
+               10 and-prg-destino  PIC  9(5).
+               10 and-articolo     PIC  9(6).
+           05 and-dati.
+               10 and-tipocli      PIC  x(2).
+               10 and-gdo          PIC  x(5).
+               10 and-marca        PIC  9(4).
+               10 and-cli-ragsoc-1 PIC  x(50).
+               10 and-art-descrizione          PIC  x(50).
+               10 and-art-um       PIC  xx.
+               10 and-art-prz-acq  PIC  9(12)v99.
+      *Il primo contiene il valore del periodo passato, il secondo il periodo dell'anno precedente, il terzo il periodo di rotta
+               10 and-tot-imponibile           PIC  s9(12)v99
+                          OCCURS 3 TIMES.
+               10 and-qta          PIC  s9(10)
+                          OCCURS 3 TIMES.
+           05 and-dati-comuni.
+               10 and-num-vuoto-1  PIC  9(15).
+               10 and-num-vuoto-2  PIC  9(15).
+               10 and-num-vuoto-3  PIC  9(15).
+               10 and-alfa-vuoto-1 PIC  X(20).
+               10 and-alfa-vuoto-2 PIC  X(20).
+               10 and-alfa-vuoto-3 PIC  X(20).

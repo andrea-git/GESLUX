@@ -1,0 +1,84 @@
+      *
+      *
+       FD  vettel.
+       01 vtt-rec.
+           05 vtt-chiave.
+               10 vtt-codice       PIC  9(5).
+           05 vtt-dati.
+               10 vtt-dati-pers.
+                   15 vtt-siglia-pers  PIC  x(15).
+                   15 vtt-path-environment         PIC  x(256).
+                   15 vtt-path-environment-client  PIC  x(256).
+                   15 vtt-path-suff-tmp            PIC  x(15).
+                   15 vtt-path-suff-log            PIC  x(15).
+                   15 vtt-path-suff-orig           PIC  x(15).
+                   15 vtt-path-suff-dest           PIC  x(15).
+                   15 vtt-path-suff-err            PIC  x(15).
+                   15 vtt-path-suff-invio          PIC  x(15).
+                   15 vtt-path-orig-rete           PIC  x(256).
+                   15 vtt-nome-flusso-imp          PIC  x(40).
+                   15 vtt-script-ricezione         PIC  x(256).
+                   15 vtt-tipo-invio   PIC  9.
+                       88 vtt-invio-script VALUE IS 0    WHEN SET TO 
+           FALSE  1. 
+                       88 vtt-invio-mail VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+                   15 vtt-script-invio PIC  x(256).
+                   15 filler           PIC  x(200).
+               10 vtt-dati-import.
+                   20 vtt-import-tipo  PIC  9.
+                       88 vtt-import-txt VALUE IS 0    WHEN SET TO 
+           FALSE  1. 
+                       88 vtt-import-csv VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+                   20 vtt-delim-csv    PIC  x.
+      *delimitatore dei campi alfanumerici, 
+      *in genere " all'inizio e alla fine del campo
+                   20 vtt-delim-x-csv  PIC  x.
+                   20 vtt-riga-int     PIC  9.
+                       88 vtt-si-riga-int VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+                   20 vtt-import-includi           PIC  x(10).
+                   20 vtt-import-includi-da        PIC  9(5).
+                   20 vtt-import-includi-per       PIC  9(5).
+                   20 vtt-import-escludi           PIC  x(10).
+                   20 vtt-import-escludi-da        PIC  9(5).
+                   20 vtt-import-escludi-per       PIC  9(5).
+                   20 vtt-rif-lubex    PIC  9(5).
+                   20 vtt-rif-lubex-per            PIC  9(5).
+                   20 vtt-anno-rif-lubex           PIC  9(5).
+                   20 vtt-anno-rif-lubex-per       PIC  9(5).
+                   20 vtt-data-cons    PIC  9(5).
+                   20 vtt-data-cons-per            PIC  9(5).
+                   20 vtt-data-cons-tipo           PIC  x.
+                   20 vtt-ora-cons     PIC  9(5).
+                   20 vtt-ora-cons-per PIC  9(5).
+                   20 vtt-ora-cons-tipo            PIC  x.
+                   20 vtt-esito        PIC  9(5).
+                   20 vtt-esito-per    PIC  9(5).
+                   20 vtt-data-avviso  PIC  9(5).
+      *(( XFD NAME = vtt-data-avviso-gg ))
+                   20 vtt-data-avviso-per          PIC  9(5).
+                   20 vtt-data-avviso-tipo         PIC  x.
+                   20 vtt-data-ap-giac PIC  9(5).
+      *(( XFD NAME = vtt-data-ap-giac-g ))
+                   20 vtt-data-ap-giac-per         PIC  9(5).
+                   20 vtt-data-ap-giac-tipo        PIC  x.
+                   20 filler           PIC  x(200).
+               10 vtt-dati-comuni.
+                   15 vtt-data-creazione           PIC  9(8).
+                   15 vtt-ora-creazione            PIC  9(8).
+                   15 vtt-utente-creazione         PIC  X(10).
+                   15 vtt-data-ultima-modifica     PIC  9(8).
+                   15 vtt-ora-ultima-modifica      PIC  9(8).
+                   15 vtt-utente-ultima-modifica   PIC  X(10).
+               10 vtt-vuoti.
+                   15 vtt-evasione     PIC  9.
+                       88 vtt-evasione-si VALUE IS 1. 
+                       88 vtt-evasione-no VALUE IS 0. 
+                   15 vtt-num-vuoto-1  PIC  9(17).
+                   15 vtt-num-vuoto-2  PIC  9(18).
+                   15 vtt-num-vuoto-3  PIC  9(18).
+                   15 vtt-alfa-vuoto-1 PIC  X(20).
+                   15 vtt-alfa-vuoto-2 PIC  X(20).
+                   15 vtt-alfa-vuoto-3 PIC  X(20).

@@ -1,0 +1,16 @@
+      *(( XFD FILE = spregd ))
+       FD  spregd.
+       01 spre-rec.
+           05 spre-chiave.
+               10 spre-gdo-codice  PIC  x(5).
+               10 spre-cliente     PIC  9(5).
+           05 spre-dati.
+               10 spre-tipologia   PIC  x(30).
+               10 spre-gdo-intestazione        PIC  x(50).
+               10 spre-cli-ragsoc  PIC  x(50).
+               10 spre-imponibile  PIC  s9(12)v99.
+               10 spre-add         PIC  s9(12)v99.
+               10 spre-cons        PIC  s9(12)v99.
+               10 spre-cou         PIC  s9(12)v99.
+               10 spre-utf         PIC  s9(12)v9999.
+               10 spre-pz-batt     PIC  s9(12).

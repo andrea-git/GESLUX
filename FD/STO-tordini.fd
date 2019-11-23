@@ -1,0 +1,118 @@
+      *(( XFD FILE = STO-tordini ))
+       FD  STO-tordini.
+       01 STO-tor-rec.
+           05 STO-tor-chiave.
+               10 STO-tor-anno     PIC  9(4).
+               10 STO-tor-numero   PIC  9(8).
+           05 STO-tor-dati.
+               10 STO-tor-causale  PIC  x(4).
+               10 STO-tor-cod-cli  PIC  9(5).
+               10 STO-tor-prg-destino          PIC  9(5).
+               10 STO-tor-num-ord-cli          PIC  X(10).
+               10 STO-tor-data-ordine          PIC  9(8).
+               10 STO-tor-data-passaggio-ordine            PIC  9(8).
+               10 STO-tor-cod-agente           PIC  9(5).
+               10 STO-tor-cod-pagamento        PIC  x(3).
+               10 STO-tor-cod-ese-iva          PIC  x(3).
+               10 STO-tor-spostam-ric-ago      PIC  X(1).
+                   88 STO-tor-si-ric-ago VALUE IS "S". 
+                   88 STO-tor-no-ric-ago VALUE IS "N". 
+               10 STO-tor-spostam-ric-dic      PIC  X(1).
+                   88 STO-tor-si-ric-dic VALUE IS "S". 
+                   88 STO-tor-no-ric-dic VALUE IS "N". 
+               10 STO-tor-vettore  PIC  9(5).
+               10 STO-tor-note1    PIC  X(19).
+               10 STO-tor-data-note1           PIC  9(8).
+               10 STO-tor-note2    PIC  X(30).
+               10 STO-tor-note3    PIC  X(30).
+               10 STO-tor-note4    PIC  X(30).
+               10 STO-tor-invio    PIC  x.
+                   88 STO-tor-invio-manuale VALUE IS "M". 
+                   88 STO-tor-invio-postel VALUE IS "P". 
+                   88 STO-tor-invio-edi VALUE IS "E". 
+               10 STO-tor-bolla.
+                   15 STO-tor-anno-bolla           PIC  9(4).
+                   15 STO-tor-num-bolla            PIC  9(8).
+                   15 STO-tor-data-bolla           PIC  9(8).
+                   15 STO-tor-bolla-prenotata      PIC  x.
+                       88 STO-tor-bolla-si-prenotata VALUE IS "S". 
+                       88 STO-tor-bolla-no-prenotata VALUE IS "N". 
+               10 STO-tor-fattura.
+                   15 STO-tor-anno-fattura         PIC  9(4).
+                   15 STO-tor-num-fattura          PIC  9(8).
+                   15 STO-tor-data-fattura         PIC  9(8).
+                   15 STO-tor-num-prenot           PIC  9(8).
+                   15 STO-tor-fatt-prenotata       PIC  x.
+                       88 STO-tor-fatt-si-prenotata VALUE IS "S". 
+                       88 STO-tor-fatt-no-prenotata VALUE IS "N". 
+               10 STO-tor-mod-caricamento      PIC  X(1).
+                   88 STO-tor-manuale VALUE IS "M". 
+                   88 STO-tor-guidata VALUE IS "G". 
+               10 STO-tor-agg-contab           PIC  x.
+                   88 STO-tor-si-agg-contab VALUE IS "S". 
+                   88 STO-tor-no-agg-contab VALUE IS "N". 
+               10 STO-tor-tipo     PIC  x.
+                   88 STO-tor-fattura-manuale VALUE IS "M". 
+                   88 STO-tor-ordine VALUE IS "O". 
+               10 STO-tor-note     PIC  X(500).
+      *(( XFD NAME = tor-contropartita_ ))
+               10 STO-tor-contropartita        PIC  X(8).
+               10 STO-tor-stato    PIC  X(1).
+                   88 STO-tor-attivo VALUE IS "A". 
+                   88 STO-tor-disattivo VALUE IS "D". 
+                   88 STO-tor-bloccato VALUE IS "B". 
+               10 STO-tor-dati-comuni.
+                   15 STO-tor-data-creazione       PIC  9(8).
+                   15 STO-tor-ora-creazione        PIC  9(8).
+                   15 STO-tor-utente-creazione     PIC  X(10).
+                   15 STO-tor-data-ultima-modifica PIC  9(8).
+                   15 STO-tor-ora-ultima-modifica  PIC  9(8).
+                   15 STO-tor-utente-ultima-modifica           PIC  
+           X(10).
+               10 STO-tor-vuoti.
+                   15 STO-tor-data-contab          PIC  9(8).
+                   15 STO-tor-promo    PIC  9.
+                       88 STO-tor-si-promo VALUE IS 1. 
+                       88 STO-tor-no-promo VALUE IS 0. 
+                   15 STO-tor-gest-plus            PIC  9(5).
+                   15 STO-tor-ritira-in-lubex      PIC  9.
+                       88 STO-tor-ritira-si VALUE IS 1. 
+                       88 STO-tor-ritira-no VALUE IS 0. 
+                   15 STO-tor-taglio   PIC  9(6).
+                   15 STO-tor-flag-rec-prezzi      PIC  9.
+                       88 STO-tor-rec-prezzi VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+                   15 STO-tor-ordine-testa.
+                       20 STO-tor-anno-testa           PIC  9(4).
+                       20 STO-tor-num-testa            PIC  9(8).
+                   15 STO-tor-da-ordine            PIC  9.
+                       88 STO-tor-da-ordine-no VALUE IS 0. 
+                       88 STO-tor-da-ordine-si VALUE IS 1. 
+                   15 STO-tor-forn-reso            PIC  9(5).
+                   15 STO-tor-num-vuoto-3          PIC  9(5).
+                   15 STO-tor-esito-consegna       PIC  X(10).
+                   15 STO-tor-data-bolla-effettiva PIC  9(8).
+                   15 STO-tor-tipo-evasione        PIC  X(1).
+                       88 STO-tor-ev-singola VALUE IS "S". 
+                       88 STO-tor-ev-manuale VALUE IS "M". 
+                       88 STO-tor-ev-immediata VALUE IS "I". 
+                       88 STO-tor-ev-normale VALUE IS "N". 
+                       88 STO-tor-ev-auto-trad VALUE IS "T". 
+                       88 STO-tor-ev-auto-gdo VALUE IS "G". 
+                   15 STO-tor-da-inviare           PIC  X(1).
+                       88 STO-tor-da-inviare-si VALUE IS "S". 
+                       88 STO-tor-da-inviare-no VALUE IS "N" " "    
+           WHEN SET TO FALSE  " ". 
+                   15 STO-tor-ora-contab           PIC  9(8).
+                   15 STO-tor-fattura-from.
+                       20 STO-tor-fattura-from-data    PIC  9(8).
+                       20 STO-tor-fattura-from-numero  PIC  x(8).
+                   15 STO-tor-gdo      PIC  X(5).
+      *(( XFD NAME = tor-gdo_1 ))
+                   15 STO-tor-tipocli  PIC  X(2).
+      *(( XFD NAME = tor-gdo_1_1 ))
+                   15 STO-tor-note-bolla-1         PIC  X(500).
+      *(( XFD NAME = tor-gdo_1_1_1 ))
+                   15 STO-tor-note-bolla-2         PIC  X(500).
+      *(( XFD NAME = tor-gdo_1_1_2 ))
+                   15 FILLER           PIC  X(2000).

@@ -1,0 +1,19 @@
+      *(( XFD FILE = tmp-fatturati ))
+       FD  tmp-fatturati.
+       01 tmp-f-rec.
+           05 tmp-f-chiave.
+               10 tmp-f-id         PIC  9(5).
+           05 tmp-f-dati.
+               10 tmp-f-data       PIC  9(8).
+               10 tmp-f-num        PIC  9(8).
+               10 tmp-f-uni        PIC  9(6)v99.
+      *(( XFD NAME = tmp-f-prezzo_3 ))
+               10 tmp-f-cons       PIC  9(6)v99.
+      *(( XFD NAME = tmp-f-prezzo_3_1 ))
+               10 tmp-f-cou        PIC  9(6)v99.
+      *(( XFD NAME = tmp-f-prezzo_2 ))
+               10 tmp-f-add        PIC  9(6)v99.
+      *(( XFD NAME = tmp-f-prezzo_1 ))
+               10 tmp-f-imp        PIC  9(6)v99.
+      *(( XFD NAME = tmp-f-prezzo_1_1 ))
+               10 tmp-f-iva        PIC  x(3).

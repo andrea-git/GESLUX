@@ -1,0 +1,16 @@
+      *
+       01 inventario-linkage.
+           03 inv-mag-c        PIC  x(3).
+           03 inv-mag-s        PIC  x(3).
+           03 inv-cau-c        PIC  x(4).
+           03 inv-cau-s        PIC  x(4).
+           03 inv-data         PIC  9(8).
+           03 inv-file1        PIC  x(256).
+           03 inv-mag-c3       PIC  x(3).
+           03 inv-mag-s3       PIC  x(3).
+           03 inv-file2        PIC  x(256).
+           03 inv-chiamata     PIC  9.
+           03 inv-user         PIC  x(20).
+           03 inv-mag-azz      pic  x(3).
+           03 inv-handle
+                      USAGE IS HANDLE OF WINDOW.

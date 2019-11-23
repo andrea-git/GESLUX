@@ -1,0 +1,20 @@
+       FD  lockfile.
+       01 lck-rec.
+           05 lck-chiave.
+               10 lck-nome-pgm     PIC  x(25).
+           05 lck-dati.
+               10 lck-operazione   PIC  x.
+               10 lck-dati-comuni.
+                   15 lck-data-creazione           PIC  9(8).
+                   15 lck-ora-creazione            PIC  9(8).
+                   15 lck-utente-creazione         PIC  X(10).
+                   15 lck-data-ultima-modifica     PIC  9(8).
+                   15 lck-ora-ultima-modifica      PIC  9(8).
+                   15 lck-utente-ultima-modifica   PIC  X(10).
+               10 lck-vuoti.
+                   15 lck-num-vuoto-1  PIC  9(15).
+                   15 lck-num-vuoto-2  PIC  9(15).
+                   15 lck-num-vuoto-3  PIC  9(15).
+                   15 lck-alfa-vuoto-1 PIC  X(20).
+                   15 lck-alfa-vuoto-2 PIC  X(20).
+                   15 lck-alfa-vuoto-3 PIC  X(20).

@@ -1,0 +1,38 @@
+      *(( XFD FILE = STO-teva ))
+       FD  STO-teva.
+       01 STO-teva-rec.
+           05 STO-teva-chiave.
+               10 STO-teva-anno    PIC  9(4).
+               10 STO-teva-numero  PIC  9(8).
+           05 STO-teva-dati.
+               10 STO-teva-data    PIC  9(8).
+      *Per le relazioni con zoom-gt. 
+      *Solo per questo. "F" FISSO.
+               10 STO-teva-tipo-F  PIC  x.
+               10 STO-teva-cod-forn            PIC  9(5).
+               10 STO-teva-mag     PIC  x(3).
+      *Valoirzzato quando chiuso
+               10 STO-teva-k-mov.
+                   15 STO-teva-anno-movim          PIC  9(4).
+                   15 STO-teva-num-movim           PIC  9(8).
+               10 STO-teva-stato   PIC  x.
+                   88 STO-teva-aperta VALUE IS "A". 
+                   88 STO-teva-chiusa VALUE IS "C". 
+               10 STO-teva-dati-comuni.
+                   15 STO-teva-data-creazione      PIC  9(8).
+                   15 STO-teva-ora-creazione       PIC  9(8).
+                   15 STO-teva-utente-creazione    PIC  X(10).
+                   15 STO-teva-data-ultima-modifica            PIC  
+           9(8).
+                   15 STO-teva-ora-ultima-modifica PIC  9(8).
+                   15 STO-teva-utente-ultima-modifica          PIC  
+           X(10).
+               10 STO-teva-vuoti.
+                   15 STO-teva-data-ch-man         PIC  9(8).
+                   15 STO-teva-num-vuoto-1         PIC  9(7).
+                   15 STO-teva-num-vuoto-2         PIC  9(15).
+                   15 STO-teva-num-vuoto-3         PIC  9(15).
+                   15 STO-teva-utente-ch-man       PIC  x(10).
+                   15 STO-teva-alfa-vuoto-1        PIC  x(10).
+                   15 STO-teva-alfa-vuoto-2        PIC  x(20).
+                   15 STO-teva-alfa-vuoto-3        PIC  x(20).

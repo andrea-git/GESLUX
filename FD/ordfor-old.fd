@@ -1,0 +1,43 @@
+       FD  ordfor-old.
+       01 ord-rec-old.
+           05 ord-chiave-old.
+               10 ord-mag-old      PIC  x(3).
+               10 ord-articolo-old PIC  9(6).
+           05 ord-dati-old.
+               10 ord-art-descrizione-old      PIC  x(50).
+               10 ord-marca-old    PIC  9(4).
+               10 ord-qta-imb-old  PIC  9(4).
+               10 ord-scost-old    PIC  9(3)v99.
+               10 ord-lead-time-old            PIC  9(3).
+               10 ord-giac-old     PIC  s9(8).
+               10 ord-scorta-old   PIC  s9(8).
+               10 ord-prz-acq-old  PIC  9(9)v99.
+               10 ord-ultimo-costo-old         PIC  S9(9)V9(2).
+               10 ord-prz-medio-old            PIC  S9(9)V9(2).
+               10 ord-qta-vendita-anno-corrente-old.
+                   15 ord-qta-corr-m-old           PIC  s9(9)
+                              OCCURS 12 TIMES.
+               10 ord-qta-vendita-anno-passsato-old.
+                   15 ord-qta-past-m-old           PIC  s9(9)
+                              OCCURS 12 TIMES.
+               10 ord-media-vend-old           PIC  S9(9)V9(2).
+               10 ord-consegna-old PIC  S9(9)V9(2).
+               10 ord-riordino-old PIC  S9(9)V9(2).
+               10 ord-fabbisogno-prox-6-mesi-old.
+                   15 ord-fabb-qta-old PIC  S9(9)
+                              OCCURS 6 TIMES.
+               10 ord-dati-comuni-old.
+                   15 ord-data-creazione-old       PIC  9(8).
+                   15 ord-ora-creazione-old        PIC  9(8).
+                   15 ord-utente-creazione-old     PIC  X(10).
+                   15 ord-data-ultima-modifica-old PIC  9(8).
+                   15 ord-ora-ultima-modifica-old  PIC  9(8).
+                   15 ord-utente-ultima-modifica-old           PIC  
+           X(10).
+               10 ord-vuoti-old.
+                   15 ord-num-vuoto-1-old          PIC  9(15).
+                   15 ord-num-vuoto-2-old          PIC  9(15).
+                   15 ord-num-vuoto-3-old          PIC  9(15).
+                   15 ord-alfa-vuoto-1-old         PIC  X(20).
+                   15 ord-alfa-vuoto-2-old         PIC  X(20).
+                   15 ord-alfa-vuoto-3-old         PIC  X(20).

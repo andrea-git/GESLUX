@@ -1,0 +1,42 @@
+      *
+       01  stsolleciti-linkage.
+           05 stsolleciti-path-tmp     pic x(256).
+      
+           05 stsolleciti-filtri-p1.
+              10 stsolleciti-dt-da    pic 99/99/9999.
+              10 stsolleciti-dt-a     pic 99/99/9999.
+              10 stsolleciti-cli      pic 9(5).
+              10 stsolleciti-dest     pic 9(5).
+              10 stsolleciti-age      pic 9(5).
+              10 stsolleciti-gdo      pic x(5).
+              10 stsolleciti-art      pic 9(6).
+           05 stsolleciti-filtri-p2.
+              10 stsolleciti-num      pic 9(8).
+              10 stsolleciti-clides   pic x(40).
+              10 stsolleciti-loca     pic x(40).
+              10 stsolleciti-numord   pic x(10).
+              10 stsolleciti-data     pic x(10).
+              10 stsolleciti-stato    pic x(10).
+              10 stsolleciti-num-e    pic z(8).
+              10 stsolleciti-data-e   pic x(10).
+              10 stsolleciti-num-b    pic z(8).
+              10 stsolleciti-data-b   pic x(10).
+              10 stsolleciti-num-f    pic z(8).
+              10 stsolleciti-data-f   pic x(10).
+              10 stsolleciti-vet      pic x(3).
+              10 stsolleciti-esito    pic x(20).
+           05 stsolleciti-filtri-p3.
+              10 stsolleciti-promo       pic x(100).
+              10 stsolleciti-reg         PIC 9.
+              10 stsolleciti-il          PIC 9.
+              10 stsolleciti-sp          PIC 9.
+              10 stsolleciti-st          PIC 9.
+              10 stsolleciti-chiuso      PIC 9.
+              10                         pic 9.
+                 88 stsolleciti-si-f-art value 1 false zero.
+              10 stsolleciti-articoli.
+                 15 stsolleciti-el-articolo PIC 9(6) OCCURS 50000 TIMES
+                                            INDEXED  st-idx-art.
+
+
+

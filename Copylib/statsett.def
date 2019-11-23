@@ -1,0 +1,272 @@
+      * FILE STATUS
+       77  status-lineseq             pic xx.
+       77  status-statsett            pic xx.
+       77  status-tmarche             pic xx.
+       77  status-ttipocli            pic xx.
+
+      * VARIABILI
+       77  tot-marche                 pic 99999.
+       77  save-riga                  pic x(900).
+       77  como-data                  pic 9(8).
+       77  como-ora                   pic 9(8).
+       77  wstampa                    pic x(256).
+       77  SaveMese                   pic 9(2) value 0.
+       77  SaveTipo                   pic x(2) value spaces.
+       77  SaveMarca                  pic 9(4) value 0.
+       77  tot-resa                   pic s9(12)v99.
+LUBEXX 77  margine-corr               pic s9(12)v99.
+LUBEXX 77  margine-prec               pic s9(12)v99. 
+       77  como-valore                pic s9(12)v99.
+       77  tot-mese-resa-1            pic s9(12)v99.
+       77  tot-mese-fatt-1            pic s9(12)v99.
+       77  tot-mese-qli-1             pic s9(12)v99.
+       77  tot-mese-marg-1            pic s9(12)v99.
+       77  tot-mese-resa-2            pic s9(12)v99.
+       77  tot-mese-fatt-2            pic s9(12)v99.
+       77  tot-mese-qli-2             pic s9(12)v99.
+       77  tot-mese-marg-2            pic s9(12)v99.
+       77  tot-mese-resa-3            pic s9(12)v99.
+       77  tot-mese-fatt-3            pic s9(12)v99.
+       77  tot-mese-qli-3             pic s9(12)v99.
+       77  tot-mese-marg-3            pic s9(12)v99.
+       77  tot-resa-1                 pic s9(12)v99.
+       77  tot-fatt-1                 pic s9(12)v99.
+       77  tot-qli-1                  pic s9(12)v99.
+       77  tot-marg-1                 pic s9(12)v99.
+       77  tot-resa-2                 pic s9(12)v99.
+       77  tot-fatt-2                 pic s9(12)v99.
+       77  tot-qli-2                  pic s9(12)v99.
+       77  tot-marg-2                 pic s9(12)v99.
+       77  tot-resa-3                 pic s9(12)v99.
+       77  tot-fatt-3                 pic s9(12)v99.
+       77  tot-qli-3                  pic s9(12)v99.
+       77  tot-marg-3                 pic s9(12)v99.
+       77  tot-periodo-resa-1         pic s9(12)v99.
+       77  tot-periodo-fatt-1         pic s9(12)v99.
+       77  tot-periodo-qli-1          pic s9(12)v99.
+       77  tot-periodo-marg-1         pic s9(12)v99.
+       77  tot-periodo-resa-2         pic s9(12)v99.
+       77  tot-periodo-fatt-2         pic s9(12)v99.
+       77  tot-periodo-qli-2          pic s9(12)v99.
+       77  tot-periodo-marg-2         pic s9(12)v99.
+       77  tot-periodo-resa-3         pic s9(12)v99.
+       77  tot-periodo-fatt-3         pic s9(12)v99.
+       77  tot-periodo-qli-3          pic s9(12)v99.
+       77  tot-periodo-marg-3         pic s9(12)v99.
+       77  max-righe                  pic 9(3).
+       77  num-max-righe-x            pic x(3).
+
+       01  marche-occurs              occurs 24000 indexed by idx.
+         05 codice-marca              pic 9(4).
+         05 codice-tipocli            pic xx.
+         05 codice-mese               pic 99.
+         05 el-tot-resa               pic s9(12)v99.
+
+      * FLAGS
+       01  controllo                  pic xx.
+         88 errori                    value "ER".
+         88 tutto-ok                  value "OK".
+
+       01  filler                     pic 9.
+         88 trovata-marca             value 1, false 0.
+
+       01  filler                     pic 9.
+         88 trovato                   value 1, false 0.
+
+       01  filler                     pic 9.
+         88 prima-volta               value 1, false 0.
+
+      * RIGHE PER LA STAMPA
+       01  riga-page.
+         05 filler                    pic x(1)  value spaces.
+         05 fil-ric                   pic x(15) value spaces.
+         05 st-data-rical             pic x(10) value spaces.
+         05 fil-fatt                  pic x(27) value spaces.
+         05 st-data-fatt              pic x(10) value spaces.
+         05 filler                    pic x(153).
+         05 filler                    pic x(4) value "Pag.".
+         05 filler                    pic x.
+         05 tit-page                  pic zz9.
+
+       01  riga-div-1.
+         05 filler                    pic x(224) value all "=".
+
+       01  riga-div-2.
+         05 filler                    pic x(224) value all "-".
+
+       01  riga-div-3.
+         05 filler                    pic x(224) value all "^".
+
+       01  titolo-1.
+         05 filler                    pic x(2).
+         05 filler                    pic x(7) 
+            value "CLIENTI".
+         05 filler                    pic x(3).
+         05 tit-tipologia             pic x(15).
+         05 filler                    pic x(2).
+         05 tit-tipo-stampa           pic x(23).
+         05 filler                    pic x(2).
+         05 filler                    pic x(13) value "ANNO CORRENTE".
+         05 filler                    pic x(23).
+         05 filler                    pic x(1)  value "|".
+         05 filler                    pic x(29).
+         05 filler                    pic x(15) value "ANNO PRECEDENTE".
+         05 filler                    pic x(22).
+         05 filler                    pic x(1)  value "|".
+         05 filler                    pic x(29).
+         05 filler                    pic x(11) value "SCOSTAMENTI".
+         05 filler                    pic x(18).
+         05 tit-data                  pic x(10).
+
+       01  titolo-2.
+         05 filler                    pic x(11) value "M A R C H E".
+         05 filler                    pic x(20).
+         05 filler                    pic x(4)  value "Q.li".
+         05 filler                    pic x(12).
+         05 filler                    pic x(7)  value "Mrg.Kg.".
+         05 filler                    pic x(8).
+         05 filler                    pic x(9)  value "Resa/Euro".
+         05 filler                    pic x(9).
+         05 filler                    pic x(9)  value "Fatt/Euro".
+         05 filler                    pic x(2)  value " |".
+         05 filler                    pic x(7).
+         05 filler                    pic x(4)  value "Q.li".
+         05 filler                    pic x(12).
+         05 filler                    pic x(7)  value "Mrg.Kg.".
+         05 filler                    pic x(8).
+         05 filler                    pic x(9)  value "Resa/Euro".
+         05 filler                    pic x(9).
+         05 filler                    pic x(9)  value "Fatt/Euro".
+         05 filler                    pic x(2)  value " |".
+         05 filler                    pic x(7).
+         05 filler                    pic x(4)  value "Q.li".
+         05 filler                    pic x(12).
+         05 filler                    pic x(7)  value "Mrg.Kg.".
+         05 filler                    pic x(8).
+         05 filler                    pic x(9)  value "Resa/Euro".
+         05 filler                    pic x(9).
+         05 filler                    pic x(9)  value "Fatt/Euro".
+
+       01  riga.
+         05 r-descr                   pic x(24).
+         05 filler                    pic x.
+         05 r-qli-1                   pic zzz.zz9,99-.
+         05 filler                    pic x.
+         05 r-mrg-kg-1                pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x.
+         05 r-resa-1                  pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x. 
+         05 r-fatt-1                  pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x value "|".
+         05 filler                    pic x.
+         05 r-qli-2                   pic zzz.zz9,99-.
+         05 filler                    pic x.
+         05 r-mrg-kg-2                pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x.
+         05 r-resa-2                  pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x. 
+         05 r-fatt-2                  pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x value "|".
+         05 filler                    pic x.
+         05 r-qli-3                   pic zzz.zz9,99-.
+         05 filler                    pic x.
+         05 r-mrg-kg-3                pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x.
+         05 r-resa-3                  pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x. 
+         05 r-fatt-3                  pic z.zzz.zzz.zz9,99-.
+
+       01  riga-tot-mese.
+         05 filler                    pic x(6) Value "TOTALI".
+         05 filler                    pic x.
+         05 tm-mese                   pic x(10).
+         05 filler                    pic x(8).
+         05 tm-qli-1                  pic zzz.zz9,99-.
+         05 filler                    pic x.
+         05 tm-mrg-kg-1               pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x.
+         05 tm-resa-1                 pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x. 
+         05 tm-fatt-1                 pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x value "|".
+         05 filler                    pic x.
+         05 tm-qli-2                  pic zzz.zz9,99-.
+         05 filler                    pic x.
+         05 tm-mrg-kg-2               pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x.
+         05 tm-resa-2                 pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x. 
+         05 tm-fatt-2                 pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x value "|".
+         05 filler                    pic x.
+         05 tm-qli-3                  pic zzz.zz9,99-.
+         05 filler                    pic x.
+         05 tm-mrg-kg-3               pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x.
+         05 tm-resa-3                 pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x. 
+         05 tm-fatt-3                 pic z.zzz.zzz.zz9,99-.
+
+       01  riga-tot-periodo.
+         05 filler                    pic x(14) Value "TOTALE PERIODO".
+         05 filler                    pic x(11).
+         05 tp-qli-1                  pic zzz.zz9,99-.
+         05 filler                    pic x.
+         05 tp-mrg-kg-1               pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x.
+         05 tp-resa-1                 pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x. 
+         05 tp-fatt-1                 pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x value "|".
+         05 filler                    pic x.
+         05 tp-qli-2                  pic zzz.zz9,99-.
+         05 filler                    pic x.
+         05 tp-mrg-kg-2               pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x.
+         05 tp-resa-2                 pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x. 
+         05 tp-fatt-2                 pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x value "|".
+         05 filler                    pic x.
+         05 tp-qli-3                  pic zzz.zz9,99-.
+         05 filler                    pic x.
+         05 tp-mrg-kg-3               pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x.
+         05 tp-resa-3                 pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x. 
+         05 tp-fatt-3                 pic z.zzz.zzz.zz9,99-.
+
+       01  riga-totali.
+         05 filler                    pic x(15) Value "TOTALE GENERALE".
+         05 filler                    pic x(10).
+         05 t-qli-1                   pic zzz.zz9,99-.
+         05 filler                    pic x.
+         05 t-mrg-kg-1                pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x.
+         05 t-resa-1                  pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x. 
+         05 t-fatt-1                  pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x value "|".
+         05 filler                    pic x.
+         05 t-qli-2                   pic zzz.zz9,99-.
+         05 filler                    pic x.
+         05 t-mrg-kg-2                pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x.
+         05 t-resa-2                  pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x. 
+         05 t-fatt-2                  pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x value "|".
+         05 filler                    pic x.
+         05 t-qli-3                   pic zzz.zz9,99-.
+         05 filler                    pic x.
+         05 t-mrg-kg-3                pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x.
+         05 t-resa-3                  pic z.zzz.zzz.zz9,99-.
+         05 filler                    pic x. 
+         05 t-fatt-3                  pic z.zzz.zzz.zz9,99-.
+
+       77  num-righe        pic 99 value 0.
+       77  diff-righe       pic 99 value 0.
+       77  n-vuote          pic 99 value 0.
+       77  sav-riga         pic x(900).
+       77  num-page         pic 9(3).

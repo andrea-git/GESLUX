@@ -1,0 +1,58 @@
+      *(( XFD FILE = ABI ))
+      *-----------------------------------------------------------------
+      * ABI
+      *-----------------------------------------------------------------
+      * ticket 4448 -  Passare a nuova interfaccia il programma GESABI                          | roscri 07/03/2012
+      *-----------------------------------------------------------------
+      *
+      * tplvar zmm_title=ABI/CAB
+      * tplvar zmm_ver=09.01.00
+      * tplvar zmm_class=anagraphic
+      * tplvar zmm_returnkey=abi-codice
+      *
+      * ZoomFields seq:
+      * 01.abi-codice-abi-x
+      * 02.abi-codice-cab
+      * 03.abi-banca1
+      * 04.abi-banca2
+      * 05.abi-localita
+      * 06.abi-via
+      * 07.abi-cap
+      * 08.abi-citta
+      * 09.abi-provincia
+      *
+      * |DS 01/04/2009 9.29
+      *
+       FD  ABI
+           RECORD IS VARYING IN SIZE TO 167 CHARACTERS.
+       01 RECORD-ABI.
+           05 ABI-CODICE.
+      *
+      *
+               10 ABI-CODICE-ABI   PIC  9(05).
+               10 FILLER REDEFINES ABI-CODICE-ABI.
+      *$GEN zmm=on,zmm_title=Codice ABI,zmm_datatype=x,zmm_key=1,zmm_size=05,zmm_align=L,zmm_pos=1
+      *
+                   15 ABI-CODICE-ABI-X PIC  X(05).
+      *$GEN zmm=on,zmm_title=Codice CAB,zmm_datatype=x,zmm_size=05,zmm_align=L,zmm_pos=2
+               10 ABI-CODICE-CAB   PIC  9(05).
+               10 filler REDEFINES abi-codice-cab.
+                   14 abi-codice-cab-x PIC  x(05).
+           05 RESTO-RECORD-ABI.
+      *$GEN zmm=on,zmm_title=Banca,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=3
+               10 ABI-BANCA1       PIC  X(30).
+      *$GEN zmm=on,zmm_title=Sportello,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=4
+               10 ABI-BANCA2       PIC  X(30).
+      *$GEN zmm=on,zmm_title=Località,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=5
+      *
+               10 ABI-LOCALITA     PIC  X(30).
+      *$GEN zmm=on,zmm_title=Indirizzo,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=6
+      *
+               10 ABI-VIA          PIC  X(30).
+      *$GEN zmm=on,zmm_title=CAP,zmm_datatype=x,zmm_size=5,zmm_align=L,zmm_pos=7
+      *
+               10 ABI-CAP          PIC  X(05).
+      *$GEN zmm=on,zmm_title=Città,zmm_datatype=x,zmm_key=3,zmm_size=30,zmm_align=L,zmm_pos=8
+               10 ABI-CITTA        PIC  X(30).
+      *$GEN zmm=on,zmm_title=Provincia,zmm_datatype=x,zmm_size=2,zmm_align=L,zmm_pos=9
+               10 ABI-PROVINCIA    PIC  X(02).

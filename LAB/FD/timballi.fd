@@ -1,0 +1,20 @@
+       FD  timballi.
+       01 imb-rec.
+           05 imb-chiave.
+               10 imb-codice       PIC  x(3).
+           05 imb-dati.
+               10 imb-descrizione  PIC  x(50).
+               10 imb-dati-comuni.
+                   15 imb-data-creazione           PIC  9(8).
+                   15 imb-ora-creazione            PIC  9(8).
+                   15 imb-utente-creazione         PIC  x(10).
+                   15 imb-data-ultima-modifica     PIC  9(8).
+                   15 imb-ora-ultima-modifica      PIC  9(8).
+                   15 imb-utente-ultima-modifica   PIC  x(10).
+               10 imb-vuoti.
+                   15 imb-num-vuoto-1  PIC  9(15).
+                   15 imb-num-vuoto-2  PIC  9(15).
+                   15 imb-num-vuoto-3  PIC  9(15).
+                   15 imb-alfa-vuoto-1 PIC  x(20).
+                   15 imb-alfa-vuoto-2 PIC  x(20).
+                   15 imb-alfa-vuoto-3 PIC  x(20).

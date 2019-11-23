@@ -1,0 +1,165 @@
+      *(( XFD FILE = tmp-rof-auto ))
+      *
+      *
+      *
+      *0
+       FD  tmp-rof-auto.
+       01 tra-rec.
+           05 tra-chiave.
+               10 tra-chiave-testa.
+                   15 tra-anno         PIC  9(4).
+                   15 tra-numero       PIC  9(8).
+               10 tra-riga         PIC  9(5).
+           05 tra-dati.
+               10 tra-prg-chiave.
+      *(( XFD NAME = rof-cod-articolo_1 ))
+                   15 tra-cod-articolo PIC  9(6).
+                   15 tra-cod-magazzino            PIC  X(3).
+                   15 tra-tipo-imballo PIC  X(3).
+                   15 tra-peso         PIC  9(5)v9(3).
+               10 tra-imb-ordinato PIC  x(3).
+               10 tra-qta-ord      PIC  9(8).
+               10 tra-qta-evasa    PIC  9(8).
+               10 tra-prz-unitario PIC  9(9)v9(4).
+               10 tra-sconto-1     PIC  9(3)v9(2).
+               10 tra-sconto-2     PIC  9(3)v9(2).
+               10 tra-sconto-3     PIC  9(3)v9(2).
+               10 tra-sconto-4     PIC  9(3)v9(2).
+               10 tra-sconto-5     PIC  9(3)v9(2).
+               10 tra-imponib-merce            PIC  9(9)v9(4).
+               10 tra-imp-consumo  PIC  9(4)v9(4).
+               10 tra-imp-cou-cobat            PIC  9(4)v9(4).
+               10 tra-add-piombo   PIC  9(4)v9(4).
+               10 tra-costi-aggiuntivi         PIC  9(9)v9(4).
+               10 tra-cod-iva      PIC  x(3).
+               10 tra-peso-utf     PIC  9(5)v9(3).
+               10 tra-peso-non-utf PIC  9(5)v9(3).
+               10 tra-cod-imballo  PIC  X(3).
+               10 tra-qta-imballi  PIC  9(4).
+      *    per il momento non gestito
+      *
+      *
+               10 tra-promo        PIC  9(15).
+      *    per il momento non gestito
+      *
+      *
+               10 tra-cod-listino  PIC  9(15).
+               10 tra-ddt.
+                   15 tra-anno-ddt     PIC  9(4).
+                   15 tra-numero-ddt   PIC  9(8).
+               10 tra-dati-carico.
+                   15 tra-data-carico  PIC  9(8).
+                   15 tra-ora-carico   PIC  9(8).
+                   15 tra-utente-carico            PIC  X(10).
+               10 tra-dati-comuni.
+                   15 tra-data-creazione           PIC  9(8).
+                   15 tra-ora-creazione            PIC  9(8).
+                   15 tra-utente-creazione         PIC  X(10).
+                   15 tra-data-ultima-modifica     PIC  9(8).
+                   15 tra-ora-ultima-modifica      PIC  9(8).
+                   15 tra-utente-ultima-modifica   PIC  X(10).
+               10 tra-vuoti.
+                   15 tra-manuale      PIC  9.
+                       88 tra-manuale-si VALUE IS 1. 
+                       88 tra-manuale-no VALUE IS 0. 
+      *(( XFD NAME = rof-num-vuoto-1_1 ))
+                   15 tra-imf-codice   PIC  9(5).
+      *(( XFD NAME = rof-num-vuoto-1_1_ ))
+                   15 tra-num-vuoto-1  PIC  9(12).
+                   15 tra-num-vuoto-2  PIC  9(18).
+                   15 tra-num-vuoto-3  PIC  9(18).
+                   15 tra-alfa-vuoto-1 PIC  X(20).
+                   15 tra-alfa-vuoto-2 PIC  X(20).
+                   15 tra-alfa-vuoto-3 PIC  X(20).
+           05 tra-tof-dati.
+               10 tra-causale      PIC  x(4).
+               10 tra-data-ordine  PIC  9(8).
+               10 FILLER           PIC  9(8).
+               10 tra-cod-forn     PIC  9(5).
+               10 tra-destino      PIC  9(5).
+               10 tra-dati-forn.
+                   15 tra-referente    PIC  x(40).
+                   15 tra-tel-dir      PIC  x(20).
+                   15 tra-fax          PIC  x(20).
+                   15 tra-email        PIC  x(100).
+               10 FILLER           PIC  9(12).
+               10 tra-cliente      PIC  9(5).
+               10 tra-data-listino PIC  9(8).
+               10 tra-cod-pagamento            PIC  x(3).
+      *(( XFD NAME = tof-cod-pagamento_ ))
+               10 tra-cod-ese-iva  PIC  x(3).
+               10 tra-tipo-scarico PIC  x.
+                   88 tra-urgente VALUE IS "U". 
+               10 tra-data-consegna            PIC  9(8).
+               10 tra-mese-rif     PIC  99.
+               10 tra-pz-tot       PIC  9(8).
+               10 tra-pz-arrivati  PIC  9(8).
+               10 tra-tipo-creazione           PIC  x.
+                   88 tra-manuale VALUE IS "M". 
+                   88 tra-automatico VALUE IS "A". 
+               10 tra-stato        PIC  x.
+                   88 tra-inserito VALUE IS "I". 
+                   88 tra-inviato VALUE IS "S". 
+                   88 tra-in-lavorazione VALUE IS "L". 
+                   88 tra-chiuso VALUE IS "C". 
+               10 tra-stato-evasione           PIC  x.
+                   88 tra-inevaso VALUE IS "I". 
+                   88 tra-evas-parz VALUE IS "P". 
+                   88 tra-evas-tot VALUE IS "T". 
+               10 tra-da-confermare            PIC  9(1).
+                   88 tra-da-confermare-si VALUE IS 1. 
+                   88 tra-da-confermare-no VALUE IS 0. 
+               10 tra-rivisto      PIC  9(1).
+                   88 tra-rivisto-si VALUE IS 1. 
+                   88 tra-rivisto-no VALUE IS 0. 
+               10 tra-programmazione           PIC  9.
+                   88 tra-programmazione-si VALUE IS 1. 
+                   88 tra-programmazione-no VALUE IS 0. 
+               10 tra-tipo-invio   PIC  x.
+                   88 tra-invio-man VALUE IS "M". 
+                   88 tra-invio-fax VALUE IS "F". 
+                   88 tra-invio-mail VALUE IS "E". 
+               10 tra-dati-invio.
+                   15 tra-data-invio   PIC  9(8).
+                   15 tra-ora-invio    PIC  9(8).
+                   15 tra-utente-invio PIC  X(10).
+               10 tra-tipo-chiusura            PIC  x.
+                   88 tra-chiusura-man VALUE IS "M". 
+                   88 tra-chiusura-auto VALUE IS "A". 
+               10 tra-dati-chiusura.
+                   15 tra-nota-chiusura            PIC  x(50).
+                   15 tra-data-chiusura            PIC  9(8).
+                   15 tra-ora-chiusura PIC  9(8).
+                   15 tra-utente-chiusura          PIC  X(10).
+               10 tra-dati-comuni.
+                   15 tra-data-creazione           PIC  9(8).
+      *(( XFD NAME = tra-ora-creazione_ ))
+                   15 tra-ora-creazione            PIC  9(8).
+                   15 tra-utente-creazione         PIC  X(10).
+                   15 tra-data-ultima-modifica     PIC  9(8).
+                   15 tra-ora-ultima-modifica      PIC  9(8).
+                   15 tra-utente-ultima-modifica   PIC  X(10).
+               10 tra-vuoti.
+                   15 tra-destino-c    PIC  9(5).
+      *(( XFD NAME = tra-promo_1 ))
+                   15 tra-promo        PIC  9(15).
+                   15 tra-franco-part  PIC  9.
+                       88 tra-franco-part-si VALUE IS 1. 
+                       88 tra-franco-part-no VALUE IS 0. 
+      *(( XFD NAME = tof-num-vuoto-2_1 ))
+                   15 tra-aperto       PIC  9(1).
+                       88 tra-aperto-si VALUE IS 1. 
+                       88 tra-aperto-no VALUE IS 0. 
+                   15 tra-st-dati-fatt PIC  9.
+                       88 tra-st-dati-fatt-si VALUE IS 1. 
+                       88 tra-st-dati-fatt-no VALUE IS 0. 
+      *(( XFD NAME = tof-num-vuoto-2_1_ ))
+                   15 tra-num-vuoto-2  PIC  9(13).
+      *(( XFD NAME = tra-num-vuoto-3_1 ))
+                   15 tra-num-vuoto-3  PIC  9(18).
+      *(( XFD NAME = tra-alfa-vuoto-1_1 ))
+                   15 tra-alfa-vuoto-1 PIC  X(20).
+      *(( XFD NAME = tra-alfa-vuoto-2_1 ))
+                   15 tra-alfa-vuoto-2 PIC  X(20).
+      *(( XFD NAME = tra-alfa-vuoto-3_1 ))
+                   15 tra-alfa-vuoto-3 PIC  X(20).

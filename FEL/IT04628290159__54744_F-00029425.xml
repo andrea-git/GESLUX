@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="fatturapa_v1.2.xsl"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 http://www.fatturapa.gov.it/export/fatturazione/sdi/fatturapa/v1.2/Schema_del_file_xml_FatturaPA_versione_1.2.xsd">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>04628290159</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>54744</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>SV3VJ2L</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>00785630963</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>LUBEX SPA</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Giuseppe di Vittorio</Indirizzo>
+        <NumeroCivico>13</NumeroCivico>
+        <CAP>20090</CAP>
+        <Comune>Vimodrone</Comune>
+        <Provincia>MI</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>00408140440</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>OFFICINA PIATTONI DI PIATTONI ELVEZIO</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIALE I MAGGIO 28</Indirizzo>
+        <CAP>63813</CAP>
+        <Comune>MONTE URANO</Comune>
+        <Provincia>FM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2019-08-16</Data>
+        <Numero>29425</Numero>
+        <ImportoTotaleDocumento>733.22</ImportoTotaleDocumento>
+        <Causale>VENDITA da deposito LUBEX </Causale>
+      </DatiGeneraliDocumento>
+      <DatiOrdineAcquisto>
+        <IdDocumento>-52166</IdDocumento>
+      </DatiOrdineAcquisto>
+      <DatiDDT>
+        <NumeroDDT>23734</NumeroDDT>
+        <DataDDT>2019-08-12</DataDDT>
+      </DatiDDT>
+      <DatiTrasporto>
+        <DatiAnagraficiVettore>
+          <IdFiscaleIVA>
+            <IdPaese>IT</IdPaese>
+            <IdCodice>00100170448</IdCodice>
+          </IdFiscaleIVA>
+          <Anagrafica>
+            <Denominazione>EUROCOT SPA EUC</Denominazione>
+          </Anagrafica>
+        </DatiAnagraficiVettore>
+        <IndirizzoResa>
+          <Indirizzo>VIALE I MAGGIO 28</Indirizzo>
+          <CAP>63813</CAP>
+          <Comune>MONTE URANO</Comune>
+          <Provincia>FM</Provincia>
+          <Nazione>IT</Nazione>
+        </IndirizzoResa>
+        <DataOraConsegna>2019-08-26T00:00:00</DataOraConsegna>
+      </DatiTrasporto>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>2339</CodiceValore>
+        </CodiceArticolo>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>4047023479228</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>BOSCH BATTERIA S3002 (45A DX)</Descrizione>
+        <Quantita>20.00</Quantita>
+        <PrezzoUnitario>22.65</PrezzoUnitario>
+        <ScontoMaggiorazione>
+          <Tipo>MG</Tipo>
+          <Importo>1.35</Importo>
+        </ScontoMaggiorazione>
+        <ScontoMaggiorazione>
+          <Tipo>MG</Tipo>
+          <Importo>5.90</Importo>
+        </ScontoMaggiorazione>
+        <PrezzoTotale>598.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>22378</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>SPESE D'INCASSO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>3.00</PrezzoUnitario>
+        <PrezzoTotale>3.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <ImponibileImporto>601.00</ImponibileImporto>
+        <Imposta>132.22</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP01</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP12</ModalitaPagamento>
+        <DataScadenzaPagamento>2019-10-31</DataScadenzaPagamento>
+        <ImportoPagamento>733.22</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

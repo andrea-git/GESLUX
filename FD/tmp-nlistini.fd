@@ -1,0 +1,23 @@
+      *(( XFD FILE = tmp-nlistini ))
+       FD  tmp-nlistini.
+       01 tmp-nlis-rec.
+           05 tmp-nlis-chiave.
+               10 tmp-nlis-chiave-listino.
+                   15 tmp-nlis-tlis-codice         PIC  9(15).
+               10 tmp-nlis-num-nota            PIC  9(3).
+           05 tmp-nlis-dati.
+               10 tmp-nlis-nota    PIC  x(200).
+               10 tmp-nlis-dati-comuni.
+                   15 tmp-nlis-data-creazione      PIC  9(8).
+                   15 tmp-nlis-ora-creazione       PIC  9(8).
+                   15 tmp-nlis-utente-creazione    PIC  x(10).
+                   15 tmp-nlis-data-ultima-modifica            PIC  
+           9(8).
+                   15 tmp-nlis-ora-ultima-modifica PIC  9(8).
+                   15 tmp-nlis-utente-ultima-modifica          PIC  
+           x(10).
+               10 tmp-nlis-vuoti.
+                   15 tmp-nlis-num-vuoto-1         PIC  9(18).
+                   15 tmp-nlis-num-vuoto-2         PIC  9(18).
+                   15 tmp-nlis-num-vuoto-3         PIC  9(18).
+                   15 tmp-nlis-alfa-vuoto          PIC  X(500).

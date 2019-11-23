@@ -1,0 +1,58 @@
+      *(( XFD FILE = CLZ ))
+      *
+      * tk 5643 - eliminare type amount e price dai dpb/dab (sono tipi non gestiti)                        | QUASIL 09/04/2014
+      * . Trasformati i type=amount in type=num,dec=2,size=21
+      *-----------------------------------------------------------------
+      *
+      *
+      *
+      *-----------
+      *      *
+      *
+       FD  CLZ
+           RECORD IS VARYING IN SIZE TO 256 CHARACTERS.
+      *
+      *
+       01 RECORD-CLZ.
+           05 CLZ-CODICE       PIC  X(08).
+      *
+      *
+           05 RESTO-RECORD-CLZ.
+      *$GEN type=num,dec=2,size=21
+               10 CLZ-DARE-APERTURA            PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,dec=2,size=21
+      *
+               10 CLZ-AVERE-APERTURA           PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,dec=2,size=21
+      *
+               10 CLZ-DARE-CHIUSURA            PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,dec=2,size=21
+      *
+               10 CLZ-AVERE-CHIUSURA           PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,dec=2,size=21
+               10 CLZ-DARE-PRECEDENTE          PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,dec=2,size=21
+               10 CLZ-AVERE-PRECEDENTE         PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,dec=2,size=21
+               10 CLZ-DARE         PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,dec=2,size=21
+      *
+               10 CLZ-AVERE        PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+               10 CLZ-NUMERO-INSOLUTI          PIC  9(06).
+      *$GEN type=num,dec=2,size=21
+      *
+               10 CLZ-IMPORTO-INSOLUTI         PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *
+      *
+      *
+               10 CLZ-FILLER       PIC  X(58).
+               10 CLZ-FILLER-RIS   PIC  X(40).

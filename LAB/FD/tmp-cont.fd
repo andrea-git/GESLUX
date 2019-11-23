@@ -1,0 +1,37 @@
+      *(( XFD FILE = tmp-cont ))
+       FD  tmp-cont.
+       01 tmp-cnt-rec.
+           05 tmp-cnt-chiave.
+               10 tmp-cnt-anno     PIC  z(4).
+               10 tmp-cnt-numero   PIC  z(8).
+               10 tmp-cnt-prog     PIC  9(3).
+           05 tmp-cnt-dati.
+               10 tmp-cnt-data     PIC  zz/zz/zzzz.
+               10 tmp-cnt-tipo     PIC  x(10).
+               10 tmp-cnt-gdo      PIC  x(5).
+               10 tmp-cnt-gdo-descrizione      PIC  x(40).
+               10 tmp-cnt-cod-cli  PIC  z(5).
+               10 tmp-cnt-cli-ragsoc           PIC  x(40).
+               10 tmp-cnt-prg-destino          PIC  z(5).
+               10 tmp-cnt-des-localita         PIC  x(40).
+               10 tmp-cnt-importo  PIC  9(6)v99.
+               10 tmp-cnt-causale  PIC  x(30).
+               10 tmp-cnt-riferimento          PIC  x.
+               10 tmp-cnt-num-doc  PIC  z(8).
+               10 tmp-cnt-data-doc PIC  zz/zz/zzzz.
+               10 tmp-cnt-importo-doc          PIC  9(6)v99.
+               10 tmp-cnt-pagamento-doc        PIC  x(25).
+               10 tmp-cnt-da-pagare            PIC  9(6)v99.
+               10 tmp-cnt-anno-nc  PIC  z(4).
+               10 tmp-cnt-numero-nc            PIC  z(8).
+               10 tmp-cnt-data-rich            PIC  zz/zz/zzzz.
+               10 tmp-cnt-corriere PIC  9(5).
+               10 tmp-cnt-vet-descrizione      PIC  x(30).
+               10 tmp-cnt-data-ricev           PIC  zz/zz/zzzz.
+      *(( XFD NAME = cnt-numero_1 ))
+               10 tmp-cnt-numero-nota-debito   PIC  x(20).
+      *(( XFD NAME = cnt-data_1 ))
+               10 tmp-cnt-data-nota-deb        PIC  zz/zz/zzzz.
+               10 tmp-cnt-importo-nota-deb     PIC  9(6)v99.
+               10 tmp-cnt-num-reg-contab       PIC  9(10).
+               10 tmp-cnt-appunti  PIC  x(500).

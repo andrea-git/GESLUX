@@ -1,0 +1,15 @@
+      *(( XFD FILE = zoom-tordini ))
+       FD  zoom-tordini.
+       01 zoom-tor-rec.
+           05 zoom-tor-chiave.
+               10 zoom-tor-anno    PIC  9(4).
+               10 zoom-tor-numero  PIC  9(8).
+           05 zoom-tor-dati.
+               10 zoom-tor-data-ordine         PIC  9(8).
+               10 zoom-tor-causale PIC  x(20).
+               10 zoom-tor-cod-cli PIC  9(5).
+               10 zoom-tor-cli-ragsoc-1        PIC  x(40).
+               10 zoom-tor-prg-destino         PIC  9(5).
+               10 zoom-tor-des-localita        PIC  X(35).
+               10 zoom-tor-num-fat PIC  9(8).
+               10 zoom-tor-data-fat            PIC  9(8).

@@ -1,0 +1,24 @@
+      *(( XFD FILE = tmp-marca ))
+      *
+      *
+      *
+      *ex\GESLUX_1.0\Copylib\
+      *-9]+
+      * *-9]+
+      *
+       FD  tmp-settore.
+       01 tms-rec.
+           05 tms-chiave.
+               10 tms-tipo         PIC  x(2).
+               10 tms-marca        PIC  9(4).
+           05 tms-dati.
+               10 tms-kg-corr      PIC  s9(15)v999.
+               10 tms-qta-corr     PIC  s9(9).
+               10 tms-fat-corr     PIC  s9(12)v99.
+               10 tms-csm-corr     PIC  s9(12)v99.
+               10 tms-perce-adeguam-corr       PIC  s9(3)v99.
+               10 tms-kg-prog      PIC  s9(12)v99.
+               10 tms-qta-prog     PIC  s9(9).
+               10 tms-fat-prog     PIC  s9(12)v99.
+               10 tms-csm-prog     PIC  s9(12)v99.
+               10 tms-perce-adeguam-prog       PIC  s9(3)v99.

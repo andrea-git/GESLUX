@@ -1,0 +1,322 @@
+; CaseMaker Totem Layout Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[MONITOR_FILE]
+
+
+[DATALAYOUT_CONTENT]
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E3AA205445-288-65571084
+[DSNENTITY_]
+[CStoAcucobolFileDefinition_]
+m_nType=1
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+m_strPrefix=TBLNA
+{{@FD_m_strDescription
+-------------------------------------------------------------
+ Tk 3194 - Black List                                                                            | scamar 09/07/2010 11:15:29
+           - aggiunto campo per l'inclusione della nazione nei paesi BlackList
+---------------------------------------------------------------------------
+ Ticket 5690 - Collegamento payline.lince                                                           | rososv 30/04/2014
+
+ Aggiunti check-box:
+ - tblna-payline       (indica se la nazione è interessata all'esportazione)
+ - tblna-payline-piva  (indica se deve essere indicata la partita i.v.a.)
+ Incrementati i campi da portare sulla query, compresi i due nuovi check-box  
+---------------------------------------------------------------------------
+
+
+
+Record per tabella nazioni
+
+
+ tplvar zmm_title=Tabella nazioni
+ tplvar zmm_ver=09.01.00
+ tplvar zmm_class=anagraphic
+
+
+ ZoomFields seq:
+   01.tblna-codice2
+   02.tblna-descrizione1
+   03.tblna-descrizione2
+   04.tblna-codice-iso
+   05.tblna-cod-stato-estero
+   06.tblna-hasblacklist
+   07.tblna-payline
+   08.tblna-payline-piva
+
+Record per tabelle nazioni
+
+$XFD  WHEN TBLNA-CODICE1="NA" TABLENAME=TBLNA
+@}}
+[FDITEM0_]
+m_strName=RECORD-TBLNA
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_
+
+@}}
+[FDITEM1_]
+m_strName=TBLNA-CODICE
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1_
+
+@}}
+[FDITEM2_]
+m_strName=TBLNA-CODICE1
+m_strRawPic=X(02)
+m_strPic=X(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM2_
+
+@}}
+[FDITEM3_]
+m_strName=TBLNA-CODICE2
+m_strRawPic=X(20)
+m_strPic=X(20)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM3_
+$GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=20,zmm_align=L,zmm_pos=1,zmm_entity=tblna
+@}}
+[FDITEM4_]
+m_strName=RESTO-RECORD-TBLNA
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM4_
+
+@}}
+[FDITEM5_]
+m_strName=TBLNA-DESCRIZIONE1
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM5_
+$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=2
+@}}
+[FDITEM6_]
+m_strName=TBLNA-DESCRIZIONE2
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM6_
+$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=3
+@}}
+[FDITEM7_]
+m_strName=TBLNA-CODICE-ISO-OLD
+m_strRawPic=X(02)
+m_strPic=X(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM7_
+
+@}}
+[FDITEM8_]
+m_strName=TBLNA-DECIMAL-POINT
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM8_
+$GEN type=checkbox,truevalue="A",falsevalue=" "
+@}}
+[FDITEM9_]
+m_strName=TBLNA-DECIMAL-POINT-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="A" " "
+{{@DataItem_m_strDescriptionFDITEM9_
+
+@}}
+[FDITEM10_]
+m_strName=TBLNA-CODICE-ISO
+m_strRawPic=X(04)
+m_strPic=X(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM10_
+$GEN zmm=on,zmm_title=Codice iso,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=4            
+
+@}}
+[FDITEM11_]
+m_strName=TBLNA-EURO
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM11_
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+
+@}}
+[FDITEM12_]
+m_strName=TBLNA-EURO-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM12_
+
+@}}
+[FDITEM13_]
+m_strName=TBLNA-COD-STATO-ESTERO
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM13_
+$GEN zmm=on,zmm_title=Codice stato,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=5            
+
+@}}
+[FDITEM14_]
+m_strName=tblna-hasBlackList
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM14_
+$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Black list,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=6        
+
+@}}
+[FDITEM15_]
+m_strName=tblna-hasBlackList-on
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM15_
+
+@}}
+[FDITEM16_]
+m_strName=tblna-hasBlackList-off
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" "
+{{@DataItem_m_strDescriptionFDITEM16_
+
+@}}
+[FDITEM17_]
+m_strName=tblna-hasBlackList-allowed
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM17_
+
+@}}
+[FDITEM18_]
+m_strName=tblna-payline
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM18_
+$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Payline,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=7
+@}}
+[FDITEM19_]
+m_strName=tblna-payline-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM19_
+
+@}}
+[FDITEM20_]
+m_strName=tblna-payline-piva
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM20_
+$GEN  type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Partita iva,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=8
+@}}
+[FDITEM21_]
+m_strName=tblna-payline-piva-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM21_
+
+@}}
+[FDITEM22_]
+m_strName=tblna-filler
+m_strRawPic=x(1244)
+m_strPic=X(1244)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM22_
+
+@}}
+[FDITEM23_]
+m_strName=TBLNA-FILLER-RIS
+m_strRawPic=X(40)
+m_strPic=X(40)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM23_
+**        10  TBLNA-FILLER            PIC  X(1247).        |DS 01/04/2005 9.52                      | scamar 09/07/2010 09:57:01
+        10  TBLNA-FILLER            PIC  X(1250).                           |DS 01/04/2005 9.52
+
+@}}
+[CStoAcucobolSL_]
+m_nType=1
+m_bOptional=1
+m_strAssignToName="TBLNA"
+m_nDevice=4
+m_nFormat=3
+m_nAccessMode=3
+m_strFileStatus=STATUS-TBLNA
+m_nCompression=70
+{{@SL_m_strDescription
+
+File delle nazioni
+b
++
+;
+r
+@}}
+[SLPKEY_]
+m_strName=TBLNA-CODICE
+m_bUnique=1
+{{@Key_m_strDescription
+
+@}}
+[SLKEYATOM0_]
+m_strName=TBLNA-CODICE
+[SLINDEX0_]
+m_strName=TBLNA-CODICE-01
+m_bUnique=1
+{{@Key_m_strDescriptionSLINDEX0_
+
+@}}
+[SLKEYATOM0_SLINDEX0_]
+m_strName=TBLNA-CODICE1
+[SLKEYATOM1_SLINDEX0_]
+m_strName=TBLNA-DESCRIZIONE1
+[SLKEYATOM2_SLINDEX0_]
+m_strName=TBLNA-CODICE2

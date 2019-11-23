@@ -1,0 +1,15 @@
+      *(( XFD FILE = tmp-contab ))
+       FD  tmp-contab.
+       01 tmcont-rec.
+           05 tmcont-chiave.
+               10 tmcont-tipo      PIC  x.
+                   88 tmcont-fattura VALUE IS "F". 
+                   88 tmcont-nota VALUE IS "N". 
+               10 tmcont-data      PIC  9(8).
+               10 tmcont-codice    PIC  9(8).
+           05 tmcont-dati.
+               10 tmcont-causale   PIC  x(4).
+               10 tmcont-cod-cli   PIC  9(5).
+               10 tmcont-totale-ok PIC  s9(9)v99.
+               10 tmcont-totale-postel         PIC  s9(9)v99.
+               10 tmcont-totale-pnt            PIC  s9(9)v99.

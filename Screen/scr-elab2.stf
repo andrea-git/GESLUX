@@ -1,0 +1,94 @@
+*   Screen Painter STF File
+*   Version 6.0
+*   Generated Time : giovedì 8 agosto 2019 12:11:05
+*
+
+BEGIN-SPDATA-6.0A
+
+GRAPHICAL-SCREEN
+
+Begin Screen scr-elab
+   PREFIX            = scr-elab
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = scr-elab
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 13
+   Cell Width        = 7
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = FALSE
+   Font              = Default Font
+   Handle Variable   = scr-elab-Handle
+   Height in Cells   = TRUE
+   Help ID           = 0
+   Label Offset      = 20
+   Lines             = 5,00
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = FALSE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 71,00
+   System Menu       = FALSE
+   Title Bar         = FALSE
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = TRUE
+   Window Type       = Floating
+   Wrap              = FALSE
+   Event Procedure   = scr-elab-Event-Proc
+   Begin Label scr-elab-La-1
+      SCREEN-COL        = 1,57
+      SCREEN-LINE       = 1,23
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = scr-elab-La-1
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,57
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/14/I/C0/@Occidentale
+      Font Variable     = Verdana14I-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 1
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 1,23
+      Lines             = 4,46
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 69,71
+      Size Unit         = Default
+      Tab Order         = 1
+      Title             = "Elaborazione Programma Ordini in corso. Attendere prego..."
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+End

@@ -1,0 +1,21 @@
+      *(( XFD FILE = venodbc ))
+      *
+      *
+      *
+      *08
+      *LE
+       FD  venodbc.
+       01 ven-rec.
+           05 ven-chiave.
+               10 ven-gdo-codice   PIC  x(5).
+               10 ven-art-codice   PIC  9(6).
+           05 ven-dati.
+               10 ven-gdo-intestazione         PIC  x(50).
+               10 ven-art-descrizione          PIC  x(50).
+               10 ven-qta          PIC  s9(8).
+               10 ven-prezzo-medio PIC  s9(12)v99.
+               10 ven-imp-merce    PIC  s9(12)v99.
+               10 ven-add-pb       PIC  s9(12)v99.
+               10 ven-consumo      PIC  s9(12)v99.
+               10 ven-cou-cobat    PIC  s9(12)v99.
+               10 ven-mar-descrizione          PIC  x(50).

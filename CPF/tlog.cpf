@@ -1,0 +1,625 @@
+; CaseMaker Totem Program Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[MONITOR_FILE]
+
+
+[PROGRAM_CONTENT]
+QUIT_CONFIRM=0
+ANSI_FORMAT=1
+MAIN_SCREEN_NAME=Screen1
+PROGRAM_UNIQUE_CODE=TOTEM-7E3AA205653-455-2934030921
+
+{{@DESCRIPTION:
+
+@}}
+
+[WORKING_STORAGE]
+m_nType=1
+m_strName=Working Storage
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionWK
+
+@}}
+[FDITEM0_WK]
+m_strName=STATUS-logfile
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_WK
+
+@}}
+[FDITEM1_WK]
+m_strName=Valid-STATUS-logfile
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM1_WK
+
+@}}
+[FDITEM2_WK]
+m_strName=Screen1-SF-HANDLE
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM2_WK
+
+@}}
+[FDITEM3_WK]
+m_strName=Screen1-MN-1-HANDLE
+m_nUsage=48
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM3_WK
+
+@}}
+[FDITEM4_WK]
+m_strName=Verdana10-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM4_WK
+
+@}}
+[FDITEM5_WK]
+m_strName=rec-grid
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM5_WK
+
+@}}
+[FDITEM6_WK]
+m_strName=col-data
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM6_WK
+
+@}}
+[FDITEM7_WK]
+m_strName=col-ora
+m_strRawPic=99.99.99.99
+m_strPic=99.99.99.99
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM7_WK
+
+@}}
+[FDITEM8_WK]
+m_strName=col-pgm
+m_strRawPic=x(20)
+m_strPic=x(20)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM8_WK
+
+@}}
+[FDITEM9_WK]
+m_strName=col-oper
+m_strRawPic=x
+m_strPic=x
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM9_WK
+
+@}}
+[FDITEM10_WK]
+m_strName=col-chiave-file
+m_strRawPic=x(20)
+m_strPic=x(20)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM10_WK
+
+@}}
+[FDITEM11_WK]
+m_strName=col-utente
+m_strRawPic=x(20)
+m_strPic=x(20)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM11_WK
+
+@}}
+[FDITEM12_WK]
+m_strName=col-descrizione
+m_strRawPic=x(100)
+m_strPic=x(100)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM12_WK
+
+@}}
+
+
+[LINKAGE_SECTION]
+m_nType=1
+m_strName=Linkage Section
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionLK
+
+@}}
+
+
+{{@SCREEN:
+*   Screen Painter Data
+*   Schema 6.0
+*
+BEGIN-SPDATA-6.1A
+
+GRAPHICAL-SCREEN
+
+Begin Screen Screen1
+   PREFIX            = Screen1
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = Screen1
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = TRUE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = TRUE
+   Cell Height       = 10
+   Cell Width        = 10
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = TRUE
+   Font              = Verdana/10/C0/@Occidentale
+   Font Variable     = Verdana10-Occidentale
+   Handle Variable   = Screen1-SF-HANDLE
+   Height in Cells   = TRUE
+   Help ID           = 1
+   Label Offset      = 0
+   Lines             = 48,00
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = TRUE
+   Operation Mode    = Interactive Mode
+   Resizable         = TRUE
+   Scroll            = FALSE
+   Size              = 93,30
+   System Menu       = TRUE
+   Title             = "Visualizzazione file di LOG"
+   Title Bar         = TRUE
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = TRUE
+   Window Type       = Independent
+   Wrap              = FALSE
+   Begin Grid gd-log
+      SCREEN-COL        = 2,10
+      SCREEN-LINE       = 2,30
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = gd-log
+      Action            = (None)
+      Adjustable Columns = TRUE
+      Border            = Boxed
+      Cells' Setting    = ( X = 1, Y = 1, Data = "Data" )
+      Cells' Setting    = ( X = 2, Y = 1, Data = "Ora" )
+      Cells' Setting    = ( X = 3, Y = 1, Data = "Programma" )
+      Cells' Setting    = ( X = 4, Y = 1, Data = "Tipo" )
+      Cells' Setting    = ( X = 5, Y = 1, Data = "Chiave File" )
+      Cells' Setting    = ( X = 6, Y = 1, Data = "Utente" )
+      Cells' Setting    = ( X = 7, Y = 1, Data = "Note" )
+      Centered Headings = FALSE
+      Color             = 0
+      Column            = 2,10
+      Column Headings   = TRUE
+      Columns' Setting  = ( X = 1, Name = col-data, READONLY = 0 )
+      Columns' Setting  = ( PIC = "99/99/9999", TYPE = "X(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
+      Columns' Setting  = ( DISP = 11, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 2, Name = col-ora, READONLY = 0 )
+      Columns' Setting  = ( PIC = "99.99.99.99", TYPE = "9(11)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
+      Columns' Setting  = ( DISP = 11, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 3, Name = col-pgm, READONLY = 0 )
+      Columns' Setting  = ( PIC = "x(20)", TYPE = "X(20)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
+      Columns' Setting  = ( DISP = 15, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 4, Name = col-oper, READONLY = 0 )
+      Columns' Setting  = ( PIC = "x", TYPE = "X(1)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
+      Columns' Setting  = ( DISP = 5, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 5, Name = col-chiave-file, READONLY = 0 )
+      Columns' Setting  = ( PIC = "x(20)", TYPE = "X(20)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
+      Columns' Setting  = ( DISP = 15, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 6, Name = col-utente, READONLY = 0 )
+      Columns' Setting  = ( PIC = "x(20)", TYPE = "X(20)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
+      Columns' Setting  = ( DISP = 15, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 7, Name = col-descrizione, READONLY = 0 )
+      Columns' Setting  = ( PIC = "x(100)", TYPE = "X(100)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
+      Columns' Setting  = ( DISP = 40, SEPA = 5, DIVI = 1 )
+      Cursor Color      = 0
+      Cursor Frame Width = 0
+      Cursor X          = 0
+      Cursor Y          = 0
+      Destroy Type      = Automatic
+      Divider Color     = 1
+      Drag Color        = 0
+      Enable            = NONE
+      End Color         = 0
+      Font              = Default Font
+      Heading Color     = 257
+      Heading Divider Color = 1
+      Heading Font      = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hscroll           = FALSE
+      ID                = 1
+      Last Row          = 0
+      Line              = 2,30
+      Lines             = 45,20
+      Lines Unit        = Default
+      No Tab            = FALSE
+      Num Col Headings  = 1
+      Num Columns       = 7
+      Num Rows          = 0
+      Occurs            = 0
+      Paged             = FALSE
+      Row Dividers      = 1
+      Row Headings      = FALSE
+      Size              = 91,50
+      Size Unit         = Default
+      Tab Order         = 1
+      Tiled Headings    = TRUE
+      Use Tab           = FALSE
+      Virtual Width     = 112
+      Visible           = NONE
+      Vpadding          = 50
+      Vscroll           = TRUE
+      Width in Cells    = TRUE
+      Event Procedure   = Screen1-Gd-1-Event-Proc
+      Msg-Begin-Drag    = gd-log-Ev-Msg-Begin-Drag
+      Msg-Begin-Entry   = gd-log-Ev-Msg-Begin-Entry
+      Msg-End-Drag      = gd-log-Ev-Msg-End-Drag
+      Msg-Goto-Cell     = gd-log-Ev-Msg-Goto-Cell
+      Msg-Goto-Cell-Drag = gd-log-Ev-Msg-Goto-Cell-Drag
+      Msg-Goto-Cell-Mouse = gd-log-Ev-Msg-Goto-Cell-Mouse
+   End
+End
+
+END-SPDATA
+
+@}}
+
+{{@REPORT:
+*   Report Writer Data
+*   Schema 6.0
+*
+BEGIN-RWDATA-6.0A
+
+END-RWDATA
+
+@}}
+
+{{@EMBEDDING_CODE:
+BEGIN-DATA
+   BASETYPE          = 6
+   NODESTYLE         = 7
+   PARAGRAPH         = DeletedCode
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Screen1
+   ACTOBJ            = Screen1
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+           modify gd-log, reset-grid = 1.
+           perform GD-LOG-CONTENT.
+           move low-value to log-chiave.
+           move 20100101  to log-data.
+           modify gd-log, mass-update = 1.
+           start logfile key >= log-chiave
+                 invalid continue
+             not invalid
+                 move 1 to riga
+                 perform until 1 = 2
+                    add 1 to riga
+                    read logfile next at end exit perform end-read
+                    move log-data         to como-data
+                    perform DATE-TO-SCREEN
+                    move como-data        to col-data
+                    move log-ora          to col-ora
+                    move log-pgm          to col-pgm
+                    move log-oper         to col-oper
+                    move log-chiave-file  to col-chiave-file
+                    move log-utente       to col-utente
+                    move log-descrizione  to col-descrizione
+                    modify gd-log(riga, 1), cell-data = col-data
+                    modify gd-log(riga, 2), cell-data = col-ora
+                    modify gd-log(riga, 3), cell-data = col-pgm
+                    modify gd-log(riga, 4), cell-data = col-oper
+                    modify gd-log(riga, 5), cell-data = col-chiave-file
+                    modify gd-log(riga, 6), cell-data = col-utente
+                    modify gd-log(riga, 7), cell-data = col-descrizione
+                 end-perform
+                 move 2 to event-data-2
+                 perform SPOSTAMENTO
+                 modify gd-log, cursor-y = 2
+           end-start.       
+           modify gd-log, mass-update = 0.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = SPOSTAMENTO
+BEGIN-TEXT
+           move event-data-2 to riga.
+           if riga < 2 
+              move 2 to riga
+           end-if.
+
+           modify gd-log, start-x = 1,    x = 7,
+                          start-y = riga, y = riga,
+                          region-color 481.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = PARAGRAFO-COPY
+BEGIN-TEXT
+           copy "utydata.cpy".
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = gd-log-Ev-Msg-Begin-Entry
+BEGIN-TEXT
+           set event-action to event-action-fail.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = gd-log-Ev-Msg-Begin-Drag
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = gd-log-Ev-Msg-End-Drag
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = gd-log-Ev-Msg-Goto-Cell
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = gd-log-Ev-Msg-Goto-Cell-Drag
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = gd-log-Ev-Msg-Goto-Cell-Mouse
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+
+@}}
+
+[KEY_STATUS_FIELD_FORMAT]
+PIC=9(5)
+USAGE=[None]
+
+[KEYSTATUS_CONTENT:KS1]
+CONDITION=Enter-Pushed
+VALUE=13
+
+[KEYSTATUS_CONTENT:KS2]
+CONDITION=Exit-Pushed
+VALUE=27
+
+[KEYSTATUS_CONTENT:KS3]
+CONDITION=Message-Received
+VALUE=95
+
+[KEYSTATUS_CONTENT:KS4]
+CONDITION=Event-Occurred
+VALUE=96
+
+[KEYSTATUS_CONTENT:KS5]
+CONDITION=Screen-No-Input-Field
+VALUE=97
+
+[KEYSTATUS_CONTENT:KS6]
+CONDITION=Screen-Time-Out
+VALUE=99
+
+[COBOLAID_DATASET_INFO]
+COUNT=1
+NAME_0=DataSet1
+
+[DRAW_DOCUMENT_INDEX]
+OBJ_NAME_0=8001
+OBJ_ID_0=2035864247
+
+[MULTIPLE_KEY_0]
+COUNT=1
+KEY_0=log-chiave
+
+[DRAW_DOCUMENT_8001_2035864247]
+OBJ_NAME=8001
+OBJ_ID=2035864247
+TYPE=2
+VERSION=
+DOC_SIZE_X=5100
+DOC_SIZE_Y=5160
+PAGE_LEFT=150
+PAGE_TOP=150
+PAGE_RIGHT=1850
+PAGE_BOTTOM=2730
+MARGIN_LEFT=150
+MARGIN_TOP=150
+MARGIN_RIGHT=150
+MARGIN_BOTTOM=150
+PROP_DOCU_TYPE=ø
+PROP_DOCU_TYPE2=ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+PROP_DOCU_NAME=DataSet - DataSet1[tlog(GESLUX)]
+PROP_DOCU_OWNER=Person A
+PROP_DOCU_CDATE=07/26/07
+PROP_DOCU_MODIFIER=Person B
+PROP_DOCU_MDATE=07/26/07
+PROP_DOCU_DESCR=Caseaid DocuCaseaid Document
+PROP_DOCU_HEADER=Caseaid Document
+PROP_DOCU_FOOTER=Page # 
+PROP_DOCU_DIM_H=2
+PROP_DOCU_DIM_W=3
+PROP_DOCU_LOC_H=1
+PROP_DOCU_LOC_W=1
+PROP_DOCU_EDGE_T=150
+PROP_DOCU_EDGE_B=150
+PROP_DOCU_EDGE_L=150
+PROP_DOCU_EDGE_R=150
+PROP_DOCU_ZOOM=75
+PROP_DOCU_SIZE_TYPE=0
+PROP_DOCU_SIZE_PAPER=1
+PROP_DOCU_SIZE_H=2580
+PROP_DOCU_SIZE_W=1700
+PROP_DOCU_RULER_EBL=0
+PROP_DOCU_GRID_EBL=0
+PROP_DOCU_GRID=20
+PROP_DOCU_ALIGN=0
+REL_SYM_SIZE=10
+REL_SYM_INFO_L=1
+REL_SYM_INFO_X0=2301
+REL_SYM_INFO_Y0=1404246910
+
+[DRAW_BASESYMBOL_2301_1404246910]
+OBJ_NAME=2301
+OBJ_ID=1404246910
+KIND=1
+{{@LABEL_2301_1404246910
+logfile
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=151
+TOP=171
+RIGHT=551
+BOTTOM=393
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DMD_DOCUMENT_0_2035864247]
+OBJ_NAME=0
+OBJ_ID=2035864247
+FILE_TITLE_TYPE=8136
+FILE_SHOW_ITEM=0
+FILE_SHOW_KEY=0
+FILE_SHOW_PIC=0
+FILE_SHOW_HEAD=0
+FILE_SHOW_LEVEL=0
+FILE_SHOW_TREE=0
+FILE_SHOW_CLPS=0
+FILE_SHOW_BMP=0
+FILE_SHOW_LINE=0
+FILE_SHOW_MINIZE=0
+
+[DMD_FILE_0_1404246910]
+OBJ_NAME=0
+OBJ_ID=1404246910
+REL_M_OBJ_ID=0
+ENTITY=logfile
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=log-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1404246910
+
+@}}
+DSN_INFO_PRIMARY=1
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=

@@ -1,0 +1,26 @@
+       FD  tparameva.
+       01 tpa-rec.
+           05 tpa-chiave.
+               10 tpa-codice       PIC  9(3).
+           05 tpa-dati.
+               10 tpa-descrizione  PIC  x(50).
+               10 tpa-solo-immediate           PIC  9.
+                   88 tpa-solo-immediate-si VALUE IS 1. 
+                   88 tpa-solo-immediate-no VALUE IS 0. 
+               10 tpa-tab-depositi.
+                   15 tpa-el-deposito  PIC  x(3)
+                              OCCURS 25 TIMES.
+                   15 tpa-el-gg-cons-max           PIC  9(3)
+                              OCCURS 25 TIMES.
+               10 tpa-dati-comuni.
+                   15 tpa-data-creazione           PIC  9(8).
+                   15 tpa-ora-creazione            PIC  9(8).
+                   15 tpa-utente-creazione         PIC  X(10).
+                   15 tpa-data-modifica            PIC  9(8).
+                   15 tpa-ora-modifica PIC  9(8).
+                   15 tpa-utente-modifica          PIC  X(10).
+               10 tpa-vuoti.
+                   15 tpa-num-vuoto-1  PIC  9(18).
+                   15 tpa-num-vuoto-2  PIC  9(18).
+                   15 tpa-num-vuoto-3  PIC  9(18).
+                   15 tpa-alfa-vuoto   PIC  x(500).

@@ -1,0 +1,11 @@
+       FD tmp-utf-daylist.
+       01  tutf-dati.
+           05 tutf-chiave.
+              10 tutf-col       pic bx.
+              10 tutf-ndoc      pic 9(10).
+              10 tutf-data      pic 99/99/99.
+              10 tutf-prog      pic 9(5).
+           05 tutf-dati.
+              10 tutf-ragsoc    pic x(30).
+              10 tutf-nmov      pic z(10).
+              10 tutf-kg        pic s9(9)v999.

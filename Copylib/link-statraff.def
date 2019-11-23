@@ -1,0 +1,10 @@
+      *
+       01 statraff-linkage.
+           03 statraff-data    PIC  9(8).
+           03 statraff-mese-da PIC  9(2).
+           03 statraff-mese-a  PIC  9(2).
+           03 statraff-anno    PIC  9(4).
+           03 statraff-tipo    PIC  x.
+               88 statraff-mensile VALUE IS "M". 
+               88 statraff-cumulato VALUE IS "C". 
+           03 statraff-path    PIC  x(256).

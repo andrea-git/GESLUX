@@ -1,0 +1,29 @@
+      *-----------------------------------------------------------------
+      * File personalizzato trascodifica codici Gruppi GEslux in codice statistico G2
+      *-----------------------------------------------------------------
+      *
+      * tplvar zmm_title=Trascodifica codici gruppi Geslux
+      * tplvar zmm_ver=09.01.00
+      * tplvar zmm_class=detail
+      *
+      *
+      *
+      * ZoomFields seq:
+      *
+      *   01.fpgruppics-codice-geslux
+      *   02.fpgruppics-codice-cs
+      *
+      *
+      *
+      *u
+       FD  FPGRUPPICS.
+       01 record-fpgruppics.
+           05 fpgruppics-key.
+      *$GEN zmm=on,zmm_title=Codice Geslux,zmm_datatype=x,zmm_key=1,zmm_size=5,zmm_align=L,zmm_pos=1,zmm_entity=fpgruppics
+               10 fpgruppics-codice-geslux     PIC  X(05).
+           05 fpgruppics-data.
+      *$GEN zmm=on,zmm_title=Codice G2,zmm_datatype=x,zmm_key=2,zmm_size=3,zmm_align=L,zmm_pos=2,zmm_entity=tblcs
+               10 fpgruppics-codice-cs         PIC  X(03).
+               10 fpgruppics-descrizione1      PIC  X(30).
+               10 fpgruppics-descrizione2      PIC  X(30).
+               10 filler           PIC  X(200).

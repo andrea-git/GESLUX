@@ -1,0 +1,15 @@
+      *
+       01 insdati-linkage.
+           03 link-obbligatorio            PIC  9.
+               88 obbligatorio VALUE IS 1    WHEN SET TO FALSE  0. 
+           03 link-insdati-chiave.
+               05 FILLER           PIC  9(8).
+               05 FILLER           PIC  9(8).
+           03 link-insdati-anno            PIC  9(4).
+           03 link-data-bolla  PIC  9(8).
+           03 link-num-bolla   PIC  9(8).
+           03 link-mag         PIC  x(3).
+           03 link-user        PIC  x(20).
+           03 link-ins-causale PIC  x(4).
+           03 link-status
+                      USAGE IS SIGNED-SHORT.

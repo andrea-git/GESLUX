@@ -1,0 +1,6908 @@
+; CaseMaker Totem Program Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[PROGRAM_CONTENT]
+QUIT_CONFIRM=0
+ANSI_FORMAT=1
+MAIN_SCREEN_NAME=Form1
+BEFORE_PROGRAM=bprepb-Ev-Before-Program
+AFTER_PROGRAM=accetordforn-Ev-After-Program
+PROGRAM_UNIQUE_CODE=TOTEM-7D949124031-265-3203126559
+
+{{@DESCRIPTION:
+
+@}}
+
+[WORKING_STORAGE]
+m_nType=1
+m_strName=Working Storage
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionWK
+
+@}}
+[FDITEM0_WK]
+m_strName=Screen1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_WK
+
+@}}
+[FDITEM1_WK]
+m_strName=geslock-linkage
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM1_WK
+
+@}}
+[FDITEM2_WK]
+m_strName=geslock-messaggio
+m_strRawPic=x(200)
+m_strPic=X(200)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM2_WK
+
+@}}
+[FDITEM3_WK]
+m_strName=geslock-nome-file
+m_strRawPic=x(20)
+m_strPic=X(20)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM3_WK
+
+@}}
+[FDITEM4_WK]
+m_strName=geslock-scelta
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM4_WK
+
+@}}
+[FDITEM5_WK]
+m_strName=riprova
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="R"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM5_WK
+
+@}}
+[FDITEM6_WK]
+m_strName=ignora
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="I"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM6_WK
+
+@}}
+[FDITEM7_WK]
+m_strName=termina
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="T"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM7_WK
+
+@}}
+[FDITEM8_WK]
+m_strName=geslock-v-riprova
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM8_WK
+
+@}}
+[FDITEM9_WK]
+m_strName=geslock-v-ignora
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM9_WK
+
+@}}
+[FDITEM10_WK]
+m_strName=geslock-v-termina
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_strCopyFile=link-geslock.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM10_WK
+
+@}}
+[FDITEM11_WK]
+m_strName=save-anno
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM11_WK
+
+@}}
+[FDITEM12_WK]
+m_strName=Small-Font
+m_nUsage=37
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM12_WK
+
+@}}
+[FDITEM13_WK]
+m_strName=STATUS-tordini
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM13_WK
+
+@}}
+[FDITEM14_WK]
+m_strName=Valid-STATUS-tordini
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM14_WK
+
+@}}
+[FDITEM15_WK]
+m_strName=STATUS-rordini
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM15_WK
+
+@}}
+[FDITEM16_WK]
+m_strName=Valid-STATUS-rordini
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM16_WK
+
+@}}
+[FDITEM17_WK]
+m_strName=anno
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM17_WK
+
+@}}
+[FDITEM18_WK]
+m_strName=numero
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM18_WK
+
+@}}
+[FDITEM19_WK]
+m_strName=Screen2-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM19_WK
+
+@}}
+[FDITEM20_WK]
+m_strName=STATUS-clienti
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM20_WK
+
+@}}
+[FDITEM21_WK]
+m_strName=Valid-STATUS-clienti
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM21_WK
+
+@}}
+[FDITEM22_WK]
+m_strName=Default-Font
+m_nUsage=38
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM22_WK
+
+@}}
+[FDITEM23_WK]
+m_strName=Form1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM23_WK
+
+@}}
+[FDITEM24_WK]
+m_strName=data-stampa
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
+m_strDefaultValue="99/99/9999"
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM24_WK
+
+@}}
+[FDITEM25_WK]
+m_strName=ORA-STAMPA
+m_strRawPic=X(5)
+m_strPic=X(5)
+m_strDefaultValue="99:99"
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM25_WK
+
+@}}
+[FDITEM26_WK]
+m_strName=tot-colli
+m_strRawPic=9(10)
+m_strPic=9(10)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM26_WK
+
+@}}
+[FDITEM27_WK]
+m_strName=tot-utf
+m_strRawPic=9(9)v999
+m_strPic=9(9)v999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM27_WK
+
+@}}
+[FDITEM28_WK]
+m_strName=tot-non-utf
+m_strRawPic=9(9)v999
+m_strPic=9(9)v999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM28_WK
+
+@}}
+[FDITEM29_WK]
+m_strName=imballi-ed
+m_strRawPic=z(4)
+m_strPic=z(4)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM29_WK
+
+@}}
+[FDITEM30_WK]
+m_strName=rec-grid
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM30_WK
+
+@}}
+[FDITEM31_WK]
+m_strName=r-stof-art
+m_strRawPic=z(6)
+m_strPic=z(6)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM31_WK
+
+@}}
+[FDITEM32_WK]
+m_strName=r-stof-des
+m_strRawPic=x(50)
+m_strPic=x(50)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM32_WK
+
+@}}
+[FDITEM33_WK]
+m_strName=r-stof-qta
+m_strRawPic=X(5)
+m_strPic=X(5)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM33_WK
+
+@}}
+[FDITEM34_WK]
+m_strName=r-stof-imb
+m_strRawPic=x(22)
+m_strPic=x(22)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM34_WK
+
+@}}
+[FDITEM35_WK]
+m_strName=r-stof-cod-dog
+m_strRawPic=x(8)
+m_strPic=x(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM35_WK
+
+@}}
+[FDITEM36_WK]
+m_strName=r-stof-peso-netto
+m_strRawPic=X(11)
+m_strPic=X(11)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM36_WK
+
+@}}
+[FDITEM37_WK]
+m_strName=r-stof-peso-tot-netto
+m_strRawPic=X(11)
+m_strPic=X(11)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM37_WK
+
+@}}
+[FDITEM38_WK]
+m_strName=r-stof-peso-tot-utf
+m_strRawPic=X(11)
+m_strPic=X(11)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM38_WK
+
+@}}
+[FDITEM39_WK]
+m_strName=r-stof-prz-listino
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM39_WK
+
+@}}
+[FDITEM40_WK]
+m_strName=r-stof-sconto-1
+m_strRawPic=X(6)
+m_strPic=X(6)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM40_WK
+
+@}}
+[FDITEM41_WK]
+m_strName=r-stof-sconto-2
+m_strRawPic=X(6)
+m_strPic=X(6)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM41_WK
+
+@}}
+[FDITEM42_WK]
+m_strName=r-stof-sconto-3
+m_strRawPic=X(6)
+m_strPic=X(6)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM42_WK
+
+@}}
+[FDITEM43_WK]
+m_strName=r-stof-sconto-4
+m_strRawPic=X(6)
+m_strPic=X(6)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM43_WK
+
+@}}
+[FDITEM44_WK]
+m_strName=r-stof-sconto-5
+m_strRawPic=X(6)
+m_strPic=X(6)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM44_WK
+
+@}}
+[FDITEM45_WK]
+m_strName=r-stof-prz-netto
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM45_WK
+
+@}}
+[FDITEM46_WK]
+m_strName=r-stof-imp-consumo
+m_strRawPic=X(8)
+m_strPic=X(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM46_WK
+
+@}}
+[FDITEM47_WK]
+m_strName=r-stof-prz-netto-imp
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM47_WK
+
+@}}
+[FDITEM48_WK]
+m_strName=r-stof-imp-cou-cobat
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM48_WK
+
+@}}
+[FDITEM49_WK]
+m_strName=r-stof-add-piombo
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM49_WK
+
+@}}
+[FDITEM50_WK]
+m_strName=r-stof-costi-aggi
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM50_WK
+
+@}}
+[FDITEM51_WK]
+m_strName=r-stof-prz-finale
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM51_WK
+
+@}}
+[FDITEM52_WK]
+m_strName=r-stof-prz-tot-finale
+m_strRawPic=X(11)
+m_strPic=X(11)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM52_WK
+
+@}}
+[FDITEM53_WK]
+m_strName=STATUS-articoli
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM53_WK
+
+@}}
+[FDITEM54_WK]
+m_strName=Valid-STATUS-articoli
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM54_WK
+
+@}}
+[FDITEM55_WK]
+m_strName=TITOLO
+m_strRawPic=X(50)
+m_strPic=X(50)
+m_strDefaultValue="Geslux - Accettazione Ordini Fornitori"
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM55_WK
+
+@}}
+[FDITEM56_WK]
+m_strName=OK-73X21-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM56_WK
+
+@}}
+[FDITEM57_WK]
+m_strName=CANCEL-73X21-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM57_WK
+
+@}}
+[FDITEM58_WK]
+m_strName=Form1-Tb-1-Handlea
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM58_WK
+
+@}}
+[FDITEM59_WK]
+m_strName=toolbar-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM59_WK
+
+@}}
+[FDITEM60_WK]
+m_strName=E-ESCI
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM60_WK
+
+@}}
+[FDITEM61_WK]
+m_strName=E-CERCA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM61_WK
+
+@}}
+[FDITEM62_WK]
+m_strName=bottone-ok-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM62_WK
+
+@}}
+[FDITEM63_WK]
+m_strName=bottone-cancel-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM63_WK
+
+@}}
+[FDITEM64_WK]
+m_strName=Verdana12-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM64_WK
+
+@}}
+[FDITEM65_WK]
+m_strName=STATUS-tparamge
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM65_WK
+
+@}}
+[FDITEM66_WK]
+m_strName=Valid-STATUS-tparamge
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM66_WK
+
+@}}
+[FDITEM67_WK]
+m_strName=path-zoom-tordini
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_strDefaultValue=spaces
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM67_WK
+
+@}}
+[FDITEM68_WK]
+m_strName=filler
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM68_WK
+
+@}}
+[FDITEM69_WK]
+m_strName=record-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1,
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM69_WK
+
+@}}
+[FDITEM70_WK]
+m_strName=STATUS-zoom-tordini
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM70_WK
+
+@}}
+[FDITEM71_WK]
+m_strName=Valid-STATUS-zoom-tordini
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM71_WK
+
+@}}
+[FDITEM72_WK]
+m_strName=ext-file
+m_strRawPic=x(256)
+m_strPic=X(256)
+m_nItemLevel=77
+m_nExternal=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM72_WK
+
+@}}
+[FDITEM73_WK]
+m_strName=STATUS-tcaumag
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM73_WK
+
+@}}
+[FDITEM74_WK]
+m_strName=Valid-STATUS-tcaumag
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM74_WK
+
+@}}
+[FDITEM75_WK]
+m_strName=v-ok
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM75_WK
+
+@}}
+[FDITEM76_WK]
+m_strName=STATUS-tnomen
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM76_WK
+
+@}}
+[FDITEM77_WK]
+m_strName=Valid-STATUS-tnomen
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM77_WK
+
+@}}
+[FDITEM78_WK]
+m_strName=STATUS-rordforn
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM78_WK
+
+@}}
+[FDITEM79_WK]
+m_strName=Valid-STATUS-rordforn
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM79_WK
+
+@}}
+[FDITEM80_WK]
+m_strName=STATUS-tordforn
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM80_WK
+
+@}}
+[FDITEM81_WK]
+m_strName=Valid-STATUS-tordforn
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM81_WK
+
+@}}
+[FDITEM82_WK]
+m_strName=STATUS-timballi
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM82_WK
+
+@}}
+[FDITEM83_WK]
+m_strName=Valid-STATUS-timballi
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM83_WK
+
+@}}
+[FDITEM84_WK]
+m_strName=STATUS-timbalqta
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM84_WK
+
+@}}
+[FDITEM85_WK]
+m_strName=Valid-STATUS-timbalqta
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM85_WK
+
+@}}
+[FDITEM86_WK]
+m_strName=STATUS-nordforn
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM86_WK
+
+@}}
+[FDITEM87_WK]
+m_strName=Valid-STATUS-nordforn
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM87_WK
+
+@}}
+[FDITEM88_WK]
+m_strName=cont
+m_strRawPic=9(3)
+m_strPic=9(3)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM88_WK
+
+@}}
+[FDITEM89_WK]
+m_strName=STATUS-rlistini
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM89_WK
+
+@}}
+[FDITEM90_WK]
+m_strName=Valid-STATUS-rlistini
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM90_WK
+
+@}}
+[FDITEM91_WK]
+m_strName=como-prz-totale
+m_strRawPic=9(8)v99
+m_strPic=9(8)v99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM91_WK
+
+@}}
+[FDITEM92_WK]
+m_strName=STATUS-art-ordforn
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM92_WK
+
+@}}
+[FDITEM93_WK]
+m_strName=Valid-STATUS-art-ordforn
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM93_WK
+
+@}}
+[FDITEM94_WK]
+m_strName=Verdana10-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM94_WK
+
+@}}
+[FDITEM95_WK]
+m_strName=STATUS-destinif
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM95_WK
+
+@}}
+[FDITEM96_WK]
+m_strName=Valid-STATUS-destinif
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM96_WK
+
+@}}
+[FDITEM97_WK]
+m_strName=Verdana8-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM97_WK
+
+@}}
+[FDITEM98_WK]
+m_strName=STATUS-progmag
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM98_WK
+
+@}}
+[FDITEM99_WK]
+m_strName=Valid-STATUS-progmag
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM99_WK
+
+@}}
+[FDITEM100_WK]
+m_strName=Verdana7-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM100_WK
+
+@}}
+[FDITEM101_WK]
+m_strName=Verdana6-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM101_WK
+
+@}}
+[FDITEM102_WK]
+m_strName=rec-note
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM102_WK
+
+@}}
+[FDITEM103_WK]
+m_strName=col-note
+m_strRawPic=x(200)
+m_strPic=x(200)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM103_WK
+
+@}}
+[FDITEM104_WK]
+m_strName=como-tel
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_strDefaultValue="tor-numero"
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM104_WK
+
+@}}
+[FDITEM105_WK]
+m_strName=como-numero
+m_strRawPic=X(50)
+m_strPic=X(50)
+m_strDefaultValue="desf-ragsoc-1"
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM105_WK
+
+@}}
+[FDITEM106_WK]
+m_strName=STATUS-tmagaz
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM106_WK
+
+@}}
+[FDITEM107_WK]
+m_strName=Valid-STATUS-tmagaz
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM107_WK
+
+@}}
+[FDITEM108_WK]
+m_strName=como-pagamento
+m_strRawPic=X(50)
+m_strPic=X(50)
+m_strDefaultValue="desf-ragsoc-1"
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM108_WK
+
+@}}
+[FDITEM109_WK]
+m_strName=como-consegna
+m_strRawPic=X(50)
+m_strPic=X(50)
+m_strDefaultValue="desf-ragsoc-1"
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM109_WK
+
+@}}
+[FDITEM110_WK]
+m_strName=como-scarico
+m_strRawPic=X(50)
+m_strPic=X(50)
+m_strDefaultValue="desf-ragsoc-1"
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM110_WK
+
+@}}
+[FDITEM111_WK]
+m_strName=status-tcodpag
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM111_WK
+
+@}}
+[FDITEM112_WK]
+m_strName=Valid-status-tcodpag
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM112_WK
+
+@}}
+[FDITEM113_WK]
+m_strName=tot-qta
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM113_WK
+
+@}}
+[FDITEM114_WK]
+m_strName=tot-peso-utf
+m_strRawPic=9(9)v999
+m_strPic=9(9)v999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM114_WK
+
+@}}
+[FDITEM115_WK]
+m_strName=tot-peso
+m_strRawPic=9(9)v999
+m_strPic=9(9)v999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM115_WK
+
+@}}
+[FDITEM116_WK]
+m_strName=tot-imposta
+m_strRawPic=9(9)v999
+m_strPic=9(9)v999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM116_WK
+
+@}}
+[FDITEM117_WK]
+m_strName=tot-cou
+m_strRawPic=9(9)v999
+m_strPic=9(9)v999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM117_WK
+
+@}}
+[FDITEM118_WK]
+m_strName=totale
+m_strRawPic=9(7)v99
+m_strPic=9(7)v99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM118_WK
+
+@}}
+[FDITEM119_WK]
+m_strName=tot-iva
+m_strRawPic=9(7)v99
+m_strPic=9(7)v99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM119_WK
+
+@}}
+[FDITEM120_WK]
+m_strName=tot-fat
+m_strRawPic=9(7)v99
+m_strPic=9(7)v99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM120_WK
+
+@}}
+[FDITEM121_WK]
+m_strName=STATUS-tivaese
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM121_WK
+
+@}}
+[FDITEM122_WK]
+m_strName=Valid-STATUS-tivaese
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM122_WK
+
+@}}
+
+
+[LINKAGE_SECTION]
+m_nType=1
+m_strName=Linkage Section
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionLK
+
+@}}
+[FDITEM0_LK]
+m_strName=LK-BLOCKPGM
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM0_LK
+
+@}}
+[FDITEM1_LK]
+m_strName=LK-BL-PROG-ID
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM1_LK
+
+@}}
+[FDITEM2_LK]
+m_strName=LK-BL-DATA
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM2_LK
+
+@}}
+[FDITEM3_LK]
+m_strName=LK-BL-ORA
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM3_LK
+
+@}}
+[FDITEM4_LK]
+m_strName=LK-BL-TIPO-OP
+m_strRawPic=9(1)
+m_strPic=9(1)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM4_LK
+
+@}}
+[FDITEM5_LK]
+m_strName=LK-BL-LETTURA
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM5_LK
+
+@}}
+[FDITEM6_LK]
+m_strName=LK-BL-SCRITTURA
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=2
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM6_LK
+
+@}}
+[FDITEM7_LK]
+m_strName=LK-BL-CANCELLAZIONE
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=3
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM7_LK
+
+@}}
+[FDITEM8_LK]
+m_strName=LK-BL-USO
+m_strRawPic=9(1)
+m_strPic=9(1)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM8_LK
+
+@}}
+[FDITEM9_LK]
+m_strName=LK-BL-IN-USO
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM9_LK
+
+@}}
+[FDITEM10_LK]
+m_strName=LK-HND-WIN
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM10_LK
+
+@}}
+[FDITEM11_LK]
+m_strName=USER-CODI
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=common-linkage.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM11_LK
+
+@}}
+[FDITEM12_LK]
+m_strName=LIVELLO-ABIL
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=common-linkage.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM12_LK
+
+@}}
+
+
+{{@SCREEN:
+*   Screen Painter Data
+*   Schema 6.0
+*
+BEGIN-SPDATA-6.1A
+
+GRAPHICAL-SCREEN
+
+Begin Screen Form1
+   PREFIX            = Screen1
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = Form1
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 18
+   Cell Width        = 10
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = FALSE
+   Font              = Verdana/12/C0/@Occidentale
+   Font Variable     = Verdana12-Occidentale
+   Handle Variable   = Form1-Handle
+   Height in Cells   = TRUE
+   Help ID           = 0
+   Label Offset      = 20
+   Lines             = 7,28
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = TRUE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 23,00
+   System Menu       = TRUE
+   Title             = "Accett. Ordine Fornitore"
+   Title Bar         = TRUE
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = TRUE
+   Window Type       = Independent
+   Wrap              = FALSE
+   Event Procedure   = Screen1-Event-Proc
+   Begin Entry-Field ef-anno
+      SCREEN-COL        = 18,00
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-anno
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 18,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 1001
+      Justification     = Right
+      Line              = 2,00
+      Lines             = 1,33
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 0
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 5,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 1
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Value Picture     = 9(4)
+      Value Variable    = anno
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-anno-BeforeProcedure
+      After Procedure   = ef-anno-AfterProcedure
+   End
+   Begin Entry-Field ef-num
+      SCREEN-COL        = 15,00
+      SCREEN-LINE       = 4,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-num
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 15,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 1002
+      Justification     = Right
+      Line              = 4,00
+      Lines             = 1,33
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 0
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 8,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 2
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Value Picture     = 9(8)
+      Value Variable    = numero
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-num-BeforeProcedure
+      After Procedure   = ef-num-AfterProcedure
+   End
+   Begin CsCtrl.Custom1 Label Screen1-Custom1-1
+      CUST-SYMBOL       = Custom1
+      CUST-MODIFYFLAG   = 000000000000000000000000000000000000000000000000000
+      SCREEN-COL        = 14,10
+      SCREEN-LINE       = 1,72
+      LOCK-CONTROL      = FALSE
+      LEVEL             = 5
+      (Name)            = Screen1-Custom1-1
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 14,10
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Font Variable     = Default-Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 5
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 1,72
+      Lines             = 1,39
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 1,60
+      Size Unit         = Default
+      Tab Order         = 3
+      Title             = "CUSTOM CONTROL"
+      Transparent       = TRUE
+      Visible           = NONE
+      Visible Variable  = v-custom
+      Width in Cells    = FALSE
+   End
+   Begin Label Screen1-La-1
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-La-1
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 1003
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 2,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 6,00
+      Size Unit         = Default
+      Tab Order         = 4
+      Title             = "Anno"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Screen1-La-2
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 4,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-La-2
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 2
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 4,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 12,00
+      Size Unit         = Default
+      Tab Order         = 5
+      Title             = "Num. d'ordine"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Frame Screen1-Fr-1
+      SCREEN-COL        = 1,00
+      SCREEN-LINE       = 5,50
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-Fr-1
+      3D Style          = Lowered
+      Alternate         = FALSE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Font              = Default Font
+      Full Height       = FALSE
+      Height in Cells   = TRUE
+      Help ID           = 0
+      High Color        = 0
+      ID                = 1
+      Line              = 5,50
+      Lines             = 2,78
+      Lines Unit        = Default
+      Low Color         = 0
+      Size              = 23,00
+      Size Unit         = Default
+      Tab Order         = 6
+      Thickness         = Default
+      Title Position    = 0:Unaligned
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Begin Push-Button PB-ESEGUI
+         SCREEN-COL        = 8,00
+         SCREEN-LINE       = 6,17
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = PB-ESEGUI
+         Bitmap            = "..\RESOURCE\BOTTONE-OK.BMP"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = BOTTONE-OK-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 8,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = TRUE
+         Exception Value   = 1001
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 500
+         Line              = 1,67
+         Lines             = 1,56
+         Lines in Pixels   = 30
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 7,10
+         Size in Pixels    = 73
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 1
+         Termination Value = 13
+         Title             = "E&segue il programma selezionato"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Before Procedure  = PB-ESEGUI-BeforeProcedure
+         After Procedure   = PB-ESEGUI-AfterProcedure
+         Link To           = PB-ESEGUI-LinkTo
+      End
+      Begin Push-Button pb-cancel
+         SCREEN-COL        = 15,90
+         SCREEN-LINE       = 6,17
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = pb-cancel
+         Bitmap            = "..\RESOURCE\BOTTONE-CANCEL.BMP"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = BOTTONE-CANCEL-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 15,90
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = TRUE
+         Exception Value   = 27
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 501
+         Line              = 1,67
+         Lines             = 1,56
+         Lines in Pixels   = 30
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 7,10
+         Size in Pixels    = 73
+         Size Unit         = Default
+         Style             = Escape Button
+         Tab Order         = 2
+         Termination Value = 0
+         Title             = "&Esce dall'applicativo"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Before Procedure  = Form1-Pb-2-BeforeProcedure
+         After Procedure   = Form1-Pb-2-AfterProcedure
+      End
+   End
+   Begin CsCtrl.blockpgm Label Screen1-blockpgm-1
+      CUST-SYMBOL       = blockpgm
+      CUST-MODIFYFLAG   = 000000000000000000000000000000000000000000000000000
+      SCREEN-COL        = 17,10
+      SCREEN-LINE       = 1,28
+      LOCK-CONTROL      = FALSE
+      LEVEL             = 5
+      (Name)            = Screen1-blockpgm-1
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 17,10
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 3
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 1,28
+      Lines             = 0,44
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 4,00
+      Size Unit         = Default
+      Tab Order         = 7
+      Title             = "BlockPgm"
+      Transparent       = TRUE
+      Visible           = NONE
+      Visible Variable  = v-custom
+      Width in Cells    = TRUE
+   End
+   Begin Toolbar Form1-Tb-1a
+      SCREEN-LINE       = 1,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 1
+      (Name)            = Form1-Tb-1a
+      Cell              = FALSE
+      Color             = 0
+      Font              = Default Font
+      Handle Variable   = Form1-Tb-1-Handlea
+      Help ID           = 0
+      Lines             = 2,67
+      Tab Order         = 8
+      Begin Push-Button TOOL-ESCI
+         SCREEN-COL        = 1,00
+         SCREEN-LINE       = 1,08
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-ESCI
+         Bitmap            = "..\resource\toolbar.bmp"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = toolbar-bmp
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 1,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Enable Variable   = E-ESCI
+         Exception Value   = 27
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 11
+         Line              = 1,08
+         Lines             = 1,17
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 2,20
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Escape Button
+         Tab Order         = 1
+         Termination Value = 0
+         Title             = "&Esci"
+         Visible           = NONE
+         Width in Cells    = FALSE
+      End
+      Begin Push-Button TOOL-CERCA
+         SCREEN-COL        = 6,00
+         SCREEN-LINE       = 1,08
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-CERCA
+         Bitmap            = "..\RESOURCE\TOOLBAR.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = TOOLBAR-BMP
+         Bitmap Number     = 8
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 6,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = FALSE
+         Enable Variable   = E-CERCA
+         Exception Value   = 8
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 12
+         Line              = 1,08
+         Lines             = 1,17
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 2,20
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 2
+         Termination Value = 0
+         Title             = "Cerca (F8)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Link To           = TOOL-CERCA-LinkTo
+      End
+   End
+End
+
+Begin Screen Screen2
+   PREFIX            = Screen2
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = Screen2
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 16
+   Cell Width        = 8
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = DataSet1
+   Erase Screen      = FALSE
+   Font              = Verdana/10/C0/@Occidentale
+   Font Variable     = Verdana10-Occidentale
+   Handle Variable   = Screen2-Handle
+   Height in Cells   = TRUE
+   Help ID           = 0
+   Label Offset      = 20
+   Lines             = 60,00
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = TRUE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 158,00
+   System Menu       = TRUE
+   Title Bar         = TRUE
+   Title Variable    = TITOLO
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = FALSE
+   Width in Cells    = TRUE
+   Window Type       = Independent
+   Wrap              = FALSE
+   Event Procedure   = Screen2-Event-Proc
+   Begin Push-Button PB-ESEGUIa
+      SCREEN-COL        = 138,63
+      SCREEN-LINE       = 58,70
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = PB-ESEGUIa
+      Bitmap            = "..\RESOURCE\BOTTONE-OK.BMP"
+      Bitmap Frame      = TRUE
+      Bitmap Handle     = BOTTONE-OK-BMP
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 138,63
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = TRUE
+      Exception Value   = 1000
+      Flat              = TRUE
+      Font              = Default Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 500
+      Line              = 58,70
+      Lines             = 1,81
+      Lines in Pixels   = 30
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = TRUE
+      Size              = 9,13
+      Size in Pixels    = 73
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 1
+      Termination Value = 13
+      Title             = "E&segue il programma selezionato"
+      Visible           = NONE
+      Visible Variable  = v-ok
+      Width in Cells    = FALSE
+      Before Procedure  = PB-ESEGUIa-BeforeProcedure
+      After Procedure   = PB-ESEGUIa-AfterProcedure
+      Link To           = PB-ESEGUIa-LinkTo
+   End
+   Begin Push-Button Form1-Pb-2a
+      SCREEN-COL        = 148,38
+      SCREEN-LINE       = 58,70
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-Pb-2a
+      Bitmap            = "..\RESOURCE\BOTTONE-CANCEL.BMP"
+      Bitmap Frame      = TRUE
+      Bitmap Handle     = BOTTONE-CANCEL-BMP
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 148,38
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = TRUE
+      Exception Value   = 27
+      Flat              = TRUE
+      Font              = Default Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 501
+      Line              = 58,70
+      Lines             = 1,81
+      Lines in Pixels   = 30
+      Lines Unit        = Default
+      No Auto Default   = TRUE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = TRUE
+      Size              = 9,13
+      Size in Pixels    = 73
+      Size Unit         = Default
+      Style             = Escape Button
+      Tab Order         = 2
+      Termination Value = 0
+      Title             = "&Esce dall'applicativo"
+      Visible           = NONE
+      Width in Cells    = FALSE
+      Before Procedure  = Form1-Pb-2a-BeforeProcedure
+      After Procedure   = Form1-Pb-2a-AfterProcedure
+   End
+   Begin Grid Screen2-Gd-1
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 19,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-Gd-1
+      Action            = (None)
+      Adjustable Columns = FALSE
+      Border            = Boxed
+      Cells' Setting    = ( X = 1, Y = 1, Data = "Codice" )
+      Cells' Setting    = ( X = 2, Y = 1, Data = "Descrizione Prodotto" )
+      Cells' Setting    = ( X = 3, Y = 1, Data = "Pezzi" )
+      Cells' Setting    = ( X = 4, Y = 1, Data = "PZ X LT/KG" )
+      Cells' Setting    = ( X = 5, Y = 1, Data = "Tariffa" )
+      Cells' Setting    = ( X = 6, Y = 1, Data = "peso" )
+      Cells' Setting    = ( X = 7, Y = 1, Data = "Tot. Kg" )
+      Cells' Setting    = ( X = 8, Y = 1, Data = "Tot. Kg" )
+      Cells' Setting    = ( X = 9, Y = 1, Data = "Listino" )
+      Cells' Setting    = ( X = 10, Y = 1, Data = "Sc.%" )
+      Cells' Setting    = ( X = 11, Y = 1, Data = "Sc.%" )
+      Cells' Setting    = ( X = 12, Y = 1, Data = "Sc.%" )
+      Cells' Setting    = ( X = 13, Y = 1, Data = "Sc.%" )
+      Cells' Setting    = ( X = 14, Y = 1, Data = "Sc.%" )
+      Cells' Setting    = ( X = 15, Y = 1, Data = "Netto" )
+      Cells' Setting    = ( X = 16, Y = 1, Data = "Imposta" )
+      Cells' Setting    = ( X = 17, Y = 1, Data = "Netto" )
+      Cells' Setting    = ( X = 18, Y = 1, Data = "Contr." )
+      Cells' Setting    = ( X = 19, Y = 1, Data = "Add." )
+      Cells' Setting    = ( X = 20, Y = 1, Data = "Costi" )
+      Cells' Setting    = ( X = 21, Y = 1, Data = "Totale" )
+      Cells' Setting    = ( X = 22, Y = 1, Data = "Importo" )
+      Cells' Setting    = ( X = 1, Y = 2, Data = "LUBEX" )
+      Cells' Setting    = ( X = 5, Y = 2, Data = "doganale" )
+      Cells' Setting    = ( X = 6, Y = 2, Data = "netto" )
+      Cells' Setting    = ( X = 7, Y = 2, Data = "(netti)" )
+      Cells' Setting    = ( X = 8, Y = 2, Data = "(U.T.F.)" )
+      Cells' Setting    = ( X = 9, Y = 2, Data = "riservato" )
+      Cells' Setting    = ( X = 16, Y = 2, Data = "al pezzo" )
+      Cells' Setting    = ( X = 17, Y = 2, Data = "(imposta)" )
+      Cells' Setting    = ( X = 18, Y = 2, Data = "consorzio" )
+      Cells' Setting    = ( X = 19, Y = 2, Data = "Piombo" )
+      Cells' Setting    = ( X = 20, Y = 2, Data = "aggiunt" )
+      Cells' Setting    = ( X = 21, Y = 2, Data = "unitario" )
+      Cells' Setting    = ( X = 22, Y = 2, Data = "totale" )
+      Centered Headings = TRUE
+      Color             = 0
+      Column            = 2,00
+      Column Headings   = TRUE
+      Columns' Setting  = ( X = 1, Name = r-stof-art, READONLY = 0 )
+      Columns' Setting  = ( PIC = "z(6)", TYPE = "9(6)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 6, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 2, Name = r-stof-des, READONLY = 0 )
+      Columns' Setting  = ( PIC = "x(50)", TYPE = "x(50)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "L" )
+      Columns' Setting  = ( DISP = 33, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 3, Name = r-stof-qta, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(5)", TYPE = "x(5)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 5, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 4, Name = r-stof-imb, READONLY = 0 )
+      Columns' Setting  = ( PIC = "x(22)", TYPE = "x(22)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "L" )
+      Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 5, Name = r-stof-cod-dog, READONLY = 0 )
+      Columns' Setting  = ( PIC = "x(8)", TYPE = "x(8)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 9, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 6, Name = r-stof-peso-netto, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(11)", TYPE = "x(11)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 7, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 7, Name = r-stof-peso-tot-netto, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(11)", TYPE = "x(11)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 7, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 8, Name = r-stof-peso-tot-utf, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(11)", TYPE = "x(11)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 7, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 9, Name = r-stof-prz-listino, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(10)", TYPE = "x(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 7, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 10, Name = r-stof-sconto-1, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(6)", TYPE = "x(6)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
+      Columns' Setting  = ( DISP = 5, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 11, Name = r-stof-sconto-2, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(6)", TYPE = "x(6)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
+      Columns' Setting  = ( DISP = 5, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 12, Name = r-stof-sconto-3, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(6)", TYPE = "x(6)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
+      Columns' Setting  = ( DISP = 5, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 13, Name = r-stof-sconto-4, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(6)", TYPE = "x(6)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
+      Columns' Setting  = ( DISP = 5, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 14, Name = r-stof-sconto-5, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(6)", TYPE = "x(6)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
+      Columns' Setting  = ( DISP = 5, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 15, Name = r-stof-prz-netto, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(10)", TYPE = "x(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 7, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 16, Name = r-stof-imp-consumo, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(8)", TYPE = "x(8)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 7, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 17, Name = r-stof-prz-netto-imp, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(10)", TYPE = "x(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 8, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 18, Name = r-stof-imp-cou-cobat, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(08)", TYPE = "x(8)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 8, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 19, Name = r-stof-add-piombo, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(08)", TYPE = "x(8)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 7, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 20, Name = r-stof-costi-aggi, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(10)", TYPE = "x(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 7, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 21, Name = r-stof-prz-finale, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(10)", TYPE = "x(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 7, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 22, Name = r-stof-prz-tot-finale, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(11)", TYPE = "x(11)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 7, SEPA = 5, DIVI = 1 )
+      Cursor Color      = 0
+      Cursor Frame Width = 0
+      Cursor X          = 0
+      Cursor Y          = 0
+      Destroy Type      = Automatic
+      Divider Color     = 1
+      Drag Color        = 0
+      Enable            = NONE
+      End Color         = 0
+      Font              = Verdana/7/C0/@Occidentale
+      Font Variable     = Verdana7-Occidentale
+      Heading Color     = 257
+      Heading Divider Color = 1
+      Heading Font      = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hscroll           = FALSE
+      ID                = 33
+      Last Row          = 0
+      Line              = 19,00
+      Lines             = 20,31
+      Lines Unit        = Default
+      No Tab            = FALSE
+      Num Col Headings  = 2
+      Num Columns       = 22
+      Num Rows          = 0
+      Occurs            = 0
+      Paged             = FALSE
+      Row Dividers      = 1
+      Row Headings      = FALSE
+      Size              = 156,00
+      Size Unit         = Default
+      Tab Order         = 3
+      Tiled Headings    = TRUE
+      Use Tab           = FALSE
+      Virtual Width     = 0
+      Visible           = TRUE
+      Vpadding          = 40
+      Vscroll           = TRUE
+      Width in Cells    = TRUE
+      Event Procedure   = Screen2-Gd-1-Event-Proc
+      Msg-Begin-Drag    = Screen2-Gd-1-Ev-Msg-Begin-Drag
+      Msg-Begin-Entry   = Screen2-Gd-1-Ev-Msg-Begin-Entry
+      Msg-End-Drag      = Screen2-Gd-1-Ev-Msg-End-Drag
+      Msg-Goto-Cell     = Screen2-Gd-1-Ev-Msg-Goto-Cell
+      Msg-Goto-Cell-Drag = Screen2-Gd-1-Ev-Msg-Goto-Cell-Drag
+      Msg-Goto-Cell-Mouse = Screen2-Gd-1-Ev-Msg-Goto-Cell-Mouse
+   End
+   Begin Bar Screen2-Br-1
+      SCREEN-COL        = 1,00
+      SCREEN-LINE       = 46,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-Br-1
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1.00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 18
+      Kind              = Horizontal
+      Line              = 46,00
+      Line Styles       = Solid
+      Occurs            = 0
+      Position Shift    = 0
+      COLORS            = ( 1 )
+      SHADING           = ( -1 )
+      Size (Lines)      = 158,00
+      Size (Lines) in Pixels = 1264
+      Size (Lines) Unit = Default
+      Tab Order         = 4
+      Visible           = TRUE
+      Width             = 1
+      Width in Cells    = TRUE
+   End
+   Begin Bar Screen2-Br-1a
+      SCREEN-COL        = 1,00
+      SCREEN-LINE       = 18,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-Br-1a
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1.00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 19
+      Kind              = Horizontal
+      Line              = 18,00
+      Line Styles       = Solid
+      Occurs            = 0
+      Position Shift    = 0
+      COLORS            = ( 1 )
+      SHADING           = ( -1 )
+      Size (Lines)      = 158,00
+      Size (Lines) in Pixels = 1264
+      Size (Lines) Unit = Default
+      Tab Order         = 5
+      Visible           = TRUE
+      Width             = 1
+      Width in Cells    = TRUE
+   End
+   Begin Bar Screen2-Br-1b
+      SCREEN-COL        = 1,00
+      SCREEN-LINE       = 58,54
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-Br-1b
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1.00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 502
+      Kind              = Horizontal
+      Line              = 58,54
+      Line Styles       = Solid
+      Occurs            = 0
+      Position Shift    = 0
+      COLORS            = ( 8, 8 )
+      SHADING           = ( -1, 1 )
+      Size (Lines)      = 158,00
+      Size (Lines) in Pixels = 1264
+      Size (Lines) Unit = Default
+      Tab Order         = 6
+      Visible           = NONE
+      Width             = 2
+      Width in Cells    = TRUE
+   End
+   Begin Grid gd-note
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 47,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = gd-note
+      Action            = (None)
+      Adjustable Columns = FALSE
+      Border            = Boxed
+      Cells' Setting    = ( X = 1, Y = 1, Data = "Note" )
+      Centered Headings = FALSE
+      Color             = 0
+      Column            = 2,00
+      Column Headings   = TRUE
+      Columns' Setting  = ( X = 1, Name = col-note, READONLY = 0 )
+      Columns' Setting  = ( PIC = "x(200)", TYPE = "x(200)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "L" )
+      Columns' Setting  = ( DISP = 6, SEPA = 5, DIVI = 1 )
+      Cursor Color      = 0
+      Cursor Frame Width = 0
+      Cursor X          = 0
+      Cursor Y          = 0
+      Destroy Type      = Automatic
+      Divider Color     = 1
+      Drag Color        = 0
+      Enable            = NONE
+      End Color         = 0
+      Font              = Verdana/7/C0/@Occidentale
+      Font Variable     = Verdana7-Occidentale
+      Heading Color     = 257
+      Heading Divider Color = 1
+      Heading Font      = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hscroll           = FALSE
+      ID                = 511
+      Last Row          = 0
+      Line              = 47,00
+      Lines             = 10,75
+      Lines Unit        = Default
+      No Tab            = FALSE
+      Num Col Headings  = 1
+      Num Columns       = 1
+      Num Rows          = 0
+      Occurs            = 0
+      Paged             = FALSE
+      Row Dividers      = 1
+      Row Headings      = FALSE
+      Size              = 156,00
+      Size Unit         = Default
+      Tab Order         = 7
+      Tiled Headings    = TRUE
+      Use Tab           = FALSE
+      Virtual Width     = 0
+      Visible           = TRUE
+      Vpadding          = 40
+      Vscroll           = TRUE
+      Width in Cells    = TRUE
+      Msg-Begin-Entry   = gd-note-Ev-Msg-Begin-Entry
+   End
+   Begin Frame Screen2-Fr-1aa
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-Fr-1aa
+      3D Style          = Normal
+      Alternate         = FALSE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 2
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Font              = Default Font
+      Full Height       = TRUE
+      Height in Cells   = TRUE
+      Help ID           = 0
+      High Color        = 0
+      ID                = 518
+      Line              = 2,00
+      Lines             = 7,00
+      Lines Unit        = Default
+      Low Color         = 0
+      Size              = 77,00
+      Size Unit         = Default
+      Tab Order         = 8
+      Thickness         = Default
+      Title Position    = 0:Unaligned
+      Visible           = TRUE
+      Width in Cells    = TRUE
+      Begin Data.Label Screen2-DaLa-1aa
+         SCREEN-COL        = 15,00
+         SCREEN-LINE       = 3,00
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen2-DaLa-1aa
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 2
+         Column            = 14,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Field Edited (Style) = 0
+         Field Edited Format = X(40)
+         Field Picture     = X(40)
+         Field Variable    = desf-ragsoc-1
+         File              = destinif
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 519
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 2,00
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 63,00
+         Size Unit         = Default
+         Tab Order         = 1
+         Title             = "desf-ragsoc-1"
+         Transparent       = TRUE
+         Visible           = TRUE
+         Width in Cells    = TRUE
+      End
+      Begin Label Screen2-La-8b
+         SCREEN-COL        = 3,00
+         SCREEN-LINE       = 3,00
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen2-La-8b
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 2,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 520
+         Justification     = Left
+         Label Offset      = 20
+         Line              = 2,00
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 9,00
+         Size Unit         = Default
+         Tab Order         = 2
+         Title             = "Spettabile:"
+         Transparent       = TRUE
+         Visible           = TRUE
+         Width in Cells    = TRUE
+      End
+      Begin Label Screen2-La-8ba
+         SCREEN-COL        = 3,00
+         SCREEN-LINE       = 4,50
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen2-La-8ba
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 2,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 521
+         Justification     = Left
+         Label Offset      = 20
+         Line              = 3,50
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 9,00
+         Size Unit         = Default
+         Tab Order         = 3
+         Title             = "Signor:"
+         Transparent       = TRUE
+         Visible           = TRUE
+         Width in Cells    = TRUE
+      End
+      Begin Data.Label Screen2-DaLa-1aaa
+         SCREEN-COL        = 15,00
+         SCREEN-LINE       = 4,50
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen2-DaLa-1aaa
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 2
+         Column            = 14,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Field Edited (Style) = 0
+         Field Edited Format = X(40)
+         Field Picture     = X(40)
+         Field Variable    = tof-referente
+         File              = tordforn
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 522
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 3,50
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 63,00
+         Size Unit         = Default
+         Tab Order         = 4
+         Title             = "desf-ragsoc-1"
+         Transparent       = TRUE
+         Visible           = TRUE
+         Width in Cells    = TRUE
+      End
+      Begin Data.Label Screen2-DaLa-1aaaa
+         SCREEN-COL        = 15,00
+         SCREEN-LINE       = 6,00
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen2-DaLa-1aaaa
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 2
+         Column            = 14,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Field Edited (Style) = 0
+         Field Edited Format = X(20)
+         Field Picture     = X(20)
+         Field Variable    = tof-tel-dir
+         File              = tordforn
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 523
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 5,00
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 63,00
+         Size Unit         = Default
+         Tab Order         = 5
+         Title             = "desf-ragsoc-1"
+         Transparent       = TRUE
+         Visible           = TRUE
+         Width in Cells    = TRUE
+      End
+      Begin Label Screen2-La-8baa
+         SCREEN-COL        = 3,00
+         SCREEN-LINE       = 6,00
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen2-La-8baa
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 2,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 524
+         Justification     = Left
+         Label Offset      = 20
+         Line              = 5,00
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 9,00
+         Size Unit         = Default
+         Tab Order         = 6
+         Title             = "Telefono.:"
+         Transparent       = TRUE
+         Visible           = TRUE
+         Width in Cells    = TRUE
+      End
+      Begin Label Screen2-La-8baaa
+         SCREEN-COL        = 3,00
+         SCREEN-LINE       = 7,50
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen2-La-8baaa
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 2,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 525
+         Justification     = Left
+         Label Offset      = 20
+         Line              = 6,50
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 9,00
+         Size Unit         = Default
+         Tab Order         = 7
+         Title             = "Mail:"
+         Transparent       = TRUE
+         Visible           = TRUE
+         Width in Cells    = TRUE
+      End
+      Begin Data.Label Screen2-DaLa-1aaaaa
+         SCREEN-COL        = 15,00
+         SCREEN-LINE       = 7,50
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen2-DaLa-1aaaaa
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 2
+         Column            = 14,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Field Edited (Style) = 0
+         Field Edited Format = X(100)
+         Field Picture     = X(100)
+         Field Variable    = tof-email
+         File              = tordforn
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 526
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 6,50
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 63,00
+         Size Unit         = Default
+         Tab Order         = 8
+         Title             = "desf-ragsoc-1"
+         Transparent       = TRUE
+         Visible           = TRUE
+         Width in Cells    = TRUE
+      End
+   End
+   Begin Frame Screen2-Fr-1aaa
+      SCREEN-COL        = 81,00
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-Fr-1aaa
+      3D Style          = Normal
+      Alternate         = FALSE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 2
+      Column            = 81,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Font              = Default Font
+      Full Height       = TRUE
+      Height in Cells   = TRUE
+      Help ID           = 0
+      High Color        = 0
+      ID                = 527
+      Line              = 2,00
+      Lines             = 7,00
+      Lines Unit        = Default
+      Low Color         = 0
+      Size              = 77,00
+      Size Unit         = Default
+      Tab Order         = 9
+      Thickness         = Default
+      Title Position    = 0:Unaligned
+      Visible           = TRUE
+      Width in Cells    = TRUE
+      Begin Data.Label Screen2-DaLa-1aab
+         SCREEN-COL        = 94,00
+         SCREEN-LINE       = 3,00
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen2-DaLa-1aab
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 2
+         Column            = 14,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Field Edited (Style) = 0
+         Field Edited Format = X(50)
+         Field Picture     = X(50)
+         Field Variable    = como-numero
+         File              = Working Storage
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 528
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 2,00
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 63,00
+         Size Unit         = Default
+         Tab Order         = 1
+         Title             = "desf-ragsoc-1"
+         Transparent       = TRUE
+         Visible           = TRUE
+         Width in Cells    = TRUE
+      End
+      Begin Label Screen2-La-8bb
+         SCREEN-COL        = 82,00
+         SCREEN-LINE       = 3,00
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen2-La-8bb
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 2,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 529
+         Justification     = Left
+         Label Offset      = 20
+         Line              = 2,00
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 11,00
+         Size Unit         = Default
+         Tab Order         = 2
+         Title             = "Ordine:"
+         Transparent       = TRUE
+         Visible           = TRUE
+         Width in Cells    = TRUE
+      End
+      Begin Label Screen2-La-8bab
+         SCREEN-COL        = 82,00
+         SCREEN-LINE       = 4,50
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen2-La-8bab
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 2,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 530
+         Justification     = Left
+         Label Offset      = 20
+         Line              = 3,50
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 11,00
+         Size Unit         = Default
+         Tab Order         = 3
+         Title             = "Data Ordine:"
+         Transparent       = TRUE
+         Visible           = TRUE
+         Width in Cells    = TRUE
+      End
+      Begin Data.Label LBL-DATA-RIF
+         SCREEN-COL        = 94,00
+         SCREEN-LINE       = 4,50
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = LBL-DATA-RIF
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 2
+         Column            = 14,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Field Edited (Style) = 1
+         Field Edited Format = 99/99/9999
+         Field Picture     = 9(8)
+         Field Variable    = tof-data-consegna
+         File              = tordforn
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 531
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 3,50
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 63,00
+         Size Unit         = Default
+         Tab Order         = 4
+         Title             = "desf-ragsoc-1"
+         Transparent       = TRUE
+         Visible           = TRUE
+         Width in Cells    = TRUE
+      End
+      Begin Data.Label Screen2-DaLa-1aaaab
+         SCREEN-COL        = 94,00
+         SCREEN-LINE       = 6,00
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen2-DaLa-1aaaab
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 2
+         Column            = 14,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Field Edited (Style) = 0
+         Field Edited Format = X(10)
+         Field Picture     = X(10)
+         Field Variable    = tof-utente-creazione
+         File              = tordforn
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 532
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 5,00
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 63,00
+         Size Unit         = Default
+         Tab Order         = 5
+         Title             = "desf-ragsoc-1"
+         Transparent       = TRUE
+         Visible           = TRUE
+         Width in Cells    = TRUE
+      End
+      Begin Label Screen2-La-8baab
+         SCREEN-COL        = 82,00
+         SCREEN-LINE       = 6,00
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen2-La-8baab
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 2,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 533
+         Justification     = Left
+         Label Offset      = 20
+         Line              = 5,00
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 11,00
+         Size Unit         = Default
+         Tab Order         = 6
+         Title             = "Fatto da:"
+         Transparent       = TRUE
+         Visible           = TRUE
+         Width in Cells    = TRUE
+      End
+      Begin Label Screen2-La-8baaaa
+         SCREEN-COL        = 82,00
+         SCREEN-LINE       = 7,50
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen2-La-8baaaa
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 2,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 534
+         Justification     = Left
+         Label Offset      = 20
+         Line              = 6,50
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 11,00
+         Size Unit         = Default
+         Tab Order         = 7
+         Title             = "Tel. Diretto:"
+         Transparent       = TRUE
+         Visible           = TRUE
+         Width in Cells    = TRUE
+      End
+      Begin Data.Label Screen2-DaLa-1aaaaaa
+         SCREEN-COL        = 94,00
+         SCREEN-LINE       = 7,50
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen2-DaLa-1aaaaaa
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 2
+         Column            = 14,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Field Edited (Style) = 0
+         Field Edited Format = X(30)
+         Field Picture     = X(30)
+         Field Variable    = como-tel
+         File              = Working Storage
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 535
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 6,50
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 63,00
+         Size Unit         = Default
+         Tab Order         = 8
+         Title             = "desf-ragsoc-1"
+         Transparent       = TRUE
+         Visible           = TRUE
+         Width in Cells    = TRUE
+      End
+   End
+   Begin Frame Screen2-Fr-1aab
+      SCREEN-COL        = 2,13
+      SCREEN-LINE       = 10,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-Fr-1aab
+      3D Style          = Normal
+      Alternate         = FALSE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 2
+      Column            = 2,13
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Font              = Default Font
+      Full Height       = TRUE
+      Height in Cells   = TRUE
+      Help ID           = 0
+      High Color        = 0
+      ID                = 536
+      Line              = 10,00
+      Lines             = 7,00
+      Lines Unit        = Default
+      Low Color         = 0
+      Size              = 77,00
+      Size Unit         = Default
+      Tab Order         = 10
+      Thickness         = Default
+      Title Position    = 0:Unaligned
+      Visible           = TRUE
+      Width in Cells    = TRUE
+      Begin Data.Label Screen2-DaLa-1aac
+         SCREEN-COL        = 15,13
+         SCREEN-LINE       = 11,00
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen2-DaLa-1aac
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 2
+         Column            = 14,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Field Edited (Style) = 0
+         Field Edited Format = X(50)
+         Field Picture     = X(50)
+         Field Variable    = mag-descrizione
+         File              = tmagaz
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 537
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 2,00
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 63,00
+         Size Unit         = Default
+         Tab Order         = 1
+         Title             = "desf-ragsoc-1"
+         Transparent       = TRUE
+         Visible           = TRUE
+         Width in Cells    = TRUE
+      End
+      Begin Label Screen2-La-8bc
+         SCREEN-COL        = 3,13
+         SCREEN-LINE       = 11,00
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen2-La-8bc
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 2,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 538
+         Justification     = Left
+         Label Offset      = 20
+         Line              = 2,00
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 11,00
+         Size Unit         = Default
+         Tab Order         = 2
+         Title             = "Franco:"
+         Transparent       = TRUE
+         Visible           = TRUE
+         Width in Cells    = TRUE
+      End
+      Begin Label Screen2-La-8bac
+         SCREEN-COL        = 3,13
+         SCREEN-LINE       = 12,50
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen2-La-8bac
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 2,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 539
+         Justification     = Left
+         Label Offset      = 20
+         Line              = 3,50
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 11,00
+         Size Unit         = Default
+         Tab Order         = 3
+         Title             = "Pagamento"
+         Transparent       = TRUE
+         Visible           = TRUE
+         Width in Cells    = TRUE
+      End
+      Begin Data.Label Screen2-DaLa-1aaab
+         SCREEN-COL        = 15,13
+         SCREEN-LINE       = 12,50
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen2-DaLa-1aaab
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 2
+         Column            = 14,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Field Edited (Style) = 0
+         Field Edited Format = X(50)
+         Field Picture     = X(50)
+         Field Variable    = como-pagamento
+         File              = Working Storage
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 540
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 3,50
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 63,00
+         Size Unit         = Default
+         Tab Order         = 4
+         Title             = "desf-ragsoc-1"
+         Transparent       = TRUE
+         Visible           = TRUE
+         Width in Cells    = TRUE
+      End
+      Begin Data.Label Screen2-DaLa-1aaaac
+         SCREEN-COL        = 15,13
+         SCREEN-LINE       = 14,00
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen2-DaLa-1aaaac
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 2
+         Column            = 14,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Field Edited (Style) = 0
+         Field Edited Format = X(50)
+         Field Picture     = X(50)
+         Field Variable    = como-consegna
+         File              = Working Storage
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 541
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 5,00
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 63,00
+         Size Unit         = Default
+         Tab Order         = 5
+         Title             = "desf-ragsoc-1"
+         Transparent       = TRUE
+         Visible           = TRUE
+         Width in Cells    = TRUE
+      End
+      Begin Label Screen2-La-8baac
+         SCREEN-COL        = 3,13
+         SCREEN-LINE       = 14,00
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen2-La-8baac
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 2,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 542
+         Justification     = Left
+         Label Offset      = 20
+         Line              = 5,00
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 11,00
+         Size Unit         = Default
+         Tab Order         = 6
+         Title             = "Consegna:"
+         Transparent       = TRUE
+         Visible           = TRUE
+         Width in Cells    = TRUE
+      End
+      Begin Label Screen2-La-8baaab
+         SCREEN-COL        = 3,13
+         SCREEN-LINE       = 15,50
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen2-La-8baaab
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 2,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 543
+         Justification     = Left
+         Label Offset      = 20
+         Line              = 6,50
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 11,00
+         Size Unit         = Default
+         Tab Order         = 7
+         Title             = "Scarico:"
+         Transparent       = TRUE
+         Visible           = TRUE
+         Width in Cells    = TRUE
+      End
+      Begin Data.Label Screen2-DaLa-1aaaaab
+         SCREEN-COL        = 15,13
+         SCREEN-LINE       = 15,50
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen2-DaLa-1aaaaab
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 2
+         Column            = 14,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Field Edited (Style) = 0
+         Field Edited Format = X(50)
+         Field Picture     = X(50)
+         Field Variable    = como-scarico
+         File              = Working Storage
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 544
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 6,50
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 63,00
+         Size Unit         = Default
+         Tab Order         = 8
+         Title             = "desf-ragsoc-1"
+         Transparent       = TRUE
+         Visible           = TRUE
+         Width in Cells    = TRUE
+      End
+   End
+   Begin Data.Entry-Field Screen2-DaEf-1
+      SCREEN-COL        = 36,00
+      SCREEN-LINE       = 41,50
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-DaEf-1
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 36,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Field Edited (Style) = 1
+      Field Edited Format = z(5)
+      Field Picture     = 9(5)
+      Field Variable    = tot-qta
+      File              = Working Storage
+      Font              = Verdana/7/C0/@Occidentale
+      Font Variable     = Verdana7-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 1
+      Justification     = Center
+      Line              = 41,50
+      Lines             = 1,06
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 30
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 4,63
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 11
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = Screen2-DaEf-1-BeforeProcedure
+      After Procedure   = Screen2-DaEf-1-AfterProcedure
+   End
+   Begin Label Screen2-La-8baaaba
+      SCREEN-COL        = 33,13
+      SCREEN-LINE       = 40,50
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-La-8baaaba
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 33,13
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/7/C0/@Occidentale
+      Font Variable     = Verdana7-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 2
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 40,50
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 11,00
+      Size Unit         = Default
+      Tab Order         = 12
+      Title             = "Totale pezzi"
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin Data.Entry-Field Screen2-DaEf-1a
+      SCREEN-COL        = 57,10
+      SCREEN-LINE       = 41,50
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-DaEf-1a
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 57,10
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Field Edited (Style) = 1
+      Field Edited Format = z(8)9,999
+      Field Picture     = 9(9)v999
+      Field Variable    = tot-peso
+      File              = Working Storage
+      Font              = Verdana/7/C0/@Occidentale
+      Font Variable     = Verdana7-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 3
+      Justification     = Center
+      Line              = 41,50
+      Lines             = 1,06
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 13
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 6,25
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 13
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = Screen2-DaEf-1-BeforeProcedure
+      After Procedure   = Screen2-DaEf-1-AfterProcedure
+   End
+   Begin Label Screen2-La-8baaabaa
+      SCREEN-COL        = 57,13
+      SCREEN-LINE       = 40,50
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-La-8baaabaa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 57,13
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/7/C0/@Occidentale
+      Font Variable     = Verdana7-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 4
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 40,50
+      Lines             = 1,06
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 6,25
+      Size Unit         = Default
+      Tab Order         = 14
+      Title             = "Totale Kg"
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin Data.Entry-Field Screen2-DaEf-1aa
+      SCREEN-COL        = 63,38
+      SCREEN-LINE       = 41,50
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-DaEf-1aa
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 63,38
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Field Edited (Style) = 1
+      Field Edited Format = z(8)9,999
+      Field Picture     = 9(9)v999
+      Field Variable    = tot-peso
+      File              = Working Storage
+      Font              = Verdana/7/C0/@Occidentale
+      Font Variable     = Verdana7-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 5
+      Justification     = Center
+      Line              = 41,50
+      Lines             = 1,06
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 13
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 6,25
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 15
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = Screen2-DaEf-1-BeforeProcedure
+      After Procedure   = Screen2-DaEf-1-AfterProcedure
+   End
+   Begin Label Screen2-La-8baaabaaa
+      SCREEN-COL        = 63,38
+      SCREEN-LINE       = 40,50
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-La-8baaabaaa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 63,38
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/7/C0/@Occidentale
+      Font Variable     = Verdana7-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 6
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 40,50
+      Lines             = 1,06
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 6,25
+      Size Unit         = Default
+      Tab Order         = 16
+      Title             = "Kg U.T.F."
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin Label Screen2-La-8baaabaaaa
+      SCREEN-COL        = 106,00
+      SCREEN-LINE       = 40,50
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-La-8baaabaaaa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 106,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/7/C0/@Occidentale
+      Font Variable     = Verdana7-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 7
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 40,50
+      Lines             = 1,06
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 14,00
+      Size Unit         = Default
+      Tab Order         = 17
+      Title             = "totale imp. a parte"
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin Data.Entry-Field Screen2-DaEf-1aaa
+      SCREEN-COL        = 109,63
+      SCREEN-LINE       = 41,50
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-DaEf-1aaa
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 109,63
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Field Edited (Style) = 1
+      Field Edited Format = z(8)9,99
+      Field Picture     = 9(9)v999
+      Field Variable    = tot-imposta
+      File              = Working Storage
+      Font              = Verdana/7/C0/@Occidentale
+      Font Variable     = Verdana7-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 8
+      Justification     = Right
+      Line              = 41,50
+      Lines             = 1,06
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 13
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 6,25
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 18
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = Screen2-DaEf-1-BeforeProcedure
+      After Procedure   = Screen2-DaEf-1-AfterProcedure
+   End
+   Begin Data.Entry-Field Screen2-DaEf-1aaaa
+      SCREEN-COL        = 122,75
+      SCREEN-LINE       = 41,50
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-DaEf-1aaaa
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 122,75
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Field Edited (Style) = 1
+      Field Edited Format = z(8)9,99
+      Field Picture     = 9(9)v999
+      Field Variable    = tot-cou
+      File              = Working Storage
+      Font              = Verdana/7/C0/@Occidentale
+      Font Variable     = Verdana7-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 9
+      Justification     = Right
+      Line              = 41,50
+      Lines             = 1,06
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 13
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 7,13
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 19
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = Screen2-DaEf-1-BeforeProcedure
+      After Procedure   = Screen2-DaEf-1-AfterProcedure
+   End
+   Begin Label Screen2-La-8baaabaaaaa
+      SCREEN-COL        = 120,20
+      SCREEN-LINE       = 40,50
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-La-8baaabaaaaa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 120,20
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/7/C0/@Occidentale
+      Font Variable     = Verdana7-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 10
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 40,50
+      Lines             = 1,06
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 14,00
+      Size Unit         = Default
+      Tab Order         = 20
+      Title             = "totale contr. consorzio"
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin Data.Entry-Field Screen2-DaEf-1aaaaa
+      SCREEN-COL        = 145,63
+      SCREEN-LINE       = 41,50
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-DaEf-1aaaaa
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 145,63
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Field Edited (Style) = 1
+      Field Edited Format = zzz.zzz.zz9,99
+      Field Picture     = 9(7)v99
+      Field Variable    = totale
+      File              = Working Storage
+      Font              = Verdana/7/C0/@Occidentale
+      Font Variable     = Verdana7-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 11
+      Justification     = Right
+      Line              = 41,50
+      Lines             = 1,06
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 30
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 10,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 21
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = Screen2-DaEf-1-BeforeProcedure
+      After Procedure   = Screen2-DaEf-1-AfterProcedure
+   End
+   Begin Label Screen2-La-8baaabaaaaaa
+      SCREEN-COL        = 135,00
+      SCREEN-LINE       = 41,50
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-La-8baaabaaaaaa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 135,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/7/C0/@Occidentale
+      Font Variable     = Verdana7-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 12
+      Justification     = Right
+      Label Offset      = 20
+      Line              = 41,50
+      Lines             = 1,06
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 10,00
+      Size Unit         = Default
+      Tab Order         = 22
+      Title             = "Sub totale"
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin Data.Entry-Field Screen2-DaEf-1aaaaaa
+      SCREEN-COL        = 145,63
+      SCREEN-LINE       = 43,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-DaEf-1aaaaaa
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 145,63
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Field Edited (Style) = 1
+      Field Edited Format = zzz.zzz.zz9,99
+      Field Picture     = 9(7)v99
+      Field Variable    = tot-iva
+      File              = Working Storage
+      Font              = Verdana/7/C0/@Occidentale
+      Font Variable     = Verdana7-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 13
+      Justification     = Right
+      Line              = 43,00
+      Lines             = 1,06
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 10
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 10,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 23
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = Screen2-DaEf-1-BeforeProcedure
+      After Procedure   = Screen2-DaEf-1-AfterProcedure
+   End
+   Begin Label Screen2-La-8baaabaaaaaaa
+      SCREEN-COL        = 135,00
+      SCREEN-LINE       = 43,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-La-8baaabaaaaaaa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 135,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/7/C0/@Occidentale
+      Font Variable     = Verdana7-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 14
+      Justification     = Right
+      Label Offset      = 20
+      Line              = 43,00
+      Lines             = 1,06
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 10,00
+      Size Unit         = Default
+      Tab Order         = 24
+      Title             = "Sub totale"
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin Data.Entry-Field Screen2-DaEf-1aaaaaaa
+      SCREEN-COL        = 145,63
+      SCREEN-LINE       = 44,50
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-DaEf-1aaaaaaa
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 145,63
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Field Edited (Style) = 1
+      Field Edited Format = zzz.zzz.zz9,99
+      Field Picture     = 9(7)v99
+      Field Variable    = tot-fat
+      File              = Working Storage
+      Font              = Verdana/7/C0/@Occidentale
+      Font Variable     = Verdana7-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 15
+      Justification     = Right
+      Line              = 44,50
+      Lines             = 1,06
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 10
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 10,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 25
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = Screen2-DaEf-1-BeforeProcedure
+      After Procedure   = Screen2-DaEf-1-AfterProcedure
+   End
+   Begin Label Screen2-La-8baaabaaaaaaaa
+      SCREEN-COL        = 135,00
+      SCREEN-LINE       = 44,50
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-La-8baaabaaaaaaaa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 135,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/7/C0/@Occidentale
+      Font Variable     = Verdana7-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 16
+      Justification     = Right
+      Label Offset      = 20
+      Line              = 44,50
+      Lines             = 1,06
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 10,00
+      Size Unit         = Default
+      Tab Order         = 26
+      Title             = "Totale Fattura"
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+End
+
+END-SPDATA
+
+@}}
+
+{{@REPORT:
+*   Report Writer Data
+*   Schema 6.0
+*
+BEGIN-RWDATA-6.0A
+
+END-RWDATA
+
+@}}
+
+{{@EMBEDDING_CODE:
+BEGIN-DATA
+   BASETYPE          = 13
+   NODESTYLE         = 13
+   PARAGRAPH         = Other Working
+BEGIN-TEXT
+           copy "link-st-ordforn.def".
+           copy "wait-3-secs.def".
+       77  como-prz-finale   pic 9(8)v99.
+
+
+
+       77  como-prezzo PIC  9(9)v9(2).
+
+       01  tab-iva.
+           05 cod-iva  pic x(3) occurs 10.
+           05 imp-iva  pic 9(9)v99 occurs 10.
+
+       77  como-iva              pic 9(9)v999.
+       77  como-iva-2dec         pic 9(9)v99.
+
+       77  como-peso              PIC  9(6)v9(3).
+       77  como-pic-z5 pic z(5).
+       77  como-pic-z8 pic z(8).
+       77  como-pic-96v93 pic ---.--9,999.
+       77  como-pic-96v92 pic ---.--9,99.
+       77  como-pic-97v92 pic ----.--9,99.
+       77  como-pic-93v92 pic --9,99.
+       77  como-pic-94v92 pic -.--9,99.
+
+
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 6
+   NODESTYLE         = 7
+   PARAGRAPH         = DeletedCode
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 6
+   NODESTYLE         = 7
+   PARAGRAPH         = DeletedCode
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Screen2
+   ACTOBJ            = Screen2
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+                       move  0 to tot-qta
+                                  tot-peso
+                                  tot-peso-utf
+                                  totale 
+                                  tot-iva
+                                  tot-imposta
+                                  tot-cou
+
+           accept como-tel from environment "ORDINI_FORN_TEL_DIR"
+
+           move 1 to v-ok.
+           initialize toF-rec
+                      cli-rec replacing numeric data by zeroes
+                                   alphanumeric data by spaces.
+
+           move anno   to tof-anno.
+           move numero to tof-numero.
+           perform READ-RECORD-LOCK
+           if errori
+              read tordforn no lock
+                 invalid
+                    continue
+              end-read
+              move zero   to v-ok           
+           end-if           
+
+           initialize como-numero
+           if tof-rivisto-si
+              string tof-numero(5:4)        delimited by size
+                     "-"                    delimited by size
+                     tof-anno               delimited by size
+                     "          *RIVISTO*"  delimited by size
+                     into como-numero
+           else
+              string tof-numero(5:4)        delimited by size
+                     "-"                    delimited by size
+                     tof-anno               delimited by size
+                     into como-numero
+           end-if
+
+           move tof-causale  to tca-codice
+           read tcaumag
+              invalid
+                 move space  to tca-cod-magaz
+           end-read
+           move tca-cod-magaz   to mag-codice
+           read tmagaz
+              invalid
+                 move space  to mag-descrizione
+           end-read.
+
+           move tof-cod-pagamento  to tblpa-codice2
+           move "PA"       to tblpa-codice1
+           read tcodpag
+              invalid
+                 initialize tblpa-descrizione1
+                            tblpa-descrizione2
+           end-read
+           initialize como-pagamento
+           inspect tblpa-descrizione1 replacing trailing 
+                                         spaces by low-value.
+           string  tblpa-descrizione1 delimited by low-value
+                   " "                delimited by size
+                   tblpa-descrizione2 delimited by size
+                   into como-pagamento
+
+           if tof-urgente
+              move "URGENTE" to como-consegna
+           else
+              move space     to como-consegna
+           end-if
+           accept como-scarico from environment "ORDINI_FORN_SCARICO"
+
+           move tof-cod-forn to cli-codice
+                                desf-codice.
+           set  cli-tipo-F   to true.
+           read clienti 
+              invalid 
+                 continue 
+           end-read.
+
+           move tof-destino  to desf-prog.
+           read destinif
+              invalid 
+                 continue 
+           end-read.
+
+           accept como-data from century-date.
+           perform DATE-TO-SCREEN.
+           move como-data to data-stampa.
+
+           accept como-ora from time.
+           string como-ora(1:2) delimited by size
+                  ":"           delimited by size
+                  como-ora(3:2) delimited by size
+                  into ora-stampa
+           end-string.
+                                       
+           initialize tca-rec.
+           move tof-causale to tca-codice.
+           read tcaumag no lock 
+              invalid 
+                 continue 
+           end-read.
+
+           move tof-chiave   to nof-chiave-ordine
+           move low-value    to nof-num-nota
+           start nordforn key not < nof-chiave
+              invalid
+                 continue
+              not invalid
+                 perform until 1 = 2|varying cont from 1 by 1 
+                    read nordforn next
+                       at end
+                          exit perform
+                    end-read
+                    if tof-chiave not = nof-chiave-ordine
+                       exit perform
+                    end-if
+                    move nof-nota  to col-note
+                    modify gd-note, RECORD-TO-ADD rec-note
+                 end-perform
+           end-start.
+
+           move 2            to riga
+           move zero         to como-prz-totale
+           move low-value    to rof-riga.
+           move tof-anno     to rof-anno.
+           move tof-numero   to rof-numero.
+           start rordforn key not < rof-chiave 
+              invalid 
+                 continue 
+              not invalid
+                 perform until 1 = 2
+                    read rordforn next 
+                       at end 
+                          exit perform 
+                    end-read
+                    if tof-anno   not = rof-anno or 
+                       tof-numero not = rof-numero
+                       exit perform
+                    end-if
+                    perform METTI-IN-GRIGLIA
+                 end-perform
+           end-start.
+
+      *    luciano 24/02/2008
+           if tof-da-confermare-si
+              perform CARICA-ART-DA-CONF
+           end-if
+      *    luciano fine
+
+           perform varying idx from 1 by 1 until idx > 10
+              if cod-iva(idx) = space
+                 exit perform
+              end-if
+
+              move "IV"         to tbliv-codice1
+              move rof-cod-iva  to tbliv-codice2   
+              read tivaese no lock 
+                 invalid 
+                    move zero   to TBLIV-PERCENTUALE
+              end-read
+
+              compute como-iva = 
+                   ( ( imp-iva(idx) * tbliv-percentuale ) / 100 )
+              add 0,005          to como-iva
+              move como-iva      to como-iva-2dec
+
+              add como-iva-2dec to tot-iva
+           end-perform.
+
+           add   tot-iva  to totale giving tot-fat
+
+           perform SCREEN2-IUD-DISPLAY.
+
+           modify Screen2-Handle, visible true.
+           modify pb-eseguia,     visible v-ok.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterDisplay
+BEGIN-TEXT
+
+      *<<** Customized_Default, SP-G, Screen1-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+           accept como-data from century-date.
+           move tge-anno    to anno save-anno.
+           display ef-anno.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Screen2
+   ACTOBJ            = Screen2
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeExit
+BEGIN-TEXT
+           unlock tordforn all records.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 0
+   PARENT            = accetordforn
+   ACTOBJ            = accetordforn
+   ENTRYPOINT        = BeforeDeclarative
+BEGIN-TEXT
+       TORDFORN-ERR SECTION.
+           use after error procedure on TORDFORN.
+           evaluate status-TORDFORN
+           when "35"
+                display message "File [TORDFORN] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [TORDFORN] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[TORDFORN] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "93"
+           when "99"
+                set RecLocked to true
+           end-evaluate.
+ 
+      ***---
+       RORDFORN-ERR SECTION.
+           use after error procedure on RORDFORN.
+           set tutto-ok  to true.
+           evaluate status-RORDFORN
+           when "35"
+                display message "File [RORDFORN] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [RORDFORN] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[RORDFORN] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           end-evaluate.
+ 
+      ***---
+       CLIENTI-ERR SECTION.
+           use after error procedure on clienti.
+           set tutto-ok  to true.
+           evaluate status-clienti
+           when "35"
+                display message "File [CLIENTI] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [CLIENTI] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[CLIENTI] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           end-evaluate.
+ 
+      ***---
+       ARTICOLI-ERR SECTION.
+           use after error procedure on articoli.
+           set tutto-ok  to true.
+           evaluate status-articoli
+           when "35"
+                display message "File [ARTICOLI] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [ARTICOLI] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[ARTICOLI] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           end-evaluate.
+ 
+      ***---
+       TPARAMGE-ERR SECTION.
+           use after error procedure on tparamge.
+           set tutto-ok  to true.
+           evaluate status-tparamge
+           when "35"
+                display message "File [TPARAMGE] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [TPARAMGE] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[TPARAMGE] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           end-evaluate.
+ 
+
+      ***---
+       TCAUMAG-ERR SECTION.
+           use after error procedure on tcaumag.
+           set tutto-ok  to true.
+           evaluate status-tcaumag
+           when "35"
+                display message "File [TCAUMAG] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [TCAUMAG] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[TCAUMAG] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           end-evaluate.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Screen2
+   ACTOBJ            = Screen2
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterDisplay
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-blockpgm-1, Disable **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Screen2
+   ACTOBJ            = Screen2
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterFldToBuf
+BEGIN-TEXT
+           move tof-data-consegna to como-data.
+           perform DATE-TO-SCREEN.
+           move como-data to lbl-data-rif-buf.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CERCA
+BEGIN-TEXT
+           move "tordforn-stato"   to como-file.
+
+           inquire ef-anno, value in tof-anno.
+           inquire ef-num,  value in tof-numero.
+           set tof-inserito  to true
+           call "zoom-gt"   using como-file, tof-rec
+                            giving stato-zoom
+           cancel "zoom-gt"
+           if stato-zoom = 0
+              move tof-numero   to numero
+              display ef-num
+              move tof-anno     to anno
+              display ef-anno
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = DESCRIZIONE-IMBALLO
+BEGIN-TEXT
+      *     move rof-imb-ordinato   to imq-codice
+      *     read timbalqta
+      *        invalid
+      *           initialize imq-dati
+      *     end-read
+      *
+      *     move imq-tipo  to imb-codice           
+      *     read timballi
+      *        invalid
+      *           initialize imb-dati
+      *     end-read
+      *     inspect imb-descrizione replacing trailing 
+      *                             spaces by low-value.
+      *     move imq-qta-imb  to imballi-ed.
+      *     call "C$JUSTIFY"  using imballi-ed, "L".
+      *     initialize col-imballo.
+      *
+      *     string  imb-descrizione delimited by low-value
+      *             " da "          delimited by size
+      *             imballi-ed      delimited by spaces
+      *             " x "           delimited by size
+      *             art-udm-imballo delimited by size
+      *             into col-imballo
+      *     end-string
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = PARAGRAFO-COPY
+BEGIN-TEXT
+           copy "utydata.cpy".
+           copy "color-custom.cpy".
+           copy "wait-3-secs.cpy".
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = READ-RECORD-LOCK
+BEGIN-TEXT
+           set RecLocked to false.
+           initialize geslock-linkage.
+           move "tordforn" to geslock-nome-file.
+
+           set tutto-ok to true.
+           read tordforn with lock 
+              invalid 
+                 continue 
+           end-read.
+
+           if RecLocked
+              move 1 to geslock-v-riprova
+              move 0 to geslock-v-ignora
+              move 1 to geslock-v-termina
+              call   "geslock" using geslock-linkage
+              cancel "geslock"
+              evaluate true
+              when riprova 
+                   perform READ-RECORD-LOCK
+              when ignora  
+              when termina 
+                   set errori to true
+                   unlock tordforn all records
+              end-evaluate
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = SPOSTAMENTO
+BEGIN-TEXT
+           inquire screen2-gd-1, last-row in tot-righe.
+           move event-data-2 to riga.
+           if riga < 2 move 2 to riga end-if.
+           if riga > tot-righe move tot-righe to riga end-if.
+           modify Screen2-Gd-1, start-x = 1, x = 22,
+                                start-y = riga, y = riga,
+                                region-color = 144.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = METTI-IN-GRIGLIA
+BEGIN-TEXT
+           add 1                to riga
+           initialize rec-grid
+           move rof-cod-articolo   to r-stof-art
+                                      art-codice
+           read articoli 
+              invalid 
+                 move "articolo non trovato"   to art-descrizione
+           end-read
+      *     move art-descrizione to col-descr-art
+      *     perform DESCRIZIONE-IMBALLO
+      *     perform PREZZO-FINALE
+
+      *     move rof-qta-ord             to col-qta
+      *     modify Screen2-Gd-1, RECORD-TO-ADD rec-grid
+      *     modify Screen2-Gd-1(riga), ROW-COLOR 516
+
+
+      *     move rlis-tipo-tratt-imposte  to imf-codice
+      *     read impforn
+      *        invalid
+      *           set imf-prz-reale-utf-zero    to true
+      *           set imf-conf-utf-no           to true
+      *           set imf-prz-reale-cou-zero    to true
+      *           set imf-conf-cou-no           to true
+      *           set imf-prz-reale-cobat-zero  to true 
+      *           set imf-conf-cobat-no         to true
+      *           set imf-prz-reale-pb-zero     to true
+      *           set imf-conf-pb-no            to true
+      *     end-read
+      
+           move rof-prg-chiave  to prg-chiave
+           read progmag
+              invalid
+                 continue
+           end-read
+      
+           add rof-qta-ord   to tot-qta
+      
+           compute tot-peso =
+                   tot-peso + 
+                 ( rof-peso * rof-qta-ord)
+      
+           compute tot-peso-utf =
+                   tot-peso-utf + 
+                 ( rof-peso-utf * rof-qta-ord )
+      
+           compute tot-imposta = tot-imposta + 
+                                (rof-imp-consumo * rof-qta-ord)
+           compute tot-cou = tot-cou + 
+                                (rof-imp-cou-cobat * rof-qta-ord)
+      
+           move art-descrizione to r-stof-des
+      
+           move rof-imb-ordinato   to imq-codice
+           read timbalqta
+              invalid
+                 move space  to imq-tipo
+                 move zero   to imq-qta-imb
+           end-read
+           move imq-tipo  to imb-codice
+           read timballi
+              invalid
+                 move space  to imb-descrizione
+           end-read
+      
+           move imq-qta-imb to imballi-ed
+           call "C$JUSTIFY" using imballi-ed, "L"
+           inspect imb-descrizione replacing trailing 
+                                                spaces by low-value
+           initialize r-stof-imb
+           string imballi-ed       delimited by spaces
+                  " x "            delimited by size
+                  art-udm-imballo  delimited by size
+                  into r-stof-imb
+      
+           move rof-qta-ord           to como-pic-z5
+           move como-pic-z5           to r-stof-qta
+      
+           if art-cod-doganale = zero
+              move space  to r-stof-cod-dog
+           else
+              move art-cod-doganale      to como-pic-z8
+              move como-pic-z8           to r-stof-cod-dog
+           end-if
+      
+           if rof-peso = zero
+              move space           to r-stof-peso-netto
+           else
+              move rof-peso        to como-pic-96v93
+              move como-pic-96v93  to r-stof-peso-netto
+           end-if
+      
+           compute como-peso = rof-peso * rof-qta-ord
+           if como-peso = zero
+              move space  to r-stof-peso-tot-netto
+           else
+              move como-peso       to como-pic-96v93
+              move como-pic-96v93  to r-stof-peso-tot-netto
+           end-if
+      
+           compute como-peso = prg-peso-utf * rof-qta-ord
+      
+           if como-peso = zero
+              move space           to r-stof-peso-tot-utf
+           else
+              move como-peso       to como-pic-96v93
+              move como-pic-96v93  to r-stof-peso-tot-utf
+           end-if
+      
+           if rof-prz-unitario = zero
+              move space  to r-stof-prz-listino
+           else
+              move rof-prz-unitario   to como-pic-96v92
+              move como-pic-96v92     to r-stof-prz-listino
+           end-if
+      
+           if rof-sconto-1 = zero 
+              move space           to r-stof-sconto-1
+           else
+              move rof-sconto-1    to como-pic-93v92
+              move como-pic-93v92  to r-stof-sconto-1
+           end-if
+      
+           if rof-sconto-2 = zero 
+              move space           to r-stof-sconto-2
+           else
+              move rof-sconto-2    to como-pic-93v92
+              move como-pic-93v92  to r-stof-sconto-2
+           end-if
+      
+           if rof-sconto-3 = zero 
+              move space           to r-stof-sconto-3
+           else
+              move rof-sconto-3    to como-pic-93v92
+              move como-pic-93v92  to r-stof-sconto-3
+           end-if
+      
+           if rof-sconto-4 = zero 
+              move space           to r-stof-sconto-4
+           else
+              move rof-sconto-4    to como-pic-93v92
+              move como-pic-93v92  to r-stof-sconto-4
+           end-if
+      
+           if rof-sconto-5 = zero 
+              move space           to r-stof-sconto-5
+           else
+              move rof-sconto-5    to como-pic-93v92
+              move como-pic-93v92  to r-stof-sconto-5
+           end-if
+      
+           if rof-imponib-merce = zero
+              move space  to r-stof-prz-netto
+           else
+              move rof-imponib-merce  to como-pic-96v92
+              move como-pic-96v92     to r-stof-prz-netto
+           end-if
+           if rof-imp-consumo = zero
+              move space              to r-stof-imp-consumo
+           else
+              move rof-imp-consumo    to como-pic-94v92
+              move como-pic-94v92     to r-stof-imp-consumo
+           end-if
+      
+           if rof-imp-cou-cobat = zero
+              move space  to r-stof-imp-cou-cobat
+           else
+              move rof-imp-cou-cobat  to como-pic-94v92
+              move como-pic-94v92     to r-stof-imp-cou-cobat
+           end-if
+      
+           if rof-add-piombo = zero
+              move space           to r-stof-add-piombo
+           else
+              move rof-add-piombo  to como-pic-94v92
+              move como-pic-94v92  to r-stof-add-piombo
+           end-if
+      
+           compute como-prezzo = rof-imponib-merce + 
+                                 rof-imp-consumo
+           if como-prezzo = zero
+              move space           to r-stof-prz-netto-imp
+           else
+              move como-prezzo     to como-pic-96v92
+              move como-pic-96v92  to r-stof-prz-netto-imp
+           end-if
+      
+           if rof-costi-aggiuntivi = zero
+              move space                 to r-stof-costi-aggi
+           else
+              move rof-costi-aggiuntivi  to como-pic-96v92
+              move como-pic-96v92        to r-stof-costi-aggi
+           end-if
+      
+                compute como-prezzo = rof-imponib-merce +  
+                                      rof-imp-consumo   + 
+                                      rof-imp-cou-cobat + 
+                                      rof-add-piombo    
+           add rof-costi-aggiuntivi to como-prezzo
+      
+           if como-prezzo = zero
+              move space           to r-stof-prz-finale
+           else
+              move como-prezzo     to como-pic-96v92
+              move como-pic-96v92  to r-stof-prz-finale
+           end-if.
+      
+           compute como-prezzo = como-prezzo * rof-qta-ord
+           if como-prezzo = zero
+              move space           to r-stof-prz-tot-finale
+           else
+              move como-prezzo     to como-pic-97v92
+              move como-pic-97v92  to r-stof-prz-tot-finale
+           end-if.
+      
+           compute totale = totale + como-prezzo
+      
+           perform varying idx from 1 by 1 until idx > 10
+              if rof-cod-iva = cod-iva(idx)
+                 add como-prezzo   to imp-iva(idx)
+                 exit perform
+              else
+                 if cod-iva(idx) = space
+                    move rof-cod-iva  to cod-iva(idx)
+                    move como-prezzo  to imp-iva(idx)
+                    exit perform
+                 end-if
+              end-if
+           end-perform.
+      
+           modify Screen2-Gd-1, RECORD-TO-ADD rec-grid
+           modify Screen2-Gd-1(riga), ROW-COLOR 516
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = PREZZO-FINALE
+BEGIN-TEXT
+      *     move rof-prz-unitario   to como-prz-finale.
+      *
+      **    applico il primo sconto
+      *     compute como-prz-finale = como-prz-finale - 
+      *                                (( como-prz-finale *
+      *                                   rof-sconto-1 ) / 100).
+      **    applico il secondo sconto
+      *     compute como-prz-finale = como-prz-finale - 
+      *                                (( como-prz-finale *
+      *                                   rof-sconto-2 ) / 100).
+      **    applico il terzo sconto
+      *     compute como-prz-finale = como-prz-finale - 
+      *                                (( como-prz-finale *
+      *                                   rof-sconto-3 ) / 100).
+      *
+      *     compute como-prz-finale = como-prz-finale - 
+      *                                (( como-prz-finale *
+      *                                   rof-sconto-4 ) / 100).
+      *
+      *     compute como-prz-finale = como-prz-finale - 
+      *                                (( como-prz-finale *
+      *                                   rof-sconto-5 ) / 100).
+      *
+      *     move rof-cod-listino    to rlis-codice
+      *     move rof-cod-articolo   to rlis-articolo    
+      *     read rlistini no lock
+      *        invalid 
+      **           set rlis-gdo to true
+      *           continue
+      *     end-read.
+      *
+      **     evaluate true
+      **     when rlis-estero   
+      **     when rlis-gdo      
+      **          continue
+      **     when rlis-standard 
+      *          compute como-prz-finale = como-prz-finale   + 
+      *                                    rof-imp-consumo   +
+      *                                    rof-imp-cou-cobat +
+      *                                    rof-add-piombo
+      **     end-evaluate.
+      *
+      *     compute como-prz-finale = como-prz-finale + 
+      *                               rof-costi-aggiuntivi.
+      *
+      *     compute como-prz-finale = como-prz-finale * rof-qta-ord
+      *
+      *     move como-prz-finale to col-prz
+      *     add como-prz-finale  to como-prz-totale.
+           MOVE totale to como-prz-totale
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CARICA-ART-DA-CONF
+BEGIN-TEXT
+           move tof-chiave   to aor-chiave-testa
+           move low-value    to aor-prog
+           start art-ordforn key not < aor-chiave
+              invalid
+                 continue
+              not invalid
+                 perform until 1 = 2
+                    read art-ordforn next
+                       at end
+                          exit perform
+                    end-read
+                    if tof-chiave not = aor-chiave-testa
+                       exit perform
+                    end-if
+
+                    perform METTI-IN-GRIGLIA-DA-CONF
+                 end-perform
+           end-start.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = METTI-IN-GRIGLIA-DA-CONF
+BEGIN-TEXT
+           add 1                to riga
+           initialize rec-grid
+      *     move aor-articolo    to col-art 
+      *                             art-codice
+      *                             rof-cod-articolo
+      *     move aor-descrizione to col-descr-art
+      *
+      *     if aor-imballo = space
+      *        move space  to col-imballo
+      *     else
+      *        move aor-imballo  to rof-imb-ordinato   
+      *        perform DESCRIZIONE-IMBALLO
+      *     end-if
+      *
+      *
+      *     move aor-prz-unit       to rof-prz-unitario.
+      *
+      *     move zero            to rof-sconto-1
+      *                             rof-sconto-2
+      *                             rof-sconto-3
+      *                             rof-sconto-4
+      *                             rof-sconto-5.
+      *     move zero            to rof-cod-listino
+      *
+      *     move aor-imp-cons to rof-imp-consumo
+      *     move aor-coubat   to rof-imp-cou-cobat
+      *     move aor-add-pb   to rof-add-piombo
+      *     move zero         to rof-costi-aggiuntivi.
+      *
+      *
+      *     move aor-qta   to rof-qta-ord
+      *                       col-qta
+      *
+      *     perform PREZZO-FINALE
+      *
+      *     modify Screen2-Gd-1, RECORD-TO-ADD rec-grid
+      *
+      *     modify Screen2-Gd-1(riga), ROW-COLOR 484
+
+           move aor-articolo       to r-stof-art 
+
+           move aor-chiave-progmag to prg-chiave
+           read progmag
+              invalid
+                 continue
+           end-read
+
+           add aor-qta   to tot-qta
+
+           compute tot-peso =
+                   tot-peso + 
+                 ( aor-peso * aor-qta)
+
+           compute tot-imposta = tot-imposta + 
+                                (aor-imp-cons * aor-qta)
+           compute tot-cou = tot-cou + 
+                                (aor-coubat * aor-qta)
+
+           move aor-descrizione    to r-stof-des
+
+           if aor-imballo not = space
+              move aor-imballo  to imq-codice
+              read timbalqta
+                 invalid
+                    move space  to imq-tipo
+                    move zero   to imq-qta-imb
+              end-read
+              move imq-tipo  to imb-codice
+              read timballi
+                 invalid
+                    move space  to imb-descrizione
+              end-read
+
+              move imq-qta-imb to imballi-ed
+              call "C$JUSTIFY" using imballi-ed, "L"
+              inspect imb-descrizione replacing trailing 
+                                                spaces by low-value
+              initialize r-stof-imb
+              string imballi-ed       delimited by spaces
+                     " x "            delimited by size
+                     art-udm-imballo  delimited by size
+                     into r-stof-imb
+           else
+              move space  to r-stof-imb
+           end-if
+     
+           move aor-qta               to como-pic-z5
+           move como-pic-z5           to r-stof-qta
+
+           move space  to r-stof-cod-dog
+
+           if aor-peso = zero
+              move space           to r-stof-peso-netto
+           else
+              move aor-peso        to como-pic-96v93
+              move como-pic-96v93  to r-stof-peso-netto
+           end-if
+
+           compute como-peso = aor-peso * aor-qta
+           if como-peso = zero
+              move space  to r-stof-peso-tot-netto
+           else
+              move como-peso       to como-pic-96v93
+              move como-pic-96v93  to r-stof-peso-tot-netto
+           end-if
+
+           move space           to r-stof-peso-tot-utf
+
+      *     if aor-prz-unit = zero
+              move space  to r-stof-prz-listino
+      *     else
+      *        move rof-prz-unitario   to como-pic-96v92
+      *        move como-pic-96v92     to r-stof-prz-listino
+      *     end-if
+
+           move space                 to r-stof-sconto-1
+           move space                 to r-stof-sconto-2
+           move space                 to r-stof-sconto-3
+           move space                 to r-stof-sconto-4
+           move space                 to r-stof-sconto-5
+
+           if aor-netto = zero
+              move space              to r-stof-prz-netto
+           else
+              move aor-netto          to como-pic-96v92
+              move como-pic-96v92     to r-stof-prz-netto
+           end-if
+           if aor-imp-cons = zero
+              move space              to r-stof-imp-consumo
+           else
+              move aor-imp-cons       to como-pic-94v92
+              move como-pic-94v92     to r-stof-imp-consumo
+           end-if
+
+           if aor-coubat = zero
+              move space              to r-stof-imp-cou-cobat
+           else
+              move aor-coubat         to como-pic-94v92
+              move como-pic-94v92     to r-stof-imp-cou-cobat
+           end-if
+
+           if aor-add-pb = zero
+              move space              to r-stof-add-piombo
+           else
+              move aor-add-pb         to como-pic-94v92
+              move como-pic-94v92     to r-stof-add-piombo
+           end-if
+
+           compute como-prezzo = aor-netto + 
+                                 aor-imp-cons
+           if como-prezzo = zero
+              move space              to r-stof-prz-netto-imp
+           else
+              move como-prezzo        to como-pic-96v92
+              move como-pic-96v92     to r-stof-prz-netto-imp
+           end-if
+
+           move space                 to r-stof-costi-aggi
+
+      *     evaluate true
+      *     when rlis-standard
+      *          compute como-prezzo = rof-imponib-merce +  
+      *                                rof-imp-consumo   + 
+      *                                rof-imp-cou-cobat + 
+      *                                rof-add-piombo    
+      *     when rlis-gdo
+      *     when rlis-estero
+           move aor-netto             to como-prezzo
+      *     end-evaluate
+      *     add rof-costi-aggiuntivi to como-prezzo
+
+           if como-prezzo = zero
+              move space              to r-stof-prz-finale
+           else
+              move como-prezzo        to como-pic-96v92
+              move como-pic-96v92     to r-stof-prz-finale
+           end-if.
+
+           compute como-prezzo = como-prezzo * aor-qta
+           if como-prezzo = zero
+              move space           to r-stof-prz-tot-finale
+           else
+              move como-prezzo     to como-pic-97v92
+              move como-pic-97v92  to r-stof-prz-tot-finale
+           end-if.
+
+           compute totale = totale + como-prezzo
+
+           modify Screen2-Gd-1, RECORD-TO-ADD rec-grid
+      
+           modify Screen2-Gd-1(riga), ROW-COLOR 484
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = bprepb-Ev-Before-Program
+BEGIN-TEXT
+           move spaces to tge-anno.
+           open input tparamge.
+           move spaces to tge-codice.
+           read tparamge no lock invalid continue end-read.
+           close tparamge.
+      *<<** Customized_Default, SP-G, Screen1-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Screen2-Gd-1-Ev-Msg-Begin-Entry
+BEGIN-TEXT
+           set event-action to event-action-fail.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Screen2-Gd-1-Ev-Msg-Begin-Drag
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Screen2-Gd-1-Ev-Msg-End-Drag
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Screen2-Gd-1-Ev-Msg-Goto-Cell
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Screen2-Gd-1-Ev-Msg-Goto-Cell-Drag
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Screen2-Gd-1-Ev-Msg-Goto-Cell-Mouse
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-anno-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-anno-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-num-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+           move 1 to e-cerca.
+           modify tool-cerca, enabled = e-cerca.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-num-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+           move 0 to e-cerca.
+           modify tool-cerca, enabled = e-cerca.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = PB-ESEGUIa-LinkTo
+BEGIN-TEXT
+           display message box "S'intende procedere all'accettazione"
+                        x"0d0a""dell'ordine selezionato?"
+                   title = titolo
+                   type mb-yes-no
+                   default mb-no
+                   giving scelta
+
+           if scelta = mb-yes           
+
+      *        move tof-data-ordine to como-data
+      *        perform DATE-TO-FILE
+      *        move como-data to tor-data-ordine
+      *
+      *        move tor-data-note1 to como-data
+      *        perform DATE-TO-FILE
+      *        move como-data to tor-data-note1 
+
+              accept como-data from century-date
+              accept como-ora  from time
+              move como-data to tof-data-ultima-modifica
+              move como-ora  to tof-ora-ultima-modifica
+              move user-codi to tof-utente-ultima-modifica
+
+              set tof-accettato to true
+              rewrite tof-rec 
+                 invalid 
+                    continue 
+              end-rewrite
+              move 27 to key-status
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = TOOL-CERCA-LinkTo
+BEGIN-TEXT
+           inquire tool-cerca, enabled in e-cerca.
+           if e-cerca = 1 perform CERCA end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = PB-ESEGUIa-BeforeProcedure
+BEGIN-TEXT
+           modify PB-ESEGUIa, bitmap-number 2
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = PB-ESEGUIa-AfterProcedure
+BEGIN-TEXT
+           modify PB-ESEGUIa, bitmap-number 1
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Pb-2a-BeforeProcedure
+BEGIN-TEXT
+           modify Form1-Pb-2a, bitmap-number 2
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Pb-2a-AfterProcedure
+BEGIN-TEXT
+           modify Form1-Pb-2a, bitmap-number 1
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = PB-ESEGUI-BeforeProcedure
+BEGIN-TEXT
+           modify PB-ESEGUI, bitmap-number 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = PB-ESEGUI-AfterProcedure
+BEGIN-TEXT
+           modify PB-ESEGUI, bitmap-number 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = PB-ESEGUI-LinkTo
+BEGIN-TEXT
+           set tutto-ok to true.
+           inquire ef-anno, value in anno.
+           move anno to tof-anno.
+           inquire ef-num,  value in numero.
+           move numero to tof-numero.
+           read tordforn no lock
+              invalid 
+                 set errori to true
+                 display message "Ordine non caricato"
+                           title tit-err
+                            icon 2
+              not invalid
+                if not tof-inserito
+                   set errori to true
+                   display message "Ordine non in stato inserito"
+                             title tit-err   
+                              icon 2
+                end-if
+           end-read.
+
+           perform CANCELLA-COLORE.
+           if tutto-ok
+      *        perform READ-RECORD-LOCK
+      *        if tutto-ok
+                 modify Form1-Handle, visible false
+                 perform SCREEN2-OPEN-ROUTINE     
+                 unlock tordforn all records
+                 modify Form1-Handle, visible true
+                 move 1001 to control-id
+      *        end-if                              
+              move 1002 to control-id
+           else                      
+              move 1002 to control-id
+           end-if.  
+                                     
+           move    4 to accept-control.
+           
+           modify pb-esegui, bitmap-number = 1.
+           modify pb-cancel, bitmap-number = 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Pb-2-BeforeProcedure
+BEGIN-TEXT
+           modify pb-cancel, bitmap-number 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Pb-2-AfterProcedure
+BEGIN-TEXT
+           modify pb-cancel, bitmap-number 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = accetordforn-Ev-After-Program
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = gd-note-Ev-Msg-Begin-Entry
+BEGIN-TEXT
+           set event-action to event-action-fail.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Screen2-DaEf-1-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Screen2-DaEf-1-AfterProcedure
+BEGIN-TEXT
+      *<<** Default_Code **>>
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+
+@}}
+
+[KEY_STATUS_FIELD_FORMAT]
+PIC=9(5)
+USAGE=[None]
+
+[KEYSTATUS_CONTENT:KS1]
+CONDITION=Enter-Pushed
+VALUE=13
+
+[KEYSTATUS_CONTENT:KS2]
+CONDITION=Exit-Pushed
+VALUE=27
+
+[KEYSTATUS_CONTENT:KS3]
+CONDITION=Message-Received
+VALUE=95
+
+[KEYSTATUS_CONTENT:KS4]
+CONDITION=Event-Occurred
+VALUE=96
+
+[KEYSTATUS_CONTENT:KS5]
+CONDITION=Screen-No-Input-Field
+VALUE=97
+
+[KEYSTATUS_CONTENT:KS6]
+CONDITION=Screen-Time-Out
+VALUE=99
+
+[COBOLAID_DATASET_INFO]
+COUNT=1
+NAME_0=DataSet1
+
+[DRAW_DOCUMENT_INDEX]
+OBJ_NAME_0=8001
+OBJ_ID_0=230635550
+
+[MULTIPLE_KEY_0]
+COUNT=1
+KEY_0=tof-chiave
+
+[DRAW_DOCUMENT_8001_230635550]
+OBJ_NAME=8001
+OBJ_ID=230635550
+TYPE=2
+VERSION=
+DOC_SIZE_X=5100
+DOC_SIZE_Y=5160
+PAGE_LEFT=150
+PAGE_TOP=150
+PAGE_RIGHT=1850
+PAGE_BOTTOM=2730
+MARGIN_LEFT=150
+MARGIN_TOP=150
+MARGIN_RIGHT=150
+MARGIN_BOTTOM=150
+PROP_DOCU_TYPE=ø
+PROP_DOCU_TYPE2=ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+PROP_DOCU_NAME=DataSet - DataSet1[accetordforn(GESLUX)]
+PROP_DOCU_OWNER=Person A
+PROP_DOCU_CDATE=02/25/04
+PROP_DOCU_MODIFIER=Person B
+PROP_DOCU_MDATE=02/25/04
+PROP_DOCU_DESCR=Caseaid DocuCaseaid Document
+PROP_DOCU_HEADER=Caseaid Document
+PROP_DOCU_FOOTER=Page # 
+PROP_DOCU_DIM_H=2
+PROP_DOCU_DIM_W=3
+PROP_DOCU_LOC_H=1
+PROP_DOCU_LOC_W=1
+PROP_DOCU_EDGE_T=150
+PROP_DOCU_EDGE_B=150
+PROP_DOCU_EDGE_L=150
+PROP_DOCU_EDGE_R=150
+PROP_DOCU_ZOOM=75
+PROP_DOCU_SIZE_TYPE=0
+PROP_DOCU_SIZE_PAPER=1
+PROP_DOCU_SIZE_H=2580
+PROP_DOCU_SIZE_W=1700
+PROP_DOCU_RULER_EBL=0
+PROP_DOCU_GRID_EBL=0
+PROP_DOCU_GRID=20
+PROP_DOCU_ALIGN=0
+REL_SYM_SIZE=100
+REL_SYM_INFO_L=16
+REL_SYM_INFO_X0=2301
+REL_SYM_INFO_Y0=824151404
+REL_SYM_INFO_X1=2301
+REL_SYM_INFO_Y1=1019841702
+REL_SYM_INFO_X2=2301
+REL_SYM_INFO_Y2=993478671
+REL_SYM_INFO_X3=2301
+REL_SYM_INFO_Y3=2069691792
+REL_SYM_INFO_X4=2301
+REL_SYM_INFO_Y4=2135680422
+REL_SYM_INFO_X5=2301
+REL_SYM_INFO_Y5=1195227633
+REL_SYM_INFO_X6=2301
+REL_SYM_INFO_Y6=1268687368
+REL_SYM_INFO_X7=2301
+REL_SYM_INFO_Y7=1247066697
+REL_SYM_INFO_X8=2301
+REL_SYM_INFO_Y8=1933834730
+REL_SYM_INFO_X9=2301
+REL_SYM_INFO_Y9=1569431712
+REL_SYM_INFO_X10=2301
+REL_SYM_INFO_Y10=461391249
+REL_SYM_INFO_X11=2301
+REL_SYM_INFO_Y11=1980724989
+REL_SYM_INFO_X12=2301
+REL_SYM_INFO_Y12=965404217
+REL_SYM_INFO_X13=2301
+REL_SYM_INFO_Y13=1460655200
+REL_SYM_INFO_X14=2301
+REL_SYM_INFO_Y14=2049916035
+REL_SYM_INFO_X15=2301
+REL_SYM_INFO_Y15=452253483
+
+[DRAW_BASESYMBOL_2301_824151404]
+OBJ_NAME=2301
+OBJ_ID=824151404
+KIND=1
+{{@LABEL_2301_824151404
+clienti
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=950
+TOP=347
+RIGHT=1350
+BOTTOM=569
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1019841702]
+OBJ_NAME=2301
+OBJ_ID=1019841702
+KIND=1
+{{@LABEL_2301_1019841702
+articoli
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=16
+TOP=682
+RIGHT=416
+BOTTOM=904
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_993478671]
+OBJ_NAME=2301
+OBJ_ID=993478671
+KIND=1
+{{@LABEL_2301_993478671
+tparamge
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=484
+TOP=674
+RIGHT=884
+BOTTOM=896
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_2069691792]
+OBJ_NAME=2301
+OBJ_ID=2069691792
+KIND=1
+{{@LABEL_2301_2069691792
+tordforn
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=16
+TOP=51
+RIGHT=416
+BOTTOM=273
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_2135680422]
+OBJ_NAME=2301
+OBJ_ID=2135680422
+KIND=1
+{{@LABEL_2301_2135680422
+rordforn
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=485
+TOP=58
+RIGHT=885
+BOTTOM=280
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1195227633]
+OBJ_NAME=2301
+OBJ_ID=1195227633
+KIND=1
+{{@LABEL_2301_1195227633
+tcaumag
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1044
+TOP=29
+RIGHT=1444
+BOTTOM=251
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1268687368]
+OBJ_NAME=2301
+OBJ_ID=1268687368
+KIND=1
+{{@LABEL_2301_1268687368
+timballi
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1182
+TOP=1082
+RIGHT=1582
+BOTTOM=1304
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1247066697]
+OBJ_NAME=2301
+OBJ_ID=1247066697
+KIND=1
+{{@LABEL_2301_1247066697
+timbalqta
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1748
+TOP=1082
+RIGHT=2148
+BOTTOM=1304
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1933834730]
+OBJ_NAME=2301
+OBJ_ID=1933834730
+KIND=1
+{{@LABEL_2301_1933834730
+nordforn
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1748
+TOP=566
+RIGHT=2148
+BOTTOM=788
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1569431712]
+OBJ_NAME=2301
+OBJ_ID=1569431712
+KIND=1
+{{@LABEL_2301_1569431712
+rlistini
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=616
+TOP=1082
+RIGHT=1016
+BOTTOM=1304
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_461391249]
+OBJ_NAME=2301
+OBJ_ID=461391249
+KIND=1
+{{@LABEL_2301_461391249
+art-ordforn
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1182
+TOP=1598
+RIGHT=1582
+BOTTOM=1820
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1980724989]
+OBJ_NAME=2301
+OBJ_ID=1980724989
+KIND=1
+{{@LABEL_2301_1980724989
+destinif
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=2314
+TOP=1082
+RIGHT=2714
+BOTTOM=1304
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_965404217]
+OBJ_NAME=2301
+OBJ_ID=965404217
+KIND=1
+{{@LABEL_2301_965404217
+progmag
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=118
+TOP=1508
+RIGHT=518
+BOTTOM=1730
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1460655200]
+OBJ_NAME=2301
+OBJ_ID=1460655200
+KIND=1
+{{@LABEL_2301_1460655200
+tmagaz
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1886
+TOP=1517
+RIGHT=2286
+BOTTOM=1739
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_2049916035]
+OBJ_NAME=2301
+OBJ_ID=2049916035
+KIND=1
+{{@LABEL_2301_2049916035
+tcodpag
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=2597
+TOP=2114
+RIGHT=2997
+BOTTOM=2336
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_452253483]
+OBJ_NAME=2301
+OBJ_ID=452253483
+KIND=1
+{{@LABEL_2301_452253483
+tivaese
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=2314
+TOP=50
+RIGHT=2714
+BOTTOM=272
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DMD_DOCUMENT_0_230635550]
+OBJ_NAME=0
+OBJ_ID=230635550
+FILE_TITLE_TYPE=8136
+FILE_SHOW_ITEM=0
+FILE_SHOW_KEY=0
+FILE_SHOW_PIC=0
+FILE_SHOW_HEAD=0
+FILE_SHOW_LEVEL=0
+FILE_SHOW_TREE=0
+FILE_SHOW_CLPS=0
+FILE_SHOW_BMP=0
+FILE_SHOW_LINE=0
+FILE_SHOW_MINIZE=0
+
+[DMD_FILE_0_824151404]
+OBJ_NAME=0
+OBJ_ID=824151404
+REL_M_OBJ_ID=0
+ENTITY=clienti
+LINK=0
+LINK_NAME=
+DSN_SIZE=53
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=cli-chiave OF clienti
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_824151404
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1019841702]
+OBJ_NAME=0
+OBJ_ID=1019841702
+REL_M_OBJ_ID=0
+ENTITY=articoli
+LINK=0
+LINK_NAME=
+DSN_SIZE=54
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=art-chiave OF articoli
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1019841702
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_993478671]
+OBJ_NAME=0
+OBJ_ID=993478671
+REL_M_OBJ_ID=0
+ENTITY=tparamge
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tge-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_993478671
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_2069691792]
+OBJ_NAME=0
+OBJ_ID=2069691792
+REL_M_OBJ_ID=0
+ENTITY=tordforn
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=2
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tof-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_2069691792
+
+@}}
+DSN_INFO_PRIMARY=1
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_2135680422]
+OBJ_NAME=0
+OBJ_ID=2135680422
+REL_M_OBJ_ID=0
+ENTITY=rordforn
+LINK=0
+LINK_NAME=
+DSN_SIZE=54
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=rof-chiave OF rordforn
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_2135680422
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1195227633]
+OBJ_NAME=0
+OBJ_ID=1195227633
+REL_M_OBJ_ID=0
+ENTITY=tcaumag
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tca-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1195227633
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1268687368]
+OBJ_NAME=0
+OBJ_ID=1268687368
+REL_M_OBJ_ID=0
+ENTITY=timballi
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=imb-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1268687368
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1247066697]
+OBJ_NAME=0
+OBJ_ID=1247066697
+REL_M_OBJ_ID=0
+ENTITY=timbalqta
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=imq-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1247066697
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1933834730]
+OBJ_NAME=0
+OBJ_ID=1933834730
+REL_M_OBJ_ID=0
+ENTITY=nordforn
+LINK=0
+LINK_NAME=
+DSN_SIZE=54
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=nof-chiave OF nordforn
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1933834730
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1569431712]
+OBJ_NAME=0
+OBJ_ID=1569431712
+REL_M_OBJ_ID=0
+ENTITY=rlistini
+LINK=0
+LINK_NAME=
+DSN_SIZE=55
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=rlis-chiave OF rlistini
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1569431712
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_461391249]
+OBJ_NAME=0
+OBJ_ID=461391249
+REL_M_OBJ_ID=0
+ENTITY=art-ordforn
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=aor-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_461391249
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1980724989]
+OBJ_NAME=0
+OBJ_ID=1980724989
+REL_M_OBJ_ID=0
+ENTITY=destinif
+LINK=0
+LINK_NAME=
+DSN_SIZE=43
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=desf-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1980724989
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_965404217]
+OBJ_NAME=0
+OBJ_ID=965404217
+REL_M_OBJ_ID=0
+ENTITY=progmag
+LINK=0
+LINK_NAME=
+DSN_SIZE=53
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=prg-chiave OF progmag
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_965404217
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1460655200]
+OBJ_NAME=0
+OBJ_ID=1460655200
+REL_M_OBJ_ID=0
+ENTITY=tmagaz
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=mag-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1460655200
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_2049916035]
+OBJ_NAME=0
+OBJ_ID=2049916035
+REL_M_OBJ_ID=0
+ENTITY=tcodpag
+LINK=0
+LINK_NAME=
+DSN_SIZE=44
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=TBLPA-CODICE
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_2049916035
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_452253483]
+OBJ_NAME=0
+OBJ_ID=452253483
+REL_M_OBJ_ID=0
+ENTITY=tivaese
+LINK=0
+LINK_NAME=
+DSN_SIZE=44
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=TBLIV-CODICE
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_452253483
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=

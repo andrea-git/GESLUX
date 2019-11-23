@@ -1,0 +1,23 @@
+       77  open-key-handle       usage unsigned-long.
+       77  sam-desired           usage unsigned-long.
+       77  subkey-handle         usage unsigned-long.
+       77  data-type             usage unsigned-long.
+       77  data-size             usage unsigned-long.
+       77  subkey-to-be-opened   pic x(256).
+       77  value-data            pic x(256).
+       77  new-registry          pic x(256).
+       77  value-key             pic x(256).
+       77  row-command           pic x(256).
+       77  cmd-lancio            pic x(256).
+       77  descr-prog            pic x(50).
+       77  var-prog              pic x(20).
+       77  status-code           pic s9.
+       77  status-run            pic s9.
+       77  cont                  pic 999.
+       77  cont2                 pic 999.
+       77  row-empty             pic x.
+       77  separatore            pic x value space.
+       77  path-to-excel         pic x(256).
+       77  path-to-subst         pic x(256).
+       77  path-launch           pic x(256).
+       copy "link-readutente.def".

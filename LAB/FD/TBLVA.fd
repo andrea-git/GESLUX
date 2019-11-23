@@ -1,0 +1,71 @@
+      *
+      * Record per tabella valute
+      *
+      *
+      * tplvar zmm_title=Tabella valute
+      * tplvar zmm_ver=09.01.00
+      * tplvar zmm_class=anagraphic
+      *
+      *
+      *
+       FD  TBLVA.
+       01 RECORD-TBLVA.
+           05 TBLVA-CODICE.
+               10 TBLVA-CODICE1    PIC  X(02).
+               10 TBLVA-CODICE2.
+      *$GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=20,zmm_align=L,zmm_pos=1,zmm_entity=tblva
+      *
+                   15 TBLVA-CODICE-VALUTA          PIC  X(03).
+      * copy "groupdate.xfc". | DBMaker
+      *
+                   15 TBLVA-DATA.
+      *(( XFD NAME = TBLVA-DATA-AA ))
+                       20 AA   PIC  9(04).
+      *(( XFD NAME = TBLVA-DATA-MM ))
+                       20 MM   PIC  9(02).
+      *(( XFD NAME = TBLVA-DATA-GG ))
+                       20 GG   PIC  9(02).
+                   15 TBLVA-DATA-X REDEFINES TBLVA-DATA.
+                       20 TBLVA-DATA-RED   PIC  9(08).
+      *(( XFD NAME = TBLVA-FILLER-01 ))
+                   15 TBLVA-FILLER     PIC  X(09).
+           05 RESTO-RECORD-TBLVA.
+      *$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=2
+               10 TBLVA-DESCRIZIONE1           PIC  X(30).
+      *$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=3
+               10 TBLVA-DESCRIZIONE2           PIC  X(30).
+               10 TBLVA-CAMBIO-OLD PIC  9(05)V9(04).
+               10 TBLVA-DECIMALI   PIC  9(01).
+                   88 TBLVA-DECIMALI-88 VALUE IS 0 1 2 3. 
+      *(( XFD NAME = TBLVA-CAMB-VEN-OLD ))
+               10 TBLVA-CAMBIO-VENDITE-OLD     PIC  9(05)V9(04).
+               10 TBLVA-PERC-OSCILLAZIONE      PIC  9(03)V9(02).
+               10 TBLVA-DECIMALI-PREZZO        PIC  9(01).
+                   88 TBLVA-DECIMALI-PREZZO-88 VALUE IS 0 1 2 3 4 5 6. 
+               10 TBLVA-CAMBIO-EURO-OLD        PIC  9(05)V9(06).
+               10 TBLVA-EURO-OLD   PIC  X(01).
+                   88 TBLVA-EURO-88-OLD VALUE IS "S" " ". 
+      *$GEN type=num,dec=06,size=14,zmm=on,zmm_title=Cambio contabile,zmm_datatype=9,zmm_size=22,zmm_align=R,zmm_pos=4
+               10 TBLVA-CAMBIO     PIC  9(05)V9(06).
+      *$GEN type=num,dec=06,size=14,zmm=on,zmm_title=Cambio vendite,zmm_datatype=9,zmm_size=22,zmm_align=R,zmm_pos=5
+      *
+               10 TBLVA-CAMBIO-VENDITE         PIC  9(05)V9(06).
+               10 TBLVA-DIVISA-EURO            PIC  X(01).
+                   88 TBLVA-DIVISA-EURO-88 VALUE IS "S" " ". 
+      *$GEN type=num,dec=06,size=14
+      *
+               10 TBLVA-CAMBIO-EURO            PIC  9(05)V9(06).
+      *$GEN zmm=on,zmm_title=Codice ISO,zmm_datatype=x,zmm_size=6,zmm_align=L,zmm_pos=6
+      *
+               10 TBLVA-CODICE-ISO PIC  X(06).
+      *
+      * tipocambio-fisso  = vecchio comportamento con lettura per data "secca" su tblvb
+      * tipocambio-ultimo = ricerca del cambio piu' recente su tblvb
+      *
+      *
+               10 tblva-flag-tipocambio        PIC  9.
+                   88 tblva-tipocambio-fisso VALUE IS 0. 
+                   88 tblva-tipocambio-ultimo VALUE IS 1. 
+               10 TBLVA-FILLER     PIC  X(1180).
+      ***      10  TBLVA-FILLER                    PIC  X(1181).                |or 12/03/07
+               10 TBLVA-FILLER-RIS PIC  X(40).

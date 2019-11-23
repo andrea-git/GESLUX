@@ -1,0 +1,11 @@
+      *(( XFD FILE = tmp-statsett ))
+       FD  tmp-statsett.
+       01 tmp-sts-rec.
+           05 tmp-sts-chiave.
+               10 tmp-sts-mese     PIC  99.
+               10 tmp-sts-tipocli  PIC  x(50).
+           05 tmp-sts-dati.
+               10 tmp-sts-fat-corr PIC  s9(12)v99.
+               10 tmp-sts-fat-past PIC  s9(12)v99.
+               10 tmp-sts-diff     PIC  s9(12)v99.
+               10 tmp-sts-perce-diff           PIC  s9(3)v99.

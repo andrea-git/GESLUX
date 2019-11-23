@@ -1,0 +1,13 @@
+      *
+      *File dei codici IVA
+      * 
+      *
+      *.
+       SELECT OPTIONAL TBLVA
+           ASSIGN       TO RANDOM "TBLVA"
+           ORGANIZATION IS INDEXED
+           ACCESS MODE  IS DYNAMIC
+           FILE STATUS  IS STATUS-TBLVA
+           RECORD KEY   IS TBLVA-CODICE
+           ALTERNATE RECORD KEY IS TBLVA-CODICE-01 = TBLVA-CODICE1, 
+           TBLVA-DESCRIZIONE1, TBLVA-CODICE2.

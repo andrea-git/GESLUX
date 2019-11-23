@@ -1,0 +1,26 @@
+       77  path-fileseq         pic x(256).
+       01  STATUS-fileseq       pic xx.
+
+      * 01  controlli            pic xx.
+      *     88 tutto-ok          value "OK".
+      *     88 errori            value "ER".
+       01                       pic 9.
+           88 errore-bloccante  value 1 false zero.
+
+       01  tipo-export          pic x.
+           88 imp-articoli      value "A".
+           88 imp-carichi       value "C".
+           88 imp-ordini        value "O".
+
+       01                       pic 9.
+           88 primo-errore      value 1 false zero.
+
+       01                       pic 9.
+           88 report-aperto     value 1 false zero.
+           
+
+       77  como-messaggio       pic x(100).
+
+       77  num-rec-exp          pic 9(10).
+       77  num-rec-no-exp       pic 9(10).
+       77  num-rec-ed           pic z(9)9.

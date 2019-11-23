@@ -1,0 +1,16 @@
+      *(( XFD FILE = tmp-st-promo ))
+       FD  tmp-st-promo.
+       01 tmp-st-rec.
+           05 tmp-st-chiave.
+               10 tmp-st-anno      PIC  9(4).
+               10 tmp-st-gdo       PIC  x(5).
+               10 tmp-st-ini-vol   PIC  9(8).
+               10 tmp-st-fine-vol  PIC  9(8).
+               10 tmp-st-codice    PIC  9(15).
+           05 tmp-st-dati.
+               15 tmp-st-tipo      PIC  x.
+                   88 tmp-st-nazionale VALUE IS "N". 
+                   88 tmp-st-locale VALUE IS "L". 
+               15 tmp-st-vol-descr PIC  x(50).
+               15 tmp-st-ini-dpo   PIC  9(8).
+               15 tmp-st-fine-dpo  PIC  9(8).

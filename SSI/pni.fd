@@ -1,0 +1,460 @@
+*------------------------------------------------------------------------------------------------------------------------
+* lav.4395 prima nota 2008
+* modificata per deprecazione pni puntoniente                                                      | mxm 24/01/2008 12.37
+*-----------------------------------------------------------------
+* tk 484 - pni.dpb utilizzato per corrispettivi veloci                                             |ms 25/07/2008 11.49
+*
+*-----------------------------------------------------------------
+*
+*
+* tk 240 - new primanota                                                                           |ms 19/11/2008 8.56
+*        - clausola di generazione "type=code" per pni-tblva-codice
+*        - clausola di generazione "type=code" per pni-tblva-codice-intra
+*        - nuova colonna "pni-codice-cp" (occurs 20)
+*
+*-----------------------------------------------------------------------------------------
+* tk 2034 - Si richiede di inserire nel Wizard anche il campo "descrizione movimento"              |ms 23/06/2009 8.29
+*           (o descrizione riga) e il campo "imposta".*Risulterebbe particolarmente utile,
+*           poiché se decido d'inserire movimentazioni attraverso il Wizard potrei evitare di
+*           modificare, al termine dell'inserimento, la descrizione sulle varie righe di primanota
+*           inserite. Il campo imposta sarebbe particolarmente utile perché, in caso di registrazione
+*           di fattura d'acquisto, laddove il fornitore avesse indicato un'imposta diversa da quella
+*           calcolata da G2 avrei modo di imputarla in maniera corretta. Infatti, la fattura d'acquisto
+*           va imputata per come letta ed eventuali rettifiche dell'imposta dovranno essere eseguite
+*           a norma dell'art.26.
+*
+*          . aggiunta colonna "pni-tabella-blocca" (occurs 20)
+*-------------------------------------------------------------------------------------------------------
+* tk.3313 - Black list iva: DL nr. 40/2010 - Comunicazione telematica operazioni con paesi         |ds 15/09/2010 11.31
+*           appartenenti black list                                                                |ds 15/09/2010 11.31
+*           inseriti nuovi campi
+*------------------------------------------------------------------
+
+* tplvar file_selvar=on
+*
+ 01  record-pni.
+    05  pni-codice.
+*$GEN type=num,dec=0,size=11
+        10  pni-progressivo                 pic  9(08).
+    05  resto-record-pni.
+        10  pni-tabella                     occurs 20.
+*$GEN entity=tbliv
+            15  pni-tbliv-codice            pic  x(03).
+            15  pni-imponibile              pic s9(13)v9(02) trailing separate.
+            15  pni-imposta                 pic s9(13)v9(02) trailing separate.
+            15  pni-detraibile              pic s9(13)v9(02) trailing separate.
+            15  pni-imponibile-va           pic s9(15)v9(03) trailing separate.
+            15  pni-imposta-va              pic s9(15)v9(03) trailing separate.
+            15  pni-detraibile-va           pic s9(15)v9(03) trailing separate.
+
+        10  pni-tabella-x redefines pni-tabella.
+*$GEN type=code,entity=tbliv
+            15  pni-tbliv-codice-01            pic  x(03).
+*$GEN type=num,size=21,dec=02
+            15  pni-imponibile-01              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-imposta-01                 pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-detraibile-01              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imponibile-va-01           pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imposta-va-01              pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-detraibile-va-01           pic s9(15)v9(03) trailing separate.
+
+*$GEN type=code,entity=tbliv
+            15  pni-tbliv-codice-02            pic  x(03).
+*$GEN type=num,size=21,dec=02
+            15  pni-imponibile-02              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-imposta-02                 pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-detraibile-02              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imponibile-va-02           pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imposta-va-02              pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-detraibile-va-02           pic s9(15)v9(03) trailing separate.
+
+*$GEN type=code,entity=tbliv
+            15  pni-tbliv-codice-03            pic  x(03).
+*$GEN type=num,size=21,dec=02
+            15  pni-imponibile-03              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-imposta-03                 pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-detraibile-03              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imponibile-va-03           pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imposta-va-03              pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-detraibile-va-03           pic s9(15)v9(03) trailing separate.
+
+*$GEN type=code,entity=tbliv
+            15  pni-tbliv-codice-04            pic  x(03).
+*$GEN type=num,size=21,dec=02
+            15  pni-imponibile-04              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-imposta-04                 pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-detraibile-04              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imponibile-va-04           pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imposta-va-04              pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-detraibile-va-04           pic s9(15)v9(03) trailing separate.
+
+*$GEN type=code,entity=tbliv
+            15  pni-tbliv-codice-05            pic  x(03).
+*$GEN type=num,size=21,dec=02
+            15  pni-imponibile-05              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-imposta-05                 pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-detraibile-05              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imponibile-va-05           pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imposta-va-05              pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-detraibile-va-05           pic s9(15)v9(03) trailing separate.
+
+*$GEN type=code,entity=tbliv
+            15  pni-tbliv-codice-06            pic  x(03).
+*$GEN type=num,size=21,dec=02
+            15  pni-imponibile-06              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-imposta-06                 pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-detraibile-06              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imponibile-va-06           pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imposta-va-06              pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-detraibile-va-06           pic s9(15)v9(03) trailing separate.
+
+*$GEN type=code,entity=tbliv
+            15  pni-tbliv-codice-07            pic  x(03).
+*$GEN type=num,size=21,dec=02
+            15  pni-imponibile-07              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-imposta-07                 pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-detraibile-07              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imponibile-va-07           pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imposta-va-07              pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-detraibile-va-07           pic s9(15)v9(03) trailing separate.
+
+*$GEN type=code,entity=tbliv
+            15  pni-tbliv-codice-08            pic  x(03).
+*$GEN type=num,size=21,dec=02
+            15  pni-imponibile-08              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-imposta-08                 pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-detraibile-08              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imponibile-va-08           pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imposta-va-08              pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-detraibile-va-08           pic s9(15)v9(03) trailing separate.
+
+*$GEN type=code,entity=tbliv
+            15  pni-tbliv-codice-09            pic  x(03).
+*$GEN type=num,size=21,dec=02
+            15  pni-imponibile-09              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-imposta-09                 pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-detraibile-09              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imponibile-va-09           pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imposta-va-09              pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-detraibile-va-09           pic s9(15)v9(03) trailing separate.
+
+*$GEN type=code,entity=tbliv
+            15  pni-tbliv-codice-10            pic  x(03).
+*$GEN type=num,size=21,dec=02
+            15  pni-imponibile-10              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-imposta-10                 pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-detraibile-10              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imponibile-va-10           pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imposta-va-10              pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-detraibile-va-10           pic s9(15)v9(03) trailing separate.
+
+*$GEN type=code,entity=tbliv
+            15  pni-tbliv-codice-11            pic  x(03).
+*$GEN type=num,size=21,dec=02
+            15  pni-imponibile-11              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-imposta-11                 pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-detraibile-11              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imponibile-va-11           pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imposta-va-11              pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-detraibile-va-11           pic s9(15)v9(03) trailing separate.
+
+*$GEN type=code,entity=tbliv
+            15  pni-tbliv-codice-12            pic  x(03).
+*$GEN type=num,size=21,dec=02
+            15  pni-imponibile-12              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-imposta-12                 pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-detraibile-12              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imponibile-va-12           pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imposta-va-12              pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-detraibile-va-12           pic s9(15)v9(03) trailing separate.
+
+*$GEN type=code,entity=tbliv
+            15  pni-tbliv-codice-13            pic  x(03).
+*$GEN type=num,size=21,dec=02
+            15  pni-imponibile-13              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-imposta-13                 pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-detraibile-13              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imponibile-va-13           pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imposta-va-13              pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-detraibile-va-13           pic s9(15)v9(03) trailing separate.
+
+*$GEN type=code,entity=tbliv
+            15  pni-tbliv-codice-14            pic  x(03).
+*$GEN type=num,size=21,dec=02
+            15  pni-imponibile-14              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-imposta-14                 pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-detraibile-14              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imponibile-va-14           pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imposta-va-14              pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-detraibile-va-14           pic s9(15)v9(03) trailing separate.
+
+*$GEN type=code,entity=tbliv
+            15  pni-tbliv-codice-15            pic  x(03).
+*$GEN type=num,size=21,dec=02
+            15  pni-imponibile-15              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-imposta-15                 pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-detraibile-15              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imponibile-va-15           pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imposta-va-15              pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-detraibile-va-15           pic s9(15)v9(03) trailing separate.
+
+*$GEN type=code,entity=tbliv
+            15  pni-tbliv-codice-16            pic  x(03).
+*$GEN type=num,size=21,dec=02
+            15  pni-imponibile-16              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-imposta-16                 pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-detraibile-16              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imponibile-va-16           pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imposta-va-16              pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-detraibile-va-16           pic s9(15)v9(03) trailing separate.
+
+*$GEN type=code,entity=tbliv
+            15  pni-tbliv-codice-17            pic  x(03).
+*$GEN type=num,size=21,dec=02
+            15  pni-imponibile-17              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-imposta-17                 pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-detraibile-17              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imponibile-va-17           pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imposta-va-17              pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-detraibile-va-17           pic s9(15)v9(03) trailing separate.
+
+*$GEN type=code,entity=tbliv
+            15  pni-tbliv-codice-18            pic  x(03).
+*$GEN type=num,size=21,dec=02
+            15  pni-imponibile-18              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-imposta-18                 pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-detraibile-18              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imponibile-va-18           pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imposta-va-18              pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-detraibile-va-18           pic s9(15)v9(03) trailing separate.
+
+*$GEN type=code,entity=tbliv
+            15  pni-tbliv-codice-19            pic  x(03).
+*$GEN type=num,size=21,dec=02
+            15  pni-imponibile-19              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-imposta-19                 pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-detraibile-19              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imponibile-va-19           pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imposta-va-19              pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-detraibile-va-19           pic s9(15)v9(03) trailing separate.
+
+*$GEN type=code,entity=tbliv
+            15  pni-tbliv-codice-20            pic  x(03).
+*$GEN type=num,size=21,dec=02
+            15  pni-imponibile-20              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-imposta-20                 pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=21,dec=02
+            15  pni-detraibile-20              pic s9(13)v9(02) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imponibile-va-20           pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-imposta-va-20              pic s9(15)v9(03) trailing separate.
+*$GEN type=num,size=23,dec=02
+            15  pni-detraibile-va-20           pic s9(15)v9(03) trailing separate.
+*
+        10  pni-codice-conto.
+*$GEN type=combobox,comboclass=generic_tipo_cfm,comboentity=pni-tipo-cfm-e3
+            15  pni-tipo-cfm                pic  x(01).
+                88  pni-tipo-cfm-88             value "C" "F" "M".
+                88  pni-tipo-cfm-c              value "C".
+                88  pni-tipo-cfm-f              value "F".
+                88  pni-tipo-cfm-m              value "M".
+*$GEN type=code,entity=var(pni-tipo-cfm-e3)
+            15  pni-codice-cfm              pic  x(08).
+*$GEN type=code, entity=tblva
+        10  pni-tblva-codice                pic  x(03).
+*$GEN type=code, entity=tblva
+        10  pni-tblva-codice-intra          pic  x(03).
+*$GEN type=num,dec=3,size=24
+        10  pni-importo-va-intra            pic s9(15)v9(03) trailing separate.
+
+
+        10  pni-tabella-contropartite.
+*$GEN type=code,entity=mas
+            15 pni-codice-cp-01                pic x(08).                                              |ms 19/11/2008 9.02
+*$GEN type=code,entity=mas
+            15 pni-codice-cp-02                pic x(08).                                              |ms 19/11/2008 9.02
+*$GEN type=code,entity=mas
+            15 pni-codice-cp-03                pic x(08).                                              |ms 19/11/2008 9.02
+*$GEN type=code,entity=mas
+            15 pni-codice-cp-04                pic x(08).                                              |ms 19/11/2008 9.02
+*$GEN type=code,entity=mas
+            15 pni-codice-cp-05                pic x(08).                                              |ms 19/11/2008 9.02
+*$GEN type=code,entity=mas
+            15 pni-codice-cp-06                pic x(08).                                              |ms 19/11/2008 9.02
+*$GEN type=code,entity=mas
+            15 pni-codice-cp-07                pic x(08).                                              |ms 19/11/2008 9.02
+*$GEN type=code,entity=mas
+            15 pni-codice-cp-08                pic x(08).                                              |ms 19/11/2008 9.02
+*$GEN type=code,entity=mas
+            15 pni-codice-cp-09                pic x(08).                                              |ms 19/11/2008 9.02
+*$GEN type=code,entity=mas
+            15 pni-codice-cp-10                pic x(08).                                              |ms 19/11/2008 9.02
+*$GEN type=code,entity=mas
+            15 pni-codice-cp-11                pic x(08).                                              |ms 19/11/2008 9.02
+*$GEN type=code,entity=mas
+            15 pni-codice-cp-12                pic x(08).                                              |ms 19/11/2008 9.02
+*$GEN type=code,entity=mas
+            15 pni-codice-cp-13                pic x(08).                                              |ms 19/11/2008 9.02
+*$GEN type=code,entity=mas
+            15 pni-codice-cp-14                pic x(08).                                              |ms 19/11/2008 9.02
+*$GEN type=code,entity=mas
+            15 pni-codice-cp-15                pic x(08).                                              |ms 19/11/2008 9.02
+*$GEN type=code,entity=mas
+            15 pni-codice-cp-16                pic x(08).                                              |ms 19/11/2008 9.02
+*$GEN type=code,entity=mas
+            15 pni-codice-cp-17                pic x(08).                                              |ms 19/11/2008 9.02
+*$GEN type=code,entity=mas
+            15 pni-codice-cp-18                pic x(08).                                              |ms 19/11/2008 9.02
+*$GEN type=code,entity=mas
+            15 pni-codice-cp-19                pic x(08).                                              |ms 19/11/2008 9.02
+*$GEN type=code,entity=mas
+            15 pni-codice-cp-20                pic x(08).                                              |ms 19/11/2008 9.02
+
+        10  pni-tabella-contropartite-x redefines                                                      |ms 19/11/2008 9.04
+            pni-tabella-contropartite.
+            15 pni-codice-cp                   pic x(08) occurs 20.                                    |ms 19/11/2008 9.04
+
+        10  pni-tabella-blocca.
+            15 pni-blocca-01-l                   pic 9.                                              |ms 23/06/2009 8.25
+            15 pni-blocca-02-l                   pic 9.                                              |ms 23/06/2009 8.25
+            15 pni-blocca-03-l                   pic 9.                                              |ms 23/06/2009 8.25
+            15 pni-blocca-04-l                   pic 9.                                              |ms 23/06/2009 8.25
+            15 pni-blocca-05-l                   pic 9.                                              |ms 23/06/2009 8.25
+            15 pni-blocca-06-l                   pic 9.                                              |ms 23/06/2009 8.25
+            15 pni-blocca-07-l                   pic 9.                                              |ms 23/06/2009 8.25
+            15 pni-blocca-08-l                   pic 9.                                              |ms 23/06/2009 8.25
+            15 pni-blocca-09-l                   pic 9.                                              |ms 23/06/2009 8.25
+            15 pni-blocca-10-l                   pic 9.                                              |ms 23/06/2009 8.25
+            15 pni-blocca-11-l                   pic 9.                                              |ms 23/06/2009 8.25
+            15 pni-blocca-12-l                   pic 9.                                              |ms 23/06/2009 8.25
+            15 pni-blocca-13-l                   pic 9.                                              |ms 23/06/2009 8.25
+            15 pni-blocca-14-l                   pic 9.                                              |ms 23/06/2009 8.25
+            15 pni-blocca-15-l                   pic 9.                                              |ms 23/06/2009 8.25
+            15 pni-blocca-16-l                   pic 9.                                              |ms 23/06/2009 8.25
+            15 pni-blocca-17-l                   pic 9.                                              |ms 23/06/2009 8.25
+            15 pni-blocca-18-l                   pic 9.                                              |ms 23/06/2009 8.25
+            15 pni-blocca-19-l                   pic 9.                                              |ms 23/06/2009 8.25
+            15 pni-blocca-20-l                   pic 9.                                              |ms 23/06/2009 8.25
+
+        10  pni-tabella-blocca-x redefines
+            pni-tabella-blocca.
+            15 pni-blocca-l                      pic 9 occurs 20.                                    |ms 23/06/2009 8.31
+
+
+*$GEN type=code,entity=frn
+        10  pni-codice-frn-origine               pic  x(08).                                       |ds 15/09/2010 9.27
+*$GEN type=checkbox,truevalue="S",falsevalue=" "
+        10  pni-rettifica           pic x(01).                                                     |ds 15/09/2010 11.31
+            88  pni-rettifica-si    value "S".                                                     |ds 15/09/2010 11.31
+            88  pni-rettifica-no    value " ".                                                     |ds 15/09/2010 11.31
+$xfd date=yyyymm
+*$GEN type=dateyyyymm,
+        10  pni-data-periodo-rett   pic 9(06).                                                     |ds 15/09/2010 11.47
+
+
+****        10  pni-filler                      pic  x(758).                                       |ms 19/11/2008 9.05
+***        10  pni-filler                      pic  x(598).                |ms 19/11/2008 9.05     |ms 22/06/2009 16.19
+*        10  pni-filler                      pic  x(578).                                          |ds 15/09/2010 9.28
+        10  pni-filler                      pic  x(563).                                           |ds 15/09/2010 9.28
+
+        10  pni-filler-ris                  pic  x(40).
+*
+*
+*

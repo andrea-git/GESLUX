@@ -1,0 +1,9 @@
+      *
+       01 stgdo-p-linkage.
+           03 stgdo-p-codice   pic x(5).
+           03 stgdo-p-cliente  pic 9(5).
+           03 stgdo-p-path     pic x(256).
+           03 stgdo-p-user     pic x(20).
+           03 stgdo-p-tipo     pic x.
+              88 stgdo-p-gdo   value "G".
+              88 stgdo-p-cli   value "C".

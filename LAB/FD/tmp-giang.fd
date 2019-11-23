@@ -1,0 +1,58 @@
+      *(( XFD FILE = tmp-giang ))
+       FD  tmp-giang.
+       01 tgia-rec.
+           05 tgia-chiave.
+               10 tgia-cod-articolo            PIC  9(6).
+               10 tgia-tipo-rec    PIC  x.
+                   88 tgia-articolo VALUE IS "A". 
+                   88 tgia-ordfor VALUE IS "F". 
+                   88 tgia-master VALUE IS "M". 
+               10 tgia-master-ordf.
+                   15 tgia-testa-ordf.
+                       20 tgia-anno        PIC  9(4).
+                       20 tgia-numero      PIC  9(8).
+                   15 tgia-riga        PIC  9(5).
+           05 tgia-dati.
+               10 tgia-tot-ordfor  PIC  9(3).
+               10 tgia-inevaso     PIC  9(8).
+               10 tgia-ordinato    PIC  9(8).
+               10 tgia-azione      PIC  x.
+                   88 tgia-attesa VALUE IS " ". 
+                   88 tgia-tagliare-merce VALUE IS "M". 
+                   88 tgia-tenere-saldo VALUE IS "T". 
+                   88 tgia-sostituzione VALUE IS "S". 
+               10 tgia-qta         PIC  9(8).
+      *(( XFD NAME = tgia-qta_1 ))
+               10 tgia-qta-p       PIC  9(8).
+      *(( XFD NAME = tgia-qta_1_1 ))
+               10 tgia-dt-arrivo   PIC  9(8).
+      *(( XFD NAME = tgia-qta_1_1_1 ))
+               10 tgia-note        PIC  x(500).
+      *(( XFD NAME = tgia-qta_1_1_1_1 ))
+               10 tgia-cod-CF      PIC  9(5).
+      *(( XFD NAME = tgia-qta_1_1_1_2 ))
+               10 tgia-ragsoc      PIC  x(50).
+      *(( XFD NAME = tgia-qta_1_1_1_1_1 ))
+               10 tgia-des-CF      PIC  9(5).
+      *(( XFD NAME = tgia-qta_1_1_1_2_1 ))
+               10 tgia-destino     PIC  x(50).
+      *(( XFD NAME = tgia-qta_1_1_1_2_1 ))
+               10 tgia-GDO         PIC  X(20).
+      *(( XFD NAME = tgia-qta_1_1_2 ))
+               10 tgia-dt-ord      PIC  9(8).
+      *(( XFD NAME = tgia-qta_1_1_2_1 ))
+               10 tgia-dt-cons     PIC  9(8).
+      *(( XFD NAME = tgia-qta_1_1_2_1_1 ))
+               10 tgia-promo       PIC  9(15).
+      *(( XFD NAME = tgia-qta_1_1_2_1_2 ))
+               10 tgia-des-promo   PIC  x(50).
+      *(( XFD NAME = tgia-qta_1_1_2_1_2 ))
+               10 tgia-tiene-saldi PIC  x(20).
+               10 tgia-ordf.
+                   15 tgia-anno-ordf   PIC  9(4).
+                   15 tgia-numero-ordf PIC  9(8).
+                   15 tgia-riga-ordf   PIC  9(5).
+               10 tgia-ordm.
+                   15 tgia-anno-m      PIC  9(4).
+                   15 tgia-numero-m    PIC  9(8).
+                   15 tgia-riga-m      PIC  9(8).

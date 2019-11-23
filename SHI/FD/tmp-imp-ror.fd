@@ -1,0 +1,31 @@
+      *(( XFD FILE = tmp-imp-ror ))
+       FD  tmp-imp-ror.
+       01 tmp-iror-rec.
+           05 tmp-iror-chiave.
+               10 tmp-iror-anno    PIC  9(4).
+               10 tmp-iror-num-ordine          PIC  9(8).
+               10 tmp-iror-num-riga            PIC  9(5).
+           05 tmp-iror-dati.
+               10 tmp-iror-prg-chiave.
+                   15 tmp-iror-ART-CODICE          PIC  9(6).
+                   15 tmp-iror-MAG-CODICE          PIC  x(3).
+                   15 tmp-iror-IMBALLO PIC  x(3).
+                   15 tmp-iror-PESO    PIC  9(7)v9(3).
+               10 tmp-iror-QTA-RICHIESTA       PIC  9(11)v9(3).
+               10 tmp-iror-QTA-EVASA           PIC  9(11)v9(3).
+               10 tmp-iror-UDF1    PIC  x(25).
+               10 tmp-iror-UDF2    PIC  x(25).
+               10 tmp-iror-UDF3    PIC  x(25).
+               10 tmp-iror-UDF4    PIC  x(25).
+               10 tmp-iror-UDF5    PIC  X(25).
+               10 tmp-iror-UDF6    PIC  X(25).
+               10 tmp-iror-UDF7    PIC  X(25).
+               10 tmp-iror-UDF8    PIC  x(25).
+               10 tmp-iror-UDF9    PIC  x(25).
+               10 tmp-iror-UDF10   PIC  x(25).
+               10 tmp-iror-SEQ-ELAB            PIC  x(80).
+               10 tmp-iror-UDC-COMMITTENTE     PIC  x(20).
+               10 tmp-iror-ELABORAZIONE-RISULTATO          PIC  x(500).
+               10 tmp-iror-PESO-EVASO          PIC  9(14).
+               10 tmp-iror-RIGA-HOST           PIC  X(10).
+               10 tmp-iror-USCTES-ID           PIC  X(10).

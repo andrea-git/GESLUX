@@ -1,0 +1,6 @@
+       SELECT TABM
+           ASSIGN       TO RANDOM "TABM"
+           ORGANIZATION IS INDEXED
+           ACCESS MODE  IS DYNAMIC
+           FILE STATUS  IS STATUSCAR
+           RECORD KEY   IS NOMECHIAVE.

@@ -1,0 +1,20 @@
+       FD  tsetmerc.
+       01 sme-rec.
+           05 sme-chiave.
+               10 sme-codice       PIC  9(4).
+           05 sme-dati.
+               10 sme-descrizione  PIC  x(30).
+               10 sme-dati-comuni.
+                   15 sme-data-creazione           PIC  9(8).
+                   15 sme-ora-creazione            PIC  9(8).
+                   15 sme-utente-creazione         PIC  x(10).
+                   15 sme-data-ultima-modifica     PIC  9(8).
+                   15 sme-ora-ultima-modifica      PIC  9(8).
+                   15 sme-utente-ultima-modifica   PIC  x(10).
+               10 sme-vuoti.
+                   15 sme-num-vuoto-1  PIC  9(15).
+                   15 sme-num-vuoto-2  PIC  9(15).
+                   15 sme-num-vuoto-3  PIC  9(15).
+                   15 sme-alfa-vuoto-1 PIC  x(20).
+                   15 sme-alfa-vuoto-2 PIC  x(20).
+                   15 sme-alfa-vuoto-3 PIC  x(20).

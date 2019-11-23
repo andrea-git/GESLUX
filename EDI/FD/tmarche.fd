@@ -1,0 +1,35 @@
+       FD  tmarche.
+       01 mar-rec.
+           05 mar-chiave.
+               10 mar-codice       PIC  9(4).
+           05 mar-dati.
+               10 mar-descrizione  PIC  X(30).
+               10 mar-acq-var-listino-meno     PIC  99v99.
+               10 mar-acq-var-listino-piu      PIC  99v99.
+               10 mar-ven-var-listino-meno     PIC  99v99.
+               10 mar-ven-var-listino-piu      PIC  99v99.
+               10 mar-tratt-imposta-consumo    PIC  X(1).
+                   88 mar-si-imposta-consumo VALUE IS "S". 
+                   88 mar-no-imposta-consumo VALUE IS "N". 
+               10 mar-trattamento-cou          PIC  X(1).
+                   88 mar-si-cou VALUE IS "S". 
+                   88 mar-no-cou VALUE IS "N". 
+               10 mar-scostamento  PIC  9(3)v99.
+               10 mar-lead-time    PIC  9(3).
+               10 mar-dati-comuni.
+                   15 mar-data-creazione           PIC  9(8).
+                   15 mar-ora-creazione            PIC  9(8).
+                   15 mar-utente-creazione         PIC  X(10).
+                   15 mar-data-ultima-modifica     PIC  9(8).
+                   15 mar-ora-ultima-modifica      PIC  9(8).
+                   15 mar-utente-ultima-modifica   PIC  X(10).
+               10 mar-vuoti.
+                   15 mar-cobat        PIC  X(1).
+                       88 mar-si-cobat VALUE IS "S". 
+                       88 mar-no-cobat VALUE IS "N". 
+                   15 mar-num-vuoto-1  PIC  9(14).
+                   15 mar-num-vuoto-2  PIC  9(15).
+                   15 mar-num-vuoto-3  PIC  9(15).
+                   15 mar-alfa-vuoto-1 PIC  X(20).
+                   15 mar-alfa-vuoto-2 PIC  X(20).
+                   15 mar-alfa-vuoto-3 PIC  X(20).

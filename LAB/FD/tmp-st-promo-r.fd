@@ -1,0 +1,18 @@
+      *(( XFD FILE = tmp-st-promo-r ))
+       FD  tmp-st-promo-r.
+       01 tmpr-st-rec.
+           05 tmpr-st-chiave.
+               10 tmpr-st-codice   PIC  9(15).
+               10 tmpr-st-art-descrizione      PIC  x(30).
+               10 tmpr-st-art-codice           PIC  9(6).
+           05 tmpr-st-dati.
+      *(( XFD NAME = tmp-st-prz-acq_1_1 ))
+               15 tmpr-st-prz-ven  PIC  9(7)v99.
+      *(( XFD NAME = tmp-st-prz-acq_1_1 ))
+               15 tmpr-st-prz-acq  PIC  9(7)v99.
+      *(( XFD NAME = tmp-st-qta_1_1 ))
+               15 tmpr-st-qta      PIC  9(8).
+      *(( XFD NAME = tmp-st-qta-b_1_1 ))
+               15 tmpr-st-qta-b    PIC  9(8).
+      *(( XFD NAME = tmp-st-prz-fatt_1_ ))
+               15 tmpr-st-prz-fatt PIC  9(7)v99.

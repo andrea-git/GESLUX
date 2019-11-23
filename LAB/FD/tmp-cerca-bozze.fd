@@ -1,0 +1,22 @@
+      *(( XFD FILE = tmp-solleciti ))
+       FD  tmp-cerca-bozze.
+       01 tmp-b-rec.
+           05 tmp-b-chiave.
+               10 tmp-b-anno       PIC  9(4).
+               10 tmp-b-numero     PIC  9(8).
+           05 tmp-b-num-reso   PIC  9(8).
+           05 tmp-b-causale    PIC  x(4).
+           05 tmp-b-bolla.
+               10 tmp-b-anno-bolla PIC  9(4).
+               10 tmp-b-num-bolla  PIC  x(20).
+               10 tmp-b-data-bolla PIC  9(8).
+           05 tmp-b-fattura.
+               10 tmp-b-anno-fatt  PIC  9(4).
+               10 tmp-b-num-fatt   PIC  9(8).
+               10 tmp-b-data-fatt  PIC  9(8).
+           05 tmp-b-ragsoc     PIC  x(40).
+           05 tmp-b-localita   PIC  x(40).
+           05 tmp-b-nc.
+               10 tmp-b-anno-nc    PIC  9(4).
+               10 tmp-b-num-nc     PIC  9(8).
+               10 tmp-b-data-nc    PIC  9(8).

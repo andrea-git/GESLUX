@@ -1,0 +1,21 @@
+      *
+       01 inveday-linkage.
+           03 inveday-path     PIC  x(256).
+           03 inveday-da-data  PIC  9(8).
+           03 inveday-a-data   PIC  9(8).
+           03 inveday-tipo-costo           PIC  9.
+               88 inveday-medio VALUE IS 1. 
+               88 inveday-ultimo VALUE IS 2. 
+           03 inveday-mag      PIC  x(3).
+           03 inveday-marca    PIC  9(5).
+           03 inveday-user     PIC  x(20).
+           03 inveday-tipo     PIC  x.
+               88 inveday-day VALUE IS "D". 
+               88 inveday-std VALUE IS "S". 
+           03 inveday-tipo-rec PIC  x.
+               88 inveday-figlio VALUE IS "F". 
+               88 inveday-padre VALUE IS "P". 
+           03 filler pic 9.
+              88 inveday-excel value 1, false 0.
+           03 inveday-status
+                      USAGE IS SIGNED-SHORT.

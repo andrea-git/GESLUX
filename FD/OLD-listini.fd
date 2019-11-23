@@ -1,0 +1,28 @@
+       FD  OLD-listini.
+       01 OLD-lst-rec.
+           05 OLD-lst-chiave.
+               10 OLD-lst-gdo          PIC  x(5).
+               10 OLD-lst-data         PIC  9(8).
+               10 OLD-lst-articolo     PIC  9(6).
+           05 OLD-lst-dati.
+               10 OLD-lst-cod-art-cli  PIC  x(15).
+               10 OLD-lst-prezzo       PIC  9(12)v99.
+               10 OLD-lst-comuni.
+                   15 OLD-lst-data-creazione           PIC  9(8).
+                   15 OLD-lst-ora-creazione            PIC  9(8).
+                   15 OLD-lst-utente-creazione         PIC  x(10).
+                   15 OLD-lst-data-modifica            PIC  9(8).
+                   15 OLD-lst-ora-modifica PIC  9(8).
+                   15 OLD-lst-utente-modifica          PIC  x(10).
+               10 OLD-lst-vuoti.
+                   15 OLD-lst-num-vuoto-1  PIC  9(15).
+                   15 OLD-lst-num-vuoto-2  PIC  9(15).
+                   15 OLD-lst-num-vuoto-3  PIC  9(15).
+                   15 OLD-lst-prg-chiave.
+                       20 OLD-lst-prg-cod-articolo         PIC  9(6).
+                       20 OLD-lst-prg-cod-magazzino        PIC  X(3).
+                       20 OLD-lst-prg-tipo-imballo         PIC  X(3).
+                       20 OLD-lst-prg-peso     PIC  9(3)v9(3).
+                   15 OLD-lst-alfa-vuoto-1 PIC  x(2).
+                   15 OLD-lst-alfa-vuoto-2 PIC  x(20).
+                   15 OLD-lst-alfa-vuoto-3 PIC  x(20).

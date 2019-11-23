@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\Micro Focus\Acucbl912\AcuGT\bin\wrun32.exe" -c cblconfi -l -d mail-fido

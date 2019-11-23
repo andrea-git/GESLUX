@@ -1,0 +1,7 @@
+       FD  pro_piva.
+       01 piva-rec.
+           05 piva-chiave.
+               10 piva-codice      PIC  9(3).
+           05 piva-dati.
+               10 piva-prov        PIC  x(2).
+               10 piva-descr       PIC  x(33).

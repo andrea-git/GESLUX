@@ -1,0 +1,4365 @@
+; CaseMaker Totem Program Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[MONITOR_FILE]
+
+
+[PROGRAM_CONTENT]
+QUIT_CONFIRM=0
+ANSI_FORMAT=1
+MAIN_SCREEN_NAME=form1
+BEFORE_PROGRAM=stbolle-Ev-Before-Program
+AFTER_PROGRAM=stbolle-Ev-After-Program
+PROGRAM_UNIQUE_CODE=TOTEM-7E3AA205631-479-2791324778
+
+{{@DESCRIPTION:
+
+@}}
+
+[WORKING_STORAGE]
+m_nType=1
+m_strName=Working Storage
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionWK
+
+@}}
+[FDITEM0_WK]
+m_strName=titolo
+m_strDefaultValue="Geslux - Elenco Programmi Aperti"
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_WK
+
+@}}
+[FDITEM1_WK]
+m_strName=passwd-linkage
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-PASSWD.DEF
+m_strCopyFile=link-passwd.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-PASSWD.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM1_WK
+
+
+@}}
+[FDITEM2_WK]
+m_strName=Passwd-status
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-PASSWD.DEF
+m_strCopyFile=link-passwd.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-PASSWD.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM2_WK
+
+@}}
+[FDITEM3_WK]
+m_strName=Passwd-StatusOk
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-PASSWD.DEF
+m_strCopyFile=link-passwd.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-PASSWD.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM3_WK
+
+@}}
+[FDITEM4_WK]
+m_strName=Passwd-password
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-PASSWD.DEF
+m_strCopyFile=link-passwd.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-PASSWD.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM4_WK
+
+@}}
+[FDITEM5_WK]
+m_strName=AUTO-ID
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM5_WK
+
+@}}
+[FDITEM6_WK]
+m_strName=messaggio
+m_strRawPic=x(75)
+m_strPic=x(75)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM6_WK
+
+@}}
+[FDITEM7_WK]
+m_strName=bottone-ok-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM7_WK
+
+@}}
+[FDITEM8_WK]
+m_strName=bottone-cancel-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM8_WK
+
+@}}
+[FDITEM9_WK]
+m_strName=Verdana12-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM9_WK
+
+@}}
+[FDITEM10_WK]
+m_strName=rec-grid
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM10_WK
+
+@}}
+[FDITEM11_WK]
+m_strName=col-nulla
+m_strRawPic=X
+m_strPic=X
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM11_WK
+
+@}}
+[FDITEM12_WK]
+m_strName=col-pid
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM12_WK
+
+@}}
+[FDITEM13_WK]
+m_strName=col-utente
+m_strRawPic=x(10)
+m_strPic=x(10)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM13_WK
+
+@}}
+[FDITEM14_WK]
+m_strName=col-nome
+m_strRawPic=x(30)
+m_strPic=x(30)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM14_WK
+
+@}}
+[FDITEM15_WK]
+m_strName=col-postazione
+m_strRawPic=x(12)
+m_strPic=x(12)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM15_WK
+
+@}}
+[FDITEM16_WK]
+m_strName=col-pgm
+m_strRawPic=x(30)
+m_strPic=x(30)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM16_WK
+
+@}}
+[FDITEM17_WK]
+m_strName=col-data
+m_strRawPic=x(10)
+m_strPic=x(10)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM17_WK
+
+@}}
+[FDITEM18_WK]
+m_strName=col-ora
+m_strRawPic=x(5)
+m_strPic=x(5)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM18_WK
+
+@}}
+[FDITEM19_WK]
+m_strName=v-screen
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM19_WK
+
+@}}
+[FDITEM20_WK]
+m_strName=form1-handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM20_WK
+
+@}}
+[FDITEM21_WK]
+m_strName=Verdana12B-Occidentale
+m_nUsage=38
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM21_WK
+
+@}}
+[FDITEM22_WK]
+m_strName=font-evidenzia-griglia
+m_nUsage=38
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM22_WK
+
+@}}
+[FDITEM23_WK]
+m_strName=STATUS-pgmexe
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM23_WK
+
+@}}
+[FDITEM24_WK]
+m_strName=Valid-STATUS-pgmexe
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM24_WK
+
+@}}
+[FDITEM25_WK]
+m_strName=refresh-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM25_WK
+
+@}}
+[FDITEM26_WK]
+m_strName=STATUS-USER
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM26_WK
+
+@}}
+[FDITEM27_WK]
+m_strName=Valid-STATUS-USER
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM27_WK
+
+@}}
+[FDITEM28_WK]
+m_strName=Verdana14BI-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM28_WK
+
+@}}
+[FDITEM29_WK]
+m_strName=v-evadi
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM29_WK
+
+@}}
+[FDITEM30_WK]
+m_strName=path-txt
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM30_WK
+
+@}}
+[FDITEM31_WK]
+m_strName=STATUS-pass
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM31_WK
+
+@}}
+[FDITEM32_WK]
+m_strName=Valid-STATUS-pass
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM32_WK
+
+@}}
+[FDITEM33_WK]
+m_strName=ScreenPass-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM33_WK
+
+@}}
+[FDITEM34_WK]
+m_strName=password
+m_strRawPic=x(100)
+m_strPic=x(100)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM34_WK
+
+@}}
+[FDITEM35_WK]
+m_strName=path-fileseq
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM35_WK
+
+@}}
+[FDITEM36_WK]
+m_strName=STATUS-fileseq
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM36_WK
+
+@}}
+[FDITEM37_WK]
+m_strName=Valid-STATUS-fileseq
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM37_WK
+
+@}}
+[FDITEM38_WK]
+m_strName=STRIP-GRID-GCLIENTI-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM38_WK
+
+@}}
+[FDITEM39_WK]
+m_strName=mod-campi
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM39_WK
+
+@}}
+[FDITEM40_WK]
+m_strName=wstampa
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM40_WK
+
+@}}
+[FDITEM41_WK]
+m_strName=STATUS-lineseq
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM41_WK
+
+@}}
+[FDITEM42_WK]
+m_strName=Valid-STATUS-lineseq
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM42_WK
+
+@}}
+[FDITEM43_WK]
+m_strName=elemento-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=ZERO
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM43_WK
+
+@}}
+[FDITEM44_WK]
+m_strName=v-cancella
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM44_WK
+
+@}}
+[FDITEM45_WK]
+m_strName=Small-Font
+m_nUsage=37
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM45_WK
+
+@}}
+[FDITEM46_WK]
+m_strName=bottone-elimina-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM46_WK
+
+@}}
+[FDITEM47_WK]
+m_strName=bottone-password-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM47_WK
+
+@}}
+[FDITEM48_WK]
+m_strName=ScreenGestPass-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM48_WK
+
+@}}
+[FDITEM49_WK]
+m_strName=new-password
+m_strRawPic=x(15)
+m_strPic=x(15)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM49_WK
+
+@}}
+[FDITEM50_WK]
+m_strName=conf-password
+m_strRawPic=x(15)
+m_strPic=x(15)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM50_WK
+
+@}}
+[FDITEM51_WK]
+m_strName=STAT-PROG
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM51_WK
+
+@}}
+[FDITEM52_WK]
+m_strName=Valid-STAT-PROG
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM52_WK
+
+@}}
+[FDITEM53_WK]
+m_strName=path-tmp-cpu
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM53_WK
+
+@}}
+[FDITEM54_WK]
+m_strName=STATUS-tmp-cpu
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM54_WK
+
+@}}
+[FDITEM55_WK]
+m_strName=Valid-STATUS-tmp-cpu
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM55_WK
+
+@}}
+[FDITEM56_WK]
+m_strName=STATUS-tsetmerc
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM56_WK
+
+@}}
+[FDITEM57_WK]
+m_strName=Valid-STATUS-tsetmerc
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM57_WK
+
+@}}
+[FDITEM58_WK]
+m_strName=STATUS-tsetinvio
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM58_WK
+
+@}}
+[FDITEM59_WK]
+m_strName=Valid-STATUS-tsetinvio
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM59_WK
+
+@}}
+
+
+[LINKAGE_SECTION]
+m_nType=1
+m_strName=Linkage Section
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionLK
+
+@}}
+[FDITEM0_LK]
+m_strName=gpgmexe-linkage
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_strCopyFile=LINK-GPGMEXE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM0_LK
+
+@}}
+[FDITEM1_LK]
+m_strName=pgme-pgm
+m_strRawPic=x(15)
+m_strPic=X(15)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_strCopyFile=LINK-GPGMEXE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM1_LK
+
+@}}
+[FDITEM2_LK]
+m_strName=pgme-utente
+m_strRawPic=x(10)
+m_strPic=X(10)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_strCopyFile=LINK-GPGMEXE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM2_LK
+
+@}}
+[FDITEM3_LK]
+m_strName=pgme-operazione
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_strCopyFile=LINK-GPGMEXE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM3_LK
+
+@}}
+[FDITEM4_LK]
+m_strName=pgme-ingresso
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="I"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_strCopyFile=LINK-GPGMEXE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM4_LK
+
+@}}
+[FDITEM5_LK]
+m_strName=pgme-uscita
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="U"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_strCopyFile=LINK-GPGMEXE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM5_LK
+
+@}}
+[FDITEM6_LK]
+m_strName=pgme-evasione
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="E"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_strCopyFile=LINK-GPGMEXE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM6_LK
+
+@}}
+[FDITEM7_LK]
+m_strName=pgme-cancellazione
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="C"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_strCopyFile=LINK-GPGMEXE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM7_LK
+
+@}}
+[FDITEM8_LK]
+m_strName=pgme-stato
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_strCopyFile=LINK-GPGMEXE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM8_LK
+
+@}}
+[FDITEM9_LK]
+m_strName=pgme-evacli-attivo
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="E"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_strCopyFile=LINK-GPGMEXE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM9_LK
+
+@}}
+[FDITEM10_LK]
+m_strName=pgme-pgm-attivi
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="A"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_strCopyFile=LINK-GPGMEXE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM10_LK
+
+@}}
+
+
+{{@SCREEN:
+*   Screen Painter Data
+*   Schema 6.0
+*
+BEGIN-SPDATA-6.1A
+
+GRAPHICAL-SCREEN
+
+Begin Screen form1
+   PREFIX            = scr-visua
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = form1
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = TRUE
+   Cell Height       = 10
+   Cell Width        = 10
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = TRUE
+   Font              = Verdana/12/C0/@Occidentale
+   Font Variable     = Verdana12-Occidentale
+   Handle Variable   = form1-handle
+   Height in Cells   = TRUE
+   Help ID           = 1
+   Label Offset      = 0
+   Lines             = 46,40
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = TRUE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 92,00
+   System Menu       = TRUE
+   Title Bar         = TRUE
+   Title Variable    = titolo
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = FALSE
+   Visible Variable  = v-screen
+   Width in Cells    = TRUE
+   Window Type       = Independent
+   Wrap              = FALSE
+   Begin Frame Screen1-Fr-2a
+      SCREEN-COL        = 1,00
+      SCREEN-LINE       = 42,50
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-Fr-2a
+      3D Style          = Lowered
+      Alternate         = FALSE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Font              = Default Font
+      Full Height       = FALSE
+      Height in Cells   = TRUE
+      Help ID           = 0
+      High Color        = 0
+      ID                = 8
+      Line              = 42,50
+      Lines             = 4,90
+      Lines Unit        = Default
+      Low Color         = 0
+      Size              = 92,00
+      Size Unit         = Default
+      Tab Order         = 1
+      Thickness         = Default
+      Title Position    = 0:Unaligned
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Begin Push-Button PB-ESEGUI
+         SCREEN-COL        = 76,80
+         SCREEN-LINE       = 43,60
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = PB-ESEGUI
+         Bitmap            = "..\RESOURCE\BOTTONE-OK.BMP"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = BOTTONE-OK-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 76,80
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 1000
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 500
+         Line              = 2,10
+         Lines             = 3,70
+         Lines in Pixels   = 30
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 8,10
+         Size in Pixels    = 73
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 1
+         Termination Value = 13
+         Title             = "E&segue il programma selezionato"
+         Visible           = NONE
+         Visible Variable  = v-evadi
+         Width in Cells    = FALSE
+         Before Procedure  = PB-ESEGUI-BeforeProcedure
+         After Procedure   = PB-ESEGUI-AfterProcedure
+         Link To           = PB-ESEGUIa-LinkTo
+      End
+      Begin Push-Button PB-CANCEL
+         SCREEN-COL        = 84,60
+         SCREEN-LINE       = 43,60
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = PB-CANCEL
+         Bitmap            = "..\RESOURCE\BOTTONE-CANCEL.BMP"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = BOTTONE-CANCEL-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 84,60
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 27
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 501
+         Line              = 2,10
+         Lines             = 3,70
+         Lines in Pixels   = 30
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 8,10
+         Size in Pixels    = 73
+         Size Unit         = Default
+         Style             = Escape Button
+         Tab Order         = 2
+         Termination Value = 0
+         Title             = "&Cancel"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Before Procedure  = Form1-Pb-2-BeforeProcedure
+         After Procedure   = Form1-Pb-2-AfterProcedure
+      End
+   End
+   Begin Grid form1-gd-1
+      SCREEN-COL        = 2,10
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = form1-gd-1
+      Action            = (None)
+      Adjustable Columns = TRUE
+      Border            = Boxed
+      Cells' Setting    = ( X = 2, Y = 1, Data = "PID" )
+      Cells' Setting    = ( X = 3, Y = 1, Data = "Utente" )
+      Cells' Setting    = ( X = 4, Y = 1, Data = "Nome" )
+      Cells' Setting    = ( X = 5, Y = 1, Data = "Postazione" )
+      Cells' Setting    = ( X = 6, Y = 1, Data = "Programma" )
+      Cells' Setting    = ( X = 7, Y = 1, Data = "Data" )
+      Cells' Setting    = ( X = 8, Y = 1, Data = "Ora" )
+      Centered Headings = FALSE
+      Color             = 0
+      Column            = 2,10
+      Column Headings   = TRUE
+      Columns' Setting  = ( X = 1, Name = col-nulla, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
+      Columns' Setting  = ( DISP = 3, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 2, Name = col-pid, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
+      Columns' Setting  = ( DISP = 8, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 3, Name = col-utente, READONLY = 0 )
+      Columns' Setting  = ( PIC = "x(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "L" )
+      Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 4, Name = col-nome, READONLY = 0 )
+      Columns' Setting  = ( PIC = "x(30)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "L" )
+      Columns' Setting  = ( DISP = 15, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 5, Name = col-postazione, READONLY = 0 )
+      Columns' Setting  = ( PIC = "x(12)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "L" )
+      Columns' Setting  = ( DISP = 15, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 6, Name = col-pgm, READONLY = 0 )
+      Columns' Setting  = ( PIC = "x(30)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "L" )
+      Columns' Setting  = ( DISP = 15, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 7, Name = col-data, READONLY = 0 )
+      Columns' Setting  = ( PIC = "x(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
+      Columns' Setting  = ( DISP = 12, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 8, Name = col-ora, READONLY = 0 )
+      Columns' Setting  = ( PIC = "x(5)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
+      Columns' Setting  = ( DISP = 5, SEPA = 5, DIVI = 1 )
+      Cursor Color      = 0
+      Cursor Frame Width = 0
+      Cursor X          = 0
+      Cursor Y          = 0
+      Destroy Type      = Automatic
+      Divider Color     = 1
+      Drag Color        = 0
+      Enable            = NONE
+      End Color         = 0
+      Font              = Default Font
+      Heading Color     = 261
+      Heading Divider Color = 1
+      Heading Font      = Verdana/12/B/C0/@Occidentale
+      Heading Font Variable = Verdana12B-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hscroll           = TRUE
+      ID                = 1
+      Last Row          = 0
+      Line              = 2,00
+      Lines             = 35,50
+      Lines Unit        = Default
+      No Tab            = FALSE
+      Num Col Headings  = 1
+      Num Columns       = 8
+      Num Rows          = 0
+      Occurs            = 0
+      Paged             = FALSE
+      Row Dividers      = 1
+      Row Headings      = TRUE
+      Size              = 90,00
+      Size Unit         = Default
+      Tab Order         = 2
+      Tiled Headings    = TRUE
+      Use Tab           = FALSE
+      Virtual Width     = 0
+      Visible           = NONE
+      Vpadding          = 30
+      Vscroll           = TRUE
+      Width in Cells    = TRUE
+      Event Procedure   = scr-visua-Gd-1-Event-Proc
+      Msg-Begin-Drag    = form1-gd-1-Ev-Msg-Begin-Drag
+      Msg-Begin-Entry   = form1-gd-1-Ev-Msg-Begin-Entry
+      Msg-End-Drag      = form1-gd-1-Ev-Msg-End-Drag
+      Msg-Goto-Cell     = form1-gd-1-Ev-Msg-Goto-Cell
+      Msg-Goto-Cell-Drag = form1-gd-1-Ev-Msg-Goto-Cell-Drag
+      Msg-Goto-Cell-Mouse = form1-gd-1-Ev-Msg-Goto-Cell-Mouse
+   End
+   Begin Label scr-visua-La-1
+      SCREEN-COL        = 2,10
+      SCREEN-LINE       = 39,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = scr-visua-La-1
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 5
+      Column            = 2,10
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/14/B/I/C0/@Occidentale
+      Font Variable     = Verdana14BI-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 2
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 39,00
+      Lines             = 3,10
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 90,00
+      Size Unit         = Default
+      Tab Order         = 3
+      Title             = "ATTENDERE LA CHIUSURA DELLE SESSIONI"
+      Transparent       = TRUE
+      Visible           = NONE
+      Visible Variable  = v-evadi
+      Width in Cells    = TRUE
+   End
+   Begin Push-Button pb-grid-elimina
+      SCREEN-COL        = 80,00
+      SCREEN-LINE       = 39,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-grid-elimina
+      Bitmap            = "..\RESOURCE\BOTTONE-ELIMINA.BMP"
+      Bitmap Frame      = FALSE
+      Bitmap Handle     = BOTTONE-ELIMINA-BMP
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 80,00
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 1005
+      Flat              = TRUE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 1001
+      Line              = 39,00
+      Lines             = 3,70
+      Lines in Pixels   = 30
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = TRUE
+      Size              = 8,10
+      Size in Pixels    = 73
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 4
+      Termination Value = 0
+      Title             = "&Elimina la riga selezionata"
+      Visible           = NONE
+      Visible Variable  = v-cancella
+      Width in Cells    = TRUE
+      Before Procedure  = pb-grid-elimina-BeforeProcedure
+      After Procedure   = pb-grid-elimina-AfterProcedure
+      Link To           = pb-grid-elimina-LinkTo
+   End
+   Begin Push-Button pb-reset
+      SCREEN-COL        = 88,30
+      SCREEN-LINE       = 39,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-reset
+      Bitmap            = "..\RESOURCE\REFRESH.BMP"
+      Bitmap Frame      = TRUE
+      Bitmap Handle     = REFRESH-BMP
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 88,30
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 5
+      Flat              = TRUE
+      Font              = Default Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 502
+      Line              = 39,00
+      Lines             = 3,70
+      Lines in Pixels   = 30
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = TRUE
+      Size              = 3,80
+      Size in Pixels    = 30
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 5
+      Termination Value = 13
+      Title             = "&Aggiorna l'elenco delle sessioni"
+      Visible           = NONE
+      Width in Cells    = FALSE
+      Link To           = pb-reset-LinkTo
+   End
+   Begin Push-Button pb-gestpwd
+      SCREEN-COL        = 2,10
+      SCREEN-LINE       = 39,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-gestpwd
+      Bitmap            = "..\RESOURCE\BOTTONE-PASSWORD.BMP"
+      Bitmap Frame      = FALSE
+      Bitmap Handle     = BOTTONE-PASSWORD-BMP
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 2,10
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 1006
+      Flat              = TRUE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 3
+      Line              = 39,00
+      Lines             = 3,70
+      Lines in Pixels   = 30
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 8,10
+      Size in Pixels    = 73
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 6
+      Termination Value = 0
+      Title             = "Gestione password"
+      Visible           = FALSE
+      Width in Cells    = TRUE
+      Before Procedure  = pb-gestpwd-BeforeProcedure
+      After Procedure   = pb-gestpwd-AfterProcedure
+      Link To           = pb-gestpwd-LinkTo
+   End
+End
+
+Begin Screen ScreenPass
+   PREFIX            = Screen1
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = ScreenPass
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 18
+   Cell Width        = 10
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = FALSE
+   Font              = Verdana/12/C0/@Occidentale
+   Font Variable     = Verdana12-Occidentale
+   Handle Variable   = ScreenPass-Handle
+   Height in Cells   = TRUE
+   Help ID           = 0
+   Label Offset      = 20
+   Lines             = 6,83
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = FALSE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 38,90
+   System Menu       = TRUE
+   Title Bar         = TRUE
+   Title Variable    = titolo
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = TRUE
+   Window Type       = Floating
+   Wrap              = FALSE
+   Event Procedure   = Screen1-Event-Proc
+   Begin Frame Screen1-Fr-1
+      SCREEN-COL        = 1,50
+      SCREEN-LINE       = 1,38
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-Fr-1
+      3D Style          = Raised
+      Alternate         = FALSE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,50
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Font              = Default Font
+      Full Height       = FALSE
+      Height in Cells   = TRUE
+      Help ID           = 0
+      High Color        = 0
+      ID                = 1
+      Line              = 1,38
+      Lines             = 3,00
+      Lines Unit        = Default
+      Low Color         = 0
+      Size              = 38,00
+      Size Unit         = Default
+      Tab Order         = 1
+      Thickness         = Default
+      Title Position    = 0:Unaligned
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Begin Entry-Field ef-pass
+         SCREEN-COL        = 11,50
+         SCREEN-LINE       = 2,38
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = ef-pass
+         Auto              = FALSE
+         Auto Decimal      = 0
+         Border            = Boxed
+         Case              = Mixed
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 513
+         Column            = 11,00
+         Csize             = 0
+         Csize Unit        = Default
+         Cursor            = 0
+         Cursor Col        = 0
+         Cursor Row        = 0
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         Hint              = .
+         ID                = 100
+         ID Variable       = AUTO-ID
+         Justification     = Unaligned
+         Line              = 2,00
+         Lines             = 1,50
+         Lines Unit        = Default
+         Max Lines         = 0
+         Max Text          = 0
+         Max Value         = 0
+         Min Value         = 0
+         No AutoSel        = FALSE
+         No Tab            = FALSE
+         Notify Change     = FALSE
+         Numeric           = FALSE
+         Occurs            = 0
+         Read Only         = FALSE
+         Required          = FALSE
+         Secure            = TRUE
+         Size              = 26,00
+         Size Unit         = Default
+         Style             = Singleline
+         Tab Order         = 1
+         Use Return        = FALSE
+         Use Tab           = FALSE
+         Value Multiple    = FALSE
+         Value Picture     = x(100)
+         Value Variable    = password
+         Visible           = NONE
+         Width in Cells    = TRUE
+         Before Procedure  = ef-pass-BeforeProcedure
+         After Procedure   = ef-pass-AfterProcedure
+      End
+      Begin Label Screen1-La-1
+         SCREEN-COL        = 2,50
+         SCREEN-LINE       = 2,38
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen1-La-1
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 5
+         Column            = 2,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 2
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 2,00
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 8,00
+         Size Unit         = Default
+         Tab Order         = 2
+         Title             = "Password"
+         Transparent       = TRUE
+         Visible           = NONE
+         Width in Cells    = TRUE
+      End
+   End
+   Begin CsCtrl.Custom1 Label Screen1-Custom1-1
+      CUST-SYMBOL       = Custom1
+      CUST-MODIFYFLAG   = 000000000000110000001000000000000000000000000000000
+      SCREEN-COL        = 5,90
+      SCREEN-LINE       = 4,67
+      LOCK-CONTROL      = FALSE
+      LEVEL             = 5
+      (Name)            = Screen1-Custom1-1
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 5,90
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 9
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 4,67
+      Lines             = 0,94
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 2,00
+      Size Unit         = Default
+      Tab Order         = 2
+      Title             = "CUSTOM CONTROL"
+      Transparent       = TRUE
+      Visible           = NONE
+      Visible Variable  = v-custom
+      Width in Cells    = FALSE
+   End
+   Begin Frame Screen1-Fr-2
+      SCREEN-COL        = 1,00
+      SCREEN-LINE       = 5,06
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-Fr-2
+      3D Style          = Lowered
+      Alternate         = FALSE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Font              = Default Font
+      Full Height       = FALSE
+      Height in Cells   = TRUE
+      Help ID           = 0
+      High Color        = 0
+      ID                = 3
+      Line              = 5,06
+      Lines             = 2,78
+      Lines Unit        = Default
+      Low Color         = 0
+      Size              = 38,80
+      Size Unit         = Default
+      Tab Order         = 3
+      Thickness         = Default
+      Title Position    = 0:Unaligned
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Begin Push-Button pb-conferma
+         SCREEN-COL        = 23,90
+         SCREEN-LINE       = 5,73
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = pb-conferma
+         Bitmap            = "..\RESOURCE\BOTTONE-OK.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = BOTTONE-OK-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 23,90
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 13
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 6
+         Line              = 1,67
+         Lines             = 1,56
+         Lines in Pixels   = 30
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 7,10
+         Size in Pixels    = 73
+         Size Unit         = Default
+         Style             = OK Button
+         Tab Order         = 1
+         Termination Value = 0
+         Title             = "&Ok"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Before Procedure  = pb-conferma-BeforeProcedure
+         After Procedure   = pb-conferma-AfterProcedure
+         Link To           = pb-disattiva-LinkTo
+      End
+      Begin Push-Button pb-esci
+         SCREEN-COL        = 31,70
+         SCREEN-LINE       = 5,73
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = pb-esci
+         Bitmap            = "..\RESOURCE\BOTTONE-CANCEL.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = BOTTONE-CANCEL-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 31,70
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 27
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 7
+         Line              = 1,67
+         Lines             = 1,56
+         Lines in Pixels   = 30
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 7,10
+         Size in Pixels    = 73
+         Size Unit         = Default
+         Style             = Escape Button
+         Tab Order         = 2
+         Termination Value = 0
+         Title             = "&Esci (Esc)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Before Procedure  = pb-esci-BeforeProcedure
+         After Procedure   = pb-esci-AfterProcedure
+      End
+   End
+End
+
+Begin Screen ScreenGestPass
+   PREFIX            = Screen1a
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = ScreenGestPass
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 18
+   Cell Width        = 10
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = FALSE
+   Font              = Verdana/12/C0/@Occidentale
+   Font Variable     = Verdana12-Occidentale
+   Handle Variable   = ScreenGestPass-Handle
+   Height in Cells   = TRUE
+   Help ID           = 0
+   Label Offset      = 20
+   Lines             = 12,78
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = FALSE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 38,90
+   System Menu       = TRUE
+   Title Bar         = TRUE
+   Title Variable    = titolo
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = TRUE
+   Window Type       = Floating
+   Wrap              = FALSE
+   Event Procedure   = Screen1-Event-Proc
+   Begin Frame Screen1-Fr-1a
+      SCREEN-COL        = 1,50
+      SCREEN-LINE       = 1,39
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-Fr-1a
+      3D Style          = Raised
+      Alternate         = FALSE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,50
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Font              = Default Font
+      Full Height       = FALSE
+      Height in Cells   = TRUE
+      Help ID           = 0
+      High Color        = 0
+      ID                = 1
+      Line              = 1,39
+      Lines             = 9,00
+      Lines Unit        = Default
+      Low Color         = 0
+      Size              = 38,00
+      Size Unit         = Default
+      Tab Order         = 1
+      Thickness         = Default
+      Title Position    = 0:Unaligned
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Begin Entry-Field ef-old-pass
+         SCREEN-COL        = 11,50
+         SCREEN-LINE       = 2,39
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = ef-old-pass
+         Auto              = FALSE
+         Auto Decimal      = 0
+         Border            = Boxed
+         Case              = Mixed
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 513
+         Column            = 11,00
+         Csize             = 0
+         Csize Unit        = Default
+         Cursor            = 0
+         Cursor Col        = 0
+         Cursor Row        = 0
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         Hint              = .
+         ID                = 100
+         ID Variable       = AUTO-ID
+         Justification     = Unaligned
+         Line              = 2,00
+         Lines             = 1,50
+         Lines Unit        = Default
+         Max Lines         = 0
+         Max Text          = 0
+         Max Value         = 0
+         Min Value         = 0
+         No AutoSel        = FALSE
+         No Tab            = FALSE
+         Notify Change     = FALSE
+         Numeric           = FALSE
+         Occurs            = 0
+         Read Only         = FALSE
+         Required          = FALSE
+         Secure            = TRUE
+         Size              = 26,00
+         Size Unit         = Default
+         Style             = Singleline
+         Tab Order         = 1
+         Use Return        = FALSE
+         Use Tab           = FALSE
+         Value Multiple    = FALSE
+         Value Picture     = x(15)
+         Value Variable    = password
+         Visible           = NONE
+         Width in Cells    = TRUE
+         Before Procedure  = ef-pass-BeforeProcedure
+         After Procedure   = ef-pass-AfterProcedure
+      End
+      Begin Label Screen1-La-1a
+         SCREEN-COL        = 2,50
+         SCREEN-LINE       = 2,19
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen1-La-1a
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 5
+         Column            = 2,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 2
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 1,80
+         Lines             = 2,00
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 8,00
+         Size Unit         = Default
+         Tab Order         = 2
+         Title             = "Vecchia Password"
+         Transparent       = TRUE
+         Visible           = NONE
+         Width in Cells    = TRUE
+      End
+      Begin Label Screen1-La-1aa
+         SCREEN-COL        = 2,50
+         SCREEN-LINE       = 5,19
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen1-La-1aa
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 5
+         Column            = 2,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 3
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 4,80
+         Lines             = 2,00
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 8,00
+         Size Unit         = Default
+         Tab Order         = 3
+         Title             = "Nuova Password"
+         Transparent       = TRUE
+         Visible           = NONE
+         Width in Cells    = TRUE
+      End
+      Begin Entry-Field ef-new-pass
+         SCREEN-COL        = 11,50
+         SCREEN-LINE       = 5,39
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = ef-new-pass
+         Auto              = FALSE
+         Auto Decimal      = 0
+         Border            = Boxed
+         Case              = Mixed
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 513
+         Column            = 11,00
+         Csize             = 0
+         Csize Unit        = Default
+         Cursor            = 0
+         Cursor Col        = 0
+         Cursor Row        = 0
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         Hint              = .
+         ID                = 4
+         ID Variable       = AUTO-ID
+         Justification     = Unaligned
+         Line              = 5,00
+         Lines             = 1,50
+         Lines Unit        = Default
+         Max Lines         = 0
+         Max Text          = 0
+         Max Value         = 0
+         Min Value         = 0
+         No AutoSel        = FALSE
+         No Tab            = FALSE
+         Notify Change     = FALSE
+         Numeric           = FALSE
+         Occurs            = 0
+         Read Only         = FALSE
+         Required          = FALSE
+         Secure            = TRUE
+         Size              = 26,00
+         Size Unit         = Default
+         Style             = Singleline
+         Tab Order         = 4
+         Use Return        = FALSE
+         Use Tab           = FALSE
+         Value Multiple    = FALSE
+         Value Picture     = x(15)
+         Value Variable    = new-password
+         Visible           = NONE
+         Width in Cells    = TRUE
+         Before Procedure  = ef-pass-BeforeProcedure
+         After Procedure   = ef-pass-AfterProcedure
+      End
+      Begin Label Screen1-La-1aaa
+         SCREEN-COL        = 2,50
+         SCREEN-LINE       = 8,19
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen1-La-1aaa
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 5
+         Column            = 2,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 5
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 7,80
+         Lines             = 2,00
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 8,00
+         Size Unit         = Default
+         Tab Order         = 5
+         Title             = "Conferma Password"
+         Transparent       = TRUE
+         Visible           = NONE
+         Width in Cells    = TRUE
+      End
+      Begin Entry-Field ef-conf-pass
+         SCREEN-COL        = 11,50
+         SCREEN-LINE       = 8,39
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = ef-conf-pass
+         Auto              = FALSE
+         Auto Decimal      = 0
+         Border            = Boxed
+         Case              = Mixed
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 513
+         Column            = 11,00
+         Csize             = 0
+         Csize Unit        = Default
+         Cursor            = 0
+         Cursor Col        = 0
+         Cursor Row        = 0
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         Hint              = .
+         ID                = 6
+         ID Variable       = AUTO-ID
+         Justification     = Unaligned
+         Line              = 8,00
+         Lines             = 1,50
+         Lines Unit        = Default
+         Max Lines         = 0
+         Max Text          = 0
+         Max Value         = 0
+         Min Value         = 0
+         No AutoSel        = FALSE
+         No Tab            = FALSE
+         Notify Change     = FALSE
+         Numeric           = FALSE
+         Occurs            = 0
+         Read Only         = FALSE
+         Required          = FALSE
+         Secure            = TRUE
+         Size              = 26,00
+         Size Unit         = Default
+         Style             = Singleline
+         Tab Order         = 6
+         Use Return        = FALSE
+         Use Tab           = FALSE
+         Value Multiple    = FALSE
+         Value Picture     = x(15)
+         Value Variable    = conf-password
+         Visible           = NONE
+         Width in Cells    = TRUE
+         Before Procedure  = ef-pass-BeforeProcedure
+         After Procedure   = ef-pass-AfterProcedure
+      End
+   End
+   Begin Frame Screen1-Fr-2b
+      SCREEN-COL        = 1,00
+      SCREEN-LINE       = 11,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-Fr-2b
+      3D Style          = Lowered
+      Alternate         = FALSE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Font              = Default Font
+      Full Height       = FALSE
+      Height in Cells   = TRUE
+      Help ID           = 0
+      High Color        = 0
+      ID                = 7
+      Line              = 11,00
+      Lines             = 2,78
+      Lines Unit        = Default
+      Low Color         = 0
+      Size              = 38,80
+      Size Unit         = Default
+      Tab Order         = 2
+      Thickness         = Default
+      Title Position    = 0:Unaligned
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Begin Push-Button pb-conf-pwd
+         SCREEN-COL        = 23,90
+         SCREEN-LINE       = 11,67
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = pb-conf-pwd
+         Bitmap            = "..\RESOURCE\BOTTONE-OK.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = BOTTONE-OK-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 23,90
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 1000
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 8
+         Line              = 1,67
+         Lines             = 1,56
+         Lines in Pixels   = 30
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 7,10
+         Size in Pixels    = 73
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 1
+         Termination Value = 0
+         Title             = "&Ok"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Before Procedure  = pb-conf-pwd-BeforeProcedure
+         After Procedure   = pb-conf-pwd-AfterProcedure
+         Link To           = pb-conf-pwd-LinkTo
+      End
+      Begin Push-Button pb-canc-pwd
+         SCREEN-COL        = 31,70
+         SCREEN-LINE       = 11,67
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = pb-canc-pwd
+         Bitmap            = "..\RESOURCE\BOTTONE-CANCEL.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = BOTTONE-CANCEL-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 31,70
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 27
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 9
+         Line              = 1,67
+         Lines             = 1,56
+         Lines in Pixels   = 30
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 7,10
+         Size in Pixels    = 73
+         Size Unit         = Default
+         Style             = Escape Button
+         Tab Order         = 2
+         Termination Value = 0
+         Title             = "&Esci (Esc)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Before Procedure  = pb-canc-pwd-BeforeProcedure
+         After Procedure   = pb-canc-pwd-AfterProcedure
+      End
+   End
+End
+
+END-SPDATA
+
+@}}
+
+{{@REPORT:
+*   Report Writer Data
+*   Schema 6.0
+*
+BEGIN-RWDATA-6.0A
+
+END-RWDATA
+
+@}}
+
+{{@EMBEDDING_CODE:
+BEGIN-DATA
+   BASETYPE          = 13
+   NODESTYLE         = 13
+   PARAGRAPH         = Other Working
+BEGIN-TEXT
+           copy "mail.def".
+           COPY "link-killpid.def".
+           copy "blockpgm.lks".
+
+       01                          pic 9.
+           88 si-blocchi           value 1 false zero.
+       01                          pic 9.
+           88 no-pgm               value 1 false zero.
+       01                          pic 9.
+           88 rec-ok               value 1 false zero.
+       01                          pic 9.
+           88 si-cancellazione     value 1 false zero.
+       01                          pic 9.
+           88 spostamento-frecce   value 1 false zero.
+       01                          pic 9.
+           88 si-gest-sessioni     value 1 false zero.
+       01                          pic 9.
+           88 called-by-menu       value 1 false zero.
+
+       77  save-pwd             pic x(100).
+
+       77  como-stringa   pic x(200).
+
+       01  r-inizio.
+           05 filler      pic x(2)  value " [".
+           05 r-user      pic x(10).
+           05 filler      pic x(5)  value "] - [".
+           05 r-data.
+              10 r-gg     pic xx.
+              10 filler   pic x     value "/".
+              10 r-mm     pic xx.
+              10 filler   pic x     value "/".
+              10 r-aa     pic xx.
+           05 filler      pic x(5)  value "] - [".
+           05 r-ora.
+              10 r-hh     pic xx.
+              10 filler   pic x     value X"22".
+              10 r-min    pic xx.
+              10 filler   pic x     value "'".
+              10 r-sec    pic xx.
+           05 filler      pic x(2)  value "] ".
+
+
+       01  operazione                    pic 9.
+           88 pwd-errata                 value 1.
+           88 pwd-corretta               value 2.
+           88 record-cancellato          value 3.
+           88 reset-pwd                  value 4.
+           88 uscita-cacancellazione     value 5.
+           88 aggiorna-elenco            value 6.
+           88 invio-mail-fallito         value 7.
+           88 pwd-changed                value 8.
+           88 ingresso-cacancellazione   value 9.
+           88 eliminazione-orfani        value 0.
+
+       77  tentativi                  pic 9(3).
+
+       77  pid-sessione   pic 9(10).
+       77  pid-sessione-x pic x(10).
+
+       78  78-color-sessione value 481.
+       78  78-color-1        value 513.
+       78  78-color-2        value 257.
+
+       01              pic 9.
+           88 color-1  value 1.
+           88 color-2  value 2.
+
+       77  old-pid     pic 9(10).
+
+       01  rec-pid.
+           05 rp-nome-exe       pic x(50).
+           05 rp-pid            pic x(50).
+
+       77  path-kill            pic x(256).
+       77  como-path-tasklist   pic x(256).
+       77  comando              pic x(200).
+       77 status-call           USAGE IS SIGNED-SHORT.
+
+       77  1-riga-gruppo        pic 9(4).
+       77  riga-gruppo          pic 9(4).
+       77  riga-origine         pic 9(4).
+
+       77  como-colore          pic 9(8).
+       77  col-pid-ed           pic z(10).
+
+       77  como-x               pic x.
+
+       01              pic x.
+           88 avanti   value "A".
+           88 indietro value "I".
+
+       78  78-nome-pgm-menu value "gestsessioni".
+       77  CALLING-PROGRAM   pic x(20).
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 6
+   NODESTYLE         = 7
+   PARAGRAPH         = DeletedCode
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = form1
+   ACTOBJ            = form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+           set tutto-ok   to true
+      * se sono in cancellazione richiamo la pwd
+           if pgme-cancellazione
+      *        set errori to true
+      *        perform SCREENPASS-OPEN-ROUTINE
+
+      *        set AccessConfirmed to true
+              move 8 to Passwd-password
+              call   "passwd" using Passwd-linkage
+              cancel "passwd"
+
+              if not Passwd-StatusOk
+                 set pwd-errata to true
+                 set errori to true
+              else
+                 set pwd-corretta  to true
+              end-if
+
+              perform SCRIVI-LOG
+           end-if.
+
+           if tutto-ok
+              perform CARICA-GRIGLIA
+
+              evaluate true 
+              when pgme-cancellazione
+                   move 1   to v-screen
+                   modify form1-handle, visible v-screen
+              when pgme-evasione
+                   if no-pgm
+                      perform form1-Exit
+                   else
+                      move 1   to v-screen
+                      modify form1-handle, visible v-screen
+                      set pgme-pgm-attivi  to true
+                   end-if
+              end-evaluate
+           
+           else
+              perform form1-Exit
+           end-if.
+
+
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 0
+   PARENT            = gpgmexe
+   ACTOBJ            = gpgmexe
+   ENTRYPOINT        = BeforeDeclarative
+BEGIN-TEXT
+      ***---
+       PGMEXE-ERR SECTION.
+           use after error procedure on PGMEXE.
+           set tutto-ok  to true.
+           evaluate status-pgmexe
+           when "35"
+                display message "File [PGMEXE] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [PGMEXE] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[PGMEXE] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           end-evaluate.
+ 
+       PASS-ERR SECTION.
+           use after error procedure on pass.
+           set RecLocked to false.
+           evaluate status-pass
+           when "35"
+                set errori to true
+           when "39"
+                display message "File [PASS] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[PASS] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           end-evaluate.
+
+      ***---
+       FILESEQ-ERR SECTION.
+           use after error procedure on FILESEQ.
+           set RecLocked to false.
+           evaluate STATUS-fileseq
+           when "35"
+      *    durante il programma apro in extend il file, se non eiste lo 
+      *    devo creare
+                open output fileseq
+           when "39"
+                display message "File [PASS] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[PASS] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           end-evaluate.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = form1
+   ACTOBJ            = form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeExit
+BEGIN-TEXT
+           evaluate true
+           when pgme-evasione
+      *    prima di uscire controllo se per caso non siano state 
+      *    attivate delle altre sessioni o se per caso sono uscito con
+      *    l'ESC
+                perform CARICA-GRIGLIA
+                if no-pgm
+                   set pgme-ok          to true
+                else
+                   set pgme-pgm-attivi  to true
+                end-if
+           when pgme-cancellazione
+      *    prima di uscire se ho effettuato la cancellazione resetto la 
+      *    pwd per la cacancellazione
+      *          if si-cancellazione
+      *             perform RESET-PWD
+      *          end-if
+                set uscita-cacancellazione  to true
+                perform SCRIVI-LOG
+           end-evaluate
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = ScreenGestPass
+   ACTOBJ            = ScreenGestPass
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+           perform LEGGI-PWD
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = ScreenGestPass
+   ACTOBJ            = ScreenGestPass
+   TEXTMODE          = 0
+   ENTRYPOINT        = SetDefault
+BEGIN-TEXT
+           initialize password 
+                      new-password
+                      conf-password
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = form1
+   ACTOBJ            = form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterCreateWin
+BEGIN-TEXT
+           if pgme-cancellazione and called-by-menu
+              SET LK-BL-SCRITTURA     TO TRUE
+      *        MOVE 78-nome-pgm-menu   TO LK-BL-PROG-ID
+              MOVE FORM1-HANDLE       TO LK-HND-WIN
+              CALL "BLOCKPGM"  USING LK-BLOCKPGM
+              CANCEL "BLOCKPGM"
+           end-if.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = RESET-GRIGLIA
+BEGIN-TEXT
+           modify form1-gd-1, reset-grid = 1.
+           perform FORM1-GD-1-CONTENT.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = INGRESSO
+BEGIN-TEXT
+           open i-o pgmexe.
+           open input USER.
+           open input PROG
+
+           perform VERIFICA-BLOCCHI
+
+           if si-blocchi
+              if pgme-utente not = "BOSS"
+                 perform MSG-EVASIONE-IN-CORSO
+                 set pgme-evacli-attivo  to true
+              end-if
+           else
+              initialize pge-rec
+              move pid-sessione    to pge-pid
+              move pgme-utente     to pge-utente
+                                      user-cod
+      *        move station-id      to pge-postazione
+              move USER-ID         to pge-postazione
+              move pgme-pgm        to pge-pgm
+                                      PROG-ID
+              accept pge-data      from century-date
+              accept pge-ora       from time
+              read USER no lock
+                 invalid
+                    initialize user-name
+              end-read
+              move user-name    to pge-nome-utente
+
+              read PROG no lock key is prog-id
+                 invalid
+                    initialize PROG-S-DESC
+              end-read
+              move PROG-S-DESC  to pge-nome-pgm
+
+              write pge-rec
+                 invalid
+                    rewrite pge-rec
+              end-write
+           end-if.
+
+
+           close pgmexe.
+           close USER.
+           close PROG.
+
+      ***---
+       MSG-EVASIONE-IN-CORSO.
+           initialize messaggio
+
+           inspect pge-nome-utente replacing trailing space by low-value
+           string "EVASIONE CLIENTI IN CORSO DA " delimited by size
+                  pge-nome-utente                 delimited by low-value
+                  "."                             delimited by size
+                  x"0D0A"
+                  "Impossibile procedere"         delimited by size
+                  into messaggio
+      
+           inspect messaggio replacing trailing space by low-value
+           display message box messaggio
+                           title = tit-err
+                           icon MB-WARNING-ICON.           
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = USCITA
+BEGIN-TEXT
+           open i-o pgmexe.
+
+           move pid-sessione    to pge-pid
+           move pgme-utente     to pge-utente
+           move station-id      to pge-postazione
+           move pgme-pgm        to pge-pgm
+           move low-value       to pge-data
+                                   pge-ora
+
+           start pgmexe key not < pge-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read pgmexe next no lock
+                         at end exit perform
+                    end-read
+                    if pid-sessione not = pge-pid or
+                       pgme-pgm     not = pge-pgm
+                       exit perform
+                    end-if
+                    delete pgmexe record
+                           invalid continue
+                    end-delete
+                    exit perform
+                 end-perform
+           end-start.
+
+           close pgmexe.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = VERIFICA-BLOCCHI
+BEGIN-TEXT
+      *    mettere qui l'elenco dei programmi che devono partire sempre
+      *    anche se ho attiva l'evasione
+           evaluate pgme-pgm
+           when "killproc"
+           when "gestsessioni"
+                set si-blocchi to false
+           when other
+                set si-blocchi to false
+                move low-value to pge-chiave
+           
+                start pgmexe key not < pge-chiave
+                   invalid
+                      continue
+                   not invalid
+                      perform until 1 = 2
+                         read pgmexe next no lock
+                            at end
+                               exit perform
+                         end-read
+                         evaluate pge-pgm
+                         when "evacli"
+                         |inserire qui eventuali futuri blocchi
+                              set si-blocchi  to true
+                              exit perform
+                         end-evaluate
+                      end-perform
+                end-start
+           end-evaluate.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CARICA-GRIGLIA
+BEGIN-TEXT
+           move zero   to old-pid
+           set color-2 to true
+           modify form1-gd-1, mass-update = 1
+           move 1  to riga
+           set no-pgm  to true
+           perform RESET-GRIGLIA.
+
+           move low-value to pge-chiave
+           start pgmexe key not < pge-chiave
+              invalid
+                 continue
+              not invalid
+                 perform until 1 = 2
+                    read pgmexe next no lock
+                       at end
+                          exit perform
+                    end-read
+      *    scarto il record relativo al pgm evacli se sono nella verifica
+      *    delle evasioni
+                    set rec-ok  to true
+                    if pgme-evasione and pge-pgm = "evacli"
+                       set rec-ok  to false
+                    end-if
+                    evaluate pge-pgm
+                    when "gestsessioni"
+                         set rec-ok   to false
+                    end-evaluate
+
+                    if rec-ok
+                       perform METTI-IN-GRIGLIA
+                    end-if
+                 end-perform
+           end-start.
+
+           if riga > 1
+              move zero   to riga
+              modify form1-gd-1, CURSOR-X 2, CURSOR-Y 2
+              move 2   to event-data-2
+              perform SPOSTAMENTO
+           end-if
+
+           modify form1-gd-1, MASS-UPDATE = zero.
+
+      ***---
+       METTI-IN-GRIGLIA.
+           add 1 to riga
+           initialize rec-grid.
+
+           if old-pid not = pge-pid
+              move pge-pid         to col-pid-ed
+                                      old-pid
+              move col-pid-ed      to col-pid
+              call "C$JUSTIFY" using col-pid, "L"
+              move pge-utente      to col-utente
+              move pge-nome-utente to col-nome
+              move pge-postazione  to col-postazione
+              evaluate true
+              when color-1
+                   set color-2  to true
+              when color-2
+                   set color-1  to true
+              end-evaluate
+              move riga         to 1-riga-gruppo
+           end-if
+
+           move pge-pgm         to col-pgm
+
+           string pge-data(7:2) delimited by size
+                  "/"           delimited by size
+                  pge-data(5:2) delimited by size
+                  "/"           delimited by size
+                  pge-data(1:4) delimited by size
+                  into col-data
+           string pge-ora(1:2)  delimited by size
+                  ":"           delimited by size
+                  pge-ora(3:2)  delimited by size
+                  into col-ora
+
+           modify form1-gd-1, RECORD-TO-ADD rec-grid
+           modify form1-gd-1(riga, 1), HIDDEN-DATA pge-chiave.
+           modify form1-gd-1(riga, 2), HIDDEN-DATA 1-riga-gruppo.
+
+           if pge-pid = pid-sessione
+              move 78-color-sessione  to como-colore
+           else
+              evaluate true
+              when color-1
+                   move 78-color-1 to como-colore
+              when color-2
+                   move 78-color-2 to como-colore
+              end-evaluate
+           end-if
+           modify form1-gd-1(riga), ROW-COLOR como-colore
+
+           set no-pgm  to false.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = INIT-CANCELLAZIONE
+BEGIN-TEXT
+           call "C$CALLEDBY"  using calling-program
+           if calling-program = 78-nome-pgm-menu
+              set called-by-menu   to true
+              accept LK-BLOCKPGM from environment "BLOCK_GESTSESSIONI"
+           else
+              set called-by-menu   to false
+           end-if
+           set si-cancellazione to false
+           accept path-txt from environment "PATH_ISOLATA".
+
+           set ingresso-cacancellazione  to true
+           perform SCRIVI-LOG
+           move zero      to v-evadi
+           move 1         to v-cancella
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = SCRIVI-LOG
+BEGIN-TEXT
+           evaluate true
+           when pwd-errata
+                move "Inserimento Pasword errata"    to como-stringa
+           when pwd-corretta
+                move "Inserimento Pasword Corretta"  to como-stringa
+           when record-cancellato
+                inspect pge-utente replacing trailing space by low-value
+                inspect pge-postazione 
+                                   replacing trailing space by low-value
+                inspect pge-pgm replacing trailing space by low-value
+                move pge-pid to col-pid-ed
+                call "C$JUSTIFY"    using col-pid-ed, "L"
+                inspect col-pid-ed replacing trailing space by low-value
+                initialize como-stringa
+                string "Cancellata la sessione: utente "
+                                                  delimited by size
+                       pge-utente                 delimited by low-value
+                       " PID "                    delimited by size
+                       col-pid-ed                 delimited by low-value
+                       " postazione "             delimited by size
+                       pge-postazione             delimited by low-value
+                       " programma "              delimited by size
+                       pge-pgm                    delimited by low-value
+                       " lanciata il "            delimited by size
+                       pge-data(7:2)              delimited by size
+                       "/"                        delimited by size
+                       pge-data(5:2)              delimited by size
+                       "/"                        delimited by size
+                       pge-data(1:4)              delimited by size
+                       " alle "                   delimited by size
+                       pge-ora(1:2)               delimited by size
+                       ":"                        delimited by size
+                       pge-ora(3:2)               delimited by size
+                       into como-stringa
+           when eliminazione-orfani
+                inspect pge-utente replacing trailing space by low-value
+                inspect pge-postazione 
+                                   replacing trailing space by low-value
+                inspect pge-pgm replacing trailing space by low-value
+                move pge-pid to col-pid-ed
+                call "C$JUSTIFY"    using col-pid-ed, "L"
+                inspect col-pid-ed replacing trailing space by low-value
+                initialize como-stringa
+                string "Cancellata la sessione orfana: utente "
+                                                  delimited by size
+                       pge-utente                 delimited by low-value
+                       " PID "                    delimited by size
+                       col-pid-ed                 delimited by low-value
+                       " postazione "             delimited by size
+                       pge-postazione             delimited by low-value
+                       " programma "              delimited by size
+                       pge-pgm                    delimited by low-value
+                       " lanciata il "            delimited by size
+                       pge-data(7:2)              delimited by size
+                       "/"                        delimited by size
+                       pge-data(5:2)              delimited by size
+                       "/"                        delimited by size
+                       pge-data(1:4)              delimited by size
+                       " alle "                   delimited by size
+                       pge-ora(1:2)               delimited by size
+                       ":"                        delimited by size
+                       pge-ora(3:2)               delimited by size
+                       into como-stringa
+
+           when reset-pwd
+                move "Password disabilitata"         to como-stringa
+           when uscita-cacancellazione
+                move "Uscita dalla funzione di cancellazione"
+                                                     to como-stringa
+           when ingresso-cacancellazione
+                move "Ingresso nella funzione di cancellazione"
+                                                     to como-stringa
+           when aggiorna-elenco
+                move "Aggiornamento elenco sessioni" to como-stringa
+           when invio-mail-fallito
+                move "Invio mail di segnalazione fallito"
+                                                     to como-stringa
+           when pwd-changed
+                move "Password Modificata"           to como-stringa
+           end-evaluate
+
+           open extend fileseq
+
+           initialize rec-stampa.
+           perform SETTA-INIZIO-RIGA.
+           string r-inizio      delimited size
+                  como-stringa  delimited size
+                  into rec-stampa
+           end-string.
+           write rec-stampa after 2.
+
+           close fileseq.
+
+      ***---
+       SETTA-INIZIO-RIGA.
+           accept como-ora  from time.
+           accept como-data from century-date.
+
+           move como-data(3:2)  to r-aa.
+           move como-data(5:2)  to r-mm.
+           move como-data(7:2)  to r-gg.
+
+           move como-ora(1:2)   to r-hh.
+           move como-ora(3:2)   to r-min.
+           move como-ora(5:2)   to r-sec.
+
+           move pgme-utente     to r-user.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = RESET-PWD
+BEGIN-TEXT
+           perform INVIO-MAIL
+           open output pass
+           close pass
+
+
+           set reset-pwd  to true
+           perform SCRIVI-LOG.
+
+           copy "mail.cpy".
+
+      ***---
+       INVIO-MAIL.
+           accept LinkSubject from environment "MAIL_ISOLATA_SUBJECT"
+           accept LinkBody from environment "MAIL_ISOLATA_BODY"
+           accept LinkAddress from environment "MAIL_ISOLATA_ADDRESSES".
+
+           set errori to true.
+           move 0 to tentativi.
+           move "gpgmexe" to NomeProgramma.
+           perform 10 times
+              add 1 to tentativi
+              perform SEND-MAIL
+              
+              open input lineseq
+              read  lineseq next
+              if line-riga = "True"
+                 set tutto-ok to true
+                 close lineseq
+                 exit perform
+              end-if
+              close lineseq
+           end-perform
+
+           if errori
+              set invio-mail-fallito  to true
+              perform SCRIVI-LOG
+           end-if
+           delete file lineseq.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = SPOSTAMENTO
+BEGIN-TEXT
+           set event-action to event-action-fail
+
+           inquire form1-gd-1, last-row in tot-righe.
+           if event-data-2 < 2 
+              move 2 to event-data-2 
+           end-if.
+           if event-data-2 > tot-righe 
+              move tot-righe to event-data-2 
+           end-if.
+
+           if event-data-2 not = riga
+              perform CAMBIA-FONT-RIGA
+           end-if.
+
+      ***---
+       CAMBIA-FONT-RIGA.
+      *    tolgo da tutte le righe il grassetto
+           move riga   to riga-origine
+
+           inquire form1-gd-1(riga, 2), HIDDEN-DATA = 1-riga-gruppo
+           move 1-riga-gruppo   to riga
+                                   riga-gruppo
+
+           modify form1-gd-1(riga, 1),
+                  bitmap        = elemento-bmp,
+                  bitmap-number = 1,
+                  bitmap-width  = 16.
+
+      *    ciclo per togliere da tutte le righe del gruppo il grassetto
+           perform until 1 = 2
+              if riga > tot-righe
+                 exit perform
+              end-if
+              inquire form1-gd-1(riga, 2), HIDDEN-DATA = 1-riga-gruppo
+              if 1-riga-gruppo not = riga-gruppo
+                 exit perform
+              end-if
+              modify form1-gd-1(riga), ROW-FONT = Verdana12-Occidentale
+              add 1 to riga
+           end-perform.
+
+      *    se sto spostandomi con i testi freccia mi sposto di blocco in
+      *    blocco andando a cercare il blocco relativo
+           if spostamento-frecce
+              perform DETERMINA-EVENTDATA-2
+           end-if
+
+      *    ciclo per mettere il grassetto
+           move event-data-2 to riga
+           inquire form1-gd-1(riga, 2), HIDDEN-DATA = 1-riga-gruppo
+           move 1-riga-gruppo   to riga
+                                   riga-gruppo
+           perform until 1 = 2
+              if riga > tot-righe
+                 exit perform
+              end-if
+              inquire form1-gd-1(riga, 2), HIDDEN-DATA = 1-riga-gruppo
+              if 1-riga-gruppo not = riga-gruppo
+                 exit perform
+              end-if
+              modify form1-gd-1(riga), ROW-FONT = font-evidenzia-griglia
+              add 1 to riga
+           end-perform.
+
+           move riga-gruppo to riga
+           modify form1-gd-1, CURSOR-Y = riga, cursor-X = 2
+           modify form1-gd-1, (riga, 1),
+                  bitmap        = elemento-bmp,
+                  bitmap-number = 2,
+                  bitmap-width  = 16.
+
+      ***---
+      *    se mi sposto tramite le frecce faccio in modo di passare da 
+      *    un gruppo all'altro
+       DETERMINA-EVENTDATA-2.
+           move riga-origine to riga
+           if event-data-2 >= riga
+              set avanti  to true
+           else
+              set indietro to true
+           end-if
+
+           inquire form1-gd-1(riga, 2), HIDDEN-DATA = 1-riga-gruppo
+           move 1-riga-gruppo   to riga-gruppo
+
+           evaluate true
+           when indietro
+                perform until 1 = 2
+                   if riga = 2
+                      exit perform
+                   end-if
+                   inquire form1-gd-1(riga, 2), 
+                          HIDDEN-DATA = 1-riga-gruppo
+                   if 1-riga-gruppo = riga-gruppo
+                      subtract 1 from riga
+                   else
+                      exit perform
+                   end-if
+                end-perform
+           when avanti
+                perform until 1 = 2
+                   if riga = tot-righe
+                      exit perform
+                   end-if
+                   inquire form1-gd-1(riga, 2), 
+                          HIDDEN-DATA = 1-riga-gruppo
+                   if 1-riga-gruppo = riga-gruppo
+                      add 1 to riga
+                   else
+                      exit perform
+                   end-if
+                end-perform
+           end-evaluate
+           move riga   to event-data-2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = INIT-GRIGLIA
+BEGIN-TEXT
+      * Verdana10B-Occidentale
+           INITIALIZE WFONT-DATA, font-evidenzia-griglia
+           MOVE 12                TO WFONT-SIZE
+           MOVE "Verdana"         TO WFONT-NAME
+           SET WFONT-BOLD         TO true
+           SET WFONT-ITALIC       TO true
+           SET WFONT-UNDERLINE    TO FALSE
+           SET WFONT-STRIKEOUT    TO FALSE
+           SET WFONT-FIXED-PITCH  TO FALSE
+           MOVE 0 TO WFONT-CHAR-SET
+           CALL "W$FONT" USING WFONT-GET-FONT, 
+                     font-evidenzia-griglia, WFONT-DATA
+
+           copy resource "elemento.bmp".
+           call "W$BITMAP" using wbitmap-load, "elemento.bmp"
+                          giving elemento-bmp.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = AGGIORNA-PASSWORD
+BEGIN-TEXT
+           open output pass
+           move new-password to pass-rec
+           write pass-rec
+           close pass
+
+           set pwd-changed  to true
+           perform SCRIVI-LOG.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = LEGGI-PWD
+BEGIN-TEXT
+           set tutto-ok   to true
+           open input pass.
+           if errori
+              initialize pass-rec
+           end-if
+           if tutto-ok
+              initialize pass-rec
+              read pass next
+                 at end
+                    continue
+              end-read
+           end-if
+           move pass-rec  to save-pwd
+           close pass
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = AZZERA-SESSIONE
+BEGIN-TEXT
+           open i-o pgmexe.
+
+           move pid-sessione to pge-pid
+           move low-value    to pge-pgm
+
+           start pgmexe key not < pge-chiave
+              invalid
+                 continue
+              not invalid
+                 perform until 1 = 2
+                    read pgmexe next no lock
+                       at end
+                          exit perform
+                    end-read
+                    if pge-pid not = pid-sessione
+                       exit perform
+                    end-if
+                    delete pgmexe record
+                       invalid
+                          continue
+                    end-delete
+                 end-perform
+           end-start.
+
+           close pgmexe.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CANCELLA-ORFANI
+BEGIN-TEXT
+           perform INIT-LOG
+           if tutto-ok
+              open i-o pgmexe
+              move low-value to pge-chiave
+              start pgmexe key not < pge-chiave
+                 invalid
+                    continue
+                 not invalid
+                    perform CARICA-TMP
+                    perform until 1 = 2
+                       read pgmexe next no lock
+                          at end
+                             exit perform
+                       end-read
+                       move pge-pid   to cpu-pid
+                       read tmp-cpu
+                          invalid
+                             delete pgmexe record
+                                invalid
+                                   continue
+                             end-delete
+                             set eliminazione-orfani to true
+                             perform SCRIVI-LOG
+              
+                       end-read
+                    end-perform
+                    close tmp-cpu
+                    delete file tmp-cpu
+              end-start
+              
+              close pgmexe
+           end-if.
+
+      ***---
+       CARICA-TMP.
+           initialize path-kill comando status-call wstampa.
+           accept  como-data from century-date.
+           accept  como-ora  from time.
+           accept  path-kill from environment "PATH_KILL".
+           inspect path-kill replacing trailing spaces by low-value.
+
+           initialize como-path-tasklist
+           string  path-kill delimited low-value
+                   "tasklist"   delimited size
+                   "_"          delimited size
+                   como-data    delimited size
+                   "_"          delimited size
+                   como-ora     delimited size
+                   ".txt"       delimited size
+                   into como-path-tasklist
+           end-string.
+
+           string  "tasklist "        delimited by size
+      *    filtro sul runtime
+                   " /FI "            delimited by size
+                   x"22"              delimited by size
+                   "IMAGENAME eq wrun32.exe" delimited by size
+                   x"22"              delimited by size
+                   " "                delimited by size
+      *    fine filtro
+                   "/FO "             delimited by size
+                   x"22"              delimited by size
+                   "CSV"              delimited by size
+                   x"22"              delimited by size
+                   " /NH"             delimited by size
+                   " >"               delimited size
+                   como-path-tasklist delimited low-value
+                   into comando
+           end-string.
+           inspect como-path-tasklist
+                                replacing trailing low-value by spaces.
+
+           call "C$SYSTEM" using comando, 96|97
+                          giving status-call.
+
+           call "C$SLEEP" using 2.
+
+           initialize path-tmp-cpu
+           string  path-kill    delimited low-value
+                   "tmp_tasklist"   delimited size
+                   "_"          delimited size
+                   como-data    delimited size
+                   "_"          delimited size
+                   como-ora     delimited size
+                   into path-tmp-cpu
+           end-string.
+           open output tmp-cpu
+           close tmp-cpu
+           open i-o tmp-cpu
+
+
+           move como-path-tasklist  to wstampa
+           open input lineseq
+           perform until 1 = 2
+              move spaces to line-riga
+              read lineseq next 
+                 at end 
+                    exit perform 
+              end-read
+              perform PREPARA-RECORD
+           end-perform
+           close       lineseq.
+           delete file lineseq.
+
+      ***---
+       PREPARA-RECORD.
+           initialize rec-pid.
+
+           unstring line-riga delimited by ","
+               into rp-nome-exe
+                    rp-pid.
+           move rp-pid    to cpu-pid convert
+           if cpu-pid not = zero
+              write cpu-rec
+                 invalid
+                    rewrite cpu-rec
+              end-write
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CANCELLAZIONE-GRIGLIA
+BEGIN-TEXT
+           inquire form1-gd-1(riga, 1), HIDDEN-DATA pge-chiave
+           move pge-pid   to killpid-pid-pgm
+           move low-value to pge-pgm
+           start pgmexe key not < pge-chiave
+              invalid
+                 continue
+              not invalid
+                 perform until 1 = 2
+                    read pgmexe next no lock
+                       at end
+                          exit perform
+                    end-read
+                    if pge-pid not = killpid-pid-pgm
+                       exit perform
+                    end-if
+
+                    delete pgmexe record
+                       invalid
+                          continue
+                    end-delete
+                    set record-cancellato   to true
+                    perform SCRIVI-LOG
+                 end-perform
+           end-start
+       
+           call "killpid" using killpid-linkage
+           cancel "killpid"
+
+           set si-cancellazione to true
+                 
+           perform CARICA-GRIGLIA
+           set aggiorna-elenco  to true
+           perform SCRIVI-LOG
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = INIT-LOG
+BEGIN-TEXT
+           set tutto-ok   to true
+      *    verifico in entrata di poter scrivere il log
+           accept path-fileseq from environment "PATH_LOG_ISOLATA"
+           if path-fileseq = space
+              set errori  to true
+              display message box 
+                          "Prima di procedere settare il file di log"
+                          x"0D0A"
+                          "per la cancellazione delle sessioni."
+                      title "Geslux - Evasione Isalota"
+                      icon 2
+           end-if
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = ABILITA-GESTIONE
+BEGIN-TEXT
+           set si-gest-sessioni to false
+
+           accept como-stringa from environment "GESTIONE_SESSIONI"
+           CALL "C$TOUPPER" USING como-stringa, VALUE 200
+           evaluate como-stringa
+           when "S"
+           when "SI"
+           when "Y"
+           when "YES"
+                set si-gest-sessioni  to true
+           end-evaluate
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = stbolle-Ev-Before-Program
+BEGIN-TEXT
+           perform ABILITA-GESTIONE
+           if not si-gest-sessioni
+              set pgme-ok to true
+              goback
+           end-if
+           set pgme-ok to true
+           ACCEPT SYSTEM-INFORMATION FROM SYSTEM-INFO.
+           accept pid-sessione-x  from environment "PID_SESSIONE"
+           move pid-sessione-x  to pid-sessione convert
+
+           evaluate true
+           when pgme-ingresso
+      *          perform CANCELLA-ORFANI
+                perform INGRESSO
+                goback
+           when pgme-uscita
+                perform USCITA
+                goback
+           when pgme-azzera-sessione
+                perform AZZERA-SESSIONE
+                goback
+           when pgme-canc-orfani
+                perform CANCELLA-ORFANI
+                goback
+           when pgme-cancellazione
+                perform CANCELLA-ORFANI
+                if tutto-ok
+                   perform INIT-GRIGLIA
+                end-if
+                if tutto-ok
+                   perform INIT-CANCELLAZIONE
+                end-if
+                if errori
+                   goback
+                end-if
+           when pgme-evasione
+                perform CANCELLA-ORFANI
+                perform INIT-GRIGLIA
+                move 1    to v-evadi
+                move zero to v-cancella
+           end-evaluate.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = stbolle-Ev-After-Program
+BEGIN-TEXT
+           evaluate true
+           when pgme-cancellazione
+           when pgme-evasione
+                DESTROY font-evidenzia-griglia
+                call "W$BITMAP" using wbitmap-destroy, elemento-bmp
+           end-evaluate
+
+           if pgme-cancellazione and called-by-menu
+              SET LK-BL-CANCELLAZIONE TO TRUE
+      *        move 78-nome-pgm-menu   TO LK-BL-PROG-ID
+              CALL "BLOCKPGM"  USING LK-BLOCKPGM 
+           end-if.
+
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = PB-ESEGUI-BeforeProcedure
+BEGIN-TEXT
+           modify PB-ESEGUI, bitmap-number 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = PB-ESEGUI-AfterProcedure
+BEGIN-TEXT
+           modify PB-ESEGUI, bitmap-number 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Pb-2-BeforeProcedure
+BEGIN-TEXT
+           modify PB-CANCEL, bitmap-number 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Pb-2-AfterProcedure
+BEGIN-TEXT
+           modify PB-CANCEL, bitmap-number 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = form1-gd-1-Ev-Msg-Goto-Cell-Mouse
+BEGIN-TEXT
+           set spostamento-frecce  to false
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = form1-gd-1-Ev-Msg-Begin-Entry
+BEGIN-TEXT
+           set spostamento-frecce  to false
+           set event-action to event-action-fail.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = PB-ESEGUIa-LinkTo
+BEGIN-TEXT
+           inquire form1-gd-1, LAST-ROW = riga
+           if riga < 2
+              set pgme-ok to true
+              perform form1-Exit
+           else
+              perform CARICA-GRIGLIA
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-reset-LinkTo
+BEGIN-TEXT
+           perform CARICA-GRIGLIA
+           if pgme-cancellazione
+              set aggiorna-elenco  to true
+              perform SCRIVI-LOG
+           end-if
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-pass-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-pass-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-conferma-BeforeProcedure
+BEGIN-TEXT
+           modify pb-conferma, bitmap-number = 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-conferma-AfterProcedure
+BEGIN-TEXT
+           modify pb-conferma, bitmap-number = 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-disattiva-LinkTo
+BEGIN-TEXT
+           inquire ef-pass, value in password.
+
+           if password = spaces
+              move 78-id-ef-pass to control-id
+              move   4 to accept-control
+              set pwd-errata to true
+              perform SCRIVI-LOG
+           else
+              if password not = save-pwd
+                 display message box "Password errata!"
+                         title = tit-err
+                         icon 2
+                 move 78-id-ef-pass   to control-id
+                 move   4 to accept-control
+                 modify pb-conferma, bitmap-number = 1
+                 modify pb-esci,     bitmap-number = 1
+                 set pwd-errata to true
+                 perform SCRIVI-LOG
+              else
+                 set tutto-ok   to true
+                 move 27 to key-status
+              end-if
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-esci-BeforeProcedure
+BEGIN-TEXT
+           modify pb-esci, bitmap-number = 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-esci-AfterProcedure
+BEGIN-TEXT
+           modify pb-esci, bitmap-number = 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-grid-elimina-BeforeProcedure
+BEGIN-TEXT
+           modify pb-grid-elimina, bitmap-number = 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-grid-elimina-AfterProcedure
+BEGIN-TEXT
+           modify pb-grid-elimina, bitmap-number = 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-grid-elimina-LinkTo
+BEGIN-TEXT
+      *     perform LEGGI-PWD
+      *     if pass-rec = space
+      *        set errori  to true
+      *        display message box 
+      *                    "Prima di procedere attivare la password"
+      *                    x"0D0A"
+      *                    "per la cancellazione delle sessioni."
+      *                title "Geslux - Evasione Isalota"
+      *                icon 2
+      *     end-if
+      *
+      ** se sono in cancellazione richiamo la pwd
+      *     if tutto-ok
+      *        set errori to true
+      *        initialize password
+      *        perform SCREENPASS-OPEN-ROUTINE
+      *     end-if.
+      *
+      *     if tutto-ok
+
+              inquire form1-gd-1(riga, 2), CELL-DATA = col-pid
+              move col-pid   to pge-pid convert
+              if pge-pid = pid-sessione
+                 display message "Impossibile cancellare." x"0D0A"
+                                 "Questa è la sessione in uso."
+                         title titolo
+
+
+              else
+                 display message "Cancellare la sessione selezionata?"
+                         title titolo
+                         type mb-yes-no
+                         giving scelta
+                 if scelta = mb-yes
+                    perform CANCELLAZIONE-GRIGLIA
+                 end-if
+              end-if
+      *     end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = form1-gd-1-Ev-Msg-Begin-Drag
+BEGIN-TEXT
+           set spostamento-frecce  to false
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = form1-gd-1-Ev-Msg-End-Drag
+BEGIN-TEXT
+           set spostamento-frecce  to false
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = form1-gd-1-Ev-Msg-Goto-Cell
+BEGIN-TEXT
+           set spostamento-frecce  to true
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = form1-gd-1-Ev-Msg-Goto-Cell-Drag
+BEGIN-TEXT
+           set spostamento-frecce  to false
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-gestpwd-BeforeProcedure
+BEGIN-TEXT
+           modify pb-gestpwd, BITMAP-NUMBER 2
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-gestpwd-AfterProcedure
+BEGIN-TEXT
+           modify pb-gestpwd, BITMAP-NUMBER 1
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-conf-pwd-LinkTo
+BEGIN-TEXT
+           inquire ef-old-pass, value password.
+           inquire ef-new-pass, value new-password
+           inquire ef-conf-pass value conf-password
+
+           if password not = save-pwd
+              display message box "Password errata!"
+                      title = tit-err
+                      icon 2
+              move 78-id-ef-old-pass to control-id
+              move   4 to accept-control
+           else
+              if new-password = conf-password
+                 if new-password = space
+                    display message box "Nuova Password non valida!"
+                            title = tit-err
+                            icon 2
+                    move 78-id-ef-new-pass to control-id
+                    move   4 to accept-control
+                 else
+                    perform AGGIORNA-PASSWORD
+                    perform SCREENGESTPASS-EXIT
+                 end-if
+              else
+                 display message box "Le Password non coincidono!"
+                         title = tit-err
+                         icon 2
+                 move 78-id-ef-new-pass to control-id
+                 move   4 to accept-control
+              end-if
+           end-if
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-conf-pwd-BeforeProcedure
+BEGIN-TEXT
+           modify pb-conf-pwd, bitmap-number = 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-conf-pwd-AfterProcedure
+BEGIN-TEXT
+           modify pb-conf-pwd, bitmap-number = 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-canc-pwd-BeforeProcedure
+BEGIN-TEXT
+           modify pb-canc-pwd, bitmap-number = 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-canc-pwd-AfterProcedure
+BEGIN-TEXT
+           modify pb-canc-pwd, bitmap-number = 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-gestpwd-LinkTo
+BEGIN-TEXT
+           perform SCREENGESTPASS-OPEN-ROUTINE
+END-TEXT
+END-DATA
+
+@}}
+
+[KEY_STATUS_FIELD_FORMAT]
+PIC=9(5)
+USAGE=[None]
+
+[KEYSTATUS_CONTENT:KS1]
+CONDITION=Enter-Pushed
+VALUE=13
+
+[KEYSTATUS_CONTENT:KS2]
+CONDITION=Exit-Pushed
+VALUE=27
+
+[KEYSTATUS_CONTENT:KS3]
+CONDITION=Message-Received
+VALUE=95
+
+[KEYSTATUS_CONTENT:KS4]
+CONDITION=Event-Occurred
+VALUE=96
+
+[KEYSTATUS_CONTENT:KS5]
+CONDITION=Screen-No-Input-Field
+VALUE=97
+
+[KEYSTATUS_CONTENT:KS6]
+CONDITION=Screen-Time-Out
+VALUE=99
+
+[COBOLAID_DATASET_INFO]
+COUNT=1
+NAME_0=DataSet1
+
+[DRAW_DOCUMENT_INDEX]
+OBJ_NAME_0=8001
+OBJ_ID_0=1550743945
+
+[MULTIPLE_KEY_0]
+COUNT=1
+KEY_0=pge-chiave
+
+[DRAW_DOCUMENT_8001_1550743945]
+OBJ_NAME=8001
+OBJ_ID=1550743945
+TYPE=2
+VERSION=
+DOC_SIZE_X=5100
+DOC_SIZE_Y=5160
+PAGE_LEFT=150
+PAGE_TOP=150
+PAGE_RIGHT=1850
+PAGE_BOTTOM=2730
+MARGIN_LEFT=150
+MARGIN_TOP=150
+MARGIN_RIGHT=150
+MARGIN_BOTTOM=150
+PROP_DOCU_TYPE=ø
+PROP_DOCU_TYPE2=ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+PROP_DOCU_NAME=DataSet - DataSet1[gpgmexe(GESLUX)]
+PROP_DOCU_OWNER=Person A
+PROP_DOCU_CDATE=02/09/05
+PROP_DOCU_MODIFIER=Person B
+PROP_DOCU_MDATE=02/09/05
+PROP_DOCU_DESCR=Caseaid DocuCaseaid Document
+PROP_DOCU_HEADER=Caseaid Document
+PROP_DOCU_FOOTER=Page # 
+PROP_DOCU_DIM_H=2
+PROP_DOCU_DIM_W=3
+PROP_DOCU_LOC_H=1
+PROP_DOCU_LOC_W=1
+PROP_DOCU_EDGE_T=150
+PROP_DOCU_EDGE_B=150
+PROP_DOCU_EDGE_L=150
+PROP_DOCU_EDGE_R=150
+PROP_DOCU_ZOOM=75
+PROP_DOCU_SIZE_TYPE=0
+PROP_DOCU_SIZE_PAPER=1
+PROP_DOCU_SIZE_H=2580
+PROP_DOCU_SIZE_W=1700
+PROP_DOCU_RULER_EBL=0
+PROP_DOCU_GRID_EBL=0
+PROP_DOCU_GRID=20
+PROP_DOCU_ALIGN=0
+REL_SYM_SIZE=52
+REL_SYM_INFO_L=8
+REL_SYM_INFO_X0=2301
+REL_SYM_INFO_Y0=1281662353
+REL_SYM_INFO_X1=2301
+REL_SYM_INFO_Y1=1566686880
+REL_SYM_INFO_X2=2301
+REL_SYM_INFO_Y2=163000849
+REL_SYM_INFO_X3=2301
+REL_SYM_INFO_Y3=1538970176
+REL_SYM_INFO_X4=2301
+REL_SYM_INFO_Y4=1675128079
+REL_SYM_INFO_X5=2301
+REL_SYM_INFO_Y5=1004036933
+REL_SYM_INFO_X6=2301
+REL_SYM_INFO_Y6=1031811501
+REL_SYM_INFO_X7=2301
+REL_SYM_INFO_Y7=570773514
+
+[DRAW_BASESYMBOL_2301_1281662353]
+OBJ_NAME=2301
+OBJ_ID=1281662353
+KIND=1
+{{@LABEL_2301_1281662353
+pgmexe
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=188
+TOP=149
+RIGHT=588
+BOTTOM=371
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1566686880]
+OBJ_NAME=2301
+OBJ_ID=1566686880
+KIND=1
+{{@LABEL_2301_1566686880
+USER
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1182
+TOP=566
+RIGHT=1582
+BOTTOM=788
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_163000849]
+OBJ_NAME=2301
+OBJ_ID=163000849
+KIND=1
+{{@LABEL_2301_163000849
+pass
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=443
+TOP=839
+RIGHT=843
+BOTTOM=1061
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1538970176]
+OBJ_NAME=2301
+OBJ_ID=1538970176
+KIND=1
+{{@LABEL_2301_1538970176
+fileseq
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=285
+TOP=1394
+RIGHT=685
+BOTTOM=1616
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1675128079]
+OBJ_NAME=2301
+OBJ_ID=1675128079
+KIND=1
+{{@LABEL_2301_1675128079
+lineseq
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1182
+TOP=1082
+RIGHT=1582
+BOTTOM=1304
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1004036933]
+OBJ_NAME=2301
+OBJ_ID=1004036933
+KIND=1
+{{@LABEL_2301_1004036933
+PROG
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1129
+TOP=1485
+RIGHT=1529
+BOTTOM=1707
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1031811501]
+OBJ_NAME=2301
+OBJ_ID=1031811501
+KIND=1
+{{@LABEL_2301_1031811501
+tmp-cpu
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1748
+TOP=1082
+RIGHT=2148
+BOTTOM=1304
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_570773514]
+OBJ_NAME=2301
+OBJ_ID=570773514
+KIND=1
+{{@LABEL_2301_570773514
+tsetinvio
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=722
+TOP=101
+RIGHT=1122
+BOTTOM=323
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DMD_DOCUMENT_0_1550743945]
+OBJ_NAME=0
+OBJ_ID=1550743945
+FILE_TITLE_TYPE=8136
+FILE_SHOW_ITEM=0
+FILE_SHOW_KEY=0
+FILE_SHOW_PIC=0
+FILE_SHOW_HEAD=0
+FILE_SHOW_LEVEL=0
+FILE_SHOW_TREE=0
+FILE_SHOW_CLPS=0
+FILE_SHOW_BMP=0
+FILE_SHOW_LINE=0
+FILE_SHOW_MINIZE=0
+
+[DMD_FILE_0_1281662353]
+OBJ_NAME=0
+OBJ_ID=1281662353
+REL_M_OBJ_ID=0
+ENTITY=pgmexe
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=2
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=pge-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1281662353
+
+@}}
+DSN_INFO_PRIMARY=1
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1566686880]
+OBJ_NAME=0
+OBJ_ID=1566686880
+REL_M_OBJ_ID=0
+ENTITY=USER
+LINK=0
+LINK_NAME=
+DSN_SIZE=43
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=user-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1566686880
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_163000849]
+OBJ_NAME=0
+OBJ_ID=163000849
+REL_M_OBJ_ID=0
+ENTITY=pass
+LINK=0
+LINK_NAME=
+DSN_SIZE=32
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_163000849
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1538970176]
+OBJ_NAME=0
+OBJ_ID=1538970176
+REL_M_OBJ_ID=0
+ENTITY=fileseq
+LINK=0
+LINK_NAME=
+DSN_SIZE=32
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=3
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1538970176
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1675128079]
+OBJ_NAME=0
+OBJ_ID=1675128079
+REL_M_OBJ_ID=0
+ENTITY=lineseq
+LINK=0
+LINK_NAME=
+DSN_SIZE=32
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=3
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1675128079
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1004036933]
+OBJ_NAME=0
+OBJ_ID=1004036933
+REL_M_OBJ_ID=0
+ENTITY=PROG
+LINK=0
+LINK_NAME=
+DSN_SIZE=48
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=PROG-KEY OF PROG
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1004036933
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1031811501]
+OBJ_NAME=0
+OBJ_ID=1031811501
+REL_M_OBJ_ID=0
+ENTITY=tmp-cpu
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=2
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=cpu-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1031811501
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_570773514]
+OBJ_NAME=0
+OBJ_ID=570773514
+REL_M_OBJ_ID=0
+ENTITY=tsetinvio
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=2
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tsi-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_570773514
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=

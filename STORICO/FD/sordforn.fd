@@ -1,0 +1,26 @@
+      *
+      *
+      *
+       FD  sordforn.
+       01 sof-rec.
+           05 sof-chiave.
+               10 sof-chiave-testa.
+                   15 sof-anno         PIC  9(4).
+                   15 sof-numero       PIC  9(8).
+               10 sof-prog         PIC  9(5).
+           05 sof-dati.
+               10 sof-note         PIC  x(500).
+               10 sof-data-arr     PIC  9(8).
+               10 sof-qta          PIC  9(8).
+               10 sof-dati-comuni.
+                   15 sof-data-creazione           PIC  9(8).
+                   15 sof-ora-creazione            PIC  9(8).
+                   15 sof-utente-creazione         PIC  X(10).
+                   15 sof-data-ultima-modifica     PIC  9(8).
+                   15 sof-ora-ultima-modifica      PIC  9(8).
+                   15 sof-utente-ultima-modifica   PIC  X(10).
+               10 sof-vuoti.
+                   15 sof-num-vuoto-1  PIC  9(18).
+                   15 sof-num-vuoto-2  PIC  9(18).
+                   15 sof-num-vuoto-3  PIC  9(18).
+                   15 sof-alfa-vuoto   PIC  X(500).

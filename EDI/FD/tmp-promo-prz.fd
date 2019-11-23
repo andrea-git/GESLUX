@@ -1,0 +1,11 @@
+      *(( XFD FILE = tmp-promo-prz ))
+       FD  tmp-promo-prz.
+       01 tprz-rec.
+           05 tprz-chiave.
+               10 tprz-codice      PIC  z(15).
+           05 tprz-dati.
+               10 tprz-gdo         PIC  x(5).
+               10 tprz-descr       PIC  x(30).
+               10 tprz-ini-dpo     PIC  9(8).
+               10 tprz-fine-dpo    PIC  9(8).
+               10 tprz-prz-acq     PIC  9(6)v99.

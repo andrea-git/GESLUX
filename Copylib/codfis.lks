@@ -1,0 +1,22 @@
+       01  LINK-CODFIS.
+           03  CF-OPERAZIONE     PIC 9 VALUE 0.
+               88 CF-CALCOLO     VALUE 0.           
+               88 CF-CONTR-GEN   VALUE 1.
+               88 CF-CONTR-COM   VALUE 2. |NON ANCORA ATTIVO
+               88 CF-PARTITA-IVA VALUE 3.
+           03  CF-SESSO          PIC X.
+               88 CF-MASCHIO VALUE "M".
+               88 CF-FEMMINA VALUE "F".
+           03  CF-DATA-N.
+               05 CF-GG-N        PIC 99.  
+               05 CF-MM-N        PIC 99.
+               05 CF-AAAA-N.
+                  07 CF-AA1-N    PIC 99.
+                  07 CF-AA2-N    PIC 99.
+           03  CF-CODICE-FISCALE PIC X(16).
+           03  CF-PIVA           PIC X(11).
+           03  CF-RISULTATO      PIC 9 VALUE 0.
+           03  CF-NOME           PIC X(50).
+           03  CF-COGNOME        PIC X(50).
+           03  CF-PROV           PIC XX.
+           03  CF-LOC            PIC X(55).          

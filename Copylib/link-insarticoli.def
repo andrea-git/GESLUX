@@ -1,0 +1,13 @@
+      *
+       01 insarticoli-linkage.
+           03 link-insart-user PIC  x(20).
+           03 link-insart-abil PIC  9.
+           03 link-insart-peso PIC  9(5)v9(3).
+           03 link-insart-utf  PIC  9(5)v9(3).
+           03 link-insart-non-utf          PIC  9(5)v9(3).
+           03 link-insart-codice           PIC  9(6).
+           03 link-insart-imballo          PIC  x(3).
+           03 link-insart-mag  PIC  x(3).
+           03 link-insart-cod-doganale     PIC  9(8).
+           03 link-insart-status
+                      USAGE IS SIGNED-SHORT.

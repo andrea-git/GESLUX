@@ -1,0 +1,49 @@
+      *
+      *Record piano dei conti
+      *
+      *
+      *
+      * tplvar zmm_title=Tabella gruppi e conti
+      * tplvar zmm_ver=09.01.00
+      * tplvar zmm_class=anagraphic
+      * tplvar zmm_returnkey=tblpc-codice2
+      *
+      * ZoomFields seq:
+      *   01.tblpc-codeice2
+      *   02.tblpc-decrizione1
+      *   03.tblpc-decrizione2
+      *   04.tblpc-tipo-conto-d
+      *
+      *
+      *
+      
+      *$XFD  WHEN TBLPC-CODICE1="PC" TABLENAME=TBLPC
+       FD TBLPC.
+       01 RECORD-TBLPC.
+      *
+      *
+          05 TBLPC-CODICE.
+              10  TBLPC-CODICE1               PIC  X(02).
+      *$GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=20,zmm_align=L,zmm_pos=1,zmm_entity=tblpc
+              10  TBLPC-CODICE2               PIC  X(20).
+      *
+      *
+          05  RESTO-RECORD-TBLPC.
+      *$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=2
+              10  TBLPC-DESCRIZIONE1          PIC  X(30).
+      *$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=3
+              10  TBLPC-DESCRIZIONE2          PIC  X(30).
+      *$GEN type=combobox,comboclass=tblpc_tipo_conto
+              10  TBLPC-TIPO-CONTO            PIC  X(01).
+                  88  TBLPC-TIPO-CONTO-88     VALUE " " "P" "E".
+                  88  TBLPC-TIPO-CONTO-88-O   VALUE " ".
+                  88  TBLPC-TIPO-CONTO-88-P   VALUE "P".
+                  88  TBLPC-TIPO-CONTO-88-E   VALUE "E".
+      *$GEN type=code,entity=01tbo
+              10  TBLPC-CODICE-BILANCIO-OLTRE     PIC  X(20).                     |DS 01/02/2006 9.08|DS 09/01/2006 12.38
+      *        10  TBLPC-FILLER                    PIC  X(1257).
+              10  TBLPC-FILLER                    PIC  X(1237).                   |DS 01/02/2006 9.09
+              10  TBLPC-FILLER-RIS                PIC  X(40).
+      *
+      *
+      *

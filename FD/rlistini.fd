@@ -1,0 +1,51 @@
+       FD  rlistini.
+       01 rlis-rec.
+           05 rlis-chiave.
+               15 rlis-codice      PIC  9(15).
+               10 rlis-articolo    PIC  9(6).
+           05 rlis-dati.
+               10 rlis-art-forn    PIC  x(20).
+               10 rlis-chiave-ricerca.
+                   15 rlis-fornitore   PIC  9(5).
+                   15 rlis-destino     PIC  9(5).
+                   15 rlis-ini-val     PIC  9(8).
+                   15 rlis-fine-val    PIC  9(8).
+               10 rlis-prz-acq     PIC  9(9)v9(4).
+               10 rlis-des-libera  PIC  x(50).
+               10 rlis-sconto-1    PIC  9(3)v9(2).
+               10 rlis-sconto-2    PIC  9(3)v9(2).
+               10 rlis-sconto-3    PIC  9(3)v9(2).
+               10 rlis-sconto-4    PIC  9(3)v9(2).
+               10 rlis-sconto-5    PIC  9(3)v9(2).
+               10 rlis-costi-agg   PIC  9(9)v9(4).
+               10 rlis-disponibilita           PIC  9(9).
+               10 rlis-lead-time   PIC  9(3).
+               10 rlis-perce-pb    PIC  9(3)v9(4).
+               10 rlis-netto       PIC  9(8)v9(4).
+               10 rlis-tipo-tratt-imposte      PIC  9(5).
+               10 rlis-perce-agg   PIC  9(3)v9999.
+               10 FILLER           PIC  9(6)v9999.
+               10 FILLER           PIC  9(6)v9999.
+      *(( XFD NAME = OLD-rlis-costi-agg ))
+               10 rlis-costi-agg-tot           PIC  9(6)v9999.
+               10 rlis-scelta      PIC  9(6)v9999.
+               10 rlis-sconti-zero PIC  9(1).
+                   88 rlis-sconti-zero-si VALUE IS 1. 
+                   88 rlis-sconti-zero-no VALUE IS 0. 
+               10 rlis-dati-comuni.
+                   15 rlis-data-creazione          PIC  9(8).
+                   15 rlis-ora-creazione           PIC  9(8).
+                   15 rlis-utente-creazione        PIC  X(10).
+                   15 rlis-data-modifica           PIC  9(8).
+                   15 rlis-ora-modifica            PIC  9(8).
+                   15 rlis-utente-modifica         PIC  X(10).
+               10 rlis-vuoti.
+                   15 rlis-num-vuoto-1 PIC  9(18).
+                   15 rlis-num-vuoto-2 PIC  9(18).
+                   15 rlis-num-vuoto-3 PIC  9(18).
+                   15 rlis-PFA         PIC  x.
+                       88 rlis-PFA-si VALUE IS "S". 
+                       88 rlis-PFA-no VALUE IS "N". 
+                   15 rlis-alfa-vuoto-1            PIC  x(29).
+                   15 rlis-alfa-vuoto-2            PIC  x(30).
+                   15 rlis-alfa-vuoto-3            PIC  x(30).

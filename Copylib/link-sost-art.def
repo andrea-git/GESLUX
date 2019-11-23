@@ -1,0 +1,11 @@
+      *
+       01  sost-art-linkage.
+           05 sost-art-chiave.
+              10 sost-art-anno   pic 9(4).
+              10 sost-art-numero pic 9(8).
+           05 sost-art-ope pic x.
+              88 sost-art-salva  value "S".
+              88 sost-art-batch  value "B".
+           05 sost-art-user pic x(20).
+           05 sost-art-log  pic x(256).
+           05 filler        pic x(1000).

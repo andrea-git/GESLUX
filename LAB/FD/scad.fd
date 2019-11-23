@@ -1,0 +1,31 @@
+       FD  scad.
+       01 scad-rec.
+           05 scad-chiave.
+               10 scad-tipo-CF     PIC  x.
+                   88 scad-cliente VALUE IS "C". 
+                   88 scad-fornitore VALUE IS "F". 
+               10 scad-codice-clifor           PIC  x(8).
+               10 scad-data-documento          PIC  9(8).
+               10 scad-numero-riferimento.
+                   15 scad-numero-documento        PIC  9(6).
+                   15 scad-numerazione PIC  x(6).
+           05 scad-dati.
+               10 scad-descrizione PIC  x(40).
+               10 scad-agente      PIC  x(3).
+               10 scad-pagamento   PIC  x(3).
+               10 scad-tabellino-scadenze
+                          OCCURS 5 TIMES.
+                   15 scad-data-scadenza           PIC  9(8).
+                   15 scad-codice-tr   PIC  x.
+                   15 scad-a-vista     PIC  x.
+                       88 scad-si-a-vista VALUE IS "S"    WHEN SET TO 
+           FALSE  " ". 
+                   15 scad-segno       PIC  x.
+                       88 scad-dare VALUE IS "D". 
+                       88 scad-avere VALUE IS "A". 
+                   15 scad-importo     PIC  9(15)v99.
+                   15 scad-insoluti    PIC  9(2).
+                   15 scad-solleciti   PIC  9(2).
+                   15 scad-scadenza-insoluta       PIC  x.
+                       88 scad-si-insoluta VALUE IS "S"    WHEN SET TO 
+           FALSE  " ". 

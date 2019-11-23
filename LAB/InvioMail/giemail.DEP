@@ -1,0 +1,18 @@
+[Version]
+Version=1.1.0.0
+
+[giemail.ocx <0010>]
+Dest=$(WinSysPath)
+Date=06/06/2004
+Time=16.43
+Version=1.1.0.0
+CABFilename=giemail.CAB
+CABINFFile=giemail.INF
+Uses1=msvbvm60.dll
+Uses2=OLEAUT32.DLL
+Uses3=OLEPRO32.DLL
+Uses4=ASYCFILT.DLL
+Uses5=STDOLE2.TLB
+Uses6=COMCAT.DLL
+Uses7=VB6IT.DLL
+Uses8=MSWINSCK.OCX

@@ -1,0 +1,21 @@
+       FD  tesconsvet.
+       01 tev-rec.
+           05 tev-chiave.
+               10 tev-vet          PIC  9(5).
+               10 tev-codice       PIC  X(20).
+           05 tev-dati.
+               10 tev-esito        PIC  X(10).
+               10 tev-dati-comuni.
+                   15 tev-data-creazione           PIC  9(8).
+                   15 tev-ora-creazione            PIC  9(8).
+                   15 tev-utente-creazione         PIC  X(10).
+                   15 tev-data-ultima-modifica     PIC  9(8).
+                   15 tev-ora-ultima-modifica      PIC  9(8).
+                   15 tev-utente-ultima-modifica   PIC  X(10).
+               10 tev-vuoti.
+                   15 tev-num-vuoto-1  PIC  9(18).
+                   15 tev-num-vuoto-2  PIC  9(18).
+                   15 tev-num-vuoto-3  PIC  9(18).
+                   15 tev-alfa-vuoto-1 PIC  X(20).
+                   15 tev-alfa-vuoto-2 PIC  X(20).
+                   15 tev-alfa-vuoto-3 PIC  X(20).

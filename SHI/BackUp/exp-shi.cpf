@@ -1,0 +1,2661 @@
+; CaseMaker Totem Program Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[PROGRAM_CONTENT]
+QUIT_CONFIRM=0
+ANSI_FORMAT=1
+MAIN_SCREEN_NAME=Form1
+BEFORE_PROGRAM=exp-shi-Ev-Before-Program
+AFTER_PROGRAM=exp-shi-Ev-After-Program
+PROGRAM_UNIQUE_CODE=TOTEM-7DBA13161021-153-687618034
+
+{{@DESCRIPTION:
+
+@}}
+
+[WORKING_STORAGE]
+m_nType=1
+m_strName=Working Storage
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionWK
+
+@}}
+[FDITEM0_WK]
+m_strName=titolo
+m_strDefaultValue="Geslux - Esportazione dati SHI"
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_WK
+
+@}}
+[FDITEM1_WK]
+m_strName=form1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1_WK
+
+@}}
+[FDITEM2_WK]
+m_strName=AUTO-ID
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_strDefaultValue=5013
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM2_WK
+
+@}}
+[FDITEM3_WK]
+m_strName=Form1-Tb-1-Handlea
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM3_WK
+
+@}}
+[FDITEM4_WK]
+m_strName=Verdana12-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM4_WK
+
+@}}
+[FDITEM5_WK]
+m_strName=Verdana12B-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM5_WK
+
+@}}
+[FDITEM6_WK]
+m_strName=toolbar-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM6_WK
+
+@}}
+[FDITEM7_WK]
+m_strName=E-ESCI
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM7_WK
+
+@}}
+[FDITEM8_WK]
+m_strName=STATUS-paramshi
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM8_WK
+
+@}}
+[FDITEM9_WK]
+m_strName=Valid-STATUS-paramshi
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM9_WK
+
+@}}
+[FDITEM10_WK]
+m_strName=wstampa
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM10_WK
+
+@}}
+[FDITEM11_WK]
+m_strName=STATUS-lineseq
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM11_WK
+
+@}}
+[FDITEM12_WK]
+m_strName=Valid-STATUS-lineseq
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM12_WK
+
+@}}
+[FDITEM13_WK]
+m_strName=form3-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM13_WK
+
+@}}
+[FDITEM14_WK]
+m_strName=Verdana12BI-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM14_WK
+
+@}}
+[FDITEM15_WK]
+m_strName=formFTP-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM15_WK
+
+@}}
+[FDITEM16_WK]
+m_strName=Small-Font
+m_nUsage=37
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM16_WK
+
+@}}
+[FDITEM17_WK]
+m_strName=invio-ftp
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM17_WK
+
+@}}
+[FDITEM18_WK]
+m_strName=si-invio-ftp
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM18_WK
+
+@}}
+[FDITEM19_WK]
+m_strName=anno-to
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM19_WK
+
+@}}
+[FDITEM20_WK]
+m_strName=num-from
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM20_WK
+
+@}}
+[FDITEM21_WK]
+m_strName=num-to
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM21_WK
+
+@}}
+[FDITEM22_WK]
+m_strName=BOTTONE-OK-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM22_WK
+
+@}}
+[FDITEM23_WK]
+m_strName=BOTTONE-CANCEL-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM23_WK
+
+@}}
+[FDITEM24_WK]
+m_strName=BLUE-FINO-28X24-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM24_WK
+
+@}}
+[FDITEM25_WK]
+m_strName=Default-Font
+m_nUsage=38
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM25_WK
+
+@}}
+[FDITEM26_WK]
+m_strName=BLUE-DA-28X24-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM26_WK
+
+@}}
+[FDITEM27_WK]
+m_strName=screen2-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM27_WK
+
+@}}
+[FDITEM28_WK]
+m_strName=como-messaggio
+m_strRawPic=x(200)
+m_strPic=x(200)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM28_WK
+
+@}}
+[FDITEM29_WK]
+m_strName=splcrt2graf-link
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM29_WK
+
+@}}
+[FDITEM30_WK]
+m_strName=splcrt2graf-operazione
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM30_WK
+
+@}}
+[FDITEM31_WK]
+m_strName=splcrt2graf-anteprima
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="a"
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM31_WK
+
+@}}
+[FDITEM32_WK]
+m_strName=splcrt2graf-stampa
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="s"
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM32_WK
+
+@}}
+[FDITEM33_WK]
+m_strName=splcrt2graf-so
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM33_WK
+
+@}}
+[FDITEM34_WK]
+m_strName=splcrt2graf-windows
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="w" " "
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM34_WK
+
+@}}
+[FDITEM35_WK]
+m_strName=splcrt2graf-unix
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="u"
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM35_WK
+
+@}}
+[FDITEM36_WK]
+m_strName=splcrt2graf-percorso-stampa
+m_strRawPic=x(256)
+m_strPic=X(256)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM36_WK
+
+@}}
+[FDITEM37_WK]
+m_strName=splcrt2graf-percorso-stampa-u
+m_strRawPic=x(256)
+m_strPic=X(256)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM37_WK
+
+@}}
+[FDITEM38_WK]
+m_strName=splcrt2graf-orientamento
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM38_WK
+
+@}}
+[FDITEM39_WK]
+m_strName=splcrt2graf-orizzontale
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="o"
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM39_WK
+
+@}}
+[FDITEM40_WK]
+m_strName=splcrt2graf-verticale
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="v" " "
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM40_WK
+
+@}}
+[FDITEM41_WK]
+m_strName=filler
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM41_WK
+
+@}}
+[FDITEM42_WK]
+m_strName=splcrt2graf-forza-crt
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1,
+m_strFalse=0
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM42_WK
+
+@}}
+[FDITEM43_WK]
+m_strName=splcrt2graf-dim-crt
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM43_WK
+
+@}}
+[FDITEM44_WK]
+m_strName=splcrt2graf-6pt
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=6
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM44_WK
+
+@}}
+[FDITEM45_WK]
+m_strName=splcrt2graf-7pt
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=7
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM45_WK
+
+@}}
+[FDITEM46_WK]
+m_strName=splcrt2graf-8pt
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=8
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM46_WK
+
+@}}
+[FDITEM47_WK]
+m_strName=splcrt2graf-10pt
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=10
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM47_WK
+
+@}}
+[FDITEM48_WK]
+m_strName=splcrt2graf-12pt
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=12
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM48_WK
+
+@}}
+[FDITEM49_WK]
+m_strName=splcrt2graf-grassetto
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM49_WK
+
+@}}
+[FDITEM50_WK]
+m_strName=splcrt2graf-si-grasssetto
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+m_strFalse=space
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM50_WK
+
+@}}
+[FDITEM51_WK]
+m_strName=exp-linkage
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-exp.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-EXP.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM51_WK
+
+@}}
+[FDITEM52_WK]
+m_strName=exp-path-log
+m_strRawPic=x(256)
+m_strPic=X(256)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-exp.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-EXP.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM52_WK
+
+@}}
+[FDITEM53_WK]
+m_strName=exp-status
+m_nUsage=17
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-exp.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-EXP.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM53_WK
+
+@}}
+[FDITEM54_WK]
+m_strName=exp-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=zero
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-exp.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-EXP.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM54_WK
+
+@}}
+[FDITEM55_WK]
+m_strName=exp-err-bloccante
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=-1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-exp.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-EXP.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM55_WK
+
+@}}
+[FDITEM56_WK]
+m_strName=exp-err
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=-2
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-exp.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-EXP.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM56_WK
+
+@}}
+[FDITEM57_WK]
+m_strName=expordini-linkage
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-expordini.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-EXPORDINI.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM57_WK
+
+@}}
+[FDITEM58_WK]
+m_strName=exp-ord-path
+m_strRawPic=x(256)
+m_strPic=X(256)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-expordini.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-EXPORDINI.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM58_WK
+
+@}}
+[FDITEM59_WK]
+m_strName=esegui-ftp-linkage
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-esegui-ftp.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-ESEGUI-FTP.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM59_WK
+
+@}}
+[FDITEM60_WK]
+m_strName=ftp-operazione
+m_strRawPic=xx
+m_strPic=XX
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-esegui-ftp.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-ESEGUI-FTP.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM60_WK
+
+@}}
+[FDITEM61_WK]
+m_strName=ftp-export-art
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="EA"
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-esegui-ftp.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-ESEGUI-FTP.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM61_WK
+
+@}}
+[FDITEM62_WK]
+m_strName=ftp-export-ord
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="EO"
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-esegui-ftp.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-ESEGUI-FTP.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM62_WK
+
+@}}
+[FDITEM63_WK]
+m_strName=ftp-export-ana
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="Ea"
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-esegui-ftp.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-ESEGUI-FTP.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM63_WK
+
+@}}
+[FDITEM64_WK]
+m_strName=ftp-importart
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="IA"
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-esegui-ftp.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-ESEGUI-FTP.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM64_WK
+
+@}}
+[FDITEM65_WK]
+m_strName=ftp-import
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="IO"
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-esegui-ftp.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-ESEGUI-FTP.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM65_WK
+
+@}}
+[FDITEM66_WK]
+m_strName=ftp-importcar
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="IC"
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-esegui-ftp.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-ESEGUI-FTP.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM66_WK
+
+@}}
+[FDITEM67_WK]
+m_strName=ftp-metti-sem-exp
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="ME"
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-esegui-ftp.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-ESEGUI-FTP.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM67_WK
+
+@}}
+[FDITEM68_WK]
+m_strName=ftp-togli-sem-exp
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="TE"
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-esegui-ftp.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-ESEGUI-FTP.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM68_WK
+
+@}}
+[FDITEM69_WK]
+m_strName=ftp-contr-sem-exp
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="CE"
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-esegui-ftp.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-ESEGUI-FTP.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM69_WK
+
+@}}
+[FDITEM70_WK]
+m_strName=ftp-metti-sem-imp
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="MI"
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-esegui-ftp.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-ESEGUI-FTP.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM70_WK
+
+@}}
+[FDITEM71_WK]
+m_strName=ftp-togli-sem-imp
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="TI"
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-esegui-ftp.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-ESEGUI-FTP.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM71_WK
+
+@}}
+[FDITEM72_WK]
+m_strName=ftp-contr-sem-imp
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="CI"
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-esegui-ftp.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-ESEGUI-FTP.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM72_WK
+
+@}}
+[FDITEM73_WK]
+m_strName=ftp-metti-sem-impcar
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="MC"
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-esegui-ftp.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-ESEGUI-FTP.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM73_WK
+
+@}}
+[FDITEM74_WK]
+m_strName=ftp-togli-sem-impcar
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="TC"
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-esegui-ftp.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-ESEGUI-FTP.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM74_WK
+
+@}}
+[FDITEM75_WK]
+m_strName=ftp-contr-sem-impcar
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="CC"
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-esegui-ftp.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-ESEGUI-FTP.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM75_WK
+
+@}}
+[FDITEM76_WK]
+m_strName=ftp-risultato
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-esegui-ftp.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-ESEGUI-FTP.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM76_WK
+
+@}}
+[FDITEM77_WK]
+m_strName=ftp-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="O"
+m_strFalse="K"
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-esegui-ftp.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-ESEGUI-FTP.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM77_WK
+
+@}}
+[FDITEM78_WK]
+m_strName=ftp-risultato2
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-esegui-ftp.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-ESEGUI-FTP.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM78_WK
+
+@}}
+[FDITEM79_WK]
+m_strName=ftp-si-sem
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-esegui-ftp.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-ESEGUI-FTP.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM79_WK
+
+@}}
+[FDITEM80_WK]
+m_strName=ftp-no-sem
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="N"
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=link-esegui-ftp.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\LINK-ESEGUI-FTP.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM80_WK
+
+@}}
+[FDITEM81_WK]
+m_strName=barra
+m_strDefaultValue="\"
+m_nItemLevel=78
+m_bValue=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=exp-shi-ws.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM81_WK
+
+@}}
+[FDITEM82_WK]
+m_strName=pattern
+m_strRawPic=X(50)
+m_strPic=X(50)
+m_strDefaultValue=SPACES
+m_nItemLevel=77
+m_bValue=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=exp-shi-ws.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM82_WK
+
+@}}
+[FDITEM83_WK]
+m_strName=dir-Handle
+m_nUsage=23
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=exp-shi-ws.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM83_WK
+
+
+@}}
+[FDITEM84_WK]
+m_strName=MSG-Folder-Name
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_strDefaultValue=SPACES
+m_nItemLevel=77
+m_bValue=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=exp-shi-ws.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM84_WK
+
+@}}
+[FDITEM85_WK]
+m_strName=origine
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_strDefaultValue=SPACES
+m_nItemLevel=77
+m_bValue=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=exp-shi-ws.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM85_WK
+
+@}}
+[FDITEM86_WK]
+m_strName=destinazione
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_strDefaultValue=SPACES
+m_nItemLevel=77
+m_bValue=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=exp-shi-ws.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM86_WK
+
+@}}
+[FDITEM87_WK]
+m_strName=RENAME-STATUS
+m_strRawPic=9(9)
+m_strPic=9(9)
+m_nUsage=5
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=exp-shi-ws.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM87_WK
+
+@}}
+[FDITEM88_WK]
+m_strName=como-nome
+m_strRawPic=x(50)
+m_strPic=X(50)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=exp-shi-ws.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM88_WK
+
+@}}
+[FDITEM89_WK]
+m_strName=como-nome-2
+m_strRawPic=x(50)
+m_strPic=X(50)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=exp-shi-ws.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM89_WK
+
+@}}
+[FDITEM90_WK]
+m_strName=como-estensione
+m_strRawPic=x(3)
+m_strPic=X(3)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=exp-shi-ws.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM90_WK
+
+@}}
+[FDITEM91_WK]
+m_strName=cont
+m_strRawPic=9(3)
+m_strPic=9(3)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=exp-shi-ws.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM91_WK
+
+@}}
+[FDITEM92_WK]
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=exp-shi-ws.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM92_WK
+
+@}}
+[FDITEM93_WK]
+m_strName=crea-ordini
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=exp-shi-ws.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM93_WK
+
+@}}
+[FDITEM94_WK]
+m_strName=crea-articoli
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=2
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=exp-shi-ws.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM94_WK
+
+@}}
+[FDITEM95_WK]
+m_strName=crea-anagrafiche
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=3
+m_strCopyEntry=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_strCopyFile=exp-shi-ws.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\SHI\COPYLIB\EXP-SHI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM95_WK
+
+@}}
+
+
+[LINKAGE_SECTION]
+m_nType=1
+m_strName=Linkage Section
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionLK
+
+@}}
+[FDITEM0_LK]
+m_strName=LK-BLOCKPGM
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM0_LK
+
+@}}
+[FDITEM1_LK]
+m_strName=LK-BL-PROG-ID
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM1_LK
+
+@}}
+[FDITEM2_LK]
+m_strName=LK-BL-DATA
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM2_LK
+
+@}}
+[FDITEM3_LK]
+m_strName=LK-BL-ORA
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM3_LK
+
+@}}
+[FDITEM4_LK]
+m_strName=LK-BL-TIPO-OP
+m_strRawPic=9(1)
+m_strPic=9(1)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM4_LK
+
+@}}
+[FDITEM5_LK]
+m_strName=LK-BL-LETTURA
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM5_LK
+
+@}}
+[FDITEM6_LK]
+m_strName=LK-BL-SCRITTURA
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=2
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM6_LK
+
+@}}
+[FDITEM7_LK]
+m_strName=LK-BL-CANCELLAZIONE
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=3
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM7_LK
+
+@}}
+[FDITEM8_LK]
+m_strName=LK-BL-USO
+m_strRawPic=9(1)
+m_strPic=9(1)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM8_LK
+
+@}}
+[FDITEM9_LK]
+m_strName=LK-BL-IN-USO
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM9_LK
+
+@}}
+[FDITEM10_LK]
+m_strName=LK-HND-WIN
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM10_LK
+
+@}}
+[FDITEM11_LK]
+m_strName=USER-CODI
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=common-linkage.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM11_LK
+
+@}}
+[FDITEM12_LK]
+m_strName=LIVELLO-ABIL
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=common-linkage.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM12_LK
+
+@}}
+
+
+{{@SCREEN:
+*   Screen Painter Data
+*   Schema 6.0
+*
+BEGIN-SPDATA-6.1A
+
+GRAPHICAL-SCREEN
+
+Begin Screen Form1
+   PREFIX            = Screen4
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = Form1
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 18
+   Cell Width        = 10
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = FALSE
+   Font              = Verdana/12/C0/@Occidentale
+   Font Variable     = Verdana12-Occidentale
+   Handle Variable   = form1-Handle
+   Height in Cells   = TRUE
+   Help ID           = 0
+   Label Offset      = 23
+   Lines             = 16,00
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = FALSE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 24,00
+   System Menu       = TRUE
+   Title Bar         = TRUE
+   Title Variable    = TITOLO
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = TRUE
+   Window Type       = Independent
+   Wrap              = FALSE
+   Event Procedure   = Screen4-Event-Proc
+   Begin Push-Button Screen4-Pb-1
+      SCREEN-COL        = 3,00
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen4-Pb-1
+      Bitmap Frame      = FALSE
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 3,00
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 1001
+      Flat              = FALSE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 2
+      Line              = 2,00
+      Lines             = 3,00
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 20,00
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 1
+      Termination Value = 0
+      Title             = "ORDINI"
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Link To           = Screen4-Pb-1-LinkTo
+   End
+   Begin Push-Button Screen4-Pb-1aa
+      SCREEN-COL        = 3,00
+      SCREEN-LINE       = 6,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen4-Pb-1aa
+      Bitmap Frame      = FALSE
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 3,00
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 1000
+      Flat              = FALSE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 3
+      Line              = 6,00
+      Lines             = 3,00
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 20,00
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 2
+      Termination Value = 0
+      Title             = "ARTICOLI"
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Link To           = Screen4-Pb-1aa-LinkTo
+   End
+   Begin CsCtrl.blockpgm Label Screen4-blockpgm-1
+      CUST-SYMBOL       = blockpgm
+      CUST-MODIFYFLAG   = 000000000000000000000000000000000000000000000000000
+      SCREEN-COL        = 2,80
+      SCREEN-LINE       = 1,00
+      LOCK-CONTROL      = FALSE
+      LEVEL             = 5
+      (Name)            = Screen4-blockpgm-1
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,80
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 1
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 1,00
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 9,00
+      Size Unit         = Default
+      Tab Order         = 3
+      Title             = "BlockPgm"
+      Transparent       = TRUE
+      Visible           = NONE
+      Visible Variable  = v-custom
+      Width in Cells    = TRUE
+   End
+   Begin CsCtrl.Custom1 Label Screen4-Custom1-1
+      CUST-SYMBOL       = Custom1
+      CUST-MODIFYFLAG   = 000000000000110000000000000000000000000000000000000
+      SCREEN-COL        = 13,50
+      SCREEN-LINE       = 1,11
+      LOCK-CONTROL      = FALSE
+      LEVEL             = 5
+      (Name)            = Screen4-Custom1-1
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 13,50
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 4
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 1,11
+      Lines             = 1,44
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 9,60
+      Size Unit         = Default
+      Tab Order         = 4
+      Title             = "CUSTOM CONTROL"
+      Transparent       = TRUE
+      Visible           = NONE
+      Visible Variable  = v-custom
+      Width in Cells    = FALSE
+   End
+   Begin Push-Button Screen4-Pb-1aaa
+      SCREEN-COL        = 3,00
+      SCREEN-LINE       = 10,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen4-Pb-1aaa
+      Bitmap Frame      = FALSE
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 3,00
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 1002
+      Flat              = FALSE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 5
+      Line              = 10,00
+      Lines             = 3,00
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 20,00
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 5
+      Termination Value = 0
+      Title             = "ANAGRAFICHE"
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Link To           = Screen4-Pb-1aaa-LinkTo
+   End
+   Begin Check-Box Screen4-Cb-1
+      SCREEN-COL        = 7,70
+      SCREEN-LINE       = 15,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen4-Cb-1
+      Bitmap Frame      = FALSE
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 7,70
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 0
+      Flat              = TRUE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 6
+      Left Text         = FALSE
+      Line              = 15,00
+      Lines             = 1,50
+      Lines Unit        = Default
+      No Tab            = FALSE
+      Notify            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 2,00
+      Size Unit         = Default
+      Tab Order         = 6
+      Termination Value = 0
+      Title             = "Check Box"
+      Value             = 1:TRUE
+      Value Variable    = invio-ftp
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = Screen4-Cb-1-BeforeProcedure
+      After Procedure   = Screen4-Cb-1-AfterProcedure
+   End
+   Begin Bar Form1-Br-2aaaaca
+      SCREEN-COL        = 1,00
+      SCREEN-LINE       = 14,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-Br-2aaaaca
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 185
+      Kind              = Horizontal
+      Line              = 14,00
+      Line Styles       = Solid
+      Occurs            = 0
+      Position Shift    = 0
+      COLORS            = ( 8, 8 )
+      SHADING           = ( -1, 1 )
+      Size (Lines)      = 24,00
+      Size (Lines) in Pixels = 240
+      Size (Lines) Unit = Default
+      Tab Order         = 7
+      Visible           = NONE
+      Width             = 2
+      Width in Cells    = TRUE
+   End
+   Begin Label Screen4-La-1
+      SCREEN-COL        = 10,40
+      SCREEN-LINE       = 15,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen4-La-1
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 10,40
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 186
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 15,00
+      Lines             = 1,50
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 7,80
+      Size Unit         = Default
+      Tab Order         = 8
+      Title             = "Invio FTP"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+End
+
+Begin Screen form3
+   PREFIX            = form3
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = form3
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 13
+   Cell Width        = 7
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = FALSE
+   Font              = Default Font
+   Handle Variable   = form3-Handle
+   Height in Cells   = TRUE
+   Help ID           = 0
+   Label Offset      = 20
+   Lines             = 3,00
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = TRUE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 53,14
+   System Menu       = FALSE
+   Title Bar         = FALSE
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = TRUE
+   Window Type       = Floating
+   Wrap              = FALSE
+   Event Procedure   = form3-Event-Proc
+   Begin Label form3-La-1
+      SCREEN-COL        = 1,57
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = form3-La-1
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,57
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/12/B/I/C0/@Occidentale
+      Font Variable     = Verdana12BI-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 2
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 2,00
+      Lines             = 2,00
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 51,86
+      Size Unit         = Default
+      Tab Order         = 1
+      Title             = "Creazione Flussi in corso..."
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+End
+
+Begin Screen formFTP
+   PREFIX            = form3a
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = formFTP
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 13
+   Cell Width        = 7
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = FALSE
+   Font              = Default Font
+   Handle Variable   = formFTP-Handle
+   Height in Cells   = TRUE
+   Help ID           = 0
+   Label Offset      = 20
+   Lines             = 3,00
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = TRUE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 53,14
+   System Menu       = FALSE
+   Title Bar         = FALSE
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = TRUE
+   Window Type       = Floating
+   Wrap              = FALSE
+   Event Procedure   = form3-Event-Proc
+   Begin Label form3-La-1a
+      SCREEN-COL        = 1,57
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = form3-La-1a
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,57
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/12/B/I/C0/@Occidentale
+      Font Variable     = Verdana12BI-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 2
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 2,00
+      Lines             = 2,00
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 51,86
+      Size Unit         = Default
+      Tab Order         = 1
+      Title             = "Invio FTP in corso..."
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+End
+
+END-SPDATA
+
+@}}
+
+{{@REPORT:
+*   Report Writer Data
+*   Schema 6.0
+*
+BEGIN-RWDATA-6.0A
+
+END-RWDATA
+
+@}}
+
+{{@EMBEDDING_CODE:
+BEGIN-DATA
+   BASETYPE          = 6
+   NODESTYLE         = 7
+   PARAGRAPH         = DeletedCode
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 0
+   PARENT            = exp-shi
+   ACTOBJ            = exp-shi
+   ENTRYPOINT        = BeforeDeclarative
+BEGIN-TEXT
+       PARAMSHI-ERR SECTION.
+           use after error procedure on PARAMSHI.
+           set RecLocked to false.
+           set tutto-ok  to true.
+           evaluate status-PARAMSHI 
+           when "39"
+                set errori to true
+                display message "File [PARAMSHI] mismatch size!"
+                          title titolo
+                           icon 3
+           when "98"
+                set errori to true
+                display message "[PARAMSHI] Indexed file corrupt!"
+                          title titolo
+                           icon 3
+           when "35"
+                display message box        "Impossibile procedere."
+                  x"0d0a""File delle testate [PARAMSHI] inesistente"
+                        title = titolo
+                        icon 2
+                set errori to true
+           when "93"
+           when "99" set RecLocked to true
+           end-evaluate.  
+
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = form3
+   ACTOBJ            = form3
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+           perform CREA-LOG
+
+           set   tutto-ok to true
+           perform CHECK-CARTELLE
+
+           if tutto-ok
+              move wstampa   to exp-path-log
+              set tutto-ok   to true
+              evaluate true
+              when crea-ordini
+                   perform EXP-ORDINI
+              when crea-articoli
+                   perform EXP-ARTICOLI
+              when crea-anagrafiche
+                   perform EXP-VETTORI
+                   perform EXP-CLASSI
+                   perform EXP-FORNITORI
+              end-evaluate
+           end-if
+           perform FORM3-EXIT.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+           move space  to shi-codice
+           read paramSHI
+              invalid
+                 continue
+           end-read.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = formFTP
+   ACTOBJ            = formFTP
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+           set ftp-contr-sem-exp to true
+           call "esegui-ftp" using esegui-ftp-linkage
+           cancel "esegui-ftp" 
+
+           if ftp-si-sem
+              set errori  to true
+              move     "Impossibile Esportare su FTP. File semaforo già 
+      -                "presente" to como-messaggio
+              perform SCRIVI-MESSAGGIO
+           else
+              perform SCRIVI-FTP
+           end-if.
+
+
+
+
+           perform formFTP-Exit
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = formFTP
+   ACTOBJ            = formFTP
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterDisplay
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen4-blockpgm-1, Disable **>>
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterDisplay
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen4-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = form3
+   ACTOBJ            = form3
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterDisplay
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen4-blockpgm-1, Disable **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = PARAGRAFO-COPY
+BEGIN-TEXT
+           copy "calcola-colore-trasparente.cpy".
+           copy "color-custom.cpy".
+           copy "exp-shi-procedure.cpy".
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = MSG-DIR-ERR
+BEGIN-TEXT
+           inspect MSG-Folder-Name, 
+                   replacing trailing SPACES by LOW-VALUES.
+
+           initialize como-messaggio
+           string "IMPOSSIBILE APRIRE DIRECTORY: "  delimited size,
+                   MSG-Folder-Name                  delimited LOW-VALUE,
+              into como-messaggio.
+           perform SCRIVI-MESSAGGIO
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = GUARDA-FILE
+BEGIN-TEXT
+           set splcrt2graf-anteprima  to true
+
+           set splcrt2graf-unix       to true
+           set splcrt2graf-verticale  to true
+           set splcrt2graf-forza-crt  to true
+           set splcrt2graf-10pt    to true
+           set splcrt2graf-si-grasssetto to false
+
+           call "splcrt2graf" using splcrt2graf-link
+           cancel "splcrt2graf".
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = ESPORTA
+BEGIN-TEXT
+           call "W$MOUSE" using set-mouse-shape, wait-pointer
+
+           perform Form3-Open-Routine
+           call "W$MOUSE" using set-mouse-shape, arrow-pointer
+
+
+           if errori 
+              initialize como-messaggio
+              move "Creazione file terminata con errori."  
+                                         to como-messaggio
+              perform SCRIVI-MESSAGGIO
+              if si-invio-ftp
+                 move "I dati non verranno eportati via FTP"
+                                         to como-messaggio
+                 perform SCRIVI-MESSAGGIO
+              end-if
+           else
+              if si-invio-ftp
+                 perform FTP
+              end-if
+           end-if.
+
+           if tutto-ok
+              if crea-ordini
+                 perform AGGIORNA-ORDINI
+              end-if
+
+              perform COPIA-FILES
+           end-if
+
+           perform GUARDA-FILE.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = EXP-ARTICOLI
+BEGIN-TEXT
+           if shi-file-articoli = space or 
+              shi-file-ean      = space or
+              shi-file-prodener = space
+              move    "Esportazione Articoli impossibile! Nome file non 
+      -              "valorizzato"  to como-messaggio
+              perform SCRIVI-MESSAGGIO
+           else
+              call   "exparticoli" using exp-linkage
+              cancel "exparticoli" 
+              if exp-err-bloccante
+                 set errori  to true
+              end-if
+           end-if.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = EXP-VETTORI
+BEGIN-TEXT
+           if shi-file-vettori = space 
+              move     "Esportazione Vettori impossibile! Nome file non 
+      -              "valorizzato"  to como-messaggio
+              perform SCRIVI-MESSAGGIO
+           else
+              call "expvettori" using exp-linkage
+              cancel "expvettori" 
+              if exp-err-bloccante
+                 set errori  to true
+              end-if
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = EXP-CLASSI
+BEGIN-TEXT
+           if shi-file-classi = space 
+              move "Esportazione Classi Articoli impossibile! Nome file
+      -             "non valorizzato"  to como-messaggio
+              perform SCRIVI-MESSAGGIO
+           else
+              call "expclassi" using exp-linkage
+              cancel "expclassi" 
+              if exp-err-bloccante
+                 set errori  to true
+              end-if
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = EXP-FORNITORI
+BEGIN-TEXT
+           if shi-file-fornitori = space 
+              move   "Esportazione Fornitori impossibile! Nome file non 
+      -              "valorizzato"  to como-messaggio
+              perform SCRIVI-MESSAGGIO
+           else
+              call "expfornitori" using exp-linkage
+              cancel "expfornitori" 
+              if exp-err-bloccante
+                 set errori  to true
+              end-if
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = EXP-ORDINI
+BEGIN-TEXT
+           if shi-file-tordini     = space or 
+              shi-file-rordini     = space or
+              shi-file-note-ordini = space or
+              shi-file-articoli    = space or 
+              shi-file-ean         = space or
+              shi-file-prodener    = space
+              move  "Esportazione Ordini Clienti impossibile! Nome file 
+      -              "non valorizzato"  to como-messaggio
+              perform SCRIVI-MESSAGGIO
+           else
+              call "expordini" using exp-linkage,
+                                     expordini-linkage
+              cancel "expordini" 
+              if exp-err-bloccante
+                 set errori  to true
+              end-if
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = FTP
+BEGIN-TEXT
+           call "W$MOUSE" using set-mouse-shape, wait-pointer
+           perform formFTP-Open-Routine
+           call "W$MOUSE" using set-mouse-shape, arrow-pointer
+
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = SCRIVI-FTP
+BEGIN-TEXT
+           evaluate true
+           when crea-ordini
+                set ftp-export-ord to true
+           when crea-articoli
+                set ftp-export-art to true
+           when crea-anagrafiche
+                set ftp-export-ana to true
+           end-evaluate
+           
+           call "esegui-ftp" using esegui-ftp-linkage
+           cancel "esegui-ftp" 
+
+           if ftp-ok
+              set ftp-metti-sem-exp   to true 
+              call "esegui-ftp" using esegui-ftp-linkage
+              cancel "esegui-ftp" 
+           else
+              set errori to true
+              initialize como-messaggio
+              move "Trasmissine FTP fallita. Consultare il file LOG_FTP
+      -            "per maggiori dettagli" to como-messaggio
+              perform SCRIVI-MESSAGGIO
+           end-if.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = SCRIVI-MESSAGGIO
+BEGIN-TEXT
+           open extend lineseq
+           write line-riga from como-messaggio after 2
+           close lineseq.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = AGGIORNA-ORDINI
+BEGIN-TEXT
+           call "agg-ord-exp" using exp-linkage,
+                                  expordini-linkage
+           cancel "agg-ord-exp" 
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Screen4-Pb-1-LinkTo
+BEGIN-TEXT
+              set crea-ordini   to true
+              perform ESPORTA
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = exp-shi-Ev-Before-Program
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen4-blockpgm-1 **>>
+           perform CALCOLA-COLORE-TRASPARENTE.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = exp-shi-Ev-After-Program
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen4-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Screen4-Cb-1-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen4-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Screen4-Cb-1-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen4-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Screen4-Pb-1aa-LinkTo
+BEGIN-TEXT
+           set crea-articoli to true
+           perform ESPORTA.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Screen4-Pb-1aaa-LinkTo
+BEGIN-TEXT
+           set crea-anagrafiche to true
+           perform ESPORTA.
+END-TEXT
+END-DATA
+
+@}}
+
+[KEY_STATUS_FIELD_FORMAT]
+PIC=9(5)
+USAGE=[None]
+
+[KEYSTATUS_CONTENT:KS1]
+CONDITION=Enter-Pushed
+VALUE=13
+
+[KEYSTATUS_CONTENT:KS2]
+CONDITION=Exit-Pushed
+VALUE=27
+
+[KEYSTATUS_CONTENT:KS3]
+CONDITION=Message-Received
+VALUE=95
+
+[KEYSTATUS_CONTENT:KS4]
+CONDITION=Event-Occurred
+VALUE=96
+
+[KEYSTATUS_CONTENT:KS5]
+CONDITION=Screen-No-Input-Field
+VALUE=97
+
+[KEYSTATUS_CONTENT:KS6]
+CONDITION=Screen-Time-Out
+VALUE=99
+
+[COBOLAID_DATASET_INFO]
+COUNT=1
+NAME_0=DataSet1
+
+[DRAW_DOCUMENT_INDEX]
+OBJ_NAME_0=8001
+OBJ_ID_0=1865930328
+
+[MULTIPLE_KEY_0]
+COUNT=1
+KEY_0=shi-chiave OF PARAMSHI
+
+[DRAW_DOCUMENT_8001_1865930328]
+OBJ_NAME=8001
+OBJ_ID=1865930328
+TYPE=2
+VERSION=
+DOC_SIZE_X=5100
+DOC_SIZE_Y=5160
+PAGE_LEFT=150
+PAGE_TOP=150
+PAGE_RIGHT=1850
+PAGE_BOTTOM=2730
+MARGIN_LEFT=150
+MARGIN_TOP=150
+MARGIN_RIGHT=150
+MARGIN_BOTTOM=150
+PROP_DOCU_TYPE=ø
+PROP_DOCU_TYPE2=ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+PROP_DOCU_NAME=DataSet - DataSet1[exp-shi(SHI)]
+PROP_DOCU_OWNER=Person A
+PROP_DOCU_CDATE=10/16/06
+PROP_DOCU_MODIFIER=Person B
+PROP_DOCU_MDATE=10/16/06
+PROP_DOCU_DESCR=Caseaid DocuCaseaid Document
+PROP_DOCU_HEADER=Caseaid Document
+PROP_DOCU_FOOTER=Page # 
+PROP_DOCU_DIM_H=2
+PROP_DOCU_DIM_W=3
+PROP_DOCU_LOC_H=1
+PROP_DOCU_LOC_W=1
+PROP_DOCU_EDGE_T=150
+PROP_DOCU_EDGE_B=150
+PROP_DOCU_EDGE_L=150
+PROP_DOCU_EDGE_R=150
+PROP_DOCU_ZOOM=75
+PROP_DOCU_SIZE_TYPE=0
+PROP_DOCU_SIZE_PAPER=1
+PROP_DOCU_SIZE_H=2580
+PROP_DOCU_SIZE_W=1700
+PROP_DOCU_RULER_EBL=0
+PROP_DOCU_GRID_EBL=0
+PROP_DOCU_GRID=20
+PROP_DOCU_ALIGN=0
+REL_SYM_SIZE=16
+REL_SYM_INFO_L=2
+REL_SYM_INFO_X0=2301
+REL_SYM_INFO_Y0=650353337
+REL_SYM_INFO_X1=2301
+REL_SYM_INFO_Y1=2067638006
+
+[DRAW_BASESYMBOL_2301_650353337]
+OBJ_NAME=2301
+OBJ_ID=650353337
+KIND=1
+{{@LABEL_2301_650353337
+paramSHI
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=217
+TOP=106
+RIGHT=617
+BOTTOM=328
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_2067638006]
+OBJ_NAME=2301
+OBJ_ID=2067638006
+KIND=1
+{{@LABEL_2301_2067638006
+lineseq
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=616
+TOP=566
+RIGHT=1016
+BOTTOM=788
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DMD_DOCUMENT_0_1865930328]
+OBJ_NAME=0
+OBJ_ID=1865930328
+FILE_TITLE_TYPE=8136
+FILE_SHOW_ITEM=0
+FILE_SHOW_KEY=0
+FILE_SHOW_PIC=0
+FILE_SHOW_HEAD=0
+FILE_SHOW_LEVEL=0
+FILE_SHOW_TREE=0
+FILE_SHOW_CLPS=0
+FILE_SHOW_BMP=0
+FILE_SHOW_LINE=0
+FILE_SHOW_MINIZE=0
+
+[DMD_FILE_0_650353337]
+OBJ_NAME=0
+OBJ_ID=650353337
+REL_M_OBJ_ID=0
+ENTITY=paramSHI
+LINK=0
+LINK_NAME=
+DSN_SIZE=54
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=shi-chiave OF PARAMSHI
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_650353337
+
+@}}
+DSN_INFO_PRIMARY=1
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_2067638006]
+OBJ_NAME=0
+OBJ_ID=2067638006
+REL_M_OBJ_ID=0
+ENTITY=lineseq
+LINK=0
+LINK_NAME=
+DSN_SIZE=32
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=1
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_2067638006
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=

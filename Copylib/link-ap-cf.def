@@ -1,0 +1,9 @@
+      *
+       01 ap-cf-linkage.
+           03 ap-cf-data           pic 9(8).
+           03 ap-cf-anno           pic x(2).
+           03 ap-cf-causale        pic x(3).
+           03 ap-cf-selclz         pic x(256).
+           03 ap-cf-selmaz         pic x(256).
+           03 ap-cf-selfrz         pic x(256).
+           03 ap-cf-codice-login   pic x(8).

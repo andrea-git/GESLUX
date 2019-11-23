@@ -1,0 +1,15 @@
+      *(( XFD FILE = tmp-marca ))
+      *
+      *
+      *0/
+      *\GESLUX\FD\tmp-gdo.fd\
+       FD  tmp-giacma.
+       01 tmg-rec.
+           05 tmg-chiave.
+               10 tmg-mag          PIC  x(3).
+               10 tmg-marca        PIC  9(4).
+           05 tmg-dati.
+               10 tmg-des-marca    PIC  x(30).
+               10 tmg-kg           PIC  s9(9)v999.
+               10 tmg-kg-utf       PIC  s9(9)v999.
+               10 tmg-valore       PIC  s9(12)v99.

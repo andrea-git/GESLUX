@@ -1,0 +1,19 @@
+      *(( XFD FILE = zoom-distinteb ))
+      *
+      *
+      *0/
+      *4
+       FD  zoom-distinteb.
+       01 zoom-dis-rec.
+           05 zoom-dis-chiave.
+               10 zoom-dis-codice  PIC  9(5).
+           05 zoom-dis-dati.
+               10 zoom-dis-articolo            PIC  9(6).
+               10 zoom-dis-art-descrizione     PIC  x(50).
+               10 zoom-dis-magazzino           PIC  x(3).
+               10 zoom-dis-mag-descrizione     PIC  x(50).
+               10 zoom-dis-imballo PIC  x(3).
+               10 zoom-imb-descrizione         PIC  x(50).
+               10 zoom-dis-peso    PIC  9(5)v999.
+               10 zoom-dis-peso-utf            PIC  9(5)v999.
+               10 zoom-dis-prezzo  PIC  s9(12)v99.

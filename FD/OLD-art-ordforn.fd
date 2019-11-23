@@ -1,0 +1,35 @@
+       FD  OLD-art-ordforn.
+       01 OLD-aor-rec.
+           05 OLD-aor-chiave.
+               10 OLD-aor-chiave-testa.
+                   15 OLD-aor-anno         PIC  9(4).
+                   15 OLD-aor-numero       PIC  9(8).
+               10 OLD-aor-prog         PIC  9(5).
+           05 OLD-aor-dati.
+               10 OLD-aor-chiave-progmag.
+                   15 OLD-aor-articolo     PIC  9(6).
+                   15 OLD-aor-codmag       PIC  x(3).
+                   15 OLD-aor-imballo      PIC  x(3).
+                   15 OLD-aor-peso         PIC  9(3)v9(3).
+               10 OLD-aor-descrizione  PIC  x(50).
+               10 OLD-aor-qta          PIC  9(8).
+               10 OLD-aor-prz-unit     PIC  9(9)v9999.
+               10 OLD-aor-netto        PIC  9(9)v9999.
+               10 OLD-aor-imp-cons     PIC  9(4)v9999.
+               10 OLD-aor-coubat       PIC  9(4)v9999.
+               10 OLD-aor-add-pb       PIC  9(4)v9999.
+               10 OLD-aor-dati-comuni.
+                   15 OLD-aor-data-creazione           PIC  9(8).
+                   15 OLD-aor-ora-creazione            PIC  9(8).
+                   15 OLD-aor-utente-creazione         PIC  X(10).
+                   15 OLD-aor-data-ultima-modifica     PIC  9(8).
+                   15 OLD-aor-ora-ultima-modifica      PIC  9(8).
+                   15 OLD-aor-utente-ultima-modifica   PIC  X(10).
+               10 OLD-aor-vuoti.
+                   15 OLD-aor-costi-agg    PIC  9(4)v9999.
+                   15 OLD-aor-num-vuoto-2  PIC  9(7).
+                   15 OLD-aor-num-vuoto-3  PIC  9(15).
+                   15 OLD-aor-alfa-vuoto-1 PIC  x(20).
+                   15 OLD-aor-alfa-vuoto-2 PIC  x(20).
+                   15 OLD-aor-alfa-vuoto-3 PIC  x(20).
+                   15 OLD-aor-num-vuoto-1  PIC  9(15).

@@ -1,0 +1,36 @@
+       FD  evaclides.
+       01 ecd-rec-OLD.
+           05 ecd-chiave-OLD.
+               10 ecd-cliente-OLD  PIC  9(5).
+               10 ecd-destino-OLD  PIC  9(5).
+           05 ecd-dati-OLD.
+               10 ecd-tab-evasione-OLD.
+                   15 ecd-el-evasione-OLD          PIC  9(3)
+                              OCCURS 50 TIMES.
+               10 ecd-escludi-OLD  PIC  9.
+                   88 ecd-escludi-si-OLD VALUE IS 1. 
+                   88 ecd-escludi-no-OLD VALUE IS 0. 
+               10 ecd-accorpa-OLD  PIC  9.
+                   88 ecd-accorpa-si-OLD VALUE IS 1. 
+                   88 ecd-accorpa-no-OLD VALUE IS 0. 
+               10 ecd-saldi-banco-OLD          PIC  9.
+                   88 ecd-saldi-banco-si-OLD VALUE IS 1. 
+                   88 ecd-saldi-banco-no-OLD VALUE IS 0. 
+               10 ecd-saldi-promo-OLD          PIC  9.
+                   88 ecd-saldi-promo-si-OLD VALUE IS 1. 
+                   88 ecd-saldi-promo-no-OLD VALUE IS 0. 
+               10 ecd-ev-intera-OLD            PIC  9.
+                   88 ecd-ev-intera-si-OLD VALUE IS 1. 
+                   88 ecd-ev-intera-no-OLD VALUE IS 0. 
+               10 ecd-gg-scadenza-vol-OLD      PIC  9(3).
+               10 ecd-dati-comuni-OLD.
+                   15 ecd-data-creazione-OLD       PIC  9(8).
+                   15 ecd-ora-creazione-OLD        PIC  9(8).
+                   15 ecd-utente-creazione-OLD     PIC  X(10).
+                   15 ecd-data-modifica-OLD        PIC  9(8).
+                   15 ecd-ora-modifica-OLD         PIC  9(8).
+                   15 ecd-utente-modifica-OLD      PIC  X(10).
+               10 ecd-vuoto-OLD    PIC  x(500).
+               10 ecd-num-vuoto-1-OLD          PIC  9(18).
+               10 ecd-num-vuoto-2-OLD          PIC  9(18).
+               10 ecd-num-vuoto-3-OLD          PIC  9(18).

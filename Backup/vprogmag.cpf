@@ -1,0 +1,5774 @@
+; CaseMaker Totem Program Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[PROGRAM_CONTENT]
+QUIT_CONFIRM=0
+ANSI_FORMAT=1
+MAIN_SCREEN_NAME=Form1
+BEFORE_PROGRAM=vprogmag-Ev-Before-Program
+PROGRAM_UNIQUE_CODE=TOTEM-7DE18153445-474-160003887
+
+{{@DESCRIPTION:
+
+@}}
+
+[WORKING_STORAGE]
+m_nType=1
+m_strName=Working Storage
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionWK
+
+@}}
+[FDITEM0_WK]
+m_strName=stato
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMBO-STATO.DEF
+m_strCopyFile=combo-stato.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMBO-STATO.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM0_WK
+
+
+@}}
+[FDITEM1_WK]
+m_strName=disattivo
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="D"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMBO-STATO.DEF
+m_strCopyFile=combo-stato.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMBO-STATO.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM1_WK
+
+@}}
+[FDITEM2_WK]
+m_strName=attivo
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="A"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMBO-STATO.DEF
+m_strCopyFile=combo-stato.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMBO-STATO.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM2_WK
+
+@}}
+[FDITEM3_WK]
+m_strName=bloccato
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="B"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMBO-STATO.DEF
+m_strCopyFile=combo-stato.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMBO-STATO.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM3_WK
+
+@}}
+[FDITEM4_WK]
+m_strName=Form1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM4_WK
+
+@}}
+[FDITEM5_WK]
+m_strName=como-peso-num
+m_strRawPic=9(5)V9(3)
+m_strPic=9(5)V9(3)
+m_strDefaultValue=ZERO
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM5_WK
+
+@}}
+[FDITEM6_WK]
+m_strName=data-oggi
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM6_WK
+
+@}}
+[FDITEM7_WK]
+m_strName=PATH-BMP-DEFAULT
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_strDefaultValue=SPACES
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM7_WK
+
+@}}
+[FDITEM8_WK]
+m_strName=CountChar
+m_strRawPic=9(3)
+m_strPic=9(3)
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM8_WK
+
+@}}
+[FDITEM9_WK]
+m_strName=result
+m_nUsage=17
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM9_WK
+
+@}}
+[FDITEM10_WK]
+m_strName=PgmChiamante
+m_strRawPic=x(20)
+m_strPic=x(20)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM10_WK
+
+@}}
+[FDITEM11_WK]
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM11_WK
+
+@}}
+[FDITEM12_WK]
+m_strName=scorrimento
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM12_WK
+
+@}}
+[FDITEM13_WK]
+m_strName=qta-x
+m_strRawPic=zz.zz9
+m_strPic=zz.zz9
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM13_WK
+
+@}}
+[FDITEM14_WK]
+m_strName=save-key
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM14_WK
+
+@}}
+[FDITEM15_WK]
+m_strName=save-prg-chiave
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM15_WK
+
+@}}
+[FDITEM16_WK]
+m_strName=save-cod-articolo
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM16_WK
+
+@}}
+[FDITEM17_WK]
+m_strName=save-cod-magazz
+m_strRawPic=XXX
+m_strPic=XXX
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM17_WK
+
+@}}
+[FDITEM18_WK]
+m_strName=save-imballo
+m_strRawPic=X(3)
+m_strPic=X(3)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM18_WK
+
+@}}
+[FDITEM19_WK]
+m_strName=save-peso
+m_strRawPic=9(5)V9(3)
+m_strPic=9(5)V9(3)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM19_WK
+
+@}}
+[FDITEM20_WK]
+m_strName=save-key-mag-1
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM20_WK
+
+@}}
+[FDITEM21_WK]
+m_strName=save-mag-descrizione
+m_strRawPic=X(50)
+m_strPic=X(50)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM21_WK
+
+@}}
+[FDITEM22_WK]
+m_strName=save-key-articoli-1
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM22_WK
+
+@}}
+[FDITEM23_WK]
+m_strName=save-art-descrizione
+m_strRawPic=X(50)
+m_strPic=X(50)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM23_WK
+
+@}}
+[FDITEM24_WK]
+m_strName=counter
+m_strRawPic=9(3)
+m_strPic=9(3)
+m_strDefaultValue=ZERO
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM24_WK
+
+@}}
+[FDITEM25_WK]
+m_strName=Form1-Tb-1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM25_WK
+
+@}}
+[FDITEM26_WK]
+m_strName=COMO-RECORD
+m_strRawPic=X(32000)
+m_strPic=X(32000)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM26_WK
+
+@}}
+[FDITEM27_WK]
+m_strName=FLAG-MOD
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM27_WK
+
+@}}
+[FDITEM28_WK]
+m_strName=CONTROL-COMO
+m_strRawPic=9(2)
+m_strPic=9(2)
+m_strDefaultValue=0
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM28_WK
+
+@}}
+[FDITEM29_WK]
+m_strName=E-ESCI
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM29_WK
+
+@}}
+[FDITEM30_WK]
+m_strName=E-NUOVO
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM30_WK
+
+@}}
+[FDITEM31_WK]
+m_strName=E-CANCELLA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM31_WK
+
+@}}
+[FDITEM32_WK]
+m_strName=E-SALVA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM32_WK
+
+@}}
+[FDITEM33_WK]
+m_strName=E-ANTEPRIMA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM33_WK
+
+@}}
+[FDITEM34_WK]
+m_strName=E-MODIFICA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM34_WK
+
+@}}
+[FDITEM35_WK]
+m_strName=E-STAMPA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM35_WK
+
+@}}
+[FDITEM36_WK]
+m_strName=E-CERCA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM36_WK
+
+@}}
+[FDITEM37_WK]
+m_strName=Form1-St-1-Handle
+m_nUsage=51
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM37_WK
+
+@}}
+[FDITEM38_WK]
+m_strName=Status-cod
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM38_WK
+
+@}}
+[FDITEM39_WK]
+m_strName=E-SELEZIONA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM39_WK
+
+@}}
+[FDITEM40_WK]
+m_strName=toolbar-bmp
+m_nUsage=45
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM40_WK
+
+@}}
+[FDITEM41_WK]
+m_strName=Screen1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM41_WK
+
+@}}
+[FDITEM42_WK]
+m_strName=Default-Font
+m_nUsage=38
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM42_WK
+
+@}}
+[FDITEM43_WK]
+m_strName=Small-Font
+m_nUsage=37
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM43_WK
+
+@}}
+[FDITEM44_WK]
+m_strName=primo-id-dati
+m_strDefaultValue=2
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM44_WK
+
+@}}
+[FDITEM45_WK]
+m_strName=TITOLO
+m_strDefaultValue="Geslux - Visualizzazione Progressivi di Magazzino"
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM45_WK
+
+@}}
+[FDITEM46_WK]
+m_strName=decorrenza
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_strDefaultValue="99/99/9999"
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM46_WK
+
+@}}
+[FDITEM47_WK]
+m_strName=ESCI_73X21-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM47_WK
+
+@}}
+[FDITEM48_WK]
+m_strName=STATUS-articoli
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM48_WK
+
+@}}
+[FDITEM49_WK]
+m_strName=Valid-STATUS-articoli
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM49_WK
+
+@}}
+[FDITEM50_WK]
+m_strName=AUTO-ID
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM50_WK
+
+@}}
+[FDITEM51_WK]
+m_strName=codice-ed
+m_strRawPic=Z(5)
+m_strPic=Z(5)
+m_strDefaultValue=ZERO
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM51_WK
+
+@}}
+[FDITEM52_WK]
+m_strName=como-codice
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_strDefaultValue=ZERO
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM52_WK
+
+@}}
+[FDITEM53_WK]
+m_strName=cbo-stato-buf
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM53_WK
+
+@}}
+[FDITEM54_WK]
+m_strName=MOD-CAMPI
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM54_WK
+
+@}}
+[FDITEM55_WK]
+m_strName=StatusPass
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM55_WK
+
+@}}
+[FDITEM56_WK]
+m_strName=StatusOk
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM56_WK
+
+@}}
+[FDITEM57_WK]
+m_strName=STATUS-progmag
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM57_WK
+
+@}}
+[FDITEM58_WK]
+m_strName=Valid-STATUS-progmag
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM58_WK
+
+@}}
+[FDITEM59_WK]
+m_strName=STATUS-timballi
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM59_WK
+
+@}}
+[FDITEM60_WK]
+m_strName=Valid-STATUS-timballi
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM60_WK
+
+@}}
+[FDITEM61_WK]
+m_strName=STATUS-tmagaz
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM61_WK
+
+@}}
+[FDITEM62_WK]
+m_strName=Valid-STATUS-tmagaz
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM62_WK
+
+@}}
+[FDITEM63_WK]
+m_strName=FILLER
+m_strRawPic=XX
+m_strPic=XX
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM63_WK
+
+@}}
+[FDITEM64_WK]
+m_strName=esiste-totale
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="SI"
+m_strFalse="NO"
+{{@DataItem_m_strDescriptionFDITEM64_WK
+
+@}}
+[FDITEM65_WK]
+m_strName=Vprogmag-Indietro-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM65_WK
+
+@}}
+[FDITEM66_WK]
+m_strName=Vprogmag-Avanti-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM66_WK
+
+@}}
+[FDITEM67_WK]
+m_strName=STATUS-timbalqta
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM67_WK
+
+@}}
+[FDITEM68_WK]
+m_strName=Valid-STATUS-timbalqta
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM68_WK
+
+@}}
+[FDITEM69_WK]
+m_strName=lab-imballo-buf
+m_strRawPic=x(100)
+m_strPic=x(100)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM69_WK
+
+@}}
+[FDITEM70_WK]
+m_strName=fatto-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM70_WK
+
+@}}
+
+
+[LINKAGE_SECTION]
+m_nType=1
+m_strName=Linkage Section
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionLK
+
+@}}
+[FDITEM0_LK]
+m_strName=link-prg-chiave
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_LK
+
+@}}
+[FDITEM1_LK]
+m_strName=link-prg-cod-articolo
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1_LK
+
+@}}
+[FDITEM2_LK]
+m_strName=link-prg-cod-magazzino
+m_strRawPic=X(3)
+m_strPic=X(3)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM2_LK
+
+@}}
+[FDITEM3_LK]
+m_strName=link-prg-tipo-imballo
+m_strRawPic=X(3)
+m_strPic=X(3)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM3_LK
+
+@}}
+[FDITEM4_LK]
+m_strName=link-prg-peso
+m_strRawPic=9(5)V9(3)
+m_strPic=9(5)V9(3)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM4_LK
+
+@}}
+
+
+{{@SCREEN:
+*   Screen Painter Data
+*   Schema 6.0
+*
+BEGIN-SPDATA-6.1A
+
+GRAPHICAL-SCREEN
+
+Begin Screen Form1
+   PREFIX            = Form1
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = Form1
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 13
+   Cell Width        = 6
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = TRUE
+   Data Set          = DataSet1
+   Erase Screen      = FALSE
+   Font              = Small Font
+   Font Variable     = Small-Font
+   Handle Variable   = Form1-Handle
+   Height in Cells   = FALSE
+   Help ID           = 0
+   Label Offset      = 23
+   Lines             = 49,92
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = FALSE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 127,00
+   System Menu       = TRUE
+   Title Bar         = TRUE
+   Title Variable    = TITOLO
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = FALSE
+   Window Type       = Floating
+   Wrap              = FALSE
+   My Property       = "CONTROLLO="
+   Event Procedure   = Form1-Event-Proc
+   Begin Push-Button pb-fatto
+      SCREEN-COL        = 58,67
+      SCREEN-LINE       = 46,31
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-fatto
+      Bitmap            = "..\RESOURCE\FATTO.BMP"
+      Bitmap Frame      = FALSE
+      Bitmap Handle     = FATTO-BMP
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 58,67
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 27
+      Flat              = TRUE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 1
+      Line              = 46,31
+      Lines             = 2,35
+      Lines in Pixels   = 30
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 12,50
+      Size in Pixels    = 73
+      Size Unit         = Default
+      Style             = Escape Button
+      Tab Order         = 1
+      Termination Value = 0
+      Title             = "Fatto"
+      Visible           = NONE
+      Width in Cells    = FALSE
+      Before Procedure  = pb-fatto-BeforeProcedure
+      After Procedure   = pb-fatto-AfterProcedure
+   End
+   Begin Push-Button pb-indietro
+      SCREEN-COL        = 104,00
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-indietro
+      Bitmap            = "..\RESOURCE\VPROGMAG-INDIETRO.BMP"
+      Bitmap Frame      = FALSE
+      Bitmap Handle     = VPROGMAG-INDIETRO-BMP
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 104,00
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 67
+      Flat              = FALSE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 2
+      ID Variable       = AUTO-ID
+      Line              = 2,00
+      Lines             = 5,00
+      Lines in Pixels   = 58
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = TRUE
+      Size              = 11,33
+      Size in Pixels    = 60
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 2
+      Termination Value = 0
+      Title             = "&Indietro"
+      Visible           = FALSE
+      Width in Cells    = TRUE
+      Link To           = pb-indietro-LinkTo
+   End
+   Begin Push-Button pb-avanti
+      SCREEN-COL        = 116,00
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-avanti
+      Bitmap            = "..\RESOURCE\VPROGMAG-AVANTI.BMP"
+      Bitmap Frame      = FALSE
+      Bitmap Handle     = VPROGMAG-AVANTI-BMP
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 116,00
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 68
+      Flat              = FALSE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 3
+      ID Variable       = AUTO-ID
+      Line              = 2,00
+      Lines             = 5,00
+      Lines in Pixels   = 58
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = TRUE
+      Size              = 11,33
+      Size in Pixels    = 60
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 3
+      Termination Value = 0
+      Title             = "&Avanti"
+      Visible           = FALSE
+      Width in Cells    = TRUE
+      Link To           = pb-avanti-LinkTo
+   End
+   Begin Data.Entry-Field EF-COD-ARTICOLO
+      SCREEN-COL        = 18,00
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-COD-ARTICOLO
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 18,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = TRUE
+      Field Edited (Style) = 1
+      Field Edited Format = x(6)
+      Field Picture     = 9(6)
+      Field Variable    = prg-cod-articolo OF progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare il Codice dell'Articolo
+      ID                = 0
+      ID Variable       = AUTO-ID
+      Justification     = Left
+      Line              = 2,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 6
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 10,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 4
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Data.Entry-Field EF-COD-MAGAZZ
+      SCREEN-COL        = 18,00
+      SCREEN-LINE       = 4,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-COD-MAGAZZ
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 18,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = TRUE
+      Field Edited (Style) = 1
+      Field Edited Format = X(3)
+      Field Picture     = X(3)
+      Field Variable    = prg-cod-magazzino OF progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare il Codice del Magazzino
+      ID                = 0
+      ID Variable       = AUTO-ID
+      Justification     = Left
+      Line              = 4,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 3
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 10,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 5
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Data.Entry-Field EF-TIPO-IMBALLO
+      SCREEN-COL        = 18,00
+      SCREEN-LINE       = 6,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-TIPO-IMBALLO
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 18,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = TRUE
+      Field Edited (Style) = 1
+      Field Edited Format = X(3)
+      Field Picture     = X(3)
+      Field Variable    = prg-tipo-imballo OF progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare il Codice del Tipo Imballo
+      ID                = 0
+      ID Variable       = AUTO-ID
+      Justification     = Left
+      Line              = 6,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 3
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 10,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 6
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Data.Entry-Field EF-PESO
+      SCREEN-COL        = 18,00
+      SCREEN-LINE       = 8,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-PESO
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 18,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = TRUE
+      Field Edited (Style) = 1
+      Field Edited Format = zz.zz9,9(3)
+      Field Picture     = 9(5)v9(3)
+      Field Variable    = prg-peso OF PROGMAG
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare il Peso
+      ID                = 0
+      ID Variable       = AUTO-ID
+      Justification     = Right
+      Line              = 8,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 7
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = TRUE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 10,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 7
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5
+      SCREEN-COL        = 2,17
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,17
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 103
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 2,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 15,00
+      Size Unit         = Default
+      Tab Order         = 8
+      Title             = "Codice Articolo"
+      Transparent       = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5a
+      SCREEN-COL        = 2,17
+      SCREEN-LINE       = 4,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5a
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,17
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 105
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 4,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 15,00
+      Size Unit         = Default
+      Tab Order         = 9
+      Title             = "Codice Magazzino"
+      Transparent       = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aa
+      SCREEN-COL        = 2,17
+      SCREEN-LINE       = 6,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,17
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 102
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 6,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 15,00
+      Size Unit         = Default
+      Tab Order         = 10
+      Title             = "Tipo Imballo"
+      Transparent       = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaa
+      SCREEN-COL        = 2,17
+      SCREEN-LINE       = 8,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,17
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 200
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 8,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 15,00
+      Size Unit         = Default
+      Tab Order         = 11
+      Title             = "Peso (KG)"
+      Transparent       = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Data.Label LBL-DES-ARTICOLO
+      SCREEN-COL        = 30,00
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = LBL-DES-ARTICOLO
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 5
+      Column            = 30,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Field Edited (Style) = 0
+      Field Edited Format = X(50)
+      Field Picture     = X(50)
+      Field Variable    = art-descrizione
+      File              = articoli
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 13
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 2,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 70,00
+      Size Unit         = Default
+      Tab Order         = 12
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Data.Label LBL-DES-MAGAZZ
+      SCREEN-COL        = 30,00
+      SCREEN-LINE       = 4,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = LBL-DES-MAGAZZ
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 5
+      Column            = 30,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Field Edited (Style) = 0
+      Field Edited Format = X(50)
+      Field Picture     = X(50)
+      Field Variable    = mag-descrizione
+      File              = tmagaz
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 14
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 4,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 70,00
+      Size Unit         = Default
+      Tab Order         = 13
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label LAB-IMBALLO
+      SCREEN-COL        = 30,00
+      SCREEN-LINE       = 6,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = LAB-IMBALLO
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 5
+      Column            = 30,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 16
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 6,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 70,00
+      Size Unit         = Default
+      Tab Order         = 14
+      Title Picture     = x(100)
+      Title Variable    = lab-imballo-buf
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Data.Entry-Field ef-peso-utf
+      SCREEN-COL        = 18,00
+      SCREEN-LINE       = 13,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-peso-utf
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 18,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = zz.zz9,999
+      Field Picture     = 9(5)v9(3)
+      Field Variable    = prg-peso-utf of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare il peso UTF
+      ID                = 0
+      Justification     = Right
+      Line              = 13,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 7
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = TRUE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 14,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 15
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field ef-peso-non-utf
+      SCREEN-COL        = 50,00
+      SCREEN-LINE       = 13,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-peso-non-utf
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 50,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = zz.zz9,999
+      Field Picture     = 9(5)v9(3)
+      Field Variable    = prg-peso-non-utf of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare il peso non UTF
+      ID                = 0
+      Justification     = Right
+      Line              = 13,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 7
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = TRUE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 15,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 16
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-COSTO-ULTIMO
+      SCREEN-COL        = 18,00
+      SCREEN-LINE       = 17,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-COSTO-ULTIMO
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 18,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ----.---.--9,9(2)
+      Field Picture     = S9(9)V9(2)
+      Field Variable    = prg-costo-ultimo of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare il Costo Ultimo
+      ID                = 0
+      Justification     = Right
+      Line              = 17,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 13
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = TRUE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 14,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 17
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-COSTO-MEDIO
+      SCREEN-COL        = 50,00
+      SCREEN-LINE       = 17,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-COSTO-MEDIO
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 50,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ----.---.--9,9(2)
+      Field Picture     = S9(9)V9(2)
+      Field Variable    = prg-costo-medio of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare il Costo Medio
+      ID                = 0
+      Justification     = Right
+      Line              = 17,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 13
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = TRUE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 15,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 18
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-GIACENZA
+      SCREEN-COL        = 18,00
+      SCREEN-LINE       = 19,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-GIACENZA
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 18,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ---.---.--9
+      Field Picture     = S9(8)
+      Field Variable    = prg-giacenza of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare il Valore della Giacenza
+      ID                = 0
+      Justification     = Right
+      Line              = 19,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 9
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = TRUE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 14,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 19
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = EF-PREZZO-FINITO-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-ORD-CLI
+      SCREEN-COL        = 50,00
+      SCREEN-LINE       = 19,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-ORD-CLI
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 50,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ---.---.--9
+      Field Picture     = S9(8)
+      Field Variable    = prg-impegnato of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare l'impegnato (Ordinazione da Clienti)
+      ID                = 0
+      Justification     = Right
+      Line              = 19,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 9
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = TRUE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 15,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 20
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-ORD-FORN-1
+      SCREEN-COL        = 18,00
+      SCREEN-LINE       = 23,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-ORD-FORN-1
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 18,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ---.---.--9
+      Field Picture     = S9(8)
+      Field Variable    = prg-ordinato-1 of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare l'ordinato (Ordinazione a Fornitorii)
+      ID                = 0
+      Justification     = Right
+      Line              = 23,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 9
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = TRUE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 14,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 21
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-ORD-FORN-2
+      SCREEN-COL        = 35,00
+      SCREEN-LINE       = 23,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-ORD-FORN-2
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 35,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ---.---.--9
+      Field Picture     = S9(8)
+      Field Variable    = prg-ordinato-2 of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare l'ordinato (Ordinazione a Fornitorii)
+      ID                = 0
+      ID Variable       = AUTO-ID
+      Justification     = Right
+      Line              = 23,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 9
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = TRUE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 14,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 22
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-ORD-FORN-3
+      SCREEN-COL        = 52,00
+      SCREEN-LINE       = 23,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-ORD-FORN-3
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 52,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ---.---.--9
+      Field Picture     = S9(8)
+      Field Variable    = prg-ordinato-3 of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare l'ordinato (Ordinazione a Fornitorii)
+      ID                = 0
+      ID Variable       = AUTO-ID
+      Justification     = Right
+      Line              = 23,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 9
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = TRUE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 14,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 23
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-ORD-FORN-4
+      SCREEN-COL        = 69,00
+      SCREEN-LINE       = 23,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-ORD-FORN-4
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 69,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ---.---.--9
+      Field Picture     = S9(8)
+      Field Variable    = prg-ordinato-4 of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare l'ordinato (Ordinazione a Fornitorii)
+      ID                = 0
+      ID Variable       = AUTO-ID
+      Justification     = Right
+      Line              = 23,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 9
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = TRUE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 14,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 24
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-INI-UDM
+      SCREEN-COL        = 18,00
+      SCREEN-LINE       = 28,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-INI-UDM
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 18,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ---.---.--9
+      Field Picture     = S9(8)
+      Field Variable    = prg-ini-udm of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare la quantità iniziale espressa nell'Unità di Misura
+      ID                = 0
+      Justification     = Right
+      Line              = 28,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 9
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = TRUE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 14,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 25
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-INI-KG
+      SCREEN-COL        = 50,00
+      SCREEN-LINE       = 28,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-INI-KG
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 50,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ----.---.--9,999
+      Field Picture     = S9(9)V9(3)
+      Field Variable    = prg-ini-kg of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare il peso iniziale espresso in Kg.
+      ID                = 0
+      Justification     = Right
+      Line              = 28,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 14
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 15,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 26
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-INI-VALORE
+      SCREEN-COL        = 82,00
+      SCREEN-LINE       = 28,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-INI-VALORE
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 82,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ----.---.--9,9(2)
+      Field Picture     = S9(9)V9(2)
+      Field Variable    = prg-ini-valore of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare il Valore iniziale espresso in Euro.
+      ID                = 0
+      Justification     = Right
+      Line              = 28,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 13
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 17,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 27
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-ACQ-UDM
+      SCREEN-COL        = 18,00
+      SCREEN-LINE       = 30,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-ACQ-UDM
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 18,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ---.---.--9
+      Field Picture     = S9(8)
+      Field Variable    = prg-acq-udm of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare la quantità degli acquisti espressi nell'Unità di Misura
+      ID                = 0
+      Justification     = Right
+      Line              = 30,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 9
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = TRUE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 14,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 28
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-ACQ-KG
+      SCREEN-COL        = 50,00
+      SCREEN-LINE       = 30,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-ACQ-KG
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 50,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ----.---.--9,999
+      Field Picture     = S9(9)V9(3)
+      Field Variable    = prg-acq-kg of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare il peso degli acquisti espresso in Kg.
+      ID                = 0
+      Justification     = Right
+      Line              = 30,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 14
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 15,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 29
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-ACQ-VALORE
+      SCREEN-COL        = 82,00
+      SCREEN-LINE       = 30,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-ACQ-VALORE
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 82,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ----.---.--9,9(2)
+      Field Picture     = S9(9)V9(2)
+      Field Variable    = prg-acq-valore of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare il Valore degli acquisti espresso in Euro.
+      ID                = 0
+      Justification     = Right
+      Line              = 30,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 13
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 17,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 30
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-VEN-UDM
+      SCREEN-COL        = 18,00
+      SCREEN-LINE       = 32,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-VEN-UDM
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 18,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ---.---.--9
+      Field Picture     = S9(8)
+      Field Variable    = prg-ven-udm of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare la quantità delle vendite espresse nell'Unità di Misura
+      ID                = 0
+      Justification     = Right
+      Line              = 32,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 9
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = TRUE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 14,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 31
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-VEN-KG
+      SCREEN-COL        = 50,00
+      SCREEN-LINE       = 32,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-VEN-KG
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 50,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ----.---.--9,999
+      Field Picture     = S9(9)V9(3)
+      Field Variable    = prg-ven-kg of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare il peso delle vendite espresso in Kg.
+      ID                = 0
+      Justification     = Right
+      Line              = 32,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 14
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 15,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 32
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-VEN-VALORE
+      SCREEN-COL        = 82,00
+      SCREEN-LINE       = 32,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-VEN-VALORE
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 82,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ----.---.--9,9(2)
+      Field Picture     = S9(9)V9(2)
+      Field Variable    = prg-ven-valore of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare il Valore delle vendite espresso in Euro.
+      ID                = 0
+      Justification     = Right
+      Line              = 32,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 13
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 17,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 33
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-VAR-UDM
+      SCREEN-COL        = 18,00
+      SCREEN-LINE       = 34,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-VAR-UDM
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 18,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ---.---.--9
+      Field Picture     = S9(8)
+      Field Variable    = prg-var-inv-udm of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare la quantità delle variazioni inventariali espresse nell'Unità di Misura
+      ID                = 0
+      Justification     = Right
+      Line              = 34,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 9
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = TRUE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 14,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 34
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-VAR-KG
+      SCREEN-COL        = 50,00
+      SCREEN-LINE       = 34,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-VAR-KG
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 50,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ----.---.--9,999
+      Field Picture     = S9(9)V9(3)
+      Field Variable    = prg-var-inv-kg of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare il peso delle variazioni inventariali espresso in Kg.
+      ID                = 0
+      Justification     = Right
+      Line              = 34,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 14
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 15,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 35
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-VAR-VALORE
+      SCREEN-COL        = 82,00
+      SCREEN-LINE       = 34,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-VAR-VALORE
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 82,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ----.---.--9,9(2)
+      Field Picture     = S9(9)V9(2)
+      Field Variable    = prg-ven-valore of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare il Valore delle variazioni inventarialii espresso in Euro.
+      ID                = 0
+      Justification     = Right
+      Line              = 34,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 13
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 17,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 36
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-FORN-UDM
+      SCREEN-COL        = 18,00
+      SCREEN-LINE       = 36,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-FORN-UDM
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 18,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ---.---.--9
+      Field Picture     = S9(8)
+      Field Variable    = prg-resi-fornitori-udm of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare i resi ai Fornitori espressi nell'Unità di Misura
+      ID                = 0
+      Justification     = Right
+      Line              = 36,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 9
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = TRUE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 14,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 37
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-FORN-KG
+      SCREEN-COL        = 50,00
+      SCREEN-LINE       = 36,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-FORN-KG
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 50,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ----.---.--9,999
+      Field Picture     = S9(9)V9(3)
+      Field Variable    = prg-resi-fornitori-kg of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare il peso dei Resi ai Fornitori espresso in Kg.
+      ID                = 0
+      Justification     = Right
+      Line              = 36,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 14
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 15,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 38
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-FORN-VALORE
+      SCREEN-COL        = 82,00
+      SCREEN-LINE       = 36,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-FORN-VALORE
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 82,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ----.---.--9,9(2)
+      Field Picture     = S9(9)V9(2)
+      Field Variable    = prg-resi-fornitori-valore of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare il Valore dei Resi ai Fornitori espresso in Euro
+      ID                = 0
+      Justification     = Right
+      Line              = 36,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 13
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 17,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 39
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-CLI-UDM
+      SCREEN-COL        = 18,00
+      SCREEN-LINE       = 38,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-CLI-UDM
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 18,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ---.---.--9
+      Field Picture     = S9(8)
+      Field Variable    = prg-resi-da-cli-udm of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare i resi dai Clienti espressi nell'Unità di Misura
+      ID                = 0
+      Justification     = Right
+      Line              = 38,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 9
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = TRUE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 14,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 40
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-CLI-KG
+      SCREEN-COL        = 50,00
+      SCREEN-LINE       = 38,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-CLI-KG
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 50,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ----.---.--9,999
+      Field Picture     = S9(9)V9(3)
+      Field Variable    = prg-resi-da-cli-kg of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare il peso dei Resi dai Clienti espresso in Kg.
+      ID                = 0
+      Justification     = Right
+      Line              = 38,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 14
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 15,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 41
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-CLI-VALORE
+      SCREEN-COL        = 82,00
+      SCREEN-LINE       = 38,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-CLI-VALORE
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 82,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ----.---.--9,9(2)
+      Field Picture     = S9(9)V9(2)
+      Field Variable    = prg-resi-da-cli-valore of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare il Valore dei Resi dai Clienti espresso in Euro
+      ID                = 0
+      Justification     = Right
+      Line              = 38,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 13
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 17,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 42
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field ef-udm-el
+      SCREEN-COL        = 18,00
+      SCREEN-LINE       = 40,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-udm-el
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 18,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ---.---.--9
+      Field Picture     = S9(8)
+      Field Variable    = prg-udm-el of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare le entrate di lavorazione espresse in Unità di Misura
+      ID                = 0
+      Justification     = Right
+      Line              = 40,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 9
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = TRUE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 14,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 43
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field ef-kg-el
+      SCREEN-COL        = 50,00
+      SCREEN-LINE       = 40,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-kg-el
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 50,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ----.---.--9,999
+      Field Picture     = S9(9)V9(3)
+      Field Variable    = prg-kg-el of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare le entrate di lavorazione espresse in Kg
+      ID                = 0
+      Justification     = Right
+      Line              = 40,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 14
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 15,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 44
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field ef-valore-el
+      SCREEN-COL        = 82,00
+      SCREEN-LINE       = 40,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-valore-el
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 82,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ----.---.--9,9(2)
+      Field Picture     = S9(9)V9(2)
+      Field Variable    = prg-valore-el of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare le entrate di lavorazione espresse in Euro
+      ID                = 0
+      Justification     = Right
+      Line              = 40,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 13
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 17,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 45
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field ef-udm-ul
+      SCREEN-COL        = 18,00
+      SCREEN-LINE       = 42,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-udm-ul
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 18,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ---.---.--9
+      Field Picture     = S9(8)
+      Field Variable    = prg-udm-ul of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare le uscite di lavorazione espresse in Unità di Misura
+      ID                = 0
+      Justification     = Right
+      Line              = 42,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 9
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = TRUE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 14,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 46
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field ef-kg-ul
+      SCREEN-COL        = 50,00
+      SCREEN-LINE       = 42,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-kg-ul
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 50,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ----.---.--9,999
+      Field Picture     = S9(9)V9(3)
+      Field Variable    = prg-kg-ul of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare le uscite di lavorazione espresse in Kg
+      ID                = 0
+      Justification     = Right
+      Line              = 42,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 14
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 15,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 47
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field ef-valore-ul
+      SCREEN-COL        = 82,00
+      SCREEN-LINE       = 42,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-valore-ul
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 82,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ----.---.--9,9(2)
+      Field Picture     = S9(9)V9(2)
+      Field Variable    = prg-valore-ul of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare le uscite di lavorazione espresse in Euro
+      ID                = 0
+      Justification     = Right
+      Line              = 42,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 13
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 17,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 48
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field ef-gia-udm
+      SCREEN-COL        = 18,00
+      SCREEN-LINE       = 44,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-gia-udm
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 18,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ----.---.--9
+      Field Picture     = S9(8)
+      Field Variable    = prg-giacenza-udm OF progmag
+      File              = progmag
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 6
+      Justification     = Right
+      Line              = 44,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 9
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 14,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 49
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = Form1-DaEf-1-BeforeProcedure
+      After Procedure   = Form1-DaEf-1-AfterProcedure
+   End
+   Begin Data.Entry-Field ef-gia-kg
+      SCREEN-COL        = 50,00
+      SCREEN-LINE       = 44,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-gia-kg
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 50,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ----.---.--9,999
+      Field Picture     = S9(9)V9(3)
+      Field Variable    = prg-giacenza-kg OF progmag
+      File              = progmag
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 21
+      Justification     = Right
+      Line              = 44,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 14
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 15,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 50
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = Form1-DaEf-2-BeforeProcedure
+      After Procedure   = Form1-DaEf-2-AfterProcedure
+   End
+   Begin Combo-Box cbo-stato
+      SCREEN-COL        = 110,00
+      SCREEN-LINE       = 44,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = cbo-stato
+      Border            = No Box
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 110,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD
+      Exception Value   = 0
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Selezionare uno Stato
+      ID                = 0
+      Line              = 44,46
+      Lines             = 3,00
+      Lines Unit        = Default
+      Mass Update       = 0:Fast-Update
+      Max Text          = 0
+      No Tab            = FALSE
+      Notify DblClick   = FALSE
+      Notify SelChange  = FALSE
+      Occurs            = 0
+      Size              = 14,00
+      Size Unit         = Default
+      Style             = Drop List
+      Tab Order         = 51
+      Termination Value = 0
+      Unsorted          = TRUE
+      Value Container   = prg-stato of progmag
+      Value Picture     = X(10)
+      Value Variable    = cbo-stato-buf
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = Form1-Cm-1-BeforeProcedure
+      After Procedure   = Form1-Cm-1-AfterProcedure
+   End
+   Begin Bar Form1-Br-2
+      SCREEN-COL        = 19,50
+      SCREEN-LINE       = 15,69
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-Br-2
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 19,50
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 100
+      Kind              = Horizontal
+      Line              = 15,69
+      Line Styles       = Solid
+      Occurs            = 0
+      Position Shift    = 0
+      COLORS            = ( 8, 8 )
+      SHADING           = ( -1, 1 )
+      Size (Lines)      = 108,00
+      Size (Lines) in Pixels = 648
+      Size (Lines) Unit = Default
+      Tab Order         = 52
+      Visible           = NONE
+      Width             = 2
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaaa
+      SCREEN-COL        = 2,50
+      SCREEN-LINE       = 17,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaaa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,50
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 4
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 17,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 15,00
+      Size Unit         = Default
+      Tab Order         = 53
+      Title             = "Costo Ultimo"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaab
+      SCREEN-COL        = 37,00
+      SCREEN-LINE       = 17,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaab
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 37,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 5
+      Justification     = Left
+      Label Offset      = 20
+      Line              = 17,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 11,00
+      Size Unit         = Default
+      Tab Order         = 54
+      Title             = "Costo Medio"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaabaa
+      SCREEN-COL        = 2,50
+      SCREEN-LINE       = 19,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaabaa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,50
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 8
+      Justification     = Left
+      Label Offset      = 20
+      Line              = 19,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 11,00
+      Size Unit         = Default
+      Tab Order         = 55
+      Title             = "Giacenza"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaabab
+      SCREEN-COL        = 37,00
+      SCREEN-LINE       = 19,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaabab
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 37,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 9
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 19,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 9,00
+      Size Unit         = Default
+      Tab Order         = 56
+      Title             = "Impegnato"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaabaaaa
+      SCREEN-COL        = 2,50
+      SCREEN-LINE       = 23,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaabaaaa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,50
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 11
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 23,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 7,00
+      Size Unit         = Default
+      Tab Order         = 57
+      Title             = "Ordinato"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaabaaab
+      SCREEN-COL        = 2,50
+      SCREEN-LINE       = 28,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaabaaab
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 2
+      Column            = 2,50
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 12
+      Justification     = Left
+      Label Offset      = 20
+      Line              = 28,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 13,00
+      Size Unit         = Default
+      Tab Order         = 58
+      Title             = "Giacenze Iniziali"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaabaaaaa
+      SCREEN-COL        = 103,00
+      SCREEN-LINE       = 44,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaabaaaaa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 103,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 17
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 44,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 5,00
+      Size Unit         = Default
+      Tab Order         = 59
+      Title             = "Stato"
+      Transparent       = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaac
+      SCREEN-COL        = 2,17
+      SCREEN-LINE       = 15,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaac
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 80
+      Column            = 2,17
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 18
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 15,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 17,00
+      Size Unit         = Default
+      Tab Order         = 60
+      Title             = "Valori Dinamici"
+      Transparent       = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaaca
+      SCREEN-COL        = 2,17
+      SCREEN-LINE       = 25,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaaca
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 80
+      Column            = 2,17
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 19
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 25,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 17,00
+      Size Unit         = Default
+      Tab Order         = 61
+      Title             = "Valori Consolidati"
+      Transparent       = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Bar Form1-Br-2a
+      SCREEN-COL        = 19,50
+      SCREEN-LINE       = 26,15
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-Br-2a
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 19,50
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 20
+      Kind              = Horizontal
+      Line              = 26,15
+      Line Styles       = Solid
+      Occurs            = 0
+      Position Shift    = 0
+      COLORS            = ( 8, 8 )
+      SHADING           = ( -1, 1 )
+      Size (Lines)      = 108,00
+      Size (Lines) in Pixels = 648
+      Size (Lines) Unit = Default
+      Tab Order         = 62
+      Visible           = NONE
+      Width             = 2
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaabaaabb
+      SCREEN-COL        = 2,50
+      SCREEN-LINE       = 30,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaabaaabb
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 2
+      Column            = 2,50
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 10
+      Justification     = Left
+      Label Offset      = 20
+      Line              = 30,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 10,00
+      Size Unit         = Default
+      Tab Order         = 63
+      Title             = "Acquisti"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaabaaabba
+      SCREEN-COL        = 2,50
+      SCREEN-LINE       = 32,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaabaaabba
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 2
+      Column            = 2,50
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 25
+      Justification     = Left
+      Label Offset      = 20
+      Line              = 32,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 10,00
+      Size Unit         = Default
+      Tab Order         = 64
+      Title             = "Vendite"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaabaaabbaa
+      SCREEN-COL        = 2,50
+      SCREEN-LINE       = 34,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaabaaabbaa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 2
+      Column            = 2,50
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 28
+      Justification     = Left
+      Label Offset      = 20
+      Line              = 34,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 14,00
+      Size Unit         = Default
+      Tab Order         = 65
+      Title             = "Var. Inventariali"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaabaaabbab
+      SCREEN-COL        = 2,50
+      SCREEN-LINE       = 36,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaabaaabbab
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 2
+      Column            = 2,50
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 35
+      Justification     = Left
+      Label Offset      = 20
+      Line              = 36,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 13,00
+      Size Unit         = Default
+      Tab Order         = 66
+      Title             = "Resi a Fornitori"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaabaaabbaba
+      SCREEN-COL        = 2,50
+      SCREEN-LINE       = 38,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaabaaabbaba
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 2
+      Column            = 2,50
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 38
+      Justification     = Left
+      Label Offset      = 20
+      Line              = 38,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 13,00
+      Size Unit         = Default
+      Tab Order         = 67
+      Title             = "Resi da Clienti"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaabaaaba
+      SCREEN-COL        = 18,00
+      SCREEN-LINE       = 27,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaabaaaba
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 2
+      Column            = 18,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 41
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 27,00
+      Lines             = 1,00
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 14,00
+      Size Unit         = Default
+      Tab Order         = 68
+      Title             = "U.M."
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaabaaabaa
+      SCREEN-COL        = 50,00
+      SCREEN-LINE       = 27,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaabaaabaa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 2
+      Column            = 50,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 42
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 27,00
+      Lines             = 1,00
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 15,00
+      Size Unit         = Default
+      Tab Order         = 69
+      Title             = "KG."
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaabaaabab
+      SCREEN-COL        = 82,00
+      SCREEN-LINE       = 27,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaabaaabab
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 2
+      Column            = 82,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 43
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 27,00
+      Lines             = 1,00
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 17,00
+      Size Unit         = Default
+      Tab Order         = 70
+      Title             = "Valore"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-1
+      SCREEN-COL        = 2,50
+      SCREEN-LINE       = 44,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-1
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 2
+      Column            = 2,50
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 44
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 44,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 14,00
+      Size Unit         = Default
+      Tab Order         = 71
+      Title             = "Giacenza Periodo"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaabaaabc
+      SCREEN-COL        = 2,50
+      SCREEN-LINE       = 40,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaabaaabc
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 2
+      Column            = 2,50
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 23
+      Justification     = Left
+      Label Offset      = 20
+      Line              = 40,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 10,00
+      Size Unit         = Default
+      Tab Order         = 72
+      Title             = "Entrate Lav."
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaabaaabbb
+      SCREEN-COL        = 2,50
+      SCREEN-LINE       = 42,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaabaaabbb
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 2
+      Column            = 2,50
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 24
+      Justification     = Left
+      Label Offset      = 20
+      Line              = 42,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 10,00
+      Size Unit         = Default
+      Tab Order         = 73
+      Title             = "Uscite Lav."
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Bar Form1-Br-2b
+      SCREEN-COL        = 19,50
+      SCREEN-LINE       = 11,69
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-Br-2b
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 19,50
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 26
+      Kind              = Horizontal
+      Line              = 11,69
+      Line Styles       = Solid
+      Occurs            = 0
+      Position Shift    = 0
+      COLORS            = ( 8, 8 )
+      SHADING           = ( -1, 1 )
+      Size (Lines)      = 108,00
+      Size (Lines) in Pixels = 648
+      Size (Lines) Unit = Default
+      Tab Order         = 74
+      Visible           = NONE
+      Width             = 2
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaaaa
+      SCREEN-COL        = 2,50
+      SCREEN-LINE       = 13,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaaaa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,50
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 27
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 13,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 15,00
+      Size Unit         = Default
+      Tab Order         = 75
+      Title             = "Peso Utf"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaabb
+      SCREEN-COL        = 37,00
+      SCREEN-LINE       = 13,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaabb
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 37,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 29
+      Justification     = Left
+      Label Offset      = 20
+      Line              = 13,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 12,00
+      Size Unit         = Default
+      Tab Order         = 76
+      Title             = "Peso non UTF"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaacb
+      SCREEN-COL        = 2,17
+      SCREEN-LINE       = 11,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaacb
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 80
+      Column            = 2,17
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 30
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 11,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 17,00
+      Size Unit         = Default
+      Tab Order         = 77
+      Title             = "Peso"
+      Transparent       = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaabaaaab
+      SCREEN-COL        = 18,00
+      SCREEN-LINE       = 21,38
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaabaaaab
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 18,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 31
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 21,38
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 14,00
+      Size Unit         = Default
+      Tab Order         = 78
+      Title             = "Mese 1"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaabaaaaba
+      SCREEN-COL        = 35,00
+      SCREEN-LINE       = 21,38
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaabaaaaba
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 35,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 32
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 21,38
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 7,00
+      Size Unit         = Default
+      Tab Order         = 79
+      Title             = "Mese 2"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaabaaaabb
+      SCREEN-COL        = 52,00
+      SCREEN-LINE       = 21,38
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaabaaaabb
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 52,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 33
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 21,38
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 14,00
+      Size Unit         = Default
+      Tab Order         = 80
+      Title             = "Mese 3"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaabaaaabc
+      SCREEN-COL        = 69,00
+      SCREEN-LINE       = 21,38
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaabaaaabc
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 69,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 34
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 21,38
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 14,00
+      Size Unit         = Default
+      Tab Order         = 81
+      Title             = "Mese 4"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Data.Entry-Field EF-ORD-FORN-4a
+      SCREEN-COL        = 85,67
+      SCREEN-LINE       = 23,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-ORD-FORN-4a
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 85,67
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ---.---.--9
+      Field Picture     = S9(8)
+      Field Variable    = prg-ordinato-5 of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare l'ordinato (Ordinazione a Fornitorii)
+      ID                = 0
+      Justification     = Right
+      Line              = 23,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 9
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = TRUE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 14,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 82
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Label Form1-La-5aaabaaaabca
+      SCREEN-COL        = 85,67
+      SCREEN-LINE       = 21,38
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaabaaaabca
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 85,67
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 36
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 21,38
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 14,00
+      Size Unit         = Default
+      Tab Order         = 83
+      Title             = "Mese 5"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Data.Entry-Field EF-ORD-FORN-4b
+      SCREEN-COL        = 102,33
+      SCREEN-LINE       = 23,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-ORD-FORN-4b
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 102,33
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ---.---.--9
+      Field Picture     = S9(8)
+      Field Variable    = prg-ordinato-6 of progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare l'ordinato (Ordinazione a Fornitorii)
+      ID                = 0
+      Justification     = Right
+      Line              = 23,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 9
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = TRUE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 14,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 84
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Label Form1-La-5aaabaaaabcb
+      SCREEN-COL        = 102,33
+      SCREEN-LINE       = 21,38
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaabaaaabcb
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 102,33
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 37
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 21,38
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 14,00
+      Size Unit         = Default
+      Tab Order         = 85
+      Title             = "Mese 6"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Status-Bar Form1-St-1
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 1
+      (Name)            = Form1-St-1
+      Font              = Default Font
+      Grip              = TRUE
+      Handle Variable   = Form1-St-1-Handle
+      PANEL-WIDTHS      = ( 78, 23, 999 )
+      PANEL-STYLE       = ( 1, 1, 1 )
+      Tab Order         = 86
+   End
+End
+
+END-SPDATA
+
+@}}
+
+{{@REPORT:
+*   Report Writer Data
+*   Schema 6.0
+*
+BEGIN-RWDATA-6.0A
+
+END-RWDATA
+
+@}}
+
+{{@EMBEDDING_CODE:
+BEGIN-DATA
+   BASETYPE          = 6
+   NODESTYLE         = 7
+   PARAGRAPH         = DeletedCode
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+      *<<** customized_default, sp-g, form1-custom1-2 **>>           
+           perform RIEMPI-COMBO-STATO.
+           move link-prg-chiave to prg-chiave.
+           read progmag no lock invalid continue end-read.
+           perform FORM1-IUD-DISPLAY.
+
+           call "C$CALLEDBY" using PgmChiamante.
+           |Il pgm. di calcolatrice deve
+           |visualizzare solamente il padre
+           if PgmChiamante = "calc"
+              set scorrimento to false
+              modify pb-avanti,   visible false
+              modify pb-indietro, visible false
+           else
+              set scorrimento to true
+              modify pb-avanti,   visible true
+              modify pb-indietro, visible true
+           end-if.
+
+           move prg-chiave to save-prg-chiave.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterFldToBuf
+BEGIN-TEXT
+           move prg-stato to stato.
+           perform CARICA-COMBO-STATO.
+
+           evaluate true
+           when bloccato  move 1 to mod-campi
+           when attivo    move 1 to mod-campi
+           when disattivo move 0 to mod-campi
+           end-evaluate.
+
+           move prg-cod-articolo                 to codice-ed.
+           move codice-ed                        to ef-cod-articolo-buf.   
+           call "C$JUSTIFY" using ef-cod-articolo-buf, "L".
+
+           move prg-cod-articolo  to art-codice.
+           read articoli no lock  invalid move spaces to art-descrizione
+           end-read.
+           move art-descrizione to lbl-des-articolo-buf.
+
+           move prg-cod-magazzino to mag-codice.
+           read tmagaz   no lock  invalid move spaces to mag-descrizione           end-read.
+           move mag-descrizione to lbl-des-magazz-buf.
+
+           move prg-tipo-imballo  to imq-codice.
+           read timbalqta no lock
+                invalid 
+                initialize imb-descrizione
+                set trovato to false
+            not invalid
+                move imq-tipo  to imb-codice
+                read timballi
+                     invalid set trovato to false
+                 not invalid set trovato to true
+                end-read
+           end-read.
+
+           initialize lab-imballo-buf.
+           if trovato
+              inspect imb-descrizione replacing trailing spaces 
+                                      by low-value
+              move imq-qta-imb to qta-x
+              inspect qta-x replacing leading x"30" by x"20"
+              call "C$JUSTIFY" using qta-x, "L"
+              inspect qta-x replacing trailing spaces by low-value
+              string imb-descrizione delimited by low-value
+                     " da "          delimited by size
+                     qta-x           delimited by low-value
+                     " x "           delimited by size
+                     art-udm-imballo delimited by size
+                     into lab-imballo-buf
+              end-string
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 0
+   PARENT            = vprogmag
+   ACTOBJ            = vprogmag
+   ENTRYPOINT        = BeforeDeclarative
+BEGIN-TEXT
+      ***---
+       PROGMAG-ERR SECTION.
+           use after error procedure on progmag.
+           set tutto-ok  to true.
+           evaluate status-progmag
+           when "35"
+                display message "File [PROGMAG] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [PROGMAG] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[PROGMAG] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           end-evaluate.
+ 
+      ***---
+       ARTICOLI-ERR SECTION.
+           use after error procedure on articoli.
+           set tutto-ok  to true.
+           evaluate status-articoli
+           when "35"
+                display message "File [ARTICOLI] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [ARTICOLI] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[ARTICOLI] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           end-evaluate.
+ 
+      ***---
+       TMAGAZ-ERR SECTION.
+           use after error procedure on tmagaz.
+           set tutto-ok  to true.
+           evaluate status-tmagaz
+           when "35"
+                display message "File [TMAGAZ] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [TMAGAZ] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[TMAGAZ] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           end-evaluate.
+ 
+      ***---
+       TIMBALQTA-ERR SECTION.
+           use after error procedure on timbalqta.
+           set tutto-ok  to true.
+           evaluate status-timbalqta
+           when "35"
+                display message "File [TIMBALQTA] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [TIMBALQTA] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[TIMBALQTA] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           end-evaluate.
+ 
+      ***---
+       TIMBALLI-ERR SECTION.
+           use after error procedure on timballi.
+           set tutto-ok  to true.
+           evaluate status-timballi
+           when "35"
+                display message "File [TIMBALLI] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [TIMBALLI] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[TIMBALLI] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           end-evaluate.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = PARAGRAFO-COPY
+BEGIN-TEXT
+           copy "riempi-combo-stato.cpy".
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = RIEMPI-CHIAVE
+BEGIN-TEXT
+           inquire ef-cod-articolo, value prg-cod-articolo. 
+           inquire ef-cod-magazz,   value prg-cod-magazzino.
+           inquire ef-tipo-imballo, value prg-tipo-imballo. 
+           inquire ef-peso,         value prg-peso.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-indietro-LinkTo
+BEGIN-TEXT
+           if not scorrimento exit paragraph end-if.
+           perform RIEMPI-CHIAVE.
+
+           read progmag previous
+              at end
+                 read progmag next at end continue end-read
+           end-read.
+
+           if prg-cod-articolo not = save-cod-articolo
+              read progmag next at end continue end-read
+           end-if.
+
+           if prg-cod-magazzino not = spaces and
+              prg-tipo-imballo  not = spaces and
+              prg-peso          not = 0
+              perform FORM1-IUD-DISPLAY
+              move prg-chiave   to save-prg-chiave
+           else
+              perform RIEMPI-CHIAVE
+              read progmag invalid continue end-read
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = vprogmag-Ev-Before-Program
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-avanti-LinkTo
+BEGIN-TEXT
+           if not scorrimento exit paragraph end-if.
+
+           perform RIEMPI-CHIAVE.
+
+           read progmag next
+              at end
+                 read progmag previous at end continue end-read
+           end-read.
+
+           if prg-cod-articolo not = save-cod-articolo
+              read progmag previous at end continue end-read
+           end-if.
+
+           if prg-cod-magazzino not = spaces and
+              prg-tipo-imballo  not = spaces and
+              prg-peso          not = 0
+              perform FORM1-IUD-DISPLAY
+              move prg-chiave   to save-prg-chiave
+           else
+              perform RIEMPI-CHIAVE
+              read progmag invalid continue end-read
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-fatto-BeforeProcedure
+BEGIN-TEXT
+           modify pb-fatto, bitmap-number = 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-fatto-AfterProcedure
+BEGIN-TEXT
+           modify pb-fatto, bitmap-number = 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-voce-BeforeProcedure
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-voce-AfterProcedure
+BEGIN-TEXT
+      *<<** Default_Code **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = EF-PREZZO-FINITO-AfterProcedure
+BEGIN-TEXT
+      *<<** Default_Code **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-DaEf-1-BeforeProcedure
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-DaEf-1-AfterProcedure
+BEGIN-TEXT
+      *<<** Default_Code **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-DaEf-2-BeforeProcedure
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-DaEf-2-AfterProcedure
+BEGIN-TEXT
+      *<<** Default_Code **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Cm-1-BeforeProcedure
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Cm-1-AfterProcedure
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+
+@}}
+
+[KEY_STATUS_FIELD_FORMAT]
+PIC=9(5)
+USAGE=[None]
+
+[KEYSTATUS_CONTENT:KS1]
+CONDITION=Enter-Pushed
+VALUE=13
+
+[KEYSTATUS_CONTENT:KS2]
+CONDITION=Exit-Pushed
+VALUE=27
+
+[KEYSTATUS_CONTENT:KS3]
+CONDITION=Message-Received
+VALUE=95
+
+[KEYSTATUS_CONTENT:KS4]
+CONDITION=Event-Occurred
+VALUE=96
+
+[KEYSTATUS_CONTENT:KS5]
+CONDITION=Screen-No-Input-Field
+VALUE=97
+
+[COBOLAID_DATASET_INFO]
+COUNT=1
+NAME_0=DataSet1
+
+[DRAW_DOCUMENT_INDEX]
+OBJ_NAME_0=8001
+OBJ_ID_0=1588877741
+
+[MULTIPLE_KEY_0]
+COUNT=1
+KEY_0=prg-chiave OF progmag
+
+[DRAW_DOCUMENT_8001_1588877741]
+OBJ_NAME=8001
+OBJ_ID=1588877741
+TYPE=2
+VERSION=
+DOC_SIZE_X=5100
+DOC_SIZE_Y=5160
+PAGE_LEFT=150
+PAGE_TOP=150
+PAGE_RIGHT=1850
+PAGE_BOTTOM=2730
+MARGIN_LEFT=150
+MARGIN_TOP=150
+MARGIN_RIGHT=150
+MARGIN_BOTTOM=150
+PROP_DOCU_TYPE=ø
+PROP_DOCU_TYPE2=ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+PROP_DOCU_NAME=DataSet - DataSet1[vprogmag(GESLUX)]
+PROP_DOCU_OWNER=Person A
+PROP_DOCU_CDATE=04/23/03
+PROP_DOCU_MODIFIER=Person B
+PROP_DOCU_MDATE=04/23/03
+PROP_DOCU_DESCR=Caseaid DocuCaseaid Document
+PROP_DOCU_HEADER=Caseaid Document
+PROP_DOCU_FOOTER=Page # 
+PROP_DOCU_DIM_H=2
+PROP_DOCU_DIM_W=3
+PROP_DOCU_LOC_H=1
+PROP_DOCU_LOC_W=1
+PROP_DOCU_EDGE_T=150
+PROP_DOCU_EDGE_B=150
+PROP_DOCU_EDGE_L=150
+PROP_DOCU_EDGE_R=150
+PROP_DOCU_ZOOM=75
+PROP_DOCU_SIZE_TYPE=0
+PROP_DOCU_SIZE_PAPER=1
+PROP_DOCU_SIZE_H=2580
+PROP_DOCU_SIZE_W=1700
+PROP_DOCU_RULER_EBL=0
+PROP_DOCU_GRID_EBL=0
+PROP_DOCU_GRID=20
+PROP_DOCU_ALIGN=0
+REL_SYM_SIZE=34
+REL_SYM_INFO_L=5
+REL_SYM_INFO_X0=2301
+REL_SYM_INFO_Y0=1793246733
+REL_SYM_INFO_X1=2301
+REL_SYM_INFO_Y1=2105247019
+REL_SYM_INFO_X2=2301
+REL_SYM_INFO_Y2=1889693981
+REL_SYM_INFO_X3=2301
+REL_SYM_INFO_Y3=1720070224
+REL_SYM_INFO_X4=2301
+REL_SYM_INFO_Y4=2018492875
+
+[DRAW_BASESYMBOL_2301_1793246733]
+OBJ_NAME=2301
+OBJ_ID=1793246733
+KIND=1
+{{@LABEL_2301_1793246733
+progmag
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=16
+TOP=16
+RIGHT=416
+BOTTOM=238
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_2105247019]
+OBJ_NAME=2301
+OBJ_ID=2105247019
+KIND=1
+{{@LABEL_2301_2105247019
+articoli
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=16
+TOP=327
+RIGHT=416
+BOTTOM=549
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1889693981]
+OBJ_NAME=2301
+OBJ_ID=1889693981
+KIND=1
+{{@LABEL_2301_1889693981
+tmagaz
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=16
+TOP=600
+RIGHT=416
+BOTTOM=822
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1720070224]
+OBJ_NAME=2301
+OBJ_ID=1720070224
+KIND=1
+{{@LABEL_2301_1720070224
+timbalqta
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=573
+TOP=16
+RIGHT=973
+BOTTOM=238
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_2018492875]
+OBJ_NAME=2301
+OBJ_ID=2018492875
+KIND=1
+{{@LABEL_2301_2018492875
+timballi
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1102
+TOP=16
+RIGHT=1502
+BOTTOM=238
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DMD_DOCUMENT_0_1588877741]
+OBJ_NAME=0
+OBJ_ID=1588877741
+FILE_TITLE_TYPE=8136
+FILE_SHOW_ITEM=0
+FILE_SHOW_KEY=0
+FILE_SHOW_PIC=0
+FILE_SHOW_HEAD=0
+FILE_SHOW_LEVEL=0
+FILE_SHOW_TREE=0
+FILE_SHOW_CLPS=0
+FILE_SHOW_BMP=0
+FILE_SHOW_LINE=0
+FILE_SHOW_MINIZE=0
+
+[DMD_FILE_0_1793246733]
+OBJ_NAME=0
+OBJ_ID=1793246733
+REL_M_OBJ_ID=0
+ENTITY=progmag
+LINK=0
+LINK_NAME=
+DSN_SIZE=53
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=2
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=prg-chiave OF progmag
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1793246733
+
+@}}
+DSN_INFO_PRIMARY=1
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_2105247019]
+OBJ_NAME=0
+OBJ_ID=2105247019
+REL_M_OBJ_ID=0
+ENTITY=articoli
+LINK=0
+LINK_NAME=
+DSN_SIZE=54
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=art-chiave OF articoli
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_2105247019
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1889693981]
+OBJ_NAME=0
+OBJ_ID=1889693981
+REL_M_OBJ_ID=0
+ENTITY=tmagaz
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=mag-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1889693981
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1720070224]
+OBJ_NAME=0
+OBJ_ID=1720070224
+REL_M_OBJ_ID=0
+ENTITY=timbalqta
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=2
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=imq-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1720070224
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_2018492875]
+OBJ_NAME=0
+OBJ_ID=2018492875
+REL_M_OBJ_ID=0
+ENTITY=timballi
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=imb-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_2018492875
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=

@@ -1,0 +1,9 @@
+      *
+       01  cambia-rif-ord-reva-linkage.
+           05 cror-reva-chiave.
+              10 cror-reva-chiave-testa.
+                 15 cror-reva-anno       PIC 9(4).
+                 15 cror-reva-numero     PIC 9(8).
+              10 cror-reva-riga          PIC 9(5).
+           05                            pic 9.
+              88 cror-ricarica           value 1 false zero.

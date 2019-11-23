@@ -1,0 +1,151 @@
+       FD  articoli.
+       01 art-rec.
+           05 art-chiave.
+               10 art-codice       PIC  9(6).
+           05 art-dati.
+      *(( XFD NAME = art-descrizione-X ))
+               10 art-descrizione.
+      *(( XFD NAME = art-descrizione ))
+                   15 art-descrizione1 PIC  x(30).
+                   15 art-descrizione2 PIC  x(20).
+               10 art-settore-merceologico     PIC  9(4).
+               10 art-marca-prodotto           PIC  9(4).
+               10 art-classe-1     PIC  9(4).
+               10 art-classe-2     PIC  9(3).
+               10 art-classe-3     PIC  9(3).
+               10 art-classe-4     PIC  9(3).
+               10 art-unita-di-misura          PIC  X(2).
+               10 art-cod-fornitore            PIC  9(5).
+               10 art-gestione-utf PIC  X(1).
+                   88 art-si-utf VALUE IS "S". 
+                   88 art-misto VALUE IS "M". 
+                   88 art-no-utf VALUE IS "N". 
+               10 art-peso-utf     PIC  9(5)v9(3).
+               10 art-peso-non-utf PIC  9(5)v9(3).
+               10 art-peso-standard            PIC  9(5)v9(3).
+               10 art-imballo-standard         PIC  X(3).
+               10 art-udm-imballo  PIC  x(5).
+               10 art-codice-iva   PIC  x(3).
+               10 art-prezzo-vendita           PIC  9(9)v9(2).
+               10 art-perce-sconto-agente      PIC  9(2)v9(2).
+               10 art-prezzo-acquisto          PIC  9(9)v9(2).
+               10 art-perce-sconto-acquisto    PIC  9(2)v9(2).
+               10 art-cod-doganale PIC  9(8).
+               10 art-soggetto-imposte         PIC  X(1).
+                   88 art-si-imposte VALUE IS "S". 
+                   88 art-no-imposte VALUE IS "N". 
+               10 art-perce-imposte            PIC  9(3)v9(3).
+               10 art-perce-cou    PIC  9(5)v9(3).
+               10 art-soggetto-cobat           PIC  X(1).
+                   88 art-si-cobat VALUE IS "S". 
+                   88 art-no-cobat VALUE IS "N". 
+               10 art-amperaggio   PIC  9(3).
+               10 art-auto-moto-per-cobat      PIC  X(1).
+                   88 art-auto-cobat VALUE IS "A". 
+                   88 art-moto-cobat VALUE IS "M". 
+               10 art-note         PIC  X(30).
+               10 art-codice-ean-1 PIC  9(13).
+               10 art-codice-ean-2 PIC  9(13).
+               10 art-codice-ean-3 PIC  9(13).
+               10 art-codice-ean-4 PIC  9(13).
+               10 art-codice-ean-5 PIC  9(13).
+               10 art-foto         PIC  X(512).
+               10 art-note-agg     PIC  x(512).
+               10 art-scheda-tecnica           PIC  X(512).
+               10 art-tossicologica            PIC  x(512).
+               10 art-descrizione-2            PIC  x(50).
+               10 art-qta-epal     PIC  9(8).
+               10 art-qta-std      PIC  9(8).
+               10 art-misure.
+                   15 art-altezza      PIC  9(6)v99.
+                   15 art-larghezza    PIC  9(6)v99.
+                   15 art-profondita   PIC  9(6)v99.
+               10 art-stato        PIC  X(1).
+                   88 art-attivo VALUE IS "A". 
+                   88 art-disattivo VALUE IS "D". 
+                   88 art-bloccato VALUE IS "B". 
+               10 art-ALA          PIC  9.
+                   88 art-si-ALA VALUE IS 1. 
+                   88 art-no-ALA VALUE IS 0. 
+               10 art-gruppi       PIC  9.
+                   88 art-si-gruppi VALUE IS 1. 
+                   88 art-no-gruppi VALUE IS 0. 
+               10 art-gda          PIC  9.
+                   88 art-si-gda VALUE IS 1. 
+                   88 art-no-gda VALUE IS 0. 
+               10 art-agenti       PIC  9.
+                   88 art-si-agenti VALUE IS 1. 
+                   88 art-no-agenti VALUE IS 0. 
+               10 art-specialist   PIC  9.
+                   88 art-si-specialist VALUE IS 1. 
+                   88 art-no-specialist VALUE IS 0. 
+               10 art-estero       PIC  9.
+                   88 art-si-estero VALUE IS 1. 
+                   88 art-no-estero VALUE IS 0. 
+               10 art-gds          PIC  9.
+                   88 art-si-gds VALUE IS 1. 
+                   88 art-no-gds VALUE IS 0. 
+               10 art-scorta       PIC  s9(8).
+               10 art-prezzo-banco PIC  9(6)v9(2).
+               10 art-prz-min-vend PIC  9(5)v9(2).
+               10 art-limite-scorta            PIC  9(8).
+               10 art-peso-reale   PIC  9(5)v9(3).
+               10 art-do           PIC  9.
+                   88 art-si-do VALUE IS 1. 
+                   88 art-no-do VALUE IS 0. 
+               10 art-cod-art-frn  PIC  x(15).
+               10 art-mag-std      PIC  x(3).
+               10 art-collegato    PIC  9(6).
+               10 art-cod-desf-forn            PIC  9(5).
+               10 art-cod-prodener PIC  x(10).
+               10 art-tipo-stoc    PIC  x.
+                   88 art-confezionato VALUE IS "C" " ". 
+                   88 art-sfuso VALUE IS "S". 
+               10 art-logo-brand   PIC  X(512).
+               10 art-conf-cartone PIC  9(6).
+               10 art-cartone-UDC  PIC  9(6).
+               10 art-misure-pz.
+                   20 art-altezza-pz   PIC  9(6)v99.
+                   20 art-larghezza-pz PIC  9(6)v99.
+                   20 art-profondita-pz            PIC  9(6)v99.
+               10 art-web          PIC  9.
+                   88 art-web-si VALUE IS 1. 
+                   88 art-web-no VALUE IS 0. 
+               10 art-adr          PIC  x(15).
+               10 art-dati-comuni.
+                   15 art-data-creazione           PIC  9(8).
+                   15 art-ora-creazione            PIC  9(8).
+                   15 art-utente-creazione         PIC  X(10).
+                   15 art-data-ultima-modifica     PIC  9(8).
+                   15 art-ora-ultima-modifica      PIC  9(8).
+                   15 art-utente-ultima-modifica   PIC  X(10).
+               10 art-vuoti.
+                   15 art-peso-SHI     PIC  9(6)v999.
+                   15 art-SPI          PIC  9.
+                       88 art-SPI-si VALUE IS 1. 
+                       88 art-SPI-no VALUE IS 0. 
+                   15 art-T1           PIC  9.
+                       88 art-T1-si VALUE IS 1. 
+                       88 art-T1-no VALUE IS 0. 
+                   15 art-T2           PIC  9.
+                       88 art-T2-si VALUE IS 1. 
+                       88 art-T2-no VALUE IS 0. 
+                   15 art-T3           PIC  9.
+                       88 art-T3-si VALUE IS 1. 
+                       88 art-T3-no VALUE IS 0. 
+                   15 art-peso-GET     PIC  9(6)v999.
+                   15 art-AT           PIC  9.
+                       88 art-AT-si VALUE IS 1. 
+                       88 art-AT-no VALUE IS 0. 
+                   15 art-TEXACO       PIC  9.
+                       88 art-TEXACO-si VALUE IS 1. 
+                       88 art-TEXACO-no VALUE IS 0. 
+                   15 art-SHARK        PIC  9.
+                       88 art-SHARK-si VALUE IS 1. 
+                       88 art-SHARK-no VALUE IS 0. 
+                   15 art-litri        PIC  9(4)v999.
+                   15 art-num-vuoto-2  PIC  9(4).
+                   15 art-num-vuoto-3  PIC  9(18).
+                   15 art-note2        PIC  X(300).
+      *(( XFD NAME = art-alfa-vuoto_1 ))
+                   15 art-alfa-vuoto   PIC  X(200).

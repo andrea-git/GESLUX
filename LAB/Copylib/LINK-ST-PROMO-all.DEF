@@ -1,0 +1,8 @@
+      *
+       01 st-promo-all-linkage.
+           05 link-handle
+                      USAGE IS HANDLE OF WINDOW.
+           05 link-gdo         PIC  x(5).
+           05 link-anno        PIC  9(4).
+           05 link-mesi        PIC  9
+                      OCCURS 12 TIMES.

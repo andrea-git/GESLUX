@@ -1,0 +1,13 @@
+       01  imp-esiti-p-linkage.
+           05 imp-esiti-p-vettore        pic 9(5).
+           05 imp-esiti-p-path-orig      pic x(256).
+           05 imp-esiti-p-file-name      pic x(50).
+           05 imp-esiti-p-num-imp        pic 9(10).
+           05 imp-esiti-p-status         signed-short.
+           05 imp-esiti-p-path-err       pic x(256).
+           05 imp-esiti-p-path-err-c     pic x(256).
+           05 imp-esiti-p-path-esito     pic x(256).
+           05 imp-esiti-p-path-esito-c   pic x(256).
+
+           05 imp-esiti-p-user           pic x(10).
+

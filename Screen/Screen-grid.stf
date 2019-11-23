@@ -1,0 +1,418 @@
+*   Screen Painter STF File
+*   Version 6.0
+*   Generated Time : venerdì 3 giugno 2005 10.45.27
+*
+
+BEGIN-SPDATA-6.0A
+
+GRAPHICAL-SCREEN
+
+Begin Screen Screen1
+   PREFIX            = Screen1
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = Screen1
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 18
+   Cell Width        = 10
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = FALSE
+   Font              = Verdana/12/C0/@Occidentale
+   Font Variable     = Verdana12-Occidentale
+   Handle Variable   = Screen1-Handle
+   Height in Cells   = TRUE
+   Help ID           = 0
+   Label Offset      = 20
+   Lines             = 37,83
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = TRUE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 76,50
+   System Menu       = TRUE
+   Title             = "                                                               .:: VENDITE PRODOTTO PER MESE ::."
+   Title Bar         = TRUE
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = TRUE
+   Window Type       = Independent
+   Wrap              = FALSE
+   Event Procedure   = Screen1-Event-Proc
+   Begin Push-Button pb-fatto
+      SCREEN-COL        = 35,20
+      SCREEN-LINE       = 36,17
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-fatto
+      Bitmap            = "..\RESOURCE\FATTO.BMP"
+      Bitmap Frame      = FALSE
+      Bitmap Handle     = FATTO-BMP
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 35,20
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 27
+      Flat              = TRUE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 1
+      Line              = 36,17
+      Lines             = 1,56
+      Lines in Pixels   = 30
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 7,10
+      Size in Pixels    = 73
+      Size Unit         = Default
+      Style             = Escape Button
+      Tab Order         = 1
+      Termination Value = 0
+      Title             = "Fatto"
+      Visible           = NONE
+      Width in Cells    = FALSE
+      Before Procedure  = pb-fatto-BeforeProcedure
+      After Procedure   = pb-fatto-AfterProcedure
+   End
+   Begin Push-Button pb-indietro
+      SCREEN-COL        = 31,50
+      SCREEN-LINE       = 2,22
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-indietro
+      Bitmap            = "..\RESOURCE\VPROGMAG-INDIETRO.BMP"
+      Bitmap Frame      = TRUE
+      Bitmap Handle     = VPROGMAG-INDIETRO-BMP
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 31,50
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 67
+      Flat              = FALSE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 2
+      Line              = 2,22
+      Lines             = 3,11
+      Lines in Pixels   = 58
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = TRUE
+      Size              = 5,80
+      Size in Pixels    = 60
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 2
+      Termination Value = 0
+      Title             = "&Indietro"
+      Visible           = NONE
+      Width in Cells    = FALSE
+      Link To           = pb-indietro-LinkTo
+   End
+   Begin Push-Button pb-avanti
+      SCREEN-COL        = 40,20
+      SCREEN-LINE       = 2,22
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-avanti
+      Bitmap            = "..\RESOURCE\VPROGMAG-AVANTI.BMP"
+      Bitmap Frame      = TRUE
+      Bitmap Handle     = VPROGMAG-AVANTI-BMP
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 40,20
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 68
+      Flat              = FALSE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 3
+      Line              = 2,22
+      Lines             = 3,11
+      Lines in Pixels   = 58
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = TRUE
+      Size              = 5,80
+      Size in Pixels    = 60
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 3
+      Termination Value = 0
+      Title             = "&Avanti"
+      Visible           = NONE
+      Width in Cells    = FALSE
+      Link To           = pb-avanti-LinkTo
+   End
+   Begin Grid gd-titolo
+      SCREEN-COL        = 1,80
+      SCREEN-LINE       = 7,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = gd-titolo
+      Action            = (None)
+      Adjustable Columns = TRUE
+      Border            = Boxed
+      Cells' Setting    = ( X = 1, Y = 1, Data = "Marca" )
+      Cells' Setting    = ( X = 2, Y = 1, Data = "Codice" )
+      Cells' Setting    = ( X = 3, Y = 1, Data = "Descrizione" )
+      Cells' Setting    = ( X = 4, Y = 1, Data = "Imballo Standard" )
+      Centered Headings = TRUE
+      Color             = 0
+      Column            = 1,80
+      Column Headings   = TRUE
+      Columns' Setting  = ( X = 1, Name = col-marca, READONLY = 0 )
+      Columns' Setting  = ( PIC = "x(50)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
+      Columns' Setting  = ( DISP = 16, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 2, Name = col-codice, READONLY = 0 )
+      Columns' Setting  = ( PIC = "z(6)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 6, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 3, Name = col-des, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(50)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
+      Columns' Setting  = ( DISP = 26, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 4, Name = col-imb, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(50)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
+      Columns' Setting  = ( DISP = 20, SEPA = 5, DIVI = 1 )
+      Cursor Color      = 0
+      Cursor Frame Width = 0
+      Cursor X          = 0
+      Cursor Y          = 0
+      Destroy Type      = Automatic
+      Divider Color     = 1
+      Drag Color        = 0
+      Enable            = NONE
+      End Color         = 0
+      Font              = Verdana/12/B/C0/@Occidentale
+      Font Variable     = Verdana12B-Occidentale
+      Heading Color     = 257
+      Heading Divider Color = 1
+      Heading Font      = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hscroll           = FALSE
+      ID                = 4
+      Last Row          = 0
+      Line              = 7,00
+      Lines             = 3,22
+      Lines Unit        = Default
+      No Tab            = FALSE
+      Num Col Headings  = 1
+      Num Columns       = 4
+      Num Rows          = 2
+      Occurs            = 0
+      Paged             = FALSE
+      Row Dividers      = 1
+      Row Headings      = FALSE
+      Size              = 74,80
+      Size Unit         = Default
+      Tab Order         = 4
+      Tiled Headings    = TRUE
+      Use Tab           = FALSE
+      Virtual Width     = 68
+      Visible           = NONE
+      Vpadding          = 50
+      Vscroll           = FALSE
+      Width in Cells    = TRUE
+      Event Procedure   = gd-titolo-Event-Proc
+      Msg-Begin-Entry   = gd-titolo-Ev-Msg-Begin-Entry
+   End
+   Begin Grid gd-mov
+      SCREEN-COL        = 1,70
+      SCREEN-LINE       = 11,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = gd-mov
+      Action            = (None)
+      Adjustable Columns = FALSE
+      Border            = Boxed
+      Cells' Setting    = ( X = 1, Y = 1, Data = "Mese" )
+      Cells' Setting    = ( X = 2, Y = 1, Data = "Q.tà anno corr." )
+      Cells' Setting    = ( X = 3, Y = 1, Data = "Q.tà anno pass." )
+      Cells' Setting    = ( X = 4, Y = 1, Data = "Variazione Q.tà" )
+      Cells' Setting    = ( X = 5, Y = 1, Data = "Variazione %" )
+      Cells' Setting    = ( X = 1, Y = 2, Data = "Gennaio" )
+      Cells' Setting    = ( X = 1, Y = 3, Data = "Febbraio" )
+      Cells' Setting    = ( X = 1, Y = 4, Data = "Marzo" )
+      Cells' Setting    = ( X = 1, Y = 5, Data = "Aprile" )
+      Cells' Setting    = ( X = 1, Y = 6, Data = "Maggio" )
+      Cells' Setting    = ( X = 1, Y = 7, Data = "Giugno" )
+      Cells' Setting    = ( X = 1, Y = 8, Data = "Luglio" )
+      Cells' Setting    = ( X = 1, Y = 9, Data = "Agosto" )
+      Cells' Setting    = ( X = 1, Y = 10, Data = "Settembre" )
+      Cells' Setting    = ( X = 1, Y = 11, Data = "Ottobre" )
+      Cells' Setting    = ( X = 1, Y = 12, Data = "Novembre" )
+      Cells' Setting    = ( X = 1, Y = 13, Data = "Dicembre" )
+      Cells' Setting    = ( X = 1, Y = 14, Data = "T O T A L I" )
+      Centered Headings = TRUE
+      Color             = 0
+      Column            = 1,70
+      Column Headings   = TRUE
+      Columns' Setting  = ( X = 1, Name = col-tit, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(9)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
+      Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 2, Name = col-corr, READONLY = 0 )
+      Columns' Setting  = ( PIC = "zz.zzz.zz9", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 16, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 3, Name = col-pass, READONLY = 0 )
+      Columns' Setting  = ( PIC = "zz.zzz.zz9", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 16, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 4, Name = col-var-qta, READONLY = 0 )
+      Columns' Setting  = ( PIC = "zz.zzz.zz9", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 16, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 5, Name = col-var-perce, READONLY = 0 )
+      Columns' Setting  = ( PIC = "zz9,99", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 16, SEPA = 5, DIVI = 1 )
+      Cursor Color      = 0
+      Cursor Frame Width = 0
+      Cursor X          = 0
+      Cursor Y          = 0
+      Destroy Type      = Automatic
+      Divider Color     = 1
+      Drag Color        = 0
+      Enable            = NONE
+      End Color         = 0
+      Font              = Default Font
+      Heading Color     = 257
+      Heading Divider Color = 1
+      Heading Font      = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hscroll           = FALSE
+      ID                = 5
+      Last Row          = 0
+      Line              = 11,00
+      Lines             = 21,89
+      Lines Unit        = Default
+      No Tab            = FALSE
+      Num Col Headings  = 1
+      Num Columns       = 5
+      Num Rows          = 14
+      Occurs            = 0
+      Paged             = FALSE
+      Row Dividers      = 1
+      Row Headings      = TRUE
+      Size              = 75,00
+      Size Unit         = Default
+      Tab Order         = 5
+      Tiled Headings    = TRUE
+      Use Tab           = FALSE
+      Virtual Width     = 75
+      Visible           = NONE
+      Vpadding          = 50
+      Vscroll           = FALSE
+      Width in Cells    = TRUE
+      Event Procedure   = gd-mov-Event-Proc
+      Msg-Begin-Entry   = gd-mov-Ev-Msg-Begin-Entry
+   End
+   Begin Grid gd-giac
+      SCREEN-COL        = 1,70
+      SCREEN-LINE       = 34,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = gd-giac
+      Action            = (None)
+      Adjustable Columns = FALSE
+      Border            = Boxed
+      Cells' Setting    = ( X = 1, Y = 1, Data = "Giacenza attuale" )
+      Centered Headings = FALSE
+      Color             = 0
+      Column            = 1,70
+      Column Headings   = FALSE
+      Columns' Setting  = ( X = 1, Name = col-1, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(50)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
+      Columns' Setting  = ( DISP = 58, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 2, Name = col-giac, READONLY = 0 )
+      Columns' Setting  = ( PIC = "zz.zzz.zz9", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 16, SEPA = 5, DIVI = 1 )
+      Cursor Color      = 0
+      Cursor Frame Width = 0
+      Cursor X          = 0
+      Cursor Y          = 0
+      Destroy Type      = Automatic
+      Divider Color     = 1
+      Drag Color        = 0
+      Enable            = NONE
+      End Color         = 0
+      Font              = Default Font
+      Heading Color     = 257
+      Heading Divider Color = 1
+      Heading Font      = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hscroll           = FALSE
+      ID                = 6
+      Last Row          = 0
+      Line              = 34,00
+      Lines             = 1,61
+      Lines Unit        = Default
+      No Tab            = FALSE
+      Num Col Headings  = 0
+      Num Columns       = 2
+      Num Rows          = 1
+      Occurs            = 0
+      Paged             = FALSE
+      Row Dividers      = 1
+      Row Headings      = FALSE
+      Size              = 75,00
+      Size Unit         = Default
+      Tab Order         = 6
+      Tiled Headings    = TRUE
+      Use Tab           = FALSE
+      Virtual Width     = 75
+      Visible           = NONE
+      Vpadding          = 50
+      Vscroll           = FALSE
+      Width in Cells    = TRUE
+   End
+End

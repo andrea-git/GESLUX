@@ -1,0 +1,11 @@
+       01  st-bozze-linkage.
+           05 stobz-da-teva-chiave.
+               10 stobz-da-teva-anno       PIC  9(4).
+               10 stobz-da-teva-numero     PIC  9(8).
+           05 stobz-a-teva-chiave.
+               10 stobz-a-teva-anno       PIC  9(4).
+               10 stobz-a-teva-numero     PIC  9(8).
+           05 st-bozze-selprint-linkage.
+              10 st-bozze-selprint-stampante   pic x(50).
+              10 st-bozze-selprint-num-copie   pic 9(3).
+

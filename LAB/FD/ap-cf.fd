@@ -1,0 +1,12 @@
+       FD  ap-cf.
+       01 ap-rec.
+           05 ap-chiave.
+               10 ap-tipo-CF       PIC  x.
+                   88 ap-cliente VALUE IS "C". 
+                   88 ap-fornitore VALUE IS "F". 
+               10 ap-codice-clifor PIC  x(8).
+           05 ap-dati.
+               10 ap-segno         PIC  x.
+                   88 ap-dare VALUE IS "D". 
+                   88 ap-avere VALUE IS "A". 
+               10 ap-saldo         PIC  9(15)v99.

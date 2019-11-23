@@ -1,0 +1,314 @@
+; CaseMaker Totem Layout Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[MONITOR_FILE]
+
+
+[DATALAYOUT_CONTENT]
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E3AA205445-372-27606213
+[DSNENTITY_]
+[CStoAcucobolFileDefinition_]
+m_nType=1
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+m_strPrefix=TBLME
+{{@FD_m_strDescription
+
+ Record per tabelle gruppi merceologici
+
+
+ s.r. 1922 - Aggiunto campo "Codice reparto" per registratori di cassa       |or 22/08/2007 14.00
+
+ Ticket 1128                                                                 |or 05/08/2008
+ Ripristinata gestione vetrerie (ex modulo 71)
+ I campi precedentemente contrassegnati da |not in use vengono di
+ nuovo utilizzati in gestione anagrafica articoli e gestione documenti.
+
+ tplvar zmm_title=Tabella gruppi merceologici
+ tplvar zmm_ver=09.01.00
+ tplvar zmm_class=anagraphic
+ tplvar zmm_returnkey=tblme-codice2
+
+ ZoomFields seq:
+   01.tblme-codice2
+   02.tblme-descrizione1
+   03.tblme-descrizione2
+   04.tblme-nomenclatura
+
+
+@}}
+[FDITEM0_]
+m_strName=record-tblme
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_
+
+@}}
+[FDITEM1_]
+m_strName=tblme-codice
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1_
+
+@}}
+[FDITEM2_]
+m_strName=tblme-codice1
+m_strRawPic=x(02)
+m_strPic=X(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM2_
+
+@}}
+[FDITEM3_]
+m_strName=tblme-codice2
+m_strRawPic=x(20)
+m_strPic=X(20)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM3_
+$GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=20,zmm_align=L,zmm_pos=1,zmm_entity=tblme
+@}}
+[FDITEM4_]
+m_strName=resto-record-tblme
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM4_
+
+@}}
+[FDITEM5_]
+m_strName=tblme-descrizione1
+m_strRawPic=x(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM5_
+$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=2
+@}}
+[FDITEM6_]
+m_strName=tblme-descrizione2
+m_strRawPic=x(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM6_
+$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=3
+@}}
+[FDITEM7_]
+m_strName=tblme-nomenclatura
+m_strRawPic=x(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM7_
+$GEN zmm=on,zmm_title=Nomenclatura,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=4
+@}}
+[FDITEM8_]
+m_strName=tblme-coefficiente
+m_strRawPic=9(05)v9(04)
+m_strPic=9(05)V9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM8_
+$GEN type=num,dec=4,size=13
+
+@}}
+[FDITEM9_]
+m_strName=tblme-minimo-fatturabile-a
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM9_
+
+@}}
+[FDITEM10_]
+m_strName=tblme-minimo-fatturabile
+m_strRawPic=9(12)v9(04)
+m_strPic=9(12)V9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM10_
+$GEN type=num,dec=4,size=21
+@}}
+[FDITEM11_]
+m_strName=tblme-dimensione1-minima
+m_strRawPic=9(09)
+m_strPic=9(09)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM11_
+$GEN type=num,dec=0,size=12
+
+@}}
+[FDITEM12_]
+m_strName=tblme-dimensione2-minima
+m_strRawPic=9(09)
+m_strPic=9(09)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM12_
+$GEN type=num,dec=0,size=12
+@}}
+[FDITEM13_]
+m_strName=tblme-flag-tabella-e
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM13_
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+@}}
+[FDITEM14_]
+m_strName=tblme-flag-tabella-e-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "S"
+{{@DataItem_m_strDescriptionFDITEM14_
+
+@}}
+[FDITEM15_]
+m_strName=tblme-cod-reparto
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM15_
+        10  tblme-filler                    pic  x(1206).               |or 22/08/2007 14.00
+@}}
+[FDITEM16_]
+m_strName=tblme-flag-vetrerie
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM16_
+
+@}}
+[FDITEM17_]
+m_strName=tblme-flag-vetrerie-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM17_
+
+@}}
+[FDITEM18_]
+m_strName=tblme-flag-vetrerie-ko
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM18_
+
+@}}
+[FDITEM19_]
+m_strName=tblme-filler
+m_strRawPic=x(1202)
+m_strPic=X(1202)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM19_
+
+        10  tblme-filler                    pic  x(1203).         |or 22/08/2007 14.00  |or 05/08/2008
+@}}
+[FDITEM20_]
+m_strName=tblme-filler-ris
+m_strRawPic=X(37)
+m_strPic=X(37)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM20_
+
+@}}
+[FDITEM21_]
+m_strName=tblme-cod-soggetto
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM21_
+$GEN type=combobox,comboclass=tblme99_tipo_soggetto
+@}}
+[FDITEM22_]
+m_strName=tblme-cod-soggetto-alt
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=space
+{{@DataItem_m_strDescriptionFDITEM22_
+
+@}}
+[FDITEM23_]
+m_strName=tblme-cod-soggetto-bat
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="BAT"
+{{@DataItem_m_strDescriptionFDITEM23_
+
+@}}
+[FDITEM24_]
+m_strName=tblme-cod-soggetto-oli
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="OLI"
+{{@DataItem_m_strDescriptionFDITEM24_
+
+@}}
+[CStoAcucobolSL_]
+m_nType=1
+m_bOptional=1
+m_strAssignToName="TBLME"
+m_nDevice=4
+m_nFormat=3
+m_nAccessMode=3
+m_strFileStatus=STATUS-TBLME
+m_nNumber=1
+m_nCompression=70
+{{@SL_m_strDescription
+
+
+
+@}}
+[SLPKEY_]
+m_strName=TBLMe-CODICE
+m_bUnique=1
+{{@Key_m_strDescription
+
+@}}
+[SLKEYATOM0_]
+m_strName=TBLMe-CODICE
+[SLINDEX0_]
+m_strName=TBLME-CODICE-01
+m_bUnique=1
+{{@Key_m_strDescriptionSLINDEX0_
+
+@}}
+[SLKEYATOM0_SLINDEX0_]
+m_strName=TBLME-CODICE1
+[SLKEYATOM1_SLINDEX0_]
+m_strName=TBLME-DESCRIZIONE1
+[SLKEYATOM2_SLINDEX0_]
+m_strName=TBLME-CODICE2

@@ -1,0 +1,10 @@
+      *(( XFD FILE = tmp-f-disp ))
+       FD  tmp-f-disp.
+       01 tmfd-rec.
+           05 tmfd-chiave.
+               10 tmfd-articolo    PIC  9(6).
+               10 tmfd-prezzo      PIC  9(9)v99.
+               10 tmfd-codice      PIC  9(15).
+           05 tmfd-dati.
+               10 tmfd-disponibilita           PIC  9(9).
+               10 tmfd-lead-time   PIC  9(3).

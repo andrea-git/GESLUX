@@ -1,0 +1,605 @@
+*
+*    societa' gestite         tipo record=DI
+*
+*
+* tplvar zmm_title=Società gestite
+* tplvar zmm_ver=09.01.00
+* tplvar zmm_class=anagraphic
+*
+* ds 12.10.04 inserito valore I nella variabile DOCDI-REGISTRO-LIQUIDAZIONE
+* 31.01.05 - aggiunto campo "visualizza solo email predisposte dall'utente" (pg)
+* 01.06.05 - aggiunto campo "attiva log invio email" (pg)
+* 11.01.06 - aggiunto campo "blocco q.tà"                                                          |pm 11/01/2006 10.41
+* 01.02.06 - aggiunto campo "posizione taglia" (nb)
+* aggiunto campo "Elabora allegati"                                                                |ms 07/06/06 15.12
+*
+* ampliato DAB                                                                                     | mxm 08/09/2006 8.41
+*
+* valuta di conto                                                                                  | mxm 15/03/2007 8.57
+*
+* s.r. 1507 - allungato il codice di iscrizione CCIAA da 10 a 11 caratteri in quanto corrisponde alla partita iva
+*             aggiunta la provincia del registro delle imprese                                     |or 12/03/07   15.30
+* aggiunti campi per l'impegno alla presentazione telematica: lav.3787                             |sq 11/07/2007
+* cambiato "type=date" in "type=date," per generare correttamente le date che altrimenti non erano |sq 17/07/2007 11.44
+* visualizzate: lav.4111                                                                           |sq 27/08/2007 14.24
+*
+* punto vendita: aggiunto flag "accorpa scritture contabili corr.giornalieri"                      | mxm 17/10/2007 17.12
+* punto vendita: aggiunto flag "contropartite vendite differenziate per articoli"                  | mxm 17/10/2007 17.12
+*
+* s.r. 1101 - inserita richieste ai fini RAEE :                                                    |or 14/11/2007
+*             1 - se ditta produttrice e/o rivenditore                                             |or 14/11/2007
+*             2 - se ditta produttrice > codice produttore                                         |or 14/11/2007
+*------------------------------------------------------------------------------------------------------------------------
+* lav.4443 sr.2256 (produzione documenti da scontrino)                                             | mxm 23/01/2008 10.05
+*------------------------------------------------------------------------------------------------------------------------
+* lav.4451 sr.2242 inserimento nuovo campo per comunicazione iva annuale    |ds 25/01/2008 9.58
+*------------------------------------------------------------------------------------------------------------------------
+* tk.805 (agg.to magazzino in tempo reale da vendita al banco)                                     | mxm 14/05/2008 9.35
+* nuova colonna docdi-magscr-realtime
+*------------------------------------------------------------------------------------------------------------------------
+* Tk 1023 - (input porta smtp in anagrafica della ditta)                                            |ms 27/06/2008 16.54
+*            nuova colonna "docdi-smtp-port"
+*------------------------------------------------------------------------------------------------------------------------
+* Tk 433 - esclusione omaggi - sconti merce dal warehouse delle vendite                            |ms 04/12/2008 11.29
+*        - nuova colonna "docdi-exclude-omaggi-dw"
+*        - aggiunti livelli 88 per colonna "docdi-periodicita-iva"
+*------------------------------------------------------------------------------------------------------------------------
+* Tk 240 - new prima nota                                                                          |ms 19/11/2008 15.57
+*        - aggiunti livelli 88 per colonna "docdi-protocollo-vendite"
+*        - nuova colonna "docdi-squad-pnt"
+*------------------------------------------------------------------------------------------------------------------------
+* Ticket 1780 - aggiunto campo docdi-data-inizio-procedura per indicare l'inizio di una eventuale  |ds 01/04/2009 9.20
+*               procedura concorsuale o esecutiva                                                  |DS 01/04/2009 9.20
+*------------------------------------------------------------------------------------------------------------------------
+* tk. 1704 - Nuovi data warehouse via Kettle                                                       | mxm 07/09/2009 11.22
+*            aggiunto docdi-ktrun flag di estrazione verso warehosue
+*------------------------------------------------------------------------------------------------------------------------
+* ticket 1857 - aggiunto flag "invio a repository"                                                 |gm 05/10/2009 16.26
+*------------------------------------------------------------------------------------------------------------------------
+* ticket 2312 - acquisizione campi dati 'Registro Imprese' per norma                               |mc 22/10/2009 14.43
+*               lex.nuova norma lex. 88/09 art. 42                                                 |mc 22/10/2009 14.43
+*               Inserito livello 88 per il campo docdi-stampa-partita-iva                          |mc 22/10/2009 14.43
+*               Inserito livello 88 per il campo docdi-capitale-versato                            |mc 22/10/2009 14.43
+*------------------------------------------------------------------------------------------------------------------------
+* tk.2779 - Eseguire spedizione mail via CblJmail.jar                                              | mxm 25/02/2010
+*           .nuovi campi
+*            docdi-sendmail-ssl       trasmetti mail via connessione SSL
+*            docdi-sendmail-receipt   richiedi ricevuta di lettura per le mail trasmesse
+*------------------------------------------------------------------------------------------------------------------------
+* Tk 3194 - Black List                                                                            | scamar 09/07/2010 11:15:29
+*         - aggiunti nuovi campi per la compilazione del frontespizio
+*           del modello BlackList
+*         - corretta clausola di generazione per campo docdi-tipo-fornitore-iva
+*------------------------------------------------------------------------------------------------------------------------
+* Tk 3266 - In importazione documenti di vendita raggruppare le righe omogenee con taglie in una solo riga doc.   |or 30/08/2010
+*         - aggiunto nuovo check box che permette in fase di importazioone documenti
+*           di vendita con taglie (CARDOV03) di accumulare le quantità ricevute
+*           per righe omogenee in un'unica riga di vendita che riepiloga tutte
+*           le quantità per taglia.
+*------------------------------------------------------------------------------------------------------------------------
+* Tk 3594 Primanota: registrazione pagamento/incasso con oscillazione cambi                          | scamar 25/02/2011 09:29:35
+*                    . nuovo campo "docdi-richiedi-cambio"
+*------------------------------------------------------------------------------------------------------------------------
+* tk.3630 - Comunicazioni telematiche (operazioni > 3000 euro)
+*           .nuovo campo data inizio applicazione 122/2010 su scontrino                              | maxime 15/04/2011 
+*           .nuovo campo applica 122/2010 a tutti i tipi pagamento                                   | maxime 15/04/2011 
+*------------------------------------------------------------------------------------------------------------------------
+* tk.3881 - Allineare i campi del tracciato record del file DOCDI con quello della release 2012/2011  | rososv 11/05/2011 15:31:07
+* - Release 2009.01 e 2010.00:
+*           . i campi aggiunti per il ticket 3194 (black list) hanno creato un disallineamento con il 
+*             tracciato delle release 2011.00, 2012.00, wip.
+*             Nella 2009.01 e nella 2010.00, infatti, mancano le implementazioni portate con il ticket 2779,
+*             che aggiungono i due nuovi campi "docdi-sendmail-ssl" e "docdi-sendmail-receipt" prima
+*             di quelli della black list.
+*             Occorre quindi inserire i campi "docdi-sendmail-ssl" e "docdi-sendmail-receipt" anche se
+*             non utilizzati ed eseguire un programma di migrazione (S_MIG_DOC) per sciftare di due posizioni
+*             i valori inerenti la black list.
+*             Il programma di migrazione può essere eseguito UNA SOLA VOLTA.
+*             Per questo motivo viene aggiunto lo switch "docdi-mig_tk3881" che viene valorizzato a true
+*             in fase di migrazione e, se già valorizzato, esclude il record da una futura migrazione.
+*             Il programma R_HNDPOST_DOC si preoccupa di valorizzare a true il nuovo flag in caso
+*             di creazione nuovo record (file-write), per evitare che venga sottoposto a migrazione
+*             che rovinerebbe il contenuto dei campi della black list.
+* - Release 2011.00 2012.00 wip:
+*           . i campi aggiunti per il ticket 3194 (black list) sono stati inseriti dopo "docdi-sendmail-ssl" 
+*             e "docdi-sendmail-receipt" (ticket 2779).
+*             Questo ha creato un disallineamento con le release 2009.01 e 2010.01, non aggiornate con
+*             il ticket 2779.
+*             Con il ticket 3881 è stata eseguita un'operazione di allineamento sulle release 2009.01 e 
+*             2010.01, con relativo programma di migrazione per salvare il contenuto dei campi della
+*             black list.
+*             Sulle release 2009.01 e 2010.01 è stato aggiunto lo switch "docdi-mig_tk3881" per non 
+*             permettere una seconda migrazione del record.
+*             Nelle release 2011.00, 2012.00 e wip viene aggiunto lo switch "docdi-mig_tk3881" per
+*             pareggiare il record.
+*             Il programma R_HNDPOST_DOC si preoccupa di valorizzare sempre a true il nuovo flag 
+*             in quanto queste release non necessitano di alcuna migrazione.
+*------------------------------------------------------------------------------------------------------------------------
+* tk 3097 - Inserimento righe Iva/primanota in nuova Prima Nota                                      | scamar 18/05/2011 10:32:10
+*           . new column "docdi-zucchetti-mode"    
+*           . rettifica filler    
+*------------------------------------------------------------------------------------------------------------------------
+* tk 3673 - tracciabilità flussi finanziari - CIG e CUP su documenti                                 | suadal 06/06/2011 10:49:23
+*         - aggiunto nuovo check-box docdi-contratti-pubblici 
+*------------------------------------------------------------------------------------------------------------------------
+* tk 3958 - Nuove disposizioni normativa antievasione (122/2010) - telematico operazioni > 3000 euro
+*                                                                                                    | rososv 13/06/2011 10:11:54
+*           CAMPO "DOCDI-1222010-ALLPAGS" : NON VIENE PIU' UTILIZZATO IN GESTIONE DITTA
+*           IN SEGUITO A NUOVE SPECIFICHE DELLA NORMATIVA CHE LO RENDONO OBSOLETO
+
+*------------------------------------------------------------------------------------------------------------------------
+* tk 4040 - invii mail fatti con Javamail verso sistemi Mac causano ricezione mail priva di allegato. | scamar 26/08/2011
+*           Sistema interessato   Mac OS 10.5.8 – MAIL ver. 3.6                                      
+*          (Mac OS 10.4.11 – MAIL ver. 2.1.3 riceve regolarmente).
+*          l'utilizzo della SEE32 per l'invio non produce questo tipo di problema
+*          . new column "docdi-force-multipart-mixed"
+
+
+01  record-docdi.
+    05  docdi-codice.
+        10  docdi-codice1           pic  x(02).
+*
+*$GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=08,zmm_align=L,zmm_pos=1,zmm_entity=docdi
+        10  docdi-codice2           pic  x(08).
+        10  docdi-codice3           pic  9(04).
+    05  resto-record-docdi.
+*
+*$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=2
+        10  docdi-nome1             pic  x(30).
+*
+*$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=3
+        10  docdi-nome2             pic  x(30).
+        10  docdi-via               pic  x(30).
+        10  docdi-cap               pic  x(05).
+        10  docdi-citta             pic  x(30).
+        10  docdi-provincia         pic  x(02).
+        10  docdi-via-f             pic  x(30).
+        10  docdi-cap-f             pic  x(05).
+        10  docdi-citta-f           pic  x(30).
+        10  docdi-provincia-f       pic  x(02).
+*
+*$GEN zmm=on,zmm_title=Partita IVA,zmm_datatype=x,zmm_size=11,zmm_align=L,zmm_pos=4
+        10  docdi-partita-iva       pic  x(11).
+*$GEN zmm=on,zmm_title=Codice fiscale,zmm_datatype=x,zmm_size=16,zmm_align=L,zmm_pos=5
+        10  docdi-codice-fiscale    pic  x(16).
+*$GEN type=checkbox,truevalue="S", falsevalue=" "
+        10  docdi-persona-fisica    pic  x(01).
+            88  docdi-persona-fisica-88   value "S" " ".
+        10  docdi-comune-nascita    pic  x(30).
+* copy "groupdate.xfc". | DBMaker
+        10  docdi-data-nascita.
+$XFD  NAME=DOCDI-NASCITA-AA
+            15  aa                  pic  9(04).
+$XFD  NAME=DOCDI-NASCITA-MM
+            15  MM                  PIC  9(02).
+$XFD  NAME=DOCDI-NASCITA-GG
+            15  GG                  PIC  9(02).
+        10  filler redefines DOCDI-DATA-nascita.                                                   | mxm 08/09/2006 8.44
+*$GEN type=date,
+            15  docdi-data-nascita-n          pic 9(08).
+
+        10  DOCDI-PROVINCIA-NASCITA PIC  X(02).
+*$GEN type=radiobutton,value_1="M",image_1=1,value_2="F",image_2=2
+        10  DOCDI-SESSO             PIC  X(01).
+            88  DOCDI-SESSO-88      VALUE "M" "F" " ".
+            88  DOCDI-SESSO-88-M    VALUE "M".
+        10  DOCDI-PREFISSO-TELEFONO PIC  X(04).
+        10  DOCDI-NUMERO-TELEFONO   PIC  X(10).
+*$GEN type=num,dec=02,size=21
+        10  DOCDI-CAPITALE-SOCIALE  PIC S9(13)V9(02) SIGN TRAILING SEPARATE.
+        10  DOCDI-TRIBUNALE-CITTA   PIC  X(20).
+        10  DOCDI-TRIBUNALE-SOC     PIC  X(10).
+        10  DOCDI-TRIBUNALE-VOL     PIC  X(10).
+        10  DOCDI-TRIBUNALE-FAS     PIC  X(10).
+        10  DOCDI-CCIAA-old         PIC  X(10).                                                    |or 12/03/07   15.30
+* copy "groupdate.xfc". | DBMaker
+        10  DOCDI-DATA-INIZIO-ATTIVITA.
+$XFD  NAME=INIZIO-ATTIVITA-AA
+            15  AA                  PIC  9(04).
+$XFD  NAME=INIZIO-ATTIVITA-MM
+            15  MM                  PIC  9(02).
+$XFD  NAME=INIZIO-ATTIVITA-GG
+            15  GG                  PIC  9(02).
+        10  filler redefines DOCDI-DATA-INIZIO-ATTIVITA.                                           | mxm 08/09/2006 8.44
+*$GEN type=date,
+            15  docdi-data-inizio-attivita-n  pic 9(08).                                           | mxm 08/09/2006 8.45
+
+        10  DOCDI-CODICE-ATTIVITA   PIC  X(05).
+        10  DOCDI-DESCRIZIONE-ATTIVITA   PIC  X(30).
+        10  DOCDI-NATURA-GIURIDICA  PIC  X(02).
+        10  DOCDI-ESATTORIA         PIC  X(20).
+        10  DOCDI-COMUNE-ESATTORIA  PIC  X(20).
+        10  DOCDI-CODICE-SIA        PIC  X(05).
+*$GEN type=radiobutton,value_1=" ",image_1=1,value_2="M",image_2=2,value_3="T",image_3=3
+        10  DOCDI-PERIODICITA-IVA   PIC  X(01).
+            88  DOCDI-PERIODICITA-IVA-88           VALUE "M" "T" " ".
+            88  docdi-periodicita-iva-mensile      value "M".                                      |ms 04/12/2008 14.11
+            88  docdi-periodicita-iva-trimestrale  value "T".                                      |ms 04/12/2008 14.11
+            88  docdi-periodicita-iva-nessuna      value space.                                    |ms 04/12/2008 14.11
+
+
+        10  DOCDI-ARCHIVI           PIC  X(30).
+* copy "groupdate.xfc". | DBMaker
+        10  DOCDI-DATA-GIORNALE.
+$XFD  NAME=DOCDI-GIORNALE-AA
+            15  AA                  PIC  9(04).
+$XFD  NAME=DOCDI-GIORNALE-MM
+            15  MM                  PIC  9(02).
+$XFD  NAME=DOCDI-GIORNALE-GG
+            15  GG                  PIC  9(02).
+        10  filler redefines DOCDI-DATA-GIORNALE.                                                  | mxm 08/09/2006 8.44
+*$GEN type=date,
+            15  docdi-data-giornale-n   pic 9(08).                                                 | mxm 08/09/2006 8.45
+*$GEN type=num,dec=0,size=06
+        10  DOCDI-GIORNI-CLIENTI    PIC  9(04).
+*$GEN type=num,dec=0,size=06
+        10  DOCDI-GIORNI-FORNITORI  PIC  9(04).
+*$GEN type=checkbox,truevalue="S", falsevalue=" "
+        10  DOCDI-INTESTAZIONE      PIC  X(01).
+            88  DOCDI-INTESTAZIONE-88  VALUE "S" " ".
+*$GEN type=checkbox,truevalue="S", falsevalue=" "
+        10  DOCDI-AGGIORNAMENTI     PIC  X(01).
+            88  DOCDI-AGGIORNAMENTI-88  VALUE "S" " ".
+*$GEN type=checkbox,truevalue="S", falsevalue=" "
+        10  DOCDI-VALUTA            PIC  X(01).
+            88  DOCDI-VALUTA-88     VALUE "S" " ".
+*$GEN type=num,dec=0,size=04
+        10  DOCDI-GIORNI-RISCHIO    PIC  9(03).
+        10  DOCDI-COD-CONCESSIONE   PIC  X(03).
+        10  DOCDI-TRIBUTO-IVA       PIC  X(04).
+*$GEN type=code,entity=mas
+        10  DOCDI-COD-ARR           PIC  X(08).
+
+        10  docdi-tabella-ma-x.                                                                    | mxm 08/09/2006 8.51
+            15  DOCDI-TABELLA-MA        OCCURS 10.
+*$GEN entity=tblma
+                20  DOCDI-CODICE-MA     PIC  X(03).
+        10  filler redefines docdi-tabella-ma-x.                                                   | mxm 08/09/2006 8.51
+*$GEN type=code,entity=tblma,blanknull=on
+            15  docdi-codice-ma-01      pic x(03).
+*$GEN type=code,entity=tblma,blanknull=on
+            15  docdi-codice-ma-02      pic x(03).
+*$GEN type=code,entity=tblma,blanknull=on
+            15  docdi-codice-ma-03      pic x(03).
+*$GEN type=code,entity=tblma,blanknull=on
+            15  docdi-codice-ma-04      pic x(03).
+*$GEN type=code,entity=tblma,blanknull=on
+            15  docdi-codice-ma-05      pic x(03).
+*$GEN type=code,entity=tblma,blanknull=on
+            15  docdi-codice-ma-06      pic x(03).
+*$GEN type=code,entity=tblma,blanknull=on
+            15  docdi-codice-ma-07      pic x(03).
+*$GEN type=code,entity=tblma,blanknull=on
+            15  docdi-codice-ma-08      pic x(03).
+*$GEN type=code,entity=tblma,blanknull=on
+            15  docdi-codice-ma-09      pic x(03).
+*$GEN type=code,entity=tblma,blanknull=on
+            15  docdi-codice-ma-10      pic x(03).
+*$GEN type=code,entity=tblpc
+        10  DOCDI-TBLPC-CLI         PIC  X(04).
+*$GEN type=code,entity=tblce
+        10  DOCDI-TBLCE-CLI         PIC  X(08).
+*$GEN type=code,entity=tblpc
+        10  DOCDI-TBLPC-FRN         PIC  X(04).
+*$GEN type=code,entity=tblce
+        10  DOCDI-TBLCE-FRN         PIC  X(08).
+*$GEN type=checkbox,truevalue="S", falsevalue=" "
+        10  DOCDI-PROPOSTA-DOCA     PIC  X(01).
+            88  DOCDI-PROPOSTA-DOCA-88  VALUE " ", "S".
+        10  DOCDI-FAX                       PIC  X(15).
+        10  DOCDI-TELEX                     PIC  X(15).
+        10  DOCDI-P-IVA-CITTA               PIC  X(30).
+*$GEN type=radiobutton,value_1=" ",image_1=1,value_2="O",image_2=2,value_3="S",image_3=3
+        10  DOCDI-PROFESSIONISTA            PIC  X(01).
+            88  DOCDI-PROFESSIONISTA-88 VALUE " ", "S", "O".
+*$GEN type=checkbox,truevalue="S", falsevalue=" "
+        10  docdi-lifo                      pic  x(01).
+            88  docdi-lifo-88               value "S" " ".
+            88  docdi-lifo-gruppi-si        value "S" false space.                                 |pm 22/08/2007 15.34
+*$GEN type=num,dec=0,size=03
+        10  DOCDI-COLORE                    PIC  9(02).
+            88  DOCDI-COLORE-88                 VALUE 0 06 THRU 14.
+*$GEN type=checkbox,truevalue="S", falsevalue=" "
+        10  DOCDI-PROTOCOLLO-VENDITE        PIC  X(01).
+            88  DOCDI-PROTOCOLLO-VENDITE-88       VALUE "S" " ".
+            88  docdi-protocollo-vendite-88-on    value "S".                                       |ms 19/11/2008 15.55
+            88  docdi-protocollo-vendite-88-off   value " ".                                       |ms 19/11/2008 15.55
+
+
+
+*$GEN type=checkbox,truevalue="S", falsevalue=" "
+        10  docdi-chiudi-ordine             pic  x(01).
+            88  docdi-chiudi-ordine-88          value "S" " ".
+*$GEN type=checkbox,truevalue="S", falsevalue=" "
+        10  docdi-stampa-partita-iva        pic  x(01).
+            88  docdi-stampa-partita-iva-88     value "S" " ".
+            88  docdi-stampa-partita-iva-si     value "S".                                         |mc 22/10/2009 14.43
+*$GEN type=code,entity=mas
+        10  docdi-mas-utile-precedente      pic  x(08).
+*$GEN type=code,entity=mas
+        10  docdi-mas-perdita-precedente    pic  x(08).
+*$GEN type=checkbox,truevalue="N", falsevalue=" "
+        10  docdi-val-stat-vendite          pic  x(01).
+            88  docdi-val-stat-vendite-88   value "N", " ".
+*$GEN type=checkbox,truevalue="N", falsevalue=" "
+        10  docdi-val-stat-acquisti         pic  x(01).
+            88  docdi-val-stat-acquisti-88  value "N", " ".
+$XFD  NAME=DOCDI-AGG-ACQ
+*$GEN type=checkbox,truevalue="S", falsevalue=" "
+        10  docdi-aggiornamenti-acq         pic  x(01).
+            88  docdi-aggiornamenti-acq-88      value "S" " ".
+*$GEN type=code,entity=tblva
+        10  docdi-tblva-lire                pic  x(03).
+*$GEN type=code,entity=mas
+        10  docdi-mas-euro                  pic  x(08).
+        10  docdi-carica-iva                pic  x(01).
+$XFD  NAME=DOCDI-COD-FIS-IVA
+        10  docdi-codice-fiscale-iva        pic  x(16).
+*$GEN type=checkbox,truevalue=" ", falsevalue="N"
+        10  DOCDI-ULTIMO-MESE-LIFO          PIC  X(01).
+            88  DOCDI-ULTIMO-MESE-LIFO-88       VALUE "N" " ".
+*$GEN type=code,entity=ban
+        10  DOCDI-BAN-CODICE                PIC  X(08).
+*$GEN type=radiobutton,value_1=" ",image_1=1,value_2="P",image_2=2
+        10  DOCDI-ORDINE-GIORNALE           PIC  X(01).
+            88  DOCDI-ORDINE-GIORNALE-88        VALUE "P" " ".
+            88  DOCDI-ORDINE-GIORNALE-88-P      VALUE "P".
+*$GEN type=code,entity=tbliv
+        10  DOCDI-TBLIV-CODICE              PIC  X(03).
+*|****************$GEN type=radiobutton,value_1=0,image_1=1,value_2=1,image_2=2,value_2=10,image_2=3
+*$GEN type=radiobutton,value_1=0,image_1=1,value_2=1,image_2=2,value_3=10,image_3=3
+        10  DOCDI-TIPO-FORNITORE-IVA        PIC  9(02).
+*
+* obsoleti                                                                                         | mxm 26/02/2007 17.27
+* obsoleti                                                                                         | mxm 26/02/2007 17.27
+* obsoleti                                                                                         | mxm 26/02/2007 17.27
+*
+***        10  DOCDI-DOMINIO-WWP               PIC  X(30).                                         | mxm 26/02/2007 17.27
+***        10  DOCDI-CARTELLA-WWP              PIC  X(50).                                         | mxm 26/02/2007 17.27
+        10  filler                          PIC  X(30).                                            | mxm 26/02/2007 17.27
+        10  filler                          PIC  X(50).                                            | mxm 26/02/2007 17.27
+*
+* obsoleti                                                                                         | mxm 26/02/2007 17.27
+* obsoleti                                                                                         | mxm 26/02/2007 17.27
+* obsoleti                                                                                         | mxm 26/02/2007 17.27*
+*
+*
+*
+        10  DOCDI-INIZIO-CODICE-WWP         PIC  X(03).         | non usato (obsoleto) mxm 11.11.02
+        10  DOCDI-FINE-CODICE-WWP           PIC  X(03).         | non usato (obsoleto) mxm 11.11.02
+*$XFD  NAME=DOCDI-COD-GIOVE                                     | ds 18.09.03
+*       10  DOCDI-CODICE-AZIENDA-GIOVE      PIC  9(05).         | ds 18.09.03
+        10  DOCDI-FILLER                    PIC  X(05).         | ds 18.09.03
+$XFD  NAME=DOCDI-COD-SIPED
+*$GEN type=num,dec=0,size=08
+        10  DOCDI-CODICE-AZIENDA-SIPED      PIC  9(06).
+*
+*campi per collegamento WE (ac)
+*
+***     10  DOCDI-WE-SERVER                 PIC  X(64).    | mxm 13.05.03
+***     10  DOCDI-WE-USER                   PIC  X(20).    | mxm 13.05.03
+        10  DOCDI-WE-SERVER                 PIC  X(42).    | mxm 13.05.03
+        10  DOCDI-WE-USER                   PIC  X(42).    | mxm 13.05.03
+
+        10  DOCDI-WE-RICHIESTA-PASSWORD     PIC  9(01).
+            88  DOCDI-WE-RICHIESTA-PASSWORD-88  VALUE 1 FALSE 0.
+        10  DOCDI-WE-PASSWORD               PIC  X(20).
+        10  DOCDI-WE-E-MAIL                 PIC  X(50).
+*
+* casella di posta e account per ricezione ordini WE
+*
+***     10  DOCDI-WE-OC-MAIL                pic x(62).     | mxm 13.05.03
+***     10  DOCDI-WE-OC-USER                pic x(20).     | mxm 13.05.03
+        10  DOCDI-WE-OC-MAIL                pic x(41).     | mxm 13.05.03
+        10  DOCDI-WE-OC-USER                pic x(41).     | mxm 13.05.03
+
+        10  DOCDI-WE-OC-PASSWORD            pic x(20).
+
+*
+*fine campi per collegamento WE (ac)
+*
+
+*
+*comunicazione annuale iva (dal 2003)
+*
+        10  docdi-codice-fiscale-dichiarante  pic  x(11).
+*
+*fine comunicazione annuale iva (dal 2003)
+*
+$XFD  NAME=DOCDI-COD-GIOVE
+*$GEN type=num,dec=0,size=08
+        10  DOCDI-CODICE-AZIENDA-GIOVE        PIC  9(06).      |ds 18.09.03
+        10  DOCDI-CODICE-IBAN                 PIC  X(34).      |ds 18.09.03
+        10  DOCDI-CODICE-BIC                  PIC  X(11).      |ds 18.09.03
+*        10  DOCDI-AUTOFATTURA-CO              PIC  X(03).      |ds 23.10.03
+*        10  DOCDI-AUTOFATTURA-CLI             PIC  X(08).      |ds 23.10.03
+        10  DOCDI-FILLER-02                   PIC  X(11).
+*$GEN type=radiobutton,value_1=" ",image_1=1,value_2="V",image_2=2,value_3="C",image_3=3,value_4="I",image_4=4
+        10  DOCDI-REGISTRO-LIQUIDAZIONE       PIC  X(01).            |ds 20.11.03
+            88  DOCDI-REGISTRO-LIQUIDAZIONE-88    VALUE "V" "C" "I" " ". |ds 20.11.03
+*server posta in entrata
+        10  DOCDI-WE-SERVER-POP3              PIC  X(42).      |pg 07.01.04
+*
+*
+*$GEN type=radiobutton,value_1="O",image_1=1,value_2="S",image_2=2
+        10  DOCDI-TIPO-CONTAB                 PIC  X(01).
+            88  DOCDI-TIPO-CONTAB-88          VALUE " ", "O", "S".
+            88  DOCDI-TIPO-CONTAB-88-O        VALUE "O".
+        10  DOCDI-TIPO-SUDDIV-GIOVE           PIC  X(01).      |ds 20.07.04
+            88  DOCDI-TIPO-SUDDIV-GIOVE-88    VALUE " ", "1", "2", "3", "4", "5" . |ds 20.07.04
+*$GEN type=checkbox,truevalue=" ", falsevalue="N"
+        10  DOCDI-REG-UNI-INV                 PIC  X(01).      |ds 21.10.04
+            88  DOCDI-REG-UNI-INV-88          VALUE " ", "N".  |ds 21.10.04
+*$GEN type=checkbox,truevalue="S", falsevalue=" "
+        10  DOCDI-NUM-LIB-IVA                 PIC  X(01).      |ds 21.10.04
+            88  DOCDI-NUM-LIB-IVA-88          VALUE " ", "S".  |ds 21.10.04
+            88  docdi-num-lib-iva-88-s        value "S".                                           |pm 12/07/2007 11.19
+*$GEN type=checkbox,truevalue="S", falsevalue=" "
+        10  DOCDI-SW-EMAIL-UTENTE             PIC  X(01).                                          |pg 31/01/2005 12.08
+            88 DOCDI-SOLO-EMAIL-UTENTE        VALUE "S" FALSE SPACE.                               |pg 31/01/2005 12.17
+*$GEN type=checkbox,truevalue="S", falsevalue=" "
+        10  DOCDI-CAPITALE-VERSATO            PIC  X(01).                   |DS 03/03/2005 11.47
+            88 DOCDI-CAPITALE-VERSATO-88      VALUE "S" " ".                |DS 03/03/2005 11.47
+            88 docdi-capitale-versato-si      value "S".                                           |mc 22/10/2009 14.43
+        10  DOCDI-CODICE-CATASTALE            PIC  X(04).                   |DS 07/04/2005 12.42
+*$GEN type=checkbox,truevalue="S", falsevalue=" "
+        10  DOCDI-SW-LOG-MAIL                 PIC  X(01).                                          |pg 01/06/2005 11.06
+            88 DOCDI-ATTIVA-LOG-MAIL          VALUE "S" FALSE SPACE.                               |pg 01/06/2005 11.06
+        10  DOCDI-TIPO-MITTENTE               PIC  X(01).                   |DS 18/11/2005 9.27    |pb 17/6/05 9.44
+            88  DOCDI-TIPO-MITTENTE-88          VALUE " ", "D" , "P" .      |DS 18/11/2005 9.27    |pb 17/6/05 9.44
+        10  DOCDI-ID-MITTENTE                 PIC  X(11).                   |DS 18/11/2005 9.27    |pb 17/6/05 9.44
+*$GEN type=checkbox,truevalue="S", falsevalue="N"
+        10  DOCDI-BLOCCO-QTA                  PIC  X.                                              |pm 11/01/2006 10.42
+            88  DOCDI-BLOCCO-QTA-88           VALUE "S" "N" " ".                                   |pm 11/01/2006 10.43
+            88  DOCDI-BLOCCO-QTA-SI           VALUE "S".                                           |pm 11/01/2006 10.43
+            88  DOCDI-BLOCCO-QTA-NO           VALUE "N".
+        10  DOCDI-TAGLIA                      PIC  9(02).                       |nb 22/02/2006 9.00
+            88  DOCDI-TAGLIA-88                 VALUE 0 07 THRU 14.             |nb 22/02/2006 9.00
+*$GEN type=checkbox,truevalue="S", falsevalue=" "
+        10  DOCDI-CREA-FT-DIFFERITA           PIC X(01).                                           |rb 22/03/2006 11.32
+            88   DOCDI-CREA-FT-DIFFERITA-88   VALUE "S" " ".                                       |rb 22/03/2006 11.32
+*
+    10  docdi-elabora-allegati            PIC 9(01).                                           |ms 01/06/06 11.40
+           88   DOCDI-ELABORA-ALLEGATI-SI    VALUE 1 FALSE 0.                                     |ms 01/06/06 11.40
+
+*$GEN type=code,entity=tblva
+    10  docdi-tblva                          pic x(03).                                            | mxm 15/03/2007 8.58
+    10  docdi-cciaa             pic  x(11).                                     |or 12/03/07   15.30
+    10  docdi-prov-cciaa        pic  x(02).                                     |or 12/03/07   15.30
+    10  docdi-datint-cfis       pic  x(16).                                                        |sq 11/07/2007 15.41
+    10  docdi-datint-caf        pic  9(05).                                                        |sq 11/07/2007 15.41
+*$GEN type=radiobutton,value_1=0,image_1=1,value_2=1,image_2=2,value_3=2,image_3=3
+    10  docdi-datint-tipo-com   pic  9(01).                                                        |sq 11/07/2007 15.41
+        88 docdi-datint-tipo-com-null value 0.
+        88 docdi-datint-tipo-com-1 value 1.
+        88 docdi-datint-tipo-com-2 value 2.
+* copy "groupdate.xfc". | DBMaker
+    10  docdi-datint-dataimp.                                                                        |sq 18/07/2007 11.36
+$XFD  NAME=DOCDI-IMPEGNO-AA
+            15  aa                  pic  9(04).
+$XFD  NAME=DOCDI-IMPEGNO-MM
+            15  MM                  PIC  9(02).
+$XFD  NAME=DOCDI-IMPEGNO-GG
+            15  GG                  PIC  9(02).
+    10  filler redefines docdi-datint-dataimp.
+*$GEN type=date,
+            15  docdi-datint-datai        pic 9(08).                                               |sq 11/07/2007 15.51
+
+*
+*
+* punto vendita: "accorpa scritture contabili corr.giornalieri"                                    | mxm 17/10/2007 17.13
+    10  docdi-accorpa-corr                pic 9(01).                                               | mxm 17/10/2007 17.13
+*
+* punto vendita: aggiunto flag "contropartite vendite differenziate per articoli"
+    10  docdi-split-cven                  pic 9(01).                                               | mxm 17/10/2007 17.15
+
+*    10  docdi-filler-01                   pic  x(805).                       | mxm 17/10/2007 17.12  |or 14/11/2007
+
+    10  docdi-raee-prod           pic  9(01).                                               |or 14/11/2007
+        88  docdi-raee-prod-ok    value 1.                                                  |or 14/11/2007
+        88  docdi-raee-prod-ko    value 0.                                                  |or 14/11/2007
+    10  docdi-raee-riv            pic  9(01).                                               |or 14/11/2007
+        88  docdi-raee-riv-ok     value 1.                                                  |or 14/11/2007
+        88  docdi-raee-riv-ko     value 0.                                                  |or 14/11/2007
+
+    10  docdi-raee-cod-produttore pic  x(50).                                               |or 14/11/2007
+*
+* punto vendita: aggiunto flag "generazione differita documenti legati allo scontrino di cassa"
+    10  docdi-docscr-differito            pic 9(01).                                               | mxm 23/01/2008 12.43
+*
+* nuovo codice attivita' da passare a comunicazione iva annuale
+    10  docdi-cod-ateco                  pic  x(06).                       |ds 25/01/2008 9.52                        |or 14/11/2007
+*
+* punto vendita: aggiunto flag "generazione in tempo reale mov.magazzino"
+    10  docdi-magscr-realtime            pic 9(01).                                               | mxm 14/05/2008 9.36
+*
+* porta server smtp
+    10  docdi-smtp-port                  pic 9(05).                                                |ms 27/06/2008 16.49
+        88 docdi-smtp-port-default       value 25.                                                 |ms 27/06/2008 16.53
+
+***    10  docdi-filler-01                   pic  x(746).                                          | mxm 14/05/2008 9.35
+***    10  docdi-filler-01                   pic  x(745).          | mxm 14/05/2008 9.35           |ms 27/06/2008 16.50
+*
+*
+*   check box per l'esclusione dei movimenti di vendita/acquisto dal warehouse
+*   delle vendite
+*
+    10  docdi-exclude-omaggi-dw          pic 9.                                                    |ms 04/12/2008 11.27
+        88 docdi-exclude-omaggi-dw-on    value 1 false 0.                                          |ms 04/12/2008 11.27
+
+    10  docdi-squad-pnt                  pic 9.                                                    |ms 19/11/2008 15.57
+        88 docdi-squad-pnt-allowed       value 1 false 0.                                          |ms 19/11/2008 15.57
+$xfd date=yyyymmdd
+*$GEN type=date,
+    10  docdi-data-inizio-procedura      pic  9(08).                                               |DS 01/04/2009 10.05
+
+
+    10  docdi-ktrun                      pic 9(01).                                                | mxm 07/09/2009 11.23
+
+    10  docdi-invio-repository           pic 9(01).                                                |gm 05/10/2009 16.26
+        88  docdi-invio-repository-si        value 1 false 0.                                      |gm 05/10/2009 16.26
+
+    10  docdi-sendmail-ssl               pic 9(01).                                                | mxm 25/02/2010 14.04
+    10  docdi-sendmail-receipt           pic 9(01).                                                | mxm 25/02/2010 14.04
+*
+*
+*$GEN type=code,entity=tblna
+    10  docdi-codice-tblna               pic x(03).                                                | scamar 09/07/2010 14:38:22
+    10  docdi-codice-iva-estero          pic x(30).                                                | scamar 09/07/2010 14:38:22
+    10  docdi-cognome-dich               pic x(24).                                                | scamar 09/07/2010 14:44:31
+    10  docdi-nome-dich                  pic x(20).                                                | scamar 09/07/2010 14:52:54
+*$GEN type=radiobutton,value_1="M",image_1=1,value_2="F",image_2=2,
+    10  docdi-sesso-dich                 pic  x.                                               | scamar 09/07/2010 14:53:26
+        88  docdi-sesso-dich-m           value "M".                                            | scamar 09/07/2010 14:53:27
+        88  docdi-sesso-dich-f           value "F".                                            | scamar 09/07/2010 14:53:27
+        88  docdi-sesso-dich-ok          value "M" "F".                                        | scamar 09/07/2010 14:58:51
+$xfd date=yyyymmdd
+*$GEN type=date,
+    10  docdi-data-nascita-dich          pic  9(08).                                         | scamar 09/07/2010 14:53:28
+    10  docdi-comune-nascita-dich        pic  x(40).                                         | scamar 09/07/2010 14:53:29
+    10  docdi-prov-nascita-dich          pic  x(02).                                         | scamar 09/07/2010 14:53:29
+    10  docdi-via-residenza-dich         pic  x(35).                                         | scamar 09/07/2010 14:53:29
+    10  docdi-comune-residenza-dich      pic  x(40).                                         | scamar 09/07/2010 14:53:29
+    10  docdi-prov-residenza-dich        pic  x(02).                                         | scamar 09/07/2010 14:53:29
+    10  docdi-cap-residenza-dich         pic  x(05).                                         | scamar 09/07/2010 14:53:29
+    10  docdi-telefono-dich              pic  x(12).                                         | scamar 09/07/2010 14:53:29
+
+    10  docdi-cardov03-riep-taglie       pic  9.                                             |or 30/08/2010
+        88 docdi-cardov03-riep-taglie-ok value 1.                                            |or 30/08/2010
+        88 docdi-cardov03-riep-taglie-ko value 0.                                            |or 30/08/2010
+        
+    10  docdi-richiedi-cambio             pic 9.                                              | scamar 25/02/2011 09:23:41
+    
+$xfd date=yyyymmdd
+*$GEN type=date,    
+    10  docdi-1222010-startdate           pic 9(08).                                                 | maxime 15/04/2011
+    
+*** IL CAMPO DOCDI-1222010-ALLPAGS NON VIENE PIU' UTILIZZATO IN GESTIONE DITTA                       | rososv 13/06/2011 10:36:20
+*** IN SEGUITO A NUOVE SPECIFICHE DELLA NORMATIVA CHE LO RENDONO OBSOLETO                            | rososv 13/06/2011 10:37:30
+    10  docdi-1222010-allPags             pic 9(01).                                                 | maxime 15/04/2011 
+                
+***   10  docdi-filler-01                  pic  x(493).                | maxime 15/04/2011 08:44:12  | rososv 11/05/2011 17:21:12
+   
+    10  docdi-mig_tk3881                  pic 9.                                                     | rososv 11/05/2011 17:21:12
+        88 docdi-mig_tk3881-eseguita      value 1.                                                   | rososv 11/05/2011 17:21:12
+        
+    10  docdi-zucchetti-mode              pic 9.                                                     | scamar 18/05/2011 10:28:01
+
+    10  docdi-contratti-pubblici          pic  9.                                                    | suadal 06/06/2011 10:40:48
+        88 docdi-contratti-pubblici-ok value 1.                                                      | suadal 06/06/2011 10:40:49
+        88 docdi-contratti-pubblici-ko value 0.                                                      | suadal 06/06/2011 10:40:49
+        
+    10  docdi-force-multipart-mixed       pic 9.                                                     | scamar 26/08/2011
+        
+
+***    10  docdi-filler-01                  pic  x(492).           | rososv 11/05/2011 17:20:21      | scamar 18/05/2011 10:29:06
+*    10  docdi-filler-01                  pic  x(491).            | scamar 18/05/2011 10:28:57       | suadal 06/06/2011 10:43:10
+|    10  docdi-filler-01                  pic  x(490).             | suadal 06/06/2011 10:43:10      | scamar 26/08/2011
+    10  docdi-filler-01                  pic  x(489).                                                | scamar 26/08/2011
+
+*   10  docdi-filler-01                  pic  x(504).                                        | scamar 09/07/2010 15:18:36   |or 30/08/2010
+***    10  docdi-filler-01                   pic  x(726).      | mxm 25/02/2010 14.04                | scamar 12/07/2010 15:19:07
+
+    10  DOCDI-FILLER-RIS                  PIC  X(40).
+*
+*

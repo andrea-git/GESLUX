@@ -1,0 +1,164 @@
+      *
+           COPY  "combo-cobat.def".
+           COPY  "combo-stato.def".
+           COPY  "combo-utf.def".
+           COPY  "link-browser.def".
+           COPY  "apri-note.def".
+           COPY  "costo-medio.def".
+           COPY  "trova-parametro.def".
+           COPY  "prz-finito-forn.def".
+           COPY  "imposte-fornitore.def".
+       77 codice-ed        PIC  z(6).
+       77 Form1-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 CodiceIvaStd     PIC  x(3).
+       77 calcolo-piombo   PIC  x.
+           88 nuovo-calcolo-piombo VALUE IS "N". 
+       77 STATUS-param     PIC  X(2).
+           88 Valid-STATUS-param VALUE IS "00" THRU "09". 
+       77 STATUS-sort-art-list         PIC  X(2).
+           88 Valid-STATUS-sort-art-list VALUE IS "00" THRU "09". 
+       77 data-val-da      PIC  9(8).
+       77 AUTO-ID          PIC  9(6)
+                  VALUE IS 0.
+       77 data-val-a       PIC  9(8).
+       77 STATUS-blister   PIC  X(2).
+           88 Valid-STATUS-blister VALUE IS "00" THRU "09". 
+       77 STATUS-destinif  PIC  X(2).
+           88 Valid-STATUS-destinif VALUE IS "00" THRU "09". 
+       77 STATUS-articoli1 PIC  X(2).
+           88 VALID-STATUS-articoli1 VALUE IS "00" THRU "09". 
+       77 STATUS-mrordini  PIC  X(2).
+           88 Valid-STATUS-mrordini VALUE IS "00" THRU "09". 
+       77 STATUS-reva      PIC  X(2).
+           88 Valid-STATUS-reva VALUE IS "00" THRU "09". 
+       77 STATUS-rordforn  PIC  X(2).
+           88 Valid-STATUS-rordforn VALUE IS "00" THRU "09". 
+       77 STATUS-impforn   PIC  X(2).
+           88 Valid-STATUS-impforn VALUE IS "00" THRU "09". 
+       77 STATUS-timposte  PIC  X(2).
+           88 Valid-STATUS-timposte VALUE IS "00" THRU "09". 
+       77 STATUS-tpiombo   PIC  X(2).
+           88 Valid-STATUS-tpiombo VALUE IS "00" THRU "09". 
+       77 STATUS-tlistini  PIC  X(2).
+           88 Valid-STATUS-tlistini VALUE IS "00" THRU "09". 
+       77 STATUS-prodener  PIC  X(2).
+           88 Valid-STATUS-prodener VALUE IS "00" THRU "09". 
+       77 qta-x            PIC  z(4).
+       77 nome-file        PIC  x(10).
+       78 MAX-PAGE VALUE IS 3. 
+       01 TabID
+                  OCCURS MAX-PAGE TIMES.
+           05 min-id           PIC  9(9).
+           05 max-id           PIC  9(9).
+       77 OPENSAVE-STATUS  PIC  S9(2)
+                  VALUE IS 0.
+       77 Form1-Tb-1-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 E-ESCI           PIC  9
+                  VALUE IS 1.
+       77 Form1-St-1-Handle
+                  USAGE IS HANDLE OF STATUS-BAR.
+       77 data-oggi        PIC  9(8).
+       77 toolbar-bmp
+                  USAGE IS HANDLE OF BITMAP
+                  VALUE IS 0.
+       77 Default-Font
+                  USAGE IS HANDLE OF FONT DEFAULT-FONT.
+       77 Small-Font
+                  USAGE IS HANDLE OF FONT SMALL-FONT.
+       77 Form1-Pg-1-Visible           PIC  9
+                  VALUE IS 0.
+       77 Form1-Pg-2-Visible           PIC  9
+                  VALUE IS 0.
+       78 TITOLO VALUE IS "Geslux - Visualizzazione Articolo". 
+       77 mod-campi        PIC  9
+                  VALUE IS 0.
+       77 STATUS-tcodpag   PIC  X(2).
+           88 Valid-STATUS-tcodpag VALUE IS "00" THRU "09". 
+       77 STATUS-tivaese   PIC  X(2).
+           88 Valid-STATUS-tivaese VALUE IS "00" THRU "09". 
+       77 STATUS-articoli  PIC  X(2).
+           88 Valid-STATUS-articoli VALUE IS "00" THRU "09". 
+       77 STATUS-tcla1art  PIC  X(2).
+           88 Valid-STATUS-tcla1art VALUE IS "00" THRU "09". 
+       77 STATUS-tnomen    PIC  X(2).
+           88 Valid-STATUS-tnomen VALUE IS "00" THRU "09". 
+       77 STATUS-tudm      PIC  X(2).
+           88 Valid-STATUS-tudm VALUE IS "00" THRU "09". 
+       77 STATUS-tmarche   PIC  X(2).
+           88 Valid-STATUS-tmarche VALUE IS "00" THRU "09". 
+       77 STATUS-tsetmerc  PIC  X(2).
+           88 Valid-STATUS-tsetmerc VALUE IS "00" THRU "09". 
+       77 STATUS-progmag   PIC  X(2).
+           88 Valid-STATUS-progmag VALUE IS "00" THRU "09". 
+       77 STATUS-timballi  PIC  X(2).
+           88 Valid-STATUS-timballi VALUE IS "00" THRU "09". 
+       77 mod-imposte      PIC  9
+                  VALUE IS 1.
+       77 mod-cobat        PIC  9
+                  VALUE IS 1.
+       77 cbo-utf-buf      PIC  X(12).
+       77 cbo-cobat-buf    PIC  x(4).
+       77 cbo-stato-buf    PIC  X(9).
+       77 STATUS-tparamge  PIC  X(2).
+           88 Valid-STATUS-tparamge VALUE IS "00" THRU "09". 
+       77 STATUS-timbalqta PIC  X(2).
+           88 Valid-STATUS-timbalqta VALUE IS "00" THRU "09". 
+       77 lab-iva-buf      PIC  x(100).
+       77 lab-imballo-buf  PIC  x(100).
+       77 STATUS-clienti   PIC  X(2).
+           88 Valid-STATUS-clienti VALUE IS "00" THRU "09". 
+       77 STATUS-tmagaz    PIC  X(2).
+           88 Valid-STATUS-tmagaz VALUE IS "00" THRU "09". 
+       77 STATUS-distinteb PIC  X(2).
+           88 Valid-STATUS-distinteb VALUE IS "00" THRU "09". 
+       77 Verdana12-Occidentale
+                  USAGE IS HANDLE OF FONT.
+      * 77 ef-ean-buf       PIC  9(13).
+      *
+       77 v-limite         PIC  9
+                  VALUE IS 1.
+       77 STATUS-rmovmag   PIC  X(2).
+           88 Valid-STATUS-rmovmag VALUE IS "00" THRU "09". 
+       77 STATUS-rordini   PIC  X(2).
+           88 Valid-STATUS-rordini VALUE IS "00" THRU "09". 
+       77 STATUS-rnotacr   PIC  X(2).
+           88 Valid-STATUS-rnotacr VALUE IS "00" THRU "09". 
+       77 STATUS-brnotacr  PIC  X(2).
+           88 Valid-STATUS-brnotacr VALUE IS "00" THRU "09". 
+       77 STATUS-tscorte   PIC  X(2).
+           88 Valid-STATUS-tscorte VALUE IS "00" THRU "09". 
+       77 STATUS-rlistini  PIC  X(2).
+           88 Valid-STATUS-rlistini VALUE IS "00" THRU "09". 
+       77 Form1-Pg-3-Visible           PIC  9
+                  VALUE IS 0.
+       01 rec-grid.
+           05 col-nulla        PIC  X.
+           05 col-forn         PIC  z(5).
+           05 col-descr-forn   PIC  x(100).
+           05 col-data-da      PIC  99/99/9999.
+           05 col-data-a       PIC  99/99/9999.
+           05 col-art-forn     PIC  x(20).
+           05 col-prz-fint     PIC  zzz.zz9,9999.
+           05 col-prz-conf     PIC  zzz.zz9,9999.
+       77 old-forn         PIC  9(5).
+       77 elemento-bmp     PIC  s9(9)
+                  USAGE IS COMP-4
+                  VALUE IS ZERO.
+       77 font-evidenzia-griglia
+                  USAGE IS HANDLE OF FONT.
+       77 riga-old         PIC  9(3).
+       77 v-reale          PIC  9
+                  VALUE IS 1.
+       77 lab-coll-buf     PIC  x(100).
+       01 FILLER           PIC  9.
+           88 rec-ok VALUE IS 1    WHEN SET TO FALSE  zero. 
+       77 como-altezza     PIC  9(10)v99.
+       77 como-larghezza   PIC  9(10)v99.
+       77 como-profondita  PIC  9(10)v99.
+       77 como-qta-EPAL    PIC  9(8).
+       77 como-qta-STD     PIC  9(8).
+       77 como-scorta      PIC  9(5).
+       77 como-peso        PIC  9(6)v999.
+       77 peso-inserito    PIC  9(6)v999.

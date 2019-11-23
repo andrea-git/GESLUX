@@ -1,0 +1,42 @@
+      *
+      *
+      *
+       FD  provvig.
+       01 pvv-rec.
+           05 pvv-chiave.
+               10 pvv-anno-fat     PIC  9(4).
+               10 pvv-num-fat      PIC  9(8).
+               10 pvv-riga-fat     PIC  9(5).
+           05 pvv-dati.
+               10 pvv-data-fat     PIC  9(8).
+               10 pvv-agente       PIC  9(5).
+               10 pvv-cliente      PIC  9(5).
+               10 pvv-articolo     PIC  9(6).
+               10 pvv-marca        PIC  9(4).
+               10 pvv-um           PIC  X(2).
+               10 pvv-qta-vend     PIC  9(8).
+               10 pvv-peso-um      PIC  9(5)v9(3).
+               10 pvv-prezzo-unit-vend         PIC  s9(9)v99.
+               10 pvv-prezzo-netto-agente      PIC  s9(9)v99.
+               10 pvv-sconto-listino           PIC  9(2)v99.
+               10 pvv-num-listino  PIC  9(4).
+               10 pvv-tipo-vend    PIC  X.
+                   88 pvv-normale VALUE IS " ". 
+                   88 pvv-omaggio VALUE IS "O". 
+                   88 pvv-promo VALUE IS "P". 
+               10 pvv-val-provvig  PIC  s9(9)v99.
+               10 pvv-data-liq     PIC  9(8).
+               10 pvv-dati-comuni.
+                   15 pvv-data-creazione           PIC  9(8).
+                   15 pvv-ora-creazione            PIC  9(8).
+                   15 pvv-utente-creazione         PIC  X(10).
+                   15 pvv-data-ultima-modifica     PIC  9(8).
+                   15 pvv-ora-ultima-modifica      PIC  9(8).
+                   15 pvv-utente-ultima-modifica   PIC  X(10).
+               10 pvv-vuoti.
+                   15 pvv-num-vuoto-1  PIC  9(15).
+                   15 pvv-num-vuoto-2  PIC  9(15).
+                   15 pvv-num-vuoto-3  PIC  9(15).
+                   15 pvv-alfa-vuoto-1 PIC  X(20).
+                   15 pvv-alfa-vuoto-2 PIC  X(20).
+                   15 pvv-alfa-vuoto-3 PIC  X(20).

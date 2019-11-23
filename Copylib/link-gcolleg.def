@@ -1,0 +1,8 @@
+      *
+       01 gcolleg-linkage.
+           03 LinkChiaveColleg.
+              05 LinkAnnoColleg      PIC  9(4).
+              05 LinkNumeroColleg    PIC  9(8).
+           03 LinkMod          PIC  9.
+           03 LinkUser         PIC  x(10).
+           03 Linklivello-abil PIC  9.

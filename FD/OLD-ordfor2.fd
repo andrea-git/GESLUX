@@ -1,0 +1,77 @@
+       FD  OLD-ordfor2.
+       01 OLD-ord2-rec.
+           05 OLD-ord2-chiave.
+               10 OLD-ord2-mag         PIC  x(3).
+               10 OLD-ord2-articolo    PIC  9(6).
+           05 OLD-ord2-dati.
+               10 OLD-ord2-art-descrizione         PIC  x(50).
+               10 OLD-ord2-marca       PIC  9(4).
+               10 OLD-ord2-qta-imb     PIC  9(4).
+               10 OLD-ord2-imballo     PIC  x(3).
+               10 OLD-ord2-peso        PIC  9(3)v999.
+               10 OLD-ord2-scost       PIC  9(3)v99.
+               10 OLD-ord2-lead-time   PIC  9(3).
+               10 OLD-ord2-lead-time-f PIC  9(3).
+               10 OLD-ord2-giac        PIC  s9(8).
+               10 OLD-ord2-scorta      PIC  s9(8).
+               10 OLD-ord2-impegnato   PIC  s9(8).
+               10 OLD-ord2-qta-vendita-anno-corrente.
+                   15 OLD-ord2-qta-corr-m  PIC  s9(9)
+                              OCCURS 12 TIMES.
+               10 OLD-ord2-qta-vendita-anno-passsato.
+                   15 OLD-ord2-qta-past-m  PIC  s9(9)
+                              OCCURS 12 TIMES.
+               10 OLD-ord2-media-vend  PIC  S9(9).
+               10 OLD-ord2-consegna    PIC  S9(9)V9(2).
+               10 OLD-ord2-riordino    PIC  S9(9)V9(2).
+               10 OLD-ord2-fabbisogno-prox-6-mesi.
+                   15 OLD-ord2-fabb-qta    PIC  S9(9)
+                              OCCURS 6 TIMES.
+               10 OLD-ord2-qta-promo   PIC  9(8).
+               10 OLD-ord2-promo       PIC  s9(8).
+               10 OLD-ord2-promo-mesi.
+                   15 OLD-ord2-promo-mese  PIC  s9(8)
+                              OCCURS 6 TIMES.
+               10 OLD-ord2-mese-rif    PIC  99.
+               10 OLD-ord2-mese-scelto PIC  99.
+               10 OLD-ord2-qta-ord     PIC  9(8).
+               10 OLD-ord2-costo-mp    PIC  s9(9)V9(2).
+               10 OLD-ord2-fabbisogno  PIC  9.
+                   88 OLD-ord2-fabbisogno-mese1 VALUE IS 0  WHEN SET TO 
+           FALSE  0. 
+                   88 OLD-ord2-fabbisogno-mese2 VALUE IS 1  WHEN SET TO 
+           FALSE  0. 
+                   88 OLD-ord2-fabbisogno-mese3 VALUE IS 2  WHEN SET TO 
+           FALSE  0. 
+                   88 OLD-ord2-fabbisogno-other VALUE IS 3  WHEN SET TO 
+           FALSE  0. 
+                   88 OLD-ord2-fabbisogno-no-attivo VALUE IS 4  WHEN SET 
+           TO FALSE  0. 
+               10 OLD-ord2-urgente     PIC  9.
+                   88 OLD-ord2-si-urgente VALUE IS 1. 
+                   88 OLD-ord2-no-urgente VALUE IS 0. 
+               10 OLD-ord2-conferma    PIC  9.
+                   88 OLD-ord2-si-conferma VALUE IS 1. 
+                   88 OLD-ord2-no-conferma VALUE IS 0. 
+               10 OLD-ord2-dati-comuni.
+                   15 OLD-ord2-data-creazione          PIC  9(8).
+                   15 OLD-ord2-ora-creazione           PIC  9(8).
+                   15 OLD-ord2-utente-creazione        PIC  X(10).
+                   15 OLD-ord2-data-modifica           PIC  9(8).
+                   15 OLD-ord2-ora-modifica            PIC  9(8).
+                   15 OLD-ord2-utente-modifica         PIC  X(10).
+               10 OLD-ord2-vuoti.
+                   15 OLD-ord2-programmazione          PIC  9(1).
+                       88 OLD-ord2-programmazione-si VALUE IS 1. 
+                       88 OLD-ord2-programmazione-no VALUE IS 0. 
+                   15 OLD-ord2-promo-urgente           PIC  9(7).
+                   15 OLD-ord2-media-vend-no-peaks     PIC  S9(9).
+                   15 OLD-ord2-sostituto   PIC  9(6).
+                   15 FILLER           PIC  9.
+                       88 OLD-ord2-listino-no VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+                   15 OLD-ord2-num-vuoto-2 PIC  9(6).
+                   15 OLD-ord2-num-vuoto-3 PIC  9(15).
+                   15 OLD-ord2-alfa-vuoto-1            PIC  X(20).
+                   15 OLD-ord2-alfa-vuoto-2            PIC  X(20).
+                   15 OLD-ord2-alfa-vuoto-3            PIC  X(20).

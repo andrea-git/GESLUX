@@ -1,0 +1,1417 @@
+; CaseMaker Totem Program Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[MONITOR_FILE]
+
+
+[PROGRAM_CONTENT]
+QUIT_CONFIRM=0
+ANSI_FORMAT=1
+MAIN_SCREEN_NAME=form-note
+BEFORE_PROGRAM=gnote-ordforn-Ev-Before-Program
+AFTER_PROGRAM=gnote-ordforn-Ev-After-Program
+PROGRAM_UNIQUE_CODE=TOTEM-7E3AA205627-101-2910232481
+
+{{@DESCRIPTION:
+
+@}}
+
+[WORKING_STORAGE]
+m_nType=1
+m_strName=Working Storage
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionWK
+
+@}}
+[FDITEM0_WK]
+m_strName=Small-Font
+m_nUsage=37
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_WK
+
+@}}
+[FDITEM1_WK]
+m_strName=form-note-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1_WK
+
+@}}
+[FDITEM2_WK]
+m_strName=titolo-note
+m_strRawPic=X(50)
+m_strPic=X(50)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM2_WK
+
+@}}
+[FDITEM3_WK]
+m_strName=Form1-Tb-1-Handlea
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM3_WK
+
+@}}
+[FDITEM4_WK]
+m_strName=toolbar-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM4_WK
+
+@}}
+[FDITEM5_WK]
+m_strName=E-ESCI
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM5_WK
+
+@}}
+[FDITEM6_WK]
+m_strName=E-SALVA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM6_WK
+
+@}}
+[FDITEM7_WK]
+m_strName=titolo
+m_strDefaultValue="GESLUX - Gestione Fornitori (note destini per ordini)"
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM7_WK
+
+@}}
+[FDITEM8_WK]
+m_strName=e-nuovo
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM8_WK
+
+@}}
+[FDITEM9_WK]
+m_strName=e-cancella
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM9_WK
+
+@}}
+[FDITEM10_WK]
+m_strName=path-tmp-nforn-dest
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM10_WK
+
+@}}
+[FDITEM11_WK]
+m_strName=STATUS-tmp-nforn-dest
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM11_WK
+
+@}}
+[FDITEM12_WK]
+m_strName=Valid-STATUS-tmp-nforn-dest
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM12_WK
+
+@}}
+
+
+[LINKAGE_SECTION]
+m_nType=1
+m_strName=Linkage Section
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionLK
+
+@}}
+[FDITEM0_LK]
+m_strName=gnote-destf-linkage
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GNOTE-DESTF.DEF
+m_strCopyFile=link-gnote-destf.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GNOTE-DESTF.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM0_LK
+
+@}}
+[FDITEM1_LK]
+m_strName=gnd-desf-chiave
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GNOTE-DESTF.DEF
+m_strCopyFile=link-gnote-destf.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GNOTE-DESTF.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM1_LK
+
+@}}
+[FDITEM2_LK]
+m_strName=gnd-desf-codice
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GNOTE-DESTF.DEF
+m_strCopyFile=link-gnote-destf.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GNOTE-DESTF.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM2_LK
+
+@}}
+[FDITEM3_LK]
+m_strName=gnd-desf-prog
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GNOTE-DESTF.DEF
+m_strCopyFile=link-gnote-destf.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GNOTE-DESTF.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM3_LK
+
+@}}
+[FDITEM4_LK]
+m_strName=gnd-mod
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GNOTE-DESTF.DEF
+m_strCopyFile=link-gnote-destf.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GNOTE-DESTF.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM4_LK
+
+@}}
+[FDITEM5_LK]
+m_strName=gnd-path
+m_strRawPic=x(256)
+m_strPic=X(256)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GNOTE-DESTF.DEF
+m_strCopyFile=link-gnote-destf.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GNOTE-DESTF.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM5_LK
+
+@}}
+[FDITEM6_LK]
+m_strName=LK-BLOCKPGM
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM6_LK
+
+@}}
+[FDITEM7_LK]
+m_strName=LK-BL-PROG-ID
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM7_LK
+
+@}}
+[FDITEM8_LK]
+m_strName=LK-BL-DATA
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM8_LK
+
+@}}
+[FDITEM9_LK]
+m_strName=LK-BL-ORA
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM9_LK
+
+@}}
+[FDITEM10_LK]
+m_strName=LK-BL-TIPO-OP
+m_strRawPic=9(1)
+m_strPic=9(1)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM10_LK
+
+@}}
+[FDITEM11_LK]
+m_strName=LK-BL-LETTURA
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM11_LK
+
+@}}
+[FDITEM12_LK]
+m_strName=LK-BL-SCRITTURA
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=2
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM12_LK
+
+@}}
+[FDITEM13_LK]
+m_strName=LK-BL-CANCELLAZIONE
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=3
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM13_LK
+
+@}}
+[FDITEM14_LK]
+m_strName=LK-BL-USO
+m_strRawPic=9(1)
+m_strPic=9(1)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM14_LK
+
+@}}
+[FDITEM15_LK]
+m_strName=LK-BL-IN-USO
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM15_LK
+
+@}}
+[FDITEM16_LK]
+m_strName=LK-HND-WIN
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM16_LK
+
+@}}
+[FDITEM17_LK]
+m_strName=USER-CODI
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=common-linkage.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM17_LK
+
+@}}
+[FDITEM18_LK]
+m_strName=LIVELLO-ABIL
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=common-linkage.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM18_LK
+
+@}}
+
+
+{{@SCREEN:
+*   Screen Painter Data
+*   Schema 6.0
+*
+BEGIN-SPDATA-6.1A
+
+GRAPHICAL-SCREEN
+
+Begin Screen form-note
+   PREFIX            = form-note
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = FALSE
+   LEVEL             = 1
+   (Name)            = form-note
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 13
+   Cell Width        = 6
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = FALSE
+   Font              = Small Font
+   Font Variable     = Small-Font
+   Handle Variable   = form-note-Handle
+   Height in Cells   = TRUE
+   Help ID           = 0
+   Label Offset      = 20
+   Lines             = 17,00
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = TRUE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 158,00
+   System Menu       = TRUE
+   Title Bar         = TRUE
+   Title Picture     = X(50)
+   Title Variable    = titolo
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = FALSE
+   Visible           = NONE
+   Width in Cells    = TRUE
+   Window Type       = Floating
+   Wrap              = FALSE
+   Event Procedure   = form-note-Event-Proc
+   Begin Grid gd-note
+      SCREEN-COL        = 3,00
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = gd-note
+      Action            = (None)
+      Adjustable Columns = TRUE
+      Border            = Boxed
+      Cells' Setting    = ( X = 2, Y = 1, Data = "Num" )
+      Cells' Setting    = ( X = 3, Y = 1, Data = "Note" )
+      Centered Headings = FALSE
+      Color             = 0
+      Column            = 3,00
+      Column Headings   = TRUE
+      Columns' Setting  = ( X = 1, Name = col-nulla, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
+      Columns' Setting  = ( DISP = 3, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 2, Name = col-prog, READONLY = 0 )
+      Columns' Setting  = ( Color = 257 )
+      Columns' Setting  = ( PIC = "z(3)", TYPE = "9(3)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 5, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 3, Name = col-note, READONLY = 0 )
+      Columns' Setting  = ( PIC = "x(200)", TYPE = "x(200)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
+      Columns' Setting  = ( DISP = 150, SEPA = 5, DIVI = 1 )
+      Cursor Color      = 0
+      Cursor Frame Width = 0
+      Cursor X          = 0
+      Cursor Y          = 0
+      Destroy Type      = Automatic
+      Divider Color     = 1
+      Drag Color        = 0
+      Enable            = NONE
+      End Color         = 0
+      Font              = Default Font
+      Heading Color     = 257
+      Heading Divider Color = 1
+      Heading Font      = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hscroll           = TRUE
+      ID                = 119
+      Last Row          = 0
+      Line              = 2,00
+      Lines             = 15,50
+      Lines Unit        = Default
+      No Tab            = FALSE
+      Num Col Headings  = 1
+      Num Columns       = 3
+      Num Rows          = 0
+      Occurs            = 0
+      Paged             = FALSE
+      Row Dividers      = 1
+      Row Headings      = TRUE
+      Size              = 154,00
+      Size Unit         = Default
+      Tab Order         = 1
+      Tiled Headings    = TRUE
+      Use Tab           = TRUE
+      Virtual Width     = 150
+      Visible           = NONE
+      Vpadding          = 50
+      Vscroll           = TRUE
+      Width in Cells    = TRUE
+      Event Procedure   = gd-righe-Event-Proc
+      Msg-Begin-Drag    = gd-note-Ev-Msg-Begin-Drag
+      Msg-Begin-Entry   = gd-note-Ev-Msg-Begin-Entry
+      Msg-End-Drag      = gd-note-Ev-Msg-End-Drag
+      Msg-Goto-Cell     = gd-note-Ev-Msg-Goto-Cell
+      Msg-Goto-Cell-Drag = gd-note-Ev-Msg-Goto-Cell-Drag
+      Msg-Goto-Cell-Mouse = gd-note-Ev-Msg-Goto-Cell-Mouse
+      Msg-Heading-Clicked = gd-note-Ev-Msg-Heading-Clicked
+   End
+   Begin Toolbar Form1-Tb-1a
+      SCREEN-LINE       = 1,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 1
+      (Name)            = Form1-Tb-1a
+      Cell              = FALSE
+      Color             = 0
+      Font              = Default Font
+      Handle Variable   = Form1-Tb-1-Handlea
+      Help ID           = 0
+      Lines             = 2,69
+      Tab Order         = 2
+      Begin Push-Button TOOL-ESCIa
+         SCREEN-COL        = 1,00
+         SCREEN-LINE       = 1,08
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-ESCIa
+         Bitmap            = "..\RESOURCE\toolbar.bmp"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = toolbar-bmp
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 1,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Enable Variable   = E-ESCI
+         Exception Value   = 27
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 1016
+         Line              = 1,08
+         Lines             = 1,81
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 4,33
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Escape Button
+         Tab Order         = 1
+         Termination Value = 0
+         Title             = "Esci (Esc)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+      End
+      Begin Push-Button TOOL-NUOVO
+         SCREEN-COL        = 6,00
+         SCREEN-LINE       = 1,08
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-NUOVO
+         Bitmap            = "..\RESOURCE\toolbar.bmp"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = toolbar-bmp
+         Bitmap Number     = 2
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 6,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Enable Variable   = e-nuovo
+         Exception Value   = 1000
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 1017
+         Line              = 1,08
+         Lines             = 1,81
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 4,33
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 2
+         Termination Value = 0
+         Title             = "Nuovo (F2)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Link To           = TOOL-NUOVOa-LinkTo
+      End
+      Begin Push-Button TOOL-CANCELLA
+         SCREEN-COL        = 16,00
+         SCREEN-LINE       = 1,08
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-CANCELLA
+         Bitmap            = "..\RESOURCE\toolbar.bmp"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = toolbar-bmp
+         Bitmap Number     = 4
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 16,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Enable Variable   = e-cancella
+         Exception Value   = 1001
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 1018
+         Line              = 1,08
+         Lines             = 1,81
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 4,33
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 3
+         Termination Value = 0
+         Title             = "Cancella (F4)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Additional Properties = "BITMAP-NUMBER BitmapNumDelete"
+         Link To           = TOOL-CANCELLAa-LinkTo
+      End
+      Begin Push-Button TOOL-SALVA
+         SCREEN-COL        = 11,00
+         SCREEN-LINE       = 1,08
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-SALVA
+         Bitmap            = "..\RESOURCE\toolbar.bmp"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = toolbar-bmp
+         Bitmap Number     = 3
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 11,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Enable Variable   = E-SALVA
+         Exception Value   = 1002
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 1019
+         Line              = 1,08
+         Lines             = 1,81
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 4,33
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 4
+         Termination Value = 0
+         Title             = "Salva (F3)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Additional Properties = "BITMAP-NUMBER BitmapNumSave"
+         Link To           = TOOL-SALVAa-LinkTo
+      End
+   End
+End
+
+END-SPDATA
+
+@}}
+
+{{@REPORT:
+*   Report Writer Data
+*   Schema 6.0
+*
+BEGIN-RWDATA-6.0A
+
+END-RWDATA
+
+@}}
+
+{{@EMBEDDING_CODE:
+BEGIN-DATA
+   BASETYPE          = 13
+   NODESTYLE         = 13
+   PARAGRAPH         = Other Working
+BEGIN-TEXT
+       77  riga-note      pic 9(4).
+       77  riga-old-note  pic 9(4).
+       77  tot-righe-note pic 9(4).
+       77 riga-nuova-note  PIC  9(3).
+       77 colonna-note     PIC  9(3).
+       77 font-evidenzia-griglia
+                  USAGE IS HANDLE OF FONT.
+       77 elemento-bmp     PIC  s9(9)
+                  USAGE IS COMP-4
+                  VALUE IS ZERO.
+       01 FlagNoteCambiate          PIC  9.
+           88 NoteCambiate VALUE IS 1    WHEN SET TO FALSE  0. 
+
+       01 rec-note.
+           05 col-nulla        PIC  X.
+           05 col-prog-note    PIC  z(3).
+           05 col-note         PIC  x(200).
+       01 como-dati-comuni.
+           05 como-data-creazione          PIC  9(8).
+           05 como-ora-creazione           PIC  9(8).
+           05 como-utente-creazione        PIC  x(10).
+           05 como-data-ultima-modifica    PIC  9(8).
+           05 como-ora-ultima-modifica     PIC  9(8).
+           05 como-utente-ultima-modifica  PIC  x(10).
+
+       77  cont  pic 9(3).
+
+       78  78-num-righe-note-ord   value 10.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 6
+   NODESTYLE         = 7
+   PARAGRAPH         = DeletedCode
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = form-note
+   ACTOBJ            = form-note
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeExit
+BEGIN-TEXT
+           if mod = 1 and NoteCambiate
+              perform SALVA-NOTE
+           end-if
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = form-note
+   ACTOBJ            = form-note
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+           perform CARICA-GRID-NOTE.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = PARAGRAFO-MANUALE
+BEGIN-TEXT
+      ***---
+       SPOSTAMENTO-NOTE.
+           inquire gd-note, last-row in tot-righe-note.
+           if event-data-2 >= 2 and
+              event-data-2 <= tot-righe-note
+              move riga-note   to riga-old-note
+              if riga-note not = event-data-2 
+                 if riga-nuova-note = 1
+                    perform X-Y-NOTE
+                    modify gd-note, record-to-delete = 
+                                                     tot-righe-note + 1
+                    move 0 to riga-nuova-note
+                 end-if
+      
+                 set tutto-ok to true
+
+                 move event-data-2 to riga-note
+              end-if
+            
+              perform CAMBIA-FONT-RIGA-NOTE
+           end-if.      
+
+      ***---
+       X-Y-NOTE.
+           inquire gd-note, last-row in tot-righe-note, 
+                            cursor-y in riga-note,
+                            cursor-x in colonna-note.
+
+      ***---
+       CAMBIA-FONT-RIGA-NOTE.
+           modify gd-note(riga-old-note), row-font = small-font.
+
+           modify gd-note(riga-old-note, 1),
+                  bitmap        = elemento-bmp,
+                  bitmap-number = 1,
+                  bitmap-width  = 16.
+
+           move event-data-2 to riga-note.
+           modify gd-note(riga-note), row-font = font-evidenzia-griglia..
+
+           modify gd-note, (riga-note, 1),
+                  bitmap        = elemento-bmp,
+                  bitmap-number = 2,
+                  bitmap-width  = 16.
+
+      ***---
+       SALVA-NOTE.
+           accept como-data  from century-date
+           accept como-ora   from time
+
+      *    cancello tutte le righe delle note del destino
+           move gnd-desf-chiave to tmp-nfod-chiave-dest
+           move low-value       to tmp-nfod-prog
+
+
+           start tmp-nforn-dest key not < tmp-nfod-chiave
+              invalid
+                 continue
+              not invalid
+                 perform until 1 = 2
+                    read tmp-nforn-dest next no lock
+                       at end
+                          exit perform
+                    end-read
+                    if gnd-desf-chiave not = tmp-nfod-chiave-dest
+                       exit perform
+                    end-if
+                    delete tmp-nforn-dest record
+                       invalid
+                          continue
+                    end-delete
+                 end-perform
+           end-start
+
+           inquire gd-note, LAST-ROW = tot-righe-note
+           move zero   to cont
+           perform varying riga-note from 2 by 1 
+                          until riga-note > tot-righe-note
+
+              add 1 to cont
+              inquire gd-note(riga-note), record-data = rec-note
+              inquire gd-note, (riga-note, 1) 
+                                      hidden-data = tmp-nfod-dati-comuni
+
+              move gnd-desf-chiave to tmp-nfod-chiave-dest
+              move cont            to tmp-nfod-prog
+              move col-note        to tmp-nfod-nota
+              move como-data       to tmp-nfod-data-ultima-modifica
+              move como-ora        to tmp-nfod-ora-ultima-modifica
+              move user-codi       to tmp-nfod-utente-ultima-modifica
+
+              write tmp-nfod-rec
+           end-perform.
+
+      ***---
+       CARICA-GRID-NOTE.
+           modify gd-note, MASS-UPDATE = 1 
+                           reset-grid = 1
+           perform GD-NOTE-CONTENT
+
+           move 1   to riga-note
+
+           move gnd-desf-chiave to tmp-nfod-chiave-dest
+           move low-value       to tmp-nfod-prog
+
+           move zero   to cont
+           start tmp-nforn-dest key not less tmp-nfod-chiave
+              invalid
+                 continue
+              not invalid
+                 perform until 1 = 2
+                    read tmp-nforn-dest next no lock
+                       at end
+                          exit perform
+                    end-read
+                    if gnd-desf-chiave not = tmp-nfod-chiave-dest
+                       exit perform
+                    end-if
+                    add 1 to riga-note
+                    initialize rec-note
+                    move tmp-nfod-prog   to col-prog-note
+                    move tmp-nfod-nota       to col-note
+
+                    modify gd-note, RECORD-TO-ADD = rec-note
+
+                    modify gd-note(riga-note, 1), 
+                                   HIDDEN-DATA = tmp-nfod-dati-comuni
+
+                    perform COLORA-RIGA
+                    add 1 to cont
+                 end-perform
+           end-start
+           
+           move 2   to event-data-2
+
+           perform SPOSTAMENTO-NOTE
+
+
+           modify gd-note, MASS-UPDATE = zero.
+
+      ***---
+       ABILITA-TOOLBAR.
+           if mod = zero
+              move zero to e-nuovo
+                           e-cancella
+                           e-salva
+              move BitmapNewDisabled    to BitmapNumNew
+              move BitmapDeleteDisabled to BitmapNumDelete
+              move BitmapSaveDisabled   to BitmapNumSave
+           else
+              evaluate livello-abil
+              when 1 
+                    move zero to e-nuovo
+                                 e-cancella
+                                 e-salva
+                    move BitmapNewDisabled    to BitmapNumNew
+                    move BitmapDeleteDisabled to BitmapNumDelete
+                    move BitmapSaveDisabled   to BitmapNumSave
+
+              when 2 
+                   move 1    to e-nuovo
+                                e-salva
+                   move zero to e-cancella
+                   move BitmapNewEnabled    to BitmapNumNew
+                   move BitmapSaveEnabled   to BitmapNumSave
+                   move BitmapDeleteDisabled to BitmapNumDelete
+           
+              when 3 
+                   move 1    to e-nuovo
+                                e-cancella
+                                e-salva
+           
+                   move BitmapNewEnabled    to BitmapNumNew
+                   move BitmapSaveEnabled   to BitmapNumSave
+                   move BitmapDeleteEnabled to BitmapNumDelete
+              end-evaluate
+           end-if.
+
+           modify tool-nuovo,    enabled = e-nuovo
+           modify tool-cancella, enabled = e-cancella
+           modify tool-salva,    enabled = e-salva.
+
+      ***---
+       COLORA-RIGA.
+           if riga-note <= 78-num-righe-note-ord
+              modify gd-note(riga-note, 3), cell-COLOR COLORE-NU
+           else
+              modify gd-note(riga-note, 3), cell-COLOR COLORE-OR
+           end-if.
+
+      ***---
+       RICOLORA-NOTE.
+           perform varying riga-note from 2 by 1 
+                                   until riga-note > tot-righe-note
+              perform COLORA-RIGA
+           end-perform.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = gd-note-Ev-Msg-Begin-Drag
+BEGIN-TEXT
+           perform SPOSTAMENTO-NOTE.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = gd-note-Ev-Msg-Begin-Entry
+BEGIN-TEXT
+           evaluate event-data-1
+           when 2
+                set event-action to event-action-fail
+           when 3
+                if mod = zero
+                   set event-action to event-action-fail
+                else
+                   set NoteCambiate   to true
+                end-if
+           end-evaluate
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = gd-note-Ev-Msg-End-Drag
+BEGIN-TEXT
+           perform SPOSTAMENTO-NOTE.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = gd-note-Ev-Msg-Goto-Cell
+BEGIN-TEXT
+           perform SPOSTAMENTO-NOTE.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = gd-note-Ev-Msg-Goto-Cell-Drag
+BEGIN-TEXT
+           perform SPOSTAMENTO-NOTE.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = gd-note-Ev-Msg-Goto-Cell-Mouse
+BEGIN-TEXT
+           perform SPOSTAMENTO-NOTE.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = gd-note-Ev-Msg-Heading-Clicked
+BEGIN-TEXT
+           if event-data-2 not = 1
+              perform SPOSTAMENTO-NOTE
+           end-if
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = TOOL-NUOVOa-LinkTo
+BEGIN-TEXT
+           move riga-note to riga-old-note
+
+           initialize rec-note
+
+
+           accept como-data-creazione   from century-date
+           accept como-ora-creazione    from time
+           move user-codi                   to como-utente-creazione
+
+           inquire gd-note, LAST-ROW = tot-righe-note
+
+           inquire gd-note(tot-righe-note, 2),    
+                                         CELL-DATA = tmp-nfod-prog
+
+           add 1 to tmp-nfod-prog
+           move tmp-nfod-prog to col-prog-note
+
+
+           add 1    to tot-righe-note
+           move tot-righe-note  to riga-note
+
+           modify gd-note(riga-note), RECORD-DATA rec-note
+
+           modify gd-note(riga-note, 1), 
+                 HIDDEN-DATA = como-dati-comuni
+
+           perform COLORA-RIGA
+
+           modify gd-note, CURSOR-X = 3, cursor-y = riga-note
+
+           move riga-note to event-data-2
+           
+
+
+           move riga-old-note to riga-note           
+
+           perform SPOSTAMENTO-NOTE      
+     
+           set NoteCambiate   to true.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = TOOL-CANCELLAa-LinkTo
+BEGIN-TEXT
+      *     if mod-campi = 0 exit paragraph end-if.
+           if mod = 0
+              exit paragraph
+           end-if.
+
+           perform X-Y-NOTE.
+
+           if tot-righe-note > 1 or
+              ( riga-note > 1 and riga-note < tot-righe-note)
+
+              display message box "Eliminare la nota selezionata?"
+                      title = titolo
+                      type mb-yes-no
+                      default mb-no
+                      giving scelta
+
+              if scelta = mb-yes
+                 perform X-Y-NOTE
+                 modify gd-note, record-to-delete = riga-note
+                 perform RICOLORA-NOTE
+
+                 modify gd-note, cursor-y = riga-note, cursor-x = 1
+                                                       cursor-y = 2
+                 move 2   to event-data-2
+                 perform SPOSTAMENTO-NOTE
+                 set NoteCambiate   to true
+              end-if
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = TOOL-SALVAa-LinkTo
+BEGIN-TEXT
+           INQUIRE TOOL-SALVA, ENABLED IN E-SALVA
+           IF E-SALVA = 1
+              PERFORM SALVA-note
+           END-IF           
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = gnote-ordforn-Ev-Before-Program
+BEGIN-TEXT
+           move gnd-path  to path-tmp-nforn-dest
+           move gnd-mod   to mod
+
+           copy resource "..\resource\elemento.bmp".
+           call "W$BITMAP" using wbitmap-load, "elemento.bmp"
+                          giving elemento-bmp.
+      * Verdana10B-Occidentale
+           INITIALIZE WFONT-DATA, font-evidenzia-griglia
+           MOVE 10               TO WFONT-SIZE
+           MOVE "Arial"          TO WFONT-NAME
+           SET WFONT-BOLD        TO true
+           SET WFONT-ITALIC      TO true
+           SET WFONT-UNDERLINE   TO FALSE
+           SET WFONT-STRIKEOUT   TO FALSE
+           SET WFONT-FIXED-PITCH TO FALSE
+           MOVE 0                TO WFONT-CHAR-SET
+           CALL "W$FONT" USING WFONT-GET-FONT, 
+                     font-evidenzia-griglia, WFONT-DATA
+
+
+           perform ABILITA-TOOLBAR.       
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = gnote-ordforn-Ev-After-Program
+BEGIN-TEXT
+           CALL "w$bitmap" USING WBITMAP-DESTROY, elemento-bmp.
+END-TEXT
+END-DATA
+
+@}}
+
+[KEY_STATUS_FIELD_FORMAT]
+PIC=9(5)
+USAGE=[None]
+
+[KEYSTATUS_CONTENT:KS1]
+CONDITION=Enter-Pushed
+VALUE=13
+
+[KEYSTATUS_CONTENT:KS2]
+CONDITION=Exit-Pushed
+VALUE=27
+
+[KEYSTATUS_CONTENT:KS3]
+CONDITION=Message-Received
+VALUE=95
+
+[KEYSTATUS_CONTENT:KS4]
+CONDITION=Event-Occurred
+VALUE=96
+
+[KEYSTATUS_CONTENT:KS5]
+CONDITION=Screen-No-Input-Field
+VALUE=97
+
+[KEYSTATUS_CONTENT:KS6]
+CONDITION=Screen-Time-Out
+VALUE=99
+
+[COBOLAID_DATASET_INFO]
+COUNT=1
+NAME_0=DataSet1
+
+[DRAW_DOCUMENT_INDEX]
+OBJ_NAME_0=8001
+OBJ_ID_0=1871549326
+
+[MULTIPLE_KEY_0]
+COUNT=1
+KEY_0=tmp-nfod-chiave OF tmp-nforn-dest
+
+[DRAW_DOCUMENT_8001_1871549326]
+OBJ_NAME=8001
+OBJ_ID=1871549326
+TYPE=2
+VERSION=
+DOC_SIZE_X=5100
+DOC_SIZE_Y=5160
+PAGE_LEFT=150
+PAGE_TOP=150
+PAGE_RIGHT=1850
+PAGE_BOTTOM=2730
+MARGIN_LEFT=150
+MARGIN_TOP=150
+MARGIN_RIGHT=150
+MARGIN_BOTTOM=150
+PROP_DOCU_TYPE=ø
+PROP_DOCU_TYPE2=ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+PROP_DOCU_NAME=DataSet - DataSet1[gnote-destf(GESLUX)]
+PROP_DOCU_OWNER=Person A
+PROP_DOCU_CDATE=10/27/08
+PROP_DOCU_MODIFIER=Person B
+PROP_DOCU_MDATE=10/27/08
+PROP_DOCU_DESCR=Caseaid DocuCaseaid Document
+PROP_DOCU_HEADER=Caseaid Document
+PROP_DOCU_FOOTER=Page # 
+PROP_DOCU_DIM_H=2
+PROP_DOCU_DIM_W=3
+PROP_DOCU_LOC_H=1
+PROP_DOCU_LOC_W=1
+PROP_DOCU_EDGE_T=150
+PROP_DOCU_EDGE_B=150
+PROP_DOCU_EDGE_L=150
+PROP_DOCU_EDGE_R=150
+PROP_DOCU_ZOOM=75
+PROP_DOCU_SIZE_TYPE=0
+PROP_DOCU_SIZE_PAPER=1
+PROP_DOCU_SIZE_H=2580
+PROP_DOCU_SIZE_W=1700
+PROP_DOCU_RULER_EBL=0
+PROP_DOCU_GRID_EBL=0
+PROP_DOCU_GRID=20
+PROP_DOCU_ALIGN=0
+REL_SYM_SIZE=10
+REL_SYM_INFO_L=1
+REL_SYM_INFO_X0=2301
+REL_SYM_INFO_Y0=889710021
+
+[DRAW_BASESYMBOL_2301_889710021]
+OBJ_NAME=2301
+OBJ_ID=889710021
+KIND=1
+{{@LABEL_2301_889710021
+tmp-nforn-dest
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=429
+TOP=591
+RIGHT=829
+BOTTOM=813
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DMD_DOCUMENT_0_1871549326]
+OBJ_NAME=0
+OBJ_ID=1871549326
+FILE_TITLE_TYPE=8136
+FILE_SHOW_ITEM=0
+FILE_SHOW_KEY=0
+FILE_SHOW_PIC=0
+FILE_SHOW_HEAD=0
+FILE_SHOW_LEVEL=0
+FILE_SHOW_TREE=0
+FILE_SHOW_CLPS=0
+FILE_SHOW_BMP=0
+FILE_SHOW_LINE=0
+FILE_SHOW_MINIZE=0
+
+[DMD_FILE_0_889710021]
+OBJ_NAME=0
+OBJ_ID=889710021
+REL_M_OBJ_ID=0
+ENTITY=tmp-nforn-dest
+LINK=0
+LINK_NAME=
+DSN_SIZE=65
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=2
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tmp-nfod-chiave OF tmp-nforn-dest
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_889710021
+
+@}}
+DSN_INFO_PRIMARY=1
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=

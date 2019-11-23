@@ -1,0 +1,31 @@
+       01  st-ordforn-linkage.
+           05 stof-tof-chiave.
+               10 stof-tof-anno       PIC  9(4).
+               10 stof-tof-numero     PIC  9(8).
+           05 stof-tof-chiave-a.
+               10 stof-tof-anno-a     PIC  9(4).
+               10 stof-tof-numero-a   PIC  9(8).
+           05 stof-tipo-stampa         pic x.
+              88 stof-normale          value "N".
+              88 stof-pdf              value "P".
+      *****        88 stof-pdf-tmp          value "T".
+              88 stof-scegli-stampante value "S".
+              88 stof-anteprima        value "A".
+              88 stof-ufficio-A        value "G".
+              88 stof-ufficio-L        value "L".
+              88 stof-ufficio-M        value "M".
+
+           05 stof-path-pdf           pic x(256).
+           05 stof-tof-date.
+               10 stof-tof-data-a    PIC  9(8).
+               10 stof-tof-data-da   PIC  9(8).
+           05 stof-tof-stato  pic x.
+           05 stof-selprint-linkage.
+              10 stof-selprint-stampante   pic x(50).
+              10 stof-selprint-num-copie   pic 9(3).
+      *    luciano
+           05 stof-stampa-art-no-listforn   pic 9.
+              88 stof-si-stampa-art-no-listforn value 1 false zero.
+              88 stof-no-stampa-art-no-listforn value zero false 1.
+           05 stof-path-art-no-listforn  pic x(256).
+

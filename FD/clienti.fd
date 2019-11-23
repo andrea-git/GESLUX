@@ -1,0 +1,117 @@
+       FD  clienti.
+       01 cli-rec.
+           05 cli-chiave.
+               10 cli-tipo-CF      PIC  X(1).
+                   88 cli-tipo-C VALUE IS "C". 
+                   88 cli-tipo-F VALUE IS "F". 
+               10 cli-codice       PIC  9(5).
+           05 cli-dati.
+               10 cli-ragsoc-1     PIC  x(40).
+               10 cli-ragsoc-2     PIC  x(40).
+               10 cli-indirizzo    PIC  x(40).
+               10 cli-cap          PIC  x(5).
+               10 cli-localita     PIC  x(35).
+               10 cli-prov         PIC  x(2).
+               10 cli-nazione      PIC  x(3).
+               10 cli-codfis       PIC  x(16).
+               10 cli-piva         PIC  x(11).
+               10 cli-tel-1        PIC  x(15).
+               10 cli-tel-2        PIC  x(15).
+               10 cli-fax          PIC  x(15).
+               10 cli-email        PIC  x(100).
+               10 cli-web          PIC  x(100).
+      *(( XFD NAME = cli-tipo_1 ))
+               10 cli-tipo         PIC  x(2).
+               10 cli-gdo          PIC  x(5).
+               10 cli-utf          PIC  x.
+               10 cli-referente    PIC  x(30).
+               10 cli-note         PIC  x(300).
+               10 cli-note-agg     PIC  x(256).
+               10 cli-vettore      PIC  9(5).
+               10 cli-inoltro      PIC  x.
+               10 cli-agente       PIC  9(5).
+               10 cli-iva-ese      PIC  x(3).
+               10 cli-pag          PIC  x(3).
+               10 cli-spost-ric-agosto         PIC  x.
+               10 cli-spost-ric-dicembre       PIC  x.
+               10 cli-fido         PIC  9(11)v9(2).
+               10 cli-fido-data    PIC  9(8).
+               10 cli-abi          PIC  x(5).
+               10 cli-cab          PIC  x(5).
+               10 cli-superamento-500          PIC  x.
+               10 cli-stato        PIC  x.
+                   88 cli-attivo VALUE IS "A". 
+                   88 cli-disattivo VALUE IS "D". 
+                   88 cli-bloccato VALUE IS "B". 
+               10 cli-dich-esp     PIC  x(8).
+               10 cli-data-dich    PIC  9(8).
+               10 cli-data-reg     PIC  9(8).
+               10 cli-num-reg      PIC  x(8).
+               10 cli-fido-extra   PIC  9(8)v99.
+               10 cli-tipo-persona PIC  x.
+                   88 cli-fisica VALUE IS "F". 
+                   88 cli-giuridica VALUE IS space. 
+               10 cli-referente-ord            PIC  x(30).
+               10 cli-tel-dir-ref-ord          PIC  x(20).
+               10 cli-mail-ref-ord PIC  x(100).
+      *(( XFD NAME = cli-blocco-24000_1 ))
+               10 cli-blocco-24000 PIC  9.
+                   88 cli-si-blocco VALUE IS 1. 
+                   88 cli-no-blocco VALUE IS 0. 
+               10 cli-cod-ditta    PIC  x(15).
+               10 cli-gg-dilazione PIC  9(3).
+               10 cli-gestione-fido            PIC  9.
+                   88 cli-gestione-fido-si VALUE IS 1. 
+                   88 cli-gestione-fido-no VALUE IS 0. 
+               10 cli-saldi-banco  PIC  9(1).
+                   88 cli-saldi-banco-si VALUE IS 1. 
+                   88 cli-saldi-banco-no VALUE IS 0. 
+               10 cli-cau-blocco   PIC  x.
+                   88 cli-no-angraf VALUE IS "N". 
+                   88 cli-prob-pag VALUE IS "P". 
+                   88 cli-nuovo-ragsoc VALUE IS "R". 
+                   88 cli-fuori-fido VALUE IS "F". 
+                   88 cli-blocco-amm VALUE IS "A". 
+               10 cli-dati-comuni.
+                   15 cli-data-creazione           PIC  9(8).
+                   15 cli-ora-creazione            PIC  9(8).
+                   15 cli-utente-creazione         PIC  X(10).
+                   15 cli-data-ultima-modifica     PIC  9(8).
+                   15 cli-ora-ultima-modifica      PIC  9(8).
+                   15 cli-utente-ultima-modifica   PIC  X(10).
+               10 cli-vuoti.
+                   15 cli-sost         PIC  x.
+                       88 cli-sost-auto VALUE IS "A". 
+                       88 cli-sost-richiesta VALUE IS "R". 
+                       88 cli-sost-no VALUE IS " " "N". 
+                   15 cli-tipo-art     PIC  9.
+                       88 cli-tipo-art-diretti VALUE IS 1. 
+                       88 cli-tipo-art-gruppi VALUE IS 2. 
+                       88 cli-tipo-art-specialist VALUE IS 3. 
+                       88 cli-tipo-art-DO VALUE IS 4. 
+                       88 cli-tipo-art-GDA VALUE IS 5. 
+                       88 cli-tipo-art-GDS VALUE IS 6. 
+                       88 cli-tipo-art-ESTERO VALUE IS 7. 
+                   15 cli-iva          PIC  X(3).
+                   15 cli-invio-bolle-EDI          PIC  x.
+                       88 cli-invio-bolle-EDI-si VALUE IS "S". 
+                       88 cli-invio-bolle-EDI-no VALUE IS "N" " ". 
+                   15 cli-destino-auto-EDI         PIC  x.
+                       88 cli-destino-auto-EDI-si VALUE IS "S". 
+                       88 cli-destino-auto-EDI-no VALUE IS "N" " ". 
+      *(( XFD NAME = cli-agente-2 ))
+                   15 cli-agente2      PIC  9(5).
+                   15 cli-codice-SDI   PIC  X(10).
+                   15 cli-pec          PIC  X(100).
+                   15 cli-esigibilita-iva          PIC  X.
+                       88 cli-esigibilita-iva-immediata VALUE IS "I". 
+                       88 cli-esigibilita-iva-differita VALUE IS "D". 
+                       88 cli-esigibilita-iva-scissione VALUE IS "S". 
+      *(( XFD NAME = cli-alfa-vuoto-1_8 ))
+                   15 FILLER           PIC  X(377).
+                   15 cli-fidejussione PIC  s9(8)v9(4).
+                   15 cli-pfa          PIC  s9(8)v9(4).
+                   15 cli-pfa-perce    PIC  9(3)v999.
+                   15 cli-data-fido-extra          PIC  9(8).
+                   15 cli-grade        PIC  9(2).
+                   15 cli-num-vuoto-3  PIC  9(14).

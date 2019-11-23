@@ -1,0 +1,59 @@
+       FD  tnotacr.
+       01 tno-rec.
+           05 tno-chiave.
+               10 tno-anno         PIC  9(4).
+               10 tno-numero       PIC  9(8).
+           05 tno-dati.
+               10 tno-causale      PIC  x(4).
+               10 tno-cod-cli      PIC  9(5).
+               10 tno-prg-destino  PIC  9(5).
+               10 tno-data         PIC  9(8).
+               10 tno-data-passaggio-ordine    PIC  9(8).
+               10 tno-cod-agente   PIC  9(5).
+               10 tno-cod-pagamento            PIC  x(3).
+               10 tno-cod-ese-iva  PIC  x(3).
+               10 tno-spostam-ric-ago          PIC  X(1).
+                   88 tno-si-ric-ago VALUE IS "S". 
+                   88 tno-no-ric-ago VALUE IS "N". 
+               10 tno-spostam-ric-dic          PIC  X(1).
+                   88 tno-si-ric-dic VALUE IS "S". 
+                   88 tno-no-ric-dic VALUE IS "N". 
+               10 tno-note         PIC  X(500).
+               10 tno-invio        PIC  x.
+                   88 tno-invio-manuale VALUE IS "M". 
+                   88 tno-invio-postel VALUE IS "P". 
+                   88 tno-invio-edi VALUE IS "E". 
+               10 tno-fattura.
+                   15 tno-anno-fattura PIC  9(4).
+                   15 tno-num-fattura  PIC  9(8).
+                   15 tno-data-fattura PIC  9(8).
+                   15 tno-num-prenot   PIC  9(8).
+                   15 tno-fatt-prenotata           PIC  x.
+                       88 tno-fatt-si-prenotata VALUE IS "S". 
+                       88 tno-fatt-no-prenotata VALUE IS "N". 
+               10 tno-agg-contab   PIC  x.
+                   88 tno-si-agg-contab VALUE IS "S". 
+                   88 tno-no-agg-contab VALUE IS "N". 
+               10 tno-contropartita            PIC  X(8).
+               10 tno-stato        PIC  X(1).
+                   88 tno-attivo VALUE IS "A". 
+                   88 tno-disattivo VALUE IS "D". 
+                   88 tno-bloccato VALUE IS "B". 
+               10 tno-dati-comuni.
+                   15 tno-data-creazione           PIC  9(8).
+                   15 tno-ora-creazione            PIC  9(8).
+                   15 tno-utente-creazione         PIC  X(10).
+                   15 tno-data-ultima-modifica     PIC  9(8).
+                   15 tno-ora-ultima-modifica      PIC  9(8).
+                   15 tno-utente-ultima-modifica   PIC  X(10).
+               10 tno-vuoti.
+                   15 tno-data-contab  PIC  9(8).
+                   15 tno-fattura-from.
+                       20 tno-fattura-from-data        PIC  9(8).
+                       20 tno-fattura-from-numero      PIC  9(8).
+                   15 tno-bolla-from.
+                       20 tno-bolla-from-data          PIC  9(8).
+                       20 tno-bolla-from-numero        PIC  x(8).
+                   15 tno-num-vuoto-3  PIC  9(5).
+               10 tno-data-ingresso            PIC  9(8).
+               10 FILLER           PIC  x(52).

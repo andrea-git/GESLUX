@@ -1,0 +1,62 @@
+      *(( XFD FILE = STO-tnotacr ))
+       FD  STO-tnotacr.
+       01 STO-tno-rec.
+           05 STO-tno-chiave.
+               10 STO-tno-anno     PIC  9(4).
+               10 STO-tno-numero   PIC  9(8).
+           05 STO-tno-dati.
+               10 STO-tno-causale  PIC  x(4).
+               10 STO-tno-cod-cli  PIC  9(5).
+               10 STO-tno-prg-destino          PIC  9(5).
+               10 STO-tno-data     PIC  9(8).
+               10 STO-tno-data-passaggio-ordine            PIC  9(8).
+               10 STO-tno-cod-agente           PIC  9(5).
+               10 STO-tno-cod-pagamento        PIC  x(3).
+               10 STO-tno-cod-ese-iva          PIC  x(3).
+               10 STO-tno-spostam-ric-ago      PIC  X(1).
+                   88 STO-tno-si-ric-ago VALUE IS "S". 
+                   88 STO-tno-no-ric-ago VALUE IS "N". 
+               10 STO-tno-spostam-ric-dic      PIC  X(1).
+                   88 STO-tno-si-ric-dic VALUE IS "S". 
+                   88 STO-tno-no-ric-dic VALUE IS "N". 
+               10 STO-tno-note     PIC  X(500).
+               10 STO-tno-invio    PIC  x.
+                   88 STO-tno-invio-manuale VALUE IS "M". 
+                   88 STO-tno-invio-postel VALUE IS "P". 
+                   88 STO-tno-invio-edi VALUE IS "E". 
+               10 STO-tno-fattura.
+                   15 STO-tno-anno-fattura         PIC  9(4).
+                   15 STO-tno-num-fattura          PIC  9(8).
+                   15 STO-tno-data-fattura         PIC  9(8).
+                   15 STO-tno-num-prenot           PIC  9(8).
+                   15 STO-tno-fatt-prenotata       PIC  x.
+                       88 STO-tno-fatt-si-prenotata VALUE IS "S". 
+                       88 STO-tno-fatt-no-prenotata VALUE IS "N". 
+               10 STO-tno-agg-contab           PIC  x.
+                   88 STO-tno-si-agg-contab VALUE IS "S". 
+                   88 STO-tno-no-agg-contab VALUE IS "N". 
+               10 STO-tno-contropartita        PIC  X(8).
+               10 STO-tno-stato    PIC  X(1).
+                   88 STO-tno-attivo VALUE IS "A". 
+                   88 STO-tno-disattivo VALUE IS "D". 
+                   88 STO-tno-bloccato VALUE IS "B". 
+               10 STO-tno-dati-comuni.
+                   15 STO-tno-data-creazione       PIC  9(8).
+                   15 STO-tno-ora-creazione        PIC  9(8).
+                   15 STO-tno-utente-creazione     PIC  X(10).
+                   15 STO-tno-data-ultima-modifica PIC  9(8).
+                   15 STO-tno-ora-ultima-modifica  PIC  9(8).
+                   15 STO-tno-utente-ultima-modifica           PIC  
+           X(10).
+               10 STO-tno-vuoti.
+                   15 STO-tno-data-contab          PIC  9(8).
+                   15 STO-tno-fattura-from.
+                       20 STO-tno-fattura-from-data    PIC  9(8).
+                       20 STO-tno-fattura-from-numero  PIC  9(8).
+                   15 STO-tno-bolla-from.
+                       20 tnobollra-from-data          PIC  9(8).
+                       20 STO-tno-bolla-from-numero    PIC  x(8).
+                   15 STO-tno-num-vuoto-3          PIC  9(5).
+                   15 STO-tno-alfa-vuoto-1         PIC  X(20).
+                   15 STO-tno-alfa-vuoto-2         PIC  X(20).
+                   15 STO-tno-alfa-vuoto-3         PIC  X(20).

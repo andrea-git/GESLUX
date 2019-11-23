@@ -1,0 +1,14 @@
+       FD  TABM.
+       01 RECORDFILE.
+           10 NOMECHIAVE       PIC  X(11).
+           10 FILLER REDEFINES NOMECHIAVE.
+               15 PARTE-FISSA      PIC  X(5).
+               15 PARTE-VARIABILE  PIC  X(6).
+               15 FILLER REDEFINES PARTE-VARIABILE.
+                   20 PARTE-VAR-NUM    PIC  9(2).
+                   20 FILLER           PIC  X(4).
+           10 DESCRIZIONE1     PIC  X(40).
+           10 DESCRIZIONE2     PIC  X(40).
+       01 RECORDBIS.
+           02 CHIAVEDUE        PIC  X(11).
+           02 DATIDUE          PIC  X(80).

@@ -1,0 +1,41 @@
+      *(( XFD FILE = STO-rnotacr ))
+       FD  STO-rnotacr.
+       01 STO-rno-rec.
+           05 STO-rno-chiave.
+               10 STO-rno-anno     PIC  9(4).
+               10 STO-rno-numero   PIC  9(8).
+               10 STO-rno-num-riga PIC  9(5).
+           05 STO-rno-dati.
+               10 STO-rno-cod-articolo         PIC  9(6).
+               10 STO-rno-qta      PIC  9(8).
+               10 STO-rno-prz-unitario         PIC  9(9)v9(2).
+               10 STO-rno-imp-consumo          PIC  9(4)v9(2).
+               10 STO-rno-imp-cou-cobat        PIC  9(4)v9(2).
+               10 STO-rno-cod-iva  PIC  x(3).
+               10 STO-rno-des-libera           PIC  x(150).
+               10 STO-rno-perce-sconto         PIC  9(2)v9(2).
+               10 STO-rno-peso-utf PIC  9(5)v9(3).
+               10 STO-rno-peso-non-utf         PIC  9(5)v9(3).
+               10 STO-rno-prg-chiave.
+                   15 STO-rno-prg-cod-articolo     PIC  9(6).
+                   15 STO-rno-prg-cod-magazzino    PIC  X(3).
+                   15 STO-rno-prg-tipo-imballo     PIC  X(3).
+                   15 STO-rno-prg-peso PIC  9(5)v9(3).
+               10 STO-rno-stato    PIC  X(1).
+                   88 STO-rno-attivo VALUE IS "A". 
+                   88 STO-rno-disattivo VALUE IS "D". 
+                   88 STO-rno-bloccato VALUE IS "B". 
+               10 STO-rno-dati-comuni.
+                   15 STO-rno-data-creazione       PIC  9(8).
+                   15 STO-rno-ora-creazione        PIC  9(8).
+                   15 STO-rno-utente-creazione     PIC  X(10).
+                   15 STO-rno-data-ultima-modifica PIC  9(8).
+                   15 STO-rno-ora-ultima-modifica  PIC  9(8).
+                   15 STO-rno-utente-ultima-modifica           PIC  
+           X(10).
+               10 STO-rno-vuoti.
+                   15 STO-rno-add-piombo           PIC  9(4)v99.
+                   15 STO-rno-num-vuoto-1          PIC  9(9).
+                   15 STO-rno-num-vuoto-2          PIC  9(15).
+                   15 STO-rno-num-vuoto-3          PIC  9(15).
+                   15 STO-rno-alfa-vuoto           PIC  X(200).

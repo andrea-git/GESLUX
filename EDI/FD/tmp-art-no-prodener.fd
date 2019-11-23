@@ -1,0 +1,8 @@
+      *(( XFD FILE = tmp-assorcli ))
+       FD  tmp-art-no-prodener.
+       01 tmp-anp-rec.
+           05 tmp-anp-chiave.
+               10 tmp-anp-codice   PIC  9(6).
+           05 tmp-anp-dati.
+               10 tmp-anp-descr    PIC  x(40).
+               10 tmp-anp-problema PIC  x(50).

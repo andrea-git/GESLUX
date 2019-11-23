@@ -1,0 +1,61 @@
+      *
+      *
+       FD  agenti.
+       01 age-rec.
+           05 age-chiave.
+               10 age-codice       PIC  9(5).
+           05 age-dati.
+               10 age-dati-anagrafici.
+                   15 age-ragsoc-1     PIC  X(40).
+                   15 age-ragsoc-2     PIC  X(40).
+                   15 age-indirizzo    PIC  X(40).
+                   15 age-cap          PIC  X(5).
+                   15 age-localita     PIC  X(35).
+                   15 age-provincia    PIC  X(2).
+                   15 age-nazione      PIC  X(3).
+                   15 age-codice-fiscale           PIC  X(16).
+                   15 age-partita-iva  PIC  X(11).
+                   15 age-telefono-1   PIC  X(15).
+                   15 age-fax          PIC  X(15).
+                   15 age-email        PIC  X(500).
+                   15 age-iscrizione-cciaa         PIC  X(15).
+                   15 age-numero-enasarco          PIC  X(10).
+                   15 age-iscrizione-albo          PIC  X(10).
+                   15 age-mono-plurimandatario     PIC  X(1).
+                       88 age-mono VALUE IS "M". 
+                       88 age-pluri VALUE IS "P". 
+               10 age-dati-condizioni.
+                   15 age-tipo         PIC  x.
+                       88 age-normale VALUE IS "N". 
+                       88 age-speciale VALUE IS "S". 
+                   15 age-marg         PIC  9(3)v99.
+                   15 age-minimo       PIC  9(9).
+                   15 age-prezzo       PIC  9.
+                       88 age-prezzo-normale VALUE IS 0. 
+                       88 age-prezzo-speciale VALUE IS 1. 
+                   15 age-listino      PIC  9(4).
+                   15 age-tab-marche.
+                       20 age-marche
+                                  OCCURS 10 TIMES.
+                           25 age-marca        PIC  9(4).
+                           25 age-perce-marca  PIC  9(3)v99.
+                   15 age-omaggi       PIC  9(3).
+               10 age-dati-comuni.
+                   15 age-data-creazione           PIC  9(8).
+                   15 age-ora-creazione            PIC  9(8).
+                   15 age-utente-creazione         PIC  X(10).
+                   15 age-data-ultima-modifica     PIC  9(8).
+                   15 age-ora-ultima-modifica      PIC  9(8).
+                   15 age-utente-ultima-modifica   PIC  X(10).
+               10 age-vuoti.
+                   15 age-add-pb       PIC  9.
+                       88 age-si-add-pb VALUE IS 1. 
+                       88 age-no-add-pb VALUE IS 0. 
+                   15 age-num-vuoto-1  PIC  9(14).
+                   15 age-num-vuoto-2  PIC  9(15).
+                   15 age-num-vuoto-3  PIC  9(15).
+                   15 age-telefono-2   PIC  X(15).
+                   15 age-alfa-vuoto-1 PIC  X(5).
+                   15 age-alfa-vuoto-2 PIC  X(20).
+                   15 age-alfa-vuoto-3 PIC  X(20).
+                   15 FILLER           PIC  X(200).

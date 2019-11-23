@@ -1,0 +1,2057 @@
+; CaseMaker Totem Program Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[MONITOR_FILE]
+
+
+[PROGRAM_CONTENT]
+QUIT_CONFIRM=0
+ANSI_FORMAT=1
+MAIN_SCREEN_NAME=scr-oper
+BEFORE_PROGRAM=scheduler-Ev-Before-Program
+AFTER_PROGRAM=scheduler-Ev-After-Program
+PROGRAM_UNIQUE_CODE=TOTEM-7E3AA205644-894-2594112880
+
+{{@DESCRIPTION:
+
+@}}
+
+[WORKING_STORAGE]
+m_nType=1
+m_strName=Working Storage
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionWK
+
+@}}
+[FDITEM0_WK]
+m_strName=TITOLO
+m_strDefaultValue="Geslux - Monitor batch"
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_WK
+
+@}}
+[FDITEM1_WK]
+m_strName=FORM1-HANDLE
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1_WK
+
+@}}
+[FDITEM2_WK]
+m_strName=Verdana18B-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM2_WK
+
+@}}
+[FDITEM3_WK]
+m_strName=Verdana10-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM3_WK
+
+@}}
+[FDITEM4_WK]
+m_strName=Arial10B-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM4_WK
+
+@}}
+[FDITEM5_WK]
+m_strName=OK-73X21-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM5_WK
+
+@}}
+[FDITEM6_WK]
+m_strName=data-oggi
+m_strRawPic=x(10)
+m_strPic=x(10)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM6_WK
+
+@}}
+[FDITEM7_WK]
+m_strName=Verdana18-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM7_WK
+
+@}}
+[FDITEM8_WK]
+m_strName=Verdana20-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM8_WK
+
+@}}
+[FDITEM9_WK]
+m_strName=bottone-no-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM9_WK
+
+@}}
+[FDITEM10_WK]
+m_strName=bottone-si-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM10_WK
+
+@}}
+[FDITEM11_WK]
+m_strName=bottone-ok-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM11_WK
+
+@}}
+[FDITEM12_WK]
+m_strName=v-push
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM12_WK
+
+@}}
+[FDITEM13_WK]
+m_strName=como-entry
+m_strRawPic=x
+m_strPic=x
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM13_WK
+
+@}}
+[FDITEM14_WK]
+m_strName=ore
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM14_WK
+
+@}}
+[FDITEM15_WK]
+m_strName=ora-oggi
+m_strRawPic=x(9)
+m_strPic=x(9)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM15_WK
+
+@}}
+[FDITEM16_WK]
+m_strName=minuti
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM16_WK
+
+@}}
+[FDITEM17_WK]
+m_strName=secondi
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM17_WK
+
+@}}
+[FDITEM18_WK]
+m_strName=tot-ok
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM18_WK
+
+@}}
+[FDITEM19_WK]
+m_strName=tot-ko
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM19_WK
+
+@}}
+[FDITEM20_WK]
+m_strName=tot-bloc
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM20_WK
+
+@}}
+[FDITEM21_WK]
+m_strName=tot-ok-ko
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM21_WK
+
+@}}
+[FDITEM22_WK]
+m_strName=tot-proc
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM22_WK
+
+@}}
+[FDITEM23_WK]
+m_strName=tot-exec
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM23_WK
+
+@}}
+[FDITEM24_WK]
+m_strName=path-log
+m_strRawPic=x(256)
+m_strPic=x(256)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM24_WK
+
+@}}
+[FDITEM25_WK]
+m_strName=tot-warning
+m_strRawPic=999
+m_strPic=999
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM25_WK
+
+@}}
+[FDITEM26_WK]
+m_strName=secondi-start
+m_strRawPic=9(18)
+m_strPic=9(18)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM26_WK
+
+@}}
+[FDITEM27_WK]
+m_strName=secondi-end
+m_strRawPic=9(18)
+m_strPic=9(18)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM27_WK
+
+@}}
+[FDITEM28_WK]
+m_strName=tot-secondi
+m_strRawPic=9(18)
+m_strPic=9(18)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM28_WK
+
+@}}
+[FDITEM29_WK]
+m_strName=NomePgm
+m_strRawPic=x(15)
+m_strPic=x(15)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM29_WK
+
+@}}
+[FDITEM30_WK]
+m_strName=call-status
+m_nUsage=17
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM30_WK
+
+@}}
+[FDITEM31_WK]
+m_strName=cmd
+m_strRawPic=x(200)
+m_strPic=x(200)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM31_WK
+
+@}}
+[FDITEM32_WK]
+m_strName=SchedulerLog
+m_strRawPic=x(256)
+m_strPic=x(256)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM32_WK
+
+@}}
+[FDITEM33_WK]
+m_strName=idx-log
+m_strRawPic=9(3)
+m_strPic=9(3)
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM33_WK
+
+@}}
+[FDITEM34_WK]
+m_strName=tab-log-invio
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM34_WK
+
+@}}
+[FDITEM35_WK]
+m_strName=el-log-invio
+m_strRawPic=x(256)
+m_strPic=x(256)
+m_nItemLevel=5
+m_nSync=-1
+m_bOccurs=1
+m_bFixed=1
+m_strRawSize=50
+m_nSize=50
+{{@DataItem_m_strDescriptionFDITEM35_WK
+
+@}}
+[FDITEM36_WK]
+m_strName=StatusInvioMail
+m_strRawPic=s9
+m_strPic=S9
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_strCopyFile=mail.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM36_WK
+
+@}}
+[FDITEM37_WK]
+m_strName=PathInvioMail
+m_strRawPic=x(80)
+m_strPic=X(80)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_strCopyFile=mail.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM37_WK
+
+@}}
+[FDITEM38_WK]
+m_strName=NomeProgramma
+m_strRawPic=x(30)
+m_strPic=X(30)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_strCopyFile=mail.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM38_WK
+
+@}}
+[FDITEM39_WK]
+m_strName=LinkMail
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_strCopyFile=mail.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM39_WK
+ PER LE MAIL
+@}}
+[FDITEM40_WK]
+m_strName=LinkSubject
+m_strRawPic=x(100)
+m_strPic=X(100)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_strCopyFile=mail.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM40_WK
+
+@}}
+[FDITEM41_WK]
+m_strName=LinkBody
+m_strRawPic=x(10000)
+m_strPic=X(10000)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_strCopyFile=mail.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM41_WK
+
+@}}
+[FDITEM42_WK]
+m_strName=LinkAddressFrom
+m_strRawPic=x(3000)
+m_strPic=X(3000)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_strCopyFile=mail.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM42_WK
+
+@}}
+[FDITEM43_WK]
+m_strName=LinkAddress
+m_strRawPic=x(3000)
+m_strPic=X(3000)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_strCopyFile=mail.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM43_WK
+
+@}}
+[FDITEM44_WK]
+m_strName=LinkAddressCC
+m_strRawPic=x(3000)
+m_strPic=X(3000)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_strCopyFile=mail.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM44_WK
+
+@}}
+[FDITEM45_WK]
+m_strName=LinkAttach
+m_strRawPic=x(1000)
+m_strPic=X(1000)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_strCopyFile=mail.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM45_WK
+
+@}}
+[FDITEM46_WK]
+m_strName=LinkPorta
+m_strRawPic=x(3)
+m_strPic=X(3)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_strCopyFile=mail.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM46_WK
+
+@}}
+[FDITEM47_WK]
+m_strName=LinkSSL
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_strCopyFile=mail.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM47_WK
+
+@}}
+[FDITEM48_WK]
+m_strName=LinkUser
+m_strRawPic=x(200)
+m_strPic=X(200)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_strCopyFile=mail.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM48_WK
+
+@}}
+[FDITEM49_WK]
+m_strName=LinkPassword
+m_strRawPic=x(200)
+m_strPic=X(200)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_strCopyFile=mail.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM49_WK
+
+@}}
+[FDITEM50_WK]
+m_strName=batch-linkage
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-BATCH.DEF
+m_strCopyFile=link-batch.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-BATCH.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM50_WK
+
+
+@}}
+[FDITEM51_WK]
+m_strName=batch-win-handle
+m_nUsage=24
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-BATCH.DEF
+m_strCopyFile=link-batch.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-BATCH.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM51_WK
+
+@}}
+[FDITEM52_WK]
+m_strName=batch-log
+m_strRawPic=x(512)
+m_strPic=X(512)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-BATCH.DEF
+m_strCopyFile=link-batch.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-BATCH.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM52_WK
+
+@}}
+[FDITEM53_WK]
+m_strName=batch-status
+m_nUsage=17
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-BATCH.DEF
+m_strCopyFile=link-batch.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-BATCH.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM53_WK
+
+@}}
+[FDITEM54_WK]
+m_strName=como-ora-hhmmss
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM54_WK
+
+@}}
+[FDITEM55_WK]
+m_strName=como-hh
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM55_WK
+
+@}}
+[FDITEM56_WK]
+m_strName=como-mm
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM56_WK
+
+@}}
+[FDITEM57_WK]
+m_strName=como-ss
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM57_WK
+
+@}}
+[FDITEM58_WK]
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM58_WK
+
+@}}
+[FDITEM59_WK]
+m_strName=errore-bloccante
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM59_WK
+
+@}}
+[FDITEM60_WK]
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM60_WK
+
+@}}
+[FDITEM61_WK]
+m_strName=CallDettaglio
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM61_WK
+
+@}}
+[FDITEM62_WK]
+m_strName=STATUS-batnott
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM62_WK
+
+@}}
+[FDITEM63_WK]
+m_strName=Valid-STATUS-batnott
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM63_WK
+
+@}}
+[FDITEM64_WK]
+m_strName=rec-grid
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM64_WK
+
+@}}
+[FDITEM65_WK]
+m_strName=col-programma
+m_strRawPic=X(25)
+m_strPic=X(25)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM65_WK
+
+@}}
+[FDITEM66_WK]
+m_strName=col-ini
+m_strRawPic=X(25)
+m_strPic=X(25)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM66_WK
+
+@}}
+[FDITEM67_WK]
+m_strName=col-fine
+m_strRawPic=X(25)
+m_strPic=X(25)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM67_WK
+
+@}}
+[FDITEM68_WK]
+m_strName=col-esito
+m_strRawPic=x(5)
+m_strPic=x(5)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM68_WK
+
+@}}
+[FDITEM69_WK]
+m_strName=scr-oper-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM69_WK
+
+@}}
+[FDITEM70_WK]
+m_strName=Small-Font
+m_nUsage=37
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM70_WK
+
+@}}
+[FDITEM71_WK]
+m_strName=wstampa
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM71_WK
+
+@}}
+[FDITEM72_WK]
+m_strName=STATUS-lineseq
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM72_WK
+
+@}}
+[FDITEM73_WK]
+m_strName=Valid-STATUS-lineseq
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM73_WK
+
+@}}
+[FDITEM74_WK]
+m_strName=Verdana12B-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM74_WK
+
+@}}
+[FDITEM75_WK]
+m_strName=STATUS-tsetinvio
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM75_WK
+
+@}}
+[FDITEM76_WK]
+m_strName=Valid-STATUS-tsetinvio
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM76_WK
+
+@}}
+[FDITEM77_WK]
+m_strName=STATUS-lineseq1
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM77_WK
+
+@}}
+[FDITEM78_WK]
+m_strName=VALID-STATUS-lineseq1
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM78_WK
+
+@}}
+
+
+[LINKAGE_SECTION]
+m_nType=1
+m_strName=Linkage Section
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionLK
+
+@}}
+
+
+{{@SCREEN:
+*   Screen Painter Data
+*   Schema 6.0
+*
+BEGIN-SPDATA-6.1A
+
+GRAPHICAL-SCREEN
+
+Begin Screen scr-oper
+   PREFIX            = scr-oper
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = scr-oper
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 16
+   Cell Width        = 8
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = FALSE
+   Font              = Verdana/10/C0/@Occidentale
+   Font Variable     = Verdana10-Occidentale
+   Handle Variable   = scr-oper-Handle
+   Height in Cells   = TRUE
+   Help ID           = 0
+   Label Offset      = 20
+   Lines             = 35,00
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = FALSE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 93,00
+   System Menu       = TRUE
+   Title Bar         = TRUE
+   Title Variable    = titolo
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = TRUE
+   Window Type       = Floating
+   Wrap              = FALSE
+   Event Procedure   = scr-oper-Event-Proc
+   Begin Push-Button pb-ok-oper
+      SCREEN-COL        = 42,38
+      SCREEN-LINE       = 33,06
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-ok-oper
+      Bitmap            = "..\RESOURCE\BOTTONE-OK.BMP"
+      Bitmap Frame      = FALSE
+      Bitmap Handle     = BOTTONE-OK-BMP
+      Bitmap Number     = 2
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 42,38
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 13
+      Flat              = TRUE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 2
+      Line              = 33,06
+      Lines             = 1,81
+      Lines in Pixels   = 30
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 9,13
+      Size in Pixels    = 73
+      Size Unit         = Default
+      Style             = OK Button
+      Tab Order         = 1
+      Termination Value = 0
+      Title             = "OK"
+      Visible           = FALSE
+      Visible Variable  = v-push
+      Width in Cells    = FALSE
+      Link To           = pb-ok-LinkTo
+   End
+   Begin Grid form1-gd-1
+      SCREEN-COL        = 3,75
+      SCREEN-LINE       = 1,06
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = form1-gd-1
+      Action            = (None)
+      Adjustable Columns = FALSE
+      Border            = Boxed
+      Cells' Setting    = ( X = 1, Y = 1, Data = "Processo" )
+      Cells' Setting    = ( X = 2, Y = 1, Data = "Inzio" )
+      Cells' Setting    = ( X = 3, Y = 1, Data = "Fine" )
+      Cells' Setting    = ( X = 4, Y = 1, Data = "Esito" )
+      Centered Headings = FALSE
+      Color             = 0
+      Column            = 3,75
+      Column Headings   = TRUE
+      Columns' Setting  = ( X = 1, Name = col-programma, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(25)", TYPE = "X(20)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
+      Columns' Setting  = ( DISP = 25, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 2, Name = col-ini, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(25)", TYPE = "X(20)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
+      Columns' Setting  = ( DISP = 25, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 3, Name = col-fine, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(25)", TYPE = "X(20)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
+      Columns' Setting  = ( DISP = 25, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 4, Name = col-esito, READONLY = 0 )
+      Columns' Setting  = ( Font = Verdana/12/B/C0/@Occidentale, Font Variable = Verdana12B-Occidentale )
+      Columns' Setting  = ( PIC = "x(5)", TYPE = "x(5)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
+      Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
+      Cursor Color      = 0
+      Cursor Frame Width = 0
+      Cursor X          = 0
+      Cursor Y          = 0
+      Destroy Type      = Automatic
+      Divider Color     = 1
+      Drag Color        = 0
+      Enable            = NONE
+      End Color         = 0
+      Font              = Default Font
+      Heading Color     = 257
+      Heading Divider Color = 1
+      Heading Font      = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hscroll           = FALSE
+      ID                = 1
+      Last Row          = 0
+      Line              = 1,06
+      Lines             = 31,50
+      Lines Unit        = Default
+      No Tab            = FALSE
+      Num Col Headings  = 0
+      Num Columns       = 4
+      Num Rows          = 0
+      Occurs            = 0
+      Paged             = FALSE
+      Record Data       = rec-grid
+      Row Dividers      = 1
+      Row Headings      = FALSE
+      Size              = 87,50
+      Size Unit         = Default
+      Tab Order         = 2
+      Tiled Headings    = TRUE
+      Use Tab           = FALSE
+      Virtual Width     = 85
+      Visible           = NONE
+      Vpadding          = 20
+      Vscroll           = TRUE
+      Width in Cells    = TRUE
+      Event Procedure   = scr-oper-Gd-1-Event-Proc
+      Msg-Begin-Drag    = form1-gd-1-Ev-Msg-Begin-Drag
+      Msg-Begin-Entry   = form1-gd-1-Ev-Msg-Begin-Entry
+      Msg-End-Drag      = form1-gd-1-Ev-Msg-End-Drag
+      Msg-Goto-Cell     = form1-gd-1-Ev-Msg-Goto-Cell
+      Msg-Goto-Cell-Drag = form1-gd-1-Ev-Msg-Goto-Cell-Drag
+      Msg-Goto-Cell-Mouse = form1-gd-1-Ev-Msg-Goto-Cell-Mouse
+   End
+End
+
+END-SPDATA
+
+@}}
+
+{{@REPORT:
+*   Report Writer Data
+*   Schema 6.0
+*
+BEGIN-RWDATA-6.0A
+
+END-RWDATA
+
+@}}
+
+{{@EMBEDDING_CODE:
+BEGIN-DATA
+   BASETYPE          = 6
+   NODESTYLE         = 7
+   PARAGRAPH         = DeletedCode
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = scr-oper
+   ACTOBJ            = scr-oper
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+           move low-value to bat-rec.
+           start batnott key >= bat-chiave
+                 invalid 
+                 modify form1-gd-1, reset-grid = 1
+                 perform FORM1-GD-1-CONTENT
+             not invalid
+                 initialize rec-grid
+                 move 2 to riga
+                 perform until 1 = 2
+                    read batnott next at end exit perform end-read
+                    if bat-abilitato-si
+                       move bat-programma to col-programma
+                       modify form1-gd-1(riga, 1), cell-data col-programma
+                       modify form1-gd-1(riga, 1), hidden-data bat-prg
+                       add 1 to riga
+                    end-if
+                 end-perform                 
+                 call "C$CALLEDBY" using NomePgm
+                 if NomePgm = "admin"
+                    move 1 to v-push
+                    modify pb-ok-oper, VISIBLE v-push
+                 else
+                    modify form1-gd-1, enabled true
+                   |Serve a spoller per non dare messaggi a video
+                    set environment "BATCH_NOTTURNO" to "S"         
+                    perform CHIAMA-BATCH                         
+                    set environment "BATCH_NOTTURNO" to " "
+                    move 27 to key-status
+                 end-if
+           end-start.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = scr-oper
+   ACTOBJ            = scr-oper
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterEndAccept
+BEGIN-TEXT
+           if CallDettaglio
+              set CallDettaglio to false
+              if path-log not = spaces
+                 inspect path-log replacing trailing spaces by low-value
+                 initialize cmd
+                 string "START "   delimited size
+                       x"22222022" delimited size
+                       path-log    delimited low-value
+                       x"22"       delimited size
+                       into cmd
+                 end-string
+                 call "C$SYSTEM" using cmd, 225
+                                giving call-status
+              end-if
+           end-if
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CHIAMA-BATCH
+BEGIN-TEXT
+           perform INVIO-MAIL-INI.
+           initialize wstampa.                 
+           perform FORMAT-DATA-OGGI-ORA.
+           accept  wstampa from environment "SCHEDULER_PATH_LOG".
+           inspect wstampa replacing trailing spaces by low-value.
+           string  wstampa                          delimited low-value
+                   "RIEPILOGO_BATCH_NOTTTURNI_DEL_" delimited size
+                   como-data                        delimited size
+                   "_ORE_"                          delimited size
+                   como-ora-hhmmss                  delimited size
+                   ".txt"                           delimited size
+                   into wstampa
+           end-string.                 
+           move wstampa to SchedulerLog. 
+
+           open output lineseq.
+           write line-riga of lineseq from spaces.
+           string "RIEPILOGO BATCH NOTTURNI DEL " delimited size
+                  data-oggi          delimited size
+                  " - INZIATO ALLE " delimited size
+                  como-hh            delimited size
+                  ":"                delimited size
+                  como-mm            delimited size
+                  "."                delimited size
+                  como-ss            delimited size
+                  into line-riga of lineseq
+           end-string.
+           write line-riga of lineseq.
+           write line-riga of lineseq from spaces.
+           compute secondi-start = como-ss +
+                                 ( como-mm * 60 ) +
+                                 ( como-hh * 3600 ).
+                                                                  
+           call "C$SYSTEM" using "E:\GESLUX\acu-stop.bat".
+
+           call "C$SLEEP" using 5.
+
+           set errore-bloccante to false.
+
+           move 0 to tot-ok tot-ko tot-proc tot-ok-ko tot-exec tot-bloc
+                     idx-log tot-warning.  
+           initialize tab-log-invio.
+           inquire form1-gd-1, last-row in tot-righe.
+           perform varying riga from 2 by 1 
+                     until riga > tot-righe
+              if riga = 2
+                 move "NOME PROCESSO" to col-programma
+                 move "INIZIO"        to col-ini
+                 move "FINE"          to col-fine
+                 move "ESITO"         to col-esito
+                 perform WRITE-LINE-RIGA
+              end-if
+
+              inquire form1-gd-1(riga, 1), hidden-data bat-prg
+              read batnott
+
+              inquire form1-gd-1 (riga, 1), cell-data in col-programma
+              move spaces to col-ini col-fine col-esito              
+              perform FORMAT-DATA-OGGI-ORA
+              string data-oggi delimited size
+                     " - "     delimited size
+                     ora-oggi  delimited size
+                     into col-ini
+              end-string                                    
+              modify form1-gd-1(riga, 2), cell-data col-ini
+
+              if bat-bloccabile-no or
+               ( bat-bloccabile-si and not errore-bloccante )
+                 move "Running..." to col-fine 
+                 modify form1-gd-1(riga, 3), cell-data col-fine  
+                 initialize batch-linkage replacing numeric data by zeroes
+                                               alphanumeric data by spaces
+                 move scr-oper-handle to batch-win-handle
+                 call col-programma using batch-linkage
+                      on overflow                             
+                      modify form1-gd-1(riga, 4), cell-color 5
+                      move "ERR"      to col-esito
+                      move "OVERFLOW" to col-fine
+                      add 1 to tot-ko
+                  not on overflow   
+                      if col-programma = "ricaldin-bat"
+                         move 1 to batch-status
+                      end-if
+                      if bat-invio-log-sempre
+                         add 1 to idx-log
+                         move batch-log to el-log-invio(idx-log)
+                      end-if
+                      add 1 to tot-exec
+                      evaluate batch-status                        
+                      when 0 
+                           move "OK" to col-esito
+                           add 1 to tot-ok                             
+                           modify form1-gd-1(riga, 4), cell-color 3
+                      when 1               
+                           if bat-invio-log-warning
+                              add 1 to idx-log
+                              move batch-log to el-log-invio(idx-log)
+                           end-if
+                           move "OK**" to col-esito
+                           add 1 to tot-ok tot-warning                            
+                           modify form1-gd-1(riga, 4), cell-color 14
+                      when -1              
+                           if bat-invio-log-warning
+                              add 1 to idx-log
+                              move batch-log to el-log-invio(idx-log)
+                           end-if
+                           move "ERR" to col-esito
+                           add 1 to tot-ok-ko
+                           modify form1-gd-1(riga, 4), cell-color 5
+                           if bat-bloccante-si
+                              set errore-bloccante to true
+                           end-if
+                      end-evaluate
+                 
+                      perform FORMAT-DATA-OGGI-ORA
+                      string data-oggi delimited size
+                             " - "     delimited size
+                             ora-oggi  delimited size
+                             into col-fine
+                      end-string
+                 end-call
+                 cancel col-programma  
+              else
+                 move "BLOC" to col-esito
+                 add 1 to tot-bloc
+                 modify form1-gd-1(riga, 4), cell-color 14
+                 
+                 perform FORMAT-DATA-OGGI-ORA
+                 string data-oggi delimited size
+                        " - "     delimited size
+                        ora-oggi  delimited size
+                        into col-fine
+                 end-string
+              end-if
+                                     
+              modify form1-gd-1(riga, 2), cell-data col-ini
+              modify form1-gd-1(riga, 3), cell-data col-fine
+              modify form1-gd-1(riga, 4), cell-data col-esito
+              perform WRITE-LINE-RIGA
+      *****        if col-esito = "ERR"
+      *****           inquire form1-gd-1(riga, 1), hidden-data bat-prg
+      *****           read batnott
+      *****           if bat-bloccante-si
+      *****              exit perform
+      *****           end-if
+      *****        end-if
+           end-perform.             
+
+           write line-riga of lineseq from spaces.
+           perform FORMAT-DATA-OGGI-ORA.
+           compute secondi-end = como-ss +
+                               ( como-mm * 60 ) +
+                               ( como-hh * 3600 ).
+                                    
+           initialize line-riga of lineseq.
+           string "RIEPILOGO BATCH NOTTURNI DEL " delimited size
+                  data-oggi            delimited size
+                  " - TERMINATO ALLE " delimited size
+                  ora-oggi             delimited size
+                  into line-riga of lineseq
+           end-string.
+           write line-riga of lineseq.
+
+           write line-riga of lineseq from spaces.
+
+           compute tot-secondi = secondi-end - secondi-start.
+           if tot-secondi >= 3600
+              compute ore = tot-secondi / 3600
+              compute tot-secondi = tot-secondi - ( ore * 3600 )
+           end-if.
+           if tot-secondi >= 60               
+              compute minuti = tot-secondi / 60
+              compute tot-secondi = tot-secondi - ( minuti * 60)
+           end-if.
+           move tot-secondi to secondi.
+                 
+           initialize line-riga of lineseq.
+           string "ELABORAZIONE ESEGUITA IN " delimited size
+                  ore       delimited size
+                  " ORE, "  delimited size
+                  minuti    delimited size
+                  " MIN E " delimited size
+                  secondi   delimited size
+                  " SEC"    delimited size
+                  into line-riga of lineseq
+           end-string.
+           write line-riga of lineseq.
+                 
+           subtract 1 from tot-righe giving tot-proc.
+           initialize line-riga of lineseq.
+           string "TOTALE PROCESSI: " delimited size
+                  tot-proc            delimited size
+                  into line-riga of lineseq
+           end-string.
+           write line-riga of lineseq.
+           initialize line-riga of lineseq.
+           string "ESEGUITI.......: " delimited size
+                  tot-exec            delimited size
+                  into line-riga of lineseq
+           end-string.
+           write line-riga of lineseq.     
+           initialize line-riga of lineseq.
+           string "CORRETTI.......: " delimited size
+                  tot-ok              delimited size
+                  into line-riga of lineseq
+           end-string.
+           write line-riga of lineseq.
+           initialize line-riga of lineseq.
+           string "ERRATI.........: " delimited size
+                  tot-ok-ko           delimited size
+                  into line-riga of lineseq
+           end-string.
+           write line-riga of lineseq.     
+           initialize line-riga of lineseq.
+           string "NON ESEGUITI...: " delimited size
+                  tot-ko              delimited size
+                  into line-riga of lineseq
+           end-string.
+           write line-riga of lineseq.
+           initialize line-riga of lineseq.
+           string "BLOCCATI.......: " delimited size
+                  tot-bloc            delimited size
+                  into line-riga of lineseq
+           end-string.
+           write line-riga of lineseq.
+
+           close lineseq.                    
+           call "C$SYSTEM" using "E:\GESLUX\acu-start.bat".
+
+           perform INVIO-MAIL-FINE.
+
+      ***---
+       FORMAT-DATA-OGGI-ORA.
+           accept como-data from century-date. 
+           move como-data(7:2) to data-oggi(1:2).
+           move "/"            to data-oggi(3:1).
+           move como-data(5:2) to data-oggi(4:2).
+           move "/"            to data-oggi(6:1).
+           move como-data(1:4) to data-oggi(7:4).
+           accept como-ora-hhmmss  from time.
+           string como-hh              delimited size
+                  ":"                  delimited size
+                  como-mm              delimited size
+                  "."                  delimited size
+                  como-ss              delimited size
+                  into ora-oggi
+           end-string.
+
+      ***---
+       WRITE-LINE-RIGA.
+           string col-programma delimited size
+                  col-ini       delimited size
+                  col-fine      delimited size
+                  col-esito     delimited size
+                  into line-riga of lineseq
+           end-string.
+           write line-riga of lineseq.
+
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = SPOSTAMENTO
+BEGIN-TEXT
+           modify form1-gd-1, start-x = 1, x = 3,
+                              start-y = event-data-2, y = event-data-2,
+                              region-color = 481.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = PARAGRAFO-COPY
+BEGIN-TEXT
+           copy "mail.cpy".
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = INVIO-MAIL-FINE
+BEGIN-TEXT
+           initialize LinkBody.
+           if tot-proc = tot-ok
+              if tot-warning = 0
+                 move "OK - RIEPILOGO BATCH NOTTURNI" to LinkSubject
+              else                                                  
+                 move "WARNING** - RIEPILOGO BATCH NOTTURNI" to LinkSubject
+              end-if
+           else                                                  
+              move "KO - RIEPILOGO BATCH NOTTURNI" to LinkSubject
+           end-if.
+
+           accept path-log from environment "SCHEDULER_PATH_LOG".
+           string "In allegato funzionamento schedulazione. "
+            x"0d0a""I dettagli di ogni processo si trovano in: "
+            x"0d0a"path-log
+             into LinkBody.
+
+           accept LinkAddress from environment "SCHEDULER_ADDRESSES".
+
+           move SchedulerLog to LinkAttach
+           if idx-log > 0
+              perform varying idx-log from 1 by 1 
+                        until idx-log > 50
+                 if el-log-invio(idx-log) not = spaces
+                    inspect LinkAttach replacing trailing spaces by low-value
+                    inspect el-log-invio(idx-log)replacing trailing spaces by low-value
+                         
+                    string LinkAttach            delimited low-value 
+                           ";"                   delimited size
+                           el-log-invio(idx-log) delimited low-value
+                      into LinkAttach
+                    end-string
+                 end-if
+              end-perform                                            
+
+              inspect LinkAttach replacing trailing low-value by spaces
+           end-if.                                                   
+                               
+           move "scheduler" to NomeProgramma.
+           set trovato to false.    
+           perform 10 times
+              perform SEND-MAIL
+              open input lineseq1
+              read lineseq1 next
+              if line-riga of lineseq1 = "True"
+                 set trovato to true
+                 close lineseq1
+                 exit perform 
+              end-if
+              close lineseq1
+           end-perform.
+
+           if not trovato and NomePgm = "admin"
+              display message "Invio mail impossibile!"
+                       x"0d0a" line-riga of lineseq1
+                        title tit-err
+                         icon 3
+           end-if 
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = INVIO-MAIL-INI
+BEGIN-TEXT
+           initialize LinkBody.
+           move "INIZIO ELABORAZIONE BATCH NOTTURNI" to LinkSubject.
+
+           accept path-log from environment "SCHEDULER_PATH_LOG".
+           move "Inizio elaborazione..." to LinkBody.
+
+           accept LinkAddress from environment "SCHEDULER_INI_ADDRESSES"
+           accept LinkAttach  from environment "DUMMY_ATTACH".
+
+           move "scheduler" to NomeProgramma.
+           set trovato to false.    
+           perform 10 times
+              perform SEND-MAIL
+              open input lineseq1
+              read lineseq1 next
+              if line-riga of lineseq1 = "True"
+                 set trovato to true
+                 close lineseq1
+                 exit perform 
+              end-if
+              close lineseq1
+           end-perform.
+
+           if not trovato and NomePgm = "admin"
+              display message "Invio mail impossibile!"
+                       x"0d0a" line-riga of lineseq1
+                        title tit-err
+                         icon 3
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-ok-LinkTo
+BEGIN-TEXT
+           display message "Eseguire i processi?"
+                     title titolo
+                      icon 2
+                      type mb-yes-no
+                   default mb-no
+                    giving scelta.
+
+           if scelta= mb-yes
+              move 0 to v-push
+              modify pb-ok-oper, VISIBLE v-push
+              modify form1-gd-1, enabled false
+              perform CHIAMA-BATCH
+              modify form1-gd-1, enabled true
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = form1-gd-1-Ev-Msg-Begin-Drag
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = form1-gd-1-Ev-Msg-End-Drag
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = form1-gd-1-Ev-Msg-Goto-Cell
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = form1-gd-1-Ev-Msg-Goto-Cell-Drag
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = form1-gd-1-Ev-Msg-Goto-Cell-Mouse
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = form1-gd-1-Ev-Msg-Begin-Entry
+BEGIN-TEXT
+           set event-action  to event-action-fail-terminate.
+           inquire form1-gd-1, entry-reason in como-entry.
+           if como-entry = x"00"
+              inquire form1-gd-1(event-data-2, 2), hidden-data in path-log
+              set CallDettaglio to true
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = scheduler-Ev-Before-Program
+BEGIN-TEXT
+           call "C$CALLEDBY" using NomePgm.
+           if NomePgm not = "admin"
+              call   "colors"
+              cancel "colors"
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = scheduler-Ev-After-Program
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+
+@}}
+
+[KEY_STATUS_FIELD_FORMAT]
+PIC=9(5)
+USAGE=[None]
+
+[KEYSTATUS_CONTENT:KS1]
+CONDITION=Enter-Pushed
+VALUE=13
+
+[KEYSTATUS_CONTENT:KS2]
+CONDITION=Exit-Pushed
+VALUE=27
+
+[KEYSTATUS_CONTENT:KS3]
+CONDITION=Message-Received
+VALUE=95
+
+[KEYSTATUS_CONTENT:KS4]
+CONDITION=Event-Occurred
+VALUE=96
+
+[KEYSTATUS_CONTENT:KS5]
+CONDITION=Screen-No-Input-Field
+VALUE=97
+
+[KEYSTATUS_CONTENT:KS6]
+CONDITION=Screen-Time-Out
+VALUE=99
+
+[COBOLAID_DATASET_INFO]
+COUNT=1
+NAME_0=DataSet1
+
+[DRAW_DOCUMENT_INDEX]
+OBJ_NAME_0=8001
+OBJ_ID_0=1268088268
+
+[MULTIPLE_KEY_0]
+COUNT=1
+KEY_0=bat-chiave
+
+[DRAW_DOCUMENT_8001_1268088268]
+OBJ_NAME=8001
+OBJ_ID=1268088268
+TYPE=2
+VERSION=
+DOC_SIZE_X=5100
+DOC_SIZE_Y=5160
+PAGE_LEFT=150
+PAGE_TOP=150
+PAGE_RIGHT=1850
+PAGE_BOTTOM=2730
+MARGIN_LEFT=150
+MARGIN_TOP=150
+MARGIN_RIGHT=150
+MARGIN_BOTTOM=150
+PROP_DOCU_TYPE=ø
+PROP_DOCU_TYPE2=ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+PROP_DOCU_NAME=DataSet - DataSet1[scheduler(GESLUX)]
+PROP_DOCU_OWNER=Person A
+PROP_DOCU_CDATE=05/20/04
+PROP_DOCU_MODIFIER=Person B
+PROP_DOCU_MDATE=05/20/04
+PROP_DOCU_DESCR=Caseaid DocuCaseaid Document
+PROP_DOCU_HEADER=Caseaid Document
+PROP_DOCU_FOOTER=Page # 
+PROP_DOCU_DIM_H=2
+PROP_DOCU_DIM_W=3
+PROP_DOCU_LOC_H=1
+PROP_DOCU_LOC_W=1
+PROP_DOCU_EDGE_T=150
+PROP_DOCU_EDGE_B=150
+PROP_DOCU_EDGE_L=150
+PROP_DOCU_EDGE_R=150
+PROP_DOCU_ZOOM=75
+PROP_DOCU_SIZE_TYPE=0
+PROP_DOCU_SIZE_PAPER=1
+PROP_DOCU_SIZE_H=2580
+PROP_DOCU_SIZE_W=1700
+PROP_DOCU_RULER_EBL=0
+PROP_DOCU_GRID_EBL=0
+PROP_DOCU_GRID=20
+PROP_DOCU_ALIGN=0
+REL_SYM_SIZE=28
+REL_SYM_INFO_L=4
+REL_SYM_INFO_X0=2301
+REL_SYM_INFO_Y0=1193415838
+REL_SYM_INFO_X1=2301
+REL_SYM_INFO_Y1=650114516
+REL_SYM_INFO_X2=2301
+REL_SYM_INFO_Y2=1506342446
+REL_SYM_INFO_X3=2301
+REL_SYM_INFO_Y3=1940893068
+
+[DRAW_BASESYMBOL_2301_1193415838]
+OBJ_NAME=2301
+OBJ_ID=1193415838
+KIND=1
+{{@LABEL_2301_1193415838
+batnott
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=263
+TOP=153
+RIGHT=663
+BOTTOM=375
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_650114516]
+OBJ_NAME=2301
+OBJ_ID=650114516
+KIND=1
+{{@LABEL_2301_650114516
+tsetinvio
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1182
+TOP=50
+RIGHT=1582
+BOTTOM=272
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1506342446]
+OBJ_NAME=2301
+OBJ_ID=1506342446
+KIND=1
+{{@LABEL_2301_1506342446
+lineseq
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=125
+TOP=468
+RIGHT=525
+BOTTOM=690
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1940893068]
+OBJ_NAME=2301
+OBJ_ID=1940893068
+KIND=1
+{{@LABEL_2301_1940893068
+lineseq1
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=773
+TOP=685
+RIGHT=1173
+BOTTOM=907
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DMD_DOCUMENT_0_1268088268]
+OBJ_NAME=0
+OBJ_ID=1268088268
+FILE_TITLE_TYPE=8136
+FILE_SHOW_ITEM=0
+FILE_SHOW_KEY=0
+FILE_SHOW_PIC=0
+FILE_SHOW_HEAD=0
+FILE_SHOW_LEVEL=0
+FILE_SHOW_TREE=0
+FILE_SHOW_CLPS=0
+FILE_SHOW_BMP=0
+FILE_SHOW_LINE=0
+FILE_SHOW_MINIZE=0
+
+[DMD_FILE_0_1193415838]
+OBJ_NAME=0
+OBJ_ID=1193415838
+REL_M_OBJ_ID=0
+ENTITY=batnott
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=bat-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1193415838
+
+@}}
+DSN_INFO_PRIMARY=1
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_650114516]
+OBJ_NAME=0
+OBJ_ID=650114516
+REL_M_OBJ_ID=0
+ENTITY=tsetinvio
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=2
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tsi-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_650114516
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1506342446]
+OBJ_NAME=0
+OBJ_ID=1506342446
+REL_M_OBJ_ID=0
+ENTITY=lineseq
+LINK=0
+LINK_NAME=
+DSN_SIZE=32
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1506342446
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1940893068]
+OBJ_NAME=0
+OBJ_ID=1940893068
+REL_M_OBJ_ID=0
+ENTITY=lineseq1
+LINK=0
+LINK_NAME=
+DSN_SIZE=32
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1940893068
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=1
+DSN_INFO_LOGICAL_FDNAME=lineseq1
+DSN_INFO_ORIGINAL_FDNAME=lineseq
+DSN_INFO_REPLACEBY_FILESTATUS=STATUS-lineseq1
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=

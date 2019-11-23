@@ -1,0 +1,8 @@
+       01  mail-mod-bozze-linkage.
+           05 mmb-tor-chiave.
+               10 mmb-tor-anno     PIC  9(4).
+               10 mmb-tor-numero   PIC  9(8).
+           05 mmb-operazione       pic x(1).
+              88 mmb-cancellazione value "C".
+              88 mmb-modifica      value "M".
+           05 mmb-path             pic x(256).

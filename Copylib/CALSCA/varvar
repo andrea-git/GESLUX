@@ -1,0 +1,24 @@
+*
+* versione formato RRVVMM per controllo in lancio programma
+*
+ 78  varvar-version                 value "090100".
+*
+*
+*
+    copy  "varvar-v".
+    copy  "varvar-z".
+*
+*
+*
+01  TABELLA-GIORNI.
+    05                              PIC  X(10)  VALUE "Lunedi'".
+    05                              PIC  X(10)  VALUE "Martedi'".
+    05                              PIC  X(10)  VALUE "Mercoledi'".
+    05                              PIC  X(10)  VALUE "Giovedi'".
+    05                              PIC  X(10)  VALUE "Venerdi'".
+    05                              PIC  X(10)  VALUE "Sabato".
+    05                              PIC  X(10)  VALUE "Domenica".
+01  TABELL-GIORNI  REDEFINES TABELLA-GIORNI.
+    05  TAB-GIORNI                  PIC  X(10)  OCCURS 07.
+*
+*

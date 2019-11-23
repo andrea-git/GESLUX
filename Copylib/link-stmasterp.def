@@ -1,0 +1,15 @@
+      *
+       01 stmasterp-limiti.
+           05 stmasterp-da-anno            PIC  9(4).
+           05 stmasterp-a-anno PIC  9(4).
+           05 stmasterp-da-num PIC  9(8).
+           05 stmasterp-a-num  PIC  9(8).
+           05 stmasterp-da-data            PIC  9(8).
+           05 stmasterp-a-data PIC  9(8).
+           05 stmasterp-stato-ord          PIC  x.
+               88 stmasterp-bloccati VALUE IS "E". 
+               88 stmasterp-tutti VALUE IS "T". 
+           05 stmasterp-tipo   PIC  x.
+               88 stmasterp-tipo-gdo VALUE IS "G". 
+               88 stmasterp-tipo-trad VALUE IS "T". 
+               88 stmasterp-tipo-tutti VALUE IS "X". 

@@ -1,0 +1,29 @@
+       FD  tagli.
+       01 tag-rec.
+           05 tag-chiave.
+               10 tag-data         PIC  9(8).
+               10 tag-gdo          PIC  x(5).
+               10 tag-articolo     PIC  9(6).
+               10 tag-prog         PIC  9(3).
+           05 tag-dati.
+               10 tag-prz          PIC  s9(9)v99.
+               10 tag-qta          PIC  9(8).
+               10 tag-comuni.
+                   15 tag-data-creazione           PIC  9(8).
+                   15 tag-ora-creazione            PIC  9(8).
+                   15 tag-utente-creazione         PIC  x(10).
+                   15 tag-data-modifica            PIC  9(8).
+                   15 tag-ora-modifica PIC  9(8).
+                   15 tag-utente-modifica          PIC  x(10).
+               10 tag-vuoti.
+                   15 tag-mro-chiave.
+                       20 tag-mro-chiave-testa.
+                           25 tag-mro-anno     PIC  9(4).
+                           25 tag-mro-numero   PIC  9(8).
+                       20 tag-mro-riga     PIC  9(5).
+                   15 tag-num-vuoto-2  PIC  9(13).
+                   15 tag-num-vuoto-3  PIC  9(15).
+                   15 tag-cli-tipo     PIC  x(2).
+                   15 tag-alfa-vuoto-1 PIC  x(18).
+                   15 tag-alfa-vuoto-2 PIC  x(20).
+                   15 tag-alfa-vuoto-3 PIC  x(20).

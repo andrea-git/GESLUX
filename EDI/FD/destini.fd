@@ -1,0 +1,67 @@
+       FD  destini.
+       01 des-rec.
+           05 des-chiave.
+               10 des-codice       PIC  9(5).
+               10 des-prog         PIC  9(5).
+           05 des-dati.
+               10 des-ragsoc-1     PIC  x(40).
+               10 des-ragsoc-2     PIC  x(40).
+               10 des-indirizzo    PIC  x(40).
+               10 des-cap          PIC  x(5).
+               10 des-localita     PIC  x(35).
+               10 des-prov         PIC  x(2).
+               10 des-nazione      PIC  x(3).
+               10 des-telef-1      PIC  x(15).
+               10 des-telef-2      PIC  x(15).
+               10 des-fax          PIC  X(15).
+               10 des-mail         PIC  X(30).
+               10 des-referente    PIC  x(30).
+               10 des-vettore      PIC  9(5).
+               10 des-deposito-UTF PIC  x.
+               10 des-superamento-500          PIC  x.
+               10 des-stato        PIC  x.
+                   88 des-attivo VALUE IS "A". 
+                   88 des-disattivo VALUE IS "D". 
+                   88 des-bloccato VALUE IS "B". 
+               10 des-dati-comuni.
+                   15 des-data-creazione           PIC  9(8).
+                   15 des-ora-creazione            PIC  9(8).
+                   15 des-utente-creazione         PIC  X(10).
+                   15 des-data-ultima-modifica     PIC  9(8).
+                   15 des-ora-ultima-modifica      PIC  9(8).
+                   15 des-utente-ultima-modifica   PIC  X(10).
+               10 des-vuoti.
+                   15 des-piva         PIC  9(11).
+                   15 des-piva-dupl    PIC  9(1).
+                       88 des-si-piva-dupl VALUE IS 1. 
+                       88 des-no-piva-dupl VALUE IS 0. 
+                   15 des-cod-ditta    PIC  x(15).
+                   15 des-tipo-art     PIC  9.
+                       88 des-tipo-art-diretti VALUE IS 1. 
+                       88 des-tipo-art-gruppi VALUE IS 2. 
+                       88 des-tipo-art-specialist VALUE IS 3. 
+                       88 des-tipo-art-DO VALUE IS 4. 
+                       88 des-tipo-art-GDA VALUE IS 5. 
+                       88 des-tipo-art-GDS VALUE IS 6. 
+                       88 des-tipo-art-ESTERO VALUE IS 7. 
+                   15 des-num-vuoto-2  PIC  9(1).
+                   15 des-saldi-banco  PIC  9(1).
+                       88 des-saldi-banco-si VALUE IS 1. 
+                       88 des-saldi-banco-no VALUE IS 0. 
+                   15 des-saldi-promo  PIC  9(1).
+                       88 des-saldi-promo-si VALUE IS 1. 
+                       88 des-saldi-promo-no VALUE IS 0. 
+                   15 des-escludi-evadi-tutto      PIC  9(1).
+                       88 des-escludi-evadi-tutto-si VALUE IS 1. 
+                       88 des-escludi-evadi-tutto-no VALUE IS 0. 
+                   15 des-accorpa-master           PIC  9(1).
+                       88 des-accorpa-master-si VALUE IS 1. 
+                       88 des-accorpa-master-no VALUE IS 0. 
+                   15 des-num-vuoto-3  PIC  9(12).
+                   15 des-invio-fatt   PIC  x.
+                       88 des-si-invio VALUE IS "S". 
+                       88 des-no-invio VALUE IS "N". 
+                   15 des-note-bolla-1 PIC  X(500).
+                   15 des-note-bolla-2 PIC  X(500).
+                   15 des-CIG          PIC  X(15).
+                   15 FILLER           PIC  X(1985).

@@ -1,0 +1,117 @@
+       FD  EDI-mrordini.
+       01 emro-rec.
+           05 emro-chiave.
+               10 emro-chiave-testa.
+                   15 emro-anno        PIC  9(4).
+                   15 emro-numero      PIC  9(8).
+               10 emro-riga        PIC  9(5).
+           05 emro-dati.
+               10 emro-cod-articolo            PIC  9(6).
+               10 emro-qta-EDI     PIC  9(8).
+               10 emro-qta-GESLUX  PIC  9(8).
+               10 emro-qta         PIC  9(8).
+               10 emro-prz-EDI     PIC  9(9)v9(2).
+               10 emro-prz-GESLUX  PIC  9(9)v9(2).
+               10 emro-prz         PIC  9(9)v9(2).
+      *(( XFD NAME = emro-prz_B ))
+               10 emro-bloccato-prezzo         PIC  9.
+                   88 emro-bloccato-prezzo-no VALUE IS 0. 
+                   88 emro-bloccato-prezzo-si VALUE IS 1. 
+               10 emro-peso-utf    PIC  9(5)v9(3).
+               10 emro-peso-non-utf            PIC  9(5)v9(3).
+               10 emro-num-colli   PIC  9(5).
+               10 emro-cod-imballo PIC  X(3).
+               10 emro-des-imballo PIC  X(50).
+               10 emro-qta-imballi PIC  9(4).
+               10 emro-cod-art-cli PIC  X(15).
+               10 emro-prz-commle  PIC  9(9)v9(2).
+               10 emro-prg-chiave.
+                   15 emro-prg-cod-articolo        PIC  9(6).
+                   15 emro-prg-cod-magazzino       PIC  X(3).
+                   15 emro-prg-tipo-imballo        PIC  X(3).
+                   15 emro-prg-peso    PIC  9(5)v9(3).
+               10 emro-prg-forzato.
+                   15 emro-prg-cod-articolo-f      PIC  9(6).
+                   15 emro-prg-cod-magazzino-f     PIC  X(3).
+                   15 emro-prg-tipo-imballo-f      PIC  X(3).
+                   15 emro-prg-peso-f  PIC  9(5)v9(3).
+               10 emro-dati-blister.
+                   15 emro-bli-codice  PIC  9(6).
+                   15 emro-bli-qta     PIC  9(8).
+                   15 emro-bli-perce   PIC  9(3)v99.
+                   15 emro-blister     PIC  9.
+                       88 emro-si-blister VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+               10 emro-promo       PIC  9(15).
+               10 emro-prz-promo   PIC  9.
+                   88 emro-si-prz-promo VALUE IS 1. 
+                   88 emro-no-prz-promo VALUE IS 0. 
+               10 emro-evadi-dal   PIC  9(8).
+               10 emro-stato       PIC  X(1).
+                   88 emro-attivo VALUE IS "A". 
+                   88 emro-bloccato VALUE IS "B". 
+                   88 emro-caricato VALUE IS "C". 
+               10 emro-errori.
+                   15 emro-articolo    PIC  9.
+                       88 emro-articolo-valido VALUE IS 0. 
+                       88 emro-articolo-non-valido VALUE IS 1. 
+                       88 emro-articolo-non-attivo VALUE IS 2. 
+      *(( XFD NAME = emro-qta_1 ))
+                   15 emro-qtac        PIC  9.
+                       88 emro-qtac-ok VALUE IS 0. 
+                       88 emro-qtac-non-presente VALUE IS 1. 
+                       88 emro-qtac-adattata VALUE IS 2. 
+      *(( XFD NAME = emro-prz_1 ))
+                   15 emro-prezzo      PIC  9.
+                       88 emro-prezzo-valido VALUE IS 0. 
+                       88 emro-prezzo-non-valido VALUE IS 1. 
+      *(( XFD NAME = emro-prog ))
+                   15 emro-progressivo PIC  9.
+                       88 emro-progressivo-valido VALUE IS 0. 
+                       88 emro-progressivo-non-trovato VALUE IS 1. 
+                       88 emro-progressivo-non-attivo VALUE IS 2. 
+                       88 emro-progressivo-non-forzato VALUE IS 3. 
+               10 emro-ordine.
+                   15 emro-ordine-testa.
+                       20 emro-ordine-anno PIC  9(4).
+                       20 emro-ordine-numero           PIC  9(8).
+                   15 emro-ordine-riga PIC  9(5).
+               10 emro-dati-comuni.
+                   15 emro-data-creazione          PIC  9(8).
+                   15 emro-ora-creazione           PIC  9(8).
+                   15 emro-utente-creazione        PIC  X(10).
+                   15 emro-data-ultima-modifica    PIC  9(8).
+                   15 emro-ora-ultima-modifica     PIC  9(8).
+                   15 emro-utente-ultima-modifica  PIC  X(10).
+           05 emro-dati-import.
+               10 emro-nome-file   PIC  x(100).
+               10 emro-riga-file   PIC  9(6).
+               10 emro-record-02D.
+                   15 emro-01D-filler  PIC  x(35).
+                   15 emro-02D-filler  PIC  x(35).
+                   15 emro-03D-filler  PIC  x(35).
+                   15 emro-04D-filler  PIC  x(35).
+                   15 emro-05D-filler  PIC  x(35).
+                   15 emro-06D-filler  PIC  x(35).
+                   15 emro-07D-filler  PIC  x(35).
+                   15 emro-08D-filler  PIC  x(35).
+                   15 emro-09D-filler  PIC  x(35).
+                   15 emro-10D-filler  PIC  x(35).
+                   15 emro-11D-filler  PIC  x(35).
+                   15 emro-12D-filler  PIC  x(35).
+                   15 emro-02D13-LIN-CODFORTU      PIC  x(35).
+      *(( XFD NAME = emro-02D13-LIN-COD ))
+                   15 emro-02D14-LIN-CODDISTU      PIC  x(35).
+                   15 emro-02D15-LIN-DESART        PIC  x(100).
+                   15 emro-16D-filler  PIC  x(35).
+                   15 emro-02D17-QTAORD            PIC  x(20).
+                   15 emro-18D-filler  PIC  x(35).
+                   15 emro-02D19-LIN-PRZUNI        PIC  x(20).
+                   15 emro-19D-filler  PIC  x(35).
+                   15 emro-20D-filler  PIC  x(35).
+                   15 emro-21D-filler  PIC  x(35).
+      *(( XFD NAME = emro-21D-filler_1 ))
+                   15 emro-02D22-LIN-NRCUINTU      PIC  x(20).
+      *(( XFD NAME = emro-21D-filler_1_ ))
+                   15 emro-02D222-QTAPZ            PIC  x(20).
+                   15 FILLER           PIC  x(180).

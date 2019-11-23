@@ -1,0 +1,40 @@
+       FD  promoeva.
+       01 pev-rec.
+           05 pev-chiave.
+               10 pev-articolo     PIC  9(6).
+               10 pev-prog         PIC  9(8).
+           05 pev-dati.
+               10 pev-data-ins     PIC  9(8).
+               10 pev-rpr-qta      PIC  9(8).
+               10 pev-tpr-codice   PIC  9(15).
+               10 pev-tpr-descrizione          PIC  x(50).
+               10 pev-prenotata    PIC  9(10).
+               10 pev-evasa        PIC  9(10).
+               10 pev-boll         PIC  9(10).
+               10 pev-impegnato    PIC  9(10).
+               10 pev-rimanenza    PIC  s9(10).
+               10 pev-giac-utile   PIC  s9(10).
+               10 pev-descr-art    PIC  x(50).
+               10 pev-n-blister    PIC  9(6).
+               10 pev-dati-comuni.
+                   15 pev-data-creazione           PIC  9(8).
+                   15 pev-ora-creazione            PIC  9(8).
+                   15 pev-utente-creazione         PIC  X(10).
+                   15 pev-data-modifica            PIC  9(8).
+                   15 pev-ora-modifica PIC  9(8).
+                   15 pev-utente-modifica          PIC  X(10).
+               10 pev-vuoti.
+                   15 pev-fittizia     PIC  9(1).
+                       88 pev-fittizia-si VALUE IS 1. 
+                       88 pev-fittizia-no VALUE IS 0. 
+                   15 pev-vuoto-num-1  PIC  9(17).
+                   15 pev-vuoto-num-2  PIC  9(18).
+                   15 pev-vuoto-num-3  PIC  9(18).
+                   15 pev-gdo          PIC  x(5).
+                   15 pev-blister.
+                       20 pev-bli-codice   PIC  9(6)
+                                  OCCURS 20 TIMES.
+                   15 pev-rpr-prenotazioni         PIC  x.
+                       88 pev-rpr-prenotazioni-si VALUE IS "S". 
+                       88 pev-rpr-prenotazioni-no VALUE IS "N" " ". 
+                   15 pev-vuoto-alfa   PIC  x(374).

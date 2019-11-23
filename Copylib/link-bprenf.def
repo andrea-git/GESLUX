@@ -1,0 +1,12 @@
+      *
+       01 link-bprenf.
+           03 lprenf-user-codi PIC  x(10).
+           03 lprenf-da-bolla.
+               05 lprenf-evasione.
+                   10 lprenf-anno      PIC  9(4).
+                   10 lprenf-numero    PIC  9(8).
+               05 lprenf-return.
+                   10 lprenf-errore    PIC  x.
+                   10 lprenf-riga      PIC  9(5).
+                   10 lprenf-mod       PIC  x.
+           03 filler           PIC  x(999).

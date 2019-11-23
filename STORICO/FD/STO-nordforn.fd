@@ -1,0 +1,25 @@
+      *(( XFD FILE = STO-nordforn ))
+       FD  STO-nordforn.
+       01 STO-nof-rec.
+           05 STO-nof-chiave.
+               10 STO-nof-chiave-ordine.
+                   15 STO-nof-anno     PIC  9(4).
+                   15 STO-nof-num-ordine           PIC  9(8).
+               10 STO-nof-num-nota PIC  9(3).
+           05 STO-nof-dati.
+               10 STO-nof-nota     PIC  x(200).
+               10 STO-nof-dati-comuni.
+                   15 STO-nof-data-creazione       PIC  9(8).
+                   15 STO-nof-ora-creazione        PIC  9(8).
+                   15 STO-nof-utente-creazione     PIC  x(10).
+                   15 STO-nof-data-ultima-modifica PIC  9(8).
+                   15 STO-nof-ora-ultima-modifica  PIC  9(8).
+                   15 STO-nof-utente-ultima-modifica           PIC  
+           x(10).
+               10 STO-nof-vuoti.
+                   15 STO-nof-num-vuoto-1          PIC  9(18).
+                   15 STO-nof-num-vuoto-2          PIC  9(18).
+                   15 STO-nof-num-vuoto-3          PIC  9(18).
+                   15 STO-nof-alfa-vuoto-1         PIC  X(20).
+                   15 STO-nof-alfa-vuoto-2         PIC  X(20).
+                   15 STO-nof-alfa-vuoto-3         PIC  X(20).

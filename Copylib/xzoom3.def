@@ -1,0 +1,181 @@
+      *
+       01  xzoom-linkage.
+           03 xzoom-opcode                         pic x.
+              88 xzoom-default                     value " ".
+              88 xzoom-multi-list-modify           value "A".
+              88 xzoom-multi-list-reset            value "B".
+              88 xzoom-multi-list-get-next         value "C".
+              88 xzoom-multi-list-close-files      value "D".
+              88 xzoom-multi-list-close            value "E".
+              88 xzoom-multi-list-end              value "F".
+              88 xzoom-multi-list-show-window      value "G".
+              88 xzoom-multi-list-modify-no-close  value "H".
+              88 xzoom-multi-list-close-window     value "I".
+              88 xzoom-show-filter-window          value "J".
+              88 xzoom-show-window                 value "K".
+              88 xzoom-select-record               value "L".
+              88 xzoom-refresh-window              value "M".
+              88 xzoom-close-window                value "N".
+              88 xzoom-add-toolbar-button          value "O".
+              88 xzoom-show-toolbar                value "P".
+              88 xzoom-get-tb-data                 value "Q".
+              88 xzoom-set-tb-data                 value "R".
+              88 xzoom-get-xzoom-linkage           value "S".
+              88 xzoom-edit-filters                value "T".
+              88 xzoom-set-colors                  value "U".
+              88 xzoom-get-version                 value "V".
+              88 xzoom-multi-list-open             value "W".
+              88 xzoom-multi-list-add              value "X".
+              88 xzoom-multi-list-remove           value "Y".
+           03 xzoom-multi-list-session             pic 9(9) comp-4.
+           03 xzoom-win-info.
+              05 xzoom-row                         pic 99.
+              05 xzoom-cln                         pic 999.
+              05 xzoom-lw                          pic 99.
+              05 xzoom-sw                          pic 999.
+           03 xzoom-file-list                      occurs max-xz-files.
+              05 xzoom-file-name                   pic x(80).
+           03 xzoom-file-key                       pic s9(4) comp-4.
+           03 xzoom-special-key-flag               pic 9.
+              88 xzoom-use-special-key             value 1, false 0.
+           03 xzoom-special-key                    pic x(pri-key-size).
+           03 xzoom-field-info.
+              05 xzoom-record-delimiter.
+                 07 xzoom-delimiter-offset         pic s9(4) comp-4.
+                 07 xzoom-delimiter-length         pic s9(4) comp-4.
+                 07 xzoom-from-value               pic x(xz-delim-size).
+                 07 xzoom-to-value                 pic x(xz-delim-size).
+              05 xzoom-fields                      pic 99.
+              05 xzoom-field-data         occurs max-xz-fields.
+                 07 xzoom-field-file               pic x comp-x.
+                 07 xzoom-field-rel                pic x comp-x.
+                 07 xzoom-field-length             pic s9(4) comp-4.
+                 07 xzoom-field-offset             pic s9(4) comp-4.
+                 07 xzoom-field-name               pic x(30).
+                 07 xzoom-field-column             pic x comp-x.
+                 07 xzoom-field-alignment          pic x.
+                    88 xzoom-al-none               value "U".
+                    88 xzoom-al-left               value "L".
+                    88 xzoom-al-center             value "C".
+                    88 xzoom-al-right              value "R".
+                 07 xzoom-ext-info.
+                    09 xzoom-field-sign            pic x.
+                       88 xzoom-field-unsigned     value space.
+                       88 xzoom-field-signed       value "0".
+                       88 xzoom-field-signsep      value "1".
+                       88 xzoom-field-seplead      value "2".
+                       88 xzoom-field-leading      value "3".
+                    09 xzoom-field-type            pic x.
+                       88 xzoom-ft-alpha           value space.
+                       88 xzoom-ft-display         value "0".
+                       88 xzoom-ft-comp-3          value "1".
+                       88 xzoom-ft-comp-x          value "2".
+                       88 xzoom-ft-comp-6          value "3".
+                    09 xzoom-field-digits          pic x comp-x.
+                    09 xzoom-field-dec             pic 99.
+                    09 xzoom-field-fmt             pic x(fmt-length).
+                 07 xzoom-field-keyno              pic s9(4) comp-4.
+                 07 xzoom-field-keyref             pic s9(4) comp-4.
+                 07 xzoom-field-visible-flag       pic 9.
+                    88 xzoom-field-is-hidden       value 1, false 0.
+           03 xzoom-wildcards.
+              05 xzoom-wild-expression    pic x(max-expression).
+              05 xzoom-wild-disable-flag           pic 9.
+                 88 xzoom-wild-apply-all           value 0, false 1.
+              05 xzoom-jolly.
+                 07 xzoom-jolly-fieldno            pic x comp-x.
+                 07 xzoom-jolly-value              pic x(78-wc-length).
+                 07 xzoom-jolly-value-length       pic s9(4) comp-4.
+              05 xzoom-wildcard                    occurs max-xz-wild.
+                 07 xzoom-validation               pic x.
+                    88 xzoom-when-true             value " ".
+                    88 xzoom-when-false            value "!".
+                 07 xzoom-operator                 pic x.
+                    88 xzoom-begin-with            value "B".
+                    88 xzoom-contains              value "C".
+                    88 xzoom-less                  value "L".
+                    88 xzoom-greater               value "G".
+                    88 xzoom-equal                 value "E".
+                    88 xzoom-between               value "X".
+                    88 xzoom-betweene              value "Y".
+                    88 xzoom-is-null               value "N".
+                 07 xzoom-wild-rel                 pic x comp-x.
+                 07 xzoom-wild-value               pic x(78-wc-length).
+                 07 xzoom-wild-value-to            pic x(78-wc-length).
+                 07 xzoom-wild-value-length        pic s9(4) comp-4.
+                 07 xzoom-wild-value-to-length     pic s9(4) comp-4.
+                 07 xzoom-wild-length              pic s9(4) comp-4.
+                 07 xzoom-wild-offset              pic s9(4) comp-4.
+                 07 xzoom-wild-case                pic 9.
+                    88 xzoom-ignore-case           value 1 false 0.
+                 07 xzoom-wild-permanent           pic 9.
+                    88 xzoom-wild-is-permanent     value 1 false 0.
+           03 xzoom-ref.
+              05 xzoom-ref-cache                   pic x comp-x.
+              05 xzoom-ref-info                    occurs max-ref.
+                 07 xzoom-ref-m-file               pic x comp-x.
+                 07 xzoom-ref-s-file               pic x comp-x.
+                 07 xzoom-ref-s-key                pic 9(4) comp-4.
+                 07 xzoom-ref-fields               pic x comp-x.
+                 07 xzoom-ref-join                 pic x comp-x.
+                    88 xzoom-ref-join-inner        value 0.
+                    88 xzoom-ref-join-outer        value 1.
+                 07                                occurs max-ref-flds.
+                    09 xzoom-ref-m.
+                       11 xzoom-ref-m-length       pic 9(4) comp-4.
+                       11 xzoom-ref-m-offset       pic 9(4) comp-4.
+                       11 xzoom-ref-m-value        pic x(max-ref-val).
+                       11 xzoom-ref-m-sign         pic x.
+                          88 xzoom-ref-m-unsigned  value space.
+                          88 xzoom-ref-m-signed    value "0".
+                          88 xzoom-ref-m-signsep   value "1".
+                          88 xzoom-ref-m-seplead   value "2".
+                          88 xzoom-ref-m-leading   value "3".
+                       11 xzoom-ref-m-type         pic x.
+                          88 xzoom-ref-m-alpha     value space.
+                          88 xzoom-ref-m-display   value "0".
+                          88 xzoom-ref-m-comp-3    value "1".
+                          88 xzoom-ref-m-comp-x    value "2".
+                          88 xzoom-ref-m-comp-6    value "3".
+                       11 xzoom-ref-m-digits       pic x comp-x.
+                       11 xzoom-ref-m-dec          pic 99.
+                    09 xzoom-ref-s.
+                       11 xzoom-ref-s-length       pic 9(4) comp-4.
+                       11 xzoom-ref-s-offset       pic 9(4) comp-4.
+                       11 xzoom-ref-s-value        pic x(max-ref-val).
+                       11 xzoom-ref-s-sign         pic x.
+                          88 xzoom-ref-s-unsigned  value space.
+                          88 xzoom-ref-s-signed    value "0".
+                          88 xzoom-ref-s-signsep   value "1".
+                          88 xzoom-ref-s-seplead   value "2".
+                          88 xzoom-ref-s-leading   value "3".
+                       11 xzoom-ref-s-type         pic x.
+                          88 xzoom-ref-s-alpha     value space.
+                          88 xzoom-ref-s-display   value "0".
+                          88 xzoom-ref-s-comp-3    value "1".
+                          88 xzoom-ref-s-comp-x    value "2".
+                          88 xzoom-ref-s-comp-6    value "3".
+                       11 xzoom-ref-s-digits       pic x comp-x.
+                       11 xzoom-ref-s-dec          pic 99.
+       01  xzoom-tb-btn-linkage redefines xzoom-linkage.
+           03 filler                               pic x.
+           03 xzoom-tb-btn-class                   pic 9.
+              88 xzoom-tb-btn-push                 value 0.
+              88 xzoom-tb-btn-check                value 1.
+           03 xzoom-tb-btn-bitmap-handle           pic s9(9) comp-4.
+           03 xzoom-tb-btn-bitmap-number           pic 9(4) comp-4.
+           03 xzoom-tb-btn-bitmap-width            pic 9(4) comp-4.
+           03 xzoom-tb-btn-bitmap-lines            pic 9(4) comp-4.
+           03 xzoom-tb-btn-text                    pic x(80).
+           03 xzoom-tb-btn-exception               pic 9(4) comp-4.
+           03 xzoom-tb-btn-value                   pic 9.
+           03 xzoom-tb-btn-new-group-flag          pic 9.
+              88 xzoom-tb-btn-new-group            value 1, false 0.
+           03 xzoom-tb-btn-disabled-flag           pic 9.
+              88 xzoom-tb-btn-disabled             value 1, false 0.
+           03 xzoom-tb-btn-no-rec-ok-flag          pic 9.
+              88 xzoom-tb-btn-no-rec-ok            value 1, false 0.
+       01  xzoom-toolbar-linkage redefines xzoom-linkage.
+           03 filler                               pic x.
+           03 xzoom-toolbar-enable-map     pic x(max-xz-tb-buttons).
+           03 xzoom-toolbar-value-map      pic x(max-xz-tb-buttons).

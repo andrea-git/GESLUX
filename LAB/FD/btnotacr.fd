@@ -1,0 +1,59 @@
+       FD  btnotacr.
+       01 btno-rec.
+           05 btno-chiave.
+               10 btno-anno        PIC  9(4).
+               10 btno-numero      PIC  9(8).
+           05 btno-dati.
+               10 btno-causale     PIC  x(4).
+               10 btno-cod-cli     PIC  9(5).
+               10 btno-prg-destino PIC  9(5).
+               10 btno-data        PIC  9(8).
+               10 btno-cod-pag     PIC  x(3).
+               10 btno-vettore     PIC  9(5).
+               10 btno-dati-fm.
+                   15 btno-fm-tipo     PIC  x.
+                       88 btno-fm-vettore VALUE IS "V". 
+                       88 btno-fm-cliente VALUE IS "C". 
+                   15 btno-cod-cli-fm  PIC  9(5).
+                   15 btno-prg-destino-fm          PIC  9(5).
+      *(( XFD NAME = btno-vettore_1 ))
+                   15 btno-vettore-fm  PIC  9(5).
+               10 btno-note        PIC  X(300).
+               10 btno-bolla.
+                   15 btno-data-bolla  PIC  9(8).
+                   15 btno-num-bolla   PIC  x(20).
+               10 btno-fatt-rif.
+                   15 btno-data-fatt   PIC  9(8).
+                   15 btno-num-fatt    PIC  9(8).
+               10 btno-rif-fm.
+                   15 btno-data-fm     PIC  9(8).
+                   15 btno-num-fm      PIC  9(8).
+               10 btno-rif-nc.
+                   15 btno-data-nc     PIC  9(8).
+                   15 btno-num-nc      PIC  9(8).
+               10 btno-motivo-cont PIC  x(200).
+               10 btno-errore-colpa            PIC  x.
+                   88 btno-corriere VALUE IS "C". 
+                   88 btno-magazzino VALUE IS "M". 
+                   88 btno-fornitore VALUE IS "F". 
+                   88 btno-cliente VALUE IS "K". 
+                   88 btno-ufficio VALUE IS "U". 
+               10 btno-stato       PIC  X(1).
+                   88 btno-attivo VALUE IS "A". 
+                   88 btno-disattivo VALUE IS "D". 
+                   88 btno-bloccato VALUE IS "B". 
+               10 btno-dati-comuni.
+                   15 btno-data-creazione          PIC  9(8).
+                   15 btno-ora-creazione           PIC  9(8).
+                   15 btno-utente-creazione        PIC  X(10).
+                   15 btno-data-modifica           PIC  9(8).
+                   15 btno-ora-modifica            PIC  9(8).
+                   15 btno-utente-modifica         PIC  X(10).
+               10 btno-vuoti.
+                   15 btno-num-reso    PIC  9(8).
+                   15 btno-anno-fatt   PIC  9(4).
+                   15 btno-anno-bolla  PIC  9(4).
+                   15 btno-anno-nc     PIC  9(4).
+                   15 btno-anno-fm     PIC  9(4).
+               10 btno-data-ingresso           PIC  9(8).
+               10 FILLER           PIC  x(192).

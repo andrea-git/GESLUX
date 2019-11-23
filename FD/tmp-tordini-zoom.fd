@@ -1,0 +1,16 @@
+      *(( XFD FILE = tmp-tordini-zoom ))
+       FD  tmp-tordini-zoom.
+       01 tmp-tor-z-rec.
+           05 tmp-tor-z-chiave.
+               10 tmp-tor-z-anno   PIC  z(4).
+               10 tmp-tor-z-numero PIC  z(8).
+           05 tmp-tor-z-dati.
+               10 tmp-tor-z-data-ordine        PIC  99/99/9999.
+               10 tmp-tor-z-causale            PIC  x(4).
+               10 tmp-tor-z-cod-cli            PIC  z(5).
+               10 tmp-tor-z-cli-ragsoc-1       PIC  x(40).
+               10 tmp-tor-z-prg-destino        PIC  z(5).
+               10 tmp-tor-z-des-localita       PIC  X(35).
+               10 tmp-tord-bolla.
+                   15 tmp-tor-z-anno-b PIC  z(4).
+                   15 tmp-tor-z-numero-b           PIC  z(8).

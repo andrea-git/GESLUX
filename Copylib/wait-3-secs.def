@@ -1,0 +1,9 @@
+       77  filler                 pic 9.
+           88  ScartaSecondi      value 1, false 0.
+       01  como-time.
+           05 como-hh             pic 99.
+           05 como-mm             pic 99.
+           05 como-ss             pic 99.
+           05 como-cc             pic 99.
+       77  como-ss-end            pic 9(8).
+

@@ -1,0 +1,13 @@
+      *(( XFD FILE = tmp-stregutf ))
+       FD  tmp-stregutf.
+       01 treg-rec.
+           05 treg-chiave.
+               10 treg-num-doc     PIC  9(8).
+               10 treg-prog        PIC  9(8).
+           05 treg-dati.
+               10 treg-data        PIC  x(8).
+               10 treg-ragsoc      PIC  x(32).
+               10 treg-c-bianchi   PIC  s9(12)v999.
+               10 treg-s-bianchi   PIC  s9(12)v999.
+               10 treg-c-lubrif    PIC  s9(12)v999.
+               10 treg-s-lubrif    PIC  s9(12)v999.

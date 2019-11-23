@@ -1,0 +1,7 @@
+      *
+       01  check-catart-linkage.
+           05 chk-ca-art        pic 9(6).
+           05 chk-ca-collegato  pic 9(6).
+           05 filler            pic 9.
+              88 chk-ca-errore  value 1 false zero.
+

@@ -1,0 +1,11 @@
+      *
+       01 st-promo-linkage.
+           05 link-handle     handle of window.
+           05 link-gdo        pic x(5).
+           05 link-data-from  pic 9(8).
+           05 link-data-to    pic 9(8).
+           05 link-volantino  pic 9(15).
+           05 link-nome-stampante pic x(50).
+           05 link-firma      pic 9.
+              88 link-si-firma value 1.
+              88 link-no-firma value 0.

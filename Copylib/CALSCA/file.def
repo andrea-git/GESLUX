@@ -1,0 +1,394 @@
+*--------------------------------------------------------------
+* file.def
+*--------------------------------------------------------------
+*
+* operazione check exist                                                                           | mxm 22/03/2007 12.15
+* aggiunti altri lev.88 per altkeys                                                                | mxm 25/06/2007 17.00
+*
+* esposta operazione read-record-before                                                            | mxm 21/09/2007 12.46
+*--------------------------------------------------------------------------------------------------
+* tk.1568- Interfaccia jdbc per caricamento data warehouse                    | mxm 13/03/2009 9.28
+*          nuova operazione execSQL
+*--------------------------------------------------------------------------------------------------
+* Tk.2231 - Nuovo modulo 57 - Gestione ordini remoti                                               | mxm 25/11/2009 12.20
+*           possibilità di passare un flag per disattivare l'autokey (see fm_57oct)
+*--------------------------------------------------------------------------------------------------
+* tk.2572 - Evitare lock incondizionati nelle "nuove" gestioni                | mxm 22/01/2010
+*           nuovo parametro booleano file-2572Nolock
+*           when TRUE, i programmi AL: 1.nelle READ, non acquisiscono LOCK
+*                                      2.nelle GET, acquisiscono il LOCK solo se il record è NUOVO
+*-----------------------------------------------------------------------------------------------------------------------
+* Tk.3854 - Progetto G2 finder                                                                       | maxime 08/02/2012
+*           Possibilità di wait senza messaggio (file-waitmessage-off) per r_daemonfinder
+*           Il flag file-waitmessage-off vale per una sola chiamata da i-o
+*-----------------------------------------------------------------------------------------------------------------------
+* tk.4799 - Supportare quanto disposto dall'art. 62 D.L. 1/2012                                      | maxime 12/11/2012
+*           Indicatore DVT/DVR per engine fm_dvt_4799, impostato dai dispatcher fm_dvt fm_dvr   
+*           Indicatore start "principale" per fm_dvt_4799s    
+*----------------------------------------------------------------------------------------------------------------------
+* tk.4965 - Modifiche sistemistiche versione 2014                                                    | maxime 22/05/2013
+*           Ampliate variabile file-lookup-key e file-lookup-desc 
+*           Aggiunto filler per futuri sw  
+*------------------------------------------------------------------------------------------------------------------------ 
+
+*
+*
+ 01  file-area.
+
+     05  file-i-o-handlers.
+         10  filler                             pic x(32).                                         | mxm 11/01/2007 10.39
+***         10  file-fileio-id                     pic x(32).                                      | mxm 11/01/2007 10.40
+***             88  file-fileio-id-set             value "r_fileio".                               | mxm 11/01/2007 10.40
+*
+*
+*
+         10  file-handler-id                    pic x(32).
+             88  file-handler-docvi             value "fm_docvi"
+                                                      "FM_DOCVI".
+          10  filler  redefines  file-handler-id.
+             15  filler                         pic x(03).
+             15  filler                         pic x(03).
+                 88  file-handler-dan           value "dan".
+                 88  file-handler-doc           value "doc".
+                 88  file-handler-dsf           value "dsf".
+                 88  file-handler-dam           value "dam".
+                 88  file-handler-dcm           value "dcm".
+                 88  file-handler-dsu           value "dsu".
+             15  filler                         pic x(25).
+
+         10  file-called-by                     pic x(32).
+             88  file-called-by-read-before     value "rb_".
+
+
+         10  filler                             pic x(32).
+
+     05  file-i-o-area.
+*
+*
+         10  file-docvi-code                    pic x(08).
+         10  file-docvi-filter-values.
+             15  file-dfv-occ                   occurs 05.
+                 20  file-dfv                   pic x(30).
+
+         10  file-primary-key                   pic x(50).
+         
+         10  filler                             pic x(46).                                           | maxime 12/11/2012
+         | valido solo per "file-ok" a seguito di read next DVT via fm_dvt_4799s
+         | contiene "A, B, C" a seconda del tipo record restituito dalla next
+         10  file-dvt_4799s_currentDVT          pic x(01).                                           | maxime 12/11/2012
+         | valido solo per "file-ok" a seguito di read next DVR via fm_dvt_4799s
+         | contiene "A, B, C" a seconda del tipo record restituito dalla next         
+         10  file-dvt_4799s_currentDVR          pic x(01).                                           | maxime 12/11/2012
+*
+*
+*
+         10  file-operation                     pic 9(02).
+
+             88  file-check-exist               value 98.                                          | mxm 22/03/2007 12.16
+             88  file-check-operation           value 99.
+
+             88  file-no-operation              value zero.
+
+             88  file-start-not-less            value 01.
+             88  file-start-greater             value 02.
+             88  file-start-not-greater         value 16.
+             88  file-start-less                value 29.
+             88  file-read-random               value 22.
+             88  file-read-random-lock          value 03.
+             88  file-read-random-wait          value 04.
+             88  file-read-random-lock-wait     value 05.
+
+             88  file-read-next                 value 23.
+             88  file-read-next-lock            value 06.
+             88  file-read-next-wait            value 07.
+             88  file-read-next-lock-wait       value 08.
+             88  file-read-next-operation       value 23 06 07 08.                                 | mxm 09/02/2007 10.51
+
+             88  file-read-prev                 value 24.
+             88  file-read-prev-lock            value 09.
+             88  file-read-prev-wait            value 10.
+             88  file-read-prev-lock-wait       value 11.
+             88  file-read-prev-operation       value 24 09 10 11.                                 | mxm 09/02/2007 10.52
+
+
+             88  file-read-first                value 26.
+             88  file-read-last                 value 27.
+             88  file-lookup                    value 28.
+
+             88  file-read                      value 03 04 05 06
+                                                      07 08 09 10
+                                                      11 22 23 24
+                                                      26 27 28
+                                                      57.                                          | mxm 21/09/2007 12.47
+             88  file-read-with-lock            value 03 05 06
+                                                      08 09 11.
+             88  file-r-random                  value 22 03 04 05.                                 | mxm 22/01/2007 11.48
+
+             88  file-start                     value 01 02 16 29 56.
+
+             88  file-write                     value 12.
+             88  file-rewrite                   value 13.
+             88  file-delete                    value 14.
+             88  file-append                    value 42.        | append su sequenziale
+             88  file-update-operation          value 12 13 14 42.
+
+             88  file-unlock                    value 15.
+
+             88  file-remove                    value 19.
+             88  file-release                   value 20.
+             88  file-close                     value 21.
+
+             88  file-save-record-pointer       value 50.
+             88  file-restore-record-pointer    value 51.
+
+             88  file-open-exclusive            value 52.
+
+             88  file-manual-open               value 53 54 55.
+             88  file-manual-open-input         value 53.
+             88  file-manual-open-i-o           value 54.
+             88  file-manual-open-output        value 55.
+
+             88  file-start-equal               value 56.
+
+             88  file-read-record-before        value 57.                                          | mxm 21/09/2007 12.47
+*
+*
+*
+*
+* operazioni di servizio
+* .ricostruzione integrita' referenziale
+*
+             88  file-rebuild-xref              value 25.
+*
+* inizializza un nuovo dab
+* riempimento DAB porzione descrizioni/dati edit
+* alpha to num
+* check campi
+* check integrità referenziale per consentire annullo
+* power on via hat per dab complessi
+* get dab
+* unlock/init dab
+* alpha-to-num and check
+* macro operazioni per tree
+*
+             88  file-dab-init                  value 30.
+             88  file-dab-fill                  value 31.
+             88  file-dab-alpha-to-num          value 38.
+             88  file-dab-num-to-alpha          value 43.
+             88  file-dab-check                 value 32.
+             88  file-dab-check-delete          value 33.
+             88  file-dab-power-on              value 34.
+             88  file-dab-get                   value 39.
+             88  file-dab-unlock-init           value 40.
+             88  file-dab-atn-check             value 41.
+             88  file-dab-dpb-to-dab            value 44.                                          | mxm 02/02/2007 14.24
+
+             88  file-dab-tree-operation        value 35
+                                                      36
+                                                      37.
+             88  file-dab-tree-copy             value 35.
+             88  file-dab-tree-cut              value 36.
+             88  file-dab-tree-paste            value 37.
+*
+* SQL operations
+*
+             88  file-create-views              value 80.
+             88  file-drop-views                value 81.
+
+             88  file-execSQL                   value 82.                                          | mxm 13/03/2009 9.30
+*
+*
+*
+         10  file-status                  pic x(02).
+             88  file-okok                value "00".
+             88  file-duplok              value "02".
+             88  file-ok                  value "00" "02" "05".
+             88  file-nofouo              value "05".
+             88  file-optionalfilemissing value "05".
+
+             88  file-eof              value "10" "14".
+
+             88  file-dup-is           value "21".
+             88  file-duperr           value "22".
+             88  file-invkey           value "23".
+             88  file-disk-full        value "24" "34".
+
+             88  file-permanent-error  value "30".
+             88  file-nofoun           value "35".
+             88  file-permission-error value "37".
+
+             88  file-str-conflict     value "39".
+
+             88  file-justopen         value "41".
+             88  file-notopen          value "42".
+             88  file-noread           value "46".
+             88  file-noopio           value "47".
+             88  file-noopou           value "48".
+             88  file-nodele           value "48".
+
+             88  file-notfou           value "35". | "05".
+             88  file-disfuln          value "24" "34".
+             88  file-rtserr           value "9" thru "9þ".
+             88  file-error            value "04" thru "9þ".
+             88  file-locked-exclusive value "93".
+             88  file-toomany-open     value "94".
+             88  file-index-corrupted  value "98".
+             88  file-locked           value "99" "30".
+             88  file-host-error       value "30".
+             88  file-acu4gl-err       value "9D" "9d".
+             88  file-database-error   value "9D".
+             88  file-transaction-err  value "9E".
+
+             88  file-del-not-allowed  value "*a".
+             88  file-dfm-not-found    value "*b".
+*
+* result of get operation : found or new created
+*
+             88  file-get-found        value "g1".
+             88  file-get-new          value "g2".
+             88  file-get-ok           value "g1" "g2".
+*
+*
+*
+         10  file-trans-status             pic x(02).
+             88  file-trans-ok             value "00".
+             88  file-trans-ext-error      value "01".
+             88  file-trans-log-open-error value "02" "03" "04".
+             88  file-trans-system-error   value "05".
+             88  file-trans-log-corrupted  value "06".
+             88  file-trans-log-locked     value "07".
+             88  file-trans-memory-fault   value "08".
+             88  file-trans-disk-full      value "09".
+             88  file-trans-no-log-file    value "10".
+             88  file-trans-log-eof        value "11".
+             88  file-trans-last-abort     value "12".
+             88  file-trans-no-trans-open  value "13".
+             88  file-trans-file-sys-error value "14".
+             88  file-trans-network-down   value "15".
+             88  file-trans-already-active value "16".
+             88  file-trans-not-supported  value "99".
+*
+* chiave di start : 1=primary, 2=1st alternate, 3=2nd alternate...
+*
+         10  file-start-index-a.
+             15  file-start-index               pic 9(02).
+                 88  file-start-primarykey      value 1.
+                 88  file-start-altkey-1        value 2.
+                 88  file-start-altkey-2        value 3.
+                 88  file-start-altkey-3        value 4.
+                 88  file-start-altkey-4        value 5.
+                 88  file-start-altkey-5        value 6.
+                 88  file-start-altkey-6        value 7.
+                 88  file-start-altkey-7        value 8.
+                 88  file-start-altkey-8        value 9.
+                 88  file-start-altkey-9        value 10.
+                 88  file-start-altkey-10       value 11.
+*
+* chiave per operazione su relative
+*
+     05  file-relative-key                      pic s9(06) comp-3.
+*
+* file-use-external-name adopera il nome file ricevuto dal prog
+* chiamante attraverso external-file-name
+*
+     05  file-name-type                         pic x(01).
+         88  file-use-internal-name             value space.
+         88  file-use-external-name             value "e".
+     05  file-external-name                     pic x(255).
+*
+* file-switches definisce operazioni particolari
+*
+***     05  file-switches                          pic x(10).                                        | maxime 23/05/2013
+     05  file-switches                          pic x(40).                                           | maxime 23/05/2013
+         88  file-standard-switches             value space.
+
+     05  file-switches-red redefines file-switches.
+*
+* switch di transazione in corso
+*
+         10  file-sw-transaction-running        pic x(01).
+             88  file-sw-transaction-running-on value "1"
+                                                false " ".
+*
+* switch di transazione già attiva - serve a richiamare in sequenza più
+* oggetti AL in aggiornamento all' interno di un'unica transazione
+*
+         10  file-sw-transaction-active         pic x(01).
+             88  file-sw-trans-active-on        value "1".
+             88  file-sw-trans-active-off       value spaces.
+*
+* forza gli aggiornamenti in rewrite, indipendentemente dal
+* fatto che i dab old/new siano uguali
+*
+         10  file-sw-force-update               pic x(01).
+             88  file-sw-force-update-on        value "1".
+             88  file-sw-force-update-off       value spaces.
+*
+* restituisce l'errore di apertura senza bloccarsi col messaggio
+* di errore "..severe i-o error..."
+*
+         10  file-sw-open-nohalt                pic x(01).
+             88  file-sw-open-nohalt-on         value "1".
+             88  file-sw-open-nohalt-off        value spaces.
+*
+* disabilita trigger negli fm
+*
+         10  file-sw-trigger                    pic x(01).
+             88  file-sw-trigger-on             value " ".
+             88  file-sw-trigger-off            value "X".
+*
+* terminatore di record Unix o DOS per fm_export
+*
+         10  file-sw-seqformat                  pic x(01).
+             88  file-sw-seqformat-unix         value "x".
+             88  file-sw-seqformat-dos          value "d".
+*
+* modalità VISVIS per letture sequenziali (applica filtri da record docvi letto con file-docvi-code)
+*
+         10  file-sw-docvi-filter               pic x(01).
+             88  file-sw-docvi-filter-on        value "x" false " ".
+*
+* sw per scrittura xml senza sostituire i caratteri ent (&amp; &apos; &gt; &lt; &quot;)
+*
+         10  file-sw-xml-nofilter               pic x(01).
+             88  file-sw-xml-nofilter-on        value "x" false " ".
+*
+*
+         10  file-sw-exclude-autokey            pic x(01).                                         | mxm 25/11/2009 12.21
+             88  file-sw-exclude-autokey-on     value "x".                                         | mxm 25/11/2009 12.21
+
+         10  file-2572Nolock                    pic 9(01).                                         | mxm 22/01/2010 10.26
+
+***         10  filler                             pic x(01).                                      | mxm 22/01/2010 10.26
+
+         10  filler                             pic x(30).                                           | maxime 22/05/2013
+*
+*
+* per apertura esercizi non in linea (see fm_arz_ese, fm_mgz_ese)
+*
+     05  file-ese                               pic x(02).
+*
+*
+*
+     05  file-waitmessage-off                   pic 9(01).                                           | maxime 08/02/2012
+     | 
+     | per informare fm_dvt_4799 del fatto che ha ricevuto una richiesta testa o righe               | maxime 12/11/2012
+     05  file-4799isHeader                      pic 9(01). | true = DVT, false = DVR                 | maxime 12/11/2012 
+     05  file-4799isMainStartS                  pic 9(01).                                           | maxime 12/11/2012         
+*
+*
+*
+     05  file-lookup-area.
+***         10  file-lookup-key                    pic x(50).                                        | maxime 22/05/2013
+***         10  file-lookup-desc                   pic x(61).                                        | maxime 22/05/2013
+         10  file-lookup-key                    pic x(100).                                          | maxime 22/05/2013
+         10  file-lookup-desc                   pic x(100).                                          | maxime 22/05/2013
+         
+*
+*
+*
+***     05  file-record-image                      pic x(65536).                                   | mxm 13/03/2009 9.53
+     05  file-record-image                      pic x(32768).                                      | mxm 13/03/2009 9.55
+     05  file-sql                               pic x(32768).                                      | mxm 13/03/2009 9.55
+*
+*----------------------------------------------------------------

@@ -1,0 +1,92 @@
+*   Screen Customized Control SCS File
+*   Version 6.0
+*   Generated Time : giovedì 17 aprile 2003 10.08.36
+*
+
+
+[SP_CUSTOMIZED_CONTROL_CONTENT]
+CUSTOMIZED_NUMS=1
+CS_0=Custom1,CsCtrl.Custom1,Label,Cust_Default_Icon,Customized Control 1
+CS_0_EMCODE=37852,37806,37810,37855
+CS_0_EMCODE_37852=2200,Before Procedure,2201,After Procedure
+CS_0_EMCODE_37806=2200,Before Procedure,2201,After Procedure
+CS_0_EMCODE_37810=2200,Before Procedure,2201,After Procedure
+CS_0_EMCODE_37855=2200,Before Procedure,2201,After Procedure
+
+{{@Custom1_37852_Before Procedure_2200:
+     MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+@}}
+Custom1_37852_Before Procedure_2200_Range=0
+
+{{@Custom1_37852_After Procedure_2201:
+     MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+@}}
+Custom1_37852_After Procedure_2201_Range=0
+
+{{@Custom1_37806_Before Procedure_2200:
+     MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+
+@}}
+Custom1_37806_Before Procedure_2200_Range=0
+
+{{@Custom1_37806_After Procedure_2201:
+     MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+@}}
+Custom1_37806_After Procedure_2201_Range=0
+
+{{@Custom1_37810_Before Procedure_2200:
+     MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+
+@}}
+Custom1_37810_Before Procedure_2200_Range=0
+
+{{@Custom1_37810_After Procedure_2201:
+     MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+@}}
+Custom1_37810_After Procedure_2201_Range=0
+
+{{@Custom1_37855_Before Procedure_2200:
+     MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+
+
+@}}
+Custom1_37855_Before Procedure_2200_Range=0
+
+{{@Custom1_37855_After Procedure_2201:
+     MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+
+@}}
+Custom1_37855_After Procedure_2201_Range=0
+
+{{@Custom1_DEFAULT_PROPERTY:
+Begin Label
+   Ccol              = 0
+   Cline             = 0
+   Clines            = 0
+   Color             = 0
+   Column            = 1,00
+   Column in Pixels  = 1
+   Csize             = 0
+   Destroy Type      = Automatic
+   Enable            = 1:TRUE
+   Font              = Times New Roman/9/B/C0
+   Font Variable     = Times-New-Roman9B
+   Height in Cells   = FALSE
+   Help ID           = 0
+   ID                = 0
+   Justification     = Unaligned
+   Label Offset      = 20
+   Line              = 1,00
+   Line in Pixels    = 1
+   Lines             = 0,00
+   Lines in Pixels   = 0
+   No Key Letter     = FALSE
+   Size              = 0,00
+   Size in Pixels    = 0
+   Tab Order         = 1
+   Title             = "CUSTOM CONTROL"
+   Transparent       = FALSE
+   Visible           = 0:FALSE
+   Width in Cells    = FALSE
+End
+@}}

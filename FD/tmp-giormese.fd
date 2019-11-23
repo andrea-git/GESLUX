@@ -1,0 +1,10 @@
+      *(( XFD FILE = tmp-giormese ))
+       FD  tmp-giormese.
+       01 tmg-rec.
+           05 tmg-chiave.
+               10 tmg-mese         PIC  99.
+               10 tmg-mag          PIC  x(3).
+               10 tmg-articolo     PIC  9(6).
+           05 tmg-dati.
+               10 tmg-qta          PIC  s9(8).
+               10 tmg-um           PIC  xx.

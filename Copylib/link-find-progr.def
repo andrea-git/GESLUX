@@ -1,0 +1,8 @@
+      *
+       01  fp-linkage.
+           05 fp-chiave.
+              10 fp-anno      pic 9(4).
+              10 fp-numero    pic 9(8).
+           05 fp-progr        pic 9(5).
+           05 fp-riga         pic 9(5). |Serve al giang e alla sostituzione
+           05 fp-tot-righe    pic 9(5). |Serve alla sostituzione

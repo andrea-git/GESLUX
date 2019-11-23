@@ -1,0 +1,66 @@
+      *---------------------------------------------------------------
+      *    record contatori                  tipo record=CN
+      *    per gli standard usare tipi da 00 a 99 (DOCCN-TIPO (01 : 02)
+      *    per gli altri usare tipi alfanumerici
+      *---------------------------------------------------------------
+      * tK. 4276 - fatturazione differita - modifica contatori                                             | suadal 06/02/2012
+      *          - il bottone "modifica" da zoom contatori premuto su campo codice ditta apriva ges2cn
+      *            e non ges2di in quanto come zmm_entity su doccn-ditta era riportato doccn e non docdi. 
+      *------------------------------------------------------------------------------------------------------------------------
+      *
+      * tplvar zmm_title=Contatori
+      * tplvar zmm_ver=09.01.00
+      * tplvar zmm_class=detail
+      * tplvar zmm_masterkey=doccn-ditta 
+      * tplvar zmm_returnkey=doccn-key
+      *
+      * ZoomFields seq:
+      *   01.doccn-ditta
+      *   02.doccn-esercizio
+      *   03.doccn-tipo
+      *   04.doccn-descrizione
+      *   05.doccn-contatore-e
+      *   06.doccn-data-num-e
+      *   07.doccn-fiscale-e
+      *
+      *e
+       FD  DOCCN.
+       01 RECORD-DOCCN.
+      *
+      *
+      *
+      *
+           05 DOCCN-CODICE.
+               10 DOCCN-CODICE1    PIC  X(02).
+               10 DOCCN-KEY.
+      *$GEN zmm=on,zmm_title=Ditta,zmm_datatype=x,zmm_key=1,zmm_size=03,zmm_align=L,zmm_pos=1,zmm_entity=docdi
+      *
+                   15 DOCCN-DITTA      PIC  X(03).
+      *$GEN zmm=on,zmm_title=Esercizio,zmm_datatype=x,zmm_size=01,zmm_align=L,zmm_pos=2
+      *
+                   15 DOCCN-ESERCIZIO  PIC  X(01).
+      *$GEN zmm=on,zmm_title=Tipo,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=3
+      *
+                   15 DOCCN-TIPO       PIC  X(08).
+           05 RESTO-RECORD-DOCCN.
+      *$GEN zmm=on,zmm_title=Descrizione,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=4
+      *
+               10 DOCCN-DESCRIZIONE            PIC  X(30).
+      *$GEN type=num,dec=0,size=24,zmm=on,zmm_title=Contatore,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=5
+      *
+               10 DOCCN-CONTATORE  PIC  9(18).
+      * copy "groupdate.xfc". | DBMaker
+               10 DOCCN-DATA.
+      *(( XFD NAME = DOCCN-AA ))
+                   15 AA   PIC  9(04).
+      *(( XFD NAME = DOCCN-MM ))
+                   15 MM   PIC  9(02).
+      *(( XFD NAME = DOCCN-GG ))
+                   15 GG   PIC  9(02).
+               10 FILLER REDEFINES DOCCN-DATA.
+      *$GEN type=date,zmm=on,zmm_title=Data,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=6
+      *
+                   15 DOCCN-DATA-NUM   PIC  9(08).
+      *$GEN type=num,dec=0,size=24,zmm=on,zmm_title=Fiscale,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=7
+               10 DOCCN-FISCALE    PIC  9(18).
+               10 DOCCN-FILLER-RIS PIC  X(2012).

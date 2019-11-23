@@ -1,0 +1,41 @@
+      *(( XFD FILE = STO-giormag ))
+       FD  STO-giormag.
+       01 STO-gio-rec.
+           05 STO-gio-chiave.
+               10 STO-gio-mag      PIC  x(3).
+               10 STO-gio-art      PIC  9(6).
+               10 STO-gio-data     PIC  9(8).
+               10 STO-gio-data-red REDEFINES STO-gio-data.
+                   15 STO-gio-aaaa     PIC  9(4).
+                   15 STO-gio-mm       PIC  9(2).
+                   15 STO-gio-gg       PIC  9(2).
+               10 STO-gio-prog     PIC  9(10).
+           05 STO-gio-dati.
+               10 STO-gio-tipo-movim           PIC  x.
+                   88 STO-gio-iniziale VALUE IS "I". 
+                   88 STO-gio-entrata VALUE IS "E". 
+                   88 STO-gio-uscita VALUE IS "U". 
+                   88 STO-gio-finale VALUE IS "F". 
+               10 STO-gio-causale  PIC  x(4).
+               10 STO-gio-um       PIC  x(2).
+               10 STO-gio-qta      PIC  s9(8).
+               10 STO-gio-num-doc  PIC  9(10).
+               10 STO-gio-tipo-CF  PIC  x.
+                   88 STO-gio-tipo-C VALUE IS "C". 
+                   88 STO-gio-tipo-F VALUE IS "F". 
+               10 STO-gio-cod-clifor           PIC  9(5).
+               10 STO-gio-dati-comuni.
+                   15 STO-gio-data-creazione       PIC  9(8).
+                   15 STO-gio-ora-creazione        PIC  9(8).
+                   15 STO-gio-utente-creazione     PIC  X(10).
+                   15 STO-gio-data-ultima-modifica PIC  9(8).
+                   15 STO-gio-ora-ultima-modifica  PIC  9(8).
+                   15 STO-gio-utente-ultima-modifica           PIC  
+           X(10).
+               10 STO-gio-vuoti.
+                   15 STO-gio-num-vuoto-1          PIC  9(15).
+                   15 STO-gio-num-vuoto-2          PIC  9(15).
+                   15 STO-gio-num-vuoto-3          PIC  9(15).
+                   15 STO-gio-alfa-vuoto-1         PIC  X(20).
+                   15 STO-gio-alfa-vuoto-2         PIC  X(20).
+                   15 STO-gio-alfa-vuoto-3         PIC  X(20).

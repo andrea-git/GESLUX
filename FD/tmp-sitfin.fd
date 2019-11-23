@@ -1,0 +1,8 @@
+      *(( XFD FILE = tmp-sitfin ))
+       FD  tmp-sitfin.
+       01 tsf-rec.
+           05 tsf-chiave.
+               10 tsf-piva         PIC  9(11).
+               10 tsf-data         PIC  9(8).
+           05 tsf-dati.
+               10 tsf-valore       PIC  s9(9)v99.

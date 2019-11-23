@@ -1,0 +1,20 @@
+      *
+       01 gsordforn-linkage.
+           05 gsordforn-sof-chiave.
+               10 gsordforn-sof-chiave-testa.
+                   15 gsordforn-sof-anno           PIC  9(4).
+                   15 gsordforn-sof-numero         PIC  9(8).
+               10 gsordforn-sof-prog           PIC  9(5).
+           05 gsordforn-sof-note           PIC  x(500).
+           05 gsordforn-sof-data-arr       PIC  9(8).
+           05 gsordforn-sof-qta            PIC  9(8).
+           05 gsordforn-articolo           PIC  9(6).
+           05 gsordforn-qta    PIC  9(8).
+           05 gsordforn-qta-eva            PIC  9(8).
+           05 gsordforn-mod    PIC  9.
+           05 FILLER           PIC  9.
+               88 gsordforn-cambiati VALUE IS 1    WHEN SET TO FALSE  
+           zero. 
+           05 FILLER           PIC  9.
+               88 gsordforn-forza-testata VALUE IS 1    WHEN SET TO 
+           FALSE  zero. 

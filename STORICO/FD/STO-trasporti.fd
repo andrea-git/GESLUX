@@ -1,0 +1,38 @@
+      *(( XFD FILE = STO-trasporti ))
+       FD  STO-trasporti.
+       01 STO-trs-rec.
+           05 STO-trs-chiave.
+               10 STO-trs-anno     PIC  9(4).
+               10 STO-trs-num-bolla            PIC  9(8).
+               10 STO-trs-prog-bolla           PIC  9(10).
+           05 STO-trs-dati.
+               10 STO-trs-data-bolla           PIC  9(8).
+               10 STO-trs-data-fattura         PIC  9(8).
+               10 STO-trs-num-fattura          PIC  9(8).
+               10 STO-trs-vettore  PIC  9(5).
+               10 STO-trs-cliente  PIC  9(5).
+               10 STO-trs-destino  PIC  9(5).
+               10 STO-trs-regione  PIC  9(3).
+               10 STO-trs-provincia            PIC  x(2).
+               10 STO-trs-qta-kg   PIC  9(9)v999.
+               10 STO-trs-qta-arrot            PIC  9(9)v999.
+               10 STO-trs-tariffa  PIC  9(9)v99.
+               10 STO-trs-note     PIC  x(500).
+               10 STO-trs-dati-comuni.
+                   15 STO-trs-data-creazione       PIC  9(8).
+                   15 STO-trs-ora-creazione        PIC  9(8).
+                   15 STO-trs-utente-creazione     PIC  X(10).
+                   15 STO-trs-data-ultima-modifica PIC  9(8).
+                   15 STO-trs-ora-ultima-modifica  PIC  9(8).
+                   15 STO-trs-utente-ultima-modifica           PIC  
+           X(10).
+               10 STO-trs-vuoti.
+                   15 STO-trs-qta-kg-SHI           PIC  9(9)v999.
+                   15 STO-trs-qta-arrot-SHI        PIC  9(9)v999.
+                   15 STO-trs-tariffa-SHI          PIC  9(9)v99.
+                   15 STO-trs-num-vuoto-2          PIC  9(1).
+                   15 STO-trs-num-vuoto-3          PIC  9(18).
+                   15 STO-trs-qta-kg-GET           PIC  9(9)v999.
+                   15 STO-trs-qta-arrot-GET        PIC  9(9)v999.
+                   15 STO-trs-tariffa-GET          PIC  9(9)v99.
+                   15 STO-trs-alfa-vuoto           PIC  X(465).

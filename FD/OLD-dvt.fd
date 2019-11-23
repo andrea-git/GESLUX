@@ -1,0 +1,391 @@
+      *(( XFD FILE = DVT ))
+      *-----------------------------------------------------------------
+      * documenti di vendita
+      *
+      * Aggiunti vari campi allo zoom                                                                    | mxm 15/10/2004 10.02
+      *
+      *-----------------------------------------------------------------
+      *
+      * tplvar zmm_title=Documenti emessi
+      * tplvar zmm_ver=09.01.00
+      * tplvar zmm_class=master
+      *
+      * ZoomFields seq:
+      *   01.dvt-progressivo
+      *   02.dvt-codice-conto-x
+      *   03.dvt-codice-cf-d
+      *   04.dvt-codice-do
+      *   05.dvt-codice-do-d
+      *   06.dvt-tipo-documento-d
+      *   07.dvt-numero-documento
+      *   08.dvt-num-documento
+      *   09.dvt-data-documento-num
+      *   10.dvt-numero-fattura
+      *   11.dvt-num-fattura
+      *   12.dvt-data-fattura-num
+      *   13.dvt-situazione-d
+      *   14.dvt-esercizio
+      *   15.dvt-numero-protocollo
+      *   16.dvt-num-protocollo
+      *   17.dvt-data-protocollo-num
+      *   18.dvt-riferimento                                                                             | mxm 21/09/2004 16.39
+      *   19.dvt-codice-co                                                                               | mxm 15/10/2004 10.02
+      *   20.dvt-codice-co-d                                                                             | mxm 15/10/2004 10.02
+      *   21.dvt-codice-mo                                                                               | mxm 15/10/2004 10.02
+      *   22.dvt-codice-mo-d                                                                             | mxm 15/10/2004 10.02
+      *   23.dvt-codice-ma                                                                               | mxm 15/10/2004 10.02
+      *   24.dvt-codice-ma-d                                                                             | mxm 15/10/2004 10.02
+      *   25.dvt-codice-pa                                                                               | mxm 15/10/2004 10.02
+      *   26.dvt-codice-pa-d                                                                             | mxm 15/10/2004 10.02
+      *   27.dvt-codice-sc                                                                               | mxm 15/10/2004 10.02
+      *   28.dvt-codice-sc-d                                                                             | mxm 15/10/2004 10.02
+      *   29.dvt-banca1                                                                                  | mxm 15/10/2004 10.02
+      *   30.dvt-abi                                                                                     | mxm 15/10/2004 10.02
+      *   31.dvt-banca2                                                                                  | mxm 15/10/2004 10.02
+      *   32.dvt-cab                                                                                     | mxm 15/10/2004 10.02
+      *   33.dvt-codice-li                                                                               | mxm 15/10/2004 10.02
+      *   34.dvt-codice-li-d                                                                             | mxm 15/10/2004 10.02
+      *   35.dvt-codice-iv                                                                               | mxm 15/10/2004 10.02
+      *   36.dvt-codice-iv-d                                                                             | mxm 15/10/2004 10.02
+      *   37.dvt-codice-va                                                                               | mxm 15/10/2004 10.02
+      *   38.dvt-codice-ba                                                                               | mxm 15/10/2004 10.02
+      *   39.dvt-codice-ba-d                                                                             | mxm 15/10/2004 10.02
+      *   40.dvt-codice-intestazione-x                                                                   | mxm 15/10/2004 10.02
+      *   41.dvt-codice-cfi-d                                                                            | mxm 15/10/2004 10.02
+      *   42.dvt-cli-destinatario                                                                        | mxm 15/10/2004 10.02
+      *   43.dvt-cli-destinatario-d                                                                      | mxm 15/10/2004 10.02
+      *   44.dvt-destinazione-string                                                                     | mxm 15/10/2004 10.02
+      *   45.dvt-via                                                                                     | mxm 15/10/2004 10.02
+      *   46.dvt-cap                                                                                     | mxm 15/10/2004 10.02
+      *   47.dvt-città                                                                                   | mxm 15/10/2004 10.02
+      *   48.dvt-provincia                                                                               | mxm 15/10/2004 10.02
+      *
+      *
+      *
+       FD  DVT.
+       01 RECORD-DVT.
+           05 DVT-CODICE.
+      *$GEN type=num,dec=0,size=11,zmm=on,zmm_title=Progressivo,zmm_datatype=n,zmm_key=1,zmm_size=13,zmm_align=R,zmm_pos=1,zmm_entity=dvt
+               10 DVT-PROGRESSIVO  PIC  9(08).
+           05 RESTO-RECORD-DVT.
+      *$GEN type=code,entity=tbldo,zmm=on,zmm_title=Cod.documento,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=4,zmm_entity=tbldo
+               10 DVT-CODICE-DO    PIC  X(03).
+               10 DVT-TIPO-DOCUMENTO           PIC  X(01).
+                   88 dvt-tipo-documento-bol-acc VALUE IS "B". 
+                   88 dvt-tipo-documento-fat-acc VALUE IS "A". 
+                   88 dvt-tipo-documento-fat-imm VALUE IS "I". 
+                   88 dvt-tipo-documento-scontr VALUE IS "S". 
+                   88 dvt-tipo-documento-bol-xe VALUE IS "E". 
+                   88 dvt-tipo-documento-ric-fis VALUE IS "F". 
+                   88 dvt-tipo-documento-ric-da-fat VALUE IS "G". 
+                   88 dvt-tipo-documento-doc-tra VALUE IS "D". 
+      *
+      *
+      *
+               10 DVT-SITUAZIONE   PIC  9(01).
+                   88 DVT-SITUAZIONE-INSERITO VALUE IS 1. 
+                   88 DVT-SITUAZIONE-BOLLA VALUE IS 2. 
+                   88 DVT-SITUAZIONE-FATTURA VALUE IS 3. 
+                   88 DVT-SITUAZIONE-CONTABILIZZATO VALUE IS 4. 
+                   88 DVT-SITUAZIONE-88 VALUE IS 1 THRU 4. 
+      *
+      *
+      *$GEN type=code,entity=tblco,zmm=on,zmm_title=Causale contabile,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=19,zmm_entity=tblco
+               10 DVT-CODICE-CO    PIC  X(03).
+      *$GEN type=code,entity=tblmo,zmm=on,zmm_title=Movimento magazzino,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=21,zmm_entity=tblmo
+               10 DVT-CODICE-MO    PIC  X(03).
+      *$GEN type=code,entity=tblma,zmm=on,zmm_title=Deposito,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=23,zmm_entity=tblma
+               10 DVT-CODICE-MA    PIC  X(03).
+      *
+      *
+      *
+               10 DVT-DOCUMENTO.
+      *$GEN type=num,dec=0,size=08,zmm=on,zmm_title=Nr.documento,zmm_datatype=n,zmm_key=3,zmm_size=08,zmm_align=R,zmm_pos=7
+                   15 DVT-NUMERO-DOCUMENTO         PIC  9(06).
+      *$GEN zmm=on,zmm_title=Nu,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=8
+                   15 DVT-NUM-DOCUMENTO            PIC  X(02).
+      * copy "groupdate.xfc". | DBMaker
+      *
+               10 DVT-DATA-DOCUMENTO.
+      *(( XFD NAME = DVT-DOCUMENTO-AA ))
+                   15 AA   PIC  9(04).
+      *(( XFD NAME = DVT-DOCUMENTO-MM ))
+                   15 MM   PIC  9(02).
+      *(( XFD NAME = DVT-DOCUMENTO-GG ))
+                   15 GG   PIC  9(02).
+               10 FILLER REDEFINES DVT-DATA-DOCUMENTO.
+      *$GEN type=date,zmm=on,zmm_title=Data documento,zmm_datatype=d,zmm_key=6,zmm_size=11,zmm_align=R,zmm_pos=9
+                   15 DVT-DATA-DOCUMENTO-NUM       PIC  9(08).
+      *
+      *
+      *
+               10 DVT-FATTURA.
+      *$GEN type=num,dec=0,size=08,zmm=on,zmm_title=Nr.fattura,zmm_datatype=n,zmm_key=4,zmm_size=08,zmm_align=R,zmm_pos=10
+                   15 DVT-NUMERO-FATTURA           PIC  9(06).
+      *$GEN zmm=on,zmm_title=Numerazione,zmm_datatype=x,zmm_size=06,zmm_align=L,zmm_pos=11
+                   15 DVT-NUM-FATTURA  PIC  X(06).
+      * copy "groupdate.xfc". | DBMaker
+               10 DVT-DATA-FATTURA.
+      *(( XFD NAME = DVT-FATTURA-AA ))
+                   15 AA   PIC  9(04).
+      *(( XFD NAME = DVT-FATTURA-MM ))
+                   15 MM   PIC  9(02).
+      *(( XFD NAME = DVT-FATTURA-GG ))
+                   15 GG   PIC  9(02).
+               10 FILLER REDEFINES DVT-DATA-FATTURA.
+      *$GEN type=date,zmm=on,zmm_title=Data fattura,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=12
+                   15 DVT-DATA-FATTURA-NUM         PIC  9(08).
+               10 DVT-PROTOCOLLO.
+      *$GEN type=num,dec=0,size=08,zmm=on,zmm_title=Nr.protocollo,zmm_datatype=n,zmm_key=5,zmm_size=08,zmm_align=R,zmm_pos=15
+                   15 DVT-NUMERO-PROTOCOLLO        PIC  9(06).
+      *$GEN zmm=on,zmm_title=Numeraz.prot.,zmm_datatype=x,zmm_size=04,zmm_align=L,zmm_pos=16
+                   15 DVT-NUM-PROTOCOLLO           PIC  X(04).
+      * copy "groupdate.xfc". | DBMaker
+               10 DVT-DATA-PROTOCOLLO.
+      *(( XFD NAME = DVT-PROTOCOLLO-AA ))
+                   15 AA   PIC  9(04).
+      *(( XFD NAME = DVT-PROTOCOLLO-MM ))
+                   15 MM   PIC  9(02).
+      *(( XFD NAME = DVT-PROTOCOLLO-GG ))
+                   15 GG   PIC  9(02).
+               10 FILLER REDEFINES DVT-DATA-PROTOCOLLO.
+      *$GEN type=date,zmm=on,zmm_title=Data protocollo,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=17
+                   15 DVT-DATA-PROTOCOLLO-NUM      PIC  9(08).
+               10 DVT-CODICE-INTESTAZIONE.
+                   15 DVT-TIPO-CFI     PIC  X(01).
+                       88 DVT-TIPO-CFI-88 VALUE IS "C" "F". 
+                       88 DVT-TIPO-CFI-CLI VALUE IS "C". 
+                       88 DVT-TIPO-CFI-FRN VALUE IS "F". 
+      *$GEN type=code,entity=var(dvt-codice-cfi-entity of dab-dvt)
+                   15 DVT-CODICE-CFI   PIC  X(08).
+               10 DVT-CODICE-INTESTAZIONE-RED REDEFINES 
+           DVT-CODICE-INTESTAZIONE.
+      *$GEN type=codecfm,zmm=on,zmm_title=Intestazione,zmm_datatype=m,zmm_size=11,zmm_align=L,zmm_pos=40,zmm_entity=codecfm
+                   15 DVT-CODICE-INTESTAZIONE-X    PIC  x(09).
+      *
+      *
+               10 DVT-CODICE-CONTO.
+                   15 DVT-TIPO-CF      PIC  X(01).
+                       88 DVT-TIPO-CF-88 VALUE IS "C" "F". 
+                       88 DVT-TIPO-CF-CLI VALUE IS "C". 
+                       88 DVT-TIPO-CF-FRN VALUE IS "F". 
+      *$GEN type=code,entity=var(dvt-codice-cf-entity of dab-dvt)
+      *
+                   15 DVT-CODICE-CF    PIC  X(08).
+               10 DVT-CODICE-CONTO-RED REDEFINES DVT-CODICE-CONTO.
+      *$GEN type=codecfm,zmm=on,zmm_title=Conto,zmm_datatype=m,zmm_key=2,zmm_size=11,zmm_align=L,zmm_pos=2,zmm_entity=codecfm
+                   15 DVT-CODICE-CONTO-X           PIC  x(09).
+      *
+      *
+      *$GEN type=code,entity=tblpa,zmm=on,zmm_title=Pagamento,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=25,zmm_entity=tblpa
+               10 DVT-CODICE-PA    PIC  X(03).
+      *$GEN type=code,entity=tblsc,zmm=on,zmm_title=Sconto,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=27,zmm_entity=tblsc
+               10 DVT-CODICE-SC    PIC  X(03).
+      *
+      * copy "groupdate.xfc". | DBMaker
+               10 DVT-DATA-CONTEGGIO.
+      *(( XFD NAME = DVT-CONTEGGIO-AA ))
+                   15 AA   PIC  9(04).
+      *(( XFD NAME = DVT-CONTEGGIO-MM ))
+                   15 MM   PIC  9(02).
+      *(( XFD NAME = DVT-CONTEGGIO-GG ))
+                   15 GG   PIC  9(02).
+      *
+      *
+      *$GEN zmm=on,zmm_title=Banca di appoggio,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=29
+               10 DVT-BANCA1       PIC  X(30).
+      *$GEN zmm=on,zmm_title=ABI,zmm_datatype=x,zmm_size=05,zmm_align=L,zmm_pos=30,zmm_entity=abi
+               10 DVT-CODICE-ABI   PIC  9(05).
+      *$GEN zmm=on,zmm_title=Filiale di appoggio,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=31
+               10 DVT-BANCA2       PIC  X(30).
+      *$GEN zmm=on,zmm_title=CAB,zmm_datatype=x,zmm_size=05,zmm_align=L,zmm_pos=32
+               10 DVT-CODICE-CAB   PIC  9(05).
+      *$GEN type=code,entity=tblli,zmm=on,zmm_title=Listino,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=33,zmm_entity=tblli
+               10 DVT-CODICE-LI    PIC  X(03).
+               10 DVT-PREZZO-IVA   PIC  X(01).
+                   88 DVT-PREZZO-IVA-88 VALUE IS "S" " ". 
+      *$GEN type=code,entity=tbliv,zmm=on,zmm_title=IVA,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=35,zmm_entity=tbliv
+               10 DVT-CODICE-IV    PIC  X(03).
+      *$GEN zmm=on,zmm_title=Valuta,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=37
+               10 DVT-CODICE-VA    PIC  X(03).
+      *$GEN type=code,entity=tblba,zmm=on,zmm_title=Banca incasso,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=38,zmm_entity=tblba
+               10 DVT-CODICE-BA    PIC  X(03).
+               10 DVT-CAMBIO-OLD   PIC  9(05)V9(04).
+               10 DVT-LINGUA       PIC  9(01).
+                   88 DVT-LINGUA-88 VALUE IS 0 THRU 5. 
+               10 DVT-SPESE-FATTURA            PIC  X(01).
+                   88 DVT-SPESE-FATTURA-88 VALUE IS "N" " ". 
+      *
+      *$GEN zmm=on,zmm_title=Riferimento,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=18
+               10 DVT-RIFERIMENTO  PIC  X(30).
+               10 DVT-CODICE-MAS   PIC  X(08).
+               10 DVT-NOTE         PIC  X(30)
+                          OCCURS 02 TIMES.
+               10 DVT-CODICE-NO    PIC  X(08).
+      *
+      *
+               10 DVT-DESTINAZIONE.
+                   15 DVT-DESCRIZIONE1 PIC  X(30).
+                   15 DVT-DESCRIZIONE2 PIC  X(30).
+      *$GEN zmm=on,zmm_title=Destinazione: indirizzo,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=45
+                   15 DVT-VIA          PIC  X(30).
+      *$GEN zmm=on,zmm_title=Destinazione: CAP,zmm_datatype=x,zmm_size=05,zmm_align=L,zmm_pos=46
+                   15 DVT-CAP          PIC  X(05).
+      *$GEN zmm=on,zmm_title=Destinazione: città,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=47
+                   15 DVT-CITTA        PIC  X(30).
+      *$GEN zmm=on,zmm_title=Destinazione: provincia,zmm_datatype=x,zmm_size=02,zmm_align=L,zmm_pos=48
+                   15 DVT-PROVINCIA    PIC  X(02).
+               10 DVT-CODICE-PO    PIC  X(03).
+               10 DVT-TRASPORTO    PIC  9(01).
+                   88 DVT-TRASPORTO-88 VALUE IS 0 1 2 3. 
+                   88 DVT-TRASPORTO-MITTENTE VALUE IS 1. 
+                   88 DVT-TRASPORTO-DESTINATARIO VALUE IS 2. 
+                   88 DVT-TRASPORTO-VETTORE VALUE IS 3. 
+      *
+      *
+               10 DVT-CODICE-SP    PIC  X(03).
+               10 DVT-CODICE-SP1   PIC  X(03).
+               10 DVT-CODICE-IM    PIC  X(03).
+               10 DVT-CODICE-SS    PIC  X(03).
+               10 DVT-DESCRIZIONE-IM           PIC  X(30).
+               10 DVT-NUMERO-COLLI PIC  9(06).
+               10 DVT-VOLUME       PIC  9(09)V9(04).
+               10 DVT-PESO-LORDO   PIC  9(09)V9(04).
+               10 DVT-PESO-NETTO   PIC  9(09)V9(04).
+      *
+      * copy "groupdate.xfc". | DBMaker
+      *
+               10 DVT-DATA-TRASPORTO.
+      *(( XFD NAME = DVT-TRASPORTO-AA ))
+                   15 AA   PIC  9(04).
+      *(( XFD NAME = DVT-TRASPORTO-MM ))
+                   15 MM   PIC  9(02).
+      *(( XFD NAME = DVT-TRASPORTO-GG ))
+                   15 GG   PIC  9(02).
+               10 FILLER REDEFINES DVT-DATA-TRASPORTO.
+                   15 DVT-DATA-TRASPORTO-NUM       PIC  9(08).
+      *
+      *
+               10 DVT-ORA-TRASPORTO            PIC  9(04).
+      *(( XFD NAME = DVT-CAMBIO-FAT-OLD ))
+               10 DVT-CAMBIO-FATTURA-OLD       PIC  9(05)V9(04).
+               10 DVT-ULTIMA-RIGA  PIC  9(05).
+               10 DVT-CODICE-MMT.
+                   15 DVT-PROGRESSIVO-MMT          PIC  9(08).
+      *$GEN zmm=on,zmm_title=Es.,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=14
+               10 DVT-ESERCIZIO    PIC  X(02).
+               10 DVT-TABELLA.
+                   15 DVT-TABELLA-PA
+                              OCCURS 10 TIMES.
+                       20 DVT-CODICE-TR    PIC  X(01).
+                       20 DVT-INIZIO-CONTEGGIO         PIC  9(02).
+                       20 DVT-TIPO-IMPORTI PIC  X(01).
+                           88 DVT-TIPO-IMPORTI-88 VALUE IS "P" "A" "C" 
+           " ". 
+                       20 DVT-TIPO-SCADENZE            PIC  X(01).
+                           88 DVT-TIPO-SCADENZE-88 VALUE IS "I" "D" " "
+           . 
+                       20 DVT-IMPORTO      PIC  S9(15)V9(03)
+                                  SIGN IS TRAILING SEPARATE CHARACTER.
+                       20 DVT-SCADENZA     PIC  9(08).
+               10 DVT-INTRA        PIC  X(01).
+                   88 DVT-INTRA-88 VALUE IS "S" " ". 
+      *
+      * copy "groupdate.xfc". | DBMaker
+               10 DVT-DATA-RIFERIMENTO.
+      *(( XFD NAME = DVT-RIFERIMENTO-AA ))
+                   15 AA   PIC  9(04).
+      *(( XFD NAME = DVT-RIFERIMENTO-MM ))
+                   15 MM   PIC  9(02).
+      *(( XFD NAME = DVT-RIFERIMENTO-GG ))
+                   15 GG   PIC  9(02).
+               10 DVT-NUMERO-RIFERIMENTO       PIC  X(12).
+               10 DVT-VAR-INTRA.
+      *
+      * copy "groupdateyyyymm.xfc". | DBMaker
+                   15 DVT-DATA-PERIODO-RETT.
+      *(( XFD NAME = DVT-PERIODO-RETT-A ))
+                       20 AA   PIC  9(04).
+      *(( XFD NAME = DVT-PERIODO-RETT-M ))
+                       20 MM   PIC  9(02).
+                   15 DVT-CODICE-NA    PIC  X(03).
+               10 DVT-BOLLA-XE-INIZIALE.
+                   15 DVT-DOCUMENTO-XE.
+      *(( XFD NAME = NUMERO-DOCUMENTO-X ))
+                       20 DVT-NUMERO-DOCUMENTO-XE      PIC  9(06).
+                       20 DVT-NUM-DOCUMENTO-XE         PIC  X(02).
+      *(( XFD NAME = DVT-DATA-DOC-XE ))
+      *
+      * copy "groupdate.xfc". | DBMaker
+                   15 DVT-DATA-DOCUMENTO-XE.
+      *(( XFD NAME = DVT-DOCUMENTO-XE-A ))
+                       20 AA   PIC  9(04).
+      *(( XFD NAME = DVT-DOCUMENTO-XE-M ))
+                       20 MM   PIC  9(02).
+      *(( XFD NAME = DVT-DOCUMENTO-XE-G ))
+                       20 GG   PIC  9(02).
+               10 DVT-CODICE-AG    PIC  X(03).
+               10 DVT-CST-CODICE   PIC  X(08).
+               10 DVT-CEN-CODICE   PIC  X(08).
+               10 DVT-SCONTRINO    PIC  X(01).
+                   88 DVT-SCONTRINO-88 VALUE IS "S" "F" " ". 
+               10 DVT-FILIALE      PIC  X(06).
+               10 DVT-TBLMA-CODICE-ASS         PIC  X(03).
+               10 DVT-AZIENDE-VINICOLE.
+                   15 DVT-TARGA-AUTOMEZZO          PIC  X(08).
+                   15 DVT-TARGA-RIMORCHIO          PIC  X(08).
+      *$GEN type=code,entity=cli,zmm=on,zmm_title=Destinatario,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=42,zmm_entity=cli
+               10 DVT-CLI-DESTINATARIO         PIC  X(08).
+               10 DVT-CODICE-SP-INTRA          PIC  X(03).
+               10 DVT-CODICE-MANDAT            PIC  X(03).
+               10 DVT-VARIANTE-RAME            PIC  9(06)V9(04).
+      *
+      * copy "groupdate.xfc". | DBMaker
+      *
+               10 DVT-DATA-STV.
+                   15 AA   PIC  9(04).
+                   15 MM   PIC  9(02).
+                   15 GG   PIC  9(02).
+               10 DVT-ADDEBITO-MATERIALE       PIC  X(01).
+               10 DVT-ANNOTAZIONE-MATERIALE    PIC  X(01).
+               10 DVT-TABELLA1.
+                   15 DVT-DETRAZIONE   PIC  X(01)
+                              OCCURS 10 TIMES.
+               10 DVT-ESENZIONE    PIC  X(01).
+               10 DVT-TABELLA-PLAFOND.
+                   15 DVT-PLAFOND-ALFA
+                              OCCURS 6 TIMES.
+                       20 DVT-PLAFOND      PIC  S9(03)V9(02)
+                                  SIGN IS TRAILING SEPARATE CHARACTER.
+               10 DVT-FLAG-PLAFOND PIC  X(01).
+               10 DVT-DOC-PAGATO   PIC  X(01).
+               10 DVT-CAMBIO       PIC  9(05)V9(06).
+               10 DVT-CAMBIO-FATTURA           PIC  9(05)V9(06).
+               10 DVT-DWAREHOUSE   PIC  X(01).
+                   88 DVT-DWAREHOUSE-AGG VALUE IS "S". 
+               10 DVT-CODICE-CLI-ASS           PIC  X(08).
+               10 DVT-ESCLUSO-50   PIC  X(01).
+                   88 DVT-ESCLUSO-50-88 VALUE IS "S" "N" " ". 
+               10 DVT-PERCENTUALE-50           PIC  X(01).
+                   88 DVT-PERCENTUALE-50-88 VALUE IS "S" " ". 
+               10 DVT-RETTIFICA-INTRA          PIC  X(01).
+                   88 DVT-RETTIFICA-INTRA-88 VALUE IS "S" " ". 
+               10 DVT-CODICE-ANK   PIC  X(10).
+               10 DVT-CODICE-TPK   PIC  X(03).
+               10 DVT-CODICE-AGC   PIC  X(03).
+               10 DVT-FILLER.
+                   15 DVT-IMPORTO-TOTALE           PIC  9(12)v99.
+                   15 DVT-IMPONIBILE-TOTALE        PIC  9(12)v99.
+                   15 DVT-IVA-TOTALE   PIC  9(12)v99.
+                   15 DVT-NUM-RATE     PIC  99.
+                   15 DVT-RESTO-FILLER PIC  x(10).
+      *10.03
+      *10.03
+      *       10  DVT-FILLER                      PIC  X(70).       |dns 25.03.04
+      *.03.04
+      *.03.04
+      *04.04
+      *04.04
+               10 DVT-FILLER-RIS   PIC  X(40).
+               10 DVT-FILLER-91    PIC  X(512).
+               10 DVT-FILLER-91-RIS            PIC  X(512).

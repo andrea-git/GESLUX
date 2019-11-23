@@ -1,0 +1,31 @@
+       FD  rpromo.
+       01 rpr-rec.
+           05 rpr-chiave.
+               10 rpr-codice       PIC  9(15).
+               10 rpr-articolo     PIC  9(6).
+      *(( XFD NAME = rpr-gdo_1 ))
+           05 rpr-dati.
+               10 rpr-prz-ven      PIC  9(9)v99.
+               10 rpr-prz-acq      PIC  9(9)v99.
+               10 rpr-qta          PIC  9(9).
+               10 rpr-comuni.
+                   15 rpr-data-creazione           PIC  9(8).
+                   15 rpr-ora-creazione            PIC  9(8).
+                   15 rpr-utente-creazione         PIC  x(10).
+                   15 rpr-data-modifica            PIC  9(8).
+                   15 rpr-ora-modifica PIC  9(8).
+                   15 rpr-utente-modifica          PIC  x(10).
+               10 rpr-vuoti.
+                   15 rpr-mro-chiave.
+                       20 rpr-mro-chiave-testa.
+                           25 rpr-mro-anno     PIC  9(4).
+                           25 rpr-mro-numero   PIC  9(8).
+                       20 rpr-mro-riga     PIC  9(5).
+                   15 rpr-num-vuoto-2  PIC  9(13).
+                   15 rpr-num-vuoto-3  PIC  9(15).
+                   15 rpr-prenotazioni PIC  x(1).
+                       88 rpr-prenotazioni-si VALUE IS "S". 
+                       88 rpr-prenotazioni-no VALUE IS "N". 
+                   15 rpr-alfa-vuoto-1 PIC  x(19).
+                   15 rpr-alfa-vuoto-2 PIC  x(20).
+                   15 rpr-alfa-vuoto-3 PIC  x(20).

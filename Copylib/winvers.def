@@ -1,0 +1,19 @@
+      * WINVERS.DEF - definitions for the WIN$VERSION library routine.
+      * Last modified: 25-Aug-96 - TDC.
+
+      * Copyright (c) 1996-2002 by Acucorp, Inc.  Users of ACUCOBOL
+      * may freely include this file in their COBOL source code.
+
+       01  WINVERSION-DATA.
+           03  WIN-MAJOR-VERSION               PIC X COMP-X.
+           03  WIN-MINOR-VERSION               PIC X COMP-X.
+           03  WIN-PLATFORM                    PIC X COMP-X.
+               88  PLATFORM-WIN-31             VALUE 1.
+               88  PLATFORM-WIN-95             VALUE 2.
+               88  PLATFORM-WIN-9X             VALUE 2.
+               88  PLATFORM-WIN-NT             VALUE 3.
+           03  WIN-WORDSIZE                    PIC X COMP-X.
+               88  WIN-WORDSIZE-16             VALUE 1.
+               88  WIN-WORDSIZE-32             VALUE 2.
+
+      * End of WINVERS.DEF.

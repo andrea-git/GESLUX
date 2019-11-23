@@ -1,0 +1,32 @@
+       FD  lisagente.
+       01 lis-rec.
+           05 lis-chiave.
+               10 lis-codice       PIC  9(4).
+               10 lis-articolo     PIC  9(6).
+           05 lis-dati.
+               10 lis-descrizione  PIC  X(50).
+               10 lis-data-inizio-old          PIC  9(8).
+               10 lis-data-fine-old            PIC  9(8).
+               10 lis-prezzo-old   PIC  9(9)v99.
+               10 lis-calcolo-imposte-old      PIC  9.
+                   88 lis-si-calcolo-old VALUE IS 1. 
+                   88 lis-no-calcolo-old VALUE IS 0. 
+               10 lis-dati-comuni.
+                   15 lis-data-creazione           PIC  9(8).
+                   15 lis-ora-creazione            PIC  9(8).
+                   15 lis-utente-creazione         PIC  X(10).
+                   15 lis-data-ultima-modifica     PIC  9(8).
+                   15 lis-ora-ultima-modifica      PIC  9(8).
+                   15 lis-utente-ultima-modifica   PIC  X(10).
+               10 lis-vuoti.
+                   15 lis-data-inizio-new          PIC  9(8).
+                   15 lis-data-fine-new            PIC  9(8).
+                   15 lis-prezzo-new   PIC  9(9)v99.
+                   15 lis-calcolo-imposte-new      PIC  9.
+                       88 lis-si-calcolo-new VALUE IS 1. 
+                       88 lis-no-calcolo-new VALUE IS 0. 
+                   15 lis-num-vuoto-2  PIC  9(2).
+                   15 lis-num-vuoto-3  PIC  9(15).
+                   15 lis-alfa-vuoto-1 PIC  X(20).
+                   15 lis-alfa-vuoto-2 PIC  X(20).
+                   15 lis-alfa-vuoto-3 PIC  X(20).

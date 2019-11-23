@@ -1,0 +1,44 @@
+      *(( XFD FILE = coperfab-mag ))
+       FD  coperfab-mag.
+       01 cpfm-rec.
+           05 cpfm-chiave.
+               10 cpfm-causale     PIC  X(4).
+               10 cpfm-articolo    PIC  9(6).
+               10 cpfm-listino     PIC  9(5).
+           05 cpfm-dati.
+               10 cpfm-prg-chiave.
+                   15 cpfm-cod-articolo            PIC  9(6).
+                   15 cpfm-cod-magazzino           PIC  x(3).
+                   15 cpfm-tipo-imballo            PIC  x(3).
+                   15 cpfm-peso        PIC  9(5)v9(3).
+               10 cpfm-qta-imb     PIC  9(4).
+               10 cpfm-tipo        PIC  x.
+                   88 cpfm-auto VALUE IS "A". 
+                   88 cpfm-manuale VALUE IS "M". 
+               10 cpfm-fornitore   PIC  9(5).
+               10 cpfm-destino     PIC  9(5).
+               10 cpfm-data-ini    PIC  9(8).
+               10 cpfm-data-fine   PIC  9(8).
+               10 cpfm-qta.
+                   15 cpfm-qta-m       PIC  9(8)
+                              OCCURS 6 TIMES.
+               10 cpfm-data.
+                   15 cpfm-data-m      PIC  9(8)
+                              OCCURS 6 TIMES.
+               10 cpfm-mese.
+                   15 cpfm-mese-rif    PIC  9(8)
+                              OCCURS 6 TIMES.
+      *prezzo listino + premio + costi + imposte
+      *
+               10 cpfm-totale      PIC  9(9)v99.
+      *(( XFD NAME = cpfm-totale_2 ))
+      *prezzo listino + premio + costi + imposte
+      *
+               10 cpfm-prz-listino PIC  9(9)v99.
+               10 cpfm-lead-time   PIC  9(3).
+               10 cpfm-copertura-LBX           PIC  9.
+                   88 cpfm-copertura-LBX-no VALUE IS 0. 
+                   88 cpfm-copertura-LBX-si VALUE IS 1. 
+               10 cpfm-programmazione          PIC  9.
+                   88 cpfm-programmazione-no VALUE IS 0. 
+                   88 cpfm-programmazione-si VALUE IS 1. 

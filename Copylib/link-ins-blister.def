@@ -1,0 +1,9 @@
+      *
+       01 ins-linkage.
+           05 ins-mag          PIC  x(3).
+           05 ins-qta          PIC  9(8).
+           05 ins-codice       PIC  9(6).
+           05 ins-gdo          PIC  x(5).
+           05 ins-idx          PIC  9(3).
+           05 ins-cliente      PIC  9(5).
+           05 ins-destino      PIC  9(5).

@@ -1,0 +1,31 @@
+      *(( XFD FILE = tmp-k-mrordini ))
+       FD  tmp-k-mrordini.
+       01 k-mro-rec.
+           05 k-mro-chiave.
+               10 k-mro-chiave-testa.
+                   15 k-mro-anno       PIC  9(4).
+                   15 k-mro-numero     PIC  9(8).
+               10 k-mro-riga       PIC  9(5).
+           05 k-mro-dati.
+               15 FILLER           PIC  9.
+                   88 k-mro-da-cancellare VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+               15 k-mro-articolo   PIC  9(6).
+               15 k-mro-ordinata   PIC  9(8).
+               15 k-mro-evasa      PIC  9(8).
+               15 k-mro-evadibile  PIC  9(8).
+               15 k-mro-evadibile-ok           PIC  9(8).
+               15 k-mro-qta-imb    PIC  9(4).
+               15 k-mro-promo      PIC  9(15).
+               15 k-mro-blister-id PIC  9(6).
+               15 k-mro-bli-codice PIC  9(6).
+               15 k-mro-evadi-dal  PIC  9(8).
+               15 k-mro-blister    PIC  X.
+                   88 k-mro-blister-testa VALUE IS "T". 
+                   88 k-mro-blister-righe VALUE IS "R". 
+                   88 k-mro-blister-no VALUE IS "N". 
+               15 k-mro-prg-chiave.
+                   20 k-mro-prg-cod-articolo       PIC  9(6).
+                   20 k-mro-prg-cod-magazzino      PIC  X(3).
+                   20 k-mro-prg-tipo-imballo       PIC  X(3).
+                   20 k-mro-prg-peso   PIC  9(5)v9(3).

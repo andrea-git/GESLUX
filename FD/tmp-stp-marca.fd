@@ -1,0 +1,11 @@
+      *(( XFD FILE = tmp-stp-marca ))
+       FD  tmp-stp-marca.
+       01 tmp-stp-rec.
+           05 tmp-stp-chiave.
+               10 tmp-stp-agente   PIC  9(5).
+               10 tmp-stp-cod-marca            PIC  9(4).
+           05 tmp-stp-dati.
+               10 tmp-stp-mar-descrizione      PIC  x(40).
+               10 tmp-stp-kg       PIC  s9(12)v99.
+               10 tmp-stp-provv    PIC  s9(12)v99.
+               10 tmp-stp-fatt     PIC  s9(12)v99.

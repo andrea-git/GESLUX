@@ -1,0 +1,74 @@
+       FD  progmagric.
+       01 prr-rec.
+           05 prr-chiave.
+               10 prr-cod-articolo PIC  9(6).
+               10 prr-cod-magazzino            PIC  X(3).
+               10 prr-tipo-imballo PIC  X(3).
+               10 prr-peso         PIC  9(5)v9(3).
+           05 prr-dati.
+               10 prr-peso-utf     PIC  9(5)v9(3).
+               10 prr-peso-non-utf PIC  9(5)v9(3).
+               10 prr-dinamici.
+                   15 prr-costo-ultimo PIC  S9(9)V9(2).
+                   15 prr-costo-inizio PIC  S9(9)V9(2).
+                   15 prr-costo-medio  PIC  s9(8)V9(3).
+               10 prr-consolidati.
+                   15 prr-iniziali.
+                       20 prr-ini-udm      PIC  S9(8).
+                       20 prr-ini-kg       PIC  S9(9)V9(3).
+                       20 prr-ini-valore   PIC  S9(9)V9(2).
+                   15 prr-acquisti.
+                       20 prr-acq-udm      PIC  S9(8).
+                       20 prr-acq-kg       PIC  S9(9)V9(3).
+                       20 prr-acq-valore   PIC  S9(9)V9(2).
+                   15 prr-vendite.
+                       20 prr-ven-udm      PIC  S9(8).
+                       20 prr-ven-kg       PIC  S9(9)V9(3).
+                       20 prr-ven-valore   PIC  S9(9)V9(2).
+                   15 prr-variazioni.
+                       20 prr-var-inv-udm  PIC  S9(8).
+                       20 prr-var-inv-kg   PIC  S9(9)V9(3).
+                       20 prr-var-inv-valore           PIC  S9(9)V9(2).
+                   15 prr-resi-a-fornitori.
+                       20 prr-resi-fornitori-udm       PIC  S9(8).
+                       20 prr-resi-fornitori-kg        PIC  S9(9)V9(3).
+                       20 prr-resi-fornitori-valore    PIC  S9(9)V9(2).
+                   15 prr-resi-da-cliente.
+                       20 prr-resi-da-cli-udm          PIC  S9(8).
+                       20 prr-resi-da-cli-kg           PIC  S9(9)V9(3).
+                       20 prr-resi-da-cli-valore       PIC  S9(9)V9(2).
+                   15 prr-giacenza-periodo.
+                       20 prr-giacenza-udm PIC  s9(8).
+                       20 prr-giacenza-kg  PIC  S9(9)V9(3).
+                   15 prr-entrate.
+                       20 prr-udm-el       PIC  s9(8).
+                       20 prr-kg-el        PIC  S9(9)V9(3).
+                       20 prr-valore-el    PIC  S9(9)V9(2).
+                   15 prr-entrate2.
+                       20 prr-udm-el2      PIC  s9(8).
+                       20 prr-kg-el2       PIC  S9(9)V9(3).
+                       20 prr-valore-el2   PIC  S9(9)V9(2).
+                   15 prr-uscite.
+                       20 prr-udm-ul       PIC  s9(8).
+                       20 prr-kg-ul        PIC  S9(9)V9(3).
+                       20 prr-valore-ul    PIC  S9(9)V9(2).
+                   15 prr-uscite2.
+                       20 prr-udm-ul2      PIC  s9(8).
+                       20 prr-kg-ul2       PIC  S9(9)V9(3).
+                       20 prr-valore-ul2   PIC  S9(9)V9(2).
+                   15 prr-prz-anagrafica           PIC  9(6)v99.
+               10 prr-dati-comuni.
+                   15 prr-data-creazione           PIC  9(8).
+                   15 prr-ora-creazione            PIC  9(8).
+                   15 prr-utente-creazione         PIC  X(10).
+                   15 prr-data-ultima-modifica     PIC  9(8).
+                   15 prr-ora-ultima-modifica      PIC  9(8).
+                   15 prr-utente-ultima-modifica   PIC  X(10).
+               10 prr-vuoti.
+                   15 prr-costo-medio-progmag      PIC  s9(8)V9(3).
+                   15 prr-num-vuoto-1  PIC  9(4).
+                   15 prr-num-vuoto-2  PIC  9(15).
+                   15 prr-num-vuoto-3  PIC  9(15).
+                   15 prr-alfa-vuoto-1 PIC  X(20).
+                   15 prr-alfa-vuoto-2 PIC  X(20).
+                   15 prr-alfa-vuoto-3 PIC  X(20).

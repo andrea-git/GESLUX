@@ -1,0 +1,12 @@
+      * linklage pgm. "primanotaescad"
+       01 primanotaescad-linkage.
+           05 link-selmaz      PIC  x(256).
+           05 link-selclz      PIC  x(256).
+           05 link-tipo-doc    PIC  x.
+               88 LinkMerce VALUE IS "F". 
+               88 LinkManuali VALUE IS "M". 
+               88 LinkNote VALUE IS "N". 
+           05 link-path-tmp-iva            PIC  x(256).
+           05 link-pn-result   PIC  9.
+           05 link-handle
+                      USAGE IS HANDLE OF WINDOW.

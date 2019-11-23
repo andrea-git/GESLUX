@@ -1,0 +1,5 @@
+      *
+       01 ra-linkage.
+           03 ra-user          pic x(20).
+           03 ra-articoli      occurs 999 indexed by ra-idx.
+              05 ra-articolo   pic 9(6).

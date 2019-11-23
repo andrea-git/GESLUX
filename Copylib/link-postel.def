@@ -1,0 +1,11 @@
+      *
+       01 postel-linkage.
+           03 postel-tipo-doc  PIC  9.
+           03 postel-num-a     PIC  9(8).
+           03 postel-num-da    PIC  9(8).
+           03 postel-anno      PIC  9(4).
+           03 postel-tot-doc   PIC  9(8).
+           03 postel-doc-da    PIC  9(8).
+           03 postel-doc-a     PIC  9(8).
+           03 postel-user      PIC  x(20).
+           03 postel-handle    usage handle.

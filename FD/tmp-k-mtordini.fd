@@ -1,0 +1,19 @@
+      *(( XFD FILE = tmp-k-mtordini ))
+       FD  tmp-k-mtordini.
+       01 k-mto-rec.
+           05 k-mto-chiave.
+               10 k-mto-anno       PIC  9(4).
+               10 k-mto-numero     PIC  9(8).
+           05 k-mto-dati.
+               10 k-mto-promo      PIC  9.
+                   88 k-mto-promo-si VALUE IS 1. 
+                   88 k-mto-promo-no VALUE IS 0. 
+               10 k-mto-da-evadere PIC  9(8).
+               10 k-mto-evasa      PIC  9(8).
+               10 k-mto-evadibile  PIC  9.
+                   88 k-mto-evadibile-si VALUE IS 1. 
+                   88 k-mto-evadibile-no VALUE IS 0. 
+                   88 k-mto-evadibile-forse VALUE IS 2. 
+               10 k-mto-blister    PIC  9.
+                   88 k-mto-blister-si VALUE IS 1. 
+                   88 k-mto-blister-no VALUE IS 0. 

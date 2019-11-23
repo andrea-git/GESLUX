@@ -1,0 +1,9 @@
+       SD  sort-art-list.
+       01 sart-rec.
+           05 sart-forn        PIC  z(5).
+           05 sart-descr-forn  PIC  x(100).
+           05 sart-data-da     PIC  9(8).
+           05 sartl-data-a     PIC  9(8).
+           05 sart-art-forn    PIC  x(20).
+           05 sart-prz-fint    PIC  9(6)v9(4).
+           05 sart-prz-conf    PIC  9(6)v9(4).

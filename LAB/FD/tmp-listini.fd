@@ -1,0 +1,28 @@
+      *(( XFD FILE = tmp-listini ))
+       FD  tmp-listini.
+       01 tlst-rec.
+           05 tlst-chiave.
+               10 tlst-art-descrizione         PIC  x(50).
+               10 tlst-articolo    PIC  9(6).
+           05 tlst-dati.
+               10 tlst-cod-art-cli PIC  x(15).
+               10 tlst-imb         PIC  x(3).
+               10 tlst-ean         PIC  9(13).
+               10 tlst-prod        PIC  9(6)v99.
+               10 tlst-cons        PIC  9(6)v99.
+               10 tlst-cou         PIC  9(6)v99.
+               10 tlst-add         PIC  9(6)v99.
+               10 tlst-prezzo      PIC  9(6)v99.
+               10 tlst-promo       PIC  x(50).
+               10 tlst-faro        PIC  9(6)v99.
+               10 tlst-data-vigore PIC  9(8).
+               10 tlst-data-modifica           PIC  9(8).
+           05 tlst-chiave-listino.
+               10 tlst-gdo-listino PIC  x(5).
+               10 tlst-data-listino            PIC  9(8).
+               10 tlst-articolo-listino        PIC  9(6).
+           05 tlst-prg-chiave.
+               20 tlst-prg-cod-articolo        PIC  9(6).
+               20 tlst-prg-cod-magazzino       PIC  X(3).
+               20 tlst-prg-tipo-imballo        PIC  X(3).
+               20 tlst-prg-peso    PIC  9(5)v9(3).

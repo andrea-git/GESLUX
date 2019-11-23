@@ -1,0 +1,64 @@
+       78  separatore            value ";".                         
+
+       01  record-01T.
+         05 01T1-BGM-TIPODOC         pic x(3) value "351".
+         05 01T2-BGM-ID-EDI-MIT1     pic x(35).
+         05 01T3-BGM-ID-EDI-MIT2     pic x(4).
+         05 01T4-BGM-DATADOC         pic 9(8).
+         05 01T5-BGM-NUMDOC          pic x(35).
+         05 01T6-TIPOREC             pic x(3) value "01T".
+         05 01T7-BGM-ID-EDI-DES1     pic x(35).
+         05 01T8-BGM-ID-EDI-DES2     pic x(4).
+         05 01T9-NAD-CODNAD-SU       pic x(17).
+         05 01T10-NAD-QCODNAD-SU     pic x(3).
+         05 01Tfiller1               pic x(8)   value all separatore.
+         05 01T19-NAD-CODNAD-BY      pic x(17).
+         05 01T20-NAD-QCODNAD-BY     pic x(3).
+         05 01Tfiller2               pic x(8)   value all separatore.
+         05 01T29-NAD-CODNAD-DP      pic x(17).
+         05 01T30-NAD-QCODNAD-DP     pic x(3).
+         05 01T-filler3              pic x(47)  value all separatore.
+         05 01T78-RFF-NUMRIF         pic x(35).
+         05 01T-filler4              pic x(21)  value all separatore.
+         05 01T100-RFF-AAS           pic 9(8).
+         05 01T101-RFF-AAS           pic x(35).
+         05 end-01T                  pic x(129) value all separatore.
+
+       01 record-02D.
+         05 02D1-BGM-TIPODOC         pic x(3) value "351".
+         05 02D2-BGM-ID-EDI-MIT1     pic x(35).
+         05 02D3-BGM-ID-EDI-MIT2     pic x(4).
+         05 02D4-BGM-DATADOC         pic 9(8).
+         05 02D5-BGM-NUMDOC          pic x(35).
+         05 02D6-TIPOREC             pic x(3) value "02D".
+         05 02D7-LIN-NUMRIGA         pic 9(6).
+         05 02D-filler1              pic x(4) value all separatore.
+         05 02D12-LIN-CODFORTU       pic x(35).
+         05 02D13-LIN-CODFORTU-Q     pic x(2) value "SA".
+         05 02D14-LIN-CODEANCU       pic x(35).
+         05 02D15-LIN-TIPCODCU       pic x(3).
+         05 02D16-LIN-CODEANTU       pic x(35).
+         05 02D-filler3              pic x(2) value all separatore.
+         05 02D19-LIN-DESCR          pic x(35).
+         05 02D21-LIN-QTAORD-S       pic x(1)  value "+".
+         05 02D22-LIN-QTAORD         pic x(35).
+         05 02D-filler4              pic x(4)  value all separatore.
+         05 02D27-LIN-UDMQORD        pic x(3)  value "PCE".
+         05 02D-filler5              pic x(13) value all separatore.
+         05 02D41-MEA-IDMISURA       pic x(3)  value "AAA".         
+         05 02D-filler6              pic x(1)  value separatore.
+         05 02D43-MEA-VALORE         pic x(15).
+         05 02D-filler7              pic x(2)  value all separatore.
+         05 02D46-MEA-UNIMIS         pic x(3)  value "KGM".
+         05 end-02D                  pic x(42) value all separatore.
+
+       01 record-03P.
+         05 03P1-BGM-TIPODOC         pic x(3) value "351".
+         05 03P2-BGM-ID-EDI-MIT1     pic x(35).
+         05 03P3-BGM-ID-EDI-MIT2     pic x(4).
+         05 03P4-BGM-DATADOC         pic 9(8).
+         05 03P5-BGM-NUMDOC          pic x(35).
+         05 03P6-TIPOREC             pic x(3) value "03P".
+         05 end-03P                  pic x(15) value all separatore.
+
+

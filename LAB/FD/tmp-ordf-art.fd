@@ -1,0 +1,15 @@
+      *(( XFD FILE = tmp-ordf-art ))
+       FD  tmp-ordf-art.
+       01 toa-rec.
+           05 toa-chiave.
+               10 toa-anno         PIC  z(4).
+               10 toa-numero       PIC  z(8).
+               10 toa-riga         PIC  z(5).
+           05 toa-dati.
+               10 toa-forn         PIC  x(40).
+               10 toa-tel          PIC  x(15).
+               10 toa-ord          PIC  z(8).
+               10 toa-eva          PIC  z(8).
+               10 toa-qta-soll     PIC  z(8).
+               10 toa-data-arrivo  PIC  9(8).
+               10 toa-data-ordine  PIC  9(8).

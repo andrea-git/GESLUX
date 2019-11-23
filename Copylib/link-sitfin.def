@@ -1,0 +1,6 @@
+      *
+       01 sitfin-linkage.
+           03 sitfin-importo   pic 9(9)v99.
+           03 sitfin-chiamata  pic x.
+              88 sitfin-batch  value "B".
+       copy "link-calfido.def".

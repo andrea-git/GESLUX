@@ -1,0 +1,49 @@
+      *(( XFD FILE = tmp-tevacli ))
+       FD  tmp-tevacli.
+       01 tte-rec.
+           05 tte-chiave.
+               10 tte-id-evasione  PIC  9(8).
+           05 tte-dati.
+               10 tte-cliente      PIC  9(5).
+               10 tte-destino      PIC  9(5).
+               10 tte-peso         PIC  9(6)v999.
+               10 tte-peso-utf     PIC  9(6)v999.
+               10 tte-righe        PIC  9(5).
+               10 tte-righe-omaggio            PIC  9(5).
+               10 tte-vettore      PIC  9(5).
+               10 tte-num-master   PIC  9(5).
+               10 tte-master-REG   PIC  9(5).
+               10 tte-ritira       PIC  9.
+                   88 tte-ritira-si VALUE IS 1. 
+                   88 tte-ritira-no VALUE IS 0. 
+               10 tte-dati-master
+                          OCCURS 75 TIMES.
+                   15 tte-master.
+                       20 tte-anno-m       PIC  9(4).
+                       20 tte-numero-m     PIC  9(8).
+                   15 tte-vettore-m    PIC  9(5).
+                   15 tte-num-ord-cli-m            PIC  x(10).
+                   15 tte-data-ordine-m            PIC  9(8).
+                   15 tte-cod-agente-m PIC  9(5).
+                   15 tte-cod-pagamento-m          PIC  x(3).
+                   15 tte-cod-ese-iva-m            PIC  x(3).
+                   15 tte-note1-m      PIC  x(19).
+                   15 tte-data-cons    PIC  9(8).
+                   15 tte-note2-m      PIC  x(30).
+                   15 tte-note3-m      PIC  x(30).
+                   15 tte-note4-m      PIC  x(30).
+                   15 tte-note-bolla-1-m           PIC  x(130).
+                   15 tte-note-bolla-2-m           PIC  x(130).
+                   15 tte-stato-attivazione-m      PIC  x.
+               10 tte-bloccato     PIC  9.
+                   88 tte-bloccato-si VALUE IS 1. 
+                   88 tte-bloccato-no VALUE IS 0. 
+               10 tte-split-500    PIC  9.
+                   88 tte-split-500-si VALUE IS 1. 
+                   88 tte-split-500-no VALUE IS 0. 
+               10 tte-split-24000  PIC  9.
+                   88 tte-split-24000-si VALUE IS 1. 
+                   88 tte-split-24000-no VALUE IS 0. 
+               10 tte-blocco-peso  PIC  9.
+                   88 tte-blocco-peso-si VALUE IS 1. 
+                   88 tte-blocco-peso-no VALUE IS 0. 

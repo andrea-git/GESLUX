@@ -1,0 +1,25 @@
+       FD  note.
+       01 not-rec.
+           05 not-chiave.
+               10 not-codice       PIC  9(5).
+               10 not-prog         PIC  9(5).
+           05 not-dati.
+               10 not-note-1       PIC  x(19).
+               10 not-data         PIC  9(8).
+               10 not-note-2       PIC  x(30).
+               10 not-note-3       PIC  x(30).
+               10 not-note-4       PIC  x(30).
+           05 not-dati-comuni.
+               10 not-data-creazione           PIC  9(8).
+               10 not-ora-creazione            PIC  9(8).
+               10 not-utente-creazione         PIC  X(10).
+               10 not-data-ultima-modifica     PIC  9(8).
+               10 not-ora-ultima-modifica      PIC  9(8).
+               10 not-utente-ultima-modifica   PIC  X(10).
+           05 not-vuoti.
+               10 not-num-vuoto-1  PIC  9(15).
+               10 not-num-vuoto-2  PIC  9(15).
+               10 not-num-vuoto-3  PIC  9(15).
+               10 not-alfa-vuoto-1 PIC  X(20).
+               10 not-alfa-vuoto-2 PIC  X(20).
+               10 not-alfa-vuoto-3 PIC  X(20).

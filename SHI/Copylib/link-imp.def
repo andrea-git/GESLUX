@@ -1,0 +1,8 @@
+       01  imp-linkage.
+           05 imp-path-log   pic x(256).
+           05 imp-user       pic x(10).
+           05 imp-status           signed-short.
+              88 imp-ok            value zero.
+              88 imp-err-bloccante value -1.
+              88 imp-err           value -2.
+

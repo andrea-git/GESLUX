@@ -1,0 +1,10 @@
+      *
+       01 sta-linkage.
+           03 sta-cod-da       PIC  9(6).
+           03 sta-cod-a        PIC  9(6).
+           03 sta-path         PIC  x(256).
+           03 sta-user         PIC  x(20).
+           03 sta-excel        PIC  9.
+               88 sta-si-excel value 1, false 0.
+           03 sta-vis-dettagli        PIC  9.
+               88 sta-si-vis-dettagli value 1, false 0.

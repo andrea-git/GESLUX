@@ -1,0 +1,52 @@
+      *(( XFD FILE = STO-brnotacr ))
+       FD  STO-brnotacr.
+       01 STO-brno-rec.
+           05 STO-brno-chiave.
+               10 STO-brno-anno    PIC  9(4).
+               10 STO-brno-numero  PIC  9(8).
+               10 STO-brno-tipo    PIC  x.
+                   88 STO-brno-nota VALUE IS "N". 
+                   88 STO-brno-addebito VALUE IS "A". 
+                   88 STO-brno-merce-rotta VALUE IS "R". 
+               10 STO-brno-num-riga            PIC  9(5).
+           05 STO-brno-dati.
+               10 STO-brno-cod-articolo        PIC  9(6).
+               10 STO-brno-qta     PIC  9(8).
+               10 STO-brno-imponib-merce       PIC  9(9)v9(2).
+               10 STO-brno-imp-consumo         PIC  9(4)v9(2).
+               10 STO-brno-imp-cou-cobat       PIC  9(4)v9(2).
+               10 STO-brno-add-piombo          PIC  9(4)v99.
+               10 STO-brno-prz-unitario        PIC  9(9)v9(2).
+               10 STO-brno-cod-iva PIC  x(3).
+               10 STO-brno-des-libera          PIC  x(150).
+               10 STO-brno-perce-sconto        PIC  9(2)v9(2).
+               10 STO-brno-peso-utf            PIC  9(5)v9(3).
+               10 STO-brno-peso-non-utf        PIC  9(5)v9(3).
+               10 STO-brno-prg-chiave.
+                   15 STO-brno-prg-cod-articolo    PIC  9(6).
+                   15 STO-brno-prg-cod-magazzino   PIC  X(3).
+                   15 STO-brno-prg-tipo-imballo    PIC  X(3).
+                   15 STO-brno-prg-peso            PIC  9(5)v9(3).
+               10 STO-brno-stato   PIC  X(1).
+                   88 STO-brno-attivo VALUE IS "A". 
+                   88 STO-brno-disattivo VALUE IS "D". 
+                   88 STO-brno-bloccato VALUE IS "B". 
+               10 STO-brno-tipo-riga           PIC  x.
+                   88 STO-brno-fattura VALUE IS "F". 
+                   88 STO-brno-manuale VALUE IS "M". 
+               10 STO-brno-dati-comuni.
+                   15 STO-brno-data-creazione      PIC  9(8).
+                   15 STO-brno-ora-creazione       PIC  9(8).
+                   15 STO-brno-utente-creazione    PIC  X(10).
+                   15 STO-brno-data-ultima-modifica            PIC  
+           9(8).
+                   15 STO-brno-ora-ultima-modifica PIC  9(8).
+                   15 STO-brno-utente-ultima-modifica          PIC  
+           X(10).
+               10 STO-brno-vuoti.
+                   15 STO-brno-num-vuoto-1         PIC  9(15).
+                   15 STO-brno-num-vuoto-2         PIC  9(15).
+                   15 STO-brno-num-vuoto-3         PIC  9(15).
+                   15 STO-brno-alfa-vuoto-1        PIC  X(20).
+                   15 STO-brno-alfa-vuoto-2        PIC  X(20).
+                   15 STO-brno-alfa-vuoto-3        PIC  X(20).

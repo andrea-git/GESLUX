@@ -1,0 +1,6 @@
+       01  gnote-destf-linkage.
+           05 gnd-desf-chiave.
+              10 gnd-desf-codice   PIC  9(5).
+              10 gnd-desf-prog     PIC  9(5).
+           05 gnd-mod              PIC  9.
+           05 gnd-path             pic x(256).

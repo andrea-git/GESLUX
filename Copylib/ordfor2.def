@@ -1,0 +1,65 @@
+      *
+       77 SS1  PIC  s9(10).
+       77 SS2  PIC  s9(10).
+       77 QTA1 PIC  s9(10).
+       77 QTA2 PIC  s9(10).
+       77 QTA3 PIC  s9(10).
+       77 F1   PIC  s9(10).
+       77 F2   PIC  s9(10).
+       77 F3   PIC  s9(10).
+       77 F4   PIC  s9(10).
+       77 F5   PIC  s9(10).
+       77 F6   PIC  s9(10).
+       77 start-data       PIC  9(8).
+       77 end-data         PIC  9(8).
+       77 data-calcolo     PIC  9(8).
+       77 mese PIC  99.
+       77 mese-start       PIC  99.
+       77 mese-end         PIC  99.
+       77 anno PIC  9(4).
+       77 CurrentYear PIC  9(4).
+       77 PastYear    PIC  9(4).
+       77 mese-max pic s9(7).
+       77 mese-min pic s9(7).
+       77 idx-max  pic 99.
+       77 idx-min  pic 99.      
+       77 tit-mese         PIC  x(6)
+                  OCCURS 12 TIMES.      
+       77 como-giacenza    pic s9(8).
+       77 como-impegnato   pic s9(8).
+       77 anno2            PIC  9(4).
+       77 anno-corr        PIC  9(4).
+       77 anno-past        PIC  9(4).
+       77 forn-inclusi     PIC  9(9).
+       77 wk-campo         PIC  s9(12)v99.
+       01 occurs-qta.
+           03 el-qta           PIC  s9(9)
+                      OCCURS 12 TIMES.
+       77 qta-disp         PIC  s9(8).
+       77 qta-utile        PIC  s9(8).
+       77 save-fornitore   PIC  9(5).
+       77 SavePeso         PIC  9(5)v999.
+       01 filler           PIC  9.
+           88 fornitore-singolo VALUE IS 1,    WHEN SET TO FALSE  0. 
+       01 filler           PIC  9.
+           88 singolo-copre VALUE IS 1,    WHEN SET TO FALSE  0. 
+
+       01 filler               PIC  9.
+           88 articolo-singolo value 1.
+           88 articolo-catena  value 2.
+           88 articolo-ultimo  value 3.
+
+       77  como-ult-art         pic 9(6).
+
+       77  ultimo-sco-immediato pic 9.
+           88 ultimo-sco-immediato-si value 1 false 0.
+
+       77  save-art-codice pic 9(6).
+       77  save-sco-codice pic 99.
+                                    
+       77  r-articolo      pic 9(6).
+       77  r-qta           pic s9(8).
+       77  r-negativo      pic x.
+       77  r-anno          pic 9(4).
+       77  r-mese          pic 9(2).
+       77  r-note          pic x(500).

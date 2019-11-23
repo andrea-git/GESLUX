@@ -1,0 +1,49 @@
+       FD  OLD-brnotacr.
+       01 OLD-brno-rec.
+           05 OLD-brno-chiave.
+               10 OLD-brno-anno        PIC  9(4).
+               10 OLD-brno-numero      PIC  9(8).
+               10 OLD-brno-tipo        PIC  x.
+                   88 OLD-brno-nota VALUE IS "N". 
+                   88 OLD-brno-addebito VALUE IS "A". 
+                   88 OLD-brno-merce-rotta VALUE IS "R". 
+               10 OLD-brno-num-riga    PIC  9(5).
+           05 OLD-brno-dati.
+               10 OLD-brno-cod-articolo            PIC  9(6).
+               10 OLD-brno-qta         PIC  9(8).
+               10 OLD-brno-imponib-merce           PIC  9(9)v9(2).
+               10 OLD-brno-imp-consumo PIC  9(4)v9(2).
+               10 OLD-brno-imp-cou-cobat           PIC  9(4)v9(2).
+               10 OLD-brno-add-piombo  PIC  9(4)v99.
+               10 OLD-brno-prz-unitario            PIC  9(9)v9(2).
+               10 OLD-brno-cod-iva     PIC  x(3).
+               10 OLD-brno-des-libera  PIC  x(150).
+               10 OLD-brno-perce-sconto            PIC  9(2)v9(2).
+               10 OLD-brno-peso-utf    PIC  9(3)v9(3).
+               10 OLD-brno-peso-non-utf            PIC  9(3)v9(3).
+               10 OLD-brno-prg-chiave.
+                   15 OLD-brno-prg-cod-articolo        PIC  9(6).
+                   15 OLD-brno-prg-cod-magazzino       PIC  X(3).
+                   15 OLD-brno-prg-tipo-imballo        PIC  X(3).
+                   15 OLD-brno-prg-peso    PIC  9(3)v9(3).
+               10 OLD-brno-stato       PIC  X(1).
+                   88 OLD-brno-attivo VALUE IS "A". 
+                   88 OLD-brno-disattivo VALUE IS "D". 
+                   88 OLD-brno-bloccato VALUE IS "B". 
+               10 OLD-brno-tipo-riga   PIC  x.
+                   88 OLD-brno-fattura VALUE IS "F". 
+                   88 OLD-brno-manuale VALUE IS "M". 
+               10 OLD-brno-dati-comuni.
+                   15 OLD-brno-data-creazione          PIC  9(8).
+                   15 OLD-brno-ora-creazione           PIC  9(8).
+                   15 OLD-brno-utente-creazione        PIC  X(10).
+                   15 OLD-brno-data-ultima-modifica    PIC  9(8).
+                   15 OLD-brno-ora-ultima-modifica     PIC  9(8).
+                   15 OLD-brno-utente-ultima-modifica  PIC  X(10).
+               10 OLD-brno-vuoti.
+                   15 OLD-brno-num-vuoto-1 PIC  9(15).
+                   15 OLD-brno-num-vuoto-2 PIC  9(15).
+                   15 OLD-brno-num-vuoto-3 PIC  9(15).
+                   15 OLD-brno-alfa-vuoto-1            PIC  X(20).
+                   15 OLD-brno-alfa-vuoto-2            PIC  X(20).
+                   15 OLD-brno-alfa-vuoto-3            PIC  X(20).

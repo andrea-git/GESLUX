@@ -1,0 +1,25 @@
+Connesso a ftp.lubex.it.
+220-Benvenuto nello spazio FTP LUBEX
+220 Per problemi o info: 0226515527
+ftp> user prova
+331 Password required for prova
+
+230 Logged on
+ftp> cd lubex
+250 CWD successful. "/lubex" is current directory.
+ftp> Directory locale ora F:\Lubex\GESLUX\SHI\InOut\Import.
+ftp> lcd F:\Lubex\GESLUX\SHI\InOut\Import
+binary
+200 Type set to I
+ftp> get HSTTX_ORDUSCTES.txt
+200 Port command successful
+550 File not found
+ftp> get HSTTX_ORDUSCRIG.txt
+200 Port command successful
+550 File not found
+ftp> del HSTTX_ORDUSCTES.txt
+550 File not found
+ftp> del HSTTX_ORDUSCRIG.txt
+550 File not found
+ftp> quit
+221 Goodbye

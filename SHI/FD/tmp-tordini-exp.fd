@@ -1,0 +1,6 @@
+      *(( XFD FILE = tmp-tordini-exp ))
+       FD  tmp-tordini-exp.
+       01 tmp-tor-rec.
+           05 tmp-tor-chiave.
+               10 tmp-tor-anno     PIC  9(4).
+               10 tmp-tor-numero   PIC  9(8).

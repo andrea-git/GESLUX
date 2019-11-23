@@ -1,0 +1,1218 @@
+; CaseMaker Totem Program Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[MONITOR_FILE]
+
+
+[PROGRAM_CONTENT]
+QUIT_CONFIRM=0
+ANSI_FORMAT=1
+MAIN_SCREEN_NAME=Form1
+PROGRAM_UNIQUE_CODE=TOTEM-7E3AA205612-760-93139067
+
+{{@DESCRIPTION:
+
+@}}
+
+[WORKING_STORAGE]
+m_nType=1
+m_strName=Working Storage
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionWK
+
+@}}
+[FDITEM0_WK]
+m_strName=Screen1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_WK
+
+@}}
+[FDITEM1_WK]
+m_strName=counter
+m_strRawPic=9(3)
+m_strPic=9(3)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1_WK
+
+@}}
+[FDITEM2_WK]
+m_strName=path-bmp
+m_strRawPic=X(512)
+m_strPic=X(512)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM2_WK
+
+@}}
+[FDITEM3_WK]
+m_strName=como-path
+m_strRawPic=X(512)
+m_strPic=X(512)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM3_WK
+
+@}}
+[FDITEM4_WK]
+m_strName=CountChar
+m_strRawPic=9(3)
+m_strPic=9(3)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM4_WK
+
+@}}
+[FDITEM5_WK]
+m_strName=counter2
+m_strRawPic=9(3)
+m_strPic=9(3)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM5_WK
+
+@}}
+[FDITEM6_WK]
+m_strName=BitmapNumBrowse
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM6_WK
+
+@}}
+[FDITEM7_WK]
+m_strName=BitmapNumSel
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM7_WK
+
+@}}
+[FDITEM8_WK]
+m_strName=BitmapNumPrev
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM8_WK
+
+@}}
+[FDITEM9_WK]
+m_strName=BitmapNumNext
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM9_WK
+
+@}}
+[FDITEM10_WK]
+m_strName=BitmapBrowseEnabled
+m_strDefaultValue=2
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM10_WK
+
+@}}
+[FDITEM11_WK]
+m_strName=BitmapBrowseDisabled
+m_strDefaultValue=6
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM11_WK
+
+@}}
+[FDITEM12_WK]
+m_strName=BitmapSelEnabled
+m_strDefaultValue=3
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM12_WK
+
+@}}
+[FDITEM13_WK]
+m_strName=BitmapSelDisabled
+m_strDefaultValue=7
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM13_WK
+
+@}}
+[FDITEM14_WK]
+m_strName=BitmapPrevEnabled
+m_strDefaultValue=4
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM14_WK
+
+@}}
+[FDITEM15_WK]
+m_strName=BitmapPrevDisabled
+m_strDefaultValue=8
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM15_WK
+
+@}}
+[FDITEM16_WK]
+m_strName=BitmapNextEnabled
+m_strDefaultValue=5
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM16_WK
+
+@}}
+[FDITEM17_WK]
+m_strName=BitmapNextDisabled
+m_strDefaultValue=9
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM17_WK
+
+@}}
+[FDITEM18_WK]
+m_strName=Small-Font
+m_nUsage=37
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM18_WK
+
+@}}
+[FDITEM19_WK]
+m_strName=FlagSelezionato
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM19_WK
+
+@}}
+[FDITEM20_WK]
+m_strName=selezionato
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM20_WK
+
+@}}
+[FDITEM21_WK]
+m_strName=OPENSAVE-STATUS
+m_strRawPic=s99
+m_strPic=s99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM21_WK
+
+@}}
+[FDITEM22_WK]
+m_strName=OPENSAVE-SUPPORTED
+m_strDefaultValue=1
+m_nItemLevel=78
+m_bValue=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM22_WK
+
+@}}
+[FDITEM23_WK]
+m_strName=OPENSAVE-OPEN-BOX
+m_strDefaultValue=2
+m_nItemLevel=78
+m_bValue=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM23_WK
+
+@}}
+[FDITEM24_WK]
+m_strName=OPENSAVE-SAVE-BOX
+m_strDefaultValue=3
+m_nItemLevel=78
+m_bValue=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM24_WK
+
+@}}
+[FDITEM25_WK]
+m_strName=OPENSAVE-BROWSE-FOLDER
+m_strDefaultValue=4
+m_nItemLevel=78
+m_bValue=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM25_WK
+
+@}}
+[FDITEM26_WK]
+m_strName=OPNSAVERR-UNSUPPORTED
+m_strDefaultValue=0
+m_nItemLevel=78
+m_bValue=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM26_WK
+
+@}}
+[FDITEM27_WK]
+m_strName=OPNSAVERR-CANCELLED
+m_strDefaultValue=-1
+m_nItemLevel=78
+m_bValue=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM27_WK
+
+@}}
+[FDITEM28_WK]
+m_strName=OPNSAVERR-NO-MEMORY
+m_strDefaultValue=-2
+m_nItemLevel=78
+m_bValue=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM28_WK
+
+@}}
+[FDITEM29_WK]
+m_strName=OPNSAVERR-NAME-TOO-LARGE
+m_strDefaultValue=-3
+m_nItemLevel=78
+m_bValue=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM29_WK
+
+@}}
+[FDITEM30_WK]
+m_strName=OPENSAVE-DATA
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM30_WK
+
+@}}
+[FDITEM31_WK]
+m_strName=OPNSAV-FILENAME
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM31_WK
+
+@}}
+[FDITEM32_WK]
+m_strName=OPNSAV-FLAGS
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nUsage=8
+m_strDefaultValue=0
+m_nItemLevel=3
+m_bValue=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM32_WK
+
+@}}
+[FDITEM33_WK]
+m_strName=OPNSAV-DEFAULT-EXT
+m_strRawPic=X(12)
+m_strPic=X(12)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM33_WK
+
+@}}
+[FDITEM34_WK]
+m_strName=OPNSAV-TITLE
+m_strRawPic=X(80)
+m_strPic=X(80)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM34_WK
+
+@}}
+[FDITEM35_WK]
+m_strName=OPNSAV-FILTERS
+m_strRawPic=X(512)
+m_strPic=X(512)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM35_WK
+
+@}}
+[FDITEM36_WK]
+m_strName=OPNSAV-DEFAULT-FILTER
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nUsage=8
+m_strDefaultValue=0
+m_nItemLevel=3
+m_bValue=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM36_WK
+
+@}}
+[FDITEM37_WK]
+m_strName=OPNSAV-DEFAULT-DIR
+m_strRawPic=X(128)
+m_strPic=X(128)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM37_WK
+
+@}}
+[FDITEM38_WK]
+m_strName=OPNSAV-BASENAME
+m_strRawPic=X(128)
+m_strPic=X(128)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM38_WK
+
+@}}
+[FDITEM39_WK]
+m_strName=Screen1-Tb-1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM39_WK
+
+@}}
+[FDITEM40_WK]
+m_strName=toolbar-browser-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM40_WK
+
+@}}
+[FDITEM41_WK]
+m_strName=Default-Font
+m_nUsage=38
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM41_WK
+
+@}}
+[FDITEM42_WK]
+m_strName=Form1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM42_WK
+
+@}}
+[FDITEM43_WK]
+m_strName=e-sel
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM43_WK
+
+@}}
+[FDITEM44_WK]
+m_strName=e-sfoglia
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM44_WK
+
+@}}
+[FDITEM45_WK]
+m_strName=e-prev
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM45_WK
+
+@}}
+[FDITEM46_WK]
+m_strName=e-next
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM46_WK
+
+@}}
+
+
+[LINKAGE_SECTION]
+m_nType=1
+m_strName=Linkage Section
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionLK
+
+@}}
+[FDITEM0_LK]
+m_strName=LinkBrowser
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-BROWSER.DEF
+m_strCopyFile=LINK-BROWSER.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-BROWSER.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM0_LK
+
+
+@}}
+[FDITEM1_LK]
+m_strName=LinkImage
+m_strRawPic=x(512)
+m_strPic=X(512)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-BROWSER.DEF
+m_strCopyFile=LINK-BROWSER.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-BROWSER.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM1_LK
+
+@}}
+[FDITEM2_LK]
+m_strName=LinkAbil
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-BROWSER.DEF
+m_strCopyFile=LINK-BROWSER.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-BROWSER.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM2_LK
+
+@}}
+[FDITEM3_LK]
+m_strName=visualizzazione
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-BROWSER.DEF
+m_strCopyFile=LINK-BROWSER.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-BROWSER.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM3_LK
+
+@}}
+[FDITEM4_LK]
+m_strName=modifica
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-BROWSER.DEF
+m_strCopyFile=LINK-BROWSER.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-BROWSER.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM4_LK
+
+@}}
+
+
+{{@SCREEN:
+*   Screen Painter Data
+*   Schema 6.0
+*
+BEGIN-SPDATA-6.1A
+
+GRAPHICAL-SCREEN
+
+Begin Screen Form1
+   PREFIX            = Screen1
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = Form1
+   Absolute Column   = 0
+   Absolute Line     = 1
+   Action            = (None)
+   Auto Minimize     = TRUE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 13
+   Cell Width        = 7
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = FALSE
+   Font              = Default Font
+   Handle Variable   = Form1-Handle
+   Height in Cells   = TRUE
+   Help ID           = 0
+   Label Offset      = 20
+   Lines             = 42,00
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 10,00
+   Min Size          = 25,00
+   Modeless          = FALSE
+   Operation Mode    = Interactive Mode
+   Resizable         = TRUE
+   Scroll            = FALSE
+   Size              = 111,00
+   System Menu       = TRUE
+   Title             = "Gestione Immagini"
+   Title Bar         = TRUE
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = TRUE
+   Window Type       = Independent
+   Wrap              = TRUE
+   Additional Properties = "LAYOUT-MANAGER = mio-layout"
+   Event Procedure   = Form1-Event-Proc
+   Begin Entry-Field ef-path
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-path
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 5
+      Justification     = Unaligned
+      Line              = 2,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 0
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 109,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 1
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Value Picture     = X(512)
+      Value Variable    = path-bmp
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Additional Properties = "LAYOUT-DATA RLM-RESIZE-X-ANY"
+      Before Procedure  = ef-path-BeforeProcedure
+      After Procedure   = ef-path-AfterProcedure
+   End
+   Begin Web-Browser web-img
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 4,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = web-img
+      Column            = 2,00
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 1
+      Line              = 4,00
+      Lines             = 38,00
+      Lines Unit        = Default
+      No Tab            = FALSE
+      Occurs            = 0
+      Size              = 109,00
+      Size Unit         = Default
+      Tab Order         = 2
+      Value Picture     = X(256)
+      Value Variable    = path-bmp
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Additional Properties = "LAYOUT-DATA RLM-RESIZE-BOTH-ANY"
+   End
+   Begin CsCtrl.Custom1 Label Screen1-Custom1-1
+      CUST-SYMBOL       = Custom1
+      CUST-MODIFYFLAG   = 100000000000000000000000000000000000000000000000000
+      SCREEN-COL        = 4,29
+      SCREEN-LINE       = 1,15
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-Custom1-1
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 4,29
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Font Variable     = Default-Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 18
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 1,15
+      Lines             = 0,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 8,14
+      Size Unit         = Default
+      Tab Order         = 3
+      Title             = "CUSTOM CONTROL"
+      Transparent       = TRUE
+      Visible           = NONE
+      Visible Variable  = v-custom
+      Width in Cells    = FALSE
+   End
+   Begin Toolbar Screen1-Tb-1
+      SCREEN-LINE       = 1,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 1
+      (Name)            = Screen1-Tb-1
+      Cell              = TRUE
+      Color             = 0
+      Font              = Default Font
+      Handle Variable   = Screen1-Tb-1-Handle
+      Help ID           = 0
+      Lines             = 2,62
+      Tab Order         = 4
+      Begin Push-Button pb-esci
+         SCREEN-COL        = 1,00
+         SCREEN-LINE       = 1,23
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = pb-esci
+         Bitmap            = "..\RESOURCE\TOOLBAR-BROWSER.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = TOOLBAR-BROWSER-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 1,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 27
+         Flat              = TRUE
+         Font              = Small Font
+         Font Variable     = Small-Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 2
+         Line              = 1,23
+         Lines             = 1,81
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 3,57
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Escape Button
+         Tab Order         = 1
+         Termination Value = 0
+         Title             = "&Esci"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Additional Properties = "LAYOUT-DATA RLM-RESIZE-BOTH-ANY"
+      End
+      Begin Push-Button pb-sfoglia
+         SCREEN-COL        = 5,57
+         SCREEN-LINE       = 1,23
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = pb-sfoglia
+         Bitmap            = "..\RESOURCE\TOOLBAR-BROWSER.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = TOOLBAR-BROWSER-BMP
+         Bitmap Number     = 6
+         Bitmap Square     = TRUE
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 5,57
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = FALSE
+         Enable Variable   = e-sfoglia
+         Exception Value   = 1000
+         Flat              = TRUE
+         Font              = Small Font
+         Font Variable     = Small-Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 3
+         Line              = 1,23
+         Lines             = 1,81
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 3,57
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 2
+         Termination Value = 0
+         Title             = "&Sfoglia"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Additional Properties = ( "BITMAP-NUMBER BitmapNumBrowse", "LAYOUT-DATA RLM-RESIZE-BOTH-ANY" )
+         Link To           = pb-sfoglia-LinkTo
+      End
+      Begin Push-Button pb-sel
+         SCREEN-COL        = 10,14
+         SCREEN-LINE       = 1,23
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = pb-sel
+         Bitmap            = "..\RESOURCE\TOOLBAR-BROWSER.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = TOOLBAR-BROWSER-BMP
+         Bitmap Number     = 7
+         Bitmap Square     = TRUE
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 10,14
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = FALSE
+         Enable Variable   = e-sel
+         Exception Value   = 1001
+         Flat              = TRUE
+         Font              = Small Font
+         Font Variable     = Small-Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 4
+         Line              = 1,23
+         Lines             = 1,81
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 3,57
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 3
+         Termination Value = 0
+         Title             = "Salva l'immagine selezionata"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Additional Properties = ( "BITMAP-NUMBER BitmapNumSel", "LAYOUT-DATA RLM-RESIZE-BOTH-ANY" )
+         Link To           = pb-sel-LinkTo
+      End
+      Begin Push-Button PB-PREV
+         SCREEN-COL        = 14,86
+         SCREEN-LINE       = 1,15
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = PB-PREV
+         Bitmap            = "..\RESOURCE\TOOLBAR-BROWSER.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = TOOLBAR-BROWSER-BMP
+         Bitmap Number     = 8
+         Bitmap Square     = TRUE
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 14,86
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = FALSE
+         Enable Variable   = e-prev
+         Exception Value   = 67
+         Flat              = TRUE
+         Font              = Small Font
+         Font Variable     = Small-Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 6
+         Line              = 1,15
+         Lines             = 1,81
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 3,57
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 4
+         Termination Value = 0
+         Title             = "Precedente"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Additional Properties = ( "BITMAP-NUMBER BitmapNumPrev", "LAYOUT-DATA RLM-RESIZE-BOTH-ANY" )
+         Link To           = PB-PREV-LinkTo
+      End
+      Begin Push-Button PB-NEXT
+         SCREEN-COL        = 19,43
+         SCREEN-LINE       = 1,15
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = PB-NEXT
+         Bitmap            = "..\RESOURCE\TOOLBAR-BROWSER.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = TOOLBAR-BROWSER-BMP
+         Bitmap Number     = 9
+         Bitmap Square     = TRUE
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 19,43
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = FALSE
+         Enable Variable   = e-next
+         Exception Value   = 68
+         Flat              = TRUE
+         Font              = Small Font
+         Font Variable     = Small-Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 7
+         Line              = 1,15
+         Lines             = 1,81
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 3,57
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 5
+         Termination Value = 0
+         Title             = "Successivo"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Additional Properties = ( "BITMAP-NUMBER BitmapNumNext", "LAYOUT-DATA RLM-RESIZE-BOTH-ANY" )
+         Link To           = PB-NEXT-LinkTo
+      End
+   End
+End
+
+END-SPDATA
+
+@}}
+
+{{@REPORT:
+*   Report Writer Data
+*   Schema 6.0
+*
+BEGIN-RWDATA-6.0A
+
+END-RWDATA
+
+@}}
+
+{{@EMBEDDING_CODE:
+BEGIN-DATA
+   BASETYPE          = 13
+   NODESTYLE         = 13
+   PARAGRAPH         = Other Working
+BEGIN-TEXT
+           copy "lmresize.def".     
+       77  Mio-Layout        handle of LAYOUT-MANAGER, LM-RESIZE.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 6
+   NODESTYLE         = 7
+   PARAGRAPH         = DeletedCode
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+           modify Form1-Handle, action action-maximize.
+           move LinkImage to path-bmp.
+
+           if visualizzazione
+              move 0 to e-sfoglia e-sel e-prev e-next
+              move BitmapBrowseDisabled to BitmapNumBrowse 
+              move BitmapSelDisabled    to BitmapNumSel
+              move BitmapPrevDisabled   to BitmapNumPrev
+              move BitmapNextDisabled   to BitmapNumNext
+           else
+              move 1 to e-sfoglia e-sel e-prev e-next
+              move BitmapBrowseEnabled  to BitmapNumBrowse 
+              move BitmapSelEnabled     to BitmapNumSel
+              move BitmapPrevEnabled    to BitmapNumPrev
+              move BitmapNextEnabled    to BitmapNumNext
+           end-if.
+
+           display pb-sfoglia pb-sel pb-prev pb-next.
+
+           modify web-img,  value = path-bmp.
+           modify ef-path,  value = path-bmp.
+
+           set selezionato  to false. 
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeExit
+BEGIN-TEXT
+           destroy mio-layout.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = EXIT-PGM
+BEGIN-TEXT
+           if selezionato 
+              move 0 to counter
+              move path-bmp  to LinkImage 
+              move LinkImage to como-path
+              inspect como-path tallying counter for all "file:///"
+              if counter not = 0
+                 move spaces to LinkImage
+                 move como-path(9:) to LinkImage(1:)
+              end-if
+              move LinkImage to como-path                   
+              inspect como-path tallying counter for all "%20"
+              if counter > 0
+                 inspect como-path replacing all "%20" by "! !"
+                 move 1 to counter2
+                 perform varying counter from 1 by 1 
+                           until counter > 256
+                    if como-path(counter:1) not = "!"
+                       move como-path(counter:1) to LinkImage(counter2:1)
+                       add 1 to counter2
+                    end-if
+                 end-perform
+              end-if
+           end-if.
+           destroy mio-layout.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-sfoglia-LinkTo
+BEGIN-TEXT
+           initialize opensave-data.
+           if path-bmp = spaces
+              accept path-bmp from environment "PATH_IMMAGINI"
+              move path-bmp to opnsav-default-dir
+           else                                                 
+              inspect path-bmp replacing trailing spaces by low-value
+              inspect path-bmp tallying CountChar for characters 
+                      before low-value
+              perform varying CountChar from CountChar by -1
+                                       until CountChar = 0
+                 if path-bmp(CountChar:1) = "/" or = "\"
+                    exit perform
+                 else
+                    move low-value to path-bmp(CountChar:1)
+                 end-if
+              end-perform
+           end-if.
+                                    
+           move "JPEG files (*.jpg)|*.jpg|GIF files (*.gif)|*.gif|BMP files (*.bmp)|*.bmp|All files (*.*)|*.*" 
+             to opnsav-filters.
+           move 1 to opnsav-default-filter.
+           move "Selezione immagine" to opnsav-title.
+           call "C$OPENSAVEBOX" using opensave-save-box, opensave-data
+                               giving opensave-status.
+
+           if opensave-status = 1
+              move opnsav-filename to path-bmp
+              modify web-img, value = path-bmp
+              modify ef-path, value = path-bmp
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-sel-LinkTo
+BEGIN-TEXT
+           move path-bmp to LinkImage.
+           set selezionato to true.
+           perform EXIT-PGM.
+           move 27 to key-status.     
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = PB-PREV-LinkTo
+BEGIN-TEXT
+           modify web-img,  GO-BACK 1.
+           inquire web-img, value in path-bmp.
+           modify ef-path,  value = path-bmp.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = PB-NEXT-LinkTo
+BEGIN-TEXT
+           modify web-img, GO-FORWARD 1.
+           inquire web-img, value in path-bmp.
+           modify ef-path,  value = path-bmp.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-path-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-path-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+
+@}}
+
+[KEY_STATUS_FIELD_FORMAT]
+PIC=9(5)
+USAGE=[None]
+
+[KEYSTATUS_CONTENT:KS1]
+CONDITION=Enter-Pushed
+VALUE=13
+
+[KEYSTATUS_CONTENT:KS2]
+CONDITION=Exit-Pushed
+VALUE=27
+
+[KEYSTATUS_CONTENT:KS3]
+CONDITION=Message-Received
+VALUE=95
+
+[KEYSTATUS_CONTENT:KS4]
+CONDITION=Event-Occurred
+VALUE=96
+
+[KEYSTATUS_CONTENT:KS5]
+CONDITION=Screen-No-Input-Field
+VALUE=97
+
+[KEYSTATUS_CONTENT:KS6]
+CONDITION=Screen-Time-Out
+VALUE=99
+
+[COBOLAID_DATASET_INFO]

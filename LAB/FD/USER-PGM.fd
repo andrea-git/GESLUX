@@ -1,0 +1,11 @@
+       FD  USER-PGM.
+       01 UP-RECORD.
+           05 UP-CHIAVE.
+               10 UP-USER-ID       PIC  X(10).
+               10 UP-PROG-ID       PIC  X(15).
+           05 UP-DATI.
+               10 UP-LIVELLO-ABIL  PIC  9.
+                   88 up-none VALUE IS 0. 
+                   88 up-visua VALUE IS 1. 
+                   88 up-modifica VALUE IS 2. 
+                   88 up-completa VALUE IS 3. 

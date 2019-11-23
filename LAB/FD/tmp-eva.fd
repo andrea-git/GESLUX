@@ -1,0 +1,37 @@
+      *(( XFD FILE = tmp-eva ))
+       FD  tmp-eva.
+       01 tmp-eva-rec.
+           05 tmp-eva-chiave.
+               10 tmp-eva-chiave-testa.
+                   15 tmp-eva-anno     PIC  9(4).
+                   15 tmp-eva-numero   PIC  9(8).
+               10 tmp-eva-prg      PIC  9(5).
+           05 tmp-eva-dati.
+               10 tmp-eva-chiave-progmag.
+                   15 tmp-eva-articolo PIC  9(6).
+                   15 tmp-eva-codmag   PIC  x(3).
+                   15 tmp-eva-imballo  PIC  x(3).
+                   15 tmp-eva-peso     PIC  9(5)v9(3).
+               10 tmp-eva-data-c   PIC  9(8).
+               10 tmp-eva-data-o   PIC  9(8).
+               10 tmp-eva-mese     PIC  99.
+               10 tmp-eva-stato    PIC  x(20).
+               10 tmp-eva-descrizione          PIC  x(50).
+               10 tmp-eva-saldo    PIC  9(8).
+               10 tmp-eva-qta      PIC  9(8).
+               10 tmp-eva-prz-unit PIC  9(9)v9999.
+               10 tmp-eva-netto    PIC  9(9)v9999.
+               10 tmp-eva-imp-cons PIC  9(9)v9999.
+               10 tmp-eva-coubat   PIC  9(9)v9999.
+               10 tmp-eva-add-pb   PIC  9(9)v9999.
+               10 tmp-eva-cod-listino          PIC  9(10).
+               10 tmp-eva-chiave-ordf.
+                   15 tmp-eva-chiave-testa-ordf.
+                       20 tmp-eva-anno-ordf            PIC  9(4).
+                       20 tmp-eva-numero-ordf          PIC  9(8).
+                   15 tmp-eva-rigaordf PIC  9(5).
+               10 tmp-eva-tipo     PIC  x.
+                   88 tmp-eva-ordf VALUE IS "O". 
+                   88 tmp-eva-art VALUE IS "A". 
+               10 tmp-eva-peso-utf PIC  9(5)v9(3).
+               10 tmp-eva-prog     PIC  9(10).

@@ -1,0 +1,10 @@
+       01  tipo-ora    pic x.
+           88 HHMMSSCC value zero.
+           88 HHMMSS   value 1.
+           88 HHMM     value 2.
+
+       78  78-HHMMSSCC value "HH:MM:SS:CC".
+       78  78-HHMMSS   value "HH:MM:SS".
+       78  78-HHMM     value "HH:MM".
+
+       77  como-tipo-ora  pic x(12).

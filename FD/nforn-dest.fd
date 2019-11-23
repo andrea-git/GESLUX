@@ -1,0 +1,23 @@
+       FD  nforn-dest.
+       01 nfod-rec.
+           05 nfod-chiave.
+               10 nfod-chiave-dest.
+                   15 nfod-codice      PIC  9(5).
+                   15 nfod-dest        PIC  9(5).
+               10 nfod-prog        PIC  9(3).
+           05 nfod-dati.
+               10 nfod-nota        PIC  x(200).
+               10 nfod-dati-comuni.
+                   15 nfod-data-creazione          PIC  9(8).
+                   15 nfod-ora-creazione           PIC  9(8).
+                   15 nfod-utente-creazione        PIC  X(10).
+                   15 nfod-data-ultima-modifica    PIC  9(8).
+                   15 nfod-ora-ultima-modifica     PIC  9(8).
+                   15 nfod-utente-ultima-modifica  PIC  X(10).
+               10 nfod-vuoti.
+                   15 nfod-num-vuoto-1 PIC  9(18).
+                   15 nfod-num-vuoto-2 PIC  9(18).
+                   15 nfod-num-vuoto-3 PIC  9(18).
+                   15 nfod-alfa-vuoto-1            PIC  X(20).
+                   15 nfod-alfa-vuoto-2            PIC  X(20).
+                   15 nfod-alfa-vuoto-3            PIC  X(20).

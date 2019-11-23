@@ -1,0 +1,5 @@
+      *(( XFD FILE = tmp-listdir ))
+       FD  tmp-listdir.
+       01 tml-rec.
+           05 tml-chiave.
+               10 tml-nome-file    PIC  x(200).

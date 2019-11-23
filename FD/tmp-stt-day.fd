@@ -1,0 +1,13 @@
+      *(( XFD FILE = tmp-stt-day ))
+       FD  tmp-stt-day.
+       01 tstt-rec.
+           05 tstt-chiave.
+               10 tstt-vet-descrizione         PIC  x(50).
+               10 tstt-vet-codice  PIC  9(5).
+               10 tstt-data-bolla  PIC  99/99/99.
+               10 tstt-num-bolla   PIC  z(08).
+               10 tstt-progressivo PIC  9(5).
+           05 tstt-dati.
+               10 tstt-cliente     PIC  x(30).
+               10 tstt-qta-kg      PIC  ----.---.---9,999.
+               10 tstt-note        PIC  x(500).

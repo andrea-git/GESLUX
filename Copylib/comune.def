@@ -1,0 +1,126 @@
+      *
+       01  TOPE-STAMPA      PIC  X.
+           88 ANTEPRIMA VALUE IS "a". 
+           88 STAMPA VALUE IS "s". 
+
+       77  STAMPANTE-ANTEPRIMA          PIC  X(30).
+       77  OrderBy          PIC  9      VALUE IS zero.
+       01  FlagTrovato      PIC  9.
+           88 trovato VALUE IS 1    WHEN SET TO FALSE  0. 
+
+       01  FlagRead         PIC  9.
+           88 ReadSecca VALUE IS 1    WHEN SET TO FALSE  0. 
+
+       01  FlagLocked       PIC  9.
+           88 RecLocked VALUE IS 1    WHEN SET TO FALSE  0. 
+
+       01  FlagSalvato      PIC  9.
+           88 SiSalvato VALUE IS 1. 
+           88 NoSalvato VALUE IS 0. 
+
+       01  FlagMessage      PIC  9.
+           88 NoMessage VALUE IS 1. 
+           88 YesMessage VALUE IS 2. 
+
+       01  FILLER           PIC  9.
+           88 StatusModifica VALUE IS 1. 
+           88 StatusVisua VALUE IS 2. 
+           88 StatusIns VALUE IS 3. 
+           88 StatusSpaces VALUE IS 4. 
+
+       01  filler PIC  9 value 0.
+           88 HoSalvato  value 1, false 0.
+
+       01  controlli        PIC  xx.
+           88 errori VALUE IS "ER". 
+           88 tutto-ok VALUE IS "OK". 
+
+       77  STATO-ZOOM
+                  USAGE IS SIGNED-LONG.
+
+       01  StatoRec         PIC  X.
+           88 NUOVO VALUE IS "N". 
+           88 VECCHIO VALUE IS "V". 
+
+       77  MOD  PIC  9               VALUE IS 0.
+       77  mod-k            PIC  9   VALUE IS 1.
+
+       77  store-id         PIC  9(5).
+       77  scelta           PIC  9.
+       77  TextToSearch     PIC  x(100).
+       77  tipo-ricerca     PIC  9   VALUE IS 1.
+
+       01  FlagRicerca      PIC  9  VALUE IS 0.
+           88 ricerca VALUE IS 1    WHEN SET TO FALSE  0. 
+
+       77  KeyboardFlag       pic 9 value 1.
+         88 KeyboardReleased  value 1.
+         88 KeyboardSaved     value 2.
+
+       01  como-prog-id     PIC  X(15).
+
+       77  como-file        PIC  X(20).
+       77  mem-id           PIC  9(5).
+       77  MatchCase        PIC  9  VALUE IS 0.
+       77  ResultSearch     PIC  9  VALUE IS 0.
+       77  e-campo          PIC  9.
+       77  StatusHelp       PIC  9  VALUE IS 1.
+
+       77  BitmapNumSave    PIC  99.
+       77  BitmapNumDelete  PIC  99.
+       77  BitmapNumZoom    PIC  99.
+       77  BitmapNumPreview PIC  99.
+       77  BitmapNumPrint   PIC  99.
+       77  BitmapNumEdit    PIC  99.
+       77  BitmapNumNew     PIC  99.
+       77  BitmapNumSelect  PIC  99.
+
+       78  BitmapSaveEnabled VALUE 3. 
+       78  BitmapSaveDisabled VALUE 15. 
+       78  BitmapDeleteEnabled VALUE 4. 
+       78  BitmapDeleteDisabled VALUE 16. 
+       78  BitmapZoomEnabled VALUE IS 8. 
+       78  BitmapZoomDisabled VALUE IS 19. 
+       78  BitmapPreviewEnabled VALUE IS 6. 
+       78  BitmapPreviewDisabled VALUE IS 17. 
+       78  BitmapPrintEnabled VALUE IS 7. 
+       78  BitmapPrintDisabled VALUE IS 18. 
+       78  BitmapNewEnabled  value is 2.
+       78  BitmapNewDisabled value is 23.
+       78  BitmapEditEnabled  value is 5.
+       78  BitmapEditDisabled value is 22.
+       78  BitmapSelectEnabled value is 9.
+       78  BitmapSelectDisabled value is 24.
+       78  tit-err VALUE  "*--* Errore *--*". 
+
+      * 78  78-Str-Salto-Pagina  
+      *                     value "----------# salto pagina #----------".
+
+       77  tr-color        pic 9(9) value ZERO.
+
+       77  riga            pic 9(10).
+       77  colonna         pic 9(10).
+       77  tot-righe       pic 9(10).
+       77  store-riga      pic 9(10).
+       77  store-colonna   pic 9(10).
+       77  riga-nuova      pic 9.
+
+       77  idx             pic 9(10).
+
+       77  esercizio-x     pic x(4). |Di comodo per fare le set e le accept
+       77  esercizio       pic 9(4). |Valore numerico effettivo che sostituisce tge-anno
+       77  esercizio-G2    pic x(2). |Conversione dell'anno 2007 --> "A7"
+
+      **--> variabili per "ACCESSO AI DATI"
+       77  LineaInizio      pic 9(6)v999.
+       77  ColonnaInizio    pic 9(6)v999.
+       77  font-accesso-handle handle of font value null.
+       77  form-accesso-handle handle of window.
+       77  AccessType       pic x(60).
+       01  TipoAccessoXX    pic xx.    
+         88 SaveXX          value "SA".
+         88 DeleteXX        value "DE".
+         88 PrintXX         value "PR".
+         88 InvioXX         value "IN".
+                              
+           COPY  "messaggi.def".

@@ -1,0 +1,47 @@
+       FD  USER.
+       01 user-rec.
+           05 user-chiave.
+      * PROMPT =USER ID
+               10 user-cod         PIC  x(10).
+           05 user-dati.
+      * PROMPT =NAME
+               10 user-name        PIC  x(30).
+      * PROMPT =Password
+               10 user-pass        PIC  x(20).
+               10 user-pass-data   PIC  9(8).
+               10 user-path-bullzip            PIC  x(128).
+               10 user-dati-comuni.
+                   15 user-data-creazione          PIC  9(8).
+                   15 user-ora-creazione           PIC  9(8).
+                   15 user-utente-creazione        PIC  x(10).
+                   15 user-data-ultima-modifica    PIC  9(8).
+                   15 user-ora-ultima-modifica     PIC  9(8).
+                   15 user-utente-ultima-modifica  PIC  x(10).
+               10 user-vuoti.
+                   15 user-msg-promo   PIC  9.
+                       88 user-si-msg VALUE IS 1. 
+                       88 user-no-msg VALUE IS 0. 
+                   15 user-msg-banner-T            PIC  9.
+                       88 user-si-banner-T VALUE IS 1. 
+                       88 user-no-banner-T VALUE IS 0. 
+                   15 user-msg-banner-G            PIC  9.
+                       88 user-si-banner-G VALUE IS 1. 
+                       88 user-no-banner-G VALUE IS 0. 
+                   15 user-ev-man      PIC  9(1).
+                       88 user-ev-man-si VALUE IS 1. 
+                       88 user-ev-man-no VALUE IS 0. 
+      *(( XFD NAME = user-num-vuoto-1_1 ))
+                   15 user-num-vuoto-1 PIC  9(9).
+                   15 user-num-vuoto-2 PIC  9(15).
+                   15 user-num-vuoto-3 PIC  9(15).
+                   15 user-tel-diretto PIC  x(20).
+                   15 user-SO          PIC  xx.
+                       88 user-SO-XP VALUE IS "XP". 
+                       88 user-SO-Vista VALUE IS "V". 
+                       88 user-SO-7 VALUE IS "7". 
+                   15 user-Office      PIC  xx.
+                       88 user-Office-2003 VALUE IS "3". 
+                       88 user-Office-2007 VALUE IS "7". 
+                       88 user-Office-2010 VALUE IS "10". 
+                   15 user-path-acuthin            PIC  x(200).
+                   15 FILLER           PIC  x(500).

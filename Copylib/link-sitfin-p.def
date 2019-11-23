@@ -1,0 +1,30 @@
+      *
+       01 sitfin-p-linkage.
+           03 sitfin-p-importo   pic 9(9)v99.
+           03 sitfin-p-v1.
+              05 sitfin-p-lince             pic s9(9)v99.
+              05 sitfin-p-scaduto           pic s9(9)v99.
+              05 sitfin-p-verifica-1        pic 9.
+                 88 sitfin-p-verifica-1-ok  value 1 false zero.
+           03 sitfin-p-v2.
+              05 sitfin-p-scaduto-al        pic x(50).
+              05 sitfin-p-scadenze          pic x(50).
+              05 sitfin-p-perce-max         pic x(50).
+              05 sitfin-p-num               pic s9(9)v99.
+              05 sitfin-p-den               pic s9(9)v99.
+              05 sitfin-p-perce             pic 9(3)v99.
+              05 sitfin-p-verifica-2        pic 9.
+                 88 sitfin-p-verifica-2-ok  value 1 false zero.
+           03 sitfin-p-v3.
+              05 sitfin-p-fat-per           pic x(50).
+              05 sitfin-p-fatturato         pic s9(9)v99.
+              05 sitfin-p-fido              pic s9(9)v99.
+              05 sitfin-p-rb                pic s9(9)v99.
+              05 sitfin-p-ordini            pic s9(9)v99.
+              05 sitfin-p-tot-scad          pic s9(9)v99.
+              05 sitfin-p-attuale           pic s9(9)v99.
+              05 sitfin-p-gg                pic 9(3).
+              05 sitfin-p-verifica-3        pic 9.
+                 88 sitfin-p-verifica-3-ok  value 1 false zero.
+           03 sitfin-path-log               pic x(256).
+           03 filler                        pic x(200).

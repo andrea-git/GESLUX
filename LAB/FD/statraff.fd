@@ -1,0 +1,32 @@
+       FD  statraff.
+       01 str-rec.
+           05 str-chiave.
+               10 str-mese         PIC  99.
+               10 str-marca        PIC  9(4).
+           05 str-dati.
+               10 str-kg-corr      PIC  s9(15)v999.
+               10 str-qta-corr     PIC  s9(9).
+               10 str-vag-corr     PIC  s9(12)v99.
+               10 str-kg-prog      PIC  s9(15)v999.
+               10 str-qta-prog     PIC  s9(9).
+               10 str-vag-prog     PIC  s9(12)v99.
+               10 str-kg-past      PIC  s9(15)v999.
+               10 str-qta-past     PIC  s9(9).
+               10 str-vag-past     PIC  s9(12)v99.
+               10 str-kg-prog-past PIC  s9(15)v999.
+               10 str-qta-prog-past            PIC  s9(9).
+               10 str-vag-prog-past            PIC  s9(12)v99.
+               10 str-comuni.
+                   15 str-data-creazione           PIC  9(8).
+                   15 str-ora-creazione            PIC  9(8).
+                   15 str-utente-creazione         PIC  x(10).
+                   15 str-data-ultima-modifica     PIC  9(8).
+                   15 str-ora-ultima-modifica      PIC  9(8).
+                   15 str-utente-ultima-modifica   PIC  x(10).
+               10 str-vuoti.
+                   15 str-num-vuoto-1  PIC  9(15).
+                   15 str-num-vuoto-2  PIC  9(15).
+                   15 str-num-vuoto-3  PIC  9(15).
+                   15 str-alfa-vuoto-1 PIC  x(20).
+                   15 str-alfa-vuoto-2 PIC  x(20).
+                   15 str-alfa-vuoto-3 PIC  x(20).

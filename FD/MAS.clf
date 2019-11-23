@@ -1,0 +1,595 @@
+; CaseMaker Totem Layout Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[MONITOR_FILE]
+
+
+[DATALAYOUT_CONTENT]
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E3A19223640-979-2966919662
+[DSNENTITY_]
+[CStoAcucobolFileDefinition_]
+m_nType=1
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+m_strPrefix=MAS
+{{@FD_m_strDescription
+ - s.r.1336 13/07/2006 lav.3999 04/06/07 inserito nuovo campo x escludere  |ds 10/07/2007 10.03
+   il mastro dal dettaglio c/partite in stampa scheda conto.               |ds 10/07/2007 10.03
+ ------------------------------------------------------------------
+
+ tk 240 - new prima nota                                                                          |ms 19/11/2008 8.47
+        - aggiunto liv 88 alla colonna "mas-modulo-27"
+
+ ------------------------------------------------------------------
+ Ticket 1829                                                                                      |or 15/04/2009
+ - Modifiche per automatismi in aggiornamento MOK documenti:
+   aggiunto check-box per abilitare il collegamento del mastro
+   con la procedura commesse
+---------------------------------------------------------------------------------------------------------------------------------
+ Ticket 2969 - Generazione automatica beni/servizi intra da movimenti primanota                   |or 23/04/2010
+ Implementazione:
+ - Aggiunta richiesta codice articolo per compilazione automatica intrastat
+   da movimenti di primanota.
+---------------------------------------------------------------------------------------------------------------------------------
+
+ tplvar zmm_title=Anagrafica mastri
+ tplvar zmm_ver=09.01.00
+ tplvar zmm_class=anagraphic
+ tplvar zmm_returnkey=mas-codice
+
+ ZoomFields seq:
+   01.mas-codice
+   02.mas-codice-alternativo
+   03.mas-descrizione1
+   04.mas-descrizione2
+   05.mas-codice-pc
+   06.mas-codice-pc-d
+   07.mas-codice-ce
+   08.mas-codice-ce-d
+   09.mas-partite
+   10.mas-codice-va
+   11.mas-tblvc-codice
+   12.mas-tblvc-codice-d
+   13.mas-mas-ratei-attivi
+   14.mas-mas-ratei-passivi
+   15.mas-mas-risconti-attivi
+   16.mas-mas-risconti-passiv
+   17.mas-ban-codice
+   18.mas-ban-codice-d
+   19.mas-codice-bilancio-oltre
+   20.mas-codice-bilancio-oltre-d
+
+
+
+@}}
+[FDITEM0_]
+m_strName=RECORD-MAS
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_
+
+@}}
+[FDITEM1_]
+m_strName=MAS-CODICE
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1_
+$GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=8,zmm_align=L,zmm_pos=1,zmm_entity=mas
+@}}
+[FDITEM2_]
+m_strName=RESTO-RECORD-MAS
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM2_
+
+@}}
+[FDITEM3_]
+m_strName=MAS-CODICE-ALTERNATIVO
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM3_
+$GEN zmm=on,zmm_title=Codice alternativo,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=2
+@}}
+[FDITEM4_]
+m_strName=MAS-DESCRIZIONE1
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM4_
+$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_key=3,zmm_size=30,zmm_align=L,zmm_pos=3
+@}}
+[FDITEM5_]
+m_strName=MAS-DESCRIZIONE2
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM5_
+$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=4
+@}}
+[FDITEM6_]
+m_strName=MAS-CODICE-PC
+m_strRawPic=X(04)
+m_strPic=X(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM6_
+$GEN type=code,entity=tblpc,zmm=on,zmm_title=Riepilogo conto,zmm_datatype=x,zmm_size=04,zmm_align=L,zmm_pos=5,zmm_entity=tblpc
+
+@}}
+[FDITEM7_]
+m_strName=MAS-CODICE-CE
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM7_
+$GEN type=code,entity=tblce,zmm=on,zmm_title=Riepilogo CEE,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=7,zmm_entity=tblce
+
+@}}
+[FDITEM8_]
+m_strName=MAS-PARTITE
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM8_
+$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Partite,zmm_datatype=x,zmm_size=1,zmm_align=L,zmm_pos=9
+
+@}}
+[FDITEM9_]
+m_strName=MAS-PARTITE-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM9_
+
+@}}
+[FDITEM10_]
+m_strName=MAS-PARTITE-SI
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM10_
+
+@}}
+[FDITEM11_]
+m_strName=MAS-PARTITE-NO
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" "
+{{@DataItem_m_strDescriptionFDITEM11_
+
+@}}
+[FDITEM12_]
+m_strName=MAS-CODICE-VA
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM12_
+
+$GEN type=code,entity=tblva,zmm=on,zmm_title=Valuta,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=10,zmm_entity=tblva
+
+@}}
+[FDITEM13_]
+m_strName=MAS-FILLER-01
+m_strRawPic=X(128)
+m_strPic=X(128)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM13_
+
+
+@}}
+[FDITEM14_]
+m_strName=MAS-DATA-AGGIORNAMENTO
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM14_
+
+ copy "groupdate.xfc". | DBMaker
+@}}
+[FDITEM15_]
+m_strName=AA
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=MAS-DATA-AGG-AA
+{{@DataItem_m_strDescriptionFDITEM15_
+
+@}}
+[FDITEM16_]
+m_strName=MM
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=MAS-DATA-AGG-MM
+{{@DataItem_m_strDescriptionFDITEM16_
+
+@}}
+[FDITEM17_]
+m_strName=GG
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=MAS-DATA-AGG-GG
+{{@DataItem_m_strDescriptionFDITEM17_
+
+@}}
+[FDITEM18_]
+m_strName=FILLER
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=MAS-DATA-AGGIORNAMENTO
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM18_
+
+@}}
+[FDITEM19_]
+m_strName=MAS-DATA-AGGIORNAMENTO-N
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM19_
+$GEN type=date
+
+@}}
+[FDITEM20_]
+m_strName=MAS-TBLMM-CODICE
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM20_
+$GEN type=code,entity=tblmm
+
+@}}
+[FDITEM21_]
+m_strName=MAS-TBLVC-CODICE
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM21_
+$GEN type=code,entity=tblvc,zmm=on,zmm_title=Voce analitica,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=11,zmm_entity=tblvc
+
+@}}
+[FDITEM22_]
+m_strName=MAS-MODULO-27
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM22_
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+
+@}}
+[FDITEM23_]
+m_strName=MAS-MODULO-27-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM23_
+
+@}}
+[FDITEM24_]
+m_strName=mas-modulo-27-no
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=space
+{{@DataItem_m_strDescriptionFDITEM24_
+
+@}}
+[FDITEM25_]
+m_strName=mas-modulo-27-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM25_
+
+@}}
+[FDITEM26_]
+m_strName=MAS-BAN-CODICE
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM26_
+
+
+$GEN type=code,entity=tblba,zmm=on,zmm_title=Banca,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=17,zmm_entity=tblba
+
+@}}
+[FDITEM27_]
+m_strName=MAS-MAS-RATEI-ATTIVI
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM27_
+$GEN type=code,entity=mas,zmm=on,zmm_title=Ratei attivi,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=13,zmm_entity=mas
+
+@}}
+[FDITEM28_]
+m_strName=MAS-MAS-RATEI-PASSIVI
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM28_
+$GEN type=code,entity=mas,zmm=on,zmm_title=Ratei passivi,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=14,zmm_entity=mas
+
+@}}
+[FDITEM29_]
+m_strName=MAS-MAS-RISCONTI-ATTIVI
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM29_
+$GEN type=code,entity=mas,zmm=on,zmm_title=Risconti attivi,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=15,zmm_entity=mas
+@}}
+[FDITEM30_]
+m_strName=MAS-MAS-RISCONTI-PASSIVI
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM30_
+$GEN type=code,entity=mas,zmm=on,zmm_title=Risconti passivi,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=16,zmm_entity=mas
+@}}
+[FDITEM31_]
+m_strName=MAS-MODULO-25
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM31_
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+
+@}}
+[FDITEM32_]
+m_strName=MAS-MODULO-25-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM32_
+
+@}}
+[FDITEM33_]
+m_strName=MAS-MODULO-25-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM33_
+
+@}}
+[FDITEM34_]
+m_strName=MAS-DARE-46
+m_strRawPic=9(06)
+m_strPic=9(06)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM34_
+
+@}}
+[FDITEM35_]
+m_strName=MAS-AVERE-46
+m_strRawPic=9(06)
+m_strPic=9(06)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM35_
+
+@}}
+[FDITEM36_]
+m_strName=MAS-CODICE-BILANCIO-OLTRE
+m_strRawPic=X(15)
+m_strPic=X(15)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM36_
+$GEN type=code,entity=01tbo,zmm=on,zmm_title=Codice bilancio oltre,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=19,zmm_entity=01tbo
+@}}
+[FDITEM37_]
+m_strName=mas-ratei-analitica
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM37_
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+
+@}}
+[FDITEM38_]
+m_strName=mas-ratei-analitica-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "S"
+{{@DataItem_m_strDescriptionFDITEM38_
+
+@}}
+[FDITEM39_]
+m_strName=mas-ratei-analitica-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+m_strFalse=space
+{{@DataItem_m_strDescriptionFDITEM39_
+
+@}}
+[FDITEM40_]
+m_strName=mas-no-dettaglio-cp
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM40_
+
+@}}
+[FDITEM41_]
+m_strName=mas-no-dettaglio-cp-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM41_
+
+@}}
+[FDITEM42_]
+m_strName=mas-abilita-commesse
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM42_
+        10  MAS-FILLER                      PIC  X(141).                   |DS 10/07/2007 10.00
+
+@}}
+[FDITEM43_]
+m_strName=mas-abilita-commesse-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM43_
+
+@}}
+[FDITEM44_]
+m_strName=mas-abilita-commesse-ko
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM44_
+
+@}}
+[FDITEM45_]
+m_strName=mas-art-intra
+m_strRawPic=x(15)
+m_strPic=X(15)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM45_
+
+$GEN type=code,entity=art
+@}}
+[FDITEM46_]
+m_strName=MAS-FILLER
+m_strRawPic=X(124)
+m_strPic=X(124)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM46_
+
+
+       10  MAS-FILLER                      PIC  X(140).                   |DS 10/07/2007 10.00    |or 15/04/2009
+
+       10  MAS-FILLER                      PIC  X(139).            |or 15/04/2009                 |or 23/04/2010
+@}}
+[FDITEM47_]
+m_strName=MAS-FILLER-RIS
+m_strRawPic=X(40)
+m_strPic=X(40)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM47_
+
+@}}
+[CStoAcucobolSL_]
+m_nType=1
+m_bOptional=1
+m_strAssignToName="MAS"
+m_nDevice=4
+m_nFormat=3
+m_nAccessMode=3
+m_strFileStatus=STATUS-MAS
+m_nCompression=90
+{{@SL_m_strDescription
+
+@}}
+[SLPKEY_]
+m_strName=MAS-CODICE
+m_bUnique=1
+{{@Key_m_strDescription
+
+@}}
+[SLKEYATOM0_]
+m_strName=MAS-CODICE
+[SLINDEX0_]
+m_strName=MAS-CODICE1
+m_bUnique=1
+{{@Key_m_strDescriptionSLINDEX0_
+
+@}}
+[SLKEYATOM0_SLINDEX0_]
+m_strName=MAS-CODICE-ALTERNATIVO
+[SLKEYATOM1_SLINDEX0_]
+m_strName=MAS-CODICE
+[SLINDEX1_]
+m_strName=MAS-CODICE2
+m_bUnique=1
+{{@Key_m_strDescriptionSLINDEX1_
+
+@}}
+[SLKEYATOM0_SLINDEX1_]
+m_strName=MAS-DESCRIZIONE1
+[SLKEYATOM1_SLINDEX1_]
+m_strName=MAS-CODICE

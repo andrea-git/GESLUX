@@ -1,0 +1,460 @@
+      *
+           COPY  "link-wprogmag.def".
+           COPY  "combo-cobat.def".
+           COPY  "combo-stato.def".
+           COPY  "combo-utf.def".
+           COPY  "link-browser.def".
+           COPY  "link-geslock.def".
+           COPY  "link-car-catart.def".
+           COPY  "apri-note.def".
+           COPY  "costo-medio.def".
+           COPY  "link-check-catart.def".
+           COPY  "link-passwd.def".
+           COPY  "trova-parametro.def".
+           COPY  "prz-finito-forn.def".
+           COPY  "imposte-fornitore.def".
+           COPY  "link-G2Agg.def".
+       77 codice-ed        PIC  z(6).
+       77 frn-BMP          PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 ef-frn-buf       PIC  x(15).
+       77 Courier-New12-Occidentale
+                  USAGE IS HANDLE OF FONT.
+       77 Courier-New14-Occidentale
+                  USAGE IS HANDLE OF FONT.
+       77 Courier-New10-Occidentale
+                  USAGE IS HANDLE OF FONT.
+       77 calcolo-piombo   PIC  x.
+           88 nuovo-calcolo-piombo VALUE IS "N". 
+       77 Form1-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 lab-des-buf      PIC  x(50).
+       77 MS-Sans-Serif14-Occidentale
+                  USAGE IS HANDLE OF FONT.
+       77 CodiceIvaStd     PIC  x(3).
+       77 STATUS-param     PIC  X(2).
+           88 Valid-STATUS-param VALUE IS "00" THRU "09". 
+       77 STATUS-sort-art-list         PIC  X(2).
+           88 Valid-STATUS-sort-art-list VALUE IS "00" THRU "09". 
+       77 data-val-da      PIC  9(8).
+       77 Form1-Pg-4-Visible           PIC  9
+                  VALUE IS 0.
+       77 data-val-a       PIC  9(8).
+       77 num-articoli     PIC  9(3).
+       77 lista-bmp        PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 STATUS-blister   PIC  X(2).
+           88 Valid-STATUS-blister VALUE IS "00" THRU "09". 
+       77 codice-x         PIC  x(6).
+       77 save-codice      PIC  9(5).
+       77 STATUS-destinif  PIC  X(2).
+           88 Valid-STATUS-destinif VALUE IS "00" THRU "09". 
+       77 STATUS-articoli1 PIC  X(2).
+           88 VALID-STATUS-articoli1 VALUE IS "00" THRU "09". 
+       77 STATUS-mrordini  PIC  X(2).
+           88 Valid-STATUS-mrordini VALUE IS "00" THRU "09". 
+       77 STATUS-reva      PIC  X(2).
+           88 Valid-STATUS-reva VALUE IS "00" THRU "09". 
+       77 STATUS-rordforn  PIC  X(2).
+           88 Valid-STATUS-rordforn VALUE IS "00" THRU "09". 
+       77 STATUS-impforn   PIC  X(2).
+           88 Valid-STATUS-impforn VALUE IS "00" THRU "09". 
+       77 STATUS-timposte  PIC  X(2).
+           88 Valid-STATUS-timposte VALUE IS "00" THRU "09". 
+       77 STATUS-tpiombo   PIC  X(2).
+           88 Valid-STATUS-tpiombo VALUE IS "00" THRU "09". 
+       77 STATUS-tlistini  PIC  X(2).
+           88 Valid-STATUS-tlistini VALUE IS "00" THRU "09". 
+       77 STATUS-prodener  PIC  X(2).
+           88 Valid-STATUS-prodener VALUE IS "00" THRU "09". 
+       77 BitmapNumDistinta            PIC  9.
+       01 FlagsChanged.
+           05 FILLER           PIC  9.
+               88 peso-changed VALUE IS 1    WHEN SET TO FALSE  0. 
+           05 FILLER           PIC  9.
+               88 imballo-changed VALUE IS 1    WHEN SET TO FALSE  0. 
+       01 FILLER           PIC  9.
+           88 sincro-progmag VALUE IS 1    WHEN SET TO FALSE  0. 
+       77 qta-x            PIC  z(4).
+       77 nome-file        PIC  x(10).
+       77 old-peso         PIC  9(10)v999.
+       77 peso PIC  9(10)v999.
+       77 countchar        PIC  9(3).
+       77 pagina           PIC  9
+                  VALUE IS 1.
+       01 save-art-k1.
+           05 save-descrizione-K1          PIC  x(50).
+       78 MAX-PAGE VALUE IS 4. 
+       01 TabID
+                  OCCURS MAX-PAGE TIMES.
+           05 min-id           PIC  9(9).
+           05 max-id           PIC  9(9).
+       77 OPENSAVE-STATUS  PIC  S9(2)
+                  VALUE IS 0.
+       77 result
+                  USAGE IS SIGNED-SHORT.
+       77 counter          PIC  9(3).
+       77 Form1-Tb-1-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 COMO-RECORD      PIC  X(32000).
+       01 FLAG-MOD         PIC  9
+                  VALUE IS 0.
+       01 CONTROL-COMO     PIC  9(2)
+                  VALUE IS 0.
+       77 E-ESCI           PIC  9
+                  VALUE IS 1.
+       77 E-NUOVO          PIC  9
+                  VALUE IS 1.
+       77 E-SALVA          PIC  9
+                  VALUE IS 1.
+       77 E-CANCELLA       PIC  9
+                  VALUE IS 1.
+       77 E-MODIFICA       PIC  9
+                  VALUE IS 1.
+       77 E-ANTEPRIMA      PIC  9
+                  VALUE IS 0.
+       77 E-STAMPA         PIC  9
+                  VALUE IS 0.
+       77 E-CERCA          PIC  9
+                  VALUE IS 0.
+       77 Form1-St-1-Handle
+                  USAGE IS HANDLE OF STATUS-BAR.
+       77 Status-cod       PIC  9.
+       77 data-oggi        PIC  9(8).
+       77 E-SELEZIONA      PIC  9
+                  VALUE IS 1.
+       77 toolbar-bmp
+                  USAGE IS HANDLE OF BITMAP
+                  VALUE IS 0.
+       77 Screen1-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 Default-Font
+                  USAGE IS HANDLE OF FONT DEFAULT-FONT.
+       77 Small-Font
+                  USAGE IS HANDLE OF FONT SMALL-FONT.
+       78 primo-id-dati VALUE IS 5002. 
+       77 Form2-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 Form1-Pg-1-Visible           PIC  9
+                  VALUE IS 0.
+       77 Default-bmp      PIC  S9(6)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 Form1-Pg-2-Visible           PIC  9
+                  VALUE IS 0.
+       78 TITOLO VALUE IS "Geslux - Gestione Articoli". 
+       77 mod-campi        PIC  9
+                  VALUE IS 0.
+       01 save-chiave.
+           10 save-art-codice  PIC  9(6).
+       77 AUTO-ID          PIC  9(6)
+                  VALUE IS 0,00.
+       77 STATUS-tcodpag   PIC  X(2).
+           88 Valid-STATUS-tcodpag VALUE IS "00" THRU "09". 
+       77 STATUS-tivaese   PIC  X(2).
+           88 Valid-STATUS-tivaese VALUE IS "00" THRU "09". 
+       77 STATUS-articoli  PIC  X(2).
+           88 Valid-STATUS-articoli VALUE IS "00" THRU "09". 
+       77 STATUS-tcla1art  PIC  X(2).
+           88 Valid-STATUS-tcla1art VALUE IS "00" THRU "09". 
+       77 STATUS-tnomen    PIC  X(2).
+           88 Valid-STATUS-tnomen VALUE IS "00" THRU "09". 
+       77 STATUS-tudm      PIC  X(2).
+           88 Valid-STATUS-tudm VALUE IS "00" THRU "09". 
+       77 STATUS-tmarche   PIC  X(2).
+           88 Valid-STATUS-tmarche VALUE IS "00" THRU "09". 
+       77 STATUS-tsetmerc  PIC  X(2).
+           88 Valid-STATUS-tsetmerc VALUE IS "00" THRU "09". 
+       77 STATUS-progmag   PIC  X(2).
+           88 Valid-STATUS-progmag VALUE IS "00" THRU "09". 
+       77 STATUS-timballi  PIC  X(2).
+           88 Valid-STATUS-timballi VALUE IS "00" THRU "09". 
+       77 mod-imposte      PIC  9
+                  VALUE IS 1.
+       77 mod-cobat        PIC  9
+                  VALUE IS 1.
+       77 cbo-utf-buf      PIC  X(12).
+       77 cbo-cobat-buf    PIC  x(4).
+       77 cbo-stato-buf    PIC  X(9).
+       77 mod-peso-utf     PIC  9
+                  VALUE IS 1.
+       77 mod-peso-non-utf PIC  9
+                  VALUE IS 1.
+       77 STATUS-tparamge  PIC  X(2).
+           88 Valid-STATUS-tparamge VALUE IS "00" THRU "09". 
+       77 STATUS-timbalqta PIC  X(2).
+           88 Valid-STATUS-timbalqta VALUE IS "00" THRU "09". 
+       77 lab-iva-buf      PIC  x(100).
+       77 lab-imballo-buf  PIC  x(100).
+       77 STATUS-clienti   PIC  X(2).
+           88 Valid-STATUS-clienti VALUE IS "00" THRU "09". 
+       77 STATUS-tmagaz    PIC  X(2).
+           88 Valid-STATUS-tmagaz VALUE IS "00" THRU "09". 
+       77 Dettagli-bmp     PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 alternativi-bmp  PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 NumBitmapCodici  PIC  9.
+       77 distinta-bmp     PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 e-distinta       PIC  9
+                  VALUE IS 0.
+       77 STATUS-distinteb PIC  X(2).
+           88 Valid-STATUS-distinteb VALUE IS "00" THRU "09". 
+       77 STAMPA-BMP       PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 bottone-stampa-bmp           PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 ean-bmp          PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 BOTTONE-OK-BMP   PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 BOTTONE-CANCEL-BMP           PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 Verdana12-Occidentale
+                  USAGE IS HANDLE OF FONT.
+       77 ef-ean-buf       PIC  9(13).
+       77 v-limite         PIC  9
+                  VALUE IS 1.
+       77 STATUS-rmovmag   PIC  X(2).
+           88 Valid-STATUS-rmovmag VALUE IS "00" THRU "09". 
+       77 STATUS-rordini   PIC  X(2).
+           88 Valid-STATUS-rordini VALUE IS "00" THRU "09". 
+       77 STATUS-rnotacr   PIC  X(2).
+           88 Valid-STATUS-rnotacr VALUE IS "00" THRU "09". 
+       77 STATUS-brnotacr  PIC  X(2).
+           88 Valid-STATUS-brnotacr VALUE IS "00" THRU "09". 
+       77 STATUS-tscorte   PIC  X(2).
+           88 Valid-STATUS-tscorte VALUE IS "00" THRU "09". 
+       77 STATUS-rlistini  PIC  X(2).
+           88 Valid-STATUS-rlistini VALUE IS "00" THRU "09". 
+       77 Form1-Pg-3-Visible           PIC  9
+                  VALUE IS 0.
+       01 rec-grid.
+           05 col-nulla        PIC  X.
+           05 col-forn         PIC  z(5).
+           05 col-descr-forn   PIC  x(100).
+           05 col-data-da      PIC  99/99/9999.
+           05 col-data-a       PIC  99/99/9999.
+           05 col-art-forn     PIC  x(20).
+           05 col-prz-fint     PIC  zzz.zz9,9999.
+           05 col-prz-conf     PIC  zzz.zz9,9999.
+      * 01 rec-grid.
+      *     05 col-nulla        PIC  X.
+      *     05 col-forn         PIC  z(5).
+      *     05 col-descr-forn   PIC  x(30).
+      *     05 col-data-da      PIC  99/99/9999.
+      *     05 col-data-a       PIC  99/99/9999.
+      *     05 col-art-forn     PIC  x(20).
+      *     05 col-prz-acq      PIC  z.zzz.zzz.zz9,99.
+      *     05 col-sconto-1     PIC  zz9,99.
+      *     05 col-sconto-2     PIC  zz9,99.
+      *     05 col-sconto-3     PIC  zz9,99.
+      *     05 col-sconto-4     PIC  zz9,99.
+      *     05 col-sconto-5     PIC  zz9,99.
+      *     05 col-netto        PIC  zzz.zz9,99.
+      *     05 col-costi-agg    PIC  zzz.zz9,99.
+      *     05 col-perce-agg    PIC  zz9,99.
+      *     05 col-piombo       PIC  zz9,999.
+      *     05 col-diponibilita PIC  z.zzz.zz9.
+      *     05 col-lead-time    PIC  zz9.
+      *     05 col-tipo-imp     PIC  x.
+      *
+      *
+      *
+      *
+      *
+      *
+      *
+      *
+       77 old-forn         PIC  9(5).
+       77 elemento-bmp     PIC  s9(9)
+                  USAGE IS COMP-4
+                  VALUE IS ZERO.
+       77 font-evidenzia-griglia
+                  USAGE IS HANDLE OF FONT.
+       77 riga-old         PIC  9(3).
+       77 v-reale          PIC  9
+                  VALUE IS 1.
+       77 lab-coll-buf     PIC  x(100).
+       01 FILLER           PIC  9.
+           88 rec-ok VALUE IS 1    WHEN SET TO FALSE  zero. 
+       77 como-articolo    PIC  9(6).
+       77 como-altezza     PIC  9(10)v99.
+       77 como-larghezza   PIC  9(10)v99.
+       77 como-profondita  PIC  9(10)v99.
+       77 como-qta-EPAL    PIC  9(8).
+       77 como-qta-STD     PIC  9(8).
+       77 como-scorta      PIC  9(5).
+       77 como-peso        PIC  9(6)v999.
+       77 peso-inserito    PIC  9(6)v999.
+       01 old-art-rec.
+           05 old-art-chiave.
+               10 old-art-codice   PIC  9(6).
+           05 old-art-dati.
+               10 old-art-descrizione.
+                   15 old-art-descrizione1         PIC  x(30).
+                   15 old-art-descrizione2         PIC  x(20).
+               10 old-art-settore-merceologico PIC  9(4).
+               10 old-art-marca-prodotto       PIC  9(4).
+               10 old-art-classe-1 PIC  9(4).
+               10 old-art-classe-2 PIC  9(3).
+               10 old-art-classe-3 PIC  9(3).
+               10 old-art-classe-4 PIC  9(3).
+               10 old-art-unita-di-misura      PIC  X(2).
+               10 old-art-cod-fornitore        PIC  9(5).
+               10 old-art-gestione-utf         PIC  X(1).
+                   88 old-art-si-utf VALUE IS "S". 
+                   88 old-art-misto VALUE IS "M". 
+                   88 old-art-no-utf VALUE IS "N". 
+               10 old-art-peso-utf PIC  9(5)v9(3).
+               10 old-art-peso-non-utf         PIC  9(5)v9(3).
+               10 old-art-peso-standard        PIC  9(5)v9(3).
+               10 old-art-imballo-standard     PIC  X(3).
+               10 old-art-udm-imballo          PIC  x(5).
+               10 old-art-codice-iva           PIC  x(3).
+               10 old-art-prezzo-vendita       PIC  9(9)v9(2).
+               10 old-art-perce-sconto-agente  PIC  9(2)v9(2).
+               10 old-art-prezzo-acquisto      PIC  9(9)v9(2).
+               10 old-art-perce-sconto-acquisto            PIC  
+           9(2)v9(2).
+               10 old-art-cod-doganale         PIC  9(8).
+               10 old-art-soggetto-imposte     PIC  X(1).
+                   88 old-art-si-imposte VALUE IS "S". 
+                   88 old-art-no-imposte VALUE IS "N". 
+               10 old-art-perce-imposte        PIC  9(3)v9(3).
+               10 old-art-perce-cou            PIC  9(5)v9(3).
+               10 old-art-soggetto-cobat       PIC  X(1).
+                   88 old-art-si-cobat VALUE IS "S". 
+                   88 old-art-no-cobat VALUE IS "N". 
+               10 old-art-amperaggio           PIC  9(3).
+               10 old-art-auto-moto-per-cobat  PIC  X(1).
+                   88 old-art-auto-cobat VALUE IS "A". 
+                   88 old-art-moto-cobat VALUE IS "M". 
+               10 old-art-note     PIC  X(30).
+               10 old-art-codice-ean-1         PIC  9(13).
+               10 old-art-codice-ean-2         PIC  9(13).
+               10 old-art-codice-ean-3         PIC  9(13).
+               10 old-art-codice-ean-4         PIC  9(13).
+               10 old-art-codice-ean-5         PIC  9(13).
+               10 old-art-foto     PIC  X(512).
+               10 old-art-note-agg PIC  x(512).
+               10 old-art-scheda-tecnica       PIC  X(512).
+               10 old-art-tossicologica        PIC  x(512).
+               10 old-art-descrizione-2        PIC  x(50).
+               10 old-art-qta-epal PIC  9(8).
+               10 old-art-qta-std  PIC  9(8).
+               10 old-art-misure.
+                   15 old-art-altezza  PIC  9(6)v99.
+                   15 old-art-larghezza            PIC  9(6)v99.
+                   15 old-art-profondita           PIC  9(6)v99.
+               10 old-art-stato    PIC  X(1).
+                   88 old-art-attivo VALUE IS "A". 
+                   88 old-art-disattivo VALUE IS "D". 
+                   88 old-art-bloccato VALUE IS "B". 
+               10 old-art-ALA      PIC  9.
+                   88 old-art-si-ALA VALUE IS 1. 
+                   88 old-art-no-ALA VALUE IS 0. 
+               10 old-art-gruppi   PIC  9.
+                   88 old-art-si-gruppi VALUE IS 1. 
+                   88 old-art-no-gruppi VALUE IS 0. 
+               10 old-art-gda      PIC  9.
+                   88 old-art-si-gda VALUE IS 1. 
+                   88 old-art-no-gda VALUE IS 0. 
+               10 old-art-agenti   PIC  9.
+                   88 old-art-si-agenti VALUE IS 1. 
+                   88 old-art-no-agenti VALUE IS 0. 
+               10 old-art-specialist           PIC  9.
+                   88 old-art-si-specialist VALUE IS 1. 
+                   88 old-art-no-specialist VALUE IS 0. 
+               10 old-art-estero   PIC  9.
+                   88 old-art-si-estero VALUE IS 1. 
+                   88 old-art-no-estero VALUE IS 0. 
+               10 old-art-gds      PIC  9.
+                   88 old-art-si-gds VALUE IS 1. 
+                   88 old-art-no-gds VALUE IS 0. 
+               10 old-art-scorta   PIC  s9(8).
+               10 old-art-prezzo-banco         PIC  9(6)v9(2).
+               10 old-art-prz-min-vend         PIC  9(5)v9(2).
+               10 old-art-limite-scorta        PIC  9(8).
+               10 old-art-peso-reale           PIC  9(5)v999.
+               10 old-art-do       PIC  9.
+                   88 old-art-si-do VALUE IS 1. 
+                   88 old-art-no-do VALUE IS 0. 
+               10 old-art-cod-art-frn          PIC  x(15).
+               10 old-art-mag-std  PIC  x(3).
+               10 old-art-collegato            PIC  9(6).
+               10 old-art-cod-desf-forn        PIC  9(5).
+               10 old-art-cod-prodener         PIC  x(10).
+               10 old-art-tipo-stoc            PIC  x.
+                   88 old-art-confezionato VALUE IS "C" " ". 
+                   88 old-art-sfuso VALUE IS "S". 
+               10 old-art-logo-brand           PIC  X(512).
+               10 old-art-conf-cartone         PIC  9(6).
+               10 old-art-cartone-UDC          PIC  9(6).
+               10 old-art-misure-pz.
+                   20 old-art-altezza-pz           PIC  9(6)v99.
+                   20 old-art-larghezza-pz         PIC  9(6)v99.
+                   20 old-art-profondita-pz        PIC  9(6)v99.
+               10 old-art-web      PIC  9.
+                   88 old-art-web-si VALUE IS 1. 
+                   88 old-art-web-no VALUE IS 0. 
+               10 old-art-adr      PIC  x(15).
+               10 old-art-dati-comuni.
+                   15 old-art-data-creazione       PIC  9(8).
+                   15 old-art-ora-creazione        PIC  9(8).
+                   15 old-art-utente-creazione     PIC  X(10).
+                   15 old-art-data-ultima-modifica PIC  9(8).
+                   15 old-art-ora-ultima-modifica  PIC  9(8).
+                   15 old-art-utente-ultima-modifica           PIC  
+           X(10).
+               10 old-art-vuoti.
+                   15 old-art-peso-SHI PIC  9(6)v999.
+                   15 old-art-SPI      PIC  9.
+                       88 old-art-SPI-si VALUE IS 1. 
+                       88 old-art-SPI-no VALUE IS 0. 
+                   15 OLD-art-T1       PIC  9.
+                       88 OLD-art-T1-si VALUE IS 1. 
+                       88 OLD-art-T1-no VALUE IS 0. 
+                   15 OLD-art-T2       PIC  9.
+                       88 OLD-art-T2-si VALUE IS 1. 
+                       88 OLD-art-T2-no VALUE IS 0. 
+                   15 OLD-art-T3       PIC  9.
+                       88 OLD-art-T3-si VALUE IS 1. 
+                       88 OLD-art-T3-no VALUE IS 0. 
+                   15 old-art-peso-GET PIC  9(6)v999.
+                   15 old-art-AT       PIC  9.
+                       88 old-art-AT-si VALUE IS 1. 
+                       88 old-art-AT-no VALUE IS 0. 
+                   15 old-art-TEXACO   PIC  9.
+                       88 old-art-TEXACO-si VALUE IS 1. 
+                       88 old-art-TEXACO-no VALUE IS 0. 
+                   15 old-art-SHARK    PIC  9.
+                       88 old-art-SHARK-si VALUE IS 1. 
+                       88 old-art-SHARK-no VALUE IS 0. 
+                   15 old-art-litri    PIC  9(4)v999.
+                   15 old-art-num-vuoto-2          PIC  9(4).
+                   15 old-art-num-vuoto-3          PIC  9(18).
+                   15 old-art-note2    PIC  X(300).
+       77 form3-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 Verdana12BI-Occidentale
+                  USAGE IS HANDLE OF FONT.
+       77 status-catart    PIC  X(2).
+           88 Valid-status-catart VALUE IS "00" THRU "09". 
+       77 ultimo-elemento  PIC  9(4).
+       77 last-codice      PIC  9(6).
+       77 old-ultimo-elemento          PIC  9(4).
+       77 old-last-codice  PIC  9(6).
+       77 cont  pic 9(10).
+       77 resto pic 9(10).

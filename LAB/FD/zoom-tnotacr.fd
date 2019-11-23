@@ -1,0 +1,13 @@
+      *(( XFD FILE = zoom-tnotacr ))
+       FD  zoom-tnotacr.
+       01 zoom-tno-rec.
+           05 zoom-tno-chiave.
+               10 zoom-tno-anno    PIC  9(4).
+               10 zoom-tno-numero  PIC  9(8).
+           05 zoom-tno-dati.
+               10 zoom-tno-data    PIC  9(8).
+               10 zoom-tno-cod-cli PIC  9(5).
+               10 zoom-tno-prg-destino         PIC  9(5).
+               10 zoom-tno-des-localita        PIC  X(35).
+               10 zoom-tno-causale PIC  x(4).
+               10 zoom-tno-descrizione         PIC  x(40).

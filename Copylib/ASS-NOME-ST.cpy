@@ -1,0 +1,21 @@
+      * 77  PATH-ST            PIC X(256).
+      * 77  WSTAMPA            PIC X(256).
+      * 77  COMO-NOME-FILE     PIC X(8).
+      * 77  COMO-ORA           PIC 9(8).
+      * 77  COMO-DATA          PIC 9(8).
+      * 77  COMO-PROGRAMMA     PIC X(8).
+       ASS-NOME-ST.
+           ACCEPT PATH-ST FROM ENVIRONMENT "PATH-ST".
+
+           ACCEPT COMO-ORA FROM TIME.
+           ACCEPT COMO-DATA FROM CENTURY-DATE.
+
+           INSPECT PATH-ST REPLACING TRAILING SPACE BY LOW-VALUE.
+           INSPECT COMO-PROGRAMMA REPLACING TRAILING SPACE BY LOW-VALUE.
+
+           INITIALIZE WSTAMPA.
+           STRING PATH-ST        DELIMITED BY LOW-VALUE
+                  COMO-PROGRAMMA DELIMITED BY LOW-VALUE
+                  COMO-DATA      DELIMITED BY SIZE
+                  COMO-ORA       DELIMITED BY SIZE
+                  INTO WSTAMPA.

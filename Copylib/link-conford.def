@@ -1,0 +1,9 @@
+      *
+       01 conford-linkage.
+           05 conf-chiave-ordine.
+               10 conf-anno        PIC  9(4).
+               10 conf-numero      PIC  9(8).
+           05 conf-email       PIC  x(500).
+           05 conf-email-agente            PIC  x(500).
+           05 conf-user-codi   PIC  x(20).
+           05 conf-ragsoc      PIC  x(50).

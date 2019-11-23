@@ -1,0 +1,1 @@
+C:\Acucorp\Acucbl610\AcuGT\bin\wrun32.exe -c cblconfi -e -l -d sost-art-batch

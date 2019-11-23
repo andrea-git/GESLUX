@@ -1,0 +1,48 @@
+       FD  impforn.
+       01 imf-rec.
+           05 imf-chiave.
+               10 imf-codice       PIC  9(5).
+           05 imf-dati.
+               10 imf-descrizione  PIC  x(50).
+               10 imf-prz-reale-utf            PIC  x.
+                   88 imf-prz-reale-utf-piu VALUE IS "+". 
+                   88 imf-prz-reale-utf-meno VALUE IS "-". 
+                   88 imf-prz-reale-utf-zero VALUE IS "0". 
+               10 imf-conf-utf     PIC  x.
+                   88 imf-conf-utf-si VALUE IS "S". 
+                   88 imf-conf-utf-no VALUE IS "N". 
+               10 imf-prz-reale-cou            PIC  x.
+                   88 imf-prz-reale-cou-piu VALUE IS "+". 
+                   88 imf-prz-reale-cou-meno VALUE IS "-". 
+                   88 imf-prz-reale-cou-zero VALUE IS "0". 
+               10 imf-conf-cou     PIC  x.
+                   88 imf-conf-cou-si VALUE IS "S". 
+                   88 imf-conf-cou-no VALUE IS "N". 
+               10 imf-prz-reale-cobat          PIC  x.
+                   88 imf-prz-reale-cobat-piu VALUE IS "+". 
+                   88 imf-prz-reale-cobat-meno VALUE IS "-". 
+                   88 imf-prz-reale-cobat-zero VALUE IS "0". 
+               10 imf-conf-cobat   PIC  x.
+                   88 imf-conf-cobat-si VALUE IS "S". 
+                   88 imf-conf-cobat-no VALUE IS "N". 
+               10 imf-prz-reale-pb PIC  x.
+                   88 imf-prz-reale-pb-piu VALUE IS "+". 
+                   88 imf-prz-reale-pb-meno VALUE IS "-". 
+                   88 imf-prz-reale-pb-zero VALUE IS "0". 
+               10 imf-conf-pb      PIC  x.
+                   88 imf-conf-pb-si VALUE IS "S". 
+                   88 imf-conf-pb-no VALUE IS "N". 
+               10 imf-dati-comuni.
+                   15 imf-data-creazione           PIC  9(8).
+                   15 imf-ora-creazione            PIC  9(8).
+                   15 imf-utente-creazione         PIC  x(10).
+                   15 imf-data-ultima-modifica     PIC  9(8).
+                   15 imf-ora-ultima-modifica      PIC  9(8).
+                   15 imf-utente-ultima-modifica   PIC  x(10).
+               10 imf-vuoti.
+                   15 imf-num-vuoto-1  PIC  9(15).
+                   15 imf-num-vuoto-2  PIC  9(15).
+                   15 imf-num-vuoto-3  PIC  9(15).
+                   15 imf-alfa-vuoto-1 PIC  x(20).
+                   15 imf-alfa-vuoto-2 PIC  x(20).
+                   15 imf-alfa-vuoto-3 PIC  x(20).

@@ -1,0 +1,18 @@
+      *
+       01 link-wuseravv.
+           03 Link-Function            pic  x.
+      *    scrive il messaggio specificato per l'utente specificato
+              88 link-write-one        value "W".
+      *    scrive il messaggio specificato per tutti gli utenti
+              88 link-write-all        value "W".
+      *    cancella il messaggio specificato per l'utente specificato
+              88 link-delete-one       value "D".
+      *    cancella il messaggio specificato per tutti gli utenti
+              88 link-delete-all       value "D".
+           03 link-tipo-avviso         pic x(2).
+           03 link-utente              pic x(10).
+           03 link-user                pic x(20).
+           03 link-wuseravv-status     signed-short.
+           03 link-tipo-chiamata       pic 9.
+              88 link-chiamata-batch   value 1, false 0.
+           03 link-msg-err-ritorno     pic x(60).

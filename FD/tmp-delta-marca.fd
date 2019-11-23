@@ -1,0 +1,9 @@
+      *(( XFD FILE = tmp-delta-marca ))
+       FD  tmp-delta-marca.
+       01 tmdm-rec.
+           05 tmdm-chiave.
+               10 tmdm-marca       PIC  9(5).
+           05 tmdm-dati.
+               10 tmdm-marg-calc   PIC  s9(9)v99.
+               10 tmdm-marg-statsett-pos       PIC  9(9)v99.
+               10 tmdm-marg-mese   PIC  s9(9)v99.

@@ -1,0 +1,359 @@
+*   Screen Painter STF File
+*   Version 6.0
+*   Generated Time : mercoledì 15 aprile 2009 13.01.41
+*
+
+BEGIN-SPDATA-6.0A
+
+GRAPHICAL-SCREEN
+
+Begin Screen Form2
+   PREFIX            = Screen1a
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = Form2
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 13
+   Cell Width        = 6
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = DataSet1
+   Erase Screen      = FALSE
+   Font              = Small Font
+   Font Variable     = Small-Font
+   Handle Variable   = form2-Handle
+   Height in Cells   = TRUE
+   Help ID           = 0
+   Label Offset      = 23
+   Lines             = 48,54
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = TRUE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 167,67
+   System Menu       = TRUE
+   Title Bar         = TRUE
+   Title Variable    = titolo
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = TRUE
+   Window Type       = Floating
+   Wrap              = FALSE
+   Event Procedure   = Screen1-Event-Proc
+   Begin Grid gd-ordini
+      SCREEN-COL        = 1,83
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = gd-ordini
+      Action            = (None)
+      Adjustable Columns = TRUE
+      Border            = Boxed
+      Cells' Setting    = ( X = 2, Y = 1, Data = "Anno" )
+      Cells' Setting    = ( X = 3, Y = 1, Data = "Evasione" )
+      Cells' Setting    = ( X = 4, Y = 1, Data = "Bolla" )
+      Cells' Setting    = ( X = 5, Y = 1, Data = "Dt. Bolla" )
+      Cells' Setting    = ( X = 6, Y = 1, Data = "Fattura" )
+      Cells' Setting    = ( X = 7, Y = 1, Data = "Dt. Fatt." )
+      Cells' Setting    = ( X = 8, Y = 1, Data = "Ord. Cliente" )
+      Cells' Setting    = ( X = 9, Y = 1, Data = "Cliente" )
+      Cells' Setting    = ( X = 10, Y = 1, Data = "Località" )
+      Cells' Setting    = ( X = 11, Y = 1, Data = "Esito" )
+      Cells' Setting    = ( X = 12, Y = 1, Data = "Sito Vettore" )
+      Centered Headings = TRUE
+      Color             = 0
+      Column            = 1,83
+      Column Headings   = TRUE
+      Columns' Setting  = ( X = 1, Name = col-nulla, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
+      Columns' Setting  = ( DISP = 3, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 2, Name = Col-anno, READONLY = 0 )
+      Columns' Setting  = ( PIC = "9(4)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
+      Columns' Setting  = ( DISP = 8, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 3, Name = col-numero, READONLY = 0 )
+      Columns' Setting  = ( PIC = "z(7)9", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 12, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 4, Name = col-bolla, READONLY = 0 )
+      Columns' Setting  = ( PIC = "z(7)9", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 12, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 5, Name = Col-dt-bolla, READONLY = 0 )
+      Columns' Setting  = ( PIC = "99/99/9999", TYPE = "99/99/9999", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
+      Columns' Setting  = ( DISP = 13, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 6, Name = col-fatt, READONLY = 0 )
+      Columns' Setting  = ( PIC = "z(7)9", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 12, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 7, Name = col-dt-fatt, READONLY = 0 )
+      Columns' Setting  = ( PIC = "99/99/9999", TYPE = "99/99/9999", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
+      Columns' Setting  = ( DISP = 13, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 8, Name = col-num-ord, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(10)", TYPE = "x(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
+      Columns' Setting  = ( DISP = 15, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 9, Name = col-ragsoc, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(40)", TYPE = "x(40)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
+      Columns' Setting  = ( DISP = 20, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 10, Name = col-localita, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(35)", TYPE = "x(35)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
+      Columns' Setting  = ( DISP = 30, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 11, Name = col-esito, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(50)", TYPE = "x(50)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "L" )
+      Columns' Setting  = ( DISP = 23, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 12, Name = col-sito, READONLY = 0 )
+      Columns' Setting  = ( PIC = "x(30)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
+      Columns' Setting  = ( DISP = 62, SEPA = 5, DIVI = 1 )
+      Cursor Color      = 0
+      Cursor Frame Width = 0
+      Cursor X          = 0
+      Cursor Y          = 0
+      Destroy Type      = Automatic
+      Divider Color     = 1
+      Drag Color        = 0
+      Enable            = NONE
+      End Color         = 0
+      Font              = Default Font
+      Heading Color     = 257
+      Heading Divider Color = 1
+      Heading Font      = Verdana/10/B/C0/@Occidentale
+      Heading Font Variable = Verdana10B-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hscroll           = TRUE
+      ID                = 1
+      Last Row          = 0
+      Line              = 2,00
+      Lines             = 42,00
+      Lines Unit        = Default
+      No Tab            = FALSE
+      Num Col Headings  = 1
+      Num Columns       = 12
+      Num Rows          = 0
+      Occurs            = 0
+      Paged             = FALSE
+      Row Dividers      = 1
+      Row Headings      = TRUE
+      Size              = 165,83
+      Size Unit         = Default
+      Tab Order         = 1
+      Tiled Headings    = TRUE
+      Use Tab           = FALSE
+      Virtual Width     = 235
+      Visible           = NONE
+      Vpadding          = 50
+      Vscroll           = TRUE
+      Width in Cells    = TRUE
+      Event Procedure   = Screen1-Gd-1-Event-Proc
+      Msg-Begin-Drag    = gd-ordini-Ev-Msg-Begin-Drag
+      Msg-Begin-Entry   = gd-ordini-Ev-Msg-Begin-Entry
+      Msg-End-Drag      = gd-ordini-Ev-Msg-End-Drag
+      Msg-Goto-Cell     = gd-ordini-Ev-Msg-Goto-Cell
+      Msg-Goto-Cell-Drag = gd-ordini-Ev-Msg-Goto-Cell-Drag
+      Msg-Goto-Cell-Mouse = gd-ordini-Ev-Msg-Goto-Cell-Mouse
+   End
+   Begin Frame Screen1-Fr-1aa
+      SCREEN-COL        = 1,00
+      SCREEN-LINE       = 46,54
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-Fr-1aa
+      3D Style          = Lowered
+      Alternate         = FALSE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Font              = Default Font
+      Full Height       = TRUE
+      Height in Cells   = TRUE
+      Help ID           = 0
+      High Color        = 0
+      ID                = 202
+      Line              = 46,54
+      Lines             = 3,00
+      Lines Unit        = Default
+      Low Color         = 0
+      Size              = 139,50
+      Size Unit         = Default
+      Tab Order         = 2
+      Thickness         = Default
+      Title Position    = 0:Unaligned
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Begin Label Screen1-La-1a
+         SCREEN-COL        = 3,00
+         SCREEN-LINE       = 47,16
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen1-La-1a
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 3,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Verdana/12/C0/@Occidentale
+         Font Variable     = Verdana12-Occidentale
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 203
+         Justification     = Center
+         Label Offset      = 20
+         Line              = 1,62
+         Lines             = 1,54
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 135,33
+         Size Unit         = Default
+         Tab Order         = 1
+         Title             = "Doppio Click o Invio per modificare l'ordine"
+         Transparent       = FALSE
+         Visible           = NONE
+         Width in Cells    = TRUE
+      End
+   End
+   Begin Frame Screen1-Fr-1aaa
+      SCREEN-COL        = 140,83
+      SCREEN-LINE       = 46,54
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-Fr-1aaa
+      3D Style          = Lowered
+      Alternate         = FALSE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 140,83
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Font              = Default Font
+      Full Height       = TRUE
+      Height in Cells   = TRUE
+      Help ID           = 0
+      High Color        = 0
+      ID                = 6
+      Line              = 46,54
+      Lines             = 3,00
+      Lines Unit        = Default
+      Low Color         = 0
+      Size              = 27,50
+      Size Unit         = Default
+      Tab Order         = 3
+      Thickness         = Default
+      Title Position    = 0:Unaligned
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Begin Push-Button pb-annulla2
+         SCREEN-COL        = 154,66
+         SCREEN-LINE       = 46,69
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = pb-annulla2
+         Bitmap            = "..\RESOURCE\BOTTONE-CANCEL.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = BOTTONE-CANCEL-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 14,83
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 27
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 201
+         Line              = 1,15
+         Lines             = 2,35
+         Lines in Pixels   = 30
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 12,50
+         Size in Pixels    = 73
+         Size Unit         = Default
+         Style             = Escape Button
+         Tab Order         = 1
+         Termination Value = 0
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Before Procedure  = pb-annulla2-BeforeProcedure
+         After Procedure   = pb-annulla2-AfterProcedure
+      End
+      Begin Push-Button pb-ok2
+         SCREEN-COL        = 141,50
+         SCREEN-LINE       = 46,69
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = pb-ok2
+         Bitmap            = "..\RESOURCE\BOTTONE-OK.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = BOTTONE-OK-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 1,67
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 1000
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 200
+         Line              = 1,15
+         Lines             = 2,35
+         Lines in Pixels   = 30
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = FALSE
+         Size              = 12,50
+         Size in Pixels    = 73
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 2
+         Termination Value = 0
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Before Procedure  = pb-ok2-BeforeProcedure
+         After Procedure   = pb-ok2-AfterProcedure
+         Link To           = pb-ok2-LinkTo
+      End
+   End
+End

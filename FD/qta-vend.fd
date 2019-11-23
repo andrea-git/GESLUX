@@ -1,0 +1,13 @@
+       FD  qta-vend.
+       01 qta-rec.
+           05 qta-chiave.
+               10 qta-mag          PIC  x(3).
+               10 qta-articolo     PIC  9(6).
+           05 qta-dati.
+               10 qta-anno         PIC  s9(9)
+                          OCCURS 12 TIMES.
+               10 qta-anno-1       PIC  s9(9)
+                          OCCURS 12 TIMES.
+               10 qta-anno-2       PIC  s9(9)
+                          OCCURS 12 TIMES.
+               10 qta-media        PIC  s9(9).

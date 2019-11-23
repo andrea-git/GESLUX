@@ -1,0 +1,743 @@
+; CaseMaker Totem Program Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[MONITOR_FILE]
+
+
+[PROGRAM_CONTENT]
+QUIT_CONFIRM=0
+ANSI_FORMAT=1
+BEFORE_PROGRAM=wprogmag-Ev-Before-Program
+AFTER_PROGRAM=wprogmag-Ev-After-Program
+PROGRAM_UNIQUE_CODE=TOTEM-7DE1543224-780-1663024590
+
+{{@DESCRIPTION:
+
+@}}
+
+[WORKING_STORAGE]
+m_nType=1
+m_strName=Working Storage
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionWK
+
+@}}
+[FDITEM0_WK]
+m_strName=titolo
+m_strDefaultValue="Gestione Avvisi utente"
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_WK
+
+@}}
+[FDITEM1_WK]
+m_strName=STATUS-useravv
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1_WK
+
+@}}
+[FDITEM2_WK]
+m_strName=Valid-STATUS-useravv
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM2_WK
+
+@}}
+[FDITEM3_WK]
+m_strName=STATUS-USER
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM3_WK
+
+@}}
+[FDITEM4_WK]
+m_strName=Valid-STATUS-USER
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM4_WK
+
+@}}
+
+
+[LINKAGE_SECTION]
+m_nType=1
+m_strName=Linkage Section
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionLK
+
+@}}
+[FDITEM0_LK]
+m_strName=link-wuseravv
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WUSERAVV.DEF
+m_strCopyFile=link-wuseravv.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WUSERAVV.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM0_LK
+
+@}}
+[FDITEM1_LK]
+m_strName=Link-Function
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WUSERAVV.DEF
+m_strCopyFile=link-wuseravv.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WUSERAVV.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM1_LK
+
+@}}
+[FDITEM2_LK]
+m_strName=link-write-one
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="W"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WUSERAVV.DEF
+m_strCopyFile=link-wuseravv.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WUSERAVV.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM2_LK
+
+@}}
+[FDITEM3_LK]
+m_strName=link-write-all
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="W"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WUSERAVV.DEF
+m_strCopyFile=link-wuseravv.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WUSERAVV.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM3_LK
+
+@}}
+[FDITEM4_LK]
+m_strName=link-delete-one
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="D"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WUSERAVV.DEF
+m_strCopyFile=link-wuseravv.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WUSERAVV.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM4_LK
+
+@}}
+[FDITEM5_LK]
+m_strName=link-delete-all
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="D"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WUSERAVV.DEF
+m_strCopyFile=link-wuseravv.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WUSERAVV.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM5_LK
+
+@}}
+[FDITEM6_LK]
+m_strName=link-tipo-avviso
+m_strRawPic=x(2)
+m_strPic=X(2)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WUSERAVV.DEF
+m_strCopyFile=link-wuseravv.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WUSERAVV.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM6_LK
+
+@}}
+[FDITEM7_LK]
+m_strName=link-utente
+m_strRawPic=x(10)
+m_strPic=X(10)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WUSERAVV.DEF
+m_strCopyFile=link-wuseravv.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WUSERAVV.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM7_LK
+
+@}}
+[FDITEM8_LK]
+m_strName=link-user
+m_strRawPic=x(20)
+m_strPic=X(20)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WUSERAVV.DEF
+m_strCopyFile=link-wuseravv.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WUSERAVV.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM8_LK
+
+@}}
+[FDITEM9_LK]
+m_strName=link-wuseravv-status
+m_nUsage=17
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WUSERAVV.DEF
+m_strCopyFile=link-wuseravv.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WUSERAVV.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM9_LK
+
+@}}
+[FDITEM10_LK]
+m_strName=link-tipo-chiamata
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WUSERAVV.DEF
+m_strCopyFile=link-wuseravv.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WUSERAVV.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM10_LK
+
+@}}
+[FDITEM11_LK]
+m_strName=link-chiamata-batch
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1,
+m_strFalse=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WUSERAVV.DEF
+m_strCopyFile=link-wuseravv.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WUSERAVV.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM11_LK
+
+@}}
+[FDITEM12_LK]
+m_strName=link-msg-err-ritorno
+m_strRawPic=x(60)
+m_strPic=X(60)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WUSERAVV.DEF
+m_strCopyFile=link-wuseravv.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WUSERAVV.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM12_LK
+
+@}}
+
+
+{{@SCREEN:
+*   Screen Painter Data
+*   Schema 6.0
+*
+BEGIN-SPDATA-6.1A
+
+END-SPDATA
+
+@}}
+
+{{@REPORT:
+*   Report Writer Data
+*   Schema 6.0
+*
+BEGIN-RWDATA-6.0A
+
+END-RWDATA
+
+@}}
+
+{{@EMBEDDING_CODE:
+BEGIN-DATA
+   BASETYPE          = 13
+   NODESTYLE         = 13
+   PARAGRAPH         = Other Working
+BEGIN-TEXT
+           copy "link-geslock.def".
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 6
+   NODESTYLE         = 7
+   PARAGRAPH         = DeletedCode
+BEGIN-TEXT
+           move 0 to link-wprogmag-status.           if link-magazzino = spaces              move low-value to mag-rec              start tmagaz key is >= mag-chiave invalid continue end-start              perform until 1 = 2                 read tmagaz next at end exit perform end-read                 if si-mag-principale exit perform end-if              end-perform              move mag-codice     to prg-cod-magazzino           else              move link-magazzino to prg-cod-magazzino           end-if.           move link-articolo     to art-codice.           read articoli no lock invalid continue end-read.           if art-misto               move 1 to v-misto              move art-peso-utf     to ef-peso-utf-buf              move art-peso-non-utf to ef-peso-non-utf-buf           else                       move 0 to v-misto           end-if.           move link-articolo     to ef-cod-articolo-buf.           move link-imballo      to ef-tipo-imballo-buf imq-codice.           move link-peso         to ef-peso-buf.           move prg-cod-magazzino to ef-cod-magazz-buf mag-codice.           perform QTA-IMBALLI.           read tmagaz invalid move spaces to mag-descrizione end-read.           move mag-descrizione to lbl-des-magazz-buf.           move 1 to v-screen.           modify Screen1-Handle, visible = v-screen.           display screen1.           call "C$CALLEDBY" using pgm-chiamante.LUBEXX     if pgm-chiamante = "garticoli"LUBEXX        modify ef-cod-articolo, read-onlyLUBEXX     end-if.======================================================      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>======================================================      *<<** Default_Code **>>      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>======================================================      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>======================================================      *<<** Default_Code **>>      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>======================================================      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>======================================================      *<<** Default_Code **>>      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>======================================================      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>======================================================      *<<** Default_Code **>>      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>======================================================           perform SALVA.======================================================           inquire tool-cerca, enabled in e-cerca.           if e-cerca = 1 perform CERCA end-if.======================================================           set tutto-ok to true.           initialize prg-rec replacing numeric data by zeroes                                   alphanumeric data by spaces.           |Aggiorno il record indicato dalla            |chiave passatami in linkage           move link-key     to prg-chiave.           |Controllo che il record ci sia altrimenti lo creo...           read progmag no lock                invalid |NON DOVREBBE MAI PASSARE DI QUI!!!                move 0             to SaveCostoUltimo                set prg-attivo     to true                move link-utf      to prg-peso-utf                move link-non-utf  to prg-peso-non-utf               move link-user     to prg-utente-creazione                accept prg-data-creazione from century-date                accept prg-ora-creazione  from time                write prg-rec invalid continue end-write                |.. ed eventualmente creo il padre                set prg-attivo     to true                move spaces        to prg-cod-magazzino                move spaces        to prg-tipo-imballo                move 0             to prg-peso                                       prg-peso-utf                                       prg-peso-non-utf                move link-user     to prg-utente-creazione                accept prg-data-creazione from century-date                accept prg-ora-creazione  from time                write prg-rec invalid continue end-write           end-read.           move link-key to prg-chiave.           perform READ-PROGMAG-LOCK.           if not RecLocked              if link-valore-costo not = 0                 move link-valore-costo to prg-costo-ultimo              end-if              |Aggiorno il record di progmag ed...              rewrite prg-rec  invalid continue end-rewriteLUBEXX        move prg-costo-ultimo to SaveCostoUltimo              unlock progmag all record              |...aggiorno il record "PADRE"              move spaces     to prg-cod-magazzino              move spaces     to prg-tipo-imballo              move 0          to prg-peso              perform READ-PROGMAG-LOCK              if not RecLocked                 if trovato                    move SaveCostoUltimo to prg-costo-ultimo                    rewrite prg-rec invalid continue end-rewrite                    unlock progmag all record                 end-if                 end-if           end-if.======================================================                 set tutto-ok to true.           initialize prg-rec.              move link-causale to tca-codice.           read tcaumag no lock                 invalid                 set errori to true LUBEXX          if link-chiamata-batchLUBEXX             move -1 to link-wprogmag-statusLUBEXX             initialize link-msg-err-ritornoLUBEXX             string "ERRORE: Causale " delimited sizeLUBEXX                    tca-codice         delimited sizeLUBEXX                    " NON TROVATA!"    delimited sizeLUBEXX                    into link-msg-err-ritornoLUBEXX             end-stringLUBEXX          elseLUBEXX             display message"Operazione impossibile."LUBEXX                     x"0d0a""Causale: " tca-codice, " NON TROVATA"LUBEXX                       title tit-errLUBEXX                        icon 2LUBEXX          end-if           end-read.           if tutto-ok              set trovato to true              |Aggiorno il record indicato dalla               |chiave passatami in linkage              move link-key     to prg-chiave              perform READ-PROGMAG-LOCK              if not RecLocked                 if trovato                    if link-update-um                        perform AGGIORNA-VALORI-UM                     end-if                    if link-update-peso                       perform AGGIORNA-VALORI-PESO                    end-if                    if link-update-valore                       perform AGGIORNA-VALORI-VALORE-MONETARIO                    end-if                    move link-user to prg-utente-ultima-modifica                    accept prg-data-ultima-modifica from century-date                    accept prg-ora-ultima-modifica  from century-date                    rewrite prg-rec invalid continue end-rewrite                 end-if                 unlock progmag all record                 |Aggiorno il record "PADRE"                 move spaces to prg-cod-magazzino                 move spaces to prg-tipo-imballo                 move 0      to prg-peso                 perform READ-PROGMAG-LOCK                 if not RecLocked                    if trovato                       if link-update-um                           perform AGGIORNA-VALORI-UM                        end-if                       if link-update-peso                          perform AGGIORNA-VALORI-PESO                       end-if                       if link-update-valore                          perform AGGIORNA-VALORI-VALORE-MONETARIO                       end-if                       rewrite prg-rec invalid continue end-rewrite                       if multiplyer(13) not = 0                          if tca-si-aggiorna                             multiply link-valore-costo                                   by multiplyer(13)                             unlock progmag all records                             perform AGGIORNA-COSTO-ULTIMO                          end-if                       end-if                    end-if                    unlock progmag all record                 end-if              end-if              end-if.      ***---       AGGIORNA-VALORI-UM.           multiply link-valore by multiplyer(1)             giving como-valore.           evaluate true           when tca-movim-giac-pos                 add      como-valore to   prg-giacenza           when tca-movim-giac-neg                 subtract como-valore from prg-giacenza           end-evaluate.           multiply link-valore by multiplyer(2)             giving como-valore.           evaluate true           when tca-movim-imp-pos                 add      como-valore to   prg-impegnato           when tca-movim-imp-neg                 subtract como-valore from prg-impegnato           end-evaluate.           multiply link-valore by multiplyer(3)             giving como-valore.           evaluate true           when tca-movim-ord-pos                 add      como-valore to   prg-ordinato-1           when tca-movim-ord-neg                 subtract como-valore from prg-ordinato-1           end-evaluate.           multiply link-valore by multiplyer(4)             giving como-valore.           evaluate true           when tca-movim-iniz-pos                 add      como-valore to   prg-ini-udm           when tca-movim-iniz-neg                 subtract como-valore from prg-ini-udm           end-evaluate.           multiply link-valore by multiplyer(5)             giving como-valore.           evaluate true                                  when tca-movim-acq-pos                 add      como-valore to   prg-acq-udm           when tca-movim-acq-neg                 subtract como-valore from prg-acq-udm           end-evaluate.           multiply link-valore by multiplyer(6)             giving como-valore.           evaluate true           when tca-movim-ven-pos                 add      como-valore to   prg-ven-udm           when tca-movim-ven-neg                 subtract como-valore from prg-ven-udm           end-evaluate.           multiply link-valore by multiplyer(7)             giving como-valore.           evaluate true                                  when tca-movim-var-inv-pos                 add      como-valore to   prg-var-inv-udm           when tca-movim-var-inv-neg                 subtract como-valore from prg-var-inv-udm           end-evaluate.           multiply link-valore by multiplyer(8)             giving como-valore.           evaluate true           when tca-movim-resi-for-pos                 add      como-valore to   prg-resi-fornitori-udm           when tca-movim-resi-for-neg                 subtract como-valore from prg-resi-fornitori-udm           end-evaluate.           multiply link-valore by multiplyer(9)             giving como-valore.           evaluate true           when tca-movim-resi-cli-pos                 add      como-valore to   prg-resi-da-cli-udm           when tca-movim-resi-cli-neg                 subtract como-valore from prg-resi-da-cli-udm           end-evaluate.           multiply link-valore by multiplyer(10)             giving como-valore.           evaluate true           when tca-movim-giac-periodo-pos                 add      como-valore to   prg-giacenza-udm           when tca-movim-giac-periodo-neg                 subtract como-valore from prg-giacenza-udm           end-evaluate.           multiply link-valore by multiplyer(11)             giving como-valore.           evaluate true           when tca-entrate-lav-pos                add      como-valore to   prg-udm-el           when tca-entrate-lav-neg                subtract como-valore from prg-udm-el           end-evaluate.           multiply link-valore by multiplyer(12)             giving como-valore.           evaluate true           when tca-uscite-lav-pos                add      como-valore to   prg-udm-ul           when tca-uscite-lav-neg                subtract como-valore from prg-udm-ul           end-evaluate.      ***---       AGGIORNA-VALORI-PESO.                              multiply link-valore-peso by multiplyer(4)             giving como-peso.           evaluate true           when tca-movim-iniz-pos                 add      como-peso to   prg-ini-kg           when tca-movim-iniz-neg                 subtract como-peso from prg-ini-kg           end-evaluate.           multiply link-valore-peso by multiplyer(5)             giving como-peso.           evaluate true           when tca-movim-acq-pos                add      como-peso to   prg-acq-kg           when tca-movim-acq-neg                subtract como-peso from prg-acq-kg           end-evaluate.           multiply link-valore-peso by multiplyer(6)             giving como-peso.           evaluate true           when tca-movim-ven-pos                add      como-peso to   prg-ven-kg           when tca-movim-ven-neg                subtract como-peso from prg-ven-kg           end-evaluate.           multiply link-valore-peso by multiplyer(7)             giving como-peso.           evaluate true           when tca-movim-var-inv-pos                add      como-peso to   prg-var-inv-kg           when tca-movim-var-inv-neg                subtract como-peso from prg-var-inv-kg           end-evaluate.           multiply link-valore-peso by multiplyer(8)             giving como-peso.           evaluate true           when tca-movim-resi-for-pos                add      como-peso to   prg-resi-fornitori-kg           when tca-movim-resi-for-neg                subtract como-peso from prg-resi-fornitori-kg           end-evaluate.           multiply link-valore-peso by multiplyer(9)             giving como-peso.           evaluate true           when tca-movim-resi-cli-pos                add      como-peso to   prg-resi-da-cli-kg           when tca-movim-resi-cli-neg                subtract como-peso from prg-resi-da-cli-kg           end-evaluate.           multiply link-valore-peso by multiplyer(10)             giving como-peso.           evaluate true           when tca-movim-giac-periodo-pos                add      como-peso to   prg-giacenza-kg           when tca-movim-giac-periodo-neg                subtract como-peso from prg-giacenza-kg           end-evaluate.           multiply link-valore-peso by multiplyer(11)             giving como-peso.           evaluate true           when tca-entrate-lav-pos                add      como-peso to   prg-kg-el           when tca-entrate-lav-neg                subtract como-peso from prg-kg-el           end-evaluate.           multiply link-valore-peso by multiplyer(12)             giving como-peso.           evaluate true           when tca-uscite-lav-pos                add      como-peso to   prg-kg-ul           when tca-uscite-lav-neg                subtract como-peso from prg-kg-ul           end-evaluate.      ***---       AGGIORNA-VALORI-VALORE-MONETARIO.           multiply link-valore-monetario by multiplyer(4)             giving como-valore-monetario.           evaluate true           when tca-movim-iniz-pos                 add      como-valore-monetario to   prg-ini-valore           when tca-movim-iniz-neg                 subtract como-valore-monetario from prg-ini-valore           end-evaluate.           multiply link-valore-monetario by multiplyer(5)             giving como-valore-monetario.           evaluate true                                  when tca-movim-acq-pos                 add      como-valore-monetario to   prg-acq-valore           when tca-movim-acq-neg                 subtract como-valore-monetario from prg-acq-valore           end-evaluate.           multiply link-valore-monetario by multiplyer(6)             giving como-valore-monetario.           evaluate true           when tca-movim-ven-pos                 add      como-valore-monetario to   prg-ven-valore           when tca-movim-ven-neg                 subtract como-valore-monetario from prg-ven-valore           end-evaluate.           multiply link-valore-monetario by multiplyer(7)             giving como-valore-monetario.           evaluate true                                  when tca-movim-var-inv-pos                 add      como-valore-monetario to   prg-var-inv-valore           when tca-movim-var-inv-neg                 subtract como-valore-monetario from prg-var-inv-valore           end-evaluate.           multiply link-valore-monetario by multiplyer(8)             giving como-valore-monetario.           evaluate true           when tca-movim-resi-for-pos                 add como-valore-monetario to prg-resi-fornitori-valore           when tca-movim-resi-for-neg                 subtract como-valore-monetario                     from prg-resi-fornitori-valore           end-evaluate.           multiply link-valore-monetario by multiplyer(9)             giving como-valore-monetario.           evaluate true           when tca-movim-resi-cli-pos                 add como-valore-monetario to prg-resi-da-cli-valore           when tca-movim-resi-cli-neg                 subtract como-valore-monetario                     from prg-resi-da-cli-valore           end-evaluate.           multiply link-valore-monetario by multiplyer(11)             giving como-valore-monetario.           evaluate true           when tca-entrate-lav-pos                add      como-valore-monetario to   prg-valore-el           when tca-entrate-lav-neg                subtract como-valore-monetario from prg-valore-el           end-evaluate.           multiply link-valore-monetario by multiplyer(12)             giving como-valore-monetario.           evaluate true           when tca-uscite-lav-pos                add      como-valore-monetario to   prg-valore-ul           when tca-uscite-lav-neg                subtract como-valore-monetario from prg-valore-ul           end-evaluate.======================================================           move link-articolo to prg-cod-articolo.           move link-imballo  to prg-tipo-imballo.           move link-peso     to prg-peso.           move mag-codice    to prg-cod-magazzino.           read progmag no lock                invalid                move link-new-imballo to prg-tipo-imballo                move link-new-peso    to prg-peso                initialize prg-dati   replacing numeric data by zeroes                                           alphanumeric data by spaces                accept prg-data-creazione from century-date                accept prg-ora-creazione  from time                set    prg-attivo         to true                write  prg-rec invalid continue end-write            not invalid                perform READ-PROGMAG-LOCK                if not RecLocked                   |Controllo l'esistenza di valori consolidati                   if prg-ini-udm        not = 0 or                       prg-ini-kg         not = 0 or                      prg-ini-valore     not = 0 or                       prg-acq-udm        not = 0 or                      prg-acq-kg         not = 0 or                       prg-acq-valore     not = 0 or                      prg-ven-udm        not = 0 or                       prg-ven-kg         not = 0 or                      prg-ven-valore     not = 0 or                       prg-var-inv-udm    not = 0 or                      prg-var-inv-kg     not = 0 or                       prg-var-inv-valore not = 0                                         move link-new-imballo to prg-tipo-imballo                      move link-new-peso    to prg-peso                      initialize prg-dati                                  replacing numeric data by zeroes                                      alphanumeric data by spaces                      accept prg-data-creazione from century-date                      accept prg-ora-creazione  from time                      move   link-user          to prg-utente-creazione                      set    prg-attivo to true                      write prg-rec invalid continue end-write                   else                      delete progmag record invalid continue end-delete                      move prg-dati         to old-prg-dati                      move link-new-imballo to prg-tipo-imballo                      move link-new-peso    to prg-peso                      move old-prg-dati     to prg-dati                      write prg-rec invalid continue end-write                   end-if                   unlock progmag all records                end-if           end-read.======================================================           if link-magazzino = 0 and              link-imballo   = 0 and              link-peso      = 0              perform CANCELLAZIONE-SINGOLA           else              perform CANCELLAZIONE-GRUPPO           end-if.      ***---       CANCELLAZIONE-SINGOLA.           move link-articolo   to prg-cod-articolo.           move link-magazzino  to prg-cod-magazzino.           move link-imballo    to prg-tipo-imballo.          move link-peso       to prg-peso.                      delete progmag record invalid continue end-delete.      ***---       CANCELLAZIONE-GRUPPO.           move link-articolo   to prg-cod-articolo.           move low-value       to prg-cod-magazzino                                   prg-tipo-imballo                                   prg-peso.           start progmag key >= prg-chiave                 invalid continue             not invalid                 perform until 1 = 2                    read progmag next at end exit perform end-read                    if link-articolo not = prg-cod-articolo                       exit perform                    else                       delete progmag record invalid continue end-delete                    end-if                 end-perform           end-start.======================================================           evaluate control-id           when 78-id-ef-cod-magazz                inquire ef-cod-magazz      value mag-codice                move "tmagaz"      to Como-File                call   "zoom-gt" using como-file, mag-rec                                giving stato-zoom                cancel "zoom-gt"                if stato-zoom = ZERO                     modify ef-cod-magazz,   value mag-codice                   move mag-descrizione  to lbl-des-magazz-buf                   display lbl-des-magazz                   move 78-id-ef-cod-magazz to store-id                end-if                                when 78-id-ef-tipo-imballo                inquire ef-tipo-imballo   value imq-codice                move "timbalqta"   to Como-File                call   "zoom-gt" using como-file, imq-rec                                giving stato-zoom                cancel "zoom-gt"                if stato-zoom = 0                   modify ef-tipo-imballo, value imq-codice                   perform QTA-IMBALLI                   display lab-imballo                   move 78-id-ef-tipo-imballo to store-id                end-if           end-evaluate.======================================================           set tutto-ok to true.           evaluate control-id           when 78-ID-ef-cod-articolo                if pgm-chiamante not = "garticoli"                   inquire ef-cod-articolo value art-codice                   read articoli no lock                        invalid                        set errori to true                        display message "Articolo NON valido"                                  title tit-err                                   icon 2                        move spaces to art-descrizione                   end-read                   if link-peso = 0                      move art-peso-standard to link-peso                   end-if                   move art-descrizione to lbl-des-articolo-buf                   display lbl-des-articolo                end-if           when 78-ID-ef-cod-magazz                inquire ef-cod-magazz,   value in mag-codice                move spaces to lbl-des-magazz-buf                read tmagaz                     invalid                      set errori to true                     display message "Codice magazzino NON valido"                               title tit-err                                icon 2                 not invalid                      move mag-descrizione to lbl-des-magazz-buf                end-read                display lbl-des-magazz           when 78-ID-ef-tipo-imballo                inquire ef-tipo-imballo, value in imq-codice                move spaces to lab-imballo-buf                read timbalqta                     invalid                      set errori to true                     display message "Codice imballo NON valido"                               title tit-err                                icon 2                 not invalid                     move imq-tipo   to imq-codice                     perform QTA-IMBALLI                end-read                display lab-imballo           when 78-ID-ef-peso                inquire ef-peso,         value in como-peso                evaluate true                when como-peso > link-peso                     if como-peso > ( link-peso + ( ( link-peso * 10 ) / 100 ) )                        set errori to true                        display message box "Peso superiore del 10% di quello standard"                                title = tit-err                                icon mb-warning-icon                     end-if                when como-peso < link-peso                     if como-peso < ( link-peso - ( ( link-peso * 10 ) / 100 ) )                        set errori to true                        display message box "Peso inferiore del 10% di quello standard"                                title = tit-err                                icon mb-warning-icon                     end-if                when como-peso = 0                     set errori to true                     display message box "Inserimento peso mancante"                             title = tit-err                             icon mb-warning-icon                when other continue                end-evaluate           when 78-ID-ef-peso-utf                if v-misto = 1                   inquire ef-peso-utf, value in art-peso-utf                   if art-peso-utf = 0                       set errori to true                      display message "Inserimento peso UTF mancante"                                title tit-err                                 icon 2                   end-if                end-if           when 78-ID-ef-peso-non-utf                if v-misto = 1                   inquire ef-peso,         value in prg-peso                   inquire ef-peso-utf,     value in art-peso-utf                   inquire ef-peso-non-utf, value in art-peso-non-utf                   if art-peso-non-utf = 0                      set errori to true                      display message"Inserimento peso non UTF mancante"                                title tit-err                                 icon 2                   else                      if (art-peso-utf + art-peso-non-utf) not = prg-peso                         set errori to true                         display message "Il peso dev'essere la somma "                                         "di UTF e non UTF"                                   title tit-err                                    icon 2                         move 78-ID-ef-peso to control-id store-id                      end-if                   end-if                end-if           end-evaluate.           if errori               move control-id to store-id              move 4          to accept-control            end-if.======================================================           initialize lab-imballo-buf.           if imq-codice not = spaces              read timbalqta no lock invalid continue end-read              move imq-qta-imb to imb-qta-edit              move imq-tipo    to imb-codice              read timballi no lock                    invalid  initialize imb-descrizione              end-read              inspect imb-descrizione replacing trailing spaces                                                       by low-value              call "C$JUSTIFY" using imb-qta-edit, "L"              string  imb-descrizione delimited by low-value                      " da "          delimited by size                      imb-qta-edit    delimited by spaces                      " x "           delimited by size                      art-udm-imballo delimited by size                 into lab-imballo-buf              end-string              display lab-imballo           end-if
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 0
+   PARENT            = wuseravv
+   ACTOBJ            = wuseravv
+   ENTRYPOINT        = BeforeDeclarative
+BEGIN-TEXT
+      ***---
+       USERAVV-ERR SECTION.
+           use after error procedure on USERAVV.
+           set RecLocked to false.
+           set tutto-ok  to true.
+           evaluate status-USERAVV
+           when "35"
+                if not link-chiamata-batch
+                   display message "File [USERAVV] not found!"
+                             title titolo
+                              icon 3
+                   set errori to true
+                else
+                   move "File [USERAVV] not found!" to link-msg-err-ritorno
+                   move -2 to link-wUSERAVV-status
+                end-if
+           when "39"
+                if not link-chiamata-batch
+                   display message "File [USERAVV] Mismatch size!"
+                             title titolo
+                              icon 3
+                   set errori to true
+                else
+                   move "File [USERAVV] Mismatch size!" to link-msg-err-ritorno
+                   move -2 to link-wUSERAVV-status
+                end-if
+           when "98"
+                if not link-chiamata-batch
+                   display message "[USERAVV] Indexed file corrupt!"
+                             title titolo
+                              icon 3
+                   set errori to true
+                else
+                   move "[USERAVV] Indexed file corrupt!" to link-msg-err-ritorno
+                   move -2 to link-wUSERAVV-status
+                end-if
+           when "93"
+           when "99" set RecLocked to true
+           end-evaluate.
+
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = OPEN-IO-USERAVV
+BEGIN-TEXT
+           set tutto-ok  to true.
+           set RecLocked to false.
+           open i-o useravv allowing readers
+
+           if RecLocked
+              set errori to true
+              if link-chiamata-batch
+                 move -2 to link-wuseravv-status
+                 move "File [USERAVV] già in uso!" to link-msg-err-ritorno
+              else
+                 move "USERAVV" to geslock-nome-file
+                 initialize geslock-messaggio
+                 string   "Il file degli avvisi utenti" 
+                   x"0d0a""risulta in uso su altro terminale."
+                   x"0d0a""Impossibile procedere!" delimited size
+                       into geslock-messaggio
+                 end-string
+                 move 1     to geslock-v-riprova
+                 move 0     to geslock-v-termina
+                 move 0     to geslock-v-ignora
+                 call   "geslock" using geslock-linkage
+                 cancel "geslock"
+       
+                 evaluate true
+                 when riprova 
+                      perform OPEN-IO-USERAVV
+                 when other   
+                      move -1 to link-wuseravv-status
+                 end-evaluate
+              end-if
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = WUSERAVV-BATCH
+BEGIN-TEXT
+           accept como-data  from century-date
+           accept como-ora   from time
+
+           move 0 to link-wuseravv-status.
+
+           evaluate true
+           when link-write-one
+                move link-utente      to uav-utente
+                perform SCRIVI-RECORD
+           when link-write-all
+                move low-value  to user-cod
+                start USER key not < user-chiave
+                   invalid
+                      continue
+                   not invalid
+                      perform until 1 = 2
+                         read user next
+                            at end
+                               exit perform
+                         end-read
+                         move user-cod   to uav-utente
+                         perform SCRIVI-RECORD
+                      end-perform
+                end-start
+           when link-delete-one
+                move link-tipo-avviso to uav-tipologia
+                move link-utente      to uav-utente
+                delete useravv record
+                   invalid
+                      continue
+                end-delete
+           when link-delete-all
+                move link-tipo-avviso to uav-tipologia
+                move low-value  to uav-utente
+                start useravv key not < uav-k-tipologia
+                   invalid
+                      continue
+                   not invalid
+                      perform until 1 = 2
+                         read useravv next 
+                            at end
+                              exit perform
+                         end-read
+                         if link-tipo-avviso not = uav-tipologia
+                            exit perform
+                         end-if
+                         delete useravv record
+                            invalid
+                               continue
+                         end-delete
+                      end-perform
+                end-start
+           end-evaluate.
+
+      ***---
+       SCRIVI-RECORD.
+           move link-tipo-avviso to uav-tipologia
+           move link-user        to uav-utente-creazione
+                                    uav-utente-ultima-modifica
+           move como-data        to uav-data-creazione
+                                    uav-data-ultima-modifica
+           move como-ora         to uav-ora-creazione
+                                    uav-ora-ultima-modifica
+           write uav-rec
+              invalid 
+                 rewrite uav-rec
+           end-write.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = wprogmag-Ev-Before-Program
+BEGIN-TEXT
+           set tutto-ok to true.
+           perform OPEN-IO-USERAVV.
+           if errori 
+              goback 
+           end-if.
+
+           perform WUSERAVV-BATCH
+           perform EXIT-STOP-ROUTINE.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = wprogmag-Ev-After-Program
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+
+@}}
+
+[KEY_STATUS_FIELD_FORMAT]
+PIC=9(5)
+USAGE=[None]
+
+[KEYSTATUS_CONTENT:KS1]
+CONDITION=Enter-Pushed
+VALUE=13
+
+[KEYSTATUS_CONTENT:KS2]
+CONDITION=Exit-Pushed
+VALUE=27
+
+[KEYSTATUS_CONTENT:KS3]
+CONDITION=Message-Received
+VALUE=95
+
+[KEYSTATUS_CONTENT:KS4]
+CONDITION=Event-Occurred
+VALUE=96
+
+[KEYSTATUS_CONTENT:KS5]
+CONDITION=Screen-No-Input-Field
+VALUE=97
+
+[KEYSTATUS_CONTENT:KS6]
+CONDITION=Screen-Time-Out
+VALUE=99
+
+[COBOLAID_DATASET_INFO]
+COUNT=1
+NAME_0=DataSet1
+
+[DRAW_DOCUMENT_INDEX]
+OBJ_NAME_0=8001
+OBJ_ID_0=1485463487
+
+[MULTIPLE_KEY_0]
+COUNT=1
+KEY_0=uav-chiave OF useravv
+
+[DRAW_DOCUMENT_8001_1485463487]
+OBJ_NAME=8001
+OBJ_ID=1485463487
+TYPE=2
+VERSION=
+DOC_SIZE_X=5100
+DOC_SIZE_Y=5160
+PAGE_LEFT=150
+PAGE_TOP=150
+PAGE_RIGHT=1850
+PAGE_BOTTOM=2730
+MARGIN_LEFT=150
+MARGIN_TOP=150
+MARGIN_RIGHT=150
+MARGIN_BOTTOM=150
+PROP_DOCU_TYPE=ø
+PROP_DOCU_TYPE2=ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+PROP_DOCU_NAME=DataSet - DataSet1[wuseravv(GESLUX)]
+PROP_DOCU_OWNER=Person A
+PROP_DOCU_CDATE=02/23/04
+PROP_DOCU_MODIFIER=Person B
+PROP_DOCU_MDATE=02/23/04
+PROP_DOCU_DESCR=Caseaid DocuCaseaid Document
+PROP_DOCU_HEADER=Caseaid Document
+PROP_DOCU_FOOTER=Page # 
+PROP_DOCU_DIM_H=2
+PROP_DOCU_DIM_W=3
+PROP_DOCU_LOC_H=1
+PROP_DOCU_LOC_W=1
+PROP_DOCU_EDGE_T=150
+PROP_DOCU_EDGE_B=150
+PROP_DOCU_EDGE_L=150
+PROP_DOCU_EDGE_R=150
+PROP_DOCU_ZOOM=75
+PROP_DOCU_SIZE_TYPE=0
+PROP_DOCU_SIZE_PAPER=1
+PROP_DOCU_SIZE_H=2580
+PROP_DOCU_SIZE_W=1700
+PROP_DOCU_RULER_EBL=0
+PROP_DOCU_GRID_EBL=0
+PROP_DOCU_GRID=20
+PROP_DOCU_ALIGN=0
+REL_SYM_SIZE=16
+REL_SYM_INFO_L=2
+REL_SYM_INFO_X0=2301
+REL_SYM_INFO_Y0=578295162
+REL_SYM_INFO_X1=2301
+REL_SYM_INFO_Y1=1492335496
+
+[DRAW_BASESYMBOL_2301_578295162]
+OBJ_NAME=2301
+OBJ_ID=578295162
+KIND=1
+{{@LABEL_2301_578295162
+useravv
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=115
+TOP=149
+RIGHT=515
+BOTTOM=371
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1492335496]
+OBJ_NAME=2301
+OBJ_ID=1492335496
+KIND=1
+{{@LABEL_2301_1492335496
+USER
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=786
+TOP=305
+RIGHT=1186
+BOTTOM=527
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DMD_DOCUMENT_0_1485463487]
+OBJ_NAME=0
+OBJ_ID=1485463487
+FILE_TITLE_TYPE=8136
+FILE_SHOW_ITEM=0
+FILE_SHOW_KEY=0
+FILE_SHOW_PIC=0
+FILE_SHOW_HEAD=0
+FILE_SHOW_LEVEL=0
+FILE_SHOW_TREE=0
+FILE_SHOW_CLPS=0
+FILE_SHOW_BMP=0
+FILE_SHOW_LINE=0
+FILE_SHOW_MINIZE=0
+
+[DMD_FILE_0_578295162]
+OBJ_NAME=0
+OBJ_ID=578295162
+REL_M_OBJ_ID=0
+ENTITY=useravv
+LINK=0
+LINK_NAME=
+DSN_SIZE=53
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=2
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=uav-chiave OF useravv
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_578295162
+
+@}}
+DSN_INFO_PRIMARY=1
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1492335496]
+OBJ_NAME=0
+OBJ_ID=1492335496
+REL_M_OBJ_ID=0
+ENTITY=USER
+LINK=0
+LINK_NAME=
+DSN_SIZE=43
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=user-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1492335496
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=

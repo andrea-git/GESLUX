@@ -1,0 +1,77 @@
+      *-------------------------------------------------------------
+      * Tk 3194 - Black List                                                                            | scamar 09/07/2010 11:15:29
+      *           - aggiunto campo per l'inclusione della nazione nei paesi BlackList
+      *---------------------------------------------------------------------------
+      * Ticket 5690 - Collegamento payline.lince                                                           | rososv 30/04/2014
+      *
+      * Aggiunti check-box:
+      * - tblna-payline       (indica se la nazione è interessata all'esportazione)
+      * - tblna-payline-piva  (indica se deve essere indicata la partita i.v.a.)
+      * Incrementati i campi da portare sulla query, compresi i due nuovi check-box  
+      *---------------------------------------------------------------------------
+      *
+      *
+      *
+      *Record per tabella nazioni
+      *
+      *
+      * tplvar zmm_title=Tabella nazioni
+      * tplvar zmm_ver=09.01.00
+      * tplvar zmm_class=anagraphic
+      *
+      *
+      * ZoomFields seq:
+      *   01.tblna-codice2
+      *   02.tblna-descrizione1
+      *   03.tblna-descrizione2
+      *   04.tblna-codice-iso
+      *   05.tblna-cod-stato-estero
+      *   06.tblna-hasblacklist
+      *   07.tblna-payline
+      *   08.tblna-payline-piva
+      *
+      *Record per tabelle nazioni
+      *
+      *$XFD  WHEN TBLNA-CODICE1="NA" TABLENAME=TBLNA
+       FD  TBLNA.
+       01 RECORD-TBLNA.
+           05 TBLNA-CODICE.
+               10 TBLNA-CODICE1    PIC  X(02).
+      *$GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=20,zmm_align=L,zmm_pos=1,zmm_entity=tblna
+               10 TBLNA-CODICE2    PIC  X(20).
+           05 RESTO-RECORD-TBLNA.
+      *$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=2
+               10 TBLNA-DESCRIZIONE1           PIC  X(30).
+      *$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=3
+               10 TBLNA-DESCRIZIONE2           PIC  X(30).
+               10 TBLNA-CODICE-ISO-OLD         PIC  X(02).
+      *$GEN type=checkbox,truevalue="A",falsevalue=" "
+               10 TBLNA-DECIMAL-POINT          PIC  X(01).
+                   88 TBLNA-DECIMAL-POINT-88 VALUE IS "A" " ". 
+      *$GEN zmm=on,zmm_title=Codice iso,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=4            
+      *
+               10 TBLNA-CODICE-ISO PIC  X(04).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+      *
+               10 TBLNA-EURO       PIC  X(01).
+                   88 TBLNA-EURO-88 VALUE IS "S" " ". 
+      *$GEN zmm=on,zmm_title=Codice stato,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=5            
+      *
+               10 TBLNA-COD-STATO-ESTERO       PIC  X(03).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Black list,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=6        
+      *
+               10 tblna-hasBlackList           PIC  x.
+                   88 tblna-hasBlackList-on VALUE IS "S". 
+                   88 tblna-hasBlackList-off VALUE IS " ". 
+                   88 tblna-hasBlackList-allowed VALUE IS "S" " ". 
+      *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Payline,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=7
+               10 tblna-payline    PIC  x(01).
+                   88 tblna-payline-si VALUE IS "S". 
+      *$GEN  type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Partita iva,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=8
+               10 tblna-payline-piva           PIC  x(01).
+                   88 tblna-payline-piva-si VALUE IS "S". 
+               10 tblna-filler     PIC  x(1244).
+      ***        10  TBLNA-FILLER            PIC  X(1247).        |DS 01/04/2005 9.52                      | scamar 09/07/2010 09:57:01
+      *        10  TBLNA-FILLER            PIC  X(1250).                           |DS 01/04/2005 9.52
+      *
+               10 TBLNA-FILLER-RIS PIC  X(40).

@@ -1,0 +1,368 @@
+      *
+           COPY  "combo-stato.def".
+           COPY  "externals.def".
+           COPY  "link-nambar.def".
+           COPY  "imposte.def".
+           COPY  "link-wprogmag.def".
+           COPY  "link-geslock.def".
+           COPY  "mail.def".
+           COPY  "aggiorna-stato-ordf.def".
+           COPY  "link-passwd.def".
+      **** HANDLES
+       77 Verdana10-Occidentale
+                  USAGE IS HANDLE OF FONT.
+       77 Default-Font
+                  USAGE IS HANDLE OF FONT DEFAULT-FONT.
+       77 Small-Font
+                  USAGE IS HANDLE OF FONT SMALL-FONT.
+       77 Form1-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 Form1-Tb-1-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 Screen1-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 Form1-St-1-Handle
+                  USAGE IS HANDLE OF STATUS-BAR.
+       77 bottone-ok-bmp
+                  USAGE IS HANDLE OF BITMAP.
+       77 alternativi-bmp
+                  USAGE IS HANDLE OF BITMAP.
+       77 Default-bmp
+                  USAGE IS HANDLE OF BITMAP.
+       77 toolbar-bmp
+                  USAGE IS HANDLE OF BITMAP.
+       77 STRIP-GRID-GCLIENTI-BMP
+                  USAGE IS HANDLE OF BITMAP.
+      **** FLAGS
+       77 filler           PIC  xx.
+           88 TotaleSizero VALUE IS "SI". 
+           88 TotaleNozero VALUE IS "NO". 
+       77 filler           PIC  9.
+           88 CallWProgmag VALUE IS 1,    WHEN SET TO FALSE  0. 
+       77 filler           PIC  9.
+           88 CambioCausale VALUE IS 1,    WHEN SET TO FALSE  0. 
+       77 filler           PIC  9.
+           88 MovimentoConsolidato VALUE IS 1,    WHEN SET TO FALSE  0. 
+       77 filler           PIC  9.
+           88 CheckAfterZoom VALUE IS 1,    WHEN SET TO FALSE  0. 
+       77 FlagRigaCambiata PIC  9.
+           88 RigaCambiata VALUE IS 1,    WHEN SET TO FALSE  0. 
+       01 filler           PIC  9.
+           88 CliForChanged VALUE IS 1,    WHEN SET TO FALSE  0. 
+       77 filler           PIC  9.
+           88 ChangeTabToPageTwo VALUE IS 1,    WHEN SET TO FALSE  0. 
+       77 filler           PIC  9.
+           88 YesDeleted VALUE IS 1,    WHEN SET TO FALSE  0. 
+       01 filler           PIC  x.
+           88 ArtAttivo VALUE IS "A". 
+           88 ArtBloccato VALUE IS "B". 
+           88 ArtDisattivo VALUE IS "D". 
+       77 TipoDiVariazione PIC  x.
+           88 VariazioneDiValore VALUE IS "V". 
+           88 VariazioneDiQuantita VALUE IS "Q". 
+       77 SaveCliFor       PIC  x.
+           88 SaveCli VALUE IS "C". 
+           88 SaveFor VALUE IS "F". 
+       01 filler           PIC  9.
+           88 ArticoloSetFocus VALUE IS 1,    WHEN SET TO FALSE  0. 
+       01 filler           PIC  9.
+           88 NonCambiareTab VALUE IS 1,    WHEN SET TO FALSE  0. 
+       01 filler           PIC  9.
+           88 ExistRecord VALUE IS 1,    WHEN SET TO FALSE  0. 
+       01 label-cou-cobat  PIC  x(25).
+           88 lab-imp-cou VALUE IS "Imposta C.O.U.". 
+           88 lab-imp-cobat VALUE IS "Imposta COBAT". 
+           88 lab-imp-coubat VALUE IS "Imposta C.O.U./COBAT". 
+       01 FlagNewRow       PIC  9.
+           88 NewRow VALUE IS 1,    WHEN SET TO FALSE  0. 
+       01 flag-superamento-500         PIC  x.
+           88 superamento-500 VALUE IS "S"    WHEN SET TO FALSE  "N". 
+       77 codice-clifor    PIC  X(20).
+           88 cod VALUE IS "Codice". 
+           88 cod-cli VALUE IS "Codice Cliente". 
+           88 cod-for VALUE IS "Codice Fornitore". 
+       01 filler           PIC  9.
+           88 ControllaCampi VALUE IS 1,    WHEN SET TO FALSE  0. 
+      **** COSTANTI
+       78 78-NumCol VALUE IS 12. 
+       78 max-page VALUE IS 2. 
+       78 primo-id-dati VALUE IS 5002. 
+       78 titolo VALUE IS "Geslux - Movimenti di magazzino - Carichi e s
+      -    "carichi". 
+      **** VARIABILI
+       01 tabella-righe.
+           05 numero-riga      PIC  z(5)
+                      OCCURS 20 TIMES.
+       01 GiacenzaKey.
+           05 gia-cod-articolo PIC  9(6).
+           05 gia-cod-magazzino            PIC  x(3).
+           05 gia-tipo-imballo PIC  x(3).
+           05 gia-peso         PIC  9(5)V9(3).
+       01 save-prg-chiave.
+           05 save-articolo    PIC  9(6).
+           05 save-magazzino   PIC  x(3).
+           05 save-imballo     PIC  x(3).
+           05 save-peso        PIC  9(5)v999.
+       77 SavePrezzo       PIC  9(12)v99.
+       77 Sum  PIC  9(15)v99.
+       77 SaveArticolo     PIC  9(5).
+       77 como-peso        PIC  9(5)v999.
+       77 old-art-codice   PIC  9(5).
+       77 num-articoli     PIC  9(10).
+       77 old-cliente      PIC  9(5).
+       77 EvaMag           PIC  x(3).
+       77 old-prezzo       PIC  9(15)v999.
+       77 nome-pgm         PIC  x(25).
+       77 NumBitmapCodici  PIC  9.
+       77 MagazzinoInUso   PIC  x(3)
+                  VALUE IS space.
+       77 VariazioneInUso  PIC  x
+                  VALUE IS space.
+       77 RowCounter       PIC  9(9)
+                  VALUE IS 0.
+       77 numero           PIC  9(15)v999.
+       77 StoreMagazzino   PIC  x(3).
+       77 LastPrg          PIC  9(5).
+       77 riga-ed          PIC  zz.zz9.
+       77 como-qta         PIC  9(8).
+       77 imballi-ed       PIC  zz.zz9.
+       77 codice-x         PIC  x(5).
+       77 como-anno        PIC  9(4).
+       77 nome-file        PIC  x(15).
+       77 countchar        PIC  9(3).
+       77 pagina           PIC  9
+                  VALUE IS 1.
+       01 TabID
+                  OCCURS max-page TIMES.
+           05 min-id           PIC  9(9).
+           05 max-id           PIC  9(9).
+       77 OPENSAVE-STATUS  PIC  s9(2)
+                  VALUE IS 0.
+       77 result
+                  USAGE IS SIGNED-SHORT.
+       77 counter          PIC  9(3).
+       77 como-record      PIC  x(32000).
+       01 control-como     PIC  9(2)
+                  VALUE IS 0.
+       77 e-esci           PIC  9
+                  VALUE IS 1.
+       77 e-nuovo          PIC  9
+                  VALUE IS 0.
+       77 e-salva          PIC  9
+                  VALUE IS 1.
+       77 e-cancella       PIC  9
+                  VALUE IS 1.
+       77 e-modifica       PIC  9
+                  VALUE IS 0.
+       77 e-anteprima      PIC  9
+                  VALUE IS 0.
+       77 e-stampa         PIC  9
+                  VALUE IS 0.
+       77 e-cerca          PIC  9
+                  VALUE IS 0.
+       77 data-oggi        PIC  9(8).
+       77 data-ult-movim   PIC  9(8).
+       77 e-seleziona      PIC  9
+                  VALUE IS 1.
+       77 Form1-Pg-1-Visible           PIC  9
+                  VALUE IS 0.
+       77 Form1-Pg-2-Visible           PIC  9
+                  VALUE IS 0.
+       77 mod-campi        PIC  9
+                  VALUE IS 0.
+       77 cbo-stato-buf    PIC  x(10).
+       77 codice-ed        PIC  z(5).
+       77 lab-desmag-buf   PIC  x(50).
+       77 lab-codmag-buf   PIC  x(3).
+       77 lab-des-cau-buf  PIC  x(50).
+       77 lab-cau-buf      PIC  x(4).
+       77 lab-data-buf     PIC  99/99/9999.
+       01 old-rec-grid.
+           05 old-col-num      PIC  z(5).
+           05 old-col-art      PIC  zzzzz9.
+           05 old-col-des      PIC  x(50).
+           05 old-col-qta      PIC  z(7)9
+                      BLANK WHEN ZERO.
+           05 old-col-udm      PIC  zz.zz9,999.
+           05 old-col-kg       PIC  zz.zzz.zzz.zz9,999.
+           05 old-col-listino  PIC  zzz.zzz.zz9,99.
+           05 old-col-sconto   PIC  z9,99.
+           05 old-col-netto    PIC  zzz.zzz.zz9,99.
+           05 old-col-cons     PIC  z.zz9,99.
+           05 old-col-coubat   PIC  z.zz9,99.
+           05 old-col-tot      PIC  zzz.zzz.zzz.zz9,99.
+       01 rec-grid.
+           05 col-num          PIC  z(5).
+           05 col-art          PIC  zzzzz9.
+           05 col-des          PIC  x(50).
+           05 col-qta          PIC  z(7)9
+                      BLANK WHEN ZERO.
+           05 col-udm          PIC  zz.zz9,999.
+           05 col-kg           PIC  zz.zzz.zzz.zz9,999.
+           05 col-listino      PIC  zzz.zzz.zz9,99.
+           05 col-sconto       PIC  z9,99.
+           05 col-netto        PIC  zzz.zzz.zz9,99.
+           05 col-cons         PIC  z.zz9,99.
+           05 col-coubat       PIC  z.zz9,99.
+           05 col-tot          PIC  zzz.zzz.zzz.zz9,99.
+       77 lab-tot-buf      PIC  zzz.zzz.zzz.zz9,99
+                  BLANK WHEN ZERO.
+       77 auto-id          PIC  9(6)
+                  VALUE IS 0.
+       01 gruppo-hidden.
+           05 HiddenKey.
+               10 hid-cod-articolo PIC  9(6).
+               10 hid-cod-magazzino            PIC  x(3).
+               10 hid-tipo-imballo PIC  x(3).
+               10 hid-peso         PIC  9(5)V9(3).
+           05 hid-udm          PIC  xx.
+           05 hid-desimb       PIC  x(50).
+           05 hid-coubat       PIC  9.
+               88 hid-cou VALUE IS 1. 
+               88 hid-cobat VALUE IS 2. 
+           05 hid-utf          PIC  9(11)v999.
+           05 hid-non-utf      PIC  9(11)v999.
+           05 hid-old-qta      PIC  9(3).
+           05 hid-peso-articolo            PIC  9(5)v9(3).
+       77 lab-peso-kg-buf  PIC  zz.zzz.zzz.zz9,999
+                  BLANK WHEN ZERO.
+       77 numero-edit      PIC  z(8).
+       77 lab-tot-righe-buf            PIC  ---.---.---.--9,999.
+       77 lab-testa-buf    PIC  zz.zzz.zzz.zz9,999.
+       77 ef-definitivo-buf            PIC  zz.zzz.zzz.zz9,999.
+       77 v-destino        PIC  9
+                  VALUE IS 0.
+       77 v-cons           PIC  9
+                  VALUE IS 0.
+       77 tmo-codmag       PIC  x(3).
+       77 old-tmo-codmag   PIC  x(3).
+       77 tco-descrizione  PIC  x(30).
+       77 lab-pag-buf      PIC  x(100).
+       77 pgm-chiamante    PIC  x(20).
+      *
+      ***FILE STATUS
+      *
+      *
+      *
+       77 STATUS-tmp-progmag-zoom      PIC  X(2).
+           88 Valid-STATUS-tmp-progmag-zoom VALUE IS "00" THRU "09". 
+       77 STATUS-clienti   PIC  X(2).
+           88 Valid-STATUS-clienti VALUE IS "00" THRU "09". 
+       77 STATUS-destini   PIC  X(2).
+           88 Valid-STATUS-destini VALUE IS "00" THRU "09". 
+       77 STATUS-tvettori  PIC  X(2).
+           88 Valid-STATUS-tvettori VALUE IS "00" THRU "09". 
+       77 STATUS-agenti    PIC  X(2).
+           88 Valid-STATUS-agenti VALUE IS "00" THRU "09". 
+       77 STATUS-tcodpag   PIC  X(2).
+           88 Valid-STATUS-tcodpag VALUE IS "00" THRU "09". 
+       77 STATUS-articoli  PIC  X(2).
+           88 Valid-STATUS-articoli VALUE IS "00" THRU "09". 
+       77 STATUS-tmagaz    PIC  X(2).
+           88 Valid-STATUS-tmagaz VALUE IS "00" THRU "09". 
+       77 STATUS-tparamge  PIC  X(2).
+           88 Valid-STATUS-tparamge VALUE IS "00" THRU "09". 
+       77 STATUS-rmovmag   PIC  X(2).
+           88 Valid-STATUS-rmovmag VALUE IS "00" THRU "09". 
+       77 STATUS-tcaumag   PIC  X(2).
+           88 Valid-STATUS-tcaumag VALUE IS "00" THRU "09". 
+       77 STATUS-tmovmag   PIC  X(2).
+           88 Valid-STATUS-tmovmag VALUE IS "00" THRU "09". 
+       77 STATUS-progmag   PIC  X(2).
+           88 Valid-STATUS-progmag VALUE IS "00" THRU "09". 
+       77 STATUS-timposte  PIC  X(2).
+           88 Valid-STATUS-timposte VALUE IS "00" THRU "09". 
+       77 STATUS-tmarche   PIC  X(2).
+           88 Valid-STATUS-tmarche VALUE IS "00" THRU "09". 
+       77 STATUS-timballi  PIC  X(2).
+           88 Valid-STATUS-timballi VALUE IS "00" THRU "09". 
+       77 STATUS-timbalqta PIC  X(2).
+           88 Valid-STATUS-timbalqta VALUE IS "00" THRU "09". 
+       77 status-ttipocli  PIC  X(2).
+           88 Valid-STATUS-ttipocli VALUE IS "00" THRU "09". 
+      **** OLD RECORD
+      *
+      *
+       01 OLD-tmo-rec.
+           05 OLD-tmo-chiave.
+               10 OLD-tmo-anno     PIC  9(4).
+               10 OLD-tmo-numero   PIC  9(8).
+           05 OLD-tmo-dati.
+               10 OLD-tmo-data-movim           PIC  9(8).
+               10 OLD-tmo-causale  PIC  x(4).
+               10 OLD-tmo-tipo     PIC  x.
+                   88 OLD-tmo-cliente VALUE IS "C". 
+                   88 OLD-tmo-fornitore VALUE IS "F". 
+               10 OLD-tmo-cod-clifor           PIC  9(5).
+               10 OLD-tmo-destino  PIC  9(5).
+               10 OLD-tmo-vettore  PIC  9(5).
+               10 OLD-tmo-numdoc-clifor        PIC  9(8).
+               10 OLD-tmo-data-doc PIC  9(8).
+               10 OLD-tmo-codpag   PIC  x(3).
+               10 OLD-tmo-peso-utf PIC  9(11)v999.
+               10 OLD-tmo-gdo      PIC  x(5).
+               10 OLD-tmo-fattura.
+                   15 OLD-tmo-anno-fattura         PIC  9(4).
+                   15 OLD-tmo-num-fattura          PIC  9(8).
+                   15 OLD-tmo-data-fattura         PIC  9(8).
+               10 OLD-tmo-stato    PIC  x.
+                   88 OLD-tmo-attivo VALUE IS "A". 
+                   88 OLD-tmo-disattivo VALUE IS "D". 
+                   88 OLD-tmo-bloccato VALUE IS "B". 
+               10 OLD-tmo-dati-comuni.
+                   15 OLD-tmo-data-creazione       PIC  9(8).
+                   15 OLD-tmo-ora-creazione        PIC  9(8).
+                   15 OLD-tmo-utente-creazione     PIC  X(10).
+                   15 OLD-tmo-data-ultima-modifica PIC  9(8).
+                   15 OLD-tmo-ora-ultima-modifica  PIC  9(8).
+                   15 OLD-tmo-utente-ultima-modifica           PIC  
+           X(10).
+               10 OLD-tmo-vuoti.
+                   15 old-tmo-tor-chiave.
+                       20 old-tmo-tor-anno PIC  9(4).
+                       20 old-tmo-tor-numero           PIC  9(8).
+                   15 old-tmo-teva-chiave.
+                       20 old-tmo-teva-anno            PIC  9(4).
+                       20 old-tmo-teva-numero          PIC  9(8).
+                   15 old-tmo-num-via  PIC  9(8).
+                   15 old-tmo-dt-via   PIC  9(8).
+                   15 old-tmo-num-vuoto-3          PIC  9(5).
+                   15 old-tmo-esercizio            PIC  x(2).
+                   15 old-tmo-btno-chiave.
+                       20 old-tmo-btno-anno            PIC  9(4).
+                       20 old-tmo-btno-numero          PIC  9(8).
+                   15 old-tmo-alfa-vuoto-1         PIC  x(6).
+                   15 old-tmo-alfa-vuoto-2         PIC  x(20).
+                   15 old-tmo-alfa-vuoto-3         PIC  x(20).
+       77 path-tmp-progmag-zoom        PIC  x(256).
+       01 filler           PIC  9.
+           88 record-ok VALUE IS 1,    WHEN SET TO FALSE  0. 
+       01 filler           PIC  9.
+           88 trovato-ordf VALUE IS 1,    WHEN SET TO FALSE  0. 
+       77 como-articolo    PIC  9(6).
+       77 como-magazzino   PIC  x(3).
+       77 como-giacenza    PIC  s9(6)v999.
+       77 imballo-descrizione          PIC  x(70).
+       01 tipo-operazione  PIC  x.
+           88 movimento VALUE IS "M". 
+           88 evasione VALUE IS "E". 
+           88 rotta VALUE IS "R". 
+           88 bnota VALUE IS "B". 
+       77 filler           PIC  9.
+           88 filtro-articoli VALUE IS 1,    WHEN SET TO FALSE  0. 
+       77 old-ord          PIC  9(8)
+                  VALUE IS 0.
+       77 old-evasa        PIC  9(8)
+                  VALUE IS 0.
+       77 tot-ordf         PIC  999
+                  VALUE IS 0.
+       01 tab-ordf.
+           05 el-chiave-ordf
+                      OCCURS 100 TIMES
+                      INDEXED  idx-ordf.
+               10 el-anno-ordf     PIC  9(4).
+               10 el-num-ordf      PIC  9(8).
+       77 CausaleRotta-s   PIC  x(4).
+       77 MagazRotta-s     PIC  x(3).
+       77 CausaleRotta-c   PIC  x(4).
+       77 MagazRotta-c     PIC  x(3).

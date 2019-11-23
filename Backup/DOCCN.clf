@@ -1,0 +1,246 @@
+; CaseMaker Totem Layout Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[DATALAYOUT_CONTENT]
+DATALAYOUT_UNIQUE_CODE=TOTEM-7DCB13123855-934-115573752
+[DSNENTITY_]
+[CStoAcucobolFileDefinition_]
+m_nType=1
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+m_strPrefix=DOCCN
+{{@FD_m_strDescription
+---------------------------------------------------------------
+    record contatori                  tipo record=CN
+    per gli standard usare tipi da 00 a 99 (DOCCN-TIPO (01 : 02)
+    per gli altri usare tipi alfanumerici
+---------------------------------------------------------------
+ tK. 4276 - fatturazione differita - modifica contatori                                             | suadal 06/02/2012
+          - il bottone "modifica" da zoom contatori premuto su campo codice ditta apriva ges2cn
+            e non ges2di in quanto come zmm_entity su doccn-ditta era riportato doccn e non docdi. 
+------------------------------------------------------------------------------------------------------------------------
+
+ tplvar zmm_title=Contatori
+ tplvar zmm_ver=09.01.00
+ tplvar zmm_class=detail
+ tplvar zmm_masterkey=doccn-ditta 
+ tplvar zmm_returnkey=doccn-key
+
+ ZoomFields seq:
+   01.doccn-ditta
+   02.doccn-esercizio
+   03.doccn-tipo
+   04.doccn-descrizione
+   05.doccn-contatore-e
+   06.doccn-data-num-e
+   07.doccn-fiscale-e
+
+e
+@}}
+[FDITEM0_]
+m_strName=RECORD-DOCCN
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_
+
+@}}
+[FDITEM1_]
+m_strName=DOCCN-CODICE
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1_
+
+
+
+
+@}}
+[FDITEM2_]
+m_strName=DOCCN-CODICE1
+m_strRawPic=X(02)
+m_strPic=X(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM2_
+
+@}}
+[FDITEM3_]
+m_strName=DOCCN-KEY
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM3_
+
+@}}
+[FDITEM4_]
+m_strName=DOCCN-DITTA
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM4_
+$GEN zmm=on,zmm_title=Ditta,zmm_datatype=x,zmm_key=1,zmm_size=03,zmm_align=L,zmm_pos=1,zmm_entity=docdi
+
+@}}
+[FDITEM5_]
+m_strName=DOCCN-ESERCIZIO
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM5_
+$GEN zmm=on,zmm_title=Esercizio,zmm_datatype=x,zmm_size=01,zmm_align=L,zmm_pos=2
+
+@}}
+[FDITEM6_]
+m_strName=DOCCN-TIPO
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM6_
+$GEN zmm=on,zmm_title=Tipo,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=3
+
+@}}
+[FDITEM7_]
+m_strName=RESTO-RECORD-DOCCN
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM7_
+
+@}}
+[FDITEM8_]
+m_strName=DOCCN-DESCRIZIONE
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM8_
+$GEN zmm=on,zmm_title=Descrizione,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=4
+
+@}}
+[FDITEM9_]
+m_strName=DOCCN-CONTATORE
+m_strRawPic=9(18)
+m_strPic=9(18)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM9_
+$GEN type=num,dec=0,size=24,zmm=on,zmm_title=Contatore,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=5
+
+@}}
+[FDITEM10_]
+m_strName=DOCCN-DATA
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM10_
+ copy "groupdate.xfc". | DBMaker
+@}}
+[FDITEM11_]
+m_strName=AA
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=DOCCN-AA
+{{@DataItem_m_strDescriptionFDITEM11_
+
+@}}
+[FDITEM12_]
+m_strName=MM
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=DOCCN-MM
+{{@DataItem_m_strDescriptionFDITEM12_
+
+@}}
+[FDITEM13_]
+m_strName=GG
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=DOCCN-GG
+{{@DataItem_m_strDescriptionFDITEM13_
+
+@}}
+[FDITEM14_]
+m_strName=FILLER
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=DOCCN-DATA
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM14_
+
+@}}
+[FDITEM15_]
+m_strName=DOCCN-DATA-NUM
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM15_
+$GEN type=date,zmm=on,zmm_title=Data,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=6
+
+@}}
+[FDITEM16_]
+m_strName=DOCCN-FISCALE
+m_strRawPic=9(18)
+m_strPic=9(18)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM16_
+$GEN type=num,dec=0,size=24,zmm=on,zmm_title=Fiscale,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=7
+@}}
+[FDITEM17_]
+m_strName=DOCCN-FILLER-RIS
+m_strRawPic=X(2012)
+m_strPic=X(2012)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM17_
+
+@}}
+[CStoAcucobolSL_]
+m_nType=1
+m_bOptional=1
+m_strAssignToName="DOC"
+m_nDevice=4
+m_nFormat=3
+m_nAccessMode=3
+m_strFileStatus=STATUS-DOCCN
+m_nCompression=70
+{{@SL_m_strDescription
+
+T
+-
+)
+E
+@}}
+[SLPKEY_]
+m_strName=DOCCN-CODICE
+m_bUnique=1
+{{@Key_m_strDescription
+
+@}}
+[SLKEYATOM0_]
+m_strName=DOCCN-CODICE

@@ -1,0 +1,231 @@
+      *
+       78  copia                 value "Copia uso int. amm.vo".
+       77  messaggio             pic X(150) value spaces.
+       77  font-size-dply        pic Z(5).
+       77  Arial8B               handle of font.
+       77  CourierNew7           handle of font.
+       77  CourierNew6           handle of font.
+       77  CourierNew9           handle of font.
+       77  CourierNew11          handle of font.
+       77  BitmapSfondoHandle    pic S9(9) comp-4.
+       77  BitmapSfondoNcHandle  pic S9(9) comp-4.
+       77  status-tparamge       pic xx.
+       77  status-btnotacr       pic xx.
+       77  status-brnotacr       pic xx.
+       77  status-tnotacr        pic xx.
+       77  status-rnotacr        pic xx.
+       77  status-tordini        pic xx.
+       77  status-destini        pic xx.
+       77  status-clienti        pic xx.
+       77  status-recapiti       pic xx.
+       77  status-tvettori       pic xx.
+       77  status-articoli       pic xx.
+       77  status-rordini        pic xx.
+       77  status-tcodpag        pic xx.
+       77  status-tivaese        pic xx.
+       77  status-tcaumag        pic xx.
+       77  status-CLI            pic xx.
+                                            
+       77  DestFile              pic x(256).
+       77  NomeFile              pic x(256).
+
+       77  TipoDoc               pic x(50).
+
+       77  tot-solo-cou          pic 9(5)v99.
+       77  tot-cobat             pic 9(5)v99.
+       77  tot-piombo            pic 9(5)v99.
+
+       77  como-data             pic 9(8).
+       77  como-ora              pic 9(8).
+       77  filler                pic 9.
+           88  EsisteRecapito    value 1, false 0.     
+       77  filler                pic 9.
+           88  EsisteDichiarazione  value 1, false 0.
+       77  filler                pic 9 value 0.
+           88  RigheFinali       value 1, false 0.
+       77  filler                pic 9.
+           88  record-ok         value 1, false 0.
+       77  filler                pic 9.
+           88  NewPage           value 1, false 0.
+       77  filler                pic 9.
+           88  PrimaVolta        value 1, false 0.
+       77  filler                pic 9.
+           88  no-cou            value 0.
+           88  si-cou            value 1.
+       77  filler                pic 9.
+           88  no-cobat          value 0.
+           88  si-cobat          value 1.
+       77  filler                pic 9.
+           88  no-piombo         value 0.
+           88  si-piombo         value 1.
+       77  FlagTrovato           pic 9.
+           88  trovato           value 1, false 0.
+       77  FlagTrovataIVA        pic 9.
+           88  TrovataIVA        value 1, false 0.
+       77  controllo             pic xx.
+           88  tutto-ok          value "OK".
+           88  errori            value "ER".      
+       77  filler                pic 9.
+           88  UsaPrimaRiga      value 1.
+           88  UsaSecondaRiga    value 2. 
+       78  BitmapDiSfondo        value "sfondo_fatture.bmp".
+       78  BitmapDiSfondoNc      value "sfondo_fatture_nc.bmp".
+       78  titolo                value "Stampa Fatture".
+       77  NumPagina             pic 999.
+       78  RowsPerPage           value 26.
+       77  WrittenRows           pic 99.
+       77  scelta                pic 9.
+       77  codice-ed             pic z(5).
+       77  filler                pic 9.
+           88 RecLocked          value 1 false 0.
+
+       77  importo-netto         pic 9(9)v99.
+       77  RowsToDo              pic 9(6).
+       77  como-imposta          pic 9(9)v99. |COU + COBAT + PIOMBO 
+       77  como-imponibile       pic 9(9)v99. |IMPONIBILE IVA
+       77  imponibile-merce      pic 9(9)v99.
+       77  tot-imponibile        pic 9(9)v99.
+       77  tot-consumo           pic 9(9)v99.
+       77  tot-cou               pic 9(9)v99.
+       77  tot-iva               pic 9(9)v99.
+       77  tot-fattura           pic 9(9)v99.
+       77  righe-finali          pic 9.
+       77  visualizza-totali     pic x.
+
+       01  tabella-iva           occurs 3. 
+         05 cod-iva              pic x(3).
+         05 tipo-iva             pic 9.
+            88 iva-sigla         value 1, false 0.
+         05 imponibile-iva       pic 9(9)v99.
+         05 importo-iva          pic 9(15)v99.
+         05 articolo-iva         pic x(30).
+
+       77  perce-iva-x           pic x(3).
+       77  perce-iva-9di3        pic 9(3).
+
+       77  riga-scad             pic 9(3)v99.
+
+       77  como-iva              pic 9(9)v999.
+       77  como-iva-2dec         pic 9(9)v99.
+       77  NumStampa             pic 999.
+
+       77  WFONT-STATUS          pic s9(5) value ZERO.
+
+       01 st-intestazione.
+         02  st-riga-cli-rec-1.
+           03 st-cli-ragsoc-1        pic x(40).
+           03 st-rec-ragsoc-1        pic x(40).
+
+         02  st-riga-cli-rec-2.
+           03 st-cli-indirizzo       pic x(40).
+           03 st-rec-indirizzo       pic x(40).
+
+         02  st-riga-cli-rec-3.
+           03 st-cli-cap             pic 9(5) blank zero.
+           03 st-cli-localita        pic x(30).
+           03 st-cli-prov            pic x(2).
+           03 st-rec-cap             pic 9(5) blank zero.
+           03 st-rec-localita        pic x(30).
+           03 st-rec-provincia       pic x(2).
+
+         02 st-riga-int-1.
+           03 st-tor-num-fattura     pic z(8).
+           03 st-tor-data-fattura    pic x(8).
+           03 st-tco-descrizione     pic x(27).
+           03 st-cli-abi             pic X(5).
+           03 st-cli-cab             pic X(5).
+
+         02 st-riga-int-2.
+           03 st-tor-num-ord-cli     pic x(10).
+           03 st-tor-data-ordine     pic x(8).
+           03 st-tor-num-bolla       pic z(8).
+           03 st-tor-data-bolla      pic X(8).
+           03 st-cli-age             pic X(11).
+           03 st-piva-codfis         pic x(16).
+
+         02 st-riga-int-3.
+           03 st-des-ragsoc-1        pic x(40).
+           03 st-des-prog            pic z(5).
+
+         02 st-riga-int-4.
+           03 st-des-indirizzo       pic x(35).
+           03 st-des-localita        pic x(35).
+
+       01 st-riga.
+         05 st-ror-cod-articolo       pic z(6).
+         05 st-art-descrizione        pic x(50).
+         05 st-art-unita-di-misura    pic x(2).
+         05 st-ror-qta                pic zz.zzz.zzz.
+         05 st-ror-imponib-merce      pic zzz.zzz.zz9,99.
+         05 st-ror-imp-consumo        pic z.zz9,99.
+         05 st-ror-imp-cou-cobat      pic z.zz9,99.
+         05 st-importo-netto          pic zzz.zzz.zz9,99.
+         05 st-aliquota               pic zz.
+
+       01 st-riga-omaggio.
+         05 st-ror-cod-articolo-om    pic z(6).
+         05 st-art-descrizione-om     pic x(50).
+         05 st-art-unita-di-misura-om pic x(2).
+         05 st-ror-qta-om             pic zz.zzz.zzz.
+         05 st-ror-omaggio            pic x(14).
+         05 st-iva-omaggio            pic x(30).
+         05 st-aliquota-om            pic zz.
+
+       01 st-riga-tot-imposte.
+         05 st-totale              pic x(50).
+         05 st-valore              pic zzz.zzz.zz9,99 blank zero.
+
+       01 st-riga-dich.
+         05 filler                 pic x.
+         05 st-valori-dich         pic x(71).
+         05 filler                 pic x.
+
+       01 st-riga-totali.
+         05 st-importo             pic zzz.zzz.zz9,99.
+         05 st-aliquota-tot        pic xxx.
+         05 st-imponibile          pic zzz.zzz.zz9,99 blank zero.
+         05 st-importo-iva         pic z.zzz.zzz.zz9,99 blank zero.
+         05 filler                 pic x(2) value " €".
+         05 st-importo-totale      pic z.zzz.zz9,99.
+
+       01 st-riga-totali2.
+         05 st-importo2            pic zzz.zzz.zz9,99.
+         05 st-aliquota-tot2       pic xxx.
+         05 st-imponibile2         pic zzz.zzz.zz9,99 blank zero.
+         05 st-articolo-iva2       pic x(16).
+         05 filler                 pic x(2) value " €".
+         05 st-importo-totale2     pic z.zzz.zz9,99.
+
+       01 st-riga-scadenze.
+         05 scad-num            pic x(2).
+         05 scad-hyphen         pic x(2).
+         05 scad-data           pic x(10).
+         05 scad-div            pic x(2).
+         05 scad-importo        pic ----.--9,99 blank zero.
+         05 scad-end            pic x(10).
+
+       01  st-riga-copia.
+         05 filler                 pic x.
+         05 st-copia               pic x(21) value copia.
+
+       01  filler                        pic x.    
+           88 elaborazione-fatture       value "F".
+           88 elaborazione-manuali       value "M".
+           88 elaborazione-note-credito  value "N".
+
+       01  intestazioni-note pic x(5000).
+       01  intestazione-note pic x(50)   occurs 100 
+                                         redefines intestazioni-note.
+       77  num-righe-note                pic 9(2) value 0.
+       77  idx                           pic 9(3).
+       77  idx-sca                       pic 9(2).
+       77  cont-inizio                   pic 9(3).
+       77  cont-per                      pic 9(3).
+       77  cont-char                     pic 9(3).
+
+       01  filler                        pic 9.
+           88 prima-pagina               value 1 false 0.
+       01  filler                        pic 9.
+           88 exit-perform-int           value 1 false 0.
+LUBEXX 01  filler                        pic 9.
+LUBEXX     88 trovato-lotto              value 1 false 0.

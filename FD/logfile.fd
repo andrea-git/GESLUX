@@ -1,0 +1,21 @@
+       FD  logfile.
+       01 log-rec.
+           05 log-chiave.
+               10 log-data         PIC  9(8).
+               10 log-ora          PIC  9(8).
+               10 log-pgm          PIC  x(20).
+               10 log-oper         PIC  x.
+                   88 log-cancellazione VALUE IS "C". 
+                   88 log-write VALUE IS "W". 
+                   88 log-rewrite VALUE IS "R". 
+           05 log-dati.
+               10 log-chiave-file  PIC  x(20).
+               10 log-utente       PIC  x(20).
+               10 log-descrizione  PIC  x(100).
+               10 log-vuoti.
+                   15 log-num-vuoto-1  PIC  9(15).
+                   15 log-num-vuoto-2  PIC  9(15).
+                   15 log-num-vuoto-3  PIC  9(15).
+                   15 log-alfa-vuoto-1 PIC  X(20).
+                   15 log-alfa-vuoto-2 PIC  X(20).
+                   15 log-alfa-vuoto-3 PIC  X(20).

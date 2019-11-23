@@ -1,0 +1,6 @@
+      *
+       01 LinkBrowser.
+           03 LinkImage        PIC  x(512).
+           03 LinkAbil         PIC  9.
+               88 visualizzazione VALUE IS 0. 
+               88 modifica VALUE IS 1. 

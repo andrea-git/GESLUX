@@ -1,0 +1,37 @@
+       FD  ttipodoc.
+       01 tdo-rec.
+           05 tdo-chiave.
+               10 tdo-codice       PIC  X(2).
+           05 tdo-dati.
+               10 tdo-descrizione  PIC  X(30).
+               10 tdo-caus-trasporto           PIC  X(20).
+               10 tdo-movim-magaz  PIC  X(1).
+                   88 tdo-si-movim VALUE IS "S". 
+                   88 tdo-no-movim VALUE IS "N". 
+               10 tdo-cod-magaz    PIC  X(3).
+               10 tdo-stampa-bolla PIC  X(1).
+                   88 tdo-si-stampa VALUE IS "S". 
+                   88 tdo-no-stampa VALUE IS "N". 
+               10 tdo-emi-fat      PIC  X(1).
+                   88 tdo-si-emissione VALUE IS "S". 
+                   88 tdo-no-emissione VALUE IS "N". 
+               10 tdo-gest-utf     PIC  X(1).
+                   88 tdo-si-utf VALUE IS "S". 
+                   88 tdo-no-utf VALUE IS "N". 
+               10 tdo-autofat-fine-mese        PIC  X(1).
+                   88 tdo-si-autofat VALUE IS "S". 
+                   88 tdo-no-autofat VALUE IS "N". 
+               10 tdo-dati-comuni.
+                   15 tdo-data-creazione           PIC  9(8).
+                   15 tdo-ora-creazione            PIC  9(8).
+                   15 tdo-utente-creazione         PIC  X(10).
+                   15 tdo-data-ultima-modifica     PIC  9(8).
+                   15 tdo-ora-ultima-modifica      PIC  9(8).
+                   15 tdo-utente-ultima-modifica   PIC  X(10).
+               10 tdo-vuoti.
+                   15 tdo-num-vuoto-1  PIC  9(15).
+                   15 tdo-num-vuoto-2  PIC  9(15).
+                   15 tdo-num-vuoto-3  PIC  9(15).
+                   15 tdo-alfa-vuoto-1 PIC  X(20).
+                   15 tdo-alfa-vuoto-2 PIC  X(20).
+                   15 tdo-alfa-vuoto-3 PIC  X(20).

@@ -1,0 +1,43 @@
+      *(( XFD FILE = STO-reva ))
+       FD  STO-reva.
+       01 STO-reva-rec.
+           05 STO-reva-chiave.
+               10 STO-reva-chiave-testa.
+                   15 STO-reva-anno    PIC  9(4).
+                   15 STO-reva-numero  PIC  9(8).
+               10 STO-reva-riga    PIC  9(5).
+           05 STO-reva-dati.
+               10 STO-reva-chiave-progmag.
+                   15 STO-reva-articolo            PIC  9(6).
+                   15 STO-reva-codmag  PIC  x(3).
+                   15 STO-reva-imballo PIC  x(3).
+                   15 STO-reva-peso    PIC  9(5)v9(3).
+               10 STO-reva-qta     PIC  9(8).
+               10 STO-reva-prz-unit            PIC  9(9)v99.
+               10 STO-reva-netto   PIC  9(9)v99.
+               10 STO-reva-imp-cons            PIC  9(4)v99.
+               10 STO-reva-coubat  PIC  9(4)v99.
+               10 STO-reva-add-pb  PIC  9(4)v99.
+               10 STO-reva-chiave-ordf.
+                   15 STO-reva-chiave-testa-ordf.
+                       20 STO-reva-anno-ordf           PIC  9(4).
+                       20 STO-reva-numero-ordf         PIC  9(8).
+                   15 STO-reva-riga-ordf           PIC  9(5).
+               10 STO-reva-stato   PIC  x.
+                   88 STO-reva-attivo VALUE IS "A". 
+                   88 STO-reva-disattivo VALUE IS "D". 
+                   88 STO-reva-bloccato VALUE IS "B". 
+               10 STO-reva-dati-comuni.
+                   15 STO-reva-data-creazione      PIC  9(8).
+                   15 STO-reva-ora-creazione       PIC  9(8).
+                   15 STO-reva-utente-creazione    PIC  X(10).
+                   15 STO-reva-data-modifica       PIC  9(8).
+                   15 STO-reva-ora-modifica        PIC  9(8).
+                   15 STO-reva-utente-modifica     PIC  X(10).
+               10 STO-reva-vuoti.
+                   15 STO-reva-num-vuoto-1         PIC  9(15).
+                   15 STO-reva-num-vuoto-2         PIC  9(15).
+                   15 STO-reva-num-vuoto-3         PIC  9(15).
+                   15 STO-reva-alfa-vuoto-1        PIC  x(20).
+                   15 STO-reva-alfa-vuoto-2        PIC  x(20).
+                   15 STO-reva-alfa-vuoto-3        PIC  x(20).

@@ -1,0 +1,31 @@
+       FD  reltor.
+       01 rlt-rec.
+           05 rlt-chiave.
+               10 rlt-anno         PIC  9(4).
+               10 rlt-numero       PIC  9(8).
+           05 rlt-dati.
+               10 rlt-chiave-bolla.
+                   15 rlt-anno-bolla   PIC  9(4).
+                   15 rlt-num-bolla    PIC  9(8).
+               10 rlt-chiave-split
+                          OCCURS 15 TIMES.
+                   15 rlt-anno-s       PIC  9(4).
+                   15 rlt-numero-s     PIC  9(8).
+               10 rlt-chiave-bolla-split
+                          OCCURS 15 TIMES.
+                   15 rlt-anno-b-s     PIC  9(4).
+                   15 rlt-num-b-s      PIC  9(8).
+               10 rlt-dati-comuni.
+                   15 rlt-data-creazione           PIC  9(8).
+                   15 rlt-ora-creazione            PIC  9(8).
+                   15 rlt-utente-creazione         PIC  X(10).
+                   15 rlt-data-ultima-modifica     PIC  9(8).
+                   15 rlt-ora-ultima-modifica      PIC  9(8).
+                   15 rlt-utente-ultima-modifica   PIC  X(10).
+               10 rlt-vuoti.
+                   15 rlt-num-vuoto-1  PIC  9(15).
+                   15 rlt-num-vuoto-2  PIC  9(15).
+                   15 rlt-num-vuoto-3  PIC  9(15).
+                   15 rlt-alfa-vuoto-1 PIC  X(20).
+                   15 rlt-alfa-vuoto-2 PIC  X(20).
+                   15 rlt-alfa-vuoto-3 PIC  X(20).

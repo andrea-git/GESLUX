@@ -1,0 +1,9 @@
+      *
+       01 utf-daylist-linkage.
+           03 utf-daylist-data PIC  9(8).
+           03 utf-daylist-num-reg          PIC  9(8).
+           03 utf-daylist-path PIC  x(256).
+           03 utf-daylist-tipo-mov         PIC  x.
+               88 utf-daylist-entrate VALUE IS "E". 
+               88 utf-daylist-uscite VALUE IS "U". 
+               88 utf-daylist-tutte VALUE IS "T". 

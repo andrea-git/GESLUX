@@ -1,0 +1,585 @@
+      *------------------------------------------------------------------------------------------------------------------------
+      * lav.4395 prima nota 2008
+      * modificata per deprecazione pni puntoniente                                                      | mxm 24/01/2008 12.37
+      *-----------------------------------------------------------------
+      * tk 484 - pni.dpb utilizzato per corrispettivi veloci                                             |ms 25/07/2008 11.49
+      *
+      *-----------------------------------------------------------------
+      *
+      *
+      * tk 240 - new primanota                                                                           |ms 19/11/2008 8.56
+      *        - clausola di generazione "type=code" per pni-tblva-codice
+      *        - clausola di generazione "type=code" per pni-tblva-codice-intra
+      *        - nuova colonna "pni-codice-cp" (occurs 20)
+      *
+      *-----------------------------------------------------------------------------------------
+      * tk 2034 - Si richiede di inserire nel Wizard anche il campo "descrizione movimento"              |ms 23/06/2009 8.29
+      *           (o descrizione riga) e il campo "imposta".*Risulterebbe particolarmente utile,
+      *           poiché se decido d'inserire movimentazioni attraverso il Wizard potrei evitare di
+      *           modificare, al termine dell'inserimento, la descrizione sulle varie righe di primanota
+      *           inserite. Il campo imposta sarebbe particolarmente utile perché, in caso di registrazione
+      *           di fattura d'acquisto, laddove il fornitore avesse indicato un'imposta diversa da quella
+      *           calcolata da G2 avrei modo di imputarla in maniera corretta. Infatti, la fattura d'acquisto
+      *           va imputata per come letta ed eventuali rettifiche dell'imposta dovranno essere eseguite
+      *           a norma dell'art.26.
+      *
+      *          . aggiunta colonna "pni-tabella-blocca" (occurs 20)
+      *-------------------------------------------------------------------------------------------------------
+      * tk.3313 - Black list iva: DL nr. 40/2010 - Comunicazione telematica operazioni con paesi         |ds 15/09/2010 11.31
+      *           appartenenti black list                                                                |ds 15/09/2010 11.31
+      *           inseriti nuovi campi
+      *------------------------------------------------------------------
+      *
+      * tplvar file_selvar=on
+      *
+       FD  PNI.
+       01 record-pni.
+           05 pni-codice.
+      *$GEN type=num,dec=0,size=11
+               10 pni-progressivo  PIC  9(08).
+           05 resto-record-pni.
+               10 pni-tabella
+                          OCCURS 20 TIMES.
+      *$GEN entity=tbliv
+                   15 pni-tbliv-codice PIC  x(03).
+                   15 pni-imponibile   PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+                   15 pni-imposta      PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+                   15 pni-detraibile   PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+                   15 pni-imponibile-va            PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+                   15 pni-imposta-va   PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+                   15 pni-detraibile-va            PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+               10 pni-tabella-x REDEFINES pni-tabella.
+      *$GEN type=code,entity=tbliv
+                   15 pni-tbliv-codice-01          PIC  x(03).
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imponibile-01            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imposta-01   PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-detraibile-01            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imponibile-va-01         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imposta-va-01            PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-detraibile-va-01         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *
+      *$GEN type=code,entity=tbliv
+                   15 pni-tbliv-codice-02          PIC  x(03).
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imponibile-02            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imposta-02   PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-detraibile-02            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imponibile-va-02         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imposta-va-02            PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-detraibile-va-02         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *
+      *$GEN type=code,entity=tbliv
+                   15 pni-tbliv-codice-03          PIC  x(03).
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imponibile-03            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imposta-03   PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-detraibile-03            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imponibile-va-03         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imposta-va-03            PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-detraibile-va-03         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *
+      *$GEN type=code,entity=tbliv
+                   15 pni-tbliv-codice-04          PIC  x(03).
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imponibile-04            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imposta-04   PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-detraibile-04            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imponibile-va-04         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imposta-va-04            PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-detraibile-va-04         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *
+      *$GEN type=code,entity=tbliv
+                   15 pni-tbliv-codice-05          PIC  x(03).
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imponibile-05            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imposta-05   PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-detraibile-05            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imponibile-va-05         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imposta-va-05            PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02                                   
+      *
+                   15 pni-detraibile-va-05         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *
+      *$GEN type=code,entity=tbliv
+                   15 pni-tbliv-codice-06          PIC  x(03).
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imponibile-06            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imposta-06   PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-detraibile-06            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imponibile-va-06         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imposta-va-06            PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-detraibile-va-06         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *
+      *$GEN type=code,entity=tbliv
+                   15 pni-tbliv-codice-07          PIC  x(03).
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imponibile-07            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imposta-07   PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-detraibile-07            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imponibile-va-07         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imposta-va-07            PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-detraibile-va-07         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *
+      *$GEN type=code,entity=tbliv
+                   15 pni-tbliv-codice-08          PIC  x(03).
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imponibile-08            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imposta-08   PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-detraibile-08            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imponibile-va-08         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imposta-va-08            PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-detraibile-va-08         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *
+      *$GEN type=code,entity=tbliv
+                   15 pni-tbliv-codice-09          PIC  x(03).
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imponibile-09            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imposta-09   PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02                                   
+      *
+                   15 pni-detraibile-09            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imponibile-va-09         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imposta-va-09            PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-detraibile-va-09         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *
+      *$GEN type=code,entity=tbliv
+                   15 pni-tbliv-codice-10          PIC  x(03).
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imponibile-10            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imposta-10   PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-detraibile-10            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imponibile-va-10         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imposta-va-10            PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-detraibile-va-10         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *
+      *$GEN type=code,entity=tbliv
+                   15 pni-tbliv-codice-11          PIC  x(03).
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imponibile-11            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imposta-11   PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-detraibile-11            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imponibile-va-11         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imposta-va-11            PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-detraibile-va-11         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *
+      *$GEN type=code,entity=tbliv
+                   15 pni-tbliv-codice-12          PIC  x(03).
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imponibile-12            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imposta-12   PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-detraibile-12            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imponibile-va-12         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imposta-va-12            PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-detraibile-va-12         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *
+      *$GEN type=code,entity=tbliv
+                   15 pni-tbliv-codice-13          PIC  x(03).
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imponibile-13            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imposta-13   PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-detraibile-13            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imponibile-va-13         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imposta-va-13            PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-detraibile-va-13         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *
+      *$GEN type=code,entity=tbliv
+                   15 pni-tbliv-codice-14          PIC  x(03).
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imponibile-14            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imposta-14   PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-detraibile-14            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imponibile-va-14         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imposta-va-14            PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-detraibile-va-14         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *
+      *$GEN type=code,entity=tbliv
+                   15 pni-tbliv-codice-15          PIC  x(03).
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imponibile-15            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imposta-15   PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-detraibile-15            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02                                   
+      *
+                   15 pni-imponibile-va-15         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imposta-va-15            PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-detraibile-va-15         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *
+      *$GEN type=code,entity=tbliv
+                   15 pni-tbliv-codice-16          PIC  x(03).
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imponibile-16            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imposta-16   PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-detraibile-16            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imponibile-va-16         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imposta-va-16            PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-detraibile-va-16         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *
+      *$GEN type=code,entity=tbliv
+                   15 pni-tbliv-codice-17          PIC  x(03).
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imponibile-17            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imposta-17   PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-detraibile-17            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imponibile-va-17         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imposta-va-17            PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-detraibile-va-17         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *
+      *$GEN type=code,entity=tbliv
+                   15 pni-tbliv-codice-18          PIC  x(03).
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imponibile-18            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imposta-18   PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-detraibile-18            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imponibile-va-18         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imposta-va-18            PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-detraibile-va-18         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *
+      *$GEN type=code,entity=tbliv
+                   15 pni-tbliv-codice-19          PIC  x(03).
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imponibile-19            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imposta-19   PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-detraibile-19            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imponibile-va-19         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imposta-va-19            PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-detraibile-va-19         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *
+      *$GEN type=code,entity=tbliv
+                   15 pni-tbliv-codice-20          PIC  x(03).
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imponibile-20            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-imposta-20   PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=21,dec=02
+                   15 pni-detraibile-20            PIC  s9(13)v9(02)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imponibile-va-20         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-imposta-va-20            PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=23,dec=02
+                   15 pni-detraibile-va-20         PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+               10 pni-codice-conto.
+      *$GEN type=combobox,comboclass=generic_tipo_cfm,comboentity=pni-tipo-cfm-e3
+      *
+                   15 pni-tipo-cfm     PIC  x(01).
+                       88 pni-tipo-cfm-88 VALUE IS "C" "F" "M". 
+                       88 pni-tipo-cfm-c VALUE IS "C". 
+                       88 pni-tipo-cfm-f VALUE IS "F". 
+                       88 pni-tipo-cfm-m VALUE IS "M". 
+      *$GEN type=code,entity=var(pni-tipo-cfm-e3)
+                   15 pni-codice-cfm   PIC  x(08).
+      *$GEN type=code, entity=tblva
+               10 pni-tblva-codice PIC  x(03).
+      *$GEN type=code, entity=tblva
+               10 pni-tblva-codice-intra       PIC  x(03).
+      *$GEN type=num,dec=3,size=24
+               10 pni-importo-va-intra         PIC  s9(15)v9(03)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *
+      *
+               10 pni-tabella-contropartite.
+      *$GEN type=code,entity=mas
+                   15 pni-codice-cp-01 PIC  x(08).
+      *$GEN type=code,entity=mas
+                   15 pni-codice-cp-02 PIC  x(08).
+      *$GEN type=code,entity=mas
+                   15 pni-codice-cp-03 PIC  x(08).
+      *$GEN type=code,entity=mas
+                   15 pni-codice-cp-04 PIC  x(08).
+      *$GEN type=code,entity=mas
+                   15 pni-codice-cp-05 PIC  x(08).
+      *$GEN type=code,entity=mas
+                   15 pni-codice-cp-06 PIC  x(08).
+      *$GEN type=code,entity=mas
+                   15 pni-codice-cp-07 PIC  x(08).
+      *$GEN type=code,entity=mas
+                   15 pni-codice-cp-08 PIC  x(08).
+      *$GEN type=code,entity=mas
+                   15 pni-codice-cp-09 PIC  x(08).
+      *$GEN type=code,entity=mas
+                   15 pni-codice-cp-10 PIC  x(08).
+      *$GEN type=code,entity=mas
+                   15 pni-codice-cp-11 PIC  x(08).
+      *$GEN type=code,entity=mas
+                   15 pni-codice-cp-12 PIC  x(08).
+      *$GEN type=code,entity=mas
+                   15 pni-codice-cp-13 PIC  x(08).
+      *$GEN type=code,entity=mas
+                   15 pni-codice-cp-14 PIC  x(08).
+      *$GEN type=code,entity=mas
+                   15 pni-codice-cp-15 PIC  x(08).
+      *$GEN type=code,entity=mas
+                   15 pni-codice-cp-16 PIC  x(08).
+      *$GEN type=code,entity=mas
+                   15 pni-codice-cp-17 PIC  x(08).
+      *$GEN type=code,entity=mas
+                   15 pni-codice-cp-18 PIC  x(08).
+      *$GEN type=code,entity=mas
+                   15 pni-codice-cp-19 PIC  x(08).
+      *$GEN type=code,entity=mas
+                   15 pni-codice-cp-20 PIC  x(08).
+               10 pni-tabella-contropartite-x REDEFINES 
+           pni-tabella-contropartite.
+                   15 pni-codice-cp    PIC  x(08)
+                              OCCURS 20 TIMES.
+               10 pni-tabella-blocca.
+                   15 pni-blocca-01-l  PIC  9.
+                   15 pni-blocca-02-l  PIC  9.
+                   15 pni-blocca-03-l  PIC  9.
+                   15 pni-blocca-04-l  PIC  9.
+                   15 pni-blocca-05-l  PIC  9.
+                   15 pni-blocca-06-l  PIC  9.
+                   15 pni-blocca-07-l  PIC  9.
+                   15 pni-blocca-08-l  PIC  9.
+                   15 pni-blocca-09-l  PIC  9.
+                   15 pni-blocca-10-l  PIC  9.
+                   15 pni-blocca-11-l  PIC  9.
+                   15 pni-blocca-12-l  PIC  9.
+                   15 pni-blocca-13-l  PIC  9.
+                   15 pni-blocca-14-l  PIC  9.
+                   15 pni-blocca-15-l  PIC  9.
+                   15 pni-blocca-16-l  PIC  9.
+                   15 pni-blocca-17-l  PIC  9.
+                   15 pni-blocca-18-l  PIC  9.
+                   15 pni-blocca-19-l  PIC  9.
+                   15 pni-blocca-20-l  PIC  9.
+               10 pni-tabella-blocca-x REDEFINES pni-tabella-blocca.
+                   15 pni-blocca-l     PIC  9
+                              OCCURS 20 TIMES.
+      *
+      *
+      *$GEN type=code,entity=frn
+               10 pni-codice-frn-origine       PIC  x(08).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+               10 pni-rettifica    PIC  x(01).
+                   88 pni-rettifica-si VALUE IS "S". 
+                   88 pni-rettifica-no VALUE IS " ". 
+      *(( XFD DATE=yyyymm ))
+      *$GEN type=dateyyyymm,
+               10 pni-data-periodo-rett        PIC  9(06).
+      *
+      *
+      ****        10  pni-filler                      pic  x(758).                                       |ms 19/11/2008 9.05
+      ***        10  pni-filler                      pic  x(598).                |ms 19/11/2008 9.05     |ms 22/06/2009 16.19
+      *        10  pni-filler                      pic  x(578).                                          |ds 15/09/2010 9.28
+               10 pni-filler       PIC  x(563).
+               10 pni-filler-ris   PIC  x(40).

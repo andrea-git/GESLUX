@@ -1,0 +1,28 @@
+      *
+      *
+      *
+      *0
+       FD  usr-tel.
+       01 usr-rec.
+           05 usr-chiave.
+      * PROMPT =USER ID
+               10 usr-codice       PIC  X(20).
+           05 usr-dati.
+      * PROMPT =NAME
+               10 usr-ind-from     PIC  X(256).
+               10 usr-smtp-server  PIC  X(256).
+      *(( XFD NAME = usr-smtp-server_1 ))
+               10 usr-smtp-port    PIC  9(5).
+      * PROMPT =Password
+               10 usr-pop3-server  PIC  X(256).
+      * PROMPT =Password
+               10 usr-pop3-port    PIC  9(5).
+               10 usr-utente       PIC  x(256).
+               10 usr-pwd          PIC  x(256).
+               10 usr-dati-comuni.
+                   15 usr-data-creazione           PIC  9(8).
+                   15 usr-ora-creazione            PIC  9(8).
+                   15 usr-utente-creazione         PIC  x(10).
+                   15 usr-data-ultima-modifica     PIC  9(8).
+                   15 usr-ora-ultima-modifica      PIC  9(8).
+                   15 usr-utente-ultima-modifica   PIC  x(10).

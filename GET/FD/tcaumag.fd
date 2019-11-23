@@ -1,0 +1,152 @@
+       FD  tcaumag.
+       01 tca-rec.
+           05 tca-chiave.
+               10 tca-codice       PIC  x(4).
+           05 tca-dati.
+               10 tca-descrizione  PIC  X(40).
+               10 tca-tipo         PIC  x.
+                   88 tca-cliente VALUE IS "C". 
+                   88 tca-fornitore VALUE IS "F". 
+               10 tca-movimentazioni.
+                   15 tca-agg-ultimo   PIC  X.
+                       88 tca-si-aggiorna VALUE IS "S". 
+                       88 tca-no-aggiorna VALUE IS "N". 
+                   15 tca-movim-giacenza           PIC  X.
+                       88 tca-movim-giac-pos VALUE IS "+". 
+                       88 tca-movim-giac-neg VALUE IS "-". 
+                       88 tca-no-movim-giac VALUE IS SPACE. 
+                   15 tca-movim-impegnato          PIC  X.
+                       88 tca-movim-imp-pos VALUE IS "+". 
+                       88 tca-movim-imp-neg VALUE IS "-". 
+                       88 tca-no-movim-imp VALUE IS SPACE. 
+                   15 tca-movim-ordinato           PIC  X.
+                       88 tca-movim-ord-pos VALUE IS "+". 
+                       88 tca-movim-ord-neg VALUE IS "-". 
+                       88 tca-no-movim-ord VALUE IS SPACE. 
+                   15 tca-movim-iniz   PIC  X.
+                       88 tca-movim-iniz-pos VALUE IS "+". 
+                       88 tca-movim-iniz-neg VALUE IS "-". 
+                       88 tca-no-movim-iniz VALUE IS SPACE. 
+                   15 tca-movim-acquisti           PIC  X.
+                       88 tca-movim-acq-pos VALUE IS "+". 
+                       88 tca-movim-acq-neg VALUE IS "-". 
+                       88 tca-no-movim-acq VALUE IS SPACE. 
+                   15 tca-movim-vendite            PIC  X.
+                       88 tca-movim-ven-pos VALUE IS "+". 
+                       88 tca-movim-ven-neg VALUE IS "-". 
+                       88 tca-no-movim-ven VALUE IS SPACE. 
+                   15 tca-movim-var-inv            PIC  X.
+                       88 tca-movim-var-inv-pos VALUE IS "+". 
+                       88 tca-movim-var-inv-neg VALUE IS "-". 
+                       88 tca-no-movim-var-inv VALUE IS SPACE. 
+                   15 tca-movim-resi-for           PIC  X.
+                       88 tca-movim-resi-for-pos VALUE IS "+". 
+                       88 tca-movim-resi-for-neg VALUE IS "-". 
+                       88 tca-no-movim-resi-for VALUE IS SPACE. 
+                   15 tca-movim-resi-da-cli        PIC  X.
+                       88 tca-movim-resi-cli-pos VALUE IS "+". 
+                       88 tca-movim-resi-cli-neg VALUE IS "-". 
+                       88 tca-no-movim-resi-cli VALUE IS SPACE. 
+                   15 tca-movim-giac-periodo       PIC  X.
+                       88 tca-movim-giac-periodo-pos VALUE IS "+". 
+                       88 tca-movim-giac-periodo-neg VALUE IS "-". 
+                       88 tca-no-movim-giac-periodo VALUE IS SPACE. 
+                   15 tca-uscite-lav   PIC  X.
+                       88 tca-uscite-lav-pos VALUE IS "+". 
+                       88 tca-uscite-lav-neg VALUE IS "-". 
+                       88 tca-no-uscite-lav VALUE IS SPACE. 
+                   15 tca-entrate-lav  PIC  X.
+                       88 tca-entrate-lav-pos VALUE IS "+". 
+                       88 tca-entrate-lav-neg VALUE IS "-". 
+                       88 tca-no-entrate-lav VALUE IS SPACE. 
+                   15 tca-imponibile   PIC  x.
+                       88 tca-imponibile-pos VALUE IS "+". 
+                       88 tca-imponibile-neg VALUE IS "-". 
+               10 tca-altri-dati.
+                   15 tca-caus-trasporto           PIC  X(20).
+                   15 tca-contropartita            PIC  x(8).
+                   15 tca-movim-magaz  PIC  X(1).
+                       88 tca-si-movim VALUE IS "S". 
+                       88 tca-no-movim VALUE IS "N". 
+                   15 tca-cod-magaz    PIC  X(3).
+                   15 tca-stampa-bolla PIC  X(1).
+                       88 tca-si-stampa VALUE IS "S". 
+                       88 tca-no-stampa VALUE IS "N". 
+                   15 tca-emi-fat      PIC  X(1).
+                       88 tca-si-emissione VALUE IS "S". 
+                       88 tca-no-emissione VALUE IS "N". 
+                   15 tca-gest-utf     PIC  X(1).
+                       88 tca-si-utf VALUE IS "S". 
+                       88 tca-no-utf VALUE IS "N". 
+                   15 tca-mov-zero     PIC  X(1).
+                       88 tca-si-zero VALUE IS "S". 
+                       88 tca-no-zero VALUE IS "N". 
+                   15 tca-trasporto    PIC  X(1).
+                       88 tca-si-tras VALUE IS "S". 
+                       88 tca-no-tras VALUE IS "N". 
+                   15 tca-statistiche  PIC  X(1).
+                       88 tca-si-stat VALUE IS "S". 
+                       88 tca-no-stat VALUE IS "N". 
+               10 tca-dati-comuni.
+                   15 tca-data-creazione           PIC  9(8).
+                   15 tca-ora-creazione            PIC  9(8).
+                   15 tca-utente-creazione         PIC  x(10).
+                   15 tca-data-ultima-modifica     PIC  9(8).
+                   15 tca-ora-ultima-modifica      PIC  9(8).
+                   15 tca-utente-ultima-modifica   PIC  x(10).
+               10 tca-vuoti.
+                   15 tca-movim-speciale           PIC  X(1).
+                       88 tca-si-speciale VALUE IS "S". 
+                       88 tca-no-speciale VALUE IS "N". 
+                   15 tca-ord-forn     PIC  9.
+                       88 tca-si-ord-forn VALUE IS 1. 
+                       88 tca-no-ord-forn VALUE IS 0. 
+      *(( XFD NAME = tca-gest-utf_1 ))
+                   15 tca-prezzo-reso  PIC  9.
+                       88 tca-prezzo-reso-si VALUE IS 1. 
+                       88 tca-prezzo-reso-no VALUE IS 0. 
+      *(( XFD NAME = tca-gest-utf_1_1 ))
+                   15 tca-cap-obbligatorio         PIC  9.
+                       88 tca-cap-obbligatorio-si VALUE IS 1. 
+                       88 tca-cap-obbligatorio-no VALUE IS 0. 
+      *(( XFD NAME = tca-gest-utf_1_1_1 ))
+                   15 tca-nota-credito PIC  9.
+                       88 tca-nota-credito-si VALUE IS 1. 
+                       88 tca-nota-credito-no VALUE IS 0. 
+      *(( XFD NAME = tca-gest-utf_1_1_2 ))
+                   15 tca-tipo-nota    PIC  9.
+                       88 tca-tipo-nota-reso VALUE IS 1. 
+                       88 tca-tipo-nota-prz VALUE IS 2. 
+                       88 tca-tipo-nota-abbuono VALUE IS 3. 
+                   15 tca-num-vuoto-1  PIC  9(9).
+                   15 tca-num-vuoto-2  PIC  9(15).
+                   15 tca-num-vuoto-3  PIC  9(15).
+                   15 tca-uscite-lav2  PIC  X.
+                       88 tca-uscite-lav2-pos VALUE IS "+". 
+                       88 tca-uscite-lav2-neg VALUE IS "-". 
+                       88 tca-no-uscite-lav2 VALUE IS SPACE. 
+                   15 tca-entrate-lav2 PIC  X.
+                       88 tca-entrate-lav2-pos VALUE IS "+". 
+                       88 tca-entrate-lav2-neg VALUE IS "-". 
+                       88 tca-no-entrate-lav2 VALUE IS SPACE. 
+      *(( XFD NAME = tca-entrate-lav2_1 ))
+                   15 tca-giac-bloc    PIC  X.
+                       88 tca-giac-bloc-pos VALUE IS "+". 
+                       88 tca-giac-bloc-neg VALUE IS "-". 
+                       88 tca-no-giac-bloc VALUE IS SPACE. 
+                   15 tca-cod-pagamento            PIC  x(3).
+                   15 tca-riordino     PIC  x.
+                       88 tca-riordino-si VALUE IS "S". 
+                       88 tca-riordino-no VALUE IS "N" " ". 
+                   15 tca-blocco-modeva            PIC  x.
+                       88 tca-blocco-modeva-si VALUE IS "S". 
+                       88 tca-blocco-modeva-no VALUE IS "N" " ". 
+                   15 tca-invio-utf-estero         PIC  x.
+                       88 tca-invio-utf-estero-ai VALUE IS "S". 
+                       88 tca-invio-utf-estero-no VALUE IS "N" " ". 
+      *(( XFD NAME = tca-alfa-vuoto-1_1 ))
+                   15 tca-causale-EDI  PIC  x(3).
+      *(( XFD NAME = tca-alfa-vuoto-1_1 ))
+                   15 tca-alfa-vuoto-1 PIC  x(8).
+                   15 tca-alfa-vuoto-2 PIC  x(20).
+                   15 tca-alfa-vuoto-3 PIC  x(20).

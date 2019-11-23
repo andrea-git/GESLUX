@@ -1,0 +1,7 @@
+      *
+       01 copia-arc-linkage.
+           05 link-status
+                      USAGE IS SIGNED-SHORT.
+           05 link-elab        PIC  x.
+               88 link-consolidamento VALUE IS "C". 
+               88 link-azzeramento-fine-anno VALUE IS "A". 

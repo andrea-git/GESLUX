@@ -1,0 +1,8 @@
+       FD  zoom-tmp-causali.
+       01 zoom-tca-rec.
+           05 zoom-tca-chiave.
+               10 zoom-tca-codice  PIC  x(4).
+           05 tca-dati.
+               10 zoom-tca-descrizione         PIC  X(40).
+               10 zoom-tca-codmag  PIC  x(3).
+               10 zoom-tca-desmag  PIC  x(40).

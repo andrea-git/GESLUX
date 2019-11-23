@@ -1,0 +1,25 @@
+       FD  note-cont.
+       01 noco-rec.
+           05 noco-chiave.
+               10 noco-anno        PIC  9(4).
+               10 noco-numero      PIC  9(8).
+           05 noco-dati.
+               10 noco-contestazioni.
+                   15 noco-contestazioni-el
+                              OCCURS 5 TIMES.
+                       20 noco-anno-cont   PIC  9(4).
+                       20 noco-numero-cont PIC  9(8).
+               10 noco-dati-comuni.
+                   15 noco-data-creazione          PIC  9(8).
+                   15 noco-ora-creazione           PIC  9(8).
+                   15 noco-utente-creazione        PIC  X(10).
+                   15 noco-data-modifica           PIC  9(8).
+                   15 noco-ora-modifica            PIC  9(8).
+                   15 noco-utente-modifica         PIC  X(10).
+               10 noco-vuoti.
+                   15 noco-num-vuoto-1 PIC  9(15).
+                   15 noco-num-vuoto-2 PIC  9(15).
+                   15 noco-num-vuoto-3 PIC  9(15).
+                   15 noco-alfa-vuoto-1            PIC  X(20).
+                   15 noco-alfa-vuoto-2            PIC  X(20).
+                   15 noco-alfa-vuoto-3            PIC  X(20).

@@ -1,0 +1,17 @@
+       01  cke-linkage.
+         05 cke-chiave.
+            10 cke-anno                 pic 9(4).
+            10 cke-numero               pic 9(8).
+         05 cke-stato                   signed-short.
+         05 cke-errori.
+            08 cke-errore               occurs 9999.
+            10 cke-articolo             pic 9(6).
+            10 cke-coubat               pic 9.
+               88 cke-coubat-er         value 1.
+               88 cke-coubat-ok         value 0.
+            10 cke-imp-cons             pic 9.
+               88 cke-imp-cons-er       value 1.
+               88 cke-imp-cons-ok       value 0.
+            10 cke-add-pb               pic 9.
+               88 cke-add-pb-er         value 1.
+               88 cke-add-pb-ok         value 0.

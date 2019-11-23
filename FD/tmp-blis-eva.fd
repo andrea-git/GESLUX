@@ -1,0 +1,6 @@
+      *(( XFD FILE = tmp-blis-eva ))
+       FD  tmp-blis-eva.
+       01 tblis-rec.
+           05 tblis-chiave.
+               10 tblis-blister-id PIC  9(6).
+           05 tblis-evasi      PIC  9(5).

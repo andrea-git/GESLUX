@@ -1,0 +1,14 @@
+      *
+       01  stgiang-linkage.
+           05 stgiang-path-tmp     pic x(256).
+
+           05 stgiang-filtri.
+              10 stgiang-articoli.
+                 15 stgiang-el-articolo PIC  9(6) OCCURS 10000 TIMES.
+              10 stgiang-promo        pic x(100).
+              10 stgiang-gdo          pic x(5).
+              10 stgiang-cli          pic 9(5).
+              10 stgiang-data         pic 99/99/9999.
+              10 stgiang-dt-cons-da   pic 99/99/9999.
+              10 stgiang-dt-cons-a    pic 99/99/9999.
+

@@ -1,0 +1,17 @@
+      *(( XFD FILE = tmp-gdo ))
+       FD  tmp-modulinv.
+       01 tmod-rec.
+           05 tmod-chiave.
+               10 tmod-mag         PIC  x(3).
+               10 tmod-articolo    PIC  z(6).
+               10 tmod-imballo     PIC  x(3).
+               10 tmod-peso        PIC  9(5)v999.
+           05 tmod-dati.
+               10 tmod-marca       PIC  z(4).
+               10 tmod-des-marca   PIC  x(50).
+               10 tmod-art-descrizione         PIC  x(50).
+               10 tmod-des-imballo PIC  x(50).
+               10 tmod-qta-imballi PIC  z.zz9.
+               10 tmod-utf         PIC  x.
+               10 tmod-giacenza    PIC  s9(8).
+               10 tmod-prezzo      PIC  ----.---.---.--9,99.

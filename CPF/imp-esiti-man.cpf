@@ -1,0 +1,2045 @@
+; CaseMaker Totem Program Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[MONITOR_FILE]
+
+
+[PROGRAM_CONTENT]
+QUIT_CONFIRM=0
+ANSI_FORMAT=1
+MAIN_SCREEN_NAME=Form1
+BEFORE_PROGRAM=ginqui-Ev-Before-Program
+AFTER_PROGRAM=ginqui-Ev-After-Program
+PROGRAM_UNIQUE_CODE=TOTEM-7E3AA205633-402-3206230339
+
+{{@DESCRIPTION:
+
+@}}
+
+[WORKING_STORAGE]
+m_nType=1
+m_strName=Working Storage
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionWK
+
+@}}
+[FDITEM0_WK]
+m_strName=titolo
+m_strDefaultValue="Geslux - Importazione Esiti Consegna"
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_WK
+
+@}}
+[FDITEM1_WK]
+m_strName=Small-Font
+m_nUsage=37
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1_WK
+
+@}}
+[FDITEM2_WK]
+m_strName=Default-Font
+m_nUsage=38
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM2_WK
+
+@}}
+[FDITEM3_WK]
+m_strName=form1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM3_WK
+
+@}}
+[FDITEM4_WK]
+m_strName=AUTO-ID
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM4_WK
+
+@}}
+[FDITEM5_WK]
+m_strName=ok-73x21-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM5_WK
+
+@}}
+[FDITEM6_WK]
+m_strName=cancel-73x21-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM6_WK
+
+@}}
+[FDITEM7_WK]
+m_strName=Form1-Tb-1-Handlea
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM7_WK
+
+@}}
+[FDITEM8_WK]
+m_strName=ESCI-73X21-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM8_WK
+
+@}}
+[FDITEM9_WK]
+m_strName=bottone-ok-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM9_WK
+
+@}}
+[FDITEM10_WK]
+m_strName=bottone-cancel-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM10_WK
+
+@}}
+[FDITEM11_WK]
+m_strName=Verdana12-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM11_WK
+
+@}}
+[FDITEM12_WK]
+m_strName=Verdana12B-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM12_WK
+
+@}}
+[FDITEM13_WK]
+m_strName=toolbar-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM13_WK
+
+@}}
+[FDITEM14_WK]
+m_strName=E-ESCI
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM14_WK
+
+@}}
+[FDITEM15_WK]
+m_strName=E-CERCA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM15_WK
+
+@}}
+[FDITEM16_WK]
+m_strName=cbo-doc-buf
+m_strRawPic=x(30)
+m_strPic=x(30)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM16_WK
+
+@}}
+[FDITEM17_WK]
+m_strName=BOTTONE-STAMPA-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM17_WK
+
+@}}
+[FDITEM18_WK]
+m_strName=BOTTONE-EXIT-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM18_WK
+
+@}}
+[FDITEM19_WK]
+m_strName=form2-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM19_WK
+
+@}}
+[FDITEM20_WK]
+m_strName=Courier-New18-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM20_WK
+
+@}}
+[FDITEM21_WK]
+m_strName=STATUS-tvettori
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM21_WK
+
+@}}
+[FDITEM22_WK]
+m_strName=Valid-STATUS-tvettori
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM22_WK
+
+@}}
+[FDITEM23_WK]
+m_strName=STATUS-vettel
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM23_WK
+
+@}}
+[FDITEM24_WK]
+m_strName=Valid-STATUS-vettel
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM24_WK
+
+@}}
+[FDITEM25_WK]
+m_strName=ef-vet-buf
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM25_WK
+
+@}}
+[FDITEM26_WK]
+m_strName=lbl-vet-buf
+m_strRawPic=X(40)
+m_strPic=X(40)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM26_WK
+
+@}}
+
+
+[LINKAGE_SECTION]
+m_nType=1
+m_strName=Linkage Section
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionLK
+
+@}}
+[FDITEM0_LK]
+m_strName=LK-BLOCKPGM
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM0_LK
+
+@}}
+[FDITEM1_LK]
+m_strName=LK-BL-PROG-ID
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM1_LK
+
+@}}
+[FDITEM2_LK]
+m_strName=LK-BL-DATA
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM2_LK
+
+@}}
+[FDITEM3_LK]
+m_strName=LK-BL-ORA
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM3_LK
+
+@}}
+[FDITEM4_LK]
+m_strName=LK-BL-TIPO-OP
+m_strRawPic=9(1)
+m_strPic=9(1)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM4_LK
+
+@}}
+[FDITEM5_LK]
+m_strName=LK-BL-LETTURA
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM5_LK
+
+@}}
+[FDITEM6_LK]
+m_strName=LK-BL-SCRITTURA
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=2
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM6_LK
+
+@}}
+[FDITEM7_LK]
+m_strName=LK-BL-CANCELLAZIONE
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=3
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM7_LK
+
+@}}
+[FDITEM8_LK]
+m_strName=LK-BL-USO
+m_strRawPic=9(1)
+m_strPic=9(1)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM8_LK
+
+@}}
+[FDITEM9_LK]
+m_strName=LK-BL-IN-USO
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM9_LK
+
+@}}
+[FDITEM10_LK]
+m_strName=LK-HND-WIN
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM10_LK
+
+@}}
+[FDITEM11_LK]
+m_strName=USER-CODI
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=common-linkage.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM11_LK
+
+@}}
+[FDITEM12_LK]
+m_strName=LIVELLO-ABIL
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=common-linkage.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM12_LK
+
+@}}
+
+
+{{@SCREEN:
+*   Screen Painter Data
+*   Schema 6.0
+*
+BEGIN-SPDATA-6.1A
+
+GRAPHICAL-SCREEN
+
+Begin Screen Form1
+   PREFIX            = Screen4
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = Form1
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 18
+   Cell Width        = 10
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = FALSE
+   Font              = Verdana/12/C0/@Occidentale
+   Font Variable     = Verdana12-Occidentale
+   Handle Variable   = form1-Handle
+   Height in Cells   = TRUE
+   Help ID           = 0
+   Label Offset      = 23
+   Lines             = 8,11
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = FALSE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 38,30
+   System Menu       = TRUE
+   Title Bar         = TRUE
+   Title Variable    = TITOLO
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = TRUE
+   Window Type       = Independent
+   Wrap              = FALSE
+   Event Procedure   = Screen4-Event-Proc
+   Begin Frame frame-limiti
+      SCREEN-COL        = 1,60
+      SCREEN-LINE       = 1,50
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = frame-limiti
+      3D Style          = Normal
+      Alternate         = FALSE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,60
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Font              = Default Font
+      Full Height       = FALSE
+      Height in Cells   = TRUE
+      Help ID           = 0
+      High Color        = 0
+      ID                = 9
+      Line              = 1,50
+      Lines             = 4,50
+      Lines Unit        = Default
+      Low Color         = 0
+      Size              = 36,90
+      Size Unit         = Default
+      Tab Order         = 1
+      Thickness         = Default
+      Title             = "Selezione limiti"
+      Title Position    = 2:Top center
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Begin Entry-Field ef-vet
+         SCREEN-COL        = 10,60
+         SCREEN-LINE       = 3,50
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = ef-vet
+         Auto              = FALSE
+         Auto Decimal      = 0
+         Border            = Boxed
+         Case              = Mixed
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 513
+         Column            = 10,00
+         Csize             = 0
+         Csize Unit        = Default
+         Cursor            = 0
+         Cursor Col        = 0
+         Cursor Row        = 0
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         Hint              = .
+         ID                = 6
+         ID Variable       = AUTO-ID
+         Justification     = Right
+         Line              = 3,00
+         Lines             = 1,33
+         Lines Unit        = Default
+         Max Lines         = 0
+         Max Text          = 5
+         Max Value         = 0
+         Min Value         = 0
+         No AutoSel        = FALSE
+         No Tab            = FALSE
+         Notify Change     = FALSE
+         Numeric           = TRUE
+         Occurs            = 0
+         Read Only         = FALSE
+         Required          = FALSE
+         Secure            = FALSE
+         Size              = 6,00
+         Size Unit         = Default
+         Style             = Singleline
+         Tab Order         = 1
+         Use Return        = FALSE
+         Use Tab           = FALSE
+         Value Multiple    = FALSE
+         Value Picture     = 9(5)
+         Value Variable    = ef-vet-buf
+         Visible           = NONE
+         Width in Cells    = TRUE
+         My Property       = "ZOOM="
+         Before Procedure  = Screen4-Ef-1-BeforeProcedure
+         After Procedure   = Screen4-Ef-1-AfterProcedure
+      End
+      Begin CsCtrl.Custom1 Label Screen4-Custom1-2
+         CUST-SYMBOL       = Custom1
+         CUST-MODIFYFLAG   = 000000000000110000001000000000000000000000000000000
+         SCREEN-COL        = 4,10
+         SCREEN-LINE       = 2,39
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen4-Custom1-2
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 3,50
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 8
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 1,89
+         Lines             = 0,50
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 2,20
+         Size Unit         = Default
+         Tab Order         = 2
+         Title             = "CUSTOM CONTROL"
+         Transparent       = TRUE
+         Visible           = NONE
+         Visible Variable  = v-custom
+         Width in Cells    = FALSE
+      End
+      Begin Label Screen4-La-1
+         SCREEN-COL        = 2,60
+         SCREEN-LINE       = 3,50
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen4-La-1
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 2,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 3
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 3,00
+         Lines             = 1,33
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 7,00
+         Size Unit         = Default
+         Tab Order         = 3
+         Title             = "Vettore:"
+         Transparent       = TRUE
+         Visible           = NONE
+         Width in Cells    = TRUE
+      End
+      Begin CsCtrl.blockpgm Label Screen4-blockpgm-1
+         CUST-SYMBOL       = blockpgm
+         CUST-MODIFYFLAG   = 000000000000000000000000000000000000000000000000000
+         SCREEN-COL        = 22,20
+         SCREEN-LINE       = 2,83
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen4-blockpgm-1
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 21,60
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 1
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 2,33
+         Lines             = 1,56
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 2,50
+         Size Unit         = Default
+         Tab Order         = 4
+         Title             = "BlockPgm"
+         Transparent       = TRUE
+         Visible           = NONE
+         Visible Variable  = v-custom
+         Width in Cells    = TRUE
+      End
+      Begin Label lbl-vet
+         SCREEN-COL        = 17,60
+         SCREEN-LINE       = 3,50
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = lbl-vet
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 5
+         Column            = 17,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 2
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 3,00
+         Lines             = 1,33
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 20,00
+         Size Unit         = Default
+         Tab Order         = 5
+         Title             = "Vettore:"
+         Title Picture     = X(40)
+         Title Variable    = lbl-vet-buf
+         Transparent       = TRUE
+         Visible           = NONE
+         Width in Cells    = TRUE
+      End
+   End
+   Begin Frame Screen4-Fr-1
+      SCREEN-COL        = 1,00
+      SCREEN-LINE       = 6,28
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen4-Fr-1
+      3D Style          = Lowered
+      Alternate         = FALSE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Font              = Default Font
+      Full Height       = FALSE
+      Height in Cells   = TRUE
+      Help ID           = 0
+      High Color        = 0
+      ID                = 29
+      Line              = 6,28
+      Lines             = 2,83
+      Lines Unit        = Default
+      Low Color         = 0
+      Size              = 38,30
+      Size Unit         = Default
+      Tab Order         = 2
+      Thickness         = Default
+      Title Position    = 0:Unaligned
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Begin Push-Button pb-ok
+         SCREEN-COL        = 22,90
+         SCREEN-LINE       = 6,97
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = pb-ok
+         Bitmap            = "..\RESOURCE\BOTTONE-OK.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = BOTTONE-OK-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 22,90
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 1000
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 201
+         Line              = 1,69
+         Lines             = 1,56
+         Lines in Pixels   = 30
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = FALSE
+         Size              = 7,10
+         Size in Pixels    = 73
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 1
+         Termination Value = 0
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Before Procedure  = pb-ok-BeforeProcedure
+         After Procedure   = pb-ok-AfterProcedure
+         Link To           = pb-ok-LinkTo
+      End
+      Begin Push-Button pb-annulla
+         SCREEN-COL        = 30,80
+         SCREEN-LINE       = 6,97
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = pb-annulla
+         Bitmap            = "..\RESOURCE\BOTTONE-CANCEL.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = BOTTONE-CANCEL-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 30,80
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 27
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 202
+         Line              = 1,69
+         Lines             = 1,56
+         Lines in Pixels   = 30
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 7,10
+         Size in Pixels    = 73
+         Size Unit         = Default
+         Style             = Escape Button
+         Tab Order         = 2
+         Termination Value = 0
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Before Procedure  = pb-annulla-BeforeProcedure
+         After Procedure   = pb-annulla-AfterProcedure
+      End
+   End
+   Begin Toolbar Form1-Tb-1a
+      SCREEN-LINE       = 1,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 1
+      (Name)            = Form1-Tb-1a
+      Cell              = FALSE
+      Color             = 0
+      Font              = Default Font
+      Handle Variable   = Form1-Tb-1-Handlea
+      Help ID           = 0
+      Lines             = 2,67
+      Tab Order         = 3
+      Begin Push-Button TOOL-ESCI
+         SCREEN-COL        = 1,00
+         SCREEN-LINE       = 1,08
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-ESCI
+         Bitmap            = "..\RESOURCE\TOOLBAR.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = TOOLBAR-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 1,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Enable Variable   = E-ESCI
+         Exception Value   = 27
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 203
+         Line              = 1,08
+         Lines             = 1,17
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 2,20
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Escape Button
+         Tab Order         = 1
+         Termination Value = 0
+         Title             = "&Esci"
+         Visible           = NONE
+         Width in Cells    = FALSE
+      End
+      Begin Push-Button TOOL-CERCA
+         SCREEN-COL        = 6,00
+         SCREEN-LINE       = 1,08
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-CERCA
+         Bitmap            = "..\RESOURCE\TOOLBAR.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = TOOLBAR-BMP
+         Bitmap Number     = 8
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 6,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = FALSE
+         Enable Variable   = E-CERCA
+         Exception Value   = 8
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 204
+         Line              = 1,08
+         Lines             = 1,17
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 2,20
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 2
+         Termination Value = 0
+         Title             = "Cerca (F8)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Link To           = TOOL-CERCA-LinkTo
+      End
+   End
+End
+
+END-SPDATA
+
+@}}
+
+{{@REPORT:
+*   Report Writer Data
+*   Schema 6.0
+*
+BEGIN-RWDATA-6.0A
+
+END-RWDATA
+
+@}}
+
+{{@EMBEDDING_CODE:
+BEGIN-DATA
+   BASETYPE          = 13
+   NODESTYLE         = 13
+   PARAGRAPH         = Other Working
+BEGIN-TEXT
+           copy "link-imp-esiti-p.def".
+           copy "splcrt2graf.lks".
+
+       77  como-messaggio pic x(200).
+
+       77  pattern                 pic X(50)   value SPACES.
+
+       77  Daemon-Main-Dir          pic X(256)          value SPACES.
+       77  Daemon-Sub-IN            pic X(256)          value SPACES.
+       77  Daemon-Sub-PROC          pic X(256)          value SPACES.
+       77  Daemon-Sub-ERR           pic X(256)          value SPACES.
+       77  Daemon-Sub-TMP           pic X(256)          value SPACES.
+       77  Daemon-Sub-ORIG          pic X(256)          value SPACES.
+       77  Daemon-Sub-LOG           pic X(256)          value SPACES.
+       77  dir-Handle              handle.
+       77  file-name               pic X(50)   value SPACES.
+       78  barra value "\".
+       77  MSG-Folder-Name         pic X(256)  value SPACES.
+       77  origine                 pic X(256)  value SPACES.
+       77  destinazione            pic X(256)  value SPACES.
+       77  RENAME-STATUS            pic 9(9)            comp-4.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 6
+   NODESTYLE         = 7
+   PARAGRAPH         = DeletedCode
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterCreateWin
+BEGIN-TEXT
+
+      *<<** Customized_Default, SP-G, Screen4-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 0
+   PARENT            = imp-esiti-man
+   ACTOBJ            = imp-esiti-man
+   ENTRYPOINT        = BeforeDeclarative
+BEGIN-TEXT
+       tvettori-ERR SECTION.
+           use after error procedure on tvettori.
+           set RecLocked to false.
+           set tutto-ok  to true.
+           evaluate status-tvettori 
+           when "39"
+                set errori to true
+                display message "File [tvettori] mismatch size!"
+                          title titolo
+                           icon 3
+           when "98"
+                set errori to true
+                display message "[tvettori] Indexed file corrupt!"
+                          title titolo
+                           icon 3
+           when "35"
+                display message box        "Impossibile procedere."
+                  x"0d0a""File delle testate [tvettori] inesistente"
+                        title = titolo
+                        icon 2
+                set errori to true
+           when "93"
+           when "99" set RecLocked to true
+           end-evaluate.  
+
+      ***---
+       vettel-ERR SECTION.
+           use after error procedure on vettel.
+           set RecLocked to false.
+           set tutto-ok  to true.
+           evaluate status-vettel
+           when "39"
+                set errori to true
+                display message "File [vettel] mismatch size!"
+                          title titolo
+                           icon 3
+           when "98"
+                set errori to true
+                display message "[vettel] Indexed file corrupt!"
+                          title titolo
+                           icon 3
+           when "35"
+                display message box        "Impossibile procedere."
+                  x"0d0a""File delle testate [vettel] inesistente"
+                        title = titolo
+                        icon 2
+                set errori to true
+           when "93"
+           when "99" set RecLocked to true
+           end-evaluate.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterDisplay
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen4-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = SetDefault
+BEGIN-TEXT
+           move zero   to ef-vet-buf
+           move "0 = TUTTI I VETTORI" to lbl-vet-buf.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CERCA
+BEGIN-TEXT
+           move "tvettori"   to como-file.
+      
+           inquire ef-vet, value in vet-codice.
+      
+           call "zoom-gt" using como-file, vet-rec
+                          giving stato-zoom
+           cancel "zoom-gt"
+           if stato-zoom = 0
+              move vet-codice      to ef-vet-buf
+              move vet-descrizione to lbl-vet-buf
+              modify ef-vet, VALUE ef-vet-buf
+              modify lbl-vet, TITLE lbl-vet-buf
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CONTROLLO
+BEGIN-TEXT
+           set tutto-ok to true.
+
+           evaluate CONTROL-ID
+      *    
+
+           when 78-ID-ef-vet
+                inquire ef-vet, VALUE vet-codice
+                if vet-codice = zero
+                   move "0 = TUTTI I VETTORI" to lbl-vet-buf
+                else
+                   read tvettori
+                      invalid
+                         set errori to true
+                         display message "Vettore Inesisitente"
+                                  title tit-err
+                        move space to lbl-vet-buf
+                      not invalid
+                        move vet-codice        to vtt-codice
+                        move vet-descrizione   to lbl-vet-buf
+                        read vettel
+                          invalid
+                             move space  to vtt-nome-flusso-imp
+                        end-read
+                        if vtt-nome-flusso-imp = space
+                           set errori to true
+                           display message "Import non configurato"
+                                     title tit-err
+                                      icon 2
+                        end-if
+                   end-read
+                   modify lbl-vet, TITLE lbl-vet-buf
+                end-if
+           end-evaluate.
+
+           if errori
+              perform CANCELLA-COLORE
+              move control-id to store-id        
+              move 4          to accept-control  
+           end-if.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = PARAGRAFO-COPY
+BEGIN-TEXT
+           copy "color-custom.cpy".
+           copy "utydata.cpy".
+
+      ***--- DUMMY ---> NON TOCCARE!!!!
+       STATUS-HELP.
+           continue.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = IMPORTAZIONE
+BEGIN-TEXT
+           move ef-vet-buf   to vet-codice
+           start tvettori key not < vet-codice
+              invalid
+                 continue
+              not invalid
+                 perform until 1 = 2
+                    read tvettori next
+                       at end
+                          exit perform
+                    end-read
+                    if ef-vet-buf not = zero
+                       if ef-vet-buf not = vet-codice
+                          exit perform
+                       end-if
+                    end-if
+                    
+                    move vet-codice        to vtt-codice
+                    read vettel
+                      invalid
+                         move space  to vtt-nome-flusso-imp
+                    end-read
+                    if vtt-nome-flusso-imp not = space
+                       perform IMPORT-EFFETTIVO
+                    end-if
+                 end-perform
+           end-start.
+
+      ***---
+       IMPORT-EFFETTIVO.
+      *          controllo l'esistenza
+           set   tutto-ok to true
+           perform CHECK-CARTELLE
+
+           if tutto-ok
+              perform COPIA-FILE-RETE
+           end-if.
+
+           if tutto-ok
+              perform IMPORTA-FILE
+           end-if.
+
+
+
+      ***---
+       IMPORTA-FILE.
+      *    apro la cartella di origine rete con il filtro sul nome del file
+           move vtt-nome-flusso-imp   to pattern
+
+           call "C$LIST-DIRECTORY" using LISTDIR-OPEN,
+                                         Daemon-Sub-orig,
+                                         pattern.
+           move RETURN-CODE        to Dir-Handle.
+
+           
+           inspect Daemon-Sub-orig
+                                replacing trailing SPACE by LOW-VALUE
+           perform until 1 = 2
+      *       CONTROLLO L'ESISTENZA DEI FLUSSI
+
+              call "C$LIST-DIRECTORY" using LISTDIR-NEXT,
+                                            Dir-Handle,
+                                            File-Name
+
+              if File-Name not = "." or ".."
+                 if File-Name = SPACES
+                    exit perform
+                 end-if
+              end-if
+              set trovato to true
+      *   
+
+              move Daemon-Sub-orig to imp-esiti-p-path-orig
+              move file-name       to imp-esiti-p-file-name
+              move vet-codice      to imp-esiti-p-vettore
+              move user-codi       to imp-esiti-p-user
+       
+              call "imp-esiti-p" using imp-esiti-p-linkage
+              cancel "imp-esiti-p" 
+      *
+              inspect file-name replacing trailing space by low-value
+              if imp-esiti-p-status not = zero
+
+                 initialize como-messaggio
+                 inspect vet-descrizione replacing trailing space by low-value
+                 string "Vettore: "   delimited by size
+                        vet-descrizione   delimited by low-value
+                        x"0D0A"       delimited by size
+                        "FILE: "   delimited by size
+                        file-name  delimited by low-value
+                        " IMPORTATO CON ERRORI"  delimited by size
+                        into como-messaggio
+                 inspect como-messaggio replacing trailing space by low-value
+                 display message box como-messaggio
+                           title tit-err
+                           icon 2
+                 move imp-esiti-p-path-err  
+                                      to splcrt2graf-percorso-stampa-u
+                 move imp-esiti-p-path-err-c
+                                      to splcrt2graf-percorso-stampa
+                 perform GUARDA-FILE
+                 inspect como-messaggio replacing trailing space by low-value
+              end-if
+
+              if imp-esiti-p-num-imp not = zero
+                 move imp-esiti-p-path-esito  
+                                      to splcrt2graf-percorso-stampa-u
+                 move imp-esiti-p-path-esito-c
+                                      to splcrt2graf-percorso-stampa
+                 perform GUARDA-FILE
+              end-if
+              perform COPIA-FILE
+           end-perform.
+
+           call "C$LIST-DIRECTORY" using LISTDIR-CLOSE, Dir-Handle.
+
+
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CHECK-CARTELLE
+BEGIN-TEXT
+           initialize Daemon-Sub-PROC
+                      Daemon-Sub-ERR  
+                      Daemon-Sub-TMP  
+                      Daemon-Sub-ORIG 
+                      Daemon-Sub-IN   
+                      Daemon-Sub-LOG.
+
+           move vtt-path-environment to Daemon-Main-Dir.
+
+           inspect Daemon-Main-Dir replacing trailing SPACE by LOW-VALUE
+           string  Daemon-Main-Dir                   delimited LOW-VALUE
+                   Barra                             delimited size,
+                   vtt-path-suff-dest                delimited LOW-VALUE
+              into Daemon-Sub-PROC.
+                               
+           string  Daemon-Main-Dir                   delimited LOW-VALUE
+                   Barra                             delimited size,
+                   vtt-path-suff-err                 delimited LOW-VALUE
+              into Daemon-Sub-ERR.
+
+           string  Daemon-Main-Dir                   delimited LOW-VALUE
+                   Barra                             delimited size,
+                   vtt-path-suff-tmp                 delimited LOW-VALUE
+              into Daemon-Sub-TMP.
+
+           string  Daemon-Main-Dir                   delimited LOW-VALUE
+                   Barra                             delimited size,
+                   vtt-path-suff-orig                delimited LOW-VALUE
+              into Daemon-Sub-ORIG.
+
+      *     string  Daemon-Main-Dir                   delimited LOW-VALUE
+      *             Barra                             delimited size,
+           move vtt-path-orig-rete                   to Daemon-Sub-IN.
+
+           string  Daemon-Main-Dir                   delimited LOW-VALUE
+                   Barra                             delimited size,
+                   vtt-path-suff-log                 delimited LOW-VALUE
+              into Daemon-Sub-LOG.
+
+           inspect Daemon-Sub-PROC replacing trailing SPACE by LOW-VALUE
+           inspect Daemon-Sub-ERR  replacing trailing SPACE by LOW-VALUE
+           inspect Daemon-Sub-TMP  replacing trailing SPACE by LOW-VALUE
+           inspect Daemon-Sub-ORIG replacing trailing SPACE by LOW-VALUE
+           inspect Daemon-Sub-IN   replacing trailing SPACE by LOW-VALUE
+           inspect Daemon-Sub-LOG  replacing trailing SPACE by LOW-VALUE
+
+      * CONTROLLO L'ESISTENZA DELLE CARTELLE 
+           move "*.*"  to pattern
+
+           call "C$LIST-DIRECTORY" using LISTDIR-OPEN,
+                                         Daemon-Main-Dir,
+                                         pattern.
+
+           move RETURN-CODE        to Dir-Handle.
+
+           if Dir-Handle = ZERO
+              set errori             to true
+              move Daemon-Main-Dir  to MSG-Folder-Name
+              perform MSG-DIR-ERR
+           else
+              call "C$LIST-DIRECTORY" using LISTDIR-CLOSE, Dir-Handle
+           end-if.
+         
+
+      *    CARTELLA MONITORATA DI CONTINUO (ORIG-RETE)
+           call "C$LIST-DIRECTORY" using LISTDIR-OPEN,
+                                         Daemon-Sub-IN,
+                                         pattern.
+
+           move RETURN-CODE        to Dir-Handle.
+
+           if Dir-Handle =   ZERO
+              set errori             to true
+              move Daemon-Sub-IN  to MSG-Folder-Name
+              perform MSG-DIR-ERR
+           else
+              call "C$LIST-DIRECTORY" using LISTDIR-CLOSE, Dir-Handle
+           end-if.
+
+      *    SOTTOCARTELLA (PROCESSED)
+           call "C$LIST-DIRECTORY" using LISTDIR-OPEN,
+                                         Daemon-Sub-PROC,
+                                         pattern.
+
+           move RETURN-CODE          to Dir-Handle.
+
+           if Dir-Handle = ZERO
+              set errori             to true
+              move Daemon-Sub-PROC   to MSG-Folder-Name
+              perform MSG-DIR-ERR
+           else
+              call "C$LIST-DIRECTORY" using LISTDIR-CLOSE, Dir-Handle
+           end-if.
+
+      *    SOTTOCARTELLA (ERR)
+           call "C$LIST-DIRECTORY" using LISTDIR-OPEN,
+                                         Daemon-Sub-ERR,
+                                         pattern.
+
+           move return-code          to Dir-Handle.
+
+           if Dir-Handle  = ZERO
+              set errori             to true
+              move Daemon-Sub-ERR    to MSG-Folder-Name
+              perform MSG-DIR-ERR
+           else
+              call "C$LIST-DIRECTORY" using LISTDIR-CLOSE, Dir-Handle
+           end-if.            
+
+      *    SOTTOCARTELLA (TMP)
+           call "C$LIST-DIRECTORY" using LISTDIR-OPEN,
+                                         Daemon-Sub-TMP,
+                                         pattern.
+
+           move return-code          to Dir-Handle.
+
+           if Dir-Handle  = ZERO
+              set errori             to true
+              move Daemon-Sub-TMP    to MSG-Folder-Name
+              perform MSG-DIR-ERR
+           else
+              call "C$LIST-DIRECTORY" using LISTDIR-CLOSE, Dir-Handle
+           end-if.
+                             
+
+      *    SOTTOCARTELLA (ORIG) DOVE VENGONO SPOSTATI I FILE TROVATI
+           call "C$LIST-DIRECTORY" using LISTDIR-OPEN,
+                                         Daemon-Sub-ORIG,
+                                         pattern.
+
+           move return-code          to Dir-Handle.
+
+           if Dir-Handle  = ZERO
+              set errori             to true
+              move Daemon-Sub-ORIG   to MSG-Folder-Name
+              perform MSG-DIR-ERR
+           else
+              call "C$LIST-DIRECTORY" using LISTDIR-CLOSE, Dir-Handle
+           end-if.
+
+      *    SOTTOCARTELLA DEL FILE DI LOG
+           call "C$LIST-DIRECTORY" using LISTDIR-OPEN,
+                                         Daemon-Sub-LOG,
+                                         pattern.
+
+           move return-code          to Dir-Handle.
+
+           if Dir-Handle  = ZERO
+              set errori             to true
+              move Daemon-Sub-LOG    to MSG-Folder-Name
+              perform MSG-DIR-ERR
+           else
+              call "C$LIST-DIRECTORY" using LISTDIR-CLOSE, Dir-Handle
+           end-if.
+
+      ***---
+       MSG-DIR-ERR.
+           inspect MSG-Folder-Name, 
+                   replacing trailing SPACES by LOW-VALUES.
+
+           inspect como-messaggio replacing trailing space by low-value
+           initialize como-messaggio
+           inspect vet-descrizione replacing trailing space by low-value
+           string "Vettore: "   delimited by size
+                  vet-descrizione   delimited by low-value
+                  x"0D0A"       delimited by size
+                  "IMPOSSIBILE APRIRE DIRECTORY: "  delimited size,
+                   MSG-Folder-Name                  delimited LOW-VALUE,
+              into como-messaggio.
+           inspect como-messaggio replacing trailing space by low-value
+           display message box como-messaggio
+                           title tit-err
+                           icon 2
+
+
+           inspect lbl-vet-buf replacing trailing low-value by space.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = GUARDA-FILE
+BEGIN-TEXT
+           set splcrt2graf-anteprima  to true
+
+           set splcrt2graf-unix       to true
+           set splcrt2graf-verticale  to true
+           set splcrt2graf-forza-crt  to true
+           set splcrt2graf-10pt    to true
+           set splcrt2graf-si-grasssetto to false
+
+           call "splcrt2graf" using splcrt2graf-link
+           cancel "splcrt2graf".
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = COPIA-FILE-RETE
+BEGIN-TEXT
+      *    apro la cartella di origine rete con il filtro sul nome del file
+           move vtt-nome-flusso-imp   to pattern
+
+           call "C$LIST-DIRECTORY" using LISTDIR-OPEN,
+                                         Daemon-Sub-IN,
+                                         pattern.
+           move RETURN-CODE        to Dir-Handle.
+
+           
+           perform until 1 = 2
+      *       CONTROLLO L'ESISTENZA DEI FLUSSI
+              inspect Daemon-Sub-IN 
+                                replacing trailing SPACE by LOW-VALUE
+
+              call "C$LIST-DIRECTORY" using LISTDIR-NEXT,
+                                            Dir-Handle,
+                                            File-Name
+
+              if File-Name not = "." or ".."
+                 if File-Name = SPACES
+                    exit perform
+                 end-if
+              end-if
+              set trovato to true
+         
+              initialize origine
+                         Destinazione
+              string Daemon-Sub-IN    delimited LOW-VALUE,
+                     Barra            delimited size,
+                     File-Name        delimited size,
+                     into origine
+
+              string Daemon-Sub-orig  delimited LOW-VALUE,
+                     Barra            delimited size,
+                     File-Name        delimited size
+                     into Destinazione
+
+              call "RENAME" using origine, 
+                                  Destinazione, 
+                                  RENAME-STATUS
+
+              if RENAME-STATUS not = ZERO and RENAME-STATUS not = 2
+                 initialize como-messaggio
+                 inspect vet-descrizione replacing trailing space by low-value
+                 string "Vettore: "   delimited by size
+                        vet-descrizione   delimited by low-value
+                        x"0D0A"       delimited by size
+                        "FILE: "   delimited by size
+                        file-name  delimited by low-value
+                        " IMPOSSIBILE COPIARE IL FILE NELLA CARTELLA ORIG"
+                                    delimited by size
+                        into como-messaggio
+                 inspect como-messaggio replacing trailing space by low-value
+                 display message box como-messaggio
+                         title tit-err
+                         icon 2
+              end-if
+           end-perform.
+
+           call "C$LIST-DIRECTORY" using LISTDIR-CLOSE, Dir-Handle.
+
+           if not trovato
+              set errori  to true
+              initialize como-messaggio
+              inspect vet-descrizione replacing trailing space by low-value
+              string "Vettore: "   delimited by size
+                     vet-descrizione   delimited by low-value
+                     x"0D0A"       delimited by size
+                     "NESSUN FILE DA IMPORTARE" delimited by size
+                     into como-messaggio
+              inspect como-messaggio replacing trailing space by low-value
+              display message box como-messaggio
+                      title tit-err
+                      icon 2
+           end-if.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = COPIA-FILE
+BEGIN-TEXT
+           accept como-data  from century-date
+           accept como-ora   from time
+           initialize origine
+                      destinazione
+
+           string Daemon-Sub-orig  delimited LOW-VALUE,
+                  Barra            delimited size,
+                  File-Name        delimited size
+                  into origine
+                  
+           inspect File-Name       replacing trailing space by low-value
+
+           string Daemon-Sub-PROC  delimited LOW-VALUE,
+                  Barra            delimited size,
+                  File-Name        delimited low-value
+                  "_"              delimited by size        
+                  como-data        delimited by size        
+                  "_"              delimited by size        
+                  como-ora         delimited by size        
+                  into Destinazione
+           inspect File-Name replacing trailing low-value by space
+           call "RENAME" using origine, 
+                               Destinazione, 
+                               RENAME-STATUS
+
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ginqui-Ev-Before-Program
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen4-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ginqui-Ev-After-Program
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen4-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-ok-BeforeProcedure
+BEGIN-TEXT
+           modify pb-ok, bitmap-number 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-ok-AfterProcedure
+BEGIN-TEXT
+           modify pb-ok, bitmap-number 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-ok-LinkTo
+BEGIN-TEXT
+           perform  varying CONTROL-ID from 78-ID-ef-vet by 1
+                      until CONTROL-ID > 78-ID-ef-vet
+              perform CONTROLLO
+              if errori exit perform end-if
+           end-perform.
+
+           if tutto-ok
+      *        modify form1-handle, visible 0
+              perform IMPORTAZIONE
+      *        modify form1-handle, visible 1
+              perform CANCELLA-COLORE
+              move 78-ID-ef-vet  to control-id
+              move 4             to accept-control
+           end-if.
+
+           modify pb-ok,        bitmap-number = 1.
+           modify pb-annulla,   bitmap-number = 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-annulla-BeforeProcedure
+BEGIN-TEXT
+           modify pb-annulla, bitmap-number 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-annulla-AfterProcedure
+BEGIN-TEXT
+           modify pb-annulla, bitmap-number 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = TOOL-CERCA-LinkTo
+BEGIN-TEXT
+           inquire tool-cerca, enabled in e-cerca.
+           if e-cerca = 1 perform CERCA end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Screen4-Ef-1-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen4-Custom1-2 **>>
+           move 1 to e-cerca.
+           modify tool-cerca, enabled e-cerca.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Screen4-Ef-1-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen4-Custom1-2 **>>
+           move 0 to e-cerca.
+           modify tool-cerca, enabled e-cerca.
+           perform CONTROLLO
+END-TEXT
+END-DATA
+
+@}}
+
+[KEY_STATUS_FIELD_FORMAT]
+PIC=9(5)
+USAGE=[None]
+
+[KEYSTATUS_CONTENT:KS1]
+CONDITION=Enter-Pushed
+VALUE=13
+
+[KEYSTATUS_CONTENT:KS2]
+CONDITION=Exit-Pushed
+VALUE=27
+
+[KEYSTATUS_CONTENT:KS3]
+CONDITION=Message-Received
+VALUE=95
+
+[KEYSTATUS_CONTENT:KS4]
+CONDITION=Event-Occurred
+VALUE=96
+
+[KEYSTATUS_CONTENT:KS5]
+CONDITION=Screen-No-Input-Field
+VALUE=97
+
+[KEYSTATUS_CONTENT:KS6]
+CONDITION=Screen-Time-Out
+VALUE=99
+
+[COBOLAID_DATASET_INFO]
+COUNT=1
+NAME_0=DataSet1
+
+[DRAW_DOCUMENT_INDEX]
+OBJ_NAME_0=8001
+OBJ_ID_0=1865930328
+
+[MULTIPLE_KEY_0]
+COUNT=1
+KEY_0=vet-chiave
+
+[DRAW_DOCUMENT_8001_1865930328]
+OBJ_NAME=8001
+OBJ_ID=1865930328
+TYPE=2
+VERSION=
+DOC_SIZE_X=5100
+DOC_SIZE_Y=5160
+PAGE_LEFT=150
+PAGE_TOP=150
+PAGE_RIGHT=1850
+PAGE_BOTTOM=2730
+MARGIN_LEFT=150
+MARGIN_TOP=150
+MARGIN_RIGHT=150
+MARGIN_BOTTOM=150
+PROP_DOCU_TYPE=ø
+PROP_DOCU_TYPE2=ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+PROP_DOCU_NAME=DataSet - DataSet1[imp-esiti-man(GESLUX)]
+PROP_DOCU_OWNER=Person A
+PROP_DOCU_CDATE=10/16/06
+PROP_DOCU_MODIFIER=Person B
+PROP_DOCU_MDATE=10/16/06
+PROP_DOCU_DESCR=Caseaid DocuCaseaid Document
+PROP_DOCU_HEADER=Caseaid Document
+PROP_DOCU_FOOTER=Page # 
+PROP_DOCU_DIM_H=2
+PROP_DOCU_DIM_W=3
+PROP_DOCU_LOC_H=1
+PROP_DOCU_LOC_W=1
+PROP_DOCU_EDGE_T=150
+PROP_DOCU_EDGE_B=150
+PROP_DOCU_EDGE_L=150
+PROP_DOCU_EDGE_R=150
+PROP_DOCU_ZOOM=75
+PROP_DOCU_SIZE_TYPE=0
+PROP_DOCU_SIZE_PAPER=1
+PROP_DOCU_SIZE_H=2580
+PROP_DOCU_SIZE_W=1700
+PROP_DOCU_RULER_EBL=0
+PROP_DOCU_GRID_EBL=0
+PROP_DOCU_GRID=20
+PROP_DOCU_ALIGN=0
+REL_SYM_SIZE=16
+REL_SYM_INFO_L=2
+REL_SYM_INFO_X0=2301
+REL_SYM_INFO_Y0=1686097439
+REL_SYM_INFO_X1=2301
+REL_SYM_INFO_Y1=2058345948
+
+[DRAW_BASESYMBOL_2301_1686097439]
+OBJ_NAME=2301
+OBJ_ID=1686097439
+KIND=1
+{{@LABEL_2301_1686097439
+tvettori
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=192
+TOP=163
+RIGHT=592
+BOTTOM=385
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_2058345948]
+OBJ_NAME=2301
+OBJ_ID=2058345948
+KIND=1
+{{@LABEL_2301_2058345948
+vettel
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=723
+TOP=192
+RIGHT=1123
+BOTTOM=414
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DMD_DOCUMENT_0_1865930328]
+OBJ_NAME=0
+OBJ_ID=1865930328
+FILE_TITLE_TYPE=8136
+FILE_SHOW_ITEM=0
+FILE_SHOW_KEY=0
+FILE_SHOW_PIC=0
+FILE_SHOW_HEAD=0
+FILE_SHOW_LEVEL=0
+FILE_SHOW_TREE=0
+FILE_SHOW_CLPS=0
+FILE_SHOW_BMP=0
+FILE_SHOW_LINE=0
+FILE_SHOW_MINIZE=0
+
+[DMD_FILE_0_1686097439]
+OBJ_NAME=0
+OBJ_ID=1686097439
+REL_M_OBJ_ID=0
+ENTITY=tvettori
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=vet-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1686097439
+
+@}}
+DSN_INFO_PRIMARY=1
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_2058345948]
+OBJ_NAME=0
+OBJ_ID=2058345948
+REL_M_OBJ_ID=0
+ENTITY=vettel
+LINK=0
+LINK_NAME=
+DSN_SIZE=52
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=vtt-chiave OF vettel
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_2058345948
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=

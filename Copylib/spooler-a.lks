@@ -1,0 +1,10 @@
+      *
+       01 operazione            pic x.
+           88 antep             value "A".
+           88 stampa            value "S".
+       01 WSTAMPA               pic x(256).
+       01 orientamento          pic x.
+           88 or-orizzontale    value "O".
+           88 or-verticale      value "V".
+
+

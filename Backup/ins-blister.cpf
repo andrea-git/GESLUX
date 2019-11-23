@@ -1,0 +1,2438 @@
+; CaseMaker Totem Program Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[PROGRAM_CONTENT]
+QUIT_CONFIRM=0
+ANSI_FORMAT=1
+MAIN_SCREEN_NAME=Screen1
+BEFORE_PROGRAM=ins-blister-Ev-Before-Program
+AFTER_PROGRAM=ins-blister-Ev-After-Program
+PROGRAM_UNIQUE_CODE=TOTEM-7E361914177-745-307605650
+
+{{@DESCRIPTION:
+
+@}}
+
+[WORKING_STORAGE]
+m_nType=1
+m_strName=Working Storage
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionWK
+
+@}}
+[FDITEM0_WK]
+m_strName=Screen1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_WK
+
+@}}
+[FDITEM1_WK]
+m_strName=TITOLO
+m_strDefaultValue="Inserimento Blister"
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1_WK
+
+@}}
+[FDITEM2_WK]
+m_strName=Small-Font
+m_nUsage=37
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM2_WK
+
+@}}
+[FDITEM3_WK]
+m_strName=Verdana10-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM3_WK
+
+@}}
+[FDITEM4_WK]
+m_strName=Form1-Tb-1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM4_WK
+
+@}}
+[FDITEM5_WK]
+m_strName=toolbar-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM5_WK
+
+@}}
+[FDITEM6_WK]
+m_strName=E-ESCI
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM6_WK
+
+@}}
+[FDITEM7_WK]
+m_strName=E-NUOVO
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM7_WK
+
+@}}
+[FDITEM8_WK]
+m_strName=E-SALVA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM8_WK
+
+@}}
+[FDITEM9_WK]
+m_strName=Form1-Tb-1-Handlea
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM9_WK
+
+@}}
+[FDITEM10_WK]
+m_strName=Screen1-St-1-Handle
+m_nUsage=51
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM10_WK
+
+@}}
+[FDITEM11_WK]
+m_strName=AUTO-ID
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_strDefaultValue=78
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM11_WK
+
+@}}
+[FDITEM12_WK]
+m_strName=Default-Font
+m_nUsage=38
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM12_WK
+
+@}}
+[FDITEM13_WK]
+m_strName=ris
+m_nUsage=18
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM13_WK
+
+@}}
+[FDITEM14_WK]
+m_strName=des-imballo
+m_strRawPic=x(50)
+m_strPic=x(50)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM14_WK
+
+@}}
+[FDITEM15_WK]
+m_strName=qta-imballo
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM15_WK
+
+@}}
+[FDITEM16_WK]
+m_strName=lab-udm-buf
+m_strRawPic=X(20)
+m_strPic=X(20)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM16_WK
+
+@}}
+[FDITEM17_WK]
+m_strName=lab1-buf
+m_strRawPic=X(5)
+m_strPic=X(5)
+m_strDefaultValue="Colli"
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM17_WK
+
+@}}
+[FDITEM18_WK]
+m_strName=BOTTONE-CANCEL-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM18_WK
+
+@}}
+[FDITEM19_WK]
+m_strName=BOTTONE-OK-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM19_WK
+
+@}}
+[FDITEM20_WK]
+m_strName=multi-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM20_WK
+
+@}}
+[FDITEM21_WK]
+m_strName=como-x
+m_strRawPic=x
+m_strPic=x
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM21_WK
+
+@}}
+[FDITEM22_WK]
+m_strName=giacenza
+m_strRawPic=s9(8)
+m_strPic=s9(8)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM22_WK
+
+@}}
+[FDITEM23_WK]
+m_strName=save-peso-utf
+m_strRawPic=9(5)V9(3)
+m_strPic=9(5)V9(3)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM23_WK
+
+@}}
+[FDITEM24_WK]
+m_strName=tot-peso-utf
+m_strRawPic=9(4)v999
+m_strPic=9(4)v999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM24_WK
+
+@}}
+[FDITEM25_WK]
+m_strName=hid-riga
+m_strRawPic=x
+m_strPic=x
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM25_WK
+
+@}}
+[FDITEM26_WK]
+m_strName=hid-componente
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="C"
+{{@DataItem_m_strDescriptionFDITEM26_WK
+
+@}}
+[FDITEM27_WK]
+m_strName=hid-blister
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="B"
+{{@DataItem_m_strDescriptionFDITEM27_WK
+
+@}}
+[FDITEM28_WK]
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM28_WK
+
+@}}
+[FDITEM29_WK]
+m_strName=GridAction
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM29_WK
+
+@}}
+[FDITEM30_WK]
+m_strName=STATUS-blister
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM30_WK
+
+@}}
+[FDITEM31_WK]
+m_strName=Valid-STATUS-blister
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM31_WK
+
+@}}
+[FDITEM32_WK]
+m_strName=STATUS-tmagaz
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM32_WK
+
+@}}
+[FDITEM33_WK]
+m_strName=Valid-STATUS-tmagaz
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM33_WK
+
+@}}
+[FDITEM34_WK]
+m_strName=STATUS-articoli
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM34_WK
+
+@}}
+[FDITEM35_WK]
+m_strName=Valid-STATUS-articoli
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM35_WK
+
+@}}
+[FDITEM36_WK]
+m_strName=rec-grid
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM36_WK
+
+@}}
+[FDITEM37_WK]
+m_strName=col-nulla
+m_strRawPic=x
+m_strPic=x
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM37_WK
+
+@}}
+[FDITEM38_WK]
+m_strName=col-art
+m_strRawPic=z(6)
+m_strPic=z(6)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM38_WK
+
+@}}
+[FDITEM39_WK]
+m_strName=col-des
+m_strRawPic=X(50)
+m_strPic=X(50)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM39_WK
+
+@}}
+[FDITEM40_WK]
+m_strName=col-qta
+m_strRawPic=z(08)
+m_strPic=z(08)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM40_WK
+
+@}}
+[FDITEM41_WK]
+m_strName=Verdana12-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM41_WK
+
+@}}
+[FDITEM42_WK]
+m_strName=hid-tipo
+m_strRawPic=x
+m_strPic=x
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM42_WK
+
+@}}
+[FDITEM43_WK]
+m_strName=hid-chiuso
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="C"
+{{@DataItem_m_strDescriptionFDITEM43_WK
+
+@}}
+[FDITEM44_WK]
+m_strName=hid-aperto
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="A"
+{{@DataItem_m_strDescriptionFDITEM44_WK
+
+@}}
+[FDITEM45_WK]
+m_strName=ef-qta-buf
+m_strRawPic=zz.zzz.zz9
+m_strPic=zz.zzz.zz9
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM45_WK
+
+@}}
+[FDITEM46_WK]
+m_strName=STATUS-listini
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM46_WK
+
+@}}
+[FDITEM47_WK]
+m_strName=Valid-STATUS-listini
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM47_WK
+
+@}}
+[FDITEM48_WK]
+m_strName=STATUS-progmag
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM48_WK
+
+@}}
+[FDITEM49_WK]
+m_strName=Valid-STATUS-progmag
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM49_WK
+
+@}}
+[FDITEM50_WK]
+m_strName=ef-blister-buf
+m_strRawPic=z(6)
+m_strPic=z(6)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM50_WK
+
+@}}
+[FDITEM51_WK]
+m_strName=STATUS-clienti
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM51_WK
+
+@}}
+[FDITEM52_WK]
+m_strName=Valid-STATUS-clienti
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM52_WK
+
+@}}
+[FDITEM53_WK]
+m_strName=STATUS-destini
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM53_WK
+
+@}}
+[FDITEM54_WK]
+m_strName=Valid-STATUS-destini
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM54_WK
+
+@}}
+
+
+[LINKAGE_SECTION]
+m_nType=1
+m_strName=Linkage Section
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionLK
+
+@}}
+[FDITEM0_LK]
+m_strName=ins-linkage
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-INS-BLISTER.DEF
+m_strCopyFile=LINK-INS-BLISTER.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-INS-BLISTER.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM0_LK
+
+@}}
+[FDITEM1_LK]
+m_strName=ins-mag
+m_strRawPic=x(3)
+m_strPic=X(3)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-INS-BLISTER.DEF
+m_strCopyFile=LINK-INS-BLISTER.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-INS-BLISTER.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM1_LK
+
+@}}
+[FDITEM2_LK]
+m_strName=ins-qta
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-INS-BLISTER.DEF
+m_strCopyFile=LINK-INS-BLISTER.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-INS-BLISTER.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM2_LK
+
+@}}
+[FDITEM3_LK]
+m_strName=ins-codice
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-INS-BLISTER.DEF
+m_strCopyFile=LINK-INS-BLISTER.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-INS-BLISTER.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM3_LK
+
+@}}
+[FDITEM4_LK]
+m_strName=ins-gdo
+m_strRawPic=x(5)
+m_strPic=X(5)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-INS-BLISTER.DEF
+m_strCopyFile=LINK-INS-BLISTER.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-INS-BLISTER.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM4_LK
+
+@}}
+[FDITEM5_LK]
+m_strName=ins-idx
+m_strRawPic=9(3)
+m_strPic=9(3)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-INS-BLISTER.DEF
+m_strCopyFile=LINK-INS-BLISTER.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-INS-BLISTER.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM5_LK
+
+@}}
+[FDITEM6_LK]
+m_strName=ins-cliente
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-INS-BLISTER.DEF
+m_strCopyFile=LINK-INS-BLISTER.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-INS-BLISTER.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM6_LK
+
+@}}
+[FDITEM7_LK]
+m_strName=ins-destino
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-INS-BLISTER.DEF
+m_strCopyFile=LINK-INS-BLISTER.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-INS-BLISTER.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM7_LK
+
+@}}
+
+
+{{@SCREEN:
+*   Screen Painter Data
+*   Schema 6.0
+*
+BEGIN-SPDATA-6.1A
+
+GRAPHICAL-SCREEN
+
+Begin Screen Screen1
+   PREFIX            = Screen1
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = FALSE
+   LEVEL             = 1
+   (Name)            = Screen1
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 18
+   Cell Width        = 10
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = FALSE
+   Font              = Verdana/12/C0/@Occidentale
+   Font Variable     = Verdana12-Occidentale
+   Handle Variable   = Screen1-Handle
+   Height in Cells   = TRUE
+   Help ID           = 0
+   Label Offset      = 20
+   Lines             = 26,56
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = FALSE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 57,50
+   System Menu       = TRUE
+   Title Bar         = TRUE
+   Title Variable    = TITOLO
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = TRUE
+   Window Type       = Floating
+   Wrap              = FALSE
+   Event Procedure   = Screen1-Event-Proc
+   Begin Grid gd1
+      SCREEN-COL        = 1,60
+      SCREEN-LINE       = 3,56
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = gd1
+      Action            = (None)
+      Adjustable Columns = FALSE
+      Border            = Boxed
+      Cells' Setting    = ( X = 2, Y = 1, Data = "Codice" )
+      Cells' Setting    = ( X = 3, Y = 1, Data = "Descrizione" )
+      Cells' Setting    = ( X = 4, Y = 1, Data = "Qta" )
+      Centered Headings = FALSE
+      Color             = 0
+      Column            = 1,60
+      Column Headings   = TRUE
+      Columns' Setting  = ( X = 1, Name = col-nulla, READONLY = 0 )
+      Columns' Setting  = ( PIC = "x", TYPE = "3", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
+      Columns' Setting  = ( DISP = 3, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 2, Name = col-art, READONLY = 0 )
+      Columns' Setting  = ( PIC = "z(6)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 8, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 3, Name = col-des, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(50)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
+      Columns' Setting  = ( DISP = 40, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 4, Name = col-qta, READONLY = 0 )
+      Columns' Setting  = ( PIC = "z(08)", TYPE = "9(8)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 8, SEPA = 5, DIVI = 1 )
+      Cursor Color      = 0
+      Cursor Frame Width = 0
+      Cursor X          = 0
+      Cursor Y          = 0
+      Destroy Type      = Automatic
+      Divider Color     = 1
+      Drag Color        = 0
+      Enable            = NONE
+      End Color         = 0
+      Font              = Default Font
+      Heading Color     = 257
+      Heading Divider Color = 1
+      Heading Font      = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hscroll           = FALSE
+      ID                = 2
+      ID Variable       = AUTO-ID
+      Last Row          = 0
+      Line              = 3,56
+      Lines             = 18,78
+      Lines Unit        = Default
+      No Tab            = FALSE
+      Num Col Headings  = 1
+      Num Columns       = 4
+      Num Rows          = 0
+      Occurs            = 0
+      Paged             = FALSE
+      Row Dividers      = 1
+      Row Headings      = FALSE
+      Size              = 56,20
+      Size Unit         = Default
+      Tab Order         = 1
+      Tiled Headings    = TRUE
+      Use Tab           = FALSE
+      Virtual Width     = 56
+      Visible           = NONE
+      Vpadding          = 30
+      Vscroll           = FALSE
+      Width in Cells    = TRUE
+      Event Procedure   = Screen1-Gd-1-Event-Proc
+      Msg-Begin-Drag    = gd1-Ev-Msg-Begin-Drag
+      Msg-Begin-Entry   = gd1-Ev-Msg-Begin-Entry
+      Msg-End-Drag      = gd1-Ev-Msg-End-Drag
+      Msg-Goto-Cell     = gd1-Ev-Msg-Goto-Cell
+      Msg-Goto-Cell-Drag = gd1-Ev-Msg-Goto-Cell-Drag
+      Msg-Goto-Cell-Mouse = gd1-Ev-Msg-Goto-Cell-Mouse
+   End
+   Begin Entry-Field ef-qta
+      SCREEN-COL        = 15,00
+      SCREEN-LINE       = 23,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-qta
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 15,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/12/C0/@Occidentale
+      Font Variable     = Verdana12-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = .
+      ID                = 3
+      ID Variable       = AUTO-ID
+      Justification     = Right
+      Line              = 23,00
+      Lines             = 1,33
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 0
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 9,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 2
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Value Picture     = zz.zzz.zz9
+      Value Variable    = ef-qta-buf
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = Screen1-Ef-1-BeforeProcedure
+      After Procedure   = Screen1-Ef-1-AfterProcedure
+   End
+   Begin Frame Screen4-Fr-1
+      SCREEN-COL        = 1,00
+      SCREEN-LINE       = 24,72
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen4-Fr-1
+      3D Style          = Lowered
+      Alternate         = FALSE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Font              = Default Font
+      Full Height       = FALSE
+      Height in Cells   = TRUE
+      Help ID           = 0
+      High Color        = 0
+      ID                = 29
+      Line              = 24,72
+      Lines             = 2,83
+      Lines Unit        = Default
+      Low Color         = 0
+      Size              = 57,50
+      Size Unit         = Default
+      Tab Order         = 3
+      Thickness         = Default
+      Title Position    = 0:Unaligned
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Begin Push-Button pb-ok
+         SCREEN-COL        = 42,50
+         SCREEN-LINE       = 25,41
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = pb-ok
+         Bitmap            = "..\RESOURCE\BOTTONE-ok.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = BOTTONE-ok-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 42,50
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 1000
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 200
+         Line              = 1,69
+         Lines             = 1,56
+         Lines in Pixels   = 30
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = FALSE
+         Size              = 7,10
+         Size in Pixels    = 73
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 1
+         Termination Value = 0
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Before Procedure  = pb-ok-BeforeProcedure
+         After Procedure   = pb-ok-AfterProcedure
+         Link To           = pb-ok-LinkTo
+      End
+      Begin Push-Button pb-annulla
+         SCREEN-COL        = 50,20
+         SCREEN-LINE       = 25,41
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = pb-annulla
+         Bitmap            = "..\RESOURCE\BOTTONE-CANCEL.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = BOTTONE-CANCEL-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 50,20
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 27
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 201
+         Line              = 1,69
+         Lines             = 1,56
+         Lines in Pixels   = 30
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 7,10
+         Size in Pixels    = 73
+         Size Unit         = Default
+         Style             = Escape Button
+         Tab Order         = 2
+         Termination Value = 0
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Before Procedure  = pb-annulla-BeforeProcedure
+         After Procedure   = pb-annulla-AfterProcedure
+      End
+   End
+   Begin CsCtrl.Custom1 Label Screen1-Custom1-1
+      CUST-SYMBOL       = Custom1
+      CUST-MODIFYFLAG   = 000000000000000000000000000000000000000000000000000
+      SCREEN-COL        = 6,75
+      SCREEN-LINE       = 1,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-Custom1-1
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 6,75
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Font Variable     = Default-Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 82
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 1,00
+      Lines             = 0,50
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 3,00
+      Size Unit         = Default
+      Tab Order         = 4
+      Title             = "CUSTOM CONTROL"
+      Transparent       = TRUE
+      Visible           = NONE
+      Visible Variable  = v-custom
+      Width in Cells    = FALSE
+   End
+   Begin Label Screen1-La-1
+      SCREEN-COL        = 5,90
+      SCREEN-LINE       = 23,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-La-1
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 5,90
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/12/C0/@Occidentale
+      Font Variable     = Verdana12-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 1
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 23,00
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 8,00
+      Size Unit         = Default
+      Tab Order         = 5
+      Title             = "Quantità"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Entry-Field ef-blister
+      SCREEN-COL        = 15,00
+      SCREEN-LINE       = 1,56
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-blister
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 15,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/12/C0/@Occidentale
+      Font Variable     = Verdana12-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = .
+      ID                = 4
+      ID Variable       = AUTO-ID
+      Justification     = Right
+      Line              = 1,56
+      Lines             = 1,33
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 6
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = TRUE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 9,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 6
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Value Picture     = z(6)
+      Value Variable    = ef-blister-buf
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-blister-BeforeProcedure
+      After Procedure   = ef-blister-AfterProcedure
+   End
+   Begin Label Screen1-La-1a
+      SCREEN-COL        = 1,90
+      SCREEN-LINE       = 1,56
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-La-1a
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,90
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/12/C0/@Occidentale
+      Font Variable     = Verdana12-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 5
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 1,56
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 12,00
+      Size Unit         = Default
+      Tab Order         = 7
+      Title             = "Ricerca Blister"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+End
+
+END-SPDATA
+
+@}}
+
+{{@REPORT:
+*   Report Writer Data
+*   Schema 6.0
+*
+BEGIN-RWDATA-6.0A
+
+END-RWDATA
+
+@}}
+
+{{@EMBEDDING_CODE:
+BEGIN-DATA
+   BASETYPE          = 6
+   NODESTYLE         = 7
+   PARAGRAPH         = DeletedCode
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Screen1
+   ACTOBJ            = Screen1
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+           modify gd1, mass-update = 1.
+           modify gd1, reset-grid  = 1.
+           perform GD1-CONTENT.
+           set trovato to false.
+           move low-value to bli-rec.
+           move ins-mag   to bli-magazzino.
+           start blister key >= k-des
+                 invalid continue
+             not invalid
+                 move 2 to riga
+                 perform until 1 = 2
+                    read blister next 
+                       at end 
+                          exit perform 
+                    end-read
+                    if bli-attivo
+                       perform CONTROLLA-VALIDITA-COMPONENTI
+                    end-if
+                    if bli-attivo and bli-magazzino = ins-mag
+                       |14/12: Richiesta di Walter:
+                       |Abilitare TUTTI i blister
+      *****                 if ins-gdo = spaces
+                          move bli-codice      to col-art
+                          move bli-descrizione to col-des
+                          modify gd1, record-to-add = rec-grid
+                          set hid-chiuso       to true
+                          set hid-blister      to true
+                          modify gd1(riga, 1), hidden-data hid-tipo
+                          modify gd1(riga, 2), hidden-data hid-riga
+                          modify gd1(riga, 1),
+                                 bitmap        = multi-bmp
+                                 bitmap-number = 3
+                                 bitmap-width  = 16
+                          add 1 to riga
+                          set trovato to true
+      *****                 else
+      *****                    move low-value  to lst-data
+      *****                    move ins-gdo    to lst-gdo
+      *****                    move bli-codice to lst-articolo
+      *****                    start listini key >= lst-k-articolo
+      *****                       invalid 
+      *****                          continue
+      *****                       not invalid
+      *****                          read listini next
+      *****                          if lst-articolo = bli-codice
+      *****                             move bli-codice      to col-art
+      *****                             move bli-descrizione to col-des
+      *****                             modify gd1, record-to-add = rec-grid
+      *****                             set hid-chiuso       to true
+      *****                             set hid-blister      to true
+      *****                             modify gd1(riga, 1), hidden-data hid-tipo
+      *****                             modify gd1(riga, 2), hidden-data hid-riga
+      *****                             modify gd1(riga, 1),
+      *****                                    bitmap        = multi-bmp
+      *****                                    bitmap-number = 3
+      *****                                    bitmap-width  = 16
+      *****                             add 1 to riga
+      *****                             set trovato to true
+      *****                          end-if
+      *****                    end-start
+      *****                 end-if
+                    end-if
+                 end-perform
+           end-start.
+           modify gd1, mass-update = 0.
+           move 78-ID-gd1  to control-id.
+           move 4          to accept-control.
+           move 2          to event-data-2.
+           perform SPOSTAMENTO.
+           set GridAction  to false.
+           if not trovato
+              display message "Nessun blister attivo o a listino"
+                        title titolo
+                         icon 2
+              move 27 to key-status
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Screen1
+   ACTOBJ            = Screen1
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterEndAccept
+BEGIN-TEXT
+           if GridAction
+              set GridAction to false
+              inquire gd1(riga, 1), hidden-data in hid-tipo
+              if hid-chiuso
+                 set hid-aperto       to true
+                 modify gd1(riga, 1), hidden-data hid-tipo
+                 inquire gd1(riga, 2), cell-data in col-art
+                 modify gd1(riga, 1),
+                        bitmap        = multi-bmp
+                        bitmap-number = 2
+                        bitmap-width  = 16
+                 move col-art to bli-codice
+                 read blister no lock invalid continue end-read
+                 perform varying idx from 1 by 1 
+                           until idx > 50
+                    add 1 to riga
+                    if bli-el-articolo(idx) = 0
+                       exit perform
+                    end-if
+                    move bli-el-articolo(idx) to col-art art-codice
+                    read articoli no lock 
+                       invalid 
+                          continue 
+                    end-read
+                    move bli-el-qta(idx) to col-qta
+                    move art-descrizione to col-des
+                    modify gd1, insertion-index riga,
+                                record-to-add = rec-grid
+                    set hid-aperto       to true
+                    set hid-componente   to true
+                    modify gd1(riga, 1), hidden-data hid-tipo
+                    modify gd1(riga, 2), hidden-data hid-riga
+                    modify gd1(riga, 1),
+                           bitmap        = multi-bmp
+                           bitmap-number = 4
+                           bitmap-width  = 16
+                 end-perform
+              else
+                 inquire gd1, last-row in tot-righe
+                 inquire gd1(riga, 2), hidden-data in hid-riga
+                 if hid-componente
+                    perform varying riga from riga by -1
+                              until riga < 2
+                       inquire gd1(riga, 2), hidden-data in hid-riga
+                       if hid-blister
+                          exit perform
+                       end-if
+                    end-perform
+                 end-if
+
+                 move riga to store-riga
+                 set hid-chiuso to true
+                 modify gd1(riga, 1), hidden-data hid-tipo
+                 modify gd1(riga, 1),
+                        bitmap        = multi-bmp
+                        bitmap-number = 3
+                        bitmap-width  = 16
+                 
+                 add 1 to riga
+                 perform varying riga from riga by 1
+                           until riga > tot-righe
+                    inquire gd1(riga, 2), hidden-data in hid-riga
+                    if hid-blister
+                       exit perform
+                    end-if
+                    modify gd1, record-to-delete = riga
+                    subtract 1 from riga
+                    subtract 1 from tot-righe
+                 end-perform
+
+                 move store-riga to riga event-data-2
+                 perform SPOSTAMENTO
+                 modify gd1, cursor-y riga
+
+              end-if
+           end-if
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Screen1
+   ACTOBJ            = Screen1
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeExit
+BEGIN-TEXT
+           if errori
+              move 0 to ins-codice
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CONTROLLA-VALIDITA-COMPONENTI
+BEGIN-TEXT
+           perform varying idx from 1 by 1 
+                     until idx > 50
+              if bli-el-articolo(idx) = 0 exit perform end-if
+              move bli-el-articolo(idx) to art-codice
+              read articoli no lock 
+                   invalid continue 
+              end-read
+              if art-attivo            
+                 set bli-bloccato to true
+                 move low-value  to prg-chiave
+                 move art-codice to prg-cod-articolo
+                 move ins-mag    to prg-cod-magazzino
+                 start progmag key >= prg-chiave
+                       invalid continue
+                   not invalid
+                       perform until 1 = 2
+                          read progmag next at end exit perform end-read
+                          if prg-cod-articolo  not = art-codice or
+                             prg-cod-magazzino not = ins-mag
+                             exit perform
+                          end-if
+                          if prg-attivo
+                             set bli-attivo to true
+                             exit perform
+                          end-if
+                       end-perform
+                 end-start
+                 if bli-bloccato
+                    exit perform
+                 end-if
+              else
+                 set bli-bloccato to true
+                 exit perform
+              end-if
+           end-perform.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CONTROLLO
+BEGIN-TEXT
+           set tutto-ok to true.
+
+      * Paragrafo per la struttura dei controlli sulla screen Screen1
+           evaluate control-id
+           |78-ID-ef-des è l'ID del control ef-des
+           when 78-ID-ef-qta
+                inquire ef-qta, value in ins-qta
+                if ins-qta = 0
+                   set errori to true
+                   display message "Inserimento quantità mancante"
+                             title tit-err
+                              icon 2
+                   move 78-ID-ef-qta to control-id
+                end-if
+           when 78-ID-ef-blister
+                perform CERCA-TESTO
+      *          if ResultSearch = zero
+      *             display message "Blister non trovato"
+      *                       title tit-err
+      *                        icon 2
+      *          end-if
+
+           end-evaluate.
+      *
+           if errori
+              perform CANCELLA-COLORE
+              move CONTROL-ID to store-id
+              move 4          to ACCEPT-CONTROL
+           end-if.
+
+
+      ***---
+       CERCA-TESTO.
+           move 0 to ResultSearch
+
+           inquire gd1, cursor-y in riga
+           inquire gd1, search-options in grid-search-options
+              
+           |direzione di ricerca
+           set GRID-SEARCH-FORWARDS to true
+           set GRID-SEARCH-WRAP     to true
+
+           set GRID-SEARCH-IGNORE-CASE to true
+
+           |trova la parola nella cella
+           set GRID-SEARCH-MATCH-ANY to true
+
+           |ricerca nelle sole celle visible 
+           |ignorando gli eventuali hidden-data
+           set GRID-SEARCH-VISIBLE to true
+
+           |non considerare quello su cui sono posizionato
+           set GRID-SEARCH-SKIP-CURRENT   to true
+
+           |si posiziona sulla cella trovata
+           set GRID-SEARCH-MOVES-CURSOR   to true 
+
+           |num colonna sulla quale fare la ricerca
+           move 2 to GRID-SEARCH-COLUMN 
+
+           modify gd1, search-options GRID-SEARCH-OPTIONS
+
+           modify gd1(riga, 2), 
+                  search-text ef-blister-buf |testo da ricercare
+                       giving ResultSearch |1, 2 = trovato 0 = non trovato
+
+           if ResultSearch = GRDSRCH-NOT-FOUND
+              display message box MSG-Testo-non-trovato
+                      title = titolo
+           else
+              inquire gd1, cursor-y in riga
+              move riga to event-data-2
+              perform SPOSTAMENTO
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = PARAGRAFO-COPY
+BEGIN-TEXT
+           copy "color-custom.cpy".
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = SPOSTAMENTO
+BEGIN-TEXT
+           inquire gd1, last-row in tot-righe.
+           if event-data-2 < 2 
+              move 2 to event-data-2 
+           end-if.
+           if event-data-2 > tot-righe 
+              move tot-righe to event-data-2 
+           end-if.
+
+           modify gd1, start-y = event-data-2, y = event-data-2,
+                       start-x = 1,            x = 4,
+                       region-color = 481.
+
+           inquire gd1(event-data-2, 2), CELL-DATA ef-blister-buf
+           modify ef-blister, VALUE ef-blister-buf
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = VALORIZZA-MAGGIOR-GIACENZA
+BEGIN-TEXT
+           |Valorizzo prg-chiave con il record avente > giacenza
+           move 0 to giacenza.
+           set trovato to false.
+           move low-value                to prg-chiave.
+           move bli-el-articolo(ins-idx) to prg-cod-articolo.
+           move bli-magazzino            to prg-cod-magazzino.
+           start progmag key >= prg-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read progmag next at end exit perform end-read
+                    if prg-cod-articolo  not = bli-el-articolo(ins-idx) or
+                       prg-cod-magazzino not = bli-magazzino
+                       exit perform
+                    end-if
+                    if not trovato
+                       set trovato to true
+                       |Se la prima ed unica volta ho una giacenza di -1
+                       move prg-giacenza to giacenza
+                       move prg-giacenza to giacenza
+                       move prg-peso-utf to save-peso-utf
+                    end-if
+                    if prg-giacenza > giacenza
+                       move prg-giacenza to giacenza
+                       move prg-peso-utf to save-peso-utf
+                    end-if
+                 end-perform
+           end-start.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-annulla-BeforeProcedure
+BEGIN-TEXT
+           modify pb-annulla, bitmap-number = 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-annulla-AfterProcedure
+BEGIN-TEXT
+           modify pb-annulla, bitmap-number = 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-ok-BeforeProcedure
+BEGIN-TEXT
+           modify pb-ok, bitmap-number = 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-ok-AfterProcedure
+BEGIN-TEXT
+           modify pb-ok, bitmap-number = 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-ok-LinkTo
+BEGIN-TEXT
+           perform varying control-id from 78-ID-ef-qta by 1
+                     until control-id  >   78-ID-ef-qta
+              perform CONTROLLO
+              if errori
+                 exit perform
+              end-if
+           end-perform.
+
+           if tutto-ok
+              if ins-destino = 0
+                 set cli-tipo-C   to true
+                 move ins-cliente to cli-codice
+                 read clienti no lock
+                 move cli-utf to des-deposito-utf
+              else
+                 move ins-cliente to des-codice
+                 move ins-destino to des-prog
+                 read destini no lock
+              end-if
+              if des-deposito-utf not = "S"
+                 move 0 to tot-peso-utf
+                 inquire gd1, cursor-y in riga
+                 inquire gd1(riga, 2), cell-data in ins-codice
+                 move ef-qta-buf to ins-qta
+                 move ins-codice to bli-codice
+                 read blister no lock invalid continue end-read
+                 perform varying ins-idx from 1 by 1 
+                           until ins-idx > 999
+                    if bli-el-articolo(ins-idx) = 0
+                       subtract 1 from ins-idx
+                       exit perform
+                    end-if
+                    move bli-el-articolo(ins-idx) to prg-cod-articolo
+                    perform VALORIZZA-MAGGIOR-GIACENZA
+                    compute tot-peso-utf =
+                            tot-peso-utf + ins-qta * bli-el-qta(idx) * save-peso-utf
+                    if tot-peso-utf > 500
+                       set errori to true
+                       display message "Diminuire quantità scelta."
+                                x"0d0a""Peso blister > 500 Kg UTF"
+                                x"0d0a""Suddividere il blister in più righe."
+                                 title tit-err
+                                  icon 2
+                       modify pb-ok, bitmap-number = 1
+                       move 78-ID-ef-qta to control-id
+                       move 4            to accept-control
+                       exit perform
+                    end-if
+                 end-perform
+              end-if
+           end-if.
+
+           if tutto-ok
+              move ef-qta-buf to ins-qta
+              inquire gd1, cursor-y in riga
+              inquire gd1(riga, 2), cell-data in ins-codice
+              move ins-codice to bli-codice
+              read blister no lock invalid continue end-read
+              perform varying ins-idx from 1 by 1 
+                        until ins-idx > 999
+                 if bli-el-articolo(ins-idx) = 0
+                    subtract 1 from ins-idx
+                    exit perform
+                 end-if
+              end-perform
+
+              |Nel caso l'ultimo (o gli ultimi) elemento
+              |sia OMAGGIO scalo di 1 il contatore 
+              perform varying ins-idx from ins-idx by -1 
+                        until ins-idx = 0
+                 if bli-el-perce(ins-idx) not = 0
+                    exit perform
+                 end-if
+              end-perform
+              move 27 to key-status
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Screen1-Ef-1-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Screen1-Ef-1-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+           perform CONTROLLO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ins-blister-Ev-Before-Program
+BEGIN-TEXT
+           copy resource "multi.bmp".
+           call "W$BITMAP" using wbitmap-load "multi.bmp"
+                          giving multi-bmp.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ins-blister-Ev-After-Program
+BEGIN-TEXT
+           call "W$BITMAP" using wbitmap-destroy, multi-bmp.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = gd1-Ev-Msg-Begin-Entry
+BEGIN-TEXT
+           set event-action to event-action-fail-terminate.
+           inquire gd1, entry-reason in como-x.
+           inquire gd1, cursor-y in riga.
+           evaluate como-x
+           when x"00"
+                inquire gd1, cursor-x in colonna, 
+                if colonna = 1
+                   set GridAction to true
+                end-if
+           when x"0D"
+                set GridAction to true
+           end-evaluate.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = gd1-Ev-Msg-Begin-Drag
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = gd1-Ev-Msg-End-Drag
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = gd1-Ev-Msg-Goto-Cell
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = gd1-Ev-Msg-Goto-Cell-Drag
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = gd1-Ev-Msg-Goto-Cell-Mouse
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-blister-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+           perform CONTROLLO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-blister-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+
+@}}
+
+[KEY_STATUS_FIELD_FORMAT]
+PIC=9(5)
+USAGE=[None]
+
+[KEYSTATUS_CONTENT:KS1]
+CONDITION=Enter-Pushed
+VALUE=13
+
+[KEYSTATUS_CONTENT:KS2]
+CONDITION=Exit-Pushed
+VALUE=27
+
+[KEYSTATUS_CONTENT:KS3]
+CONDITION=Message-Received
+VALUE=95
+
+[KEYSTATUS_CONTENT:KS4]
+CONDITION=Event-Occurred
+VALUE=96
+
+[KEYSTATUS_CONTENT:KS5]
+CONDITION=Screen-No-Input-Field
+VALUE=97
+
+[KEYSTATUS_CONTENT:KS6]
+CONDITION=Screen-Time-Out
+VALUE=99
+
+[COBOLAID_DATASET_INFO]
+COUNT=1
+NAME_0=DataSet1
+
+[DRAW_DOCUMENT_INDEX]
+OBJ_NAME_0=8001
+OBJ_ID_0=510617772
+
+[MULTIPLE_KEY_0]
+COUNT=1
+KEY_0=bli-chiave
+
+[DRAW_DOCUMENT_8001_510617772]
+OBJ_NAME=8001
+OBJ_ID=510617772
+TYPE=2
+VERSION=
+DOC_SIZE_X=5100
+DOC_SIZE_Y=5160
+PAGE_LEFT=150
+PAGE_TOP=150
+PAGE_RIGHT=1850
+PAGE_BOTTOM=2730
+MARGIN_LEFT=150
+MARGIN_TOP=150
+MARGIN_RIGHT=150
+MARGIN_BOTTOM=150
+PROP_DOCU_TYPE=ø
+PROP_DOCU_TYPE2=ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+PROP_DOCU_NAME=DataSet - DataSet1[ins-blister(GESLUX)]
+PROP_DOCU_OWNER=Person A
+PROP_DOCU_CDATE=12/22/06
+PROP_DOCU_MODIFIER=Person B
+PROP_DOCU_MDATE=12/22/06
+PROP_DOCU_DESCR=Caseaid DocuCaseaid Document
+PROP_DOCU_HEADER=Caseaid Document
+PROP_DOCU_FOOTER=Page # 
+PROP_DOCU_DIM_H=2
+PROP_DOCU_DIM_W=3
+PROP_DOCU_LOC_H=1
+PROP_DOCU_LOC_W=1
+PROP_DOCU_EDGE_T=150
+PROP_DOCU_EDGE_B=150
+PROP_DOCU_EDGE_L=150
+PROP_DOCU_EDGE_R=150
+PROP_DOCU_ZOOM=75
+PROP_DOCU_SIZE_TYPE=0
+PROP_DOCU_SIZE_PAPER=1
+PROP_DOCU_SIZE_H=2580
+PROP_DOCU_SIZE_W=1700
+PROP_DOCU_RULER_EBL=0
+PROP_DOCU_GRID_EBL=0
+PROP_DOCU_GRID=20
+PROP_DOCU_ALIGN=0
+REL_SYM_SIZE=46
+REL_SYM_INFO_L=7
+REL_SYM_INFO_X0=2301
+REL_SYM_INFO_Y0=842988062
+REL_SYM_INFO_X1=2301
+REL_SYM_INFO_Y1=1360644923
+REL_SYM_INFO_X2=2301
+REL_SYM_INFO_Y2=746269650
+REL_SYM_INFO_X3=2301
+REL_SYM_INFO_Y3=1459519547
+REL_SYM_INFO_X4=2301
+REL_SYM_INFO_Y4=1879766028
+REL_SYM_INFO_X5=2301
+REL_SYM_INFO_Y5=1933953818
+REL_SYM_INFO_X6=2301
+REL_SYM_INFO_Y6=1852845570
+
+[DRAW_BASESYMBOL_2301_842988062]
+OBJ_NAME=2301
+OBJ_ID=842988062
+KIND=1
+{{@LABEL_2301_842988062
+blister
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=50
+TOP=50
+RIGHT=450
+BOTTOM=272
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1360644923]
+OBJ_NAME=2301
+OBJ_ID=1360644923
+KIND=1
+{{@LABEL_2301_1360644923
+tmagaz
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=333
+TOP=566
+RIGHT=733
+BOTTOM=788
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_746269650]
+OBJ_NAME=2301
+OBJ_ID=746269650
+KIND=1
+{{@LABEL_2301_746269650
+articoli
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=616
+TOP=50
+RIGHT=1016
+BOTTOM=272
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1459519547]
+OBJ_NAME=2301
+OBJ_ID=1459519547
+KIND=1
+{{@LABEL_2301_1459519547
+listini
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=974
+TOP=529
+RIGHT=1374
+BOTTOM=751
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1879766028]
+OBJ_NAME=2301
+OBJ_ID=1879766028
+KIND=1
+{{@LABEL_2301_1879766028
+progmag
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=360
+TOP=1032
+RIGHT=760
+BOTTOM=1254
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1933953818]
+OBJ_NAME=2301
+OBJ_ID=1933953818
+KIND=1
+{{@LABEL_2301_1933953818
+clienti
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1182
+TOP=1082
+RIGHT=1582
+BOTTOM=1304
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1852845570]
+OBJ_NAME=2301
+OBJ_ID=1852845570
+KIND=1
+{{@LABEL_2301_1852845570
+destini
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1748
+TOP=1082
+RIGHT=2148
+BOTTOM=1304
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DMD_DOCUMENT_0_510617772]
+OBJ_NAME=0
+OBJ_ID=510617772
+FILE_TITLE_TYPE=8136
+FILE_SHOW_ITEM=0
+FILE_SHOW_KEY=0
+FILE_SHOW_PIC=0
+FILE_SHOW_HEAD=0
+FILE_SHOW_LEVEL=0
+FILE_SHOW_TREE=0
+FILE_SHOW_CLPS=0
+FILE_SHOW_BMP=0
+FILE_SHOW_LINE=0
+FILE_SHOW_MINIZE=0
+
+[DMD_FILE_0_842988062]
+OBJ_NAME=0
+OBJ_ID=842988062
+REL_M_OBJ_ID=0
+ENTITY=blister
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=bli-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_842988062
+
+@}}
+DSN_INFO_PRIMARY=1
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1360644923]
+OBJ_NAME=0
+OBJ_ID=1360644923
+REL_M_OBJ_ID=0
+ENTITY=tmagaz
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=mag-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1360644923
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_746269650]
+OBJ_NAME=0
+OBJ_ID=746269650
+REL_M_OBJ_ID=0
+ENTITY=articoli
+LINK=0
+LINK_NAME=
+DSN_SIZE=54
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=art-chiave OF articoli
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_746269650
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1459519547]
+OBJ_NAME=0
+OBJ_ID=1459519547
+REL_M_OBJ_ID=0
+ENTITY=listini
+LINK=0
+LINK_NAME=
+DSN_SIZE=53
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=lst-chiave OF listini
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1459519547
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1879766028]
+OBJ_NAME=0
+OBJ_ID=1879766028
+REL_M_OBJ_ID=0
+ENTITY=progmag
+LINK=0
+LINK_NAME=
+DSN_SIZE=53
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=prg-chiave OF progmag
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1879766028
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1933953818]
+OBJ_NAME=0
+OBJ_ID=1933953818
+REL_M_OBJ_ID=0
+ENTITY=clienti
+LINK=0
+LINK_NAME=
+DSN_SIZE=53
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=cli-chiave OF clienti
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1933953818
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1852845570]
+OBJ_NAME=0
+OBJ_ID=1852845570
+REL_M_OBJ_ID=0
+ENTITY=destini
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=des-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1852845570
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=

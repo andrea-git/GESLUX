@@ -1,0 +1,3032 @@
+; CaseMaker Totem Program Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[MONITOR_FILE]
+
+
+[PROGRAM_CONTENT]
+QUIT_CONFIRM=0
+ANSI_FORMAT=1
+MAIN_SCREEN_NAME=Form1
+BEFORE_PROGRAM=stbolle-Ev-Before-Program
+AFTER_PROGRAM=stbolle-Ev-After-Program
+PROGRAM_UNIQUE_CODE=TOTEM-7E3AA20571-718-1779318904
+
+{{@DESCRIPTION:
+
+@}}
+
+[WORKING_STORAGE]
+m_nType=1
+m_strName=Working Storage
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionWK
+
+@}}
+[FDITEM0_WK]
+m_strName=Screen1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_WK
+
+@}}
+[FDITEM1_WK]
+m_strName=operazione
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\SPOOLER-A.LKS
+m_strCopyFile=spooler-a.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPOOLER-A.LKS
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM1_WK
+
+
+@}}
+[FDITEM2_WK]
+m_strName=antep
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="A"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\SPOOLER-A.LKS
+m_strCopyFile=spooler-a.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPOOLER-A.LKS
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM2_WK
+
+@}}
+[FDITEM3_WK]
+m_strName=stampa
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\SPOOLER-A.LKS
+m_strCopyFile=spooler-a.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPOOLER-A.LKS
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM3_WK
+
+@}}
+[FDITEM4_WK]
+m_strName=WSTAMPA
+m_strRawPic=x(256)
+m_strPic=X(256)
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\SPOOLER-A.LKS
+m_strCopyFile=spooler-a.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPOOLER-A.LKS
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM4_WK
+
+@}}
+[FDITEM5_WK]
+m_strName=orientamento
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\SPOOLER-A.LKS
+m_strCopyFile=spooler-a.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPOOLER-A.LKS
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM5_WK
+
+@}}
+[FDITEM6_WK]
+m_strName=stbolle-linkage
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM6_WK
+
+@}}
+[FDITEM7_WK]
+m_strName=stbolle-TipoStampa
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM7_WK
+
+@}}
+[FDITEM8_WK]
+m_strName=stbolle-Stampa
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM8_WK
+
+@}}
+[FDITEM9_WK]
+m_strName=stbolle-Ristampa
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="R"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM9_WK
+
+@}}
+[FDITEM10_WK]
+m_strName=stbolle-split
+m_strRawPic=x(256)
+m_strPic=X(256)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM10_WK
+
+@}}
+[FDITEM11_WK]
+m_strName=stbolle-Path
+m_strRawPic=x(256)
+m_strPic=X(256)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM11_WK
+
+@}}
+[FDITEM12_WK]
+m_strName=stbolle-data
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM12_WK
+
+@}}
+[FDITEM13_WK]
+m_strName=stbolle-anno
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM13_WK
+
+@}}
+[FDITEM14_WK]
+m_strName=stb-limiti-numero
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM14_WK
+
+@}}
+[FDITEM15_WK]
+m_strName=stb-numero-da
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM15_WK
+
+@}}
+[FDITEM16_WK]
+m_strName=stb-numero-a
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM16_WK
+
+@}}
+[FDITEM17_WK]
+m_strName=link-user
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM17_WK
+
+@}}
+[FDITEM18_WK]
+m_strName=stbolle-chiave
+m_strRawPic=xx
+m_strPic=XX
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM18_WK
+
+@}}
+[FDITEM19_WK]
+m_strName=stbolle-k3
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="K3"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM19_WK
+
+@}}
+[FDITEM20_WK]
+m_strName=stbolle-k-bolla
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="BO"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM20_WK
+
+@}}
+[FDITEM21_WK]
+m_strName=stbolle-ricerca
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM21_WK
+
+@}}
+[FDITEM22_WK]
+m_strName=stbolle-singola
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1,
+m_strFalse=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM22_WK
+
+@}}
+[FDITEM23_WK]
+m_strName=stbolle-piu-stampe
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM23_WK
+****     03 stbolle-tipocli  PIC  x.
+****         88 stbolle-GDO  VALUE IS "G". 
+****         88 stbolle-MV   VALUE IS "M". 
+****         88 stbolle-AT   VALUE IS "A". 
+@}}
+[FDITEM24_WK]
+m_strName=stbolle-piu-stampe-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1,
+m_strFalse=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM24_WK
+
+@}}
+[FDITEM25_WK]
+m_strName=stbolle-num-stampe
+m_strRawPic=9(2)
+m_strPic=9(2)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM25_WK
+
+@}}
+[FDITEM26_WK]
+m_strName=stbolle-path1
+m_strRawPic=x(256)
+m_strPic=X(256)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM26_WK
+
+@}}
+[FDITEM27_WK]
+m_strName=stbolle-stampante1
+m_strRawPic=x(100)
+m_strPic=X(100)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM27_WK
+
+@}}
+[FDITEM28_WK]
+m_strName=stbolle-path2
+m_strRawPic=x(256)
+m_strPic=X(256)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM28_WK
+
+@}}
+[FDITEM29_WK]
+m_strName=stbolle-stampante2
+m_strRawPic=x(100)
+m_strPic=X(100)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM29_WK
+
+@}}
+[FDITEM30_WK]
+m_strName=stbolle-path3
+m_strRawPic=x(256)
+m_strPic=X(256)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM30_WK
+
+@}}
+[FDITEM31_WK]
+m_strName=stbolle-stampante3
+m_strRawPic=x(100)
+m_strPic=X(100)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM31_WK
+
+@}}
+[FDITEM32_WK]
+m_strName=stbolle-path4
+m_strRawPic=x(256)
+m_strPic=X(256)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM32_WK
+
+@}}
+[FDITEM33_WK]
+m_strName=stbolle-stampante4
+m_strRawPic=x(100)
+m_strPic=X(100)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM33_WK
+
+@}}
+[FDITEM34_WK]
+m_strName=stbolle-path5
+m_strRawPic=x(256)
+m_strPic=X(256)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM34_WK
+
+@}}
+[FDITEM35_WK]
+m_strName=stbolle-stampante5
+m_strRawPic=x(100)
+m_strPic=X(100)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=LINK-STBOLLE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM35_WK
+
+@}}
+[FDITEM36_WK]
+m_strName=ru-linkage
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-READUTENTE.DEF
+m_strCopyFile=link-readutente.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-READUTENTE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM36_WK
+
+
+@}}
+[FDITEM37_WK]
+m_strName=ru-user
+m_strRawPic=x(20)
+m_strPic=X(20)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-READUTENTE.DEF
+m_strCopyFile=link-readutente.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-READUTENTE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM37_WK
+
+@}}
+[FDITEM38_WK]
+m_strName=ru-SO
+m_strRawPic=xx
+m_strPic=XX
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-READUTENTE.DEF
+m_strCopyFile=link-readutente.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-READUTENTE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM38_WK
+
+@}}
+[FDITEM39_WK]
+m_strName=ru-SO-XP
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="XP"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-READUTENTE.DEF
+m_strCopyFile=link-readutente.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-READUTENTE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM39_WK
+
+@}}
+[FDITEM40_WK]
+m_strName=ru-SO-Vista
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="V"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-READUTENTE.DEF
+m_strCopyFile=link-readutente.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-READUTENTE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM40_WK
+
+@}}
+[FDITEM41_WK]
+m_strName=ru-SO-7
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="7"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-READUTENTE.DEF
+m_strCopyFile=link-readutente.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-READUTENTE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM41_WK
+
+@}}
+[FDITEM42_WK]
+m_strName=ru-Office
+m_strRawPic=xx
+m_strPic=XX
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-READUTENTE.DEF
+m_strCopyFile=link-readutente.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-READUTENTE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM42_WK
+
+@}}
+[FDITEM43_WK]
+m_strName=ru-Office-2003
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="3"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-READUTENTE.DEF
+m_strCopyFile=link-readutente.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-READUTENTE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM43_WK
+
+@}}
+[FDITEM44_WK]
+m_strName=ru-Office-2007
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="7"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-READUTENTE.DEF
+m_strCopyFile=link-readutente.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-READUTENTE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM44_WK
+
+@}}
+[FDITEM45_WK]
+m_strName=ru-Office-2010
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="10"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-READUTENTE.DEF
+m_strCopyFile=link-readutente.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-READUTENTE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM45_WK
+
+@}}
+[FDITEM46_WK]
+m_strName=OK-73X21-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM46_WK
+
+@}}
+[FDITEM47_WK]
+m_strName=CANCEL-73X21-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM47_WK
+
+@}}
+[FDITEM48_WK]
+m_strName=Default-Font
+m_nUsage=38
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM48_WK
+
+@}}
+[FDITEM49_WK]
+m_strName=Small-Font
+m_nUsage=37
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM49_WK
+
+@}}
+[FDITEM50_WK]
+m_strName=data-stampa-2
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM50_WK
+
+@}}
+[FDITEM51_WK]
+m_strName=como-stampante
+m_strRawPic=x(100)
+m_strPic=x(100)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM51_WK
+
+@}}
+[FDITEM52_WK]
+m_strName=printerToSet
+m_strRawPic=x(100)
+m_strPic=x(100)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM52_WK
+
+@}}
+[FDITEM53_WK]
+m_strName=titolo
+m_strDefaultValue="Stampa Bolle SERIE 1"
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM53_WK
+
+@}}
+[FDITEM54_WK]
+m_strName=file-info
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM54_WK
+
+@}}
+[FDITEM55_WK]
+m_strName=file-size
+m_strRawPic=X(8)
+m_strPic=X(8)
+m_nUsage=8
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM55_WK
+
+@}}
+[FDITEM56_WK]
+m_strName=file-date
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nUsage=8
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM56_WK
+
+@}}
+[FDITEM57_WK]
+m_strName=file-time
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nUsage=8
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM57_WK
+
+@}}
+[FDITEM58_WK]
+m_strName=STATUS-tcontat
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM58_WK
+
+@}}
+[FDITEM59_WK]
+m_strName=Valid-STATUS-tcontat
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM59_WK
+
+@}}
+[FDITEM60_WK]
+m_strName=STATUS-tparamge
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM60_WK
+
+@}}
+[FDITEM61_WK]
+m_strName=Valid-STATUS-tparamge
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM61_WK
+
+@}}
+[FDITEM62_WK]
+m_strName=FORM1-HANDLE
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM62_WK
+
+@}}
+[FDITEM63_WK]
+m_strName=AUTO-ID
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM63_WK
+
+@}}
+[FDITEM64_WK]
+m_strName=Timmons16-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM64_WK
+
+@}}
+[FDITEM65_WK]
+m_strName=lab-caricato-buf
+m_strRawPic=X(35)
+m_strPic=X(35)
+m_strDefaultValue="Movimento caricato con successo!"
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM65_WK
+
+@}}
+[FDITEM66_WK]
+m_strName=Impact24-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM66_WK
+
+@}}
+[FDITEM67_WK]
+m_strName=Timmons12-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM67_WK
+
+@}}
+[FDITEM68_WK]
+m_strName=v-peso
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM68_WK
+
+@}}
+[FDITEM69_WK]
+m_strName=peso-edit
+m_strRawPic=zz.zz9,999
+m_strPic=zz.zz9,999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM69_WK
+
+@}}
+[FDITEM70_WK]
+m_strName=si-no-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM70_WK
+
+@}}
+[FDITEM71_WK]
+m_strName=bottone-ok-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM71_WK
+
+@}}
+[FDITEM72_WK]
+m_strName=bottone-cancel-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM72_WK
+
+@}}
+[FDITEM73_WK]
+m_strName=Verdana12-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM73_WK
+
+@}}
+[FDITEM74_WK]
+m_strName=scr-elab-SF-HANDLE
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM74_WK
+
+@}}
+[FDITEM75_WK]
+m_strName=scr-elab-MN-1-HANDLE
+m_nUsage=48
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM75_WK
+
+@}}
+[FDITEM76_WK]
+m_strName=Verdana12B-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM76_WK
+
+@}}
+[FDITEM77_WK]
+m_strName=Form1-Tb-1-Handlea
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM77_WK
+
+@}}
+[FDITEM78_WK]
+m_strName=toolbar-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM78_WK
+
+@}}
+[FDITEM79_WK]
+m_strName=E-ESCI
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM79_WK
+
+@}}
+[FDITEM80_WK]
+m_strName=Form1-Tb-1-Handleaa
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM80_WK
+
+@}}
+[FDITEM81_WK]
+m_strName=data-stampa-1
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM81_WK
+
+@}}
+[FDITEM82_WK]
+m_strName=data-stampa
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM82_WK
+
+@}}
+
+
+[LINKAGE_SECTION]
+m_nType=1
+m_strName=Linkage Section
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionLK
+
+@}}
+[FDITEM0_LK]
+m_strName=LK-BLOCKPGM
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM0_LK
+
+@}}
+[FDITEM1_LK]
+m_strName=LK-BL-PROG-ID
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM1_LK
+
+@}}
+[FDITEM2_LK]
+m_strName=LK-BL-DATA
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM2_LK
+
+@}}
+[FDITEM3_LK]
+m_strName=LK-BL-ORA
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM3_LK
+
+@}}
+[FDITEM4_LK]
+m_strName=LK-BL-TIPO-OP
+m_strRawPic=9(1)
+m_strPic=9(1)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM4_LK
+
+@}}
+[FDITEM5_LK]
+m_strName=LK-BL-LETTURA
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM5_LK
+
+@}}
+[FDITEM6_LK]
+m_strName=LK-BL-SCRITTURA
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=2
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM6_LK
+
+@}}
+[FDITEM7_LK]
+m_strName=LK-BL-CANCELLAZIONE
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=3
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM7_LK
+
+@}}
+[FDITEM8_LK]
+m_strName=LK-BL-USO
+m_strRawPic=9(1)
+m_strPic=9(1)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM8_LK
+
+@}}
+[FDITEM9_LK]
+m_strName=LK-BL-IN-USO
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM9_LK
+
+@}}
+[FDITEM10_LK]
+m_strName=LK-HND-WIN
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM10_LK
+
+@}}
+[FDITEM11_LK]
+m_strName=USER-CODI
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=common-linkage.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM11_LK
+
+@}}
+[FDITEM12_LK]
+m_strName=LIVELLO-ABIL
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=common-linkage.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM12_LK
+
+@}}
+
+
+{{@SCREEN:
+*   Screen Painter Data
+*   Schema 6.0
+*
+BEGIN-SPDATA-6.1A
+
+GRAPHICAL-SCREEN
+
+Begin Screen Form1
+   PREFIX            = Screen1
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = Form1
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 18
+   Cell Width        = 10
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = FALSE
+   Font              = Verdana/12/C0/@Occidentale
+   Font Variable     = Verdana12-Occidentale
+   Handle Variable   = FORM1-HANDLE
+   Height in Cells   = TRUE
+   Help ID           = 0
+   Label Offset      = 20
+   Lines             = 8,06
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = TRUE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 40,20
+   System Menu       = TRUE
+   Title Bar         = TRUE
+   Title Variable    = titolo
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = TRUE
+   Window Type       = Independent
+   Wrap              = FALSE
+   Event Procedure   = Screen1-Event-Proc
+   Begin Entry-Field ef-data-1
+      SCREEN-COL        = 23,60
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-data-1
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 23,60
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 0
+      ID Variable       = AUTO-ID
+      Justification     = Center
+      Line              = 2,00
+      Lines             = 1,33
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 0
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 10,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 1
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Value Picture     = 99/99/9999
+      Value Variable    = data-stampa-1
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-data-BeforeProcedure
+      After Procedure   = ef-data-AfterProcedure
+   End
+   Begin Entry-Field ef-data-2
+      SCREEN-COL        = 30,00
+      SCREEN-LINE       = 4,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-data-2
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 30,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 0
+      ID Variable       = AUTO-ID
+      Justification     = Center
+      Line              = 4,00
+      Lines             = 1,33
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 0
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 10,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 2
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Value Picture     = 99/99/9999
+      Value Variable    = data-stampa-2
+      Visible           = FALSE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-data-BeforeProcedure
+      After Procedure   = ef-data-2-AfterProcedure
+   End
+   Begin CsCtrl.blockpgm Label Screen1-blockpgm-1
+      CUST-SYMBOL       = blockpgm
+      CUST-MODIFYFLAG   = 000000000000000000000000000000000000000000000000000
+      SCREEN-COL        = 15,50
+      SCREEN-LINE       = 1,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-blockpgm-1
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 15,50
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 5
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 1,00
+      Lines             = 0,61
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 2,50
+      Size Unit         = Default
+      Tab Order         = 3
+      Title             = "BlockPgm"
+      Transparent       = TRUE
+      Visible           = NONE
+      Visible Variable  = v-custom
+      Width in Cells    = TRUE
+   End
+   Begin CsCtrl.Custom1 Label Screen1-Custom1-2
+      CUST-SYMBOL       = Custom1
+      CUST-MODIFYFLAG   = 000000000000000000000000000000000000000000000000000
+      SCREEN-COL        = 11,40
+      SCREEN-LINE       = 1,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-Custom1-2
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 11,40
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Font Variable     = Default-Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 4
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 1,00
+      Lines             = 0,61
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 1,70
+      Size Unit         = Default
+      Tab Order         = 4
+      Title             = "CUSTOM CONTROL"
+      Transparent       = TRUE
+      Visible           = NONE
+      Visible Variable  = v-custom
+      Width in Cells    = FALSE
+   End
+   Begin Label Screen1-La-1
+      SCREEN-COL        = 8,60
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-La-1
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 8,60
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 6
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 2,00
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 14,00
+      Size Unit         = Default
+      Tab Order         = 5
+      Title             = "Data di stampa"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Frame Screen1-Fr-2
+      SCREEN-COL        = 1,00
+      SCREEN-LINE       = 6,28
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-Fr-2
+      3D Style          = Normal
+      Alternate         = FALSE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Font              = Default Font
+      Full Height       = FALSE
+      Height in Cells   = TRUE
+      Help ID           = 0
+      High Color        = 0
+      ID                = 8
+      Line              = 6,28
+      Lines             = 2,78
+      Lines Unit        = Default
+      Low Color         = 0
+      Size              = 40,20
+      Size Unit         = Default
+      Tab Order         = 6
+      Thickness         = Default
+      Title Position    = 0:Unaligned
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Begin Push-Button PB-ESEGUI
+         SCREEN-COL        = 25,00
+         SCREEN-LINE       = 6,89
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = PB-ESEGUI
+         Bitmap            = "..\RESOURCE\BOTTONE-OK.BMP"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = BOTTONE-OK-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 25,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 1001
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 500
+         Line              = 1,61
+         Lines             = 1,56
+         Lines in Pixels   = 30
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 7,10
+         Size in Pixels    = 73
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 1
+         Termination Value = 13
+         Title             = "E&segue il programma selezionato"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Before Procedure  = PB-ESEGUI-BeforeProcedure
+         After Procedure   = PB-ESEGUI-AfterProcedure
+         Link To           = PB-ESEGUI-LinkTo
+      End
+      Begin Push-Button Form1-Pb-2
+         SCREEN-COL        = 32,90
+         SCREEN-LINE       = 6,89
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Form1-Pb-2
+         Bitmap            = "..\RESOURCE\BOTTONE-CANCEL.BMP"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = BOTTONE-CANCEL-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 32,90
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 27
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 501
+         Line              = 1,61
+         Lines             = 1,56
+         Lines in Pixels   = 30
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 7,10
+         Size in Pixels    = 73
+         Size Unit         = Default
+         Style             = Escape Button
+         Tab Order         = 2
+         Termination Value = 0
+         Title             = "&Esce dall'applicativo"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Before Procedure  = Form1-Pb-2-BeforeProcedure
+         After Procedure   = Form1-Pb-2-AfterProcedure
+      End
+   End
+   Begin Label Screen1-La-1a
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 4,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-La-1a
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 502
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 4,00
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 26,00
+      Size Unit         = Default
+      Tab Order         = 7
+      Title             = "Data di stampa SERIE BOLLE 2"
+      Transparent       = TRUE
+      Visible           = FALSE
+      Width in Cells    = TRUE
+   End
+End
+
+Begin Screen scr-data
+   PREFIX            = Screen1a
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = FALSE
+   LEVEL             = 1
+   (Name)            = scr-data
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 18
+   Cell Width        = 10
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = FALSE
+   Font              = Verdana/12/C0/@Occidentale
+   Font Variable     = Verdana12-Occidentale
+   Handle Variable   = Screen1-Handle
+   Height in Cells   = TRUE
+   Help ID           = 0
+   Label Offset      = 20
+   Lines             = 10,61
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = FALSE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 33,20
+   System Menu       = FALSE
+   Title             = "Stampa Bolle"
+   Title Bar         = TRUE
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = TRUE
+   Window Type       = Floating
+   Wrap              = FALSE
+   Event Procedure   = Screen1-Event-Proc
+   Begin Label lab-caricato
+      SCREEN-COL        = 3,60
+      SCREEN-LINE       = 2,06
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lab-caricato
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 3,60
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 1
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 2,06
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 28,00
+      Size Unit         = Default
+      Tab Order         = 1
+      Title             = "E' stata controllata la data?"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label lbl-data
+      SCREEN-COL        = 9,60
+      SCREEN-LINE       = 4,06
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lbl-data
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 5
+      Column            = 9,60
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Impact/24/C0/@Occidentale
+      Font Variable     = Impact24-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 4
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 4,06
+      Lines             = 1,89
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 16,00
+      Size Unit         = Default
+      Tab Order         = 2
+      Title Picture     = 99/99/9999
+      Title Variable    = data-stampa-1
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Frame Screen1a-Fr-1
+      SCREEN-COL        = 1,00
+      SCREEN-LINE       = 8,83
+      LOCK-CONTROL      = FALSE
+      LEVEL             = 5
+      (Name)            = Screen1a-Fr-1
+      3D Style          = Normal
+      Alternate         = FALSE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Font              = Default Font
+      Full Height       = FALSE
+      Height in Cells   = TRUE
+      Help ID           = 0
+      High Color        = 0
+      ID                = 2
+      Line              = 8,83
+      Lines             = 2,78
+      Lines Unit        = Default
+      Low Color         = 0
+      Size              = 33,20
+      Size Unit         = Default
+      Tab Order         = 3
+      Thickness         = Default
+      Title Position    = 0:Unaligned
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Begin Push-Button pb-si
+         SCREEN-COL        = 18,00
+         SCREEN-LINE       = 9,50
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = pb-si
+         Bitmap            = "..\RESOURCE\BOTTONE-OK.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = BOTTONE-OK-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 18,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 1000
+         Flat              = TRUE
+         Font              = Small Font
+         Font Variable     = Small-Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 10
+         Line              = 1,67
+         Lines             = 1,56
+         Lines in Pixels   = 30
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = FALSE
+         Size              = 7,10
+         Size in Pixels    = 73
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 1
+         Termination Value = 0
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Before Procedure  = pb-si-BeforeProcedure
+         After Procedure   = pb-si-AfterProcedure
+         Link To           = pb-si-LinkTo
+      End
+      Begin Push-Button pb-no
+         SCREEN-COL        = 25,90
+         SCREEN-LINE       = 9,50
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = pb-no
+         Bitmap            = "..\RESOURCE\BOTTONE-CANCEL.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = BOTTONE-CANCEL-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 25,90
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 1001
+         Flat              = TRUE
+         Font              = Small Font
+         Font Variable     = Small-Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 11
+         Line              = 1,67
+         Lines             = 1,56
+         Lines in Pixels   = 30
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = FALSE
+         Size              = 7,10
+         Size in Pixels    = 73
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 2
+         Termination Value = 0
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Before Procedure  = pb-no-BeforeProcedure
+         After Procedure   = pb-no-AfterProcedure
+         Link To           = pb-no-LinkTo
+      End
+   End
+   Begin Label lbl-dataa
+      SCREEN-COL        = 9,60
+      SCREEN-LINE       = 6,44
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lbl-dataa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 5
+      Column            = 9,60
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Impact/24/C0/@Occidentale
+      Font Variable     = Impact24-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 12
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 6,44
+      Lines             = 1,89
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 16,00
+      Size Unit         = Default
+      Tab Order         = 4
+      Title Picture     = 99/99/9999
+      Title Variable    = data-stampa-2
+      Transparent       = TRUE
+      Visible           = FALSE
+      Width in Cells    = TRUE
+   End
+End
+
+Begin Screen scr-elab
+   PREFIX            = scr-elab
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = scr-elab
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = TRUE
+   Cell Height       = 10
+   Cell Width        = 10
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = TRUE
+   Font              = Verdana/12/C0/@Occidentale
+   Font Variable     = Verdana12-Occidentale
+   Handle Variable   = scr-elab-SF-HANDLE
+   Height in Cells   = TRUE
+   Help ID           = 1
+   Label Offset      = 0
+   Lines             = 19,30
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = TRUE
+   Operation Mode    = Interactive Mode
+   Resizable         = TRUE
+   Scroll            = FALSE
+   Size              = 37,80
+   System Menu       = TRUE
+   Title             = "ATTENZIONE!!!"
+   Title Bar         = TRUE
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = TRUE
+   Window Type       = Floating
+   Wrap              = FALSE
+   Begin Push-Button pb-sib
+      SCREEN-COL        = 22,30
+      SCREEN-LINE       = 16,40
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-sib
+      Bitmap            = "..\RESOURCE\BOTTONE-OK.BMP"
+      Bitmap Frame      = FALSE
+      Bitmap Handle     = BOTTONE-OK-BMP
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 22,30
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 1000
+      Flat              = TRUE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 10
+      Line              = 16,40
+      Lines             = 3,70
+      Lines in Pixels   = 30
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 8,10
+      Size in Pixels    = 73
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 1
+      Termination Value = 0
+      Visible           = NONE
+      Width in Cells    = FALSE
+      Before Procedure  = pb-sib-BeforeProcedure
+      After Procedure   = pb-sib-AfterProcedure
+      Link To           = pb-sib-LinkTo
+   End
+   Begin Push-Button pb-noa
+      SCREEN-COL        = 30,30
+      SCREEN-LINE       = 16,40
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-noa
+      Bitmap            = "..\RESOURCE\BOTTONE-CANCEL.BMP"
+      Bitmap Frame      = FALSE
+      Bitmap Handle     = BOTTONE-CANCEL-BMP
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 30,30
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 1001
+      Flat              = TRUE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 11
+      Line              = 16,40
+      Lines             = 3,70
+      Lines in Pixels   = 30
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 8,10
+      Size in Pixels    = 73
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 2
+      Termination Value = 0
+      Visible           = NONE
+      Width in Cells    = FALSE
+      Before Procedure  = pb-noa-BeforeProcedure
+      After Procedure   = pb-noa-AfterProcedure
+      Link To           = pb-noa-LinkTo
+   End
+   Begin Label scr-elab-La-1
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = FALSE
+      LEVEL             = 5
+      (Name)            = scr-elab-La-1
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 5
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/12/B/C0/@Occidentale
+      Font Variable     = Verdana12B-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 3
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 2,00
+      Lines             = 9,00
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 36,00
+      Size Unit         = Default
+      Tab Order         = 3
+      Title             = "La seguente elaborazione produce la stampa di tutti quei documenti prenotati, ma non bollettati. Sarà aggiornata la data di stampa all'interno della tabella dei contatori."
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label scr-elab-La-3
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 12,40
+      LOCK-CONTROL      = FALSE
+      LEVEL             = 5
+      (Name)            = scr-elab-La-3
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 2
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/12/B/C0/@Occidentale
+      Font Variable     = Verdana12B-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 12
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 12,40
+      Lines             = 2,00
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 30,00
+      Size Unit         = Default
+      Tab Order         = 4
+      Title             = "Procedere con l'elaborazione?"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Bar Screen4-Br-1aaa
+      SCREEN-COL        = 1,00
+      SCREEN-LINE       = 16,00
+      LOCK-CONTROL      = FALSE
+      LEVEL             = 5
+      (Name)            = Screen4-Br-1aaa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1.00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 13
+      Kind              = Horizontal
+      Line              = 16,00
+      Line Styles       = Solid
+      Occurs            = 0
+      Position Shift    = 0
+      COLORS            = ( 8, 8 )
+      SHADING           = ( -1, 1 )
+      Size (Lines)      = 37,80
+      Size (Lines) in Pixels = 378
+      Size (Lines) Unit = Default
+      Tab Order         = 5
+      Visible           = NONE
+      Width             = 2
+      Width in Cells    = TRUE
+   End
+End
+
+END-SPDATA
+
+@}}
+
+{{@REPORT:
+*   Report Writer Data
+*   Schema 6.0
+*
+BEGIN-RWDATA-6.0A
+
+END-RWDATA
+
+@}}
+
+{{@EMBEDDING_CODE:
+BEGIN-DATA
+   BASETYPE          = 13
+   NODESTYLE         = 13
+   PARAGRAPH         = Other Working
+BEGIN-TEXT
+           copy "winprint.def".
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 6
+   NODESTYLE         = 7
+   PARAGRAPH         = DeletedCode
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterDisplay
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+           accept como-data from century-date.
+           perform DATE-TO-SCREEN.
+           move como-data to data-stampa-1 data-stampa-2.
+           display ef-data-1 ef-data-2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = scr-data
+   ACTOBJ            = scr-data
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterDisplay
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterCreateWin
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = scr-data
+   ACTOBJ            = scr-data
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterCreateWin
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = scr-elab
+   ACTOBJ            = scr-elab
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterCreateWin
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 0
+   PARENT            = stbolle
+   ACTOBJ            = stbolle
+   ENTRYPOINT        = BeforeDeclarative
+BEGIN-TEXT
+      ***---
+       TCONTAT-ERR SECTION.
+           use after error procedure on tcontat.
+           set tutto-ok  to true.
+           evaluate status-tcontat
+           when "35"
+                display message "File [TCONTAT] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [TCONTAT] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[TCONTAT] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           end-evaluate.
+ 
+      ***---
+       TPARAMGE-ERR SECTION.
+           use after error procedure on tparamge.
+           set tutto-ok  to true.
+           evaluate status-tparamge
+           when "35"
+                display message "File [TPARAMGE] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [TPARAMGE] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[TPARAMGE] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           end-evaluate.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = scr-elab
+   ACTOBJ            = scr-elab
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterDisplay
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = PARAGRAFO-COPY
+BEGIN-TEXT
+           copy "utydata.cpy".
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CONTROLLO
+BEGIN-TEXT
+           set tutto-ok to true.
+           inquire ef-data-1, value in data-stampa-1.
+           move data-stampa-1 to como-data.
+
+           perform DATE-FORMAT.
+
+           move como-data   to data-stampa-1.
+           display ef-data-1.
+
+           move spaces   to tge-codice.
+           read tparamge no lock invalid continue end-read.
+           if tge-anno not = como-data(5:4)
+              display message "L'anno di stampa non coincide"
+                              " con quello d'esercizio."
+                      x"0d0a""Anno d'esercizio: ", tge-anno
+                      title = tit-err
+                      icon 2
+              set errori to true
+           else
+
+              move tge-anno to con-anno
+              read tcontat no lock invalid continue end-read
+              perform DATE-TO-FILE
+
+              if como-data < con-ult-stampa-bolle-gdo
+                 display message "Data di stampa < data "
+                                 "di ultima stampa bolle ("                                                             
+                                 con-ult-stampa-bolle-gdo(7:2) "/"
+                                 con-ult-stampa-bolle-gdo(5:2) "/"
+                                 con-ult-stampa-bolle-gdo(1:4)")"
+                         title = tit-err
+                         icon 2
+                 set errori to true
+              else
+                 if como-data(5:2) not = con-ult-stampa-bolle-gdo(5:2)
+                    display message "Il mese di stampa non coincide "
+                                    "con quello di ultima stampa bolle."
+                             x"0d0a""Mese di ultima stampa: "         
+                                    con-ult-stampa-bolle-gdo(5:2)
+                            title = tit-err
+                            icon 2
+                    set errori to true
+                 else
+                    if como-data <= con-ult-stampa-fatt               
+                       display message "La data dev'essere > a quella di ultima fatturazione ("
+                                       con-ult-stampa-fatt(7:2) "/"
+                                       con-ult-stampa-fatt(5:2) "/"
+                                       con-ult-stampa-fatt(1:4)")"
+                               title = tit-err
+                               icon 2
+                       set errori to true
+                    end-if
+                 end-if
+              end-if
+           end-if.
+
+           if errori
+              move 78-ID-ef-data-1 to control-id
+              move 4               to accept-control
+           else
+              move data-stampa-1 to data-stampa-2
+           end-if.
+
+      *****     if tutto-ok
+      *****        inquire ef-data-2, value in data-stampa-2
+      *****        move data-stampa-2 to como-data
+      *****
+      *****        perform DATE-FORMAT
+      *****
+      *****        move como-data   to data-stampa-2
+      *****        display ef-data-2
+      *****
+      *****        move spaces   to tge-codice
+      *****        read tparamge no lock invalid continue end-read
+      *****        if tge-anno not = como-data(5:4)
+      *****           display message "L'anno di stampa SERIE 2 non coincide"
+      *****                           " con quello d'esercizio."
+      *****                   x"0d0a""Anno d'esercizio: ", tge-anno
+      *****                   title = tit-err
+      *****                   icon 2
+      *****           set errori to true
+      *****        else
+      *****
+      *****           move tge-anno to con-anno
+      *****           read tcontat no lock invalid continue end-read
+      *****           perform DATE-TO-FILE
+      *****
+      *****           if como-data < con-ult-stampa-bolle-MV
+      *****              display message "Data di stampa SERIE 2 < data "
+      *****                              "di ultima stampa bolle"
+      *****                      title = tit-err
+      *****                      icon 2
+      *****              set errori to true
+      *****           else
+      *****              if como-data(5:2) not = con-ult-stampa-bolle-MV(5:2)
+      *****                 display message "Il mese di stampa SERIE 2 non coincide "
+      *****                                 "con quello di ultima stampa bolle."
+      *****                          x"0d0a""Mese di ultima stampa: " 
+      *****                                 con-ult-stampa-bolle-MV(5:2)
+      *****                         title = tit-err
+      *****                         icon 2
+      *****                 set errori to true
+      *****              end-if
+      *****           end-if
+      *****        end-if
+      *****
+      *****        if errori
+      *****           move 78-ID-ef-data-2 to control-id
+      *****           move 4               to accept-control
+      *****        end-if
+      *****     end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = stbolle-Ev-Before-Program
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-blockpgm-1 **>>
+           |Rimane legato a tparamge!!!
+           set tutto-ok to true.
+           open input tparamge tcontat.
+           move spaces to tge-codice.
+           read tparamge no lock 
+                invalid  
+                display message "Tabella parametri NON trovata!"
+                         x"0d0a""IMPOSSIBILE PROCEDERE!!"
+                          title tit-err
+                           icon 3
+                set errori to true
+            not invalid
+                move tge-anno to con-anno
+                read tcontat no lock
+                     invalid
+                     display message "Contatori per l'anno "
+                                     "d'esericzio NON trovati!"
+                              x"0d0a""IMPOSSIBILE PROCEDERE!!"
+                               title tit-err
+                                icon 3
+                     set errori to true
+                end-read
+           end-read.
+           close tparamge tcontat.
+
+           if errori
+              perform STBOLLE-EV-AFTER-PROGRAM
+              goback
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = stbolle-Ev-After-Program
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-no-LinkTo
+BEGIN-TEXT
+           move MB-NO to scelta.
+           perform SCR-DATA-EXIT.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-data-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-2 **>>
+           inquire ef-data-1, value in data-stampa-1.
+           move data-stampa-1 to como-data.
+
+           perform DATE-FORMAT.
+
+           move como-data   to data-stampa-1.
+           display ef-data-1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-data-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-2 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-sib-BeforeProcedure
+BEGIN-TEXT
+           modify pb-sib, bitmap-number 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-sib-AfterProcedure
+BEGIN-TEXT
+           modify pb-sib, bitmap-number 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-sib-LinkTo
+BEGIN-TEXT
+           move MB-YES to scelta.
+           perform SCR-ELAB-EXIT.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-noa-LinkTo
+BEGIN-TEXT
+           move MB-NO to scelta.
+           perform SCR-ELAB-EXIT.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-noa-BeforeProcedure
+BEGIN-TEXT
+           modify pb-noa, bitmap-number 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-noa-AfterProcedure
+BEGIN-TEXT
+           modify pb-noa, bitmap-number 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = PB-ESEGUI-BeforeProcedure
+BEGIN-TEXT
+           modify PB-ESEGUI, bitmap-number 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = PB-ESEGUI-AfterProcedure
+BEGIN-TEXT
+           modify PB-ESEGUI, bitmap-number 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = PB-ESEGUI-LinkTo
+BEGIN-TEXT
+           perform varying control-id from 78-ID-ef-data-1 by 1 
+                     until control-id > 78-ID-ef-data-2
+              perform CONTROLLO
+              if errori
+                 exit perform
+              end-if
+           end-perform.
+
+           if tutto-ok
+              perform SCR-DATA-OPEN-ROUTINE
+
+              if scelta = MB-YES
+                 perform SCR-ELAB-OPEN-ROUTINE
+
+                 if scelta = MB-YES
+
+                    initialize stbolle-linkage
+                    set  stbolle-stampa  to true
+                    set  stbolle-k3      to true
+                    set  stbolle-singola to false
+                    move como-data       to stbolle-data
+                    move con-anno        to stbolle-anno
+                    move user-codi       to link-user     
+                    set stbolle-piu-stampe-si to true
+
+      *****              set stbolle-GDO to true
+                    call "W$MOUSE"  using set-mouse-shape, wait-pointer
+                    call   "stbolle-p" using stbolle-linkage
+                    cancel "stbolle-p"
+                    call "W$MOUSE"  using set-mouse-shape, arrow-pointer
+                    move 78-ID-ef-data-1 to CONTROL-ID
+                    move 4               to ACCEPT-CONTROL  
+
+                    perform varying idx from 1 by 1 
+                              until idx > stbolle-num-stampe
+                       evaluate idx 
+                       when 1 move stbolle-path1      to stbolle-path
+                              move stbolle-stampante1 to printerToSet
+                    
+                       when 2 move stbolle-path2      to stbolle-path     
+                              move stbolle-stampante2 to printerToSet
+                    
+                       when 3 move stbolle-path3      to stbolle-path
+                              move stbolle-stampante3 to printerToSet
+                    
+                       when 4 move stbolle-path4      to stbolle-path
+                              move stbolle-stampante4 to printerToSet
+                    
+                       when 5 move stbolle-path5      to stbolle-path
+                              move stbolle-stampante5 to printerToSet
+                       end-evaluate
+                  
+                       initialize file-info
+                  
+                       call "C$FILEINFO" using stbolle-path, file-info
+                  
+                       if file-size not = 0 
+                  
+      *                    set environment "STAMPANTE_STBOLLE"
+      *                                 to printerToSet
+                          
+                          move "S"            to operazione
+                          move stbolle-path   to WSTAMPA
+                          move "V"            to orientamento
+                          call "spooler-A"  using operazione
+                                                  WSTAMPA
+                                                  orientamento
+                          cancel "spooler-A"  
+      
+                          call "C$DELETE" using stbolle-path
+                       end-if
+
+                    end-perform
+
+                    initialize file-info
+
+                    call "C$FILEINFO" using stbolle-split, file-info
+
+                    if file-size not = 0
+                       move "S"             to operazione
+                       move stbolle-split   to WSTAMPA
+                       move "V"             to orientamento
+                       call "spooler-A"  using operazione
+                                               WSTAMPA
+                                               orientamento
+                       cancel "spooler-A"
+                    end-if
+
+                    call "C$DELETE" using stbolle-path
+                    
+                    modify pb-esegui,  bitmap-number = 1
+                    modify Form1-Pb-2, bitmap-number = 1
+
+                 end-if
+              end-if
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Pb-2-BeforeProcedure
+BEGIN-TEXT
+           modify Form1-Pb-2, bitmap-number 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Pb-2-AfterProcedure
+BEGIN-TEXT
+           modify Form1-Pb-2, bitmap-number 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-no-BeforeProcedure
+BEGIN-TEXT
+           modify pb-no, bitmap-number 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-no-AfterProcedure
+BEGIN-TEXT
+           modify pb-no, bitmap-number 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-si-BeforeProcedure
+BEGIN-TEXT
+           modify pb-si, bitmap-number 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-si-AfterProcedure
+BEGIN-TEXT
+           modify pb-si, bitmap-number 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-si-LinkTo
+BEGIN-TEXT
+           move MB-YES to scelta.
+           perform SCR-DATA-EXIT.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-data-2-AfterProcedure
+BEGIN-TEXT
+
+           inquire ef-data-2, value in data-stampa-2.
+           move data-stampa-2 to como-data.
+
+           perform DATE-FORMAT.
+
+           move como-data   to data-stampa-2.
+           display ef-data-2.
+      *<<** Customized_Default, SP-G, Screen1-Custom1-2 **>>
+END-TEXT
+END-DATA
+
+@}}
+
+[KEY_STATUS_FIELD_FORMAT]
+PIC=9(5)
+USAGE=[None]
+
+[KEYSTATUS_CONTENT:KS1]
+CONDITION=Enter-Pushed
+VALUE=13
+
+[KEYSTATUS_CONTENT:KS2]
+CONDITION=Exit-Pushed
+VALUE=27
+
+[KEYSTATUS_CONTENT:KS3]
+CONDITION=Message-Received
+VALUE=95
+
+[KEYSTATUS_CONTENT:KS4]
+CONDITION=Event-Occurred
+VALUE=96
+
+[KEYSTATUS_CONTENT:KS5]
+CONDITION=Screen-No-Input-Field
+VALUE=97
+
+[KEYSTATUS_CONTENT:KS6]
+CONDITION=Screen-Time-Out
+VALUE=99
+
+[COBOLAID_DATASET_INFO]
+COUNT=1
+NAME_0=DataSet1
+
+[DRAW_DOCUMENT_INDEX]
+OBJ_NAME_0=8001
+OBJ_ID_0=1278474479
+
+[MULTIPLE_KEY_0]
+COUNT=1
+KEY_0=con-chiave
+
+[DRAW_DOCUMENT_8001_1278474479]
+OBJ_NAME=8001
+OBJ_ID=1278474479
+TYPE=2
+VERSION=
+DOC_SIZE_X=5100
+DOC_SIZE_Y=5160
+PAGE_LEFT=150
+PAGE_TOP=150
+PAGE_RIGHT=1850
+PAGE_BOTTOM=2730
+MARGIN_LEFT=150
+MARGIN_TOP=150
+MARGIN_RIGHT=150
+MARGIN_BOTTOM=150
+PROP_DOCU_TYPE=ø
+PROP_DOCU_TYPE2=ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+PROP_DOCU_NAME=DataSet - DataSet1[stbolle(GESLUX)]
+PROP_DOCU_OWNER=Person A
+PROP_DOCU_CDATE=03/08/04
+PROP_DOCU_MODIFIER=Person B
+PROP_DOCU_MDATE=03/08/04
+PROP_DOCU_DESCR=Caseaid DocuCaseaid Document
+PROP_DOCU_HEADER=Caseaid Document
+PROP_DOCU_FOOTER=Page # 
+PROP_DOCU_DIM_H=2
+PROP_DOCU_DIM_W=3
+PROP_DOCU_LOC_H=1
+PROP_DOCU_LOC_W=1
+PROP_DOCU_EDGE_T=150
+PROP_DOCU_EDGE_B=150
+PROP_DOCU_EDGE_L=150
+PROP_DOCU_EDGE_R=150
+PROP_DOCU_ZOOM=75
+PROP_DOCU_SIZE_TYPE=0
+PROP_DOCU_SIZE_PAPER=1
+PROP_DOCU_SIZE_H=2580
+PROP_DOCU_SIZE_W=1700
+PROP_DOCU_RULER_EBL=0
+PROP_DOCU_GRID_EBL=0
+PROP_DOCU_GRID=20
+PROP_DOCU_ALIGN=0
+REL_SYM_SIZE=16
+REL_SYM_INFO_L=2
+REL_SYM_INFO_X0=2301
+REL_SYM_INFO_Y0=1245796226
+REL_SYM_INFO_X1=2301
+REL_SYM_INFO_Y1=1496920277
+
+[DRAW_BASESYMBOL_2301_1245796226]
+OBJ_NAME=2301
+OBJ_ID=1245796226
+KIND=1
+{{@LABEL_2301_1245796226
+tcontat
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=50
+TOP=50
+RIGHT=450
+BOTTOM=272
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1496920277]
+OBJ_NAME=2301
+OBJ_ID=1496920277
+KIND=1
+{{@LABEL_2301_1496920277
+tparamge
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=16
+TOP=301
+RIGHT=416
+BOTTOM=523
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DMD_DOCUMENT_0_1278474479]
+OBJ_NAME=0
+OBJ_ID=1278474479
+FILE_TITLE_TYPE=8136
+FILE_SHOW_ITEM=0
+FILE_SHOW_KEY=0
+FILE_SHOW_PIC=0
+FILE_SHOW_HEAD=0
+FILE_SHOW_LEVEL=0
+FILE_SHOW_TREE=0
+FILE_SHOW_CLPS=0
+FILE_SHOW_BMP=0
+FILE_SHOW_LINE=0
+FILE_SHOW_MINIZE=0
+
+[DMD_FILE_0_1245796226]
+OBJ_NAME=0
+OBJ_ID=1245796226
+REL_M_OBJ_ID=0
+ENTITY=tcontat
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=con-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1245796226
+
+@}}
+DSN_INFO_PRIMARY=1
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1496920277]
+OBJ_NAME=0
+OBJ_ID=1496920277
+REL_M_OBJ_ID=0
+ENTITY=tparamge
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tge-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1496920277
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=

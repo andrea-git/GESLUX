@@ -1,0 +1,19 @@
+       FD  grade.
+       01 gra-rec.
+           05 gra-chiave.
+               10 gra-codice       PIC  xx.
+           05 gra-dati.
+               10 gra-tab.
+                   15 gra-el
+                              OCCURS 20 TIMES.
+                       20 gra-da           PIC  99.
+                       20 gra-a            PIC  99.
+                       20 gra-perce        PIC  999v999.
+           05 FILLER           PIC  x(500).
+           05 gra-dati-comuni.
+               15 gra-data-creazione           PIC  9(8).
+               15 gra-ora-creazione            PIC  9(8).
+               15 gra-utente-creazione         PIC  X(10).
+               15 gra-data-ultima-modifica     PIC  9(8).
+               15 gra-ora-ultima-modifica      PIC  9(8).
+               15 gra-utente-ultima-modifica   PIC  X(10).

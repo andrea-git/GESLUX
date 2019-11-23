@@ -1,0 +1,17 @@
+      * copy standard da aggiornare via via che si fanno i programmi
+      * con TUTTE le variabili di comodo per i pgm. di stampa da tabella
+       01  stampa-linkage.
+         05 stampa-limiti-num.
+            10 stampa-codice-da           pic 9(5).
+            10 stampa-codice-a            pic 9(5).
+         05 stampa-limiti-des-num.
+            10 stampa-destino-da           pic 9(5).
+            10 stampa-destino-a            pic 9(5).
+         05 stampa-filtri.
+            10 stampa-tipo-cli            pic x(2).
+            10 stampa-cod-gdo             pic x(5).
+            10 stampa-agente              pic 9(5).
+         05 stampa-tipo                   pic 9.
+            88 StampaExcel                value 1, false 0.
+         05 stampa-user                   pic x(20).
+         05 stampa-path                   pic x(256).

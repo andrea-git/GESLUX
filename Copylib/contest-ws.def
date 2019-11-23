@@ -1,0 +1,255 @@
+      *
+           COPY  "LINK-GORDCVAR.DEF".
+           COPY  "LINK-NAMBAR.DEF".
+           COPY  "EXTERNALS.DEF".
+           COPY  "COMBO-TIPOLOGIA.DEF".
+           COPY  "COMBO-STATO-CONT.DEF".
+           COPY  "LINK-CHK-RESO-BOZZE.DEF".
+           COPY  "LINK-GESLOCK.DEF".
+       01 filler pic 9 value 0.
+           88 StoSalvando value 1 false 0.
+
+       01 filler pic x.
+           88 elimina  value "E".
+           88 aggiungi value "A".
+
+       01 como-notacr-linkage.
+           03 como-NotaChiave.
+               05 como-NotaAnno         PIC  9(4).
+               05 como-NotaNumero       PIC  9(8).
+           03 como-Link-TipoNota    PIC  x(4).
+           03 como-Link-TipoDoc     PIC  x.
+               88 como-LinkNota VALUE IS "N". 
+               88 como-LinkBozza VALUE IS "B". 
+               88 como-LinkFatt VALUE IS "F". 
+           03 como-LinkStatusNota
+                      USAGE IS SIGNED-SHORT.
+
+       01 WK-LinkChiave.
+           05 WK-LinkAnno         PIC  9(4).
+           05 WK-LinkNumero       PIC  9(8).
+       01 como-chiave.
+           05 como-anno        PIC  9(4).
+           05 como-numero      PIC  9(8).
+
+       77  save-num-fattura    pic 9(8).
+       77  save-anno-fattura   pic 9(4).
+       77  save-data-fattura   pic 9(8).
+       77  sav-livello-abil    pic 9.
+       77  como-cliente        pic 9(5).
+       77  como-destino        pic 9(5).
+       77  como-num-doc        pic 9(8).
+
+       77 Screen1-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       78 78-TotIDx value 5.
+       77 store-idx pic 99.
+       77 posti-liberi pic 99.
+       77 numero-edit  pic z(8).
+       77 data-oggi        PIC  9(8).
+       77 cerca-bmp  handle of bitmap.
+       01 StatusPass       PIC  9.
+           88 StatusOk VALUE IS 1    WHEN SET TO FALSE  0. 
+       01 FILLER           PIC  9.
+           88 PrimaVolta VALUE IS 1    WHEN SET TO FALSE  0. 
+       77 Small-Font
+                  USAGE IS HANDLE OF FONT SMALL-FONT.
+       77 lab-esercizio-buf            PIC  X(20).
+       77 Screen1-Pg-1-Visible         PIC  9
+                  VALUE IS 0.
+       77 tipo-nota        PIC  x(50).
+       77 codice-ed        PIC  z(5).
+       77 Form1-St-1-Handle
+                  USAGE IS HANDLE OF STATUS-BAR.
+       77 Form1-Tb-1-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 TOOLBAR-BMP      PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 E-ESCI           PIC  9
+                  VALUE IS 1.
+       77 E-NUOVO          PIC  9
+                  VALUE IS 0.
+       77 E-CANCELLA       PIC  9
+                  VALUE IS 0.
+       77 E-SALVA          PIC  9
+                  VALUE IS 1.
+       77 E-ANTEPRIMA      PIC  9
+                  VALUE IS 0.
+       77 E-MODIFICA       PIC  9
+                  VALUE IS 1.
+       77 E-STAMPA         PIC  9
+                  VALUE IS 0.
+       77 E-CERCA          PIC  9
+                  VALUE IS 0.
+       77 E-SELEZIONA      PIC  9
+                  VALUE IS 0.
+       77 status-tcaumag   PIC  x(2).
+           88 valid-status-tcaumag VALUE IS "00" THRU "09". 
+       77 STATUS-clienti   PIC  X(2).
+           88 Valid-STATUS-clienti VALUE IS "00" THRU "09". 
+       77 STATUS-destini   PIC  X(2).
+           88 Valid-STATUS-destini VALUE IS "00" THRU "09". 
+       77 STATUS-pass      PIC  X(2).
+           88 Valid-STATUS-pass VALUE IS "00" THRU "09". 
+       77 STATUS-tcontat   PIC  X(2).
+           88 Valid-STATUS-tcontat VALUE IS "00" THRU "09". 
+       77 STATUS-tparamge  PIC  X(2).
+           88 Valid-STATUS-tparamge VALUE IS "00" THRU "09". 
+       77 STATUS-tordini   PIC  X(2).
+           88 Valid-STATUS-tordini VALUE IS "00" THRU "09". 
+       77 status-note-cont   PIC  x(2).
+           88 valid-status-note-cont VALUE IS "00" THRU "09". 
+       77 lab-des-buf      PIC  x(100).
+       77 lab-cli-buf      PIC  x(100).
+       77 lab-ind-buf      PIC  x(100).
+       77 lab-loca-bud     PIC  x(100).
+       77 lab-loca-buf     PIC  x(100).
+       77 lab-ind-d-buf    PIC  x(100).
+       77 lab-loca-d-buf   PIC  x(100).
+       77 AUTO-ID          PIC  9(6)
+                  VALUE IS 96.
+       01 FILLER           PIC  9
+                  VALUE IS 1.
+           88 CheckDestini VALUE IS 1    WHEN SET TO FALSE  0. 
+       77 nome-file        PIC  x(15).
+       77 titolo           PIC  x(50).
+       77 Default-Font
+                  USAGE IS HANDLE OF FONT DEFAULT-FONT.
+       77 Form1-handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 lab-data-buf     PIC  99/99/9999.
+       77 lab-num-buf      PIC  z(8)
+                  BLANK WHEN ZERO.
+       77 Courier-New18-Occidentale
+                  USAGE IS HANDLE OF FONT.
+       77 como-record      PIC  x(32000).
+       01 FILLER           PIC  9.
+           88 record-ok VALUE IS 1    WHEN SET TO FALSE  0. 
+       77 Verdana12B-Occidentale
+                  USAGE IS HANDLE OF FONT.
+       77 lab-anno-buf     PIC  9(4).
+       77 lab-vet-buf      PIC  x(100).
+       77 STATUS-tvettori  PIC  X(2).
+           88 Valid-STATUS-tvettori VALUE IS "00" THRU "09". 
+       77 mod-campi        PIC  9
+                  VALUE IS 1.
+       01 funzione         PIC  x.
+           88 inserimento VALUE IS "I". 
+           88 modifica VALUE IS "M". 
+       77 Verdana10B-Occidentale
+                  USAGE IS HANDLE OF FONT.
+       77 Courier-New20-Occidentale
+                  USAGE IS HANDLE OF FONT.
+       77 lab-corriere-buf PIC  X(50).
+       77 STATUS-contestazioni         PIC  X(2).
+           88 Valid-STATUS-contestazioni VALUE IS "00" THRU "09". 
+       77 STATUS-tnotacr   PIC  X(2).
+           88 Valid-STATUS-tnotacr VALUE IS "00" THRU "09". 
+       77 lab-cli1-buf     PIC  X(50).
+       77 lab-cli2-buf     PIC  X(50).
+       77 lab-cli3-buf     PIC  X(50).
+       77 lab-cli4-buf     PIC  X(50).
+       77 lab-cli5-buf     PIC  X(50).
+       77 lab-des1-buf     PIC  X(50).
+       77 lab-des2-buf     PIC  X(50).
+       77 lab-des3-buf     PIC  X(50).
+       77 lab-des4-buf     PIC  X(50).
+       77 lab-des5-buf     PIC  X(50).
+       77 lab-n-fatt5-buf  PIC  z(8).
+       77 lab-n-fatt4-buf  PIC  z(8).
+       77 lab-n-fatt3-buf  PIC  z(8).
+       77 lab-n-fatt2-buf  PIC  z(8).
+       77 lab-n-fatt1-buf  PIC  z(8).
+       77 lab-data-fatt1-buf           PIC  zz/zz/zzzz.
+       77 lab-data-fatt2-buf           PIC  zz/zz/zzzz.
+       77 lab-data-fatt3-buf           PIC  zz/zz/zzzz.
+       77 lab-data-fatt4-buf           PIC  zz/zz/zzzz.
+       77 lab-data-fatt5-buf           PIC  zz/zz/zzzz.
+       77 mod-nota         PIC  9
+                  VALUE IS 1.
+       77 mod-rich         PIC  9
+                  VALUE IS 1.
+       77 cbo-tipo-buf     PIC  X(30).
+       77 lab-docum-buf    PIC  x(15).
+       77 cbo-stato-buf    PIC  x(15).
+       77 v-fatt           PIC  9
+                  VALUE IS 0.
+       77 numero-cont      PIC  z(8).
+       77 path-zoom-tordini            PIC  X(256).
+       77 STATUS-zoom-tordini          PIC  X(2).
+           88 Valid-STATUS-zoom-tordini VALUE IS "00" THRU "09". 
+       01 num-campo        PIC  9.
+           88 campo1 VALUE IS 1. 
+           88 campo2 VALUE IS 2. 
+           88 campo3 VALUE IS 3. 
+           88 campo4 VALUE IS 4. 
+           88 campo5 VALUE IS 5. 
+       01 OLD-cnt-rec.
+           05 OLD-cnt-chiave.
+               10 OLD-cnt-anno     PIC  9(4).
+               10 OLD-cnt-numero   PIC  9(8).
+           05 OLD-cnt-dati.
+               10 OLD-cnt-data     PIC  9(8).
+               10 OLD-cnt-cod-cli  PIC  9(5).
+               10 OLD-cnt-prg-destino          PIC  9(5).
+               10 OLD-cnt-tipo     PIC  x.
+                   88 OLD-cnt-prezzo VALUE IS "P". 
+                   88 OLD-cnt-merce VALUE IS "M". 
+                   88 OLD-cnt-reso VALUE IS "R". 
+                   88 OLD-cnt-altro VALUE IS "A". 
+               10 OLD-cnt-importo  PIC  s9(9)v99.
+               10 OLD-cnt-bolla-corriere.
+                   15 OLD-cnt-richiesta            PIC  9.
+                       88 OLD-cnt-si-richiesta VALUE IS 1. 
+                       88 OLD-cnt-no-richiesta VALUE IS 0. 
+                   15 OLD-cnt-data-rich            PIC  9(8).
+                   15 OLD-cnt-corriere PIC  9(5).
+                   15 OLD-cnt-data-ricev           PIC  9(8).
+               10 OLD-cnt-nota-debito.
+                   15 OLD-cnt-nota     PIC  9.
+                       88 OLD-cnt-si-nota VALUE IS 1. 
+                       88 OLD-cnt-no-nota VALUE IS 0. 
+                   15 OLD-cnt-numero-nota-debito   PIC  x(20).
+                   15 OLD-cnt-data-nota-deb        PIC  9(8).
+                   15 OLD-cnt-importo-nota         PIC  s9(9)v99.
+                   15 OLD-cnt-num-reg-contab       PIC  9(10).
+               10 OLD-cnt-appunti  PIC  x(500).
+               10 OLD-cnt-note-collegate.
+                   15 OLD-cnt-nota-anno-1          PIC  9(4).
+                   15 OLD-cnt-nota-1   PIC  9(8).
+                   15 OLD-cnt-nota-anno-2          PIC  9(4).
+                   15 OLD-cnt-nota-2   PIC  9(8).
+                   15 OLD-cnt-nota-anno-3          PIC  9(4).
+                   15 OLD-cnt-nota-3   PIC  9(8).
+                   15 OLD-cnt-nota-anno-4          PIC  9(4).
+                   15 OLD-cnt-nota-4   PIC  9(8).
+                   15 OLD-cnt-nota-anno-5          PIC  9(4).
+                   15 OLD-cnt-nota-5   PIC  9(8).
+               10 OLD-cnt-riferimenti.
+                   15 OLD-cnt-fattura.
+                       20 OLD-cnt-anno-fatt            PIC  9(4).
+                       20 OLD-cnt-num-fatt PIC  9(8).
+                   15 OLD-cnt-data-fatt            PIC  9(8).
+                   15 OLD-cnt-nota-cr.
+                       20 OLD-cnt-anno-nota            PIC  9(4).
+                       20 OLD-cnt-num-nota PIC  9(8).
+                   15 OLD-cnt-data-nota            PIC  9(8).
+               10 OLD-cnt-stato    PIC  x.
+                   88 OLD-cnt-aperta VALUE IS "A". 
+                   88 OLD-cnt-chiusa VALUE IS "C". 
+               10 OLD-cnt-datai-comuni.
+                   15 OLD-cnt-data-creazione       PIC  9(8).
+                   15 OLD-cnt-ora-creazione        PIC  9(8).
+                   15 OLD-cnt-utente-creazione     PIC  X(10).
+                   15 OLD-cnt-data-modifica        PIC  9(8).
+                   15 OLD-cnt-ora-modifica         PIC  9(8).
+                   15 OLD-cnt-utente-modifica      PIC  X(10).
+               10 OLD-cnt-vuoti.
+                   15 OLD-cnt-data-bolla-cli   PIC  9(8).
+                   15 OLD-cnt-num-vuoto-1  PIC  9(7).
+                   15 OLD-cnt-num-vuoto-2          PIC  9(15).
+                   15 OLD-cnt-num-vuoto-3          PIC  9(15).
+                   15 OLD-cnt-bolla                PIC  X(20).
+                   15 OLD-cnt-alfa-vuoto-2         PIC  X(20).
+                   15 OLD-cnt-alfa-vuoto-3         PIC  X(20).

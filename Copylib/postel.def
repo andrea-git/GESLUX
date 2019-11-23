@@ -1,0 +1,156 @@
+       01 REC-RAG1.
+         02 FILLER       PIC X(02).
+         02 RAGIO-SX     PIC X(40).
+         02 FILLER       PIC X(03).
+         02 RAGIO-DX     PIC X(40).
+         02 FILLER       PIC X(06).
+
+       01 REC-RAG2.
+         02 FILLER       PIC X(02).
+         02 INDI-SX      PIC X(40).
+         02 FILLER       PIC X(03).
+         02 INDI-DX      PIC X(40).
+         02 FILLER       PIC X(06).
+
+       01 REC-RAG3.
+         02 FILLER       PIC X(02).
+         02 CAP-SX       PIC X(05).
+         02 FILLER       PIC X.
+         02 CITTA-SX     PIC X(34).
+         02 FILLER       PIC X(03).
+         02 CAP-DX       PIC X(05).
+         02 FILLER       PIC X.
+         02 CITTA-DX     PIC X(34).
+         02 FILLER       PIC X.
+         02 PROV-DX      PIC XX.
+         02 FILLER       PIC X(03).
+
+      * Testata fattura
+       01 REC-TES1.
+         02 FILLER       PIC X(04).
+         02 NR-FATT      PIC Z(06).
+         02 FILLER       PIC X(07).
+         02 T-DATA       PIC XX/XX/XX.
+         02 FILLER       PIC X(04).
+         02 DESPAGA      PIC X(28).
+         02 FILLER       PIC X(02).
+         02 T-ABI        PIC X(05).
+         02 FILLER       PIC X(02).
+         02 T-CAB        PIC X(05).
+         02 FILLER       PIC X(21).
+
+       01 REC-TES2.
+         02 FILLER       PIC X(03).
+         02 NUMORD-CLI   PIC X(08).
+         02 FILLER       PIC X(06).
+         02 DATAORD-CLI  PIC ZZ/ZZ/ZZ.
+         02 FILLER       PIC X(04).
+         02 NUMEROBOLLA  PIC Z(06).
+         02 FILLER       PIC X(06).
+         02 DATABOLLA    PIC XX/XX/XX.
+         02 FILLER       PIC X(05).
+         02 CODCLIENTE   PIC X(05).
+         02 SEP          PIC X value "/".
+         02 AGENTE       PIC X(02).
+         02 FILLER       PIC X(05).
+         02 CLFISC       PIC X(16).
+         02 FILLER       PIC X(06).
+
+       01 REC-TES3.
+         02 FILLER       PIC X(02).
+         02 DEST-1       PIC X(30).
+         02 FILLER       PIC X(03).
+         02 DEST-2       PIC X(20).
+         02 FILLER       PIC X(03).
+         02 DEST-3       PIC X(20).
+         02 FILLER       PIC X(13).
+
+      * Corpo fattura
+       01 REC-MER1.
+         02 FILLER      PIC X(02).
+         02 CODICEART   PIC X(06).
+         02 FILLER      PIC X(02).
+         02 DESARTICOLO.
+            03 DEX-A    PIC X(21).
+            03 DEX-S    PIC X.
+            03 DEX-B    PIC X(10).
+         02 FILLER      PIC X(02).
+         02 UNIMIS      PIC XX.
+         02 FILLER      PIC X(02).
+         02 QUANTITA    PIC Z.ZZZ.ZZZ.
+         02 FILLER      PIC X(01).
+         02 PREZZO      PIC ZZZ.ZZZ.ZZ9,99.
+         02 R-IMPOSTA   PIC ZZZZ.ZZ9,99.
+         02 R-COU       PIC ZZZ.ZZ9,99.
+         02 FILLER      PIC X(02).
+         02 IMPORTO     PIC ZZ.ZZZ.ZZ9,99.
+         02 FILLER      PIC X(02).
+         02 IVA         PIC XX.
+         02 FILLER      PIC X.
+
+       01 R-GRATIS      REDEFINES REC-MER1.
+         02 FILLER      PIC X(69).
+         02 GRATIS      PIC X(44).
+
+       01 R-NOTE        REDEFINES REC-MER1.
+         02 FILLER      PIC X(10).
+         02 DEX-NOTE    PIC X(87).
+         02 FILLER      PIC X(05).
+
+       01 REC-TOTALI    REDEFINES REC-MER1.
+         02 FILLER      PIC X(10).
+         02 R-TOTALE    pic x(38).
+         02 FILLER      PIC X(10).
+         02 R-TOT-IMP   PIC ZZZ.ZZZ.ZZ9,99.
+         02 FILLER      PIC X(41).
+
+      * Piede  fattura
+       01 REC-PIE1.
+         02 FILLER      PIC X(5).
+         02 IMPO-GDO    PIC ZZZZ.ZZ9,99 blank zero.
+         02 FILLER      PIC X(6).
+         02 IVA1        PIC ZZ.
+         02 FILLER      PIC X(7).
+         02 IMPON1      PIC ZZZZ.ZZ9,99 blank zero.
+         02 FILLER      PIC X(9).
+         02 IMPOR1      PIC ZZZZ.ZZ9,99 blank zero.
+         02 FILLER      PIC X(8).
+         02 FILLER      PIC X(3) value " € ".
+         02 TOTFAT      PIC ZZZZ.ZZ9,99 blank zero.
+         02 FILLER      PIC X(6).
+
+       01 REC-PIE1-X    REDEFINES REC-PIE1.
+         02 FILLER      PIC X(5).          
+         02 XIMPO-GDO   PIC ZZZZ.ZZ9,99 blank zero.   
+         02 FILLER      PIC X(6).  
+         02 XIVA1       PIC ZZ.    
+         02 FILLER      PIC X(7).  
+         02 XIMPON1     PIC ZZZZ.ZZ9,99 blank zero.
+         02 FILLER      PIC XX.         
+         02 DEX-IVA     PIC X(24).      
+         02 FILLER      PIC X(5).       
+         02 XTOTFAT     PIC ZZZZ.ZZ9,99 blank zero.
+         02 FILLER      PIC X(6).
+
+       01 REC-PIE1-Y    REDEFINES REC-PIE1.
+         02 FILLER      PIC X(5).                                                                                                                                                                            
+         02 YIMPO-GDO   PIC ZZZZ.ZZ9,99 blank zero.
+         02 Y-NO-RG     PIC X(57).  
+         02 YTOTFAT     PIC ZZZZ.ZZ9,99 blank zero.
+         02 FILLER      PIC X(6).
+
+       01 REC-PIE2.              
+         02 FILLER      PIC X(3).
+         02 IMPORTORB1  PIC ZZZ.ZZZ,ZZ blank zero.
+         02 FILLER      PIC X.         
+         02 SCADENZARB1 PIC X(8).  
+         02 FILLER      PIC X.  
+         02 IMPORTORB2  PIC ZZZ.ZZZ,ZZ blank zero.
+         02 FILLER      PIC X.
+         02 SCADENZARB2 PIC X(8).
+         02 FILLER      PIC X.  
+         02 IMPORTORB3  PIC ZZZ.ZZZ,ZZ blank zero.
+         02 FILLER      PIC X.        
+         02 SCADENZARB3 PIC X(8).
+         02 FILLER      PIC X(3).    
+         02 NOTE        PIC X(26).

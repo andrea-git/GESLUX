@@ -1,0 +1,12 @@
+      *
+       01 edi-linkage.
+           03 link-edi-tipo-doc  PIC  9.
+           03 link-edi-num-a     PIC  9(8).
+           03 link-edi-num-da    PIC  9(8).
+           03 link-edi-anno      PIC  9(4).       
+           03 link-edi-tot-doc   PIC  9(8).
+           03 link-edi-tot-pdf   PIC  9(8).
+           03 link-edi-doc-da    PIC  9(8).
+           03 link-edi-doc-a     PIC  9(8).
+           03 link-edi-user      PIC  x(20).
+           03 link-edi-handle    usage handle.

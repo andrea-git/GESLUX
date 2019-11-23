@@ -1,0 +1,18 @@
+      *(( XFD FILE = tmp-mod-rordini ))
+       FD  tmp-mod-rordini.
+       01 tmp-mror-rec.
+           05 tmp-mror-chiave.
+               10 tmp-mror-num-riga            PIC  9(5).
+           05 tmp-mror-dati.
+               10 tmp-mror-orig.
+                   15 tmp-mor-articolo-orig        PIC  9(6).
+                   15 tmp-mror-imb-orig            PIC  X(3).
+                   15 tmp-qta-orig     PIC  9(8).
+               10 tmp-mror-mod.
+                   15 tmp-mor-articolo-mod         PIC  9(6).
+                   15 tmp-mror-imb-mod PIC  X(3).
+                   15 tmp-qta-mod      PIC  9(8).
+               10 tmp-mror-tipo-modifica       PIC  x.
+                   88 tmp-mror-modifica VALUE IS "M". 
+                   88 tmp-mror-inserita VALUE IS "I". 
+                   88 tmp-mror-cancellata VALUE IS "C". 

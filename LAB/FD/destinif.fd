@@ -1,0 +1,55 @@
+       FD  destinif.
+       01 desf-rec.
+           05 desf-chiave.
+               10 desf-codice      PIC  9(5).
+               10 desf-prog        PIC  9(5).
+           05 desf-dati.
+               10 desf-ragsoc-1    PIC  x(40).
+               10 desf-ragsoc-2    PIC  x(40).
+               10 desf-indirizzo   PIC  x(40).
+               10 desf-cap         PIC  x(5).
+               10 desf-localita    PIC  x(35).
+               10 desf-prov        PIC  x(2).
+               10 desf-nazione     PIC  x(3).
+               10 desf-telef-1     PIC  x(15).
+               10 desf-telef-2     PIC  x(15).
+               10 desf-fax         PIC  X(15).
+               10 desf-mail        PIC  X(100).
+               10 desf-referente   PIC  x(30).
+               10 desf-vettore     PIC  9(5).
+               10 desf-depostio-UTF            PIC  x.
+               10 desf-superamento-500         PIC  x.
+               10 desf-stato       PIC  x.
+                   88 desf-attivo VALUE IS space. 
+                   88 desf-disattivo VALUE IS "D". 
+                   88 desf-bloccato VALUE IS "B". 
+               10 desf-dati-ord.
+                   15 desf-referente-ord           PIC  x(30).
+                   15 desf-tel-dir-ref-ord         PIC  x(20).
+                   15 desf-mail-ref-ord            PIC  x(100).
+                   15 desf-mail-ref-ord-cc         PIC  x(199).
+                   15 desf-premio-netto            PIC  x.
+                       88 desf-premio-netto-no VALUE IS " " "N". 
+                       88 desf-premio-netto-si VALUE IS "S". 
+                   15 desf-perce-premi-fine-anno   PIC  9(3)v99.
+               10 desf-gg-consegna PIC  9(3).
+               10 desf-dati-comuni.
+                   15 desf-data-creazione          PIC  9(8).
+                   15 desf-ora-creazione           PIC  9(8).
+                   15 desf-utente-creazione        PIC  X(10).
+                   15 desf-data-ultima-modifica    PIC  9(8).
+                   15 desf-ora-ultima-modifica     PIC  9(8).
+                   15 desf-utente-ultima-modifica  PIC  X(10).
+               10 desf-vuoti.
+                   15 desf-saldi       PIC  9.
+                       88 desf-saldi-si VALUE IS 1. 
+                       88 desf-saldi-no VALUE IS 0. 
+                   15 desf-num-vuoto-1 PIC  9(17).
+                   15 desf-num-vuoto-2 PIC  9(18).
+                   15 desf-num-vuoto-3 PIC  9(18).
+                   15 desf-ufficio     PIC  X.
+                       88 desf-ufficio-non-gestito VALUE IS " ". 
+                       88 desf-ufficio-luca VALUE IS "L". 
+                       88 desf-ufficio-massimo VALUE IS "M". 
+                   15 desf-pag         PIC  x(3).
+                   15 desf-alfa-vuoto  PIC  X(496).

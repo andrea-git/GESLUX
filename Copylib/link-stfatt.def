@@ -1,0 +1,25 @@
+      *
+       01 stfatt-linkage.
+           03 LinkAnno         PIC  9(4).
+           03 LinkElab         PIC  9.
+           03 num-da           PIC  9(8).
+           03 num-a            PIC  9(8).
+           03 lotto            PIC  9(8).
+           03 LinkCliente      pic  9(5).
+           03 Link-tipo-stampa PIC  9.
+           03 tipo-filtro      PIC  x.
+               88 agenti       VALUE IS "A". 
+               88 NoPostel     VALUE IS "N". 
+               88 tutte        VALUE IS "T".  
+               88 SoloPDF      VALUE IS "P".  
+               88 SoloPDFBatch VALUE IS "B". 
+           03 num-copie        PIC  9(3).
+           03 tipo-doc         PIC  X.
+               88 Fatture VALUE IS "F". 
+               88 NoteCredito VALUE IS "N". 
+               88 tutti VALUE IS "T". 
+           03 stfatt-path-log   pic x(100).
+           03 stfatt-path-doc   pic x(156).
+           03 stfatt-status     signed-short.
+           03 LinkGDO           pic  x(5).
+           03 filler            pic x(95).

@@ -1,0 +1,54 @@
+       FD  anautf.
+       01 utf-rec.
+           05 utf-chiave.
+               10 utf-anno         PIC  9(4).
+               10 utf-num-reg      PIC  9(8).
+           05 utf-dati.
+               10 utf-dati-gestione.
+                   15 utf-desc1        PIC  x(40).
+                   15 utf-desc2        PIC  x(40).
+                   15 utf-modello      PIC  x(10).
+                   15 utf-ragsoc       PIC  x(30).
+                   15 utf-indirizzo    PIC  x(30).
+                   15 utf-cap          PIC  9(5).
+                   15 utf-citta        PIC  x(35).
+                   15 utf-provincia    PIC  x(2).
+                   15 utf-partita-iva  PIC  9(11).
+                   15 utf-num-lic-utf  PIC  x(20).
+                   15 utf-data-lic     PIC  9(08).
+                   15 utf-uffico-appart            PIC  x(20).
+                   15 utf-num-reg-ass  PIC  x(20).
+               10 utf-dati-giacenza.
+                   15 utf-giac-bianchi PIC  S9(12)v999.
+                   15 utf-giac-petrolio            PIC  S9(12)v999.
+                   15 utf-giac-gasolio PIC  S9(12)v999.
+                   15 utf-giac-lubrif  PIC  S9(12)v999.
+                   15 utf-prog-e-bianchi           PIC  S9(12)v999.
+                   15 utf-prog-e-petrolio          PIC  S9(12)v999.
+                   15 utf-prog-e-gasolio           PIC  S9(12)v999.
+                   15 utf-prog-e-lubrif            PIC  S9(12)v999.
+                   15 utf-prog-u-bianchi           PIC  S9(12)v999.
+                   15 utf-prog-u-petrolio          PIC  S9(12)v999.
+                   15 utf-prog-u-gasolio           PIC  S9(12)v999.
+                   15 utf-prog-u-lubrif            PIC  S9(12)v999.
+                   15 utf-num-prog-riga-reg        PIC  9(10).
+                   15 utf-data-ult-stampa          PIC  9(8).
+               10 utf-dati-comuni.
+                   15 utf-data-creazione           PIC  9(8).
+                   15 utf-ora-creazione            PIC  9(8).
+                   15 utf-utente-creazione         PIC  X(10).
+                   15 utf-data-ultima-modifica     PIC  9(8).
+                   15 utf-ora-ultima-modifica      PIC  9(8).
+                   15 utf-utente-ultima-modifica   PIC  X(10).
+               10 utf-vuoti.
+                   15 utf-tipo-registro            PIC  x.
+                       88 utf-cumulativo VALUE IS "C". 
+                       88 utf-dettaglio VALUE IS "D". 
+                   15 utf-reg-serie-1  PIC  9(8).
+                   15 utf-reg-serie-2  PIC  9(8).
+                   15 utf-reg-serie-3  PIC  9(8).
+                   15 utf-num-vuoto-2  PIC  9(5).
+                   15 utf-num-vuoto-3  PIC  9(15).
+                   15 utf-alfa-vuoto-1 PIC  X(20).
+                   15 utf-alfa-vuoto-2 PIC  X(20).
+                   15 utf-alfa-vuoto-3 PIC  X(20).

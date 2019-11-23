@@ -1,0 +1,1680 @@
+; CaseMaker Totem Program Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[PROGRAM_CONTENT]
+QUIT_CONFIRM=0
+ANSI_FORMAT=1
+BEFORE_PROGRAM=sitfin-Ev-Before-Program
+AFTER_INIT=sitfin-p-Ev-After-Init
+PROGRAM_UNIQUE_CODE=TOTEM-7D93171781-296-1778915814
+
+{{@DESCRIPTION:
+
+@}}
+
+[WORKING_STORAGE]
+m_nType=1
+m_strName=Working Storage
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionWK
+
+@}}
+[FDITEM0_WK]
+m_strName=mese-rif
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_WK
+
+@}}
+[FDITEM1_WK]
+m_strName=como-anno
+m_strRawPic=9999
+m_strPic=9999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1_WK
+
+@}}
+[FDITEM2_WK]
+m_strName=perce-max-z
+m_strRawPic=---9,99
+m_strPic=---9,99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM2_WK
+
+@}}
+[FDITEM3_WK]
+m_strName=perce
+m_strRawPic=9(3)v99
+m_strPic=9(3)v99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM3_WK
+
+@}}
+[FDITEM4_WK]
+m_strName=num
+m_strRawPic=9(9)v99
+m_strPic=9(9)v99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM4_WK
+
+@}}
+[FDITEM5_WK]
+m_strName=den
+m_strRawPic=9(9)v99
+m_strPic=9(9)v99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM5_WK
+
+@}}
+[FDITEM6_WK]
+m_strName=data-oggi
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM6_WK
+
+@}}
+[FDITEM7_WK]
+m_strName=anno
+m_strRawPic=9999
+m_strPic=9999
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM7_WK
+
+@}}
+[FDITEM8_WK]
+m_strName=mese
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM8_WK
+
+@}}
+[FDITEM9_WK]
+m_strName=giorno
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM9_WK
+
+@}}
+[FDITEM10_WK]
+m_strName=STATUS-clienti
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM10_WK
+
+@}}
+[FDITEM11_WK]
+m_strName=Valid-STATUS-clienti
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM11_WK
+
+@}}
+[FDITEM12_WK]
+m_strName=fatturato
+m_strRawPic=s9(9)v99
+m_strPic=s9(9)v99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM12_WK
+
+@}}
+[FDITEM13_WK]
+m_strName=como-valore
+m_strRawPic=s9(9)v99
+m_strPic=s9(9)v99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM13_WK
+
+@}}
+[FDITEM14_WK]
+m_strName=scoperto-tot
+m_strRawPic=s9(9)v99
+m_strPic=s9(9)v99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM14_WK
+
+@}}
+[FDITEM15_WK]
+m_strName=max-fido
+m_strRawPic=s9(9)v99
+m_strPic=s9(9)v99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM15_WK
+
+@}}
+[FDITEM16_WK]
+m_strName=STATUS-rmovmag
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM16_WK
+
+@}}
+[FDITEM17_WK]
+m_strName=Valid-STATUS-rmovmag
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM17_WK
+
+@}}
+[FDITEM18_WK]
+m_strName=STATUS-tmovmag
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM18_WK
+
+@}}
+[FDITEM19_WK]
+m_strName=Valid-STATUS-tmovmag
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM19_WK
+
+@}}
+[FDITEM20_WK]
+m_strName=STATUS-tparamge
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM20_WK
+
+@}}
+[FDITEM21_WK]
+m_strName=Valid-STATUS-tparamge
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM21_WK
+
+@}}
+[FDITEM22_WK]
+m_strName=STATUS-tcaumag
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM22_WK
+
+@}}
+[FDITEM23_WK]
+m_strName=Valid-STATUS-tcaumag
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM23_WK
+
+@}}
+[FDITEM24_WK]
+m_strName=status-pas
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM24_WK
+
+@}}
+[FDITEM25_WK]
+m_strName=Valid-status-pas
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM25_WK
+
+@}}
+[FDITEM26_WK]
+m_strName=status-pat
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM26_WK
+
+@}}
+[FDITEM27_WK]
+m_strName=Valid-status-pat
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM27_WK
+
+@}}
+
+
+[LINKAGE_SECTION]
+m_nType=1
+m_strName=Linkage Section
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionLK
+
+@}}
+[FDITEM0_LK]
+m_strName=sitfin-p-linkage
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-SITFIN-P.DEF
+m_strCopyFile=link-sitfin-p.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-SITFIN-P.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM0_LK
+
+
+@}}
+[FDITEM1_LK]
+m_strName=sitfin-p-importo
+m_strRawPic=9(9)v99
+m_strPic=9(9)V99
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-SITFIN-P.DEF
+m_strCopyFile=link-sitfin-p.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-SITFIN-P.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM1_LK
+
+@}}
+[FDITEM2_LK]
+m_strName=stifin-p-lince
+m_strRawPic=s9(9)v99
+m_strPic=S9(9)V99
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-SITFIN-P.DEF
+m_strCopyFile=link-sitfin-p.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-SITFIN-P.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM2_LK
+
+@}}
+[FDITEM3_LK]
+m_strName=calfido-linkage
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-SITFIN-P.DEF
+m_strCopyFile=link-calfido.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM3_LK
+
+@}}
+[FDITEM4_LK]
+m_strName=dare-precedente
+m_strRawPic=s9(13)v9(02)
+m_strPic=S9(13)V9(02)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-SITFIN-P.DEF
+m_strCopyFile=link-calfido.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM4_LK
+
+@}}
+[FDITEM5_LK]
+m_strName=avere-precedente
+m_strRawPic=s9(13)v9(02)
+m_strPic=S9(13)V9(02)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-SITFIN-P.DEF
+m_strCopyFile=link-calfido.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM5_LK
+
+@}}
+[FDITEM6_LK]
+m_strName=dare-saldo
+m_strRawPic=s9(13)v9(02)
+m_strPic=S9(13)V9(02)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-SITFIN-P.DEF
+m_strCopyFile=link-calfido.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM6_LK
+
+@}}
+[FDITEM7_LK]
+m_strName=avere-saldo
+m_strRawPic=s9(13)v9(02)
+m_strPic=S9(13)V9(02)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-SITFIN-P.DEF
+m_strCopyFile=link-calfido.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM7_LK
+
+@}}
+[FDITEM8_LK]
+m_strName=saldo
+m_strRawPic=s9(13)v9(02)
+m_strPic=S9(13)V9(02)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-SITFIN-P.DEF
+m_strCopyFile=link-calfido.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM8_LK
+
+@}}
+[FDITEM9_LK]
+m_strName=saldo-scaduto
+m_strRawPic=s9(13)v9(02)
+m_strPic=S9(13)V9(02)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-SITFIN-P.DEF
+m_strCopyFile=link-calfido.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM9_LK
+
+@}}
+[FDITEM10_LK]
+m_strName=saldo-scadenza
+m_strRawPic=s9(13)v9(02)
+m_strPic=S9(13)V9(02)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-SITFIN-P.DEF
+m_strCopyFile=link-calfido.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM10_LK
+
+@}}
+[FDITEM11_LK]
+m_strName=effetti-rischio
+m_strRawPic=s9(13)v9(02)
+m_strPic=S9(13)V9(02)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-SITFIN-P.DEF
+m_strCopyFile=link-calfido.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM11_LK
+
+@}}
+[FDITEM12_LK]
+m_strName=ordini-in-essere
+m_strRawPic=s9(13)v9(02)
+m_strPic=S9(13)V9(02)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-SITFIN-P.DEF
+m_strCopyFile=link-calfido.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM12_LK
+
+@}}
+[FDITEM13_LK]
+m_strName=link-cli-codice
+m_strRawPic=x(5)
+m_strPic=X(5)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-SITFIN-P.DEF
+m_strCopyFile=link-calfido.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM13_LK
+
+@}}
+[FDITEM14_LK]
+m_strName=calfido-linkage
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_strCopyFile=link-calfido.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM14_LK
+
+@}}
+[FDITEM15_LK]
+m_strName=dare-precedente
+m_strRawPic=s9(13)v9(02)
+m_strPic=S9(13)V9(02)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_strCopyFile=link-calfido.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM15_LK
+
+@}}
+[FDITEM16_LK]
+m_strName=avere-precedente
+m_strRawPic=s9(13)v9(02)
+m_strPic=S9(13)V9(02)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_strCopyFile=link-calfido.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM16_LK
+
+@}}
+[FDITEM17_LK]
+m_strName=dare-saldo
+m_strRawPic=s9(13)v9(02)
+m_strPic=S9(13)V9(02)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_strCopyFile=link-calfido.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM17_LK
+
+@}}
+[FDITEM18_LK]
+m_strName=avere-saldo
+m_strRawPic=s9(13)v9(02)
+m_strPic=S9(13)V9(02)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_strCopyFile=link-calfido.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM18_LK
+
+@}}
+[FDITEM19_LK]
+m_strName=saldo
+m_strRawPic=s9(13)v9(02)
+m_strPic=S9(13)V9(02)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_strCopyFile=link-calfido.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM19_LK
+
+@}}
+[FDITEM20_LK]
+m_strName=saldo-scaduto
+m_strRawPic=s9(13)v9(02)
+m_strPic=S9(13)V9(02)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_strCopyFile=link-calfido.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM20_LK
+
+@}}
+[FDITEM21_LK]
+m_strName=saldo-scadenza
+m_strRawPic=s9(13)v9(02)
+m_strPic=S9(13)V9(02)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_strCopyFile=link-calfido.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM21_LK
+
+@}}
+[FDITEM22_LK]
+m_strName=effetti-rischio
+m_strRawPic=s9(13)v9(02)
+m_strPic=S9(13)V9(02)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_strCopyFile=link-calfido.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM22_LK
+
+@}}
+[FDITEM23_LK]
+m_strName=ordini-in-essere
+m_strRawPic=s9(13)v9(02)
+m_strPic=S9(13)V9(02)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_strCopyFile=link-calfido.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM23_LK
+
+@}}
+[FDITEM24_LK]
+m_strName=link-cli-codice
+m_strRawPic=x(5)
+m_strPic=X(5)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_strCopyFile=link-calfido.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-CALFIDO.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM24_LK
+
+@}}
+
+
+{{@SCREEN:
+*   Screen Painter Data
+*   Schema 6.0
+*
+BEGIN-SPDATA-6.1A
+
+END-SPDATA
+
+@}}
+
+{{@REPORT:
+*   Report Writer Data
+*   Schema 6.0
+*
+BEGIN-RWDATA-6.0A
+
+END-RWDATA
+
+@}}
+
+{{@EMBEDDING_CODE:
+BEGIN-DATA
+   BASETYPE          = 6
+   NODESTYLE         = 7
+   PARAGRAPH         = DeletedCode
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = ELABORAZIONE
+BEGIN-TEXT
+           move link-cli-codice to cli-codice.
+           set cli-tipo-C to true.
+           read clienti no lock 
+              invalid 
+                 continue 
+           end-read.
+
+
+           if sitfin-p-importo not = 0
+              move sitfin-p-importo to stifin-p-attuale
+           end-if.
+
+           perform VERIFICA-1.
+           perform VERIFICA-2.
+           perform VERIFICA-3.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = VERIFICA-1
+BEGIN-TEXT
+           move spaces to tge-chiave.
+           read tparamge no lock invalid continue end-read.
+
+           call   "calfido"  using calfido-linkage.
+           cancel "calfido".
+
+           move cli-lince to stifin-p-lince.
+
+           compute scoperto-tot = saldo-scaduto   +
+                                  effetti-rischio +
+                                  ordini-in-essere.
+
+           move scoperto-tot to stifin-p-scaduto.
+
+           if scoperto-tot < 1000
+              set sitfin-p-verifica-1-ok to true
+           else
+              set sitfin-p-verifica-1-ok to false
+           end-if.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = VERIFICA-2
+BEGIN-TEXT
+           accept data-oggi from century-date.
+
+           evaluate mese
+           when 1
+                move 11 to mese-rif
+                subtract 1 from anno
+           when 2
+                move 12 to mese-rif
+                subtract 1 from anno
+           when other
+                subtract 2  from mese giving mese-rif
+           end-evaluate.
+           move mese-rif to mese.
+
+           evaluate mese-rif
+           when  1 move 31 to giorno
+                   move "Scadenze di Gennaio: " to stifin-p-scadenze
+           when  2 divide anno by 4 giving como-anno
+                   multiply como-anno by 4 giving como-anno
+                   if anno = como-anno
+                      move 29 to giorno
+                   else
+                      move 28 to giorno
+                   end-if
+                   move "Scadenze di Febbraio: " to stifin-p-scadenze
+           when  3 move 31 to giorno
+                   move "Scadenze di Marzo: " to stifin-p-scadenze
+           when  4 move 30 to giorno
+                   move "Scadenze di Aprile: " to stifin-p-scadenze
+           when  5 move 31 to giorno
+                   move "Scadenze di Maggio: " to stifin-p-scadenze
+           when  6 move 30 to giorno
+                   move "Scadenze di Giugno: " to stifin-p-scadenze
+           when  7 move 31 to giorno
+                   move "Scadenze di Luglio: " to stifin-p-scadenze
+           when  8 move 31 to giorno
+                   move "Scadenze di Agosto: " to stifin-p-scadenze
+           when  9 move 30 to giorno
+                   move "Scadenze di Settembre: " to stifin-p-scadenze
+           when 10 move 31 to giorno
+                   move "Scadenze di Ottobre: " to stifin-p-scadenze
+           when 11 move 30 to giorno
+                   move "Scadenze di Novembre: " to stifin-p-scadenze
+           when 12 move 31 to giorno
+                   move "Scadenze di Dicembre: " to stifin-p-scadenze
+           end-evaluate.
+
+           initialize stifin-p-scaduto-al.
+           string "Scaduto al " delimited size
+                  giorno        delimited size
+                  "/"           delimited size
+                  mese          delimited size
+                  "/"           delimited size
+                  anno          delimited size
+                  ":"           delimited size
+                  into stifin-p-scaduto-al
+           end-string.
+
+           move tge-perce-fido to perce-max-z.
+
+           initialize stifin-p-perce-max.
+           string "(% Max di " delimited size
+                  perce-max-z  delimited size
+                  ")"          delimited size
+                  into stifin-p-perce-max
+           end-string.
+
+           move 0 to num.
+           move 0 to den.
+
+           move data-oggi to como-data.
+
+           set pas-tipo-cfm-cli to true.
+           move link-cli-codice to pas-codice-cfm.
+           move 0   to pas-situazione.
+           move 0   to pas-data-scadenza.
+           move 0   to pas-codice.
+           start pas key >= pas-codice4
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read pas next at end exit perform end-read
+                    if pas-codice-cfm not = link-cli-codice or
+                       pas-data-scadenza > como-data
+                       exit perform
+                    end-if
+                    if pas-situazione = 2
+                       if pas-data-scadenza(5:2) = mese
+                          move pas-progressivo to pat-progressivo
+                          read pat no lock key pat-codice
+                               invalid continue
+                           not invalid
+                               if pat-dare-avere-d
+                                  compute den = 
+                                          den + pas-importo-dare
+                               else
+                                  compute den = 
+                                          den + 
+                                        ( pas-importo-dare * -1 )
+                               end-if
+                          end-read
+                       end-if
+                    else
+                       compute num =
+                               num + ( pas-importo-dare -
+                                       pas-importo-avere )
+                       if pas-data-scadenza(5:2) = mese
+                          compute den =
+                                  den + ( pas-importo-dare -
+                                          pas-importo-avere )
+                       end-if
+                    end-if
+                 end-perform
+           end-start.
+
+           move num to stifin-p-num.
+
+           move den to stifin-p-den.
+
+           if den = 0
+              move 100 to perce
+           else
+              compute perce = num / den * 100
+           end-if.
+           move perce to stifin-p-perce.
+
+           if perce < tge-perce-fido
+              set sitfin-p-verifica-2-ok to true
+      *        modify bmp-2, bitmap-number = 2
+      *        modify lab-perce,  color 3
+      *        modify lab-percea, color 3
+           else
+              set sitfin-p-verifica-2-ok to false
+      *        modify bmp-2, bitmap-number = 3
+      *        modify lab-perce,  color 5
+      *        modify lab-percea, color 5
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = VERIFICA-3
+BEGIN-TEXT
+           set tutto-ok to true.
+
+           move  low-value   to tmo-rec.
+
+           set tmo-cliente to true.
+           move cli-codice to tmo-cod-clifor.
+
+           compute como-data = 
+                   function INTEGER-OF-DATE(tge-data-consolid-progmag).
+           subtract 365 from como-data.
+           compute tmo-data-movim = 
+                   function DATE-OF-INTEGER(como-data).
+
+           initialize stifin-p-fat-per.
+           string "Fatturato ("                  delimited size
+                  tmo-data-movim(7:2)            delimited size
+                  "/"                            delimited size
+                  tmo-data-movim(5:2)            delimited size
+                  "/"                            delimited size
+                  tmo-data-movim(1:4)            delimited size
+                  " - "                          delimited size
+                  tge-data-consolid-progmag(7:2) delimited size
+                  "/"                            delimited size
+                  tge-data-consolid-progmag(5:2) delimited size
+                  "/"                            delimited size
+                  tge-data-consolid-progmag(1:4) delimited size
+                  "):"                           delimited size
+                  into stifin-p-fat-per
+           end-string.
+
+           start tmovmag key is >= k2
+              invalid 
+                 set errori to true
+           end-start.
+
+           if tutto-ok
+              move 0 to fatturato
+
+              perform until 1 = 2
+
+                 read tmovmag next at end exit perform end-read
+
+                 if tmo-data-movim > tge-data-consolid-progmag or
+                    tmo-cod-clifor not = cli-codice            or
+                    tmo-fornitore 
+                    exit perform 
+                 end-if
+
+                 move tmo-causale to tca-codice
+                 read tcaumag no lock invalid continue end-read
+
+                 if tca-cliente and tca-si-stat
+                    set  cli-tipo-C     to true
+                    move tmo-cod-clifor to cli-codice
+                    read clienti no lock
+                         invalid continue
+                     not invalid
+                         perform LOOP-RIGHE-MOVMAG
+                    end-read
+                 end-if
+
+              end-perform
+           end-if.
+           move fatturato to stifin-p-fatturato.
+
+           move effetti-rischio  to stifin-p-rb.
+           add sitfin-p-importo  to ordini-in-essere.
+           move ordini-in-essere to stifin-p-ordini.
+
+           compute max-fido = 
+                 ( fatturato / 365 ) * ( cli-gg-dilazione + 40 )
+           move max-fido to stifin-p-fido.
+
+           move cli-gg-dilazione to sitfin-p-gg.
+
+           compute scoperto-tot = saldo-scaduto   +
+                                  effetti-rischio + 
+                                  ordini-in-essere.
+           move scoperto-tot to stifin-p-tot-scad.
+
+           if scoperto-tot < max-fido
+              set sitfin-p-verifica-3-ok to true
+      *        modify bmp-3, bitmap-number = 2
+           else
+              set sitfin-p-verifica-3-ok to false
+      *        modify bmp-3, bitmap-number = 3
+           end-if.
+
+      ***---
+       LOOP-RIGHE-MOVMAG.
+           set  tutto-ok     to true.
+           move low-value    to rmo-rec.
+           move tmo-chiave   to    rmo-chiave.
+           start rmovmag key is >= rmo-chiave 
+                 invalid set errori to true 
+           end-start.
+           if tutto-ok
+              perform until 1 = 2
+                 read rmovmag  next at end exit perform end-read
+                 if rmo-anno   not = tmo-anno or
+                    rmo-movim  not = tmo-numero
+                    exit perform
+                 end-if
+                 if rmo-qta = 0
+                    compute como-valore = rmo-netto    +
+                                          rmo-imp-cons + 
+                                          rmo-coubat
+                 else
+                    compute como-valore = rmo-qta *
+                          ( rmo-netto + rmo-imp-cons + rmo-coubat)
+                 end-if
+
+                 if tca-imponibile-pos
+                    add como-valore to fatturato
+                 else
+                    subtract como-valore from fatturato
+                 end-if
+
+              end-perform
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = sitfin-Ev-Before-Program
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = sitfin-p-Ev-After-Init
+BEGIN-TEXT
+           perform ELABORAZIONE
+END-TEXT
+END-DATA
+
+@}}
+
+[KEY_STATUS_FIELD_FORMAT]
+PIC=9(5)
+USAGE=[None]
+
+[KEYSTATUS_CONTENT:KS1]
+CONDITION=Enter-Pushed
+VALUE=13
+
+[KEYSTATUS_CONTENT:KS2]
+CONDITION=Exit-Pushed
+VALUE=27
+
+[KEYSTATUS_CONTENT:KS3]
+CONDITION=Message-Received
+VALUE=95
+
+[KEYSTATUS_CONTENT:KS4]
+CONDITION=Event-Occurred
+VALUE=96
+
+[KEYSTATUS_CONTENT:KS5]
+CONDITION=Screen-No-Input-Field
+VALUE=97
+
+[KEYSTATUS_CONTENT:KS6]
+CONDITION=Screen-Time-Out
+VALUE=99
+
+[COBOLAID_DATASET_INFO]
+COUNT=1
+NAME_0=DataSet1
+
+[DRAW_DOCUMENT_INDEX]
+OBJ_NAME_0=8001
+OBJ_ID_0=694643345
+
+[MULTIPLE_KEY_0]
+COUNT=1
+KEY_0=cli-chiave OF clienti
+
+[DRAW_DOCUMENT_8001_694643345]
+OBJ_NAME=8001
+OBJ_ID=694643345
+TYPE=2
+VERSION=
+DOC_SIZE_X=5100
+DOC_SIZE_Y=5160
+PAGE_LEFT=150
+PAGE_TOP=150
+PAGE_RIGHT=1850
+PAGE_BOTTOM=2730
+MARGIN_LEFT=150
+MARGIN_TOP=150
+MARGIN_RIGHT=150
+MARGIN_BOTTOM=150
+PROP_DOCU_TYPE=ø
+PROP_DOCU_TYPE2=ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+PROP_DOCU_NAME=DataSet - DataSet1[sitfin(GESLUX)]
+PROP_DOCU_OWNER=Person A
+PROP_DOCU_CDATE=03/09/09
+PROP_DOCU_MODIFIER=Person B
+PROP_DOCU_MDATE=03/09/09
+PROP_DOCU_DESCR=Caseaid DocuCaseaid Document
+PROP_DOCU_HEADER=Caseaid Document
+PROP_DOCU_FOOTER=Page # 
+PROP_DOCU_DIM_H=2
+PROP_DOCU_DIM_W=3
+PROP_DOCU_LOC_H=1
+PROP_DOCU_LOC_W=1
+PROP_DOCU_EDGE_T=150
+PROP_DOCU_EDGE_B=150
+PROP_DOCU_EDGE_L=150
+PROP_DOCU_EDGE_R=150
+PROP_DOCU_ZOOM=75
+PROP_DOCU_SIZE_TYPE=0
+PROP_DOCU_SIZE_PAPER=1
+PROP_DOCU_SIZE_H=2580
+PROP_DOCU_SIZE_W=1700
+PROP_DOCU_RULER_EBL=0
+PROP_DOCU_GRID_EBL=0
+PROP_DOCU_GRID=20
+PROP_DOCU_ALIGN=0
+REL_SYM_SIZE=46
+REL_SYM_INFO_L=7
+REL_SYM_INFO_X0=2301
+REL_SYM_INFO_Y0=1737838955
+REL_SYM_INFO_X1=2301
+REL_SYM_INFO_Y1=679141491
+REL_SYM_INFO_X2=2301
+REL_SYM_INFO_Y2=935725975
+REL_SYM_INFO_X3=2301
+REL_SYM_INFO_Y3=397275259
+REL_SYM_INFO_X4=2301
+REL_SYM_INFO_Y4=1487872308
+REL_SYM_INFO_X5=2301
+REL_SYM_INFO_Y5=972250309
+REL_SYM_INFO_X6=2301
+REL_SYM_INFO_Y6=500283952
+
+[DRAW_BASESYMBOL_2301_1737838955]
+OBJ_NAME=2301
+OBJ_ID=1737838955
+KIND=1
+{{@LABEL_2301_1737838955
+clienti
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=16
+TOP=16
+RIGHT=416
+BOTTOM=238
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_679141491]
+OBJ_NAME=2301
+OBJ_ID=679141491
+KIND=1
+{{@LABEL_2301_679141491
+rmovmag
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=330
+TOP=298
+RIGHT=730
+BOTTOM=520
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_935725975]
+OBJ_NAME=2301
+OBJ_ID=935725975
+KIND=1
+{{@LABEL_2301_935725975
+tmovmag
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=278
+TOP=595
+RIGHT=678
+BOTTOM=817
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_397275259]
+OBJ_NAME=2301
+OBJ_ID=397275259
+KIND=1
+{{@LABEL_2301_397275259
+tparamge
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=16
+TOP=922
+RIGHT=416
+BOTTOM=1144
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1487872308]
+OBJ_NAME=2301
+OBJ_ID=1487872308
+KIND=1
+{{@LABEL_2301_1487872308
+tcaumag
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=515
+TOP=955
+RIGHT=915
+BOTTOM=1177
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_972250309]
+OBJ_NAME=2301
+OBJ_ID=972250309
+KIND=1
+{{@LABEL_2301_972250309
+PAT
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=504
+TOP=1829
+RIGHT=904
+BOTTOM=2051
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_500283952]
+OBJ_NAME=2301
+OBJ_ID=500283952
+KIND=1
+{{@LABEL_2301_500283952
+PAS
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=221
+TOP=1313
+RIGHT=621
+BOTTOM=1535
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DMD_DOCUMENT_0_694643345]
+OBJ_NAME=0
+OBJ_ID=694643345
+FILE_TITLE_TYPE=8136
+FILE_SHOW_ITEM=0
+FILE_SHOW_KEY=0
+FILE_SHOW_PIC=0
+FILE_SHOW_HEAD=0
+FILE_SHOW_LEVEL=0
+FILE_SHOW_TREE=0
+FILE_SHOW_CLPS=0
+FILE_SHOW_BMP=0
+FILE_SHOW_LINE=0
+FILE_SHOW_MINIZE=0
+
+[DMD_FILE_0_1737838955]
+OBJ_NAME=0
+OBJ_ID=1737838955
+REL_M_OBJ_ID=0
+ENTITY=clienti
+LINK=0
+LINK_NAME=
+DSN_SIZE=53
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=cli-chiave OF clienti
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1737838955
+
+@}}
+DSN_INFO_PRIMARY=1
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_679141491]
+OBJ_NAME=0
+OBJ_ID=679141491
+REL_M_OBJ_ID=0
+ENTITY=rmovmag
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=rmo-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_679141491
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_935725975]
+OBJ_NAME=0
+OBJ_ID=935725975
+REL_M_OBJ_ID=0
+ENTITY=tmovmag
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tmo-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_935725975
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_397275259]
+OBJ_NAME=0
+OBJ_ID=397275259
+REL_M_OBJ_ID=0
+ENTITY=tparamge
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tge-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_397275259
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1487872308]
+OBJ_NAME=0
+OBJ_ID=1487872308
+REL_M_OBJ_ID=0
+ENTITY=tcaumag
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tca-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1487872308
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_972250309]
+OBJ_NAME=0
+OBJ_ID=972250309
+REL_M_OBJ_ID=0
+ENTITY=PAT
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=PAT-CODICE
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_972250309
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_500283952]
+OBJ_NAME=0
+OBJ_ID=500283952
+REL_M_OBJ_ID=0
+ENTITY=PAS
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=PAS-CODICE
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_500283952
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=

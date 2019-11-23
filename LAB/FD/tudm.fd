@@ -1,0 +1,20 @@
+       FD  tudm.
+       01 udm-rec.
+           05 udm-chiave.
+               10 udm-codice       PIC  X(2).
+           05 udm-dati.
+               10 udm-descrizione  PIC  X(30).
+               10 udm-dati-comuni.
+                   15 udm-data-creazione           PIC  9(8).
+                   15 udm-ora-creazione            PIC  9(8).
+                   15 udm-utente-creazione         PIC  X(10).
+                   15 udm-data-ultima-modifica     PIC  9(8).
+                   15 udm-ora-ultima-modifica      PIC  9(8).
+                   15 udm-utente-ultima-modifica   PIC  x(10).
+               10 udm-vuoti.
+                   15 udm-num-vuoto-1  PIC  9(15).
+                   15 udm-num-vuoto-2  PIC  9(15).
+                   15 udm-num-vuoto-3  PIC  9(15).
+                   15 udm-alfa-vuoto-1 PIC  X(20).
+                   15 udm-alfa-vuoto-2 PIC  X(20).
+                   15 udm-alfa-vuoto-3 PIC  X(20).

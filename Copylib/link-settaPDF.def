@@ -1,0 +1,9 @@
+      *
+       01  settaPDF-linkage.
+           03                      pic x.
+              88 settaPDF-setta    value "S".
+              88 settaPDF-resetta  value "R".
+           03 settaPDF-nome-file   pic x(256).
+           03 settaPDF-percorso    pic x(256).
+           03                      pic 9.
+              88 settaPDF-OK       value 1 false zero.

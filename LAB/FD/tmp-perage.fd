@@ -1,0 +1,16 @@
+      *(( XFD FILE = tmp-perage ))
+       FD  tmp-perage.
+       01 tmp-per-rec.
+           05 tmp-per-chiave.
+               10 tmp-per-agente   PIC  9(5).
+               10 tmp-per-data-fat PIC  9(8).
+           05 tmp-per-dati.
+               10 tmp-per-num-fatt PIC  9(8).
+               10 tmp-per-riga     PIC  9(5).
+               10 tmp-per-cli-ragsoc           PIC  x(50).
+               10 tmp-per-prz-age  PIC  s9(9)v99.
+               10 tmp-per-art-descrizione      PIC  x(50).
+               10 tmp-per-um       PIC  x(2).
+               10 tmp-per-qta      PIC  9(8).
+               10 tmp-per-prz-vend PIC  s9(9)v99.
+               10 tmp-per-provv    PIC  s9(9)v99.

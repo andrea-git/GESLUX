@@ -1,0 +1,40 @@
+      *(( XFD FILE = tmp-evaart ))
+       FD  tmp-evaart.
+       01 tmeva-rec.
+           05 tmeva-chiave.
+               10 tmeva-chiave-testa.
+                   15 tmeva-anno       PIC  9(4).
+                   15 tmeva-numero     PIC  9(8).
+               10 tmeva-riga       PIC  9(5).
+           05 tmeva-dati.
+               10 tmeva-qta        PIC  9(8).
+               10 tmeva-cod-cli    PIC  9(5).
+               10 tmeva-cliente    PIC  x(40).
+               10 tmeva-prg-destino            PIC  9(5).
+               10 tmeva-destino    PIC  x(40).
+               10 tmeva-ritira     PIC  9.
+                   88 tmeva-ritira-si VALUE IS 1. 
+                   88 tmeva-ritira-no VALUE IS 0. 
+               10 tmeva-articolo   PIC  x(100).
+               10 tmeva-prog       PIC  9(8).
+               10 tmeva-blister    PIC  9.
+                   88 tmeva-si-blister VALUE IS 1    WHEN SET TO FALSE  
+           0. 
+               10 tmeva-bli-testa  PIC  9.
+                   88 tmeva-bli-testa-si VALUE IS 1. 
+                   88 tmeva-bli-testa-no VALUE IS 0. 
+               10 tmeva-qta-imballi            PIC  9(4).
+               10 tmeva-omaggio    PIC  X(1).
+                   88 tmeva-omaggio-si VALUE IS "S". 
+                   88 tmeva-omaggio-no VALUE IS "N". 
+               10 tmeva-bloccato   PIC  9.
+                   88 tmeva-bloccato-si VALUE IS 1. 
+                   88 tmeva-bloccato-no VALUE IS 0. 
+               10 tmeva-prg-chiave.
+                   15 tmeva-art        PIC  9(6).
+                   15 tmeva-mag        PIC  x(3).
+                   15 tmeva-imb        PIC  x(3).
+                   15 tmeva-peso       PIC  9(5)v9(3).
+               10 tmeva-promo      PIC  9.
+                   88 tmeva-promo-si VALUE IS 1. 
+                   88 tmeva-promo-no VALUE IS 0. 

@@ -1,0 +1,23 @@
+       01  esegui-ftp-linkage.
+           05 ftp-operazione          pic xx.
+              88 ftp-export-art       value "EA".
+              88 ftp-export-ord       value "EO".
+              88 ftp-export-ana       value "Ea".
+              88 ftp-importart        value "IA".
+              88 ftp-import           value "IO".
+              88 ftp-importcar        value "IC".
+              88 ftp-metti-sem-exp    value "ME".
+              88 ftp-togli-sem-exp    value "TE".
+              88 ftp-contr-sem-exp    value "CE".
+              88 ftp-metti-sem-imp    value "MI".
+              88 ftp-togli-sem-imp    value "TI".
+              88 ftp-contr-sem-imp    value "CI".
+              88 ftp-metti-sem-impcar value "MC".
+              88 ftp-togli-sem-impcar value "TC".
+              88 ftp-contr-sem-impcar value "CC".
+           05 ftp-risultato        pic x.
+              88 ftp-ok            value "O" false "K".
+           05 ftp-risultato2       pic x.
+              88 ftp-si-sem        value "S".
+              88 ftp-no-sem        value "N".
+

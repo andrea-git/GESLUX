@@ -1,0 +1,18 @@
+       FD  art-exp-get.
+       01 aeg-rec.
+           05 aeg-chiave.
+               10 aeg-articolo     PIC  9(6).
+               10 aeg-imballo      PIC  x(3).
+           05 aeg-dati.
+               10 aeg-dati-comuni.
+                   15 aeg-data-creazione           PIC  9(8).
+                   15 aeg-ora-creazione            PIC  9(8).
+                   15 aeg-utente-creazione         PIC  X(10).
+                   15 aeg-data-ultima-modifica     PIC  9(8).
+                   15 aeg-ora-ultima-modifica      PIC  9(8).
+                   15 aeg-utente-ultima-modifica   PIC  X(10).
+               10 aeg-vuoti.
+                   15 aeg-num-vuoto-1  PIC  9(18).
+                   15 aeg-num-vuoto-2  PIC  9(18).
+                   15 aeg-num-vuoto-3  PIC  9(18).
+                   15 aeg-alfa-vuoto   PIC  x(500).

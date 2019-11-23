@@ -1,0 +1,41 @@
+       FD  MAGAZ
+           LABEL RECORD IS STANDARD.
+       01 TES-MAG.
+           02 KEY-MAGAZ.
+               05 K-REGI           PIC  9(6).
+               05 K-RIGA           PIC  99.
+           02 DATA-MAG.
+               05 GG-MAG           PIC  99.
+               05 MM-MAG           PIC  99.
+               05 AA-MAG           PIC  99.
+           02 KEY-CFCM         PIC  X(8).
+           02 DEX-CFC          PIC  X(30).
+           02 NM-DOC           PIC  X(8).
+           02 DATA-DOC.
+               05 GG-DOC           PIC  99.
+               05 MM-DOC           PIC  99.
+               05 AA-DOC           PIC  99.
+           02 C-CAUS           PIC  99.
+           02 DEX-CAUS         PIC  X(20).
+           02 C-PAG            PIC  99.
+           02 DEX-PAG          PIC  X(18).
+           02 LIMDES           PIC  XX.
+       01 RIG-MAG.
+           02 FILLER           PIC  X(8).
+           02 M-ART.
+               05 M-ARTA           PIC  99.
+               05 M-ARTB           PIC  9(4).
+           02 FILLER           PIC  X(6).
+           02 DEX-ART          PIC  X(30).
+           02 QTA-KG           PIC  9(7).
+           02 MPESO-UM         PIC  999V999.
+           02 MDEN-RE          PIC  9V9(5).
+           02 QTA-UM           PIC  9(7).
+           02 SC-LIS           PIC  99V99.
+           02 PZ-NETTO         PIC  9(9)V99.
+           02 MARK-MAG         PIC  9.
+           02 M-IMPOSTA        PIC  9(8)V99
+                      USAGE IS PACKED-DECIMAL.
+           02 M-COU            PIC  9(8)V99
+                      USAGE IS PACKED-DECIMAL.
+           02 FILLER           PIC  X(08).

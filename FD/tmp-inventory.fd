@@ -1,0 +1,20 @@
+      *(( XFD FILE = tmp-gdo ))
+       FD  tmp-inventory.
+       01 tinv-rec.
+           05 tinv-chiave.
+               10 tinv-prog        PIC  9(10).
+           05 tinv-dati.
+               10 tinv-mag         PIC  x(3).
+               10 tinv-marca       PIC  9(5).
+               10 tinv-articolo    PIC  9(6).
+               10 tinv-asterisk    PIC  x.
+               10 tinv-art-descrizione         PIC  x(100).
+               10 tinv-um          PIC  x(2).
+               10 tinv-qta         PIC  s9(8).
+               10 tinv-prezzo      PIC  s9(12)v999.
+               10 tinv-valore      PIC  s9(12)v99.
+               10 tinv-kg          PIC  s9(9)v999.
+               10 tinv-utf         PIC  s9(9)v999.
+               10 tinv-non-utf     PIC  s9(9)v999.
+               10 tinv-imballo     PIC  x(3).
+               10 tinv-peso        PIC  9(5)v9(3).

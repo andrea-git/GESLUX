@@ -1,0 +1,54 @@
+       FD  rmovmag.
+       01 rmo-rec.
+           05 rmo-chiave.
+               10 rmo-anno         PIC  9(4).
+               10 rmo-movim        PIC  9(8).
+               10 rmo-riga         PIC  9(5).
+           05 rmo-dati.
+               10 rmo-dati-ricerca.
+                   15 rmo-tipo         PIC  x.
+                       88 rmo-cliente VALUE IS "C". 
+                       88 rmo-fornitore VALUE IS "F". 
+                   15 rmo-cod-clifor   PIC  9(5).
+                   15 rmo-causale      PIC  x(4).
+                   15 rmo-data-movim   PIC  9(8).
+               10 rmo-destino      PIC  9(5).
+               10 rmo-chiave-progmag.
+                   15 rmo-articolo     PIC  9(6).
+                   15 rmo-codmag       PIC  x(3).
+                   15 rmo-imballo      PIC  x(3).
+                   15 rmo-peso         PIC  9(5)v9(3).
+               10 rmo-udm          PIC  xx.
+               10 rmo-qta          PIC  9(8).
+               10 rmo-peso-udm     PIC  9(5)v999.
+               10 rmo-peso-tot-utf PIC  9(11)v999.
+               10 rmo-peso-tot     PIC  9(11)v999.
+               10 rmo-listino      PIC  9(9)v99.
+               10 rmo-sconto       PIC  99v99.
+               10 rmo-netto        PIC  9(9)v99.
+               10 rmo-imp-cons     PIC  9(4)v99.
+               10 rmo-coubat       PIC  9(4)v99.
+               10 rmo-marca-prodotto           PIC  9(4).
+               10 rmo-stato        PIC  x.
+                   88 rmo-attivo VALUE IS "A". 
+                   88 rmo-disattivo VALUE IS "D". 
+                   88 rmo-bloccato VALUE IS "B". 
+               10 rmo-dati-comuni.
+                   15 rmo-data-creazione           PIC  9(8).
+                   15 rmo-ora-creazione            PIC  9(8).
+                   15 rmo-utente-creazione         PIC  X(10).
+                   15 rmo-data-ultima-modifica     PIC  9(8).
+                   15 rmo-ora-ultima-modifica      PIC  9(8).
+                   15 rmo-utente-ultima-modifica   PIC  X(10).
+               10 rmo-vuoti.
+                   15 rmo-flag-cancellato          PIC  9.
+                       88 rmo-cancellato VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+                   15 rmo-chiave-eva.
+                       20 rmo-anno-eva     PIC  9(4).
+                       20 rmo-num-eva      PIC  9(8).
+                       20 rmo-riga-eva     PIC  9(5).
+      *(( XFD NAME = rmo-num-vuoto-2_1 ))
+                   15 rmo-num-vuoto-2  PIC  9(12).
+                   15 rmo-num-vuoto-3  PIC  9(15).
+                   15 rmo-alfa-vuoto   PIC  x(200).

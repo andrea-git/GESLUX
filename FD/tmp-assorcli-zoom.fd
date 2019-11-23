@@ -1,0 +1,13 @@
+      *(( XFD FILE = tmp-assorcli-zoom ))
+       FD  tmp-assorcli-zoom.
+       01 tmp-asc-z-rec.
+           05 tmp-asc-z-chiave.
+               10 tmp-asc-z-cod-gruppo-gdo     PIC  X(5).
+               10 tmp-asc-z-cod-cliente        PIC  9(5).
+               10 tmp-asc-z-progressivo-destino            PIC  9(5).
+               10 tmp-asc-z-cod-articolo       PIC  9(6).
+           05 tmp-asc-z-dati.
+               10 tmp-asc-z-gdo-intestazione   PIC  x(30).
+               10 tmp-asc-z-cli-ragsoc-1       PIC  x(40).
+               10 tmp-asc-z-des-localita       PIC  x(35).
+               10 tmp-asc-z-art-descrizione    PIC  x(50).

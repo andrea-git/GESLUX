@@ -1,0 +1,59 @@
+      *(( XFD FILE = tmp-movmag ))
+       FD  tmp-movmag.
+       01 tmp-mov-rec.
+           05 tmp-mov-chiave.
+               10 tmp-mov-desart   PIC  x(50).
+               10 tmp-mov-anno     PIC  9(4).
+               10 tmp-mov-movim    PIC  9(8).
+               10 tmp-mov-riga     PIC  9(5).
+           05 tmp-mov-dati.
+               10 tmp-mov-imballo  PIC  x(3).
+               10 tmp-mov-gdo      PIC  x(5).
+               10 tmp-mov-tipocli  PIC  x(2).
+               10 tmp-mov-causale  PIC  x(4).
+               10 tmp-mov-data-movim           PIC  9(8).
+               10 tmp-mov-qta      PIC  s9(8).
+               10 tmp-mov-qta-e    PIC  s9(8).
+               10 tmp-mov-imp      PIC  s9(12)v99.
+               10 tmp-mov-add      PIC  s9(12)v99.
+               10 tmp-mov-cons     PIC  s9(4)v99.
+               10 tmp-mov-coubat   PIC  s9(4)v99.
+               10 tmp-mov-tipo-causale         PIC  x.
+                   88 tmp-mov-causale-pos VALUE IS "+". 
+                   88 tmp-mov-causale-neg VALUE IS "-". 
+               10 tmp-mov-imp-calcolato        PIC  s9(12)v99.
+               10 tmp-mov-tipo     PIC  x.
+                   88 tmp-mov-cliente VALUE IS "C". 
+                   88 tmp-mov-fornitore VALUE IS "F". 
+               10 tmp-mov-codice   PIC  9(5).
+               10 tmp-mov-destino  PIC  9(5).
+               10 tmp-mov-marca    PIC  9(4).
+               10 tmp-mov-magazz   PIC  x(3).
+               10 tmp-mov-num-bolla            PIC  9(8).
+               10 tmp-mov-data-bolla           PIC  9(8).
+               10 tmp-mov-numdoc   PIC  9(8).
+               10 tmp-mov-datadoc  PIC  9(8).
+               10 tmp-mov-articolo PIC  9(6).
+               10 tmp-mov-colli    PIC  9(6).
+               10 tmp-mov-peso     PIC  9(5)v9(3).
+               10 tmp-mov-cmc      PIC  s9(9)v999.
+               10 tmp-mov-tipo-cmc PIC  x.
+               10 tmp-mov-cmr      PIC  s9(9)v999.
+               10 tmp-mov-promo    PIC  9(15).
+               10 tmp-mov-num-ord-cli          PIC  x(10).
+               10 tmp-mov-data-ordine          PIC  9(8).
+               10 tmp-mov-cod-pag  PIC  xxx.
+               10 tmp-mov-des-pag  PIC  x(50).
+               10 tmp-mov-stato-m  PIC  x(15).
+               10 tmp-mov-stato-r  PIC  x(15).
+               10 tmp-mov-age-codice           PIC  9(5).
+      *(( XFD NAME = tmp-mov-stato-r_1 ))
+               10 tmp-mov-age-ragsoc           PIC  x(40).
+               10 tmp-mov-chiave-master.
+                   15 tmp-mov-chiave-ordine-testa.
+                       20 tmp-mov-anno-master          PIC  9(4).
+                       20 tmp-mov-numero-master        PIC  9(8).
+      *(( XFD NAME = ror-progr-mster ))
+                   15 tmp-mov-progr-master         PIC  9(5).
+      *(( XFD NAME = ror-progr-mster_1 ))
+               10 tmp-mov-vet-sigla            PIC  x(3).

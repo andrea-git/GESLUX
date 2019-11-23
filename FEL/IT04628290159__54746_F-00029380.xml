@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="fatturapa_v1.2.xsl"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 http://www.fatturapa.gov.it/export/fatturazione/sdi/fatturapa/v1.2/Schema_del_file_xml_FatturaPA_versione_1.2.xsd">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>04628290159</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>54746</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>0000000</CodiceDestinatario>
+      <PECDestinatario>grasso.a@pec.it</PECDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>00785630963</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>LUBEX SPA</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Giuseppe di Vittorio</Indirizzo>
+        <NumeroCivico>13</NumeroCivico>
+        <CAP>20090</CAP>
+        <Comune>Vimodrone</Comune>
+        <Provincia>MI</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>03420080875</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>GRASSO ALFIO</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA G GARIBALDI 90</Indirizzo>
+        <CAP>95029</CAP>
+        <Comune>VIAGRANDE</Comune>
+        <Provincia>CT</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2019-08-16</Data>
+        <Numero>29380</Numero>
+        <ImportoTotaleDocumento>349.16</ImportoTotaleDocumento>
+        <Causale>VENDITA da deposito LUBEX </Causale>
+      </DatiGeneraliDocumento>
+      <DatiOrdineAcquisto>
+        <IdDocumento>VARI</IdDocumento>
+      </DatiOrdineAcquisto>
+      <DatiDDT>
+        <NumeroDDT>23565</NumeroDDT>
+        <DataDDT>2019-08-09</DataDDT>
+      </DatiDDT>
+      <DatiTrasporto>
+        <DatiAnagraficiVettore>
+          <IdFiscaleIVA>
+            <IdPaese>IT</IdPaese>
+            <IdCodice>06253020967</IdCodice>
+          </IdFiscaleIVA>
+          <Anagrafica>
+            <Denominazione>TIESSE - EMI</Denominazione>
+          </Anagrafica>
+        </DatiAnagraficiVettore>
+        <IndirizzoResa>
+          <Indirizzo>VIA G GARIBALDI 90</Indirizzo>
+          <CAP>95029</CAP>
+          <Comune>VIAGRANDE</Comune>
+          <Provincia>CT</Provincia>
+          <Nazione>IT</Nazione>
+        </IndirizzoResa>
+        <DataOraConsegna>2019-08-27T00:00:00</DataOraConsegna>
+      </DatiTrasporto>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>22666</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>TOTAL SPAECIAL 20W60 LT.1</Descrizione>
+        <Quantita>60.00</Quantita>
+        <PrezzoUnitario>3.99</PrezzoUnitario>
+        <ScontoMaggiorazione>
+          <Tipo>MG</Tipo>
+          <Importo>0.69</Importo>
+        </ScontoMaggiorazione>
+        <ScontoMaggiorazione>
+          <Tipo>MG</Tipo>
+          <Importo>0.09</Importo>
+        </ScontoMaggiorazione>
+        <PrezzoTotale>286.20</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <ImponibileImporto>286.20</ImponibileImporto>
+        <Imposta>62.96</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP01</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP12</ModalitaPagamento>
+        <DataScadenzaPagamento>2019-10-31</DataScadenzaPagamento>
+        <ImportoPagamento>349.16</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

@@ -1,0 +1,34 @@
+       FD  sitfin.
+       01 sf-rec.
+           05 sf-chiave.
+               10 sf-piva          PIC  x(11).
+           05 sf-dati.
+               10 sf-ragsoc        PIC  x(40).
+               10 sf-lince         PIC  s9(9)v99.
+               10 sf-gg-dilazione  PIC  9(5).
+               10 sf-saldo-scaduto PIC  s9(9)v99.
+               10 sf-saldo-scadenza            PIC  s9(9)v99.
+               10 sf-effetti-rischio           PIC  s9(9)v99.
+               10 sf-ordini-in-essere          PIC  s9(9)v99.
+               10 sf-num           PIC  s9(9)v99.
+               10 sf-den           PIC  s9(9)v99.
+               10 sf-fatturato     PIC  s9(9)v99.
+               10 sf-perce         PIC  s9(5)v999.
+               10 sf-fido-max      PIC  s9(9)v99.
+               10 sf-saldo-scheda  PIC  s9(9)v99.
+               10 sf-scoperto-tot  PIC  s9(9)v99.
+               10 sf-scaduto-al    PIC  x(50).
+               10 sf-scadenze      PIC  x(50).
+               10 sf-perce-max     PIC  x(50).
+               10 sf-fat-per       PIC  x(50).
+               10 sf-verifica-1    PIC  9.
+                   88 sf-verifica-1-ok VALUE IS 1    WHEN SET TO FALSE  
+           0. 
+               10 sf-verifica-2    PIC  9.
+                   88 sf-verifica-2-ok VALUE IS 1    WHEN SET TO FALSE  
+           0. 
+               10 sf-verifica-3    PIC  9.
+                   88 sf-verifica-3-ok VALUE IS 1    WHEN SET TO FALSE  
+           0. 
+           05 sf-cod-cli       PIC  9(5).
+           05 sf-vuoto         PIC  x(495).

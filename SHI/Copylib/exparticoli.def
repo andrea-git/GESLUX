@@ -1,0 +1,102 @@
+       77  cont                          pic 9(5).
+       77  idx                           pic 9(5).
+       77  cont-ean                      pic 9.
+       77  como-aliquota                 pic 9(4).
+       77  exp-prg-peso-utf              PIC  9(5)v9(3).
+       77  exp-prg-peso-non-utf          PIC  9(5)v9(3).
+       77  num-rec-prodener              pic 9(10).
+       77  num-rec-ean                   pic 9(10).
+
+
+       01  tabella-imballi.
+           05 imballo-articolo           pic x(3) occurs 200.
+
+       01  tabella-prodener.
+           05 prodener-el                pic x(100) occurs 10000.
+
+
+       01  exp-art-det-rec.
+           05 HARTDET_ART_COM_CODICE     pic x(15).
+           05 HARTDET_ART_CODICE         pic x(25).
+           05 HARTDET_QTAEAN             pic 9(7)v9(3).
+           05 HARTDET_CODICE             pic x(25).
+           05 HARTDET_UOM_CODICE         pic x(2 ).
+
+       01  exp-art-rec.
+           05 HART_COM_CODICE            pic x(15).   
+           05 HART_CODICE                pic x(25).   
+           05 HART_ESTENSIONE            pic x(10).   
+           05 HART_DESCRIZIONE           pic x(60).   
+           05 HART_CLASSI                pic x(10).   
+           05 HART_PZCF                  pic 9(11)v9(3).   
+           05 HART_CFCA                  pic 9(11)v9(3).   
+           05 HART_CAUDC                 pic 9(11)v9(3).   
+           05 HART_CNT_CODICE_UDC        pic x(10).   
+           05 HART_CNT_CODICE_UDS        pic x(10).   
+           05 HART_SEQ_TRASF_IN          pic x(80).   
+           05 HART_SEQ_TRASF_OUT         pic x(80).   
+           05 HART_PZ_LARGHEZZA          pic 9(11)v9(3).
+           05 HART_PZ_LUNGHEZZA          pic 9(13)v9(3).   
+           05 HART_PZ_ALTEZZA            pic 9(11)v9(3).   
+           05 HART_PZ_PESO               pic 9(11)v9(3).   
+           05 HART_CF_LARGHEZZA          pic 9(11)v9(3).  
+           05 HART_CF_LUNGHEZZA          pic 9(13)v9(3).  
+           05 HART_CF_ALTEZZA            pic 9(11)v9(3).  
+           05 HART_CF_PESO               pic 9(11)v9(3).  
+           05 HART_SEQ_ELAB              pic x(80).   
+           05 HART_VPK_NUMERO            pic 9(5).    
+           05 HART_UDF1                  pic x(200).  
+           05 HART_UDF2                  pic x(200).  
+           05 HART_UDF3                  pic x(200).  
+           05 HART_UDF4                  pic x(200).  
+           05 HART_UDF5                  pic x(200).  
+           05 HART_UDF6                  pic x(200).  
+           05 HART_UDF7                  pic x(200).  
+           05 HART_UDF8                  pic x(200).  
+           05 HART_UDF9                  pic x(200).  
+           05 HART_UDF10                 pic x(200).  
+           05 HART_GEST_LOTTO            pic x(1).  
+           05 HART_GEST_DSCADENZA        pic x(1).  
+           05 HART_GEST_PESO             pic x(1).  
+           05 HART_UOM_CODICE_UNITA      pic x(10).  
+           05 HART_UOM_CODICE_PESO       pic x(10).  
+           05 HART_FAM_CODICE            pic x(10).   
+           05 HART_GEST_MATRICOLA        pic x(1).    
+           05 HART_GIORNI_VITA           pic 9(3).    
+           05 HART_GIORNI_PRE_DSCADENZA  pic 9(3).    
+           05 HART_PESO_TOLLERANZA       pic 9(2).    
+           05 HART_CALCVOL_PZ            pic x(1).    
+           05 HART_CALCVOL_CF            pic x(1).    
+           05 HART_CALCVOL_POSIZ         pic x(1).    
+           05 HART_CTRL_QUALITA          pic x(1).    
+           05 HART_ORE_QUARANTENA        pic 9(3).    
+           05 HART_ARTDET_CODICE         pic x(25).   
+           05 HART_TIPOIVA               pic x(4).   
+           05 HART_B_ANIDRI-PRE          pic 9.              
+           05 HART_B_ANIDRI              pic 9(15)v9(3).
+           05 HART_D_ANIDRI-PRE          pic 9.              
+           05 HART_D_ANIDRI              pic 9(15)v9(3).
+           05 HART_B_IDRATI-pre          pic 9.
+           05 HART_B_IDRATI              pic 9(15)v9(3).
+           05 HART_D_IDRATI-pre          pic 9.
+           05 HART_D_IDRATI              pic 9(15)v9(3).
+           05 HART_ADR                   pic x(15).   
+           05 HART_PZ_PESO_NETTO         pic 9(11)v9(3).   
+           05 HART_UOM_ALTERNATIVA       pic x(10).   
+           05 HART_UOM_CONV_NUMERATORE   pic 9(5).   
+           05 HART_UOM_CONV_DENOMINATORE pic 9(5).   
+           05 HART_UOM_VOLUME            pic x(10).   
+           05 HART_FLASHP                pic 9(11)v9(3).
+           05 HART_IMBALLO               pic x(1).   
+           05 HART_PERC_UTIF             pic 9(5)v9(3).   
+           05 HART_QTA_TIMBRA_EST        pic 9(6).    
+
+       01  exp-pen-rec.
+           05 exp-pen-codice             PIC  x(10).
+           05 exp-pen-descrizione        PIC  x(50).
+           05 exp-pen-cpa                PIC  x(4).
+           05 exp-pen-nc                 PIC  9(8).
+           05 exp-pen-taric              PIC  9(2).
+           05 exp-pen-dac                PIC  x(4).
+
+

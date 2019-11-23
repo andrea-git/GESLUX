@@ -1,0 +1,38 @@
+      *(( XFD FILE = tmp-redi ))
+       FD  tmp-redi.
+       01 tmp-redi-rec.
+           05 tmp-redi-chiave.
+               10 tmp-redi-tedi-chiave.
+                   15 tmp-redi-anno    PIC  9(4).
+                   15 tmp-redi-mese    PIC  9(2).
+               10 tmp-redi-tipo-movim          PIC  x.
+                   88 tmp-redi-carico VALUE IS "C". 
+                   88 tmp-redi-scarico VALUE IS "S". 
+               10 tmp-redi-chiave-mov.
+                   15 tmp-redi-mov-anno            PIC  9(4).
+                   15 tmp-redi-num-reg PIC  9(8).
+                   15 tmp-redi-mov-prog-reg        PIC  9(7).
+               10 tmp-redi-codi-prodotto.
+                   15 tmp-redi-cpa     PIC  x(4).
+                   15 tmp-redi-nc      PIC  9(8).
+                   15 tmp-redi-taric   PIC  9(2).
+                   15 tmp-redi-dac     PIC  x(4).
+               10 tmp-redi-tipo-stoc           PIC  x.
+               10 tmp-redi-tmo-chiave.
+                   15 tmp-redi-tmo-anno            PIC  9(4).
+                   15 tmp-redi-tmo-numero          PIC  9(8).
+               10 tmp-redi-data-movimento      PIC  9(8).
+               10 tmp-redi-cau-movim           PIC  x(3).
+               10 tmp-redi-pos-fis PIC  x(3).
+               10 temp-redi-prog   PIC  9.
+           05 tmp-redi-dati.
+               10 tmp-redi-qta-kg  PIC  9(11)V9(3).
+               10 tmp-redi-mov-num-doc         PIC  x(21).
+               10 tmp-redi-mod-dt-doc          PIC  9(8).
+               10 tmp-redi-das     PIC  x(21).
+               10 tmp-redi-naz     PIC  x(2).
+               10 tmp-redi-dest    PIC  x(30).
+               10 tmp-redi-imp-consumo         PIC  9(9)V9(2).
+               10 tmp-redi-ragsoc  PIC  x(40).
+               10 tmp-redi-tipo-doc            PIC  x(3).
+               10 tmp-redi-suf-reg PIC  x(3).

@@ -1,0 +1,7 @@
+      *(( XFD FILE = tmp-fatclifor ))
+       FD  tmp-fatclifor.
+       01 tmfc-rec.
+           05 tmfc-chiave.
+               10 tmfc-anno        PIC  9(4).
+               10 tmfc-mese        PIC  9(2).
+           05 tmfc-importo     PIC  s9(12)v99.

@@ -1,0 +1,520 @@
+#----------- VARIABILI AD USO INTERNO --------#
+CODE_PREFIX .\Object\;
+
+#Il primo percorso deve indicare i files Optimate, gli altri i files SSI.
+#Di default TBL e DOC si trovano nella root, mentre gli altri sono in arc-ditta.
+#Il path di arc-ditta non dev'essere terminato con "\" e dev'essere assoluto.
+FILE_PREFIX ..\archivi; C:\g2zsrv\arc; C:\g2zsrv\arc\arc001
+
+F10_IS_MENU OFF
+IO_CREATES 1
+KEYBOARD CHECK-NUMBERS=NO
+KEYSTROKE edit=next terminate=13 ^M
+KEYSTROKE Exception=1234         ^F
+KEYSTROKE Exception=4321         ^C
+KEYSTROKE Exception=5678         ^E
+MAX_FILES 256
+#Indica il valore dei file tenuti in lock (VALORE MASSIMO)
+MAX_LOCKS 8191
+PRINTER -P SPOOLER-DIRECT
+STRIP_TRAILING_SPACES 1
+#Indica la versione dei file Vision creati
+V_VERSION 4
+LOCKS_PER_FILE 5000
+
+#La seguente variabile indica il tempo (espresso in secondi) in cui il server runtime controlla 
+#l'attività del client runtime e la sospende in caso di inattività
+TC_CHECK_ALIVE_INTERVAL 3600
+TC_SERVER_TIMEOUT 3600
+
+#------------ DA VALORIZZARE PRIMA DELL'INSTALLAZIONE ------------------#
+#Indica o meno la presenza di un assortimento cliente per gli articoli (S = SI; N = NO)
+ASSORTIMENTO N
+
+#Variabile per la generazione del file in Excel (separatore di colonna)
+SEPARATORE ;
+
+#Variabile per l'utilizzo della versione dell'evasione (1 = VECCHIO, 2 = NUOVO)
+VERSIONE_EVASIONE 2
+
+#Stampante che verrà selezionata di default dai pgm. per l'anteprima
+STAMPANTE_ANTEPRIMA PDFCreator
+
+#Stampante che verrà selezionata di default dai pgm. per la stampa diretta
+STAMPANTE_DIRETTA_XP Epson
+STAMPANTE_DIRETTA_V  Epson
+STAMPANTE_DIRETTA_7  Epson
+
+#Stampante predefinita utilizzata dal pgm di stampa brogliaccio
+STAMPANTE_STBROG_XP Epson_XP
+STAMPANTE_STBROG_V  Epson_V
+STAMPANTE_STBROG_7  doPDF 8
+
+#Stampante predefinita utilizzata dal pgm di stampa bolle ALTRO
+STAMPANTE_STBOLLE Epson
+#Stampante predefinita utilizzata dal pgm di stampa bolle GDO
+STAMPANTE_STBOLLE_GDO_XP EpsonGDO
+STAMPANTE_STBOLLE_GDO_V  EpsonGDO
+STAMPANTE_STBOLLE_GDO_7  EpsonGDO
+
+#Stampante predefinita utilizzata dal pgm di stampa bolle
+STAMPANTE_REG_UTF_XP Epson
+STAMPANTE_REG_UTF_V  Epson
+STAMPANTE_REG_UTF_7  Epson
+
+#Percorsi di default per le aperture delle OPENSAVEBOX per le note e per le immagini
+PATH_TXT F:\Lubex\archivi\pass
+PATH_IMMAGINI .\Resource
+
+DEVONO TERMINARE CON "\"
+#Percorso dei files temporanei e di stampa (i CSV rimarrano presenti uno per utente)
+PATH_ST  F:\Lubex\tmp\                                                              
+#Percorso dei files di log
+SCHEDULER_ADDRESSES andrea.ae@live.it 
+SCHEDULER_PATH_LOG F:\Lubex\GESLUX\scheduler\
+#Percorso che indirizza Excel per prelevare i files (per la versione Thin dev'essere \\server...)
+PATH_TO_EXCEL F:\Lubex\tmp\
+PATH_CONTAB F:\Lubex\GESLUX\contab\
+PATH_POSTEL C:\host\
+
+#Percorso in cui trovo l'utility VUTIL32
+PATH_VUTIL "C:\Program Files (x86)\Micro Focus\Acucbl912\AcuGT\bin\vutil32"
+
+PATH_BITMAP_ST .\Resource\bitmap-stampa\logo-st.jpg
+PATH_SPLASH F:\Lubex\GESLUX\Resource\splash.jpg
+
+#Percordo in cui trovo i files CSV da importare in files VISION 4
+PATH_CSV F:\Lubex\tmp\
+
+#NUMERO DI RECORD OGNI QUANTO FARE LA DISPLAY (Serve per elaborazioni Thin Client)
+NUM_REC_THIN_CLIENT 1000
+
+# per abilitare "S" "SI" "Y" "YES", tutto il resto disabiliti la gestione
+GESTIONE_SESSIONI S
+
+#Valori per le stampe laser
+NUM-MAX-RIGHE 62
+NUM-MAX-RIGHE-ORIZ 42           
+
+INVIO_SOL_PATH_PDF F:\Lubex\tmp\bolle\
+INVIO_SOL_CC andrea.ae@live.it;a.eventi@goodoworks.it
+
+#Percorsi per i programmi da richiamare dal menu
+PR-WORD C:\Programmi\Microsoft Office\OFFICE11\WINWORD.exe
+
+PR-EXCEL_3  C:\Programmi\Microsoft Office\OFFICE11\excel.exe
+PR-EXCEL_7  C:\Programmi\OpenOffice.org 2.0\program\scalc.exe
+PR-EXCEL_10 C:\Programmi\OpenOffice.org 2.0\program\scalc.exe
+PR-NOTEP C:\windows\notepad.exe
+
+#Percorso relativo per i processi attivi
+PATH_KILL F:\Lubex\GESLUX\comandi\
+
+#Comanda il controllo sullo scostamento del prezzo (variazione marca) in gestione ordini al momento della
+#digitazione del prezzo "Prezzo non nei limiti previsti. Proseguire comunque?" ('S' controlla, altro no)
+CONTROLLO_SCOSTAMENTO
+
+#Utilizzata dal programma "aggmese" per emettere (S) o meno la richiesta 
+#sull'esecuzione di ogni aggiornamento o di fare tutto in automatico.
+#Serve per le varie fasi di test sulle statistiche senza dover per forza
+#eseguire gli altri aggiornamenti
+SW_RICHIESTA S
+#Per non emettere (N) nessun messaggio durante l'evasione clienti
+SW_MESS_EVASIONE N
+
+#File da utilizzare per le transazioni senza i quali non funzionano. Verrà craeto in GESLUX
+LOG-FILE F:\Lubex\GESLUX\transazioni\files.transaction.log
+LOG-DIR  F:\Lubex\GESLUX\transazioni\
+
+#PATH dei file tmp da client (\\server)
+PATH_ST_CLIENT F:\Lubex\tmp\
+
+#Percorso COMPLETO (su server) in cui risiederà l'eseguibile per il recupero prezzi ordini tradizionali
+PATH_RECUPERO F:\Lubex\GESLUX\RecuperoPrezzi\rec-prezzi
+#Percorso COMPLETO (su server) dell'eseguibile
+RECUPERO_EXE F:\Lubex\GESLUX\RecuperoPrezzi\RecuperaPrezzi.exe
+
+                                                          
+#                             #---------- STAMPA DELLA BOLLA ----------#
+#Questo valore viene sommato allo scarrellamento finale. serve per posizionare correttamente il modulo
+#pronto a filo sul taglio della carta
+RIGHE_PAGE_FEED
+
+#Pilota il numero di righe vuote iniziali in base alla stampante impostata.
+#Se 'S' significa Compuprint (stampante piano terra), altrimenti Epson DFX (primo piano).
+#Le righe iniziali sono poi impostate in maniera fissa all'interno di stbolle in questo modo
+#78 RigheVuoteIntestazioneCompuprint  value 18.
+#78 RigheVuoteIntestazioneEpsonDFX    value 9.
+STAMPANTE_BOLLE_DEFAULT S
+
+#SE impsotato (S) significa che a fine fattura/NC voglio indicare i totalizzatori COU/COBAT/PIOMBO
+VISUALIZZA_TOTALI S
+
+#
+PATH_CSV_LISTINI F:\Lubex\IMPORT EXPORT\
+
+#                             #---------- INVIO MAIL ----------#
+#PARTE PER INVIO NOTTURNO
+#Path assoulto da server in cui si trova il programma InvioMail.exe
+PATH_INVIO_MAIL F:\Lubex\GESLUX\InvioMail\InvioMail.exe
+#Path assoulto da server in cui si trova il file di ini di comunicazione con l'exe
+PATH_INI_MAIL   F:\Lubex\GESLUX\InvioMail\InvioMail.ini
+#Path assoluto in cui fare i backup a fine elaborazione
+PATH_BACKUP     F:\Lubex\GESLUX\InvioMail\backup\
+#Path assoluto del file di log
+PATH_LOG_SOURCE F:\Lubex\GESLUX\InvioMail\InvioMail.log
+
+#Indirizzi a cui verrà spedita la mail notturna(vanno indicati di seguito separati da ";")
+NIGHT_ADDRESSES a.eventi@goodworks.it;
+
+#Indirizzi a cui verrà spedita la mail delle promozioni
+PROMO_ADDRESSES a.eventi@goodworks.it;
+
+#Server STMP per invii mail (senza autenticazione)
+SMTP_SERVER smtp.fastwebnet.it
+#SMTP_SERVER smtp.libero.it
+
+PROVA_MAIL S
+
+#                              #-----------LAB-----------#
+
+#Stampante per la fuoriuscita automatica del volantino
+STAMPANTE_PROMO_XP doPDF 8
+STAMPANTE_PROMO_V  doPDF 8
+STAMPANTE_PROMO_7  doPDF 8
+
+
+#                              #--RICALCOLO NOTTUNO PROGRESSIVI--#
+#Indirizzi a cui verrà spedita la mail notturna del ricalcolo(vanno indicati di seguito separati da ";")
+CALMAR_ADDRESSES gds@lusdfbex.it
+#Path COMPLETO del file di log
+CALMAR_LOG F:\Lubex\tmp\calmar.log
+#Path COMPLETO del file di log da inviare (dev'essere copiato)
+CALMAR_LOG_INVIO F:\Lubex\tmp\calmar-attach.log
+#Path COMPLETO del file con i recuperi
+CALMAR_RECUPERO F:\Lubex\tmp\recupero-prezzi.txt
+                                    
+#                              #--ARCHIVIAZIONE DIGITALE PDF e A4 SCONTRINO MODIFICA ORDINI--#
+INVIO_SOL_SUBJECT prova subject
+INVIO_SOL_BODY prova body
+
+#Per la stampa manuale dalla modifica ordine (F7) la stampante verrà scelta da elenco
+#Stampante per l'archiviazione dei pdf notifica
+PATH_PDF_NOTIFICA F:\Lubex\GESLUX\Archiviazione_PDF\
+STAMPANTE_DIRETTA_ORDINI_PDF Bullzip PDF Printer
+
+STAMPANTE_DIRETTA_ORDINI_FORN_XP doPDF 8
+STAMPANTE_DIRETTA_ORDINI_FORN_V  doPDF 8
+STAMPANTE_DIRETTA_ORDINI_FORN_7  doPDF 8
+
+#Stampante diretta dopo l'inserimento degll'ordine (scontrino e modifica prezzo)
+STAMPANTE_DIRETTA_ORDINI_INS_XP doPDF 8
+STAMPANTE_DIRETTA_ORDINI_INS_V  doPDF 8
+STAMPANTE_DIRETTA_ORDINI_INS_7  doPDF 8
+
+#Stampante diretta dopo le modifiche di quantità
+STAMPANTE_DIRETTA_ORDINI_MOD_XP doPDF 8
+STAMPANTE_DIRETTA_ORDINI_MOD_V  doPDF 8
+STAMPANTE_DIRETTA_ORDINI_MOD_7  doPDF 8
+
+#Stampante diretta dopo l'inserimento di un ordine tradizionale
+STAMPANTE_DIRETTA_ORDINI_TRAD_XP doPDF 8
+STAMPANTE_DIRETTA_ORDINI_TRAD_V  doPDF 8
+STAMPANTE_DIRETTA_ORDINI_TRAD_7  doPDF 8
+
+PATH_PDF_ORDFORN F:\Lubex\tmp\ordforn\
+
+#                             #---------- CREA PDF ----------#
+#Path assoulto da server in cui si trova il programma CreaPdf.exe
+PATH_EXE_PDF F:\Lubex\GESLUX\CreaPDF\CreaPDF.exe 
+
+#       #---------- MAIL RICALCOLO NOTTURNO GIACENZE DINAMICHE ----------#
+#Path assoulto da server in cui si trova il file di log
+RICALDIN_LOG F:\Lubex\GESLUX\ricaldin.log
+#Path assoulto da server del nome della copia del file di log da inviare
+RICALDIN_LOG_INVIO F:\Lubex\GESLUX\ricaldin2.log
+#Indirizzo a cui mandare la mail
+RICALDIN_ADDRESSES gds@lubex.it;
+
+#       #---------- MAIL CONTROLLO NOTTURNO  QTA E PROGRESSIVI CHECK-QP----------#
+#Path assoulto da server in cui si trova il file di log
+CHECK_QP_LOG F:\Lubex\GESLUX\check-qp.log
+#Path assoulto da server del nome della copia del file di log da inviare
+CHECK_QP_LOG_INVIO F:\Lubex\GESLUX\check-qp2.log
+#Indirizzo a cui mandare la mail
+CHECK_QP_ADDRESSES andrea.ae@libero.it;
+
+#       #---------- MAIL RICALCOLO NOTTURNO ORDFOR2 ----------#
+#Path assoulto da server in cui si trova il file di log
+RICALFOR_LOG F:\Lubex\GESLUX\ricalfor.log
+#Path assoulto da server del nome della copia del file di log da inviare
+RICALFOR_LOG_INVIO F:\Lubex\GESLUX\ricalfor2.log
+#Indirizzo a cui mandare la mail
+RICALFOR_ADDRESSES a.eventi@goodworks.it;
+
+#       #---------- COPIA ARCHIVI PRIMA DEL CONSOLIDAMENTO ----------#
+#Path assoulto da server in cui si trova l'eseguibile rar
+PATH_RAR C:\Program Files\WinRar\
+#Path assoulto da server della cartella da zippare
+PATH_ARCHIVI F:\Lubex\archivi\
+#Percorso assoulto da server nel quale creare l'archivio
+PATH_TO_ZIP F:\Lubex\Rar\
+#Percorso assoulto da server dove WinRar crea il file di log (solo se ci sono errori)
+PATH_TO_LOG C:\Program Files\WinRar\rar.log
+#Percorso assoulto da server dove si trovano gli oggetti
+PATH_OBJECT F:\Lubex\GESLUX\Object\
+
+#       #---------- DEMONE ESITI DI CONSEGNA ----------#
+#utente delle modifiche dei file del demone
+USER-IMPORT-ESITI
+#indirizzo a cui spedire la mail in caso di errori di importazione
+IMP_ESITI_ADDRESSES 
+
+#    #-------- BATCH BANNER DI CONSEGNA ---------#
+BANNER_BOL_ADDRESSES: wvetrugno@lubex.it
+BANNER_BOL_LOG: F:\Lubex\GESLUX\banner.log
+
+#    #-------- INVIO ORDINI FORNITORI ---------#
+#Indirizzi LUBEX a cui verrà spedito in CC la stampa dell'ordine fornitore durante l'invio vai mail (vanno indicati di seguito separati da ";")
+ORDFORN_ADDRESSES_CC andrea.ae@libero.it;
+
+
+#    #-------- STAMPA MASTER DOPO DALVATAGGIO ---------#
+STAMPANTE_MASTER_GDO_XP doPDF 8
+STAMPANTE_MASTER_GDO_V  doPDF 8
+STAMPANTE_MASTER_GDO_7  doPDF 8
+
+STAMPANTE_MASTER_TRAD_XP doPDF 8
+STAMPANTE_MASTER_TRAD_V  doPDF 8
+STAMPANTE_MASTER_TRAD_7  doPDF 8
+
+
+# VALORIZZANDOLA A "S" ANCHE I MASTER GDO UTILIZZANO LE EVASIONI AUTOMATICHE
+# E DI CONSEGUENZA INIZIANO A VALORIZZARE L'IMPEGNATO MASTER RELATIVO
+GDO_IN_USO S
+
+# VALORIZZANDOLA A "S" BLOCCA LE EVASIONI CLIENTI CON UN PESO SUPERIORE A 24000
+CONTROLLA_24000 S
+
+
+#    #-------- MAIL CHIUSUSRA MASTER ---------#
+#dati per mail chiusura ordine master
+#Indirizzi LUBEX a cui verrà spedito in CC la stampa dell'ordine fornitore durante l'invio vai mail (vanno indicati di seguito separati da ";")
+CHIU_ORD_MASTER_ADDRESSES_CC andrea.ae@libero.it;
+
+#Indirizzo LUBEX da cui parte la mail, se non specificato verrà preso info@lubex.it
+CHIU_ORD_MASTER_ADDRESSES_FROM info@lubex.it
+
+#oggetto della mail per l'invio mail degli ordini fonritori
+CHIU_ORD_MASTER_SUBJECT CHIUSURA ORDINE
+
+#corpo della mail per l'invio mail degli ordini fonritori. 
+#Durante l'invio $1 verrà sostituito con il numero d'ordine Lubex, $2 verrà sostituito con l'anno
+#$3 con il numero d'ordine del cliente, $4 con la data dell'ordine
+CHIU_ORD_MASTER_BODY ORDINE MASTER:Si comunica la chiusura dell'ordine $1/$2 vostro ordine $3 del $4
+
+
+#    #-------- MAIL SOSTITUZIONE ARTICOLI IN ANAGRAFICA ---------#
+#dati per mail cambiamento catena articoli
+#Indirizzi LUBEX a cui verrà spedito in CC la stampa dell'ordine fornitore durante l'invio vai mail (vanno indicati di seguito separati da ";")
+CATART_ADDRESSES_CC a.eventi@goodworks.it;
+
+#Indirizzo LUBEX da cui parte la mail, se non specificato verrà preso info@lubex.it
+CATART_ADDRESSES_FROM info@lubex.it
+
+#oggetto della mail per l'invio mail degli ordini fonritori
+CATART_SUBJECT Catena articoli
+
+#corpo della mail per l'invio mail degli ordini fonritori. 
+#Durante l'invio $1 verrà sostituito con i dati del penultimo articolo della catena, $2 verrà sostituito con i dati dell'ultimo articolo
+#i dati degli articoli verranno sostituiti andando a capo
+CATART_MASTER_BODY ORDINE L'articolo:$1verrà sostituito con l'articolo:$2Parte finale della mail
+
+#Valorizzare con: 1 per inviare mail al commerciale, 2 per cliente e commerciale in CC, altro per non inviare nulla
+SOST_ARTICOLI 2
+
+
+#-----------------------------------------------
+#sezione SHI
+
+SHI_PATH_EXPVETTORI   F:\Lubex\GESLUX\SHI\tmp\LBXVETTORI
+SHI_PATH_EXPFORNITORI F:\Lubex\GESLUX\SHI\tmp\LBXFORNITORI
+SHI_PATH_EXPARTICOLI  F:\Lubex\GESLUX\SHI\tmp\HSTRX_ANAART
+SHI_PATH_EXPEAN       F:\Lubex\GESLUX\SHI\tmp\HSTRX_ANAARTDET
+SHI_PATH_EXPPRODENER  F:\Lubex\GESLUX\SHI\tmp\LBXPRODENER
+
+SHI_PATH_EXPTORDINI F:\Lubex\GESLUX\SHI\tmp\HSTRX_ORDUSCTES
+SHI_PATH_EXPRORDINI F:\Lubex\GESLUX\SHI\tmp\HSTRX_ORDUSCRIG
+SHI_PATH_EXPNOTE    F:\Lubex\GESLUX\SHI\tmp\HSTRX_ORDUSCNOT
+
+SHI_MAGAZZINO SHI
+
+
+#-------------- EVASIONE ISOLATA -------------------------#
+
+PATH_ISOLATA F:\Lubex\GESLUX\Evasione\pass
+PATH_LOG_ISOLATA F:\Lubex\GESLUX\Evasione\isolata.log
+# dati per l'invio della mail di reset password
+MAIL_ISOLATA_SUBJECT Evasione Clienti Isolata - cancellazione sessioni
+MAIL_ISOLATA_BODY Cancellazione sessioni eseguita, attivare la nuova password.
+MAIL_ISOLATA_ADDRESSES a.eventi@goodworks.it;wvetrugno@lubex.it;l.quartieri@goodworks.it;
+
+STAMPANTE_LUCA_XP doPDF 8
+STAMPANTE_LUCA_V doPDF 8
+STAMPANTE_LUCA_7 doPDF 8
+
+STAMPANTE_MASSIMO_XP doPDF 8
+STAMPANTE_MASSIMO_V doPDF 8
+STAMPANTE_MASSIMO_7 doPDF 8
+
+STAMPANTE_ALTRO_XP doPDF 8
+STAMPANTE_ALTRO_V doPDF 8
+STAMPANTE_ALTRO_7 doPDF 8
+
+#Per aggiungere le promo fittizie
+GDO_FITTIZIA MASTE
+
+#PATH_POD \\Server\file comuni\LOGISTICA\CORRIERI LUBEX POD\POD SCAN\
+PATH_POD F:\Lubex\GESLUX\POD\EXP\
+
+#SE "S" ESEGUE IL BATCH DI RICALCOLO IMPEGNATO SUGLI ARTICOLI
+ESEGUI_RICALIMP_ART S
+         
+CONFERMA_SUBJECT CONFERMA ORDINE
+CONFERMA_CC 
+CONFERMA_FROM info@lubex.it
+CONFERMA_PATH_PDF F:\Lubex\tmp\conferme\
+
+CONFERMA_EVASIONE_SUBJECT PROFORMA PER ANTICIPATO
+CONFERMA_EVASIONE_CC 
+CONFERMA_EVASIONE_FROM info@lubex.it
+CONFERMA_EVASIONE_PATH_PDF F:\Lubex\tmp\conferme\
+
+CONFERMA_STAMPANTE_DIRETTA Bullzip PDF Printer
+               
+COMUTFS_SUBJECT COMUNICAZIONE AGENZIA DELLE DOGANE DI MILANO 3 SCARICO
+COMUTFS_BODY SCARICO
+COMUTFS_ADDRESS andrea.ae@live.it
+COMUTFS_ADDRESS_CC a.eventi@goodworks.it
+
+COMUTFC_SUBJECT COMUNICAZIONE AGENZIA DELLE DOGANE DI MILANO 3 CARICO
+COMUTFC_BODY CARICO
+COMUTFC_ADDRESS andrea.ae@live.it
+COMUTFC_ADDRESS_CC a.eventi@goodworks.it                               
+STAMPANTE_UTF Bullzip PDF Printer                                  
+COMUTF_PATH F:\Lubex\tmp\utf\
+
+#SETTAGGI PDF AUTOMATICI
+PATH_INI_7 C:\ProgramData\PDF Writer\Bullzip PDF Printer\
+#PATH_INI_7 C:\ProgramData\PDF Writer\PDF Writer - bioPDF\
+PATH_BULLZIP F:\Lubex\tmp\bullzip\
+
+CODICE_SICUREZZA_BATTERIE UN 2794
+
+#       #---------- MAIL SITUAZIONE FINANZIARIA ----------#
+#    #-------- INVIO NOTTURNO SITUAZIONE FINANZIARIA ---------#
+MAIL_FIDO_ADDRESSES wvetrugno@lubex.it; a.eventi@goodworks.it
+# Stampante da utilizzare
+STAMPANTE_SITFIN_PDF Bullzip PDF Printer
+
+
+#       #---------- STORICIZZAZIONE ----------#
+PATH_ARCHIVI F:\Lubex\archivi\
+PATH_ARCHIVI_STO F:\Lubex\archivi-STO\
+
+
+#       #---------- SCHEDULER----------#
+SCHEDULER_ADDRESSES a.eventi@goodworks.it; wvetrugno@lubex.it
+SCHEDULER_PATH_LOG F:\Lubex\GESLUX\scheduler\
+
+
+
+#       #---------- MAIL TAGLI ----------#
+MAIL_TAGLI_ADDRESSES andrea.ae@live.it
+MAIL_TAGLI_ADDRESSES_CC
+MAIL_TAGLI_SUBJECT
+MAIL_TAGLI_BODY MAIL-TAGLI
+
+#Delimitare con ";" (anche singolo), vengono esclusi dal calcolo dei colli
+ART_NO_COLLI 7924;9834;
+
+
+#       #---------- EDI ----------#
+#IMPORT ORDINI
+EDI_IMPORD_PATH F:\Lubex\GESLUX\EDI\test\import\
+EDI_IMPORD_PATH_BACKUP F:\Lubex\GESLUX\EDI\test\backup\
+
+# EXPORT FATTURE E NOTE CREDITO
+EDI_FATT_PATH F:\Lubex\GESLUX\EDI\test\
+EDI_FATT_PATH_BACKUP F:Lubex\GESLUX\EDI\test\backup\
+# INVIO AUTOMATICO EDI DOCUMENTI GENERICI
+EDI_FATT_PATH_PDF F:\Lubex\tmp\edi\
+EDI_FATT_STAMPANTE_DIRETTA Bullzip PDF Printer
+EDI_FATT_ADDRESS andrea.ae@live.it
+EDI_FATT_ADDRESS_CC wvetrugno@lubex.it
+#EDI_ADDRESS scartidocumentiedi@pec.carrefour.it
+
+# EXPORT BOLLE
+#Indirizzo a cui inviare l'esito dell'esportazione bolle EDI
+EDI_BOLLE_ADDRESS
+EDI_BOLLE_PATH F:\Lubex\GESLUX\EDI\test\
+EDI_BOLLE_PATH_BACKUP F:\Lubex\GESLUX\EDI\test\backup\
+
+
+
+#       #---------- EXPORT FTP SITUACONT----------#
+PATH_INI_FTP F:\Lubex\GESLUX\InvioFTP\InvioFTP\bin\Release\ini\InvioFTP.ini
+PATH_INVIO_FTP F:\Lubex\GESLUX\InvioFTP\InvioFTP\bin\Release\InvioFTP.exe
+#INVIO_FTP_ADDRESSES andrea.ae@live.it
+SITUACONT_PATH_FILESEQ F:\Lubex\tmp\sc\
+SITUACONT_PATH_BACKUP F:\lubex\tmp\sc\b\
+
+#solo address, senza "/" finale, senza cartella remota
+SITUACONT_FTP_SERVER_1 online1.lince.it
+SITUACONT_FTP_SERVER_2 itradeftp.crif.com
+
+# 21 FTP, 990 SFTP     
+SITUACONT_FTP_PORT_1 21
+SITUACONT_FTP_PORT_2 990
+
+SITUACONT_FTP_USER_1 lubex
+SITUACONT_FTP_USER_2 878323939
+                    
+SITUACONT_FTP_PASSWORD_1 lbxp2136pay
+SITUACONT_FTP_PASSWORD_2 X52jQm4WbGCRHaQSyXR2
+
+#Directory remota in cui fare la copia (se vuota valorizzare con "/", altrimenti "/VALORE/"
+SITUACONT_FTP_REMOTE_DIR_1 /incoming/
+SITUACONT_FTP_REMOTE_DIR_2 /
+
+#Fingerpint(SHA-1)          
+SITUACONT_CERTIFICATE_1 c8:75:37:c8:5d:d2:50:31:86:3b:5f:78:d3:97:f4:5a:0e:7f:a9:ba
+SITUACONT_CERTIFICATE_2 af:ab:e4:30:31:51:56:47:7d:69:86:9c:eb:38:bb:98:9d:43:03:02
+
+
+#Indica che tipo di calcolo (N = NUOVO, tutti gli altri valori = CLASSICO)
+CALCOLO_PIOMBO N
+
+PATH_FIDO_IMPORT F:\Lubex\tmp\fido\
+PATH_FIDO_BACKUP F:\Lubex\tmp\fido\Backup\
+
+#----BROGLIACCIO AUTOMATICO ----#
+BROGM_AUTO_STAMPANTE PDF Writer - bioPDF
+BROGM_AUTO_PATH_PDF F:\Lubex\tmp\brogliaccio\
+#BROGM_AUTO_ADDRESS andrea.ae@live.it
+BROGM_AUTO_CC 
+                          
+#---- STATO PAGAMENTO FATTURE -----#
+#percorso dove depositare il file 
+PATH_FATTPAG F:\Lubex\tmp\
+
+#---- PATH STAMPA PDF -----#
+#percorso dove depositare il file 
+PATH_F_PDF F:\Lubex\tmp\f\
+PATH_NC_PDF F:\Lubex\tmp\nc\
+
+#Percorso in cui risiedono le bmp delle fatture/note credito
+PATH_BMP_FATTURE F:\LUbex\GESLUX\Resource\STAMPA\
+
+#Percorso del file delle qta da aggiungere al programma ordini
+PATH_VENDUTI F:\Lubex\tmp\venduti.csv

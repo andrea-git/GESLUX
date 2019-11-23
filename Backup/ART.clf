@@ -1,0 +1,4379 @@
+; CaseMaker Totem Layout Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[DATALAYOUT_CONTENT]
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E1B17165321-893-262847929
+[DSNENTITY_]
+[CStoAcucobolFileDefinition_]
+m_nType=1
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+m_strPrefix=ART
+{{@FD_m_strDescription
+-----------------------------------------------------------------
+ articoli
+-----------------------------------------------------------------
+
+ art-prezzo-carico e art-prezzo scarico zoom troncava decmali                                     | mxm 21/09/2004 17.16
+ art-costo-standard troncava decmali                                                              | mxm 07/10/2004 11.05
+ aggiunto art-ubicazione allo zoom                                                                | mxm 14/12/2004 17.17
+ aggiunto art-arz-esistenza                                                                       | mxm 15/12/2004 16.04
+ aggiunto art-arz-esistenza-e                                                                     | mxm 15/12/2004 16.04
+ aggiunto art-blocco-causali per software ATON ROAD 3                          |nb 04/07/2005 11.22
+ aggiunto flag articolo per imbottigliamento damigiane                         |nb 05/12/2005 17.27
+
+ aggiunto nuovi campi per gestione taglie/abbigliamento                        |nb 01/02/2006 16.36
+ aggiunto campo articolo padre x taglie (rif.4023)                             | ep 10/02/2006
+ aggiunto campo nel dab per il recupero a zoom dell'esistenza di magazzino                        |ms 24/02/06 10.31
+ ART-PERC-RESA-EDITORIA dichiarava inutilmente sign trailing separate                             | mxm 04/05/2006 15.42
+-----------------------------------------------------------------------------------------------------------------------
+ rilascio 2007.00
+-----------------------------------------------------------------------------------------------------------------------
+ art-web diventa combo-box                                                                        |gm 01/06/2007 9.16
+ livelli 88 per art_imballo                                                                       |ms 20/06/2007 9.21
+ nuovo campo art-nopunti x punto vendita: l'articolo non deve dare punti sugli scontrini cassa    | mxm 26/10/2007 8.08
+ (usato per gli articoli di tipo "buono spesa")                                                   | mxm 26/10/2007 8.08
+
+ s.r. 1101 - inserita richieste ai fini RAEE :                                                    |or 14/11/2007
+             abilitazine utilizzo raee                                                            |or 14/11/2007
+             codice classificazione articolo (41RCMH)                                             |or 14/11/2007
+
+ nuovo campo art-buono x punto vendita: l'articolo è un "buono spesa"                             | mxm 24/11/2007 10.47
+ - sostituito type=qty (obsoleto) con type=num per i campi art-impegnato, art-impegnato-um,       |sq 09/01/2008 11.00
+   art-ordinato, art-ordinato-um, art-prenotato, art-prenotato-um  s.r.2208/lav.4411              |sq 09/01/2008 11.00
+
+ s.r. 2248  lav. 4441                                                                             |or 22/01/2008
+ Gestione RAEE: aggiunta la possibilità di gestire due tipologie sullo stesso articolo.
+-----------------------------------------------------------------------------------------------------------------------
+ lav.4544 - porting produzione "ulixes" in 2009 - modifiche marcate con la dicitura "ulixes"      | mxm 12/03/2008 12.03
+            risuscitato art-llc (il campo esisteva ma non era gestito a video)
+-----------------------------------------------------------------------------------------------------------------------
+ modulo 55 - logistica di magazzino (ticket 655 - ex lav.4535) : nuovi campi                      | mxm 19/05/2008 21.49
+
+
+
+-----------------------------------------------------------------------------------------------------
+ rilascio 2009.01  - 5 nov 2008
+-----------------------------------------------------------------------------------------------------
+ tk.1416
+ Allineamento vinicoli a 2009.01                                                                  | mxm 17/11/2008 14.47
+ .nuovi campi
+-----------------------------------------------------------------------------------------------------------------------
+ ticket 427 - aggiunto radio-button per arrotondamento quantita' modulo editoria                  |DS 13/11/2008 8.54
+-----------------------------------------------------------------------------------------------------------------------
+ tk.2316 - zoom su articoli: permettere di filtrare (non vedere) codici con cod.blocco associato | maxime 20/10/2010
+           aggiunto codice blocco nello zoom
+-----------------------------------------------------------------------------------------------------------------------
+ tk.3604 - Alineamento tracciati record standard per interfacciamento con sw invio telematico DAA (accise)
+                                                                                                    | rososv 26/01/2011 16:14:38
+ Allineamento tracciati record standard per interfacciamento con sw invio telematico DAA (accise)
+-----------------------------------------------------------------------------------------------------------------------
+ tk. 859 - Commento "type=qty (obsoleto)" in art.dpb e art.dab non veritiero                        | quasil 29/06/2011 12:59:06
+   Il commento "type=qty (obsoleto)" in art.dpb e art.dab (ex lav. 4411 - ticket 251) non è veritiero in quanto le quantità
+   venivano troncate perchè non erano in grado di esprimere una unità di misura valida per l'editazione sui campi;
+   in altri casi type=qty è ancora utilizzato e funziona
+-----------------------------------------------------------------------------------------------------------------------
+ tk.4098 -  Sistema di replica via trigger tabelle g2 su database                                   | maxime 08/09/2011
+           invertite ridefinizioni occurs per cbljdbc
+-----------------------------------------------------------------------------------------------------------------------
+ tk.3028 - Generazione x intra: viene segnalato "cod.servizio mancante" su articolo CAUZIONE/ANTICIPO
+                                                                                                    | rososv 06/02/2012
+ Implementazione:
+ - Aggiunto check-box per escludere l'articolo dalla gestione intra
+-----------------------------------------------------------------------------------------------------------------------
+ tk.4151 - Gestione scorta minima e lotto di riordino in presenza di taglie misure                  | rososv 05/03/2012
+
+ Implementazione:
+ - Aggiunto check-box per annullare controllo giacenze e disponibilità su scorte minime e lotti di riordino
+   per ogni singola taglia
+-----------------------------------------------------------------------------------------------------------------------
+ tk. 4771 - art.62 D.L.1 del 24/1/2012 - agroalimentari                                             | SUADAL 02/11/2012
+          - aggiunti nuovi campi per identificazione articoli agroalimentari
+-----------------------------------------------------------------------------------------------------------------------
+ tk. 4802 - agroalimentare - modifiche anagrafica articolo e utilita' UTIART1 - correzioni help     | SUADAL 14/11/2012
+          - inseriti in zoom i nuovi campi
+-----------------------------------------------------------------------------------------------------------------------
+ Ticket 5584 - Portare nello standard gli ambienti di tentata vendita                               | MACGIU 25/02/2014
+               - Resi obsoleti (aggiunto -old) i campi di tentata vendita che sono
+                 "passati" sui file 65artmit e 65artaton
+               - Tolte le clausole di generazione dei campi -old
+               - Resi obsoleti (aggiunto -notused) i campi di tentata vendita che
+                 non sono più utilizzati
+-----------------------------------------------------------------------------------------------------------------------
+ tk 5643 - eliminare type amount e price dai dpb/dab (sono tipi non gestiti)                        | QUASIL 09/04/2014
+ . Trasformati i type=price in type=num,dec=6,size=21
+-----------------------------------------------------------------
+ tk 7148 - diversificazione contributo per materiale plastica                                       | Suadal 24/03/2017
+         - inseriti tre nuovi livelli 88 per gestire tre nuove tipologie di imballo per la plastica
+           ai fini delle dichiarazioni per conai
+         - inserito campo per identificare il materiale "plastica"                                  
+-----------------------------------------------------------------
+ tk.7491 - diversificazione contributo per materiale plastica (rif.tk 7148): indicazioni in fattura | Suadal 15/06/2017          
+         - aggiunti livelli 88 sul campo art-tipo-materiale
+-----------------------------------------------------------------------------------------------------------------------
+ 
+ tplvar zmm_title=Articoli
+ tplvar zmm_ver=09.01.00
+ tplvar zmm_class=anagraphic
+
+
+
+ ZoomFields seq:
+
+   01.art-codice
+   02.art-descrizione1
+   03.art-descrizione2
+   04.art-codice-cm
+   05.art-codice-cm-d
+   06.art-codice-me
+   07.art-codice-me-d
+   08.art-codice-in
+   09.art-codice-in-d
+   10.art-codice-alternativo
+   11.art-codice-um
+   12.art-codice-um1
+   13.art-peso-lordo
+   14.art-peso-netto
+   15.art-volume
+   16.art-numero-pezzi
+   17.art-dimensione1
+   18.art-dimensione2
+   19.art-dimensione3
+   20.art-tipo-d
+   21.art-lordo
+   22.art-codice-iv-ven
+   23.art-codice-iv-ven-d
+   24.art-codice-cp-ven
+   25.art-codice-cp-ven-d
+   26.art-codice-iv-acq
+   27.art-codice-iv-acq-d
+   28.art-codice-mas-acq
+   29.art-codice-mas-acq-d
+   30.art-codice-as
+   31.art-codice-as-d
+   32.art-codice-frn
+   33.art-codice-frn-d
+   34.art-mesi-invenduto
+   35.art-giorni-riordino
+   36.art-lotto-vendita
+   37.art-costo-standard
+   38.art-scorta-minima
+   39.art-lotto-riordino
+   40.art-data-inventario-num
+   41.art-qta-inventario
+   42.art-data-carico-num
+   43.art-prezzo-carico
+   44.art-codice-frn-carico
+   45.art-codice-frn-carico-d
+   46.art-data-scarico-num
+   47.art-prezzo-scarico
+   48.art-codice-cli-scarico
+   49.art-codice-cli-scarico-d
+   50.art-impegnato
+   51.art-impegnato-um
+   52.art-ordinato
+   53.art-ordinato-um
+   54.art-prenotato
+   55.art-prenotato-um
+   56.art-codice-ag
+   57.art-codice-ag-d
+   58.art-lotto-d
+   59.art-nomenclatura
+   60.art-provincia
+   61.art-coefficiente
+   62.art-oscillazione-cambi
+   63.art-serial-number
+   64.art-editoria
+   65.art-materia-prima
+   66.art-cen-codice-ven
+   67.art-cen-codice-ven-d
+   68.art-cen-codice-acq
+   69.art-cen-codice-acq-d
+   70.art-mesi-garanzia
+   71.art-tblad-codice
+   72.art-tblad-codice-d
+   73.art-tipo-conversione-d
+   74.art-valore-idrati
+   75.art-valore-anidri
+   76.art-data-aggiornamento-num
+   77.art-ubicazione
+   78.art-arz-esistenza
+   79.art-arz-esistenza-um
+   80.art-05sit-esistenza
+   81.art-05sit-esistenza-um
+   82.art-tblse-codice                                                                              | maxime 20/10/2010
+   83.art-tblse-codice-d                                                                            | maxime 20/10/2010
+   84.art-tipo-agroalimentare-d                                                                     | SUADAL 14/11/2012
+   85.art-deteriorabile-d                                                                           | SUADAL 14/11/2012
+
+
+O
+@}}
+[FDITEM0_]
+m_strName=RECORD-ART
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_
+
+@}}
+[FDITEM1_]
+m_strName=ART-CODICE-G2
+m_strRawPic=X(15)
+m_strPic=X(15)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1_
+$GEN zmm=on,zmm_title=Codice articolo,zmm_datatype=x,zmm_key=1,zmm_size=15,zmm_align=L,zmm_pos=01,zmm_entity=art
+@}}
+[FDITEM2_]
+m_strName=RESTO-RECORD-ART
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM2_
+
+@}}
+[FDITEM3_]
+m_strName=ART-CODICE-ALTERNATIVO
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM3_
+$GEN zmm=on,zmm_title=Codice alternativo,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=10
+@}}
+[FDITEM4_]
+m_strName=ART-DESCRIZIONE1-G2
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM4_
+$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_key=3,zmm_size=30,zmm_align=L,zmm_pos=02
+@}}
+[FDITEM5_]
+m_strName=ART-DESCRIZIONE2-G2
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM5_
+$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=03
+@}}
+[FDITEM6_]
+m_strName=ART-UBICAZIONE
+m_strRawPic=X(20)
+m_strPic=X(20)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM6_
+$GEN zmm=on,zmm_title=Ubicazione,zmm_datatype=x,zmm_size=20,zmm_align=L,zmm_pos=77
+@}}
+[FDITEM7_]
+m_strName=ART-CODICE-UM
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM7_
+$GEN type=code,entity=tblum,zmm=on,zmm_title=Codice unità di misura,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=11,zmm_entity=tblum
+
+@}}
+[FDITEM8_]
+m_strName=ART-CODICE-UM1
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM8_
+$GEN type=code,entity=tblum,blanknull=on,zmm=on,zmm_title=Codice unità di misura secondaria,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=12,zmm_entity=tblum
+@}}
+[FDITEM9_]
+m_strName=ART-CONVERSIONE
+m_strRawPic=9(05)V9(04)
+m_strPic=9(05)V9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM9_
+$GEN type=num,size=12,dec=4
+
+@}}
+[FDITEM10_]
+m_strName=ART-CODICE-CM
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM10_
+$GEN type=code,entity=tblcm,zmm=on,zmm_title=Cat.merc.,zmm_datatype=x,zmm_key=4,zmm_size=06,zmm_align=L,zmm_pos=04,zmm_entity=tblcm
+
+@}}
+[FDITEM11_]
+m_strName=ART-CODICE-ME
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM11_
+$GEN type=code,entity=tblme,zmm=on,zmm_title=Gruppo merceologico,zmm_datatype=x,zmm_key=5,zmm_size=06,zmm_align=L,zmm_pos=06,zmm_entity=tblme
+
+@}}
+[FDITEM12_]
+m_strName=ART-CODICE-IN
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM12_
+$GEN type=code,entity=tblin,zmm=on,zmm_title=Cod.inv.,zmm_datatype=x,zmm_key=6,zmm_size=06,zmm_align=L,zmm_pos=08,zmm_entity=tblin
+
+@}}
+[FDITEM13_]
+m_strName=ART-PESO-LORDO
+m_strRawPic=9(09)V9(04)
+m_strPic=9(09)V9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM13_
+$GEN type=num,size=17,dec=04,zmm=on,zmm_title=Peso lordo,zmm_datatype=n,zmm_size=17,zmm_align=R,zmm_pos=13
+@}}
+[FDITEM14_]
+m_strName=ART-PESO-NETTO
+m_strRawPic=9(09)V9(04)
+m_strPic=9(09)V9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM14_
+$GEN type=num,size=17,dec=04,zmm=on,zmm_title=Peso netto,zmm_datatype=n,zmm_size=17,zmm_align=R,zmm_pos=14
+@}}
+[FDITEM15_]
+m_strName=ART-VOLUME
+m_strRawPic=9(09)V9(04)
+m_strPic=9(09)V9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM15_
+$GEN type=num,size=17,dec=04,zmm=on,zmm_title=volume,zmm_datatype=n,zmm_size=17,zmm_align=R,zmm_pos=15
+@}}
+[FDITEM16_]
+m_strName=ART-NUMERO-PEZZI
+m_strRawPic=9(09)V9(04)
+m_strPic=9(09)V9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM16_
+$GEN type=num,size=17,dec=04,zmm=on,zmm_title=Numero pezzi,zmm_datatype=n,zmm_size=17,zmm_align=R,zmm_pos=16
+@}}
+[FDITEM17_]
+m_strName=ART-DIMENSIONE1
+m_strRawPic=9(09)V9(04)
+m_strPic=9(09)V9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM17_
+$GEN type=num,size=17,dec=04,zmm=on,zmm_title=Dimensione 1,zmm_datatype=n,zmm_size=17,zmm_align=R,zmm_pos=17
+@}}
+[FDITEM18_]
+m_strName=ART-DIMENSIONE2
+m_strRawPic=9(09)V9(04)
+m_strPic=9(09)V9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM18_
+$GEN type=num,size=17,dec=04,zmm=on,zmm_title=Dimensione 2,zmm_datatype=n,zmm_size=17,zmm_align=R,zmm_pos=18
+@}}
+[FDITEM19_]
+m_strName=ART-DIMENSIONE3
+m_strRawPic=9(09)V9(04)
+m_strPic=9(09)V9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM19_
+$GEN type=num,size=17,dec=04,zmm=on,zmm_title=Dimensione 3,zmm_datatype=n,zmm_size=17,zmm_align=R,zmm_pos=19
+@}}
+[FDITEM20_]
+m_strName=ART-TIPO
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM20_
+$GEN type=combobox,comboclass=art_tipo
+
+@}}
+[FDITEM21_]
+m_strName=ART-TIPO-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" "N" " "
+{{@DataItem_m_strDescriptionFDITEM21_
+*            88  ART-TIPO-88              VALUE "S" "N" "D" " ".  la D non serve a nulla          | mxm 12/10/2006 10.41
+@}}
+[FDITEM22_]
+m_strName=ART-TIPO-88-S
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM22_
+
+@}}
+[FDITEM23_]
+m_strName=ART-TIPO-88-N
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="N"
+{{@DataItem_m_strDescriptionFDITEM23_
+
+@}}
+[FDITEM24_]
+m_strName=art-tipo-fiscale
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" "
+{{@DataItem_m_strDescriptionFDITEM24_
+
+@}}
+[FDITEM25_]
+m_strName=art-tipo-nonfiscale
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="N"
+{{@DataItem_m_strDescriptionFDITEM25_
+
+@}}
+[FDITEM26_]
+m_strName=art-tipo-spesa
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM26_
+
+@}}
+[FDITEM27_]
+m_strName=ART-LORDO
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM27_
+$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Lordo,zmm_datatype=x,zmm_size=01,zmm_align=L,zmm_pos=21
+@}}
+[FDITEM28_]
+m_strName=ART-LORDO-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM28_
+
+@}}
+[FDITEM29_]
+m_strName=ART-CODICE-IV-VEN
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM29_
+$GEN type=code,entity=tbliv,zmm=on,zmm_title=Codice iva vendite,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=22,zmm_entity=tbliv
+
+@}}
+[FDITEM30_]
+m_strName=ART-CODICE-CP-VEN
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM30_
+$GEN type=code,entity=tblcp,zmm=on,zmm_title=Codice contropartita articolo,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=24,zmm_entity=tblcp
+
+@}}
+[FDITEM31_]
+m_strName=ART-CODICE-IV-ACQ
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM31_
+$GEN type=code,entity=tbliv,zmm=on,zmm_title=Codice iva acquisti,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=26,zmm_entity=tbliv
+@}}
+[FDITEM32_]
+m_strName=ART-CODICE-MAS-ACQ
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM32_
+$GEN type=code,entity=mas,zmm=on,zmm_title=Codice mastro acquisti,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=28,zmm_entity=mas
+@}}
+[FDITEM33_]
+m_strName=ART-CODICE-AS
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM33_
+$GEN type=code,entity=tblas,zmm=on,zmm_title=Codice statistico articolo,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=30,zmm_entity=tblas
+@}}
+[FDITEM34_]
+m_strName=ART-CODICE-FRN
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM34_
+$GEN type=code,entity=frn,zmm=on,zmm_title=Codice fornitore,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=32,zmm_entity=frn
+@}}
+[FDITEM35_]
+m_strName=ART-MESI-INVENDUTO
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM35_
+$GEN type=num,size=03,dec=0,zmm=on,zmm_title=Mesi invenduto,zmm_datatype=n,zmm_size=02,zmm_align=R,zmm_pos=34
+
+@}}
+[FDITEM36_]
+m_strName=ART-GIORNI-RIORDINO
+m_strRawPic=9(03)
+m_strPic=9(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM36_
+$GEN type=num,size=04,dec=0,zmm=on,zmm_title=Giorni riordino,zmm_datatype=n,zmm_size=03,zmm_align=R,zmm_pos=35
+
+@}}
+[FDITEM37_]
+m_strName=ART-LOTTO-VENDITA
+m_strRawPic=S9(12)V9(04)
+m_strPic=S9(12)V9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM37_
+$GEN type=num,size=21,dec=4,zmm=on,zmm_title=Lotto di vendita,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=36
+
+@}}
+[FDITEM38_]
+m_strName=ART-COSTO-STANDARD
+m_strRawPic=S9(10)V9(06)
+m_strPic=S9(10)V9(06)
+m_nItemLevel=10
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM38_
+$GEN type=num,dec=6,size=21,zmm=on,zmm_title=Costo standard,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=37
+
+@}}
+[FDITEM39_]
+m_strName=ART-SCORTA-MINIMA
+m_strRawPic=S9(12)V9(04)
+m_strPic=S9(12)V9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM39_
+$GEN type=num,size=21,dec=4,zmm=on,zmm_title=Scorta minima,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=38
+
+@}}
+[FDITEM40_]
+m_strName=ART-LOTTO-RIORDINO
+m_strRawPic=S9(12)V9(04)
+m_strPic=S9(12)V9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM40_
+$GEN type=num,size=21,dec=4,zmm=on,zmm_title=Lotto riordino,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=39
+
+@}}
+[FDITEM41_]
+m_strName=ART-DATA-INVENTARIO
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM41_
+ copy "groupdate.xfc". | DBMaker
+@}}
+[FDITEM42_]
+m_strName=AA
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=ART-INVENTARIO-AA
+{{@DataItem_m_strDescriptionFDITEM42_
+
+@}}
+[FDITEM43_]
+m_strName=MM
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=ART-INVENTARIO-MM
+{{@DataItem_m_strDescriptionFDITEM43_
+
+@}}
+[FDITEM44_]
+m_strName=GG
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=ART-INVENTARIO-GG
+{{@DataItem_m_strDescriptionFDITEM44_
+
+@}}
+[FDITEM45_]
+m_strName=FILLER
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=ART-DATA-INVENTARIO
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM45_
+
+@}}
+[FDITEM46_]
+m_strName=ART-DATA-INVENTARIO-NUM
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM46_
+$GEN type=date,zmm=on,zmm_title=Data inventario,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=40
+
+@}}
+[FDITEM47_]
+m_strName=ART-QTA-INVENTARIO
+m_strRawPic=S9(12)V9(04)
+m_strPic=S9(12)V9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM47_
+$GEN type=num,size=21,dec=4,zmm=on,zmm_title=Q.tà inventario,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=41
+
+@}}
+[FDITEM48_]
+m_strName=ART-DATA-CARICO
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM48_
+
+
+ copy "groupdate.xfc". | DBMaker
+
+@}}
+[FDITEM49_]
+m_strName=AA
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=ART-CARICO-AA
+{{@DataItem_m_strDescriptionFDITEM49_
+
+@}}
+[FDITEM50_]
+m_strName=MM
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=ART-CARICO-MM
+{{@DataItem_m_strDescriptionFDITEM50_
+
+@}}
+[FDITEM51_]
+m_strName=GG
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=ART-CARICO-GG
+{{@DataItem_m_strDescriptionFDITEM51_
+
+@}}
+[FDITEM52_]
+m_strName=FILLER
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=ART-DATA-CARICO
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM52_
+
+@}}
+[FDITEM53_]
+m_strName=ART-DATA-CARICO-NUM
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM53_
+$GEN type=date,zmm=on,zmm_title=Data carico,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=42
+
+@}}
+[FDITEM54_]
+m_strName=ART-PREZZO-CARICO
+m_strRawPic=S9(10)V9(06)
+m_strPic=S9(10)V9(06)
+m_nItemLevel=10
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM54_
+$GEN type=num,dec=6,size=21,zmm=on,zmm_title=Prezzo carico,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=43
+
+@}}
+[FDITEM55_]
+m_strName=ART-CODICE-FRN-CARICO
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM55_
+$GEN type=code,entity=frn,zmm=on,zmm_title=Codice fornitore carico,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=44,zmm_entity=frn
+@}}
+[FDITEM56_]
+m_strName=ART-DATA-SCARICO
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM56_
+
+
+ copy "groupdate.xfc". | DBMaker
+
+@}}
+[FDITEM57_]
+m_strName=AA
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=ART-SCARICO-AA
+{{@DataItem_m_strDescriptionFDITEM57_
+
+@}}
+[FDITEM58_]
+m_strName=MM
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=ART-SCARICO-MM
+{{@DataItem_m_strDescriptionFDITEM58_
+
+@}}
+[FDITEM59_]
+m_strName=GG
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=ART-SCARICO-GG
+{{@DataItem_m_strDescriptionFDITEM59_
+
+@}}
+[FDITEM60_]
+m_strName=FILLER
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=ART-DATA-SCARICO
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM60_
+
+@}}
+[FDITEM61_]
+m_strName=ART-DATA-SCARICO-NUM
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM61_
+$GEN type=date,zmm=on,zmm_title=Data scarico,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=46
+
+@}}
+[FDITEM62_]
+m_strName=ART-PREZZO-SCARICO
+m_strRawPic=S9(10)V9(06)
+m_strPic=S9(10)V9(06)
+m_nItemLevel=10
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM62_
+$GEN type=num,dec=6,size=21,zmm=on,zmm_title=Prezzo scarico,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=47
+
+@}}
+[FDITEM63_]
+m_strName=ART-CODICE-CLI-SCARICO
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM63_
+$GEN type=code,entity=cli,zmm=on,zmm_title=Codice cliente scarico,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=48,zmm_entity=cli
+@}}
+[FDITEM64_]
+m_strName=ART-FILLER-01
+m_strRawPic=X(34)
+m_strPic=X(34)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM64_
+
+
+@}}
+[FDITEM65_]
+m_strName=ART-IMPEGNATO
+m_strRawPic=S9(12)V9(04)
+m_strPic=S9(12)V9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM65_
+
+        10  ART-ESISTENZA           PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+        10  ART-ESISTENZA-UM        PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+
+$GEN type=num,size=21,dec=4,zmm=on,zmm_title=Impegnato,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=50
+
+@}}
+[FDITEM66_]
+m_strName=ART-IMPEGNATO-UM
+m_strRawPic=S9(12)V9(04)
+m_strPic=S9(12)V9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM66_
+$GEN type=num,size=21,dec=4,zmm=on,zmm_title=Impegnato u.m. secondaria,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=51
+@}}
+[FDITEM67_]
+m_strName=ART-ORDINATO
+m_strRawPic=S9(12)V9(04)
+m_strPic=S9(12)V9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM67_
+$GEN type=num,size=21,dec=4,zmm=on,zmm_title=Ordinato,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=52
+
+@}}
+[FDITEM68_]
+m_strName=ART-ORDINATO-UM
+m_strRawPic=S9(12)V9(04)
+m_strPic=S9(12)V9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM68_
+$GEN type=num,size=21,dec=4,zmm=on,zmm_title=Ordinato u.m. secondaria,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=53
+
+@}}
+[FDITEM69_]
+m_strName=ART-PRENOTATO
+m_strRawPic=S9(12)V9(04)
+m_strPic=S9(12)V9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM69_
+$GEN type=num,size=21,dec=4,zmm=on,zmm_title=Prenotato,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=54
+
+@}}
+[FDITEM70_]
+m_strName=ART-PRENOTATO-UM
+m_strRawPic=S9(12)V9(04)
+m_strPic=S9(12)V9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM70_
+$GEN type=num,size=21,dec=4,zmm=on,zmm_title=Prenotato u.m. secondaria,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=55
+@}}
+[FDITEM71_]
+m_strName=art-raee
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM71_
+
+        10  ART-FILLER-02           PIC  X(286).                                 |or 14/11/2007
+
+
+@}}
+[FDITEM72_]
+m_strName=art-raee-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM72_
+
+@}}
+[FDITEM73_]
+m_strName=art-raee-ko
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM73_
+
+@}}
+[FDITEM74_]
+m_strName=art-41rcmh-codice
+m_strRawPic=x(20)
+m_strPic=X(20)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM74_
+$GEN type=code,entity=41rcmh
+
+@}}
+[FDITEM75_]
+m_strName=art-raee-art2
+m_strRawPic=x(15)
+m_strPic=X(15)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM75_
+$GEN type=code,entity=art
+@}}
+[FDITEM76_]
+m_strName=art-raee-art2-coeff2
+m_strRawPic=9(05)
+m_strPic=9(05)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM76_
+$GEN type=num,size=7,dec=0
+
+@}}
+[FDITEM77_]
+m_strName=art-filler-02
+m_strRawPic=x(245)
+m_strPic=X(245)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM77_
+
+    10  art-filler-02              pic  x(265).                                  |or 14/11/2007  |or 22/01/2008
+
+@}}
+[FDITEM78_]
+m_strName=ART-CODICE-AG
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM78_
+
+
+        10  ART-QTA-APERTURA        PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+        10  ART-VAL-APERTURA        PIC S9(15)        SIGN TRAILING SEPARATE.
+        10  ART-QTA-CHIUSURA        PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+        10  ART-VAL-CHIUSURA        PIC S9(15)        SIGN TRAILING SEPARATE.
+        10  ART-QTA-ENTRATE-VAL     PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+        10  ART-VAL-ENTRATE-VAL     PIC S9(15)        SIGN TRAILING SEPARATE.
+        10  ART-QTA-INIZIALE        PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+        10  ART-QTA-ACQUISTI        PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+        10  ART-QTA-RESI-CLIENTI    PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+        10  ART-QTA-CARICHI-PROD    PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+$XFD  NAME=ART-ENTRATE-VARIE
+        10  ART-QTA-ENTRATE-VARIE   PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+        10  ART-QTA-VENDITE         PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+        10  ART-QTA-RESI-FORNITORI  PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+        10  ART-QTA-SCARICHI-PROD   PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+        10  ART-QTA-USCITE-VARIE    PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+        10  ART-PRECEDENTE          PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+        10  ART-PRECEDENTE-UM       PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+
+$GEN type=code,entity=tblag,zmm=on,zmm_title=Codice agente,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=56,zmm_entity=tblag
+
+@}}
+[FDITEM79_]
+m_strName=ART-LOTTO
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM79_
+$GEN type=combobox,comboclass=art_lotto,size=18
+
+@}}
+[FDITEM80_]
+m_strName=ART-LOTTO-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="F" "S" " "
+{{@DataItem_m_strDescriptionFDITEM80_
+
+@}}
+[FDITEM81_]
+m_strName=ART-LOTTO-88-F
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="F"
+{{@DataItem_m_strDescriptionFDITEM81_
+
+@}}
+[FDITEM82_]
+m_strName=ART-LOTTO-88-S
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM82_
+
+@}}
+[FDITEM83_]
+m_strName=ART-VAR-INTRA
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM83_
+
+
+@}}
+[FDITEM84_]
+m_strName=ART-NOMENCLATURA
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM84_
+$GEN zmm=on,zmm_title=Nomenclatura,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=59
+
+@}}
+[FDITEM85_]
+m_strName=ART-PROVINCIA
+m_strRawPic=X(02)
+m_strPic=X(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM85_
+$GEN zmm=on,zmm_title=Provincia,zmm_datatype=x,zmm_size=02,zmm_align=L,zmm_pos=60
+
+@}}
+[FDITEM86_]
+m_strName=ART-COEFFICIENTE
+m_strRawPic=9(05)V9(04)
+m_strPic=9(05)V9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM86_
+$GEN type=num,size=13,dec=04,zmm=on,zmm_title=Coefficiente,zmm_datatype=n,zmm_size=13,zmm_align=R,zmm_pos=61
+
+@}}
+[FDITEM87_]
+m_strName=ART-OSCILLAZIONE-CAMBI
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM87_
+$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Oscillazione cambi,zmm_datatype=x,zmm_size=01,zmm_align=L,zmm_pos=62
+@}}
+[FDITEM88_]
+m_strName=ART-OSCILLAZIONE-CAMBI-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM88_
+
+@}}
+[FDITEM89_]
+m_strName=ART-SERIAL-NUMBER
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM89_
+$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Serial number,zmm_datatype=x,zmm_size=01,zmm_align=L,zmm_pos=63
+@}}
+[FDITEM90_]
+m_strName=ART-SERIAL-NUMBER-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM90_
+
+@}}
+[FDITEM91_]
+m_strName=ART-EDITORIA
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM91_
+$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Editoria,zmm_datatype=x,zmm_size=01,zmm_align=L,zmm_pos=64
+@}}
+[FDITEM92_]
+m_strName=ART-EDITORIA-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM92_
+
+@}}
+[FDITEM93_]
+m_strName=ART-MATERIA-PRIMA
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM93_
+$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Materia prima,zmm_datatype=x,zmm_size=01,zmm_align=L,zmm_pos=65
+@}}
+[FDITEM94_]
+m_strName=ART-MATERIA-PRIMA-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM94_
+
+@}}
+[FDITEM95_]
+m_strName=ART-CEN-CODICE-VEN
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM95_
+$GEN type=code,entity=cen,zmm=on,zmm_title=Codice centro di costo vendite,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=66,zmm_entity=cen
+@}}
+[FDITEM96_]
+m_strName=ART-CEN-CODICE-ACQ
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM96_
+$GEN type=code,entity=cen,zmm=on,zmm_title=Codice centro di costo acquisti,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=68,zmm_entity=cen
+@}}
+[FDITEM97_]
+m_strName=ART-MESI-GARANZIA
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM97_
+$GEN type=num,size=03,dec=0,zmm=on,zmm_title=Mesi di garanzia,zmm_datatype=n,zmm_size=02,zmm_align=R,zmm_pos=70
+
+@}}
+[FDITEM98_]
+m_strName=ART-TBLAD-CODICE
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM98_
+$GEN type=code,entity=tblad,zmm=on,zmm_title=Codice classe addebito articolo,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=71,zmm_entity=tblad
+@}}
+[FDITEM99_]
+m_strName=ART-TIPO-CONVERSIONE
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM99_
+$GEN type=combobox,comboclass=art_tipo_conversione
+
+@}}
+[FDITEM100_]
+m_strName=ART-TIPO-CONVERSIONE-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "D"
+{{@DataItem_m_strDescriptionFDITEM100_
+
+@}}
+[FDITEM101_]
+m_strName=ART-TIPO-CONVERSIONE-88-SPACE
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" "
+{{@DataItem_m_strDescriptionFDITEM101_
+
+@}}
+[FDITEM102_]
+m_strName=ART-TIPO-CONVERSIONE-88-D
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="D"
+{{@DataItem_m_strDescriptionFDITEM102_
+
+@}}
+[FDITEM103_]
+m_strName=ART-VALORE-IDRATI
+m_strRawPic=9(09)V9(04)
+m_strPic=9(09)V9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM103_
+$GEN type=num,size=17,dec=04,zmm=on,zmm_title=Valore idrati,zmm_datatype=n,zmm_size=17,zmm_align=R,zmm_pos=74
+
+@}}
+[FDITEM104_]
+m_strName=ART-VALORE-ANIDRI
+m_strRawPic=9(09)V9(04)
+m_strPic=9(09)V9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM104_
+$GEN type=num,size=17,dec=04,zmm=on,zmm_title=Valore anidri,zmm_datatype=n,zmm_size=17,zmm_align=R,zmm_pos=75
+
+@}}
+[FDITEM105_]
+m_strName=ART-DATA-AGGIORNAMENTO
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM105_
+ copy "groupdate.xfc". | DBMaker
+
+@}}
+[FDITEM106_]
+m_strName=AA
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=ART-DATA-AGG-AA
+{{@DataItem_m_strDescriptionFDITEM106_
+
+@}}
+[FDITEM107_]
+m_strName=MM
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=ART-DATA-AGG-MM
+{{@DataItem_m_strDescriptionFDITEM107_
+
+@}}
+[FDITEM108_]
+m_strName=GG
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=ART-DATA-AGG-GG
+{{@DataItem_m_strDescriptionFDITEM108_
+
+@}}
+[FDITEM109_]
+m_strName=FILLER
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=ART-DATA-AGGIORNAMENTO
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM109_
+
+@}}
+[FDITEM110_]
+m_strName=ART-DATA-AGGIORNAMENTO-NUM
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM110_
+$GEN type=date,zmm=on,zmm_title=Data aggiornamento,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=76
+
+@}}
+[FDITEM111_]
+m_strName=ART-QTA-MAX-CONSEGNABILE
+m_strRawPic=9(06)V9(03)
+m_strPic=9(06)V9(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM111_
+** Campo per il modulo 72 - distribuzione automatica ************
+$GEN type=num,size=12,dec=03
+@}}
+[FDITEM112_]
+m_strName=ART-VISITE-PERIODICHE
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM112_
+$GEN type=combobox,comboclass=art_visite_periodiche
+
+@}}
+[FDITEM113_]
+m_strName=ART-VISITE-PERIODICHE-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0 1 2 3 4 5 6
+{{@DataItem_m_strDescriptionFDITEM113_
+
+@}}
+[FDITEM114_]
+m_strName=ART-VISITE-PERIODICHE-SI
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1 2 3 4 5 6
+{{@DataItem_m_strDescriptionFDITEM114_
+
+@}}
+[FDITEM115_]
+m_strName=ART-AZIENDE-VINICOLE
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM115_
+** Dati per modulo 83 Aziende vinicole
+
+@}}
+[FDITEM116_]
+m_strName=ART-TBL8A-CODICE
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM116_
+$GEN type=code,entity=tbl8a
+
+@}}
+[FDITEM117_]
+m_strName=ART-TBL8B-CODICE
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM117_
+$GEN type=code,entity=tbl8b
+
+@}}
+[FDITEM118_]
+m_strName=ART-TBL8C-CODICE
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM118_
+$GEN type=code,entity=tbl8c
+
+@}}
+[FDITEM119_]
+m_strName=ART-TBL8D-CODICE
+m_strRawPic=X(02)
+m_strPic=X(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM119_
+$GEN type=code,entity=tbl8d
+
+@}}
+[FDITEM120_]
+m_strName=ART-TBL8E-CODICE
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM120_
+$GEN type=code,entity=tbl8e
+
+@}}
+[FDITEM121_]
+m_strName=ART-TBL4A-CODICE
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM121_
+$GEN type=code,entity=tbl4a
+
+@}}
+[FDITEM122_]
+m_strName=FILLER
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM122_
+
+@}}
+[FDITEM123_]
+m_strName=ART-RESA-UVA-TERZO
+m_strRawPic=S9(04)V9(02)
+m_strPic=S9(04)V9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM123_
+$GEN type=num,size=09,dec=2
+
+@}}
+[FDITEM124_]
+m_strName=ART-RESA-UVA
+m_strRawPic=S9(04)V9(02)
+m_strPic=S9(04)V9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM124_
+03.04
+$GEN type=num,size=09,dec=2
+
+@}}
+[FDITEM125_]
+m_strName=ART-RESA-VINO
+m_strRawPic=S9(04)V9(02)
+m_strPic=S9(04)V9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM125_
+$GEN type=num,size=09,dec=2
+
+@}}
+[FDITEM126_]
+m_strName=ART-SUPERO-UVA
+m_strRawPic=S9(04)V9(02)
+m_strPic=S9(04)V9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM126_
+$GEN type=num,size=09,dec=2
+
+@}}
+[FDITEM127_]
+m_strName=ART-SUPERO-VINO
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM127_
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+
+@}}
+[FDITEM128_]
+m_strName=ART-SUPERO-VINO-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" "N" " "
+{{@DataItem_m_strDescriptionFDITEM128_
+
+@}}
+[FDITEM129_]
+m_strName=ART-SUPERO-CODICE-ART
+m_strRawPic=X(15)
+m_strPic=X(15)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM129_
+$GEN type=code,entity=art
+
+@}}
+[FDITEM130_]
+m_strName=ART-CONVERSIONE-UVE
+m_strRawPic=S9(03)V9(04)
+m_strPic=S9(03)V9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM130_
+$GEN type=num,size=09,dec=4
+
+@}}
+[FDITEM131_]
+m_strName=ART-GRADAZIONE
+m_strRawPic=S9(03)V9(04)
+m_strPic=S9(03)V9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM131_
+$GEN type=num,size=09,dec=4
+
+@}}
+[FDITEM132_]
+m_strName=ART-REG-COMM
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM132_
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+
+@}}
+[FDITEM133_]
+m_strName=ART-REG-COMM-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "S" "N"
+{{@DataItem_m_strDescriptionFDITEM133_
+
+@}}
+[FDITEM134_]
+m_strName=ART-DOSE-PRODOTTO
+m_strRawPic=9(04)V9(05)
+m_strPic=9(04)V9(05)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM134_
+** Campo per il modulo 72 - distribuzione automatica ************
+$GEN type=num,size=11,dec=5
+@}}
+[FDITEM135_]
+m_strName=ART-CONTR-IVA-CODICE-ART
+m_strRawPic=X(15)
+m_strPic=X(15)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM135_
+** Campo per il modulo 47 - gestione bevande         ************
+$GEN type=code,entity=art
+@}}
+[FDITEM136_]
+m_strName=ART-TBLTG-CODICE
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM136_
+$GEN type=code,entity=tbltg
+
+@}}
+[FDITEM137_]
+m_strName=ART-PRODUZIONE
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM137_
+
+@}}
+[FDITEM138_]
+m_strName=ART-CODICE-MA-PRODUZ
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM138_
+$GEN type=code,entity=tblma
+@}}
+[FDITEM139_]
+m_strName=ART-CODICE-MA-DESTIN
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM139_
+$GEN type=code,entity=tblma
+@}}
+[FDITEM140_]
+m_strName=ART-CODICE-MA-PRELIEVO
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM140_
+$GEN type=code,entity=tblma
+@}}
+[FDITEM141_]
+m_strName=ART-TIPO-RIORDINO
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM141_
+$GEN type=combobox,comboclass=art_tipo_riordino
+@}}
+[FDITEM142_]
+m_strName=ART-TIPO-RIORDINO-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "A" "P" "L"
+{{@DataItem_m_strDescriptionFDITEM142_
+
+@}}
+[FDITEM143_]
+m_strName=ART-LEAD-TIME-F
+m_strRawPic=S9(09)
+m_strPic=S9(09)
+m_nItemLevel=15
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM143_
+$GEN type=num,size=12,dec=0
+@}}
+[FDITEM144_]
+m_strName=ART-LEAD-TIME-V
+m_strRawPic=S9(09)V9(04)
+m_strPic=S9(09)V9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM144_
+$GEN type=num,size=17,dec=4
+@}}
+[FDITEM145_]
+m_strName=ART-CALCOLO-MRP
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM145_
+
+
+
+$GEN type=checkbox,truevalue="S",falsevalue="N"
+
+@}}
+[FDITEM146_]
+m_strName=ART-CALCOLO-MRP-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" "N"
+{{@DataItem_m_strDescriptionFDITEM146_
+
+@}}
+[FDITEM147_]
+m_strName=ART-LLC
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM147_
+                88  ART-CALCOLO-MRP-88          VALUE "S" "N" "F". Carannante asserisce che la F(Fantasma) è desueta
+-------------------------------------------------------- ulixes <<<
+@}}
+[FDITEM148_]
+m_strName=ART-IMBALLO
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM148_
+-------------------------------------------------------- ulixes <<<
+
+
+** Campo per il modulo 61 - gestione imballi         ************
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+@}}
+[FDITEM149_]
+m_strName=ART-IMBALLO-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "S"
+{{@DataItem_m_strDescriptionFDITEM149_
+
+@}}
+[FDITEM150_]
+m_strName=art-imballo-true
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM150_
+
+@}}
+[FDITEM151_]
+m_strName=art-imballo-false
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" "
+{{@DataItem_m_strDescriptionFDITEM151_
+
+@}}
+[FDITEM152_]
+m_strName=ART-COLLEGAMENTO-IMB
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM152_
+
+@}}
+[FDITEM153_]
+m_strName=art-codice-imb-01
+m_strRawPic=x(15)
+m_strPic=X(15)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM153_
+$GEN type=code,entity=art
+@}}
+[FDITEM154_]
+m_strName=art-fatt-conv-imb-01
+m_strRawPic=s9(06)v9(04)
+m_strPic=S9(06)V9(04)
+m_nItemLevel=20
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM154_
+$GEN type=num,size=14,dec=4
+@}}
+[FDITEM155_]
+m_strName=art-tipo-conv-imb-01
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM155_
+$GEN type=combobox,comboclass=art_tipo_conv_imb
+@}}
+[FDITEM156_]
+m_strName=art-codice-imb-02
+m_strRawPic=x(15)
+m_strPic=X(15)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM156_
+$GEN type=code,entity=art
+
+@}}
+[FDITEM157_]
+m_strName=art-fatt-conv-imb-02
+m_strRawPic=s9(06)v9(04)
+m_strPic=S9(06)V9(04)
+m_nItemLevel=20
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+m_strName_Xfd=art-fatt-conv-imb-
+{{@DataItem_m_strDescriptionFDITEM157_
+$GEN type=num,size=14,dec=4
+
+@}}
+[FDITEM158_]
+m_strName=art-tipo-conv-imb-02
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-tipo-conv-imb-
+{{@DataItem_m_strDescriptionFDITEM158_
+$GEN type=combobox,comboclass=art_tipo_conv_imb
+
+@}}
+[FDITEM159_]
+m_strName=filler
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=art-collegamento-imb
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM159_
+
+@}}
+[FDITEM160_]
+m_strName=ART-TABELLA-IMBALLI
+m_nItemLevel=15
+m_nSync=-1
+m_bOccurs=1
+m_bFixed=1
+m_strRawSize=02
+m_nSize=2
+{{@DataItem_m_strDescriptionFDITEM160_
+
+@}}
+[FDITEM161_]
+m_strName=ART-CODICE-IMB
+m_strRawPic=X(15)
+m_strPic=X(15)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM161_
+
+@}}
+[FDITEM162_]
+m_strName=ART-FATT-CONV-IMB
+m_strRawPic=S9(06)V9(04)
+m_strPic=S9(06)V9(04)
+m_nItemLevel=20
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM162_
+
+@}}
+[FDITEM163_]
+m_strName=ART-TIPO-CONV-IMB
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM163_
+
+@}}
+[FDITEM164_]
+m_strName=ART-TIPO-CONV-IMB-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "M"
+{{@DataItem_m_strDescriptionFDITEM164_
+
+@}}
+[FDITEM165_]
+m_strName=ART-TIPO-PRODOTTO-old
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM165_
+
+
+** Campo per il modulo 65 - gestione tentata vendita ************
+**        10  ART-TIPO-PRODOTTO               PIC  9(01).                                           | MACGIU 25/02/2014
+@}}
+[FDITEM166_]
+m_strName=ART-TIPO-PRODOTTO-old-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0, 1, 2
+{{@DataItem_m_strDescriptionFDITEM166_
+
+@}}
+[FDITEM167_]
+m_strName=ART-QTA-COMPENS-CALO-PESO-old
+m_strRawPic=S9(03)V9(02)
+m_strPic=S9(03)V9(02)
+m_nItemLevel=10
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM167_
+** Campo per il modulo 65 - gestione tentata vendita ************
+**        10  ART-QTA-COMPENS-CALO-PESO       PIC S9(03)V9(02) TRAILING SEPARATE.                   | MACGIU 25/02/2014
+@}}
+[FDITEM168_]
+m_strName=ART-PERC-RESA-EDITORIA-A
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM168_
+U 25/02/2014
+
+@}}
+[FDITEM169_]
+m_strName=ART-PERC-RESA-EDITORIA
+m_strRawPic=9(03)
+m_strPic=9(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM169_
+$GEN type=num,size=4,dec=0
+
+@}}
+[FDITEM170_]
+m_strName=ART-TBLCZ-CODICE
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM170_
+$GEN type=code,entity=tblcz
+@}}
+[FDITEM171_]
+m_strName=ART-TBLLL-CODICE
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM171_
+$GEN type=code,entity=tblll
+@}}
+[FDITEM172_]
+m_strName=ART-NUMERO-PEZZI-65-old
+m_strRawPic=9(05)
+m_strPic=9(05)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM172_
+** Campo per il modulo 65 - gestione tentata vendita ************
+**        10  ART-NUMERO-PEZZI-65             PIC  9(05).                                           | MACGIU 25/02/2014
+@}}
+[FDITEM173_]
+m_strName=ART-CANTINE-SOCIALI
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM173_
+
+@}}
+[FDITEM174_]
+m_strName=ART-CODICE-IV-VND-AGEV
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM174_
+$GEN type=code,entity=tbliv
+
+@}}
+[FDITEM175_]
+m_strName=ART-QUOTA-PREMIO
+m_strRawPic=S9(13)V9(02)
+m_strPic=S9(13)V9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM175_
+$GEN type=num,size=21,dec=2
+
+@}}
+[FDITEM176_]
+m_strName=ART-PREMIO-DOC
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM176_
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+
+@}}
+[FDITEM177_]
+m_strName=ART-PREMIO-DOC-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" "N" " "
+{{@DataItem_m_strDescriptionFDITEM177_
+
+@}}
+[FDITEM178_]
+m_strName=ART-FISCALE-42
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM178_
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+@}}
+[FDITEM179_]
+m_strName=ART-FISCALE-42-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM179_
+
+@}}
+[FDITEM180_]
+m_strName=ART-CODICE-SOSTITUTIVO
+m_strRawPic=X(15)
+m_strPic=X(15)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM180_
+$GEN type=code,entity=art
+
+@}}
+[FDITEM181_]
+m_strName=art-flag-confezione
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM181_
+
+
+** Campo per il modulo 64 - gestione confezioni *****************
+
+
+$GEN type=checkbox,truevalue="S",falsevalue="N"
+
+@}}
+[FDITEM182_]
+m_strName=art-flag-confezione-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "N" "S"
+{{@DataItem_m_strDescriptionFDITEM182_
+
+@}}
+[FDITEM183_]
+m_strName=art-flag-confezione-88-s
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM183_
+
+@}}
+[FDITEM184_]
+m_strName=art-presenza-confez
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM184_
+$GEN type=checkbox,truevalue="S",falsevalue="N"
+
+@}}
+[FDITEM185_]
+m_strName=art-presenza-confez-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "N" "S"
+{{@DataItem_m_strDescriptionFDITEM185_
+
+@}}
+[FDITEM186_]
+m_strName=art-presenza-confez-88-s
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM186_
+
+@}}
+[FDITEM187_]
+m_strName=art-iva-confezione
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM187_
+
+
+@}}
+[FDITEM188_]
+m_strName=art-codice-iva-conf-01
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM188_
+$GEN type=code,entity=tbliv
+
+@}}
+[FDITEM189_]
+m_strName=art-perc-iva-conf-01
+m_strRawPic=9(03)
+m_strPic=9(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM189_
+$GEN type=num,size=4,dec=0
+
+@}}
+[FDITEM190_]
+m_strName=art-codice-iva-conf-02
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-codice-iva-con
+{{@DataItem_m_strDescriptionFDITEM190_
+$GEN type=code,entity=tbliv
+
+@}}
+[FDITEM191_]
+m_strName=art-perc-iva-conf-02
+m_strRawPic=9(03)
+m_strPic=9(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-perc-iva-conf-
+{{@DataItem_m_strDescriptionFDITEM191_
+$GEN type=num,size=4,dec=0
+
+@}}
+[FDITEM192_]
+m_strName=art-codice-iva-conf-03
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-codice-iva-con
+{{@DataItem_m_strDescriptionFDITEM192_
+$GEN type=code,entity=tbliv
+
+@}}
+[FDITEM193_]
+m_strName=art-perc-iva-conf-03
+m_strRawPic=9(03)
+m_strPic=9(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-perc-iva-conf-
+{{@DataItem_m_strDescriptionFDITEM193_
+$GEN type=num,size=4,dec=0
+
+@}}
+[FDITEM194_]
+m_strName=art-codice-iva-conf-04
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-codice-iva-con
+{{@DataItem_m_strDescriptionFDITEM194_
+$GEN type=code,entity=tbliv
+
+@}}
+[FDITEM195_]
+m_strName=art-perc-iva-conf-04
+m_strRawPic=9(03)
+m_strPic=9(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-perc-iva-conf-
+{{@DataItem_m_strDescriptionFDITEM195_
+$GEN type=num,size=4,dec=0
+
+@}}
+[FDITEM196_]
+m_strName=art-codice-iva-conf-05
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-codice-iva-con
+{{@DataItem_m_strDescriptionFDITEM196_
+$GEN type=code,entity=tbliv
+
+@}}
+[FDITEM197_]
+m_strName=art-perc-iva-conf-05
+m_strRawPic=9(03)
+m_strPic=9(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-perc-iva-conf-
+{{@DataItem_m_strDescriptionFDITEM197_
+$GEN type=num,size=4,dec=0
+
+@}}
+[FDITEM198_]
+m_strName=filler
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=art-iva-confezione
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM198_
+
+@}}
+[FDITEM199_]
+m_strName=art-peso-iva-confezione
+m_nItemLevel=15
+m_nSync=-1
+m_bOccurs=1
+m_bFixed=1
+m_strRawSize=5
+m_nSize=5
+{{@DataItem_m_strDescriptionFDITEM199_
+
+@}}
+[FDITEM200_]
+m_strName=art-codice-iva-conf
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-codice-iva-con
+{{@DataItem_m_strDescriptionFDITEM200_
+
+@}}
+[FDITEM201_]
+m_strName=art-perc-iva-conf
+m_strRawPic=9(03)
+m_strPic=9(03)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM201_
+
+@}}
+[FDITEM202_]
+m_strName=ART-NUMERO-CONTRASSEGNI
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM202_
+
+
+
+
+
+** Campi per il modulo 47 - gestione bevande ********************
+$GEN type=num,size=6,dec=0
+@}}
+[FDITEM203_]
+m_strName=ART-CAPACITA
+m_strRawPic=9(05)V9(04)
+m_strPic=9(05)V9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM203_
+$GEN type=num,size=12,dec=4
+
+@}}
+[FDITEM204_]
+m_strName=ART-DESCRIZIONE1-MAF
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM204_
+** Campi per il modulo 83 - gestione aziende vinicole ***********
+@}}
+[FDITEM205_]
+m_strName=ART-DESCRIZIONE2-MAF
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM205_
+
+@}}
+[FDITEM206_]
+m_strName=ART-CONT-IMBALLO
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM206_
+*** campi per modulo 61 imballi
+$GEN type=checkbox,truevalue=" ",falsevalue="N"
+@}}
+[FDITEM207_]
+m_strName=ART-CONT-IMBALLO-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "N"
+{{@DataItem_m_strDescriptionFDITEM207_
+
+@}}
+[FDITEM208_]
+m_strName=ART-VARIANTE-RAME
+m_strRawPic=9(06)V9(04)
+m_strPic=9(06)V9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM208_
+$GEN type=num,size=13,dec=4
+
+@}}
+[FDITEM209_]
+m_strName=ART-RIPARTIZIONE-INTRA
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM209_
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+
+@}}
+[FDITEM210_]
+m_strName=ART-RIPARTIZIONE-INTRA-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "S"
+{{@DataItem_m_strDescriptionFDITEM210_
+
+@}}
+[FDITEM211_]
+m_strName=ART-TIPO-RESA
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM211_
+*** campi per modulo 38 editoria
+$GEN type=radiobutton,value_1="P",image_1=1,value_2="A",image_2=2
+@}}
+[FDITEM212_]
+m_strName=ART-TIPO-RESA-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="P" "A"
+{{@DataItem_m_strDescriptionFDITEM212_
+
+@}}
+[FDITEM213_]
+m_strName=ART-TIPO-RESA-88-A
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="A"
+{{@DataItem_m_strDescriptionFDITEM213_
+
+@}}
+[FDITEM214_]
+m_strName=ART-TIPO-RESA-88-P
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="P"
+{{@DataItem_m_strDescriptionFDITEM214_
+
+@}}
+[FDITEM215_]
+m_strName=ART-CODICE-IV-EDITORIA
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM215_
+$GEN type=code,entity=tbliv
+
+@}}
+[FDITEM216_]
+m_strName=ART-TBL8F-CODICE
+m_strRawPic=X(04)
+m_strPic=X(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM216_
+$GEN type=code,entity=tbl8f
+
+@}}
+[FDITEM217_]
+m_strName=ART-FORNITURA-PERIODICA
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM217_
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+
+@}}
+[FDITEM218_]
+m_strName=ART-FORNITURA-PERIODICA-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "S"
+{{@DataItem_m_strDescriptionFDITEM218_
+
+@}}
+[FDITEM219_]
+m_strName=ART-TBL4B-CODICE
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM219_
+*** campi per modulo 47 contrassegni iva
+$GEN type=code,entity=tbl4b
+
+@}}
+[FDITEM220_]
+m_strName=ART-CONTRASSEGNO
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM220_
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+@}}
+[FDITEM221_]
+m_strName=ART-CONTRASSEGNO-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "S"
+{{@DataItem_m_strDescriptionFDITEM221_
+
+@}}
+[FDITEM222_]
+m_strName=ART-TIPO-CONV-CONTR-IVA
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM222_
+$GEN type=combobox,comboclass=art_tipo_conversione
+@}}
+[FDITEM223_]
+m_strName=ART-TIPO-CONV-CONTR-IVA-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "D"
+{{@DataItem_m_strDescriptionFDITEM223_
+
+@}}
+[FDITEM224_]
+m_strName=art-qta-materiale-x
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM224_
+*** campi per modulo 81 riciclaggio imballaggi
+ ART-QTA-MATERIALE=quantita' di materiale da riciclare presente per ogni
+       quantita' unitaria dell'articolo venduto
+       es. bottiglia di plastica venduta a KG indicare 1
+       es. bottiglia di plastica venduta a N. indicare i KG per ogni bottiglia
+
+ ART-CONTRIBUTO-ASSOLTO=se "S" e non viene calcolato il contributo in fattura
+       stampa la scritta CONTRIBUTO AMBIENTALE CONAI ASSOLTO
+
+
+@}}
+[FDITEM225_]
+m_strName=art-qta-materiale-01
+m_strRawPic=s9(06)v9(06)
+m_strPic=S9(06)V9(06)
+m_nItemLevel=15
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM225_
+$GEN type=num,size=15,dec=6
+
+@}}
+[FDITEM226_]
+m_strName=art-qta-materiale-02
+m_strRawPic=s9(06)v9(06)
+m_strPic=S9(06)V9(06)
+m_nItemLevel=15
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+m_strName_Xfd=art-qta-materiale-
+{{@DataItem_m_strDescriptionFDITEM226_
+$GEN type=num,size=15,dec=6
+
+@}}
+[FDITEM227_]
+m_strName=art-qta-materiale-03
+m_strRawPic=s9(06)v9(06)
+m_strPic=S9(06)V9(06)
+m_nItemLevel=15
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+m_strName_Xfd=art-qta-materiale-
+{{@DataItem_m_strDescriptionFDITEM227_
+$GEN type=num,size=15,dec=6
+
+@}}
+[FDITEM228_]
+m_strName=art-qta-materiale-04
+m_strRawPic=s9(06)v9(06)
+m_strPic=S9(06)V9(06)
+m_nItemLevel=15
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+m_strName_Xfd=art-qta-materiale-
+{{@DataItem_m_strDescriptionFDITEM228_
+$GEN type=num,size=15,dec=6
+@}}
+[FDITEM229_]
+m_strName=art-qta-materiale-05
+m_strRawPic=s9(06)v9(06)
+m_strPic=S9(06)V9(06)
+m_nItemLevel=15
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+m_strName_Xfd=art-qta-materiale-
+{{@DataItem_m_strDescriptionFDITEM229_
+$GEN type=num,size=15,dec=6
+
+@}}
+[FDITEM230_]
+m_strName=art-qta-materiale-06
+m_strRawPic=s9(06)v9(06)
+m_strPic=S9(06)V9(06)
+m_nItemLevel=15
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+m_strName_Xfd=art-qta-materiale-
+{{@DataItem_m_strDescriptionFDITEM230_
+$GEN type=num,size=15,dec=6
+
+@}}
+[FDITEM231_]
+m_strName=filler
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=art-qta-materiale-x
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM231_
+
+@}}
+[FDITEM232_]
+m_strName=FILLER
+m_nItemLevel=15
+m_nSync=-1
+m_bOccurs=1
+m_bFixed=1
+m_strRawSize=06
+m_nSize=6
+{{@DataItem_m_strDescriptionFDITEM232_
+
+@}}
+[FDITEM233_]
+m_strName=ART-QTA-MATERIALE-ALFA
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM233_
+
+@}}
+[FDITEM234_]
+m_strName=ART-QTA-MATERIALE
+m_strRawPic=S9(06)V9(06)
+m_strPic=S9(06)V9(06)
+m_nItemLevel=25
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM234_
+
+@}}
+[FDITEM235_]
+m_strName=ART-CONTRIBUTO-ASSOLTO
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM235_
+
+
+ "S" = dicitura in fattura "contributo conai assolto..."
+ "I" = contributo conai scorporato dal prezzo ed esposto a parte in fattura
+ " " = normalmente conteggiato e addebitato
+
+$GEN type=combobox,comboclass=art_contributo_assolto
+@}}
+[FDITEM236_]
+m_strName=ART-CONTRIBUTO-ASSOLTO-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " " "I"
+{{@DataItem_m_strDescriptionFDITEM236_
+
+@}}
+[FDITEM237_]
+m_strName=ART-TBLSE-CODICE
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM237_
+
+
+$GEN type=code,entity=tblse,zmm=on,zmm_title=Codice blocco,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=82,zmm_entity=tblse
+@}}
+[FDITEM238_]
+m_strName=art-conai-x
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM238_
+
+
+@}}
+[FDITEM239_]
+m_strName=art-tipo-materiale-01
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM239_
+$GEN type=combobox,comboclass=art_tipo_materiale
+@}}
+[FDITEM240_]
+m_strName=art-tbltp-codice-01
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM240_
+$GEN type=code,entity=tbltp
+@}}
+[FDITEM241_]
+m_strName=art-tipo-materiale-02
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-tipo-materiale
+{{@DataItem_m_strDescriptionFDITEM241_
+$GEN type=combobox,comboclass=art_tipo_materiale
+@}}
+[FDITEM242_]
+m_strName=art-tbltp-codice-02
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-tbltp-codice-0
+{{@DataItem_m_strDescriptionFDITEM242_
+$GEN type=code,entity=tbltp
+@}}
+[FDITEM243_]
+m_strName=art-tipo-materiale-03
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-tipo-materiale
+{{@DataItem_m_strDescriptionFDITEM243_
+$GEN type=combobox,comboclass=art_tipo_materiale
+@}}
+[FDITEM244_]
+m_strName=art-tbltp-codice-03
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-tbltp-codice-0
+{{@DataItem_m_strDescriptionFDITEM244_
+$GEN type=code,entity=tbltp
+
+@}}
+[FDITEM245_]
+m_strName=art-tipo-materiale-04
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-tipo-materiale
+{{@DataItem_m_strDescriptionFDITEM245_
+$GEN type=combobox,comboclass=art_tipo_materiale
+@}}
+[FDITEM246_]
+m_strName=art-tbltp-codice-04
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-tbltp-codice-0
+{{@DataItem_m_strDescriptionFDITEM246_
+$GEN type=code,entity=tbltp
+@}}
+[FDITEM247_]
+m_strName=art-tipo-materiale-05
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-tipo-materiale
+{{@DataItem_m_strDescriptionFDITEM247_
+$GEN type=combobox,comboclass=art_tipo_materiale
+@}}
+[FDITEM248_]
+m_strName=art-tbltp-codice-05
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-tbltp-codice-0
+{{@DataItem_m_strDescriptionFDITEM248_
+$GEN type=code,entity=tbltp
+
+@}}
+[FDITEM249_]
+m_strName=art-tipo-materiale-06
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-tipo-materiale
+{{@DataItem_m_strDescriptionFDITEM249_
+$GEN type=combobox,comboclass=art_tipo_materiale
+@}}
+[FDITEM250_]
+m_strName=art-tbltp-codice-06
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-tbltp-codice-0
+{{@DataItem_m_strDescriptionFDITEM250_
+$GEN type=code,entity=tbltp
+@}}
+[FDITEM251_]
+m_strName=filler
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=art-conai-x
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM251_
+
+@}}
+[FDITEM252_]
+m_strName=FILLER
+m_nItemLevel=15
+m_nSync=-1
+m_bOccurs=1
+m_bFixed=1
+m_strRawSize=06
+m_nSize=6
+{{@DataItem_m_strDescriptionFDITEM252_
+
+@}}
+[FDITEM253_]
+m_strName=ART-TIPO-MATERIALE
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=ART-TIPO-MATERIALE
+{{@DataItem_m_strDescriptionFDITEM253_
+
+@}}
+[FDITEM254_]
+m_strName=art-tipo-materiale-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="P" "S" "T" "1" "2" "3" " "
+{{@DataItem_m_strDescriptionFDITEM254_
+                    88  ART-TIPO-MATERIALE-88   VALUE "P" "S" "T" " ".                              | Suadal 24/03/2017
+@}}
+[FDITEM255_]
+m_strName=art-tipo-materiale-plastica-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="1" "2" "3"
+{{@DataItem_m_strDescriptionFDITEM255_
+
+@}}
+[FDITEM256_]
+m_strName=art-tipo-materiale-plastica-1
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="1"
+{{@DataItem_m_strDescriptionFDITEM256_
+
+@}}
+[FDITEM257_]
+m_strName=art-tipo-materiale-plastica-2
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="2"
+{{@DataItem_m_strDescriptionFDITEM257_
+
+@}}
+[FDITEM258_]
+m_strName=art-tipo-materiale-plastica-3
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="3"
+{{@DataItem_m_strDescriptionFDITEM258_
+
+@}}
+[FDITEM259_]
+m_strName=ART-TBLTP-CODICE
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM259_
+
+@}}
+[FDITEM260_]
+m_strName=ART-TPK-CODICE
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM260_
+
+
+$GEN type=code,entity=tpk
+@}}
+[FDITEM261_]
+m_strName=ART-PRODOTTO-OMAGGIO-notused
+m_strRawPic=X(02)
+m_strPic=X(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM261_
+
+**        10  ART-PRODOTTO-OMAGGIO            PIC  X(02).                                           | MACGIU 25/02/2014
+@}}
+[FDITEM262_]
+m_strName=ART-PRODOTTO-OMAGGIO-old-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" "01" "02" "03" "99" " "
+{{@DataItem_m_strDescriptionFDITEM262_
+
+@}}
+[FDITEM263_]
+m_strName=ART-MODIFICA-PREZZO-old
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM263_
+**        10  ART-MODIFICA-PREZZO             PIC  X(01).                                           | MACGIU 25/02/2014
+@}}
+[FDITEM264_]
+m_strName=ART-MODIFICA-PREZZO-old-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="0" "1" " "
+{{@DataItem_m_strDescriptionFDITEM264_
+
+@}}
+[FDITEM265_]
+m_strName=art-abbat-nastri-x
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM265_
+
+
+@}}
+[FDITEM266_]
+m_strName=art-abbat-nastri-01
+m_strRawPic=s9(03)v9(02)
+m_strPic=S9(03)V9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM266_
+$GEN type=num,size=7,dec=2
+
+@}}
+[FDITEM267_]
+m_strName=art-abbat-nastri-02
+m_strRawPic=s9(03)v9(02)
+m_strPic=S9(03)V9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+m_strName_Xfd=art-abbat-nastri-0
+{{@DataItem_m_strDescriptionFDITEM267_
+$GEN type=num,size=7,dec=2
+
+@}}
+[FDITEM268_]
+m_strName=art-abbat-nastri-03
+m_strRawPic=s9(03)v9(02)
+m_strPic=S9(03)V9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+m_strName_Xfd=art-abbat-nastri-0
+{{@DataItem_m_strDescriptionFDITEM268_
+$GEN type=num,size=7,dec=2
+
+@}}
+[FDITEM269_]
+m_strName=art-abbat-nastri-04
+m_strRawPic=s9(03)v9(02)
+m_strPic=S9(03)V9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+m_strName_Xfd=art-abbat-nastri-0
+{{@DataItem_m_strDescriptionFDITEM269_
+$GEN type=num,size=7,dec=2
+
+@}}
+[FDITEM270_]
+m_strName=art-abbat-nastri-05
+m_strRawPic=s9(03)v9(02)
+m_strPic=S9(03)V9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+m_strName_Xfd=art-abbat-nastri-0
+{{@DataItem_m_strDescriptionFDITEM270_
+$GEN type=num,size=7,dec=2
+@}}
+[FDITEM271_]
+m_strName=art-abbat-nastri-06
+m_strRawPic=s9(03)v9(02)
+m_strPic=S9(03)V9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+m_strName_Xfd=art-abbat-nastri-0
+{{@DataItem_m_strDescriptionFDITEM271_
+$GEN type=num,size=7,dec=2
+
+@}}
+[FDITEM272_]
+m_strName=filler
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=art-abbat-nastri-x
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM272_
+
+@}}
+[FDITEM273_]
+m_strName=FILLER
+m_nItemLevel=15
+m_nSync=-1
+m_bOccurs=1
+m_bFixed=1
+m_strRawSize=06
+m_nSize=6
+{{@DataItem_m_strDescriptionFDITEM273_
+
+@}}
+[FDITEM274_]
+m_strName=ART-ABBAT-NASTRI-ALFA
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM274_
+
+@}}
+[FDITEM275_]
+m_strName=ART-ABBAT-NASTRI
+m_strRawPic=S9(03)V9(02)
+m_strPic=S9(03)V9(02)
+m_nItemLevel=25
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM275_
+
+@}}
+[FDITEM276_]
+m_strName=ART-WEB
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM276_
+
+
+
+$GEN type=combobox,comboclass=art_web,
+@}}
+[FDITEM277_]
+m_strName=ART-WEB-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "S" "N"
+{{@DataItem_m_strDescriptionFDITEM277_
+
+@}}
+[FDITEM278_]
+m_strName=art-web-88-s
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM278_
+
+@}}
+[FDITEM279_]
+m_strName=art-web-88-n
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="N"
+{{@DataItem_m_strDescriptionFDITEM279_
+
+@}}
+[FDITEM280_]
+m_strName=art-web-88-space
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" "
+{{@DataItem_m_strDescriptionFDITEM280_
+
+@}}
+[FDITEM281_]
+m_strName=ART-COSTO-STANDARD-AUTOMATICO
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=ART-COSTO-STANDARD
+{{@DataItem_m_strDescriptionFDITEM281_
+
+@}}
+[FDITEM282_]
+m_strName=ART-DISEGNO
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=ART-COSTO-STD-AUT
+{{@DataItem_m_strDescriptionFDITEM282_
+
+resente
+
+@}}
+[FDITEM283_]
+m_strName=ART-EXTRA-SUPERO
+m_strRawPic=X(15)
+m_strPic=X(15)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM283_
+$GEN type=code,entity=art
+
+@}}
+[FDITEM284_]
+m_strName=ART-ADDEBITO-CONAI-ACQ
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM284_
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+
+@}}
+[FDITEM285_]
+m_strName=ART-ADDEBITO-CONAI-ACQ-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "S"
+{{@DataItem_m_strDescriptionFDITEM285_
+
+@}}
+[FDITEM286_]
+m_strName=ART-CAUSALI-AMMESSE
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM286_
+
+
+*** modulo 65 - terminali E2K
+
+
+@}}
+[FDITEM287_]
+m_strName=art-caus-ammesse-01
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM287_
+
+@}}
+[FDITEM288_]
+m_strName=art-caus-ammesse-02
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-caus-ammesse-0
+{{@DataItem_m_strDescriptionFDITEM288_
+
+@}}
+[FDITEM289_]
+m_strName=art-caus-ammesse-03
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-caus-ammesse-0
+{{@DataItem_m_strDescriptionFDITEM289_
+
+@}}
+[FDITEM290_]
+m_strName=art-caus-ammesse-04
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-caus-ammesse-0
+{{@DataItem_m_strDescriptionFDITEM290_
+
+@}}
+[FDITEM291_]
+m_strName=art-caus-ammesse-05
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-caus-ammesse-0
+{{@DataItem_m_strDescriptionFDITEM291_
+
+@}}
+[FDITEM292_]
+m_strName=art-caus-ammesse-06
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-caus-ammesse-0
+{{@DataItem_m_strDescriptionFDITEM292_
+
+@}}
+[FDITEM293_]
+m_strName=art-caus-ammesse-07
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-caus-ammesse-0
+{{@DataItem_m_strDescriptionFDITEM293_
+
+@}}
+[FDITEM294_]
+m_strName=art-caus-ammesse-08
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-caus-ammesse-0
+{{@DataItem_m_strDescriptionFDITEM294_
+
+@}}
+[FDITEM295_]
+m_strName=art-caus-ammesse-09
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-caus-ammesse-0
+{{@DataItem_m_strDescriptionFDITEM295_
+
+@}}
+[FDITEM296_]
+m_strName=art-caus-ammesse-10
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM296_
+
+@}}
+[FDITEM297_]
+m_strName=filler
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=ART-CAUSALI-AMMESSE
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM297_
+
+@}}
+[FDITEM298_]
+m_strName=FILLER
+m_nItemLevel=15
+m_nSync=-1
+m_bOccurs=1
+m_bFixed=1
+m_strRawSize=10
+m_nSize=10
+{{@DataItem_m_strDescriptionFDITEM298_
+
+@}}
+[FDITEM299_]
+m_strName=ART-CAUS-AMMESSE
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM299_
+
+@}}
+[FDITEM300_]
+m_strName=ART-CAUS-AMMESSE-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "V" "S" "R" "Z" "O"
+{{@DataItem_m_strDescriptionFDITEM300_
+
+@}}
+[FDITEM301_]
+m_strName=ART-ABILITA-SC-MERCE-old
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM301_
+
+**        10  ART-ABILITA-SC-MERCE            PIC  X(01).                                           | MACGIU 25/02/2014
+@}}
+[FDITEM302_]
+m_strName=ART-ABILITA-SC-MERCE-old-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "S"
+{{@DataItem_m_strDescriptionFDITEM302_
+
+@}}
+[FDITEM303_]
+m_strName=ART-DECIMALI-BARCODE-notused
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM303_
+**        10  ART-DECIMALI-BARCODE            PIC  X(01).               |nb 18.12.03                | MACGIU 25/02/2014
+@}}
+[FDITEM304_]
+m_strName=ART-TBL8H-CODICE
+m_strRawPic=X(05)
+m_strPic=X(05)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM304_
+$GEN type=code,entity=tbl8h
+
+@}}
+[FDITEM305_]
+m_strName=ART-TBL8G-CODICE
+m_strRawPic=X(05)
+m_strPic=X(05)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM305_
+$GEN type=code,entity=tbl8g
+
+@}}
+[FDITEM306_]
+m_strName=ART-EXTRA-SUPERO-UVA
+m_strRawPic=S9(04)V9(02)
+m_strPic=S9(04)V9(02)
+m_nItemLevel=10
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM306_
+$GEN type=num,size=9,dec=2
+
+@}}
+[FDITEM307_]
+m_strName=ART-BLOCCO-CAUSALI-old
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM307_
+
+
+                                                                               |nb 04/07/2005 9.29
+*** modulo 65 - software ATON ROAD 3                                           |nb 04/07/2005 9.29
+                                                                               |nb 04/07/2005 9.29
+**        10  ART-BLOCCO-CAUSALI.                                              | maxime 08/09/2011  | MACGIU 25/02/2014
+
+@}}
+[FDITEM308_]
+m_strName=art-blocco-caus-old-01
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM308_
+
+@}}
+[FDITEM309_]
+m_strName=art-blocco-caus-old-02
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-blocco-caus-ol
+{{@DataItem_m_strDescriptionFDITEM309_
+
+@}}
+[FDITEM310_]
+m_strName=art-blocco-caus-old-03
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-blocco-caus-ol
+{{@DataItem_m_strDescriptionFDITEM310_
+
+@}}
+[FDITEM311_]
+m_strName=art-blocco-caus-old-04
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-blocco-caus-ol
+{{@DataItem_m_strDescriptionFDITEM311_
+
+@}}
+[FDITEM312_]
+m_strName=art-blocco-caus-old-05
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-blocco-caus-ol
+{{@DataItem_m_strDescriptionFDITEM312_
+
+@}}
+[FDITEM313_]
+m_strName=art-blocco-caus-old-06
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-blocco-caus-ol
+{{@DataItem_m_strDescriptionFDITEM313_
+
+@}}
+[FDITEM314_]
+m_strName=art-blocco-caus-old-07
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-blocco-caus-ol
+{{@DataItem_m_strDescriptionFDITEM314_
+
+@}}
+[FDITEM315_]
+m_strName=art-blocco-caus-old-08
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-blocco-caus-ol
+{{@DataItem_m_strDescriptionFDITEM315_
+
+@}}
+[FDITEM316_]
+m_strName=art-blocco-caus-old-09
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-blocco-caus-ol
+{{@DataItem_m_strDescriptionFDITEM316_
+
+@}}
+[FDITEM317_]
+m_strName=art-blocco-caus-old-10
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-blocco-caus-ol
+{{@DataItem_m_strDescriptionFDITEM317_
+
+@}}
+[FDITEM318_]
+m_strName=art-blocco-caus-old-11
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-blocco-caus-ol
+{{@DataItem_m_strDescriptionFDITEM318_
+
+@}}
+[FDITEM319_]
+m_strName=art-blocco-caus-old-12
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-blocco-caus-ol
+{{@DataItem_m_strDescriptionFDITEM319_
+
+@}}
+[FDITEM320_]
+m_strName=art-blocco-caus-old-13
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-blocco-caus-ol
+{{@DataItem_m_strDescriptionFDITEM320_
+
+@}}
+[FDITEM321_]
+m_strName=art-blocco-caus-old-14
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-blocco-caus-ol
+{{@DataItem_m_strDescriptionFDITEM321_
+
+@}}
+[FDITEM322_]
+m_strName=art-blocco-caus-old-15
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=art-blocco-caus-ol
+{{@DataItem_m_strDescriptionFDITEM322_
+
+@}}
+[FDITEM323_]
+m_strName=filler
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=ART-BLOCCO-CAUSALI-old
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM323_
+**        10  filler redefines  ART-BLOCCO-CAUSALI.                            | maxime 08/09/2011  | MACGIU 25/02/2014
+@}}
+[FDITEM324_]
+m_strName=FILLER
+m_nItemLevel=15
+m_nSync=-1
+m_bOccurs=1
+m_bFixed=1
+m_strRawSize=15
+m_nSize=15
+{{@DataItem_m_strDescriptionFDITEM324_
+
+@}}
+[FDITEM325_]
+m_strName=ART-BLOCCO-CAUS-old
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=ART-BLOCCO-CAUS-ol
+{{@DataItem_m_strDescriptionFDITEM325_
+**                20  ART-BLOCCO-CAUS         PIC  X(01).                                           | MACGIU 25/02/2014
+
+@}}
+[FDITEM326_]
+m_strName=ART-BLOCCO-CAUS-OLD-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "1"
+{{@DataItem_m_strDescriptionFDITEM326_
+
+@}}
+[FDITEM327_]
+m_strName=ART-CODICE-AUTORIZZAZIONE-ALFA
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM327_
+
+
+       10  ART-FILLER                      PIC  X(469).            |ds 03.07.03
+       10  ART-FILLER                      PIC  X(468).            |ds 03.07.03
+       10  ART-FILLER                      PIC  X(458).            |nb 13.11.03
+       10  ART-FILLER                      PIC  X(457).            |nb 13.11.03
+       10  ART-FILLER                      PIC  X(446).            |nb 01.03.04
+       10  ART-FILLER                      PIC  X(439).                        |nb 18/06/2004 9.53
+
+@}}
+[FDITEM328_]
+m_strName=ART-CODICE-AUTORIZZAZIONE
+m_strRawPic=9(09)
+m_strPic=9(09)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM328_
+$GEN type=num,size=12,dec=0
+
+@}}
+[FDITEM329_]
+m_strName=ART-TIPO-PRODOTTO-VAL
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=ART-TIPO-PRODOTTO-
+{{@DataItem_m_strDescriptionFDITEM329_
+** campo per il livello di valorizzazione dei prodotti
+$GEN type=checkbox,truevalue="F",falsevalue=" "
+
+@}}
+[FDITEM330_]
+m_strName=ART-TIPO-PRODOTTO-VAL-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "F"
+{{@DataItem_m_strDescriptionFDITEM330_
+
+@}}
+[FDITEM331_]
+m_strName=ART-IMBOTTIGLIARE
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM331_
+        10  ART-FILLER                      PIC  X(424).                   |DS 18/11/2005 9.36     |nb 04/07/2005 9.29
+        10  ART-FILLER                      PIC  X(415).                   |sq 22/11/2005 9.17     |DS 18/11/2005 9.36
+        10  ART-FILLER                      PIC  X(414).                       |nb 05/12/2005 17.27|sq 22/11/2005 9.17
+
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+@}}
+[FDITEM332_]
+m_strName=ART-IMBOTTIGLIARE-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "S"
+{{@DataItem_m_strDescriptionFDITEM332_
+
+@}}
+[FDITEM333_]
+m_strName=ART-FLAG-TABELLA-E
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM333_
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+@}}
+[FDITEM334_]
+m_strName=ART-FLAG-TABELLA-E-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "S"
+{{@DataItem_m_strDescriptionFDITEM334_
+
+@}}
+[FDITEM335_]
+m_strName=ART-CONTINUATIVO
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM335_
+
+@}}
+[FDITEM336_]
+m_strName=ART-CONTINUATIVO-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM336_
+
+@}}
+[FDITEM337_]
+m_strName=ART-ANNO-COLLEZIONE
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM337_
+
+@}}
+[FDITEM338_]
+m_strName=ART-STAGIONE
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM338_
+
+@}}
+[FDITEM339_]
+m_strName=ART-STAGIONE-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="A" "P" "E"
+{{@DataItem_m_strDescriptionFDITEM339_
+
+@}}
+[FDITEM340_]
+m_strName=ART-MARCHIO
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM340_
+
+@}}
+[FDITEM341_]
+m_strName=ART-CAMPIONARIO
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM341_
+
+@}}
+[FDITEM342_]
+m_strName=ART-LINEA-PRODOTTO
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM342_
+
+@}}
+[FDITEM343_]
+m_strName=ART-TIPOLOGIA
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM343_
+
+@}}
+[FDITEM344_]
+m_strName=ART-SESSO
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM344_
+
+@}}
+[FDITEM345_]
+m_strName=ART-SESSO-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="M" "F"
+{{@DataItem_m_strDescriptionFDITEM345_
+
+@}}
+[FDITEM346_]
+m_strName=ART-ARTICOLO-PADRE
+m_strRawPic=X(15)
+m_strPic=X(15)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM346_
+
+@}}
+[FDITEM347_]
+m_strName=art-nopunti
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM347_
+
+ l'articolo non genera punti sugli scontrini del punto vendita
+
+
+@}}
+[FDITEM348_]
+m_strName=art-buono
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM348_
+
+ l'articolo è un buono spesa
+
+@}}
+[FDITEM349_]
+m_strName=art-lungh-mt
+m_strRawPic=9(04)v9(03)
+m_strPic=9(04)V9(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM349_
+
+@}}
+[FDITEM350_]
+m_strName=art-largh-mt
+m_strRawPic=9(04)v9(03)
+m_strPic=9(04)V9(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM350_
+
+@}}
+[FDITEM351_]
+m_strName=art-alt-mt
+m_strRawPic=9(04)v9(03)
+m_strPic=9(04)V9(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM351_
+
+@}}
+[FDITEM352_]
+m_strName=art-temp-min
+m_strRawPic=s9(03)v9(02)
+m_strPic=S9(03)V9(02)
+m_nItemLevel=10
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM352_
+
+
+
+$GEN type=num,dec=3,size=10
+ezza in mt                   | mxm 19/05/2008 21.52
+$GEN type=num,dec=3,size=10
+ezza in mt                   | mxm 19/05/2008 21.52
+$GEN type=num,dec=3,size=10
+za in mt                     | mxm 19/05/2008 21.52
+$GEN type=num,dec=2,size=7
+@}}
+[FDITEM353_]
+m_strName=art-temp-max
+m_strRawPic=s9(03)v9(02)
+m_strPic=S9(03)V9(02)
+m_nItemLevel=10
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM353_
+9/05/2008 21.52
+$GEN type=num,dec=2,size=7
+@}}
+[FDITEM354_]
+m_strName=art-lotto-83
+m_strRawPic=x(15)
+m_strPic=X(15)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM354_
+9/05/2008 21.52
+
+
+
+
+$GEN type=code,entity=lot
+@}}
+[FDITEM355_]
+m_strName=art-autoclavi-83
+m_strRawPic=x(15)
+m_strPic=X(15)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM355_
+
+@}}
+[FDITEM356_]
+m_strName=art-tbl38-arrotondamento
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM356_
+
+
+@}}
+[FDITEM357_]
+m_strName=art-tbl38-arrotondamento-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1 2 3
+{{@DataItem_m_strDescriptionFDITEM357_
+
+@}}
+[FDITEM358_]
+m_strName=art-tbl38-arrotondamento-88-1
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM358_
+
+@}}
+[FDITEM359_]
+m_strName=art-tbl38-arrotondamento-88-2
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=2
+{{@DataItem_m_strDescriptionFDITEM359_
+
+@}}
+[FDITEM360_]
+m_strName=art-tbl38-arrotondamento-88-3
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=3
+{{@DataItem_m_strDescriptionFDITEM360_
+
+@}}
+[FDITEM361_]
+m_strName=art-cpa
+m_strRawPic=x(04)
+m_strPic=X(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM361_
+
+
+@}}
+[FDITEM362_]
+m_strName=art-taric
+m_strRawPic=x(02)
+m_strPic=X(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM362_
+
+@}}
+[FDITEM363_]
+m_strName=art-cadd
+m_strRawPic=x(04)
+m_strPic=X(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM363_
+
+@}}
+[FDITEM364_]
+m_strName=art-tipo-imballaggio
+m_strRawPic=x(02)
+m_strPic=X(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM364_
+
+@}}
+[FDITEM365_]
+m_strName=art-esclusione-intra
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM365_
+
+@}}
+[FDITEM366_]
+m_strName=art-esclusione-intra-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM366_
+
+@}}
+[FDITEM367_]
+m_strName=art-esclusione-intra-ko
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM367_
+
+@}}
+[FDITEM368_]
+m_strName=art-skip-ctr-taglie
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM368_
+
+
+@}}
+[FDITEM369_]
+m_strName=art-skip-ctr-taglie-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM369_
+
+@}}
+[FDITEM370_]
+m_strName=art-skip-ctr-taglie-ko
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM370_
+
+@}}
+[FDITEM371_]
+m_strName=art-tipo-agroalimentare
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM371_
+
+@}}
+[FDITEM372_]
+m_strName=art-tipo-agroalimentare-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM372_
+
+@}}
+[FDITEM373_]
+m_strName=art-tipo-agroalimentare-ko
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM373_
+
+@}}
+[FDITEM374_]
+m_strName=art-deteriorabile
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM374_
+
+@}}
+[FDITEM375_]
+m_strName=art-deteriorabile-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM375_
+
+@}}
+[FDITEM376_]
+m_strName=art-deteriorabile-ko
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM376_
+
+@}}
+[FDITEM377_]
+m_strName=art-plastica-conai
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM377_
+
+@}}
+[FDITEM378_]
+m_strName=art-plastica-conai-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM378_
+
+@}}
+[FDITEM379_]
+m_strName=art-plastica-conai-ko
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM379_
+
+@}}
+[FDITEM380_]
+m_strName=art-filler
+m_strRawPic=x(299)
+m_strPic=X(299)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM380_
+
+
+        10  art-filler                      pic  x(302).              | rososv 05/03/2012           | SUADAL 02/11/2012
+         10  art-filler                      pic  x(300).             | SUADAL 02/11/2012           | Suadal 24/03/2017
+
+@}}
+[FDITEM381_]
+m_strName=ART-FILLER-RIS
+m_strRawPic=X(40)
+m_strPic=X(40)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM381_
+**        10  ART-FILLER                      PIC  X(303).                                          | rososv 06/02/2012  | rososv 05/03/2012
+**        10  ART-FILLER                      PIC  X(304).          | rososv 26/01/2011 16:17:26    | rososv 06/02/2012
+**        10  ART-FILLER                      PIC  X(316).                                          | rososv 26/01/2011 16:17:26
+
+
+
+
+@}}
+[FDITEM382_]
+m_strName=ART-FILLER-91
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM382_
+
+@}}
+[FDITEM383_]
+m_strName=ART-FILLER-91-RIS
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM383_
+
+@}}
+[CStoAcucobolSL_]
+m_nType=1
+m_bOptional=1
+m_strAssignToName="ART"
+m_nDevice=4
+m_nFormat=3
+m_nAccessMode=3
+m_strFileStatus=status-art
+m_nNumber=1
+m_nCompression=70
+{{@SL_m_strDescription
+
+@}}
+[SLPKEY_]
+m_strName=ART-CODICE-G2
+m_bUnique=1
+{{@Key_m_strDescription
+
+@}}
+[SLKEYATOM0_]
+m_strName=ART-CODICE-G2
+[SLINDEX0_]
+m_strName=ART-CODICE1
+m_bUnique=1
+{{@Key_m_strDescriptionSLINDEX0_
+
+@}}
+[SLKEYATOM0_SLINDEX0_]
+m_strName=ART-CODICE-ALTERNATIVO
+[SLKEYATOM1_SLINDEX0_]
+m_strName=ART-CODICE-G2
+[SLINDEX1_]
+m_strName=ART-CODICE2
+m_bUnique=1
+{{@Key_m_strDescriptionSLINDEX1_
+
+@}}
+[SLKEYATOM0_SLINDEX1_]
+m_strName=ART-DESCRIZIONE1-G2
+[SLKEYATOM1_SLINDEX1_]
+m_strName=ART-CODICE-G2
+[SLINDEX2_]
+m_strName=ART-CODICE3
+m_bUnique=1
+{{@Key_m_strDescriptionSLINDEX2_
+
+@}}
+[SLKEYATOM0_SLINDEX2_]
+m_strName=ART-CODICE-CM
+[SLKEYATOM1_SLINDEX2_]
+m_strName=ART-CODICE-G2
+[SLINDEX3_]
+m_strName=ART-CODICE4
+m_bUnique=1
+{{@Key_m_strDescriptionSLINDEX3_
+
+@}}
+[SLKEYATOM0_SLINDEX3_]
+m_strName=ART-CODICE-ME
+[SLKEYATOM1_SLINDEX3_]
+m_strName=ART-CODICE-G2
+[SLINDEX4_]
+m_strName=ART-CODICE5
+m_bUnique=1
+{{@Key_m_strDescriptionSLINDEX4_
+
+@}}
+[SLKEYATOM0_SLINDEX4_]
+m_strName=ART-CODICE-IN
+[SLKEYATOM1_SLINDEX4_]
+m_strName=ART-CODICE-G2

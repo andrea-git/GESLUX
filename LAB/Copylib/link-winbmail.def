@@ -1,0 +1,53 @@
+      *
+      **--------------------------------------------------------------*
+      **            Params for calling program                        *
+      **--------------------------------------------------------------*
+       01 WINBMAIL-BLOCK.
+          03 WINBMAIL-LOGFILE        PIC X(01).
+      *                                         use logmechanism (y=yes)
+          03 WINBMAIL-SMTP-AUTH      PIC X(01).
+      *                                         use SMTP-AUTH (Y=yes)
+          03 WINBMAIL-POP3-PORT      PIC 9(05).
+      *                                         Portnumber POP3
+          03 WINBMAIL-SMTP-PORT      PIC 9(05).
+      *                                         Portnumber SMTP
+          03 WINBMAIL-USER           PIC X(256).
+      *                                         username of mail-Account
+          03 WINBMAIL-USER-PASSWORT  PIC X(256).
+      *                                         password of mail-Account
+          03 WINBMAIL-POP3-SERVER    PIC X(256).
+      *                                         Name of POP3-Server
+          03 WINBMAIL-SERVER         PIC X(256).
+      *                                         name of Mail-Server
+          03 WINBMAIL-FROM           PIC X(256).
+      *                                         mail from
+          03 WINBMAIL-TO             PIC X(256).
+      *                                         mail to
+          03 WINBMAIL-TITEL          PIC X(256).
+      *                                         mail title/subject
+          03 WINBMAIL-BODY           PIC X(64000).
+      *                                         mail body
+          03 WINBMAIL-DATEI-1        PIC X(256).
+      *                                         attachment file 1
+          03 WINBMAIL-DATEI-2        PIC X(256).
+      *                                         attachment file 2
+          03 WINBMAIL-DATEI-3        PIC X(256).
+      *                                         attachment file 3
+          03 WINBMAIL-RETURN         PIC 9(02).
+             88 WINBMAIL-OK                     VALUE 00.
+             88 WINBMAIL-USER-PASS-ERROR        VALUE 47.
+             88 WINBMAIL-NO-POP3-SERVER         VALUE 48.
+             88 WINBMAIL-NO-SMTP-SERVER         VALUE 49.
+             88 WINBMAIL-NO-SOCKET              VALUE 50.
+             88 WINBMAIL-CONNECT-ERROR          VALUE 51.
+             88 WINBMAIL-HOSTNAME-ERROR         VALUE 52.
+             88 WINBMAIL-HELO-ERROR             VALUE 53.
+             88 WINBMAIL-MAILFROM-ERROR         VALUE 54.
+             88 WINBMAIL-MAILTO-ERROR           VALUE 55.
+             88 WINBMAIL-DATA-ERROR             VALUE 56.
+             88 WINBMAIL-DATAEX-ERROR           VALUE 57.
+             88 WINBMAIL-FILE-NOT-AVAILABLE     VALUE 59.
+             88 WINBMAIL-FILE-NOT-READABLE      VALUE 60.
+             88 WINBMAIL-AUTH-ERROR             VALUE 61.
+             88 WINBMAIL-AUTH-NOT-SUPPORTED     VALUE 69.
+             88 WINBMAIL-ERROR                  VALUE 99.

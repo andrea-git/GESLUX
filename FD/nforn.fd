@@ -1,0 +1,25 @@
+       FD  nforn.
+       01 nfor-rec.
+           05 nfor-chiave.
+               10 nfor-chiave-forn.
+                   15 nfor-tipo-CF     PIC  X(1).
+                       88 nfor-tipo-C VALUE IS "C". 
+                       88 nfor-tipo-F VALUE IS "F". 
+                   15 nfor-codice      PIC  9(5).
+               10 nfor-prog        PIC  9(3).
+           05 nfor-dati.
+               10 nfor-nota        PIC  x(200).
+               10 nfor-dati-comuni.
+                   15 nfor-data-creazione          PIC  9(8).
+                   15 nfor-ora-creazione           PIC  9(8).
+                   15 nfor-utente-creazione        PIC  X(10).
+                   15 nfor-data-ultima-modifica    PIC  9(8).
+                   15 nfor-ora-ultima-modifica     PIC  9(8).
+                   15 nfor-utente-ultima-modifica  PIC  X(10).
+               10 nfor-vuoti.
+                   15 nfor-num-vuoto-1 PIC  9(18).
+                   15 nfor-num-vuoto-2 PIC  9(18).
+                   15 nfor-num-vuoto-3 PIC  9(18).
+                   15 nfor-alfa-vuoto-1            PIC  X(20).
+                   15 nfor-alfa-vuoto-2            PIC  X(20).
+                   15 nfor-alfa-vuoto-3            PIC  X(20).

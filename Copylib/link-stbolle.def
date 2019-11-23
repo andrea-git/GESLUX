@@ -1,0 +1,46 @@
+      *
+       01 stbolle-linkage.
+           03 stbolle-TipoStampa           PIC  x.
+               88 stbolle-Stampa VALUE IS "S". 
+               88 stbolle-Ristampa VALUE IS "R". 
+           03 stbolle-split    PIC  x(256).
+           03 stbolle-Path     PIC  x(256).
+           03 stbolle-data     PIC  9(8).
+           03 stbolle-anno     PIC  9(4).
+           03 stb-limiti-numero.
+               05 stb-numero-da    PIC  9(8).
+               05 stb-numero-a     PIC  9(8).
+           03 link-user        PIC  X(10).
+           03 stbolle-chiave   PIC  xx.
+               88 stbolle-k3 VALUE IS "K3". 
+               88 stbolle-k-bolla VALUE IS "BO". 
+           03 stbolle-ricerca  PIC  9.
+               88 stbolle-singola VALUE IS 1,    WHEN SET TO FALSE  0. 
+      *****     03 stbolle-tipocli  PIC  x.
+      *****         88 stbolle-GDO  VALUE IS "G". 
+      *****         88 stbolle-MV   VALUE IS "M". 
+      *****         88 stbolle-AT   VALUE IS "A". 
+           03 stbolle-piu-stampe pic 9.
+              88 stbolle-piu-stampe-si value 1, false 0.
+           03 stbolle-num-stampe pic 9(2).
+           03 stbolle-path1 pic x(256).   
+           03 stbolle-stampante1 pic x(100).
+           03 stbolle-path2 pic x(256).     
+           03 stbolle-stampante2 pic x(100).
+           03 stbolle-path3 pic x(256).     
+           03 stbolle-stampante3 pic x(100).
+           03 stbolle-path4 pic x(256).     
+           03 stbolle-stampante4 pic x(100).
+           03 stbolle-path5 pic x(256). 
+           03 stbolle-stampante5 pic x(100).
+           |Usato come path di ritorno per il riepiolo corrieri 
+           |dalla nuova stampa A4
+           03 stbolle-path-riepilogo pic x(256).
+           03 stbolle-giro           pic 9.   
+           03 stbolle-prima-bolla    pic 9(8).
+           03 stbolle-ultima-bolla   pic 9(8).
+           03 stbolle-path-file-parallelo pic x(200).
+           03 filler             pic x(284).
+
+
+           

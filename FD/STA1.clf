@@ -1,0 +1,38 @@
+; CaseMaker Totem Layout Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[MONITOR_FILE]
+
+
+[DATALAYOUT_CONTENT]
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E3AA205443-373-3054012907
+[DSNENTITY_]
+[CStoAcucobolFileDefinition_]
+m_nType=1
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bLabel=1
+m_strPrefix=STA1
+{{@FD_m_strDescription
+
+@}}
+[FDITEM0_]
+m_strName=RIGO-STA
+m_strRawPic=X(900)
+m_strPic=X(900)
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_
+
+@}}
+[CStoAcucobolSL_]
+m_nType=1
+m_strAssignToName="-P SPOOLER-DIRECT"
+m_nDevice=8
+m_nAccessMode=1
+m_strFileStatus=STATO-IO
+m_nCompression=70
+{{@SL_m_strDescription
+
+@}}

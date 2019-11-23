@@ -1,0 +1,21 @@
+       FD  timbalqta.
+       01 imq-rec.
+           05 imq-chiave.
+               10 imq-codice       PIC  x(3).
+           05 imq-dati.
+               10 imq-tipo         PIC  x(3).
+               10 imq-qta-imb      PIC  9(4).
+               10 imq-dati-comuni.
+                   15 imq-data-creazione           PIC  9(8).
+                   15 imq-ora-creazione            PIC  9(8).
+                   15 imq-utente-creazione         PIC  x(10).
+                   15 imq-data-ultima-modifica     PIC  9(8).
+                   15 imq-ora-ultima-modifica      PIC  9(8).
+                   15 imq-utente-ultima-modifica   PIC  x(10).
+               10 imq-vuoti.
+                   15 imq-num-vuoto-1  PIC  9(15).
+                   15 imq-num-vuoto-2  PIC  9(15).
+                   15 imq-num-vuoto-3  PIC  9(15).
+                   15 imq-alfa-vuoto-1 PIC  x(20).
+                   15 imq-alfa-vuoto-2 PIC  x(20).
+                   15 imq-alfa-vuoto-3 PIC  x(20).

@@ -1,0 +1,4231 @@
+; CaseMaker Totem Program Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[MONITOR_FILE]
+
+
+[PROGRAM_CONTENT]
+QUIT_CONFIRM=0
+ANSI_FORMAT=1
+MAIN_SCREEN_NAME=Form1
+BEFORE_PROGRAM=PAS004P-Ev-Before-Program
+AFTER_PROGRAM=I-O-BLOCCO
+AFTER_INIT=tcauven-Ev-After-Init
+PROGRAM_UNIQUE_CODE=TOTEM-7E3AA205652-333-2250010487
+
+{{@DESCRIPTION:
+
+@}}
+
+[WORKING_STORAGE]
+m_nType=1
+m_strName=Working Storage
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionWK
+
+@}}
+[FDITEM0_WK]
+m_strName=Form1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_WK
+
+@}}
+[FDITEM1_WK]
+m_strName=Form1-Tb-1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1_WK
+
+@}}
+[FDITEM2_WK]
+m_strName=titolo
+m_strRawPic=x(50)
+m_strPic=x(50)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM2_WK
+
+@}}
+[FDITEM3_WK]
+m_strName=E-ESCI
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM3_WK
+
+@}}
+[FDITEM4_WK]
+m_strName=E-NUOVO
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM4_WK
+
+@}}
+[FDITEM5_WK]
+m_strName=E-CANCELLA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM5_WK
+
+@}}
+[FDITEM6_WK]
+m_strName=E-SALVA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM6_WK
+
+@}}
+[FDITEM7_WK]
+m_strName=E-ANTEPRIMA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM7_WK
+
+@}}
+[FDITEM8_WK]
+m_strName=E-MODIFICA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM8_WK
+
+@}}
+[FDITEM9_WK]
+m_strName=E-STAMPA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM9_WK
+
+@}}
+[FDITEM10_WK]
+m_strName=E-CERCA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM10_WK
+
+@}}
+[FDITEM11_WK]
+m_strName=Small-Font
+m_nUsage=37
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM11_WK
+
+@}}
+[FDITEM12_WK]
+m_strName=toolbar-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM12_WK
+
+@}}
+[FDITEM13_WK]
+m_strName=Screen1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM13_WK
+
+@}}
+[FDITEM14_WK]
+m_strName=esegui-73x21-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM14_WK
+
+@}}
+[FDITEM15_WK]
+m_strName=cod
+m_strRawPic=z(4)
+m_strPic=z(4)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM15_WK
+
+@}}
+[FDITEM16_WK]
+m_strName=des
+m_strRawPic=x(30)
+m_strPic=x(30)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM16_WK
+
+@}}
+[FDITEM17_WK]
+m_strName=e-cod
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM17_WK
+
+@}}
+[FDITEM18_WK]
+m_strName=e-des
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM18_WK
+
+@}}
+[FDITEM19_WK]
+m_strName=AUTO-ID
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM19_WK
+
+@}}
+[FDITEM20_WK]
+m_strName=totale-righe
+m_strRawPic=9(3)
+m_strPic=9(3)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM20_WK
+
+@}}
+[FDITEM21_WK]
+m_strName=RowCounter
+m_strRawPic=9(3)
+m_strPic=9(3)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM21_WK
+
+@}}
+[FDITEM22_WK]
+m_strName=NumRows
+m_strRawPic=9(3)
+m_strPic=9(3)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM22_WK
+
+@}}
+[FDITEM23_WK]
+m_strName=MyEventData2
+m_nUsage=21
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM23_WK
+
+@}}
+[FDITEM24_WK]
+m_strName=tit-vet
+m_strRawPic=X(20)
+m_strPic=X(20)
+m_strDefaultValue="Codice"
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM24_WK
+
+@}}
+[FDITEM25_WK]
+m_strName=des-vet
+m_strRawPic=X(40)
+m_strPic=X(40)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM25_WK
+
+@}}
+[FDITEM26_WK]
+m_strName=Form1-St-1-Handle
+m_nUsage=51
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM26_WK
+
+@}}
+[FDITEM27_WK]
+m_strName=memo-vet
+m_strRawPic=s9(5)
+m_strPic=s9(5)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM27_WK
+
+@}}
+[FDITEM28_WK]
+m_strName=TipoDelete
+m_strRawPic=xxx
+m_strPic=xxx
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM28_WK
+
+@}}
+[FDITEM29_WK]
+m_strName=DeleteRiga
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="ROW"
+{{@DataItem_m_strDescriptionFDITEM29_WK
+
+@}}
+[FDITEM30_WK]
+m_strName=DeleteRecord
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="REC"
+{{@DataItem_m_strDescriptionFDITEM30_WK
+
+@}}
+[FDITEM31_WK]
+m_strName=como-vettore
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM31_WK
+
+@}}
+[FDITEM32_WK]
+m_strName=rec-grid
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM32_WK
+
+@}}
+[FDITEM33_WK]
+m_strName=col-esito
+m_strRawPic=x(20)
+m_strPic=x(20)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM33_WK
+
+@}}
+[FDITEM34_WK]
+m_strName=col-escons
+m_strRawPic=x(10)
+m_strPic=x(10)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM34_WK
+
+@}}
+[FDITEM35_WK]
+m_strName=col-descr
+m_strRawPic=x(30)
+m_strPic=x(30)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM35_WK
+
+@}}
+[FDITEM36_WK]
+m_strName=Default-Font
+m_nUsage=38
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM36_WK
+
+@}}
+[FDITEM37_WK]
+m_strName=STATUS-tescons
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM37_WK
+
+@}}
+[FDITEM38_WK]
+m_strName=Valid-STATUS-tescons
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM38_WK
+
+@}}
+[FDITEM39_WK]
+m_strName=STATUS-tesconsvet
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM39_WK
+
+@}}
+[FDITEM40_WK]
+m_strName=Valid-STATUS-tesconsvet
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM40_WK
+
+@}}
+[FDITEM41_WK]
+m_strName=STATUS-tvettori
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM41_WK
+
+@}}
+[FDITEM42_WK]
+m_strName=Valid-STATUS-tvettori
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM42_WK
+
+@}}
+
+
+[LINKAGE_SECTION]
+m_nType=1
+m_strName=Linkage Section
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionLK
+
+@}}
+[FDITEM0_LK]
+m_strName=LK-BLOCKPGM
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM0_LK
+
+@}}
+[FDITEM1_LK]
+m_strName=LK-BL-PROG-ID
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM1_LK
+
+@}}
+[FDITEM2_LK]
+m_strName=LK-BL-DATA
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM2_LK
+
+@}}
+[FDITEM3_LK]
+m_strName=LK-BL-ORA
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM3_LK
+
+@}}
+[FDITEM4_LK]
+m_strName=LK-BL-TIPO-OP
+m_strRawPic=9(1)
+m_strPic=9(1)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM4_LK
+
+@}}
+[FDITEM5_LK]
+m_strName=LK-BL-LETTURA
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM5_LK
+
+@}}
+[FDITEM6_LK]
+m_strName=LK-BL-SCRITTURA
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=2
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM6_LK
+
+@}}
+[FDITEM7_LK]
+m_strName=LK-BL-CANCELLAZIONE
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=3
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM7_LK
+
+@}}
+[FDITEM8_LK]
+m_strName=LK-BL-USO
+m_strRawPic=9(1)
+m_strPic=9(1)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM8_LK
+
+@}}
+[FDITEM9_LK]
+m_strName=LK-BL-IN-USO
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM9_LK
+
+@}}
+[FDITEM10_LK]
+m_strName=LK-HND-WIN
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM10_LK
+
+@}}
+[FDITEM11_LK]
+m_strName=USER-CODI
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=common-linkage.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM11_LK
+
+@}}
+[FDITEM12_LK]
+m_strName=LIVELLO-ABIL
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=common-linkage.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM12_LK
+
+@}}
+
+
+{{@SCREEN:
+*   Screen Painter Data
+*   Schema 6.0
+*
+BEGIN-SPDATA-6.1A
+
+GRAPHICAL-SCREEN
+
+Begin Screen Form1
+   PREFIX            = Form1
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = Form1
+   Absolute Column   = 0
+   Absolute Line     = 1
+   Action            = (None)
+   Auto Minimize     = TRUE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 13
+   Cell Width        = 6
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = DataSet1
+   Erase Screen      = FALSE
+   Font              = Small Font
+   Font Variable     = Small-Font
+   Handle Variable   = Form1-Handle
+   Height in Cells   = FALSE
+   Help ID           = 0
+   Label Offset      = 20
+   Lines             = 44,00
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = FALSE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 76,00
+   System Menu       = TRUE
+   Title Bar         = TRUE
+   Title Variable    = titolo
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = FALSE
+   Window Type       = Independent
+   Wrap              = FALSE
+   Event Procedure   = Form1-Event-Proc
+   Begin Grid gd-cve
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 5,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = gd-cve
+      Action            = (None)
+      Adjustable Columns = TRUE
+      Border            = Boxed
+      Cells' Setting    = ( X = 1, Y = 1, Data = "E. Vettore" )
+      Cells' Setting    = ( X = 2, Y = 1, Data = "Esito" )
+      Cells' Setting    = ( X = 3, Y = 1, Data = "Descrizione" )
+      Centered Headings = FALSE
+      Color             = 0
+      Column            = 2,00
+      Column Headings   = TRUE
+      Columns' Setting  = ( X = 1, Name = col-esito, READONLY = 0 )
+      Columns' Setting  = ( PIC = "x(20)", TYPE = "x(20)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "L" )
+      Columns' Setting  = ( DISP = 20, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 2, Name = col-escon, READONLY = 0 )
+      Columns' Setting  = ( Font = Small Font, Font Variable = Small-Font )
+      Columns' Setting  = ( PIC = "x(10)", TYPE = "U(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "L" )
+      Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 3, Name = col-descr, READONLY = 0 )
+      Columns' Setting  = ( Font = Small Font, Font Variable = Small-Font )
+      Columns' Setting  = ( PIC = "X(30)", TYPE = "X(30)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "L" )
+      Columns' Setting  = ( DISP = 50, SEPA = 5, DIVI = 1 )
+      Cursor Color      = 0
+      Cursor Frame Width = 2
+      Cursor X          = 0
+      Cursor Y          = 0
+      Destroy Type      = Automatic
+      Divider Color     = 1
+      Drag Color        = 0
+      Enable            = NONE
+      End Color         = 0
+      Font              = Default Font
+      Heading Color     = 257
+      Heading Divider Color = 1
+      Heading Font      = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hscroll           = TRUE
+      ID                = 1
+      ID Variable       = AUTO-ID
+      Last Row          = 0
+      Line              = 5,00
+      Lines             = 37,00
+      Lines Unit        = Default
+      No Tab            = FALSE
+      Num Col Headings  = 1
+      Num Columns       = 3
+      Num Rows          = 0
+      Occurs            = 0
+      Paged             = FALSE
+      Row Dividers      = 1
+      Row Headings      = FALSE
+      Size              = 74,00
+      Size Unit         = Default
+      Tab Order         = 1
+      Tiled Headings    = TRUE
+      Use Tab           = TRUE
+      Virtual Width     = 70
+      Visible           = NONE
+      Vpadding          = 50
+      Vscroll           = TRUE
+      Width in Cells    = TRUE
+      Event Procedure   = Form1-Gd-1-Event-Proc
+      Msg-Begin-Drag    = form1-gd-1-Ev-Msg-Begin-Drag
+      Msg-Begin-Entry   = form1-gd-1-Ev-Msg-Begin-Entry
+      Msg-End-Drag      = form1-gd-1-Ev-Msg-End-Drag
+      Msg-Finish-Entry  = form1-gd-1-Ev-Msg-Finish-Entry
+      Msg-Goto-Cell     = form1-gd-1-Ev-Msg-Goto-Cell
+      Msg-Goto-Cell-Drag = form1-gd-1-Ev-Msg-Goto-Cell-Drag
+      Msg-Goto-Cell-Mouse = form1-gd-1-Ev-Msg-Goto-Cell-Mouse
+   End
+   Begin Label Screen1-La-1
+      SCREEN-COL        = 2,57
+      SCREEN-LINE       = 2,20
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-La-1
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,57
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 100
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 2,20
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 12,00
+      Size Unit         = Default
+      Tab Order         = 2
+      Title             = "Vettore"
+      Title Picture     = X(20)
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Data.Entry-Field ef-vet
+      SCREEN-COL        = 22,00
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-vet
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 22,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Enable Variable   = mod-k
+      Field Edited (Style) = 1
+      Field Edited Format = z(5)
+      Field Picture     = 9(5)
+      Field Variable    = tev-vet
+      File              = tesconsvet
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare il Codice
+      ID                = 0
+      ID Variable       = AUTO-ID
+      Justification     = Right
+      Line              = 2,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 5
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 8,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 3
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      My Property       = "ZOOM="
+      Before Procedure  = Screen1-DaEf-1-BeforeProcedure
+      After Procedure   = Screen1-DaEf-1-AfterProcedure
+   End
+   Begin CsCtrl.Custom1 Label Form1-Custom1-1
+      CUST-SYMBOL       = Custom1
+      CUST-MODIFYFLAG   = 100000000000000000000000000000000000000000000000000
+      SCREEN-COL        = 3,00
+      SCREEN-LINE       = 3,69
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-Custom1-1
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 3,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Font Variable     = Default-Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 18
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 3,69
+      Lines             = 0,73
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 20,00
+      Size Unit         = Default
+      Tab Order         = 4
+      Title             = "CUSTOM CONTROL"
+      Transparent       = TRUE
+      Visible           = NONE
+      Visible Variable  = v-custom
+      Width in Cells    = FALSE
+   End
+   Begin CsCtrl.blockpgm Label Form1-blockpgm-2
+      CUST-SYMBOL       = blockpgm
+      CUST-MODIFYFLAG   = 100000000000000000000000000000001000000000000000000
+      SCREEN-COL        = 26,17
+      SCREEN-LINE       = 3,54
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-blockpgm-2
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 26,17
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 21
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 3,54
+      Lines             = 1,00
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 8,14
+      Size Unit         = Default
+      Tab Order         = 5
+      Title             = "BlockPgm"
+      Transparent       = TRUE
+      Visible           = NONE
+      Visible Variable  = v-custom
+      Width in Cells    = TRUE
+   End
+   Begin Label lbl-des-vet
+      SCREEN-COL        = 31,00
+      SCREEN-LINE       = 2,20
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lbl-des-vet
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 5
+      Column            = 31,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 22
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 2,20
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 30,00
+      Size Unit         = Default
+      Tab Order         = 6
+      Title             = "Codice"
+      Title Picture     = X(40)
+      Title Variable    = des-vet
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Toolbar Form1-Tb-1
+      SCREEN-LINE       = 1,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 1
+      (Name)            = Form1-Tb-1
+      Cell              = FALSE
+      Color             = 0
+      Font              = Default Font
+      Handle Variable   = Form1-Tb-1-Handle
+      Help ID           = 0
+      Lines             = 2,69
+      Tab Order         = 7
+      Begin Push-Button TOOL-ESCI
+         SCREEN-COL        = 1,00
+         SCREEN-LINE       = 1,08
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-ESCI
+         Bitmap            = "..\RESOURCE\toolbar.bmp"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = toolbar-bmp
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 1,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Enable Variable   = E-ESCI
+         Exception Value   = 27
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 2
+         Line              = 1,08
+         Lines             = 1,81
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 4,33
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Escape Button
+         Tab Order         = 1
+         Termination Value = 0
+         Title             = "&Esci"
+         Visible           = NONE
+         Width in Cells    = FALSE
+      End
+      Begin Push-Button TOOL-NUOVO
+         SCREEN-COL        = 6,00
+         SCREEN-LINE       = 1,08
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-NUOVO
+         Bitmap            = "..\RESOURCE\toolbar.bmp"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = toolbar-bmp
+         Bitmap Number     = 2
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 6,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Enable Variable   = E-NUOVO
+         Exception Value   = 2
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 6
+         Line              = 1,08
+         Lines             = 1,81
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 4,33
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 2
+         Termination Value = 0
+         Title             = "Nuovo (F2)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Link To           = NUOVO-LinkTo
+      End
+      Begin Push-Button TOOL-CANCELLA
+         SCREEN-COL        = 16,00
+         SCREEN-LINE       = 1,08
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-CANCELLA
+         Bitmap            = "..\RESOURCE\toolbar.bmp"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = toolbar-bmp
+         Bitmap Number     = 4
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 16,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Enable Variable   = E-CANCELLA
+         Exception Value   = 4
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 5
+         Line              = 1,08
+         Lines             = 1,81
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 4,33
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 3
+         Termination Value = 0
+         Title             = "Cancella (F4)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Additional Properties = "BITMAP-NUMBER BitmapNumDelete"
+         Link To           = CANCELLA-LinkTo
+      End
+      Begin Push-Button TOOL-SALVA
+         SCREEN-COL        = 11,00
+         SCREEN-LINE       = 1,08
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-SALVA
+         Bitmap            = "..\RESOURCE\toolbar.bmp"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = toolbar-bmp
+         Bitmap Number     = 3
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 11,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Enable Variable   = E-SALVA
+         Exception Value   = 3
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 8
+         Line              = 1,08
+         Lines             = 1,81
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 4,33
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 4
+         Termination Value = 0
+         Title             = "Salva (F3)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Additional Properties = "BITMAP-NUMBER BitmapNumSave"
+         Link To           = TOOL-SALVA-LinkTo
+      End
+      Begin Push-Button TOOL-ANTEPRIMA
+         SCREEN-COL        = 26,00
+         SCREEN-LINE       = 1,08
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-ANTEPRIMA
+         Bitmap            = "..\RESOURCE\toolbar.bmp"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = toolbar-bmp
+         Bitmap Number     = 17
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 26,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = FALSE
+         Enable Variable   = E-ANTEPRIMA
+         Exception Value   = 6
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 9
+         Line              = 1,08
+         Lines             = 1,81
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 4,33
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 5
+         Termination Value = 0
+         Title             = "Anteprima (F6)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Additional Properties = "BITMAP-NUMBER BitmapNumPreview"
+         Link To           = ANTEPRIMA-LinkTo
+      End
+      Begin Check-Box TOOL-MODIFICA
+         SCREEN-COL        = 21,00
+         SCREEN-LINE       = 1,08
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-MODIFICA
+         Bitmap            = "..\RESOURCE\toolbar.bmp"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = toolbar-bmp
+         Bitmap Number     = 5
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 21,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = TRUE
+         Enable Variable   = E-MODIFICA
+         Exception Value   = 1005
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 7
+         Left Text         = FALSE
+         Line              = 1,08
+         Lines             = 0,62
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Tab            = FALSE
+         Notify            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 2,00
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Tab Order         = 6
+         Termination Value = 0
+         Title             = "Modifica (F5)"
+         Value             = 0:FALSE
+         Value Variable    = MOD
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Before Procedure  = TOOL-MODIFICA-BeforeProcedure
+         After Procedure   = TOOL-MODIFICA-AfterProcedure
+         Link To           = TOOL-MODIFICA-LinkTo
+      End
+      Begin Push-Button TOOL-STAMPA
+         SCREEN-COL        = 31,00
+         SCREEN-LINE       = 1,08
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-STAMPA
+         Bitmap            = "..\RESOURCE\toolbar.bmp"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = toolbar-bmp
+         Bitmap Number     = 18
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 31,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = FALSE
+         Enable Variable   = E-STAMPA
+         Exception Value   = 7
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 10
+         Line              = 1,08
+         Lines             = 1,81
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 4,33
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 7
+         Termination Value = 0
+         Title             = "Stampa (F7)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Additional Properties = "BITMAP-NUMBER BitmapNumPrint"
+         Link To           = STAMPA-LinkTo
+      End
+      Begin Push-Button TOOL-CERCA
+         SCREEN-COL        = 36,00
+         SCREEN-LINE       = 1,08
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-CERCA
+         Bitmap            = "..\RESOURCE\toolbar.bmp"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = toolbar-bmp
+         Bitmap Number     = 8
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 36,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Enable Variable   = E-CERCA
+         Exception Value   = 8
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 11
+         Line              = 1,08
+         Lines             = 1,81
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 4,33
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 8
+         Termination Value = 0
+         Title             = "Cerca (F8)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Additional Properties = "BITMAP-NUMBER BitmapNumZoom"
+         Link To           = TOOL-CERCA-LinkTo
+      End
+      Begin Push-Button tool-CercaTesto
+         SCREEN-COL        = 41,00
+         SCREEN-LINE       = 1,08
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = tool-CercaTesto
+         Bitmap            = "..\RESOURCE\toolbar.bmp"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = toolbar-bmp
+         Bitmap Number     = 20
+         Bitmap Square     = TRUE
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 41,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 1234
+         Flat              = TRUE
+         Font              = Small Font
+         Font Variable     = Small-Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 3
+         Line              = 1,08
+         Lines             = 1,81
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 4,33
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 9
+         Termination Value = 0
+         Title             = "&Ricerca testo (Ctrl + F)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Link To           = tool-CercaTesto-LinkTo
+      End
+      Begin Push-Button Form1-Pb-1a
+         SCREEN-COL        = 46,00
+         SCREEN-LINE       = 1,15
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Form1-Pb-1a
+         Bitmap            = "..\RESOURCE\toolbar.bmp"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = toolbar-bmp
+         Bitmap Number     = 10
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 46,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 1002
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 113
+         Line              = 1,15
+         Lines             = 1,81
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 4,33
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 10
+         Termination Value = 0
+         Title             = "&Primo"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Link To           = TOOL-PRIMO
+      End
+      Begin Push-Button Form1-Pb-1b
+         SCREEN-COL        = 51,00
+         SCREEN-LINE       = 1,15
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Form1-Pb-1b
+         Bitmap            = "..\RESOURCE\toolbar.bmp"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = toolbar-bmp
+         Bitmap Number     = 11
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 51,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 67
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 114
+         Line              = 1,15
+         Lines             = 1,81
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 4,33
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 11
+         Termination Value = 0
+         Title             = "Precedente (PgDn)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Link To           = TOOL-PRECEDENTE
+      End
+      Begin Push-Button Form1-Pb-1c
+         SCREEN-COL        = 56,00
+         SCREEN-LINE       = 1,15
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Form1-Pb-1c
+         Bitmap            = "..\RESOURCE\toolbar.bmp"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = toolbar-bmp
+         Bitmap Number     = 12
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 56,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 68
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 115
+         Line              = 1,15
+         Lines             = 1,81
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 4,33
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 12
+         Termination Value = 0
+         Title             = "Successivo (PgUp)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Link To           = TOOL-SUCCESSIVO
+      End
+      Begin Push-Button Form1-Pb-1d
+         SCREEN-COL        = 61,00
+         SCREEN-LINE       = 1,15
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Form1-Pb-1d
+         Bitmap            = "..\RESOURCE\toolbar.bmp"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = toolbar-bmp
+         Bitmap Number     = 13
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 61,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 1006
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 116
+         Line              = 1,15
+         Lines             = 1,81
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 4,33
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 13
+         Termination Value = 0
+         Title             = "&Ultimo"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Link To           = TOOL-ULTIMO
+      End
+   End
+   Begin Status-Bar Form1-St-1
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-St-1
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Grip              = TRUE
+      Handle Variable   = Form1-St-1-Handle
+      PANEL-WIDTHS      = ( 40, 23, 23 )
+      PANEL-STYLE       = ( 1, 1, 1 )
+      Tab Order         = 8
+   End
+End
+
+Begin Screen SCREEN-SEARCH
+   PREFIX            = Form2
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = SCREEN-SEARCH
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 13
+   Cell Width        = 7
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = FALSE
+   Font              = Default Font
+   Handle Variable   = Screen1-Handle
+   Height in Cells   = TRUE
+   Help ID           = 0
+   Label Offset      = 20
+   Lines             = 7,31
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = FALSE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 50,00
+   System Menu       = TRUE
+   Title             = "Ricerca del testo selezionato"
+   Title Bar         = TRUE
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = TRUE
+   Window Type       = Floating
+   Wrap              = FALSE
+   Event Procedure   = Screen1-Event-Proc
+   Begin Entry-Field ef-cod
+      SCREEN-COL        = 12,00
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-cod
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 12,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = TRUE
+      Enable Variable   = e-cod
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 1
+      Justification     = Right
+      Line              = 2,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 4
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 8,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 1
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Value Picture     = 9(05)
+      Value Variable    = Cod
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-cod-BeforeProcedure
+      After Procedure   = ef-cod-AfterProcedure
+   End
+   Begin Radio-Button rb-cod
+      SCREEN-COL        = 47,00
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = rb-cod
+      Bitmap Frame      = FALSE
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 47,00
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 1000
+      Flat              = TRUE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Group             = 1
+      Group Value       = 1
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 5
+      Left Text         = FALSE
+      Line              = 2,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Group Tab      = FALSE
+      No Tab            = FALSE
+      Notify            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 2,14
+      Size Unit         = Default
+      Tab Order         = 2
+      Termination Value = 0
+      Title             = "Radio Button"
+      Value             = 1
+      Value Picture     = S9(1)
+      Value Variable    = tipo-ricerca
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = rb-cod-BeforeProcedure
+      After Procedure   = rb-cod-AfterProcedure
+      Link To           = rb-cod-LinkTo
+   End
+   Begin Radio-Button rb-des
+      SCREEN-COL        = 47,00
+      SCREEN-LINE       = 4,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = rb-des
+      Bitmap Frame      = FALSE
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 47,00
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 1001
+      Flat              = TRUE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Group             = 1
+      Group Value       = 2
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 6
+      Left Text         = FALSE
+      Line              = 4,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Group Tab      = FALSE
+      No Tab            = FALSE
+      Notify            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 2,14
+      Size Unit         = Default
+      Tab Order         = 3
+      Termination Value = 0
+      Title             = "Radio Button"
+      Value             = 1
+      Value Picture     = S9(1)
+      Value Variable    = tipo-ricerca
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = rb-des-BeforeProcedure
+      After Procedure   = rb-des-AfterProcedure
+      Link To           = rb-des-LinkTo
+   End
+   Begin Entry-Field ef-des
+      SCREEN-COL        = 12,00
+      SCREEN-LINE       = 4,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-des
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 12,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = e-des
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 2
+      Justification     = Unaligned
+      Line              = 4,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 30
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 34,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 4
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Value Picture     = x(30)
+      Value Variable    = des
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-des-BeforeProcedure
+      After Procedure   = ef-des-AfterProcedure
+   End
+   Begin Push-Button pb-esegui
+      SCREEN-COL        = 34,43
+      SCREEN-LINE       = 5,92
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-esegui
+      Bitmap            = "..\RESOURCE\ESEGUI_73X21.BMP"
+      Bitmap Frame      = TRUE
+      Bitmap Handle     = ESEGUI_73X21-BMP
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 34,43
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 13
+      Flat              = TRUE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 8
+      Line              = 5,92
+      Lines             = 1,65
+      Lines in Pixels   = 21
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 10,57
+      Size in Pixels    = 73
+      Size Unit         = Default
+      Style             = OK Button
+      Tab Order         = 5
+      Termination Value = 0
+      Title             = "E&segue la ricerca del testo imputato"
+      Visible           = NONE
+      Width in Cells    = FALSE
+      Link To           = pb-esegui-LinkTo
+   End
+   Begin Label Form2-La-1
+      SCREEN-COL        = 1,86
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = FALSE
+      LEVEL             = 5
+      (Name)            = Form2-La-1
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,86
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 3
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 2,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 6,14
+      Size Unit         = Default
+      Tab Order         = 6
+      Title             = "Codice"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form2-La-2
+      SCREEN-COL        = 1,86
+      SCREEN-LINE       = 4,00
+      LOCK-CONTROL      = FALSE
+      LEVEL             = 5
+      (Name)            = Form2-La-2
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,86
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 4
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 4,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 8,43
+      Size Unit         = Default
+      Tab Order         = 7
+      Title             = "Descrizione"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin CsCtrl.Custom1 Label Form2-Custom1-1
+      CUST-SYMBOL       = Custom1
+      CUST-MODIFYFLAG   = 100000000000110000000000000000000000000000000000000
+      SCREEN-COL        = 44,00
+      SCREEN-LINE       = 1,15
+      LOCK-CONTROL      = FALSE
+      LEVEL             = 5
+      (Name)            = Form2-Custom1-1
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 44,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 101
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 1,15
+      Lines             = 0,69
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 5,57
+      Size Unit         = Default
+      Tab Order         = 8
+      Title             = "CUSTOM CONTROL"
+      Transparent       = TRUE
+      Visible           = NONE
+      Visible Variable  = v-custom
+      Width in Cells    = FALSE
+   End
+   Begin Check-Box cb-match
+      SCREEN-COL        = 11,71
+      SCREEN-LINE       = 5,85
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = cb-match
+      Bitmap Frame      = FALSE
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 11,71
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 0
+      Flat              = TRUE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 7
+      Left Text         = TRUE
+      Line              = 5,85
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Tab            = FALSE
+      Notify            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 2,14
+      Size Unit         = Default
+      Tab Order         = 9
+      Termination Value = 0
+      Title             = "   &M   "
+      Value             = 0:FALSE
+      Value Variable    = MatchCase
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = cb-match-BeforeProcedure
+      After Procedure   = cb-match-AfterProcedure
+   End
+   Begin Label Form2-La-3
+      SCREEN-COL        = 1,86
+      SCREEN-LINE       = 5,92
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form2-La-3
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,86
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 78
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 5,92
+      Lines             = 1,08
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 9,00
+      Size Unit         = Default
+      Tab Order         = 10
+      Title             = "&Match case"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+End
+
+END-SPDATA
+
+@}}
+
+{{@REPORT:
+*   Report Writer Data
+*   Schema 6.0
+*
+BEGIN-RWDATA-6.0A
+
+END-RWDATA
+
+@}}
+
+{{@EMBEDDING_CODE:
+BEGIN-DATA
+   BASETYPE          = 13
+   NODESTYLE         = 13
+   PARAGRAPH         = Other Working
+BEGIN-TEXT
+       01  old-tev-rec.
+           05 old-tev-chiave.
+               10 old-tev-vet          PIC  9(5).
+               10 old-tev-codice       PIC  X(20).
+           05 old-tev-dati.
+               10 old-tev-esito        PIC  X(10).
+               10 old-tev-dati-comuni.
+                   15 old-tev-data-creazione           PIC  9(8).
+                   15 old-tev-ora-creazione            PIC  9(8).
+                   15 old-tev-utente-creazione         PIC  X(10).
+                   15 old-tev-data-ultima-modifica     PIC  9(8).
+                   15 old-tev-ora-ultima-modifica      PIC  9(8).
+                   15 old-tev-utente-ultima-modifica   PIC  X(10).
+               10 old-tev-vuoti.
+                   15 old-tev-num-vuoto-1  PIC  9(18).
+                   15 old-tev-num-vuoto-2  PIC  9(18).
+                   15 old-tev-num-vuoto-3  PIC  9(18).
+                   15 old-tev-alfa-vuoto-1 PIC  X(20).
+                   15 old-tev-alfa-vuoto-2 PIC  X(20).
+                   15 old-tev-alfa-vuoto-3 PIC  X(20).
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 6
+   NODESTYLE         = 7
+   PARAGRAPH         = DeletedCode
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+           perform ABILITA-TOOLBAR.
+
+           perform INTESTAZIONE.
+           perform PRIMO.
+
+           move 2  to event-data-2.
+           perform SPOSTAMENTO.
+
+           perform INIT.
+
+           |specifico dei pgm. con grid-control
+           perform ABILITAZIONI.           
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeFldToBuf
+BEGIN-TEXT
+           set SiSalvato to true.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeExit
+BEGIN-TEXT
+           perform SALV-MOD.
+           if errori
+              move 28 to key-status
+              exit paragraph
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 0
+   PARENT            = tesconsvet
+   ACTOBJ            = tesconsvet
+   ENTRYPOINT        = BeforeDeclarative
+BEGIN-TEXT
+       FILE-ERROR SECTION.
+           use after error procedure on tesconsvet.
+
+           evaluate status-tesconsvet 
+           when "93" 
+                move 0 to mod
+                modify tool-modifica, value = mod  
+                set StatusVisua to true
+                open input tesconsvet
+                display message box MSG-Gia-in-uso-su-altro-terminale
+                            x"0d0a" MSG-SOLA-VISUA
+                        title = tit-err
+                        icon is mb-error-icon      
+                set RecLocked to true
+           end-evaluate.
+                                                 
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterAccept
+BEGIN-TEXT
+      *    per il bottone modifica
+           if key-status = 5
+              inquire tool-modifica, enabled in e-modifica
+              if e-modifica = 1
+                 if mod = zero
+                    move 1    to mod
+                 else 
+                    move zero to mod
+                 end-if
+                 modify tool-modifica, value = mod
+                 perform MODIFICA
+              end-if
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = SCREEN-SEARCH
+   ACTOBJ            = SCREEN-SEARCH
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+           set Ricerca to false. 
+           move 1 to control-id.
+           move 4 to accept-control.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterCreateWin
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-blockpgm-2 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterDisplay
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-blockpgm-2 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = SCREEN-SEARCH
+   ACTOBJ            = SCREEN-SEARCH
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterDisplay
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-blockpgm-2 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = ABILITAZIONI
+BEGIN-TEXT
+           if mod = 1
+              move BitmapDeleteEnabled to BitmapNumDelete
+              move BitmapSaveEnabled   to BitmapNumSave
+              move 1 to e-salva e-cancella
+           else
+              |se sono in visua           
+              move BitmapDeleteDisabled to BitmapNumDelete
+              move BitmapSaveDisabled   to BitmapNumSave
+              move 0 to e-salva e-cancella
+           end-if.     
+
+      * ISACCO (CORREZIONE SU LIVELLO ABILITAZIONE 2) - 10/11/2003
+      * (CANCELLAZIONE NON PERMESSA)
+           if livello-abil = 2 
+              move ZERO to e-cancella
+              move BitmapDeleteDisabled to BitmapNumDelete
+           end-if.
+      * FINE
+
+           modify tool-cancella, enabled = e-cancella.
+           modify tool-salva,    enabled = e-salva.
+       
+      * ISACCO (SERVE SEMPRE PER LA MODIFICA PRCEDENTE E PER RIPRISTINARE
+      * LE BITMAP DISABILITATE. - 10/11/2003
+      *     perform FORM1-DISPLAY.
+           display tool-nuovo, tool-salva, tool-cancella, tool-modifica.
+      * FINE.
+
+           perform GRID-HELP.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = ANTEPRIMA
+BEGIN-TEXT
+           set anteprima       to true.
+      *     perform paragrafo-stampa.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CANCELLA
+BEGIN-TEXT
+           if mod = 0 
+              exit paragraph 
+           end-if.
+
+           if control-id = 78-id-gd-cve
+              display message box MSG-Cancellare-la-riga-selezionata
+                      title   titolo
+                      type    mb-yes-no 
+                      default mb-no
+                      giving  scelta
+              set DeleteRiga to true
+           end-if.
+      *
+           if scelta = mb-yes      
+              set tutto-ok to true      
+              perform RIEMPI-CHIAVE   
+              move tev-vet    to memo-vet
+              perform X-Y
+              perform VALORE-RIGA
+              ||move col-id-num   to tev-vet
+              delete tesconsvet record 
+                 invalid 
+                    continue 
+              end-delete
+              modify gd-cve,  record-to-delete = riga
+              inquire gd-cve, last-row in totale-righe
+              move 0 to riga-nuova
+
+              if totale-righe = 1 
+                 move 1 to control-id 
+              else
+                 if riga > totale-righe
+                    move totale-righe to riga
+                 end-if
+                 if riga = 2
+                    unlock tesconsvet all records   
+                    perform VALORE-RIGA
+                    perform RIEMPI-CHIAVE   
+                    perform LOCK-RECORD
+                 end-if
+                 move riga to MyEventData2
+                 perform COLORE
+                 modify gd-cve, cursor-y = riga, cursor-x = 1
+              end-if
+
+              set vecchio to true
+              perform INIT-OLD-REC
+      
+              set StatusModifica to true
+              perform STATUS-BAR-MSG
+              display message MSG-cancellazione-avvenuta-con-successo
+                      title = titolo
+              move 4 to accept-control
+           end-if.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CERCA
+BEGIN-TEXT
+           evaluate CONTROL-ID
+           when 78-ID-EF-vet
+                inquire ef-vet, VALUE vet-codice
+                move "tvettori"  to Como-File
+                call   "zoom-gt" using  como-file, vet-rec
+                                 giving stato-zoom
+                cancel "zoom-gt"
+                if stato-zoom = ZERO
+                   modify ef-vet, value vet-codice
+                   move vet-descrizione  to des-vet
+                   display lbl-des-vet
+                   move 4 to accept-control
+                end-if
+
+
+           when 78-id-gd-cve
+                if colonna = 2| and nuovo
+                   perform VALORE-RIGA
+                   move tev-esito  to tec-codice
+                   move "tescons"  to  como-file
+                   call   "zoom-gt" using  como-file, tec-rec
+                                    giving stato-zoom
+               
+                   if stato-zoom = 0  
+                      move tec-codice to col-escons
+                      modify gd-cve(riga, 2), cell-data = col-escons
+                      move tec-descrizione to col-descr
+                      modify gd-cve(riga, 3) cell-data = col-descr
+                      if tev-esito not = old-tev-esito
+                         set NoSalvato to true                            
+                      else 
+                         set SiSalvato to true
+                      end-if
+                   end-if
+                end-if
+
+
+
+           end-evaluate. 
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CONTROLLO
+BEGIN-TEXT
+           set tutto-ok to true.
+           set trovato  to true.
+           perform VALORE-RIGA. 
+
+           evaluate control-id
+           when 78-ID-ef-vet
+                move ef-vet-buf to como-vettore
+                                   vet-codice
+                read tvettori
+                   invalid 
+                      if vecchio
+                         display message box MSG-record-inesistente
+                                 title = tit-err
+                                 icon mb-warning-icon
+                          set errori to true
+                          move 78-ID-ef-vet to control-id
+                      end-if
+                      move spaces to des-vet
+                   not invalid      
+                      move vet-descrizione  to des-vet
+                end-read
+                display lbl-des-vet
+           when 78-id-gd-cve             
+                evaluate colonna
+                when 1
+                     if nuovo
+                        move ef-vet-buf  to tev-vet
+                        read tesconsvet
+                           invalid
+                              continue
+                           not invalid
+                               set errori to true
+                               display message MGS-codice-gia-inserito|"Codice già inserito!"
+                                       title = tit-err
+                                       icon mb-warning-icon
+                               move 1 to colonna
+                        end-read
+                     end-if
+                when 2
+                     move tev-esito  to tec-codice
+                     read tescons
+                        invalid
+                           move 2 to colonna
+                           set errori to true
+                           display message box "Esito inesistente"
+                                   title = tit-err
+                                   icon mb-warning-icon
+                           move space to tec-descrizione
+                     end-read
+                     move tec-descrizione   to col-descr
+                     modify gd-cve(riga, 3), CELL-DATA col-descr
+                end-evaluate
+           end-evaluate.  
+
+      ****************
+           if errori
+              if control-id = 78-id-gd-cve
+                 modify gd-cve, cursor-y = riga, cursor-x = colonna
+                 move riga    to event-data-2
+                 move colonna to event-data-1
+              else
+                 move 78-ID-ef-vet   to control-id
+                 move 4               to accept-control
+              end-if
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = GRID-HELP
+BEGIN-TEXT
+      *    se non sono in modifica disabilito sempre lo zoom
+           if mod = zero
+              move BitmapZoomDisabled to BitmapNumZoom
+              move 0 to e-cerca
+              modify tool-cerca, bitmap-number = BitmapNumZoom,
+                                 enabled       = e-cerca
+           else
+              evaluate colonna|event-data-1
+              when 2
+                   move BitmapZoomEnabled to BitmapNumZoom
+                   move 1 to e-cerca
+              when other
+                   move BitmapZoomDisabled to BitmapNumZoom
+                   move 0 to e-cerca
+              end-evaluate
+           
+              modify tool-cerca, bitmap-number = BitmapNumZoom,
+                                 enabled       = e-cerca
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = INIT
+BEGIN-TEXT
+           set vecchio  to true.
+           set tutto-ok to true.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = INTESTAZIONE
+BEGIN-TEXT
+           perform GD-CVE-CONTENT.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = MODIFICA
+BEGIN-TEXT
+           move 5 to key-status.
+           inquire tool-modifica, value in mod.
+           set tutto-ok to true.
+
+           if nuovo
+              move 1 to mod                  
+              modify tool-modifica, value mod
+           else         
+              set ReadSecca to true
+      *  se l'utente e' abilitato puo' modificare un record
+              if mod = 1
+      * Adriano - Gestione lock sul file inizio
+                 close tesconsvet
+                 open i-o tesconsvet allowing readers
+      * Adriano fine
+                 set YesMessage to true
+                 perform CURRENT-RECORD
+                 if not trovato 
+                    set errori to true 
+                 end-if
+                 if RecLocked   
+                    set errori to true 
+                 end-if
+                 
+                 if errori 
+                    move 0 to mod 
+                    move 1 to mod-k
+                    set StatusVisua to true
+                 else
+                    move 0 to mod-k
+                    move 1 to mod
+                    set StatusModifica to true
+                    move 2 to riga MyEventData2
+                    move 1 to colonna
+                    modify gd-cve, cursor-y = riga, 
+                                       cursor-x = colonna
+                    move 1   to StatusHelp
+                    perform STATUS-HELP
+
+                    perform SPOSTAMENTO
+                 end-if   
+              else
+                 move 1 to mod
+                 perform SALV-MOD            
+                 move 0 to mod
+                 move 1 to mod-k
+                 if errori
+                    move 1 to mod
+                    move 0 to mod-k
+                 else
+                    if nuovo
+                       if totale-righe not > 1
+                          perform PRIMO
+                       end-if
+                    else
+      * Adriano - Gestione lock sul file inizio
+                       close tesconsvet
+                       open input tesconsvet
+      * Adriano - fine
+                       move 0 to MyEventData2
+                       set NoMessage to true
+                       perform CURRENT-RECORD
+                       set StatusVisua to true
+                       unlock tesconsvet all records
+                    end-if
+                 end-if
+              end-if                   
+
+              perform DISPLAY-CAMPI-CHIAVE
+                        
+              display form1             
+              modify control-handle, color = colore-or
+
+              move 78-id-ef-vet to control-id
+              move 4 to accept-control
+
+              set ReadSecca to false
+
+           end-if.                      
+           modify tool-modifica,  value mod.
+           perform STATUS-BAR-MSG.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = NUOVO
+BEGIN-TEXT
+           if control-id not = 78-id-gd-cve
+              perform SALV-MOD
+              if tutto-ok
+                 move 78-id-ef-vet   to control-id
+                 move 4 to accept-control
+                 move 1 to mod mod-k
+                 modify tool-modifica,  value = mod
+                 modify control-handle, color = colore-or
+                 perform CLEAR-SCREEN
+                 perform INIT-OLD-REC
+                 set StatusIns to true
+                 perform STATUS-BAR-MSG  
+                 set nuovo to true
+                 move 0 to RowCounter
+                 unlock tesconsvet all records
+              end-if
+           else   
+              if riga-nuova = 0    
+                 perform INSERT-RIGA
+              else
+                 perform VALORE-RIGA
+                 if col-esito not = space
+                    perform INSERT-RIGA
+                 end-if
+              end-if
+           end-if.
+
+      ***---
+       INSERT-RIGA.
+           perform X-Y.
+           if vecchio
+              move 0 to mod-k       
+           end-if.   
+           set nuovo to true.
+           move 1 to mod.
+           modify tool-modifica,  value = mod.
+           perform ABILITAZIONI.
+           perform VALORE-RIGA.
+      *     if tev-codice = spaces
+      *        perform DEL-RIGA 
+      *     end-if.
+           add 1 to totale-righe giving riga.
+           modify gd-cve, insert-rows = 1.
+           move riga to MyEventData2. 
+           move    1 to riga-nuova.
+           move    1 to colonna.
+           move    3 to control-id.
+           move    4 to accept-control.
+           modify gd-cve, cursor-y = riga, cursor-x = colonna.
+           perform COLORE.
+           set StatusModifica to true.
+           perform STATUS-BAR-MSG.
+           move 1   to StatusHelp.
+           perform STATUS-HELP.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = PARAGRAFO-COPY
+BEGIN-TEXT
+           copy "abilita-toolbar.cpy".
+           copy "color-custom.cpy".   
+           copy "status.cpy".
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = SALV-MOD
+BEGIN-TEXT
+           set tutto-ok to true.
+           perform CONTROLLO-OLD.
+
+           if NoSalvato
+              display message box MSG-Salvare-le-modifiche
+                            title titolo
+                            type mb-yes-no-cancel
+                            giving scelta
+
+              evaluate scelta
+              when mb-yes
+                   perform SALVA
+              when mb-no
+                   continue
+              when other
+                   modify control-handle, color = colore-or
+                   set errori to true
+                   move store-id to control-id
+                   move 4 to accept-control
+                   if control-id= 78-id-gd-cve
+                      move store-riga to riga MyEventData2
+                      modify gd-cve, cursor-y = riga, cursor-x = 2
+                      perform COLORE
+                   end-if
+              end-evaluate
+
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = SALVA
+BEGIN-TEXT
+           if sisalvato or mod = 0 
+              exit paragraph 
+           end-if.
+
+           inquire gd-cve, cursor-x in colonna, 
+                               cursor-y in riga.
+
+
+           if mod-k = 1
+              perform varying control-id from 78-ID-ef-vet by 1
+                     until control-id > 78-id-gd-cve
+                 perform CONTROLLO
+                 if errori 
+                    exit perform 
+                 end-if
+              end-perform
+           end-if.
+
+           if errori
+              move store-id to control-id
+              move 4 to accept-control
+           else        
+              move 78-id-gd-cve   to control-id
+              perform X-Y
+              if totale-righe = 1
+                 set errori to true
+              else
+                 move riga to store-riga
+                 perform RIEMPI-CHIAVE       
+                 accept como-data from century-date
+                 accept como-ora  from time
+                 modify gd-cve, mass-update = 1
+                 perform varying riga from 2 by 1 
+                           until riga > totale-righe
+   
+                    modify gd-cve, cursor-y = riga
+   
+                    perform VALORE-RIGA
+   
+                    if mod = 1 
+                       if nuovo or (riga - 1) > RowCounter
+                          move 2 to colonna
+                          modify gd-cve, cursor-x = colonna
+                          perform CONTROLLO
+
+                          move 3 to colonna
+                          modify gd-cve, cursor-x = colonna
+                          perform CONTROLLO
+
+                          if not trovato 
+                             set errori to true 
+                          end-if
+                       end-if
+                    end-if
+   
+                    if tutto-ok
+                       perform VALORIZZA-DATI-COMUNI
+                       write tev-rec 
+                          invalid 
+                             rewrite tev-rec
+                       end-write
+                       set sisalvato to true
+                       set vecchio   to true
+                    else
+                       move 3 to control-id
+                       move 4 to accept-control
+                       modify gd-cve, cursor-y = riga, cursor-x = colonna
+                       move riga to MyEventData2
+                       perform COLORE
+                       exit perform
+                    end-if
+                 end-perform                
+                 modify gd-cve, mass-update = 0
+                         
+              end-if
+           end-if.                    
+           perform ABILITAZIONI.             
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = SPOSTAMENTO
+BEGIN-TEXT
+           inquire gd-cve, cursor-x = colonna, cursor-y = riga.
+
+           if event-data-2 not = riga
+              perform VALORE-RIGA
+      *        if tev-codice = spaces or zero
+      *           modify gd-cve, record-to-delete riga
+      *           set vecchio to true
+      *        else  
+                 perform SALVA
+                 if errori
+                    move riga    to event-data-2
+                    move colonna to event-data-1 | (isacco)
+                    set event-action to event-action-fail
+                 end-if
+      *        end-if
+           else
+              if colonna not = event-data-1
+                 perform CONTROLLO
+                 if errori
+                    set event-action to event-action-fail
+                 end-if
+              end-if
+           end-if.
+
+      *    valorizzo l'old della riga su cui sono andato
+           move event-data-2 to riga.
+           move event-data-1 to colonna.
+           perform VALORE-OLD-RIGA.
+
+      * colorazione riga in grid
+           perform COLORE-RIGA.
+
+           perform GRID-HELP.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = STAMPA
+BEGIN-TEXT
+           set stampa       to true.
+      *     perform paragrafo-stampa.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = VALORE-RIGA
+BEGIN-TEXT
+           perform X-Y.
+           inquire gd-cve(riga), RECORD-DATA rec-grid
+           move col-esito    to tev-codice
+           move col-escons   to tev-esito
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = VALORE-OLD-RIGA
+BEGIN-TEXT
+           if vecchio
+              inquire gd-cve(riga, 1) cell-data old-tev-codice
+              move old-tev-codice  to tev-codice
+              read tesconsvet no lock
+              move tev-rec         to old-tev-rec
+           else
+              initialize old-tev-rec replacing numeric data by zeroes
+                                     alphanumeric data by spaces
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = VALORIZZA-DATI-COMUNI
+BEGIN-TEXT
+      *    se non ho valorizzato i campi di creazione li valorizzo
+           if tev-data-creazione = zero
+              accept tev-data-creazione from century-date
+           end-if.
+           if tev-ora-creazione = zero
+              accept tev-ora-creazione from time
+           end-if.
+           if tev-utente-creazione = space
+              move user-codi to tev-utente-creazione
+           end-if.
+
+           accept tev-data-ultima-modifica from century-date.
+           accept tev-ora-ultima-modifica from time.
+           move user-codi to tev-utente-ultima-modifica.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = PRIMO
+BEGIN-TEXT
+           perform SALV-MOD.           
+           if tutto-ok
+              perform CHECK-INSERIMENTO
+              unlock tesconsvet all records
+              modify control-handle, color = colore-or 
+              move low-value to tev-chiave
+
+              set ReadSecca to false
+              move 0 to MyEventData2
+              perform CURRENT-RECORD
+
+              if errori
+                 display message box "File [tesconsvet]"
+                              x"0d0a""Archivio vuoto"
+                         title = titolo
+              end-if       
+
+              perform DISPLAY-CAMPI-CHIAVE       
+     
+              move 1 to control-id
+              move 4 to accept-control 
+              perform VALORIZZA-OLD
+              if mod = 1
+                 move 2 to riga
+                 move 1 to colonna
+                 modify gd-cve, cursor-x = colonna, cursor-y = riga
+                 move riga to MyEventData2
+              end-if                
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = PRECEDENTE
+BEGIN-TEXT
+           perform SALV-MOD.           
+           if tutto-ok     
+              perform CHECK-INSERIMENTO
+              unlock tesconsvet all records 
+              modify control-handle, color = colore-or 
+              perform RIEMPI-CHIAVE
+              move low-value to tev-codice
+
+              start tesconsvet key is < tev-chiave
+                 invalid 
+                    set errori to true
+                 not invalid 
+                    read tesconsvet previous no lock
+                       at end 
+                          set errori to true 
+                    end-read
+              end-start
+
+              if tutto-ok
+                 move low-value to tev-codice
+                 set ReadSecca to false
+                 move 0 to MyEventData2
+                 perform CURRENT-RECORD
+              end-if
+
+              if errori or not trovato
+                 display message box "File [tesconsvet]"
+                              x"0d0a""Raggiunto inizio file"
+                         title = titolo
+              end-if                  
+
+              perform DISPLAY-CAMPI-CHIAVE       
+     
+              move 78-id-ef-vet   to control-id
+              move 4            to accept-control 
+              perform VALORIZZA-OLD 
+              if mod = 1
+                 move 2 to riga
+                 move 1 to colonna
+                 modify gd-cve, cursor-x = colonna, cursor-y = riga
+                 move riga to MyEventData2
+              end-if                 
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = SUCCESSIVO
+BEGIN-TEXT
+           perform SALV-MOD.           
+           if tutto-ok            
+              perform CHECK-INSERIMENTO
+              unlock tesconsvet all records 
+              modify control-handle, color = colore-or 
+              perform RIEMPI-CHIAVE
+              move high-value to tev-codice
+                                         
+              set ReadSecca to false
+              move 0 to MyEventData2
+              perform CURRENT-RECORD
+
+              if errori or not trovato
+                 display message box "File [tesconsvet]"
+                              x"0d0a""Raggiunta fine file"
+                         title = titolo
+              end-if                  
+
+              perform DISPLAY-CAMPI-CHIAVE  
+     
+              move 1 to control-id
+              move 4 to accept-control 
+              perform VALORIZZA-OLD
+              if mod = 1
+                 move 2 to riga
+                 move 1 to colonna
+                 modify gd-cve, cursor-x = colonna, cursor-y = riga
+                 move riga to MyEventData2
+              end-if                
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = ULTIMO
+BEGIN-TEXT
+           perform SALV-MOD.           
+           if tutto-ok                 
+              perform CHECK-INSERIMENTO
+              unlock tesconsvet all records 
+              modify control-handle, color = colore-or 
+              move high-value to tev-chiave
+              start tesconsvet key is < tev-chiave
+                 invalid 
+                    set errori to true
+                 not invalid 
+                    read tesconsvet previous no lock
+                       at end 
+                          set errori to true 
+                    end-read
+              end-start
+
+              if tutto-ok
+                 move low-value to tev-codice
+                 set ReadSecca to false
+                 move 0 to MyEventData2
+                 perform CURRENT-RECORD
+              end-if
+
+              if errori
+                 display message box "File [tcauven]"
+                              x"0d0a""Archivio vuoto"
+                         title = titolo
+              end-if         
+
+              perform DISPLAY-CAMPI-CHIAVE
+     
+              move 78-id-ef-vet   to control-id
+              move 4            to accept-control
+
+
+              perform VALORIZZA-OLD
+              if mod = 1
+                 move 2 to riga
+                 move 1 to colonna
+                 modify gd-cve, cursor-x = colonna, cursor-y = riga
+                 move riga to MyEventData2
+              end-if               
+
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CERCA-TESTO
+BEGIN-TEXT
+           perform SCREEN-SEARCH-OPEN-ROUTINE.
+
+           if ricerca
+              move 0 to ResultSearch
+
+              inquire gd-cve, cursor-y in riga
+
+              inquire gd-cve, search-options in grid-search-options
+              
+              |direzione di ricerca
+              set GRID-SEARCH-FORWARDS to true
+              set GRID-SEARCH-WRAP     to true
+
+              |Maiuscolo/minuscolo
+              if MatchCase = 0
+                 set GRID-SEARCH-IGNORE-CASE to true
+              else                                                        
+                 set GRID-SEARCH-IGNORE-CASE to false
+              end-if
+
+              |trova la parola nella cella
+              set GRID-SEARCH-MATCH-ANY to true
+
+              |ricerca nelle sole celle visible 
+              |ignorando gli eventuali hidden-data
+              set GRID-SEARCH-VISIBLE to true
+
+              |non considerare quello su cui sono posizionato
+              set GRID-SEARCH-SKIP-CURRENT   to true
+
+              |si posiziona sulla cella trovata
+              set GRID-SEARCH-MOVES-CURSOR   to true 
+
+              |num colonna sulla quale fare la ricerca
+              move tipo-ricerca to GRID-SEARCH-COLUMN 
+
+              modify gd-cve, search-options GRID-SEARCH-OPTIONS
+
+              modify gd-cve(riga, tipo-ricerca), 
+                     search-text TextToSearch |testo da ricercare
+                          giving ResultSearch |1, 2 = trovato 0 = non trovato
+
+              if ResultSearch = GRDSRCH-NOT-FOUND
+                 display message box MSG-Testo-non-trovato
+                         title = titolo
+              else
+                 inquire gd-cve, cursor-y in riga
+                 move riga to event-data-2
+                 perform SPOSTAMENTO
+              end-if
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = X-Y
+BEGIN-TEXT
+           inquire gd-cve, cursor-y in riga, cursor-x in colonna
+                            last-row in totale-righe
+                            num-rows in NumRows.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = RIEMPI-CHIAVE
+BEGIN-TEXT
+           inquire ef-vet, value in tev-vet.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = COLORE
+BEGIN-TEXT
+           modify gd-cve, start-y = MyEventData2, y = MyEventData2,
+                          start-x = 1,            x = 3,
+                          region-color 257,
+                          cursor-color 481.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = INIT-OLD-REC
+BEGIN-TEXT
+           initialize old-tev-rec replacing numeric data by zeroes
+                                      alphabetic data by spaces.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CLEAR-SCREEN
+BEGIN-TEXT
+           move tev-vet to old-tev-vet.
+
+           initialize tev-rec replacing numeric data by zeroes
+                              alphabetic data by spaces.
+                        
+           move old-tev-vet to tev-vet.
+           
+           move spaces to des-vet.
+           display lbl-des-vet.
+
+           perform RESET-GRIGLIA.
+
+           perform INIT-OLD-REC. 
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = RESET-GRIGLIA
+BEGIN-TEXT
+           modify gd-cve, reset-grid = 1.
+           perform INTESTAZIONE.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CURRENT-RECORD
+BEGIN-TEXT
+           move -1 to Memo-vet.
+           if ReadSecca
+              perform RIEMPI-CHIAVE
+              move tev-vet    to Memo-vet
+              move low-value to tev-codice
+           end-if.
+           set tutto-ok  to true.
+           set trovato   to false. 
+           
+           start tesconsvet key not less tev-chiave
+              invalid 
+                 set errori to true 
+           end-start.
+
+           if nuovo
+              move tev-vet  to Memo-vet
+           end-if.
+
+           if tutto-ok
+              modify gd-cve, mass-update = 1
+              perform RESET-GRIGLIA
+              move 0 to RowCounter
+              move 2 to riga
+              
+              perform until 1 = 2
+                 read tesconsvet next no lock 
+                    at end 
+                       exit perform 
+                 end-read
+
+                 if Memo-vet not > -1
+                    move tev-vet    to  Memo-vet
+                 end-if                  
+
+                 if tev-vet    not = Memo-vet
+                    move Memo-vet to tev-vet
+                    exit perform
+                 end-if
+
+                 set trovato to true 
+
+                 if nuovo
+                    move 1 to mod
+                    move 0 to mod-k
+                    move 78-id-gd-cve   to control-id
+                    move 4               to accept-control
+                 end-if  
+
+                 set vecchio to true
+
+                 perform METTI-IN-GRIGLIA
+                 add 1 to riga
+                 add 1 to RowCounter
+                 if RowCounter = 1
+                    move spaces      to des-vet
+                    move Memo-vet to ef-vet-buf
+                    display ef-vet lbl-des-vet 
+                 end-if
+              end-perform          
+             
+              modify gd-cve, mass-update = 0
+
+           end-if.
+
+           if trovato   
+              perform VALORIZZA-OLD
+              if mod = 1
+                 set  StatusModifica to true
+                 perform LOCK-RECORD        
+              else
+                 set StatusVisua    to true
+              end-if
+              perform STATUS-BAR-MSG
+           end-if.
+
+           if not trovato and ReadSecca
+              if vecchio
+                 perform CLEAR-SCREEN
+                 if YesMessage          
+                    display message box "Record inesistente!"
+                            title = tit-err
+                            icon mb-warning-icon
+                 end-if
+                 move 0 to mod
+                 move 78-id-ef-vet   to control-id
+                 move 4 to accept-control
+              end-if
+           end-if.             
+
+           if MyEventData2 = 0
+              move 2 to riga MyEventData2
+           end-if.
+           set ReadSecca to false.
+           perform ABILITAZIONI.
+
+      ***---
+       METTI-IN-GRIGLIA.
+           move tev-codice  to col-esito
+           move tev-esito   to col-escons
+                               tec-codice
+           read tescons
+              invalid
+                 move space to tec-descrizione
+           end-read
+           move tec-descrizione   to col-descr
+           modify gd-cve(riga) record-data = rec-grid
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = DISPLAY-CAMPI-CHIAVE
+BEGIN-TEXT
+           move tev-vet  to ef-vet-buf.
+           display ef-vet.
+           
+           move 78-id-ef-vet   to control-id.
+           perform CONTROLLO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = DEL-RIGA
+BEGIN-TEXT
+           modify gd-cve, record-to-delete = riga.
+           move 0 to riga-nuova.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CHECK-INSERIMENTO
+BEGIN-TEXT
+      * modifica la status-bar
+      * controllo se da inserimento scorro. allora devo segnalare che
+      * sono tornato in modifica.
+           inquire tool-modifica, value in mod.
+
+           if mod = 1 then 
+              set StatusModifica to true
+           end-if.
+
+           if mod = 0 then
+              set StatusVisua to true   
+           end-if.                
+      
+           perform STATUS-BAR-MSG.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = VALORIZZA-OLD
+BEGIN-TEXT
+           move tev-rec to old-tev-rec.
+           set vecchio to true.
+           move 0 to riga-nuova.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = LOCK-RECORD
+BEGIN-TEXT
+           set RecLocked  to false.
+           move Memo-vet  to tev-vet.
+           read tesconsvet with lock 
+              invalid 
+                 continue 
+           end-read.
+           if RecLocked      
+              set StatusVisua to true
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CONTROLLO-OLD
+BEGIN-TEXT
+           set SiSalvato to true.
+           if mod = 0 exit paragraph end-if.
+           perform X-Y.
+           perform varying riga from 2 by 1
+                     until riga > totale-righe
+              inquire gd-cve(riga, 2), cell-data in col-escons
+              perform VALORE-OLD-RIGA
+              if col-escons not = old-tev-esito
+                 move riga to store-riga
+                 set NoSalvato        to true
+                 move 78-id-gd-cve   to store-id
+                 exit perform
+              end-if
+           end-perform.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = RIEMPI-GRIGLIA-cve
+BEGIN-TEXT
+      *     if old-cve-vet   not = cve-vet
+              set ReadSecca to true
+              perform CURRENT-RECORD
+              |set YesZoom to false
+              move zero to StatusHelp
+              if not trovato and nuovo
+                 perform X-Y
+                 if totale-righe = 1
+                    move 1               to mod             
+                    modify gd-cve, enabled = mod
+                    initialize rec-grid
+                    modify gd-cve, insert-rows = 1
+                    move 1               to riga-nuova
+                    move 78-id-gd-cve   to control-id
+                    move 2               to MyEventData2
+                    perform COLORE      
+                    move 2               to riga
+                    move 1               to colonna
+                    move 1               to StatusHelp
+                 end-if
+              end-if
+              perform DISPLAY-CAMPI-CHIAVE
+      *     end-if.
+           perform STATUS-HELP.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = COLORE-RIGA
+BEGIN-TEXT
+           if riga < 2 
+              move 2 to riga 
+           end-if.
+
+           modify gd-cve, start-x = 1, x     = 3,
+                                  start-y = riga,
+                                        y = riga,
+                                  region-color 257,
+                                  cursor-color 481.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = NUOVO-LinkTo
+BEGIN-TEXT
+           inquire tool-nuovo, enabled in e-nuovo.
+           if e-nuovo = 1
+              perform NUOVO
+           end-if.
+
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = CANCELLA-LinkTo
+BEGIN-TEXT
+           inquire tool-cancella, enabled in e-cancella.
+           if e-cancella = 1
+              perform CANCELLA
+           end-if.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = TOOL-SALVA-LinkTo
+BEGIN-TEXT
+           inquire tool-salva, enabled in e-salva.
+           if e-salva = 1
+              perform salva
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ANTEPRIMA-LinkTo
+BEGIN-TEXT
+           inquire tool-anteprima, enabled in e-anteprima.
+           if e-anteprima = 1
+              perform ANTEPRIMA
+           end-if.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = TOOL-MODIFICA-LinkTo
+BEGIN-TEXT
+           inquire tool-modifica, enabled in e-modifica
+           if e-modifica = 1
+              perform MODIFICA
+           end-if.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = STAMPA-LinkTo
+BEGIN-TEXT
+           inquire tool-stampa, enabled in e-stampa
+           if e-stampa = 1
+              perform STAMPA
+           end-if.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = I-O-BLOCCO
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-blockpgm-2 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = PAS004P-Ev-Before-Program
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-blockpgm-2 **>>
+           move "GESLUX - Tabella Esito Vettori" to titolo
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = form1-gd-1-Ev-Msg-Finish-Entry
+BEGIN-TEXT
+           inquire gd-cve, cursor-y in riga.
+           perform VALORE-RIGA.
+
+           perform  CONTROLLO.
+
+           if errori 
+              set event-action to event-action-fail 
+              perform VALORE-RIGA
+           end-if.
+
+           if tev-rec not = old-tev-rec
+              set NoSalvato to true                            
+           else 
+              set SiSalvato to true
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = form1-gd-1-Ev-Msg-Begin-Entry
+BEGIN-TEXT
+           inquire gd-cve, cursor-x = colonna,
+                                   cursor-y in riga.
+                         
+           perform VALORE-RIGA.
+
+           evaluate colonna
+           when 1
+                |if tev-codice not = spaces
+                if not nuovo
+                   set event-action to event-action-fail
+                end-if
+           when 2
+                if mod = zero              
+                   set event-action to event-action-fail
+                end-if
+           when 3
+      *          if mod = zero
+                   set event-action to event-action-fail
+      *          else
+      *             if tev-codice = spaces
+      *                set event-action to event-action-fail
+      *                modify gd-cve, cursor-y = riga, cursor-x = 1
+      *             end-if   
+      *          end-if
+           end-evaluate.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = form1-gd-1-Ev-Msg-End-Drag
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = form1-gd-1-Ev-Msg-Goto-Cell
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = form1-gd-1-Ev-Msg-Goto-Cell-Drag
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = form1-gd-1-Ev-Msg-Goto-Cell-Mouse
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = form1-gd-1-Ev-Msg-Begin-Drag
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = TOOL-CERCA-LinkTo
+BEGIN-TEXT
+           inquire tool-cerca, enabled in e-cerca.
+           if e-cerca = 1
+              perform CERCA
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-cod-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-des-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-cod-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-des-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = rb-cod-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = rb-des-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = rb-cod-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = rb-des-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-esegui-LinkTo
+BEGIN-TEXT
+           set tutto-ok to true.
+
+           if tipo-ricerca = 1
+              inquire ef-cod, value in cod
+              if cod not > spaces 
+                 set errori  to true 
+              else
+                 move cod    to TextToSearch
+                 move spaces to des
+                 display ef-des
+              end-if 
+           else                           
+              inquire ef-des, value in des
+              if des = spaces 
+                 set errori to true 
+              else
+                 move des to TextToSearch   
+                 move 0 to cod
+                 display ef-cod
+              end-if
+           end-if.
+
+           if tutto-ok 
+              move 27 to key-status 
+              set Ricerca to true
+           end-if.
+
+
+      * ISACCO - FISSATO BUG SE NON DIGITO NULLA IN SCREEN RICERCA
+      * 10/11/20003
+           Set tutto-ok to true.
+      * FINE
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = tool-CercaTesto-LinkTo
+BEGIN-TEXT
+           perform CERCA-TESTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = rb-cod-LinkTo
+BEGIN-TEXT
+           move 1 to tipo-ricerca.
+           move 1 to e-cod.
+           move 0 to e-des.
+           display SCREEN-SEARCH.
+
+           perform CANCELLA-COLORE.
+           move 1 to control-id.
+           move 4 to accept-control.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = rb-des-LinkTo
+BEGIN-TEXT
+           move 2 to tipo-ricerca.
+           move 1 to e-des.
+           move 0 to e-cod.
+           display SCREEN-SEARCH.  
+
+           perform CANCELLA-COLORE.
+           move 2 to control-id.
+           move 4 to accept-control.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = TOOL-MODIFICA-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = cb-match-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = TOOL-MODIFICA-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = cb-match-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Screen1-DaEf-1-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Screen1-DaEf-1-AfterProcedure
+BEGIN-TEXT
+           perform CONTROLLO
+           if tutto-ok
+              perform RIEMPI-GRIGLIA-CVE
+           end-if.
+
+      *<<** Default_Code **>>
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = TOOL-PRIMO
+BEGIN-TEXT
+           PERFORM PRIMO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = TOOL-PRECEDENTE
+BEGIN-TEXT
+           if nuovo             
+              perform PRIMO
+           else
+              perform PRECEDENTE
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = TOOL-SUCCESSIVO
+BEGIN-TEXT
+           if nuovo             
+              perform ULTIMO
+           else
+              perform SUCCESSIVO
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = TOOL-ULTIMO
+BEGIN-TEXT
+           PERFORM ULTIMO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = tcauven-Ev-After-Init
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+
+@}}
+
+[KEY_STATUS_FIELD_FORMAT]
+PIC=9(5)
+USAGE=[None]
+
+[KEYSTATUS_CONTENT:KS1]
+CONDITION=Enter-Pushed
+VALUE=13
+
+[KEYSTATUS_CONTENT:KS2]
+CONDITION=Exit-Pushed
+VALUE=27
+
+[KEYSTATUS_CONTENT:KS3]
+CONDITION=Message-Received
+VALUE=95
+
+[KEYSTATUS_CONTENT:KS4]
+CONDITION=Event-Occurred
+VALUE=96
+
+[KEYSTATUS_CONTENT:KS5]
+CONDITION=Screen-No-Input-Field
+VALUE=97
+
+[COBOLAID_DATASET_INFO]
+COUNT=1
+NAME_0=DataSet1
+
+[DRAW_DOCUMENT_INDEX]
+OBJ_NAME_0=8001
+OBJ_ID_0=2113416747
+
+[MULTIPLE_KEY_0]
+COUNT=1
+KEY_0=tev-chiave OF tesconsvet
+
+[DRAW_DOCUMENT_8001_2113416747]
+OBJ_NAME=8001
+OBJ_ID=2113416747
+TYPE=2
+VERSION=
+DOC_SIZE_X=5100
+DOC_SIZE_Y=5160
+PAGE_LEFT=150
+PAGE_TOP=150
+PAGE_RIGHT=1850
+PAGE_BOTTOM=2730
+MARGIN_LEFT=150
+MARGIN_TOP=150
+MARGIN_RIGHT=150
+MARGIN_BOTTOM=150
+PROP_DOCU_TYPE=ø
+PROP_DOCU_TYPE2=ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+PROP_DOCU_NAME=DataSet - DataSet1[tesconsvet(GESLUX)]
+PROP_DOCU_OWNER=Person A
+PROP_DOCU_CDATE=07/13/01
+PROP_DOCU_MODIFIER=Person B
+PROP_DOCU_MDATE=07/13/01
+PROP_DOCU_DESCR=Caseaid DocuCaseaid Document
+PROP_DOCU_HEADER=Caseaid Document
+PROP_DOCU_FOOTER=Page # 
+PROP_DOCU_DIM_H=2
+PROP_DOCU_DIM_W=3
+PROP_DOCU_LOC_H=1
+PROP_DOCU_LOC_W=1
+PROP_DOCU_EDGE_T=150
+PROP_DOCU_EDGE_B=150
+PROP_DOCU_EDGE_L=150
+PROP_DOCU_EDGE_R=150
+PROP_DOCU_ZOOM=75
+PROP_DOCU_SIZE_TYPE=0
+PROP_DOCU_SIZE_PAPER=9
+PROP_DOCU_SIZE_H=2580
+PROP_DOCU_SIZE_W=1700
+PROP_DOCU_RULER_EBL=0
+PROP_DOCU_GRID_EBL=0
+PROP_DOCU_GRID=20
+PROP_DOCU_ALIGN=0
+REL_SYM_SIZE=22
+REL_SYM_INFO_L=3
+REL_SYM_INFO_X0=2301
+REL_SYM_INFO_Y0=1568038510
+REL_SYM_INFO_X1=2301
+REL_SYM_INFO_Y1=1485314102
+REL_SYM_INFO_X2=2301
+REL_SYM_INFO_Y2=1613204117
+
+[DRAW_BASESYMBOL_2301_1568038510]
+OBJ_NAME=2301
+OBJ_ID=1568038510
+KIND=1
+{{@LABEL_2301_1568038510
+tescons
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=616
+TOP=1082
+RIGHT=1016
+BOTTOM=1304
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1485314102]
+OBJ_NAME=2301
+OBJ_ID=1485314102
+KIND=1
+{{@LABEL_2301_1485314102
+tesconsvet
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=899
+TOP=1598
+RIGHT=1299
+BOTTOM=1820
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1613204117]
+OBJ_NAME=2301
+OBJ_ID=1613204117
+KIND=1
+{{@LABEL_2301_1613204117
+tvettori
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1182
+TOP=1082
+RIGHT=1582
+BOTTOM=1304
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DMD_DOCUMENT_0_2113416747]
+OBJ_NAME=0
+OBJ_ID=2113416747
+FILE_TITLE_TYPE=8136
+FILE_SHOW_ITEM=0
+FILE_SHOW_KEY=0
+FILE_SHOW_PIC=0
+FILE_SHOW_HEAD=0
+FILE_SHOW_LEVEL=0
+FILE_SHOW_TREE=0
+FILE_SHOW_CLPS=0
+FILE_SHOW_BMP=0
+FILE_SHOW_LINE=0
+FILE_SHOW_MINIZE=0
+
+[DMD_FILE_0_1568038510]
+OBJ_NAME=0
+OBJ_ID=1568038510
+REL_M_OBJ_ID=0
+ENTITY=tescons
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tec-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1568038510
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1485314102]
+OBJ_NAME=0
+OBJ_ID=1485314102
+REL_M_OBJ_ID=0
+ENTITY=tesconsvet
+LINK=0
+LINK_NAME=
+DSN_SIZE=56
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=2
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tev-chiave OF tesconsvet
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1485314102
+
+@}}
+DSN_INFO_PRIMARY=1
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1613204117]
+OBJ_NAME=0
+OBJ_ID=1613204117
+REL_M_OBJ_ID=0
+ENTITY=tvettori
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=vet-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1613204117
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=

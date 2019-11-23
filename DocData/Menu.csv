@@ -1,0 +1,157 @@
+0000000000;geslux;Menu Geslux;0;;LUBEX S.p.A. - Menu Principale "GESLUX"
+0100000000;anagrafiche;Tabelle e anagrafiche;0;;Tabelle e anagrafiche
+;;;;;
+0101000000;ana-gest;Anagrafiche gestionali;0;;Anagrafiche gestionali
+0101010000;gclienti;Clienti;1;Gestione archivio;Gestione anagrafiche Clienti
+0101020000;gforn;Fornitori;1;Gestione archivio;Gestione anagrafiche Fornitori
+0101030000;gagenti;Agenti;1;Gestione archivio;Gestione anagrafiche Agenti
+0101040000;gvettori;Vettori;1;Gestione archivio;Gestione anagrafiche Vettori
+0101050000;tgrupgdo;Gruppi GDO;1;Gestione archivio;Gestione anagrafiche Gruppi GDO
+0101060000;gassorcli;Assortimento Clienti;1;Gestione archivio;Gestione Assortimenti dei Clienti
+0101070000;glisagente;Listini personalizzati Agenti;1;Gestione archivio;Gestione Listini persnalizzati Agenti
+;;;;;
+0102000000;ana-mag;Anagrafiche magazzino;0;;Anagrafiche magazzino
+0102010000;garticoli;Articoli;1;Gestione archivio;Gestione anagrafiche Articoli
+0102020000;gprogmag;Progressivi di Magazzino;1;Gestione archivio;Gestione Progressivi di Magazzino
+0102030000;tmarche;Marche;1;Gestione archivio;Gestione anagrafiche Marche
+0102040000;timposte;Imposte;1;Gestione archivio;Gestione Imposta di Consumo, Cou e Cobat
+0102050000;distinteb;Distinta Base;1;Gestione archivio;Gestione anagrafica Distinta Base
+;;;;;
+0103000000;ana-tabmag;Tabelle generali magazzino;0;;Tabelle generali magazzino
+0103010000;tcaumag;Causali dei Movimenti;1;Gestione archivio;Gestione Causali di Magazzino
+0103020000;tcaudisb;Causali  Distinta Base;1;Gestione archivio;Gestione Causali  per Distinta Base
+0103030000;timballi;Tipo imballo;1;Gestione archivio;Gestione del tipo imballi
+0103040000;timbalqta;Quantità per imballo;1;Gestione archivio;Gestione delle quantità per Imballi
+0103050000;tmagaz;Magazzini;1;Gestione archivio;Gestione anagrafiche Magazzini
+0103060000;tsetmerc;Settori Merceologici;1;Gestione archivio;Gestione anagrafiche Settori Merceologici
+0103070000;tcla1art;Classi di Articoli 1;1;Gestione archivio;gestione Classi di Articoli 1
+0103080000;tnomen;Codici Doganali;1;Gestione archivio;gestione Codici Doganali
+0103090000;tudm;Unità di Misura;1;Gestione archivio;gestione Unità di Misura
+;;;;;
+0104000000;ana-tabase;Tabelle di base;0;;Tabelle di base
+0104010000;tnazioni;Nazioni;1;Gestione archivio;Tabella Nazioni
+0104020000;tregioni;Regioni;1;Gestione archivio;Tabella Regioni
+0104030000;tprov;Provincie;1;Gestione archivio;Tabella Provincie
+0104040000;ttipocli;Tipologia Clienti;1;Gestione archivio;Tabella Tipologie Clienti
+0104050000;tparamge;Parametri generali;1;Gestione archivio;Tabella Parametri Generali
+0104060000;tmovtrat;Parametri movimenti trasferiti;1;Gestione archivio;Tabella movimenti trattati
+0104070000;tcontat;Contatori;1;Gestione archivio;Tabella Contatori
+0104080000;tbanche;Banche (Abi Cab);1;Gestione archivio;Tabella Banche
+;;;;;
+0200000000;ordini;Ordini e Bolle Clienti;0;;Ordini e Bolle Clienti
+;;;;;
+0201000000;ord-ges;Gestione Ordini;0;;Gestione Ordini
+0201010000;gordc;Caricamento Ordini;1;Gestione archivio;Caricamento Ordini Clienti
+0201020000;selordc;Modifica Ordini;1;Gestione archivio;Modifica Ordini Clienti
+0201030000;prenbf;Prenotazione Bolle/Fatture;1;Elaborazione;Prenotazione per stampa bolle e fatture e stato Postel
+0201040000;accorr;Accorpamento Corrispettivi;1;Elaborazione;Genera bolla da corrispettivi del giorno
+;;;;;
+0202000000;ord-sta;Stampe Ordini;0;;Stampe ordini
+0202010000;stordc;Stampa Ordini;1;Stampa;Stampa Ordini in tre copie
+0202020000;stbolle;Stampa Bolle;1;Stampa;Stampa le bolle prenotate
+0202030000;stbolle-r;Ristampa Bolle;1;Stampa;Ristampa le bolle già emesse
+0202040000;stlistdoc;Lista ordini;1;Stampa;Stampa la Lista dei Ordini (solo le intestazioni) cn opzioni di tipologia
+0202050000;stbrogc;Stampa Brogliaccio;1;Stampa;Stampa Brogliaccio Ordini
+;;;;;
+0300000000;fatture;Fatturazione;0;;Fatturazione
+;;;;;
+0301000000;fatt-fis;Fatturazione fiscale;0;;Fatturazione fiscale
+0301010000;agfatt;Assegnazione protocollo;1;Elaborazione;Assegnazione numeri di fattura
+0301020000;stfatt;Stampa Fatture / Note Credito;1;Stampa;Stampa fiscale di Fatture e Note Credito
+0301030000;contab;Aggiornamenti da Fatturazione;1;Elaborazione;Esegue l'aggiornamento DEFINITIVO delle Fatture verso Magazzino, Contabilità, calcola le Provvigioni e i Trasporti.
+0301040000;ripristino-f;Ripristino fatture;1;Elaborazione;Azzera l'assegnazione del numero di fattura per i documenti già prenotati
+0301050000;postel;Postel;1;Stampa;Generazione file per "Piccione" per l'invio POSTEL.
+;;;;;
+0302000000;fatt-man;Fatture manuali e Note Credito;0;;Fatture manuali e Note Credito
+0302010000;selfat;Caricamento Fatture Manuali;1;Gestione archivio;Caricamento Fatture Manuali
+0302020000;selmodfatt;Modifica Fatture Manuali;1;Gestione archivio;Modifica Fatture Manuali
+0302030000;selnota;Caricamento Note Credito;1;Gestione archivio;Caricamento Note Credito
+0302040000;selmodnota;Modifica Note Credito;1;Gestione archivio;Modifica Note Credito
+0302050000;stbrogc-nc;Brogliaccio Note Credito;1;Stampa;Stampa Brogliaccio Note Credito
+0302060000;prenbf-nc;Prenotazione Fatture;1;Elaborazione;Gestione Stato Note Credito
+;;;;;
+0400000000;magaz;Gestione Magazzino;0;;Gestione Magazzino
+;;;;;
+0401000000;mag-mov;Gestione movimenti;0;;Gestione movimenti
+0401010000;gmovmag;Carica Movimenti;1;Gestione archivio;Carica movimenti di magazzino
+0401020000;selmovc;Modifica Movimenti;1;Gestione archivio;Modifica movimenti d magazzino
+0401030000;smovmag;Stampa Movimenti Magazzino;1;Stampa;Stampa movimenti di Magazzino
+0401040000;gmovdis;Distinta Base;1;Gestione archivio;Movimentazione magazzino con distinta base
+0401050000;ricaldin;Ricalcolo giacenze dinamiche;1;Elaborazione;Ricalcolo dati dinamici dei progressivi di magazzino prelevandoli da movimenti non consolidati e da ordini inevasi e non fatturati.
+;;;;;
+0402000000;mag-stat;Aggiornamenti e Statistiche;0;;Aggiornamenti e Statistiche
+0402010000;aggmese;Aggiornamenti Mensili;1;Elaborazione;1 - MAGAZZINO: agg.to mensile (consolidamento dati) 2 - STATISTICHE: agg.to statistiche con raffronti per mese 3 - STATISTICHE: agg.to statistiche settoriali con raffronti per mese 4 - SCRITTURE AUSILIARIE NON UTF 5 - CALCOLO VENDUTO SU BASE MENSILE
+0402020000;inventory;Stampa Inventario, Statistiche;1;Stampa;Stampa Inventario e statistiche per gruppi e per margini/gruppi.
+0402030000;statraffsett;Statistiche settoriali e raffronti;1;Stampa;Genera una stampa per gruppo della redditività: 1 - Mese corrente su mese anno precedente come periodo parziale 2 - Progressivo mese corrente su mese anno precedente ed una stampa coi medesimi dati, ma suddivisa per tipologie di Clienti.
+0402040000;stgiormag;Scritture ausiliarie non UTF;1;Stampa;La Lubex S.p.A. è esentata dalle scritture di magazzino per i prodotti non UTF (2710) per gli altri invece vanno fatte. La stampa è a livello mensile per articolo (padre), va riportata la giacenza inizio mese, la movimentazione in entrata e uscita del mese (solo a quantità) e la giacenza di fine mese.
+;;;;;
+0403000000;mag-util;Utility;0;;Utility
+0403010000;inveday;Stampa Inventario DAY;1;Stampa;Stampa Inventario ad una certa data senza consolidare nulla.
+0403020000;modulinv;Modulistica per Inventari;1;Stampa;Stampa su file Excel dei prodotti che sono stati movimentati nell'anno.
+0403030000;stmarcon;Controllo marginalità;1;Stampa;Serve per il controllo delle statistiche quando emergono dati non coerenti
+0403040000;genbil;Genera File per bilanci;1;Stampa;Calcola per ogni marca i dati specifici in un determinato periodo (mese/anno). Vengono creati 3 files in formato Excel: 1. Kg. Trasportati 2. Fatturati 3. Provvigioni
+0403050000;rebuild;Ricostruzione archivi;1;Elaborazione;Ricostruzione indici con tools Acucobl-GT
+;;;;;
+0404000000;mag-serv;Servizio;0;;Servizio
+0404010000;selmovcons;Modifica movimenti consolidati;1;Gestione archivio;Consente la modifica dei movimenti di magazzino già precedentemente consolidati.
+0404020000;azzmag;Riaggiornamento Magazzino;1;Elaborazione;Riaggiorna i progressivi di magazzino dall'inizio dell'anno alla data di consolidamento.
+0404030000;gdomov;Rettifica Gruppo GDO;1;Elaborazione;Per correggere sui movimenti di magazzino i Gruppi Gdo per fusioni, scorpori, aggregazioni). Su ogni movimento di magazzino sostituisce il Gruppo Gdo in base a quanto trova nelle anagrafiche dei Clienti.
+;;;;;
+0405000000;mag-azze;Azzeramenti fine anno;0;;Azzeramenti fine anno
+0405010000;sub-fine-anno;Elaborazioni Fine Anno;0;;Utilty necessarie alla gestione, alcune servono una volta l'anno come gli azzeramenti, altre secondo le necessità
+0405020000;azzstat;Azzeramento Statistiche;1;Elaborazione;Azzeramento dati STATISTICHE annuale con trasposizione su anno precedente
+0405030000;azzordfor;Azzer. file ordini a fornitori;1;Elaborazione;Azzeramento dati ORDFOR annuale con trasposizione su anno precedente
+;;;;;
+0500000000;trasputf;Trasporti e UTF;0;;Trasporti e UTF
+;;;;;
+0501000000;tras-tras;Trasporti;0;;Trasporti
+0501010000;ttarifvet;Tariffe vettori;1;Gestione archivio;Gestione Tariffe Vettori
+0501020000;stt-tariffe;Stampa Tariffe;1;Stampa;Stampa Tabelle Tariffe su file Excel
+0501030000;gtrasporti;Gestione Trasporti;1;Gestione archivio;Gestione (modifica, cancellazione e l'inserimento) dei record TRASPORTI.
+0501040000;stt-day;Stampa di controllo;1;Stampa;Stampa giornaliera di controllo
+0501050000;stt-mese;Stampe mensili;1;Stampa;Stampa su file Excel i movimenti valorizzando in base allae tariffe.
+0501060000;chvet;Cambio Veloce Vettori;1;Elaborazione;Per il cambio veloce dei vettori su  tutti i Clienti e Destini (con filtro Gdo, regione, provincia).
+0501070000;modstadoc;Fatture e Accrediti Vettori;1;Gestione archivio;Modifica e Stampa fattura/nota credito per rifatturazione al vettore.
+;;;;;
+0502000000;tras-utf;UTF;0;;UTF
+0502010000;ganautf;Anagrafica UTF;1;Gestione archivio;Anagrafica per la gestione dei registri UTF.
+0502020000;stintereg;Intestazione registri;1;Stampa;Intestazione registri da inviare alla vidimazione.
+0502030000;listmov;Lista entrate/uscite;1;Stampa;Lista Entrate / Uscite per totali giornalieri
+0502040000;extmov;Estrazione movimenti UTF;1;Elaborazione;Estrazione movimenti UTF (file MOVUTF)
+0502050000;utf-daylist;Stampa della lista del giorno;1;Stampa;Stampa della lista del giorno
+0502060000;gmovutf;Gestione movimenti UTF;1;Gestione archivio;gestione del file movimenti UTF (file MOVUTF)
+0502070000;stregutf;Stampa registro fiscale;1;Stampa;Stampa fiscale (in prova e definitivo) del registro UTF.
+;;;;;
+0600000000;provvigio;Provvigioni;0;;Provvigioni
+;;;;;
+0601000000;provvig;Provvigioni;0;;Provvigioni
+0601010000;gprovvig;Rettifiche provvigioni;1;Gestione archivio;Gestione del file delle provvigioni PROVVIG per rettifiche "manuali".
+0601020000;stp-brog;Lista provvigioni per giorno;1;Stampa;Stampa del dettaglio delle provvigioni e omaggio per singola data di fatturazione.
+0601030000;stp-perage;Stampa periodica per agente;1;Stampa;Stampa della lista delle provvigioni maturate dall'agente in un determinato periodo.
+0601040000;stp-marca;Stp a livello marca per agente;1;Stampa;Stampa un riepilogo delle marche per ogni agente delle provvigioni maturate.
+0601050000;stp-incas;Liq. provvigioni - incassato;1;Stampa;Liquidazione provvigioni: stampa incassato
+0601060000;stp-sosp;Liq. provvigioni - sospeso;1;Stampa;Liquidazione provvigioni: stampa sospeso
+0601070000;stp-omag;Liq. provvigioni - omaggi;1;Stampa;Liquidazione provvigioni: stampa lista omaggi
+0601080000;calinc;Liq. provv.: calcolo incassato;1;Elaborazione;Liquidazione provvigioni: calcolo incassato. Ogni trimestre si procede al consolidamento delle provvigioni per le fatture incessate nel periodo.
+;;;;;
+0700000000;consulta;Interrogazioni e stampe;0;;Interrogazioni e stampe
+;;;;;
+0701000000;cons-dir;Direzionale;0;;Direzionale
+0701010000;fatgio;Fatturati Mese / Giorno;1;Elaborazione;Fornisce i fatturati mensili per ogni settore con il raffronto in percentuale all'anno precedente e i fatturati giornalieri del mese in corso
+0701020000;fatclifor;Fatturato da registro IVA;1;Elaborazione;Fornisce i fatturati IVA anno corrente / anno passato di tutti i Clienti e i Fornitori.
+0701030000;statgio;Statistica Giornaliera;1;Stampa;Calcolo vendite e marginalità giornaiera per settore (Direzione)
+0701040000;giacma;Valorizza Magazzino;1;Elaborazione;Valorizzazione magazzino: è un riepilogo per marca / Kg (di cui UTF) /  valore medio.
+0701050000;movper;Movimentazione per mese;1;Elaborazione;Movimentazione delle vendite per singolo prodotto a livello mese (anno corrente e passato).
+0701060000;fordfor;File ordini a fornitori;1;Elaborazione;Calcolo ed creazione di un file formato csv per la gestione degli ordini ai fornitori
+;;;;;
+0702000000;cons-mag;Magazzino;0;;Magazzino
+0702010000;vgiacenze;Vedi Giacenze;1;Elaborazione;Vedo le giacenze dinamiche
+0702020000;vmovmag;Movimentazione prodotti;1;Elaborazione;Cerca nel magazzino qualsiasi movimnento per Cliente, Fornitore, Marca, Articolo, destino,… vedo il documento ree esporto in Excel.
+0702030000;intfat;Fatturati per marche;1;Elaborazione;Vedo i fatturati (valore e Kg.) in ogni possibile combinazione.
+0702040000;vscorte;Merce da evadere o fatturare;1;Elaborazione;Visualizza e stampa (con esportazione in Excel) della movimentazione di un prodotto o di una marca per ordini inevasi o bollettati e non fatturati.
+0702050000;premigdo;Premi GDO;1;Stampa;Stampa in formato csv per Excel dei seguenti elaborati: - Fatturato per singolo cliente (SPREGD) - Venduto singolo prodotto per gruppo GDO (VENODBC) - Venduto per marca/mese (VEN_GDO)
+;;;;;
+0703000000;cons-sta;Stampe;0;;Stampe
+0703010000;stdoc;Cerca Bolle, Fatture e Ncr.;1;Stampa;Ricerca e Stampa dei documenti indicati
+0703020000;starticoli;Stampa Listini Articoli;1;Stampa;Stampa articoli per marca, per settore... (listini)
+0703030000;stgdo;Stampa Assortimenti;1;Stampa;Stampa su Excel degli assortimenti Clienti

@@ -1,0 +1,87 @@
+      *
+       77 Form1-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 Form1-Tb-1-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 Form1-St-1-Handle
+                  USAGE IS HANDLE OF STATUS-BAR.
+       77 Screen1-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 Default-Font
+                  USAGE IS HANDLE OF FONT DEFAULT-FONT.
+       77 hid-old-qta      PIC  9(8).
+       78 TITOLO VALUE IS "Geslux - Caricamento Ordini Fornitori". 
+       77 AUTO-ID          PIC  9(6)
+                  VALUE IS 0.
+       77 STATUS-int-rordforn          PIC  X(2).
+           88 Valid-STATUS-int-rordforn VALUE IS "00" THRU "09". 
+       77 STATUS-int-tordforn          PIC  X(2).
+           88 Valid-STATUS-int-tordforn VALUE IS "00" THRU "09". 
+       77 STATUS-brordforn PIC  X(2).
+           88 Valid-STATUS-brordforn VALUE IS "00" THRU "09". 
+       77 STATUS-btordforn PIC  X(2).
+           88 Valid-STATUS-btordforn VALUE IS "00" THRU "09". 
+       77 Small-Font
+                  USAGE IS HANDLE OF FONT SMALL-FONT.
+       77 STATUS-tpiombo   PIC  X(2).
+           88 Valid-STATUS-tpiombo VALUE IS "00" THRU "09". 
+       77 STATUS-lisagente PIC  X(2).
+           88 Valid-STATUS-lisagente VALUE IS "00" THRU "09". 
+       77 STATUS-rordforn  PIC  X(2).
+           88 Valid-STATUS-rordforn VALUE IS "00" THRU "09". 
+       77 STATUS-nordforn  PIC  X(2).
+           88 Valid-STATUS-nordforn VALUE IS "00" THRU "09". 
+       77 STATUS-rlistini  PIC  X(2).
+           88 Valid-STATUS-rlistini VALUE IS "00" THRU "09". 
+       77 STATUS-tlistini  PIC  X(2).
+           88 Valid-STATUS-tlistini VALUE IS "00" THRU "09". 
+       77 path-tmp-nordforn            PIC  X(256).
+       77 STATUS-tmp-nordforn          PIC  X(2).
+           88 Valid-STATUS-tmp-nordforn VALUE IS "00" THRU "09". 
+       77 STATUS-nforn     PIC  X(2).
+           88 Valid-STATUS-nforn VALUE IS "00" THRU "09". 
+       77 Large-Font
+                  USAGE IS HANDLE OF FONT LARGE-FONT.
+       77 path-tmp-tpromo-zoom         PIC  X(256).
+       77 STATUS-tmp-tpromo-zoom       PIC  X(2).
+           88 Valid-STATUS-tmp-tpromo-zoom VALUE IS "00" THRU "09". 
+       77 STATUS-tgrupgdo  PIC  X(2).
+           88 Valid-STATUS-tgrupgdo VALUE IS "00" THRU "09". 
+       77 como-descr-promo PIC  X(100).
+       77 STATUS-nlistini  PIC  X(2).
+           88 Valid-STATUS-nlistini VALUE IS "00" THRU "09". 
+       01 rec-grid.
+           05 col-num          PIC  Z(5).
+           05 col-art          PIC  zzzzz9.
+           05 col-des          PIC  x(50).
+           05 col-qta          PIC  z(7)9.
+           05 col-uni          PIC  zzz.zz9,9999.
+           05 col-sconto-1     PIC  z9,99.
+           05 col-sconto-2     PIC  z9,99.
+           05 col-sconto-3     PIC  z9,99.
+           05 col-sconto-4     PIC  z9,99.
+           05 col-sconto-5     PIC  z9,99.
+           05 col-imp          PIC  zzz.zz9,9999.
+           05 col-consumo      PIC  zzz.zz9,9999.
+           05 col-cou          PIC  z.zz9,9999.
+           05 col-add          PIC  Z.ZZ9,99.
+           05 col-costi-agg    PIC  zzz.zz9,9999.
+           05 col-iva          PIC  x(3).
+       01 OLD-rec-grid.
+           05 OLD-col-num      PIC  Z(5).
+           05 OLD-col-art      PIC  zzzzz9.
+           05 OLD-col-des      PIC  x(50).
+           05 OLD-col-qta      PIC  z(7)9.
+           05 OLD-col-uni      PIC  zzz.zz9,9999.
+           05 OLD-col-sconto-1 PIC  z9,99.
+           05 OLD-col-sconto-2 PIC  z9,99.
+           05 OLD-col-sconto-3 PIC  z9,99.
+           05 OLD-col-sconto-4 PIC  z9,99.
+           05 OLD-col-sconto-5 PIC  z9,99.
+           05 OLD-col-imp      PIC  zzz.zz9,9999.
+           05 OLD-col-consumo  PIC  zzz.zz9,9999.
+           05 OLD-col-cou      PIC  z.zz9,9999.
+           05 OLD-col-add      PIC  Z.ZZ9,99.
+           05 OLD-col-costi-agg            PIC  zzz.zz9,9999.
+           05 OLD-col-iva      PIC  x(3).
+       78 78-NumCol VALUE IS 16. 

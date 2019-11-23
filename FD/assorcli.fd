@@ -1,0 +1,37 @@
+       FD  assorcli.
+       01 asc-rec.
+           05 asc-chiave.
+               10 asc-cod-gruppo-gdo           PIC  X(5).
+               10 asc-cod-cliente  PIC  9(5).
+               10 asc-progressivo-destino      PIC  9(5).
+               10 asc-cod-articolo PIC  9(6).
+           05 asc-dati.
+               10 asc-data-inizio-validita     PIC  9(8).
+               10 asc-cod-listino-vendita      PIC  9(4).
+               10 asc-da-articoli  PIC  9.
+                   88 asc-si-da-articoli VALUE IS 1. 
+                   88 asc-no-da-articoli VALUE IS 0. 
+               10 asc-perc-sconto-listino      PIC  9(2)v9(2).
+               10 asc-prezzo-finito            PIC  9(9)v9(2).
+               10 asc-imposta-consumo          PIC  9(4)v9(2).
+               10 asc-imposta-ecologica-coubat PIC  9(4)v9(2).
+               10 asc-imponibile-merce         PIC  9(9)v9(2).
+               10 asc-cod-articolo-per-cliente PIC  X(15).
+               10 asc-stato        PIC  X(1).
+                   88 asc-attivo VALUE IS "A". 
+                   88 asc-disattivo VALUE IS "D". 
+                   88 asc-bloccato VALUE IS "B". 
+               10 asc-dati-comuni.
+                   15 asc-data-creazione           PIC  9(8).
+                   15 asc-ora-creazione            PIC  9(8).
+                   15 asc-utente-creazione         PIC  X(10).
+                   15 asc-data-ultima-modifica     PIC  9(8).
+                   15 asc-ora-ultima-modifica      PIC  9(8).
+                   15 asc-utente-ultima-modifica   PIC  X(10).
+               10 asc-vuoti.
+                   15 asc-num-vuoto-1  PIC  9(15).
+                   15 asc-num-vuoto-2  PIC  9(15).
+                   15 asc-num-vuoto-3  PIC  9(15).
+                   15 asc-alfa-vuoto-1 PIC  x(20).
+                   15 asc-alfa-vuoto-2 PIC  x(20).
+                   15 asc-alfa-vuoto-3 PIC  x(20).

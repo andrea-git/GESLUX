@@ -1,0 +1,82 @@
+      *
+      *    record con parametri esercizio    tipo record=ES
+      *
+      * descrizioni es.precedente e successivo                                                           | mxm 22/09/2006 10.12
+      *
+      *
+      * tplvar zmm_title=Esercizi
+      * tplvar zmm_ver=09.01.00
+      * tplvar zmm_class=detail
+      * tplvar zmm_masterkey=doces-codice-ditta
+      *
+       FD  DOCES.
+       01 RECORD-DOCES.
+           05 DOCES-CODICE.
+               10 DOCES-CODICE1    PIC  X(02).
+               10 DOCES-CODICE2    PIC  X(08).
+               10 filler REDEFINES DOCES-CODICE2.
+      *$GEN entity=docdi
+                   15 doces-codice-ditta           PIC  x(03).
+      *
+      *$GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=02,zmm_align=L,zmm_pos=1
+                   15 doces-esercizio  PIC  x(02).
+                   15 filler           PIC  x(03).
+               10 DOCES-CODICE3    PIC  9(04).
+           05 RESTO-RECORD-DOCES.
+      *
+      *$GEN zmm=on,zmm_title=Descrizione,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=2
+               10 DOCES-DESCRIZIONE            PIC  X(30).
+      * copy "groupdate.xfc". | DBMaker
+      *
+               10 DOCES-DATA-INIZIO-ESERCIZIO.
+      *(( XFD NAME = INIZIO-ESERCIZIO-A ))
+                   15 AA   PIC  9(04).
+      *(( XFD NAME = INIZIO-ESERCIZIO-M ))
+                   15 MM   PIC  9(02).
+      *(( XFD NAME = INIZIO-ESERCIZIO-G ))
+                   15 GG   PIC  9(02).
+               10 filler REDEFINES doces-data-inizio-esercizio.
+      *
+      *$GEN  type=date,zmm=on,zmm_title=Data inizio,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=3
+                   15 doces-data-inizio-esercizio-num          PIC  
+           9(08).
+      *
+      * copy "groupdate.xfc". | DBMaker
+      *
+               10 DOCES-DATA-FINE-ESERCIZIO.
+      *(( XFD NAME = FINE-ESERCIZIO-AA ))
+                   15 AA   PIC  9(04).
+      *(( XFD NAME = FINE-ESERCIZIO-MM ))
+                   15 MM   PIC  9(02).
+      *(( XFD NAME = FINE-ESERCIZIO-GG ))
+                   15 GG   PIC  9(02).
+               10 filler REDEFINES doces-data-fine-esercizio.
+      *$GEN type=date,zmm=on,zmm_title=Data fine,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=4
+      *
+                   15 doces-data-fine-esercizio-num            PIC  
+           9(08).
+      *
+      *
+               10 DOCES-ANNO-CONTROLLO         PIC  X(04).
+      *$GEN type=code,entity=doces,masterkey=doces-codice-ditta
+               10 DOCES-ESERCIZIO-PRECEDENTE   PIC  X(02).
+      *$GEN type=code,entity=doces,masterkey=doces-codice-ditta
+               10 DOCES-ESERCIZIO-SEGUENTE     PIC  X(02).
+      * copy "groupdate.xfc". | DBMaker
+      *
+               10 DOCES-DATA-FINE-REGISTRAZIONE.
+      *(( XFD NAME = FINE-REG-AA ))
+                   15 AA   PIC  9(04).
+      *(( XFD NAME = FINE-REG-MM ))
+                   15 MM   PIC  9(02).
+      *(( XFD NAME = FINE-REG-GG ))
+                   15 GG   PIC  9(02).
+               10 filler REDEFINES doces-data-fine-registrazione.
+      *$GEN type=date,zmm=on,zmm_title=Limite registrazioni,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=5
+                   15 doces-data-fine-registrazione-num        PIC  
+           9(08).
+      *** DOCES-APERTO è un campo obsoleto che serviva per il passaggio dalla lira all' euro
+      *
+               10 DOCES-APERTO     PIC  X(01).
+                   88 DOCES-APERTO-88 VALUE IS "S" " ". 
+               10 DOCES-FILLER-RIS PIC  X(2023).

@@ -1,0 +1,315 @@
+*
+*   variabili che vengono azzerate alla fine di LEGGEPAR
+*
+01  VARIABILI-AZZERABILI.
+    05  SALVA-TASTO-F1                      PIC  9(05).    | mxm 28.03.02
+    05  FLAG-DOC                            PIC  9(01).
+    05  IC1                                 PIC  9(01).
+    05  IC2                                 PIC  9(01).
+    05  IC3                                 PIC  9(01).
+    05  IC4                                 PIC  9(01).
+    05  IC5                                 PIC  9(01).
+    05  IC6                                 PIC  9(01).
+    05  K                                   PIC  9(01).
+    05  ISW                                 PIC  9(01).
+    05  F1                                  PIC  9(05).     | mxm 28.03.02
+        88  no-key                          value zero.
+        88  esc-key                         value 27.
+        88  ent-key                         value 0013.
+        88  tf1-key                         value 0001.
+        88  tf2-key                         value 0002.
+        88  tf3-key                         value 0003.
+        88  tf4-key                         value 0004.
+        88  tf5-key                         value 0005.
+        88  tf6-key                         value 0006.
+        88  tf7-key                         value 0007.
+        88  tf8-key                         value 0008.
+        88  tf9-key                         value 0900.
+        88  tf10-key                        value 0010.
+        88  tab-key                         value 0009.
+        88  pup-key                         value 0067.
+        88  pdown-key                       value 0068.
+        88  up-arrow-key                    value 0052.
+        88  down-arrow-key                  value 0053.
+        88  change-font-key                 value 0903.
+
+    05  J                                   PIC  9(04).
+    05  J-BMP                               PIC  9(02).
+    05  J1-BMP                              PIC  9(02).
+    05  COMODO                              PIC  X(01).
+    05  ESISTE                              PIC  X(01).
+    05  COMMAND-LIN                         PIC  X(80).
+    05  PROGRAMMA                           PIC  X(50).
+    05  PROGRAMMA-TITOLO                    PIC  X(08).
+    05  PROGRAMMA-CALL                      PIC  X(50).
+    05  STATO-CALL                          PIC  X(02).
+    05  PARAMETRI-CALL                      PIC  X(11000).
+    05  CONTATORE-COMANDI                   PIC  9(05).
+    05  PAGINA                              PIC  9(01).
+    05  LETTO                               PIC  9(01).
+    05  ISW-CALL                            PIC  9(01).
+    05  DOPO                                PIC  9(01).
+    05  F4                                  PIC  9(01).
+*
+    05  PRIMO                               PIC  9(05).
+    05  ULTIMO                              PIC  9(05).
+    05  LINEA1                              PIC  9(02).
+*   05  RIGA1                               PIC  9(05).
+*   05  RIGHE                               PIC  9(02).
+*   05  RECORD-VIDEO                        PIC  9(02).
+*
+    05  SC                          PIC  9(04).
+    05  SC-00  REDEFINES SC.
+        10  SC-01                   PIC  9(01).
+        10  SC-02                   PIC  9(03).
+    05  COMODO-CODICE               PIC  X(200).
+    05  XY.
+        10  Y                       PIC  9(02).
+        10  X                       PIC  9(02).
+*
+    05  NUCLEO                      PIC  9(02).
+    05  STATO                       PIC  X(02).
+        88  STATO-OK                VALUE "00" "02" "05" "07" "0M".
+        88  FINE-FILE               VALUE "10".
+        88  STATO-EOF               VALUE "10".
+        88  STATO-DUPKEY            VALUE "22".
+        88  STATO-INVKEY            VALUE "23".
+        88  STATO-ALREADY-OPEN      VALUE "41".       | mxm 03.05.04
+        88  STATO-99                VALUE "99".
+        88  STATO-9D                VALUE "9D".       | mxm 19.05.03
+	88  STATO-LOCKED       	    VALUE "93".       | mxm 06.05.04
+
+    05  STATO-ESTESO                PIC  X(04).
+    05  DATA-GO.
+        10  GG                      PIC  9(02).
+        10  MM                      PIC  9(02).
+        10  AA                      PIC  9(04).
+    05  DATA-BACK.
+        10  GG                      PIC  X(02).
+        10  DB1                     PIC  X(01).
+        10  MM                      PIC  X(02).
+        10  DB2                     PIC  X(01).
+        10  AA                      PIC  X(04).
+    05  ORA-GO                      PIC  9(04).
+    05  ORA-BACK.
+        10  MI                      PIC  X(02).
+        10  OB1                     PIC  X(01).
+        10  HH                      PIC  X(02).
+    05  ERRORE                      PIC  X(04).
+    05  ER-DESCRIZIONE.
+        10  ER-DES                  PIC  X(50)  OCCURS 05.
+    05  DEC-NOME-FILE               PIC  X(50).
+    05  DEC-CODICE-FILE             PIC  X(50).
+    05  DEC-CODICE-FILE01  REDEFINES DEC-CODICE-FILE.
+        10  DEC-DATA                PIC  X(08).
+        10                          PIC  X(01).
+        10  DEC-PRG1                PIC  Z(06).
+        10                          PIC  X(01).
+        10  DEC-PRG2                PIC  Z(05).
+*
+*dei 20 elementi ne sono gestiti 15
+*
+    05  TABELLA-MENU.
+        10  TABELLA-MENU-BASE.
+            15  TABELL-MENU OCCURS 300.
+                20  TAB-MENU        PIC  X(30).
+                20  ELEM-MENU  REDEFINES TAB-MENU  PIC  X(30).
+        10  TITOLO-MENU             PIC  X(40).
+        10  MENU-BOXED              PIC  X(01).
+            88  MENU-BOXED-88   VALUE "S" " ".
+        10  MENU-Y                  PIC  9(02)V9(02).
+        10  MENU-X                  PIC  9(02).
+        10  MENU-SCELTO             PIC  9(03).
+        10  MENU-DISPLAY            PIC  X(01).
+        10  MENU-COLORE             PIC  9(01).
+        10  MENU-MENU               PIC  9(02).
+        10  MENU-CODICE             PIC  X(08).
+    05  POS-PUSH                    PIC  9(02)V9(02).
+    05  SIZE-PUSH                   PIC  9(02).
+    05  VISIBILE.
+        10  VISIBLE-01              PIC  9(01).
+        10  VISIBLE-02              PIC  9(01).
+        10  VISIBLE-03              PIC  9(01).
+        10  VISIBLE-04              PIC  9(01).
+        10  VISIBLE-05              PIC  9(01).
+        10  VISIBLE-06              PIC  9(01).
+        10  VISIBLE-07              PIC  9(01).
+        10  VISIBLE-08              PIC  9(01).
+    05  VIS-CODICE.
+        10  VIS-CODICE1             PIC  X(02).
+        10  VIS-CODICE2             PIC  X(248).
+    05  CONTATORE-CNT               PIC  9(18).
+    05  CONTATORE-CNT-06            PIC  9(06).
+    05  DATA-CNT.
+        10  AA                      PIC  9(04).
+        10  MM                      PIC  9(02).
+        10  GG                      PIC  9(02).
+    05  TIPO-CNT                    PIC  X(08).
+    05  ALTPRT                      PIC  9(01).
+    05  J-CNT                       PIC  9(04).
+    05  CNT-CNT                     PIC  9(04).
+    05  PRT-VALORE-CTRIG            PIC  9(04).
+    05  PRT-NUMERO-CTRIG            PIC  9(04).
+    05  ISW-UTENTE                  PIC  9(01).
+    05  SC-C                        PIC  X(99).
+    05  SC-U                        PIC  9(03).
+    05  JTG                         PIC  9(02).
+    05  JTGL                        PIC  9(02).
+    05  T-HANDLE                    PIC  X(80).
+    05  ENABLE-TOOLS.
+        10  TOOLS-ENABLE-27             PIC  9(01).
+        10  TOOLS-ENABLE-01             PIC  9(01).
+        10  TOOLS-ENABLE-02             PIC  9(01).
+        10  TOOLS-ENABLE-03             PIC  9(01).
+        10  TOOLS-ENABLE-04             PIC  9(01).
+        10  TOOLS-ENABLE-08             PIC  9(01).
+        10  TOOLS-ENABLE-09             PIC  9(01).
+        10  TOOLS-ENABLE-14             PIC  9(01).
+        10  TOOLS-ENABLE-16             PIC  9(01).
+        10  TOOLS-ENABLE-67             PIC  9(01).
+        10  TOOLS-ENABLE-68             PIC  9(01).
+        10  TOOLS-ENABLE-18             PIC  9(01).
+        10  TOOLS-ENABLE-13             PIC  9(01).
+    05  IMPORTO-RITENUTA-ALFA.
+        10  IMPORTO-RITENUTA            PIC S9(13)V9(02).
+    05  IMPORTO-RITENUTA-VA             PIC S9(15)V9(03).
+    05  TRIANGOLAZIONE                      PIC  9(01).
+*   05  CAMBIO-LIRE-EURO                    PIC  9(05)V9(06).
+    78  CAMBIO-LIRE-EURO                    VALUE 1936,27.
+    05  CAMBIO-EURO                         PIC  9(05)V9(06).
+    05  IMPORTO-EURO                        PIC S9(11)V9(07).
+    05  INPUT-CAMPO                         PIC  X(01).
+        88  DOCDO-NON-INPUT                     VALUE "N".
+    05  PROGRAMMA-ASSOCIATO                 PIC  X(08).
+    05  VIDEATA-ANT                         PIC  X(1920).
+    05  DESCRIZIONE-HELP                    PIC  X(94).
+    05  JUT                                 PIC  9(02).
+    05  JUT1                                PIC  9(02).
+    05  SALVA-DOCUT-CODICE                  PIC  X(14).
+    05  MOUSE-ITEM                          PIC  9(02).
+*
+    05  GIORNI                              PIC  9(06).
+    05  HANDLE-TAB-CONTROL                  HANDLE OF TAB-CONTROL.
+    05  NUMERO-VIDEO-TAB-CONTROL            PIC  9(01).
+    05  VALORE-TAB-CONTROL                  PIC  9(01).
+    05  SALVA-VALORE-TAB-CONTROL            PIC  9(01).
+    05  MASSIMO-VALORE-TAB-CONTROL          PIC  9(01).
+*   05  ESCI-TAB-CONTROL                    PIC  9(01).
+    05  FINE-TAB-CONTROL                    PIC  9(01).
+    05  DIREZIONE-TAB-CONTROL               PIC  X(01).
+        88  INDIETRO-TAB-CONTROL                VALUE "I".
+    78  EVENT-TAB-CONTROL                   VALUE 7.
+    05  IND-PROGRAMMA                       PIC  9(01).
+    05  SALVA-PROGRAMMI                     PIC  9(01).
+    05  TABELLA-SCREEN.
+        10  TAB-SCREEN                      PIC  X(80)  OCCURS 24.
+    05  JSCREEN                             PIC  9(02).
+*    05  CODICE-IMPIANTO                     PIC  X(02).
+
+    05  ENABLE-FINESTRA                     PIC  9(01).
+    05  LINE-ENTRY                          PIC  9(03)V9(01).
+    05  POS-ENTRY                           PIC  9(03)V9(01).
+    05  LINES-ENTRY                         PIC  9(03)V9(01).
+    05  SIZE-ENTRY                          PIC  9(03)V9(01).
+    05  LINE-PUSH-01                        PIC  9(03)V9(01).
+    05  POS-PUSH-01                         PIC  9(03)V9(01).
+    05  LINES-PUSH-01                       PIC  9(03)V9(01).
+    05  SIZE-PUSH-01                        PIC  9(03)V9(01).
+    05  LINE-PUSH-02                        PIC  9(03)V9(01).
+    05  POS-PUSH-02                         PIC  9(03)V9(01).
+    05  LINES-PUSH-02                       PIC  9(03)V9(01).
+    05  SIZE-PUSH-02                        PIC  9(03)V9(01).
+    05  LINE-PUSH-03                        PIC  9(03)V9(01).
+    05  POS-PUSH-03                         PIC  9(03)V9(01).
+    05  LINES-PUSH-03                       PIC  9(03)V9(01).
+    05  SIZE-PUSH-03                        PIC  9(03)V9(01).
+    05  LINE-PUSH-04                        PIC  9(03)V9(01).
+    05  POS-PUSH-04                         PIC  9(03)V9(01).
+    05  LINES-PUSH-04                       PIC  9(03)V9(01).
+    05  SIZE-PUSH-04                        PIC  9(03)V9(01).
+    05  LINE-PUSH-05                        PIC  9(03)V9(01).
+    05  POS-PUSH-05                         PIC  9(03)V9(01).
+    05  LINES-PUSH-05                       PIC  9(03)V9(01).
+    05  SIZE-PUSH-05                        PIC  9(03)V9(01).
+    05  LINE-PUSH-06                        PIC  9(03)V9(01).
+    05  POS-PUSH-06                         PIC  9(03)V9(01).
+    05  LINES-PUSH-06                       PIC  9(03)V9(01).
+    05  SIZE-PUSH-06                        PIC  9(03)V9(01).
+    05  LINE-PUSH-07                        PIC  9(03)V9(01).
+    05  POS-PUSH-07                         PIC  9(03)V9(01).
+    05  LINES-PUSH-07                       PIC  9(03)V9(01).
+    05  SIZE-PUSH-07                        PIC  9(03)V9(01).
+    05  LINE-PUSH-08                        PIC  9(03)V9(01).
+    05  POS-PUSH-08                         PIC  9(03)V9(01).
+    05  LINES-PUSH-08                       PIC  9(03)V9(01).
+    05  SIZE-PUSH-08                        PIC  9(03)V9(01).
+    05  LINE-PUSH-09                        PIC  9(03)V9(01).
+    05  POS-PUSH-09                         PIC  9(03)V9(01).
+    05  LINES-PUSH-09                       PIC  9(03)V9(01).
+    05  SIZE-PUSH-09                        PIC  9(03)V9(01).
+    05  LINE-PUSH-10                        PIC  9(03)V9(01).
+    05  POS-PUSH-10                         PIC  9(03)V9(01).
+    05  LINES-PUSH-10                       PIC  9(03)V9(01).
+    05  SIZE-PUSH-10                        PIC  9(03)V9(01).
+    05  DESCRIZIONE-PUSH-10                 PIC  X(52).
+    05  LINE-FRAME                          PIC  9(03)V9(01).
+    05  POS-FRAME                           PIC  9(03)V9(01).
+    05  LINES-FRAME                         PIC  9(03)V9(01).
+    05  SIZE-FRAME                          PIC  9(03)V9(01).
+
+    05  LINE-LABEL                          PIC  9(03)V9(01).
+    05                                      OCCURS 05.
+        10  LINE-LABEL-TABELLA              PIC  9(03)V9(01).
+        10  LINE-LABEL-TABELLA-CARATTERI    PIC  9(03).
+        10  COLOR-LABEL                     PIC  9(06).
+    05  POS-LABEL-01                        PIC  9(03)V9(01).
+    05  SIZE-LABEL-01                       PIC  9(03)V9(01).
+    05  POS-LABEL-02                        PIC  9(03)V9(01).
+    05  SIZE-LABEL-02                       PIC  9(03)V9(01).
+    05  POS-LABEL-03                        PIC  9(03)V9(01).
+    05  SIZE-LABEL-03                       PIC  9(03)V9(01).
+    05  POS-LABEL-04                        PIC  9(03)V9(01).
+    05  SIZE-LABEL-04                       PIC  9(03)V9(01).
+    05  POS-LABEL-05                        PIC  9(03)V9(01).
+    05  SIZE-LABEL-05                       PIC  9(03)V9(01).
+    05  POS-LABEL-06                        PIC  9(03)V9(01).
+    05  SIZE-LABEL-06                       PIC  9(03)V9(01).
+    05  POS-LABEL-07                        PIC  9(03)V9(01).
+    05  SIZE-LABEL-07                       PIC  9(03)V9(01).
+    05  POS-LABEL-08                        PIC  9(03)V9(01).
+    05  SIZE-LABEL-08                       PIC  9(03)V9(01).
+    05  POS-LABEL-09                        PIC  9(03)V9(01).
+    05  SIZE-LABEL-09                       PIC  9(03)V9(01).
+
+    05  TABELLA-CAMPI-SC.
+        10  TAB-CAMPI-SC                    PIC  9(01)  OCCURS 300.
+
+    05  FILE-HELP                           PIC  X(80).
+
+    05  NUMERO-PAGINA-REGISTRI              PIC  9(04).
+    05  DEFINITIVA-REGISTRI                 PIC  X(01).
+    05  DATA-AGGIORNA-CNT                   PIC  9(08).
+    05  REGISTRO-AGGIORNA-CNT               PIC  X(01).
+*
+*
+    05  sor-open-status.
+        10  sor-open-status                 pic 9(01).
+            88  sor-open                    value 1 false 0.
+        10  sor1-open-status                pic 9(01).
+            88  sor1-open                   value 1 false 0.
+        10  sor2-open-status                pic 9(01).
+            88  sor2-open                   value 1 false 0.
+        10  sor3-open-status                pic 9(01).
+            88  sor3-open                   value 1 false 0.
+        10  sor4-open-status                pic 9(01).
+            88  sor4-open                   value 1 false 0.
+        10  sor5-open-status                pic 9(01).
+            88  sor5-open                   value 1 false 0.
+        10  sor6-open-status                pic 9(01).
+            88  sor6-open                   value 1 false 0.
+        10  sor7-open-status                pic 9(01).
+            88  sor7-open                   value 1 false 0.
+
+    05  filler                              pic x(1000).
+*
+*

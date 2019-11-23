@@ -1,0 +1,32 @@
+       FD  tgrupgdo.
+       01 gdo-rec.
+           05 gdo-chiave.
+               10 gdo-codice       PIC  x(5).
+           05 gdo-dati.
+               10 gdo-intestazione PIC  x(30).
+               10 gdo-data-vigore  PIC  9(8).
+               10 gdo-attenzione   PIC  x(150).
+               10 gdo-listino-bosch            PIC  x(150).
+               10 gdo-listino-ma-fra           PIC  x(150).
+               10 gdo-linea-ursus  PIC  x(150).
+               10 gdo-altro        PIC  x(150).
+               10 gdo-logo         PIC  x(256).
+               10 gdo-comuni.
+                   15 gdo-data-creazione           PIC  9(8).
+                   15 gdo-ora-creazione            PIC  9(8).
+                   15 gdo-utente-creazione         PIC  x(10).
+                   15 gdo-data-modifica            PIC  9(8).
+                   15 gdo-ora-modifica PIC  9(8).
+                   15 gdo-utente-modifica          PIC  x(10).
+               10 gdo-vuoti.
+                   15 gdo-gruppo-invio PIC  9(5).
+                   15 gdo-cli-rifer    PIC  9(5).
+                   15 gdo-num-vuoto-1  PIC  9(5).
+                   15 gdo-num-vuoto-2  PIC  9(15).
+                   15 gdo-num-vuoto-3  PIC  9(15).
+                   15 gdo-alfa-vuoto-1 PIC  x(13).
+                   15 gdo-tipocli      PIC  x(2).
+                   15 gdo-capogruppo   PIC  x(5).
+                   15 gdo-codice-G2    PIC  x(3).
+                   15 gdo-alfa-vuoto-2 PIC  x(17).
+                   15 gdo-alfa-vuoto-3 PIC  x(20).

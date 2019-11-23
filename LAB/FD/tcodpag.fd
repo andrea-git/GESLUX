@@ -1,0 +1,847 @@
+      *
+      * Record per tabelle pagamento
+      *
+      *------------------------------------------------------------------------------------------------------------------------
+      * tk 3958 - Nuove disposizioni normativa antievasione (122/2010) - telematico operazioni > 3000 euro
+      *                                                                                                    | rososv 13/06/2011 10:11:54
+      *           - Nuovo check-box per escludere il pagamento dalla comunicazione op 3000
+      *------------------------------------------------------------------------------------------------------------------------
+      * ticket 3995 - Integrazione Gestionale2 con sito di e-commerce di Infinity                          | macgiu 30/06/2011 
+      *               Il driver XDBC non riesce a leggete questa tabella perchè le colonne
+      *               generate superano le 256 colonne massime. Per ovviare al problema è stata
+      *               inserita direttiva XFD HIDDEN per il campo tblpa-detrazione che è un occurs di 36
+      *-----------------------------------------------------------------------------------------------------------------------
+      * tk.4197 -Migliorie e correzioni sul nuovo modulo "spesometro" (op.non inferiori 3000 euro)         | rososv 03/11/2011 17:07:57
+      *
+      * Modificata posizione campo di zoom 14 (era erroneamente assegnato al campo "tblpa-immediato-e")
+      * Aggiunta colonna 15 esclusione spesometro
+      *-----------------------------------------------------------------------------------------------------------------------
+      * tk.4771 - Agroalimentari: disposizioni art 62 D.L.1 del 24/01/2012 (beni deteriorabili e non deteriorabili)
+      *                                                                                                    | rososv 05/11/2012
+      *
+      * - Aggiunto radio-button per poter scegliere, oltre al sistema attuale di calcolo scadenze per giorni commerciali 
+      *   (ogni mese di 30 giorni), anche il calcolo scadenze per giorni effettivi.
+      *   La scelta di default è per giorni commerciali.
+      *--------------------------------------------------------------------------------------------------------------------------
+      * ticket 4801 - Agroalimentari: disposizioni art 62 D.L.1 del 24/01/2012 (beni deteriorabili e non deteriorabili)
+      *                                                                                                    | rososv 13/11/2012
+      *
+      * Aggiunti nuovi campi codice pagamento beni deteriorabili (tblpa-tblpa-deperibili) e 
+      * codice pagamento beni non deteriorabili (tblpa-tblpa-non-deperibili)
+      *-----------------------------------------------------------------------------------------------------------------------
+      * tk.4799 - Supportare quanto disposto dall'art. 62 D.L. 1/2012                                      | rososv 22/11/2012
+      *
+      * Aggiunto nuovo check-box per escludere il pagamento dalla gestione agroalimentari: 
+      *                     tblpa-exclude-agroalimentari
+      *                         tblpa-exclude-agroalimentari-on      value 1
+      *                         tblpa-exclude-agroalimentari-off     value 0
+      *-----------------------------------------------------------------------------------------------------------------------
+      *
+      * tplvar zmm_title=Tabella pagamenti
+      * tplvar zmm_ver=09.01.00
+      * tplvar zmm_class=anagraphic
+      * tplvar zmm_returnkey=tblpa-codice2
+      *
+      * ZoomFields seq:
+      *   01.tblpa-codice2
+      *   02.tblpa-descrizione1
+      *   03.tblpa-descrizione2
+      *   04.tblpa-codice-sc
+      *   05.tblpa-codice-sc-d
+      *   06.tblpa-codice-sc-mas
+      *   07.tblpa-codice-sc-mas-d
+      *   08.tblpa-pagamento-immediato
+      *   09.tblpa-codice-mas
+      *   10.tblpa-codice-mas-d
+      *   11.tblpa-codice-co
+      *   12.tblpa-codice-co-d
+      *   13.tblpa-codice-art
+      *   14.tblpa-codice-art-d
+      *   15.tblpa-escl-pag-antievasione
+      *   16.tblpa-tipo-calcolo-gg-d
+      *   17.tblpa-tblpa-deperibili
+      *   18.tblpa-tblpa-deperibili-d
+      *   19.tblpa-tblpa-non-deperibili
+      *   20.tblpa-tblpa-non-deperibili-d
+      *   21.tblpa-exclude-agroalimentari-d
+      *
+      *
+
+       FD  tcodpag.
+       01 record-tblpa.
+           05 tblpa-codice.
+               10 tblpa-codice1    PIC  x(02).
+      *$GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=20,zmm_align=L,zmm_pos=1,zmm_entity=tblpa
+      *
+               10 tblpa-codice2    PIC  x(20).
+           05 resto-record-tblpa.
+      *$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=2
+      *
+               10 tblpa-descrizione1           PIC  x(30).
+      *$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=3
+      *
+               10 tblpa-descrizione2           PIC  x(30).
+      *$GEN type=code,entity=tblsc,zmm=on,zmm_title=Sconto cassa,zmm_datatype=x,zmm_size=3,zmm_align=L,zmm_pos=4,zmm_entity=tblsc
+      *
+               10 tblpa-codice-sc  PIC  x(03).
+      *$GEN type=code,entity=mas,zmm=on,zmm_title=Mastro abbuoni,zmm_datatype=x,zmm_size=8,zmm_align=L,zmm_pos=6,zmm_entity=mas
+               10 tblpa-codice-sc-mas          PIC  x(08).
+      *$GEN zmm=on,zmm_title=Pag.diretto,zmm_datatype=x,zmm_size=1,zmm_align=L,zmm_pos=8
+      *
+               10 tblpa-pagamento-immediato.
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+      *
+                   15 tblpa-immediato  PIC  x(01).
+                       88 tblpa-immediato-88 VALUE IS "S" " ". 
+                       88 tblpa-immediato-88-si VALUE IS "S". 
+      *$GEN type=code,entity=mas,zmm=on,zmm_title=S/conto pag.immediato,zmm_datatype=x,zmm_size=8,zmm_align=L,zmm_pos=9,zmm_entity=mas
+                   15 tblpa-codice-mas PIC  x(08).
+      *$GEN type=code,entity=tblco,zmm=on,zmm_title=Causale pag.immediato,zmm_datatype=x,zmm_size=8,zmm_align=L,zmm_pos=11,zmm_entity=tblco
+      *
+                   15 tblpa-codice-co  PIC  x(03).
+               10 tblpa-numero-scadenze        PIC  9(02).
+                   88 tblpa-numero-scadenze-88 VALUE IS 1 THRU 36. 
+               10 tblpa-mesi-esclusi.
+                   15 tblpa-mese1      PIC  9(02).
+                       88 tblpa-mese1-88 VALUE IS 0 THRU 12. 
+                   15 tblpa-giorno1    PIC  9(02).
+                   15 tblpa-mese2      PIC  9(02).
+                       88 tblpa-mese2-88 VALUE IS 0 THRU 12. 
+                   15 tblpa-giorno2    PIC  9(02).
+      *
+      *   Anticipato - Posticipato - prima rata solo di IVA
+      *
+      *$GEN type=checkbox,truevalue="A",falsevalue=" "
+               10 tblpa-iva        PIC  x(01).
+                   88 tblpa-iva-88 VALUE IS "A" " ". 
+                   88 tblpa-iva-88-o VALUE IS " ". 
+                   88 tblpa-iva-88-a VALUE IS "A". 
+                   88 tblpa-iva-88-g VALUE IS "A" " ". 
+      *
+      *   Tabella rate
+      *
+      *
+               10 tblpa-tabella-x.
+                   15 tblpa-tabella
+                              OCCURS 36 TIMES.
+                       16 tblpa-ele-tabella.
+                           20 tblpa-codice-tr  PIC  x(01).
+                           20 tblpa-inizio-conteggio       PIC  9(02).
+                           20 tblpa-tipo-importi           PIC  x(01).
+                               88 tblpa-tipo-importi-88 VALUE IS "P" "A"
+            "C". 
+                               88 tblpa-tipo-importi-88-p VALUE IS "P". 
+                               88 tblpa-tipo-importi-88-a VALUE IS "A". 
+                               88 tblpa-tipo-importi-88-c VALUE IS "C". 
+                           20 tblpa-tipo-scadenze          PIC  x(01).
+                               88 tblpa-tipo-scadenze-88-i VALUE IS "I"
+           . 
+                               88 tblpa-tipo-scadenze-88-d VALUE IS "D"
+           . 
+                               88 tblpa-tipo-scadenze-88 VALUE IS "I" "D
+      -    "". 
+                           20 tblpa-importo    PIC  s9(15)v9(03)
+                                      SIGN IS TRAILING SEPARATE 
+           CHARACTER.
+                           20 tblpa-scadenza   PIC  9(08).
+               10 filler REDEFINES tblpa-tabella-x.
+      *$GEN type=code,entity=tbltr
+      *
+                   15 tblpa-codice-tr-01           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+      *
+                   15 tblpa-inizio-conteggio-01    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+      *
+                   15 tblpa-tipo-importi-01        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+      *
+                   15 tblpa-tipo-scadenze-01       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+      *
+                   15 tblpa-importo-01 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+      *
+                   15 tblpa-scadenza-01            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+      *
+                   15 tblpa-codice-tr-02           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+      *
+                   15 tblpa-inizio-conteggio-02    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+      *
+                   15 tblpa-tipo-importi-02        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+      *
+                   15 tblpa-tipo-scadenze-02       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+      *
+                   15 tblpa-importo-02 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+      *
+                   15 tblpa-scadenza-02            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+      *
+                   15 tblpa-codice-tr-03           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+      *
+                   15 tblpa-inizio-conteggio-03    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+      *
+                   15 tblpa-tipo-importi-03        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+      *
+                   15 tblpa-tipo-scadenze-03       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+      *
+                   15 tblpa-importo-03 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+      *
+                   15 tblpa-scadenza-03            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+      *
+                   15 tblpa-codice-tr-04           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+      *
+                   15 tblpa-inizio-conteggio-04    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+      *
+                   15 tblpa-tipo-importi-04        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+      *
+                   15 tblpa-tipo-scadenze-04       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+      *
+                   15 tblpa-importo-04 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+      *
+                   15 tblpa-scadenza-04            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+      *
+                   15 tblpa-codice-tr-05           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+      *
+                   15 tblpa-inizio-conteggio-05    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+      *
+                   15 tblpa-tipo-importi-05        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+      *
+                   15 tblpa-tipo-scadenze-05       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+      *
+                   15 tblpa-importo-05 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+      *
+                   15 tblpa-scadenza-05            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+      *
+                   15 tblpa-codice-tr-06           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+      *
+                   15 tblpa-inizio-conteggio-06    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+      *
+                   15 tblpa-tipo-importi-06        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+      *
+                   15 tblpa-tipo-scadenze-06       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+      *
+                   15 tblpa-importo-06 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+      *
+                   15 tblpa-scadenza-06            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+      *
+                   15 tblpa-codice-tr-07           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+      *
+                   15 tblpa-inizio-conteggio-07    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+      *
+                   15 tblpa-tipo-importi-07        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+      *
+                   15 tblpa-tipo-scadenze-07       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+      *
+                   15 tblpa-importo-07 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+      *
+                   15 tblpa-scadenza-07            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+      *
+                   15 tblpa-codice-tr-08           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+      *
+                   15 tblpa-inizio-conteggio-08    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+      *
+                   15 tblpa-tipo-importi-08        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+      *
+                   15 tblpa-tipo-scadenze-08       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+      *
+                   15 tblpa-importo-08 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+      *
+                   15 tblpa-scadenza-08            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+      *
+                   15 tblpa-codice-tr-09           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+      *
+                   15 tblpa-inizio-conteggio-09    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+      *
+                   15 tblpa-tipo-importi-09        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+                   15 tblpa-tipo-scadenze-09       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+      *
+                   15 tblpa-importo-09 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+      *
+                   15 tblpa-scadenza-09            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+      *
+                   15 tblpa-codice-tr-10           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+      *
+                   15 tblpa-inizio-conteggio-10    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+      *
+                   15 tblpa-tipo-importi-10        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+      *
+                   15 tblpa-tipo-scadenze-10       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+      *
+                   15 tblpa-importo-10 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+                   15 tblpa-scadenza-10            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+      *
+                   15 tblpa-codice-tr-11           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+      *
+                   15 tblpa-inizio-conteggio-11    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+      *
+                   15 tblpa-tipo-importi-11        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+      *
+                   15 tblpa-tipo-scadenze-11       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+      *
+                   15 tblpa-importo-11 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+      *
+                   15 tblpa-scadenza-11            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+                   15 tblpa-codice-tr-12           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+                   15 tblpa-inizio-conteggio-12    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+                   15 tblpa-tipo-importi-12        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+                   15 tblpa-tipo-scadenze-12       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+                   15 tblpa-importo-12 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+                   15 tblpa-scadenza-12            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+                   15 tblpa-codice-tr-13           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+                   15 tblpa-inizio-conteggio-13    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+                   15 tblpa-tipo-importi-13        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+                   15 tblpa-tipo-scadenze-13       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+      *
+                   15 tblpa-importo-13 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+      *
+                   15 tblpa-scadenza-13            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+      *
+                   15 tblpa-codice-tr-14           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+                   15 tblpa-inizio-conteggio-14    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+                   15 tblpa-tipo-importi-14        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+                   15 tblpa-tipo-scadenze-14       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+                   15 tblpa-importo-14 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+                   15 tblpa-scadenza-14            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+                   15 tblpa-codice-tr-15           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+      *
+                   15 tblpa-inizio-conteggio-15    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+                   15 tblpa-tipo-importi-15        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+                   15 tblpa-tipo-scadenze-15       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+                   15 tblpa-importo-15 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+                   15 tblpa-scadenza-15            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+                   15 tblpa-codice-tr-16           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+                   15 tblpa-inizio-conteggio-16    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+                   15 tblpa-tipo-importi-16        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+                   15 tblpa-tipo-scadenze-16       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+                   15 tblpa-importo-16 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+                   15 tblpa-scadenza-16            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+                   15 tblpa-codice-tr-17           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+      *
+                   15 tblpa-inizio-conteggio-17    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+                   15 tblpa-tipo-importi-17        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+                   15 tblpa-tipo-scadenze-17       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+                   15 tblpa-importo-17 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+                   15 tblpa-scadenza-17            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+                   15 tblpa-codice-tr-18           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+                   15 tblpa-inizio-conteggio-18    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+                   15 tblpa-tipo-importi-18        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+                   15 tblpa-tipo-scadenze-18       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+                   15 tblpa-importo-18 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+                   15 tblpa-scadenza-18            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+                   15 tblpa-codice-tr-19           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+                   15 tblpa-inizio-conteggio-19    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+                   15 tblpa-tipo-importi-19        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+                   15 tblpa-tipo-scadenze-19       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+                   15 tblpa-importo-19 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+                   15 tblpa-scadenza-19            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+                   15 tblpa-codice-tr-20           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+                   15 tblpa-inizio-conteggio-20    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+                   15 tblpa-tipo-importi-20        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+                   15 tblpa-tipo-scadenze-20       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+                   15 tblpa-importo-20 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+                   15 tblpa-scadenza-20            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+                   15 tblpa-codice-tr-21           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+                   15 tblpa-inizio-conteggio-21    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+                   15 tblpa-tipo-importi-21        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+                   15 tblpa-tipo-scadenze-21       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+                   15 tblpa-importo-21 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+                   15 tblpa-scadenza-21            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+                   15 tblpa-codice-tr-22           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+                   15 tblpa-inizio-conteggio-22    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+                   15 tblpa-tipo-importi-22        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+                   15 tblpa-tipo-scadenze-22       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+                   15 tblpa-importo-22 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+                   15 tblpa-scadenza-22            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+                   15 tblpa-codice-tr-23           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+                   15 tblpa-inizio-conteggio-23    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+                   15 tblpa-tipo-importi-23        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+                   15 tblpa-tipo-scadenze-23       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+                   15 tblpa-importo-23 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+                   15 tblpa-scadenza-23            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+                   15 tblpa-codice-tr-24           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+                   15 tblpa-inizio-conteggio-24    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+                   15 tblpa-tipo-importi-24        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+                   15 tblpa-tipo-scadenze-24       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+                   15 tblpa-importo-24 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+                   15 tblpa-scadenza-24            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+                   15 tblpa-codice-tr-25           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+                   15 tblpa-inizio-conteggio-25    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+                   15 tblpa-tipo-importi-25        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+                   15 tblpa-tipo-scadenze-25       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+                   15 tblpa-importo-25 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+                   15 tblpa-scadenza-25            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+                   15 tblpa-codice-tr-26           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+                   15 tblpa-inizio-conteggio-26    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+                   15 tblpa-tipo-importi-26        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+                   15 tblpa-tipo-scadenze-26       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+                   15 tblpa-importo-26 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+                   15 tblpa-scadenza-26            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+                   15 tblpa-codice-tr-27           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+                   15 tblpa-inizio-conteggio-27    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+                   15 tblpa-tipo-importi-27        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+                   15 tblpa-tipo-scadenze-27       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+                   15 tblpa-importo-27 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+                   15 tblpa-scadenza-27            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+                   15 tblpa-codice-tr-28           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+                   15 tblpa-inizio-conteggio-28    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+                   15 tblpa-tipo-importi-28        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+                   15 tblpa-tipo-scadenze-28       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+                   15 tblpa-importo-28 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+                   15 tblpa-scadenza-28            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+                   15 tblpa-codice-tr-29           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+                   15 tblpa-inizio-conteggio-29    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+                   15 tblpa-tipo-importi-29        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+                   15 tblpa-tipo-scadenze-29       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+                   15 tblpa-importo-29 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+                   15 tblpa-scadenza-29            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+                   15 tblpa-codice-tr-30           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+                   15 tblpa-inizio-conteggio-30    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+                   15 tblpa-tipo-importi-30        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+                   15 tblpa-tipo-scadenze-30       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+                   15 tblpa-importo-30 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+                   15 tblpa-scadenza-30            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+                   15 tblpa-codice-tr-31           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+                   15 tblpa-inizio-conteggio-31    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+                   15 tblpa-tipo-importi-31        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+                   15 tblpa-tipo-scadenze-31       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+                   15 tblpa-importo-31 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+                   15 tblpa-scadenza-31            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+                   15 tblpa-codice-tr-32           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+                   15 tblpa-inizio-conteggio-32    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+                   15 tblpa-tipo-importi-32        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+                   15 tblpa-tipo-scadenze-32       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+                   15 tblpa-importo-32 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+                   15 tblpa-scadenza-32            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+                   15 tblpa-codice-tr-33           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+                   15 tblpa-inizio-conteggio-33    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+                   15 tblpa-tipo-importi-33        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+                   15 tblpa-tipo-scadenze-33       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+                   15 tblpa-importo-33 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+                   15 tblpa-scadenza-33            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+                   15 tblpa-codice-tr-34           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+                   15 tblpa-inizio-conteggio-34    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+                   15 tblpa-tipo-importi-34        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+                   15 tblpa-tipo-scadenze-34       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+                   15 tblpa-importo-34 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+                   15 tblpa-scadenza-34            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+                   15 tblpa-codice-tr-35           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+                   15 tblpa-inizio-conteggio-35    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+                   15 tblpa-tipo-importi-35        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+                   15 tblpa-tipo-scadenze-35       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+                   15 tblpa-importo-35 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+                   15 tblpa-scadenza-35            PIC  9(08).
+      *
+      *$GEN type=code,entity=tbltr
+                   15 tblpa-codice-tr-36           PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_inizio_conteggio
+                   15 tblpa-inizio-conteggio-36    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_tipo_importi
+                   15 tblpa-tipo-importi-36        PIC  x(01).
+      *$GEN type=combobox,comboclass=tblpa_tipo_scadenze
+                   15 tblpa-tipo-scadenze-36       PIC  x(01).
+      *$GEN type=num,size=24,dec=3
+                   15 tblpa-importo-36 PIC  s9(15)v9(03)
+                              SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,size=11,dec=0
+                   15 tblpa-scadenza-36            PIC  9(08).
+      *
+      *
+      *
+      *
+      *$GEN type=code,entity=art,zmm=on,zmm_title=Articolo pag.immediato,zmm_datatype=x,zmm_size=8,zmm_align=L,zmm_pos=13,zmm_entity=art
+               10 tblpa-codice-art PIC  x(15).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+               10 tblpa-slittamento            PIC  x(01).
+                   88 tblpa-slittamento-88 VALUE IS " " "S". 
+                   88 tblpa-slittamento-88-si VALUE IS "S". 
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+               10 tblpa-contrassegno-79        PIC  x(01).
+                   88 tblpa-contrassegno-79-88 VALUE IS " " "S". 
+               10 tblpa-detrazione-x.
+                   15 tblpa-detrazione
+                              OCCURS 36 TIMES.
+                       20 tblpa-detrazione-det         PIC  x(01).
+                           88 tblpa-detrazione-det-88 VALUE IS "S" " ". 
+                           88 tblpa-detrazione-det-yes VALUE IS "S". 
+                           88 tblpa-detrazione-det-no VALUE IS " ". 
+               10 filler REDEFINES tblpa-detrazione-x.
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-01          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-02          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-03          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-04          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-05          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-06          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-07          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-08          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-09          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-10          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-11          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-12          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-13          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-14          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-15          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-16          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-17          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-18          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-19          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-20          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-21          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-22          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-23          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-24          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-25          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-26          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-27          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-28          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-29          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-30          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-31          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-32          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-33          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-34          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+      *
+                   15 tblpa-detrazione-35          PIC  x(01).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                   15 tblpa-detrazione-36          PIC  x(01).
+      *(( XFD NAME = TBLPA-ESCL-GG1 ))
+               10 tblpa-escluso-dal-giorno1    PIC  9(02).
+      *(( XFD NAME = TBLPA-ESCL-GG2 ))
+               10 tblpa-escluso-dal-giorno2    PIC  9(02).
+      *$GEN type=combobox,comboclass=tblpa_contanti
+               10 tblpa-contanti   PIC  x(01).
+                   88 tblpa-contanti-88 VALUE IS "S" "A" "C" "R" " ". 
+                   88 tblpa-contanti-assegni VALUE IS "A". 
+                   88 tblpa-contanti-creditcard VALUE IS "C". 
+                   88 tblpa-contanti-contanti VALUE IS "S". 
+                   88 tblpa-contanti-crediti VALUE IS "R". 
+               10 tblpa-tipo-pagamento         PIC  9(02).
+                   88 tblpa-tipo-pagamento-88 VALUE IS 0 THRU 12. 
+      *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Escl.spes.,zmm_datatype=x,zmm_size=12,zmm_align=L,zmm_pos=15
+               10 tblpa-escl-pag-antievasione  PIC  x(01).
+                   88 tblpa-escl-pag-antievasione-88 VALUE IS " " "S". 
+                   88 tblpa-escl-pag-antievasione-ok VALUE IS "S". 
+                   88 tblpa-escl-pag-antievasione-ko VALUE IS " ". 
+               10 tblpa-tipo-calcolo-gg        PIC  9.
+                   88 tblpa-tipo-calcolo-gg-comm VALUE IS 1. 
+                   88 tblpa-tipo-calcolo-gg-eff VALUE IS 2. 
+      *$GEN type=code,entity=tblpa,zmm=on,zmm_title=Pag.beni det.,zmm_datatype=x,zmm_size=8,zmm_align=L,zmm_pos=17,zmm_entity=tblpa
+               10 tblpa-tblpa-deperibili       PIC  x(03).
+      *$GEN type=code,entity=tblpa,zmm=on,zmm_title=Beni non det.,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=19,zmm_entity=tblpa
+               10 tblpa-tblpa-non-deperibili   PIC  x(03).
+               10 tblpa-exclude-agroalimentari PIC  9.
+                   88 tblpa-exclude-agroalimentari-on VALUE IS 1. 
+                   88 tblpa-exclude-agroalimentari-off VALUE IS 0. 
+      ***     10  tblpa-filler                        pic  x(12).                                          | rososv 13/06/2011 11:26:36
+      ***     10  tblpa-filler                        pic  x(11).                                          | rososv 13/06/2011 11:26:36 | rososv 05/11/2012
+      ***     10  tblpa-filler                        pic  x(10).                                          | rososv 05/11/2012 | rososv 13/11/2012
+      ***     10  tblpa-filler                        pic  x(4).                                           | rososv 13/11/2012 | rososv 27/11/2012
+      *
+               10 tblpa-filler     PIC  x(3).
+               10 tblpa-filler-ris PIC  x(40).

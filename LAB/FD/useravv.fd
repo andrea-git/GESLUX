@@ -1,0 +1,25 @@
+      *
+      *
+      *
+      *0
+      *G
+       FD  useravv.
+       01 uav-rec.
+           05 uav-chiave.
+               10 uav-utente       PIC  x(10).
+               10 uav-tipologia    PIC  X(2).
+           05 uav-dati.
+               10 uav-dati-comuni.
+                   15 uav-data-creazione           PIC  9(8).
+                   15 uav-ora-creazione            PIC  9(8).
+                   15 uav-utente-creazione         PIC  X(10).
+                   15 uav-data-ultima-modifica     PIC  9(8).
+                   15 uav-ora-ultima-modifica      PIC  9(8).
+                   15 uav-utente-ultima-modifica   PIC  X(10).
+               10 uav-vuoti.
+                   15 uav-num-vuoto-1  PIC  9(18).
+                   15 uav-num-vuoto-2  PIC  9(18).
+                   15 uav-num-vuoto-3  PIC  9(18).
+                   15 uav-alfa-vuoto-1 PIC  X(20).
+                   15 uav-alfa-vuoto-2 PIC  X(20).
+                   15 uav-alfa-vuoto-3 PIC  X(20).

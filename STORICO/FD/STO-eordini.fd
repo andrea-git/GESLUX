@@ -1,0 +1,32 @@
+      *(( XFD FILE = STO-eordini ))
+      *
+      *
+      *
+       FD  STO-eordini.
+       01 STO-eor-rec.
+           05 STO-eor-chiave.
+               10 STO-eor-tor-chiave.
+                   15 STO-eor-anno     PIC  9(4).
+                   15 STO-eor-num-ordine           PIC  9(8).
+               10 STO-eor-num-riga PIC  9(5).
+           05 STO-eor-dati.
+               10 STO-eor-vettore  PIC  9(5).
+               10 STO-eor-esito    PIC  x(10).
+               10 STO-eor-dt-consegna          PIC  9(8).
+               10 STO-eor-ora-consegna         PIC  9(8).
+               10 STO-eor-dt-avviso            PIC  9(8).
+               10 STO-eor-dt-ap-giacenza       PIC  9(8).
+               10 STO-eor-dati-comuni.
+                   15 STO-eor-data-creazione       PIC  9(8).
+                   15 STO-eor-ora-creazione        PIC  9(8).
+                   15 STO-eor-utente-creazione     PIC  X(10).
+                   15 STO-eor-data-ultima-modifica PIC  9(8).
+                   15 STO-eor-ora-ultima-modifica  PIC  9(8).
+                   15 STO-eor-utente-ultima-modifica           PIC  
+           X(10).
+               10 STO-eor-vuoti.
+                   15 STO-eor-num-vuoto-1          PIC  9(18).
+                   15 STO-eor-num-vuoto-2          PIC  9(18).
+                   15 STO-eor-alfa-vuoto-1         PIC  X(20).
+                   15 STO-eor-alfa-vuoto-2         PIC  X(20).
+                   15 STO-eor-alfa-vuoto-3         PIC  X(20).

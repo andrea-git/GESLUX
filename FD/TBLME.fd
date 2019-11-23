@@ -1,0 +1,64 @@
+      *
+      * Record per tabelle gruppi merceologici
+      *
+      *
+      * s.r. 1922 - Aggiunto campo "Codice reparto" per registratori di cassa       |or 22/08/2007 14.00
+      *
+      * Ticket 1128                                                                 |or 05/08/2008
+      * Ripristinata gestione vetrerie (ex modulo 71)
+      * I campi precedentemente contrassegnati da |not in use vengono di
+      * nuovo utilizzati in gestione anagrafica articoli e gestione documenti.
+      *
+      * tplvar zmm_title=Tabella gruppi merceologici
+      * tplvar zmm_ver=09.01.00
+      * tplvar zmm_class=anagraphic
+      * tplvar zmm_returnkey=tblme-codice2
+      *
+      * ZoomFields seq:
+      *   01.tblme-codice2
+      *   02.tblme-descrizione1
+      *   03.tblme-descrizione2
+      *   04.tblme-nomenclatura
+      *
+      *
+       FD  TBLME.
+       01 record-tblme.
+           05 tblme-codice.
+               10 tblme-codice1    PIC  x(02).
+      *$GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=20,zmm_align=L,zmm_pos=1,zmm_entity=tblme
+               10 tblme-codice2    PIC  x(20).
+           05 resto-record-tblme.
+      *$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=2
+               10 tblme-descrizione1           PIC  x(30).
+      *$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=3
+               10 tblme-descrizione2           PIC  x(30).
+      *$GEN zmm=on,zmm_title=Nomenclatura,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=4
+               10 tblme-nomenclatura           PIC  x(08).
+      *$GEN type=num,dec=4,size=13
+      *
+               10 tblme-coefficiente           PIC  9(05)v9(04).
+               10 tblme-minimo-fatturabile-a.
+      *$GEN type=num,dec=4,size=21
+                   15 tblme-minimo-fatturabile     PIC  9(12)v9(04).
+      *$GEN type=num,dec=0,size=12
+      *
+               10 tblme-dimensione1-minima     PIC  9(09).
+      *$GEN type=num,dec=0,size=12
+               10 tblme-dimensione2-minima     PIC  9(09).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+               10 tblme-flag-tabella-e         PIC  x(01).
+                   88 tblme-flag-tabella-e-88 VALUE IS " " "S". 
+      *        10  tblme-filler                    pic  x(1206).               |or 22/08/2007 14.00
+               10 tblme-cod-reparto            PIC  x(03).
+               10 tblme-flag-vetrerie          PIC  9(01).
+                   88 tblme-flag-vetrerie-ok VALUE IS 1. 
+                   88 tblme-flag-vetrerie-ko VALUE IS 0. 
+      *
+      *        10  tblme-filler                    pic  x(1203).         |or 22/08/2007 14.00  |or 05/08/2008
+               10 tblme-filler     PIC  x(1202).
+               10 tblme-filler-ris PIC  X(37).
+      *$GEN type=combobox,comboclass=tblme99_tipo_soggetto
+               10 tblme-cod-soggetto           PIC  x(03).
+                   88 tblme-cod-soggetto-alt VALUE IS space. 
+                   88 tblme-cod-soggetto-bat VALUE IS "BAT". 
+                   88 tblme-cod-soggetto-oli VALUE IS "OLI". 

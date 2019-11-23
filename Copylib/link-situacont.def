@@ -1,0 +1,8 @@
+      *
+       01 sc-linkage.
+           03 sc-data-from     PIC  9(8).
+           03 sc-data-to       PIC  9(8).
+           03 sc-cliente       PIC  9(8).
+           03 sc-user          pic x(10).
+           03 sc-handle
+                      USAGE IS HANDLE OF WINDOW.

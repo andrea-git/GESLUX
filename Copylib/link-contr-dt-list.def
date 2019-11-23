@@ -1,0 +1,12 @@
+      *
+       01  contr-dt-list-linkage.
+           05 cdl-lis-chiave.
+              10 cdl-codice           PIC  9(15).
+           05 cdl-chiave-ricerca.
+              10 cdl-fornitore        PIC  9(5).
+              10 cdl-destino          PIC  9(5).
+              10 cdl-ini-val          PIC  9(8).
+              10 cdl-fine-val         PIC  9(8).
+           05 filler                  pic 9.
+              88 cdl-sovrapposizione  value 1 false zero.
+

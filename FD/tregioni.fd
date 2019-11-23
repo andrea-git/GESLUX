@@ -1,0 +1,36 @@
+      *
+      *
+       FD  tregioni.
+       01 reg-rec.
+           05 reg-chiave.
+               10 reg-codice       PIC  9(3).
+           05 reg-dati.
+               10 reg-descrizione  PIC  x(30).
+               10 reg-dati-comuni.
+                   15 reg-data-creazione           PIC  9(8).
+                   15 reg-ora-creazione            PIC  9(8).
+                   15 reg-utente-creazione         PIC  x(10).
+                   15 reg-data-ultima-modifica     PIC  9(8).
+                   15 reg-ora-ultima-modifica      PIC  9(8).
+                   15 reg-utente-ultima-modifica   PIC  x(10).
+               10 reg-vuoti.
+                   15 reg-scaglione-1.
+                       20 reg-dal-1        PIC  9(5)v9(3).
+                       20 reg-al-1         PIC  9(5)v9(3).
+                       20 reg-vet-1        PIC  9(5).
+                   15 reg-scaglione-2.
+                       20 reg-dal-2        PIC  9(5)v9(3).
+                       20 reg-al-2         PIC  9(5)v9(3).
+                       20 reg-vet-2        PIC  9(5).
+                   15 reg-scaglione-3.
+                       20 reg-dal-3        PIC  9(5)v9(3).
+                       20 reg-al-3         PIC  9(5)v9(3).
+                       20 reg-vet-3        PIC  9(5).
+                   15 reg-scaglione-4.
+                       20 reg-dal-4        PIC  9(5)v9(3).
+                       20 reg-al-4         PIC  9(5)v9(3).
+                       20 reg-vet-4        PIC  9(5).
+                   15 reg-scaglione-5.
+                       20 reg-dal-5        PIC  9(5)v9(3).
+                       20 reg-al-5         PIC  9(5)v9(3).
+                       20 reg-vet-5        PIC  9(5).

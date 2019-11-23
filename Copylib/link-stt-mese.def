@@ -1,0 +1,12 @@
+      *
+       01 stt-mese-linkage.
+           03 sta-user       pic  x(20).
+           03 sta-data-from  pic  9(8).
+           03 sta-data-to    pic  9(8).
+           03 sta-vet-from   pic  9(5).
+           03 sta-vet-to     pic  9(5).
+           03 sta-cliente    pic  9(5).
+           03 sta-localita   pic  x(35).
+           03 sta-prov       pic  x(2).
+           03 sta-regione    pic  9(3).
+

@@ -1,0 +1,1 @@
+"c:\program files\acucorp\acucbl812\acugt\bin\wrun32.exe" -c cblconfi -e imp-shi.log -l SHI-call-impordini

@@ -1,0 +1,44 @@
+       FD  tcontat.
+       01 con-rec.
+           05 con-chiave.
+               10 con-anno         PIC  9(4).
+           05 con-dati.
+               10 con-num-ordine   PIC  9(8).
+               10 con-ult-num-movim            PIC  9(8).
+               10 con-num-bolle-gdo            PIC  9(8).
+               10 con-ult-stampa-bolle-gdo     PIC  9(8).
+               10 con-num-fatt     PIC  9(8).
+               10 con-ult-stampa-fatt          PIC  9(8).
+               10 con-ult-num-pren PIC  9(8).
+               10 con-ult-num-nc   PIC  9(8).
+      *(( XFD NAME = con-ult-num-nota-a ))
+               10 con-ult-num-nc-fisc          PIC  9(8).
+               10 con-ult-stampa-nc            PIC  9(8).
+               10 con-ult-num-postel           PIC  9(8).
+               10 con-ult-num-nc-postel        PIC  9(8).
+               10 con-dati-comuni.
+                   15 con-data-creazione           PIC  9(8).
+                   15 con-ora-creazione            PIC  9(8).
+                   15 con-utente-creazione         PIC  x(10).
+                   15 con-data-ultima-modifica     PIC  9(8).
+                   15 con-ora-ultima-modifica      PIC  9(8).
+                   15 con-utente-ultima-modifica   PIC  x(10).
+               10 con-vuoti.
+                   15 con-num-bozza    PIC  9(8).
+                   15 con-num-cont     PIC  9(7).
+                   15 con-num-ord-forn PIC  9(8).
+                   15 con-num-evasione PIC  9(7).
+                   15 con-num-bolle-mv PIC  9(8).
+                   15 con-ult-stampa-bolle-mv      PIC  9(8).
+      *(( XFD NAME = con-num-ordine_1 ))
+                   15 con-num-ordine-m PIC  9(8).
+                   15 con-num-bolle-at PIC  9(8).
+                   15 con-ult-stampa-bolle-at      PIC  9(8).
+                   15 con-ult-num-EDI  PIC  9(8).
+                   15 con-ult-num-nc-EDI           PIC  9(8).
+                   15 con-ult-num-bolle-EDI-1      PIC  9(8).
+                   15 con-ult-num-bolle-EDI-2      PIC  9(8).
+                   15 con-ult-num-fel-f            PIC  9(8).
+                   15 con-ult-num-fel-nc           PIC  9(8).
+                   15 con-ult-prg-invio-fel        PIC  9(10).
+                   15 FILLER           PIC  x(2990).

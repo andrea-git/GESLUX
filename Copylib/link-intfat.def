@@ -1,0 +1,22 @@
+      *
+       01 intfat-linkage.
+           03 intfat-data-to   PIC  9(8).
+           03 intfat-data-from PIC  9(8).
+           03 intfat-tipo-CF   PIC  x.
+               88 intfat-cliente VALUE IS "C". 
+               88 intfat-fornitore VALUE IS "F". 
+           03 intfat-codice    PIC  9(5).
+           03 intfat-des-prog  PIC  9(5).
+           03 intfat-gdo       PIC  x(5).
+           03 intfat-promo     PIC  9(15).
+           03 intfat-tipo-gdo  pic 9.
+           03 intfat-marca     PIC  9(4).
+           03 intfat-articolo  PIC  9(6).
+           03 intfat-path      PIC  x(256).
+           03 intfat-excel     pic 9.
+           03 intfat-user      pic x(20).
+           03 intfat-add-pb    pic 9.     
+              88 intfat-no-add-pb value 0.
+              88 intfat-si-add-pb value 1.
+           03 intfat-handle
+                      USAGE IS HANDLE OF WINDOW.

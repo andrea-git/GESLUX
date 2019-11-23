@@ -1,0 +1,18 @@
+       FD  art-exp-shi.
+       01 aes-rec.
+           05 aes-chiave.
+               10 aes-articolo     PIC  9(6).
+               10 aes-imballo      PIC  x(3).
+           05 aes-dati.
+               10 aes-dati-comuni.
+                   15 aes-data-creazione           PIC  9(8).
+                   15 aes-ora-creazione            PIC  9(8).
+                   15 aes-utente-creazione         PIC  X(10).
+                   15 aes-data-ultima-modifica     PIC  9(8).
+                   15 aes-ora-ultima-modifica      PIC  9(8).
+                   15 aes-utente-ultima-modifica   PIC  X(10).
+               10 aes-vuoti.
+                   15 aes-num-vuoto-1  PIC  9(18).
+                   15 aes-num-vuoto-2  PIC  9(18).
+                   15 aes-num-vuoto-3  PIC  9(18).
+                   15 aes-alfa-vuoto   PIC  x(500).

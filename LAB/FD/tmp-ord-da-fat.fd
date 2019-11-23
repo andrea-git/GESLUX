@@ -1,0 +1,8 @@
+      *(( XFD FILE = tmp-ord-da-fat ))
+       FD  tmp-ord-da-fat.
+       01 tord-rec.
+           05 tord-chiave.
+               10 tord-gdo         PIC  x(5).
+           05 tord-dati.
+               10 tord-intestazione            PIC  x(50).
+               10 tord-valore      PIC  s9(12)v99.

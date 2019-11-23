@@ -1,0 +1,159 @@
+      *-----------------------------------------------------------------
+      * Statistiche di vendita
+      *-----------------------------------------------------------------
+      *
+      * tplvar zmm_title=Statistiche di vendita
+      * tplvar zmm_ver=09.01.00
+      * tplvar zmm_class=anagraphic
+      * tplvar zmm_returnkey=stv-codice
+      *
+      * ZoomFields seq:
+      *   01.stv-progressivo
+      *   02.stv-riga
+      *   03.stv-codice-ag
+      *   04.stv-codice-ag-d
+      *   05.stv-codice-cli
+      *   06.stv-codice-cli-d
+      *   07.stv-codice-art
+      *   08.stv-codice-art-d
+      *   09.stv-codice-mag
+      *   10.stv-codice-mag-d
+      *   11.stv-data-fattura-num
+      *   12.stv-numero-fattura
+      *   13.stv-num-fattura
+      *   14.stv-tipo-vendita-d
+      *   15.stv-quantita-e
+      *   16.stv-importo-e
+      *   17.stv-importo-listino-e
+      *   18.stv-importo-lordo-e
+      *   19.stv-provvigioni-e
+      *   20.stv-costo-e
+      *   21.stv-codice-cli-intestatario
+      *   22.stv-codice-cli-intestatario-d
+      *   23.stv-data-competenza-num
+      *
+      * 
+      *
+       FD  stv
+           RECORD IS VARYING IN SIZE TO 256 CHARACTERS.
+      *
+      *
+      *
+       01 RECORD-STV.
+           05 STV-CODICE.
+      *$GEN type=num,dec=0,size=11,zmm=on,zmm_title=Progressivo,zmm_datatype=n,zmm_key=1,zmm_size=13,zmm_align=R,zmm_pos=1,zmm_entity=dvt
+               10 STV-PROGRESSIVO  PIC  9(08).
+      *$GEN type=num,dec=0,size=7,zmm=on,zmm_title=Riga,zmm_datatype=n,zmm_size=10,zmm_align=R,zmm_pos=2
+      *
+      *
+      *
+               10 STV-RIGA         PIC  9(05).
+      *
+      *
+      *
+           05 RESTO-RECORD-STV.
+      *$GEN type=code,entity=tblag,zmm=on,zmm_title=Agente,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=3,zmm_entity=tblag
+      *
+               10 STV-CODICE-AG    PIC  X(03).
+      *$GEN type=code,entity=cli,zmm=on,zmm_title=Cliente,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_key=2,zmm_pos=5,zmm_entity=cli
+      *
+               10 STV-CODICE-CLI   PIC  X(08).
+      *$GEN type=code,entity=art,zmm=on,zmm_title=Articolo,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_key=3,zmm_pos=7,zmm_entity=art
+               10 STV-CODICE-ART   PIC  X(15).
+      *$GEN type=code,entity=tblma,zmm=on,zmm_title=Magazzino,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=9,zmm_entity=tblma
+               10 STV-CODICE-MA    PIC  X(03).
+      * copy "groupdate.xfc". | DBMaker
+      *
+               10 STV-DATA-FATTURA.
+      *(( XFD NAME = STV-DATA-FATT-AA ))
+                   15 AA   PIC  9(04).
+      *(( XFD NAME = STV-DATA-FATT-MM ))
+                   15 MM   PIC  9(02).
+      *(( XFD NAME = STV-DATA-FATT-GG ))
+                   15 GG   PIC  9(02).
+               10 FILLER REDEFINES STV-DATA-FATTURA.
+      *$GEN type=date,zmm=on,zmm_title=Data fattura,zmm_datatype=d,zmm_key=4,zmm_size=11,zmm_align=R,zmm_pos=11
+      *
+      *
+                   15 STV-DATA-FATTURA-NUM         PIC  9(08).
+      *
+      *
+      *
+      *
+               10 STV-FATTURA.
+      *$GEN type=num,dec=0,size=08,zmm=on,zmm_title=Nr.fattura,zmm_datatype=n,zmm_size=08,zmm_align=R,zmm_pos=12
+      *
+                   15 STV-NUMERO-FATTURA           PIC  9(06).
+      *$GEN zmm=on,zmm_title=Numerazione,zmm_datatype=x,zmm_size=06,zmm_align=L,zmm_pos=13
+      *
+                   15 STV-NUM-FATTURA  PIC  X(06).
+               10 STV-TIPO-VENDITA PIC  X(01).
+                   88 STV-TIPO-VENDITA-88 VALUE IS "N" "O" "M". 
+                   88 STV-TIPO-VENDITA-65-88 VALUE IS "N" "O" "M" "R" "S
+      -    "". 
+                   88 STV-TIPO-VENDITA-88-N VALUE IS "N". 
+                   88 STV-TIPO-VENDITA-88-O VALUE IS "O". 
+                   88 STV-TIPO-VENDITA-88-M VALUE IS "M". 
+                   88 STV-TIPO-VENDITA-88-R VALUE IS "R". 
+                   88 STV-TIPO-VENDITA-88-S VALUE IS "S". 
+      *
+      *$GEN type=qty,unm=,zmm=on,zmm_title=Quantità,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=15
+      *
+      *
+               10 STV-QUANTITA     PIC  S9(12)V9(04)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=amount,val=,zmm=on,zmm_title=Importo,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=16
+      *
+      *
+               10 STV-IMPORTO      PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=amount,val=,zmm=on,zmm_title=Importo listino,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=17
+      *
+      *
+               10 STV-IMPORTO-LISTINO          PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=amount,val=,zmm=on,zmm_title=Importo lordo,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=18
+      *
+      *
+               10 STV-IMPORTO-LORDO            PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=amount,val=,zmm=on,zmm_title=Provvigioni,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=19
+      *
+      *
+      *
+               10 STV-PROVVIGIONI  PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=price,val=,zmm=on,zmm_title=Costo,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=20
+      *
+      *
+      *
+               10 STV-COSTO        PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=code,entity=cli,zmm=on,zmm_title=Cliente intestatario,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=21,zmm_entity=cli
+      *
+      *
+               10 STV-CODICE-CLI-INTESTATARIO  PIC  X(08).
+      * copy "groupdate.xfc". | DBMaker
+      *
+      *
+      *
+               10 STV-DATA-COMPETENZA.
+      *(( XFD NAME = STV-DATA-COMPET-AA ))
+                   15 AA   PIC  9(04).
+      *(( XFD NAME = STV-DATA-COMPET-MM ))
+                   15 MM   PIC  9(02).
+      *(( XFD NAME = STV-DATA-COMPET-GG ))
+                   15 GG   PIC  9(02).
+               10 FILLER REDEFINES STV-DATA-COMPETENZA.
+      *$GEN type=date,zmm=on,zmm_title=Data competenza,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=23
+      *
+      *
+                   15 STV-DATA-COMPETENZA-NUM      PIC  9(08).
+      *
+      *
+      *
+               10 STV-FILIALE      PIC  X(06).
+      *
+      *
+               10 STV-FILLER       PIC  X(34).
+               10 STV-FILLER-RIS   PIC  X(40).

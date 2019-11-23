@@ -1,0 +1,93 @@
+*   Screen Painter STF File
+*   Version 6.0
+*   Generated Time : domenica 16 maggio 2010 19:32:57
+*
+
+BEGIN-SPDATA-6.0A
+
+GRAPHICAL-SCREEN
+
+Begin Screen scr-elab
+   PREFIX            = scr-elab
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = FALSE
+   LEVEL             = 1
+   (Name)            = scr-elab
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = TRUE
+   Cell Height       = 10
+   Cell Width        = 10
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = TRUE
+   Font              = Default Font
+   Handle Variable   = scr-elab-HANDLE
+   Height in Cells   = TRUE
+   Help ID           = 1
+   Label Offset      = 0
+   Lines             = 4,80
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = FALSE
+   Operation Mode    = Interactive Mode
+   Resizable         = TRUE
+   Scroll            = FALSE
+   Size              = 72,20
+   System Menu       = FALSE
+   Title Bar         = FALSE
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = TRUE
+   Window Type       = Floating
+   Wrap              = FALSE
+   Begin Label scr-elab-La-1
+      SCREEN-COL        = 20,10
+      SCREEN-LINE       = 1,90
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = scr-elab-La-1
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 5
+      Column            = 20,10
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/14/I/C0/@Occidentale
+      Font Variable     = Verdana14I-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 13
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 1,90
+      Lines             = 2,20
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 34,00
+      Size Unit         = Default
+      Tab Order         = 1
+      Title             = "Caricamento in corso..."
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+End

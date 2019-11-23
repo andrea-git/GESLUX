@@ -1,0 +1,62 @@
+      *
+      *
+       FD  tmagaz.
+       01 mag-rec.
+           05 mag-chiave.
+               10 mag-codice       PIC  x(3).
+           05 mag-dati.
+               10 mag-descrizione  PIC  x(50).
+               10 mag-principale   PIC  X(1).
+                   88 si-mag-principale VALUE IS "S". 
+                   88 no-mag-principale VALUE IS "N". 
+      *(( XFD NAME = mag-principale_1 ))
+               10 mag-scr-aux      PIC  X(1).
+                   88 mag-tutte VALUE IS "T". 
+                   88 mag-solo-no-utf VALUE IS "S". 
+                   88 mag-nessuno VALUE IS "N". 
+      *(( XFD NAME = mag-principale_1_1 ))
+               10 mag-utf          PIC  X(1).
+                   88 mag-si-utf VALUE IS "S". 
+                   88 mag-no-utf VALUE IS "N". 
+               10 mag-dati-comuni.
+                   15 mag-data-creazione           PIC  9(8).
+                   15 mag-ora-creazione            PIC  9(8).
+                   15 mag-utente-creazione         PIC  x(10).
+                   15 mag-data-ultima-modifica     PIC  9(8).
+                   15 mag-ora-ultima-modifica      PIC  9(8).
+                   15 mag-utente-ultima-modifica   PIC  x(10).
+               10 mag-vuoti.
+                   15 mag-perce-riordino           PIC  9(3)v999.
+                   15 mag-causali.
+                       20 mag-cau-c        PIC  x(4).
+                       20 mag-cau-s        PIC  x(4).
+                   15 mag-causali-bozza-nc.
+      *(( XFD NAME = mag-cau-c_1 ))
+                       20 mag-cau-reso     PIC  x(4).
+      *(( XFD NAME = mag-cau-s_1 ))
+                       20 mag-cau-diff     PIC  x(4).
+                   15 mag-vettore      PIC  9(5).
+                   15 mag-num-vuoto-3  PIC  9(18).
+                   15 mag-per-promo    PIC  x.
+                       88 mag-per-promo-si VALUE IS "S". 
+                       88 mag-per-promo-no VALUE IS "N". 
+                   15 mag-causale-eva  PIC  x(4).
+                   15 mag-causale-omag PIC  x(4).
+                   15 mag-sostituzione PIC  x.
+                       88 mag-sostituzione-si VALUE IS "S". 
+                       88 mag-sostituzione-no VALUE IS "N". 
+                   15 FILLER           PIC  x.
+                   15 mag-blister      PIC  x.
+                       88 mag-blister-si VALUE IS "S". 
+                       88 mag-blister-no VALUE IS "N". 
+                   15 mag-tab-scorte.
+                       20 mag-sco-codice   PIC  xx
+                                  OCCURS 20 TIMES.
+                   15 mag-ritira-lbx   PIC  x.
+                       88 mag-ritira-lbx-si VALUE IS "S". 
+                       88 mag-ritira-lbx-no VALUE IS "N". 
+                   15 mag-priorita-mag PIC  99.
+                   15 mag-da-inviare   PIC  x.
+                       88 mag-da-inviare-si VALUE IS "S". 
+                       88 mag-da-inviare-no VALUE IS "N", " ". 
+                   15 mag-alfa-vuoto-3 PIC  x(3).

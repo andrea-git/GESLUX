@@ -1,0 +1,10 @@
+      *
+       01 gbozze-linkage.
+           03 LinkChiave.
+               05 LinkAnno         PIC  9(4).
+               05 linkNumero       PIC  9(8).
+           03 LinkPgm          PIC  x(20).
+           03 LinkStatus
+                      USAGE IS SIGNED-SHORT.
+           03 LinkRicaricaGrid PIC  9.
+               88 RicaricaGrid VALUE IS 1    WHEN SET TO FALSE  0. 

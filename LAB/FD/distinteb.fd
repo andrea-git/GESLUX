@@ -1,0 +1,42 @@
+       FD  distinteb.
+       01 dis-rec.
+           05 dis-chiave.
+               10 dis-codice       PIC  9(5).
+           05 dis-dati.
+               10 dis-chiave-progmag.
+                   15 dis-articolo-finale          PIC  9(6).
+                   15 dis-magazzino-finale         PIC  x(3).
+                   15 dis-imballo-finale           PIC  x(3).
+                   15 dis-peso-finale  PIC  9(5)v9(3).
+               10 dis-peso-utf     PIC  9(5)v9(3).
+               10 dis-peso-non-utf PIC  9(5)v9(3).
+               10 dis-prezzo       PIC  s9(12)v9(2).
+               10 dis-dettaglio.
+                   15 dis-riga
+                              OCCURS 10 TIMES.
+                       20 dis-chiave-progmag-el.
+                           25 dis-articolo     PIC  9(6).
+                           25 dis-magazzino    PIC  x(3).
+      *(( XFD NAME = dis-imballo_1 ))
+                           25 dis-imballo      PIC  x(3).
+      *(( XFD NAME = dis-peso_1 ))
+                           25 dis-peso         PIC  9(5)v9(3).
+                       20 dis-qta          PIC  9(8)v999.
+                       20 dis-oneri        PIC  9(12)v9(2).
+                       20 dis-somma-peso   PIC  9.
+                           88 dis-si-somma VALUE IS 1. 
+                           88 dis-no-somma VALUE IS 0. 
+               10 dis-dati-comuni.
+                   15 dis-data-creazione           PIC  9(8).
+                   15 dis-ora-creazione            PIC  9(8).
+                   15 dis-utente-creazione         PIC  X(10).
+                   15 dis-data-ultima-modifica     PIC  9(8).
+                   15 dis-ora-ultima-modifica      PIC  9(8).
+                   15 dis-utente-ultima-modifica   PIC  X(10).
+               10 dis-vuoti.
+                   15 dis-num-vuoto-1  PIC  9(15).
+                   15 dis-num-vuoto-2  PIC  9(15).
+                   15 dis-num-vuoto-3  PIC  9(15).
+                   15 dis-alfa-vuoto-1 PIC  X(20).
+                   15 dis-alfa-vuoto-2 PIC  X(20).
+                   15 dis-alfa-vuoto-3 PIC  X(20).

@@ -1,0 +1,13 @@
+      *
+       01 extmov-linkage.
+           03 extmov-mov-elab-da           PIC  9(8).
+           03 extmov-mov-elab-a            PIC  9(8).
+           03 extmov-tot-mov-elab          PIC  9(10).
+           03 extmov-mov-gen-da            PIC  9(8).
+           03 extmov-mov-gen-a PIC  9(8).
+           03 extmov-tot-mov-gen           PIC  9(10).
+           03 extmov-tot-ent               PIC  9(10).
+      *     03 extmov-tot-EDI               PIC  9(10).
+           03 extmov-user      PIC  x(20).
+           03 extmov-handle
+                      USAGE IS HANDLE OF WINDOW.

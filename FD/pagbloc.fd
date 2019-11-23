@@ -1,0 +1,16 @@
+       FD  pagbloc.
+       01 pgb-rec.
+           05 pgb-chiave.
+               10 pgb-codice       PIC  x(3).
+           05 pgb-dati.
+               15 FILLER           PIC  x(500).
+               15 pgb-num-vuoto-1  PIC  9(18).
+               15 pgb-num-vuoto-2  PIC  9(18).
+               15 pgb-num-vuoto-3  PIC  9(18).
+               10 pgb-dati-comuni.
+                   15 pgb-data-creazione           PIC  9(8).
+                   15 pgb-ora-creazione            PIC  9(8).
+                   15 pgb-utente-creazione         PIC  X(10).
+                   15 pgb-data-modifica            PIC  9(8).
+                   15 pgb-ora-modifica PIC  9(8).
+                   15 pgb-utente-modifica          PIC  X(10).

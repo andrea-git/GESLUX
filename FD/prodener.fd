@@ -1,0 +1,29 @@
+       FD  prodener.
+       01 pen-rec.
+           05 pen-chiave.
+               10 pen-codice       PIC  x(10).
+           05 pen-dati.
+               10 pen-descrizione  PIC  x(50).
+               10 pen-cpa          PIC  x(4).
+               10 pen-nc           PIC  9(8).
+               10 pen-taric        PIC  9(2).
+               10 pen-dac          PIC  x(4).
+               10 pen-invio-edi    PIC  x.
+                   88 pen-si-invio-edi VALUE IS "S"    WHEN SET TO 
+           FALSE  "N". 
+               10 pen-sdoppia-riga PIC  x.
+                   88 pen-si-sdoppia-riga VALUE IS "S"    WHEN SET TO 
+           FALSE  "N". 
+               10 pen-dati-comuni.
+                   15 pen-data-creazione           PIC  9(8).
+                   15 pen-ora-creazione            PIC  9(8).
+                   15 pen-utente-creazione         PIC  X(10).
+                   15 pen-data-ultima-modifica     PIC  9(8).
+                   15 pen-ora-ultima-modifica      PIC  9(8).
+                   15 pen-utente-ultima-modifica   PIC  X(10).
+               10 pen-vuoti.
+                   15 pen-num-vuoto-1  PIC  9(18).
+                   15 pen-num-vuoto-2  PIC  9(18).
+                   15 pen-num-vuoto-3  PIC  9(18).
+                   15 pen-suf-reg      PIC  x(3).
+                   15 pen-alfa-vuoto   PIC  X(497).

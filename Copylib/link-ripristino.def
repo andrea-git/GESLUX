@@ -1,0 +1,20 @@
+      *
+       01 ripristino-linkage.
+           03 ripr-anno        PIC  9(4).
+           03 ripr-lotto       PIC  9(8).
+           03 ripr-tipo-doc    PIC  x.
+               88 ripr-merce VALUE IS "F". 
+               88 ripr-manuali VALUE IS "M". 
+               88 ripr-note VALUE IS "N". 
+           03 ripr-data        PIC  9(8).
+           03 ripr-FirstNumber PIC  9(8).
+           03 ripr-LastNumber  PIC  9(8).
+           03 ripr-tot-doc     PIC  9(8).
+           03 ripr-tot-fat     PIC  9(8).
+           03 ripr-tot-postel  PIC  9(8).
+           03 ripr-tot-edi     PIC  9(8).
+           03 ripr-eseguita    PIC  9.
+               88 ripr-si-eseguita VALUE IS 1,    WHEN SET TO FALSE  0. 
+           03 ripr-user        PIC  x(20).
+           03 ripr-handle
+                      USAGE IS HANDLE.

@@ -1,0 +1,991 @@
+      *-----------------------------------------------------------------
+      * articoli
+      *-----------------------------------------------------------------
+      *
+      * art-prezzo-carico e art-prezzo scarico zoom troncava decmali                                     | mxm 21/09/2004 17.16
+      * art-costo-standard troncava decmali                                                              | mxm 07/10/2004 11.05
+      * aggiunto art-ubicazione allo zoom                                                                | mxm 14/12/2004 17.17
+      * aggiunto art-arz-esistenza                                                                       | mxm 15/12/2004 16.04
+      * aggiunto art-arz-esistenza-e                                                                     | mxm 15/12/2004 16.04
+      * aggiunto art-blocco-causali per software ATON ROAD 3                          |nb 04/07/2005 11.22
+      * aggiunto flag articolo per imbottigliamento damigiane                         |nb 05/12/2005 17.27
+      *
+      * aggiunto nuovi campi per gestione taglie/abbigliamento                        |nb 01/02/2006 16.36
+      * aggiunto campo articolo padre x taglie (rif.4023)                             | ep 10/02/2006
+      * aggiunto campo nel dab per il recupero a zoom dell'esistenza di magazzino                        |ms 24/02/06 10.31
+      * ART-PERC-RESA-EDITORIA dichiarava inutilmente sign trailing separate                             | mxm 04/05/2006 15.42
+      *-----------------------------------------------------------------------------------------------------------------------
+      * rilascio 2007.00
+      *-----------------------------------------------------------------------------------------------------------------------
+      * art-web diventa combo-box                                                                        |gm 01/06/2007 9.16
+      * livelli 88 per art_imballo                                                                       |ms 20/06/2007 9.21
+      * nuovo campo art-nopunti x punto vendita: l'articolo non deve dare punti sugli scontrini cassa    | mxm 26/10/2007 8.08
+      * (usato per gli articoli di tipo "buono spesa")                                                   | mxm 26/10/2007 8.08
+      *
+      * s.r. 1101 - inserita richieste ai fini RAEE :                                                    |or 14/11/2007
+      *             abilitazine utilizzo raee                                                            |or 14/11/2007
+      *             codice classificazione articolo (41RCMH)                                             |or 14/11/2007
+      *
+      * nuovo campo art-buono x punto vendita: l'articolo è un "buono spesa"                             | mxm 24/11/2007 10.47
+      * - sostituito type=qty (obsoleto) con type=num per i campi art-impegnato, art-impegnato-um,       |sq 09/01/2008 11.00
+      *   art-ordinato, art-ordinato-um, art-prenotato, art-prenotato-um  s.r.2208/lav.4411              |sq 09/01/2008 11.00
+      *
+      * s.r. 2248  lav. 4441                                                                             |or 22/01/2008
+      * Gestione RAEE: aggiunta la possibilità di gestire due tipologie sullo stesso articolo.
+      *-----------------------------------------------------------------------------------------------------------------------
+      * lav.4544 - porting produzione "ulixes" in 2009 - modifiche marcate con la dicitura "ulixes"      | mxm 12/03/2008 12.03
+      *            risuscitato art-llc (il campo esisteva ma non era gestito a video)
+      *-----------------------------------------------------------------------------------------------------------------------
+      * modulo 55 - logistica di magazzino (ticket 655 - ex lav.4535) : nuovi campi                      | mxm 19/05/2008 21.49
+      *
+      *
+      *
+      *-----------------------------------------------------------------------------------------------------
+      * rilascio 2009.01  - 5 nov 2008
+      *-----------------------------------------------------------------------------------------------------
+      * tk.1416
+      * Allineamento vinicoli a 2009.01                                                                  | mxm 17/11/2008 14.47
+      * .nuovi campi
+      *-----------------------------------------------------------------------------------------------------------------------
+      * ticket 427 - aggiunto radio-button per arrotondamento quantita' modulo editoria                  |DS 13/11/2008 8.54
+      *-----------------------------------------------------------------------------------------------------------------------
+      * tk.2316 - zoom su articoli: permettere di filtrare (non vedere) codici con cod.blocco associato | maxime 20/10/2010
+      *           aggiunto codice blocco nello zoom
+      *-----------------------------------------------------------------------------------------------------------------------
+      * tk.3604 - Alineamento tracciati record standard per interfacciamento con sw invio telematico DAA (accise)
+      *                                                                                                    | rososv 26/01/2011 16:14:38
+      * Allineamento tracciati record standard per interfacciamento con sw invio telematico DAA (accise)
+      *-----------------------------------------------------------------------------------------------------------------------
+      * tk. 859 - Commento "type=qty (obsoleto)" in art.dpb e art.dab non veritiero                        | quasil 29/06/2011 12:59:06
+      *   Il commento "type=qty (obsoleto)" in art.dpb e art.dab (ex lav. 4411 - ticket 251) non è veritiero in quanto le quantità
+      *   venivano troncate perchè non erano in grado di esprimere una unità di misura valida per l'editazione sui campi;
+      *   in altri casi type=qty è ancora utilizzato e funziona
+      *-----------------------------------------------------------------------------------------------------------------------
+      * tk.4098 -  Sistema di replica via trigger tabelle g2 su database                                   | maxime 08/09/2011
+      *           invertite ridefinizioni occurs per cbljdbc
+      *-----------------------------------------------------------------------------------------------------------------------
+      * tk.3028 - Generazione x intra: viene segnalato "cod.servizio mancante" su articolo CAUZIONE/ANTICIPO
+      *                                                                                                    | rososv 06/02/2012
+      * Implementazione:
+      * - Aggiunto check-box per escludere l'articolo dalla gestione intra
+      *-----------------------------------------------------------------------------------------------------------------------
+      * tk.4151 - Gestione scorta minima e lotto di riordino in presenza di taglie misure                  | rososv 05/03/2012
+      *
+      * Implementazione:
+      * - Aggiunto check-box per annullare controllo giacenze e disponibilità su scorte minime e lotti di riordino
+      *   per ogni singola taglia
+      *-----------------------------------------------------------------------------------------------------------------------
+      * tk. 4771 - art.62 D.L.1 del 24/1/2012 - agroalimentari                                             | SUADAL 02/11/2012
+      *          - aggiunti nuovi campi per identificazione articoli agroalimentari
+      *-----------------------------------------------------------------------------------------------------------------------
+      * tk. 4802 - agroalimentare - modifiche anagrafica articolo e utilita' UTIART1 - correzioni help     | SUADAL 14/11/2012
+      *          - inseriti in zoom i nuovi campi
+      *-----------------------------------------------------------------------------------------------------------------------
+      * Ticket 5584 - Portare nello standard gli ambienti di tentata vendita                               | MACGIU 25/02/2014
+      *               - Resi obsoleti (aggiunto -old) i campi di tentata vendita che sono
+      *                 "passati" sui file 65artmit e 65artaton
+      *               - Tolte le clausole di generazione dei campi -old
+      *               - Resi obsoleti (aggiunto -notused) i campi di tentata vendita che
+      *                 non sono più utilizzati
+      *-----------------------------------------------------------------------------------------------------------------------
+      * tk 5643 - eliminare type amount e price dai dpb/dab (sono tipi non gestiti)                        | QUASIL 09/04/2014
+      * . Trasformati i type=price in type=num,dec=6,size=21
+      *-----------------------------------------------------------------
+      * tk 7148 - diversificazione contributo per materiale plastica                                       | Suadal 24/03/2017
+      *         - inseriti tre nuovi livelli 88 per gestire tre nuove tipologie di imballo per la plastica
+      *           ai fini delle dichiarazioni per conai
+      *         - inserito campo per identificare il materiale "plastica"                                  
+      *-----------------------------------------------------------------
+      * tk.7491 - diversificazione contributo per materiale plastica (rif.tk 7148): indicazioni in fattura | Suadal 15/06/2017          
+      *         - aggiunti livelli 88 sul campo art-tipo-materiale
+      *-----------------------------------------------------------------------------------------------------------------------
+      * 
+      * tplvar zmm_title=Articoli
+      * tplvar zmm_ver=09.01.00
+      * tplvar zmm_class=anagraphic
+      *
+      *
+      *
+      * ZoomFields seq:
+      *
+      *   01.art-codice
+      *   02.art-descrizione1
+      *   03.art-descrizione2
+      *   04.art-codice-cm
+      *   05.art-codice-cm-d
+      *   06.art-codice-me
+      *   07.art-codice-me-d
+      *   08.art-codice-in
+      *   09.art-codice-in-d
+      *   10.art-codice-alternativo
+      *   11.art-codice-um
+      *   12.art-codice-um1
+      *   13.art-peso-lordo
+      *   14.art-peso-netto
+      *   15.art-volume
+      *   16.art-numero-pezzi
+      *   17.art-dimensione1
+      *   18.art-dimensione2
+      *   19.art-dimensione3
+      *   20.art-tipo-d
+      *   21.art-lordo
+      *   22.art-codice-iv-ven
+      *   23.art-codice-iv-ven-d
+      *   24.art-codice-cp-ven
+      *   25.art-codice-cp-ven-d
+      *   26.art-codice-iv-acq
+      *   27.art-codice-iv-acq-d
+      *   28.art-codice-mas-acq
+      *   29.art-codice-mas-acq-d
+      *   30.art-codice-as
+      *   31.art-codice-as-d
+      *   32.art-codice-frn
+      *   33.art-codice-frn-d
+      *   34.art-mesi-invenduto
+      *   35.art-giorni-riordino
+      *   36.art-lotto-vendita
+      *   37.art-costo-standard
+      *   38.art-scorta-minima
+      *   39.art-lotto-riordino
+      *   40.art-data-inventario-num
+      *   41.art-qta-inventario
+      *   42.art-data-carico-num
+      *   43.art-prezzo-carico
+      *   44.art-codice-frn-carico
+      *   45.art-codice-frn-carico-d
+      *   46.art-data-scarico-num
+      *   47.art-prezzo-scarico
+      *   48.art-codice-cli-scarico
+      *   49.art-codice-cli-scarico-d
+      *   50.art-impegnato
+      *   51.art-impegnato-um
+      *   52.art-ordinato
+      *   53.art-ordinato-um
+      *   54.art-prenotato
+      *   55.art-prenotato-um
+      *   56.art-codice-ag
+      *   57.art-codice-ag-d
+      *   58.art-lotto-d
+      *   59.art-nomenclatura
+      *   60.art-provincia
+      *   61.art-coefficiente
+      *   62.art-oscillazione-cambi
+      *   63.art-serial-number
+      *   64.art-editoria
+      *   65.art-materia-prima
+      *   66.art-cen-codice-ven
+      *   67.art-cen-codice-ven-d
+      *   68.art-cen-codice-acq
+      *   69.art-cen-codice-acq-d
+      *   70.art-mesi-garanzia
+      *   71.art-tblad-codice
+      *   72.art-tblad-codice-d
+      *   73.art-tipo-conversione-d
+      *   74.art-valore-idrati
+      *   75.art-valore-anidri
+      *   76.art-data-aggiornamento-num
+      *   77.art-ubicazione
+      *   78.art-arz-esistenza
+      *   79.art-arz-esistenza-um
+      *   80.art-05sit-esistenza
+      *   81.art-05sit-esistenza-um
+      *   82.art-tblse-codice                                                                              | maxime 20/10/2010
+      *   83.art-tblse-codice-d                                                                            | maxime 20/10/2010
+      *   84.art-tipo-agroalimentare-d                                                                     | SUADAL 14/11/2012
+      *   85.art-deteriorabile-d                                                                           | SUADAL 14/11/2012
+      *
+      *
+       FD ART.
+       01  RECORD-ART.
+      *$GEN zmm=on,zmm_title=Codice articolo,zmm_datatype=x,zmm_key=1,zmm_size=15,zmm_align=L,zmm_pos=01,zmm_entity=art
+          05  ART-CODICE                  PIC  X(15).
+          05  RESTO-RECORD-ART.
+      *$GEN zmm=on,zmm_title=Codice alternativo,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=10
+              10  ART-CODICE-ALTERNATIVO  PIC  X(30).
+      *$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_key=3,zmm_size=30,zmm_align=L,zmm_pos=02
+              10  ART-DESCRIZIONE1        PIC  X(30).
+      *$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=03
+              10  ART-DESCRIZIONE2        PIC  X(30).
+      *$GEN zmm=on,zmm_title=Ubicazione,zmm_datatype=x,zmm_size=20,zmm_align=L,zmm_pos=77
+              10  ART-UBICAZIONE          PIC  X(20).
+      *$GEN type=code,entity=tblum,zmm=on,zmm_title=Codice unità di misura,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=11,zmm_entity=tblum
+              10  ART-CODICE-UM           PIC  X(03).
+      *$GEN type=code,entity=tblum,blanknull=on,zmm=on,zmm_title=Codice unità di misura secondaria,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=12,zmm_entity=tblum
+              10  ART-CODICE-UM1          PIC  X(03).
+      *$GEN type=num,size=12,dec=4
+              10  ART-CONVERSIONE         PIC  9(05)V9(04).
+      *$GEN type=code,entity=tblcm,zmm=on,zmm_title=Cat.merc.,zmm_datatype=x,zmm_key=4,zmm_size=06,zmm_align=L,zmm_pos=04,zmm_entity=tblcm
+              10  ART-CODICE-CM           PIC  X(03).
+      *$GEN type=code,entity=tblme,zmm=on,zmm_title=Gruppo merceologico,zmm_datatype=x,zmm_key=5,zmm_size=06,zmm_align=L,zmm_pos=06,zmm_entity=tblme
+              10  ART-CODICE-ME           PIC  X(03).
+      *$GEN type=code,entity=tblin,zmm=on,zmm_title=Cod.inv.,zmm_datatype=x,zmm_key=6,zmm_size=06,zmm_align=L,zmm_pos=08,zmm_entity=tblin
+              10  ART-CODICE-IN           PIC  X(03).
+      *$GEN type=num,size=17,dec=04,zmm=on,zmm_title=Peso lordo,zmm_datatype=n,zmm_size=17,zmm_align=R,zmm_pos=13
+              10  ART-PESO-LORDO          PIC  9(09)V9(04).
+      *$GEN type=num,size=17,dec=04,zmm=on,zmm_title=Peso netto,zmm_datatype=n,zmm_size=17,zmm_align=R,zmm_pos=14
+              10  ART-PESO-NETTO          PIC  9(09)V9(04).
+      *$GEN type=num,size=17,dec=04,zmm=on,zmm_title=volume,zmm_datatype=n,zmm_size=17,zmm_align=R,zmm_pos=15
+              10  ART-VOLUME              PIC  9(09)V9(04).
+      *$GEN type=num,size=17,dec=04,zmm=on,zmm_title=Numero pezzi,zmm_datatype=n,zmm_size=17,zmm_align=R,zmm_pos=16
+              10  ART-NUMERO-PEZZI        PIC  9(09)V9(04).
+      *$GEN type=num,size=17,dec=04,zmm=on,zmm_title=Dimensione 1,zmm_datatype=n,zmm_size=17,zmm_align=R,zmm_pos=17
+              10  ART-DIMENSIONE1         PIC  9(09)V9(04).
+      *$GEN type=num,size=17,dec=04,zmm=on,zmm_title=Dimensione 2,zmm_datatype=n,zmm_size=17,zmm_align=R,zmm_pos=18
+              10  ART-DIMENSIONE2         PIC  9(09)V9(04).
+      *$GEN type=num,size=17,dec=04,zmm=on,zmm_title=Dimensione 3,zmm_datatype=n,zmm_size=17,zmm_align=R,zmm_pos=19
+              10  ART-DIMENSIONE3         PIC  9(09)V9(04).
+      *$GEN type=combobox,comboclass=art_tipo
+              10  ART-TIPO                PIC  X(01).
+      **            88  ART-TIPO-88              VALUE "S" "N" "D" " ".  la D non serve a nulla          | mxm 12/10/2006 10.41
+                  88  ART-TIPO-88              VALUE "S" "N" " ".
+                  88  ART-TIPO-88-S            VALUE "S".
+                  88  ART-TIPO-88-N            VALUE "N".
+                  88  art-tipo-fiscale         value " ".
+                  88  art-tipo-nonfiscale      value "N".
+                  88  art-tipo-spesa           value "S".
+      *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Lordo,zmm_datatype=x,zmm_size=01,zmm_align=L,zmm_pos=21
+              10  ART-LORDO               PIC  X(01).
+                  88  ART-LORDO-88        VALUE "S" " ".
+      *$GEN type=code,entity=tbliv,zmm=on,zmm_title=Codice iva vendite,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=22,zmm_entity=tbliv
+              10  ART-CODICE-IV-VEN       PIC  X(03).
+      *$GEN type=code,entity=tblcp,zmm=on,zmm_title=Codice contropartita articolo,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=24,zmm_entity=tblcp
+              10  ART-CODICE-CP-VEN       PIC  X(03).
+      *$GEN type=code,entity=tbliv,zmm=on,zmm_title=Codice iva acquisti,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=26,zmm_entity=tbliv
+              10  ART-CODICE-IV-ACQ       PIC  X(03).
+      *$GEN type=code,entity=mas,zmm=on,zmm_title=Codice mastro acquisti,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=28,zmm_entity=mas
+              10  ART-CODICE-MAS-ACQ      PIC  X(08).
+      *$GEN type=code,entity=tblas,zmm=on,zmm_title=Codice statistico articolo,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=30,zmm_entity=tblas
+              10  ART-CODICE-AS           PIC  X(03).
+      *$GEN type=code,entity=frn,zmm=on,zmm_title=Codice fornitore,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=32,zmm_entity=frn
+              10  ART-CODICE-FRN          PIC  X(08).
+      *$GEN type=num,size=03,dec=0,zmm=on,zmm_title=Mesi invenduto,zmm_datatype=n,zmm_size=02,zmm_align=R,zmm_pos=34
+              10  ART-MESI-INVENDUTO      PIC  9(02).
+      *$GEN type=num,size=04,dec=0,zmm=on,zmm_title=Giorni riordino,zmm_datatype=n,zmm_size=03,zmm_align=R,zmm_pos=35
+              10  ART-GIORNI-RIORDINO     PIC  9(03).
+      *$GEN type=num,size=21,dec=4,zmm=on,zmm_title=Lotto di vendita,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=36
+              10  ART-LOTTO-VENDITA       PIC S9(12)V9(04)  
+                    SIGN TRAILING SEPARATE.
+      *$GEN type=num,dec=6,size=21,zmm=on,zmm_title=Costo standard,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=37
+              10  ART-COSTO-STANDARD      PIC S9(10)V9(06)  
+                    SIGN TRAILING SEPARATE.
+      *$GEN type=num,size=21,dec=4,zmm=on,zmm_title=Scorta minima,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=38
+              10  ART-SCORTA-MINIMA       PIC S9(12)V9(04) 
+                    SIGN TRAILING SEPARATE.
+      *$GEN type=num,size=21,dec=4,zmm=on,zmm_title=Lotto riordino,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=39
+              10  ART-LOTTO-RIORDINO      PIC S9(12)V9(04)  
+                    SIGN TRAILING SEPARATE.
+      * copy "groupdate.xfc". | DBMaker
+              10  ART-DATA-INVENTARIO.
+      $XFD  NAME=ART-INVENTARIO-AA
+                  15  AA                  PIC  9(04).
+      $XFD  NAME=ART-INVENTARIO-MM
+                  15  MM                  PIC  9(02).
+      $XFD  NAME=ART-INVENTARIO-GG
+                  15  GG                  PIC  9(02).
+              10  FILLER REDEFINES ART-DATA-INVENTARIO.
+      *$GEN type=date,zmm=on,zmm_title=Data inventario,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=40
+                  15  ART-DATA-INVENTARIO-NUM  PIC 9(08).
+      *$GEN type=num,size=21,dec=4,zmm=on,zmm_title=Q.tà inventario,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=41
+              10  ART-QTA-INVENTARIO      PIC S9(12)V9(04)  
+                    SIGN TRAILING SEPARATE.
+      *
+      *
+      * copy "groupdate.xfc". | DBMaker
+              10  ART-DATA-CARICO.
+      $XFD  NAME=ART-CARICO-AA
+                  15  AA                  PIC  9(04).
+      $XFD  NAME=ART-CARICO-MM
+                  15  MM                  PIC  9(02).
+      $XFD  NAME=ART-CARICO-GG
+                  15  GG                  PIC  9(02).
+              10  FILLER REDEFINES ART-DATA-CARICO.
+      *$GEN type=date,zmm=on,zmm_title=Data carico,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=42
+                  15  ART-DATA-CARICO-NUM  PIC 9(08).
+      *$GEN type=num,dec=6,size=21,zmm=on,zmm_title=Prezzo carico,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=43
+              10  ART-PREZZO-CARICO       PIC S9(10)V9(06)  
+                    SIGN TRAILING SEPARATE.
+      *$GEN type=code,entity=frn,zmm=on,zmm_title=Codice fornitore carico,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=44,zmm_entity=frn
+              10  ART-CODICE-FRN-CARICO   PIC  X(08).
+      *
+      *
+      * copy "groupdate.xfc". | DBMaker
+              10  ART-DATA-SCARICO.
+      $XFD  NAME=ART-SCARICO-AA
+                  15  AA                  PIC  9(04).
+      $XFD  NAME=ART-SCARICO-MM
+                  15  MM                  PIC  9(02).
+      $XFD  NAME=ART-SCARICO-GG
+                  15  GG                  PIC  9(02).
+              10  FILLER REDEFINES ART-DATA-SCARICO.
+      *$GEN type=date,zmm=on,zmm_title=Data scarico,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=46
+                  15  ART-DATA-SCARICO-NUM  PIC 9(08).
+      *$GEN type=num,dec=6,size=21,zmm=on,zmm_title=Prezzo scarico,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=47
+              10  ART-PREZZO-SCARICO      PIC S9(10)V9(06)  
+                    SIGN TRAILING SEPARATE.
+      *$GEN type=code,entity=cli,zmm=on,zmm_title=Codice cliente scarico,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=48,zmm_entity=cli
+              10  ART-CODICE-CLI-SCARICO  PIC  X(08).
+      *
+              10  ART-FILLER-01           PIC  X(34).
+      *
+      *        10  ART-ESISTENZA           PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+      *        10  ART-ESISTENZA-UM        PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+      *
+      *$GEN type=num,size=21,dec=4,zmm=on,zmm_title=Impegnato,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=50
+              10  ART-IMPEGNATO           PIC S9(12)V9(04)  
+                    SIGN TRAILING SEPARATE.
+      *$GEN type=num,size=21,dec=4,zmm=on,zmm_title=Impegnato u.m. secondaria,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=51
+              10  ART-IMPEGNATO-UM        PIC S9(12)V9(04)  
+                    SIGN TRAILING SEPARATE.
+      *$GEN type=num,size=21,dec=4,zmm=on,zmm_title=Ordinato,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=52
+              10  ART-ORDINATO            PIC S9(12)V9(04)  
+                    SIGN TRAILING SEPARATE.
+      *$GEN type=num,size=21,dec=4,zmm=on,zmm_title=Ordinato u.m. secondaria,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=53
+              10  ART-ORDINATO-UM         PIC S9(12)V9(04)  
+                    SIGN TRAILING SEPARATE.
+      *$GEN type=num,size=21,dec=4,zmm=on,zmm_title=Prenotato,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=54
+              10  ART-PRENOTATO           PIC S9(12)V9(04)  
+                    SIGN TRAILING SEPARATE.
+      *$GEN type=num,size=21,dec=4,zmm=on,zmm_title=Prenotato u.m. secondaria,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=55
+              10  ART-PRENOTATO-UM        PIC S9(12)V9(04)  
+                    SIGN TRAILING SEPARATE.
+      *
+      *        10  ART-FILLER-02           PIC  X(286).                                 |or 14/11/2007
+      
+          10  art-raee                   pic  9(01).                                    |or 14/11/2007
+              88  art-raee-ok            value 1.                                       |or 14/11/2007
+              88  art-raee-ko            value 0.                                       |or 14/11/2007
+      *$GEN type=code,entity=41rcmh
+          10  art-41rcmh-codice          pic  x(20).                                    |or 14/11/2007
+      *$GEN type=code,entity=art
+          10  art-raee-art2              pic  x(15).                                    |or 22/01/2008
+      *$GEN type=num,size=7,dec=0
+          10  art-raee-art2-coeff2       pic  9(05).                                    |or 22/01/2008
+      
+      *    10  art-filler-02              pic  x(265).                                  |or 14/11/2007  |or 22/01/2008
+          10  art-filler-02              pic  x(245).                                   |or 22/01/2008
+      
+      *
+      *        10  ART-QTA-APERTURA        PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+      *        10  ART-VAL-APERTURA        PIC S9(15)        SIGN TRAILING SEPARATE.
+      *        10  ART-QTA-CHIUSURA        PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+      *        10  ART-VAL-CHIUSURA        PIC S9(15)        SIGN TRAILING SEPARATE.
+      *        10  ART-QTA-ENTRATE-VAL     PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+      *        10  ART-VAL-ENTRATE-VAL     PIC S9(15)        SIGN TRAILING SEPARATE.
+      *        10  ART-QTA-INIZIALE        PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+      *        10  ART-QTA-ACQUISTI        PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+      *        10  ART-QTA-RESI-CLIENTI    PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+      *        10  ART-QTA-CARICHI-PROD    PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+      *$XFD  NAME=ART-ENTRATE-VARIE
+      *        10  ART-QTA-ENTRATE-VARIE   PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+      *        10  ART-QTA-VENDITE         PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+      *        10  ART-QTA-RESI-FORNITORI  PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+      *        10  ART-QTA-SCARICHI-PROD   PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+      *        10  ART-QTA-USCITE-VARIE    PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+      *        10  ART-PRECEDENTE          PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+      *        10  ART-PRECEDENTE-UM       PIC S9(12)V9(04)  SIGN TRAILING SEPARATE.
+      *
+      *$GEN type=code,entity=tblag,zmm=on,zmm_title=Codice agente,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=56,zmm_entity=tblag
+              10  ART-CODICE-AG           PIC  X(03).
+      *$GEN type=combobox,comboclass=art_lotto,size=18
+              10  ART-LOTTO               PIC  X(01).
+                  88  ART-LOTTO-88             VALUE "F" "S" " ".
+                  88  ART-LOTTO-88-F           VALUE "F".
+                  88  ART-LOTTO-88-S           VALUE "S".
+      *
+              10  ART-VAR-INTRA.
+      *$GEN zmm=on,zmm_title=Nomenclatura,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=59
+                  15  ART-NOMENCLATURA    PIC  X(08).
+      *$GEN zmm=on,zmm_title=Provincia,zmm_datatype=x,zmm_size=02,zmm_align=L,zmm_pos=60
+                  15  ART-PROVINCIA       PIC  X(02).
+      *$GEN type=num,size=13,dec=04,zmm=on,zmm_title=Coefficiente,zmm_datatype=n,zmm_size=13,zmm_align=R,zmm_pos=61
+                  15  ART-COEFFICIENTE    PIC  9(05)V9(04).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Oscillazione cambi,zmm_datatype=x,zmm_size=01,zmm_align=L,zmm_pos=62
+              10  ART-OSCILLAZIONE-CAMBI  PIC  X(01).
+                  88  ART-OSCILLAZIONE-CAMBI-88   VALUE "S" " ".
+      *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Serial number,zmm_datatype=x,zmm_size=01,zmm_align=L,zmm_pos=63
+              10  ART-SERIAL-NUMBER       PIC  X(01).
+                  88  ART-SERIAL-NUMBER-88    VALUE "S" " ".
+      *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Editoria,zmm_datatype=x,zmm_size=01,zmm_align=L,zmm_pos=64
+              10  ART-EDITORIA            PIC  X(01).
+                  88  ART-EDITORIA-88         VALUE "S" " ".
+      *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Materia prima,zmm_datatype=x,zmm_size=01,zmm_align=L,zmm_pos=65
+              10  ART-MATERIA-PRIMA       PIC  X(01).
+                  88  ART-MATERIA-PRIMA-88    VALUE "S" " ".
+      *$GEN type=code,entity=cen,zmm=on,zmm_title=Codice centro di costo vendite,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=66,zmm_entity=cen
+              10  ART-CEN-CODICE-VEN      PIC  X(08).
+      *$GEN type=code,entity=cen,zmm=on,zmm_title=Codice centro di costo acquisti,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=68,zmm_entity=cen
+              10  ART-CEN-CODICE-ACQ      PIC  X(08).
+      *$GEN type=num,size=03,dec=0,zmm=on,zmm_title=Mesi di garanzia,zmm_datatype=n,zmm_size=02,zmm_align=R,zmm_pos=70
+              10  ART-MESI-GARANZIA       PIC  9(02).
+      *$GEN type=code,entity=tblad,zmm=on,zmm_title=Codice classe addebito articolo,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=71,zmm_entity=tblad
+              10  ART-TBLAD-CODICE        PIC  X(03).
+      *$GEN type=combobox,comboclass=art_tipo_conversione
+              10  ART-TIPO-CONVERSIONE            PIC  X(01).
+                  88  ART-TIPO-CONVERSIONE-88          VALUE " " "D".
+                  88  ART-TIPO-CONVERSIONE-88-SPACE    VALUE " ".
+                  88  ART-TIPO-CONVERSIONE-88-D        VALUE "D".
+      *$GEN type=num,size=17,dec=04,zmm=on,zmm_title=Valore idrati,zmm_datatype=n,zmm_size=17,zmm_align=R,zmm_pos=74
+              10  ART-VALORE-IDRATI               PIC  9(09)V9(04).
+      *$GEN type=num,size=17,dec=04,zmm=on,zmm_title=Valore anidri,zmm_datatype=n,zmm_size=17,zmm_align=R,zmm_pos=75
+              10  ART-VALORE-ANIDRI               PIC  9(09)V9(04).
+      * copy "groupdate.xfc". | DBMaker
+              10  ART-DATA-AGGIORNAMENTO.
+      $XFD  NAME=ART-DATA-AGG-AA
+                  15  AA                          PIC  9(04).
+      $XFD  NAME=ART-DATA-AGG-MM
+                  15  MM                          PIC  9(02).
+      $XFD  NAME=ART-DATA-AGG-GG
+                  15  GG                          PIC  9(02).
+              10  FILLER REDEFINES ART-DATA-AGGIORNAMENTO.
+      *$GEN type=date,zmm=on,zmm_title=Data aggiornamento,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=76
+                  15  ART-DATA-AGGIORNAMENTO-NUM  PIC 9(08).
+      *** Campo per il modulo 72 - distribuzione automatica ************
+      *$GEN type=num,size=12,dec=03
+              10  ART-QTA-MAX-CONSEGNABILE        PIC  9(06)V9(03).
+      *$GEN type=combobox,comboclass=art_visite_periodiche
+              10  ART-VISITE-PERIODICHE           PIC  9(01).
+                  88  ART-VISITE-PERIODICHE-88    VALUE 0 1 2 3 4 5 6.
+                  88  ART-VISITE-PERIODICHE-SI    VALUE 1 2 3 4 5 6.
+      *** Dati per modulo 83 Aziende vinicole
+              10  ART-AZIENDE-VINICOLE.
+      *$GEN type=code,entity=tbl8a
+                  15  ART-TBL8A-CODICE            PIC  X(03).
+      *$GEN type=code,entity=tbl8b
+                  15  ART-TBL8B-CODICE            PIC  X(03).
+      *$GEN type=code,entity=tbl8c
+                  15  ART-TBL8C-CODICE            PIC  X(03).
+      *$GEN type=code,entity=tbl8d
+                  15  ART-TBL8D-CODICE            PIC  X(02).
+      *$GEN type=code,entity=tbl8e
+                  15  ART-TBL8E-CODICE            PIC  X(03).
+      *$GEN type=code,entity=tbl4a
+                  15  ART-TBL4A-CODICE            PIC  X(03).
+                  15  FILLER                      PIC  X(10).                         |nb 01.03.04
+      *$GEN type=num,size=09,dec=2
+                  15  ART-RESA-UVA-TERZO  PIC S9(04)V9(02)  
+                       SIGN TRAILING SEPARATE.   |nb 01.03.04
+      *$GEN type=num,size=09,dec=2
+                  15  ART-RESA-UVA        PIC S9(04)V9(02)  
+                       SIGN TRAILING SEPARATE.
+      *$GEN type=num,size=09,dec=2
+                  15  ART-RESA-VINO       PIC S9(04)V9(02)  
+                       SIGN TRAILING SEPARATE.
+      *$GEN type=num,size=09,dec=2
+                  15  ART-SUPERO-UVA      PIC S9(04)V9(02)  
+                       SIGN TRAILING SEPARATE.
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                  15  ART-SUPERO-VINO             PIC  X(01).
+                      88  ART-SUPERO-VINO-88      VALUE "S" "N" " ".
+      *$GEN type=code,entity=art
+                  15  ART-SUPERO-CODICE-ART       PIC  X(15).
+      *$GEN type=num,size=09,dec=4
+                  15  ART-CONVERSIONE-UVE PIC S9(03)V9(04)  
+                       SIGN TRAILING SEPARATE.
+      *$GEN type=num,size=09,dec=4
+                  15  ART-GRADAZIONE      PIC S9(03)V9(04)  
+                       SIGN TRAILING SEPARATE.
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                  15  ART-REG-COMM                PIC  X(01).
+                      88  ART-REG-COMM-88         VALUE " " "S" "N".
+      *** Campo per il modulo 72 - distribuzione automatica ************
+      *$GEN type=num,size=11,dec=5
+              10  ART-DOSE-PRODOTTO               PIC  9(04)V9(05).
+      *** Campo per il modulo 47 - gestione bevande         ************
+      *$GEN type=code,entity=art
+              10  ART-CONTR-IVA-CODICE-ART        PIC  X(15).
+      *$GEN type=code,entity=tbltg
+              10  ART-TBLTG-CODICE                PIC  X(03).
+              10  ART-PRODUZIONE.
+      *$GEN type=code,entity=tblma
+                  15  ART-CODICE-MA-PRODUZ        PIC  X(03).
+      *$GEN type=code,entity=tblma
+                  15  ART-CODICE-MA-DESTIN        PIC  X(03).
+      *$GEN type=code,entity=tblma
+                  15  ART-CODICE-MA-PRELIEVO      PIC  X(03).
+      *$GEN type=combobox,comboclass=art_tipo_riordino
+                  15  ART-TIPO-RIORDINO           PIC  X(01).
+                      88  ART-TIPO-RIORDINO-88       
+                          VALUE " " "A" "P" "L".
+      *$GEN type=num,size=12,dec=0
+                  15  ART-LEAD-TIME-F  PIC S9(09)  
+                       SIGN TRAILING SEPARATE.
+      *$GEN type=num,size=17,dec=4
+                  15  ART-LEAD-TIME-V  PIC S9(09)V9(04) 
+                       TRAILING SEPARATE.
+      *
+      *
+      *
+      *$GEN type=checkbox,truevalue="S",falsevalue="N"
+                  10  ART-CALCOLO-MRP             PIC  X(01).
+                      88  ART-CALCOLO-MRP-88          VALUE "S" "N".
+      *                88  ART-CALCOLO-MRP-88          VALUE "S" "N" "F". Carannante asserisce che la F(Fantasma) è desueta
+      *-------------------------------------------------------- ulixes <<<
+                  10  ART-LLC                     PIC  9(02).
+      *-------------------------------------------------------- ulixes <<<
+      *
+      *
+      *** Campo per il modulo 61 - gestione imballi         ************
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+              10  ART-IMBALLO                     PIC  X(01).
+                  88  ART-IMBALLO-88              VALUE " ", "S".
+                  88  art-imballo-true            value "S".                                             |ms 20/06/2007 9.21
+                  88  art-imballo-false           value " ".                                             |ms 20/06/2007 9.21
+      
+              10  ART-COLLEGAMENTO-IMB.                                                                    | maxime 08/09/2011
+      *$GEN type=code,entity=art
+                      20  art-codice-imb-01       pic x(15).
+      *$GEN type=num,size=14,dec=4
+                      20  art-fatt-conv-imb-01    pic s9(06)v9(04)  
+                          sign trailing separate.
+      *$GEN type=combobox,comboclass=art_tipo_conv_imb
+                      20  art-tipo-conv-imb-01    pic x(01).
+      *$GEN type=code,entity=art
+                      20  art-codice-imb-02       pic x(15).
+      *$GEN type=num,size=14,dec=4
+                      20  art-fatt-conv-imb-02    pic s9(06)v9(04)  
+                          sign trailing separate.
+      *$GEN type=combobox,comboclass=art_tipo_conv_imb
+                      20  art-tipo-conv-imb-02    pic x(01).
+              10  filler  redefines art-collegamento-imb.                                                  | maxime 08/09/2011
+                  15  ART-TABELLA-IMBALLI         OCCURS 02.
+                      20  ART-CODICE-IMB          PIC  X(15).
+                      20  ART-FATT-CONV-IMB       PIC S9(06)V9(04)
+                                                 SIGN TRAILING SEPARATE.
+                      20  ART-TIPO-CONV-IMB       PIC  X(01).
+                          88  ART-TIPO-CONV-IMB-88  VALUE " ", "M".
+      *
+      *
+      *** Campo per il modulo 65 - gestione tentata vendita ************
+      ***        10  ART-TIPO-PRODOTTO               PIC  9(01).                                           | MACGIU 25/02/2014
+              10  ART-TIPO-PRODOTTO-old           PIC  9(01).                                              | MACGIU 25/02/2014
+                  88  ART-TIPO-PRODOTTO-old-88    VALUE 0, 1, 2.                                           | MACGIU 25/02/2014
+      *** Campo per il modulo 65 - gestione tentata vendita ************
+      ***        10  ART-QTA-COMPENS-CALO-PESO       PIC S9(03)V9(02) TRAILING SEPARATE.                   | MACGIU 25/02/2014
+              10  ART-QTA-COMPENS-CALO-PESO-old   PIC S9(03)V9(02) 
+                    TRAILING SEPARATE.                      | MACGIU 25/02/2014
+              10  ART-PERC-RESA-EDITORIA-A.
+      *$GEN type=num,size=4,dec=0
+                  15  ART-PERC-RESA-EDITORIA      PIC  9(03).
+      *$GEN type=code,entity=tblcz
+              10  ART-TBLCZ-CODICE                PIC  X(03).
+      *$GEN type=code,entity=tblll
+              10  ART-TBLLL-CODICE                PIC  X(03).
+      *** Campo per il modulo 65 - gestione tentata vendita ************
+      ***        10  ART-NUMERO-PEZZI-65             PIC  9(05).                                           | MACGIU 25/02/2014
+              10  ART-NUMERO-PEZZI-65-old         PIC  9(05).                                              | MACGIU 25/02/2014
+              10  ART-CANTINE-SOCIALI.
+      *$GEN type=code,entity=tbliv
+                  15  ART-CODICE-IV-VND-AGEV      PIC  X(03).
+      *$GEN type=num,size=21,dec=2
+                  15  ART-QUOTA-PREMIO            PIC S9(13)V9(02) 
+                       TRAILING SEPARATE.
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+                  15  ART-PREMIO-DOC              PIC  X(01).
+                      88  ART-PREMIO-DOC-88           VALUE "S" "N" " ".
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+              10  ART-FISCALE-42                  PIC  X(01).
+                  88  ART-FISCALE-42-88               VALUE "S" " ".
+      *$GEN type=code,entity=art
+              10  ART-CODICE-SOSTITUTIVO          PIC  X(15).
+      *
+      *
+      *** Campo per il modulo 64 - gestione confezioni *****************
+      *
+      *
+      *$GEN type=checkbox,truevalue="S",falsevalue="N"
+              10  art-flag-confezione             pic  x(01).
+                  88  art-flag-confezione-88      value " " "N" "S".
+                  88  art-flag-confezione-88-s    value "S".
+      *$GEN type=checkbox,truevalue="S",falsevalue="N"
+              10  art-presenza-confez             pic  x(01).
+                  88  art-presenza-confez-88      value " " "N" "S".
+                  88  art-presenza-confez-88-s    value "S".
+      
+              10  art-iva-confezione.                                                                      | maxime 08/09/2011
+      *$GEN type=code,entity=tbliv
+                  15  art-codice-iva-conf-01      pic x(03).
+      *$GEN type=num,size=4,dec=0
+                  15  art-perc-iva-conf-01        pic 9(03).
+      *$GEN type=code,entity=tbliv
+                  15  art-codice-iva-conf-02      pic x(03).
+      *$GEN type=num,size=4,dec=0
+                  15  art-perc-iva-conf-02        pic 9(03).
+      *$GEN type=code,entity=tbliv
+                  15  art-codice-iva-conf-03      pic x(03).
+      *$GEN type=num,size=4,dec=0
+                  15  art-perc-iva-conf-03        pic 9(03).
+      *$GEN type=code,entity=tbliv
+                  15  art-codice-iva-conf-04      pic x(03).
+      *$GEN type=num,size=4,dec=0
+                  15  art-perc-iva-conf-04        pic 9(03).
+      *$GEN type=code,entity=tbliv
+                  15  art-codice-iva-conf-05      pic x(03).
+      *$GEN type=num,size=4,dec=0
+                  15  art-perc-iva-conf-05        pic 9(03).
+              10  filler  redefines  art-iva-confezione.                                                   | maxime 08/09/2011
+                  15  art-peso-iva-confezione     occurs 5.
+                      20  art-codice-iva-conf     pic  x(03).
+                      20  art-perc-iva-conf       pic  9(03).
+      
+      *
+      *
+      *
+      
+      *** Campi per il modulo 47 - gestione bevande ********************
+      *$GEN type=num,size=6,dec=0
+              10  ART-NUMERO-CONTRASSEGNI         PIC  9(04).
+      *$GEN type=num,size=12,dec=4
+              10  ART-CAPACITA                    PIC  9(05)V9(04).
+      *** Campi per il modulo 83 - gestione aziende vinicole ***********
+              10  ART-DESCRIZIONE1-MAF            PIC  X(30).
+              10  ART-DESCRIZIONE2-MAF            PIC  X(30).
+      **** campi per modulo 61 imballi
+      *$GEN type=checkbox,truevalue=" ",falsevalue="N"
+              10  ART-CONT-IMBALLO                PIC  X(01).
+                  88  ART-CONT-IMBALLO-88  VALUE " ", "N".
+      *$GEN type=num,size=13,dec=4
+              10  ART-VARIANTE-RAME               PIC  9(06)V9(04).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+              10  ART-RIPARTIZIONE-INTRA          PIC  X(01).
+                  88  ART-RIPARTIZIONE-INTRA-88   VALUE " ", "S".
+      **** campi per modulo 38 editoria
+      *$GEN type=radiobutton,value_1="P",image_1=1,value_2="A",image_2=2
+              10  ART-TIPO-RESA                   PIC  X(01).
+                  88  ART-TIPO-RESA-88            VALUE "P" "A".
+                  88  ART-TIPO-RESA-88-A          VALUE "A".                                             |DS 13/11/2008 11.27
+                  88  ART-TIPO-RESA-88-P          VALUE "P".                                             |DS 13/11/2008 11.27
+      *$GEN type=code,entity=tbliv
+              10  ART-CODICE-IV-EDITORIA          PIC  X(03).
+      *$GEN type=code,entity=tbl8f
+              10  ART-TBL8F-CODICE                PIC  X(04).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+              10  ART-FORNITURA-PERIODICA         PIC  X(01).
+                  88  ART-FORNITURA-PERIODICA-88  VALUE " ", "S".
+      **** campi per modulo 47 contrassegni iva
+      *$GEN type=code,entity=tbl4b
+              10  ART-TBL4B-CODICE                PIC  X(03).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+              10  ART-CONTRASSEGNO                PIC  X(01).
+                  88  ART-CONTRASSEGNO-88         VALUE " ", "S".
+      *$GEN type=combobox,comboclass=art_tipo_conversione
+              10  ART-TIPO-CONV-CONTR-IVA         PIC  X(01).
+                  88  ART-TIPO-CONV-CONTR-IVA-88  VALUE " ", "D".
+      **** campi per modulo 81 riciclaggio imballaggi
+      * ART-QTA-MATERIALE=quantita' di materiale da riciclare presente per ogni
+      *       quantita' unitaria dell'articolo venduto
+      *       es. bottiglia di plastica venduta a KG indicare 1
+      *       es. bottiglia di plastica venduta a N. indicare i KG per ogni bottiglia
+      *
+      * ART-CONTRIBUTO-ASSOLTO=se "S" e non viene calcolato il contributo in fattura
+      *       stampa la scritta CONTRIBUTO AMBIENTALE CONAI ASSOLTO
+      *
+              10  art-qta-materiale-x.                                                                     | maxime 08/09/2011
+      *$GEN type=num,size=15,dec=6
+                  15  art-qta-materiale-01        pic s9(06)v9(06)  
+                       sign trailing separate.
+      *$GEN type=num,size=15,dec=6
+                  15  art-qta-materiale-02        pic s9(06)v9(06)  
+                       sign trailing separate.
+      *$GEN type=num,size=15,dec=6
+                  15  art-qta-materiale-03        pic s9(06)v9(06)  
+                       sign trailing separate.
+      *$GEN type=num,size=15,dec=6
+                  15  art-qta-materiale-04        pic s9(06)v9(06)  
+                       sign trailing separate.
+      *$GEN type=num,size=15,dec=6
+                  15  art-qta-materiale-05        pic s9(06)v9(06)  
+                       sign trailing separate.
+      *$GEN type=num,size=15,dec=6
+                  15  art-qta-materiale-06        pic s9(06)v9(06)  
+                       sign trailing separate.
+              10  filler redefines art-qta-materiale-x.                                                    | maxime 08/09/2011
+                  15                              OCCURS 06.
+                      20  ART-QTA-MATERIALE-ALFA.
+                          25  ART-QTA-MATERIALE   PIC S9(06)V9(06)  
+                                SIGN TRAILING SEPARATE.
+      
+      *
+      * "S" = dicitura in fattura "contributo conai assolto..."
+      * "I" = contributo conai scorporato dal prezzo ed esposto a parte in fattura
+      * " " = normalmente conteggiato e addebitato
+      *
+      *$GEN type=combobox,comboclass=art_contributo_assolto
+              10  ART-CONTRIBUTO-ASSOLTO          PIC  X(01).
+                  88  ART-CONTRIBUTO-ASSOLTO-88   VALUE "S" " " "I".
+      *
+      *
+      *$GEN type=code,entity=tblse,zmm=on,zmm_title=Codice blocco,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=82,zmm_entity=tblse
+              10  ART-TBLSE-CODICE                PIC  X(03).
+      *
+      *
+              10  art-conai-x.                                                                             | maxime 08/09/2011
+      *$GEN type=combobox,comboclass=art_tipo_materiale
+                  15  art-tipo-materiale-01           pic x(01).
+      *$GEN type=code,entity=tbltp
+                  15  art-tbltp-codice-01             pic x(03).
+      *$GEN type=combobox,comboclass=art_tipo_materiale
+                  15  art-tipo-materiale-02           pic x(01).
+      *$GEN type=code,entity=tbltp
+                  15  art-tbltp-codice-02             pic x(03).
+      *$GEN type=combobox,comboclass=art_tipo_materiale
+                  15  art-tipo-materiale-03           pic x(01).
+      *$GEN type=code,entity=tbltp
+                  15  art-tbltp-codice-03             pic x(03).
+      *$GEN type=combobox,comboclass=art_tipo_materiale
+                  15  art-tipo-materiale-04           pic x(01).
+      *$GEN type=code,entity=tbltp
+                  15  art-tbltp-codice-04             pic x(03).
+      *$GEN type=combobox,comboclass=art_tipo_materiale
+                  15  art-tipo-materiale-05           pic x(01).
+      *$GEN type=code,entity=tbltp
+                  15  art-tbltp-codice-05             pic x(03).
+      *$GEN type=combobox,comboclass=art_tipo_materiale
+                  15  art-tipo-materiale-06           pic x(01).
+      *$GEN type=code,entity=tbltp
+                  15  art-tbltp-codice-06             pic x(03).
+              10  filler redefines art-conai-x.                                                            | maxime 08/09/2011
+                  15                                  OCCURS 06.
+                      20  ART-TIPO-MATERIALE          PIC  X(01).
+      *                    88  ART-TIPO-MATERIALE-88   VALUE "P" "S" "T" " ".                              | Suadal 24/03/2017
+                          88  art-tipo-materiale-88  
+                                VALUE "P" "S" "T" "1" "2" "3" " ".                   | Suadal 24/03/2017
+                          88  art-tipo-materiale-plastica-88   
+                                value "1" "2" "3".                          | Suadal 24/03/2017
+                          88  art-tipo-materiale-plastica-1   value "1".                                   | suadal 15/06/2017
+                          88  art-tipo-materiale-plastica-2   value "2".                                   | suadal 15/06/2017
+                          88  art-tipo-materiale-plastica-3   value "3".                                   | suadal 15/06/2017
+                      20  ART-TBLTP-CODICE            PIC  X(03).
+      *
+      *
+      *$GEN type=code,entity=tpk
+              10  ART-TPK-CODICE                  PIC  X(03).
+      
+      ***        10  ART-PRODOTTO-OMAGGIO            PIC  X(02).                                           | MACGIU 25/02/2014
+              10  ART-PRODOTTO-OMAGGIO-notused    PIC  X(02).                                              | MACGIU 25/02/2014
+                  88  ART-PRODOTTO-OMAGGIO-old-88 
+                       VALUE "00" "01" "02" "03" "99" " ".                      | MACGIU 25/02/2014
+      ***        10  ART-MODIFICA-PREZZO             PIC  X(01).                                           | MACGIU 25/02/2014
+              10  ART-MODIFICA-PREZZO-old         PIC  X(01).                                              | MACGIU 25/02/2014
+                  88  ART-MODIFICA-PREZZO-old-88      VALUE "0" "1" " ".                                  | MACGIU 25/02/2014
+      
+              10  art-abbat-nastri-x.                                                                      | maxime 08/09/2011
+      *$GEN type=num,size=7,dec=2
+                  15  art-abbat-nastri-01             pic s9(03)v9(02)  
+                       sign trailing separate.
+      *$GEN type=num,size=7,dec=2
+                  15  art-abbat-nastri-02             pic s9(03)v9(02) 
+                       sign trailing separate.
+      *$GEN type=num,size=7,dec=2
+                  15  art-abbat-nastri-03             pic s9(03)v9(02)
+                       sign trailing separate.
+      *$GEN type=num,size=7,dec=2
+                  15  art-abbat-nastri-04             pic s9(03)v9(02) 
+                       sign trailing separate.
+      *$GEN type=num,size=7,dec=2
+                  15  art-abbat-nastri-05             pic s9(03)v9(02)  
+                       sign trailing separate.
+      *$GEN type=num,size=7,dec=2
+                  15  art-abbat-nastri-06             pic s9(03)v9(02)
+                       sign trailing separate.
+              10  filler redefines art-abbat-nastri-x.                                                     | maxime 08/09/2011
+                  15                                  OCCURS 06.
+                      20  ART-ABBAT-NASTRI-ALFA.
+                          25  ART-ABBAT-NASTRI        PIC S9(03)V9(02) 
+                                SIGN TRAILING SEPARATE.
+      
+      *
+      *
+      *$GEN type=combobox,comboclass=art_web,
+              10  ART-WEB                         PIC  X(01).                                            |gm 01/06/2007 9.16
+                  88  ART-WEB-88                      VALUE " " "S" "N".
+                  88  art-web-88-s                    value "S".
+                  88  art-web-88-n                    value "N".
+                  88  art-web-88-space                value " ".
+      
+      $XFD  NAME=ART-COSTO-STD-AUT
+              10  ART-COSTO-STANDARD-AUTOMATICO   PIC  9(01).     | non presente
+              10  ART-DISEGNO                     PIC  X(30).
+      *$GEN type=code,entity=art
+              10  ART-EXTRA-SUPERO                PIC  X(15).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+              10  ART-ADDEBITO-CONAI-ACQ          PIC  X(01).             |ds 03.07.03
+                  88  ART-ADDEBITO-CONAI-ACQ-88       VALUE " " "S".      |ds 03.07.03
+      
+      *
+      **** modulo 65 - terminali E2K
+      *
+              10  ART-CAUSALI-AMMESSE.                                                                     | maxime 08/09/2011
+                  15  art-caus-ammesse-01         pic x(01).
+                  15  art-caus-ammesse-02         pic x(01).
+                  15  art-caus-ammesse-03         pic x(01).
+                  15  art-caus-ammesse-04         pic x(01).
+                  15  art-caus-ammesse-05         pic x(01).
+                  15  art-caus-ammesse-06         pic x(01).
+                  15  art-caus-ammesse-07         pic x(01).
+                  15  art-caus-ammesse-08         pic x(01).
+                  15  art-caus-ammesse-09         pic x(01).
+                  15  art-caus-ammesse-10         pic x(01).
+              10  filler redefines  ART-CAUSALI-AMMESSE.                                                   | maxime 08/09/2011
+                  15                     OCCURS 10.
+                      20  ART-CAUS-AMMESSE        PIC  X(01).
+                          88  ART-CAUS-AMMESSE-88  
+                                VALUE " " "V" "S" "R" "Z" "O".
+      
+      ***        10  ART-ABILITA-SC-MERCE            PIC  X(01).                                           | MACGIU 25/02/2014
+              10  ART-ABILITA-SC-MERCE-old        PIC  X(01).                                              | MACGIU 25/02/2014
+                  88  ART-ABILITA-SC-MERCE-old-88      VALUE " " "S".                                  | MACGIU 25/02/2014
+      ***        10  ART-DECIMALI-BARCODE            PIC  X(01).               |nb 18.12.03                | MACGIU 25/02/2014
+              10  ART-DECIMALI-BARCODE-notused    PIC  X(01).               |nb 18.12.03                   | MACGIU 25/02/2014
+      *$GEN type=code,entity=tbl8h
+              10  ART-TBL8H-CODICE                PIC  X(05).               |nb 01.03.04
+      *$GEN type=code,entity=tbl8g
+              10  ART-TBL8G-CODICE                PIC  X(05).               |nb 01.03.04
+      *$GEN type=num,size=9,dec=2
+              10  ART-EXTRA-SUPERO-UVA       PIC S9(04)V9(02)
+                                             SIGN TRAILING SEPARATE.             |nb 18/06/2004 9.52
+      
+      
+      *                                                                               |nb 04/07/2005 9.29
+      **** modulo 65 - software ATON ROAD 3                                           |nb 04/07/2005 9.29
+      *                                                                               |nb 04/07/2005 9.29
+      ***        10  ART-BLOCCO-CAUSALI.                                              | maxime 08/09/2011  | MACGIU 25/02/2014
+              10  ART-BLOCCO-CAUSALI-old.                                                                  | MACGIU 25/02/2014
+                  15  art-blocco-caus-old-01          pic x(01).                                           | MACGIU 25/02/2014
+                  15  art-blocco-caus-old-02          pic x(01).                                           | MACGIU 25/02/2014
+                  15  art-blocco-caus-old-03          pic x(01).                                           | MACGIU 25/02/2014
+                  15  art-blocco-caus-old-04          pic x(01).                                           | MACGIU 25/02/2014
+                  15  art-blocco-caus-old-05          pic x(01).                                           | MACGIU 25/02/2014
+                  15  art-blocco-caus-old-06          pic x(01).                                           | MACGIU 25/02/2014
+                  15  art-blocco-caus-old-07          pic x(01).                                           | MACGIU 25/02/2014
+                  15  art-blocco-caus-old-08          pic x(01).                                           | MACGIU 25/02/2014
+                  15  art-blocco-caus-old-09          pic x(01).                                           | MACGIU 25/02/2014
+                  15  art-blocco-caus-old-10          pic x(01).                                           | MACGIU 25/02/2014
+                  15  art-blocco-caus-old-11          pic x(01).                                           | MACGIU 25/02/2014
+                  15  art-blocco-caus-old-12          pic x(01).                                           | MACGIU 25/02/2014
+                  15  art-blocco-caus-old-13          pic x(01).                                           | MACGIU 25/02/2014
+                  15  art-blocco-caus-old-14          pic x(01).                                           | MACGIU 25/02/2014
+                  15  art-blocco-caus-old-15          pic x(01).                                           | MACGIU 25/02/2014
+      ***        10  filler redefines  ART-BLOCCO-CAUSALI.                            | maxime 08/09/2011  | MACGIU 25/02/2014
+              10  filler redefines  ART-BLOCCO-CAUSALI-old.                                                | MACGIU 25/02/2014
+                  15                     OCCURS 15.
+      ***                20  ART-BLOCCO-CAUS         PIC  X(01).                                           | MACGIU 25/02/2014
+                      20  ART-BLOCCO-CAUS-old     PIC  X(01).                                              | MACGIU 25/02/2014
+                          88  ART-BLOCCO-CAUS-OLD-88  VALUE " " "1".                                       | MACGIU 25/02/2014
+      
+      
+      *       10  ART-FILLER                      PIC  X(469).            |ds 03.07.03
+      *       10  ART-FILLER                      PIC  X(468).            |ds 03.07.03
+      *       10  ART-FILLER                      PIC  X(458).            |nb 13.11.03
+      *       10  ART-FILLER                      PIC  X(457).            |nb 13.11.03
+      *       10  ART-FILLER                      PIC  X(446).            |nb 01.03.04
+      *       10  ART-FILLER                      PIC  X(439).                        |nb 18/06/2004 9.53
+              10  ART-CODICE-AUTORIZZAZIONE-ALFA.
+      *$GEN type=num,size=12,dec=0
+                  15  ART-CODICE-AUTORIZZAZIONE   PIC  9(09).                     |DS 18/11/2005 9.36
+      *** campo per il livello di valorizzazione dei prodotti
+      *$GEN type=checkbox,truevalue="F",falsevalue=" "
+              10  ART-TIPO-PRODOTTO-VAL           PIC  X(01).                     |SQ 22/11/2005 9.20
+                  88  ART-TIPO-PRODOTTO-VAL-88    VALUE " ", "F".                 |SQ 22/11/2005 9.34
+      *        10  ART-FILLER                      PIC  X(424).                   |DS 18/11/2005 9.36     |nb 04/07/2005 9.29
+      *        10  ART-FILLER                      PIC  X(415).                   |sq 22/11/2005 9.17     |DS 18/11/2005 9.36
+      *        10  ART-FILLER                      PIC  X(414).                       |nb 05/12/2005 17.27|sq 22/11/2005 9.17
+      
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+              10  ART-IMBOTTIGLIARE               PIC  X(01).                         |nb 05/12/2005 17.27
+                  88  ART-IMBOTTIGLIARE-88                VALUE " " "S".              |nb 05/12/2005 17.27
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+              10  ART-FLAG-TABELLA-E               PIC  X(01).                         |nb 05/12/2005 17.27
+                  88  ART-FLAG-TABELLA-E-88               VALUE " " "S".          |DS 11/01/2006 12.04
+      
+              10  ART-CONTINUATIVO                PIC  X(01).                         |nb 01/02/2006 16.31
+                  88  ART-CONTINUATIVO-88         VALUE "S" " ".                      |nb 01/02/2006 16.31
+              10  ART-ANNO-COLLEZIONE             PIC  9(02).                         |nb 01/02/2006 16.31
+              10  ART-STAGIONE                    PIC  X(01).                         |nb 01/02/2006 16.31
+                  88  ART-STAGIONE-88             VALUE "A" "P" "E".                  |nb 01/02/2006 16.31
+              10  ART-MARCHIO                     PIC  X(03).                         |nb 01/02/2006 16.31
+              10  ART-CAMPIONARIO                 PIC  X(03).                         |nb 01/02/2006 16.31
+              10  ART-LINEA-PRODOTTO              PIC  X(01).                         |nb 01/02/2006 16.31
+              10  ART-TIPOLOGIA                   PIC  X(03).                         |nb 01/02/2006 16.31
+              10  ART-SESSO                       PIC  X(01).                         |nb 01/02/2006 16.31
+                  88  ART-SESSO-88                VALUE "M" "F".                      |nb 01/02/2006 16.31
+              10  ART-ARTICOLO-PADRE              PIC  X(15).                         |ep 10/02/2006
+      *
+      * l'articolo non genera punti sugli scontrini del punto vendita
+      *
+              10  art-nopunti                     pic 9(01).                                             | mxm 26/10/2007 8.07
+      *
+      * l'articolo è un buono spesa
+      *
+              10  art-buono                       pic 9(01).                                             | mxm 24/11/2007 10.48
+      *
+      *
+      *
+      *$GEN type=num,dec=3,size=10
+              10  art-lungh-mt                    pic 9(04)v9(03).   | lunghezza in mt                   | mxm 19/05/2008 21.52
+      *$GEN type=num,dec=3,size=10
+              10  art-largh-mt                    pic 9(04)v9(03).   | larghezza in mt                   | mxm 19/05/2008 21.52
+      *$GEN type=num,dec=3,size=10
+              10  art-alt-mt                      pic 9(04)v9(03).   | altezza in mt                     | mxm 19/05/2008 21.52
+      *$GEN type=num,dec=2,size=7
+              10  art-temp-min                    pic s9(03)v9(02) 
+                    sign trailing separate.               | mxm 19/05/2008 21.52
+      *$GEN type=num,dec=2,size=7
+              10  art-temp-max                    pic s9(03)v9(02)
+                    sign trailing separate.               | mxm 19/05/2008 21.52
+      
+      *
+      *
+      *
+      *$GEN type=code,entity=lot
+              10  art-lotto-83                    pic  x(15).                                            | mxm 17/11/2008 15.07
+              10  art-autoclavi-83                pic  x(15).                                            | mxm 17/11/2008 15.07
+      *
+      *
+              10  art-tbl38-arrotondamento        pic  9(01).                                            |DS 13/11/2008 11.25
+                  88  art-tbl38-arrotondamento-88 value 1 2 3.                                           |DS 13/11/2008 11.26
+                  88  art-tbl38-arrotondamento-88-1       value 1.         | come da tabella parametri   |DS 13/11/2008 11.26
+                  88  art-tbl38-arrotondamento-88-2       value 2.         | arrotonda all'intero        |DS 13/11/2008 11.26
+                  88  art-tbl38-arrotondamento-88-3       value 3.         | non arrotonda               |DS 13/11/2008 11.26
+      *
+      *
+              10  art-cpa                         pic  x(04).                                              | rososv 26/01/2011 16:16:59
+              10  art-taric                       pic  x(02).                                              | rososv 26/01/2011 16:17:09
+              10  art-cadd                        pic  x(04).                                              | rososv 26/01/2011 16:17:09
+              10  art-tipo-imballaggio            pic  x(02).                                              | rososv 26/01/2011 16:17:09
+      
+              10  art-esclusione-intra            pic  9.                                                  | rososv 06/02/2012
+                  88 art-esclusione-intra-ok      value 1.                                                 | rososv 06/02/2012
+                  88 art-esclusione-intra-ko      value 0.                                                 | rososv 06/02/2012
+      
+              10  art-skip-ctr-taglie             pic  9.                                                  | rososv 05/03/2012
+                  88 art-skip-ctr-taglie-ok       value 1.                                                 | rososv 05/03/2012
+                  88 art-skip-ctr-taglie-ko       value 0.                                                 | rososv 05/03/2012
+      
+              10  art-tipo-agroalimentare         pic  9.                                                  | SUADAL 02/11/2012
+                  88 art-tipo-agroalimentare-ok   value 1.                                                 | SUADAL 02/11/2012
+                  88 art-tipo-agroalimentare-ko   value 0.                                                 | SUADAL 02/11/2012
+              10  art-deteriorabile               pic  9.                                                  | SUADAL 02/11/2012
+                  88 art-deteriorabile-ok         value 1.                                                 | SUADAL 02/11/2012
+                  88 art-deteriorabile-ko         value 0.                                                 | SUADAL 02/11/2012
+              10  art-plastica-conai              pic  9.                                                  | Suadal 24/03/2017
+                  88 art-plastica-conai-ok        value 1.                                                 | Suadal 24/03/2017
+                  88 art-plastica-conai-ko        value 0.                                                 | Suadal 24/03/2017
+      *
+      *
+      *        10  art-filler                      pic  x(302).              | rososv 05/03/2012           | SUADAL 02/11/2012
+      *         10  art-filler                      pic  x(300).             | SUADAL 02/11/2012           | Suadal 24/03/2017
+               10  art-filler                      pic  x(299).                                            | Suadal 24/03/2017
+      ***        10  ART-FILLER                      PIC  X(303).                                          | rososv 06/02/2012  | rososv 05/03/2012
+      ***        10  ART-FILLER                      PIC  X(304).          | rososv 26/01/2011 16:17:26    | rososv 06/02/2012
+      ***        10  ART-FILLER                      PIC  X(316).                                          | rososv 26/01/2011 16:17:26
+      *
+      *
+      *
+              10  ART-FILLER-RIS                  PIC  X(40).
+      
+              10  ART-FILLER-91                   PIC  X(256).        | mxm 06.04.04
+              10  ART-FILLER-91-RIS               PIC  X(256).        | mxm 06.04.04
+      
+      *
+      *
+      *

@@ -1,0 +1,20 @@
+       FD  tconvanno.
+       01 cnv-rec.
+           05 cnv-chiave.
+               10 cnv-anno-geslux  PIC  9(4).
+           05 cnv-dati.
+               10 cnv-anno-g2      PIC  x(2).
+               10 cnv-dati-comuni.
+                   15 cnv-data-creazione           PIC  9(8).
+                   15 cnv-ora-creazione            PIC  9(8).
+                   15 cnv-utente-creazione         PIC  x(10).
+                   15 cnv-data-ultima-modifica     PIC  9(8).
+                   15 cnv-ora-ultima-modifica      PIC  9(8).
+                   15 cnv-utente-ultima-modifica   PIC  x(10).
+               10 cnv-vuoti.
+                   15 cnv-num-vuoto-1  PIC  9(15).
+                   15 cnv-num-vuoto-2  PIC  9(15).
+                   15 cnv-num-vuoto-3  PIC  9(15).
+                   15 cnv-alfa-vuoto-1 PIC  x(20).
+                   15 cnv-alfa-vuoto-2 PIC  x(20).
+                   15 cnv-alfa-vuoto-3 PIC  x(20).

@@ -1,0 +1,42 @@
+       FD  statsett.
+       01 sts-rec.
+           05 sts-chiave.
+               10 sts-tipocli      PIC  xx.
+               10 sts-mese         PIC  99.
+               10 sts-marca        PIC  9(4).
+           05 sts-dati.
+               10 sts-kg-corr      PIC  s9(15)v999.
+               10 sts-qta-corr     PIC  s9(9).
+               10 sts-fat-corr     PIC  s9(12)v99.
+               10 sts-csm-corr     PIC  s9(12)v99.
+               10 sts-adeguam-corr PIC  s9(12)v99.
+               10 sts-kg-past      PIC  s9(15)v999.
+               10 sts-qta-past     PIC  s9(9).
+               10 sts-fat-past     PIC  s9(12)v99.
+               10 sts-csm-past     PIC  s9(12)v99.
+               10 sts-adeguam-past PIC  s9(12)v99.
+               10 sts-kg-prog      PIC  s9(15)v999.
+               10 sts-qta-prog     PIC  s9(9).
+               10 sts-fat-prog     PIC  s9(12)v99.
+               10 sts-csm-prog     PIC  s9(12)v99.
+               10 sts-adeguam-prog PIC  s9(12)v99.
+               10 sts-kg-prog-past PIC  s9(15)v999.
+               10 sts-qta-prog-past            PIC  s9(9).
+               10 sts-fat-prog-past            PIC  s9(12)v99.
+               10 sts-csm-prog-past            PIC  s9(12)v99.
+      *(( XFD NAME = sts-adeg-prog-past ))
+               10 sts-adeguam-prog-past        PIC  s9(12)v99.
+               10 sts-comuni.
+                   15 sts-data-creazione           PIC  9(8).
+                   15 sts-ora-creazione            PIC  9(8).
+                   15 sts-utente-creazione         PIC  x(10).
+                   15 sts-data-ultima-modifica     PIC  9(8).
+                   15 sts-ora-ultima-modifica      PIC  9(8).
+                   15 sts-utente-ultima-modifica   PIC  x(10).
+               10 sts-vuoti.
+                   15 sts-num-vuoto-1  PIC  9(15).
+                   15 sts-num-vuoto-2  PIC  9(15).
+                   15 sts-num-vuoto-3  PIC  9(15).
+                   15 sts-alfa-vuoto-1 PIC  x(20).
+                   15 sts-alfa-vuoto-2 PIC  x(20).
+                   15 sts-alfa-vuoto-3 PIC  x(20).

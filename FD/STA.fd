@@ -1,0 +1,64 @@
+       FD  STA
+           RECORD IS VARYING IN SIZE TO 256 CHARACTERS.
+       01 RECORD-STA.
+           05 STA-CODICE.
+      *$GEN type=num,dec=0,size=11,zmm=on,zmm_title=Progressivo,zmm_datatype=n,zmm_key=1,zmm_size=13,zmm_align=R,zmm_pos=01,zmm_entity=sta
+      *
+      *
+      *
+               10 STA-PROGRESSIVO  PIC  9(08).
+      *$GEN type=num,dec=0,size=11,zmm=on,zmm_title=Riga,zmm_datatype=n,zmm_size=11,zmm_align=R,zmm_pos=02
+      *
+               10 STA-RIGA         PIC  9(05).
+           05 RESTO-RECORD-STA.
+      *$GEN type=code,entity=frn,zmm=on,zmm_title=Codice fornitore,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=03,zmm_entity=frn,zmm_key=2
+      *
+               10 STA-CODICE-FRN   PIC  X(08).
+      *$GEN type=code,entity=art,zmm=on,zmm_title=Codice articolo,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=05,zmm_entity=art,zmm_key=4
+      *
+      *
+               10 STA-CODICE-ART   PIC  X(15).
+      *$GEN type=code,entity=tblma,zmm=on,zmm_title=Codice deposito,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=07,zmm_entity=tblma
+      *
+      *
+               10 STA-CODICE-MA    PIC  X(03).
+      * copy "groupdate.xfc". | DBMaker
+      *
+      *
+               10 STA-DATA-FATTURA.
+      *(( XFD NAME = STA-FATTURA-AA ))
+                   15 AA   PIC  9(04).
+      *(( XFD NAME = STA-FATTURA-MM ))
+                   15 MM   PIC  9(02).
+      *(( XFD NAME = STA-FATTURA-GG ))
+                   15 GG   PIC  9(02).
+               10 FILLER REDEFINES STA-DATA-FATTURA.
+      *$GEN type=date,zmm=on,zmm_title=Data fattura,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=09,zmm_key=5
+      *
+      *
+                   15 STA-DATA-FATTURA-NUM         PIC  9(08).
+               10 STA-FATTURA.
+      *$GEN type=num,dec=0,size=11,zmm=on,zmm_title=Numero fattura,zmm_datatype=n,zmm_size=11,zmm_align=R,zmm_pos=10
+      *
+      *
+                   15 STA-NUMERO-FATTURA           PIC  9(06).
+      *$GEN zmm=on,zmm_title=Descrittivo fattura,zmm_datatype=x,zmm_size=11,zmm_align=L,zmm_pos=11
+      *
+      *
+                   15 STA-NUM-FATTURA  PIC  X(06).
+               10 STA-TIPO-ACQUISTO            PIC  X(01).
+                   88 STA-TIPO-ACQUISTO-88 VALUE IS "N" "O" "M". 
+                   88 STA-TIPO-ACQUISTO-88-N VALUE IS "N". 
+                   88 STA-TIPO-ACQUISTO-88-O VALUE IS "O". 
+                   88 STA-TIPO-ACQUISTO-88-M VALUE IS "M". 
+      *$GEN type=qty,unm=,zmm=on,zmm_title=Quantità,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=13
+      *
+               10 STA-QUANTITA     PIC  S9(12)V9(04)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=amount,val=,zmm=on,zmm_title=Importo,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=14
+      *
+      *
+               10 STA-IMPORTO      PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+               10 STA-FILLER       PIC  X(123).
+               10 STA-FILLER-RIS   PIC  X(40).

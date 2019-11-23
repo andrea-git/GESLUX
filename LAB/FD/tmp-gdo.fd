@@ -1,0 +1,15 @@
+      *(( XFD FILE = tmp-gdo ))
+       FD  tmp-gdo.
+       01 tgdo-rec.
+           05 tgdo-chiave.
+               10 tgdo-prog        PIC  9(10).
+           05 tgdo-dati.
+               10 tgdo-gdo         PIC  x(5).
+               10 tgdo-intestazione            PIC  x(30).
+               10 tgdo-cli         PIC  9(5).
+               10 tgdo-cli-ragsoc  PIC  x(100).
+               10 tgdo-des         PIC  9(5).
+               10 tgdo-des-localita            PIC  x(100).
+               10 tgdo-art         PIC  9(6).
+               10 tgdo-art-des     PIC  x(50).
+               10 tgdo-cod-art-cli PIC  x(15).

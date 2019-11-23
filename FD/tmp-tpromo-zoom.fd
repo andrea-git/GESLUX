@@ -1,0 +1,10 @@
+      *(( XFD FILE = tmp-progmag-zoom ))
+       FD  tmp-tpromo-zoom.
+       01 tmp-tpr-z-rec.
+           05 tmp-tpr-chiave.
+               10 tmp-tpr-z-codice PIC  9(15).
+           05 tmp-tpr-z-dati.
+               10 tmp-tpr-z-gdo    PIC  x(5).
+               10 tmp-tpr-z-descrizione        PIC  x(50).
+               10 tmp-tpr-z-ini-volantino      PIC  9(8).
+               10 tmp-tpr-z-fine-volantino     PIC  9(8).

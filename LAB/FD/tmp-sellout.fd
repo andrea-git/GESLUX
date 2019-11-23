@@ -1,0 +1,19 @@
+      *(( XFD FILE = tmp-sellout ))
+       FD  tmp-sellout.
+       01 tms-rec.
+           05 tms-chiave.
+               10 tms-articolo     PIC  9(6).
+           05 tms-dati.
+               10 tms-descr        PIC  x(50).
+               10 tms-imb          PIC  x(3).
+               10 tms-qta-t        PIC  9(6).
+               10 tms-qta-b        PIC  9(6).
+               10 tms-qta-r        PIC  s9(6).
+               10 tms-mesi
+                          OCCURS 6 TIMES.
+                   15 tms-qta-t-mese   PIC  9(6).
+                   15 tms-qta-b-mese   PIC  9(6).
+                   15 tms-qta-r-mese   PIC  s9(6).
+               10 tms-urgente      PIC  9.
+                   88 tms-si-urgente VALUE IS 1    WHEN SET TO FALSE  
+           0. 

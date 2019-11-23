@@ -1,0 +1,23 @@
+       FD  nordforn.
+       01 nof-rec.
+           05 nof-chiave.
+               10 nof-chiave-ordine.
+                   15 nof-anno         PIC  9(4).
+                   15 nof-num-ordine   PIC  9(8).
+               10 nof-num-nota     PIC  9(3).
+           05 nof-dati.
+               10 nof-nota         PIC  x(200).
+               10 nof-dati-comuni.
+                   15 nof-data-creazione           PIC  9(8).
+                   15 nof-ora-creazione            PIC  9(8).
+                   15 nof-utente-creazione         PIC  x(10).
+                   15 nof-data-ultima-modifica     PIC  9(8).
+                   15 nof-ora-ultima-modifica      PIC  9(8).
+                   15 nof-utente-ultima-modifica   PIC  x(10).
+               10 nof-vuoti.
+                   15 nof-num-vuoto-1  PIC  9(18).
+                   15 nof-num-vuoto-2  PIC  9(18).
+                   15 nof-num-vuoto-3  PIC  9(18).
+                   15 nof-alfa-vuoto-1 PIC  X(20).
+                   15 nof-alfa-vuoto-2 PIC  X(20).
+                   15 nof-alfa-vuoto-3 PIC  X(20).

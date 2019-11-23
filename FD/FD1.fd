@@ -1,0 +1,20 @@
+       FD  FD1.
+       01 gdo-rec.
+           05 gdo-chiave.
+               10 gdo-codice       PIC  x(5).
+           05 gdo-dati.
+               10 gdo-intestazione PIC  x(30).
+               10 gdo-comuni.
+                   15 gdo-data-creazione           PIC  9(8).
+                   15 gdo-ora-creazione            PIC  9(8).
+                   15 gdo-utente-creazione         PIC  x(10).
+                   15 gdo-data-ultima-modifica     PIC  9(8).
+                   15 gdo-ora-ultima-modifica      PIC  9(8).
+                   15 gdo-utente-ultima-modifica   PIC  x(10).
+               10 gdo-vuoti.
+                   15 gdo-num-vuoto-1  PIC  9(15).
+                   15 gdo-num-vuoto-2  PIC  9(15).
+                   15 gdo-num-vuoto-3  PIC  9(15).
+                   15 gdo-alfa-vuoto-1 PIC  x(20).
+                   15 gdo-alfa-vuoto-2 PIC  x(20).
+                   15 gdo-alfa-vuoto-3 PIC  x(20).

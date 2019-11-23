@@ -1,0 +1,26 @@
+       FD  batnott.
+       01 bat-rec.
+           05 bat-chiave.
+               10 bat-prg          PIC  9(3).
+           05 bat-dati.
+               10 bat-programma    PIC  x(30).
+               10 bat-abilitato    PIC  9.
+                   88 bat-abilitato-si VALUE IS 1. 
+                   88 bat-abilitato-no VALUE IS 0. 
+               10 bat-bloccante    PIC  9.
+                   88 bat-bloccante-si VALUE IS 1. 
+                   88 bat-bloccante-no VALUE IS 0. 
+      *(( XFD NAME = bat-bloccante_1 ))
+               10 bat-bloccabile   PIC  9.
+                   88 bat-bloccabile-si VALUE IS 1. 
+                   88 bat-bloccabile-no VALUE IS 0. 
+           05 bat-vuoti.
+               10 bat-num-vuoto-1  PIC  9(17).
+               10 bat-num-vuoto-2  PIC  9(18).
+               10 bat-num-vuoto-3  PIC  9(18).
+      *(( XFD NAME = bat-bloccante_1_1 ))
+               10 bat-invio-log    PIC  x.
+                   88 bat-invio-log-sempre VALUE IS "S". 
+                   88 bat-invio-log-no VALUE IS "N". 
+                   88 bat-invio-log-warning VALUE IS "E" " ". 
+               10 bat-alfa-vuoto   PIC  x(499).

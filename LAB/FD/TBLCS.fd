@@ -1,0 +1,27 @@
+      *
+      *Record codice statistico
+      *
+      * tplvar zmm_title=Tabella statistiche clienti
+      * tplvar zmm_ver=09.01.00
+      * tplvar zmm_class=anagraphic
+      * tplvar zmm_returnkey=tblcs-codice2
+      *
+      * ZoomFields seq:
+      *   01.tblcs-codice2
+      *   02.tblcs-descrizione1
+      *   03.tblcs-descrizione2
+      *
+      *$XFD  WHEN TBLCS-CODICE1="CS"  TABLENAME=TBLCS
+       FD  TBLCS.
+       01 RECORD-TBLCS.
+           05 TBLCS-CODICE.
+               10 TBLCS-CODICE1    PIC  X(02).
+      *$GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=20,zmm_align=L,zmm_pos=1,zmm_entity=tblcs
+      *
+               10 TBLCS-CODICE2    PIC  X(20).
+           05 RESTO-RECORD-TBLCS.
+      *$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=2
+               10 TBLCS-DESCR1     PIC  X(30).
+      *$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=3
+               10 TBLCS-DESCR2     PIC  X(30).
+               10 TBLCS-FILLER-RIS PIC  X(1298).

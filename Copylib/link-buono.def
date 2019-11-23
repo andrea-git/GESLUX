@@ -1,0 +1,5 @@
+       01  stbuono-linkage.
+         05 buono-chiave.
+            10 buono-anno         PIC  9(4).
+            10 buono-numero       PIC  9(8).
+         05 buono-path            pic x(256).

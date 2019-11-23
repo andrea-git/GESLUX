@@ -1,0 +1,23 @@
+       FD  G2.
+       01 G2-rec.
+           05 G2-chiave.
+               10 G2-codice        PIC  x.
+           05 G2-dati.
+               10 G2-codice-login  PIC  x(8).
+               10 G2-cod-fatture   PIC  x(3).
+               10 G2-cod-nc        PIC  x(3).
+               10 FILLER           PIC  x(2).
+           05 G2-dati-comuni.
+               10 G2-data-creazione            PIC  9(8).
+               10 G2-ora-creazione PIC  9(8).
+               10 G2-utente-creazione          PIC  X(10).
+               10 G2-data-ultima-modifica      PIC  9(8).
+               10 G2-ora-ultima-modifica       PIC  9(8).
+               10 G2-utente-ultima-modifica    PIC  X(10).
+           05 G2-vuoti.
+               10 G2-num-vuoto-1   PIC  9(15).
+               10 G2-num-vuoto-2   PIC  9(15).
+               10 G2-num-vuoto-3   PIC  9(15).
+               10 G2-alfa-vuoto-1  PIC  X(20).
+               10 G2-alfa-vuoto-2  PIC  X(20).
+               10 G2-alfa-vuoto-3  PIC  X(20).

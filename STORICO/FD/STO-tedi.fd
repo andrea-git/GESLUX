@@ -1,0 +1,23 @@
+      *(( XFD FILE = STO-tedi ))
+       FD  STO-tedi.
+       01 STO-tedi-rec.
+           05 STO-tedi-chiave.
+               10 STO-tedi-anno    PIC  9(4).
+               10 STO-tedi-mese    PIC  9(2).
+           05 STO-tedi-dati.
+               10 STO-tedi-imp-mag-tributi     PIC  9(12)v9(2).
+               10 STO-tedi-imp-tributi         PIC  x(5).
+               10 STO-tedi-dati-comuni.
+                   15 STO-tedi-data-creazione      PIC  9(8).
+                   15 STO-tedi-ora-creazione       PIC  9(8).
+                   15 STO-tedi-utente-creazione    PIC  X(10).
+                   15 STO-tedi-data-ultima-modifica            PIC  
+           9(8).
+                   15 STO-tedi-ora-ultima-modifica PIC  9(8).
+                   15 STO-tedi-utente-ultima-modifica          PIC  
+           X(10).
+               10 STO-tedi-vuoti.
+                   15 STO-tedi-num-vuoto-1         PIC  9(18).
+                   15 STO-tedi-num-vuoto-2         PIC  9(18).
+                   15 STO-tedi-num-vuoto-3         PIC  9(18).
+                   15 STO-tedi-alfa-vuoto          PIC  X(500).

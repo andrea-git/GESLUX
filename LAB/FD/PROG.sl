@@ -1,0 +1,8 @@
+       SELECT PROG
+           ASSIGN       TO  "program"
+           ORGANIZATION IS INDEXED
+           ACCESS MODE  IS DYNAMIC
+           FILE STATUS  IS STAT-PROG
+           RECORD KEY   IS PROG-KEY OF PROG
+           ALTERNATE RECORD KEY IS PROG-ID OF PROG
+           WITH DUPLICATES .

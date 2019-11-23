@@ -1,0 +1,84 @@
+      *(( XFD FILE = STO-mrordini ))
+       FD  STO-mrordini.
+       01 STO-mro-rec.
+           05 STO-mro-chiave.
+               10 STO-mro-chiave-testa.
+                   15 STO-mro-anno     PIC  9(4).
+                   15 STO-mro-numero   PIC  9(8).
+               10 STO-mro-riga     PIC  9(5).
+           05 STO-mro-dati.
+               10 STO-mro-cod-articolo         PIC  9(6).
+               10 STO-mro-qta      PIC  9(8).
+               10 STO-mro-qta-e    PIC  9(8).
+               10 STO-mro-qta-b    PIC  9(8).
+               10 STO-mro-qta-f    PIC  9(8).
+               10 STO-mro-qta-omaggi           PIC  9(8).
+               10 STO-mro-prz-unitario         PIC  9(9)v9(2).
+               10 STO-mro-imp-consumo          PIC  9(4)v9(2).
+               10 STO-mro-imp-cou-cobat        PIC  9(4)v9(2).
+               10 STO-mro-add-piombo           PIC  9(4)v9(2).
+               10 STO-mro-imponib-merce        PIC  9(9)v9(2).
+               10 STO-mro-perce-sconto         PIC  9(2)v9(2).
+               10 STO-mro-omaggio  PIC  X(1).
+                   88 STO-mro-si-omaggio VALUE IS "S". 
+                   88 STO-mro-no-omaggio VALUE IS "N". 
+               10 STO-mro-peso-utf PIC  9(5)v9(3).
+               10 STO-mro-peso-non-utf         PIC  9(5)v9(3).
+               10 STO-mro-num-colli            PIC  9(5).
+               10 STO-mro-cod-imballo          PIC  X(3).
+               10 STO-mro-des-imballo          PIC  X(50).
+               10 STO-mro-qta-imballi          PIC  9(4).
+               10 STO-mro-cod-art-cli          PIC  X(15).
+               10 STO-mro-cod-iva  PIC  x(3).
+               10 STO-mro-prz-commle           PIC  9(9)v9(2).
+               10 STO-mro-prg-chiave.
+                   15 STO-mro-prg-cod-articolo     PIC  9(6).
+                   15 STO-mro-prg-cod-magazzino    PIC  X(3).
+                   15 STO-mro-prg-tipo-imballo     PIC  X(3).
+                   15 STO-mro-prg-peso PIC  9(5)v9(3).
+               10 STO-mro-dati-blister.
+                   15 STO-mro-bli-codice           PIC  9(6).
+                   15 STO-mro-bli-qta  PIC  9(8).
+                   15 STO-mro-bli-perce            PIC  9(3)v99.
+                   15 STO-mro-blister  PIC  9.
+                       88 STO-mro-si-blister VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+               10 STO-mro-promo    PIC  9(15).
+               10 STO-mro-flag-cancellato      PIC  9.
+                   88 STO-mro-cancellato VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+               10 STO-mro-prz-promo            PIC  9.
+                   88 STO-mro-si-prz-promo VALUE IS 1. 
+                   88 STO-mro-no-prz-promo VALUE IS 0. 
+               10 STO-mro-progr    PIC  9(5).
+               10 STO-mro-evadi-dal            PIC  9(8).
+               10 STO-mro-dati-comuni.
+                   15 STO-mro-data-creazione       PIC  9(8).
+                   15 STO-mro-ora-creazione        PIC  9(8).
+                   15 STO-mro-utente-creazione     PIC  X(10).
+                   15 STO-mro-data-ultima-modifica PIC  9(8).
+                   15 STO-mro-ora-ultima-modifica  PIC  9(8).
+                   15 STO-mro-utente-ultima-modifica           PIC  
+           X(10).
+               10 STO-mro-vuoti.
+                   15 STO-mro-stato    PIC  9(2).
+                       88 STO-mro-registrato VALUE IS 1. 
+                       88 STO-mro-in-lavorazione VALUE IS 2. 
+                       88 STO-mro-sped-parz VALUE IS 3. 
+                       88 STO-mro-sped-tot VALUE IS 4. 
+      *****             88 mto-fatt-parz VALUE IS 5. 
+      *****             88 mto-fatt-tot VALUE IS 6. 
+      *
+                       88 STO-mro-chiuso VALUE IS 7. 
+                   15 STO-mro-prz-manuale          PIC  9.
+                       88 STO-mro-prz-manuale-si VALUE IS 1. 
+                       88 STO-mro-prz-manuale-no VALUE IS 0. 
+                   15 STO-mro-num-vuoto-1          PIC  9(15).
+                   15 STO-mro-num-vuoto-2          PIC  9(18).
+                   15 STO-mro-num-vuoto-3          PIC  9(18).
+                   15 ex-STO-mro-giang PIC  x.
+                       88 ex-STO-mro-attesa VALUE IS " ". 
+                       88 ex-STO-mro-tagliare-merce VALUE IS "M". 
+                       88 ex-STO-mro-tenere-saldo VALUE IS "T". 
+                       88 ex-STO-mro-sostituzione VALUE IS "S". 
+                   15 STO-mro-alfa-vuoto           PIC  X(499).

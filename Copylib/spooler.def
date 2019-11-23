@@ -1,0 +1,105 @@
+       01  SPOOLER-LINK.
+      *    nome del job di  stampa
+           03 SPL-NOME-JOB               PIC X(80).
+      *    titolo della message box
+           03 SPL-TITOLO-MSGBOX          pic x(60).
+      *    tipo di operazione 
+           03 SPL-OPE                    PIC 9(2).
+      *    setup della stanpante e apertura del file di stampa 
+              88 SPL-APERTURA            VALUE 1.
+      *    apertura del file di stampa per l'anteprima
+              88 SPL-APERTURA-ANTEPRIMA  VALUE 2.
+      *    la procedura stampa una riga di testo
+              88 SPL-STRINGA             VALUE 3.
+      *    la procedura stampa un'oggetto tipo riquadri, linee, ecc.
+              88 SPL-OGGETTO             VALUE 4.
+      *    la procedura stampa una bitmap     
+              88 SPL-BITMAP              VALUE 5.
+      *    produce il salto pagina 
+              88 SPL-SALTO-PAGINA        VALUE 97.
+      *    la procedura chiude il file di stampa ed avvia la stampa effettiva
+              88 SPL-CHIUSURA            VALUE 98.
+      *    viene valorizzata nella fase  di setup della stampante se 
+      *    l'utente ha annullato l'operazione
+              88 SPL-STA-ANNU            VALUE 99.
+      *    orientamento verticale o orizzontale del foglio
+           03 SPL-HORIENTATION           PIC 9.
+              88 SPL-VERTICAL            VALUE 0.
+              88 SPL-HORIZONTAL          VALUE 1.
+      *    coordinate di stampa
+           03 SPL-RIGA                   PIC 9(7)V99.
+
+           03 SPL-NUM-COPIE              PIC 9(7)V99 redefines SPL-RIGA.
+
+           03 SPL-COLONNA                PIC 9(7)V99.
+      *    contiene il testo da  stampare per spl-apertura
+           03 SPL-RIGA-STAMPA            PIC X(10000).
+      *    contiene l'allineamento del testo
+           03 SPL-ALLINEAMENTO           PIC X.
+      *    contiene l'handle del font del testo
+           03 SPL-HFONT                  USAGE HANDLE OF FONT.
+      *    contiene quantodevo  aggiungere alla riga se vado a capo
+           03 SPL-PASSO                  PIC 9V99.
+      *    contiene l'handle della bitmap
+           03 SPL-HBITMAP                USAGE HANDLE OF BITMAP.
+      *    contengono le dimensioni della bitmap                                              
+           03 SPL-BITMAP-HEIGHT          PIC 9(7)V99 COMP-5.
+           03 SPL-BITMAP-WIDTH           PIC 9(7)V99 COMP-5.
+      *    contiene il tipo di oggetto da stampare
+           03 SPL-TIPO-OGGETTO           PIC 9.
+              88 SPL-RETTANGOLO          VALUE 1.
+              88 SPL-RETTANGOLO-ROUND    VALUE 2.
+              88 SPL-LINEA               VALUE 3.
+      *    contine lo stile per gli oggetti
+           03 SPL-STILE                  PIC 99.
+              88  SPL-BRUSH-SOLID        VALUE 0. | Solid color (black)
+              88  SPL-BRUSH-NULL         VALUE 1. | No fill
+              88  SPL-BRUSH-BDIAGONAL    VALUE 2. | ///////
+              88  SPL-BRUSH-CROSS        VALUE 3. | +++++++
+              88  SPL-BRUSH-DIAGCROSS    VALUE 4. | xxxxxxx
+              88  SPL-BRUSH-FDIAGONAL    VALUE 5. | \\\\\\\
+              88  SPL-BRUSH-HORIZONTAL   VALUE 6. | -------
+              88  SPL-BRUSH-VERTICAL     VALUE 7. | |||||||
+              88  SPL-BRUSH-DKGRAY       VALUE 8. | Solid dark gray
+              88  SPL-BRUSH-GRAY         VALUE 9. | Solid gray
+              88  SPL-BRUSH-LTGRAY       VALUE 10.| Solid light gray
+      *    coordinate che identificano la fine degli oggetti.
+           03 SPL-RIGA-FINE              PIC 9(7)V99.
+           03 SPL-COLONNA-FINE           PIC 9(7)V99.
+      *
+           03 SPL-PEN                    PIC 9.
+              88  SPL-PEN-SOLID          VALUE 0. | Solid pen
+              88  SPL-PEN-DASH           VALUE 1. | ------- pen width must be 1
+              88  SPL-PEN-DOT            VALUE 2. | ....... pen width must be 1
+              88  SPL-PEN-DASHDOT        VALUE 3. | -.-.-.- pen width must be 1
+              88  SPL-PEN-DASHDOTDOT     VALUE 4. | -..-..- pen width must be 1
+              88  SPL-PEN-NULL           VALUE 5. | No pen
+              88  SPL-PEN-INSIDEFRAME    VALUE 6. | Solid pen, inside frame
+      *    colore della penna
+           03 SPL-PEN-COLOR              PIC 9(9) COMP-5.
+              88 SPL-ROSSO               VALUE 230.
+              88 SPL-BLU                 VALUE 13122560.
+              88 SPL-GIALLO              VALUE 13172735.
+              88 SPL-GIALLO-2            VALUE 65535.
+              88 SPL-VERDE               VALUE 65280.
+              88 SPL-AZZURRO             VALUE 16646110.
+              88 SPL-azzurro-2           VALUE 16480768.
+              88 SPL-NERO                VALUE 0.
+              88 SPL-GRIGIO              VALUE 12632256.
+              88 SPL-MARRONE             VALUE 16512.
+              88 SPL-VIOLA               VALUE 16711808.
+              88 SPL-ARANCIONE           VALUE 3305215.
+      *    largezza della penna
+           03 SPL-PEN-WITH               PIC 9(2).
+      *    margine della pagina
+           03 SPL-MARGINE-INF            PIC 9(3)V9(2).
+           03 SPL-MARGINE-DESTRO         PIC 9(3)V9(2).
+           03 SPL-MARGINE-SINISTRO       PIC 9(3)V9(2).
+      *    dimensioni della pagina
+           03 SPL-ALTEZZA                PIC 9(3)V9(2).
+           03 SPL-LARGHEZZA              PIC 9(3)V9(2).
+           03 parametri-stfatt-p.
+              05 spl-tipo-colonna        pic 99v9.
+      *    nome delle stampante da usare se devo fare la conv da crt
+           03 SPL-NOME-STAMPANTE         pic x(99).
+           03 spl-logo                   pic x.

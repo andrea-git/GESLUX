@@ -1,0 +1,26 @@
+      *(( XFD FILE = tmp-nforn-dest ))
+       FD  tmp-nforn-dest.
+       01 tmp-nfod-rec.
+           05 tmp-nfod-chiave.
+               10 tmp-nfod-chiave-dest.
+                   15 tmp-nfod-codice  PIC  9(5).
+                   15 tmp-nfod-dest    PIC  9(5).
+               10 tmp-nfod-prog    PIC  9(3).
+           05 tmp-nfod-dati.
+               10 tmp-nfod-nota    PIC  x(200).
+               10 tmp-nfod-dati-comuni.
+                   15 tmp-nfod-data-creazione      PIC  9(8).
+                   15 tmp-nfod-ora-creazione       PIC  9(8).
+                   15 tmp-nfod-utente-creazione    PIC  X(10).
+                   15 tmp-nfod-data-ultima-modifica            PIC  
+           9(8).
+                   15 tmp-nfod-ora-ultima-modifica PIC  9(8).
+                   15 tmp-nfod-utente-ultima-modifica          PIC  
+           X(10).
+               10 tmp-nfod-vuoti.
+                   15 tmp-nfod-num-vuoto-1         PIC  9(18).
+                   15 tmp-nfod-num-vuoto-2         PIC  9(18).
+                   15 tmp-nfod-num-vuoto-3         PIC  9(18).
+                   15 tmp-nfod-alfa-vuoto-1        PIC  X(20).
+                   15 tmp-nfod-alfa-vuoto-2        PIC  X(20).
+                   15 tmp-nfod-alfa-vuoto-3        PIC  X(20).

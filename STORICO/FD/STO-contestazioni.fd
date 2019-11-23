@@ -1,0 +1,73 @@
+      *(( XFD FILE = STO-contestazioni ))
+       FD  STO-contestazioni.
+       01 STO-cnt-rec.
+           05 STO-cnt-chiave.
+               10 STO-cnt-anno     PIC  9(4).
+               10 STO-cnt-numero   PIC  9(8).
+           05 STO-cnt-dati.
+               10 STO-cnt-data     PIC  9(8).
+               10 STO-cnt-cod-cli  PIC  9(5).
+               10 STO-cnt-prg-destino          PIC  9(5).
+               10 STO-cnt-tipo     PIC  x.
+                   88 STO-cnt-prezzo VALUE IS "P". 
+                   88 STO-cnt-merce VALUE IS "M". 
+                   88 STO-cnt-reso VALUE IS "R". 
+                   88 STO-cnt-add-corriere VALUE IS "C". 
+                   88 STO-cnt-altro VALUE IS "A". 
+               10 STO-cnt-importo  PIC  s9(9)v99.
+               10 STO-cnt-bolla-corriere.
+                   15 STO-cnt-richiesta            PIC  9.
+                       88 STO-cnt-si-richiesta VALUE IS 1. 
+                       88 STO-cnt-no-richiesta VALUE IS 0. 
+                   15 STO-cnt-data-rich            PIC  9(8).
+                   15 STO-cnt-corriere PIC  9(5).
+                   15 STO-cnt-data-ricev           PIC  9(8).
+               10 STO-cnt-nota-debito.
+                   15 STO-cnt-nota     PIC  9.
+                       88 STO-cnt-si-nota VALUE IS 1. 
+                       88 STO-cnt-no-nota VALUE IS 0. 
+      *(( XFD NAME = STO-cnt-numero_1 ))
+                   15 STO-cnt-numero-nota-debito   PIC  x(20).
+      *(( XFD NAME = STO-cnt-data_1 ))
+                   15 STO-cnt-data-nota-deb        PIC  9(8).
+                   15 STO-cnt-importo-nota         PIC  s9(9)v99.
+                   15 STO-cnt-num-reg-contab       PIC  9(10).
+               10 STO-cnt-appunti  PIC  x(500).
+               10 STO-cnt-note-collegate.
+                   15 STO-cnt-nota-anno-1          PIC  9(4).
+                   15 STO-cnt-nota-1   PIC  9(8).
+                   15 STO-cnt-nota-anno-2          PIC  9(4).
+                   15 STO-cnt-nota-2   PIC  9(8).
+                   15 STO-cnt-nota-anno-3          PIC  9(4).
+                   15 STO-cnt-nota-3   PIC  9(8).
+                   15 STO-cnt-nota-anno-4          PIC  9(4).
+                   15 STO-cnt-nota-4   PIC  9(8).
+                   15 STO-cnt-nota-anno-5          PIC  9(4).
+                   15 STO-cnt-nota-5   PIC  9(8).
+               10 STO-cnt-riferimenti.
+                   15 STO-cnt-fattura.
+                       20 STO-cnt-anno-fatt            PIC  9(4).
+                       20 STO-cnt-num-fatt PIC  9(8).
+                   15 STO-cnt-data-fatt            PIC  9(8).
+                   15 STO-cnt-nota-cr.
+                       20 STO-cnt-anno-nota            PIC  9(4).
+                       20 STO-cnt-num-nota PIC  9(8).
+                   15 STO-cnt-data-nota            PIC  9(8).
+               10 STO-cnt-stato    PIC  x.
+                   88 STO-cnt-aperta VALUE IS "A". 
+                   88 STO-cnt-chiusa VALUE IS "C". 
+               10 STO-cnt-dati-comuni.
+                   15 STO-cnt-data-creazione       PIC  9(8).
+                   15 STO-cnt-ora-creazione        PIC  9(8).
+                   15 STO-cnt-utente-creazione     PIC  X(10).
+                   15 STO-cnt-data-modifica        PIC  9(8).
+                   15 STO-cnt-ora-modifica         PIC  9(8).
+                   15 STO-cnt-utente-modifica      PIC  X(10).
+               10 STO-cnt-vuoti.
+                   15 STO-cnt-data-bolla-cli       PIC  9(8).
+                   15 STO-cnt-num-vuoto-1          PIC  9(7).
+                   15 STO-cnt-num-vuoto-2          PIC  9(15).
+                   15 STO-cnt-num-vuoto-3          PIC  9(15).
+                   15 STO-cnt-bolla    PIC  X(20).
+                   15 STO-cnt-alfa-vuoto-2         PIC  X(20).
+                   15 STO-cnt-alfa-vuoto-3         PIC  X(20).

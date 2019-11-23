@@ -1,0 +1,4450 @@
+; CaseMaker Totem Program Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[PROGRAM_CONTENT]
+INIT_PROGRAM=1
+ANSI_FORMAT=1
+MAIN_SCREEN_NAME=Form1
+BEFORE_PROGRAM=menu-Ev-Before-Program
+AFTER_PROGRAM=menu-Ev-After-Program
+BEFORE_INIT=ACCETTA-DATA-ORA
+PROGRAM_UNIQUE_CODE=TOTEM-7E27285050-540-321422060
+
+{{@DESCRIPTION:
+
+@}}
+
+[WORKING_STORAGE]
+m_nType=1
+m_strName=Working Storage
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionWK
+
+@}}
+[FDITEM0_WK]
+m_strName=Form1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_WK
+
+@}}
+[FDITEM1_WK]
+m_strName=sw-call
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1_WK
+
+@}}
+[FDITEM2_WK]
+m_strName=SW-PASS
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM2_WK
+
+@}}
+[FDITEM3_WK]
+m_strName=BitmapNumEsegui
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM3_WK
+
+@}}
+[FDITEM4_WK]
+m_strName=ef-data-buf
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
+m_strDefaultValue="99/99/9999"
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM4_WK
+
+@}}
+[FDITEM5_WK]
+m_strName=StatusCode
+m_nUsage=17
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM5_WK
+
+@}}
+[FDITEM6_WK]
+m_strName=path-completo-cliente
+m_strRawPic=x(200)
+m_strPic=x(200)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM6_WK
+
+@}}
+[FDITEM7_WK]
+m_strName=storico
+m_strRawPic=x
+m_strPic=x
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM7_WK
+
+@}}
+[FDITEM8_WK]
+m_strName=versione-geslux
+m_strRawPic=x
+m_strPic=x
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM8_WK
+
+@}}
+[FDITEM9_WK]
+m_strName=BitmapEseguiEnabled
+m_strDefaultValue=1
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM9_WK
+
+@}}
+[FDITEM10_WK]
+m_strName=BitmapEseguiDisabled
+m_strDefaultValue=2
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM10_WK
+
+@}}
+[FDITEM11_WK]
+m_strName=78-GestioneMenu
+m_strDefaultValue="Gestione Menù"
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM11_WK
+
+@}}
+[FDITEM12_WK]
+m_strName=78-GestioneUtenti
+m_strDefaultValue="Gestione Utenti"
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM12_WK
+
+@}}
+[FDITEM13_WK]
+m_strName=78-Utility
+m_strDefaultValue="Utility"
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM13_WK
+
+@}}
+[FDITEM14_WK]
+m_strName=STAT-PROG
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM14_WK
+
+@}}
+[FDITEM15_WK]
+m_strName=VALID-STAT-PROG
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM15_WK
+
+@}}
+[FDITEM16_WK]
+m_strName=TREE-WORKING
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM16_WK
+
+@}}
+[FDITEM17_WK]
+m_strName=W-LEVELNO
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM17_WK
+
+@}}
+[FDITEM18_WK]
+m_strName=STACK-DATA
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strRawSize=5
+m_nSize=5
+{{@DataItem_m_strDescriptionFDITEM18_WK
+
+@}}
+[FDITEM19_WK]
+m_strName=STACK-TREE-ID
+m_nUsage=14
+m_nItemLevel=10
+m_nSync=-1
+m_bOccurs=1
+m_bFixed=1
+m_strRawSize=6
+m_nSize=6
+{{@DataItem_m_strDescriptionFDITEM19_WK
+
+@}}
+[FDITEM20_WK]
+m_strName=STACK-LEVELNO
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM20_WK
+
+@}}
+[FDITEM21_WK]
+m_strName=STACK-MENU-LEVEL
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM21_WK
+
+@}}
+[FDITEM22_WK]
+m_strName=Small-Font
+m_nUsage=37
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM22_WK
+
+@}}
+[FDITEM23_WK]
+m_strName=cmd
+m_strRawPic=x(200)
+m_strPic=x(200)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM23_WK
+
+@}}
+[FDITEM24_WK]
+m_strName=Form1-St-1-Handle
+m_nUsage=51
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM24_WK
+
+@}}
+[FDITEM25_WK]
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM25_WK
+
+@}}
+[FDITEM26_WK]
+m_strName=CallProgramFlag
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM26_WK
+
+@}}
+[FDITEM27_WK]
+m_strName=Tree-bmp
+m_nUsage=45
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM27_WK
+
+@}}
+[FDITEM28_WK]
+m_strName=CurrentItem
+m_nUsage=14
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM28_WK
+
+@}}
+[FDITEM29_WK]
+m_strName=LAST-PROG-TYPE
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM29_WK
+
+@}}
+[FDITEM30_WK]
+m_strName=MENU-PAR-CALL
+m_strRawPic=9999
+m_strPic=9999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM30_WK
+
+@}}
+[FDITEM31_WK]
+m_strName=STATUS-user-pgm
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM31_WK
+
+@}}
+[FDITEM32_WK]
+m_strName=VALID-STATUS-user-pgm
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM32_WK
+
+@}}
+[FDITEM33_WK]
+m_strName=HIDDEN-TREE
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM33_WK
+
+@}}
+[FDITEM34_WK]
+m_strName=H-PROG-MENU-LEVEL
+m_strRawPic=9(10)
+m_strPic=9(10)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM34_WK
+
+@}}
+[FDITEM35_WK]
+m_strName=H-LIVELLO-ABIL
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM35_WK
+
+@}}
+[FDITEM36_WK]
+m_strName=Form1-Tb-2-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM36_WK
+
+@}}
+[FDITEM37_WK]
+m_strName=HND-WIN-ATTIVA
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM37_WK
+
+@}}
+[FDITEM38_WK]
+m_strName=VALORE
+m_strRawPic=X(500)
+m_strPic=X(500)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM38_WK
+
+@}}
+[FDITEM39_WK]
+m_strName=POINT-UTIL
+m_nUsage=14
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM39_WK
+
+@}}
+[FDITEM40_WK]
+m_strName=calendr3-bmp
+m_nUsage=45
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM40_WK
+
+@}}
+[FDITEM41_WK]
+m_strName=Variabili-About
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM41_WK
+
+@}}
+[FDITEM42_WK]
+m_strName=Win-Nome
+m_strRawPic=x(30)
+m_strPic=x(30)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM42_WK
+
+@}}
+[FDITEM43_WK]
+m_strName=Host-System
+m_strRawPic=x(30)
+m_strPic=x(30)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM43_WK
+
+@}}
+[FDITEM44_WK]
+m_strName=CALLP
+m_strRawPic=x(10)
+m_strPic=x(10)
+m_strDefaultValue=spaces
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM44_WK
+
+@}}
+[FDITEM45_WK]
+m_strName=FORM-CALL-HANDLE
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM45_WK
+
+@}}
+[FDITEM46_WK]
+m_strName=sfondo-jpg
+m_nUsage=45
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM46_WK
+
+@}}
+[FDITEM47_WK]
+m_strName=Form1-Mn-1-Handle
+m_nUsage=48
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM47_WK
+
+@}}
+[FDITEM48_WK]
+m_strName=OLD-PROG-R
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM48_WK
+
+@}}
+[FDITEM49_WK]
+m_strName=OLD-PROG-KEY
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM49_WK
+
+@}}
+[FDITEM50_WK]
+m_strName=OLD-PROG-MENU-LEVEL
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strPrompt=Menu Level
+{{@DataItem_m_strDescriptionFDITEM50_WK
+
+@}}
+[FDITEM51_WK]
+m_strName=OLD-PROG-MENU-LEVEL-G
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=OLD-PROG-MENU-LEVEL
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM51_WK
+
+@}}
+[FDITEM52_WK]
+m_strName=OLD-PROG-LEVEL
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bOccurs=1
+m_bFixed=1
+m_strRawSize=5
+m_nSize=5
+{{@DataItem_m_strDescriptionFDITEM52_WK
+
+@}}
+[FDITEM53_WK]
+m_strName=OLD-FILLER
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=OLD-PROG-MENU-LEVEL
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM53_WK
+
+@}}
+[FDITEM54_WK]
+m_strName=OLD-PROG-LEVEL-1
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strRawSize=5
+m_nSize=5
+{{@DataItem_m_strDescriptionFDITEM54_WK
+
+@}}
+[FDITEM55_WK]
+m_strName=OLD-PROG-LEVEL-2
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strRawSize=5
+m_nSize=5
+{{@DataItem_m_strDescriptionFDITEM55_WK
+
+@}}
+[FDITEM56_WK]
+m_strName=OLD-PROG-LEVEL-3
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strRawSize=5
+m_nSize=5
+{{@DataItem_m_strDescriptionFDITEM56_WK
+
+@}}
+[FDITEM57_WK]
+m_strName=OLD-PROG-LEVEL-4
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strRawSize=5
+m_nSize=5
+{{@DataItem_m_strDescriptionFDITEM57_WK
+
+@}}
+[FDITEM58_WK]
+m_strName=OLD-PROG-LEVEL-5
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strRawSize=5
+m_nSize=5
+{{@DataItem_m_strDescriptionFDITEM58_WK
+
+@}}
+[FDITEM59_WK]
+m_strName=OLD-PROG-ID
+m_strRawPic=X(15)
+m_strPic=X(15)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strPrompt=Program ID
+{{@DataItem_m_strDescriptionFDITEM59_WK
+
+@}}
+[FDITEM60_WK]
+m_strName=OLD-PROG-S-DESC
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strPrompt=Short Description
+{{@DataItem_m_strDescriptionFDITEM60_WK
+
+@}}
+[FDITEM61_WK]
+m_strName=OLD-PROG-TYPE
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strPrompt=Program Type
+{{@DataItem_m_strDescriptionFDITEM61_WK
+0:Program (Executable)
+1:Classification (Non-executable)
+
+@}}
+[FDITEM62_WK]
+m_strName=OLD-PROG-TYPE-2
+m_strRawPic=X(20)
+m_strPic=X(20)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM62_WK
+
+@}}
+[FDITEM63_WK]
+m_strName=OLD-PROG-T-ELABORAZIONE
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="Elaborazione"
+{{@DataItem_m_strDescriptionFDITEM63_WK
+
+@}}
+[FDITEM64_WK]
+m_strName=OLD-PROG-T-ARCHIVIO
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="Gestione archivio"
+{{@DataItem_m_strDescriptionFDITEM64_WK
+
+@}}
+[FDITEM65_WK]
+m_strName=OLD-PROG-T-STAMPA
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="Stampa"
+{{@DataItem_m_strDescriptionFDITEM65_WK
+
+@}}
+[FDITEM66_WK]
+m_strName=OLD-PROG-T-NON-ESEGU
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=SPACES
+{{@DataItem_m_strDescriptionFDITEM66_WK
+
+@}}
+[FDITEM67_WK]
+m_strName=OLD-PROG-L-DESC
+m_strRawPic=X(500)
+m_strPic=X(500)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strPrompt=Long Description
+{{@DataItem_m_strDescriptionFDITEM67_WK
+
+@}}
+[FDITEM68_WK]
+m_strName=OLD-PROG-FILLER
+m_strRawPic=X(100)
+m_strPic=X(100)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM68_WK
+
+@}}
+[FDITEM69_WK]
+m_strName=num-bitmap
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM69_WK
+
+@}}
+[FDITEM70_WK]
+m_strName=VALORE2
+m_strRawPic=X(500)
+m_strPic=X(500)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM70_WK
+
+@}}
+[FDITEM71_WK]
+m_strName=tool-menu-bmp
+m_nUsage=45
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM71_WK
+
+@}}
+[FDITEM72_WK]
+m_strName=Times-New-Roman9B
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM72_WK
+
+@}}
+[FDITEM73_WK]
+m_strName=Default-Font
+m_nUsage=38
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM73_WK
+
+@}}
+[FDITEM74_WK]
+m_strName=exit-73x21-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM74_WK
+
+@}}
+[FDITEM75_WK]
+m_strName=esci-73x21-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM75_WK
+
+@}}
+[FDITEM76_WK]
+m_strName=esegui-73x21-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM76_WK
+
+@}}
+[FDITEM77_WK]
+m_strName=e-esegui
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM77_WK
+
+@}}
+[FDITEM78_WK]
+m_strName=ESEGUI73X21-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM78_WK
+
+@}}
+[FDITEM79_WK]
+m_strName=TITOLO
+m_strRawPic=X(50)
+m_strPic=X(50)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM79_WK
+
+@}}
+[FDITEM80_WK]
+m_strName=titolo1
+m_strDefaultValue="Geslux - Menu Principale"
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM80_WK
+
+@}}
+[FDITEM81_WK]
+m_strName=Verdana12-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM81_WK
+
+@}}
+[FDITEM82_WK]
+m_strName=bottone-ok-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM82_WK
+
+@}}
+[FDITEM83_WK]
+m_strName=bottone-annulla-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM83_WK
+
+@}}
+[FDITEM84_WK]
+m_strName=como-offset
+m_strRawPic=9(2)
+m_strPic=9(2)
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM84_WK
+
+@}}
+[FDITEM85_WK]
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM85_WK
+
+@}}
+[FDITEM86_WK]
+m_strName=livello-0
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM86_WK
+
+@}}
+[FDITEM87_WK]
+m_strName=livello-1
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM87_WK
+
+@}}
+[FDITEM88_WK]
+m_strName=livello-2
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=2
+{{@DataItem_m_strDescriptionFDITEM88_WK
+
+@}}
+[FDITEM89_WK]
+m_strName=livello-3
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=3
+{{@DataItem_m_strDescriptionFDITEM89_WK
+
+@}}
+[FDITEM90_WK]
+m_strName=livello-4
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=4
+{{@DataItem_m_strDescriptionFDITEM90_WK
+
+@}}
+[FDITEM91_WK]
+m_strName=livello-5
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=5
+{{@DataItem_m_strDescriptionFDITEM91_WK
+
+@}}
+[FDITEM92_WK]
+m_strName=bottone_sfoglia-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM92_WK
+
+@}}
+[FDITEM93_WK]
+m_strName=STAT-PROG1
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM93_WK
+
+@}}
+[FDITEM94_WK]
+m_strName=VALID-STAT-PROG1
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM94_WK
+
+@}}
+[FDITEM95_WK]
+m_strName=lab-anno-buf
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM95_WK
+
+@}}
+[FDITEM96_WK]
+m_strName=v-messaggio
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM96_WK
+
+@}}
+[FDITEM97_WK]
+m_strName=messaggio
+m_strRawPic=X(500)
+m_strPic=X(500)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM97_WK
+
+@}}
+[FDITEM98_WK]
+m_strName=STATUS-useravv
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM98_WK
+
+@}}
+[FDITEM99_WK]
+m_strName=Valid-STATUS-useravv
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM99_WK
+
+@}}
+[FDITEM100_WK]
+m_strName=STATUS-ttipoavv
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM100_WK
+
+@}}
+[FDITEM101_WK]
+m_strName=Valid-STATUS-ttipoavv
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM101_WK
+
+@}}
+[FDITEM102_WK]
+m_strName=Verdana9B-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM102_WK
+
+@}}
+[FDITEM103_WK]
+m_strName=Verdana10B-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM103_WK
+
+@}}
+[FDITEM104_WK]
+m_strName=sx-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM104_WK
+
+@}}
+[FDITEM105_WK]
+m_strName=dx-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM105_WK
+
+@}}
+[FDITEM106_WK]
+m_strName=Verdana10-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM106_WK
+
+@}}
+[FDITEM107_WK]
+m_strName=WindowColor
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_strDefaultValue=65793
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM107_WK
+
+@}}
+[FDITEM108_WK]
+m_strName=STATUS-USER
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM108_WK
+
+@}}
+[FDITEM109_WK]
+m_strName=Valid-STATUS-USER
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM109_WK
+
+@}}
+[FDITEM110_WK]
+m_strName=STATUS-pgmmenu
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM110_WK
+
+@}}
+[FDITEM111_WK]
+m_strName=Valid-STATUS-pgmmenu
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM111_WK
+
+@}}
+
+
+[LINKAGE_SECTION]
+m_nType=1
+m_strName=Linkage Section
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionLK
+
+@}}
+[FDITEM0_LK]
+m_strName=link-user
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_LK
+
+@}}
+
+
+{{@SCREEN:
+*   Screen Painter Data
+*   Schema 6.0
+*
+BEGIN-SPDATA-6.1A
+
+GRAPHICAL-SCREEN
+
+Begin Screen Form1
+   PREFIX            = Form1
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = Form1
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = TRUE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 13
+   Cell Width        = 6
+   Color             = 65793
+   Color Variable    = WindowColor
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = DataSet1
+   Erase Screen      = FALSE
+   Font              = Small Font
+   Font Variable     = Small-Font
+   Handle Variable   = Form1-Handle
+   Height in Cells   = FALSE
+   Help ID           = 0
+   Label Offset      = 0
+   Lines             = 34,77
+   Link To Thread    = TRUE
+   Main Menu         = Form1-Mn-1-Handle
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = FALSE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 118,83
+   System Menu       = TRUE
+   Title Bar         = TRUE
+   Title Variable    = titolo1
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = FALSE
+   Window Type       = Independent
+   Wrap              = FALSE
+   Event Procedure   = Form1-Event-Proc
+   After Initdata    = Form1-AfterInitData
+   Begin Frame Form1-Fr-1
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 1,38
+      LOCK-CONTROL      = FALSE
+      LEVEL             = 5
+      (Name)            = Form1-Fr-1
+      3D Style          = Engraved
+      Alternate         = FALSE
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Font              = Default Font
+      Full Height       = TRUE
+      Height in Cells   = FALSE
+      Help ID           = 0
+      High Color        = 0
+      ID                = 2
+      Line              = 1,38
+      Lines             = 32,62
+      Lines Unit        = Default
+      Low Color         = 0
+      Size              = 54,00
+      Size Unit         = Default
+      Tab Order         = 1
+      Thickness         = Default
+      Title Position    = 0:Unaligned
+      Visible           = NONE
+      Width in Cells    = FALSE
+      Begin Tree-View Form1-Menu-Tree
+         SCREEN-COL        = 2,00
+         SCREEN-LINE       = 3,46
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Form1-Menu-Tree
+         Bitmap            = "..\RESOURCE\TREE.BMP"
+         Bitmap Handle     = TREE-BMP
+         Bitmap Width      = 20
+         Border            = No Box
+         Buttons           = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 1,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Verdana/10/C0/@Occidentale
+         Font Variable     = Verdana10-Occidentale
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 3
+         Line              = 3,08
+         Lines             = 30,23
+         Lines At Root     = TRUE
+         Lines in Pixels   = 393
+         Lines Unit        = Default
+         No Tab            = FALSE
+         Occurs            = 0
+         Show Lines        = TRUE
+         Show Selection Always = TRUE
+         Size              = 40,50
+         Size in Pixels    = 324
+         Size Unit         = Default
+         Tab Order         = 1
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Event Procedure   = Form1-Menu-Tree-Event-Proc
+         Msg-Tv-Dblclick   = Form1-Menu-Tree-Ev-Msg-Tv-Dblclick
+         Msg-Tv-Selchanging = Form1-Menu-Tree-Ev-Msg-Tv-Selchanging
+      End
+      Begin Bitmap Form1-Bt-2
+         SCREEN-COL        = 2,33
+         SCREEN-LINE       = 1,53
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Form1-Bt-2
+         Bitmap            = "..\RESOURCE\sx.bmp"
+         Bitmap End        = 0
+         Bitmap Handle     = sx-bmp
+         Bitmap Number     = 1
+         Bitmap Start      = 0
+         Bitmap Timer      = 0
+         Column            = 1,33
+         Copy Resource     = TRUE
+         Destroy Type      = Automatic
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 28
+         Line              = 1,15
+         Lines             = 1,85
+         Lines in Pixels   = 24
+         Lines Unit        = Default
+         Occurs            = 0
+         Size              = 53,17
+         Size in Pixels    = 319
+         Size Unit         = Default
+         Tab Order         = 2
+         Transparent Color = 0
+         Visible           = NONE
+         Width in Cells    = FALSE
+      End
+   End
+   Begin Frame Form1-Fr-2
+      SCREEN-COL        = 57,17
+      SCREEN-LINE       = 1,38
+      LOCK-CONTROL      = FALSE
+      LEVEL             = 5
+      (Name)            = Form1-Fr-2
+      3D Style          = Engraved
+      Alternate         = FALSE
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 57,17
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Font              = Default Font
+      Full Height       = TRUE
+      Height in Cells   = FALSE
+      Help ID           = 0
+      High Color        = 0
+      ID                = 5
+      Line              = 1,38
+      Lines             = 14,92
+      Lines Unit        = Default
+      Low Color         = 0
+      Size              = 61,50
+      Size Unit         = Default
+      Tab Order         = 2
+      Thickness         = Default
+      Title Position    = 0:Unaligned
+      Visible           = NONE
+      Width in Cells    = FALSE
+      Begin Data.Entry-Field ef-descr
+         SCREEN-COL        = 57,50
+         SCREEN-LINE       = 3,46
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = ef-descr
+         Auto              = FALSE
+         Auto Decimal      = 0
+         Border            = No Box
+         Case              = Mixed
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 513
+         Column            = 1,33
+         Csize             = 0
+         Csize Unit        = Default
+         Cursor            = 0
+         Cursor Col        = 0
+         Cursor Row        = 0
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Field Edited (Style) = 0
+         Field Edited Format = X(500)
+         Field Picture     = X(500)
+         Field Variable    = PROG-L-DESC of prog
+         File              = PROG
+         Font              = Verdana/10/C0/@Occidentale
+         Font Variable     = Verdana10-Occidentale
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 7
+         Justification     = Unaligned
+         Line              = 3,08
+         Lines             = 12,62
+         Lines Unit        = Default
+         Max Lines         = 0
+         Max Text          = 500
+         Max Value         = 0
+         Min Value         = 0
+         No AutoSel        = FALSE
+         No Tab            = TRUE
+         Notify Change     = FALSE
+         Numeric           = FALSE
+         Occurs            = 0
+         Read Only         = TRUE
+         Required          = FALSE
+         Secure            = FALSE
+         Size              = 60,50
+         Size Unit         = Default
+         Style             = Vscroll Bar
+         Tab Order         = 1
+         Use Return        = FALSE
+         Use Tab           = FALSE
+         Value Multiple    = FALSE
+         Visible           = NONE
+         Width in Cells    = TRUE
+         Before Procedure  = Form1-DaEf-1-BeforeProcedure
+         After Procedure   = Form1-DaEf-1-AfterProcedure
+      End
+      Begin Bitmap Form1-Bt-3
+         SCREEN-COL        = 57,50
+         SCREEN-LINE       = 1,53
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Form1-Bt-3
+         Bitmap            = "..\RESOURCE\DX.BMP"
+         Bitmap End        = 0
+         Bitmap Handle     = DX-BMP
+         Bitmap Number     = 1
+         Bitmap Start      = 0
+         Bitmap Timer      = 0
+         Column            = 1,33
+         Copy Resource     = TRUE
+         Destroy Type      = Automatic
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 29
+         Line              = 1,15
+         Lines             = 1,85
+         Lines in Pixels   = 24
+         Lines Unit        = Default
+         Occurs            = 0
+         Size              = 60,50
+         Size in Pixels    = 363
+         Size Unit         = Default
+         Tab Order         = 2
+         Transparent Color = 0
+         Visible           = NONE
+         Width in Cells    = FALSE
+      End
+   End
+   Begin Frame Form1-Fr-3
+      SCREEN-COL        = 57,17
+      SCREEN-LINE       = 16,23
+      LOCK-CONTROL      = FALSE
+      LEVEL             = 5
+      (Name)            = Form1-Fr-3
+      3D Style          = Engraved
+      Alternate         = FALSE
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 57,17
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Font              = Default Font
+      Full Height       = FALSE
+      Height in Cells   = FALSE
+      Help ID           = 0
+      High Color        = 0
+      ID                = 1
+      Line              = 16,23
+      Lines             = 17,77
+      Lines Unit        = Default
+      Low Color         = 0
+      Size              = 61,50
+      Size Unit         = Default
+      Tab Order         = 3
+      Thickness         = Default
+      Title Position    = 0:Unaligned
+      Visible           = NONE
+      Width in Cells    = FALSE
+      Begin Bitmap Form1-Bt-1
+         SCREEN-COL        = 57,50
+         SCREEN-LINE       = 16,92
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Form1-Bt-1
+         Bitmap            = "..\RESOURCE\SFONDO.JPG"
+         Bitmap End        = 0
+         Bitmap Handle     = SFONDO-JPG
+         Bitmap Number     = 1
+         Bitmap Start      = 0
+         Bitmap Timer      = 0
+         Column            = 1,33
+         Copy Resource     = TRUE
+         Destroy Type      = Automatic
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 10
+         Line              = 1,69
+         Lines             = 16,77
+         Lines in Pixels   = 218
+         Lines Unit        = Default
+         Occurs            = 0
+         Size              = 60,83
+         Size in Pixels    = 365
+         Size Unit         = Default
+         Tab Order         = 1
+         Transparent Color = 0
+         Visible           = NONE
+         Width in Cells    = FALSE
+      End
+      Begin Push-Button Form1-Pb-Run-Prg
+         SCREEN-COL        = 104,50
+         SCREEN-LINE       = 31,61
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Form1-Pb-Run-Prg
+         Bitmap            = "..\RESOURCE\ESEGUI_73X21.BMP"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = ESEGUI_73X21-BMP
+         Bitmap Number     = 2
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 48,33
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Enable Variable   = e-esegui
+         Exception Value   = 0
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 24
+         Line              = 16,38
+         Lines             = 1,65
+         Lines in Pixels   = 21
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = FALSE
+         Size              = 12,50
+         Size in Pixels    = 73
+         Size Unit         = Default
+         Style             = OK Button
+         Tab Order         = 2
+         Termination Value = 13
+         Title             = "E&segue il programma selezionato"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Additional Properties = "BITMAP-NUMBER BitmapNumEsegui"
+      End
+      Begin Push-Button Form1-Pb-2
+         SCREEN-COL        = 90,84
+         SCREEN-LINE       = 31,61
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Form1-Pb-2
+         Bitmap            = "..\RESOURCE\ESCI_73X21.BMP"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = ESCI_73X21-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 34,67
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 0
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 27
+         Line              = 16,38
+         Lines             = 1,65
+         Lines in Pixels   = 21
+         Lines Unit        = Default
+         No Auto Default   = TRUE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = FALSE
+         Size              = 12,50
+         Size in Pixels    = 73
+         Size Unit         = Default
+         Style             = Cancel Button
+         Tab Order         = 3
+         Termination Value = 0
+         Title             = "&Esce dall'applicativo"
+         Visible           = NONE
+         Width in Cells    = FALSE
+      End
+      Begin Data.Entry-Field ef-messaggio
+         SCREEN-COL        = 57,50
+         SCREEN-LINE       = 16,77
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = ef-messaggio
+         Auto              = FALSE
+         Auto Decimal      = 0
+         Border            = Boxed
+         Case              = Mixed
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 33249
+         Column            = 1,33
+         Csize             = 0
+         Csize Unit        = Default
+         Cursor            = 0
+         Cursor Col        = 0
+         Cursor Row        = 0
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Field Edited (Style) = 0
+         Field Edited Format = X(500)
+         Field Picture     = X(500)
+         Field Variable    = messaggio
+         File              = Working Storage
+         Font              = Verdana/10/B/C0/@Occidentale
+         Font Variable     = Verdana10B-Occidentale
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 30
+         Justification     = Unaligned
+         Line              = 1,54
+         Lines             = 14,15
+         Lines Unit        = Default
+         Max Lines         = 0
+         Max Text          = 30
+         Max Value         = 0
+         Min Value         = 0
+         No AutoSel        = FALSE
+         No Tab            = TRUE
+         Notify Change     = FALSE
+         Numeric           = FALSE
+         Occurs            = 0
+         Read Only         = FALSE
+         Required          = FALSE
+         Secure            = FALSE
+         Size              = 60,50
+         Size Unit         = Default
+         Style             = Vscroll Bar
+         Tab Order         = 4
+         Use Return        = FALSE
+         Use Tab           = FALSE
+         Value Multiple    = FALSE
+         Visible           = FALSE
+         Visible Variable  = v-messaggio
+         Width in Cells    = TRUE
+         Before Procedure  = Form1-DaEf-1-BeforeProcedure
+         After Procedure   = Form1-DaEf-1-AfterProcedure
+      End
+   End
+   Begin Menu Form1-Mn-1
+      SCREEN-COL        = 3,00
+      SCREEN-LINE       = 1,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-Mn-1
+      Handle Variable   = Form1-Mn-1-Handle
+      Style             = Static Menu
+      Tab Order         = 4
+      Begin Menuitem MI-File
+         (Name)            = MI-File
+         Checked           = FALSE
+         Enable            = NONE
+         Exception Value   = 1000
+         Label             = "&File"
+         Separator         = FALSE
+         Begin Menuitem MI-UscitaEsc
+            (Name)            = MI-UscitaEsc
+            Checked           = FALSE
+            Enable            = NONE
+            Exception Value   = 27
+            Label             = "Uscita (Esc)"
+            Separator         = FALSE
+         End
+      End
+      Begin Menuitem MI-Esegui
+         (Name)            = MI-Esegui
+         Checked           = FALSE
+         Enable            = NONE
+         Exception Value   = 1001
+         Label             = "E&segui"
+         Separator         = FALSE
+         Begin Menuitem MI-Blocconote
+            (Name)            = MI-Blocconote
+            Checked           = FALSE
+            Enable            = NONE
+            Exception Value   = 2
+            Label             = "&Blocco note (F2)"
+            Separator         = FALSE
+         End
+         Begin Menuitem MI-Calcolatrice
+            (Name)            = MI-Calcolatrice
+            Checked           = FALSE
+            Enable            = NONE
+            Exception Value   = 3
+            Label             = "&Calcolatrice (F3)"
+            Separator         = FALSE
+         End
+         Begin Menuitem MI-Word
+            (Name)            = MI-Word
+            Checked           = FALSE
+            Enable            = NONE
+            Exception Value   = 4
+            Label             = "&Word (F4)"
+            Separator         = FALSE
+         End
+         Begin Menuitem MI-Excel
+            (Name)            = MI-Excel
+            Checked           = FALSE
+            Enable            = NONE
+            Exception Value   = 5
+            Label             = "E&xcel (F5)"
+            Separator         = FALSE
+         End
+         Begin Menuitem MI-Dos
+            (Name)            = MI-Dos
+            Checked           = FALSE
+            Enable            = NONE
+            Exception Value   = 6
+            Label             = "&Dos (F6)"
+            Separator         = FALSE
+         End
+         Begin Menuitem MI-Internet
+            (Name)            = MI-Internet
+            Checked           = FALSE
+            Enable            = NONE
+            Exception Value   = 7
+            Label             = "&Internet (F7)"
+            Separator         = FALSE
+         End
+         Begin Menuitem MI-Posta
+            (Name)            = MI-Posta
+            Checked           = FALSE
+            Enable            = NONE
+            Exception Value   = 8
+            Label             = "&Posta (F8)"
+            Separator         = FALSE
+         End
+         Begin Menuitem SEPARATOR-1
+            (Name)            = SEPARATOR-1
+            Checked           = FALSE
+            Enable            = NONE
+            Exception Value   = 9
+            Label             = "C&alendario (F9)"
+            Separator         = TRUE
+         End
+         Begin Menuitem MI-Programma
+            (Name)            = MI-Programma
+            Checked           = FALSE
+            Enable            = NONE
+            Exception Value   = 10
+            Label             = "&Programma (F10)"
+            Separator         = FALSE
+         End
+      End
+      Begin Menuitem Form1-Mn-1-MI-1
+         (Name)            = Form1-Mn-1-MI-1
+         Checked           = FALSE
+         Enable            = NONE
+         Exception Value   = 1002
+         Label             = "&?"
+         Separator         = FALSE
+         Begin Menuitem MI-Informazionigenerali
+            (Name)            = MI-Informazionigenerali
+            Checked           = FALSE
+            Enable            = NONE
+            Exception Value   = 1
+            Label             = "&Informazioni generali (F1)"
+            Separator         = FALSE
+         End
+      End
+   End
+   Begin Toolbar Form1-Tb-2
+      SCREEN-LINE       = 1,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 1
+      (Name)            = Form1-Tb-2
+      Cell              = FALSE
+      Color             = 0
+      Font              = Default Font
+      Handle Variable   = Form1-Tb-2-Handle
+      Help ID           = 0
+      Lines             = 5,00
+      Tab Order         = 5
+      Begin Push-Button Form1-Pb-1
+         SCREEN-COL        = 1,00
+         SCREEN-LINE       = 1,23
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Form1-Pb-1
+         Bitmap            = "..\RESOURCE\TOOL-MENU.BMP"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = TOOL-MENU-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = FALSE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 1,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 27
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 11
+         Line              = 1,23
+         Lines             = 4,12
+         Lines in Pixels   = 53
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 9,50
+         Size in Pixels    = 55
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 1
+         Termination Value = 0
+         Title             = "&Uscita (Esc)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+      End
+      Begin Push-Button Form1-Pb-1a
+         SCREEN-COL        = 10,33
+         SCREEN-LINE       = 1,23
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Form1-Pb-1a
+         Bitmap            = "..\RESOURCE\TOOL-MENU.BMP"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = TOOL-MENU-BMP
+         Bitmap Number     = 2
+         Bitmap Square     = FALSE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 10,33
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 2
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 12
+         Line              = 1,23
+         Lines             = 4,12
+         Lines in Pixels   = 53
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 9,50
+         Size in Pixels    = 55
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 2
+         Termination Value = 0
+         Title             = "&Notepad (F2)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Link To           = Form1-Pb-1a-LinkTo
+      End
+      Begin Push-Button Form1-Pb-1b
+         SCREEN-COL        = 19,67
+         SCREEN-LINE       = 1,23
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Form1-Pb-1b
+         Bitmap            = "..\RESOURCE\TOOL-MENU.BMP"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = TOOL-MENU-BMP
+         Bitmap Number     = 3
+         Bitmap Square     = FALSE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 19,67
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 3
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 31
+         Line              = 1,23
+         Lines             = 4,12
+         Lines in Pixels   = 53
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 9,50
+         Size in Pixels    = 55
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 3
+         Termination Value = 0
+         Title             = "&Calcolatrice (F3)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Link To           = Form1-Pb-1b-LinkTo
+      End
+      Begin Push-Button Form1-Pb-1c
+         SCREEN-COL        = 28,83
+         SCREEN-LINE       = 1,23
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Form1-Pb-1c
+         Bitmap            = "..\RESOURCE\TOOL-MENU.BMP"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = TOOL-MENU-BMP
+         Bitmap Number     = 4
+         Bitmap Square     = FALSE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 28,83
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 4
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 32
+         Line              = 1,23
+         Lines             = 4,12
+         Lines in Pixels   = 53
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 9,50
+         Size in Pixels    = 55
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 4
+         Termination Value = 0
+         Title             = "&Word (F4)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Link To           = Form1-Pb-1c-LinkTo
+      End
+      Begin Push-Button Form1-Pb-1d
+         SCREEN-COL        = 38,00
+         SCREEN-LINE       = 1,23
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Form1-Pb-1d
+         Bitmap            = "..\RESOURCE\TOOL-MENU.BMP"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = TOOL-MENU-BMP
+         Bitmap Number     = 5
+         Bitmap Square     = FALSE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 38,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 5
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 33
+         Line              = 1,23
+         Lines             = 4,12
+         Lines in Pixels   = 53
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 9,50
+         Size in Pixels    = 55
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 5
+         Termination Value = 0
+         Title             = "&Excel (F5)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Link To           = Form1-Pb-1d-LinkTo
+      End
+      Begin Push-Button Form1-Pb-1e
+         SCREEN-COL        = 47,17
+         SCREEN-LINE       = 1,23
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Form1-Pb-1e
+         Bitmap            = "..\RESOURCE\TOOL-MENU.BMP"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = TOOL-MENU-BMP
+         Bitmap Number     = 6
+         Bitmap Square     = FALSE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 47,17
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 6
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 34
+         Line              = 1,23
+         Lines             = 4,12
+         Lines in Pixels   = 53
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 9,50
+         Size in Pixels    = 55
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 6
+         Termination Value = 0
+         Title             = "&Prompt di DOS (F6)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Link To           = Form1-Pb-1e-LinkTo
+      End
+      Begin Push-Button Form1-Pb-1f
+         SCREEN-COL        = 56,33
+         SCREEN-LINE       = 1,23
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Form1-Pb-1f
+         Bitmap            = "..\RESOURCE\TOOL-MENU.BMP"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = TOOL-MENU-BMP
+         Bitmap Number     = 7
+         Bitmap Square     = FALSE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 56,33
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 7
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 35
+         Line              = 1,23
+         Lines             = 4,12
+         Lines in Pixels   = 53
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 9,50
+         Size in Pixels    = 55
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 7
+         Termination Value = 0
+         Title             = "&Internet (F7)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Link To           = Form1-Pb-1f-LinkTo
+      End
+      Begin Push-Button Form1-Pb-1g
+         SCREEN-COL        = 65,50
+         SCREEN-LINE       = 1,23
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Form1-Pb-1g
+         Bitmap            = "..\RESOURCE\TOOL-MENU.BMP"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = TOOL-MENU-BMP
+         Bitmap Number     = 8
+         Bitmap Square     = FALSE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 65,50
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 8
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 36
+         Line              = 1,23
+         Lines             = 4,12
+         Lines in Pixels   = 53
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 9,50
+         Size in Pixels    = 55
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 8
+         Termination Value = 0
+         Title             = "P&osta (F8)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Link To           = Form1-Pb-1g-LinkTo
+      End
+      Begin Push-Button Form1-Pb-1h
+         SCREEN-COL        = 74,50
+         SCREEN-LINE       = 1,23
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Form1-Pb-1h
+         Bitmap            = "..\RESOURCE\TOOL-MENU.BMP"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = TOOL-MENU-BMP
+         Bitmap Number     = 9
+         Bitmap Square     = FALSE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 74,50
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 9
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 37
+         Line              = 1,23
+         Lines             = 4,12
+         Lines in Pixels   = 53
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 9,50
+         Size in Pixels    = 55
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 9
+         Termination Value = 0
+         Title             = "C&alendario (F9)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Link To           = Form1-Pb-1h-LinkTo
+      End
+      Begin Push-Button Form1-Pb-1i
+         SCREEN-COL        = 83,67
+         SCREEN-LINE       = 1,23
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Form1-Pb-1i
+         Bitmap            = "..\RESOURCE\TOOL-MENU.BMP"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = TOOL-MENU-BMP
+         Bitmap Number     = 10
+         Bitmap Square     = FALSE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 83,67
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 10
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 38
+         Line              = 1,23
+         Lines             = 4,12
+         Lines in Pixels   = 53
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 9,50
+         Size in Pixels    = 55
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 10
+         Termination Value = 0
+         Title             = "&Lancia (F10)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Link To           = Form1-Pb-1i-LinkTo
+      End
+      Begin Push-Button Form1-Pb-1j
+         SCREEN-COL        = 92,83
+         SCREEN-LINE       = 1,23
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Form1-Pb-1j
+         Bitmap            = "..\RESOURCE\TOOL-MENU.BMP"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = TOOL-MENU-BMP
+         Bitmap Number     = 11
+         Bitmap Square     = FALSE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 92,83
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 1
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 39
+         Line              = 1,23
+         Lines             = 4,12
+         Lines in Pixels   = 53
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 9,50
+         Size in Pixels    = 55
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 11
+         Termination Value = 0
+         Title             = "In&fo (F1)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Link To           = Form1-Pb-1j-LinkTo
+      End
+   End
+   Begin Status-Bar Form1-St-1
+      LOCK-CONTROL      = FALSE
+      LEVEL             = 1
+      (Name)            = Form1-St-1
+      Font              = Verdana/10/C0/@Occidentale
+      Font Variable     = Verdana10-Occidentale
+      Grip              = TRUE
+      Handle Variable   = Form1-St-1-Handle
+      PANEL-WIDTHS      = ( 60, 21, 23, 999 )
+      PANEL-STYLE       = ( 1, 1, 1, 1 )
+      PANEL-TEXT        = ( , "PROG-ID", , "99/99/9999" )
+      PANEL-VARIABLE    = ( PROG-S-DESC OF Prog, PROG-ID OF Prog, , ef-data-buf )
+      PANEL-PICTURE     = ( "X(30)", "X(10)", "X(30)", "99/99/9999" )
+      Tab Order         = 6
+   End
+End
+
+Begin Screen Form-CALL
+   PREFIX            = Form2
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = Form-CALL
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = TRUE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = TRUE
+   Cell Height       = 10
+   Cell Width        = 10
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = FALSE
+   Font              = Verdana/12/C0/@Occidentale
+   Font Variable     = Verdana12-Occidentale
+   Handle Variable   = FORM-CALL-HANDLE
+   Height in Cells   = FALSE
+   Help ID           = 0
+   Label Offset      = 23
+   Lines             = 11,20
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = TRUE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 35,20
+   System Menu       = TRUE
+   Title             = "Chiamata veloce"
+   Title Bar         = TRUE
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = FALSE
+   Window Type       = Independent
+   Wrap              = FALSE
+   Event Procedure   = Form2-Event-Proc
+   Begin Entry-Field EF-CALL
+      SCREEN-COL        = 14,00
+      SCREEN-LINE       = 3,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-CALL
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Lower
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 14,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 2
+      Justification     = Unaligned
+      Line              = 3,00
+      Lines             = 2,30
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 15
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 20,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 1
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = FALSE
+      Before Procedure  = EF-CALL-BeforeProcedure
+      After Procedure   = EF-CALL-AfterProcedure
+   End
+   Begin Push-Button pb-ok
+      SCREEN-COL        = 4,00
+      SCREEN-LINE       = 7,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-ok
+      Bitmap            = "..\RESOURCE\BOTTONE-OK.BMP"
+      Bitmap Frame      = FALSE
+      Bitmap Handle     = BOTTONE-OK-BMP
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 4,00
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 13
+      Flat              = TRUE
+      Font              = Default Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 5
+      Line              = 7,00
+      Lines             = 3,70
+      Lines in Pixels   = 30
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 8,10
+      Size in Pixels    = 73
+      Size Unit         = Default
+      Style             = OK Button
+      Tab Order         = 2
+      Termination Value = 0
+      Title             = "&OK"
+      Visible           = NONE
+      Width in Cells    = FALSE
+      Before Procedure  = pb-ok-BeforeProcedure
+      After Procedure   = pb-ok-AfterProcedure
+      Link To           = Form2-Pb-1a-LinkTo
+   End
+   Begin CsCtrl.Custom1 Label Form2-Custom1-1
+      CUST-SYMBOL       = Custom1
+      CUST-MODIFYFLAG   = 000000000000000000000000000000001000000000000000000
+      SCREEN-COL        = 1,80
+      SCREEN-LINE       = 1,50
+      LOCK-CONTROL      = FALSE
+      LEVEL             = 5
+      (Name)            = Form2-Custom1-1
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,80
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Font Variable     = Default-Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 7
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 1,50
+      Lines             = 1,00
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 1,40
+      Size Unit         = Default
+      Tab Order         = 3
+      Title             = "CUSTOM CONTROL"
+      Transparent       = TRUE
+      Visible           = NONE
+      Visible Variable  = v-custom
+      Width in Cells    = FALSE
+   End
+   Begin Label Form2-La-1
+      SCREEN-COL        = 3,00
+      SCREEN-LINE       = 3,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form2-La-1
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 3,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 3
+      Justification     = Unaligned
+      Label Offset      = 0
+      Line              = 3,00
+      Lines             = 2,30
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 10,00
+      Size Unit         = Default
+      Tab Order         = 4
+      Title             = "Programma:"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = FALSE
+   End
+   Begin Push-Button pb-cancel
+      SCREEN-COL        = 14,50
+      SCREEN-LINE       = 7,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-cancel
+      Bitmap            = "..\RESOURCE\BOTTONE-ANNULLA.BMP"
+      Bitmap Frame      = FALSE
+      Bitmap Handle     = BOTTONE-ANNULLA-BMP
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 14,50
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 27
+      Flat              = TRUE
+      Font              = Default Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 4
+      Line              = 7,00
+      Lines             = 3,70
+      Lines in Pixels   = 30
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 8,10
+      Size in Pixels    = 73
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 5
+      Termination Value = 0
+      Title             = "&Annulla"
+      Visible           = NONE
+      Width in Cells    = FALSE
+      Before Procedure  = pb-cancel-BeforeProcedure
+      After Procedure   = pb-cancel-AfterProcedure
+   End
+   Begin Push-Button pb-sfoglia
+      SCREEN-COL        = 25,00
+      SCREEN-LINE       = 7,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-sfoglia
+      Bitmap            = "..\RESOURCE\BOTTONE_SFOGLIA.BMP"
+      Bitmap Frame      = FALSE
+      Bitmap Handle     = BOTTONE_SFOGLIA-BMP
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 25,00
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 1000
+      Flat              = TRUE
+      Font              = Default Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 6
+      Line              = 7,00
+      Lines             = 3,70
+      Lines in Pixels   = 30
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 8,10
+      Size in Pixels    = 73
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 6
+      Termination Value = 0
+      Title             = "&Sfoglia"
+      Visible           = NONE
+      Width in Cells    = FALSE
+      Before Procedure  = pb-sfoglia-BeforeProcedure
+      After Procedure   = pb-sfoglia-AfterProcedure
+      Link To           = Form2-Pb-2-LinkTo
+   End
+End
+
+END-SPDATA
+
+@}}
+
+{{@REPORT:
+*   Report Writer Data
+*   Schema 6.0
+*
+BEGIN-RWDATA-6.0A
+
+END-RWDATA
+
+@}}
+
+{{@EMBEDDING_CODE:
+BEGIN-DATA
+   BASETYPE          = 13
+   NODESTYLE         = 13
+   PARAGRAPH         = Other Working
+BEGIN-TEXT
+           copy "common-linkage.def".
+           copy "winvers.def".
+           copy "link-gpgmexe.def".
+
+       78  78-delimitatore   value 
+              "------------------------------------------------".
+
+       01                       pic 9.
+           88 primo-passaggio   value 1 false zero.
+
+       77  como-utente pic x(10).
+
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 6
+   NODESTYLE         = 7
+   PARAGRAPH         = DeletedCode
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterEndAccept
+BEGIN-TEXT
+           if Enter-Pushed 
+              move 0 to sw-call
+              set CallProgramFlag to true
+           end-if
+           if CallProgramFlag
+              set CallProgramFlag to false
+              perform CALL-PROGRAM
+           end-if
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 4
+   PARENT            = DataSet1
+   ACTOBJ            = PROG
+   ENTRYPOINT        = AfterRead
+BEGIN-TEXT
+      * MI SERVE PER RIPRISTINARE LA SITUAZIONE DEL TREE-WIEW
+           MOVE PROG-R OF PROG TO OLD-PROG-R.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 4
+   PARENT            = DataSet1
+   ACTOBJ            = PROG
+   ENTRYPOINT        = AfterReadNext
+BEGIN-TEXT
+      * MI SERVE PER RIPRISTINARE LA SITUAZIONE DEL TREE-WIEW
+           MOVE PROG-R OF PROG TO OLD-PROG-R.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 4
+   PARENT            = DataSet1
+   ACTOBJ            = PROG
+   ENTRYPOINT        = AfterReadPrev
+BEGIN-TEXT
+      * MI SERVE PER RIPRISTINARE LA SITUAZIONE DEL TREE-WIEW
+           MOVE PROG-R OF PROG TO OLD-PROG-R.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 4
+   PARENT            = DataSet1
+   ACTOBJ            = PROG
+   ENTRYPOINT        = AfterReadRecord
+BEGIN-TEXT
+      * MI SERVE PER RIPRISTINARE LA SITUAZIONE DEL TREE-WIEW
+           MOVE PROG-R OF PROG TO OLD-PROG-R.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 0
+   PARENT            = menu
+   ACTOBJ            = menu
+   ENTRYPOINT        = BeforeDeclarative
+BEGIN-TEXT
+      ***---
+       USER-PGM-ERR SECTION.
+           use after error procedure on USER-PGM.
+           set tutto-ok  to true.
+           evaluate status-USER-PGM
+           when "35"
+                display message "File [USER-PGM] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [USER-PGM] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[USER-PGM] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           end-evaluate.
+ 
+      ***---
+       PROG-ERR SECTION.
+           use after error procedure on PROG.
+           set tutto-ok  to true.
+           evaluate stat-prog
+           when "35"
+                display message "File [PROG] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [PROG] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[PROG] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           end-evaluate.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1
+   ACTOBJ            = Form1
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+           modify Form1-St-1-Handle, panel-index = 3
+                                     panel-style = 2
+                                     panel-text  = lab-anno-buf.
+
+           accept como-data from century-date.
+           perform DATE-TO-SCREEN.
+           move como-data to ef-data-buf.
+
+           modify Form1-St-1-Handle, panel-index = 4
+                                     panel-style = 1
+                                     panel-text  = ef-data-buf.
+
+           perform VISUALIZZA-MESSAGGI.
+
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CALL-PROGRAM
+BEGIN-TEXT
+      *    ANDREA: CHIAMATA AL PROGRAMMA DI GESTIONE UTENTI E MENU
+           evaluate valore 
+           when 78-GestioneUtenti
+                set lk-bl-lettura to true
+                move "Gest-Pwd"   to prog-id OF PROG
+                perform I-O-BLOCCO
+                if not lk-bl-in-uso
+                   set lk-bl-scrittura to true
+                   initialize lk-hnd-win
+                   move "Gest-Pwd"   to prog-id OF PROG
+                   perform I-O-BLOCCO
+                   if sw-call = 1           
+                      perform FORM-CALL-EXIT
+                      move 0 to sw-call
+                   end-if
+                   move 3 to h-livello-abil
+                   perform CHIAMATA-EFFETTIVA
+      *             call thread "Gest-Pwd" using lk-blockpgm
+      *                                          user-cod
+      *                                          h-livello-abil
+      *                  on overflow
+      *                  display message "Il programma non esiste!"
+      *                            title titolo1
+      *                  set lk-bl-cancellazione to true
+      *                  perform I-O-BLOCCO
+      *             end-call
+      *             cancel "Gest-Pwd"
+                else 
+                   move lk-hnd-win    to hnd-win-attiva
+                   set i-o window     to hnd-win-attiva
+                end-if
+           when 78-GestioneMenu
+                 set lk-bl-lettura to true
+                 move "gestmenu"   to prog-id OF PROG
+                 perform I-O-BLOCCO
+                 if not lk-bl-in-uso
+                    set lk-bl-scrittura to true
+                    initialize lk-hnd-win
+                    move "gestmenu"   to prog-id OF PROG
+                    perform I-O-BLOCCO
+                    if sw-call = 1           
+                       perform FORM-CALL-EXIT
+                       move 0 to sw-call
+                    end-if
+                    perform CHIAMATA-EFFETTIVA
+      *              call thread "gestmenu" using lk-blockpgm 
+      *                                           user-cod
+      *                                           h-livello-abil
+      *                   on overflow
+      *                   display message "Il programma non esiste!"
+      *                             title titolo1
+      *                   set lk-bl-cancellazione to true
+      *                   perform I-O-BLOCCO
+      *              end-call
+      *              cancel "gestmenu"
+                 else 
+                    move lk-hnd-win    to hnd-win-attiva
+                    set i-o window     to hnd-win-attiva
+                 end-if
+           when other
+                if prog-type OF PROG = 1 and h-livello-abil not = 0
+                   if prog-acuthin-si of prog and versione-geslux = "V"
+                      move spaces to user-path-acuthin
+                      move link-user to user-cod
+                      read user invalid continue end-read
+                      if user-path-acuthin not = spaces
+                         inspect user-path-acuthin replacing trailing spaces by low-value
+                         inspect prog-id of prog   replacing trailing spaces by low-value
+                         inspect link-user         replacing trailing spaces by low-value
+                         initialize cmd
+                         string user-path-acuthin delimited low-value
+                                " "               delimited size
+                                prog-id of prog   delimited low-value
+                                " "               delimited size
+                                link-user         delimited low-value
+                                " "               delimited size
+                                h-livello-abil    delimited size
+                           into cmd
+                         end-string
+                         call "C$SYSTEM" using cmd, 129                    
+                         inspect user-path-acuthin replacing trailing low-value by spaces
+                         inspect prog-id of prog   replacing trailing low-value by spaces
+                         inspect link-user         replacing trailing low-value by spaces
+                      end-if                                         
+                   else
+                      set lk-bl-lettura to true
+                      perform I-O-BLOCCO
+                      if not lk-bl-in-uso
+                         set lk-bl-scrittura to true
+                         initialize lk-hnd-win
+                         perform I-O-BLOCCO
+                         if sw-call = 1
+                            perform FORM-CALL-EXIT
+                            move 0 to sw-call
+                         end-if
+                         perform CHIAMATA-EFFETTIVA
+                         |Questa istruzione causava l'errore dell'errata
+                         |chiamata dei pgm. Non serve a nulla risettare 
+                         |hidden-data con una modify in quanto già settata
+      *                   modify form1-menu-tree(event-data-2),
+      *                          hidden-data = hidden-tree
+                      else
+                         move lk-hnd-win    to hnd-win-attiva
+                         set i-o window     to hnd-win-attiva
+                      end-if
+                   end-if
+                else
+                   display message box "Funzione non abilitata!"
+                           title titolo1
+                end-if
+           end-evaluate.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CARICA-TREE
+BEGIN-TEXT
+           set CallProgramFlag to false.
+
+           MODIFY Form1-Menu-Tree, RESET-LIST = 1.
+           MOVE  "0000000000" TO PROG-MENU-LEVEL OF PROG
+           START PROG KEY NOT < PROG-KEY OF PROG
+             NOT INVALID
+                 READ PROG NEXT WITH NO LOCK
+                 MOVE 1 TO STACK-LEVELNO
+                 MOVE PROG-MENU-LEVEL OF PROG TO HIDDEN-TREE
+                 MODIFY Form1-Menu-Tree,
+                        ITEM-TO-ADD = PROG-S-DESC OF PROG,
+                        GIVING STACK-TREE-ID(STACK-LEVELNO),
+                        HIDDEN-DATA = HIDDEN-TREE
+                        ensure-visible STACK-TREE-ID(STACK-LEVELNO)
+      *    Davide inizio 03/10/2001
+      *    la move serve a volorizzare il primo Item del TreeView
+      *    Fissato il problema del Crash su Windows95
+                 MOVE STACK-TREE-ID(STACK-LEVELNO) TO CurrentItem
+      *    Davide fine
+           END-START
+           PERFORM UNTIL  NOT VALID-STAT-PROG
+              PERFORM VARYING W-LEVELNO FROM 1 BY 1 
+                      UNTIL   PROG-LEVEL OF PROG (W-LEVELNO) = 0
+                              OR W-LEVELNO > 5
+                 CONTINUE
+              END-PERFORM
+              IF W-LEVELNO > 01  
+                 IF W-LEVELNO NOT = STACK-LEVELNO
+                    MOVE W-LEVELNO          TO STACK-LEVELNO      
+                    MODIFY Form1-Menu-Tree, 
+                           PARENT STACK-TREE-ID(STACK-LEVELNO - 1)
+                 END-IF 
+      *questo controllo serve per far aumentare il livello solo se viene
+      *viene  aggiunta una cartella perchè se un utente non è abilitato all'uso
+      *di un programma  il livello non deve aumentare
+                 IF PROG-TYPE OF PROG = 0
+                    |Le cartelle, se disabilitate, NON devono essere visualizzate
+                    move prog-id of prog to up-prog-id
+                    move link-user       to up-user-id
+                    read user-pgm
+                         invalid move 0 to sw-pass
+                     not invalid
+                         if up-livello-abil = 0
+                            move 0 to sw-pass
+                         else
+                            perform CONTROLLA-FIGLI
+                            |MOVE 1 TO SW-PASS
+                            modify form1-menu-tree, 
+                              item-to-add prog-s-desc of prog
+                                   giving stack-tree-id(stack-levelno)
+                         end-if
+                    end-read
+                    |||||
+                 ELSE
+                    MOVE PROG-ID OF PROG TO UP-PROG-ID
+                    MOVE link-user       TO UP-USER-ID
+                    READ user-pgm
+                      INVALID 
+      *questo è uno swith che serve per sapere se l'utente è abilitato all'uso del programma
+                         MOVE 0 TO SW-PASS
+                      NOT INVALID
+                           IF UP-LIVELLO-ABIL = ZERO
+                              MOVE 0 TO SW-PASS
+                           ELSE                
+                              PERFORM VAL-NUM-BITMAP
+                              MOVE 1 TO SW-PASS
+                              MODIFY Form1-Menu-Tree, 
+                                    ITEM-TO-ADD = PROG-S-DESC OF PROG
+                                    GIVING STACK-TREE-ID(STACK-LEVELNO)
+                              modify Form1-Menu-Tree
+                                     (STACK-TREE-ID(STACK-LEVELNO))
+      *luciano
+                              bitmap-number = num-bitmap
+                              MOVE UP-LIVELLO-ABIL TO H-LIVELLO-ABIL
+                           END-IF
+                    END-READ 
+                 end-if
+                 IF SW-PASS = 1
+                    if STACK-LEVELNO = 2
+                       MODIFY Form1-Menu-Tree, 
+                              ensure-visible STACK-TREE-ID(STACK-LEVELNO)
+                    end-if                 
+                    MOVE PROG-MENU-LEVEL OF PROG TO H-PROG-MENU-LEVEL
+                    MODIFY Form1-Menu-Tree, 
+                         HIDDEN-DATA = HIDDEN-TREE                 
+                 END-IF
+              END-IF 
+              READ PROG NEXT WITH NO LOCK
+           END-PERFORM      
+      *->->-> ANDREA : AGGIUNTA DELLA VOCE "UTILITY" COME ULTIMA NEL TREE-VIEW
+      *->->-> CONTENENTE LA GESTIONE DEL MENU' E DELLE PASSWORD.  
+           MODIFY Form1-Menu-Tree, 
+                  PARENT = STACK-TREE-ID(1)
+                  ITEM-TO-ADD = "Utility",
+                  GIVING POINT-UTIL, 
+      *luciano
+                  BITMAP-NUMBER = 4
+                  PARENT POINT-UTIL
+                  ITEM-TO-ADD = "Gestione Utenti"
+      *->->-> ANDREA: AGGIUNTA DELLA VOCE "GESTIONE MENù" SOLO PER L'UTENTE "BOSS".
+      *luciano
+                  BITMAP-NUMBER = 3
+           inspect user-codi replacing trailing low-value by spaces.
+           IF link-user = "BOSS" THEN
+              MODIFY FORM1-MENU-TREE,
+                     PARENT POINT-UTIL
+                     ITEM-TO-ADD = "Gestione Menù"
+      *luciano
+                     BITMAP-NUMBER = 3
+           END-IF.
+      *->->-> FINE MODIFICA.
+                   
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CONTROLLA-FIGLI
+BEGIN-TEXT
+           move zero to SW-PASS.
+           move PROG-R of prog  to PROG-R of prog1.
+
+           set livello-5  to true
+           if prog-level-5  of prog1 = zero
+              set livello-4  to true
+           end-if
+
+           if prog-level-4  of prog1 = zero
+              set livello-3  to true
+           end-if
+
+           if prog-level-3 of prog1 = zero
+              set livello-2  to true
+           end-if
+
+           if prog-level-2 of prog1 = zero
+              set livello-1  to true
+           end-if
+           evaluate true
+           when livello-1
+                move 2    to como-offset
+           when livello-2
+                move 4    to como-offset
+           when livello-3
+                move 6    to como-offset
+           when livello-4
+                move 8    to como-offset
+           when livello-5
+                move 10   to como-offset
+           end-evaluate
+
+           read PROG1
+           perform until not valid-stat-prog
+              read prog1 next with no lock
+                 at end
+                    exit perform
+              end-read
+              if prog-key of prog1 (1:como-offset)= prog-key of prog 
+           (1:como-offset)
+                 move prog-id of prog1 to up-prog-id
+                 move link-user        to up-user-id
+                 read user-pgm
+                 if up-livello-abil not = zero
+                    move 1 to sw-pass
+                    exit perform
+                 end-if
+              else
+                 exit perform
+              end-if
+           end-perform.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = I-O-BLOCCO
+BEGIN-TEXT
+           MOVE PROG-ID OF PROG  TO LK-BL-PROG-ID.
+           MOVE COMO-DATA        TO LK-BL-DATA.
+           if lk-bl-ora = 0
+              MOVE COMO-ORA         TO LK-BL-ORA
+           end-if.
+           CALL   "BLOCKPGM"  USING LK-BLOCKPGM.
+           CANCEL "BLOCKPGM".
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = SFOGLIA
+BEGIN-TEXT
+           move "user-pgm"   to como-file
+           move link-user    to up-user-id.
+           inquire ef-call value in up-prog-id.
+           call "zoom-gt" using como-file, up-record
+                          giving stato-zoom
+           end-call.
+
+           cancel "zoom-gt".
+           if stato-zoom = 0
+              modify ef-call, value up-prog-id
+              move 5 to control-id
+              move 4 to accept-control
+              modify pb-cancel,  bitmap-number = 1
+              modify pb-sfoglia, bitmap-number = 1
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = VAL-NUM-BITMAP
+BEGIN-TEXT
+           EVALUATE TRUE
+           WHEN PROG-T-ELABORAZIONE OF PROG
+                MOVE 3 TO num-bitmap
+           WHEN PROG-T-ARCHIVIO OF PROG
+                MOVE 6 TO NUM-BITMAP
+           WHEN PROG-T-STAMPA OF PROG
+                MOVE 5 TO NUM-BITMAP
+           END-EVALUATE.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = VISUALIZZA-MESSAGGI
+BEGIN-TEXT
+           initialize messaggio
+
+           set primo-passaggio  to true
+      *    giro sui messaggi dell'utente
+           move link-user  to como-utente
+           perform CICLO-MESSAGGI-UTENTE
+
+      *    giro sull'utente speciale "tutti".
+           move "tutti"   to como-utente
+           perform CICLO-MESSAGGI-UTENTE
+
+
+           inspect messaggio replacing trailing low-value by space
+
+           if messaggio = space 
+              move zero   to v-messaggio
+           else
+              move 1      to v-messaggio
+           end-if.
+
+      *****     modify ef-messaggio, VALUE messaggio
+      *****                          visible v-messaggio.
+
+      ***---
+       CICLO-MESSAGGI-UTENTE.
+           move como-utente to uav-utente
+           move low-value to uav-tipologia
+           start useravv key not < uav-chiave
+              invalid
+                 continue
+              not invalid
+                 perform until 1 = 2
+                    read useravv next
+                       at end
+                          exit perform
+                    end-read
+                    if como-utente not = uav-utente 
+                       exit perform
+                    end-if
+                    move uav-tipologia   to tav-codice
+                    read ttipoavv
+                       invalid
+                          initialize tav-messaggio
+                    end-read
+                 
+
+                    if primo-passaggio
+                       set primo-passaggio  to false
+                       move tav-messaggio   to messaggio
+                    else
+                       inspect messaggio 
+                                   replacing trailing space by low-value
+                       inspect tav-messaggio
+                                   replacing trailing space by low-value
+                       
+                       string messaggio        delimited by low-value
+                              x"0D0A"          delimited by size
+                              78-delimitatore  delimited by size
+                              x"0D0A"          delimited by size
+                              tav-messaggio delimited by low-value
+                              into messaggio
+                    end-if
+                 end-perform
+           end-start.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = PARAGRAFO-COPY
+BEGIN-TEXT
+           copy "utydata.cpy".     
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CHIAMATA-EFFETTIVA
+BEGIN-TEXT
+      *                call thread prog-id OF PROG using lk-blockpgm
+      *                                                  user-cod
+      *                                                  h-livello-abil 
+      *                     on overflow
+      *                     display message "Il programma non esiste!"
+      *                               title Titolo1
+      *                     set lk-bl-cancellazione to true
+      *                     perform I-O-BLOCCO
+      *                end-call
+      *                cancel prog-id of PROG
+
+           call thread "lanciopgm" using lk-blockpgm
+                                         link-user
+                                         h-livello-abil 
+           end-call
+           cancel prog-id of PROG.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-AfterInitData
+BEGIN-TEXT
+           perform CARICA-TREE.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ACCETTA-DATA-ORA
+BEGIN-TEXT
+           ACCEPT COMO-DATA  FROM CENTURY-DATE.
+           ACCEPT COMO-ORA   FROM TIME.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Menu-Tree-Ev-Msg-Tv-Dblclick
+BEGIN-TEXT
+           set CallProgramFlag to true.
+           move 0 to sw-call.
+           set event-action to event-action-terminate.
+
+           perform VISUALIZZA-MESSAGGI
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Menu-Tree-Ev-Msg-Tv-Selchanging
+BEGIN-TEXT
+      *    GUARDO IL VALORE DELL'ELEMENTO DOVE VOGLIO PUNTARE 
+      *    E ANTICIPO I SETTAGGI DELLA VARIABILE "TITOLO" CHE 
+      *    SARà IL TITOLO DI UN PANNELLO DELLA STATUS-BAR
+           inquire form1-menu-tree(event-data-2), item-text in valore.
+
+           evaluate valore
+           when 78-GestioneMenu   move "gestmenu" to titolo
+           when 78-GestioneUtenti move "gest-pwd" to titolo
+      *    SETTANDO A '0' LA VARIABILE H-LIVELLO-ABIL EVITO 
+      *    CHE VENGA CAMBIATA LA BITMAP ALL'ELEMENTO UTILITY
+           when 78-Utility        move 0 to h-livello-abil
+                                  move 0 to prog-type OF PROG
+                                  move "Sub-Servizi" to titolo
+           end-evaluate.
+
+      *    IN QUESTO MODO EVITO CHE LA BITMAP VENGA CAMBIATA 
+      *    AGLI ELEMENTI GESTIONE UTENTI E GESTIONE MENU
+           evaluate valore
+           when 78-GestioneUtenti   
+           when 78-GestioneMenu     continue
+           when other
+                if last-prog-type not = 1
+                   if valore2 = 78-Utility
+                      modify Form1-Menu-Tree(CurrentItem), 
+                             bitmap-number = 4
+                      move spaces to valore2
+                   else
+                      modify Form1-Menu-Tree(CurrentItem)
+                             bitmap-number = 1
+                   end-if
+                end-if
+                move event-data-2 to CurrentItem
+                inquire Form1-Menu-Tree(event-data-2),
+                        hidden-data in hidden-tree 
+           end-evaluate.
+           move h-prog-menu-level to prog-menu-level OF PROG. 
+
+      *    ANDREA: LA VOCE UTILITY, NON FACENTE PARTE DEL FILE 
+      *    PROG, NON VIENE TROVATA CON LA FORM1-CURR. TRAMITE
+      *    QUESTO CONTROLLO NON VIENE ESEGUITA E NON ESCE IL
+      *    MESSAGGIO D'ERRORE.
+           if valore = 78-Utility        or
+              valore = 78-GestioneUtenti or
+              valore = 78-GestioneMenu
+              move valore to prog-l-desc OF PROG ef-descr-buf
+              display ef-descr
+              modify Form1-St-1-Handle, panel-index = 2
+                                        panel-text  = titolo
+           else
+      *       perform FORM1-CURR
+              read prog no lock invalid continue end-read
+              move prog-l-desc OF PROG to ef-descr-buf
+              display ef-descr
+              modify  Form1-St-1-Handle, panel-index = 2
+                                         panel-text  = prog-id OF PROG
+
+      *       PER RIPRISTINARE LA SITUAZIONE DEL TREE-WIEW
+              move prog-r OF PROG to old-prog-r
+           end-if.
+
+           modify Form1-St-1-Handle, panel-index = 1
+                                     panel-Text  = prog-s-desc OF PROG.
+           move prog-type OF PROG to last-prog-type.
+           if prog-type OF PROG = 1 
+              if h-livello-abil > 0
+                 perform VAL-NUM-BITMAP
+                 modify Form1-Menu-Tree(CurrentItem)
+      *luciano
+                        bitmap-number = num-bitmap
+
+                |Modifica (Andrea) per il tasto bitmap
+                 move 1 to e-esegui
+                 move BitmapEseguiEnabled to BitmapNumEsegui
+                 modify Form1-Pb-Run-Prg, enabled = e-esegui,
+                                          bitmap-number = BitmapNumEsegui
+                | FINE Modifica (Andrea)
+
+      *****           modify Form1-St-1-Handle, panel-index = 3
+      *****                                     panel-text  = "Abilitato"
+              end-if
+           else
+      *LUCIANO
+              if valore = 78-Utility
+                 modify Form1-Menu-Tree(CurrentItem)
+                        bitmap-number = 7
+                 move 78-Utility to valore2
+              else 
+                 if valore2 = 78-Utility
+                     modify Form1-Menu-Tree(CurrentItem)
+                            bitmap-number = 4
+                 else
+                    modify Form1-Menu-Tree(CurrentItem)
+                           bitmap-number = 2
+                 end-if
+              end-if                 
+              |Modifica (Andrea) per il tasto bitmap
+              move 0 to e-esegui
+              move BitmapEseguiDisabled to BitmapNumEsegui
+              modify Form1-Pb-Run-Prg, enabled = e-esegui,
+                                       bitmap-number = BitmapNumEsegui
+              | FINE Modifica (Andrea)
+
+      *****        modify Form1-St-1-Handle, panel-index = 3
+      *****                                  panel-style = 2
+      *****                                  panel-text  = "Menu"
+     
+           end-if
+
+      *    ANDREA: CAMBIAMENTO DELLA STATUS-BAR E ABILITAZIONE DEL PB
+      *    PER LA SCELTA DEI DUE PROGRAMMI FUORI DALL'ARCHIVIO DI
+      *    CARICAMENTO DEL TREE-VIEW.
+           if valore = 78-GestioneUtenti or 
+              valore = 78-GestioneMenu
+              |Modifica (Andrea) per il tasto bitmap
+              move 1 to e-esegui
+              move BitmapEseguiEnabled to BitmapNumEsegui
+              modify Form1-Pb-Run-Prg, enabled = e-esegui,
+                                       bitmap-number = BitmapNumEsegui
+              |FINE Modifica (Andrea)
+      *****        modify Form1-St-1-Handle, panel-index = 3
+      *****                                  panel-text  = "Abilitato"
+           end-if.
+
+           perform VISUALIZZA-MESSAGGI
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Pb-1i-LinkTo
+BEGIN-TEXT
+           PERFORM Form-CALL-Open-Routine.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Pb-1j-LinkTo
+BEGIN-TEXT
+           call "win$version" using winversion-data.
+           evaluate true
+           when PLATFORM-WIN-31  MOVE "Windows 3.1" TO Win-Nome
+           when PLATFORM-WIN-9X
+                evaluate WIN-MAJOR-VERSION also WIN-MINOR-VERSION
+                when 4 also 00  MOVE "Windows 95"  to Win-Nome
+                when 4 also 10  MOVE "Windows 98"  to Win-Nome
+                when 4 also 90  MOVE "Windows Me"  to Win-Nome
+                end-evaluate
+           when PLATFORM-WIN-NT  MOVE "Win NT, Win 2000, Xp, Vista, 7"  
+                to Win-Nome
+           end-evaluate.
+           inspect Win-Nome replacing trailing spaces by low-value.
+           accept SYSTEM-INFORMATION from system-info.
+           accept Host-System from environment "DEFAULT_HOST"
+           if Host-System = space
+               move "Vision" to Host-System 
+           end-if
+           inspect Host-System replacing trailing spaces by low-value.
+           DISPLAY MESSAGE BOX
+              "Geslux Versione 2.7.1 del 13/10/2010" x"0A"
+              "Argomenti principali: " x"0A"
+              "- MAGAZZINO DI SCELTA PER CREAZIONE BOZZE NC" x"0A"
+              "- STRALCIO SHI - LUBEX (11/11/2011)" x"0A"
+              "- Magazzino GETRASPED (11/11/2011)" x"0A" 
+              "- EVASIONE IMBALLO MINIMO (DA INSTALLARE)" x"0A"
+              "- PRESE GIORNALIERE INTEGRATE CON QUANTITA' PRENOTATE (11/11/2011)" x"0A"
+              "- PESI UTF FISSI PER NON GDO (11/11/2011)"
+              x"0A"
+              "Sistema operativo: " Win-Nome x"0A"
+              "Runtime Acucobol-GT Versione ",
+              RUNTIME-MAJOR-VERSION "."
+              RUNTIME-MINOR-VERSION "."
+              RUNTIME-RELEASE x"0A"
+              "File System: " Host-System x"0A"
+              "Anno di login: " esercizio," (", esercizio-g2, ")" x"0A"
+              "Utente: " link-user
+               title "Informazioni...".
+           .
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Pb-1h-LinkTo
+BEGIN-TEXT
+           MOVE 9008 TO MENU-PAR-CALL.
+           CALL "RUNPROG" USING MENU-PAR-CALL.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Pb-1g-LinkTo
+BEGIN-TEXT
+           MOVE 9006 TO MENU-PAR-CALL.
+           CALL "RUNPROG" USING MENU-PAR-CALL.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Pb-1f-LinkTo
+BEGIN-TEXT
+           MOVE 9005 TO MENU-PAR-CALL.
+           CALL "RUNPROG" USING MENU-PAR-CALL.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Pb-1e-LinkTo
+BEGIN-TEXT
+           MOVE 9007 TO MENU-PAR-CALL.
+           CALL "RUNPROG" USING MENU-PAR-CALL.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Pb-1d-LinkTo
+BEGIN-TEXT
+           MOVE 9004 TO MENU-PAR-CALL.
+           CALL "RUNPROG" USING MENU-PAR-CALL.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Pb-1c-LinkTo
+BEGIN-TEXT
+           MOVE 9003 TO MENU-PAR-CALL.
+           CALL "RUNPROG" USING MENU-PAR-CALL.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Pb-1b-LinkTo
+BEGIN-TEXT
+           MOVE 9002 TO MENU-PAR-CALL.
+           CALL "RUNPROG" USING MENU-PAR-CALL.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Pb-1a-LinkTo
+BEGIN-TEXT
+           MOVE 9001 TO MENU-PAR-CALL.
+           CALL "RUNPROG" USING MENU-PAR-CALL.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-DaEf-1-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-DaEf-1-AfterProcedure
+BEGIN-TEXT
+      *<<** Default_Code **>>
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form2-Pb-1a-LinkTo
+BEGIN-TEXT
+           set tutto-ok to true.
+           inquire ef-call, value in valore.
+           evaluate valore
+           when "calendario" 
+           when "loginscrn"  
+           when "menu"
+                set errori to true
+           when "gest-pwd"
+      *          call thread "gest-pwd" using lk-blockpgm,
+      *                                       user-cod,
+      *                                       h-livello-abil
+      *          cancel "gest-pwd"
+      *          set errori to true
+                move 78-GestioneUtenti   to valore
+
+           when "gestmenu"
+                inspect user-codi replacing trailing low-value by spaces
+                if link-user = "BOSS" 
+                   move 3 to h-livello-abil
+                   move 78-GestioneMenu to valore
+      *             call thread "gestmenu" using lk-blockpgm,
+      *                                          user-cod,
+      *                                          h-livello-abil
+      *             cancel "gestmenu"
+      *             perform FORM-CALL-EXIT
+                end-if
+      *          set errori to true
+           when "admin"
+                inspect user-codi replacing trailing low-value by spaces
+                if link-user = "BOSS" 
+                   move 3 to h-livello-abil
+                   call thread "admin" using lk-blockpgm,
+                                             link-user,
+                                             h-livello-abil
+                   cancel "admin"
+      *             move "admin" to LK-BL-PROG-ID
+      *             perform CHIAMATA-EFFETTIVA
+                   perform FORM-CALL-EXIT
+                end-if
+                set errori to true
+           when other
+                move valore   to prog-id OF PROG
+                read prog key is prog-id OF PROG
+                     invalid
+                     set errori to true
+                     display message box "il programma non esiste!"
+                             title titolo1
+                end-read  
+           end-evaluate.
+
+           if tutto-ok                 
+              move link-user to up-user-id
+              move valore    to up-prog-id
+              read user-pgm key is up-chiave invalid continue end-read
+
+              move up-livello-abil to h-livello-abil
+              set CallProgramFlag to true
+              if CallProgramFlag
+                 set CallProgramFlag to false  
+                 move 1 to sw-call
+                 perform CALL-PROGRAM
+              end-if
+              initialize callp
+      *          mi rimetto nella situazione del tree-wiew
+              move old-prog-r    to prog-r OF PROG
+              perform FORM-CALL-EXIT
+           else
+      *          mi rimetto nella situazione del tree-wiew
+              move old-prog-r    to prog-r OF PROG
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = EF-CALL-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = EF-CALL-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form2-Pb-2-LinkTo
+BEGIN-TEXT
+           PERFORM SFOGLIA.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-sfoglia-BeforeProcedure
+BEGIN-TEXT
+           modify pb-sfoglia, bitmap-number = 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-sfoglia-AfterProcedure
+BEGIN-TEXT
+           modify pb-sfoglia, bitmap-number = 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-cancel-BeforeProcedure
+BEGIN-TEXT
+           modify pb-cancel, bitmap-number = 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-cancel-AfterProcedure
+BEGIN-TEXT
+           modify pb-cancel, bitmap-number = 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-ok-BeforeProcedure
+BEGIN-TEXT
+           modify pb-ok, bitmap-number = 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-ok-AfterProcedure
+BEGIN-TEXT
+           modify pb-ok, bitmap-number = 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = menu-Ev-After-Program
+BEGIN-TEXT
+           set pgme-azzera-sessione   to true
+           call "gpgmexe" using gpgmexe-linkage.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = menu-Ev-Before-Program
+BEGIN-TEXT
+           accept versione-geslux from environment "VERSIONE_GESLUX".
+           accept storico         from environment "STORICO".
+           accept esercizio-x     from environment "ESERCIZIO".
+           accept esercizio-g2    from environment "ESERCIZIO-G2".
+
+           if storico = "S"
+              move "STORICO" to lab-anno-buf 
+              move 65576 to WindowColor
+           else
+              move esercizio-x to esercizio
+              move 65793 to WindowColor
+              string "Esercizio " delimited size
+                     esercizio    delimited size
+                     " ("         delimited size
+                     esercizio-G2 delimited size
+                     ")"          delimited size
+                     into lab-anno-buf
+              end-string
+           end-if.                   
+END-TEXT
+END-DATA
+
+@}}
+
+[KEY_STATUS_FIELD_FORMAT]
+PIC=9(5)
+USAGE=[None]
+
+[KEYSTATUS_CONTENT:KS1]
+CONDITION=Exit-Pushed
+VALUE=27
+
+[KEYSTATUS_CONTENT:KS2]
+CONDITION=Message-Received
+VALUE=95
+
+[KEYSTATUS_CONTENT:KS3]
+CONDITION=Event-Occurred
+VALUE=96
+
+[KEYSTATUS_CONTENT:KS4]
+CONDITION=Screen-No-Input-Field
+VALUE=97
+
+[KEYSTATUS_CONTENT:KS5]
+CONDITION=Enter-Pushed
+VALUE=13
+
+[COBOLAID_DATASET_INFO]
+COUNT=1
+NAME_0=DataSet1
+
+[DRAW_DOCUMENT_INDEX]
+OBJ_NAME_0=8001
+OBJ_ID_0=3006932
+
+[MULTIPLE_KEY_0]
+COUNT=1
+KEY_0=PROG-KEY OF PROG
+
+[DRAW_DOCUMENT_8001_3006932]
+OBJ_NAME=8001
+OBJ_ID=3006932
+TYPE=2
+VERSION=
+DOC_SIZE_X=5100
+DOC_SIZE_Y=5160
+PAGE_LEFT=150
+PAGE_TOP=150
+PAGE_RIGHT=1850
+PAGE_BOTTOM=2730
+MARGIN_LEFT=150
+MARGIN_TOP=150
+MARGIN_RIGHT=150
+MARGIN_BOTTOM=150
+PROP_DOCU_TYPE=ø
+PROP_DOCU_TYPE2=ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+PROP_DOCU_NAME=DataSet - DataSet1[menu(GESLUX)]
+PROP_DOCU_OWNER=Person A
+PROP_DOCU_CDATE=04/06/00
+PROP_DOCU_MODIFIER=Person B
+PROP_DOCU_MDATE=04/06/00
+PROP_DOCU_DESCR=Caseaid DocuCaseaid Document
+PROP_DOCU_HEADER=Caseaid Document
+PROP_DOCU_FOOTER=Page # 
+PROP_DOCU_DIM_H=2
+PROP_DOCU_DIM_W=3
+PROP_DOCU_LOC_H=1
+PROP_DOCU_LOC_W=1
+PROP_DOCU_EDGE_T=150
+PROP_DOCU_EDGE_B=150
+PROP_DOCU_EDGE_L=150
+PROP_DOCU_EDGE_R=150
+PROP_DOCU_ZOOM=75
+PROP_DOCU_SIZE_TYPE=0
+PROP_DOCU_SIZE_PAPER=9
+PROP_DOCU_SIZE_H=2580
+PROP_DOCU_SIZE_W=1700
+PROP_DOCU_RULER_EBL=0
+PROP_DOCU_GRID_EBL=0
+PROP_DOCU_GRID=20
+PROP_DOCU_ALIGN=0
+REL_SYM_SIZE=46
+REL_SYM_INFO_L=7
+REL_SYM_INFO_X0=2302
+REL_SYM_INFO_Y0=1643274139
+REL_SYM_INFO_X1=2301
+REL_SYM_INFO_Y1=1612192573
+REL_SYM_INFO_X2=2301
+REL_SYM_INFO_Y2=2047616
+REL_SYM_INFO_X3=2301
+REL_SYM_INFO_Y3=1380686699
+REL_SYM_INFO_X4=2301
+REL_SYM_INFO_Y4=930960896
+REL_SYM_INFO_X5=2301
+REL_SYM_INFO_Y5=931368438
+REL_SYM_INFO_X6=2301
+REL_SYM_INFO_Y6=819055777
+
+[DRAW_BASESYMBOL_2302_1643274139]
+OBJ_NAME=2302
+OBJ_ID=1643274139
+KIND=2
+{{@LABEL_2302_1643274139
+Relation1
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=0
+TOP=0
+RIGHT=0
+BOTTOM=0
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=65535
+PROP_FONT_HEIGHT=48
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=3
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=16
+REL_SYM_INFO_L=2
+REL_SYM_INFO_X0=2301
+REL_SYM_INFO_Y0=2047616
+REL_SYM_INFO_X1=2301
+REL_SYM_INFO_Y1=1612192573
+
+[DRAW_BASESYMBOL_2301_1612192573]
+OBJ_NAME=2301
+OBJ_ID=1612192573
+KIND=1
+{{@LABEL_2301_1612192573
+user-pgm
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1011
+TOP=437
+RIGHT=1411
+BOTTOM=659
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=10
+REL_SYM_INFO_L=1
+REL_SYM_INFO_X0=2302
+REL_SYM_INFO_Y0=1643274139
+
+[DRAW_BASESYMBOL_2301_2047616]
+OBJ_NAME=2301
+OBJ_ID=2047616
+KIND=1
+{{@LABEL_2301_2047616
+PROG
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=147
+TOP=149
+RIGHT=547
+BOTTOM=371
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=7
+PROP_FONT_CLIPPREC=0
+PROP_FONT_QUALITY=0
+PROP_FONT_PCH_FAM=17
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=10
+REL_SYM_INFO_L=1
+REL_SYM_INFO_X0=2302
+REL_SYM_INFO_Y0=1643274139
+
+[DRAW_BASESYMBOL_2301_1380686699]
+OBJ_NAME=2301
+OBJ_ID=1380686699
+KIND=1
+{{@LABEL_2301_1380686699
+PROG1
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=153
+TOP=495
+RIGHT=553
+BOTTOM=717
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=7
+PROP_FONT_CLIPPREC=0
+PROP_FONT_QUALITY=0
+PROP_FONT_PCH_FAM=17
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_930960896]
+OBJ_NAME=2301
+OBJ_ID=930960896
+KIND=1
+{{@LABEL_2301_930960896
+useravv
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=298
+TOP=1104
+RIGHT=698
+BOTTOM=1326
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_931368438]
+OBJ_NAME=2301
+OBJ_ID=931368438
+KIND=1
+{{@LABEL_2301_931368438
+ttipoavv
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=900
+TOP=1082
+RIGHT=1300
+BOTTOM=1304
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_819055777]
+OBJ_NAME=2301
+OBJ_ID=819055777
+KIND=1
+{{@LABEL_2301_819055777
+USER
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1748
+TOP=566
+RIGHT=2148
+BOTTOM=788
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_MIDSYMBOL_2302_1643274139]
+OBJ_NAME=2302
+OBJ_ID=1643274139
+LINT_VERTEX_TYPE=0
+AUTO_LAY_ID=6
+CTL_SIZE=52
+CTL_INFO_L=6
+CTL_INFO_X0=534
+CTL_INFO_Y0=268
+CTL_INFO_X1=548
+CTL_INFO_Y1=268
+CTL_INFO_X2=780
+CTL_INFO_Y2=268
+CTL_INFO_X3=780
+CTL_INFO_Y3=518
+CTL_INFO_X4=1012
+CTL_INFO_Y4=518
+CTL_INFO_X5=1222
+CTL_INFO_Y5=518
+
+[DMD_DOCUMENT_0_3006932]
+OBJ_NAME=0
+OBJ_ID=3006932
+FILE_TITLE_TYPE=8136
+FILE_SHOW_ITEM=0
+FILE_SHOW_KEY=0
+FILE_SHOW_PIC=0
+FILE_SHOW_HEAD=0
+FILE_SHOW_LEVEL=0
+FILE_SHOW_TREE=0
+FILE_SHOW_CLPS=0
+FILE_SHOW_BMP=0
+FILE_SHOW_LINE=0
+FILE_SHOW_MINIZE=0
+
+[DMD_FILE_0_1612192573]
+OBJ_NAME=0
+OBJ_ID=1612192573
+REL_M_OBJ_ID=0
+ENTITY=user-pgm
+LINK=0
+LINK_NAME=
+DSN_SIZE=53
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=UP-CHIAVE OF USER-PGM
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1612192573
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_2047616]
+OBJ_NAME=0
+OBJ_ID=2047616
+REL_M_OBJ_ID=0
+ENTITY=PROG
+LINK=0
+LINK_NAME=
+DSN_SIZE=48
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=PROG-KEY OF PROG
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_2047616
+
+@}}
+DSN_INFO_PRIMARY=1
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1380686699]
+OBJ_NAME=0
+OBJ_ID=1380686699
+REL_M_OBJ_ID=0
+ENTITY=PROG1
+LINK=0
+LINK_NAME=
+DSN_SIZE=49
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=PROG-KEY OF PROG1
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1380686699
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=1
+DSN_INFO_LOGICAL_FDNAME=PROG1
+DSN_INFO_ORIGINAL_FDNAME=PROG
+DSN_INFO_REPLACEBY_FILESTATUS=STAT-PROG1
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_930960896]
+OBJ_NAME=0
+OBJ_ID=930960896
+REL_M_OBJ_ID=0
+ENTITY=useravv
+LINK=0
+LINK_NAME=
+DSN_SIZE=53
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=uav-chiave OF useravv
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_930960896
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_931368438]
+OBJ_NAME=0
+OBJ_ID=931368438
+REL_M_OBJ_ID=0
+ENTITY=ttipoavv
+LINK=0
+LINK_NAME=
+DSN_SIZE=54
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tav-chiave OF ttipoavv
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_931368438
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_819055777]
+OBJ_NAME=0
+OBJ_ID=819055777
+REL_M_OBJ_ID=0
+ENTITY=USER
+LINK=0
+LINK_NAME=
+DSN_SIZE=43
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=user-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_819055777
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_RELATION_0_1643274139]
+OBJ_NAME=0
+OBJ_ID=1643274139
+REL_M_OBJ_ID=0
+RELATION=Relation1
+ENTITY_M=PROG
+ENTITY_S=user-pgm
+LINK=0
+LINK_NAME=
+REL_SIZE=137
+REL_INFO_R_TYPE=0
+REL_INFO_RI_OPTION_INS=0
+REL_INFO_RI_OPTION_DEL=0
+REL_INFO_RI_OPTION_UPD=0
+{{@REL_INFO_CONDITION_1643274139
+
+@}}
+{{@REL_INFO_EXPRESSION_1643274139
+
+@}}
+REL_INFO_MASTER_FILE=PROG
+REL_INFO_RELATION_FILE=user-pgm
+REL_INFO_ITEMS_L=1
+REL_INFO_ITEMS_M0=PROG-ID OF PROG
+REL_INFO_ITEMS_INDEX_M0=0
+REL_INFO_ITEMS_PKEY_M0=PROG-R
+REL_INFO_ITEMS_S0=UP-PROG-ID
+REL_INFO_ITEMS_INDEX_S0=0
+REL_INFO_ITEMS_PKEY_S0=UP-CHIAVE OF USER-PGM

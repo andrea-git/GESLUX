@@ -1,0 +1,25 @@
+       FD  tsetinvio.
+       01 tsi-rec.
+           05 tsi-chiave.
+               10 tsi-codice       PIC  x(20).
+           05 tsi-dati.
+               10 tsi-smtp         PIC  x(100).
+               10 tsi-porta        PIC  9(5).
+               10 tsi-SSL          PIC  x.
+                   88 tsi-SSL-si VALUE IS "S". 
+                   88 tsi-SSL-no VALUE IS "N". 
+               10 tsi-user         PIC  x(100).
+               10 tsi-pass         PIC  x(100).
+               10 tsi-user-from    PIC  x(100).
+               10 tsi-dati-comuni.
+                   15 tsi-data-creazione           PIC  9(8).
+                   15 tsi-ora-creazione            PIC  9(8).
+                   15 tsi-utente-creazione         PIC  X(10).
+                   15 tsi-data-modifica            PIC  9(8).
+                   15 tsi-ora-modifica PIC  9(8).
+                   15 tsi-utente-modifica          PIC  X(10).
+               10 tsi-vuoti.
+                   15 tsi-num-vuoto-1  PIC  9(15).
+                   15 tsi-num-vuoto-2  PIC  9(15).
+                   15 tsi-num-vuoto-3  PIC  9(15).
+                   15 tsi-filler       PIC  x(500).

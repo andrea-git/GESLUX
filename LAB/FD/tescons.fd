@@ -1,0 +1,23 @@
+       FD  tescons.
+       01 tec-rec.
+           05 tec-chiave.
+               10 tec-codice       PIC  x(10).
+           05 tec-dati.
+               10 tec-descrizione  PIC  x(50).
+               10 tec-dati-comuni.
+                   15 tec-data-creazione           PIC  9(8).
+                   15 tec-ora-creazione            PIC  9(8).
+                   15 tec-utente-creazione         PIC  x(10).
+                   15 tec-data-ultima-modifica     PIC  9(8).
+                   15 tec-ora-ultima-modifica      PIC  9(8).
+                   15 tec-utente-ultima-modifica   PIC  x(10).
+               10 tec-vuoti.
+                   15 tec-num-vuoto-1  PIC  9(18).
+                   15 tec-num-vuoto-2  PIC  9(18).
+                   15 tec-num-vuoto-3  PIC  9(18).
+                   15 tec-forza-pod    PIC  x.
+                       88 tec-forza-pod-si VALUE IS "S". 
+                       88 tec-forza-pod-no VALUE IS "N". 
+                   15 tec-alfa-vuoto-1 PIC  x(19).
+                   15 tec-alfa-vuoto-2 PIC  x(20).
+                   15 tec-alfa-vuoto-3 PIC  x(20).

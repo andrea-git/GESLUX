@@ -1,0 +1,49 @@
+      *
+      *
+      *
+       FD  tnomen.
+       01 nom-rec.
+           05 nom-chiave.
+               10 nom-codice       PIC  9(8).
+           05 nom-dati.
+               10 nom-descrizione  PIC  X(50).
+               10 nom-olio         PIC  x.
+                   88 nom-si-olio VALUE IS "S". 
+                   88 nom-no-olio VALUE IS "N". 
+               10 nom-utf          PIC  x.
+                   88 nom-si-utf VALUE IS "S". 
+                   88 nom-no-utf VALUE IS "N". 
+               10 nom-ic-cou       PIC  x.
+                   88 nom-si-ic-cou VALUE IS "S". 
+                   88 nom-no-ic-cou VALUE IS "N". 
+               10 nom-cobat        PIC  x.
+                   88 nom-si-cobat VALUE IS "S". 
+                   88 nom-no-cobat VALUE IS "N". 
+               10 nom-colonna      PIC  x.
+                   88 nom-col-A VALUE IS "A". 
+                   88 nom-col-B VALUE IS "B". 
+                   88 nom-col-C VALUE IS "C". 
+                   88 nom-col-D VALUE IS "D". 
+               10 nom-num-reg-c    PIC  9(8).
+               10 nom-dati-comuni.
+                   15 nom-data-creazione           PIC  9(8).
+                   15 nom-ora-creazione            PIC  9(8).
+                   15 nom-utente-creazione         PIC  X(10).
+                   15 nom-data-ultima-modifica     PIC  9(8).
+                   15 nom-ora-ultima-modifica      PIC  9(8).
+                   15 nom-utente-ultima-modifica   PIC  X(10).
+               10 nom-vuoti.
+                   15 nom-operatore    PIC  9.
+                       88 nom-maggiore VALUE IS 1. 
+                       88 nom-minore VALUE IS 2. 
+                       88 nom-uguale VALUE IS 3. 
+                       88 nom-min-u VALUE IS 4. 
+                       88 nom-mag-u VALUE IS 5. 
+                   15 nom-perce        PIC  9(3)v99.
+                   15 nom-num-reg-s1   PIC  9(8).
+                   15 nom-num-reg-s2   PIC  9(8).
+                   15 nom-num-reg-s3   PIC  9(8).
+                   15 nom-num-vuoto-3  PIC  9(15).
+                   15 nom-alfa-vuoto-1 PIC  X(20).
+                   15 nom-alfa-vuoto-2 PIC  X(20).
+                   15 nom-alfa-vuoto-3 PIC  X(20).

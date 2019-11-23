@@ -1,0 +1,24 @@
+       FD  locali.
+       01 loc-rec.
+           05 loc-chiave.
+               10 loc-codice       PIC  9(15).
+               10 loc-chiave-ricerca.
+                   15 loc-gdo          PIC  x(5).
+                   15 loc-cliente      PIC  9(5).
+                   15 loc-destino      PIC  9(5).
+                   15 loc-ini-dpo      PIC  9(8).
+                   15 loc-fine-dpo     PIC  9(8).
+               10 loc-comuni.
+                   15 loc-data-creazione           PIC  9(8).
+                   15 loc-ora-creazione            PIC  9(8).
+                   15 loc-utente-creazione         PIC  x(10).
+                   15 loc-data-modifica            PIC  9(8).
+                   15 loc-ora-modifica PIC  9(8).
+                   15 loc-utente-modifica          PIC  x(10).
+               10 loc-vuoti.
+                   15 loc-num-vuoto-1  PIC  9(15).
+                   15 loc-num-vuoto-2  PIC  9(15).
+                   15 loc-num-vuoto-3  PIC  9(15).
+                   15 loc-alfa-vuoto-1 PIC  x(20).
+                   15 loc-alfa-vuoto-2 PIC  x(20).
+                   15 loc-alfa-vuoto-3 PIC  x(20).

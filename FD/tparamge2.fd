@@ -1,0 +1,42 @@
+       FD  tparamge2.
+       01 tge2-rec.
+           05 tge2-chiave.
+               10 tge2-codice      PIC  X(2).
+           05 tge2-dati.
+               10 tge2-data-ricalcolo          PIC  9(8).
+               10 tge2-altre-date.
+      *Ultimo ricalcolo programma ordini
+                   15 tge2-data-1      PIC  9(8).
+                   15 tge2-data-2      PIC  9(8).
+                   15 tge2-data-3      PIC  9(8).
+                   15 tge2-data-4      PIC  9(8).
+                   15 tge2-data-5      PIC  9(8).
+                   15 tge2-data-6      PIC  9(8).
+                   15 tge2-data-7      PIC  9(8).
+                   15 tge2-data-8      PIC  9(8).
+                   15 tge2-data-9      PIC  9(8).
+                   15 tge2-data-10     PIC  9(8).
+               10 tge2-contatori.
+      *Ultimo ricalcolo programma ordini
+                   15 tge2-cont-1      PIC  9(8).
+                   15 tge2-cont-2      PIC  9(8).
+                   15 tge2-cont-3      PIC  9(8).
+                   15 tge2-cont-4      PIC  9(8).
+                   15 tge2-cont-5      PIC  9(8).
+                   15 tge2-cont-6      PIC  9(8).
+                   15 tge2-cont-7      PIC  9(8).
+                   15 tge2-cont-8      PIC  9(8).
+                   15 tge2-cont-9      PIC  9(8).
+                   15 tge2-cont-10     PIC  9(8).
+               10 tge2-dati-comuni.
+                   15 tge2-data-creazione          PIC  9(8).
+                   15 tge2-ora-creazione           PIC  9(8).
+                   15 tge2-utente-creazione        PIC  X(10).
+                   15 tge2-data-ultima-modifica    PIC  9(8).
+                   15 tge2-ora-ultima-modifica     PIC  9(8).
+                   15 tge2-utente-ultima-modifica  PIC  X(10).
+               10 tge2-vuoti.
+                   15 tg2-num-vuoto-1  PIC  9(18).
+                   15 tg2-num-vuoto-2  PIC  9(18).
+                   15 tg2-num-vuoto-3  PIC  9(18).
+                   15 tge2-alfa-vuoto  PIC  X(500).

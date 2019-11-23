@@ -1,0 +1,9 @@
+      *(( XFD FILE = zoom-tcaumag ))
+       FD  zoom-tcaumag.
+       01 zoom-tca-rec.
+           05 zoom-tca-chiave.
+               10 zoom-tca-codice  PIC  x(4).
+           05 tca-dati.
+               10 zoom-tca-descrizione         PIC  X(40).
+               10 zoom-tca-cod-magaz           PIC  x(3).
+               10 zoom-mag-descrizione         PIC  x(40).

@@ -1,0 +1,11 @@
+      *(( XFD FILE = tmp-destini ))
+       FD  tmp-destini.
+       01 tmd-rec.
+           05 tmd-chiave.
+               10 tmd-cliente      PIC  9(5).
+               10 tmd-destino      PIC  9(5).
+           05 tmd-dati.
+               10 tmd-cli-ragsoc   PIC  x(40).
+               10 tmd-des-ragsoc   PIC  x(40).
+               10 tmd-localita     PIC  x(40).
+               10 tmd-indirizzo    PIC  x(40).

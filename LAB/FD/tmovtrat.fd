@@ -1,0 +1,33 @@
+      *
+      *
+       FD  tmovtrat.
+       01 tra-rec.
+           05 tra-chiave.
+               10 tra-anno         PIC  9(4).
+           05 tra-dati.
+               10 tra-ult-mov-utf  PIC  9(8).
+               10 tra-ult-mov-tras PIC  9(8).
+               10 tra-ult-mov-provv            PIC  9(8).
+               10 tra-dati-comuni.
+                   15 tra-data-creazione           PIC  9(8).
+                   15 tra-ora-creazione            PIC  9(8).
+                   15 tra-utente-creazione         PIC  X(10).
+                   15 tra-data-modifica            PIC  9(8).
+                   15 tra-ora-modifica PIC  9(8).
+                   15 tra-utente-modifica          PIC  X(10).
+               10 tra-vuoti.
+                   15 tra-num-vuoto-1  PIC  9(5).
+                   15 tra-ult-fatt-contab          PIC  9(8).
+                   15 tra-ult-brog-st  PIC  9(7).
+                   15 tra-ult-nc-contab            PIC  9(8).
+      *(( XFD NAME = tra-ult-mov-com-UC ))
+                   15 tra-ult-mov-comun-utf-c      PIC  9(8).
+      *(( XFD NAME = tra-ult-mov-com-U1 ))
+                   15 tra-bolla-comun-UTF-S1       PIC  9(8).
+      *(( XFD NAME = tra-ult-mov-com-U2 ))
+                   15 tra-bolla-comun-UTF-S2       PIC  9(8).
+      *(( XFD NAME = tra-ult-mov-com-U3 ))
+                   15 tra-bolla-comun-UTF-S3       PIC  9(8).
+                   15 tra-alfa-vuoto1  PIC  X(3).
+                   15 tra-alfa-vuoto-2 PIC  X(20).
+                   15 tra-alfa-vuoto-3 PIC  X(20).

@@ -1,0 +1,20 @@
+      *(( XFD FILE = tmp-marca ))
+      *
+      *
+      *0/
+      *articolo-per-cliente
+      *
+       FD  tmp-marca.
+       01 tma-rec.
+           05 tma-chiave.
+               10 tma-marca        PIC  9(4).
+           05 tma-dati.
+               10 tma-qta          PIC  s9(9).
+               10 tma-vag          PIC  s9(13)v99.
+               10 tma-kg           PIC  s9(13)v999.
+           05 tma-dati-intfat.
+               10 tma-des          PIC  x(50).
+               10 tma-imp-merce    PIC  s9(13)v99.
+               10 tma-add-pb       PIC  s9(13)v99.
+               10 tma-cons         PIC  s9(13)v99.
+               10 tma-cou          PIC  s9(13)v99.

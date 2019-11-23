@@ -1,0 +1,9 @@
+      *
+       01 EDI-stb-limiti.
+           05 EDI-stb-da-anno            PIC  9(4).
+           05 EDI-stb-a-anno PIC  9(4).
+           05 EDI-stb-da-num PIC  9(8).
+           05 EDI-stb-a-num  PIC  9(8).
+           05 EDI-stb-da-data            PIC  9(8).
+           05 EDI-stb-a-data PIC  9(8).
+           05 EDI-stb-stampante   pic x(50).

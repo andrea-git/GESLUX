@@ -1,0 +1,62 @@
+      *
+       01  xzoom-linkage-1.
+           03 xzoom-win-info.
+              05 xzoom-row                  pic 99.
+              05 xzoom-cln                  pic 999.
+              05 xzoom-lw                   pic 99.
+              05 xzoom-sw                   pic 999.
+           03 xzoom-file-name               pic x(80).
+           03 xzoom-file-key                pic 999.
+           03 xzoom-field-info.
+              05 xzoom-record-delimiter.
+                 07 xzoom-delimiter-offset  pic s9(4) comp-4.
+                 07 xzoom-delimiter-length  pic s9(4) comp-4.
+                 07 xzoom-from-value        pic x(xz-delim-size).
+                 07 xzoom-to-value          pic x(xz-delim-size).
+              05 xzoom-fields               pic 99.
+              05 xzoom-field-data           occurs max-xz-fields.
+                 07 xzoom-field-length      pic s9(4) comp-4.
+                 07 xzoom-field-offset      pic s9(4) comp-4.
+                 07 xzoom-field-name        pic x(20).
+                 07 xzoom-field-column      pic x comp-x.
+           03 xzoom-wildcards.
+              05 xzoom-wildcard             occurs max-xz-wild.
+                 07 xzoom-validation        pic x.
+                    88 xzoom-when-true      values " ".
+                    88 xzoom-when-false     values "!".
+                 07 xzoom-operator          pic x.
+                    88 xzoom-begin-with     value "B".
+                    88 xzoom-contains       value "C".
+                    88 xzoom-match          value "M".
+                    88 xzoom-less           value "L".
+                    88 xzoom-greater        value "G".
+                    88 xzoom-equal          value "E".
+                 07 xzoom-wild-value        pic x(20).
+                 07 xzoom-wild-value-length pic s9(4) comp-4.
+                 07 xzoom-wild-length       pic s9(4) comp-4.
+                 07 xzoom-wild-offset       pic s9(4) comp-4.
+                 07 xzoom-wild-case         pic 9.
+                    88 xzoom-ignore-case    value 1 false 0.
+
+       01  xzoom-ext-info-1.
+           03                                occurs max-xz-fields.
+              05 xzoom-field-sign           pic x.
+                 88 xzoom-field-unsigned    value space.
+                 88 xzoom-field-signed      value "0".
+                 88 xzoom-field-signsep     value "1".
+                 88 xzoom-field-seplead     value "2".
+                 88 xzoom-field-leading     value "3".
+              05 xzoom-field-type           pic x.
+                 88 xzoom-ft-alpha          value space.
+                 88 xzoom-ft-display        value "0".
+                 88 xzoom-ft-comp-3         value "1".
+                 88 xzoom-ft-comp-x         value "2".
+              05 xzoom-field-digits         pic 99 comp-4.
+              05 xzoom-field-dec            pic 99.
+              05 xzoom-field-alignment      pic x.
+                 88 xzoom-al-none           value "U".
+                 88 xzoom-al-left           value "L".
+                 88 xzoom-al-center         value "C".
+                 88 xzoom-al-right          value "R".
+              05 xzoom-field-fmt            pic x(80).
+              

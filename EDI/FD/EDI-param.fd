@@ -1,0 +1,20 @@
+       FD  EDI-param.
+       01 epa-rec.
+           05 epa-chiave.
+               10 epa-codice       PIC  x.
+           05 epa-dati.
+               10 epa-id-edi       PIC  x(35).
+      *(( XFD NAME = epa-id-edi_1 ))
+               10 epa-q-id-edi     PIC  x(4).
+               10 epa-piva         PIC  x(35).
+               10 epa-ragsoc       PIC  x(70).
+               10 epa-indirizzo    PIC  x(35).
+               10 epa-citta        PIC  x(35).
+               10 epa-prov         PIC  x(3).
+               10 epa-cap          PIC  x(5).
+      *(( XFD NAME = epa-rea-cciaa_1 ))
+               10 epa-codfis       PIC  x(35).
+               10 epa-capsoc       PIC  x(35).
+               10 epa-rea-cciaa    PIC  x(35).
+               10 epa-tribunale    PIC  x(35).
+               10 FILLER           PIC  x(360).

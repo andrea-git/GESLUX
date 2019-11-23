@@ -1,0 +1,7 @@
+       FD  comuni.
+       01 com.
+           05 com-chiave.
+               10 com-codice       PIC  x(4).
+           05 com-dati.
+               10 com-prov         PIC  x(2).
+               10 com-descr        PIC  x(55).

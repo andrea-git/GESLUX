@@ -1,0 +1,14 @@
+      *
+       01 lfel-linkage.
+           03 lfel-anno        pic 9(4).
+           03 lfel-da          pic 9(8).
+           03 lfel-a           pic 9(8).
+           03 lfel-tipo        pic x.
+              88 lfel-f        value "F".
+              88 lfel-nc       value "N".
+           03 lfel-handle      handle of window.
+           03 lfel-status      signed-short.
+           03 lfel-ope         pic x.
+              88 lfel-gen      value "G".
+              88 lfel-ristampa value "R".
+           03 filler           pic x(100).

@@ -1,0 +1,44 @@
+      *(( XFD FILE = OLD-STO-provvig ))
+      *
+      *
+      *
+       FD  OLD-STO-provvig.
+       01 OLD-STO-pvv-rec.
+           05 OLD-STO-pvv-chiave.
+               10 OLD-STO-pvv-anno-fat PIC  9(4).
+               10 OLD-STO-pvv-num-fat  PIC  9(8).
+               10 OLD-STO-pvv-riga-fat PIC  9(5).
+           05 OLD-STO-pvv-dati.
+               10 OLD-STO-pvv-data-fat PIC  9(8).
+               10 OLD-STO-pvv-agente   PIC  9(5).
+               10 OLD-STO-pvv-cliente  PIC  9(5).
+               10 OLD-STO-pvv-articolo PIC  9(6).
+               10 OLD-STO-pvv-marca    PIC  9(4).
+               10 OLD-STO-pvv-um       PIC  X(2).
+               10 OLD-STO-pvv-qta-vend PIC  9(8).
+               10 OLD-STO-pvv-peso-um  PIC  9(3)v9(3).
+               10 OLD-STO-pvv-prezzo-unit-vend     PIC  s9(9)v99.
+               10 OLD-STO-pvv-prezzo-netto-agente  PIC  s9(9)v99.
+               10 OLD-STO-pvv-sconto-listino       PIC  9(2)v99.
+               10 OLD-STO-pvv-num-listino          PIC  9(4).
+               10 OLD-STO-pvv-tipo-vend            PIC  X.
+                   88 OLD-STO-pvv-normale VALUE IS " ". 
+                   88 OLD-STO-pvv-omaggio VALUE IS "O". 
+                   88 OLD-STO-pvv-promo VALUE IS "P". 
+               10 OLD-STO-pvv-val-provvig          PIC  s9(9)v99.
+               10 OLD-STO-pvv-data-liq PIC  9(8).
+               10 OLD-STO-pvv-dati-comuni.
+                   15 OLD-STO-pvv-data-creazione       PIC  9(8).
+                   15 OLD-STO-pvv-ora-creazione        PIC  9(8).
+                   15 OLD-STO-pvv-utente-creazione     PIC  X(10).
+                   15 OLD-STO-pvv-data-ultima-modifica PIC  9(8).
+                   15 OLD-STO-pvv-ora-ultima-modifica  PIC  9(8).
+                   15 OLD-STO-pvv-utente-ultima-modifica           PIC  
+           X(10).
+               10 OLD-STO-pvv-vuoti.
+                   15 OLD-STO-pvv-num-vuoto-1          PIC  9(15).
+                   15 OLD-STO-pvv-num-vuoto-2          PIC  9(15).
+                   15 OLD-STO-pvv-num-vuoto-3          PIC  9(15).
+                   15 OLD-STO-pvv-alfa-vuoto-1         PIC  X(20).
+                   15 OLD-STO-pvv-alfa-vuoto-2         PIC  X(20).
+                   15 OLD-STO-pvv-alfa-vuoto-3         PIC  X(20).

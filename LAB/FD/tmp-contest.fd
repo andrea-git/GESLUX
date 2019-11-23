@@ -1,0 +1,21 @@
+      *(( XFD FILE = tmp-contest ))
+       FD  tmp-contest.
+       01 tmc-rec.
+           05 tmc-chiave.
+               10 tmc-art-codice   PIC  9(6).
+           05 tmc-dati.
+               10 tmc-art-descrizione          PIC  x(50).
+               10 tmc-prezzo       PIC  9(6)v99.
+               10 tmc-qta          PIC  9(8).
+               10 tmc-dati-promo
+                          OCCURS 3 TIMES.
+                   15 tmc-prz-promo    PIC  9(6)v99.
+                   15 tmc-descrizione  PIC  x(30).
+                   15 tmc-dpo.
+                       20 tmc-ini-dpo      PIC  9(8).
+                       20 tmc-fine-dpo     PIC  9(8).
+                   15 tmc-vol.
+                       20 tmc-ini-vol      PIC  9(8).
+                       20 tmc-fine-vol     PIC  9(8).
+               10 tmc-blister-flag PIC  9.
+                   88 tmc-blister VALUE IS 1    WHEN SET TO FALSE  0. 

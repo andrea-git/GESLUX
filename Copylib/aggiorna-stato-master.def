@@ -1,0 +1,54 @@
+      *
+       77 DataOggi         PIC  9(8).
+       77 save-mto-saldi-promo pic 9.
+       01 filler           PIC  9.
+           88 RaggiuntaDataLimite VALUE IS 1    WHEN SET TO FALSE  0. 
+       01 filler           PIC  9.
+           88 boll-tutto VALUE IS 1    WHEN SET TO FALSE  0. 
+      ***** 01 filler           PIC  9.
+      *****     88 fatt-tutto VALUE IS 1    WHEN SET TO FALSE  0. 
+      *
+       01 filler           PIC  9.
+           88 trovata-bolla VALUE IS 1    WHEN SET TO FALSE  0. 
+       01 filler           PIC  9.
+           88 ImpegnatoRipristinato VALUE IS 1    WHEN SET TO FALSE  0.
+      ***** 01 filler           PIC  9.
+      *****     88 trovata-fatt VALUE IS 1    WHEN SET TO FALSE  0. 
+       01 filler           PIC  9
+                  VALUE IS 0.
+           88 chiudibile VALUE IS 1    WHEN SET TO FALSE  0. 
+      ***** 01 filler           PIC  9
+      *****            VALUE IS 0.
+      *****     88 ricalcolo VALUE IS 1    WHEN SET TO FALSE  0. 
+       01 filler           PIC  9
+                  VALUE IS 0.
+           88 ok-tutto VALUE IS 0. 
+      *IN-P, RICALDIN-BAT, EVAART, EVAART-GDO
+           88 no-mail VALUE IS 1. 
+           88 no-tagli VALUE IS 2. 
+      *E-P
+           88 no-mail-no-tagli VALUE IS 3.   
+       01  filler           pic 9 value 0.
+         88 no-cli          value 1, false 0.
+
+       77 stato-originale  PIC  9.
+       77 stato-originale-riga         PIC  99.
+       01 filler           PIC  9.
+           88 ordine-evaso VALUE IS 1,    WHEN SET TO FALSE  0. 
+       01 filler           PIC  9.
+           88 NoRipristino VALUE IS 1,    WHEN SET TO FALSE  0. 
+       01 filler           PIC  9.
+           88 tutto-banco VALUE IS 1,    WHEN SET TO FALSE  0. 
+       77 qta-evadere      PIC  s9(8).
+       01 filler           PIC  9.
+           88 promo-valida VALUE IS 1,    WHEN SET TO FALSE  0. 
+       01 filler           PIC  9.
+           88 trovato-taglio VALUE IS 1,    WHEN SET TO FALSE  0. 
+       77 como-qta-imballi PIC  9(4).
+       77 tot-righe-master PIC  9(5).
+       77 tot-righe-chiuse PIC  9(5).
+       77 tot-righe-chiusura2 PIC  9(5).
+       77 tot-righe-aperte PIC 9(5).
+       77 tot-peso-saldo   pic 9(6)v999.
+           COPY  "costo-medio.def".
+           COPY  "imposte.def".

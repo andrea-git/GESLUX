@@ -1,0 +1,17 @@
+      *
+       01 agfatt-p-linkage.
+           03 LinkAnno         PIC  9(4).
+           03 LinkData         PIC  9(8).
+           03 FirstNumber      PIC  9(8).
+           03 LastNumber       PIC  9(8).
+           03 tot-fat          PIC  9(8).
+           03 postel-fat       PIC  9(8).
+           03 edi-fat          PIC  9(8).
+           03 tot-doc          PIC  9(8).
+           03 link-user        PIC  x(10).
+           03 link-handle
+                      USAGE IS HANDLE OF WINDOW.
+           03 LinkTipo         PIC  x.
+               88 LinkMerce VALUE IS "F". 
+               88 LinkManuali VALUE IS "M". 
+               88 LinkNote VALUE IS "N". 

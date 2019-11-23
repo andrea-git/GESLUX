@@ -1,0 +1,141 @@
+       FD  OLD-articoli.
+       01 OLD-art-rec.
+           05 OLD-art-chiave.
+               10 OLD-art-codice       PIC  9(6).
+           05 OLD-art-dati.
+               10 OLD-art-descrizione  PIC  X(50).
+               10 OLD-art-settore-merceologico     PIC  9(4).
+               10 OLD-art-marca-prodotto           PIC  9(4).
+               10 OLD-art-classe-1     PIC  9(4).
+               10 OLD-art-classe-2     PIC  9(3).
+               10 OLD-art-classe-3     PIC  9(3).
+               10 OLD-art-classe-4     PIC  9(3).
+               10 OLD-art-unita-di-misura          PIC  X(2).
+               10 OLD-art-cod-fornitore            PIC  9(5).
+               10 OLD-art-gestione-utf PIC  X(1).
+                   88 OLD-art-si-utf VALUE IS "S". 
+                   88 OLD-art-misto VALUE IS "M". 
+                   88 OLD-art-no-utf VALUE IS "N". 
+               10 OLD-art-peso-utf     PIC  9(3)v9(3).
+               10 OLD-art-peso-non-utf PIC  9(3)v9(3).
+               10 OLD-art-peso-standard            PIC  9(4)v9(3).
+               10 OLD-art-imballo-standard         PIC  X(3).
+               10 OLD-art-udm-imballo  PIC  x(5).
+               10 OLD-art-codice-iva   PIC  x(3).
+               10 OLD-art-prezzo-vendita           PIC  9(9)v9(2).
+               10 OLD-art-perce-sconto-agente      PIC  9(2)v9(2).
+               10 OLD-art-prezzo-acquisto          PIC  9(9)v9(2).
+               10 OLD-art-perce-sconto-acquisto    PIC  9(2)v9(2).
+               10 OLD-art-cod-doganale PIC  9(8).
+               10 OLD-art-soggetto-imposte         PIC  X(1).
+                   88 OLD-art-si-imposte VALUE IS "S". 
+                   88 OLD-art-no-imposte VALUE IS "N". 
+               10 OLD-art-perce-imposte            PIC  9(3)v9(3).
+               10 OLD-art-perce-cou    PIC  9(3)v9(3).
+               10 OLD-art-soggetto-cobat           PIC  X(1).
+                   88 OLD-art-si-cobat VALUE IS "S". 
+                   88 OLD-art-no-cobat VALUE IS "N". 
+               10 OLD-art-amperaggio   PIC  9(3).
+               10 OLD-art-auto-moto-per-cobat      PIC  X(1).
+                   88 OLD-art-auto-cobat VALUE IS "A". 
+                   88 OLD-art-moto-cobat VALUE IS "M". 
+               10 OLD-art-note         PIC  X(30).
+               10 OLD-art-codice-ean-1 PIC  9(13).
+               10 OLD-art-codice-ean-2 PIC  9(13).
+               10 OLD-art-codice-ean-3 PIC  9(13).
+               10 OLD-art-codice-ean-4 PIC  9(13).
+               10 OLD-art-codice-ean-5 PIC  9(13).
+               10 OLD-art-foto         PIC  X(512).
+               10 OLD-art-note-agg     PIC  x(512).
+               10 OLD-art-scheda-tecnica           PIC  X(512).
+               10 OLD-art-tossicologica            PIC  x(512).
+               10 OLD-art-descrizione-2            PIC  x(50).
+               10 OLD-art-qta-epal     PIC  9(8).
+               10 OLD-art-qta-std      PIC  9(8).
+               10 OLD-art-misure.
+                   15 OLD-art-altezza      PIC  9(6)v99.
+                   15 OLD-art-larghezza    PIC  9(6)v99.
+                   15 OLD-art-profondita   PIC  9(6)v99.
+               10 OLD-art-stato        PIC  X(1).
+                   88 OLD-art-attivo VALUE IS "A". 
+                   88 OLD-art-disattivo VALUE IS "D". 
+                   88 OLD-art-bloccato VALUE IS "B". 
+               10 OLD-art-diretti      PIC  9.
+                   88 OLD-art-si-diretti VALUE IS 1. 
+                   88 OLD-art-no-diretti VALUE IS 0. 
+               10 OLD-art-gruppi       PIC  9.
+                   88 OLD-art-si-gruppi VALUE IS 1. 
+                   88 OLD-art-no-gruppi VALUE IS 0. 
+               10 OLD-art-gda          PIC  9.
+                   88 OLD-art-si-gda VALUE IS 1. 
+                   88 OLD-art-no-gda VALUE IS 0. 
+               10 OLD-art-agenti       PIC  9.
+                   88 OLD-art-si-agenti VALUE IS 1. 
+                   88 OLD-art-no-agenti VALUE IS 0. 
+               10 OLD-art-specialist   PIC  9.
+                   88 OLD-art-si-specialist VALUE IS 1. 
+                   88 OLD-art-no-specialist VALUE IS 0. 
+               10 OLD-art-estero       PIC  9.
+                   88 OLD-art-si-estero VALUE IS 1. 
+                   88 OLD-art-no-estero VALUE IS 0. 
+               10 OLD-art-gds          PIC  9.
+                   88 OLD-art-si-gds VALUE IS 1. 
+                   88 OLD-art-no-gds VALUE IS 0. 
+               10 OLD-art-scorta       PIC  s9(8).
+               10 OLD-art-prezzo-banco PIC  9(6)v9(2).
+               10 OLD-art-prz-min-vend PIC  9(5)v9(2).
+               10 OLD-art-limite-scorta            PIC  9(8).
+               10 OLD-art-peso-reale   PIC  9(3)v999.
+               10 OLD-art-do           PIC  9.
+                   88 OLD-art-si-do VALUE IS 1. 
+                   88 OLD-art-no-do VALUE IS 0. 
+               10 OLD-art-cod-art-frn  PIC  x(15).
+               10 OLD-art-mag-std      PIC  x(3).
+               10 OLD-art-collegato    PIC  9(6).
+               10 OLD-art-cod-desf-forn            PIC  9(5).
+               10 OLD-art-cod-prodener PIC  x(10).
+               10 OLD-art-tipo-stoc    PIC  x.
+                   88 OLD-art-confezionato VALUE IS "C" " ". 
+                   88 OLD-art-sfuso VALUE IS "S". 
+               10 OLD-art-logo-brand   PIC  X(512).
+               10 OLD-art-conf-cartone PIC  9(6).
+               10 OLD-art-cartone-UDC  PIC  9(6).
+               10 OLD-art-misure-pz.
+                   20 OLD-art-altezza-pz   PIC  9(6)v99.
+                   20 OLD-art-larghezza-pz PIC  9(6)v99.
+                   20 OLD-art-profondita-pz            PIC  9(6)v99.
+               10 OLD-art-web          PIC  9.
+                   88 OLD-art-web-si VALUE IS 1. 
+                   88 OLD-art-web-no VALUE IS 0. 
+               10 OLD-art-adr          PIC  x(15).
+               10 OLD-art-dati-comuni.
+                   15 OLD-art-data-creazione           PIC  9(8).
+                   15 OLD-art-ora-creazione            PIC  9(8).
+                   15 OLD-art-utente-creazione         PIC  X(10).
+                   15 OLD-art-data-ultima-modifica     PIC  9(8).
+                   15 OLD-art-ora-ultima-modifica      PIC  9(8).
+                   15 OLD-art-utente-ultima-modifica   PIC  X(10).
+               10 OLD-art-vuoti.
+                   15 OLD-art-peso-SHI     PIC  9(6)v999.
+                   15 OLD-art-SPI          PIC  9.
+                       88 OLD-art-SPI-si VALUE IS 1. 
+                       88 OLD-art-SPI-no VALUE IS 0. 
+                   15 OLD-art-T1           PIC  9.
+                       88 OLD-art-T1-si VALUE IS 1. 
+                       88 OLD-art-T1-no VALUE IS 0. 
+                   15 OLD-art-T2           PIC  9.
+                       88 OLD-art-T2-si VALUE IS 1. 
+                       88 OLD-art-T2-no VALUE IS 0. 
+                   15 OLD-art-T3           PIC  9.
+                       88 OLD-art-T3-si VALUE IS 1. 
+                       88 OLD-art-T3-no VALUE IS 0. 
+                   15 OLD-art-peso-GET     PIC  9(6)v999.
+                   15 OLD-art-AT           PIC  9.
+                       88 OLD-art-AT-si VALUE IS 1. 
+                       88 OLD-art-AT-no VALUE IS 0. 
+                   15 OLD-art-TEXACO       PIC  9.
+                       88 OLD-art-TEXACO-si VALUE IS 1. 
+                       88 OLD-art-TEXACO-no VALUE IS 0. 
+                   15 OLD-art-num-vuoto-2  PIC  9(12).
+                   15 OLD-art-num-vuoto-3  PIC  9(18).
+                   15 OLD-art-alfa-vuoto   PIC  X(500).

@@ -1,0 +1,18 @@
+      *(( XFD FILE = zoom-bolle ))
+       FD  zoom-bolle.
+       01 zoom-bol-rec.
+           05 zoom-bol-chiave.
+               10 zoom-bol-anno    PIC  9(4).
+               10 zoom-bol-numero  PIC  9(8).
+           05 zoom-bol-dati.
+               10 zoom-bol-tor-chiave.
+                   15 zoom-bol-tor-anno            PIC  9(4).
+                   15 zoom-bol-tor-numero          PIC  9(8).
+               10 zoom-bol-data-ordine         PIC  9(8).
+               10 zoom-bol-causale PIC  x(20).
+               10 zoom-bol-cod-cli PIC  9(5).
+               10 zoom-bol-cli-ragsoc-1        PIC  x(40).
+               10 zoom-bol-prg-destino         PIC  9(5).
+               10 zoom-bol-des-localita        PIC  X(35).
+               10 zoom-bol-num-fat PIC  9(8).
+               10 zoom-bol-data-fat            PIC  9(8).

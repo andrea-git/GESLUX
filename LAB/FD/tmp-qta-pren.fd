@@ -1,0 +1,9 @@
+      *(( XFD FILE = tmp-qta-pren ))
+       FD  tmp-qta-pren.
+       01 tqp-rec.
+           05 tqp-chiave.
+               10 tqp-articolo     PIC  9(6).
+               10 tqp-promo        PIC  9(15).
+           05 tqp-dati.
+               10 tqp-prenotata    PIC  9(8).
+               10 tqp-prenotata-orig           PIC  9(8).

@@ -1,0 +1,16 @@
+- anagrafiche EDI su clienti/destini
+- attivazione contatori (partirà da quello impostato + 1)
+- attivazione EDI recapiti
+- causale tipo vendita EDI su quelle usate e su omaggio (anche NCRE--> L02  NCPZ FTND)
+- EDI-tiva
+- EDI-param
+- il campo ID EDI valorizzato con 12683790153T (T = TEST) dovrà diventare 12683790153 quando sarà in effettivo.
+- Per le fatture manuali e le note credito generiche NCNC e FTMA valorizzare la causale EDI con "XX"
+- Valorizzare "PATH_EDI" col percorso in cui creare i files da inviare
+- Valorizzare "EDI_PATH_PDF" col path in cui creare i pdf per i generici (creando la cartella) e "EDI_STAMPANTE_DIRETTA" con bullzip
+- Valorizzare le variabili per la mail ed eventualmente "tsetinvio" se si vuole PEC
+  # INVIO AUTOMATICO EDI DOCUMENTI GENERICI
+  EDI_PATH_PDF 
+  EDI_STAMPANTE_DIRETTA Bullzip PDF Printer
+  EDI_ADDRESS_CC 
+  EDI_ADDRESS scartidocumentiedi@pec.carrefour.it

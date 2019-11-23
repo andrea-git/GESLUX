@@ -1,0 +1,17 @@
+      *
+       01 fatman-linkage.
+           03 FatChiave.
+               05 FatAnno          PIC  9(4).
+               05 FatNumero        PIC  9(8).
+           03 Link-TipoFat     PIC  x(4).
+               88 LinkFTMA VALUE IS "FTMA". 
+               88 LinkFTTR VALUE IS "FTTR". 
+               88 LinkFTND VALUE IS "FTND". 
+           03 LinkPrezzo       PIC  x.
+               88 LinkCostoMedio VALUE IS "C". 
+               88 LinkMedesimo VALUE IS "M". 
+           03 LinkTipoMan      PIC  x.
+               88 LinkFattMan VALUE IS "F". 
+               88 LinkBozzaMan VALUE IS "B". 
+           03 LinkStatusMan
+                      USAGE IS SIGNED-SHORT.

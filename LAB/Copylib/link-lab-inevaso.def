@@ -1,0 +1,8 @@
+       01  lab-inevaso-linkage.
+           05 lin-data          pic 9(8).
+           05 lin-tipo          pic x.
+              88 lin-stampa     value "s".
+              88 lin-anteprima  value "a".
+              88 lin-pdf        value "p".
+           05 lin-path-pdf      pic x(256).
+

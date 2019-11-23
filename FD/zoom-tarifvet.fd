@@ -1,0 +1,11 @@
+      *(( XFD FILE = zoom-tarifvet ))
+       FD  zoom-tarifvet.
+       01 zoom-tar-rec.
+           05 zoom-tar-chiave.
+               10 zoom-tar-vettore PIC  9(5).
+               10 zoom-tar-campo1  PIC  x(5).
+               10 zoom-tar-campo2  PIC  9(5).
+           05 zoom-tar-dati.
+               10 zoom-tar-vet-descrizione     PIC  x(40).
+               10 zoom-tar-campo1-descrizione  PIC  x(40).
+               10 zoom-tar-campo2-destinazione PIC  x(35).

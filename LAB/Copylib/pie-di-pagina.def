@@ -1,0 +1,13 @@
+      *
+       01  p-riga.
+         05 data-stampa          pic x(40).
+         05 pagina-di            pic x(20).
+
+       77  mese                  pic x(11).
+       77  giorno                pic x(10).
+       77  pagina                pic 9(3).
+       77  tot-pag               pic 9(3).
+       77  resto                 pic 9(3).
+       77  pagina-x              pic x(3).
+       77  tot-pag-x             pic x(3).
+       77  font-pie-pagina       handle of font value 0.

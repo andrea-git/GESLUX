@@ -1,0 +1,20 @@
+      *(( XFD FILE = tmp-movf ))
+      *
+      *
+      *
+       FD  tmp-movf.
+       01 tmf-rec.
+           05 tmf-chiave.
+               10 tmf-forn         PIC  9(5).
+               10 tmf-data-mov     PIC  9(8).
+               10 tmf-num-mov      PIC  9(8).
+               10 tmf-data-scad    PIC  9(8).
+           05 tmf-dati.
+               10 tmf-num-bolla    PIC  9(8).
+               10 tmf-data-bolla   PIC  9(8).
+               10 tmf-forn-ragsoc  PIC  x(50).
+               10 tmf-codpag       PIC  x(3).
+               10 tmf-despag       PIC  x(100).
+               10 tmf-importo      PIC  ----.---.---.--9,99.
+               10 tmf-importo-iva  PIC  ----.---.---.--9,99.
+               10 tmf-importo-scad PIC  ----.---.---.--9,99.

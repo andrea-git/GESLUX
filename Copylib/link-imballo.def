@@ -1,0 +1,9 @@
+      *
+       01 imballo-linkage.
+           05 link-des         PIC  x(50).
+           05 link-qta         PIC  9(5).
+           05 link-udm         PIC  x(5).
+           05 filler           PIC  9.
+               88 link-blister VALUE IS 1,    WHEN SET TO FALSE  0. 
+           05 link-imballo-saved
+                      USAGE IS SIGNED-SHORT.

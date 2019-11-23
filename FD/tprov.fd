@@ -1,0 +1,31 @@
+       FD  tprov.
+       01 prv-rec.
+           05 prv-chiave.
+               10 prv-codice       PIC  x(2).
+           05 prv-dati.
+               10 prv-descrizione  PIC  x(30).
+               10 prv-regione      PIC  9(3).
+               10 prv-dati-comuni.
+                   15 prv-data-creazione           PIC  9(8).
+                   15 prv-ora-creazione            PIC  9(8).
+                   15 prv-utente-creazione         PIC  x(10).
+                   15 prv-data-ultima-modifica     PIC  9(8).
+                   15 prv-ora-ultima-modifica      PIC  9(8).
+                   15 prv-utente-ultima-modifica   PIC  x(10).
+               10 prv-vuoti.
+                   15 prv-scaglione-1.
+                       20 prv-dal-1        PIC  9(5)v9(3).
+                       20 prv-al-1         PIC  9(5)v9(3).
+                       20 prv-vet-1        PIC  9(5).
+                       20 prv-dal-2        PIC  9(5)v9(3).
+                       20 prv-al-2         PIC  9(5)v9(3).
+                       20 prv-vet-2        PIC  9(5).
+                       20 prv-dal-3        PIC  9(5)v9(3).
+                       20 prv-al-3         PIC  9(5)v9(3).
+                       20 prv-vet-3        PIC  9(5).
+                       20 prv-dal-4        PIC  9(5)v9(3).
+                       20 prv-al-4         PIC  9(5)v9(3).
+                       20 prv-vet-4        PIC  9(5).
+                       20 prv-dal-5        PIC  9(5)v9(3).
+                       20 prv-al-5         PIC  9(5)v9(3).
+                       20 prv-vet-5        PIC  9(5).

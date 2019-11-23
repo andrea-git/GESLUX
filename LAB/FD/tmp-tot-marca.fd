@@ -1,0 +1,7 @@
+      *(( XFD FILE = tmp-tot-marca ))
+       FD  tmp-tot-marca.
+       01 tmpm-rec.
+           05 tmpm-chiave.
+               10 tmpm-marca       PIC  x(40).
+           05 tmpm-dati.
+               10 tmpm-totale      PIC  s9(9)v99.

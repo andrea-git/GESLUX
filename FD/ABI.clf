@@ -1,0 +1,250 @@
+; CaseMaker Totem Layout Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[MONITOR_FILE]
+
+
+[DATALAYOUT_CONTENT]
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E3AA205442-388-2785721846
+[DSNENTITY_]
+[CStoAcucobolFileDefinition_]
+m_nType=1
+m_bBlockRecords=1
+m_bRecord=1
+m_nRecordMax=167
+m_bStandard=1
+m_strXfdFile=ABI
+m_strPrefix=ABI
+{{@FD_m_strDescription
+-----------------------------------------------------------------
+ ABI
+-----------------------------------------------------------------
+ ticket 4448 -  Passare a nuova interfaccia il programma GESABI                          | roscri 07/03/2012
+-----------------------------------------------------------------
+
+ tplvar zmm_title=ABI/CAB
+ tplvar zmm_ver=09.01.00
+ tplvar zmm_class=anagraphic
+ tplvar zmm_returnkey=abi-codice
+
+ ZoomFields seq:
+ 01.abi-codice-abi-x
+ 02.abi-codice-cab
+ 03.abi-banca1
+ 04.abi-banca2
+ 05.abi-localita
+ 06.abi-via
+ 07.abi-cap
+ 08.abi-citta
+ 09.abi-provincia
+
+ |DS 01/04/2009 9.29
+
+@}}
+[FDITEM0_]
+m_strName=RECORD-ABI
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_
+
+@}}
+[FDITEM1_]
+m_strName=ABI-CODICE
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1_
+
+@}}
+[FDITEM2_]
+m_strName=ABI-CODICE-ABI
+m_strRawPic=9(05)
+m_strPic=9(05)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM2_
+
+
+@}}
+[FDITEM3_]
+m_strName=FILLER
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=ABI-CODICE-ABI
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM3_
+
+@}}
+[FDITEM4_]
+m_strName=ABI-CODICE-ABI-X
+m_strRawPic=X(05)
+m_strPic=X(05)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM4_
+$GEN zmm=on,zmm_title=Codice ABI,zmm_datatype=x,zmm_key=1,zmm_size=05,zmm_align=L,zmm_pos=1
+
+@}}
+[FDITEM5_]
+m_strName=ABI-CODICE-CAB
+m_strRawPic=9(05)
+m_strPic=9(05)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM5_
+$GEN zmm=on,zmm_title=Codice CAB,zmm_datatype=x,zmm_size=05,zmm_align=L,zmm_pos=2
+@}}
+[FDITEM6_]
+m_strName=filler
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=abi-codice-cab
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM6_
+
+@}}
+[FDITEM7_]
+m_strName=abi-codice-cab-x
+m_strRawPic=x(05)
+m_strPic=X(05)
+m_nItemLevel=14
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM7_
+
+@}}
+[FDITEM8_]
+m_strName=RESTO-RECORD-ABI
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM8_
+
+@}}
+[FDITEM9_]
+m_strName=ABI-BANCA1
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM9_
+$GEN zmm=on,zmm_title=Banca,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=3
+@}}
+[FDITEM10_]
+m_strName=ABI-BANCA2
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM10_
+$GEN zmm=on,zmm_title=Sportello,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=4
+@}}
+[FDITEM11_]
+m_strName=ABI-LOCALITA
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM11_
+$GEN zmm=on,zmm_title=Località,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=5
+
+@}}
+[FDITEM12_]
+m_strName=ABI-VIA
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM12_
+$GEN zmm=on,zmm_title=Indirizzo,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=6
+
+@}}
+[FDITEM13_]
+m_strName=ABI-CAP
+m_strRawPic=X(05)
+m_strPic=X(05)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM13_
+$GEN zmm=on,zmm_title=CAP,zmm_datatype=x,zmm_size=5,zmm_align=L,zmm_pos=7
+
+@}}
+[FDITEM14_]
+m_strName=ABI-CITTA
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM14_
+$GEN zmm=on,zmm_title=Città,zmm_datatype=x,zmm_key=3,zmm_size=30,zmm_align=L,zmm_pos=8
+@}}
+[FDITEM15_]
+m_strName=ABI-PROVINCIA
+m_strRawPic=X(02)
+m_strPic=X(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM15_
+$GEN zmm=on,zmm_title=Provincia,zmm_datatype=x,zmm_size=2,zmm_align=L,zmm_pos=9
+@}}
+[CStoAcucobolSL_]
+m_nType=1
+m_bOptional=1
+m_strAssignToName="ABI"
+m_nDevice=4
+m_nFormat=3
+m_nAccessMode=3
+m_strFileStatus=STATUS-ABI
+m_nCompression=90
+{{@SL_m_strDescription
+
+@}}
+[SLPKEY_]
+m_strName=ABI-CODICE
+m_bUnique=1
+{{@Key_m_strDescription
+
+@}}
+[SLKEYATOM0_]
+m_strName=ABI-CODICE
+[SLINDEX0_]
+m_strName=ABI-CODICE1
+m_bUnique=1
+{{@Key_m_strDescriptionSLINDEX0_
+
+@}}
+[SLKEYATOM0_SLINDEX0_]
+m_strName=ABI-BANCA1
+[SLKEYATOM1_SLINDEX0_]
+m_strName=ABI-CITTA
+[SLKEYATOM2_SLINDEX0_]
+m_strName=ABI-BANCA2
+[SLKEYATOM3_SLINDEX0_]
+m_strName=ABI-CODICE
+[SLINDEX1_]
+m_strName=ABI-CODICE2
+m_bUnique=1
+{{@Key_m_strDescriptionSLINDEX1_
+
+@}}
+[SLKEYATOM0_SLINDEX1_]
+m_strName=ABI-CITTA
+[SLKEYATOM1_SLINDEX1_]
+m_strName=ABI-BANCA1
+[SLKEYATOM2_SLINDEX1_]
+m_strName=ABI-BANCA2
+[SLKEYATOM3_SLINDEX1_]
+m_strName=ABI-CODICE

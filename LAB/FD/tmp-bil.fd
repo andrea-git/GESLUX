@@ -1,0 +1,11 @@
+      *(( XFD FILE = tmp-bil ))
+       FD  tmp-bil.
+       01 tbil-rec.
+           05 tbil-chiave.
+               10 tbil-tipo-cli    PIC  x(2).
+               10 tbil-marca       PIC  9(4).
+               10 tbil-gdo         PIC  x(5).
+           05 tbil-dati.
+               10 tbil-kg-vend     PIC  s9(9)v999.
+               10 tbil-fatturato   PIC  s9(12)v99.
+               10 tbil-provv       PIC  s9(12)v99.

@@ -1,0 +1,22 @@
+       FD  catart.
+       01 cat-rec.
+           05 cat-chiave.
+               10 cat-codice       PIC  9(6).
+               10 cat-princ        PIC  9(6).
+           05 cet-dati.
+               10 cat-catena
+                          OCCURS 1000 TIMES.
+                   15 cat-collegato    PIC  9(6).
+               10 cat-num-el-catena            PIC  9(4).
+               10 cat-dati-comuni.
+                   15 cat-data-creazione           PIC  9(8).
+                   15 cat-ora-creazione            PIC  9(8).
+                   15 cat-utente-creazione         PIC  X(10).
+                   15 cat-data-ultima-modifica     PIC  9(8).
+                   15 cat-ora-ultima-modifica      PIC  9(8).
+                   15 cat-utente-ultima-modifica   PIC  X(10).
+               10 cat-vuoti.
+                   15 cat-num-vuoto-1  PIC  9(18).
+                   15 cat-num-vuoto-2  PIC  9(18).
+                   15 cat-num-vuoto-3  PIC  9(18).
+                   15 cat-alfa-vuoto   PIC  X(500).

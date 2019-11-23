@@ -1,0 +1,20 @@
+      *
+       01 stato-ordine     PIC  9.
+           88 registrato VALUE IS 1. 
+           88 in-lavorazione VALUE IS 2. 
+           88 sped-parz VALUE IS 3. 
+           88 sped-tot VALUE IS 4. 
+           88 fatt-parz VALUE IS 5. 
+           88 fatt-tot VALUE IS 6. 
+           88 chiuso VALUE IS 7. 
+           88 tutti VALUE IS 8. 
+           88 bloccato VALUE IS 9. 
+       78 78-tutti VALUE IS "Tutti". 
+       78 78-registrato VALUE IS "Registrato". 
+       78 78-in-lavorazione VALUE IS "In Lavorazione". 
+       78 78-sped-parz VALUE IS "Spedito Parzialmente". 
+       78 78-sped-tot VALUE IS "Spedito Totalmente". 
+       78 78-fatt-parz VALUE IS "Fatturato Parzialmente". 
+       78 78-fatt-tot VALUE IS "Fatturato Totalmente". 
+       78 78-chiuso VALUE IS "Chiuso". 
+       78 78-bloccato VALUE IS "Bloccato". 

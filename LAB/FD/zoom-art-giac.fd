@@ -1,0 +1,12 @@
+      *(( XFD FILE = zoom-art-giac ))
+      *
+      *
+       FD  zoom-art-giac.
+       01 zag-rec.
+           05 zag-chiave.
+               10 zag-art-codice   PIC  9(6).
+           05 zag-dati.
+               10 zag-art-descrizione          PIC  x(50).
+               10 zag-peso         PIC  9(5)v9(3).
+               10 zag-peso-utf     PIC  9(5)v9(3).
+               10 zag-giac-LBX     PIC  s9(8).

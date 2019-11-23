@@ -1,0 +1,1768 @@
+; CaseMaker Totem Program Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[MONITOR_FILE]
+
+
+[PROGRAM_CONTENT]
+QUIT_CONFIRM=0
+ANSI_FORMAT=1
+MAIN_SCREEN_NAME=scr-visua
+BEFORE_PROGRAM=stbolle-Ev-Before-Program
+AFTER_PROGRAM=stbolle-Ev-After-Program
+PROGRAM_UNIQUE_CODE=TOTEM-7E3AA205619-819-1681024128
+
+{{@DESCRIPTION:
+
+@}}
+
+[WORKING_STORAGE]
+m_nType=1
+m_strName=Working Storage
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionWK
+
+@}}
+[FDITEM0_WK]
+m_strName=OK-73X21-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_WK
+
+@}}
+[FDITEM1_WK]
+m_strName=CANCEL-73X21-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1_WK
+
+@}}
+[FDITEM2_WK]
+m_strName=Default-Font
+m_nUsage=38
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM2_WK
+
+@}}
+[FDITEM3_WK]
+m_strName=Small-Font
+m_nUsage=37
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM3_WK
+
+@}}
+[FDITEM4_WK]
+m_strName=titolo
+m_strDefaultValue="GESLUX - Schedulatore batch notturni"
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM4_WK
+
+@}}
+[FDITEM5_WK]
+m_strName=AUTO-ID
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM5_WK
+
+@}}
+[FDITEM6_WK]
+m_strName=bottone-ok-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM6_WK
+
+@}}
+[FDITEM7_WK]
+m_strName=bottone-cancel-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM7_WK
+
+@}}
+[FDITEM8_WK]
+m_strName=Verdana12-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM8_WK
+
+@}}
+[FDITEM9_WK]
+m_strName=toolbar-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM9_WK
+
+@}}
+[FDITEM10_WK]
+m_strName=E-ESCI
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM10_WK
+
+@}}
+[FDITEM11_WK]
+m_strName=Form1-Tb-1-Handleaa
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM11_WK
+
+@}}
+[FDITEM12_WK]
+m_strName=spunta2-bmp
+m_nUsage=45
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM12_WK
+
+@}}
+[FDITEM13_WK]
+m_strName=como-x
+m_strRawPic=x
+m_strPic=x
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM13_WK
+
+@}}
+[FDITEM14_WK]
+m_strName=LastPrg
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM14_WK
+
+@}}
+[FDITEM15_WK]
+m_strName=rec-grid
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM15_WK
+
+@}}
+[FDITEM16_WK]
+m_strName=col-prg
+m_strRawPic=zz9
+m_strPic=zz9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM16_WK
+
+@}}
+[FDITEM17_WK]
+m_strName=col-programma
+m_strRawPic=x(30)
+m_strPic=x(30)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM17_WK
+
+@}}
+[FDITEM18_WK]
+m_strName=col-invio
+m_strRawPic=x
+m_strPic=x
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM18_WK
+
+@}}
+[FDITEM19_WK]
+m_strName=gruppo-hidden
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM19_WK
+
+@}}
+[FDITEM20_WK]
+m_strName=hid-abil
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM20_WK
+
+@}}
+[FDITEM21_WK]
+m_strName=hid-bloc
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM21_WK
+
+@}}
+[FDITEM22_WK]
+m_strName=hid-bile
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM22_WK
+
+@}}
+[FDITEM23_WK]
+m_strName=rec-grid2
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM23_WK
+
+@}}
+[FDITEM24_WK]
+m_strName=col-prg2
+m_strRawPic=zz9
+m_strPic=zz9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM24_WK
+
+@}}
+[FDITEM25_WK]
+m_strName=col-programma2
+m_strRawPic=x(30)
+m_strPic=x(30)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM25_WK
+
+@}}
+[FDITEM26_WK]
+m_strName=col-invio2
+m_strRawPic=x
+m_strPic=x
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM26_WK
+
+@}}
+[FDITEM27_WK]
+m_strName=gruppo-hidden2
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM27_WK
+
+@}}
+[FDITEM28_WK]
+m_strName=hid-abil2
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM28_WK
+
+@}}
+[FDITEM29_WK]
+m_strName=hid-bloc2
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM29_WK
+
+@}}
+[FDITEM30_WK]
+m_strName=hid-bile2
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM30_WK
+
+@}}
+[FDITEM31_WK]
+m_strName=form1-handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM31_WK
+
+@}}
+[FDITEM32_WK]
+m_strName=STATUS-batnott
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM32_WK
+
+@}}
+[FDITEM33_WK]
+m_strName=Valid-STATUS-batnott
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM33_WK
+
+@}}
+[FDITEM34_WK]
+m_strName=Verdana10-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM34_WK
+
+@}}
+[FDITEM35_WK]
+m_strName=v-screen
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM35_WK
+
+@}}
+[FDITEM36_WK]
+m_strName=freccia_su-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM36_WK
+
+@}}
+[FDITEM37_WK]
+m_strName=FRECCIA_GiU-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM37_WK
+
+@}}
+[FDITEM38_WK]
+m_strName=aggiungi-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM38_WK
+
+@}}
+[FDITEM39_WK]
+m_strName=elimina-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM39_WK
+
+@}}
+
+
+[LINKAGE_SECTION]
+m_nType=1
+m_strName=Linkage Section
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionLK
+
+@}}
+[FDITEM0_LK]
+m_strName=LK-BLOCKPGM
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM0_LK
+
+@}}
+[FDITEM1_LK]
+m_strName=LK-BL-PROG-ID
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM1_LK
+
+@}}
+[FDITEM2_LK]
+m_strName=LK-BL-DATA
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM2_LK
+
+@}}
+[FDITEM3_LK]
+m_strName=LK-BL-ORA
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM3_LK
+
+@}}
+[FDITEM4_LK]
+m_strName=LK-BL-TIPO-OP
+m_strRawPic=9(1)
+m_strPic=9(1)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM4_LK
+
+@}}
+[FDITEM5_LK]
+m_strName=LK-BL-LETTURA
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM5_LK
+
+@}}
+[FDITEM6_LK]
+m_strName=LK-BL-SCRITTURA
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=2
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM6_LK
+
+@}}
+[FDITEM7_LK]
+m_strName=LK-BL-CANCELLAZIONE
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=3
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM7_LK
+
+@}}
+[FDITEM8_LK]
+m_strName=LK-BL-USO
+m_strRawPic=9(1)
+m_strPic=9(1)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM8_LK
+
+@}}
+[FDITEM9_LK]
+m_strName=LK-BL-IN-USO
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM9_LK
+
+@}}
+[FDITEM10_LK]
+m_strName=LK-HND-WIN
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM10_LK
+
+@}}
+[FDITEM11_LK]
+m_strName=USER-CODI
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=common-linkage.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM11_LK
+
+@}}
+[FDITEM12_LK]
+m_strName=LIVELLO-ABIL
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=common-linkage.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM12_LK
+
+@}}
+
+
+{{@SCREEN:
+*   Screen Painter Data
+*   Schema 6.0
+*
+BEGIN-SPDATA-6.1A
+
+GRAPHICAL-SCREEN
+
+Begin Screen scr-visua
+   PREFIX            = scr-visua
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = scr-visua
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = TRUE
+   Cell Height       = 10
+   Cell Width        = 10
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = TRUE
+   Font              = Verdana/12/C0/@Occidentale
+   Font Variable     = Verdana12-Occidentale
+   Handle Variable   = form1-handle
+   Height in Cells   = TRUE
+   Help ID           = 1
+   Label Offset      = 0
+   Lines             = 47,20
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = TRUE
+   Operation Mode    = Interactive Mode
+   Resizable         = TRUE
+   Scroll            = FALSE
+   Size              = 78,80
+   System Menu       = TRUE
+   Title Bar         = TRUE
+   Title Variable    = titolo
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Visible Variable  = v-screen
+   Width in Cells    = TRUE
+   Window Type       = Independent
+   Wrap              = FALSE
+   Begin Grid form1-gd-1
+      SCREEN-COL        = 1,80
+      SCREEN-LINE       = 2,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = form1-gd-1
+      Action            = (None)
+      Adjustable Columns = TRUE
+      Border            = Boxed
+      Cells' Setting    = ( X = 2, Y = 1, Data = "Programma" )
+      Cells' Setting    = ( X = 3, Y = 1, Data = "Abilitato" )
+      Cells' Setting    = ( X = 4, Y = 1, Data = "Bloccante" )
+      Cells' Setting    = ( X = 5, Y = 1, Data = "Bloccabile" )
+      Cells' Setting    = ( X = 6, Y = 1, Data = "Invio LOG" )
+      Centered Headings = FALSE
+      Color             = 0
+      Column            = 1,80
+      Column Headings   = TRUE
+      Columns' Setting  = ( X = 1, Name = col-prg, READONLY = 0 )
+      Columns' Setting  = ( PIC = "zz9", TYPE = "zz9", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 5, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 2, Name = col-programma, READONLY = 0 )
+      Columns' Setting  = ( PIC = "x(30)", TYPE = "X(30)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
+      Columns' Setting  = ( DISP = 30, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 3, Name = col-abil, READONLY = 0 )
+      Columns' Setting  = ( PIC = "9", TYPE = "9(1)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
+      Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 4, Name = col-bloc, READONLY = 0 )
+      Columns' Setting  = ( PIC = "9", TYPE = "9(1)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
+      Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 5, Name = col-bile, READONLY = 0 )
+      Columns' Setting  = ( PIC = "9", TYPE = "9(1)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
+      Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 6, Name = col-invio, READONLY = 0 )
+      Columns' Setting  = ( PIC = "x", TYPE = "U(1)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
+      Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
+      Cursor Color      = 0
+      Cursor Frame Width = 2
+      Cursor X          = 0
+      Cursor Y          = 0
+      Destroy Type      = Automatic
+      Divider Color     = 1
+      Drag Color        = 0
+      Enable            = NONE
+      End Color         = 0
+      Font              = Default Font
+      Heading Color     = 261
+      Heading Divider Color = 1
+      Heading Font      = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hscroll           = TRUE
+      ID                = 1
+      ID Variable       = AUTO-ID
+      Last Row          = 0
+      Line              = 2,00
+      Lines             = 40,30
+      Lines Unit        = Default
+      No Tab            = FALSE
+      Num Col Headings  = 1
+      Num Columns       = 6
+      Num Rows          = 0
+      Occurs            = 0
+      Paged             = FALSE
+      Row Dividers      = 1
+      Row Headings      = TRUE
+      Size              = 76,90
+      Size Unit         = Default
+      Tab Order         = 1
+      Tiled Headings    = TRUE
+      Use Tab           = FALSE
+      Virtual Width     = 75
+      Visible           = NONE
+      Vpadding          = 30
+      Vscroll           = TRUE
+      Width in Cells    = TRUE
+      Event Procedure   = scr-visua-Gd-1-Event-Proc
+      Msg-Begin-Drag    = form1-gd-1-Ev-Msg-Begin-Drag
+      Msg-Begin-Entry   = form1-gd-1-Ev-Msg-Begin-Entry
+      Msg-End-Drag      = form1-gd-1-Ev-Msg-End-Drag
+      Msg-Finish-Entry  = form1-gd-1-Ev-Msg-Finish-Entry
+      Msg-Goto-Cell     = form1-gd-1-Ev-Msg-Goto-Cell
+      Msg-Goto-Cell-Drag = form1-gd-1-Ev-Msg-Goto-Cell-Drag
+      Msg-Goto-Cell-Mouse = form1-gd-1-Ev-Msg-Goto-Cell-Mouse
+   End
+   Begin Push-Button pb-aggiungi
+      SCREEN-COL        = 1,40
+      SCREEN-LINE       = 43,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-aggiungi
+      Bitmap            = "..\RESOURCE\AGGIUNGI.BMP"
+      Bitmap Frame      = FALSE
+      Bitmap Handle     = AGGIUNGI-BMP
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 1,40
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 1000
+      Flat              = TRUE
+      Font              = Default Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 3
+      Line              = 43,00
+      Lines             = 4,70
+      Lines in Pixels   = 40
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 4,80
+      Size in Pixels    = 40
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 2
+      Termination Value = 0
+      Title             = "Sposta su"
+      Visible           = NONE
+      Width in Cells    = FALSE
+      Before Procedure  = pb-aggiungi-BeforeProcedure
+      After Procedure   = pb-aggiungi-AfterProcedure
+      Link To           = pb-aggiungi-LinkTo
+   End
+   Begin Push-Button pb-elimina
+      SCREEN-COL        = 6,30
+      SCREEN-LINE       = 43,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-elimina
+      Bitmap            = "..\RESOURCE\ELIMINA.BMP"
+      Bitmap Frame      = FALSE
+      Bitmap Handle     = ELIMINA-BMP
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 6,30
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 1001
+      Flat              = TRUE
+      Font              = Default Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 4
+      Line              = 43,00
+      Lines             = 4,70
+      Lines in Pixels   = 40
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 4,80
+      Size in Pixels    = 40
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 3
+      Termination Value = 0
+      Title             = "Sposta su"
+      Visible           = NONE
+      Width in Cells    = FALSE
+      Before Procedure  = pb-elimina-BeforeProcedure
+      After Procedure   = pb-elimina-AfterProcedure
+      Link To           = pb-elimina-LinkTo
+   End
+   Begin Push-Button pb-su
+      SCREEN-COL        = 34,10
+      SCREEN-LINE       = 43,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-su
+      Bitmap            = "..\RESOURCE\FRECCIA_SU.BMP"
+      Bitmap Frame      = FALSE
+      Bitmap Handle     = FRECCIA_SU-BMP
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 34,10
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 1002
+      Flat              = TRUE
+      Font              = Default Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 5
+      Line              = 43,00
+      Lines             = 4,70
+      Lines in Pixels   = 40
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 4,80
+      Size in Pixels    = 40
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 4
+      Termination Value = 0
+      Title             = "Sposta su"
+      Visible           = NONE
+      Width in Cells    = FALSE
+      Before Procedure  = pb-su-BeforeProcedure
+      After Procedure   = pb-su-AfterProcedure
+      Link To           = pb-su-LinkTo
+   End
+   Begin Push-Button pb-giu
+      SCREEN-COL        = 41,90
+      SCREEN-LINE       = 43,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-giu
+      Bitmap            = "..\RESOURCE\FRECCIA_GiU.BMP"
+      Bitmap Frame      = FALSE
+      Bitmap Handle     = FRECCIA_GiU-BMP
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 41,90
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 1003
+      Flat              = TRUE
+      Font              = Default Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 6
+      Line              = 43,00
+      Lines             = 4,70
+      Lines in Pixels   = 40
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 4,80
+      Size in Pixels    = 40
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 5
+      Termination Value = 0
+      Title             = "Sposta giu"
+      Visible           = NONE
+      Width in Cells    = FALSE
+      Before Procedure  = pb-giu-BeforeProcedure
+      After Procedure   = pb-giu-AfterProcedure
+      Link To           = pb-giu-LinkTo
+   End
+   Begin CsCtrl.blockpgm Label scr-visua-blockpgm-1
+      CUST-SYMBOL       = blockpgm
+      CUST-MODIFYFLAG   = 000000000000000000000000000000000000000000000000000
+      SCREEN-COL        = 64,40
+      SCREEN-LINE       = 43,70
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = scr-visua-blockpgm-1
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 64,40
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 2
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 43,70
+      Lines             = 1,90
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 6,90
+      Size Unit         = Default
+      Tab Order         = 6
+      Title             = "BlockPgm"
+      Transparent       = TRUE
+      Visible           = NONE
+      Visible Variable  = v-custom
+      Width in Cells    = TRUE
+   End
+End
+
+END-SPDATA
+
+@}}
+
+{{@REPORT:
+*   Report Writer Data
+*   Schema 6.0
+*
+BEGIN-RWDATA-6.0A
+
+END-RWDATA
+
+@}}
+
+{{@EMBEDDING_CODE:
+BEGIN-DATA
+   BASETYPE          = 6
+   NODESTYLE         = 7
+   PARAGRAPH         = DeletedCode
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = scr-visua
+   ACTOBJ            = scr-visua
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+           perform RESET-GRIGLIA.
+           set tutto-ok to true.
+           move low-value to bat-rec.
+           start batnott key is >= bat-chiave
+                 invalid set errori to true
+           end-start.
+           if tutto-ok
+              modify form1-gd-1, mass-update = 1
+              move 2  to riga
+              perform until 1 = 2
+                 read batnott next at end exit perform end-read
+                 move bat-prg       to col-prg
+                 move bat-programma to col-programma
+                 if bat-abilitato-si
+                    modify form1-gd-1(riga, 3), bitmap spunta2-bmp,
+                                                bitmap-number = 2,
+                                                bitmap-width 20
+                 else                                          
+                    modify form1-gd-1(riga, 3), bitmap spunta2-bmp,
+                                                bitmap-number = 1,
+                                                bitmap-width 20
+                 end-if
+                 if bat-bloccante-si
+                    modify form1-gd-1(riga, 4), bitmap spunta2-bmp,
+                                                bitmap-number = 2,
+                                                bitmap-width 20
+                 else                                          
+                    modify form1-gd-1(riga, 4), bitmap spunta2-bmp,
+                                                bitmap-number = 1,
+                                                bitmap-width 20
+                 end-if
+                 if bat-bloccabile-si
+                    modify form1-gd-1(riga, 5), bitmap spunta2-bmp,
+                                                bitmap-number = 2,
+                                                bitmap-width 20
+                 else                                          
+                    modify form1-gd-1(riga, 5), bitmap spunta2-bmp,
+                                                bitmap-number = 1,
+                                                bitmap-width 20
+                 end-if
+                 move bat-abilitato  to hid-abil
+                 move bat-bloccante  to hid-bloc
+                 move bat-bloccabile to hid-bile 
+                 move bat-invio-log  to col-invio
+                 modify form1-gd-1,(riga, 1), cell-data col-prg
+                 modify form1-gd-1,(riga, 2), cell-data col-programma
+                 modify form1-gd-1,(riga, 3), hidden-data hid-abil
+                 modify form1-gd-1,(riga, 4), hidden-data hid-bloc
+                 modify form1-gd-1,(riga, 5), hidden-data hid-bile
+                 modify form1-gd-1,(riga, 6), cell-data col-invio
+                 add 1 to riga
+              end-perform
+              move bat-prg to LastPrg
+              modify form1-gd-1, mass-update = 0
+              if LastPrg not = 0
+                 move 2 to event-data-2
+                 perform SPOSTAMENTO
+                 modify form1-gd-1, cursor-y 2, cursor-x 2
+                 move 78-ID-form1-gd-1 to control-id
+                 move 4 to accept-control
+              end-if
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = scr-visua
+   ACTOBJ            = scr-visua
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterDisplay
+BEGIN-TEXT
+
+      *<<** Customized_Default, SP-G, scr-visua-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = RESET-GRIGLIA
+BEGIN-TEXT
+           modify form1-gd-1, reset-grid = 1.
+           perform FORM1-GD-1-CONTENT.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = SCRIVI-RIGA
+BEGIN-TEXT
+           inquire form1-gd-1(event-data-2, 1), cell-data in col-prg.
+           inquire form1-gd-1(event-data-2, 2), cell-data in col-programma.
+           inquire form1-gd-1(event-data-2, 3), hidden-data in hid-abil.
+           inquire form1-gd-1(event-data-2, 4), hidden-data in hid-bloc.
+           inquire form1-gd-1(event-data-2, 5), hidden-data in hid-bile.
+           inquire form1-gd-1(event-data-2, 6), cell-data in col-invio.
+
+           move col-prg       to bat-prg.
+           move col-programma to bat-programma.
+           move hid-abil      to bat-abilitato.     
+           move hid-bloc      to bat-bloccante.
+           move hid-bile      to bat-bloccabile.
+           move col-invio     to bat-invio-log.
+
+           rewrite bat-rec.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = SEL-COLONNE
+BEGIN-TEXT
+           move event-data-2 to riga.
+           if event-data-1 = 3
+              inquire form1-gd-1(riga, 3), hidden-data in hid-abil
+              if hid-abil = 0
+                 move 1 to hid-abil   
+                 modify form1-gd-1(riga, 3), bitmap spunta2-bmp,
+                                             bitmap-number = 2,
+                                             bitmap-width 20
+              else
+                 move 0 to hid-abil                           
+                 modify form1-gd-1(riga, 3), bitmap spunta2-bmp,
+                                             bitmap-number = 1,
+                                             bitmap-width 20
+              end-if
+              modify form1-gd-1(riga, 3), hidden-data hid-abil
+           end-if.
+
+           if event-data-1 = 4
+              inquire form1-gd-1(riga, 4), hidden-data in hid-bloc
+              if hid-bloc = 0
+                 move 1 to hid-bloc
+                 modify form1-gd-1(riga, 4), bitmap spunta2-bmp,
+                                             bitmap-number = 2,
+                                             bitmap-width 20
+              else
+                 move 0 to hid-bloc
+                 modify form1-gd-1(riga, 4), bitmap spunta2-bmp,
+                                             bitmap-number = 1,
+                                             bitmap-width 20
+              end-if
+              modify form1-gd-1(riga, 4), hidden-data hid-bloc
+           end-if.             
+           if event-data-1 = 5
+              inquire form1-gd-1(riga, 5), hidden-data in hid-bile
+              if hid-bile = 0
+                 move 1 to hid-bile
+                 modify form1-gd-1(riga, 5), bitmap spunta2-bmp,
+                                             bitmap-number = 2,
+                                             bitmap-width 20
+              else
+                 move 0 to hid-bile
+                 modify form1-gd-1(riga, 5), bitmap spunta2-bmp,
+                                             bitmap-number = 1,
+                                             bitmap-width 20
+              end-if
+              modify form1-gd-1(riga, 5), hidden-data hid-bile
+           end-if.
+           perform SCRIVI-RIGA.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = SPOSTA-RIGA
+BEGIN-TEXT
+           inquire form1-gd-1(event-data-2, 2), cell-data in col-programma.
+           inquire form1-gd-1(event-data-2, 3), hidden-data in hid-abil.
+           inquire form1-gd-1(event-data-2, 4), hidden-data in hid-bloc.   
+           inquire form1-gd-1(event-data-2, 5), hidden-data in hid-bile.
+           inquire form1-gd-1(event-data-2, 6), cell-data in col-invio.
+                                                                           
+           inquire form1-gd-1(riga, 2), cell-data in col-programma2.
+           inquire form1-gd-1(riga, 3), hidden-data in hid-abil2.
+           inquire form1-gd-1(riga, 4), hidden-data in hid-bloc2.
+           inquire form1-gd-1(riga, 5), hidden-data in hid-bile2.
+           inquire form1-gd-1(riga, 6), cell-data in col-invio2.
+
+           modify form1-gd-1(event-data-2, 2), cell-data col-programma2.
+           modify form1-gd-1(event-data-2, 3), hidden-data hid-abil2.
+           modify form1-gd-1(event-data-2, 4), hidden-data hid-bloc2.
+           modify form1-gd-1(event-data-2, 5), hidden-data hid-bile2.
+           modify form1-gd-1(event-data-2, 6), cell-data col-invio2.
+
+           modify form1-gd-1(riga, 2), cell-data col-programma.
+           modify form1-gd-1(riga, 3), hidden-data hid-abil.
+           modify form1-gd-1(riga, 4), hidden-data hid-bloc.
+           modify form1-gd-1(riga, 5), hidden-data hid-bile.
+           modify form1-gd-1(riga, 6), cell-data col-invio. 
+                  
+           if hid-abil2 = 0
+              modify form1-gd-1(event-data-2, 3), bitmap spunta2-bmp,
+                                                  bitmap-number = 1,
+                                                  bitmap-width 20
+           else                          
+              modify form1-gd-1(event-data-2, 3), bitmap spunta2-bmp,
+                                                  bitmap-number = 2,
+                                                  bitmap-width 20
+           end-if.
+
+           if hid-bloc2 = 0
+              modify form1-gd-1(event-data-2, 4), bitmap spunta2-bmp,
+                                                  bitmap-number = 1,
+                                                  bitmap-width 20
+           else
+              modify form1-gd-1(event-data-2, 4), bitmap spunta2-bmp,
+                                                  bitmap-number = 2,
+                                                  bitmap-width 20
+           end-if.
+
+           if hid-bile2 = 0
+              modify form1-gd-1(event-data-2, 5), bitmap spunta2-bmp,
+                                                  bitmap-number = 1,
+                                                  bitmap-width 20
+           else
+              modify form1-gd-1(event-data-2, 5), bitmap spunta2-bmp,
+                                                  bitmap-number = 2,
+                                                  bitmap-width 20
+           end-if.
+
+           if hid-abil = 0
+              modify form1-gd-1(riga, 3), bitmap spunta2-bmp,
+                                          bitmap-number = 1,
+                                          bitmap-width 20
+           else                          
+              modify form1-gd-1(riga, 3), bitmap spunta2-bmp,
+                                          bitmap-number = 2,
+                                          bitmap-width 20
+           end-if.                             
+
+           if hid-bloc = 0
+              modify form1-gd-1(riga, 4), bitmap spunta2-bmp,
+                                          bitmap-number = 1,
+                                          bitmap-width 20
+           else
+              modify form1-gd-1(riga, 4), bitmap spunta2-bmp,
+                                          bitmap-number = 2,
+                                          bitmap-width 20
+           end-if.                  
+
+           if hid-bile = 0
+              modify form1-gd-1(riga, 5), bitmap spunta2-bmp,
+                                          bitmap-number = 1,
+                                          bitmap-width 20
+           else
+              modify form1-gd-1(riga, 5), bitmap spunta2-bmp,
+                                          bitmap-number = 2,
+                                          bitmap-width 20
+           end-if.                  
+
+           perform SCRIVI-RIGA.
+
+           move riga to event-data-2.
+           perform SCRIVI-RIGA.
+
+           perform SPOSTAMENTO.
+           modify form1-gd-1, cursor-y riga.  
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = SPOSTAMENTO
+BEGIN-TEXT
+           modify form1-gd-1, start-y event-data-2, y event-data-2,
+                              start-x 2,            x = 6,
+                              region-color = 481.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = TOTALE-RIGHE
+BEGIN-TEXT
+           move 0 to tot-righe.
+           move 2 to store-riga.
+           perform until 1 = 2                       
+              inquire form1-gd-1(store-riga, 1), cell-data in col-prg
+              move col-prg to bat-prg
+              if bat-prg = 0
+                 subtract 1 from store-riga
+                 exit perform
+              end-if
+              add 1 to store-riga
+           end-perform.
+           move store-riga to tot-righe.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = stbolle-Ev-Before-Program
+BEGIN-TEXT
+           copy resource "spunta2.bmp".
+           call "W$BITMAP" using wbitmap-load, "spunta2.bmp"
+                          giving spunta2-bmp.
+      *<<** Customized_Default, SP-G, scr-visua-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = stbolle-Ev-After-Program
+BEGIN-TEXT
+           call "W$BITMAP" using wbitmap-destroy, spunta2-bmp.
+      *<<** Customized_Default, SP-G, scr-visua-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = form1-gd-1-Ev-Msg-Goto-Cell-Mouse
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+           perform SEL-COLONNE.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = form1-gd-1-Ev-Msg-Begin-Entry
+BEGIN-TEXT
+           if event-data-1 > 2 and < 6        
+              set event-action to event-action-fail-terminate
+              inquire form1-gd-1, entry-reason in como-x
+              evaluate como-x
+              when X"0d"|invio
+              when x"20"|spazio
+                   perform SEL-COLONNE
+              end-evaluate
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-su-BeforeProcedure
+BEGIN-TEXT
+           modify pb-su, bitmap-number 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-su-AfterProcedure
+BEGIN-TEXT
+           modify pb-su, bitmap-number 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-giu-BeforeProcedure
+BEGIN-TEXT
+           modify pb-giu, bitmap-number 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-giu-AfterProcedure
+BEGIN-TEXT
+           modify pb-giu, bitmap-number 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = form1-gd-1-Ev-Msg-Begin-Drag
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = form1-gd-1-Ev-Msg-Goto-Cell
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = form1-gd-1-Ev-Msg-Goto-Cell-Drag
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = form1-gd-1-Ev-Msg-End-Drag
+BEGIN-TEXT
+           perform SPOSTAMENTO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-aggiungi-BeforeProcedure
+BEGIN-TEXT
+           modify pb-aggiungi, bitmap-number = 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-aggiungi-AfterProcedure
+BEGIN-TEXT
+           modify pb-aggiungi, bitmap-number = 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-elimina-BeforeProcedure
+BEGIN-TEXT
+           modify pb-elimina, bitmap-number = 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-elimina-AfterProcedure
+BEGIN-TEXT
+           modify pb-elimina, bitmap-number = 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-aggiungi-LinkTo
+BEGIN-TEXT
+           perform TOTALE-RIGHE. 
+           add 1 to tot-righe giving riga.
+              
+           modify  form1-gd-1, insert-rows = 1.                
+
+           initialize bat-rec replacing numeric data by zeroes
+                                   alphanumeric data by spaces.
+                                          
+           add 1        to LastPrg.
+           move LastPrg to bat-prg col-prg.
+           set  bat-abilitato-no  to true.   
+           set  bat-bloccante-no  to true.  
+           set  bat-bloccabile-no to true.  
+           move bat-abilitato  to hid-abil.
+           move bat-bloccante  to hid-bloc.
+           move bat-bloccabile to hid-bile.
+
+           modify form1-gd-1(riga, 1), cell-data = col-prg.
+           modify form1-gd-1(riga, 3), bitmap spunta2-bmp,
+                                       bitmap-number = 1,
+                                       bitmap-width 20,
+                                       hidden-data hid-abil.
+           modify form1-gd-1(riga, 4), bitmap spunta2-bmp,
+                                       bitmap-number = 1,
+                                       bitmap-width 20,
+                                       hidden-data hid-bloc.
+           modify form1-gd-1(riga, 5), bitmap spunta2-bmp,
+                                       bitmap-number = 1,
+                                       bitmap-width 20,
+                                       hidden-data hid-bile.
+
+           write bat-rec.          
+
+           move riga to event-data-2.
+           perform SPOSTAMENTO.
+           modify form1-gd-1, cursor-y riga, cursor-x 2.
+
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-elimina-LinkTo
+BEGIN-TEXT
+           perform TOTALE-RIGHE.
+           if tot-righe = 1
+              exit paragraph
+           end-if.
+           display message "Elimina?"
+                     title titolo
+                      type mb-yes-no
+                    giving scelta
+           if scelta = mb-yes
+              inquire form1-gd-1, cursor-y in riga
+              inquire form1-gd-1(riga, 1), cell-data in col-prg
+              move col-prg to bat-prg LastPrg
+              delete batnott record
+              modify  form1-gd-1, record-to-delete = riga
+              perform TOTALE-RIGHE
+              if riga > tot-righe and tot-righe > 1
+                 move tot-righe to riga
+              end-if                   
+              subtract 1 from tot-righe
+              move LastPrg to bat-prg
+              start batnott key >= bat-chiave
+                    invalid continue
+                not invalid
+                    perform until 1 = 2
+                       read batnott next at end exit perform end-read
+                       delete batnott record
+                    end-perform                      
+                    perform TOTALE-RIGHE
+                    modify form1-gd-1, mass-update = 1
+                    move riga to store-riga
+                    perform varying store-riga from store-riga by 1 
+                              until store-riga > tot-righe
+                       initialize bat-rec replacing numeric data by zeroes
+                                               alphanumeric data by spaces     
+                       move LastPrg to bat-prg col-prg
+                       inquire form1-gd-1(store-riga, 2), cell-data in col-programma
+                       inquire form1-gd-1(store-riga, 3), hidden-data in hid-abil
+                       inquire form1-gd-1(store-riga, 4), hidden-data in hid-bloc
+                       inquire form1-gd-1(store-riga, 5), hidden-data in hid-bile
+                       move col-prg       to bat-prg
+                       move col-programma to bat-programma
+                       move hid-abil      to bat-abilitato
+                       move hid-bloc      to bat-bloccante
+                       move hid-bile      to bat-bloccabile
+                       write bat-rec                            
+                       modify form1-gd-1(store-riga, 1), cell-data col-prg
+                       add 1 to LastPrg
+                    end-perform
+                    modify form1-gd-1, mass-update = 0
+              end-start  
+              move riga to event-data-2
+              perform SPOSTAMENTO
+              modify form1-gd-1, cursor-y riga, cursor-x 2
+           end-if.                              
+           move high-value to bat-chiave.
+           start batnott key <= bat-chiave
+                 invalid move 0 to LastPrg
+             not invalid
+                 read batnott previous
+                 move bat-prg to LastPrg
+           end-start.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-su-LinkTo
+BEGIN-TEXT
+           inquire form1-gd-1, cursor-y = riga.
+           if riga not = 2
+              move riga to event-data-2
+              subtract 1 from event-data-2 giving riga
+              perform SPOSTA-RIGA
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-giu-LinkTo
+BEGIN-TEXT
+           perform TOTALE-RIGHE.
+           if riga not = tot-righe and tot-righe not = 1
+              move riga to event-data-2
+              add 1 to event-data-2 giving riga
+              perform SPOSTA-RIGA
+           end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = form1-gd-1-Ev-Msg-Finish-Entry
+BEGIN-TEXT
+           set tutto-ok to true.
+           if event-data-1 = 6
+              inquire form1-gd-1 (event-data-2, 6), cell-data in col-invio
+              if not ( col-invio = "S" or = "N" or = "E" )
+                 set event-action to event-action-fail
+                 display message "Valori validi: "
+                          x"0d0a""S - Sempre"
+                          x"0d0a""E - Solo se errori"
+                          x"0d0a""N - Nessun invio"
+                 set errori to true
+              end-if
+           end-if.
+           if tutto-ok
+              perform SCRIVI-RIGA
+           end-if.
+END-TEXT
+END-DATA
+
+@}}
+
+[KEY_STATUS_FIELD_FORMAT]
+PIC=9(5)
+USAGE=[None]
+
+[KEYSTATUS_CONTENT:KS1]
+CONDITION=Enter-Pushed
+VALUE=13
+
+[KEYSTATUS_CONTENT:KS2]
+CONDITION=Exit-Pushed
+VALUE=27
+
+[KEYSTATUS_CONTENT:KS3]
+CONDITION=Message-Received
+VALUE=95
+
+[KEYSTATUS_CONTENT:KS4]
+CONDITION=Event-Occurred
+VALUE=96
+
+[KEYSTATUS_CONTENT:KS5]
+CONDITION=Screen-No-Input-Field
+VALUE=97
+
+[KEYSTATUS_CONTENT:KS6]
+CONDITION=Screen-Time-Out
+VALUE=99
+
+[COBOLAID_DATASET_INFO]
+COUNT=1
+NAME_0=DataSet1
+
+[DRAW_DOCUMENT_INDEX]
+OBJ_NAME_0=8001
+OBJ_ID_0=1550743945
+
+[MULTIPLE_KEY_0]
+COUNT=1
+KEY_0=bat-chiave
+
+[DRAW_DOCUMENT_8001_1550743945]
+OBJ_NAME=8001
+OBJ_ID=1550743945
+TYPE=2
+VERSION=
+DOC_SIZE_X=5100
+DOC_SIZE_Y=5160
+PAGE_LEFT=150
+PAGE_TOP=150
+PAGE_RIGHT=1850
+PAGE_BOTTOM=2730
+MARGIN_LEFT=150
+MARGIN_TOP=150
+MARGIN_RIGHT=150
+MARGIN_BOTTOM=150
+PROP_DOCU_TYPE=ø
+PROP_DOCU_TYPE2=ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+PROP_DOCU_NAME=DataSet - DataSet1[gbatnott(GESLUX)]
+PROP_DOCU_OWNER=Person A
+PROP_DOCU_CDATE=02/09/05
+PROP_DOCU_MODIFIER=Person B
+PROP_DOCU_MDATE=02/09/05
+PROP_DOCU_DESCR=Caseaid DocuCaseaid Document
+PROP_DOCU_HEADER=Caseaid Document
+PROP_DOCU_FOOTER=Page # 
+PROP_DOCU_DIM_H=2
+PROP_DOCU_DIM_W=3
+PROP_DOCU_LOC_H=1
+PROP_DOCU_LOC_W=1
+PROP_DOCU_EDGE_T=150
+PROP_DOCU_EDGE_B=150
+PROP_DOCU_EDGE_L=150
+PROP_DOCU_EDGE_R=150
+PROP_DOCU_ZOOM=75
+PROP_DOCU_SIZE_TYPE=0
+PROP_DOCU_SIZE_PAPER=1
+PROP_DOCU_SIZE_H=2580
+PROP_DOCU_SIZE_W=1700
+PROP_DOCU_RULER_EBL=0
+PROP_DOCU_GRID_EBL=0
+PROP_DOCU_GRID=20
+PROP_DOCU_ALIGN=0
+REL_SYM_SIZE=10
+REL_SYM_INFO_L=1
+REL_SYM_INFO_X0=2301
+REL_SYM_INFO_Y0=1558538348
+
+[DRAW_BASESYMBOL_2301_1558538348]
+OBJ_NAME=2301
+OBJ_ID=1558538348
+KIND=1
+{{@LABEL_2301_1558538348
+batnott
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=19
+TOP=16
+RIGHT=419
+BOTTOM=238
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DMD_DOCUMENT_0_1550743945]
+OBJ_NAME=0
+OBJ_ID=1550743945
+FILE_TITLE_TYPE=8136
+FILE_SHOW_ITEM=0
+FILE_SHOW_KEY=0
+FILE_SHOW_PIC=0
+FILE_SHOW_HEAD=0
+FILE_SHOW_LEVEL=0
+FILE_SHOW_TREE=0
+FILE_SHOW_CLPS=0
+FILE_SHOW_BMP=0
+FILE_SHOW_LINE=0
+FILE_SHOW_MINIZE=0
+
+[DMD_FILE_0_1558538348]
+OBJ_NAME=0
+OBJ_ID=1558538348
+REL_M_OBJ_ID=0
+ENTITY=batnott
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=2
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=bat-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1558538348
+
+@}}
+DSN_INFO_PRIMARY=1
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=

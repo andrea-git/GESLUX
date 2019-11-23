@@ -1,0 +1,43 @@
+      *(( XFD FILE = OLD-STO-reva ))
+       FD  OLD-STO-reva.
+       01 OLD-STO-reva-rec.
+           05 OLD-STO-reva-chiave.
+               10 OLD-STO-reva-chiave-testa.
+                   15 OLD-STO-reva-anno    PIC  9(4).
+                   15 OLD-STO-reva-numero  PIC  9(8).
+               10 OLD-STO-reva-riga    PIC  9(5).
+           05 OLD-STO-reva-dati.
+               10 OLD-STO-reva-chiave-progmag.
+                   15 OLD-STO-reva-articolo            PIC  9(6).
+                   15 OLD-STO-reva-codmag  PIC  x(3).
+                   15 OLD-STO-reva-imballo PIC  x(3).
+                   15 OLD-STO-reva-peso    PIC  9(3)v9(3).
+               10 OLD-STO-reva-qta     PIC  9(8).
+               10 OLD-STO-reva-prz-unit            PIC  9(9)v99.
+               10 OLD-STO-reva-netto   PIC  9(9)v99.
+               10 OLD-STO-reva-imp-cons            PIC  9(4)v99.
+               10 OLD-STO-reva-coubat  PIC  9(4)v99.
+               10 OLD-STO-reva-add-pb  PIC  9(4)v99.
+               10 OLD-STO-reva-chiave-ordf.
+                   15 OLD-STO-reva-chiave-testa-ordf.
+                       20 OLD-STO-reva-anno-ordf           PIC  9(4).
+                       20 OLD-STO-reva-numero-ordf         PIC  9(8).
+                   15 OLD-STO-reva-riga-ordf           PIC  9(5).
+               10 OLD-STO-reva-stato   PIC  x.
+                   88 OLD-STO-reva-attivo VALUE IS "A". 
+                   88 OLD-STO-reva-disattivo VALUE IS "D". 
+                   88 OLD-STO-reva-bloccato VALUE IS "B". 
+               10 OLD-STO-reva-dati-comuni.
+                   15 OLD-STO-reva-data-creazione      PIC  9(8).
+                   15 OLD-STO-reva-ora-creazione       PIC  9(8).
+                   15 OLD-STO-reva-utente-creazione    PIC  X(10).
+                   15 OLD-STO-reva-data-modifica       PIC  9(8).
+                   15 OLD-STO-reva-ora-modifica        PIC  9(8).
+                   15 OLD-STO-reva-utente-modifica     PIC  X(10).
+               10 OLD-STO-reva-vuoti.
+                   15 OLD-STO-reva-num-vuoto-1         PIC  9(15).
+                   15 OLD-STO-reva-num-vuoto-2         PIC  9(15).
+                   15 OLD-STO-reva-num-vuoto-3         PIC  9(15).
+                   15 OLD-STO-reva-alfa-vuoto-1        PIC  x(20).
+                   15 OLD-STO-reva-alfa-vuoto-2        PIC  x(20).
+                   15 OLD-STO-reva-alfa-vuoto-3        PIC  x(20).

@@ -1,0 +1,16 @@
+       FD  stato-invio.
+       01 sto-rec.
+           05 sto-chiave-ev.
+               10 sto-anno-ev      PIC  9(4).
+               10 sto-numero-ev    PIC  9(8).
+           05 sto-dati.
+               10 sto-invio        PIC  9.
+                   88 sto-invio-si VALUE IS 1. 
+                   88 sto-invio-no VALUE IS 0. 
+               10 sto-bolla.
+                   15 sto-anno-bolla   PIC  9(4).
+                   15 sto-num-bolla    PIC  9(8).
+               10 sto-user         PIC  x(20).
+               10 sto-data         PIC  9(8).
+               10 sto-ora          PIC  9(8).
+               10 FILLER           PIC  x(300).

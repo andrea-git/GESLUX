@@ -1,0 +1,1 @@
+"C:\Programmi\Acucorp\Acucbl812\AcuGT\bin\wrun32.exe" -c cblconfi -e agg-stato-master.log -l -d agg-stato-master

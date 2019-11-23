@@ -1,0 +1,13 @@
+      *
+       01 stordcp-limiti.
+           05 stordc-da-anno   PIC  9(4).
+           05 stordc-a-anno    PIC  9(4).
+           05 stordc-da-num    PIC  9(8).
+           05 stordc-a-num     PIC  9(8).
+           05 stordc-da-data   PIC  9(8).
+           05 stordc-a-data    PIC  9(8).
+           05 stordc-stato-ord PIC  x.
+               88 stordc-evasioni VALUE IS "E". 
+               88 stordc-GDO VALUE IS "G". 
+               88 stordc-tutti VALUE IS "T". 
+           05 stordc-tipocli PIC  xx.

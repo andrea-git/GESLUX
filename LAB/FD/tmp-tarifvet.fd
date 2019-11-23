@@ -1,0 +1,24 @@
+      *(( XFD FILE = tmp-tarifvet ))
+       FD  tmp-tarifvet.
+       01 ttar-rec.
+           05 ttar-chiave.
+               10 ttar-prog        PIC  9(10).
+           05 ttar-dati.
+               10 ttar-vet-cod     PIC  z(5).
+               10 ttar-vet-des     PIC  x(40).
+               10 ttar-vet-tariffa PIC  x.
+                   88 ttar-regione VALUE IS "R". 
+                   88 ttar-prov VALUE IS "P". 
+                   88 ttar-cliente VALUE IS "C". 
+                   88 ttar-clides VALUE IS "D". 
+               10 ttar-prov-cod    PIC  x(2).
+               10 ttar-prov-des    PIC  x(30).
+               10 ttar-reg-cod     PIC  z(3).
+               10 ttar-reg-des     PIC  x(30).
+               10 ttar-cli-cod     PIC  z(5).
+               10 ttar-cli-des     PIC  x(40).
+               10 ttar-dest-cod    PIC  z(5).
+               10 ttar-dest-luogo  PIC  x(35).
+               10 ttar-qli-da      PIC  ---.---.--9,99.
+               10 ttar-qli-a       PIC  ---.---.--9,99.
+               10 ttar-euro        PIC  ---.---.--9,99.

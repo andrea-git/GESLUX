@@ -1,0 +1,116 @@
+       FD  tordini.
+       01 tor-rec.
+           05 tor-chiave.
+               10 tor-anno         PIC  9(4).
+               10 tor-numero       PIC  9(8).
+           05 tor-dati.
+               10 tor-causale      PIC  x(4).
+               10 tor-cod-cli      PIC  9(5).
+               10 tor-prg-destino  PIC  9(5).
+               10 tor-num-ord-cli  PIC  X(10).
+               10 tor-data-ordine  PIC  9(8).
+               10 tor-data-passaggio-ordine    PIC  9(8).
+               10 tor-cod-agente   PIC  9(5).
+               10 tor-cod-pagamento            PIC  x(3).
+               10 tor-cod-ese-iva  PIC  x(3).
+               10 tor-spostam-ric-ago          PIC  X(1).
+                   88 tor-si-ric-ago VALUE IS "S". 
+                   88 tor-no-ric-ago VALUE IS "N". 
+               10 tor-spostam-ric-dic          PIC  X(1).
+                   88 tor-si-ric-dic VALUE IS "S". 
+                   88 tor-no-ric-dic VALUE IS "N". 
+               10 tor-vettore      PIC  9(5).
+               10 tor-note1        PIC  X(19).
+               10 tor-data-note1   PIC  9(8).
+               10 tor-note2        PIC  X(30).
+               10 tor-note3        PIC  X(30).
+               10 tor-note4        PIC  X(30).
+               10 tor-invio        PIC  x.
+                   88 tor-invio-manuale VALUE IS "M". 
+                   88 tor-invio-postel VALUE IS "P". 
+                   88 tor-invio-edi VALUE IS "E". 
+               10 tor-bolla.
+                   15 tor-anno-bolla   PIC  9(4).
+                   15 tor-num-bolla    PIC  9(8).
+                   15 tor-data-bolla   PIC  9(8).
+                   15 tor-bolla-prenotata          PIC  x.
+                       88 tor-bolla-si-prenotata VALUE IS "S". 
+                       88 tor-bolla-no-prenotata VALUE IS "N". 
+               10 tor-fattura.
+                   15 tor-anno-fattura PIC  9(4).
+                   15 tor-num-fattura  PIC  9(8).
+                   15 tor-data-fattura PIC  9(8).
+                   15 tor-num-prenot   PIC  9(8).
+                   15 tor-fatt-prenotata           PIC  x.
+                       88 tor-fatt-si-prenotata VALUE IS "S". 
+                       88 tor-fatt-no-prenotata VALUE IS "N". 
+               10 tor-mod-caricamento          PIC  X(1).
+                   88 tor-manuale VALUE IS "M". 
+                   88 tor-guidata VALUE IS "G". 
+               10 tor-agg-contab   PIC  x.
+                   88 tor-si-agg-contab VALUE IS "S". 
+                   88 tor-no-agg-contab VALUE IS "N". 
+               10 tor-tipo         PIC  x.
+                   88 tor-fattura-manuale VALUE IS "M". 
+                   88 tor-ordine VALUE IS "O". 
+               10 tor-note         PIC  X(500).
+      *(( XFD NAME = tor-contropartita_ ))
+               10 tor-contropartita            PIC  X(8).
+               10 tor-stato        PIC  X(1).
+                   88 tor-attivo VALUE IS "A". 
+                   88 tor-disattivo VALUE IS "D". 
+                   88 tor-bloccato VALUE IS "B". 
+               10 tor-dati-comuni.
+                   15 tor-data-creazione           PIC  9(8).
+                   15 tor-ora-creazione            PIC  9(8).
+                   15 tor-utente-creazione         PIC  X(10).
+                   15 tor-data-ultima-modifica     PIC  9(8).
+                   15 tor-ora-ultima-modifica      PIC  9(8).
+                   15 tor-utente-ultima-modifica   PIC  X(10).
+               10 tor-vuoti.
+                   15 tor-data-contab  PIC  9(8).
+                   15 tor-promo        PIC  9.
+                       88 tor-si-promo VALUE IS 1. 
+                       88 tor-no-promo VALUE IS 0. 
+                   15 tor-gest-plus    PIC  9(5).
+                   15 tor-ritira-in-lubex          PIC  9.
+                       88 tor-ritira-si VALUE IS 1. 
+                       88 tor-ritira-no VALUE IS 0. 
+                   15 tor-taglio       PIC  9(6).
+                   15 tor-flag-rec-prezzi          PIC  9.
+                       88 tor-rec-prezzi VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+                   15 tor-ordine-testa.
+                       20 tor-anno-testa   PIC  9(4).
+                       20 tor-num-testa    PIC  9(8).
+                   15 tor-da-ordine    PIC  9.
+                       88 tor-da-ordine-no VALUE IS 0. 
+                       88 tor-da-ordine-si VALUE IS 1. 
+                   15 tor-forn-reso    PIC  9(5).
+                   15 tor-num-vuoto-3  PIC  9(5).
+                   15 tor-esito-consegna           PIC  X(10).
+                   15 tor-data-bolla-effettiva     PIC  9(8).
+                   15 tor-tipo-evasione            PIC  X(1).
+                       88 tor-ev-singola VALUE IS "S". 
+                       88 tor-ev-manuale VALUE IS "M". 
+                       88 tor-ev-immediata VALUE IS "I". 
+                       88 tor-ev-normale VALUE IS "N". 
+                       88 tor-ev-auto-trad VALUE IS "T". 
+                       88 tor-ev-auto-gdo VALUE IS "G". 
+                   15 tor-da-inviare   PIC  X(1).
+                       88 tor-da-inviare-si VALUE IS "S". 
+                       88 tor-da-inviare-no VALUE IS "N" " "    WHEN 
+           SET TO FALSE  " ". 
+                   15 tor-ora-contab   PIC  9(8).
+                   15 tor-fattura-from.
+                       20 tor-fattura-from-data        PIC  9(8).
+                       20 tor-fattura-from-numero      PIC  x(8).
+                   15 tor-gdo          PIC  X(5).
+      *(( XFD NAME = tor-gdo_1 ))
+                   15 tor-tipocli      PIC  X(2).
+      *(( XFD NAME = tor-gdo_1_1 ))
+                   15 tor-note-bolla-1 PIC  X(500).
+      *(( XFD NAME = tor-gdo_1_1_1 ))
+                   15 tor-note-bolla-2 PIC  X(500).
+      *(( XFD NAME = tor-gdo_1_1_2 ))
+                   15 FILLER           PIC  X(2000).

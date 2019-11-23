@@ -1,0 +1,19 @@
+      *(( XFD FILE = check-rordini ))
+       FD  check-rordini2.
+       01 cror-rec2.
+           05 cror-chiave2.
+               10 cror-prg-chiave2.
+                   15 cror-prg-cod-articolo2       PIC  9(6).
+                   15 cror-prg-cod-magazzino2      PIC  X(3).
+                   15 cror-prg-tipo-imballo2       PIC  X(3).
+                   15 cror-prg-peso2   PIC  9(5)v9(3).
+               10 cror-des-imballo2            PIC  X(50).
+               10 cror-qta-imballi2            PIC  9(4).
+               10 cror-blister2    PIC  9.
+           05 cror-dati2.
+               10 cror-qta2        PIC  9(8).
+               10 cror-importo2    PIC  9(9)v9(2).
+               10 cror-righe2      PIC  9(3).
+               10 cror-peso-utf2   PIC  9(5)v9(3).
+               10 cror-peso-non-utf2           PIC  9(5)v9(3).
+               10 cror-num-colli2  PIC  9(3).

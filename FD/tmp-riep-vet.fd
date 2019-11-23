@@ -1,0 +1,11 @@
+      *(( XFD FILE = tmp-assorcli ))
+       FD  tmp-riep-vet.
+       01 tmp-rev-rec.
+           05 tmp-rev-chiave.
+               10 tmp-rev-codice   PIC  9(5).
+           05 tmp-rev-dati.
+               10 tmp-rev-descrizione          PIC  X(40).
+               10 tmp-rev-tot-colli            PIC  9(5).
+               10 tmp-rev-tot-peso PIC  9(8)v9(3).
+               10 tmp-rev-tot-peso-UTF         PIC  9(8)v9(3).
+               10 tmp-rev-tot-peso-non-UTF     PIC  9(8)v9(3).

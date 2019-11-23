@@ -1,0 +1,18 @@
+      *
+       01 stbrogcp-limiti.
+           05 stbrogc-da-anno  PIC  9(4).
+           05 stbrogc-a-anno   PIC  9(4).
+           05 stbrogc-da-num   PIC  9(8).
+           05 stbrogc-a-num    PIC  9(8).
+           05 stbrogc-tipo-cli PIC  9.
+               88 ClienteGDO VALUE IS 1    WHEN SET TO FALSE  2. 
+           05 stbrog-path      PIC  x(256).
+           05 stbrogc-handle
+                      USAGE IS HANDLE OF WINDOW.
+           05 stbrogc-fm       pic 9.
+              88 stbrogc-tutte   value 1.
+              88 stbrogc-solo-fm value 2.
+              88 stbrogc-no-fm   value 3.
+           05 stbrogc-fattu  pic 9.
+              88 stbrogc-no-fattu value 0.
+              88 stbrogc-si-fattu value 1.

@@ -1,0 +1,78 @@
+       01  VARIABILI-VARSCA.
+      *
+      *   variabili di comodo usate dal programma CALSCA
+      *
+           05  SCA-VARIABILI.
+               10  SCA-J                   PIC  9(02).
+               10  SCA-TOTALE              PIC S9(13)V9(02).
+               10  SCA-TOTALE-VA           PIC S9(15)V9(03).
+               10  SCA-COMODO-MESE         PIC  9(02).
+               10  SCA-COMODO-GIORNO       PIC  9(04).
+               10  SCA-RATE                PIC  9(02).
+               10  SCA-DATA-DOCUMENTO.
+                   15  ANNO                PIC  9(04).
+                   15  MESE                PIC  9(02).
+                   15  GIORNO              PIC  9(02).
+      *
+      *   variabili da passare
+      *
+           05  SCA-VARIABILI1.
+               10  SCA-MESI-EFF.
+                   15  SCA-MESE1           PIC  9(02).
+                   15  SCA-GIORNO1         PIC  9(02).
+                   15  SCA-MESE2           PIC  9(02).
+                   15  SCA-GIORNO2         PIC  9(02).
+               10  SCA-CODICE-PA           PIC  X(03).
+               10  SCA-DATA-FATTURA.
+                   15  AA                  PIC  9(04).
+                   15  MM                  PIC  9(02).
+                   15  GG                  PIC  9(02).
+               10  SCA-DATA-CONTEGGIO.
+                   15  AA                  PIC  9(04).
+                   15  MM                  PIC  9(02).
+                   15  GG                  PIC  9(02).
+               10  SCA-IMPORTO-FATTURA     PIC S9(13)V9(02).
+               10  SCA-IMPORTO-FATTURA-VA  PIC S9(15)V9(03).
+               10  SCA-IVA                 PIC S9(13)V9(02).
+               10  SCA-IVA-VA              PIC S9(15)V9(03).
+               10  SCA-SPESE               PIC S9(13)V9(02).
+               10  SCA-SPESE-VA            PIC S9(15)V9(03).
+               10  SCA-TABELLA-PA          OCCURS 10.
+                   15  SCA-CODICE-TR-PA    PIC  X(01).
+                   15  SCA-INIZIO-CONTEGGIO  PIC  9(02).
+                   15  SCA-TIPO-IMPORTI    PIC  X(01).
+                   15  SCA-TIPO-SCADENZE   PIC  X(01).
+                   15  SCA-VALORE          PIC S9(15)V9(03)  
+                                           SIGN TRAILING SEPARATE.
+                   15  SCA-SCADENZA        PIC  9(08).
+               10  SCA-DETRAZIONE          PIC  X(01)  OCCURS 10.
+      *
+      *   variabili di ritorno
+      *
+               10  SCA-TABELLA.
+                   15  SCA-TAB             OCCURS 36.
+                       20  SCA-CODICE-TR   PIC  X(01).
+                       20  SCA-A-VISTA     PIC  X(01).
+                       20  SCA-IMPORTO     PIC S9(13)V9(02).
+                       20  SCA-IMPORTO-VA  PIC S9(15)V9(03).
+                       20  SCA-DATA.
+                           25  AA          PIC  9(04).
+                           25  MM          PIC  9(02).
+                           25  GG          PIC  9(02).
+      *
+      *   variabili da passare (estensione)
+      *
+           05  SCA-VARIABILI2.
+               10  SCA-ESCLUSO-DAL-GIORNO1         PIC  9(02).
+               10  SCA-ESCLUSO-DAL-GIORNO2         PIC  9(02).
+      *
+      *   variabili da passare (ulteriore estensione)
+      *
+           05  SCA-VARIABILI3.
+               10  SCA-TBLVA-CODICE                PIC  X(03).
+           05  SCA-VARIABILI4.                                                  |ds 11.11.03
+               10  SCA-VALORE-EURO         PIC S9(15)V9(02) 
+                                           SIGN TRAILING SEPARATE
+                                           OCCURS 10.
+           05  SCA-COMODO-MESE1        PIC  9(03).                                 |DS 27/06/2005 12.08
+           05  SCA-COMODO-ANNO         PIC  9(04).                                 |DS 27/06/2005 12.08

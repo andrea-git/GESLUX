@@ -1,0 +1,6 @@
+      *(( XFD FILE = tmp-eva-mtordini ))
+       FD  tmp-eva-mtordini.
+       01 tmp-mto-rec.
+           05 tmp-mto-chiave.
+               10 tmp-mto-anno     PIC  9(4).
+               10 tmp-mto-numero   PIC  9(8).

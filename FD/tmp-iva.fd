@@ -1,0 +1,10 @@
+      *(( XFD FILE = tmp-iva ))
+       FD  tmp-iva.
+       01 tmp-iv-rec.
+           05 tmp-iv-progressivo           PIC  9(8).
+           05 tmp-iv-tabellino-iva.
+               15 tmp-iv-riga-iva
+                          OCCURS 6 TIMES.
+                   20 tmp-iv-el-cod-iva            PIC  x(3).
+                   20 tmp-iv-el-iva    PIC  9(12)v99.
+                   20 tmp-iv-el-imponibile         PIC  9(12)v99.

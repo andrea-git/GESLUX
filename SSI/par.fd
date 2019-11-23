@@ -1,0 +1,88 @@
+*-----------------------------------------------------------------
+* righe partitari
+*-----------------------------------------------------------------
+* Ticket 1460 - Eliminato "punto niente"                                                           |ds 23/01/2009 11.14
+*               Aggiunto campo PAR-CODICE-IVS                                                      |DS 23/01/2009 11.36
+*-----------------------------------------------------------------
+*----------------------------------------------------------------
+* tk 3875 - Alcuni movimenti nel dettaglio scadenze del cuscotto                                     | scamar 11/05/2011 09:49:53
+*           dello scadenzario non espongono il progressivo di primanota,
+*           nonostante la scadenza sia generata da un movimento contabile 
+*  - dalla rel 2012 in avanti le clausole di generazione e la redefines del campo par-codice-pnr     | quasil 28/10/2011 14:24:39
+*    appartengono al tk 3645 (realizzazione property sheet prima nota | scamar 15/02/2011);
+*    poiche' queste istruzioni sono necessarie anche per lo svolgimento del tk 3875, nella  
+*    rel 2011, e' stato deciso di includerle
+*----------------------------------------------------------------
+*
+01  record-par.
+    05  PAR-CODICE.
+        10  PAR-PROGRESSIVO-X.
+*$GEN type=num,dec=0,size=11
+            15  PAR-PROGRESSIVO     PIC  9(08).
+*$GEN type=num,dec=0,size=7            
+        10  PAR-RIGA                PIC  9(05).
+
+*
+*
+    05  RESTO-RECORD-PAR.
+* copy "groupdate.xfc". | DBMaker
+        10  PAR-DATA-REGISTRAZIONE.
+$XFD  NAME=PAR-DATA-REG-AA
+            15  AA                  PIC  9(04).
+$XFD  NAME=PAR-DATA-REG-MM
+            15  MM                  PIC  9(02).
+$XFD  NAME=PAR-DATA-REG-GG
+            15  GG                  PIC  9(02).
+        10  FILLER  REDEFINES  PAR-DATA-REGISTRAZIONE.
+*$GEN type=date        
+            15  PAR-DATA-REGISTRAZIONE-NUM   PIC 9(08).
+
+*
+*
+*$GEN type=num,dec=0,size=9
+        10  PAR-NUMERO-PROTOCOLLO   PIC  9(06).
+*
+* copy "groupdate.xfc". | DBMaker
+        10  PAR-DATA-DOCUMENTO.
+$XFD  NAME=PAR-DOCUMENTO-AA
+            15  AA                  PIC  9(04).
+$XFD  NAME=PAR-DOCUMENTO-MM
+            15  MM                  PIC  9(02).
+$XFD  NAME=PAR-DOCUMENTO-GG
+            15  GG                  PIC  9(02).
+        10  FILLER  REDEFINES  PAR-DATA-DOCUMENTO.
+*$GEN type=date        
+            15  PAR-DATA-DOCUMENTO-NUM   PIC 9(08).
+*
+*
+*$GEN type=num,dec=0,size=9
+        10  PAR-NUMERO-DOCUMENTO    PIC  9(06).
+        10  PAR-DESCRIZIONE1        PIC  X(30).
+        10  PAR-DESCRIZIONE2        PIC  X(30).
+        10  PAR-DARE-AVERE          PIC  X(01).
+            88  PAR-DARE-AVERE-88   VALUE "D" "A".
+            88  PAR-DARE-AVERE-D    VALUE "D".
+            88  PAR-DARE-AVERE-A    VALUE "A".
+*$GEN type=num,dec=2,size=21            
+        10  PAR-IMPORTO             PIC S9(13)V9(02) SIGN TRAILING SEPARATE.
+*$GEN type=code,entity=tblva
+        10  PAR-CODICE-VA           PIC  X(03).
+*$GEN type=num,dec=3,size=24        
+        10  PAR-IMPORTO-VA          PIC S9(15)V9(03)  SIGN TRAILING SEPARATE.
+        
+        10  PAR-CODICE-PNR          PIC  X(13).
+        
+        10  filler  redefines par-codice-pnr.                                                        | scamar 15/02/2011 14:27:17
+*$GEN type=codenum,dec=0,size=11,entity=pnt        
+            15 par-codice-pnr-progressivo pic 9(08).                                                 | scamar 15/02/2011 14:27:17
+*$GEN type=num,dec=0,size=7            
+            15 par-codice-pnr-riga        pic 9(05).                                                 | scamar 15/02/2011 14:27:17
+        
+        10  PAR-CODICE-PAS          PIC  X(13).
+        10  PAR-NUM-DOCUMENTO       PIC  X(06).
+        10  PAR-CODICE-IVS          PIC  9(13).                                                    |DS 23/01/2009 11.32
+*        10  PAR-FILLER              PIC  X(44).                                                   |DS 23/01/2009 11.34
+        10  PAR-FILLER              PIC  X(31).                                                    |DS 23/01/2009 11.34
+        10  PAR-FILLER-RIS          PIC  X(40).
+*
+*

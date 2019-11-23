@@ -1,0 +1,60 @@
+      *(( XFD FILE = tmp-solleciti ))
+       FD  tmp-sol.
+       01 sol-rec.
+           05 sol-chiave.
+               10 sol-data-ordine  PIC  9(8).
+               10 sol-ordine.
+                   15 sol-anno         PIC  9(4).
+                   15 sol-numero       PIC  9(8).
+               10 sol-prog-art     PIC  9(8).
+               10 sol-prog-eva     PIC  9(8).
+               10 sol-tipo         PIC  9.
+                   88 sol-testa VALUE IS 1. 
+                   88 sol-articolo VALUE IS 2. 
+                   88 sol-evas VALUE IS 3. 
+           05 sol-progr-master PIC  9(8).
+           05 sol-art          PIC  9(6).
+           05 sol-clides       PIC  x(40).
+           05 sol-localita     PIC  x(40).
+           05 sol-desart       PIC  x(40).
+           05 sol-promo        PIC  x(100).
+           05 sol-numord-cli   PIC  x(10).
+           05 sol-data-video   PIC  x(10).
+      *(( XFD NAME = sol-data-video_1 ))
+           05 sol-data-creazione           PIC  x(10).
+      *(( XFD NAME = sol-data-video_2 ))
+           05 sol-data-cons    PIC  x(10).
+           05 sol-stato        PIC  x(10).
+           05 sol-stato-ordine PIC  9.
+           05 sol-blocco       PIC  x.
+               88 sol-blocco-si VALUE IS "S". 
+               88 sol-blocco-no VALUE IS "N". 
+           05 sol-causale-blocco           PIC  xx.
+               88 sol-causale-blocco-prezzo VALUE IS "PR". 
+               88 sol-causale-blocco-fido VALUE IS "FI". 
+               88 sol-causale-blocco-manuale VALUE IS "MA". 
+           05 sol-qta-o        PIC  9(8).
+           05 sol-qta-e        PIC  9(8).
+           05 sol-eva.
+               10 sol-anno-e       PIC  9(4).
+               10 sol-num-e        PIC  9(8).
+               10 sol-data-e       PIC  9(8).
+           05 sol-bolla.
+               10 sol-anno-b       PIC  9(4).
+               10 sol-num-b        PIC  9(8).
+               10 sol-data-b       PIC  9(8).
+           05 sol-fattura.
+               10 sol-anno-f       PIC  9(4).
+               10 sol-num-f        PIC  9(8).
+               10 sol-data-f       PIC  9(8).
+           05 sol-vett         PIC  x(3).
+           05 sol-vet-sigla-pod            PIC  x(3).
+           05 sol-esito        PIC  x(20).
+           05 sol-sost         PIC  x.
+               88 sol-sost-si VALUE IS "S". 
+               88 sol-sost-no VALUE IS "N". 
+           05 sol-evasioni     PIC  9(3).
+           05 sol-tot-evasa    PIC  9(8).
+           05 sol-valido       PIC  x.
+               88 sol-valido-si VALUE IS "S". 
+               88 sol-valido-no VALUE IS "N". 

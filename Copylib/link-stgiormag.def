@@ -1,0 +1,8 @@
+      *
+       01 stgiormag-linkage.
+           03 stg-anno        pic 9(4).
+           03 stg-mese        pic 9(4).
+           03 stg-pag         pic 9(4).
+           03 stg-mag         pic x(3).
+           03 stg-path        pic x(256).
+           03 stg-handle      handle of window.

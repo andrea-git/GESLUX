@@ -1,0 +1,52 @@
+      *(( XFD FILE = MAZ ))
+      *
+      * tk 5643 - eliminare type amount e price dai dpb/dab (sono tipi non gestiti)                        | QUASIL 09/04/2014
+      * . Trasformati i type=amount in type=num,dec=2,size=21
+      *-----------------------------------------------------------------
+      *
+      *
+      *
+       FD  MAZ
+           RECORD IS VARYING IN SIZE TO 256 CHARACTERS.
+      *
+      *
+      *
+       01 RECORD-MAZ.
+      *
+      *
+           05 MAZ-CODICE       PIC  X(08).
+      *
+      *
+           05 RESTO-RECORD-MAZ.
+      *$GEN type=num,dec=2,size=21
+               10 MAZ-DARE-APERTURA            PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,dec=2,size=21
+      *
+               10 MAZ-AVERE-APERTURA           PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,dec=2,size=21
+               10 MAZ-DARE-CHIUSURA            PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,dec=2,size=21
+               10 MAZ-AVERE-CHIUSURA           PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,dec=2,size=21
+      *
+               10 MAZ-DARE-PRECEDENTE          PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,dec=2,size=21
+               10 MAZ-AVERE-PRECEDENTE         PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,dec=2,size=21
+      *
+               10 MAZ-DARE         PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,dec=2,size=21
+               10 MAZ-AVERE        PIC  S9(13)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *
+      *
+      *
+               10 MAZ-FILLER       PIC  X(80).
+               10 MAZ-FILLER-RIS   PIC  X(40).

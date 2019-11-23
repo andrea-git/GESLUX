@@ -1,0 +1,6 @@
+       FD  statmese.
+       01 stmese-rec.
+           05 stmese-chiave.
+               10 stmese-giorno    PIC  99.
+           05 stmese-dati.
+               10 stmese-fatt      PIC  s9(12)v99.

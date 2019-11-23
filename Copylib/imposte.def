@@ -1,0 +1,23 @@
+      *
+       77  risultato-imposte     PIC 9(15)v999.
+       77  imposta-cobat         PIC 9(15)v99.
+       77  imposta-cou           PIC 9(15)v99.
+       77  imposta-consumo       PIC 9(15)v99.
+       77  add-piombo            PIC 9(15)v99.
+       77  add-piombo-3dec       PIC 9(15)v999.
+       77  calcolo-piombo        pic x.
+         88 nuovo-calcolo-piombo value "N".
+
+       77  como-data-ordine PIC  9(8).
+       77  como-prz-unitario            PIC  9(15)v99.
+       77  como-imp-cou-cobat           PIC  9(15)v99.
+       77  como-imposta     PIC  9(15)v999.
+       01  TipoImposta      PIC  9.
+           88 ImpostaCou VALUE IS 1. 
+           88 ImpostaCobat VALUE IS 2. 
+           88 ImpostaCouCobat VALUE IS 3. 
+       01  TipoTrattamento  PIC  x(3).
+           88 TrattamentoGDO VALUE IS "GDO"    WHEN SET TO FALSE  "   "
+           . 
+       01  TipoPiombo       PIC  x(1).
+           88 TrattamentoPiombo VALUE IS "S"    WHEN SET TO FALSE  "N". 

@@ -1,0 +1,160 @@
+      *
+      *-----------------------------------------------------------------
+      * destinazioni diverse cli/for
+      *-----------------------------------------------------------------
+      *
+      * aggiunto id numerico record ad uso cpz                                                           | mxm 15/05/2007 11.09
+      * campo "des-forfait-viaggi" da type=amount a type=num                                             |ms 28/06/2007 16.54
+      *
+      *
+      * Ticket 451 : Inserito codice nazione                                                             |gm 05/08/2008 14.58
+      *
+      * Ticket 9 - Gestione indirizzi estesi                                                             |mc 12/09/2008 11.27
+      *            Inseriti campi per abilitazione indirizzo esteso                                      |mc 12/09/2008 11.27
+      *
+      *-----------------------------------------------------------------
+      *
+      *
+      * tplvar zmm_title=Destinazioni diverse CLI FRN CLP
+      * tplvar zmm_ver=09.01.00
+      * tplvar zmm_class=detail
+      * tplvar zmm_masterkey=des-codice-conto
+      * tplvar zmm_returnkey=des-codice
+      *
+      *
+      * ZoomFields seq:
+      *
+      *   01.des-codice-conto-x
+      *   02.des-filiale
+      *   03.des-descrizione1
+      *   04.des-descrizione2
+      *   05.des-via
+      *   06.des-cap
+      *   07.des-citta
+      *   08.des-provincia
+      *   09.des-telefono
+      *   10.des-telex
+      *   11.des-fax
+      *   12.des-codice-ss
+      *   13.des-codice-ss-d
+      *   14.des-tblag-codice
+      *   15.des-tblag-codice-d
+      *   16.des-tblzo-codice
+      *   17.des-tblzo-codice-d
+      *   18.des-tblac-codice
+      *   19.des-tblac-codice-d
+      *   20.des-tipo-forfait-viaggi-d
+      *   21.des-forfait-viaggi
+      *   22.des-kilometri
+      *   23.des-codice-accisa
+      *   24.des-tblna-codice
+      *
+      *
+      *
+       FD  DES
+           RECORD IS VARYING IN SIZE TO 300 CHARACTERS.
+      *
+      *
+      *
+       01 RECORD-DES.
+           05 DES-CODICE-G2.
+               10 DES-CODICE-CONTO.
+      *
+      *
+                   15 DES-TIPO         PIC  X(01).
+                       88 DES-TIPO-88 VALUE IS "C" "F" "P". 
+                       88 DES-TIPO-CLI VALUE IS "C". 
+                       88 DES-TIPO-CLP VALUE IS "P". 
+                       88 DES-TIPO-FRN VALUE IS "F". 
+      *
+      *
+      *
+                   15 DES-CONTO        PIC  X(08).
+      *
+      *
+               10 FILLER REDEFINES DES-CODICE-CONTO.
+      *$GEN type=codecfm,zmm=on,zmm_title=Conto,zmm_datatype=m,zmm_key=1,zmm_size=11,zmm_align=L,zmm_pos=1,zmm_entity=codecfm
+      *
+                   15 DES-CODICE-CONTO-X           PIC  x(09).
+      *
+      *$GEN entity=des,zmm=on,zmm_title=Filiale,zmm_datatype=x,zmm_size=6,zmm_align=L,zmm_pos=2
+               10 DES-FILIALE      PIC  X(06).
+      *
+      *
+           05 RESTO-RECORD-DES.
+               10 DES-DESTINAZIONE.
+      *$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=3
+      *
+                   15 DES-DESCRIZIONE1 PIC  X(30).
+      *$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=4
+      *
+                   15 DES-DESCRIZIONE2 PIC  X(30).
+      *$GEN zmm=on,zmm_title=Indirizzo,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=5
+      *
+                   15 DES-VIA          PIC  X(30).
+      *$GEN zmm=on,zmm_title=CAP,zmm_datatype=x,zmm_size=5,zmm_align=L,zmm_pos=6
+      *
+                   15 DES-CAP          PIC  X(05).
+      *$GEN zmm=on,zmm_title=Città,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=7
+      *
+                   15 DES-CITTA        PIC  X(30).
+      *$GEN zmm=on,zmm_title=Provincia,zmm_datatype=x,zmm_size=2,zmm_align=L,zmm_pos=8
+      *
+                   15 DES-PROVINCIA    PIC  X(02).
+      *$GEN zmm=on,zmm_title=Telefono,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=9
+      *
+               10 DES-TELEFONO     PIC  X(15).
+      *$GEN zmm=on,zmm_title=Telex,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=10
+      *
+               10 DES-TELEX        PIC  X(15).
+      *$GEN zmm=on,zmm_title=Fax,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=11
+      *
+               10 DES-FAX          PIC  X(15).
+      *$GEN type=code,entity=tblss,zmm=on,zmm_title=Codice addebito,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=12,zmm_entity=tblss
+      *
+               10 DES-CODICE-SS    PIC  X(03).
+      *$GEN type=num,dec=0,size=7,zmm=on,zmm_title=Distanza Km,zmm_datatype=n,zmm_size=10,zmm_align=R,zmm_pos=22
+      *
+               10 DES-KILOMETRI    PIC  9(04).
+      *$GEN type=combobox,comboclass=cli_tipo_forfait_viaggi
+               10 DES-TIPO-FORFAIT-VIAGGI      PIC  X(01).
+                   88 DES-TIPO-FORFAIT-VIAGGI-88 VALUE IS "O" "L" " ". 
+                   88 DES-TIPO-FORFAIT-VIAGGI-88-O VALUE IS "O". 
+                   88 DES-TIPO-FORFAIT-VIAGGI-88-L VALUE IS "L". 
+                   88 DES-TIPO-FORFAIT-VIAGGI-88-space VALUE IS " ". 
+      *
+      *$GEN type=num,dec=2,size=23,zmm=on,zmm_title=Addebito viaggio,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=21
+      *
+               10 DES-FORFAIT-VIAGGI           PIC  S9(15)V9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN zmm=on,zmm_title=Codice accisa,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=23
+      *
+               10 DES-CODICE-ACCISA            PIC  X(15).
+      *$GEN type=code,entity=tblag,zmm=on,zmm_title=Codice agente,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=14,zmm_entity=tblag
+               10 DES-TBLAG-CODICE PIC  X(03).
+      *$GEN type=code,entity=tblzo,zmm=on,zmm_title=Codice zona,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=16,zmm_entity=tblzo
+               10 DES-TBLZO-CODICE PIC  X(03).
+      *$GEN type=code,entity=tblac,zmm=on,zmm_title=Codice area,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=18,zmm_entity=tblac
+               10 DES-TBLAC-CODICE PIC  X(03).
+               10 DES-TIPO-DESTINATARIO        PIC  X(01).
+                   88 DES-TIPO-DESTINATARIO-88 VALUE IS " " "D" "P" "S" 
+           "F" "L" "I" "R" "A" "T" "E" "V" "U" "Z". 
+               10 DES-ID-DESTINATARIO          PIC  X(11).
+      *6/05 |DS 18/11/2005 9.339.44
+      *
+      *6/05 |DS 18/11/2005 9.339.44
+      *
+      *
+               10 des-num-id       PIC  9(06).
+      ***        10  des-filler              pic  x(05).                                                 |gm 05/08/2008 14.59   | mxm 15/05/2007 11.09
+      ***        10  des-filler              pic  x(11).                                                 | mxm 15/05/2007 11.09
+      *$GEN type=code,entity=tblna,zmm=on,zmm_title=Codice nazione,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=24,zmm_entity=tblna
+      *
+               10 DES-TBLNA-CODICE PIC  X(03).
+               10 des-ind-esteso   PIC  9(01).
+                   88 des-ind-esteso-si VALUE IS 1    WHEN SET TO FALSE 
+            0. 
+      *
+      *        10  des-filler              pic  x(02).                            |gm 05/08/2008 15.00   |mc 12/09/2008 11.33
+               10 des-filler       PIC  x(01).
+               10 des-filler-ris   PIC  x(40).

@@ -1,0 +1,12 @@
+      *(( XFD FILE = zoom-trasporti ))
+       FD  zoom-trasporti.
+       01 zoom-trs-rec.
+           05 zoom-trs-chiave.
+               10 zoom-trs-anno    PIC  9(4).
+               10 zoom-trs-num-bolla           PIC  9(8).
+               10 zoom-trs-prog-bolla          PIC  9(10).
+           05 zoom-trs-dati.
+               10 zoom-trs-vettore PIC  9(5).
+               10 zoom-trs-descrizione         PIC  x(40).
+               10 zoom-trs-cliente PIC  9(5).
+               10 zoom-trs-ragsoc  PIC  x(40).

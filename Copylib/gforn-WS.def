@@ -1,0 +1,445 @@
+      *
+           COPY  "LINK-G2AGG.DEF".
+           COPY  "CODFIS.LKS".
+           COPY  "APRI-NOTE.DEF".
+           COPY  "COMBO-STATO-DESTINI.DEF".
+           COPY  "COMBO-STATO.DEF".
+           COPY  "COMBO-INVIO.DEF".
+           COPY  "COMBO-UFFICIO-D.DEF".
+           COPY  "LINK-GNOTE-DESTF.DEF".
+           COPY  "link-passwd.def".
+       78 TITOLO VALUE IS "Geslux - Gestione Fornitori". 
+       77 STATUS-pagbloc   PIC  X(2).
+           88 Valid-STATUS-pagbloc VALUE IS "00" THRU "09". 
+       77 STATUS-clienti   PIC  X(2).
+           88 Valid-STATUS-clienti VALUE IS "00" THRU "09". 
+       77 STATUS-destini   PIC  X(2).
+           88 Valid-STATUS-destini VALUE IS "00" THRU "09". 
+       77 STATUS-note      PIC  X(2).
+           88 Valid-STATUS-note VALUE IS "00" THRU "09". 
+       77 STATUS-recapiti  PIC  X(2).
+           88 Valid-STATUS-recapiti VALUE IS "00" THRU "09". 
+       77 STATUS-tregioni  PIC  X(2).
+           88 Valid-STATUS-tregioni VALUE IS "00" THRU "09". 
+       77 STATUS-tnazioni  PIC  X(2).
+           88 Valid-STATUS-tnazioni VALUE IS "00" THRU "09". 
+       77 STATUS-tvettori  PIC  X(2).
+           88 Valid-STATUS-tvettori VALUE IS "00" THRU "09". 
+       77 STATUS-tprov     PIC  X(2).
+           88 Valid-STATUS-tprov VALUE IS "00" THRU "09". 
+       77 STATUS-nforn-dest            PIC  X(2).
+           88 Valid-STATUS-nforn-dest VALUE IS "00" THRU "09". 
+       77 STATUS-tmp-nforn-dest        PIC  X(2).
+           88 Valid-STATUS-tmp-nforn-dest VALUE IS "00" THRU "09". 
+       77 STATUS-tcodpag   PIC  X(2).
+           88 Valid-STATUS-tcodpag VALUE IS "00" THRU "09". 
+       77 STATUS-tivaese   PIC  X(2).
+           88 Valid-STATUS-tivaese VALUE IS "00" THRU "09". 
+       77 STATUS-note1     PIC  X(2).
+           88 VALID-STATUS-note1 VALUE IS "00" THRU "09". 
+       77 STATUS-tbanche   PIC  X(2).
+           88 Valid-STATUS-tbanche VALUE IS "00" THRU "09". 
+       77 STATUS-destinif  PIC  X(2).
+           88 Valid-STATUS-destinif VALUE IS "00" THRU "09". 
+       77 STATUS-notef     PIC  X(2).
+           88 Valid-STATUS-notef VALUE IS "00" THRU "09". 
+       77 STATUS-notef1    PIC  X(2).
+           88 VALID-STATUS-notef1 VALUE IS "00" THRU "09". 
+       77 STATUS-ABI       PIC  X(2).
+           88 Valid-STATUS-ABI VALUE IS "00" THRU "09". 
+       77 STATUS-nforn     PIC  X(2).
+           88 Valid-STATUS-nforn VALUE IS "00" THRU "09". 
+       77 STATUS-tmp-nforn PIC  X(2).
+           88 Valid-STATUS-tmp-nforn VALUE IS "00" THRU "09". 
+       77 path-tmp-nforn   PIC  X(256).
+       77 path-tmp-nforn-dest          PIC  X(256).
+       77 FILLER           PIC  9.
+           88 PagamentoBancario VALUE IS 1    WHEN SET TO FALSE  0. 
+       77 FILLER           PIC  9.
+           88 ActionColor VALUE IS 1    WHEN SET TO FALSE  0. 
+       77 Form1-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 codice-ed        PIC  z(5).
+       77 codice-x         PIC  x(5).
+       78 for-min-value VALUE IS "F00000". 
+       78 for-max-value VALUE IS "F99999". 
+       78 for-min-value-d VALUE IS "F                                   
+      -    "          ". 
+       78 for-max-value-d VALUE IS "Fzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+      -    "zzzzz99999". 
+       77 LastPrg          PIC  9(5).
+       77 nome-file        PIC  x(15).
+       77 note-o-bmp       PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       01 FILLER           PIC  9.
+           88 ExistRecord VALUE IS 1    WHEN SET TO FALSE  0. 
+       77 countchar        PIC  9(3).
+       01 FlagDestinoCambiato          PIC  9.
+           88 DestinoCambiato VALUE IS 1    WHEN SET TO FALSE  0. 
+       01 save-cli-K1.
+           05 save-ragsoc-K1   PIC  x(40).
+           05 save-codice-K1   PIC  9(5).
+       01 SceltaDelete     PIC  x.
+           88 Elimina VALUE IS "E". 
+           88 Disattiva VALUE IS "D". 
+           88 Annulla VALUE IS "A". 
+       77 pagina           PIC  9
+                  VALUE IS 1.
+       01 tab-dati-creazione.
+           05 el-tab-data      PIC  9(8)
+                      OCCURS 9999 TIMES.
+           05 el-tab-ora       PIC  9(8)
+                      OCCURS 9999 TIMES.
+           05 el-tab-utente    PIC  x(10)
+                      OCCURS 9999 TIMES.
+       01 WrkCampi.
+           05 WrkNote-1        PIC  x(19).
+           05 WrkData          PIC  9(8).
+           05 WrkNote-2        PIC  x(30).
+           05 WrkNote-3        PIC  x(30).
+           05 WrkNote-4        PIC  x(30).
+       78 MAX-PAGE VALUE IS 3. 
+       01 TabID
+                  OCCURS MAX-PAGE TIMES.
+           05 min-id           PIC  9(9).
+           05 max-id           PIC  9(9).
+       77 OPENSAVE-STATUS  PIC  S9(2)
+                  VALUE IS 0.
+       77 result
+                  USAGE IS SIGNED-SHORT.
+       77 counter          PIC  9(3).
+       77 Form1-Tb-1-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 COMO-RECORD      PIC  X(32000).
+       01 FLAG-MOD         PIC  9
+                  VALUE IS 0.
+       01 CONTROL-COMO     PIC  9(2)
+                  VALUE IS 0.
+       77 E-ESCI           PIC  9
+                  VALUE IS 1.
+       77 E-NUOVO          PIC  9
+                  VALUE IS 1.
+       77 E-SALVA          PIC  9
+                  VALUE IS 1.
+       77 E-CANCELLA       PIC  9
+                  VALUE IS 1.
+       77 E-MODIFICA       PIC  9
+                  VALUE IS 1.
+       77 E-ANTEPRIMA      PIC  9
+                  VALUE IS 0.
+       77 E-STAMPA         PIC  9
+                  VALUE IS 0.
+       77 E-CERCA          PIC  9
+                  VALUE IS 0.
+       77 Form1-St-1-Handle
+                  USAGE IS HANDLE OF STATUS-BAR.
+       77 Status-cod       PIC  9.
+       77 data-oggi        PIC  9(8).
+       77 E-SELEZIONA      PIC  9
+                  VALUE IS 1.
+       77 toolbar-bmp
+                  USAGE IS HANDLE OF BITMAP
+                  VALUE IS 0.
+       77 Screen1-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 Default-Font
+                  USAGE IS HANDLE OF FONT DEFAULT-FONT.
+       77 Small-Font
+                  USAGE IS HANDLE OF FONT SMALL-FONT.
+       78 primo-id-dati VALUE IS 5002. 
+       77 Form2-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 Form1-Pg-1-Visible           PIC  9
+                  VALUE IS 0.
+       77 Default-bmp      PIC  S9(6)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 Form1-Pg-2-Visible           PIC  9
+                  VALUE IS 0.
+       01 rec-grid.
+           05 col-prog         PIC  z(5).
+           05 col-ragsoc       PIC  X(40).
+           05 col-indirizzo    PIC  x(40).
+           05 col-cap          PIC  X(5).
+           05 col-localita     PIC  X(35).
+           05 col-prov         PIC  x(2).
+       77 note-114x23-bmp  PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 mod-campi        PIC  9
+                  VALUE IS 1.
+       77 cbo-stato-buf    PIC  X(10).
+       01 save-chiave.
+           10 save-cli-tipo    PIC  X.
+           10 save-cli-codice  PIC  9(5).
+       01 save-desf-key.
+           05 save-desf-codice PIC  9(5).
+           05 save-desf-prog   PIC  9(5).
+       01 old-desf-rec.
+           05 old-desf-chiave.
+               10 old-desf-codice  PIC  9(5).
+               10 old-desf-prog    PIC  9(5).
+           05 old-desf-dati.
+               10 old-desf-ragsoc-1            PIC  x(40).
+               10 old-desf-ragsoc-2            PIC  x(40).
+               10 old-desf-indirizzo           PIC  x(40).
+               10 old-desf-cap     PIC  x(5).
+               10 old-desf-localita            PIC  x(35).
+               10 old-desf-prov    PIC  x(2).
+               10 old-desf-nazione PIC  x(3).
+               10 old-desf-telef-1 PIC  x(15).
+               10 old-desf-telef-2 PIC  x(15).
+               10 old-desf-fax     PIC  X(15).
+               10 old-desf-mail    PIC  X(100).
+               10 old-desf-referente           PIC  x(30).
+               10 old-desf-vettore PIC  9(5).
+               10 old-desf-depostio-UTF        PIC  x.
+               10 old-desf-superamento-500     PIC  x.
+               10 old-desf-stato   PIC  x.
+                   88 old-desf-attivo VALUE IS space. 
+                   88 old-desf-disattivo VALUE IS "D". 
+                   88 old-desf-bloccato VALUE IS "B". 
+               10 old-desf-dati-ord.
+                   15 old-desf-referente-ord       PIC  x(30).
+                   15 old-desf-tel-dir-ref-ord     PIC  x(20).
+                   15 old-desf-mail-ref-ord        PIC  x(100).
+                   15 old-desf-mail-ref-ord-cc     PIC  x(199).
+                   15 old-desf-premio-netto        PIC  x.
+                       88 old-desf-premio-netto-no VALUE IS " " "N". 
+                       88 old-desf-premio-netto-si VALUE IS "S". 
+                   15 old-desf-perce-premi-fine-anno           PIC  
+           9(3)v99.
+               10 old-desf-gg-consegna         PIC  9(3).
+               10 old-desf-dati-comuni.
+                   15 old-desf-data-creazione      PIC  9(8).
+                   15 old-desf-ora-creazione       PIC  9(8).
+                   15 old-desf-utente-creazione    PIC  X(10).
+                   15 old-desf-data-ultima-modifica            PIC  
+           9(8).
+                   15 old-desf-ora-ultima-modifica PIC  9(8).
+                   15 old-desf-utente-ultima-modifica          PIC  
+           X(10).
+               10 old-desf-vuoti.
+                   15 old-desf-saldi   PIC  9.
+                       88 old-desf-saldi-si VALUE IS 1. 
+                       88 old-desf-saldi-no VALUE IS 0. 
+                   15 old-desf-num-vuoto-1         PIC  9(17).
+                   15 old-desf-num-vuoto-2         PIC  9(18).
+                   15 old-desf-num-vuoto-3         PIC  9(18).
+                   15 old-desf-ufficio PIC  X.
+                       88 old-desf-ufficio-non-gestito VALUE IS " ". 
+                       88 old-desf-ufficio-luca VALUE IS "L". 
+                       88 old-desf-ufficio-massimo VALUE IS "M". 
+                   15 old-desf-pag     PIC  x(3).
+                   15 old-desf-alfa-vuoto          PIC  X(496).
+       01 old-notf-rec.
+           05 old-notf-chiave.
+               10 old-notf-codice  PIC  9(5).
+               10 old-notf-prog    PIC  9(5).
+           05 old-notf-dati.
+               10 old-notf-note-1  PIC  x(19).
+               10 old-notf-data    PIC  9(8).
+               10 old-notf-note-2  PIC  x(30).
+               10 old-notf-note-3  PIC  x(30).
+               10 old-notf-note-4  PIC  x(30).
+           05 old-notf-dati-comuni.
+               10 old-notf-data-creazione      PIC  9(8).
+               10 old-notf-ora-creazione       PIC  9(8).
+               10 old-notf-utente-creazione    PIC  X(10).
+               10 old-notf-data-ultima-modifica            PIC  9(8).
+               10 old-notf-ora-ultima-modifica PIC  9(8).
+               10 old-notf-utente-ultima-modifica          PIC  X(10).
+           05 old-notf-vuoti.
+               10 old-notf-num-vuoto-1         PIC  9(15).
+               10 old-notf-num-vuoto-2         PIC  9(15).
+               10 old-notf-num-vuoto-3         PIC  9(15).
+               10 old-notf-alfa-vuoto-1        PIC  X(20).
+               10 old-notf-alfa-vuoto-2        PIC  X(20).
+               10 old-notf-alfa-vuoto-3        PIC  X(20).
+       01 hidden-rec.
+           05 hidden-dati.
+               10 hidden-ragsoc-2  PIC  x(40).
+               10 hidden-nazione   PIC  x(3).
+               10 hidden-telef-1   PIC  x(15).
+               10 hidden-telef-2   PIC  x(15).
+               10 hidden-fax       PIC  X(15).
+               10 hidden-mail      PIC  X(30).
+               10 hidden-referente PIC  x(30).
+               10 hidden-vettore   PIC  9(5).
+               10 hidden-stato     PIC  x.
+               10 hidden-note-1    PIC  x(19).
+               10 hidden-data-note PIC  9(8).
+               10 hidden-note-2    PIC  x(19).
+               10 hidden-note-3    PIC  x(19).
+               10 hidden-note-4    PIC  x(19).
+               10 hidden-referente-ord         PIC  x(30).
+               10 hidden-tel-dir-ref-ord       PIC  x(20).
+               10 hidden-mail-ref-ord          PIC  x(100).
+               10 hidden-mail-ref-ord-cc       PIC  x(200).
+               10 hidden-perce-premi-fine-anno PIC  9(3)v99.
+               10 hidden-netto-PFA PIC  9.
+               10 hidden-saldi-d   PIC  9.
+               10 hidden-gg-consegna           PIC  9(3).
+               10 hidden-ufficio-d PIC  X.
+               10 hidden-pag       PIC  X(3).
+       77 AUTO-ID          PIC  9(6)
+                  VALUE IS 0.
+       77 note-109x23-bmp  PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 strip-grid-gclienti-bmp      PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 mod-destini      PIC  9
+                  VALUE IS 1.
+       77 cbo-stato-d-buf  PIC  X(10).
+       77 lab-banca-buf    PIC  x(120).
+       77 lab-iva-buf      PIC  X(100).
+       77 lab-pag-buf      PIC  X(100).
+       77 BOTTONE-STAMPA-BMP           PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       01 FlagNoteCambiate PIC  9.
+           88 NoteCambiate VALUE IS 1    WHEN SET TO FALSE  0. 
+       77 riga-note        PIC  9(4).
+       77 riga-old-note    PIC  9(4).
+       77 tot-righe-note   PIC  9(4).
+       77 cont PIC  9(4).
+       77 cbo-ufficio-d-buf            PIC  x(30).
+       77 form-note-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 Form1-Tb-1-Handlea
+                  USAGE IS HANDLE OF WINDOW.
+       01 rec-note.
+           05 col-nulla        PIC  X.
+           05 col-prog-note    PIC  z(3).
+           05 col-note         PIC  x(200).
+       01 como-dati-comuni.
+           05 como-data-creazione          PIC  9(8).
+           05 como-ora-creazione           PIC  9(8).
+           05 como-utente-creazione        PIC  x(10).
+           05 como-data-ultima-modifica    PIC  9(8).
+           05 como-ora-ultima-modifica     PIC  9(8).
+           05 como-utente-ultima-modifica  PIC  x(10).
+       77 riga-nuova-note  PIC  9(3).
+       77 colonna-note     PIC  9(3).
+       77 font-evidenzia-griglia
+                  USAGE IS HANDLE OF FONT.
+       77 elemento-bmp     PIC  s9(9)
+                  USAGE IS COMP-4
+                  VALUE IS ZERO.
+       78 titolo-note VALUE IS "GESLUX - Gestione Fornitori (note)". 
+       01 old-cli-rec.
+           05 old-cli-chiave.
+               10 old-cli-tipo-CF  PIC  X(1).
+                   88 old-cli-tipo-C VALUE IS "C". 
+                   88 old-cli-tipo-F VALUE IS "F". 
+               10 old-cli-codice   PIC  9(5).
+           05 old-cli-dati.
+               10 old-cli-ragsoc-1 PIC  x(40).
+               10 old-cli-ragsoc-2 PIC  x(40).
+               10 old-cli-indirizzo            PIC  x(40).
+               10 old-cli-cap      PIC  x(5).
+               10 old-cli-localita PIC  x(35).
+               10 old-cli-prov     PIC  x(2).
+               10 old-cli-nazione  PIC  x(3).
+               10 old-cli-codfis   PIC  x(16).
+               10 old-cli-piva     PIC  x(11).
+               10 old-cli-tel-1    PIC  x(15).
+               10 old-cli-tel-2    PIC  x(15).
+               10 old-cli-fax      PIC  x(15).
+               10 old-cli-email    PIC  x(100).
+               10 old-cli-web      PIC  x(100).
+      *(( XFD NAME = cli-tipo_1 ))
+      *
+      *
+               10 old-cli-tipo     PIC  x(2).
+               10 old-cli-gdo      PIC  x(5).
+               10 old-cli-utf      PIC  x.
+               10 old-cli-referente            PIC  x(30).
+               10 old-cli-note     PIC  x(300).
+               10 old-cli-note-agg PIC  x(256).
+               10 old-cli-vettore  PIC  9(5).
+               10 old-cli-inoltro  PIC  x.
+               10 old-cli-agente   PIC  9(5).
+               10 old-cli-iva-ese  PIC  x(3).
+               10 old-cli-pag      PIC  x(3).
+               10 old-cli-spost-ric-agosto     PIC  x.
+               10 old-cli-spost-ric-dicembre   PIC  x.
+               10 old-cli-fido     PIC  9(11)v9(2).
+               10 old-cli-fido-data            PIC  9(8).
+               10 old-cli-abi      PIC  x(5).
+               10 old-cli-cab      PIC  x(5).
+               10 old-cli-superamento-500      PIC  x.
+               10 old-cli-stato    PIC  x.
+                   88 old-cli-attivo VALUE IS "A". 
+                   88 old-cli-disattivo VALUE IS "D". 
+                   88 old-cli-bloccato VALUE IS "B". 
+               10 old-cli-dich-esp PIC  x(8).
+               10 old-cli-data-dich            PIC  9(8).
+               10 old-cli-data-reg PIC  9(8).
+               10 old-cli-num-reg  PIC  x(8).
+               10 old-cli-fido-extra           PIC  9(8)v99.
+               10 old-cli-tipo-persona         PIC  x.
+                   88 old-cli-fisica VALUE IS "F". 
+                   88 old-cli-giuridica VALUE IS space. 
+               10 old-cli-referente-ord        PIC  x(30).
+               10 old-cli-tel-dir-ref-ord      PIC  x(20).
+               10 old-cli-mail-ref-ord         PIC  x(100).
+      *(( XFD NAME = old-cli-blocco-24000_1 ))
+               10 old-cli-blocco-24000         PIC  9.
+                   88 old-cli-si-blocco VALUE IS 1. 
+                   88 old-cli-no-blocco VALUE IS 0. 
+               10 old-cli-cod-ditta            PIC  x(15).
+               10 old-cli-gg-dilazione         PIC  9(3).
+               10 old-cli-gestione-fido        PIC  9.
+                   88 old-cli-gestione-fido-si VALUE IS 1. 
+                   88 old-cli-gestione-fido-no VALUE IS 0. 
+               10 old-cli-saldi-banco          PIC  9(1).
+                   88 old-cli-saldi-banco-si VALUE IS 1. 
+                   88 old-cli-saldi-banco-no VALUE IS 0. 
+               10 old-cli-cau-blocco           PIC  x.
+                   88 old-cli-no-angraf VALUE IS "N". 
+                   88 old-cli-prob-pag VALUE IS "P". 
+                   88 old-cli-nuovo-ragsoc VALUE IS "R". 
+                   88 old-cli-fuori-fido VALUE IS "F". 
+               10 old-cli-dati-comuni.
+                   15 old-cli-data-creazione       PIC  9(8).
+                   15 old-cli-ora-creazione        PIC  9(8).
+                   15 old-cli-utente-creazione     PIC  X(10).
+                   15 old-cli-data-ultima-modifica PIC  9(8).
+                   15 old-cli-ora-ultima-modifica  PIC  9(8).
+                   15 old-cli-utente-ultima-modifica           PIC  
+           X(10).
+               10 old-cli-vuoti.
+                   15 old-cli-sost     PIC  x.
+                       88 old-cli-sost-auto VALUE IS "A". 
+                       88 old-cli-sost-richiesta VALUE IS "R". 
+                       88 old-cli-sost-no VALUE IS " " "N". 
+                   15 old-cli-tipo-art PIC  9.
+                       88 old-cli-tipo-art-diretti VALUE IS 1. 
+                       88 old-cli-tipo-art-gruppi VALUE IS 2. 
+                       88 old-cli-tipo-art-specialist VALUE IS 3. 
+                       88 old-cli-tipo-art-DO VALUE IS 4. 
+                       88 old-cli-tipo-art-GDA VALUE IS 5. 
+                       88 old-cli-tipo-art-GDS VALUE IS 6. 
+                       88 old-cli-tipo-art-ESTERO VALUE IS 7. 
+                   15 old-cli-iva      PIC  X(3).
+                   15 old-cli-invio-bolle-EDI      PIC  x.
+                       88 old-cli-invio-bolle-EDI-si VALUE IS "S". 
+                       88 old-cli-invio-bolle-EDI-no VALUE IS "N" " ". 
+                   15 old-cli-destino-auto-EDI     PIC  x.
+                       88 old-cli-destino-auto-EDI-si VALUE IS "S". 
+                       88 old-cli-destino-auto-EDI-no VALUE IS "N" " ". 
+      *(( XFD NAME = cli-agente-2 ))
+                   15 old-cli-agente2  PIC  9(5).
+      *(( XFD NAME = cli-alfa-vuoto-1_8 ))
+                   15 old-cli-codice-SDI           PIC  X(10).
+      *(( XFD NAME = cli-alfa-vuoto-1_8 ))
+                   15 old-cli-alfa-vuoto-1         PIC  X(478).
+                   15 old-cli-fidejussione         PIC  s9(8)v9(4).
+                   15 old-cli-pfa      PIC  s9(8)v9(4).
+                   15 old-cli-pfa-perce            PIC  9(3)v999.
+                   15 old-cli-data-fido-extra      PIC  9(8).
+                   15 old-cli-num-vuoto-3          PIC  9(16).

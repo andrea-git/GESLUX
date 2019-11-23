@@ -1,0 +1,79 @@
+       FD  OLD-rordini.
+       01 OLD-ror-rec.
+           05 OLD-ror-chiave.
+               10 OLD-ror-anno         PIC  9(4).
+               10 OLD-ror-num-ordine   PIC  9(8).
+               10 OLD-ror-num-riga     PIC  9(5).
+           05 OLD-ror-dati.
+               10 OLD-ror-cod-articolo PIC  9(6).
+               10 OLD-ror-des-libera   PIC  x(150).
+               10 OLD-ror-qta          PIC  9(8).
+               10 OLD-ror-prz-unitario PIC  9(9)v9(2).
+               10 OLD-ror-imp-consumo  PIC  9(4)v9(2).
+               10 OLD-ror-imp-cou-cobat            PIC  9(4)v9(2).
+               10 OLD-ror-imponib-merce            PIC  9(9)v9(2).
+               10 OLD-ror-perce-sconto PIC  9(2)v9(2).
+               10 OLD-ror-omaggio      PIC  X(1).
+                   88 OLD-ror-si-omaggio VALUE IS "S". 
+                   88 OLD-ror-no-omaggio VALUE IS "N". 
+               10 OLD-ror-peso-utf     PIC  9(3)v9(3).
+               10 OLD-ror-peso-non-utf PIC  9(3)v9(3).
+               10 OLD-ror-num-colli    PIC  9(5).
+               10 OLD-ror-cod-imballo  PIC  X(3).
+               10 OLD-ror-des-imballo  PIC  X(50).
+               10 OLD-ror-qta-imballi  PIC  9(4).
+               10 OLD-ror-cod-art-cli  PIC  X(15).
+               10 OLD-ror-cod-iva      PIC  x(3).
+               10 OLD-ror-prz-commle   PIC  9(9)v9(2).
+               10 OLD-ror-prg-chiave.
+                   15 OLD-ror-prg-cod-articolo         PIC  9(6).
+                   15 OLD-ror-prg-cod-magazzino        PIC  X(3).
+                   15 OLD-ror-prg-tipo-imballo         PIC  X(3).
+                   15 OLD-ror-prg-peso     PIC  9(3)v9(3).
+               10 OLD-ror-stato        PIC  X(1).
+                   88 OLD-ror-attivo VALUE IS "A". 
+                   88 OLD-ror-disattivo VALUE IS "D". 
+                   88 OLD-ror-bloccato VALUE IS "B". 
+               10 OLD-ror-dati-comuni.
+                   15 OLD-ror-data-creazione           PIC  9(8).
+                   15 OLD-ror-ora-creazione            PIC  9(8).
+                   15 OLD-ror-utente-creazione         PIC  X(10).
+                   15 OLD-ror-data-ultima-modifica     PIC  9(8).
+                   15 OLD-ror-ora-ultima-modifica      PIC  9(8).
+                   15 OLD-ror-utente-ultima-modifica   PIC  X(10).
+               10 OLD-ror-vuoti.
+                   15 OLD-ror-qta-omaggi   PIC  9(8).
+                   15 OLD-ror-blister      PIC  9.
+                       88 OLD-ror-si-blister VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+                   15 OLD-ror-promo        PIC  9(15).
+                   15 OLD-ror-flag-cancellato          PIC  9.
+                       88 OLD-ror-cancellato VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+                   15 OLD-ror-add-piombo   PIC  9(4)v9(2).
+                   15 OLD-ror-riservato-split          PIC  9(8).
+      *NON USATO
+                   15 FILLER           PIC  9.
+                   15 OLD-ror-prz-promo    PIC  9.
+                       88 OLD-ror-si-prz-promo VALUE IS 1. 
+                       88 OLD-ror-no-prz-promo VALUE IS 0. 
+                   15 OLD-ror-chiave-ordine.
+                       20 OLD-ror-chiave-ordine-testa.
+                           25 OLD-ror-anno-master  PIC  9(4).
+                           25 OLD-ror-numero-master           PIC  9(8).
+      *(( XFD NAME = OLD-ror-progr-mster ))
+                       20 OLD-ror-progr-master PIC  9(5).
+                   15 OLD-ror-bli-codice   PIC  9(6).
+                   15 OLD-ror-prz-manuale  PIC  9.
+                       88 OLD-ror-prz-manuale-si VALUE IS 1. 
+                       88 OLD-ror-prz-manuale-no VALUE IS 0. 
+      *(( XFD NAME = OLD-ror-prz-manuale_1 ))
+                   15 OLD-ror-evasa-SHI    PIC  9.
+                       88 OLD-ror-evasa-SHI-si VALUE IS 1. 
+                       88 OLD-ror-evasa-SHI-no VALUE IS 0. 
+      *(( XFD NAME = OLD-ror-prz-manuale_1_ ))
+                   15 OLD-ror-evasa-GET    PIC  9.
+                       88 OLD-ror-evasa-GET-si VALUE IS 1. 
+                       88 OLD-ror-evasa-GET-no VALUE IS 0. 
+                   15 OLD-ror-alfa-vuoto-2 PIC  X(18).
+                   15 OLD-ror-alfa-vuoto-3 PIC  X(20).

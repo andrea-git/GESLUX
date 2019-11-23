@@ -1,0 +1,144 @@
+
+           copy "mail.def".        
+           copy "spooler.def". 
+           copy "acugui.def".  
+           copy "fonts.def".
+           copy "selprint.lks".
+           copy "link-settaPDF.def".
+                               
+       77  WFONT-STATUS          pic s9(5) value ZERO.
+
+       77  status-tmovtrat       pic xx.
+       77  status-tsetinvio      pic xx.
+       77  status-tmovmag        pic xx.
+       77  status-clienti        pic xx.
+       77  status-destinif       pic xx.
+       77  status-tcaumag        pic xx.
+       77  status-tparamge       pic xx.
+       77  status-lineseq        pic xx.
+       77  status-lineseq1       pic xx.
+       77  status-tordini        pic xx.
+       77  status-rordini        pic xx.
+       77  status-destini        pic xx.
+           
+       77  ult-numero-bolla-S1   pic 9(8) value 0.
+       77  ult-numero-bolla-S2   pic 9(8) value 0.
+       77  ult-numero-bolla-S3   pic 9(8) value 0.
+       77  max-numero            pic 9(8).        
+       77  SerieBolle            pic 9.
+       77  tot-kg                pic 9(12)v999.
+                 
+       77  ult-num-movim         pic 9(8) value 0.
+       77  tot-kg-edit           pic zzz.zzz.zzz.zz9,999.
+       77  data-x10              pic x(10).
+       77  como-data             pic 9(8). 
+       77  como-ora              pic 9(8).
+       77  tipo-doc              pic x(6).
+       77  num-doc               pic x(8).
+       77  tentativi             pic 99.
+       77  NomeFile              pic x(256).
+       77  DestFile              pic x(256).
+       77  cont                  pic 999.
+       77  link-path             pic x(256).
+
+
+       77  filler                pic 9.
+           88 RecLocked          value 1, false 0.
+
+       77  controllo             pic xx.
+           88  tutto-ok          value "OK".
+           88  errori            value "ER".
+
+       77  filler                pic 9.
+           88 trovato            value 1, false 0.
+       77  filler                pic 9.
+           88 record-ok          value 1, false 0.
+
+      * SEZIONE PER LA STAMPA
+       77  Courier8              handle of font.
+
+       77  num-righe             pic 999.
+       77  pagina                pic 999.
+       77  max-righe             pic 999.
+                                            
+       01  intestazione1.
+         05 filler               pic x(95).
+         05 filler               pic x(30) value "Spett.le UTF".
+       01  intestazione2.
+         05 filler               pic x(95).
+         05 filler               pic x(45) 
+            value "Ufficio delle Dogane di Milano 3 – Linate".         
+       01  intestazione3.
+         05 filler               pic x(95).
+         05 filler               pic x(45) value "20154 - MILANO (MI)".
+       01  intestazione4.
+         05 filler               pic x(95).
+         05 filler               pic x(45) value "FAX 02/6880089".
+       01  intestazione5.
+         05 filler               pic x(9).
+         05 filler               pic x(100)
+            value "Oggetto:  Trasferimento di prodotti petroliferi tra d
+      -           "epositi commerciali liberi.".                   
+       01  intestazione6.
+         05 filler               pic x(19).
+         05 filler               pic x(55) 
+            value "Applicazione Art. 25, non comma, del T.U. n.504/95.".
+       01  intestazione7.
+         05 filler               pic x(19).
+         05 filler               pic x(14) value "Codice Ditta: ".
+         05 r-int7               pic x(20).
+       01  intestazione8a.
+         05 filler               pic x(19).
+         05 filler               pic x(165) 
+            value "In ottemperanza alla norma in oggetto, si comunica di
+      -           "seguito la movimentazione".
+       01  intestazione8b.
+         05 filler               pic x(19).
+         05 filler               pic x(165) 
+            value "giornaliera con altri depositi commerciali di prodott
+      -           "i petroliferi:".
+       01  intestazione8c.
+         05 filler               pic x(19).
+         05 filler               pic x(20) value "TIPO PRODOTTO.....: ".
+         05 filler               pic x(17) value "OLIO LUBRIFICANTE".
+       01  intestazione8d.
+         05 filler               pic x(19).
+         05 filler               pic x(20) value "DITTA DESTINATARIA: ".
+         05 r-dest               pic x(25).
+
+       01  intestazione9.
+         05 filler               pic x(6).
+         05 filler               pic x(11) value "DATA CARICO".
+         05 filler               pic x(2).
+         05 filler               pic x(17) value "DOCUM. TIPO E N.".
+         05 filler               pic x(1).
+         05 filler               pic x(40) value "DITTA MITTENTE".
+         05 filler               pic x(2).
+         05 filler               pic x(25) value "LOCALITA'". 
+         05 filler               pic x(2).
+         05 filler               pic x(5)  value "CAP".
+         05 filler               pic x(2).
+         05 filler               pic x(2)  value "PR".
+         05 filler               pic x(2).
+         05 filler               pic x(17) value 78-col-kg.
+
+       01  r-riga.
+         05 filler               pic x(6).
+         05 r-data               pic x(11).
+         05 filler               pic x(2).
+         05 r-doc                pic x(17).
+         05 filler               pic x(1).
+         05 r-ragsoc             pic x(40).
+         05 filler               pic x(2).
+         05 r-localita           pic x(25). 
+         05 filler               pic x(2).
+         05 r-cap                pic 9(5).
+         05 filler               pic x(2).
+         05 r-prov               pic x(2).
+         05 filler               pic x(2).
+         05 r-kg                 pic z.zzz.zzz.zz9,999.
+
+       01  pie-di-pagina.
+         05 filler               pic x(6).
+         05 filler               pic x(7) value "Pagina ".
+         05 r-pag                pic zz9.

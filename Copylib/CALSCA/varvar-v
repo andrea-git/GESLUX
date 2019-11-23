@@ -1,0 +1,462 @@
+*------------------------------------------------------------------------------
+*
+* 17.12.03 copy fonts.def                    (mxm)
+* 30.03.04 gestione closeonexit              (mxm)
+* 12.01.05 variabile locale per c$redirect   (mxm)
+*------------------------------------------------------------------------------
+*
+* attenzione!!!!!!
+* NON INSERIRE NULLA A LIVELLO 01-VARIABILI-VARIAB PERCHE'
+* L'AREA E' UTILIZZATA IN LINKAGE IN PARECCHI PROGRAMMI (TASTI SCELTA-O FINESTRA...)
+*
+*
+*
+*------------------------------------------------------------------------------
+*
+01  VARIABILI-VARIAB.
+    05  hnw-thread                          handle of thread.
+    05  my-task-number                      pic s9(06) comp-3.
+    05  W-FLOATING                          PIC  X(01).
+        88  W-FLOATING-88                   VALUE "S".
+
+    05  thread-message                      pic x(10).
+        88  thr-msg-close-all               value "CloseAll".
+        88  thr-msg-28rptt00-go             value "28rptt00go".
+
+    05  io-handler-status                   pic s9(03).
+        88  io-handler-status-ok            value 1.
+
+    05  IMPORTO6-DOCUMENTI                  PIC S9(12)V9(06).
+
+    05  XXX-PROGRAMMA-SEGUENTE              PIC  X(08).
+    05  IMPORTO-DIVISA                      PIC S9(15).
+    78  ELEM-TABELLA-IVA                    VALUE 20.
+    78  NR-WIN                              VALUE 25.
+    78  NR-UNIX                             VALUE 20.
+    05  W-V.
+********* flag lettura linkage section invece di file lin
+        10  W-LINKAGE                PIC  X(01).
+            88  W-LINKAGE-YES            VALUE "S".
+            88  W-LINKAGE-88             VALUE "S".
+********* flag call invece di c$run
+        10  W-CALL                  PIC  X(01).
+            88  W-CALL-88               VALUE "N".
+********* coordinate inizio window
+        10  W-XY.
+            15  W-Y                 PIC  9(04).
+            15  W-X                 PIC  9(04).
+********* size window
+        10  W-S                     PIC  9(03).
+        10  W-SG                    PIC  9(03).
+        10  W-S0                    PIC  9(03).
+        10  W-S1                    PIC  9(03).
+        10  W-S2                    PIC  9(03).
+********* lines window
+        10  W-L                     PIC  9(02).
+        10  W-LG                    PIC  9(02).
+
+        10  W-BOXED                 PIC  X(01).
+        10  W-MENU                  PIC  X(01).
+        10  W-TOOLBAR               PIC  X(01).
+        10  W-SYSTEM                PIC  X(01).
+        10  W-BARRA                 PIC  X(01).
+        10  W-HELP                  PIC  X(01).
+            88  W-HELP-88               VALUE " ".
+*
+*font
+*
+*    05  F-F                                 HANDLE OF FONT.
+*    05  T-F                                 HANDLE OF FONT.
+*    05  D-F                                 HANDLE OF FONT.
+*    05  L                                   HANDLE OF FONT.
+*    05  L1                                  HANDLE OF FONT.
+*    05  M                                   HANDLE OF FONT.
+*    05  M1                                  HANDLE OF FONT.
+*
+*nomi dei files nelle select
+*
+    05  PRINTER                     PIC  X(30).
+    05  SELDIF                      PIC  X(50).
+    05  SELDCU                      PIC  X(30).
+    05  SELARZ.
+        10                          PIC  X(03)  VALUE "ARZ".
+        10  SELARZ-01               PIC  X(02).
+    05  SELARZTG.
+        10                          PIC  X(05)  VALUE "ARZTG".
+        10  SELARZTG-01             PIC  X(02).
+    05  SELCAP.
+        10                          PIC  X(03)  VALUE "CAP".
+        10  SELCAP-01               PIC  X(02).
+    05  SELCAR.
+        10                          PIC  X(03)  VALUE "CAR".
+        10  SELCAR-01               PIC  X(02).
+    05  SELCAT.
+        10                          PIC  X(03)  VALUE "CAT".
+        10  SELCAT-01               PIC  X(02).
+    05  SELCLZ.
+        10                          PIC  X(03)  VALUE "CLZ".
+        10  SELCLZ-01               PIC  X(02).
+    05  SELCSP.
+        10                          PIC  X(03)  VALUE "CSP".
+        10  SELCSP-01               PIC  X(02).
+    05  SELCSD.
+        10                          PIC  X(03)  VALUE "CSD".
+        10  SELCSD-01               PIC  X(02).
+    05  SELCSR.
+        10                          PIC  X(03)  VALUE "CSR".
+        10  SELCSR-01               PIC  X(02).
+    05  SELCST.
+        10                          PIC  X(03)  VALUE "CST".
+        10  SELCST-01               PIC  X(02).
+    05  SELDAT.
+        10                          PIC  X(03)  VALUE "DAT".
+        10  SELDAT-01               PIC  X(02).
+    05  SELDAR.
+        10                          PIC  X(03)  VALUE "DAR".
+        10  SELDAR-01               PIC  X(02).
+    05  SELDARTG.
+        10                          PIC  X(05)  VALUE "DARTG".
+        10  SELDARTG-01             PIC  X(02).
+    05  SELDIP.
+        10                          PIC  X(03)  VALUE "DIP".
+        10  SELDIP-01               PIC  X(04).
+    05  SELDVT.
+        10                          PIC  X(03)  VALUE "DVT".
+        10  SELDVT-01               PIC  X(02).
+    05  SELDVR.
+        10                          PIC  X(03)  VALUE "DVR".
+        10  SELDVR-01               PIC  X(02).
+    05  SELDVRTG.
+        10                          PIC  X(05)  VALUE "DVRTG".
+        10  SELDVRTG-01             PIC  X(02).
+    05  SELDVN.
+        10                          PIC  X(03)  VALUE "DVN".
+        10  SELDVN-01               PIC  X(02).
+    05  SELDVM.
+        10                          PIC  X(03)  VALUE "DVM".
+        10  SELDVM-01               PIC  X(02).
+    05  SELDVI.
+        10                          PIC  X(03)  VALUE "DVI".
+        10  SELDVI-01               PIC  X(02).
+    05  SELFRZ.
+        10                          PIC  X(03)  VALUE "FRZ".
+        10  SELFRZ-01               PIC  X(02).
+    05  SELLIQ.
+        10                          PIC  X(03)  VALUE "LIQ".
+        10  SELLIQ-01               PIC  X(04).
+    05  SELLTT.
+        10                          PIC  X(03)  VALUE "LTT".
+        10  SELLTT-01               PIC  X(02).
+    05  SELLTR.
+        10                          PIC  X(03)  VALUE "LTR".
+        10  SELLTR-01               PIC  X(02).
+    05  SELMAZ.
+        10                          PIC  X(03)  VALUE "MAZ".
+        10  SELMAZ-01               PIC  X(02).
+    05  SELMGZ.
+        10                          PIC  X(03)  VALUE "MGZ".
+        10  SELMGZ-01               PIC  X(02).
+    05  SELMGZTG.
+        10                          PIC  X(05)  VALUE "MGZTG".
+        10  SELMGZTG-01             PIC  X(02).
+    05  SELMCS.
+        10                          PIC  X(03)  VALUE "MCS".
+        10  SELMCS-01               PIC  X(02).
+    05  SELMMR.
+        10  SELMMR-00               PIC  X(03).
+        10  SELMMR-01               PIC  X(02).
+    05  SELMMRTG.
+        10  SELMMRTG-00             PIC  X(05).
+        10  SELMMRTG-01             PIC  X(02).
+    05  SELMMT.
+        10  SELMMT-00               PIC  X(03).
+        10  SELMMT-01               PIC  X(02).
+    05  SELOCP.
+        10                          PIC  X(03)  VALUE "OCP".
+        10  SELOCP-01               PIC  X(08).
+    05  SELOCT.
+        10                          PIC  X(03)  VALUE "OCT".
+        10  SELOCT-01               PIC  X(02).
+    05  SELOCR.
+        10                          PIC  X(03)  VALUE "OCR".
+        10  SELOCR-01               PIC  X(02).
+    05  SELOCRTG.
+        10                          PIC  X(05)  VALUE "OCRTG".
+        10  SELOCRTG-01             PIC  X(02).
+    05  SELOCN.
+        10                          PIC  X(03)  VALUE "OCN".
+        10  SELOCN-01               PIC  X(02).
+    05  SELOFT.
+        10                          PIC  X(03)  VALUE "OFT".
+        10  SELOFT-01               PIC  X(02).
+    05  SELOFR.
+        10                          PIC  X(03)  VALUE "OFR".
+        10  SELOFR-01               PIC  X(02).
+    05  SELOFRTG.
+        10                          PIC  X(05)  VALUE "OFRTG".
+        10  SELOFRTG-01             PIC  X(02).
+    05  SELOFN.
+        10                          PIC  X(03)  VALUE "OFN".
+        10  SELOFN-01               PIC  X(02).
+    05  SELOPT.
+        10                          PIC  X(03)  VALUE "OPT".
+        10  SELOPT-01               PIC  X(02).
+    05  SELOPR.
+        10                          PIC  X(03)  VALUE "OPR".
+        10  SELOPR-01               PIC  X(02).
+    05  SELOPN.
+        10                          PIC  X(03)  VALUE "OPN".
+        10  SELOPN-01               PIC  X(02).
+    05  SELOPD.
+        10                          PIC  X(03)  VALUE "OPD".
+        10  SELOPD-01               PIC  X(02).
+    05  SELOPP.
+        10                          PIC  X(03)  VALUE "OPP".
+        10  SELOPP-01               PIC  X(02).
+    05  SELPNI.
+        10  SELPNI-00               PIC  X(03).
+        10  SELPNI-01               PIC  X(02).
+    05  SELPNR.
+        10  SELPNR-00               PIC  X(03).
+        10  SELPNR-01               PIC  X(02).
+    05  SELPNT.
+        10  SELPNT-00               PIC  X(03).
+        10  SELPNT-01               PIC  X(02).
+    05  SELPCR.
+        10                          PIC  X(03)  VALUE "PCR".
+        10  SELPCR-01               PIC  X(02).
+    05  SELPCT.
+        10                          PIC  X(03)  VALUE "PCT".
+        10  SELPCT-01               PIC  X(02).
+    05  SELPVT.
+        10                          PIC  X(03)  VALUE "PVT".
+        10  SELPVT-01               PIC  X(02).
+    05  SELPVR.
+        10                          PIC  X(03)  VALUE "PVR".
+        10  SELPVR-01               PIC  X(02).
+    05  SELPVN.
+        10                          PIC  X(03)  VALUE "PVN".
+        10  SELPVN-01               PIC  X(02).
+    05  SELRFT.
+        10                          PIC  X(03)  VALUE "RFT".
+        10  SELRFT-01               PIC  X(02).
+    05  SELRFR.
+        10                          PIC  X(03)  VALUE "RFR".
+        10  SELRFR-01               PIC  X(02).
+    05  SELRFN.
+        10                          PIC  X(03)  VALUE "RFN".
+        10  SELRFN-01               PIC  X(02).
+    05  SELVIT.
+        10                          PIC  X(03)  VALUE "VIT".
+        10  SELVIT-01               PIC  X(02).
+    05  SELPKT.
+        10                          PIC  X(03)  VALUE "PKT".
+        10  SELPKT-01               PIC  X(02).
+    05  SELPKR.
+        10                          PIC  X(03)  VALUE "PKR".
+        10  SELPKR-01               PIC  X(02).
+    05  SELPKD.
+        10                          PIC  X(03)  VALUE "PKD".
+        10  SELPKD-01               PIC  X(02).
+    05  SELDPT.
+        10                          PIC  X(03)  VALUE "DPT".
+        10  SELDPT-01               PIC  X(02).
+    05  SELDPR.
+        10                          PIC  X(03)  VALUE "DPR".
+        10  SELDPR-01               PIC  X(02).
+    05  SELDPD.
+        10                          PIC  X(03)  VALUE "DPD".
+        10  SELDPD-01               PIC  X(02).
+    05  SELDPP.
+        10                          PIC  X(03)  VALUE "DPP".
+        10  SELDPP-01               PIC  X(02).
+    05  SELPLT.
+        10                          PIC  X(03)  VALUE "PLT".
+        10  SELPLT-01               PIC  X(02).
+    05  SELPLR.
+        10                          PIC  X(03)  VALUE "PLR".
+        10  SELPLR-01               PIC  X(02).
+    05  SELSRP                      PIC  X(30).
+    05  EVENT-STATUS.
+        10  EVENT-TYPE              PIC  X(04)  COMP-X.
+        10  EVENT-WINDOW-HANDLE     USAGE HANDLE.
+        10  EVENT-CONTROL-HANDLE    USAGE HANDLE.
+        10  EVENT-CONTROL-ID        PIC  X(02)  COMP-X.
+        10  EVENT-DATA-1            USAGE SIGNED-SHORT.
+        10  EVENT-DATA-2            USAGE SIGNED-LONG.
+        10  EVENT-ACTION            PIC X       COMP-X.
+    05  TOOLBAR                     HANDLE OF WINDOW.
+    05  TOOLBAR1                    HANDLE OF WINDOW.
+    05  TOOLBAR2                    HANDLE OF WINDOW.
+    05  TIPO-PROCEDURA              PIC  9(02).
+*
+*
+*
+    05  NOME-PROGRAMMA              PIC  X(08).
+        88  NOME-PROGRAMMA-MENU     value "MENU".
+        88  NOME-PROGRAMMA-MENU02   value "MENU02".
+        88  NOME-PROGRAMMA-SISTEMA  value "ABILITA" "GES2PA" "INSDOC"
+                                          "INSPRG"  "MENU"   "MENU00"
+                                          "MENU02"  "MENU04" "MENU05"
+                                          "MENU06"  "MENU08" "MENU09"
+                                          "MENU10"  "MENU11" "MENU13"
+                                          "MENU14"  "MENU15" "MENU16"
+                                          "MENU17"  "MENU18" "MENU13".
+    05  FILLER  REDEFINES  NOME-PROGRAMMA.
+        10  FILLER                  PIC X(04).
+            88  NOME-PROGRAMMA-GES2 VALUE "GES2" "ges2".
+        10  FILLER                  PIC X(04).
+*
+*
+*
+    05  FINESTRA-01                 PIC  X(10).
+    05  FINESTRA-ANT                HANDLE OF WINDOW.
+    05  FINESTRA-COM                HANDLE OF WINDOW.
+    05  FINESTRA-CLEAR              HANDLE OF WINDOW.
+    05  NUMERO-CAMPI                PIC  9(03)  VALUE 999.
+    05  NC  REDEFINES NUMERO-CAMPI  PIC  9(03).
+    05  TABELLA-SCELTA.
+        10  MEMORIZZA               PIC  X(09)  VALUE "Archivia".
+        10  AGGIORNA                PIC  X(09)  VALUE "Modifica".
+        10  CANCELLA                PIC  X(09)  VALUE "Cancella".
+        10  ANNULLA                 PIC  X(09)  VALUE "Annulla".
+        10  CONFERMA                PIC  X(09)  VALUE "Conferma".
+        10  SUCCESSIVO              PIC  X(09)  VALUE "Avanti".
+        10  PRECEDENTE              PIC  X(09)  VALUE "Indietro".
+        10  DUPLICA                 PIC  X(09)  VALUE "Duplica".
+        10  PROSEGUI                PIC  X(09)  VALUE "Prosegui".
+    05  COLORE-WINDOW               PIC  9(06).
+    05  FINESTRA-ATTIVA             HANDLE OF WINDOW.
+    05  MENU-HANDLE                 handle of menu.
+    05  MENU-HANDLE-01              handle of menu.
+    05  MENU-HANDLE-02              handle of menu.
+    05  MENU-HANDLE-03              handle of menu.
+    05  MENU-HANDLE-04              handle of menu.
+    05  MENU-HANDLE-05              handle of menu.
+    05  MOUSE-INFO.
+        10  MOUSE-ROW               PIC  9(4) COMP-4.
+        10  MOUSE-COL               PIC  9(4) COMP-4.
+        10  LBUTTON-STATUS          PIC  9.
+        10  MBUTTON-STATUS          PIC  9.
+        10  RBUTTON-STATUS          PIC  9.
+    05  FL1                                 PIC  9(02)V9(01).
+    05  FP1                                 PIC  9(02)V9(01).
+    05  FS1                                 PIC  9(02)V9(01).
+    05  FV1                                 PIC  9(01).
+    05  FL2                                 PIC  9(02)V9(01).
+    05  FP2                                 PIC  9(02)V9(01).
+    05  FS2                                 PIC  9(02)V9(01).
+    05  FV2                                 PIC  9(01).
+    05  FL3                                 PIC  9(02)V9(01).
+    05  FP3                                 PIC  9(02)V9(01).
+    05  FS3                                 PIC  9(02)V9(01).
+    05  FV3                                 PIC  9(01).
+    05  FL4                                 PIC  9(02)V9(01).
+    05  FP4                                 PIC  9(02)V9(01).
+    05  FS4                                 PIC  9(02)V9(01).
+    05  FV4                                 PIC  9(01).
+    05  FL5                                 PIC  9(02)V9(01).
+    05  FP5                                 PIC  9(02)V9(01).
+    05  FS5                                 PIC  9(02)V9(01).
+    05  FV5                                 PIC  9(01).
+    05  FL6                                 PIC  9(02)V9(01).
+    05  FP6                                 PIC  9(02)V9(01).
+    05  FS6                                 PIC  9(02)V9(01).
+    05  FV6                                 PIC  9(01).
+    05  FL7                                 PIC  9(02)V9(01).
+    05  FP7                                 PIC  9(02)V9(01).
+    05  FS7                                 PIC  9(02)V9(01).
+    05  FV7                                 PIC  9(01).
+    05  FL8                                 PIC  9(02)V9(01).
+    05  FP8                                 PIC  9(02)V9(01).
+    05  FS8                                 PIC  9(02)V9(01).
+    05  FV8                                 PIC  9(01).
+
+    78  WMENU-NEW                   VALUE  1.
+    78  WMENU-DESTROY               VALUE  2.
+    78  WMENU-ADD                   VALUE  3.
+    78  WMENU-ENABLE                VALUE  8.
+    78  WMENU-DISABLE               VALUE  9.
+    78  WMENU-SHOW                  VALUE  10.
+    78  WMENU-SEPARATOR             VALUE  256.
+    78  GET-MOUSE-STATUS            VALUE  1.
+    78  CAPTURE-MOUSE               VALUE  8.
+    78  RELEASE-MOUSE               VALUE  9.
+    78  WBITMAP-DISPLAY             VALUE  1.
+    78  WBITMAP-DESTROY             VALUE  2.
+    78  F1-96                       VALUE 96.
+*
+* Command events
+*
+    78  CMD-CLOSE                           VALUE 1.
+    78  CMD-GOTO                            VALUE 3.
+    78  CMD-CLICKED                         VALUE 4.
+    78  CMD-DBLCLICK                        VALUE 5.
+    78  CMD-ACTIVATE                        VALUE 6.
+    78  CMD-TABCHANGED                      VALUE 7.
+    78  CMD-HELP                            VALUE 8.
+
+    05  HANDLE-HELP                         HANDLE OF LABEL.
+    05  HANDLE-HELP1                        HANDLE OF LABEL.
+    05  HANDLE-SOCIETA                      HANDLE OF LABEL.
+    05  HANDLE-ESERCIZIO                    HANDLE OF LABEL.
+    05  HANDLE-GIORNO                       HANDLE OF LABEL.
+    05  LINEA-LINE                          PIC  9(02)V9(02).
+    05  PROGRAMMA-UTENTE-01                 PIC  X(30).
+    05  PROGRAMMA-UTENTE-02                 PIC  X(30).
+    05  PROGRAMMA-UTENTE-03                 PIC  X(30).
+    05  PROGRAMMA-UTENTE-04                 PIC  X(30).
+    05  PROGRAMMA-UTENTE-05                 PIC  X(30).
+    05  ESEGUITO-ASSTAS                     PIC  9(01).
+    05  TITOLO-FINESTRA                     PIC  X(100).
+
+    05  COLORE                              PIC  9(06).
+
+    05  F-S                                 HANDLE OF FONT.
+
+
+    05  FONT-STATUS                         PIC S9(04).
+
+        copy  "fonts.def"                                                  | mxm 17.12.03
+              replacing  ==  01  WFONT-DATA. ==                            | mxm 17.12.03
+                     by  ==  02  WFONT-DATA. ==.                           | mxm 17.12.03
+*
+*
+*
+* 02  varvar-next.                                                             |pg 07.04.04
+  01  varvar-next.
+
+     05  vv-sw-closeonexit        pic  x(01).                              | mxm 02.04.04
+         88  vv-closeonexit-on    value space.                             | mxm 02.04.04
+         88  vv-closeonexit-off   value "X".                               | mxm 02.04.04
+     05  sw-call                  pic 9(01).                               | mxm 02.04.04
+         88  sw-fresh-call        value zero false 1.                      | mxm 02.04.04
+*
+* variabile locale per inibire l'installazione di c$redirect in un singolo programma               | mxm 12/01/2005 9.33
+* (see also redirect.cpr)                                                                          | mxm 12/01/2005 9.33
+*                                                                                                  | mxm 12/01/2005 9.33
+     05  sw-my-redirect-disable   pic 9(01).                                                       | mxm 12/01/2005 9.32
+         88  sw-my-redirect-disable-on    value  1 false 0.                                        | mxm 12/01/2005 9.32
+*
+*  ex FD CAL                                                                                       | mxm 25/01/2005 16.13
+*                                                                                                  | mxm 25/01/2005 16.13
+    05  CAL-IMPORTO                         PIC S9(12)V9(06) TRAILING SEPARATE.                    | mxm 25/01/2005 16.13
+*
+*
+*
+
+01  SELOCRPV.
+    05                              PIC  X(05)  VALUE "OCRPV".
+    05  SELOCRPV-01                 PIC  X(02).
+01  SELRFRTG.                                                                   |pb 8/6/04 13.10
+    05                          PIC  X(05)  VALUE "RFRTG".                      |pb 8/6/04 13.10
+    05  SELRFRTG-01             PIC  X(02).                                     |pb 8/6/04 13.10
+01  SELOFPTG.                                                                   |pb 16/6/04 14.28
+    05                          PIC  X(05)  VALUE "OFPTG".                      |pb 16/6/04 14.28
+    05  SELOFPTG-01             PIC  X(02).                                     |pb 16/6/04 14.28
+01  SELDAD.
+    05                          PIC  X(03)  VALUE "DAD".
+    05  SELDAD-01               PIC  X(02).
+*
+*
+*

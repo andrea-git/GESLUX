@@ -1,0 +1,42 @@
+       FD  OLD-distinteb.
+       01 OLD-dis-rec.
+           05 OLD-dis-chiave.
+               10 OLD-dis-codice       PIC  9(5).
+           05 OLD-dis-dati.
+               10 OLD-dis-chiave-progmag.
+                   15 OLD-dis-articolo-finale          PIC  9(6).
+                   15 OLD-dis-magazzino-finale         PIC  x(3).
+                   15 OLD-dis-imballo-finale           PIC  x(3).
+                   15 OLD-dis-peso-finale  PIC  9(3)v9(3).
+               10 OLD-dis-peso-utf     PIC  9(3)v9(3).
+               10 OLD-dis-peso-non-utf PIC  9(3)v9(3).
+               10 OLD-dis-prezzo       PIC  s9(12)v9(2).
+               10 OLD-dis-dettaglio.
+                   15 OLD-dis-riga
+                              OCCURS 10 TIMES.
+                       20 OLD-dis-chiave-progmag-el.
+                           25 OLD-dis-articolo     PIC  9(6).
+                           25 OLD-dis-magazzino    PIC  x(3).
+      *(( XFD NAME = OLD-dis-imballo_1 ))
+                           25 OLD-dis-imballo      PIC  x(3).
+      *(( XFD NAME = OLD-dis-peso_1 ))
+                           25 OLD-dis-peso         PIC  9(3)v9(3).
+                       20 OLD-dis-qta          PIC  9(8)v999.
+                       20 OLD-dis-oneri        PIC  9(12)v9(2).
+                       20 OLD-dis-somma-peso   PIC  9.
+                           88 OLD-dis-si-somma VALUE IS 1. 
+                           88 OLD-dis-no-somma VALUE IS 0. 
+               10 OLD-dis-dati-comuni.
+                   15 OLD-dis-data-creazione           PIC  9(8).
+                   15 OLD-dis-ora-creazione            PIC  9(8).
+                   15 OLD-dis-utente-creazione         PIC  X(10).
+                   15 OLD-dis-data-ultima-modifica     PIC  9(8).
+                   15 OLD-dis-ora-ultima-modifica      PIC  9(8).
+                   15 OLD-dis-utente-ultima-modifica   PIC  X(10).
+               10 OLD-dis-vuoti.
+                   15 OLD-dis-num-vuoto-1  PIC  9(15).
+                   15 OLD-dis-num-vuoto-2  PIC  9(15).
+                   15 OLD-dis-num-vuoto-3  PIC  9(15).
+                   15 OLD-dis-alfa-vuoto-1 PIC  X(20).
+                   15 OLD-dis-alfa-vuoto-2 PIC  X(20).
+                   15 OLD-dis-alfa-vuoto-3 PIC  X(20).

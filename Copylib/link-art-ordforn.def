@@ -1,0 +1,15 @@
+      *
+       01 art-ordforn-linkage.
+           03 art-ordforn-chiave.
+               05 art-ordforn-anno PIC  9(4).
+               05 art-ordforn-numero           PIC  9(8).
+           03 art-ordforn-causale          PIC  x(4).
+           03 art-ordforn-data PIC  9(8).
+           03 art-ordforn-user PIC  x(20).
+           03 art-ordforn-mod  PIC  9.
+           03 art-ordforn-ins  PIC  9.
+           03 art-ordforn-listino          PIC  9(15).
+           03 art-ordforn-forn PIC  9(5).
+           03 art-ordforn-dest PIC  9(5).
+           03 art-ordforn-status
+                      USAGE IS SIGNED-SHORT.

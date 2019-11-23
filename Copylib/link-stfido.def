@@ -1,0 +1,10 @@
+      *
+       01  stfido-linkage.
+         05 filler           pic 9.
+            88 st-fuori-fido value 1, false 0.
+         05 st-cliente-da    pic 9(5).
+         05 st-cliente-a     pic 9(5).
+         05 st-tipo          pic x(2).
+         05 st-handle        handle of window.
+         05 st-path          pic x(256).
+         05 st-user          pic x(20).

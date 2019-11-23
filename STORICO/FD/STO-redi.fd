@@ -1,0 +1,55 @@
+      *(( XFD FILE = STO-redi ))
+       FD  STO-redi.
+       01 STO-redi-rec.
+           05 STO-redi-chiave.
+               10 STO-redi-tedi-chiave.
+                   15 STO-redi-anno    PIC  9(4).
+                   15 STO-redi-mese    PIC  9(2).
+               10 STO-redi-prog    PIC  9(10).
+           05 STO-redi-dati.
+               10 STO-redi-data-movimento      PIC  9(8).
+               10 STO-redi-tipo-movim          PIC  x.
+                   88 STO-redi-carico VALUE IS "C". 
+                   88 STO-redi-scarico VALUE IS "S". 
+               10 STO-redi-chiave-mov.
+                   15 STO-redi-mov-anno            PIC  9(4).
+                   15 STO-redi-num-reg PIC  9(8).
+                   15 STO-redi-mov-prog-reg        PIC  9(7).
+               10 STO-redi-codi-prodotto.
+                   15 STO-redi-cpa     PIC  x(4).
+                   15 STO-redi-nc      PIC  9(8).
+                   15 STO-redi-taric   PIC  9(2).
+                   15 STO-redi-dac     PIC  x(4).
+               10 STO-redi-tipo-stoc           PIC  x.
+               10 STO-redi-qta-kg  PIC  9(11)V9(3).
+               10 STO-redi-mov-num-doc         PIC  x(21).
+               10 STO-redi-mod-dt-doc          PIC  9(8).
+               10 STO-redi-das     PIC  x(21).
+               10 STO-redi-naz     PIC  x(2).
+               10 STO-redi-dest    PIC  x(30).
+               10 STO-redi-cau-movim           PIC  x(3).
+               10 STO-redi-pos-fis PIC  x(3).
+               10 STO-redi-imp-consumo         PIC  9(9)V9(2).
+               10 STO-redi-ragsoc  PIC  x(40).
+               10 STO-redi-stato   PIC  X(2).
+                   88 STO-redi-inserito VALUE IS "I". 
+                   88 STO-redi-spedito VALUE IS "S". 
+               10 STO-redi-tmo-chiave.
+                   15 STO-redi-tmo-anno            PIC  9(4).
+                   15 STO-redi-tmo-numero          PIC  9(8).
+               10 STO-redi-dati-comuni.
+                   15 STO-redi-data-creazione      PIC  9(8).
+                   15 STO-redi-ora-creazione       PIC  9(8).
+                   15 STO-redi-utente-creazione    PIC  X(10).
+                   15 STO-redi-data-ultima-modifica            PIC  
+           9(8).
+                   15 STO-redi-ora-ultima-modifica PIC  9(8).
+                   15 STO-redi-utente-ultima-modifica          PIC  
+           X(10).
+               10 STO-redi-vuoti.
+                   15 STO-redi-num-vuoto-1         PIC  9(18).
+                   15 STO-redi-num-vuoto-2         PIC  9(18).
+                   15 STO-redi-num-vuoto-3         PIC  9(18).
+                   15 STO-redi-tipo-doc            PIC  x(3).
+                   15 STO-redi-suf-reg PIC  x(3).
+                   15 STO-redi-alfa-vuoto          PIC  X(494).

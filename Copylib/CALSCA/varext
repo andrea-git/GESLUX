@@ -1,0 +1,637 @@
+*
+*
+*
+01  VARIABILI-GLOBALI  EXTERNAL.
+    05  HANDLE-HELP-STADIF                  HANDLE OF LABEL.
+    05  HANDLE-HELP1-CARATTERI              HANDLE OF LABEL.
+    05  HANDLE-HELP2-CARATTERI              HANDLE OF LABEL.
+    05  HANDLE-HELP3-CARATTERI              HANDLE OF LABEL.
+    05  TASK-CTR                            PIC S9(06) comp-3.  | mxm 26.03.02 thinclient
+    05  TASKS-RUNNING                       PIC S9(06) comp-3.  | mxm 26.03.02 thinclient
+    05  FINESTRA-MENU                       PIC  X(10).
+    05  IMPORTO-CALCOLATRICE-FILLER         PIC S9(12)V9(06).
+***    05  W-FLOATING                          PIC  X(01).      | mxm 26.03.02 thinclient (spostato in varvar)
+***        88  W-FLOATING-88                   VALUE "S".       | mxm 26.03.02 thinclient (spostato in varvar)
+    05  UTENTE                              PIC  X(01).
+        88  UTENTE-SVILUPPO                 VALUE "S".
+*
+* 7.3
+*
+    05  SVILUPPO                            PIC  X(01).
+    05  VARIABILE-CONFIG                    PIC  X(80).
+    05  V                                   PIC  X(80).
+    05  SYSTEM-INFORMATION.
+        10  OPERATING-SYSTEM        PIC  X(10).
+            88  OPERATING-SYSTEM-88     VALUE "MS-DOS" "OS/2" "WINDOWS"
+                                              "WIN/NT" "Unix-V" "Unix-4"
+                                              "UNOS"
+                                              "Unix"
+                                              "WINTHIN"
+                                              "LNXTHIN".
+            88  WIN-88                  VALUE "WINDOWS" "WIN/NT"
+                                              "WINTHIN" "LNXTHIN".
+
+            88  OPERATING-SYSTEM-DOS    VALUE "MS-DOS".
+            88  OPERATING-SYSTEM-WIN    VALUE "WINDOWS" "WIN/NT"
+                                              "WINTHIN".
+            88  OPERATING-SYSTEM-UNIX   VALUE "Unix-V"
+                                              "Unix-4"
+                                              "UNOS"
+                                              "Unix"
+                                              "LNXTHIN".
+*
+* WINTHIN : server Windows, thin client Windows
+* LINUX-WINTHIN : server Linux, thin client Windows
+*
+            88  WINTHIN                 VALUE "WINTHIN".
+            88  LINUX-WINTHIN           VALUE "LNXTHIN".
+            88  THINCLIENT              VALUE "WINTHIN" "LNXTHIN".
+*
+* server type
+*
+            88  SERVER-WINDOWS          VALUE "WINDOWS" "WIN/NT" "WINTHIN".
+            88  SERVER-UNIX             VALUE "Unix-V" "Unix-4" "UNOS" "Unix" "LNXTHIN".
+*
+*
+*
+        10  USER-ID                 PIC  X(12).
+        10  STATION-ID              PIC  X(12).
+        10  HAS-INDEXED-PREVIOUS    PIC  X(01).
+        10  HAS-RELATIVE-PREVIOUS   PIC  X(01).
+        10  CAN-TEST-INPUT-STATUS   PIC  X(01).
+        10  IS-MULTI-TASKING        PIC  X(01).
+        10  RUNTIME-VERSION         PIC  X(06).
+    05  TERMINAL-INFORMATION.
+        10  TERMINAL-NAME           PIC  X(10).
+        10  HAS-REVERSE             PIC  X(01).
+        10  HAS-BLINK               PIC  X(01).
+        10  HAS-UNDERLINE           PIC  X(01).
+        10  HAS-DUAL-INTENSITY      PIC  X(01).
+        10  HAS-132-COLUMN          PIC  X(01).
+        10  HAS-COLOR               PIC  X(01).
+        10  HAS-LINE-DRAWING        PIC  X(01).
+        10  NUMBER-OF-LINES         PIC  9(03).
+        10  NUMBER-OF-COLUMNS       PIC  9(03).
+        10  HAS-PRINTER-PORT        PIC  X(01).
+        10  HAS-VISIBLE-ATTRIBUTES  PIC  X(01).
+        10  HAS-GRAPHICAL-INTERFACE PIC  X(01).
+            88  has-graphical-interface-on  value "Y".
+        10  USABLE-SCREEN-HEIGHT    PIC  X(2) COMP-X.
+        10  USABLE-SCREEN-WIDTH     PIC  X(2) COMP-X.
+        10  PHYSICAL-SCREEN-HEIGHT  PIC  X(2) COMP-X.
+        10  PHYSICAL-SCREEN-WIDTH   PIC  X(2) COMP-X.
+        10  FILLER-thin             PIC  X(01).             | mxm 27.03.02 thinclient
+            88  IS-REMOTE           VALUE "Y".              | mxm 27.03.02 thinclient
+        10  CLIENT-MACHINE-NAME     PIC X(64).              | mxm 27.03.02 thinclient
+    05  SEPARATORE                  PIC  X(01).
+    05  SLASH                       PIC  X(01).
+    05  SINONIMO-ARCHIVI            PIC  X(80).
+    05  DIRETTORIO-ARCHIVI          PIC  X(128).
+    05  PASSO                       PIC  9(02)V9(02).
+    05  S                           HANDLE OF FONT.
+    05  C                           HANDLE OF FONT.
+    05  NOME-VIDEO                  PIC  X(08).
+    05  SELEXT                      PIC  X(50).
+    05  SELCOM                      PIC  X(50).
+    05  SELLIN                      PIC  X(50).
+    05  SELACC                      PIC  X(50).
+    05  SELUTE                      PIC  X(50).
+    05  SELCAL                      PIC  X(50).
+
+    05  SELPSW                      PIC  X(50).
+    05  SELDOC1                     PIC  X(50).
+    05  SELMAI                      PIC  X(50).
+    05  SELAGN                      PIC  X(50).
+    05  SELSCD                      PIC  X(50).
+    05  SELDAN                      PIC  X(50).
+    05  SELDSF                      PIC  X(50).
+    05  SELLCK                      PIC  X(50).
+    05  SELABI                      PIC  X(50).
+    05  SELCAV                      PIC  X(50).
+    05  SELSOR                      PIC  X(50).
+    05  SELSOR1                     PIC  X(50).
+    05  SELSOR2                     PIC  X(50).
+    05  SELSOR3                     PIC  X(50).
+    05  SELSOR4                     PIC  X(50).
+    05  SELSOR5                     PIC  X(50).
+    05  SELSOR6                     PIC  X(50).
+    05  SELSOR7                     PIC  X(50).
+
+    05  ENABLE-TOOLS-COM.
+        10  TOOLS-ENABLE-891                PIC  9(01).
+        10  TOOLS-ENABLE-892                PIC  9(01).
+        10  TOOLS-ENABLE-893                PIC  9(01).
+        10  TOOLS-ENABLE-894                PIC  9(01).
+        10  TOOLS-ENABLE-895                PIC  9(01).
+        10  TOOLS-ENABLE-896                PIC  9(01).
+        10  TOOLS-ENABLE-897                PIC  9(01).
+        10  TOOLS-ENABLE-898                PIC  9(01).
+        10  TOOLS-ENABLE-899                PIC  9(01).
+    05  PROGRAMMA-COM                       PIC  X(80)  OCCURS 10.
+
+    05  DIVISA-CONTO                        PIC  X(01).
+        88  DIVISA-LIRE                         VALUE "L".
+
+    05  TOOLS1-DOCDI-DESCRIZIONE1           PIC  X(34).
+    05  TOOLS1-DOCES-DESCRIZIONE1           PIC  X(33).
+    05  TOOLS1-GIORNO                       PIC  X(21).
+    05  TOOLS1-CODICE-UTENTE                PIC  X(08).
+    05  TOOLS1-NOME-VIDEO                   PIC  X(04).
+    05  TOOLS-BITMAP                        PIC S9(09)  COMP-4.
+    05  TASTI-BITMAP                        PIC S9(09)  COMP-4.
+
+    05  TIPO-FONT                           PIC  X(01).
+        88  FONT-SMALL                          VALUE "S" " ".
+        88  FONT-MEDIUM                         VALUE "M".
+        88  FONT-LARGE                          VALUE "L".
+    05  FLAG-NOME-VIDEO                     PIC  9(01).
+
+    05  ext-switches.
+        10  ext-sw-application              pic 9(01).
+            88  ext-sw-application-continue value 0.
+            88  ext-sw-application-restart  value 1.
+            88  ext-sw-application-end      value 9.
+        10  ext-file-system                 pic x(02).
+            88  ext-fs-vision               value spaces.
+            88  ext-fs-dbmaker              value "DM".
+        10  ext-redirect                    pic x(01).
+            88  ext-redirect-on             value "x" false " ".
+        10  ext-dbmaker-name                pic x(20).
+
+    05                                      PIC  X(173).
+*
+* ex record-ext spostato in varext
+*
+    02  ex-record-ext.
+
+    05  DATA-LAVORO.
+        10  AA                      PIC  9(04).
+        10  MM                      PIC  9(02).
+        10  GG                      PIC  9(02).
+    05  DATA-LAVORO-NUM                             | mxm
+              REDEFINES DATA-LAVORO PIC 9(08).      | mxm
+    05  RIGA-DITTA.
+        10                          PIC  X(02).
+        10  RIGA-DITTA-01           PIC  X(06).
+        10  RIGA-DITTA-02           PIC  X(04).
+        10  RIGA-DITTA-05           PIC  X(03).
+        10  RIGA-DITTA-07           PIC  X(02).
+        10  RIGA-DITTA-08           PIC  X(02).
+        10  RIGA-DITTA-09           PIC  X(04).
+        10  RIGA-DITTA-03           PIC  X(34).
+        10  RIGA-DITTA-10           PIC  X(11).
+        10  RIGA-DITTA-11           PIC  X(02).
+        10  RIGA-DITTA-12           PIC  X(01).
+        10  RIGA-DITTA-13           PIC  X(02).
+        10  RIGA-DITTA-14           PIC  X(01).
+        10  RIGA-DITTA-15           PIC  X(04).
+        10                          PIC  X(02).
+    05  COMANDI-UTENTE              PIC  X(01).
+        88  COMANDI-SI                  VALUE "S".
+    05  PROGRAMMI-UTENTE            PIC  X(01).
+        88  PROGRAMMI-SI                VALUE "S".
+    05  FILE-ANTEPRIMA              PIC  X(12).
+*
+*
+*
+    05  ANTEPRIMA                   PIC  9(01).
+        88  ANTEPRIMA-88                VALUE 1 2 3 4 5 6 7 8 9.
+
+    05  anteprima-x      redefines  anteprima pic x(01).            | mxm 04.09.03
+
+        88  anteprima-crw-video     value "7".                      | mxm 02.10.03
+        88  anteprima-crw-print     value "8".                      | mxm 02.10.03
+        88  anteprima-email         value "9".                      | mxm 02.10.03
+        88  anteprima-fax           value "F".                      | mxm 04.09.03
+        88  anteprima-archi         value "T".                      | mxm 04.09.03
+        88  anteprima-postalite     value "P".                      | pg 29.09.03
+
+        88  anteprima-ok            value 1 2 3 4 5 6 7 8 9         |pg 04.09.03
+                                          "F" "T" "P".              |pg 29.09.03
+
+*
+*
+*
+    05  VARIABILI-PAR.
+
+        10  USO-PASSWORD                  PIC  X(01).
+            88  USO-PASSWORD-88           VALUE "S" "N" "T".
+            88  USO-PASSWORD-psw-enabled  VALUE "S".  | i programmi presenti in PSW sono ABILITATI
+            88  USO-PASSWORD-psw-disabled VALUE "T".  | i programmi presenti in PSW sono DISABILITATI
+
+        10  TIPO-VDT                PIC  X(01).
+            88  TIPO-VDT-88             VALUE "C" "M".
+        10  CODICE-DITTA-LAVORO     PIC  X(03).
+        10  CODICE-UTENTE           PIC  X(08).
+        10  ANNO-ESERCIZIO          PIC  X(02).
+        10  TAB-INVIO               PIC  X(01).
+            88  TAB-INVIO-88            VALUE "S" " ".
+            88  TAB-INVIO-WINDOWS       VALUE "S".
+        10  ABILITA-STORICO         PIC  X(01).
+            88  ABILITA-STORICO-88      VALUE "S" " ".
+            88  ABILITA-STORICO-SI      VALUE "S".
+        10  USO-RUNTIME             PIC  X(01).
+            88  USO-RUNTIME-88          VALUE "S" "N" " ".
+        10                          PIC  X(01).
+        10  STAMPANTE-UTENTE        PIC  X(08).
+        10  C-TOOLBAR                      PIC  9(06).
+        10  C-SCELTA                       PIC  9(06).
+        10  C-ERRORI                       PIC  9(06).
+        10  C-ERRORI-L                     PIC  9(06).
+        10  C-ERRORI-E                     PIC  9(06).
+        10  C-MENU                         PIC  9(06).
+        10  C-MENU-L                       PIC  9(06).
+        10  C-MENU-E                       PIC  9(06).
+        10  C-MENU-R                       PIC  9(06).
+        10  C-MENU-D                       PIC  9(06).
+        10  C-WINDOW                       PIC  9(06).
+        10  C-INITIAL                      PIC  9(06).
+        10  C-L                            PIC  9(06).
+        10  C-E                            PIC  9(06).
+        10  C-D                            PIC  9(06).
+        10  C-R                            PIC  9(06).
+        10  C-H                            PIC  9(06).
+*
+*        10  UTILIZZO-TOOLBAR       PIC  X(01).
+*            88  UTILIZZO-TOOLBAR-88    VALUE "S" " ".
+*
+    05  MODULI-ABILITATI          PIC  X(01)  OCCURS 90.
+        88  MODULO-ABILITATO      VALUE "S".
+    05  DECODIFICA-MODULI.
+        10  I-MODULO                     PIC 9(03).
+             88  I-MOD-BASE              VALUE ZERO.
+             88  I-MOD-ARCHIVI           VALUE 01.
+             88  I-MOD-CONTABILITA       VALUE 02.
+             88  I-MOD-VENDITE           VALUE 03.
+             88  I-MOD-PAG-CLIENTI       VALUE 04.
+             88  I-MOD-MAGAZZINO         VALUE 05.
+             88  I-MOD-ACQUISTI          VALUE 06.
+             88  I-MOD-PAG-FORNITORI     VALUE 07.
+             88  I-MOD-SCADENZIARI       VALUE 08.
+             88  I-MOD-PERCIPIENTI       VALUE 09.
+             88  I-MOD-CONT-ANALITICA    VALUE 10.
+             88  I-MOD-ORD-CLI           VALUE 11.
+             88  I-MOD-ORD-FOR           VALUE 12.
+             88  I-MOD-CONT-DIREZIONALE  VALUE 13.
+             88  I-MOD-PROVVIGIONI       VALUE 14.
+             88  I-MOD-STAT-VENDITE      VALUE 15.
+             88  I-MOD-STAT-ACQUISTI     VALUE 16.
+             88  I-MOD-STAT-MAGAZZINO    VALUE 17.
+             88  I-MOD-LOTTI-ARTICOLI    VALUE 18.
+             88  I-MOD-DISTINTA-BASE     VALUE 19.
+             88  I-MOD-BOLLE-LAVORAZIONE VALUE 20.
+             88  I-MOD-STAT-ORD-CLI      VALUE 21.
+             88  I-MOD-STAT-ORD-FOR      VALUE 22.
+             88  I-MOD-COMMERCIALE       VALUE 23.
+             88  I-MOD-SOSPENSIONE-IVA   VALUE 24.
+             88  I-MOD-CONT-GESTIONALE   VALUE 25.
+             88  I-MOD-INTRASTAT         VALUE 26.
+             88  I-MOD-AMMORTAMENTI      VALUE 27.
+             88  I-MOD-TOOLKIT           VALUE 28.
+             88  I-MOD-LAVORAZ-CTO-TERZI VALUE 29.
+             88  I-MOD-PREVENTIVI        VALUE 30.
+             88  I-MOD-COLL-ZUCCHETTI    VALUE 31.
+             88  I-MOD-STAMP-REG-FISCALI VALUE 32.
+             88  I-MOD-REG-CASSA         VALUE 33.
+             88  I-MOD-CODICI-BARRE      VALUE 34.
+             88  I-MOD-AGG-LISTINI       VALUE 35.
+             88  I-MOD-PENNA-CALAMAIO    VALUE 36.
+             88  I-MOD-TESORERIA         VALUE 37.
+             88  I-MOD-IVA-EDITORIA      VALUE 38.
+             88  I-MOD-COLL-MAGIX        VALUE 39.
+             88  I-MOD-LETTERE-INTENTO   VALUE 40.
+             88  I-MOD-CONAI             VALUE 41.
+             88  I-MOD-CONTR-ASSISTENZA  VALUE 42.
+             88  I-MOD-COMM-ASSISTENZA   VALUE 43.
+             88  I-MOD-IVA-SPEDIZ        VALUE 44.
+             88  I-MOD-LIRE              VALUE 45.
+             88  I-MOD-ORDINI-WEB        VALUE 46.
+             88  I-MOD-REGISTRI-BEVANDE  VALUE 47.
+             88  I-MOD-RICH-OFF-FOR      VALUE 49.
+             88  I-MOD-THINCLIENT        VALUE 50.
+             88  I-MOD-AGENTI            VALUE 51.
+             88  I-MOD-COSTI-COMMESSE    VALUE 58.
+             88  I-MOD-IMBALLI           VALUE 61.
+             88  I-MOD-QUERY             VALUE 62.
+             88  I-MOD-TAGLIE-MISURE     VALUE 63.
+             88  I-MOD-DBMAKER           VALUE 64.
+             88  I-MOD-TENTATA-VENDITA   VALUE 65.
+             88  I-MOD-PRODUZIONE        VALUE 66.
+             88  I-MOD-CONTO-LAV         VALUE 67.
+             88  I-MOD-CONFIGURATORE     VALUE 68.
+             88  I-MOD-INPS-PROFESS      VALUE 69.
+             88  I-MOD-PACKING-LIST      VALUE 73.
+             88  I-MOD-SERIAL-NUMBER     VALUE 76.
+             88  I-MOD-COLL-COMMERCIAL   VALUE 78.
+             88  I-MOD-FAX               VALUE 80.
+             88  I-MOD-STAMPE-LASER      VALUE 82.
+             88  I-MOD-AZ-VINICOLE       VALUE 83.
+             88  I-MOD-VINI-SPUMANTI     VALUE 84.
+             88  I-MOD-VINI-FRIZZANTI    VALUE 85.
+             88  I-MOD-BEVANDE           VALUE 86.
+             88  I-MOD-AUTOFATT-CONFER   VALUE 87.
+             88  I-MOD-CANTINE-SOCIALI   VALUE 88.
+             88  I-MOD-DISTILLERIE       VALUE 89.
+             88  I-MOD-DATA-WAREHOUSE    VALUE 90.
+             88  I-MOD-EVENTI-AGENTI     VALUE 91.
+             88  I-MOD-DATANAVIGATOR     VALUE 92.
+*
+*
+    05  RIGA-INIZIO-OUTPUT        PIC  9(06).
+    05  RIGA-FINE-OUTPUT          PIC  9(06).
+*
+*
+    05  DATA-INIZIO-ESERCIZIO.
+        10  AA                    PIC  9(04).
+        10  MM                    PIC  9(02).
+        10  GG                    PIC  9(02).
+    05  filler  redefines  data-inizio-esercizio.       | mxm 28.01.04
+        10  data-inizio-esercizio-num  pic 9(08).       | mxm 28.01.04
+*
+*
+    05  DATA-FINE-ESERCIZIO.
+        10  AA                    PIC  9(04).
+        10  MM                    PIC  9(02).
+        10  GG                    PIC  9(02).
+    05  filler  redefines  data-fine-esercizio.         | mxm 28.01.04
+        10  data-fine-esercizio-num    pic 9(08).       | mxm 28.01.04
+*
+*
+    05  DATA-FINE-REGISTRAZIONE.
+        10  AA                    PIC  9(04).
+        10  MM                    PIC  9(02).
+        10  GG                    PIC  9(02).
+    05  filler  redefines  data-fine-registrazione.     | mxm 28.01.04
+        10  data-fine-registrazione-num  pic 9(08).     | mxm 28.01.04
+*
+*
+    05  CONTABILITA-VALUTA        PIC  X(01).
+    05  DESCRIZIONE-IMP           PIC  X(30).
+    05                            PIC  X(01).
+    05  STAMPANTE-FAX             PIC  X(01).
+    05  MENU-UFFICIO              PIC  X(01).
+    05  ARCHIVIO-DOC              PIC  X(30).
+
+    05  C-01                      PIC  9(06).
+    05  C-02                      PIC  9(06).
+    05  C-03                      PIC  9(06).
+    05  C-04                      PIC  9(06).
+    05  C-05                      PIC  9(06).
+    05  C-06                      PIC  9(06).
+    05  C-07                      PIC  9(06).
+    05  C-08                      PIC  9(06).
+    05  C-09                      PIC  9(06).
+    05  C-10                      PIC  9(06).
+    05  C-11                      PIC  9(06).
+    05  C-12                      PIC  9(06).
+    05  C-13                      PIC  9(06).
+    05  C-14                      PIC  9(06).
+    05  C-15                      PIC  9(06).
+    05  C-16                      PIC  9(06).
+    05  C-17                      PIC  9(06).
+    05  C-18                      PIC  9(06).
+    05  C-19                      PIC  9(06).
+    05  C-20                      PIC  9(06).
+    05  C-21                      PIC  9(06).
+    05  C-22                      PIC  9(06).
+    05  C-23                      PIC  9(06).
+    05  C-24                      PIC  9(06).
+    05  C-25                      PIC  9(06).
+    05  C-26                      PIC  9(06).
+    05  C-27                      PIC  9(06).
+    05  C-28                      PIC  9(06).
+    05  C-29                      PIC  9(06).
+    05  C-30                      PIC  9(06).
+    05  C-31                      PIC  9(06).
+    05  C-32                      PIC  9(06).
+    05  C-33                      PIC  9(06).
+    05  C-34                      PIC  9(06).
+    05  C-35                      PIC  9(06).
+    05  C-36                      PIC  9(06).
+    05  C-37                      PIC  9(06).
+    05  C-38                      PIC  9(06).
+    05  C-39                      PIC  9(06).
+    05  C-40                      PIC  9(06).
+    05  C-41                      PIC  9(06).
+    05  C-42                      PIC  9(06).
+    05  C-43                      PIC  9(06).
+    05  C-44                      PIC  9(06).
+    05  C-45                      PIC  9(06).
+    05  C-46                      PIC  9(06).
+    05  C-47                      PIC  9(06).
+    05  C-48                      PIC  9(06).
+    05  C-49                      PIC  9(06).
+    05  C-50                      PIC  9(06).
+    05  C-51                      PIC  9(06).
+    05  C-52                      PIC  9(06).
+    05  C-53                      PIC  9(06).
+    05  C-54                      PIC  9(06).
+    05  C-55                      PIC  9(06).
+    05  C-56                      PIC  9(06).
+    05  C-57                      PIC  9(06).
+    05  C-58                      PIC  9(06).
+    05  C-59                      PIC  9(06).
+    05  C-60                      PIC  9(06).
+    05  C-61                      PIC  9(06).
+    05  C-62                      PIC  9(06).
+    05  C-63                      PIC  9(06).
+    05  C-64                      PIC  9(06).
+    05  C-65                      PIC  9(06).
+    05  C-66                      PIC  9(06).
+    05  C-67                      PIC  9(06).
+    05  C-68                      PIC  9(06).
+    05  C-69                      PIC  9(06).
+    05  C-70                      PIC  9(06).
+    05  C-71                      PIC  9(06).
+    05  C-72                      PIC  9(06).
+    05  C-73                      PIC  9(06).
+    05  C-74                      PIC  9(06).
+    05  C-75                      PIC  9(06).
+    05  C-76                      PIC  9(06).
+    05  C-77                      PIC  9(06).
+    05  C-78                      PIC  9(06).
+    05  C-79                      PIC  9(06).
+    05  C-80                      PIC  9(06).
+    05  C-81                      PIC  9(06).
+    05  C-82                      PIC  9(06).
+    05  C-83                      PIC  9(06).
+    05  C-84                      PIC  9(06).
+    05  C-85                      PIC  9(06).
+    05  C-86                      PIC  9(06).
+    05  C-87                      PIC  9(06).
+    05  C-88                      PIC  9(06).
+    05  C-89                      PIC  9(06).
+    05  C-90                      PIC  9(06).
+    05  E-01                      PIC  9(01).
+    05  E-02                      PIC  9(01).
+    05  E-03                      PIC  9(01).
+    05  E-04                      PIC  9(01).
+    05  E-05                      PIC  9(01).
+    05  E-06                      PIC  9(01).
+    05  E-07                      PIC  9(01).
+    05  E-08                      PIC  9(01).
+    05  E-09                      PIC  9(01).
+    05  E-10                      PIC  9(01).
+    05  E-11                      PIC  9(01).
+    05  E-12                      PIC  9(01).
+    05  E-13                      PIC  9(01).
+    05  E-14                      PIC  9(01).
+    05  E-15                      PIC  9(01).
+    05  E-16                      PIC  9(01).
+    05  E-17                      PIC  9(01).
+    05  E-18                      PIC  9(01).
+    05  E-19                      PIC  9(01).
+    05  E-20                      PIC  9(01).
+    05  E-21                      PIC  9(01).
+    05  E-22                      PIC  9(01).
+    05  E-23                      PIC  9(01).
+    05  E-24                      PIC  9(01).
+    05  E-25                      PIC  9(01).
+    05  E-26                      PIC  9(01).
+    05  E-27                      PIC  9(01).
+    05  E-28                      PIC  9(01).
+    05  E-29                      PIC  9(01).
+    05  E-30                      PIC  9(01).
+    05  E-31                      PIC  9(01).
+    05  E-32                      PIC  9(01).
+    05  E-33                      PIC  9(01).
+    05  E-34                      PIC  9(01).
+    05  E-35                      PIC  9(01).
+    05  E-36                      PIC  9(01).
+    05  E-37                      PIC  9(01).
+    05  E-38                      PIC  9(01).
+    05  E-39                      PIC  9(01).
+    05  E-40                      PIC  9(01).
+    05  E-41                      PIC  9(01).
+    05  E-42                      PIC  9(01).
+    05  E-43                      PIC  9(01).
+    05  E-44                      PIC  9(01).
+    05  E-45                      PIC  9(01).
+    05  E-46                      PIC  9(01).
+    05  E-47                      PIC  9(01).
+    05  E-48                      PIC  9(01).
+    05  E-49                      PIC  9(01).
+    05  E-50                      PIC  9(01).
+    05  E-51                      PIC  9(01).
+    05  E-52                      PIC  9(01).
+    05  E-53                      PIC  9(01).
+    05  E-54                      PIC  9(01).
+    05  E-55                      PIC  9(01).
+    05  E-56                      PIC  9(01).
+    05  E-57                      PIC  9(01).
+    05  E-58                      PIC  9(01).
+    05  E-59                      PIC  9(01).
+    05  E-60                      PIC  9(01).
+    05  E-61                      PIC  9(01).
+    05  E-62                      PIC  9(01).
+    05  E-63                      PIC  9(01).
+    05  E-64                      PIC  9(01).
+    05  E-65                      PIC  9(01).
+    05  E-66                      PIC  9(01).
+    05  E-67                      PIC  9(01).
+    05  E-68                      PIC  9(01).
+    05  E-69                      PIC  9(01).
+    05  E-70                      PIC  9(01).
+    05  E-71                      PIC  9(01).
+    05  E-72                      PIC  9(01).
+    05  E-73                      PIC  9(01).
+    05  E-74                      PIC  9(01).
+    05  E-75                      PIC  9(01).
+    05  E-76                      PIC  9(01).
+    05  E-77                      PIC  9(01).
+    05  E-78                      PIC  9(01).
+    05  E-79                      PIC  9(01).
+    05  E-80                      PIC  9(01).
+    05  E-81                      PIC  9(01).
+    05  E-82                      PIC  9(01).
+    05  E-83                      PIC  9(01).
+    05  E-84                      PIC  9(01).
+    05  E-85                      PIC  9(01).
+    05  E-86                      PIC  9(01).
+    05  E-87                      PIC  9(01).
+    05  E-88                      PIC  9(01).
+    05  E-89                      PIC  9(01).
+    05  E-90                      PIC  9(01).
+
+    05  CODICE-IMPIANTO           PIC  X(02).
+    05  ANNO-CONTROLLO-DOCES      PIC  X(04).
+    05  SCREEN-COLOR              PIC  9(04).
+
+    05  application-path          pic  x(32).
+
+    05  ext-sw-closeonexit        pic  x(01).       | mxm 04.09.02
+        88  ext-closeonexit-on    value space.      | mxm 04.09.02
+        88  ext-closeonexit-off   value "X".        | mxm 04.09.02
+
+    05  ext-sw-initial-window     pic x(01).        | mxm 04.09.02
+        88  ext-sw-initial-window-on  value "1".    | mxm 04.09.02
+
+    05  ext-inbox-folder          pic x(30).        | mxm 11.11.02 cartella per ricevimento posta
+        88  ext-inbox-folder-value value "inbox".   | mxm 11.11.02 88 level impostato da init
+
+    05  ext-pers-folder             pic x(30).      | mxm 06.12.02 cartella personalizzazioni
+        88  ext-pers-folder-default value "pers".   | mxm 06.12.02 88 level impostato da init
+                                                    |              in assenza di variabile PERSDIR
+                                                    |              nel config
+
+    05  ext-def-folder             pic x(128).      | folder def (variabile impostata da INIT)
+    05  ext-xfd-folder             pic x(128).      | folder nfd (variabile impostata da INIT)
+    05  ext-rpt-folder             pic x(128).      | folder rpt (variabile impostata da INIT)
+    05  ext-rptxfd-folder          pic x(128).      | folder rptxfd (variabile impostata da INIT)
+    05  ext-pers-def-folder        pic x(128).      | folder ?pers?/def (variabile impostata da INIT)
+    05  ext-pers-def-rptxfd-folder pic x(128).      | folder ?pers?/def/rptxfd (variabile impostata da INIT)
+    05  ext-pers-def-xfd-folder    pic x(128).      | folder ?pers?/def/xfd (variabile impostata da INIT)
+    05  ext-pers-xfd-folder        pic x(128).      | folder ?pers?/nfd (variabile impostata da INIT)
+    05  ext-pers-rpt-folder        pic x(128).      | folder ?pers?/rpt (variabile impostata da INIT)
+    05  ext-pers-rptxfd-folder     pic x(128).      | folder ?pers?/rptxfd (variabile impostata da INIT)
+***
+***   modificato da SANDRO per gestione data licenza (utilizzati 50 dei 128)
+***
+***    05  filler                     pic x(128).
+***
+***
+***
+    05  varext-filler-ris          pic x(08).
+    05  varext-filler-ris-ext      pic x(08).
+***
+    05  seldal                     pic x(34).
+    05  filler                     pic x(78).
+***
+***   fine modifica data licenza
+***
+    05  filler                     pic x(128).
+*
+*
+*
+    05  sys-kk-cpmenu-ngd-handle      handle of menu.
+    05  sys-kk-cpmenu-ntv-handle      handle of menu.
+    05  sys-kk-cpmenu-ntg-handle      handle of menu.
+    05  sys-kk-cpmenu-ntc-handle      handle of menu.
+    05  sys-kk-cpmenu-igd-handle      handle of menu.
+    05  sys-kk-cpmenu-igd-ef-handle   handle of menu.
+    05  filler                        handle.
+    05  filler                        handle.
+    05  filler                        handle.
+    05  filler                        handle.
+    05  filler                        handle.
+    05  filler                        handle.
+    05  filler                        handle.
+    05  filler                        handle.
+    05  filler                        handle.
+    05  filler                        handle.
+
+    05  varext-datanavigator          pic 9(01).
+        88  varext-datanavigator-on   value 1 false 0.
+
+    05  varext-nolookup               pic 9(01).                                                   | mxm 11/10/2004 10.30
+        88  varext-nolookup-on        value 1 false 0.                                             | mxm 11/10/2004 10.30
+
+    05  varext-open-mode              pic 9(01).                                                   | mxm 16/12/2004 12.12
+        88  varext-open-mode-on       value 1 false 0.                                             | mxm 16/12/2004 12.12
+    05  varext-open-key               pic x(40).                                                   | mxm 16/12/2004 12.12
+
+***    05  filler                        pic x(198).                                                  | mxm 16/12/2004 12.12| mxm 11/10/2004 10.29
+    05  filler                        pic x(157).                                                  | mxm 16/12/2004 12.12
+*
+*
+*

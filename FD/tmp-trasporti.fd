@@ -1,0 +1,32 @@
+      *(( XFD FILE = tmp-trasporti ))
+       FD  tmp-trasporti.
+       01 ttrs-rec.
+           05 ttrs-chiave.
+               10 ttrs-prog        PIC  9(10).
+           05 ttrs-dati.
+               10 ttrs-data-bolla  PIC  99/99/99.
+               10 ttrs-num-bolla   PIC  z(8).
+               10 ttrs-vettore     PIC  z(5).
+               10 ttrs-vet-desc    PIC  x(40).
+               10 ttrs-cliente     PIC  z(5).
+               10 ttrs-cli-desc    PIC  x(40).
+               10 ttrs-destino     PIC  z(5).
+               10 ttrs-dest-desc   PIC  x(40).
+               10 ttrs-dest-citta  PIC  x(35).
+               10 ttrs-regione     PIC  x(30).
+               10 ttrs-provincia   PIC  x(2).
+               10 ttrs-qta-kg      PIC  ---.---.--9,999.
+               10 ttrs-qta-arrot   PIC  ---.---.--9,999.
+               10 ttrs-tariffa     PIC  ---.---.--9,99.
+               10 ttrs-importo     PIC  ---.---.--9,99.
+               10 ttrs-qta-kg-SHI  PIC  ---.---.--9,999.
+               10 ttrs-qta-arrot-SHI           PIC  ---.---.--9,999.
+               10 ttrs-tariffa-SHI PIC  ---.---.--9,99.
+               10 ttrs-importo-SHI PIC  ---.---.--9,99.
+               10 ttrs-qta-kg-GET  PIC  ---.---.--9,999.
+               10 ttrs-qta-arrot-GET           PIC  ---.---.--9,999.
+               10 ttrs-tariffa-GET PIC  ---.---.--9,99.
+               10 ttrs-importo-GET PIC  ---.---.--9,99.
+               10 ttrs-note        PIC  x(500).
+               10 ttrs-esito       PIC  x(50).
+               10 ttrs-pod         PIC  x.

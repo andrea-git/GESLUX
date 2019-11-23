@@ -1,0 +1,9 @@
+      *(( XFD FILE = tmp-tendenza ))
+       FD  tmp-tendenza.
+       01 tmdt-rec.
+           05 tmdt-chiave.
+               10 tmdt-marca       PIC  9(5).
+               10 tmdt-tipocli     PIC  x(2).
+           05 tmdt-dati.
+               10 tmdt-tendenza    PIC  s9(9)v99.
+               10 tmdt-incidenza   PIC  s9(3)v99.

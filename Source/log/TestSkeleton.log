@@ -1,0 +1,2078 @@
+main.Skl 67> SHOW_MSG "Program TestSkeleton is generating ..."
+main.Skl 74> Link To Linkage.Skl
+Linkage.Skl 20> DEF_SET @!G_KEYSTATUS27!@ "Key-Status = 27"
+Linkage.Skl 21> DEF_SET @!G_KEYSTATUS96!@ "Key-Status = 96"
+Linkage.Skl 23> -------------- "WORKING-HEAD" --------------
+Linkage.Skl 29> DEF_IF "" EQUAL "YES" 
+Linkage.Skl 45> ELSE
+Linkage.Skl 46> DEF_IF ""
+Linkage.Skl 48> ELSE
+Linkage.Skl 50> END_IF
+Linkage.Skl 51> _SET_PRG_KEYSTATUS
+Linkage.Skl 52> DEF_LOOP 6
+Linkage.Skl 53> _FETCH_NEXT_OBJ_KEYSTATUS
+Linkage.Skl 55> DEF_IF "13" EQUAL "27" 
+Linkage.Skl 57> ELSE_IF "13" EQUAL "96" 
+Linkage.Skl 59> END_IF
+Linkage.Skl 53> _FETCH_NEXT_OBJ_KEYSTATUS
+Linkage.Skl 55> DEF_IF "27" EQUAL "27" 
+Linkage.Skl 56> DEF_SET @!G_KEYSTATUS27!@ "Exit-Pushed"
+Linkage.Skl 59> END_IF
+Linkage.Skl 53> _FETCH_NEXT_OBJ_KEYSTATUS
+Linkage.Skl 55> DEF_IF "95" EQUAL "27" 
+Linkage.Skl 57> ELSE_IF "95" EQUAL "96" 
+Linkage.Skl 59> END_IF
+Linkage.Skl 53> _FETCH_NEXT_OBJ_KEYSTATUS
+Linkage.Skl 55> DEF_IF "96" EQUAL "27" 
+Linkage.Skl 57> ELSE_IF "96" EQUAL "96" 
+Linkage.Skl 58> DEF_SET @!G_KEYSTATUS96!@ "Event-Occurred"
+Linkage.Skl 59> END_IF
+Linkage.Skl 53> _FETCH_NEXT_OBJ_KEYSTATUS
+Linkage.Skl 55> DEF_IF "97" EQUAL "27" 
+Linkage.Skl 57> ELSE_IF "97" EQUAL "96" 
+Linkage.Skl 59> END_IF
+Linkage.Skl 53> _FETCH_NEXT_OBJ_KEYSTATUS
+Linkage.Skl 55> DEF_IF "99" EQUAL "27" 
+Linkage.Skl 57> ELSE_IF "99" EQUAL "96" 
+Linkage.Skl 59> END_IF
+Linkage.Skl 60> END_LOOP Linkage.Skl 61> END_IF
+Linkage.Skl 64> _SET_PRG_WORKINGLINE
+Linkage.Skl 65> DEF_IF "23"
+Linkage.Skl 66> DEF_LOOP 23
+Linkage.Skl 67> _FETCH_NEXT_OBJ_LINEINDEX
+Linkage.Skl 67> _FETCH_NEXT_OBJ_LINEINDEX
+Linkage.Skl 67> _FETCH_NEXT_OBJ_LINEINDEX
+Linkage.Skl 67> _FETCH_NEXT_OBJ_LINEINDEX
+Linkage.Skl 67> _FETCH_NEXT_OBJ_LINEINDEX
+Linkage.Skl 67> _FETCH_NEXT_OBJ_LINEINDEX
+Linkage.Skl 67> _FETCH_NEXT_OBJ_LINEINDEX
+Linkage.Skl 67> _FETCH_NEXT_OBJ_LINEINDEX
+Linkage.Skl 67> _FETCH_NEXT_OBJ_LINEINDEX
+Linkage.Skl 67> _FETCH_NEXT_OBJ_LINEINDEX
+Linkage.Skl 67> _FETCH_NEXT_OBJ_LINEINDEX
+Linkage.Skl 67> _FETCH_NEXT_OBJ_LINEINDEX
+Linkage.Skl 67> _FETCH_NEXT_OBJ_LINEINDEX
+Linkage.Skl 67> _FETCH_NEXT_OBJ_LINEINDEX
+Linkage.Skl 67> _FETCH_NEXT_OBJ_LINEINDEX
+Linkage.Skl 67> _FETCH_NEXT_OBJ_LINEINDEX
+Linkage.Skl 67> _FETCH_NEXT_OBJ_LINEINDEX
+Linkage.Skl 67> _FETCH_NEXT_OBJ_LINEINDEX
+Linkage.Skl 67> _FETCH_NEXT_OBJ_LINEINDEX
+Linkage.Skl 67> _FETCH_NEXT_OBJ_LINEINDEX
+Linkage.Skl 67> _FETCH_NEXT_OBJ_LINEINDEX
+Linkage.Skl 67> _FETCH_NEXT_OBJ_LINEINDEX
+Linkage.Skl 67> _FETCH_NEXT_OBJ_LINEINDEX
+Linkage.Skl 69> END_LOOP Linkage.Skl 70> END_IF
+Linkage.Skl 76> -------------- "LINKAGE-WRK" --------------
+Linkage.Skl 77> _SET_PRG_LINKAGELINE
+Linkage.Skl 78> DEF_IF "0"
+Linkage.Skl 84> END_IF
+main.Skl 82> DEF_SET @!G_EXISTEXTERNALVAR!@ ""
+main.Skl 83> DEF_SET @!G_EXISTDATASET!@ ""
+main.Skl 84> DEF_SET @!G_EXITSTATUS!@ ""
+main.Skl 85> DEF_SET @!G_EXISTKEYSTROK!@ ""
+main.Skl 86> DEF_SET @!G_EXISTACTIVEX!@ ""
+main.Skl 87> DEF_SET @!G_ALLACTIVEXS!@ ""
+main.Skl 88> DEF_SET @!G_INITFONT!@ ""
+main.Skl 89> DEF_SET @!G_EXISTCUSTOMCOLOR!@ ""
+main.Skl 90> DEF_SET @!G_SYSEXCEPTVAL!@ "32000"
+main.Skl 91> DEF_SET @!G_SYSNAVIID!@ "32700"
+main.Skl 92> DEF_SET @!G_MANUID!@ "4000"
+main.Skl 94> _SET_OBJ_SCREEN
+main.Skl 95> DEF_SET @!G_SCREENINDEX!@ "0"
+main.Skl 96> DEF_SET @!G_EXISTOPENFILE!@ "0"
+main.Skl 97> DEF_SET @!G_EXISTFDSL!@ "0"
+main.Skl 98> DEF_SET @!G_EXISTNAVIBMPHDL!@ ""
+main.Skl 99> DEF_SET @!G_EXISTSPECIALNAME!@ ""
+main.Skl 100> DEF_SET @!G_EXISTDECLARETIVE!@ ""
+main.Skl 101> DEF_SET @!G_EXITUSERSCREEN!@ ""
+main.Skl 102> DEF_LOOP 1
+main.Skl 103> _FETCH_NEXT_OBJ_SCREEN
+main.Skl 104> DEF_SET @!G_FRAMEINDEX!@ "0"
+main.Skl 105> DEF_SET @!G_SCREENNAME!@ "Screen1"
+main.Skl 106> DEF_SET @!G_EXISTACCEPTCONTROL!@ "0"
+main.Skl 107> DEF_SET @!G_EXISTDATAFRAME!@ "0"
+main.Skl 108> DEF_SET @!G_OPERATIONMODE!@ "INTERACTIVEMODE"
+main.Skl 109> DEF_SET @!G_SCREENHANDLE!@ "Screen1-Handle"
+main.Skl 110> DEF_SET @!G_MODEINEVENT!@ "HAS-GRAPHICAL-INTERFACE"
+main.Skl 111> DEF_SET @!G_EXISTNAVIGATOR!@ ""
+main.Skl 112> DEF_SET @!G_EXISTMASTERGRID!@ ""
+main.Skl 113> DEF_SET @!G_ALLRADIOVARS!@ ""
+main.Skl 114> DEF_SET @!G_TEXTMODE!@ "0"
+main.Skl 115> DEF_SET @!G_UNIT!@ "Cells"
+main.Skl 116> DEF_SET @!G_SYSID!@ "1"
+main.Skl 120> DEF_SET @!G_ID_LOGICO!@ "5000"
+main.Skl 124> DEF_SET @!G_CHECKKEYFIELD!@ ""
+main.Skl 125> DEF_IF ( NOT "0" ) OR ( NOT "0" ) 
+main.Skl 126> DEF_SET @!G_USERSCREEN!@ "YES"
+main.Skl 129> END_IF
+main.Skl 130> DEF_IF "0"
+main.Skl 132> END_IF
+main.Skl 133> DEF_SET @!G_MODE!@ ""
+main.Skl 134> DEF_IF ""
+main.Skl 136> END_IF
+main.Skl 137> DEF_SET @!G_EXISTDBCONTROL!@ ""
+main.Skl 140> DEF_SET @!G_FORMBASESET!@ ""
+main.Skl 141> DEF_IF NOT "" 
+main.Skl 142> SHOW_MSG "Skl Warning : DataSet does not exist in Screen1."
+main.Skl 145> END_IF
+main.Skl 147> DEF_ADD @!G_SCREENINDEX!@ "1"
+main.Skl 150> DEF_SET @!G_ISMESSAGELINE!@ ""
+main.Skl 151> DEF_IF "MESSAGEBOX" EQUAL "MESSAGELINE" 
+main.Skl 153> END_IF
+main.Skl 155> _SET_OBJ_CTRLCHILD
+main.Skl 156> DEF_LOOP 2
+main.Skl 157> _FETCH_NEXT_OBJ_CTRL
+main.Skl 159> Link To DispatchCtrl.Skl
+DispatchCtrl.Skl 13> KEEP_IN_MEM
+DispatchCtrl.Skl 17> DEF_CASE "Data.Combo-Box"
+DispatchCtrl.Skl 18> CASE "Group-Item"
+DispatchCtrl.Skl 20> CASE "Label"
+DispatchCtrl.Skl 22> CASE "Push-Button"
+DispatchCtrl.Skl 26> CASE "Entry-Field"
+DispatchCtrl.Skl 30> CASE "Check-Box"
+DispatchCtrl.Skl 34> CASE "Radio-Button"
+DispatchCtrl.Skl 38> CASE "Bitmap"
+DispatchCtrl.Skl 40> CASE "Menu"
+DispatchCtrl.Skl 42> CASE "ToolBar"
+DispatchCtrl.Skl 44> CASE "Bar"
+DispatchCtrl.Skl 46> CASE "Tab-Control"
+DispatchCtrl.Skl 49> CASE "Tree-View"
+DispatchCtrl.Skl 53> CASE "Grid"
+DispatchCtrl.Skl 57> CASE "Frame"
+DispatchCtrl.Skl 59> CASE "Scroll-Bar"
+DispatchCtrl.Skl 62> CASE "Combo-Box"
+DispatchCtrl.Skl 66> CASE "List-Box"
+DispatchCtrl.Skl 70> CASE "Web-Browser"
+DispatchCtrl.Skl 74> CASE "Status-Bar"
+DispatchCtrl.Skl 79> CASE "Data.Label"
+DispatchCtrl.Skl 81> CASE "Data.Entry-Field"
+DispatchCtrl.Skl 85> CASE "Data.Check-Box"
+DispatchCtrl.Skl 89> CASE "Data.Radio-Button"
+DispatchCtrl.Skl 93> CASE "Data.Combo-Box"
+DispatchCtrl.Skl 94> DEF_SET @!G_EXISTACCEPTCONTROL!@ "YES"
+DispatchCtrl.Skl 95> Link To DB_ComboBox.Skl
+DB_ComboBox.Skl 25> DEF_SET @!L_BUFFLD!@ "Screen1"
+DB_ComboBox.Skl 26> DEF_SET @!L_FRMIDX!@ "0"
+DB_ComboBox.Skl 27> DEF_IF ""
+DB_ComboBox.Skl 30> END_IF
+DB_ComboBox.Skl 34> DEF_SET @!G_EXISTDBCONTROL!@ "YES"
+DB_ComboBox.Skl 36> -------------- "DB_WORKING_BUFBODY" --------------
+DB_ComboBox.Skl 38> DEF_IF NOT ( "0" EQUAL "0" OR "0" EQUAL "1" ) 
+DB_ComboBox.Skl 46> ELSE
+DB_ComboBox.Skl 47> DEF_IF "X(30)"
+DB_ComboBox.Skl 51> END_IF
+DB_ComboBox.Skl 52> END_IF
+DB_ComboBox.Skl 55> DEF_IF ""
+DB_ComboBox.Skl 76> END_IF
+DB_ComboBox.Skl 80> -------------- "SCREEN" --------------
+DB_ComboBox.Skl 85> DEF_IF "Cells" EQUAL "PIXELS" 
+DB_ComboBox.Skl 91> ELSE
+DB_ComboBox.Skl 92> DEF_IF ""
+DB_ComboBox.Skl 94> ELSE_IF "2,14"
+DB_ComboBox.Skl 96> END_IF
+DB_ComboBox.Skl 97> END_IF
+DB_ComboBox.Skl 98> DEF_IF ""
+DB_ComboBox.Skl 100> END_IF
+DB_ComboBox.Skl 101> DEF_IF "Cells" EQUAL "PIXELS" 
+DB_ComboBox.Skl 107> ELSE
+DB_ComboBox.Skl 108> DEF_IF ""
+DB_ComboBox.Skl 110> ELSE_IF "4,15"
+DB_ComboBox.Skl 112> END_IF
+DB_ComboBox.Skl 113> END_IF
+DB_ComboBox.Skl 114> DEF_IF ""
+DB_ComboBox.Skl 116> END_IF
+DB_ComboBox.Skl 117> DEF_IF "" EQUAL "PIXELS" 
+DB_ComboBox.Skl 123> ELSE
+DB_ComboBox.Skl 124> DEF_IF ""
+DB_ComboBox.Skl 126> ELSE_IF "1,62"
+DB_ComboBox.Skl 128> END_IF
+DB_ComboBox.Skl 129> END_IF
+DB_ComboBox.Skl 130> DEF_IF "0"
+DB_ComboBox.Skl 132> END_IF
+DB_ComboBox.Skl 133> DEF_IF "" EQUAL "PIXELS" 
+DB_ComboBox.Skl 139> ELSE
+DB_ComboBox.Skl 140> DEF_IF ""
+DB_ComboBox.Skl 142> ELSE_IF "15,29"
+DB_ComboBox.Skl 144> END_IF
+DB_ComboBox.Skl 145> END_IF
+DB_ComboBox.Skl 146> DEF_IF "0"
+DB_ComboBox.Skl 148> END_IF
+DB_ComboBox.Skl 149> DEF_IF "3-D"
+DB_ComboBox.Skl 151> END_IF
+DB_ComboBox.Skl 152> DEF_IF ""
+DB_ComboBox.Skl 154> END_IF
+DB_ComboBox.Skl 155> DEF_IF ""
+DB_ComboBox.Skl 157> ELSE_IF "0"
+DB_ComboBox.Skl 159> END_IF
+DB_ComboBox.Skl 160> DEF_CASE "AUTOMATIC"
+DB_ComboBox.Skl 161> CASE "PERMANENT"
+DB_ComboBox.Skl 163> CASE "TEMPORARY"
+DB_ComboBox.Skl 165> END_CASE
+DB_ComboBox.Skl 166> DEF_IF ""
+DB_ComboBox.Skl 168> ELSE
+DB_ComboBox.Skl 169> DEF_IF "0" EQUAL "1" 
+DB_ComboBox.Skl 171> ELSE_IF "0" EQUAL "2" 
+DB_ComboBox.Skl 173> END_IF
+DB_ComboBox.Skl 174> END_IF
+DB_ComboBox.Skl 175> DEF_IF ""
+DB_ComboBox.Skl 179> ELSE_IF "0"
+DB_ComboBox.Skl 181> END_IF
+DB_ComboBox.Skl 182> DEF_IF "Small-Font"
+DB_ComboBox.Skl 184> END_IF
+DB_ComboBox.Skl 185> DEF_IF ""
+DB_ComboBox.Skl 187> ELSE_IF "0"
+DB_ComboBox.Skl 189> END_IF
+DB_ComboBox.Skl 221> Link To DARWIN-AUTO-ID.skl
+DARWIN-AUTO-ID.skl 1> DEF_SET @!G_VALORE_AUTO_ID!@ ""
+DARWIN-AUTO-ID.skl 2> DEF_IF ""
+DARWIN-AUTO-ID.skl 18> ELSE_IF "2"
+DARWIN-AUTO-ID.skl 20> DEF_SET @!G_DARWINID!@ "2"
+DARWIN-AUTO-ID.skl 23> END_IF
+DB_ComboBox.Skl 222> DEF_SET @!L_SYSID!@ "2"
+DB_ComboBox.Skl 227> DEF_IF NOT ( "0" EQUAL "0" OR "0" EQUAL "1" ) 
+DB_ComboBox.Skl 229> END_IF
+DB_ComboBox.Skl 230> DEF_IF "1"
+DB_ComboBox.Skl 232> END_IF
+DB_ComboBox.Skl 233> DEF_IF "1"
+DB_ComboBox.Skl 235> END_IF
+DB_ComboBox.Skl 236> DEF_IF ""
+DB_ComboBox.Skl 238> END_IF
+DB_ComboBox.Skl 239> DEF_IF ""
+DB_ComboBox.Skl 241> ELSE_IF NOT ( "" EQUAL "" ) 
+DB_ComboBox.Skl 243> END_IF
+DB_ComboBox.Skl 244> DEF_IF ""
+DB_ComboBox.Skl 246> ELSE
+DB_ComboBox.Skl 248> END_IF
+DB_ComboBox.Skl 249> DEF_IF "30"
+DB_ComboBox.Skl 251> END_IF
+DB_ComboBox.Skl 252> DEF_IF "0"
+DB_ComboBox.Skl 254> END_IF
+DB_ComboBox.Skl 255> DEF_IF "0"
+DB_ComboBox.Skl 257> END_IF
+DB_ComboBox.Skl 258> DEF_IF "1"
+DB_ComboBox.Skl 260> END_IF
+DB_ComboBox.Skl 261> DEF_IF ""
+DB_ComboBox.Skl 263> END_IF
+DB_ComboBox.Skl 264> DEF_IF "DROP-DOWN"
+DB_ComboBox.Skl 266> END_IF
+DB_ComboBox.Skl 267> DEF_IF ""
+DB_ComboBox.Skl 271> ELSE_IF "0"
+DB_ComboBox.Skl 273> END_IF
+DB_ComboBox.Skl 274> DEF_IF "1"
+DB_ComboBox.Skl 276> END_IF
+DB_ComboBox.Skl 278> DEF_IF ""
+DB_ComboBox.Skl 280> ELSE
+DB_ComboBox.Skl 281> DEF_IF "0" EQUAL "1" 
+DB_ComboBox.Skl 283> ELSE_IF "0" EQUAL "2" 
+DB_ComboBox.Skl 285> END_IF
+DB_ComboBox.Skl 286> END_IF
+DB_ComboBox.Skl 287> DEF_IF ""
+DB_ComboBox.Skl 293> END_IF
+DB_ComboBox.Skl 294> DEF_IF NOT ( "" OR "" ) 
+DB_ComboBox.Skl 295> DEF_IF "" AND "" 
+DB_ComboBox.Skl 297> ELSE_IF ""
+DB_ComboBox.Skl 299> END_IF
+DB_ComboBox.Skl 300> END_IF
+DB_ComboBox.Skl 301> DEF_IF "" AND "" 
+DB_ComboBox.Skl 303> ELSE_IF "" 
+DB_ComboBox.Skl 305> ELSE
+DB_ComboBox.Skl 306> DEF_IF "" OR "" 
+DB_ComboBox.Skl 308> END_IF
+DB_ComboBox.Skl 309> END_IF
+DB_ComboBox.Skl 310> DEF_IF "" AND "" 
+DB_ComboBox.Skl 312> ELSE_IF ""
+DB_ComboBox.Skl 314> ELSE
+DB_ComboBox.Skl 315> DEF_IF ""
+DB_ComboBox.Skl 317> END_IF
+DB_ComboBox.Skl 318> END_IF
+DB_ComboBox.Skl 323> DEF_SET @!G_DARWINID!@ "2"
+DB_ComboBox.Skl 324> Link To DARWIN-my-property-ID.skl
+DARWIN-my-property-ID.skl 1> DEF_SET @!G_MYPROPERTY_ITEM_LENGHT!@ "100"
+DARWIN-my-property-ID.skl 2> DEF_SET @!G_MYPROPERTY_SUBSTRING_IDX!@ "0"
+DARWIN-my-property-ID.skl 3> DEF_SET @!G_MYPROPERTY_SUBSTRING_INPUT!@ "CONTROLLO="
+DARWIN-my-property-ID.skl 4> DEF_SET @!G_GENERA_PERFORM_CONTROLLO!@ ""
+DARWIN-my-property-ID.skl 5> DEF_LOOP 1000
+DARWIN-my-property-ID.skl 6> Link To MyProperty-Substring.Skl
+MyProperty-Substring.Skl 5> DEF_SET @!L_OFFSET!@ "0"
+MyProperty-Substring.Skl 6> DEF_SET @!L_INPUT!@ "CONTROLLO="
+MyProperty-Substring.Skl 7> DEF_SET @!L_APPEND_ITEM!@ "YES"
+MyProperty-Substring.Skl 8> DEF_SET @!L_ITEM_NAME!@ ""
+MyProperty-Substring.Skl 9> DEF_SET @!L_ITEM_VALUE!@ ""
+MyProperty-Substring.Skl 10> DEF_LOOP 100
+MyProperty-Substring.Skl 11> GET_INDEXCHAR @!L_VALUE!@ "CONTROLLO=" "0" "1"
+MyProperty-Substring.Skl 12> DEF_ADD @!L_OFFSET!@ "1"
+MyProperty-Substring.Skl 13> DEF_IF "YES"
+MyProperty-Substring.Skl 14> DEF_CASE "C"
+MyProperty-Substring.Skl 15> CASE ""
+MyProperty-Substring.Skl 17> CASE "="
+MyProperty-Substring.Skl 19> CASE_DEFAULT
+MyProperty-Substring.Skl 20> DEF_APPEND @!L_ITEM_NAME!@ "C"
+MyProperty-Substring.Skl 21> END_CASE
+MyProperty-Substring.Skl 30> END_IF
+MyProperty-Substring.Skl 11> GET_INDEXCHAR @!L_VALUE!@ "CONTROLLO=" "1" "1"
+MyProperty-Substring.Skl 12> DEF_ADD @!L_OFFSET!@ "1"
+MyProperty-Substring.Skl 13> DEF_IF "YES"
+MyProperty-Substring.Skl 14> DEF_CASE "O"
+MyProperty-Substring.Skl 15> CASE ""
+MyProperty-Substring.Skl 17> CASE "="
+MyProperty-Substring.Skl 19> CASE_DEFAULT
+MyProperty-Substring.Skl 20> DEF_APPEND @!L_ITEM_NAME!@ "O"
+MyProperty-Substring.Skl 21> END_CASE
+MyProperty-Substring.Skl 30> END_IF
+MyProperty-Substring.Skl 11> GET_INDEXCHAR @!L_VALUE!@ "CONTROLLO=" "2" "1"
+MyProperty-Substring.Skl 12> DEF_ADD @!L_OFFSET!@ "1"
+MyProperty-Substring.Skl 13> DEF_IF "YES"
+MyProperty-Substring.Skl 14> DEF_CASE "N"
+MyProperty-Substring.Skl 15> CASE ""
+MyProperty-Substring.Skl 17> CASE "="
+MyProperty-Substring.Skl 19> CASE_DEFAULT
+MyProperty-Substring.Skl 20> DEF_APPEND @!L_ITEM_NAME!@ "N"
+MyProperty-Substring.Skl 21> END_CASE
+MyProperty-Substring.Skl 30> END_IF
+MyProperty-Substring.Skl 11> GET_INDEXCHAR @!L_VALUE!@ "CONTROLLO=" "3" "1"
+MyProperty-Substring.Skl 12> DEF_ADD @!L_OFFSET!@ "1"
+MyProperty-Substring.Skl 13> DEF_IF "YES"
+MyProperty-Substring.Skl 14> DEF_CASE "T"
+MyProperty-Substring.Skl 15> CASE ""
+MyProperty-Substring.Skl 17> CASE "="
+MyProperty-Substring.Skl 19> CASE_DEFAULT
+MyProperty-Substring.Skl 20> DEF_APPEND @!L_ITEM_NAME!@ "T"
+MyProperty-Substring.Skl 21> END_CASE
+MyProperty-Substring.Skl 30> END_IF
+MyProperty-Substring.Skl 11> GET_INDEXCHAR @!L_VALUE!@ "CONTROLLO=" "4" "1"
+MyProperty-Substring.Skl 12> DEF_ADD @!L_OFFSET!@ "1"
+MyProperty-Substring.Skl 13> DEF_IF "YES"
+MyProperty-Substring.Skl 14> DEF_CASE "R"
+MyProperty-Substring.Skl 15> CASE ""
+MyProperty-Substring.Skl 17> CASE "="
+MyProperty-Substring.Skl 19> CASE_DEFAULT
+MyProperty-Substring.Skl 20> DEF_APPEND @!L_ITEM_NAME!@ "R"
+MyProperty-Substring.Skl 21> END_CASE
+MyProperty-Substring.Skl 30> END_IF
+MyProperty-Substring.Skl 11> GET_INDEXCHAR @!L_VALUE!@ "CONTROLLO=" "5" "1"
+MyProperty-Substring.Skl 12> DEF_ADD @!L_OFFSET!@ "1"
+MyProperty-Substring.Skl 13> DEF_IF "YES"
+MyProperty-Substring.Skl 14> DEF_CASE "O"
+MyProperty-Substring.Skl 15> CASE ""
+MyProperty-Substring.Skl 17> CASE "="
+MyProperty-Substring.Skl 19> CASE_DEFAULT
+MyProperty-Substring.Skl 20> DEF_APPEND @!L_ITEM_NAME!@ "O"
+MyProperty-Substring.Skl 21> END_CASE
+MyProperty-Substring.Skl 30> END_IF
+MyProperty-Substring.Skl 11> GET_INDEXCHAR @!L_VALUE!@ "CONTROLLO=" "6" "1"
+MyProperty-Substring.Skl 12> DEF_ADD @!L_OFFSET!@ "1"
+MyProperty-Substring.Skl 13> DEF_IF "YES"
+MyProperty-Substring.Skl 14> DEF_CASE "L"
+MyProperty-Substring.Skl 15> CASE ""
+MyProperty-Substring.Skl 17> CASE "="
+MyProperty-Substring.Skl 19> CASE_DEFAULT
+MyProperty-Substring.Skl 20> DEF_APPEND @!L_ITEM_NAME!@ "L"
+MyProperty-Substring.Skl 21> END_CASE
+MyProperty-Substring.Skl 30> END_IF
+MyProperty-Substring.Skl 11> GET_INDEXCHAR @!L_VALUE!@ "CONTROLLO=" "7" "1"
+MyProperty-Substring.Skl 12> DEF_ADD @!L_OFFSET!@ "1"
+MyProperty-Substring.Skl 13> DEF_IF "YES"
+MyProperty-Substring.Skl 14> DEF_CASE "L"
+MyProperty-Substring.Skl 15> CASE ""
+MyProperty-Substring.Skl 17> CASE "="
+MyProperty-Substring.Skl 19> CASE_DEFAULT
+MyProperty-Substring.Skl 20> DEF_APPEND @!L_ITEM_NAME!@ "L"
+MyProperty-Substring.Skl 21> END_CASE
+MyProperty-Substring.Skl 30> END_IF
+MyProperty-Substring.Skl 11> GET_INDEXCHAR @!L_VALUE!@ "CONTROLLO=" "8" "1"
+MyProperty-Substring.Skl 12> DEF_ADD @!L_OFFSET!@ "1"
+MyProperty-Substring.Skl 13> DEF_IF "YES"
+MyProperty-Substring.Skl 14> DEF_CASE "O"
+MyProperty-Substring.Skl 15> CASE ""
+MyProperty-Substring.Skl 17> CASE "="
+MyProperty-Substring.Skl 19> CASE_DEFAULT
+MyProperty-Substring.Skl 20> DEF_APPEND @!L_ITEM_NAME!@ "O"
+MyProperty-Substring.Skl 21> END_CASE
+MyProperty-Substring.Skl 30> END_IF
+MyProperty-Substring.Skl 11> GET_INDEXCHAR @!L_VALUE!@ "CONTROLLO=" "9" "1"
+MyProperty-Substring.Skl 12> DEF_ADD @!L_OFFSET!@ "1"
+MyProperty-Substring.Skl 13> DEF_IF "YES"
+MyProperty-Substring.Skl 14> DEF_CASE "="
+MyProperty-Substring.Skl 15> CASE ""
+MyProperty-Substring.Skl 17> CASE "="
+MyProperty-Substring.Skl 18> DEF_SET @!L_APPEND_ITEM!@ ""
+MyProperty-Substring.Skl 21> END_CASE
+MyProperty-Substring.Skl 30> END_IF
+MyProperty-Substring.Skl 11> GET_INDEXCHAR @!L_VALUE!@ "CONTROLLO=" "10" "1"
+MyProperty-Substring.Skl 12> DEF_ADD @!L_OFFSET!@ "1"
+MyProperty-Substring.Skl 13> DEF_IF ""
+MyProperty-Substring.Skl 22> ELSE
+MyProperty-Substring.Skl 23> DEF_IF ( "" EQUAL "" ) OR ( "" EQUAL ";" ) 
+MyProperty-Substring.Skl 25> DEF_SET @!G_MYPROPERTY_SUBSTRING_IDX!@ "11"
+MyProperty-Substring.Skl 29> END_IF
+MyProperty-Substring.Skl 30> END_IF
+MyProperty-Substring.Skl 31> END_LOOP MyProperty-Substring.Skl 32> DEF_SET @!G_MYPROPERTY_ITEM_NAME!@ "CONTROLLO"
+MyProperty-Substring.Skl 33> DEF_SET @!G_MYPROPERTY_ITEM_VALUE!@ ""
+DARWIN-my-property-ID.skl 7> DEF_CASE "CONTROLLO"
+DARWIN-my-property-ID.skl 8> CASE ""
+DARWIN-my-property-ID.skl 10> CASE "CONTROLLO"
+DARWIN-my-property-ID.skl 11> -------------- "CONTROLLO-WHEN" --------------
+DARWIN-my-property-ID.skl 12> DEF_IF ""
+DARWIN-my-property-ID.skl 15> ELSE
+DARWIN-my-property-ID.skl 18> END_IF
+DARWIN-my-property-ID.skl 20> DEF_SET @!G_GENERA_ELENCO_ID!@ "YES"
+DARWIN-my-property-ID.skl 21> DEF_SET @!G_GENERA_PERFORM_CONTROLLO!@ "YES"
+DARWIN-my-property-ID.skl 37> END_CASE
+DARWIN-my-property-ID.skl 38> DEF_SET @!G_DARWIN_VALUE!@ ""
+DARWIN-my-property-ID.skl 6> Link To MyProperty-Substring.Skl
+MyProperty-Substring.Skl 5> DEF_SET @!L_OFFSET!@ "11"
+MyProperty-Substring.Skl 6> DEF_SET @!L_INPUT!@ "CONTROLLO="
+MyProperty-Substring.Skl 7> DEF_SET @!L_APPEND_ITEM!@ "YES"
+MyProperty-Substring.Skl 8> DEF_SET @!L_ITEM_NAME!@ ""
+MyProperty-Substring.Skl 9> DEF_SET @!L_ITEM_VALUE!@ ""
+MyProperty-Substring.Skl 10> DEF_LOOP 100
+MyProperty-Substring.Skl 11> GET_INDEXCHAR @!L_VALUE!@ "CONTROLLO=" "11" "1"
+MyProperty-Substring.Skl 12> DEF_ADD @!L_OFFSET!@ "1"
+MyProperty-Substring.Skl 13> DEF_IF "YES"
+MyProperty-Substring.Skl 14> DEF_CASE ""
+MyProperty-Substring.Skl 15> CASE ""
+MyProperty-Substring.Skl 21> END_CASE
+MyProperty-Substring.Skl 30> END_IF
+MyProperty-Substring.Skl 31> END_LOOP MyProperty-Substring.Skl 32> DEF_SET @!G_MYPROPERTY_ITEM_NAME!@ ""
+MyProperty-Substring.Skl 33> DEF_SET @!G_MYPROPERTY_ITEM_VALUE!@ ""
+DARWIN-my-property-ID.skl 7> DEF_CASE ""
+DARWIN-my-property-ID.skl 8> CASE ""
+DARWIN-my-property-ID.skl 37> END_CASE
+DARWIN-my-property-ID.skl 39> END_LOOP DB_ComboBox.Skl 332> -------------- "BEFOREPROCEDURE" --------------
+DB_ComboBox.Skl 333> DEF_IF "" OR "" 
+DB_ComboBox.Skl 339> END_IF
+DB_ComboBox.Skl 342> -------------- "AFTERPROCEDURE" --------------
+DB_ComboBox.Skl 343> DEF_IF "Screen1-DaCm-1-AfterProcedure" AND "" 
+DB_ComboBox.Skl 345> ELSE_IF "Screen1-DaCm-1-AfterProcedure"
+DB_ComboBox.Skl 362> DEF_IF "YES"
+DB_ComboBox.Skl 363> DEF_SET @!G_GENERA_PERFORM_CONTROLLO!@ ""
+DB_ComboBox.Skl 365> END_IF
+DB_ComboBox.Skl 374> END_IF
+DB_ComboBox.Skl 378> -------------- "EVENT" --------------
+DB_ComboBox.Skl 379> DEF_IF ""
+DB_ComboBox.Skl 387> END_IF
+DB_ComboBox.Skl 389> DEF_IF "" OR "" OR "" 
+DB_ComboBox.Skl 451> END_IF
+DB_ComboBox.Skl 460> DEF_IF "" OR "" 
+DB_ComboBox.Skl 492> END_IF
+DB_ComboBox.Skl 498> DEF_SETPARA 1 "Screen1-DaCm-1-AfterProcedure"
+DB_ComboBox.Skl 500> DEF_IF ( NOT "0" ) AND ( "Screen1-DaCm-1-AfterProcedure" OR ( "INTERACTIVEMODE" EQUAL "INTERACTIVEMODE" ) ) 
+DB_ComboBox.Skl 502> DEF_IF "Screen1-DaCm-1-AfterProcedure"
+DB_ComboBox.Skl 503> -------------- "DEFAULTCODE_Screen1-DaCm-1-AfterProcedure" --------------
+DB_ComboBox.Skl 507> END_IF
+DB_ComboBox.Skl 508> DEF_SETPARA 1 "Screen1-DaCm-1-AfterProcedure"
+DB_ComboBox.Skl 509> DEF_IF "YES" EQUAL "YES" AND ( "INTERACTIVEMODE" EQUAL "INTERACTIVEMODE" ) 
+DB_ComboBox.Skl 510> DEF_IF ""
+DB_ComboBox.Skl 512> END_IF
+DB_ComboBox.Skl 513> DEF_IF ""
+DB_ComboBox.Skl 515> END_IF
+DB_ComboBox.Skl 516> DEF_SETPARA 1 "TOTEM-OCC1"
+DB_ComboBox.Skl 517> DEF_SETPARA 2 "TOTEM-OCC2"
+DB_ComboBox.Skl 523> DEF_IF ""
+DB_ComboBox.Skl 526> END_IF
+DB_ComboBox.Skl 528> DEF_IF ""
+DB_ComboBox.Skl 530> END_IF
+DB_ComboBox.Skl 531> DEF_IF ""
+DB_ComboBox.Skl 533> END_IF
+DB_ComboBox.Skl 534> END_IF
+DB_ComboBox.Skl 535> DEF_IF NOT ( "Screen1-DaCm-1-AfterProcedure" ) 
+DB_ComboBox.Skl 538> END_IF
+DB_ComboBox.Skl 539> END_IF
+DB_ComboBox.Skl 544> _SET_LISTFILE_FDSL
+DB_ComboBox.Skl 548> DEF_IF ""
+DB_ComboBox.Skl 550> END_IF
+DB_ComboBox.Skl 554> DEF_IF "Small-Font" AND "" 
+DB_ComboBox.Skl 557> END_IF
+DB_ComboBox.Skl 561> -------------- "INIT_VALUE" --------------
+DB_ComboBox.Skl 562> DEF_IF NOT ( "" EQUAL "" ) 
+DB_ComboBox.Skl 579> END_IF
+DB_ComboBox.Skl 584> -------------- "FDSL_BUFTOFLD" --------------
+DB_ComboBox.Skl 586> DEF_IF ""
+DB_ComboBox.Skl 588> END_IF
+DB_ComboBox.Skl 589> DEF_IF ""
+DB_ComboBox.Skl 591> END_IF
+DB_ComboBox.Skl 592> DEF_SETPARA 1 "TOTEM-OCC1"
+DB_ComboBox.Skl 593> DEF_SETPARA 2 "TOTEM-OCC2"
+DB_ComboBox.Skl 595> DEF_IF ""
+DB_ComboBox.Skl 597> END_IF
+DB_ComboBox.Skl 598> DEF_IF ""
+DB_ComboBox.Skl 600> END_IF
+DB_ComboBox.Skl 604> -------------- "FDSL_FLDTOBUF" --------------
+DB_ComboBox.Skl 606> DEF_IF ""
+DB_ComboBox.Skl 608> END_IF
+DB_ComboBox.Skl 609> DEF_IF ""
+DB_ComboBox.Skl 611> END_IF
+DB_ComboBox.Skl 612> DEF_SETPARA 1 "TOTEM-OCC1"
+DB_ComboBox.Skl 613> DEF_SETPARA 2 "TOTEM-OCC2"
+DB_ComboBox.Skl 615> DEF_IF ""
+DB_ComboBox.Skl 617> END_IF
+DB_ComboBox.Skl 618> DEF_IF ""
+DB_ComboBox.Skl 620> END_IF
+DB_ComboBox.Skl 624> DEF_IF ""
+DB_ComboBox.Skl 642> END_IF
+DB_ComboBox.Skl 648> -------------- "INIT_DATA" --------------
+DB_ComboBox.Skl 652> DEF_IF "(None)" AND "" 
+DB_ComboBox.Skl 853> ELSE
+DB_ComboBox.Skl 854> -------------- "INITDATA-PROCEDURE" --------------
+DB_ComboBox.Skl 858> GET_ENTRYPOINT "FORM" "Data.Combo-Box" "BeforeLoadRecord"
+DB_ComboBox.Skl 860> _SET_OBJ_VALUELINE
+DB_ComboBox.Skl 861> DEF_IF "3"
+DB_ComboBox.Skl 863> DEF_IF ""
+DB_ComboBox.Skl 865> END_IF
+DB_ComboBox.Skl 866> DEF_IF ""
+DB_ComboBox.Skl 868> END_IF
+DB_ComboBox.Skl 869> DEF_SETPARA 1 "TOTEM-OCC1"
+DB_ComboBox.Skl 870> DEF_SETPARA 2 "TOTEM-OCC2"
+DB_ComboBox.Skl 871> DEF_IF ""Item1""
+DB_ComboBox.Skl 875> _SET_OBJ_VALUELINE
+DB_ComboBox.Skl 876> DEF_LOOP 3
+DB_ComboBox.Skl 877> _FETCH_NEXT_OBJ_LINEINDEX
+DB_ComboBox.Skl 877> _FETCH_NEXT_OBJ_LINEINDEX
+DB_ComboBox.Skl 877> _FETCH_NEXT_OBJ_LINEINDEX
+DB_ComboBox.Skl 879> END_LOOP DB_ComboBox.Skl 881> END_IF
+DB_ComboBox.Skl 882> DEF_IF ""
+DB_ComboBox.Skl 884> END_IF
+DB_ComboBox.Skl 885> DEF_IF ""
+DB_ComboBox.Skl 887> END_IF
+DB_ComboBox.Skl 888> END_IF
+DB_ComboBox.Skl 890> GET_ENTRYPOINT "FORM" "Data.Combo-Box" "AfterLoadRecord"
+DB_ComboBox.Skl 894> END_IF
+DB_ComboBox.Skl 898> -------------- "FORM-VALIDATION" --------------
+DB_ComboBox.Skl 901> GET_ENTRYPOINT "FORM" "Data.Combo-Box" "BeforeValidation"
+DB_ComboBox.Skl 907> GET_ENTRYPOINT "FORM" "Data.Combo-Box" "AfterValidation"
+DB_ComboBox.Skl 912> DEF_SET @!G_EXTRANAME!@ ""
+DB_ComboBox.Skl 913> DEF_SET @!G_VALIDFIELD!@ "A"
+DB_ComboBox.Skl 914> DEF_SET @!G_VALIDPICTURE!@ "X(30)"
+DB_ComboBox.Skl 915> _SET_OBJ_VALIDATE
+DB_ComboBox.Skl 916> Link To Validation.Skl
+Validation.Skl 17> DEF_SET @!G_VALIDX!@ "0"
+Validation.Skl 19> DEF_IF ( NOT "" ) AND "0" 
+Validation.Skl 28> END_IF
+Validation.Skl 30> DEF_LOOP 0
+Validation.Skl 110> END_LOOP Validation.Skl 113> -------------- "FORM-VALIDATION" --------------
+Validation.Skl 117> GET_MEM "VALIDATION-LOOP-CHECK"
+Validation.Skl 118> CLEAR_MEM "VALIDATION-LOOP-CHECK"
+Validation.Skl 123> DEF_IF "0"
+Validation.Skl 126> END_IF
+DB_ComboBox.Skl 919> DEF_IF ""
+DB_ComboBox.Skl 941> END_IF
+DB_ComboBox.Skl 944> DEF_IF ""
+DB_ComboBox.Skl 947> ELSE_IF ""
+DB_ComboBox.Skl 950> END_IF
+DispatchCtrl.Skl 96> DEF_ADD @!G_SYSID!@ "1"
+DispatchCtrl.Skl 140> END_CASE
+main.Skl 157> _FETCH_NEXT_OBJ_CTRL
+main.Skl 159> Link To DispatchCtrl.Skl
+DispatchCtrl.Skl 13> KEEP_IN_MEM
+DispatchCtrl.Skl 17> DEF_CASE "Data.Entry-Field"
+DispatchCtrl.Skl 18> CASE "Group-Item"
+DispatchCtrl.Skl 20> CASE "Label"
+DispatchCtrl.Skl 22> CASE "Push-Button"
+DispatchCtrl.Skl 26> CASE "Entry-Field"
+DispatchCtrl.Skl 30> CASE "Check-Box"
+DispatchCtrl.Skl 34> CASE "Radio-Button"
+DispatchCtrl.Skl 38> CASE "Bitmap"
+DispatchCtrl.Skl 40> CASE "Menu"
+DispatchCtrl.Skl 42> CASE "ToolBar"
+DispatchCtrl.Skl 44> CASE "Bar"
+DispatchCtrl.Skl 46> CASE "Tab-Control"
+DispatchCtrl.Skl 49> CASE "Tree-View"
+DispatchCtrl.Skl 53> CASE "Grid"
+DispatchCtrl.Skl 57> CASE "Frame"
+DispatchCtrl.Skl 59> CASE "Scroll-Bar"
+DispatchCtrl.Skl 62> CASE "Combo-Box"
+DispatchCtrl.Skl 66> CASE "List-Box"
+DispatchCtrl.Skl 70> CASE "Web-Browser"
+DispatchCtrl.Skl 74> CASE "Status-Bar"
+DispatchCtrl.Skl 79> CASE "Data.Label"
+DispatchCtrl.Skl 81> CASE "Data.Entry-Field"
+DispatchCtrl.Skl 82> DEF_SET @!G_EXISTACCEPTCONTROL!@ "YES"
+DispatchCtrl.Skl 83> Link To DB_Entry_Field.Skl
+DB_Entry_Field.Skl 17> DEF_IF NOT "a" 
+DB_Entry_Field.Skl 19> ELSE_IF NOT "X(30)" 
+DB_Entry_Field.Skl 21> END_IF
+DB_Entry_Field.Skl 25> DEF_SET @!G_EXISTDBCONTROL!@ "YES"
+DB_Entry_Field.Skl 27> -------------- "DB_WORKING_BUFBODY" --------------
+DB_Entry_Field.Skl 29> DEF_IF NOT ( "0" EQUAL "0" OR "0" EQUAL "1" ) 
+DB_Entry_Field.Skl 37> ELSE
+DB_Entry_Field.Skl 38> DEF_IF "0"
+DB_Entry_Field.Skl 41> ELSE
+DB_Entry_Field.Skl 42> DEF_SET @!L_APPEND_STRING!@ ""
+DB_Entry_Field.Skl 43> END_IF
+DB_Entry_Field.Skl 44> DEF_IF "X(30)"
+DB_Entry_Field.Skl 48> END_IF
+DB_Entry_Field.Skl 49> END_IF
+DB_Entry_Field.Skl 52> DEF_IF NOT ( "0" OR "0" ) 
+DB_Entry_Field.Skl 53> DEF_IF ""
+DB_Entry_Field.Skl 75> END_IF
+DB_Entry_Field.Skl 76> END_IF
+DB_Entry_Field.Skl 80> -------------- "SCREEN" --------------
+DB_Entry_Field.Skl 85> DEF_IF "Cells" EQUAL "PIXELS" 
+DB_Entry_Field.Skl 91> ELSE
+DB_Entry_Field.Skl 92> DEF_IF ""
+DB_Entry_Field.Skl 94> ELSE_IF "29,43"
+DB_Entry_Field.Skl 96> END_IF
+DB_Entry_Field.Skl 97> END_IF
+DB_Entry_Field.Skl 98> DEF_IF ""
+DB_Entry_Field.Skl 100> END_IF
+DB_Entry_Field.Skl 101> DEF_IF "Cells" EQUAL "PIXELS" 
+DB_Entry_Field.Skl 107> ELSE
+DB_Entry_Field.Skl 108> DEF_IF ""
+DB_Entry_Field.Skl 110> ELSE_IF "3,00"
+DB_Entry_Field.Skl 112> END_IF
+DB_Entry_Field.Skl 113> END_IF
+DB_Entry_Field.Skl 114> DEF_IF ""
+DB_Entry_Field.Skl 116> END_IF
+DB_Entry_Field.Skl 117> DEF_IF "" EQUAL "PIXELS" 
+DB_Entry_Field.Skl 123> ELSE
+DB_Entry_Field.Skl 124> DEF_IF ""
+DB_Entry_Field.Skl 126> ELSE_IF "1,62"
+DB_Entry_Field.Skl 128> END_IF
+DB_Entry_Field.Skl 129> END_IF
+DB_Entry_Field.Skl 130> DEF_IF "0"
+DB_Entry_Field.Skl 132> END_IF
+DB_Entry_Field.Skl 133> DEF_IF "" EQUAL "PIXELS" 
+DB_Entry_Field.Skl 139> ELSE
+DB_Entry_Field.Skl 140> DEF_IF ""
+DB_Entry_Field.Skl 142> ELSE_IF "12,57"
+DB_Entry_Field.Skl 144> END_IF
+DB_Entry_Field.Skl 145> END_IF
+DB_Entry_Field.Skl 146> DEF_IF "0"
+DB_Entry_Field.Skl 148> END_IF
+DB_Entry_Field.Skl 149> DEF_IF "0"
+DB_Entry_Field.Skl 151> END_IF
+DB_Entry_Field.Skl 152> DEF_IF "0"
+DB_Entry_Field.Skl 154> END_IF
+DB_Entry_Field.Skl 155> DEF_IF "BOXED"
+DB_Entry_Field.Skl 157> END_IF
+DB_Entry_Field.Skl 158> DEF_IF ""
+DB_Entry_Field.Skl 160> END_IF
+DB_Entry_Field.Skl 161> DEF_IF ""
+DB_Entry_Field.Skl 163> ELSE_IF "513"
+DB_Entry_Field.Skl 165> END_IF
+DB_Entry_Field.Skl 166> DEF_IF "0"
+DB_Entry_Field.Skl 168> END_IF
+DB_Entry_Field.Skl 169> DEF_IF "0"
+DB_Entry_Field.Skl 171> END_IF
+DB_Entry_Field.Skl 172> DEF_IF "0"
+DB_Entry_Field.Skl 174> END_IF
+DB_Entry_Field.Skl 175> DEF_CASE "AUTOMATIC"
+DB_Entry_Field.Skl 176> CASE "PERMANENT"
+DB_Entry_Field.Skl 178> CASE "TEMPORARY"
+DB_Entry_Field.Skl 180> END_CASE
+DB_Entry_Field.Skl 181> DEF_IF ""
+DB_Entry_Field.Skl 183> ELSE
+DB_Entry_Field.Skl 184> DEF_IF "0" EQUAL "1" 
+DB_Entry_Field.Skl 186> ELSE_IF "0" EQUAL "2" 
+DB_Entry_Field.Skl 188> END_IF
+DB_Entry_Field.Skl 189> END_IF
+DB_Entry_Field.Skl 190> DEF_IF "Small-Font"
+DB_Entry_Field.Skl 192> END_IF
+DB_Entry_Field.Skl 193> DEF_IF ""
+DB_Entry_Field.Skl 195> ELSE_IF "0"
+DB_Entry_Field.Skl 197> END_IF
+DB_Entry_Field.Skl 231> Link To DARWIN-AUTO-ID.skl
+DARWIN-AUTO-ID.skl 1> DEF_SET @!G_VALORE_AUTO_ID!@ ""
+DARWIN-AUTO-ID.skl 2> DEF_IF "AUTO-ID"
+DARWIN-AUTO-ID.skl 4> DEF_SET @!L_NOME-ID!@ "AUTO-ID"
+DARWIN-AUTO-ID.skl 5> DEF_IF "AUTO-ID" EQUAL "AUTO-ID" 
+DARWIN-AUTO-ID.skl 7> -------------- "WORKING-ID-LOGICO" --------------
+DARWIN-AUTO-ID.skl 8> DEF_ADD @!G_ID_LOGICO!@ "1"
+DARWIN-AUTO-ID.skl 9> DEF_SET @!G_DARWINID!@ "5001"
+DARWIN-AUTO-ID.skl 10> DEF_SET @!G_VALORE_AUTO_ID!@ "78-ID-Screen1-DaEf-1"
+DARWIN-AUTO-ID.skl 12> -------------- "SCREEN" --------------
+DARWIN-AUTO-ID.skl 16> END_IF
+DARWIN-AUTO-ID.skl 23> END_IF
+DB_Entry_Field.Skl 232> DEF_SET @!L_SYSID!@ "5001"
+DB_Entry_Field.Skl 238> DEF_IF NOT ( "0" EQUAL "0" OR "0" EQUAL "1" ) 
+DB_Entry_Field.Skl 240> END_IF
+DB_Entry_Field.Skl 241> DEF_IF "1"
+DB_Entry_Field.Skl 243> END_IF
+DB_Entry_Field.Skl 244> DEF_IF "1"
+DB_Entry_Field.Skl 246> END_IF
+DB_Entry_Field.Skl 247> DEF_IF ""
+DB_Entry_Field.Skl 249> END_IF
+DB_Entry_Field.Skl 250> DEF_IF ""
+DB_Entry_Field.Skl 252> END_IF
+DB_Entry_Field.Skl 253> DEF_IF ""
+DB_Entry_Field.Skl 255> ELSE_IF NOT ( "" EQUAL "" ) 
+DB_Entry_Field.Skl 257> END_IF
+DB_Entry_Field.Skl 258> DEF_IF "0"
+DB_Entry_Field.Skl 260> END_IF
+DB_Entry_Field.Skl 261> DEF_IF "30"
+DB_Entry_Field.Skl 263> END_IF
+DB_Entry_Field.Skl 264> DEF_IF "0"
+DB_Entry_Field.Skl 266> END_IF
+DB_Entry_Field.Skl 267> DEF_IF "0"
+DB_Entry_Field.Skl 269> END_IF
+DB_Entry_Field.Skl 270> DEF_IF "0"
+DB_Entry_Field.Skl 272> END_IF
+DB_Entry_Field.Skl 273> DEF_IF "0"
+DB_Entry_Field.Skl 275> END_IF
+DB_Entry_Field.Skl 276> DEF_IF "0"
+DB_Entry_Field.Skl 278> END_IF
+DB_Entry_Field.Skl 279> DEF_IF "0"
+DB_Entry_Field.Skl 281> END_IF
+DB_Entry_Field.Skl 282> DEF_IF ""
+DB_Entry_Field.Skl 284> END_IF
+DB_Entry_Field.Skl 285> DEF_IF "0"
+DB_Entry_Field.Skl 287> END_IF
+DB_Entry_Field.Skl 288> DEF_IF "0"
+DB_Entry_Field.Skl 290> END_IF
+DB_Entry_Field.Skl 291> DEF_IF "0"
+DB_Entry_Field.Skl 293> END_IF
+DB_Entry_Field.Skl 294> DEF_IF NOT ( "SINGLELINE" EQUAL "SINGLELINE" ) 
+DB_Entry_Field.Skl 296> END_IF
+DB_Entry_Field.Skl 297> DEF_IF "0"
+DB_Entry_Field.Skl 299> END_IF
+DB_Entry_Field.Skl 300> DEF_IF "0"
+DB_Entry_Field.Skl 302> END_IF
+DB_Entry_Field.Skl 303> DEF_IF "0"
+DB_Entry_Field.Skl 305> ELSE
+DB_Entry_Field.Skl 307> END_IF
+DB_Entry_Field.Skl 308> DEF_IF ""
+DB_Entry_Field.Skl 310> ELSE
+DB_Entry_Field.Skl 311> DEF_IF "0" EQUAL "1" 
+DB_Entry_Field.Skl 313> ELSE_IF "0" EQUAL "2" 
+DB_Entry_Field.Skl 315> END_IF
+DB_Entry_Field.Skl 316> END_IF
+DB_Entry_Field.Skl 317> DEF_IF ""
+DB_Entry_Field.Skl 323> END_IF
+DB_Entry_Field.Skl 324> DEF_IF NOT ( "" OR "" ) 
+DB_Entry_Field.Skl 325> DEF_IF "" AND "" 
+DB_Entry_Field.Skl 327> ELSE_IF ""
+DB_Entry_Field.Skl 329> END_IF
+DB_Entry_Field.Skl 330> END_IF
+DB_Entry_Field.Skl 331> DEF_IF "" AND "" 
+DB_Entry_Field.Skl 333> ELSE_IF "" 
+DB_Entry_Field.Skl 335> ELSE
+DB_Entry_Field.Skl 336> DEF_IF "" OR "" 
+DB_Entry_Field.Skl 338> END_IF
+DB_Entry_Field.Skl 339> END_IF
+DB_Entry_Field.Skl 340> DEF_IF "" AND "" 
+DB_Entry_Field.Skl 342> ELSE_IF ""
+DB_Entry_Field.Skl 344> ELSE
+DB_Entry_Field.Skl 345> DEF_IF ""
+DB_Entry_Field.Skl 347> END_IF
+DB_Entry_Field.Skl 348> END_IF
+DB_Entry_Field.Skl 354> DEF_SET @!G_DARWINID!@ "5001"
+DB_Entry_Field.Skl 355> Link To DARWIN-my-property-ID.skl
+DARWIN-my-property-ID.skl 1> DEF_SET @!G_MYPROPERTY_ITEM_LENGHT!@ "100"
+DARWIN-my-property-ID.skl 2> DEF_SET @!G_MYPROPERTY_SUBSTRING_IDX!@ "0"
+DARWIN-my-property-ID.skl 3> DEF_SET @!G_MYPROPERTY_SUBSTRING_INPUT!@ "CONTROLLO="
+DARWIN-my-property-ID.skl 4> DEF_SET @!G_GENERA_PERFORM_CONTROLLO!@ ""
+DARWIN-my-property-ID.skl 5> DEF_LOOP 1000
+DARWIN-my-property-ID.skl 6> Link To MyProperty-Substring.Skl
+MyProperty-Substring.Skl 5> DEF_SET @!L_OFFSET!@ "0"
+MyProperty-Substring.Skl 6> DEF_SET @!L_INPUT!@ "CONTROLLO="
+MyProperty-Substring.Skl 7> DEF_SET @!L_APPEND_ITEM!@ "YES"
+MyProperty-Substring.Skl 8> DEF_SET @!L_ITEM_NAME!@ ""
+MyProperty-Substring.Skl 9> DEF_SET @!L_ITEM_VALUE!@ ""
+MyProperty-Substring.Skl 10> DEF_LOOP 100
+MyProperty-Substring.Skl 11> GET_INDEXCHAR @!L_VALUE!@ "CONTROLLO=" "0" "1"
+MyProperty-Substring.Skl 12> DEF_ADD @!L_OFFSET!@ "1"
+MyProperty-Substring.Skl 13> DEF_IF "YES"
+MyProperty-Substring.Skl 14> DEF_CASE "C"
+MyProperty-Substring.Skl 15> CASE ""
+MyProperty-Substring.Skl 17> CASE "="
+MyProperty-Substring.Skl 19> CASE_DEFAULT
+MyProperty-Substring.Skl 20> DEF_APPEND @!L_ITEM_NAME!@ "C"
+MyProperty-Substring.Skl 21> END_CASE
+MyProperty-Substring.Skl 30> END_IF
+MyProperty-Substring.Skl 11> GET_INDEXCHAR @!L_VALUE!@ "CONTROLLO=" "1" "1"
+MyProperty-Substring.Skl 12> DEF_ADD @!L_OFFSET!@ "1"
+MyProperty-Substring.Skl 13> DEF_IF "YES"
+MyProperty-Substring.Skl 14> DEF_CASE "O"
+MyProperty-Substring.Skl 15> CASE ""
+MyProperty-Substring.Skl 17> CASE "="
+MyProperty-Substring.Skl 19> CASE_DEFAULT
+MyProperty-Substring.Skl 20> DEF_APPEND @!L_ITEM_NAME!@ "O"
+MyProperty-Substring.Skl 21> END_CASE
+MyProperty-Substring.Skl 30> END_IF
+MyProperty-Substring.Skl 11> GET_INDEXCHAR @!L_VALUE!@ "CONTROLLO=" "2" "1"
+MyProperty-Substring.Skl 12> DEF_ADD @!L_OFFSET!@ "1"
+MyProperty-Substring.Skl 13> DEF_IF "YES"
+MyProperty-Substring.Skl 14> DEF_CASE "N"
+MyProperty-Substring.Skl 15> CASE ""
+MyProperty-Substring.Skl 17> CASE "="
+MyProperty-Substring.Skl 19> CASE_DEFAULT
+MyProperty-Substring.Skl 20> DEF_APPEND @!L_ITEM_NAME!@ "N"
+MyProperty-Substring.Skl 21> END_CASE
+MyProperty-Substring.Skl 30> END_IF
+MyProperty-Substring.Skl 11> GET_INDEXCHAR @!L_VALUE!@ "CONTROLLO=" "3" "1"
+MyProperty-Substring.Skl 12> DEF_ADD @!L_OFFSET!@ "1"
+MyProperty-Substring.Skl 13> DEF_IF "YES"
+MyProperty-Substring.Skl 14> DEF_CASE "T"
+MyProperty-Substring.Skl 15> CASE ""
+MyProperty-Substring.Skl 17> CASE "="
+MyProperty-Substring.Skl 19> CASE_DEFAULT
+MyProperty-Substring.Skl 20> DEF_APPEND @!L_ITEM_NAME!@ "T"
+MyProperty-Substring.Skl 21> END_CASE
+MyProperty-Substring.Skl 30> END_IF
+MyProperty-Substring.Skl 11> GET_INDEXCHAR @!L_VALUE!@ "CONTROLLO=" "4" "1"
+MyProperty-Substring.Skl 12> DEF_ADD @!L_OFFSET!@ "1"
+MyProperty-Substring.Skl 13> DEF_IF "YES"
+MyProperty-Substring.Skl 14> DEF_CASE "R"
+MyProperty-Substring.Skl 15> CASE ""
+MyProperty-Substring.Skl 17> CASE "="
+MyProperty-Substring.Skl 19> CASE_DEFAULT
+MyProperty-Substring.Skl 20> DEF_APPEND @!L_ITEM_NAME!@ "R"
+MyProperty-Substring.Skl 21> END_CASE
+MyProperty-Substring.Skl 30> END_IF
+MyProperty-Substring.Skl 11> GET_INDEXCHAR @!L_VALUE!@ "CONTROLLO=" "5" "1"
+MyProperty-Substring.Skl 12> DEF_ADD @!L_OFFSET!@ "1"
+MyProperty-Substring.Skl 13> DEF_IF "YES"
+MyProperty-Substring.Skl 14> DEF_CASE "O"
+MyProperty-Substring.Skl 15> CASE ""
+MyProperty-Substring.Skl 17> CASE "="
+MyProperty-Substring.Skl 19> CASE_DEFAULT
+MyProperty-Substring.Skl 20> DEF_APPEND @!L_ITEM_NAME!@ "O"
+MyProperty-Substring.Skl 21> END_CASE
+MyProperty-Substring.Skl 30> END_IF
+MyProperty-Substring.Skl 11> GET_INDEXCHAR @!L_VALUE!@ "CONTROLLO=" "6" "1"
+MyProperty-Substring.Skl 12> DEF_ADD @!L_OFFSET!@ "1"
+MyProperty-Substring.Skl 13> DEF_IF "YES"
+MyProperty-Substring.Skl 14> DEF_CASE "L"
+MyProperty-Substring.Skl 15> CASE ""
+MyProperty-Substring.Skl 17> CASE "="
+MyProperty-Substring.Skl 19> CASE_DEFAULT
+MyProperty-Substring.Skl 20> DEF_APPEND @!L_ITEM_NAME!@ "L"
+MyProperty-Substring.Skl 21> END_CASE
+MyProperty-Substring.Skl 30> END_IF
+MyProperty-Substring.Skl 11> GET_INDEXCHAR @!L_VALUE!@ "CONTROLLO=" "7" "1"
+MyProperty-Substring.Skl 12> DEF_ADD @!L_OFFSET!@ "1"
+MyProperty-Substring.Skl 13> DEF_IF "YES"
+MyProperty-Substring.Skl 14> DEF_CASE "L"
+MyProperty-Substring.Skl 15> CASE ""
+MyProperty-Substring.Skl 17> CASE "="
+MyProperty-Substring.Skl 19> CASE_DEFAULT
+MyProperty-Substring.Skl 20> DEF_APPEND @!L_ITEM_NAME!@ "L"
+MyProperty-Substring.Skl 21> END_CASE
+MyProperty-Substring.Skl 30> END_IF
+MyProperty-Substring.Skl 11> GET_INDEXCHAR @!L_VALUE!@ "CONTROLLO=" "8" "1"
+MyProperty-Substring.Skl 12> DEF_ADD @!L_OFFSET!@ "1"
+MyProperty-Substring.Skl 13> DEF_IF "YES"
+MyProperty-Substring.Skl 14> DEF_CASE "O"
+MyProperty-Substring.Skl 15> CASE ""
+MyProperty-Substring.Skl 17> CASE "="
+MyProperty-Substring.Skl 19> CASE_DEFAULT
+MyProperty-Substring.Skl 20> DEF_APPEND @!L_ITEM_NAME!@ "O"
+MyProperty-Substring.Skl 21> END_CASE
+MyProperty-Substring.Skl 30> END_IF
+MyProperty-Substring.Skl 11> GET_INDEXCHAR @!L_VALUE!@ "CONTROLLO=" "9" "1"
+MyProperty-Substring.Skl 12> DEF_ADD @!L_OFFSET!@ "1"
+MyProperty-Substring.Skl 13> DEF_IF "YES"
+MyProperty-Substring.Skl 14> DEF_CASE "="
+MyProperty-Substring.Skl 15> CASE ""
+MyProperty-Substring.Skl 17> CASE "="
+MyProperty-Substring.Skl 18> DEF_SET @!L_APPEND_ITEM!@ ""
+MyProperty-Substring.Skl 21> END_CASE
+MyProperty-Substring.Skl 30> END_IF
+MyProperty-Substring.Skl 11> GET_INDEXCHAR @!L_VALUE!@ "CONTROLLO=" "10" "1"
+MyProperty-Substring.Skl 12> DEF_ADD @!L_OFFSET!@ "1"
+MyProperty-Substring.Skl 13> DEF_IF ""
+MyProperty-Substring.Skl 22> ELSE
+MyProperty-Substring.Skl 23> DEF_IF ( "" EQUAL "" ) OR ( "" EQUAL ";" ) 
+MyProperty-Substring.Skl 25> DEF_SET @!G_MYPROPERTY_SUBSTRING_IDX!@ "11"
+MyProperty-Substring.Skl 29> END_IF
+MyProperty-Substring.Skl 30> END_IF
+MyProperty-Substring.Skl 31> END_LOOP MyProperty-Substring.Skl 32> DEF_SET @!G_MYPROPERTY_ITEM_NAME!@ "CONTROLLO"
+MyProperty-Substring.Skl 33> DEF_SET @!G_MYPROPERTY_ITEM_VALUE!@ ""
+DARWIN-my-property-ID.skl 7> DEF_CASE "CONTROLLO"
+DARWIN-my-property-ID.skl 8> CASE ""
+DARWIN-my-property-ID.skl 10> CASE "CONTROLLO"
+DARWIN-my-property-ID.skl 11> -------------- "CONTROLLO-WHEN" --------------
+DARWIN-my-property-ID.skl 12> DEF_IF "78-ID-Screen1-DaEf-1"
+DARWIN-my-property-ID.skl 18> END_IF
+DARWIN-my-property-ID.skl 20> DEF_SET @!G_GENERA_ELENCO_ID!@ "YES"
+DARWIN-my-property-ID.skl 21> DEF_SET @!G_GENERA_PERFORM_CONTROLLO!@ "YES"
+DARWIN-my-property-ID.skl 37> END_CASE
+DARWIN-my-property-ID.skl 38> DEF_SET @!G_DARWIN_VALUE!@ ""
+DARWIN-my-property-ID.skl 6> Link To MyProperty-Substring.Skl
+MyProperty-Substring.Skl 5> DEF_SET @!L_OFFSET!@ "11"
+MyProperty-Substring.Skl 6> DEF_SET @!L_INPUT!@ "CONTROLLO="
+MyProperty-Substring.Skl 7> DEF_SET @!L_APPEND_ITEM!@ "YES"
+MyProperty-Substring.Skl 8> DEF_SET @!L_ITEM_NAME!@ ""
+MyProperty-Substring.Skl 9> DEF_SET @!L_ITEM_VALUE!@ ""
+MyProperty-Substring.Skl 10> DEF_LOOP 100
+MyProperty-Substring.Skl 11> GET_INDEXCHAR @!L_VALUE!@ "CONTROLLO=" "11" "1"
+MyProperty-Substring.Skl 12> DEF_ADD @!L_OFFSET!@ "1"
+MyProperty-Substring.Skl 13> DEF_IF "YES"
+MyProperty-Substring.Skl 14> DEF_CASE ""
+MyProperty-Substring.Skl 15> CASE ""
+MyProperty-Substring.Skl 21> END_CASE
+MyProperty-Substring.Skl 30> END_IF
+MyProperty-Substring.Skl 31> END_LOOP MyProperty-Substring.Skl 32> DEF_SET @!G_MYPROPERTY_ITEM_NAME!@ ""
+MyProperty-Substring.Skl 33> DEF_SET @!G_MYPROPERTY_ITEM_VALUE!@ ""
+DARWIN-my-property-ID.skl 7> DEF_CASE ""
+DARWIN-my-property-ID.skl 8> CASE ""
+DARWIN-my-property-ID.skl 37> END_CASE
+DARWIN-my-property-ID.skl 39> END_LOOP DB_Entry_Field.Skl 363> -------------- "BEFOREPROCEDURE" --------------
+DB_Entry_Field.Skl 364> DEF_IF "" OR "" 
+DB_Entry_Field.Skl 370> END_IF
+DB_Entry_Field.Skl 373> -------------- "AFTERPROCEDURE" --------------
+DB_Entry_Field.Skl 374> DEF_IF "" AND "" 
+DB_Entry_Field.Skl 376> ELSE_IF ""
+DB_Entry_Field.Skl 402> ELSE_IF "INTERACTIVEMODE" EQUAL "INTERACTIVEMODE" 
+DB_Entry_Field.Skl 404> END_IF
+DB_Entry_Field.Skl 409> -------------- "EVENT" --------------
+DB_Entry_Field.Skl 410> DEF_IF ""
+DB_Entry_Field.Skl 418> END_IF
+DB_Entry_Field.Skl 420> DEF_IF "" OR "" OR "" 
+DB_Entry_Field.Skl 487> END_IF
+DB_Entry_Field.Skl 489> DEF_IF "" OR "" 
+DB_Entry_Field.Skl 516> END_IF
+DB_Entry_Field.Skl 520> DEF_SETPARA 1 ""
+DB_Entry_Field.Skl 522> DEF_IF ( NOT "0" ) AND ( "" OR ( "INTERACTIVEMODE" EQUAL "INTERACTIVEMODE" ) ) 
+DB_Entry_Field.Skl 524> DEF_IF ""
+DB_Entry_Field.Skl 526> ELSE
+DB_Entry_Field.Skl 527> -------------- "EVENT" --------------
+DB_Entry_Field.Skl 529> END_IF
+DB_Entry_Field.Skl 530> DEF_SETPARA 1 ""
+DB_Entry_Field.Skl 531> DEF_IF "YES" EQUAL "YES" AND ( "INTERACTIVEMODE" EQUAL "INTERACTIVEMODE" ) 
+DB_Entry_Field.Skl 532> DEF_IF ""
+DB_Entry_Field.Skl 534> END_IF
+DB_Entry_Field.Skl 535> DEF_IF ""
+DB_Entry_Field.Skl 537> END_IF
+DB_Entry_Field.Skl 538> DEF_SETPARA 1 "TOTEM-OCC1"
+DB_Entry_Field.Skl 539> DEF_SETPARA 2 "TOTEM-OCC2"
+DB_Entry_Field.Skl 540> DEF_IF "0"
+DB_Entry_Field.Skl 542> ELSE
+DB_Entry_Field.Skl 544> END_IF
+DB_Entry_Field.Skl 549> DEF_IF ""
+DB_Entry_Field.Skl 552> END_IF
+DB_Entry_Field.Skl 554> DEF_IF ""
+DB_Entry_Field.Skl 556> END_IF
+DB_Entry_Field.Skl 557> DEF_IF ""
+DB_Entry_Field.Skl 559> END_IF
+DB_Entry_Field.Skl 560> END_IF
+DB_Entry_Field.Skl 561> DEF_IF NOT ( "" ) 
+DB_Entry_Field.Skl 564> END_IF
+DB_Entry_Field.Skl 565> END_IF
+DB_Entry_Field.Skl 570> DEF_IF "Small-Font" AND "" 
+DB_Entry_Field.Skl 573> END_IF
+DB_Entry_Field.Skl 577> DEF_IF ""
+DB_Entry_Field.Skl 612> END_IF
+DB_Entry_Field.Skl 617> -------------- "FDSL_BUFTOFLD" --------------
+DB_Entry_Field.Skl 619> DEF_IF ""
+DB_Entry_Field.Skl 621> END_IF
+DB_Entry_Field.Skl 622> DEF_IF ""
+DB_Entry_Field.Skl 624> END_IF
+DB_Entry_Field.Skl 625> DEF_SETPARA 1 "TOTEM-OCC1"
+DB_Entry_Field.Skl 626> DEF_SETPARA 2 "TOTEM-OCC2"
+DB_Entry_Field.Skl 627> DEF_IF ""
+DB_Entry_Field.Skl 629> ELSE_IF "0"
+DB_Entry_Field.Skl 635> ELSE
+DB_Entry_Field.Skl 637> END_IF
+DB_Entry_Field.Skl 638> DEF_IF ""
+DB_Entry_Field.Skl 640> END_IF
+DB_Entry_Field.Skl 641> DEF_IF ""
+DB_Entry_Field.Skl 643> END_IF
+DB_Entry_Field.Skl 647> -------------- "FDSL_FLDTOBUF" --------------
+DB_Entry_Field.Skl 649> _SET_OBJ_FIELDEXPRESSION
+DB_Entry_Field.Skl 650> DEF_IF "0"
+DB_Entry_Field.Skl 657> END_IF
+DB_Entry_Field.Skl 658> DEF_IF ""
+DB_Entry_Field.Skl 660> END_IF
+DB_Entry_Field.Skl 661> DEF_IF ""
+DB_Entry_Field.Skl 663> END_IF
+DB_Entry_Field.Skl 664> DEF_SETPARA 1 "TOTEM-OCC1"
+DB_Entry_Field.Skl 665> DEF_SETPARA 2 "TOTEM-OCC2"
+DB_Entry_Field.Skl 666> DEF_IF ""
+DB_Entry_Field.Skl 668> ELSE_IF "0"
+DB_Entry_Field.Skl 674> ELSE
+DB_Entry_Field.Skl 676> END_IF
+DB_Entry_Field.Skl 677> DEF_IF ""
+DB_Entry_Field.Skl 679> END_IF
+DB_Entry_Field.Skl 680> DEF_IF ""
+DB_Entry_Field.Skl 682> END_IF
+DB_Entry_Field.Skl 686> DEF_IF ""
+DB_Entry_Field.Skl 714> END_IF
+DB_Entry_Field.Skl 718> -------------- "FORM-VALIDATION-HEAD" --------------
+DB_Entry_Field.Skl 723> DEF_IF ""
+DB_Entry_Field.Skl 726> END_IF
+DB_Entry_Field.Skl 734> -------------- "FORM-VALIDATION" --------------
+DB_Entry_Field.Skl 737> GET_ENTRYPOINT "FORM" "Data.Entry-Field" "BeforeValidation"
+DB_Entry_Field.Skl 743> GET_ENTRYPOINT "FORM" "Data.Entry-Field" "AfterValidation"
+DB_Entry_Field.Skl 748> DEF_SET @!G_EXTRANAME!@ ""
+DB_Entry_Field.Skl 749> DEF_SET @!G_VALIDFIELD!@ "a"
+DB_Entry_Field.Skl 750> DEF_SET @!G_VALIDPICTURE!@ "X(30)"
+DB_Entry_Field.Skl 751> _SET_OBJ_VALIDATE
+DB_Entry_Field.Skl 752> Link To Validation.Skl
+Validation.Skl 17> DEF_SET @!G_VALIDX!@ "0"
+Validation.Skl 19> DEF_IF ( NOT "" ) AND "0" 
+Validation.Skl 28> END_IF
+Validation.Skl 30> DEF_LOOP 0
+Validation.Skl 110> END_LOOP Validation.Skl 113> -------------- "FORM-VALIDATION" --------------
+Validation.Skl 117> GET_MEM "VALIDATION-LOOP-CHECK"
+Validation.Skl 118> CLEAR_MEM "VALIDATION-LOOP-CHECK"
+Validation.Skl 123> DEF_IF "0"
+Validation.Skl 126> END_IF
+DB_Entry_Field.Skl 755> DEF_IF ""
+DB_Entry_Field.Skl 777> END_IF
+DB_Entry_Field.Skl 780> DEF_IF ""
+DB_Entry_Field.Skl 783> ELSE_IF ""
+DB_Entry_Field.Skl 786> END_IF
+DispatchCtrl.Skl 84> DEF_ADD @!G_SYSID!@ "1"
+DispatchCtrl.Skl 140> END_CASE
+main.Skl 160> END_LOOP main.Skl 161> _SET_CURRENTOBJ_SCREEN
+main.Skl 162> Link To Form.Skl
+Form.Skl 22> DEF_SET @!G_NEEDEVMSGCLOSE!@ ""
+Form.Skl 29> DEF_SET @!G_GENERA_PERFORM_CONTROLLO!@ ""
+Form.Skl 35> -------------- "WORKING" --------------
+Form.Skl 38> DEF_IF "YES"
+Form.Skl 42> GET_MEM "DB_WORKING_BUFBODY"
+Form.Skl 43> CLEAR_MEM "DB_WORKING_BUFBODY"
+Form.Skl 47> END_IF
+Form.Skl 51> DEF_SET @!L_ENABLECONDITION!@ ""
+Form.Skl 52> DEF_SET @!L_DOIT!@ ""
+Form.Skl 53> DEF_SETMEM @!L_DOIT!@ "VERIFY-ENABLECONDITION"
+Form.Skl 54> DEF_SET @!L_DOIT1!@ ""
+Form.Skl 55> DEF_SETMEM @!L_DOIT1!@ "VERIFY-ENABLECONDITION_FRAME"
+Form.Skl 56> DEF_IF "" OR "" 
+Form.Skl 58> END_IF
+Form.Skl 59> DEF_SETMEM @!L_DOAFTER!@ "AFTERPROCEDURE"
+Form.Skl 61> -------------- "FORMSCREEN" --------------
+Form.Skl 65> DEF_IF ""
+Form.Skl 71> END_IF
+Form.Skl 72> DEF_IF ""
+Form.Skl 74> ELSE_IF "0"
+Form.Skl 76> END_IF
+Form.Skl 77> DEF_IF NOT "YES" 
+Form.Skl 90> END_IF
+Form.Skl 91> DEF_IF "YES"
+Form.Skl 92> DEF_IF "" AND "" 
+Form.Skl 94> ELSE_IF ""
+Form.Skl 96> ELSE_IF "           When 2 
+                perform CONTROLLO
+                PERFORM Screen1-DaCm-1-AfterProcedure
+           When 5001 PERFORM Screen1-DaEf-1-AFTER
+" OR "" 
+Form.Skl 98> END_IF
+Form.Skl 105> END_IF
+Form.Skl 106> DEF_IF "YES"
+Form.Skl 107> DEF_SETMEM @!L_DOIT!@ "HINT"
+Form.Skl 108> DEF_IF "" AND "" 
+Form.Skl 110> ELSE_IF ""
+Form.Skl 112> ELSE_IF ""
+Form.Skl 114> END_IF
+Form.Skl 121> END_IF
+Form.Skl 122> DEF_IF "" AND "" 
+Form.Skl 124> ELSE_IF ""
+Form.Skl 126> ELSE
+Form.Skl 127> DEF_IF ""
+Form.Skl 129> END_IF
+Form.Skl 130> END_IF
+Form.Skl 131> DEF_IF NOT "YES" 
+Form.Skl 137> END_IF
+Form.Skl 140> GET_MEM "SCREEN"
+Form.Skl 141> CLEAR_MEM "SCREEN"
+Form.Skl 142> GET_MEM "TOOLBARSCREEN"
+Form.Skl 143> CLEAR_MEM "TOOLBARSCREEN"
+Form.Skl 146> DEF_IF "" EQUAL "Screen1" 
+Form.Skl 158> END_IF
+Form.Skl 162> DEF_IF ""
+Form.Skl 181> END_IF
+Form.Skl 185> DEF_IF "" EQUAL "-T" 
+Form.Skl 187> END_IF
+Form.Skl 189> DEF_IF NOT "0" 
+Form.Skl 190> DEF_SET @!G_EXITUSERSCREEN!@ "YES"
+Form.Skl 191> END_IF
+Form.Skl 192> -------------- "PROCEDURE" --------------
+Form.Skl 193> DEF_IF "YES"
+Form.Skl 195> DEF_IF ""
+Form.Skl 197> END_IF
+Form.Skl 200> DEF_IF ""
+Form.Skl 202> END_IF
+Form.Skl 210> GET_MEM "TAB-SET-KEYSTROK"
+Form.Skl 211> CLEAR_MEM "TAB-SET-KEYSTROK"
+Form.Skl 213> GET_MEM "DISPLAY_TOOLBAR"
+Form.Skl 214> CLEAR_MEM "DISPLAY_TOOLBAR"
+Form.Skl 225> DEF_IF ( "Screen1" EQUAL "Screen1" ) AND ( ( "Standard" EQUAL "INITIAL" ) OR ( "Standard" EQUAL "STANDARD" ) ) 
+Form.Skl 228> DEF_SET @!G_NEEDEVMSGCLOSE!@ "YES"
+Form.Skl 229> END_IF
+Form.Skl 232> DEF_IF ""
+Form.Skl 234> END_IF
+Form.Skl 238> _SET_OBJ_DESCRIPTIONLINE
+Form.Skl 239> DEF_LOOP 0
+Form.Skl 242> END_LOOP Form.Skl 244> DEF_IF "0"
+Form.Skl 246> ELSE
+Form.Skl 248> END_IF
+Form.Skl 249> Link To FormDisplayWin.Skl
+FormDisplayWin.Skl 1> DEF_IF "" OR "0" OR "" OR "0" 
+FormDisplayWin.Skl 13> END_IF
+FormDisplayWin.Skl 14> DEF_IF ""
+FormDisplayWin.Skl 16> ELSE
+FormDisplayWin.Skl 18> END_IF
+FormDisplayWin.Skl 19> DEF_IF ""
+FormDisplayWin.Skl 21> ELSE
+FormDisplayWin.Skl 23> END_IF
+FormDisplayWin.Skl 24> DEF_IF "0"
+FormDisplayWin.Skl 27> END_IF
+FormDisplayWin.Skl 28> DEF_IF "1"
+FormDisplayWin.Skl 30> END_IF
+FormDisplayWin.Skl 31> DEF_IF "1"
+FormDisplayWin.Skl 33> END_IF
+FormDisplayWin.Skl 34> DEF_IF ""
+FormDisplayWin.Skl 36> END_IF
+FormDisplayWin.Skl 37> DEF_IF "0"
+FormDisplayWin.Skl 39> END_IF
+FormDisplayWin.Skl 40> DEF_IF "0"
+FormDisplayWin.Skl 42> END_IF
+FormDisplayWin.Skl 43> DEF_IF ""
+FormDisplayWin.Skl 45> ELSE_IF "65793"
+FormDisplayWin.Skl 47> END_IF
+FormDisplayWin.Skl 48> DEF_IF ""
+FormDisplayWin.Skl 50> END_IF
+FormDisplayWin.Skl 51> DEF_IF ""
+FormDisplayWin.Skl 53> END_IF
+FormDisplayWin.Skl 54> DEF_IF ""
+FormDisplayWin.Skl 56> END_IF
+FormDisplayWin.Skl 57> DEF_IF "0"
+FormDisplayWin.Skl 59> END_IF
+FormDisplayWin.Skl 60> DEF_IF ""
+FormDisplayWin.Skl 62> END_IF
+FormDisplayWin.Skl 63> DEF_IF "0"
+FormDisplayWin.Skl 65> END_IF
+FormDisplayWin.Skl 66> DEF_IF NOT ( "20" EQUAL "20" ) 
+FormDisplayWin.Skl 68> END_IF
+FormDisplayWin.Skl 69> DEF_IF "1"
+FormDisplayWin.Skl 71> END_IF
+FormDisplayWin.Skl 72> DEF_IF ""
+FormDisplayWin.Skl 74> END_IF
+FormDisplayWin.Skl 75> DEF_IF ""
+FormDisplayWin.Skl 77> END_IF
+FormDisplayWin.Skl 78> DEF_IF ""
+FormDisplayWin.Skl 80> END_IF
+FormDisplayWin.Skl 81> DEF_IF ""
+FormDisplayWin.Skl 83> END_IF
+FormDisplayWin.Skl 84> DEF_IF "1"
+FormDisplayWin.Skl 86> END_IF
+FormDisplayWin.Skl 87> DEF_IF "0"
+FormDisplayWin.Skl 89> END_IF
+FormDisplayWin.Skl 90> DEF_IF ""
+FormDisplayWin.Skl 92> END_IF
+FormDisplayWin.Skl 93> DEF_IF "0"
+FormDisplayWin.Skl 94> ELSE
+FormDisplayWin.Skl 96> END_IF
+FormDisplayWin.Skl 97> DEF_IF "1"
+FormDisplayWin.Skl 99> DEF_IF ""
+FormDisplayWin.Skl 101> ELSE_IF NOT ( ""Screen"" EQUAL """" ) 
+FormDisplayWin.Skl 103> END_IF
+FormDisplayWin.Skl 104> DEF_IF "1"
+FormDisplayWin.Skl 106> END_IF
+FormDisplayWin.Skl 107> DEF_IF "0"
+FormDisplayWin.Skl 109> END_IF
+FormDisplayWin.Skl 110> DEF_IF "1"
+FormDisplayWin.Skl 112> END_IF
+FormDisplayWin.Skl 113> END_IF
+FormDisplayWin.Skl 114> DEF_IF "0"
+FormDisplayWin.Skl 116> END_IF
+FormDisplayWin.Skl 117> DEF_IF ""
+FormDisplayWin.Skl 119> ELSE
+FormDisplayWin.Skl 120> DEF_IF "0" EQUAL "1" 
+FormDisplayWin.Skl 122> ELSE_IF "0" EQUAL "2" 
+FormDisplayWin.Skl 124> END_IF
+FormDisplayWin.Skl 125> END_IF
+FormDisplayWin.Skl 126> DEF_IF "0"
+FormDisplayWin.Skl 128> END_IF
+FormDisplayWin.Skl 129> DEF_IF "0"
+FormDisplayWin.Skl 130> ELSE
+FormDisplayWin.Skl 132> END_IF
+FormDisplayWin.Skl 133> DEF_IF ""
+FormDisplayWin.Skl 139> END_IF
+FormDisplayWin.Skl 140> DEF_IF "Screen1-Event-Proc" AND "" 
+FormDisplayWin.Skl 142> ELSE_IF "Screen1-Event-Proc" 
+FormDisplayWin.Skl 148> END_IF
+Form.Skl 253> DEF_IF ""
+Form.Skl 264> END_IF
+Form.Skl 267> GET_MEM "SET_AND_DISPLAY_TOOLBAR"
+Form.Skl 268> CLEAR_MEM "SET_AND_DISPLAY_TOOLBAR"
+Form.Skl 271> GET_MEM "SET_AND_DISPLAY_STATUSBAR"
+Form.Skl 272> CLEAR_MEM "SET_AND_DISPLAY_STATUSBAR"
+Form.Skl 275> GET_MEM "DISPLAY_COLUMNS_INIT_VALUE"
+Form.Skl 276> CLEAR_MEM "DISPLAY_COLUMNS_INIT_VALUE"
+Form.Skl 277> DEF_SETMEM @!L_EXISTDATETIME!@ "CREATE-DATETIME-THREAD"
+Form.Skl 278> DEF_IF ""
+Form.Skl 281> END_IF
+Form.Skl 283> DEF_IF ""
+Form.Skl 285> END_IF
+Form.Skl 289> DEF_SETMEM @!L_DOTERMIN!@ "CONTROL-TERMINATION"
+Form.Skl 293> GET_ENTRYPOINT "FORM" "FORM" "BeforeAccept"
+Form.Skl 296> DEF_IF "YES"
+Form.Skl 300> END_IF
+Form.Skl 301> DEF_IF NOT ( "" EQUAL "" ) 
+Form.Skl 303> END_IF
+Form.Skl 304> DEF_IF ""
+Form.Skl 306> END_IF
+Form.Skl 311> DEF_IF ""
+Form.Skl 317> END_IF
+Form.Skl 319> GET_ENTRYPOINT "FORM" "FORM" "AfterEndAccept"
+Form.Skl 323> GET_ENTRYPOINT "FORM" "FORM" "BeforeDestroyWindow"
+Form.Skl 325> GET_MEM "TERMIATE-DATETIME-THREAD"
+Form.Skl 326> CLEAR_MEM "TERMIATE-DATETIME-THREAD"
+Form.Skl 333> GET_ENTRYPOINT "FORM" "FORM" "AfterAccept"
+Form.Skl 338> GET_MEM "TAB-EVALUATE"
+Form.Skl 339> CLEAR_MEM "TAB-EVALUATE"
+Form.Skl 347> GET_MEM "TAB-CMDCHANGE"
+Form.Skl 348> CLEAR_MEM "TAB-CMDCHANGE"
+Form.Skl 352> GET_MEM "CONTROL-EVALUATE"
+Form.Skl 353> CLEAR_MEM "CONTROL-EVALUATE"
+Form.Skl 357> GET_MEM "MENU-EVALUATE"
+Form.Skl 358> CLEAR_MEM "MENU-EVALUATE"
+Form.Skl 362> GET_MEM "NAVIGATOR-EVALUATE"
+Form.Skl 363> CLEAR_MEM "NAVIGATOR-EVALUATE"
+Form.Skl 366> DEF_IF ""
+Form.Skl 369> END_IF
+Form.Skl 376> GET_MEM "FORM-CLEAR"
+Form.Skl 377> CLEAR_MEM "FORM-CLEAR"
+Form.Skl 383> GET_ENTRYPOINT "FORM" "FORM" "BeforeDisplay"
+Form.Skl 385> GET_MEM "FORM-DISPLAY-BEFORE"
+Form.Skl 386> CLEAR_MEM "FORM-DISPLAY-BEFORE"
+Form.Skl 389> GET_ENTRYPOINT "FORM" "FORM" "AfterDisplay"
+Form.Skl 402> GET_ENTRYPOINT "FORM" "FORM" "BeforeExit"
+Form.Skl 404> DEF_IF "0"
+Form.Skl 422> ELSE
+Form.Skl 427> END_IF
+Form.Skl 431> DEF_IF ""
+Form.Skl 433> END_IF
+Form.Skl 436> GET_MEM "BEFORE_INIT_DATA"
+Form.Skl 437> CLEAR_MEM "BEFORE_INIT_DATA"
+Form.Skl 438> GET_MEM "PRE_INIT_DATA"
+Form.Skl 439> CLEAR_MEM "PRE_INIT_DATA"
+Form.Skl 440> GET_MEM "INIT_DATA"
+Form.Skl 441> CLEAR_MEM "INIT_DATA"
+Form.Skl 442> GET_MEM "INIT_DATA_FRAME"
+Form.Skl 443> CLEAR_MEM "INIT_DATA_FRAME"
+Form.Skl 452> DEF_IF ""
+Form.Skl 454> END_IF
+Form.Skl 462> DEF_IF ""
+Form.Skl 464> END_IF
+Form.Skl 469> DEF_IF "Screen1" EQUAL "Screen1" 
+Form.Skl 470> DEF_IF ""
+Form.Skl 472> ELSE_IF NOT ( ""Screen"" EQUAL """" ) 
+Form.Skl 474> END_IF
+Form.Skl 475> END_IF
+Form.Skl 476> DEF_IF "YES"
+Form.Skl 478> END_IF
+Form.Skl 479> DEF_IF ""
+Form.Skl 486> END_IF
+Form.Skl 487> GET_MEM "FRM_INI_RECORD"
+Form.Skl 488> CLEAR_MEM "FRM_INI_RECORD"
+Form.Skl 489> GET_MEM "INIT_VALUE"
+Form.Skl 490> CLEAR_MEM "INIT_VALUE"
+Form.Skl 492> GET_ENTRYPOINT "FORM" "FORM" "SetDefault"
+Form.Skl 495> DEF_IF NOT "0" 
+Form.Skl 497> END_IF
+Form.Skl 500> DEF_IF ""
+Form.Skl 508> END_IF
+Form.Skl 509> DEF_IF "0"
+Form.Skl 512> END_IF
+Form.Skl 518> -------------- "FRAME-NAVIGATOR-FOR-MASTERGRID" --------------
+Form.Skl 520> GET_MEM "FORM-ALL-NAVI-CHANGE"
+Form.Skl 521> CLEAR_MEM "FORM-ALL-NAVI-CHANGE"
+Form.Skl 524> CLEAR_MEM "FORM-ALL-NAVI-CHANGE"
+Form.Skl 525> CLEAR_MEM "FRAME-NAVIGATOR-FOR-MASTERGRID"
+Form.Skl 526> -------------- "PROCEDURE" --------------
+Form.Skl 527> GET_MEM "FORM-IUD"
+Form.Skl 528> CLEAR_MEM "FORM-IUD"
+Form.Skl 529> GET_MEM "FORM-DUMY"
+Form.Skl 530> CLEAR_MEM "FORM-DUMY"
+Form.Skl 533> END_IF
+Form.Skl 534> DEF_IF NOT "0" 
+Form.Skl 536> GET_MEM "FORM_RESET_ALLGRID"
+Form.Skl 537> CLEAR_MEM "FORM_RESET_ALLGRID"
+Form.Skl 546> GET_MEM "FORM-VALIDATION-HEAD"
+Form.Skl 547> CLEAR_MEM "FORM-VALIDATION-HEAD"
+Form.Skl 550> GET_MEM "FORM-VALIDATION"
+Form.Skl 551> CLEAR_MEM "FORM-VALIDATION"
+Form.Skl 560> GET_ENTRYPOINT "FORM" "FORM" "BeforeBufToFld"
+Form.Skl 562> GET_MEM "FDSL_BUFTOFLD_FRAME"
+Form.Skl 563> CLEAR_MEM "FDSL_BUFTOFLD_FRAME"
+Form.Skl 564> GET_MEM "FDSL_BUFTOFLD"
+Form.Skl 565> CLEAR_MEM "FDSL_BUFTOFLD"
+Form.Skl 566> GET_MEM "FDSL_BUFTOFLD_MGRID"
+Form.Skl 567> CLEAR_MEM "FDSL_BUFTOFLD_MGRID"
+Form.Skl 569> GET_ENTRYPOINT "FORM" "FORM" "AfterBufToFld"
+Form.Skl 575> GET_ENTRYPOINT "FORM" "FORM" "BeforeFldToBuf"
+Form.Skl 577> GET_MEM "FDSL_FLDTOBUF_FRAME"
+Form.Skl 578> CLEAR_MEM "FDSL_FLDTOBUF_FRAME"
+Form.Skl 579> GET_MEM "FDSL_FLDTOBUF"
+Form.Skl 580> CLEAR_MEM "FDSL_FLDTOBUF"
+Form.Skl 582> GET_ENTRYPOINT "FORM" "FORM" "AfterFldToBuf"
+Form.Skl 596> GET_MEM "CONTROLLO-OLD-VARS"
+Form.Skl 597> CLEAR_MEM "CONTROLLO-OLD-VARS"
+Form.Skl 601> DEF_IF "YES"
+Form.Skl 602> -------------- "CONTROLLO-SCREEN" --------------
+Form.Skl 605> GET_MEM "CONTROLLO-WHEN"
+Form.Skl 606> CLEAR_MEM "CONTROLLO-WHEN"
+Form.Skl 609> -------------- "PROCEDURE" --------------
+Form.Skl 610> END_IF
+Form.Skl 617> DEF_IF ""
+Form.Skl 623> END_IF
+Form.Skl 642> DEF_IF ""
+Form.Skl 644> ELSE
+Form.Skl 650> END_IF
+Form.Skl 654> GET_MEM "BACKUP-KEY"
+Form.Skl 655> CLEAR_MEM "BACKUP-KEY"
+Form.Skl 659> GET_MEM "RESTORE-KEY"
+Form.Skl 660> CLEAR_MEM "RESTORE-KEY"
+Form.Skl 663> END_IF
+Form.Skl 668> DEF_IF "YES"
+Form.Skl 669> DEF_SETMEM @!L_DOIT!@ "HINT"
+Form.Skl 670> DEF_SETPARA 1 ""
+Form.Skl 671> DEF_IF ( NOT "0" ) AND ( "" OR "" ) 
+Form.Skl 704> END_IF
+Form.Skl 705> DEF_SETPARA 1 ""
+Form.Skl 706> DEF_IF ( NOT "0" ) AND ( "           When 2 
+                perform CONTROLLO
+                PERFORM Screen1-DaCm-1-AfterProcedure
+           When 5001 PERFORM Screen1-DaEf-1-AFTER
+" OR "" OR "" ) 
+Form.Skl 708> DEF_IF ""
+Form.Skl 710> ELSE
+Form.Skl 711> -------------- "EVENT" --------------
+Form.Skl 713> END_IF
+Form.Skl 716> DEF_IF "           When 2 
+                perform CONTROLLO
+                PERFORM Screen1-DaCm-1-AfterProcedure
+           When 5001 PERFORM Screen1-DaEf-1-AFTER
+"
+Form.Skl 718> GET_MEM "AFTERPROCEDURE"
+Form.Skl 719> CLEAR_MEM "AFTERPROCEDURE"
+Form.Skl 721> END_IF
+Form.Skl 722> DEF_IF ""
+Form.Skl 724> END_IF
+Form.Skl 726> DEF_IF NOT ( "" ) 
+Form.Skl 729> END_IF
+Form.Skl 730> END_IF
+Form.Skl 731> -------------- "EVENT" --------------
+Form.Skl 732> DEF_IF "YES"
+Form.Skl 751> END_IF
+Form.Skl 753> DEF_IF "" OR "Screen1-Event-Proc" OR "YES" 
+Form.Skl 754> DEF_IF "Screen1-Event-Proc"
+Form.Skl 755> DEF_SET @!L_EVENT!@ "Screen1-Event-Proc"
+Form.Skl 758> END_IF
+Form.Skl 762> DEF_IF "YES"
+Form.Skl 763> -------------- "EVENT-PRO-HEAD-Screen1-Event-Proc" --------------
+Form.Skl 768> END_IF
+Form.Skl 772> DEF_IF ""
+Form.Skl 815> END_IF
+Form.Skl 816> END_IF
+Form.Skl 818> DEF_IF "" OR "" 
+Form.Skl 845> END_IF
+Form.Skl 847> END_IF
+Form.Skl 853> -------------- "FONT_PROCESS" --------------
+Form.Skl 854> DEF_IF "" AND "" 
+Form.Skl 857> END_IF
+main.Skl 163> END_LOOP main.Skl 167> Link To Rpt_MainPrg.Skl
+Rpt_MainPrg.Skl 15> _SET_OBJ_REPORT
+Rpt_MainPrg.Skl 16> DEF_IF "0"
+Rpt_MainPrg.Skl 94> END_IF
+Rpt_MainPrg.Skl 99> DEF_SET @!G_EXISTTEXTRPT!@ ""
+Rpt_MainPrg.Skl 100> DEF_SET @!G_EXISTTXTNTOP!@ ""
+Rpt_MainPrg.Skl 101> DEF_SET @!G_EXISTCOLVAR!@ ""
+Rpt_MainPrg.Skl 103> DEF_LOOP 0
+Rpt_MainPrg.Skl 192> END_LOOP Rpt_MainPrg.Skl 195> DEF_IF "0"
+Rpt_MainPrg.Skl 323> END_IF
+main.Skl 171> Link To Event.Skl
+Event.Skl 36> -------------- "EVENT" --------------
+Event.Skl 38> _SET_OBJ_SCREEN
+Event.Skl 39> DEF_LOOP 1
+Event.Skl 40> _FETCH_NEXT_OBJ_SCREEN
+Event.Skl 41> DEF_SET @!G_MODE!@ ""
+Event.Skl 42> DEF_IF ""
+Event.Skl 44> END_IF
+Event.Skl 45> DEF_IF ( NOT "0" ) OR ( NOT "0" ) 
+Event.Skl 46> DEF_SET @!G_USERSCREEN!@ "YES"
+Event.Skl 49> END_IF
+Event.Skl 50> Link To Event_Para.Skl
+Event_Para.Skl 15> DEF_SET @!L_PREDOIT!@ ""
+Event_Para.Skl 16> DEF_SET @!L_DOIT!@ ""
+Event_Para.Skl 17> DEF_SET @!L_OTHER!@ ""
+Event_Para.Skl 18> DEF_IF "Screen1-Event-Proc"
+Event_Para.Skl 19> DEF_SET @!L_EVENT!@ "Screen1-Event-Proc"
+Event_Para.Skl 22> END_IF
+Event_Para.Skl 24> DEF_IF "Screen1-Event-Proc"
+Event_Para.Skl 25> DEF_FIND @!L_FIND!@ "" "Screen1-Event-Proc."
+Event_Para.Skl 28> END_IF
+Event_Para.Skl 29> DEF_IF NOT "" 
+Event_Para.Skl 30> DEF_SETPARA 1 "Screen1-Event-Proc"
+Event_Para.Skl 31> DEF_IF ( NOT "" ) AND ( NOT "" ) 
+Event_Para.Skl 32> DEF_SETMEM @!L_PREDOIT!@ "EVENT-PRO-HEAD-Screen1-Event-Proc"
+Event_Para.Skl 33> DEF_SETMEM @!L_DOIT!@ "EVENT-PRO-Screen1-Event-Proc"
+Event_Para.Skl 34> DEF_SETMEM @!L_OTHER!@ "EVENT-OTHER-Screen1-Event-Proc"
+Event_Para.Skl 37> END_IF
+Event_Para.Skl 38> END_IF
+Event_Para.Skl 40> DEF_IF ( NOT "" ) AND ( "" OR "           IF Event-Control-Id = 0 AND
+                 Event-Window-Handle = Screen1-Handle
+              PERFORM Screen1-Event-Extra
+           END-IF
+" OR "" OR "Screen1-Event-Proc" ) 
+Event_Para.Skl 41> DEF_IF "Screen1-Event-Proc"
+Event_Para.Skl 42> DEF_APPEND @!G_ALREADYDEFCODE!@ "Screen1-Event-Proc."
+Event_Para.Skl 43> END_IF
+Event_Para.Skl 44> -------------- "EVENT" --------------
+Event_Para.Skl 46> GET_MEM "EVENT-PRO-HEAD-Screen1-Event-Proc"
+Event_Para.Skl 47> CLEAR_MEM "EVENT-PRO-HEAD-Screen1-Event-Proc"
+Event_Para.Skl 48> DEF_IF ""
+Event_Para.Skl 64> ELSE_IF ""
+Event_Para.Skl 72> END_IF
+Event_Para.Skl 75> END_IF
+Event_Para.Skl 81> DEF_SET @!L_DOIT!@ ""
+Event_Para.Skl 82> DEF_SET @!L_OTHER!@ ""
+Event_Para.Skl 83> DEF_IF ""
+Event_Para.Skl 85> ELSE
+Event_Para.Skl 86> DEF_SET @!L_EXPEVENT!@ "Screen1-Exception"
+Event_Para.Skl 87> END_IF
+Event_Para.Skl 89> DEF_IF ""
+Event_Para.Skl 91> ELSE
+Event_Para.Skl 92> DEF_SET @!L_FIND!@ ""
+Event_Para.Skl 93> END_IF
+Event_Para.Skl 94> DEF_IF NOT "" 
+Event_Para.Skl 95> DEF_SETPARA 1 "Screen1-Exception"
+Event_Para.Skl 96> DEF_IF ( NOT "" ) AND ( NOT "" ) 
+Event_Para.Skl 97> DEF_SETMEM @!L_DOIT!@ "EXPEVENT-PRO-Screen1-Exception"
+Event_Para.Skl 98> DEF_SETMEM @!L_OTHER!@ "EXPEVENT-OTHER-Screen1-Exception"
+Event_Para.Skl 101> END_IF
+Event_Para.Skl 102> END_IF
+Event_Para.Skl 103> DEF_IF ( NOT "" ) AND ( "" OR "" OR "" ) 
+Event_Para.Skl 138> END_IF
+Event.Skl 51> _SET_OBJ_CTRLCHILD
+Event.Skl 52> DEF_LOOP 2
+Event.Skl 53> _FETCH_NEXT_OBJ_CTRL
+Event.Skl 54> Link To Event_Dispatch.Skl
+Event_Dispatch.Skl 12> DEF_IF ( "Data.Combo-Box" EQUAL "Data.Navigator" ) OR ( "Data.Combo-Box" EQUAL "Label" ) OR ( "Data.Combo-Box" EQUAL "Data.Label" ) OR ( "Data.Combo-Box" EQUAL "Data.Date-Time" ) OR ( "Data.Combo-Box" EQUAL "Data.Summary" ) OR ( "Data.Combo-Box" EQUAL "Status-Bar" ) OR ( "Data.Combo-Box" EQUAL "Menu" ) OR ( "Data.Combo-Box" EQUAL "Bar" ) OR ( "Data.Combo-Box" EQUAL "Data.ZoomProgram" ) 
+Event_Dispatch.Skl 21> ELSE_IF ( "Data.Combo-Box" EQUAL "Frame" ) OR ( "Data.Combo-Box" EQUAL "Data.Frame" ) OR ( "Data.Combo-Box" EQUAL "Page" ) OR ( "Data.Combo-Box" EQUAL "ToolBar" ) 
+Event_Dispatch.Skl 32> ELSE_IF ( "Data.Combo-Box" EQUAL "Tab-Control" ) 
+Event_Dispatch.Skl 41> ELSE
+Event_Dispatch.Skl 42> Link To Event_Para.Skl
+Event_Para.Skl 15> DEF_SET @!L_PREDOIT!@ ""
+Event_Para.Skl 16> DEF_SET @!L_DOIT!@ ""
+Event_Para.Skl 17> DEF_SET @!L_OTHER!@ ""
+Event_Para.Skl 18> DEF_IF ""
+Event_Para.Skl 20> ELSE
+Event_Para.Skl 21> DEF_SET @!L_EVENT!@ "Screen1-DaCm-1-Event"
+Event_Para.Skl 22> END_IF
+Event_Para.Skl 24> DEF_IF ""
+Event_Para.Skl 26> ELSE
+Event_Para.Skl 27> DEF_SET @!L_FIND!@ ""
+Event_Para.Skl 28> END_IF
+Event_Para.Skl 29> DEF_IF NOT "" 
+Event_Para.Skl 30> DEF_SETPARA 1 "Screen1-DaCm-1-Event"
+Event_Para.Skl 31> DEF_IF ( NOT "" ) AND ( NOT "" ) 
+Event_Para.Skl 32> DEF_SETMEM @!L_PREDOIT!@ "EVENT-PRO-HEAD-Screen1-DaCm-1-Event"
+Event_Para.Skl 33> DEF_SETMEM @!L_DOIT!@ "EVENT-PRO-Screen1-DaCm-1-Event"
+Event_Para.Skl 34> DEF_SETMEM @!L_OTHER!@ "EVENT-OTHER-Screen1-DaCm-1-Event"
+Event_Para.Skl 37> END_IF
+Event_Para.Skl 38> END_IF
+Event_Para.Skl 40> DEF_IF ( NOT "" ) AND ( "" OR "" OR "" OR "" ) 
+Event_Para.Skl 75> END_IF
+Event_Para.Skl 81> DEF_SET @!L_DOIT!@ ""
+Event_Para.Skl 82> DEF_SET @!L_OTHER!@ ""
+Event_Para.Skl 83> DEF_IF ""
+Event_Para.Skl 85> ELSE
+Event_Para.Skl 86> DEF_SET @!L_EXPEVENT!@ "Screen1-DaCm-1-Exception"
+Event_Para.Skl 87> END_IF
+Event_Para.Skl 89> DEF_IF ""
+Event_Para.Skl 91> ELSE
+Event_Para.Skl 92> DEF_SET @!L_FIND!@ ""
+Event_Para.Skl 93> END_IF
+Event_Para.Skl 94> DEF_IF NOT "" 
+Event_Para.Skl 95> DEF_SETPARA 1 "Screen1-DaCm-1-Exception"
+Event_Para.Skl 96> DEF_IF ( NOT "" ) AND ( NOT "" ) 
+Event_Para.Skl 97> DEF_SETMEM @!L_DOIT!@ "EXPEVENT-PRO-Screen1-DaCm-1-Exception"
+Event_Para.Skl 98> DEF_SETMEM @!L_OTHER!@ "EXPEVENT-OTHER-Screen1-DaCm-1-Exception"
+Event_Para.Skl 101> END_IF
+Event_Para.Skl 102> END_IF
+Event_Para.Skl 103> DEF_IF ( NOT "" ) AND ( "" OR "" OR "" ) 
+Event_Para.Skl 138> END_IF
+Event_Dispatch.Skl 43> END_IF
+Event.Skl 53> _FETCH_NEXT_OBJ_CTRL
+Event.Skl 54> Link To Event_Dispatch.Skl
+Event_Dispatch.Skl 12> DEF_IF ( "Data.Entry-Field" EQUAL "Data.Navigator" ) OR ( "Data.Entry-Field" EQUAL "Label" ) OR ( "Data.Entry-Field" EQUAL "Data.Label" ) OR ( "Data.Entry-Field" EQUAL "Data.Date-Time" ) OR ( "Data.Entry-Field" EQUAL "Data.Summary" ) OR ( "Data.Entry-Field" EQUAL "Status-Bar" ) OR ( "Data.Entry-Field" EQUAL "Menu" ) OR ( "Data.Entry-Field" EQUAL "Bar" ) OR ( "Data.Entry-Field" EQUAL "Data.ZoomProgram" ) 
+Event_Dispatch.Skl 21> ELSE_IF ( "Data.Entry-Field" EQUAL "Frame" ) OR ( "Data.Entry-Field" EQUAL "Data.Frame" ) OR ( "Data.Entry-Field" EQUAL "Page" ) OR ( "Data.Entry-Field" EQUAL "ToolBar" ) 
+Event_Dispatch.Skl 32> ELSE_IF ( "Data.Entry-Field" EQUAL "Tab-Control" ) 
+Event_Dispatch.Skl 41> ELSE
+Event_Dispatch.Skl 42> Link To Event_Para.Skl
+Event_Para.Skl 15> DEF_SET @!L_PREDOIT!@ ""
+Event_Para.Skl 16> DEF_SET @!L_DOIT!@ ""
+Event_Para.Skl 17> DEF_SET @!L_OTHER!@ ""
+Event_Para.Skl 18> DEF_IF ""
+Event_Para.Skl 20> ELSE
+Event_Para.Skl 21> DEF_SET @!L_EVENT!@ "Screen1-DaEf-1-Event"
+Event_Para.Skl 22> END_IF
+Event_Para.Skl 24> DEF_IF ""
+Event_Para.Skl 26> ELSE
+Event_Para.Skl 27> DEF_SET @!L_FIND!@ ""
+Event_Para.Skl 28> END_IF
+Event_Para.Skl 29> DEF_IF NOT "" 
+Event_Para.Skl 30> DEF_SETPARA 1 "Screen1-DaEf-1-Event"
+Event_Para.Skl 31> DEF_IF ( NOT "" ) AND ( NOT "" ) 
+Event_Para.Skl 32> DEF_SETMEM @!L_PREDOIT!@ "EVENT-PRO-HEAD-Screen1-DaEf-1-Event"
+Event_Para.Skl 33> DEF_SETMEM @!L_DOIT!@ "EVENT-PRO-Screen1-DaEf-1-Event"
+Event_Para.Skl 34> DEF_SETMEM @!L_OTHER!@ "EVENT-OTHER-Screen1-DaEf-1-Event"
+Event_Para.Skl 37> END_IF
+Event_Para.Skl 38> END_IF
+Event_Para.Skl 40> DEF_IF ( NOT "" ) AND ( "" OR "" OR "" OR "" ) 
+Event_Para.Skl 75> END_IF
+Event_Para.Skl 81> DEF_SET @!L_DOIT!@ ""
+Event_Para.Skl 82> DEF_SET @!L_OTHER!@ ""
+Event_Para.Skl 83> DEF_IF ""
+Event_Para.Skl 85> ELSE
+Event_Para.Skl 86> DEF_SET @!L_EXPEVENT!@ "Screen1-DaEf-1-Exception"
+Event_Para.Skl 87> END_IF
+Event_Para.Skl 89> DEF_IF ""
+Event_Para.Skl 91> ELSE
+Event_Para.Skl 92> DEF_SET @!L_FIND!@ ""
+Event_Para.Skl 93> END_IF
+Event_Para.Skl 94> DEF_IF NOT "" 
+Event_Para.Skl 95> DEF_SETPARA 1 "Screen1-DaEf-1-Exception"
+Event_Para.Skl 96> DEF_IF ( NOT "" ) AND ( NOT "" ) 
+Event_Para.Skl 97> DEF_SETMEM @!L_DOIT!@ "EXPEVENT-PRO-Screen1-DaEf-1-Exception"
+Event_Para.Skl 98> DEF_SETMEM @!L_OTHER!@ "EXPEVENT-OTHER-Screen1-DaEf-1-Exception"
+Event_Para.Skl 101> END_IF
+Event_Para.Skl 102> END_IF
+Event_Para.Skl 103> DEF_IF ( NOT "" ) AND ( "" OR "" OR "" ) 
+Event_Para.Skl 138> END_IF
+Event_Dispatch.Skl 43> END_IF
+Event.Skl 55> END_LOOP Event.Skl 56> _SET_CURRENTOBJ_SCREEN
+Event.Skl 57> END_LOOP Event.Skl 62> -------------- "PARAGRAPH_EVENT" --------------
+Event.Skl 64> -------------- "PARAGRAPH_USER" --------------
+Event.Skl 66> -------------- "PARAGRAPH_IMPORT" --------------
+Event.Skl 70> _SET_PRG_PARAGRAPH
+Event.Skl 71> DEF_LOOP 4
+Event.Skl 72> _FETCH_NEXT_PRG_PARAGRAPH
+Event.Skl 73> DEF_IF "RECYCLE_PARAGRAPH" EQUAL "EVENT_PARAGRAPH" 
+Event.Skl 97> ELSE_IF "RECYCLE_PARAGRAPH" EQUAL "USERDEFINED_PARAGRAPH" 
+Event.Skl 108> ELSE_IF "RECYCLE_PARAGRAPH" EQUAL "IMPORTED_PROCEDURE" 
+Event.Skl 114> ELSE_IF "RECYCLE_PARAGRAPH" EQUAL "PROCEDURE_PARAMETER" 
+Event.Skl 132> ELSE_IF "RECYCLE_PARAGRAPH" EQUAL "COPY_RESOURCE" 
+Event.Skl 135> ELSE_IF "RECYCLE_PARAGRAPH" EQUAL "OTHER_WORKING" 
+Event.Skl 138> ELSE_IF "RECYCLE_PARAGRAPH" EQUAL "OTHER_LINKAGE" 
+Event.Skl 141> END_IF
+Event.Skl 72> _FETCH_NEXT_PRG_PARAGRAPH
+Event.Skl 73> DEF_IF "USERDEFINED_PARAGRAPH" EQUAL "EVENT_PARAGRAPH" 
+Event.Skl 97> ELSE_IF "USERDEFINED_PARAGRAPH" EQUAL "USERDEFINED_PARAGRAPH" 
+Event.Skl 98> DEF_SETPARA 1 "da-e2"
+Event.Skl 99> DEF_IF ( NOT "" ) AND ( NOT ( "YES" EQUAL "IMPORT" ) ) 
+Event.Skl 100> -------------- "PARAGRAPH_USER" --------------
+Event.Skl 103> GET_EMBEDDEDCODE NOPERIOD
+Event.Skl 107> END_IF
+Event.Skl 141> END_IF
+Event.Skl 72> _FETCH_NEXT_PRG_PARAGRAPH
+Event.Skl 73> DEF_IF "USERDEFINED_PARAGRAPH" EQUAL "EVENT_PARAGRAPH" 
+Event.Skl 97> ELSE_IF "USERDEFINED_PARAGRAPH" EQUAL "USERDEFINED_PARAGRAPH" 
+Event.Skl 98> DEF_SETPARA 1 "ch1"
+Event.Skl 99> DEF_IF ( NOT "" ) AND ( NOT ( "YES" EQUAL "IMPORT" ) ) 
+Event.Skl 100> -------------- "PARAGRAPH_USER" --------------
+Event.Skl 103> GET_EMBEDDEDCODE NOPERIOD
+Event.Skl 107> END_IF
+Event.Skl 141> END_IF
+Event.Skl 72> _FETCH_NEXT_PRG_PARAGRAPH
+Event.Skl 73> DEF_IF "EVENT_PARAGRAPH" EQUAL "EVENT_PARAGRAPH" 
+Event.Skl 74> DEF_SETPARA 1 "Screen1-DaCm-1-AfterProcedure"
+Event.Skl 75> DEF_IF ( NOT "YES" ) AND ( NOT "" ) AND ( NOT ( "YES" EQUAL "IMPORT" ) ) 
+Event.Skl 83> ELSE
+Event.Skl 84> DEF_IF "YES"
+Event.Skl 85> -------------- "PARAGRAPH_EVENT" --------------
+Event.Skl 88> GET_DEFAULTEVENT_BEFORE "Screen1-DaCm-1-AfterProcedure"
+Event.Skl 89> GET_MEM "DEFAULTCODE_Screen1-DaCm-1-AfterProcedure"
+Event.Skl 90> CLEAR_MEM "DEFAULTCODE_Screen1-DaCm-1-AfterProcedure"
+Event.Skl 91> GET_DEFAULTEVENT_AFTER "Screen1-DaCm-1-AfterProcedure"
+Event.Skl 95> END_IF
+Event.Skl 96> END_IF
+Event.Skl 141> END_IF
+Event.Skl 142> END_LOOP Event.Skl 144> -------------- "EVENT" --------------
+Event.Skl 145> GET_MEM "PARAGRAPH_USER"
+Event.Skl 146> CLEAR_MEM "PARAGRAPH_USER"
+Event.Skl 147> GET_MEM "PARAGRAPH_EVENT"
+Event.Skl 148> CLEAR_MEM "PARAGRAPH_EVENT"
+main.Skl 175> Link To Relations.Skl
+Relations.Skl 30> _SET_PRG_DATASET
+Relations.Skl 31> DEF_IF "0"
+Relations.Skl 96> END_IF
+main.Skl 180> Link To FdSl.Skl
+FdSl.Skl 43> DEF_IF "1"
+FdSl.Skl 44> -------------- "TMP-MAIN-MODE" --------------
+FdSl.Skl 45> _PUSH_MEM
+FdSl.Skl 46> _SET_OBJ_MAINSCREEN
+FdSl.Skl 47> DEF_IF ""
+FdSl.Skl 53> ELSE
+FdSl.Skl 54> DEF_SET @!L_MODE!@ ""
+FdSl.Skl 55> DEF_IF ""
+FdSl.Skl 57> END_IF
+FdSl.Skl 59> END_IF
+FdSl.Skl 60> _POP_MEM
+FdSl.Skl 62> END_IF
+FdSl.Skl 68> _SET_PRG_DATASET
+FdSl.Skl 69> DEF_IF "0"
+FdSl.Skl 85> END_IF
+FdSl.Skl 86> DEF_LOOP 0
+FdSl.Skl 363> END_LOOP FdSl.Skl 364> CLEAR_MEM "TMP-MAIN-MODE"
+FdSl.Skl 369> DEF_IF "0"
+FdSl.Skl 376> END_IF
+main.Skl 184> Link To Procedure.Skl
+Procedure.Skl 8> DEF_IF ""
+Procedure.Skl 40> END_IF
+Procedure.Skl 41> -------------- "WORKING" --------------
+Procedure.Skl 42> DEF_IF ""
+Procedure.Skl 46> END_IF
+Procedure.Skl 48> -------------- "PROCEDURE-HEAD" --------------
+Procedure.Skl 49> DEF_IF "0"
+Procedure.Skl 84> ELSE
+Procedure.Skl 87> DEF_IF "0"
+Procedure.Skl 89> END_IF
+Procedure.Skl 90> DEF_IF ""
+Procedure.Skl 92> END_IF
+Procedure.Skl 94> GET_ENTRYPOINT "INIT" "INIT" "BeforeDestroyResource"
+Procedure.Skl 96> GET_MEM "DESTROY_FONT_PROCESS"
+Procedure.Skl 97> GET_MEM "DESTROY_BITMAP_PROCESS"
+Procedure.Skl 98> GET_MEM "DESTROY_POPUP_PROCESS"
+Procedure.Skl 99> DEF_IF ""
+Procedure.Skl 101> END_IF
+Procedure.Skl 103> DEF_IF ""
+Procedure.Skl 105> END_IF
+Procedure.Skl 106> GET_MEM "ALL-TERMIATE-DATETIME-THREAD"
+Procedure.Skl 107> CLEAR_MEM "ALL-TERMIATE-DATETIME-THREAD"
+Procedure.Skl 112> DEF_IF ""
+Procedure.Skl 114> ELSE
+Procedure.Skl 116> END_IF
+Procedure.Skl 123> DEF_IF ""
+Procedure.Skl 127> END_IF
+Procedure.Skl 128> DEF_IF ""
+Procedure.Skl 136> END_IF
+Procedure.Skl 145> DEF_IF ""
+Procedure.Skl 147> END_IF
+Procedure.Skl 148> DEF_IF "0"
+Procedure.Skl 151> END_IF
+Procedure.Skl 152> DEF_IF ""
+Procedure.Skl 155> END_IF
+Procedure.Skl 156> DEF_IF ""
+Procedure.Skl 158> ELSE
+Procedure.Skl 160> END_IF
+Procedure.Skl 164> GET_MEM "FONT_PROCESS"
+Procedure.Skl 168> GET_MEM "BITMAP_PROCESS"
+Procedure.Skl 172> GET_MEM "ACTIVE_RES"
+Procedure.Skl 176> GET_MEM "POPUP_PROCESS"
+Procedure.Skl 179> DEF_IF "0"
+Procedure.Skl 217> END_IF
+Procedure.Skl 219> DEF_IF ""
+Procedure.Skl 225> END_IF
+Procedure.Skl 227> DEF_IF ""
+Procedure.Skl 232> END_IF
+Procedure.Skl 235> GET_MEM "INITDATA-PROCEDURE"
+Procedure.Skl 236> CLEAR_MEM "INITDATA-PROCEDURE"
+Procedure.Skl 238> GET_MEM "RELATION"
+Procedure.Skl 239> CLEAR_MEM "RELATION"
+Procedure.Skl 241> GET_MEM "RELATION-CLEAR"
+Procedure.Skl 242> CLEAR_MEM "RELATION-CLEAR"
+Procedure.Skl 244> GET_MEM "RELATION-IU-DISP"
+Procedure.Skl 245> CLEAR_MEM "RELATION-IU-DISP"
+Procedure.Skl 247> GET_MEM "RELATION-EXPRESSION"
+Procedure.Skl 248> CLEAR_MEM "RELATION-EXPRESSION"
+Procedure.Skl 250> GET_MEM "OTHER-OBJ-PARAGRAPH"
+Procedure.Skl 251> CLEAR_MEM "OTHER-OBJ-PARAGRAPH"
+Procedure.Skl 253> END_IF
+main.Skl 188> Link To MainOption.Skl
+MainOption.Skl 13> Link To MainComment.Skl
+MainComment.Skl 7> DEF_IF "1"
+MainComment.Skl 8> -------------- "PRG-COMMENT" --------------
+MainComment.Skl 12> DEF_IF NOT "YES" EQUAL "YES" 
+MainComment.Skl 14> END_IF
+MainComment.Skl 15> END_IF
+MainComment.Skl 16> DEF_IF "0"
+MainComment.Skl 61> END_IF
+MainOption.Skl 15> Link To MainPrepareTag.Skl
+MainPrepareTag.Skl 13> DEF_IF "YES"
+MainPrepareTag.Skl 14> PUT_FILE "F:\Darwin\Lubex\GESLUX\Copylib\TestSkeleton-ELENCO-ID.cpy" COPYLIB 0
+MainPrepareTag.Skl 15> GET_MEM "CONTROLLO-SCREEN"
+MainPrepareTag.Skl 16> CLEAR_MEM "CONTROLLO-SCREEN"
+MainPrepareTag.Skl 17> END_PUT_FILE
+MainPrepareTag.Skl 18> END_IF
+MainPrepareTag.Skl 27> -------------- "PRGID" --------------
+MainPrepareTag.Skl 28> DEF_IF "0"
+MainPrepareTag.Skl 30> ELSE
+MainPrepareTag.Skl 32> END_IF
+MainPrepareTag.Skl 39> _SET_PRG_DESCRIPTIONLINE
+MainPrepareTag.Skl 40> DEF_LOOP 0
+MainPrepareTag.Skl 43> END_LOOP MainPrepareTag.Skl 48> -------------- "DECIMAL-POINT" --------------
+MainPrepareTag.Skl 49> DEF_IF ( NOT "0" ) AND ( NOT ( "," EQUAL "." ) ) 
+MainPrepareTag.Skl 51> DEF_SET @!G_EXISTSPECIALNAME!@ "YES"
+MainPrepareTag.Skl 52> END_IF
+MainPrepareTag.Skl 57> -------------- "ACTIVEX-DEF" --------------
+MainPrepareTag.Skl 58> DEF_IF ( NOT "0" ) AND "" 
+MainPrepareTag.Skl 66> END_IF
+MainPrepareTag.Skl 71> -------------- "SPECIAL-NAME" --------------
+MainPrepareTag.Skl 72> DEF_IF "0"
+MainPrepareTag.Skl 82> ELSE
+MainPrepareTag.Skl 84> GET_ENTRYPOINT "INIT" "INIT" "SpecialName"
+MainPrepareTag.Skl 86> GET_MEM "SPECIAL_SUMMARY"
+MainPrepareTag.Skl 87> DEF_IF NOT "YES" 
+MainPrepareTag.Skl 97> END_IF
+MainPrepareTag.Skl 98> END_IF
+MainPrepareTag.Skl 103> -------------- "TO-CHECK-IOCONTROL" --------------
+MainPrepareTag.Skl 104> GET_ENTRYPOINT "INIT" "INIT" "I-O-CONTROL"
+MainPrepareTag.Skl 105> DEF_SETMEM @!G_IOCONTROL!@ "TO-CHECK-IOCONTROL"
+MainPrepareTag.Skl 106> CLEAR_MEM "TO-CHECK-IOCONTROL"
+MainPrepareTag.Skl 107> -------------- "I-O-CONTROL" --------------
+MainPrepareTag.Skl 108> DEF_IF "0"
+MainPrepareTag.Skl 114> ELSE
+MainPrepareTag.Skl 115> DEF_IF ""
+MainPrepareTag.Skl 120> END_IF
+MainPrepareTag.Skl 121> END_IF
+MainPrepareTag.Skl 126> -------------- "FILE-CONTROL" --------------
+MainPrepareTag.Skl 127> GET_MEM "FILE_SL"
+MainPrepareTag.Skl 128> CLEAR_MEM "FILE_SL"
+MainPrepareTag.Skl 129> GET_MEM "FILE_SL_TEMP"
+MainPrepareTag.Skl 130> CLEAR_MEM "FILE_SL_TEMP"
+MainPrepareTag.Skl 131> GET_MEM "PRINT_FILE_SL"
+MainPrepareTag.Skl 132> CLEAR_MEM "PRINT_FILE_SL"
+MainPrepareTag.Skl 137> -------------- "FILE" --------------
+MainPrepareTag.Skl 138> GET_MEM "FILE_FD"
+MainPrepareTag.Skl 139> CLEAR_MEM "FILE_FD"
+MainPrepareTag.Skl 140> GET_MEM "FILE_FD_TEMP"
+MainPrepareTag.Skl 141> CLEAR_MEM "FILE_FD_TEMP"
+MainPrepareTag.Skl 142> GET_MEM "PRINT_FILE_FD"
+MainPrepareTag.Skl 147> -------------- "ACU-DEF" --------------
+MainPrepareTag.Skl 148> DEF_SET @!L_ACUGUI_DEF!@ "1"
+MainPrepareTag.Skl 149> DEF_SET @!L_ACUCOBOL_DEF!@ "1"
+MainPrepareTag.Skl 150> DEF_SET @!L_FONTS_DEF!@ "1"
+MainPrepareTag.Skl 151> DEF_SET @!L_CRTVARS_DEF!@ "1"
+MainPrepareTag.Skl 152> DEF_SET @!L_SHOWMSG_DEF!@ "1"
+MainPrepareTag.Skl 153> DEF_SET @!L_TOTEM_DEF!@ "1"
+MainPrepareTag.Skl 154> DEF_SET @!L_PALETTE_DEF!@ "1"
+MainPrepareTag.Skl 155> DEF_SET @!L_OPENSAVE_DEF!@ "1"
+MainPrepareTag.Skl 156> DEF_SET @!L_ACTIVEX_DEF!@ "1"
+MainPrepareTag.Skl 157> _PUSH_MEM
+MainPrepareTag.Skl 158> _SET_OBJ_FILEDEF
+MainPrepareTag.Skl 159> DEF_LOOP 12
+MainPrepareTag.Skl 160> _FETCH_NEXT_OBJ_FILEDEF
+MainPrepareTag.Skl 161> DEF_IF "acugui.def" EQUAL "ACUGUI.DEF" 
+MainPrepareTag.Skl 162> DEF_SET @!L_ACUGUI_DEF!@ "0"
+MainPrepareTag.Skl 163> DEF_SETPARA 1 "c:\Acucorp\Acucbl600\AcuGT\sample\def\acugui.def"
+MainPrepareTag.Skl 164> DEF_SETPARA 2 "acugui.def"
+MainPrepareTag.Skl 165> DEF_IF ( NOT "" ) AND ( NOT "" ) 
+MainPrepareTag.Skl 166> DEF_IF "N" EQUAL "Y" 
+MainPrepareTag.Skl 168> ELSE
+MainPrepareTag.Skl 170> END_IF
+MainPrepareTag.Skl 171> END_IF
+MainPrepareTag.Skl 270> END_IF
+MainPrepareTag.Skl 160> _FETCH_NEXT_OBJ_FILEDEF
+MainPrepareTag.Skl 161> DEF_IF "acucobol.def" EQUAL "ACUGUI.DEF" 
+MainPrepareTag.Skl 172> ELSE_IF "acucobol.def" EQUAL "ACUCOBOL.DEF" 
+MainPrepareTag.Skl 173> DEF_SET @!L_ACUCOBOL_DEF!@ "0"
+MainPrepareTag.Skl 174> DEF_SETPARA 1 "c:\Acucorp\Acucbl600\AcuGT\sample\def\acucobol.def"
+MainPrepareTag.Skl 175> DEF_SETPARA 2 "acucobol.def"
+MainPrepareTag.Skl 176> DEF_IF ( NOT "" ) AND ( NOT "" ) 
+MainPrepareTag.Skl 177> DEF_IF "N" EQUAL "Y" 
+MainPrepareTag.Skl 179> ELSE
+MainPrepareTag.Skl 181> END_IF
+MainPrepareTag.Skl 182> END_IF
+MainPrepareTag.Skl 270> END_IF
+MainPrepareTag.Skl 160> _FETCH_NEXT_OBJ_FILEDEF
+MainPrepareTag.Skl 161> DEF_IF "fonts.def" EQUAL "ACUGUI.DEF" 
+MainPrepareTag.Skl 172> ELSE_IF "fonts.def" EQUAL "ACUCOBOL.DEF" 
+MainPrepareTag.Skl 183> ELSE_IF "fonts.def" EQUAL "FONTS.DEF" 
+MainPrepareTag.Skl 184> DEF_SET @!L_FONTS_DEF!@ "0"
+MainPrepareTag.Skl 185> DEF_SETPARA 1 "c:\Acucorp\Acucbl600\AcuGT\sample\def\fonts.def"
+MainPrepareTag.Skl 186> DEF_SETPARA 2 "fonts.def"
+MainPrepareTag.Skl 187> DEF_IF ( NOT "" ) AND ( NOT "" ) AND ( "" OR "" ) 
+MainPrepareTag.Skl 193> END_IF
+MainPrepareTag.Skl 270> END_IF
+MainPrepareTag.Skl 160> _FETCH_NEXT_OBJ_FILEDEF
+MainPrepareTag.Skl 161> DEF_IF "palette.def" EQUAL "ACUGUI.DEF" 
+MainPrepareTag.Skl 172> ELSE_IF "palette.def" EQUAL "ACUCOBOL.DEF" 
+MainPrepareTag.Skl 183> ELSE_IF "palette.def" EQUAL "FONTS.DEF" 
+MainPrepareTag.Skl 194> ELSE_IF "palette.def" EQUAL "CRTVARS.DEF" 
+MainPrepareTag.Skl 205> ELSE_IF "palette.def" EQUAL "SHOWMSG.DEF" 
+MainPrepareTag.Skl 216> ELSE_IF "palette.def" EQUAL "TOTEM.DEF" 
+MainPrepareTag.Skl 227> ELSE_IF "palette.def" EQUAL "PALETTE.DEF" 
+MainPrepareTag.Skl 228> DEF_SET @!L_PALETTE_DEF!@ "0"
+MainPrepareTag.Skl 229> DEF_SETPARA 1 "c:\Acucorp\Acucbl600\AcuGT\sample\def\palette.def"
+MainPrepareTag.Skl 230> DEF_SETPARA 2 "palette.def"
+MainPrepareTag.Skl 231> DEF_IF ( NOT "" ) AND ( NOT "" ) AND ( "" OR "" ) 
+MainPrepareTag.Skl 237> END_IF
+MainPrepareTag.Skl 270> END_IF
+MainPrepareTag.Skl 160> _FETCH_NEXT_OBJ_FILEDEF
+MainPrepareTag.Skl 161> DEF_IF "crtvars.def" EQUAL "ACUGUI.DEF" 
+MainPrepareTag.Skl 172> ELSE_IF "crtvars.def" EQUAL "ACUCOBOL.DEF" 
+MainPrepareTag.Skl 183> ELSE_IF "crtvars.def" EQUAL "FONTS.DEF" 
+MainPrepareTag.Skl 194> ELSE_IF "crtvars.def" EQUAL "CRTVARS.DEF" 
+MainPrepareTag.Skl 195> DEF_SET @!L_CRTVARS_DEF!@ "0"
+MainPrepareTag.Skl 196> DEF_SETPARA 1 "c:\Acucorp\Acucbl600\AcuGT\sample\def\crtvars.def"
+MainPrepareTag.Skl 197> DEF_SETPARA 2 "crtvars.def"
+MainPrepareTag.Skl 198> DEF_IF ( NOT "" ) AND ( NOT "" ) 
+MainPrepareTag.Skl 199> DEF_IF "N" EQUAL "Y" 
+MainPrepareTag.Skl 201> ELSE
+MainPrepareTag.Skl 203> END_IF
+MainPrepareTag.Skl 204> END_IF
+MainPrepareTag.Skl 270> END_IF
+MainPrepareTag.Skl 160> _FETCH_NEXT_OBJ_FILEDEF
+MainPrepareTag.Skl 161> DEF_IF "activex.def" EQUAL "ACUGUI.DEF" 
+MainPrepareTag.Skl 172> ELSE_IF "activex.def" EQUAL "ACUCOBOL.DEF" 
+MainPrepareTag.Skl 183> ELSE_IF "activex.def" EQUAL "FONTS.DEF" 
+MainPrepareTag.Skl 194> ELSE_IF "activex.def" EQUAL "CRTVARS.DEF" 
+MainPrepareTag.Skl 205> ELSE_IF "activex.def" EQUAL "SHOWMSG.DEF" 
+MainPrepareTag.Skl 216> ELSE_IF "activex.def" EQUAL "TOTEM.DEF" 
+MainPrepareTag.Skl 227> ELSE_IF "activex.def" EQUAL "PALETTE.DEF" 
+MainPrepareTag.Skl 238> ELSE_IF "activex.def" EQUAL "OPENSAVE.DEF" 
+MainPrepareTag.Skl 249> ELSE_IF "activex.def" EQUAL "ACTIVEX.DEF" 
+MainPrepareTag.Skl 250> DEF_SET @!L_ACTIVEX_DEF!@ "0"
+MainPrepareTag.Skl 251> DEF_SETPARA 1 "c:\Acucorp\Acucbl600\AcuGT\sample\def\activex.def"
+MainPrepareTag.Skl 252> DEF_SETPARA 2 "activex.def"
+MainPrepareTag.Skl 253> DEF_IF ( NOT "" ) AND ( NOT "" ) AND "" 
+MainPrepareTag.Skl 259> END_IF
+MainPrepareTag.Skl 270> END_IF
+MainPrepareTag.Skl 160> _FETCH_NEXT_OBJ_FILEDEF
+MainPrepareTag.Skl 161> DEF_IF "opensave.def" EQUAL "ACUGUI.DEF" 
+MainPrepareTag.Skl 172> ELSE_IF "opensave.def" EQUAL "ACUCOBOL.DEF" 
+MainPrepareTag.Skl 183> ELSE_IF "opensave.def" EQUAL "FONTS.DEF" 
+MainPrepareTag.Skl 194> ELSE_IF "opensave.def" EQUAL "CRTVARS.DEF" 
+MainPrepareTag.Skl 205> ELSE_IF "opensave.def" EQUAL "SHOWMSG.DEF" 
+MainPrepareTag.Skl 216> ELSE_IF "opensave.def" EQUAL "TOTEM.DEF" 
+MainPrepareTag.Skl 227> ELSE_IF "opensave.def" EQUAL "PALETTE.DEF" 
+MainPrepareTag.Skl 238> ELSE_IF "opensave.def" EQUAL "OPENSAVE.DEF" 
+MainPrepareTag.Skl 239> DEF_SET @!L_OPENSAVE_DEF!@ "0"
+MainPrepareTag.Skl 240> DEF_SETPARA 1 "c:\Acucorp\Acucbl600\AcuGT\sample\def\opensave.def"
+MainPrepareTag.Skl 241> DEF_SETPARA 2 "opensave.def"
+MainPrepareTag.Skl 242> DEF_IF ( NOT "" ) AND ( NOT "" ) AND ( "0" OR "" ) 
+MainPrepareTag.Skl 248> END_IF
+MainPrepareTag.Skl 270> END_IF
+MainPrepareTag.Skl 160> _FETCH_NEXT_OBJ_FILEDEF
+MainPrepareTag.Skl 161> DEF_IF "showmsg.def" EQUAL "ACUGUI.DEF" 
+MainPrepareTag.Skl 172> ELSE_IF "showmsg.def" EQUAL "ACUCOBOL.DEF" 
+MainPrepareTag.Skl 183> ELSE_IF "showmsg.def" EQUAL "FONTS.DEF" 
+MainPrepareTag.Skl 194> ELSE_IF "showmsg.def" EQUAL "CRTVARS.DEF" 
+MainPrepareTag.Skl 205> ELSE_IF "showmsg.def" EQUAL "SHOWMSG.DEF" 
+MainPrepareTag.Skl 206> DEF_SET @!L_SHOWMSG_DEF!@ "0"
+MainPrepareTag.Skl 207> DEF_SETPARA 1 "c:\Acucorp\Acucbl600\AcuGT\sample\def\showmsg.def"
+MainPrepareTag.Skl 208> DEF_SETPARA 2 "showmsg.def"
+MainPrepareTag.Skl 209> DEF_IF ( NOT "" ) AND ( NOT "" ) 
+MainPrepareTag.Skl 210> DEF_IF "N" EQUAL "Y" 
+MainPrepareTag.Skl 212> ELSE
+MainPrepareTag.Skl 214> END_IF
+MainPrepareTag.Skl 215> END_IF
+MainPrepareTag.Skl 270> END_IF
+MainPrepareTag.Skl 160> _FETCH_NEXT_OBJ_FILEDEF
+MainPrepareTag.Skl 161> DEF_IF "totem.def" EQUAL "ACUGUI.DEF" 
+MainPrepareTag.Skl 172> ELSE_IF "totem.def" EQUAL "ACUCOBOL.DEF" 
+MainPrepareTag.Skl 183> ELSE_IF "totem.def" EQUAL "FONTS.DEF" 
+MainPrepareTag.Skl 194> ELSE_IF "totem.def" EQUAL "CRTVARS.DEF" 
+MainPrepareTag.Skl 205> ELSE_IF "totem.def" EQUAL "SHOWMSG.DEF" 
+MainPrepareTag.Skl 216> ELSE_IF "totem.def" EQUAL "TOTEM.DEF" 
+MainPrepareTag.Skl 217> DEF_SET @!L_TOTEM_DEF!@ "0"
+MainPrepareTag.Skl 218> DEF_SETPARA 1 "C:\Totem61\sample\totem.def"
+MainPrepareTag.Skl 219> DEF_SETPARA 2 "totem.def"
+MainPrepareTag.Skl 220> DEF_IF ( NOT "" ) AND ( NOT "" ) 
+MainPrepareTag.Skl 221> DEF_IF "N" EQUAL "Y" 
+MainPrepareTag.Skl 223> ELSE
+MainPrepareTag.Skl 225> END_IF
+MainPrepareTag.Skl 226> END_IF
+MainPrepareTag.Skl 270> END_IF
+MainPrepareTag.Skl 160> _FETCH_NEXT_OBJ_FILEDEF
+MainPrepareTag.Skl 161> DEF_IF "comune.def" EQUAL "ACUGUI.DEF" 
+MainPrepareTag.Skl 172> ELSE_IF "comune.def" EQUAL "ACUCOBOL.DEF" 
+MainPrepareTag.Skl 183> ELSE_IF "comune.def" EQUAL "FONTS.DEF" 
+MainPrepareTag.Skl 194> ELSE_IF "comune.def" EQUAL "CRTVARS.DEF" 
+MainPrepareTag.Skl 205> ELSE_IF "comune.def" EQUAL "SHOWMSG.DEF" 
+MainPrepareTag.Skl 216> ELSE_IF "comune.def" EQUAL "TOTEM.DEF" 
+MainPrepareTag.Skl 227> ELSE_IF "comune.def" EQUAL "PALETTE.DEF" 
+MainPrepareTag.Skl 238> ELSE_IF "comune.def" EQUAL "OPENSAVE.DEF" 
+MainPrepareTag.Skl 249> ELSE_IF "comune.def" EQUAL "ACTIVEX.DEF" 
+MainPrepareTag.Skl 260> ELSE
+MainPrepareTag.Skl 261> DEF_SETPARA 1 "F:\Darwin\Lubex\GESLUX\Copylib\comune.def"
+MainPrepareTag.Skl 262> DEF_SETPARA 2 "comune.def"
+MainPrepareTag.Skl 263> DEF_IF ( NOT "" ) AND ( NOT "" ) 
+MainPrepareTag.Skl 264> DEF_IF "N" EQUAL "Y" 
+MainPrepareTag.Skl 266> ELSE
+MainPrepareTag.Skl 268> END_IF
+MainPrepareTag.Skl 269> END_IF
+MainPrepareTag.Skl 270> END_IF
+MainPrepareTag.Skl 160> _FETCH_NEXT_OBJ_FILEDEF
+MainPrepareTag.Skl 161> DEF_IF "custom.def" EQUAL "ACUGUI.DEF" 
+MainPrepareTag.Skl 172> ELSE_IF "custom.def" EQUAL "ACUCOBOL.DEF" 
+MainPrepareTag.Skl 183> ELSE_IF "custom.def" EQUAL "FONTS.DEF" 
+MainPrepareTag.Skl 194> ELSE_IF "custom.def" EQUAL "CRTVARS.DEF" 
+MainPrepareTag.Skl 205> ELSE_IF "custom.def" EQUAL "SHOWMSG.DEF" 
+MainPrepareTag.Skl 216> ELSE_IF "custom.def" EQUAL "TOTEM.DEF" 
+MainPrepareTag.Skl 227> ELSE_IF "custom.def" EQUAL "PALETTE.DEF" 
+MainPrepareTag.Skl 238> ELSE_IF "custom.def" EQUAL "OPENSAVE.DEF" 
+MainPrepareTag.Skl 249> ELSE_IF "custom.def" EQUAL "ACTIVEX.DEF" 
+MainPrepareTag.Skl 260> ELSE
+MainPrepareTag.Skl 261> DEF_SETPARA 1 "F:\Darwin\Lubex\GESLUX\Copylib\custom.def"
+MainPrepareTag.Skl 262> DEF_SETPARA 2 "custom.def"
+MainPrepareTag.Skl 263> DEF_IF ( NOT "" ) AND ( NOT "" ) 
+MainPrepareTag.Skl 264> DEF_IF "N" EQUAL "Y" 
+MainPrepareTag.Skl 266> ELSE
+MainPrepareTag.Skl 268> END_IF
+MainPrepareTag.Skl 269> END_IF
+MainPrepareTag.Skl 270> END_IF
+MainPrepareTag.Skl 160> _FETCH_NEXT_OBJ_FILEDEF
+MainPrepareTag.Skl 161> DEF_IF "UTYDATA.DEF" EQUAL "ACUGUI.DEF" 
+MainPrepareTag.Skl 172> ELSE_IF "UTYDATA.DEF" EQUAL "ACUCOBOL.DEF" 
+MainPrepareTag.Skl 183> ELSE_IF "UTYDATA.DEF" EQUAL "FONTS.DEF" 
+MainPrepareTag.Skl 194> ELSE_IF "UTYDATA.DEF" EQUAL "CRTVARS.DEF" 
+MainPrepareTag.Skl 205> ELSE_IF "UTYDATA.DEF" EQUAL "SHOWMSG.DEF" 
+MainPrepareTag.Skl 216> ELSE_IF "UTYDATA.DEF" EQUAL "TOTEM.DEF" 
+MainPrepareTag.Skl 227> ELSE_IF "UTYDATA.DEF" EQUAL "PALETTE.DEF" 
+MainPrepareTag.Skl 238> ELSE_IF "UTYDATA.DEF" EQUAL "OPENSAVE.DEF" 
+MainPrepareTag.Skl 249> ELSE_IF "UTYDATA.DEF" EQUAL "ACTIVEX.DEF" 
+MainPrepareTag.Skl 260> ELSE
+MainPrepareTag.Skl 261> DEF_SETPARA 1 "F:\Darwin\Lubex\GESLUX\Copylib\UTYDATA.DEF"
+MainPrepareTag.Skl 262> DEF_SETPARA 2 "UTYDATA.DEF"
+MainPrepareTag.Skl 263> DEF_IF ( NOT "" ) AND ( NOT "" ) 
+MainPrepareTag.Skl 264> DEF_IF "N" EQUAL "Y" 
+MainPrepareTag.Skl 266> ELSE
+MainPrepareTag.Skl 268> END_IF
+MainPrepareTag.Skl 269> END_IF
+MainPrepareTag.Skl 270> END_IF
+MainPrepareTag.Skl 271> END_LOOP MainPrepareTag.Skl 272> _POP_MEM
+MainPrepareTag.Skl 274> DEF_IF "0"
+MainPrepareTag.Skl 276> END_IF
+MainPrepareTag.Skl 277> DEF_IF "0"
+MainPrepareTag.Skl 279> END_IF
+MainPrepareTag.Skl 280> DEF_IF "0"
+MainPrepareTag.Skl 282> END_IF
+MainPrepareTag.Skl 283> DEF_IF "0"
+MainPrepareTag.Skl 285> END_IF
+MainPrepareTag.Skl 286> DEF_IF "0"
+MainPrepareTag.Skl 288> END_IF
+MainPrepareTag.Skl 289> DEF_IF "" OR "" 
+MainPrepareTag.Skl 293> END_IF
+MainPrepareTag.Skl 294> DEF_IF "" OR "" 
+MainPrepareTag.Skl 298> END_IF
+MainPrepareTag.Skl 299> DEF_IF "0" OR "" 
+MainPrepareTag.Skl 303> END_IF
+MainPrepareTag.Skl 304> DEF_IF ""
+MainPrepareTag.Skl 308> END_IF
+MainPrepareTag.Skl 313> -------------- "COPY-WORKING" --------------
+MainPrepareTag.Skl 314> DEF_IF "0"
+MainPrepareTag.Skl 318> ELSE
+MainPrepareTag.Skl 319> DEF_IF "0"
+MainPrepareTag.Skl 321> ELSE
+MainPrepareTag.Skl 322> GET_MEM "WORKING-HEAD"
+MainPrepareTag.Skl 323> GET_MEM "WORKING-NEED"
+MainPrepareTag.Skl 324> GET_MEM "WORKING"
+MainPrepareTag.Skl 325> GET_MEM "WORKING-OTHER"
+MainPrepareTag.Skl 326> END_IF
+MainPrepareTag.Skl 327> END_IF
+MainPrepareTag.Skl 332> -------------- "LINKAGE" --------------
+MainPrepareTag.Skl 333> DEF_IF "0"
+MainPrepareTag.Skl 336> ELSE
+MainPrepareTag.Skl 337> DEF_IF "0"
+MainPrepareTag.Skl 343> ELSE
+MainPrepareTag.Skl 344> GET_MEM "LINKAGE-WRK"
+MainPrepareTag.Skl 345> GET_MEM "LINKAGE-OTHER"
+MainPrepareTag.Skl 346> END_IF
+MainPrepareTag.Skl 347> END_IF
+MainPrepareTag.Skl 352> -------------- "COPY-SCREEN" --------------
+MainPrepareTag.Skl 353> DEF_IF "0"
+MainPrepareTag.Skl 355> ELSE
+MainPrepareTag.Skl 356> GET_MEM "FORMSCREEN"
+MainPrepareTag.Skl 357> END_IF
+MainPrepareTag.Skl 362> -------------- "LINKPARA" --------------
+MainPrepareTag.Skl 363> DEF_IF "0"
+MainPrepareTag.Skl 374> ELSE
+MainPrepareTag.Skl 375> DEF_IF ""
+MainPrepareTag.Skl 377> ELSE
+MainPrepareTag.Skl 379> END_IF
+MainPrepareTag.Skl 380> END_IF
+MainPrepareTag.Skl 385> -------------- "TO-CHECK-DECLARATIVE" --------------
+MainPrepareTag.Skl 386> GET_ENTRYPOINT "INIT" "INIT" "BeforeDeclarative"
+MainPrepareTag.Skl 387> DEF_SETMEM @!L_DECLARATIVE!@ "TO-CHECK-DECLARATIVE"
+MainPrepareTag.Skl 388> CLEAR_MEM "TO-CHECK-DECLARATIVE"
+MainPrepareTag.Skl 389> -------------- "DECLARATIVE" --------------
+MainPrepareTag.Skl 390> DEF_IF "0"
+MainPrepareTag.Skl 398> ELSE
+MainPrepareTag.Skl 399> DEF_IF "" OR "" 
+MainPrepareTag.Skl 421> END_IF
+MainPrepareTag.Skl 422> END_IF
+MainPrepareTag.Skl 427> -------------- "ENTRY-BEFPRG" --------------
+MainPrepareTag.Skl 428> DEF_IF ""
+MainPrepareTag.Skl 430> ELSE
+MainPrepareTag.Skl 432> END_IF
+MainPrepareTag.Skl 437> -------------- "RUN-MAINSCR" --------------
+MainPrepareTag.Skl 438> DEF_IF "1"
+MainPrepareTag.Skl 439> _PUSH_MEM
+MainPrepareTag.Skl 440> _SET_OBJ_MAINSCREEN
+MainPrepareTag.Skl 441> DEF_IF ""
+MainPrepareTag.Skl 447> ELSE
+MainPrepareTag.Skl 448> DEF_SET @!L_MODE!@ ""
+MainPrepareTag.Skl 449> DEF_IF ""
+MainPrepareTag.Skl 451> END_IF
+MainPrepareTag.Skl 453> END_IF
+MainPrepareTag.Skl 454> _POP_MEM
+MainPrepareTag.Skl 455> END_IF
+MainPrepareTag.Skl 495> -------------- "COPY-PROCEDURE" --------------
+MainPrepareTag.Skl 496> DEF_IF "0"
+MainPrepareTag.Skl 504> ELSE
+MainPrepareTag.Skl 505> DEF_IF "0"
+MainPrepareTag.Skl 507> ELSE
+MainPrepareTag.Skl 508> GET_MEM "PROCEDURE-HEAD"
+MainPrepareTag.Skl 509> GET_MEM "PROCEDURE"
+MainPrepareTag.Skl 510> END_IF
+MainPrepareTag.Skl 512> DEF_IF "0"
+MainPrepareTag.Skl 518> ELSE
+MainPrepareTag.Skl 519> GET_MEM "MENU"
+MainPrepareTag.Skl 520> END_IF
+MainPrepareTag.Skl 522> DEF_IF "0"
+MainPrepareTag.Skl 524> ELSE
+MainPrepareTag.Skl 525> GET_MEM "EVENT"
+MainPrepareTag.Skl 526> END_IF
+MainPrepareTag.Skl 528> DEF_IF "0"
+MainPrepareTag.Skl 534> ELSE
+MainPrepareTag.Skl 535> GET_MEM "REPORT"
+MainPrepareTag.Skl 536> END_IF
+MainPrepareTag.Skl 537> END_IF
+MainPrepareTag.Skl 542> -------------- "SHOW-MSG" --------------
+MainPrepareTag.Skl 543> DEF_SETPARA 2 "TotemMsg.cpy"
+MainPrepareTag.Skl 544> DEF_IF NOT "" 
+MainPrepareTag.Skl 545> DEF_IF "0"
+MainPrepareTag.Skl 547> ELSE
+MainPrepareTag.Skl 698> END_IF
+MainPrepareTag.Skl 699> END_IF
+MainOption.Skl 17> DEF_IF "1"
+MainOption.Skl 18> Link To MainPrg.Skl
+MainPrg.Skl 6> DEF_IF "0" AND "YES" 
+MainPrg.Skl 8> ELSE
+MainPrg.Skl 12> PUT_FILE "F:\Darwin\Lubex\GESLUX\Source\TestSkeleton.cbl" SOURCE 0
+MainPrg.Skl 14> GET_MEM "PRG-COMMENT"
+MainPrg.Skl 18> GET_MEM "PRGID"
+MainPrg.Skl 24> DEF_IF "0"
+MainPrg.Skl 29> ELSE
+MainPrg.Skl 31> GET_MEM "SPECIAL-NAME"
+MainPrg.Skl 32> CLEAR_MEM "SPECIAL-NAME"
+MainPrg.Skl 35> GET_MEM "ACTIVEX-DEF"
+MainPrg.Skl 38> GET_MEM "DECIMAL-POINT"
+MainPrg.Skl 40> END_IF
+MainPrg.Skl 45> GET_MEM "FILE-CONTROL"
+MainPrg.Skl 46> CLEAR_MEM "FILE-CONTROL"
+MainPrg.Skl 48> DEF_IF ""
+MainPrg.Skl 54> END_IF
+MainPrg.Skl 58> GET_MEM "FILE"
+MainPrg.Skl 59> CLEAR_MEM "FILE"
+MainPrg.Skl 64> GET_MEM "ACU-DEF"
+MainPrg.Skl 65> CLEAR_MEM "ACU-DEF"
+MainPrg.Skl 69> GET_MEM "COPY-WORKING"
+MainPrg.Skl 77> GET_MEM "WORKING-ID-LOGICO"
+MainPrg.Skl 78> CLEAR_MEM "WORKING-ID-LOGICO"
+MainPrg.Skl 87> GET_MEM "LINKAGE"
+MainPrg.Skl 92> GET_MEM "COPY-SCREEN"
+MainPrg.Skl 96> GET_MEM "LINKPARA"
+MainPrg.Skl 100> GET_MEM "DECLARATIVE"
+MainPrg.Skl 103> DEF_IF "0"
+MainPrg.Skl 111> ELSE
+MainPrg.Skl 115> GET_MEM "ENTRY-BEFPRG"
+MainPrg.Skl 120> GET_MEM "RUN-MAINSCR"
+MainPrg.Skl 124> GET_MEM "COPY-PROCEDURE"
+MainPrg.Skl 128> GET_MEM "SHOW-MSG"
+MainPrg.Skl 131> END_IF
+MainPrg.Skl 132> END_PUT_FILE
+MainPrg.Skl 133> SHOW_MSG "TestSkeleton.cbl generated !"
+MainPrg.Skl 135> END_IF
+MainOption.Skl 19> END_IF
+MainOption.Skl 20> DEF_IF "0"
+MainOption.Skl 75> END_IF
+MainOption.Skl 76> SHOW_MSG "TestSkeleton generation is complete."

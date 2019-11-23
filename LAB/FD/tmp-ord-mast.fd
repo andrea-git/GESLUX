@@ -1,0 +1,14 @@
+      *(( XFD FILE = tmp-ord-mast ))
+       FD  tmp-ord-mast.
+       01 tmp-om-rec.
+           05 tmp-om-chiave.
+               10 tmp-om-stato     PIC  x.
+                   88 tmp-om-stato-evaso VALUE IS "S". 
+                   88 tmp-om-stato-non-evaso VALUE IS "N". 
+                   88 tmp-om-stato-urgente VALUE IS "U". 
+               10 tmp-om-chiave-master.
+                   15 tmp-om-anno-master           PIC  9(4).
+                   15 tmp-om-numero-master         PIC  9(8).
+           05 tmp-om-dati.
+               10 tmp-om-banco     PIC  x.
+               10 tmp-om-promo     PIC  x.

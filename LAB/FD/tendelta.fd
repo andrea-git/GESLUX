@@ -1,0 +1,9 @@
+       FD  tendelta.
+       01 ten-rec.
+           05 ten-chiave.
+               10 ten-tipocli      PIC  x(2).
+               10 ten-marca        PIC  9(4).
+           05 ten-dati.
+               10 ten-resa         PIC  s9(9)v99.
+               10 ten-tendenza     PIC  s9(9)v99.
+               10 ten-scostamento  PIC  s9(9)v99.

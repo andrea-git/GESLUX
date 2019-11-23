@@ -1,0 +1,7 @@
+       01  link-elmovcd.
+           05 link-rof-chiave.
+              10 link-rof-chiave-testa.
+                 15 link-rof-anno     PIC  9(4).
+                 15 link-rof-numero   PIC  9(8).
+              10 link-rof-riga        PIC  9(5).
+

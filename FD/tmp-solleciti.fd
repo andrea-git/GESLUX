@@ -1,0 +1,17 @@
+      *(( XFD FILE = tmp-solleciti ))
+       FD  tmp-solleciti.
+       01 tmp-sol-rec.
+           05 tmp-sol-evasione.
+               10 tmp-sol-anno     PIC  9(4).
+               10 tmp-sol-numero   PIC  9(8).
+           05 tmp-sol-bolla.
+               10 tmp-sol-data-bolla           PIC  9(8).
+               10 tmp-sol-num-bolla            PIC  9(8).
+           05 tmp-sol-fatt.
+               10 tmp-sol-data-fatt            PIC  9(8).
+               10 tmp-sol-num-fatt PIC  9(8).
+           05 tmp-sol-numord-cli           PIC  x(10).
+           05 tmp-sol-ragsoc   PIC  x(40).
+           05 tmp-sol-localita PIC  x(40).
+           05 tmp-sol-esito    PIC  x(50).
+           05 tmp-sol-sito-vettore         PIC  x(80).

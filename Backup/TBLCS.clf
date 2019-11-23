@@ -1,0 +1,139 @@
+; CaseMaker Totem Layout Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[DATALAYOUT_CONTENT]
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E1CA182147-227-216839040
+[DSNENTITY_]
+[CStoAcucobolFileDefinition_]
+m_nType=1
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+m_strPrefix=TBLCS
+{{@FD_m_strDescription
+
+Record codice statistico
+
+ tplvar zmm_title=Tabella statistiche clienti
+ tplvar zmm_ver=09.01.00
+ tplvar zmm_class=anagraphic
+ tplvar zmm_returnkey=tblcs-codice2
+
+ ZoomFields seq:
+   01.tblcs-codice2
+   02.tblcs-descrizione1
+   03.tblcs-descrizione2
+
+$XFD  WHEN TBLCS-CODICE1="CS"  TABLENAME=TBLCS
+@}}
+[FDITEM0_]
+m_strName=RECORD-TBLCS
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_
+
+@}}
+[FDITEM1_]
+m_strName=TBLCS-CODICE
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1_
+
+@}}
+[FDITEM2_]
+m_strName=TBLCS-CODICE1
+m_strRawPic=X(02)
+m_strPic=X(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM2_
+
+@}}
+[FDITEM3_]
+m_strName=TBLCS-CODICE2
+m_strRawPic=X(20)
+m_strPic=X(20)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM3_
+$GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=20,zmm_align=L,zmm_pos=1,zmm_entity=tblcs
+
+@}}
+[FDITEM4_]
+m_strName=RESTO-RECORD-TBLCS
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM4_
+
+@}}
+[FDITEM5_]
+m_strName=TBLCS-DESCR1
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM5_
+$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=2
+@}}
+[FDITEM6_]
+m_strName=TBLCS-DESCR2
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM6_
+$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=3
+@}}
+[FDITEM7_]
+m_strName=TBLCS-FILLER-RIS
+m_strRawPic=X(1298)
+m_strPic=X(1298)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM7_
+
+@}}
+[CStoAcucobolSL_]
+m_nType=1
+m_bOptional=1
+m_strAssignToName="TBLCS"
+m_nDevice=4
+m_nFormat=3
+m_nAccessMode=3
+m_strFileStatus=STATUS-TBLCS
+m_nNumber=1
+m_nCompression=70
+{{@SL_m_strDescription
+
+
+
+*
+@}}
+[SLPKEY_]
+m_strName=TBLCS-CODICE
+m_bUnique=1
+{{@Key_m_strDescription
+
+@}}
+[SLKEYATOM0_]
+m_strName=TBLCS-CODICE
+[SLINDEX0_]
+m_strName=TBLCS-CODICE-01
+m_bUnique=1
+{{@Key_m_strDescriptionSLINDEX0_
+
+@}}
+[SLKEYATOM0_SLINDEX0_]
+m_strName=TBLCS-CODICE1
+[SLKEYATOM1_SLINDEX0_]
+m_strName=TBLCS-DESCR1
+[SLKEYATOM2_SLINDEX0_]
+m_strName=TBLCS-CODICE2

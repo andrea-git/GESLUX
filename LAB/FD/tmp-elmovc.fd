@@ -1,0 +1,10 @@
+      *(( XFD FILE = tmp-elmovc ))
+       FD  tmp-elmovc.
+       01 tmp-emc-rec.
+           05 tmp-emc-chiave.
+               10 tmp-emc-anno     PIC  9(4).
+               10 tmp-emc-numero   PIC  9(8).
+               10 tmp-emc-prg      PIC  9(10).
+               10 tmp-emc-tipo     PIC  x.
+                   88 tmp-emc-movim VALUE IS "M". 
+                   88 tmp-emc-evasione VALUE IS "E". 

@@ -1,0 +1,58 @@
+       FD  STO-btnotacr.
+       01 STO-btno-rec.
+           05 STO-btno-chiave.
+               10 STO-btno-anno    PIC  9(4).
+               10 STO-btno-numero  PIC  9(8).
+           05 STO-btno-dati.
+               10 STO-btno-causale PIC  x(4).
+               10 STO-btno-cod-cli PIC  9(5).
+               10 STO-btno-prg-destino         PIC  9(5).
+               10 STO-btno-data    PIC  9(8).
+               10 STO-btno-cod-pag PIC  x(3).
+               10 STO-btno-vettore PIC  9(5).
+               10 STO-btno-dati-fm.
+                   15 STO-btno-fm-tipo PIC  x.
+                       88 STO-btno-fm-vettore VALUE IS "V". 
+                       88 STO-btno-fm-cliente VALUE IS "C". 
+                   15 STO-btno-cod-cli-fm          PIC  9(5).
+                   15 STO-btno-prg-destino-fm      PIC  9(5).
+      *(( XFD NAME = STO-btno-vettore_1 ))
+                   15 STO-btno-vettore-fm          PIC  9(5).
+               10 STO-btno-note    PIC  X(300).
+               10 STO-btno-bolla.
+                   15 STO-btno-data-bolla          PIC  9(8).
+                   15 STO-btno-num-bolla           PIC  x(20).
+               10 STO-btno-fatt-rif.
+                   15 STO-btno-data-fatt           PIC  9(8).
+                   15 STO-btno-num-fatt            PIC  9(8).
+               10 STO-btno-rif-fm.
+                   15 STO-btno-data-fm PIC  9(8).
+                   15 STO-btno-num-fm  PIC  9(8).
+               10 STO-btno-rif-nc.
+                   15 STO-btno-data-nc PIC  9(8).
+                   15 STO-btno-num-nc  PIC  9(8).
+               10 STO-btno-motivo-cont         PIC  x(200).
+               10 STO-btno-errore-colpa        PIC  x.
+                   88 STO-btno-corriere VALUE IS "C". 
+                   88 STO-btno-magazzino VALUE IS "M". 
+                   88 STO-btno-fornitore VALUE IS "F". 
+                   88 STO-btno-cliente VALUE IS "K". 
+                   88 STO-btno-ufficio VALUE IS "U". 
+               10 STO-btno-stato   PIC  X(1).
+                   88 STO-btno-attivo VALUE IS "A". 
+                   88 STO-btno-disattivo VALUE IS "D". 
+                   88 STO-btno-bloccato VALUE IS "B". 
+               10 STO-btno-dati-comuni.
+                   15 STO-btno-data-creazione      PIC  9(8).
+                   15 STO-btno-ora-creazione       PIC  9(8).
+                   15 STO-btno-utente-creazione    PIC  X(10).
+                   15 STO-btno-data-modifica       PIC  9(8).
+                   15 STO-btno-ora-modifica        PIC  9(8).
+                   15 STO-btno-utente-modifica     PIC  X(10).
+               10 STO-btno-vuoti.
+                   15 STO-btno-num-reso            PIC  9(8).
+                   15 STO-btno-anno-fatt           PIC  9(4).
+                   15 STO-btno-anno-bolla          PIC  9(4).
+                   15 STO-btno-anno-nc PIC  9(4).
+                   15 STO-btno-anno-fm PIC  9(4).
+                   15 FILLER           PIC  X(200).

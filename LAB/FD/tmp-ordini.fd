@@ -1,0 +1,37 @@
+      *(( XFD FILE = tmp-ordini ))
+       FD  tmp-ordini.
+       01 tmp-ord-rec.
+           05 tmp-ord-chiave.
+               10 tmp-ord-desart   PIC  x(50).
+               10 tmp-ord-anno     PIC  9(4).
+               10 tmp-ord-movim    PIC  9(8).
+               10 tmp-ord-riga     PIC  9(5).
+               10 tmp-ord-omaggi   PIC  9.
+                   88 tmp-ord-si-omaggi VALUE IS 1. 
+                   88 tmp-ord-no-omaggi VALUE IS 0. 
+           05 tmp-ord-dati.
+               10 tmp-ord-evasione PIC  9(8).
+               10 tmp-ord-causale  PIC  x(4).
+               10 tmp-ord-data-movim           PIC  9(8).
+               10 tmp-ord-qta      PIC  9(5)v999.
+               10 tmp-ord-imp      PIC  9(8)v99.
+               10 tmp-ord-cons     PIC  9(4)v99.
+               10 tmp-ord-coubat   PIC  9(4)v99.
+               10 tmp-ord-add-piombo           PIC  9(4)v99.
+               10 tmp-ord-tipo-causale         PIC  x.
+                   88 tmp-ord-causale-pos VALUE IS "+". 
+                   88 tmp-ord-causale-neg VALUE IS "-". 
+               10 tmp-ord-imp-calcolato        PIC  9(9)v99.
+               10 tmp-ord-codice   PIC  9(5).
+               10 tmp-ord-destino  PIC  9(5).
+               10 tmp-ord-localita PIC  x(50).
+               10 tmp-ord-marca    PIC  9(4).
+               10 tmp-ord-magazz   PIC  x(3).
+               10 tmp-ord-numdoc   PIC  9(8).
+               10 tmp-ord-datadoc  PIC  9(8).
+               10 tmp-ord-articolo PIC  9(6).
+               10 tmp-ord-peso     PIC  9(12)v9(3).
+               10 tmp-ord-cli-tipo PIC  xx.
+               10 tmp-ord-cli-tipo-d           PIC  x(100).
+               10 tmp-ord-pag      PIC  x(3).
+               10 tmp-ord-pag-d    PIC  x(100).

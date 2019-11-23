@@ -1,0 +1,60 @@
+      *
+       01 link-wprogmag.
+           03 LinkFunction     PIC  x.
+               88 link-accept VALUE IS "A". 
+               88 link-batch VALUE IS "B". 
+               88 link-update VALUE IS "U". 
+               88 link-delete VALUE IS "D". 
+               88 link-value-changed VALUE IS "V". 
+               88 link-costo-ultimo VALUE IS "C". 
+               88 link-close VALUE IS "K". 
+           03 link-update-um-flag          PIC  9.
+               88 link-update-um VALUE IS 1,    WHEN SET TO FALSE  0. 
+           03 link-update-peso-flag        PIC  9.
+               88 link-update-peso VALUE IS 1,    WHEN SET TO FALSE  0. 
+           03 link-update-valore-flag      PIC  9.
+               88 link-update-valore VALUE IS 1,    WHEN SET TO FALSE  
+           0. 
+           03 link-key.
+               05 link-articolo    PIC  9(6).
+               05 link-magazzino   PIC  x(3).
+               05 link-imballo     PIC  x(3).
+               05 link-peso        PIC  9(5)v9(3).
+           03 link-utf         PIC  9(5)v9(3).
+           03 link-non-utf     PIC  9(5)v9(3).
+           03 link-new-imballo PIC  x(3).
+           03 link-new-peso    PIC  9(5)v9(3).
+           03 link-des-articolo            PIC  x(50).
+           03 link-causale     PIC  x(4).
+           03 link-valore      PIC  s9(8).
+           03 link-valore-peso PIC  s9(9)v999.
+           03 link-valore-monetario        PIC  s9(9)v99.
+           03 link-valore-costo            PIC  s9(9)v9(2).
+           03 link-user        PIC  x(20).
+           03 link-open-with-lock-flag     PIC  9.
+               88 link-open-with-lock VALUE IS 1,    WHEN SET TO FALSE  
+           0. 
+           03 link-array.
+               05 multiplyer       PIC  s9
+                          OCCURS 16 TIMES.
+           03 link-wprogmag-status
+                      USAGE IS SIGNED-SHORT.
+           03 link-tipo-chiamata           PIC  9.
+               88 link-chiamata-batch VALUE IS 1,    WHEN SET TO FALSE  
+           0. 
+           03 link-msg-err-ritorno         PIC  x(60).
+      *    mi serve per collocare/stornare l'ordinato dal mese corretto
+      *
+           03 link-mese-rif    PIC  99.
+           03 link-master      PIC  x.
+               88 link-imp-master VALUE IS "M". 
+               88 link-imp-trad VALUE IS "T". 
+               88 link-imp-GDO VALUE IS "G". 
+           03 link-impegnato   PIC  s9(8).
+      *    mi serve per leggere:
+      *    - l'ordine fornitore e sapere se l'ordine ha il flag di
+      *      aperto attivato e quindi non lavoro sull'ordinato
+      *
+           03 link-chiave-origine.
+               05 link-anno-origine            PIC  9(4).
+               05 link-numero-origine          PIC  9(8).

@@ -1,0 +1,332 @@
+      *    1. RIFORNIMENTO QUANTITA' MENSILI
+           compute SS1 = ord2-riordino - ord2-consegna.
+
+           move ord2-articolo to prg-cod-articolo.
+           perform TROVA-GIACENZA-IMPEGNATO.
+
+           |Recupero del progressivo padre
+           move ord2-articolo to prg-cod-articolo.
+           move spaces        to prg-tipo-imballo.
+           move spaces        to prg-cod-magazzino.
+           move 0             to prg-peso.
+           read progmag  no lock invalid continue end-read.
+
+           move ord2-articolo to art-codice.
+           read articoli no lock 
+                |Condizione praticamente impossibile
+                invalid
+                move 0 to SS2 ord2-mese-rif
+            not invalid
+                set ord2-programmazione-no to true
+                move art-scorta to sco-codice
+                read tscorte no lock 
+                     invalid
+                     move 0 to SS2
+                 not invalid
+                     if sco-programmazione-si
+                        set ord2-programmazione-si to true
+                     end-if
+                     compute SS2 = SS1 * sco-liv-scorta / 100
+                     |"if ricalcolo" significa che ho chiesto il ricalcolo
+                     |"ord2-mese-rif = 0" che non ha il mese di riferimento
+                     | e prende quello dalla scorta. 
+                     |Il mese di riferimento è quindi ho quello scelto
+                     |oppure quello della scorta
+                     if ricalcolo or ord2-mese-rif = 0
+                        move sco-m-rif to ord2-mese-rif
+                        if ord2-mese-rif < 2 and 
+                           art-mag-std not = "LBX"
+                           move 2 to ord2-mese-rif
+                        end-if
+                     end-if
+                end-read
+           end-read.
+           if ord2-mese-scelto = 0
+              move ord2-mese-rif to ord2-mese-scelto
+           end-if.             
+
+           |Questa parte è per la sostituzione: 
+           |fa uno switch con l'articolo collegato
+           |per recuperare il flag "immediato" ossia "Su richiesta"
+           if art-collegato not = 0
+              move sco-codice to save-sco-codice
+              move art-codice to save-art-codice
+              perform until 1 = 2
+                 move art-collegato to art-codice
+                 read articoli no lock
+                 if art-collegato = 0
+                    exit perform
+                 end-if
+              end-perform
+              set sco-immediato-si to false
+              move art-scorta to sco-codice
+              read tscorte  no lock invalid continue end-read
+              move sco-immediato   to ultimo-sco-immediato
+              move save-art-codice to art-codice
+              read articoli no lock
+              move save-sco-codice to sco-codice
+              read tscorte no lock
+           else
+              move sco-immediato to ultimo-sco-immediato
+           end-if.
+           if ultimo-sco-immediato-si |and art-collegato = 0
+              compute qta-utile = ord2-promo     +
+                                  |recuperati dai progressivi (Vd. sopra)
+                                  como-impegnato -
+                                  como-giacenza  -
+                                  prg-ordinato-6
+              if qta-utile > 0
+                 compute F1 = qta-utile
+                 move F1 to F2 F3 F4 F5 F6
+              else
+                 move 0 to F1 F2 F3 F4 F5 F6
+              end-if
+           else
+              |Questa formula me la diede Massimo
+              compute QTA1 rounded = el-qta(2) * ord2-scost / 100
+              compute QTA2 = ord2-riordino  - ord2-giac
+              compute QTA3 = ord2-impegnato
+
+              compute F1 rounded = QTA1 + QTA2 + QTA3 + SS2 - 
+              prg-ordinato-1 + ord2-promo-mese(1)
+              compute F2 rounded = F1 + (el-qta(3) * ord2-scost / 100) - 
+              prg-ordinato-2 + 
+              prg-ordinato-1 + ord2-promo-mese(2)
+              compute F3 rounded = F2 + (el-qta(4) * ord2-scost / 100) - 
+              prg-ordinato-3 +
+              prg-ordinato-2 + ord2-promo-mese(3)
+              compute F4 rounded = F3 + (el-qta(5) * ord2-scost / 100) - 
+              prg-ordinato-4 +
+              prg-ordinato-3 + ord2-promo-mese(4)
+              compute F5 rounded = F4 + (el-qta(6) * ord2-scost / 100) - 
+              prg-ordinato-5 +
+              prg-ordinato-4 + ord2-promo-mese(5)
+              compute F6 rounded = F5 + (el-qta(7) * ord2-scost / 100) - 
+              prg-ordinato-6 +
+              prg-ordinato-5 + ord2-promo-mese(6)
+           end-if.
+
+
+  
+      * Somma la giacenza e l'impegnato dai progressivi che hanno
+      * il magazzino impostato "Pren PROMO" = S
+      ***---
+       TROVA-GIACENZA-IMPEGNATO. 
+           move spaces to prg-tipo-imballo.
+           move spaces to prg-cod-magazzino.
+           move 0      to prg-peso.
+           move 0 to como-giacenza como-impegnato.
+           start progmag key >= prg-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read progmag next at end exit perform end-read
+                    if prg-cod-articolo not = ord2-articolo
+                       exit perform 
+                    end-if
+                    if prg-cod-magazzino not = spaces
+                       move prg-cod-magazzino to mag-codice
+                       read tmagaz no lock
+                       if mag-per-promo-si       
+                          add prg-giacenza  to como-giacenza
+                          add prg-impegnato to como-impegnato
+                       end-if
+                    end-if
+                 end-perform
+           end-start.           
+
+
+
+      *    2. ORDINI AUTOMATICI
+           |Prima di tutto esege un ricalcolo
+           perform PB-RICALCOLO-LINKTO.
+
+           set errori to true.
+           accept data-odierna from century-date.
+           inquire form1-gd-1, last-row in tot-righe.
+           |Si passa tutte le righe della griglia
+           perform varying riga from 2 by 1
+                     until riga > tot-righe
+              inquire form1-gd-1(riga, 36), cell-data in col-qta-ord
+              move col-qta-ord to como-qta
+              set forza-conferma to false
+
+              |se la quantità da ordinare non è stata impostata 
+              |(non era disponibile)...
+              if como-qta = 0
+                 inquire form1-gd-1(riga, 1),
+                         hidden-data in gruppo-hidden
+                 move hid-chiave to ord2-chiave
+                 read ordfor2 no lock
+                      invalid continue
+                  not invalid
+                      set trovato-listino to false
+                      |... e il fabbisogno per il mese richiede rifornimento...
+                      if ord2-fabb-qta(ord2-mese-rif) > 0
+                         move ord2-articolo   to rlis-articolo
+                         move low-value       to rlis-chiave-ricerca
+                         start rlistini key >= rlis-k-art
+                               invalid continue
+                           not invalid
+                               perform until 1 = 2
+                                  read rlistini next no lock
+                                       at end exit perform
+                                  end-read
+                                  if ord2-articolo not = rlis-articolo   
+                                     exit perform
+                                  end-if
+                                  if data-odierna >= rlis-ini-val and
+                                     data-odierna <= rlis-fine-val
+                                     set trovato-listino to true
+                                     exit perform
+                                  end-if
+                               end-perform
+                         end-start
+                         |...se non c'è nemmeno un listino valido per
+                         |quell'articolo usa la quantità del fabbisogno
+                         |come quantità da ordinare.
+                         |Se invece c'è almeno un listino valido non
+                         |ordina nulla.
+                         if not trovato-listino
+                            move ord2-fabb-qta(ord2-mese-rif) to como-qta
+                            set forza-conferma to true
+                         end-if
+                      end-if
+                 end-read
+              end-if
+
+              if como-qta not = 0
+                 inquire form1-gd-1(riga, 1),
+                         hidden-data in gruppo-hidden
+                 move hid-chiave to ord2-chiave
+                 read ordfor2 no lock
+                      invalid
+                      exit perform
+                  not invalid
+                      |09/11: Richiesta di Walter. In automatico ordino
+                      |solamente gli articoli la cui giacenza non
+                      |copre l'impegnato e scorta "Ordine Auto"
+
+                      |28/08: Richiesta di Walter. In automatico ordino
+                      |solamente gli articoli a scorta "Ordine Auto"
+                      move ord2-articolo   to prg-cod-articolo
+                      move 0               to prg-peso
+                      move spaces          to prg-tipo-imballo
+                      move spaces          to prg-cod-magazzino
+                      read progmag no lock invalid continue end-read
+                      |Vd. sopra
+                      perform TROVA-GIACENZA-IMPEGNATO              
+                      |RIPOSIZIONAMENTO
+                      move ord2-articolo   to prg-cod-articolo
+                      move 0               to prg-peso
+                      move spaces          to prg-tipo-imballo
+                      move spaces          to prg-cod-magazzino
+                      read progmag no lock invalid continue end-read
+      *****                if prg-giacenza < prg-impegnato
+                         move ord2-articolo to art-codice
+                         read articoli no lock invalid continue end-read
+                         move art-scorta    to sco-codice
+                         read tscorte no lock
+                         if sco-ordine-auto-si
+                            |Gli articoli "su richiesta" dovranno andare
+                            |a copertura dell'impegnato soltanto quand'esso
+                            |è superiore alle zero
+                            if sco-immediato-si
+                               if como-impegnato > 0
+                                  if forza-conferma
+                                     set ord2-listino-no to true
+                                  else
+                                     set ord2-listino-no to false
+                                  end-if                 
+                                  perform VERIFICA-GIORNO
+                                  rewrite ord2-rec
+                                  set tutto-ok to true
+                               end-if
+                            else
+                               |Prende l'ordinato partendo dal più vecchio
+                               move 0 to como-ordinato
+                               if prg-ordinato-6 not = 0
+                                  move prg-ordinato-6 to como-ordinato
+                               else
+                                  if prg-ordinato-5 not = 0
+                                     move prg-ordinato-5 to como-ordinato
+                                  else
+                                     if prg-ordinato-4 not = 0
+                                        move prg-ordinato-4 to como-ordinato
+                                     else
+                                        if prg-ordinato-3 not = 0
+                                           move prg-ordinato-3 to como-ordinato
+                                        else
+                                           if prg-ordinato-2 not = 0
+                                              move prg-ordinato-2 to como-ordinato
+                                           else
+                                              if prg-ordinato-1 not = 0
+                                                 move prg-ordinato-1 to como-ordinato
+                                              end-if
+                                           end-if
+                                        end-if
+                                     end-if
+                                  end-if
+                               end-if
+
+                               |Tutti i valori "ord2-" vengono calcolati
+                               |nella fae iniziale
+                               if ( ord2-giac + como-ordinato - ord2-promo ) <
+                                  ( ord2-riordino - ord2-consegna )
+                                  if forza-conferma
+                                     set ord2-listino-no to true
+                                  else
+                                     set ord2-listino-no to false
+                                  end-if
+                                  perform VERIFICA-GIORNO
+                                  rewrite ord2-rec
+                                  set tutto-ok to true
+                               end-if
+
+                            end-if
+                         end-if
+      *****                end-if
+                 end-read
+              end-if
+           end-perform.
+
+      *     Alla fine di questa elaborazione prende solo gli articoli che
+      *     hanno valorizzato il flagi di conferma.
+           
+      ***---
+      * Ordina solo se il giorno attuale è ammesso dalla scorta
+       VERIFICA-GIORNO.
+           accept como-giorno from DAY-OF-WEEK.
+           evaluate como-giorno
+           when 1
+                if sco-lun-si
+                   set ord2-si-conferma to true
+                end-if
+           when 2
+                if sco-mar-si
+                   set ord2-si-conferma to true
+                end-if
+           when 3
+                if sco-mer-si
+                   set ord2-si-conferma to true
+                end-if
+           when 4
+                if sco-gio-si
+                   set ord2-si-conferma to true
+                end-if
+           when 5
+                if sco-ven-si
+                   set ord2-si-conferma to true
+                end-if
+           when 6
+                if sco-sab-si
+                   set ord2-si-conferma to true
+                end-if
+           when 7
+                if sco-dom-si
+                   set ord2-si-conferma to true
+                end-if
+           end-evaluate.
+
+
+

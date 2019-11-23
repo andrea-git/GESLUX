@@ -1,0 +1,36 @@
+       FD  tpromo.
+       01 tpr-rec.
+           05 tpr-chiave.
+               10 tpr-codice       PIC  9(15).
+           05 tpr-dati.
+               10 tpr-chiave-ricerca.
+                   15 tpr-gdo          PIC  x(5).
+                   15 tpr-ini-dpo      PIC  9(8).
+                   15 tpr-fine-dpo     PIC  9(8).
+               10 tpr-tipo         PIC  x.
+                   88 tpr-nazionale VALUE IS "N". 
+                   88 tpr-locale VALUE IS "L". 
+               10 tpr-descrizione  PIC  x(50).
+               10 tpr-ini-volantino            PIC  9(8).
+               10 tpr-fine-volantino           PIC  9(8).
+               10 tpr-sett-uscita  PIC  9(3).
+               10 tpr-comuni.
+                   15 tpr-data-creazione           PIC  9(8).
+                   15 tpr-ora-creazione            PIC  9(8).
+                   15 tpr-utente-creazione         PIC  x(10).
+                   15 tpr-data-modifica            PIC  9(8).
+                   15 tpr-ora-modifica PIC  9(8).
+                   15 tpr-utente-modifica          PIC  x(10).
+               10 tpr-vuoti.
+                   15 tpr-dati-fittizia.
+                       20 tpr-fittizia     PIC  9(1).
+                           88 tpr-fittizia-si VALUE IS 1. 
+                           88 tpr-fittizia-no VALUE IS 0. 
+                       20 tpr-chiave-master.
+                           25 tpr-anno-master  PIC  9(4).
+                           25 tpr-numero-master            PIC  9(8).
+                   15 tpr-num-righe    PIC  9(3).
+                   15 tpr-num-vuoto-2  PIC  9(14).
+                   15 tpr-num-vuoto-3  PIC  9(15).
+                   15 tpr-note         PIC  x(35).
+                   15 tpr-alfa-vuoto   PIC  x(25).

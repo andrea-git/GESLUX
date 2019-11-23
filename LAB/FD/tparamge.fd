@@ -1,0 +1,77 @@
+      *
+      *
+       FD  tparamge.
+       01 tge-rec.
+           05 tge-chiave.
+               10 tge-codice       PIC  X(2).
+           05 tge-dati.
+               10 tge-anno         PIC  9(4).
+               10 tge-data-consolid-progmag    PIC  9(8).
+               10 tge-cod-iva-std  PIC  x(3).
+               10 tge-cod-iva-omag PIC  x(3).
+               10 tge-cod-pag      PIC  x(3).
+               10 tge-cliente-corrisp          PIC  9(6).
+               10 tge-causale-corrisp          PIC  x(4).
+               10 tge-causale-ordini-std       PIC  x(4).
+               10 tge-listino-promo            PIC  9(4).
+      *Ultimo ricalcolo programma ordini
+               10 tge-perce-prog   PIC  9(2)v99.
+      *Ultimo ricalcolo programma ordini
+               10 FILLER           PIC  9(4).
+               10 tge-altre-date.
+                   15 tge-data-1       PIC  9(8).
+                   15 tge-data-2       PIC  9(8).
+                   15 tge-data-3       PIC  9(8).
+                   15 tge-data-4       PIC  9(8).
+               10 tge-forn-corrisp PIC  9(6).
+               10 tge-perce-arrot-bancale      PIC  9(3)v99.
+               10 tge-perce-fido   PIC  s9(3)v99.
+               10 tge-trasp-italy  PIC  9(6)v999.
+               10 tge-trasp-estero PIC  9(6)v999.
+               10 tge-limite-kg-old            PIC  9(3)v999.
+               10 tge-vettore-std-old          PIC  9(5).
+               10 tge-gg-plus-consegna-old     PIC  9(3).
+               10 tge-num-vuoto-0  PIC  9(1).
+               10 tge-ttipocli-privato         PIC  x(2).
+               10 tge-causale-ord-forn         PIC  x(4).
+               10 tge-causale-omag PIC  x(4).
+               10 tge-reg-PILE     PIC  x(20).
+      *(( XFD NAME = tge-data-consolid ))
+               10 tge-data-consolid-effet      PIC  9(8).
+               10 tge-ora-consolid-effet       PIC  9(8).
+               10 tge-data-contab  PIC  9(8).
+               10 tge-ora-contab   PIC  9(8).
+               10 tge-gg-scadenza-vol-old      PIC  s9(3).
+               10 tge-gg-evadi-parziale-old    PIC  9(3).
+               10 tge-gg-cons-max-old          PIC  9(3).
+      *(( XFD NAME = tge-causale-rottas ))
+               10 tge-causale-rotta-s          PIC  X(4).
+      *(( XFD NAME = tge-causale-rottac ))
+               10 tge-causale-rotta-c          PIC  X(4).
+               10 tge-dati-comuni.
+                   15 tge-data-creazione           PIC  9(8).
+                   15 tge-ora-creazione            PIC  9(8).
+                   15 tge-utente-creazione         PIC  X(10).
+                   15 tge-data-ultima-modifica     PIC  9(8).
+                   15 tge-ora-ultima-modifica      PIC  9(8).
+      *(( XFD NAME = tge-utente-ultima ))
+                   15 tge-utente-ultima-modifica   PIC  X(10).
+               10 tge-vuoti
+                          SYNCHRONIZED .
+                   15 tge-gg-mail-volantino        PIC  999.
+                   15 tge-num-vuoto-1  PIC  9(15).
+                   15 tge-num-vuoto-2  PIC  9(18).
+                   15 tge-num-vuoto-3  PIC  9(18).
+      *(( XFD NAME = tge-gg-inizio-vol ))
+                   15 tge-gg-inizio-vol-pren-old   PIC  s9(3).
+                   15 tge-cod-pag-anticipato       PIC  X(3).
+                   15 tge-gg-master-chiuso         PIC  9(3).
+                   15 tge-ditta-comunicazione-utf  PIC  x(20).
+                   15 tge-gg-vol-qta   PIC  9(3).
+      *(( XFD NAME = tgeanno-f-pdf ))
+                   15 tge-anno-F-pdf   PIC  9(4).
+                   15 tge-num-F-pdf    PIC  9(8).
+                   15 tge-anno-NC-pdf  PIC  9(4).
+                   15 tge-num-NC-pdf   PIC  9(8).
+                   15 tge-blocco-fido  PIC  s9(10)v99.
+                   15 FILLER           PIC  X(432).

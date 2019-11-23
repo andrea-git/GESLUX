@@ -1,0 +1,92 @@
+       FD  progmag.
+       01 prg-rec.
+           05 prg-chiave.
+               10 prg-cod-articolo PIC  9(6).
+               10 prg-cod-magazzino            PIC  X(3).
+               10 prg-tipo-imballo PIC  X(3).
+               10 prg-peso         PIC  9(5)v9(3).
+           05 prg-dati.
+               10 prg-peso-utf     PIC  9(5)v9(3).
+               10 prg-peso-non-utf PIC  9(5)v9(3).
+               10 prg-sezione-dinamici.
+                   15 prg-costo-ultimo PIC  S9(9)V9(2).
+                   15 prg-costo-medio  PIC  S9(9)V9(2).
+                   15 prg-scorta       PIC  S9(8).
+                   15 prg-giacenza     PIC  S9(8).
+                   15 prg-impegnato    PIC  S9(8).
+                   15 prg-impegnati.
+                       20 prg-imp-master   PIC  s9(8).
+                       20 prg-imp-GDO      PIC  s9(8).
+                       20 prg-imp-TRAD     PIC  s9(8).
+                   15 prg-ordinato-1   PIC  S9(8).
+                   15 prg-ordinato-2   PIC  S9(8).
+                   15 prg-ordinato-3   PIC  S9(8).
+                   15 prg-ordinato-4   PIC  S9(8).
+                   15 prg-ordinato-5   PIC  S9(8).
+                   15 prg-ordinato-6   PIC  S9(8).
+               10 prg-sezione-consolidati.
+                   15 prg-iniziali.
+                       20 prg-ini-udm      PIC  S9(8).
+                       20 prg-ini-kg       PIC  S9(9)V9(3).
+                       20 prg-ini-valore   PIC  S9(9)V9(2).
+                   15 prg-acquisti.
+                       20 prg-acq-udm      PIC  S9(8).
+                       20 prg-acq-kg       PIC  S9(9)V9(3).
+                       20 prg-acq-valore   PIC  S9(9)V9(2).
+                   15 prg-vendite.
+                       20 prg-ven-udm      PIC  S9(8).
+                       20 prg-ven-kg       PIC  S9(9)V9(3).
+                       20 prg-ven-valore   PIC  S9(9)V9(2).
+                   15 prg--variazioni.
+                       20 prg-var-inv-udm  PIC  S9(8).
+                       20 prg-var-inv-kg   PIC  S9(9)V9(3).
+      *(( XFD NAME = prg-var-inv-val ))
+                       20 prg-var-inv-valore           PIC  S9(9)V9(2).
+                   15 prg-resi-a-fornitori.
+      *(( XFD NAME = prg-resi-f-udm ))
+                       20 prg-resi-fornitori-udm       PIC  S9(8).
+      *(( XFD NAME = prg-resi-f-kg ))
+                       20 prg-resi-fornitori-kg        PIC  S9(9)V9(3).
+      *(( XFD NAME = prg-resi-f ))
+                       20 prg-resi-fornitori-valore    PIC  S9(9)V9(2).
+                   15 prg-resi-da-cliente.
+                       20 prg-resi-da-cli-udm          PIC  S9(8).
+                       20 prg-resi-da-cli-kg           PIC  S9(9)V9(3).
+                       20 prg-resi-da-cli-valore       PIC  S9(9)V9(2).
+                   15 prg-giacenza-periodo.
+                       20 prg-giacenza-udm PIC  s9(8).
+                       20 prg-giacenza-kg  PIC  S9(9)V9(3).
+                   15 prg-entrate.
+                       20 prg-udm-el       PIC  s9(8).
+                       20 prg-kg-el        PIC  S9(9)V9(3).
+                       20 prg-valore-el    PIC  S9(9)V9(2).
+                   15 prg-entrate2.
+                       20 prg-udm-el2      PIC  s9(8).
+                       20 prg-kg-el2       PIC  S9(9)V9(3).
+                       20 prg-valore-el2   PIC  S9(9)V9(2).
+                   15 prg-uscite.
+                       20 prg-udm-ul       PIC  s9(8).
+                       20 prg-kg-ul        PIC  S9(9)V9(3).
+                       20 prg-valore-ul    PIC  S9(9)V9(2).
+                   15 prg-uscite2.
+                       20 prg-udm-ul2      PIC  s9(8).
+                       20 prg-kg-ul2       PIC  S9(9)V9(3).
+                       20 prg-valore-ul2   PIC  S9(9)V9(2).
+               10 prg-giac-day     PIC  s9(8).
+               10 prg-stato        PIC  X(1).
+                   88 prg-attivo VALUE IS "A". 
+                   88 prg-disattivo VALUE IS "D". 
+                   88 prg-bloccato VALUE IS "B". 
+               10 prg-dati-comuni.
+                   15 prg-data-creazione           PIC  9(8).
+                   15 prg-ora-creazione            PIC  9(8).
+                   15 prg-utente-creazione         PIC  X(10).
+                   15 prg-data-ultima-modifica     PIC  9(8).
+                   15 prg-ora-ultima-modifica      PIC  9(8).
+                   15 prg-utente-ultima-modifica   PIC  X(10).
+               10 prg-vuoti.
+                   15 prg-giacenza-bloc            PIC  s9(8).
+                   15 prg-num-vuoto-1  PIC  9(7).
+                   15 prg-num-vuoto-2  PIC  9(15).
+                   15 prg-num-vuoto-3  PIC  9(15).
+                   15 prg-alfa-vuoto   PIC  X(500).

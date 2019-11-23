@@ -1,0 +1,102 @@
+      *
+      *
+       FD  paramGET.
+       01 get-rec.
+           05 get-chiave.
+               10 get-codice       PIC  X(2).
+           05 get-dati.
+               10 get-cod-GET      PIC  x(15).
+               10 get-mag-GET      PIC  x(3).
+               10 get-nome-semaforo            PIC  x(50).
+               10 get-path-report-server       PIC  x(256).
+               10 get-path-report-client       PIC  x(256).
+      *(( XFD NAME = get-cap-imp-trubut ))
+               10 get-dati-exp.
+                   15 get-path-exp     PIC  x(256).
+                   15 get-path-backup-exp          PIC  x(256).
+                   15 get-file-articoli            PIC  x(50).
+                   15 get-file-ean     PIC  x(50).
+                   15 get-file-prodener            PIC  x(50).
+                   15 get-file-vettori PIC  x(50).
+                   15 get-file-fornitori           PIC  x(50).
+                   15 get-file-clienti PIC  x(50).
+                   15 get-file-tordini PIC  x(50).
+                   15 get-file-rordini PIC  x(50).
+                   15 get-file-note-ordini         PIC  x(50).
+                   15 get-file-classi  PIC  x(50).
+      *(( XFD NAME = get-file-exp-1 ))
+                   15 get-file-vuoto-exp-1         PIC  x(50).
+      *(( XFD NAME = get-file-exp-2 ))
+                   15 get-file-vuoto-exp-2         PIC  x(50).
+      *(( XFD NAME = get-file-exp-3 ))
+                   15 get-file-vuoto-exp-3         PIC  x(50).
+      *(( XFD NAME = get-file-exp-4 ))
+                   15 get-file-vuoto-exp-4         PIC  x(50).
+      *(( XFD NAME = get-file-exp-5 ))
+                   15 get-file-vuoto-exp-5         PIC  x(50).
+                   15 get-ftp-exp.
+                       20 get-sito-exp     PIC  x(100).
+                       20 get-user-exp     PIC  x(50).
+                       20 get-pwd-exp      PIC  x(50).
+                       20 get-path-remota-exp          PIC  x(100).
+               10 get-dati-import.
+                   15 get-path-imp     PIC  x(256).
+                   15 get-path-backup-imp          PIC  x(256).
+                   15 get-file-articoli-imp        PIC  x(50).
+                   15 get-file-tordini-imp         PIC  x(50).
+                   15 get-file-rordini-imp         PIC  x(50).
+      *(( XFD NAME = get-file-vuotoimp1 ))
+                   15 get-file-vuoto-imp-1         PIC  x(50).
+      *(( XFD NAME = get-file-vuotoimp2 ))
+                   15 get-file-vuoto-imp-2         PIC  x(50).
+      *(( XFD NAME = get-file-vuotoimp3 ))
+                   15 get-file-vuoto-imp-3         PIC  x(50).
+      *(( XFD NAME = get-file-vuotoimp4 ))
+                   15 get-file-vuoto-imp-4         PIC  x(50).
+      *(( XFD NAME = get-file-vuotoimp5 ))
+                   15 get-file-vuoto-imp-5         PIC  x(50).
+                   15 get-ftp-imp.
+                       20 get-sito-imp     PIC  x(100).
+                       20 get-user-imp     PIC  x(50).
+                       20 get-pwd-imp      PIC  x(50).
+                       20 get-path-remota-imp          PIC  x(100).
+               10 get-dati-impor-tcarico.
+                   15 get-path-impcar  PIC  x(256).
+                   15 get-path-backup-impcar       PIC  x(256).
+                   15 get-file-articoli-impcar     PIC  x(50).
+      *(( XFD NAME = get-file-tordini-i ))
+                   15 get-file-carichi-impcar      PIC  x(50).
+      *(( XFD NAME = get-file-vuotoimpc ))
+                   15 get-file-vuoto-impcar-1      PIC  x(46).
+                   15 get-causale-impcar           PIC  x(4).
+      *(( XFD NAME = get-file-vuoto-imp ))
+                   15 get-mail-impcar  PIC  x(100).
+      *(( XFD NAME = get-file-vuoto-exp ))
+                   15 get-mail-cc-impcar           PIC  x(100).
+                   15 get-ftp-impcar.
+      *(( XFD NAME = get-sito-imp_1 ))
+                       20 get-sito-impcar  PIC  x(100).
+      *(( XFD NAME = get-user-imp_1 ))
+                       20 get-user-impcar  PIC  x(50).
+      *(( XFD NAME = get-pwd-imp_1 ))
+                       20 get-pwd-impcar   PIC  x(50).
+                       20 get-path-remota-impcar       PIC  x(100).
+               10 get-dati-comuni.
+                   15 get-data-creazione           PIC  9(8).
+                   15 get-ora-creazione            PIC  9(8).
+                   15 get-utente-creazione         PIC  X(10).
+                   15 get-data-ultima-modifica     PIC  9(8).
+                   15 get-ora-ultima-modifica      PIC  9(8).
+                   15 get-utente-ultima-modifica   PIC  X(10).
+               10 get-vuoti.
+                   15 get-num-vuoto-1  PIC  9(18).
+                   15 get-num-vuoto-2  PIC  9(18).
+                   15 get-num-vuoto-3  PIC  9(18).
+                   15 get-dati-mail-mod-bozze.
+                       20 get-mail-mod-bozze           PIC  x(200).
+                       20 get-mail-cc-mod-bozze        PIC  x(200).
+                       20 get-oggetto-canc-bozze       PIC  x(200).
+                       20 get-corpo-canc-bozze         PIC  x(200).
+                       20 get-oggetto-mod-bozze        PIC  x(200).
+                       20 get-corpo-mod-bozze          PIC  x(200).
+                   15 get-alfa-vuoto   PIC  x(3800).

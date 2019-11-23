@@ -1,0 +1,55 @@
+      *(( XFD FILE = STO-rmovmag ))
+       FD  STO-rmovmag.
+       01 STO-rmo-rec.
+           05 STO-rmo-chiave.
+               10 STO-rmo-anno     PIC  9(4).
+               10 STO-rmo-movim    PIC  9(8).
+               10 STO-rmo-riga     PIC  9(5).
+           05 STO-rmo-dati.
+               10 STO-rmo-dati-ricerca.
+                   15 STO-rmo-tipo     PIC  x.
+                       88 STO-rmo-cliente VALUE IS "C". 
+                       88 STO-rmo-fornitore VALUE IS "F". 
+                   15 STO-rmo-cod-clifor           PIC  9(5).
+                   15 STO-rmo-causale  PIC  x(4).
+                   15 STO-rmo-data-movim           PIC  9(8).
+               10 STO-rmo-destino  PIC  9(5).
+               10 STO-rmo-chiave-progmag.
+                   15 STO-rmo-articolo PIC  9(6).
+                   15 STO-rmo-codmag   PIC  x(3).
+                   15 STO-rmo-imballo  PIC  x(3).
+                   15 STO-rmo-peso     PIC  9(5)v9(3).
+               10 STO-rmo-udm      PIC  xx.
+               10 STO-rmo-qta      PIC  9(8).
+               10 STO-rmo-peso-udm PIC  9(5)v999.
+               10 STO-rmo-peso-tot-utf         PIC  9(11)v999.
+               10 STO-rmo-peso-tot PIC  9(11)v999.
+               10 STO-rmo-listino  PIC  9(9)v99.
+               10 STO-rmo-sconto   PIC  99v99.
+               10 STO-rmo-netto    PIC  9(9)v99.
+               10 STO-rmo-imp-cons PIC  9(4)v99.
+               10 STO-rmo-coubat   PIC  9(4)v99.
+               10 STO-rmo-marca-prodotto       PIC  9(4).
+               10 STO-rmo-stato    PIC  x.
+                   88 STO-rmo-attivo VALUE IS "A". 
+                   88 STO-rmo-disattivo VALUE IS "D". 
+                   88 STO-rmo-bloccato VALUE IS "B". 
+               10 STO-rmo-dati-comuni.
+                   15 STO-rmo-data-creazione       PIC  9(8).
+                   15 STO-rmo-ora-creazione        PIC  9(8).
+                   15 STO-rmo-utente-creazione     PIC  X(10).
+                   15 STO-rmo-data-ultima-modifica PIC  9(8).
+                   15 STO-rmo-ora-ultima-modifica  PIC  9(8).
+                   15 STO-rmo-utente-ultima-modifica           PIC  
+           X(10).
+               10 STO-rmo-vuoti.
+                   15 STO-rmo-flag-cancellato      PIC  9.
+                       88 STO-rmo-cancellato VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+                   15 STO-rmo-chiave-eva.
+                       20 STO-rmo-anno-eva PIC  9(4).
+                       20 STO-rmo-num-eva  PIC  9(8).
+                       20 STO-rmo-riga-eva PIC  9(5).
+                   15 STO-rmo-num-vuoto-2          PIC  9(12).
+                   15 STO-rmo-num-vuoto-3          PIC  9(15).
+                   15 STO-rmo-alfa-vuoto-1         PIC  x(200).

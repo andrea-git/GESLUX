@@ -1,0 +1,19 @@
+      *(( XFD FILE = tmp-gdo ))
+       FD  tmp-stat.
+       01 tst-rec.
+           05 tst-chiave.
+               10 tst-mag          PIC  x(3).
+               10 tst-marca        PIC  9(4).
+           05 tst-dati.
+               10 tst-des-marca    PIC  x(30).
+               10 tst-ven-kg       PIC  s9(9)v999.
+               10 tst-ven-1000     PIC  s9(12)v99.
+               10 tst-acq-kg       PIC  s9(9)v999.
+               10 tst-acq-1000     PIC  s9(12)v99.
+               10 tst-gia-utf      PIC  s9(9)v999.
+               10 tst-gia-non-utf  PIC  s9(9)v999.
+               10 tst-ini          PIC  s9(12)v99.
+               10 tst-acq          PIC  s9(12)v99.
+               10 tst-ven          PIC  s9(12)v99.
+               10 tst-fin          PIC  s9(12)v99.
+               10 tst-margine      PIC  s9(12)v99.

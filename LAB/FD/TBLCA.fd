@@ -1,0 +1,32 @@
+      *
+      *Record categorie clienti
+      *
+      * tplvar zmm_title=Tabella categorie clienti
+      * tplvar zmm_ver=09.01.00
+      * tplvar zmm_class=anagraphic
+      * tplvar zmm_returnkey=tblca-codice2
+      *
+      * ZoomFields seq:
+      *   01.tblca-codice2
+      *   02.tblca-descrizione1
+      *   03.tblca-descrizione2
+      *
+      *$XFD  WHEN TBLCA-CODICE1="CA"  TABLENAME=TBLCA
+      *X
+      *
+       FD  TBLCA.
+       01 RECORD-TBLCA.
+           05 TBLCA-CODICE.
+               10 TBLCA-CODICE1    PIC  X(02).
+      *$GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=20,zmm_align=L,zmm_pos=1,zmm_entity=tblca
+      *
+      *
+               10 TBLCA-CODICE2    PIC  X(20).
+           05 RESTO-RECORD-TBLCA.
+      *$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=2
+      *
+               10 TBLCA-DESCR1     PIC  X(30).
+      *$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=3
+      *
+               10 TBLCA-DESCR2     PIC  X(30).
+               10 TBLCA-FILLER-RIS PIC  X(1298).

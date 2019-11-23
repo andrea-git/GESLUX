@@ -1,0 +1,24 @@
+       FD  tnazioni.
+       01 naz-rec.
+           05 naz-chiave.
+               10 naz-codice       PIC  x(3).
+           05 naz-dati.
+               10 naz-descrizione  PIC  x(30).
+               10 naz-dati-comuni.
+                   15 naz-data-creazione           PIC  9(8).
+                   15 naz-ora-creazione            PIC  9(8).
+                   15 naz-utente-creazione         PIC  x(10).
+                   15 naz-data-ultima-modifica     PIC  9(8).
+                   15 naz-ora-ultima-modifica      PIC  9(8).
+                   15 naz-utente-ultima-modifica   PIC  x(10).
+               10 naz-vuoti.
+                   15 naz-num-vuoto-1  PIC  9(15).
+                   15 naz-num-vuoto-2  PIC  9(15).
+                   15 naz-num-vuoto-3  PIC  9(15).
+                   15 naz-cod-EDI      PIC  x(2).
+                   15 naz-imp-esenti   PIC  x.
+                       88 naz-imp-esenti-si VALUE IS "S". 
+                       88 naz-imp-esenti-no VALUE IS "N" " ". 
+                   15 naz-alfa-vuoto-1 PIC  x(17).
+                   15 naz-alfa-vuoto-2 PIC  x(20).
+                   15 naz-alfa-vuoto-3 PIC  x(20).

@@ -1,0 +1,8 @@
+      *
+       01 stp-incsos-linkage.
+           03 sta-data-liq     PIC  9(8).
+           03 sta-da-age       PIC  9(5).
+           03 sta-a-age        PIC  9(5).
+           03 sta-chiamante    PIC  X.
+               88 sta-incassato VALUE IS "I". 
+               88 sta-sospeso VALUE IS "S". 

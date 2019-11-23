@@ -1,0 +1,46 @@
+      *(( XFD FILE = tmp-mrordini ))
+       FD  tmp-mrordini.
+       01 tmro-rec.
+           05 tmro-chiave.
+               10 tmro-chiave-testa.
+                   15 tmro-anno        PIC  9(4).
+                   15 tmro-numero      PIC  9(8).
+               10 tmro-riga        PIC  9(5).
+           05 tmro-dati.
+               10 tmro-cod-cli     PIC  9(5).
+               10 tmro-cliente     PIC  x(40).
+               10 tmro-prg-destino PIC  9(5).
+               10 tmro-destino     PIC  x(40).
+               10 tmro-data-cons   PIC  9(8).
+               10 tmro-ritira      PIC  9.
+                   88 tmro-ritira-si VALUE IS 1. 
+                   88 tmro-ritira-no VALUE IS 0. 
+               10 tmro-des-imballo PIC  X(50).
+               10 tmro-descr       PIC  X(100).
+               10 tmro-prg-chiave.
+                   15 tmro-art         PIC  9(6).
+                   15 tmro-mag         PIC  x(3).
+                   15 tmro-imb         PIC  x(3).
+                   15 tmro-peso        PIC  9(3)v999.
+               10 tmro-blister     PIC  9.
+                   88 tmro-si-blister VALUE IS 1    WHEN SET TO FALSE  
+           0. 
+      *(( XFD NAME = tmeva-promo_1 ))
+               10 tmro-bli-testa   PIC  9.
+                   88 tmro-bli-testa-si VALUE IS 1. 
+                   88 tmro-bli-testa-no VALUE IS 0. 
+               10 tmro-blister-id  PIC  9(6).
+               10 tmro-bli-codice  PIC  9(6).
+               10 tmro-bli-qta     PIC  9(8).
+               10 tmro-bli-evasi   PIC  9(8).
+               10 tmro-qta-o       PIC  9(8).
+               10 tmro-qta-e       PIC  9(8).
+               10 tmro-qta         PIC  9(8).
+               10 tmro-qta-evadibile           PIC  9(8).
+               10 tmro-qta-imballi PIC  9(4).
+               10 tmro-stato       PIC  9.
+               10 tmro-promo       PIC  9.
+                   88 tmro-promo-si VALUE IS 1. 
+                   88 tmro-promo-no VALUE IS 0. 
+               10 tmro-ini-volantino           PIC  9(8).
+               10 tmro-cod-promo   PIC  9(15).

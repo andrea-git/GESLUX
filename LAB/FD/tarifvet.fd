@@ -1,0 +1,28 @@
+       FD  tarifvet.
+       01 tfv-rec.
+           05 tfv-chiave.
+               10 tfv-codice       PIC  9(5).
+               10 tfv-campo1       PIC  9(5).
+               10 tfv-campo1-red REDEFINES tfv-campo1.
+                   15 tfv-prov         PIC  x(2).
+                   15 FILLER           PIC  x(3).
+               10 tfv-campo2       PIC  9(5).
+               10 tfv-prog         PIC  9(2).
+           05 tfv-dati.
+               10 tfv-qli-da       PIC  9(9)v99.
+               10 tfv-qli-a        PIC  9(9)v99.
+               10 tfv-euro         PIC  9(9)v99.
+               10 tfv-dati-comuni.
+                   15 tfv-data-creazione           PIC  9(8).
+                   15 tfv-ora-creazione            PIC  9(8).
+                   15 tfv-utente-creazione         PIC  X(10).
+                   15 tfv-data-ultima-modifica     PIC  9(8).
+                   15 tfv-ora-ultima-modifica      PIC  9(8).
+                   15 tfv-utente-ultima-modifica   PIC  X(10).
+               10 tfv-vuoti.
+                   15 tfv-num-vuoto-1  PIC  9(15).
+                   15 tfv-num-vuoto-2  PIC  9(15).
+                   15 tfv-num-vuoto-3  PIC  9(15).
+                   15 tfv-alfa-vuoto-1 PIC  X(20).
+                   15 tfv-alfa-vuoto-2 PIC  X(20).
+                   15 tfv-alfa-vuoto-3 PIC  X(20).

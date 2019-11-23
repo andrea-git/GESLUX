@@ -1,0 +1,12 @@
+      *(( XFD FILE = tmp-visart ))
+       FD  tmp-visart.
+       01 tvis-rec.
+           05 tvis-chiave.
+               10 tvis-progressivo PIC  9(10).
+           05 tvis-dati.
+               10 tvis-cli-ragsoc  PIC  x(40).
+               10 tvis-des-localita            PIC  x(40).
+               10 tvis-num-fattura PIC  9(8).
+               10 tvis-data-fattura            PIC  9(8).
+               10 tvis-qta         PIC  9(8).
+               10 tvis-prezzo      PIC  9(9)v99.

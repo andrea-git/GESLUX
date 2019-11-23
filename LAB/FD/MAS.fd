@@ -1,0 +1,151 @@
+      * - s.r.1336 13/07/2006 lav.3999 04/06/07 inserito nuovo campo x escludere  |ds 10/07/2007 10.03
+      *   il mastro dal dettaglio c/partite in stampa scheda conto.               |ds 10/07/2007 10.03
+      * ------------------------------------------------------------------
+      *
+      * tk 240 - new prima nota                                                                          |ms 19/11/2008 8.47
+      *        - aggiunto liv 88 alla colonna "mas-modulo-27"
+      *
+      * ------------------------------------------------------------------
+      * Ticket 1829                                                                                      |or 15/04/2009
+      * - Modifiche per automatismi in aggiornamento MOK documenti:
+      *   aggiunto check-box per abilitare il collegamento del mastro
+      *   con la procedura commesse
+      *---------------------------------------------------------------------------------------------------------------------------------
+      * Ticket 2969 - Generazione automatica beni/servizi intra da movimenti primanota                   |or 23/04/2010
+      * Implementazione:
+      * - Aggiunta richiesta codice articolo per compilazione automatica intrastat
+      *   da movimenti di primanota.
+      *---------------------------------------------------------------------------------------------------------------------------------
+      *
+      * tplvar zmm_title=Anagrafica mastri
+      * tplvar zmm_ver=09.01.00
+      * tplvar zmm_class=anagraphic
+      * tplvar zmm_returnkey=mas-codice
+      *
+      * ZoomFields seq:
+      *   01.mas-codice
+      *   02.mas-codice-alternativo
+      *   03.mas-descrizione1
+      *   04.mas-descrizione2
+      *   05.mas-codice-pc
+      *   06.mas-codice-pc-d
+      *   07.mas-codice-ce
+      *   08.mas-codice-ce-d
+      *   09.mas-partite
+      *   10.mas-codice-va
+      *   11.mas-tblvc-codice
+      *   12.mas-tblvc-codice-d
+      *   13.mas-mas-ratei-attivi
+      *   14.mas-mas-ratei-passivi
+      *   15.mas-mas-risconti-attivi
+      *   16.mas-mas-risconti-passiv
+      *   17.mas-ban-codice
+      *   18.mas-ban-codice-d
+      *   19.mas-codice-bilancio-oltre
+      *   20.mas-codice-bilancio-oltre-d
+      *
+      *
+      *
+       FD  MAS.
+       01 RECORD-MAS.
+      *$GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=8,zmm_align=L,zmm_pos=1,zmm_entity=mas
+           05 MAS-CODICE       PIC  X(08).
+           05 RESTO-RECORD-MAS.
+      *$GEN zmm=on,zmm_title=Codice alternativo,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=2
+               10 MAS-CODICE-ALTERNATIVO       PIC  X(30).
+      *$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_key=3,zmm_size=30,zmm_align=L,zmm_pos=3
+               10 MAS-DESCRIZIONE1 PIC  X(30).
+      *$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=4
+               10 MAS-DESCRIZIONE2 PIC  X(30).
+      *$GEN type=code,entity=tblpc,zmm=on,zmm_title=Riepilogo conto,zmm_datatype=x,zmm_size=04,zmm_align=L,zmm_pos=5,zmm_entity=tblpc
+      *
+               10 MAS-CODICE-PC    PIC  X(04).
+      *$GEN type=code,entity=tblce,zmm=on,zmm_title=Riepilogo CEE,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=7,zmm_entity=tblce
+      *
+               10 MAS-CODICE-CE    PIC  X(08).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Partite,zmm_datatype=x,zmm_size=1,zmm_align=L,zmm_pos=9
+      *
+               10 MAS-PARTITE      PIC  X(01).
+                   88 MAS-PARTITE-88 VALUE IS "S" " ". 
+                   88 MAS-PARTITE-SI VALUE IS "S". 
+                   88 MAS-PARTITE-NO VALUE IS " ". 
+      *
+      *$GEN type=code,entity=tblva,zmm=on,zmm_title=Valuta,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=10,zmm_entity=tblva
+      *
+               10 MAS-CODICE-VA    PIC  X(03).
+      *
+      *
+               10 MAS-FILLER-01    PIC  X(128).
+      *
+      * copy "groupdate.xfc". | DBMaker
+               10 MAS-DATA-AGGIORNAMENTO.
+      *(( XFD NAME = MAS-DATA-AGG-AA ))
+                   15 AA   PIC  9(04).
+      *(( XFD NAME = MAS-DATA-AGG-MM ))
+                   15 MM   PIC  9(02).
+      *(( XFD NAME = MAS-DATA-AGG-GG ))
+                   15 GG   PIC  9(02).
+               10 FILLER REDEFINES MAS-DATA-AGGIORNAMENTO.
+      *$GEN type=date
+      *
+                   15 MAS-DATA-AGGIORNAMENTO-N     PIC  9(08).
+      *$GEN type=code,entity=tblmm
+      *
+               10 MAS-TBLMM-CODICE PIC  X(08).
+      *$GEN type=code,entity=tblvc,zmm=on,zmm_title=Voce analitica,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=11,zmm_entity=tblvc
+      *
+               10 MAS-TBLVC-CODICE PIC  X(03).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+      *
+               10 MAS-MODULO-27    PIC  X(01).
+                   88 MAS-MODULO-27-88 VALUE IS "S" " ". 
+                   88 mas-modulo-27-no VALUE IS space. 
+                   88 mas-modulo-27-si VALUE IS "S". 
+      *
+      *
+      *$GEN type=code,entity=tblba,zmm=on,zmm_title=Banca,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=17,zmm_entity=tblba
+      *
+               10 MAS-BAN-CODICE   PIC  X(08).
+      *$GEN type=code,entity=mas,zmm=on,zmm_title=Ratei attivi,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=13,zmm_entity=mas
+      *
+               10 MAS-MAS-RATEI-ATTIVI         PIC  X(08).
+      *$GEN type=code,entity=mas,zmm=on,zmm_title=Ratei passivi,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=14,zmm_entity=mas
+      *
+               10 MAS-MAS-RATEI-PASSIVI        PIC  X(08).
+      *$GEN type=code,entity=mas,zmm=on,zmm_title=Risconti attivi,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=15,zmm_entity=mas
+               10 MAS-MAS-RISCONTI-ATTIVI      PIC  X(08).
+      *$GEN type=code,entity=mas,zmm=on,zmm_title=Risconti passivi,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=16,zmm_entity=mas
+               10 MAS-MAS-RISCONTI-PASSIVI     PIC  X(08).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+      *
+               10 MAS-MODULO-25    PIC  X(01).
+                   88 MAS-MODULO-25-88 VALUE IS "S" " ". 
+                   88 MAS-MODULO-25-si VALUE IS "S". 
+               10 MAS-DARE-46      PIC  9(06).
+               10 MAS-AVERE-46     PIC  9(06).
+      *$GEN type=code,entity=01tbo,zmm=on,zmm_title=Codice bilancio oltre,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=19,zmm_entity=01tbo
+               10 MAS-CODICE-BILANCIO-OLTRE    PIC  X(15).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+      *
+               10 mas-ratei-analitica          PIC  x.
+                   88 mas-ratei-analitica-88 VALUE IS " " "S". 
+                   88 mas-ratei-analitica-si VALUE IS "S"    WHEN SET 
+           TO FALSE  space. 
+               10 mas-no-dettaglio-cp          PIC  9(01).
+                   88 mas-no-dettaglio-cp-si VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+      *        10  MAS-FILLER                      PIC  X(141).                   |DS 10/07/2007 10.00
+      *
+               10 mas-abilita-commesse         PIC  9(01).
+                   88 mas-abilita-commesse-ok VALUE IS 1. 
+                   88 mas-abilita-commesse-ko VALUE IS 0. 
+      *
+      *$GEN type=code,entity=art
+               10 mas-art-intra    PIC  x(15).
+      *
+      *
+      *       10  MAS-FILLER                      PIC  X(140).                   |DS 10/07/2007 10.00    |or 15/04/2009
+      *
+      *       10  MAS-FILLER                      PIC  X(139).            |or 15/04/2009                 |or 23/04/2010
+               10 MAS-FILLER       PIC  X(124).
+               10 MAS-FILLER-RIS   PIC  X(40).

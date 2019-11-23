@@ -1,0 +1,82 @@
+       FD  OLD-mrordini.
+       01 OLD-mro-rec.
+           05 OLD-mro-chiave.
+               10 OLD-mro-chiave-testa.
+                   15 OLD-mro-anno         PIC  9(4).
+                   15 OLD-mro-numero       PIC  9(8).
+               10 OLD-mro-riga         PIC  9(5).
+           05 OLD-mro-dati.
+               10 OLD-mro-cod-articolo PIC  9(6).
+               10 OLD-mro-qta          PIC  9(8).
+               10 OLD-mro-qta-e        PIC  9(8).
+               10 OLD-mro-qta-b        PIC  9(8).
+               10 OLD-mro-qta-f        PIC  9(8).
+               10 OLD-mro-qta-omaggi   PIC  9(8).
+               10 OLD-mro-prz-unitario PIC  9(9)v9(2).
+               10 OLD-mro-imp-consumo  PIC  9(4)v9(2).
+               10 OLD-mro-imp-cou-cobat            PIC  9(4)v9(2).
+               10 OLD-mro-add-piombo   PIC  9(4)v9(2).
+               10 OLD-mro-imponib-merce            PIC  9(9)v9(2).
+               10 OLD-mro-perce-sconto PIC  9(2)v9(2).
+               10 OLD-mro-omaggio      PIC  X(1).
+                   88 OLD-mro-si-omaggio VALUE IS "S". 
+                   88 OLD-mro-no-omaggio VALUE IS "N". 
+               10 OLD-mro-peso-utf     PIC  9(3)v9(3).
+               10 OLD-mro-peso-non-utf PIC  9(3)v9(3).
+               10 OLD-mro-num-colli    PIC  9(5).
+               10 OLD-mro-cod-imballo  PIC  X(3).
+               10 OLD-mro-des-imballo  PIC  X(50).
+               10 OLD-mro-qta-imballi  PIC  9(4).
+               10 OLD-mro-cod-art-cli  PIC  X(15).
+               10 OLD-mro-cod-iva      PIC  x(3).
+               10 OLD-mro-prz-commle   PIC  9(9)v9(2).
+               10 OLD-mro-prg-chiave.
+                   15 OLD-mro-prg-cod-articolo         PIC  9(6).
+                   15 OLD-mro-prg-cod-magazzino        PIC  X(3).
+                   15 OLD-mro-prg-tipo-imballo         PIC  X(3).
+                   15 OLD-mro-prg-peso     PIC  9(3)v9(3).
+               10 OLD-mro-dati-blister.
+                   15 OLD-mro-bli-codice   PIC  9(6).
+                   15 OLD-mro-bli-qta      PIC  9(8).
+                   15 OLD-mro-bli-perce    PIC  9(3)v99.
+                   15 OLD-mro-blister      PIC  9.
+                       88 OLD-mro-si-blister VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+               10 OLD-mro-promo        PIC  9(15).
+               10 OLD-mro-flag-cancellato          PIC  9.
+                   88 OLD-mro-cancellato VALUE IS 1    WHEN SET TO FALSE  
+           0. 
+               10 OLD-mro-prz-promo    PIC  9.
+                   88 OLD-mro-si-prz-promo VALUE IS 1. 
+                   88 OLD-mro-no-prz-promo VALUE IS 0. 
+               10 OLD-mro-progr        PIC  9(5).
+               10 OLD-mro-evadi-dal    PIC  9(8).
+               10 OLD-mro-dati-comuni.
+                   15 OLD-mro-data-creazione           PIC  9(8).
+                   15 OLD-mro-ora-creazione            PIC  9(8).
+                   15 OLD-mro-utente-creazione         PIC  X(10).
+                   15 OLD-mro-data-ultima-modifica     PIC  9(8).
+                   15 OLD-mro-ora-ultima-modifica      PIC  9(8).
+                   15 OLD-mro-utente-ultima-modifica   PIC  X(10).
+               10 OLD-mro-vuoti.
+                   15 OLD-mro-stato        PIC  9(2).
+                       88 OLD-mro-registrato VALUE IS 1. 
+                       88 OLD-mro-in-lavorazione VALUE IS 2. 
+                       88 OLD-mro-sped-parz VALUE IS 3. 
+                       88 OLD-mro-sped-tot VALUE IS 4. 
+      *****             88 mto-fatt-parz VALUE IS 5. 
+      *****             88 mto-fatt-tot VALUE IS 6. 
+      *
+                       88 OLD-mro-chiuso VALUE IS 7. 
+                   15 OLD-mro-prz-manuale  PIC  9.
+                       88 OLD-mro-prz-manuale-si VALUE IS 1. 
+                       88 OLD-mro-prz-manuale-no VALUE IS 0. 
+                   15 OLD-mro-num-vuoto-1  PIC  9(15).
+                   15 OLD-mro-num-vuoto-2  PIC  9(18).
+                   15 OLD-mro-num-vuoto-3  PIC  9(18).
+                   15 ex-OLD-mro-giang     PIC  x.
+                       88 ex-OLD-mro-attesa VALUE IS " ". 
+                       88 ex-OLD-mro-tagliare-merce VALUE IS "M". 
+                       88 ex-OLD-mro-tenere-saldo VALUE IS "T". 
+                       88 ex-OLD-mro-sostituzione VALUE IS "S". 
+                   15 OLD-mro-alfa-vuoto   PIC  X(499).

@@ -1,0 +1,15 @@
+      *(( XFD FILE = tmp-starticoli ))
+       FD  tmp-starticoli.
+       01 tms-rec.
+           05 tms-chiave.
+               10 tms-marca        PIC  9(4).
+               10 tms-descrizione  PIC  x(50).
+           05 tms-dati.
+               10 tms-articolo     PIC  9(6).
+               10 tms-utf          PIC  x.
+               10 tms-peso-um      PIC  9(5)v9(3).
+               10 tms-listino      PIC  9(9)v99.
+               10 tms-sconto       PIC  9(3)v9(3).
+               10 tms-netto        PIC  9(9)v99.
+               10 tms-ic           PIC  9(9)v99.
+               10 tms-cou          PIC  9(9)v99.

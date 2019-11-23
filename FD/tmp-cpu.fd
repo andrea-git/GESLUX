@@ -1,0 +1,8 @@
+      *(( XFD FILE = tmp-cpu ))
+       FD  tmp-cpu.
+       01 cpu-rec.
+           05 cpu-chiave.
+               10 cpu-pid          PIC  9(10).
+           05 cpu-dati.
+               10 cpu-immagine     PIC  x(20).
+               10 cpu-perce        PIC  9(3).

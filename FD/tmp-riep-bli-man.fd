@@ -1,0 +1,10 @@
+      *(( XFD FILE = tmp-assorcli ))
+       FD  tmp-riep-bli-man.
+       01 tmp-rbma-rec.
+           05 tmp-rbma-chiave.
+               10 tmp-rbma-codice  PIC  9(6).
+               10 tmp-rbma-prog    PIC  9(6).
+           05 tmp-rbma-dati.
+               10 tmp-rbma-art     PIC  9(6).
+               10 tmp-rbma-art-descr           PIC  x(40).
+               10 tmp-rbma-qta     PIC  9(18).

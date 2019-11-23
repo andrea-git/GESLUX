@@ -1,0 +1,98 @@
+      *(( XFD FILE = STO-tordforn ))
+      *
+      *
+       FD  STO-tordforn.
+       01 STO-tof-rec.
+           05 STO-tof-chiave.
+               10 STO-tof-anno     PIC  9(4).
+               10 STO-tof-numero   PIC  9(8).
+           05 STO-tof-dati.
+               10 STO-tof-causale  PIC  x(4).
+               10 STO-tof-data-ordine          PIC  9(8).
+               10 FILLER           PIC  9(8).
+               10 STO-tof-cod-forn PIC  9(5).
+               10 STO-tof-destino  PIC  9(5).
+               10 STO-tof-dati-forn.
+                   15 STO-tof-referente            PIC  x(40).
+                   15 STO-tof-tel-dir  PIC  x(20).
+                   15 STO-tof-fax      PIC  x(20).
+                   15 STO-tof-email    PIC  x(100).
+               10 FILLER           PIC  9(12).
+               10 STO-tof-cliente  PIC  9(5).
+               10 STO-tof-data-listino         PIC  9(8).
+               10 STO-tof-cod-pagamento        PIC  x(3).
+      *(( XFD NAME = STO-tof-cod-pagame ))
+               10 STO-tof-cod-ese-iva          PIC  x(3).
+               10 STO-tof-tipo-scarico         PIC  x.
+                   88 STO-tof-urgente VALUE IS "U". 
+               10 STO-tof-data-consegna        PIC  9(8).
+               10 STO-tof-mese-rif PIC  99.
+               10 STO-tof-pz-tot   PIC  9(8).
+               10 STO-tof-pz-arrivati          PIC  9(8).
+               10 STO-tof-tipo-creazione       PIC  x.
+                   88 STO-tof-manuale VALUE IS "M". 
+                   88 STO-tof-automatico VALUE IS "A". 
+               10 STO-tof-stato    PIC  x.
+                   88 STO-tof-inserito VALUE IS "I". 
+                   88 STO-tof-inviato VALUE IS "S". 
+                   88 STO-tof-in-lavorazione VALUE IS "L". 
+                   88 STO-tof-chiuso VALUE IS "C". 
+               10 STO-tof-stato-evasione       PIC  x.
+                   88 STO-tof-inevaso VALUE IS "I". 
+                   88 STO-tof-evas-parz VALUE IS "P". 
+                   88 STO-tof-evas-tot VALUE IS "T". 
+               10 STO-tof-da-confermare        PIC  9(1).
+                   88 STO-tof-da-confermare-si VALUE IS 1. 
+                   88 STO-tof-da-confermare-no VALUE IS 0. 
+               10 STO-tof-rivisto  PIC  9(1).
+                   88 STO-tof-rivisto-si VALUE IS 1. 
+                   88 STO-tof-rivisto-no VALUE IS 0. 
+               10 STO-tof-programmazione       PIC  9.
+                   88 STO-tof-programmazione-si VALUE IS 1. 
+                   88 STO-tof-programmazione-no VALUE IS 0. 
+               10 STO-tof-tipo-invio           PIC  x.
+                   88 STO-tof-invio-man VALUE IS "M". 
+                   88 STO-tof-invio-fax VALUE IS "F". 
+                   88 STO-tof-invio-mail VALUE IS "E". 
+               10 STO-tof-dati-invio.
+                   15 STO-tof-data-invio           PIC  9(8).
+                   15 STO-tof-ora-invio            PIC  9(8).
+                   15 STO-tof-utente-invio         PIC  X(10).
+               10 STO-tof-tipo-chiusura        PIC  x.
+                   88 STO-tof-chiusura-man VALUE IS "M". 
+                   88 STO-tof-chiusura-auto VALUE IS "A". 
+               10 STO-tof-dati-chiusura.
+                   15 STO-tof-nota-chiusura        PIC  x(50).
+                   15 STO-tof-data-chiusura        PIC  9(8).
+                   15 STO-tof-ora-chiusura         PIC  9(8).
+                   15 STO-tof-utente-chiusura      PIC  X(10).
+               10 STO-tof-dati-comuni.
+                   15 STO-tof-data-creazione       PIC  9(8).
+                   15 STO-tof-ora-creazione        PIC  9(8).
+                   15 STO-tof-utente-creazione     PIC  X(10).
+                   15 STO-tof-data-ultima-modifica PIC  9(8).
+                   15 STO-tof-ora-ultima-modifica  PIC  9(8).
+                   15 STO-tof-utente-ultima-modifica           PIC  
+           X(10).
+               10 STO-tof-vuoti.
+                   15 STO-tof-destino-c            PIC  9(5).
+                   15 STO-tof-promo    PIC  9(15).
+                   15 STO-tof-franco-part          PIC  9.
+                       88 STO-tof-franco-part-si VALUE IS 1. 
+                       88 STO-tof-franco-part-no VALUE IS 0. 
+      *(( XFD NAME = STO-tof-num-vuoto- ))
+                   15 STO-tof-aperto   PIC  9(1).
+                       88 STO-tof-aperto-si VALUE IS 1. 
+                       88 STO-tof-aperto-no VALUE IS 0. 
+                   15 STO-tof-st-dati-fatt         PIC  9.
+                       88 STO-tof-st-dati-fatt-si VALUE IS 1. 
+                       88 STO-tof-st-dati-fatt-no VALUE IS 0. 
+                   15 STO-tof-num-vuoto-2          PIC  9(13).
+                   15 STO-tof-num-vuoto-3          PIC  9(18).
+                   15 STO-tof-alfa-vuoto-1         PIC  X(20).
+                   15 STO-tof-alfa-vuoto-2         PIC  X(20).
+                   15 STO-tof-stampante            PIC  X.
+                       88 STO-tof-stampante-A VALUE IS " ". 
+                       88 STO-tof-stampante-L VALUE IS "L". 
+                       88 STO-tof-stampante-M VALUE IS "M". 
+                   15 STO-tof-alfa-vuoto-3         PIC  X(19).

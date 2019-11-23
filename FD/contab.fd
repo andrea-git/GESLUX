@@ -1,0 +1,43 @@
+       FD  contab.
+       01 contab-rec.
+           05 contab-chiave.
+               10 contab-data      PIC  9(8).
+               10 contab-ora       PIC  9(8).
+           05 contab-dati.
+               10 contab-tipo      PIC  x.
+                   88 contab-fatture VALUE IS "F". 
+                   88 contab-merce VALUE IS "M". 
+                   88 contab-note VALUE IS "N". 
+               10 contab-dati-documento.
+                   15 contab-da-documento          PIC  9(8).
+                   15 contab-a-documento           PIC  9(8).
+                   15 contab-tot-documento         PIC  9(8).
+               10 contab-dati-protocollo.
+                   15 contab-da-protocollo         PIC  9(8).
+                   15 contab-a-protocollo          PIC  9(8).
+      *
+      *
+      *
+      *
+                   15 contab-k-protocollo          PIC  x(14).
+               10 contab-dati-PNT.
+      *(( XFD NAME = contab-da-protocol ))
+                   15 contab-da-PNT    PIC  9(8).
+      *(( XFD NAME = contab-a-protocoll ))
+                   15 contab-a-PNT     PIC  9(8).
+      *
+      *
+      *
+      *
+                   15 contab-k-PNT     PIC  x(14).
+               10 contab-dati-PAT.
+      *(( XFD NAME = contab-da-protocol ))
+                   15 contab-da-PAT    PIC  9(8).
+      *(( XFD NAME = contab-a-protocoll ))
+                   15 contab-a-PAT     PIC  9(8).
+      *
+      *
+      *
+      *
+                   15 contab-k-PAT     PIC  x(14).
+               10 FILLER           PIC  x(500).

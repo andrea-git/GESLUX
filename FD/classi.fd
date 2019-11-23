@@ -1,0 +1,51 @@
+       FD  classi.
+       01 cla-rec.
+           05 cla-chiave.
+               10 cla-livello.
+                   15 cla-l1           PIC  9(3).
+                   15 cla-l2           PIC  9(3).
+                   15 cla-l3           PIC  9(3).
+                   15 cla-l4           PIC  9(3).
+                   15 cla-l5           PIC  9(3).
+                   15 cla-l6           PIC  9(3).
+                   15 cla-l7           PIC  9(3).
+                   15 cla-l8           PIC  9(3).
+                   15 cla-l9           PIC  9(3).
+                   15 cla-l10          PIC  9(3).
+                   15 cla-l11          PIC  9(3).
+                   15 cla-l12          PIC  9(3).
+                   15 cla-l13          PIC  9(3).
+                   15 cla-l14          PIC  9(3).
+                   15 cla-l15          PIC  9(3).
+                   15 cla-l16          PIC  9(3).
+                   15 cla-l17          PIC  9(3).
+                   15 cla-l18          PIC  9(3).
+                   15 cla-l19          PIC  9(3).
+                   15 cla-l20          PIC  9(3).
+                   15 cla-l21          PIC  9(3).
+                   15 cla-l22          PIC  9(3).
+                   15 cla-l23          PIC  9(3).
+                   15 cla-l24          PIC  9(3).
+                   15 cla-l25          PIC  9(3).
+                   15 cla-l26          PIC  9(3).
+                   15 cla-l27          PIC  9(3).
+                   15 cla-l28          PIC  9(3).
+                   15 cla-l29          PIC  9(3).
+                   15 cla-l30          PIC  9(3).
+           05 cla-dati.
+               10 cla-descrizione  PIC  x(50).
+               10 cla-livello-classe           PIC  9(3).
+               10 cla-dati-comuni.
+                   15 cla-data-creazione           PIC  9(8).
+                   15 cla-ora-creazione            PIC  9(8).
+                   15 cla-utente-creazione         PIC  X(10).
+                   15 cla-data-ultima-modifica     PIC  9(8).
+                   15 cla-ora-ultima-modifica      PIC  9(8).
+                   15 cla-utente-ultima-modifica   PIC  X(10).
+               10 cla-vuoti.
+                   15 cla-num-vuoto-1  PIC  9(15).
+                   15 cla-num-vuoto-2  PIC  9(15).
+                   15 cla-num-vuoto-3  PIC  9(15).
+                   15 cla-alfa-vuoto-1 PIC  X(20).
+                   15 cla-alfa-vuoto-2 PIC  X(20).
+                   15 cla-alfa-vuoto-3 PIC  X(20).

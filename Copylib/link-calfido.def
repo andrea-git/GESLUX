@@ -1,0 +1,14 @@
+       01 calfido-linkage.
+         05 dare-precedente           pic s9(13)v9(02).
+         05 avere-precedente          pic s9(13)v9(02).
+         05 dare-saldo                pic s9(13)v9(02).
+         05 avere-saldo               pic s9(13)v9(02).
+         05 saldo                     pic s9(13)v9(02).
+         05 saldo-scaduto             pic s9(13)v9(02).
+         05 saldo-scadenza            pic s9(13)v9(02).
+         05 effetti-rischio           pic s9(13)v9(02).
+         05 ordini-in-essere          pic s9(13)v9(02).
+         05 link-cli-codice           pic x(5).
+         05 calfido-status            signed-short.
+         05 calfido-path-log          pic x(256).
+         05 filler                    pic x(200).

@@ -1,0 +1,90 @@
+      *(( XFD FILE = STO-mtordini ))
+       FD  STO-mtordini.
+       01 STO-mto-rec.
+           05 STO-mto-chiave.
+               10 STO-mto-anno     PIC  9(4).
+               10 STO-mto-numero   PIC  9(8).
+           05 STO-mto-dati.
+               10 STO-mto-causale  PIC  x(4).
+               10 STO-mto-tipo-CF  PIC  x.
+               10 STO-mto-cod-cli  PIC  9(5).
+               10 STO-mto-prg-destino          PIC  9(5).
+               10 STO-mto-gdo      PIC  x(5).
+               10 STO-mto-num-ord-cli          PIC  X(50).
+               10 STO-mto-data-ordine          PIC  9(8).
+               10 STO-mto-data-passaggio-ordine            PIC  9(8).
+               10 STO-mto-cod-agente           PIC  9(5).
+               10 STO-mto-cod-pagamento        PIC  x(3).
+               10 STO-mto-cod-ese-iva          PIC  x(3).
+               10 STO-mto-gest-plus            PIC  9(5).
+               10 STO-mto-vettore  PIC  9(5).
+               10 STO-mto-note1    PIC  X(19).
+               10 STO-mto-data-note1           PIC  9(8).
+               10 STO-mto-note2    PIC  X(30).
+               10 STO-mto-note3    PIC  X(30).
+               10 STO-mto-note4    PIC  X(30).
+               10 STO-mto-note     PIC  X(500).
+               10 STO-mto-pz-tot   PIC  9(8).
+               10 STO-mto-pz-eva   PIC  9(8).
+               10 STO-mto-ritira-in-lubex      PIC  9.
+                   88 STO-mto-ritira-si VALUE IS 1. 
+                   88 STO-mto-ritira-no VALUE IS 0. 
+               10 STO-mto-promo    PIC  9.
+                   88 STO-mto-si-promo VALUE IS 1. 
+                   88 STO-mto-no-promo VALUE IS 0. 
+               10 STO-mto-stato-attivazione    PIC  X(1).
+                   88 STO-mto-attivo VALUE IS "A". 
+                   88 STO-mto-bloccato VALUE IS "B". 
+                   88 STO-mto-chiuso-man VALUE IS "C". 
+               10 STO-mto-stato-ordine         PIC  9.
+                   88 STO-mto-registrato VALUE IS 1. 
+                   88 STO-mto-in-lavorazione VALUE IS 2. 
+                   88 STO-mto-sped-parz VALUE IS 3. 
+                   88 STO-mto-sped-tot VALUE IS 4. 
+      *****             88 mto-fatt-parz VALUE IS 5. 
+      *****             88 mto-fatt-tot VALUE IS 6. 
+      *
+      *
+      *
+                   88 STO-mto-chiuso VALUE IS 7. 
+               10 STO-mto-dati-comuni.
+                   15 STO-mto-data-creazione       PIC  9(8).
+                   15 STO-mto-ora-creazione        PIC  9(8).
+                   15 STO-mto-utente-creazione     PIC  X(10).
+                   15 STO-mto-data-ultima-modifica PIC  9(8).
+                   15 STO-mto-ora-ultima-modifica  PIC  9(8).
+                   15 STO-mto-utente-ultima-modifica           PIC  
+           X(10).
+               10 STO-mto-prenotazione-qta     PIC  9(1).
+                   88 STO-mto-prenotazione-qta-si VALUE IS 1. 
+                   88 STO-mto-prenotazione-qta-no VALUE IS 0. 
+               10 STO-mto-causale-blocco       PIC  xx.
+                   88 STO-mto-causale-blocco-prezzo VALUE IS "PR". 
+                   88 STO-mto-causale-blocco-fido VALUE IS "FI". 
+                   88 STO-mto-causale-blocco-manuale VALUE IS "MA". 
+               10 STO-mto-saldi-banco          PIC  9(1).
+                   88 STO-mto-saldi-banco-si VALUE IS 1. 
+                   88 STO-mto-saldi-banco-no VALUE IS 0. 
+               10 STO-mto-forn-reso            PIC  9(5).
+               10 STO-mto-saldi-promo          PIC  9(1).
+                   88 STO-mto-saldi-promo-si VALUE IS 1. 
+                   88 STO-mto-saldi-promo-no VALUE IS 0. 
+               10 STO-mto-immediato            PIC  9(1).
+                   88 STO-mto-immediato-si VALUE IS 1. 
+                   88 STO-mto-immediato-no VALUE IS 0. 
+               10 STO-mto-vuoti.
+      *(( XFD NAME = mto-num-vuoto-3_1 ))
+                   15 STO-mto-promo-fittizia       PIC  9(15).
+                   15 STO-mto-ordine-EDI.
+                       20 STO-mto-ordine-EDI-anno      PIC  9(4).
+                       20 STO-mto-ordine-EDI-numero    PIC  9(8).
+                   15 STO-mto-alfa-vuoto-1         PIC  X(5).
+                   15 STO-mto-alfa-vuoto-2         PIC  X(20).
+                   15 STO-mto-alfa-vuoto-3         PIC  X(20).
+               10 STO-mto-ultima-evasione.
+                   15 STO-mto-data-evasione        PIC  9(8).
+                   15 STO-mto-ora-evasione         PIC  9(8).
+                   15 STO-mto-utente-evasione      PIC  x(15).
+               10 STO-mto-note-bolla-1         PIC  x(500).
+               10 STO-mto-note-bolla-2         PIC  x(500).
+               10 FILLER           PIC  x(200).

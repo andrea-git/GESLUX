@@ -1,0 +1,16 @@
+      *(( XFD FILE = tmp-assorcli ))
+       FD  tmp-sost-art.
+       01 tmp-sar-rec.
+           05 tmp-sar-chiave.
+               10 tmp-sar-orig.
+                   15 tmp-sar-codice-orig          PIC  9(6).
+                   15 tmp-sar-imb-orig PIC  x(3).
+                   15 tmp-sar-ean-orig PIC  9(13).
+               10 tmp-sar-dest.
+                   15 tmp-sar-codice-dest          PIC  9(6).
+                   15 tmp-sar-imb-dest PIC  x(3).
+                   15 tmp-sar-ean-dest PIC  9(13).
+           05 tmp-sar-dati.
+               10 tmp-sar-descr-imb-orig       PIC  x(50).
+               10 tmp-sar-descr-imb-dest       PIC  x(50).
+               10 tmp-sar-qta      PIC  9(8).

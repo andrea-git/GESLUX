@@ -1,0 +1,29 @@
+      *(( XFD FILE = STO-tagli ))
+       FD  STO-tagli.
+       01 STO-tag-rec.
+           05 STO-tag-chiave.
+               10 STO-tag-data     PIC  9(8).
+               10 STO-tag-gdo      PIC  x(5).
+               10 STO-tag-articolo PIC  9(6).
+               10 STO-tag-prog     PIC  9(3).
+           05 STO-tag-dati.
+               10 STO-tag-prz      PIC  s9(9)v99.
+               10 STO-tag-qta      PIC  9(8).
+               10 STO-tag-comuni.
+                   15 STO-tag-data-creazione       PIC  9(8).
+                   15 STO-tag-ora-creazione        PIC  9(8).
+                   15 STO-tag-utente-creazione     PIC  x(10).
+                   15 STO-tag-data-modifica        PIC  9(8).
+                   15 STO-tag-ora-modifica         PIC  9(8).
+                   15 STO-tag-utente-modifica      PIC  x(10).
+               10 STO-tag-vuoti.
+                   15 STO-tag-mro-chiave.
+                       20 STO-tag-mro-chiave-testa.
+                           25 STO-tag-mro-anno PIC  9(4).
+                           25 STO-tag-mro-numero           PIC  9(8).
+                       20 STO-tag-mro-riga PIC  9(5).
+                   15 STO-tag-num-vuoto-2          PIC  9(13).
+                   15 STO-tag-num-vuoto-3          PIC  9(15).
+                   15 STO-tag-alfa-vuoto-1         PIC  x(20).
+                   15 STO-tag-alfa-vuoto-2         PIC  x(20).
+                   15 STO-tag-alfa-vuoto-3         PIC  x(20).

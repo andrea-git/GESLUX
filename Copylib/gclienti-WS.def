@@ -1,0 +1,463 @@
+      *
+           COPY  "COMBO-INVIO.DEF".
+           COPY  "COMBO-STATO.DEF".
+           COPY  "COMBO-STATO-DESTINI.DEF".
+           COPY  "APRI-NOTE.DEF".
+           COPY  "CODFIS.LKS".
+           COPY  "LINK-STAMPA.DEF".
+           COPY  "SPLCRT2GRAF.LKS".
+           COPY  "LINK-G2AGG.DEF".
+           COPY  "link-sitfin.def".
+           COPY  "link-passwd.def".
+       01 cau-blocco       PIC  x.
+           88 no-angraf VALUE IS "N". 
+           88 prob-pag VALUE IS "P". 
+           88 nuovo-ragsoc VALUE IS "R". 
+           88 fuori-fido VALUE IS "F". 
+           88 blocco-amministrativo VALUE IS "A". 
+       01 sost PIC  x.
+           88 sost-auto VALUE IS "A". 
+           88 sost-richiesta VALUE IS "R". 
+           88 sost-no VALUE IS " " "N". 
+       01 tipo-art         PIC  9.
+           88 tipo-art-diretti VALUE IS 1. 
+           88 tipo-art-gruppi VALUE IS 2. 
+           88 tipo-art-specialist VALUE IS 3. 
+           88 tipo-art-DO VALUE IS 4. 
+           88 tipo-art-GDA VALUE IS 5. 
+           88 tipo-art-GDS VALUE IS 6. 
+           88 tipo-art-ESTERO VALUE IS 7. 
+       77 STATUS-note2     PIC  X(2).
+           88 VALID-STATUS-note2 VALUE IS "00" THRU "09". 
+       77 FILLER           PIC  9.
+           88 PagamentoBancario VALUE IS 1    WHEN SET TO FALSE  0. 
+       77 FILLER           PIC  9.
+           88 ScegliCliPrg VALUE IS 1    WHEN SET TO FALSE  0. 
+       77 FILLER           PIC  9
+                  VALUE IS 0.
+           88 ForzaRiga VALUE IS 1    WHEN SET TO FALSE  0. 
+       77 como-x           PIC  x.
+       77 Form1-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 imb-qta-edit     PIC  z.zzz.
+       77 STATUS-pagbloc   PIC  X(2).
+           88 Valid-STATUS-pagbloc VALUE IS "00" THRU "09". 
+       77 Large-Font
+                  USAGE IS HANDLE OF FONT LARGE-FONT.
+       77 copia-clides-bmp PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 Form1-Pg-4-Visible           PIC  9
+                  VALUE IS 0.
+       77 cbo-tipo-art-buf PIC  X(30).
+       77 cbo-tipo-art-d-buf           PIC  X(30).
+       77 codice-ed        PIC  z(5).
+       77 codice-x         PIC  x(5).
+       01 file-info.
+           05 file-size        PIC  X(8)
+                      USAGE IS COMP-X.
+           05 file-date        PIC  9(8)
+                      USAGE IS COMP-X.
+           05 file-time        PIC  9(8)
+                      USAGE IS COMP-X.
+       78 78-gclienti VALUE IS "gclienti". 
+       77 sitfin-91x21-bmp PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       78 cli-min-value VALUE IS "C00000". 
+       78 cli-max-value VALUE IS "Czzzzz". 
+       77 cbo-sost-art-buf PIC  X(30).
+       77 LastPrg          PIC  9(5).
+       77 nome-file        PIC  x(15).
+       01 FILLER           PIC  9.
+           88 NonCambiareTab VALUE IS 1    WHEN SET TO FALSE  0. 
+       01 FILLER           PIC  9.
+           88 ExistRecord VALUE IS 1    WHEN SET TO FALSE  0. 
+       77 countchar        PIC  9(3).
+       01 FlagDestinoCambiato          PIC  9.
+           88 DestinoCambiato VALUE IS 1    WHEN SET TO FALSE  0. 
+       01 FlagPrgCambiato  PIC  9.
+           88 PrgCambiato VALUE IS 1    WHEN SET TO FALSE  0. 
+       01 save-cli-K1.
+           05 save-ragsoc-K1   PIC  x(40).
+           05 save-codice-K1   PIC  9(5).
+       01 SceltaDelete     PIC  x.
+           88 Elimina VALUE IS "E". 
+           88 Disattiva VALUE IS "D". 
+           88 Annulla VALUE IS "A". 
+       77 pagina           PIC  9
+                  VALUE IS 1.
+       77 STATUS-evaclides PIC  X(2).
+           88 Valid-STATUS-evaclides VALUE IS "00" THRU "09". 
+       01 tab-dati-creazione.
+           05 el-tab-data      PIC  9(8)
+                      OCCURS 9999 TIMES.
+           05 el-tab-ora       PIC  9(8)
+                      OCCURS 9999 TIMES.
+           05 el-tab-utente    PIC  x(10)
+                      OCCURS 9999 TIMES.
+       01 WrkCampi.
+           05 WrkNote-1        PIC  x(19).
+           05 WrkData          PIC  9(8).
+           05 WrkNote-2        PIC  x(30).
+           05 WrkNote-3        PIC  x(30).
+           05 WrkNote-4        PIC  x(30).
+       78 MAX-PAGE VALUE IS 6. 
+       01 TabID
+                  OCCURS MAX-PAGE TIMES.
+           05 min-id           PIC  9(9).
+           05 max-id           PIC  9(9).
+       77 OPENSAVE-STATUS  PIC  S9(2)
+                  VALUE IS 0.
+       77 result
+                  USAGE IS SIGNED-SHORT.
+       77 counter          PIC  9(3).
+       77 Form1-Tb-1-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 COMO-RECORD      PIC  X(32000).
+       01 FLAG-MOD         PIC  9
+                  VALUE IS 0.
+       01 CONTROL-COMO     PIC  9(2)
+                  VALUE IS 0.
+       77 E-ESCI           PIC  9
+                  VALUE IS 1.
+       77 E-NUOVO          PIC  9
+                  VALUE IS 1.
+       77 E-SALVA          PIC  9
+                  VALUE IS 1.
+       77 E-CANCELLA       PIC  9
+                  VALUE IS 1.
+       77 E-MODIFICA       PIC  9
+                  VALUE IS 1.
+       77 E-ANTEPRIMA      PIC  9
+                  VALUE IS 0.
+       77 E-STAMPA         PIC  9
+                  VALUE IS 0.
+       77 E-CERCA          PIC  9
+                  VALUE IS 0.
+       77 Form1-St-1-Handle
+                  USAGE IS HANDLE OF STATUS-BAR.
+       77 Status-cod       PIC  9.
+       77 data-oggi        PIC  9(8).
+       77 E-SELEZIONA      PIC  9
+                  VALUE IS 1.
+       77 toolbar-bmp
+                  USAGE IS HANDLE OF BITMAP
+                  VALUE IS 0.
+       77 Screen1-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 Default-Font
+                  USAGE IS HANDLE OF FONT DEFAULT-FONT.
+       77 Small-Font
+                  USAGE IS HANDLE OF FONT SMALL-FONT.
+       78 primo-id-dati VALUE IS 5002. 
+       77 Form2-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 Form1-Pg-1-Visible           PIC  9
+                  VALUE IS 0.
+       77 Default-bmp      PIC  S9(6)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 Form1-Pg-2-Visible           PIC  9
+                  VALUE IS 0.
+       78 TITOLO VALUE IS "Geslux - Gestione Clienti". 
+       77 STATUS-clienti   PIC  X(2).
+           88 Valid-STATUS-clienti VALUE IS "00" THRU "09". 
+       77 STATUS-destini   PIC  X(2).
+           88 Valid-STATUS-destini VALUE IS "00" THRU "09". 
+       77 STATUS-note      PIC  X(2).
+           88 Valid-STATUS-note VALUE IS "00" THRU "09". 
+       77 STATUS-recapiti  PIC  X(2).
+           88 Valid-STATUS-recapiti VALUE IS "00" THRU "09". 
+       77 STATUS-tregioni  PIC  X(2).
+           88 Valid-STATUS-tregioni VALUE IS "00" THRU "09". 
+       77 STATUS-tnazioni  PIC  X(2).
+           88 Valid-STATUS-tnazioni VALUE IS "00" THRU "09". 
+       77 STATUS-tvettori  PIC  X(2).
+           88 Valid-STATUS-tvettori VALUE IS "00" THRU "09". 
+       77 STATUS-tprov     PIC  X(2).
+           88 Valid-STATUS-tprov VALUE IS "00" THRU "09". 
+       77 STATUS-agenti    PIC  X(2).
+           88 Valid-STATUS-agenti VALUE IS "00" THRU "09". 
+       77 STATUS-ttipocli  PIC  X(2).
+           88 Valid-STATUS-ttipocli VALUE IS "00" THRU "09". 
+       77 STATUS-tgrupgdo  PIC  X(2).
+           88 Valid-STATUS-tgrupgdo VALUE IS "00" THRU "09". 
+       01 rec-grid.
+           05 col-prog         PIC  z(5).
+           05 col-ragsoc       PIC  X(40).
+           05 col-indirizzo    PIC  x(40).
+           05 col-cap          PIC  X(5).
+           05 col-localita     PIC  X(35).
+           05 col-prov         PIC  x(2).
+       77 note-114x23-bmp  PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 mod-campi        PIC  9
+                  VALUE IS 1.
+       77 cbo-stato-buf    PIC  X(10).
+       01 save-chiave.
+           10 save-cli-tipo    PIC  X.
+           10 save-cli-codice  PIC  9(5).
+       01 save-des-key.
+           05 save-des-codice  PIC  9(5).
+           05 save-des-prog    PIC  9(5).
+       01 save-rec-key.
+           05 save-rec-codice  PIC  9(5).
+       01 old-rec-rec.
+           05 old-rec-chiave.
+               10 old-rec-codice   PIC  9(5).
+           05 old-rec-dati.
+               10 old-rec-ragsoc-1 PIC  x(40).
+               10 old-rec-ragsoc-2 PIC  x(40).
+               10 old-rec-indirizzo            PIC  x(40).
+               10 old-rec-cap      PIC  x(5).
+               10 old-rec-localita PIC  x(35).
+               10 old-rec-provincia            PIC  x(2).
+               10 old-rec-nazione  PIC  x(3).
+               10 old-rec-invio    PIC  x.
+                   88 old-rec-invio-manuale VALUE IS "M". 
+      *             88 old-rec-invio-postel VALUE IS "P". 
+      *
+      *                                               
+                   88 old-rec-invio-EDI VALUE IS "E". 
+                   88 old-rec-invio-nessuno VALUE IS "N". 
+      *             88 old-rec-invio-postel VALUE IS "P". 
+      *
+      *
+                   88 old-rec-invio-nessuno VALUE IS "N". 
+           05 old-rec-dati-comuni.
+               10 old-rec-data-creazione       PIC  9(8).
+               10 old-rec-ora-creazione        PIC  9(8).
+               10 old-rec-utente-creazione     PIC  X(10).
+               10 old-rec-data-ultima-modifica PIC  9(8).
+               10 old-rec-ora-ultima-modifica  PIC  9(8).
+               10 old-rec-utente-ultima-modifica           PIC  X(10).
+           05 old-rec-vuoti.
+               10 old-rec-num-vuoto-1          PIC  9(15).
+               10 old-rec-num-vuoto-2          PIC  9(15).
+               10 old-rec-num-vuoto-3          PIC  9(15). 
+               10 old-rec-dett-dest-SDI            PIC  x.
+                  88 old-rec-dett-dest-SDI-si VALUE IS "S". 
+                  88 old-rec-dett-dest-SDI-no VALUE IS "N"," ". 
+               10 old-rec-alfa-vuoto-1 PIC  X(19).
+               10 old-rec-alfa-vuoto-2         PIC  X(20).
+               10 old-rec-alfa-vuoto-3         PIC  X(20).
+       77 Form1-Pg-3-Visible           PIC  9
+                  VALUE IS 0.
+       01 old-not-rec.
+           05 old-not-chiave.
+               10 old-not-codice   PIC  9(5).
+               10 old-not-prog     PIC  9(5).
+           05 old-not-dati.
+               10 old-not-note-1   PIC  x(19).
+               10 old-not-data     PIC  9(8).
+               10 old-not-note-2   PIC  x(30).
+               10 old-not-note-3   PIC  x(30).
+               10 old-not-note-4   PIC  x(30).
+           05 old-not-dati-comuni.
+               10 old-not-data-creazione       PIC  9(8).
+               10 old-not-ora-creazione        PIC  9(8).
+               10 old-not-utente-creazione     PIC  X(10).
+               10 old-not-data-ultima-modifica PIC  9(8).
+               10 old-not-ora-ultima-modifica  PIC  9(8).
+               10 old-not-utente-ultima-modifica           PIC  X(10).
+           05 old-not-vuoti.
+               10 old-not-num-vuoto-1          PIC  9(15).
+               10 old-not-num-vuoto-2          PIC  9(15).
+               10 old-not-num-vuoto-3          PIC  9(15).
+               10 old-not-alfa-vuoto-1         PIC  X(20).
+               10 old-not-alfa-vuoto-2         PIC  X(20).
+               10 old-not-alfa-vuoto-3         PIC  X(20).
+       01 hidden-rec.
+           05 hidden-dati.
+               10 hidden-ragsoc-2  PIC  x(40).
+               10 hidden-nazione   PIC  x(3).
+               10 hidden-telef-1   PIC  x(15).
+               10 hidden-telef-2   PIC  x(15).
+               10 hidden-fax       PIC  X(15).
+               10 hidden-mail      PIC  X(30).
+               10 hidden-cod-ditta PIC  x(15).
+               10 hidden-saldi-banco           PIC  9.
+               10 hidden-saldi-promo           PIC  9.
+               10 hidden-tipo-art  PIC  9.
+               10 hidden-referente PIC  x(30).
+               10 hidden-vettore   PIC  9(5).
+               10 hidden-deposito-utf          PIC  x.
+               10 hidden-stato     PIC  x.
+               10 hidden-superamento           PIC  x.
+               10 hidden-note-1    PIC  x(19).
+               10 hidden-data-note PIC  9(8).
+               10 hidden-note-2    PIC  x(30).
+               10 hidden-note-3    PIC  x(30).
+               10 hidden-note-4    PIC  x(30).
+               10 hidden-invio     PIC  x.
+               10 hidden-piva      PIC  9(11).
+               10 hidden-note-bolla-1          PIC  x(500).
+               10 hidden-note-bolla-2          PIC  x(500).
+               10 hidden-cig     pic x(15).
+       77 AUTO-ID          PIC  9(6)
+                  VALUE IS 0,00.
+       77 note-109x23-bmp  PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 STATUS-tcodpag   PIC  X(2).
+           88 Valid-STATUS-tcodpag VALUE IS "00" THRU "09". 
+       77 STATUS-tivaese   PIC  X(2).
+           88 Valid-STATUS-tivaese VALUE IS "00" THRU "09". 
+       77 STATUS-note1     PIC  X(2).
+           88 VALID-STATUS-note1 VALUE IS "00" THRU "09". 
+       77 strip-grid-gclienti-bmp      PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 mod-destini      PIC  9
+                  VALUE IS 1.
+       77 cbo-stato-d-buf  PIC  X(10).
+       77 lab-banca-buf    PIC  x(120).
+       77 STATUS-tbanche   PIC  X(2).
+           88 Valid-STATUS-tbanche VALUE IS "00" THRU "09". 
+       77 mod-gdo          PIC  9
+                  VALUE IS 1.
+       77 lab-pag-buf      PIC  X(100).
+       77 mod-agente       PIC  9
+                  VALUE IS 1.
+       77 cbo-invio-buf    PIC  X(30).
+       77 Verdana12-Occidentale
+                  USAGE IS HANDLE OF FONT.
+       77 scr-stampa-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 ef-cod-da-buf    PIC  9(5).
+       77 ef-cod-a-buf     PIC  9(5).
+       77 EXCEL-BMP        PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 BOTTONE-OK-BMP   PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 BOTTONE-CANCEL-BMP           PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 BLUE-DA-28X24-BMP            PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 BLUE-FINO-28X24-BMP          PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 Form1-Tb-1-Handlea
+                  USAGE IS HANDLE OF WINDOW.
+       77 E-ST-CERCA       PIC  9
+                  VALUE IS 1.
+       77 ef-st-tipo-buf   PIC  X(2).
+       77 ef-st-gdo-buf    PIC  X(5).
+       77 ef-st-age-buf    PIC  9(5).
+       77 lab-st-tipo-buf  PIC  X(50)
+                  VALUE IS "Blank = TUTTI".
+       77 lab-st-gdo-buf   PIC  X(50)
+                  VALUE IS "Blank =TUTTI".
+       77 lab-st-age-buf   PIC  X(50)
+                  VALUE IS "0 = TUTTI".
+       77 spunta2-bmp      PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 e-st-cli         PIC  9
+                  VALUE IS 1.
+       77 e-st-des         PIC  9
+                  VALUE IS 0.
+       77 e-st-note        PIC  9
+                  VALUE IS 0.
+       77 stampa-tipo-des  PIC  9
+                  VALUE IS 0.
+       77 stampa-tipo-note PIC  9
+                  VALUE IS 0.
+       77 ef-des-da-buf    PIC  9(5).
+       77 ef-des-a-buf     PIC  9(5).
+       77 des-inoltro      PIC  9
+                  VALUE IS 0.
+       78 78-ID-ef-cod-da VALUE IS 10001. 
+       78 78-ID-ef-cod-a VALUE IS 10002. 
+       78 78-ID-ef-st-tipo VALUE IS 10003. 
+       78 78-ID-ef-st-gdo VALUE IS 10004. 
+       78 78-ID-ef-st-age VALUE IS 10005. 
+       78 78-ID-ef-des-da VALUE IS 10006. 
+       78 78-ID-ef-des-a VALUE IS 10007. 
+       77 STATUS-ABI       PIC  X(2).
+           88 Valid-STATUS-ABI VALUE IS "00" THRU "09". 
+       77 save-ttipocli-privato        PIC  x(2).
+       77 STATUS-tparamge  PIC  X(2).
+           88 Valid-STATUS-tparamge VALUE IS "00" THRU "09". 
+       77 STATUS-lockfile  PIC  X(2).
+           88 Valid-STATUS-lockfile VALUE IS "00" THRU "09". 
+       77 esposizione-91x21-bmp        PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 scr-fido-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 Verdana12B-Occidentale
+                  USAGE IS HANDLE OF FONT.
+       77 lab-scheda-buf   PIC  ----.---.--9,99.
+       77 lab-rischio-buf  PIC  ----.---.--9,99.
+       77 lab-tot-buf      PIC  ----.---.--9,99.
+       77 lab-totale-buf   PIC  ----.---.--9,99.
+       77 lab-fuori-buf    PIC  x(30).
+       77 colore-fido      PIC  9(6)
+                  VALUE IS 3.
+       77 totale           PIC  s9(13)v99.
+       77 v-screen-fido    PIC  9
+                  VALUE IS 0.
+       77 BOTTONE-STAMPA-BMP           PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 tot-fido         PIC  9(12)v99.
+       77 lab-ordini-buf   PIC  ----.---.--9,99.
+       77 lab-fido-buf     PIC  ----.---.--9,99.
+       77 lab-extra-buf    PIC  ----.---.--9,99.
+       77 lab-scaduti-buf  PIC  ----.---.--9,99.
+       77 lab-scadenza-buf PIC  ----.---.--9,99.
+       77 mod-blocco       PIC  9.
+       77 cbo-cau-blocco-buf           PIC  x(30).
+       77 associa-evas-109x23-bmp      PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       01 rec-gd-destini.
+           05 col-codice-e     PIC  z(5).
+           05 col-destino-e    PIC  x(50).
+           05 col-indirizzo-e  PIC  x(50).
+           05 col-localita-e   PIC  x(50).
+       01 rec-gd-evasioni.
+           05 col-eva          PIC  9(3).
+           05 col-des-eva      PIC  x(50).
+           05 col-scelta       PIC  x.
+       77 STATUS-tparameva PIC  X(2).
+           88 Valid-STATUS-tparameva VALUE IS "00" THRU "09". 
+       77 riga-e           PIC  9(3).
+       77 riga-d           PIC  9(3).
+       77 tot-righe-e      PIC  9(3).
+       77 tot-righe-d      PIC  9(3).
+       77 lab-iva-ese-buf  PIC  X(100).
+       77 lab-cod-iva-buf  PIC  X(100).
+       77 STATUS-cli-prg   PIC  X(2).
+           88 Valid-STATUS-cli-prg VALUE IS "00" THRU "09". 
+       77 Form1-Pg-5-Visible           PIC  9
+                  VALUE IS 0.
+       77 STATUS-articoli  PIC  X(2).
+           88 Valid-STATUS-articoli VALUE IS "00" THRU "09". 
+       77 STATUS-progmag   PIC  X(2).
+           88 Valid-STATUS-progmag VALUE IS "00" THRU "09". 
+       77 STATUS-timballi  PIC  X(2).
+           88 Valid-STATUS-timballi VALUE IS "00" THRU "09". 
+       77 STATUS-timbalqta PIC  X(2).
+           88 Valid-STATUS-timbalqta VALUE IS "00" THRU "09". 
+       77 STATUS-tmagaz    PIC  X(2).
+           88 Valid-STATUS-tmagaz VALUE IS "00" THRU "09". 
+       01 rec-prg.
+           05 col-art          PIC  9(6).
+           05 col-art-des      PIC  X(40).
+           05 col-mag          PIC  X(3).
+           05 col-mag-des      PIC  X(40).
+           05 col-imb          PIC  X(3).
+           05 col-imb-des      PIC  X(40).
+           05 col-peso         PIC  zz.zz9,999.
+       77 STATUS-EDI-clides            PIC  X(2).
+           88 Valid-STATUS-EDI-clides VALUE IS "00" THRU "09". 
+       77 Form1-Pg-6-Visible           PIC  9
+                  VALUE IS 0.

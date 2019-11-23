@@ -1,0 +1,42 @@
+       FD  OLD-reva.
+       01 OLD-reva-rec.
+           05 OLD-reva-chiave.
+               10 OLD-reva-chiave-testa.
+                   15 OLD-reva-anno        PIC  9(4).
+                   15 OLD-reva-numero      PIC  9(8).
+               10 OLD-reva-riga        PIC  9(5).
+           05 OLD-reva-dati.
+               10 OLD-reva-chiave-progmag.
+                   15 OLD-reva-articolo    PIC  9(6).
+                   15 OLD-reva-codmag      PIC  x(3).
+                   15 OLD-reva-imballo     PIC  x(3).
+                   15 OLD-reva-peso        PIC  9(3)v9(3).
+               10 OLD-reva-qta         PIC  9(8).
+               10 OLD-reva-prz-unit    PIC  9(9)v99.
+               10 OLD-reva-netto       PIC  9(9)v99.
+               10 OLD-reva-imp-cons    PIC  9(4)v99.
+               10 OLD-reva-coubat      PIC  9(4)v99.
+               10 OLD-reva-add-pb      PIC  9(4)v99.
+               10 OLD-reva-chiave-ordf.
+                   15 OLD-reva-chiave-testa-ordf.
+                       20 OLD-reva-anno-ordf   PIC  9(4).
+                       20 OLD-reva-numero-ordf PIC  9(8).
+                   15 OLD-reva-riga-ordf   PIC  9(5).
+               10 OLD-reva-stato       PIC  x.
+                   88 OLD-reva-attivo VALUE IS "A". 
+                   88 OLD-reva-disattivo VALUE IS "D". 
+                   88 OLD-reva-bloccato VALUE IS "B". 
+               10 OLD-reva-dati-comuni.
+                   15 OLD-reva-data-creazione          PIC  9(8).
+                   15 OLD-reva-ora-creazione           PIC  9(8).
+                   15 OLD-reva-utente-creazione        PIC  X(10).
+                   15 OLD-reva-data-modifica           PIC  9(8).
+                   15 OLD-reva-ora-modifica            PIC  9(8).
+                   15 OLD-reva-utente-modifica         PIC  X(10).
+               10 OLD-reva-vuoti.
+                   15 OLD-reva-num-vuoto-1 PIC  9(15).
+                   15 OLD-reva-num-vuoto-2 PIC  9(15).
+                   15 OLD-reva-num-vuoto-3 PIC  9(15).
+                   15 OLD-reva-alfa-vuoto-1            PIC  x(20).
+                   15 OLD-reva-alfa-vuoto-2            PIC  x(20).
+                   15 OLD-reva-alfa-vuoto-3            PIC  x(20).

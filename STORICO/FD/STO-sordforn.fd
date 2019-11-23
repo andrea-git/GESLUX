@@ -1,0 +1,28 @@
+      *(( XFD FILE = STO-sordforn ))
+      *
+      *
+      *
+       FD  STO-sordforn.
+       01 STO-sof-rec.
+           05 STO-sof-chiave.
+               10 STO-sof-chiave-testa.
+                   15 STO-sof-anno     PIC  9(4).
+                   15 STO-sof-numero   PIC  9(8).
+               10 STO-sof-prog     PIC  9(5).
+           05 STO-sof-dati.
+               10 STO-sof-note     PIC  x(500).
+               10 STO-sof-data-arr PIC  9(8).
+               10 STO-sof-qta      PIC  9(8).
+               10 STO-sof-dati-comuni.
+                   15 STO-sof-data-creazione       PIC  9(8).
+                   15 STO-sof-ora-creazione        PIC  9(8).
+                   15 STO-sof-utente-creazione     PIC  X(10).
+                   15 STO-sof-data-ultima-modifica PIC  9(8).
+                   15 STO-sof-ora-ultima-modifica  PIC  9(8).
+                   15 STO-sof-utente-ultima-modifica           PIC  
+           X(10).
+               10 STO-sof-vuoti.
+                   15 STO-sof-num-vuoto-1          PIC  9(18).
+                   15 STO-sof-num-vuoto-2          PIC  9(18).
+                   15 STO-sof-num-vuoto-3          PIC  9(18).
+                   15 STO-sof-alfa-vuoto           PIC  X(500).

@@ -1,0 +1,16 @@
+*
+*----------------------------------------------------------------
+* selxrollback.def - select standard file a indici with rollback
+*
+*               da completare con la clausola "record key is..."
+*
+*----------------------------------------------------------------
+*
+     select   optional
+              data-file    assign to disk
+              lock is manual with rollback
+              organization indexed
+              access dynamic
+              file status file-status
+*----------------------------------------------------------------
+

@@ -1,0 +1,18 @@
+       01  r-steva-riga.
+           05 r-steva-art          pic z(6).
+           05 filler pic x   value space.
+           05 r-steva-des              pic x(40).         
+           05 r-steva-qta              pic x(5).
+           05 r-steva-imb              pic x(22).
+           05 r-steva-cod-dog          pic x(8).
+           05 r-steva-peso-netto       pic x(11).
+           05 r-steva-peso-tot-netto   pic x(11).
+           05 r-steva-peso-tot-utf     pic x(11).
+      *     05 r-steva-prz-listino      pic x(11).
+           05 r-steva-prz-netto        pic x(11).
+           05 r-steva-imp-consumo      pic x(9).
+           05 r-steva-prz-netto-imp    pic x(11).
+           05 r-steva-imp-cou-cobat    PIC  x(9).
+           05 r-steva-add-piombo       PIC  x(9).
+           05 r-steva-prz-finale       PIC  x(11).
+           05 r-steva-prz-tot-finale   PIC  x(12).

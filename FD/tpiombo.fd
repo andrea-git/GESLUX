@@ -1,0 +1,54 @@
+      *
+      *
+       FD  tpiombo.
+       01 tpb-rec.
+           05 tpb-chiave.
+               10 tpb-marca        PIC  9(4).
+               10 tpb-data         PIC  9(8).
+           05 tpb-dati.
+               10 tpb-perce-auto   PIC  9(3)v9(3).
+               10 tpb-perce-moto   PIC  9(3)v9(3).
+               10 tpb-dati-comuni.
+                   15 tpb-data-creazione           PIC  9(8).
+                   15 tpb-ora-creazione            PIC  9(8).
+                   15 tpb-utente-creazione         PIC  X(10).
+                   15 tpb-data-modifica            PIC  9(8).
+                   15 tpb-ora-modifica PIC  9(8).
+                   15 tpb-utente-modifica          PIC  X(10).
+               10 tpb-vuoti.
+                   15 tpb-euro-ampere  PIC  9(2)v9999.
+                   15 tpb-num-vuoto-1  PIC  9(7).
+                   15 tpb-num-vuoto-2  PIC  9(15).
+                   15 tpb-num-vuoto-3  PIC  9(15).
+               10 tpb-scaglioni-pb.
+                   15 tpb-pb-sca-1-da  PIC  9(3).
+                   15 tpb-pb-sca-1-a   PIC  9(3).
+                   15 tpb-pb-sca-1-euro            PIC  9(3)v9(3).
+                   15 tpb-pb-sca-2-da  PIC  9(3).
+                   15 tpb-pb-sca-2-a   PIC  9(3).
+                   15 tpb-pb-sca-2-euro            PIC  9(3)v9(3).
+                   15 tpb-pb-sca-3-da  PIC  9(3).
+                   15 tpb-pb-sca-3-a   PIC  9(3).
+                   15 tpb-pb-sca-3-euro            PIC  9(3)v9(3).
+                   15 tpb-pb-sca-4-da  PIC  9(3).
+                   15 tpb-pb-sca-4-a   PIC  9(3).
+                   15 tpb-pb-sca-4-euro            PIC  9(3)v9(3).
+                   15 tpb-pb-sca-5-da  PIC  9(3).
+                   15 tpb-pb-sca-5-a   PIC  9(3).
+                   15 tpb-pb-sca-5-euro            PIC  9(3)v9(3).
+                   15 tpb-pb-sca-6-da  PIC  9(3).
+                   15 tpb-pb-sca-6-a   PIC  9(3).
+                   15 tpb-pb-sca-6-euro            PIC  9(3)v9(3).
+                   15 tpb-pb-sca-7-da  PIC  9(3).
+                   15 tpb-pb-sca-7-a   PIC  9(3).
+                   15 tpb-pb-sca-7-euro            PIC  9(3)v9(3).
+                   15 tpb-pb-sca-8-da  PIC  9(3).
+                   15 tpb-pb-sca-8-a   PIC  9(3).
+                   15 tpb-pb-sca-8-euro            PIC  9(3)v9(3).
+                   15 tpb-pb-sca-9-da  PIC  9(3).
+                   15 tpb-pb-sca-9-a   PIC  9(3).
+                   15 tpb-pb-sca-9-euro            PIC  9(3)v9(3).
+                   15 tpb-pb-sca-10-da PIC  9(3).
+                   15 tpb-pb-sca-10-a  PIC  9(3).
+                   15 tpb-pb-sca-10-euro           PIC  9(3)v9(3).
+                   15 FILLER           PIC  x(500).

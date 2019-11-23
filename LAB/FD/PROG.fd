@@ -1,0 +1,36 @@
+       FD  PROG.
+       01 PROG-R.
+           05 PROG-KEY.
+      * PROMPT =Menu Level
+               10 PROG-MENU-LEVEL  PIC  X(10).
+               10 PROG-MENU-LEVEL-G REDEFINES PROG-MENU-LEVEL.
+                   15 PROG-LEVEL       PIC  9(02)
+                              OCCURS 5 TIMES.
+               10 FILLER REDEFINES PROG-MENU-LEVEL.
+                   15 PROG-LEVEL-1     PIC  9(02).
+                   15 PROG-LEVEL-2     PIC  9(02).
+                   15 PROG-LEVEL-3     PIC  9(02).
+                   15 PROG-LEVEL-4     PIC  9(02).
+                   15 PROG-LEVEL-5     PIC  9(02).
+      * PROMPT =Program ID
+           05 PROG-ID          PIC  X(15).
+      * PROMPT =Short Description
+           05 PROG-S-DESC      PIC  X(30).
+      * PROMPT =Program Type
+      *0:Program (Executable)
+      *1:Classification (Non-executable)
+      *
+      *
+           05 PROG-TYPE        PIC  9(01).
+           05 PROG-TYPE-2      PIC  X(20).
+               88 PROG-T-ELABORAZIONE VALUE IS "Elaborazione". 
+               88 PROG-T-ARCHIVIO VALUE IS "Gestione archivio". 
+               88 PROG-T-STAMPA VALUE IS "Stampa". 
+               88 PROG-T-NON-ESEGU VALUE IS SPACES. 
+      * PROMPT =Long Description
+           05 PROG-L-DESC      PIC  X(500).
+      * PROMPT =Long Description
+           05 PROG-acuthin     PIC  x.
+               88 prog-acuthin-si VALUE IS "S". 
+               88 prog-acuthin-no VALUE IS "N" " ". 
+           05 PROG-FILLER      PIC  X(99).

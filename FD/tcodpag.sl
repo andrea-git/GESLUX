@@ -1,0 +1,9 @@
+       SELECT tcodpag
+           ASSIGN       TO RANDOM "TBLPA"
+           ORGANIZATION IS INDEXED
+           ACCESS MODE  IS DYNAMIC
+           FILE STATUS  IS status-tcodpag
+           RECORD KEY   IS TBLPA-CODICE
+           ALTERNATE RECORD KEY IS TBL-CODICE-01 = TBLPA-CODICE1, 
+           TBLPA-DESCRIZIONE1, TBLPA-CODICE2
+           WITH DUPLICATES .

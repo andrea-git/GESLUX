@@ -1,0 +1,7 @@
+       01  exp-linkage.
+           05 exp-path-log         pic x(256).
+           05 exp-status           signed-short.
+              88 exp-ok            value zero.
+              88 exp-err-bloccante value -1.
+              88 exp-err           value -2.
+

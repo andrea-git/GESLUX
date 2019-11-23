@@ -1,0 +1,20 @@
+      *(( XFD FILE = tmp-ordfor ))
+       FD  tmp-ordfor.
+       01 tmp-ord-rec.
+           05 tmp-ord-chiave.
+               10 tmp-ord-mag      PIC  x(3).
+               10 tmp-ord-articolo PIC  9(6).
+           05 tmp-ord-dati.
+               10 tmp-ord-media-vend           PIC  S9(9).
+               10 tmp-ord-media-vend-no-peaks  PIC  S9(9).
+      *(( XFD NAME = tmp-ord-media-vend ))
+               10 tmp-ord-promo    PIC  S9(9).
+      *(( XFD NAME = tmp-ord-media-vend ))
+               10 tmp-ord-impegnato            PIC  S9(9).
+      *(( XFD NAME = tmp-ord-media-vend ))
+               10 tmp-ord-giacenza PIC  S9(9).
+      *(( XFD NAME = tmp-ord-media-vend ))
+               10 tmp-ord-ordinato PIC  S9(9).
+               10 tmp-ord-fabbisogno-prox-6-mesi.
+                   15 tmp-ord-fabb-qta PIC  S9(9)
+                              OCCURS 6 TIMES.

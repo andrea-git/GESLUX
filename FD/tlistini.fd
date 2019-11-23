@@ -1,0 +1,30 @@
+       FD  tlistini.
+       01 tlis-rec.
+           05 tlis-chiave.
+               10 tlis-codice      PIC  9(15).
+           05 tlis-dati.
+               10 tlis-chiave-ricerca.
+                   15 tlis-fornitore   PIC  9(5).
+                   15 tlis-destino     PIC  9(5).
+                   15 tlis-ini-val     PIC  9(8).
+                   15 tlis-fine-val    PIC  9(8).
+               10 tlis-descrizione PIC  x(50).
+               10 tlis-dati-comuni.
+                   15 tlis-data-creazione          PIC  9(8).
+                   15 tlis-ora-creazione           PIC  9(8).
+                   15 tlis-utente-creazione        PIC  X(10).
+                   15 tlis-data-ultima-modifica    PIC  9(8).
+                   15 tlis-ora-ultima-modifica     PIC  9(8).
+                   15 tlis-utente-ultima-modifica  PIC  X(10).
+               10 tlis-vuoti.
+                   15 tlis-trasp       PIC  9.
+                       88 tlis-trasp-incluso VALUE IS 0    WHEN SET TO 
+           FALSE  0. 
+                       88 tlis-trasp-escluso VALUE IS 1    WHEN SET TO 
+           FALSE  1. 
+                   15 tlis-num-vuoto-1 PIC  9(17).
+                   15 tlis-num-vuoto-2 PIC  9(18).
+                   15 tlis-num-vuoto-3 PIC  9(18).
+                   15 tlis-alfa-vuoto-1            PIC  X(20).
+                   15 tlis-alfa-vuoto-2            PIC  X(20).
+                   15 tlis-alfa-vuoto-3            PIC  X(20).

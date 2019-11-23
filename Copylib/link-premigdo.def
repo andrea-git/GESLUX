@@ -1,0 +1,9 @@
+      *
+       01 premigdo-linkage.
+         05 pg-data-from         pic 9(8).
+         05 pg-data-to           pic 9(8).
+         05 pg-user              pic x(10).
+         05 pg-handle            handle of window.
+         05 pg-gdo-codice        pic x(5).
+         05 pg-tcl-codice        pic x(2).
+

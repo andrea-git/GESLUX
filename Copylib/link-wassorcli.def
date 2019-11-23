@@ -1,0 +1,6 @@
+       01  link-wassorcli.
+         05 link-path-tmp-assorcli  pic x(256).
+         05 link-chiave.
+            10 link-gdo                pic x(5).
+            10 link-cliente            pic 9(5).
+            10 link-destino            pic 9(5).

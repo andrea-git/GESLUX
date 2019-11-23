@@ -1,0 +1,8 @@
+       01  gnote-rodforn-linkage.
+           05 gnof-tof-chiave.
+              10 gnof-tof-anno     PIC  9(4).
+              10 gnof-tof-numero   PIC  9(8).
+           05 gnof-mod             PIC  9.
+           05 gnof-path            pic x(256).
+           05 gnof-note            PIC  x(200) OCCURS 4 TIMES.
+

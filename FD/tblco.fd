@@ -1,0 +1,403 @@
+      * tplvar zmm_title=Tabella causali contabili
+      * tplvar zmm_ver=09.01.00
+      * tplvar zmm_class=anagraphic
+      * tplvar zmm_returnkey=tblco-codice2
+      *
+      * ZoomFields seq:
+      *   01.tblco-codice2
+      *   02.tblco-descrizione1
+      *   03.tblco-descrizione2
+      *
+      *i
+       FD  TBLCO.
+       01 record-tblco.
+           05 tblco-codice.
+               10 tblco-codice1    PIC  x(02).
+      *$GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=20,zmm_align=L,zmm_pos=1,zmm_entity=tblco
+               10 tblco-codice2    PIC  x(20).
+           05 resto-record-tblco.
+      *$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=2
+               10 tblco-descrizione1           PIC  x(30).
+      *$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=3
+      *
+               10 tblco-descrizione2           PIC  x(30).
+               10 tblco-tipo-documento.
+                   15 tblco-tipo-protocollo.
+      *$GEN type=code,entity=tblai
+                       20 tblco-attivita   PIC  x(01).
+      *$GEN type=combobox,comboclass=tblco_registro
+      *
+                       20 tblco-registro   PIC  x(01).
+                           88 tblco-registro-88 VALUE IS "C" "F" "D" "S"
+            "I" "E" "T". 
+                           88 tblco-registro-88-c VALUE IS "C". 
+                           88 tblco-registro-88-f VALUE IS "F". 
+                           88 tblco-registro-88-d VALUE IS "D". 
+                           88 tblco-registro-88-s VALUE IS "S". 
+                           88 tblco-registro-88-i VALUE IS "I". 
+                           88 tblco-registro-88-e VALUE IS "E". 
+                           88 tblco-registro-88-t VALUE IS "T". 
+                           88 tblco-registro-88-vendite VALUE IS "C" "S"
+           . 
+                           88 tblco-registro-88-acquisti VALUE IS "F" "T
+      -    "". 
+      ***                    88  ws-blacklist-registro-ven-88  value "C" "S" "D" "I" "E". |mc 15/09/2010   | CERMIC 12/11/2013
+      ***                    88  ws-blacklist-registro-acq-88  value "F" "T".             |mc 15/09/2010   | CERMIC 12/11/2013
+                           88 tblco-blacklist-registro-ven-88 VALUE IS 
+           "C" "S" "D" "I" "E". 
+      *C 12/11/2013
+                           88 tblco-blacklist-registro-acq-88 VALUE IS 
+           "F" "T". 
+      *C 12/11/2013
+      *
+                       20 tblco-numero-registro        PIC  x(02).
+                   15 tblco-numero-documento       PIC  x(02).
+      *$GEN type=combobox,comboclass=tblco_segno_registro
+               10 tblco-segno-registro         PIC  x(01).
+                   88 tblco-segno-registro-88 VALUE IS "+" "-". 
+                   88 tblco-segno-registro-88-p VALUE IS "+". 
+                   88 tblco-segno-registro-88-m VALUE IS "-". 
+      *
+      *
+      *$GEN type=checkbox,truevalue=" ",falsevalue="N"
+               10 tblco-allegati   PIC  x(01).
+                   88 tblco-allegati-88 VALUE IS "N" " ". 
+      *
+      *$GEN type=code,entity=tblco
+               10 tblco-autofattura-co         PIC  x(03).
+      *(( XFD NAME = tblco-auto-cli ))
+      *
+      *$GEN type=code,entity=cli
+               10 tblco-autofattura-cli        PIC  x(08).
+      *$GEN type=combobox,comboclass=tblco_partite
+      *
+               10 tblco-partite    PIC  x(01).
+                   88 tblco-partite-88 VALUE IS "A" "M" "E" " ". 
+                   88 tblco-partite-88-a VALUE IS "A". 
+                   88 tblco-partite-88-m VALUE IS "M". 
+                   88 tblco-partite-88-e VALUE IS "E". 
+                   88 tblco-partite-88-o VALUE IS " ". 
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+      *
+               10 tblco-scadenze   PIC  x(01).
+                   88 tblco-scadenze-88 VALUE IS "S" " ". 
+                   88 tblco-scadenze-88-s VALUE IS "S". 
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+      *
+               10 tblco-automatico PIC  x(01).
+                   88 tblco-automatico-88 VALUE IS "S" " ". 
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+               10 tblco-insoluti   PIC  x(01).
+                   88 tblco-insoluti-88 VALUE IS "S" " ". 
+                   88 tblco-insoluti-S VALUE IS "S". 
+      *$GEN type=combobox,comboclass=tblco_analitica
+               10 tblco-analitica  PIC  x(01).
+                   88 tblco-analitica-88 VALUE IS "A" "S" " ". 
+                   88 tblco-analitica-88-a VALUE IS "A". 
+                   88 tblco-analitica-88-s VALUE IS "S". 
+                   88 tblco-analitica-88-o VALUE IS " ". 
+      *$GEN type=combobox,comboclass=tblco_bilancio
+      *
+               10 tblco-bilancio   PIC  x(01).
+                   88 tblco-bilancio-88 VALUE IS " " "A" "C". 
+                   88 tblco-bilancio-88-o VALUE IS " ". 
+                   88 tblco-bilancio-88-a VALUE IS "A". 
+                   88 tblco-bilancio-88-c VALUE IS "C". 
+      *$GEN type=combobox,comboclass=tblco_percipienti
+               10 tblco-percipienti            PIC  x(01).
+                   88 tblco-percipienti-88 VALUE IS "A" "P" "V" "T" " "
+           . 
+                   88 tblco-percipienti-88-a VALUE IS "A". 
+                   88 tblco-percipienti-88-p VALUE IS "P". 
+                   88 tblco-percipienti-88-v VALUE IS "V". 
+                   88 tblco-percipienti-88-t VALUE IS "T". 
+                   88 tblco-percipienti-88-o VALUE IS " ". 
+      *$GEN type=num,dec=0,size=04
+      *
+               10 tblco-imponibile PIC  9(03)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+      *$GEN type=num,dec=02,size=07
+               10 tblco-ritenuta   PIC  9(03)v9(02)
+                          SIGN IS TRAILING SEPARATE CHARACTER.
+               10 tblco-causale-versamento     PIC  x(04).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+               10 tblco-solo-mese  PIC  x(01).
+                   88 tblco-solo-mese-88 VALUE IS "S" " ". 
+      *$GEN type=code,entity=mas
+      *
+               10 tblco-percipienti-mas        PIC  x(08).
+      *
+      *
+      *
+      *
+               10 tblco-tabella-conti-x.
+                   15 tblco-tabella-conti
+                              OCCURS 10 TIMES.
+                       20 tblco-tipo-cfm   PIC  x(01).
+                           88 tblco-tipo-cfm-88-c VALUE IS "C". 
+                           88 tblco-tipo-cfm-88-f VALUE IS "F". 
+                           88 tblco-tipo-cfm-88-m VALUE IS "M". 
+                           88 tblco-tipo-cfm-88-o VALUE IS " ". 
+                           88 tblco-tipo-cfm-88 VALUE IS "C" "F" "M" " "
+           . 
+      *$GEN entity=codecfm
+      *
+                       20 tblco-codice-cfm PIC  x(08).
+                       20 tblco-segno-cfm  PIC  x(01).
+                           88 tblco-segno-cfm-88 VALUE IS "D" "A" " ". 
+                           88 tblco-segno-cfm-88-d VALUE IS "D". 
+                           88 tblco-segno-cfm-88-a VALUE IS "A". 
+                           88 tblco-segno-cfm-88-o VALUE IS " ". 
+               10 filler REDEFINES tblco-tabella-conti-x.
+      *$GEN type=combobox,comboclass=generic_tipo_cfm,comboentity=tblco-tipo-cfm-01-e3
+      *
+                   15 tblco-tipo-cfm-01            PIC  x(01).
+      *$GEN type=code,entity=var(tblco-tipo-cfm-01-e3)
+                   15 tblco-codice-cfm-01          PIC  x(08).
+      *$GEN type=combobox,comboclass=tblce_contabile
+      *
+                   15 tblco-segno-cfm-01           PIC  x(01).
+      *$GEN type=combobox,comboclass=generic_tipo_cfm,comboentity=tblco-tipo-cfm-02-e3
+      *
+                   15 tblco-tipo-cfm-02            PIC  x(01).
+      *$GEN type=code,entity=var(tblco-tipo-cfm-02-e3)
+      *
+                   15 tblco-codice-cfm-02          PIC  x(08).
+      *$GEN type=combobox,comboclass=tblce_contabile
+      *
+                   15 tblco-segno-cfm-02           PIC  x(01).
+      *$GEN type=combobox,comboclass=generic_tipo_cfm,comboentity=tblco-tipo-cfm-03-e3
+      *
+                   15 tblco-tipo-cfm-03            PIC  x(01).
+      *$GEN type=code,entity=var(tblco-tipo-cfm-03-e3)
+      *
+                   15 tblco-codice-cfm-03          PIC  x(08).
+      *$GEN type=combobox,comboclass=tblce_contabile
+                   15 tblco-segno-cfm-03           PIC  x(01).
+      *$GEN type=combobox,comboclass=generic_tipo_cfm,comboentity=tblco-tipo-cfm-04-e3
+                   15 tblco-tipo-cfm-04            PIC  x(01).
+      *$GEN type=code,entity=var(tblco-tipo-cfm-04-e3)
+      *
+                   15 tblco-codice-cfm-04          PIC  x(08).
+      *$GEN type=combobox,comboclass=tblce_contabile
+      *
+                   15 tblco-segno-cfm-04           PIC  x(01).
+      *$GEN type=combobox,comboclass=generic_tipo_cfm,comboentity=tblco-tipo-cfm-05-e3
+      *
+                   15 tblco-tipo-cfm-05            PIC  x(01).
+      *$GEN type=code,entity=var(tblco-tipo-cfm-05-e3)
+      *
+                   15 tblco-codice-cfm-05          PIC  x(08).
+      *$GEN type=combobox,comboclass=tblce_contabile
+      *
+                   15 tblco-segno-cfm-05           PIC  x(01).
+      *$GEN type=combobox,comboclass=generic_tipo_cfm,comboentity=tblco-tipo-cfm-06-e3
+      *
+                   15 tblco-tipo-cfm-06            PIC  x(01).
+      *$GEN type=code,entity=var(tblco-tipo-cfm-06-e3)
+      *
+                   15 tblco-codice-cfm-06          PIC  x(08).
+      *$GEN type=combobox,comboclass=tblce_contabile
+      *
+                   15 tblco-segno-cfm-06           PIC  x(01).
+      *$GEN type=combobox,comboclass=generic_tipo_cfm,comboentity=tblco-tipo-cfm-07-e3
+                   15 tblco-tipo-cfm-07            PIC  x(01).
+      *$GEN type=code,entity=var(tblco-tipo-cfm-07-e3)
+      *
+                   15 tblco-codice-cfm-07          PIC  x(08).
+      *$GEN type=combobox,comboclass=tblce_contabile
+      *
+                   15 tblco-segno-cfm-07           PIC  x(01).
+      *$GEN type=combobox,comboclass=generic_tipo_cfm,comboentity=tblco-tipo-cfm-08-e3
+      *
+                   15 tblco-tipo-cfm-08            PIC  x(01).
+      *$GEN type=code,entity=var(tblco-tipo-cfm-08-e3)
+      *
+                   15 tblco-codice-cfm-08          PIC  x(08).
+      *$GEN type=combobox,comboclass=tblce_contabile
+      *
+                   15 tblco-segno-cfm-08           PIC  x(01).
+      *$GEN type=combobox,comboclass=generic_tipo_cfm,comboentity=tblco-tipo-cfm-09-e3
+                   15 tblco-tipo-cfm-09            PIC  x(01).
+      *$GEN type=code,entity=var(tblco-tipo-cfm-09-e3)
+      *
+                   15 tblco-codice-cfm-09          PIC  x(08).
+      *$GEN type=combobox,comboclass=tblce_contabile
+      *
+                   15 tblco-segno-cfm-09           PIC  x(01).
+      *$GEN type=combobox,comboclass=generic_tipo_cfm,comboentity=tblco-tipo-cfm-10-e3
+                   15 tblco-tipo-cfm-10            PIC  x(01).
+      *$GEN type=code,entity=var(tblco-tipo-cfm-10-e3)
+      *
+                   15 tblco-codice-cfm-10          PIC  x(08).
+      *$GEN type=combobox,comboclass=tblce_contabile
+      *
+                   15 tblco-segno-cfm-10           PIC  x(01).
+      *(( XFD NAME = TBLCO-PERC-CO ))
+      *
+      *
+      *
+      *
+      *$GEN type=code,entity=tblco
+      *
+               10 tblco-percipienti-co         PIC  x(03).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+      *
+               10 tblco-commesse   PIC  x(01).
+                   88 tblco-commesse-88 VALUE IS "S" " ". 
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+      *
+               10 tblco-input-totale           PIC  x(01).
+                   88 tblco-input-totale-88 VALUE IS "S" " ". 
+                   88 tblco-input-totale-88-s VALUE IS "S". 
+                   88 tblco-input-totale-88-null VALUE IS " ". 
+      *
+      *
+      *$GEN type=code,entity=tblco
+      *
+               10 tblco-tblco-codice-sos       PIC  x(03).
+      *$GEN type=code,entity=tblcc
+               10 tblco-tblcc-codice           PIC  x(03).
+      *$GEN type=combobox,comboclass=tblco_data_valuta
+      *
+               10 tblco-data-valuta            PIC  x(01).
+                   88 tblco-data-valuta-88 VALUE IS "A" "M" " ". 
+                   88 tblco-data-valuta-88-a VALUE IS "A". 
+                   88 tblco-data-valuta-88-m VALUE IS "M". 
+                   88 tblco-data-valuta-88-o VALUE IS " ". 
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+               10 tblco-ratei-risconti         PIC  x(01).
+                   88 tblco-ratei-risconti-88 VALUE IS "S" " ". 
+                   88 tblco-ratei-risconti-88-si VALUE IS "S". 
+                   88 tblco-ratei-risconti-88-no VALUE IS " ". 
+      *$GEN type=combobox,comboclass=tblco_inps_prof
+               10 tblco-modulo-69  PIC  x(01).
+                   88 tblco-modulo-69-88 VALUE IS "A" "P" "V" " ". 
+                   88 tblco-modulo-69-88-a VALUE IS "A". 
+                   88 tblco-modulo-69-88-p VALUE IS "P". 
+                   88 tblco-modulo-69-88-v VALUE IS "V". 
+                   88 tblco-modulo-69-88-o VALUE IS " ". 
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+      *
+               10 tblco-solo-mese-69           PIC  x(01).
+                   88 tblco-solo-mese-69-88 VALUE IS "S" " ". 
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+      *
+               10 tblco-magix-01   PIC  x(01).
+                   88 tblco-magix-01-88 VALUE IS "S" " ". 
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+               10 tblco-magix-02   PIC  x(01).
+                   88 tblco-magix-02-88 VALUE IS "S" " ". 
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+               10 tblco-magix-03   PIC  x(01).
+                   88 tblco-magix-03-88 VALUE IS "S" " ". 
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+      *
+               10 tblco-magix-04   PIC  x(01).
+                   88 tblco-magix-04-88 VALUE IS "S" " ". 
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+      *
+               10 tblco-magix-05   PIC  x(01).
+                   88 tblco-magix-05-88 VALUE IS "S" " ". 
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+               10 tblco-magix-06   PIC  x(01).
+                   88 tblco-magix-06-88 VALUE IS "S" " ". 
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+      *
+               10 tblco-movimenti-interni      PIC  x(01).
+                   88 tblco-movimenti-interni-88 VALUE IS "S" " ". 
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+      *
+               10 tblco-iva-spedizionieri      PIC  x(01).
+                   88 tblco-iva-spedizionieri-88 VALUE IS "S" " ". 
+      *(( XFD NAME = TBLCO-CODICE-SOS1 ))
+      *$GEN type=code,entity=tblco
+               10 tblco-tblco-codice-sos1      PIC  x(03).
+      *$GEN type=code,entity=cmk
+      *
+               10 tblco-cmk-codice PIC  x(03).
+      *$GEN type=combobox,comboclass=tblco_tipo_mov_magix
+               10 tblco-tipo-movimento-magix   PIC  x(02).
+                   88 tblco-tipo-movimento-magix-88 VALUE IS "MC" "FA" 
+           "NA" "FV" "NV" "CP" "CM" "IS" "PS" "IP" "PP" "SA" "SV". 
+                   88 tblco-tipo-movimento-magix-88-mc VALUE IS "MC". 
+                   88 tblco-tipo-movimento-magix-88-fa VALUE IS "FA". 
+                   88 tblco-tipo-movimento-magix-88-na VALUE IS "NA". 
+                   88 tblco-tipo-movimento-magix-88-fv VALUE IS "FV". 
+                   88 tblco-tipo-movimento-magix-88-nv VALUE IS "NV". 
+                   88 tblco-tipo-movimento-magix-88-cp VALUE IS "CP". 
+                   88 tblco-tipo-movimento-magix-88-cm VALUE IS "CM". 
+                   88 tblco-tipo-movimento-magix-88-is VALUE IS "IS". 
+                   88 tblco-tipo-movimento-magix-88-ps VALUE IS "PS". 
+                   88 tblco-tipo-movimento-magix-88-ip VALUE IS "IP". 
+                   88 tblco-tipo-movimento-magix-88-pp VALUE IS "PP". 
+                   88 tblco-tipo-movimento-magix-88-sa VALUE IS "SA". 
+                   88 tblco-tipo-movimento-magix-88-sv VALUE IS "SV". 
+      *$GEN type=code,entity=tblco
+      *
+               10 tblco-art74-co   PIC  x(03).
+      *$GEN type=code,entity=cli
+               10 tblco-art74-cli  PIC  x(08).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+               10 tblco-obbligo-ins-cmk        PIC  x(01).
+                   88 tblco-obbligo-ins-cmk-88 VALUE IS " " "S". 
+      *$GEN type=code,entity=01tat
+      *
+               10 tblco-codice-attivita        PIC  x(03).
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+      *
+               10 tblco-modulo-33  PIC  x(01).
+                   88 tblco-modulo-33-88 VALUE IS "S" " ". 
+                   88 tblco-modulo-33-88-s VALUE IS "S". 
+               10 tblco-scorporo-iva           PIC  9(01).
+                   88 tblco-scorporo-iva-si VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+               10 tblco-notasufat-aa-prec      PIC  x(01).
+                   88 tblco-notasufat-aa-p-88 VALUE IS "S" " ". 
+               10 tblco-iva-per-cassa          PIC  9(01).
+                   88 tblco-iva-per-cassa-si VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+      *$GEN type=code,entity=mas
+      *
+               10 tblco-enasarco-mas           PIC  x(08).
+      *$GEN type=code,entity=tblco
+               10 tblco-enasarco-tblco         PIC  x(03).
+      *
+      *
+               10 tblco-flag-intra-pnota       PIC  9(01).
+                   88 tblco-flag-intra-pnota-ok VALUE IS 1. 
+                   88 tblco-flag-intra-pnota-ko VALUE IS 0. 
+      *
+      *$GEN type=combobox,comboclass=tbldo_transazione,
+      *
+               10 tblco-transazione            PIC  x(1).
+                   88 tblco-transazione-88 VALUE IS "0" THRU "9" " " "A"
+            THRU "I". 
+      *04/2010
+                   88 tblco-transazione-88-0 VALUE IS "0" " ". 
+                   88 tblco-transazione-88-a VALUE IS "1" "A". 
+                   88 tblco-transazione-88-b VALUE IS "2" "B". 
+                   88 tblco-transazione-88-c VALUE IS "3" "C". 
+                   88 tblco-transazione-88-d VALUE IS "4" "D". 
+                   88 tblco-transazione-88-e VALUE IS "5" "E". 
+                   88 tblco-transazione-88-f VALUE IS "6" "F". 
+                   88 tblco-transazione-88-g VALUE IS "7" "G". 
+                   88 tblco-transazione-88-h VALUE IS "8" "H". 
+                   88 tblco-transazione-88-i VALUE IS "9" "I". 
+                   88 tblco-transazione-solo-statistici VALUE IS "4" "5"
+            "D" "E". 
+      *05/2010
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+      *
+               10 tblco-flag-frn-orig          PIC  x(01).
+                   88 tblco-flag-frn-orig-ok VALUE IS "S". 
+                   88 tblco-flag-frn-orig-ko VALUE IS " ". 
+      *$GEN type=checkbox
+               10 tblco-nota-variazione        PIC  9(01).
+      *        10  tblco-filler                    pic  x(1061).                                         |DS 08/10/2009 10.00
+      *       10  tblco-filler                    pic  x(1050).                                          |DS 08/10/2009 10.00  |or 23/04/2010
+      *        10  tblco-filler                    pic  x(1048).                         |or 23/04/2010  |mc 15/09/2010
+      ***        10  tblco-filler                    pic  x(1047).                       |mc 15/09/2010    | MACGIU 22/04/2013
+               10 tblco-filler     PIC  x(1046).
+               10 tblco-filler-ris PIC  x(40).

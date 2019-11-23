@@ -1,0 +1,71 @@
+      *
+      *
+      *
+       FD  OLD-rordforn.
+       01 OLD-rof-rec.
+           05 OLD-rof-chiave.
+               10 OLD-rof-chiave-testa.
+                   15 OLD-rof-anno         PIC  9(4).
+                   15 OLD-rof-numero       PIC  9(8).
+               10 OLD-rof-riga         PIC  9(5).
+           05 OLD-rof-dati.
+               10 OLD-rof-prg-chiave.
+      *(( XFD NAME = OLD-rof-cod-articolo_1 ))
+                   15 OLD-rof-cod-articolo PIC  9(6).
+                   15 OLD-rof-cod-magazzino            PIC  X(3).
+                   15 OLD-rof-tipo-imballo PIC  X(3).
+                   15 OLD-rof-peso         PIC  9(3)v9(3).
+               10 OLD-rof-imb-ordinato PIC  x(3).
+               10 OLD-rof-qta-ord      PIC  9(8).
+               10 OLD-rof-qta-evasa    PIC  9(8).
+               10 OLD-rof-prz-unitario PIC  9(9)v9(4).
+               10 OLD-rof-sconto-1     PIC  9(3)v9(2).
+               10 OLD-rof-sconto-2     PIC  9(3)v9(2).
+               10 OLD-rof-sconto-3     PIC  9(3)v9(2).
+               10 OLD-rof-sconto-4     PIC  9(3)v9(2).
+               10 OLD-rof-sconto-5     PIC  9(3)v9(2).
+               10 OLD-rof-imponib-merce            PIC  9(9)v9(4).
+               10 OLD-rof-imp-consumo  PIC  9(4)v9(4).
+               10 OLD-rof-imp-cou-cobat            PIC  9(4)v9(4).
+               10 OLD-rof-add-piombo   PIC  9(4)v9(4).
+               10 OLD-rof-costi-aggiuntivi         PIC  9(9)v9(4).
+               10 OLD-rof-cod-iva      PIC  x(3).
+               10 OLD-rof-peso-utf     PIC  9(3)v9(3).
+               10 OLD-rof-peso-non-utf PIC  9(3)v9(3).
+               10 OLD-rof-cod-imballo  PIC  X(3).
+               10 OLD-rof-qta-imballi  PIC  9(4).
+      *    per il momento non gestito
+      *
+      *
+               10 OLD-rof-promo        PIC  9(15).
+      *    per il momento non gestito
+      *
+      *
+               10 OLD-rof-cod-listino  PIC  9(15).
+               10 OLD-rof-ddt.
+                   15 OLD-rof-anno-ddt     PIC  9(4).
+                   15 OLD-rof-numero-ddt   PIC  9(8).
+               10 OLD-rof-dati-carico.
+                   15 OLD-rof-data-carico  PIC  9(8).
+                   15 OLD-rof-ora-carico   PIC  9(8).
+                   15 OLD-rof-utente-carico            PIC  X(10).
+               10 OLD-rof-dati-comuni.
+                   15 OLD-rof-data-creazione           PIC  9(8).
+                   15 OLD-rof-ora-creazione            PIC  9(8).
+                   15 OLD-rof-utente-creazione         PIC  X(10).
+                   15 OLD-rof-data-ultima-modifica     PIC  9(8).
+                   15 OLD-rof-ora-ultima-modifica      PIC  9(8).
+                   15 OLD-rof-utente-ultima-modifica   PIC  X(10).
+               10 OLD-rof-vuoti.
+                   15 OLD-rof-manuale      PIC  9.
+                       88 OLD-rof-manuale-si VALUE IS 1. 
+                       88 OLD-rof-manuale-no VALUE IS 0. 
+      *(( XFD NAME = OLD-rof-num-vuoto-1_1 ))
+                   15 OLD-rof-imf-codice   PIC  9(5).
+      *(( XFD NAME = OLD-rof-num-vuoto-1_1_ ))
+                   15 OLD-rof-num-vuoto-1  PIC  9(12).
+                   15 OLD-rof-num-vuoto-2  PIC  9(18).
+                   15 OLD-rof-num-vuoto-3  PIC  9(18).
+                   15 OLD-rof-alfa-vuoto-1 PIC  X(20).
+                   15 OLD-rof-alfa-vuoto-2 PIC  X(20).
+                   15 OLD-rof-alfa-vuoto-3 PIC  X(20).

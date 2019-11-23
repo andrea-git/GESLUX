@@ -1,0 +1,23 @@
+       FD  paramfel.
+       01 pfel-rec.
+           05 pfel-chiave.
+               10 pfel-codice      PIC  xx.
+           05 pfel-dati.
+               10 pfel-IdCodice    PIC  x(28).
+               10 pfel-CodiceFiscale           PIC  x(16).
+               10 pfel-Denominazione           PIC  x(80).
+               10 pfel-RegimeFiscale           PIC  x(4).
+               10 pfel-Indirizzo   PIC  x(60).
+               10 pfel-NumeroCivico            PIC  x(8).
+               10 pfel-CAP         PIC  9(5).
+               10 pfel-Comune      PIC  x(60).
+               10 pfel-Provincia   PIC  xx.
+               10 pfel-Nazione     PIC  xx.
+               10 pfel-path        PIC  x(500).
+               10 pfel-riga-1      PIC  x(500).
+               10 pfel-riga-2      PIC  x(500).
+               10 pfel-riga-3      PIC  x(500).
+               10 pfel-riga-4      PIC  x(500).
+               10 pfel-riga-5      PIC  x(500).
+               10 pfel-riga-6      PIC  x(500).
+               10 FILLER           PIC  x(500).

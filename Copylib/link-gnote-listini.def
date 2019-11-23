@@ -1,0 +1,7 @@
+       01  gnote-listini-linkage.
+           05 gnlis-tlis-chiave.
+              10 gnlis-tlis-codice      PIC  9(15).
+           05 gnlis-mod             PIC  9.
+           05 gnlis-path            pic x(256).
+           05 gnlis-note            PIC  x(200) OCCURS 4 TIMES.
+

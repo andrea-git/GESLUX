@@ -1,0 +1,5 @@
+       SELECT STA-splcrt2graf
+           ASSIGN       TO  WSTAMPA
+           ORGANIZATION IS LINE SEQUENTIAL
+           ACCESS MODE  IS SEQUENTIAL
+           FILE STATUS  IS STATUS-FD1.

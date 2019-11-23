@@ -1,0 +1,12 @@
+      *
+       01  lab-extra-linkage.
+           05 extra-gdo         pic x(5).
+           05 extra-testo       pic x(50).
+           05 extra-sconto      pic 99v99.
+           05 extra-codice      pic 9(15).
+           05 extra-user        pic x(20).
+           05 extra-ini-dpo     pic 9(8).
+           05 extra-fine-dpo    pic 9(8).
+           05 filler            pic 9.
+              88 inserito-extra value 1, false 0.
+           05 extra-handle      handle of window.

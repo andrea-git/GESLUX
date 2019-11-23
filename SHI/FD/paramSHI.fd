@@ -1,0 +1,101 @@
+      *
+      *
+       FD  paramSHI.
+       01 shi-rec.
+           05 shi-chiave.
+               10 shi-codice       PIC  X(2).
+           05 shi-dati.
+               10 shi-cod-SHI      PIC  x(15).
+               10 shi-mag-SHI-1    PIC  x(3).
+               10 shi-nome-semaforo            PIC  x(50).
+               10 shi-path-report-server       PIC  x(256).
+               10 shi-path-report-client       PIC  x(256).
+      *(( XFD NAME = pae-cap-imp-trubut ))
+               10 shi-dati-exp.
+                   15 shi-path-exp     PIC  x(256).
+                   15 shi-path-backup-exp          PIC  x(256).
+                   15 shi-file-articoli            PIC  x(50).
+                   15 shi-file-ean     PIC  x(50).
+                   15 shi-file-prodener            PIC  x(50).
+                   15 shi-file-vettori PIC  x(50).
+                   15 shi-file-fornitori           PIC  x(50).
+                   15 shi-file-tordini PIC  x(50).
+                   15 shi-file-rordini PIC  x(50).
+                   15 shi-file-note-ordini         PIC  x(50).
+                   15 shi-file-classi  PIC  x(50).
+      *(( XFD NAME = shi-file-exp-1 ))
+                   15 shi-file-vuoto-exp-1         PIC  x(50).
+      *(( XFD NAME = shi-file-exp-2 ))
+                   15 shi-file-vuoto-exp-2         PIC  x(50).
+      *(( XFD NAME = shi-file-exp-3 ))
+                   15 shi-file-vuoto-exp-3         PIC  x(50).
+      *(( XFD NAME = shi-file-exp-4 ))
+                   15 shi-file-vuoto-exp-4         PIC  x(50).
+      *(( XFD NAME = shi-file-exp-5 ))
+                   15 shi-file-vuoto-exp-5         PIC  x(50).
+                   15 shi-ftp-exp.
+                       20 shi-sito-exp     PIC  x(100).
+                       20 shi-user-exp     PIC  x(50).
+                       20 shi-pwd-exp      PIC  x(50).
+                       20 shi-path-remota-exp          PIC  x(100).
+               10 shi-dati-import.
+                   15 shi-path-imp     PIC  x(256).
+                   15 shi-path-backup-imp          PIC  x(256).
+                   15 shi-file-articoli-imp        PIC  x(50).
+                   15 shi-file-tordini-imp         PIC  x(50).
+                   15 shi-file-rordini-imp         PIC  x(50).
+      *(( XFD NAME = shi-file-imp-1 ))
+                   15 shi-file-vuoto-imp-1         PIC  x(50).
+      *(( XFD NAME = shi-file-imp-2 ))
+                   15 shi-file-vuoto-imp-2         PIC  x(50).
+      *(( XFD NAME = shi-file-imp-3 ))
+                   15 shi-file-vuoto-imp-3         PIC  x(50).
+      *(( XFD NAME = shi-file-imp-4 ))
+                   15 shi-file-vuoto-imp-4         PIC  x(50).
+      *(( XFD NAME = shi-file-imp-5 ))
+                   15 shi-file-vuoto-imp-5         PIC  x(50).
+                   15 shi-ftp-imp.
+                       20 shi-sito-imp     PIC  x(100).
+                       20 shi-user-imp     PIC  x(50).
+                       20 shi-pwd-imp      PIC  x(50).
+                       20 shi-path-remota-imp          PIC  x(100).
+               10 shi-dati-impor-tcarico.
+                   15 shi-path-impcar  PIC  x(256).
+                   15 shi-path-backup-impcar       PIC  x(256).
+                   15 shi-file-articoli-impcar     PIC  x(50).
+      *(( XFD NAME = shi-file-tordini-i ))
+                   15 shi-file-carichi-impcar      PIC  x(50).
+      *(( XFD NAME = shi-file-vuotoimpc ))
+                   15 shi-file-vuoto-impcar-1      PIC  x(46).
+                   15 shi-causale-impcar           PIC  x(4).
+      *(( XFD NAME = shi-file-vuoto-imp ))
+                   15 shi-mail-impcar  PIC  x(100).
+                   15 shi-mail-cc-impcar           PIC  x(100).
+                   15 shi-ftp-impcar.
+      *(( XFD NAME = shi-sito-imp_1 ))
+                       20 shi-sito-impcar  PIC  x(100).
+      *(( XFD NAME = shi-user-imp_1 ))
+                       20 shi-user-impcar  PIC  x(50).
+      *(( XFD NAME = shi-pwd-imp_1 ))
+                       20 shi-pwd-impcar   PIC  x(50).
+                       20 shi-path-remota-impcar       PIC  x(100).
+               10 shi-dati-comuni.
+                   15 shi-data-creazione           PIC  9(8).
+                   15 shi-ora-creazione            PIC  9(8).
+                   15 shi-utente-creazione         PIC  X(10).
+                   15 shi-data-ultima-modifica     PIC  9(8).
+                   15 shi-ora-ultima-modifica      PIC  9(8).
+                   15 shi-utente-ultima-modifica   PIC  X(10).
+               10 shi-vuoti.
+                   15 shi-num-vuoto-1  PIC  9(18).
+                   15 shi-num-vuoto-2  PIC  9(18).
+                   15 shi-num-vuoto-3  PIC  9(18).
+                   15 shi-dati-mail-mod-bozze.
+                       20 shi-mail-mod-bozze           PIC  x(200).
+                       20 shi-mail-cc-mod-bozze        PIC  x(200).
+                       20 shi-oggetto-canc-bozze       PIC  x(200).
+                       20 shi-corpo-canc-bozze         PIC  x(200).
+                       20 shi-oggetto-mod-bozze        PIC  x(200).
+                       20 shi-corpo-mod-bozze          PIC  x(200).
+                   15 shi-mag-SHI-2    PIC  x(3).
+                   15 shi-alfa-vuoto   PIC  x(3797).

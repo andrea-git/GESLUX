@@ -1,0 +1,19 @@
+      *(( XFD FILE = vengdo ))
+       FD  vengdo.
+       01 vgdo-rec.
+           05 vgdo-chiave.
+               10 vgdo-gdo-codice  PIC  x(5).
+               10 vgdo-cliente     PIC  9(5).
+               10 vgdo-prg-destino PIC  9(5).
+               10 vgdo-marca       PIC  9(4).
+               10 vgdo-mese        PIC  99.
+           05 vgdo-dati.
+               10 vgdo-gdo-intestazione        PIC  x(50).
+               10 vgdo-cli-ragsoc  PIC  x(50).
+               10 vgdo-des-ragsoc  PIC  x(50).
+               10 vgdo-citta-dest  PIC  x(50).
+               10 vgdo-mar-descrizione         PIC  x(50).
+               10 vgdo-imp-merce   PIC  s9(12)v99.
+               10 vgdo-add-pb      PIC  s9(12)v99.
+               10 vgdo-cons        PIC  s9(12)v99.
+               10 vgdo-cou         PIC  s9(12)v99.

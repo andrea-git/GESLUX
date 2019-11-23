@@ -1,0 +1,17 @@
+      *(( XFD FILE = tmp-progmag-zoom ))
+       FD  tmp-progmag-zoom.
+       01 tmp-prg-z-rec.
+           05 tmp-prg-z-chiave.
+               10 tmp-prg-z-cod-articolo       PIC  9(6).
+               10 tmp-prg-z-cod-magazzino      PIC  X(3).
+               10 tmp-prg-z-tipo-imballo       PIC  X(3).
+               10 tmp-prg-z-peso   PIC  9(5)V9(3).
+               10 tmp-prg-z-prog   PIC  9(3).
+           05 tmp-prg-z-dati.
+               10 tmp-prg-z-art-des            PIC  x(40).
+               10 tmp-prg-z-mag-des            PIC  x(50).
+               10 tmp-prg-z-imb-des            PIC  x(50).
+               10 tmp-prg-z-giacenza           PIC  S9(8).
+               10 tmp-prg-z-impegnato          PIC  S9(8).
+               10 tmp-prg-z-ordinato           PIC  S9(8).
+               10 tmp-prg-z-prezzo PIC  9(6)v99.

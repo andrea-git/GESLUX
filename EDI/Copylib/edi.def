@@ -1,0 +1,158 @@
+       78  separatore            value ";".                         
+
+       01  record-01H.
+         05 01H1-tipo-doc        pic x(3).
+         05 01H2-id-edi          pic x(35).
+         05 01H3-q-id-edi        pic x(4).
+         05 01H4-data-doc        pic x(8).            
+         05 01H5-num-doc         pic x(35).
+         05 01H6-tipo-rec        pic x(3) value "01H".
+         05 01H7-id-edi-cli      pic x(35).
+         05 01H8-q-id-ed-cli     pic x(4).
+
+       01  record-01T.
+         05 01T1-tipo-doc         pic x(3).
+         05 01T2-id-edi           pic x(35).
+         05 01T3-q-id-edi         pic x(4).
+         05 01T4-data-doc         pic x(8).
+         05 01T5-num-doc          pic x(35).
+         05 01T6-tipo-rec         pic x(3) value "01T".
+         05 01T7-id-edi-cli       pic x(35).
+         05 01T8-q-id-edi-cli     pic x(4).
+         05 01T9-cod-forn         pic x(17).
+         05 01T10-q-cod-forn      pic x(3). 
+         05 01T11-codfis          pic x(35).
+         05 01T12-capsoc          pic x(35).
+         05 01T13-rea-cciaa       pic x(35).
+         05 01T14-tribunale       pic x(35).
+         05 01T15-piva            pic x(35).
+         05 01T16-ragsoc          pic x(70).
+         05 01T17-indirizzo       pic x(35).
+         05 01T18-citta           pic x(35).
+         05 01T19-prov            pic x(3).
+         05 01T20-cap             pic x(5).
+         05 01T23-piva-cli        pic x(35).
+         05 01T24-ragsoc-cli      pic x(70).
+         05 01T25-indirizzo-cli   pic x(35).
+         05 01T26-citta-cli       pic x(35).
+         05 01T27-prov-cli        pic x(3).
+         05 01T28-cap-cli         pic x(5).
+         05 01T30-pag-des         pic x(35).
+         05 01T34-cod-cli         pic x(17).
+         05 01T35-q-cod-cli       pic x(3).
+         05 01T-middle1           pic x(42) value all separatore.
+         05 end-01T               pic x(151) value all separatore.
+
+       01 record-02D.
+         05 02D1-tipo-doc          pic x(3).
+         05 02D2-id-edi            pic x(35).
+         05 02D3-q-id-edi          pic x(4).
+         05 02D4-data-doc          pic x(8).
+         05 02D5-num-doc           pic x(35).
+         05 02D6-tipo-rec          pic x(3) value "02D".
+         05 02D7-cod-dest          pic x(17).
+         05 02D8-q-cod-dest        pic x(3).
+         05 02D9-ragsoc-dest       pic x(70).
+         05 02D10-indirizzo-dest   pic x(70).
+         05 02D11-citta-dest       pic x(35).
+         05 02D12-prov-dest        pic x(3).
+         05 02D13-cap-dest         pic x(5). 
+         05 02D14-num-bolla        pic x(35).
+         05 02D15-data-bolla       pic x(8).
+         05 02D16-num-ordine       pic x(35).
+         05 02D17-data-ordine      pic x(8).
+         05 02D18-num-fattura      pic x(35).
+         05 02D19-data-fattura     pic x(8).
+         05 02D20-prog-riga        pic x(6).
+         05 02D21-codfortu         pic x(6).
+         05 02D22-codfortu-q       pic x(2).
+         05 02D23-cod-ean          pic x(35).
+         05 02D24-q-cod-ean        pic x(3).
+         05 02D27-art-descrizione  pic x(35).
+         05 02D30-causale          pic x(3).
+         05 02D31-qta-segno        pic x.               
+         05 02D32-qta              pic x(15).
+         05 02D33-unimis           pic x(3) value "PCE".
+         05 02D34-CUTU-segno       pic x.
+         05 02D35-CUTU             pic x(15).
+         05 02D37-prz-segno        pic x.
+         05 02D38-prz-valore       pic x(15).
+      *  Non valorizzaato come da indicazione Carrefour 05/09/2013
+         05 02D39-q-prz            pic x(3). |value "AAA".
+         05 02D40-prz-segno2       pic x.
+         05 02D41-prz-valore2      pic x(15).
+         05 02D42-q-prz2           pic x(3) value "AAB".
+         05 02D43-unimis           pic x(3) value "PCE".
+         05 02D44-qtafatt          pic x(15).
+         05 02D45-prz-tot-segno    pic x.
+         05 02D46-prz-tot-valore   pic x(15).
+         05 02D47-cod-iva          pic x(3).
+         05 02D48-perce-iva-segno  pic x.
+         05 02D49-perce-iva        pic x(7).
+         05 02D52-des-iva          pic x(35).
+         05 02D53-tipo-sconto-1    pic x(6).
+         05 02D56-segno-sconto-1   pic x.
+         05 02D57-importo-sconto-1 pic x(15).
+         05 02D58-descr-sconto-1   pic x(35).
+         05 02D-middle1            pic x(54) value all separatore.
+         05 02D113-num-bolla       pic x(35).
+         05 02D114-data-bolla      pic x(8).
+         05 02D115-umcons          pic x(3)  value "PCE".
+         05 02D117-imposta-oli     pic x(3).
+         05 02D118-cat-imp-oli     pic x(3).
+         05 02D121-cat-imp-oli-segno   pic x.
+         05 02D122-cat-imp-oli-importo pic x(15).
+         05 02D123-cat-descrizione     pic x(35).
+         05 02D-middle2                pic x(14) value all separatore.
+         05 02D138-indicatore-sconto-1 pic x(3).
+         05 02D-middle3            pic x(25) value all separatore.
+         05 02D164-unimisfatt      pic x(3).
+         05 end-02D                pic x(80) value all separatore.
+
+       01 record-03P.
+         05 03P1-tipo-doc          pic x(3).
+         05 03P2-id-edi            pic x(35).
+         05 03P3-q-id-edi          pic x(4).
+         05 03P4-data-doc          pic x(8).
+         05 03P5-num-doc           pic x(35).
+         05 03P6-tipo-rec          pic x(3) value "03P".
+         05 03P7-tot-doc-segno     pic x.
+         05 03P8-tot-doc-valore    pic x(15).
+         05 03P9-tot-imp-segno     pic x.
+         05 03P10-tot-imp-valore   pic x(15).
+         05 03P11-tot-iva-segno    pic x.
+         05 03P12-tot-iva-valore   pic x(15).
+         05 03P13-tot-merce-segno  pic x.
+         05 03P14-tot-merce-valore pic x(15).
+         05 03P15-tipo-tassa-1     pic x(3) value "VAT".
+         05 03P16-cod-iva-1        pic x(3).
+         05 03P17-aliq-iva-segno-1 pic x.
+         05 03P18-aliq-iva-1       pic x(7).
+         05 03P19-impon-segno-1    pic x.
+         05 03P20-impon-valore-1   pic x(15).
+         05 03P21-iva-segno-1      pic x.
+         05 03P22-iva-valore-1     pic x(15).
+         05 03P23-iva-descr-1      pic x(35).
+         05 03P24-tipo-tassa-2     pic x(3) value "VAT".
+         05 03P25-cod-iva-2        pic x(3).
+         05 03P26-aliq-iva-segno-2 pic x.
+         05 03P27-aliq-iva-2       pic x(7).
+         05 03P28-impon-segno-2    pic x.
+         05 03P29-impon-valore-2   pic x(15).
+         05 03P30-iva-segno-2      pic x.
+         05 03P31-iva-valore-2     pic x(15).
+         05 03P32-iva-descr-2      pic x(35).
+         05 03P33-tipo-tassa-3     pic x(3) value "VAT".
+         05 03P34-cod-iva-3        pic x(3).
+         05 03P35-aliq-iva-segno-3 pic x.
+         05 03P36-aliq-iva-3       pic x(7).
+         05 03P37-impon-segno-3    pic x.
+         05 03P38-impon-valore-3   pic x(15).
+         05 03P39-iva-segno-3      pic x.
+         05 03P40-iva-valore-3     pic x(15).
+         05 03P41-iva-descr-3      pic x(35).
+         05 03P-middle             pic x(48) value all separatore.
+         05 03P90-note             pic x(24)
+                                   value "CONTRIBUTO CONAI ASSOLTO".
+         05 03P-end-riga           pic x(74) value all separatore.
+

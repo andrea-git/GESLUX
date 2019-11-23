@@ -1,0 +1,16 @@
+      *(( XFD FILE = zoom-tor-postel ))
+       FD  zoom-tor-postel.
+       01 zoom-top-rec.
+           05 zoom-top-chiave.
+               10 zoom-top-anno    PIC  9(4).
+               10 zoom-top-numero  PIC  9(8).
+           05 zoom-top-dati.
+               10 zoom-top-data-ordine         PIC  9(8).
+               10 zoom-top-causale PIC  x(20).
+               10 zoom-top-cod-cli PIC  9(5).
+               10 zoom-top-cli-ragsoc-1        PIC  x(40).
+               10 zoom-top-prg-destino         PIC  9(5).
+               10 zoom-top-des-localita        PIC  X(35).
+               10 zoom-top-invio   PIC  x.
+                   88 zoom-top-invio-manuale VALUE IS "M". 
+                   88 zoom-top-invio-postel VALUE IS "P". 

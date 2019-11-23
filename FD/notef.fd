@@ -1,0 +1,25 @@
+       FD  notef.
+       01 notf-rec.
+           05 notf-chiave.
+               10 notf-codice      PIC  9(5).
+               10 notf-prog        PIC  9(5).
+           05 notf-dati.
+               10 notf-note-1      PIC  x(19).
+               10 notf-data        PIC  9(8).
+               10 notf-note-2      PIC  x(30).
+               10 notf-note-3      PIC  x(30).
+               10 notf-note-4      PIC  x(30).
+           05 notf-dati-comuni.
+               10 notf-data-creazione          PIC  9(8).
+               10 notf-ora-creazione           PIC  9(8).
+               10 notf-utente-creazione        PIC  X(10).
+               10 notf-data-ultima-modifica    PIC  9(8).
+               10 notf-ora-ultima-modifica     PIC  9(8).
+               10 notf-utente-ultima-modifica  PIC  X(10).
+           05 notf-vuoti.
+               10 notf-num-vuoto-1 PIC  9(15).
+               10 notf-num-vuoto-2 PIC  9(15).
+               10 notf-num-vuoto-3 PIC  9(15).
+               10 notf-alfa-vuoto-1            PIC  X(20).
+               10 notf-alfa-vuoto-2            PIC  X(20).
+               10 notf-alfa-vuoto-3            PIC  X(20).

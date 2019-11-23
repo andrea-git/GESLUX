@@ -1,0 +1,14 @@
+      *(( XFD FILE = zoom-tor-master ))
+       FD  zoom-tor-master.
+       01 ztm-rec.
+           05 ztm-chiave.
+               10 ztm-anno         PIC  9(4).
+               10 ztm-numero       PIC  z(8).
+           05 ztm-data         PIC  x(10).
+           05 ztm-data-b       PIC  x(10).
+           05 ztm-num-b        PIC  z(8).
+           05 ztm-data-f       PIC  x(10).
+           05 ztm-num-f        PIC  z(8).
+           05 ztm-vettore      PIC  x(30).
+           05 ztm-esito        PIC  x(30).
+           05 ztm-qta-e        PIC  zzz.zz9.

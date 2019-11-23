@@ -1,0 +1,20 @@
+       FD  cli-prg.
+       01 cp-rec.
+           05 cp-chiave.
+               10 cp-cli-chiave.
+                   15 cp-tipo-CF       PIC  x.
+                       88 cp-tipo-C VALUE IS "C". 
+                       88 cp-tipo-F VALUE IS "F". 
+                   15 cp-clifor        PIC  9(5).
+               10 cp-articolo      PIC  9(6).
+           05 cp-dati.
+               10 cp-prg-chiave.
+                   15 cp-cod-articolo  PIC  9(6).
+                   15 cp-cod-magazzino PIC  X(3).
+                   15 cp-tipo-imballo  PIC  X(3).
+                   15 cp-peso          PIC  9(5)v9(3).
+               10 cp-filler        PIC  x(500).
+           05 cp-vuoti.
+               10 cp-num-vuoto-1   PIC  9(15).
+               10 cp-num-vuoto-2   PIC  9(15).
+               10 cp-num-vuoto-3   PIC  9(15).

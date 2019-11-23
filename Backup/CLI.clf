@@ -1,0 +1,4679 @@
+; CaseMaker Totem Layout Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[DATALAYOUT_CONTENT]
+DATALAYOUT_UNIQUE_CODE=TOTEM-7DF2981750-600-54612850
+[DSNENTITY_]
+[CStoAcucobolFileDefinition_]
+m_nType=1
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+m_strPrefix=CLI
+{{@FD_m_strDescription
+
+-----------------------------------------------------------------
+ clienti
+ Gestione nr.di telefono sullo zoom                                                               | mxm 06/03/2006 9.39
+ Gestione nickname sullo zoom                                                                     |ms 07/03/06 10.10
+
+   13.09.06 - S.R. nr. 1409 - Possibilità di gestione contabilità analitica                       |pm 13/09/2006 13.23
+            anche per clienti e fornitori                                                         |pm 13/09/2006 13.23
+-----------------------------------------------------------------
+
+   06.11.06 - S.R. nr. 3687 - Aggiunta chiave nr. 5 per il codice fiscale                         |pm 06/11/2006 12.07
+-----------------------------------------------------------------
+ versione 2007.00
+-----------------------------------------------------------------
+ eliminato campo cli-accumulo-punti-33                                                            | mxm 20/09/2007 16.56
+ aggiunto campo cli-33fch codice tipologia fidelity card                                          | mxm 20/09/2007 16.57
+ aggiunto campo cli-33fch-releasedby negozio che ha rilasciato la fidelity card                   | mxm 09/10/2007 15.53
+ aggiunto campo cli-33prf professione                                                             | mxm 31/10/2007 10.38
+ aggiunto campo cli-33tds titolo di studio                                                        | mxm 31/10/2007 10.38
+ aggiunto campo cli-consenso-pc                                                                   | mxm 31/10/2007 10.38
+ obsoletati campi "premi consegnati"                                                              | mxm 01/11/2007 9.59
+ cli-esente-raee                                                                                  | mxm 07/12/2007 17.48
+-----------------------------------------------------------------
+
+ Ticket 1140: Inserito codice sede principale da CPZ                                              |gm 27/08/2008 9.39
+
+-----------------------------------------------------------------
+ Ticket 9 - Gestione indirizzi estesi                                                             |mc 12/09/2008 11.27
+            Inseriti campi per abilitazione indirizzo esteso                                      |mc 12/09/2008 11.27
+-----------------------------------------------------------------
+ Ticket 1443 - Richiesta: eliminazione gestione dell'indirizzo esteso EFFETTI                     |mc 26/11/2008 11.11
+               Modifica: Inserito commento di campo non usato                                     |mc 26/11/2008 11.11
+-----------------------------------------------------------------
+ ticket 1531 - Si richiede di aumentare la dimensione del campo per il numero lettera d'intento:  |sq 30/01/2009
+   sono stati portati da 6 a 8 caratteri i campi per i n. delle lettere intento (interni ed esterni)
+-----------------------------------------------------------------
+
+ tk 240 - new prima nota                                                                          |ms 19/11/2008 16.56
+        - aggiunti livelli 88 per "cli-interessi-mora"
+-----------------------------------------------------------------
+
+ Ticket 1780 - aggiunto campo cli-data-inizio-procedura per indicare l'inizio di una eventuale    |ds 01/04/2009 9.20
+               procedura concorsuale o esecutiva                                                  |DS 01/04/2009 9.20
+-----------------------------------------------------------------
+ Ticket 1809 - modificata intestazione colonna in zoom da "data inizio procedura" a               |DS 08/04/2009 11.22
+               "procedura concorsuale"                                                            |DS 08/04/2009 9.20
+-----------------------------------------------------------------
+ Ticket 2633- reso visualizzabile in zoom campo cli-sms                                           |ds 11/01/2010 12.30
+-----------------------------------------------------------------
+ Tk 3194 - Black List                                                                            | scamar 09/07/2010 11:15:29
+         - aggiunti nuovi campi per la compilazione dei dati anagrafici
+           nel quadro A del modello BlackList
+
+----------------------------------------------------------------------------
+ tk 3387 - Gestire le mailing list per invii di SMS ed EMAIL di tipo commerciale.                   | scamar 22/12/2010 11:05:43
+           . nuovo campo "cli-consenso-sms"
+-----------------------------------------------------------------------------------------------------------------------
+ tk.3604 - Alineamento tracciati record standard per interfacciamento con sw invio telematico DAA (accise)
+                                                                                                    | rososv 26/01/2011 16:14:38
+ Allineamento tracciati record standard per interfacciamento con sw invio telematico DAA (accise)
+-----------------------------------------------------------------------------------------------------------------------
+ Tk 3630 - Comunicazioni telematiche (operazioni > 3000 euro)                                       | suadal 01/03/2011 12:32:54
+           - aggiunto campo x esclusione da comunicazione telematica iva
+-------------------------------------------------------------
+ tk 3796 - impossibilità di rintracciare il campo "invio tramite e-mail dei documenti abilitati"    | quasil 17/06/2011 10:47:43
+   Si richiede il riporto di questa informazione sia nell'imposta dello zoom che a quel punto risulterà anche in export excel.
+   - e' stato aggiunto nello zoom il campo per l'invio tramite e-mail dei documenti abilitati e inoltre sono stati
+     aggiunti i campi per autorizzare l'invio di proposte commerciali via sms e/o via email
+-----------------------------------------------------------------------------------------------------------------------
+ tk.4098 -  Sistema di replica via trigger tabelle g2 su database                                   | maxime 12/09/2011
+           invertite ridefinizioni occurs per cbljdbc
+-----------------------------------------------------------------------------------------------------------------------
+ Tk.4013 - Utility telematico operazioni 3000                                                       | rososv 11/07/2011
+
+ Aggiunto campo cli-s122-contratti per richiesta "Cliente con contratto in essere" per gestione scontrini spesometro
+-----------------------------------------------------------------------------------------------------------------------
+ tk. 4295 - Gestire la data di attivazione delle fidelity card e renderla                           | cermic 20/01/2012
+            disponibile in Infovision
+-----------------------------------------------------------------------------------------------------------------------
+ tk.3817 - Nel ges1sp e nel gescli il campo "Lingua descrizioni" accetta qualsiasi valore           | quasil 29/02/2012
+ - sostituito entry-field con combo-box e inserito livello 88 su campo cli-lingua-descrizioni
+-----------------------------------------------------------------------------------------------------------------------
+ ticket 4535 - emissione ri.ba nei confronti di cliente con due conti correnti nella stessa banca   | suadal 16/07/2012
+             - aggiunto livello 88 per campo cli-individuale
+--------------------------------------------------------------------------------------------------------------------------
+ ticket 4801 - Agroalimentari: disposizioni art 62 D.L.1 del 24/01/2012 (beni deteriorabili e non deteriorabili)
+                                                                                                    | rososv 13/11/2012
+
+ Pagina "Pagamento": aggiunti nuovi campi codice pagamento beni deteriorabili (cli-tblpa-deperibili) e
+                                          codice pagamento beni non deteriorabili (cli-tblpa-non-deperibili)
+-----------------------------------------------------------------------------------------------------------------------
+ tk.4799 - Supportare quanto disposto dall'art. 62 D.L. 1/2012                                      | rososv 22/11/2012
+
+ Pagina "Pagamento": aggiunto nuovo check-box per escludere il cliente dalla gestione agroalimentari
+                     cli-exclude-agroalimentari
+                         cli-exclude-agroalimentari-on      value 1
+                         cli-exclude-agroalimentari-off     value 0
+-----------------------------------------------------------------------------------------------------------------------
+ tk. 5378 - miglioria su tipo documento quando il fornitore è di tipo scheda carburante             | rososv 11/11/2013
+
+ - Aggiunto check-box "cli-riepilogativo" per clienti che effettuano solo fatture inferiori ai 300 euro
+   e sulla comunicazione polivalente (speosometro) hanno la possibilità di essere riepilogati spuntando
+   l'apposito check-box "Riepilogo fatture"
+-----------------------------------------------------------------------------------------------------------------------
+ tk.5385 - comunicazione spesometro polivalente                                                     | rososv 29/11/2013
+
+ - Aggiunti nello zoom check-box "Escludi da spesometro"
+ - Aggiunti nello zoom check-box "Persona fisica"
+-----------------------------------------------------------------------------------------------------------------------
+ tk 5401 - Adeguamento RID/BONIFICI per aderire al circuito SEPA (SDD/SCT)                          | SUADAL 08/01/2014
+         - aggiunti campi utilizzati per compilazione rid
+-----------------------------------------------------------------------------------------------------------------------
+ Ticket 5584 - Portare nello standard gli ambienti di tentata vendita                               | MACGIU 25/02/2014
+               resi obsoleti (aggiunto -old) i campi di tentata vendita che sono
+               "passati" sui file 65climit e 65cliaton
+-----------------------------------------------------------------------------------------------------------------------
+ tk. 5517 - RID tracciati SEPA : data inizio mandato in anagrafica.                                 | SUADAL 21/03/2014
+          - inserito campo cli-data-mandato
+-----------------------------------------------------------------------------------------------------------------------
+ tk. 5628 - Integrazione con "Fatturazione Elettronica verso la PA"                                 | rososv 24/03/2014
+          - inserito campo cli-fatt-elettronica
+          - inserito codice i.p.a. (indice delle pubbliche amminsitrazioni, obbligatorio per fattura elettronica)
+-----------------------------------------------------------------------------------------------------------------------
+ tk.5368 - Interfaccia e-commerce "esterno" (modulo 75)                                             | maxime 31/03/2014
+           Proprietà cli-mod75 true|false per account CLI sul sito web
+-----------------------------------------------------------------------------------------------------------------------
+ tk. 5809 - Ampliare tabella "tipo soggetto" clienti/fornitori con in valori 7 e 8                  | rososv 28/07/2014   
+
+          - Modifica valori ammessi per il campo "CLI-TIPO-SOGGETTO-MAGIX", sono stati aggiunti:
+            7 = "condomini"
+            8 = "altre casistiche"
+-----------------------------------------------------------------------------------------------------------------------
+ tk. 4240 - Inserimento CIG e CUP in anagrafica cliente / filiali di spedizione                     | Suadal 03/09/2014
+          - aggiunti campi CLI-CODICE-CIG CLI-CODICE-CUP
+-----------------------------------------------------------------------------------------------------------------------
+ tk. 5824 - integrazione con FATEL - migliorie e correzioni varie (III)                             | rososv 28/10/2014
+          - aggiunto check-box CLI-BOLLO-FT-NONIMP 
+                     fatture non imponibili: il bollo non deve essere addebitato
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+ tplvar zmm_title=Clienti
+ tplvar zmm_ver=09.01.00
+ tplvar zmm_class=anagraphic
+
+ ZoomFields seq:
+   01.cli-codice
+   02.cli-descrizione1
+   03.cli-descrizione2
+   04.cli-partita-iva
+   05.cli-codice-alternativo
+   06.cli-telefono
+   07.cli-fax
+   08.cli-e-mail
+   09.cli-codice-ag
+   10.cli-codice-ag-d
+   11.cli-via
+   12.cli-cap
+   13.cli-citta
+   14.cli-provincia
+   15.cli-codice-zo
+   16.cli-codice-zo-d
+   17.cli-codice-ac
+   18.cli-codice-ac-d
+   19.cli-codice-ca
+   20.cli-codice-ca-d
+   21.cli-codice-fiscale
+   22.cli-telex
+   23.cli-partita-iva-intra
+   24.cli-codice-pc
+   25.cli-codice-pc-d
+   26.cli-codice-na
+   27.cli-codice-na-d
+   28.cli-codice-ce
+   29.cli-codice-ce-d
+   30.cli-codice-va
+   31.cli-codice-pa
+   32.cli-codice-pa-d
+   33.cli-banca1
+   34.cli-codice-abi
+   35.cli-codice-cin
+   36.cli-banca2
+   37.cli-codice-cab
+   38.cli-conto-corrente
+   39.cli-codice-ba
+   40.cli-codice-ba-d
+   41.cli-codice-po
+   42.cli-codice-po-d
+   43.cli-codice-sp
+   44.cli-codice-sp-d
+   45.cli-codice-iv
+   46.cli-codice-iv-d
+   47.cli-iban
+   48.cli-bic
+   49.cli-nickname
+   50.cli-cpzownercode
+   51.cli-tblvc-codice                                                                            |pm 13/09/2006 13.30
+   52.cli-tblvc-codice-d                                                                          |pm 13/09/2006 13.30
+   53.cli-data-inizio-procedura                                                                   |DS 01/04/2009 9.31
+   54.cli-sms                                                                                     |DS 11/01/2010 9.31
+   55.cli-invio-e-mail                                                                              | quasil 17/06/2011 10:49:18
+   56.cli-consenso-sms-d                                                                            | quasil 17/06/2011 10:49:18
+   57.cli-consenso-pc-d                                                                             | quasil 17/06/2011 10:49:18
+   58.cli-tblpa-deperibili                                                                          | rososv 13/11/2012
+   59.cli-tblpa-deperibili-d                                                                        | rososv 13/11/2012
+   60.cli-tblpa-non-deperibili                                                                      | rososv 13/11/2012
+   61.cli-tblpa-non-deperibili-d                                                                    | rososv 13/11/2012
+   62.cli-exclude-agroalimentari-d                                                                  | rososv 27/11/2012
+   63.cli-riepilogativo-d                                                                           | rososv 11/11/2013
+   64.cli-exclude-com-iva                                                                           | rososv 29/11/2013
+   65.cli-individuale                                                                               | rososv 29/11/2013
+   66.cli-data-mandato                                                                              | SUADAL 21/03/2014
+   67.cli-fatt-elettronica-d                                                                        | rososv 24/03/2014
+   68.cli-ipa                                                                                       | rososv 24/03/2014
+   69.cli-codice-cig                                                                                | Suadal 03/09/2014
+   70.cli-codice-cup                                                                                | Suadal 03/09/2014
+   71.cli-bollo-ft-nonimp                                                                           | rososv 28/10/2014
+
+@}}
+[FDITEM0_]
+m_strName=RECORD-CLI
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_
+
+@}}
+[FDITEM1_]
+m_strName=CLI-CODICE-G2
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1_
+$GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=08,zmm_align=L,zmm_pos=1,zmm_entity=cli
+@}}
+[FDITEM2_]
+m_strName=RESTO-RECORD-CLI
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM2_
+
+@}}
+[FDITEM3_]
+m_strName=CLI-CODICE-ALTERNATIVO
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM3_
+$GEN zmm=on,zmm_title=Codice alternativo,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=5
+@}}
+[FDITEM4_]
+m_strName=CLI-DESCRIZIONE1
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM4_
+$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_key=3,zmm_size=30,zmm_align=L,zmm_pos=2
+@}}
+[FDITEM5_]
+m_strName=CLI-DESCRIZIONE2
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM5_
+$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=3
+@}}
+[FDITEM6_]
+m_strName=CLI-VIA
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM6_
+$GEN zmm=on,zmm_title=Via,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=11
+@}}
+[FDITEM7_]
+m_strName=CLI-CAP
+m_strRawPic=X(05)
+m_strPic=X(05)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM7_
+$GEN zmm=on,zmm_title=CAP,zmm_datatype=x,zmm_size=05,zmm_align=L,zmm_pos=12
+@}}
+[FDITEM8_]
+m_strName=CLI-CITTA
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM8_
+$GEN zmm=on,zmm_title=Citta',zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=13
+@}}
+[FDITEM9_]
+m_strName=CLI-PROVINCIA
+m_strRawPic=X(02)
+m_strPic=X(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM9_
+$GEN zmm=on,zmm_title=Prov.,zmm_datatype=x,zmm_size=02,zmm_align=L,zmm_pos=14
+@}}
+[FDITEM10_]
+m_strName=CLI-CODICE-NA
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM10_
+$GEN type=code,entity=tblna,zmm=on,zmm_title=Codice nazione,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=26,zmm_entity=tblna
+@}}
+[FDITEM11_]
+m_strName=CLI-TELEFONO
+m_strRawPic=X(15)
+m_strPic=X(15)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM11_
+$GEN zmm=on,zmm_title=Telefono,zmm_datatype=t,zmm_size=15,zmm_align=L,zmm_pos=6
+@}}
+[FDITEM12_]
+m_strName=CLI-TELEX
+m_strRawPic=X(15)
+m_strPic=X(15)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM12_
+$GEN zmm=on,zmm_title=Telex,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=22
+@}}
+[FDITEM13_]
+m_strName=CLI-FAX
+m_strRawPic=X(15)
+m_strPic=X(15)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM13_
+$GEN zmm=on,zmm_title=Fax,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=7
+@}}
+[FDITEM14_]
+m_strName=CLI-PARTITA-IVA
+m_strRawPic=X(11)
+m_strPic=X(11)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM14_
+$GEN zmm=on,zmm_title=Partita IVA,zmm_datatype=x,zmm_key=4,zmm_size=11,zmm_align=L,zmm_pos=4
+@}}
+[FDITEM15_]
+m_strName=CLI-CODICE-FISCALE
+m_strRawPic=X(16)
+m_strPic=X(16)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM15_
+$GEN zmm=on,zmm_title=Codice fiscale,zmm_datatype=x,zmm_key=5,zmm_size=16,zmm_align=L,zmm_pos=21
+@}}
+[FDITEM16_]
+m_strName=CLI-PARTITA-IVA-INTRA
+m_strRawPic=X(16)
+m_strPic=X(16)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM16_
+$GEN zmm=on,zmm_title=Partita iva intra,zmm_datatype=x,zmm_size=16,zmm_align=L,zmm_pos=23
+@}}
+[FDITEM17_]
+m_strName=CLI-CODICE-PC
+m_strRawPic=X(04)
+m_strPic=X(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM17_
+$GEN type=code,entity=tblpc,zmm=on,zmm_title=Codice tabella gruppi e conti,zmm_datatype=x,zmm_size=04,zmm_align=L,zmm_pos=24,zmm_entity=tblpc
+@}}
+[FDITEM18_]
+m_strName=CLI-CODICE-CE
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM18_
+$GEN type=code,entity=tblce,zmm=on,zmm_title=Codice piano dei conti cee,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=28,zmm_entity=tblce
+@}}
+[FDITEM19_]
+m_strName=CLI-PARTITE
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM19_
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+@}}
+[FDITEM20_]
+m_strName=CLI-PARTITE-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM20_
+
+@}}
+[FDITEM21_]
+m_strName=CLI-PARTITE-88-S
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM21_
+
+@}}
+[FDITEM22_]
+m_strName=cli-partite-88-null
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" "
+{{@DataItem_m_strDescriptionFDITEM22_
+
+@}}
+[FDITEM23_]
+m_strName=CLI-SCADENZE
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM23_
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+@}}
+[FDITEM24_]
+m_strName=CLI-SCADENZE-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM24_
+
+@}}
+[FDITEM25_]
+m_strName=CLI-SCADENZE-88-S
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM25_
+
+@}}
+[FDITEM26_]
+m_strName=cli-scadenze-88-null
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" "
+{{@DataItem_m_strDescriptionFDITEM26_
+
+@}}
+[FDITEM27_]
+m_strName=CLI-CODICE-VA
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM27_
+$GEN type=code,entity=tblva,zmm=on,zmm_title=Codice valuta,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=30,zmm_entity=tblva
+@}}
+[FDITEM28_]
+m_strName=CLI-CODICE-VA-INTRA
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM28_
+$GEN type=code,entity=tblva
+@}}
+[FDITEM29_]
+m_strName=CLI-ALLEGATO
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM29_
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+
+@}}
+[FDITEM30_]
+m_strName=CLI-ALLEGATO-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM30_
+
+@}}
+[FDITEM31_]
+m_strName=CLI-INDIVIDUALE
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM31_
+$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=P.fisica,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=65
+@}}
+[FDITEM32_]
+m_strName=CLI-INDIVIDUALE-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM32_
+
+@}}
+[FDITEM33_]
+m_strName=cli-individuale-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM33_
+
+@}}
+[FDITEM34_]
+m_strName=CLI-CODICE-PA
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM34_
+$GEN type=code,entity=tblpa,zmm=on,zmm_title=Codice pagamento,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=31,zmm_entity=tblpa
+
+@}}
+[FDITEM35_]
+m_strName=CLI-MESI-ESCLUSI
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM35_
+
+@}}
+[FDITEM36_]
+m_strName=CLI-MESE1
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM36_
+
+@}}
+[FDITEM37_]
+m_strName=CLI-GIORNO1
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM37_
+
+@}}
+[FDITEM38_]
+m_strName=CLI-MESE2
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM38_
+
+@}}
+[FDITEM39_]
+m_strName=CLI-GIORNO2
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM39_
+
+@}}
+[FDITEM40_]
+m_strName=CLI-BANCA
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM40_
+
+@}}
+[FDITEM41_]
+m_strName=CLI-BANCA1
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM41_
+$GEN zmm=on,zmm_title=Banca di appoggio,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=33
+@}}
+[FDITEM42_]
+m_strName=cli-codice-abi-x
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM42_
+
+@}}
+[FDITEM43_]
+m_strName=CLI-CODICE-ABI
+m_strRawPic=9(05)
+m_strPic=9(05)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM43_
+$GEN zmm=on,zmm_title=Codice ABI,zmm_datatype=x,zmm_size=05,zmm_align=R,zmm_pos=34,zmm_entity=abi
+@}}
+[FDITEM44_]
+m_strName=CLI-CODICE-CIN
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM44_
+$GEN zmm=on,zmm_title=Codice CIN,zmm_datatype=x,zmm_size=01,zmm_align=L,zmm_pos=35
+@}}
+[FDITEM45_]
+m_strName=CLI-BANCA2
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM45_
+$GEN zmm=on,zmm_title=Filiale di appoggio,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=36
+@}}
+[FDITEM46_]
+m_strName=cli-codice-cab-x
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM46_
+
+@}}
+[FDITEM47_]
+m_strName=CLI-CODICE-CAB
+m_strRawPic=9(05)
+m_strPic=9(05)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM47_
+$GEN zmm=on,zmm_title=Codice CAB,zmm_datatype=x,zmm_size=05,zmm_align=R,zmm_pos=37,zmm_entity=abi
+@}}
+[FDITEM48_]
+m_strName=CLI-CONTO-CORRENTE
+m_strRawPic=X(15)
+m_strPic=X(15)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM48_
+$GEN zmm=on,zmm_title=Conto corrente,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=38
+@}}
+[FDITEM49_]
+m_strName=CLI-FIDO
+m_strRawPic=S9(13)V9(02)
+m_strPic=S9(13)V9(02)
+m_nItemLevel=10
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM49_
+$GEN type=num,size=21,dec=2
+
+@}}
+[FDITEM50_]
+m_strName=CLI-CODICE-BA
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM50_
+$GEN type=code,entity=tblba,zmm=on,zmm_title=Codice banca,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=39,zmm_entity=tblba
+@}}
+[FDITEM51_]
+m_strName=CLI-CODICE-PO
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM51_
+$GEN type=code,entity=tblpo,zmm=on,zmm_title=Codice porto resa,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=41,zmm_entity=tblpo
+
+@}}
+[FDITEM52_]
+m_strName=CLI-CODICE-SP
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM52_
+$GEN type=code,entity=tblsp,zmm=on,zmm_title=Codice spedizione,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=43,zmm_entity=tblsp
+@}}
+[FDITEM53_]
+m_strName=CLI-CODICE-COLLEGATO
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM53_
+$GEN type=code,entity=frn
+
+@}}
+[FDITEM54_]
+m_strName=CLI-CODICE-IV
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM54_
+$GEN type=code,entity=tbliv,zmm=on,zmm_title=Codice iva,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=45,zmm_entity=tbliv
+@}}
+[FDITEM55_]
+m_strName=CLI-RICHIESTA-ESENZIONE
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM55_
+
+@}}
+[FDITEM56_]
+m_strName=CLI-NUMERO-RICHIESTA-OLD
+m_strRawPic=9(06)
+m_strPic=9(06)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM56_
+
+@}}
+[FDITEM57_]
+m_strName=CLI-DATA-RICHIESTA
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM57_
+ copy "groupdate.xfc". | DBMaker
+
+@}}
+[FDITEM58_]
+m_strName=AA
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-DATA-RICH-ES-AA
+{{@DataItem_m_strDescriptionFDITEM58_
+
+@}}
+[FDITEM59_]
+m_strName=MM
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-DATA-RICH-ES-MM
+{{@DataItem_m_strDescriptionFDITEM59_
+
+@}}
+[FDITEM60_]
+m_strName=GG
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-DATA-RICH-ES-GG
+{{@DataItem_m_strDescriptionFDITEM60_
+
+@}}
+[FDITEM61_]
+m_strName=FILLER
+m_nItemLevel=15
+m_bRedefines=1
+m_strRedefines=CLI-DATA-RICHIESTA
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM61_
+
+@}}
+[FDITEM62_]
+m_strName=CLI-DATA-RICHIESTA-N
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM62_
+$GEN type=date
+
+@}}
+[FDITEM63_]
+m_strName=CLI-REGISTRAZIONE-ESENZIONE
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM63_
+
+@}}
+[FDITEM64_]
+m_strName=CLI-NUMERO-REGISTRAZIONE-OLD
+m_strRawPic=9(06)
+m_strPic=9(06)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM64_
+
+@}}
+[FDITEM65_]
+m_strName=CLI-DATA-REGISTRAZIONE
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM65_
+ copy "groupdate.xfc". | DBMaker
+
+@}}
+[FDITEM66_]
+m_strName=AA
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-DATA-REG-AA
+{{@DataItem_m_strDescriptionFDITEM66_
+
+@}}
+[FDITEM67_]
+m_strName=MM
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-DATA-REG-MM
+{{@DataItem_m_strDescriptionFDITEM67_
+
+@}}
+[FDITEM68_]
+m_strName=GG
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-DATA-REG-GG
+{{@DataItem_m_strDescriptionFDITEM68_
+
+@}}
+[FDITEM69_]
+m_strName=FILLER
+m_nItemLevel=15
+m_bRedefines=1
+m_strRedefines=CLI-DATA-REGISTRAZIONE
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM69_
+
+@}}
+[FDITEM70_]
+m_strName=CLI-DATA-REGISTRAZIONE-N
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM70_
+$GEN type=date
+
+@}}
+[FDITEM71_]
+m_strName=CLI-CODICE-SE
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM71_
+$GEN type=code,entity=tblse
+
+@}}
+[FDITEM72_]
+m_strName=CLI-ALLEGATI
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM72_
+
+@}}
+[FDITEM73_]
+m_strName=CLI-NOME1-A
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM73_
+
+@}}
+[FDITEM74_]
+m_strName=CLI-NOME2-A
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM74_
+
+@}}
+[FDITEM75_]
+m_strName=CLI-VIA-A
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM75_
+
+@}}
+[FDITEM76_]
+m_strName=CLI-CAP-A
+m_strRawPic=X(05)
+m_strPic=X(05)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM76_
+
+@}}
+[FDITEM77_]
+m_strName=CLI-CITTA-A
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM77_
+
+@}}
+[FDITEM78_]
+m_strName=CLI-PROVINCIA-A
+m_strRawPic=X(02)
+m_strPic=X(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM78_
+
+@}}
+[FDITEM79_]
+m_strName=CLI-FATTURE
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM79_
+
+@}}
+[FDITEM80_]
+m_strName=CLI-NOME1-F
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM80_
+
+@}}
+[FDITEM81_]
+m_strName=CLI-NOME2-F
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM81_
+
+@}}
+[FDITEM82_]
+m_strName=CLI-VIA-F
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM82_
+
+@}}
+[FDITEM83_]
+m_strName=CLI-CAP-F
+m_strRawPic=X(05)
+m_strPic=X(05)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM83_
+
+@}}
+[FDITEM84_]
+m_strName=CLI-CITTA-F
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM84_
+
+@}}
+[FDITEM85_]
+m_strName=CLI-PROVINCIA-F
+m_strRawPic=X(02)
+m_strPic=X(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM85_
+
+@}}
+[FDITEM86_]
+m_strName=CLI-ORDINI
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM86_
+
+@}}
+[FDITEM87_]
+m_strName=CLI-NOME1-O
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM87_
+
+@}}
+[FDITEM88_]
+m_strName=CLI-NOME2-O
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM88_
+
+@}}
+[FDITEM89_]
+m_strName=CLI-VIA-O
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM89_
+
+@}}
+[FDITEM90_]
+m_strName=CLI-CAP-O
+m_strRawPic=X(05)
+m_strPic=X(05)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM90_
+
+@}}
+[FDITEM91_]
+m_strName=CLI-CITTA-O
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM91_
+
+@}}
+[FDITEM92_]
+m_strName=CLI-PROVINCIA-O
+m_strRawPic=X(02)
+m_strPic=X(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM92_
+
+@}}
+[FDITEM93_]
+m_strName=CLI-COMMENTO
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM93_
+
+@}}
+[FDITEM94_]
+m_strName=CLI-RIFERIMENTO
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM94_
+
+@}}
+[FDITEM95_]
+m_strName=CLI-CODICE-ZO
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM95_
+$GEN type=code,entity=tblzo,zmm=on,zmm_title=Cod.zona,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=15,zmm_entity=tblzo
+@}}
+[FDITEM96_]
+m_strName=CLI-CODICE-AC
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM96_
+$GEN type=code,entity=tblac,zmm=on,zmm_title=Cod.area,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=17,zmm_entity=tblac
+@}}
+[FDITEM97_]
+m_strName=CLI-CODICE-CA
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM97_
+$GEN type=code,entity=tblca,zmm=on,zmm_title=Cod.categoria,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=19,,zmm_entity=tblca
+@}}
+[FDITEM98_]
+m_strName=CLI-CODICE-SP1
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM98_
+$GEN type=code,entity=tblsp
+
+@}}
+[FDITEM99_]
+m_strName=CLI-CODICE-CO
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM99_
+$GEN type=code,entity=tblco
+
+@}}
+[FDITEM100_]
+m_strName=CLI-SPESE-FATTURA
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM100_
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+
+@}}
+[FDITEM101_]
+m_strName=CLI-SPESE-FATTURA-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM101_
+
+@}}
+[FDITEM102_]
+m_strName=CLI-TIPO-FATTURA
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM102_
+$GEN type=combobox,comboclass=cli_tipo_fattura
+
+@}}
+[FDITEM103_]
+m_strName=CLI-TIPO-FATTURA-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" "R" "O" "D"
+{{@DataItem_m_strDescriptionFDITEM103_
+
+@}}
+[FDITEM104_]
+m_strName=CLI-TIPO-FATTURA-88-s
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM104_
+
+@}}
+[FDITEM105_]
+m_strName=cli-tipo-fattura-88-r
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="R"
+{{@DataItem_m_strDescriptionFDITEM105_
+
+@}}
+[FDITEM106_]
+m_strName=CLI-TIPO-FATTURA-88-o
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="O"
+{{@DataItem_m_strDescriptionFDITEM106_
+
+@}}
+[FDITEM107_]
+m_strName=CLI-TIPO-FATTURA-88-d
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="D"
+{{@DataItem_m_strDescriptionFDITEM107_
+
+@}}
+[FDITEM108_]
+m_strName=CLI-ACCORPAMENTO
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM108_
+$GEN type=combobox,comboclass=cli_accorpamento
+
+@}}
+[FDITEM109_]
+m_strName=CLI-ACCORPAMENTO-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" "A" " "
+{{@DataItem_m_strDescriptionFDITEM109_
+
+@}}
+[FDITEM110_]
+m_strName=CLI-ACCORPAMENTO-88-s
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM110_
+
+@}}
+[FDITEM111_]
+m_strName=CLI-ACCORPAMENTO-88-a
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="A"
+{{@DataItem_m_strDescriptionFDITEM111_
+
+@}}
+[FDITEM112_]
+m_strName=CLI-ACCORPAMENTO-88-o
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" "
+{{@DataItem_m_strDescriptionFDITEM112_
+
+@}}
+[FDITEM113_]
+m_strName=CLI-CODICE-LI
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM113_
+$GEN type=code,entity=tblli
+@}}
+[FDITEM114_]
+m_strName=CLI-LINGUA
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM114_
+
+@}}
+[FDITEM115_]
+m_strName=CLI-LINGUA-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0 THRU 5
+{{@DataItem_m_strDescriptionFDITEM115_
+
+@}}
+[FDITEM116_]
+m_strName=CLI-PREZZO-BOLLA
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM116_
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+
+@}}
+[FDITEM117_]
+m_strName=CLI-PREZZO-BOLLA-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM117_
+
+@}}
+[FDITEM118_]
+m_strName=cli-cp-vendite
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM118_
+
+@}}
+[FDITEM119_]
+m_strName=cli-cp-vendite-88-1
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM119_
+
+@}}
+[FDITEM120_]
+m_strName=cli-cp-vendite-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1 THRU 9
+{{@DataItem_m_strDescriptionFDITEM120_
+
+@}}
+[FDITEM121_]
+m_strName=CLI-CLIENTE-FATTURARE
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM121_
+$GEN type=code,entity=cli
+@}}
+[FDITEM122_]
+m_strName=CLI-CODICE-FORNITORE
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM122_
+
+@}}
+[FDITEM123_]
+m_strName=CLI-CODICE-CS
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM123_
+$GEN type=code,entity=tblcs
+@}}
+[FDITEM124_]
+m_strName=CLI-CODICE-SS
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM124_
+$GEN type=code,entity=tblss
+@}}
+[FDITEM125_]
+m_strName=CLI-CAUSALI-AMMESSE
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM125_
+
+@}}
+[FDITEM126_]
+m_strName=FILLER
+m_nItemLevel=15
+m_nSync=-1
+m_bOccurs=1
+m_bFixed=1
+m_strRawSize=10
+m_nSize=10
+{{@DataItem_m_strDescriptionFDITEM126_
+
+
+
+  Modulo 65 - terminali E2K MOBILE                                          | nb 04.07.03
+
+ESCLI65                           | nb 04.07.03
+@}}
+[FDITEM127_]
+m_strName=CLI-CAUS-AMMESSE
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM127_
+
+@}}
+[FDITEM128_]
+m_strName=CLI-CAUS-AMMESSE-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "V" "S" "R" "Z" "O"
+{{@DataItem_m_strDescriptionFDITEM128_
+
+@}}
+[FDITEM129_]
+m_strName=CLI-CODICE-K3
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM129_
+.07.03
+$GEN entity=tblk3
+@}}
+[FDITEM130_]
+m_strName=CLI-IBAN
+m_strRawPic=X(34)
+m_strPic=X(34)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM130_
+
+
+
+$GEN zmm=on,zmm_title=Codice IBAN,zmm_datatype=x,zmm_size=34,zmm_align=L,zmm_pos=47
+@}}
+[FDITEM131_]
+m_strName=CLI-BIC
+m_strRawPic=X(11)
+m_strPic=X(11)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM131_
+$GEN zmm=on,zmm_title=Codice BIC,zmm_datatype=x,zmm_size=11,zmm_align=L,zmm_pos=48
+@}}
+[FDITEM132_]
+m_strName=cli-consenso-sms
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM132_
+
+@}}
+[FDITEM133_]
+m_strName=cli-exclude-com-iva
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM133_
+
+@}}
+[FDITEM134_]
+m_strName=cli-exclude-com-iva-on
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM134_
+       10  CLI-FILLER-01           PIC  X(86).                              | ds 10.09.03           | scamar 22/12/2010 11:50:40
+$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Escl.spesom.,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=64
+ox                                        | suadal 01/03/2011 10:30:36
+@}}
+[FDITEM135_]
+m_strName=cli-exclude-com-iva-off
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" "
+{{@DataItem_m_strDescriptionFDITEM135_
+
+@}}
+[FDITEM136_]
+m_strName=cli-exclude-com-iva-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM136_
+
+@}}
+[FDITEM137_]
+m_strName=cli-s122-contratti
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM137_
+
+        10  cli-filler-01           pic  x(85).             | scamar 22/12/2010 11:50:40            | suadal 01/03/2011 10:32:16
+       10  cli-filler-01           pic  x(84).                                                      | suadal 01/03/2011 10:32:40 | rososv 11/07/2011
+
+@}}
+[FDITEM138_]
+m_strName=cli-dt-attivazione-fidelity
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM138_
+$GEN type=date,
+@}}
+[FDITEM139_]
+m_strName=cli-tblpa-deperibili
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM139_
+
+** i campi "CLI-TBLPA-DEPERIBILI" E "CLI-TBLPA-NON-DEPERIBILI" devono essere utilizzati solo ed esclusivamente
+** tramite gli entry "rp_cli_getTblpaNoDeperibili" e "rp_cli_getTblpaDeperibili" del programma "rp_cli",
+** perchè è l'unico punto in cui viene controllata la validità del contenuto dei campi, in quanto occupano
+** una posizione di filler di cui non si ha la certezza di un contenuto che corrisponda effettivamente
+** a un codice valido della tabella TBLPA (senza appesantire l'FM_CLI con la validazione del campo).
+
+$GEN type=code,entity=tblpa,zmm=on,zmm_title=Pag.beni det.,zmm_datatype=x,zmm_size=8,zmm_align=L,zmm_pos=58,zmm_entity=tblpa
+
+@}}
+[FDITEM140_]
+m_strName=cli-tblpa-non-deperibili
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM140_
+$GEN type=code,entity=tblpa,zmm=on,zmm_title=Beni non det.,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=60,zmm_entity=tblpa
+@}}
+[FDITEM141_]
+m_strName=cli-exclude-agroalimentari
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM141_
+
+@}}
+[FDITEM142_]
+m_strName=cli-exclude-agroalimentari-on
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM142_
+
+@}}
+[FDITEM143_]
+m_strName=cli-exclude-agroalimentari-off
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM143_
+
+@}}
+[FDITEM144_]
+m_strName=cli-riepilogativo
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM144_
+
+ogo fatture su comunicazione polivalente (spesometro)
+
+@}}
+[FDITEM145_]
+m_strName=cli-riepilogativo-on
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM145_
+
+@}}
+[FDITEM146_]
+m_strName=cli-riepilogativo-off
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM146_
+
+@}}
+[FDITEM147_]
+m_strName=cli-data-mandato
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM147_
+$GEN type=date,zmm=on,zmm_title=Data Mandato,zmm_datatype=n,zmm_size=11,zmm_align=R,zmm_pos=66
+@}}
+[FDITEM148_]
+m_strName=cli-fatt-elettronica
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM148_
+
+
+@}}
+[FDITEM149_]
+m_strName=cli-fatt-elettronica-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM149_
+
+@}}
+[FDITEM150_]
+m_strName=cli-fatt-elettronica-ko
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM150_
+
+@}}
+[FDITEM151_]
+m_strName=cli-hasWebAccount
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM151_
+      
+te con account sul sito WEB di e-commerce (mod.75)            
+@}}
+[FDITEM152_]
+m_strName=cli-ipa
+m_strRawPic=x(10)
+m_strPic=X(10)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM152_
+
+$GEN zmm=on,zmm_title=Cod.univoco uff.,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=68
+@}}
+[FDITEM153_]
+m_strName=cli-codice-cig
+m_strRawPic=x(20)
+m_strPic=X(20)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM153_
+$GEN zmm=on,zmm_title=Codice CIG,zmm_datatype=x,zmm_size=35,zmm_align=L,zmm_pos=69   
+@}}
+[FDITEM154_]
+m_strName=cli-codice-cup
+m_strRawPic=x(20)
+m_strPic=X(20)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM154_
+$GEN zmm=on,zmm_title=Codice CUP,zmm_datatype=x,zmm_size=35,zmm_align=L,zmm_pos=70
+@}}
+[FDITEM155_]
+m_strName=cli-bollo-ft-nonimp
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM155_
+$GEN type=checkbox,truevalue="S",falsevalue="N",zmm=on,zmm_title=Bollo ft.non imp.,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=71
+@}}
+[FDITEM156_]
+m_strName=cli-bollo-ft-nonimp-on
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM156_
+
+@}}
+[FDITEM157_]
+m_strName=cli-bollo-ft-nonimp-off
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="N "
+{{@DataItem_m_strDescriptionFDITEM157_
+
+@}}
+[FDITEM158_]
+m_strName=cli-bollo-ft-nonimp-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" "N"
+{{@DataItem_m_strDescriptionFDITEM158_
+
+@}}
+[FDITEM159_]
+m_strName=cli-filler-01
+m_strRawPic=x(06)
+m_strPic=X(06)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM159_
+        10  cli-filler-01           pic  x(47).         | rososv 24/03/2014  | maxime 31/03/2014    | Suadal 03/09/2014
+**        10  cli-filler-01           pic  x(07).       | Suadal 03/09/2014                         | rososv 28/10/2014
+@}}
+[FDITEM160_]
+m_strName=CLI-FATTURARE
+m_strRawPic=S9(13)V9(02)
+m_strPic=S9(13)V9(02)
+m_nItemLevel=10
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM160_
+
+$GEN type=num,size=21,dec=2
+@}}
+[FDITEM161_]
+m_strName=CLI-IMPEGNATO
+m_strRawPic=S9(13)V9(02)
+m_strPic=S9(13)V9(02)
+m_nItemLevel=10
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM161_
+$GEN type=num,size=21,dec=2
+
+@}}
+[FDITEM162_]
+m_strName=CLI-CODICE-NO
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM162_
+
+$GEN type=code,entity=tblno
+
+@}}
+[FDITEM163_]
+m_strName=cli-rid-cod-debitore-tipo
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM163_
+
+
+
+
+o codice" riferito al "codice cliente debitore" nel tracciato di presentazione      | SUADAL 08/01/2014
+ssi RID alle banche:
+tenza
+atricola
+odice fiscale
+odice cliente
+odice fornitore
+ortafoglio commerciale
+ltri
+@}}
+[FDITEM164_]
+m_strName=cli-rid-cod-debitore-tipo-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1 THRU 9
+{{@DataItem_m_strDescriptionFDITEM164_
+
+@}}
+[FDITEM165_]
+m_strName=cli-rid-cod-debitore
+m_strRawPic=x(16)
+m_strPic=X(16)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=cli-rid-cod-debito
+{{@DataItem_m_strDescriptionFDITEM165_
+
+@}}
+[FDITEM166_]
+m_strName=cli-rid-cod-debitore-check
+m_strRawPic=x(05)
+m_strPic=X(05)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=cli-rid-cod-debito
+{{@DataItem_m_strDescriptionFDITEM166_
+
+o pezzo di ex filler è adoperato per validare i nuovi campi:
+-rid-cod-debitore-tipo e cli-rid-cod-debitore
+o cli-rid-cod-debitore-check-ok = false, il record viene "recuperato" (see data-patch-in e out nel fm_cli)
+@}}
+[FDITEM167_]
+m_strName=cli-rid-cod-debitore-check-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="rcdOK"
+{{@DataItem_m_strDescriptionFDITEM167_
+
+@}}
+[FDITEM168_]
+m_strName=CLI-CODICE-AG
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM168_
+**        10  CLI-FILLER              PIC  X(22).                                                  | SUADAL 08/01/2014
+
+$GEN type=code,entity=tblag,zmm=on,zmm_title=Cod.agente,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=9,zmm_entity=tblag
+@}}
+[FDITEM169_]
+m_strName=CLI-PERIODO-FATTURA
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM169_
+
+@}}
+[FDITEM170_]
+m_strName=CLI-DATA-AGGIORNAMENTO
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM170_
+ copy "groupdate.xfc". | DBMaker
+
+@}}
+[FDITEM171_]
+m_strName=AA
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-DATA-AGG-AA
+{{@DataItem_m_strDescriptionFDITEM171_
+
+@}}
+[FDITEM172_]
+m_strName=MM
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-DATA-AGG-MM
+{{@DataItem_m_strDescriptionFDITEM172_
+
+@}}
+[FDITEM173_]
+m_strName=GG
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-DATA-AGG-GG
+{{@DataItem_m_strDescriptionFDITEM173_
+
+@}}
+[FDITEM174_]
+m_strName=FILLER
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=CLI-DATA-AGGIORNAMENTO
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM174_
+
+@}}
+[FDITEM175_]
+m_strName=CLI-DATA-AGGIORNAMENTO-N
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM175_
+$GEN type=date
+
+@}}
+[FDITEM176_]
+m_strName=CLI-CODICE-LI43
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM176_
+$GEN type=code,entity=tblli
+
+@}}
+[FDITEM177_]
+m_strName=CLI-CODICE-PA43
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM177_
+$GEN type=code,entity=tblpa
+
+@}}
+[FDITEM178_]
+m_strName=CLI-ARROTONDA-IN43
+m_strRawPic=9(03)
+m_strPic=9(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM178_
+
+@}}
+[FDITEM179_]
+m_strName=CLI-ARROTONDA-VI43
+m_strRawPic=9(03)
+m_strPic=9(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM179_
+
+@}}
+[FDITEM180_]
+m_strName=CLI-KILOMETRI
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM180_
+0 thru 60
+0 thru 60
+$GEN type=num,size=6,dec=0
+
+@}}
+[FDITEM181_]
+m_strName=CLI-TIPO-FORFAIT-VIAGGI
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM181_
+
+@}}
+[FDITEM182_]
+m_strName=CLI-TIPO-FORFAIT-VIAGGI-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="O" "L" " "
+{{@DataItem_m_strDescriptionFDITEM182_
+$GEN type=combobox,comboclass=cli_tipo_forfait_viaggi,
+ " azzera e disabilita cli-forfait-viaggi
+@}}
+[FDITEM183_]
+m_strName=CLI-TIPO-FORFAIT-VIAGGI-88-o
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="O"
+{{@DataItem_m_strDescriptionFDITEM183_
+
+@}}
+[FDITEM184_]
+m_strName=CLI-TIPO-FORFAIT-VIAGGI-88-l
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="L"
+{{@DataItem_m_strDescriptionFDITEM184_
+
+@}}
+[FDITEM185_]
+m_strName=CLI-TIPO-FORFAIT-VIAGGI-88-s
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" "
+{{@DataItem_m_strDescriptionFDITEM185_
+
+@}}
+[FDITEM186_]
+m_strName=CLI-FORFAIT-VIAGGI
+m_strRawPic=S9(15)V9(02)
+m_strPic=S9(15)V9(02)
+m_nItemLevel=10
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM186_
+$GEN type=num,size=23,dec=2
+
+@}}
+[FDITEM187_]
+m_strName=CLI-CODICE-LI42
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM187_
+pgm check per decimali less 60
+$GEN type=code,entity=tblli
+
+@}}
+[FDITEM188_]
+m_strName=CLI-CODICE-PA42
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM188_
+$GEN type=code,entity=tblpa
+
+@}}
+[FDITEM189_]
+m_strName=CLI-CODICE-ACCISA
+m_strRawPic=X(15)
+m_strPic=X(15)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM189_
+*** campi per modulo 83 aziende vinicole
+
+@}}
+[FDITEM190_]
+m_strName=CLI-FLAG-IMBALLO
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM190_
+*** campi per modulo 61 imballi
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+@}}
+[FDITEM191_]
+m_strName=CLI-FLAG-IMBALLO-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "S"
+{{@DataItem_m_strDescriptionFDITEM191_
+
+@}}
+[FDITEM192_]
+m_strName=CLI-TIPO-DOC-old
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM192_
+*** campi per modulo 65 tentata vendita                         | not in gescli
+**        10  CLI-TIPO-DOC            PIC  9(01).                                                   | MACGIU 25/02/2014
+@}}
+[FDITEM193_]
+m_strName=CLI-TIPO-DOC-old-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1, 2, 3
+{{@DataItem_m_strDescriptionFDITEM193_
+
+@}}
+[FDITEM194_]
+m_strName=CLI-TIPO-DOC-ATON-old-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0, 1, 2, 7, 8
+{{@DataItem_m_strDescriptionFDITEM194_
+
+@}}
+[FDITEM195_]
+m_strName=CLI-FLAG-PF-old
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM195_
+
+@}}
+[FDITEM196_]
+m_strName=CLI-FLAG-PF-old-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0, 1
+{{@DataItem_m_strDescriptionFDITEM196_
+**        10  CLI-FLAG-PF             PIC  9(01).                  | not in gescli                  | MACGIU 25/02/2014
+n gescli                     | MACGIU 25/02/2014
+@}}
+[FDITEM197_]
+m_strName=cli-giri-visita-x-old
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM197_
+
+**        10  cli-giri-visita-x.                                   | maxime 12/09/2011              | MACGIU 25/02/2014
+**            15 CLI-GIRI-VISITA-1      PIC  9(04).                                                 | MACGIU 25/02/2014
+**            15 CLI-GIRI-VISITA-2      PIC  9(04).                                                 | MACGIU 25/02/2014
+**            15 CLI-GIRI-VISITA-3      PIC  9(04).                                                 | MACGIU 25/02/2014
+**            15 CLI-GIRI-VISITA-4      PIC  9(04).                                                 | MACGIU 25/02/2014
+**            15 CLI-GIRI-VISITA-5      PIC  9(04).                                                 | MACGIU 25/02/2014
+**            15 CLI-GIRI-VISITA-6      PIC  9(04).                                                 | MACGIU 25/02/2014
+**            15 CLI-GIRI-VISITA-7      PIC  9(04).                                                 | MACGIU 25/02/2014
+@}}
+[FDITEM198_]
+m_strName=CLI-GIRI-VISITA-old-1
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM198_
+
+@}}
+[FDITEM199_]
+m_strName=CLI-GIRI-VISITA-old-2
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-GIRI-VISITA-ol
+{{@DataItem_m_strDescriptionFDITEM199_
+
+@}}
+[FDITEM200_]
+m_strName=CLI-GIRI-VISITA-old-3
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-GIRI-VISITA-ol
+{{@DataItem_m_strDescriptionFDITEM200_
+
+@}}
+[FDITEM201_]
+m_strName=CLI-GIRI-VISITA-old-4
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-GIRI-VISITA-ol
+{{@DataItem_m_strDescriptionFDITEM201_
+
+@}}
+[FDITEM202_]
+m_strName=CLI-GIRI-VISITA-old-5
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-GIRI-VISITA-ol
+{{@DataItem_m_strDescriptionFDITEM202_
+
+@}}
+[FDITEM203_]
+m_strName=CLI-GIRI-VISITA-old-6
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-GIRI-VISITA-ol
+{{@DataItem_m_strDescriptionFDITEM203_
+
+@}}
+[FDITEM204_]
+m_strName=CLI-GIRI-VISITA-old-7
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-GIRI-VISITA-ol
+{{@DataItem_m_strDescriptionFDITEM204_
+
+@}}
+[FDITEM205_]
+m_strName=filler
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=cli-giri-visita-x-old
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM205_
+
+**        10  filler redefines cli-giri-visita-x.                         | maxime 12/09/2011       | MACGIU 25/02/2014
+**            15  CLI-GIRI-VISITA       PIC  9(04)  OCCURS 7.        | not in gescli                | MACGIU 25/02/2014
+@}}
+[FDITEM206_]
+m_strName=CLI-GIRI-VISITA-old
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_bOccurs=1
+m_bFixed=1
+m_strRawSize=7
+m_nSize=7
+m_strName_Xfd=CLI-GIRI-VISITA-ol
+{{@DataItem_m_strDescriptionFDITEM206_
+
+@}}
+[FDITEM207_]
+m_strName=CLI-FLAG-REVOCATO-old
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM207_
+
+**        10  CLI-FLAG-REVOCATO         PIC  9(01).                                                 | MACGIU 25/02/2014
+@}}
+[FDITEM208_]
+m_strName=CLI-FLAG-REVOCATO-old-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0, 1
+{{@DataItem_m_strDescriptionFDITEM208_
+
+@}}
+[FDITEM209_]
+m_strName=CLI-TBLMA-CODICE
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM209_
+$GEN type=code,entity=tblma
+@}}
+[FDITEM210_]
+m_strName=CLI-TIPO-ASS-COND-VEN-old
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM210_
+**        10  CLI-TIPO-ASS-COND-VEN   PIC  9(01).                  | not in gescli                  | MACGIU 25/02/2014
+@}}
+[FDITEM211_]
+m_strName=CLI-TIPO-ASS-COND-VEN-old-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0, 1
+{{@DataItem_m_strDescriptionFDITEM211_
+
+@}}
+[FDITEM212_]
+m_strName=CLI-CONTO-ANTICIPI-old
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM212_
+**        10  CLI-CONTO-ANTICIPI      PIC  X(08).                  | not in gescli                  | MACGIU 25/02/2014
+@}}
+[FDITEM213_]
+m_strName=CLI-CONT-IMBALLO
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM213_
+*** campi per modulo 61 imballi
+$GEN type=checkbox,truevalue=" ",falsevalue="N"
+@}}
+[FDITEM214_]
+m_strName=CLI-CONT-IMBALLO-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "N"
+{{@DataItem_m_strDescriptionFDITEM214_
+
+@}}
+[FDITEM215_]
+m_strName=CLI-CODICE-LI-IMB
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM215_
+$GEN type=code,entity=tblli
+@}}
+[FDITEM216_]
+m_strName=CLI-DARE-46
+m_strRawPic=9(06)
+m_strPic=9(06)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM216_
+*** campi per modulo 46 collegamento sole 24 ore
+
+@}}
+[FDITEM217_]
+m_strName=CLI-AVERE-46
+m_strRawPic=9(06)
+m_strPic=9(06)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM217_
+
+@}}
+[FDITEM218_]
+m_strName=cli-addebito
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM218_
+*** campi per modulo 81 riciclo rifiuti da imballaggi
+ CLI-ADDEBITO=indica se eseguire l'addebito al cliente, se non eseguirlo o
+       se eseguirlo in accordo al valore presente nella tabella parametri
+       TBL81
+ CLI-ANNOTAZIONE=indica se non annotare i conteggi su fattura nel caso di
+       addebito o se annotarli nel caso di non addebito
+
+$GEN type=combobox,comboclass=cli_addebito
+@}}
+[FDITEM219_]
+m_strName=cli-addebito-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "S" "N"
+{{@DataItem_m_strDescriptionFDITEM219_
+
+@}}
+[FDITEM220_]
+m_strName=cli-addebito-88-o
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" "
+{{@DataItem_m_strDescriptionFDITEM220_
+
+@}}
+[FDITEM221_]
+m_strName=cli-addebito-88-s
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM221_
+
+@}}
+[FDITEM222_]
+m_strName=cli-addebito-88-n
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="N"
+{{@DataItem_m_strDescriptionFDITEM222_
+
+@}}
+[FDITEM223_]
+m_strName=CLI-ANNOTAZIONE
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM223_
+$GEN type=checkbox,truevalue="N",falsevalue="S"
+@}}
+[FDITEM224_]
+m_strName=CLI-ANNOTAZIONE-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "S" "N"
+{{@DataItem_m_strDescriptionFDITEM224_
+
+@}}
+[FDITEM225_]
+m_strName=CLI-ANNOTAZIONE-88-o
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" "
+{{@DataItem_m_strDescriptionFDITEM225_
+
+@}}
+[FDITEM226_]
+m_strName=CLI-ANNOTAZIONE-88-s
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM226_
+
+@}}
+[FDITEM227_]
+m_strName=CLI-ANNOTAZIONE-88-n
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="N"
+{{@DataItem_m_strDescriptionFDITEM227_
+
+@}}
+[FDITEM228_]
+m_strName=CLI-TABELLA-PLAFOND
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM228_
+
+@}}
+[FDITEM229_]
+m_strName=CLI-PLAFOND-1
+m_strRawPic=S9(03)V9(02)
+m_strPic=S9(03)V9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM229_
+$GEN type=num,size=7,dec=2
+@}}
+[FDITEM230_]
+m_strName=CLI-PLAFOND-2
+m_strRawPic=S9(03)V9(02)
+m_strPic=S9(03)V9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM230_
+$GEN type=num,size=7,dec=2
+@}}
+[FDITEM231_]
+m_strName=CLI-PLAFOND-3
+m_strRawPic=S9(03)V9(02)
+m_strPic=S9(03)V9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM231_
+$GEN type=num,size=7,dec=2
+@}}
+[FDITEM232_]
+m_strName=CLI-PLAFOND-4
+m_strRawPic=S9(03)V9(02)
+m_strPic=S9(03)V9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM232_
+$GEN type=num,size=7,dec=2
+@}}
+[FDITEM233_]
+m_strName=CLI-PLAFOND-5
+m_strRawPic=S9(03)V9(02)
+m_strPic=S9(03)V9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM233_
+$GEN type=num,size=7,dec=2
+@}}
+[FDITEM234_]
+m_strName=CLI-PLAFOND-6
+m_strRawPic=S9(03)V9(02)
+m_strPic=S9(03)V9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM234_
+$GEN type=num,size=7,dec=2
+@}}
+[FDITEM235_]
+m_strName=FILLER
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=CLI-TABELLA-PLAFOND
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM235_
+
+@}}
+[FDITEM236_]
+m_strName=CLI-PLAFOND-ALFA
+m_nItemLevel=15
+m_nSync=-1
+m_bOccurs=1
+m_bFixed=1
+m_strRawSize=6
+m_nSize=6
+{{@DataItem_m_strDescriptionFDITEM236_
+
+@}}
+[FDITEM237_]
+m_strName=CLI-PLAFOND
+m_strRawPic=S9(03)V9(02)
+m_strPic=S9(03)V9(02)
+m_nItemLevel=20
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM237_
+
+@}}
+[FDITEM238_]
+m_strName=CLI-ESENZIONE
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM238_
+
+$GEN type=checkbox,truevalue="S",falsevalue="  "
+
+@}}
+[FDITEM239_]
+m_strName=CLI-ESENZIONE-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "S"
+{{@DataItem_m_strDescriptionFDITEM239_
+
+@}}
+[FDITEM240_]
+m_strName=CLI-DATA-INIZIO-ESENZIONE
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM240_
+ copy "groupdate.xfc". | DBMaker
+@}}
+[FDITEM241_]
+m_strName=AA
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-DATA-ESENZ-AA
+{{@DataItem_m_strDescriptionFDITEM241_
+
+@}}
+[FDITEM242_]
+m_strName=MM
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-DATA-ESENZ-MM
+{{@DataItem_m_strDescriptionFDITEM242_
+
+@}}
+[FDITEM243_]
+m_strName=GG
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-DATA-ESENZ-GG
+{{@DataItem_m_strDescriptionFDITEM243_
+
+@}}
+[FDITEM244_]
+m_strName=FILLER
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=CLI-DATA-INIZIO-ESENZIONE
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM244_
+
+@}}
+[FDITEM245_]
+m_strName=CLI-DATA-INIZIO-ESECUZIONE-N
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM245_
+$GEN type=date
+@}}
+[FDITEM246_]
+m_strName=CLI-PREZZO-LIBERO
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM246_
+
+@}}
+[FDITEM247_]
+m_strName=CLI-PREZZO-LIBERO-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="0" "1" "2" " "
+{{@DataItem_m_strDescriptionFDITEM247_
+
+
+n gescli
+@}}
+[FDITEM248_]
+m_strName=CLI-PREZZO-LIBERO-88-0
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="0"
+{{@DataItem_m_strDescriptionFDITEM248_
+
+@}}
+[FDITEM249_]
+m_strName=CLI-PREZZO-LIBERO-88-1
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="1"
+{{@DataItem_m_strDescriptionFDITEM249_
+
+@}}
+[FDITEM250_]
+m_strName=CLI-PREZZO-LIBERO-88-2
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="2"
+{{@DataItem_m_strDescriptionFDITEM250_
+
+@}}
+[FDITEM251_]
+m_strName=CLI-PREZZO-LIBERO-88-3
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="3"
+{{@DataItem_m_strDescriptionFDITEM251_
+
+@}}
+[FDITEM252_]
+m_strName=CLI-PROMOZIONE1
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM252_
+
+@}}
+[FDITEM253_]
+m_strName=CLI-PROMOZIONE1-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "1"
+{{@DataItem_m_strDescriptionFDITEM253_
+n gescli
+@}}
+[FDITEM254_]
+m_strName=CLI-PROMOZIONE2
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM254_
+
+@}}
+[FDITEM255_]
+m_strName=CLI-PROMOZIONE2-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "1"
+{{@DataItem_m_strDescriptionFDITEM255_
+n gescli
+
+@}}
+[FDITEM256_]
+m_strName=CLI-PROMOZIONE3
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM256_
+
+@}}
+[FDITEM257_]
+m_strName=CLI-PROMOZIONE3-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "1"
+{{@DataItem_m_strDescriptionFDITEM257_
+n gescli
+@}}
+[FDITEM258_]
+m_strName=CLI-E-MAIL-OLD
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM258_
+
+@}}
+[FDITEM259_]
+m_strName=CLI-INTERNET
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM259_
+5.11.02
+
+@}}
+[FDITEM260_]
+m_strName=CLI-TRASPORTO
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM260_
+$GEN type=combobox,comboclass=cli_trasporto
+
+@}}
+[FDITEM261_]
+m_strName=CLI-TRASPORTO-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0 1 2 3
+{{@DataItem_m_strDescriptionFDITEM261_
+
+@}}
+[FDITEM262_]
+m_strName=CLI-MITTENTE
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM262_
+
+@}}
+[FDITEM263_]
+m_strName=CLI-DESTINATARIO
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=2
+{{@DataItem_m_strDescriptionFDITEM263_
+
+@}}
+[FDITEM264_]
+m_strName=CLI-VETTORE
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=3
+{{@DataItem_m_strDescriptionFDITEM264_
+
+@}}
+[FDITEM265_]
+m_strName=CLI-CONTROPARTITA
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM265_
+
+
+@}}
+[FDITEM266_]
+m_strName=CLI-TIPO-CP
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM266_
+
+@}}
+[FDITEM267_]
+m_strName=CLI-TIPO-CP-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="C" "F" "M" " "
+{{@DataItem_m_strDescriptionFDITEM267_
+$GEN type=combobox,comboclass=generic_tipo_cfm,comboentity=cli-tipo-cp-e3
+lank pulire e proteggere cli-conto-cp
+@}}
+[FDITEM268_]
+m_strName=CLI-TIPO-CP-88-c
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="C"
+{{@DataItem_m_strDescriptionFDITEM268_
+
+@}}
+[FDITEM269_]
+m_strName=CLI-TIPO-CP-88-f
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="F"
+{{@DataItem_m_strDescriptionFDITEM269_
+
+@}}
+[FDITEM270_]
+m_strName=CLI-TIPO-CP-88-m
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="M"
+{{@DataItem_m_strDescriptionFDITEM270_
+
+@}}
+[FDITEM271_]
+m_strName=CLI-TIPO-CP-88-o
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" "
+{{@DataItem_m_strDescriptionFDITEM271_
+
+@}}
+[FDITEM272_]
+m_strName=CLI-CONTO-CP
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM272_
+$GEN type=code,entity=var(cli-tipo-cp-e3)
+
+@}}
+[FDITEM273_]
+m_strName=CLI-ESCLUSO-DAL-GIORNO1
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM273_
+
+@}}
+[FDITEM274_]
+m_strName=CLI-ESCLUSO-DAL-GIORNO2
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-ESCLUSO-DAL-GI
+{{@DataItem_m_strDescriptionFDITEM274_
+
+@}}
+[FDITEM275_]
+m_strName=CLI-DOCUMENTI-WWP
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-ESCL-GIORNO2
+{{@DataItem_m_strDescriptionFDITEM275_
+0 thru 31
+0 thru 31
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+@}}
+[FDITEM276_]
+m_strName=CLI-DOCUMENTI-WWP-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "S"
+{{@DataItem_m_strDescriptionFDITEM276_
+
+@}}
+[FDITEM277_]
+m_strName=CLI-DOCUMENTI-WWP-SI
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM277_
+
+@}}
+[FDITEM278_]
+m_strName=CLI-DOCUM-LIRE-EURO
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM278_
+
+@}}
+[FDITEM279_]
+m_strName=CLI-DOCUM-LIRE-EURO-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="L" "E"
+{{@DataItem_m_strDescriptionFDITEM279_
+cated
+
+@}}
+[FDITEM280_]
+m_strName=CLI-GIORNO-CHIUSURA
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM280_
+
+@}}
+[FDITEM281_]
+m_strName=CLI-GIORNO-CHIUSURA-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0 1 2 3 4 5 6 7
+{{@DataItem_m_strDescriptionFDITEM281_
+
+@}}
+[FDITEM282_]
+m_strName=CLI-TIPO-SOGGETTO-MAGIX
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM282_
+$GEN type=combobox,comboclass=cli_tipo_soggetto-magix
+
+@}}
+[FDITEM283_]
+m_strName=cli-tipo-soggetto-magix-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1 2 3 4 5 6 7 8
+{{@DataItem_m_strDescriptionFDITEM283_
+**            88  CLI-TIPO-SOGGETTO-MAGIX-88      VALUE 1 2 3 4 5 6.                                | rososv 28/07/2014
+@}}
+[FDITEM284_]
+m_strName=CLI-MAGIX-RITENUTA
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM284_
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+
+@}}
+[FDITEM285_]
+m_strName=CLI-MAGIX-RITENUTA-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "S"
+{{@DataItem_m_strDescriptionFDITEM285_
+
+@}}
+[FDITEM286_]
+m_strName=CLI-MAGIX-335
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM286_
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+
+@}}
+[FDITEM287_]
+m_strName=CLI-MAGIX-335-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "S"
+{{@DataItem_m_strDescriptionFDITEM287_
+
+@}}
+[FDITEM288_]
+m_strName=CLI-MAGIX-ALTRO
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM288_
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+
+@}}
+[FDITEM289_]
+m_strName=CLI-MAGIX-ALTRO-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "S"
+{{@DataItem_m_strDescriptionFDITEM289_
+
+@}}
+[FDITEM290_]
+m_strName=CLI-SMS
+m_strRawPic=X(20)
+m_strPic=X(20)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM290_
+$GEN zmm=on,zmm_title=Sms,zmm_datatype=x,zmm_size=25,zmm_align=L,zmm_pos=54
+@}}
+[FDITEM291_]
+m_strName=CLI-INVIO-E-MAIL
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM291_
+$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Doc.e-mail,zmm_datatype=x,zmm_size=1,zmm_align=L,zmm_pos=55
+@}}
+[FDITEM292_]
+m_strName=CLI-INVIO-E-MAIL-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "S"
+{{@DataItem_m_strDescriptionFDITEM292_
+
+@}}
+[FDITEM293_]
+m_strName=CLI-INVIO-E-MAIL-SI
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM293_
+
+@}}
+[FDITEM294_]
+m_strName=CLI-CODICE-NA-A
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM294_
+$GEN type=code,entity=tblna
+
+@}}
+[FDITEM295_]
+m_strName=CLI-CODICE-NA-F
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM295_
+$GEN type=code,entity=tblna
+
+@}}
+[FDITEM296_]
+m_strName=CLI-CODICE-NA-O
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM296_
+$GEN type=code,entity=tblna
+
+@}}
+[FDITEM297_]
+m_strName=CLI-E-MAIL
+m_strRawPic=X(50)
+m_strPic=X(50)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM297_
+
+$GEN zmm=on,zmm_title=E-mail,zmm_datatype=x,zmm_size=50,zmm_align=L,zmm_pos=8
+@}}
+[FDITEM298_]
+m_strName=CLI-INTERESSI-MORA
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM298_
+
+@}}
+[FDITEM299_]
+m_strName=CLI-INTERESSI-MORA-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "S" "N"
+{{@DataItem_m_strDescriptionFDITEM299_
+$GEN type=radiobutton,value_1=" ",image_1=1,value_2="S",image_2=2,value_3="N",image_3=3
+a 24.04.03
+@}}
+[FDITEM300_]
+m_strName=cli-interessi-mora-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM300_
+
+@}}
+[FDITEM301_]
+m_strName=cli-interessi-mora-no
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="N"
+{{@DataItem_m_strDescriptionFDITEM301_
+
+@}}
+[FDITEM302_]
+m_strName=cli-interessi-mora-storno
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" "
+{{@DataItem_m_strDescriptionFDITEM302_
+
+@}}
+[FDITEM303_]
+m_strName=CLI-CODICE-CLP-51
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM303_
+
+@}}
+[FDITEM304_]
+m_strName=CLI-ABILITA-SSCC
+m_strRawPic=X
+m_strPic=X
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM304_
+
+@}}
+[FDITEM305_]
+m_strName=CLI-FILLER-02
+m_strRawPic=X(09)
+m_strPic=X(09)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM305_
+
+
+
+
+$GEN entity=clp
+0.06.02
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+3.01.05
+
+@}}
+[FDITEM306_]
+m_strName=CLI-EFFETTI
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM306_
+
+
+@}}
+[FDITEM307_]
+m_strName=CLI-NOME1-E
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM307_
+
+@}}
+[FDITEM308_]
+m_strName=CLI-NOME2-E
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM308_
+
+@}}
+[FDITEM309_]
+m_strName=CLI-VIA-E
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM309_
+
+@}}
+[FDITEM310_]
+m_strName=CLI-CAP-E
+m_strRawPic=X(05)
+m_strPic=X(05)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM310_
+
+@}}
+[FDITEM311_]
+m_strName=CLI-CITTA-E
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM311_
+
+@}}
+[FDITEM312_]
+m_strName=CLI-PROVINCIA-E
+m_strRawPic=X(02)
+m_strPic=X(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM312_
+
+@}}
+[FDITEM313_]
+m_strName=CLI-BLOCCO-CONDIZIONI-old
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM313_
+
+
+ software ATON ROAD 3                                                          |nb 04/07/2005 14.42
+
+**        10  CLI-BLOCCO-CONDIZIONI.                      |nb 04/07/2005 14.42                      | MACGIU 25/02/2014
+@}}
+[FDITEM314_]
+m_strName=FILLER
+m_nItemLevel=15
+m_nSync=-1
+m_bOccurs=1
+m_bFixed=1
+m_strRawSize=10
+m_nSize=10
+{{@DataItem_m_strDescriptionFDITEM314_
+
+@}}
+[FDITEM315_]
+m_strName=CLI-BLOCCO-CONDIZ-old
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM315_
+
+@}}
+[FDITEM316_]
+m_strName=CLI-BLOCCO-CONDIZ-old-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="0" "1"
+{{@DataItem_m_strDescriptionFDITEM316_
+
+@}}
+[FDITEM317_]
+m_strName=CLI-GIORNO-CONSEGNA-old
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM317_
+**        10  CLI-GIORNO-CONSEGNA.                        |nb 04/07/2005 14.42                      | MACGIU 25/02/2014
+@}}
+[FDITEM318_]
+m_strName=FILLER
+m_nItemLevel=15
+m_nSync=-1
+m_bOccurs=1
+m_bFixed=1
+m_strRawSize=07
+m_nSize=7
+{{@DataItem_m_strDescriptionFDITEM318_
+
+@}}
+[FDITEM319_]
+m_strName=CLI-GIORNO-CONS-old
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM319_
+
+@}}
+[FDITEM320_]
+m_strName=CLI-GIORNO-CONS-old-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0 1 2 3
+{{@DataItem_m_strDescriptionFDITEM320_
+
+@}}
+[FDITEM321_]
+m_strName=CLI-GIORNO-CONS-old-88-CHIUSO
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM321_
+
+@}}
+[FDITEM322_]
+m_strName=CLI-GIORNO-CONS-old-88-APERTO
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM322_
+
+@}}
+[FDITEM323_]
+m_strName=CLI-GIORNO-CONS-old-88-APE-MATT
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=2
+{{@DataItem_m_strDescriptionFDITEM323_
+
+@}}
+[FDITEM324_]
+m_strName=CLI-GIORNO-CONS-old-88-APE-POM
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=3
+{{@DataItem_m_strDescriptionFDITEM324_
+
+@}}
+[FDITEM325_]
+m_strName=CLI-DOC-FORZATO-old
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM325_
+**        10  CLI-DOC-FORZATO                 PIC  9(01). |nb 04/07/2005 14.42                      | MACGIU 25/02/2014
+@}}
+[FDITEM326_]
+m_strName=CLI-DOC-FORZATO-old-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0 1
+{{@DataItem_m_strDescriptionFDITEM326_
+
+@}}
+[FDITEM327_]
+m_strName=CLI-DOC-FORZATO-old-88-LIBERO
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM327_
+
+@}}
+[FDITEM328_]
+m_strName=CLI-DOC-FORZATO-old-88-FORZAT
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM328_
+
+@}}
+[FDITEM329_]
+m_strName=CLI-TIPO-CLIENTE-old
+m_strRawPic=X(02)
+m_strPic=X(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM329_
+**        10  CLI-TIPO-CLIENTE                PIC  X(02). |nb 04/07/2005 14.42                      | MACGIU 25/02/2014
+@}}
+[FDITEM330_]
+m_strName=CLI-TIPO-CLIENTE-old-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="LU" "SE" "NO" "CE"
+{{@DataItem_m_strDescriptionFDITEM330_
+
+@}}
+[FDITEM331_]
+m_strName=CLI-TIPO-CLIENTE-old-88-LUOGO
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="LU"
+{{@DataItem_m_strDescriptionFDITEM331_
+
+@}}
+[FDITEM332_]
+m_strName=CLI-TIPO-CLIENTE-old-88-SEDE
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="SE"
+{{@DataItem_m_strDescriptionFDITEM332_
+
+@}}
+[FDITEM333_]
+m_strName=CLI-TIPO-CLIENTE-old-88-NORMA
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="NO"
+{{@DataItem_m_strDescriptionFDITEM333_
+
+@}}
+[FDITEM334_]
+m_strName=CLI-TIPO-CLIENTE-old-88-CESSIO
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="CE"
+{{@DataItem_m_strDescriptionFDITEM334_
+
+@}}
+[FDITEM335_]
+m_strName=CLI-BLOCCO-PAGAMENTO-old
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM335_
+**        10  CLI-BLOCCO-PAGAMENTO            PIC  9(01). |nb 04/07/2005 14.42                      | MACGIU 25/02/2014
+@}}
+[FDITEM336_]
+m_strName=CLI-BLOCCO-PAGAMENTO-old-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0 1
+{{@DataItem_m_strDescriptionFDITEM336_
+
+@}}
+[FDITEM337_]
+m_strName=CLI-BLOCCO-PAGAMENTO-old-88-LIBER
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM337_
+
+@}}
+[FDITEM338_]
+m_strName=CLI-BLOCCO-PAGAMENTO-old-99-BLOCC
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM338_
+
+@}}
+[FDITEM339_]
+m_strName=CLI-STAMPA-SALDO-old
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM339_
+**        10  CLI-STAMPA-SALDO                PIC  9(01). |nb 04/07/2005 15.30                      | MACGIU 25/02/2014
+@}}
+[FDITEM340_]
+m_strName=CLI-STAMPA-SALDO-old-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0 1
+{{@DataItem_m_strDescriptionFDITEM340_
+
+@}}
+[FDITEM341_]
+m_strName=CLI-STAMPA-SALDO-old-88-NO
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM341_
+
+@}}
+[FDITEM342_]
+m_strName=CLI-STAMPA-SALDO-old-88-SI
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM342_
+
+@}}
+[FDITEM343_]
+m_strName=CLI-ASSORTIMENTO-old
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM343_
+**        10  CLI-ASSORTIMENTO                PIC  9(01). |nb 04/07/2005 14.42                      | MACGIU 25/02/2014
+@}}
+[FDITEM344_]
+m_strName=CLI-ASSORTIMENTO-old-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0 1
+{{@DataItem_m_strDescriptionFDITEM344_
+
+@}}
+[FDITEM345_]
+m_strName=CLI-ASSORTIMENTO-old-88-VINC
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM345_
+
+@}}
+[FDITEM346_]
+m_strName=CLI-ASSORTIMENTO-old-88-LIBERO
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM346_
+
+@}}
+[FDITEM347_]
+m_strName=CLI-FLAG-ASSORT-old
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM347_
+**        10  CLI-FLAG-ASSORT                 PIC  9(01).                                           | MACGIU 25/02/2014
+@}}
+[FDITEM348_]
+m_strName=CLI-FLAG-ASSORT-old-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0 1
+{{@DataItem_m_strDescriptionFDITEM348_
+
+@}}
+[FDITEM349_]
+m_strName=CLI-FLAG-ASSORT-old-88-VINC
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM349_
+
+@}}
+[FDITEM350_]
+m_strName=CLI-FLAG-ASSORT-old-88-LIBERO
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM350_
+
+@}}
+[FDITEM351_]
+m_strName=CLI-TIPO-INTEST-FATTURA
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM351_
+
+@}}
+[FDITEM352_]
+m_strName=CLI-TIPO-INTEST-FATTURA-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "R" "A" "T"
+{{@DataItem_m_strDescriptionFDITEM352_
+
+@}}
+[FDITEM353_]
+m_strName=CLI-TIPO-DESTINATARIO
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM353_
+
+@}}
+[FDITEM354_]
+m_strName=CLI-TIPO-DESTINATARIO-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "D" "P" "S" "F" "L" "I" "R" "A" "T" "E" "V" "U" "Z"
+{{@DataItem_m_strDescriptionFDITEM354_
+
+@}}
+[FDITEM355_]
+m_strName=CLI-ID-DESTINATARIO
+m_strRawPic=X(11)
+m_strPic=X(11)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM355_
+
+@}}
+[FDITEM356_]
+m_strName=cli-data-inizio-cpz
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM356_
+6/05 |DS 18/11/2005 9.349.44
+6/05 |DS 18/11/2005 9.349.44
+
+ copy "groupdate.xfc". | DBMaker
+@}}
+[FDITEM357_]
+m_strName=aa
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=cli-data-inizio-cpz-aa
+{{@DataItem_m_strDescriptionFDITEM357_
+
+@}}
+[FDITEM358_]
+m_strName=mm
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=cli-data-inizio-cpz-mm
+{{@DataItem_m_strDescriptionFDITEM358_
+
+@}}
+[FDITEM359_]
+m_strName=gg
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=cli-data-inizio-cpz-gg
+{{@DataItem_m_strDescriptionFDITEM359_
+
+@}}
+[FDITEM360_]
+m_strName=filler
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=cli-data-inizio-cpz
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM360_
+
+@}}
+[FDITEM361_]
+m_strName=cli-data-inizio-cpz-n
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM361_
+$GEN type=date,
+
+@}}
+[FDITEM362_]
+m_strName=cli-nickname
+m_strRawPic=x(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM362_
+$GEN zmm=on,zmm_title=Nickname,zmm_datatype=k,zmm_size=30,zmm_align=L,zmm_pos=49
+@}}
+[FDITEM363_]
+m_strName=cli-cpzownercode
+m_strRawPic=x(15)
+m_strPic=X(15)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM363_
+$GEN zmm=on,zmm_title=Cpzownercode,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=50
+@}}
+[FDITEM364_]
+m_strName=CLI-CODICE-TL
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM364_
+$GEN type=code,entity=tbltl
+
+@}}
+[FDITEM365_]
+m_strName=CLI-CREA-LSC-DATA
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM365_
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+@}}
+[FDITEM366_]
+m_strName=CLI-CREA-LSC-DATA-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM366_
+
+@}}
+[FDITEM367_]
+m_strName=CLI-CODICE-SC
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM367_
+$GEN type=code,entity=tblsc
+
+@}}
+[FDITEM368_]
+m_strName=CLI-SOSPESO-VEND
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM368_
+
+@}}
+[FDITEM369_]
+m_strName=CLI-ACCONTO
+m_strRawPic=S9(09)V9(02)
+m_strPic=S9(09)V9(02)
+m_nItemLevel=10
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM369_
+
+@}}
+[FDITEM370_]
+m_strName=CLI-DATA-INIZIO-VALIDITA
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM370_
+06/2006 9.12RATE.
+
+
+ copy "groupdate.xfc". | DBMaker
+
+@}}
+[FDITEM371_]
+m_strName=AA
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-DATA-INIZIO-VAL-AA
+{{@DataItem_m_strDescriptionFDITEM371_
+
+@}}
+[FDITEM372_]
+m_strName=MM
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-DATA-INIZIO-VAL-MM
+{{@DataItem_m_strDescriptionFDITEM372_
+
+@}}
+[FDITEM373_]
+m_strName=GG
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-DATA-INIZIO-VAL-GG
+{{@DataItem_m_strDescriptionFDITEM373_
+
+@}}
+[FDITEM374_]
+m_strName=FILLER
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=CLI-DATA-INIZIO-VALIDITA
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM374_
+
+@}}
+[FDITEM375_]
+m_strName=CLI-DATA-INIZIO-VALIDITA-N
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM375_
+$GEN type=date
+
+@}}
+[FDITEM376_]
+m_strName=CLI-DATA-FINE-VALIDITA
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM376_
+ copy "groupdate.xfc". | DBMaker
+
+@}}
+[FDITEM377_]
+m_strName=AA
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-DATA-FINE-VAL-AA
+{{@DataItem_m_strDescriptionFDITEM377_
+
+@}}
+[FDITEM378_]
+m_strName=MM
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-DATA-FINE-VAL-MM
+{{@DataItem_m_strDescriptionFDITEM378_
+
+@}}
+[FDITEM379_]
+m_strName=GG
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-DATA-FINE-VAL-GG
+{{@DataItem_m_strDescriptionFDITEM379_
+
+@}}
+[FDITEM380_]
+m_strName=FILLER
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=CLI-DATA-FINE-VALIDITA
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM380_
+
+@}}
+[FDITEM381_]
+m_strName=CLI-DATA-FINE-VALIDITA-N
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM381_
+$GEN type=date
+
+@}}
+[FDITEM382_]
+m_strName=cli-cod-associazione
+m_strRawPic=x(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM382_
+$GEN type=code,entity=cli
+
+@}}
+[FDITEM383_]
+m_strName=CLI-DATA-NASCITA
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM383_
+ copy "groupdate.xfc". | DBMaker
+
+@}}
+[FDITEM384_]
+m_strName=AA
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-DATA-NASCITA-AA
+{{@DataItem_m_strDescriptionFDITEM384_
+
+@}}
+[FDITEM385_]
+m_strName=MM
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-DATA-NASCITA-MM
+{{@DataItem_m_strDescriptionFDITEM385_
+
+@}}
+[FDITEM386_]
+m_strName=GG
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=CLI-DATA-NASCITA-GG
+{{@DataItem_m_strDescriptionFDITEM386_
+
+@}}
+[FDITEM387_]
+m_strName=FILLER
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=CLI-DATA-NASCITA
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM387_
+
+@}}
+[FDITEM388_]
+m_strName=CLI-DATA-NASCITA-N
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM388_
+$GEN type=date
+
+@}}
+[FDITEM389_]
+m_strName=CLI-PUNTI-ACQUISITI
+m_strRawPic=9(06)
+m_strPic=9(06)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM389_
+$GEN type=num,size=8,dec=0
+
+@}}
+[FDITEM390_]
+m_strName=filler
+m_strRawPic=x(10)
+m_strPic=X(10)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM390_
+
+
+
+
+@}}
+[FDITEM391_]
+m_strName=cli-tblvc-codice
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM391_
+
+**         10  CLI-PREMI-CONSEGNATI.                                                              | mxm 01/11/2007 10.00
+**             15  CLI-TAB-PREMI-CONS          OCCURS 10.                                         | mxm 01/11/2007 10.00
+**                 20  CLI-PREMI-CONS          PIC  X(01).                                        | mxm 01/11/2007 10.00
+**                     88  CLI-PREMI-CONS-88   VALUE " " "S".                                     | mxm 01/11/2007 10.00
+**         10  FILLER REDEFINES CLI-PREMI-CONSEGNATI.                                             | mxm 01/11/2007 10.00
+***$GEN type=checkbox,truevalue="S",falsevalue=" "                                                | mxm 01/11/2007 10.00
+**             15  CLI-PREMI-CONS-1        PIC  X(01).                                            | mxm 01/11/2007 10.00
+***$GEN type=checkbox,truevalue="S",falsevalue=" "                                                | mxm 01/11/2007 10.00
+**             15  CLI-PREMI-CONS-2        PIC  X(01).                                            | mxm 01/11/2007 10.00
+***$GEN type=checkbox,truevalue="S",falsevalue=" "                                                | mxm 01/11/2007 10.00
+**             15  CLI-PREMI-CONS-3        PIC  X(01).                                            | mxm 01/11/2007 10.00
+***$GEN type=checkbox,truevalue="S",falsevalue=" "                                                | mxm 01/11/2007 10.00
+**             15  CLI-PREMI-CONS-4        PIC  X(01).                                            | mxm 01/11/2007 10.00
+***$GEN type=checkbox,truevalue="S",falsevalue=" "                                                | mxm 01/11/2007 10.00
+**             15  CLI-PREMI-CONS-5        PIC  X(01).                                            | mxm 01/11/2007 10.00
+***$GEN type=checkbox,truevalue="S",falsevalue=" "                                                | mxm 01/11/2007 10.00
+**             15  CLI-PREMI-CONS-6        PIC  X(01).                                            | mxm 01/11/2007 10.00
+***$GEN type=checkbox,truevalue="S",falsevalue=" "                                                | mxm 01/11/2007 10.00
+**             15  CLI-PREMI-CONS-7        PIC  X(01).                                            | mxm 01/11/2007 10.00
+***$GEN type=checkbox,truevalue="S",falsevalue=" "                                                | mxm 01/11/2007 10.00
+**             15  CLI-PREMI-CONS-8        PIC  X(01).                                            | mxm 01/11/2007 10.00
+***$GEN type=checkbox,truevalue="S",falsevalue=" "                                                | mxm 01/11/2007 10.00
+**             15  CLI-PREMI-CONS-9        PIC  X(01).                                            | mxm 01/11/2007 10.00
+***$GEN type=checkbox,truevalue="S",falsevalue=" "                                                | mxm 01/11/2007 10.00
+**             15  CLI-PREMI-CONS-10       PIC  X(01).                                            | mxm 01/11/2007 10.00
+
+
+
+$GEN type=code,entity=tblvc,zmm=on,zmm_title=Voce analitica,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=51,zmm_entity=tblvc
+
+@}}
+[FDITEM392_]
+m_strName=cli-33fch
+m_strRawPic=x(20)
+m_strPic=X(20)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM392_
+
+
+**        10  cli-accumulo-punti-33            pic 9(01).                                         | mxm 20/09/2007 16.58
+**            88   cli-accumulo-punti-33-si    value 1 false 0.                                   | mxm 20/09/2007 16.58
+$GEN type=code,entity=33fch
+
+@}}
+[FDITEM393_]
+m_strName=cli-33fch-releasedby
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM393_
+$GEN type=code,entity=33neg
+
+@}}
+[FDITEM394_]
+m_strName=cli-33prf
+m_strRawPic=x(10)
+m_strPic=X(10)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM394_
+$GEN type=code,entity=33prf
+
+@}}
+[FDITEM395_]
+m_strName=cli-33tds
+m_strRawPic=x(10)
+m_strPic=X(10)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM395_
+$GEN type=code,entity=33tds
+
+@}}
+[FDITEM396_]
+m_strName=cli-consenso-pc
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM396_
+ consenso a ricevere proposte commerciali
+
+@}}
+[FDITEM397_]
+m_strName=cli-esente-raee
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM397_
+
+
+@}}
+[FDITEM398_]
+m_strName=cli-numero-richiesta
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=cli-numero-richies
+{{@DataItem_m_strDescriptionFDITEM398_
+$GEN type=num,size=11,dec=0
+
+@}}
+[FDITEM399_]
+m_strName=cli-numero-registrazione
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=cli-numero-registr
+{{@DataItem_m_strDescriptionFDITEM399_
+$GEN type=num,size=11,dec=0
+
+@}}
+[FDITEM400_]
+m_strName=cli-nome
+m_strRawPic=x(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM400_
+
+* i campi nuovi vanno aggiunti qui...
+
+        10  cli-filler-91                   pic  x(179).                                          |gm 27/08/2008 9.40 | mxm 07/12/2007 17.48
+        10  cli-filler-91                   pic  x(173).                                          |mc 12/09/2008 11.35|gm 27/08/2008 9.40
+        10  cli-filler-91                   pic  x(168).                                          |sq 30/01/2009      |mc 12/09/2008 11.35
+        10  cli-filler-91                   pic  x(152).                                          |DS 01/04/2009 9.29
+
+
+@}}
+[FDITEM401_]
+m_strName=cli-cognome
+m_strRawPic=x(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM401_
+
+@}}
+[FDITEM402_]
+m_strName=cli-comune-nascita
+m_strRawPic=x(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM402_
+
+@}}
+[FDITEM403_]
+m_strName=cli-provincia-nascita
+m_strRawPic=x(02)
+m_strPic=X(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM403_
+
+@}}
+[FDITEM404_]
+m_strName=cli-sesso
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM404_
+$GEN type=radiobutton,value_1="M",image_1=1,value_2="F",image_2=2,value_3=" ",image_3=3
+@}}
+[FDITEM405_]
+m_strName=cli-sesso-maschio
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="M"
+{{@DataItem_m_strDescriptionFDITEM405_
+
+@}}
+[FDITEM406_]
+m_strName=cli-sesso-femmina
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="F"
+{{@DataItem_m_strDescriptionFDITEM406_
+
+@}}
+[FDITEM407_]
+m_strName=cli-sesso-societa
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" "
+{{@DataItem_m_strDescriptionFDITEM407_
+
+@}}
+[FDITEM408_]
+m_strName=cli-exclude-blacklist
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM408_
+
+@}}
+[FDITEM409_]
+m_strName=cli-exclude-blacklist-on
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM409_
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+ox                                         | scamar 09/07/2010 11:40:14
+@}}
+[FDITEM410_]
+m_strName=cli-exclude-blacklist-off
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" "
+{{@DataItem_m_strDescriptionFDITEM410_
+
+@}}
+[FDITEM411_]
+m_strName=cli-exclude-blacklist-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM411_
+
+@}}
+[FDITEM412_]
+m_strName=cli-codice-iva-estero
+m_strRawPic=x(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM412_
+
+
+@}}
+[FDITEM413_]
+m_strName=cli-lingua-descrizioni
+m_strRawPic=x(02)
+m_strPic=X(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM413_
+
+$GEN type=combobox,comboclass=tbl83_lingua,
+
+@}}
+[FDITEM414_]
+m_strName=cli-lingua-descrizioni-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="bg" "bt" "cs" "da" "nl" "en" "et" "fi" "fr" "ga" "gr" "de" "el" "hu" "it" "lv" "lt" "mt" "pl" "pt" "ro" "sk" "sl" "es" "sv"
+{{@DataItem_m_strDescriptionFDITEM414_
+
+@}}
+[FDITEM415_]
+m_strName=cli-codice-accisa-deposito
+m_strRawPic=x(18)
+m_strPic=X(18)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM415_
+
+@}}
+[FDITEM416_]
+m_strName=cli-data-inizio-procedura
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM416_
+
+**        10  cli-filler-91                   pic  x(144).       |DS 01/04/2009 9.29               | scamar 09/07/2010 10:13:27
+**        10  cli-filler-91                   pic  x(20).           | scamar 09/07/2010 10:13:27    | rososv 26/01/2011 16:33:55
+
+$GEN type=date,zmm=on,zmm_title=Procedura concorsuale,zmm_datatype=n,zmm_size=11,zmm_align=R,zmm_pos=53
+
+@}}
+[FDITEM417_]
+m_strName=cli-cpz-codice-sede
+m_strRawPic=x(06)
+m_strPic=X(06)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM417_
+
+
+@}}
+[FDITEM418_]
+m_strName=cli-ind-esteso-gen
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM418_
+
+@}}
+[FDITEM419_]
+m_strName=cli-ind-esteso-gen-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM419_
+
+@}}
+[FDITEM420_]
+m_strName=cli-ind-esteso-all
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM420_
+
+@}}
+[FDITEM421_]
+m_strName=cli-ind-esteso-all-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM421_
+
+@}}
+[FDITEM422_]
+m_strName=cli-ind-esteso-fat
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM422_
+
+@}}
+[FDITEM423_]
+m_strName=cli-ind-esteso-fat-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM423_
+
+@}}
+[FDITEM424_]
+m_strName=cli-ind-esteso-ord
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM424_
+
+@}}
+[FDITEM425_]
+m_strName=cli-ind-esteso-ord-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM425_
+
+@}}
+[FDITEM426_]
+m_strName=cli-ind-esteso-eff
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM426_
+
+@}}
+[FDITEM427_]
+m_strName=cli-ind-esteso-eff-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM427_
+
+@}}
+[FDITEM428_]
+m_strName=CLI-FILLER-RIS
+m_strRawPic=X(512)
+m_strPic=X(512)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM428_
+
+
+@}}
+[CStoAcucobolSL_]
+m_nType=1
+m_bOptional=1
+m_strAssignToName="CLI"
+m_nDevice=4
+m_nFormat=3
+m_nAccessMode=3
+m_strFileStatus=STATUS-CLI
+m_nCompression=70
+{{@SL_m_strDescription
+
+@}}
+[SLPKEY_]
+m_strName=CLI-CODICE-G2
+m_bUnique=1
+{{@Key_m_strDescription
+
+@}}
+[SLKEYATOM0_]
+m_strName=CLI-CODICE-G2
+[SLINDEX0_]
+m_strName=CLI-CODICE1
+m_bUnique=1
+{{@Key_m_strDescriptionSLINDEX0_
+
+@}}
+[SLKEYATOM0_SLINDEX0_]
+m_strName=CLI-CODICE-ALTERNATIVO
+[SLKEYATOM1_SLINDEX0_]
+m_strName=CLI-CODICE-G2
+[SLINDEX1_]
+m_strName=CLI-CODICE2
+m_bUnique=1
+{{@Key_m_strDescriptionSLINDEX1_
+
+@}}
+[SLKEYATOM0_SLINDEX1_]
+m_strName=CLI-DESCRIZIONE1
+[SLKEYATOM1_SLINDEX1_]
+m_strName=CLI-CODICE-G2
+[SLINDEX2_]
+m_strName=CLI-CODICE3
+m_bUnique=1
+{{@Key_m_strDescriptionSLINDEX2_
+
+@}}
+[SLKEYATOM0_SLINDEX2_]
+m_strName=CLI-PARTITA-IVA
+[SLKEYATOM1_SLINDEX2_]
+m_strName=CLI-CODICE-G2
+[SLINDEX3_]
+m_strName=CLI-CODICE4
+m_bUnique=1
+{{@Key_m_strDescriptionSLINDEX3_
+
+@}}
+[SLKEYATOM0_SLINDEX3_]
+m_strName=CLI-CODICE-FISCALE
+[SLKEYATOM1_SLINDEX3_]
+m_strName=CLI-CODICE-G2

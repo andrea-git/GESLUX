@@ -1,0 +1,12 @@
+      *
+       01 aliva-linkage.
+           03 ali-iva-old      PIC  x(3).
+           03 ali-iva-new      PIC  x(3).
+           03 ali-chiamata     PIC  9.
+           03 ali-user         PIC  x(20).
+           03 ali-handle
+                      USAGE IS HANDLE OF WINDOW.
+           03 ali-ritorno.
+              05 ali-articoli  pic 9(5).
+              05 ali-master    pic 9(5).
+              05 ali-evasioni  pic 9(5).

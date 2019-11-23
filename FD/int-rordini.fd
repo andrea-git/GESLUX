@@ -1,0 +1,55 @@
+       FD  int-rordini.
+       01 int-ror-rec.
+           05 int-ror-chiave.
+               10 int-ror-anno     PIC  9(4).
+               10 int-ror-num-ordine           PIC  9(8).
+               10 int-ror-num-riga PIC  9(5).
+           05 int-ror-dati.
+               10 int-ror-cod-articolo         PIC  9(6).
+               10 int-ror-des-libera           PIC  x(150).
+               10 int-ror-qta      PIC  9(8).
+               10 int-ror-prz-unitario         PIC  9(9)v9(2).
+               10 int-ror-imp-consumo          PIC  9(4)v9(2).
+               10 int-ror-imp-cou-cobat        PIC  9(4)v9(2).
+               10 int-ror-imponib-merce        PIC  9(9)v9(2).
+               10 int-ror-perce-sconto         PIC  9(2)v9(2).
+               10 int-ror-omaggio  PIC  X(1).
+                   88 int-ror-si-omaggio VALUE IS "S". 
+                   88 int-ror-no-omaggio VALUE IS "N". 
+               10 int-ror-peso-utf PIC  9(5)v9(3).
+               10 int-ror-peso-non-utf         PIC  9(5)v9(3).
+               10 int-ror-num-colli            PIC  9(5).
+               10 int-ror-cod-imballo          PIC  X(3).
+               10 int-ror-des-imballo          PIC  X(50).
+               10 int-ror-qta-imballi          PIC  9(4).
+               10 int-ror-cod-art-cli          PIC  X(15).
+               10 int-ror-cod-iva  PIC  x(3).
+               10 int-ror-prz-commle           PIC  9(9)v9(2).
+               10 int-ror-prg-chiave.
+                   15 int-ror-prg-cod-articolo     PIC  9(6).
+                   15 int-ror-prg-cod-magazzino    PIC  X(3).
+                   15 int-ror-prg-tipo-imballo     PIC  X(3).
+                   15 int-ror-prg-peso PIC  9(5)v9(3).
+               10 int-ror-stato    PIC  X(1).
+                   88 int-ror-attivo VALUE IS "A". 
+                   88 int-ror-disattivo VALUE IS "D". 
+                   88 int-ror-bloccato VALUE IS "B". 
+               10 int-ror-dati-comuni.
+                   15 int-ror-data-creazione       PIC  9(8).
+                   15 int-ror-ora-creazione        PIC  9(8).
+                   15 int-ror-utente-creazione     PIC  X(10).
+                   15 int-ror-data-ultima-modifica PIC  9(8).
+                   15 int-ror-ora-ultima-modifica  PIC  9(8).
+                   15 int-ror-utente-ultima-modifica           PIC  
+           X(10).
+               10 int-ror-vuoti.
+                   15 int-ror-qta-omaggi           PIC  9(8).
+                   15 int-ror-blister  PIC  9.
+                       88 int-ror-si-blister VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+                   15 int-ror-promo    PIC  9(15).
+                   15 int-ror-num-vuoto-1          PIC  9(6).
+                   15 int-ror-num-vuoto-2          PIC  9(15).
+                   15 int-ror-alfa-vuoto-1         PIC  X(20).
+                   15 int-ror-alfa-vuoto-2         PIC  X(20).
+                   15 int-ror-alfa-vuoto-3         PIC  X(20).

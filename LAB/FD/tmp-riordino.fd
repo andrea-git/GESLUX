@@ -1,0 +1,16 @@
+      *(( XFD FILE = tmp-riordino ))
+       FD  tmp-riordino.
+       01 tmp-riord-rec.
+           05 tmp-riord-chiave.
+               10 tmp-riord-articolo           PIC  9(6).
+               10 tmp-riord-data   PIC  9(8).
+               10 tmp-riord-tipo   PIC  x.
+               10 tmp-riord-numero PIC  9(8).
+           05 tmp-riord-dati.
+               10 tmp-riord-art-desc           PIC  x(50).
+               10 tmp-riord-qta    PIC  9(8).
+               10 tmp-riord-prz    PIC  9(12)v99.
+               10 FILLER           PIC  9.
+                   88 tmp-riord-articolo-zero VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+               10 tmp-riord-idx    PIC  99.

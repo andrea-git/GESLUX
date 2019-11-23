@@ -1,0 +1,25 @@
+      *(( XFD FILE = tmp-nordforn ))
+       FD  tmp-nordforn.
+       01 tmp-nof-rec.
+           05 tmp-nof-chiave.
+               10 tmp-nof-chiave-ordine.
+                   15 tmp-nof-anno     PIC  9(4).
+                   15 tmp-nof-num-ordine           PIC  9(8).
+               10 tmp-nof-num-nota PIC  9(3).
+           05 tmp-nof-dati.
+               10 tmp-nof-nota     PIC  x(200).
+               10 tmp-nof-dati-comuni.
+                   15 tmp-nof-data-creazione       PIC  9(8).
+                   15 tmp-nof-ora-creazione        PIC  9(8).
+                   15 tmp-nof-utente-creazione     PIC  x(10).
+                   15 tmp-nof-data-ultima-modifica PIC  9(8).
+                   15 tmp-nof-ora-ultima-modifica  PIC  9(8).
+                   15 tmp-nof-utente-ultima-modifica           PIC  
+           x(10).
+               10 tmp-nof-vuoti.
+                   15 tmp-nof-num-vuoto-1          PIC  9(18).
+                   15 tmp-nof-num-vuoto-2          PIC  9(18).
+                   15 tmp-nof-num-vuoto-3          PIC  9(18).
+                   15 tmp-nof-alfa-vuoto-1         PIC  X(20).
+                   15 tmp-nof-alfa-vuoto-2         PIC  X(20).
+                   15 tmp-nof-alfa-vuoto-3         PIC  X(20).

@@ -1,0 +1,9 @@
+      *(( XFD FILE = tmp-cumulato ))
+       FD  tmp-cumulato.
+       01 tmp-cum-rec.
+           05 tmp-cum-chiave.
+               10 tmp-cum-marca    PIC  9(4).
+           05 tmp-cum-dati.
+               10 tmp-cum-mar-descrizione      PIC  x(30).
+               10 tmp-cum-inev     PIC  s9(12)v99.
+               10 tmp-cum-fatt     PIC  s9(12)v99.

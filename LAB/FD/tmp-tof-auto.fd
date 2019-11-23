@@ -1,0 +1,10 @@
+      *(( XFD FILE = tmp-tof-auto ))
+       FD  tmp-tof-auto.
+       01 tta-rec.
+           05 tta-chiave.
+               10 tta-anno         PIC  9(4).
+               10 tta-numero       PIC  9(8).
+           05 tta-dati.
+               10 tta-data-cons    PIC  9(8).
+               10 tta-fornitore    PIC  9(5).
+               10 tta-destino      PIC  9(5).

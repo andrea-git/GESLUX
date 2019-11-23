@@ -1,0 +1,12 @@
+       01  tipo-data   pic x.
+           88 AAAAMMGG value zero.
+           88 GGMMAAAA value 1.
+           88 AAMMGG   value 2.
+           88 GGMMAA   value 3.
+
+       78  78-AAAAMMGG value "AAAAMMGG".
+       78  78-GGMMAAAA value "GGMMAAAA".
+       78  78-AAMMGG   value "AAMMGG".
+       78  78-GGMMAA   value "GGMMAA".
+
+       77  como-tipo-data pic x(8).

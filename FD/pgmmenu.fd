@@ -1,0 +1,9 @@
+       FD  pgmmenu.
+       01 pmm-rec.
+           05 pmm-chiave.
+               10 pmm-prog         PIC  9(18).
+           05 pmm-dati.
+               10 pmm-nome         PIC  x(20).
+               10 pmm-user-codi    PIC  x(10).
+               10 pmm-livello-abil PIC  9.
+               10 FILLER           PIC  x(200).

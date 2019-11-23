@@ -1,0 +1,62 @@
+*-------------------------------------------------------------
+* Tk 3194 - Black List                                                                            | scamar 09/07/2010 11:15:29
+*           - aggiunto campo per l'inclusione della nazione nei paesi BlackList
+*-------------------------------------------------------------
+*
+*
+*
+*
+*
+*
+*
+*
+*Record per tabella nazioni
+*
+*
+* tplvar zmm_title=Tabella nazioni
+* tplvar zmm_ver=09.01.00
+* tplvar zmm_class=anagraphic
+*
+*
+*
+*
+*Record per tabelle nazioni
+*
+*$XFD  WHEN TBLNA-CODICE1="NA" TABLENAME=TBLNA
+01 RECORD-TBLNA.
+    05  TBLNA-CODICE.
+        10  TBLNA-CODICE1           PIC X(02).
+*$GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=20,zmm_align=L,zmm_pos=1,zmm_entity=tblna
+        10  TBLNA-CODICE2           PIC X(20).
+    05  RESTO-RECORD-TBLNA.
+*$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=2
+        10  TBLNA-DESCRIZIONE1      PIC  X(30).
+*$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=3
+        10  TBLNA-DESCRIZIONE2      PIC  X(30).
+        10  TBLNA-CODICE-ISO-OLD    PIC  X(02).
+*$GEN type=checkbox,truevalue="A",falsevalue=" "
+        10  TBLNA-DECIMAL-POINT     PIC  X(01).
+            88  TBLNA-DECIMAL-POINT-88    VALUE "A" " ".
+        10  TBLNA-CODICE-ISO        PIC  X(04).
+*$GEN type=checkbox,truevalue="S",falsevalue=" "
+        10  TBLNA-EURO              PIC  X(01).
+            88  TBLNA-EURO-88       VALUE "S" " ".
+        10  TBLNA-COD-STATO-ESTERO  PIC  X(03).                             |DS 01/04/2005 9.52
+*$GEN type=checkbox,truevalue="S",falsevalue=" "        
+        10  tblna-hasBlackList        pic x.                                                         | scamar 09/07/2010 09:56:48
+            88 tblna-hasBlackList-on      value "S".                                                 | scamar 09/07/2010 09:56:48
+            88 tblna-hasBlackList-off     value " ".                                                 | scamar 09/07/2010 09:56:48
+            88 tblna-hasBlackList-allowed value "S" " ".                                             | scamar 09/07/2010 09:56:48
+            
+            
+        10  TBLNA-FILLER            PIC  X(1246).                                                     | scamar 09/07/2010 09:57:22  
+        
+        
+***        10  TBLNA-FILLER            PIC  X(1247).        |DS 01/04/2005 9.52                      | scamar 09/07/2010 09:57:01
+*        10  TBLNA-FILLER            PIC  X(1250).                           |DS 01/04/2005 9.52
+        10  TBLNA-FILLER-RIS        PIC  X(40).
+
+*
+*
+
+

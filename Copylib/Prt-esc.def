@@ -1,0 +1,18 @@
+       01 ST-ESC.
+         02 I-17       PIC X(02) VALUE X"1B0F".
+         02 D-17       PIC X(01) VALUE X"12".
+         02 I-10       PIC X(02) VALUE X"1B50".
+         02 I-12       PIC X(02) VALUE X"1B4D".
+         02 I-12i      PIC X(02) VALUE X"1B3A".
+         02 I-15       PIC X(02) VALUE X"1B67".
+         02 I-2L       PIC X(02) VALUE X"1B0E".
+         02 D-2L       PIC X(01) VALUE X"14". 
+         02 I-QL       PIC X(03) VALUE X"1B7831".
+         02 D-QL       PIC X(03) VALUE X"1B7830".      
+         02 LASER-CAS  PIC X(5)  VALUE X"1B266C3148".
+         02 LASER-10   PIC X(5)  VALUE X"1B266B3453".
+         02 LASER-12   PIC X(6)  VALUE X"1B2873313248".
+         02 LASER-16   PIC X(5)  VALUE X"1B266B3253".
+         02 LASER-FF   PIC X(5)  VALUE X"1B266C304F".
+         02 LASER-LS   PIC X(5)  VALUE X"1B266C314F".  
+         02 ESC-ESC    PIC X(02) VALUE X"1B40".

@@ -1,0 +1,11 @@
+      *    Variabili che vengono utilizzate dalla copy 
+      *    "calcola-centro-window.cpy".
+       01  Dimensioni-Posizioni-Window.
+           05 Window-Height PIC 9(3).
+           05 Window-Size   PIC 9(3).
+           05 Window-Line   PIC 9(3).
+           05 Window-Col    PIC 9(3).
+           05 Unit-X        PIC 9(3).
+           05 Unit-Y        PIC 9(3).
+           05 Fixed-Font    HANDLE OF FONT FIXED-FONT.
+

@@ -1,0 +1,12 @@
+       01  LK-BLOCKPGM.
+           05 LK-BL-PROG-ID    PIC  X(15).
+           05 LK-BL-DATA       PIC  9(8).
+           05 LK-BL-ORA        PIC  9(8).
+           05 LK-BL-TIPO-OP    PIC  9(1).
+               88 LK-BL-LETTURA       VALUE IS 1. 
+               88 LK-BL-SCRITTURA     VALUE IS 2. 
+               88 LK-BL-CANCELLAZIONE VALUE IS 3. 
+           05 LK-BL-USO        PIC  9(1).
+               88 LK-BL-IN-USO        VALUE IS 1. 
+           05 LK-HND-WIN       PIC S9(9) COMP-4.
+

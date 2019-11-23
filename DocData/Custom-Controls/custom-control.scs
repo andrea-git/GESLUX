@@ -1,0 +1,207 @@
+*   Screen Customized Control SCS File
+*   Version 6.0
+*   Generated Time : mercoledì 29 ottobre 2003 15.52.25
+*
+
+
+[SP_CUSTOMIZED_CONTROL_CONTENT]
+CUSTOMIZED_NUMS=2
+CS_0=blockpgm,CsCtrl.blockpgm,Label,Cust_Default_Icon,blockpgm
+CS_0_EMCODE=-1,37801
+CS_0_EMCODE_-1=10002,Before-Program,10003,After-Program
+CS_0_EMCODE_37801=-1,AfterDisplay
+CS_1=Custom1,CsCtrl.Custom1,Label,Cust_Default_Icon,colora campi
+CS_1_EMCODE=37852,37806,37810,37855,37853,37854,37808,37807
+CS_1_EMCODE_37852=2200,Before Procedure,2202,After Procedure
+CS_1_EMCODE_37806=2200,Before Procedure,2202,After Procedure
+CS_1_EMCODE_37810=2200,Before Procedure,2202,After Procedure
+CS_1_EMCODE_37855=2200,Before Procedure,2202,After Procedure
+CS_1_EMCODE_37853=2200,Before Procedure,2202,After Procedure
+CS_1_EMCODE_37854=2202,After Procedure,2200,Before Procedure
+CS_1_EMCODE_37808=2200,Before Procedure,2202,After Procedure
+CS_1_EMCODE_37807=2200,Before Procedure,2202,After Procedure
+
+{{@blockpgm_-1_Before-Program_10002:
+     move LK-BL-PROG-ID    TO COMO-PROG-ID.
+@}}
+blockpgm_-1_Before-Program_10002_Range=0
+
+{{@blockpgm_-1_After-Program_10003:
+     SET LK-BL-CANCELLAZIONE TO TRUE.
+     MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+     CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+
+@}}
+blockpgm_-1_After-Program_10003_Range=0
+
+{{@blockpgm_37801_AfterDisplay_-1:
+     SET LK-BL-SCRITTURA     TO TRUE.
+     MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+     MOVE FORM1-HANDLE       TO LK-HND-WIN.
+     CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+     CANCEL "BLOCKPGM".
+
+@}}
+blockpgm_37801_AfterDisplay_-1_Range=0
+
+{{@Custom1_37852_Before Procedure_2200:
+     MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+
+@}}
+Custom1_37852_Before Procedure_2200_Range=0
+
+{{@Custom1_37852_After Procedure_2202:
+     MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+@}}
+Custom1_37852_After Procedure_2202_Range=0
+
+{{@Custom1_37806_Before Procedure_2200:
+     MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+
+@}}
+Custom1_37806_Before Procedure_2200_Range=0
+
+{{@Custom1_37806_After Procedure_2202:
+     MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+@}}
+Custom1_37806_After Procedure_2202_Range=0
+
+{{@Custom1_37810_Before Procedure_2200:
+     MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+
+@}}
+Custom1_37810_Before Procedure_2200_Range=0
+
+{{@Custom1_37810_After Procedure_2202:
+     MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+@}}
+Custom1_37810_After Procedure_2202_Range=0
+
+{{@Custom1_37855_Before Procedure_2200:
+     MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+
+
+@}}
+Custom1_37855_Before Procedure_2200_Range=0
+
+{{@Custom1_37855_After Procedure_2202:
+     MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+
+@}}
+Custom1_37855_After Procedure_2202_Range=0
+
+{{@Custom1_37853_Before Procedure_2200:
+     MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+@}}
+Custom1_37853_Before Procedure_2200_Range=0
+
+{{@Custom1_37853_After Procedure_2202:
+     MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+
+@}}
+Custom1_37853_After Procedure_2202_Range=0
+
+{{@Custom1_37854_After Procedure_2202:
+     MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+@}}
+Custom1_37854_After Procedure_2202_Range=0
+
+{{@Custom1_37854_Before Procedure_2200:
+     MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+@}}
+Custom1_37854_Before Procedure_2200_Range=0
+
+{{@Custom1_37808_Before Procedure_2200:
+     modify control-handle, color = colore-nu
+@}}
+Custom1_37808_Before Procedure_2200_Range=0
+
+{{@Custom1_37808_After Procedure_2202:
+     modify control-handle, color = colore-or
+@}}
+Custom1_37808_After Procedure_2202_Range=0
+
+{{@Custom1_37807_Before Procedure_2200:
+     MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+@}}
+Custom1_37807_Before Procedure_2200_Range=0
+
+{{@Custom1_37807_After Procedure_2202:
+     MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+@}}
+Custom1_37807_After Procedure_2202_Range=0
+
+{{@blockpgm_DEFAULT_PROPERTY:
+Begin Label
+   Clines            = 0
+   Clines Unit       = Default
+   Color             = 0
+   Column            = 1.00
+   Column in Pixels  = 1
+   Csize             = 0
+   Csize Unit        = Default
+   Destroy Type      = Automatic
+   Enable            = NONE
+   Font              = Default Font
+   Height in Cells   = TRUE
+   Help ID           = 0
+   ID                = -1
+   Justification     = Unaligned
+   Label Offset      = 20
+   Line              = 1.00
+   Line in Pixels    = 1
+   Lines             = 1,00
+   Lines in Pixels   = 0
+   Lines Unit        = Default
+   No Key Letter     = FALSE
+   Occurs            = 0
+   Size              = 1,00
+   Size in Pixels    = 0
+   Size Unit         = Default
+   Tab Order         = 1
+   Title             = "BlockPgm"
+   Transparent       = TRUE
+   Visible           = NONE
+   Visible Variable  = v-custom
+   Width in Cells    = TRUE
+End
+@}}
+
+{{@Custom1_DEFAULT_PROPERTY:
+Begin Label
+   Ccol              = 0
+   Cline             = 0
+   Clines            = 0
+   Clines Unit       = Default
+   Color             = 0
+   Column            = 1,00
+   Column in Pixels  = 1
+   Csize             = 0
+   Csize Unit        = Default
+   Destroy Type      = Automatic
+   Enable            = NONE
+   Font              = Default Font
+   Font Variable     = Default-Font
+   Height in Cells   = FALSE
+   Help ID           = 0
+   ID                = 0
+   Justification     = Unaligned
+   Label Offset      = 20
+   Line              = 1,00
+   Line in Pixels    = 1
+   Lines             = 0,00
+   Lines in Pixels   = 0
+   Lines Unit        = Default
+   No Key Letter     = FALSE
+   Occurs            = 0
+   Size              = 0,00
+   Size in Pixels    = 0
+   Size Unit         = Default
+   Tab Order         = 1
+   Title             = "CUSTOM CONTROL"
+   Transparent       = TRUE
+   Visible           = NONE
+   Visible Variable  = v-custom
+   Width in Cells    = FALSE
+End
+@}}

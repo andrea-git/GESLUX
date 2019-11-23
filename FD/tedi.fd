@@ -1,0 +1,20 @@
+       FD  tedi.
+       01 tedi-rec.
+           05 tedi-chiave.
+               10 tedi-anno        PIC  9(4).
+               10 tedi-mese        PIC  9(2).
+           05 tedi-dati.
+               10 tedi-imp-mag-tributi         PIC  9(12)v9(2).
+               10 tedi-imp-tributi PIC  x(5).
+               10 tedi-dati-comuni.
+                   15 tedi-data-creazione          PIC  9(8).
+                   15 tedi-ora-creazione           PIC  9(8).
+                   15 tedi-utente-creazione        PIC  X(10).
+                   15 tedi-data-ultima-modifica    PIC  9(8).
+                   15 tedi-ora-ultima-modifica     PIC  9(8).
+                   15 tedi-utente-ultima-modifica  PIC  X(10).
+               10 tedi-vuoti.
+                   15 tedi-num-vuoto-1 PIC  9(18).
+                   15 tedi-num-vuoto-2 PIC  9(18).
+                   15 tedi-num-vuoto-3 PIC  9(18).
+                   15 tedi-alfa-vuoto  PIC  X(500).

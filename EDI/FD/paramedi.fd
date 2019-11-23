@@ -1,0 +1,30 @@
+       FD  paramedi.
+       01 pae-rec.
+           05 pae-chiave.
+               10 pae-codice       PIC  X(2).
+           05 pae-dati.
+               10 pae-cod-ufficio  PIC  x(8).
+               10 pae-tipo-reg     PIC  x.
+      *(( XFD NAME = pae-cap-imp-trubut ))
+               10 pae-tipo-doc     PIC  x(3).
+               10 pae-tipo-sfuso   PIC  x.
+               10 pae-tipo-conf    PIC  x.
+               10 pae-imp-assolta  PIC  x(3).
+               10 pae-imp-non-soggetta         PIC  x(3).
+               10 pae-registro     PIC  X(10).
+               10 pae-path-file-invio          PIC  x(256).
+               10 pae-dati-comuni.
+                   15 pae-data-creazione           PIC  9(8).
+                   15 pae-ora-creazione            PIC  9(8).
+                   15 pae-utente-creazione         PIC  X(10).
+                   15 pae-data-ultima-modifica     PIC  9(8).
+                   15 pae-ora-ultima-modifica      PIC  9(8).
+                   15 pae-utente-ultima-modifica   PIC  X(10).
+               10 pae-vuoti.
+                   15 pae-num-vuoto-1  PIC  9(18).
+                   15 pae-num-vuoto-2  PIC  9(18).
+                   15 pae-num-vuoto-3  PIC  9(18).
+                   15 pae-tipo-doc-int PIC  x(3).
+                   15 pae-alfa-vuoto-1 PIC  x(17).
+                   15 pae-alfa-vuoto-2 PIC  X(20).
+                   15 pae-alfa-vuoto-3 PIC  X(20).

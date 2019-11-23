@@ -1,0 +1,71 @@
+       FD  tvettori.
+       01 vet-rec.
+           05 vet-chiave.
+               10 vet-codice       PIC  9(5).
+           05 vet-dati.
+               10 vet-descrizione  PIC  X(40).
+               10 vet-indirizzo    PIC  X(100).
+               10 vet-sigla        PIC  X(3).
+               10 vet-tariffa      PIC  x.
+                   88 vet-regione VALUE IS "R". 
+                   88 vet-prov VALUE IS "P". 
+                   88 vet-cliente VALUE IS "C". 
+                   88 vet-clides VALUE IS "D". 
+               10 vet-min-tass     PIC  9(9)v99.
+               10 vet-scaglione-peso.
+                   15 vet-el-scaglione-peso
+                              OCCURS 20 TIMES.
+                       20 vet-qli-da-peso  PIC  9(9)v99.
+                       20 vet-qli-a-peso   PIC  9(9)v99.
+               10 vet-scaglione-arrot.
+                   15 vet-el-scaglione-arrot
+                              OCCURS 10 TIMES.
+                       20 vet-qli-da-arrot PIC  9(9)v99.
+                       20 vet-qli-a-arrot  PIC  9(9)v99.
+                       20 vet-valore-arrot PIC  9(9)v99.
+               10 vet-url          PIC  x(250).
+               10 vet-piva         PIC  x(11).
+               10 vet-n-albo       PIC  x(50).
+               10 vet-dati-comuni.
+                   15 vet-data-creazione           PIC  9(8).
+                   15 vet-ora-creazione            PIC  9(8).
+                   15 vet-utente-creazione         PIC  X(10).
+                   15 vet-data-ultima-modifica     PIC  9(8).
+                   15 vet-ora-ultima-modifica      PIC  9(8).
+                   15 vet-utente-ultima-modifica   PIC  X(10).
+               10 vet-vuoti.
+                   15 vet-su-autorizz  PIC  9.
+                       88 vet-su-autorizz-si VALUE IS 1. 
+                       88 vet-su-autorizz-no VALUE IS 0. 
+                   15 vet-pod-std      PIC  9.
+                       88 vet-pod-std-si VALUE IS 1. 
+                       88 vet-pod-std-no VALUE IS 0. 
+                   15 vet-num-vuoto-1  PIC  9(16).
+                   15 vet-num-vuoto-2  PIC  9(18).
+                   15 vet-num-vuoto-3  PIC  9(18).
+                   15 vet-pod-std-path PIC  x(200).
+                   15 vet-regioni.
+                       20 vet-abruzzo      PIC  9(3).
+                       20 vet-basilicata   PIC  9(3).
+                       20 vet-calabria     PIC  9(3).
+                       20 vet-campania     PIC  9(3).
+                       20 vet-emilia-romagna           PIC  9(3).
+                       20 vet-friuli       PIC  9(3).
+                       20 vet-lazio        PIC  9(3).
+                       20 vet-liguria      PIC  9(3).
+                       20 vet-lombardia    PIC  9(3).
+                       20 vet-marche       PIC  9(3).
+                       20 vet-molise       PIC  9(3).
+                       20 vet-piemonte     PIC  9(3).
+                       20 vet-puglia       PIC  9(3).
+                       20 vet-sardegna     PIC  9(3).
+                       20 vet-sicilia      PIC  9(3).
+                       20 vet-toscana      PIC  9(3).
+                       20 vet-trentino     PIC  9(3).
+                       20 vet-umbria       PIC  9(3).
+                       20 vet-valle        PIC  9(3).
+                       20 vet-veneto       PIC  9(3).
+                   15 vet-path-pod     PIC  x(100).
+                   15 vet-mail-solleciti           PIC  x(100).
+                   15 vet-sigla-pod    PIC  x(3).
+                   15 FILLER           PIC  x(37).

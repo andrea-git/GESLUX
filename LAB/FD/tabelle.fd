@@ -1,0 +1,66 @@
+       FD  tabelle
+           LABEL RECORD IS STANDARD.
+       01 R-PAG.
+           02 KEY-TAB.
+               03 DITTA            PIC  99.
+               03 ARTI PIC  X(3).
+               03 TPAGA            PIC  XX.
+               03 CODICE2          PIC  X(4).
+           02 DES2 PIC  X(30).
+           02 TPPAG            PIC  X.
+           02 NMSCA            PIC  99.
+           02 PRIMASCA         PIC  9(3).
+           02 GGSCA            PIC  99.
+           02 PASSO-NM         PIC  99.
+           02 GIROCONT         PIC  X.
+           02 STAMPADTEFF      PIC  X.
+           02 VALUTA           PIC  X.
+           02 RTSCA            PIC  9.
+           02 FILLER           PIC  X(36).
+       01 R-IVA.
+           02 CHIAVIVA.
+               03 FILLER           PIC  X(5).
+               03 IVAF PIC  9(4).
+               03 COD-IVA          PIC  99.
+           02 RESTO            PIC  X(38).
+           02 FILLER           PIC  X(38).
+           02 MULTIPLIC        PIC  99.
+           02 FILLER           PIC  99.
+       01 REC-DEN.
+           02 FILLER           PIC  X(5).
+           02 ARTICO           PIC  9(6).
+      *(( XFD NAME = RESTO_1 ))
+           02 RESTO            PIC  X(70).
+           02 COEFFICIENTE     PIC  9V9(5).
+           02 FILLER           PIC  X(4).
+       01 REC-PAG.
+           02 KEY-TAB2.
+      *(( XFD NAME = DITTA_1 ))
+               03 DITTA            PIC  99.
+      *(( XFD NAME = ARTI_1 ))
+               03 ARTI PIC  X(3).
+      *(( XFD NAME = TPAGA_1 ))
+               03 TPAGA            PIC  XX.
+      *(( XFD NAME = CODICE2_1 ))
+               03 CODICE2          PIC  X(4).
+           02 DESCRIZIONE      PIC  X(30).
+      *(( XFD NAME = TPPAG_1 ))
+           02 TPPAG            PIC  X.
+      *(( XFD NAME = NMSCA_1 ))
+           02 NMSCA            PIC  99.
+      *(( XFD NAME = PRIMASCA_1 ))
+           02 PRIMASCA         PIC  9(3).
+      *(( XFD NAME = GGSCA_1 ))
+           02 GGSCA            PIC  99.
+      *(( XFD NAME = PASSO-NM_1 ))
+           02 PASSO-NM         PIC  99.
+      *(( XFD NAME = GIROCONT_1 ))
+           02 GIROCONT         PIC  X.
+      *(( XFD NAME = STAMPADTEFF_1 ))
+           02 STAMPADTEFF      PIC  X.
+      *(( XFD NAME = VALUTA_1 ))
+           02 VALUTA           PIC  X.
+      *(( XFD NAME = RTSCA_1 ))
+           02 RTSCA            PIC  9.
+           02 PASSO-MESE       PIC  9.
+           02 FILLER           PIC  X(35).

@@ -1,0 +1,64 @@
+      *(( XFD FILE = tmp-clienti ))
+       FD  tmp-clienti.
+       01 stcli-rec.
+           05 stcli-chiave.
+               10 stcli-tipo-CF    PIC  X(1).
+                   88 stcli-tipo-C VALUE IS "C". 
+                   88 stcli-tipo-F VALUE IS "F". 
+               10 stcli-codice     PIC  9(5).
+           05 stcli-dati.
+               10 stcli-ragsoc-1   PIC  x(40).
+               10 stcli-ragsoc-2   PIC  x(40).
+               10 stcli-indirizzo  PIC  x(40).
+               10 stcli-cap        PIC  x(5).
+               10 stcli-localita   PIC  x(35).
+               10 stcli-prov       PIC  x(2).
+               10 stcli-nazione    PIC  x(3).
+               10 stcli-codfis     PIC  x(16).
+               10 stcli-piva       PIC  x(11).
+               10 stcli-tel-1      PIC  x(15).
+               10 stcli-tel-2      PIC  x(15).
+               10 stcli-fax        PIC  x(15).
+               10 stcli-email      PIC  x(30).
+               10 stcli-web        PIC  x(30).
+      *(( XFD NAME = cli-tipo_1 ))
+               10 stcli-tipo       PIC  x(2).
+               10 stcli-gdo        PIC  x(5).
+               10 stcli-utf        PIC  x.
+               10 stcli-referente  PIC  x(30).
+               10 stcli-note       PIC  x(100).
+               10 stcli-note-agg   PIC  x(256).
+               10 stcli-vettore    PIC  9(5).
+               10 stcli-inoltro    PIC  x.
+               10 stcli-agente     PIC  9(5).
+               10 stcli-iva        PIC  x(3).
+               10 stcli-pag        PIC  x(3).
+               10 stcli-spost-ric-agosto       PIC  x.
+               10 stcli-spost-ric-dicembre     PIC  x.
+               10 stcli-fido       PIC  9(8).
+               10 stcli-fido-data  PIC  9(8).
+               10 stcli-abi        PIC  x(5).
+               10 stcli-cab        PIC  x(5).
+               10 stcli-superamento-500        PIC  x.
+               10 stcli-stato      PIC  x.
+                   88 stcli-attivo VALUE IS "A". 
+                   88 stcli-disattivo VALUE IS "D". 
+                   88 stcli-bloccato VALUE IS "B". 
+               10 stcli-dich-esp   PIC  x(8).
+               10 stcli-data-dich  PIC  9(8).
+               10 stcli-data-reg   PIC  9(8).
+               10 stcli-num-reg    PIC  x(8).
+               10 stcli-dati-comuni.
+                   15 stcli-data-creazione         PIC  9(8).
+                   15 stcli-ora-creazione          PIC  9(8).
+                   15 stcli-utente-creazione       PIC  X(10).
+                   15 stcli-data-ultima-modifica   PIC  9(8).
+                   15 stcli-ora-ultima-modifica    PIC  9(8).
+                   15 stcli-utente-ultima-modifica PIC  X(10).
+               10 stcli-vuoti.
+                   15 stcli-num-vuoto-1            PIC  9(15).
+                   15 stcli-num-vuoto-2            PIC  9(15).
+                   15 stcli-num-vuoto-3            PIC  9(15).
+                   15 stcli-alfa-vuoto-1           PIC  X(20).
+                   15 stcli-alfa-vuoto-2           PIC  X(20).
+                   15 stcli-alfa-vuoto-3           PIC  X(20).

@@ -1,0 +1,80 @@
+       FD  int-tordini.
+       01 int-tor-rec.
+           05 int-tor-chiave.
+               10 int-tor-anno     PIC  9(4).
+               10 int-tor-numero   PIC  9(8).
+           05 int-tor-dati.
+               10 int-tor-causale  PIC  x(4).
+               10 int-tor-cod-cli  PIC  9(5).
+               10 int-tor-prg-destino          PIC  9(5).
+               10 int-tor-num-ord-cli          PIC  X(10).
+               10 int-tor-data-ordine          PIC  9(8).
+               10 int-tor-data-passaggio-ordine            PIC  9(8).
+               10 int-tor-cod-agente           PIC  9(5).
+               10 int-tor-cod-pagamento        PIC  x(3).
+               10 int-tor-cod-ese-iva          PIC  x(3).
+               10 int-tor-spostam-ric-ago      PIC  X(1).
+                   88 int-tor-si-ric-ago VALUE IS "S". 
+                   88 int-tor-no-ric-ago VALUE IS "N". 
+               10 int-tor-spostam-ric-dic      PIC  X(1).
+                   88 int-tor-si-ric-dic VALUE IS "S". 
+                   88 int-tor-no-ric-dic VALUE IS "N". 
+               10 int-tor-vettore  PIC  9(5).
+               10 int-tor-note1    PIC  X(19).
+               10 int-tor-data-note1           PIC  9(8).
+               10 int-tor-note2    PIC  X(30).
+               10 int-tor-note3    PIC  X(30).
+               10 int-tor-note4    PIC  X(30).
+               10 int-tor-invio    PIC  x.
+                   88 int-tor-invio-manuale VALUE IS "M". 
+                   88 int-tor-invio-postel VALUE IS "P". 
+               10 int-tor-bolla.
+                   15 int-tor-anno-bolla           PIC  9(4).
+                   15 int-tor-num-bolla            PIC  9(8).
+                   15 int-tor-data-bolla           PIC  9(8).
+                   15 int-tor-bolla-prenotata      PIC  x.
+                       88 int-tor-bolla-si-prenotata VALUE IS "S". 
+                       88 int-tor-bolla-no-prenotata VALUE IS "N". 
+               10 int-tor-fattura.
+                   15 int-tor-anno-fattura         PIC  9(4).
+                   15 int-tor-num-fattura          PIC  9(8).
+                   15 int-tor-data-fattura         PIC  9(8).
+                   15 int-tor-num-prenot           PIC  9(8).
+                   15 int-tor-fatt-prenotata       PIC  x.
+                       88 int-tor-fatt-si-prenotata VALUE IS "S". 
+                       88 int-tor-fatt-no-prenotata VALUE IS "N". 
+               10 int-tor-mod-caricamento      PIC  X(1).
+                   88 int-tor-manuale VALUE IS "M". 
+                   88 int-tor-guidata VALUE IS "G". 
+               10 int-tor-agg-contab           PIC  x.
+                   88 int-tor-si-agg-contab VALUE IS "S". 
+                   88 int-tor-no-agg-contab VALUE IS "N". 
+               10 int-tor-tipo     PIC  x.
+                   88 int-tor-fattura-manuale VALUE IS "M". 
+                   88 int-tor-ordine VALUE IS "O". 
+               10 int-tor-note     PIC  X(500).
+      *(( XFD NAME = tor-contropartita_ ))
+               10 int-tor-contropartita        PIC  X(8).
+               10 int-tor-stato    PIC  X(1).
+                   88 int-tor-attivo VALUE IS "A". 
+                   88 int-tor-disattivo VALUE IS "D". 
+                   88 int-tor-bloccato VALUE IS "B". 
+               10 int-tor-dati-comuni.
+                   15 int-tor-data-creazione       PIC  9(8).
+                   15 int-tor-ora-creazione        PIC  9(8).
+                   15 int-tor-utente-creazione     PIC  X(10).
+                   15 int-tor-data-ultima-modifica PIC  9(8).
+                   15 int-tor-ora-ultima-modifica  PIC  9(8).
+                   15 int-tor-utente-ultima-modifica           PIC  
+           X(10).
+               10 int-tor-vuoti.
+                   15 int-tor-data-contab          PIC  9(8).
+                   15 int-tor-promo    PIC  9.
+                       88 int-tor-si-promo VALUE IS 1. 
+                       88 int-tor-no-promo VALUE IS 0. 
+                   15 int-tor-num-vuoto-1          PIC  9(6).
+                   15 int-tor-num-vuoto-2          PIC  9(15).
+                   15 int-tor-num-vuoto-3          PIC  9(15).
+                   15 int-tor-alfa-vuoto-1         PIC  X(20).
+                   15 int-tor-alfa-vuoto-2         PIC  X(20).
+                   15 int-tor-alfa-vuoto-3         PIC  X(20).

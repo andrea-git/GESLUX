@@ -1,0 +1,15 @@
+      *
+       01 stregutf-linkage.
+           05 stregutf-data-da PIC  9(8).
+           05 stregutf-data-a  PIC  9(8).
+           05 stregutf-num-reg PIC  9(10).
+           05 stregutf-giac-bianchi        PIC  s9(12)v999.
+           05 stregutf-giac-lubrif         PIC  s9(12)v999.
+           05 stregutf-tipo-stampa         PIC  x.
+               88 stregutf-provvisoria VALUE IS "P". 
+               88 stregutf-definitiva VALUE IS "D". 
+           05 stregutf-path    PIC  x(256).
+           05 stregutf-tipo-registro pic x.
+              88 stregutf-cumulativo   value "C".
+              88 stregutf-serie-1      value "1".
+              88 stregutf-serie-2      value "2".

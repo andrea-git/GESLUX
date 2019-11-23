@@ -1,0 +1,281 @@
+*-----------------------------------------------------------------
+* righe scadenzario
+*
+* asgiunto 88 su PAS-A-VISTA                                                                       | mxm 10/12/2004 11.39
+*-----------------------------------------------------------------
+* Ticket 378 - asgiunto 88 su PAS-SCADENZA-INSOLUTA                                                |ms 30/05/2008 9.41
+*-----------------------------------------------------------------     
+* tk 3673 - tracciabilità flussi finanziari - CIG e CUP su documenti                                 | suadal 06/06/2011 10:49:23
+*         - aggiunti pas-codice-cig pas-codice-cup 
+*           . modifiche per deprecaggio "puntoniente" 
+*------------------------------------------------------------------------------------------------------------------------
+*
+* tplvar zmm_title=Righe scadenzario
+* tplvar zmm_ver=09.01.00
+* tplvar zmm_class=detail
+* tplvar zmm_masterkey=pas-progressivo-x
+* tplvar zmm_returnkey=pas-codice
+*
+* ZoomFields seq:
+*   01.pas-progressivo
+*   02.pas-riga
+*   03.pas-data-scadenza-num
+*   04.pas-codice-tr-d
+*   05.pas-codice-conto-x
+*   06.pas-codice-cfm-d
+*   07.pas-data-riferimento-num
+*   08.pas-numero-riferimento
+*   09.pas-situazione-d
+*   10.pas-descrizione1
+*   11.pas-descrizione2
+*   12.pas-banca1
+*   13.pas-codice-abi
+*   14.pas-banca2
+*   15.pas-codice-cab
+*   16.pas-rata
+*   17.pas-saldo-acconto-d
+*   18.pas-a-vista
+*   19.pas-codice-se
+*   20.pas-codice-se-d
+*   21.pas-importo-dare
+*   22.pas-codice-va-dare
+*   23.pas-importo-dare-va
+*   24.pas-data-registrazione-d
+*   25.pas-numero-protocollo-d
+*   26.pas-data-documento-d-num
+*   27.pas-numero-documento-d
+*   28.pas-importo-avere
+*   29.pas-codice-va-avere
+*   30.pas-importo-avere-va
+*   31.pas-data-registrazione-d
+*   32.pas-numero-protocollo-a
+*   33.pas-data-documento-a-num
+*   34.pas-numero-documento-a
+*   35.pas-progressivo-dct
+*   36.pas-progressivo-dcr
+*   37.pas-codice-cig
+*   38.pas-codice-cup
+*                                                                 
+*
+***FD  PAS   RECORD 512.                                                                             | suadal 06/06/2011 14:28:52
+*
+*
+***01  RECORD-PAS.                                                                                   | suadal 06/06/2011 14:29:19
+01 RECORD-PAS.                                                                                     | suadal 06/06/2011 14:29:09
+*
+*
+    05  PAS-CODICE.
+        10  PAS-PROGRESSIVO-X.
+*$GEN type=codenum,dec=0,size=11,entity=pat,zmm=on,zmm_title=Progressivo,zmm_datatype=n,zmm_key=1,zmm_size=13,zmm_align=R,zmm_pos=1,zmm_entity=pat
+            15  PAS-PROGRESSIVO     PIC  9(08).
+*$GEN type=num,dec=0,size=7,zmm=on,zmm_title=Riga,zmm_datatype=n,zmm_size=10,zmm_align=R,zmm_pos=2
+        10  PAS-RIGA                PIC  9(05).
+*
+*
+    05  RESTO-RECORD-PAS.
+        10  PAS-CODICE-CONTO.
+            15  PAS-TIPO-CFM        PIC  X(01).
+                88  PAS-TIPO-CFM-CLI VALUE "C".
+                88  PAS-TIPO-CFM-FRN VALUE "F".
+                88  PAS-TIPO-CFM-MAS VALUE "M".
+*$GEN type=code,entity=var(pas-codice-cfm-entity of dab-pas)
+            15  PAS-CODICE-CFM      PIC  X(08).
+        10  PAS-CODICE-CONTO-RED REDEFINES PAS-CODICE-CONTO.
+*$GEN type=codecfm,zmm=on,zmm_title=Conto,zmm_datatype=m,zmm_key=3,zmm_size=11,zmm_align=L,zmm_pos=5,zmm_entity=codecfm
+            15  PAS-CODICE-CONTO-X  PIC x(09).
+*
+* copy "groupdate.xfc". | DBMaker
+        10  PAS-DATA-RIFERIMENTO.
+$XFD  NAME=PAS-RIFERIMENTO-AA
+            15  AA                  PIC  9(04).
+$XFD  NAME=PAS-RIFERIMENTO-MM
+            15  MM                  PIC  9(02).
+$XFD  NAME=PAS-RIFERIMENTO-GG
+            15  GG                  PIC  9(02).
+        10  FILLER  REDEFINES  PAS-DATA-RIFERIMENTO.
+*$GEN type=date,zmm=on,zmm_title=Data riferimento,zmm_datatype=d,zmm_key=4,zmm_size=11,zmm_align=R,zmm_pos=7
+            15  PAS-DATA-RIFERIMENTO-NUM PIC 9(08).
+*
+*
+*$GEN zmm=on,zmm_title=Numero riferimento,zmm_datatype=x,zmm_size=12,zmm_align=L,zmm_pos=8
+        10  PAS-NUMERO-RIFERIMENTO  PIC  X(12).
+*
+* copy "groupdate.xfc". | DBMaker
+        10  PAS-DATA-SCADENZA.
+$XFD  NAME=PAS-SCADENZA-AA
+            15  AA                  PIC  9(04).
+$XFD  NAME=PAS-SCADENZA-MM
+            15  MM                  PIC  9(02).
+$XFD  NAME=PAS-SCADENZA-GG
+            15  GG                  PIC  9(02).
+        10  FILLER  REDEFINES  PAS-DATA-SCADENZA.
+*$GEN type=date,zmm=on,zmm_title=Data scadenza,zmm_datatype=d,zmm_key=2,zmm_size=11,zmm_align=R,zmm_pos=3
+            15  PAS-DATA-SCADENZA-NUM PIC 9(08).
+*
+*
+*$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=10
+        10  PAS-DESCRIZIONE1        PIC  X(30).
+*$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=11
+        10  PAS-DESCRIZIONE2        PIC  X(30).
+        10  PAS-BANCA.
+*$GEN zmm=on,zmm_title=Banca di appoggio,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=12
+            15  PAS-BANCA1          PIC  X(30).
+*$GEN zmm=on,zmm_title=ABI,zmm_datatype=x,zmm_size=05,zmm_align=L,zmm_pos=13
+            15  PAS-CODICE-ABI      PIC  9(05).
+*$GEN zmm=on,zmm_title=Filiale banca di appoggio,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=14
+            15  PAS-BANCA2          PIC  X(30).
+*$GEN zmm=on,zmm_title=CAB,zmm_datatype=x,zmm_size=05,zmm_align=L,zmm_pos=15
+            15  PAS-CODICE-CAB      PIC  9(05).
+*$GEN type=code,entity=tbltr
+        10  PAS-CODICE-TR           PIC  X(01).
+*$GEN type=num,dec=0,size=3,zmm=on,zmm_title=Rata,zmm_datatype=n,zmm_size=05,zmm_align=R,zmm_pos=16
+        10  PAS-RATA                PIC  9(02).
+        10  PAS-SALDO-ACCONTO       PIC  X(01).
+            88  PAS-SALDO-ACCONTO-88    VALUE "S" "A" " ".
+            88  PAS-SALDO-ACCONTO-88-A  VALUE "A".
+            88  PAS-SALDO-ACCONTO-88-S  VALUE "S".
+*
+*
+*$GEN zmm=on,zmm_title=Scadenza a vista,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=18
+        10  PAS-A-VISTA             PIC  X(01).
+            88  PAS-A-VISTA-88      VALUE "S" " ".
+            88  PAS-A-VISTA-S       VALUE "S".                                                     | mxm 10/12/2004 11.39
+*$GEN type=code,entity=tblse,zmm=on,zmm_title=Segnalazione scad.sospesa,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=19,zmm_entity=tblse
+        10  PAS-CODICE-SE           PIC  X(03).
+*
+*
+*$GEN zmm=on,zmm_title=Valuta dare,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=22,zmm_entity=tblva
+        10  PAS-CODICE-VA-DARE      PIC  X(03).
+*$GEN type=num,dec=2,size=21,zmm=on,zmm_title=Importo dare,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=21
+        10  PAS-IMPORTO-DARE        PIC S9(13)V9(02)  SIGN TRAILING SEPARATE.
+*$GEN type=num,dec=3,size=24,val=PAS-CODICE-VA-DARE of dab-pas,zmm=on,zmm_title=Importo dare valuta,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=23
+        10  PAS-IMPORTO-DARE-VA     PIC S9(15)V9(03)  SIGN TRAILING SEPARATE.
+*
+*
+* copy "groupdate.xfc". | DBMaker
+        10  PAS-DATA-REGISTRAZIONE-D.
+$XFD  NAME=REGISTRAZIONE-D-AA
+            15  AA                  PIC  9(04).
+$XFD  NAME=REGISTRAZIONE-D-MM
+            15  MM                  PIC  9(02).
+$XFD  NAME=REGISTRAZIONE-D-GG
+            15  GG                  PIC  9(02).
+        10  FILLER  REDEFINES  PAS-DATA-REGISTRAZIONE-D.
+*$GEN type=date,zmm=on,zmm_title=Data protocollo dare,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=24
+            15  PAS-DATA-REGISTRAZIONE-D-NUM PIC 9(08).
+*
+*$GEN type=num,dec=0,size=8,zmm=on,zmm_title=Protocollo dare,zmm_datatype=n,zmm_size=11,zmm_align=R,zmm_pos=25
+        10  PAS-NUMERO-PROTOCOLLO-D PIC  9(06).
+*
+* copy "groupdate.xfc". | DBMaker
+        10  PAS-DATA-DOCUMENTO-D.
+$XFD  NAME=PAS-DOCUMENTO-D-AA
+            15  AA                  PIC  9(04).
+$XFD  NAME=PAS-DOCUMENTO-D-MM
+            15  MM                  PIC  9(02).
+$XFD  NAME=PAS-DOCUMENTO-D-GG
+            15  GG                  PIC  9(02).
+        10  FILLER  REDEFINES  PAS-DATA-DOCUMENTO-D.
+*$GEN type=date,zmm=on,zmm_title=Data documento dare,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=26
+            15  PAS-DATA-DOCUMENTO-D-NUM PIC 9(08).
+*
+*$GEN type=num,dec=0,size=8,zmm=on,zmm_title=Documento dare,zmm_datatype=n,zmm_size=11,zmm_align=R,zmm_pos=27
+        10  PAS-NUMERO-DOCUMENTO-D  PIC  9(06).
+*
+*
+*$GEN zmm=on,zmm_title=Valuta avere,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=29,zmm_entity=tblva
+        10  PAS-CODICE-VA-AVERE     PIC  X(03).
+*$GEN type=num,dec=2,size=21,zmm=on,zmm_title=Importo avere,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=28
+        10  PAS-IMPORTO-AVERE       PIC S9(13)V9(02)  SIGN TRAILING SEPARATE.
+*$GEN type=num,dec=3,size=24,val=PAS-CODICE-VA-AVERE of dab-pas,zmm=on,zmm_title=Importo avere valuta,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=30
+        10  PAS-IMPORTO-AVERE-VA    PIC S9(15)V9(03)  SIGN TRAILING SEPARATE.
+*
+*
+* copy "groupdate.xfc". | DBMaker
+        10  PAS-DATA-REGISTRAZIONE-A.
+$XFD  NAME=REGISTRAZIONE-A-AA
+            15  AA                  PIC  9(04).
+$XFD  NAME=REGISTRAZIONE-A-MM
+            15  MM                  PIC  9(02).
+$XFD  NAME=REGISTRAZIONE-A-GG
+            15  GG                  PIC  9(02).
+        10  FILLER  REDEFINES  PAS-DATA-REGISTRAZIONE-A.
+*$GEN type=date,zmm=on,zmm_title=Data protocollo avere,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=31
+            15  PAS-DATA-REGISTRAZIONE-A-NUM PIC 9(08).
+*
+*
+$XFD  NAME=PROTOCOLLO-A
+*$GEN type=num,dec=0,size=8,zmm=on,zmm_title=Protocollo avere,zmm_datatype=n,zmm_size=11,zmm_align=R,zmm_pos=32
+        10  PAS-NUMERO-PROTOCOLLO-A PIC  9(06).
+*
+* copy "groupdate.xfc". | DBMaker
+        10  PAS-DATA-DOCUMENTO-A.
+$XFD  NAME=DOCUMENTO-A-AA
+            15  AA                  PIC  9(04).
+$XFD  NAME=DOCUMENTO-A-MM
+            15  MM                  PIC  9(02).
+$XFD  NAME=DOCUMENTO-A-GG
+            15  GG                  PIC  9(02).
+        10  FILLER  REDEFINES  PAS-DATA-DOCUMENTO-A.
+*$GEN type=date,zmm=on,zmm_title=Data documento avere,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=33
+            15  PAS-DATA-DOCUMENTO-A-NUM PIC 9(08).
+$XFD  NAME=NUMERO-DOCUMENTO-A
+*$GEN type=num,dec=0,size=8,zmm=on,zmm_title=Documento avere,zmm_datatype=n,zmm_size=11,zmm_align=R,zmm_pos=34
+        10  PAS-NUMERO-DOCUMENTO-A  PIC  9(06).
+*
+*
+        10  PAS-NUMERO-INSOLUTI     PIC  9(02).
+        10  PAS-NUMERO-SOLLECITI    PIC  9(02).
+*$GEN entity=tblba
+        10  PAS-CODICE-BA           PIC  X(03).
+        10  PAS-SITUAZIONE          PIC  9(01).
+            88  PAS-SITUAZIONE-88   VALUE 0 1 2.
+            88  PAS-SITUAZIONE-88-0 VALUE 0.
+            88  PAS-SITUAZIONE-88-1 VALUE 1.
+            88  PAS-SITUAZIONE-88-2 VALUE 2.
+*** ATTENZIONE: per testare la condizione di empty del campo pas-codice-dcr si deve testare lo stesso per space 
+*** ed il suo ridefinito (pas-codice-dct) per 0    - rif tk 2436                                   |pg 28/02/2011             
+        10  PAS-CODICE-DCR          PIC  X(13).
+        10  FILLER      REDEFINES   PAS-CODICE-DCR.                                                |pg 13/06/2005 16.17
+*$GEN type=num,dec=0,size=11,zmm=on,zmm_title=Progressivo distinta,zmm_datatype=n,zmm_size=13,zmm_align=R,zmm_pos=35,zmm_entity=dct
+            15  PAS-PROGRESSIVO-DCT PIC  9(08).
+*$GEN type=num,dec=0,size=07,zmm=on,zmm_title=Num. riga distinta,zmm_datatype=n,zmm_size=09,zmm_align=R,zmm_pos=36
+            15  PAS-PROGRESSIVO-DCR PIC  9(05).
+        10  PAS-RIGA-ORIGINE        PIC  9(05).
+        10  PAS-NUMERO-EVASIONE     PIC  9(02).
+        10  PAS-SCADENZA-INSOLUTA   PIC  X(01).
+            88 pas-scadenza-insoluta-s      value "S".                                                  |ms 30/05/2008 9.31
+            88 pas-scadenza-insoluta-null   value space.                                                |ms 30/05/2008 9.31
+
+
+        10  PAS-NUM-DOCUMENTO-D     PIC  X(06).
+$XFD  NAME=PAS-NUM-DOCUMEN-A
+        10  PAS-NUM-DOCUMENTO-A     PIC  X(06).
+*
+* copy "groupdate.xfc". | DBMaker
+        10  PAS-DATA-VALUTA.
+$XFD  NAME=PAS-DATA-VALUITA-AA
+            15  AA                          PIC  9(04).
+$XFD  NAME=PAS-DATA-VALUITA-MM
+            15  MM                          PIC  9(02).
+$XFD  NAME=PAS-DATA-VALUITA-GG
+            15  GG                          PIC  9(02).        |ds 10.09.03
+        10  FILLER  REDEFINES  PAS-DATA-VALUTA.
+            15  PAS-DATA-VALUTA-NUM         PIC 9(08).
+*
+*
+        10  PAS-IBAN                        PIC  X(34).        |ds 10.09.03
+        10  PAS-BIC                         PIC  X(11).        |ds 10.09.03
+        10  PAS-CONTO-CORRENTE              PIC  X(15).        |ds 25.09.03
+        10  PAS-CIN                         PIC  X(01).        |ds 25.09.03
+*$GEN zmm=on,zmm_title=Codice CIG,zmm_datatype=x,zmm_size=35,zmm_align=L,zmm_pos=37   
+        10  pas-codice-cig          pic  x(20).                                                      | suadal 06/06/2011 11:45:45
+*$GEN zmm=on,zmm_title=Codice CUP,zmm_datatype=x,zmm_size=35,zmm_align=L,zmm_pos=38
+        10  pas-codice-cup          pic  x(20).                                                      | suadal 06/06/2011 11:42:33
+*        10  PAS-FILLER                      PIC  X(42).        |ds 25.09.03                         | suadal 06/06/2011 12:29:41
+        10  PAS-FILLER                      PIC  X(02).                                              | suadal 06/06/2011 12:29:41
+***      10  PAS-FILLER                      PIC  X(58).
+        10  PAS-FILLER-RIS                  PIC  X(40).
+*
+*
+*

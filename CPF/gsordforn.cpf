@@ -1,0 +1,2087 @@
+; CaseMaker Totem Program Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[MONITOR_FILE]
+
+
+[PROGRAM_CONTENT]
+QUIT_CONFIRM=0
+ANSI_FORMAT=1
+MAIN_SCREEN_NAME=form-solleciti
+BEFORE_PROGRAM=gnote-ordforn-Ev-Before-Program
+AFTER_PROGRAM=gnote-ordforn-Ev-After-Program
+AFTER_INIT=gsordforn-Ev-After-Init
+PROGRAM_UNIQUE_CODE=TOTEM-7E3AA205632-243-2307325757
+
+{{@DESCRIPTION:
+
+@}}
+
+[WORKING_STORAGE]
+m_nType=1
+m_strName=Working Storage
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionWK
+
+@}}
+[FDITEM0_WK]
+m_strName=Small-Font
+m_nUsage=37
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_WK
+
+@}}
+[FDITEM1_WK]
+m_strName=titolo-note
+m_strRawPic=X(50)
+m_strPic=X(50)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1_WK
+
+@}}
+[FDITEM2_WK]
+m_strName=Form1-Tb-1-Handlea
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM2_WK
+
+@}}
+[FDITEM3_WK]
+m_strName=toolbar-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM3_WK
+
+@}}
+[FDITEM4_WK]
+m_strName=E-ESCI
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM4_WK
+
+@}}
+[FDITEM5_WK]
+m_strName=E-SALVA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM5_WK
+
+@}}
+[FDITEM6_WK]
+m_strName=titolo
+m_strDefaultValue="GESLUX - Gestione Ordini Fornitori (solleciti)"
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM6_WK
+
+@}}
+[FDITEM7_WK]
+m_strName=form-solleciti-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM7_WK
+
+@}}
+[FDITEM8_WK]
+m_strName=AUTO-ID
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM8_WK
+
+@}}
+[FDITEM9_WK]
+m_strName=Default-Font
+m_nUsage=38
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM9_WK
+
+@}}
+[FDITEM10_WK]
+m_strName=v-righe
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM10_WK
+
+@}}
+[FDITEM11_WK]
+m_strName=como-articolo
+m_strRawPic=x(60)
+m_strPic=x(60)
+m_strDefaultValue="Articolo"
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM11_WK
+
+@}}
+[FDITEM12_WK]
+m_strName=STATUS-articoli
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM12_WK
+
+@}}
+[FDITEM13_WK]
+m_strName=Valid-STATUS-articoli
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM13_WK
+
+@}}
+[FDITEM14_WK]
+m_strName=qta-ord
+m_strRawPic=z(8)
+m_strPic=z(8)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM14_WK
+
+@}}
+[FDITEM15_WK]
+m_strName=qta-eva
+m_strRawPic=z(8)
+m_strPic=z(8)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM15_WK
+
+@}}
+[FDITEM16_WK]
+m_strName=ACCEPT-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM16_WK
+
+@}}
+[FDITEM17_WK]
+m_strName=v-mod
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM17_WK
+
+@}}
+[FDITEM18_WK]
+m_strName=como-data-arr
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM18_WK
+
+@}}
+[FDITEM19_WK]
+m_strName=old-como-data-arr
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM19_WK
+
+@}}
+[FDITEM20_WK]
+m_strName=como-note
+m_strRawPic=X(500)
+m_strPic=X(500)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM20_WK
+
+@}}
+[FDITEM21_WK]
+m_strName=old-como-note
+m_strRawPic=X(500)
+m_strPic=X(500)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM21_WK
+
+@}}
+[FDITEM22_WK]
+m_strName=como-qta
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM22_WK
+
+@}}
+[FDITEM23_WK]
+m_strName=old-como-qta
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM23_WK
+
+@}}
+
+
+[LINKAGE_SECTION]
+m_nType=1
+m_strName=Linkage Section
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+{{@FD_m_strDescriptionLK
+
+@}}
+[FDITEM0_LK]
+m_strName=gsordforn-linkage
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_strCopyFile=LINK-GSORDFORN.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM0_LK
+
+@}}
+[FDITEM1_LK]
+m_strName=gsordforn-sof-chiave
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_strCopyFile=LINK-GSORDFORN.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM1_LK
+
+@}}
+[FDITEM2_LK]
+m_strName=gsordforn-sof-chiave-testa
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_strCopyFile=LINK-GSORDFORN.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM2_LK
+
+@}}
+[FDITEM3_LK]
+m_strName=gsordforn-sof-anno
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_strCopyFile=LINK-GSORDFORN.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM3_LK
+
+@}}
+[FDITEM4_LK]
+m_strName=gsordforn-sof-numero
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_strCopyFile=LINK-GSORDFORN.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM4_LK
+
+@}}
+[FDITEM5_LK]
+m_strName=gsordforn-sof-prog
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_strCopyFile=LINK-GSORDFORN.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM5_LK
+
+@}}
+[FDITEM6_LK]
+m_strName=gsordforn-sof-note
+m_strRawPic=x(500)
+m_strPic=X(500)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_strCopyFile=LINK-GSORDFORN.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM6_LK
+
+@}}
+[FDITEM7_LK]
+m_strName=gsordforn-sof-data-arr
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_strCopyFile=LINK-GSORDFORN.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM7_LK
+
+@}}
+[FDITEM8_LK]
+m_strName=gsordforn-sof-qta
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_strCopyFile=LINK-GSORDFORN.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM8_LK
+
+@}}
+[FDITEM9_LK]
+m_strName=gsordforn-articolo
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_strCopyFile=LINK-GSORDFORN.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM9_LK
+
+@}}
+[FDITEM10_LK]
+m_strName=gsordforn-qta
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_strCopyFile=LINK-GSORDFORN.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM10_LK
+
+@}}
+[FDITEM11_LK]
+m_strName=gsordforn-qta-eva
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_strCopyFile=LINK-GSORDFORN.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM11_LK
+
+@}}
+[FDITEM12_LK]
+m_strName=gsordforn-mod
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_strCopyFile=LINK-GSORDFORN.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM12_LK
+
+@}}
+[FDITEM13_LK]
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_strCopyFile=LINK-GSORDFORN.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM13_LK
+
+@}}
+[FDITEM14_LK]
+m_strName=gsordforn-cambiati
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=zero
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_strCopyFile=LINK-GSORDFORN.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM14_LK
+
+@}}
+[FDITEM15_LK]
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_strCopyFile=LINK-GSORDFORN.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM15_LK
+
+@}}
+[FDITEM16_LK]
+m_strName=gsordforn-forza-testata
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=zero
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_strCopyFile=LINK-GSORDFORN.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM16_LK
+
+@}}
+[FDITEM17_LK]
+m_strName=LK-BLOCKPGM
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM17_LK
+
+@}}
+[FDITEM18_LK]
+m_strName=LK-BL-PROG-ID
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM18_LK
+
+@}}
+[FDITEM19_LK]
+m_strName=LK-BL-DATA
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM19_LK
+
+@}}
+[FDITEM20_LK]
+m_strName=LK-BL-ORA
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM20_LK
+
+@}}
+[FDITEM21_LK]
+m_strName=LK-BL-TIPO-OP
+m_strRawPic=9(1)
+m_strPic=9(1)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM21_LK
+
+@}}
+[FDITEM22_LK]
+m_strName=LK-BL-LETTURA
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM22_LK
+
+@}}
+[FDITEM23_LK]
+m_strName=LK-BL-SCRITTURA
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=2
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM23_LK
+
+@}}
+[FDITEM24_LK]
+m_strName=LK-BL-CANCELLAZIONE
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=3
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM24_LK
+
+@}}
+[FDITEM25_LK]
+m_strName=LK-BL-USO
+m_strRawPic=9(1)
+m_strPic=9(1)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM25_LK
+
+@}}
+[FDITEM26_LK]
+m_strName=LK-BL-IN-USO
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM26_LK
+
+@}}
+[FDITEM27_LK]
+m_strName=LK-HND-WIN
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=blockpgm.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM27_LK
+
+@}}
+[FDITEM28_LK]
+m_strName=USER-CODI
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=common-linkage.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM28_LK
+
+@}}
+[FDITEM29_LK]
+m_strName=LIVELLO-ABIL
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_strCopyFile=common-linkage.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM29_LK
+
+@}}
+
+
+{{@SCREEN:
+*   Screen Painter Data
+*   Schema 6.0
+*
+BEGIN-SPDATA-6.1A
+
+GRAPHICAL-SCREEN
+
+Begin Screen form-solleciti
+   PREFIX            = form-note
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = FALSE
+   LEVEL             = 1
+   (Name)            = form-solleciti
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 13
+   Cell Width        = 6
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = FALSE
+   Font              = Small Font
+   Font Variable     = Small-Font
+   Handle Variable   = form-solleciti-Handle
+   Height in Cells   = TRUE
+   Help ID           = 0
+   Label Offset      = 20
+   Lines             = 14,00
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = TRUE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 155,00
+   System Menu       = TRUE
+   Title Bar         = TRUE
+   Title Picture     = X(50)
+   Title Variable    = titolo
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = FALSE
+   Visible           = NONE
+   Width in Cells    = TRUE
+   Window Type       = Floating
+   Wrap              = FALSE
+   Event Procedure   = form-note-Event-Proc
+   Begin Data.Entry-Field ef-data
+      SCREEN-COL        = 12,00
+      SCREEN-LINE       = 4,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-data
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 12,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Enable Variable   = mod
+      Field Edited (Style) = 1
+      Field Edited Format = 99/99/9999
+      Field Picture     = 9(8)
+      Field Variable    = como-data-arr
+      File              = Working Storage
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare la data dell'ordine
+      ID                = 0
+      ID Variable       = AUTO-ID
+      Justification     = Center
+      Line              = 4,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 30
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 11,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 1
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      My Property       = "CONTROLLO=;CONTROLLO-OLD="
+      Before Procedure  = ef-data-BeforeProcedure
+      After Procedure   = ef-data-AfterProcedure
+   End
+   Begin Data.Entry-Field ef-qta
+      SCREEN-COL        = 48,83
+      SCREEN-LINE       = 4,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-qta
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 48,83
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Enable Variable   = mod
+      Field Edited (Style) = 1
+      Field Edited Format = zz.zzz.zz9
+      Field Picture     = 9(8)
+      Field Variable    = como-qta
+      File              = Working Storage
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare la quantit
+      ID                = 16
+      ID Variable       = AUTO-ID
+      Justification     = Right
+      Line              = 4,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 30
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 9,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 2
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      My Property       = "CONTROLLO="
+      Before Procedure  = ef-qta-BeforeProcedure
+      After Procedure   = ef-qta-AfterProcedure
+   End
+   Begin Data.Entry-Field ef-note
+      SCREEN-COL        = 12,00
+      SCREEN-LINE       = 6,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-note
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 12,00
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Enable Variable   = mod
+      Field Edited (Style) = 0
+      Field Edited Format = X(500)
+      Field Picture     = X(500)
+      Field Variable    = como-note
+      File              = Working Storage
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare le note di destinazione
+      ID                = 0
+      ID Variable       = AUTO-ID
+      Justification     = Unaligned
+      Line              = 6,00
+      Lines             = 7,00
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 30
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 142,00
+      Size Unit         = Default
+      Style             = Vscroll Bar
+      Tab Order         = 3
+      Use Return        = TRUE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      My Property       = "CONTROLLO-OLD="
+      Before Procedure  = ef-note-3-BeforeProcedure
+      After Procedure   = ef-note-3-AfterProcedure
+   End
+   Begin Label Form1-La-20
+      SCREEN-COL        = 37,83
+      SCREEN-LINE       = 4,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-20
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 37,83
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 14
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 4,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 9,00
+      Size Unit         = Default
+      Tab Order         = 4
+      Title             = "Quantità"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 4,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 15
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 4,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 9,00
+      Size Unit         = Default
+      Tab Order         = 5
+      Title             = "Data arrivo"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-20a
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 6,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-20a
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 17
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 6,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 9,00
+      Size Unit         = Default
+      Tab Order         = 6
+      Title             = "Note"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin CsCtrl.Custom1 Label form-note-Custom1-1
+      CUST-SYMBOL       = Custom1
+      CUST-MODIFYFLAG   = 000000000000000000000000000000000000000000000000000
+      SCREEN-COL        = 129,17
+      SCREEN-LINE       = 4,77
+      LOCK-CONTROL      = FALSE
+      LEVEL             = 5
+      (Name)            = form-note-Custom1-1
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 129,17
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Font Variable     = Default-Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 666
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 4,77
+      Lines             = 0,62
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 12,33
+      Size Unit         = Default
+      Tab Order         = 7
+      Title             = "CUSTOM CONTROL"
+      Transparent       = TRUE
+      Visible           = NONE
+      Visible Variable  = v-custom
+      Width in Cells    = FALSE
+   End
+   Begin Label Form1-La-5a
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 2,08
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5a
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 667
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 2,08
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 9,00
+      Size Unit         = Default
+      Tab Order         = 8
+      Title             = "Articolo"
+      Transparent       = TRUE
+      Visible           = FALSE
+      Visible Variable  = v-righe
+      Width in Cells    = TRUE
+   End
+   Begin Label lbl-articolo
+      SCREEN-COL        = 12,00
+      SCREEN-LINE       = 2,08
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lbl-articolo
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 5
+      Column            = 12,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 668
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 2,08
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 60,00
+      Size Unit         = Default
+      Tab Order         = 9
+      Title             = "Articolo"
+      Title Picture     = x(60)
+      Title Variable    = como-articolo
+      Transparent       = TRUE
+      Visible           = FALSE
+      Visible Variable  = v-righe
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-20b
+      SCREEN-COL        = 75,00
+      SCREEN-LINE       = 2,08
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-20b
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 75,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 669
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 2,08
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 14,00
+      Size Unit         = Default
+      Tab Order         = 10
+      Title             = "Quantità Ordinata"
+      Transparent       = TRUE
+      Visible           = FALSE
+      Visible Variable  = v-righe
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-20ba
+      SCREEN-COL        = 104,00
+      SCREEN-LINE       = 2,08
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-20ba
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 104,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 670
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 2,08
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 14,00
+      Size Unit         = Default
+      Tab Order         = 11
+      Title             = "Quantità Evasa"
+      Transparent       = TRUE
+      Visible           = FALSE
+      Visible Variable  = v-righe
+      Width in Cells    = TRUE
+   End
+   Begin Label lbl-qta-ord
+      SCREEN-COL        = 90,00
+      SCREEN-LINE       = 2,08
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lbl-qta-ord
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 5
+      Column            = 90,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 671
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 2,08
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 12,00
+      Size Unit         = Default
+      Tab Order         = 12
+      Title             = "9"
+      Title Picture     = z(8)
+      Title Variable    = qta-ord
+      Transparent       = TRUE
+      Visible           = FALSE
+      Visible Variable  = v-righe
+      Width in Cells    = TRUE
+   End
+   Begin Label lbl-qta-eva
+      SCREEN-COL        = 117,00
+      SCREEN-LINE       = 2,08
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lbl-qta-eva
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 5
+      Column            = 117,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 672
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 2,08
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 12,00
+      Size Unit         = Default
+      Tab Order         = 13
+      Title             = "9"
+      Title Picture     = z(8)
+      Title Variable    = qta-eva
+      Transparent       = TRUE
+      Visible           = FALSE
+      Visible Variable  = v-righe
+      Width in Cells    = TRUE
+   End
+   Begin Push-Button pb
+      SCREEN-COL        = 1,00
+      SCREEN-LINE       = 14,38
+      LOCK-CONTROL      = FALSE
+      LEVEL             = 5
+      (Name)            = pb
+      Bitmap            = "..\RESOURCE\ACCEPT.BMP"
+      Bitmap Frame      = FALSE
+      Bitmap Handle     = ACCEPT-BMP
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 1,00
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 0
+      Flat              = TRUE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 46
+      Line              = 14,38
+      Lines             = 0,62
+      Lines in Pixels   = 1
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 1,50
+      Size in Pixels    = 1
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 14
+      Termination Value = 0
+      Visible           = NONE
+      Visible Variable  = v-mod
+      Width in Cells    = TRUE
+   End
+   Begin Toolbar Form1-Tb-1a
+      SCREEN-LINE       = 1,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 1
+      (Name)            = Form1-Tb-1a
+      Cell              = FALSE
+      Color             = 0
+      Font              = Default Font
+      Handle Variable   = Form1-Tb-1-Handlea
+      Help ID           = 0
+      Lines             = 2,69
+      Tab Order         = 15
+      Begin Push-Button TOOL-ESCIa
+         SCREEN-COL        = 1,00
+         SCREEN-LINE       = 1,08
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-ESCIa
+         Bitmap            = "..\RESOURCE\toolbar.bmp"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = toolbar-bmp
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 1,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Enable Variable   = E-ESCI
+         Exception Value   = 27
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 1016
+         Line              = 1,08
+         Lines             = 1,81
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 4,33
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Escape Button
+         Tab Order         = 1
+         Termination Value = 0
+         Title             = "Esci (Esc)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+      End
+      Begin Push-Button TOOL-SALVA
+         SCREEN-COL        = 6,00
+         SCREEN-LINE       = 1,08
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = TOOL-SALVA
+         Bitmap            = "..\RESOURCE\toolbar.bmp"
+         Bitmap Frame      = TRUE
+         Bitmap Handle     = toolbar-bmp
+         Bitmap Number     = 3
+         Bitmap Square     = TRUE
+         Ccol              = 0
+         Cline             = 0
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 6,00
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Enable Variable   = E-SALVA
+         Exception Value   = 1002
+         Flat              = TRUE
+         Font              = Default Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 1019
+         Line              = 1,08
+         Lines             = 1,81
+         Lines in Pixels   = 23
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 4,33
+         Size in Pixels    = 24
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 2
+         Termination Value = 0
+         Title             = "Salva (F3)"
+         Visible           = NONE
+         Width in Cells    = FALSE
+         Additional Properties = "BITMAP-NUMBER BitmapNumSave"
+         Link To           = TOOL-SALVAa-LinkTo
+      End
+   End
+End
+
+END-SPDATA
+
+@}}
+
+{{@REPORT:
+*   Report Writer Data
+*   Schema 6.0
+*
+BEGIN-RWDATA-6.0A
+
+END-RWDATA
+
+@}}
+
+{{@EMBEDDING_CODE:
+BEGIN-DATA
+   BASETYPE          = 13
+   NODESTYLE         = 13
+   PARAGRAPH         = Other Working
+BEGIN-TEXT
+      * 77  riga-note      pic 9(4).
+      * 77  riga-old-note  pic 9(4).
+      * 77  tot-righe-note pic 9(4).
+      * 77 riga-nuova-note  PIC  9(3).
+      * 77 colonna-note     PIC  9(3).
+      * 77 font-evidenzia-griglia
+      *            USAGE IS HANDLE OF FONT.
+      * 77 elemento-bmp     PIC  s9(9)
+      *            USAGE IS COMP-4
+      *            VALUE IS ZERO.
+      * 01 FlagNoteCambiate          PIC  9.
+      *     88 NoteCambiate VALUE IS 1    WHEN SET TO FALSE  0. 
+      *
+      * 01 rec-note.
+      *     05 col-nulla        PIC  X.
+      *     05 col-prog-note    PIC  z(3).
+      *     05 col-note         PIC  x(200).
+      * 01 como-dati-comuni.
+      *     05 como-data-creazione          PIC  9(8).
+      *     05 como-ora-creazione           PIC  9(8).
+      *     05 como-utente-creazione        PIC  x(10).
+      *     05 como-data-ultima-modifica    PIC  9(8).
+      *     05 como-ora-ultima-modifica     PIC  9(8).
+      *     05 como-utente-ultima-modifica  PIC  x(10).
+      *
+      * 77  cont  pic 9(3).
+      *
+      * 78  78-num-righe-note-ord   value 7.
+
+      * 01  old-tmp-sof-rec.
+      *     05 old-tmp-sof-chiave.
+      *         10 old-tmp-sof-chiave-testa.
+      *             15 old-tmp-sof-anno     PIC  9(4).
+      *             15 old-tmp-sof-numero   PIC  9(8).
+      *         10 old-tmp-sof-prog     PIC  9(5).
+      *     05 old-tmp-sof-dati.
+      *         10 old-tmp-sof-note     PIC  x(500).
+      *         10 old-tmp-sof-data-arr PIC  9(8).
+      *         10 old-tmp-sof-qta      PIC  9(8).
+      *         10 old-tmp-sof-dati-comuni.
+      *             15 old-tmp-sof-data-creazione       PIC  9(8).
+      *             15 old-tmp-sof-ora-creazione        PIC  9(8).
+      *             15 old-tmp-sof-utente-creazione     PIC  X(10).
+      *             15 old-tmp-sof-data-ultima-modifica PIC  9(8).
+      *             15 old-tmp-sof-ora-ultima-modifica  PIC  9(8).
+      *             15 old-tmp-sof-utente-ultima-modifica PIC  X(10).
+      *         10 old-tmp-sof-vuoti.
+      *             15 old-tmp-sof-num-vuoto-1          PIC  9(18).
+      *             15 old-tmp-sof-num-vuoto-2          PIC  9(18).
+      *             15 old-tmp-sof-num-vuoto-3          PIC  9(18).
+      *             15 old-tmp-sof-alfa-vuoto           PIC  X(500).
+
+       77  cod-ed   pic z(6).
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 6
+   NODESTYLE         = 7
+   PARAGRAPH         = DeletedCode
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = form-solleciti
+   ACTOBJ            = form-solleciti
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeExit
+BEGIN-TEXT
+           if mod = 1| and NoteCambiate
+              perform SALV-MOD
+           end-if
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = form-solleciti
+   ACTOBJ            = form-solleciti
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+      *     move gsordforn-sof-chiave to tmp-sof-chiave
+      *     perform CANCELLA-FLAG.           
+           set gsordforn-forza-testata to false.
+           perform CURRENT-RECORD.
+
+
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = form-solleciti
+   ACTOBJ            = form-solleciti
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterFldToBuf
+BEGIN-TEXT
+           move como-data-arr      to como-data.
+           perform DATE-TO-SCREEN.
+           move como-data          to ef-data-buf.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = form-solleciti
+   ACTOBJ            = form-solleciti
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterBufToFld
+BEGIN-TEXT
+           move ef-data-buf           to como-data.
+           perform DATE-TO-FILE.
+           move como-data             to como-data-arr.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = PARAGRAFO-MANUALE
+BEGIN-TEXT
+      ***---
+           copy "color-custom.cpy".
+           copy "utydata.cpy". 
+
+
+      ***---
+       ABILITA-TOOLBAR.
+           if mod = zero
+              move zero to e-salva
+              move BitmapSaveDisabled   to BitmapNumSave
+           else
+              evaluate livello-abil
+              when 1 
+                    move zero to e-salva
+                    move BitmapSaveDisabled   to BitmapNumSave
+              when 2 
+                   move 1    to e-salva
+                   move BitmapSaveEnabled   to BitmapNumSave
+              when 3 
+                   move 1    to e-salva
+                   move BitmapSaveEnabled   to BitmapNumSave
+              end-evaluate
+           end-if.
+
+           modify tool-salva,    enabled = e-salva.
+
+      ***---
+       CONTROLLO.
+           if mod   = 0 and
+              mod-k = 0 
+              exit paragraph 
+           end-if.
+           set tutto-ok to true.
+
+           evaluate control-id
+           when 78-ID-ef-data
+                inquire ef-data, value in ef-data-buf
+                move ef-data-buf to como-data
+                if como-data not = 0
+                   perform DATE-FORMAT
+                   move como-data to ef-data-buf
+                   display ef-data
+                end-if
+           when 78-ID-ef-qta
+                if v-righe = 1
+                   inquire ef-qta, value in como-qta
+      *****             if como-qta = 0
+      *****                set errori to true
+      *****                display message "Quantità obbligatoria"
+      *****                          title tit-err
+      *****                           icon 2
+      *****             end-if
+                end-if
+           end-evaluate
+
+           if errori
+              perform CANCELLA-COLORE
+              move CONTROL-ID to store-id
+              move 4          to ACCEPT-CONTROL
+           end-if.
+
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CURRENT-RECORD
+BEGIN-TEXT
+           set tutto-ok  to true.
+      ***     read tmp-sordforn no lock invalid 
+      ***        set errori to true 
+      ***     end-read
+
+           move gsordforn-sof-note       to como-note
+           move gsordforn-sof-data-arr   to como-data-arr
+           move gsordforn-sof-qta        to como-qta
+
+           perform VALORIZZA-OLD
+
+           perform FORM-SOLLECITI-FLD-TO-BUF
+           display form-solleciti
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = SALV-MOD
+BEGIN-TEXT
+           set tutto-ok to true.
+           perform FORM-SOLLECITI-CONTROLLO-OLD.  
+
+           if NoSalvato
+              display message box MSG-Salvare-le-modifiche
+                            title titolo
+                            type mb-yes-no-cancel
+                            giving scelta
+
+              evaluate scelta
+              when mb-yes
+                   perform SALVA
+              when mb-no
+                   continue
+              when other
+                   perform CANCELLA-COLORE
+                   set errori to true
+                   move store-id to control-id
+                   move 4        to accept-control
+              end-evaluate
+           end-if.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = SALVA
+BEGIN-TEXT
+           if mod = ZERO 
+              exit paragraph 
+           end-if.
+
+           set tutto-ok to true.
+
+           set gsordforn-forza-testata to false.
+           if gsordforn-sof-prog = 0
+              display message "Forzare la data su tutte le righe?"
+                        title titolo
+                         type mb-yes-no
+                       giving scelta
+              if scelta = mb-yes
+                 set gsordforn-forza-testata to true
+              end-if
+           end-if.
+
+           perform varying CONTROL-ID from 78-ID-ef-data by 1
+                     until CONTROL-ID > 78-ID-ef-note
+              perform CONTROLLO
+              if errori 
+                 exit perform 
+              end-if
+           end-perform.
+
+           if errori
+      *        perform ABILITAZIONI
+              move store-id to CONTROL-ID
+              move 4        to ACCEPT-CONTROL
+           else                       
+              perform FORM-SOLLECITI-BUF-TO-FLD
+              perform CANCELLA-COLORE 
+                                     
+              perform VALORIZZA-OLD
+
+              move como-note          to gsordforn-sof-note    
+              move como-data-arr      to gsordforn-sof-data-arr
+              move como-qta           to gsordforn-sof-qta     
+              set gsordforn-cambiati  to true
+           end-if.   
+                 
+           display form-solleciti
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = VALORIZZA-OLD
+BEGIN-TEXT
+           move como-note       to old-como-note    
+           move como-data-arr   to old-como-data-arr
+           move como-qta        to old-como-qta     
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = TOOL-SALVAa-LinkTo
+BEGIN-TEXT
+           INQUIRE TOOL-SALVA, ENABLED IN E-SALVA
+           IF E-SALVA = 1
+              PERFORM SALVA
+           END-IF           
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = gnote-ordforn-Ev-Before-Program
+BEGIN-TEXT
+      ********     set gsordforn-cambiati  to false
+      *********     move gsordforn-path to path-tmp-sordforn
+      ********     move gsordforn-mod  to mod
+      ********
+      ********     if mod = 1
+      ********        move zero   to v-mod
+      ********     else
+      ********        move 1      to v-mod
+      ********     end-if
+      ********
+      ********     move space  to como-articolo
+      ********     if gsordforn-sof-prog = zero
+      ********        move zero   to v-righe
+      ********     else
+      ********        move 1      to v-righe
+      ********        move gsordforn-articolo to art-codice
+      ********                                   cod-ed
+      ********        read articoli no lock
+      ********           invalid
+      ********              move space  to art-descrizione
+      ********        end-read
+      ********        string cod-ed  delimited by size
+      ********               " - "   delimited by size
+      ********               art-descrizione  delimited by size
+      ********               into como-articolo
+      ********        move gsordforn-qta      to qta-ord
+      ********        move gsordforn-qta-eva  to qta-eva
+      ********     end-if
+      ********
+      ********     perform ABILITA-TOOLBAR.       
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = gnote-ordforn-Ev-After-Program
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-note-3-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, form-note-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-note-3-AfterProcedure
+BEGIN-TEXT
+      *<<** Default_Code **>>
+      *<<** Customized_Default, SP-G, form-note-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-qta-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, form-note-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-qta-AfterProcedure
+BEGIN-TEXT
+      *<<** Default_Code **>>
+      *<<** Customized_Default, SP-G, form-note-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-data-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, form-note-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-data-AfterProcedure
+BEGIN-TEXT
+      *<<** Default_Code **>>
+      *<<** Customized_Default, SP-G, form-note-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = gsordforn-Ev-After-Init
+BEGIN-TEXT
+           set gsordforn-cambiati  to false
+      *     move gsordforn-path to path-tmp-sordforn
+           move gsordforn-mod  to mod
+
+           if mod = 1
+              move zero   to v-mod
+           else
+              move 1      to v-mod
+           end-if
+
+           move space  to como-articolo
+           if gsordforn-sof-prog = zero
+              move zero   to v-righe
+           else
+              |move 1      to v-righe
+              move gsordforn-articolo to art-codice
+                                         cod-ed
+              read articoli no lock
+                 invalid
+                    move space  to art-descrizione
+              end-read
+              string cod-ed  delimited by size
+                     " - "   delimited by size
+                     art-descrizione  delimited by size
+                     into como-articolo
+              call "C$JUSTIFY" using como-articolo, "L"
+              move gsordforn-qta      to qta-ord
+              move gsordforn-qta-eva  to qta-eva
+           end-if
+
+           perform ABILITA-TOOLBAR.       
+END-TEXT
+END-DATA
+
+@}}
+
+[KEY_STATUS_FIELD_FORMAT]
+PIC=9(5)
+USAGE=[None]
+
+[KEYSTATUS_CONTENT:KS1]
+CONDITION=Enter-Pushed
+VALUE=13
+
+[KEYSTATUS_CONTENT:KS2]
+CONDITION=Exit-Pushed
+VALUE=27
+
+[KEYSTATUS_CONTENT:KS3]
+CONDITION=Message-Received
+VALUE=95
+
+[KEYSTATUS_CONTENT:KS4]
+CONDITION=Event-Occurred
+VALUE=96
+
+[KEYSTATUS_CONTENT:KS5]
+CONDITION=Screen-No-Input-Field
+VALUE=97
+
+[KEYSTATUS_CONTENT:KS6]
+CONDITION=Screen-Time-Out
+VALUE=99
+
+[COBOLAID_DATASET_INFO]
+COUNT=1
+NAME_0=DataSet1
+
+[DRAW_DOCUMENT_INDEX]
+OBJ_NAME_0=8001
+OBJ_ID_0=1871549326
+
+[MULTIPLE_KEY_0]
+COUNT=1
+KEY_0=art-chiave OF articoli
+
+[DRAW_DOCUMENT_8001_1871549326]
+OBJ_NAME=8001
+OBJ_ID=1871549326
+TYPE=2
+VERSION=
+DOC_SIZE_X=5100
+DOC_SIZE_Y=5160
+PAGE_LEFT=150
+PAGE_TOP=150
+PAGE_RIGHT=1850
+PAGE_BOTTOM=2730
+MARGIN_LEFT=150
+MARGIN_TOP=150
+MARGIN_RIGHT=150
+MARGIN_BOTTOM=150
+PROP_DOCU_TYPE=ø
+PROP_DOCU_TYPE2=ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+PROP_DOCU_NAME=DataSet - DataSet1[gsordforn(GESLUX)]
+PROP_DOCU_OWNER=Person A
+PROP_DOCU_CDATE=10/27/08
+PROP_DOCU_MODIFIER=Person B
+PROP_DOCU_MDATE=10/27/08
+PROP_DOCU_DESCR=Caseaid DocuCaseaid Document
+PROP_DOCU_HEADER=Caseaid Document
+PROP_DOCU_FOOTER=Page # 
+PROP_DOCU_DIM_H=2
+PROP_DOCU_DIM_W=3
+PROP_DOCU_LOC_H=1
+PROP_DOCU_LOC_W=1
+PROP_DOCU_EDGE_T=150
+PROP_DOCU_EDGE_B=150
+PROP_DOCU_EDGE_L=150
+PROP_DOCU_EDGE_R=150
+PROP_DOCU_ZOOM=75
+PROP_DOCU_SIZE_TYPE=0
+PROP_DOCU_SIZE_PAPER=1
+PROP_DOCU_SIZE_H=2580
+PROP_DOCU_SIZE_W=1700
+PROP_DOCU_RULER_EBL=0
+PROP_DOCU_GRID_EBL=0
+PROP_DOCU_GRID=20
+PROP_DOCU_ALIGN=0
+REL_SYM_SIZE=10
+REL_SYM_INFO_L=1
+REL_SYM_INFO_X0=2301
+REL_SYM_INFO_Y0=1802743545
+
+[DRAW_BASESYMBOL_2301_1802743545]
+OBJ_NAME=2301
+OBJ_ID=1802743545
+KIND=1
+{{@LABEL_2301_1802743545
+articoli
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=819
+TOP=145
+RIGHT=1219
+BOTTOM=367
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DMD_DOCUMENT_0_1871549326]
+OBJ_NAME=0
+OBJ_ID=1871549326
+FILE_TITLE_TYPE=8136
+FILE_SHOW_ITEM=0
+FILE_SHOW_KEY=0
+FILE_SHOW_PIC=0
+FILE_SHOW_HEAD=0
+FILE_SHOW_LEVEL=0
+FILE_SHOW_TREE=0
+FILE_SHOW_CLPS=0
+FILE_SHOW_BMP=0
+FILE_SHOW_LINE=0
+FILE_SHOW_MINIZE=0
+
+[DMD_FILE_0_1802743545]
+OBJ_NAME=0
+OBJ_ID=1802743545
+REL_M_OBJ_ID=0
+ENTITY=articoli
+LINK=0
+LINK_NAME=
+DSN_SIZE=54
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=art-chiave OF articoli
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1802743545
+
+@}}
+DSN_INFO_PRIMARY=1
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=

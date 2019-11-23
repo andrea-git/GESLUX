@@ -1,0 +1,49 @@
+       FD  brnotacr.
+       01 brno-rec.
+           05 brno-chiave.
+               10 brno-anno        PIC  9(4).
+               10 brno-numero      PIC  9(8).
+               10 brno-tipo        PIC  x.
+                   88 brno-nota VALUE IS "N". 
+                   88 brno-addebito VALUE IS "A". 
+                   88 brno-merce-rotta VALUE IS "R". 
+               10 brno-num-riga    PIC  9(5).
+           05 brno-dati.
+               10 brno-cod-articolo            PIC  9(6).
+               10 brno-qta         PIC  9(8).
+               10 brno-imponib-merce           PIC  9(9)v9(2).
+               10 brno-imp-consumo PIC  9(4)v9(2).
+               10 brno-imp-cou-cobat           PIC  9(4)v9(2).
+               10 brno-add-piombo  PIC  9(4)v99.
+               10 brno-prz-unitario            PIC  9(9)v9(2).
+               10 brno-cod-iva     PIC  x(3).
+               10 brno-des-libera  PIC  x(150).
+               10 brno-perce-sconto            PIC  9(2)v9(2).
+               10 brno-peso-utf    PIC  9(5)v9(3).
+               10 brno-peso-non-utf            PIC  9(5)v9(3).
+               10 brno-prg-chiave.
+                   15 brno-prg-cod-articolo        PIC  9(6).
+                   15 brno-prg-cod-magazzino       PIC  X(3).
+                   15 brno-prg-tipo-imballo        PIC  X(3).
+                   15 brno-prg-peso    PIC  9(5)v9(3).
+               10 brno-stato       PIC  X(1).
+                   88 brno-attivo VALUE IS "A". 
+                   88 brno-disattivo VALUE IS "D". 
+                   88 brno-bloccato VALUE IS "B". 
+               10 brno-tipo-riga   PIC  x.
+                   88 brno-fattura VALUE IS "F". 
+                   88 brno-manuale VALUE IS "M". 
+               10 brno-dati-comuni.
+                   15 brno-data-creazione          PIC  9(8).
+                   15 brno-ora-creazione           PIC  9(8).
+                   15 brno-utente-creazione        PIC  X(10).
+                   15 brno-data-ultima-modifica    PIC  9(8).
+                   15 brno-ora-ultima-modifica     PIC  9(8).
+                   15 brno-utente-ultima-modifica  PIC  X(10).
+               10 brno-vuoti.
+                   15 brno-num-vuoto-1 PIC  9(15).
+                   15 brno-num-vuoto-2 PIC  9(15).
+                   15 brno-num-vuoto-3 PIC  9(15).
+                   15 brno-alfa-vuoto-1            PIC  X(20).
+                   15 brno-alfa-vuoto-2            PIC  X(20).
+                   15 brno-alfa-vuoto-3            PIC  X(20).

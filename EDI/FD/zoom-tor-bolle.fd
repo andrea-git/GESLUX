@@ -1,0 +1,12 @@
+      *(( XFD FILE = zoom-tor-bolle ))
+       FD  zoom-tor-bolle.
+       01 zoom-tor-bol-rec.
+           05 zoom-tor-bol-chiave.
+               10 zoom-tor-bol-anno            PIC  9(4).
+               10 zoom-tor-bol-numero          PIC  9(8).
+           05 zoom-tor-bol-dati.
+               10 zoom-tor-bol-data            PIC  9(8).
+               10 zoom-tor-bol-num-reg         PIC  9(8).
+               10 zoom-tor-bol-cod-cli         PIC  9(5).
+               10 zoom-tor-bol-ragsoc-1        PIC  x(40).
+               10 zoom-tor-bol-causale         PIC  x(4).

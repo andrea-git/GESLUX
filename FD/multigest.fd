@@ -1,0 +1,6 @@
+       FD  multigest.
+       01 mul-rec.
+           05 mul-chiave       PIC  x.
+           05 mul-tipo         PIC  xx.
+               88 mul-funzione VALUE IS "FZ". 
+               88 mul-ricalcolo VALUE IS "RI". 

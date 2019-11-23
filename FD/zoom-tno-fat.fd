@@ -1,0 +1,12 @@
+      *(( XFD FILE = zoom-tno-fat ))
+       FD  zoom-tno-fat.
+       01 zoom-tno-fat-rec.
+           05 zoom-tno-fat-chiave.
+               10 zoom-tno-fat-anno            PIC  9(4).
+               10 zoom-tno-fat-numero          PIC  9(8).
+           05 zoom-tno-fat-dati.
+               10 zoom-tno-fat-data            PIC  9(8).
+               10 zoom-tno-fat-num-reg         PIC  9(8).
+               10 zoom-tno-fat-cod-cli         PIC  9(5).
+               10 zoom-tno-fat-ragsoc-1        PIC  x(40).
+               10 zoom-tno-fat-causale         PIC  x(4).

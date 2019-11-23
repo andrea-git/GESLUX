@@ -1,0 +1,27 @@
+      *(( XFD FILE = tmp-vmovmag ))
+      *
+      *
+      *
+      *EM.VALUE
+      *OTATA
+       FD  tmp-vmovmag.
+       01 tmv-rec.
+           05 tmv-chiave.
+               10 tmv-tipo         PIC  x.
+                   88 tmv-cliente VALUE IS "C". 
+                   88 tmv-fornitore VALUE IS "F". 
+               10 tmv-codice       PIC  z(5).
+           05 tmv-dati.
+               10 tmv-causale      PIC  x(4).
+               10 tmv-ragsoc       PIC  x(80).
+               10 tmv-data-mov     PIC  x(10).
+               10 tmv-num-doc      PIC  z(8).
+               10 tmv-data-doc     PIC  x(10).
+               10 tmv-marca        PIC  z(4).
+               10 tmv-mag          PIC  x(3).
+               10 tmv-art          PIC  z(6).
+               10 tmv-desart       PIC  x(50).
+               10 tmv-qta          PIC  zz.zzz.zz9.
+               10 tmv-prezzo       PIC  ----.---.---.--9,99.
+               10 tmv-tot          PIC  ----.---.---.--9,99.
+               10 tmv-peso         PIC  z.zz9,999.

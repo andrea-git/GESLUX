@@ -1,0 +1,11 @@
+      *
+       77  costo-mp               pic s9(12)v999.
+       77  costo-mp-2dec          pic s9(12)v99.
+
+       01  tipo-recupero          pic 99.
+           88 recupero-iniziale   value 1.
+           88 recupero-anagrafica value 2.
+           88 recupero-ini        value 3.
+           88 recupero-acq        value 4.
+           88 recupero-normale    value 5.
+           88 recupero-ultimo     value 6.

@@ -1,0 +1,31 @@
+      *(( XFD FILE = tmp-movmag ))
+       FD  tmp-movmagforn.
+       01 tmp-movf-rec.
+           05 tmp-movf-chiave.
+               10 tmp-movf-desart  PIC  x(50).
+               10 tmp-movf-anno    PIC  9(4).
+               10 tmp-movf-movim   PIC  9(8).
+               10 tmp-movf-riga    PIC  9(5).
+           05 tmp-movf-dati.
+               10 tmp-movf-mag     PIC  x(3).
+               10 tmp-movf-data-movim          PIC  9(8).
+               10 tmp-movf-qta-ord PIC  s9(8).
+               10 tmp-movf-qta-eva PIC  s9(8).
+               10 tmp-movf-imp     PIC  s9(12)v9(4).
+               10 tmp-movf-add     PIC  s9(12)v9(4).
+               10 tmp-movf-cons    PIC  s9(4)v9(4).
+               10 tmp-movf-coubat  PIC  s9(4)v9(4).
+               10 tmp-movf-tipo-causale        PIC  x.
+                   88 tmp-movf-causale-pos VALUE IS "+". 
+                   88 tmp-movf-causale-neg VALUE IS "-". 
+               10 tmp-movf-imp-calcolato       PIC  s9(12)v99.
+               10 tmp-movf-codice  PIC  9(5).
+               10 tmp-movf-destino PIC  9(5).
+               10 tmp-movf-marca   PIC  9(4).
+               10 tmp-movf-articolo            PIC  9(6).
+               10 tmp-movf-peso    PIC  9(5)v9(3).
+               10 tmp-movf-cmc     PIC  s9(9)v999.
+               10 tmp-movf-tipo-cmc            PIC  x.
+               10 tmp-movf-cmr     PIC  s9(9)v999.
+               10 tmp-movf-promo   PIC  9(15).
+               10 tmp-movf-stato   PIC  x.

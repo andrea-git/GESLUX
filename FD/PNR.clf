@@ -1,0 +1,826 @@
+; CaseMaker Totem Layout Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[MONITOR_FILE]
+
+
+[DATALAYOUT_CONTENT]
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E3AA205443-110-1862912203
+[DSNENTITY_]
+[CStoAcucobolFileDefinition_]
+m_nType=1
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+m_strPrefix=PNR
+{{@FD_m_strDescription
+-----------------------------------------------------------------
+ righe prima nota
+>>>> ep 03.01.06
+ aggiunto campo per codice attivita'
+<<<< ep 03.01.06
+------------------------------------------------------------------------------------------------------------------------
+ lav.4395 prima nota 2008
+ modificata per deprecazione pnr puntoniente                                                      | mxm 24/01/2008 12.37
+------------------------------------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------
+ tk 484 - pnr.dpb utilizzato per corrispettivi veloci                                             |ms 25/07/2008 11.49
+
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+ tk 240 - new prima nota                                                                          |ms 19/11/2008 11.49
+        - livelli 88 per campo pnr-attivita
+
+------------------------------------------------------------------------------------------------------------
+ tk 2197 - Nel caso che una causale di pagamento o incasso sia configurata con "apre/movimenta"                    |ms 06/08/2009 10.01
+           in gestione partite dalla nuova contabilità tale causale è inutilizzabile
+           (anche per fare solo movimenta partita), non viene più richiesta la videata di apre o movimenta partita.
+          . inserita clausola $GEN per campo "PNR-PARTITE"
+--------------------------------------------------------------------------------------------------
+ tk.2928 - corertta clausola $GEN del campo pnr-importo-va                                       | scamar 28/04/2010 10:16:02
+  
+--------------------------------------------------------------------------------------------------
+
+ ticket 3004 - Gestione tipo documento specifico su INTRA per movimenti importati da primanota    |or 03/05/2010
+ Modificata ZMM_RETURNKEY=PNR-PROGRESSIVO-X in ZMM_RETURNKEY=PNR-CODICE
+ altrimenti non si aveva mai nella chiave di ritorno degli zoom il progressivo della riga.
+ Ora lo zoom ritorna tutta la chiave (8 caratteri di progressivo + 5 di riga).
+-------------------------------------------------------------------------------------------------------
+
+ tplvar file_selvar=on
+ tplvar zmm_title=Righe prima nota
+ tplvar zmm_ver=09.01.00
+ tplvar zmm_class=detail
+ tplvar zmm_masterkey=pnr-progressivo-x
+ tplvar zmm_returnkey=pnr-codice
+
+ ZoomFields seq:
+   01.pnr-progressivo
+   02.pnr-riga
+   03.pnr-codice-conto-x
+   04.pnr-codice-cfm-d
+
+   05.pnr-esercizio
+   06.pnr-data-registrazione
+   07.pnr-descrizione1
+   08.pnr-descrizione2
+   09.pnr-codice-co
+   10.pnr-codice-co-d
+   11.pnr-dare-avere
+   12.pnr-importo
+   13.pnr-contropartita-x
+   14.pnr-codice-cp-d
+   15.pnr-codice-va
+   16.pnr-codice-va-d
+   17.pnr-importo-va
+   18.pnr-data-valuta
+   19.pnr-data-conteggio-valuta
+
+
+
+@}}
+[FDITEM0_]
+m_strName=RECORD-PNR
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_
+
+@}}
+[FDITEM1_]
+m_strName=PNR-CODICE
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1_
+
+
+
+@}}
+[FDITEM2_]
+m_strName=PNR-PROGRESSIVO-X
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM2_
+
+@}}
+[FDITEM3_]
+m_strName=PNR-PROGRESSIVO
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM3_
+$GEN type=num,dec=0,size=11,zmm=on,zmm_title=Progressivo,zmm_datatype=n,zmm_key=1,zmm_size=13,zmm_align=R,zmm_pos=1,zmm_entity=pnt
+
+@}}
+[FDITEM4_]
+m_strName=PNR-RIGA
+m_strRawPic=9(05)
+m_strPic=9(05)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM4_
+$GEN type=num,dec=0,size=7,zmm=on,zmm_title=Riga,zmm_datatype=n,zmm_size=10,zmm_align=R,zmm_pos=2
+
+@}}
+[FDITEM5_]
+m_strName=RESTO-RECORD-PNR
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM5_
+
+
+@}}
+[FDITEM6_]
+m_strName=PNR-CODICE-CONTO
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM6_
+
+@}}
+[FDITEM7_]
+m_strName=PNR-TIPO-CFM
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM7_
+
+@}}
+[FDITEM8_]
+m_strName=PNR-TIPO-CFM-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="C" "F" "M"
+{{@DataItem_m_strDescriptionFDITEM8_
+
+@}}
+[FDITEM9_]
+m_strName=PNR-TIPO-CFM-CLI
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="C"
+{{@DataItem_m_strDescriptionFDITEM9_
+
+@}}
+[FDITEM10_]
+m_strName=PNR-TIPO-CFM-FRN
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="F"
+{{@DataItem_m_strDescriptionFDITEM10_
+
+@}}
+[FDITEM11_]
+m_strName=PNR-TIPO-CFM-MAS
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="M"
+{{@DataItem_m_strDescriptionFDITEM11_
+
+@}}
+[FDITEM12_]
+m_strName=PNR-CODICE-CFM
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM12_
+$GEN type=code,entity=var(pnr-codice-cfm-entity of dab-pnr)
+
+@}}
+[FDITEM13_]
+m_strName=PNR-CODICE-CONTO-RED
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=PNR-CODICE-CONTO
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM13_
+
+@}}
+[FDITEM14_]
+m_strName=PNR-CODICE-CONTO-X
+m_strRawPic=x(09)
+m_strPic=X(09)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM14_
+$GEN type=codecfm,zmm=on,zmm_title=Conto,zmm_datatype=m,zmm_key=2,zmm_size=11,zmm_align=L,zmm_pos=3,zmm_entity=codecfm
+
+@}}
+[FDITEM15_]
+m_strName=PNR-ESERCIZIO
+m_strRawPic=X(02)
+m_strPic=X(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM15_
+
+
+$GEN entity=doces,zmm=on,zmm_title=Es.,zmm_datatype=x,zmm_size=02,zmm_align=L,zmm_pos=5
+
+@}}
+[FDITEM16_]
+m_strName=PNR-DATA-REGISTRAZIONE
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM16_
+
+ copy "groupdate.xfc". | DBMaker
+
+@}}
+[FDITEM17_]
+m_strName=AA
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=PNR-DATA-REG-AA
+{{@DataItem_m_strDescriptionFDITEM17_
+
+@}}
+[FDITEM18_]
+m_strName=MM
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=PNR-DATA-REG-MM
+{{@DataItem_m_strDescriptionFDITEM18_
+
+@}}
+[FDITEM19_]
+m_strName=GG
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=PNR-DATA-REG-GG
+{{@DataItem_m_strDescriptionFDITEM19_
+
+@}}
+[FDITEM20_]
+m_strName=FILLER
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=PNR-DATA-REGISTRAZIONE
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM20_
+
+@}}
+[FDITEM21_]
+m_strName=PNR-DATA-REGISTRAZIONE-NUM
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM21_
+$GEN type=date,zmm=on,zmm_title=Data registrazione,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=6
+@}}
+[FDITEM22_]
+m_strName=PNR-CODICE-CO
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM22_
+
+$GEN type=code,entity=tblco,zmm=on,zmm_title=Causale,zmm_datatype=x,zmm_size=3,zmm_align=L,zmm_pos=9,zmm_entity=tblco
+@}}
+[FDITEM23_]
+m_strName=PNR-DESCRIZIONE1
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM23_
+
+$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=7
+@}}
+[FDITEM24_]
+m_strName=PNR-DESCRIZIONE2
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM24_
+
+$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=8
+
+@}}
+[FDITEM25_]
+m_strName=PNR-DARE-AVERE
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM25_
+
+$GEN zmm=on,zmm_title=Segno,zmm_datatype=x,zmm_size=1,zmm_align=L,zmm_pos=11
+@}}
+[FDITEM26_]
+m_strName=PNR-DARE-AVERE-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="D" "A"
+{{@DataItem_m_strDescriptionFDITEM26_
+
+@}}
+[FDITEM27_]
+m_strName=PNR-DARE
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="D"
+{{@DataItem_m_strDescriptionFDITEM27_
+
+@}}
+[FDITEM28_]
+m_strName=PNR-AVERE
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="A"
+{{@DataItem_m_strDescriptionFDITEM28_
+
+@}}
+[FDITEM29_]
+m_strName=PNR-IMPORTO
+m_strRawPic=S9(13)V9(02)
+m_strPic=S9(13)V9(02)
+m_nItemLevel=10
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM29_
+
+***$GEN type=amount,val=,zmm=on,zmm_title=Importo,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=12
+$GEN type=num,dec=2,size=21,zmm=on,zmm_title=Importo,zmm_datatype=n,zmm_size=21,zmm_align=R,zmm_pos=12
+@}}
+[FDITEM30_]
+m_strName=PNR-FILLER-IVA
+m_strRawPic=X(35)
+m_strPic=X(35)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM30_
+
+@}}
+[FDITEM31_]
+m_strName=PNR-CONTROPARTITA
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM31_
+**
+**       10  PNR-CODICE-IV           PIC  X(03).
+**       10  PNR-IMPONIBILE          PIC S9(15)  SIGN TRAILING SEPARATE.
+**       10  PNR-IMPOSTA             PIC S9(15)  SIGN TRAILING SEPARATE.
+**
+
+@}}
+[FDITEM32_]
+m_strName=PNR-TIPO-CP
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM32_
+
+@}}
+[FDITEM33_]
+m_strName=PNR-TIPO-CP-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="C" "F" "M"
+{{@DataItem_m_strDescriptionFDITEM33_
+
+@}}
+[FDITEM34_]
+m_strName=PNR-TIPO-CP-CLI
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="C"
+{{@DataItem_m_strDescriptionFDITEM34_
+
+@}}
+[FDITEM35_]
+m_strName=PNR-TIPO-CP-FRN
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="F"
+{{@DataItem_m_strDescriptionFDITEM35_
+
+@}}
+[FDITEM36_]
+m_strName=PNR-TIPO-CP-MAS
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="M"
+{{@DataItem_m_strDescriptionFDITEM36_
+
+@}}
+[FDITEM37_]
+m_strName=PNR-CODICE-CP
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM37_
+$GEN type=code,entity=var(pnr-codice-cp-entity of dab-pnr)
+
+@}}
+[FDITEM38_]
+m_strName=PNR-CONTROPARTITA-RED
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=PNR-CONTROPARTITA
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM38_
+
+
+@}}
+[FDITEM39_]
+m_strName=PNR-CONTROPARTITA-X
+m_strRawPic=x(09)
+m_strPic=X(09)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM39_
+$GEN type=codecfm,zmm=on,zmm_title=Contropartita,zmm_datatype=m,zmm_size=11,zmm_align=L,zmm_pos=13,zmm_entity=codecfm
+@}}
+[FDITEM40_]
+m_strName=PNR-CODICE-VA
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM40_
+
+
+$GEN type=code,entity=tblva,zmm=on,zmm_title=Valuta,zmm_datatype=x,zmm_size=3,zmm_align=L,zmm_pos=15,zmm_entity=tblva
+@}}
+[FDITEM41_]
+m_strName=PNR-IMPORTO-VA
+m_strRawPic=S9(15)V9(03)
+m_strPic=S9(15)V9(03)
+m_nItemLevel=10
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM41_
+
+
+$GEN type=num,dec=3,size=24,zmm=on,zmm_title=Importo in valuta,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=17
+@}}
+[FDITEM42_]
+m_strName=PNR-CODICE-VA-INTRA-FILLER
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM42_
+
+@}}
+[FDITEM43_]
+m_strName=PNR-IMPORTO-VA-INTRA-FILLER
+m_strRawPic=S9(15)V9(03)
+m_strPic=S9(15)V9(03)
+m_nItemLevel=10
+m_nSync=-1
+m_nSign=4
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM43_
+
+@}}
+[FDITEM44_]
+m_strName=PNR-CST-CODICE
+m_strRawPic=X(08)
+m_strPic=X(08)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM44_
+$GEN entity=cst
+@}}
+[FDITEM45_]
+m_strName=PNR-RIGA-IVA
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM45_
+
+@}}
+[FDITEM46_]
+m_strName=PNR-RIGA-IVA-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM46_
+
+@}}
+[FDITEM47_]
+m_strName=pnr-riga-iva-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM47_
+
+@}}
+[FDITEM48_]
+m_strName=pnr-riga-iva-no
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" "
+{{@DataItem_m_strDescriptionFDITEM48_
+
+@}}
+[FDITEM49_]
+m_strName=PNR-DATA-VALUTA
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM49_
+
+
+
+ copy "groupdate.xfc". | DBMaker
+
+@}}
+[FDITEM50_]
+m_strName=AA
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=PNR-DATA-VALUTA-AA
+{{@DataItem_m_strDescriptionFDITEM50_
+
+@}}
+[FDITEM51_]
+m_strName=MM
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=PNR-DATA-VALUTA-MM
+{{@DataItem_m_strDescriptionFDITEM51_
+
+@}}
+[FDITEM52_]
+m_strName=GG
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=PNR-DATA-VALUTA-GG
+{{@DataItem_m_strDescriptionFDITEM52_
+
+@}}
+[FDITEM53_]
+m_strName=FILLER
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=PNR-DATA-VALUTA
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM53_
+
+@}}
+[FDITEM54_]
+m_strName=PNR-DATA-VALUTA-NUM
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM54_
+$GEN type=date,zmm=on,zmm_title=Data valuta,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=18
+@}}
+[FDITEM55_]
+m_strName=PNR-DATA-CONTEGGIO-VALUTA
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM55_
+
+
+ copy "groupdate.xfc". | DBMaker
+@}}
+[FDITEM56_]
+m_strName=AA
+m_strRawPic=9(04)
+m_strPic=9(04)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=PNR-DATA-CONTEGG-AA
+{{@DataItem_m_strDescriptionFDITEM56_
+
+@}}
+[FDITEM57_]
+m_strName=MM
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=PNR-DATA-CONTEGG-MM
+{{@DataItem_m_strDescriptionFDITEM57_
+
+@}}
+[FDITEM58_]
+m_strName=GG
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=PNR-DATA-CONTEGG-GG
+{{@DataItem_m_strDescriptionFDITEM58_
+
+@}}
+[FDITEM59_]
+m_strName=FILLER
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=PNR-DATA-CONTEGGIO-VALUTA
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM59_
+
+@}}
+[FDITEM60_]
+m_strName=PNR-DATA-CONTEGGIO-VALUTA-NUM
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM60_
+$GEN type=date,zmm=on,zmm_title=Data conteggio valuta,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=19
+@}}
+[FDITEM61_]
+m_strName=PNR-PARTITE
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM61_
+
+
+
+$GEN type=combobox,comboclass=tblco_partite,
+
+@}}
+[FDITEM62_]
+m_strName=PNR-PARTITE-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="A" "M" " "
+{{@DataItem_m_strDescriptionFDITEM62_
+
+@}}
+[FDITEM63_]
+m_strName=pnr-partite-apre
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="A"
+{{@DataItem_m_strDescriptionFDITEM63_
+
+@}}
+[FDITEM64_]
+m_strName=pnr-partite-movimenta
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="M"
+{{@DataItem_m_strDescriptionFDITEM64_
+
+@}}
+[FDITEM65_]
+m_strName=pnr-partite-non-gestite
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" "
+{{@DataItem_m_strDescriptionFDITEM65_
+
+@}}
+[FDITEM66_]
+m_strName=PNR-CODICE-ATTIVITA
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM66_
+
+
+
+
+$GEN entity=01tat
+@}}
+[FDITEM67_]
+m_strName=PNR-FILLER
+m_strRawPic=X(31)
+m_strPic=X(31)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM67_
+
+@}}
+[FDITEM68_]
+m_strName=PNR-FILLER-RIS
+m_strRawPic=X(40)
+m_strPic=X(40)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM68_
+        10  PNR-FILLER                      PIC  X(34).
+@}}
+[CStoAcucobolSL_]
+m_nType=1
+m_bOptional=1
+m_strAssignToName="PNR"
+m_nDevice=4
+m_nFormat=3
+m_nAccessMode=3
+m_strFileStatus=STATUS-PNR
+m_nCompression=95
+{{@SL_m_strDescription
+
+@}}
+[SLPKEY_]
+m_strName=PNR-CODICE
+m_bUnique=1
+{{@Key_m_strDescription
+
+@}}
+[SLKEYATOM0_]
+m_strName=PNR-CODICE
+[SLINDEX0_]
+m_strName=PNR-CODICE1
+m_bUnique=1
+{{@Key_m_strDescriptionSLINDEX0_
+
+@}}
+[SLKEYATOM0_SLINDEX0_]
+m_strName=PNR-CODICE-CONTO
+[SLKEYATOM1_SLINDEX0_]
+m_strName=PNR-ESERCIZIO
+[SLKEYATOM2_SLINDEX0_]
+m_strName=PNR-DATA-REGISTRAZIONE
+[SLKEYATOM3_SLINDEX0_]
+m_strName=PNR-CODICE

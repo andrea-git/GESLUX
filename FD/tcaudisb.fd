@@ -1,0 +1,22 @@
+       FD  tcaudisb.
+       01 tdc-rec.
+           05 tdc-chiave.
+               10 tdc-codice       PIC  x(4).
+           05 tdc-dati.
+               10 tdc-descrizione  PIC  x(40).
+               10 tdc-caus-carico  PIC  x(4).
+               10 tdc-caus-scarico PIC  x(4).
+               10 tdc-dati-comuni.
+                   15 tdc-data-creazione           PIC  9(8).
+                   15 tdc-ora-creazione            PIC  9(8).
+                   15 tdc-utente-creazione         PIC  X(10).
+                   15 tdc-data-ultima-modifica     PIC  9(8).
+                   15 tdc-ora-ultima-modifica      PIC  9(8).
+                   15 tdc-utente-ultima-modifica   PIC  X(10).
+               10 tdc-vuoti.
+                   15 tdc-num-vuoto-1  PIC  9(15).
+                   15 tdc-num-vuoto-2  PIC  9(15).
+                   15 tdc-num-vuoto-3  PIC  9(15).
+                   15 tdc-alfa-vuoto-1 PIC  X(20).
+                   15 tdc-alfa-vuoto-2 PIC  X(20).
+                   15 tdc-alfa-vuoto-3 PIC  X(20).

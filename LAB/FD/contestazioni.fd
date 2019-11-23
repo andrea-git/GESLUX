@@ -1,0 +1,72 @@
+       FD  contestazioni.
+       01 cnt-rec.
+           05 cnt-chiave.
+               10 cnt-anno         PIC  9(4).
+               10 cnt-numero       PIC  9(8).
+           05 cnt-dati.
+               10 cnt-data         PIC  9(8).
+               10 cnt-cod-cli      PIC  9(5).
+               10 cnt-prg-destino  PIC  9(5).
+               10 cnt-tipo         PIC  x.
+                   88 cnt-prezzo VALUE IS "P". 
+                   88 cnt-merce VALUE IS "M". 
+                   88 cnt-reso VALUE IS "R". 
+                   88 cnt-add-corriere VALUE IS "C". 
+                   88 cnt-altro VALUE IS "A". 
+               10 cnt-importo      PIC  s9(9)v99.
+               10 cnt-bolla-corriere.
+                   15 cnt-richiesta    PIC  9.
+                       88 cnt-si-richiesta VALUE IS 1. 
+                       88 cnt-no-richiesta VALUE IS 0. 
+                   15 cnt-data-rich    PIC  9(8).
+                   15 cnt-corriere     PIC  9(5).
+                   15 cnt-data-ricev   PIC  9(8).
+               10 cnt-nota-debito.
+                   15 cnt-nota         PIC  9.
+                       88 cnt-si-nota VALUE IS 1. 
+                       88 cnt-no-nota VALUE IS 0. 
+      *(( XFD NAME = cnt-numero_1 ))
+                   15 cnt-numero-nota-debito       PIC  x(20).
+      *(( XFD NAME = cnt-data_1 ))
+                   15 cnt-data-nota-deb            PIC  9(8).
+                   15 cnt-importo-nota PIC  s9(9)v99.
+                   15 cnt-num-reg-contab           PIC  9(10).
+               10 cnt-appunti      PIC  x(500).
+               10 cnt-note-collegate.
+                   15 cnt-nota-anno-1  PIC  9(4).
+                   15 cnt-nota-1       PIC  9(8).
+                   15 cnt-nota-anno-2  PIC  9(4).
+                   15 cnt-nota-2       PIC  9(8).
+                   15 cnt-nota-anno-3  PIC  9(4).
+                   15 cnt-nota-3       PIC  9(8).
+                   15 cnt-nota-anno-4  PIC  9(4).
+                   15 cnt-nota-4       PIC  9(8).
+                   15 cnt-nota-anno-5  PIC  9(4).
+                   15 cnt-nota-5       PIC  9(8).
+               10 cnt-riferimenti.
+                   15 cnt-fattura.
+                       20 cnt-anno-fatt    PIC  9(4).
+                       20 cnt-num-fatt     PIC  9(8).
+                   15 cnt-data-fatt    PIC  9(8).
+                   15 cnt-nota-cr.
+                       20 cnt-anno-nota    PIC  9(4).
+                       20 cnt-num-nota     PIC  9(8).
+                   15 cnt-data-nota    PIC  9(8).
+               10 cnt-stato        PIC  x.
+                   88 cnt-aperta VALUE IS "A". 
+                   88 cnt-chiusa VALUE IS "C". 
+               10 cnt-dati-comuni.
+                   15 cnt-data-creazione           PIC  9(8).
+                   15 cnt-ora-creazione            PIC  9(8).
+                   15 cnt-utente-creazione         PIC  X(10).
+                   15 cnt-data-modifica            PIC  9(8).
+                   15 cnt-ora-modifica PIC  9(8).
+                   15 cnt-utente-modifica          PIC  X(10).
+               10 cnt-vuoti.
+                   15 cnt-data-bolla-cli           PIC  9(8).
+                   15 cnt-num-vuoto-1  PIC  9(7).
+                   15 cnt-num-vuoto-2  PIC  9(15).
+                   15 cnt-num-vuoto-3  PIC  9(15).
+                   15 cnt-bolla        PIC  X(20).
+                   15 cnt-alfa-vuoto-2 PIC  X(20).
+                   15 cnt-alfa-vuoto-3 PIC  X(20).

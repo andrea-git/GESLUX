@@ -1,0 +1,1 @@
+C:\Acucorp\Acucbl610\AcuGT\bin\wrun32.exe -c cblconfi -e F:\Lubex\GESLUX\InvioMail\InvioMail.log -l -d mail-giacenze-new

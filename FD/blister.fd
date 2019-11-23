@@ -1,0 +1,68 @@
+       FD  blister.
+       01 bli-rec.
+           05 bli-chiave.
+               10 bli-codice       PIC  9(6).
+           05 bli-dati.
+               10 bli-descrizione  PIC  x(50).
+               10 bli-magazzino    PIC  x(3).
+               10 bli-prezzo       PIC  9(6)v99.
+               10 bli-tab-componenti.
+                   15 bli-elemento
+                              OCCURS 50 TIMES.
+                       20 bli-el-articolo  PIC  9(6).
+                       20 bli-el-qta       PIC  9(8).
+                       20 bli-el-perce     PIC  9(5)v999.
+                       20 FILLER           PIC  9(10).
+                       20 FILLER           PIC  x(10).
+               10 bli-stato        PIC  x.
+                   88 bli-attivo VALUE IS "A". 
+                   88 bli-disattivo VALUE IS "D". 
+                   88 bli-bloccato VALUE IS "B". 
+               10 bli-codice-ean-1 PIC  9(13).
+               10 bli-codice-ean-2 PIC  9(13).
+               10 bli-codice-ean-3 PIC  9(13).
+               10 bli-codice-ean-4 PIC  9(13).
+               10 bli-codice-ean-5 PIC  9(13).
+               10 bli-foto         PIC  X(128).
+               10 bli-dati-comuni.
+                   15 bli-data-creazione           PIC  9(8).
+                   15 bli-ora-creazione            PIC  9(8).
+                   15 bli-utente-creazione         PIC  X(10).
+                   15 bli-data-ultima-modifica     PIC  9(8).
+                   15 bli-ora-ultima-modifica      PIC  9(8).
+                   15 bli-utente-ultima-modifica   PIC  X(10).
+               10 bli-vuoti.
+                   15 bli-TEXACO       PIC  9.
+                       88 bli-TEXACO-si VALUE IS 1. 
+                       88 bli-TEXACO-no VALUE IS 0. 
+                   15 bli-MV           PIC  9.
+                       88 bli-MV-si VALUE IS 1. 
+                       88 bli-MV-no VALUE IS 0. 
+                   15 bli-ALA          PIC  9.
+                       88 bli-ALA-si VALUE IS 1. 
+                       88 bli-ALA-no VALUE IS 0. 
+                   15 bli-GDA          PIC  9.
+                       88 bli-GDA-si VALUE IS 1. 
+                       88 bli-GDA-no VALUE IS 0. 
+                   15 bli-SPI          PIC  9.
+                       88 bli-SPI-si VALUE IS 1. 
+                       88 bli-SPI-no VALUE IS 0. 
+                   15 bli-AGENTI       PIC  9.
+                       88 bli-AGENTI-si VALUE IS 1. 
+                       88 bli-AGENTI-no VALUE IS 0. 
+                   15 bli-ESTERO       PIC  9.
+                       88 bli-ESTERO-si VALUE IS 1. 
+                       88 bli-ESERO-no VALUE IS 0. 
+                   15 bli-TRADE        PIC  9.
+                       88 bli-TRADE-si VALUE IS 1. 
+                       88 bli-TRADE-no VALUE IS 0. 
+                   15 bli-GDSDO        PIC  9.
+                       88 bli-GDSDO-si VALUE IS 1. 
+                       88 bli-GDSDO-no VALUE IS 0. 
+                   15 bli-CEPSA        PIC  9.
+                       88 bli-CEPSA-si VALUE IS 1. 
+                       88 bli-CEPSA-no VALUE IS 0. 
+                   15 bli-num-vuoto-1  PIC  9(8).
+                   15 bli-num-vuoto-2  PIC  9(18).
+                   15 bli-num-vuoto-3  PIC  9(18).
+                   15 bli-alfa-vuoto   PIC  X(500).

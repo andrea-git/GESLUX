@@ -1,0 +1,9 @@
+       FD  tnumordf.
+       01 tnf-rec.
+           05 tnf-chiave.
+               10 tnf-data         PIC  9(8).
+               10 tnf-ora          PIC  9(8).
+           05 tnf-dati.
+               10 tnf-da-num       PIC  9(8).
+               10 tnf-a-num        PIC  9(8).
+               10 FILLER           PIC  x(2000).

@@ -1,0 +1,15 @@
+      *(( XFD FILE = tmp-mtordini ))
+       FD  tmp-mtordini.
+       01 tmto-rec.
+           05 tmto-chiave.
+               10 tmto-anno        PIC  9(4).
+               10 tmto-numero      PIC  9(8).
+           05 tmto-dati.
+               10 tmto-gdo         PIC  x(35).
+               10 tmto-cliente     PIC  x(35).
+               10 tmto-destino     PIC  x(35).
+               10 tmto-data-ord    PIC  9(8).
+               10 tmto-data-cons   PIC  9(8).
+               10 tmto-qta-ord     PIC  9(8).
+               10 tmto-stato       PIC  9.
+               10 tmto-stato-esteso            PIC  x(15).

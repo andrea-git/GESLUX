@@ -1,0 +1,10 @@
+      *(( XFD FILE = tmp-pesi ))
+       FD  tmp-pesi.
+       01 tpp-rec.
+           05 tpp-chiave.
+               10 tpp-art-descrizione          PIC  x(50).
+               10 tpp-articolo     PIC  9(6).
+           05 tpp-dati.
+               10 tpp-cod-art-cli  PIC  x(15).
+               10 tpp-ean          PIC  9(13).
+               10 tpp-peso         PIC  9(5)v9(3).

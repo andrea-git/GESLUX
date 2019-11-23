@@ -1,0 +1,17 @@
+      *(( XFD FILE = tmp-group-eva ))
+      *
+      *
+       FD  tmp-group-eva.
+       01 tgr-rec.
+           05 tgr-chiave.
+               10 tgr-cliente      PIC  9(5).
+               10 tgr-cli-ragsoc   PIC  x(40).
+               10 tgr-destino      PIC  9(5).
+               10 tgr-des-ragsoc   PIC  x(40).
+               10 tgr-ritira       PIC  9.
+                   88 tgr-ritira-si VALUE IS 1. 
+                   88 tgr-ritira-no VALUE IS 0. 
+               10 tgr-evasione.
+                   15 tgr-anno         PIC  9(4).
+                   15 tgr-numero       PIC  9(8).
+               10 tgr-cod-pagamento            PIC  x(3).

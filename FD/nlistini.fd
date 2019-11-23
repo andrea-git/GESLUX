@@ -1,0 +1,20 @@
+       FD  nlistini.
+       01 nlis-rec.
+           05 nlis-chiave.
+               10 nlis-chiave-listino.
+                   15 nlis-tlis-codice PIC  9(15).
+               10 nlis-num-nota    PIC  9(3).
+           05 nlis-dati.
+               10 nlis-nota        PIC  x(200).
+               10 nlis-dati-comuni.
+                   15 nlis-data-creazione          PIC  9(8).
+                   15 nlis-ora-creazione           PIC  9(8).
+                   15 nlis-utente-creazione        PIC  x(10).
+                   15 nlis-data-ultima-modifica    PIC  9(8).
+                   15 nlis-ora-ultima-modifica     PIC  9(8).
+                   15 nlis-utente-ultima-modifica  PIC  x(10).
+               10 nlis-vuoti.
+                   15 nlis-num-vuoto-1 PIC  9(18).
+                   15 nlis-num-vuoto-2 PIC  9(18).
+                   15 nlis-num-vuoto-3 PIC  9(18).
+                   15 nlis-alfa-vuoto  PIC  X(500).

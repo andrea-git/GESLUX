@@ -1,0 +1,22 @@
+      *
+       01 G2Agg-linkage.
+           03 G2Agg-codice     pic 9(5).
+           03 G2Agg-nazione    pic x(3).
+           03 G2Agg-categoria  pic x(2).
+           03 G2Agg-agente     pic 9(5). 
+           03 G2Agg-articolo   pic 9(6).
+           03 G2Agg-codice-gdo pic x(5).
+           03 filler           pic x(1000).
+           03 G2Agg-FileToAgg  pic x(3).
+              88 G2Agg-cli     value "CLI".
+              88 G2Agg-for     value "FRN".
+              88 G2Agg-age     value "AGE".
+              88 G2Agg-naz     value "NAZ".
+              88 G2Agg-cat     value "CAT".
+              88 G2Agg-art     value "ART".
+              88 G2Agg-gdo     value "GDO".
+           03 G2Agg-operazione pic x.
+              88 G2Agg-update  value "U".
+              88 G2Agg-insert  value "I".
+              88 G2Agg-delete  value "D".
+           03 G2Agg-status     signed-short.

@@ -1,0 +1,9 @@
+      *
+       01  stlistini-linkage.     
+           05 stlis-lis-chiave.
+               10 stlis-codice     PIC  9(15).
+           05 filler               pic 9.
+              88 stlis-excell      value 1.
+              88 stlis-printer     value 2.
+              88 stlis-anteprima   value 3.
+           05 stlis-user           pic x(10).

@@ -1,0 +1,9 @@
+      *
+       01 agmag-linkage.
+           03 agmag-data       PIC  9(8).
+           03 agmag-tot-mov    PIC  9(8).
+           03 agmag-mov-da     PIC  9(8).
+           03 agmag-mov-a      PIC  9(8).
+           03 agmag-user       PIC  x(20).
+           03 agmag-handle
+                      USAGE IS HANDLE OF WINDOW.

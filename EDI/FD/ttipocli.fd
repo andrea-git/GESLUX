@@ -1,0 +1,74 @@
+      *
+      *
+      *
+      *0
+      *
+       FD  ttipocli.
+       01 tcl-rec.
+           05 tcl-chiave.
+               10 tcl-codice       PIC  X(2).
+           05 tcl-dati.
+               10 tcl-descrizione  PIC  X(30).
+               10 tcl-agente       PIC  x.
+                   88 tcl-agente-si VALUE IS "S". 
+                   88 tcl-agente-no VALUE IS "N". 
+                   88 tcl-agente-opz VALUE IS "O". 
+               10 tcl-gdo          PIC  x.
+                   88 tcl-gdo-si VALUE IS "S". 
+                   88 tcl-gdo-no VALUE IS "N". 
+                   88 tcl-gdo-opz VALUE IS "O". 
+               10 tcl-tipologia-tratt-imposte  PIC  x.
+                   88 ttipocli-standard VALUE IS "S". 
+                   88 ttipocli-gdo VALUE IS "G". 
+                   88 ttipocli-estero-ex VALUE IS "E". 
+               10 tcl-gestione-fido            PIC  x.
+                   88 tcl-si-gestione-fido VALUE IS "S". 
+                   88 tcl-no-gestione-fido VALUE IS "N". 
+               10 tcl-dati-comuni.
+                   15 tcl-data-creazione           PIC  9(8).
+                   15 tcl-ora-creazione            PIC  9(8).
+                   15 tcl-utente-creazione         PIC  X(10).
+                   15 tcl-data-ultima-modifica     PIC  9(8).
+                   15 tcl-ora-ultima-modifica      PIC  9(8).
+                   15 tcl-utente-ultima-modifica   PIC  X(10).
+               10 tcl-vuoti.
+                   15 tcl-recupero-listino         PIC  x.
+                       88 tcl-si-recupero VALUE IS "S". 
+                       88 tcl-no-recupero VALUE IS "N". 
+                   15 tcl-gest-plus    PIC  x.
+                       88 tcl-si-gest-plus VALUE IS "S". 
+                       88 tcl-no-gest-plus VALUE IS "N". 
+                   15 tcl-piombo       PIC  x.
+                       88 tcl-si-piombo VALUE IS "S". 
+                       88 tcl-no-piombo VALUE IS "N". 
+                   15 tcl-serie-bolle  PIC  9.
+                   15 tcl-num-vuoto-1  PIC  9(11).
+                   15 tcl-num-vuoto-2  PIC  9(15).
+                   15 tcl-num-vuoto-3  PIC  9(15).
+                   15 tcl-impegnato    PIC  x.
+                       88 tcl-imp-GDO VALUE IS "G". 
+                       88 tcl-imp-trad VALUE IS "T". 
+                   15 tcl-manuale      PIC  x.
+                       88 tcl-manuale-si VALUE IS "S". 
+                       88 tcl-manuale-no VALUE IS "N". 
+                   15 tcl-bloc-auto    PIC  x(1).
+                       88 tcl-bloc-auto-si VALUE IS "S". 
+                       88 tcl-bloc-auto-no VALUE IS "N". 
+                   15 tcl-brogliaccio  PIC  X(1).
+                       88 tcl-brogliaccio-GDO VALUE IS "G". 
+                       88 tcl-brogliaccio-NORMALE VALUE IS "N". 
+                   15 tcl-evasione     PIC  X(1).
+                       88 tcl-evasione-GDO VALUE IS "G". 
+                       88 tcl-evasione-TRAD VALUE IS "T". 
+                       88 tcl-evasione-ESTERO VALUE IS "E". 
+                   15 tcl-stampante    PIC  X(50).
+                   15 tcl-stampa-brogm PIC  x.
+                       88 tcl-stampa-brogm-si VALUE IS "S". 
+                       88 tcl-stampa-brogm-no VALUE IS "N" " ". 
+                   15 tcl-mail-comm    PIC  X(200).
+                   15 tcl-path-sfondo-bolle        PIC  X(150).
+                   15 tcl-fido-nuovo   PIC  x.
+                       88 tcl-fido-nuovo-si VALUE IS "S". 
+                       88 tcl-fido-nuovo-no VALUE IS "N" " ". 
+      *(( XFD NAME = tcl-filler_1 ))
+                   15 FILLER           PIC  X(349).

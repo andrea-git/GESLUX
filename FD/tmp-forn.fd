@@ -1,0 +1,21 @@
+      *(( XFD FILE = tmp-forn ))
+       FD  tmp-forn.
+       01 tmf-rec.
+           05 tmf-chiave.
+               10 tmf-tipo         PIC  x.
+                   88 tmf-inclusi VALUE IS "I". 
+                   88 tmf-esclusi VALUE IS "E". 
+               10 tmf-articolo     PIC  9(6).
+               10 tmf-prz-confronto            PIC  9(9)v99.
+               10 tmf-listino      PIC  9(15).
+           05 tmf-dati.
+               10 tmf-ragsoc       PIC  x(50).
+               10 tmf-disponibilita            PIC  9(9).
+               10 tmf-lead-time    PIC  9(3).
+               10 tmf-premio       PIC  9(9)v99.
+               10 tmf-prz-listino  PIC  9(9)v99.
+               10 tmf-totale       PIC  9(9)v99.
+               10 tmf-fornitore    PIC  9(5).
+               10 tmf-destino      PIC  9(5).
+               10 tmf-data-ini     PIC  9(8).
+               10 tmf-data-fine    PIC  9(8).
