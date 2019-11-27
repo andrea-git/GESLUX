@@ -847,7 +847,7 @@
               move 0 to save-articolo
               perform until 1 = 2
                  read coperfab next at end exit perform end-read
-                 if cpf-articolo not = save-articolo
+                 if cpf-articolo not = save-articolo               
                     move cpf-articolo to art-codice save-articolo
                     read articoli no lock invalid continue end-read
                     move cpf-articolo to ord2-articolo
@@ -1083,7 +1083,8 @@
               move 0 to save-destino
               move spaces to save-causale
               perform until 1 = 2
-                 read coperfab-mag next at end exit perform end-read
+                 read coperfab-mag next at end exit perform end-read  
+                 if cpfm-articolo = 17326 stop "K" end-if
                  if cpfm-programmazione-no
                     move cpfm-articolo to ord2-articolo
                     move "LBX"         to ord2-mag
@@ -1138,7 +1139,8 @@
                     exit perform
                  end-if
                  read coperfab-mag next at end exit perform end-read 
-                 move cpfm-articolo to ord2-articolo
+                 move cpfm-articolo to ord2-articolo   
+                    if cpfm-articolo = 17326 stop "K" end-if
                  move "LBX"         to ord2-mag
                  read ordfor2 no lock invalid continue end-read
                  if ord2-si-conferma and cpfm-programmazione-si

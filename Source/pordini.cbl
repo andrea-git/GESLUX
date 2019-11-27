@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 8 agosto 2019 13:17:36.
+       DATE-WRITTEN.        mercoledì 27 novembre 2019 10:44:38.
        REMARKS.
       *{TOTEM}END
 
@@ -111,11 +111,11 @@
 
        WORKING-STORAGE      SECTION.
       *{TOTEM}ACU-DEF
-               COPY "ACUGUI.DEF".
-               COPY "ACUCOBOL.DEF".
-               COPY "FONTS.DEF".
-               COPY "CRTVARS.DEF".
-               COPY "SHOWMSG.DEF".
+               COPY "acugui.def".
+               COPY "acucobol.def".
+               COPY "fonts.def".
+               COPY "crtvars.def".
+               COPY "showmsg.def".
                COPY "totem.def".
                COPY "standard.def".
       *{TOTEM}END
@@ -305,7 +305,7 @@
            05 col-media        PIC  ----.---.--9.
            05 col-andamento    PIC  ----.---.--9.
            05 col-consegna     PIC  ----.---.--9.
-           05 col-qta-b        PIC  zz.zzz.zz9.
+           05 col-riordino     PIC  ----.---.--9,99.
            05 col-giac-pz      PIC  ----.---.--9.
            05 col-giac-imb     PIC  ----.---.--9.
            05 col-ordinato     PIC  ----.---.--9.
@@ -12426,8 +12426,7 @@
            modify form1-gd-1(1, 21), cell-data = "And".
            modify form1-gd-1(2, 21), cell-data = "%".
            modify form1-gd-1(1, 22), cell-data = "Cons.".
-           modify form1-gd-1(1, 23), cell-data = "Qta B".
-           modify form1-gd-1(2, 23), cell-data = "EP/STD".
+           modify form1-gd-1(1, 23), cell-data = "Riordino". 
            modify form1-gd-1(1, 24), cell-data = "Giac.".
            modify form1-gd-1(2, 24), cell-data = "Imb.".
            modify form1-gd-1(1, 25), cell-data = "Giac.".
@@ -13123,7 +13122,7 @@
               add 1 to mese idx
            end-perform.     
 
-           move ord2-qta-bancale to col-qta-b.
+           move ord2-riordino to col-riordino.
 
            move el-qta(1)       to col-mese1.
            move el-qta(2)       to col-mese2.
@@ -13186,7 +13185,7 @@
            modify form1-gd-1(riga, 20), cell-data col-media.
            modify form1-gd-1(riga, 21), cell-data col-andamento.
            modify form1-gd-1(riga, 22), cell-data col-consegna.
-           modify form1-gd-1(riga, 23), cell-data col-qta-b.
+           modify form1-gd-1(riga, 23), cell-data col-riordino.
            modify form1-gd-1(riga, 24), cell-data col-giac-imb.
            modify form1-gd-1(riga, 25), cell-data col-giac-pz.
            modify form1-gd-1(riga, 26), cell-data col-ordinato.
