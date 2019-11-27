@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="fatturapa_v1.2.xsl"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 http://www.fatturapa.gov.it/export/fatturazione/sdi/fatturapa/v1.2/Schema_del_file_xml_FatturaPA_versione_1.2.xsd">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>04628290159</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>67746</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>M5UXCR1</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>00785630963</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>LUBEX SPA</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Giuseppe di Vittorio</Indirizzo>
+        <NumeroCivico>13</NumeroCivico>
+        <CAP>20090</CAP>
+        <Comune>Vimodrone</Comune>
+        <Provincia>MI</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>06824320011</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>ASJA AMBIENTE ITALIA SpA</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>CORSO VINZAGLIO 24</Indirizzo>
+        <CAP>10121</CAP>
+        <Comune>TORINO</Comune>
+        <Provincia>TO</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2019-11-08</Data>
+        <Numero>40531</Numero>
+        <ImportoTotaleDocumento>6533.10</ImportoTotaleDocumento>
+        <Causale>VENDITA da deposito SIN </Causale>
+      </DatiGeneraliDocumento>
+      <DatiDDT>
+        <NumeroDDT>407524</NumeroDDT>
+        <DataDDT>2019-11-07</DataDDT>
+      </DatiDDT>
+      <DatiTrasporto>
+        <DatiAnagraficiVettore>
+          <IdFiscaleIVA>
+            <IdPaese>IT</IdPaese>
+            <IdCodice>06253020967</IdCodice>
+          </IdFiscaleIVA>
+          <Anagrafica>
+            <Denominazione>Deposito: Sinteco Logistics Spa</Denominazione>
+          </Anagrafica>
+        </DatiAnagraficiVettore>
+        <IndirizzoResa>
+          <Indirizzo>VIA GERMAGNANO, 50</Indirizzo>
+          <CAP>10100</CAP>
+          <Comune>TORINO</Comune>
+          <Provincia>TO</Provincia>
+          <Nazione>IT</Nazione>
+        </IndirizzoResa>
+        <DataOraConsegna>2019-11-12T00:00:00</DataOraConsegna>
+      </DatiTrasporto>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>16209</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>TX HDAX 6500</Descrizione>
+        <Quantita>1750.00</Quantita>
+        <PrezzoUnitario>2.17</PrezzoUnitario>
+        <ScontoMaggiorazione>
+          <Tipo>MG</Tipo>
+          <Importo>0.79</Importo>
+        </ScontoMaggiorazione>
+        <ScontoMaggiorazione>
+          <Tipo>MG</Tipo>
+          <Importo>0.10</Importo>
+        </ScontoMaggiorazione>
+        <PrezzoTotale>5355.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <ImponibileImporto>5355.00</ImponibileImporto>
+        <Imposta>1178.10</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP01</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP12</ModalitaPagamento>
+        <DataScadenzaPagamento>2020-01-31</DataScadenzaPagamento>
+        <ImportoPagamento>6533.10</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

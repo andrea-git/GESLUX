@@ -1174,7 +1174,7 @@
              into line-riga.
            write line-riga.           
 
-           if tor-num-ord-cli not = spaces
+           if tor-num-ord-cli not = spaces or des-cig not = spaces
               initialize line-riga
               string 78-spazi 
                      78-spazi              
@@ -1183,18 +1183,20 @@
                 into line-riga
               write line-riga            
            
-              inspect tor-num-ord-cli
-                      replacing trailing spaces by low-value
-              initialize line-riga
-              string 78-spazi 
-                     78-spazi       
-                     78-spazi 
-                     78-spazi 
-                     "<IdDocumento>"
-                     tor-num-ord-cli delimited low-value
-                     "</IdDocumento>"
-                into line-riga
-              write line-riga          
+              if tor-num-ord-cli not = spaces
+                 inspect tor-num-ord-cli
+                         replacing trailing spaces by low-value
+                 initialize line-riga
+                 string 78-spazi 
+                        78-spazi       
+                        78-spazi 
+                        78-spazi 
+                        "<IdDocumento>"
+                        tor-num-ord-cli delimited low-value
+                        "</IdDocumento>"
+                   into line-riga
+                 write line-riga
+              end-if
            
               if des-cig not = spaces
                  inspect des-CIG
