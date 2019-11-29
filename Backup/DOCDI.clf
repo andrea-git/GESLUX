@@ -2,7 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7DF2982150-29-27434566
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E3B1D231648-728-2213320776
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -244,8 +244,41 @@ m_strPrefix=DOCDI
 ---------------------------------------------------------------------------------------------
  tk 5599 - G2Mobile: collegamento con applicazioni InfinityMobile                                   | scamar 09/06/2014
            .new column docdi-FVCodazi
+---------------------------------------------------------------------------------------------
+ tk 2482 - Aggancio scadenza su seconda NC1 sulla stessa fattura                                    | SUADAL 31/07/2014
+         - inserito nuovo check-box per abilitare richiesta interattiva (in aggdav) della rata da movimentare
+           per documenti note di credito che movimentano le partite.
+---------------------------------------------------------------------------------------------
+ tk 2092 - tabella parametri chiusura esercizio                                                     | Suadal 16/09/2014
+         - inseriti nuovi campi ai fini della proposta in programma di chiusura contabile
+---------------------------------------------------------------------------------------------
+ ticket 5959 - Prevedere importazione movimenti da procedura PagheWeb                               | Suadal 28/11/2014
+             - aggiunto campo docdi-codice-azienda-pagheweb                                     
+-----------------------------------------------------------------
+ tk 5497 - Adeguamento tracciati export verso Ago Infinity secondo nuove specifiche                 | Suadal 16/04/2015
+         - inserito nuovo campo per gestione collegamento con Zucchetti Ago
+---------------------------------------------------------------------------------------------
+ tk 6413 - giro dell'iva prorata a costo su un mastro dedicato                                      | rososv 14/03/2016
+         - inserito nuovo campo (mastro) per il giroconto dell'iva pro-rata
+         - inserito nuovo campo (mastro) per il giroconto dell'iva non detraibile
+---------------------------------------------------------------------------------------------
+ tk 6104 - gestire versioni dei file inviati al repository                                          | MACGIU 25/07/2016
+-----------------------------------------------------------------------------------------------------------------------
+ tk.7326 - Property sheet clienti calcolo prezzo medio errato                                       | maxime 28/08/2017
+           Nuovi parametri pagina "properti sheet":
+           vendite: escludi dal calcolo prezzo medio vendita le righe vendita omaggio
+                    escludi dal calcolo prezzo medio vendita le righe vendita sconto merce
+           acquisti: escludi dal calcolo prezzo medio acquisto le righe acquisto omaggio
+                     escludi dal calcolo prezzo medio acquisto le righe acquisto sconto merce
 
-
+-----------------------------------------------------------------------------------------------------------------------
+ tk 8434 - primanota: nuova normativa competenza iva                                                | suadal 16/04/2019
+         - inserito campo che indica la modalità con cui liquidare le fatture fornitori
+           (da utilizzarsi per il recupero del campo pnt-data-competenza-iva)
+----------------------------------------------------------------------------------
+ tk 8619 - Compilazione VP3 il liquidazione iva periodica a fronte di dl 119/18                     | suadal 20/06/2019
+         - inserito campo che indica il tipo di conteggio operazioni passive in VP3  
+----------------------------------------------------------------------------------
 @}}
 [FDITEM0_]
 m_strName=record-docdi
@@ -283,7 +316,6 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM3_
 
 $GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=08,zmm_align=L,zmm_pos=1,zmm_entity=docdi
-
 @}}
 [FDITEM4_]
 m_strName=docdi-codice3
@@ -313,7 +345,6 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM6_
 
 $GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=2
-
 @}}
 [FDITEM7_]
 m_strName=docdi-nome2
@@ -325,7 +356,6 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM7_
 
 $GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=3
-
 @}}
 [FDITEM8_]
 m_strName=docdi-via
@@ -417,7 +447,6 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM16_
 
 $GEN zmm=on,zmm_title=Partita IVA,zmm_datatype=x,zmm_size=11,zmm_align=L,zmm_pos=4
-
 @}}
 [FDITEM17_]
 m_strName=docdi-codice-fiscale
@@ -428,7 +457,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM17_
 $GEN zmm=on,zmm_title=Codice fiscale,zmm_datatype=x,zmm_size=16,zmm_align=L,zmm_pos=5
-
 @}}
 [FDITEM18_]
 m_strName=docdi-persona-fisica
@@ -439,7 +467,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM18_
 $GEN type=checkbox,truevalue="S", falsevalue=" "
-
 @}}
 [FDITEM19_]
 m_strName=docdi-persona-fisica-88
@@ -520,7 +547,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM26_
 $GEN type=date,
-
 @}}
 [FDITEM27_]
 m_strName=DOCDI-PROVINCIA-NASCITA
@@ -530,7 +556,6 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM27_
-
 
 @}}
 [FDITEM28_]
@@ -591,7 +616,6 @@ m_nSign=4
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM33_
 $GEN type=num,dec=02,size=21
-
 @}}
 [FDITEM34_]
 m_strName=DOCDI-TRIBUNALE-CITTA
@@ -650,6 +674,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM39_
  copy "groupdate.xfc". | DBMaker
+
 @}}
 [FDITEM40_]
 m_strName=AA
@@ -714,7 +739,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM45_
 
-
 @}}
 [FDITEM46_]
 m_strName=DOCDI-DESCRIZIONE-ATTIVITA
@@ -775,7 +799,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM51_
 $GEN type=radiobutton,value_1=" ",image_1=1,value_2="M",image_2=2,value_3="T",image_3=3
-
 @}}
 [FDITEM52_]
 m_strName=DOCDI-PERIODICITA-IVA-88
@@ -906,7 +929,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM64_
 $GEN type=num,dec=0,size=06
-
 @}}
 [FDITEM65_]
 m_strName=DOCDI-INTESTAZIONE
@@ -937,6 +959,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM67_
 $GEN type=checkbox,truevalue="S", falsevalue=" "
+
 @}}
 [FDITEM68_]
 m_strName=DOCDI-AGGIORNAMENTI-88
@@ -956,6 +979,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM69_
 $GEN type=checkbox,truevalue="S", falsevalue=" "
+
 @}}
 [FDITEM70_]
 m_strName=DOCDI-VALUTA-88
@@ -975,6 +999,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM71_
 $GEN type=num,dec=0,size=04
+
 @}}
 [FDITEM72_]
 m_strName=DOCDI-COD-CONCESSIONE
@@ -1013,6 +1038,7 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM75_
+
 
 @}}
 [FDITEM76_]
@@ -1055,7 +1081,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM79_
 $GEN type=code,entity=tblma,blanknull=on
-
 @}}
 [FDITEM80_]
 m_strName=docdi-codice-ma-02
@@ -1066,6 +1091,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM80_
 $GEN type=code,entity=tblma,blanknull=on
+
 @}}
 [FDITEM81_]
 m_strName=docdi-codice-ma-03
@@ -1107,7 +1133,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM84_
 $GEN type=code,entity=tblma,blanknull=on
-
 @}}
 [FDITEM85_]
 m_strName=docdi-codice-ma-07
@@ -1118,6 +1143,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM85_
 $GEN type=code,entity=tblma,blanknull=on
+
 @}}
 [FDITEM86_]
 m_strName=docdi-codice-ma-08
@@ -1128,6 +1154,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM86_
 $GEN type=code,entity=tblma,blanknull=on
+
 @}}
 [FDITEM87_]
 m_strName=docdi-codice-ma-09
@@ -1192,7 +1219,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM92_
 $GEN type=code,entity=tblce
-
 @}}
 [FDITEM93_]
 m_strName=DOCDI-PROPOSTA-DOCA
@@ -1203,7 +1229,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM93_
 $GEN type=checkbox,truevalue="S", falsevalue=" "
-
 @}}
 [FDITEM94_]
 m_strName=DOCDI-PROPOSTA-DOCA-88
@@ -1253,7 +1278,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM98_
 $GEN type=radiobutton,value_1=" ",image_1=1,value_2="O",image_2=2,value_3="S",image_3=3
-
 @}}
 [FDITEM99_]
 m_strName=DOCDI-PROFESSIONISTA-88
@@ -1273,7 +1297,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM100_
 $GEN type=checkbox,truevalue="S", falsevalue=" "
-
 @}}
 [FDITEM101_]
 m_strName=docdi-lifo-88
@@ -1363,7 +1386,6 @@ m_bFixed=1
 
 
 $GEN type=checkbox,truevalue="S", falsevalue=" "
-
 @}}
 [FDITEM110_]
 m_strName=docdi-chiudi-ordine-88
@@ -1411,6 +1433,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM114_
 $GEN type=code,entity=mas
+
 @}}
 [FDITEM115_]
 m_strName=docdi-mas-perdita-precedente
@@ -1450,6 +1473,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM118_
 $GEN type=checkbox,truevalue="N", falsevalue=" "
+
 @}}
 [FDITEM119_]
 m_strName=docdi-val-stat-acquisti-88
@@ -1470,7 +1494,6 @@ m_bFixed=1
 m_strName_Xfd=DOCDI-AGG-ACQ
 {{@DataItem_m_strDescriptionFDITEM120_
 $GEN type=checkbox,truevalue="S", falsevalue=" "
-
 @}}
 [FDITEM121_]
 m_strName=docdi-aggiornamenti-acq-88
@@ -1499,7 +1522,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM123_
 $GEN type=code,entity=tblva
-
 @}}
 [FDITEM124_]
 m_strName=docdi-mas-euro
@@ -1541,6 +1563,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM127_
 $GEN type=checkbox,truevalue=" ", falsevalue="N"
+
 @}}
 [FDITEM128_]
 m_strName=DOCDI-ULTIMO-MESE-LIFO-88
@@ -1570,7 +1593,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM130_
 $GEN type=radiobutton,value_1=" ",image_1=1,value_2="P",image_2=2
-
 @}}
 [FDITEM131_]
 m_strName=DOCDI-ORDINE-GIORNALE-88
@@ -1614,9 +1636,9 @@ $GEN type=radiobutton,value_1=0,image_1=1,value_2=1,image_2=2,value_3=10,image_3
 
 @}}
 [FDITEM135_]
-m_strName=filler
-m_strRawPic=X(30)
-m_strPic=X(30)
+m_strName=docdi-mas-iva-prorata
+m_strRawPic=x(08)
+m_strPic=X(08)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -1628,21 +1650,22 @@ m_bFixed=1
 
 **        10  DOCDI-DOMINIO-WWP               PIC  X(30).                                         | mxm 26/02/2007 17.27
 **        10  DOCDI-CARTELLA-WWP              PIC  X(50).                                         | mxm 26/02/2007 17.27
+$GEN type=code,entity=mas
 @}}
 [FDITEM136_]
-m_strName=filler
-m_strRawPic=X(50)
-m_strPic=X(50)
+m_strName=docdi-mas-ivand
+m_strRawPic=x(08)
+m_strPic=X(08)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM136_
-
+$GEN type=code,entity=mas
 @}}
 [FDITEM137_]
-m_strName=DOCDI-INIZIO-CODICE-WWP
-m_strRawPic=X(03)
-m_strPic=X(03)
+m_strName=filler
+m_strRawPic=x(14)
+m_strPic=X(14)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -1650,19 +1673,19 @@ m_bFixed=1
 
 @}}
 [FDITEM138_]
-m_strName=DOCDI-FINE-CODICE-WWP
-m_strRawPic=X(03)
-m_strPic=X(03)
+m_strName=filler
+m_strRawPic=X(50)
+m_strPic=X(50)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM138_
-
+**        10  filler                          PIC  X(30).         | mxm 26/02/2007 17.27            | rososv 14/03/2016
 @}}
 [FDITEM139_]
-m_strName=DOCDI-FILLER
-m_strRawPic=X(05)
-m_strPic=X(05)
+m_strName=DOCDI-INIZIO-CODICE-WWP
+m_strRawPic=X(03)
+m_strPic=X(03)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -1670,6 +1693,26 @@ m_bFixed=1
 
 @}}
 [FDITEM140_]
+m_strName=DOCDI-FINE-CODICE-WWP
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM140_
+
+@}}
+[FDITEM141_]
+m_strName=DOCDI-FILLER
+m_strRawPic=X(05)
+m_strPic=X(05)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM141_
+
+@}}
+[FDITEM142_]
 m_strName=DOCDI-CODICE-AZIENDA-SIPED
 m_strRawPic=9(06)
 m_strPic=9(06)
@@ -1677,7 +1720,7 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=DOCDI-COD-SIPED
-{{@DataItem_m_strDescriptionFDITEM140_
+{{@DataItem_m_strDescriptionFDITEM142_
 
  obsoleti                                                                                         | mxm 26/02/2007 17.27
  obsoleti                                                                                         | mxm 26/02/2007 17.27
@@ -1691,36 +1734,35 @@ $XFD  NAME=DOCDI-COD-GIOVE                                     | ds 18.09.03
        10  DOCDI-CODICE-AZIENDA-GIOVE      PIC  9(05).         | ds 18.09.03
 .09.03
 $GEN type=num,dec=0,size=08
-
 @}}
-[FDITEM141_]
+[FDITEM143_]
 m_strName=DOCDI-WE-SERVER
 m_strRawPic=X(42)
 m_strPic=X(42)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM141_
+{{@DataItem_m_strDescriptionFDITEM143_
 
 @}}
-[FDITEM142_]
+[FDITEM144_]
 m_strName=DOCDI-WE-USER
 m_strRawPic=X(42)
 m_strPic=X(42)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM142_
+{{@DataItem_m_strDescriptionFDITEM144_
 
 @}}
-[FDITEM143_]
+[FDITEM145_]
 m_strName=DOCDI-WE-RICHIESTA-PASSWORD
 m_strRawPic=9(01)
 m_strPic=9(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM143_
+{{@DataItem_m_strDescriptionFDITEM145_
 
 campi per collegamento WE (ac)
 
@@ -1731,41 +1773,20 @@ campi per collegamento WE (ac)
 3.05.03
 
 @}}
-[FDITEM144_]
+[FDITEM146_]
 m_strName=DOCDI-WE-RICHIESTA-PASSWORD-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
 m_strFalse=0
-{{@DataItem_m_strDescriptionFDITEM144_
-
-@}}
-[FDITEM145_]
-m_strName=DOCDI-WE-PASSWORD
-m_strRawPic=X(20)
-m_strPic=X(20)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM145_
-
-@}}
-[FDITEM146_]
-m_strName=DOCDI-WE-E-MAIL
-m_strRawPic=X(50)
-m_strPic=X(50)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM146_
-$GEN type=code,entity=g2mail
 
 @}}
 [FDITEM147_]
-m_strName=DOCDI-WE-OC-MAIL
-m_strRawPic=x(41)
-m_strPic=X(41)
+m_strName=DOCDI-WE-PASSWORD
+m_strRawPic=X(20)
+m_strPic=X(20)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -1773,23 +1794,44 @@ m_bFixed=1
 
 @}}
 [FDITEM148_]
+m_strName=DOCDI-WE-E-MAIL
+m_strRawPic=X(50)
+m_strPic=X(50)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM148_
+$GEN type=code,entity=g2mail
+
+@}}
+[FDITEM149_]
+m_strName=DOCDI-WE-OC-MAIL
+m_strRawPic=x(41)
+m_strPic=X(41)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM149_
+
+@}}
+[FDITEM150_]
 m_strName=DOCDI-WE-OC-USER
 m_strRawPic=x(41)
 m_strPic=X(41)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM148_
+{{@DataItem_m_strDescriptionFDITEM150_
 
 @}}
-[FDITEM149_]
+[FDITEM151_]
 m_strName=DOCDI-WE-OC-PASSWORD
 m_strRawPic=x(20)
 m_strPic=X(20)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM149_
+{{@DataItem_m_strDescriptionFDITEM151_
 
  casella di posta e account per ricezione ordini WE
 
@@ -1799,7 +1841,7 @@ m_bFixed=1
 3.05.03
 
 @}}
-[FDITEM150_]
+[FDITEM152_]
 m_strName=docdi-codice-fiscale-dichiarante
 m_strRawPic=x(11)
 m_strPic=X(11)
@@ -1807,7 +1849,7 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=docdi-codice-fisca
-{{@DataItem_m_strDescriptionFDITEM150_
+{{@DataItem_m_strDescriptionFDITEM152_
 
 
 fine campi per collegamento WE (ac)
@@ -1816,32 +1858,11 @@ fine campi per collegamento WE (ac)
 
 comunicazione annuale iva (dal 2003)
 
-
 @}}
-[FDITEM151_]
+[FDITEM153_]
 m_strName=DOCDI-CODICE-AZIENDA-GIOVE
 m_strRawPic=9(06)
 m_strPic=9(06)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM151_
-
-@}}
-[FDITEM152_]
-m_strName=DOCDI-CODICE-IBAN
-m_strRawPic=X(34)
-m_strPic=X(34)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM152_
-
-@}}
-[FDITEM153_]
-m_strName=DOCDI-CODICE-BIC
-m_strRawPic=X(11)
-m_strPic=X(11)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -1849,6 +1870,26 @@ m_bFixed=1
 
 @}}
 [FDITEM154_]
+m_strName=DOCDI-CODICE-IBAN
+m_strRawPic=X(34)
+m_strPic=X(34)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM154_
+
+@}}
+[FDITEM155_]
+m_strName=DOCDI-CODICE-BIC
+m_strRawPic=X(11)
+m_strPic=X(11)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM155_
+
+@}}
+[FDITEM156_]
 m_strName=DOCDI-FILLER-02
 m_strRawPic=X(11)
 m_strPic=X(11)
@@ -1856,7 +1897,7 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=DOCDI-COD-GIOVE
-{{@DataItem_m_strDescriptionFDITEM154_
+{{@DataItem_m_strDescriptionFDITEM156_
 
 fine comunicazione annuale iva (dal 2003)
 
@@ -1868,91 +1909,70 @@ $GEN type=num,dec=0,size=08
         10  DOCDI-AUTOFATTURA-CLI             PIC  X(08).      |ds 23.10.03
 
 @}}
-[FDITEM155_]
+[FDITEM157_]
 m_strName=DOCDI-REGISTRO-LIQUIDAZIONE
 m_strRawPic=X(01)
 m_strPic=X(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM155_
+{{@DataItem_m_strDescriptionFDITEM157_
 $GEN type=radiobutton,value_1=" ",image_1=1,value_2="V",image_2=2,value_3="C",image_3=3,value_4="I",image_4=4
-
 @}}
-[FDITEM156_]
+[FDITEM158_]
 m_strName=DOCDI-REGISTRO-LIQUIDAZIONE-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="V" "C" "I" " "
-{{@DataItem_m_strDescriptionFDITEM156_
+{{@DataItem_m_strDescriptionFDITEM158_
 
 @}}
-[FDITEM157_]
+[FDITEM159_]
 m_strName=DOCDI-WE-SERVER-POP3
 m_strRawPic=X(42)
 m_strPic=X(42)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM157_
+{{@DataItem_m_strDescriptionFDITEM159_
 
 @}}
-[FDITEM158_]
+[FDITEM160_]
 m_strName=DOCDI-TIPO-CONTAB
 m_strRawPic=X(01)
 m_strPic=X(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM158_
+{{@DataItem_m_strDescriptionFDITEM160_
 11.03
 server posta in entrata
 01.04
 
 
 $GEN type=radiobutton,value_1="O",image_1=1,value_2="S",image_2=2
-
 @}}
-[FDITEM159_]
+[FDITEM161_]
 m_strName=DOCDI-TIPO-CONTAB-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=" " "O" "S"
-{{@DataItem_m_strDescriptionFDITEM159_
+{{@DataItem_m_strDescriptionFDITEM161_
 
 @}}
-[FDITEM160_]
+[FDITEM162_]
 m_strName=DOCDI-TIPO-CONTAB-88-O
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="O"
-{{@DataItem_m_strDescriptionFDITEM160_
-
-@}}
-[FDITEM161_]
-m_strName=DOCDI-TIPO-SUDDIV-GIOVE
-m_strRawPic=X(01)
-m_strPic=X(01)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM161_
-
-@}}
-[FDITEM162_]
-m_strName=DOCDI-TIPO-SUDDIV-GIOVE-88
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue=" " "1" "2" "3" "4" "5"
 {{@DataItem_m_strDescriptionFDITEM162_
-07.04
+
 @}}
 [FDITEM163_]
-m_strName=DOCDI-REG-UNI-INV
+m_strName=DOCDI-TIPO-SUDDIV-GIOVE
 m_strRawPic=X(01)
 m_strPic=X(01)
 m_nItemLevel=10
@@ -1962,16 +1982,17 @@ m_bFixed=1
 
 @}}
 [FDITEM164_]
-m_strName=DOCDI-REG-UNI-INV-88
+m_strName=DOCDI-TIPO-SUDDIV-GIOVE-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
-m_strTrue=" " "N"
+m_strTrue=" " "1" "2" "3" "4" "5"
 {{@DataItem_m_strDescriptionFDITEM164_
+07.04
 
 @}}
 [FDITEM165_]
-m_strName=DOCDI-NUM-LIB-IVA
+m_strName=DOCDI-REG-UNI-INV
 m_strRawPic=X(01)
 m_strPic=X(01)
 m_nItemLevel=10
@@ -1981,21 +2002,40 @@ m_bFixed=1
 
 @}}
 [FDITEM166_]
+m_strName=DOCDI-REG-UNI-INV-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "N"
+{{@DataItem_m_strDescriptionFDITEM166_
+
+@}}
+[FDITEM167_]
+m_strName=DOCDI-NUM-LIB-IVA
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM167_
+
+@}}
+[FDITEM168_]
 m_strName=DOCDI-NUM-LIB-IVA-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=" " "S"
-{{@DataItem_m_strDescriptionFDITEM166_
+{{@DataItem_m_strDescriptionFDITEM168_
 
 @}}
-[FDITEM167_]
+[FDITEM169_]
 m_strName=docdi-num-lib-iva-88-s
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S"
-{{@DataItem_m_strDescriptionFDITEM167_
+{{@DataItem_m_strDescriptionFDITEM169_
 07.04
 $GEN type=checkbox,truevalue=" ", falsevalue="N"
 10.04
@@ -2005,28 +2045,8 @@ $GEN type=checkbox,truevalue="S", falsevalue=" "
 10.04
 
 @}}
-[FDITEM168_]
-m_strName=DOCDI-SW-EMAIL-UTENTE
-m_strRawPic=X(01)
-m_strPic=X(01)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM168_
-$GEN type=checkbox,truevalue="S", falsevalue=" "
-@}}
-[FDITEM169_]
-m_strName=DOCDI-SOLO-EMAIL-UTENTE
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="S"
-m_strFalse=SPACE
-{{@DataItem_m_strDescriptionFDITEM169_
-
-@}}
 [FDITEM170_]
-m_strName=DOCDI-CAPITALE-VERSATO
+m_strName=DOCDI-SW-EMAIL-UTENTE
 m_strRawPic=X(01)
 m_strPic=X(01)
 m_nItemLevel=10
@@ -2034,80 +2054,81 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM170_
 $GEN type=checkbox,truevalue="S", falsevalue=" "
-
 @}}
 [FDITEM171_]
+m_strName=DOCDI-SOLO-EMAIL-UTENTE
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+m_strFalse=SPACE
+{{@DataItem_m_strDescriptionFDITEM171_
+
+@}}
+[FDITEM172_]
+m_strName=DOCDI-CAPITALE-VERSATO
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM172_
+$GEN type=checkbox,truevalue="S", falsevalue=" "
+
+@}}
+[FDITEM173_]
 m_strName=DOCDI-CAPITALE-VERSATO-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S" " "
-{{@DataItem_m_strDescriptionFDITEM171_
+{{@DataItem_m_strDescriptionFDITEM173_
 
 @}}
-[FDITEM172_]
+[FDITEM174_]
 m_strName=docdi-capitale-versato-si
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S"
-{{@DataItem_m_strDescriptionFDITEM172_
+{{@DataItem_m_strDescriptionFDITEM174_
 
 @}}
-[FDITEM173_]
+[FDITEM175_]
 m_strName=DOCDI-CODICE-CATASTALE
 m_strRawPic=X(04)
 m_strPic=X(04)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM173_
+{{@DataItem_m_strDescriptionFDITEM175_
 
 @}}
-[FDITEM174_]
+[FDITEM176_]
 m_strName=DOCDI-SW-LOG-MAIL
 m_strRawPic=X(01)
 m_strPic=X(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM174_
+{{@DataItem_m_strDescriptionFDITEM176_
 $GEN type=checkbox,truevalue="S", falsevalue=" "
 
 @}}
-[FDITEM175_]
+[FDITEM177_]
 m_strName=DOCDI-ATTIVA-LOG-MAIL
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S"
 m_strFalse=SPACE
-{{@DataItem_m_strDescriptionFDITEM175_
-
-@}}
-[FDITEM176_]
-m_strName=DOCDI-TIPO-MITTENTE
-m_strRawPic=X(01)
-m_strPic=X(01)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM176_
-
-@}}
-[FDITEM177_]
-m_strName=DOCDI-TIPO-MITTENTE-88
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue=" " "D" "P"
 {{@DataItem_m_strDescriptionFDITEM177_
 
 @}}
 [FDITEM178_]
-m_strName=DOCDI-ID-MITTENTE
-m_strRawPic=X(11)
-m_strPic=X(11)
+m_strName=DOCDI-TIPO-MITTENTE
+m_strRawPic=X(01)
+m_strPic=X(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -2115,138 +2136,136 @@ m_bFixed=1
 
 @}}
 [FDITEM179_]
+m_strName=DOCDI-TIPO-MITTENTE-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" " "D" "P"
+{{@DataItem_m_strDescriptionFDITEM179_
+
+@}}
+[FDITEM180_]
+m_strName=DOCDI-ID-MITTENTE
+m_strRawPic=X(11)
+m_strPic=X(11)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM180_
+
+@}}
+[FDITEM181_]
 m_strName=DOCDI-BLOCCO-QTA
 m_strRawPic=X
 m_strPic=X
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM179_
+{{@DataItem_m_strDescriptionFDITEM181_
 $GEN type=checkbox,truevalue="S", falsevalue="N"
 
 @}}
-[FDITEM180_]
+[FDITEM182_]
 m_strName=DOCDI-BLOCCO-QTA-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S" "N" " "
-{{@DataItem_m_strDescriptionFDITEM180_
+{{@DataItem_m_strDescriptionFDITEM182_
 
 @}}
-[FDITEM181_]
+[FDITEM183_]
 m_strName=DOCDI-BLOCCO-QTA-SI
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S"
-{{@DataItem_m_strDescriptionFDITEM181_
+{{@DataItem_m_strDescriptionFDITEM183_
 
 @}}
-[FDITEM182_]
+[FDITEM184_]
 m_strName=DOCDI-BLOCCO-QTA-NO
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="N"
-{{@DataItem_m_strDescriptionFDITEM182_
+{{@DataItem_m_strDescriptionFDITEM184_
 
 @}}
-[FDITEM183_]
+[FDITEM185_]
 m_strName=DOCDI-TAGLIA
 m_strRawPic=9(02)
 m_strPic=9(02)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM183_
+{{@DataItem_m_strDescriptionFDITEM185_
 
 @}}
-[FDITEM184_]
+[FDITEM186_]
 m_strName=DOCDI-TAGLIA-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=0 07 THRU 14
-{{@DataItem_m_strDescriptionFDITEM184_
+{{@DataItem_m_strDescriptionFDITEM186_
 
 @}}
-[FDITEM185_]
+[FDITEM187_]
 m_strName=DOCDI-CREA-FT-DIFFERITA
 m_strRawPic=X(01)
 m_strPic=X(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM185_
+{{@DataItem_m_strDescriptionFDITEM187_
 $GEN type=checkbox,truevalue="S", falsevalue=" "
-
 @}}
-[FDITEM186_]
+[FDITEM188_]
 m_strName=DOCDI-CREA-FT-DIFFERITA-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S" " "
-{{@DataItem_m_strDescriptionFDITEM186_
+{{@DataItem_m_strDescriptionFDITEM188_
 
 @}}
-[FDITEM187_]
+[FDITEM189_]
 m_strName=docdi-elabora-allegati
 m_strRawPic=9(01)
 m_strPic=9(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM187_
+{{@DataItem_m_strDescriptionFDITEM189_
+
 
 @}}
-[FDITEM188_]
+[FDITEM190_]
 m_strName=DOCDI-ELABORA-ALLEGATI-SI
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
 m_strFalse=0
-{{@DataItem_m_strDescriptionFDITEM188_
+{{@DataItem_m_strDescriptionFDITEM190_
 
 @}}
-[FDITEM189_]
+[FDITEM191_]
 m_strName=docdi-tblva
 m_strRawPic=x(03)
 m_strPic=X(03)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM189_
+{{@DataItem_m_strDescriptionFDITEM191_
 
 $GEN type=code,entity=tblva
-
 @}}
-[FDITEM190_]
+[FDITEM192_]
 m_strName=docdi-cciaa
 m_strRawPic=x(11)
 m_strPic=X(11)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM190_
-
-@}}
-[FDITEM191_]
-m_strName=docdi-prov-cciaa
-m_strRawPic=x(02)
-m_strPic=X(02)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM191_
-
-@}}
-[FDITEM192_]
-m_strName=docdi-datint-cfis
-m_strRawPic=x(16)
-m_strPic=X(16)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -2254,9 +2273,9 @@ m_bFixed=1
 
 @}}
 [FDITEM193_]
-m_strName=docdi-datint-caf
-m_strRawPic=9(05)
-m_strPic=9(05)
+m_strName=docdi-prov-cciaa
+m_strRawPic=x(02)
+m_strPic=X(02)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -2264,52 +2283,71 @@ m_bFixed=1
 
 @}}
 [FDITEM194_]
+m_strName=docdi-datint-cfis
+m_strRawPic=x(16)
+m_strPic=X(16)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM194_
+
+@}}
+[FDITEM195_]
+m_strName=docdi-datint-caf
+m_strRawPic=9(05)
+m_strPic=9(05)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM195_
+
+@}}
+[FDITEM196_]
 m_strName=docdi-datint-tipo-com
 m_strRawPic=9(01)
 m_strPic=9(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM194_
+{{@DataItem_m_strDescriptionFDITEM196_
 $GEN type=radiobutton,value_1=0,image_1=1,value_2=1,image_2=2,value_3=2,image_3=3
-
 @}}
-[FDITEM195_]
+[FDITEM197_]
 m_strName=docdi-datint-tipo-com-null
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=0
-{{@DataItem_m_strDescriptionFDITEM195_
+{{@DataItem_m_strDescriptionFDITEM197_
 
 @}}
-[FDITEM196_]
+[FDITEM198_]
 m_strName=docdi-datint-tipo-com-1
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
-{{@DataItem_m_strDescriptionFDITEM196_
+{{@DataItem_m_strDescriptionFDITEM198_
 
 @}}
-[FDITEM197_]
+[FDITEM199_]
 m_strName=docdi-datint-tipo-com-2
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=2
-{{@DataItem_m_strDescriptionFDITEM197_
+{{@DataItem_m_strDescriptionFDITEM199_
 
 @}}
-[FDITEM198_]
+[FDITEM200_]
 m_strName=docdi-datint-dataimp
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM198_
+{{@DataItem_m_strDescriptionFDITEM200_
  copy "groupdate.xfc". | DBMaker
 @}}
-[FDITEM199_]
+[FDITEM201_]
 m_strName=aa
 m_strRawPic=9(04)
 m_strPic=9(04)
@@ -2317,10 +2355,10 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=DOCDI-IMPEGNO-AA
-{{@DataItem_m_strDescriptionFDITEM199_
+{{@DataItem_m_strDescriptionFDITEM201_
 
 @}}
-[FDITEM200_]
+[FDITEM202_]
 m_strName=MM
 m_strRawPic=9(02)
 m_strPic=9(02)
@@ -2328,10 +2366,10 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=DOCDI-IMPEGNO-MM
-{{@DataItem_m_strDescriptionFDITEM200_
+{{@DataItem_m_strDescriptionFDITEM202_
 
 @}}
-[FDITEM201_]
+[FDITEM203_]
 m_strName=GG
 m_strRawPic=9(02)
 m_strPic=9(02)
@@ -2339,57 +2377,32 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=DOCDI-IMPEGNO-GG
-{{@DataItem_m_strDescriptionFDITEM201_
+{{@DataItem_m_strDescriptionFDITEM203_
 
 @}}
-[FDITEM202_]
+[FDITEM204_]
 m_strName=filler
 m_nItemLevel=10
 m_bRedefines=1
 m_strRedefines=docdi-datint-dataimp
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM202_
+{{@DataItem_m_strDescriptionFDITEM204_
 
 @}}
-[FDITEM203_]
+[FDITEM205_]
 m_strName=docdi-datint-datai
 m_strRawPic=9(08)
 m_strPic=9(08)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM203_
-$GEN type=date,
-@}}
-[FDITEM204_]
-m_strName=docdi-accorpa-corr
-m_strRawPic=9(01)
-m_strPic=9(01)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM204_
-
-
-
- punto vendita: "accorpa scritture contabili corr.giornalieri"                                    | mxm 17/10/2007 17.13
-
-@}}
-[FDITEM205_]
-m_strName=docdi-split-cven
-m_strRawPic=9(01)
-m_strPic=9(01)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM205_
-
- punto vendita: aggiunto flag "contropartite vendite differenziate per articoli"
+$GEN type=date,
 
 @}}
 [FDITEM206_]
-m_strName=docdi-raee-prod
+m_strName=docdi-accorpa-corr
 m_strRawPic=9(01)
 m_strPic=9(01)
 m_nItemLevel=10
@@ -2397,92 +2410,91 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM206_
 
-    10  docdi-filler-01                   pic  x(805).                       | mxm 17/10/2007 17.12  |or 14/11/2007
 
 
+ punto vendita: "accorpa scritture contabili corr.giornalieri"                                    | mxm 17/10/2007 17.13
 @}}
 [FDITEM207_]
+m_strName=docdi-split-cven
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM207_
+
+ punto vendita: aggiunto flag "contropartite vendite differenziate per articoli"
+@}}
+[FDITEM208_]
+m_strName=docdi-raee-prod
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM208_
+
+    10  docdi-filler-01                   pic  x(805).                       | mxm 17/10/2007 17.12  |or 14/11/2007
+
+@}}
+[FDITEM209_]
 m_strName=docdi-raee-prod-ok
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
-{{@DataItem_m_strDescriptionFDITEM207_
+{{@DataItem_m_strDescriptionFDITEM209_
 
 @}}
-[FDITEM208_]
+[FDITEM210_]
 m_strName=docdi-raee-prod-ko
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=0
-{{@DataItem_m_strDescriptionFDITEM208_
+{{@DataItem_m_strDescriptionFDITEM210_
 
 @}}
-[FDITEM209_]
+[FDITEM211_]
 m_strName=docdi-raee-riv
 m_strRawPic=9(01)
 m_strPic=9(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM209_
+{{@DataItem_m_strDescriptionFDITEM211_
 
 @}}
-[FDITEM210_]
+[FDITEM212_]
 m_strName=docdi-raee-riv-ok
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
-{{@DataItem_m_strDescriptionFDITEM210_
+{{@DataItem_m_strDescriptionFDITEM212_
 
 @}}
-[FDITEM211_]
+[FDITEM213_]
 m_strName=docdi-raee-riv-ko
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=0
-{{@DataItem_m_strDescriptionFDITEM211_
+{{@DataItem_m_strDescriptionFDITEM213_
 
 @}}
-[FDITEM212_]
+[FDITEM214_]
 m_strName=docdi-raee-cod-produttore
 m_strRawPic=x(50)
 m_strPic=X(50)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM212_
-
-@}}
-[FDITEM213_]
-m_strName=docdi-docscr-differito
-m_strRawPic=9(01)
-m_strPic=9(01)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM213_
-
- punto vendita: aggiunto flag "generazione differita documenti legati allo scontrino di cassa"
-
-@}}
-[FDITEM214_]
-m_strName=docdi-cod-ateco
-m_strRawPic=x(06)
-m_strPic=X(06)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM214_
-
- nuovo codice attivita' da passare a comunicazione iva annuale
 
 @}}
 [FDITEM215_]
-m_strName=docdi-magscr-realtime
+m_strName=docdi-docscr-differito
 m_strRawPic=9(01)
 m_strPic=9(01)
 m_nItemLevel=10
@@ -2490,38 +2502,59 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM215_
 
- punto vendita: aggiunto flag "generazione in tempo reale mov.magazzino"
-
+ punto vendita: aggiunto flag "generazione differita documenti legati allo scontrino di cassa"
 @}}
 [FDITEM216_]
+m_strName=docdi-cod-ateco
+m_strRawPic=x(06)
+m_strPic=X(06)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM216_
+
+ nuovo codice attivita' da passare a comunicazione iva annuale
+@}}
+[FDITEM217_]
+m_strName=docdi-magscr-realtime
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM217_
+
+ punto vendita: aggiunto flag "generazione in tempo reale mov.magazzino"
+@}}
+[FDITEM218_]
 m_strName=docdi-smtp-port
 m_strRawPic=9(05)
 m_strPic=9(05)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM216_
+{{@DataItem_m_strDescriptionFDITEM218_
 
  porta server smtp
 
 @}}
-[FDITEM217_]
+[FDITEM219_]
 m_strName=docdi-smtp-port-default
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=25
-{{@DataItem_m_strDescriptionFDITEM217_
+{{@DataItem_m_strDescriptionFDITEM219_
 
 @}}
-[FDITEM218_]
+[FDITEM220_]
 m_strName=docdi-exclude-omaggi-dw
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM218_
+{{@DataItem_m_strDescriptionFDITEM220_
 
 
 
@@ -2533,30 +2566,9 @@ m_bFixed=1
    check box per l'esclusione dei movimenti di vendita/acquisto dal warehouse
    delle vendite
 
-
-@}}
-[FDITEM219_]
-m_strName=docdi-exclude-omaggi-dw-on
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue=1
-m_strFalse=0
-{{@DataItem_m_strDescriptionFDITEM219_
-
-@}}
-[FDITEM220_]
-m_strName=docdi-squad-pnt
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM220_
-
 @}}
 [FDITEM221_]
-m_strName=docdi-squad-pnt-allowed
+m_strName=docdi-exclude-omaggi-dw-on
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -2566,6 +2578,26 @@ m_strFalse=0
 
 @}}
 [FDITEM222_]
+m_strName=docdi-squad-pnt
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM222_
+
+@}}
+[FDITEM223_]
+m_strName=docdi-squad-pnt-allowed
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM223_
+
+@}}
+[FDITEM224_]
 m_strName=docdi-data-inizio-procedura
 m_strRawPic=9(08)
 m_strPic=9(08)
@@ -2576,44 +2608,23 @@ m_strName_Xfd=docdi-data-inizio-
 m_bDataType_Xfd=1
 m_nDataType_Xfd=2
 m_strDateFormat_Xfd=yyyymmdd
-{{@DataItem_m_strDescriptionFDITEM222_
+{{@DataItem_m_strDescriptionFDITEM224_
 $GEN type=date,
-
 @}}
-[FDITEM223_]
+[FDITEM225_]
 m_strName=docdi-ktrun
 m_strRawPic=9(01)
 m_strPic=9(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM223_
-
-
-@}}
-[FDITEM224_]
-m_strName=docdi-invio-repository
-m_strRawPic=9(01)
-m_strPic=9(01)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM224_
-
-
-@}}
-[FDITEM225_]
-m_strName=docdi-invio-repository-si
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue=1
-m_strFalse=0
 {{@DataItem_m_strDescriptionFDITEM225_
+
+
 
 @}}
 [FDITEM226_]
-m_strName=docdi-sendmail-ssl
+m_strName=docdi-invio-repository
 m_strRawPic=9(01)
 m_strPic=9(01)
 m_nItemLevel=10
@@ -2621,84 +2632,83 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM226_
 
+@}}
+[FDITEM227_]
+m_strName=docdi-invio-repository-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM227_
+
+@}}
+[FDITEM228_]
+m_strName=docdi-sendmail-ssl
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM228_
+
 $GEN type=combobox,comboclass=docdi_sendmail_ssl,
 
 @}}
-[FDITEM227_]
+[FDITEM229_]
 m_strName=docdi-sendmail-ssl-none
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=0
-{{@DataItem_m_strDescriptionFDITEM227_
+{{@DataItem_m_strDescriptionFDITEM229_
 
 @}}
-[FDITEM228_]
+[FDITEM230_]
 m_strName=docdi-sendmail-ssl-tls
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
-{{@DataItem_m_strDescriptionFDITEM228_
+{{@DataItem_m_strDescriptionFDITEM230_
 
 @}}
-[FDITEM229_]
+[FDITEM231_]
 m_strName=docdi-sendmail-starttls
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=2
-{{@DataItem_m_strDescriptionFDITEM229_
+{{@DataItem_m_strDescriptionFDITEM231_
 
 @}}
-[FDITEM230_]
+[FDITEM232_]
 m_strName=docdi-sendmail-receipt
 m_strRawPic=9(01)
 m_strPic=9(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM230_
-
+{{@DataItem_m_strDescriptionFDITEM232_
 
 
 @}}
-[FDITEM231_]
+[FDITEM233_]
 m_strName=docdi-codice-tblna
 m_strRawPic=x(03)
 m_strPic=X(03)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM231_
+{{@DataItem_m_strDescriptionFDITEM233_
 
 
 $GEN type=code,entity=tblna
 @}}
-[FDITEM232_]
+[FDITEM234_]
 m_strName=docdi-codice-iva-estero
 m_strRawPic=x(30)
 m_strPic=X(30)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM232_
-
-@}}
-[FDITEM233_]
-m_strName=docdi-cognome-dich
-m_strRawPic=x(24)
-m_strPic=X(24)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM233_
-
-@}}
-[FDITEM234_]
-m_strName=docdi-nome-dich
-m_strRawPic=x(20)
-m_strPic=X(20)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -2706,44 +2716,63 @@ m_bFixed=1
 
 @}}
 [FDITEM235_]
+m_strName=docdi-cognome-dich
+m_strRawPic=x(24)
+m_strPic=X(24)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM235_
+
+@}}
+[FDITEM236_]
+m_strName=docdi-nome-dich
+m_strRawPic=x(20)
+m_strPic=X(20)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM236_
+
+@}}
+[FDITEM237_]
 m_strName=docdi-sesso-dich
 m_strRawPic=x
 m_strPic=X
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM235_
+{{@DataItem_m_strDescriptionFDITEM237_
 $GEN type=radiobutton,value_1="M",image_1=1,value_2="F",image_2=2,
-
 @}}
-[FDITEM236_]
+[FDITEM238_]
 m_strName=docdi-sesso-dich-m
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="M"
-{{@DataItem_m_strDescriptionFDITEM236_
+{{@DataItem_m_strDescriptionFDITEM238_
 
 @}}
-[FDITEM237_]
+[FDITEM239_]
 m_strName=docdi-sesso-dich-f
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="F"
-{{@DataItem_m_strDescriptionFDITEM237_
+{{@DataItem_m_strDescriptionFDITEM239_
 
 @}}
-[FDITEM238_]
+[FDITEM240_]
 m_strName=docdi-sesso-dich-ok
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="M" "F"
-{{@DataItem_m_strDescriptionFDITEM238_
+{{@DataItem_m_strDescriptionFDITEM240_
 
 @}}
-[FDITEM239_]
+[FDITEM241_]
 m_strName=docdi-data-nascita-dich
 m_strRawPic=9(08)
 m_strPic=9(08)
@@ -2754,11 +2783,10 @@ m_strName_Xfd=docdi-data-nascita
 m_bDataType_Xfd=1
 m_nDataType_Xfd=2
 m_strDateFormat_Xfd=yyyymmdd
-{{@DataItem_m_strDescriptionFDITEM239_
+{{@DataItem_m_strDescriptionFDITEM241_
 $GEN type=date,
-
 @}}
-[FDITEM240_]
+[FDITEM242_]
 m_strName=docdi-comune-nascita-dich
 m_strRawPic=x(40)
 m_strPic=X(40)
@@ -2766,33 +2794,13 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=docdi-comune-nasci
-{{@DataItem_m_strDescriptionFDITEM240_
-
-@}}
-[FDITEM241_]
-m_strName=docdi-prov-nascita-dich
-m_strRawPic=x(02)
-m_strPic=X(02)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM241_
-
-@}}
-[FDITEM242_]
-m_strName=docdi-via-residenza-dich
-m_strRawPic=x(35)
-m_strPic=X(35)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM242_
 
 @}}
 [FDITEM243_]
-m_strName=docdi-comune-residenza-dich
-m_strRawPic=x(40)
-m_strPic=X(40)
+m_strName=docdi-prov-nascita-dich
+m_strRawPic=x(02)
+m_strPic=X(02)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -2800,9 +2808,9 @@ m_bFixed=1
 
 @}}
 [FDITEM244_]
-m_strName=docdi-prov-residenza-dich
-m_strRawPic=x(02)
-m_strPic=X(02)
+m_strName=docdi-via-residenza-dich
+m_strRawPic=x(35)
+m_strPic=X(35)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -2810,9 +2818,9 @@ m_bFixed=1
 
 @}}
 [FDITEM245_]
-m_strName=docdi-cap-residenza-dich
-m_strRawPic=x(05)
-m_strPic=X(05)
+m_strName=docdi-comune-residenza-dich
+m_strRawPic=x(40)
+m_strPic=X(40)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -2820,9 +2828,9 @@ m_bFixed=1
 
 @}}
 [FDITEM246_]
-m_strName=docdi-telefono-dich
-m_strRawPic=x(12)
-m_strPic=X(12)
+m_strName=docdi-prov-residenza-dich
+m_strRawPic=x(02)
+m_strPic=X(02)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -2830,9 +2838,9 @@ m_bFixed=1
 
 @}}
 [FDITEM247_]
-m_strName=docdi-cardov03-riep-taglie
-m_strRawPic=9
-m_strPic=9
+m_strName=docdi-cap-residenza-dich
+m_strRawPic=x(05)
+m_strPic=X(05)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -2840,34 +2848,55 @@ m_bFixed=1
 
 @}}
 [FDITEM248_]
+m_strName=docdi-telefono-dich
+m_strRawPic=x(12)
+m_strPic=X(12)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM248_
+
+@}}
+[FDITEM249_]
+m_strName=docdi-cardov03-riep-taglie
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM249_
+
+
+@}}
+[FDITEM250_]
 m_strName=docdi-cardov03-riep-taglie-ok
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
-{{@DataItem_m_strDescriptionFDITEM248_
+{{@DataItem_m_strDescriptionFDITEM250_
 
 @}}
-[FDITEM249_]
+[FDITEM251_]
 m_strName=docdi-cardov03-riep-taglie-ko
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=0
-{{@DataItem_m_strDescriptionFDITEM249_
+{{@DataItem_m_strDescriptionFDITEM251_
 
 @}}
-[FDITEM250_]
+[FDITEM252_]
 m_strName=docdi-richiedi-cambio
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM250_
+{{@DataItem_m_strDescriptionFDITEM252_
 
 @}}
-[FDITEM251_]
+[FDITEM253_]
 m_strName=docdi-1222010-startdate
 m_strRawPic=9(08)
 m_strPic=9(08)
@@ -2877,47 +2906,26 @@ m_bFixed=1
 m_bDataType_Xfd=1
 m_nDataType_Xfd=2
 m_strDateFormat_Xfd=yyyymmdd
-{{@DataItem_m_strDescriptionFDITEM251_
+{{@DataItem_m_strDescriptionFDITEM253_
 
 $GEN type=date,
+
 @}}
-[FDITEM252_]
+[FDITEM254_]
 m_strName=docdi-1222010-allPags
 m_strRawPic=9(01)
 m_strPic=9(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM252_
+{{@DataItem_m_strDescriptionFDITEM254_
 
 ** IL CAMPO DOCDI-1222010-ALLPAGS NON VIENE PIU' UTILIZZATO IN GESTIONE DITTA                       | rososv 13/06/2011 10:36:20
 ** IN SEGUITO A NUOVE SPECIFICHE DELLA NORMATIVA CHE LO RENDONO OBSOLETO                            | rososv 13/06/2011 10:37:30
 
 @}}
-[FDITEM253_]
-m_strName=docdi-mig-tk3881
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM253_
-
-**   10  docdi-filler-01                  pic  x(493).                | maxime 15/04/2011 08:44:12  | rososv 11/05/2011 17:21:12
-
-
-@}}
-[FDITEM254_]
-m_strName=docdi-mig-tk3881-eseguita
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue=1
-{{@DataItem_m_strDescriptionFDITEM254_
-
-@}}
 [FDITEM255_]
-m_strName=docdi-zucchetti-mode
+m_strName=docdi-mig-tk3881
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=10
@@ -2925,92 +2933,92 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM255_
 
+**   10  docdi-filler-01                  pic  x(493).                | maxime 15/04/2011 08:44:12  | rososv 11/05/2011 17:21:12
+
 @}}
 [FDITEM256_]
+m_strName=docdi-mig-tk3881-eseguita
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM256_
+
+@}}
+[FDITEM257_]
+m_strName=docdi-zucchetti-mode
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM257_
+
+@}}
+[FDITEM258_]
 m_strName=docdi-contratti-pubblici
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM256_
+{{@DataItem_m_strDescriptionFDITEM258_
 
 @}}
-[FDITEM257_]
+[FDITEM259_]
 m_strName=docdi-contratti-pubblici-ok
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
-{{@DataItem_m_strDescriptionFDITEM257_
+{{@DataItem_m_strDescriptionFDITEM259_
 
 @}}
-[FDITEM258_]
+[FDITEM260_]
 m_strName=docdi-contratti-pubblici-ko
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=0
-{{@DataItem_m_strDescriptionFDITEM258_
+{{@DataItem_m_strDescriptionFDITEM260_
 
 @}}
-[FDITEM259_]
+[FDITEM261_]
 m_strName=docdi-force-multipart-mixed
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM259_
+{{@DataItem_m_strDescriptionFDITEM261_
 
 
 @}}
-[FDITEM260_]
+[FDITEM262_]
 m_strName=docdi-ps-days-ven
 m_strRawPic=9(04)
 m_strPic=9(04)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM260_
+{{@DataItem_m_strDescriptionFDITEM262_
 
-i "fa" per visualizzazione storici nei property sheet
+ giorni "fa" per visualizzazione storici nei property sheet
 @}}
-[FDITEM261_]
+[FDITEM263_]
 m_strName=docdi-ps-days-acq
 m_strRawPic=9(04)
 m_strPic=9(04)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM261_
+{{@DataItem_m_strDescriptionFDITEM263_
 
 @}}
-[FDITEM262_]
+[FDITEM264_]
 m_strName=docdi-carica-iva
 m_strRawPic=x(02)
 m_strPic=X(02)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM262_
-
-@}}
-[FDITEM263_]
-m_strName=docdi-codice-tblna-dich
-m_strRawPic=x(03)
-m_strPic=X(03)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-m_strName_Xfd=docdi-codice-tblna
-{{@DataItem_m_strDescriptionFDITEM263_
-$GEN type=code,entity=tblna
-@}}
-[FDITEM264_]
-m_strName=docdi-nascondi-msg-ctr-esis
-m_strRawPic=9
-m_strPic=9
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -3018,142 +3026,163 @@ m_bFixed=1
 
 @}}
 [FDITEM265_]
+m_strName=docdi-codice-tblna-dich
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=docdi-codice-tblna
+{{@DataItem_m_strDescriptionFDITEM265_
+$GEN type=code,entity=tblna
+@}}
+[FDITEM266_]
+m_strName=docdi-nascondi-msg-ctr-esis
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM266_
+
+@}}
+[FDITEM267_]
 m_strName=docdi-nascondi-msg-ctr-esis-si
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
-{{@DataItem_m_strDescriptionFDITEM265_
+{{@DataItem_m_strDescriptionFDITEM267_
 
 @}}
-[FDITEM266_]
+[FDITEM268_]
 m_strName=docdi-nascondi-msg-ctr-esis-no
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=0
-{{@DataItem_m_strDescriptionFDITEM266_
+{{@DataItem_m_strDescriptionFDITEM268_
 
 @}}
-[FDITEM267_]
+[FDITEM269_]
 m_strName=docdi-chiudi-preventivo
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM267_
+{{@DataItem_m_strDescriptionFDITEM269_
+
 
 @}}
-[FDITEM268_]
+[FDITEM270_]
 m_strName=docdi-chiudi-preventivo-on
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
-{{@DataItem_m_strDescriptionFDITEM268_
+{{@DataItem_m_strDescriptionFDITEM270_
 
 @}}
-[FDITEM269_]
+[FDITEM271_]
 m_strName=docdi-chiudi-preventivo-off
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=0
-{{@DataItem_m_strDescriptionFDITEM269_
+{{@DataItem_m_strDescriptionFDITEM271_
 
 @}}
-[FDITEM270_]
+[FDITEM272_]
 m_strName=docdi-lancio-u03dvtabc
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM270_
+{{@DataItem_m_strDescriptionFDITEM272_
 
 @}}
-[FDITEM271_]
+[FDITEM273_]
 m_strName=docdi-lancio-u03dvtabc-on
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
-{{@DataItem_m_strDescriptionFDITEM271_
+{{@DataItem_m_strDescriptionFDITEM273_
 
 @}}
-[FDITEM272_]
+[FDITEM274_]
 m_strName=docdi-lancio-u03dvtabc-off
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=0
-{{@DataItem_m_strDescriptionFDITEM272_
+{{@DataItem_m_strDescriptionFDITEM274_
 
 @}}
-[FDITEM273_]
+[FDITEM275_]
 m_strName=docdi-asspro14-incassi-ant
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM273_
+{{@DataItem_m_strDescriptionFDITEM275_
 ito                                        | rososv 11/01/2013
 eguire                                     | rososv 11/01/2013
 
 
 @}}
-[FDITEM274_]
+[FDITEM276_]
 m_strName=docdi-asspro14-incassi-ant-ok
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
-{{@DataItem_m_strDescriptionFDITEM274_
+{{@DataItem_m_strDescriptionFDITEM276_
 
 @}}
-[FDITEM275_]
+[FDITEM277_]
 m_strName=docdi-asspro14-incassi-ant-ko
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=0
-{{@DataItem_m_strDescriptionFDITEM275_
+{{@DataItem_m_strDescriptionFDITEM277_
 
 @}}
-[FDITEM276_]
+[FDITEM278_]
 m_strName=docdi-ps-days-arc-doc
 m_strRawPic=9(04)
 m_strPic=9(04)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM276_
-i "fa" per filtri su archivio documenti nei property sheet cli/for
-
+{{@DataItem_m_strDescriptionFDITEM278_
+ giorni "fa" per filtri su archivio documenti nei property sheet cli/for
 @}}
-[FDITEM277_]
+[FDITEM279_]
 m_strName=docdi-note-variazione
 m_strRawPic=9(01)
 m_strPic=9(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM277_
+{{@DataItem_m_strDescriptionFDITEM279_
 
 @}}
-[FDITEM278_]
+[FDITEM280_]
 m_strName=docdi-identificativo-creditore
 m_strRawPic=x(23)
 m_strPic=X(23)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM278_
+{{@DataItem_m_strDescriptionFDITEM280_
 
 @}}
-[FDITEM279_]
+[FDITEM281_]
 m_strName=docdi-data-inizio-proc
 m_strRawPic=9(08)
 m_strPic=9(08)
@@ -3164,11 +3193,12 @@ m_strName_Xfd=docdi-data-inizio-
 m_bDataType_Xfd=1
 m_nDataType_Xfd=2
 m_strDateFormat_Xfd=yyyymmdd
-{{@DataItem_m_strDescriptionFDITEM279_
+{{@DataItem_m_strDescriptionFDITEM281_
 
 $GEN type=date,
+
 @}}
-[FDITEM280_]
+[FDITEM282_]
 m_strName=docdi-data-fine-proc
 m_strRawPic=9(08)
 m_strPic=9(08)
@@ -3178,20 +3208,20 @@ m_bFixed=1
 m_bDataType_Xfd=1
 m_nDataType_Xfd=2
 m_strDateFormat_Xfd=yyyymmdd
-{{@DataItem_m_strDescriptionFDITEM280_
+{{@DataItem_m_strDescriptionFDITEM282_
 $GEN type=date,
 @}}
-[FDITEM281_]
+[FDITEM283_]
 m_strName=docdi-denom-sogg-tenuto-com
 m_strRawPic=x(50)
 m_strPic=X(50)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM281_
+{{@DataItem_m_strDescriptionFDITEM283_
 
 @}}
-[FDITEM282_]
+[FDITEM284_]
 m_strName=docdi-data-ultima-ivs
 m_strRawPic=9(06)
 m_strPic=9(06)
@@ -3201,50 +3231,51 @@ m_bFixed=1
 m_bDataType_Xfd=1
 m_nDataType_Xfd=2
 m_strDateFormat_Xfd=yyyymm
-{{@DataItem_m_strDescriptionFDITEM282_
+{{@DataItem_m_strDescriptionFDITEM284_
 $GEN type=dateyyyymm,
+
 @}}
-[FDITEM283_]
+[FDITEM285_]
 m_strName=docdi-ddc-telem-dicpol
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM283_
+{{@DataItem_m_strDescriptionFDITEM285_
 
 ** Firmatario/dichiarante frame "dichiarante diverso da contribuente" (pagina "telematico")
 ** è da considerarsi il dichiarante nella comunicazione polivalente (spesometro, black list, san marino)
 
 @}}
-[FDITEM284_]
+[FDITEM286_]
 m_strName=docdi-ddc-telem-dicpol-nopol
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
-{{@DataItem_m_strDescriptionFDITEM284_
+{{@DataItem_m_strDescriptionFDITEM286_
 
 @}}
-[FDITEM285_]
+[FDITEM287_]
 m_strName=docdi-ddc-telem-dicpol-pf
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=2
-{{@DataItem_m_strDescriptionFDITEM285_
+{{@DataItem_m_strDescriptionFDITEM287_
 
 @}}
-[FDITEM286_]
+[FDITEM288_]
 m_strName=docdi-ddc-telem-dicpol-pg
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=3
-{{@DataItem_m_strDescriptionFDITEM286_
+{{@DataItem_m_strDescriptionFDITEM288_
 
 @}}
-[FDITEM287_]
+[FDITEM289_]
 m_strName=docdi-asspro14-incassi-parz
 m_strRawPic=9
 m_strPic=9
@@ -3252,75 +3283,378 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=docdi-asspro14-inc
-{{@DataItem_m_strDescriptionFDITEM287_
+{{@DataItem_m_strDescriptionFDITEM289_
 ** indica se si vuole l'assegnazione delle provvigioni a fronte di incassi parziali                 | SUADAL 14/03/2014
-
 @}}
-[FDITEM288_]
+[FDITEM290_]
 m_strName=docdi-asspro14-incassi-parz-ok
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
-{{@DataItem_m_strDescriptionFDITEM288_
+{{@DataItem_m_strDescriptionFDITEM290_
 
 @}}
-[FDITEM289_]
+[FDITEM291_]
 m_strName=docdi-asspro14-incassi-parz-ko
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=0
-{{@DataItem_m_strDescriptionFDITEM289_
+{{@DataItem_m_strDescriptionFDITEM291_
 
 @}}
-[FDITEM290_]
+[FDITEM292_]
 m_strName=docdi-FVCodazi
 m_strRawPic=x(10)
 m_strPic=X(10)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM290_
+{{@DataItem_m_strDescriptionFDITEM292_
 
 @}}
-[FDITEM291_]
-m_strName=docdi-filler-01
-m_strRawPic=x(360)
-m_strPic=X(360)
+[FDITEM293_]
+m_strName=docdi-aggdav-richiesta-scad
+m_strRawPic=9
+m_strPic=9
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM291_
+{{@DataItem_m_strDescriptionFDITEM293_
 
 mento a codice azienda su app mobileFV   | scamar 09/06/2014
-
-    10  docdi-filler-01                  pic  x(481).         | maxime 02/02/2012                   | quasil 06/06/2012
-**    10  docdi-filler-01                  pic  x(476).       | quasil 06/06/2012                   | cermic 02/08/2012
-**    10  docdi-filler-01                  pic  x(475).                                             | cermic 02/08/2012 | rososv 22/08/2012
-**    10  docdi-filler-01                  pic  x(474).                                             | rososv 22/08/2012 | rososv 11/01/2013
-    10  docdi-filler-01                  pic  x(473).                      | rososv 11/01/2013      | SUADAL 11/02/2013
-    10  docdi-filler-01                  pic  x(472).                      | SUADAL 11/02/2013      | quasil 11/03/2013
-**    10  docdi-filler-01                  pic  x(468).                    | quasil 11/03/2013      | MACGIU 24/04/2013
-    10  docdi-filler-01                  pic  x(467).                      | MACGIU 24/04/2013      | SUADAL 20/06/2013
-    10  docdi-filler-01                  pic  x(444).                                               | SUADAL 20/06/2013 | rososv 17/10/2013
-    10  docdi-filler-01                  pic  x(378).                       | rososv 17/10/2013     | SUADAL 12/11/2013
-    10  docdi-filler-01                  pic  x(372).                       | SUADAL 12/11/2013     | rososv 31/01/2014
-    10  docdi-filler-01                  pic  x(371).                       | rososv 31/01/2014     | SUADAL 14/03/2014
-**    10  docdi-filler-01                  pic  x(370).                     | SUADAL 14/03/2014     | scamar 09/06/2014
+** indica se si vuole la richiesta interattiva da aggdav della scadenza da movimentare (per note di credito)
 @}}
-[FDITEM292_]
+[FDITEM294_]
+m_strName=docdi-aggdav-richiesta-scad-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM294_
+
+@}}
+[FDITEM295_]
+m_strName=docdi-aggdav-richiesta-scad-ko
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM295_
+
+@}}
+[FDITEM296_]
+m_strName=docdi-tabella-tblco-chimov-x
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM296_
+
+** causali contabili da proporre nel programma di chiusura contabile                                | Suadal 16/09/2014
+@}}
+[FDITEM297_]
+m_strName=docdi-tabella-tblco-chimov
+m_nItemLevel=15
+m_nSync=-1
+m_bOccurs=1
+m_bFixed=1
+m_strRawSize=07
+m_nSize=7
+{{@DataItem_m_strDescriptionFDITEM297_
+
+@}}
+[FDITEM298_]
+m_strName=docdi-tblco-chimov
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM298_
+
+@}}
+[FDITEM299_]
+m_strName=filler
+m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=docdi-tabella-tblco-chimov-x
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM299_
+
+@}}
+[FDITEM300_]
+m_strName=docdi-tblco-chiu-econ
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM300_
+$GEN type=code,entity=tblco,blanknull=on
+@}}
+[FDITEM301_]
+m_strName=docdi-tblco-chiu-patr
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM301_
+$GEN type=code,entity=tblco,blanknull=on
+@}}
+[FDITEM302_]
+m_strName=docdi-tblco-aper-patr
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM302_
+$GEN type=code,entity=tblco,blanknull=on
+
+@}}
+[FDITEM303_]
+m_strName=docdi-tblco-chiu-ordine
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM303_
+$GEN type=code,entity=tblco,blanknull=on
+
+@}}
+[FDITEM304_]
+m_strName=docdi-tblco-aper-ordine
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM304_
+$GEN type=code,entity=tblco,blanknull=on
+@}}
+[FDITEM305_]
+m_strName=docdi-tblco-utile
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM305_
+$GEN type=code,entity=tblco,blanknull=on
+
+@}}
+[FDITEM306_]
+m_strName=docdi-tblco-perdita
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM306_
+$GEN type=code,entity=tblco,blanknull=on
+@}}
+[FDITEM307_]
+m_strName=docdi-ultimo-esercizio
+m_strRawPic=x(02)
+m_strPic=X(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM307_
+$GEN type=code,entity=doces,
+@}}
+[FDITEM308_]
+m_strName=docdi-codice-azienda-pagheweb
+m_strRawPic=9(06)
+m_strPic=9(06)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=docdi-codice-azien
+{{@DataItem_m_strDescriptionFDITEM308_
+$GEN type=num,dec=0,size=08
+@}}
+[FDITEM309_]
+m_strName=docdi-tipo-colleg-31
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM309_
+** Tipo di collegamento con modulo Zucchetti                                                        | Suadal 16/04/2015
+@}}
+[FDITEM310_]
+m_strName=docdi-tipo-colleg-nessuno
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM310_
+
+@}}
+[FDITEM311_]
+m_strName=docdi-tipo-colleg-omnia
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=2
+{{@DataItem_m_strDescriptionFDITEM311_
+
+@}}
+[FDITEM312_]
+m_strName=docdi-tipo-colleg-ago
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=3
+{{@DataItem_m_strDescriptionFDITEM312_
+
+@}}
+[FDITEM313_]
+m_strName=docdi-92doc-versioning
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM313_
+bilitato collegamento Zucchetti      | Suadal 16/04/2015
+tato collegamento con Omnia          | Suadal 16/04/2015
+tato collegamento con Ago            | Suadal 16/04/2015
+
+@}}
+[FDITEM314_]
+m_strName=docdi-ps-avgPriceVen-excludeOMA
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM314_
+
+@}}
+[FDITEM315_]
+m_strName=docdi-ps-avgPriceVen-excludeSCM
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=docdi-ps-avgPriceV
+{{@DataItem_m_strDescriptionFDITEM315_
+
+@}}
+[FDITEM316_]
+m_strName=docdi-ps-avgPriceAcq-excludeOMA
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM316_
+
+@}}
+[FDITEM317_]
+m_strName=docdi-ps-avgPriceAcq-excludeSCM
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=docdi-ps-avgPriceA
+{{@DataItem_m_strDescriptionFDITEM317_
+
+@}}
+[FDITEM318_]
+m_strName=docdi-tipo-liq-fattacq
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM318_
+ ---------------------------------------------------------------------------------------------- | maxime 28/08/2017
+di dal calcolo prezzo medio vendita property sheet le righe DVR omaggio
+di dal calcolo prezzo medio vendita property sheet le righe DVR sconto merce    
+di dal calcolo prezzo medio acquisto property sheet le righe DAR omaggio    
+di dal calcolo prezzo medio acquisto property sheet le righe DAR sconto merce    
+ ---------------------------------------------------------------------------------------------- | maxime 28/08/2017    
+** Modalità di recupero campo "data competenza" di primanota per documenti di acquisto              | Suadal 16/04/2019
+@}}
+[FDITEM319_]
+m_strName=docdi-tipo-liq-fattacq-dreg
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM319_
+
+@}}
+[FDITEM320_]
+m_strName=docdi-tipo-liq-fattacq-ddoc
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=2
+{{@DataItem_m_strDescriptionFDITEM320_
+
+@}}
+[FDITEM321_]
+m_strName=docdi-tipo-calc-vp3
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM321_
+da in data registrazione         | Suadal 16/04/2019
+da in data documento             | Suadal 16/04/2019
+** Modalità di conteggio operazioni passive (VP3) in stampa liquidazione iva                        | suadal 20/06/2019
+@}}
+[FDITEM322_]
+m_strName=docdi-tipo-calc-vp3-dreg
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM322_
+
+@}}
+[FDITEM323_]
+m_strName=docdi-tipo-calc-vp3-dcomp
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=2
+{{@DataItem_m_strDescriptionFDITEM323_
+
+@}}
+[FDITEM324_]
+m_strName=docdi-filler-01
+m_strRawPic=x(322)
+m_strPic=X(322)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM324_
+ggio in data registrazione       | suadal 20/06/2019
+ggio in data competenza          | suadal 20/06/2019
+    10  docdi-filler-01                   pic  x(324).                  | maxime 28/08/2017         | suadal 16/04/2019
+    10  docdi-filler-01                   pic  x(323).                  | suadal 16/04/2019         | suadal 20/06/2019
+@}}
+[FDITEM325_]
 m_strName=DOCDI-FILLER-RIS
 m_strRawPic=X(40)
 m_strPic=X(40)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM292_
-
-   10  docdi-filler-01                  pic  x(504).                                        | scamar 09/07/2010 15:18:36   |or 30/08/2010
-**    10  docdi-filler-01                   pic  x(726).      | mxm 25/02/2010 14.04                | scamar 12/07/2010 15:19:07
-
+{{@DataItem_m_strDescriptionFDITEM325_
 
 @}}
 [CStoAcucobolSL_]

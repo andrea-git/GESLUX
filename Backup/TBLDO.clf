@@ -2,7 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7DCB13124234-785-1015621948
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E3B1D231739-603-138973728
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -23,7 +23,10 @@ m_strPrefix=TBLDO
    In questo caso, ai fini intrastat, devono essere compilati i modelli INTRA 1 BIS
    e INTRA 2 BIS ai soli fini statistici ( INTRA 1 BIS colonne 1 e da 5 a 13 -
    INTRA 2 BIS colonne 1 e da 6 a 15).
--------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
+ tk. 8602 - FE xml: CONAI - dicitura anche su xml documenti (fatture/note di credito)               | EXT-POZEDO 10/07/2019    
+            aggiunto campo tbldo-causaleFeXml 
+---------------------------------------------------------------------------------------------------------------------------
 
  tplvar zmm_title=Tabella documenti di vendita/acquisto
  tplvar zmm_ver=09.01.00
@@ -71,6 +74,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM3_
 $GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=20,zmm_align=L,zmm_pos=1,zmm_entity=tbldo
+
 @}}
 [FDITEM4_]
 m_strName=resto-record-tbldo
@@ -78,6 +82,7 @@ m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM4_
+
 
 @}}
 [FDITEM5_]
@@ -89,6 +94,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM5_
 $GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=2
+
 @}}
 [FDITEM6_]
 m_strName=tbldo-descrizione2
@@ -99,7 +105,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM6_
 $GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=3
-
 @}}
 [FDITEM7_]
 m_strName=tbldo-tipo-documento
@@ -213,7 +218,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM18_
 $GEN type=code,entity=tblmo
-
 @}}
 [FDITEM19_]
 m_strName=tbldo-codice-ma
@@ -224,7 +228,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM19_
 $GEN type=code,entity=tblma
-
 @}}
 [FDITEM20_]
 m_strName=tbldo-numerazione-bolle
@@ -245,7 +248,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM21_
 $GEN type=combobox,comboclass=generic_tipo_cf,comboentity=tbldo-tipo-cf-e3
-
 @}}
 [FDITEM22_]
 m_strName=tbldo-tipo-cf-88
@@ -372,7 +374,6 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM35_
-
 
 @}}
 [FDITEM36_]
@@ -894,7 +895,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM83_
 $GEN type=combobox,comboclass=tbldo_transazione
-
 @}}
 [FDITEM84_]
 m_strName=tbldo-transazione-88
@@ -1014,7 +1014,6 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM96_
 05/2010
 $GEN type=combobox,comboclass=tbldo_regime
-
 @}}
 [FDITEM97_]
 m_strName=tbldo-regime-88
@@ -1070,7 +1069,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM102_
 $GEN type=checkbox,truevalue=" ",falsevalue="S"
-
 @}}
 [FDITEM103_]
 m_strName=tbldo-provvigioni-88
@@ -1183,7 +1181,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM114_
 $GEN type=checkbox,truevalue="S",falsevalue=" "
-
 @}}
 [FDITEM115_]
 m_strName=tbldo-imballi-88
@@ -1251,6 +1248,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM121_
 $GEN type=code,entity=ama
+
 @}}
 [FDITEM122_]
 m_strName=tbldo-cmk-codice
@@ -1301,7 +1299,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM126_
 $GEN type=checkbox,truevalue="S",falsevalue=" "
-
 @}}
 [FDITEM127_]
 m_strName=tbldo-stampa-spese-88
@@ -1437,7 +1434,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM140_
 $GEN type=combobox,comboclass=tbldo_tipo_doc1
-
 @}}
 [FDITEM141_]
 m_strName=tbldo-tipo-doc1-88
@@ -1449,9 +1445,9 @@ m_strTrue=" " "D" "F" "A" "Z"
 
 @}}
 [FDITEM142_]
-m_strName=tbldo-filler
-m_strRawPic=x(900)
-m_strPic=X(900)
+m_strName=tbldo-causaleFeXml
+m_strRawPic=x(200)
+m_strPic=X(200)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -1459,13 +1455,23 @@ m_bFixed=1
 
 @}}
 [FDITEM143_]
+m_strName=tbldo-filler
+m_strRawPic=x(700)
+m_strPic=X(700)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM143_
+
+@}}
+[FDITEM144_]
 m_strName=tbldo-filler-ris
 m_strRawPic=x(40)
 m_strPic=X(40)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM143_
+{{@DataItem_m_strDescriptionFDITEM144_
 
 @}}
 [CStoAcucobolSL_]

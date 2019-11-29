@@ -31,6 +31,11 @@
       * Tk.4013 - Utility telematico operazioni 3000                                                       | maxime 14/07/2011
       *           nuovi campi zoom
       *-----------------------------------------------------------------------------------------------------------------------
+      * tk 8434 - primanota: nuova normativa competenza iva                                                | suadal 16/04/2019
+      *         - inserito campo che marca i record nuovi e quindi sottoposti alla compilazione della
+      *           competenza iva sula base della nuova normativa (settaggio in al_pnt).
+      *         - aggiunti livelli 88 a campo pnt-registro
+      *----------------------------------------------------------------------------------
       *
       *
       *
@@ -67,7 +72,7 @@
       *
       *
       *
-      *r
+      *
        FD  PNT.
        01 RECORD-PNT.
            05 PNT-CODICE.
@@ -75,6 +80,7 @@
                10 PNT-PROGRESSIVO  PIC  9(08).
            05 RESTO-RECORD-PNT.
       * copy "groupdate.xfc". | DBMaker
+      *
                10 PNT-DATA-REGISTRAZIONE.
       *(( XFD NAME = PNT-DATA-REG-AA ))
                    15 AA   PIC  9(04).
@@ -88,10 +94,8 @@
                    15 PNT-DATA-REGISTRAZIONE-NUM   PIC  9(08).
                10 PNT-DOCUMENTO.
       *$GEN type=num,dec=0,size=08,zmm=on,zmm_title=Nr.Documento,zmm_datatype=n,zmm_key=4,zmm_size=13,zmm_align=R,zmm_pos=4
-      *
                    15 PNT-NUMERO-DOCUMENTO         PIC  9(06).
       *$GEN zmm=on,zmm_title=Tipo Documento,zmm_datatype=x,zmm_size=06,zmm_align=L,zmm_pos=5
-      *
                    15 PNT-TIPO-DOCUMENTO.
                        20 PNT-FILLER-01    PIC  X(04).
                        20 PNT-NUMERO-D     PIC  X(02).
@@ -106,7 +110,6 @@
                    15 GG   PIC  9(02).
                10 FILLER REDEFINES PNT-DATA-DOCUMENTO.
       *$GEN type=date,zmm=on,zmm_title=Data Documento,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=6
-      *
                    15 PNT-DATA-DOCUMENTO-NUM       PIC  9(08).
                10 PNT-PROTOCOLLO.
       *$GEN type=num,dec=0,size=08,zmm=on,zmm_title=Protocollo,zmm_datatype=n,zmm_key=3,zmm_size=13,zmm_align=R,zmm_pos=3
@@ -114,6 +117,8 @@
                    15 PNT-TIPO-PROTOCOLLO.
                        20 PNT-ATTIVITA     PIC  X(01).
                        20 PNT-REGISTRO     PIC  X(01).
+                           88 pnt-registro-88-clienti VALUE IS "C". 
+                           88 pnt-registro-88-fornitori VALUE IS "F". 
                        20 PNT-NUMERO-R     PIC  X(02).
       *$GEN type=code,entity=tblco,zmm=on,zmm_title=Causale,zmm_datatype=x,zmm_entity=tblco,zmm_size=03,zmm_align=L,zmm_pos=7
                10 PNT-CODICE-CO    PIC  X(03).
@@ -134,7 +139,6 @@
       *
       *
       ***    10  pnt-descrizioni redefines  pnt-descrizione.                                            |ms 25/11/2005 15.50  |pm 13/09/2006 13.46 |ms 15/01/2010 10.28
-      *
                10 pnt-descrizioni REDEFINES pnt-note-testata.
       *
       *$GEN zmm=on,zmm_title=1 descrizione,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=9
@@ -153,18 +157,32 @@
                    15 pnt-descrizione2-6           PIC  x(30).
       *
       *
+      *
+      *
+      *
+      *
+      *
+      *
+      *
       * modificata $gen
       *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Stampato reg. iva,zmm_datatype=x,zmm_size=02,zmm_align=L,zmm_pos=11
                10 PNT-STAMPA-IVA   PIC  X(01).
                    88 pnt-stampa-iva-yes VALUE IS "S". 
                    88 pnt-stampa-iva-no VALUE IS " ". 
+      *
+      *
       * modificata $gen
       *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Stampato giornale,zmm_datatype=x,zmm_size=02,zmm_align=L,zmm_pos=12
+      *
                10 PNT-STAMPA-GIORNALE          PIC  X(01).
                    88 pnt-stampa-giornale-yes VALUE IS "S". 
                    88 pnt-stampa-giornale-no VALUE IS " ". 
-      *$GEN entity=doces,zmm=on,zmm_title=Esercizio,zmm_datatype=x,zmm_size=02,zmm_align=L,zmm_pos=10
       *
+      *
+      *
+      *
+      *
+      *$GEN entity=doces,zmm=on,zmm_title=Esercizio,zmm_datatype=x,zmm_size=02,zmm_align=L,zmm_pos=10
                10 PNT-ESERCIZIO    PIC  X(02).
       * copy "groupdateyyyymm.xfc". | DBMaker
                10 PNT-DATA-PLAFOND.
@@ -174,12 +192,10 @@
                    15 MM   PIC  9(02).
                10 FILLER REDEFINES PNT-DATA-PLAFOND.
       *$GEN type=dateyyyymm,zmm=on,zmm_title=Data plafond,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=14
-      *
                    15 PNT-DATA-PLAFOND-NUM         PIC  9(06).
       *
       * nuova clausola $GEN                                                                              | mxm 18/01/2008 9.56
       *$GEN type=num,dec=0,size=7
-      *
                10 PNT-ULTIMA-RIGA  PIC  9(05).
                10 PNT-PROGRESSIVO-77           PIC  9(10).
                10 PNT-NUM-DOCUMENTO            PIC  X(06).
@@ -191,7 +207,6 @@
                    15 MM   PIC  9(02).
                10 FILLER REDEFINES PNT-DATA-COMPETENZA-IVA.
       *$GEN type=dateyyyymm,zmm=on,zmm_title=Data competenza iva,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=13
-      *
                    15 PNT-DATA-COMPETENZA-IVA-NUM  PIC  9(06).
       *$GEN type=code,entity=01tat,zmm=on,zmm_title=Codice attività,zmm_datatype=x,zmm_entity=01tat,zmm_size=03,zmm_align=L,zmm_pos=15
       *
@@ -208,6 +223,7 @@
                    88 pnt-origine-pgr VALUE IS "T". 
                    88 pnt-origine-rrr VALUE IS "R". 
       *$GEN entity=ank
+      *
                10 pnt-codice-ank   PIC  x(10).
       *$GEN entity=tpk
                10 pnt-codice-tpk   PIC  x(03).
@@ -215,9 +231,15 @@
       *
       *
       ***        10  PNT-FILLER              PIC  X(22).                        |pm 13/09/2006 10.59     |ms 24/04/2009 8.34
+      ***                                                                                                  | suadal 16/04/2019
+      *** 1 = registrazione soggetta a nuova competenza iva (dl 119/18)                                    | suadal 16/04/2019
+      ***                                                                                                  | suadal 16/04/2019
       *
-               10 PNT-FILLER       PIC  X(09).
-      *
+               10 pnt-has-dl119-18 PIC  9(01).
+                   88 pnt-has-dl119-18-ok VALUE IS 1. 
+                   88 pnt-has-dl119-18-ko VALUE IS 0. 
+      *        10  PNT-FILLER              PIC  X(09).                           |ms 24/04/2009 8.34       | suadal 16/04/2019
+               10 PNT-FILLER       PIC  X(08).
       *        10  PNT-FILLER              PIC  X(23).                                                   |pm 13/09/2006 10.59
       *        10  PNT-FILLER              PIC  X(26).                                                   |pm 24/07/2006 16.05
       *

@@ -137,7 +137,35 @@
       *          - aggiunto check-box CLI-BOLLO-FT-NONIMP 
       *                     fatture non imponibili: il bollo non deve essere addebitato
       *-----------------------------------------------------------------------------------------------------------------------
-      *
+      * tk.6054 - Integrazione con FatelWeb: produzione FatturaPA in formato xml e invio a FatelWeb        | maxime 20/03/2015
+      *           Variabile cli-modifyFepaXML,: quando TRUE, l' XML fatelWEB può essere modificato
+      *           dall'utente prima della spedizione  
+      *-----------------------------------------------------------------------------------------------------------------------
+      * tk. 6449 - GESCLI -> generale -> proprietà -> compare (ancora) la dicitura "Telex" al posto di "Mobile"  | QUASIL 06/11/2015
+      *            - nello zoom, per il campo cli-telex e' stata corretta la dicitura "Telex" in "Mobile"
+      *-----------------------------------------------------------------------------------------------------------------------
+      * tk.6382 - Zoom anagrafica clienti                                                                  | QUASIL 11/11/2015
+      *  mettere a disposizione i campi "cod.statistico" e "desc. statistica" come correttamente inseriti
+      *  nello zoom anagrafica fornitori
+      * . aggiunti nello zoom i campi "cod.statistico" e "cod.tipologia ordine" 
+      *-----------------------------------------------------------------------------------------------------------------------
+      * tk.7201 - Gestire la fattura B2B con formato XML 1.2                                               | maxime 19/01/2017
+      *           cli-isPA bool (sul CLI2: cli.dpb NON MODIFICATO)  
+      *-----------------------------------------------------------------------------------------------------------------------
+      * tk. 6821 - Export anagrafiche e movimenti di magazzino per software esterni                        | RCM 02/05/2017
+      *            registri vinicoli online
+      *            aggiunto codice ICQRF                             
+      *-----------------------------------------------------------------------------------------------------------------------
+      * tk 7825 - Importare Mastri e anagrafiche Clienti/Fornitori da Ago (import una-tantum, su ditta G2 nuova)      
+      *         - aggiunto livello 88 a campo CLI-ALLEGATO                                                 | suadal 28/03/2018
+      *----------------------------------------------------------------------------------------------------------------------------
+      * tk 7859 - Introdurre la possibilità di gestire l'articolo plastica 3 volte nell'anagrafica articolo | EXT-POZEDO 18/05/2018
+      *          - i valori delle esenzioni materiali conai non sono più posizionali e quindi 
+      *            non serve che stiano nel dpb del file dei clienti
+      *----------------------------------------------------------------------------------------------------------------------------
+      * tk.8518 - Esterometro: avere nello zoom fornitori anche il checkbox "includi in Esterometro"       | quasil 16/04/2019
+      * - Aggiunto anche nello zoom clienti il campo "Includi in Esterometro"
+      *---------------------------------------------------------------------------------------------------------------------------
       *
       *
       * tplvar zmm_title=Clienti
@@ -216,7 +244,11 @@
       *   69.cli-codice-cig                                                                                | Suadal 03/09/2014
       *   70.cli-codice-cup                                                                                | Suadal 03/09/2014
       *   71.cli-bollo-ft-nonimp                                                                           | rososv 28/10/2014
-      *
+      *   72.cli-codice-cs                                                                                 | QUASIL 11/11/2015
+      *   73.cli-codice-cs-d                                                                               | QUASIL 11/11/2015
+      *   74.cli-codice-tl                                                                                 | QUASIL 11/11/2015
+      *   75.cli-codice-tl-d                                                                               | QUASIL 11/11/2015
+      *   76.cli2-includiEsterometro-d                                                                     | quasil 16/04/2019
        FD  CLI.
        01 RECORD-CLI.
       *$GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=08,zmm_align=L,zmm_pos=1,zmm_entity=cli
@@ -240,7 +272,7 @@
                10 CLI-CODICE-NA    PIC  X(03).
       *$GEN zmm=on,zmm_title=Telefono,zmm_datatype=t,zmm_size=15,zmm_align=L,zmm_pos=6
                10 CLI-TELEFONO     PIC  X(15).
-      *$GEN zmm=on,zmm_title=Telex,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=22
+      *$GEN zmm=on,zmm_title=Mobile,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=22
                10 CLI-TELEX        PIC  X(15).
       *$GEN zmm=on,zmm_title=Fax,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=7
                10 CLI-FAX          PIC  X(15).
@@ -251,6 +283,7 @@
       *$GEN zmm=on,zmm_title=Partita iva intra,zmm_datatype=x,zmm_size=16,zmm_align=L,zmm_pos=23
                10 CLI-PARTITA-IVA-INTRA        PIC  X(16).
       *$GEN type=code,entity=tblpc,zmm=on,zmm_title=Codice tabella gruppi e conti,zmm_datatype=x,zmm_size=04,zmm_align=L,zmm_pos=24,zmm_entity=tblpc
+      *
                10 CLI-CODICE-PC    PIC  X(04).
       *$GEN type=code,entity=tblce,zmm=on,zmm_title=Codice piano dei conti cee,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=28,zmm_entity=tblce
                10 CLI-CODICE-CE    PIC  X(08).
@@ -269,9 +302,9 @@
       *$GEN type=code,entity=tblva
                10 CLI-CODICE-VA-INTRA          PIC  X(03).
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
-      *
                10 CLI-ALLEGATO     PIC  X(01).
                    88 CLI-ALLEGATO-88 VALUE IS "S" " ". 
+                   88 cli-allegato-88-si VALUE IS "S". 
       *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=P.fisica,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=65
                10 CLI-INDIVIDUALE  PIC  X(01).
                    88 CLI-INDIVIDUALE-88 VALUE IS "S" " ". 
@@ -300,7 +333,6 @@
       *$GEN zmm=on,zmm_title=Conto corrente,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=38
                    15 CLI-CONTO-CORRENTE           PIC  X(15).
       *$GEN type=num,size=21,dec=2
-      *
                10 CLI-FIDO         PIC  S9(13)V9(02)
                           SIGN IS TRAILING SEPARATE CHARACTER.
       *$GEN type=code,entity=tblba,zmm=on,zmm_title=Codice banca,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=39,zmm_entity=tblba
@@ -309,16 +341,15 @@
       *
                10 CLI-CODICE-PO    PIC  X(03).
       *$GEN type=code,entity=tblsp,zmm=on,zmm_title=Codice spedizione,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=43,zmm_entity=tblsp
+      *
                10 CLI-CODICE-SP    PIC  X(03).
       *$GEN type=code,entity=frn
-      *
                10 CLI-CODICE-COLLEGATO         PIC  X(08).
       *$GEN type=code,entity=tbliv,zmm=on,zmm_title=Codice iva,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=45,zmm_entity=tbliv
                10 CLI-CODICE-IV    PIC  X(03).
                10 CLI-RICHIESTA-ESENZIONE.
                    15 CLI-NUMERO-RICHIESTA-OLD     PIC  9(06).
       * copy "groupdate.xfc". | DBMaker
-      *
                    15 CLI-DATA-RICHIESTA.
       *(( XFD NAME = CLI-DATA-RICH-ES-A ))
                        20 AA   PIC  9(04).
@@ -328,12 +359,10 @@
                        20 GG   PIC  9(02).
                    15 FILLER REDEFINES CLI-DATA-RICHIESTA.
       *$GEN type=date
-      *
                        20 CLI-DATA-RICHIESTA-N         PIC  9(08).
                10 CLI-REGISTRAZIONE-ESENZIONE.
                    15 CLI-NUMERO-REGISTRAZIONE-OLD PIC  9(06).
       * copy "groupdate.xfc". | DBMaker
-      *
                    15 CLI-DATA-REGISTRAZIONE.
       *(( XFD NAME = CLI-DATA-REG-AA ))
                        20 AA   PIC  9(04).
@@ -343,10 +372,8 @@
                        20 GG   PIC  9(02).
                    15 FILLER REDEFINES CLI-DATA-REGISTRAZIONE.
       *$GEN type=date
-      *
                        20 CLI-DATA-REGISTRAZIONE-N     PIC  9(08).
       *$GEN type=code,entity=tblse
-      *
                10 CLI-CODICE-SE    PIC  X(03).
                10 CLI-ALLEGATI.
                    15 CLI-NOME1-A      PIC  X(30).
@@ -378,17 +405,13 @@
       *$GEN type=code,entity=tblca,zmm=on,zmm_title=Cod.categoria,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=19,,zmm_entity=tblca
                10 CLI-CODICE-CA    PIC  X(03).
       *$GEN type=code,entity=tblsp
-      *
                10 CLI-CODICE-SP1   PIC  X(03).
       *$GEN type=code,entity=tblco
-      *
                10 CLI-CODICE-CO    PIC  X(03).
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
-      *
                10 CLI-SPESE-FATTURA            PIC  X(01).
                    88 CLI-SPESE-FATTURA-88 VALUE IS "S" " ". 
       *$GEN type=combobox,comboclass=cli_tipo_fattura
-      *
                10 CLI-TIPO-FATTURA PIC  X(01).
                    88 CLI-TIPO-FATTURA-88 VALUE IS "S" "R" "O" "D". 
                    88 CLI-TIPO-FATTURA-88-s VALUE IS "S". 
@@ -396,7 +419,6 @@
                    88 CLI-TIPO-FATTURA-88-o VALUE IS "O". 
                    88 CLI-TIPO-FATTURA-88-d VALUE IS "D". 
       *$GEN type=combobox,comboclass=cli_accorpamento
-      *
                10 CLI-ACCORPAMENTO PIC  X(01).
                    88 CLI-ACCORPAMENTO-88 VALUE IS "S" "A" " ". 
                    88 CLI-ACCORPAMENTO-88-s VALUE IS "S". 
@@ -407,7 +429,6 @@
                10 CLI-LINGUA       PIC  9(01).
                    88 CLI-LINGUA-88 VALUE IS 0 THRU 5. 
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
-      *
                10 CLI-PREZZO-BOLLA PIC  X(01).
                    88 CLI-PREZZO-BOLLA-88 VALUE IS "S" " ". 
                10 cli-cp-vendite   PIC  9(01).
@@ -416,7 +437,7 @@
       *$GEN type=code,entity=cli
                10 CLI-CLIENTE-FATTURARE        PIC  X(08).
                10 CLI-CODICE-FORNITORE         PIC  X(10).
-      *$GEN type=code,entity=tblcs
+      *$GEN type=code,entity=tblcs,zmm=on,zmm_title=Cod.statistico,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=72,zmm_entity=tblcs
                10 CLI-CODICE-CS    PIC  X(03).
       *$GEN type=code,entity=tblss
                10 CLI-CODICE-SS    PIC  X(03).
@@ -424,15 +445,25 @@
       *
       *
       *
-      *  Modulo 65 - terminali E2K MOBILE                                          | nb 04.07.03
+      *  Modulo 65 - terminali E2K MOBILE                        
       *
-      *ESCLI65                           | nb 04.07.03
+      *ESCLI65        
+                   15 CLI-CAUS-AMMESSE-01          PIC  x(01).
+                   15 CLI-CAUS-AMMESSE-02          PIC  x(01).
+                   15 CLI-CAUS-AMMESSE-03          PIC  x(01).
+                   15 CLI-CAUS-AMMESSE-04          PIC  x(01).
+                   15 CLI-CAUS-AMMESSE-05          PIC  x(01).
+                   15 CLI-CAUS-AMMESSE-06          PIC  x(01).
+                   15 CLI-CAUS-AMMESSE-07          PIC  x(01).
+                   15 CLI-CAUS-AMMESSE-08          PIC  x(01).
+                   15 CLI-CAUS-AMMESSE-09          PIC  x(01).
+                   15 CLI-CAUS-AMMESSE-10          PIC  x(01).
+               10 filler REDEFINES CLI-CAUSALI-AMMESSE.
                    15 FILLER
                               OCCURS 10 TIMES.
                        20 CLI-CAUS-AMMESSE PIC  X(01).
                            88 CLI-CAUS-AMMESSE-88 VALUE IS " " "V" "S" 
            "R" "Z" "O". 
-      *.07.03
       *$GEN entity=tblk3
                10 CLI-CODICE-K3    PIC  X(03).
       *
@@ -465,7 +496,6 @@
       *** a un codice valido della tabella TBLPA (senza appesantire l'FM_CLI con la validazione del campo).
       *
       *$GEN type=code,entity=tblpa,zmm=on,zmm_title=Pag.beni det.,zmm_datatype=x,zmm_size=8,zmm_align=L,zmm_pos=58,zmm_entity=tblpa
-      *
                10 cli-tblpa-deperibili         PIC  x(03).
       *$GEN type=code,entity=tblpa,zmm=on,zmm_title=Beni non det.,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=60,zmm_entity=tblpa
                10 cli-tblpa-non-deperibili     PIC  x(03).
@@ -474,14 +504,11 @@
                    88 cli-exclude-agroalimentari-off VALUE IS 0. 
       *
       *ogo fatture su comunicazione polivalente (spesometro)
-      *
                10 cli-riepilogativo            PIC  9.
                    88 cli-riepilogativo-on VALUE IS 1. 
                    88 cli-riepilogativo-off VALUE IS 0. 
       *$GEN type=date,zmm=on,zmm_title=Data Mandato,zmm_datatype=n,zmm_size=11,zmm_align=R,zmm_pos=66
                10 cli-data-mandato PIC  9(08).
-      *
-      *
                10 cli-fatt-elettronica         PIC  9.
                    88 cli-fatt-elettronica-ok VALUE IS 1. 
                    88 cli-fatt-elettronica-ko VALUE IS 0. 
@@ -508,12 +535,10 @@
                10 CLI-FATTURARE    PIC  S9(13)V9(02)
                           SIGN IS TRAILING SEPARATE CHARACTER.
       *$GEN type=num,size=21,dec=2
-      *
                10 CLI-IMPEGNATO    PIC  S9(13)V9(02)
                           SIGN IS TRAILING SEPARATE CHARACTER.
       *
       *$GEN type=code,entity=tblno
-      *
                10 CLI-CODICE-NO    PIC  X(08).
       *
       *
@@ -540,10 +565,10 @@
       ***        10  CLI-FILLER              PIC  X(22).                                                  | SUADAL 08/01/2014
       *
       *$GEN type=code,entity=tblag,zmm=on,zmm_title=Cod.agente,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=9,zmm_entity=tblag
+      *
                10 CLI-CODICE-AG    PIC  X(03).
                10 CLI-PERIODO-FATTURA          PIC  X(01).
       * copy "groupdate.xfc". | DBMaker
-      *
                10 CLI-DATA-AGGIORNAMENTO.
       *(( XFD NAME = CLI-DATA-AGG-AA ))
                    15 AA   PIC  9(04).
@@ -553,20 +578,16 @@
                    15 GG   PIC  9(02).
                10 FILLER REDEFINES CLI-DATA-AGGIORNAMENTO.
       *$GEN type=date
-      *
                    15 CLI-DATA-AGGIORNAMENTO-N     PIC  9(08).
       *$GEN type=code,entity=tblli
-      *
                10 CLI-CODICE-LI43  PIC  X(03).
       *$GEN type=code,entity=tblpa
-      *
                10 CLI-CODICE-PA43  PIC  X(03).
                10 CLI-ARROTONDA-IN43           PIC  9(03).
                10 CLI-ARROTONDA-VI43           PIC  9(03).
       *0 thru 60
       *0 thru 60
       *$GEN type=num,size=6,dec=0
-      *
                10 CLI-KILOMETRI    PIC  9(04).
                10 CLI-TIPO-FORFAIT-VIAGGI      PIC  X(01).
       *$GEN type=combobox,comboclass=cli_tipo_forfait_viaggi,
@@ -576,18 +597,14 @@
                    88 CLI-TIPO-FORFAIT-VIAGGI-88-l VALUE IS "L". 
                    88 CLI-TIPO-FORFAIT-VIAGGI-88-s VALUE IS " ". 
       *$GEN type=num,size=23,dec=2
-      *
                10 CLI-FORFAIT-VIAGGI           PIC  S9(15)V9(02)
                           SIGN IS TRAILING SEPARATE CHARACTER.
       *pgm check per decimali less 60
       *$GEN type=code,entity=tblli
-      *
                10 CLI-CODICE-LI42  PIC  X(03).
       *$GEN type=code,entity=tblpa
-      *
                10 CLI-CODICE-PA42  PIC  X(03).
       **** campi per modulo 83 aziende vinicole
-      *
                10 CLI-CODICE-ACCISA            PIC  X(15).
       **** campi per modulo 61 imballi
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
@@ -595,12 +612,14 @@
                    88 CLI-FLAG-IMBALLO-88 VALUE IS " " "S". 
       **** campi per modulo 65 tentata vendita                         | not in gescli
       ***        10  CLI-TIPO-DOC            PIC  9(01).                                                   | MACGIU 25/02/2014
+      *
                10 CLI-TIPO-DOC-old PIC  9(01).
                    88 CLI-TIPO-DOC-old-88 VALUE IS 1, 2, 3. 
                    88 CLI-TIPO-DOC-ATON-old-88 VALUE IS 0, 1, 2, 7, 8. 
                10 CLI-FLAG-PF-old  PIC  9(01).
       ***        10  CLI-FLAG-PF             PIC  9(01).                  | not in gescli                  | MACGIU 25/02/2014
       *n gescli                     | MACGIU 25/02/2014
+      *
                    88 CLI-FLAG-PF-old-88 VALUE IS 0, 1. 
       *
       ***        10  cli-giri-visita-x.                                   | maxime 12/09/2011              | MACGIU 25/02/2014
@@ -643,7 +662,6 @@
       *$GEN type=code,entity=tblli
                10 CLI-CODICE-LI-IMB            PIC  X(03).
       **** campi per modulo 46 collegamento sole 24 ore
-      *
                10 CLI-DARE-46      PIC  9(06).
                10 CLI-AVERE-46     PIC  9(06).
       **** campi per modulo 81 riciclo rifiuti da imballaggi
@@ -665,33 +683,29 @@
                    88 CLI-ANNOTAZIONE-88-o VALUE IS " ". 
                    88 CLI-ANNOTAZIONE-88-s VALUE IS "S". 
                    88 CLI-ANNOTAZIONE-88-n VALUE IS "N". 
-               10 CLI-TABELLA-PLAFOND.
-      *$GEN type=num,size=7,dec=2
-                   15 CLI-PLAFOND-1    PIC  S9(03)V9(02)
-                              SIGN IS TRAILING SEPARATE CHARACTER.
-      *$GEN type=num,size=7,dec=2
-                   15 CLI-PLAFOND-2    PIC  S9(03)V9(02)
-                              SIGN IS TRAILING SEPARATE CHARACTER.
-      *$GEN type=num,size=7,dec=2
-                   15 CLI-PLAFOND-3    PIC  S9(03)V9(02)
-                              SIGN IS TRAILING SEPARATE CHARACTER.
-      *$GEN type=num,size=7,dec=2
-                   15 CLI-PLAFOND-4    PIC  S9(03)V9(02)
-                              SIGN IS TRAILING SEPARATE CHARACTER.
-      *$GEN type=num,size=7,dec=2
-                   15 CLI-PLAFOND-5    PIC  S9(03)V9(02)
-                              SIGN IS TRAILING SEPARATE CHARACTER.
-      *$GEN type=num,size=7,dec=2
-                   15 CLI-PLAFOND-6    PIC  S9(03)V9(02)
-                              SIGN IS TRAILING SEPARATE CHARACTER.
-               10 FILLER REDEFINES CLI-TABELLA-PLAFOND.
-                   15 CLI-PLAFOND-ALFA
-                              OCCURS 6 TIMES.
-                       20 CLI-PLAFOND      PIC  S9(03)V9(02)
-                                  SIGN IS TRAILING SEPARATE CHARACTER.
+      *
+      *  10  CLI-TABELLA-PLAFOND.                           | maxime 12/09/2011              | EXT-POZEDO 18/05/2018
+      *type=num,size=7,dec=2                                                                 |
+      *      15  CLI-PLAFOND-1               PIC S9(03)V9(02) SIGN TRAILING SEPARATE.        |
+      *type=num,size=7,dec=2                                                                 |
+      *      15  CLI-PLAFOND-2               PIC S9(03)V9(02) SIGN TRAILING SEPARATE.        |
+      *type=num,size=7,dec=2                                                                 |
+      *      15  CLI-PLAFOND-3               PIC S9(03)V9(02) SIGN TRAILING SEPARATE.        |
+      *type=num,size=7,dec=2                                                                 |
+      *      15  CLI-PLAFOND-4               PIC S9(03)V9(02) SIGN TRAILING SEPARATE.        |
+      *type=num,size=7,dec=2                                                                 |
+      *      15  CLI-PLAFOND-5               PIC S9(03)V9(02) SIGN TRAILING SEPARATE.        |
+      *type=num,size=7,dec=2                                                                 |
+      *      15  CLI-PLAFOND-6               PIC S9(03)V9(02) SIGN TRAILING SEPARATE.        |
+      *  10  FILLER REDEFINES CLI-TABELLA-PLAFOND.            | maxime 12/09/2011            |
+      *      15  CLI-PLAFOND-ALFA    OCCURS 6.                                               |
+      *          20  CLI-PLAFOND     PIC S9(03)V9(02) SIGN TRAILING SEPARATE.                |
+      *                                                                                      |
+      *zione questo filler conteneva i dati dei plafond quindi se decidi di riusarlo         | 
+      *tati che non contenga schifezze                                                       |
+               10 filler           PIC  x(36).
       *
       *$GEN type=checkbox,truevalue="S",falsevalue="  "
-      *
                10 CLI-ESENZIONE    PIC  X(01).
                    88 CLI-ESENZIONE-88 VALUE IS " " "S". 
       * copy "groupdate.xfc". | DBMaker
@@ -719,24 +733,19 @@
                    88 CLI-PROMOZIONE1-88 VALUE IS " " "1". 
                10 CLI-PROMOZIONE2  PIC  X(01).
       *n gescli
-      *
                    88 CLI-PROMOZIONE2-88 VALUE IS " " "1". 
                10 CLI-PROMOZIONE3  PIC  X(01).
       *n gescli
                    88 CLI-PROMOZIONE3-88 VALUE IS " " "1". 
                10 CLI-E-MAIL-OLD   PIC  X(30).
       *5.11.02
-      *
                10 CLI-INTERNET     PIC  X(30).
       *$GEN type=combobox,comboclass=cli_trasporto
-      *
                10 CLI-TRASPORTO    PIC  9(01).
                    88 CLI-TRASPORTO-88 VALUE IS 0 1 2 3. 
                    88 CLI-MITTENTE VALUE IS 1. 
                    88 CLI-DESTINATARIO VALUE IS 2. 
                    88 CLI-VETTORE VALUE IS 3. 
-      *
-      *
                10 CLI-CONTROPARTITA.
                    15 CLI-TIPO-CP      PIC  X(01).
       *$GEN type=combobox,comboclass=generic_tipo_cfm,comboentity=cli-tipo-cp-e3
@@ -747,7 +756,6 @@
                        88 CLI-TIPO-CP-88-m VALUE IS "M". 
                        88 CLI-TIPO-CP-88-o VALUE IS " ". 
       *$GEN type=code,entity=var(cli-tipo-cp-e3)
-      *
                    15 CLI-CONTO-CP     PIC  X(08).
                10 CLI-ESCLUSO-DAL-GIORNO1      PIC  9(02).
                10 CLI-ESCLUSO-DAL-GIORNO2      PIC  9(02).
@@ -760,26 +768,21 @@
                    88 CLI-DOCUMENTI-WWP-SI VALUE IS "S". 
                10 CLI-DOCUM-LIRE-EURO          PIC  X(01).
       *cated
-      *
                    88 CLI-DOCUM-LIRE-EURO-88 VALUE IS "L" "E". 
                10 CLI-GIORNO-CHIUSURA          PIC  9(01).
                    88 CLI-GIORNO-CHIUSURA-88 VALUE IS 0 1 2 3 4 5 6 7. 
       *$GEN type=combobox,comboclass=cli_tipo_soggetto-magix
-      *
                10 CLI-TIPO-SOGGETTO-MAGIX      PIC  9(01).
       ***            88  CLI-TIPO-SOGGETTO-MAGIX-88      VALUE 1 2 3 4 5 6.                                | rososv 28/07/2014
                    88 cli-tipo-soggetto-magix-88 VALUE IS 1 2 3 4 5 6 7 
            8. 
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
-      *
                10 CLI-MAGIX-RITENUTA           PIC  X(01).
                    88 CLI-MAGIX-RITENUTA-88 VALUE IS " " "S". 
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
-      *
                10 CLI-MAGIX-335    PIC  X(01).
                    88 CLI-MAGIX-335-88 VALUE IS " " "S". 
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
-      *
                10 CLI-MAGIX-ALTRO  PIC  X(01).
                    88 CLI-MAGIX-ALTRO-88 VALUE IS " " "S". 
       *$GEN zmm=on,zmm_title=Sms,zmm_datatype=x,zmm_size=25,zmm_align=L,zmm_pos=54
@@ -789,13 +792,10 @@
                    88 CLI-INVIO-E-MAIL-88 VALUE IS " " "S". 
                    88 CLI-INVIO-E-MAIL-SI VALUE IS "S". 
       *$GEN type=code,entity=tblna
-      *
                10 CLI-CODICE-NA-A  PIC  X(03).
       *$GEN type=code,entity=tblna
-      *
                10 CLI-CODICE-NA-F  PIC  X(03).
       *$GEN type=code,entity=tblna
-      *
                10 CLI-CODICE-NA-O  PIC  X(03).
       *
       *$GEN zmm=on,zmm_title=E-mail,zmm_datatype=x,zmm_size=50,zmm_align=L,zmm_pos=8
@@ -809,18 +809,8 @@
                    88 cli-interessi-mora-storno VALUE IS " ". 
                10 CLI-CODICE-CLP-51            PIC  X(08).
                10 CLI-ABILITA-SSCC PIC  X.
-      *
-      *
-      *
-      *
-      *$GEN entity=clp
-      *0.06.02
-      *$GEN type=checkbox,truevalue="S",falsevalue=" "
-      *3.01.05
-      *
-               10 CLI-FILLER-02    PIC  X(09).
-      *
-      *
+               10 cli-modifyFepaXML            PIC  9(01).
+               10 CLI-FILLER-02    PIC  X(08).
                10 CLI-EFFETTI.
                    15 CLI-NOME1-E      PIC  X(30).
                    15 CLI-NOME2-E      PIC  X(30).
@@ -904,20 +894,18 @@
                    20 gg   PIC  9(02).
                10 filler REDEFINES cli-data-inizio-cpz.
       *$GEN type=date,
-      *
                    15 cli-data-inizio-cpz-n        PIC  9(08).
       *$GEN zmm=on,zmm_title=Nickname,zmm_datatype=k,zmm_size=30,zmm_align=L,zmm_pos=49
                10 cli-nickname     PIC  x(30).
       *$GEN zmm=on,zmm_title=Cpzownercode,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=50
-               10 cli-cpzownercode PIC  x(15).
-      *$GEN type=code,entity=tbltl
       *
+               10 cli-cpzownercode PIC  x(15).
+      *$GEN type=code,entity=tbltl,zmm=on,zmm_title=Cod.tipologia ordine,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=74,zmm_entity=tbltl
                10 CLI-CODICE-TL    PIC  X(03).
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
                10 CLI-CREA-LSC-DATA            PIC  X(01).
                    88 CLI-CREA-LSC-DATA-88 VALUE IS "S" " ". 
       *$GEN type=code,entity=tblsc
-      *
                10 CLI-CODICE-SC    PIC  X(03).
                10 CLI-SOSPESO-VEND PIC  X(01).
                10 CLI-ACCONTO      PIC  S9(09)V9(02)
@@ -926,7 +914,6 @@
       *
       *
       * copy "groupdate.xfc". | DBMaker
-      *
                10 CLI-DATA-INIZIO-VALIDITA.
       *(( XFD NAME = CLI-DATA-INIZIO-VA ))
                    15 AA   PIC  9(04).
@@ -936,10 +923,8 @@
                    15 GG   PIC  9(02).
                10 FILLER REDEFINES CLI-DATA-INIZIO-VALIDITA.
       *$GEN type=date
-      *
                    15 CLI-DATA-INIZIO-VALIDITA-N   PIC  9(08).
       * copy "groupdate.xfc". | DBMaker
-      *
                10 CLI-DATA-FINE-VALIDITA.
       *(( XFD NAME = CLI-DATA-FINE-VAL- ))
                    15 AA   PIC  9(04).
@@ -949,13 +934,10 @@
                    15 GG   PIC  9(02).
                10 FILLER REDEFINES CLI-DATA-FINE-VALIDITA.
       *$GEN type=date
-      *
                    15 CLI-DATA-FINE-VALIDITA-N     PIC  9(08).
       *$GEN type=code,entity=cli
-      *
                10 cli-cod-associazione         PIC  x(08).
       * copy "groupdate.xfc". | DBMaker
-      *
                10 CLI-DATA-NASCITA.
       *(( XFD NAME = CLI-DATA-NASCITA-A ))
                    15 AA   PIC  9(04).
@@ -965,90 +947,42 @@
                    15 GG   PIC  9(02).
                10 FILLER REDEFINES CLI-DATA-NASCITA.
       *$GEN type=date
-      *
                    15 CLI-DATA-NASCITA-N           PIC  9(08).
       *$GEN type=num,size=8,dec=0
-      *
                10 CLI-PUNTI-ACQUISITI          PIC  9(06).
       *
       *
       *
+      ***         10  filler                          pic x(10).            | mxm 01/11/2007 10.00         | RCM 02/05/2017
       *
-               10 filler           PIC  x(10).
-      *
-      ***         10  CLI-PREMI-CONSEGNATI.                                                              | mxm 01/11/2007 10.00
-      ***             15  CLI-TAB-PREMI-CONS          OCCURS 10.                                         | mxm 01/11/2007 10.00
-      ***                 20  CLI-PREMI-CONS          PIC  X(01).                                        | mxm 01/11/2007 10.00
-      ***                     88  CLI-PREMI-CONS-88   VALUE " " "S".                                     | mxm 01/11/2007 10.00
-      ***         10  FILLER REDEFINES CLI-PREMI-CONSEGNATI.                                             | mxm 01/11/2007 10.00
-      ****$GEN type=checkbox,truevalue="S",falsevalue=" "                                                | mxm 01/11/2007 10.00
-      ***             15  CLI-PREMI-CONS-1        PIC  X(01).                                            | mxm 01/11/2007 10.00
-      ****$GEN type=checkbox,truevalue="S",falsevalue=" "                                                | mxm 01/11/2007 10.00
-      ***             15  CLI-PREMI-CONS-2        PIC  X(01).                                            | mxm 01/11/2007 10.00
-      ****$GEN type=checkbox,truevalue="S",falsevalue=" "                                                | mxm 01/11/2007 10.00
-      ***             15  CLI-PREMI-CONS-3        PIC  X(01).                                            | mxm 01/11/2007 10.00
-      ****$GEN type=checkbox,truevalue="S",falsevalue=" "                                                | mxm 01/11/2007 10.00
-      ***             15  CLI-PREMI-CONS-4        PIC  X(01).                                            | mxm 01/11/2007 10.00
-      ****$GEN type=checkbox,truevalue="S",falsevalue=" "                                                | mxm 01/11/2007 10.00
-      ***             15  CLI-PREMI-CONS-5        PIC  X(01).                                            | mxm 01/11/2007 10.00
-      ****$GEN type=checkbox,truevalue="S",falsevalue=" "                                                | mxm 01/11/2007 10.00
-      ***             15  CLI-PREMI-CONS-6        PIC  X(01).                                            | mxm 01/11/2007 10.00
-      ****$GEN type=checkbox,truevalue="S",falsevalue=" "                                                | mxm 01/11/2007 10.00
-      ***             15  CLI-PREMI-CONS-7        PIC  X(01).                                            | mxm 01/11/2007 10.00
-      ****$GEN type=checkbox,truevalue="S",falsevalue=" "                                                | mxm 01/11/2007 10.00
-      ***             15  CLI-PREMI-CONS-8        PIC  X(01).                                            | mxm 01/11/2007 10.00
-      ****$GEN type=checkbox,truevalue="S",falsevalue=" "                                                | mxm 01/11/2007 10.00
-      ***             15  CLI-PREMI-CONS-9        PIC  X(01).                                            | mxm 01/11/2007 10.00
-      ****$GEN type=checkbox,truevalue="S",falsevalue=" "                                                | mxm 01/11/2007 10.00
-      ***             15  CLI-PREMI-CONS-10       PIC  X(01).                                            | mxm 01/11/2007 10.00
+               10 CLI-COD-ICQRF    PIC  X(08).
+               10 filler           PIC  x(02).
       *
       *
       *
       *$GEN type=code,entity=tblvc,zmm=on,zmm_title=Voce analitica,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=51,zmm_entity=tblvc
-      *
                10 cli-tblvc-codice PIC  x(03).
-      *
-      *
-      ***        10  cli-accumulo-punti-33            pic 9(01).                                         | mxm 20/09/2007 16.58
-      ***            88   cli-accumulo-punti-33-si    value 1 false 0.                                   | mxm 20/09/2007 16.58
       *$GEN type=code,entity=33fch
-      *
                10 cli-33fch        PIC  x(20).
       *$GEN type=code,entity=33neg
-      *
                10 cli-33fch-releasedby         PIC  x(03).
       *$GEN type=code,entity=33prf
-      *
                10 cli-33prf        PIC  x(10).
       *$GEN type=code,entity=33tds
-      *
                10 cli-33tds        PIC  x(10).
       * consenso a ricevere proposte commerciali
-      *
                10 cli-consenso-pc  PIC  9(01).
-      *
-      *
                10 cli-esente-raee  PIC  9(01).
       *$GEN type=num,size=11,dec=0
-      *
                10 cli-numero-richiesta         PIC  9(08).
       *$GEN type=num,size=11,dec=0
-      *
                10 cli-numero-registrazione     PIC  9(08).
-      *
-      ** i campi nuovi vanno aggiunti qui...
-      *
-      *        10  cli-filler-91                   pic  x(179).                                          |gm 27/08/2008 9.40 | mxm 07/12/2007 17.48
-      *        10  cli-filler-91                   pic  x(173).                                          |mc 12/09/2008 11.35|gm 27/08/2008 9.40
-      *        10  cli-filler-91                   pic  x(168).                                          |sq 30/01/2009      |mc 12/09/2008 11.35
-      *        10  cli-filler-91                   pic  x(152).                                          |DS 01/04/2009 9.29
-      *
-      *
                10 cli-nome         PIC  x(30).
                10 cli-cognome      PIC  x(30).
                10 cli-comune-nascita           PIC  x(30).
                10 cli-provincia-nascita        PIC  x(02).
       *$GEN type=radiobutton,value_1="M",image_1=1,value_2="F",image_2=2,value_3=" ",image_3=3
+      *
                10 cli-sesso        PIC  x.
                    88 cli-sesso-maschio VALUE IS "M". 
                    88 cli-sesso-femmina VALUE IS "F". 
@@ -1059,26 +993,19 @@
                    88 cli-exclude-blacklist-on VALUE IS "S". 
                    88 cli-exclude-blacklist-off VALUE IS " ". 
                    88 cli-exclude-blacklist-ok VALUE IS "S" " ". 
-      *
-      *
                10 cli-codice-iva-estero        PIC  x(30).
       *
       *$GEN type=combobox,comboclass=tbl83_lingua,
-      *
                10 cli-lingua-descrizioni       PIC  x(02).
                    88 cli-lingua-descrizioni-88 VALUE IS "bg" "bt" "cs" 
            "da" "nl" "en" "et" "fi" "fr" "ga" "gr" "de" "el" "hu" "it" 
            "lv" "lt" "mt" "pl" "pt" "ro" "sk" "sl" "es" "sv". 
+      *l 29/02/2012
                10 cli-codice-accisa-deposito   PIC  x(18).
       *
-      ***        10  cli-filler-91                   pic  x(144).       |DS 01/04/2009 9.29               | scamar 09/07/2010 10:13:27
-      ***        10  cli-filler-91                   pic  x(20).           | scamar 09/07/2010 10:13:27    | rososv 26/01/2011 16:33:55
       *
       *$GEN type=date,zmm=on,zmm_title=Procedura concorsuale,zmm_datatype=n,zmm_size=11,zmm_align=R,zmm_pos=53
-      *
                10 cli-data-inizio-procedura    PIC  9(08).
-      *
-      *
                10 cli-cpz-codice-sede          PIC  x(06).
                10 cli-ind-esteso-gen           PIC  9(01).
                    88 cli-ind-esteso-gen-si VALUE IS 1    WHEN SET TO 
