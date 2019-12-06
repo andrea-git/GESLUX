@@ -145,41 +145,42 @@
 3        05 HUSCTES_ORDUSCTIP_CODICE   PIC  X(15).
 4        05 HUSCTES_COMCAU_CODICE      PIC  x(15).
 5        05 HUSCTES_COMDES_CODICE      PIC  x(15).
-6        05 HUSCTES_PRIORITA           PIC  x(2).
+6        05 HUSCTES_PRIORITA           PIC  x(2). 
 7        05 HUSCTES_DATA               PIC  X(10).
-8        05 HUSCTES_UDF1               PIC  X(25).
-9        05 HUSCTES_UDF2               PIC  X(25).
-10       05 HUSCTES_UDF3               PIC  x(25).
-11       05 HUSCTES_UDF4               PIC  x(25).
-12       05 HUSCTES_UDF5               PIC  x(25).
-13       05 HUSCTES_UDF6               PIC  X(25).
-14       05 HUSCTES_UDF7               PIC  X(25).
-15       05 HUSCTES_UDF8               PIC  X(25).
-16       05 HUSCTES_UDF9               PIC  x(25).
-17       05 HUSCTES_UDF10              PIC  x(25).
-18       05 HUSCTES_COR_CODICE         PIC  x(15).
-19       05 HUSCTES_COR_CODICE_TP      PIC  X(15).
-20       05 HTES_DATA_SCHED            PIC  X(10).
-21       05 HUSCTES_DATA_LIMITE        PIC  X(10).
-22       05 HUSCTES_MERCE_VIAGGIANTE   PIC  x(1).
-23       05 HUSCTES_COMDES_DESCRIZIONE PIC  x(60).
-24       05 HUSCTES_COMDES_INDIRIZZO   PIC  x(60).
-25       05 HUSCTES_COMDES_CAP         PIC  X(10).
-26       05 HUSCTES_COMDES_LOCALITA    PIC  X(60).
-27       05 HUSCTES_COMDES_PROVINCIA   PIC  X(10).
-28       05 HUSCTES_COMDES_NAZIONE     PIC  x(10).
-29       05 HUSCTES_DES_DESCRIZIONE    PIC  x(60).
-30       05 HUSCTES_DES_INDIRIZZO      PIC  x(60).
-31       05 HUSCTES_DES_CAP            PIC  X(10).
-32       05 HUSCTES_DES_LOCALITA       PIC  X(60).
-33       05 HUSCTES_DES_PROVINCIA      PIC  X(10).
-34       05 HUSCTES_DES_NAZIONE        PIC  x(10).
-35       05 HUSCTES_DES_CODICE         PIC  x(15).
-36       05 HUSCTES_TIPO_SPED          PIC  x(4).
-37       05 HUSCTES_RIF_ORDINE         PIC  X(35).
-38       05 HUSCTES_RIF_DORDINE        PIC  X(10).
-39       05 HUSCTES_UDF11              PIC  X(60).
-40       05 HUSCTES_UDF12              PIC  x(60).
+8        05 HUSCTES_DATA_PASS          PIC  X(10).
+9        05 HUSCTES_UDF1               PIC  X(15).
+10       05 HUSCTES_UDF2               PIC  X(25).
+11       05 HUSCTES_UDF3               PIC  x(25).
+12       05 HUSCTES_UDF4               PIC  x(25).
+13       05 HUSCTES_UDF5               PIC  x(25).
+14       05 HUSCTES_UDF6               PIC  X(25).
+15       05 HUSCTES_UDF7               PIC  X(25).
+16       05 HUSCTES_UDF8               PIC  X(25).
+17       05 HUSCTES_UDF9               PIC  x(25).
+18       05 HUSCTES_UDF10              PIC  x(25).
+19       05 HUSCTES_COR_CODICE         PIC  x(15).
+20       05 HUSCTES_COR_CODICE_TP      PIC  X(15).
+21       05 HTES_DATA_SCHED            PIC  X(10).
+22       05 HUSCTES_DATA_LIMITE        PIC  X(10).
+23       05 HUSCTES_MERCE_VIAGGIANTE   PIC  x(1).
+24       05 HUSCTES_COMDES_DESCRIZIONE PIC  x(60).
+25       05 HUSCTES_COMDES_INDIRIZZO   PIC  x(60).
+26       05 HUSCTES_COMDES_CAP         PIC  X(10).
+27       05 HUSCTES_COMDES_LOCALITA    PIC  X(60).
+28       05 HUSCTES_COMDES_PROVINCIA   PIC  X(10).
+29       05 HUSCTES_COMDES_NAZIONE     PIC  x(10).
+30       05 HUSCTES_DES_DESCRIZIONE    PIC  x(60).
+31       05 HUSCTES_DES_INDIRIZZO      PIC  x(60).
+32       05 HUSCTES_DES_CAP            PIC  X(10).
+33       05 HUSCTES_DES_LOCALITA       PIC  X(60).
+34       05 HUSCTES_DES_PROVINCIA      PIC  X(10).
+35       05 HUSCTES_DES_NAZIONE        PIC  x(10).
+36       05 HUSCTES_DES_CODICE         PIC  x(15).
+37       05 HUSCTES_TIPO_SPED          PIC  x(4).
+38       05 HUSCTES_RIF_ORDINE         PIC  X(35).
+39       05 HUSCTES_RIF_DORDINE        PIC  X(10).
+40       05 HUSCTES_UDF11              PIC  X(60).
+41       05 HUSCTES_UDF12              PIC  x(60).
 
        01  exp-rordini.
 1        05 HUSCRIG_COM_CODICE         PIC  x(15).
@@ -1018,7 +1019,7 @@
            move tor-cod-cli        to HUSCTES_COMDES_CODICE
            move "00"               to HUSCTES_PRIORITA
            move tor-data-ordine    to HUSCTES_DATA
-           move space              to HUSCTES_UDF1
+           move tor-data-passaggio-ordine to HUSCTES_DATA_PASS
            move "44"               to HUSCTES_UDF2
            move space              to HUSCTES_UDF3
 

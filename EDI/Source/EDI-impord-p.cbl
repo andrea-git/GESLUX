@@ -11,7 +11,7 @@
 
        SPECIAL-NAMES. decimal-point is comma.
        INPUT-OUTPUT SECTION.
-       FILE-CONTROL.                 
+       FILE-CONTROL.
        SELECT lineseq
            ASSIGN       TO  wstampa
            ORGANIZATION IS LINE SEQUENTIAL
@@ -28,7 +28,7 @@
            ASSIGN       TO  path-logfile
            ORGANIZATION IS LINE SEQUENTIAL
            ACCESS MODE  IS SEQUENTIAL
-           FILE STATUS  IS STATUS-logfile.     
+           FILE STATUS  IS STATUS-logfile.
 
        copy "EDI-clides.sl".
        copy "clienti.sl".

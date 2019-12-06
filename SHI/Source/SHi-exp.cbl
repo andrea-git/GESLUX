@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          SHI-exp.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 1 aprile 2014 17:51:32.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        mercoledì 4 dicembre 2019 23:41:21.
        REMARKS.
       *{TOTEM}END
 
@@ -45,9 +45,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\Lubex\GESLUX\Copylib\UTYDATA.DEF".
-               COPY "F:\Lubex\GESLUX\Copylib\comune.def".
-               COPY "F:\Lubex\GESLUX\Copylib\custom.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -1408,10 +1406,10 @@
 
        ESPORTA.
       * <TOTEM:PARA. ESPORTA>
-           call "W$MOUSE" using set-mouse-shape, wait-pointer
+           call "W$MOUSE" using set-mouse-shape, wait-pointer.
 
-           perform Form3-Open-Routine
-           call "W$MOUSE" using set-mouse-shape, arrow-pointer
+           perform FORM3-OPEN-ROUTINE.
+           call "W$MOUSE" using set-mouse-shape, arrow-pointer.
 
 
            if errori 
@@ -1436,7 +1434,7 @@
               end-if
 
               perform COPIA-FILES
-           end-if
+           end-if.
 
            perform GUARDA-FILE 
            .

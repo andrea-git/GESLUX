@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=exp-shi-Ev-Before-Program
 AFTER_PROGRAM=exp-shi-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E3B1D232240-518-1916813756
+PROGRAM_UNIQUE_CODE=TOTEM-7E3C4224053-2-109621184
 
 {{@DESCRIPTION:
 
@@ -2154,10 +2154,10 @@ BEGIN-DATA
    BASETYPE          = 3
    PARAGRAPH         = ESPORTA
 BEGIN-TEXT
-           call "W$MOUSE" using set-mouse-shape, wait-pointer
+           call "W$MOUSE" using set-mouse-shape, wait-pointer.
 
-           perform Form3-Open-Routine
-           call "W$MOUSE" using set-mouse-shape, arrow-pointer
+           perform FORM3-OPEN-ROUTINE.
+           call "W$MOUSE" using set-mouse-shape, arrow-pointer.
 
 
            if errori 
@@ -2182,7 +2182,7 @@ BEGIN-TEXT
               end-if
 
               perform COPIA-FILES
-           end-if
+           end-if.
 
            perform GUARDA-FILE.
 
