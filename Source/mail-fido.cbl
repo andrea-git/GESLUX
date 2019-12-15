@@ -751,17 +751,19 @@
                  |non ha esito positivo bloccarlo (solo se attivo)
                  if not sf-verifica-1-ok or
                     not sf-verifica-2-ok
-                    if cli-attivo or cli-fuori-fido
-                       set cli-bloccato to true
-                       |23/05/2012
-                       if not sf-verifica-1-ok
-                          set cli-fuori-fido to true
+                    if cli-escludi-fido-no
+                       if cli-attivo or cli-fuori-fido
+                          set cli-bloccato to true
+                          |23/05/2012
+                          if not sf-verifica-1-ok
+                             set cli-fuori-fido to true
+                          end-if
+                          if not sf-verifica-2-ok
+                             set cli-prob-pag   to true
+                          end-if
+                          |23/05/2012
+                          rewrite cli-rec invalid continue end-rewrite
                        end-if
-                       if not sf-verifica-2-ok
-                          set cli-prob-pag   to true
-                       end-if
-                       |23/05/2012
-                       rewrite cli-rec invalid continue end-rewrite
                     end-if
                  else
                     if cli-fuori-fido

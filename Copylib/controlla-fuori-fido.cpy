@@ -1,7 +1,7 @@
 
       ***---
        CONTROLLA-FUORI-FIDO.
-LUBEXX     if tutto-ok
+LUBEXX     if tutto-ok and cli-escludi-fido-no
 LUBEXX        initialize calfido-linkage 
 LUBEXX                   replacing numeric data by zeroes
 LUBEXX                        alphanumeric data by spaces

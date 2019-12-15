@@ -5168,6 +5168,7 @@
            IF NOT Valid-STATUS-cli-prg
               PERFORM  Form-ini-EXTENDED-FILE-STATUS
               GO TO EXIT-STOP-ROUTINE
+
            END-IF
       * <TOTEM:EPT. INIT:EDI-selordini, FD:cli-prg, AfterOpen>
       * <TOTEM:END>
@@ -16505,7 +16506,8 @@ LABLAB          end-if
 
        CERCA-PROMO-LISTINO.
       * <TOTEM:PARA. CERCA-PROMO-LISTINO>
-
+
+
            move col-art to art-codice.
            move ef-des-buf to emto-prg-destino.
            set trovato      to false.
@@ -17471,7 +17473,7 @@ LUBEXX        set errori to true
 
       ***---
        CONTROLLA-FUORI-FIDO.
-LUBEXX     if tutto-ok
+LUBEXX     if tutto-ok and cli-escludi-fido-no
               perform CONTROLLA-TOTALE-MAN
               move cli-codice to tfid-cli-codice
               read tmp-fido no lock

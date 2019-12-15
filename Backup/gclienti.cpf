@@ -2,13 +2,12 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
-DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E37384940-830-30674347
+PROGRAM_UNIQUE_CODE=TOTEM-7E3CD82347-513-189375883
 
 {{@DESCRIPTION:
 
@@ -9135,6 +9134,55 @@ Begin Screen Form1
             Before Procedure  = chk-superamento-BeforeProcedure
             After Procedure   = chk-superamento-AfterProcedure
          End
+         Begin Data.Check-Box chk-escludi-fido
+            SCREEN-COL        = 138,67
+            SCREEN-LINE       = 34,00
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = chk-escludi-fido
+            Bitmap Frame      = FALSE
+            Bitmap Number     = 1
+            Bitmap Square     = TRUE
+            Check Off Value   = "0"
+            Check On Value    = "1"
+            Clines            = 0
+            Clines Unit       = Default
+            Color             = 0
+            Column            = 136,50
+            Copy Resource     = TRUE
+            Csize             = 0
+            Csize Unit        = Default
+            Destroy Type      = Automatic
+            Enable            = NONE
+            Enable Variable   = mod-campi
+            Exception Value   = 0
+            Field Variable    = cli-escludi-fido
+            File              = clienti
+            Flat              = TRUE
+            Font              = Default Font
+            Height in Cells   = TRUE
+            Help ID           = 0
+            Hint              = Esclude il cliente dai controlli sul fido (sia il blocco sullo stato cliente che il controllo in inserimento ordine/importazione)
+            ID                = 0
+            Left Text         = FALSE
+            Line              = 28,23
+            Lines             = 1,31
+            Lines Unit        = Default
+            No Tab            = FALSE
+            Notify            = FALSE
+            Occurs            = 0
+            Self Act          = TRUE
+            Size              = 3,00
+            Size Unit         = Default
+            Tab Order         = 36
+            Termination Value = 0
+            Value             = 0:FALSE
+            Visible           = NONE
+            Width in Cells    = TRUE
+            My Property       = "CONTROLLO-OLD="
+            Before Procedure  = chk-superamento-BeforeProcedure
+            After Procedure   = chk-superamento-AfterProcedure
+         End
          Begin Data.Radio-Button rb-pers
             SCREEN-COL        = 21,17
             SCREEN-LINE       = 37,39
@@ -9177,7 +9225,7 @@ Begin Screen Form1
             Self Act          = FALSE
             Size              = 2,50
             Size Unit         = Default
-            Tab Order         = 36
+            Tab Order         = 37
             Termination Value = 0
             Title             = "&F"
             Value             = 0
@@ -9228,7 +9276,7 @@ Begin Screen Form1
             Self Act          = FALSE
             Size              = 2,50
             Size Unit         = Default
-            Tab Order         = 37
+            Tab Order         = 38
             Termination Value = 0
             Title             = "&S"
             Value             = 0
@@ -9291,7 +9339,7 @@ Begin Screen Form1
             Size              = 7,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 38
+            Tab Order         = 39
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -9342,7 +9390,7 @@ Begin Screen Form1
             Self Act          = TRUE
             Size              = 3,00
             Size Unit         = Default
-            Tab Order         = 39
+            Tab Order         = 40
             Termination Value = 0
             Title             = "Check Box"
             Value             = 0:FALSE
@@ -9405,7 +9453,7 @@ Begin Screen Form1
             Size              = 3,50
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 40
+            Tab Order         = 41
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -9468,7 +9516,7 @@ Begin Screen Form1
             Size              = 24,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 41
+            Tab Order         = 42
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -9531,7 +9579,7 @@ Begin Screen Form1
             Size              = 20,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 42
+            Tab Order         = 43
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -9594,7 +9642,7 @@ Begin Screen Form1
             Size              = 7,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 43
+            Tab Order         = 44
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -9657,7 +9705,7 @@ Begin Screen Form1
             Size              = 7,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 44
+            Tab Order         = 45
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -9720,7 +9768,7 @@ Begin Screen Form1
             Size              = 7,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 45
+            Tab Order         = 46
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -9771,7 +9819,7 @@ Begin Screen Form1
             Self Act          = TRUE
             Size              = 3,00
             Size Unit         = Default
-            Tab Order         = 46
+            Tab Order         = 47
             Termination Value = 0
             Title             = "Check Box"
             Value             = 0:FALSE
@@ -9822,7 +9870,7 @@ Begin Screen Form1
             Self Act          = TRUE
             Size              = 3,00
             Size Unit         = Default
-            Tab Order         = 47
+            Tab Order         = 48
             Termination Value = 0
             Value             = 0:FALSE
             Visible           = NONE
@@ -9884,7 +9932,7 @@ Begin Screen Form1
             Size              = 15,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 48
+            Tab Order         = 49
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -9947,7 +9995,7 @@ Begin Screen Form1
             Size              = 11,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 49
+            Tab Order         = 50
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -10010,7 +10058,7 @@ Begin Screen Form1
             Size              = 12,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 50
+            Tab Order         = 51
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -10073,7 +10121,7 @@ Begin Screen Form1
             Size              = 15,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 51
+            Tab Order         = 52
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -10136,7 +10184,7 @@ Begin Screen Form1
             Size              = 15,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 52
+            Tab Order         = 53
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -10199,7 +10247,7 @@ Begin Screen Form1
             Size              = 12,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 53
+            Tab Order         = 54
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -10261,7 +10309,7 @@ Begin Screen Form1
             Size              = 5,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 54
+            Tab Order         = 55
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -10309,7 +10357,7 @@ Begin Screen Form1
             Size in Pixels    = 91
             Size Unit         = Default
             Style             = Other
-            Tab Order         = 55
+            Tab Order         = 56
             Termination Value = 0
             Title             = "Es&posizione"
             Visible           = NONE
@@ -10356,7 +10404,7 @@ Begin Screen Form1
             Size in Pixels    = 91
             Size Unit         = Default
             Style             = Other
-            Tab Order         = 56
+            Tab Order         = 57
             Termination Value = 0
             Title             = "Visualizza la situazione finanziaria del Cliente verificando situazione attuale fido concesso e scaduto"
             Visible           = NONE
@@ -10418,7 +10466,7 @@ Begin Screen Form1
             Size              = 11,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 57
+            Tab Order         = 58
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -10481,7 +10529,7 @@ Begin Screen Form1
             Size              = 11,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 58
+            Tab Order         = 59
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -10529,7 +10577,7 @@ Begin Screen Form1
             Size in Pixels    = 109
             Size Unit         = Default
             Style             = Other
-            Tab Order         = 59
+            Tab Order         = 60
             Termination Value = 0
             Title             = "&Note a pié bolla"
             Visible           = NONE
@@ -10565,7 +10613,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 16,83
             Size Unit         = Default
-            Tab Order         = 60
+            Tab Order         = 61
             Title             = "Sezione Anagrafica"
             Transparent       = FALSE
             Visible           = NONE
@@ -10596,7 +10644,7 @@ Begin Screen Form1
             Size (Lines)      = 135,00
             Size (Lines) in Pixels = 810
             Size (Lines) Unit = Default
-            Tab Order         = 61
+            Tab Order         = 62
             Visible           = NONE
             Width             = 1
             Width in Cells    = TRUE
@@ -10628,7 +10676,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 16,83
             Size Unit         = Default
-            Tab Order         = 62
+            Tab Order         = 63
             Title             = "Dati Fatturazione"
             Transparent       = FALSE
             Visible           = NONE
@@ -10659,7 +10707,7 @@ Begin Screen Form1
             Size (Lines)      = 135,00
             Size (Lines) in Pixels = 810
             Size (Lines) Unit = Default
-            Tab Order         = 63
+            Tab Order         = 64
             Visible           = NONE
             Width             = 1
             Width in Cells    = TRUE
@@ -10692,7 +10740,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 64
+            Tab Order         = 65
             Title             = "Ragione Sociale 1"
             Transparent       = TRUE
             Visible           = NONE
@@ -10726,7 +10774,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 12,00
             Size Unit         = Default
-            Tab Order         = 65
+            Tab Order         = 66
             Title             = "Rag. Sociale 2"
             Transparent       = TRUE
             Visible           = NONE
@@ -10760,7 +10808,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 66
+            Tab Order         = 67
             Title             = "Indirizzo"
             Transparent       = TRUE
             Visible           = NONE
@@ -10794,7 +10842,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 12,00
             Size Unit         = Default
-            Tab Order         = 67
+            Tab Order         = 68
             Title             = "C.A.P."
             Transparent       = TRUE
             Visible           = NONE
@@ -10828,7 +10876,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 7,00
             Size Unit         = Default
-            Tab Order         = 68
+            Tab Order         = 69
             Title             = "Località"
             Transparent       = TRUE
             Visible           = NONE
@@ -10862,7 +10910,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 69
+            Tab Order         = 70
             Title             = "Provincia"
             Transparent       = TRUE
             Visible           = NONE
@@ -10896,7 +10944,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 8,00
             Size Unit         = Default
-            Tab Order         = 70
+            Tab Order         = 71
             Title             = "Nazione"
             Transparent       = TRUE
             Visible           = NONE
@@ -10930,7 +10978,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 71
+            Tab Order         = 72
             Title             = "Codice Fiscale"
             Transparent       = TRUE
             Visible           = NONE
@@ -10964,7 +11012,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 9,00
             Size Unit         = Default
-            Tab Order         = 72
+            Tab Order         = 73
             Title             = "Partita IVA"
             Transparent       = TRUE
             Visible           = NONE
@@ -10998,7 +11046,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 9,00
             Size Unit         = Default
-            Tab Order         = 73
+            Tab Order         = 74
             Title             = "Telefono 1"
             Transparent       = TRUE
             Visible           = NONE
@@ -11032,7 +11080,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 6,00
             Size Unit         = Default
-            Tab Order         = 74
+            Tab Order         = 75
             Title             = "Tel. 2"
             Transparent       = TRUE
             Visible           = NONE
@@ -11066,7 +11114,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 4,00
             Size Unit         = Default
-            Tab Order         = 75
+            Tab Order         = 76
             Title             = "Fax"
             Transparent       = TRUE
             Visible           = NONE
@@ -11100,7 +11148,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 76
+            Tab Order         = 77
             Title             = "E-mail"
             Transparent       = TRUE
             Visible           = NONE
@@ -11134,7 +11182,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 9,00
             Size Unit         = Default
-            Tab Order         = 77
+            Tab Order         = 78
             Title             = "U.R.L."
             Transparent       = TRUE
             Visible           = NONE
@@ -11168,7 +11216,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 78
+            Tab Order         = 79
             Title             = "Referente"
             Transparent       = TRUE
             Visible           = NONE
@@ -11202,7 +11250,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 9,00
             Size Unit         = Default
-            Tab Order         = 79
+            Tab Order         = 80
             Title             = "Vettore"
             Transparent       = TRUE
             Visible           = NONE
@@ -11236,7 +11284,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 12,00
             Size Unit         = Default
-            Tab Order         = 80
+            Tab Order         = 81
             Title             = "Inoltro"
             Transparent       = TRUE
             Visible           = FALSE
@@ -11270,7 +11318,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 81
+            Tab Order         = 82
             Title             = "Agente provvigioni"
             Transparent       = TRUE
             Visible           = NONE
@@ -11304,7 +11352,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 13,00
             Size Unit         = Default
-            Tab Order         = 82
+            Tab Order         = 83
             Title             = "Cod. Esenzione"
             Transparent       = TRUE
             Visible           = NONE
@@ -11338,7 +11386,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 14,00
             Size Unit         = Default
-            Tab Order         = 83
+            Tab Order         = 84
             Title             = "Cod. Pagamento"
             Transparent       = TRUE
             Visible           = NONE
@@ -11372,7 +11420,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 12,50
             Size Unit         = Default
-            Tab Order         = 84
+            Tab Order         = 85
             Title             = "Spostamento ricevute agosto"
             Transparent       = TRUE
             Visible           = NONE
@@ -11406,7 +11454,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 14,33
             Size Unit         = Default
-            Tab Order         = 85
+            Tab Order         = 86
             Title             = "Spostamento ricevute dicembre"
             Transparent       = TRUE
             Visible           = NONE
@@ -11440,7 +11488,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 14,00
             Size Unit         = Default
-            Tab Order         = 86
+            Tab Order         = 87
             Title             = "Fido CERVED €"
             Transparent       = TRUE
             Visible           = NONE
@@ -11474,7 +11522,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 16,00
             Size Unit         = Default
-            Tab Order         = 87
+            Tab Order         = 88
             Title             = "Fido alla data"
             Transparent       = TRUE
             Visible           = NONE
@@ -11508,7 +11556,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 16,00
             Size Unit         = Default
-            Tab Order         = 88
+            Tab Order         = 89
             Title             = "Codice CAB"
             Transparent       = TRUE
             Visible           = NONE
@@ -11542,7 +11590,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 10,00
             Size Unit         = Default
-            Tab Order         = 89
+            Tab Order         = 90
             Title             = "Codice ABI"
             Transparent       = TRUE
             Visible           = NONE
@@ -11576,7 +11624,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 10,00
             Size Unit         = Default
-            Tab Order         = 90
+            Tab Order         = 91
             Title             = "Stato"
             Transparent       = TRUE
             Visible           = NONE
@@ -11610,7 +11658,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 91
+            Tab Order         = 92
             Title             = "Tipo cliente"
             Transparent       = TRUE
             Visible           = NONE
@@ -11644,7 +11692,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 12,00
             Size Unit         = Default
-            Tab Order         = 92
+            Tab Order         = 93
             Title             = "Gruppo GDO"
             Transparent       = TRUE
             Visible           = NONE
@@ -11678,7 +11726,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 12,00
             Size Unit         = Default
-            Tab Order         = 93
+            Tab Order         = 94
             Title             = "Deposito UTF"
             Transparent       = TRUE
             Visible           = NONE
@@ -11712,7 +11760,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 94
+            Tab Order         = 95
             Title             = "Note"
             Transparent       = TRUE
             Visible           = NONE
@@ -11746,7 +11794,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 95
+            Tab Order         = 96
             Title             = "Note aggiuntive"
             Transparent       = TRUE
             Visible           = NONE
@@ -11785,7 +11833,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 51,00
             Size Unit         = Default
-            Tab Order         = 96
+            Tab Order         = 97
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
@@ -11824,7 +11872,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 38,00
             Size Unit         = Default
-            Tab Order         = 97
+            Tab Order         = 98
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
@@ -11862,7 +11910,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 51,00
             Size Unit         = Default
-            Tab Order         = 98
+            Tab Order         = 99
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
@@ -11901,7 +11949,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 31,00
             Size Unit         = Default
-            Tab Order         = 99
+            Tab Order         = 100
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
@@ -11939,7 +11987,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 20,00
             Size Unit         = Default
-            Tab Order         = 100
+            Tab Order         = 101
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
@@ -11977,7 +12025,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 25,00
             Size Unit         = Default
-            Tab Order         = 101
+            Tab Order         = 102
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
@@ -12015,7 +12063,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 25,00
             Size Unit         = Default
-            Tab Order         = 102
+            Tab Order         = 103
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
@@ -12048,7 +12096,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 29,00
             Size Unit         = Default
-            Tab Order         = 103
+            Tab Order         = 104
             Title             = "Blocco bolle superiori a 500 Kg. UTF"
             Transparent       = TRUE
             Visible           = FALSE
@@ -12082,7 +12130,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 62,00
             Size Unit         = Default
-            Tab Order         = 104
+            Tab Order         = 105
             Title Picture     = x(120)
             Title Variable    = lab-banca-buf
             Transparent       = TRUE
@@ -12117,7 +12165,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 44,00
             Size Unit         = Default
-            Tab Order         = 105
+            Tab Order         = 106
             Title Picture     = X(100)
             Title Variable    = lab-iva-ese-buf
             Transparent       = TRUE
@@ -12152,7 +12200,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 50,00
             Size Unit         = Default
-            Tab Order         = 106
+            Tab Order         = 107
             Title Picture     = X(100)
             Title Variable    = lab-pag-buf
             Transparent       = TRUE
@@ -12187,7 +12235,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 12,00
             Size Unit         = Default
-            Tab Order         = 107
+            Tab Order         = 108
             Title             = "Persona &Fisica"
             Transparent       = TRUE
             Visible           = NONE
@@ -12221,7 +12269,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 12,00
             Size Unit         = Default
-            Tab Order         = 108
+            Tab Order         = 109
             Title             = "&Società"
             Transparent       = TRUE
             Visible           = NONE
@@ -12255,7 +12303,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 19,00
             Size Unit         = Default
-            Tab Order         = 109
+            Tab Order         = 110
             Title             = "Fido extra assicurato €"
             Transparent       = TRUE
             Visible           = NONE
@@ -12289,7 +12337,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 29,00
             Size Unit         = Default
-            Tab Order         = 110
+            Tab Order         = 111
             Title             = "Blocco ordini superiori 24000 Kg"
             Transparent       = TRUE
             Visible           = FALSE
@@ -12323,7 +12371,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 12,50
             Size Unit         = Default
-            Tab Order         = 111
+            Tab Order         = 112
             Title             = "Codice Ditta/Registro"
             Transparent       = TRUE
             Visible           = NONE
@@ -12357,7 +12405,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 12,00
             Size Unit         = Default
-            Tab Order         = 112
+            Tab Order         = 113
             Title             = "GG dilazione"
             Transparent       = TRUE
             Visible           = NONE
@@ -12391,7 +12439,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 12,50
             Size Unit         = Default
-            Tab Order         = 113
+            Tab Order         = 114
             Title             = "Gestione fido"
             Transparent       = TRUE
             Visible           = FALSE
@@ -12425,7 +12473,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 13,00
             Size Unit         = Default
-            Tab Order         = 114
+            Tab Order         = 115
             Title             = "Causale Blocco"
             Transparent       = TRUE
             Visible           = NONE
@@ -12459,7 +12507,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 14,00
             Size Unit         = Default
-            Tab Order         = 115
+            Tab Order         = 116
             Title             = "Fido assicurato €"
             Transparent       = TRUE
             Visible           = NONE
@@ -12493,7 +12541,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 16,00
             Size Unit         = Default
-            Tab Order         = 116
+            Tab Order         = 117
             Title             = "Fido commerciale €"
             Transparent       = TRUE
             Visible           = NONE
@@ -12527,7 +12575,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 5,50
             Size Unit         = Default
-            Tab Order         = 117
+            Tab Order         = 118
             Title             = "PFA %"
             Transparent       = TRUE
             Visible           = NONE
@@ -12561,7 +12609,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 13,00
             Size Unit         = Default
-            Tab Order         = 118
+            Tab Order         = 119
             Title             = "Sost. articolo"
             Transparent       = TRUE
             Visible           = NONE
@@ -12595,7 +12643,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 13,00
             Size Unit         = Default
-            Tab Order         = 119
+            Tab Order         = 120
             Title             = "Tipologia"
             Transparent       = TRUE
             Visible           = NONE
@@ -12629,7 +12677,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 13,00
             Size Unit         = Default
-            Tab Order         = 120
+            Tab Order         = 121
             Title             = "Cod. IVA"
             Transparent       = TRUE
             Visible           = NONE
@@ -12663,7 +12711,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 44,00
             Size Unit         = Default
-            Tab Order         = 121
+            Tab Order         = 122
             Title Picture     = X(100)
             Title Variable    = lab-cod-iva-buf
             Transparent       = TRUE
@@ -12698,7 +12746,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 5,00
             Size Unit         = Default
-            Tab Order         = 122
+            Tab Order         = 123
             Title             = "Data"
             Transparent       = TRUE
             Visible           = NONE
@@ -12732,7 +12780,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 12,50
             Size Unit         = Default
-            Tab Order         = 123
+            Tab Order         = 124
             Title             = "Invio bolle EDI"
             Transparent       = TRUE
             Visible           = NONE
@@ -12766,7 +12814,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 26,00
             Size Unit         = Default
-            Tab Order         = 124
+            Tab Order         = 125
             Title             = "Aggiunta auomatica destini EDI"
             Transparent       = TRUE
             Visible           = NONE
@@ -12800,7 +12848,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 125
+            Tab Order         = 126
             Title             = "Agente 2"
             Transparent       = TRUE
             Visible           = NONE
@@ -12839,7 +12887,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 51,00
             Size Unit         = Default
-            Tab Order         = 126
+            Tab Order         = 127
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
@@ -12872,7 +12920,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 10,00
             Size Unit         = Default
-            Tab Order         = 127
+            Tab Order         = 128
             Title             = "Codice SDI"
             Transparent       = TRUE
             Visible           = NONE
@@ -12906,7 +12954,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 128
+            Tab Order         = 129
             Title             = "PEC"
             Transparent       = TRUE
             Visible           = NONE
@@ -12939,7 +12987,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 12,17
             Size Unit         = Default
-            Tab Order         = 129
+            Tab Order         = 130
             Title             = "Esigibilità IVA"
             Transparent       = TRUE
             Visible           = NONE
@@ -12973,8 +13021,42 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 6,00
             Size Unit         = Default
-            Tab Order         = 130
+            Tab Order         = 131
             Title             = "Grade"
+            Transparent       = TRUE
+            Visible           = NONE
+            Width in Cells    = TRUE
+         End
+         Begin Label Form1-La-29baa
+            SCREEN-COL        = 126,33
+            SCREEN-LINE       = 34,00
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = Form1-La-29baa
+            Clines            = 0
+            Clines Unit       = Default
+            Color             = 0
+            Column            = 124,17
+            Csize             = 0
+            Csize Unit        = Default
+            Destroy Type      = Automatic
+            Enable            = NONE
+            Font              = Small Font
+            Font Variable     = Small-Font
+            Height in Cells   = TRUE
+            Help ID           = 0
+            ID                = 201
+            Justification     = Unaligned
+            Label Offset      = 20
+            Line              = 28,23
+            Lines             = 1,31
+            Lines Unit        = Default
+            No Key Letter     = FALSE
+            Occurs            = 0
+            Size              = 11,00
+            Size Unit         = Default
+            Tab Order         = 132
+            Title             = "Escludi fido"
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
@@ -24970,8 +25052,11 @@ BEGIN-TEXT
                    15 old-cli-pfa          PIC  s9(8)v9(4).
                    15 old-cli-pfa-perce    PIC  9(3)v999.
                    15 old-cli-data-fido-extra          PIC  9(8).
-                   15 old-cli-grade        pic 99.
-                   15 old-cli-num-vuoto-3  PIC  9(14).
+                   15 old-cli-grade        pic 99.     
+                   15 old-cli-escludi-fido PIC  9.
+                       88 old-cli-escludi-fido-si VALUE IS 1. 
+                       88 old-cli-escludi-fido-no VALUE IS 0. 
+                   15 old-cli-num-vuoto-3  PIC  9(13).
 
        01 old-des-rec.
            05 old-des-chiave.

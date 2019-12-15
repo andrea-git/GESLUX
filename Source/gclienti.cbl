@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gclienti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 3 luglio 2019 15:44:57.
+       DATE-WRITTEN.        venerdì 13 dicembre 2019 09:33:38.
        REMARKS.
       *{TOTEM}END
 
@@ -97,12 +97,12 @@
 
        WORKING-STORAGE      SECTION.
       *{TOTEM}ACU-DEF
-               COPY "ACUGUI.DEF".
-               COPY "ACUCOBOL.DEF".
-               COPY "FONTS.DEF".
-               COPY "CRTVARS.DEF".
-               COPY "OPENSAVE.DEF".
-               COPY "SHOWMSG.DEF".
+               COPY "acugui.def".
+               COPY "acucobol.def".
+               COPY "fonts.def".
+               COPY "crtvars.def".
+               COPY "opensave.def".
+               COPY "showmsg.def".
                COPY "totem.def".
                COPY "standard.def".
       *{TOTEM}END
@@ -209,6 +209,8 @@
               10 chk-invio-bolle-EDI-BUF PIC 9 VALUE ZERO.
       * Data.Check-Box
               10 chk-destino-auto-BUF PIC 9 VALUE ZERO.
+      * Data.Check-Box
+              10 chk-escludi-fido-BUF PIC 9 VALUE ZERO.
       * Data.Radio-Button
               10 Form1-RADIO-1-BUF PIC 99 VALUE ZERO.
       * Data.Entry-Field
@@ -746,8 +748,11 @@
                    15 old-cli-pfa          PIC  s9(8)v9(4).
                    15 old-cli-pfa-perce    PIC  9(3)v999.
                    15 old-cli-data-fido-extra          PIC  9(8).
-                   15 old-cli-grade        pic 99.
-                   15 old-cli-num-vuoto-3  PIC  9(14).
+                   15 old-cli-grade        pic 99.     
+                   15 old-cli-escludi-fido PIC  9.
+                       88 old-cli-escludi-fido-si VALUE IS 1. 
+                       88 old-cli-escludi-fido-no VALUE IS 0. 
+                   15 old-cli-num-vuoto-3  PIC  9(13).
 
        01 old-des-rec.
            05 old-des-chiave.
@@ -1683,6 +1688,22 @@
            WIDTH-IN-CELLS,
            SELF-ACT,
            VALUE chk-destino-auto-BUF,
+            .
+
+      * CHECK BOX
+       10
+           chk-escludi-fido, 
+           Check-Box, 
+           COL 138,67, 
+           LINE 34,00,
+           LINES 1,31 ,
+           SIZE 3,00 ,
+           ENABLED mod-campi,
+           FLAT,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           SELF-ACT,
+           VALUE chk-escludi-fido-BUF,
             .
 
       * RADIO BUTTON
@@ -3330,6 +3351,22 @@
            LEFT,
            TRANSPARENT,
            TITLE "Grade",
+           .
+
+      * LABEL
+       10
+           Form1-La-29baa, 
+           Label, 
+           COL 126,33, 
+           LINE 34,00,
+           LINES 1,31 ,
+           SIZE 11,00 ,
+           FONT IS Small-Font,
+           ID IS 201,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Escludi fido",
            .
 
       * PAGE
@@ -15183,6 +15220,8 @@
       * DB_CHECK BOX
               MOVE "N" TO cli-destino-auto-EDI
       * DB_CHECK BOX
+              MOVE 0 TO cli-escludi-fido
+      * DB_CHECK BOX
               MOVE 0 TO cli-gestione-fido
       * DB_CHECK BOX
               MOVE "N" TO cli-spost-ric-agosto
@@ -17827,6 +17866,12 @@
               ELSE
                  MOVE "N" TO cli-destino-auto-EDI
               END-IF
+      * DB_CHECK BOX : chk-escludi-fido
+              IF chk-escludi-fido-BUF = 1
+                 MOVE 1 TO cli-escludi-fido
+              ELSE
+                 MOVE 0 TO cli-escludi-fido
+              END-IF
       * DB_RADIOBOX : rb-pers, rb-soc, 
            EVALUATE Form1-RADIO-1-BUF
            WHEN 1
@@ -18157,6 +18202,12 @@
                  MOVE 1 TO chk-destino-auto-BUF
               ELSE
                  MOVE 0 TO chk-destino-auto-BUF
+              END-IF
+      * DB_CHECK BOX : chk-escludi-fido
+              IF cli-escludi-fido = 1
+                 MOVE 1 TO chk-escludi-fido-BUF
+              ELSE
+                 MOVE 0 TO chk-escludi-fido-BUF
               END-IF
       * DB_RADIOBOX : rb-pers, rb-soc, 
            EVALUATE cli-tipo-persona
@@ -18675,6 +18726,13 @@
               set NoSalvato to true
               |78-ID-chk-destino-auto è l'ID del campo chk-destino-auto
               move 78-ID-chk-destino-auto to store-id 
+           end-if
+
+           if cli-escludi-fido not = old-cli-escludi-fido
+              and SiSalvato
+              set NoSalvato to true
+              |38 è l'ID del campo chk-escludi-fido
+              move 38 to store-id
            end-if
 
            if cli-tipo-persona not = old-cli-tipo-persona
@@ -20283,6 +20341,9 @@
       -    "ente" to TOTEM-HINT-TEXT
            WHEN 5033 MOVE "Attiva l'aggiunta automatica del destino EDI 
       -    "se non esiste in fase di import" to TOTEM-HINT-TEXT
+           WHEN 38 MOVE "Esclude il cliente dai controlli sul fido (sia 
+      -    "il blocco sullo stato cliente che il controllo in inseriment
+      -    "o ordine/importazione)" to TOTEM-HINT-TEXT
            WHEN 5036 MOVE "Digitare i giorni di dilazione pagamento conc
       -    "essi" to TOTEM-HINT-TEXT
            WHEN 5037 MOVE "Controlla la situazione finanaziaria al momen
@@ -20435,6 +20496,7 @@
            When 5031 PERFORM cbo-stato-BeforeProcedure
            When 5032 PERFORM chk-superamento-BeforeProcedure
            When 5033 PERFORM chk-superamento-BeforeProcedure
+           When 38 PERFORM chk-superamento-BeforeProcedure
            When 5036 PERFORM ef-iva-BeforeProcedure
            When 5037 PERFORM chk-spost-ago-BeforeProcedure
            When 5038 PERFORM ef-iva-BeforeProcedure
@@ -20535,6 +20597,7 @@
            When 5029 PERFORM ef-note-agg-AfterProcedure
            When 5032 PERFORM chk-superamento-AfterProcedure
            When 5033 PERFORM chk-superamento-AfterProcedure
+           When 38 PERFORM chk-superamento-AfterProcedure
            When 5034 PERFORM Form1-DaRb-1-AfterProcedure
            When 5035 PERFORM Form1-DaRb-1-AfterProcedure
            When 5036 PERFORM ef-iva-AfterProcedure

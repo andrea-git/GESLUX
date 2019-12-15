@@ -114,4 +114,7 @@
                    15 cli-pfa-perce    PIC  9(3)v999.
                    15 cli-data-fido-extra          PIC  9(8).
                    15 cli-grade        PIC  9(2).
-                   15 cli-num-vuoto-3  PIC  9(14).
+                   15 cli-escludi-fido PIC  9.
+                       88 cli-escludi-fido-si VALUE IS 1. 
+                       88 cli-escludi-fido-no VALUE IS 0. 
+                   15 cli-num-vuoto-3  PIC  9(13).

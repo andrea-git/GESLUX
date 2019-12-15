@@ -702,6 +702,8 @@ LABLAB***---
       
       ***---
        CONTROLLA-FUORI-FIDO.
+           if cli-escludi-fido-si exit paragraph end-if.
+
 LUBEXX        initialize calfido-linkage 
 LUBEXX                   replacing numeric data by zeroes
 LUBEXX                        alphanumeric data by spaces

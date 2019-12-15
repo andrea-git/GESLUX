@@ -821,6 +821,19 @@
                 into line-riga
               end-string
               write line-riga
+           else
+              initialize line-riga
+              string 78-spazi   
+                     78-spazi   
+                     78-spazi             
+                     78-spazi 
+                     78-spazi       
+                     "<IdCodice>"
+                     "00000000000" delimited low-value
+                     "</IdCodice>" 
+                into line-riga
+              end-string
+              write line-riga
       *****     else
       *****        if cli-codfis not = spaces           
       *****           inspect cli-codfis 

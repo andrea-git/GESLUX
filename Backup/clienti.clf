@@ -2,7 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E36475425-571-1842318962
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E3CD82252-449-1416422803
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -1083,13 +1083,41 @@ m_bFixed=1
 
 @}}
 [FDITEM111_]
-m_strName=cli-num-vuoto-3
-m_strRawPic=9(14)
-m_strPic=9(14)
+m_strName=cli-escludi-fido
+m_strRawPic=9
+m_strPic=9
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM111_
+
+@}}
+[FDITEM112_]
+m_strName=cli-escludi-fido-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM112_
+
+@}}
+[FDITEM113_]
+m_strName=cli-escludi-fido-no
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM113_
+
+@}}
+[FDITEM114_]
+m_strName=cli-num-vuoto-3
+m_strRawPic=9(13)
+m_strPic=9(13)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM114_
 
 @}}
 [CStoAcucobolSL_]

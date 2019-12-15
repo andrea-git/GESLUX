@@ -77,7 +77,13 @@
        77  nargs                pic 99  comp-1 value 0.   
 
        77  cmd                  pic x(600).
-       77  riga                 pic 9(5).
+       77  riga                 pic 9(5).      
+                                                 
+       77  n-gia-bolla          pic 9(5) value 0.
+       77  n-no-ordine          pic 9(5) value 0.
+       77  n-no-bolla           pic 9(5) value 0.
+       77  n-associate          pic 9(5) value 0.
+       77  n-prenotate          pic 9(5) value 0.
                                              
        77  status-call          signed-short.
 
@@ -333,6 +339,21 @@
              into como-messaggio
            end-string.
            perform COMPONI-RIGA-LOG.
+           initialize como-messaggio. 
+           string "FATTURE PRENOTATE "              delimited size
+                  n-prenotate                       delimited size
+                  " - BOLLE ASSOCIATE: "            delimited size
+                  n-associate                       delimited size
+                  " - RIGHE CON BOLLE NON VALIDE: " delimited size
+                  n-no-bolla                        delimited size            
+                  " - ORDINI NON TROVATI: "         delimited size
+                  n-no-ordine                       delimited size
+                  " - ORDINI GIA' BOLLETTATI: "     delimited size
+                  n-gia-bolla                       delimited size
+                  " FILES CSV"                      delimited size
+             into como-messaggio
+           end-string.      
+           perform COMPONI-RIGA-LOG.
 
       ***---
        ELABORA-FILE.
@@ -367,14 +388,11 @@
            move 0 to num-bolla data-bolla.
            
            move lunbol to num-bolla convert.
-           move ludbol(5:2) to ludbol(7:2).
-           move "20"        to ludbol(5:2).
-           move ludbol(5:4) to data-bolla(1:4) convert.
-           move ludbol(3:2) to data-bolla(5:2) convert.
-           move ludbol(1:2) to data-bolla(7:2) convert.
-
-           move luaord to luaord(3:2).
-           move "20"   to luaord(1:2).
+           move LUDBOL(6:2) to LUDBOL(8:2).
+           move "20"        to LUDBOL(6:2).
+           move LUDBOL(6:4) to data-bolla(1:4) convert.
+           move LUDBOL(4:2) to data-bolla(5:2) convert.
+           move LUDBOL(2:2) to data-bolla(7:2) convert.
 
            if num-bolla  = 0 or
               data-bolla = 0                    
@@ -386,14 +404,15 @@
                 into como-messaggio
               end-string           
               move 1 to batch-status
-              perform COMPONI-RIGA-LOG
+              perform COMPONI-RIGA-LOG        
+              add 1 to n-no-bolla
            else
               move num-bolla       to tor-num-bolla
               move data-bolla(1:4) to tor-anno-bolla
               read tordini no lock key k-bolla
                    invalid            
-                   move luaord to tor-anno   convert
-                   move lunord to tor-numero convert
+                   move LURFOR(2:4) to tor-anno   convert
+                   move LURFOR(6:)  to tor-numero convert
                    read tordini lock
                         invalid                                 
                         initialize como-messaggio
@@ -407,7 +426,8 @@
                           into como-messaggio
                         end-string
                         perform COMPONI-RIGA-LOG
-                        move 1 to batch-status
+                        move 1 to batch-status 
+                        add 1 to n-no-ordine
                     not invalid
                         if tor-anno-bolla not = 0 or
                            tor-data-bolla not = 0 or
@@ -424,12 +444,14 @@
                              into como-messaggio
                            end-string           
                            move 1 to batch-status
-                           perform COMPONI-RIGA-LOG
+                           perform COMPONI-RIGA-LOG 
+                           add 1 to n-gia-bolla
                         else       
                            move num-bolla       to tor-num-bolla
                            move data-bolla(1:4) to tor-anno-bolla
                            move data-bolla      to tor-data-bolla
-                           rewrite tor-rec                             
+                           rewrite tor-rec       
+                           add 1 to n-associate
                            initialize como-messaggio            
                            string "RIGA: "            delimited size
                                   riga                delimited size
@@ -492,6 +514,7 @@
                 into como-messaggio
               end-string                    
               perform COMPONI-RIGA-LOG
+              add 1 to n-prenotate
            else
               move lprenf-errore to tipo-errore
               perform MSG-ERRORE-PRENF
