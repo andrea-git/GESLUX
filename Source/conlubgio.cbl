@@ -468,8 +468,7 @@
                                   ". BOLLA ASSOCIATA" delimited size
                              into como-messaggio
                            end-string                    
-                           perform COMPONI-RIGA-LOG
-                           unlock tordini all records
+                           perform COMPONI-RIGA-LOG    
                            perform PRENOTAZIONE-FATTURA
                         end-if
                    end-read
@@ -497,22 +496,39 @@
            call   "bprenf" using link-bprenf.
            cancel "bprenf".
            if lprenf-errore = space                  
-              initialize como-messaggio
-              string "RIGA: "              delimited size
-                     riga                  delimited size
-                     " - ORDINE:"          delimited size
-                     tor-anno              delimited size
-                     " - "                 delimited size
-                     tor-numero            delimited size
-                     " - BOLLA N. "        delimited size
-                     tor-anno-bolla        delimited size
-                     " - "                 delimited size
-                     tor-num-bolla         delimited size
-                     " del "               delimited size
-                     tor-data-bolla        delimited size
-                     ". FATTURA PRENOTATA" delimited size
-                into como-messaggio
-              end-string                    
+              set tor-fatt-si-prenotata to true
+              rewrite tor-rec
+              unlock tordini all records
+              if status-tordini = "00"
+                 initialize como-messaggio
+                 string "RIGA: "              delimited size
+                        riga                  delimited size
+                        " - ORDINE:"          delimited size
+                        tor-anno              delimited size
+                        " - "                 delimited size
+                        tor-numero            delimited size
+                        " - BOLLA N. "        delimited size
+                        tor-anno-bolla        delimited size
+                        " - "                 delimited size
+                        tor-num-bolla         delimited size
+                        " del "               delimited size
+                        tor-data-bolla        delimited size
+                        ". FATTURA PRENOTATA" delimited size
+                   into como-messaggio
+                 end-string                    
+              else
+                 initialize como-messaggio
+                 string "RIGA: "                    delimited size
+                        riga                        delimited size
+                        " - ORDINE:"                delimited size
+                        tor-anno                    delimited size
+                        " - "                       delimited size
+                        tor-numero                  delimited size
+                        " ERRORE IN PRENOTAZIONE: " delimited size
+                        status-tordini              delimited size
+                   into como-messaggio
+                 end-string
+              end-if
               perform COMPONI-RIGA-LOG
               add 1 to n-prenotate
            else

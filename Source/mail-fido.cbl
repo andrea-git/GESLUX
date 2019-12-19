@@ -760,7 +760,15 @@
                           end-if
                           if not sf-verifica-2-ok
                              set cli-prob-pag   to true
-                          end-if
+                          end-if          
+                          initialize como-riga
+                          string "CLIENTE: "         delimited size
+                                 cli-codice          delimited size
+                                 " - CAUSA BLOCCO: " delimited size
+                                 cli-cau-blocco      delimited size
+                            into como-riga
+                          end-string          
+                          perform SETTA-RIGA-LOG
                           |23/05/2012
                           rewrite cli-rec invalid continue end-rewrite
                        end-if
@@ -810,7 +818,7 @@
                     read ttipocli no lock
                          invalid
                      not invalid
-                         if tcl-fido-nuovo-si
+                         if tcl-fido-nuovo-si and cli-escludi-fido-no
                             initialize calfido-linkage 
                                        replacing numeric data by zeroes
                                             alphanumeric data by spaces
@@ -828,6 +836,8 @@
                                       saldo-scaduto(1:13) delimited size
                                       ","                 delimited size
                                       saldo-scaduto(14:2) delimited size
+                                      " - BLOCCATO PER PROBLEMATICHE"
+                                      " DI PAGAMENTO"     delimited size
                                  into como-riga
                                end-string          
                                perform SETTA-RIGA-LOG
