@@ -33,6 +33,12 @@
            organization is line sequential
            access mode  is sequential
            file status  is status-file-log.
+       
+       select fittizio
+           assign       to wstampa
+           organization is line sequential
+           access mode  is sequential
+           file status  is status-fittizio.
 
       *****************************************************************
        DATA DIVISION.
@@ -42,10 +48,13 @@
            copy "tsetinvio.fd".   
 
        FD  lineseq1.
-       01 line-riga        pic x(900).
+       01 line-riga        pic x(900).  
 
        FD  file-log.
        01 log-riga         pic x(900).
+
+       FD  fittizio.
+       01 fittizio-riga    pic x.
 
        WORKING-STORAGE SECTION.
            copy "mail.def".    
@@ -68,6 +77,7 @@
                                         
        77  status-tordini       pic xx.     
        77  status-tsetinvio     pic xx.     
+       77  status-fittizio      pic xx.     
        77  status-lineseq       pic xx.
        77  status-file-log      pic xx.
        77  wstampa              pic x(256).   
@@ -747,6 +757,8 @@ LUBEXX          move "Prezzo incoerente!!!"
            move "INVIO MAIL IN CORSO..." to como-messaggio.
            perform COMPONI-RIGA-LOG.
 
+
+
            initialize LinkBody.
            move "RIEPILOGO ERRORI CONFERME LBX GIORNALIERE" 
              to LinkSubject.
@@ -756,6 +768,20 @@ LUBEXX          move "Prezzo incoerente!!!"
            set errori to true.
            move 0 to tentativi.
            move "conlubgio" to NomeProgramma.
+                                            
+           accept  wstampa from environment "PATH_ST".
+           inspect wstampa replacing trailing spaces by low-value.
+           string  wstampa    delimited low-value
+                   "FITTIZIO" delimited size
+                   into wstampa
+           end-string.
+           open output fittizio.
+           close       fittizio.
+                  
+           initialize LinkAttach.
+           string wstampa delimited low-value
+             into LinkAttach
+           end-string.
       
            perform 10 times
               add 1 to tentativi
@@ -799,6 +825,8 @@ LUBEXX          move "Prezzo incoerente!!!"
               perform COMPONI-RIGA-LOG
       
            end-perform.
+
+           delete file fittizio.
 
       ***---
        COMPONI-RIGA-LOG.
