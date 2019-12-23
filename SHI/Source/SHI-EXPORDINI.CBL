@@ -830,14 +830,12 @@
            move low-value          to tor-chiave.
  
            start tordini key not < k-tor-inviare
-              invalid  
-                 set errori to true
+                 invalid set errori to true
            end-start.
            if tutto-ok
               perform until 1 = 2
                  read tordini next no lock
-                    at end       
-                       exit perform 
+                   at end exit perform 
                  end-read        
                  if tor-da-inviare-no
                     exit perform

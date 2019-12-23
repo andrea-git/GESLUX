@@ -3096,6 +3096,8 @@ BLISTR        inspect st-imb replacing trailing low-value by spaces
 
       ***---
        ORDINE-IN-BOLLA.
+           copy tordini.fd
+
            move tor-anno to eva-anno.
            if eva-da = 0
               move tor-numero to eva-da

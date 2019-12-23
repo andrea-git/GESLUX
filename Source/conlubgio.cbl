@@ -18,8 +18,9 @@
        SPECIAL-NAMES. decimal-point is comma.
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.                          
-           copy "lineseq.sl".
-           copy "tordini.sl".     
+           copy "lineseq.sl".    
+           copy "tordini.sl".    
+           copy "rordini.sl".     
            copy "tsetinvio.sl".   
 
        select lineseq1
@@ -44,7 +45,8 @@
        DATA DIVISION.
        FILE SECTION.         
            copy "lineseq.fd".       
-           copy "tordini.fd".   
+           copy "tordini.fd".       
+           copy "rordini.fd".   
            copy "tsetinvio.fd".   
 
        FD  lineseq1.
@@ -60,6 +62,7 @@
            copy "mail.def".    
            copy "acucobol.def". 
            copy "link-bprenf.def". 
+           copy "link-wprogmag.def".
 
        01 tipo-errore      PIC  x.
            88 errore-prezzo VALUE IS "P". 
@@ -74,8 +77,9 @@
            88 errore-iva-020 VALUE IS "V". 
            88 errore-iva-021 VALUE IS "Y". 
            88 errore-totale-0 VALUE IS "0". 
-                                        
-       77  status-tordini       pic xx.     
+                                         
+       77  status-tordini       pic xx.  
+       77  status-rordini       pic xx.     
        77  status-tsetinvio     pic xx.     
        77  status-fittizio      pic xx.     
        77  status-lineseq       pic xx.
@@ -310,6 +314,7 @@
            if tutto-ok
               open input tsetinvio
            end-if.
+           open input rordini.
 
       ***---
        ELABORAZIONE.
@@ -456,10 +461,12 @@
                            move 1 to batch-status
                            perform COMPONI-RIGA-LOG 
                            add 1 to n-gia-bolla
-                        else       
+                        else   
+                           perform QTA-BOLLA
                            move num-bolla       to tor-num-bolla
                            move data-bolla(1:4) to tor-anno-bolla
-                           move data-bolla      to tor-data-bolla
+                           move data-bolla      to tor-data-bolla   
+                           set tor-da-inviare-no to true
                            rewrite tor-rec       
                            add 1 to n-associate
                            initialize como-messaggio            
@@ -497,6 +504,37 @@
                    perform COMPONI-RIGA-LOG
               end-read                  
            end-if.
+
+      ***---
+       QTA-BOLLA.
+           move tor-anno       to ror-anno.
+           move tor-numero     to ror-num-ordine.
+           move low-value      to ror-num-riga.
+           start rordini key >= ror-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read rordini next at end exit perform end-read
+                    if ror-anno       not = tor-anno or
+                       ror-num-ordine not = tor-numero
+                       exit perform
+                    end-if
+                    move 0       to link-impegnato
+                    move ror-qta to link-valore
+                    set link-update         to true
+                    move ror-prg-chiave     to link-key
+                    move tor-causale        to link-causale
+                    set link-update-um      to true
+                    set link-update-peso    to false
+                    set link-update-valore  to false
+                    move "0000000000000000" to link-array
+                    move  1                 to multiplyer(1)
+                    move -1                 to multiplyer(2)
+                    move "BATCH"            to link-user 
+                    call   "wprogmag" using link-wprogmag
+                    cancel "wprogmag"
+                 end-perform
+           end-start.
 
       ***---
        PRENOTAZIONE-FATTURA.
@@ -700,7 +738,7 @@ LUBEXX          move "Prezzo incoerente!!!"
 
       ***--
        CLOSE-FILES.
-           close tordini tsetinvio.
+           close tordini tsetinvio rordini.
            move "CHIUSURA FILES" to como-messaggio.
            perform COMPONI-RIGA-LOG.
 
