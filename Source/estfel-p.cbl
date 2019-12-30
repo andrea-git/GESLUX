@@ -1195,8 +1195,21 @@
                      "<DatiOrdineAcquisto>"
                 into line-riga
               write line-riga            
-           
-              if tor-num-ord-cli not = spaces
+              
+              if tor-num-ord-cli = spaces    
+                 inspect tor-num-ord-cli
+                         replacing trailing spaces by low-value
+                 initialize line-riga
+                 string 78-spazi 
+                        78-spazi       
+                        78-spazi 
+                        78-spazi 
+                        "<IdDocumento>"
+                        "." delimited low-value
+                        "</IdDocumento>"
+                   into line-riga
+                 write line-riga
+              else
                  inspect tor-num-ord-cli
                          replacing trailing spaces by low-value
                  initialize line-riga
