@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          loginscrn IS INITIAL PROGRAM.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        lunedì 11 giugno 2018 15:26:12.
+       AUTHOR.              Utente.
+       DATE-WRITTEN.        venerdì 3 gennaio 2020 23:00:21.
        REMARKS.
       *{TOTEM}END
 
@@ -49,7 +49,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -161,10 +161,10 @@
               05 ef-pass-BUF PIC X(20).
 
        77 TMP-Form1-KEY1-ORDER  PIC X VALUE "A".
-       77 TMP-Form1-USER-RESTOREBUF  PIC X(351).
+       77 TMP-Form1-USER-RESTOREBUF  PIC X(1015).
        77 TMP-Form1-KEYIS  PIC 9(3) VALUE 1.
-       77 Form1-MULKEY-TMPBUF   PIC X(351).
-       77 TMP-DataSet1-USER-BUF     PIC X(351).
+       77 Form1-MULKEY-TMPBUF   PIC X(1015).
+       77 TMP-DataSet1-USER-BUF     PIC X(1015).
        77 TMP-DataSet1-tconvanno-BUF     PIC X(163).
        77 TMP-DataSet1-pass-BUF     PIC X(1000).
        77 TMP-DataSet1-STO-tordini-BUF     PIC X(3898).

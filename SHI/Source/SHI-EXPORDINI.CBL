@@ -806,7 +806,7 @@
 
       ***---
        OPEN-FILES.
-           open i-o   tordini.
+           open input tordini.
            open i-o   art-exp-shi.
            open input mtordini.
            open input rordini.
@@ -826,10 +826,9 @@
 
       ***---
        ELABORAZIONE.
-           set tor-da-inviare-si   to true.
-           move low-value          to tor-chiave.
+           move low-value to tor-anno-bolla tor-num-bolla.
  
-           start tordini key not < k-tor-inviare
+           start tordini key >= k-bolla
                  invalid set errori to true
            end-start.
            if tutto-ok
@@ -837,7 +836,7 @@
                  read tordini next no lock
                    at end exit perform 
                  end-read        
-                 if tor-da-inviare-no
+                 if tor-anno-bolla not = 0 or tor-num-bolla not = 0
                     exit perform
                  end-if
                                        
@@ -1324,7 +1323,6 @@
            close prodener.
            close progmag.
            close tmp-tordini-exp.
-
   
       ***---
        VALIDA-ORDINE.
@@ -1381,6 +1379,34 @@
                         " non esportato "      delimited by size
                         "in quanto codice "    delimited by size
                         "pagamento R04 "       delimited by size
+                        into como-messaggio
+                 set errore-bloccante  to false
+                 perform SCRIVI-ERORRE
+              end-if
+           end-if.
+           if tutto-ok
+              if tor-num-fattura  not = 0 or
+                 tor-data-fattura not = 0
+                 set errori  to true
+                 add 1 to num-rec-no-exp
+                 
+                 move tor-numero     to tor-numero-ed
+                 call "C$JUSTIFY" using tor-numero-ed, "L"
+                 inspect tor-numero-ed 
+                                replacing trailing space by low-value
+                 initialize como-messaggio
+                 string "Ordine "                   delimited size
+                        tor-anno                    delimited size
+                        "/"                         delimited size
+                        tor-numero-ed               delimited low-value
+                        " non esportato "           delimited size
+                        "in quanto già fatturato. " delimited size
+                        "N. fattura "               delimited size
+                        tor-num-fattura             delimited size
+                        " - Anno "                  delimited size
+                        tor-anno-fattura            delimited size
+                        " - "                       delimited size
+                        tor-data-fattura            delimited size
                         into como-messaggio
                  set errore-bloccante  to false
                  perform SCRIVI-ERORRE

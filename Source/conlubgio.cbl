@@ -544,7 +544,8 @@
            call   "bprenf" using link-bprenf.
            cancel "bprenf".
            if lprenf-errore = space                  
-              set tor-fatt-si-prenotata to true
+              set tor-fatt-si-prenotata to true 
+              set tor-da-inviare-no to true
               rewrite tor-rec
               unlock tordini all records
               if status-tordini = "00"

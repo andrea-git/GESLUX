@@ -19724,7 +19724,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:SOURCE\conlubgio.cbl]
-COPY_DEPENDENCE=FD\lineseq.sl;FD\tordini.sl;FD\tsetinvio.sl;FD\lineseq.fd;FD\tordini.fd;FD\tsetinvio.fd;Copylib\mail.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;Copylib\link-bprenf.def;Copylib\link-batch.def;Copylib\mail.cpy
+COPY_DEPENDENCE=FD\lineseq.sl;FD\tordini.sl;FD\rordini.sl;FD\tsetinvio.sl;FD\lineseq.fd;FD\tordini.fd;FD\rordini.fd;FD\tsetinvio.fd;Copylib\mail.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;Copylib\link-bprenf.def;Copylib\link-wprogmag.def;Copylib\link-batch.def;Copylib\mail.cpy
 ADDITIONAL_OPTIONS=-x -Di -Ga -Zd -Za -Zn -Zz
 FOLLOW_PROJECT=1
 ; Standard Options
