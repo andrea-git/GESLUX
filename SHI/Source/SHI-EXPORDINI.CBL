@@ -937,41 +937,7 @@
               end-if
            end-if.
 
-           perform READ-TORDINI-LOCK
-           if tutto-OK
-              perform EXP-ORDINE
-           end-if.
-
-      ***---
-       READ-TORDINI-LOCK.
-           set RecLocked to false.
-
-           set tutto-ok to true.
-           read tordini with lock key is k-tor-inviare
-              invalid 
-                 continue 
-           end-read.
-
-           if RecLocked
-              initialize como-messaggio
-              move tor-numero     to tor-numero-ed
-              call "C$JUSTIFY" using tor-numero-ed, "L"
-              inspect tor-numero-ed 
-                                replacing trailing space by low-value
-              string "Ordine "           delimited by size
-                     tor-anno            delimited by size
-                     "/"                 delimited by size
-                     tor-numero-ed       delimited by low-value
-                     " non esportato "   delimited by size
-                     "in quanto già in uso su un altro terminale"
-                                         delimited by size
-                     into como-messaggio
-              set errore-bloccante  to false
-              perform SCRIVI-ERORRE
-              read tordini no lock
-              unlock tordini all records
-              add 1 to num-rec-no-exp
-           end-if.
+           perform EXP-ORDINE.
 
       ***---
        EXP-ORDINE.
