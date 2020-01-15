@@ -174,7 +174,7 @@
        77  idx-err               pic 9(5) value 0.
        01  body-mess.
          05 body-mess-riga       occurs 99.
-            10 el-body-mess      pic x(100). 
+            10 el-body-mess      pic x(300). 
             10 filler            pic x(5) value x"0d0a".
 
        LINKAGE SECTION.
@@ -411,11 +411,13 @@
 
            if num-bolla  = 0 or
               data-bolla = 0                    
-              initialize como-messaggio
-              string "RIGA: "       delimited size
-                     riga           delimited size
+              initialize como-messaggio     
+              string "FILE: "                       delimited size
+                     nome-file                      delimited low-value
+                     " || RIGA: "                   delimited size
+                     riga                           delimited size
                      " - RIFERIMENTI BOLLA NON PRESENTI" 
-                                    delimited size
+                                                    delimited size
                 into como-messaggio
               end-string           
               move 1 to batch-status
@@ -431,13 +433,15 @@
                    read tordini lock
                         invalid                                 
                         initialize como-messaggio
-                        string "RIGA: "       delimited size
-                               riga           delimited size
-                               " - ORDINE:"   delimited size
-                               tor-anno       delimited size
-                               " - "          delimited size
-                               tor-numero     delimited size
-                               " NON TROVATO" delimited size
+                        string "FILE: "                 delimited size
+                               nome-file           delimited low-value
+                               " || RIGA: "             delimited size
+                               riga                     delimited size
+                               " - ANNO EVASIONE: "     delimited size
+                               tor-anno                 delimited size
+                               " || N. EVASIONE: "      delimited size
+                               tor-numero               delimited size
+                               " - ORDINE NON TROVATO." delimited size
                           into como-messaggio
                         end-string
                         perform COMPONI-RIGA-LOG
@@ -448,12 +452,14 @@
                            tor-data-bolla not = 0 or
                            tor-num-bolla  not = 0               
                            initialize como-messaggio
-                           string "RIGA: "       delimited size
-                                  riga           delimited size
-                                  " - ORDINE:"   delimited size
-                                  tor-anno       delimited size
-                                  " - "          delimited size
-                                  tor-numero     delimited size
+                           string "FILE: "             delimited size
+                                  nome-file        delimited low-value
+                                  " || RIGA: "         delimited size
+                                  riga                 delimited size
+                                  " - ANNO EVASIONE: " delimited size
+                                  tor-anno             delimited size
+                                  " || N. EVASIONE: "  delimited size
+                                  tor-numero           delimited size
                                   " . GIA' BOLLETTATO" 
                                                  delimited size
                              into como-messaggio
@@ -470,19 +476,26 @@
                            rewrite tor-rec       
                            add 1 to n-associate
                            initialize como-messaggio            
-                           string "RIGA: "            delimited size
-                                  riga                delimited size
-                                  " - ORDINE:"        delimited size
-                                  tor-anno            delimited size
-                                  " - "               delimited size
-                                  tor-numero          delimited size
-                                  " - BOLLA N. "      delimited size
-                                  tor-anno-bolla      delimited size
-                                  " - "               delimited size
-                                  tor-num-bolla       delimited size
-                                  " del "             delimited size
-                                  tor-data-bolla      delimited size
-                                  ". BOLLA ASSOCIATA" delimited size
+                           string "FILE: "              delimited size
+                                  nome-file        delimited low-value
+                                  " || RIGA: "          delimited size
+                                  riga                  delimited size
+                                  " - ANNO EVASIONE: "  delimited size
+                                  tor-anno              delimited size
+                                  " || N. EVASIONE: "   delimited size
+                                  tor-numero            delimited size
+                                  " - ANNO BOLLA: "     delimited size
+                                  tor-anno-bolla        delimited size
+                                  " || N. BOLLA: "      delimited size
+                                  tor-num-bolla         delimited size
+                                  " || DEL: "           delimited size
+                                  tor-data-bolla(7:2)   delimited size
+                                  "/"                   delimited size
+                                  tor-data-bolla(5:2)   delimited size
+                                  "/"                   delimited size
+                                  tor-data-bolla(1:4)   delimited size
+                                  " - BOLLA ASSOCIATA CORRETTAMENTE."
+                                                        delimited size
                              into como-messaggio
                            end-string                    
                            perform COMPONI-RIGA-LOG    
@@ -490,16 +503,29 @@
                         end-if
                    end-read
                not invalid
-                   initialize como-messaggio
-                   string "RIGA: "       delimited size
-                          riga           delimited size
-                          " - RIFERIMENTI BOLLA GIA' PRESENTI: " 
-                                         delimited size
-                          tor-anno-bolla delimited size
-                          " - "          delimited size
-                          tor-num-bolla
+                   initialize como-messaggio             
+                   string "FILE: "              delimited size
+                          nome-file             delimited low-value
+                          " || RIGA: "          delimited size
+                          riga                  delimited size
+                          " - ANNO EVASIONE: "  delimited size
+                          tor-anno              delimited size
+                          " || N. EVASIONE: "   delimited size
+                          tor-numero            delimited size
+                          " - ANNO BOLLA: "     delimited size
+                          tor-anno-bolla        delimited size
+                          " || N. BOLLA: "      delimited size
+                          tor-num-bolla         delimited size
+                          " || DEL: "           delimited size
+                          tor-data-bolla(7:2)   delimited size
+                          "/"                   delimited size
+                          tor-data-bolla(5:2)   delimited size
+                          "/"                   delimited size
+                          tor-data-bolla(1:4)   delimited size
+                          " - RIFERIMENTI BOLLA GIA' PRESENTI."
+                                                delimited size
                      into como-messaggio
-                   end-string           
+                   end-string                    
                    move 1 to batch-status
                    perform COMPONI-RIGA-LOG
               end-read                  
@@ -549,34 +575,54 @@
               rewrite tor-rec
               unlock tordini all records
               if status-tordini = "00"
-                 initialize como-messaggio
-                 string "RIGA: "              delimited size
+                 initialize como-messaggio              
+                 string "FILE: "              delimited size
+                        nome-file        delimited low-value
+                        " || RIGA: "          delimited size
                         riga                  delimited size
-                        " - ORDINE:"          delimited size
+                        " - ANNO EVASIONE: "  delimited size
                         tor-anno              delimited size
-                        " - "                 delimited size
+                        " || N. EVASIONE: "   delimited size
                         tor-numero            delimited size
-                        " - BOLLA N. "        delimited size
+                        " - ANNO BOLLA: "     delimited size
                         tor-anno-bolla        delimited size
-                        " - "                 delimited size
+                        " || N. BOLLA: "      delimited size
                         tor-num-bolla         delimited size
-                        " del "               delimited size
-                        tor-data-bolla        delimited size
-                        ". FATTURA PRENOTATA" delimited size
+                        " || DEL: "           delimited size
+                        tor-data-bolla(7:2)   delimited size
+                        "/"                   delimited size
+                        tor-data-bolla(5:2)   delimited size
+                        "/"                   delimited size
+                        tor-data-bolla(1:4)   delimited size
+                        " - FATTURA PRENOTATA CORRETTAMENTE."
+                                              delimited size
                    into como-messaggio
                  end-string                    
               else
-                 initialize como-messaggio
-                 string "RIGA: "                    delimited size
-                        riga                        delimited size
-                        " - ORDINE:"                delimited size
-                        tor-anno                    delimited size
-                        " - "                       delimited size
-                        tor-numero                  delimited size
-                        " ERRORE IN PRENOTAZIONE: " delimited size
-                        status-tordini              delimited size
+                 initialize como-messaggio              
+                 string "FILE: "              delimited size
+                        nome-file        delimited low-value
+                        " || RIGA: "          delimited size
+                        riga                  delimited size
+                        " - ANNO EVASIONE: "  delimited size
+                        tor-anno              delimited size
+                        " || N. EVASIONE: "   delimited size
+                        tor-numero            delimited size
+                        " - ANNO BOLLA: "     delimited size
+                        tor-anno-bolla        delimited size
+                        " || N. BOLLA: "      delimited size
+                        tor-num-bolla         delimited size
+                        " || DEL: "           delimited size
+                        tor-data-bolla(7:2)   delimited size
+                        "/"                   delimited size
+                        tor-data-bolla(5:2)   delimited size
+                        "/"                   delimited size
+                        tor-data-bolla(1:4)   delimited size
+                        " - ERRORE IN PRENOTAZIONE: "
+                                              delimited size
+                        status-tordini        delimited size
                    into como-messaggio
-                 end-string
+                 end-string                 
               end-if
               perform COMPONI-RIGA-LOG
               add 1 to n-prenotate
@@ -602,7 +648,7 @@ LUBEXX          move "Prezzo incoerente!!!"
                 move "Iva E15 non presente"
                   to msg-err-pren
            when errore-imposte
-                move "Ricalcolare le imposte ripassando"
+                move "Ricalcolare le imposte ripassando la riga"
                   to msg-err-pren
            when errore-prezzo-master
                 move "Il prezzo non coincide con l'ordine master"
@@ -627,7 +673,23 @@ LUBEXX          move "Prezzo incoerente!!!"
            string "FILE: "                       delimited size
                   nome-file                      delimited low-value
                   " || RIGA: "                   delimited size
+                  riga                           delimited size
+                  " - ANNO EVASIONE: "           delimited size
+                  tor-anno                       delimited size
+                  " || N. EVASIONE: "            delimited size
+                  tor-numero                     delimited size
+                  " || RIGA EVASIONE: "          delimited size
                   lprenf-riga                    delimited size
+                  " - ANNO BOLLA: "              delimited size
+                  tor-anno-bolla                 delimited size
+                  " || N. BOLLA: "               delimited size
+                  tor-num-bolla                  delimited size
+                  " || DEL: "                    delimited size
+                  tor-data-bolla(7:2)            delimited size
+                  "/"                            delimited size
+                  tor-data-bolla(5:2)            delimited size
+                  "/"                            delimited size
+                  tor-data-bolla(1:4)            delimited size
                   " - PRENOTAZIONE NON RIUSCITA" delimited size
                   " - "                          delimited size
                   msg-err-pren                   delimited size
@@ -636,7 +698,7 @@ LUBEXX          move "Prezzo incoerente!!!"
            set errori-elab to true
            add 1 to idx-err.
            move como-messaggio to el-body-mess(idx-err).
-           perform COMPONI-RIGA-LOG.
+           perform COMPONI-RIGA-LOG. 
 
       ***---
        SPOSTA-IN-BACKUP.

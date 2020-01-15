@@ -125,9 +125,6 @@
        01                 pic 9.
            88 prima-volta value 1 false zero. 
 
-       01  FlagLocked       PIC  9.
-           88 RecLocked VALUE IS 1    WHEN SET TO FALSE  0. 
-
        77  tor-numero-ed     pic z(8).
 
        77  num-rec-righe     pic 9(10).
@@ -417,9 +414,6 @@
                 move "[tordini] Indexed file corrupt!" to como-messaggio
                 set errore-bloccante  to true
                 perform SCRIVI-ERORRE
-           when "93"
-           when "99"
-                set RecLocked to true
            end-evaluate.
 
       ***---
