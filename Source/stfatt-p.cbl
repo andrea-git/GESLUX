@@ -907,8 +907,12 @@ LUBEXX           end-if
                  |set  trovato to false
                  perform until 1 = 2
                     set record-ok  to false
-                    read tnotacr next at end      exit perform end-read
-                    if LinkAnno  not = tno-anno   exit perform end-if
+                    read tnotacr next 
+                         at end exit perform 
+                    end-read
+                    if LinkAnno  not = tno-anno-fattura   
+                       exit perform 
+                    end-if
                     if LinkElab = 1
                        if tno-num-fattura >  num-a exit perform end-if
                        if tno-num-fattura >= num-da
