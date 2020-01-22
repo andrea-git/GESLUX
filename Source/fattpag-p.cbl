@@ -296,7 +296,7 @@
               move wk-data-to to wk-data-from
               compute wk-data-from =
                       function integer-of-date(wk-data-from)
-              subtract 3650 from wk-data-from                      
+              subtract 1825 from wk-data-from                      
               compute wk-data-from =
                       function date-of-integer(wk-data-from)
 
