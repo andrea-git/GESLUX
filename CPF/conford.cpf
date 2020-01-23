@@ -8,7 +8,7 @@
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Screen2
-PROGRAM_UNIQUE_CODE=TOTEM-7E3CF02927-899-173002602
+PROGRAM_UNIQUE_CODE=TOTEM-7E41171528-778-79410823
 
 {{@DESCRIPTION:
 
@@ -491,6 +491,17 @@ m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM46_WK
+
+@}}
+[FDITEM47_WK]
+m_strName=AUTO-ID
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_strDefaultValue=130
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM47_WK
 
 @}}
 
@@ -1556,27 +1567,29 @@ BEGIN-DATA
    BASETYPE          = 3
    PARAGRAPH         = PREPARA-SUBJECT
 BEGIN-TEXT
+           move conf-numero to numero-x.
+           inspect numero-x replacing leading x"30" by x"20".
+           call "C$JUSTIFY" using numero-x, "L".
+           inspect numero-x replacing trailing spaces by low-value.
            inspect conf-ragsoc replacing trailing spaces by low-value.
            if PgmChiamante = "ordinevar"
-              accept LinkSubject  from environment "CONFERMA_SUBJECT"
-              string conf-ragsoc delimited low-value
-                     " - "       delimited size
-                     LinkSubject
-                into ef-oggetto-buf
-             end-string
-           else                                    
-              move conf-numero to numero-x
-              inspect numero-x replacing leading x"30" by x"20"
-              call "C$JUSTIFY" using numero-x, "L"
-              inspect numero-x replacing trailing spaces by low-value
-
-              accept  LinkSubject from environment "CONFERMA_EVASIONE_SUBJECT"
+              accept  LinkSubject from environment "CONFERMA_SUBJECT"
               inspect LinkSubject replacing trailing spaces by low-value
               string conf-ragsoc     delimited low-value
                      " - "           delimited size
-                     LinkSubject     delimited low-value
-                     " - N. EVASIONE " delimited size
+                     LinkSubject     delimited low-value     
+                     " - N. MASTER " delimited size
                      numero-x        delimited size
+                into  ef-oggetto-buf
+             end-string
+           else                                    
+              accept  LinkSubject from environment "CONFERMA_EVASIONE_SUBJECT"
+              inspect LinkSubject replacing trailing spaces by low-value
+              string conf-ragsoc       delimited low-value
+                     " - "             delimited size
+                     LinkSubject       delimited low-value
+                     " - N. EVASIONE " delimited size
+                     numero-x          delimited size
                 into ef-oggetto-buf
               end-string
            end-if.

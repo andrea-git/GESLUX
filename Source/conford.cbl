@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          conford.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        lunedì 13 febbraio 2017 15:55:08.
+       AUTHOR.              Utente.
+       DATE-WRITTEN.        giovedì 23 gennaio 2020 16:04:31.
        REMARKS.
       *{TOTEM}END
 
@@ -55,7 +55,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -139,6 +139,8 @@
            88 Valid-STATUS-tsetmerc VALUE IS "00" THRU "09". 
        77 STATUS-tsetinvio PIC  X(2).
            88 Valid-STATUS-tsetinvio VALUE IS "00" THRU "09". 
+       77 AUTO-ID          PIC  9(6)
+                  VALUE IS 130.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -1696,28 +1698,30 @@
 
        PREPARA-SUBJECT.
       * <TOTEM:PARA. PREPARA-SUBJECT>
+           move conf-numero to numero-x.
+           inspect numero-x replacing leading x"30" by x"20".
+           call "C$JUSTIFY" using numero-x, "L".
+           inspect numero-x replacing trailing spaces by low-value.
            inspect conf-ragsoc replacing trailing spaces by low-value.
            if PgmChiamante = "ordinevar"
-              accept LinkSubject  from environment "CONFERMA_SUBJECT"
-              string conf-ragsoc delimited low-value
-                     " - "       delimited size
-                     LinkSubject
-                into ef-oggetto-buf
-             end-string
-           else                                    
-              move conf-numero to numero-x
-              inspect numero-x replacing leading x"30" by x"20"
-              call "C$JUSTIFY" using numero-x, "L"
-              inspect numero-x replacing trailing spaces by low-value
-
-              accept  LinkSubject from environment "CONFERMA_EVASIONE_SU
-      -    "BJECT"
+              accept  LinkSubject from environment "CONFERMA_SUBJECT"
               inspect LinkSubject replacing trailing spaces by low-value
               string conf-ragsoc     delimited low-value
                      " - "           delimited size
-                     LinkSubject     delimited low-value
-                     " - N. EVASIONE " delimited size
+                     LinkSubject     delimited low-value     
+                     " - N. MASTER " delimited size
                      numero-x        delimited size
+                into  ef-oggetto-buf
+             end-string
+           else                                    
+              accept  LinkSubject from environment "CONFERMA_EVASIONE_SU
+      -    "BJECT"
+              inspect LinkSubject replacing trailing spaces by low-value
+              string conf-ragsoc       delimited low-value
+                     " - "             delimited size
+                     LinkSubject       delimited low-value
+                     " - N. EVASIONE " delimited size
+                     numero-x          delimited size
                 into ef-oggetto-buf
               end-string
            end-if.
