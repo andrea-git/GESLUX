@@ -26,7 +26,7 @@ LUBEXX                           effetti-rischio + ordini-in-essere
                  else
                     compute tot-fido = cli-fido + 
                                        cli-pfa  + 
-                                       cli-fidejussione
+                                       como-cli-fidejussione
                  end-if
               end-if  
               if tcl-fido-nuovo-si  
@@ -48,13 +48,13 @@ LUBEXX                           effetti-rischio + ordini-in-essere
                             end-perform
                         end-read
                         if Sum > 0
-                           compute cli-fidejussione = 
+                           compute como-cli-fidejussione = 
                                    cli-fidejussione * Sum / 100
                         end-if
                     end-if
 
                     compute fido-usato = 
-                            cli-fidejussione +
+                            como-cli-fidejussione +
                             cli-fido-extra   +
                             cli-pfa
                  else

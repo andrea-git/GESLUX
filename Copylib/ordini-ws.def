@@ -24,16 +24,16 @@
            COPY  "link-find-progr.def".
            COPY  "link-ricalimp-art.def".
            COPY  "link-chk-ord-cli.def".
-           copy  "link-invio-sol.def".
-           copy  "link-mail-mod-bozze.def".
-           copy  "link-conford.def".
-
+           COPY  "link-invio-sol.def".
+           COPY  "link-mail-mod-bozze.def".
+           COPY  "link-conford.def".
+       77 como-cli-fidejussione        PIC  s9(15)v99.
        77 fido-tmp         PIC  s9(15)v99.
        77 fido-usato       PIC  s9(15)v99.
        78 78-NumColMan VALUE IS 12. 
        78 78-NumCol VALUE IS 6. 
        78 max-page VALUE IS 3. 
-       78 primo-id-dati VALUE IS 5002.      
+       78 primo-id-dati VALUE IS 5002. 
        77 mult PIC  9v99.
        77 STATUS-tmp-progmag-zoom      PIC  x(2).
            88 Valid-STATUS-tmp-progmag-zoom VALUE IS "00" THRU "09". 
@@ -445,12 +445,12 @@
            WHEN SET TO FALSE  " ". 
                    15 old-tor-ora-contab           PIC  9(8).
                    15 old-tor-fattura-from.
-                       20 old-tor-fattura-from-data        PIC  9(8).
-                       20 old-tor-fattura-from-numero      PIC  x(8).
-                   15 old-tor-gdo          PIC  X(5).            
-                   15 old-tor-tipocli      PIC  X(2).            
-                   15 old-tor-note-bolla-1 PIC  X(500).          
-                   15 old-tor-note-bolla-2 PIC  X(500).          
+                       20 old-tor-fattura-from-data    PIC  9(8).
+                       20 old-tor-fattura-from-numero  PIC  x(8).
+                   15 old-tor-gdo      PIC  X(5).
+                   15 old-tor-tipocli  PIC  X(2).
+                   15 old-tor-note-bolla-1         PIC  X(500).
+                   15 old-tor-note-bolla-2         PIC  X(500).
                    15 FILLER           PIC  X(2000).
        01 rec-grid.
            05 col-num          PIC  z(5).

@@ -23,6 +23,7 @@
            COPY  "link-passwd.def".
            COPY  "link-conford.def".
        77 fido-tmp         PIC  s9(15)v99.
+       77 como-cli-fidejussione        PIC  s9(15)v99.
        77 giacenza-assoluta            PIC  9(8).
        77 mult PIC  9v99.
        77 giacenza-assoluta-maggiore   PIC  9(8).
@@ -432,6 +433,7 @@
            05 SaveAnno         PIC  9(4).
            05 SaveNumero       PIC  9(8).
       *    Luciano
+      *
       *
       *
       *

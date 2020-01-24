@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gordc.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 5 giugno 2019 11:34:50.
+       DATE-WRITTEN.        venerdì 24 gennaio 2020 13:14:21.
        REMARKS.
       *{TOTEM}END
 
@@ -127,12 +127,11 @@
 
        WORKING-STORAGE      SECTION.
       *{TOTEM}ACU-DEF
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\ACUGUI.DEF".
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\ACUCOBOL.DEF"
-           .
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\FONTS.DEF".
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\CRTVARS.DEF".
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\SHOWMSG.DEF".
+               COPY "acugui.def".
+               COPY "acucobol.def".
+               COPY "fonts.def".
+               COPY "crtvars.def".
+               COPY "showmsg.def".
                COPY "totem.def".
                COPY "standard.def".
       *{TOTEM}END
@@ -148,9 +147,9 @@
       * Properties & User defined Working Stoarge
        77 Form1-Handle
                   USAGE IS HANDLE OF WINDOW.
-           COPY  "ORDINI-WS.DEF".
        77 v-form           PIC  9
                   VALUE IS 0.
+           COPY  "ORDINI-WS.DEF".
            COPY  "LINK-GORDCVAR.DEF".
        77 Form1-Tb-1-Handle
                   USAGE IS HANDLE OF WINDOW.
@@ -658,6 +657,7 @@
        77 rordini-ror-k-articolo-SPLITBUF  PIC X(24).
        77 rordini-ror-k-master-SPLITBUF  PIC X(35).
        77 rordini-ror-k-stbolle-SPLITBUF  PIC X(30).
+       77 rordini-ror-k-ord-art-SPLITBUF  PIC X(19).
        77 tmp-progmag-zoom-key-des-SPLITBUF  PIC X(64).
        77 tmp-progmag-zoom-key-art-SPLITBUF  PIC X(7).
        77 int-tordini-int-k-causale-SPLITBUF  PIC X(17).
@@ -8612,6 +8612,16 @@
            rordini-ror-k-stbolle-SPLITBUF(13:17)
            .
 
+       rordini-ror-k-ord-art-MERGE-SPLITBUF.
+           INITIALIZE rordini-ror-k-ord-art-SPLITBUF
+           MOVE ror-anno OF rordini(1:4) TO 
+           rordini-ror-k-ord-art-SPLITBUF(1:4)
+           MOVE ror-num-ordine OF rordini(1:8) TO 
+           rordini-ror-k-ord-art-SPLITBUF(5:8)
+           MOVE ror-cod-articolo OF rordini(1:6) TO 
+           rordini-ror-k-ord-art-SPLITBUF(13:6)
+           .
+
        DataSet1-rordini-INITSTART.
            IF DataSet1-rordini-KEY-Asc
               MOVE Low-Value TO ror-chiave of rordini
@@ -8677,6 +8687,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT 
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -8708,6 +8719,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -8739,6 +8751,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
