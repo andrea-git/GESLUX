@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
-       AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 27 novembre 2019 10:44:38.
+       AUTHOR.              Utente.
+       DATE-WRITTEN.        martedì 28 gennaio 2020 13:54:22.
        REMARKS.
       *{TOTEM}END
 
@@ -305,7 +305,7 @@
            05 col-media        PIC  ----.---.--9.
            05 col-andamento    PIC  ----.---.--9.
            05 col-consegna     PIC  ----.---.--9.
-           05 col-riordino     PIC  ----.---.--9,99.
+           05 col-qta-b        PIC  ----.---.--9.
            05 col-giac-pz      PIC  ----.---.--9.
            05 col-giac-imb     PIC  ----.---.--9.
            05 col-ordinato     PIC  ----.---.--9.
@@ -12425,8 +12425,9 @@
            modify form1-gd-1(1, 20), cell-data = "Media".
            modify form1-gd-1(1, 21), cell-data = "And".
            modify form1-gd-1(2, 21), cell-data = "%".
-           modify form1-gd-1(1, 22), cell-data = "Cons.".
-           modify form1-gd-1(1, 23), cell-data = "Riordino". 
+           modify form1-gd-1(1, 22), cell-data = "Cons.".  
+           modify form1-gd-1(1, 23), cell-data = "Qta B". 
+           modify form1-gd-1(2, 23), cell-data = "EP/STD". 
            modify form1-gd-1(1, 24), cell-data = "Giac.".
            modify form1-gd-1(2, 24), cell-data = "Imb.".
            modify form1-gd-1(1, 25), cell-data = "Giac.".
@@ -13067,8 +13068,9 @@
        AGGIUNGI-RIGA.
            initialize prg-chiave replacing numeric data by zeros
                                       alphanumeric data by spaces.
-           move ord2-articolo        to prg-cod-articolo.
-           read progmag no lock invalid continue end-read.
+           move ord2-articolo        to prg-cod-articolo art-codice.
+           read articoli no lock invalid continue end-read.
+           read progmag  no lock invalid continue end-read.
            move 0 to col-ordinato.
            if prg-ordinato-6 not = 0
               move prg-ordinato-6 to col-ordinato
@@ -13092,6 +13094,12 @@
                     end-if
                  end-if
               end-if
+           end-if.
+
+           if art-qta-epal > 0
+              move art-qta-epal to col-qta-b
+           else
+              move art-qta-std  to col-qta-b
            end-if.
 
            move ord2-articolo        to col-codice.
@@ -13122,7 +13130,7 @@
               add 1 to mese idx
            end-perform.     
 
-           move ord2-riordino to col-riordino.
+      *     move ord2-riordino to col-riordino.
 
            move el-qta(1)       to col-mese1.
            move el-qta(2)       to col-mese2.
@@ -13185,7 +13193,7 @@
            modify form1-gd-1(riga, 20), cell-data col-media.
            modify form1-gd-1(riga, 21), cell-data col-andamento.
            modify form1-gd-1(riga, 22), cell-data col-consegna.
-           modify form1-gd-1(riga, 23), cell-data col-riordino.
+           modify form1-gd-1(riga, 23), cell-data col-qta-b.
            modify form1-gd-1(riga, 24), cell-data col-giac-imb.
            modify form1-gd-1(riga, 25), cell-data col-giac-pz.
            modify form1-gd-1(riga, 26), cell-data col-ordinato.
