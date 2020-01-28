@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
        AUTHOR.              Utente.
-       DATE-WRITTEN.        martedì 28 gennaio 2020 15:34:22.
+       DATE-WRITTEN.        martedì 28 gennaio 2020 16:11:05.
        REMARKS.
       *{TOTEM}END
 
@@ -301,6 +301,7 @@
            05 col-mese10       PIC  ----.---.--9.
            05 col-mese11       PIC  ----.---.--9.
            05 col-mese12       PIC  ----.---.--9.
+           05 col-riordino     PIC  ----.---.--9.
            05 col-tot-anno     PIC  ----.---.--9.
            05 col-media        PIC  ----.---.--9.
            05 col-andamento    PIC  ----.---.--9.
@@ -887,18 +888,19 @@
            DATA-COLUMNS (1, 7, 57, 62, 70, 74, 81, 93, 105, 117, 129, 
            141, 153, 165, 177, 189, 201, 213, 225, 237, 249, 261, 273, 
            285, 297, 309, 321, 333, 345, 357, 369, 381, 393, 405, 417, 
-           425),
+           429, 437),
            ALIGNMENT ("R", "U", "R", "R", "C", "R", "R", "R", "R", "R", 
            "R", "R", "R", "R", "R", "R", "R", "R", "R", "R", "R", "R", 
            "R", "R", "R", "R", "R", "R", "R", "R", "R", "R", "R", "R", 
-           "C", "R"),
+           "R", "C", "R"),
            SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 
-           5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5),
+           5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 
+           5),
            DATA-TYPES ("9(6)", "X(50)", "9(5)", "9(11)", "9(4)", "X", "9
       -    "(12)", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"
-           , "9(12)", "X", "X", "9(12)", "X", "9(11)", "9(11)", "9(11)"
-           , "9(11)", "X", "9(9)", "9(9)", "9(9)", "9(9)", "9(9)", "9(9)
-      -    "", "X", "X"),
+           , "X", "9(12)", "X", "X", "9(12)", "X", "9(11)", "9(11)", "9(
+      -    "11)", "9(11)", "X", "9(9)", "9(9)", "9(9)", "9(9)", "9(9)", 
+           "9(9)", "X", "X"),
            NUM-COL-HEADINGS 2,
            COLUMN-HEADINGS,
            CURSOR-FRAME-WIDTH 2,
@@ -9259,18 +9261,18 @@
               MODIFY form1-gd-1, X = 6, Y = 1,
                 CELL-DATA = "Scostamento",
       * COLUMNS' SETTING
-              MODIFY form1-gd-1, X = 24  
-                COLUMN-COLOR = 481,
-                COLUMN-FONT = Verdana10B-Occidentale,
-      * COLUMNS' SETTING
               MODIFY form1-gd-1, X = 25  
                 COLUMN-COLOR = 481,
                 COLUMN-FONT = Verdana10B-Occidentale,
       * COLUMNS' SETTING
-              MODIFY form1-gd-1, X = 35  
-                COLUMN-COLOR = 231,
+              MODIFY form1-gd-1, X = 26  
+                COLUMN-COLOR = 481,
+                COLUMN-FONT = Verdana10B-Occidentale,
       * COLUMNS' SETTING
               MODIFY form1-gd-1, X = 36  
+                COLUMN-COLOR = 231,
+      * COLUMNS' SETTING
+              MODIFY form1-gd-1, X = 37  
                 COLUMN-COLOR = 481,
            .
 
@@ -9703,7 +9705,7 @@
       * DISPLAY-COLUMNS settings
               MODIFY form1-gd-1, DISPLAY-COLUMNS (1, 7, 40, 45, 48, 48, 
            48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 
-           53, 58, 65, 72, 79, 85, 91, 99, 107, 115, 123, 131, 139, 
+           48, 53, 58, 65, 72, 79, 85, 91, 99, 107, 115, 123, 131, 139, 
            147, 151)
            .
 
@@ -9795,7 +9797,7 @@
                               move ef-lt-buf   to ord2-lead-time-f 
                               rewrite ord2-rec
                               if qta-disp > 0
-                                 modify form1-gd-1(store-riga, 35), 
+                                 modify form1-gd-1(store-riga, 36), 
                                         bitmap-number = 2
                                         bitmap spunta-ordfor-bmp
                                         bitmap-width 30
@@ -9804,7 +9806,7 @@
                               perform VALUTA-COPERTURA
                               set ord2-si-conferma to true
                               move qta-disp to ord2-qta-ord col-qta-ord
-                              modify form1-gd-1(store-riga, 36), 
+                              modify form1-gd-1(store-riga, 37), 
                                      cell-data col-qta-ord
                               rewrite ord2-rec
                          end-read
@@ -10178,7 +10180,7 @@
            modify form1-gd-1(1,  2), hidden-data = "A".
            modify form1-gd-1(1,  4), hidden-data = "N".
            modify form1-gd-1(1,  5), hidden-data = "N".
-           modify form1-gd-1(1, 35), hidden-data = "N".
+           modify form1-gd-1(1, 36), hidden-data = "N".
 
            move 2 to store-colonna.
            move 27 to key-status.
@@ -11004,12 +11006,12 @@
 
        scr-forn-PROC.
       * <TOTEM:EPT. FORM:scr-forn, FORM:scr-forn, BeforeAccept>
-           inquire form1-gd-1(store-riga, 29), cell-data in tit-mese-1.
-           inquire form1-gd-1(store-riga, 30), cell-data in tit-mese-2.
-           inquire form1-gd-1(store-riga, 31), cell-data in tit-mese-3.
-           inquire form1-gd-1(store-riga, 32), cell-data in tit-mese-4.
-           inquire form1-gd-1(store-riga, 33), cell-data in tit-mese-5.
-           inquire form1-gd-1(store-riga, 34), cell-data in tit-mese-6.
+           inquire form1-gd-1(store-riga, 30), cell-data in tit-mese-1.
+           inquire form1-gd-1(store-riga, 31), cell-data in tit-mese-2.
+           inquire form1-gd-1(store-riga, 32), cell-data in tit-mese-3.
+           inquire form1-gd-1(store-riga, 33), cell-data in tit-mese-4.
+           inquire form1-gd-1(store-riga, 34), cell-data in tit-mese-5.
+           inquire form1-gd-1(store-riga, 35), cell-data in tit-mese-6.
            inquire form1-gd-1(store-riga, 1),  hidden-data in 
            gruppo-hidden.
            display pb-1.
@@ -12115,13 +12117,13 @@
               when ord2-fabbisogno-no-attivo move  48 to colore
               end-evaluate
 
-              modify form1-gd-1(riga, 28), cell-color = colore
               modify form1-gd-1(riga, 29), cell-color = colore
               modify form1-gd-1(riga, 30), cell-color = colore
               modify form1-gd-1(riga, 31), cell-color = colore
               modify form1-gd-1(riga, 32), cell-color = colore
               modify form1-gd-1(riga, 33), cell-color = colore
               modify form1-gd-1(riga, 34), cell-color = colore
+              modify form1-gd-1(riga, 35), cell-color = colore
            end-if.
            evaluate ord2-mese-scelto
            when 1 move 112 to colore
@@ -12131,7 +12133,7 @@
            when 5 move 193 to colore
            when 6 move 513 to colore
            end-evaluate.
-           modify form1-gd-1(riga, 36), cell-color = colore 
+           modify form1-gd-1(riga, 37), cell-color = colore 
            .
       * <TOTEM:END>
 
@@ -12150,7 +12152,7 @@
            inquire form1-gd-1, last-row in tot-righe.
            perform varying riga from 2 by 1
                      until riga > tot-righe
-              inquire form1-gd-1(riga, 36), cell-data in col-qta-ord
+              inquire form1-gd-1(riga, 37), cell-data in col-qta-ord
               move col-qta-ord to como-qta
               set forza-conferma to false
 
@@ -12421,46 +12423,47 @@
            modify form1-gd-1(1, 16), cell-data = tit-mese(10).
            modify form1-gd-1(1, 17), cell-data = tit-mese(11).
            modify form1-gd-1(1, 18), cell-data = tit-mese(12).
-           modify form1-gd-1(1, 19), cell-data = "T. Anno".
-           modify form1-gd-1(1, 20), cell-data = "Media".
-           modify form1-gd-1(1, 21), cell-data = "And".
-           modify form1-gd-1(2, 21), cell-data = "%".
-           modify form1-gd-1(1, 22), cell-data = "Cons.".  
-           modify form1-gd-1(1, 23), cell-data = "Qta B". 
-           modify form1-gd-1(2, 23), cell-data = "EP/STD". 
-           modify form1-gd-1(1, 24), cell-data = "Giac.".
-           modify form1-gd-1(2, 24), cell-data = "Imb.".
+           modify form1-gd-1(1, 19), cell-data = "Riord.".
+           modify form1-gd-1(1, 20), cell-data = "T. Anno".
+           modify form1-gd-1(1, 21), cell-data = "Media".
+           modify form1-gd-1(1, 22), cell-data = "And".
+           modify form1-gd-1(2, 22), cell-data = "%".
+           modify form1-gd-1(1, 23), cell-data = "Cons.".  
+           modify form1-gd-1(1, 24), cell-data = "Qta B". 
+           modify form1-gd-1(2, 24), cell-data = "EP|STD". 
            modify form1-gd-1(1, 25), cell-data = "Giac.".
-           modify form1-gd-1(2, 25), cell-data = "Pezzi".
-           modify form1-gd-1(1, 26), cell-data = "Ord.".
-           modify form1-gd-1(1, 27), cell-data = "SOS".
-           modify form1-gd-1(1, 28), cell-data = "1° Mese".
-           modify form1-gd-1(2, 28), cell-data = "Imballi".
+           modify form1-gd-1(2, 25), cell-data = "Imb.".
+           modify form1-gd-1(1, 26), cell-data = "Giac.".
+           modify form1-gd-1(2, 26), cell-data = "Pezzi".
+           modify form1-gd-1(1, 27), cell-data = "Ord.".
+           modify form1-gd-1(1, 28), cell-data = "SOS".
            modify form1-gd-1(1, 29), cell-data = "1° Mese".
-           modify form1-gd-1(2, 29), cell-data = "Pezzi".
-           modify form1-gd-1(1, 30), cell-data = "2° Mese".
-           modify form1-gd-1(2, 30), cell-data = "ESTERO".
-           modify form1-gd-1(1, 31), cell-data = "3° Mese".
-           modify form1-gd-1(2, 31), cell-data = "TENDER".
-           modify form1-gd-1(1, 32), cell-data = "4° Mese".
-           modify form1-gd-1(2, 32), cell-data = "PROGR".
-           modify form1-gd-1(1, 33), cell-data = "5° Mese".
-           modify form1-gd-1(2, 33), cell-data = "Pezzi".
-           modify form1-gd-1(1, 34), cell-data = "6° Mese".
+           modify form1-gd-1(2, 29), cell-data = "Imballi".
+           modify form1-gd-1(1, 30), cell-data = "1° Mese".
+           modify form1-gd-1(2, 30), cell-data = "Pezzi".
+           modify form1-gd-1(1, 31), cell-data = "2° Mese".
+           modify form1-gd-1(2, 31), cell-data = "ESTERO".
+           modify form1-gd-1(1, 32), cell-data = "3° Mese".
+           modify form1-gd-1(2, 32), cell-data = "TENDER".
+           modify form1-gd-1(1, 33), cell-data = "4° Mese".
+           modify form1-gd-1(2, 33), cell-data = "PROGR".
+           modify form1-gd-1(1, 34), cell-data = "5° Mese".
            modify form1-gd-1(2, 34), cell-data = "Pezzi".
-           modify form1-gd-1(2, 35), cell-data = "OK".
-           modify form1-gd-1(1, 36), cell-data = "Qta O".
+           modify form1-gd-1(1, 35), cell-data = "6° Mese".
+           modify form1-gd-1(2, 35), cell-data = "Pezzi".
+           modify form1-gd-1(2, 36), cell-data = "OK".
+           modify form1-gd-1(1, 37), cell-data = "Qta O".
 
       *****     modify form1-gd-1(1, 26), cell-color 481.
       *****     modify form1-gd-1(2, 26), cell-color 481.
                                                               
-           modify form1-gd-1(2, 28), cell-color 353. |"1° Mese Imb"
-           modify form1-gd-1(2, 29), cell-color 112. |"1° Mese Pz"
-           modify form1-gd-1(2, 30), cell-color 449. |"ESTERO"
-           modify form1-gd-1(2, 31), cell-color 80.  |"TENDER"
-           modify form1-gd-1(2, 32), cell-color 385. |"PROG"  
-           modify form1-gd-1(2, 33), cell-color 193. |"MESE 5"
-           modify form1-gd-1(2, 34), cell-color 513. |"MESE 6"  
+           modify form1-gd-1(2, 29), cell-color 353. |"1° Mese Imb"
+           modify form1-gd-1(2, 30), cell-color 112. |"1° Mese Pz"
+           modify form1-gd-1(2, 31), cell-color 449. |"ESTERO"
+           modify form1-gd-1(2, 32), cell-color 80.  |"TENDER"
+           modify form1-gd-1(2, 33), cell-color 385. |"PROG"  
+           modify form1-gd-1(2, 34), cell-color 193. |"MESE 5"
+           modify form1-gd-1(2, 35), cell-color 513. |"MESE 6"  
            .
       * <TOTEM:END>
 
@@ -12679,7 +12682,7 @@
                          invalid set errori to true
                    end-start
                 end-if
-           when 35
+           when 36
                 if hid-ascending
                    set ord2-si-conferma to true
                 else
@@ -12953,7 +12956,7 @@
            move 3 to riga.
            set primo-ciclo to true.
            perform until 1 = 2
-              if store-colonna = 35
+              if store-colonna = 36
                  read ordfor2 next 
                       at end
                       if hid-ascending
@@ -13131,7 +13134,7 @@
               add 1 to mese idx
            end-perform.     
 
-      *     move ord2-riordino to col-riordino.
+           move ord2-riordino to col-riordino.
 
            move el-qta(1)       to col-mese1.
            move el-qta(2)       to col-mese2.
@@ -13189,24 +13192,25 @@
            modify form1-gd-1(riga, 16), cell-data col-mese10.
            modify form1-gd-1(riga, 17), cell-data col-mese11.
            modify form1-gd-1(riga, 18), cell-data col-mese12.
+           modify form1-gd-1(riga, 19), cell-data col-riordino.
 
-           modify form1-gd-1(riga, 19), cell-data col-tot-anno.
-           modify form1-gd-1(riga, 20), cell-data col-media.
-           modify form1-gd-1(riga, 21), cell-data col-andamento.
-           modify form1-gd-1(riga, 22), cell-data col-consegna.
-           modify form1-gd-1(riga, 23), cell-data col-qta-b.
-           modify form1-gd-1(riga, 24), cell-data col-giac-imb.
-           modify form1-gd-1(riga, 25), cell-data col-giac-pz.
-           modify form1-gd-1(riga, 26), cell-data col-ordinato.
-           modify form1-gd-1(riga, 27), cell-data col-promo.
-           modify form1-gd-1(riga, 28), cell-data col-F1-imb.
-           modify form1-gd-1(riga, 29), cell-data col-F1.
-           modify form1-gd-1(riga, 30), cell-data col-F2.
-           modify form1-gd-1(riga, 31), cell-data col-F3.
-           modify form1-gd-1(riga, 32), cell-data col-F4.
-           modify form1-gd-1(riga, 33), cell-data col-F5.
-           modify form1-gd-1(riga, 34), cell-data col-F6.
-           modify form1-gd-1(riga, 36), cell-data col-qta-ord.
+           modify form1-gd-1(riga, 20), cell-data col-tot-anno.
+           modify form1-gd-1(riga, 21), cell-data col-media.
+           modify form1-gd-1(riga, 22), cell-data col-andamento.
+           modify form1-gd-1(riga, 23), cell-data col-consegna.
+           modify form1-gd-1(riga, 24), cell-data col-qta-b.
+           modify form1-gd-1(riga, 25), cell-data col-giac-imb.
+           modify form1-gd-1(riga, 26), cell-data col-giac-pz.
+           modify form1-gd-1(riga, 27), cell-data col-ordinato.
+           modify form1-gd-1(riga, 28), cell-data col-promo.
+           modify form1-gd-1(riga, 29), cell-data col-F1-imb.
+           modify form1-gd-1(riga, 30), cell-data col-F1.
+           modify form1-gd-1(riga, 31), cell-data col-F2.
+           modify form1-gd-1(riga, 32), cell-data col-F3.
+           modify form1-gd-1(riga, 33), cell-data col-F4.
+           modify form1-gd-1(riga, 34), cell-data col-F5.
+           modify form1-gd-1(riga, 35), cell-data col-F6.
+           modify form1-gd-1(riga, 37), cell-data col-qta-ord.
 
            |HIDDEN
            move ord2-programmazione to hid-programmazione.
@@ -13254,12 +13258,12 @@
            end-if.
 
            if ord2-si-conferma
-              modify form1-gd-1(riga, 35),
+              modify form1-gd-1(riga, 36),
                      bitmap-number = 2
                      bitmap spunta-ordfor-bmp
                      bitmap-width 30
            else
-              modify form1-gd-1(riga, 35), 
+              modify form1-gd-1(riga, 36), 
                      bitmap-number = 1
                      bitmap spunta-ordfor-bmp
                      bitmap-width 30
@@ -13529,11 +13533,11 @@
               move colonna to event-data-1
            end-if.
            if nascoste
-              if event-data-1 > 4 and < 21
+              if event-data-1 > 4 and < 22
                  if colonna < 5
-                    move 21 to event-data-1
+                    move 22 to event-data-1
                  end-if
-                 if colonna > 20
+                 if colonna > 21
                     move 4 to event-data-1
                  end-if
               end-if
@@ -13554,13 +13558,13 @@
               modify form1-gd-1, y = event-data-2,
                            start-y = event-data-2,
                                  x = 4,
-                           start-x = 27,
+                           start-x = 28,
                            region-color = 304
            else
               modify form1-gd-1, y = event-data-2,
                            start-y = event-data-2,
                                  x = 1,
-                           start-x = 27,
+                           start-x = 28,
                            region-color = 304
            end-if.
 
@@ -13922,16 +13926,24 @@
            if nascoste                          
               modify form1-gd-1, display-columns (1, 8, 45, 50, 57, 63, 
            70, 78, 86, 94, 102, 110, 118, 126, 134, 142, 150, 158, 166, 
-           174, 182, 189, 198, 206, 214, 222, 230, 238, 246, 254, 
-           262, 270, 278, 286, 294, 298)
-              modify form1-gd-1, virtual-width 306
+           174, 
+           182,
+           190, 197, 206, 214, 222, 230, 238, 246, 254, 262, 
+           270, 278, 286, 294, 302, 306)
+      *     (1, 8, 45, 50, 57, 63, 
+      *     70, 78, 86, 94, 102, 110, 118, 126, 134, 142, 150, 158, 166, 
+      *     174, 182, 189, 198, 206, 214, 222, 230, 238, 246, 254, 
+      *     262, 270, 278, 286, 294, 298)
+              modify form1-gd-1, virtual-width 314
               modify pb-mostra, title "&Nascondi colonne mesi"
               set visibili to true
               modify pb-mostra, bitmap-number = 1
-           else
-              MODIFY form1-gd-1, DISPLAY-COLUMNS (1, 7, 40, 45, 49, 49, 
-           49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 
-           53, 58, 65, 72, 79, 85, 91, 99, 107, 115, 123, 131, 139, 
+           else                               
+              |Per ripristinare in caso di cambio colonne 
+              |prendere quello generato nel cbl
+              modify form1-gd-1, display-columns (1, 7, 40, 45, 48, 48, 
+           48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 
+           48, 53, 58, 65, 72, 79, 85, 91, 99, 107, 115, 123, 131, 139, 
            147, 151)
               modify form1-gd-1, virtual-width 157
               modify pb-mostra, title "&Mostra colonne mesi"
@@ -13962,12 +13974,12 @@
                 end-evaluate 
 
 
+           when 35
            when 34
            when 33
            when 32
            when 31
            when 30
-           when 29
                 inquire form1-gd-1, entry-reason in como-x
                 evaluate como-x
                 when X"00"|doppio click
@@ -13981,7 +13993,7 @@
                 end-evaluate
 
 
-           when 28
+           when 29
                 inquire form1-gd-1, entry-reason in como-x
                 set event-action to event-action-fail-terminate
                 evaluate como-x
@@ -13991,7 +14003,7 @@
                 end-evaluate 
            
 
-           when 26
+           when 27
                 inquire form1-gd-1, entry-reason in como-x
                 set event-action to event-action-fail-terminate
                 inquire form1-gd-1, cursor-y = store-riga
@@ -14071,10 +14083,10 @@
       *****             end-evaluate 
       *****          end-if
 
-           when 27
+           when 28
                 inquire form1-gd-1, entry-reason in como-x
                 set event-action to event-action-fail-terminate
-                inquire form1-gd-1(event-data-2, 27), 
+                inquire form1-gd-1(event-data-2, 28), 
                         cell-data in giacenza
                 if giacenza > 0
                    evaluate como-x
@@ -14142,7 +14154,7 @@
       * <TOTEM:END>
        form1-gd-1-Ev-Msg-Goto-Cell-Mouse.
       * <TOTEM:PARA. form1-gd-1-Ev-Msg-Goto-Cell-Mouse>
-           if event-data-1 = 35
+           if event-data-1 = 36
               inquire form1-gd-1(event-data-2, 1), hidden-data in 
            gruppo-hidden
               move hid-chiave to ord2-chiave
@@ -14156,17 +14168,17 @@
                    if ord2-si-conferma
                       set ord2-no-conferma to true
                       rewrite ord2-rec
-                      modify form1-gd-1(event-data-2, 35), 
+                      modify form1-gd-1(event-data-2, 36), 
                              bitmap-number = 1
                              bitmap spunta-ordfor-bmp
                              bitmap-width 30
                    else
-                      inquire form1-gd-1(event-data-2, 36), 
+                      inquire form1-gd-1(event-data-2, 37), 
                               cell-data in giacenza
                       if giacenza > 0
                          set ord2-si-conferma to true
                          rewrite ord2-rec
-                         modify form1-gd-1(event-data-2, 35), 
+                         modify form1-gd-1(event-data-2, 36), 
                                 bitmap-number = 2
                                 bitmap spunta-ordfor-bmp
                                 bitmap-width 30
@@ -14193,22 +14205,22 @@
                            icon 3
            end-read.
       
-           inquire form1-gd-1(event-data-2, 29), 
+           inquire form1-gd-1(event-data-2, 30), 
                    cell-data in ord2-fabb-qta(1).
       
-           inquire form1-gd-1(event-data-2, 30), 
+           inquire form1-gd-1(event-data-2, 31), 
                    cell-data in ord2-fabb-qta(2).
       
-           inquire form1-gd-1(event-data-2, 31), 
+           inquire form1-gd-1(event-data-2, 32), 
                    cell-data in ord2-fabb-qta(3).
       
-           inquire form1-gd-1(event-data-2, 32), 
+           inquire form1-gd-1(event-data-2, 33), 
                    cell-data in ord2-fabb-qta(4).
       
-           inquire form1-gd-1(event-data-2, 33), 
+           inquire form1-gd-1(event-data-2, 34), 
                    cell-data in ord2-fabb-qta(5).
       
-           inquire form1-gd-1(event-data-2, 34), 
+           inquire form1-gd-1(event-data-2, 35), 
                    cell-data in ord2-fabb-qta(6). 
 
            if ord2-fabb-qta(1) = 0
@@ -14284,13 +14296,13 @@
                                  icon 3
               end-rewrite
 
-              modify form1-gd-1(event-data-2, 28), cell-data col-F1-imb
-              modify form1-gd-1(event-data-2, 29), cell-data col-F1
-              modify form1-gd-1(event-data-2, 30), cell-data col-F2
-              modify form1-gd-1(event-data-2, 31), cell-data col-F3
-              modify form1-gd-1(event-data-2, 32), cell-data col-F4
-              modify form1-gd-1(event-data-2, 33), cell-data col-F5
-              modify form1-gd-1(event-data-2, 34), cell-data col-F6
+              modify form1-gd-1(event-data-2, 29), cell-data col-F1-imb
+              modify form1-gd-1(event-data-2, 30), cell-data col-F1
+              modify form1-gd-1(event-data-2, 31), cell-data col-F2
+              modify form1-gd-1(event-data-2, 32), cell-data col-F3
+              modify form1-gd-1(event-data-2, 33), cell-data col-F4
+              modify form1-gd-1(event-data-2, 34), cell-data col-F5
+              modify form1-gd-1(event-data-2, 35), cell-data col-F6
            end-if 
            .
       * <TOTEM:END>
@@ -14380,7 +14392,7 @@
               when 2
               when 4
               when 5
-              when 35
+              when 36
                    inquire form1-gd-1(1, event-data-1)
                            hidden-data in hid-sort
                    if hid-ascending 
@@ -14393,7 +14405,7 @@
                    modify form1-gd-1(riga,  2), hidden-data = "N"
                    modify form1-gd-1(riga,  4), hidden-data = "N"
                    modify form1-gd-1(riga,  5), hidden-data = "N"
-                   modify form1-gd-1(riga, 35), hidden-data = "N"
+                   modify form1-gd-1(riga, 36), hidden-data = "N"
 
                    modify form1-gd-1(1, event-data-1)
                           hidden-data hid-sort
@@ -14450,7 +14462,7 @@
                                  invalid continue
                            end-start
                         end-if
-                   when 35
+                   when 36
                         if hid-ascending
                            set ord2-si-conferma to true
                         else
