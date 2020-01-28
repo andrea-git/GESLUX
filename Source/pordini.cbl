@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
        AUTHOR.              Utente.
-       DATE-WRITTEN.        martedì 28 gennaio 2020 16:11:05.
+       DATE-WRITTEN.        martedì 28 gennaio 2020 16:24:01.
        REMARKS.
       *{TOTEM}END
 
@@ -10117,7 +10117,7 @@
            display "QTA-PROMO"
               upon scr-elab-handle at column 53
                                         line 04
-      *     perform QTA-PROMO.        
+           perform QTA-PROMO.        
 
 
            move "VALORIZZA CAMPI" to como-riga.
@@ -10125,7 +10125,7 @@
            display "                          "
               upon scr-elab-handle at column 53
                                         line 04
-      *     perform VALORIZZA-CAMPI. 
+           perform VALORIZZA-CAMPI. 
 
            move 0 to sel-marca.
            |Lo DEVO fare qua per avere la grid scorta ordinata.
@@ -13114,7 +13114,6 @@
            move 1                    to idx.
            move mese-start           to mese.
            move 0 to tot-anno.
-           if mese = 0 move 1 to mese end-if.
            perform 12 times
               if mese > 12
                  move 1 to mese
@@ -13746,37 +13745,37 @@
               goback
            else            
               if LK-BL-PROG-ID not = "desktop"
-      *           move "INIZIO SOMMA VENDUTI" to como-riga
-      *           perform SCRIVI-RIGA-LOG
-      *           open input ordfor qta-pordini tparamge
-      *           move low-value to ord2-rec
-      *           start ordfor2 key >= ord2-chiave
-      *                 invalid set errori to true
-      *           end-start
-      *           perform until 1 = 2 or errori
-      *           
-      *              read ordfor2 next at end exit perform end-read
-      *              move ord2-chiave to ord-chiave        
-      *              read ordfor 
-      *                   invalid                                  
-      *                   initialize ord-qta-vendita-anno-corrente 
-      *                              replacing numeric data by zeroes
-      *                                   alphanumeric data by spaces
-      *                   initialize ord-qta-vendita-anno-passsato
-      *                              replacing numeric data by zeroes
-      *                                   alphanumeric data by spaces
-      *               not invalid continue
-      *              end-read
-      *              move ord-qta-vendita-anno-corrente 
-      *                to ord2-qta-vendita-anno-corrente
-      *              move ord-qta-vendita-anno-passsato 
-      *                to ord2-qta-vendita-anno-passsato
-      *                              
-      *              perform AGGIUNGI-QTA-VENDUTI
-      *              rewrite ord2-rec invalid continue end-rewrite
-      *           end-perform
-      *           close ordfor2 
-      *           close ordfor qta-pordini tparamge
+                 move "INIZIO SOMMA VENDUTI" to como-riga
+                 perform SCRIVI-RIGA-LOG
+                 open input ordfor qta-pordini tparamge
+                 move low-value to ord2-rec
+                 start ordfor2 key >= ord2-chiave
+                       invalid set errori to true
+                 end-start
+                 perform until 1 = 2 or errori
+                 
+                    read ordfor2 next at end exit perform end-read
+                    move ord2-chiave to ord-chiave        
+                    read ordfor 
+                         invalid                                  
+                         initialize ord-qta-vendita-anno-corrente 
+                                    replacing numeric data by zeroes
+                                         alphanumeric data by spaces
+                         initialize ord-qta-vendita-anno-passsato
+                                    replacing numeric data by zeroes
+                                         alphanumeric data by spaces
+                     not invalid continue
+                    end-read
+                    move ord-qta-vendita-anno-corrente 
+                      to ord2-qta-vendita-anno-corrente
+                    move ord-qta-vendita-anno-passsato 
+                      to ord2-qta-vendita-anno-passsato
+                                    
+                    perform AGGIUNGI-QTA-VENDUTI
+                    rewrite ord2-rec invalid continue end-rewrite
+                 end-perform
+                 close ordfor2 
+                 close ordfor qta-pordini tparamge
 
                  move "FINE SOMMA VENDUTI" to como-riga
                  perform SCRIVI-RIGA-LOG
