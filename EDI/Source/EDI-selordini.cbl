@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 30 settembre 2019 15:09:17.
+       DATE-WRITTEN.        giovedì 6 febbraio 2020 12:40:40.
        REMARKS.
       *{TOTEM}END
 
@@ -1119,6 +1119,7 @@
        77 mrordini-mro-k-articolo-SPLITBUF  PIC X(24).
        77 mrordini-mro-k-progr-SPLITBUF  PIC X(18).
        77 mrordini-mro-k-tprev-SPLITBUF  PIC X(39).
+       77 mrordini-mro-k-ord-art-SPLITBUF  PIC X(19).
        77 mtordini-mto-k-ord-cli-SPLITBUF  PIC X(55).
        77 mtordini-mto-k-data-SPLITBUF  PIC X(21).
        77 mtordini-mto-k-clides-SPLITBUF  PIC X(19).
@@ -5168,7 +5169,6 @@
            IF NOT Valid-STATUS-cli-prg
               PERFORM  Form-ini-EXTENDED-FILE-STATUS
               GO TO EXIT-STOP-ROUTINE
-
            END-IF
       * <TOTEM:EPT. INIT:EDI-selordini, FD:cli-prg, AfterOpen>
       * <TOTEM:END>
@@ -8641,6 +8641,14 @@
            MOVE mro-chiave(1:17) TO mrordini-mro-k-tprev-SPLITBUF(22:17)
            .
 
+       mrordini-mro-k-ord-art-MERGE-SPLITBUF.
+           INITIALIZE mrordini-mro-k-ord-art-SPLITBUF
+           MOVE mro-chiave-testa(1:12) TO 
+           mrordini-mro-k-ord-art-SPLITBUF(1:12)
+           MOVE mro-cod-articolo(1:6) TO 
+           mrordini-mro-k-ord-art-SPLITBUF(13:6)
+           .
+
        DataSet1-mrordini-INITSTART.
            IF DataSet1-mrordini-KEY-Asc
               MOVE Low-Value TO mro-chiave
@@ -8706,6 +8714,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT 
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -8737,6 +8746,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -8768,6 +8778,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -16506,8 +16517,7 @@ LABLAB          end-if
 
        CERCA-PROMO-LISTINO.
       * <TOTEM:PARA. CERCA-PROMO-LISTINO>
-
-
+
            move col-art to art-codice.
            move ef-des-buf to emto-prg-destino.
            set trovato      to false.
@@ -17473,7 +17483,7 @@ LUBEXX        set errori to true
 
       ***---
        CONTROLLA-FUORI-FIDO.
-LUBEXX     if tutto-ok and cli-escludi-fido-no
+LUBEXX     if tutto-ok
               perform CONTROLLA-TOTALE-MAN
               move cli-codice to tfid-cli-codice
               read tmp-fido no lock
@@ -18074,13 +18084,13 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
            set tutto-ok to true.
 
            if emto-righe-non-presenti
-              move 0 to mod
-              modify tool-modifica, value mod
+      *        move 0 to mod
+      *        modify tool-modifica, value mod
               display message 
-                      "IMPOSSIBILE MODIFICARE: RIGHE NON PRESENTI"
-                        title tit-err
-                         icon 2
-              exit paragraph
+                      "ATTENZIONE: RIGHE NON PRESENTI"
+                        title titolo
+                         icon mb-warning-icon
+      *        exit paragraph
            end-if.
 
            

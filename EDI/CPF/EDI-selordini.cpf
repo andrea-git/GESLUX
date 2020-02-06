@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E3CF0335-774-310673648
+PROGRAM_UNIQUE_CODE=TOTEM-7E426113430-929-25005922
 
 {{@DESCRIPTION:
 
@@ -17529,13 +17529,13 @@ BEGIN-TEXT
            set tutto-ok to true.
 
            if emto-righe-non-presenti
-              move 0 to mod
-              modify tool-modifica, value mod
+      *        move 0 to mod
+      *        modify tool-modifica, value mod
               display message 
-                      "IMPOSSIBILE MODIFICARE: RIGHE NON PRESENTI"
-                        title tit-err
-                         icon 2
-              exit paragraph
+                      "ATTENZIONE: RIGHE NON PRESENTI"
+                        title titolo
+                         icon mb-warning-icon
+      *        exit paragraph
            end-if.
 
            

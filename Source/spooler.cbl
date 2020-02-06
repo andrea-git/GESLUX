@@ -4932,9 +4932,9 @@
                 move wprtalign-right   to winprint-col-alignment  
                             
                 if spl-logo = "N"                              
-                   move 2,1              to winprint-col-start
+                   move 2,3              to winprint-col-start
                 else
-                   move 2,6              to winprint-col-start
+                   move 2,8              to winprint-col-start
                 end-if
 
                 call "WIN$PRINTER"  using winprint-set-page-column, 
