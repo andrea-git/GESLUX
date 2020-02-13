@@ -2433,21 +2433,21 @@ LUBEXX             end-if
                                move ef-cli-buf to como-prm-cliente
                                move ef-des-buf to como-prm-destino
                                perform RECUPERA-PRZ-LISTINO
-                               if ror-prz-unitario < prezzo-listino
-                                  move prezzo-listino to como-edit
-                                  display message
-                                  "Prezzo inserito < prezzo agente!!!"
-                           x"0d0a""Prezzo listino: " como-edit
-                           x"0d0a""Confermi?"
-                                            title titolo
-                                             type mb-yes-no
-                                             icon 2
-                                          default mb-no
-                                           giving scelta
-                                  if scelta= mb-no
-                                     set errori to true
-                                  end-if
-                               end-if
+      *****                         if ror-prz-unitario < prezzo-listino
+      *****                            move prezzo-listino to como-edit
+      *****                            display message
+      *****                            "Prezzo inserito < prezzo agente!!!"
+      *****                     x"0d0a""Prezzo listino: " como-edit
+      *****                     x"0d0a""Confermi?"
+      *****                                      title titolo
+      *****                                       type mb-yes-no
+      *****                                       icon 2
+      *****                                    default mb-no
+      *****                                     giving scelta
+      *****                            if scelta= mb-no
+      *****                               set errori to true
+      *****                            end-if
+      *****                         end-if
                             end-if
                          end-if
                          if tutto-ok

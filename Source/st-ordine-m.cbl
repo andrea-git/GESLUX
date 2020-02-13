@@ -1230,7 +1230,7 @@
                    move cror-qta-imballi2      to mro-qta-imballi
                    move cror-des-imballo2      to mro-des-imballo
                    move cror-qta2              to mro-qta
-
+                                
                    compute mro-prz-unitario =
                            cror-importo2 / cror-qta2
 
@@ -1850,7 +1850,11 @@
            compute min-value = 
               function MIN (costo-mp, costo-ultimo, prezzo-confronto).
 
-           if mro-prz-unitario < min-value
+           if ( mro-imp-consumo   +
+                mro-imp-cou-cobat +
+                mro-add-piombo    +
+                mro-imponib-merce )
+               < min-value
               set testata-SC to true                       
               set spl-rosso  to true
       *        move 20        to spl-colonna
