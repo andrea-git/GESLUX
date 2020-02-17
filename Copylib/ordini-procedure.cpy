@@ -2433,21 +2433,21 @@ LUBEXX             end-if
                                move ef-cli-buf to como-prm-cliente
                                move ef-des-buf to como-prm-destino
                                perform RECUPERA-PRZ-LISTINO
-      *****                         if ror-prz-unitario < prezzo-listino
-      *****                            move prezzo-listino to como-edit
-      *****                            display message
-      *****                            "Prezzo inserito < prezzo agente!!!"
-      *****                     x"0d0a""Prezzo listino: " como-edit
-      *****                     x"0d0a""Confermi?"
-      *****                                      title titolo
-      *****                                       type mb-yes-no
-      *****                                       icon 2
-      *****                                    default mb-no
-      *****                                     giving scelta
-      *****                            if scelta= mb-no
-      *****                               set errori to true
-      *****                            end-if
-      *****                         end-if
+                               if ror-prz-unitario < prezzo-listino
+                                  move prezzo-listino to como-edit
+                                  display message
+                                  "Prezzo inserito < prezzo agente!!!"
+                           x"0d0a""Prezzo listino: " como-edit
+                           x"0d0a""Confermi?"
+                                            title titolo
+                                             type mb-yes-no
+                                             icon 2
+                                          default mb-no
+                                           giving scelta
+                                  if scelta= mb-no
+                                     set errori to true
+                                  end-if
+                               end-if
                             end-if
                          end-if
                          if tutto-ok
@@ -2466,19 +2466,19 @@ LUBEXX             end-if
                                display ef-add
                             end-if
                             move ef-add-buf  to ror-add-piombo
-                            if ror-prz-unitario   <=
-                             ( ror-imp-consumo   +
-                               ror-imp-cou-cobat +
-                               ror-add-piombo )
-                               perform DISPLAY-SCREEN
-                               display message
-                      "Prezzo errato: dev'essere maggiore delle imposte"
-                                         title tit-err
-                                          icon 2
-                               set errori to true
-                            else
+      *****                      if ror-prz-unitario   <=
+      *****                       ( ror-imp-consumo   +
+      *****                         ror-imp-cou-cobat +
+      *****                         ror-add-piombo )
+      *****                         perform DISPLAY-SCREEN
+      *****                         display message
+      *****                "Prezzo errato: dev'essere maggiore delle imposte"
+      *****                                   title tit-err
+      *****                                    icon 2
+      *****                         set errori to true
+      *****                      else
                                perform CALCOLA-IMPONIBILE
-                            end-if
+      *****                      end-if
                          end-if
                       end-if
       *****                if SaveGDO = spaces
