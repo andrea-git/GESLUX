@@ -35,11 +35,11 @@
            access mode  is sequential
            file status  is status-file-log.
        
-       select fittizio
-           assign       to wstampa
+       select err-seq
+           assign       to err-seq-path
            organization is line sequential
            access mode  is sequential
-           file status  is status-fittizio.
+           file status  is status-err-seq.
 
       *****************************************************************
        DATA DIVISION.
@@ -55,8 +55,8 @@
        FD  file-log.
        01 log-riga         pic x(900).
 
-       FD  fittizio.
-       01 fittizio-riga    pic x.
+       FD  err-seq.
+       01 err-seq-riga    pic x(300).
 
        WORKING-STORAGE SECTION.
            copy "mail.def".    
@@ -81,7 +81,7 @@
        77  status-tordini       pic xx.  
        77  status-rordini       pic xx.     
        77  status-tsetinvio     pic xx.     
-       77  status-fittizio      pic xx.     
+       77  status-err-seq       pic xx.     
        77  status-lineseq       pic xx.
        77  status-file-log      pic xx.
        77  wstampa              pic x(256).   
@@ -172,10 +172,6 @@
 
        77  n-file                pic 9(5) value 0.
        77  idx-err               pic 9(5) value 0.
-       01  body-mess.
-         05 body-mess-riga       occurs 99.
-            10 el-body-mess      pic x(300). 
-            10 filler            pic x(5) value x"0d0a".
 
        LINKAGE SECTION.
            copy "link-batch.def".
@@ -694,10 +690,25 @@ LUBEXX          move "Prezzo incoerente!!!"
                   " - "                          delimited size
                   msg-err-pren                   delimited size
              into como-messaggio
-           end-string.           
+           end-string.        
+           if idx-err = 0                   
+              accept  wstampa from environment "PATH_ST"
+              inspect wstampa replacing trailing spaces by low-value
+              string  wstampa    delimited low-value
+                      "ERR-SEQ"  delimited size
+                      "_"        delimited size
+                      como-data  delimited size
+                      "_"        delimited size
+                      como-ora   delimited size
+                      ".txt"     delimited size
+                      into err-seq-path
+              end-string
+              open output err-seq
+           end-if.
            set errori-elab to true
            add 1 to idx-err.
-           move como-messaggio to el-body-mess(idx-err).
+           move como-messaggio to err-seq-riga.
+           write err-seq-riga.
            perform COMPONI-RIGA-LOG. 
 
       ***---
@@ -853,6 +864,7 @@ LUBEXX          move "Prezzo incoerente!!!"
 
       ***---
        INVIO-MAIL.
+           close err-seq.
       *****     display "Invio mail in corso...".
 
            move "INVIO MAIL IN CORSO..." to como-messaggio.
@@ -864,25 +876,13 @@ LUBEXX          move "Prezzo incoerente!!!"
            move "RIEPILOGO ERRORI CONFERME LBX GIORNALIERE" 
              to LinkSubject.
                          
-           move body-mess to LinkBody. 
+           move "In allegato dettagli errori riscontrati." to LinkBody. 
       
            set errori to true.
            move 0 to tentativi.
            move "conlubgio" to NomeProgramma.
-                                            
-           accept  wstampa from environment "PATH_ST".
-           inspect wstampa replacing trailing spaces by low-value.
-           string  wstampa    delimited low-value
-                   "FITTIZIO" delimited size
-                   into wstampa
-           end-string.
-           open output fittizio.
-           close       fittizio.
                   
-           initialize LinkAttach.
-           string wstampa delimited low-value
-             into LinkAttach
-           end-string.
+           move err-seq-path to LinkAttach.
       
            perform 10 times
               add 1 to tentativi
@@ -925,9 +925,9 @@ LUBEXX          move "Prezzo incoerente!!!"
               end-string
               perform COMPONI-RIGA-LOG
       
-           end-perform.
+           end-perform.         
 
-           delete file fittizio.
+           delete file err-seq.
 
       ***---
        COMPONI-RIGA-LOG.
