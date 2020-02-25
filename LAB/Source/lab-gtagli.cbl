@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-gtagli.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        mercoledì 22 novembre 2017 14:48:19.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        martedì 25 febbraio 2020 16:09:18.
        REMARKS.
       *{TOTEM}END
 
@@ -32,6 +32,8 @@
            COPY "tgrupgdo.sl".
            COPY "listini.sl".
            COPY "mrordini.sl".
+           COPY "timbalqta.sl".
+           COPY "timballi.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -41,6 +43,8 @@
            COPY "tgrupgdo.fd".
            COPY "listini.fd".
            COPY "mrordini.fd".
+           COPY "timbalqta.fd".
+           COPY "timballi.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -51,7 +55,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -67,12 +71,14 @@
                   USAGE IS HANDLE OF WINDOW.
        77 inevasa          PIC  9(6).
        77 cont PIC  9(5).
+       77 como-colli       PIC  9(10).
+       77 tot-colli        PIC  9(10).
        78 78-MaxCol VALUE IS 6. 
            COPY  "LINK-BATCH.DEF".
            COPY  "LINK-GESDELETE.DEF".
            COPY  "LINK-LAB-INEVASO.DEF".
-       78 titolo VALUE IS "GESLUX - Gestione Tagli". 
            COPY  "COLOR-STATO-M.DEF".
+       78 titolo VALUE IS "GESLUX - Gestione Tagli". 
        78 78-col-gdo VALUE IS 1. 
        78 78-col-gdo-descrizione VALUE IS 2. 
        78 78-col-art VALUE IS 3. 
@@ -180,7 +186,7 @@
        77 e-des            PIC  9
                   VALUE IS 1.
        77 des  PIC  x(30).
-       77 ESEGUI_73X21-BMP PIC  S9(9)
+       77 ESEGUI-73X21-BMP PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
        01 FILLER           PIC  9.
@@ -208,6 +214,11 @@
        77 lab-stato-buf    PIC  x(30).
        77 lab-inevasa-buf  PIC  zzz.zz9.
        77 lab-promo-buf    PIC  z(15).
+       77 ef-tot-colli-buf PIC  zzz.zzz.zz9.
+       77 STATUS-timballi  PIC  X(2).
+           88 Valid-STATUS-timballi VALUE IS "00" THRU "09". 
+       77 STATUS-timbalqta PIC  X(2).
+           88 Valid-STATUS-timbalqta VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -231,6 +242,8 @@
        77 TMP-DataSet1-tgrupgdo-BUF     PIC X(1206).
        77 TMP-DataSet1-listini-BUF     PIC X(207).
        77 TMP-DataSet1-mrordini-BUF     PIC X(891).
+       77 TMP-DataSet1-timbalqta-BUF     PIC X(167).
+       77 TMP-DataSet1-timballi-BUF     PIC X(210).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -261,15 +274,28 @@
        77 DataSet1-mrordini-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-mrordini-KEY-Asc  VALUE "A".
           88 DataSet1-mrordini-KEY-Desc VALUE "D".
+       77 DataSet1-timbalqta-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-timbalqta-LOCK  VALUE "Y".
+       77 DataSet1-timbalqta-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-timbalqta-KEY-Asc  VALUE "A".
+          88 DataSet1-timbalqta-KEY-Desc VALUE "D".
+       77 DataSet1-timballi-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-timballi-LOCK  VALUE "Y".
+       77 DataSet1-timballi-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-timballi-KEY-Asc  VALUE "A".
+          88 DataSet1-timballi-KEY-Desc VALUE "D".
 
        77 tagli-k2-SPLITBUF  PIC X(9).
        77 articoli-art-k1-SPLITBUF  PIC X(51).
+       77 articoli-art-k-frn-SPLITBUF  PIC X(16).
+       77 tgrupgdo-gdo-k-g2-SPLITBUF  PIC X(9).
        77 listini-lst-k-articolo-SPLITBUF  PIC X(20).
        77 listini-lst-k-cod-art-cli-SPLITBUF  PIC X(29).
        77 mrordini-mro-k-promo-SPLITBUF  PIC X(33).
        77 mrordini-mro-k-articolo-SPLITBUF  PIC X(24).
        77 mrordini-mro-k-progr-SPLITBUF  PIC X(18).
        77 mrordini-mro-k-tprev-SPLITBUF  PIC X(39).
+       77 mrordini-mro-k-ord-art-SPLITBUF  PIC X(19).
 
       *{TOTEM}END
 
@@ -668,6 +694,54 @@
            RIGHT,
            TRANSPARENT,
            TITLE "Inevasa:",
+           .
+
+      * FRAME
+       05
+           Form1-Fr-1a, 
+           Frame, 
+           COL 112,17, 
+           LINE 1,00,
+           LINES 4,77 ,
+           SIZE 20,00 ,
+           ID IS 13,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           .
+
+      * LABEL
+       05
+           lab-cod-vetta, 
+           Label, 
+           COL 116,67, 
+           LINE 2,00,
+           LINES 1,31 ,
+           SIZE 11,00 ,
+           ID IS 100,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           CENTER,
+           TRANSPARENT,
+           TITLE "Totale colli",
+           .
+
+      * ENTRY FIELD
+       05
+           ef-tot-colli, 
+           Entry-Field, 
+           COL 114,67, 
+           LINE 3,62,
+           LINES 1,46 ,
+           SIZE 15,00 ,
+           BOXED,
+           COLOR IS 33281,
+           ID IS 29,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           CENTER,
+           VALUE ef-tot-colli-buf,
+           AFTER PROCEDURE Form1-Ef-1-AfterProcedure, 
+           BEFORE PROCEDURE Form1-Ef-1-BeforeProcedure, 
            .
 
       * TOOLBAR
@@ -1349,6 +1423,8 @@
            PERFORM OPEN-tgrupgdo
            PERFORM OPEN-listini
            PERFORM OPEN-mrordini
+           PERFORM OPEN-timbalqta
+           PERFORM OPEN-timballi
       *    After Open
            .
 
@@ -1419,6 +1495,30 @@
       * <TOTEM:END>
            .
 
+       OPEN-timbalqta.
+      * <TOTEM:EPT. INIT:lab-gtagli, FD:timbalqta, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT timbalqta
+           IF NOT Valid-STATUS-timbalqta
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:lab-gtagli, FD:timbalqta, AfterOpen>
+      * <TOTEM:END>
+           .
+
+       OPEN-timballi.
+      * <TOTEM:EPT. INIT:lab-gtagli, FD:timballi, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT timballi
+           IF NOT Valid-STATUS-timballi
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:lab-gtagli, FD:timballi, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-tagli
@@ -1426,6 +1526,8 @@
            PERFORM CLOSE-tgrupgdo
            PERFORM CLOSE-listini
            PERFORM CLOSE-mrordini
+           PERFORM CLOSE-timbalqta
+           PERFORM CLOSE-timballi
       *    After Close
            .
 
@@ -1457,6 +1559,18 @@
       * <TOTEM:EPT. INIT:lab-gtagli, FD:mrordini, BeforeClose>
       * <TOTEM:END>
            CLOSE mrordini
+           .
+
+       CLOSE-timbalqta.
+      * <TOTEM:EPT. INIT:lab-gtagli, FD:timbalqta, BeforeClose>
+      * <TOTEM:END>
+           CLOSE timbalqta
+           .
+
+       CLOSE-timballi.
+      * <TOTEM:EPT. INIT:lab-gtagli, FD:timballi, BeforeClose>
+      * <TOTEM:END>
+           CLOSE timballi
            .
 
        tagli-k2-MERGE-SPLITBUF.
@@ -1675,6 +1789,12 @@
            articoli-art-k1-SPLITBUF(1:50)
            .
 
+       articoli-art-k-frn-MERGE-SPLITBUF.
+           INITIALIZE articoli-art-k-frn-SPLITBUF
+           MOVE art-cod-art-frn OF articoli(1:15) TO 
+           articoli-art-k-frn-SPLITBUF(1:15)
+           .
+
        DataSet1-articoli-INITSTART.
            IF DataSet1-articoli-KEY-Asc
               MOVE Low-Value TO art-chiave OF articoli
@@ -1737,6 +1857,7 @@
               KEY art-chiave OF articoli
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT 
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -1765,6 +1886,7 @@
               END-IF
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -1793,6 +1915,7 @@
               END-IF
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -1830,6 +1953,14 @@
            MOVE "DELETE" TO TOTEM-ERR-MODE
       * <TOTEM:EPT. FD:DataSet1, FD:articoli, AfterDelete>
       * <TOTEM:END>
+           .
+
+       tgrupgdo-gdo-k-g2-MERGE-SPLITBUF.
+           INITIALIZE tgrupgdo-gdo-k-g2-SPLITBUF
+           MOVE gdo-codice-G2 OF tgrupgdo(1:3) TO 
+           tgrupgdo-gdo-k-g2-SPLITBUF(1:3)
+           MOVE gdo-chiave OF tgrupgdo(1:5) TO 
+           tgrupgdo-gdo-k-g2-SPLITBUF(4:5)
            .
 
        DataSet1-tgrupgdo-INITSTART.
@@ -1893,6 +2024,7 @@
               READ tgrupgdo WITH NO LOCK 
               KEY gdo-chiave OF tgrupgdo
            END-IF
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
            MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT 
            MOVE "tgrupgdo" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -1920,6 +2052,7 @@
                  READ tgrupgdo PREVIOUS WITH NO LOCK
               END-IF
            END-IF
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
            MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
            MOVE "tgrupgdo" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -1947,6 +2080,7 @@
                  READ tgrupgdo NEXT WITH NO LOCK
               END-IF
            END-IF
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
            MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
            MOVE "tgrupgdo" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -2195,6 +2329,14 @@
            MOVE mro-chiave(1:17) TO mrordini-mro-k-tprev-SPLITBUF(22:17)
            .
 
+       mrordini-mro-k-ord-art-MERGE-SPLITBUF.
+           INITIALIZE mrordini-mro-k-ord-art-SPLITBUF
+           MOVE mro-chiave-testa(1:12) TO 
+           mrordini-mro-k-ord-art-SPLITBUF(1:12)
+           MOVE mro-cod-articolo(1:6) TO 
+           mrordini-mro-k-ord-art-SPLITBUF(13:6)
+           .
+
        DataSet1-mrordini-INITSTART.
            IF DataSet1-mrordini-KEY-Asc
               MOVE Low-Value TO mro-chiave
@@ -2260,6 +2402,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT 
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -2291,6 +2434,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -2322,6 +2466,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -2361,12 +2506,322 @@
       * <TOTEM:END>
            .
 
+       DataSet1-timbalqta-INITSTART.
+           IF DataSet1-timbalqta-KEY-Asc
+              MOVE Low-Value TO imq-chiave
+           ELSE
+              MOVE High-Value TO imq-chiave
+           END-IF
+           .
+
+       DataSet1-timbalqta-INITEND.
+           IF DataSet1-timbalqta-KEY-Asc
+              MOVE High-Value TO imq-chiave
+           ELSE
+              MOVE Low-Value TO imq-chiave
+           END-IF
+           .
+
+      * timbalqta
+       DataSet1-timbalqta-START.
+           IF DataSet1-timbalqta-KEY-Asc
+              START timbalqta KEY >= imq-chiave
+           ELSE
+              START timbalqta KEY <= imq-chiave
+           END-IF
+           .
+
+       DataSet1-timbalqta-START-NOTGREATER.
+           IF DataSet1-timbalqta-KEY-Asc
+              START timbalqta KEY <= imq-chiave
+           ELSE
+              START timbalqta KEY >= imq-chiave
+           END-IF
+           .
+
+       DataSet1-timbalqta-START-GREATER.
+           IF DataSet1-timbalqta-KEY-Asc
+              START timbalqta KEY > imq-chiave
+           ELSE
+              START timbalqta KEY < imq-chiave
+           END-IF
+           .
+
+       DataSet1-timbalqta-START-LESS.
+           IF DataSet1-timbalqta-KEY-Asc
+              START timbalqta KEY < imq-chiave
+           ELSE
+              START timbalqta KEY > imq-chiave
+           END-IF
+           .
+
+       DataSet1-timbalqta-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-timbalqta-LOCK
+              READ timbalqta WITH LOCK 
+              KEY imq-chiave
+           ELSE
+              READ timbalqta WITH NO LOCK 
+              KEY imq-chiave
+           END-IF
+           MOVE STATUS-timbalqta TO TOTEM-ERR-STAT 
+           MOVE "timbalqta" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-timbalqta-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-timbalqta-KEY-Asc
+              IF DataSet1-timbalqta-LOCK
+                 READ timbalqta NEXT WITH LOCK
+              ELSE
+                 READ timbalqta NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-timbalqta-LOCK
+                 READ timbalqta PREVIOUS WITH LOCK
+              ELSE
+                 READ timbalqta PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-timbalqta TO TOTEM-ERR-STAT
+           MOVE "timbalqta" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-timbalqta-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-timbalqta-KEY-Asc
+              IF DataSet1-timbalqta-LOCK
+                 READ timbalqta PREVIOUS WITH LOCK
+              ELSE
+                 READ timbalqta PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-timbalqta-LOCK
+                 READ timbalqta NEXT WITH LOCK
+              ELSE
+                 READ timbalqta NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-timbalqta TO TOTEM-ERR-STAT
+           MOVE "timbalqta" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-timbalqta-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-timbalqta TO TOTEM-ERR-STAT
+           MOVE "timbalqta" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-timbalqta-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-timbalqta TO TOTEM-ERR-STAT
+           MOVE "timbalqta" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-timbalqta-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-timbalqta TO TOTEM-ERR-STAT
+           MOVE "timbalqta" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, AfterDelete>
+      * <TOTEM:END>
+           .
+
+       DataSet1-timballi-INITSTART.
+           IF DataSet1-timballi-KEY-Asc
+              MOVE Low-Value TO imb-chiave
+           ELSE
+              MOVE High-Value TO imb-chiave
+           END-IF
+           .
+
+       DataSet1-timballi-INITEND.
+           IF DataSet1-timballi-KEY-Asc
+              MOVE High-Value TO imb-chiave
+           ELSE
+              MOVE Low-Value TO imb-chiave
+           END-IF
+           .
+
+      * timballi
+       DataSet1-timballi-START.
+           IF DataSet1-timballi-KEY-Asc
+              START timballi KEY >= imb-chiave
+           ELSE
+              START timballi KEY <= imb-chiave
+           END-IF
+           .
+
+       DataSet1-timballi-START-NOTGREATER.
+           IF DataSet1-timballi-KEY-Asc
+              START timballi KEY <= imb-chiave
+           ELSE
+              START timballi KEY >= imb-chiave
+           END-IF
+           .
+
+       DataSet1-timballi-START-GREATER.
+           IF DataSet1-timballi-KEY-Asc
+              START timballi KEY > imb-chiave
+           ELSE
+              START timballi KEY < imb-chiave
+           END-IF
+           .
+
+       DataSet1-timballi-START-LESS.
+           IF DataSet1-timballi-KEY-Asc
+              START timballi KEY < imb-chiave
+           ELSE
+              START timballi KEY > imb-chiave
+           END-IF
+           .
+
+       DataSet1-timballi-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:timballi, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:timballi, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-timballi-LOCK
+              READ timballi WITH LOCK 
+              KEY imb-chiave
+           ELSE
+              READ timballi WITH NO LOCK 
+              KEY imb-chiave
+           END-IF
+           MOVE STATUS-timballi TO TOTEM-ERR-STAT 
+           MOVE "timballi" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:timballi, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:timballi, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-timballi-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:timballi, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:timballi, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-timballi-KEY-Asc
+              IF DataSet1-timballi-LOCK
+                 READ timballi NEXT WITH LOCK
+              ELSE
+                 READ timballi NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-timballi-LOCK
+                 READ timballi PREVIOUS WITH LOCK
+              ELSE
+                 READ timballi PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-timballi TO TOTEM-ERR-STAT
+           MOVE "timballi" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:timballi, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:timballi, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-timballi-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:timballi, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:timballi, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-timballi-KEY-Asc
+              IF DataSet1-timballi-LOCK
+                 READ timballi PREVIOUS WITH LOCK
+              ELSE
+                 READ timballi PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-timballi-LOCK
+                 READ timballi NEXT WITH LOCK
+              ELSE
+                 READ timballi NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-timballi TO TOTEM-ERR-STAT
+           MOVE "timballi" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:timballi, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:timballi, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-timballi-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:timballi, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-timballi TO TOTEM-ERR-STAT
+           MOVE "timballi" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:timballi, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-timballi-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:timballi, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-timballi TO TOTEM-ERR-STAT
+           MOVE "timballi" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:timballi, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-timballi-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:timballi, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-timballi TO TOTEM-ERR-STAT
+           MOVE "timballi" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:timballi, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE tag-rec OF tagli
            INITIALIZE art-rec OF articoli
            INITIALIZE gdo-rec OF tgrupgdo
            INITIALIZE lst-rec OF listini
            INITIALIZE mro-rec OF mrordini
+           INITIALIZE imq-rec OF timbalqta
+           INITIALIZE imb-rec OF timballi
            .
 
 
@@ -2430,6 +2885,22 @@
       * FD's Initialize Paragraph
        DataSet1-mrordini-INITREC.
            INITIALIZE mro-rec OF mrordini
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-timbalqta-INITREC.
+           INITIALIZE imq-rec OF timbalqta
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-timballi-INITREC.
+           INITIALIZE imb-rec OF timballi
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -3762,7 +4233,9 @@
                  read mrordini no lock
                       invalid  move 304 to colore
                                add 1 to tagli-rimangono
-                  not invalid
+                               move art-imballo-standard to imq-codice
+                  not invalid    
+                      move mro-prg-tipo-imballo to imq-codice
                       evaluate true
                       when mro-registrato
                            move 78-colore-registrato     to colore
@@ -3787,9 +4260,23 @@
                       end-if
                  end-read
                  modify form1-gd-1(idx), row-color = colore
-                 add 1 to idx              
+                 add 1 to idx      
+
+                 move 0 to como-colli
+                 read timbalqta no lock
+                      invalid continue
+                  not invalid
+                      move imq-tipo  to imb-codice
+                      read timballi  no lock
+                           invalid continue
+                      end-read
+                      compute como-colli = tag-qta / imq-qta-imb
+                 end-read
+                 add como-colli to tot-colli
+
               end-perform                    
-              modify form1-gd-1, mass-update = 0                 
+              modify form1-gd-1, mass-update = 0  
+              move tot-colli to ef-tot-colli-buf
       *****        if user-codi = "BOSS"
       *****           display message tagli-rimangono
       *****        end-if
@@ -5092,6 +5579,18 @@
            delete tagli record invalid continue end-delete.
            modify form1-gd-1,  record-to-delete = riga.
            subtract 1 from tot-righe riga 
+           .
+      * <TOTEM:END>
+       Form1-Ef-1-BeforeProcedure.
+      * <TOTEM:PARA. Form1-Ef-1-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       Form1-Ef-1-AfterProcedure.
+      * <TOTEM:PARA. Form1-Ef-1-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
 
