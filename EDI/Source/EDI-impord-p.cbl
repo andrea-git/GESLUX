@@ -51,7 +51,8 @@
        copy "blister.sl".
        copy "cli-prg.sl".
        copy "tprov.sl".
-       copy "lockfile.sl".
+       copy "lockfile.sl".   
+       copy "log-macrobatch.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -87,6 +88,7 @@
        copy "cli-prg.fd". 
        copy "tprov.fd".
        copy "lockfile.fd".
+       copy "log-macrobatch.fd".
 
        WORKING-STORAGE SECTION.
       *    COPY
@@ -96,6 +98,7 @@
            copy "link-chk-ord-cli.def".
            copy "tratta-numerico.def".
            copy "recupero-prezzi-tradizionale.def".
+           copy "log-macrobatch.def".
 
       *    COSTANTI
        78  titolo                value "Importazione ordini EDI". 
@@ -131,8 +134,10 @@
        77  status-cli-prg        pic xx. 
        77  status-tprov          pic xx.
        77  status-lockfile       pic xx.
-
+       77  status-log-macrobatch pic xx.
+                                            
        77  path-logfile          pic x(256).
+       77  path-log-macrobatch   pic x(256).
        77  wstampa               pic x(256).
        77  wstampa2              pic x(256).
 
@@ -237,9 +242,12 @@
            88 trovato-promo            value 1, false 0.
        01 filler                 pic 9 value 0.
            88 promo-future             value 1, false 0.
-
+                                
        01  filler                pic 9 value 0.
            88 RichiamoSchedulato       value 1, false 0.
+
+       01  filler                pic 9 value 0.
+           88 RichiamoBatch      value 1, false 0.
 
        01  filler                pic 9 value 0.
            88 trovato-movim            value 1, false 0. 
@@ -292,15 +300,24 @@
        LINKAGE SECTION.
        copy "link-batch.def".
        77  link-user      pic x(10).
+       77  lk-mb-logfile  pic x(256). |LOG DI MACROBATCH
 
       ******************************************************************
-       PROCEDURE DIVISION USING batch-linkage link-user.
+       PROCEDURE DIVISION USING batch-linkage link-user lk-mb-logfile.
 
-       DECLARATIVES.  
+       DECLARATIVES.   
       ***---
        LINESEQ-ERR SECTION.
            use after error procedure on lineseq.
            evaluate status-lineseq
+           when "00"
+           when other continue
+           end-evaluate. 
+
+      ***---
+       LOG-MACROBATCH-ERR SECTION.
+           use after error procedure on log-macrobatch.
+           evaluate status-log-macrobatch
            when "00"
            when other continue
            end-evaluate.  
@@ -516,10 +533,23 @@
               perform SCRIVI-RIGA-LOG
               set errori to true
               if CallingPgm = "edi-impord"
-                 display message "Funzione già in uso da: "
-                                 lck-utente-creazione
-                           title titolo
-                            icon 2
+                 if RichiamoBatch
+                    call   "set-ini-log" using r-output
+                    cancel "set-ini-log"
+                    initialize lm-riga
+                    string r-output                    delimited size
+                           "FUNZIONE GIA' IN USO DA: " delimited size
+                           lck-utente-creazione        delimited size
+                      into lm-riga
+                    end-string
+                    write lm-riga
+                    move "KO" to lk-mb-logfile
+                 else
+                    display message "Funzione già in uso da: "
+                                    lck-utente-creazione
+                              title titolo
+                               icon 2
+                 end-if
               end-if   
            else
               perform SCRIVI-LOCKFILE
@@ -545,7 +575,7 @@
            end-if.
 
       ***---
-       INIT.    
+       INIT. 
            set VerificaPrezziTradizionale to false.
            initialize path-import path-backup path-log.
            call "C$NARG" using nargs.
@@ -556,6 +586,11 @@
               call "C$CALLEDBY" using CallingPgm
               if CallingPgm = "edi-impord"
                  move link-user to user-codi
+                 if user-codi = "desktop"
+                    set RichiamoSchedulato to true
+                    move lk-mb-logfile to path-log-macrobatch
+                    open extend log-macrobatch
+                 end-if
               else
                  move "IMPORT EDI" to user-codi
               end-if
@@ -682,7 +717,7 @@
 
       ***---
        ELABORAZIONE.
-           if RichiamoSchedulato
+           if RichiamoSchedulato 
               move 0 to batch-status
            end-if.
            move spaces to tge-chiave.
@@ -2220,6 +2255,10 @@
                  param EDI-mrordini articoli progmag timballi timbalqta
                  rpromo tpromo listini ttipocli rmovmag tprov
                  locali blister cli-prg lockfile.
+
+           if RichiamoBatch
+              close log-macrobatch
+           end-if.
 
       ***---
        EXIT-PGM.

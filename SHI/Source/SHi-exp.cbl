@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          SHI-exp.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 4 dicembre 2019 23:41:21.
+       DATE-WRITTEN.        sabato 29 febbraio 2020 17:18:19.
        REMARKS.
       *{TOTEM}END
 
@@ -29,12 +29,14 @@
       *{TOTEM}FILE-CONTROL
            COPY "paramSHI.sl".
            COPY "lineseq.sl".
+           COPY "log-macrobatch.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
       *{TOTEM}FILE
            COPY "paramSHI.fd".
            COPY "lineseq.fd".
+           COPY "log-macrobatch.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -87,6 +89,9 @@
                   USAGE IS HANDLE OF WINDOW.
        77 Small-Font
                   USAGE IS HANDLE OF FONT SMALL-FONT.
+       01 FILLER           PIC  9
+                  VALUE IS 0.
+           88 RichiamoBatch VALUE IS 1    WHEN SET TO FALSE  0. 
        01 invio-ftp        PIC  9
                   VALUE IS 1.
            88 si-invio-ftp VALUE IS 1    WHEN SET TO FALSE  0. 
@@ -111,6 +116,12 @@
                   USAGE IS HANDLE OF WINDOW.
        77 como-messaggio   PIC  x(200).
            COPY  "EXP-SHI-WS.DEF".
+           COPY  "LOG-MACROBATCH.DEF".
+       77 video-on         PIC  9
+                  VALUE IS 0.
+       77 path-log-macrobatch          PIC  X(256).
+       77 STATUS-log-macrobatch        PIC  X(2).
+           88 Valid-STATUS-log-macrobatch VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -123,6 +134,7 @@
           88 formFTP-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-paramSHI-BUF     PIC X(9574).
        77 TMP-DataSet1-lineseq-BUF     PIC X(900).
+       77 TMP-DataSet1-log-macrobatch-BUF     PIC X(1000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -138,6 +150,11 @@
        77 DataSet1-lineseq-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-lineseq-KEY-Asc  VALUE "A".
           88 DataSet1-lineseq-KEY-Desc VALUE "D".
+       77 DataSet1-log-macrobatch-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-log-macrobatch-LOCK  VALUE "Y".
+       77 DataSet1-log-macrobatch-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-log-macrobatch-KEY-Asc  VALUE "A".
+          88 DataSet1-log-macrobatch-KEY-Desc VALUE "D".
 
 
       *{TOTEM}END
@@ -150,6 +167,7 @@
        LINKAGE          SECTION.
       *{TOTEM}LINKAGE
            COPY  "COMMON-LINKAGE.DEF".
+       77 lk-mb-logfile    PIC  x(256).
       *{TOTEM}END
 
        SCREEN           SECTION.
@@ -328,7 +346,8 @@
       *{TOTEM}END
 
       *{TOTEM}LINKPARA
-       PROCEDURE  DIVISION USING LK-BLOCKPGM, USER-CODI, LIVELLO-ABIL.
+       PROCEDURE  DIVISION USING LK-BLOCKPGM, USER-CODI, LIVELLO-ABIL, 
+           lk-mb-logfile.
       *{TOTEM}END
 
       *{TOTEM}DECLARATIVE
@@ -466,6 +485,8 @@
            PERFORM OPEN-paramSHI
       *    lineseq OPEN MODE IS FALSE
       *    PERFORM OPEN-lineseq
+      *    log-macrobatch OPEN MODE IS FALSE
+      *    PERFORM OPEN-log-macrobatch
       *    After Open
            .
 
@@ -493,11 +514,25 @@
       * <TOTEM:END>
            .
 
+       OPEN-log-macrobatch.
+      * <TOTEM:EPT. INIT:SHI-exp, FD:log-macrobatch, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT log-macrobatch
+           IF NOT Valid-STATUS-log-macrobatch
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:SHI-exp, FD:log-macrobatch, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-paramSHI
       *    lineseq CLOSE MODE IS FALSE
       *    PERFORM CLOSE-lineseq
+      *    log-macrobatch CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-log-macrobatch
       *    After Close
            .
 
@@ -509,6 +544,11 @@
 
        CLOSE-lineseq.
       * <TOTEM:EPT. INIT:SHI-exp, FD:lineseq, BeforeClose>
+      * <TOTEM:END>
+           .
+
+       CLOSE-log-macrobatch.
+      * <TOTEM:EPT. INIT:SHI-exp, FD:log-macrobatch, BeforeClose>
       * <TOTEM:END>
            .
 
@@ -781,9 +821,97 @@
       * <TOTEM:END>
            .
 
+       DataSet1-log-macrobatch-INITSTART.
+           .
+
+       DataSet1-log-macrobatch-INITEND.
+           .
+
+       DataSet1-log-macrobatch-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-log-macrobatch-LOCK
+              READ log-macrobatch WITH LOCK 
+           ELSE
+              READ log-macrobatch WITH NO LOCK 
+           END-IF
+           MOVE STATUS-log-macrobatch TO TOTEM-ERR-STAT 
+           MOVE "log-macrobatch" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-macrobatch-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-log-macrobatch-KEY-Asc
+              IF DataSet1-log-macrobatch-LOCK
+                 READ log-macrobatch NEXT WITH LOCK
+              ELSE
+                 READ log-macrobatch NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-log-macrobatch TO TOTEM-ERR-STAT
+           MOVE "log-macrobatch" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-macrobatch-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeReadPrev>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-macrobatch-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-log-macrobatch TO TOTEM-ERR-STAT
+           MOVE "log-macrobatch" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-macrobatch-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-log-macrobatch TO TOTEM-ERR-STAT
+           MOVE "log-macrobatch" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-macrobatch-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-log-macrobatch TO TOTEM-ERR-STAT
+           MOVE "log-macrobatch" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE shi-rec OF paramSHI
            INITIALIZE line-riga OF lineseq
+           INITIALIZE lm-riga OF log-macrobatch
            .
 
 
@@ -798,6 +926,14 @@
       * FD's Initialize Paragraph
        DataSet1-lineseq-INITREC.
            INITIALIZE line-riga OF lineseq
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-log-macrobatch-INITREC.
+           INITIALIZE lm-riga OF log-macrobatch
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -836,6 +972,7 @@
               TITLE TITOLO,
               WITH SYSTEM MENU,
               USER-GRAY,
+           VISIBLE video-on,
               USER-WHITE,
               No WRAP,
               EVENT PROCEDURE Screen4-Event-Proc,
@@ -857,6 +994,14 @@
               invalid
                  continue
            end-read.
+
+           if RichiamoBatch
+              perform SCREEN4-PB-1-LINKTO
+              move 27 to key-status
+           else
+              move 1 to video-on
+              modify form1-handle, visible video-on
+           end-if.
 
            .
       * <TOTEM:END>
@@ -1017,6 +1162,7 @@
               MODELESS,
               NO SCROLL,
               USER-GRAY,
+           VISIBLE video-on,
               USER-WHITE,
               No WRAP,
               EVENT PROCEDURE form3-Event-Proc,
@@ -1033,12 +1179,39 @@
 
        form3-PROC.
       * <TOTEM:EPT. FORM:form3, FORM:form3, BeforeAccept>
+           if not RichiamoBatch
+              move 1 to video-on
+              modify form3-handle visible video-on
+           end-if.
+                        
            perform CREA-LOG
+
+           if RichiamoBatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output   delimited size
+                     "CHECK CARTELLE..." 
+                                delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if
 
            set   tutto-ok to true
            perform CHECK-CARTELLE
 
-           if tutto-ok
+           if tutto-ok     
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output   delimited size
+                     "CHECK CARTELLE OK" 
+                                delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+
               move wstampa   to exp-path-log
               set tutto-ok   to true
               evaluate true
@@ -1051,6 +1224,18 @@
                    perform EXP-CLASSI
                    perform EXP-FORNITORI
               end-evaluate
+           else                                        
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output   delimited size
+                        "ERRORI NELLE CARTELLE PARAMETRIZZATE." 
+                                   delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
            end-if
            perform FORM3-EXIT.
 
@@ -1202,6 +1387,7 @@
               MODELESS,
               NO SCROLL,
               USER-GRAY,
+           VISIBLE video-on,
               USER-WHITE,
               No WRAP,
               EVENT PROCEDURE form3-Event-Proc,
@@ -1218,6 +1404,20 @@
 
        formFTP-PROC.
       * <TOTEM:EPT. FORM:formFTP, FORM:formFTP, BeforeAccept>
+           if RichiamoBatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output                      delimited size
+                     "CONTROLLO SEMAFORO FTP..."   delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           else
+              move 1 to video-on
+              modify formftp-handle, visible video-on
+           end-if.
+
            set ftp-contr-sem-exp to true
            call   "SHI-esegui-ftp" using esegui-ftp-linkage
            cancel "SHI-esegui-ftp" 
@@ -1227,7 +1427,29 @@
               move     "Impossibile Esportare su FTP. File semaforo già 
       -                "presente" to como-messaggio
               perform SCRIVI-MESSAGGIO
-           else
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output                         delimited size
+                        "IMPOSSIBILE ESPORTARE SU FTP. " delimited size
+                        "FILE SEMAFORO GIÀ PRESENTE"     delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+                 move "KO" to lk-mb-logfile
+              end-if
+           else                  
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output                      delimited size
+                        "CONTROLLO SEMAFORO FTP OK"    delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
               perform SCRIVI-FTP
            end-if.
 
@@ -1391,16 +1613,28 @@
 
        GUARDA-FILE.
       * <TOTEM:PARA. GUARDA-FILE>
-           set splcrt2graf-anteprima  to true
-
-           set splcrt2graf-unix       to true
-           set splcrt2graf-verticale  to true
-           set splcrt2graf-forza-crt  to true
-           set splcrt2graf-10pt    to true
-           set splcrt2graf-si-grasssetto to false
-
-           call "splcrt2graf" using splcrt2graf-link
-           cancel "splcrt2graf" 
+           if RichiamoBatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output                      delimited size
+                     "DETTAGLI DI FUNZIONAMENTO: " delimited size
+                     exp-path-log                  delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           else
+              set splcrt2graf-anteprima  to true
+           
+              set splcrt2graf-unix       to true
+              set splcrt2graf-verticale  to true
+              set splcrt2graf-forza-crt  to true
+              set splcrt2graf-10pt    to true
+              set splcrt2graf-si-grasssetto to false
+           
+              call "splcrt2graf" using splcrt2graf-link
+              cancel "splcrt2graf"
+           end-if 
            .
       * <TOTEM:END>
 
@@ -1412,7 +1646,32 @@
            call "W$MOUSE" using set-mouse-shape, arrow-pointer.
 
 
-           if errori 
+           if errori    
+
+              if RichiamoBatch
+                 move lk-mb-logfile to path-log-macrobatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output   delimited size
+                        "CREAZIONE FILE TERMINATA CON ERRORI." 
+                                   delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+                 if si-invio-ftp                          
+                    call   "set-ini-log" using r-output
+                    cancel "set-ini-log"
+                    initialize lm-riga
+                    string r-output   delimited size
+                           "I DATI NON VERRANNO EPORTATI VIA FTP" 
+                                      delimited size
+                      into lm-riga
+                    end-string
+                    write lm-riga
+                 end-if
+              end-if    
+
               initialize como-messaggio
               move "Creazione file terminata con errori."  
                                          to como-messaggio
@@ -1424,7 +1683,7 @@
               end-if
            else
               if si-invio-ftp
-                 perform FTP
+                 perform FTP             
               end-if
            end-if.
 
@@ -1432,7 +1691,35 @@
               if crea-ordini
                  perform AGGIORNA-ORDINI
               end-if
-
+                              
+              if exp-err-bloccante
+                 set errori  to true
+                 if RichiamoBatch             
+                    call   "set-ini-log" using r-output
+                    cancel "set-ini-log"
+                    initialize lm-riga
+                    string r-output   delimited size
+                           "ERRORE BLOCCANTE IN AGGIORNAMENTO (SHI-AGG-O
+      -    "RD-EXP)!" 
+                                      delimited size
+                           " CONSULTARE LOG SPECIFICO" 
+                                      delimited size
+                      into lm-riga
+                    end-string
+                    write lm-riga
+                    move "KO" to lk-mb-logfile
+                 end-if
+              end-if            
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output       delimited size
+                        "COPIA FILES"  delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
               perform COPIA-FILES
            end-if.
 
@@ -1513,16 +1800,71 @@
               shi-file-note-ordini = space or
               shi-file-articoli    = space or 
               shi-file-ean         = space or
-              shi-file-prodener    = space
+              shi-file-prodener    = space  
+              if RichiamoBatch          
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output   delimited size
+                        "ESPORTAZIONE ORDINI CLIENTI IMPOSSIBILE!" 
+           delimited size
+                        " NOME FILE NON VALORIZZATO" 
+                                   delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+                 move "KO" to lk-mb-logfile
+              end-if
               move  "Esportazione Ordini Clienti impossibile! Nome file 
       -              "non valorizzato"  to como-messaggio
               perform SCRIVI-MESSAGGIO
-           else
+           else                    
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output   delimited size
+                     "ESPORTAZIONE ORDINI..." 
+                                delimited size
+                into lm-riga
+              end-string
+              write lm-riga
               call   "SHI-expordini" using exp-linkage,
                                            expordini-linkage
               cancel "SHI-expordini" 
               if exp-err-bloccante
                  set errori  to true
+                 if RichiamoBatch             
+                    call   "set-ini-log" using r-output
+                    cancel "set-ini-log"
+                    initialize lm-riga
+                    string r-output   delimited size
+                           "ERRORE BLOCCANTE IN ESPORTAZIONE (SHI-EXPORD
+      -    "INI)!" delimited size
+                           " CONSULTARE LOG SPECIFICO" 
+                                      delimited size
+                      into lm-riga
+                    end-string
+                    write lm-riga
+                    move "KO" to lk-mb-logfile
+                 end-if
+              else
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 if exp-ok
+                    string r-output   delimited size
+                           "ESPORTAZIONE ORDINI OK" 
+                                      delimited size
+                      into lm-riga
+                    end-string
+                 else         
+                    string r-output   delimited size
+                           "ESPORTAZIONE ORDINI ERR" 
+                                      delimited size
+                      into lm-riga
+                    end-string
+                 end-if
+                 write lm-riga
               end-if
            end-if 
            .
@@ -1539,6 +1881,17 @@
 
        SCRIVI-FTP.
       * <TOTEM:PARA. SCRIVI-FTP>
+           if RichiamoBatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output                  delimited size
+                     "ESPORTAZIONE FTP..."     delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if.
+
            evaluate true
            when crea-ordini
                 set ftp-export-ord to true
@@ -1551,7 +1904,26 @@
            call   "SHI-esegui-ftp" using esegui-ftp-linkage
            cancel "SHI-esegui-ftp" 
 
-           if ftp-ok
+           if ftp-ok               
+              if RichiamoBatch 
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output               delimited size
+                        "ESPORTAZIONE FTP OK"  delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output             delimited size
+                        "METTO SEMAFORO FTP" delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
               set ftp-metti-sem-exp   to true 
               call   "SHI-esegui-ftp" using esegui-ftp-linkage
               cancel "SHI-esegui-ftp" 
@@ -1560,7 +1932,19 @@
               initialize como-messaggio
               move "Trasmissine FTP fallita. Consultare il file LOG_FTP
       -            "per maggiori dettagli" to como-messaggio
-              perform SCRIVI-MESSAGGIO
+              perform SCRIVI-MESSAGGIO 
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output                      delimited size
+                        "TRASMISSINE FTP FALLITA. "   delimited size
+                        "CONSULTARE IL FILE LOG_FTP"  delimited size
+                        "PER MAGGIORI DETTAGLI"       delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
            end-if 
            .
       * <TOTEM:END>
@@ -1575,30 +1959,88 @@
 
        AGGIORNA-ORDINI.
       * <TOTEM:PARA. AGGIORNA-ORDINI>
+           if RichiamoBatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output               delimited size
+                     "CREAZIONE ORDINI..."  delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if.
            call   "SHI-agg-ord-exp" using exp-linkage,
                                       expordini-linkage
-           cancel "SHI-agg-ord-exp" 
+           cancel "SHI-agg-ord-exp".
+
+           evaluate true
+           when exp-ok
+                call   "set-ini-log" using r-output
+                cancel "set-ini-log"
+                initialize lm-riga
+                string r-output               delimited size
+                       "CREAZIONE ORDINI OK"  delimited size
+                  into lm-riga
+                end-string
+                write lm-riga
+           when exp-err
+                call   "set-ini-log" using r-output
+                cancel "set-ini-log"
+                initialize lm-riga
+                string r-output                delimited size
+                       "CREAZIONE ORDINI ERR"  delimited size
+                  into lm-riga
+                end-string
+                write lm-riga     
+           end-evaluate 
            .
       * <TOTEM:END>
 
       * EVENT PARAGRAPH
        Screen4-Pb-1-LinkTo.
       * <TOTEM:PARA. Screen4-Pb-1-LinkTo>
-              set crea-ordini   to true
-              perform ESPORTA
+           set crea-ordini   to true.
+           perform ESPORTA 
            .
       * <TOTEM:END>
        exp-shi-Ev-Before-Program.
       * <TOTEM:PARA. exp-shi-Ev-Before-Program>
            move LK-BL-PROG-ID    TO COMO-PROG-ID.
+           if lk-bl-prog-id = "desktop"
+              set RichiamoBatch  to true
+              move lk-mb-logfile to path-log-macrobatch
+              open extend log-macrobatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output               delimited size
+                     "|=> INGRESSO SHI-EXP" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if.
            perform CALCOLA-COLORE-TRASPARENTE 
+
+
            .
       * <TOTEM:END>
        exp-shi-Ev-After-Program.
       * <TOTEM:PARA. exp-shi-Ev-After-Program>
            SET LK-BL-CANCELLAZIONE TO TRUE.
            MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
-           CALL "BLOCKPGM"  USING LK-BLOCKPGM 
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           if RichiamoBatch
+              move lk-mb-logfile to path-log-macrobatch   
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output             delimited size
+                     "<=| USCITA SHI-EXP" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+              close log-macrobatch
+           end-if 
            .
       * <TOTEM:END>
        Screen4-Cb-1-BeforeProcedure.

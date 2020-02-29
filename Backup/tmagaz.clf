@@ -2,7 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E2613143934-761-3100827925
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E421D135424-813-361232210
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -519,13 +519,41 @@ m_strTrue="N", " "
 
 @}}
 [FDITEM53_]
-m_strName=mag-alfa-vuoto-3
-m_strRawPic=x(3)
-m_strPic=x(3)
+m_strName=mag-gen-auto
+m_strRawPic=x
+m_strPic=x
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM53_
+
+@}}
+[FDITEM54_]
+m_strName=mag-gen-auto-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM54_
+
+@}}
+[FDITEM55_]
+m_strName=mag-gen-auto-no
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="N", " "
+{{@DataItem_m_strDescriptionFDITEM55_
+
+@}}
+[FDITEM56_]
+m_strName=mag-alfa-vuoto-3
+m_strRawPic=x(2)
+m_strPic=x(2)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM56_
 
 @}}
 [CStoAcucobolSL_]

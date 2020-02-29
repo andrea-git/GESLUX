@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E327224914-581-2738313422
+PROGRAM_UNIQUE_CODE=TOTEM-7E421D135426-794-30744618
 
 {{@DESCRIPTION:
 
@@ -256,6 +256,77 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM21_WK
 
 @}}
+[FDITEM22_WK]
+m_strName=video-on
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM22_WK
+
+@}}
+[FDITEM23_WK]
+m_strName=r-output
+m_strRawPic=x(25)
+m_strPic=x(25)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM23_WK
+
+@}}
+[FDITEM24_WK]
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM24_WK
+
+@}}
+[FDITEM25_WK]
+m_strName=RichiamoBatch
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM25_WK
+
+@}}
+[FDITEM26_WK]
+m_strName=path-log-macrobatch
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM26_WK
+
+@}}
+[FDITEM27_WK]
+m_strName=STATUS-log-macrobatch
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM27_WK
+
+@}}
+[FDITEM28_WK]
+m_strName=Valid-STATUS-log-macrobatch
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM28_WK
+
+@}}
 
 
 [LINKAGE_SECTION]
@@ -444,6 +515,16 @@ m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM12_LK
 
 @}}
+[FDITEM13_LK]
+m_strName=lk-mb-logfile
+m_strRawPic=x(256)
+m_strPic=x(256)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM13_LK
+
+@}}
 
 
 {{@SCREEN:
@@ -501,7 +582,8 @@ Begin Screen Form1
    Unit              = Cells
    User Gray         = TRUE
    User White        = TRUE
-   Visible           = NONE
+   Visible           = FALSE
+   Visible Variable  = video-on
    Width in Cells    = TRUE
    Window Type       = Independent
    Wrap              = FALSE
@@ -777,7 +859,8 @@ Begin Screen form3
    Unit              = Cells
    User Gray         = TRUE
    User White        = TRUE
-   Visible           = NONE
+   Visible           = FALSE
+   Visible Variable  = video-on
    Width in Cells    = TRUE
    Window Type       = Independent
    Wrap              = FALSE
@@ -849,7 +932,14 @@ BEGIN-DATA
    TEXTMODE          = 0
    ENTRYPOINT        = BeforeAccept
 BEGIN-TEXT
-
+           if lk-bl-prog-id = "desktop"
+              set RichiamoBatch to true
+              perform PB-OK-LINKTO
+              move 27 to key-status
+           else
+              move 1 to video-on
+              modify form1-handle, visible video-on
+           end-if.
 
 END-TEXT
 END-DATA
@@ -862,13 +952,30 @@ BEGIN-DATA
    ENTRYPOINT        = BeforeAccept
 BEGIN-TEXT
            initialize batch-linkage.
+           if not RichiamoBatch
+              move 1 to video-on
+              modify form3-handle, visible video-on
+              move "desktop" to user-codi
+           end-if.                                 
            move form3-Handle to batch-win-handle.
            call   "EDI-impord-p" using batch-linkage user-codi.
            cancel "EDI-impord-p".
            if batch-status = -1
-              display message "ERRORE!! VERIFICARE FILE DI LOG!"
-                        title tit-err
-                         icon 3
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output                           delimited size
+                        "ERRORE!! VERIFICARE FILE DI LOG!" delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+                 move "KO" to lk-mb-logfile
+              else
+                 display message "ERRORE!! VERIFICARE FILE DI LOG!"
+                           title tit-err
+                            icon 3
+              end-if
            end-if.
            move 27  to key-status.
 END-TEXT
@@ -902,13 +1009,37 @@ BEGIN-DATA
    PARAGRAPH         = ginqui-Ev-Before-Program
 BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen4-blockpgm-1 **>>
+           if lk-bl-prog-id = "desktop"
+              set RichiamoBatch to true
+              move lk-mb-logfile to path-log-macrobatch
+              open extend log-macrobatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output              delimited size
+                     "|=> INGRESSO EDI-IMPORD" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if.
 END-TEXT
 END-DATA
 BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = ginqui-Ev-After-Program
 BEGIN-TEXT
-      *<<** Customized_Default, SP-G, Screen4-blockpgm-1 **>>
+      *<<** Customized_Default, SP-G, Screen4-blockpgm-1 **>>       
+           if RichiamoBatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output            delimited size
+                     "<=| USCITA EDI-IMPORD" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+              close log-macrobatch
+           end-if.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -931,7 +1062,9 @@ BEGIN-DATA
 BEGIN-TEXT
            modify form1-handle visible 0
            perform FORM3-OPEN-ROUTINE
-           modify form1-handle visible 1
+           if not RichiamoBatch
+              modify form1-handle visible 1
+           end-if
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -980,3 +1113,153 @@ CONDITION=Screen-Time-Out
 VALUE=99
 
 [COBOLAID_DATASET_INFO]
+COUNT=1
+NAME_0=DataSet1
+
+[DRAW_DOCUMENT_INDEX]
+OBJ_NAME_0=8001
+OBJ_ID_0=1640010841
+
+[MULTIPLE_KEY_0]
+COUNT=1
+
+[DRAW_DOCUMENT_8001_1640010841]
+OBJ_NAME=8001
+OBJ_ID=1640010841
+TYPE=2
+VERSION=
+DOC_SIZE_X=5100
+DOC_SIZE_Y=5160
+PAGE_LEFT=150
+PAGE_TOP=150
+PAGE_RIGHT=1850
+PAGE_BOTTOM=2730
+MARGIN_LEFT=150
+MARGIN_TOP=150
+MARGIN_RIGHT=150
+MARGIN_BOTTOM=150
+PROP_DOCU_TYPE=ø
+PROP_DOCU_TYPE2=ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+PROP_DOCU_NAME=DataSet - DataSet1[EDI-impord(EDI)]
+PROP_DOCU_OWNER=Person A
+PROP_DOCU_CDATE=02/29/20
+PROP_DOCU_MODIFIER=Person B
+PROP_DOCU_MDATE=02/29/20
+PROP_DOCU_DESCR=Caseaid DocuCaseaid Document
+PROP_DOCU_HEADER=Caseaid Document
+PROP_DOCU_FOOTER=Page # 
+PROP_DOCU_DIM_H=2
+PROP_DOCU_DIM_W=3
+PROP_DOCU_LOC_H=1
+PROP_DOCU_LOC_W=1
+PROP_DOCU_EDGE_T=150
+PROP_DOCU_EDGE_B=150
+PROP_DOCU_EDGE_L=150
+PROP_DOCU_EDGE_R=150
+PROP_DOCU_ZOOM=75
+PROP_DOCU_SIZE_TYPE=0
+PROP_DOCU_SIZE_PAPER=1
+PROP_DOCU_SIZE_H=2580
+PROP_DOCU_SIZE_W=1700
+PROP_DOCU_RULER_EBL=0
+PROP_DOCU_GRID_EBL=0
+PROP_DOCU_GRID=20
+PROP_DOCU_ALIGN=0
+REL_SYM_SIZE=10
+REL_SYM_INFO_L=1
+REL_SYM_INFO_X0=2301
+REL_SYM_INFO_Y0=1477236244
+
+[DRAW_BASESYMBOL_2301_1477236244]
+OBJ_NAME=2301
+OBJ_ID=1477236244
+KIND=1
+{{@LABEL_2301_1477236244
+log-macrobatch
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=16
+TOP=69
+RIGHT=416
+BOTTOM=291
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DMD_DOCUMENT_0_1640010841]
+OBJ_NAME=0
+OBJ_ID=1640010841
+FILE_TITLE_TYPE=8136
+FILE_SHOW_ITEM=0
+FILE_SHOW_KEY=0
+FILE_SHOW_PIC=0
+FILE_SHOW_HEAD=0
+FILE_SHOW_LEVEL=0
+FILE_SHOW_TREE=0
+FILE_SHOW_CLPS=0
+FILE_SHOW_BMP=0
+FILE_SHOW_LINE=0
+FILE_SHOW_MINIZE=0
+
+[DMD_FILE_0_1477236244]
+OBJ_NAME=0
+OBJ_ID=1477236244
+REL_M_OBJ_ID=0
+ENTITY=log-macrobatch
+LINK=0
+LINK_NAME=
+DSN_SIZE=32
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1477236244
+
+@}}
+DSN_INFO_PRIMARY=1
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=

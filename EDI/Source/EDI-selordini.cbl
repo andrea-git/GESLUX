@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 6 febbraio 2020 12:40:40.
+       DATE-WRITTEN.        sabato 29 febbraio 2020 17:41:05.
        REMARKS.
       *{TOTEM}END
 
@@ -67,6 +67,7 @@
            COPY "tscorte.sl".
            COPY "tmp-fido.sl".
            COPY "grade.sl".
+           COPY "log-macrobatch.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -111,6 +112,7 @@
            COPY "tscorte.fd".
            COPY "tmp-fido.fd".
            COPY "grade.fd".
+           COPY "log-macrobatch.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -160,6 +162,7 @@
            COPY  "IMPOSTE.DEF".
            COPY  "LINK-WPROGMAG.DEF".
            COPY  "LINK-SOST-ART.DEF".
+           COPY  "LOG-MACROBATCH.DEF".
        77 toolbar-bmp      PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
@@ -738,6 +741,9 @@
        77 ef-note-edi-buf  PIC  X(3000).
        77 Arial9-Occidentale
                   USAGE IS HANDLE OF FONT.
+       01 FILLER           PIC  9
+                  VALUE IS 0.
+           88 RichiamoBatch VALUE IS 1    WHEN SET TO FALSE  0. 
        77 STATUS-lockfile  PIC  X(2).
            88 Valid-STATUS-lockfile VALUE IS "00" THRU "09". 
        77 STATUS-tnazioni  PIC  X(2).
@@ -749,6 +755,11 @@
        77 path-tmp-fido    PIC  X(256).
        77 STATUS-tmp-fido  PIC  X(2).
            88 Valid-STATUS-tmp-fido VALUE IS "00" THRU "09". 
+       77 video-on         PIC  9
+                  VALUE IS 0.
+       77 path-log-macrobatch          PIC  X(256).
+       77 STATUS-log-macrobatch        PIC  X(2).
+           88 Valid-STATUS-log-macrobatch VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -892,6 +903,7 @@
        77 TMP-DataSet1-tscorte-BUF     PIC X(205).
        77 TMP-DataSet1-tmp-fido-BUF     PIC X(78).
        77 TMP-DataSet1-grade-BUF     PIC X(754).
+       77 TMP-DataSet1-log-macrobatch-BUF     PIC X(1000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -1097,6 +1109,11 @@
        77 DataSet1-grade-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-grade-KEY-Asc  VALUE "A".
           88 DataSet1-grade-KEY-Desc VALUE "D".
+       77 DataSet1-log-macrobatch-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-log-macrobatch-LOCK  VALUE "Y".
+       77 DataSet1-log-macrobatch-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-log-macrobatch-KEY-Asc  VALUE "A".
+          88 DataSet1-log-macrobatch-KEY-Desc VALUE "D".
 
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
@@ -1447,6 +1464,7 @@
        LINKAGE          SECTION.
       *{TOTEM}LINKAGE
            COPY  "COMMON-LINKAGE.DEF".
+       77 lk-mb-logfile    PIC  x(256).
 
       *{TOTEM}END
 
@@ -4330,7 +4348,8 @@
       *{TOTEM}END
 
       *{TOTEM}LINKPARA
-       PROCEDURE  DIVISION USING LK-BLOCKPGM, USER-CODI, LIVELLO-ABIL.
+       PROCEDURE  DIVISION USING LK-BLOCKPGM, USER-CODI, LIVELLO-ABIL, 
+           lk-mb-logfile.
       *{TOTEM}END
 
       *{TOTEM}DECLARATIVE
@@ -4771,6 +4790,8 @@
       *    tmp-fido OPEN MODE IS FALSE
       *    PERFORM OPEN-tmp-fido
            PERFORM OPEN-grade
+      *    log-macrobatch OPEN MODE IS FALSE
+      *    PERFORM OPEN-log-macrobatch
       *    After Open
            .
 
@@ -5289,6 +5310,18 @@
       * <TOTEM:END>
            .
 
+       OPEN-log-macrobatch.
+      * <TOTEM:EPT. INIT:EDI-selordini, FD:log-macrobatch, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT log-macrobatch
+           IF NOT Valid-STATUS-log-macrobatch
+              PERFORM  Form-ini-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:EDI-selordini, FD:log-macrobatch, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-clienti
@@ -5334,6 +5367,8 @@
       *    tmp-fido CLOSE MODE IS FALSE
       *    PERFORM CLOSE-tmp-fido
            PERFORM CLOSE-grade
+      *    log-macrobatch CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-log-macrobatch
       *    After Close
            .
 
@@ -5572,6 +5607,11 @@
       * <TOTEM:EPT. INIT:EDI-selordini, FD:grade, BeforeClose>
       * <TOTEM:END>
            CLOSE grade
+           .
+
+       CLOSE-log-macrobatch.
+      * <TOTEM:EPT. INIT:EDI-selordini, FD:log-macrobatch, BeforeClose>
+      * <TOTEM:END>
            .
 
        clienti-cli-K1-MERGE-SPLITBUF.
@@ -12290,6 +12330,93 @@
       * <TOTEM:END>
            .
 
+       DataSet1-log-macrobatch-INITSTART.
+           .
+
+       DataSet1-log-macrobatch-INITEND.
+           .
+
+       DataSet1-log-macrobatch-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-log-macrobatch-LOCK
+              READ log-macrobatch WITH LOCK 
+           ELSE
+              READ log-macrobatch WITH NO LOCK 
+           END-IF
+           MOVE STATUS-log-macrobatch TO TOTEM-ERR-STAT 
+           MOVE "log-macrobatch" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-macrobatch-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-log-macrobatch-KEY-Asc
+              IF DataSet1-log-macrobatch-LOCK
+                 READ log-macrobatch NEXT WITH LOCK
+              ELSE
+                 READ log-macrobatch NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-log-macrobatch TO TOTEM-ERR-STAT
+           MOVE "log-macrobatch" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-macrobatch-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeReadPrev>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-macrobatch-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-log-macrobatch TO TOTEM-ERR-STAT
+           MOVE "log-macrobatch" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-macrobatch-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-log-macrobatch TO TOTEM-ERR-STAT
+           MOVE "log-macrobatch" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-macrobatch-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-log-macrobatch TO TOTEM-ERR-STAT
+           MOVE "log-macrobatch" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE cli-rec OF clienti
            INITIALIZE des-rec OF destini
@@ -12331,6 +12458,7 @@
            INITIALIZE sco-rec OF tscorte
            INITIALIZE tfid-rec OF tmp-fido
            INITIALIZE gra-rec OF grade
+           INITIALIZE lm-riga OF log-macrobatch
            .
 
 
@@ -12740,6 +12868,14 @@
                          ALPHABETIC    DATA BY SPACES
            .
 
+      * FD's Initialize Paragraph
+       DataSet1-log-macrobatch-INITREC.
+           INITIALIZE lm-riga OF log-macrobatch
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
       *
        DataSet1-DISPATCH-BUFTOFLD.
            EVALUATE TOTEM-Form-Index ALSO TOTEM-Frame-Index
@@ -12780,7 +12916,7 @@
               TITLE titolo,
               WITH SYSTEM MENU,
               USER-GRAY,
-           VISIBLE 0,
+           VISIBLE video-on,
               USER-WHITE,
               No WRAP,
               EVENT PROCEDURE Screen1-Event-Proc,
@@ -12807,20 +12943,40 @@
            perform FORM3-OPEN-ROUTINE.
 
            if not trovato
-              display message 
-                      "Nessun ordine presente per i limiti richiesti"
-                      title = tit-err
-                      icon mb-error-icon
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output delimited size
+                        "NESSUN ORDINE PRESENTE PER I LIMITI RICHIESTI" 
+           delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              else
+                 display message 
+                         "Nessun ordine presente per i limiti richiesti"
+                         title = tit-err
+                         icon mb-error-icon
+              end-if
               perform FORM2-EXIT
            else             
               perform PB-AGGIORNA-LINKTO
-              modify form2-Handle, visible = 1 
+              if not RichiamoBatch
+                 modify form2-Handle, visible = 1 
+              end-if
               move 2 to riga, EVENT-DATA-2
               modify gd-ordini, CURSOR-Y = 2
               perform CAMBIA-FONT-RIGA
               move tot-attivi   to lab-attivi-buf
               move tot-bloccati to lab-bloccati-buf
               display lab-attivi lab-bloccati
+              if RichiamoBatch
+                 if not RecLocked 
+                    perform PB-GENERA-LINKTO
+                 end-if
+                 move 27 to key-status
+              end-if
            end-if.
 
            .
@@ -13354,6 +13510,7 @@
               AUTO-MINIMIZE,
               WITH SYSTEM MENU,
               USER-GRAY,
+           VISIBLE video-on,
               USER-WHITE,
               No WRAP,
               EVENT PROCEDURE Screen4-Event-Proc,
@@ -13396,30 +13553,67 @@
            move "tutti" to cbo-stato-ordine-buf.
            modify cbo-stato-ordine value cbo-stato-ordine-buf.
 
-           move 0 to mod-limiti.
+           move 0 to mod-limiti. 
+                           
+           if RichiamoBatch 
+              display Form-ini    
 
-           display Form-ini.
-
-           modify gd-tipocli, reset-grid = 1.
-           perform GD-TIPOCLI-CONTENT.
-           move low-value to tcl-rec.
-           start ttipocli key >= tcl-chiave
-                 invalid continue
-             not invalid
-                 move 1 to riga
-                 perform until 1 = 2
-                    read ttipocli next at end exit perform end-read
-                    move tcl-codice      to col-tcl-codice
-                    move tcl-descrizione to col-tcl-descrizione
-                    move 1 to hid-col-sel
-                    add 1 to riga
-                    modify gd-tipocli(riga, 1), cell-data col-tcl-codice
-                    modify gd-tipocli(riga, 2), cell-data 
+              modify gd-tipocli, reset-grid = 1
+              move low-value to tcl-rec
+              start ttipocli key >= tcl-chiave
+                    invalid continue
+                not invalid
+                    move 1 to riga
+                    perform until 1 = 2
+                       read ttipocli next at end exit perform end-read
+                       move tcl-codice      to col-tcl-codice
+                       move tcl-descrizione to col-tcl-descrizione
+                       if tcl-edi-auto-si
+                          move 1 to hid-col-sel
+                       else                    
+                          move 0 to hid-col-sel
+                       end-if
+                       add 1 to riga
+                       modify gd-tipocli(riga, 1), cell-data 
+           col-tcl-codice
+                       modify gd-tipocli(riga, 2), cell-data 
            col-tcl-descrizione
-                    modify gd-tipocli(riga, 1), hidden-data hid-col-sel
-                    modify gd-tipocli(riga), row-color = 480
-                 end-perform
-           end-start.
+                       modify gd-tipocli(riga, 1), hidden-data 
+           hid-col-sel
+                    end-perform
+              end-start
+
+              move 2 to tipo-elab
+              perform PB-OK-LINKTO
+              move 27 to key-status
+           else
+              move 1 to video-on
+              modify form-ini-handle, visible video-on
+              display Form-ini
+
+              modify gd-tipocli, reset-grid = 1
+              perform GD-TIPOCLI-CONTENT
+              move low-value to tcl-rec
+              start ttipocli key >= tcl-chiave
+                    invalid continue
+                not invalid
+                    move 1 to riga
+                    perform until 1 = 2
+                       read ttipocli next at end exit perform end-read
+                       move tcl-codice      to col-tcl-codice
+                       move tcl-descrizione to col-tcl-descrizione
+                       move 1 to hid-col-sel
+                       add 1 to riga
+                       modify gd-tipocli(riga, 1), cell-data 
+           col-tcl-codice
+                       modify gd-tipocli(riga, 2), cell-data 
+           col-tcl-descrizione
+                       modify gd-tipocli(riga, 1), hidden-data 
+           hid-col-sel
+                       modify gd-tipocli(riga), row-color = 480
+                    end-perform
+              end-start
+           end-if.
 
            .
       * <TOTEM:END>
@@ -13593,6 +13787,7 @@
               MODELESS,
               NO SCROLL,
               USER-GRAY,
+           VISIBLE video-on,
               USER-WHITE,
               No WRAP,
               EVENT PROCEDURE form3-Event-Proc,
@@ -13612,6 +13807,10 @@
 
        form3-PROC.
       * <TOTEM:EPT. FORM:form3, FORM:form3, BeforeAccept>
+           if not RichiamoBatch
+              move 1 to video-on
+              modify form3-handle, visible = video-on
+           end-if.
            call "w$mouse" using set-mouse-shape, wait-pointer.
            perform RIEMPI-GRID
            call "w$mouse" using set-mouse-shape, arrow-pointer.
@@ -15122,6 +15321,7 @@
               MODELESS,
               NO SCROLL,
               USER-GRAY,
+           VISIBLE video-on,
               USER-WHITE,
               No WRAP,
               EVENT PROCEDURE form3-Event-Proc,
@@ -15138,6 +15338,10 @@
 
        form-gen-PROC.
       * <TOTEM:EPT. FORM:form-gen, FORM:form-gen, BeforeAccept>
+           if not RichiamoBatch
+              move 1 to video-on
+              modify form3-Handle, visible video-on
+           end-if.
            call "w$mouse" using set-mouse-shape, wait-pointer.
            perform ATTIVA-ORDINI.   
            modify form3-Handle, visible false.
@@ -15386,12 +15590,31 @@
 
        scr-fine-PROC.
       * <TOTEM:EPT. FORM:scr-fine, FORM:scr-fine, BeforeAccept>
-           move primo-numero  to primo-numero-z.
-           move ultimo-numero to ultimo-numero-z.
+           if RichiamoBatch
+              move 27 to key-status  
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output      delimited size
+                     "GENERATI "   delimited size
+                     idx-ordini    delimited size
+                     " DAL N. "    delimited size
+                     primo-numero  delimited size
+                     " - AL N. "   delimited size
+                     ultimo-numero delimited size
+                into lm-riga
+              end-string
+              write lm-riga                                     
+              set environment "PRIMO_NUMERO_EDI"  to primo-numero
+              set environment "ULTIMO_NUMERO_EDI" to ultimo-numero
+              set environment "TOT_ORDINI_EDI"    to idx-ordini
+           else
+              move primo-numero  to primo-numero-z
+              move ultimo-numero to ultimo-numero-z
 
-           move idx-ordini to tot-ordini-z.
-
-           display scr-fine.
+              move idx-ordini to tot-ordini-z
+              display scr-fine
+           end-if.
 
            .
       * <TOTEM:END>
@@ -18427,7 +18650,7 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
             bitmap-number = BitmapNumSave.
 
            set tutto-ok to true.
-
+                                                    
            set StoSalvando to true. 
            
            set StoSalvando to true.
@@ -18720,9 +18943,13 @@ LABLAB        if tcl-si-recupero and
                     set tutto-ok to true
                     read EDI-mtordini next at end exit perform end-read
                     if emto-chiave > chiave-fin   exit perform end-if
-                    if emto-bloccato or emto-caricato exit perform 
-           end-if
-                    perform COUNTER-VIDEO
+                    if emto-bloccato or emto-caricato 
+                       exit perform 
+                    end-if
+
+                    if not RichiamoBatch
+                       perform COUNTER-VIDEO
+                    end-if
 
                     set record-ok to false
                     set cli-tipo-C to true
@@ -18958,17 +19185,41 @@ LUBEXX                       read clienti no lock invalid continue
 
        VERIFICA-ESEGUIBILITA.
       * <TOTEM:PARA. VERIFICA-ESEGUIBILITA>
+           if RichiamoBatch 
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output                 delimited size
+                     "VERIFICA ESEGUIBILITA'" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if.
+
            set RecLocked to false.
            set tutto-ok  to true.
            perform DELETE-LOCKFILE.
            if RecLocked
               move 78-EDI-impord to lck-nome-pgm
               read lockfile  no lock invalid continue end-read
-              
-              display message 
-              "FUNZIONE GIA' IN USO DA: " lck-utente-creazione
-                        title tit-err
-                         icon 2
+
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output                   delimited size
+                        "FUNZIONE GIA' IN USO DA " delimited size
+                        lck-utente-creazione       delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+                 move "KO" to lk-mb-logfile
+              else
+                 display message 
+                 "FUNZIONE GIA' IN USO DA: " lck-utente-creazione
+                           title tit-err
+                            icon 2
+              end-if
               set errori to true
            else
               perform SCRIVI-LOCKFILE
@@ -18998,6 +19249,10 @@ LUBEXX                       read clienti no lock invalid continue
       * EVENT PARAGRAPH
        ginqui-Ev-Before-Program.
       * <TOTEM:PARA. ginqui-Ev-Before-Program>
+           if lk-bl-prog-id = "desktop"
+              set RichiamoBatch to true
+           end-if.
+
            move LK-BL-PROG-ID    TO COMO-PROG-ID.
            perform CALCOLA-COLORE-TRASPARENTE.
 
@@ -19031,6 +19286,20 @@ LUBEXX                       read clienti no lock invalid continue
            MOVE 0 TO WFONT-CHAR-SET
            CALL "W$FONT" USING WFONT-GET-FONT, 
                                Arial10B, WFONT-DATA
+
+           if lk-bl-prog-id = "desktop"
+              set RichiamoBatch  to true
+              move lk-mb-logfile to path-log-macrobatch
+              open extend log-macrobatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output                 delimited size
+                     "|=> INGRESSO EDI-SELORDINI" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if 
            .
       * <TOTEM:END>
        ginqui-Ev-After-Program.
@@ -19040,7 +19309,19 @@ LUBEXX                       read clienti no lock invalid continue
            CALL "BLOCKPGM"  USING LK-BLOCKPGM.
            DESTROY font-evidenzia-griglia Arial10B.
 
-           call "W$BITMAP" using wbitmap-destroy, elemento-bmp 
+           call "W$BITMAP" using wbitmap-destroy, elemento-bmp.   
+      
+           if RichiamoBatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output               delimited size
+                     "<=| USCITA EDI-SELORDINI" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+              close log-macrobatch
+           end-if 
            .
       * <TOTEM:END>
        Screen4-Rb-1-BeforeProcedure.
@@ -19264,8 +19545,10 @@ LUBEXX                       read clienti no lock invalid continue
               else
                  perform SCARICA-COMBO-STATO-ORDINE
                  perform FORM2-OPEN-ROUTINE 
-              end-if                                          
-              modify form1-Handle, visible 1
+              end-if                      
+              if not RichiamoBatch      
+                 modify form1-Handle, visible 1
+              end-if
            end-if 
            .
       * <TOTEM:END>
@@ -19936,21 +20219,46 @@ LUBEXX                       read clienti no lock invalid continue
       * <TOTEM:END>
        pb-genera-LinkTo.
       * <TOTEM:PARA. pb-genera-LinkTo>
-           display message "Attivare gli ordini?"
-                     title titolo
-                      type mb-yes-no
-                   default mb-no
-                    giving scelta
+           if RichiamoBatch
+              move mb-yes to scelta
+           else
+              display message "Attivare gli ordini?"
+                        title titolo
+                         type mb-yes-no
+                      default mb-no
+                       giving scelta
+           end-if.
 
            if scelta = mb-yes
               perform VERIFICA-ESEGUIBILITA
-              if tutto-ok
+              if tutto-ok            
+                 if RichiamoBatch 
+                    call   "set-ini-log" using r-output
+                    cancel "set-ini-log"
+                    initialize lm-riga
+                    string r-output             delimited size
+                           "GENERAZIONE ORDINI" delimited size
+                      into lm-riga
+                    end-string
+                    write lm-riga
+                 end-if
                  perform FORM-GEN-OPEN-ROUTINE
                  move 27 to key-status
                  if idx-ordini = 0
-                    display message "Nessun ordine attivato" 
-                              title titolo
-                               icon 2
+                    if RichiamoBatch 
+                       call   "set-ini-log" using r-output
+                       cancel "set-ini-log"
+                       initialize lm-riga
+                       string r-output                 delimited size
+                              "NESSUN ORDINE GENERATO" delimited size
+                         into lm-riga
+                       end-string
+                       write lm-riga
+                    else
+                       display message "Nessun ordine attivato" 
+                                 title titolo
+                                  icon 2
+                    end-if
                  end-if
                  perform DELETE-LOCKFILE
               end-if
@@ -20084,6 +20392,17 @@ LUBEXX                       read clienti no lock invalid continue
       * <TOTEM:PARA. pb-aggiorna-LinkTo>
            perform VERIFICA-ESEGUIBILITA.
            if tutto-ok
+              if RichiamoBatch 
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output               delimited size
+                        "AGGIORNAMENTO ORDINI" delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
+
               modify form2-Handle, visible false
               set ControllaCliente to true
               perform FORM3-OPEN-ROUTINE
@@ -20097,7 +20416,9 @@ LUBEXX                       read clienti no lock invalid continue
               move tot-attivi   to lab-attivi-buf
               move tot-bloccati to lab-bloccati-buf
               display lab-attivi lab-bloccati
-              modify form2-Handle, visible true
+              if not RichiamoBatch
+                 modify form2-Handle, visible true
+              end-if
               perform DELETE-LOCKFILE
            end-if 
            .
@@ -20131,7 +20452,7 @@ LUBEXX                       read clienti no lock invalid continue
            move 4 to ACCEPT-CONTROL.
            
 
-      ***---
+      ***---                          
        ZOOM-SU-PROGMAG.                                               
            inquire form1-gd-1, cursor-y in riga.
            inquire form1-gd-1(riga, 78-col-art), cell-data in col-art.

@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          tmagaz.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        mercoledì 20 giugno 2018 22:15:45.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        sabato 29 febbraio 2020 17:35:23.
        REMARKS.
       *{TOTEM}END
 
@@ -48,7 +48,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -134,6 +134,9 @@
            05 col-da-inviare   PIC  X.
                88 si-da-inviare VALUE IS "S". 
                88 no-da-inviare VALUE IS "N", " ". 
+           05 col-gen-auto     PIC  X.
+               88 col-gen-auto-si VALUE IS "S". 
+               88 col-gen-auto-no VALUE IS "N", " ". 
        77 Screen1-Handle
                   USAGE IS HANDLE OF WINDOW.
        77 esegui-73x21-bmp PIC  S9(9)
@@ -305,21 +308,21 @@
        05
            form1-gd-1, 
            Grid, 
-           COL 2,50, 
+           COL 1,50, 
            LINE 1,69,
            LINES 29,00 ,
-           SIZE 229,17 ,
+           SIZE 239,00 ,
            ADJUSTABLE-COLUMNS,
            BOXED,
            DATA-COLUMNS (1, 4, 54, 55, 56, 57, 64, 65, 69, 73, 74, 75, 
-           76, 80, 84, 88, 92, 97, 99),
+           76, 80, 84, 88, 92, 97, 99, 100),
            ALIGNMENT ("L", "U", "C", "C", "C", "C", "C", "C", "C", "C", 
-           "C", "C", "C", "C", "C", "C", "R", "R", "C"),
+           "C", "C", "C", "C", "C", "C", "R", "R", "C", "C"),
            SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 
-           5, 5, 5),
+           5, 5, 5, 5),
            DATA-TYPES ("X(3)", "X(50)", "U(1)", "U(1)", "U(1)", "9(7)", 
            "U(1)", "U(4)", "U(4)", "U(1)", "U(1)", "U(1)", "U(4)", "U(4)
-      -    "", "U(4)", "U(4)", "zzzz9", "X", "U(1)"),
+      -    "", "U(4)", "U(4)", "zzzz9", "X", "U(1)", "U(1)"),
            NUM-COL-HEADINGS 1,
            COLUMN-HEADINGS,
            CURSOR-FRAME-WIDTH 2,
@@ -333,7 +336,7 @@
            RECORD-DATA rec-grid,
            TILED-HEADINGS,
            USE-TAB,
-           VIRTUAL-WIDTH 226,
+           VIRTUAL-WIDTH 236,
            VPADDING 30,
            VSCROLL,
            EVENT PROCEDURE Form1-Gd-1-Event-Proc,
@@ -343,7 +346,7 @@
        05
            gd-scorte, 
            Grid, 
-           COL 90,50, 
+           COL 94,33, 
            LINE 33,00,
            LINES 11,92 ,
            SIZE 53,17 ,
@@ -372,7 +375,7 @@
        05
            Form1-La-1, 
            Label, 
-           COL 90,50, 
+           COL 94,33, 
            LINE 31,31,
            LINES 1,31 ,
            SIZE 53,17 ,
@@ -1737,6 +1740,9 @@
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 19, Y = 1,
                 CELL-DATA = "Da inviare",
+      * CELLS' SETTING
+              MODIFY form1-gd-1, X = 20, Y = 1,
+                CELL-DATA = "Gen. auto",
       * COLUMNS' SETTING
               MODIFY form1-gd-1, X = 1  
                 COLUMN-FONT = Small-Font,
@@ -1824,7 +1830,7 @@
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
               LINES 46,15,
-              SIZE 232,33,
+              SIZE 240,00,
               COLOR 65793,
               CONTROL FONT Small-Font,
               LINK TO THREAD,
@@ -1860,7 +1866,7 @@
       * DISPLAY-COLUMNS settings
               MODIFY form1-gd-1, DISPLAY-COLUMNS (1, 11, 57, 67, 82, 
            92, 103, 113, 123, 133, 143, 153, 163, 173, 183, 193, 203, 
-           213, 217)
+           213, 217, 227)
               MODIFY gd-scorte, DISPLAY-COLUMNS (1, 7)
            .
 
@@ -2873,7 +2879,7 @@
       * <TOTEM:PARA. COLORE-RIGA>
            if riga < 2 move 2 to riga end-if.
 
-           modify form1-gd-1, start-x = 1, x = 19,
+           modify form1-gd-1, start-x = 1, x = 20,
                                   start-y = riga,
                                         y = riga,
                                   region-color 257,
@@ -3235,6 +3241,18 @@
                            display message "Valori ammessi: S o N"
                                     title tit-err
                                      icon 2
+                end-evaluate 
+
+           when 20
+                inquire form1-gd-1(riga, 20) cell-data col-gen-auto
+                evaluate col-gen-auto
+                when "S"
+                when "N"   continue
+                when other set errori to true
+                           move 19    to colonna
+                           display message "Valori ammessi: S o N"
+                                    title tit-err
+                                     icon 2
                 end-evaluate
 
            end-evaluate.
@@ -3369,8 +3387,10 @@
                           move mag-cau-reso         to col-reso
                           move mag-cau-diff         to col-diff
                           move mag-vettore          to col-vett
-                          move mag-priorita-mag     to col-priorita-mag
+                          move mag-priorita-mag     to col-priorita-mag 
+              
                           move mag-da-inviare       to col-da-inviare
+                          move mag-gen-auto         to col-gen-auto
                           modify form1-gd-1(riga, 1),  cell-data col-id 
                           
                           modify form1-gd-1(riga, 2),  cell-data 
@@ -3409,6 +3429,8 @@
            col-priorita-mag      
                           modify form1-gd-1(riga, 19), cell-data 
            col-da-inviare        
+                          modify form1-gd-1(riga, 20), cell-data 
+           col-gen-auto
 
                           evaluate true
                           when si-principale
@@ -3716,6 +3738,7 @@
            inquire form1-gd-1(riga, 17), cell-data mag-vettore.  
            inquire form1-gd-1(riga, 18), cell-data mag-priorita-mag.
            inquire form1-gd-1(riga, 19), cell-data mag-da-inviare.
+           inquire form1-gd-1(riga, 20), cell-data mag-gen-auto.
 
            if mag-principale = spaces
               set no-mag-principale to true

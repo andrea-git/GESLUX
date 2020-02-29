@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          ttipocli.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        lunedì 15 aprile 2019 15:55:56.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        sabato 29 febbraio 2020 14:09:18.
        REMARKS.
       *{TOTEM}END
 
@@ -43,7 +43,7 @@
                COPY "opensave.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -111,6 +111,7 @@
            05 col-evasione     PIC  x.
            05 col-st-brogm     PIC  x.
            05 col-fido-nuovo   PIC  x.
+           05 col-edi-auto     PIC  x.
        77 Screen1-Handle
                   USAGE IS HANDLE OF WINDOW.
        77 esegui-73x21-bmp PIC  S9(9)
@@ -275,18 +276,18 @@
            COL 2,17, 
            LINE 1,62,
            LINES 37,08 ,
-           SIZE 178,17 ,
+           SIZE 188,17 ,
            ADJUSTABLE-COLUMNS,
            BOXED,
            DATA-COLUMNS (1, 3, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 
-           43, 44, 45, 46, 47),
+           43, 44, 45, 46, 47, 48),
            ALIGNMENT ("L", "L", "C", "C", "C", "C", "C", "C", "C", "C", 
-           "C", "C", "C", "C", "C", "C", "C"),
+           "C", "C", "C", "C", "C", "C", "C", "C"),
            SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 
-           5),
+           5, 5),
            DATA-TYPES ("X(2)", "X(30)", "X(1)", "U(1)", "U(1)", "U(1)", 
            "U(1)", "U(1)", "U(1)", "9(1)", "U(1)", "U(1)", "U(1)", "U(1)
-      -    "", "U(1)", "U(1)", "U(1)"),
+      -    "", "U(1)", "U(1)", "U(1)", "U(1)"),
            NUM-COL-HEADINGS 1,
            COLUMN-HEADINGS,
            CURSOR-FRAME-WIDTH 2,
@@ -301,7 +302,7 @@
            RECORD-DATA rec-grid,
            TILED-HEADINGS,
            USE-TAB,
-           VIRTUAL-WIDTH 175,
+           VIRTUAL-WIDTH 185,
            VPADDING 50,
            VSCROLL,
            EVENT PROCEDURE Form1-Gd-1-Event-Proc,
@@ -1237,6 +1238,9 @@
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 17, Y = 1,
                 CELL-DATA = "Fido nuovo",
+      * CELLS' SETTING
+              MODIFY form1-gd-1, X = 18, Y = 1,
+                CELL-DATA = "EDI auto",
       * COLUMNS' SETTING
               MODIFY form1-gd-1, X = 1  
                 COLUMN-FONT = Small-Font,
@@ -1292,7 +1296,7 @@
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
               LINES 51,77,
-              SIZE 180,83,
+              SIZE 190,83,
               COLOR 65793,
               CONTROL FONT Small-Font,
               LINK TO THREAD,
@@ -1323,7 +1327,7 @@
            DISPLAY Form1 UPON Form1-Handle
       * DISPLAY-COLUMNS settings
               MODIFY form1-gd-1, DISPLAY-COLUMNS (1, 8, 43, 50, 55, 63, 
-           73, 82, 92, 100, 110, 120, 129, 139, 149, 158, 166)
+           73, 82, 92, 100, 110, 120, 129, 139, 149, 158, 166, 176)
            .
 
        Form1-PROC.
@@ -2153,7 +2157,7 @@
               move 2 to riga 
            end-if.
 
-           modify form1-gd-1, start-x = 1, x     = 17,
+           modify form1-gd-1, start-x = 1, x     = 18,
                                   start-y = riga,
                                         y = riga,
                                   region-color 257,
@@ -2430,6 +2434,17 @@
                    display message "Ammessi valori S o N"
                              title tit-err
                               icon 2
+                end-if  
+           when 18
+                if tcl-edi-auto = "S" or
+                   tcl-edi-auto = "N"
+                   continue
+                else
+                   set errori to true
+                   move 18 to colonna
+                   display message "Ammessi valori S o N"
+                             title tit-err
+                              icon 2
                 end-if 
            end-evaluate.
 
@@ -2540,9 +2555,11 @@
                           move tcl-evasione                to 
            col-evasione
                           move tcl-stampa-brogm            to 
-           col-st-brogm
+           col-st-brogm     
                           move tcl-fido-nuovo              to 
            col-fido-nuovo
+                          move tcl-edi-auto                to 
+           col-edi-auto
                           modify form1-gd-1, record-to-add = rec-grid
                           if riga = 2
                              move tcl-stampante       to 
@@ -2694,7 +2711,7 @@
 
 
            perform varying colonna from 1 by 1 
-                     until colonna > 17
+                     until colonna > 18
               perform CONTROLLO
 
               if errori 
@@ -2815,8 +2832,9 @@
            inquire form1-gd-1(riga, 13), cell-data tcl-bloc-auto.
            inquire form1-gd-1(riga, 14), cell-data tcl-brogliaccio.
            inquire form1-gd-1(riga, 15), cell-data tcl-evasione.     
-           inquire form1-gd-1(riga, 16), cell-data tcl-stampa-brogm.
-           inquire form1-gd-1(riga, 17), cell-data tcl-fido-nuovo 
+           inquire form1-gd-1(riga, 16), cell-data tcl-stampa-brogm.    
+           inquire form1-gd-1(riga, 17), cell-data tcl-fido-nuovo.
+           inquire form1-gd-1(riga, 18), cell-data tcl-edi-auto 
            .
       * <TOTEM:END>
 

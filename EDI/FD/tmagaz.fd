@@ -59,4 +59,7 @@
                    15 mag-da-inviare   PIC  x.
                        88 mag-da-inviare-si VALUE IS "S". 
                        88 mag-da-inviare-no VALUE IS "N", " ". 
-                   15 mag-alfa-vuoto-3 PIC  x(3).
+                   15 mag-gen-auto     PIC  x.
+                       88 mag-gen-auto-si VALUE IS "S". 
+                       88 mag-gen-auto-no VALUE IS "N", " ". 
+                   15 mag-alfa-vuoto-3 PIC  x(2).

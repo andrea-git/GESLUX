@@ -2,7 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E34F9146-370-47841809
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E421D12591-493-556827752
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -636,14 +636,42 @@ m_strTrue="N" " "
 
 @}}
 [FDITEM66_]
+m_strName=tcl-edi-auto
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM66_
+
+@}}
+[FDITEM67_]
+m_strName=tcl-edi-auto-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM67_
+
+@}}
+[FDITEM68_]
+m_strName=tcl-edi-auto-no
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="N" " "
+{{@DataItem_m_strDescriptionFDITEM68_
+
+@}}
+[FDITEM69_]
 m_strName=FILLER
-m_strRawPic=X(349)
-m_strPic=X(349)
+m_strRawPic=X(348)
+m_strPic=X(348)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=tcl-filler_1
-{{@DataItem_m_strDescriptionFDITEM66_
+{{@DataItem_m_strDescriptionFDITEM69_
 
 @}}
 [CStoAcucobolSL_]

@@ -70,5 +70,8 @@
                    15 tcl-fido-nuovo   PIC  x.
                        88 tcl-fido-nuovo-si VALUE IS "S". 
                        88 tcl-fido-nuovo-no VALUE IS "N" " ". 
+                   15 tcl-edi-auto     PIC  x.
+                       88 tcl-edi-auto-si VALUE IS "S". 
+                       88 tcl-edi-auto-no VALUE IS "N" " ". 
       *(( XFD NAME = tcl-filler_1 ))
-                   15 FILLER           PIC  X(349).
+                   15 FILLER           PIC  X(348).

@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-impord.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        giovedì 7 febbraio 2019 23:50:26.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        sabato 29 febbraio 2020 16:31:00.
        REMARKS.
       *{TOTEM}END
 
@@ -27,10 +27,12 @@
        INPUT-OUTPUT         SECTION.
        FILE-CONTROL.
       *{TOTEM}FILE-CONTROL
+           COPY "log-macrobatch.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
       *{TOTEM}FILE
+           COPY "log-macrobatch.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -41,7 +43,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -87,6 +89,15 @@
        77 counter2         PIC  9(5).
        77 counter-edit     PIC  zz.zz9.
        77 num-rec          PIC  9(5).
+       77 video-on         PIC  9
+                  VALUE IS 0.
+       77 r-output         PIC  x(25).
+       01 FILLER           PIC  9
+                  VALUE IS 0.
+           88 RichiamoBatch VALUE IS 1    WHEN SET TO FALSE  0. 
+       77 path-log-macrobatch          PIC  X(256).
+       77 STATUS-log-macrobatch        PIC  X(2).
+           88 Valid-STATUS-log-macrobatch VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -95,6 +106,18 @@
           88 Form1-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 STATUS-form3-FLAG-REFRESH PIC  9.
           88 form3-FLAG-REFRESH  VALUE 1 FALSE 0. 
+       77 TMP-DataSet1-log-macrobatch-BUF     PIC X(1000).
+      * VARIABLES FOR RECORD LENGTH.
+       77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
+       77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
+      * FILE'S LOCK MODE FLAG
+       77 DataSet1-log-macrobatch-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-log-macrobatch-LOCK  VALUE "Y".
+       77 DataSet1-log-macrobatch-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-log-macrobatch-KEY-Asc  VALUE "A".
+          88 DataSet1-log-macrobatch-KEY-Desc VALUE "D".
+
+
       *{TOTEM}END
 
       *{TOTEM}ID-LOGICI
@@ -105,6 +128,7 @@
        LINKAGE          SECTION.
       *{TOTEM}LINKAGE
            COPY  "COMMON-LINKAGE.DEF".
+       77 lk-mb-logfile    PIC  x(256).
       *{TOTEM}END
 
        SCREEN           SECTION.
@@ -238,10 +262,31 @@
       *{TOTEM}END
 
       *{TOTEM}LINKPARA
-       PROCEDURE  DIVISION USING LK-BLOCKPGM, USER-CODI, LIVELLO-ABIL.
+       PROCEDURE  DIVISION USING LK-BLOCKPGM, USER-CODI, LIVELLO-ABIL, 
+           lk-mb-logfile.
       *{TOTEM}END
 
       *{TOTEM}DECLARATIVE
+       DECLARATIVES.
+      * <TOTEM:EPT. INIT:EDI-impord, INIT:EDI-impord, BeforeDeclarative>
+      * <TOTEM:END>
+       INPUT-ERROR SECTION.
+           USE AFTER STANDARD ERROR PROCEDURE ON INPUT.
+       0100-DECL.
+           EXIT.
+       I-O-ERROR SECTION.
+           USE AFTER STANDARD ERROR PROCEDURE ON I-O.
+       0200-DECL.
+           EXIT.
+       OUTPUT-ERROR SECTION.
+           USE AFTER STANDARD ERROR PROCEDURE ON OUTPUT.
+       0300-DECL.
+           EXIT.
+       TRANSACTION-ERROR SECTION.
+           USE AFTER STANDARD ERROR PROCEDURE ON TRANSACTION.
+       0400-DECL.
+           EXIT.
+       END DECLARATIVES.
       *{TOTEM}END
 
        MAIN-LOGIC.
@@ -257,6 +302,7 @@
 
       *{TOTEM}COPY-PROCEDURE
        EXIT-STOP-ROUTINE.
+           PERFORM CLOSE-FILE-RTN
       * <TOTEM:EPT. INIT:EDI-impord, INIT:EDI-impord, BeforeDestroyResource>
       * <TOTEM:END>
            DESTROY Verdana12-Occidentale
@@ -284,6 +330,8 @@
            PERFORM INIT-RES.
       * create pop-up menu
            PERFORM INIT-POPUP.
+      * open files
+           PERFORM OPEN-FILE-RTN.
       *    After Init
            .
     
@@ -333,6 +381,148 @@
        INIT-POPUP.
            .
 
+       OPEN-FILE-RTN.
+      *    Before Open
+      *    log-macrobatch OPEN MODE IS FALSE
+      *    PERFORM OPEN-log-macrobatch
+      *    After Open
+           .
+
+       OPEN-log-macrobatch.
+      * <TOTEM:EPT. INIT:EDI-impord, FD:log-macrobatch, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT log-macrobatch
+           IF NOT Valid-STATUS-log-macrobatch
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:EDI-impord, FD:log-macrobatch, AfterOpen>
+      * <TOTEM:END>
+           .
+
+       CLOSE-FILE-RTN.
+      *    Before Close
+      *    log-macrobatch CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-log-macrobatch
+      *    After Close
+           .
+
+       CLOSE-log-macrobatch.
+      * <TOTEM:EPT. INIT:EDI-impord, FD:log-macrobatch, BeforeClose>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-macrobatch-INITSTART.
+           .
+
+       DataSet1-log-macrobatch-INITEND.
+           .
+
+       DataSet1-Change-CurrentKey-Asc.
+           MOVE "A" TO DataSet1-log-macrobatch-KEY-ORDER
+           .
+
+       DataSet1-Change-CurrentKey-Desc.
+           MOVE "D" TO DataSet1-log-macrobatch-KEY-ORDER
+           .
+
+       DataSet1-log-macrobatch-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-log-macrobatch-LOCK
+              READ log-macrobatch WITH LOCK 
+           ELSE
+              READ log-macrobatch WITH NO LOCK 
+           END-IF
+           MOVE STATUS-log-macrobatch TO TOTEM-ERR-STAT 
+           MOVE "log-macrobatch" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-macrobatch-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-log-macrobatch-KEY-Asc
+              IF DataSet1-log-macrobatch-LOCK
+                 READ log-macrobatch NEXT WITH LOCK
+              ELSE
+                 READ log-macrobatch NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-log-macrobatch TO TOTEM-ERR-STAT
+           MOVE "log-macrobatch" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-macrobatch-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeReadPrev>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-macrobatch-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-log-macrobatch TO TOTEM-ERR-STAT
+           MOVE "log-macrobatch" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-macrobatch-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-log-macrobatch TO TOTEM-ERR-STAT
+           MOVE "log-macrobatch" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-macrobatch-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-log-macrobatch TO TOTEM-ERR-STAT
+           MOVE "log-macrobatch" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterDelete>
+      * <TOTEM:END>
+           .
+
+       DataSet1-INIT-RECORD.
+           INITIALIZE lm-riga OF log-macrobatch
+           .
+
+
+      * FD's Initialize Paragraph
+       DataSet1-log-macrobatch-INITREC.
+           INITIALIZE lm-riga OF log-macrobatch
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      *
+       DataSet1-DISPATCH-BUFTOFLD.
+           .
 
        Form1-Open-Routine.
            PERFORM Form1-Scrn
@@ -364,6 +554,7 @@
               AUTO-MINIMIZE,
               WITH SYSTEM MENU,
               USER-GRAY,
+           VISIBLE video-on,
               USER-WHITE,
               No WRAP,
               EVENT PROCEDURE Screen4-Event-Proc,
@@ -380,6 +571,16 @@
 
        Form1-PROC.
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforeAccept>
+           if lk-bl-prog-id = "desktop"
+              set RichiamoBatch to true
+              perform PB-OK-LINKTO
+              move 27 to key-status
+           else
+              move 1 to video-on
+              modify form1-handle, visible video-on
+           end-if.
+
+           .
       * <TOTEM:END>
            PERFORM UNTIL Exit-Pushed
               ACCEPT Form1
@@ -535,6 +736,7 @@
               MODELESS,
               NO SCROLL,
               USER-GRAY,
+           VISIBLE video-on,
               USER-WHITE,
               No WRAP,
               EVENT PROCEDURE form3-Event-Proc,
@@ -552,13 +754,32 @@
        form3-PROC.
       * <TOTEM:EPT. FORM:form3, FORM:form3, BeforeAccept>
            initialize batch-linkage.
+           if not RichiamoBatch
+              move 1 to video-on
+              modify form3-handle, visible video-on
+              move "desktop" to user-codi
+           end-if.                                 
            move form3-Handle to batch-win-handle.
            call   "EDI-impord-p" using batch-linkage user-codi.
            cancel "EDI-impord-p".
            if batch-status = -1
-              display message "ERRORE!! VERIFICARE FILE DI LOG!"
-                        title tit-err
-                         icon 3
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output                           delimited 
+           size
+                        "ERRORE!! VERIFICARE FILE DI LOG!" delimited 
+           size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+                 move "KO" to lk-mb-logfile
+              else
+                 display message "ERRORE!! VERIFICARE FILE DI LOG!"
+                           title tit-err
+                            icon 3
+              end-if
            end-if.
            move 27  to key-status.
 
@@ -702,14 +923,38 @@
       * EVENT PARAGRAPH
        ginqui-Ev-Before-Program.
       * <TOTEM:PARA. ginqui-Ev-Before-Program>
-           move LK-BL-PROG-ID    TO COMO-PROG-ID 
+           move LK-BL-PROG-ID    TO COMO-PROG-ID.
+           if lk-bl-prog-id = "desktop"
+              set RichiamoBatch to true
+              move lk-mb-logfile to path-log-macrobatch
+              open extend log-macrobatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output              delimited size
+                     "|=> INGRESSO EDI-IMPORD" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if 
            .
       * <TOTEM:END>
        ginqui-Ev-After-Program.
       * <TOTEM:PARA. ginqui-Ev-After-Program>
            SET LK-BL-CANCELLAZIONE TO TRUE.
            MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
-           CALL "BLOCKPGM"  USING LK-BLOCKPGM 
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           if RichiamoBatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output            delimited size
+                     "<=| USCITA EDI-IMPORD" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+              close log-macrobatch
+           end-if 
            .
       * <TOTEM:END>
        pb-ok-BeforeProcedure.
@@ -726,7 +971,9 @@
       * <TOTEM:PARA. pb-ok-LinkTo>
            modify form1-handle visible 0
            perform FORM3-OPEN-ROUTINE
-           modify form1-handle visible 1
+           if not RichiamoBatch
+              modify form1-handle visible 1
+           end-if
            .
       * <TOTEM:END>
        pb-annulla-BeforeProcedure.

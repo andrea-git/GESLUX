@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=PAS004P-Ev-Before-Program
 AFTER_PROGRAM=I-O-BLOCCO
-PROGRAM_UNIQUE_CODE=TOTEM-7E3CF03247-689-1636929455
+PROGRAM_UNIQUE_CODE=TOTEM-7E421D162956-172-490331808
 
 {{@DESCRIPTION:
 
@@ -605,15 +605,43 @@ m_strTrue="N", " "
 
 @}}
 [FDITEM59_WK]
-m_strName=Screen1-Handle
-m_nUsage=24
-m_nItemLevel=77
+m_strName=col-gen-auto
+m_strRawPic=X
+m_strPic=X
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM59_WK
 
 @}}
 [FDITEM60_WK]
+m_strName=col-gen-auto-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM60_WK
+
+@}}
+[FDITEM61_WK]
+m_strName=col-gen-auto-no
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="N", " "
+{{@DataItem_m_strDescriptionFDITEM61_WK
+
+@}}
+[FDITEM62_WK]
+m_strName=Screen1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM62_WK
+
+@}}
+[FDITEM63_WK]
 m_strName=esegui-73x21-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -622,43 +650,13 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM60_WK
-
-@}}
-[FDITEM61_WK]
-m_strName=FILLER
-m_strRawPic=XX
-m_strPic=XX
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM61_WK
-
-@}}
-[FDITEM62_WK]
-m_strName=prima-volta
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="SI"
-m_strFalse="NO"
-{{@DataItem_m_strDescriptionFDITEM62_WK
-
-@}}
-[FDITEM63_WK]
-m_strName=cod
-m_strRawPic=x(3)
-m_strPic=x(3)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM63_WK
 
 @}}
 [FDITEM64_WK]
-m_strName=des
-m_strRawPic=x(50)
-m_strPic=x(50)
+m_strName=FILLER
+m_strRawPic=XX
+m_strPic=XX
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -666,21 +664,19 @@ m_bFixed=1
 
 @}}
 [FDITEM65_WK]
-m_strName=e-cod
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=1
-m_nItemLevel=77
+m_strName=prima-volta
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="SI"
+m_strFalse="NO"
 {{@DataItem_m_strDescriptionFDITEM65_WK
 
 @}}
 [FDITEM66_WK]
-m_strName=e-des
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=cod
+m_strRawPic=x(3)
+m_strPic=x(3)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -688,8 +684,9 @@ m_bFixed=1
 
 @}}
 [FDITEM67_WK]
-m_strName=Default-Font
-m_nUsage=38
+m_strName=des
+m_strRawPic=x(50)
+m_strPic=x(50)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -697,9 +694,10 @@ m_bFixed=1
 
 @}}
 [FDITEM68_WK]
-m_strName=lab-des2
-m_strRawPic=x(50)
-m_strPic=x(50)
+m_strName=e-cod
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -707,30 +705,29 @@ m_bFixed=1
 
 @}}
 [FDITEM69_WK]
-m_strName=FILLER
-m_strRawPic=XX
-m_strPic=XX
-m_nItemLevel=1
+m_strName=e-des
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM69_WK
 
 @}}
 [FDITEM70_WK]
-m_strName=ricarica
-m_nItemLevel=88
+m_strName=Default-Font
+m_nUsage=38
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="SI"
-m_strFalse="NO"
 {{@DataItem_m_strDescriptionFDITEM70_WK
 
 @}}
 [FDITEM71_WK]
-m_strName=risultato
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=ZERO
+m_strName=lab-des2
+m_strRawPic=x(50)
+m_strPic=x(50)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -738,7 +735,9 @@ m_bFixed=1
 
 @}}
 [FDITEM72_WK]
-m_strName=old-mag-rec
+m_strName=FILLER
+m_strRawPic=XX
+m_strPic=XX
 m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
@@ -746,45 +745,46 @@ m_bFixed=1
 
 @}}
 [FDITEM73_WK]
-m_strName=old-mag-chiave
-m_nItemLevel=5
+m_strName=ricarica
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="SI"
+m_strFalse="NO"
 {{@DataItem_m_strDescriptionFDITEM73_WK
 
 @}}
 [FDITEM74_WK]
-m_strName=old-mag-codice
-m_strRawPic=x(3)
-m_strPic=X(3)
-m_nItemLevel=10
+m_strName=risultato
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=ZERO
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM74_WK
 
 @}}
 [FDITEM75_WK]
-m_strName=old-mag-dati
-m_nItemLevel=5
+m_strName=old-mag-rec
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM75_WK
 
 @}}
 [FDITEM76_WK]
-m_strName=old-mag-descrizione
-m_strRawPic=x(50)
-m_strPic=X(50)
-m_nItemLevel=10
+m_strName=old-mag-chiave
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM76_WK
 
 @}}
 [FDITEM77_WK]
-m_strName=old-mag-principale
-m_strRawPic=X(1)
-m_strPic=X(1)
+m_strName=old-mag-codice
+m_strRawPic=x(3)
+m_strPic=X(3)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -792,24 +792,52 @@ m_bFixed=1
 
 @}}
 [FDITEM78_WK]
+m_strName=old-mag-dati
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM78_WK
+
+@}}
+[FDITEM79_WK]
+m_strName=old-mag-descrizione
+m_strRawPic=x(50)
+m_strPic=X(50)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM79_WK
+
+@}}
+[FDITEM80_WK]
+m_strName=old-mag-principale
+m_strRawPic=X(1)
+m_strPic=X(1)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM80_WK
+
+@}}
+[FDITEM81_WK]
 m_strName=old-si-mag-principale
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S"
-{{@DataItem_m_strDescriptionFDITEM78_WK
+{{@DataItem_m_strDescriptionFDITEM81_WK
 
 @}}
-[FDITEM79_WK]
+[FDITEM82_WK]
 m_strName=old-no-mag-principale
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="N"
-{{@DataItem_m_strDescriptionFDITEM79_WK
+{{@DataItem_m_strDescriptionFDITEM82_WK
 
 @}}
-[FDITEM80_WK]
+[FDITEM83_WK]
 m_strName=old-mag-scr-aux
 m_strRawPic=X(1)
 m_strPic=X(1)
@@ -817,49 +845,20 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=mag-principale_1
-{{@DataItem_m_strDescriptionFDITEM80_WK
+{{@DataItem_m_strDescriptionFDITEM83_WK
 
 @}}
-[FDITEM81_WK]
+[FDITEM84_WK]
 m_strName=old-mag-tutte
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="T"
-{{@DataItem_m_strDescriptionFDITEM81_WK
-
-@}}
-[FDITEM82_WK]
-m_strName=old-mag-solo-no-utf
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="S"
-{{@DataItem_m_strDescriptionFDITEM82_WK
-
-@}}
-[FDITEM83_WK]
-m_strName=old-mag-nessuno
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="N"
-{{@DataItem_m_strDescriptionFDITEM83_WK
-
-@}}
-[FDITEM84_WK]
-m_strName=old-mag-utf
-m_strRawPic=X(1)
-m_strPic=X(1)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-m_strName_Xfd=mag-principale_1
 {{@DataItem_m_strDescriptionFDITEM84_WK
 
 @}}
 [FDITEM85_WK]
-m_strName=old-mag-si-utf
+m_strName=old-mag-solo-no-utf
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -868,7 +867,7 @@ m_strTrue="S"
 
 @}}
 [FDITEM86_WK]
-m_strName=old-mag-no-utf
+m_strName=old-mag-nessuno
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -877,45 +876,44 @@ m_strTrue="N"
 
 @}}
 [FDITEM87_WK]
-m_strName=old-mag-dati-comuni
+m_strName=old-mag-utf
+m_strRawPic=X(1)
+m_strPic=X(1)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
+m_strName_Xfd=mag-principale_1
 {{@DataItem_m_strDescriptionFDITEM87_WK
 
 @}}
 [FDITEM88_WK]
-m_strName=old-mag-data-creazione
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=15
+m_strName=old-mag-si-utf
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="S"
 {{@DataItem_m_strDescriptionFDITEM88_WK
 
 @}}
 [FDITEM89_WK]
-m_strName=old-mag-ora-creazione
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=15
+m_strName=old-mag-no-utf
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="N"
 {{@DataItem_m_strDescriptionFDITEM89_WK
 
 @}}
 [FDITEM90_WK]
-m_strName=old-mag-utente-creazione
-m_strRawPic=x(10)
-m_strPic=X(10)
-m_nItemLevel=15
+m_strName=old-mag-dati-comuni
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM90_WK
 
 @}}
 [FDITEM91_WK]
-m_strName=old-mag-data-ultima-modifica
+m_strName=old-mag-data-creazione
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=15
@@ -925,7 +923,7 @@ m_bFixed=1
 
 @}}
 [FDITEM92_WK]
-m_strName=old-mag-ora-ultima-modifica
+m_strName=old-mag-ora-creazione
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=15
@@ -935,7 +933,7 @@ m_bFixed=1
 
 @}}
 [FDITEM93_WK]
-m_strName=old-mag-utente-ultima-modifica
+m_strName=old-mag-utente-creazione
 m_strRawPic=x(10)
 m_strPic=X(10)
 m_nItemLevel=15
@@ -945,17 +943,19 @@ m_bFixed=1
 
 @}}
 [FDITEM94_WK]
-m_strName=old-mag-vuoti
-m_nItemLevel=10
+m_strName=old-mag-data-ultima-modifica
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM94_WK
 
 @}}
 [FDITEM95_WK]
-m_strName=old-mag-perce-riordino
-m_strRawPic=9(3)v999
-m_strPic=9(3)V999
+m_strName=old-mag-ora-ultima-modifica
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -963,9 +963,9 @@ m_bFixed=1
 
 @}}
 [FDITEM96_WK]
-m_strName=old-mag-num-vuoto-1
-m_strRawPic=9(9)
-m_strPic=9(9)
+m_strName=old-mag-utente-ultima-modifica
+m_strRawPic=x(10)
+m_strPic=X(10)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -973,19 +973,17 @@ m_bFixed=1
 
 @}}
 [FDITEM97_WK]
-m_strName=old-mag-num-vuoto-2
-m_strRawPic=9(15)
-m_strPic=9(15)
-m_nItemLevel=15
+m_strName=old-mag-vuoti
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM97_WK
 
 @}}
 [FDITEM98_WK]
-m_strName=old-mag-num-vuoto-3
-m_strRawPic=9(15)
-m_strPic=9(15)
+m_strName=old-mag-perce-riordino
+m_strRawPic=9(3)v999
+m_strPic=9(3)V999
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -993,9 +991,9 @@ m_bFixed=1
 
 @}}
 [FDITEM99_WK]
-m_strName=old-mag-per-promo
-m_strRawPic=x
-m_strPic=x
+m_strName=old-mag-num-vuoto-1
+m_strRawPic=9(9)
+m_strPic=9(9)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1003,27 +1001,29 @@ m_bFixed=1
 
 @}}
 [FDITEM100_WK]
-m_strName=old-mag-per-promo-si
-m_nItemLevel=88
+m_strName=old-mag-num-vuoto-2
+m_strRawPic=9(15)
+m_strPic=9(15)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-m_strTrue="S"
 {{@DataItem_m_strDescriptionFDITEM100_WK
 
 @}}
 [FDITEM101_WK]
-m_strName=old-mag-per-promo-no
-m_nItemLevel=88
+m_strName=old-mag-num-vuoto-3
+m_strRawPic=9(15)
+m_strPic=9(15)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-m_strTrue="N"
 {{@DataItem_m_strDescriptionFDITEM101_WK
 
 @}}
 [FDITEM102_WK]
-m_strName=old-mag-causale-eva
-m_strRawPic=x(4)
-m_strPic=x(4)
+m_strName=old-mag-per-promo
+m_strRawPic=x
+m_strPic=x
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1031,29 +1031,27 @@ m_bFixed=1
 
 @}}
 [FDITEM103_WK]
-m_strName=old-mag-causale-omag
-m_strRawPic=x(4)
-m_strPic=x(4)
-m_nItemLevel=15
+m_strName=old-mag-per-promo-si
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="S"
 {{@DataItem_m_strDescriptionFDITEM103_WK
 
 @}}
 [FDITEM104_WK]
-m_strName=old-mag-alfa-vuoto-1
-m_strRawPic=x(11)
-m_strPic=x(11)
-m_nItemLevel=15
+m_strName=old-mag-per-promo-no
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="N"
 {{@DataItem_m_strDescriptionFDITEM104_WK
 
 @}}
 [FDITEM105_WK]
-m_strName=old-mag-alfa-vuoto-2
-m_strRawPic=x(20)
-m_strPic=X(20)
+m_strName=old-mag-causale-eva
+m_strRawPic=x(4)
+m_strPic=x(4)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1061,9 +1059,9 @@ m_bFixed=1
 
 @}}
 [FDITEM106_WK]
-m_strName=old-mag-alfa-vuoto-3
-m_strRawPic=x(19)
-m_strPic=X(19)
+m_strName=old-mag-causale-omag
+m_strRawPic=x(4)
+m_strPic=x(4)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1071,39 +1069,39 @@ m_bFixed=1
 
 @}}
 [FDITEM107_WK]
-m_strName=FILLER
-m_strRawPic=XX
-m_strPic=XX
-m_nItemLevel=77
+m_strName=old-mag-alfa-vuoto-1
+m_strRawPic=x(11)
+m_strPic=x(11)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM107_WK
 
 @}}
 [FDITEM108_WK]
-m_strName=trovato-uno
-m_nItemLevel=88
+m_strName=old-mag-alfa-vuoto-2
+m_strRawPic=x(20)
+m_strPic=X(20)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-m_strTrue="SI"
-m_strFalse="NO"
 {{@DataItem_m_strDescriptionFDITEM108_WK
 
 @}}
 [FDITEM109_WK]
-m_strName=trovato-nessuno
-m_nItemLevel=88
+m_strName=old-mag-alfa-vuoto-3
+m_strRawPic=x(19)
+m_strPic=X(19)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-m_strTrue="NO"
 {{@DataItem_m_strDescriptionFDITEM109_WK
 
 @}}
 [FDITEM110_WK]
-m_strName=totale-righe
-m_strRawPic=9(5)
-m_strPic=9(5)
-m_strDefaultValue=ZERO
+m_strName=FILLER
+m_strRawPic=XX
+m_strPic=XX
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1111,30 +1109,29 @@ m_bFixed=1
 
 @}}
 [FDITEM111_WK]
-m_strName=cont
-m_strRawPic=9(5)
-m_strPic=9(5)
-m_strDefaultValue=ZERO
-m_nItemLevel=77
+m_strName=trovato-uno
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="SI"
+m_strFalse="NO"
 {{@DataItem_m_strDescriptionFDITEM111_WK
 
 @}}
 [FDITEM112_WK]
-m_strName=old-riga
-m_strRawPic=9(5)
-m_strPic=9(5)
-m_strDefaultValue=ZERO
-m_nItemLevel=77
+m_strName=trovato-nessuno
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="NO"
 {{@DataItem_m_strDescriptionFDITEM112_WK
 
 @}}
 [FDITEM113_WK]
-m_strName=Form1-St-1-Handle
-m_nUsage=51
+m_strName=totale-righe
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_strDefaultValue=ZERO
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1142,8 +1139,10 @@ m_bFixed=1
 
 @}}
 [FDITEM114_WK]
-m_strName=Screen1-St-1-Handle
-m_nUsage=51
+m_strName=cont
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_strDefaultValue=ZERO
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1151,9 +1150,10 @@ m_bFixed=1
 
 @}}
 [FDITEM115_WK]
-m_strName=STATUS-tcaumag
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=old-riga
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_strDefaultValue=ZERO
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1161,75 +1161,73 @@ m_bFixed=1
 
 @}}
 [FDITEM116_WK]
-m_strName=Valid-STATUS-tcaumag
-m_nItemLevel=88
+m_strName=Form1-St-1-Handle
+m_nUsage=51
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM116_WK
 
 @}}
 [FDITEM117_WK]
-m_strName=gd-scorte-rec
-m_nItemLevel=1
+m_strName=Screen1-St-1-Handle
+m_nUsage=51
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM117_WK
 
 @}}
 [FDITEM118_WK]
-m_strName=col-codice
-m_strRawPic=xx
-m_strPic=xx
-m_nItemLevel=5
+m_strName=STATUS-tcaumag
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM118_WK
 
 @}}
 [FDITEM119_WK]
-m_strName=col-descrizione
-m_strRawPic=x(50)
-m_strPic=x(50)
-m_nItemLevel=5
+m_strName=Valid-STATUS-tcaumag
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM119_WK
 
 @}}
 [FDITEM120_WK]
-m_strName=Large-Font
-m_nUsage=35
-m_nItemLevel=77
+m_strName=gd-scorte-rec
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM120_WK
 
 @}}
 [FDITEM121_WK]
-m_strName=STATUS-tscorte
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
+m_strName=col-codice
+m_strRawPic=xx
+m_strPic=xx
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM121_WK
 
 @}}
 [FDITEM122_WK]
-m_strName=Valid-STATUS-tscorte
-m_nItemLevel=88
+m_strName=col-descrizione
+m_strRawPic=x(50)
+m_strPic=x(50)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM122_WK
 
 @}}
 [FDITEM123_WK]
-m_strName=AUTO-ID
-m_strRawPic=9(6)
-m_strPic=9(6)
-m_strDefaultValue=4
+m_strName=Large-Font
+m_nUsage=35
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1237,7 +1235,7 @@ m_bFixed=1
 
 @}}
 [FDITEM124_WK]
-m_strName=STATUS-tvettori
+m_strName=STATUS-tscorte
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -1247,12 +1245,42 @@ m_bFixed=1
 
 @}}
 [FDITEM125_WK]
-m_strName=Valid-STATUS-tvettori
+m_strName=Valid-STATUS-tscorte
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM125_WK
+
+@}}
+[FDITEM126_WK]
+m_strName=AUTO-ID
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_strDefaultValue=4
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM126_WK
+
+@}}
+[FDITEM127_WK]
+m_strName=STATUS-tvettori
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM127_WK
+
+@}}
+[FDITEM128_WK]
+m_strName=Valid-STATUS-tvettori
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM128_WK
 
 @}}
 
@@ -1456,7 +1484,7 @@ GRAPHICAL-SCREEN
 Begin Screen Form1
    PREFIX            = Form1
    IMPORTED-SCREEN   = FALSE
-   LOCK-CONTROL      = TRUE
+   LOCK-CONTROL      = FALSE
    LEVEL             = 1
    (Name)            = Form1
    Absolute Column   = 0
@@ -1493,7 +1521,7 @@ Begin Screen Form1
    Operation Mode    = Interactive Mode
    Resizable         = FALSE
    Scroll            = FALSE
-   Size              = 232,33
+   Size              = 240,00
    System Menu       = TRUE
    Title Bar         = TRUE
    Title Variable    = titolo
@@ -1542,7 +1570,7 @@ Begin Screen Form1
       Width in Cells    = TRUE
    End
    Begin Grid form1-gd-1
-      SCREEN-COL        = 2,50
+      SCREEN-COL        = 1,50
       SCREEN-LINE       = 1,69
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -1569,9 +1597,10 @@ Begin Screen Form1
       Cells' Setting    = ( X = 17, Y = 1, Data = "Vettore" )
       Cells' Setting    = ( X = 18, Y = 1, Data = "PM" )
       Cells' Setting    = ( X = 19, Y = 1, Data = "Da inviare" )
+      Cells' Setting    = ( X = 20, Y = 1, Data = "Gen. auto" )
       Centered Headings = FALSE
       Color             = 0
-      Column            = 2,50
+      Column            = 1,50
       Column Headings   = TRUE
       Columns' Setting  = ( X = 1, Name = col-id, READONLY = 0 )
       Columns' Setting  = ( Font = Small Font, Font Variable = Small-Font )
@@ -1632,6 +1661,9 @@ Begin Screen Form1
       Columns' Setting  = ( X = 19, Name = col-da-inviare, READONLY = 0 )
       Columns' Setting  = ( PIC = "X", TYPE = "U(1)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
       Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 20, Name = col-gen-auto, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X", TYPE = "U(1)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
+      Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
       Cursor Color      = 0
       Cursor Frame Width = 2
       Cursor X          = 0
@@ -1656,19 +1688,19 @@ Begin Screen Form1
       Lines Unit        = Default
       No Tab            = FALSE
       Num Col Headings  = 1
-      Num Columns       = 19
+      Num Columns       = 20
       Num Rows          = 0
       Occurs            = 0
       Paged             = FALSE
       Record Data       = rec-grid
       Row Dividers      = 1
       Row Headings      = FALSE
-      Size              = 229,17
+      Size              = 239,00
       Size Unit         = Default
       Tab Order         = 2
       Tiled Headings    = TRUE
       Use Tab           = TRUE
-      Virtual Width     = 226
+      Virtual Width     = 236
       Visible           = NONE
       Vpadding          = 30
       Vscroll           = TRUE
@@ -1683,7 +1715,7 @@ Begin Screen Form1
       Msg-Goto-Cell-Mouse = form1-gd-1-Ev-Msg-Goto-Cell-Mouse
    End
    Begin Grid gd-scorte
-      SCREEN-COL        = 90,50
+      SCREEN-COL        = 94,33
       SCREEN-LINE       = 33,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -1695,7 +1727,7 @@ Begin Screen Form1
       Cells' Setting    = ( X = 2, Y = 1, Data = "Descrizione" )
       Centered Headings = FALSE
       Color             = 0
-      Column            = 90,50
+      Column            = 94,33
       Column Headings   = TRUE
       Columns' Setting  = ( X = 1, Name = col-codice, READONLY = 0 )
       Columns' Setting  = ( PIC = "xx", TYPE = "x(2)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
@@ -1753,7 +1785,7 @@ Begin Screen Form1
       Msg-Goto-Cell-Mouse = gd-scorte-Ev-Msg-Goto-Cell-Mouse
    End
    Begin Label Form1-La-1
-      SCREEN-COL        = 90,50
+      SCREEN-COL        = 94,33
       SCREEN-LINE       = 31,31
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -1761,7 +1793,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 90,50
+      Column            = 94,33
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -3224,7 +3256,7 @@ BEGIN-DATA
 BEGIN-TEXT
            if riga < 2 move 2 to riga end-if.
 
-           modify form1-gd-1, start-x = 1, x = 19,
+           modify form1-gd-1, start-x = 1, x = 20,
                                   start-y = riga,
                                         y = riga,
                                   region-color 257,
@@ -3577,6 +3609,18 @@ BEGIN-TEXT
                            display message "Valori ammessi: S o N"
                                     title tit-err
                                      icon 2
+                end-evaluate 
+
+           when 20
+                inquire form1-gd-1(riga, 20) cell-data col-gen-auto
+                evaluate col-gen-auto
+                when "S"
+                when "N"   continue
+                when other set errori to true
+                           move 19    to colonna
+                           display message "Valori ammessi: S o N"
+                                    title tit-err
+                                     icon 2
                 end-evaluate
 
            end-evaluate.
@@ -3710,8 +3754,9 @@ BEGIN-TEXT
                           move mag-cau-reso         to col-reso
                           move mag-cau-diff         to col-diff
                           move mag-vettore          to col-vett
-                          move mag-priorita-mag     to col-priorita-mag
+                          move mag-priorita-mag     to col-priorita-mag    
                           move mag-da-inviare       to col-da-inviare
+                          move mag-gen-auto         to col-gen-auto
                           modify form1-gd-1(riga, 1),  cell-data col-id                
                           modify form1-gd-1(riga, 2),  cell-data col-des               
                           modify form1-gd-1(riga, 3),  cell-data col-princ             
@@ -3731,6 +3776,7 @@ BEGIN-TEXT
                           modify form1-gd-1(riga, 17), cell-data col-vett              
                           modify form1-gd-1(riga, 18), cell-data col-priorita-mag      
                           modify form1-gd-1(riga, 19), cell-data col-da-inviare        
+                          modify form1-gd-1(riga, 20), cell-data col-gen-auto
 
                           evaluate true
                           when si-principale
@@ -4049,6 +4095,7 @@ BEGIN-TEXT
            inquire form1-gd-1(riga, 17), cell-data mag-vettore.  
            inquire form1-gd-1(riga, 18), cell-data mag-priorita-mag.
            inquire form1-gd-1(riga, 19), cell-data mag-da-inviare.
+           inquire form1-gd-1(riga, 20), cell-data mag-gen-auto.
 
            if mag-principale = spaces
               set no-mag-principale to true
