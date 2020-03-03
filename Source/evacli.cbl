@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 14 settembre 2019 11:32:27.
+       DATE-WRITTEN.        lunedì 2 marzo 2020 15:24:06.
        REMARKS.
       *{TOTEM}END
 
@@ -67,6 +67,8 @@
            COPY "tprov.sl".
            COPY "paramSHI.sl".
            COPY "tmp-eva-riep.sl".
+           COPY "macrobatch.sl".
+           COPY "log-macrobatch.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -111,6 +113,8 @@
            COPY "tprov.fd".
            COPY "paramSHI.fd".
            COPY "tmp-eva-riep.fd".
+           COPY "macrobatch.fd".
+           COPY "log-macrobatch.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -121,7 +125,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -166,6 +170,7 @@
        01 FILLER           PIC  9.
            88 PrimaVolta VALUE IS 1    WHEN SET TO FALSE  0. 
        77 save-ritira      PIC  9.
+       77 r-output         PIC  x(25).
        01 FILLER           PIC  9
                   VALUE IS 0.
            88 FiltraRecord VALUE IS 1    WHEN SET TO FALSE  0. 
@@ -174,6 +179,9 @@
            88 EvasioneIntera VALUE IS 1    WHEN SET TO FALSE  0. 
        77 como-riga-riep   PIC  9(5).
        77 tot-righe-riep   PIC  9(5).
+       01 FILLER           PIC  9
+                  VALUE IS 0.
+           88 RichiamoBatch VALUE IS 1    WHEN SET TO FALSE  0. 
        77 da-evadere       PIC  9(8).
        77 save-gg-cons-max PIC  9(3).
        77 evades           PIC  x(9).
@@ -595,6 +603,13 @@
        77 como-qta         PIC  9(5).
        77 s-mag            PIC  x(3).
        77 path-tmp-eva-riep            PIC  x(200).
+       77 STATUS-macrobatch            PIC  X(2).
+           88 Valid-STATUS-macrobatch VALUE IS "00" THRU "09". 
+       77 path-log-macrobatch          PIC  X(256).
+       77 STATUS-log-macrobatch        PIC  X(2).
+           88 Valid-STATUS-log-macrobatch VALUE IS "00" THRU "09". 
+       77 video-on         PIC  9
+                  VALUE IS 0.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -655,6 +670,8 @@
        77 TMP-DataSet1-tprov-BUF     PIC X(192).
        77 TMP-DataSet1-paramSHI-BUF     PIC X(9574).
        77 TMP-DataSet1-tmp-eva-riep-BUF     PIC X(39).
+       77 TMP-DataSet1-macrobatch-BUF     PIC X(9302).
+       77 TMP-DataSet1-log-macrobatch-BUF     PIC X(1000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -860,6 +877,16 @@
        77 DataSet1-tmp-eva-riep-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tmp-eva-riep-KEY-Asc  VALUE "A".
           88 DataSet1-tmp-eva-riep-KEY-Desc VALUE "D".
+       77 DataSet1-macrobatch-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-macrobatch-LOCK  VALUE "Y".
+       77 DataSet1-macrobatch-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-macrobatch-KEY-Asc  VALUE "A".
+          88 DataSet1-macrobatch-KEY-Desc VALUE "D".
+       77 DataSet1-log-macrobatch-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-log-macrobatch-LOCK  VALUE "Y".
+       77 DataSet1-log-macrobatch-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-log-macrobatch-KEY-Asc  VALUE "A".
+          88 DataSet1-log-macrobatch-KEY-Desc VALUE "D".
 
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
@@ -870,6 +897,7 @@
        77 mrordini-mro-k-articolo-SPLITBUF  PIC X(24).
        77 mrordini-mro-k-progr-SPLITBUF  PIC X(18).
        77 mrordini-mro-k-tprev-SPLITBUF  PIC X(39).
+       77 mrordini-mro-k-ord-art-SPLITBUF  PIC X(19).
        77 mtordini-mto-k-ord-cli-SPLITBUF  PIC X(55).
        77 mtordini-mto-k-data-SPLITBUF  PIC X(21).
        77 mtordini-mto-k-clides-SPLITBUF  PIC X(19).
@@ -887,6 +915,7 @@
        77 rordini-ror-k-articolo-SPLITBUF  PIC X(24).
        77 rordini-ror-k-master-SPLITBUF  PIC X(35).
        77 rordini-ror-k-stbolle-SPLITBUF  PIC X(30).
+       77 rordini-ror-k-ord-art-SPLITBUF  PIC X(19).
        77 tordini-k-causale-SPLITBUF  PIC X(17).
        77 tordini-k1-SPLITBUF  PIC X(23).
        77 tordini-k2-SPLITBUF  PIC X(21).
@@ -951,6 +980,7 @@
        LINKAGE          SECTION.
       *{TOTEM}LINKAGE
            COPY  "COMMON-LINKAGE.DEF".
+       77 lk-mb-id         PIC  9(18).
       *{TOTEM}END
 
        SCREEN           SECTION.
@@ -2352,7 +2382,8 @@
       *{TOTEM}END
 
       *{TOTEM}LINKPARA
-       PROCEDURE  DIVISION USING LK-BLOCKPGM, USER-CODI, LIVELLO-ABIL.
+       PROCEDURE  DIVISION USING LK-BLOCKPGM, USER-CODI, LIVELLO-ABIL, 
+           lk-mb-id.
       *{TOTEM}END
 
       *{TOTEM}DECLARATIVE
@@ -2774,6 +2805,10 @@
            PERFORM OPEN-paramSHI
       *    tmp-eva-riep OPEN MODE IS FALSE
       *    PERFORM OPEN-tmp-eva-riep
+      *    macrobatch OPEN MODE IS FALSE
+      *    PERFORM OPEN-macrobatch
+      *    log-macrobatch OPEN MODE IS FALSE
+      *    PERFORM OPEN-log-macrobatch
       *    After Open
            .
 
@@ -3327,6 +3362,37 @@
       * <TOTEM:END>
            .
 
+       OPEN-macrobatch.
+      * <TOTEM:EPT. INIT:evacli, FD:macrobatch, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  I-O macrobatch
+           IF STATUS-macrobatch = "35"
+              OPEN OUTPUT macrobatch
+                IF Valid-STATUS-macrobatch
+                   CLOSE macrobatch
+                   OPEN I-O macrobatch
+                END-IF
+           END-IF
+           IF NOT Valid-STATUS-macrobatch
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:evacli, FD:macrobatch, AfterOpen>
+      * <TOTEM:END>
+           .
+
+       OPEN-log-macrobatch.
+      * <TOTEM:EPT. INIT:evacli, FD:log-macrobatch, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  EXTEND log-macrobatch
+           IF NOT Valid-STATUS-log-macrobatch
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:evacli, FD:log-macrobatch, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-tparameva
@@ -3379,6 +3445,10 @@
            PERFORM CLOSE-paramSHI
       *    tmp-eva-riep CLOSE MODE IS FALSE
       *    PERFORM CLOSE-tmp-eva-riep
+      *    macrobatch CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-macrobatch
+      *    log-macrobatch CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-log-macrobatch
       *    After Close
            .
 
@@ -3609,6 +3679,16 @@
 
        CLOSE-tmp-eva-riep.
       * <TOTEM:EPT. INIT:evacli, FD:tmp-eva-riep, BeforeClose>
+      * <TOTEM:END>
+           .
+
+       CLOSE-macrobatch.
+      * <TOTEM:EPT. INIT:evacli, FD:macrobatch, BeforeClose>
+      * <TOTEM:END>
+           .
+
+       CLOSE-log-macrobatch.
+      * <TOTEM:EPT. INIT:evacli, FD:log-macrobatch, BeforeClose>
       * <TOTEM:END>
            .
 
@@ -4353,6 +4433,14 @@
            MOVE mro-chiave(1:17) TO mrordini-mro-k-tprev-SPLITBUF(22:17)
            .
 
+       mrordini-mro-k-ord-art-MERGE-SPLITBUF.
+           INITIALIZE mrordini-mro-k-ord-art-SPLITBUF
+           MOVE mro-chiave-testa(1:12) TO 
+           mrordini-mro-k-ord-art-SPLITBUF(1:12)
+           MOVE mro-cod-articolo(1:6) TO 
+           mrordini-mro-k-ord-art-SPLITBUF(13:6)
+           .
+
        DataSet1-mrordini-INITSTART.
            IF DataSet1-mrordini-KEY-Asc
               MOVE Low-Value TO mro-chiave
@@ -4418,6 +4506,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT 
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -4449,6 +4538,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -4480,6 +4570,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -5117,6 +5208,16 @@
            rordini-ror-k-stbolle-SPLITBUF(13:17)
            .
 
+       rordini-ror-k-ord-art-MERGE-SPLITBUF.
+           INITIALIZE rordini-ror-k-ord-art-SPLITBUF
+           MOVE ror-anno OF rordini(1:4) TO 
+           rordini-ror-k-ord-art-SPLITBUF(1:4)
+           MOVE ror-num-ordine OF rordini(1:8) TO 
+           rordini-ror-k-ord-art-SPLITBUF(5:8)
+           MOVE ror-cod-articolo OF rordini(1:6) TO 
+           rordini-ror-k-ord-art-SPLITBUF(13:6)
+           .
+
        DataSet1-rordini-INITSTART.
            IF DataSet1-rordini-KEY-Asc
               MOVE Low-Value TO ror-chiave OF rordini
@@ -5182,6 +5283,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT 
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -5213,6 +5315,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -5244,6 +5347,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -10252,6 +10356,233 @@
       * <TOTEM:END>
            .
 
+       DataSet1-macrobatch-INITSTART.
+           IF DataSet1-macrobatch-KEY-Asc
+              MOVE Low-Value TO mb-chiave
+           ELSE
+              MOVE High-Value TO mb-chiave
+           END-IF
+           .
+
+       DataSet1-macrobatch-INITEND.
+           IF DataSet1-macrobatch-KEY-Asc
+              MOVE High-Value TO mb-chiave
+           ELSE
+              MOVE Low-Value TO mb-chiave
+           END-IF
+           .
+
+      * macrobatch
+       DataSet1-macrobatch-START.
+           IF DataSet1-macrobatch-KEY-Asc
+              START macrobatch KEY >= mb-chiave
+           ELSE
+              START macrobatch KEY <= mb-chiave
+           END-IF
+           .
+
+       DataSet1-macrobatch-START-NOTGREATER.
+           IF DataSet1-macrobatch-KEY-Asc
+              START macrobatch KEY <= mb-chiave
+           ELSE
+              START macrobatch KEY >= mb-chiave
+           END-IF
+           .
+
+       DataSet1-macrobatch-START-GREATER.
+           IF DataSet1-macrobatch-KEY-Asc
+              START macrobatch KEY > mb-chiave
+           ELSE
+              START macrobatch KEY < mb-chiave
+           END-IF
+           .
+
+       DataSet1-macrobatch-START-LESS.
+           IF DataSet1-macrobatch-KEY-Asc
+              START macrobatch KEY < mb-chiave
+           ELSE
+              START macrobatch KEY > mb-chiave
+           END-IF
+           .
+
+       DataSet1-macrobatch-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:macrobatch, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:macrobatch, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-macrobatch-LOCK
+              READ macrobatch WITH LOCK 
+              KEY mb-chiave
+           ELSE
+              READ macrobatch WITH NO LOCK 
+              KEY mb-chiave
+           END-IF
+           MOVE STATUS-macrobatch TO TOTEM-ERR-STAT 
+           MOVE "macrobatch" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:macrobatch, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:macrobatch, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-macrobatch-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:macrobatch, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:macrobatch, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-macrobatch-KEY-Asc
+              IF DataSet1-macrobatch-LOCK
+                 READ macrobatch NEXT WITH LOCK
+              ELSE
+                 READ macrobatch NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-macrobatch-LOCK
+                 READ macrobatch PREVIOUS WITH LOCK
+              ELSE
+                 READ macrobatch PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-macrobatch TO TOTEM-ERR-STAT
+           MOVE "macrobatch" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:macrobatch, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:macrobatch, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-macrobatch-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:macrobatch, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:macrobatch, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-macrobatch-KEY-Asc
+              IF DataSet1-macrobatch-LOCK
+                 READ macrobatch PREVIOUS WITH LOCK
+              ELSE
+                 READ macrobatch PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-macrobatch-LOCK
+                 READ macrobatch NEXT WITH LOCK
+              ELSE
+                 READ macrobatch NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-macrobatch TO TOTEM-ERR-STAT
+           MOVE "macrobatch" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:macrobatch, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:macrobatch, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-macrobatch-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:macrobatch, BeforeWrite>
+      * <TOTEM:END>
+           WRITE mb-rec OF macrobatch.
+           MOVE STATUS-macrobatch TO TOTEM-ERR-STAT
+           MOVE "macrobatch" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:macrobatch, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-macrobatch-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:macrobatch, BeforeRewrite>
+      * <TOTEM:END>
+           REWRITE mb-rec OF macrobatch.
+           MOVE STATUS-macrobatch TO TOTEM-ERR-STAT
+           MOVE "macrobatch" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:macrobatch, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-macrobatch-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:macrobatch, BeforeDelete>
+      * <TOTEM:END>
+           DELETE macrobatch.
+           MOVE STATUS-macrobatch TO TOTEM-ERR-STAT
+           MOVE "macrobatch" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:macrobatch, AfterDelete>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-macrobatch-INITSTART.
+           .
+
+       DataSet1-log-macrobatch-INITEND.
+           .
+
+       DataSet1-log-macrobatch-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeReadRecord>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-macrobatch-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeReadNext>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-macrobatch-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeReadPrev>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-macrobatch-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeWrite>
+      * <TOTEM:END>
+           WRITE lm-riga OF log-macrobatch.
+           MOVE STATUS-log-macrobatch TO TOTEM-ERR-STAT
+           MOVE "log-macrobatch" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-macrobatch-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-log-macrobatch TO TOTEM-ERR-STAT
+           MOVE "log-macrobatch" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-macrobatch-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-log-macrobatch TO TOTEM-ERR-STAT
+           MOVE "log-macrobatch" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE tpa-rec OF tparameva
            INITIALIZE mag-rec OF tmagaz
@@ -10293,6 +10624,8 @@
            INITIALIZE prv-rec OF tprov
            INITIALIZE shi-rec OF paramSHI
            INITIALIZE ter-rec OF tmp-eva-riep
+           INITIALIZE mb-rec OF macrobatch
+           INITIALIZE lm-riga OF log-macrobatch
            .
 
 
@@ -10738,6 +11071,22 @@
                          ALPHABETIC    DATA BY SPACES
            .
 
+      * FD's Initialize Paragraph
+       DataSet1-macrobatch-INITREC.
+           INITIALIZE mb-rec OF macrobatch
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-log-macrobatch-INITREC.
+           INITIALIZE lm-riga OF log-macrobatch
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
       *
        DataSet1-DISPATCH-BUFTOFLD.
            EVALUATE TOTEM-Form-Index ALSO TOTEM-Frame-Index
@@ -10775,6 +11124,7 @@
               TITLE titolo,
               WITH SYSTEM MENU,
               USER-GRAY,
+           VISIBLE video-on,
               USER-WHITE,
               No WRAP,
               EVENT PROCEDURE Screen1-Event-Proc,
@@ -10791,6 +11141,16 @@
 
        Form1-PROC.
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforeAccept>
+           if RichiamoBatch
+              move 1 to tipo-evasione
+      *        perform PB-ESEGUI-LINKTO
+              move 27 to key-status
+           else
+              move 1 to video-on
+              modify form1-handle, visible video-on
+           end-if
+
+           .
       * <TOTEM:END>
            PERFORM UNTIL Exit-Pushed
               ACCEPT Form1
@@ -14688,7 +15048,83 @@
        aggmese-Ev-Before-Program.
       * <TOTEM:PARA. aggmese-Ev-Before-Program>
            move LK-BL-PROG-ID    TO COMO-PROG-ID.
-           perform CONTROLLA-ESEGUIBILITA.
+           if lk-bl-prog-id = "macrobatch"
+              set RichiamoBatch to true
+
+              open i-o macrobatch
+              move lk-mb-id to mb-id
+              read macrobatch no lock
+              move mb-path-log to path-log-macrobatch
+
+              open extend log-macrobatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output              delimited size
+                     "|=> INGRESSO EVACLI" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if.  
+
+      *Queste istruzioni son anchein "multigest.cpy", ma le duplico perchè
+      *serve un comprotamento un pò differente, ossia nessun msg a video
+           set RecLocked to false.
+           open i-o multigest.
+           move spaces to mul-chiave.
+           read multigest lock invalid continue end-read.
+           if RecLocked
+              read multigest no lock invalid continue end-read
+              if mul-ricalcolo          
+      
+                 if RichiamoBatch  
+                    call   "set-ini-log" using r-output
+                    cancel "set-ini-log"
+                    initialize lm-riga
+                    string r-output            delimited size
+                           "RICALCOLO IMPEGNATO IN CORSO. IMPOSSEIBILE P
+      -    "ROSEGUIRE" 
+                                               delimited size
+                      into lm-riga
+                    end-string
+                    write lm-riga  
+
+                    move lk-mb-id to mb-id
+                    read macrobatch no lock
+                    set mb-evacli-stato-err to true
+                    rewrite mb-rec
+
+                    close multigest
+
+                    call   "set-ini-log" using r-output
+                    cancel "set-ini-log"
+                    initialize lm-riga
+                    string r-output            delimited size
+                           "<=| USCITA EVACLI" delimited size
+                      into lm-riga
+                    end-string
+                    write lm-riga
+                    close log-macrobatch
+                    close macrobatch      
+                    goback
+                 else
+                    display message "Ricalcolo impegnato in corso..."
+                             x"0d0a""Attendere e poi riprovare"
+                              title titolo
+                               icon 2
+                    close multigest
+                    SET LK-BL-CANCELLAZIONE TO TRUE
+                    MOVE COMO-PROG-ID       TO LK-BL-PROG-ID
+                    CALL "BLOCKPGM"  USING LK-BLOCKPGM       
+                    goback
+                 end-if
+
+              end-if
+           else
+              set mul-funzione to true
+              rewrite mul-rec
+              read multigest lock
+           end-if.
 
            set environment "EVASIONE_IN_USO" to "1".
            set RecLocked to false.
@@ -15005,6 +15441,19 @@
               destroy REGALO2-BMP
               destroy BLOCCATO-EVA2-BMP
               destroy PESO2-BMP
+           end-if.          
+      
+           if RichiamoBatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output            delimited size
+                     "<=| USCITA EVACLI" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+              close log-macrobatch
+              close macrobatch
            end-if 
            .
       * <TOTEM:END>

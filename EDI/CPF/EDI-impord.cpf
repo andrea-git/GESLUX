@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E421D135426-794-30744618
+PROGRAM_UNIQUE_CODE=TOTEM-7E43320183-174-112556576
 
 {{@DESCRIPTION:
 
@@ -330,6 +330,25 @@ m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM28_WK
 
 @}}
+[FDITEM29_WK]
+m_strName=STATUS-macrobatch
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM29_WK
+
+@}}
+[FDITEM30_WK]
+m_strName=Valid-STATUS-macrobatch
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM30_WK
+
+@}}
 
 
 [LINKAGE_SECTION]
@@ -519,9 +538,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM13_LK]
-m_strName=lk-mb-logfile
-m_strRawPic=x(256)
-m_strPic=x(256)
+m_strName=lk-mb-id
+m_strRawPic=9(18)
+m_strPic=9(18)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -935,8 +954,7 @@ BEGIN-DATA
    TEXTMODE          = 0
    ENTRYPOINT        = BeforeAccept
 BEGIN-TEXT
-           if lk-bl-prog-id = "desktop"
-              set RichiamoBatch to true
+           if RichiamoBatch
               perform PB-OK-LINKTO
               move 27 to key-status
            else
@@ -958,7 +976,6 @@ BEGIN-TEXT
            if not RichiamoBatch
               move 1 to video-on
               modify form3-handle, visible video-on
-              move "desktop" to user-codi
            end-if.                                 
            move form3-Handle to batch-win-handle.
            call   "EDI-impord-p" using batch-linkage user-codi.
@@ -972,12 +989,16 @@ BEGIN-TEXT
                         "ERRORE!! VERIFICARE FILE DI LOG!" delimited size
                    into lm-riga
                  end-string
-                 write lm-riga
-                 move "KO" to lk-mb-logfile
+                 write lm-riga 
+
+                 move lk-mb-id to mb-id
+                 read macrobatch
+                 set mb-edi-impord-stato-err to true
+                 rewrite mb-rec
               else
                  display message "ERRORE!! VERIFICARE FILE DI LOG!"
                            title tit-err
-                            icon 3
+                            icon 3           
               end-if
            end-if.
            move 27  to key-status.
@@ -1012,9 +1033,12 @@ BEGIN-DATA
    PARAGRAPH         = ginqui-Ev-Before-Program
 BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen4-blockpgm-1 **>>
-           if lk-bl-prog-id = "desktop"
+           if lk-bl-prog-id = "macrobatch"
               set RichiamoBatch to true
-              move lk-mb-logfile to path-log-macrobatch
+              open i-o macrobatch
+              move lk-mb-id to mb-id
+              read macrobatch no lock
+              move mb-path-log to path-log-macrobatch
               open extend log-macrobatch
               call   "set-ini-log" using r-output
               cancel "set-ini-log"
@@ -1042,6 +1066,7 @@ BEGIN-TEXT
               end-string
               write lm-riga
               close log-macrobatch
+              close macrobatch
            end-if.
 END-TEXT
 END-DATA
@@ -1168,10 +1193,12 @@ PROP_DOCU_RULER_EBL=0
 PROP_DOCU_GRID_EBL=0
 PROP_DOCU_GRID=20
 PROP_DOCU_ALIGN=0
-REL_SYM_SIZE=10
-REL_SYM_INFO_L=1
+REL_SYM_SIZE=16
+REL_SYM_INFO_L=2
 REL_SYM_INFO_X0=2301
 REL_SYM_INFO_Y0=1477236244
+REL_SYM_INFO_X1=2301
+REL_SYM_INFO_Y1=889507002
 
 [DRAW_BASESYMBOL_2301_1477236244]
 OBJ_NAME=2301
@@ -1188,6 +1215,54 @@ LEFT=16
 TOP=69
 RIGHT=416
 BOTTOM=291
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_889507002]
+OBJ_NAME=2301
+OBJ_ID=889507002
+KIND=1
+{{@LABEL_2301_889507002
+macrobatch
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=254
+TOP=436
+RIGHT=654
+BOTTOM=658
 PROP_OBJ_TYPE=
 PROP_OBJ_TYPE2=
 PROP_FILL_PT=0
@@ -1256,6 +1331,37 @@ DSN_INFO_END_VALUE=
 
 @}}
 DSN_INFO_PRIMARY=1
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_889507002]
+OBJ_NAME=0
+OBJ_ID=889507002
+REL_M_OBJ_ID=0
+ENTITY=macrobatch
+LINK=0
+LINK_NAME=
+DSN_SIZE=41
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=mb-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_889507002
+
+@}}
+DSN_INFO_PRIMARY=0
 DSN_INFO_OPEN=0
 DSN_INFO_CLOSE=0
 DSN_INFO_EXCLUSIVE=0

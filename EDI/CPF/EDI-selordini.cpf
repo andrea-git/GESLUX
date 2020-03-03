@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E421D135452-108-953413364
+PROGRAM_UNIQUE_CODE=TOTEM-7E43320187-618-2540627222
 
 {{@DESCRIPTION:
 
@@ -6938,6 +6938,25 @@ m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM637_WK
 
 @}}
+[FDITEM638_WK]
+m_strName=STATUS-macrobatch
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM638_WK
+
+@}}
+[FDITEM639_WK]
+m_strName=Valid-STATUS-macrobatch
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM639_WK
+
+@}}
 
 
 [LINKAGE_SECTION]
@@ -7127,9 +7146,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM13_LK]
-m_strName=lk-mb-logfile
-m_strRawPic=x(256)
-m_strPic=x(256)
+m_strName=lk-mb-id
+m_strRawPic=9(18)
+m_strPic=9(18)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -18593,8 +18612,12 @@ BEGIN-TEXT
                         lck-utente-creazione       delimited size
                    into lm-riga
                  end-string
-                 write lm-riga
-                 move "KO" to lk-mb-logfile
+                 write lm-riga     
+
+                 move lk-mb-id to mb-id
+                 read macrobatch no lock
+                 set mb-edi-selordini-stato-err to true
+                 rewrite mb-rec
               else
                  display message 
                  "FUNZIONE GIA' IN USO DA: " lck-utente-creazione
@@ -18630,9 +18653,24 @@ BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = ginqui-Ev-Before-Program
 BEGIN-TEXT
-           if lk-bl-prog-id = "desktop"
+           if lk-bl-prog-id = "macrobatch"
               set RichiamoBatch to true
-           end-if.
+
+              open i-o macrobatch
+              move lk-mb-id to mb-id
+              read macrobatch no lock
+              move mb-path-log to path-log-macrobatch
+
+              open extend log-macrobatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output                 delimited size
+                     "|=> INGRESSO EDI-SELORDINI" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if.  
 
       *<<** Customized_Default, SP-G, Screen4-blockpgm-1 **>>
            perform CALCOLA-COLORE-TRASPARENTE.
@@ -18667,20 +18705,6 @@ BEGIN-TEXT
            MOVE 0 TO WFONT-CHAR-SET
            CALL "W$FONT" USING WFONT-GET-FONT, 
                                Arial10B, WFONT-DATA
-
-           if lk-bl-prog-id = "desktop"
-              set RichiamoBatch  to true
-              move lk-mb-logfile to path-log-macrobatch
-              open extend log-macrobatch
-              call   "set-ini-log" using r-output
-              cancel "set-ini-log"
-              initialize lm-riga
-              string r-output                 delimited size
-                     "|=> INGRESSO EDI-SELORDINI" delimited size
-                into lm-riga
-              end-string
-              write lm-riga
-           end-if.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -18702,6 +18726,7 @@ BEGIN-TEXT
               end-string
               write lm-riga
               close log-macrobatch
+              close macrobatch
            end-if.
 
 END-TEXT
@@ -20451,8 +20476,8 @@ PROP_DOCU_RULER_EBL=0
 PROP_DOCU_GRID_EBL=0
 PROP_DOCU_GRID=20
 PROP_DOCU_ALIGN=0
-REL_SYM_SIZE=250
-REL_SYM_INFO_L=41
+REL_SYM_SIZE=256
+REL_SYM_INFO_L=42
 REL_SYM_INFO_X0=2301
 REL_SYM_INFO_Y0=1908663162
 REL_SYM_INFO_X1=2301
@@ -20535,6 +20560,8 @@ REL_SYM_INFO_X39=2301
 REL_SYM_INFO_Y39=1460519577
 REL_SYM_INFO_X40=2301
 REL_SYM_INFO_Y40=957789212
+REL_SYM_INFO_X41=2301
+REL_SYM_INFO_Y41=682627152
 
 [DRAW_BASESYMBOL_2301_1908663162]
 OBJ_NAME=2301
@@ -22504,6 +22531,54 @@ PROP_TRACK_COLOR=12632256
 REL_SYM_SIZE=4
 REL_SYM_INFO_L=0
 
+[DRAW_BASESYMBOL_2301_682627152]
+OBJ_NAME=2301
+OBJ_ID=682627152
+KIND=1
+{{@LABEL_2301_682627152
+macrobatch
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=3050
+TOP=877
+RIGHT=3450
+BOTTOM=1099
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
 [DMD_DOCUMENT_0_1760106106]
 OBJ_NAME=0
 OBJ_ID=1760106106
@@ -23776,6 +23851,37 @@ DSN_INFO_DATA_ORDER=0
 DSN_INFO_START_VALUE=
 DSN_INFO_END_VALUE=
 {{@DSN_INFO_CONDITION_957789212
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_682627152]
+OBJ_NAME=0
+OBJ_ID=682627152
+REL_M_OBJ_ID=0
+ENTITY=macrobatch
+LINK=0
+LINK_NAME=
+DSN_SIZE=41
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=2
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=mb-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_682627152
 
 @}}
 DSN_INFO_PRIMARY=0

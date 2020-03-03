@@ -170,6 +170,8 @@ LABLAB     copy "blister.sl".
            copy "tnumordf.sl".
            copy "grade.sl".
 
+           copy "macrobatch.sl".
+
       *****************************************************************
        DATA DIVISION.
        FILE SECTION.     
@@ -336,7 +338,8 @@ LABLAB     copy "blister.fd".
            copy "qta-pordini.fd".   
            copy "paramfel.fd".
            copy "tnumordf.fd".
-           copy "grade.fd".
+           copy "grade.fd".  
+           copy "macrobatch.fd".
 
        WORKING-STORAGE SECTION.
            COPY "acucobol.def".
@@ -504,6 +507,7 @@ LABLAB     copy "blister.fd".
        77  status-paramfel      pic x(2).
        77  status-tnumordf      pic x(2).
        77  status-grade         pic x(2).
+       77  status-macrobatch    pic x(2).
 
            copy "EDI-status.def".
 
@@ -2697,6 +2701,23 @@ LABLAB     copy "blister.fd".
                 
            end-evaluate.
 
+      ***---
+       MACROBATCH-ERR SECTION.
+           use after error procedure on macrobatch.
+           evaluate status-macrobatch
+           when "35" continue
+           when "39"
+                display message "File [MACROBATCH] Mismatch size!"
+                           title titolo
+                            icon 3
+                
+           when "98"
+                display message "[MACROBATCH] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                
+           end-evaluate.
+
            copy "EDI-declaratives.cpy".
 
        END DECLARATIVES.
@@ -3850,6 +3871,12 @@ riapri*     open input PNT.
               open output grade
            end-if.
            close grade.
+
+           open input macrobatch.
+           if status-macrobatch = "35"
+              open output macrobatch
+           end-if.
+           close macrobatch.
 
            copy "EDI-procedure.cpy".
 

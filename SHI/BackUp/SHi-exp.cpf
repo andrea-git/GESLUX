@@ -2,13 +2,12 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
-DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=exp-shi-Ev-Before-Program
 AFTER_PROGRAM=exp-shi-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E421D153258-860-1304510913
+PROGRAM_UNIQUE_CODE=TOTEM-7E433201756-73-2382132188
 
 {{@DESCRIPTION:
 
@@ -1293,6 +1292,25 @@ m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM102_WK
 
 @}}
+[FDITEM103_WK]
+m_strName=STATUS-macrobatch
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM103_WK
+
+@}}
+[FDITEM104_WK]
+m_strName=Valid-STATUS-macrobatch
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM104_WK
+
+@}}
 
 
 [LINKAGE_SECTION]
@@ -1482,9 +1500,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM13_LK]
-m_strName=lk-mb-logfile
-m_strRawPic=x(256)
-m_strPic=x(256)
+m_strName=lk-mb-id
+m_strRawPic=9(18)
+m_strPic=9(18)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2224,7 +2242,12 @@ BEGIN-TEXT
                    into lm-riga
                  end-string
                  write lm-riga
-                 move "KO" to lk-mb-logfile
+
+                 move lk-mb-id to mb-id
+                 read macrobatch no lock
+                 set mb-shi-exp-stato-err to true
+                 rewrite mb-rec 
+
               end-if
            else                  
               if RichiamoBatch
@@ -2344,8 +2367,7 @@ BEGIN-TEXT
 
            if errori    
 
-              if RichiamoBatch
-                 move lk-mb-logfile to path-log-macrobatch
+              if RichiamoBatch                               
                  call   "set-ini-log" using r-output
                  cancel "set-ini-log"
                  initialize lm-riga
@@ -2402,7 +2424,12 @@ BEGIN-TEXT
                       into lm-riga
                     end-string
                     write lm-riga
-                    move "KO" to lk-mb-logfile
+
+                    move lk-mb-id to mb-id
+                    read macrobatch no lock
+                    set mb-shi-exp-stato-err to true
+                    rewrite mb-rec
+
                  end-if
               end-if            
               if RichiamoBatch
@@ -2513,8 +2540,13 @@ BEGIN-TEXT
                                    delimited size
                    into lm-riga
                  end-string
-                 write lm-riga
-                 move "KO" to lk-mb-logfile
+                 write lm-riga 
+
+                 move lk-mb-id to mb-id
+                 read macrobatch no lock
+                 set mb-shi-exp-stato-err to true
+                 rewrite mb-rec
+
               end-if
               move  "Esportazione Ordini Clienti impossibile! Nome file 
       -              "non valorizzato"  to como-messaggio
@@ -2545,7 +2577,12 @@ BEGIN-TEXT
                       into lm-riga
                     end-string
                     write lm-riga
-                    move "KO" to lk-mb-logfile
+
+                    move lk-mb-id to mb-id
+                    read macrobatch no lock
+                    set mb-shi-exp-stato-err to true
+                    rewrite mb-rec
+
                  end-if
               else
                  call   "set-ini-log" using r-output
@@ -2640,10 +2677,10 @@ BEGIN-TEXT
                  call   "set-ini-log" using r-output
                  cancel "set-ini-log"
                  initialize lm-riga
-                 string r-output                      delimited size
-                        "TRASMISSINE FTP FALLITA. "   delimited size
-                        "CONSULTARE IL FILE LOG_FTP"  delimited size
-                        "PER MAGGIORI DETTAGLI"       delimited size
+                 string r-output                     delimited size
+                        "TRASMISSINE FTP FALLITA. "  delimited size
+                        "CONSULTARE IL FILE LOG_FTP" delimited size
+                        " PER MAGGIORI DETTAGLI"     delimited size
                    into lm-riga
                  end-string
                  write lm-riga
@@ -2717,9 +2754,15 @@ BEGIN-DATA
    PARAGRAPH         = exp-shi-Ev-Before-Program
 BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen4-blockpgm-1 **>>
-           if lk-bl-prog-id = "desktop"
+           if lk-bl-prog-id = "macrobatch"
               set RichiamoBatch  to true
-              move lk-mb-logfile to path-log-macrobatch
+
+              open i-o macrobatch
+
+              move lk-mb-id to mb-id
+              read macrobatch no lock
+              move mb-path-log to path-log-macrobatch
+
               open extend log-macrobatch
               call   "set-ini-log" using r-output
               cancel "set-ini-log"
@@ -2742,7 +2785,6 @@ BEGIN-DATA
 BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen4-blockpgm-1 **>>   
            if RichiamoBatch
-              move lk-mb-logfile to path-log-macrobatch   
               call   "set-ini-log" using r-output
               cancel "set-ini-log"
               initialize lm-riga
@@ -2752,6 +2794,7 @@ BEGIN-TEXT
               end-string
               write lm-riga
               close log-macrobatch
+              close macrobatch
            end-if.
 END-TEXT
 END-DATA
@@ -2870,14 +2913,16 @@ PROP_DOCU_RULER_EBL=0
 PROP_DOCU_GRID_EBL=0
 PROP_DOCU_GRID=20
 PROP_DOCU_ALIGN=0
-REL_SYM_SIZE=22
-REL_SYM_INFO_L=3
+REL_SYM_SIZE=28
+REL_SYM_INFO_L=4
 REL_SYM_INFO_X0=2301
 REL_SYM_INFO_Y0=650353337
 REL_SYM_INFO_X1=2301
 REL_SYM_INFO_Y1=2067638006
 REL_SYM_INFO_X2=2301
 REL_SYM_INFO_Y2=768230464
+REL_SYM_INFO_X3=2301
+REL_SYM_INFO_Y3=2039105804
 
 [DRAW_BASESYMBOL_2301_650353337]
 OBJ_NAME=2301
@@ -3023,6 +3068,54 @@ PROP_TRACK_COLOR=12632256
 REL_SYM_SIZE=4
 REL_SYM_INFO_L=0
 
+[DRAW_BASESYMBOL_2301_2039105804]
+OBJ_NAME=2301
+OBJ_ID=2039105804
+KIND=1
+{{@LABEL_2301_2039105804
+macrobatch
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1748
+TOP=566
+RIGHT=2148
+BOTTOM=788
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
 [DMD_DOCUMENT_0_1865930328]
 OBJ_NAME=0
 OBJ_ID=1865930328
@@ -3117,6 +3210,37 @@ DSN_INFO_DATA_ORDER=0
 DSN_INFO_START_VALUE=
 DSN_INFO_END_VALUE=
 {{@DSN_INFO_CONDITION_768230464
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_2039105804]
+OBJ_NAME=0
+OBJ_ID=2039105804
+REL_M_OBJ_ID=0
+ENTITY=macrobatch
+LINK=0
+LINK_NAME=
+DSN_SIZE=41
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=2
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=mb-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_2039105804
 
 @}}
 DSN_INFO_PRIMARY=0

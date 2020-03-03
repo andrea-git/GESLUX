@@ -25,6 +25,7 @@
            copy "log-macrobatch.sl".  
            copy "tsetinvio.sl".
            copy "lineseq.sl".   
+           copy "macrobatch.sl".
        select lineseq1
            assign       to  wstampa
            organization is line sequential
@@ -36,7 +37,9 @@
        FILE SECTION. 
            copy "log-macrobatch.fd".
            copy "tsetinvio.fd".
-           copy "lineseq.fd".     
+           copy "lineseq.fd".   
+           copy "macrobatch.fd".  
+
        FD  lineseq1.
        01 line-riga        PIC  x(32000).
 
@@ -45,18 +48,14 @@
        77  status-tsetinvio        pic xx.     
        77  status-lineseq          pic xx.
        77  status-lineseq1         pic xx.
+       77  status-macrobatch       pic xx.
 
        77  wstampa                 pic x(256).
        77  path-log-macrobatch     pic x(256) value spaces.
        
        77  user-cod                pic x(10).   
        77  como-data               pic 9(8).
-       77  como-ora                pic 9(8).   
-       77  lk-mb-logfile           pic x(256).
-       01  elaborazione-edi.                
-         05 primo-numero-edi       pic x(8).
-         05 ultimo-numero-edi      pic x(8).
-         05 tot-ordini-edi         pic x(8).    
+       77  como-ora                pic 9(8).  
 
        77  tentativi             pic 99.
 
@@ -82,9 +81,22 @@
                    ".log"              delimited size
               into path-log-macrobatch
            end-string.
-           move path-log-macrobatch to lk-mb-logfile.
 
            open output log-macrobatch.
+           open i-o    macrobatch.
+
+           move high-value to mb-id.
+           start macrobatch key <= mb-id
+                 invalid move 0 to mb-id
+             not invalid
+                 read macrobatch previous
+           end-read.
+           add 1 to mb-id.
+           initialize mb-dati replacing numeric data by zeroes
+                                   alphanumeric data by spaces.
+           move path-log-macrobatch to mb-path-log.
+           write mb-rec.
+
            call   "set-ini-log" using r-output.
            cancel "set-ini-log".
            initialize lm-riga.
@@ -97,11 +109,19 @@
 
            perform CALL-EDI-IMPORD.    
 
-           if lk-mb-logfile not = "KO"
-              perform CALL-EDI-SELORDINI
-           end-if.                     
+           read macrobatch no lock.
 
-           if lk-mb-logfile not = "KO"
+           if mb-edi-impord-stato-ok
+              perform CALL-EDI-SELORDINI
+           end-if.                       
+                                    
+           read macrobatch no lock.
+           if mb-edi-selordini-stato-ok
+              perform CALL-EVACLI
+           end-if.                   
+                                    
+           read macrobatch no lock.
+           if mb-evacli-stato-ok
               perform CALL-SHI-EXP
            end-if.          
            
@@ -121,7 +141,8 @@
            end-string.
            write lm-riga.         
 
-           close       log-macrobatch.
+           close log-macrobatch.
+           close macrobatch.
 
            goback.
 
@@ -131,21 +152,18 @@
            accept LinkAddressCC from environment "MACROBATCH_ADDRESS_CC"
            accept LinkSubject   from environment "MACROBATCH_SUBJECT".
            move path-log-macrobatch to LinkAttach.
-           accept primo-numero-edi  
-                  from environment "PRIMO_NUMERO_EDI".
-           accept ultimo-numero-edi 
-                  from environment "ULTIMO_NUMERO_EDI".
-           accept tot-ordini-edi    
-                  from environment "TOT_ORDINI_EDI".
 
+           read macrobatch no lock.
+                                          
            initialize LinkBody.
            string "RIEPILOGO FUNZIONAMENTO: " x"0d0a"
                   x"0d0a"   
                   "GENERAZIONE ORDINI EDI" x"0d0a"
                   x"0d0a"
-                  "DAL NUMERO: "    primo-numero-edi
-                   " - AL NUMERO: " ultimo-numero-edi x"0d0a"
-                  "TOTALE ORDINI EDI: " tot-ordini-edi
+                  "DAL NUMERO: "    mb-edi-selordini-primo-numero
+                   " - AL NUMERO: " mb-edi-selordini-ultimo-numero 
+                  x"0d0a"
+                  "TOTALE ORDINI EDI: " mb-edi-selordini-tot-ordini
              into LinkBody
            end-string.
 
@@ -187,17 +205,12 @@
                 into lm-riga
               end-string
               write lm-riga
-           end-if.
-
-           set environment "PRIMO_NUMERO_EDI"  to " ".
-           set environment "ULTIMO_NUMERO_EDI" to " ".
-           set environment "TOT_ORDINI_EDI"    to " ".
-                          
+           end-if.        
 
       ***---
        PREPARA-CALL.
-           move "desktop"    to LK-BL-PROG-ID.
-           move "BOSS" to user-cod..
+           move "macrobatch"    to LK-BL-PROG-ID.
+           move "BOSS" to user-cod.
            accept LK-BL-DATA from century-date.
            accept LK-BL-ORA  from time.
            move "MACROBATCH" to USER-CODI.
@@ -210,7 +223,7 @@
            call   "edi-impord" using LK-BLOCKPGM, 
                                      USER-CODI, 
                                      LIVELLO-ABIL,
-                                     lk-mb-logfile
+                                     mb-id
            cancel "edi-impord".
                                   
       ***---
@@ -219,8 +232,17 @@
            call   "edi-selordini" using LK-BLOCKPGM, 
                                         USER-CODI, 
                                         LIVELLO-ABIL,
-                                        lk-mb-logfile
+                                        mb-id
            cancel "edi-selordini".
+
+      ***---
+       CALL-EVACLI.         
+           perform PREPARA-CALL.
+           call   "evacli" using LK-BLOCKPGM, 
+                                 USER-CODI, 
+                                 LIVELLO-ABIL,
+                                 mb-id
+           cancel "evacli".
 
       ***---
        CALL-SHI-EXP.
@@ -228,7 +250,7 @@
            call   "shi-exp" using LK-BLOCKPGM, 
                                   USER-CODI, 
                                   LIVELLO-ABIL,
-                                  lk-mb-logfile
+                                  mb-id
            cancel "shi-exp".
 
       ***---

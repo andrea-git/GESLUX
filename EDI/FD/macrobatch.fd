@@ -1,0 +1,34 @@
+       FD  macrobatch.
+       01 mb-rec.
+           05 mb-chiave.
+               10 mb-id            PIC  9(18).
+           05 mb-dati.
+               10 mb-path-log      PIC  x(256).
+               10 mb-edi-impord.
+                   15 mb-edi-impord-stato          PIC  99.
+                       88 mb-edi-impord-stato-ok VALUE IS 0. 
+                       88 mb-edi-impord-stato-err VALUE IS 1. 
+                   15 FILLER           PIC  x(1000).
+               10 mb-edi-selordini.
+                   15 mb-edi-selordini-stato       PIC  99.
+                       88 mb-edi-selordini-stato-ok VALUE IS 0. 
+                       88 mb-edi-selordini-stato-err VALUE IS 1. 
+                   15 mb-edi-selordini-primo-numero            PIC  
+           9(8).
+                   15 mb-edi-selordini-ultimo-numero           PIC  
+           9(8).
+                   15 mb-edi-selordini-tot-ordini  PIC  9(8).
+                   15 FILLER           PIC  x(1000).
+               10 mb-evacli.
+      *(( XFD NAME = mb-edi-selordini-s ))
+                   15 mb-evacli-stato  PIC  99.
+                       88 mb-evacli-stato-ok VALUE IS 0. 
+                       88 mb-evacli-stato-err VALUE IS 1. 
+                   15 FILLER           PIC  x(1000).
+               10 mb-shi-exp.
+      *(( XFD NAME = mb-edi-selordini-s ))
+                   15 mb-shi-exp-stato PIC  9.
+                       88 mb-shi-exp-stato-ok VALUE IS 0. 
+                       88 mb-shi-exp-stato-err VALUE IS 1. 
+                   15 FILLER           PIC  x(1000).
+               10 FILLER           PIC  x(5000).
