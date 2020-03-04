@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E434133822-959-1458728503
+PROGRAM_UNIQUE_CODE=TOTEM-7E434164411-252-19273491
 
 {{@DESCRIPTION:
 
@@ -17129,6 +17129,7 @@ LUBEXX             cancel "calfido"
                    move tfid-effetti-rischio  to effetti-rischio  
                    move tfid-ordini-in-essere to ordini-in-essere 
               end-read
+              add Sum to tfid-Sum
 
 LUBEXX*****        initialize calfido-linkage 
 LUBEXX*****                   replacing numeric data by zeroes

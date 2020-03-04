@@ -327,7 +327,7 @@
                   separatore
                   art-limite-scorta               
                   separatore
-                  art-prezzo-banco                
+                  r-art-prezzo-banco                
                   separatore
                   r-art-prz-min-vend                
                   separatore

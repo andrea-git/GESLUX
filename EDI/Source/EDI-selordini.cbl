@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
-       AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 4 marzo 2020 15:36:36.
+       AUTHOR.              Utente.
+       DATE-WRITTEN.        mercoledì 4 marzo 2020 17:49:48.
        REMARKS.
       *{TOTEM}END
 
@@ -17929,6 +17929,7 @@ LUBEXX             cancel "calfido"
                    move tfid-effetti-rischio  to effetti-rischio  
                    move tfid-ordini-in-essere to ordini-in-essere 
               end-read
+              add Sum to tfid-Sum
 
 LUBEXX*****        initialize calfido-linkage 
 LUBEXX*****                   replacing numeric data by zeroes
