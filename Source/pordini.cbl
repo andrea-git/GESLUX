@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
-       AUTHOR.              Utente.
-       DATE-WRITTEN.        martedì 28 gennaio 2020 16:24:01.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        mercoledì 4 marzo 2020 13:13:09.
        REMARKS.
       *{TOTEM}END
 
@@ -12273,7 +12273,8 @@
 
                                if ( ord2-giac + como-ordinato - 
            ord2-promo ) <
-                                  ( ord2-riordino - ord2-consegna )
+                                  ( ( ord2-riordino - ord2-consegna ) * 
+           2 )
                                   if forza-conferma
                                      set ord2-listino-no to true
                                   else

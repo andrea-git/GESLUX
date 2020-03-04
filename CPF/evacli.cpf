@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=aggmese-Ev-Before-Program
 AFTER_PROGRAM=evacli-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E433201639-450-1642517231
+PROGRAM_UNIQUE_CODE=TOTEM-7E43411922-427-294286022
 
 {{@DESCRIPTION:
 
@@ -8407,7 +8407,8 @@ Begin Screen scr-elab
    Unit              = Cells
    User Gray         = TRUE
    User White        = TRUE
-   Visible           = NONE
+   Visible           = FALSE
+   Visible Variable  = video-on
    Width in Cells    = TRUE
    Window Type       = Floating
    Wrap              = FALSE
@@ -9486,6 +9487,11 @@ BEGIN-DATA
    TEXTMODE          = 0
    ENTRYPOINT        = BeforeAccept
 BEGIN-TEXT
+           if not RichiamoBatch
+              move 1 to video-on
+              modify scr-elab-handle, visible video-on
+           end-if.
+
            if FiltraRecord perform FILTRA-RECORD
            else            perform EVASIONE-CLIENTI
            end-if.

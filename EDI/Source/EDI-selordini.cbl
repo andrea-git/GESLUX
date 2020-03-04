@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 2 marzo 2020 10:32:10.
+       DATE-WRITTEN.        mercoledì 4 marzo 2020 15:36:36.
        REMARKS.
       *{TOTEM}END
 
@@ -908,7 +908,7 @@
        77 TMP-DataSet1-tmp-fido-BUF     PIC X(78).
        77 TMP-DataSet1-grade-BUF     PIC X(754).
        77 TMP-DataSet1-log-macrobatch-BUF     PIC X(1000).
-       77 TMP-DataSet1-macrobatch-BUF     PIC X(9302).
+       77 TMP-DataSet1-macrobatch-BUF     PIC X(9305).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -16522,7 +16522,6 @@
 
            perform until 1 = 2
               read EDI-mtordini next at end exit perform end-read
-           
               evaluate true
               when per-numero
                    if anno-to not = emto-anno
@@ -17929,9 +17928,7 @@ LUBEXX             cancel "calfido"
                    move tfid-saldo            to saldo            
                    move tfid-effetti-rischio  to effetti-rischio  
                    move tfid-ordini-in-essere to ordini-in-essere 
-              end-read                                           
-              add Sum to tfid-Sum
-              write tfid-rec invalid rewrite tfid-rec end-write
+              end-read
 
 LUBEXX*****        initialize calfido-linkage 
 LUBEXX*****                   replacing numeric data by zeroes
@@ -18009,6 +18006,10 @@ LUBEXX                  x"0d0a""IMPOSSIBILE REGISTRARE L'ORDINE!"
 LUBEXX                           title tit-err
 LUBEXX                            icon 2
                     end-if 
+                 else
+                    |Aggiorno il totale con solo quelli che possono attivarsi non con tutti
+                    add Sum to tfid-Sum
+                    write tfid-rec invalid rewrite tfid-rec end-write
 LUBEXX           end-if
               else
 LUBEXX           if scoperto > tot-fido
@@ -18033,6 +18034,10 @@ LUBEXX                 else
                           perform AGGIORNA-FIDO-RESIDUO-TMP
                        end-if
 LUBEXX              end-if
+                 else
+                    |Aggiorno il totale con solo quelli che possono attivarsi non con tutti
+                    add Sum to tfid-Sum
+                    write tfid-rec invalid rewrite tfid-rec end-write
 LUBEXX           end-if
               end-if
 LUBEXX     end-if.   

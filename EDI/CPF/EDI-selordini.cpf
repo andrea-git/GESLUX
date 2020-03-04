@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E43320187-618-2540627222
+PROGRAM_UNIQUE_CODE=TOTEM-7E434133822-959-1458728503
 
 {{@DESCRIPTION:
 
@@ -15719,7 +15719,6 @@ BEGIN-TEXT
 
            perform until 1 = 2
               read EDI-mtordini next at end exit perform end-read
-           
               evaluate true
               when per-numero
                    if anno-to not = emto-anno
@@ -17132,9 +17131,7 @@ LUBEXX             cancel "calfido"
                    move tfid-saldo            to saldo            
                    move tfid-effetti-rischio  to effetti-rischio  
                    move tfid-ordini-in-essere to ordini-in-essere 
-              end-read                                           
-              add Sum to tfid-Sum
-              write tfid-rec invalid rewrite tfid-rec end-write
+              end-read
 
 LUBEXX*****        initialize calfido-linkage 
 LUBEXX*****                   replacing numeric data by zeroes
@@ -17212,6 +17209,10 @@ LUBEXX                  x"0d0a""IMPOSSIBILE REGISTRARE L'ORDINE!"
 LUBEXX                           title tit-err
 LUBEXX                            icon 2
                     end-if 
+                 else
+                    |Aggiorno il totale con solo quelli che possono attivarsi non con tutti
+                    add Sum to tfid-Sum
+                    write tfid-rec invalid rewrite tfid-rec end-write
 LUBEXX           end-if
               else
 LUBEXX           if scoperto > tot-fido
@@ -17236,6 +17237,10 @@ LUBEXX                 else
                           perform AGGIORNA-FIDO-RESIDUO-TMP
                        end-if
 LUBEXX              end-if
+                 else
+                    |Aggiorno il totale con solo quelli che possono attivarsi non con tutti
+                    add Sum to tfid-Sum
+                    write tfid-rec invalid rewrite tfid-rec end-write
 LUBEXX           end-if
               end-if
 LUBEXX     end-if.   

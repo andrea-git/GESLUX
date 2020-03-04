@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=scr-data
 BEFORE_PROGRAM=ordini-Ev-Before-Program
 AFTER_PROGRAM=ordini-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E411C152313-178-938521795
+PROGRAM_UNIQUE_CODE=TOTEM-7E434121238-271-2895430240
 
 {{@DESCRIPTION:
 
@@ -11193,7 +11193,7 @@ BEGIN-TEXT
                                end-if
 
                                if ( ord2-giac + como-ordinato - ord2-promo ) <
-                                  ( ord2-riordino - ord2-consegna )
+                                  ( ( ord2-riordino - ord2-consegna ) * 2 )
                                   if forza-conferma
                                      set ord2-listino-no to true
                                   else
