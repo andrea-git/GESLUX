@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 2 marzo 2020 15:24:06.
+       DATE-WRITTEN.        venerdì 6 marzo 2020 00:07:28.
        REMARKS.
       *{TOTEM}END
 
@@ -155,6 +155,10 @@
        77 como-riga        PIC  9(3).
        77 tot-bozze        PIC  9(3).
        77 tot-bozze-x      PIC  9(3).
+       77 idx-mag-gen      PIC  9(3)
+                  VALUE IS 0.
+       77 idx-gen          PIC  9(3)
+                  VALUE IS 0.
        01 como-chiave.
            05 como-anno        PIC  9(4).
            05 como-numero      PIC  9(8).
@@ -610,6 +614,8 @@
            88 Valid-STATUS-log-macrobatch VALUE IS "00" THRU "09". 
        77 video-on         PIC  9
                   VALUE IS 0.
+       77 video-om         PIC  9
+                  VALUE IS 0.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -670,7 +676,7 @@
        77 TMP-DataSet1-tprov-BUF     PIC X(192).
        77 TMP-DataSet1-paramSHI-BUF     PIC X(9574).
        77 TMP-DataSet1-tmp-eva-riep-BUF     PIC X(39).
-       77 TMP-DataSet1-macrobatch-BUF     PIC X(9302).
+       77 TMP-DataSet1-macrobatch-BUF     PIC X(9848).
        77 TMP-DataSet1-log-macrobatch-BUF     PIC X(1000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
@@ -2161,11 +2167,9 @@
            LINE 1,30,
            LINES 15,40 CELLS,
            SIZE 27,90 CELLS,
-           RAISED,
            ID IS 3,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           VERY-HEAVY,
            .
 
       * LABEL
@@ -2182,21 +2186,6 @@
            CENTER,
            TRANSPARENT,
            TITLE "Evasioni Generate",
-           .
-
-      * BAR
-       05
-           scr-fine-Br-1a, 
-           Bar,
-           COL 2,50, 
-           LINE 3,80,
-           SIZE 2,20 CELLS,
-           ID IS 14,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           COLORS (8, 8),
-           SHADING (-1, 1),
-           WIDTH 2,
            .
 
       * LABEL
@@ -2297,21 +2286,6 @@
            CENTER,
            TRANSPARENT,
            TITLE tot-ordini-z,
-           .
-
-      * BAR
-       05
-           scr-fine-Br-1aa, 
-           Bar,
-           COL 27,10, 
-           LINE 3,80,
-           SIZE 2,20 CELLS,
-           ID IS 13,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           COLORS (8, 8),
-           SHADING (-1, 1),
-           WIDTH 2,
            .
 
       * PUSH BUTTON
@@ -11143,7 +11117,7 @@
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforeAccept>
            if RichiamoBatch
               move 1 to tipo-evasione
-      *        perform PB-ESEGUI-LINKTO
+              perform PB-ESEGUI-LINKTO
               move 27 to key-status
            else
               move 1 to video-on
@@ -11316,6 +11290,7 @@
               TITLE TITOLO,
               WITH SYSTEM MENU,
               USER-GRAY,
+           VISIBLE video-on,
               USER-WHITE,
               No WRAP,
               EVENT PROCEDURE Screen2-Event-Proc,
@@ -11343,6 +11318,11 @@
 
        Screen2-PROC.
       * <TOTEM:EPT. FORM:Screen2, FORM:Screen2, BeforeAccept>
+           if not RichiamoBatch
+              move 1 to video-on
+              modify screen2-handle, visible video-on
+           end-if.
+
            accept versione-evasione from environment "VERSIONE_EVASIONE"
            move 0 to num-cicli.
            set ingresso to true.
@@ -11356,13 +11336,60 @@
            mag-codice
               move save-el-gg-cons-max(idx-mag) to save-gg-cons-max
               read tmagaz no lock
+
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output       delimited size
+                        "EVASIONE "    delimited size
+                        save-magazzino delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
+
               if mag-sco-codice(1) not = spaces
                  perform SCR-ELAB-OPEN-ROUTINE
                  if tot-master not = 0
                     exit perform
+                 else
+                    if RichiamoBatch
+                       call   "set-ini-log" using r-output
+                       cancel "set-ini-log"
+                       initialize lm-riga
+                       string r-output                   delimited size
+                              "MESSUN MASTER DA EVADERE" delimited size 
+                         into lm-riga
+                       end-string
+                       write lm-riga
+                    end-if
+                 end-if
+              else
+                 if RichiamoBatch
+                    call   "set-ini-log" using r-output
+                    cancel "set-ini-log"
+                    initialize lm-riga
+                    string r-output                delimited size
+                           "SCORTA NON IMPOSTATA " delimited size
+                           save-magazzino          delimited size
+                      into lm-riga
+                    end-string
+                    write lm-riga
                  end-if
               end-if
            end-perform.
+
+           if RichiamoBatch
+              perform varying idx-gen from 1 by 1 
+                      until idx-gen > 25
+                 if save-el-deposito(idx-gen) = spaces
+                    exit perform
+                 end-if
+                 perform PB-GENERA-LINKTO
+              end-perform
+              move 27 to key-status
+           end-if.
 
            .
       * <TOTEM:END>
@@ -11904,6 +11931,7 @@
               RESIZABLE,
               NO SCROLL,
               USER-GRAY,
+           VISIBLE video-on,
               USER-WHITE,
               No WRAP,
               HANDLE IS scr-elab-HANDLE,
@@ -11919,6 +11947,11 @@
 
        scr-elab-PROC.
       * <TOTEM:EPT. FORM:scr-elab, FORM:scr-elab, BeforeAccept>
+           if not RichiamoBatch
+              move 1 to video-on
+              modify scr-elab-handle, visible video-on
+           end-if.
+
            if FiltraRecord perform FILTRA-RECORD
            else            perform EVASIONE-CLIENTI
            end-if.
@@ -12109,6 +12142,7 @@
               RESIZABLE,
               NO SCROLL,
               USER-GRAY,
+           VISIBLE video-om,
               USER-WHITE,
               No WRAP,
               HANDLE IS scr-elab-HANDLE,
@@ -12124,9 +12158,13 @@
 
        scr-elab-evasioni-PROC.
       * <TOTEM:EPT. FORM:scr-elab-evasioni, FORM:scr-elab-evasioni, BeforeAccept>
+           if not RichiamoBatch
+              move 1 to video-on
+              modify scr-elab-handle, visible video-on
+           end-if.
+
            perform GENERA-EVASIONI.
            move 27 to key-status.
-
 
       *****     if tutto-ok
       *****        set ExitPerform to false
@@ -12430,6 +12468,7 @@
               TITLE "Operazione conclusa - Riepilogo",
               WITH SYSTEM MENU,
               USER-GRAY,
+           VISIBLE video-on,
               USER-WHITE,
               No WRAP,
               HANDLE IS scr-fine-SF-HANDLE,
@@ -12445,11 +12484,48 @@
 
        scr-fine-PROC.
       * <TOTEM:EPT. FORM:scr-fine, FORM:scr-fine, BeforeAccept>
+           if not RichiamoBatch
+              move 1 to video-on
+              modify scr-fine-sf-handle, visible video-on
+           end-if.
+
            compute tot-ordini = ultimo-numero - primo-numero + 1.
            move primo-numero  to primo-numero-z.
            move ultimo-numero to ultimo-numero-z.
            move tot-ordini    to tot-ordini-z.
            display scr-fine.
+
+           if RichiamoBatch 
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga       
+              string r-output                  delimited size
+                     "GENERATE EVASIONI PER: " delimited size
+                     save-magazzino            delimited size
+                     " DAL N. "                delimited size
+                     primo-numero-z            delimited size
+                     " AL N. "                 delimited size
+                     ultimo-numero-z           delimited size
+                     " - TOTALE EVASIONI: "    delimited size
+                     tot-ordini-z              delimited size
+                     " - UTENTE: "             delimited size
+                     user-codi                 delimited size
+               into lm-riga
+              end-string
+              write lm-riga               
+
+              move lk-mb-id to mb-id
+              read macrobatch no lock 
+              add 1 to idx-mag-gen
+              move save-magazzino to mb-evacli-mag-codice(idx-mag-gen)
+              move primo-numero   to mb-evacli-primo-numero(idx-mag-gen)
+              move ultimo-numero  to 
+           mb-evacli-ultimo-numero(idx-mag-gen)
+              move tot-ordini     to mb-evacli-tot-ordini(idx-mag-gen)
+              move idx-mag-gen    to mb-evacli-tot-mag
+              rewrite mb-rec
+              move 27 to key-status
+           end-if.
 
            initialize line-riga.
            perform SETTA-INIZIO-RIGA.
@@ -12670,6 +12746,7 @@
               RESIZABLE,
               NO SCROLL,
               USER-GRAY,
+           VISIBLE video-on,
               USER-WHITE,
               No WRAP,
               HANDLE IS scr-elab-tprev-HANDLE,
@@ -12685,6 +12762,10 @@
 
        scr-elab-tprev-PROC.
       * <TOTEM:EPT. FORM:scr-elab-tprev, FORM:scr-elab-tprev, BeforeAccept>
+           if not RichiamoBatch
+              move 1 to video-on
+              modify scr-elab-tprev-handle, visible video-on
+           end-if.
            move user-codi             to link-tprev-user.
            move scr-elab-tprev-handle to link-tprev-handle.
            call   "tprev-p"  using tprev-linkage.
@@ -13066,6 +13147,7 @@
 
        COUNTER-VIDEO.
       * <TOTEM:PARA. COUNTER-VIDEO>
+           if RichiamoBatch exit paragraph end-if.
            add 1 to counter.
            add 1 to counter2.
            if counter2 = 10
@@ -13231,10 +13313,25 @@
               end-string
               write line-riga
            else
-              display message "Non ci sono master da evadere per " 
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output                              delimited 
+           size
+                        "NON CI SONO MASTER DA EVADERE PER "  delimited 
+           size
+                        save-magazzino                        delimited 
+           size
+                   into lm-riga
+                 end-string
+                 write lm-riga  
+              else
+                 display message "Non ci sono master da evadere per " 
            save-magazzino
-                        title titolo
-                         icon 2
+                           title titolo
+                            icon 2
+              end-if
 
               initialize line-riga
               perform SETTA-INIZIO-RIGA
@@ -13351,13 +13448,14 @@
       *****        set ok-messaggio to true
       *****        perform CONTROLLA-CLIENTE
       
-              set PrintXX to true
-              perform ACCESSOXX
-
-              modify scr-elab-HANDLE, visible true
-              modify pb-applica,      visible false
-              modify pb-genera,       visible false
-              modify lab-attendere,   visible true  
+              if not RichiamoBatch
+                 set PrintXX to true
+                 perform ACCESSOXX                 
+                 modify scr-elab-HANDLE, visible true
+                 modify pb-applica,      visible false
+                 modify pb-genera,       visible false
+                 modify lab-attendere,   visible true 
+              end-if                                
 
               set no-mail to true
               set ordine-evaso to true
@@ -13378,10 +13476,13 @@
       *****        set ok-messaggio to false
       *****        perform CONTROLLA-CLIENTE
                                         
-              modify scr-elab-HANDLE, visible false
-              modify pb-applica,      visible true
-              modify pb-genera,       visible true
-              modify lab-attendere,   visible false
+              if not RichiamoBatch
+                 modify scr-elab-HANDLE, visible false
+                 modify pb-applica,      visible true
+                 modify pb-genera,       visible true
+                 modify lab-attendere,   visible false
+              end-if
+
               perform DELETE-LOCKFILE
               perform SCR-ELAB-TPREV-OPEN-ROUTINE
                                               
@@ -13399,7 +13500,9 @@
               move 0 to stordc-da-anno
               move 0 to stordc-da-num
               move 0 to primo-numero
-              perform DESTROYXX
+              if not RichiamoBatch
+                 perform DESTROYXX
+              end-if
 
            end-if 
            .
@@ -13409,6 +13512,19 @@
       * <TOTEM:PARA. GENERA-EVASIONI>
            move spaces to mess.
            accept mess from environment "SW_MESS_EVASIONE".
+           if RichiamoBatch
+              move "N" to mess
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output                delimited size
+                     "GENERAZIONE EVASIONI " delimited size
+                     save-magazzino          delimited size
+                     "..."                   delimited size
+                into lm-riga
+              end-string
+              write lm-riga  
+           end-if.
 
            set PrimaVolta to true.
            set contatore-lock to false.
@@ -15068,7 +15184,7 @@
            end-if.  
 
       *Queste istruzioni son anchein "multigest.cpy", ma le duplico perchè
-      *serve un comprotamento un pò differente, ossia nessun msg a video
+      *serve un comportamento un pò differente, ossia nessun msg a video
            set RecLocked to false.
            open i-o multigest.
            move spaces to mul-chiave.
@@ -15385,7 +15501,39 @@
               write line-riga
 
               move tpa-codice       to save-evasione
-              move tpa-tab-depositi to save-depositi
+
+              if RichiamoBatch
+                 move 0 to mag-idx
+                 perform varying idx from 1 by 1 
+                           until idx > 25
+                    if tpa-el-deposito(idx) = spaces
+                       exit perform 
+                    end-if
+                    move tpa-el-deposito(idx) to mag-codice
+                    read tmagaz no lock
+                    if mag-gen-auto-si
+                       add 1 to mag-idx
+                       move tpa-el-deposito(idx) 
+                         to save-el-deposito(mag-idx)
+                       move tpa-el-gg-cons-max(idx) 
+                         to save-el-gg-cons-max(mag-idx)
+                    end-if     
+                 end-perform
+                 if mag-idx = 0     
+                    call   "set-ini-log" using r-output
+                    cancel "set-ini-log"
+                    initialize lm-riga
+                    string r-output                     delimited size
+                           "NESSUN MAGAZZINO IMPOSTATO" delimited size
+                      into lm-riga
+                    end-string
+                    write lm-riga
+                 end-if
+                    
+              else
+                 move tpa-tab-depositi to save-depositi
+              end-if  
+
               perform SCR-ELAB-TPREV-OPEN-ROUTINE
                                    
               initialize tab-articoli 
@@ -15612,12 +15760,17 @@
       * <TOTEM:END>
        pb-genera-LinkTo.
       * <TOTEM:PARA. pb-genera-LinkTo>
-           display message "Generare evasioni?"
-                     title titolo
-                      icon 2
-                      type mb-yes-no
-                    giving scelta
-                   default mb-no
+           if RichiamoBatch
+              move mb-yes to scelta
+           else
+              display message "Generare evasioni?"
+                        title titolo
+                         icon 2
+                         type mb-yes-no
+                       giving scelta
+                      default mb-no
+           end-if.
+
            if scelta = mb-yes
               set tutto-ok to true
               move 78-evacli to lck-nome-pgm

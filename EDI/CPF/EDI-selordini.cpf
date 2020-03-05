@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E434164411-252-19273491
+PROGRAM_UNIQUE_CODE=TOTEM-7E435215940-755-39752974
 
 {{@DESCRIPTION:
 
@@ -15216,10 +15216,15 @@ BEGIN-TEXT
                      ultimo-numero delimited size
                 into lm-riga
               end-string
-              write lm-riga
-              set environment "PRIMO_NUMERO_EDI"  to primo-numero
-              set environment "ULTIMO_NUMERO_EDI" to ultimo-numero
-              set environment "TOT_ORDINI_EDI"    to idx-ordini
+              write lm-riga               
+
+              move lk-mb-id to mb-id
+              read macrobatch no lock        
+              move primo-numero  to mb-edi-selordini-primo-numero
+              move ultimo-numero to mb-edi-selordini-ultimo-numero
+              move idx-ordini    to mb-edi-selordini-tot-ordini
+              rewrite mb-rec
+
            else
               move primo-numero  to primo-numero-z
               move ultimo-numero to ultimo-numero-z

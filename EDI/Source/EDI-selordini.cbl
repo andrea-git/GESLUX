@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
-       AUTHOR.              Utente.
-       DATE-WRITTEN.        mercoledì 4 marzo 2020 17:49:48.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        giovedì 5 marzo 2020 23:04:19.
        REMARKS.
       *{TOTEM}END
 
@@ -15808,10 +15808,15 @@
                      ultimo-numero delimited size
                 into lm-riga
               end-string
-              write lm-riga
-              set environment "PRIMO_NUMERO_EDI"  to primo-numero
-              set environment "ULTIMO_NUMERO_EDI" to ultimo-numero
-              set environment "TOT_ORDINI_EDI"    to idx-ordini
+              write lm-riga               
+
+              move lk-mb-id to mb-id
+              read macrobatch no lock        
+              move primo-numero  to mb-edi-selordini-primo-numero
+              move ultimo-numero to mb-edi-selordini-ultimo-numero
+              move idx-ordini    to mb-edi-selordini-tot-ordini
+              rewrite mb-rec
+
            else
               move primo-numero  to primo-numero-z
               move ultimo-numero to ultimo-numero-z

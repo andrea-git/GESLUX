@@ -107,23 +107,23 @@
            write lm-riga.
            close       log-macrobatch.
 
-           perform CALL-EDI-IMPORD.    
+      *     perform CALL-EDI-IMPORD.    
 
            read macrobatch no lock.
 
-           if mb-edi-impord-stato-ok
-              perform CALL-EDI-SELORDINI
-           end-if.                       
+      *     if mb-edi-impord-stato-ok
+      *        perform CALL-EDI-SELORDINI
+      *     end-if.                       
                                     
            read macrobatch no lock.
            if mb-edi-selordini-stato-ok
               perform CALL-EVACLI
            end-if.                   
                                     
-           read macrobatch no lock.
-           if mb-evacli-stato-ok
-              perform CALL-SHI-EXP
-           end-if.          
+      *     read macrobatch no lock.
+      *     if mb-evacli-stato-ok
+      *        perform CALL-SHI-EXP
+      *     end-if.          
            
            open extend log-macrobatch.
 
@@ -148,64 +148,71 @@
 
       ***---
        INVIO-MAIL.                                                   
-           accept LinkAddress   from environment "MACROBATCH_ADDRESS".
-           accept LinkAddressCC from environment "MACROBATCH_ADDRESS_CC"
-           accept LinkSubject   from environment "MACROBATCH_SUBJECT".
-           move path-log-macrobatch to LinkAttach.
+      *     accept LinkAddress   from environment "MACROBATCH_ADDRESS".
+      *     accept LinkAddressCC from environment "MACROBATCH_ADDRESS_CC"
+      *     accept LinkSubject   from environment "MACROBATCH_SUBJECT".
+      *     move path-log-macrobatch to LinkAttach.
+      *
+      *     read macrobatch no lock.
+      *                                    
+      *     initialize LinkBody.
+      *     string "RIEPILOGO FUNZIONAMENTO: " x"0d0a"
+      *            x"0d0a"   
+      *            "GENERAZIONE ORDINI EDI" x"0d0a"
+      *            x"0d0a"
+      *            "DAL NUMERO: "    mb-edi-selordini-primo-numero
+      *             " - AL NUMERO: " mb-edi-selordini-ultimo-numero 
+      *            x"0d0a"
+      *            "TOTALE ORDINI EDI: " mb-edi-selordini-tot-ordini
+      *            x"0d0a"
+      *            if mb-evacli-tot-mag > 0
+      *            "GENERAZIONE EVASIONI AUTOMATICHE" x"0d0a"
+      *            x"0d0a"
+      *            "DAL NUMERO: "    mb-evacli-primo-numero
+      *             " - AL NUMERO: " mb-evacli-ultimo-numero 
+      *            x"0d0a"
+      *            "TOTALE ORDINI EDI: " mb-evacli-tot-ordini
+      *       into LinkBody
+      *     end-string.
 
-           read macrobatch no lock.
-                                          
-           initialize LinkBody.
-           string "RIEPILOGO FUNZIONAMENTO: " x"0d0a"
-                  x"0d0a"   
-                  "GENERAZIONE ORDINI EDI" x"0d0a"
-                  x"0d0a"
-                  "DAL NUMERO: "    mb-edi-selordini-primo-numero
-                   " - AL NUMERO: " mb-edi-selordini-ultimo-numero 
-                  x"0d0a"
-                  "TOTALE ORDINI EDI: " mb-edi-selordini-tot-ordini
-             into LinkBody
-           end-string.
-
-           set errori to true.
-           move 0 to tentativi.
-           move "macrobatch" to NomeProgramma.
-           perform 5 times
-              add 1 to tentativi    
-
-              call   "set-ini-log" using r-output
-              cancel "set-ini-log"
-              initialize lm-riga
-              string r-output                    delimited size
-                     "INVIO MAIL. TENTATIVO N. " delimited size
-                     tentativi                   delimited size
-                into lm-riga
-              end-string
-              write lm-riga
-
-              perform SEND-MAIL
-              open input lineseq1
-              read  lineseq1 next
-              if line-riga of lineseq1 = "True"
-                 set tutto-ok to true
-                 close lineseq1
-                 exit perform
-              end-if
-              close lineseq1
-           end-perform.
-
-           if errori             
-
-              call   "set-ini-log" using r-output
-              cancel "set-ini-log"
-              initialize lm-riga
-              string r-output      delimited size
-                     "ERRORE DURANTE L'INVIO DELLA MAIL RIEPOLOGATIVA"
-                                   delimited size
-                into lm-riga
-              end-string
-              write lm-riga
-           end-if.        
+      *     set errori to true.
+      *     move 0 to tentativi.
+      *     move "macrobatch" to NomeProgramma.
+      *     perform 5 times
+      *        add 1 to tentativi    
+      *
+      *        call   "set-ini-log" using r-output
+      *        cancel "set-ini-log"
+      *        initialize lm-riga
+      *        string r-output                    delimited size
+      *               "INVIO MAIL. TENTATIVO N. " delimited size
+      *               tentativi                   delimited size
+      *          into lm-riga
+      *        end-string
+      *        write lm-riga
+      *
+      *        perform SEND-MAIL
+      *        open input lineseq1
+      *        read  lineseq1 next
+      *        if line-riga of lineseq1 = "True"
+      *           set tutto-ok to true
+      *           close lineseq1
+      *           exit perform
+      *        end-if
+      *        close lineseq1
+      *     end-perform.
+      *
+      *     if errori             
+      *        call   "set-ini-log" using r-output
+      *        cancel "set-ini-log"
+      *        initialize lm-riga
+      *        string r-output      delimited size
+      *               "ERRORE DURANTE L'INVIO DELLA MAIL RIEPOLOGATIVA"
+      *                             delimited size
+      *          into lm-riga
+      *        end-string
+      *        write lm-riga
+      *     end-if.        
 
       ***---
        PREPARA-CALL.
