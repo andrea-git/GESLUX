@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 6 marzo 2020 00:07:28.
+       DATE-WRITTEN.        venerdì 6 marzo 2020 11:18:17.
        REMARKS.
       *{TOTEM}END
 
@@ -11335,35 +11335,12 @@
               move save-el-deposito(idx-mag) to save-magazzino 
            mag-codice
               move save-el-gg-cons-max(idx-mag) to save-gg-cons-max
-              read tmagaz no lock
-
-              if RichiamoBatch
-                 call   "set-ini-log" using r-output
-                 cancel "set-ini-log"
-                 initialize lm-riga
-                 string r-output       delimited size
-                        "EVASIONE "    delimited size
-                        save-magazzino delimited size
-                   into lm-riga
-                 end-string
-                 write lm-riga
-              end-if
+              read tmagaz no lock 
 
               if mag-sco-codice(1) not = spaces
                  perform SCR-ELAB-OPEN-ROUTINE
                  if tot-master not = 0
                     exit perform
-                 else
-                    if RichiamoBatch
-                       call   "set-ini-log" using r-output
-                       cancel "set-ini-log"
-                       initialize lm-riga
-                       string r-output                   delimited size
-                              "MESSUN MASTER DA EVADERE" delimited size 
-                         into lm-riga
-                       end-string
-                       write lm-riga
-                    end-if
                  end-if
               else
                  if RichiamoBatch
@@ -11385,7 +11362,8 @@
                       until idx-gen > 25
                  if save-el-deposito(idx-gen) = spaces
                     exit perform
-                 end-if
+                 end-if  
+
                  perform PB-GENERA-LINKTO
               end-perform
               move 27 to key-status
@@ -13245,7 +13223,20 @@
 
        EVASIONE-CLIENTI.
       * <TOTEM:PARA. EVASIONE-CLIENTI>
-           perform CREA-FILES.
+           perform CREA-FILES.               
+
+           if RichiamoBatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output         delimited size
+                     "EVASIONE "      delimited size
+                     save-magazzino   delimited size
+                     "..."            delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if.
 
            if save-el-deposito(idx-mag + 1) = spaces
               move spaces to lab-mag-next-buf
@@ -13514,16 +13505,6 @@
            accept mess from environment "SW_MESS_EVASIONE".
            if RichiamoBatch
               move "N" to mess
-              call   "set-ini-log" using r-output
-              cancel "set-ini-log"
-              initialize lm-riga
-              string r-output                delimited size
-                     "GENERAZIONE EVASIONI " delimited size
-                     save-magazzino          delimited size
-                     "..."                   delimited size
-                into lm-riga
-              end-string
-              write lm-riga  
            end-if.
 
            set PrimaVolta to true.
@@ -14680,6 +14661,19 @@
            if GeneraEvasioni
               modify pb-genera, visible true
            else
+              if RichiamoBatch             
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output                     delimited size
+                        "MASTER NON DISPOINILI ALL'EVASIONE PER "  
+                                                     delimited size
+                        save-magazzino               delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
+
               modify pb-genera, visible false
            end-if.
 

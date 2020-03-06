@@ -57,7 +57,7 @@
        77  como-data               pic 9(8).
        77  como-ora                pic 9(8).  
 
-       77  tentativi             pic 99.
+       77  tentativi               pic 99.
 
        copy "log-macrobatch.def".      
        copy "mail.def".
@@ -148,32 +148,67 @@
 
       ***---
        INVIO-MAIL.                                                   
-      *     accept LinkAddress   from environment "MACROBATCH_ADDRESS".
-      *     accept LinkAddressCC from environment "MACROBATCH_ADDRESS_CC"
-      *     accept LinkSubject   from environment "MACROBATCH_SUBJECT".
-      *     move path-log-macrobatch to LinkAttach.
-      *
-      *     read macrobatch no lock.
-      *                                    
-      *     initialize LinkBody.
-      *     string "RIEPILOGO FUNZIONAMENTO: " x"0d0a"
-      *            x"0d0a"   
-      *            "GENERAZIONE ORDINI EDI" x"0d0a"
-      *            x"0d0a"
-      *            "DAL NUMERO: "    mb-edi-selordini-primo-numero
-      *             " - AL NUMERO: " mb-edi-selordini-ultimo-numero 
-      *            x"0d0a"
-      *            "TOTALE ORDINI EDI: " mb-edi-selordini-tot-ordini
-      *            x"0d0a"
-      *            if mb-evacli-tot-mag > 0
-      *            "GENERAZIONE EVASIONI AUTOMATICHE" x"0d0a"
-      *            x"0d0a"
-      *            "DAL NUMERO: "    mb-evacli-primo-numero
-      *             " - AL NUMERO: " mb-evacli-ultimo-numero 
-      *            x"0d0a"
-      *            "TOTALE ORDINI EDI: " mb-evacli-tot-ordini
-      *       into LinkBody
-      *     end-string.
+           accept LinkAddress   from environment "MACROBATCH_ADDRESS".
+           accept LinkAddressCC from environment "MACROBATCH_ADDRESS_CC"
+           accept LinkSubject   from environment "MACROBATCH_SUBJECT".
+           move path-log-macrobatch to LinkAttach.
+      
+           read macrobatch no lock.
+                                            
+           initialize LinkBody.
+           if mb-edi-selordini-tot-ordini = 0
+              string "RIEPILOGO FUNZIONAMENTO: " x"0d0a"
+                     x"0d0a"   
+                     "NESSUN ORDINE EDI GENERATO" x"0d0a"
+                     delimited size
+                into LinkBody
+              end-string
+           else                              
+              string "RIEPILOGO FUNZIONAMENTO: " x"0d0a"
+                     x"0d0a"   
+                     "GENERAZIONE ORDINI EDI" x"0d0a"
+                     x"0d0a"
+                     "DAL NUMERO: "    mb-edi-selordini-primo-numero
+                      " - AL NUMERO: " mb-edi-selordini-ultimo-numero 
+                     x"0d0a"
+                     "TOTALE ORDINI EDI: " mb-edi-selordini-tot-ordini
+                     x"0d0a"
+                into LinkBody
+              end-string
+           end-if.
+           inspect LinkBody replacing trailing spaces by low-value.
+           if mb-evacli-tot-mag = 0
+              string LinkBody delimited low-value
+                     x"0d0a""GENERAZIONE EVASIONI AUTOMATICHE" x"0d0a"
+                     x"0d0a"
+                     "NESSUNA EVASIONE GENERATA" delimited size
+                into LinkBody
+              end-string
+           else
+              string LinkBody delimited low-value
+                     x"0d0a""GENERAZIONE EVASIONI AUTOMATICHE" x"0d0a"
+                     x"0d0a"  delimited size
+                into LinkBody
+              end-string
+              perform until 1 = 2
+                 add 1 to idx
+                 if mb-evacli-mag-codice(idx) = spaces
+                    exit perform
+                 end-if 
+                 inspect LinkBody replacing trailing 
+                                  spaces by low-value
+                 string "MAGAZZINO: " x"0d0a" delimited size
+                        mb-evacli-mag-codice(idx)
+                        x"0d0a"
+                        "DAL NUMERO: "    mb-evacli-primo-numero(idx)
+                         " - AL NUMERO: " mb-evacli-ultimo-numero(idx)
+                        x"0d0a"
+                        "TOTALE ORDINI EDI: " mb-evacli-tot-ordini(idx)
+                        x"0d0a"  delimited size
+                   into LinkBody
+                 end-string
+              end-perform
+           end-if.
 
       *     set errori to true.
       *     move 0 to tentativi.
@@ -201,18 +236,18 @@
       *        end-if
       *        close lineseq1
       *     end-perform.
-      *
-      *     if errori             
-      *        call   "set-ini-log" using r-output
-      *        cancel "set-ini-log"
-      *        initialize lm-riga
-      *        string r-output      delimited size
-      *               "ERRORE DURANTE L'INVIO DELLA MAIL RIEPOLOGATIVA"
-      *                             delimited size
-      *          into lm-riga
-      *        end-string
-      *        write lm-riga
-      *     end-if.        
+      
+           if errori             
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output      delimited size
+                     "ERRORE DURANTE L'INVIO DELLA MAIL RIEPOLOGATIVA"
+                                   delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if.        
 
       ***---
        PREPARA-CALL.
