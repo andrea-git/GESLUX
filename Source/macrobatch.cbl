@@ -26,6 +26,7 @@
            copy "tsetinvio.sl".
            copy "lineseq.sl".   
            copy "macrobatch.sl".
+           copy "lockfile.sl".
        select lineseq1
            assign       to  wstampa
            organization is line sequential
@@ -38,7 +39,8 @@
            copy "log-macrobatch.fd".
            copy "tsetinvio.fd".
            copy "lineseq.fd".   
-           copy "macrobatch.fd".  
+           copy "macrobatch.fd".
+           copy "lockfile.fd".  
 
        FD  lineseq1.
        01 line-riga        PIC  x(32000).
@@ -49,6 +51,7 @@
        77  status-lineseq          pic xx.
        77  status-lineseq1         pic xx.
        77  status-macrobatch       pic xx.
+       77  status-lockfile         pic xx.
 
        77  wstampa                 pic x(256).
        77  path-log-macrobatch     pic x(256) value spaces.
@@ -65,6 +68,14 @@
        copy "comune.def".
                           
        PROCEDURE DIVISION.
+       DECLARATIVES.
+
+      ***---
+       LOCKFILE-ERR SECTION.
+           use after error procedure on lockfile.
+           continue.
+       END DECLARATIVES.
+
        MAIN.                      
            accept  path-log-macrobatch 
                    from environment "PATH_MACROBATCH_LOG".
@@ -83,7 +94,7 @@
            end-string.
 
            open output log-macrobatch.
-           open i-o    macrobatch.
+           open i-o    macrobatch lockfile.  
 
            move high-value to mb-id.
            start macrobatch key <= mb-id
@@ -105,6 +116,46 @@
              into lm-riga
            end-string.
            write lm-riga.
+           initialize lck-rec replacing numeric data by zeroes 
+                                   alphanumeric data by spaces. 
+           move "MACROBATCH" to lck-nome-pgm.
+           read lockfile lock.
+           if status-lockfile = "99" 
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output               delimited size
+                     "PROCESSO GIA' IN USO" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           else
+              accept lck-ora-creazione  from time
+              accept lck-data-creazione from century-date
+              move "MACROBATCH" to lck-utente-creazione
+              write lck-rec invalid rewrite lck-rec end-write
+              read lockfile lock
+              perform ESEGUI-PROGRAMMI
+           end-if. 
+                                       
+           call   "set-ini-log" using r-output.
+           cancel "set-ini-log".
+           initialize lm-riga.
+           string r-output          delimited size
+                  "FINE PROCEDURA " delimited size
+             into lm-riga
+           end-string.
+           write lm-riga.       
+
+           close  log-macrobatch.
+           close  macrobatch.
+           unlock lockfile all records.
+           close  lockfile.
+
+           goback.
+
+      ***---
+       ESEGUI-PROGRAMMI.   
            close       log-macrobatch.
 
       *     perform CALL-EDI-IMPORD.    
@@ -130,21 +181,7 @@
            move spaces to user-cod.
            set environment "USER_CODI" to user-cod.  
           
-           perform INVIO-MAIL.  
-                                       
-           call   "set-ini-log" using r-output.
-           cancel "set-ini-log".
-           initialize lm-riga.
-           string r-output          delimited size
-                  "FINE PROCEDURA " delimited size
-             into lm-riga
-           end-string.
-           write lm-riga.         
-
-           close log-macrobatch.
-           close macrobatch.
-
-           goback.
+           perform INVIO-MAIL.    
 
       ***---
        INVIO-MAIL.                                                   
