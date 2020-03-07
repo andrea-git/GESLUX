@@ -1,14 +1,16 @@
+      *
        01 gpgmexe-linkage.
-           05 pgme-pgm                pic x(15).
-           05 pgme-utente             pic x(10).
-           05 pgme-operazione         pic x.
-              88 pgme-ingresso        value "I".
-              88 pgme-uscita          value "U".
-              88 pgme-evasione        value "E".
-              88 pgme-cancellazione   value "C".
-              88 pgme-azzera-sessione value "A".
-              88 pgme-canc-orfani     value "O".
-           05 pgme-stato              pic x.
-              88 pgme-ok              value "O".
-              88 pgme-evacli-attivo   value "E".
-              88 pgme-pgm-attivi      value "A".
+           05 pgme-pgm         PIC  x(15).
+           05 pgme-utente      PIC  x(10).
+           05 pgme-operazione  PIC  x.
+               88 pgme-ingresso VALUE IS "I". 
+               88 pgme-uscita VALUE IS "U". 
+               88 pgme-evasione VALUE IS "E". 
+               88 pgme-cancellazione VALUE IS "C". 
+               88 pgme-azzera-sessione VALUE IS "A". 
+               88 pgme-canc-orfani VALUE IS "O". 
+               88 pgme-RichiamoBatch-evasione VALUE IS "B". 
+           05 pgme-stato       PIC  x.
+               88 pgme-ok VALUE IS "O". 
+               88 pgme-evacli-attivo VALUE IS "E". 
+               88 pgme-pgm-attivi VALUE IS "A". 

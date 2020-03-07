@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          gpgmexe.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        venerdì 13 gennaio 2017 23:48:49.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        sabato 7 marzo 2020 16:43:46.
        REMARKS.
       *{TOTEM}END
 
@@ -57,7 +57,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -165,7 +165,7 @@
        77 STATUS-ScreenGestPass-FLAG-REFRESH PIC  9.
           88 ScreenGestPass-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-pgmexe-BUF     PIC X(131).
-       77 TMP-DataSet1-USER-BUF     PIC X(351).
+       77 TMP-DataSet1-USER-BUF     PIC X(1015).
        77 TMP-DataSet1-pass-BUF     PIC X(1000).
        77 TMP-DataSet1-fileseq-BUF     PIC X(32000).
        77 TMP-DataSet1-lineseq-BUF     PIC X(900).
@@ -345,7 +345,6 @@
            LINE 42,50,
            LINES 4,90 CELLS,
            SIZE 92,00 CELLS,
-           LOWERED,
            ID IS 8,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -2472,9 +2471,13 @@
               when pgme-cancellazione
                    move 1   to v-screen
                    modify form1-handle, visible v-screen
+
+              when pgme-RichiamoBatch-evasione
+                   perform FORM1-EXIT
+
               when pgme-evasione
                    if no-pgm
-                      perform form1-Exit
+                      perform FORM1-EXIT
                    else
                       move 1   to v-screen
                       modify form1-handle, visible v-screen
@@ -2483,7 +2486,7 @@
               end-evaluate
            
            else
-              perform form1-Exit
+              perform FORM1-EXIT
            end-if.
 
            .
@@ -2543,6 +2546,7 @@
       * for main screen
       * <TOTEM:EPT. FORM:form1, FORM:form1, BeforeExit>
            evaluate true
+
            when pgme-evasione
       *    prima di uscire controllo se per caso non siano state 
       *    attivate delle altre sessioni o se per caso sono uscito con
@@ -3149,14 +3153,12 @@
                 set si-blocchi to false
                 move low-value to pge-chiave
            
-                start pgmexe key not < pge-chiave
-                   invalid
-                      continue
+                start pgmexe  key >= pge-chiave
+                      invalid continue
                    not invalid
                       perform until 1 = 2
                          read pgmexe next no lock
-                            at end
-                               exit perform
+                           at end exit perform
                          end-read
                          evaluate pge-pgm
                          when "evacli"
@@ -3180,17 +3182,15 @@
            perform RESET-GRIGLIA.
 
            move low-value to pge-chiave
-           start pgmexe key not < pge-chiave
-              invalid
-                 continue
-              not invalid
+           start pgmexe  key >= pge-chiave
+                 invalid continue
+             not invalid
                  perform until 1 = 2
                     read pgmexe next no lock
-                       at end
-                          exit perform
+                      at end exit perform
                     end-read
-      *    scarto il record relativo al pgm evacli se sono nella verifica
-      *    delle evasioni
+      *             scarto il record relativo al pgm evacli se 
+      *             sono nella verifica delle evasioni
                     set rec-ok  to true
                     if pgme-evasione and pge-pgm = "evacli"
                        set rec-ok  to false
@@ -3200,13 +3200,26 @@
                          set rec-ok   to false
                     end-evaluate
 
+                    if pgme-RichiamoBatch-evasione
+                       set rec-ok to false
+                       |Solo un'altra evasione puà bloccare il batch
+                       if pge-pgm = "evacli"
+                          set rec-ok to true
+                       end-if
+                    end-if
+
                     if rec-ok
                        perform METTI-IN-GRIGLIA
                     end-if
                  end-perform
            end-start.
 
-           if riga > 1
+           if riga > 1    
+
+              if pgme-RichiamoBatch-evasione
+                 set pgme-evacli-attivo to true
+              end-if
+
               move zero   to riga
               modify form1-gd-1, CURSOR-X 2, CURSOR-Y 2
               move 2   to event-data-2

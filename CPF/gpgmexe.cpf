@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=form1
 BEFORE_PROGRAM=stbolle-Ev-Before-Program
 AFTER_PROGRAM=stbolle-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E3CF02948-283-3009629616
+PROGRAM_UNIQUE_CODE=TOTEM-7E43715400-497-274737774
 
 {{@DESCRIPTION:
 
@@ -757,6 +757,45 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM8_LK]
+m_strName=pgme-azzera-sessione
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="A"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_strCopyFile=LINK-GPGMEXE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM8_LK
+
+@}}
+[FDITEM9_LK]
+m_strName=pgme-canc-orfani
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="O"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_strCopyFile=LINK-GPGMEXE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM9_LK
+
+@}}
+[FDITEM10_LK]
+m_strName=pgme-RichiamoBatch-evasione
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="B"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_strCopyFile=LINK-GPGMEXE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM10_LK
+
+@}}
+[FDITEM11_LK]
 m_strName=pgme-stato
 m_strRawPic=x
 m_strPic=X
@@ -767,10 +806,23 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
 m_strCopyFile=LINK-GPGMEXE.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM8_LK
+{{@DataItem_m_strDescriptionFDITEM11_LK
 
 @}}
-[FDITEM9_LK]
+[FDITEM12_LK]
+m_strName=pgme-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="O"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_strCopyFile=LINK-GPGMEXE.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM12_LK
+
+@}}
+[FDITEM13_LK]
 m_strName=pgme-evacli-attivo
 m_nItemLevel=88
 m_nSync=-1
@@ -780,10 +832,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
 m_strCopyFile=LINK-GPGMEXE.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM9_LK
+{{@DataItem_m_strDescriptionFDITEM13_LK
 
 @}}
-[FDITEM10_LK]
+[FDITEM14_LK]
 m_strName=pgme-pgm-attivi
 m_nItemLevel=88
 m_nSync=-1
@@ -793,7 +845,7 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
 m_strCopyFile=LINK-GPGMEXE.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GPGMEXE.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM10_LK
+{{@DataItem_m_strDescriptionFDITEM14_LK
 
 @}}
 
@@ -864,7 +916,7 @@ Begin Screen form1
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-Fr-2a
-      3D Style          = Lowered
+      3D Style          = Normal
       Alternate         = FALSE
       Clines            = 0
       Clines Unit       = Default
@@ -2236,9 +2288,13 @@ BEGIN-TEXT
               when pgme-cancellazione
                    move 1   to v-screen
                    modify form1-handle, visible v-screen
+
+              when pgme-RichiamoBatch-evasione
+                   perform FORM1-EXIT
+
               when pgme-evasione
                    if no-pgm
-                      perform form1-Exit
+                      perform FORM1-EXIT
                    else
                       move 1   to v-screen
                       modify form1-handle, visible v-screen
@@ -2247,7 +2303,7 @@ BEGIN-TEXT
               end-evaluate
            
            else
-              perform form1-Exit
+              perform FORM1-EXIT
            end-if.
 
 
@@ -2332,6 +2388,7 @@ BEGIN-DATA
    ENTRYPOINT        = BeforeExit
 BEGIN-TEXT
            evaluate true
+
            when pgme-evasione
       *    prima di uscire controllo se per caso non siano state 
       *    attivate delle altre sessioni o se per caso sono uscito con
@@ -2519,14 +2576,12 @@ BEGIN-TEXT
                 set si-blocchi to false
                 move low-value to pge-chiave
            
-                start pgmexe key not < pge-chiave
-                   invalid
-                      continue
+                start pgmexe  key >= pge-chiave
+                      invalid continue
                    not invalid
                       perform until 1 = 2
                          read pgmexe next no lock
-                            at end
-                               exit perform
+                           at end exit perform
                          end-read
                          evaluate pge-pgm
                          when "evacli"
@@ -2552,17 +2607,15 @@ BEGIN-TEXT
            perform RESET-GRIGLIA.
 
            move low-value to pge-chiave
-           start pgmexe key not < pge-chiave
-              invalid
-                 continue
-              not invalid
+           start pgmexe  key >= pge-chiave
+                 invalid continue
+             not invalid
                  perform until 1 = 2
                     read pgmexe next no lock
-                       at end
-                          exit perform
+                      at end exit perform
                     end-read
-      *    scarto il record relativo al pgm evacli se sono nella verifica
-      *    delle evasioni
+      *             scarto il record relativo al pgm evacli se 
+      *             sono nella verifica delle evasioni
                     set rec-ok  to true
                     if pgme-evasione and pge-pgm = "evacli"
                        set rec-ok  to false
@@ -2572,13 +2625,26 @@ BEGIN-TEXT
                          set rec-ok   to false
                     end-evaluate
 
+                    if pgme-RichiamoBatch-evasione
+                       set rec-ok to false
+                       |Solo un'altra evasione puà bloccare il batch
+                       if pge-pgm = "evacli"
+                          set rec-ok to true
+                       end-if
+                    end-if
+
                     if rec-ok
                        perform METTI-IN-GRIGLIA
                     end-if
                  end-perform
            end-start.
 
-           if riga > 1
+           if riga > 1    
+
+              if pgme-RichiamoBatch-evasione
+                 set pgme-evacli-attivo to true
+              end-if
+
               move zero   to riga
               modify form1-gd-1, CURSOR-X 2, CURSOR-Y 2
               move 2   to event-data-2

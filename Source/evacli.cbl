@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 6 marzo 2020 11:18:17.
+       DATE-WRITTEN.        sabato 7 marzo 2020 16:38:26.
        REMARKS.
       *{TOTEM}END
 
@@ -15192,8 +15192,8 @@
                     cancel "set-ini-log"
                     initialize lm-riga
                     string r-output            delimited size
-                           "RICALCOLO IMPEGNATO IN CORSO. IMPOSSEIBILE P
-      -    "ROSEGUIRE" 
+                           "RICALCOLO IMPEGNATO IN CORSO. IMPOSSIBILE PR
+      -    "OSEGUIRE" 
                                                delimited size
                       into lm-riga
                     end-string
@@ -15250,10 +15250,29 @@
                            title titolo
                             icon 2
               else
-                 display message "Funzione già in uso da: " 
+                 if RichiamoBatch   
+
+                    call   "set-ini-log" using r-output
+                    cancel "set-ini-log"
+                    initialize lm-riga
+                    string r-output                    delimited size
+                           "FUNZIONE GIA' IN USO DA: " delimited size
+                           lck-utente-creazione        delimited size
+                      into lm-riga
+                    end-string
+                    write lm-riga       
+
+                    move lk-mb-id to mb-id
+                    read macrobatch no lock
+                    set mb-evacli-stato-err to true
+                    rewrite mb-rec
+
+                 else
+                    display message "Funzione già in uso da: " 
            lck-utente-creazione
-                           title titolo
-                            icon 2
+                              title titolo
+                               icon 2      
+                 end-if
               end-if
               perform EVACLI-EV-AFTER-PROGRAM
               set environment "EVASIONE_IN_USO" to "0"
@@ -15413,7 +15432,11 @@
       * <TOTEM:PARA. PB-ESEGUI-LinkTo>
            if tipo-evasione = 1
               move user-codi    to pgme-utente
-              set pgme-evasione to true
+              if not RichiamoBatch
+                 set pgme-evasione to true
+              else                        
+                 set pgme-RichiamoBatch-evasione to true
+              end-if
 
               call   "gpgmexe" using gpgmexe-linkage
               cancel "gpgmexe"
@@ -15421,10 +15444,27 @@
               set pgme-ok to true
            end-if.
            if pgme-pgm-attivi
-              set errori to true
+              set errori to true  
+
+              if RichiamoBatch
+                 move lk-mb-id to mb-id
+                 read macrobatch no lock 
+                 set mb-evacli-stato-err to true
+                 rewrite mb-rec                 
+
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output                delimited size
+                        "PROCESSO GIA' ATTIVO " delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
+
            else
-              if tipo-evasione = 0
-                 exit paragraph 
+              if tipo-evasione = 0   
+                 exit paragraph                                     
               end-if
 
               set tutto-ok to true
