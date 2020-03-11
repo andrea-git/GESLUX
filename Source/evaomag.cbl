@@ -70,20 +70,26 @@
                       exit perform
                    end-if            
                    move tor-causale to tca-codice
-                   read tcaumag no lock
-                   move tca-cod-magaz to mag-codice
-                   read tmagaz no lock
-                   perform LOOP-RIGHE
-                   if totale = 0 and
-                      tor-causale not = mag-causale-omag
-                      move mag-causale-omag to tor-causale
-                      rewrite tor-rec
-                   end-if
-                   if totale > 0 and
-                      tor-causale not = mag-causale-eva
-                      move mag-causale-eva to tor-causale
-                      rewrite tor-rec
-                   end-if
+                   read tcaumag no lock 
+                        invalid continue
+                    not invalid
+                        move tca-cod-magaz to mag-codice
+                        read tmagaz no lock
+                             invalid continue
+                         not invalid
+                             perform LOOP-RIGHE
+                             if totale = 0 and
+                                tor-causale not = mag-causale-omag
+                                move mag-causale-omag to tor-causale
+                                rewrite tor-rec
+                             end-if
+                             if totale > 0 and
+                                tor-causale not = mag-causale-eva
+                                move mag-causale-eva to tor-causale
+                                rewrite tor-rec
+                             end-if
+                        end-read
+                   end-read
                 end-perform
            end-start.
 

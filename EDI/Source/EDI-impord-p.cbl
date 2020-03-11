@@ -87,7 +87,7 @@
        copy "blister.fd".
        copy "cli-prg.fd". 
        copy "tprov.fd".
-       copy "lockfile.fd".
+       copy "lockfile.fd".      
        copy "log-macrobatch.fd".
 
        WORKING-STORAGE SECTION.
@@ -542,8 +542,7 @@
                            lck-utente-creazione        delimited size
                       into lm-riga
                     end-string
-                    write lm-riga
-                    move "KO" to lk-mb-logfile
+                    write lm-riga             
                  else
                     display message "Funzione già in uso da: "
                                     lck-utente-creazione
@@ -586,8 +585,8 @@
               call "C$CALLEDBY" using CallingPgm
               if CallingPgm = "edi-impord"
                  move link-user to user-codi
-                 if user-codi = "desktop"
-                    set RichiamoSchedulato to true
+                 if user-codi = "MACROBATCH"
+                    set RichiamoBatch to true
                     move lk-mb-logfile to path-log-macrobatch
                     open extend log-macrobatch
                  end-if
@@ -2221,6 +2220,12 @@
              into log-riga
            end-string.
            write log-riga.
+           inspect como-riga replacing trailing low-value by spaces.
+
+           if como-riga not = spaces
+              move log-riga to lm-riga
+              write lm-riga
+           end-if.
 
       ***---
        SETTA-INIZIO-RIGA.
@@ -2237,6 +2242,7 @@
 
       ***---
        CONTATORE-VIDEO.
+           if RichiamoBatch          exit paragraph end-if.
            if not RichiamoSchedulato exit paragraph end-if.
            add 1 to counter counter2.
 
@@ -2255,10 +2261,6 @@
                  param EDI-mrordini articoli progmag timballi timbalqta
                  rpromo tpromo listini ttipocli rmovmag tprov
                  locali blister cli-prg lockfile.
-
-           if RichiamoBatch
-              close log-macrobatch
-           end-if.
 
       ***---
        EXIT-PGM.
@@ -2321,6 +2323,10 @@
                  perform SCRIVI-RIGA-LOG
               end-if
               close logfile
+
+              if RichiamoBatch
+                 close log-macrobatch
+              end-if
 
            end-if.
 

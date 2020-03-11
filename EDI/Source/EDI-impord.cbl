@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-impord.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 2 marzo 2020 10:32:27.
+       DATE-WRITTEN.        mercoledì 11 marzo 2020 23:22:30.
        REMARKS.
       *{TOTEM}END
 
@@ -111,7 +111,7 @@
        77 STATUS-form3-FLAG-REFRESH PIC  9.
           88 form3-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-log-macrobatch-BUF     PIC X(1000).
-       77 TMP-DataSet1-macrobatch-BUF     PIC X(9302).
+       77 TMP-DataSet1-macrobatch-BUF     PIC X(9848).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -950,19 +950,26 @@
            if not RichiamoBatch
               move 1 to video-on
               modify form3-handle, visible video-on
+              move form3-Handle to batch-win-handle
+              call   "EDI-impord-p" using batch-linkage user-codi
+              cancel "EDI-impord-p"
+           else                         
+              close log-macrobatch
+              call   "EDI-impord-p" using batch-linkage user-codi 
+           path-log-macrobatch
+              cancel "EDI-impord-p"
+              open extend log-macrobatch
            end-if.                                 
-           move form3-Handle to batch-win-handle.
-           call   "EDI-impord-p" using batch-linkage user-codi.
-           cancel "EDI-impord-p".
            if batch-status = -1
               if RichiamoBatch
                  call   "set-ini-log" using r-output
                  cancel "set-ini-log"
                  initialize lm-riga
-                 string r-output                           delimited 
+                 string r-output                            delimited 
            size
-                        "ERRORE!! VERIFICARE FILE DI LOG!" delimited 
+                        "ERRORE!! VERIFICARE FILE DI LOG! " delimited 
            size
+                        batch-log
                    into lm-riga
                  end-string
                  write lm-riga 

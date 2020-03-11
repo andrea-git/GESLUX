@@ -158,23 +158,23 @@
        ESEGUI-PROGRAMMI.   
            close       log-macrobatch.
 
-      *     perform CALL-EDI-IMPORD.    
+           perform CALL-EDI-IMPORD.    
 
            read macrobatch no lock.
 
-      *     if mb-edi-impord-stato-ok
-      *        perform CALL-EDI-SELORDINI
-      *     end-if.                       
+           if mb-edi-impord-stato-ok
+              perform CALL-EDI-SELORDINI
+           end-if.                       
                                     
            read macrobatch no lock.
            if mb-edi-selordini-stato-ok
               perform CALL-EVACLI
            end-if.                   
                                     
-      *     read macrobatch no lock.
-      *     if mb-evacli-stato-ok
-      *        perform CALL-SHI-EXP
-      *     end-if.          
+           read macrobatch no lock.
+           if mb-evacli-stato-ok
+              perform CALL-SHI-EXP
+           end-if.          
            
            open extend log-macrobatch.
 
@@ -234,7 +234,8 @@
                  end-if 
                  inspect LinkBody replacing trailing 
                                   spaces by low-value
-                 string "MAGAZZINO: " x"0d0a" delimited size
+                 string LinkBody              delimited low-value
+                        "MAGAZZINO: " x"0d0a" delimited size
                         mb-evacli-mag-codice(idx)
                         x"0d0a"
                         "DAL NUMERO: "    mb-evacli-primo-numero(idx)
@@ -247,32 +248,32 @@
               end-perform
            end-if.
 
-      *     set errori to true.
-      *     move 0 to tentativi.
-      *     move "macrobatch" to NomeProgramma.
-      *     perform 5 times
-      *        add 1 to tentativi    
-      *
-      *        call   "set-ini-log" using r-output
-      *        cancel "set-ini-log"
-      *        initialize lm-riga
-      *        string r-output                    delimited size
-      *               "INVIO MAIL. TENTATIVO N. " delimited size
-      *               tentativi                   delimited size
-      *          into lm-riga
-      *        end-string
-      *        write lm-riga
-      *
-      *        perform SEND-MAIL
-      *        open input lineseq1
-      *        read  lineseq1 next
-      *        if line-riga of lineseq1 = "True"
-      *           set tutto-ok to true
-      *           close lineseq1
-      *           exit perform
-      *        end-if
-      *        close lineseq1
-      *     end-perform.
+           set errori to true.
+           move 0 to tentativi.
+           move "macrobatch" to NomeProgramma.
+           perform 5 times
+              add 1 to tentativi    
+      
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output                    delimited size
+                     "INVIO MAIL. TENTATIVO N. " delimited size
+                     tentativi                   delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+      
+              perform SEND-MAIL
+              open input lineseq1
+              read  lineseq1 next
+              if line-riga of lineseq1 = "True"
+                 set tutto-ok to true
+                 close lineseq1
+                 exit perform
+              end-if
+              close lineseq1
+           end-perform.
       
            if errori             
               call   "set-ini-log" using r-output

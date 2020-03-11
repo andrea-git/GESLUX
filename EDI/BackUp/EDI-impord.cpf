@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E43293212-174-1209815620
+PROGRAM_UNIQUE_CODE=TOTEM-7E43B22433-593-143827992
 
 {{@DESCRIPTION:
 
@@ -973,17 +973,23 @@ BEGIN-TEXT
            if not RichiamoBatch
               move 1 to video-on
               modify form3-handle, visible video-on
+              move form3-Handle to batch-win-handle
+              call   "EDI-impord-p" using batch-linkage user-codi
+              cancel "EDI-impord-p"
+           else                         
+              close log-macrobatch
+              call   "EDI-impord-p" using batch-linkage user-codi path-log-macrobatch
+              cancel "EDI-impord-p"
+              open extend log-macrobatch
            end-if.                                 
-           move form3-Handle to batch-win-handle.
-           call   "EDI-impord-p" using batch-linkage user-codi.
-           cancel "EDI-impord-p".
            if batch-status = -1
               if RichiamoBatch
                  call   "set-ini-log" using r-output
                  cancel "set-ini-log"
                  initialize lm-riga
-                 string r-output                           delimited size
-                        "ERRORE!! VERIFICARE FILE DI LOG!" delimited size
+                 string r-output                            delimited size
+                        "ERRORE!! VERIFICARE FILE DI LOG! " delimited size
+                        batch-log
                    into lm-riga
                  end-string
                  write lm-riga 
