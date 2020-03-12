@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          SHI-exp.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 3 marzo 2020 21:38:08.
+       DATE-WRITTEN.        giovedì 12 marzo 2020 16:07:56.
        REMARKS.
       *{TOTEM}END
 
@@ -139,7 +139,7 @@
        77 TMP-DataSet1-paramSHI-BUF     PIC X(9574).
        77 TMP-DataSet1-lineseq-BUF     PIC X(900).
        77 TMP-DataSet1-log-macrobatch-BUF     PIC X(1000).
-       77 TMP-DataSet1-macrobatch-BUF     PIC X(9305).
+       77 TMP-DataSet1-macrobatch-BUF     PIC X(9848).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -1387,34 +1387,35 @@
               move 1 to video-on
               modify form3-handle visible video-on
            end-if.
-                        
+
            perform CREA-LOG
 
            if RichiamoBatch
               call   "set-ini-log" using r-output
               cancel "set-ini-log"
               initialize lm-riga
-              string r-output   delimited size
-                     "CHECK CARTELLE..." 
-                                delimited size
+              string r-output            delimited size
+                     "CHECK CARTELLE..." delimited size
                 into lm-riga
               end-string
               write lm-riga
-           end-if
+           end-if.
 
-           set   tutto-ok to true
-           perform CHECK-CARTELLE
+           set   tutto-ok to true.
+           perform CHECK-CARTELLE.
 
-           if tutto-ok     
-              call   "set-ini-log" using r-output
-              cancel "set-ini-log"
-              initialize lm-riga
-              string r-output   delimited size
-                     "CHECK CARTELLE OK" 
-                                delimited size
-                into lm-riga
-              end-string
-              write lm-riga
+           if tutto-ok
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output   delimited size
+                        "CHECK CARTELLE OK" 
+                                   delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
 
               move wstampa   to exp-path-log
               set tutto-ok   to true
@@ -2036,16 +2037,18 @@
               move  "Esportazione Ordini Clienti impossibile! Nome file 
       -              "non valorizzato"  to como-messaggio
               perform SCRIVI-MESSAGGIO
-           else                    
-              call   "set-ini-log" using r-output
-              cancel "set-ini-log"
-              initialize lm-riga
-              string r-output   delimited size
-                     "ESPORTAZIONE ORDINI..." 
-                                delimited size
-                into lm-riga
-              end-string
-              write lm-riga
+           else              
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output   delimited size
+                        "ESPORTAZIONE ORDINI..." 
+                                   delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
               call   "SHI-expordini" using exp-linkage,
                                            expordini-linkage
               cancel "SHI-expordini" 
@@ -2071,23 +2074,25 @@
 
                  end-if
               else
-                 call   "set-ini-log" using r-output
-                 cancel "set-ini-log"
-                 initialize lm-riga
-                 if exp-ok
-                    string r-output   delimited size
-                           "ESPORTAZIONE ORDINI OK" 
-                                      delimited size
-                      into lm-riga
-                    end-string
-                 else         
-                    string r-output   delimited size
-                           "ESPORTAZIONE ORDINI ERR" 
-                                      delimited size
-                      into lm-riga
-                    end-string
+                 if RichiamoBatch
+                    call   "set-ini-log" using r-output
+                    cancel "set-ini-log"
+                    initialize lm-riga
+                    if exp-ok
+                       string r-output   delimited size
+                              "ESPORTAZIONE ORDINI OK" 
+                                         delimited size
+                         into lm-riga
+                       end-string
+                    else         
+                       string r-output   delimited size
+                              "ESPORTAZIONE ORDINI ERR" 
+                                         delimited size
+                         into lm-riga
+                       end-string
+                    end-if
+                    write lm-riga
                  end-if
-                 write lm-riga
               end-if
            end-if 
            .
@@ -2196,26 +2201,28 @@
                                       expordini-linkage
            cancel "SHI-agg-ord-exp".
 
-           evaluate true
-           when exp-ok
-                call   "set-ini-log" using r-output
-                cancel "set-ini-log"
-                initialize lm-riga
-                string r-output               delimited size
-                       "CREAZIONE ORDINI OK"  delimited size
-                  into lm-riga
-                end-string
-                write lm-riga
-           when exp-err
-                call   "set-ini-log" using r-output
-                cancel "set-ini-log"
-                initialize lm-riga
-                string r-output                delimited size
-                       "CREAZIONE ORDINI ERR"  delimited size
-                  into lm-riga
-                end-string
-                write lm-riga     
-           end-evaluate 
+           if RichiamoBatch
+              evaluate true
+              when exp-ok
+                   call   "set-ini-log" using r-output
+                   cancel "set-ini-log"
+                   initialize lm-riga
+                   string r-output               delimited size
+                          "CREAZIONE ORDINI OK"  delimited size
+                     into lm-riga
+                   end-string
+                   write lm-riga
+              when exp-err
+                   call   "set-ini-log" using r-output
+                   cancel "set-ini-log"
+                   initialize lm-riga
+                   string r-output                delimited size
+                          "CREAZIONE ORDINI ERR"  delimited size
+                     into lm-riga
+                   end-string
+                   write lm-riga     
+              end-evaluate
+           end-if 
            .
       * <TOTEM:END>
 

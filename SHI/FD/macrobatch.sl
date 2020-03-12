@@ -1,4 +1,4 @@
-      *Usato dalla procedura macrobatch per passare stati e valori
+      *Usato dalla procedura macrobatch per passare stati e valori* 
        SELECT macrobatch
            ASSIGN       TO DISK "macrobatch"
            ORGANIZATION IS INDEXED

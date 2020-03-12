@@ -246,7 +246,25 @@
                    into LinkBody
                  end-string
               end-perform
-           end-if.
+           end-if.                                   
+
+           accept como-data from time.
+           accept como-ora  from century-date.
+           inspect LinkBody replacing trailing spaces by low-value.
+           string  LinkBody             delimited low-value                        
+                   x"0d0a"              delimited size
+                   "MAIL GENERATA IL: " delimited size
+                   como-data(7:2)       delimited size
+                   "/"                  delimited size
+                   como-data(5:2)       delimited size
+                   "/"                  delimited size
+                   como-data(1:4)       delimited size
+                   " - ALLE: "          delimited size
+                   como-ora(1:2)        delimited size
+                   ":"                  delimited size
+                   como-ora(3:2)        delimited size
+              into LinkBody
+           end-string.
 
            set errori to true.
            move 0 to tentativi.
