@@ -45,6 +45,13 @@
                  end-if
               end-if
            end-if.
+           if record-ok and RichiamoBatch
+              move cli-tipo to tcl-codice
+              read ttipocli no lock
+              if tcl-edi-auto-no
+                 set record-ok to false
+              end-if
+           end-if.
            if record-ok
               move mto-chiave to k-mto-chiave
               move mto-promo  to k-mto-promo

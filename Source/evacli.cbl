@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 7 marzo 2020 16:38:26.
+       DATE-WRITTEN.        lunedì 16 marzo 2020 15:12:28.
        REMARKS.
       *{TOTEM}END
 
@@ -14310,7 +14310,7 @@
            read tparamge   no lock.
 
            set GeneraEvasioni to false.
-           set trovato        to false.
+           set trovato        to false.          
 
            move 0 to id-evasione.
            move low-value to k-mto-rec.

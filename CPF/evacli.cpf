@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=aggmese-Ev-Before-Program
 AFTER_PROGRAM=evacli-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E437154153-374-308829324
+PROGRAM_UNIQUE_CODE=TOTEM-7E4310141626-683-240817416
 
 {{@DESCRIPTION:
 
@@ -11170,7 +11170,7 @@ BEGIN-TEXT
            read tparamge   no lock.
 
            set GeneraEvasioni to false.
-           set trovato        to false.
+           set trovato        to false.          
 
            move 0 to id-evasione.
            move low-value to k-mto-rec.
