@@ -855,7 +855,7 @@
                     read ordfor2 no lock invalid continue end-read
 
                     |SE IL FORNITORE E' STRANIERO SEMPRE SU LBX
-                    if art-mag-std not = "LBX"   
+                    if art-mag-std not = "LBX"                 
                        set  cli-tipo-F    to true
                        move cpf-fornitore to cli-codice
                        read clienti no lock invalid continue end-read
@@ -892,7 +892,14 @@
                                       end-if
                                    end-if
                                 end-perform
-                          end-start
+                          end-start         
+
+                          move art-mag-std to tca-cod-magaz
+                          set tca-si-ord-forn to true
+                          read tcaumag no lock key k-mag
+                               invalid continue
+                          end-read
+
                           move "LBX" to art-mag-std
                           move sav-tipo-imballo to ord2-imballo
                           move sav-peso         to ord2-peso
@@ -900,10 +907,10 @@
                                 invalid rewrite ord2-rec 
                           end-write
                        end-if
-                    else
+                    else                      
                        |2307: REIMPOSTO LA CAUSALE
                        move tge-causale-ord-forn to tca-codice
-                       read tcaumag             
+                       read tcaumag                               
                        |TROVO IL PROGRESSIVO A MAGGIOR GIACENZA VALORE ASSOLUTO
                        move 0 to giacenza 
                        initialize sav-chiave replacing 
@@ -1002,12 +1009,12 @@
                              end-perform
                        end-start
 
-                       |RECUPERO LA CAUSALE
+                       |RECUPERO LA CAUSALE       
                        move art-mag-std to tca-cod-magaz
                        set tca-si-ord-forn to true
                        read tcaumag no lock key k-mag
                             invalid continue
-                       end-read
+                       end-read                              
                     else
                        move 99999999 to qta-utile-LBX
                     end-if
