@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=notacr-Ev-Before-Program
 AFTER_PROGRAM=notacr-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E3212112747-993-2605213550
+PROGRAM_UNIQUE_CODE=TOTEM-7E431F14149-780-1665222177
 
 {{@DESCRIPTION:
 
@@ -11403,7 +11403,8 @@ BEGIN-TEXT
                          set errori to true
                          display message 
                        "Bolla di reso O fattura di riferimento obbligatoria"
-                x"0d0a""per nota credito EDI"
+                x"0d0a""per nota credito EDI."
+                x"0d0a""Valorizzare solamente uno dei due!"
                                   title tit-err
                                    icon 2       
                          move 78-ID-ef-bolla-num to control-id

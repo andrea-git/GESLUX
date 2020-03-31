@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          notavar.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        lunedì 18 febbraio 2019 12:28:05.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        martedì 31 marzo 2020 16:14:28.
        REMARKS.
       *{TOTEM}END
 
@@ -77,7 +77,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -9494,7 +9494,8 @@ LUBEXX                   end-if
                          display message 
                        "Bolla di reso O fattura di riferimento obbligato
       -    "ria"
-                x"0d0a""per nota credito EDI"
+                x"0d0a""per nota credito EDI."
+                x"0d0a""Valorizzare solamente uno dei due!"
                                   title tit-err
                                    icon 2       
                          move 78-ID-ef-bolla-num to control-id
