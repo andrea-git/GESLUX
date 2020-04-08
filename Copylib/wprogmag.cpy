@@ -92,9 +92,15 @@
                                  add prg-giacenza to como-giacenza
                               end-if
                          end-read
-                      end-perform
-                      if como-giacenza > 0 move 2 to art-scorta
-                      else                 move 0 to art-scorta
+                      end-perform              
+                      move art-imballo-standard to imq-codice
+                      read timbalqta
+
+                      if como-giacenza = 0 or 
+                         como-giacenza < imq-qta-imb 
+                         move 0 to art-scorta
+                      else                 
+                         move 2 to art-scorta
                       end-if
                       rewrite art-rec
                    end-if
