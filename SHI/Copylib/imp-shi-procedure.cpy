@@ -71,9 +71,7 @@
               move space  to como-nome-2(cont:)
               add 1 to cont
               move como-nome(cont:3)  to como-estensione
-           end-if.
-              
-
+           end-if.                
 
            initialize origine
                       destinazione
