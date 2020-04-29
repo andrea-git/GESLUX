@@ -812,13 +812,7 @@
                          into como-riga
                        end-string
                        perform SCRIVI-RIGA-LOG
- 
-                       initialize como-riga
-                       string "ELABORAZIONE FILE: " delimited size
-                              file-backup           delimited low-value
-                         into como-riga
-                       end-string
-                       perform SCRIVI-RIGA-LOG
+
                        move file-backup to wstampa 
                        perform 5 times
                           call "C$SLEEP" using 2
@@ -1178,6 +1172,7 @@
               end-write
            end-perform.
 
+           initialize como-riga.
            string "CREATO ORDINE: " delimited size
                   emto-anno         delimited size
                   " - "             delimited size
