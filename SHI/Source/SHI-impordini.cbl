@@ -71,7 +71,7 @@
            copy "link-geslock.def".
            copy "versione-evasione.def".
 
-       01  imp-tordini.
+       01  imp-tordini. |1400 crt tot (circa)
            05 HUSCTES_COM_CODICE             PIC  X(15).   
            05 HUSCTES_ORDINE                 PIC  X(15).   
            05 HUSCTES_ORDUSCTIP_CODICE       PIC  X(15).   
@@ -127,7 +127,7 @@
            05 HUSCTES_TIPO_SPED              PIC  X(4).   
            05 HUSCTES_NCOL                   PIC  X(4).   
 
-       01  imp-rordini.
+       01  imp-rordini. |2444 crt totali (circa)
            05 HUSCRIG_COM_CODICE             PIC  x(15). 
            05 HUSCRIG_ORDINE                 PIC  x(15). 
            05 HUSCRIG_RIGA                   PIC  9(5). 
@@ -975,8 +975,7 @@
 
               write er-f-rec
               move "-------------- End of file --------------" 
-                to er-f-rec
-              call "C$JUSTIFY" using er-f-rec, "C"
+                to er-f-rec                                 
               write ER-F-REC
 
               write er-f-rec from space

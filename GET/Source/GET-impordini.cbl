@@ -975,8 +975,7 @@
 
               write er-f-rec
               move "-------------- End of file --------------" 
-                to er-f-rec
-              call "C$JUSTIFY" using er-f-rec, "C"
+                to er-f-rec                             
               write ER-F-REC
 
               write er-f-rec from space

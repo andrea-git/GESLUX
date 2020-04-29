@@ -1091,8 +1091,7 @@
 
               write er-f-rec
               move "-------------- End of file --------------" 
-                to er-f-rec
-              call "C$JUSTIFY" using er-f-rec, "C"
+                to er-f-rec                       
               write ER-F-REC
 
               write er-f-rec from space
@@ -1105,7 +1104,6 @@
               write rec-flusso-rep from space
               move "-------------- End of file --------------"
                     to rec-flusso-rep
-              call "C$JUSTIFY" using rec-flusso-rep, "C"
               write rec-flusso-rep
               write rec-flusso-rep from space
               close flusso-rep
