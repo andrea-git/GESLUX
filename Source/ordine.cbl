@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordine.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 3 luglio 2019 16:10:13.
+       DATE-WRITTEN.        venerdì 1 maggio 2020 02:15:03.
        REMARKS.
       *{TOTEM}END
 
@@ -127,11 +127,11 @@
 
        WORKING-STORAGE      SECTION.
       *{TOTEM}ACU-DEF
-               COPY "ACUGUI.DEF".
-               COPY "ACUCOBOL.DEF".
-               COPY "FONTS.DEF".
-               COPY "CRTVARS.DEF".
-               COPY "SHOWMSG.DEF".
+               COPY "acugui.def".
+               COPY "acucobol.def".
+               COPY "fonts.def".
+               COPY "crtvars.def".
+               COPY "showmsg.def".
                COPY "totem.def".
                COPY "standard.def".
       *{TOTEM}END
@@ -385,6 +385,8 @@
               10 ef-note-bolla-1-BUF PIC x(500).
       * Data.Entry-Field
               10 ef-note-bolla-2-BUF PIC x(500).
+      * Data.Entry-Field
+              10 ef-note-libere-BUF PIC x(150).
       * Data.Label
               10 lab-age-BUF PIC X(40).
       * Data.Label
@@ -741,6 +743,7 @@
        77 mrordini-mro-k-articolo-SPLITBUF  PIC X(24).
        77 mrordini-mro-k-progr-SPLITBUF  PIC X(18).
        77 mrordini-mro-k-tprev-SPLITBUF  PIC X(39).
+       77 mrordini-mro-k-ord-art-SPLITBUF  PIC X(19).
        77 tmp-progmag-zoom-key-des-SPLITBUF  PIC X(64).
        77 tmp-progmag-zoom-key-art-SPLITBUF  PIC X(7).
        77 lisagente-k-codice-SPLITBUF  PIC X(5).
@@ -770,6 +773,7 @@
        77 rordini-ror-k-articolo-SPLITBUF  PIC X(24).
        77 rordini-ror-k-master-SPLITBUF  PIC X(35).
        77 rordini-ror-k-stbolle-SPLITBUF  PIC X(30).
+       77 rordini-ror-k-ord-art-SPLITBUF  PIC X(19).
        77 locali-loc-chiave-gdo-fine-SPLITBUF  PIC X(32).
        77 locali-loc-chiave-fine-SPLITBUF  PIC X(32).
        77 locali-loc-chiave-ini-SPLITBUF  PIC X(32).
@@ -1568,7 +1572,7 @@
            ef-note-bolla-2, 
            Entry-Field, 
            COL 27,17, 
-           LINE 34,69,
+           LINE 33,15,
            LINES 2,50 ,
            SIZE 124,00 ,
            BOXED,
@@ -1580,6 +1584,26 @@
            MAX-TEXT 130,
            VSCROLL-BAR,
            VALUE ef-note-bolla-2-BUF,
+           BEFORE PROCEDURE Form1-DaEf-1-BeforeProcedure, 
+           .
+
+      * ENTRY FIELD
+       10
+           ef-note-libere, 
+           Entry-Field, 
+           COL 27,17, 
+           LINE 36,23,
+           LINES 2,50 ,
+           SIZE 124,00 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED mod-campi,
+           ID IS 84,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           MAX-TEXT 150,
+           VSCROLL-BAR,
+           VALUE ef-note-libere-BUF,
            BEFORE PROCEDURE Form1-DaEf-1-BeforeProcedure, 
            .
 
@@ -2040,7 +2064,7 @@
            Form1-La-14aa, 
            Label, 
            COL 5,17, 
-           LINE 34,69,
+           LINE 33,15,
            LINES 1,31 ,
            SIZE 19,00 ,
            FONT IS Small-Font,
@@ -2066,6 +2090,22 @@
            TRANSPARENT,
            TITLE "URGENTE",
            VISIBLE 1,
+           .
+
+      * LABEL
+       10
+           Form1-La-14aaa, 
+           Label, 
+           COL 5,17, 
+           LINE 36,23,
+           LINES 1,31 ,
+           SIZE 19,00 ,
+           FONT IS Small-Font,
+           ID IS 59,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Note libere",
            .
 
       * PAGE
@@ -8443,6 +8483,14 @@
            MOVE mro-chiave(1:17) TO mrordini-mro-k-tprev-SPLITBUF(22:17)
            .
 
+       mrordini-mro-k-ord-art-MERGE-SPLITBUF.
+           INITIALIZE mrordini-mro-k-ord-art-SPLITBUF
+           MOVE mro-chiave-testa(1:12) TO 
+           mrordini-mro-k-ord-art-SPLITBUF(1:12)
+           MOVE mro-cod-articolo(1:6) TO 
+           mrordini-mro-k-ord-art-SPLITBUF(13:6)
+           .
+
        DataSet1-mrordini-INITSTART.
            IF DataSet1-mrordini-KEY-Asc
               MOVE Low-Value TO mro-chiave
@@ -8508,6 +8556,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT 
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -8539,6 +8588,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -8570,6 +8620,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -9858,6 +9909,16 @@
            rordini-ror-k-stbolle-SPLITBUF(13:17)
            .
 
+       rordini-ror-k-ord-art-MERGE-SPLITBUF.
+           INITIALIZE rordini-ror-k-ord-art-SPLITBUF
+           MOVE ror-anno OF rordini(1:4) TO 
+           rordini-ror-k-ord-art-SPLITBUF(1:4)
+           MOVE ror-num-ordine OF rordini(1:8) TO 
+           rordini-ror-k-ord-art-SPLITBUF(5:8)
+           MOVE ror-cod-articolo OF rordini(1:6) TO 
+           rordini-ror-k-ord-art-SPLITBUF(13:6)
+           .
+
        DataSet1-rordini-INITSTART.
            IF DataSet1-rordini-KEY-Asc
               MOVE Low-Value TO ror-chiave OF rordini
@@ -9923,6 +9984,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT 
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -9954,6 +10016,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -9985,6 +10048,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -13861,6 +13925,16 @@
                MOVE 5026 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
+      * ef-note-libere's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-note-libere-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 1 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 84 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
       * ef-art's Validation
            SET TOTEM-CHECK-OK TO FALSE
            PERFORM ef-art-VALIDATION
@@ -14313,6 +14387,23 @@
            PERFORM ef-note-bolla-2-AFTER-VALIDATION
            .
 
+       ef-note-libere-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-note-libere, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-note-libere-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-note-libere, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-note-libere's Validation
+       ef-note-libere-VALIDATION.
+           PERFORM ef-note-libere-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-note-libere-AFTER-VALIDATION
+           .
+
        ef-art-BEFORE-VALIDATION.
       * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-art, BeforeValidation>
       * <TOTEM:END>
@@ -14580,6 +14671,8 @@
            MOVE ef-note-bolla-1-BUF TO mto-note-bolla-1
       * DB_Entry-Field : ef-note-bolla-2
            MOVE ef-note-bolla-2-BUF TO mto-note-bolla-2
+      * DB_Entry-Field : ef-note-libere
+           MOVE ef-note-libere-BUF TO mto-note-libere
       * DB_Entry-Field : ef-art
            MOVE ef-art-BUF TO mro-cod-articolo
       * DB_Entry-Field : ef-evadi-dal
@@ -14737,6 +14830,8 @@ LUBEXX     move ef-gest-buf to mto-gest-plus.
            MOVE mto-note-bolla-1 TO ef-note-bolla-1-BUF
       * DB_Entry-Field : ef-note-bolla-2
            MOVE mto-note-bolla-2 TO ef-note-bolla-2-BUF
+      * DB_Entry-Field : ef-note-libere
+           MOVE mto-note-libere TO ef-note-libere-BUF
       * DB_LABEL : lab-age
               MOVE age-ragsoc-1  TO lab-age-BUF
       * DB_LABEL : lab-vet
@@ -14946,6 +15041,13 @@ LUBEXX     move ef-gest-buf to mto-gest-plus.
               set NoSalvato to true
               |78-ID-ef-note-bolla-2 è l'ID del campo ef-note-bolla-2
               move 78-ID-ef-note-bolla-2 to store-id 
+           end-if
+
+           if mto-note-libere not = old-mto-note-libere
+              and SiSalvato
+              set NoSalvato to true
+              |84 è l'ID del campo ef-note-libere
+              move 84 to store-id
            end-if
 
            if mto-stato-ordine not = old-mto-stato-ordine
@@ -15655,6 +15757,7 @@ LUBEXX     move ef-gest-buf to mto-gest-plus.
            When 5024 PERFORM ef-note-4-AfterProcedure
            When 5025 PERFORM Form1-DaEf-1-AfterProcedure
            When 5026 PERFORM Form1-DaEf-1-AfterProcedure
+           When 84 PERFORM Form1-DaEf-1-AfterProcedure
            When 5028 PERFORM ef-art-AfterProcedure
            When 5029 PERFORM ef-cou-AfterProcedure
            When 5030 PERFORM Form1-DaCb-1-AfterProcedure
@@ -17497,6 +17600,12 @@ LABLAB     end-if
               INQUIRE ef-note-bolla-2, VALUE IN mto-note-bolla-2
               SET TOTEM-CHECK-OK TO FALSE
               PERFORM ef-note-bolla-2-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+              INQUIRE ef-note-libere, VALUE IN mto-note-libere
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-note-libere-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF

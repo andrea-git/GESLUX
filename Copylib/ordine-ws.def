@@ -161,6 +161,7 @@
       ***** 01 filler           PIC  9.
       *****     88 EsisteIVA VALUE IS 1,    WHEN SET TO FALSE  0. 
       *
+      *
        01 filler           PIC  9.
            88 VenditaAlDettaglio VALUE IS 1    WHEN SET TO FALSE  0. 
        01 FlagPrezzoCambiato           PIC  9.
@@ -502,6 +503,7 @@
       *****             88 mto-fatt-parz VALUE IS 5. 
       *****             88 mto-fatt-tot VALUE IS 6. 
       *
+      *
                    88 OLD-mto-chiuso VALUE IS 7. 
                10 OLD-mto-dati-comuni.
                    15 OLD-mto-data-creazione       PIC  9(8).
@@ -543,6 +545,7 @@
                10 OLD-mto-note-bolla-1         PIC  x(500).
                10 OLD-mto-note-bolla-2         PIC  x(500).
                10 old-mto-urgente  PIC  9.
+               10 old-mto-note-libere          PIC  x(150).
        01 FILLER           PIC  x.
            88 si-prg-listino VALUE IS "S". 
            88 no-prg-listino VALUE IS "N". 

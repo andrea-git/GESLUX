@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordinevar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 26 luglio 2019 12:44:32.
+       DATE-WRITTEN.        venerdì 1 maggio 2020 02:14:34.
        REMARKS.
       *{TOTEM}END
 
@@ -145,11 +145,11 @@
 
        WORKING-STORAGE      SECTION.
       *{TOTEM}ACU-DEF
-               COPY "ACUGUI.DEF".
-               COPY "ACUCOBOL.DEF".
-               COPY "FONTS.DEF".
-               COPY "CRTVARS.DEF".
-               COPY "SHOWMSG.DEF".
+               COPY "acugui.def".
+               COPY "acucobol.def".
+               COPY "fonts.def".
+               COPY "crtvars.def".
+               COPY "showmsg.def".
                COPY "totem.def".
                COPY "standard.def".
       *{TOTEM}END
@@ -526,6 +526,8 @@
               10 ef-note-bolla-1-BUF PIC x(500).
       * Data.Entry-Field
               10 ef-note-bolla-2-BUF PIC x(500).
+      * Data.Entry-Field
+              10 ef-note-libere-BUF PIC x(150).
       * Data.Label
               10 lab-age-BUF PIC X(40).
       * Data.Label
@@ -924,12 +926,14 @@
        77 mrordini-mro-k-articolo-SPLITBUF  PIC X(24).
        77 mrordini-mro-k-progr-SPLITBUF  PIC X(18).
        77 mrordini-mro-k-tprev-SPLITBUF  PIC X(39).
+       77 mrordini-mro-k-ord-art-SPLITBUF  PIC X(19).
        77 blister-k-magaz-SPLITBUF  PIC X(10).
        77 blister-k-des-SPLITBUF  PIC X(51).
        77 rordini-ror-k-promo-SPLITBUF  PIC X(16).
        77 rordini-ror-k-articolo-SPLITBUF  PIC X(24).
        77 rordini-ror-k-master-SPLITBUF  PIC X(35).
        77 rordini-ror-k-stbolle-SPLITBUF  PIC X(30).
+       77 rordini-ror-k-ord-art-SPLITBUF  PIC X(19).
        77 tordini-k-causale-SPLITBUF  PIC X(17).
        77 tordini-k1-SPLITBUF  PIC X(23).
        77 tordini-k2-SPLITBUF  PIC X(21).
@@ -1001,19 +1005,20 @@
        78  78-ID-ef-note-4 VALUE 5024.
        78  78-ID-ef-note-bolla-1 VALUE 5025.
        78  78-ID-ef-note-bolla-2 VALUE 5026.
-       78  78-ID-cbo-stato VALUE 5027.
-       78  78-ID-ef-art VALUE 5028.
-       78  78-ID-chk-blister VALUE 5029.
-       78  78-ID-ef-qta VALUE 5030.
-       78  78-ID-ef-qta-oma VALUE 5031.
-       78  78-ID-ef-uni VALUE 5032.
-       78  78-ID-ef-sconto VALUE 5033.
-       78  78-ID-ef-cons VALUE 5034.
-       78  78-ID-ef-cou VALUE 5035.
-       78  78-ID-ef-imp VALUE 5036.
-       78  78-ID-ef-cod-iva VALUE 5037.
-       78  78-ID-ef-add VALUE 5038.
-       78  78-ID-ef-evadi-dal VALUE 5039.
+       78  78-ID-ef-note-libere VALUE 5027.
+       78  78-ID-cbo-stato VALUE 5028.
+       78  78-ID-ef-art VALUE 5029.
+       78  78-ID-chk-blister VALUE 5030.
+       78  78-ID-ef-qta VALUE 5031.
+       78  78-ID-ef-qta-oma VALUE 5032.
+       78  78-ID-ef-uni VALUE 5033.
+       78  78-ID-ef-sconto VALUE 5034.
+       78  78-ID-ef-cons VALUE 5035.
+       78  78-ID-ef-cou VALUE 5036.
+       78  78-ID-ef-imp VALUE 5037.
+       78  78-ID-ef-cod-iva VALUE 5038.
+       78  78-ID-ef-add VALUE 5039.
+       78  78-ID-ef-evadi-dal VALUE 5040.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -1728,7 +1733,7 @@
            ef-note-bolla-2, 
            Entry-Field, 
            COL 27,17, 
-           LINE 35,23,
+           LINE 33,69,
            LINES 2,50 ,
            SIZE 124,00 ,
            BOXED,
@@ -1740,6 +1745,26 @@
            MAX-TEXT 130,
            VSCROLL-BAR,
            VALUE ef-note-bolla-2-BUF,
+           BEFORE PROCEDURE Form1-DaEf-1-BeforeProcedure, 
+           .
+
+      * ENTRY FIELD
+       10
+           ef-note-libere, 
+           Entry-Field, 
+           COL 27,17, 
+           LINE 36,77,
+           LINES 2,50 ,
+           SIZE 124,00 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED mod-campi,
+           ID IS 78-ID-ef-note-libere,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           MAX-TEXT 150,
+           VSCROLL-BAR,
+           VALUE ef-note-libere-BUF,
            BEFORE PROCEDURE Form1-DaEf-1-BeforeProcedure, 
            .
 
@@ -2261,7 +2286,7 @@
            Form1-La-14aa, 
            Label, 
            COL 5,17, 
-           LINE 35,23,
+           LINE 33,69,
            LINES 1,31 ,
            SIZE 19,00 ,
            FONT IS Small-Font,
@@ -2287,6 +2312,22 @@
            TRANSPARENT,
            TITLE "URGENTE",
            VISIBLE 1,
+           .
+
+      * LABEL
+       10
+           Form1-La-14aaa, 
+           Label, 
+           COL 5,17, 
+           LINE 36,77,
+           LINES 1,31 ,
+           SIZE 19,00 ,
+           FONT IS Small-Font,
+           ID IS 60,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Note libere",
            .
 
       * PAGE
@@ -9597,6 +9638,14 @@
            MOVE mro-chiave(1:17) TO mrordini-mro-k-tprev-SPLITBUF(22:17)
            .
 
+       mrordini-mro-k-ord-art-MERGE-SPLITBUF.
+           INITIALIZE mrordini-mro-k-ord-art-SPLITBUF
+           MOVE mro-chiave-testa(1:12) TO 
+           mrordini-mro-k-ord-art-SPLITBUF(1:12)
+           MOVE mro-cod-articolo(1:6) TO 
+           mrordini-mro-k-ord-art-SPLITBUF(13:6)
+           .
+
        DataSet1-mrordini-INITSTART.
            IF DataSet1-mrordini-KEY-Asc
               MOVE Low-Value TO mro-chiave
@@ -9662,6 +9711,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT 
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -9693,6 +9743,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -9724,6 +9775,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -10236,6 +10288,16 @@
            rordini-ror-k-stbolle-SPLITBUF(13:17)
            .
 
+       rordini-ror-k-ord-art-MERGE-SPLITBUF.
+           INITIALIZE rordini-ror-k-ord-art-SPLITBUF
+           MOVE ror-anno OF rordini(1:4) TO 
+           rordini-ror-k-ord-art-SPLITBUF(1:4)
+           MOVE ror-num-ordine OF rordini(1:8) TO 
+           rordini-ror-k-ord-art-SPLITBUF(5:8)
+           MOVE ror-cod-articolo OF rordini(1:6) TO 
+           rordini-ror-k-ord-art-SPLITBUF(13:6)
+           .
+
        DataSet1-rordini-INITSTART.
            IF DataSet1-rordini-KEY-Asc
               MOVE Low-Value TO ror-chiave OF rordini
@@ -10301,6 +10363,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT 
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -10332,6 +10395,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -10363,6 +10427,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -15477,6 +15542,16 @@ PATCH      end-evaluate.
                MOVE 5026 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
+      * ef-note-libere's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-note-libere-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 1 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 5027 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
       * ef-art's Validation
            SET TOTEM-CHECK-OK TO FALSE
            PERFORM ef-art-VALIDATION
@@ -15484,7 +15559,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5028 TO CONTROL-ID
+               MOVE 5029 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-qta's Validation
@@ -15494,7 +15569,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5030 TO CONTROL-ID
+               MOVE 5031 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-qta-oma's Validation
@@ -15504,7 +15579,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5031 TO CONTROL-ID
+               MOVE 5032 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-uni's Validation
@@ -15514,7 +15589,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5032 TO CONTROL-ID
+               MOVE 5033 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-sconto's Validation
@@ -15524,7 +15599,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5033 TO CONTROL-ID
+               MOVE 5034 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cons's Validation
@@ -15534,7 +15609,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5034 TO CONTROL-ID
+               MOVE 5035 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cou's Validation
@@ -15544,7 +15619,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5035 TO CONTROL-ID
+               MOVE 5036 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-imp's Validation
@@ -15554,7 +15629,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5036 TO CONTROL-ID
+               MOVE 5037 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cod-iva's Validation
@@ -15564,7 +15639,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5037 TO CONTROL-ID
+               MOVE 5038 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-add's Validation
@@ -15574,7 +15649,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5038 TO CONTROL-ID
+               MOVE 5039 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-evadi-dal's Validation
@@ -15584,7 +15659,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5039 TO CONTROL-ID
+               MOVE 5040 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
            .
@@ -15929,6 +16004,23 @@ PATCH      end-evaluate.
            PERFORM ef-note-bolla-2-AFTER-VALIDATION
            .
 
+       ef-note-libere-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-note-libere, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-note-libere-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-note-libere, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-note-libere's Validation
+       ef-note-libere-VALIDATION.
+           PERFORM ef-note-libere-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-note-libere-AFTER-VALIDATION
+           .
+
        ef-art-BEFORE-VALIDATION.
       * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-art, BeforeValidation>
       * <TOTEM:END>
@@ -16196,6 +16288,8 @@ PATCH      end-evaluate.
            MOVE ef-note-bolla-1-BUF TO mto-note-bolla-1
       * DB_Entry-Field : ef-note-bolla-2
            MOVE ef-note-bolla-2-BUF TO mto-note-bolla-2
+      * DB_Entry-Field : ef-note-libere
+           MOVE ef-note-libere-BUF TO mto-note-libere
       * DB_Entry-Field : ef-art
            MOVE ef-art-BUF TO mro-cod-articolo
       * DB_CHECK BOX : chk-blister
@@ -16347,6 +16441,8 @@ PATCH      end-evaluate.
            MOVE mto-note-bolla-1 TO ef-note-bolla-1-BUF
       * DB_Entry-Field : ef-note-bolla-2
            MOVE mto-note-bolla-2 TO ef-note-bolla-2-BUF
+      * DB_Entry-Field : ef-note-libere
+           MOVE mto-note-libere TO ef-note-libere-BUF
       * DB_LABEL : lab-age
               MOVE age-ragsoc-1  TO lab-age-BUF
       * DB_LABEL : lab-vet
@@ -16687,6 +16783,13 @@ PATCH      end-evaluate.
               set NoSalvato to true
               |78-ID-ef-note-bolla-2 è l'ID del campo ef-note-bolla-2
               move 78-ID-ef-note-bolla-2 to store-id 
+           end-if
+
+           if mto-note-libere not = old-mto-note-libere
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-ef-note-libere è l'ID del campo ef-note-libere
+              move 78-ID-ef-note-libere to store-id 
            end-if
 
            if mto-stato-ordine not = old-mto-stato-ordine
@@ -17073,25 +17176,25 @@ PATCH      end-evaluate.
            TOTEM-HINT-TEXT
            WHEN 5024 MOVE "Digitare le note di destinazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5027 MOVE "Selezionare uno stato" to TOTEM-HINT-TEXT
-           WHEN 5028 MOVE "Digitare il codice dell'articolo" to 
+           WHEN 5028 MOVE "Selezionare uno stato" to TOTEM-HINT-TEXT
+           WHEN 5029 MOVE "Digitare il codice dell'articolo" to 
            TOTEM-HINT-TEXT
-           WHEN 5029 MOVE "Indica se l'articolo selezionato è da conside
+           WHEN 5030 MOVE "Indica se l'articolo selezionato è da conside
       -    "rarsi componente di un blister" to TOTEM-HINT-TEXT
-           WHEN 5030 MOVE "Digitare la quantit" to TOTEM-HINT-TEXT
-           WHEN 5031 MOVE "Digitare la quantità che s'intende come omagg
+           WHEN 5031 MOVE "Digitare la quantit" to TOTEM-HINT-TEXT
+           WHEN 5032 MOVE "Digitare la quantità che s'intende come omagg
       -    "io" to TOTEM-HINT-TEXT
-           WHEN 5032 MOVE "Digitare il prezzo unitario" to 
+           WHEN 5033 MOVE "Digitare il prezzo unitario" to 
            TOTEM-HINT-TEXT
-           WHEN 5033 MOVE "Percentuale di sconto" to TOTEM-HINT-TEXT
-           WHEN 5034 MOVE "Valore imposta sul consumo" to 
+           WHEN 5034 MOVE "Percentuale di sconto" to TOTEM-HINT-TEXT
+           WHEN 5035 MOVE "Valore imposta sul consumo" to 
            TOTEM-HINT-TEXT
-           WHEN 5035 MOVE "Valore imposta COU/COBAT" to TOTEM-HINT-TEXT
-           WHEN 5036 MOVE "Valore imponibile della merce" to 
+           WHEN 5036 MOVE "Valore imposta COU/COBAT" to TOTEM-HINT-TEXT
+           WHEN 5037 MOVE "Valore imponibile della merce" to 
            TOTEM-HINT-TEXT
-           WHEN 5037 MOVE "Codice I.V.A." to TOTEM-HINT-TEXT
-           WHEN 5038 MOVE "Valore addizionale piombo" to TOTEM-HINT-TEXT
-           WHEN 5039 MOVE "Data di evadibilit" to TOTEM-HINT-TEXT
+           WHEN 5038 MOVE "Codice I.V.A." to TOTEM-HINT-TEXT
+           WHEN 5039 MOVE "Valore addizionale piombo" to TOTEM-HINT-TEXT
+           WHEN 5040 MOVE "Data di evadibilit" to TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
            EVALUATE Control-Id
@@ -17115,19 +17218,19 @@ PATCH      end-evaluate.
            When 5022 PERFORM ef-note-2-BeforeProcedure
            When 5023 PERFORM ef-note-3-BeforeProcedure
            When 5024 PERFORM ef-note-4-BeforeProcedure
-           When 5027 PERFORM cbo-stato-BeforeProcedure
-           When 5028 PERFORM ef-art-BeforeProcedure
-           When 5029 PERFORM Form1-DaCb-1-BeforeProcedure
-           When 5030 PERFORM ef-qta-BeforeProcedure
-           When 5031 PERFORM ef-qta-oma-BeforeProcedure
-           When 5032 PERFORM ef-uni-BeforeProcedure
-           When 5033 PERFORM ef-sconto-BeforeProcedure
-           When 5034 PERFORM ef-cons-BeforeProcedure
-           When 5035 PERFORM ef-cou-BeforeProcedure
-           When 5036 PERFORM ef-imp-BeforeProcedure
-           When 5037 PERFORM ef-cod-iva-BeforeProcedure
-           When 5038 PERFORM ef-cou-BeforeProcedure
+           When 5028 PERFORM cbo-stato-BeforeProcedure
+           When 5029 PERFORM ef-art-BeforeProcedure
+           When 5030 PERFORM Form1-DaCb-1-BeforeProcedure
+           When 5031 PERFORM ef-qta-BeforeProcedure
+           When 5032 PERFORM ef-qta-oma-BeforeProcedure
+           When 5033 PERFORM ef-uni-BeforeProcedure
+           When 5034 PERFORM ef-sconto-BeforeProcedure
+           When 5035 PERFORM ef-cons-BeforeProcedure
+           When 5036 PERFORM ef-cou-BeforeProcedure
+           When 5037 PERFORM ef-imp-BeforeProcedure
+           When 5038 PERFORM ef-cod-iva-BeforeProcedure
            When 5039 PERFORM ef-cou-BeforeProcedure
+           When 5040 PERFORM ef-cou-BeforeProcedure
            END-EVALUATE
            PERFORM Form1-DISPLAY-STATUS-MSG
            perform Form1-BEFORE-SCREEN
@@ -17161,18 +17264,19 @@ PATCH      end-evaluate.
            When 5024 PERFORM ef-note-4-AfterProcedure
            When 5025 PERFORM Form1-DaEf-1-AfterProcedure
            When 5026 PERFORM Form1-DaEf-1-AfterProcedure
-           When 5028 PERFORM ef-art-AfterProcedure
-           When 5029 PERFORM Form1-DaCb-1-AfterProcedure
-           When 5030 PERFORM ef-qta-AfterProcedure
+           When 5027 PERFORM Form1-DaEf-1-AfterProcedure
+           When 5029 PERFORM ef-art-AfterProcedure
+           When 5030 PERFORM Form1-DaCb-1-AfterProcedure
            When 5031 PERFORM ef-qta-AfterProcedure
-           When 5032 PERFORM ef-uni-AfterProcedure
-           When 5033 PERFORM ef-sconto-AfterProcedure
-           When 5034 PERFORM ef-cons-AfterProcedure
-           When 5035 PERFORM ef-cou-AfterProcedure
-           When 5036 PERFORM ef-imp-AfterProcedure
-           When 5037 PERFORM ef-cod-iva-AfterProcedure
-           When 5038 PERFORM ef-cou-AfterProcedure
+           When 5032 PERFORM ef-qta-AfterProcedure
+           When 5033 PERFORM ef-uni-AfterProcedure
+           When 5034 PERFORM ef-sconto-AfterProcedure
+           When 5035 PERFORM ef-cons-AfterProcedure
+           When 5036 PERFORM ef-cou-AfterProcedure
+           When 5037 PERFORM ef-imp-AfterProcedure
+           When 5038 PERFORM ef-cod-iva-AfterProcedure
            When 5039 PERFORM ef-cou-AfterProcedure
+           When 5040 PERFORM ef-cou-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -21192,6 +21296,12 @@ LUBEXX                       move store-riga to riga
               INQUIRE ef-note-bolla-2, VALUE IN mto-note-bolla-2
               SET TOTEM-CHECK-OK TO FALSE
               PERFORM ef-note-bolla-2-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+              INQUIRE ef-note-libere, VALUE IN mto-note-libere
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-note-libere-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF

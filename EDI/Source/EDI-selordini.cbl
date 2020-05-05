@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 5 marzo 2020 23:04:19.
+       DATE-WRITTEN.        martedì 5 maggio 2020 12:58:37.
        REMARKS.
       *{TOTEM}END
 
@@ -908,7 +908,7 @@
        77 TMP-DataSet1-tmp-fido-BUF     PIC X(78).
        77 TMP-DataSet1-grade-BUF     PIC X(754).
        77 TMP-DataSet1-log-macrobatch-BUF     PIC X(1000).
-       77 TMP-DataSet1-macrobatch-BUF     PIC X(9305).
+       77 TMP-DataSet1-macrobatch-BUF     PIC X(9848).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -16685,7 +16685,7 @@ LUBEXX     move emto-data-ordine(7:2) to col-data(1:2)
               |||||
               set record-ok to false
            end-if.
-
+                                          
            if ControllaCliente and record-ok
               if emto-bloccato or emto-attivo     
                  |Leggo solo per avere il codice iva
@@ -16705,10 +16705,11 @@ LUBEXX     move emto-data-ordine(7:2) to col-data(1:2)
                  else
                     set emto-cliente-fuori-fido to true
                     set emto-bloccato           to true
-                 end-if
-              end-if
-
-              if emto-bloccato
+                 end-if                                              
+                 |05052020 Se il cliente è bloccato, dev'essere rosso
+      *****        end-if             
+      *****
+      *****        if emto-bloccato
                  set emto-cliente-valido  to true 
                  set cli-tipo-C to true
                  move emto-cod-cli to cli-codice

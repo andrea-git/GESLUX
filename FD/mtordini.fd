@@ -87,4 +87,5 @@
                10 mto-urgente      PIC  9.
                    88 mto-urgente-si VALUE IS 1. 
                    88 mto-urgente-no VALUE IS 0. 
-               10 FILLER           PIC  x(199).
+               10 mto-note-libere  PIC  x(150).
+               10 FILLER           PIC  x(49).
