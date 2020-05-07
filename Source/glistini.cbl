@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          glistini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 29 luglio 2019 16:38:03.
+       DATE-WRITTEN.        venerdì 8 maggio 2020 01:00:50.
        REMARKS.
       *{TOTEM}END
 
@@ -77,11 +77,11 @@
 
        WORKING-STORAGE      SECTION.
       *{TOTEM}ACU-DEF
-               COPY "ACUGUI.DEF".
-               COPY "ACUCOBOL.DEF".
-               COPY "FONTS.DEF".
-               COPY "CRTVARS.DEF".
-               COPY "SHOWMSG.DEF".
+               COPY "acugui.def".
+               COPY "acucobol.def".
+               COPY "fonts.def".
+               COPY "crtvars.def".
+               COPY "showmsg.def".
                COPY "totem.def".
                COPY "standard.def".
       *{TOTEM}END
@@ -8784,6 +8784,7 @@
            initialize rlis-rec replacing numeric data by zeroes
                                     alphanumeric data by spaces.
 
+           set tlis-trasp-escluso of tlistini to true.
            write tlis-rec of tlistini
                  invalid rewrite tlis-rec of tlistini 
            end-write.

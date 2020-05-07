@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E3CF02940-6-276812451
+PROGRAM_UNIQUE_CODE=TOTEM-7E457225816-122-750110623
 
 {{@DESCRIPTION:
 
@@ -7234,6 +7234,7 @@ BEGIN-TEXT
            initialize rlis-rec replacing numeric data by zeroes
                                     alphanumeric data by spaces.
 
+           set tlis-trasp-escluso of tlistini to true.
            write tlis-rec of tlistini
                  invalid rewrite tlis-rec of tlistini 
            end-write.
