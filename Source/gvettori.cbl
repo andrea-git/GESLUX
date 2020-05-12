@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          gvettori.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 23 gennaio 2018 10:12:20.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        lunedì 11 maggio 2020 15:08:41.
        REMARKS.
       *{TOTEM}END
 
@@ -48,7 +48,7 @@
                COPY "opensave.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -6631,12 +6631,14 @@ LUBEXX             move ef-piva-buf    to cf-piva
            when 3
                 if valore-num not = 0   and
                    valore-num not = 0,1 and
+                   valore-num not = 0,2 and
                    valore-num not = 0,5 and
                    valore-num not = 1
                    set errori to true
                    display message "Valori permessi:"
-                   x"0d0a""0    = Nessuno"
+                   x"0d0a""0    = Nessuno"               
                    x"0d0a""0,1 = Ai 10 Kg. superiori"
+                   x"0d0a""0,2 = Ai 20 Kg. superiori"
                    x"0d0a""0,5 = Ai 50 Kg. superiori"
                    x"0d0a""1    = Al quintale superiore"
                              title tit-err

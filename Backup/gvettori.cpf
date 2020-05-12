@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E211791159-944-2645720301
+PROGRAM_UNIQUE_CODE=TOTEM-7E45B1374-486-1983821032
 
 {{@DESCRIPTION:
 
@@ -8521,12 +8521,14 @@ BEGIN-TEXT
            when 3
                 if valore-num not = 0   and
                    valore-num not = 0,1 and
+                   valore-num not = 0,2 and
                    valore-num not = 0,5 and
                    valore-num not = 1
                    set errori to true
                    display message "Valori permessi:"
-                   x"0d0a""0    = Nessuno"
+                   x"0d0a""0    = Nessuno"               
                    x"0d0a""0,1 = Ai 10 Kg. superiori"
+                   x"0d0a""0,2 = Ai 20 Kg. superiori"
                    x"0d0a""0,5 = Ai 50 Kg. superiori"
                    x"0d0a""1    = Al quintale superiore"
                              title tit-err

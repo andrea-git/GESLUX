@@ -105,8 +105,9 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
        77  tipo-arrot            pic 9.
            88 nessuno            value 1.
            88   10-kg            value 2.
-           88   50-kg            value 3.
-           88  100-kg            value 4.
+           88   20-kg            value 3.
+           88   50-kg            value 4.
+           88  100-kg            value 5.
 
        LINKAGE SECTION.
        77  tot-mov-from-tras      pic 9(5).
@@ -755,6 +756,8 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
                                set nessuno to true
                       when 0,1 move 10     to idx
                                set  10-kg  to true
+                      when 0,2 move 10     to idx
+                               set  20-kg  to true
                       when 0,5 move 10     to idx
                                set  50-kg  to true
                       when 1   move  9     to idx
@@ -781,9 +784,19 @@ LUBEXX*****                         end-if
                          |un valore già arrotondato
                          if cifra(10) not = 0 or
                             cifra(11) not = 0 or 
-                            cifra(12) not = 0
+                            cifra(12) not = 0 
 
                             if 10-kg
+                               |Ad es. 1,600 è già a posto
+                               if cifra(11) not = 0 or
+                                  cifra(12) not = 0
+                                  add como-arrot to tot-peso-qli
+                               end-if
+                            else
+                               add como-arrot to tot-peso-qli
+                            end-if
+
+                            if 20-kg
                                |Ad es. 1,600 è già a posto
                                if cifra(11) not = 0 or
                                   cifra(12) not = 0
@@ -918,9 +931,11 @@ LUBEXX              end-if
                       move vet-valore-arrot(idx) to como-arrot
                       evaluate como-arrot
                       when 0   move  0     to idx
-                               set nessuno to true
+                               set nessuno to true    
                       when 0,1 move 10     to idx
                                set  10-kg  to true
+                      when 0,2 move 10     to idx
+                               set  20-kg  to true
                       when 0,5 move 10     to idx
                                set  50-kg  to true
                       when 1   move  9     to idx
@@ -950,6 +965,16 @@ LUBEXX*****                         end-if
                             cifra-SHI(12) not = 0
 
                             if 10-kg
+                               |Ad es. 1,600 è già a posto
+                               if cifra-SHI(11) not = 0 or
+                                  cifra-SHI(12) not = 0
+                                  add como-arrot to tot-peso-qli-SHI
+                               end-if
+                            else
+                               add como-arrot to tot-peso-qli-SHI
+                            end-if
+
+                            if 20-kg
                                |Ad es. 1,600 è già a posto
                                if cifra-SHI(11) not = 0 or
                                   cifra-SHI(12) not = 0
@@ -1087,6 +1112,8 @@ LUBEXX              end-if
                                set nessuno to true
                       when 0,1 move 10     to idx
                                set  10-kg  to true
+                      when 0,2 move 10     to idx
+                               set  20-kg  to true
                       when 0,5 move 10     to idx
                                set  50-kg  to true
                       when 1   move  9     to idx
@@ -1113,9 +1140,19 @@ LUBEXX*****                         end-if
                          |un valore già arrotondato
                          if cifra-GET(10) not = 0 or
                             cifra-GET(11) not = 0 or 
-                            cifra-GET(12) not = 0
+                            cifra-GET(12) not = 0  
 
                             if 10-kg
+                               |Ad es. 1,600 è già a posto
+                               if cifra-GET(11) not = 0 or
+                                  cifra-GET(12) not = 0
+                                  add como-arrot to tot-peso-qli-GET
+                               end-if
+                            else
+                               add como-arrot to tot-peso-qli-GET
+                            end-if
+
+                            if 20-kg
                                |Ad es. 1,600 è già a posto
                                if cifra-GET(11) not = 0 or
                                   cifra-GET(12) not = 0
