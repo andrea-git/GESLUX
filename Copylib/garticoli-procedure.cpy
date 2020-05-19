@@ -800,6 +800,7 @@
 
 
 
+
                    evaluate true
                    when nom-si-ic-cou move 1 to mod-imposte
                    when nom-no-ic-cou move 0 to mod-imposte
@@ -2975,6 +2976,7 @@ LUBEXX        end-if
       ***---
        PB-DETTAGLI-PRESSED.
            move "prg-artico-sons" to como-file.
+           initialize prg-chiave.
            inquire ef-codice, value in prg-cod-articolo
            call "zoom-gt"   using como-file, prg-rec
                            giving stato-zoom
