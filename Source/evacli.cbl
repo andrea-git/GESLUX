@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 21 maggio 2020 01:03:17.
+       DATE-WRITTEN.        venerdì 22 maggio 2020 00:24:01.
        REMARKS.
       *{TOTEM}END
 
@@ -159,6 +159,12 @@
                   VALUE IS 0.
        77 idx-gen          PIC  9(3)
                   VALUE IS 0.
+       01 tab-tipologie.
+           05 el-tipologia
+                      OCCURS 200 TIMES
+                      INDEXED  idx-tipologie.
+               10 el-tcl-codice    PIC  xx.
+               10 el-sel           PIC  9.
        01 como-chiave.
            05 como-anno        PIC  9(4).
            05 como-numero      PIC  9(8).
@@ -15726,8 +15732,20 @@
                  end-if
                     
               else
-                 move tpa-tab-depositi to save-depositi
-              end-if  
+                 move tpa-tab-depositi to save-depositi    
+                 inquire gd-tipocli, last-row in tot-righe
+                 initialize tab-tipologie replacing numeric data by 
+           spaces
+                                               alphanumeric data by 
+           zeroes
+                 perform varying riga from 2 by 1 
+                           until riga > tot-righe
+                    inquire gd-tipocli(riga, 1), 
+                            hidden-data in el-sel(riga - 1)
+                    inquire gd-tipocli(riga, 1), 
+                            cell-data in el-tcl-codice(riga - 1)
+                 end-perform
+              end-if
 
               perform SCR-ELAB-TPREV-OPEN-ROUTINE
                                    

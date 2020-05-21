@@ -45,11 +45,22 @@
                  end-if
               end-if
            end-if.
-           if record-ok and RichiamoBatch
-              move cli-tipo to tcl-codice
-              read ttipocli no lock
-              if tcl-edi-auto-no
+           if record-ok 
+              if RichiamoBatch
+                 move cli-tipo to tcl-codice
+                 read ttipocli no lock
+                 if tcl-edi-auto-no
+                    set record-ok to false
+                 end-if
+              else
                  set record-ok to false
+                 search el-tipologia
+                 at end continue
+                 when el-tcl-codice(idx-tipologie) = cli-tipo
+                      if el-sel(idx-tipologie) = 1
+                         set record-ok to true
+                      end-if
+                 end-search
               end-if
            end-if.
            if record-ok
