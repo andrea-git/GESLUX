@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          conford.
-       AUTHOR.              Utente.
-       DATE-WRITTEN.        giovedì 23 gennaio 2020 16:04:31.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        giovedì 21 maggio 2020 17:18:19.
        REMARKS.
       *{TOTEM}END
 
@@ -1768,7 +1768,7 @@
                   x"0d0a"
                    "Grazie e buon lavoro."x"0d0a"
                   x"0d0a"
-                   "Tel. +39-02-26515521 - +39-02-26515532"x"0d0a"
+                   "Tel. +39-02-26515535 - +39-02-26515532"x"0d0a"
                   x"0d0a" 
                    "Fax  +39-02-26515551"x"0d0a"
                    into ef-mail-buf
@@ -1797,7 +1797,7 @@
       -    "mento in merito" X"0d0a" 
                    "Grazie!"x"0d0a"    
                   x"0d0a"
-                   "Tel. +39-02-26515521 - +39-02-26515532"x"0d0a"
+                   "Tel. +39-02-26515535 - +39-02-26515532"x"0d0a"
                   x"0d0a" 
                    "Fax  +39-02-26515551"x"0d0a"
                    into ef-mail-buf
