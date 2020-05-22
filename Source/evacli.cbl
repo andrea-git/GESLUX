@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 22 maggio 2020 00:24:01.
+       DATE-WRITTEN.        venerdì 22 maggio 2020 12:55:33.
        REMARKS.
       *{TOTEM}END
 
@@ -13673,6 +13673,9 @@
                  else
                     perform DOMANDE-EVASIONE
                     if record-ok
+                       perform CONTROLLI-EVASIONE-TIPOLOGIE
+                    end-if
+                    if record-ok
                        perform SCRIVI-TESTA
                        if contatore-lock
                           exit perform
@@ -13738,6 +13741,30 @@
                  end-if
               end-if
                 
+           end-if.
+
+      ***---
+       CONTROLLI-EVASIONE-TIPOLOGIE.
+           move hid-chiave-testa to mto-chiave.
+           read mtordini no lock.
+           move mto-cod-cli to cli-codice.
+           read clienti no lock.
+
+           if RichiamoBatch
+              move cli-tipo to tcl-codice
+              read ttipocli no lock
+              if tcl-edi-auto-no
+                 set record-ok to false
+              end-if
+           else
+              set record-ok to false
+              search el-tipologia
+              at end continue
+              when el-tcl-codice(idx-tipologie) = cli-tipo
+                   if el-sel(idx-tipologie) = 1
+                      set record-ok to true
+                   end-if
+              end-search
            end-if.
 
       ***---

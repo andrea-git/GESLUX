@@ -2,12 +2,13 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
+DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=aggmese-Ev-Before-Program
 AFTER_PROGRAM=evacli-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E451522938-230-2205522770
+PROGRAM_UNIQUE_CODE=TOTEM-7E4516104827-166-2691421275
 
 {{@DESCRIPTION:
 
@@ -10694,6 +10695,9 @@ BEGIN-TEXT
                  else
                     perform DOMANDE-EVASIONE
                     if record-ok
+                       perform CONTROLLI-EVASIONE-TIPOLOGIE
+                    end-if
+                    if record-ok
                        perform SCRIVI-TESTA
                        if contatore-lock
                           exit perform
@@ -10759,6 +10763,30 @@ BEGIN-TEXT
                  end-if
               end-if
                 
+           end-if.
+
+      ***---
+       CONTROLLI-EVASIONE-TIPOLOGIE.
+           move hid-chiave-testa to mto-chiave.
+           read mtordini no lock.
+           move mto-cod-cli to cli-codice.
+           read clienti no lock.
+
+           if RichiamoBatch
+              move cli-tipo to tcl-codice
+              read ttipocli no lock
+              if tcl-edi-auto-no
+                 set record-ok to false
+              end-if
+           else
+              set record-ok to false
+              search el-tipologia
+              at end continue
+              when el-tcl-codice(idx-tipologie) = cli-tipo
+                   if el-sel(idx-tipologie) = 1
+                      set record-ok to true
+                   end-if
+              end-search
            end-if.
 
       ***---
