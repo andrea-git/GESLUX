@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 22 maggio 2020 12:55:33.
+       DATE-WRITTEN.        mercoledì 27 maggio 2020 12:36:26.
        REMARKS.
       *{TOTEM}END
 
@@ -13758,13 +13758,18 @@
               end-if
            else
               set record-ok to false
-              search el-tipologia
-              at end continue
-              when el-tcl-codice(idx-tipologie) = cli-tipo
-                   if el-sel(idx-tipologie) = 1
-                      set record-ok to true
-                   end-if
-              end-search
+              perform varying idx-tipologie from 1 by 1 
+                        until idx-tipologie > 200
+                 if el-tcl-codice(idx-tipologie) = 0
+                    exit perform
+                 end-if
+                 if el-tcl-codice(idx-tipologie) = cli-tipo
+                    if el-sel(idx-tipologie) = 1
+                       set record-ok to true
+                    end-if
+                    exit perform
+                 end-if
+              end-perform
            end-if.
 
       ***---
