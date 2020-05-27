@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          wprogmagric.
-       AUTHOR.              Andrea.
-       DATE-WRITTEN.        sabato 4 maggio 2019 14:22:57.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        martedì 26 maggio 2020 00:57:49.
        REMARKS.
       *{TOTEM}END
 
@@ -51,13 +51,12 @@
 
        WORKING-STORAGE      SECTION.
       *{TOTEM}ACU-DEF
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\ACUGUI.DEF".
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\ACUCOBOL.DEF"
-           .
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\CRTVARS.DEF".
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\SHOWMSG.DEF".
+               COPY "acugui.def".
+               COPY "acucobol.def".
+               COPY "crtvars.def".
+               COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\LUBEX\GESLUX\COPYLIB\STANDARD.DEF".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -792,7 +791,7 @@
 
        INIT-BMP.
       * TOOL-ESCI
-           COPY RESOURCE "C:\DF\Lubex\GESLUX\resource\toolbar.bmp".
+           COPY RESOURCE "toolbar.bmp".
            CALL "w$bitmap" USING WBITMAP-LOAD "toolbar.bmp", 
                    GIVING toolbar-bmp.
            .

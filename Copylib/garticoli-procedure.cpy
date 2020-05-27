@@ -682,14 +682,14 @@
                            title = tit-err
                            icon MB-WARNING-ICON
                 else
-                   if tbliv-percentuale = 0    
-                      set errori to true
-                      move 78-ID-ef-iva to CONTROL-ID
-                      display message box "Codice IVA NON valido in"
-                                          " quanto senza aliquota"
-                              title = tit-err
-                              icon MB-WARNING-ICON
-                   else   
+      *****             if tbliv-percentuale = 0    
+      *****                set errori to true
+      *****                move 78-ID-ef-iva to CONTROL-ID
+      *****                display message box "Codice IVA NON valido in"
+      *****                                    " quanto senza aliquota"
+      *****                        title = tit-err
+      *****                        icon MB-WARNING-ICON
+      *****             else   
                       if ef-iva-buf not = CodiceIvaStd
                          display message 
                                "Confermi il codice IVA inserito?"
@@ -702,7 +702,7 @@
                             move 78-ID-ef-iva to control-id
                          end-if
                       end-if
-                   end-if
+      *****             end-if
                 end-if
 
            |78-ID-ef-classe-1 è l'ID del control ef-classe-1
@@ -795,6 +795,7 @@
                    when nom-no-cobat move 0 to mod-cobat
                                      move 0 to ef-amperaggio-buf
                    end-evaluate 
+
 
 
 

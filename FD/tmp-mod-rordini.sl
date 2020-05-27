@@ -1,4 +1,5 @@
       ** Usato per inviare la mail di notifica in caso di variazione di un ordine SHI/GET
+      *O
        SELECT tmp-mod-rordini
            ASSIGN       TO  path-tmp-mod-rordini
            ORGANIZATION IS INDEXED

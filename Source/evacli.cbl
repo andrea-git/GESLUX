@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 16 marzo 2020 15:12:28.
+       DATE-WRITTEN.        mercoledì 27 maggio 2020 12:36:26.
        REMARKS.
       *{TOTEM}END
 
@@ -159,6 +159,12 @@
                   VALUE IS 0.
        77 idx-gen          PIC  9(3)
                   VALUE IS 0.
+       01 tab-tipologie.
+           05 el-tipologia
+                      OCCURS 200 TIMES
+                      INDEXED  idx-tipologie.
+               10 el-tcl-codice    PIC  xx.
+               10 el-sel           PIC  9.
        01 como-chiave.
            05 como-anno        PIC  9(4).
            05 como-numero      PIC  9(8).
@@ -182,6 +188,7 @@
                   VALUE IS 0.
            88 EvasioneIntera VALUE IS 1    WHEN SET TO FALSE  0. 
        77 como-riga-riep   PIC  9(5).
+       77 como-x           PIC  x.
        77 tot-righe-riep   PIC  9(5).
        01 FILLER           PIC  9
                   VALUE IS 0.
@@ -614,7 +621,16 @@
            88 Valid-STATUS-log-macrobatch VALUE IS "00" THRU "09". 
        77 video-on         PIC  9
                   VALUE IS 0.
-       77 video-om         PIC  9
+       01 gd-tipocli-rec.
+           05 col-tcl-codice   PIC  X(2).
+           05 col-tcl-descrizione          PIC  X(50).
+       77 SEL-TUTTO-BMP    PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 DESEL-TUTTO-BMP  PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 hid-col-sel      PIC  9
                   VALUE IS 0.
 
       ***********************************************************
@@ -996,12 +1012,80 @@
            Form1, 
            .
 
+      * GRID
+       05
+           gd-tipocli, 
+           Grid, 
+           COL 2,20, 
+           LINE 1,72,
+           LINES 19,00 ,
+           SIZE 41,90 ,
+           BOXED,
+           DATA-COLUMNS (1, 3),
+           SEPARATION (5, 5),
+           NUM-COL-HEADINGS 1,
+           COLUMN-HEADINGS,
+           CURSOR-FRAME-WIDTH 2,
+           DIVIDER-COLOR 1,
+           HEADING-COLOR 257,
+           HEADING-DIVIDER-COLOR 1,
+           ID IS 14,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RECORD-DATA gd-tipocli-rec,
+           TILED-HEADINGS,
+           VIRTUAL-WIDTH 40,
+           VPADDING 10,
+           VSCROLL,
+           EVENT PROCEDURE Screen4-Gd-1-Event-Proc,
+           .
+
+      * PUSH BUTTON
+       05
+           pb-sel, 
+           Push-Button, 
+           COL 1,70, 
+           LINE 21,06,
+           LINES 30,00 ,
+           SIZE 73,00 ,
+           BITMAP-HANDLE SEL-TUTTO-BMP,
+           BITMAP-NUMBER 1,
+           UNFRAMED,
+           SQUARE,
+           EXCEPTION-VALUE 1010,
+           FLAT,
+           ID IS 21,
+           TITLE "g",
+           AFTER PROCEDURE pb-sel-AfterProcedure, 
+           BEFORE PROCEDURE pb-sel-BeforeProcedure, 
+           .
+
+      * PUSH BUTTON
+       05
+           pb-desel, 
+           Push-Button, 
+           COL 9,70, 
+           LINE 21,06,
+           LINES 30,00 ,
+           SIZE 73,00 ,
+           BITMAP-HANDLE DESEL-TUTTO-BMP,
+           BITMAP-NUMBER 1,
+           UNFRAMED,
+           SQUARE,
+           EXCEPTION-VALUE 1020,
+           FLAT,
+           ID IS 22,
+           TITLE "g",
+           AFTER PROCEDURE pb-desel-AfterProcedure, 
+           BEFORE PROCEDURE pb-desel-BeforeProcedure, 
+           .
+
       * RADIO BUTTON
        05
            rb-normale, 
            Radio-Button, 
-           COL 1,70, 
-           LINE 2,06,
+           COL 7,70, 
+           LINE 24,83,
            LINES 2,61 ,
            SIZE 15,00 ,
            BITMAP-HANDLE EVADI_NORMALE-BMP,
@@ -1025,8 +1109,8 @@
        05
            rb-immediata, 
            Radio-Button, 
-           COL 17,70, 
-           LINE 2,06,
+           COL 23,70, 
+           LINE 24,83,
            LINES 2,61 ,
            SIZE 15,00 ,
            BITMAP-HANDLE EVADI_IMMEDIATO-BMP,
@@ -1050,8 +1134,8 @@
        05
            chk-tutto, 
            Check-Box, 
-           COL 10,00, 
-           LINE 6,78,
+           COL 15,70, 
+           LINE 29,56,
            LINES 40,00 ,
            SIZE 142,00 ,
            BITMAP-HANDLE EVADI_TUTTO-BMP,
@@ -1071,10 +1155,9 @@
            Screen1-Fr-2, 
            Frame, 
            COL 1,00, 
-           LINE 9,78,
+           LINE 32,56,
            LINES 2,78 ,
-           SIZE 33,00 ,
-           LOWERED,
+           SIZE 44,40 ,
            ID IS 12,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -1084,8 +1167,8 @@
        05
            PB-ESEGUI, 
            Push-Button, 
-           COL 18,00, 
-           LINE 10,45,
+           COL 28,90, 
+           LINE 33,23,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-OK-BMP,
@@ -1107,8 +1190,8 @@
        05
            Form1-Pb-2, 
            Push-Button, 
-           COL 25,80, 
-           LINE 10,45,
+           COL 36,90, 
+           LINE 33,23,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-CANCEL-BMP,
@@ -1162,9 +1245,22 @@
            Screen1-Br-1, 
            Bar,
            COL 1,00, 
-           LINE 5,89,
-           SIZE 33,00 ,
+           LINE 28,67,
+           SIZE 44,40 ,
            ID IS 1,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           WIDTH 1,
+           .
+
+      * BAR
+       05
+           Screen1-Br-1a, 
+           Bar,
+           COL 1,00, 
+           LINE 23,67,
+           SIZE 44,40 ,
+           ID IS 7,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            WIDTH 1,
@@ -2573,6 +2669,8 @@
            DESTROY Verdana8-Occidentale
            DESTROY Verdana12B-Occidentale
            DESTROY Verdana14I-Occidentale
+           CALL "w$bitmap" USING WBITMAP-DESTROY, SEL-TUTTO-BMP
+           CALL "w$bitmap" USING WBITMAP-DESTROY, DESEL-TUTTO-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, EVADI_NORMALE-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, EVADI_IMMEDIATO-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, EVADI_TUTTO-BMP
@@ -2679,6 +2777,14 @@
            .
 
        INIT-BMP.
+      * pb-sel
+           COPY RESOURCE "SEL-TUTTO.BMP".
+           CALL "w$bitmap" USING WBITMAP-LOAD "SEL-TUTTO.BMP", 
+                   GIVING SEL-TUTTO-BMP.
+      * pb-desel
+           COPY RESOURCE "DESEL-TUTTO.BMP".
+           CALL "w$bitmap" USING WBITMAP-LOAD "DESEL-TUTTO.BMP", 
+                   GIVING DESEL-TUTTO-BMP.
       * rb-normale
            COPY RESOURCE "EVADI_NORMALE.BMP".
            CALL "w$bitmap" USING WBITMAP-LOAD "EVADI_NORMALE.BMP", 
@@ -10604,6 +10710,16 @@
 
 
       * GRID
+       gd-tipocli-Content.
+      * CELLS' SETTING
+              MODIFY gd-tipocli, X = 1, Y = 1,
+                CELL-DATA = "Codice",
+      * CELLS' SETTING
+              MODIFY gd-tipocli, X = 2, Y = 1,
+                CELL-DATA = "Descrizione",
+           .
+
+      * GRID
        gd-art-Content.
       * CELLS' SETTING
               MODIFY gd-art, X = 1, Y = 1,
@@ -11085,8 +11201,8 @@
 
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 11,56,
-              SIZE 33,00,
+              LINES 34,33,
+              SIZE 44,40,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
               COLOR 65793,
@@ -11111,10 +11227,29 @@
       * Status-bar
            DISPLAY Form1 UPON FORM1-HANDLE
       * DISPLAY-COLUMNS settings
+              MODIFY gd-tipocli, DISPLAY-COLUMNS (1, 8)
            .
 
        Form1-PROC.
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforeAccept>
+           move low-value to tcl-rec.
+           start ttipocli key >= tcl-chiave
+                 invalid continue
+             not invalid
+                 move 2 to riga
+                 perform until 1 = 2
+                    read ttipocli next at end exit perform end-read
+                    move tcl-codice      to col-tcl-codice
+                    move tcl-descrizione to col-tcl-descrizione
+                    move 1 to hid-col-sel
+                    modify gd-tipocli(riga, 1), cell-data col-tcl-codice
+                    modify gd-tipocli(riga, 2), cell-data 
+           col-tcl-descrizione
+                    modify gd-tipocli(riga, 1), hidden-data hid-col-sel
+                    modify gd-tipocli(riga), row-color 480
+                    add 1 to riga
+                 end-perform
+           end-start.
            if RichiamoBatch
               move 1 to tipo-evasione
               perform PB-ESEGUI-LINKTO
@@ -11151,6 +11286,10 @@
                  IF Event-Type = Cmd-Close
                     PERFORM Form1-Exit
                  END-IF
+              WHEN Key-Status = 1010
+                 PERFORM pb-sel-LinkTo
+              WHEN Key-Status = 1020
+                 PERFORM pb-desel-LinkTo
               WHEN Key-Status = 1002
                  PERFORM rb-normale-LinkTo
               WHEN Key-Status = 1003
@@ -11194,6 +11333,8 @@
        Form1-Init-Data.
            MOVE 1 TO TOTEM-Form-Index
            MOVE 0 TO TOTEM-Frame-Index
+      * GRID
+           PERFORM gd-tipocli-Content
            .
 
        Form1-Init-Value.
@@ -12120,7 +12261,7 @@
               RESIZABLE,
               NO SCROLL,
               USER-GRAY,
-           VISIBLE video-om,
+           VISIBLE video-on,
               USER-WHITE,
               No WRAP,
               HANDLE IS scr-elab-HANDLE,
@@ -12911,6 +13052,15 @@
        Screen1-Event-Proc.
            .
 
+       Screen4-Gd-1-Event-Proc.
+           EVALUATE Event-Type ALSO Event-Control-Id ALSO
+                                    Event-Window-Handle
+           WHEN Msg-Begin-Entry ALSO 14 ALSO
+                    FORM1-HANDLE 
+              PERFORM gd-tipocli-Ev-Msg-Begin-Entry
+           END-EVALUATE
+           .
+
        Screen2-Event-Proc.
            .
 
@@ -13523,6 +13673,9 @@
                  else
                     perform DOMANDE-EVASIONE
                     if record-ok
+                       perform CONTROLLI-EVASIONE-TIPOLOGIE
+                    end-if
+                    if record-ok
                        perform SCRIVI-TESTA
                        if contatore-lock
                           exit perform
@@ -13588,6 +13741,35 @@
                  end-if
               end-if
                 
+           end-if.
+
+      ***---
+       CONTROLLI-EVASIONE-TIPOLOGIE.
+           move hid-chiave-testa to mto-chiave.
+           read mtordini no lock.
+           move mto-cod-cli to cli-codice.
+           read clienti no lock.
+
+           if RichiamoBatch
+              move cli-tipo to tcl-codice
+              read ttipocli no lock
+              if tcl-edi-auto-no
+                 set record-ok to false
+              end-if
+           else
+              set record-ok to false
+              perform varying idx-tipologie from 1 by 1 
+                        until idx-tipologie > 200
+                 if el-tcl-codice(idx-tipologie) = 0
+                    exit perform
+                 end-if
+                 if el-tcl-codice(idx-tipologie) = cli-tipo
+                    if el-sel(idx-tipologie) = 1
+                       set record-ok to true
+                    end-if
+                    exit perform
+                 end-if
+              end-perform
            end-if.
 
       ***---
@@ -15430,6 +15612,23 @@
       * <TOTEM:END>
        PB-ESEGUI-LinkTo.
       * <TOTEM:PARA. PB-ESEGUI-LinkTo>
+           inquire gd-tipocli, last-row in tot-righe.
+           perform varying riga from 2 by 1 
+                     until riga > tot-righe
+              inquire gd-tipocli(riga, 1), hidden-data in hid-col-sel
+              if hid-col-sel = 1
+                 exit perform
+              end-if
+           end-perform.
+
+           if hid-col-sel = 0  
+              display message "Nessuna tipologia selezionata"
+                        title tit-err
+                         icon 2
+              set errori  to true
+              exit paragraph
+           end-if.
+
            if tipo-evasione = 1
               move user-codi    to pgme-utente
               if not RichiamoBatch
@@ -15565,8 +15764,20 @@
                  end-if
                     
               else
-                 move tpa-tab-depositi to save-depositi
-              end-if  
+                 move tpa-tab-depositi to save-depositi    
+                 inquire gd-tipocli, last-row in tot-righe
+                 initialize tab-tipologie replacing numeric data by 
+           spaces
+                                               alphanumeric data by 
+           zeroes
+                 perform varying riga from 2 by 1 
+                           until riga > tot-righe
+                    inquire gd-tipocli(riga, 1), 
+                            hidden-data in el-sel(riga - 1)
+                    inquire gd-tipocli(riga, 1), 
+                            cell-data in el-tcl-codice(riga - 1)
+                 end-perform
+              end-if
 
               perform SCR-ELAB-TPREV-OPEN-ROUTINE
                                    
@@ -16024,6 +16235,70 @@
        gd-riep-Ev-Msg-Begin-Entry.
       * <TOTEM:PARA. gd-riep-Ev-Msg-Begin-Entry>
            set event-action to event-action-fail 
+           .
+      * <TOTEM:END>
+       gd-tipocli-Ev-Msg-Begin-Entry.
+      * <TOTEM:PARA. gd-tipocli-Ev-Msg-Begin-Entry>
+           inquire gd-tipocli, entry-reason in como-x.
+
+           set EVENT-ACTION to EVENT-ACTION-FAIL-TERMINATE.
+           evaluate como-x
+           when X"00"|doppio click
+           when X"0D"|invio
+           when x"20"|space
+                inquire gd-tipocli, CURSOR-Y = riga
+                inquire gd-tipocli(riga, 1), hidden-data in hid-col-sel
+                if hid-col-sel = 1
+                   move 0 to hid-col-sel
+                   modify gd-tipocli(riga), row-color = 513
+                else
+                   move 1 to hid-col-sel
+                   modify gd-tipocli(riga), row-color = 480
+                end-if
+                modify gd-tipocli(riga, 1), hidden-data hid-col-sel
+           end-evaluate 
+           .
+      * <TOTEM:END>
+       pb-sel-BeforeProcedure.
+      * <TOTEM:PARA. pb-sel-BeforeProcedure>
+           modify pb-sel, bitmap-number = 2 
+           .
+      * <TOTEM:END>
+       pb-sel-AfterProcedure.
+      * <TOTEM:PARA. pb-sel-AfterProcedure>
+           modify pb-sel, bitmap-number = 1 
+           .
+      * <TOTEM:END>
+       pb-sel-LinkTo.
+      * <TOTEM:PARA. pb-sel-LinkTo>
+           inquire gd-tipocli, last-row in tot-righe.
+           perform varying riga from 2 by 1 
+                     until riga > tot-righe
+              move 1 to hid-col-sel
+              modify gd-tipocli(riga, 1), hidden-data hid-col-sel
+              modify gd-tipocli(riga), row-color = 480
+           end-perform 
+           .
+      * <TOTEM:END>
+       pb-desel-BeforeProcedure.
+      * <TOTEM:PARA. pb-desel-BeforeProcedure>
+           modify pb-desel, bitmap-number = 2 
+           .
+      * <TOTEM:END>
+       pb-desel-AfterProcedure.
+      * <TOTEM:PARA. pb-desel-AfterProcedure>
+           modify pb-desel, bitmap-number = 1 
+           .
+      * <TOTEM:END>
+       pb-desel-LinkTo.
+      * <TOTEM:PARA. pb-desel-LinkTo>
+           inquire gd-tipocli, last-row in tot-righe.
+           perform varying riga from 2 by 1 
+                     until riga > tot-righe
+              move 0 to hid-col-sel
+              modify gd-tipocli(riga, 1), hidden-data hid-col-sel
+              modify gd-tipocli(riga), row-color = 513
+           end-perform 
            .
       * <TOTEM:END>
 
