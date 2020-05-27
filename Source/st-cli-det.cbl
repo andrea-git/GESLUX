@@ -459,33 +459,23 @@
 
               move 11,3 to save-riga
               move Verdana12BI to spl-hfont
-              move "AGENTE" to spl-riga-stampa
+              move "CODICE FISCALE" to spl-riga-stampa
               perform SCRIVI
 
               move 11,8 to save-riga
               move Verdana12B to spl-hfont
-              initialize r-titolo
-              string age-codice      delimited size
-                     " - "           delimited size
-                     age-ragsoc-1    delimited size
-                     into r-titolo
-              end-string
+              move cli-codfis to r-titolo
               move r-titolo to spl-riga-stampa
               perform SCRIVI
 
               move 12,8 to save-riga
               move Verdana12BI to spl-hfont
-              move "ESENZIONE IVA" to spl-riga-stampa
+              move "PARTITA IVA" to spl-riga-stampa
               perform SCRIVI
 
               move 13,3 to save-riga
               move Verdana12B to spl-hfont
-              initialize r-titolo
-              string cli-iva-ese        delimited size
-                     " - "              delimited size
-                     tbliv-descrizione1 delimited size
-                     into r-titolo
-              end-string
+              move cli-piva to r-titolo
               move r-titolo to spl-riga-stampa
               perform SCRIVI
 
