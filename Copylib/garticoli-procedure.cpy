@@ -2577,14 +2577,14 @@ LUBEXX        end-if
                     perform CAMBIO-VALORI-PESO-IMBALLO
                  else
                     evaluate FlagsChanged
-                    when "10"
-                         display message
-                         "Impossibile cambiare il valore del PESO."
-               x"0d0a""Occorre registrare un nuovo progressivo a zero."
-                                   title titolo
-                                    icon 2
-                         move 78-ID-ef-peso-utf to store-id
-                         set errori to true
+      *****              when "10"
+      *****                   display message
+      *****                   "Impossibile cambiare il valore del PESO."
+      *****         x"0d0a""Occorre registrare un nuovo progressivo a zero."
+      *****                             title titolo
+      *****                              icon 2
+      *****                   move 78-ID-ef-peso-utf to store-id
+      *****                   set errori to true
                     when "11"
                          display message
                       "Impossibile cambiare i valori di IMBALLO e PESO."
