@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 5 maggio 2020 12:58:37.
+       DATE-WRITTEN.        giovedì 18 giugno 2020 12:46:16.
        REMARKS.
       *{TOTEM}END
 
@@ -18015,7 +18015,7 @@ LUBEXX                            icon 2
                     end-if 
                  else
                     |Aggiorno il totale con solo quelli che possono attivarsi non con tutti
-                    add Sum to tfid-Sum
+      *****              add Sum to tfid-Sum
                     write tfid-rec invalid rewrite tfid-rec end-write
 LUBEXX           end-if
               else
@@ -18043,7 +18043,7 @@ LUBEXX                 else
 LUBEXX              end-if
                  else
                     |Aggiorno il totale con solo quelli che possono attivarsi non con tutti
-                    add Sum to tfid-Sum
+      *****              add Sum to tfid-Sum
                     write tfid-rec invalid rewrite tfid-rec end-write
 LUBEXX           end-if
               end-if

@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4514225814-247-2573525708
+PROGRAM_UNIQUE_CODE=TOTEM-7E46130614-392-1119813231
 
 {{@DESCRIPTION:
 
@@ -17218,7 +17218,7 @@ LUBEXX                            icon 2
                     end-if 
                  else
                     |Aggiorno il totale con solo quelli che possono attivarsi non con tutti
-                    add Sum to tfid-Sum
+      *****              add Sum to tfid-Sum
                     write tfid-rec invalid rewrite tfid-rec end-write
 LUBEXX           end-if
               else
@@ -17246,7 +17246,7 @@ LUBEXX                 else
 LUBEXX              end-if
                  else
                     |Aggiorno il totale con solo quelli che possono attivarsi non con tutti
-                    add Sum to tfid-Sum
+      *****              add Sum to tfid-Sum
                     write tfid-rec invalid rewrite tfid-rec end-write
 LUBEXX           end-if
               end-if
