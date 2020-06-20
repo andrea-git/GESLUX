@@ -330,19 +330,23 @@
               set cli-tipo-C to true             
               move tor-cod-cli to cli-codice
               read clienti no lock
-                                                                     
-              accept  LinkSubject from environment "INVIO_SOL_SUBJECT"
-              inspect LinkSubject replacing trailing spaces by low-value
-              string  LinkSubject delimited low-value
-                      ": "        delimited size
-                      cli-ragsoc-1
-                  into LinkSubject
-              end-string
-              inspect LinkSubject replacing trailing low-value by spaces
                                                               
               move tor-num-bolla   to bolla-x
               inspect bolla-x replacing leading x"30" by x"20"
               call "C$JUSTIFY" using bolla-x, "L"
+                                                                     
+              accept  LinkSubject from environment "INVIO_SOL_SUBJECT"
+              inspect LinkSubject replacing trailing spaces by low-value
+              string  LinkSubject  delimited low-value
+                      ": "         delimited size
+                      "NR. BOLLA " delimited size
+                      bolla-x      delimited space
+                      " - "        delimited size
+                      cli-ragsoc-1
+                  into LinkSubject
+              end-string
+
+              inspect LinkSubject replacing trailing low-value by spaces
               initialize LinkBody
               string "La presente per sollecitare con la massima "
                      "urgenza la consegna della bolla in allegato."
