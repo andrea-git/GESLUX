@@ -2,7 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E33F20595-952-1731832556
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E461871415-446-2861622659
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -690,9 +690,9 @@ m_strTrue=0
 
 @}}
 [FDITEM71_]
-m_strName=prm-num-vuoto-2
-m_strRawPic=9(14)
-m_strPic=9(14)
+m_strName=prm-sost-batt
+m_strRawPic=9
+m_strPic=9
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -700,29 +700,27 @@ m_bFixed=1
 
 @}}
 [FDITEM72_]
-m_strName=prm-num-vuoto-3
-m_strRawPic=9(18)
-m_strPic=9(18)
-m_nItemLevel=15
+m_strName=prm-sost-batt-si
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue=1
 {{@DataItem_m_strDescriptionFDITEM72_
 
 @}}
 [FDITEM73_]
-m_strName=prm-stampante
-m_strRawPic=x(100)
-m_strPic=x(100)
-m_nItemLevel=15
+m_strName=prm-sost-batt-no
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue=0
 {{@DataItem_m_strDescriptionFDITEM73_
 
 @}}
 [FDITEM74_]
-m_strName=prm-path-logo
-m_strRawPic=x(200)
-m_strPic=x(200)
+m_strName=prm-num-vuoto-2
+m_strRawPic=9(13)
+m_strPic=9(13)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -730,9 +728,9 @@ m_bFixed=1
 
 @}}
 [FDITEM75_]
-m_strName=prm-alfa-vuoto
-m_strRawPic=x(200)
-m_strPic=x(200)
+m_strName=prm-num-vuoto-3
+m_strRawPic=9(18)
+m_strPic=9(18)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -740,13 +738,43 @@ m_bFixed=1
 
 @}}
 [FDITEM76_]
+m_strName=prm-stampante
+m_strRawPic=x(100)
+m_strPic=x(100)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM76_
+
+@}}
+[FDITEM77_]
+m_strName=prm-path-logo
+m_strRawPic=x(200)
+m_strPic=x(200)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM77_
+
+@}}
+[FDITEM78_]
+m_strName=prm-alfa-vuoto
+m_strRawPic=x(200)
+m_strPic=x(200)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM78_
+
+@}}
+[FDITEM79_]
 m_strName=prm-num-vuoto-1
 m_strRawPic=9(18)
 m_strPic=9(18)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM76_
+{{@DataItem_m_strDescriptionFDITEM79_
 
 @}}
 [CStoAcucobolSL_]

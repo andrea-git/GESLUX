@@ -1,0 +1,22 @@
+       FD  battsost.
+       01 bts-rec.
+           05 bts-chiave.
+               10 bts-codice       PIC  9(6).
+               10 bts-princ        PIC  9(6).
+           05 bts-dati.
+               10 bts-catena
+                          OCCURS 1000 TIMES.
+                   15 bts-collegato    PIC  9(6).
+               10 bts-num-el-catena            PIC  9(4).
+               10 bts-dati-comuni.
+                   15 bts-data-creazione           PIC  9(8).
+                   15 bts-ora-creazione            PIC  9(8).
+                   15 bts-utente-creazione         PIC  X(10).
+                   15 bts-data-ultima-modifica     PIC  9(8).
+                   15 bts-ora-ultima-modifica      PIC  9(8).
+                   15 bts-utente-ultima-modifica   PIC  X(10).
+               10 bts-vuoti.
+                   15 bts-num-vuoto-1  PIC  9(18).
+                   15 bts-num-vuoto-2  PIC  9(18).
+                   15 bts-num-vuoto-3  PIC  9(18).
+                   15 bts-alfa-vuoto   PIC  X(500).

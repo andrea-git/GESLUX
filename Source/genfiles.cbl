@@ -169,6 +169,7 @@ LABLAB     copy "blister.sl".
            copy "paramfel.sl".
            copy "tnumordf.sl".
            copy "grade.sl".
+           copy "battsost.sl".
 
            copy "macrobatch.sl".
 
@@ -339,6 +340,7 @@ LABLAB     copy "blister.fd".
            copy "paramfel.fd".
            copy "tnumordf.fd".
            copy "grade.fd".  
+           copy "battsost.fd".
            copy "macrobatch.fd".
 
        WORKING-STORAGE SECTION.
@@ -507,6 +509,7 @@ LABLAB     copy "blister.fd".
        77  status-paramfel      pic x(2).
        77  status-tnumordf      pic x(2).
        77  status-grade         pic x(2).
+       77  status-battsost      pic x(2).
        77  status-macrobatch    pic x(2).
 
            copy "EDI-status.def".
@@ -2702,6 +2705,23 @@ LABLAB     copy "blister.fd".
            end-evaluate.
 
       ***---
+       BATTSOST-ERR SECTION.
+           use after error procedure on battsost.
+           evaluate status-battsost
+           when "35" continue
+           when "39"
+                display message "File [BATTSOST] Mismatch size!"
+                           title titolo
+                            icon 3
+                
+           when "98"
+                display message "[BATTSOST] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                
+           end-evaluate.
+
+      ***---
        MACROBATCH-ERR SECTION.
            use after error procedure on macrobatch.
            evaluate status-macrobatch
@@ -3871,6 +3891,12 @@ riapri*     open input PNT.
               open output grade
            end-if.
            close grade.
+
+           open input battsost.
+           if status-battsost = "35"
+              open output battsost
+           end-if.
+           close battsost.
 
            open input macrobatch.
            if status-macrobatch = "35"

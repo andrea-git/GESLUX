@@ -2,13 +2,12 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
-DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=gparam-Ev-Before-Program
 AFTER_PROGRAM=gparam-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E331384810-638-88136969
+PROGRAM_UNIQUE_CODE=TOTEM-7E461871524-941-18099526
 
 {{@DESCRIPTION:
 
@@ -804,8 +803,8 @@ m_bFixed=1
 
 @}}
 [FDITEM71_WK]
-m_strName=78-path-logo
-m_strDefaultValue="Path del logo da mostrare in intestazione bolla (verrà controllata la presenza di entrambi)"
+m_strName=78-sost-batt
+m_strDefaultValue="Attiva la sostituzione delle batterie (all'interno della catena) in gestione master"
 m_nItemLevel=78
 m_nSync=-1
 m_bFixed=1
@@ -813,122 +812,121 @@ m_bFixed=1
 
 @}}
 [FDITEM72_WK]
-m_strName=STATUS-clienti
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
+m_strName=78-path-logo
+m_strDefaultValue="Path del logo da mostrare in intestazione bolla (verrà controllata la presenza di entrambi)"
+m_nItemLevel=78
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM72_WK
 
 @}}
 [FDITEM73_WK]
+m_strName=STATUS-clienti
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM73_WK
+
+@}}
+[FDITEM74_WK]
 m_strName=Valid-STATUS-clienti
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM73_WK
+{{@DataItem_m_strDescriptionFDITEM74_WK
 
 @}}
-[FDITEM74_WK]
+[FDITEM75_WK]
 m_strName=STATUS-destini
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM74_WK
+{{@DataItem_m_strDescriptionFDITEM75_WK
 
 @}}
-[FDITEM75_WK]
+[FDITEM76_WK]
 m_strName=Valid-STATUS-destini
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM75_WK
+{{@DataItem_m_strDescriptionFDITEM76_WK
 
 @}}
-[FDITEM76_WK]
+[FDITEM77_WK]
 m_strName=STATUS-param
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM76_WK
+{{@DataItem_m_strDescriptionFDITEM77_WK
 
 @}}
-[FDITEM77_WK]
+[FDITEM78_WK]
 m_strName=Valid-STATUS-param
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM77_WK
+{{@DataItem_m_strDescriptionFDITEM78_WK
 
 @}}
-[FDITEM78_WK]
+[FDITEM79_WK]
 m_strName=STATUS-tgrupgdo
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM78_WK
+{{@DataItem_m_strDescriptionFDITEM79_WK
 
 @}}
-[FDITEM79_WK]
+[FDITEM80_WK]
 m_strName=Valid-STATUS-tgrupgdo
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM79_WK
+{{@DataItem_m_strDescriptionFDITEM80_WK
 
 @}}
-[FDITEM80_WK]
+[FDITEM81_WK]
 m_strName=STATUS-ttipocli
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM80_WK
+{{@DataItem_m_strDescriptionFDITEM81_WK
 
 @}}
-[FDITEM81_WK]
+[FDITEM82_WK]
 m_strName=Valid-STATUS-ttipocli
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM81_WK
-
-@}}
-[FDITEM82_WK]
-m_strName=gd-tipocli-rec
-m_nItemLevel=1
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM82_WK
 
 @}}
 [FDITEM83_WK]
-m_strName=col-tipocli-codice
-m_strRawPic=xx
-m_strPic=xx
-m_nItemLevel=5
+m_strName=gd-tipocli-rec
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM83_WK
 
 @}}
 [FDITEM84_WK]
-m_strName=col-tipocli-descrizione
-m_strRawPic=x(50)
-m_strPic=x(50)
+m_strName=col-tipocli-codice
+m_strRawPic=xx
+m_strPic=xx
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -936,27 +934,27 @@ m_bFixed=1
 
 @}}
 [FDITEM85_WK]
-m_strName=gd-gdo-rec
-m_nItemLevel=1
+m_strName=col-tipocli-descrizione
+m_strRawPic=x(50)
+m_strPic=x(50)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM85_WK
 
 @}}
 [FDITEM86_WK]
-m_strName=col-gdo-codice
-m_strRawPic=x(5)
-m_strPic=x(5)
-m_nItemLevel=5
+m_strName=gd-gdo-rec
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM86_WK
 
 @}}
 [FDITEM87_WK]
-m_strName=col-gdo-descrizione
-m_strRawPic=x(50)
-m_strPic=x(50)
+m_strName=col-gdo-codice
+m_strRawPic=x(5)
+m_strPic=x(5)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -964,27 +962,27 @@ m_bFixed=1
 
 @}}
 [FDITEM88_WK]
-m_strName=gd-clienti-rec
-m_nItemLevel=1
+m_strName=col-gdo-descrizione
+m_strRawPic=x(50)
+m_strPic=x(50)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM88_WK
 
 @}}
 [FDITEM89_WK]
-m_strName=col-cli-codice
-m_strRawPic=9(5)
-m_strPic=9(5)
-m_nItemLevel=5
+m_strName=gd-clienti-rec
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM89_WK
 
 @}}
 [FDITEM90_WK]
-m_strName=col-cli-ragsoc
-m_strRawPic=x(100)
-m_strPic=x(100)
+m_strName=col-cli-codice
+m_strRawPic=9(5)
+m_strPic=9(5)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -992,27 +990,27 @@ m_bFixed=1
 
 @}}
 [FDITEM91_WK]
-m_strName=gd-destini-rec
-m_nItemLevel=1
+m_strName=col-cli-ragsoc
+m_strRawPic=x(100)
+m_strPic=x(100)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM91_WK
 
 @}}
 [FDITEM92_WK]
-m_strName=col-des-codice
-m_strRawPic=9(5)
-m_strPic=9(5)
-m_nItemLevel=5
+m_strName=gd-destini-rec
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM92_WK
 
 @}}
 [FDITEM93_WK]
-m_strName=col-des-localita
-m_strRawPic=x(100)
-m_strPic=x(100)
+m_strName=col-des-codice
+m_strRawPic=9(5)
+m_strPic=9(5)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -1020,27 +1018,27 @@ m_bFixed=1
 
 @}}
 [FDITEM94_WK]
-m_strName=gd-mag-rec
-m_nItemLevel=1
+m_strName=col-des-localita
+m_strRawPic=x(100)
+m_strPic=x(100)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM94_WK
 
 @}}
 [FDITEM95_WK]
-m_strName=col-mag-codice
-m_strRawPic=x(3)
-m_strPic=x(3)
-m_nItemLevel=5
+m_strName=gd-mag-rec
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM95_WK
 
 @}}
 [FDITEM96_WK]
-m_strName=col-mag-descrizione
-m_strRawPic=x(100)
-m_strPic=x(100)
+m_strName=col-mag-codice
+m_strRawPic=x(3)
+m_strPic=x(3)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -1048,9 +1046,9 @@ m_bFixed=1
 
 @}}
 [FDITEM97_WK]
-m_strName=col-mag-intera
-m_strRawPic=x
-m_strPic=x
+m_strName=col-mag-descrizione
+m_strRawPic=x(100)
+m_strPic=x(100)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -1058,27 +1056,27 @@ m_bFixed=1
 
 @}}
 [FDITEM98_WK]
-m_strName=gd-mag-rec-1
-m_nItemLevel=1
+m_strName=col-mag-intera
+m_strRawPic=x
+m_strPic=x
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM98_WK
 
 @}}
 [FDITEM99_WK]
-m_strName=col-mag-codice-1
-m_strRawPic=x(3)
-m_strPic=x(3)
-m_nItemLevel=5
+m_strName=gd-mag-rec-1
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM99_WK
 
 @}}
 [FDITEM100_WK]
-m_strName=col-mag-descrizione-1
-m_strRawPic=x(100)
-m_strPic=x(100)
+m_strName=col-mag-codice-1
+m_strRawPic=x(3)
+m_strPic=x(3)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -1086,9 +1084,9 @@ m_bFixed=1
 
 @}}
 [FDITEM101_WK]
-m_strName=col-mag-intera-1
-m_strRawPic=x
-m_strPic=x
+m_strName=col-mag-descrizione-1
+m_strRawPic=x(100)
+m_strPic=x(100)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -1096,27 +1094,27 @@ m_bFixed=1
 
 @}}
 [FDITEM102_WK]
-m_strName=gd-mag-rec-2
-m_nItemLevel=1
+m_strName=col-mag-intera-1
+m_strRawPic=x
+m_strPic=x
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM102_WK
 
 @}}
 [FDITEM103_WK]
-m_strName=col-mag-codice-2
-m_strRawPic=x(3)
-m_strPic=x(3)
-m_nItemLevel=5
+m_strName=gd-mag-rec-2
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM103_WK
 
 @}}
 [FDITEM104_WK]
-m_strName=col-mag-descrizione-2
-m_strRawPic=x(100)
-m_strPic=x(100)
+m_strName=col-mag-codice-2
+m_strRawPic=x(3)
+m_strPic=x(3)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -1124,9 +1122,9 @@ m_bFixed=1
 
 @}}
 [FDITEM105_WK]
-m_strName=col-mag-intera-2
-m_strRawPic=x
-m_strPic=x
+m_strName=col-mag-descrizione-2
+m_strRawPic=x(100)
+m_strPic=x(100)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -1134,27 +1132,27 @@ m_bFixed=1
 
 @}}
 [FDITEM106_WK]
-m_strName=gd-mag-rec-3
-m_nItemLevel=1
+m_strName=col-mag-intera-2
+m_strRawPic=x
+m_strPic=x
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM106_WK
 
 @}}
 [FDITEM107_WK]
-m_strName=col-mag-codice-3
-m_strRawPic=x(3)
-m_strPic=x(3)
-m_nItemLevel=5
+m_strName=gd-mag-rec-3
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM107_WK
 
 @}}
 [FDITEM108_WK]
-m_strName=col-mag-descrizione-3
-m_strRawPic=x(100)
-m_strPic=x(100)
+m_strName=col-mag-codice-3
+m_strRawPic=x(3)
+m_strPic=x(3)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -1162,9 +1160,9 @@ m_bFixed=1
 
 @}}
 [FDITEM109_WK]
-m_strName=col-mag-intera-3
-m_strRawPic=x
-m_strPic=x
+m_strName=col-mag-descrizione-3
+m_strRawPic=x(100)
+m_strPic=x(100)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -1172,27 +1170,27 @@ m_bFixed=1
 
 @}}
 [FDITEM110_WK]
-m_strName=gd-mag-rec-4
-m_nItemLevel=1
+m_strName=col-mag-intera-3
+m_strRawPic=x
+m_strPic=x
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM110_WK
 
 @}}
 [FDITEM111_WK]
-m_strName=col-mag-codice-4
-m_strRawPic=x(3)
-m_strPic=x(3)
-m_nItemLevel=5
+m_strName=gd-mag-rec-4
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM111_WK
 
 @}}
 [FDITEM112_WK]
-m_strName=col-mag-descrizione-4
-m_strRawPic=x(100)
-m_strPic=x(100)
+m_strName=col-mag-codice-4
+m_strRawPic=x(3)
+m_strPic=x(3)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -1200,9 +1198,9 @@ m_bFixed=1
 
 @}}
 [FDITEM113_WK]
-m_strName=col-mag-intera-4
-m_strRawPic=x
-m_strPic=x
+m_strName=col-mag-descrizione-4
+m_strRawPic=x(100)
+m_strPic=x(100)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -1210,17 +1208,18 @@ m_bFixed=1
 
 @}}
 [FDITEM114_WK]
-m_strName=Small-Font
-m_nUsage=37
-m_nItemLevel=77
+m_strName=col-mag-intera-4
+m_strRawPic=x
+m_strPic=x
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM114_WK
 
 @}}
 [FDITEM115_WK]
-m_strName=Verdana10-Occidentale
-m_nUsage=26
+m_strName=Small-Font
+m_nUsage=37
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1228,8 +1227,8 @@ m_bFixed=1
 
 @}}
 [FDITEM116_WK]
-m_strName=Screen1-St-1-Handle
-m_nUsage=51
+m_strName=Verdana10-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1237,10 +1236,8 @@ m_bFixed=1
 
 @}}
 [FDITEM117_WK]
-m_strName=e-1
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=Screen1-St-1-Handle
+m_nUsage=51
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1248,9 +1245,10 @@ m_bFixed=1
 
 @}}
 [FDITEM118_WK]
-m_strName=ef-ini-vol-buf
-m_strRawPic=zz9
-m_strPic=zz9
+m_strName=e-1
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1258,9 +1256,9 @@ m_bFixed=1
 
 @}}
 [FDITEM119_WK]
-m_strName=ef-parz-buf
-m_strRawPic=9(3)
-m_strPic=9(3)
+m_strName=ef-ini-vol-buf
+m_strRawPic=zz9
+m_strPic=zz9
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1268,9 +1266,9 @@ m_bFixed=1
 
 @}}
 [FDITEM120_WK]
-m_strName=ef-gg-cons-buf
-m_strRawPic=999
-m_strPic=999
+m_strName=ef-parz-buf
+m_strRawPic=9(3)
+m_strPic=9(3)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1278,7 +1276,7 @@ m_bFixed=1
 
 @}}
 [FDITEM121_WK]
-m_strName=ef-val-buf
+m_strName=ef-gg-cons-buf
 m_strRawPic=999
 m_strPic=999
 m_nItemLevel=77
@@ -1288,9 +1286,9 @@ m_bFixed=1
 
 @}}
 [FDITEM122_WK]
-m_strName=ef-cons-max-buf
-m_strRawPic=zz9
-m_strPic=zz9
+m_strName=ef-val-buf
+m_strRawPic=999
+m_strPic=999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1298,9 +1296,9 @@ m_bFixed=1
 
 @}}
 [FDITEM123_WK]
-m_strName=ef-max-kg-buf
-m_strRawPic=zz.zz9,999
-m_strPic=zz.zz9,999
+m_strName=ef-cons-max-buf
+m_strRawPic=zz9
+m_strPic=zz9
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1308,7 +1306,7 @@ m_bFixed=1
 
 @}}
 [FDITEM124_WK]
-m_strName=ef-max-kg-2-buf
+m_strName=ef-max-kg-buf
 m_strRawPic=zz.zz9,999
 m_strPic=zz.zz9,999
 m_nItemLevel=77
@@ -1318,7 +1316,7 @@ m_bFixed=1
 
 @}}
 [FDITEM125_WK]
-m_strName=ef-max-kg-4-buf
+m_strName=ef-max-kg-2-buf
 m_strRawPic=zz.zz9,999
 m_strPic=zz.zz9,999
 m_nItemLevel=77
@@ -1328,9 +1326,9 @@ m_bFixed=1
 
 @}}
 [FDITEM126_WK]
-m_strName=ef-max-vet-buf
-m_strRawPic=zzzz9
-m_strPic=zzzz9
+m_strName=ef-max-kg-4-buf
+m_strRawPic=zz.zz9,999
+m_strPic=zz.zz9,999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1338,7 +1336,7 @@ m_bFixed=1
 
 @}}
 [FDITEM127_WK]
-m_strName=ef-max-vet-3-buf
+m_strName=ef-max-vet-buf
 m_strRawPic=zzzz9
 m_strPic=zzzz9
 m_nItemLevel=77
@@ -1348,9 +1346,9 @@ m_bFixed=1
 
 @}}
 [FDITEM128_WK]
-m_strName=lab-vet-max-buf
-m_strRawPic=x(20)
-m_strPic=x(20)
+m_strName=ef-max-vet-3-buf
+m_strRawPic=zzzz9
+m_strPic=zzzz9
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1358,9 +1356,9 @@ m_bFixed=1
 
 @}}
 [FDITEM129_WK]
-m_strName=chk-accorpa-buf
-m_strRawPic=9
-m_strPic=9
+m_strName=lab-vet-max-buf
+m_strRawPic=x(20)
+m_strPic=x(20)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1368,7 +1366,7 @@ m_bFixed=1
 
 @}}
 [FDITEM130_WK]
-m_strName=chk-prenot-buf
+m_strName=chk-accorpa-buf
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=77
@@ -1378,7 +1376,7 @@ m_bFixed=1
 
 @}}
 [FDITEM131_WK]
-m_strName=chk-promo-buf
+m_strName=chk-prenot-buf
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=77
@@ -1388,7 +1386,7 @@ m_bFixed=1
 
 @}}
 [FDITEM132_WK]
-m_strName=chk-banco-buf
+m_strName=chk-promo-buf
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=77
@@ -1398,10 +1396,9 @@ m_bFixed=1
 
 @}}
 [FDITEM133_WK]
-m_strName=chk-imb-min-buf
+m_strName=chk-banco-buf
 m_strRawPic=9
 m_strPic=9
-m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1409,9 +1406,10 @@ m_bFixed=1
 
 @}}
 [FDITEM134_WK]
-m_strName=ef-blocco-kg-buf
-m_strRawPic=zz.zz9,999
-m_strPic=zz.zz9,999
+m_strName=chk-imb-min-buf
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1419,9 +1417,9 @@ m_bFixed=1
 
 @}}
 [FDITEM135_WK]
-m_strName=ef-ini-vol-1-buf
-m_strRawPic=zz9
-m_strPic=zz9
+m_strName=ef-blocco-kg-buf
+m_strRawPic=zz.zz9,999
+m_strPic=zz.zz9,999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1429,7 +1427,7 @@ m_bFixed=1
 
 @}}
 [FDITEM136_WK]
-m_strName=ef-parz-1-buf
+m_strName=ef-ini-vol-1-buf
 m_strRawPic=zz9
 m_strPic=zz9
 m_nItemLevel=77
@@ -1439,7 +1437,7 @@ m_bFixed=1
 
 @}}
 [FDITEM137_WK]
-m_strName=ef-gg-cons-1-buf
+m_strName=ef-parz-1-buf
 m_strRawPic=zz9
 m_strPic=zz9
 m_nItemLevel=77
@@ -1449,7 +1447,7 @@ m_bFixed=1
 
 @}}
 [FDITEM138_WK]
-m_strName=ef-val-1-buf
+m_strName=ef-gg-cons-1-buf
 m_strRawPic=zz9
 m_strPic=zz9
 m_nItemLevel=77
@@ -1459,7 +1457,7 @@ m_bFixed=1
 
 @}}
 [FDITEM139_WK]
-m_strName=ef-cons-max-1-buf
+m_strName=ef-val-1-buf
 m_strRawPic=zz9
 m_strPic=zz9
 m_nItemLevel=77
@@ -1469,9 +1467,9 @@ m_bFixed=1
 
 @}}
 [FDITEM140_WK]
-m_strName=ef-blocco-kg-1-buf
-m_strRawPic=zz.zz9,999
-m_strPic=zz.zz9,999
+m_strName=ef-cons-max-1-buf
+m_strRawPic=zz9
+m_strPic=zz9
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1479,7 +1477,7 @@ m_bFixed=1
 
 @}}
 [FDITEM141_WK]
-m_strName=ef-max-kg-1-buf
+m_strName=ef-blocco-kg-1-buf
 m_strRawPic=zz.zz9,999
 m_strPic=zz.zz9,999
 m_nItemLevel=77
@@ -1489,7 +1487,7 @@ m_bFixed=1
 
 @}}
 [FDITEM142_WK]
-m_strName=ef-max-kg-2buf
+m_strName=ef-max-kg-1-buf
 m_strRawPic=zz.zz9,999
 m_strPic=zz.zz9,999
 m_nItemLevel=77
@@ -1499,9 +1497,9 @@ m_bFixed=1
 
 @}}
 [FDITEM143_WK]
-m_strName=ef-max-vet-1-buf
-m_strRawPic=zzzz9
-m_strPic=zzzz9
+m_strName=ef-max-kg-2buf
+m_strRawPic=zz.zz9,999
+m_strPic=zz.zz9,999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1509,10 +1507,9 @@ m_bFixed=1
 
 @}}
 [FDITEM144_WK]
-m_strName=e-2
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=ef-max-vet-1-buf
+m_strRawPic=zzzz9
+m_strPic=zzzz9
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1520,9 +1517,10 @@ m_bFixed=1
 
 @}}
 [FDITEM145_WK]
-m_strName=ef-ini-vol-2-buf
-m_strRawPic=zz9
-m_strPic=zz9
+m_strName=e-2
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1530,7 +1528,7 @@ m_bFixed=1
 
 @}}
 [FDITEM146_WK]
-m_strName=ef-parz-2-buf
+m_strName=ef-ini-vol-2-buf
 m_strRawPic=zz9
 m_strPic=zz9
 m_nItemLevel=77
@@ -1540,7 +1538,7 @@ m_bFixed=1
 
 @}}
 [FDITEM147_WK]
-m_strName=ef-gg-cons-2-buf
+m_strName=ef-parz-2-buf
 m_strRawPic=zz9
 m_strPic=zz9
 m_nItemLevel=77
@@ -1550,7 +1548,7 @@ m_bFixed=1
 
 @}}
 [FDITEM148_WK]
-m_strName=ef-val-2-buf
+m_strName=ef-gg-cons-2-buf
 m_strRawPic=zz9
 m_strPic=zz9
 m_nItemLevel=77
@@ -1560,7 +1558,7 @@ m_bFixed=1
 
 @}}
 [FDITEM149_WK]
-m_strName=ef-cons-max-2-buf
+m_strName=ef-val-2-buf
 m_strRawPic=zz9
 m_strPic=zz9
 m_nItemLevel=77
@@ -1570,9 +1568,9 @@ m_bFixed=1
 
 @}}
 [FDITEM150_WK]
-m_strName=ef-blocco-kg-2-buf
-m_strRawPic=zz.zz9,999
-m_strPic=zz.zz9,999
+m_strName=ef-cons-max-2-buf
+m_strRawPic=zz9
+m_strPic=zz9
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1580,9 +1578,9 @@ m_bFixed=1
 
 @}}
 [FDITEM151_WK]
-m_strName=lab-vet-max-1-buf
-m_strRawPic=x(20)
-m_strPic=x(20)
+m_strName=ef-blocco-kg-2-buf
+m_strRawPic=zz.zz9,999
+m_strPic=zz.zz9,999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1590,10 +1588,9 @@ m_bFixed=1
 
 @}}
 [FDITEM152_WK]
-m_strName=chk-accorpa-1-buf
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=lab-vet-max-1-buf
+m_strRawPic=x(20)
+m_strPic=x(20)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1601,7 +1598,7 @@ m_bFixed=1
 
 @}}
 [FDITEM153_WK]
-m_strName=chk-promo-1-buf
+m_strName=chk-accorpa-1-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -1612,7 +1609,7 @@ m_bFixed=1
 
 @}}
 [FDITEM154_WK]
-m_strName=chk-banco-1-buf
+m_strName=chk-promo-1-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -1623,7 +1620,7 @@ m_bFixed=1
 
 @}}
 [FDITEM155_WK]
-m_strName=chk-prenot-1-buf
+m_strName=chk-banco-1-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -1634,7 +1631,7 @@ m_bFixed=1
 
 @}}
 [FDITEM156_WK]
-m_strName=chk-imb-min-1-buf
+m_strName=chk-prenot-1-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -1645,9 +1642,10 @@ m_bFixed=1
 
 @}}
 [FDITEM157_WK]
-m_strName=ef-max-vet-2-buf
-m_strRawPic=zzzz9
-m_strPic=zzzz9
+m_strName=chk-imb-min-1-buf
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1655,10 +1653,9 @@ m_bFixed=1
 
 @}}
 [FDITEM158_WK]
-m_strName=chk-accorpa-2-buf
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=ef-max-vet-2-buf
+m_strRawPic=zzzz9
+m_strPic=zzzz9
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1666,7 +1663,7 @@ m_bFixed=1
 
 @}}
 [FDITEM159_WK]
-m_strName=chk-prenot-2-buf
+m_strName=chk-accorpa-2-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -1677,7 +1674,7 @@ m_bFixed=1
 
 @}}
 [FDITEM160_WK]
-m_strName=chk-banco-2-buf
+m_strName=chk-prenot-2-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -1688,7 +1685,7 @@ m_bFixed=1
 
 @}}
 [FDITEM161_WK]
-m_strName=chk-promo-2-buf
+m_strName=chk-banco-2-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -1699,7 +1696,7 @@ m_bFixed=1
 
 @}}
 [FDITEM162_WK]
-m_strName=chk-imb-min-2-buf
+m_strName=chk-promo-2-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -1710,9 +1707,10 @@ m_bFixed=1
 
 @}}
 [FDITEM163_WK]
-m_strName=ef-ini-vol-3-buf
-m_strRawPic=zz9
-m_strPic=zz9
+m_strName=chk-imb-min-2-buf
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1720,7 +1718,7 @@ m_bFixed=1
 
 @}}
 [FDITEM164_WK]
-m_strName=ef-parz-3-buf
+m_strName=ef-ini-vol-3-buf
 m_strRawPic=zz9
 m_strPic=zz9
 m_nItemLevel=77
@@ -1730,7 +1728,7 @@ m_bFixed=1
 
 @}}
 [FDITEM165_WK]
-m_strName=ef-gg-cons-3-buf
+m_strName=ef-parz-3-buf
 m_strRawPic=zz9
 m_strPic=zz9
 m_nItemLevel=77
@@ -1740,7 +1738,7 @@ m_bFixed=1
 
 @}}
 [FDITEM166_WK]
-m_strName=ef-val-3-buf
+m_strName=ef-gg-cons-3-buf
 m_strRawPic=zz9
 m_strPic=zz9
 m_nItemLevel=77
@@ -1750,7 +1748,7 @@ m_bFixed=1
 
 @}}
 [FDITEM167_WK]
-m_strName=ef-cons-max-3-buf
+m_strName=ef-val-3-buf
 m_strRawPic=zz9
 m_strPic=zz9
 m_nItemLevel=77
@@ -1760,9 +1758,9 @@ m_bFixed=1
 
 @}}
 [FDITEM168_WK]
-m_strName=ef-blocco-kg-3-buf
-m_strRawPic=zz.zz9,999
-m_strPic=zz.zz9,999
+m_strName=ef-cons-max-3-buf
+m_strRawPic=zz9
+m_strPic=zz9
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1770,7 +1768,7 @@ m_bFixed=1
 
 @}}
 [FDITEM169_WK]
-m_strName=ef-max-kg-3-buf
+m_strName=ef-blocco-kg-3-buf
 m_strRawPic=zz.zz9,999
 m_strPic=zz.zz9,999
 m_nItemLevel=77
@@ -1780,9 +1778,9 @@ m_bFixed=1
 
 @}}
 [FDITEM170_WK]
-m_strName=ef-min-vet-3-buf
-m_strRawPic=zzzz9
-m_strPic=zzzz9
+m_strName=ef-max-kg-3-buf
+m_strRawPic=zz.zz9,999
+m_strPic=zz.zz9,999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1790,9 +1788,9 @@ m_bFixed=1
 
 @}}
 [FDITEM171_WK]
-m_strName=lab-vet-max-2-buf
-m_strRawPic=X(30)
-m_strPic=X(30)
+m_strName=ef-min-vet-3-buf
+m_strRawPic=zzzz9
+m_strPic=zzzz9
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1800,9 +1798,9 @@ m_bFixed=1
 
 @}}
 [FDITEM172_WK]
-m_strName=lab-vet-max-3-buf
-m_strRawPic=x(20)
-m_strPic=x(20)
+m_strName=lab-vet-max-2-buf
+m_strRawPic=X(30)
+m_strPic=X(30)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1810,10 +1808,9 @@ m_bFixed=1
 
 @}}
 [FDITEM173_WK]
-m_strName=chk-promo-3-buf
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=lab-vet-max-3-buf
+m_strRawPic=x(20)
+m_strPic=x(20)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1821,7 +1818,7 @@ m_bFixed=1
 
 @}}
 [FDITEM174_WK]
-m_strName=chk-banco-3-buf
+m_strName=chk-promo-3-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -1832,7 +1829,7 @@ m_bFixed=1
 
 @}}
 [FDITEM175_WK]
-m_strName=chk-prenot-3-buf
+m_strName=chk-banco-3-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -1843,7 +1840,7 @@ m_bFixed=1
 
 @}}
 [FDITEM176_WK]
-m_strName=chk-imb-min-3-buf
+m_strName=chk-prenot-3-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -1854,7 +1851,7 @@ m_bFixed=1
 
 @}}
 [FDITEM177_WK]
-m_strName=chk-accorpa-3-buf
+m_strName=chk-imb-min-3-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -1865,7 +1862,7 @@ m_bFixed=1
 
 @}}
 [FDITEM178_WK]
-m_strName=e-3
+m_strName=chk-accorpa-3-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -1876,9 +1873,10 @@ m_bFixed=1
 
 @}}
 [FDITEM179_WK]
-m_strName=ef-ini-vol-4-buf
-m_strRawPic=zz9
-m_strPic=zz9
+m_strName=e-3
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1886,7 +1884,7 @@ m_bFixed=1
 
 @}}
 [FDITEM180_WK]
-m_strName=ef-parz-4-buf
+m_strName=ef-ini-vol-4-buf
 m_strRawPic=zz9
 m_strPic=zz9
 m_nItemLevel=77
@@ -1896,7 +1894,7 @@ m_bFixed=1
 
 @}}
 [FDITEM181_WK]
-m_strName=ef-gg-cons-4-buf
+m_strName=ef-parz-4-buf
 m_strRawPic=zz9
 m_strPic=zz9
 m_nItemLevel=77
@@ -1906,7 +1904,7 @@ m_bFixed=1
 
 @}}
 [FDITEM182_WK]
-m_strName=ef-val-4-buf
+m_strName=ef-gg-cons-4-buf
 m_strRawPic=zz9
 m_strPic=zz9
 m_nItemLevel=77
@@ -1916,7 +1914,7 @@ m_bFixed=1
 
 @}}
 [FDITEM183_WK]
-m_strName=ef-cons-max-4-buf
+m_strName=ef-val-4-buf
 m_strRawPic=zz9
 m_strPic=zz9
 m_nItemLevel=77
@@ -1926,9 +1924,9 @@ m_bFixed=1
 
 @}}
 [FDITEM184_WK]
-m_strName=ef-blocco-kg-4-buf
-m_strRawPic=zz.zz9,999
-m_strPic=zz.zz9,999
+m_strName=ef-cons-max-4-buf
+m_strRawPic=zz9
+m_strPic=zz9
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1936,9 +1934,9 @@ m_bFixed=1
 
 @}}
 [FDITEM185_WK]
-m_strName=ef-min-vet-4-buf
-m_strRawPic=zzzz9
-m_strPic=zzzz9
+m_strName=ef-blocco-kg-4-buf
+m_strRawPic=zz.zz9,999
+m_strPic=zz.zz9,999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1946,7 +1944,7 @@ m_bFixed=1
 
 @}}
 [FDITEM186_WK]
-m_strName=ef-max-vet-4-buf
+m_strName=ef-min-vet-4-buf
 m_strRawPic=zzzz9
 m_strPic=zzzz9
 m_nItemLevel=77
@@ -1956,9 +1954,9 @@ m_bFixed=1
 
 @}}
 [FDITEM187_WK]
-m_strName=lab-vet-max-4-buf
-m_strRawPic=x(20)
-m_strPic=x(20)
+m_strName=ef-max-vet-4-buf
+m_strRawPic=zzzz9
+m_strPic=zzzz9
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1966,10 +1964,9 @@ m_bFixed=1
 
 @}}
 [FDITEM188_WK]
-m_strName=chk-accorpa-4-buf
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=lab-vet-max-4-buf
+m_strRawPic=x(20)
+m_strPic=x(20)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1977,7 +1974,7 @@ m_bFixed=1
 
 @}}
 [FDITEM189_WK]
-m_strName=chk-promo-4-buf
+m_strName=chk-accorpa-4-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -1988,7 +1985,7 @@ m_bFixed=1
 
 @}}
 [FDITEM190_WK]
-m_strName=chk-prenot-4-buf
+m_strName=chk-promo-4-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -1999,7 +1996,7 @@ m_bFixed=1
 
 @}}
 [FDITEM191_WK]
-m_strName=chk-banco-4-buf
+m_strName=chk-prenot-4-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2010,7 +2007,7 @@ m_bFixed=1
 
 @}}
 [FDITEM192_WK]
-m_strName=chk-imb-min-4-buf
+m_strName=chk-banco-4-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2021,7 +2018,7 @@ m_bFixed=1
 
 @}}
 [FDITEM193_WK]
-m_strName=e-4
+m_strName=chk-imb-min-4-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2032,8 +2029,10 @@ m_bFixed=1
 
 @}}
 [FDITEM194_WK]
-m_strName=Default-Font
-m_nUsage=38
+m_strName=e-4
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2041,8 +2040,8 @@ m_bFixed=1
 
 @}}
 [FDITEM195_WK]
-m_strName=form1-handle
-m_nUsage=24
+m_strName=Default-Font
+m_nUsage=38
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2050,10 +2049,8 @@ m_bFixed=1
 
 @}}
 [FDITEM196_WK]
-m_strName=E-NUOVO
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=form1-handle
+m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2061,7 +2058,7 @@ m_bFixed=1
 
 @}}
 [FDITEM197_WK]
-m_strName=E-STAMPA
+m_strName=E-NUOVO
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2072,10 +2069,10 @@ m_bFixed=1
 
 @}}
 [FDITEM198_WK]
-m_strName=AUTO-ID
-m_strRawPic=9(6)
-m_strPic=9(6)
-m_strDefaultValue=7
+m_strName=E-STAMPA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2083,9 +2080,10 @@ m_bFixed=1
 
 @}}
 [FDITEM199_WK]
-m_strName=como-numero
-m_strRawPic=9(15)v999
-m_strPic=9(15)v999
+m_strName=AUTO-ID
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_strDefaultValue=7
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2093,9 +2091,9 @@ m_bFixed=1
 
 @}}
 [FDITEM200_WK]
-m_strName=STATUS-tvettori
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=como-numero
+m_strRawPic=9(15)v999
+m_strPic=9(15)v999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2103,27 +2101,27 @@ m_bFixed=1
 
 @}}
 [FDITEM201_WK]
+m_strName=STATUS-tvettori
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM201_WK
+
+@}}
+[FDITEM202_WK]
 m_strName=Valid-STATUS-tvettori
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM201_WK
-
-@}}
-[FDITEM202_WK]
-m_strName=form1-St-1-Handle
-m_nUsage=51
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM202_WK
 
 @}}
 [FDITEM203_WK]
-m_strName=STATUS-tmagaz
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=form1-St-1-Handle
+m_nUsage=51
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2131,27 +2129,26 @@ m_bFixed=1
 
 @}}
 [FDITEM204_WK]
+m_strName=STATUS-tmagaz
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM204_WK
+
+@}}
+[FDITEM205_WK]
 m_strName=Valid-STATUS-tmagaz
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM204_WK
-
-@}}
-[FDITEM205_WK]
-m_strName=chk-gestisci-1-buf
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM205_WK
 
 @}}
 [FDITEM206_WK]
-m_strName=chk-gestisci-2-buf
+m_strName=chk-gestisci-1-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2162,7 +2159,7 @@ m_bFixed=1
 
 @}}
 [FDITEM207_WK]
-m_strName=chk-gestisci-3-buf
+m_strName=chk-gestisci-2-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2173,7 +2170,7 @@ m_bFixed=1
 
 @}}
 [FDITEM208_WK]
-m_strName=chk-gestisci-4-buf
+m_strName=chk-gestisci-3-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2184,10 +2181,9 @@ m_bFixed=1
 
 @}}
 [FDITEM209_WK]
-m_strName=Screen1-Bt-1-Handle
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
+m_strName=chk-gestisci-4-buf
+m_strRawPic=9
+m_strPic=9
 m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
@@ -2196,7 +2192,7 @@ m_bFixed=1
 
 @}}
 [FDITEM210_WK]
-m_strName=logo-st-bmp
+m_strName=Screen1-Bt-1-Handle
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -2208,7 +2204,7 @@ m_bFixed=1
 
 @}}
 [FDITEM211_WK]
-m_strName=lubex-colori-bmp
+m_strName=logo-st-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -2220,7 +2216,7 @@ m_bFixed=1
 
 @}}
 [FDITEM212_WK]
-m_strName=sfondo-bmp
+m_strName=lubex-colori-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -2232,7 +2228,7 @@ m_bFixed=1
 
 @}}
 [FDITEM213_WK]
-m_strName=logo-gparam-bmp
+m_strName=sfondo-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -2244,7 +2240,7 @@ m_bFixed=1
 
 @}}
 [FDITEM214_WK]
-m_strName=applica-bmp
+m_strName=logo-gparam-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -2256,7 +2252,7 @@ m_bFixed=1
 
 @}}
 [FDITEM215_WK]
-m_strName=lubex-gif
+m_strName=applica-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -2268,7 +2264,7 @@ m_bFixed=1
 
 @}}
 [FDITEM216_WK]
-m_strName=lubex-png
+m_strName=lubex-gif
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -2280,7 +2276,7 @@ m_bFixed=1
 
 @}}
 [FDITEM217_WK]
-m_strName=anteprima-evaart-bmp
+m_strName=lubex-png
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -2292,9 +2288,10 @@ m_bFixed=1
 
 @}}
 [FDITEM218_WK]
-m_strName=e-tipocli
-m_strRawPic=9
-m_strPic=9
+m_strName=anteprima-evaart-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
 m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
@@ -2303,7 +2300,7 @@ m_bFixed=1
 
 @}}
 [FDITEM219_WK]
-m_strName=e-gdo
+m_strName=e-tipocli
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2314,7 +2311,7 @@ m_bFixed=1
 
 @}}
 [FDITEM220_WK]
-m_strName=e-clienti
+m_strName=e-gdo
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2325,7 +2322,7 @@ m_bFixed=1
 
 @}}
 [FDITEM221_WK]
-m_strName=e-destini
+m_strName=e-clienti
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2336,7 +2333,7 @@ m_bFixed=1
 
 @}}
 [FDITEM222_WK]
-m_strName=v-gdo
+m_strName=e-destini
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2347,7 +2344,7 @@ m_bFixed=1
 
 @}}
 [FDITEM223_WK]
-m_strName=chk-escludi-buf
+m_strName=v-gdo
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2358,7 +2355,7 @@ m_bFixed=1
 
 @}}
 [FDITEM224_WK]
-m_strName=chk-escludi-1-buf
+m_strName=chk-escludi-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2369,7 +2366,7 @@ m_bFixed=1
 
 @}}
 [FDITEM225_WK]
-m_strName=chk-escludi-2-buf
+m_strName=chk-escludi-1-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2380,7 +2377,7 @@ m_bFixed=1
 
 @}}
 [FDITEM226_WK]
-m_strName=chk-escludi-3-buf
+m_strName=chk-escludi-2-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2391,7 +2388,7 @@ m_bFixed=1
 
 @}}
 [FDITEM227_WK]
-m_strName=chk-escludi-4-buf
+m_strName=chk-escludi-3-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2402,8 +2399,10 @@ m_bFixed=1
 
 @}}
 [FDITEM228_WK]
-m_strName=Large-Font
-m_nUsage=35
+m_strName=chk-escludi-4-buf
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2411,9 +2410,8 @@ m_bFixed=1
 
 @}}
 [FDITEM229_WK]
-m_strName=STATUS-param1
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=Large-Font
+m_nUsage=35
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2421,46 +2419,45 @@ m_bFixed=1
 
 @}}
 [FDITEM230_WK]
+m_strName=STATUS-param1
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM230_WK
+
+@}}
+[FDITEM231_WK]
 m_strName=VALID-STATUS-param1
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM230_WK
+{{@DataItem_m_strDescriptionFDITEM231_WK
 
 @}}
-[FDITEM231_WK]
+[FDITEM232_WK]
 m_strName=STATUS-param2
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM231_WK
+{{@DataItem_m_strDescriptionFDITEM232_WK
 
 @}}
-[FDITEM232_WK]
+[FDITEM233_WK]
 m_strName=VALID-STATUS-param2
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM232_WK
-
-@}}
-[FDITEM233_WK]
-m_strName=e-tipocli-dati
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=1
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM233_WK
 
 @}}
 [FDITEM234_WK]
-m_strName=e-gdo-dati
+m_strName=e-tipocli-dati
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=1
@@ -2471,7 +2468,7 @@ m_bFixed=1
 
 @}}
 [FDITEM235_WK]
-m_strName=e-clienti-dati
+m_strName=e-gdo-dati
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=1
@@ -2482,7 +2479,7 @@ m_bFixed=1
 
 @}}
 [FDITEM236_WK]
-m_strName=e-destini-dati
+m_strName=e-clienti-dati
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=1
@@ -2493,10 +2490,10 @@ m_bFixed=1
 
 @}}
 [FDITEM237_WK]
-m_strName=chk-intera-buf
+m_strName=e-destini-dati
 m_strRawPic=9
 m_strPic=9
-m_strDefaultValue=0
+m_strDefaultValue=1
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2504,7 +2501,7 @@ m_bFixed=1
 
 @}}
 [FDITEM238_WK]
-m_strName=chk-intera-2-buf
+m_strName=chk-intera-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2515,7 +2512,7 @@ m_bFixed=1
 
 @}}
 [FDITEM239_WK]
-m_strName=chk-intera-3-buf
+m_strName=chk-intera-2-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2526,7 +2523,7 @@ m_bFixed=1
 
 @}}
 [FDITEM240_WK]
-m_strName=chk-art-forn-buf
+m_strName=chk-intera-3-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2537,7 +2534,7 @@ m_bFixed=1
 
 @}}
 [FDITEM241_WK]
-m_strName=chk-art-forn-1-buf
+m_strName=chk-art-forn-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2548,7 +2545,7 @@ m_bFixed=1
 
 @}}
 [FDITEM242_WK]
-m_strName=chk-art-forn-2-buf
+m_strName=chk-art-forn-1-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2559,7 +2556,7 @@ m_bFixed=1
 
 @}}
 [FDITEM243_WK]
-m_strName=chk-art-forn-3-buf
+m_strName=chk-art-forn-2-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2570,7 +2567,7 @@ m_bFixed=1
 
 @}}
 [FDITEM244_WK]
-m_strName=chk-art-forn-4-buf
+m_strName=chk-art-forn-3-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2581,7 +2578,7 @@ m_bFixed=1
 
 @}}
 [FDITEM245_WK]
-m_strName=chk-pb-perce-buf
+m_strName=chk-art-forn-4-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2592,7 +2589,7 @@ m_bFixed=1
 
 @}}
 [FDITEM246_WK]
-m_strName=chk-pb-amp-buf
+m_strName=chk-pb-perce-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2603,7 +2600,7 @@ m_bFixed=1
 
 @}}
 [FDITEM247_WK]
-m_strName=chk-pb-perce-1-buf
+m_strName=chk-pb-amp-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2614,7 +2611,7 @@ m_bFixed=1
 
 @}}
 [FDITEM248_WK]
-m_strName=chk-pb-amp-1-buf
+m_strName=chk-pb-perce-1-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2625,7 +2622,7 @@ m_bFixed=1
 
 @}}
 [FDITEM249_WK]
-m_strName=chk-pb-perce-2-buf
+m_strName=chk-pb-amp-1-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2636,7 +2633,7 @@ m_bFixed=1
 
 @}}
 [FDITEM250_WK]
-m_strName=chk-pb-amp-2-buf
+m_strName=chk-pb-perce-2-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2647,7 +2644,7 @@ m_bFixed=1
 
 @}}
 [FDITEM251_WK]
-m_strName=chk-pb-perce-3-buf
+m_strName=chk-pb-amp-2-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2658,7 +2655,7 @@ m_bFixed=1
 
 @}}
 [FDITEM252_WK]
-m_strName=chk-pb-amp-4-buf
+m_strName=chk-pb-perce-3-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2669,7 +2666,7 @@ m_bFixed=1
 
 @}}
 [FDITEM253_WK]
-m_strName=chk-pb-perce-4-buf
+m_strName=chk-pb-amp-4-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2680,7 +2677,7 @@ m_bFixed=1
 
 @}}
 [FDITEM254_WK]
-m_strName=chk-pb-amp-3-buf
+m_strName=chk-pb-perce-4-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2691,7 +2688,7 @@ m_bFixed=1
 
 @}}
 [FDITEM255_WK]
-m_strName=chk-pb-bosch-buf
+m_strName=chk-pb-amp-3-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2702,7 +2699,7 @@ m_bFixed=1
 
 @}}
 [FDITEM256_WK]
-m_strName=chk-pb-bosch-1-buf
+m_strName=chk-pb-bosch-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2713,7 +2710,7 @@ m_bFixed=1
 
 @}}
 [FDITEM257_WK]
-m_strName=chk-pb-bosch-3-buf
+m_strName=chk-pb-bosch-1-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2724,7 +2721,7 @@ m_bFixed=1
 
 @}}
 [FDITEM258_WK]
-m_strName=chk-pb-bosch-4-buf
+m_strName=chk-pb-bosch-3-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2735,7 +2732,7 @@ m_bFixed=1
 
 @}}
 [FDITEM259_WK]
-m_strName=chk-pb-bosch-2-buf
+m_strName=chk-pb-bosch-4-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2746,9 +2743,10 @@ m_bFixed=1
 
 @}}
 [FDITEM260_WK]
-m_strName=ef-stampante-buf
-m_strRawPic=x(100)
-m_strPic=x(100)
+m_strName=chk-pb-bosch-2-buf
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2756,7 +2754,7 @@ m_bFixed=1
 
 @}}
 [FDITEM261_WK]
-m_strName=ef-stampante-1-buf
+m_strName=ef-stampante-buf
 m_strRawPic=x(100)
 m_strPic=x(100)
 m_nItemLevel=77
@@ -2766,7 +2764,7 @@ m_bFixed=1
 
 @}}
 [FDITEM262_WK]
-m_strName=ef-stampante-2-buf
+m_strName=ef-stampante-1-buf
 m_strRawPic=x(100)
 m_strPic=x(100)
 m_nItemLevel=77
@@ -2776,7 +2774,7 @@ m_bFixed=1
 
 @}}
 [FDITEM263_WK]
-m_strName=ef-stampante-3-buf
+m_strName=ef-stampante-2-buf
 m_strRawPic=x(100)
 m_strPic=x(100)
 m_nItemLevel=77
@@ -2786,7 +2784,7 @@ m_bFixed=1
 
 @}}
 [FDITEM264_WK]
-m_strName=ef-stampante-4-buf
+m_strName=ef-stampante-3-buf
 m_strRawPic=x(100)
 m_strPic=x(100)
 m_nItemLevel=77
@@ -2796,9 +2794,9 @@ m_bFixed=1
 
 @}}
 [FDITEM265_WK]
-m_strName=ef-min-kg1-buf
-m_strRawPic=zz.zz9,999
-m_strPic=zz.zz9,999
+m_strName=ef-stampante-4-buf
+m_strRawPic=x(100)
+m_strPic=x(100)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2806,9 +2804,9 @@ m_bFixed=1
 
 @}}
 [FDITEM266_WK]
-m_strName=ef-min-vet1-buf
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=ef-min-kg1-buf
+m_strRawPic=zz.zz9,999
+m_strPic=zz.zz9,999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2816,9 +2814,9 @@ m_bFixed=1
 
 @}}
 [FDITEM267_WK]
-m_strName=ef-min-kg2-1-buf
-m_strRawPic=zz.zz9,999
-m_strPic=zz.zz9,999
+m_strName=ef-min-vet1-buf
+m_strRawPic=9(5)
+m_strPic=9(5)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2826,9 +2824,9 @@ m_bFixed=1
 
 @}}
 [FDITEM268_WK]
-m_strName=ef-min-vet2-1-buf
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=ef-min-kg2-1-buf
+m_strRawPic=zz.zz9,999
+m_strPic=zz.zz9,999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2836,9 +2834,9 @@ m_bFixed=1
 
 @}}
 [FDITEM269_WK]
-m_strName=ef-min-kg2-2-buf
-m_strRawPic=zz.zz9,999
-m_strPic=zz.zz9,999
+m_strName=ef-min-vet2-1-buf
+m_strRawPic=9(5)
+m_strPic=9(5)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2846,9 +2844,9 @@ m_bFixed=1
 
 @}}
 [FDITEM270_WK]
-m_strName=ef-min-vet2-2-buf
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=ef-min-kg2-2-buf
+m_strRawPic=zz.zz9,999
+m_strPic=zz.zz9,999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2856,9 +2854,9 @@ m_bFixed=1
 
 @}}
 [FDITEM271_WK]
-m_strName=ef-min-kg2-3-buf
-m_strRawPic=zz.zz9,999
-m_strPic=zz.zz9,999
+m_strName=ef-min-vet2-2-buf
+m_strRawPic=9(5)
+m_strPic=9(5)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2866,9 +2864,9 @@ m_bFixed=1
 
 @}}
 [FDITEM272_WK]
-m_strName=ef-min-vet2-3-buf
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=ef-min-kg2-3-buf
+m_strRawPic=zz.zz9,999
+m_strPic=zz.zz9,999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2876,9 +2874,9 @@ m_bFixed=1
 
 @}}
 [FDITEM273_WK]
-m_strName=ef-min-kg2-4-buf
-m_strRawPic=zz.zz9,999
-m_strPic=zz.zz9,999
+m_strName=ef-min-vet2-3-buf
+m_strRawPic=9(5)
+m_strPic=9(5)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2886,9 +2884,9 @@ m_bFixed=1
 
 @}}
 [FDITEM274_WK]
-m_strName=ef-min-vet2-4-buf
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=ef-min-kg2-4-buf
+m_strRawPic=zz.zz9,999
+m_strPic=zz.zz9,999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2896,9 +2894,9 @@ m_bFixed=1
 
 @}}
 [FDITEM275_WK]
-m_strName=ef-min-kg2-buf
-m_strRawPic=zz.zz9,999
-m_strPic=zz.zz9,999
+m_strName=ef-min-vet2-4-buf
+m_strRawPic=9(5)
+m_strPic=9(5)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2906,9 +2904,9 @@ m_bFixed=1
 
 @}}
 [FDITEM276_WK]
-m_strName=ef-min-vet2-buf
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=ef-min-kg2-buf
+m_strRawPic=zz.zz9,999
+m_strPic=zz.zz9,999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2916,7 +2914,7 @@ m_bFixed=1
 
 @}}
 [FDITEM277_WK]
-m_strName=ef-min-vet1-1-buf
+m_strName=ef-min-vet2-buf
 m_strRawPic=9(5)
 m_strPic=9(5)
 m_nItemLevel=77
@@ -2926,9 +2924,9 @@ m_bFixed=1
 
 @}}
 [FDITEM278_WK]
-m_strName=ef-min-kg1-1-buf
-m_strRawPic=zz.zz9,999
-m_strPic=zz.zz9,999
+m_strName=ef-min-vet1-1-buf
+m_strRawPic=9(5)
+m_strPic=9(5)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2936,9 +2934,9 @@ m_bFixed=1
 
 @}}
 [FDITEM279_WK]
-m_strName=ef-min-vet1-2-buf
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=ef-min-kg1-1-buf
+m_strRawPic=zz.zz9,999
+m_strPic=zz.zz9,999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2946,9 +2944,9 @@ m_bFixed=1
 
 @}}
 [FDITEM280_WK]
-m_strName=ef-min-kg1-2-buf
-m_strRawPic=zz.zz9,999
-m_strPic=zz.zz9,999
+m_strName=ef-min-vet1-2-buf
+m_strRawPic=9(5)
+m_strPic=9(5)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2956,7 +2954,7 @@ m_bFixed=1
 
 @}}
 [FDITEM281_WK]
-m_strName=ef-min-kg1-3-buf
+m_strName=ef-min-kg1-2-buf
 m_strRawPic=zz.zz9,999
 m_strPic=zz.zz9,999
 m_nItemLevel=77
@@ -2966,9 +2964,9 @@ m_bFixed=1
 
 @}}
 [FDITEM282_WK]
-m_strName=ef-min-vet1-3-buf
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=ef-min-kg1-3-buf
+m_strRawPic=zz.zz9,999
+m_strPic=zz.zz9,999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2976,9 +2974,9 @@ m_bFixed=1
 
 @}}
 [FDITEM283_WK]
-m_strName=ef-min-kg1-4-buf
-m_strRawPic=zz.zz9,999
-m_strPic=zz.zz9,999
+m_strName=ef-min-vet1-3-buf
+m_strRawPic=9(5)
+m_strPic=9(5)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2986,9 +2984,9 @@ m_bFixed=1
 
 @}}
 [FDITEM284_WK]
-m_strName=ef-min-vet1-4-buf
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=ef-min-kg1-4-buf
+m_strRawPic=zz.zz9,999
+m_strPic=zz.zz9,999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2996,9 +2994,9 @@ m_bFixed=1
 
 @}}
 [FDITEM285_WK]
-m_strName=lab-vet-min2-buf
-m_strRawPic=x(20)
-m_strPic=x(20)
+m_strName=ef-min-vet1-4-buf
+m_strRawPic=9(5)
+m_strPic=9(5)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -3006,7 +3004,7 @@ m_bFixed=1
 
 @}}
 [FDITEM286_WK]
-m_strName=lab-vet-min2-1-buf
+m_strName=lab-vet-min2-buf
 m_strRawPic=x(20)
 m_strPic=x(20)
 m_nItemLevel=77
@@ -3016,7 +3014,7 @@ m_bFixed=1
 
 @}}
 [FDITEM287_WK]
-m_strName=lab-vet-min2-2-buf
+m_strName=lab-vet-min2-1-buf
 m_strRawPic=x(20)
 m_strPic=x(20)
 m_nItemLevel=77
@@ -3026,7 +3024,7 @@ m_bFixed=1
 
 @}}
 [FDITEM288_WK]
-m_strName=lab-vet-min2-3-buf
+m_strName=lab-vet-min2-2-buf
 m_strRawPic=x(20)
 m_strPic=x(20)
 m_nItemLevel=77
@@ -3036,7 +3034,7 @@ m_bFixed=1
 
 @}}
 [FDITEM289_WK]
-m_strName=lab-vet-min2-4-buf
+m_strName=lab-vet-min2-3-buf
 m_strRawPic=x(20)
 m_strPic=x(20)
 m_nItemLevel=77
@@ -3046,7 +3044,7 @@ m_bFixed=1
 
 @}}
 [FDITEM290_WK]
-m_strName=lab-vet-min1-4-buf
+m_strName=lab-vet-min2-4-buf
 m_strRawPic=x(20)
 m_strPic=x(20)
 m_nItemLevel=77
@@ -3056,7 +3054,7 @@ m_bFixed=1
 
 @}}
 [FDITEM291_WK]
-m_strName=lab-vet-min1-3-buf
+m_strName=lab-vet-min1-4-buf
 m_strRawPic=x(20)
 m_strPic=x(20)
 m_nItemLevel=77
@@ -3066,7 +3064,7 @@ m_bFixed=1
 
 @}}
 [FDITEM292_WK]
-m_strName=lab-vet-min1-2-buf
+m_strName=lab-vet-min1-3-buf
 m_strRawPic=x(20)
 m_strPic=x(20)
 m_nItemLevel=77
@@ -3076,7 +3074,7 @@ m_bFixed=1
 
 @}}
 [FDITEM293_WK]
-m_strName=lab-vet-min1-buf
+m_strName=lab-vet-min1-2-buf
 m_strRawPic=x(20)
 m_strPic=x(20)
 m_nItemLevel=77
@@ -3086,7 +3084,7 @@ m_bFixed=1
 
 @}}
 [FDITEM294_WK]
-m_strName=lab-vet-min1-1-buf
+m_strName=lab-vet-min1-buf
 m_strRawPic=x(20)
 m_strPic=x(20)
 m_nItemLevel=77
@@ -3096,10 +3094,9 @@ m_bFixed=1
 
 @}}
 [FDITEM295_WK]
-m_strName=chk-logo-pers-buf
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=lab-vet-min1-1-buf
+m_strRawPic=x(20)
+m_strPic=x(20)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -3107,9 +3104,10 @@ m_bFixed=1
 
 @}}
 [FDITEM296_WK]
-m_strName=ef-logo-path-buf
-m_strRawPic=x(100)
-m_strPic=x(100)
+m_strName=chk-logo-pers-buf
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -3117,10 +3115,9 @@ m_bFixed=1
 
 @}}
 [FDITEM297_WK]
-m_strName=chk-layout-pers-buf
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=ef-logo-path-buf
+m_strRawPic=x(100)
+m_strPic=x(100)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -3128,9 +3125,10 @@ m_bFixed=1
 
 @}}
 [FDITEM298_WK]
-m_strName=ef-path-logo-buf
-m_strRawPic=x(200)
-m_strPic=x(200)
+m_strName=chk-layout-pers-buf
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -3138,10 +3136,9 @@ m_bFixed=1
 
 @}}
 [FDITEM299_WK]
-m_strName=chk-layout-pers-1-buf
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=ef-path-logo-buf
+m_strRawPic=x(200)
+m_strPic=x(200)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -3149,9 +3146,10 @@ m_bFixed=1
 
 @}}
 [FDITEM300_WK]
-m_strName=ef-path-logo-1-buf
-m_strRawPic=x(200)
-m_strPic=x(200)
+m_strName=chk-layout-pers-1-buf
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -3159,10 +3157,9 @@ m_bFixed=1
 
 @}}
 [FDITEM301_WK]
-m_strName=chk-layout-pers-2-buf
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=ef-path-logo-1-buf
+m_strRawPic=x(200)
+m_strPic=x(200)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -3170,9 +3167,10 @@ m_bFixed=1
 
 @}}
 [FDITEM302_WK]
-m_strName=ef-path-logo-2-buf
-m_strRawPic=x(200)
-m_strPic=x(200)
+m_strName=chk-layout-pers-2-buf
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -3180,7 +3178,7 @@ m_bFixed=1
 
 @}}
 [FDITEM303_WK]
-m_strName=ef-path-logo-3-buf
+m_strName=ef-path-logo-2-buf
 m_strRawPic=x(200)
 m_strPic=x(200)
 m_nItemLevel=77
@@ -3190,10 +3188,9 @@ m_bFixed=1
 
 @}}
 [FDITEM304_WK]
-m_strName=chk-layout-pers-3-buf
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=ef-path-logo-3-buf
+m_strRawPic=x(200)
+m_strPic=x(200)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -3201,7 +3198,7 @@ m_bFixed=1
 
 @}}
 [FDITEM305_WK]
-m_strName=chk-layout-pers-4-buf
+m_strName=chk-layout-pers-3-buf
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -3212,13 +3209,144 @@ m_bFixed=1
 
 @}}
 [FDITEM306_WK]
+m_strName=chk-layout-pers-4-buf
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM306_WK
+
+@}}
+[FDITEM307_WK]
 m_strName=ef-path-logo-4-buf
 m_strRawPic=x(200)
 m_strPic=x(200)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM306_WK
+{{@DataItem_m_strDescriptionFDITEM307_WK
+
+@}}
+[FDITEM308_WK]
+m_strName=chk-pb-sost-batt-buf
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM308_WK
+
+@}}
+[FDITEM309_WK]
+m_strName=78-pb-sost-batt
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM309_WK
+
+@}}
+[FDITEM310_WK]
+m_strName=chk-pb-sost-batt-1-buf
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM310_WK
+
+@}}
+[FDITEM311_WK]
+m_strName=chk-pb-sost-batt-2-buf
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM311_WK
+
+@}}
+[FDITEM312_WK]
+m_strName=chk-pb-sost-batt-3-buf
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM312_WK
+
+@}}
+[FDITEM313_WK]
+m_strName=chk-pb-sost-batt-4-buf
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM313_WK
+
+@}}
+[FDITEM314_WK]
+m_strName=chk-sost-batt-buf
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM314_WK
+
+@}}
+[FDITEM315_WK]
+m_strName=chk-sost-batt-1-buf
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM315_WK
+
+@}}
+[FDITEM316_WK]
+m_strName=chk-sost-batt-2-buf
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM316_WK
+
+@}}
+[FDITEM317_WK]
+m_strName=chk-sost-batt-3-buf
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM317_WK
+
+@}}
+[FDITEM318_WK]
+m_strName=chk-sost-batt-4-buf
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM318_WK
 
 @}}
 
@@ -3448,7 +3576,7 @@ Begin Screen Form1
    Height in Cells   = TRUE
    Help ID           = 1
    Label Offset      = 0
-   Lines             = 62,69
+   Lines             = 64,15
    Link To Thread    = TRUE
    Max Lines         = 0,00
    Max Size          = 0,00
@@ -3492,7 +3620,7 @@ Begin Screen Form1
       High Color        = 0
       ID                = 5
       Line              = 25,38
-      Lines             = 36,00
+      Lines             = 38,00
       Lines Unit        = Default
       Low Color         = 0
       Size              = 40,33
@@ -4696,10 +4824,58 @@ Begin Screen Form1
          After Procedure   = chk-pb-amp-AfterProcedure
          Link To           = chk-pb-amp-LinkTo
       End
+      Begin Check-Box chk-sost-batt
+         SCREEN-COL        = 16,50
+         SCREEN-LINE       = 48,30
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = chk-sost-batt
+         Bitmap Frame      = FALSE
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 15,50
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Enable Variable   = mod
+         Exception Value   = 0
+         Flat              = TRUE
+         Font              = Small Font
+         Font Variable     = Small-Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         Hint Variable     = 78-pb-sost-batt
+         ID                = 41
+         ID Variable       = AUTO-ID
+         Left Text         = FALSE
+         Line              = 23,92
+         Lines             = 1,54
+         Lines Unit        = Default
+         No Tab            = FALSE
+         Notify            = FALSE
+         Occurs            = 0
+         Self Act          = FALSE
+         Size              = 3,00
+         Size Unit         = Default
+         Tab Order         = 23
+         Termination Value = 0
+         Title Picture     = 9
+         Value             = 0:FALSE
+         Value Variable    = chk-sost-batt-buf
+         Visible           = NONE
+         Width in Cells    = TRUE
+         Before Procedure  = chk-sost-batt-BeforeProcedure
+         After Procedure   = chk-sost-batt-AfterProcedure
+      End
       Begin Grid gd-mag
          SCREEN-COL        = 3,00
-         SCREEN-LINE       = 48,53
-         LOCK-CONTROL      = TRUE
+         SCREEN-LINE       = 50,07
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = gd-mag
          Action            = (None)
@@ -4741,7 +4917,7 @@ Begin Screen Form1
          ID                = 6
          ID Variable       = AUTO-ID
          Last Row          = 0
-         Line              = 24,15
+         Line              = 25,69
          Lines             = 5,92
          Lines Unit        = Default
          No Tab            = FALSE
@@ -4754,7 +4930,7 @@ Begin Screen Form1
          Row Headings      = FALSE
          Size              = 38,17
          Size Unit         = Default
-         Tab Order         = 23
+         Tab Order         = 24
          Tiled Headings    = TRUE
          Use Tab           = FALSE
          Virtual Width     = 35
@@ -4799,7 +4975,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 18,00
          Size Unit         = Default
-         Tab Order         = 24
+         Tab Order         = 25
          Title             = "GG inizio volantino"
          Transparent       = TRUE
          Visible           = NONE
@@ -4833,7 +5009,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 21,00
          Size Unit         = Default
-         Tab Order         = 25
+         Tab Order         = 26
          Title             = "GG evas. parziale (forzata)"
          Transparent       = TRUE
          Visible           = NONE
@@ -4867,7 +5043,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 18,00
          Size Unit         = Default
-         Tab Order         = 26
+         Tab Order         = 27
          Title             = "GG per consegna"
          Transparent       = TRUE
          Visible           = NONE
@@ -4901,7 +5077,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 18,00
          Size Unit         = Default
-         Tab Order         = 27
+         Tab Order         = 28
          Title             = "GG validità volantino"
          Transparent       = TRUE
          Visible           = NONE
@@ -4935,7 +5111,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 18,00
          Size Unit         = Default
-         Tab Order         = 28
+         Tab Order         = 29
          Title             = "GG consegna MAX"
          Transparent       = TRUE
          Visible           = NONE
@@ -4969,7 +5145,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 11,00
          Size Unit         = Default
-         Tab Order         = 29
+         Tab Order         = 30
          Title             = "Vettore < Kg"
          Transparent       = TRUE
          Visible           = NONE
@@ -5003,7 +5179,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 11,00
          Size Unit         = Default
-         Tab Order         = 30
+         Tab Order         = 31
          Title             = "Vettore > Kg"
          Transparent       = TRUE
          Visible           = NONE
@@ -5037,7 +5213,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 31
+         Tab Order         = 32
          Title             = "Accorpamento"
          Transparent       = TRUE
          Visible           = NONE
@@ -5071,7 +5247,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 32
+         Tab Order         = 33
          Title             = "Prenotaz. qta"
          Transparent       = TRUE
          Visible           = NONE
@@ -5105,7 +5281,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 33
+         Tab Order         = 34
          Title             = "Saldi PROMO"
          Transparent       = TRUE
          Visible           = NONE
@@ -5139,7 +5315,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 34
+         Tab Order         = 35
          Title             = "Saldi BANCO"
          Transparent       = TRUE
          Visible           = NONE
@@ -5173,7 +5349,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 8,00
          Size Unit         = Default
-         Tab Order         = 35
+         Tab Order         = 36
          Title Picture     = x(20)
          Title Variable    = lab-vet-min2-buf
          Transparent       = TRUE
@@ -5208,7 +5384,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 8,00
          Size Unit         = Default
-         Tab Order         = 36
+         Tab Order         = 37
          Title Picture     = x(20)
          Title Variable    = lab-vet-max-buf
          Transparent       = TRUE
@@ -5243,7 +5419,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 15,00
          Size Unit         = Default
-         Tab Order         = 37
+         Tab Order         = 38
          Title             = "Blocco Kg"
          Transparent       = TRUE
          Visible           = NONE
@@ -5277,7 +5453,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 13,00
          Size Unit         = Default
-         Tab Order         = 38
+         Tab Order         = 39
          Title             = "NO evadi tutto"
          Transparent       = TRUE
          Visible           = NONE
@@ -5311,7 +5487,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 39
+         Tab Order         = 40
          Title             = "Imb. minimo"
          Transparent       = TRUE
          Visible           = NONE
@@ -5345,7 +5521,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 40
+         Tab Order         = 41
          Title             = "Cod. art forn."
          Transparent       = TRUE
          Visible           = NONE
@@ -5354,7 +5530,7 @@ Begin Screen Form1
       Begin Label Screen1-La-2aabee
          SCREEN-COL        = 3,17
          SCREEN-LINE       = 47,00
-         LOCK-CONTROL      = TRUE
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = Screen1-La-2aabee
          Clines            = 0
@@ -5379,7 +5555,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 41
+         Tab Order         = 42
          Title             = "Add. PB %"
          Transparent       = TRUE
          Visible           = NONE
@@ -5413,7 +5589,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 42
+         Tab Order         = 43
          Title             = "Add. Pb amp."
          Transparent       = TRUE
          Visible           = NONE
@@ -5447,7 +5623,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 14,00
          Size Unit         = Default
-         Tab Order         = 43
+         Tab Order         = 44
          Title             = "Add. Pb BOSCH"
          Transparent       = TRUE
          Visible           = NONE
@@ -5455,8 +5631,8 @@ Begin Screen Form1
       End
       Begin Label Screen1-La-2d
          SCREEN-COL        = 3,17
-         SCREEN-LINE       = 54,61
-         LOCK-CONTROL      = TRUE
+         SCREEN-LINE       = 56,15
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = Screen1-La-2d
          Clines            = 0
@@ -5474,41 +5650,7 @@ Begin Screen Form1
          ID                = 49
          Justification     = Unaligned
          Label Offset      = 20
-         Line              = 30,23
-         Lines             = 1,31
-         Lines Unit        = Default
-         No Key Letter     = FALSE
-         Occurs            = 0
-         Size              = 12,00
-         Size Unit         = Default
-         Tab Order         = 44
-         Title             = "Sampante"
-         Transparent       = TRUE
-         Visible           = NONE
-         Width in Cells    = TRUE
-      End
-      Begin Label Screen1-La-2de
-         SCREEN-COL        = 3,17
-         SCREEN-LINE       = 54,61
-         LOCK-CONTROL      = TRUE
-         LEVEL             = 5
-         (Name)            = Screen1-La-2de
-         Clines            = 0
-         Clines Unit       = Default
-         Color             = 0
-         Column            = 2,17
-         Csize             = 0
-         Csize Unit        = Default
-         Destroy Type      = Automatic
-         Enable            = NONE
-         Font              = Small Font
-         Font Variable     = Small-Font
-         Height in Cells   = TRUE
-         Help ID           = 0
-         ID                = 50
-         Justification     = Unaligned
-         Label Offset      = 20
-         Line              = 30,23
+         Line              = 31,77
          Lines             = 1,31
          Lines Unit        = Default
          No Key Letter     = FALSE
@@ -5523,8 +5665,8 @@ Begin Screen Form1
       End
       Begin Entry-Field ef-stampante
          SCREEN-COL        = 3,00
-         SCREEN-LINE       = 56,07
-         LOCK-CONTROL      = TRUE
+         SCREEN-LINE       = 57,61
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = ef-stampante
          Auto              = FALSE
@@ -5550,7 +5692,7 @@ Begin Screen Form1
          ID                = 51
          ID Variable       = AUTO-ID
          Justification     = Unaligned
-         Line              = 31,69
+         Line              = 33,23
          Lines             = 1,31
          Lines Unit        = Default
          Max Lines         = 0
@@ -5581,8 +5723,8 @@ Begin Screen Form1
       End
       Begin Check-Box chk-layout-pers
          SCREEN-COL        = 21,50
-         SCREEN-LINE       = 57,84
-         LOCK-CONTROL      = TRUE
+         SCREEN-LINE       = 59,38
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = chk-layout-pers
          Bitmap Frame      = FALSE
@@ -5608,7 +5750,7 @@ Begin Screen Form1
          ID                = 52
          ID Variable       = AUTO-ID
          Left Text         = FALSE
-         Line              = 33,46
+         Line              = 35,00
          Lines             = 1,54
          Lines Unit        = Default
          No Tab            = FALSE
@@ -5629,7 +5771,7 @@ Begin Screen Form1
       End
       Begin Push-Button pb-path-logo
          SCREEN-COL        = 38,33
-         SCREEN-LINE       = 58,23
+         SCREEN-LINE       = 59,76
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = pb-path-logo
@@ -5653,7 +5795,7 @@ Begin Screen Form1
          Help ID           = 0
          ID                = 234
          ID Variable       = AUTO-ID
-         Line              = 33,85
+         Line              = 35,38
          Lines             = 1,08
          Lines Unit        = Default
          No Auto Default   = FALSE
@@ -5672,8 +5814,8 @@ Begin Screen Form1
       End
       Begin Entry-Field ef-path-logo
          SCREEN-COL        = 3,00
-         SCREEN-LINE       = 59,53
-         LOCK-CONTROL      = TRUE
+         SCREEN-LINE       = 61,07
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = ef-path-logo
          Auto              = FALSE
@@ -5700,7 +5842,7 @@ Begin Screen Form1
          ID                = 235
          ID Variable       = AUTO-ID
          Justification     = Unaligned
-         Line              = 35,15
+         Line              = 36,69
          Lines             = 1,31
          Lines Unit        = Default
          Max Lines         = 0
@@ -5731,7 +5873,7 @@ Begin Screen Form1
       End
       Begin Push-Button pb-stampanti
          SCREEN-COL        = 38,33
-         SCREEN-LINE       = 54,84
+         SCREEN-LINE       = 56,38
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = pb-stampanti
@@ -5754,7 +5896,7 @@ Begin Screen Form1
          Height in Cells   = TRUE
          Help ID           = 0
          ID                = 236
-         Line              = 30,46
+         Line              = 32,00
          Lines             = 1,08
          Lines Unit        = Default
          No Auto Default   = FALSE
@@ -5842,8 +5984,8 @@ Begin Screen Form1
       End
       Begin Label Screen1-La-2aabeeb
          SCREEN-COL        = 3,17
-         SCREEN-LINE       = 57,84
-         LOCK-CONTROL      = TRUE
+         SCREEN-LINE       = 59,38
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = Screen1-La-2aabeeb
          Clines            = 0
@@ -5861,7 +6003,7 @@ Begin Screen Form1
          ID                = 239
          Justification     = Unaligned
          Label Offset      = 20
-         Line              = 33,46
+         Line              = 35,00
          Lines             = 1,31
          Lines Unit        = Default
          No Key Letter     = FALSE
@@ -5870,6 +6012,40 @@ Begin Screen Form1
          Size Unit         = Default
          Tab Order         = 53
          Title             = "Logo personalizzato"
+         Transparent       = TRUE
+         Visible           = NONE
+         Width in Cells    = TRUE
+      End
+      Begin Label Screen1-La-2aabeec
+         SCREEN-COL        = 3,17
+         SCREEN-LINE       = 48,53
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen1-La-2aabeec
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 2,17
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Small Font
+         Font Variable     = Small-Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 46
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 24,15
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 12,00
+         Size Unit         = Default
+         Tab Order         = 54
+         Title             = "Sost. batterie"
          Transparent       = TRUE
          Visible           = NONE
          Width in Cells    = TRUE
@@ -5897,7 +6073,7 @@ Begin Screen Form1
       High Color        = 0
       ID                = 240
       Line              = 25,38
-      Lines             = 36,00
+      Lines             = 38,00
       Lines Unit        = Default
       Low Color         = 0
       Size              = 40,33
@@ -7147,9 +7323,57 @@ Begin Screen Form1
          After Procedure   = chk-pb-amp-1-AfterProcedure
          Link To           = chk-pb-amp-1-LinkTo
       End
+      Begin Check-Box chk-sost-batt-1
+         SCREEN-COL        = 57,67
+         SCREEN-LINE       = 48,30
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = chk-sost-batt-1
+         Bitmap Frame      = FALSE
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 15,50
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Enable Variable   = mod
+         Exception Value   = 0
+         Flat              = TRUE
+         Font              = Small Font
+         Font Variable     = Small-Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         Hint Variable     = 78-pb-sost-batt
+         ID                = 41
+         ID Variable       = AUTO-ID
+         Left Text         = FALSE
+         Line              = 23,92
+         Lines             = 1,54
+         Lines Unit        = Default
+         No Tab            = FALSE
+         Notify            = FALSE
+         Occurs            = 0
+         Self Act          = FALSE
+         Size              = 3,00
+         Size Unit         = Default
+         Tab Order         = 24
+         Termination Value = 0
+         Title Picture     = 9
+         Value             = 0:FALSE
+         Value Variable    = chk-sost-batt-1-buf
+         Visible           = NONE
+         Width in Cells    = TRUE
+         Before Procedure  = chk-sost-batt-1-BeforeProcedure
+         After Procedure   = chk-sost-batt-1-AfterProcedure
+      End
       Begin Grid gd-mag-1
          SCREEN-COL        = 44,17
-         SCREEN-LINE       = 48,53
+         SCREEN-LINE       = 50,07
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = gd-mag-1
@@ -7192,7 +7416,7 @@ Begin Screen Form1
          ID                = 82
          ID Variable       = AUTO-ID
          Last Row          = 0
-         Line              = 24,15
+         Line              = 25,69
          Lines             = 5,92
          Lines Unit        = Default
          No Tab            = FALSE
@@ -7205,7 +7429,7 @@ Begin Screen Form1
          Row Headings      = FALSE
          Size              = 38,17
          Size Unit         = Default
-         Tab Order         = 24
+         Tab Order         = 25
          Tiled Headings    = TRUE
          Use Tab           = FALSE
          Virtual Width     = 35
@@ -7250,7 +7474,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 18,00
          Size Unit         = Default
-         Tab Order         = 25
+         Tab Order         = 26
          Title             = "GG inizio volantino"
          Transparent       = TRUE
          Visible           = FALSE
@@ -7285,7 +7509,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 21,00
          Size Unit         = Default
-         Tab Order         = 26
+         Tab Order         = 27
          Title             = "GG evas. parziale (forzata)"
          Transparent       = TRUE
          Visible           = NONE
@@ -7319,7 +7543,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 18,00
          Size Unit         = Default
-         Tab Order         = 27
+         Tab Order         = 28
          Title             = "GG per consegna"
          Transparent       = TRUE
          Visible           = NONE
@@ -7353,7 +7577,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 18,00
          Size Unit         = Default
-         Tab Order         = 28
+         Tab Order         = 29
          Title             = "GG validità volantino"
          Transparent       = TRUE
          Visible           = NONE
@@ -7387,7 +7611,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 18,00
          Size Unit         = Default
-         Tab Order         = 29
+         Tab Order         = 30
          Title             = "GG consegna MAX"
          Transparent       = TRUE
          Visible           = NONE
@@ -7421,7 +7645,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 11,00
          Size Unit         = Default
-         Tab Order         = 30
+         Tab Order         = 31
          Title             = "Vettore < Kg"
          Transparent       = TRUE
          Visible           = NONE
@@ -7455,7 +7679,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 11,00
          Size Unit         = Default
-         Tab Order         = 31
+         Tab Order         = 32
          Title             = "Vettore > Kg"
          Transparent       = TRUE
          Visible           = NONE
@@ -7489,7 +7713,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 32
+         Tab Order         = 33
          Title             = "Accorpamento"
          Transparent       = TRUE
          Visible           = NONE
@@ -7523,7 +7747,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 33
+         Tab Order         = 34
          Title             = "Prenotaz. qta"
          Transparent       = TRUE
          Visible           = NONE
@@ -7557,7 +7781,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 34
+         Tab Order         = 35
          Title             = "Saldi PROMO"
          Transparent       = TRUE
          Visible           = NONE
@@ -7591,7 +7815,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 35
+         Tab Order         = 36
          Title             = "Saldi BANCO"
          Transparent       = TRUE
          Visible           = NONE
@@ -7625,7 +7849,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 8,00
          Size Unit         = Default
-         Tab Order         = 36
+         Tab Order         = 37
          Title Picture     = x(20)
          Title Variable    = lab-vet-min2-1-buf
          Transparent       = TRUE
@@ -7660,7 +7884,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 8,00
          Size Unit         = Default
-         Tab Order         = 37
+         Tab Order         = 38
          Title Picture     = x(20)
          Title Variable    = lab-vet-max-1-buf
          Transparent       = TRUE
@@ -7695,7 +7919,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 15,00
          Size Unit         = Default
-         Tab Order         = 38
+         Tab Order         = 39
          Title             = "Blocco Kg"
          Transparent       = TRUE
          Visible           = NONE
@@ -7729,7 +7953,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 11,00
          Size Unit         = Default
-         Tab Order         = 39
+         Tab Order         = 40
          Title             = "GESTISCI"
          Transparent       = FALSE
          Visible           = NONE
@@ -7763,7 +7987,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 13,00
          Size Unit         = Default
-         Tab Order         = 40
+         Tab Order         = 41
          Title             = "NO evadi tutto"
          Transparent       = TRUE
          Visible           = NONE
@@ -7797,7 +8021,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 41
+         Tab Order         = 42
          Title             = "Imb. minimo"
          Transparent       = TRUE
          Visible           = NONE
@@ -7831,7 +8055,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 42
+         Tab Order         = 43
          Title             = "Cod. art forn."
          Transparent       = TRUE
          Visible           = NONE
@@ -7865,7 +8089,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 43
+         Tab Order         = 44
          Title             = "Add. Pb amp."
          Transparent       = TRUE
          Visible           = NONE
@@ -7899,7 +8123,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 44
+         Tab Order         = 45
          Title             = "Add. PB %"
          Transparent       = TRUE
          Visible           = NONE
@@ -7933,7 +8157,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 14,00
          Size Unit         = Default
-         Tab Order         = 45
+         Tab Order         = 46
          Title             = "Add. Pb BOSCH"
          Transparent       = TRUE
          Visible           = NONE
@@ -7941,7 +8165,7 @@ Begin Screen Form1
       End
       Begin Label Screen1-La-2da
          SCREEN-COL        = 44,34
-         SCREEN-LINE       = 54,61
+         SCREEN-LINE       = 56,15
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Screen1-La-2da
@@ -7960,14 +8184,14 @@ Begin Screen Form1
          ID                = 93
          Justification     = Unaligned
          Label Offset      = 20
-         Line              = 30,23
+         Line              = 31,77
          Lines             = 1,31
          Lines Unit        = Default
          No Key Letter     = FALSE
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 46
+         Tab Order         = 47
          Title             = "Sampante"
          Transparent       = TRUE
          Visible           = NONE
@@ -7975,7 +8199,7 @@ Begin Screen Form1
       End
       Begin Entry-Field ef-stampante-1
          SCREEN-COL        = 44,17
-         SCREEN-LINE       = 56,07
+         SCREEN-LINE       = 57,61
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = ef-stampante-1
@@ -8002,7 +8226,7 @@ Begin Screen Form1
          ID                = 94
          ID Variable       = AUTO-ID
          Justification     = Unaligned
-         Line              = 31,69
+         Line              = 33,23
          Lines             = 1,31
          Lines Unit        = Default
          Max Lines         = 0
@@ -8020,7 +8244,7 @@ Begin Screen Form1
          Size              = 38,17
          Size Unit         = Default
          Style             = Singleline
-         Tab Order         = 47
+         Tab Order         = 48
          Use Return        = FALSE
          Use Tab           = FALSE
          Value Multiple    = FALSE
@@ -8033,7 +8257,7 @@ Begin Screen Form1
       End
       Begin Check-Box chk-layout-pers-1
          SCREEN-COL        = 62,67
-         SCREEN-LINE       = 57,84
+         SCREEN-LINE       = 59,38
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = chk-layout-pers-1
@@ -8060,7 +8284,7 @@ Begin Screen Form1
          ID                = 95
          ID Variable       = AUTO-ID
          Left Text         = FALSE
-         Line              = 33,46
+         Line              = 35,00
          Lines             = 1,54
          Lines Unit        = Default
          No Tab            = FALSE
@@ -8069,7 +8293,7 @@ Begin Screen Form1
          Self Act          = FALSE
          Size              = 3,00
          Size Unit         = Default
-         Tab Order         = 48
+         Tab Order         = 49
          Termination Value = 0
          Title Picture     = 9
          Value             = 0:FALSE
@@ -8081,7 +8305,7 @@ Begin Screen Form1
       End
       Begin Push-Button pb-path-logo-1
          SCREEN-COL        = 79,50
-         SCREEN-LINE       = 58,23
+         SCREEN-LINE       = 59,76
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = pb-path-logo-1
@@ -8105,7 +8329,7 @@ Begin Screen Form1
          Help ID           = 0
          ID                = 96
          ID Variable       = AUTO-ID
-         Line              = 33,85
+         Line              = 35,38
          Lines             = 1,08
          Lines Unit        = Default
          No Auto Default   = FALSE
@@ -8115,7 +8339,7 @@ Begin Screen Form1
          Size              = 2,83
          Size Unit         = Default
          Style             = Other
-         Tab Order         = 49
+         Tab Order         = 50
          Termination Value = 0
          Title             = "..."
          Visible           = NONE
@@ -8124,7 +8348,7 @@ Begin Screen Form1
       End
       Begin Entry-Field ef-path-logo-1
          SCREEN-COL        = 44,17
-         SCREEN-LINE       = 59,53
+         SCREEN-LINE       = 61,07
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = ef-path-logo-1
@@ -8152,7 +8376,7 @@ Begin Screen Form1
          ID                = 97
          ID Variable       = AUTO-ID
          Justification     = Unaligned
-         Line              = 35,15
+         Line              = 36,69
          Lines             = 1,31
          Lines Unit        = Default
          Max Lines         = 0
@@ -8170,7 +8394,7 @@ Begin Screen Form1
          Size              = 38,17
          Size Unit         = Default
          Style             = Singleline
-         Tab Order         = 50
+         Tab Order         = 51
          Use Return        = FALSE
          Use Tab           = FALSE
          Value Multiple    = FALSE
@@ -8183,7 +8407,7 @@ Begin Screen Form1
       End
       Begin Push-Button pb-stampanti-1
          SCREEN-COL        = 79,50
-         SCREEN-LINE       = 54,84
+         SCREEN-LINE       = 56,38
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = pb-stampanti-1
@@ -8206,7 +8430,7 @@ Begin Screen Form1
          Height in Cells   = TRUE
          Help ID           = 0
          ID                = 98
-         Line              = 30,46
+         Line              = 32,00
          Lines             = 1,08
          Lines Unit        = Default
          No Auto Default   = FALSE
@@ -8216,7 +8440,7 @@ Begin Screen Form1
          Size              = 2,83
          Size Unit         = Default
          Style             = Other
-         Tab Order         = 51
+         Tab Order         = 52
          Termination Value = 0
          Title             = "..."
          Visible           = NONE
@@ -8251,7 +8475,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 52
+         Tab Order         = 53
          Title             = "Vettore < Kg"
          Transparent       = TRUE
          Visible           = NONE
@@ -8285,7 +8509,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 8,00
          Size Unit         = Default
-         Tab Order         = 53
+         Tab Order         = 54
          Title Picture     = x(20)
          Title Variable    = lab-vet-min1-1-buf
          Transparent       = TRUE
@@ -8294,7 +8518,7 @@ Begin Screen Form1
       End
       Begin Label Screen1-La-2aabeeba
          SCREEN-COL        = 44,34
-         SCREEN-LINE       = 57,84
+         SCREEN-LINE       = 59,38
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Screen1-La-2aabeeba
@@ -8313,15 +8537,49 @@ Begin Screen Form1
          ID                = 101
          Justification     = Unaligned
          Label Offset      = 20
-         Line              = 33,46
+         Line              = 35,00
          Lines             = 1,31
          Lines Unit        = Default
          No Key Letter     = FALSE
          Occurs            = 0
          Size              = 17,00
          Size Unit         = Default
-         Tab Order         = 54
+         Tab Order         = 55
          Title             = "Logo personalizzato"
+         Transparent       = TRUE
+         Visible           = NONE
+         Width in Cells    = TRUE
+      End
+      Begin Label Screen1-La-2aabeeca
+         SCREEN-COL        = 44,34
+         SCREEN-LINE       = 48,53
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen1-La-2aabeeca
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 2,17
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Small Font
+         Font Variable     = Small-Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 46
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 24,15
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 12,00
+         Size Unit         = Default
+         Tab Order         = 56
+         Title             = "Sost. batterie"
          Transparent       = TRUE
          Visible           = NONE
          Width in Cells    = TRUE
@@ -8349,7 +8607,7 @@ Begin Screen Form1
       High Color        = 0
       ID                = 102
       Line              = 25,38
-      Lines             = 36,00
+      Lines             = 38,00
       Lines Unit        = Default
       Low Color         = 0
       Size              = 40,33
@@ -9598,145 +9856,57 @@ Begin Screen Form1
          After Procedure   = chk-pb-amp-2-AfterProcedure
          Link To           = chk-pb-amp-2-LinkTo
       End
-      Begin Label Screen1-La-1ba
-         SCREEN-COL        = 85,67
-         SCREEN-LINE       = 27,92
+      Begin Check-Box chk-sost-batt-2
+         SCREEN-COL        = 99,00
+         SCREEN-LINE       = 48,30
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
-         (Name)            = Screen1-La-1ba
+         (Name)            = chk-sost-batt-2
+         Bitmap Frame      = FALSE
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
          Clines            = 0
          Clines Unit       = Default
          Color             = 0
-         Column            = 2,17
+         Column            = 15,50
+         Copy Resource     = TRUE
          Csize             = 0
          Csize Unit        = Default
          Destroy Type      = Automatic
          Enable            = NONE
+         Enable Variable   = mod
+         Exception Value   = 0
+         Flat              = TRUE
          Font              = Small Font
          Font Variable     = Small-Font
          Height in Cells   = TRUE
          Help ID           = 0
-         ID                = 126
-         Justification     = Unaligned
-         Label Offset      = 20
-         Line              = 3,54
-         Lines             = 1,31
+         Hint Variable     = 78-pb-sost-batt
+         ID                = 41
+         ID Variable       = AUTO-ID
+         Left Text         = FALSE
+         Line              = 23,92
+         Lines             = 1,54
          Lines Unit        = Default
-         No Key Letter     = FALSE
+         No Tab            = FALSE
+         Notify            = FALSE
          Occurs            = 0
-         Size              = 18,00
+         Self Act          = FALSE
+         Size              = 3,00
          Size Unit         = Default
          Tab Order         = 24
-         Title             = "GG inizio volantino"
-         Transparent       = TRUE
+         Termination Value = 0
+         Title Picture     = 9
+         Value             = 0:FALSE
+         Value Variable    = chk-sost-batt-2-buf
          Visible           = NONE
          Width in Cells    = TRUE
-      End
-      Begin Label Screen1-La-1aba
-         SCREEN-COL        = 85,67
-         SCREEN-LINE       = 29,46
-         LOCK-CONTROL      = TRUE
-         LEVEL             = 5
-         (Name)            = Screen1-La-1aba
-         Clines            = 0
-         Clines Unit       = Default
-         Color             = 0
-         Column            = 2,17
-         Csize             = 0
-         Csize Unit        = Default
-         Destroy Type      = Automatic
-         Enable            = NONE
-         Font              = Small Font
-         Font Variable     = Small-Font
-         Height in Cells   = TRUE
-         Help ID           = 0
-         ID                = 127
-         Justification     = Unaligned
-         Label Offset      = 20
-         Line              = 5,08
-         Lines             = 1,31
-         Lines Unit        = Default
-         No Key Letter     = FALSE
-         Occurs            = 0
-         Size              = 21,00
-         Size Unit         = Default
-         Tab Order         = 25
-         Title             = "GG evas. parziale (forzata)"
-         Transparent       = TRUE
-         Visible           = NONE
-         Width in Cells    = TRUE
-      End
-      Begin Label Screen1-La-1aaba
-         SCREEN-COL        = 85,67
-         SCREEN-LINE       = 30,92
-         LOCK-CONTROL      = TRUE
-         LEVEL             = 5
-         (Name)            = Screen1-La-1aaba
-         Clines            = 0
-         Clines Unit       = Default
-         Color             = 0
-         Column            = 2,17
-         Csize             = 0
-         Csize Unit        = Default
-         Destroy Type      = Automatic
-         Enable            = NONE
-         Font              = Small Font
-         Font Variable     = Small-Font
-         Height in Cells   = TRUE
-         Help ID           = 0
-         ID                = 128
-         Justification     = Unaligned
-         Label Offset      = 20
-         Line              = 6,54
-         Lines             = 1,31
-         Lines Unit        = Default
-         No Key Letter     = FALSE
-         Occurs            = 0
-         Size              = 18,00
-         Size Unit         = Default
-         Tab Order         = 26
-         Title             = "GG per consegna"
-         Transparent       = TRUE
-         Visible           = NONE
-         Width in Cells    = TRUE
-      End
-      Begin Label Screen1-La-1aaaba
-         SCREEN-COL        = 85,67
-         SCREEN-LINE       = 32,46
-         LOCK-CONTROL      = TRUE
-         LEVEL             = 5
-         (Name)            = Screen1-La-1aaaba
-         Clines            = 0
-         Clines Unit       = Default
-         Color             = 0
-         Column            = 2,17
-         Csize             = 0
-         Csize Unit        = Default
-         Destroy Type      = Automatic
-         Enable            = NONE
-         Font              = Small Font
-         Font Variable     = Small-Font
-         Height in Cells   = TRUE
-         Help ID           = 0
-         ID                = 129
-         Justification     = Unaligned
-         Label Offset      = 20
-         Line              = 8,08
-         Lines             = 1,31
-         Lines Unit        = Default
-         No Key Letter     = FALSE
-         Occurs            = 0
-         Size              = 18,00
-         Size Unit         = Default
-         Tab Order         = 27
-         Title             = "GG validità volantino"
-         Transparent       = TRUE
-         Visible           = NONE
-         Width in Cells    = TRUE
+         Before Procedure  = chk-sost-batt-2-BeforeProcedure
+         After Procedure   = chk-sost-batt-2-AfterProcedure
       End
       Begin Grid gd-mag-2
          SCREEN-COL        = 85,50
-         SCREEN-LINE       = 48,53
+         SCREEN-LINE       = 50,07
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = gd-mag-2
@@ -9779,7 +9949,7 @@ Begin Screen Form1
          ID                = 130
          ID Variable       = AUTO-ID
          Last Row          = 0
-         Line              = 24,15
+         Line              = 25,69
          Lines             = 5,92
          Lines Unit        = Default
          No Tab            = FALSE
@@ -9792,7 +9962,7 @@ Begin Screen Form1
          Row Headings      = FALSE
          Size              = 38,17
          Size Unit         = Default
-         Tab Order         = 28
+         Tab Order         = 25
          Tiled Headings    = TRUE
          Use Tab           = FALSE
          Virtual Width     = 35
@@ -9808,6 +9978,142 @@ Begin Screen Form1
          Msg-Goto-Cell     = gd-mag-2-Ev-Msg-Goto-Cell
          Msg-Goto-Cell-Drag = gd-mag-2-Ev-Msg-Goto-Cell-Drag
          Msg-Goto-Cell-Mouse = gd-mag-2-Ev-Msg-Goto-Cell-Mouse
+      End
+      Begin Label Screen1-La-1ba
+         SCREEN-COL        = 85,67
+         SCREEN-LINE       = 27,92
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen1-La-1ba
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 2,17
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Small Font
+         Font Variable     = Small-Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 126
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 3,54
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 18,00
+         Size Unit         = Default
+         Tab Order         = 26
+         Title             = "GG inizio volantino"
+         Transparent       = TRUE
+         Visible           = NONE
+         Width in Cells    = TRUE
+      End
+      Begin Label Screen1-La-1aba
+         SCREEN-COL        = 85,67
+         SCREEN-LINE       = 29,46
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen1-La-1aba
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 2,17
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Small Font
+         Font Variable     = Small-Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 127
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 5,08
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 21,00
+         Size Unit         = Default
+         Tab Order         = 27
+         Title             = "GG evas. parziale (forzata)"
+         Transparent       = TRUE
+         Visible           = NONE
+         Width in Cells    = TRUE
+      End
+      Begin Label Screen1-La-1aaba
+         SCREEN-COL        = 85,67
+         SCREEN-LINE       = 30,92
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen1-La-1aaba
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 2,17
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Small Font
+         Font Variable     = Small-Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 128
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 6,54
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 18,00
+         Size Unit         = Default
+         Tab Order         = 28
+         Title             = "GG per consegna"
+         Transparent       = TRUE
+         Visible           = NONE
+         Width in Cells    = TRUE
+      End
+      Begin Label Screen1-La-1aaaba
+         SCREEN-COL        = 85,67
+         SCREEN-LINE       = 32,46
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen1-La-1aaaba
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 2,17
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Small Font
+         Font Variable     = Small-Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 129
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 8,08
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 18,00
+         Size Unit         = Default
+         Tab Order         = 29
+         Title             = "GG validità volantino"
+         Transparent       = TRUE
+         Visible           = NONE
+         Width in Cells    = TRUE
       End
       Begin Label Screen1-La-1aaaaba
          SCREEN-COL        = 85,67
@@ -9837,7 +10143,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 18,00
          Size Unit         = Default
-         Tab Order         = 29
+         Tab Order         = 30
          Title             = "GG consegna MAX"
          Transparent       = TRUE
          Visible           = NONE
@@ -9871,7 +10177,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 11,00
          Size Unit         = Default
-         Tab Order         = 30
+         Tab Order         = 31
          Title             = "Vettore < Kg"
          Transparent       = TRUE
          Visible           = NONE
@@ -9905,7 +10211,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 11,00
          Size Unit         = Default
-         Tab Order         = 31
+         Tab Order         = 32
          Title             = "Vettore > Kg"
          Transparent       = TRUE
          Visible           = NONE
@@ -9939,7 +10245,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 32
+         Tab Order         = 33
          Title             = "Accorpamento"
          Transparent       = TRUE
          Visible           = NONE
@@ -9973,7 +10279,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 33
+         Tab Order         = 34
          Title             = "Prenotaz. qta"
          Transparent       = TRUE
          Visible           = NONE
@@ -10007,7 +10313,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 34
+         Tab Order         = 35
          Title             = "Saldi PROMO"
          Transparent       = TRUE
          Visible           = NONE
@@ -10041,7 +10347,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 35
+         Tab Order         = 36
          Title             = "Saldi BANCO"
          Transparent       = TRUE
          Visible           = NONE
@@ -10075,7 +10381,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 8,00
          Size Unit         = Default
-         Tab Order         = 36
+         Tab Order         = 37
          Title Picture     = x(20)
          Title Variable    = lab-vet-min2-2-buf
          Transparent       = TRUE
@@ -10110,7 +10416,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 8,00
          Size Unit         = Default
-         Tab Order         = 37
+         Tab Order         = 38
          Title Variable    = lab-vet-max-2-buf
          Transparent       = TRUE
          Visible           = NONE
@@ -10144,7 +10450,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 15,00
          Size Unit         = Default
-         Tab Order         = 38
+         Tab Order         = 39
          Title             = "Blocco Kg"
          Transparent       = TRUE
          Visible           = NONE
@@ -10178,7 +10484,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 11,00
          Size Unit         = Default
-         Tab Order         = 39
+         Tab Order         = 40
          Title             = "GESTISCI"
          Transparent       = FALSE
          Visible           = NONE
@@ -10212,7 +10518,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 13,00
          Size Unit         = Default
-         Tab Order         = 40
+         Tab Order         = 41
          Title             = "NO evadi tutto"
          Transparent       = TRUE
          Visible           = NONE
@@ -10246,7 +10552,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 41
+         Tab Order         = 42
          Title             = "Imb. minimo"
          Transparent       = TRUE
          Visible           = NONE
@@ -10280,7 +10586,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 42
+         Tab Order         = 43
          Title             = "Cod. art forn."
          Transparent       = TRUE
          Visible           = NONE
@@ -10314,7 +10620,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 43
+         Tab Order         = 44
          Title             = "Add. PB %"
          Transparent       = TRUE
          Visible           = NONE
@@ -10348,7 +10654,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 44
+         Tab Order         = 45
          Title             = "Add. Pb amp."
          Transparent       = TRUE
          Visible           = NONE
@@ -10382,7 +10688,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 14,00
          Size Unit         = Default
-         Tab Order         = 45
+         Tab Order         = 46
          Title             = "Add. Pb BOSCH"
          Transparent       = TRUE
          Visible           = NONE
@@ -10390,7 +10696,7 @@ Begin Screen Form1
       End
       Begin Label Screen1-La-2db
          SCREEN-COL        = 85,67
-         SCREEN-LINE       = 54,61
+         SCREEN-LINE       = 56,15
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Screen1-La-2db
@@ -10409,14 +10715,14 @@ Begin Screen Form1
          ID                = 148
          Justification     = Unaligned
          Label Offset      = 20
-         Line              = 30,23
+         Line              = 31,77
          Lines             = 1,31
          Lines Unit        = Default
          No Key Letter     = FALSE
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 46
+         Tab Order         = 47
          Title             = "Sampante"
          Transparent       = TRUE
          Visible           = NONE
@@ -10424,7 +10730,7 @@ Begin Screen Form1
       End
       Begin Entry-Field ef-stampante-2
          SCREEN-COL        = 85,50
-         SCREEN-LINE       = 56,07
+         SCREEN-LINE       = 57,61
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = ef-stampante-2
@@ -10451,7 +10757,7 @@ Begin Screen Form1
          ID                = 149
          ID Variable       = AUTO-ID
          Justification     = Unaligned
-         Line              = 31,69
+         Line              = 33,23
          Lines             = 1,31
          Lines Unit        = Default
          Max Lines         = 0
@@ -10469,7 +10775,7 @@ Begin Screen Form1
          Size              = 38,17
          Size Unit         = Default
          Style             = Singleline
-         Tab Order         = 47
+         Tab Order         = 48
          Use Return        = FALSE
          Use Tab           = FALSE
          Value Multiple    = FALSE
@@ -10482,7 +10788,7 @@ Begin Screen Form1
       End
       Begin Check-Box chk-layout-pers-2
          SCREEN-COL        = 104,00
-         SCREEN-LINE       = 57,84
+         SCREEN-LINE       = 59,38
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = chk-layout-pers-2
@@ -10508,7 +10814,7 @@ Begin Screen Form1
          Hint Variable     = 78-logo-pers
          ID                = 150
          Left Text         = FALSE
-         Line              = 33,46
+         Line              = 35,00
          Lines             = 1,54
          Lines Unit        = Default
          No Tab            = FALSE
@@ -10517,7 +10823,7 @@ Begin Screen Form1
          Self Act          = FALSE
          Size              = 3,00
          Size Unit         = Default
-         Tab Order         = 48
+         Tab Order         = 49
          Termination Value = 0
          Title Picture     = 9
          Value             = 0:FALSE
@@ -10529,7 +10835,7 @@ Begin Screen Form1
       End
       Begin Push-Button pb-path-logo-2
          SCREEN-COL        = 120,83
-         SCREEN-LINE       = 58,23
+         SCREEN-LINE       = 59,76
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = pb-path-logo-2
@@ -10552,7 +10858,7 @@ Begin Screen Form1
          Height in Cells   = TRUE
          Help ID           = 0
          ID                = 151
-         Line              = 33,85
+         Line              = 35,38
          Lines             = 1,08
          Lines Unit        = Default
          No Auto Default   = FALSE
@@ -10562,7 +10868,7 @@ Begin Screen Form1
          Size              = 2,83
          Size Unit         = Default
          Style             = Other
-         Tab Order         = 49
+         Tab Order         = 50
          Termination Value = 0
          Title             = "..."
          Visible           = NONE
@@ -10571,7 +10877,7 @@ Begin Screen Form1
       End
       Begin Entry-Field ef-path-logo-2
          SCREEN-COL        = 85,50
-         SCREEN-LINE       = 59,53
+         SCREEN-LINE       = 61,07
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = ef-path-logo-2
@@ -10598,7 +10904,7 @@ Begin Screen Form1
          Hint Variable     = 78-path-logo
          ID                = 152
          Justification     = Unaligned
-         Line              = 35,15
+         Line              = 36,69
          Lines             = 1,31
          Lines Unit        = Default
          Max Lines         = 0
@@ -10616,7 +10922,7 @@ Begin Screen Form1
          Size              = 38,17
          Size Unit         = Default
          Style             = Singleline
-         Tab Order         = 50
+         Tab Order         = 51
          Use Return        = FALSE
          Use Tab           = FALSE
          Value Multiple    = FALSE
@@ -10629,7 +10935,7 @@ Begin Screen Form1
       End
       Begin Push-Button pb-stampanti-2
          SCREEN-COL        = 120,83
-         SCREEN-LINE       = 54,84
+         SCREEN-LINE       = 56,38
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = pb-stampanti-2
@@ -10652,7 +10958,7 @@ Begin Screen Form1
          Height in Cells   = TRUE
          Help ID           = 0
          ID                = 153
-         Line              = 30,46
+         Line              = 32,00
          Lines             = 1,08
          Lines Unit        = Default
          No Auto Default   = FALSE
@@ -10662,7 +10968,7 @@ Begin Screen Form1
          Size              = 2,83
          Size Unit         = Default
          Style             = Other
-         Tab Order         = 51
+         Tab Order         = 52
          Termination Value = 0
          Title             = "..."
          Visible           = NONE
@@ -10697,7 +11003,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 52
+         Tab Order         = 53
          Title             = "Vettore < Kg"
          Transparent       = TRUE
          Visible           = NONE
@@ -10731,7 +11037,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 8,00
          Size Unit         = Default
-         Tab Order         = 53
+         Tab Order         = 54
          Title Picture     = x(20)
          Title Variable    = lab-vet-min1-2-buf
          Transparent       = TRUE
@@ -10740,7 +11046,7 @@ Begin Screen Form1
       End
       Begin Label Screen1-La-2aabeebaa
          SCREEN-COL        = 85,67
-         SCREEN-LINE       = 57,84
+         SCREEN-LINE       = 59,38
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Screen1-La-2aabeebaa
@@ -10759,15 +11065,49 @@ Begin Screen Form1
          ID                = 156
          Justification     = Unaligned
          Label Offset      = 20
-         Line              = 33,46
+         Line              = 35,00
          Lines             = 1,31
          Lines Unit        = Default
          No Key Letter     = FALSE
          Occurs            = 0
          Size              = 17,00
          Size Unit         = Default
-         Tab Order         = 54
+         Tab Order         = 55
          Title             = "Logo personalizzato"
+         Transparent       = TRUE
+         Visible           = NONE
+         Width in Cells    = TRUE
+      End
+      Begin Label Screen1-La-2aabeecaa
+         SCREEN-COL        = 85,67
+         SCREEN-LINE       = 48,53
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen1-La-2aabeecaa
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 2,17
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Small Font
+         Font Variable     = Small-Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 46
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 24,15
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 12,00
+         Size Unit         = Default
+         Tab Order         = 56
+         Title             = "Sost. batterie"
          Transparent       = TRUE
          Visible           = NONE
          Width in Cells    = TRUE
@@ -10795,7 +11135,7 @@ Begin Screen Form1
       High Color        = 0
       ID                = 157
       Line              = 25,38
-      Lines             = 36,00
+      Lines             = 38,00
       Lines Unit        = Default
       Low Color         = 0
       Size              = 40,33
@@ -11985,9 +12325,57 @@ Begin Screen Form1
          After Procedure   = chk-pb-amp-3-AfterProcedure
          Link To           = chk-pb-amp-3-LinkTo
       End
+      Begin Check-Box chk-sost-batt-3
+         SCREEN-COL        = 140,50
+         SCREEN-LINE       = 48,30
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = chk-sost-batt-3
+         Bitmap Frame      = FALSE
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 15,50
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Enable Variable   = mod
+         Exception Value   = 0
+         Flat              = TRUE
+         Font              = Small Font
+         Font Variable     = Small-Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         Hint Variable     = 78-pb-sost-batt
+         ID                = 41
+         ID Variable       = AUTO-ID
+         Left Text         = FALSE
+         Line              = 23,92
+         Lines             = 1,54
+         Lines Unit        = Default
+         No Tab            = FALSE
+         Notify            = FALSE
+         Occurs            = 0
+         Self Act          = FALSE
+         Size              = 3,00
+         Size Unit         = Default
+         Tab Order         = 23
+         Termination Value = 0
+         Title Picture     = 9
+         Value             = 0:FALSE
+         Value Variable    = chk-sost-batt-3-buf
+         Visible           = NONE
+         Width in Cells    = TRUE
+         Before Procedure  = chk-sost-batt-3-BeforeProcedure
+         After Procedure   = chk-sost-batt-3-AfterProcedure
+      End
       Begin Grid gd-mag-3
          SCREEN-COL        = 127,00
-         SCREEN-LINE       = 48,53
+         SCREEN-LINE       = 50,07
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = gd-mag-3
@@ -12030,7 +12418,7 @@ Begin Screen Form1
          ID                = 180
          ID Variable       = AUTO-ID
          Last Row          = 0
-         Line              = 24,15
+         Line              = 25,69
          Lines             = 5,92
          Lines Unit        = Default
          No Tab            = FALSE
@@ -12043,7 +12431,7 @@ Begin Screen Form1
          Row Headings      = FALSE
          Size              = 38,17
          Size Unit         = Default
-         Tab Order         = 23
+         Tab Order         = 24
          Tiled Headings    = TRUE
          Use Tab           = FALSE
          Virtual Width     = 35
@@ -12088,7 +12476,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 21,00
          Size Unit         = Default
-         Tab Order         = 24
+         Tab Order         = 25
          Title             = "GG evas. parziale (forzata)"
          Transparent       = TRUE
          Visible           = NONE
@@ -12122,7 +12510,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 18,00
          Size Unit         = Default
-         Tab Order         = 25
+         Tab Order         = 26
          Title             = "GG per consegna"
          Transparent       = TRUE
          Visible           = NONE
@@ -12156,7 +12544,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 18,00
          Size Unit         = Default
-         Tab Order         = 26
+         Tab Order         = 27
          Title             = "GG validità volantino"
          Transparent       = TRUE
          Visible           = NONE
@@ -12190,7 +12578,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 18,00
          Size Unit         = Default
-         Tab Order         = 27
+         Tab Order         = 28
          Title             = "GG consegna MAX"
          Transparent       = TRUE
          Visible           = NONE
@@ -12224,7 +12612,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 28
+         Tab Order         = 29
          Title             = "Vettore < Kg"
          Transparent       = TRUE
          Visible           = NONE
@@ -12258,7 +12646,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 29
+         Tab Order         = 30
          Title             = "Vettore > Kg"
          Transparent       = TRUE
          Visible           = NONE
@@ -12292,7 +12680,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 30
+         Tab Order         = 31
          Title             = "Accorpamento"
          Transparent       = TRUE
          Visible           = NONE
@@ -12326,7 +12714,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 11,00
          Size Unit         = Default
-         Tab Order         = 31
+         Tab Order         = 32
          Title             = "Prenotaz. qta"
          Transparent       = TRUE
          Visible           = NONE
@@ -12360,7 +12748,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 32
+         Tab Order         = 33
          Title             = "Saldi PROMO"
          Transparent       = TRUE
          Visible           = NONE
@@ -12394,7 +12782,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 33
+         Tab Order         = 34
          Title             = "Saldi BANCO"
          Transparent       = TRUE
          Visible           = NONE
@@ -12428,7 +12816,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 8,00
          Size Unit         = Default
-         Tab Order         = 34
+         Tab Order         = 35
          Title Picture     = x(20)
          Title Variable    = lab-vet-min2-3-buf
          Transparent       = TRUE
@@ -12463,7 +12851,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 8,00
          Size Unit         = Default
-         Tab Order         = 35
+         Tab Order         = 36
          Title Picture     = x(20)
          Title Variable    = lab-vet-max-3-buf
          Transparent       = TRUE
@@ -12498,7 +12886,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 15,00
          Size Unit         = Default
-         Tab Order         = 36
+         Tab Order         = 37
          Title             = "Blocco Kg"
          Transparent       = TRUE
          Visible           = NONE
@@ -12532,7 +12920,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 11,00
          Size Unit         = Default
-         Tab Order         = 37
+         Tab Order         = 38
          Title             = "GESTISCI"
          Transparent       = FALSE
          Visible           = NONE
@@ -12566,7 +12954,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 13,00
          Size Unit         = Default
-         Tab Order         = 38
+         Tab Order         = 39
          Title             = "NO evadi tutto"
          Transparent       = TRUE
          Visible           = NONE
@@ -12600,7 +12988,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 39
+         Tab Order         = 40
          Title             = "Imb. minimo"
          Transparent       = TRUE
          Visible           = NONE
@@ -12634,7 +13022,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 40
+         Tab Order         = 41
          Title             = "Cod. art forn."
          Transparent       = TRUE
          Visible           = NONE
@@ -12668,7 +13056,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 41
+         Tab Order         = 42
          Title             = "Add. PB %"
          Transparent       = TRUE
          Visible           = NONE
@@ -12702,7 +13090,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 42
+         Tab Order         = 43
          Title             = "Add. Pb amp."
          Transparent       = TRUE
          Visible           = NONE
@@ -12736,7 +13124,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 14,00
          Size Unit         = Default
-         Tab Order         = 43
+         Tab Order         = 44
          Title             = "Add. Pb BOSCH"
          Transparent       = TRUE
          Visible           = NONE
@@ -12744,7 +13132,7 @@ Begin Screen Form1
       End
       Begin Label Screen1-La-2dc
          SCREEN-COL        = 127,17
-         SCREEN-LINE       = 54,61
+         SCREEN-LINE       = 56,15
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Screen1-La-2dc
@@ -12763,14 +13151,14 @@ Begin Screen Form1
          ID                = 201
          Justification     = Unaligned
          Label Offset      = 20
-         Line              = 30,23
+         Line              = 31,77
          Lines             = 1,31
          Lines Unit        = Default
          No Key Letter     = FALSE
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 44
+         Tab Order         = 45
          Title             = "Sampante"
          Transparent       = TRUE
          Visible           = NONE
@@ -12778,7 +13166,7 @@ Begin Screen Form1
       End
       Begin Entry-Field ef-stampante-3
          SCREEN-COL        = 127,00
-         SCREEN-LINE       = 56,07
+         SCREEN-LINE       = 57,61
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = ef-stampante-3
@@ -12805,7 +13193,7 @@ Begin Screen Form1
          ID                = 202
          ID Variable       = AUTO-ID
          Justification     = Unaligned
-         Line              = 31,69
+         Line              = 33,23
          Lines             = 1,31
          Lines Unit        = Default
          Max Lines         = 0
@@ -12823,7 +13211,7 @@ Begin Screen Form1
          Size              = 38,17
          Size Unit         = Default
          Style             = Singleline
-         Tab Order         = 45
+         Tab Order         = 46
          Use Return        = FALSE
          Use Tab           = FALSE
          Value Multiple    = FALSE
@@ -12836,7 +13224,7 @@ Begin Screen Form1
       End
       Begin Check-Box chk-layout-pers-3
          SCREEN-COL        = 145,50
-         SCREEN-LINE       = 57,84
+         SCREEN-LINE       = 59,38
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = chk-layout-pers-3
@@ -12863,7 +13251,7 @@ Begin Screen Form1
          ID                = 203
          ID Variable       = AUTO-ID
          Left Text         = FALSE
-         Line              = 33,46
+         Line              = 35,00
          Lines             = 1,54
          Lines Unit        = Default
          No Tab            = FALSE
@@ -12872,7 +13260,7 @@ Begin Screen Form1
          Self Act          = FALSE
          Size              = 3,00
          Size Unit         = Default
-         Tab Order         = 46
+         Tab Order         = 47
          Termination Value = 0
          Title Picture     = 9
          Value             = 0:FALSE
@@ -12884,7 +13272,7 @@ Begin Screen Form1
       End
       Begin Push-Button pb-path-logo-3
          SCREEN-COL        = 162,33
-         SCREEN-LINE       = 58,23
+         SCREEN-LINE       = 59,76
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = pb-path-logo-3
@@ -12908,7 +13296,7 @@ Begin Screen Form1
          Help ID           = 0
          ID                = 204
          ID Variable       = AUTO-ID
-         Line              = 33,85
+         Line              = 35,38
          Lines             = 1,08
          Lines Unit        = Default
          No Auto Default   = FALSE
@@ -12918,7 +13306,7 @@ Begin Screen Form1
          Size              = 2,83
          Size Unit         = Default
          Style             = Other
-         Tab Order         = 47
+         Tab Order         = 48
          Termination Value = 0
          Title             = "..."
          Visible           = NONE
@@ -12927,7 +13315,7 @@ Begin Screen Form1
       End
       Begin Entry-Field ef-path-logo-3
          SCREEN-COL        = 127,00
-         SCREEN-LINE       = 59,53
+         SCREEN-LINE       = 61,07
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = ef-path-logo-3
@@ -12955,7 +13343,7 @@ Begin Screen Form1
          ID                = 205
          ID Variable       = AUTO-ID
          Justification     = Unaligned
-         Line              = 35,15
+         Line              = 36,69
          Lines             = 1,31
          Lines Unit        = Default
          Max Lines         = 0
@@ -12973,7 +13361,7 @@ Begin Screen Form1
          Size              = 38,17
          Size Unit         = Default
          Style             = Singleline
-         Tab Order         = 48
+         Tab Order         = 49
          Use Return        = FALSE
          Use Tab           = FALSE
          Value Multiple    = FALSE
@@ -12986,7 +13374,7 @@ Begin Screen Form1
       End
       Begin Push-Button pb-stampanti-3
          SCREEN-COL        = 162,33
-         SCREEN-LINE       = 54,84
+         SCREEN-LINE       = 56,38
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = pb-stampanti-3
@@ -13009,7 +13397,7 @@ Begin Screen Form1
          Height in Cells   = TRUE
          Help ID           = 0
          ID                = 206
-         Line              = 30,46
+         Line              = 32,00
          Lines             = 1,08
          Lines Unit        = Default
          No Auto Default   = FALSE
@@ -13019,7 +13407,7 @@ Begin Screen Form1
          Size              = 2,83
          Size Unit         = Default
          Style             = Other
-         Tab Order         = 49
+         Tab Order         = 50
          Termination Value = 0
          Title             = "..."
          Visible           = NONE
@@ -13054,7 +13442,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 50
+         Tab Order         = 51
          Title             = "Vettore < Kg"
          Transparent       = TRUE
          Visible           = NONE
@@ -13088,7 +13476,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 8,00
          Size Unit         = Default
-         Tab Order         = 51
+         Tab Order         = 52
          Title Picture     = x(20)
          Title Variable    = lab-vet-min1-3-buf
          Transparent       = TRUE
@@ -13097,7 +13485,7 @@ Begin Screen Form1
       End
       Begin Label Screen1-La-2aabeebaaa
          SCREEN-COL        = 127,17
-         SCREEN-LINE       = 57,84
+         SCREEN-LINE       = 59,38
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Screen1-La-2aabeebaaa
@@ -13116,15 +13504,49 @@ Begin Screen Form1
          ID                = 209
          Justification     = Unaligned
          Label Offset      = 20
-         Line              = 33,46
+         Line              = 35,00
          Lines             = 1,31
          Lines Unit        = Default
          No Key Letter     = FALSE
          Occurs            = 0
          Size              = 17,00
          Size Unit         = Default
-         Tab Order         = 52
+         Tab Order         = 53
          Title             = "Logo personalizzato"
+         Transparent       = TRUE
+         Visible           = NONE
+         Width in Cells    = TRUE
+      End
+      Begin Label Screen1-La-2aabeecaaa
+         SCREEN-COL        = 127,17
+         SCREEN-LINE       = 48,53
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen1-La-2aabeecaaa
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 2,17
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Small Font
+         Font Variable     = Small-Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 46
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 24,15
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 12,00
+         Size Unit         = Default
+         Tab Order         = 54
+         Title             = "Sost. batterie"
          Transparent       = TRUE
          Visible           = NONE
          Width in Cells    = TRUE
@@ -13152,7 +13574,7 @@ Begin Screen Form1
       High Color        = 0
       ID                = 210
       Line              = 25,38
-      Lines             = 36,00
+      Lines             = 38,00
       Lines Unit        = Default
       Low Color         = 0
       Size              = 40,33
@@ -14342,9 +14764,57 @@ Begin Screen Form1
          After Procedure   = chk-pb-amp-4-AfterProcedure
          Link To           = chk-pb-amp-4-LinkTo
       End
+      Begin Check-Box chk-sost-batt-4
+         SCREEN-COL        = 182,17
+         SCREEN-LINE       = 48,30
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = chk-sost-batt-4
+         Bitmap Frame      = FALSE
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 15,50
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Enable Variable   = mod
+         Exception Value   = 0
+         Flat              = TRUE
+         Font              = Small Font
+         Font Variable     = Small-Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         Hint Variable     = 78-pb-sost-batt
+         ID                = 41
+         ID Variable       = AUTO-ID
+         Left Text         = FALSE
+         Line              = 23,92
+         Lines             = 1,54
+         Lines Unit        = Default
+         No Tab            = FALSE
+         Notify            = FALSE
+         Occurs            = 0
+         Self Act          = FALSE
+         Size              = 3,00
+         Size Unit         = Default
+         Tab Order         = 23
+         Termination Value = 0
+         Title Picture     = 9
+         Value             = 0:FALSE
+         Value Variable    = chk-sost-batt-4-buf
+         Visible           = NONE
+         Width in Cells    = TRUE
+         Before Procedure  = chk-sost-batt-4-BeforeProcedure
+         After Procedure   = chk-sost-batt-4-AfterProcedure
+      End
       Begin Grid gd-mag-4
          SCREEN-COL        = 168,67
-         SCREEN-LINE       = 48,53
+         SCREEN-LINE       = 50,07
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = gd-mag-4
@@ -14387,7 +14857,7 @@ Begin Screen Form1
          ID                = 233
          ID Variable       = AUTO-ID
          Last Row          = 0
-         Line              = 24,15
+         Line              = 25,69
          Lines             = 5,92
          Lines Unit        = Default
          No Tab            = FALSE
@@ -14400,7 +14870,7 @@ Begin Screen Form1
          Row Headings      = FALSE
          Size              = 38,17
          Size Unit         = Default
-         Tab Order         = 23
+         Tab Order         = 24
          Tiled Headings    = TRUE
          Use Tab           = FALSE
          Virtual Width     = 35
@@ -14445,7 +14915,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 21,00
          Size Unit         = Default
-         Tab Order         = 24
+         Tab Order         = 25
          Title             = "GG evas. parziale (forzata)"
          Transparent       = TRUE
          Visible           = NONE
@@ -14479,7 +14949,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 18,00
          Size Unit         = Default
-         Tab Order         = 25
+         Tab Order         = 26
          Title             = "GG per consegna"
          Transparent       = TRUE
          Visible           = NONE
@@ -14513,7 +14983,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 18,00
          Size Unit         = Default
-         Tab Order         = 26
+         Tab Order         = 27
          Title             = "GG validità volantino"
          Transparent       = TRUE
          Visible           = NONE
@@ -14547,7 +15017,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 18,00
          Size Unit         = Default
-         Tab Order         = 27
+         Tab Order         = 28
          Title             = "GG consegna MAX"
          Transparent       = TRUE
          Visible           = NONE
@@ -14581,7 +15051,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 28
+         Tab Order         = 29
          Title             = "Vettore < Kg"
          Transparent       = TRUE
          Visible           = NONE
@@ -14615,7 +15085,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 29
+         Tab Order         = 30
          Title             = "Vettore > Kg"
          Transparent       = TRUE
          Visible           = NONE
@@ -14649,7 +15119,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 30
+         Tab Order         = 31
          Title             = "Accorpamento"
          Transparent       = TRUE
          Visible           = NONE
@@ -14683,7 +15153,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 31
+         Tab Order         = 32
          Title             = "Prenotaz. qta"
          Transparent       = TRUE
          Visible           = NONE
@@ -14717,7 +15187,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 32
+         Tab Order         = 33
          Title             = "Saldi PROMO"
          Transparent       = TRUE
          Visible           = NONE
@@ -14751,7 +15221,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 33
+         Tab Order         = 34
          Title             = "Saldi BANCO"
          Transparent       = TRUE
          Visible           = NONE
@@ -14785,7 +15255,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 8,00
          Size Unit         = Default
-         Tab Order         = 34
+         Tab Order         = 35
          Title Picture     = x(20)
          Title Variable    = lab-vet-min2-4-buf
          Transparent       = TRUE
@@ -14820,7 +15290,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 8,00
          Size Unit         = Default
-         Tab Order         = 35
+         Tab Order         = 36
          Title Picture     = x(20)
          Title Variable    = lab-vet-max-4-buf
          Transparent       = TRUE
@@ -14855,7 +15325,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 15,00
          Size Unit         = Default
-         Tab Order         = 36
+         Tab Order         = 37
          Title             = "Blocco Kg"
          Transparent       = TRUE
          Visible           = NONE
@@ -14889,7 +15359,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 11,00
          Size Unit         = Default
-         Tab Order         = 37
+         Tab Order         = 38
          Title             = "GESTISCI"
          Transparent       = FALSE
          Visible           = NONE
@@ -14923,7 +15393,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 13,00
          Size Unit         = Default
-         Tab Order         = 38
+         Tab Order         = 39
          Title             = "NO evadi tutto"
          Transparent       = TRUE
          Visible           = NONE
@@ -14957,7 +15427,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 39
+         Tab Order         = 40
          Title             = "Imb. minimo"
          Transparent       = TRUE
          Visible           = NONE
@@ -14991,7 +15461,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 40
+         Tab Order         = 41
          Title             = "Cod. art forn."
          Transparent       = TRUE
          Visible           = NONE
@@ -15025,7 +15495,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 41
+         Tab Order         = 42
          Title             = "Add. Pb amp."
          Transparent       = TRUE
          Visible           = NONE
@@ -15059,7 +15529,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 42
+         Tab Order         = 43
          Title             = "Add. PB %"
          Transparent       = TRUE
          Visible           = NONE
@@ -15093,7 +15563,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 14,00
          Size Unit         = Default
-         Tab Order         = 43
+         Tab Order         = 44
          Title             = "Add. Pb BOSCH"
          Transparent       = TRUE
          Visible           = NONE
@@ -15101,7 +15571,7 @@ Begin Screen Form1
       End
       Begin Label Screen1-La-2dd
          SCREEN-COL        = 168,84
-         SCREEN-LINE       = 54,61
+         SCREEN-LINE       = 56,15
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Screen1-La-2dd
@@ -15120,14 +15590,14 @@ Begin Screen Form1
          ID                = 266
          Justification     = Unaligned
          Label Offset      = 20
-         Line              = 30,23
+         Line              = 31,77
          Lines             = 1,31
          Lines Unit        = Default
          No Key Letter     = FALSE
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 44
+         Tab Order         = 45
          Title             = "Sampante"
          Transparent       = TRUE
          Visible           = NONE
@@ -15135,7 +15605,7 @@ Begin Screen Form1
       End
       Begin Entry-Field ef-stampante-4
          SCREEN-COL        = 168,67
-         SCREEN-LINE       = 56,07
+         SCREEN-LINE       = 57,61
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = ef-stampante-4
@@ -15162,7 +15632,7 @@ Begin Screen Form1
          ID                = 267
          ID Variable       = AUTO-ID
          Justification     = Unaligned
-         Line              = 31,69
+         Line              = 33,23
          Lines             = 1,31
          Lines Unit        = Default
          Max Lines         = 0
@@ -15180,7 +15650,7 @@ Begin Screen Form1
          Size              = 38,17
          Size Unit         = Default
          Style             = Singleline
-         Tab Order         = 45
+         Tab Order         = 46
          Use Return        = FALSE
          Use Tab           = FALSE
          Value Multiple    = FALSE
@@ -15193,7 +15663,7 @@ Begin Screen Form1
       End
       Begin Check-Box chk-layout-pers-4
          SCREEN-COL        = 187,17
-         SCREEN-LINE       = 57,84
+         SCREEN-LINE       = 59,38
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = chk-layout-pers-4
@@ -15220,7 +15690,7 @@ Begin Screen Form1
          ID                = 268
          ID Variable       = AUTO-ID
          Left Text         = FALSE
-         Line              = 33,46
+         Line              = 35,00
          Lines             = 1,54
          Lines Unit        = Default
          No Tab            = FALSE
@@ -15229,7 +15699,7 @@ Begin Screen Form1
          Self Act          = FALSE
          Size              = 3,00
          Size Unit         = Default
-         Tab Order         = 46
+         Tab Order         = 47
          Termination Value = 0
          Title Picture     = 9
          Value             = 0:FALSE
@@ -15241,7 +15711,7 @@ Begin Screen Form1
       End
       Begin Push-Button pb-path-logo-4
          SCREEN-COL        = 204,00
-         SCREEN-LINE       = 58,23
+         SCREEN-LINE       = 59,76
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = pb-path-logo-4
@@ -15265,7 +15735,7 @@ Begin Screen Form1
          Help ID           = 0
          ID                = 269
          ID Variable       = AUTO-ID
-         Line              = 33,85
+         Line              = 35,38
          Lines             = 1,08
          Lines Unit        = Default
          No Auto Default   = FALSE
@@ -15275,7 +15745,7 @@ Begin Screen Form1
          Size              = 2,83
          Size Unit         = Default
          Style             = Other
-         Tab Order         = 47
+         Tab Order         = 48
          Termination Value = 0
          Title             = "..."
          Visible           = NONE
@@ -15284,7 +15754,7 @@ Begin Screen Form1
       End
       Begin Entry-Field ef-path-logo-4
          SCREEN-COL        = 168,67
-         SCREEN-LINE       = 59,53
+         SCREEN-LINE       = 61,07
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = ef-path-logo-4
@@ -15312,7 +15782,7 @@ Begin Screen Form1
          ID                = 270
          ID Variable       = AUTO-ID
          Justification     = Unaligned
-         Line              = 35,15
+         Line              = 36,69
          Lines             = 1,31
          Lines Unit        = Default
          Max Lines         = 0
@@ -15330,7 +15800,7 @@ Begin Screen Form1
          Size              = 38,17
          Size Unit         = Default
          Style             = Singleline
-         Tab Order         = 48
+         Tab Order         = 49
          Use Return        = FALSE
          Use Tab           = FALSE
          Value Multiple    = FALSE
@@ -15343,7 +15813,7 @@ Begin Screen Form1
       End
       Begin Push-Button pb-stampanti-4
          SCREEN-COL        = 204,00
-         SCREEN-LINE       = 54,84
+         SCREEN-LINE       = 56,38
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = pb-stampanti-4
@@ -15366,7 +15836,7 @@ Begin Screen Form1
          Height in Cells   = TRUE
          Help ID           = 0
          ID                = 271
-         Line              = 30,46
+         Line              = 32,00
          Lines             = 1,08
          Lines Unit        = Default
          No Auto Default   = FALSE
@@ -15376,7 +15846,7 @@ Begin Screen Form1
          Size              = 2,83
          Size Unit         = Default
          Style             = Other
-         Tab Order         = 49
+         Tab Order         = 50
          Termination Value = 0
          Title             = "..."
          Visible           = NONE
@@ -15411,7 +15881,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 12,00
          Size Unit         = Default
-         Tab Order         = 50
+         Tab Order         = 51
          Title             = "Vettore < Kg"
          Transparent       = TRUE
          Visible           = NONE
@@ -15445,7 +15915,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 8,00
          Size Unit         = Default
-         Tab Order         = 51
+         Tab Order         = 52
          Title Picture     = x(20)
          Title Variable    = lab-vet-min1-4-buf
          Transparent       = TRUE
@@ -15454,7 +15924,7 @@ Begin Screen Form1
       End
       Begin Label Screen1-La-2aabeebaab
          SCREEN-COL        = 168,84
-         SCREEN-LINE       = 57,84
+         SCREEN-LINE       = 59,38
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Screen1-La-2aabeebaab
@@ -15473,15 +15943,49 @@ Begin Screen Form1
          ID                = 274
          Justification     = Unaligned
          Label Offset      = 20
-         Line              = 33,46
+         Line              = 35,00
          Lines             = 1,31
          Lines Unit        = Default
          No Key Letter     = FALSE
          Occurs            = 0
          Size              = 17,00
          Size Unit         = Default
-         Tab Order         = 52
+         Tab Order         = 53
          Title             = "Logo personalizzato"
+         Transparent       = TRUE
+         Visible           = NONE
+         Width in Cells    = TRUE
+      End
+      Begin Label Screen1-La-2aabeecaaaa
+         SCREEN-COL        = 168,84
+         SCREEN-LINE       = 48,53
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen1-La-2aabeecaaaa
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 2,17
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Small Font
+         Font Variable     = Small-Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 46
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 24,15
+         Lines             = 1,31
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 12,00
+         Size Unit         = Default
+         Tab Order         = 54
+         Title             = "Sost. batterie"
          Transparent       = TRUE
          Visible           = NONE
          Width in Cells    = TRUE
@@ -16488,7 +16992,7 @@ BEGIN-TEXT
                  88 old-prm-cod-art-forn-si VALUE IS 0. 
                  88 old-prm-cod-art-forn-no VALUE IS 1. 
               10 old-prm-vet-minore-kg1            PIC  9(5).
-              10 old-prm-minore-kg1    PIC  9(5)v9(3).
+              10 old-prm-minore-kg1    PIC  9(5)v9(3).     
                10 FILLER           PIC  x(85).
               10 old-prm-dati-comuni.
                  15 old-prm-data-creazione           PIC  9(8).
@@ -16508,8 +17012,11 @@ BEGIN-TEXT
                        20 old-prm-add-piombo-bosch        PIC  9.
                            88 old-prm-add-piombo-bosch-si VALUE IS 1. 
                            88 old-prm-add-piombo-bosch-no VALUE IS 0.
-                   15 old-prm-layout-pers       PIC  9.
-                   15 old-prm-num-vuoto-2  PIC  9(14).
+                   15 old-prm-layout-pers       PIC  9.     
+                   15 old-prm-sost-batt    PIC  9.
+                       88 old-prm-sost-batt-si VALUE IS 1. 
+                       88 old-prm-sost-batt-no VALUE IS 0. 
+                   15 old-prm-num-vuoto-2  PIC  9(13).
                    15 old-prm-num-vuoto-3  PIC  9(18).
                    15 old-prm-stampante    PIC  x(100).
                    15 old-prm-path-logo    pic  x(200).
@@ -16566,7 +17073,7 @@ BEGIN-TEXT
                    88 como-prm-cod-art-forn-si VALUE IS 1. 
                    88 como-prm-cod-art-forn-no VALUE IS 0. 
                10 como-prm-vet-minore-kg1           PIC  9(5).
-               10 como-prm-minore-kg1   PIC  9(5)v9(3).
+               10 como-prm-minore-kg1   PIC  9(5)v9(3).         
                10 FILLER           PIC  x(85).
                10 como-prm-dati-comuni.
                    15 como-prm-data-creazione           PIC  9(8).
@@ -16588,8 +17095,11 @@ BEGIN-TEXT
                            88 como-prm-add-piombo-bosch-no VALUE IS 0. 
                    15 como-prm-layout-pers  PIC  9.
                        88 como-prm-layout-pers-si VALUE IS 1. 
-                       88 como-prm-layout-pers-no VALUE IS 0. 
-                   15 como-prm-num-vuoto-2  PIC  9(14).
+                       88 como-prm-layout-pers-no VALUE IS 0.  
+                   15 como-prm-sost-batt    PIC  9.
+                       88 como-prm-sost-batt-si VALUE IS 1. 
+                       88 como-prm-sost-batt-no VALUE IS 0. 
+                   15 como-prm-num-vuoto-2  PIC  9(13).
                    15 como-prm-num-vuoto-3  PIC  9(18).
                    15 como-prm-stampante    PIC  x(100).
                    15 como-prm-path-logo    PIC  x(200).
@@ -16702,11 +17212,13 @@ BEGIN-TEXT
            move prm-blocco-kg         of param to ef-blocco-kg-buf.
            move prm-prenotazione-qta  of param to chk-prenot-buf.
            move prm-accorpa           of param to chk-accorpa-buf.
+           move prm-sost-batt         of param to chk-sost-batt-buf.
            move prm-saldi-banco       of param to chk-banco-buf.  
            move prm-imb-minimo        of param to chk-imb-min-buf. 
            move prm-cod-art-forn      of param to chk-art-forn-buf.
-           move prm-add-piombo-perce  of param to chk-pb-perce-buf.
+           move prm-add-piombo-perce  of param to chk-pb-perce-buf.   
            move prm-add-piombo-ampere of param to chk-pb-amp-buf.
+           move prm-sost-batt         of param to chk-pb-sost-batt-buf.
            move prm-add-piombo-bosch  of param to chk-pb-bosch-buf.
            move prm-saldi-promo       of param to chk-promo-buf.
            move prm-escludi-tutto     of param to chk-escludi-buf. 
@@ -17686,8 +18198,9 @@ BEGIN-TEXT
            move prm-minore-kg2        of param  to ef-min-kg2-4-buf
 
            move prm-blocco-kg        of param  to ef-blocco-kg-4-buf
-           move prm-prenotazione-qta of param  to chk-prenot-4-buf  
+           move prm-prenotazione-qta of param  to chk-prenot-4-buf    
            move prm-accorpa          of param  to chk-accorpa-4-buf 
+           move prm-sost-batt        of param  to chk-sost-batt-4-buf 
            move prm-saldi-banco      of param  to chk-banco-4-buf   
            move prm-imb-minimo       of param  to chk-imb-min-4-buf.
            move prm-cod-art-forn     of param  to chk-art-forn-4-buf.
@@ -17906,6 +18419,7 @@ BEGIN-TEXT
               prm-blocco-kg        of param not = old-prm-blocco-kg        or
               prm-prenotazione-qta of param not = old-prm-prenotazione-qta or
               prm-accorpa          of param not = old-prm-accorpa          or
+              prm-sost-batt        of param not = old-prm-sost-batt        or
               prm-saldi-banco      of param not = old-prm-saldi-banco      or
               prm-saldi-promo      of param not = old-prm-saldi-promo      or
               prm-escludi-tutto    of param not = old-prm-escludi-tutto    or
@@ -18092,6 +18606,9 @@ BEGIN-TEXT
            end-if
            if como-prm-accorpa not = old-prm-accorpa     
               move como-prm-accorpa to prm-accorpa of param
+           end-if
+           if como-prm-sost-batt not = old-prm-sost-batt
+              move como-prm-sost-batt to prm-sost-batt of param
            end-if
            if como-prm-saldi-banco not = old-prm-saldi-banco 
               move como-prm-saldi-banco to prm-saldi-banco of param
@@ -18295,6 +18812,7 @@ BEGIN-TEXT
            move prm-blocco-kg          of param to ef-blocco-kg-3-buf
            move prm-prenotazione-qta   of param to chk-prenot-3-buf  
            move prm-accorpa            of param to chk-accorpa-3-buf 
+           move prm-sost-batt          of param to chk-sost-batt-3-buf 
            move prm-saldi-banco        of param to chk-banco-3-buf   
            move prm-imb-minimo         of param to chk-imb-min-3-buf.
            move prm-cod-art-forn       of param to chk-art-forn-3-buf. 
@@ -18355,6 +18873,7 @@ BEGIN-TEXT
            move 0 to ef-blocco-kg-4-buf.
            move 0 to chk-prenot-4-buf.
            move 0 to chk-accorpa-4-buf.
+           move 0 to chk-sost-batt-4-buf.
            move 0 to chk-banco-4-buf.
            move 0 to chk-imb-min-4-buf.
            move 0 to chk-art-forn-4-buf.
@@ -18522,6 +19041,7 @@ BEGIN-TEXT
            move prm-blocco-kg          of param to ef-blocco-kg-2-buf
            move prm-prenotazione-qta   of param to chk-prenot-2-buf  
            move prm-accorpa            of param to chk-accorpa-2-buf 
+           move prm-sost-batt          of param to chk-sost-batt-2-buf 
            move prm-saldi-banco        of param to chk-banco-2-buf   
            move prm-imb-minimo         of param to chk-imb-min-2-buf.
            move prm-cod-art-forn       of param to chk-art-forn-2-buf. 
@@ -18582,6 +19102,7 @@ BEGIN-TEXT
            move 0 to ef-blocco-kg-3-buf.
            move 0 to chk-prenot-3-buf.
            move 0 to chk-accorpa-3-buf.
+           move 0 to chk-sost-batt-3-buf.
            move 0 to chk-banco-3-buf.
            move 0 to chk-imb-min-3-buf.
            move 0 to chk-art-forn-3-buf.
@@ -18616,6 +19137,7 @@ BEGIN-TEXT
            move 0 to ef-blocco-kg-4-buf.
            move 0 to chk-prenot-4-buf.
            move 0 to chk-accorpa-4-buf.
+           move 0 to chk-sost-batt-4-buf.
            move 0 to chk-banco-4-buf.
            move 0 to chk-imb-min-4-buf.
            move 0 to chk-art-forn-4-buf.
@@ -18742,6 +19264,7 @@ BEGIN-TEXT
            move prm-blocco-kg         of param to ef-blocco-kg-1-buf
            move prm-prenotazione-qta  of param to chk-prenot-1-buf  
            move prm-accorpa           of param to chk-accorpa-1-buf 
+           move prm-sost-batt         of param to chk-sost-batt-1-buf 
            move prm-saldi-banco       of param to chk-banco-1-buf   
            move prm-imb-minimo        of param to chk-imb-min-1-buf.
            move prm-cod-art-forn      of param to chk-art-forn-1-buf.
@@ -18802,6 +19325,7 @@ BEGIN-TEXT
            move 0 to ef-blocco-kg-2-buf.
            move 0 to chk-prenot-2-buf.
            move 0 to chk-accorpa-2-buf.
+           move 0 to chk-sost-batt-2-buf.
            move 0 to chk-banco-2-buf.  
            move 0 to chk-imb-min-2-buf.
            move 0 to chk-art-forn-2-buf.  
@@ -18836,6 +19360,7 @@ BEGIN-TEXT
            move 0 to ef-blocco-kg-3-buf.
            move 0 to chk-prenot-3-buf.
            move 0 to chk-accorpa-3-buf.
+           move 0 to chk-sost-batt-3-buf.
            move 0 to chk-banco-3-buf.
            move 0 to chk-imb-min-3-buf.
            move 0 to chk-art-forn-3-buf.
@@ -18867,6 +19392,7 @@ BEGIN-TEXT
            move 0 to ef-blocco-kg-4-buf.
            move 0 to chk-prenot-4-buf.
            move 0 to chk-accorpa-4-buf.
+           move 0 to chk-sost-batt-4-buf.
            move 0 to chk-banco-4-buf.
            move 0 to chk-imb-min-4-buf.
            move 0 to chk-art-forn-4-buf.
@@ -18957,6 +19483,11 @@ BEGIN-TEXT
            if como-prm-accorpa not = old-prm-accorpa     
               move como-prm-accorpa to chk-accorpa-1-buf
               modify chk-accorpa-1 value chk-accorpa-1-buf
+              set modificato to true
+           end-if
+           if como-prm-sost-batt not = old-prm-sost-batt
+              move como-prm-sost-batt to chk-sost-batt-1-buf
+              modify chk-sost-batt-1 value chk-sost-batt-1-buf
               set modificato to true
            end-if
            if como-prm-saldi-banco not = old-prm-saldi-banco 
@@ -19146,6 +19677,11 @@ BEGIN-TEXT
               move como-prm-accorpa to chk-accorpa-2-buf
               modify chk-accorpa-2 value chk-accorpa-2-buf
               set modificato to true
+           end-if             
+           if como-prm-sost-batt not = old-prm-sost-batt
+              move como-prm-sost-batt to chk-sost-batt-2-buf
+              modify chk-sost-batt-2 value chk-sost-batt-2-buf
+              set modificato to true
            end-if
            if como-prm-saldi-banco not = old-prm-saldi-banco 
               move como-prm-saldi-banco to chk-banco-2-buf
@@ -19329,6 +19865,11 @@ BEGIN-TEXT
               move como-prm-accorpa to chk-accorpa-3-buf
               modify chk-accorpa-3 value chk-accorpa-3-buf
               set modificato to true
+           end-if                  
+           if como-prm-sost-batt not = old-prm-sost-batt
+              move como-prm-sost-batt to chk-sost-batt-3-buf
+              modify chk-sost-batt-3 value chk-sost-batt-3-buf
+              set modificato to true
            end-if
            if como-prm-saldi-banco not = old-prm-saldi-banco 
               move como-prm-saldi-banco to chk-banco-3-buf
@@ -19511,6 +20052,11 @@ BEGIN-TEXT
            if como-prm-accorpa not = old-prm-accorpa     
               move como-prm-accorpa to chk-accorpa-4-buf
               modify chk-accorpa-4 value chk-accorpa-4-buf
+              set modificato to true
+           end-if                   
+           if como-prm-sost-batt not = old-prm-sost-batt
+              move como-prm-sost-batt to chk-sost-batt-4-buf
+              modify chk-sost-batt-4 value chk-sost-batt-4-buf
               set modificato to true
            end-if
            if como-prm-saldi-banco not = old-prm-saldi-banco 
@@ -19740,6 +20286,7 @@ BEGIN-TEXT
 
            set prm-prenotazione-qta-no of param to true
            set prm-accorpa-no          of param to true
+           set prm-sost-batt-no        of param to true
            set prm-saldi-banco-no      of param to true
            set prm-saldi-promo-no      of param to true
            set prm-escludi-tutto-no    of param to true
@@ -19911,8 +20458,9 @@ BEGIN-TEXT
            move ef-min-vet2-buf   to prm-vet-minore-kg2    of param.
            move ef-min-kg2-buf    to prm-minore-kg2        of param.
            move ef-blocco-kg-buf to prm-blocco-kg        of param.
-           move chk-prenot-buf   to prm-prenotazione-qta of param.
+           move chk-prenot-buf   to prm-prenotazione-qta of param. 
            move chk-accorpa-buf  to prm-accorpa          of param.
+           move chk-sost-batt-buf  to prm-sost-batt          of param.
            move chk-banco-buf    to prm-saldi-banco      of param.
            move chk-promo-buf    to prm-saldi-promo      of param.
            move chk-escludi-buf  to prm-escludi-tutto    of param.
@@ -19963,6 +20511,7 @@ BEGIN-TEXT
            move ef-blocco-kg-1-buf to prm-blocco-kg       of param
            move chk-prenot-1-buf   to prm-prenotazione-qta of param
            move chk-accorpa-1-buf  to prm-accorpa         of param
+           move chk-sost-batt-1-buf  to prm-sost-batt of param
            move chk-banco-1-buf    to prm-saldi-banco     of param
            move chk-promo-1-buf    to prm-saldi-promo     of param
            move chk-escludi-1-buf  to prm-escludi-tutto   of param
@@ -20014,7 +20563,8 @@ BEGIN-TEXT
            move ef-min-kg2-2-buf    to prm-minore-kg2       of param
            move ef-blocco-kg-2-buf to prm-blocco-kg       of param
            move chk-prenot-2-buf   to prm-prenotazione-qta of param
-           move chk-accorpa-2-buf  to prm-accorpa         of param
+           move chk-accorpa-2-buf  to prm-accorpa         of param  
+           move chk-sost-batt-2-buf  to prm-sost-batt of param
            move chk-banco-2-buf    to prm-saldi-banco     of param
            move chk-promo-2-buf    to prm-saldi-promo     of param
            move chk-escludi-2-buf  to prm-escludi-tutto   of param
@@ -20067,6 +20617,7 @@ BEGIN-TEXT
            move ef-blocco-kg-3-buf to prm-blocco-kg       of param
            move chk-prenot-3-buf   to prm-prenotazione-qta of param
            move chk-accorpa-3-buf  to prm-accorpa         of param
+           move chk-sost-batt-3-buf  to prm-sost-batt of param
            move chk-banco-3-buf    to prm-saldi-banco     of param
            move chk-promo-3-buf    to prm-saldi-promo     of param
            move chk-escludi-3-buf  to prm-escludi-tutto   of param
@@ -20119,7 +20670,8 @@ BEGIN-TEXT
            move ef-min-kg2-4-buf    to prm-minore-kg2       of param
            move ef-blocco-kg-4-buf to prm-blocco-kg       of param
            move chk-prenot-4-buf   to prm-prenotazione-qta of param
-           move chk-accorpa-4-buf  to prm-accorpa         of param
+           move chk-accorpa-4-buf  to prm-accorpa         of param    
+           move chk-sost-batt-4-buf  to prm-sost-batt of param
            move chk-banco-4-buf    to prm-saldi-banco     of param
            move chk-promo-4-buf    to prm-saldi-promo     of param
            move chk-escludi-4-buf  to prm-escludi-tutto   of param 
@@ -21533,6 +22085,7 @@ BEGIN-TEXT
               move ef-blocco-kg-buf  to ef-blocco-kg-1-buf 
               move chk-prenot-buf    to chk-prenot-1-buf   
               move chk-accorpa-buf   to chk-accorpa-1-buf  
+              move chk-sost-batt-buf to chk-sost-batt-1-buf  
               move chk-banco-buf     to chk-banco-1-buf    
               move chk-promo-buf     to chk-promo-1-buf    
               move chk-escludi-buf   to chk-escludi-1-buf 
@@ -21581,6 +22134,7 @@ BEGIN-TEXT
               move 0 to ef-blocco-kg-2-buf 
               move 0 to chk-prenot-2-buf   
               move 0 to chk-accorpa-2-buf  
+              move 0 to chk-sost-batt-2-buf
               move 0 to chk-banco-2-buf    
               move 0 to chk-promo-2-buf
               move 0 to chk-escludi-2-buf
@@ -21869,6 +22423,7 @@ BEGIN-TEXT
                  move ef-blocco-kg-buf to ef-blocco-kg-2-buf 
                  move chk-prenot-buf   to chk-prenot-2-buf   
                  move chk-accorpa-buf  to chk-accorpa-2-buf  
+                 move chk-sost-batt-buf to chk-sost-batt-2-buf
                  move chk-banco-buf    to chk-banco-2-buf    
                  move chk-promo-buf    to chk-promo-2-buf    
                  move chk-escludi-buf  to chk-escludi-2-buf   
@@ -21914,6 +22469,7 @@ BEGIN-TEXT
                  move ef-blocco-kg-1-buf to ef-blocco-kg-2-buf 
                  move chk-prenot-1-buf   to chk-prenot-2-buf   
                  move chk-accorpa-1-buf  to chk-accorpa-2-buf  
+                 move chk-sost-batt-1-buf to chk-sost-batt-2-buf
                  move chk-banco-1-buf    to chk-banco-2-buf    
                  move chk-promo-1-buf    to chk-promo-2-buf    
                  move chk-escludi-1-buf  to chk-escludi-2-buf  
@@ -21963,6 +22519,7 @@ BEGIN-TEXT
               move 0 to ef-blocco-kg-2-buf 
               move 0 to chk-prenot-2-buf   
               move 0 to chk-accorpa-2-buf  
+              move 0 to chk-sost-batt-2-buf
               move 0 to chk-banco-2-buf    
               move 0 to chk-promo-2-buf
               move 0 to chk-escludi-2-buf   
@@ -22012,6 +22569,7 @@ BEGIN-TEXT
                     move ef-blocco-kg-buf to ef-blocco-kg-3-buf 
                     move chk-prenot-buf   to chk-prenot-3-buf   
                     move chk-accorpa-buf  to chk-accorpa-3-buf  
+                    move chk-sost-batt-buf  to chk-sost-batt-3-buf  
                     move chk-banco-buf    to chk-banco-3-buf    
                     move chk-promo-buf    to chk-promo-3-buf    
                     move chk-escludi-buf  to chk-escludi-3-buf 
@@ -22057,6 +22615,7 @@ BEGIN-TEXT
                     move ef-blocco-kg-1-buf to ef-blocco-kg-3-buf 
                     move chk-prenot-1-buf   to chk-prenot-3-buf   
                     move chk-accorpa-1-buf  to chk-accorpa-3-buf  
+                    move chk-sost-batt-1-buf  to chk-sost-batt-3-buf  
                     move chk-banco-1-buf    to chk-banco-3-buf    
                     move chk-promo-1-buf    to chk-promo-3-buf    
                     move chk-escludi-1-buf  to chk-escludi-3-buf 
@@ -22103,6 +22662,7 @@ BEGIN-TEXT
                  move ef-blocco-kg-2-buf to ef-blocco-kg-3-buf 
                  move chk-prenot-2-buf   to chk-prenot-3-buf   
                  move chk-accorpa-2-buf  to chk-accorpa-3-buf  
+                 move chk-sost-batt-2-buf to chk-sost-batt-3-buf  
                  move chk-banco-2-buf    to chk-banco-3-buf    
                  move chk-promo-2-buf    to chk-promo-3-buf    
                  move chk-escludi-2-buf  to chk-escludi-3-buf    
@@ -22152,6 +22712,7 @@ BEGIN-TEXT
               move 0 to ef-blocco-kg-3-buf 
               move 0 to chk-prenot-3-buf   
               move 0 to chk-accorpa-3-buf  
+              move 0 to chk-sost-batt-3-buf
               move 0 to chk-banco-3-buf    
               move 0 to chk-promo-3-buf
               move 0 to chk-escludi-3-buf   
@@ -22203,6 +22764,7 @@ BEGIN-TEXT
                        move ef-blocco-kg-buf to ef-blocco-kg-4-buf 
                        move chk-prenot-buf   to chk-prenot-4-buf   
                        move chk-accorpa-buf  to chk-accorpa-4-buf  
+                       move chk-sost-batt-buf   to chk-sost-batt-4-buf  
                        move chk-banco-buf    to chk-banco-4-buf    
                        move chk-promo-buf    to chk-promo-4-buf    
                        move chk-escludi-buf  to chk-escludi-4-buf   
@@ -22248,6 +22810,7 @@ BEGIN-TEXT
                        move ef-blocco-kg-1-buf to ef-blocco-kg-4-buf 
                        move chk-prenot-1-buf   to chk-prenot-4-buf   
                        move chk-accorpa-1-buf  to chk-accorpa-4-buf  
+                       move chk-sost-batt-1-buf  to chk-sost-batt-4-buf  
                        move chk-banco-1-buf    to chk-banco-4-buf    
                        move chk-promo-1-buf    to chk-promo-4-buf    
                        move chk-escludi-1-buf  to chk-escludi-4-buf 
@@ -22294,6 +22857,7 @@ BEGIN-TEXT
                     move ef-blocco-kg-2-buf to ef-blocco-kg-4-buf 
                     move chk-prenot-2-buf   to chk-prenot-4-buf   
                     move chk-accorpa-2-buf  to chk-accorpa-4-buf  
+                    move chk-sost-batt-2-buf   to chk-sost-batt-4-buf  
                     move chk-banco-2-buf    to chk-banco-4-buf    
                     move chk-promo-2-buf    to chk-promo-4-buf    
                     move chk-escludi-2-buf  to chk-escludi-4-buf  
@@ -22341,6 +22905,7 @@ BEGIN-TEXT
                  move ef-blocco-kg-3-buf to ef-blocco-kg-4-buf 
                  move chk-prenot-3-buf   to chk-prenot-4-buf   
                  move chk-accorpa-3-buf  to chk-accorpa-4-buf  
+                 move chk-sost-batt-3-buf   to chk-sost-batt-4-buf  
                  move chk-banco-3-buf    to chk-banco-4-buf    
                  move chk-promo-3-buf    to chk-promo-4-buf    
                  move chk-escludi-3-buf  to chk-escludi-4-buf    
@@ -22390,6 +22955,7 @@ BEGIN-TEXT
               move 0 to ef-blocco-kg-4-buf 
               move 0 to chk-prenot-4-buf   
               move 0 to chk-accorpa-4-buf  
+              move 0 to chk-sost-batt-4-buf 
               move 0 to chk-banco-4-buf    
               move 0 to chk-promo-4-buf
               move 0 to chk-escludi-4-buf   
@@ -23391,6 +23957,76 @@ END-DATA
 BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = ef-path-logo-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = chk-sost-batt-4-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = chk-sost-batt-4-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = chk-sost-batt-3-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = chk-sost-batt-3-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = chk-sost-batt-2-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = chk-sost-batt-2-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = chk-sost-batt-1-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = chk-sost-batt-1-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = chk-sost-batt-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = chk-sost-batt-AfterProcedure
 BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
 END-TEXT

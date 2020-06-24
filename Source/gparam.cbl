@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          gparam.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 19 marzo 2019 14:19:10.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        mercoledì 24 giugno 2020 10:15:00.
        REMARKS.
       *{TOTEM}END
 
@@ -63,7 +63,7 @@
                COPY "opensave.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -167,6 +167,8 @@
       -    "a gli scaglioni  indicati in anagrafica". 
        78 78-logo-pers VALUE IS "In stampa bolla utilizza il logo indica
       -    "to sotto (verrà controllata la presenza di entrambi)". 
+       78 78-sost-batt VALUE IS "Attiva la sostituzione delle batterie (
+      -    "all'interno della catena) in gestione master". 
        78 78-path-logo VALUE IS "Path del logo da mostrare in intestazio
       -    "ne bolla (verrà controllata la presenza di entrambi)". 
        77 STATUS-clienti   PIC  X(2).
@@ -504,6 +506,27 @@
        77 chk-layout-pers-4-buf        PIC  9
                   VALUE IS 0.
        77 ef-path-logo-4-buf           PIC  x(200).
+       77 chk-pb-sost-batt-buf         PIC  9
+                  VALUE IS 0.
+       77 78-pb-sost-batt  PIC  X(30).
+       77 chk-pb-sost-batt-1-buf       PIC  9
+                  VALUE IS 0.
+       77 chk-pb-sost-batt-2-buf       PIC  9
+                  VALUE IS 0.
+       77 chk-pb-sost-batt-3-buf       PIC  9
+                  VALUE IS 0.
+       77 chk-pb-sost-batt-4-buf       PIC  9
+                  VALUE IS 0.
+       77 chk-sost-batt-buf            PIC  9
+                  VALUE IS 0.
+       77 chk-sost-batt-1-buf          PIC  9
+                  VALUE IS 0.
+       77 chk-sost-batt-2-buf          PIC  9
+                  VALUE IS 0.
+       77 chk-sost-batt-3-buf          PIC  9
+                  VALUE IS 0.
+       77 chk-sost-batt-4-buf          PIC  9
+                  VALUE IS 0.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -622,7 +645,7 @@
                  88 old-prm-cod-art-forn-si VALUE IS 0. 
                  88 old-prm-cod-art-forn-no VALUE IS 1. 
               10 old-prm-vet-minore-kg1            PIC  9(5).
-              10 old-prm-minore-kg1    PIC  9(5)v9(3).
+              10 old-prm-minore-kg1    PIC  9(5)v9(3).     
                10 FILLER           PIC  x(85).
               10 old-prm-dati-comuni.
                  15 old-prm-data-creazione           PIC  9(8).
@@ -642,8 +665,11 @@
                        20 old-prm-add-piombo-bosch        PIC  9.
                            88 old-prm-add-piombo-bosch-si VALUE IS 1. 
                            88 old-prm-add-piombo-bosch-no VALUE IS 0.
-                   15 old-prm-layout-pers       PIC  9.
-                   15 old-prm-num-vuoto-2  PIC  9(14).
+                   15 old-prm-layout-pers       PIC  9.     
+                   15 old-prm-sost-batt    PIC  9.
+                       88 old-prm-sost-batt-si VALUE IS 1. 
+                       88 old-prm-sost-batt-no VALUE IS 0. 
+                   15 old-prm-num-vuoto-2  PIC  9(13).
                    15 old-prm-num-vuoto-3  PIC  9(18).
                    15 old-prm-stampante    PIC  x(100).
                    15 old-prm-path-logo    pic  x(200).
@@ -700,7 +726,7 @@
                    88 como-prm-cod-art-forn-si VALUE IS 1. 
                    88 como-prm-cod-art-forn-no VALUE IS 0. 
                10 como-prm-vet-minore-kg1           PIC  9(5).
-               10 como-prm-minore-kg1   PIC  9(5)v9(3).
+               10 como-prm-minore-kg1   PIC  9(5)v9(3).         
                10 FILLER           PIC  x(85).
                10 como-prm-dati-comuni.
                    15 como-prm-data-creazione           PIC  9(8).
@@ -722,8 +748,11 @@
                            88 como-prm-add-piombo-bosch-no VALUE IS 0. 
                    15 como-prm-layout-pers  PIC  9.
                        88 como-prm-layout-pers-si VALUE IS 1. 
-                       88 como-prm-layout-pers-no VALUE IS 0. 
-                   15 como-prm-num-vuoto-2  PIC  9(14).
+                       88 como-prm-layout-pers-no VALUE IS 0.  
+                   15 como-prm-sost-batt    PIC  9.
+                       88 como-prm-sost-batt-si VALUE IS 1. 
+                       88 como-prm-sost-batt-no VALUE IS 0. 
+                   15 como-prm-num-vuoto-2  PIC  9(13).
                    15 como-prm-num-vuoto-3  PIC  9(18).
                    15 como-prm-stampante    PIC  x(100).
                    15 como-prm-path-logo    PIC  x(200).
@@ -785,114 +814,119 @@
        78  78-ID-chk-pb-bosch VALUE 5020.
        78  78-ID-chk-pb-perce VALUE 5021.
        78  78-ID-chk-pb-amp VALUE 5022.
-       78  78-ID-gd-mag VALUE 5023.
-       78  78-ID-ef-stampante VALUE 5024.
-       78  78-ID-chk-layout-pers VALUE 5025.
-       78  78-ID-ef-path-logo VALUE 5026.
-       78  78-ID-chk-gestisci-1 VALUE 5027.
-       78  78-ID-ef-ini-vol-1 VALUE 5028.
-       78  78-ID-ef-parz-1 VALUE 5029.
-       78  78-ID-ef-gg-cons-1 VALUE 5030.
-       78  78-ID-ef-val-1 VALUE 5031.
-       78  78-ID-ef-cons-max-1 VALUE 5032.
-       78  78-ID-ef-blocco-kg-1 VALUE 5033.
-       78  78-ID-ef-min-kg1-1 VALUE 5034.
-       78  78-ID-ef-min-vet1-1 VALUE 5035.
-       78  78-ID-ef-min-kg2-1 VALUE 5036.
-       78  78-ID-ef-min-vet2-1 VALUE 5037.
-       78  78-ID-ef-max-kg-1 VALUE 5038.
-       78  78-ID-ef-max-vet-1 VALUE 5039.
-       78  78-ID-chk-accorpa-1 VALUE 5040.
-       78  78-ID-chk-promo-1 VALUE 5041.
-       78  78-ID-chk-prenot-1 VALUE 5042.
-       78  78-ID-chk-banco-1 VALUE 5043.
-       78  78-ID-chk-escludi-1 VALUE 5044.
-       78  78-ID-chk-imb-min-1 VALUE 5045.
-       78  78-ID-chk-art-forn-1 VALUE 5046.
-       78  78-ID-chk-pb-perce-1 VALUE 5047.
-       78  78-ID-chk-pb-amp-1 VALUE 5048.
-       78  78-ID-gd-mag-1 VALUE 5049.
-       78  78-ID-ef-stampante-1 VALUE 5050.
-       78  78-ID-chk-layout-pers-1 VALUE 5051.
-       78  78-ID-ef-path-logo-1 VALUE 5052.
-       78  78-ID-chk-gestisci-2 VALUE 5053.
-       78  78-ID-ef-ini-vol-2 VALUE 5054.
-       78  78-ID-ef-parz-2 VALUE 5055.
-       78  78-ID-ef-gg-cons-2 VALUE 5056.
-       78  78-ID-ef-val-2 VALUE 5057.
-       78  78-ID-ef-cons-max-2 VALUE 5058.
-       78  78-ID-ef-blocco-kg-2 VALUE 5059.
-       78  78-ID-ef-min-kg1-2 VALUE 5060.
-       78  78-ID-ef-min-vet1-2 VALUE 5061.
-       78  78-ID-ef-min-kg2-2 VALUE 5062.
-       78  78-ID-ef-min-vet2-2 VALUE 5063.
-       78  78-ID-ef-max-kg-2 VALUE 5064.
-       78  78-ID-ef-max-vet-2 VALUE 5065.
-       78  78-ID-chk-accorpa-2 VALUE 5066.
-       78  78-ID-chk-promo-2 VALUE 5067.
-       78  78-ID-chk-prenot-2 VALUE 5068.
-       78  78-ID-chk-banco-2 VALUE 5069.
-       78  78-ID-chk-escludi-2 VALUE 5070.
-       78  78-ID-chk-imb-min-2 VALUE 5071.
-       78  78-ID-chk-art-forn-2 VALUE 5072.
-       78  78-ID-chk-pb-perce-2 VALUE 5073.
-       78  78-ID-chk-pb-amp-2 VALUE 5074.
-       78  78-ID-gd-mag-2 VALUE 5075.
-       78  78-ID-ef-stampante-2 VALUE 5076.
-       78  78-ID-chk-gestisci-3 VALUE 5077.
-       78  78-ID-ef-parz-3 VALUE 5078.
-       78  78-ID-ef-gg-cons-3 VALUE 5079.
-       78  78-ID-ef-val-3 VALUE 5080.
-       78  78-ID-ef-cons-max-3 VALUE 5081.
-       78  78-ID-ef-blocco-kg-3 VALUE 5082.
-       78  78-ID-ef-min-kg1-3 VALUE 5083.
-       78  78-ID-ef-min-vet1-3 VALUE 5084.
-       78  78-ID-ef-min-kg2-3 VALUE 5085.
-       78  78-ID-ef-min-vet2-3 VALUE 5086.
-       78  78-ID-ef-max-kg-3 VALUE 5087.
-       78  78-ID-ef-max-vet-3 VALUE 5088.
-       78  78-ID-chk-accorpa-3 VALUE 5089.
-       78  78-ID-chk-promo-3 VALUE 5090.
-       78  78-ID-chk-prenot-3 VALUE 5091.
-       78  78-ID-chk-banco-3 VALUE 5092.
-       78  78-ID-chk-escludi-3 VALUE 5093.
-       78  78-ID-chk-imb-min-3 VALUE 5094.
-       78  78-ID-chk-art-forn-3 VALUE 5095.
-       78  78-ID-chk-pb-perce-3 VALUE 5096.
-       78  78-ID-chk-pb-amp-3 VALUE 5097.
-       78  78-ID-gd-mag-3 VALUE 5098.
-       78  78-ID-ef-stampante-3 VALUE 5099.
-       78  78-ID-chk-layout-pers-3 VALUE 5100.
-       78  78-ID-ef-path-logo-3 VALUE 5101.
-       78  78-ID-chk-gestisci-4 VALUE 5102.
-       78  78-ID-ef-parz-4 VALUE 5103.
-       78  78-ID-ef-gg-cons-4 VALUE 5104.
-       78  78-ID-ef-val-4 VALUE 5105.
-       78  78-ID-ef-cons-max-4 VALUE 5106.
-       78  78-ID-ef-blocco-kg-4 VALUE 5107.
-       78  78-ID-ef-min-kg1-4 VALUE 5108.
-       78  78-ID-ef-min-vet1-4 VALUE 5109.
-       78  78-ID-ef-min-kg2-4 VALUE 5110.
-       78  78-ID-ef-min-vet2-4 VALUE 5111.
-       78  78-ID-ef-max-kg-4 VALUE 5112.
-       78  78-ID-ef-max-vet-4 VALUE 5113.
-       78  78-ID-chk-accorpa-4 VALUE 5114.
-       78  78-ID-chk-promo-4 VALUE 5115.
-       78  78-ID-chk-prenot-4 VALUE 5116.
-       78  78-ID-chk-banco-4 VALUE 5117.
-       78  78-ID-chk-escludi-4 VALUE 5118.
-       78  78-ID-chk-imb-min-4 VALUE 5119.
-       78  78-ID-chk-art-forn-4 VALUE 5120.
-       78  78-ID-chk-pb-perce-4 VALUE 5121.
-       78  78-ID-chk-pb-amp-4 VALUE 5122.
-       78  78-ID-gd-mag-4 VALUE 5123.
-       78  78-ID-ef-stampante-4 VALUE 5124.
-       78  78-ID-chk-layout-pers-4 VALUE 5125.
-       78  78-ID-ef-path-logo-4 VALUE 5126.
-       78  78-ID-gd-tipocli VALUE 5127.
-       78  78-ID-gd-clienti VALUE 5128.
-       78  78-ID-gd-gdo VALUE 5129.
-       78  78-ID-gd-destini VALUE 5130.
+       78  78-ID-chk-sost-batt VALUE 5023.
+       78  78-ID-gd-mag VALUE 5024.
+       78  78-ID-ef-stampante VALUE 5025.
+       78  78-ID-chk-layout-pers VALUE 5026.
+       78  78-ID-ef-path-logo VALUE 5027.
+       78  78-ID-chk-gestisci-1 VALUE 5028.
+       78  78-ID-ef-ini-vol-1 VALUE 5029.
+       78  78-ID-ef-parz-1 VALUE 5030.
+       78  78-ID-ef-gg-cons-1 VALUE 5031.
+       78  78-ID-ef-val-1 VALUE 5032.
+       78  78-ID-ef-cons-max-1 VALUE 5033.
+       78  78-ID-ef-blocco-kg-1 VALUE 5034.
+       78  78-ID-ef-min-kg1-1 VALUE 5035.
+       78  78-ID-ef-min-vet1-1 VALUE 5036.
+       78  78-ID-ef-min-kg2-1 VALUE 5037.
+       78  78-ID-ef-min-vet2-1 VALUE 5038.
+       78  78-ID-ef-max-kg-1 VALUE 5039.
+       78  78-ID-ef-max-vet-1 VALUE 5040.
+       78  78-ID-chk-accorpa-1 VALUE 5041.
+       78  78-ID-chk-promo-1 VALUE 5042.
+       78  78-ID-chk-prenot-1 VALUE 5043.
+       78  78-ID-chk-banco-1 VALUE 5044.
+       78  78-ID-chk-escludi-1 VALUE 5045.
+       78  78-ID-chk-imb-min-1 VALUE 5046.
+       78  78-ID-chk-art-forn-1 VALUE 5047.
+       78  78-ID-chk-pb-perce-1 VALUE 5048.
+       78  78-ID-chk-pb-amp-1 VALUE 5049.
+       78  78-ID-chk-sost-batt-1 VALUE 5050.
+       78  78-ID-gd-mag-1 VALUE 5051.
+       78  78-ID-ef-stampante-1 VALUE 5052.
+       78  78-ID-chk-layout-pers-1 VALUE 5053.
+       78  78-ID-ef-path-logo-1 VALUE 5054.
+       78  78-ID-chk-gestisci-2 VALUE 5055.
+       78  78-ID-ef-ini-vol-2 VALUE 5056.
+       78  78-ID-ef-parz-2 VALUE 5057.
+       78  78-ID-ef-gg-cons-2 VALUE 5058.
+       78  78-ID-ef-val-2 VALUE 5059.
+       78  78-ID-ef-cons-max-2 VALUE 5060.
+       78  78-ID-ef-blocco-kg-2 VALUE 5061.
+       78  78-ID-ef-min-kg1-2 VALUE 5062.
+       78  78-ID-ef-min-vet1-2 VALUE 5063.
+       78  78-ID-ef-min-kg2-2 VALUE 5064.
+       78  78-ID-ef-min-vet2-2 VALUE 5065.
+       78  78-ID-ef-max-kg-2 VALUE 5066.
+       78  78-ID-ef-max-vet-2 VALUE 5067.
+       78  78-ID-chk-accorpa-2 VALUE 5068.
+       78  78-ID-chk-promo-2 VALUE 5069.
+       78  78-ID-chk-prenot-2 VALUE 5070.
+       78  78-ID-chk-banco-2 VALUE 5071.
+       78  78-ID-chk-escludi-2 VALUE 5072.
+       78  78-ID-chk-imb-min-2 VALUE 5073.
+       78  78-ID-chk-art-forn-2 VALUE 5074.
+       78  78-ID-chk-pb-perce-2 VALUE 5075.
+       78  78-ID-chk-pb-amp-2 VALUE 5076.
+       78  78-ID-chk-sost-batt-2 VALUE 5077.
+       78  78-ID-gd-mag-2 VALUE 5078.
+       78  78-ID-ef-stampante-2 VALUE 5079.
+       78  78-ID-chk-gestisci-3 VALUE 5080.
+       78  78-ID-ef-parz-3 VALUE 5081.
+       78  78-ID-ef-gg-cons-3 VALUE 5082.
+       78  78-ID-ef-val-3 VALUE 5083.
+       78  78-ID-ef-cons-max-3 VALUE 5084.
+       78  78-ID-ef-blocco-kg-3 VALUE 5085.
+       78  78-ID-ef-min-kg1-3 VALUE 5086.
+       78  78-ID-ef-min-vet1-3 VALUE 5087.
+       78  78-ID-ef-min-kg2-3 VALUE 5088.
+       78  78-ID-ef-min-vet2-3 VALUE 5089.
+       78  78-ID-ef-max-kg-3 VALUE 5090.
+       78  78-ID-ef-max-vet-3 VALUE 5091.
+       78  78-ID-chk-accorpa-3 VALUE 5092.
+       78  78-ID-chk-promo-3 VALUE 5093.
+       78  78-ID-chk-prenot-3 VALUE 5094.
+       78  78-ID-chk-banco-3 VALUE 5095.
+       78  78-ID-chk-escludi-3 VALUE 5096.
+       78  78-ID-chk-imb-min-3 VALUE 5097.
+       78  78-ID-chk-art-forn-3 VALUE 5098.
+       78  78-ID-chk-pb-perce-3 VALUE 5099.
+       78  78-ID-chk-pb-amp-3 VALUE 5100.
+       78  78-ID-chk-sost-batt-3 VALUE 5101.
+       78  78-ID-gd-mag-3 VALUE 5102.
+       78  78-ID-ef-stampante-3 VALUE 5103.
+       78  78-ID-chk-layout-pers-3 VALUE 5104.
+       78  78-ID-ef-path-logo-3 VALUE 5105.
+       78  78-ID-chk-gestisci-4 VALUE 5106.
+       78  78-ID-ef-parz-4 VALUE 5107.
+       78  78-ID-ef-gg-cons-4 VALUE 5108.
+       78  78-ID-ef-val-4 VALUE 5109.
+       78  78-ID-ef-cons-max-4 VALUE 5110.
+       78  78-ID-ef-blocco-kg-4 VALUE 5111.
+       78  78-ID-ef-min-kg1-4 VALUE 5112.
+       78  78-ID-ef-min-vet1-4 VALUE 5113.
+       78  78-ID-ef-min-kg2-4 VALUE 5114.
+       78  78-ID-ef-min-vet2-4 VALUE 5115.
+       78  78-ID-ef-max-kg-4 VALUE 5116.
+       78  78-ID-ef-max-vet-4 VALUE 5117.
+       78  78-ID-chk-accorpa-4 VALUE 5118.
+       78  78-ID-chk-promo-4 VALUE 5119.
+       78  78-ID-chk-prenot-4 VALUE 5120.
+       78  78-ID-chk-banco-4 VALUE 5121.
+       78  78-ID-chk-escludi-4 VALUE 5122.
+       78  78-ID-chk-imb-min-4 VALUE 5123.
+       78  78-ID-chk-art-forn-4 VALUE 5124.
+       78  78-ID-chk-pb-perce-4 VALUE 5125.
+       78  78-ID-chk-pb-amp-4 VALUE 5126.
+       78  78-ID-chk-sost-batt-4 VALUE 5127.
+       78  78-ID-gd-mag-4 VALUE 5128.
+       78  78-ID-ef-stampante-4 VALUE 5129.
+       78  78-ID-chk-layout-pers-4 VALUE 5130.
+       78  78-ID-ef-path-logo-4 VALUE 5131.
+       78  78-ID-gd-tipocli VALUE 5132.
+       78  78-ID-gd-clienti VALUE 5133.
+       78  78-ID-gd-gdo VALUE 5134.
+       78  78-ID-gd-destini VALUE 5135.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -917,7 +951,7 @@
            Frame, 
            COL 2,00, 
            LINE 25,38,
-           LINES 36,00 ,
+           LINES 38,00 ,
            SIZE 40,33 ,
            ID IS 5,
            HEIGHT-IN-CELLS,
@@ -1342,12 +1376,29 @@
            VALUE chk-pb-amp-buf,
            AFTER PROCEDURE chk-pb-amp-AfterProcedure,
            .
+      * CHECK BOX
+       05
+           chk-sost-batt, 
+           Check-Box, 
+           COL 16,50, 
+           LINE 48,30,
+           LINES 1,54 ,
+           SIZE 3,00 ,
+           ENABLED mod,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 78-ID-chk-sost-batt,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           VALUE chk-sost-batt-buf,
+           AFTER PROCEDURE chk-sost-batt-AfterProcedure,
+           .
       * GRID
        05
            gd-mag, 
            Grid, 
            COL 3,00, 
-           LINE 48,53,
+           LINE 50,07,
            LINES 5,92 ,
            SIZE 38,17 ,
            BOXED,
@@ -1698,27 +1749,11 @@
            Screen1-La-2d, 
            Label, 
            COL 3,17, 
-           LINE 54,61,
+           LINE 56,15,
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
            ID IS 49,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Sampante",
-           .
-
-      * LABEL
-       05
-           Screen1-La-2de, 
-           Label, 
-           COL 3,17, 
-           LINE 54,61,
-           LINES 1,31 ,
-           SIZE 12,00 ,
-           FONT IS Small-Font,
-           ID IS 50,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1730,7 +1765,7 @@
            ef-stampante, 
            Entry-Field, 
            COL 3,00, 
-           LINE 56,07,
+           LINE 57,61,
            LINES 1,31 ,
            SIZE 38,17 ,
            BOXED,
@@ -1751,7 +1786,7 @@
            chk-layout-pers, 
            Check-Box, 
            COL 21,50, 
-           LINE 57,84,
+           LINE 59,38,
            LINES 1,54 ,
            SIZE 3,00 ,
            ENABLED mod,
@@ -1768,7 +1803,7 @@
            pb-path-logo, 
            Push-Button, 
            COL 38,33, 
-           LINE 58,23,
+           LINE 59,76,
            LINES 1,08 ,
            SIZE 2,83 ,
            ENABLED mod,
@@ -1785,7 +1820,7 @@
            ef-path-logo, 
            Entry-Field, 
            COL 3,00, 
-           LINE 59,53,
+           LINE 61,07,
            LINES 1,31 ,
            SIZE 38,17 ,
            BOXED,
@@ -1805,7 +1840,7 @@
            pb-stampanti, 
            Push-Button, 
            COL 38,33, 
-           LINE 54,84,
+           LINE 56,38,
            LINES 1,08 ,
            SIZE 2,83 ,
            ENABLED mod,
@@ -1855,7 +1890,7 @@
            Screen1-La-2aabeeb, 
            Label, 
            COL 3,17, 
-           LINE 57,84,
+           LINE 59,38,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -1866,13 +1901,29 @@
            TITLE "Logo personalizzato",
            .
 
+      * LABEL
+       05
+           Screen1-La-2aabeec, 
+           Label, 
+           COL 3,17, 
+           LINE 48,53,
+           LINES 1,31 ,
+           SIZE 12,00 ,
+           FONT IS Small-Font,
+           ID IS 46,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Sost. batterie",
+           .
+
       * FRAME
        05
            frame-1, 
            Frame, 
            COL 43,17, 
            LINE 25,38,
-           LINES 36,00 ,
+           LINES 38,00 ,
            SIZE 40,33 ,
            ID IS 240,
            HEIGHT-IN-CELLS,
@@ -2319,12 +2370,29 @@
            VALUE chk-pb-amp-1-buf,
            AFTER PROCEDURE chk-pb-amp-1-AfterProcedure,
            .
+      * CHECK BOX
+       05
+           chk-sost-batt-1, 
+           Check-Box, 
+           COL 57,67, 
+           LINE 48,30,
+           LINES 1,54 ,
+           SIZE 3,00 ,
+           ENABLED mod,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 78-ID-chk-sost-batt-1,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           VALUE chk-sost-batt-1-buf,
+           AFTER PROCEDURE chk-sost-batt-1-AfterProcedure,
+           .
       * GRID
        05
            gd-mag-1, 
            Grid, 
            COL 44,17, 
-           LINE 48,53,
+           LINE 50,07,
            LINES 5,92 ,
            SIZE 38,17 ,
            BOXED,
@@ -2692,7 +2760,7 @@
            Screen1-La-2da, 
            Label, 
            COL 44,34, 
-           LINE 54,61,
+           LINE 56,15,
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -2708,7 +2776,7 @@
            ef-stampante-1, 
            Entry-Field, 
            COL 44,17, 
-           LINE 56,07,
+           LINE 57,61,
            LINES 1,31 ,
            SIZE 38,17 ,
            BOXED,
@@ -2729,7 +2797,7 @@
            chk-layout-pers-1, 
            Check-Box, 
            COL 62,67, 
-           LINE 57,84,
+           LINE 59,38,
            LINES 1,54 ,
            SIZE 3,00 ,
            ENABLED e-tipocli-dati,
@@ -2746,7 +2814,7 @@
            pb-path-logo-1, 
            Push-Button, 
            COL 79,50, 
-           LINE 58,23,
+           LINE 59,76,
            LINES 1,08 ,
            SIZE 2,83 ,
            ENABLED e-tipocli-dati,
@@ -2763,7 +2831,7 @@
            ef-path-logo-1, 
            Entry-Field, 
            COL 44,17, 
-           LINE 59,53,
+           LINE 61,07,
            LINES 1,31 ,
            SIZE 38,17 ,
            BOXED,
@@ -2783,7 +2851,7 @@
            pb-stampanti-1, 
            Push-Button, 
            COL 79,50, 
-           LINE 54,84,
+           LINE 56,38,
            LINES 1,08 ,
            SIZE 2,83 ,
            ENABLED e-tipocli-dati,
@@ -2833,7 +2901,7 @@
            Screen1-La-2aabeeba, 
            Label, 
            COL 44,34, 
-           LINE 57,84,
+           LINE 59,38,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -2844,13 +2912,29 @@
            TITLE "Logo personalizzato",
            .
 
+      * LABEL
+       05
+           Screen1-La-2aabeeca, 
+           Label, 
+           COL 44,34, 
+           LINE 48,53,
+           LINES 1,31 ,
+           SIZE 12,00 ,
+           FONT IS Small-Font,
+           ID IS 46,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Sost. batterie",
+           .
+
       * FRAME
        05
            frame-2, 
            Frame, 
            COL 84,50, 
            LINE 25,38,
-           LINES 36,00 ,
+           LINES 38,00 ,
            SIZE 40,33 ,
            ID IS 102,
            HEIGHT-IN-CELLS,
@@ -3296,6 +3380,52 @@
            VALUE chk-pb-amp-2-buf,
            AFTER PROCEDURE chk-pb-amp-2-AfterProcedure,
            .
+      * CHECK BOX
+       05
+           chk-sost-batt-2, 
+           Check-Box, 
+           COL 99,00, 
+           LINE 48,30,
+           LINES 1,54 ,
+           SIZE 3,00 ,
+           ENABLED mod,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 78-ID-chk-sost-batt-2,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           VALUE chk-sost-batt-2-buf,
+           AFTER PROCEDURE chk-sost-batt-2-AfterProcedure,
+           .
+      * GRID
+       05
+           gd-mag-2, 
+           Grid, 
+           COL 85,50, 
+           LINE 50,07,
+           LINES 5,92 ,
+           SIZE 38,17 ,
+           BOXED,
+           DATA-COLUMNS (1, 4, 104),
+           ALIGNMENT ("U", "U", "C"),
+           SEPARATION (5, 5, 5),
+           DATA-TYPES ("U(3)", "X(100)", "U(1)"),
+           NUM-COL-HEADINGS 1,
+           COLUMN-HEADINGS,
+           CURSOR-FRAME-WIDTH 2,
+           DIVIDER-COLOR 1,
+           HEADING-COLOR 257,
+           HEADING-DIVIDER-COLOR 1,
+           ID IS 78-ID-gd-mag-2,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TILED-HEADINGS,
+           VIRTUAL-WIDTH 35,
+           VPADDING 10,
+           VSCROLL,
+           EVENT PROCEDURE Screen1-Gd-1-Event-Proc,
+           .
+
       * LABEL
        05
            Screen1-La-1ba, 
@@ -3358,35 +3488,6 @@
            WIDTH-IN-CELLS,
            TRANSPARENT,
            TITLE "GG validità volantino",
-           .
-
-      * GRID
-       05
-           gd-mag-2, 
-           Grid, 
-           COL 85,50, 
-           LINE 48,53,
-           LINES 5,92 ,
-           SIZE 38,17 ,
-           BOXED,
-           DATA-COLUMNS (1, 4, 104),
-           ALIGNMENT ("U", "U", "C"),
-           SEPARATION (5, 5, 5),
-           DATA-TYPES ("U(3)", "X(100)", "U(1)"),
-           NUM-COL-HEADINGS 1,
-           COLUMN-HEADINGS,
-           CURSOR-FRAME-WIDTH 2,
-           DIVIDER-COLOR 1,
-           HEADING-COLOR 257,
-           HEADING-DIVIDER-COLOR 1,
-           ID IS 78-ID-gd-mag-2,                
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TILED-HEADINGS,
-           VIRTUAL-WIDTH 35,
-           VPADDING 10,
-           VSCROLL,
-           EVENT PROCEDURE Screen1-Gd-1-Event-Proc,
            .
 
       * LABEL
@@ -3668,7 +3769,7 @@
            Screen1-La-2db, 
            Label, 
            COL 85,67, 
-           LINE 54,61,
+           LINE 56,15,
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -3684,7 +3785,7 @@
            ef-stampante-2, 
            Entry-Field, 
            COL 85,50, 
-           LINE 56,07,
+           LINE 57,61,
            LINES 1,31 ,
            SIZE 38,17 ,
            BOXED,
@@ -3705,7 +3806,7 @@
            chk-layout-pers-2, 
            Check-Box, 
            COL 104,00, 
-           LINE 57,84,
+           LINE 59,38,
            LINES 1,54 ,
            SIZE 3,00 ,
            ENABLED e-gdo-dati,
@@ -3722,7 +3823,7 @@
            pb-path-logo-2, 
            Push-Button, 
            COL 120,83, 
-           LINE 58,23,
+           LINE 59,76,
            LINES 1,08 ,
            SIZE 2,83 ,
            ENABLED e-gdo-dati,
@@ -3739,7 +3840,7 @@
            ef-path-logo-2, 
            Entry-Field, 
            COL 85,50, 
-           LINE 59,53,
+           LINE 61,07,
            LINES 1,31 ,
            SIZE 38,17 ,
            BOXED,
@@ -3759,7 +3860,7 @@
            pb-stampanti-2, 
            Push-Button, 
            COL 120,83, 
-           LINE 54,84,
+           LINE 56,38,
            LINES 1,08 ,
            SIZE 2,83 ,
            ENABLED e-gdo-dati,
@@ -3809,7 +3910,7 @@
            Screen1-La-2aabeebaa, 
            Label, 
            COL 85,67, 
-           LINE 57,84,
+           LINE 59,38,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -3820,13 +3921,29 @@
            TITLE "Logo personalizzato",
            .
 
+      * LABEL
+       05
+           Screen1-La-2aabeecaa, 
+           Label, 
+           COL 85,67, 
+           LINE 48,53,
+           LINES 1,31 ,
+           SIZE 12,00 ,
+           FONT IS Small-Font,
+           ID IS 46,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Sost. batterie",
+           .
+
       * FRAME
        05
            frame-3, 
            Frame, 
            COL 126,00, 
            LINE 25,38,
-           LINES 36,00 ,
+           LINES 38,00 ,
            SIZE 40,33 ,
            ID IS 157,
            HEIGHT-IN-CELLS,
@@ -4252,12 +4369,29 @@
            VALUE chk-pb-amp-3-buf,
            AFTER PROCEDURE chk-pb-amp-3-AfterProcedure,
            .
+      * CHECK BOX
+       05
+           chk-sost-batt-3, 
+           Check-Box, 
+           COL 140,50, 
+           LINE 48,30,
+           LINES 1,54 ,
+           SIZE 3,00 ,
+           ENABLED mod,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 78-ID-chk-sost-batt-3,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           VALUE chk-sost-batt-3-buf,
+           AFTER PROCEDURE chk-sost-batt-3-AfterProcedure,
+           .
       * GRID
        05
            gd-mag-3, 
            Grid, 
            COL 127,00, 
-           LINE 48,53,
+           LINE 50,07,
            LINES 5,92 ,
            SIZE 38,17 ,
            BOXED,
@@ -4608,7 +4742,7 @@
            Screen1-La-2dc, 
            Label, 
            COL 127,17, 
-           LINE 54,61,
+           LINE 56,15,
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -4624,7 +4758,7 @@
            ef-stampante-3, 
            Entry-Field, 
            COL 127,00, 
-           LINE 56,07,
+           LINE 57,61,
            LINES 1,31 ,
            SIZE 38,17 ,
            BOXED,
@@ -4645,7 +4779,7 @@
            chk-layout-pers-3, 
            Check-Box, 
            COL 145,50, 
-           LINE 57,84,
+           LINE 59,38,
            LINES 1,54 ,
            SIZE 3,00 ,
            ENABLED e-clienti-dati,
@@ -4662,7 +4796,7 @@
            pb-path-logo-3, 
            Push-Button, 
            COL 162,33, 
-           LINE 58,23,
+           LINE 59,76,
            LINES 1,08 ,
            SIZE 2,83 ,
            ENABLED e-clienti-dati,
@@ -4679,7 +4813,7 @@
            ef-path-logo-3, 
            Entry-Field, 
            COL 127,00, 
-           LINE 59,53,
+           LINE 61,07,
            LINES 1,31 ,
            SIZE 38,17 ,
            BOXED,
@@ -4699,7 +4833,7 @@
            pb-stampanti-3, 
            Push-Button, 
            COL 162,33, 
-           LINE 54,84,
+           LINE 56,38,
            LINES 1,08 ,
            SIZE 2,83 ,
            ENABLED e-clienti-dati,
@@ -4749,7 +4883,7 @@
            Screen1-La-2aabeebaaa, 
            Label, 
            COL 127,17, 
-           LINE 57,84,
+           LINE 59,38,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -4760,13 +4894,29 @@
            TITLE "Logo personalizzato",
            .
 
+      * LABEL
+       05
+           Screen1-La-2aabeecaaa, 
+           Label, 
+           COL 127,17, 
+           LINE 48,53,
+           LINES 1,31 ,
+           SIZE 12,00 ,
+           FONT IS Small-Font,
+           ID IS 46,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Sost. batterie",
+           .
+
       * FRAME
        05
            frame-4, 
            Frame, 
            COL 167,67, 
            LINE 25,38,
-           LINES 36,00 ,
+           LINES 38,00 ,
            SIZE 40,33 ,
            ID IS 210,
            HEIGHT-IN-CELLS,
@@ -5192,12 +5342,29 @@
            VALUE chk-pb-amp-4-buf,
            AFTER PROCEDURE chk-pb-amp-4-AfterProcedure,
            .
+      * CHECK BOX
+       05
+           chk-sost-batt-4, 
+           Check-Box, 
+           COL 182,17, 
+           LINE 48,30,
+           LINES 1,54 ,
+           SIZE 3,00 ,
+           ENABLED mod,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 78-ID-chk-sost-batt-4,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           VALUE chk-sost-batt-4-buf,
+           AFTER PROCEDURE chk-sost-batt-4-AfterProcedure,
+           .
       * GRID
        05
            gd-mag-4, 
            Grid, 
            COL 168,67, 
-           LINE 48,53,
+           LINE 50,07,
            LINES 5,92 ,
            SIZE 38,17 ,
            BOXED,
@@ -5547,7 +5714,7 @@
            Screen1-La-2dd, 
            Label, 
            COL 168,84, 
-           LINE 54,61,
+           LINE 56,15,
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -5563,7 +5730,7 @@
            ef-stampante-4, 
            Entry-Field, 
            COL 168,67, 
-           LINE 56,07,
+           LINE 57,61,
            LINES 1,31 ,
            SIZE 38,17 ,
            BOXED,
@@ -5584,7 +5751,7 @@
            chk-layout-pers-4, 
            Check-Box, 
            COL 187,17, 
-           LINE 57,84,
+           LINE 59,38,
            LINES 1,54 ,
            SIZE 3,00 ,
            ENABLED e-destini-dati,
@@ -5601,7 +5768,7 @@
            pb-path-logo-4, 
            Push-Button, 
            COL 204,00, 
-           LINE 58,23,
+           LINE 59,76,
            LINES 1,08 ,
            SIZE 2,83 ,
            ENABLED e-destini-dati,
@@ -5618,7 +5785,7 @@
            ef-path-logo-4, 
            Entry-Field, 
            COL 168,67, 
-           LINE 59,53,
+           LINE 61,07,
            LINES 1,31 ,
            SIZE 38,17 ,
            BOXED,
@@ -5638,7 +5805,7 @@
            pb-stampanti-4, 
            Push-Button, 
            COL 204,00, 
-           LINE 54,84,
+           LINE 56,38,
            LINES 1,08 ,
            SIZE 2,83 ,
            ENABLED e-destini-dati,
@@ -5688,7 +5855,7 @@
            Screen1-La-2aabeebaab, 
            Label, 
            COL 168,84, 
-           LINE 57,84,
+           LINE 59,38,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -5697,6 +5864,22 @@
            WIDTH-IN-CELLS,
            TRANSPARENT,
            TITLE "Logo personalizzato",
+           .
+
+      * LABEL
+       05
+           Screen1-La-2aabeecaaaa, 
+           Label, 
+           COL 168,84, 
+           LINE 48,53,
+           LINES 1,31 ,
+           SIZE 12,00 ,
+           FONT IS Small-Font,
+           ID IS 46,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Sost. batterie",
            .
 
       * GRID
@@ -7950,7 +8133,7 @@
 
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 62,69,
+              LINES 64,15,
               SIZE 208,33,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
@@ -8066,11 +8249,13 @@
            move prm-blocco-kg         of param to ef-blocco-kg-buf.
            move prm-prenotazione-qta  of param to chk-prenot-buf.
            move prm-accorpa           of param to chk-accorpa-buf.
+           move prm-sost-batt         of param to chk-sost-batt-buf.
            move prm-saldi-banco       of param to chk-banco-buf.  
            move prm-imb-minimo        of param to chk-imb-min-buf. 
            move prm-cod-art-forn      of param to chk-art-forn-buf.
-           move prm-add-piombo-perce  of param to chk-pb-perce-buf.
+           move prm-add-piombo-perce  of param to chk-pb-perce-buf.   
            move prm-add-piombo-ampere of param to chk-pb-amp-buf.
+           move prm-sost-batt         of param to chk-pb-sost-batt-buf.
            move prm-add-piombo-bosch  of param to chk-pb-bosch-buf.
            move prm-saldi-promo       of param to chk-promo-buf.
            move prm-escludi-tutto     of param to chk-escludi-buf. 
@@ -8502,111 +8687,116 @@
            WHEN 5020 MOVE 78-pb-amp-bosch to TOTEM-HINT-TEXT
            WHEN 5021 MOVE 78-pb-perce to TOTEM-HINT-TEXT
            WHEN 5022 MOVE 78-pb-amp to TOTEM-HINT-TEXT
-           WHEN 5023 MOVE 78-mag to TOTEM-HINT-TEXT
-           WHEN 5025 MOVE 78-logo-pers to TOTEM-HINT-TEXT
-           WHEN 5026 MOVE 78-path-logo to TOTEM-HINT-TEXT
-           WHEN 5028 MOVE 78-ini to TOTEM-HINT-TEXT
-           WHEN 5029 MOVE 78-parziale to TOTEM-HINT-TEXT
-           WHEN 5030 MOVE 78-per-cons to TOTEM-HINT-TEXT
-           WHEN 5031 MOVE 78-val to TOTEM-HINT-TEXT
-           WHEN 5032 MOVE 78-max to TOTEM-HINT-TEXT
-           WHEN 5033 MOVE 78-blocco to TOTEM-HINT-TEXT
-           WHEN 5034 MOVE 78-kg-min1 to TOTEM-HINT-TEXT
-           WHEN 5035 MOVE 78-vet-min1 to TOTEM-HINT-TEXT
-           WHEN 5036 MOVE 78-kg-min2 to TOTEM-HINT-TEXT
-           WHEN 5037 MOVE 78-vet-min2 to TOTEM-HINT-TEXT
-           WHEN 5038 MOVE 78-kg-max to TOTEM-HINT-TEXT
-           WHEN 5039 MOVE 78-vet-max to TOTEM-HINT-TEXT
-           WHEN 5040 MOVE 78-accorpa to TOTEM-HINT-TEXT
-           WHEN 5041 MOVE 78-promo to TOTEM-HINT-TEXT
-           WHEN 5042 MOVE 78-prenot to TOTEM-HINT-TEXT
-           WHEN 5043 MOVE 78-banco to TOTEM-HINT-TEXT
-           WHEN 5044 MOVE 78-escludi to TOTEM-HINT-TEXT
-           WHEN 5045 MOVE 78-imb-minimo to TOTEM-HINT-TEXT
-           WHEN 5046 MOVE 78-cod-art-forn to TOTEM-HINT-TEXT
+           WHEN 5023 MOVE 78-pb-sost-batt to TOTEM-HINT-TEXT
+           WHEN 5024 MOVE 78-mag to TOTEM-HINT-TEXT
+           WHEN 5026 MOVE 78-logo-pers to TOTEM-HINT-TEXT
+           WHEN 5027 MOVE 78-path-logo to TOTEM-HINT-TEXT
+           WHEN 5029 MOVE 78-ini to TOTEM-HINT-TEXT
+           WHEN 5030 MOVE 78-parziale to TOTEM-HINT-TEXT
+           WHEN 5031 MOVE 78-per-cons to TOTEM-HINT-TEXT
+           WHEN 5032 MOVE 78-val to TOTEM-HINT-TEXT
+           WHEN 5033 MOVE 78-max to TOTEM-HINT-TEXT
+           WHEN 5034 MOVE 78-blocco to TOTEM-HINT-TEXT
+           WHEN 5035 MOVE 78-kg-min1 to TOTEM-HINT-TEXT
+           WHEN 5036 MOVE 78-vet-min1 to TOTEM-HINT-TEXT
+           WHEN 5037 MOVE 78-kg-min2 to TOTEM-HINT-TEXT
+           WHEN 5038 MOVE 78-vet-min2 to TOTEM-HINT-TEXT
+           WHEN 5039 MOVE 78-kg-max to TOTEM-HINT-TEXT
+           WHEN 5040 MOVE 78-vet-max to TOTEM-HINT-TEXT
+           WHEN 5041 MOVE 78-accorpa to TOTEM-HINT-TEXT
+           WHEN 5042 MOVE 78-promo to TOTEM-HINT-TEXT
+           WHEN 5043 MOVE 78-prenot to TOTEM-HINT-TEXT
+           WHEN 5044 MOVE 78-banco to TOTEM-HINT-TEXT
+           WHEN 5045 MOVE 78-escludi to TOTEM-HINT-TEXT
+           WHEN 5046 MOVE 78-imb-minimo to TOTEM-HINT-TEXT
+           WHEN 5047 MOVE 78-cod-art-forn to TOTEM-HINT-TEXT
            WHEN 80 MOVE 78-pb-amp to TOTEM-HINT-TEXT
-           WHEN 5047 MOVE 78-pb-perce to TOTEM-HINT-TEXT
-           WHEN 5048 MOVE 78-pb-amp to TOTEM-HINT-TEXT
-           WHEN 5049 MOVE 78-mag to TOTEM-HINT-TEXT
-           WHEN 5051 MOVE 78-logo-pers to TOTEM-HINT-TEXT
-           WHEN 5052 MOVE 78-path-logo to TOTEM-HINT-TEXT
-           WHEN 5054 MOVE 78-ini to TOTEM-HINT-TEXT
-           WHEN 5055 MOVE 78-parziale to TOTEM-HINT-TEXT
-           WHEN 5056 MOVE 78-per-cons to TOTEM-HINT-TEXT
-           WHEN 5057 MOVE 78-val to TOTEM-HINT-TEXT
-           WHEN 5058 MOVE 78-max to TOTEM-HINT-TEXT
-           WHEN 5059 MOVE 78-blocco to TOTEM-HINT-TEXT
-           WHEN 5060 MOVE 78-kg-min1 to TOTEM-HINT-TEXT
-           WHEN 5061 MOVE 78-vet-min1 to TOTEM-HINT-TEXT
-           WHEN 5062 MOVE 78-kg-min2 to TOTEM-HINT-TEXT
-           WHEN 5063 MOVE 78-vet-min2 to TOTEM-HINT-TEXT
-           WHEN 5064 MOVE 78-kg-max to TOTEM-HINT-TEXT
-           WHEN 5065 MOVE 78-vet-max to TOTEM-HINT-TEXT
-           WHEN 5066 MOVE 78-accorpa to TOTEM-HINT-TEXT
-           WHEN 5067 MOVE 78-promo to TOTEM-HINT-TEXT
-           WHEN 5068 MOVE 78-prenot to TOTEM-HINT-TEXT
-           WHEN 5069 MOVE 78-banco to TOTEM-HINT-TEXT
-           WHEN 5070 MOVE 78-escludi to TOTEM-HINT-TEXT
-           WHEN 5071 MOVE 78-imb-minimo to TOTEM-HINT-TEXT
-           WHEN 5072 MOVE 78-cod-art-forn to TOTEM-HINT-TEXT
+           WHEN 5048 MOVE 78-pb-perce to TOTEM-HINT-TEXT
+           WHEN 5049 MOVE 78-pb-amp to TOTEM-HINT-TEXT
+           WHEN 5050 MOVE 78-pb-sost-batt to TOTEM-HINT-TEXT
+           WHEN 5051 MOVE 78-mag to TOTEM-HINT-TEXT
+           WHEN 5053 MOVE 78-logo-pers to TOTEM-HINT-TEXT
+           WHEN 5054 MOVE 78-path-logo to TOTEM-HINT-TEXT
+           WHEN 5056 MOVE 78-ini to TOTEM-HINT-TEXT
+           WHEN 5057 MOVE 78-parziale to TOTEM-HINT-TEXT
+           WHEN 5058 MOVE 78-per-cons to TOTEM-HINT-TEXT
+           WHEN 5059 MOVE 78-val to TOTEM-HINT-TEXT
+           WHEN 5060 MOVE 78-max to TOTEM-HINT-TEXT
+           WHEN 5061 MOVE 78-blocco to TOTEM-HINT-TEXT
+           WHEN 5062 MOVE 78-kg-min1 to TOTEM-HINT-TEXT
+           WHEN 5063 MOVE 78-vet-min1 to TOTEM-HINT-TEXT
+           WHEN 5064 MOVE 78-kg-min2 to TOTEM-HINT-TEXT
+           WHEN 5065 MOVE 78-vet-min2 to TOTEM-HINT-TEXT
+           WHEN 5066 MOVE 78-kg-max to TOTEM-HINT-TEXT
+           WHEN 5067 MOVE 78-vet-max to TOTEM-HINT-TEXT
+           WHEN 5068 MOVE 78-accorpa to TOTEM-HINT-TEXT
+           WHEN 5069 MOVE 78-promo to TOTEM-HINT-TEXT
+           WHEN 5070 MOVE 78-prenot to TOTEM-HINT-TEXT
+           WHEN 5071 MOVE 78-banco to TOTEM-HINT-TEXT
+           WHEN 5072 MOVE 78-escludi to TOTEM-HINT-TEXT
+           WHEN 5073 MOVE 78-imb-minimo to TOTEM-HINT-TEXT
+           WHEN 5074 MOVE 78-cod-art-forn to TOTEM-HINT-TEXT
            WHEN 123 MOVE 78-pb-amp to TOTEM-HINT-TEXT
-           WHEN 5073 MOVE 78-pb-perce to TOTEM-HINT-TEXT
-           WHEN 5074 MOVE 78-pb-amp to TOTEM-HINT-TEXT
-           WHEN 5075 MOVE 78-mag to TOTEM-HINT-TEXT
+           WHEN 5075 MOVE 78-pb-perce to TOTEM-HINT-TEXT
+           WHEN 5076 MOVE 78-pb-amp to TOTEM-HINT-TEXT
+           WHEN 5077 MOVE 78-pb-sost-batt to TOTEM-HINT-TEXT
+           WHEN 5078 MOVE 78-mag to TOTEM-HINT-TEXT
            WHEN 150 MOVE 78-logo-pers to TOTEM-HINT-TEXT
            WHEN 152 MOVE 78-path-logo to TOTEM-HINT-TEXT
-           WHEN 5078 MOVE 78-parziale to TOTEM-HINT-TEXT
-           WHEN 5079 MOVE 78-per-cons to TOTEM-HINT-TEXT
-           WHEN 5080 MOVE 78-val to TOTEM-HINT-TEXT
-           WHEN 5081 MOVE 78-max to TOTEM-HINT-TEXT
-           WHEN 5082 MOVE 78-blocco to TOTEM-HINT-TEXT
-           WHEN 5083 MOVE 78-kg-min1 to TOTEM-HINT-TEXT
-           WHEN 5084 MOVE 78-vet-min1 to TOTEM-HINT-TEXT
-           WHEN 5085 MOVE 78-kg-min2 to TOTEM-HINT-TEXT
-           WHEN 5086 MOVE 78-vet-min2 to TOTEM-HINT-TEXT
-           WHEN 5087 MOVE 78-kg-max to TOTEM-HINT-TEXT
-           WHEN 5088 MOVE 78-vet-max to TOTEM-HINT-TEXT
-           WHEN 5089 MOVE 78-accorpa to TOTEM-HINT-TEXT
-           WHEN 5090 MOVE 78-promo to TOTEM-HINT-TEXT
-           WHEN 5091 MOVE 78-prenot to TOTEM-HINT-TEXT
-           WHEN 5092 MOVE 78-banco to TOTEM-HINT-TEXT
-           WHEN 5093 MOVE 78-escludi to TOTEM-HINT-TEXT
-           WHEN 5094 MOVE 78-imb-minimo to TOTEM-HINT-TEXT
-           WHEN 5095 MOVE 78-cod-art-forn to TOTEM-HINT-TEXT
+           WHEN 5081 MOVE 78-parziale to TOTEM-HINT-TEXT
+           WHEN 5082 MOVE 78-per-cons to TOTEM-HINT-TEXT
+           WHEN 5083 MOVE 78-val to TOTEM-HINT-TEXT
+           WHEN 5084 MOVE 78-max to TOTEM-HINT-TEXT
+           WHEN 5085 MOVE 78-blocco to TOTEM-HINT-TEXT
+           WHEN 5086 MOVE 78-kg-min1 to TOTEM-HINT-TEXT
+           WHEN 5087 MOVE 78-vet-min1 to TOTEM-HINT-TEXT
+           WHEN 5088 MOVE 78-kg-min2 to TOTEM-HINT-TEXT
+           WHEN 5089 MOVE 78-vet-min2 to TOTEM-HINT-TEXT
+           WHEN 5090 MOVE 78-kg-max to TOTEM-HINT-TEXT
+           WHEN 5091 MOVE 78-vet-max to TOTEM-HINT-TEXT
+           WHEN 5092 MOVE 78-accorpa to TOTEM-HINT-TEXT
+           WHEN 5093 MOVE 78-promo to TOTEM-HINT-TEXT
+           WHEN 5094 MOVE 78-prenot to TOTEM-HINT-TEXT
+           WHEN 5095 MOVE 78-banco to TOTEM-HINT-TEXT
+           WHEN 5096 MOVE 78-escludi to TOTEM-HINT-TEXT
+           WHEN 5097 MOVE 78-imb-minimo to TOTEM-HINT-TEXT
+           WHEN 5098 MOVE 78-cod-art-forn to TOTEM-HINT-TEXT
            WHEN 177 MOVE 78-pb-amp to TOTEM-HINT-TEXT
-           WHEN 5096 MOVE 78-pb-perce to TOTEM-HINT-TEXT
-           WHEN 5097 MOVE 78-pb-amp to TOTEM-HINT-TEXT
-           WHEN 5098 MOVE 78-mag to TOTEM-HINT-TEXT
-           WHEN 5100 MOVE 78-logo-pers to TOTEM-HINT-TEXT
-           WHEN 5101 MOVE 78-path-logo to TOTEM-HINT-TEXT
-           WHEN 5103 MOVE 78-parziale to TOTEM-HINT-TEXT
-           WHEN 5104 MOVE 78-per-cons to TOTEM-HINT-TEXT
-           WHEN 5105 MOVE 78-val to TOTEM-HINT-TEXT
-           WHEN 5106 MOVE 78-max to TOTEM-HINT-TEXT
-           WHEN 5107 MOVE 78-blocco to TOTEM-HINT-TEXT
-           WHEN 5108 MOVE 78-kg-min1 to TOTEM-HINT-TEXT
-           WHEN 5109 MOVE 78-vet-min1 to TOTEM-HINT-TEXT
-           WHEN 5110 MOVE 78-kg-min2 to TOTEM-HINT-TEXT
-           WHEN 5111 MOVE 78-vet-min2 to TOTEM-HINT-TEXT
-           WHEN 5112 MOVE 78-kg-max to TOTEM-HINT-TEXT
-           WHEN 5113 MOVE 78-vet-max to TOTEM-HINT-TEXT
-           WHEN 5114 MOVE 78-accorpa to TOTEM-HINT-TEXT
-           WHEN 5115 MOVE 78-promo to TOTEM-HINT-TEXT
-           WHEN 5116 MOVE 78-prenot to TOTEM-HINT-TEXT
-           WHEN 5117 MOVE 78-banco to TOTEM-HINT-TEXT
-           WHEN 5118 MOVE 78-escludi to TOTEM-HINT-TEXT
-           WHEN 5119 MOVE 78-imb-minimo to TOTEM-HINT-TEXT
-           WHEN 5120 MOVE 78-cod-art-forn to TOTEM-HINT-TEXT
+           WHEN 5099 MOVE 78-pb-perce to TOTEM-HINT-TEXT
+           WHEN 5100 MOVE 78-pb-amp to TOTEM-HINT-TEXT
+           WHEN 5101 MOVE 78-pb-sost-batt to TOTEM-HINT-TEXT
+           WHEN 5102 MOVE 78-mag to TOTEM-HINT-TEXT
+           WHEN 5104 MOVE 78-logo-pers to TOTEM-HINT-TEXT
+           WHEN 5105 MOVE 78-path-logo to TOTEM-HINT-TEXT
+           WHEN 5107 MOVE 78-parziale to TOTEM-HINT-TEXT
+           WHEN 5108 MOVE 78-per-cons to TOTEM-HINT-TEXT
+           WHEN 5109 MOVE 78-val to TOTEM-HINT-TEXT
+           WHEN 5110 MOVE 78-max to TOTEM-HINT-TEXT
+           WHEN 5111 MOVE 78-blocco to TOTEM-HINT-TEXT
+           WHEN 5112 MOVE 78-kg-min1 to TOTEM-HINT-TEXT
+           WHEN 5113 MOVE 78-vet-min1 to TOTEM-HINT-TEXT
+           WHEN 5114 MOVE 78-kg-min2 to TOTEM-HINT-TEXT
+           WHEN 5115 MOVE 78-vet-min2 to TOTEM-HINT-TEXT
+           WHEN 5116 MOVE 78-kg-max to TOTEM-HINT-TEXT
+           WHEN 5117 MOVE 78-vet-max to TOTEM-HINT-TEXT
+           WHEN 5118 MOVE 78-accorpa to TOTEM-HINT-TEXT
+           WHEN 5119 MOVE 78-promo to TOTEM-HINT-TEXT
+           WHEN 5120 MOVE 78-prenot to TOTEM-HINT-TEXT
+           WHEN 5121 MOVE 78-banco to TOTEM-HINT-TEXT
+           WHEN 5122 MOVE 78-escludi to TOTEM-HINT-TEXT
+           WHEN 5123 MOVE 78-imb-minimo to TOTEM-HINT-TEXT
+           WHEN 5124 MOVE 78-cod-art-forn to TOTEM-HINT-TEXT
            WHEN 230 MOVE 78-pb-amp to TOTEM-HINT-TEXT
-           WHEN 5121 MOVE 78-pb-perce to TOTEM-HINT-TEXT
-           WHEN 5122 MOVE 78-pb-amp to TOTEM-HINT-TEXT
-           WHEN 5123 MOVE 78-mag to TOTEM-HINT-TEXT
-           WHEN 5125 MOVE 78-logo-pers to TOTEM-HINT-TEXT
-           WHEN 5126 MOVE 78-path-logo to TOTEM-HINT-TEXT
-           WHEN 5127 MOVE "Tipologia Clienti" to TOTEM-HINT-TEXT
-           WHEN 5128 MOVE "Clienti" to TOTEM-HINT-TEXT
-           WHEN 5129 MOVE "Gruppi GDO" to TOTEM-HINT-TEXT
-           WHEN 5130 MOVE "Destini" to TOTEM-HINT-TEXT
+           WHEN 5125 MOVE 78-pb-perce to TOTEM-HINT-TEXT
+           WHEN 5126 MOVE 78-pb-amp to TOTEM-HINT-TEXT
+           WHEN 5127 MOVE 78-pb-sost-batt to TOTEM-HINT-TEXT
+           WHEN 5128 MOVE 78-mag to TOTEM-HINT-TEXT
+           WHEN 5130 MOVE 78-logo-pers to TOTEM-HINT-TEXT
+           WHEN 5131 MOVE 78-path-logo to TOTEM-HINT-TEXT
+           WHEN 5132 MOVE "Tipologia Clienti" to TOTEM-HINT-TEXT
+           WHEN 5133 MOVE "Clienti" to TOTEM-HINT-TEXT
+           WHEN 5134 MOVE "Gruppi GDO" to TOTEM-HINT-TEXT
+           WHEN 5135 MOVE "Destini" to TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
            EVALUATE Control-Id
@@ -8632,102 +8822,107 @@
            When 5020 PERFORM chk-pb-bosch-BeforeProcedure
            When 5021 PERFORM chk-pb-perce-BeforeProcedure
            When 5022 PERFORM chk-pb-amp-BeforeProcedure
-           When 5025 PERFORM chk-pb-perce-BeforeProcedure
-           When 5026 PERFORM ef-path-logo-BeforeProcedure
-           When 5028 PERFORM ef-ini-vol-1-BeforeProcedure
-           When 5029 PERFORM ef-parz-1-BeforeProcedure
-           When 5030 PERFORM ef-gg-cons-1-BeforeProcedure
-           When 5031 PERFORM ef-val-1-BeforeProcedure
-           When 5032 PERFORM ef-cons-max-1-BeforeProcedure
-           When 5033 PERFORM ef-blocco-kg-1-BeforeProcedure
-           When 5034 PERFORM ef-min-kg-1-BeforeProcedure
-           When 5035 PERFORM ef-min-vet-30kg-1-BeforeProcedure
-           When 5036 PERFORM ef-min-kg-1-BeforeProcedure
-           When 5037 PERFORM ef-min-vet-1-BeforeProcedure
-           When 5038 PERFORM ef-max-kg-1-BeforeProcedure
-           When 5039 PERFORM ef-max-vet-1-BeforeProcedure
-           When 5040 PERFORM chk-accorpa-1-BeforeProcedure
-           When 5041 PERFORM chk-promoa-BeforeProcedure
-           When 5042 PERFORM chk-intera-1-BeforeProcedure
-           When 5043 PERFORM chk-banco-1-BeforeProcedure
-           When 5044 PERFORM chk-intera-BeforeProcedure
-           When 5045 PERFORM chk-banco-BeforeProcedure
+           When 5023 PERFORM chk-sost-batt-BeforeProcedure
+           When 5026 PERFORM chk-pb-perce-BeforeProcedure
+           When 5027 PERFORM ef-path-logo-BeforeProcedure
+           When 5029 PERFORM ef-ini-vol-1-BeforeProcedure
+           When 5030 PERFORM ef-parz-1-BeforeProcedure
+           When 5031 PERFORM ef-gg-cons-1-BeforeProcedure
+           When 5032 PERFORM ef-val-1-BeforeProcedure
+           When 5033 PERFORM ef-cons-max-1-BeforeProcedure
+           When 5034 PERFORM ef-blocco-kg-1-BeforeProcedure
+           When 5035 PERFORM ef-min-kg-1-BeforeProcedure
+           When 5036 PERFORM ef-min-vet-30kg-1-BeforeProcedure
+           When 5037 PERFORM ef-min-kg-1-BeforeProcedure
+           When 5038 PERFORM ef-min-vet-1-BeforeProcedure
+           When 5039 PERFORM ef-max-kg-1-BeforeProcedure
+           When 5040 PERFORM ef-max-vet-1-BeforeProcedure
+           When 5041 PERFORM chk-accorpa-1-BeforeProcedure
+           When 5042 PERFORM chk-promoa-BeforeProcedure
+           When 5043 PERFORM chk-intera-1-BeforeProcedure
+           When 5044 PERFORM chk-banco-1-BeforeProcedure
+           When 5045 PERFORM chk-intera-BeforeProcedure
            When 5046 PERFORM chk-banco-BeforeProcedure
+           When 5047 PERFORM chk-banco-BeforeProcedure
            When 80 PERFORM chk-pb-bosch-1-BeforeProcedure
-           When 5047 PERFORM chk-pb-perce-1-BeforeProcedure
-           When 5048 PERFORM chk-pb-amp-1-BeforeProcedure
-           When 5051 PERFORM chk-pb-perce-BeforeProcedure
-           When 5052 PERFORM ef-path-logoa-BeforeProcedure
-           When 5054 PERFORM ef-ini-vol-2-BeforeProcedure
-           When 5055 PERFORM ef-parz-2-BeforeProcedure
-           When 5056 PERFORM ef-gg-cons-2-BeforeProcedure
-           When 5057 PERFORM ef-val-2-BeforeProcedure
-           When 5058 PERFORM ef-cons-max-2-BeforeProcedure
-           When 5059 PERFORM ef-blocco-kg-2-BeforeProcedure
-           When 5060 PERFORM ef-min-kg-2-BeforeProcedure
-           When 5061 PERFORM ef-min-vet-30kg-2-BeforeProcedure
+           When 5048 PERFORM chk-pb-perce-1-BeforeProcedure
+           When 5049 PERFORM chk-pb-amp-1-BeforeProcedure
+           When 5050 PERFORM chk-sost-batt-1-BeforeProcedure
+           When 5053 PERFORM chk-pb-perce-BeforeProcedure
+           When 5054 PERFORM ef-path-logoa-BeforeProcedure
+           When 5056 PERFORM ef-ini-vol-2-BeforeProcedure
+           When 5057 PERFORM ef-parz-2-BeforeProcedure
+           When 5058 PERFORM ef-gg-cons-2-BeforeProcedure
+           When 5059 PERFORM ef-val-2-BeforeProcedure
+           When 5060 PERFORM ef-cons-max-2-BeforeProcedure
+           When 5061 PERFORM ef-blocco-kg-2-BeforeProcedure
            When 5062 PERFORM ef-min-kg-2-BeforeProcedure
-           When 5063 PERFORM ef-min-vet-2-BeforeProcedure
-           When 5064 PERFORM ef-max-kg-2-BeforeProcedure
-           When 5065 PERFORM ef-max-vet-2-BeforeProcedure
-           When 5066 PERFORM chk-accorpa-2-BeforeProcedure
-           When 5067 PERFORM chk-promo-2-BeforeProcedure
-           When 5068 PERFORM chk-intera-2-BeforeProcedure
-           When 5069 PERFORM chk-banco-2-BeforeProcedure
-           When 5070 PERFORM chk-intera-BeforeProcedure
-           When 5071 PERFORM chk-banco-BeforeProcedure
-           When 5072 PERFORM chk-banco-BeforeProcedure
+           When 5063 PERFORM ef-min-vet-30kg-2-BeforeProcedure
+           When 5064 PERFORM ef-min-kg-2-BeforeProcedure
+           When 5065 PERFORM ef-min-vet-2-BeforeProcedure
+           When 5066 PERFORM ef-max-kg-2-BeforeProcedure
+           When 5067 PERFORM ef-max-vet-2-BeforeProcedure
+           When 5068 PERFORM chk-accorpa-2-BeforeProcedure
+           When 5069 PERFORM chk-promo-2-BeforeProcedure
+           When 5070 PERFORM chk-intera-2-BeforeProcedure
+           When 5071 PERFORM chk-banco-2-BeforeProcedure
+           When 5072 PERFORM chk-intera-BeforeProcedure
+           When 5073 PERFORM chk-banco-BeforeProcedure
+           When 5074 PERFORM chk-banco-BeforeProcedure
            When 123 PERFORM chk-pb-bosch-2-BeforeProcedure
-           When 5073 PERFORM chk-pb-perce-2-BeforeProcedure
-           When 5074 PERFORM chk-pb-amp-2-BeforeProcedure
+           When 5075 PERFORM chk-pb-perce-2-BeforeProcedure
+           When 5076 PERFORM chk-pb-amp-2-BeforeProcedure
+           When 5077 PERFORM chk-sost-batt-2-BeforeProcedure
            When 150 PERFORM chk-pb-perce-BeforeProcedure
            When 152 PERFORM ef-path-logoa-BeforeProcedure
-           When 5078 PERFORM ef-parz-3-BeforeProcedure
-           When 5079 PERFORM ef-gg-cons-3-BeforeProcedure
-           When 5080 PERFORM ef-val-3-BeforeProcedure
-           When 5081 PERFORM ef-cons-max-3-BeforeProcedure
-           When 5082 PERFORM ef-blocco-kg-3-BeforeProcedure
-           When 5083 PERFORM ef-min-kg-3-BeforeProcedure
-           When 5084 PERFORM ef-min-vet-30kg-3-BeforeProcedure
-           When 5085 PERFORM ef-min-kg-3-BeforeProcedure
-           When 5086 PERFORM ef-min-vet-3-BeforeProcedure
-           When 5087 PERFORM ef-max-kg-3-BeforeProcedure
-           When 5088 PERFORM ef-max-vet-3-BeforeProcedure
-           When 5089 PERFORM chk-accorpa-3-BeforeProcedure
-           When 5090 PERFORM chk-promo-3-BeforeProcedure
-           When 5091 PERFORM chk-intera-3-BeforeProcedure
-           When 5092 PERFORM chk-banco-3-BeforeProcedure
-           When 5093 PERFORM chk-intera-BeforeProcedure
-           When 5094 PERFORM chk-banco-BeforeProcedure
-           When 5095 PERFORM chk-banco-BeforeProcedure
+           When 5081 PERFORM ef-parz-3-BeforeProcedure
+           When 5082 PERFORM ef-gg-cons-3-BeforeProcedure
+           When 5083 PERFORM ef-val-3-BeforeProcedure
+           When 5084 PERFORM ef-cons-max-3-BeforeProcedure
+           When 5085 PERFORM ef-blocco-kg-3-BeforeProcedure
+           When 5086 PERFORM ef-min-kg-3-BeforeProcedure
+           When 5087 PERFORM ef-min-vet-30kg-3-BeforeProcedure
+           When 5088 PERFORM ef-min-kg-3-BeforeProcedure
+           When 5089 PERFORM ef-min-vet-3-BeforeProcedure
+           When 5090 PERFORM ef-max-kg-3-BeforeProcedure
+           When 5091 PERFORM ef-max-vet-3-BeforeProcedure
+           When 5092 PERFORM chk-accorpa-3-BeforeProcedure
+           When 5093 PERFORM chk-promo-3-BeforeProcedure
+           When 5094 PERFORM chk-intera-3-BeforeProcedure
+           When 5095 PERFORM chk-banco-3-BeforeProcedure
+           When 5096 PERFORM chk-intera-BeforeProcedure
+           When 5097 PERFORM chk-banco-BeforeProcedure
+           When 5098 PERFORM chk-banco-BeforeProcedure
            When 177 PERFORM chk-pb-bosch-3-BeforeProcedure
-           When 5096 PERFORM chk-pb-perce-3-BeforeProcedure
-           When 5097 PERFORM chk-pb-amp-3-BeforeProcedure
-           When 5100 PERFORM chk-pb-perce-BeforeProcedure
-           When 5101 PERFORM ef-path-logoa-BeforeProcedure
-           When 5103 PERFORM ef-parz-4-BeforeProcedure
-           When 5104 PERFORM ef-gg-cons-4-BeforeProcedure
-           When 5105 PERFORM ef-val-4-BeforeProcedure
-           When 5106 PERFORM ef-cons-max-4-BeforeProcedure
-           When 5107 PERFORM ef-blocco-kg-4-BeforeProcedure
-           When 5108 PERFORM ef-min-kg-4-BeforeProcedure
-           When 5109 PERFORM ef-min-vet-30kg-4-BeforeProcedure
-           When 5110 PERFORM ef-min-kg-4-BeforeProcedure
-           When 5111 PERFORM ef-min-vet-4-BeforeProcedure
-           When 5112 PERFORM ef-max-kg-4-BeforeProcedure
-           When 5113 PERFORM ef-max-vet-4-BeforeProcedure
-           When 5114 PERFORM chk-accorpa-4-BeforeProcedure
-           When 5115 PERFORM chk-promo-4-BeforeProcedure
-           When 5116 PERFORM chk-intera-4-BeforeProcedure
-           When 5117 PERFORM chk-banco-4-BeforeProcedure
-           When 5118 PERFORM chk-intera-BeforeProcedure
-           When 5119 PERFORM chk-banco-BeforeProcedure
-           When 5120 PERFORM chk-banco-BeforeProcedure
+           When 5099 PERFORM chk-pb-perce-3-BeforeProcedure
+           When 5100 PERFORM chk-pb-amp-3-BeforeProcedure
+           When 5101 PERFORM chk-sost-batt-3-BeforeProcedure
+           When 5104 PERFORM chk-pb-perce-BeforeProcedure
+           When 5105 PERFORM ef-path-logoa-BeforeProcedure
+           When 5107 PERFORM ef-parz-4-BeforeProcedure
+           When 5108 PERFORM ef-gg-cons-4-BeforeProcedure
+           When 5109 PERFORM ef-val-4-BeforeProcedure
+           When 5110 PERFORM ef-cons-max-4-BeforeProcedure
+           When 5111 PERFORM ef-blocco-kg-4-BeforeProcedure
+           When 5112 PERFORM ef-min-kg-4-BeforeProcedure
+           When 5113 PERFORM ef-min-vet-30kg-4-BeforeProcedure
+           When 5114 PERFORM ef-min-kg-4-BeforeProcedure
+           When 5115 PERFORM ef-min-vet-4-BeforeProcedure
+           When 5116 PERFORM ef-max-kg-4-BeforeProcedure
+           When 5117 PERFORM ef-max-vet-4-BeforeProcedure
+           When 5118 PERFORM chk-accorpa-4-BeforeProcedure
+           When 5119 PERFORM chk-promo-4-BeforeProcedure
+           When 5120 PERFORM chk-intera-4-BeforeProcedure
+           When 5121 PERFORM chk-banco-4-BeforeProcedure
+           When 5122 PERFORM chk-intera-BeforeProcedure
+           When 5123 PERFORM chk-banco-BeforeProcedure
+           When 5124 PERFORM chk-banco-BeforeProcedure
            When 230 PERFORM chk-pb-bosch-4-BeforeProcedure
-           When 5121 PERFORM chk-pb-perce-4-BeforeProcedure
-           When 5122 PERFORM chk-pb-amp-4-BeforeProcedure
-           When 5125 PERFORM chk-pb-perce-BeforeProcedure
-           When 5126 PERFORM ef-path-logoa-BeforeProcedure
+           When 5125 PERFORM chk-pb-perce-4-BeforeProcedure
+           When 5126 PERFORM chk-pb-amp-4-BeforeProcedure
+           When 5127 PERFORM chk-sost-batt-4-BeforeProcedure
+           When 5130 PERFORM chk-pb-perce-BeforeProcedure
+           When 5131 PERFORM ef-path-logoa-BeforeProcedure
            END-EVALUATE
            PERFORM Form1-DISPLAY-STATUS-MSG
            perform Form1-BEFORE-SCREEN
@@ -8736,181 +8931,181 @@
        Screen1-Gd-1-Event-Proc.
            EVALUATE Event-Type ALSO Event-Control-Id ALSO
                                     Event-Window-Handle
-           WHEN Msg-Begin-Drag ALSO 5023 ALSO
+           WHEN Msg-Begin-Drag ALSO 5024 ALSO
                     form1-handle 
               PERFORM gd-mag-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5023 ALSO
+           WHEN Msg-Begin-Entry ALSO 5024 ALSO
                     form1-handle 
               PERFORM gd-mag-Ev-Msg-Begin-Entry
-           WHEN Msg-End-Drag ALSO 5023 ALSO
+           WHEN Msg-End-Drag ALSO 5024 ALSO
                     form1-handle 
               PERFORM gd-mag-Ev-Msg-End-Drag
-           WHEN Msg-Finish-Entry ALSO 5023 ALSO
+           WHEN Msg-Finish-Entry ALSO 5024 ALSO
                     form1-handle 
               PERFORM gd-mag-Ev-Msg-Finish-Entry
-           WHEN Msg-Goto-Cell ALSO 5023 ALSO
+           WHEN Msg-Goto-Cell ALSO 5024 ALSO
                     form1-handle 
               PERFORM gd-mag-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5023 ALSO
+           WHEN Msg-Goto-Cell-Drag ALSO 5024 ALSO
                     form1-handle 
               PERFORM gd-mag-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5023 ALSO
+           WHEN Msg-Goto-Cell-Mouse ALSO 5024 ALSO
                     form1-handle 
               PERFORM gd-mag-Ev-Msg-Goto-Cell-Mouse
-           WHEN Msg-Begin-Drag ALSO 5049 ALSO
+           WHEN Msg-Begin-Drag ALSO 5051 ALSO
                     form1-handle 
               PERFORM gd-mag-1-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5049 ALSO
+           WHEN Msg-Begin-Entry ALSO 5051 ALSO
                     form1-handle 
               PERFORM gd-mag-1-Ev-Msg-Begin-Entry
-           WHEN Msg-End-Drag ALSO 5049 ALSO
+           WHEN Msg-End-Drag ALSO 5051 ALSO
                     form1-handle 
               PERFORM gd-mag-1-Ev-Msg-End-Drag
-           WHEN Msg-Finish-Entry ALSO 5049 ALSO
+           WHEN Msg-Finish-Entry ALSO 5051 ALSO
                     form1-handle 
               PERFORM gd-mag-1-Ev-Msg-Finish-Entry
-           WHEN Msg-Goto-Cell ALSO 5049 ALSO
+           WHEN Msg-Goto-Cell ALSO 5051 ALSO
                     form1-handle 
               PERFORM gd-mag-1-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5049 ALSO
+           WHEN Msg-Goto-Cell-Drag ALSO 5051 ALSO
                     form1-handle 
               PERFORM gd-mag-1-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5049 ALSO
+           WHEN Msg-Goto-Cell-Mouse ALSO 5051 ALSO
                     form1-handle 
               PERFORM gd-mag-1-Ev-Msg-Goto-Cell-Mouse
-           WHEN Msg-Begin-Drag ALSO 5075 ALSO
+           WHEN Msg-Begin-Drag ALSO 5078 ALSO
                     form1-handle 
               PERFORM gd-mag-2-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5075 ALSO
+           WHEN Msg-Begin-Entry ALSO 5078 ALSO
                     form1-handle 
               PERFORM gd-mag-2-Ev-Msg-Begin-Entry
-           WHEN Msg-End-Drag ALSO 5075 ALSO
+           WHEN Msg-End-Drag ALSO 5078 ALSO
                     form1-handle 
               PERFORM gd-mag-2-Ev-Msg-End-Drag
-           WHEN Msg-Finish-Entry ALSO 5075 ALSO
+           WHEN Msg-Finish-Entry ALSO 5078 ALSO
                     form1-handle 
               PERFORM gd-mag-2-Ev-Msg-Finish-Entry
-           WHEN Msg-Goto-Cell ALSO 5075 ALSO
+           WHEN Msg-Goto-Cell ALSO 5078 ALSO
                     form1-handle 
               PERFORM gd-mag-2-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5075 ALSO
+           WHEN Msg-Goto-Cell-Drag ALSO 5078 ALSO
                     form1-handle 
               PERFORM gd-mag-2-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5075 ALSO
+           WHEN Msg-Goto-Cell-Mouse ALSO 5078 ALSO
                     form1-handle 
               PERFORM gd-mag-2-Ev-Msg-Goto-Cell-Mouse
-           WHEN Msg-Begin-Drag ALSO 5098 ALSO
+           WHEN Msg-Begin-Drag ALSO 5102 ALSO
                     form1-handle 
               PERFORM gd-mag-3-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5098 ALSO
+           WHEN Msg-Begin-Entry ALSO 5102 ALSO
                     form1-handle 
               PERFORM gd-mag-3-Ev-Msg-Begin-Entry
-           WHEN Msg-End-Drag ALSO 5098 ALSO
+           WHEN Msg-End-Drag ALSO 5102 ALSO
                     form1-handle 
               PERFORM gd-mag-3-Ev-Msg-End-Drag
-           WHEN Msg-Finish-Entry ALSO 5098 ALSO
+           WHEN Msg-Finish-Entry ALSO 5102 ALSO
                     form1-handle 
               PERFORM gd-mag-3-Ev-Msg-Finish-Entry
-           WHEN Msg-Goto-Cell ALSO 5098 ALSO
+           WHEN Msg-Goto-Cell ALSO 5102 ALSO
                     form1-handle 
               PERFORM gd-mag-3-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5098 ALSO
+           WHEN Msg-Goto-Cell-Drag ALSO 5102 ALSO
                     form1-handle 
               PERFORM gd-mag-3-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5098 ALSO
+           WHEN Msg-Goto-Cell-Mouse ALSO 5102 ALSO
                     form1-handle 
               PERFORM gd-mag-3-Ev-Msg-Goto-Cell-Mouse
-           WHEN Msg-Begin-Drag ALSO 5123 ALSO
-                    form1-handle 
-              PERFORM gd-mag-4-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5123 ALSO
-                    form1-handle 
-              PERFORM gd-mag-4-Ev-Msg-Begin-Entry
-           WHEN Msg-End-Drag ALSO 5123 ALSO
-                    form1-handle 
-              PERFORM gd-mag-4-Ev-Msg-End-Drag
-           WHEN Msg-Finish-Entry ALSO 5123 ALSO
-                    form1-handle 
-              PERFORM gd-mag-4-Ev-Msg-Finish-Entry
-           WHEN Msg-Goto-Cell ALSO 5123 ALSO
-                    form1-handle 
-              PERFORM gd-mag-4-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5123 ALSO
-                    form1-handle 
-              PERFORM gd-mag-4-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5123 ALSO
-                    form1-handle 
-              PERFORM gd-mag-4-Ev-Msg-Goto-Cell-Mouse
-           WHEN Msg-Begin-Drag ALSO 5127 ALSO
-                    form1-handle 
-              PERFORM gd-tipocli-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5127 ALSO
-                    form1-handle 
-              PERFORM gd-tipocli-Ev-Msg-Begin-Entry
-           WHEN Msg-End-Drag ALSO 5127 ALSO
-                    form1-handle 
-              PERFORM gd-tipocli-Ev-Msg-End-Drag
-           WHEN Msg-Goto-Cell ALSO 5127 ALSO
-                    form1-handle 
-              PERFORM gd-tipocli-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5127 ALSO
-                    form1-handle 
-              PERFORM gd-tipocli-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5127 ALSO
-                    form1-handle 
-              PERFORM gd-tipocli-Ev-Msg-Goto-Cell-Mouse
            WHEN Msg-Begin-Drag ALSO 5128 ALSO
                     form1-handle 
-              PERFORM gd-clienti-Ev-Msg-Begin-Drag
+              PERFORM gd-mag-4-Ev-Msg-Begin-Drag
            WHEN Msg-Begin-Entry ALSO 5128 ALSO
                     form1-handle 
-              PERFORM gd-clienti-Ev-Msg-Begin-Entry
+              PERFORM gd-mag-4-Ev-Msg-Begin-Entry
            WHEN Msg-End-Drag ALSO 5128 ALSO
                     form1-handle 
-              PERFORM gd-clienti-Ev-Msg-End-Drag
+              PERFORM gd-mag-4-Ev-Msg-End-Drag
+           WHEN Msg-Finish-Entry ALSO 5128 ALSO
+                    form1-handle 
+              PERFORM gd-mag-4-Ev-Msg-Finish-Entry
            WHEN Msg-Goto-Cell ALSO 5128 ALSO
                     form1-handle 
-              PERFORM gd-clienti-Ev-Msg-Goto-Cell
+              PERFORM gd-mag-4-Ev-Msg-Goto-Cell
            WHEN Msg-Goto-Cell-Drag ALSO 5128 ALSO
                     form1-handle 
-              PERFORM gd-clienti-Ev-Msg-Goto-Cell-Drag
+              PERFORM gd-mag-4-Ev-Msg-Goto-Cell-Drag
            WHEN Msg-Goto-Cell-Mouse ALSO 5128 ALSO
                     form1-handle 
+              PERFORM gd-mag-4-Ev-Msg-Goto-Cell-Mouse
+           WHEN Msg-Begin-Drag ALSO 5132 ALSO
+                    form1-handle 
+              PERFORM gd-tipocli-Ev-Msg-Begin-Drag
+           WHEN Msg-Begin-Entry ALSO 5132 ALSO
+                    form1-handle 
+              PERFORM gd-tipocli-Ev-Msg-Begin-Entry
+           WHEN Msg-End-Drag ALSO 5132 ALSO
+                    form1-handle 
+              PERFORM gd-tipocli-Ev-Msg-End-Drag
+           WHEN Msg-Goto-Cell ALSO 5132 ALSO
+                    form1-handle 
+              PERFORM gd-tipocli-Ev-Msg-Goto-Cell
+           WHEN Msg-Goto-Cell-Drag ALSO 5132 ALSO
+                    form1-handle 
+              PERFORM gd-tipocli-Ev-Msg-Goto-Cell-Drag
+           WHEN Msg-Goto-Cell-Mouse ALSO 5132 ALSO
+                    form1-handle 
+              PERFORM gd-tipocli-Ev-Msg-Goto-Cell-Mouse
+           WHEN Msg-Begin-Drag ALSO 5133 ALSO
+                    form1-handle 
+              PERFORM gd-clienti-Ev-Msg-Begin-Drag
+           WHEN Msg-Begin-Entry ALSO 5133 ALSO
+                    form1-handle 
+              PERFORM gd-clienti-Ev-Msg-Begin-Entry
+           WHEN Msg-End-Drag ALSO 5133 ALSO
+                    form1-handle 
+              PERFORM gd-clienti-Ev-Msg-End-Drag
+           WHEN Msg-Goto-Cell ALSO 5133 ALSO
+                    form1-handle 
+              PERFORM gd-clienti-Ev-Msg-Goto-Cell
+           WHEN Msg-Goto-Cell-Drag ALSO 5133 ALSO
+                    form1-handle 
+              PERFORM gd-clienti-Ev-Msg-Goto-Cell-Drag
+           WHEN Msg-Goto-Cell-Mouse ALSO 5133 ALSO
+                    form1-handle 
               PERFORM gd-clienti-Ev-Msg-Goto-Cell-Mouse
-           WHEN Msg-Begin-Drag ALSO 5129 ALSO
+           WHEN Msg-Begin-Drag ALSO 5134 ALSO
                     form1-handle 
               PERFORM gd-gdo-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5129 ALSO
+           WHEN Msg-Begin-Entry ALSO 5134 ALSO
                     form1-handle 
               PERFORM gd-gdo-Ev-Msg-Begin-Entry
-           WHEN Msg-End-Drag ALSO 5129 ALSO
+           WHEN Msg-End-Drag ALSO 5134 ALSO
                     form1-handle 
               PERFORM gd-gdo-Ev-Msg-End-Drag
-           WHEN Msg-Goto-Cell ALSO 5129 ALSO
+           WHEN Msg-Goto-Cell ALSO 5134 ALSO
                     form1-handle 
               PERFORM gd-gdo-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5129 ALSO
+           WHEN Msg-Goto-Cell-Drag ALSO 5134 ALSO
                     form1-handle 
               PERFORM gd-gdo-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5129 ALSO
+           WHEN Msg-Goto-Cell-Mouse ALSO 5134 ALSO
                     form1-handle 
               PERFORM gd-gdo-Ev-Msg-Goto-Cell-Mouse
-           WHEN Msg-Begin-Drag ALSO 5130 ALSO
+           WHEN Msg-Begin-Drag ALSO 5135 ALSO
                     form1-handle 
               PERFORM gd-destini-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5130 ALSO
+           WHEN Msg-Begin-Entry ALSO 5135 ALSO
                     form1-handle 
               PERFORM gd-destini-Ev-Msg-Begin-Entry
-           WHEN Msg-End-Drag ALSO 5130 ALSO
+           WHEN Msg-End-Drag ALSO 5135 ALSO
                     form1-handle 
               PERFORM gd-destini-Ev-Msg-End-Drag
-           WHEN Msg-Goto-Cell ALSO 5130 ALSO
+           WHEN Msg-Goto-Cell ALSO 5135 ALSO
                     form1-handle 
               PERFORM gd-destini-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5130 ALSO
+           WHEN Msg-Goto-Cell-Drag ALSO 5135 ALSO
                     form1-handle 
               PERFORM gd-destini-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5130 ALSO
+           WHEN Msg-Goto-Cell-Mouse ALSO 5135 ALSO
                     form1-handle 
               PERFORM gd-destini-Ev-Msg-Goto-Cell-Mouse
            END-EVALUATE
@@ -9791,8 +9986,9 @@
            move prm-minore-kg2        of param  to ef-min-kg2-4-buf
 
            move prm-blocco-kg        of param  to ef-blocco-kg-4-buf
-           move prm-prenotazione-qta of param  to chk-prenot-4-buf  
+           move prm-prenotazione-qta of param  to chk-prenot-4-buf    
            move prm-accorpa          of param  to chk-accorpa-4-buf 
+           move prm-sost-batt        of param  to chk-sost-batt-4-buf 
            move prm-saldi-banco      of param  to chk-banco-4-buf   
            move prm-imb-minimo       of param  to chk-imb-min-4-buf.
            move prm-cod-art-forn     of param  to chk-art-forn-4-buf.
@@ -10025,6 +10221,8 @@
            old-prm-prenotazione-qta or
               prm-accorpa          of param not = old-prm-accorpa       
               or
+              prm-sost-batt        of param not = old-prm-sost-batt     
+              or
               prm-saldi-banco      of param not = old-prm-saldi-banco   
               or
               prm-saldi-promo      of param not = old-prm-saldi-promo   
@@ -10228,6 +10426,9 @@
            end-if
            if como-prm-accorpa not = old-prm-accorpa     
               move como-prm-accorpa to prm-accorpa of param
+           end-if
+           if como-prm-sost-batt not = old-prm-sost-batt
+              move como-prm-sost-batt to prm-sost-batt of param
            end-if
            if como-prm-saldi-banco not = old-prm-saldi-banco 
               move como-prm-saldi-banco to prm-saldi-banco of param
@@ -10439,6 +10640,7 @@
            move prm-blocco-kg          of param to ef-blocco-kg-3-buf
            move prm-prenotazione-qta   of param to chk-prenot-3-buf  
            move prm-accorpa            of param to chk-accorpa-3-buf 
+           move prm-sost-batt          of param to chk-sost-batt-3-buf 
            move prm-saldi-banco        of param to chk-banco-3-buf   
            move prm-imb-minimo         of param to chk-imb-min-3-buf.
            move prm-cod-art-forn       of param to chk-art-forn-3-buf. 
@@ -10500,6 +10702,7 @@
            move 0 to ef-blocco-kg-4-buf.
            move 0 to chk-prenot-4-buf.
            move 0 to chk-accorpa-4-buf.
+           move 0 to chk-sost-batt-4-buf.
            move 0 to chk-banco-4-buf.
            move 0 to chk-imb-min-4-buf.
            move 0 to chk-art-forn-4-buf.
@@ -10669,6 +10872,7 @@
            move prm-blocco-kg          of param to ef-blocco-kg-2-buf
            move prm-prenotazione-qta   of param to chk-prenot-2-buf  
            move prm-accorpa            of param to chk-accorpa-2-buf 
+           move prm-sost-batt          of param to chk-sost-batt-2-buf 
            move prm-saldi-banco        of param to chk-banco-2-buf   
            move prm-imb-minimo         of param to chk-imb-min-2-buf.
            move prm-cod-art-forn       of param to chk-art-forn-2-buf. 
@@ -10730,6 +10934,7 @@
            move 0 to ef-blocco-kg-3-buf.
            move 0 to chk-prenot-3-buf.
            move 0 to chk-accorpa-3-buf.
+           move 0 to chk-sost-batt-3-buf.
            move 0 to chk-banco-3-buf.
            move 0 to chk-imb-min-3-buf.
            move 0 to chk-art-forn-3-buf.
@@ -10764,6 +10969,7 @@
            move 0 to ef-blocco-kg-4-buf.
            move 0 to chk-prenot-4-buf.
            move 0 to chk-accorpa-4-buf.
+           move 0 to chk-sost-batt-4-buf.
            move 0 to chk-banco-4-buf.
            move 0 to chk-imb-min-4-buf.
            move 0 to chk-art-forn-4-buf.
@@ -10900,6 +11106,7 @@
            move prm-blocco-kg         of param to ef-blocco-kg-1-buf
            move prm-prenotazione-qta  of param to chk-prenot-1-buf  
            move prm-accorpa           of param to chk-accorpa-1-buf 
+           move prm-sost-batt         of param to chk-sost-batt-1-buf 
            move prm-saldi-banco       of param to chk-banco-1-buf   
            move prm-imb-minimo        of param to chk-imb-min-1-buf.
            move prm-cod-art-forn      of param to chk-art-forn-1-buf.
@@ -10962,6 +11169,7 @@
            move 0 to ef-blocco-kg-2-buf.
            move 0 to chk-prenot-2-buf.
            move 0 to chk-accorpa-2-buf.
+           move 0 to chk-sost-batt-2-buf.
            move 0 to chk-banco-2-buf.  
            move 0 to chk-imb-min-2-buf.
            move 0 to chk-art-forn-2-buf.  
@@ -10996,6 +11204,7 @@
            move 0 to ef-blocco-kg-3-buf.
            move 0 to chk-prenot-3-buf.
            move 0 to chk-accorpa-3-buf.
+           move 0 to chk-sost-batt-3-buf.
            move 0 to chk-banco-3-buf.
            move 0 to chk-imb-min-3-buf.
            move 0 to chk-art-forn-3-buf.
@@ -11027,6 +11236,7 @@
            move 0 to ef-blocco-kg-4-buf.
            move 0 to chk-prenot-4-buf.
            move 0 to chk-accorpa-4-buf.
+           move 0 to chk-sost-batt-4-buf.
            move 0 to chk-banco-4-buf.
            move 0 to chk-imb-min-4-buf.
            move 0 to chk-art-forn-4-buf.
@@ -11116,6 +11326,11 @@
            if como-prm-accorpa not = old-prm-accorpa     
               move como-prm-accorpa to chk-accorpa-1-buf
               modify chk-accorpa-1 value chk-accorpa-1-buf
+              set modificato to true
+           end-if
+           if como-prm-sost-batt not = old-prm-sost-batt
+              move como-prm-sost-batt to chk-sost-batt-1-buf
+              modify chk-sost-batt-1 value chk-sost-batt-1-buf
               set modificato to true
            end-if
            if como-prm-saldi-banco not = old-prm-saldi-banco 
@@ -11303,6 +11518,11 @@
               move como-prm-accorpa to chk-accorpa-2-buf
               modify chk-accorpa-2 value chk-accorpa-2-buf
               set modificato to true
+           end-if             
+           if como-prm-sost-batt not = old-prm-sost-batt
+              move como-prm-sost-batt to chk-sost-batt-2-buf
+              modify chk-sost-batt-2 value chk-sost-batt-2-buf
+              set modificato to true
            end-if
            if como-prm-saldi-banco not = old-prm-saldi-banco 
               move como-prm-saldi-banco to chk-banco-2-buf
@@ -11484,6 +11704,11 @@
               move como-prm-accorpa to chk-accorpa-3-buf
               modify chk-accorpa-3 value chk-accorpa-3-buf
               set modificato to true
+           end-if                  
+           if como-prm-sost-batt not = old-prm-sost-batt
+              move como-prm-sost-batt to chk-sost-batt-3-buf
+              modify chk-sost-batt-3 value chk-sost-batt-3-buf
+              set modificato to true
            end-if
            if como-prm-saldi-banco not = old-prm-saldi-banco 
               move como-prm-saldi-banco to chk-banco-3-buf
@@ -11664,6 +11889,11 @@
            if como-prm-accorpa not = old-prm-accorpa     
               move como-prm-accorpa to chk-accorpa-4-buf
               modify chk-accorpa-4 value chk-accorpa-4-buf
+              set modificato to true
+           end-if                   
+           if como-prm-sost-batt not = old-prm-sost-batt
+              move como-prm-sost-batt to chk-sost-batt-4-buf
+              modify chk-sost-batt-4 value chk-sost-batt-4-buf
               set modificato to true
            end-if
            if como-prm-saldi-banco not = old-prm-saldi-banco 
@@ -11893,6 +12123,7 @@
 
            set prm-prenotazione-qta-no of param to true
            set prm-accorpa-no          of param to true
+           set prm-sost-batt-no        of param to true
            set prm-saldi-banco-no      of param to true
            set prm-saldi-promo-no      of param to true
            set prm-escludi-tutto-no    of param to true
@@ -12062,8 +12293,9 @@
            move ef-min-vet2-buf   to prm-vet-minore-kg2    of param.
            move ef-min-kg2-buf    to prm-minore-kg2        of param.
            move ef-blocco-kg-buf to prm-blocco-kg        of param.
-           move chk-prenot-buf   to prm-prenotazione-qta of param.
+           move chk-prenot-buf   to prm-prenotazione-qta of param. 
            move chk-accorpa-buf  to prm-accorpa          of param.
+           move chk-sost-batt-buf  to prm-sost-batt          of param.
            move chk-banco-buf    to prm-saldi-banco      of param.
            move chk-promo-buf    to prm-saldi-promo      of param.
            move chk-escludi-buf  to prm-escludi-tutto    of param.
@@ -12112,6 +12344,7 @@
            move ef-blocco-kg-1-buf to prm-blocco-kg       of param
            move chk-prenot-1-buf   to prm-prenotazione-qta of param
            move chk-accorpa-1-buf  to prm-accorpa         of param
+           move chk-sost-batt-1-buf  to prm-sost-batt of param
            move chk-banco-1-buf    to prm-saldi-banco     of param
            move chk-promo-1-buf    to prm-saldi-promo     of param
            move chk-escludi-1-buf  to prm-escludi-tutto   of param
@@ -12161,7 +12394,8 @@
            move ef-min-kg2-2-buf    to prm-minore-kg2       of param
            move ef-blocco-kg-2-buf to prm-blocco-kg       of param
            move chk-prenot-2-buf   to prm-prenotazione-qta of param
-           move chk-accorpa-2-buf  to prm-accorpa         of param
+           move chk-accorpa-2-buf  to prm-accorpa         of param  
+           move chk-sost-batt-2-buf  to prm-sost-batt of param
            move chk-banco-2-buf    to prm-saldi-banco     of param
            move chk-promo-2-buf    to prm-saldi-promo     of param
            move chk-escludi-2-buf  to prm-escludi-tutto   of param
@@ -12212,6 +12446,7 @@
            move ef-blocco-kg-3-buf to prm-blocco-kg       of param
            move chk-prenot-3-buf   to prm-prenotazione-qta of param
            move chk-accorpa-3-buf  to prm-accorpa         of param
+           move chk-sost-batt-3-buf  to prm-sost-batt of param
            move chk-banco-3-buf    to prm-saldi-banco     of param
            move chk-promo-3-buf    to prm-saldi-promo     of param
            move chk-escludi-3-buf  to prm-escludi-tutto   of param
@@ -12262,7 +12497,8 @@
            move ef-min-kg2-4-buf    to prm-minore-kg2       of param
            move ef-blocco-kg-4-buf to prm-blocco-kg       of param
            move chk-prenot-4-buf   to prm-prenotazione-qta of param
-           move chk-accorpa-4-buf  to prm-accorpa         of param
+           move chk-accorpa-4-buf  to prm-accorpa         of param    
+           move chk-sost-batt-4-buf  to prm-sost-batt of param
            move chk-banco-4-buf    to prm-saldi-banco     of param
            move chk-promo-4-buf    to prm-saldi-promo     of param
            move chk-escludi-4-buf  to prm-escludi-tutto   of param 
@@ -13317,6 +13553,7 @@
               move ef-blocco-kg-buf  to ef-blocco-kg-1-buf 
               move chk-prenot-buf    to chk-prenot-1-buf   
               move chk-accorpa-buf   to chk-accorpa-1-buf  
+              move chk-sost-batt-buf to chk-sost-batt-1-buf  
               move chk-banco-buf     to chk-banco-1-buf    
               move chk-promo-buf     to chk-promo-1-buf    
               move chk-escludi-buf   to chk-escludi-1-buf 
@@ -13367,6 +13604,7 @@
               move 0 to ef-blocco-kg-2-buf 
               move 0 to chk-prenot-2-buf   
               move 0 to chk-accorpa-2-buf  
+              move 0 to chk-sost-batt-2-buf
               move 0 to chk-banco-2-buf    
               move 0 to chk-promo-2-buf
               move 0 to chk-escludi-2-buf
@@ -13606,6 +13844,7 @@
                  move ef-blocco-kg-buf to ef-blocco-kg-2-buf 
                  move chk-prenot-buf   to chk-prenot-2-buf   
                  move chk-accorpa-buf  to chk-accorpa-2-buf  
+                 move chk-sost-batt-buf to chk-sost-batt-2-buf
                  move chk-banco-buf    to chk-banco-2-buf    
                  move chk-promo-buf    to chk-promo-2-buf    
                  move chk-escludi-buf  to chk-escludi-2-buf   
@@ -13655,6 +13894,7 @@
                  move ef-blocco-kg-1-buf to ef-blocco-kg-2-buf 
                  move chk-prenot-1-buf   to chk-prenot-2-buf   
                  move chk-accorpa-1-buf  to chk-accorpa-2-buf  
+                 move chk-sost-batt-1-buf to chk-sost-batt-2-buf
                  move chk-banco-1-buf    to chk-banco-2-buf    
                  move chk-promo-1-buf    to chk-promo-2-buf    
                  move chk-escludi-1-buf  to chk-escludi-2-buf  
@@ -13710,6 +13950,7 @@
               move 0 to ef-blocco-kg-2-buf 
               move 0 to chk-prenot-2-buf   
               move 0 to chk-accorpa-2-buf  
+              move 0 to chk-sost-batt-2-buf
               move 0 to chk-banco-2-buf    
               move 0 to chk-promo-2-buf
               move 0 to chk-escludi-2-buf   
@@ -13757,6 +13998,7 @@
                     move ef-blocco-kg-buf to ef-blocco-kg-3-buf 
                     move chk-prenot-buf   to chk-prenot-3-buf   
                     move chk-accorpa-buf  to chk-accorpa-3-buf  
+                    move chk-sost-batt-buf  to chk-sost-batt-3-buf  
                     move chk-banco-buf    to chk-banco-3-buf    
                     move chk-promo-buf    to chk-promo-3-buf    
                     move chk-escludi-buf  to chk-escludi-3-buf 
@@ -13809,6 +14051,7 @@
                     move ef-blocco-kg-1-buf to ef-blocco-kg-3-buf 
                     move chk-prenot-1-buf   to chk-prenot-3-buf   
                     move chk-accorpa-1-buf  to chk-accorpa-3-buf  
+                    move chk-sost-batt-1-buf  to chk-sost-batt-3-buf  
                     move chk-banco-1-buf    to chk-banco-3-buf    
                     move chk-promo-1-buf    to chk-promo-3-buf    
                     move chk-escludi-1-buf  to chk-escludi-3-buf 
@@ -13862,6 +14105,7 @@
                  move ef-blocco-kg-2-buf to ef-blocco-kg-3-buf 
                  move chk-prenot-2-buf   to chk-prenot-3-buf   
                  move chk-accorpa-2-buf  to chk-accorpa-3-buf  
+                 move chk-sost-batt-2-buf to chk-sost-batt-3-buf  
                  move chk-banco-2-buf    to chk-banco-3-buf    
                  move chk-promo-2-buf    to chk-promo-3-buf    
                  move chk-escludi-2-buf  to chk-escludi-3-buf    
@@ -13917,6 +14161,7 @@
               move 0 to ef-blocco-kg-3-buf 
               move 0 to chk-prenot-3-buf   
               move 0 to chk-accorpa-3-buf  
+              move 0 to chk-sost-batt-3-buf
               move 0 to chk-banco-3-buf    
               move 0 to chk-promo-3-buf
               move 0 to chk-escludi-3-buf   
@@ -13966,6 +14211,7 @@
                        move ef-blocco-kg-buf to ef-blocco-kg-4-buf 
                        move chk-prenot-buf   to chk-prenot-4-buf   
                        move chk-accorpa-buf  to chk-accorpa-4-buf  
+                       move chk-sost-batt-buf   to chk-sost-batt-4-buf  
                        move chk-banco-buf    to chk-banco-4-buf    
                        move chk-promo-buf    to chk-promo-4-buf    
                        move chk-escludi-buf  to chk-escludi-4-buf   
@@ -14019,6 +14265,8 @@
                        move ef-blocco-kg-1-buf to ef-blocco-kg-4-buf 
                        move chk-prenot-1-buf   to chk-prenot-4-buf   
                        move chk-accorpa-1-buf  to chk-accorpa-4-buf  
+                       move chk-sost-batt-1-buf  to chk-sost-batt-4-buf 
+            
                        move chk-banco-1-buf    to chk-banco-4-buf    
                        move chk-promo-1-buf    to chk-promo-4-buf    
                        move chk-escludi-1-buf  to chk-escludi-4-buf 
@@ -14073,6 +14321,7 @@
                     move ef-blocco-kg-2-buf to ef-blocco-kg-4-buf 
                     move chk-prenot-2-buf   to chk-prenot-4-buf   
                     move chk-accorpa-2-buf  to chk-accorpa-4-buf  
+                    move chk-sost-batt-2-buf   to chk-sost-batt-4-buf  
                     move chk-banco-2-buf    to chk-banco-4-buf    
                     move chk-promo-2-buf    to chk-promo-4-buf    
                     move chk-escludi-2-buf  to chk-escludi-4-buf  
@@ -14127,6 +14376,7 @@
                  move ef-blocco-kg-3-buf to ef-blocco-kg-4-buf 
                  move chk-prenot-3-buf   to chk-prenot-4-buf   
                  move chk-accorpa-3-buf  to chk-accorpa-4-buf  
+                 move chk-sost-batt-3-buf   to chk-sost-batt-4-buf  
                  move chk-banco-3-buf    to chk-banco-4-buf    
                  move chk-promo-3-buf    to chk-promo-4-buf    
                  move chk-escludi-3-buf  to chk-escludi-4-buf    
@@ -14182,6 +14432,7 @@
               move 0 to ef-blocco-kg-4-buf 
               move 0 to chk-prenot-4-buf   
               move 0 to chk-accorpa-4-buf  
+              move 0 to chk-sost-batt-4-buf 
               move 0 to chk-banco-4-buf    
               move 0 to chk-promo-4-buf
               move 0 to chk-escludi-4-buf   
@@ -15058,6 +15309,56 @@
       * <TOTEM:END>
        ef-path-logo-AfterProcedure.
       * <TOTEM:PARA. ef-path-logo-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       chk-sost-batt-4-BeforeProcedure.
+      * <TOTEM:PARA. chk-sost-batt-4-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       chk-sost-batt-4-AfterProcedure.
+      * <TOTEM:PARA. chk-sost-batt-4-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       chk-sost-batt-3-BeforeProcedure.
+      * <TOTEM:PARA. chk-sost-batt-3-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       chk-sost-batt-3-AfterProcedure.
+      * <TOTEM:PARA. chk-sost-batt-3-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       chk-sost-batt-2-BeforeProcedure.
+      * <TOTEM:PARA. chk-sost-batt-2-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       chk-sost-batt-2-AfterProcedure.
+      * <TOTEM:PARA. chk-sost-batt-2-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       chk-sost-batt-1-BeforeProcedure.
+      * <TOTEM:PARA. chk-sost-batt-1-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       chk-sost-batt-1-AfterProcedure.
+      * <TOTEM:PARA. chk-sost-batt-1-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       chk-sost-batt-BeforeProcedure.
+      * <TOTEM:PARA. chk-sost-batt-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       chk-sost-batt-AfterProcedure.
+      * <TOTEM:PARA. chk-sost-batt-AfterProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
