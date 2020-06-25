@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          tbattsost.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 24 giugno 2020 16:30:49.
+       DATE-WRITTEN.        giovedì 25 giugno 2020 09:17:46.
        REMARKS.
       *{TOTEM}END
 
@@ -104,6 +104,11 @@
                   VALUE IS 0.
        77 Verdana12-Occidentale
                   USAGE IS HANDLE OF FONT.
+       77 save-idx         PIC  9999.
+       01 save-tabella.
+           05 save-catena
+                      OCCURS 1000 TIMES.
+               10 save-articolo    PIC  9(6).
        01 FILLER           PIC  XX.
            88 ricarica VALUE IS "SI"    WHEN SET TO FALSE  "NO". 
        77 STATUS-articoli  PIC  X(2).
@@ -457,26 +462,6 @@
            SELF-ACT,
            TITLE "Cerca (F8)",
            BITMAP-NUMBER BitmapNumZoom
-           .
-
-      * PUSH BUTTON
-       05
-           tool-CercaTesto, 
-           Push-Button, 
-           COL 41,00, 
-           LINE 1,08,
-           LINES 23,00 ,
-           SIZE 24,00 ,
-           BITMAP-HANDLE TOOLBAR-BMP,
-           BITMAP-NUMBER 20,
-           UNFRAMED,
-           SQUARE,
-           EXCEPTION-VALUE 1234,
-           FLAT,
-           FONT IS Small-Font,
-           ID IS 13,
-           SELF-ACT,
-           TITLE "&Ricerca testo (Ctrl + F)",
            .
 
       *{TOTEM}END
@@ -1245,8 +1230,6 @@
                  PERFORM STAMPA-LinkTo
               WHEN Key-Status = 8
                  PERFORM TOOL-CERCA-LinkTo
-              WHEN Key-Status = 1234
-                 PERFORM tool-CercaTesto-LinkTo
            END-EVALUATE
       * avoid changing focus
            MOVE 4 TO Accept-Control
@@ -1742,9 +1725,7 @@
               inquire gd-catena, cursor-y  in riga
               perform VALORE-RIGA
 
-              delete battsost record 
-                     invalid  continue 
-              end-delete
+              perform CANCELLA-BATTSOST
 
               modify  gd-catena, record-to-delete = riga 
               inquire gd-catena, last-row in tot-righe
@@ -1756,6 +1737,38 @@
                       title = titolo
            end-if 
 
+           .
+      * <TOTEM:END>
+
+       CANCELLA-BATTSOST.
+      * <TOTEM:PARA. CANCELLA-BATTSOST>
+           move bts-codice to art-codice
+           move low-value  to bts-princ
+           start battsost key >= bts-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read battsost next at end exit perform end-read
+                    if bts-codice not = art-codice
+                       exit perform
+                    end-if
+                    delete battsost record
+                 end-perform
+           end-start.
+
+           move art-codice to bts-princ
+           move low-value  to bts-codice
+           start battsost key >= bts-art-princ
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read battsost next at end exit perform end-read
+                    if bts-princ not = art-codice
+                       exit perform
+                    end-if
+                    delete battsost record
+                 end-perform
+           end-start 
            .
       * <TOTEM:END>
 
@@ -1773,6 +1786,122 @@
 
        CERCA.
       * <TOTEM:PARA. CERCA>
+           evaluate colonna
+           when 1
+                perform VALORE-RIGA
+                move bts-codice to art-codice
+                move "articoli"     to  como-file
+                call   "zoom-gt" using  como-file, art-rec
+                                 giving stato-zoom
+           
+                if stato-zoom = 0  
+                   move art-codice      to col-art-princ
+                   move art-descrizione to col-desc-art-princ
+                   modify gd-catena(riga, 1), cell-data = col-art-princ
+                   modify gd-catena(riga, 2), cell-data = 
+           col-desc-art-princ
+                   if bts-rec not = old-bts-rec
+                      set NoSalvato to true                            
+                   else 
+                      set SiSalvato to true
+                   end-if
+                end-if
+           when 3
+                perform VALORE-RIGA
+                move bts-collegato(1) to art-codice
+                move "articoli"     to  como-file
+                call   "zoom-gt" using  como-file, art-rec
+                                 giving stato-zoom
+           
+                if stato-zoom = 0  
+                   move art-codice      to col-collegato(1)
+                   move art-descrizione to col-des(1)
+                   modify gd-catena(riga, 3), cell-data = 
+           col-collegato(1)
+                   modify gd-catena(riga, 4), cell-data = col-des(1)
+                   if bts-rec not = old-bts-rec
+                      set NoSalvato to true                            
+                   else 
+                      set SiSalvato to true
+                   end-if
+                end-if
+           when 5
+                perform VALORE-RIGA
+                move bts-collegato(2) to art-codice
+                move "articoli"     to  como-file
+                call   "zoom-gt" using  como-file, art-rec
+                                 giving stato-zoom
+           
+                if stato-zoom = 0  
+                   move art-codice      to col-collegato(2)
+                   move art-descrizione to col-des(2)
+                   modify gd-catena(riga, 5), cell-data = 
+           col-collegato(2)
+                   modify gd-catena(riga, 6), cell-data = col-des(2)
+                   if bts-rec not = old-bts-rec
+                      set NoSalvato to true                            
+                   else 
+                      set SiSalvato to true
+                   end-if
+                end-if
+           when 7
+                perform VALORE-RIGA
+                move bts-collegato(3) to art-codice
+                move "articoli"     to  como-file
+                call   "zoom-gt" using  como-file, art-rec
+                                 giving stato-zoom
+           
+                if stato-zoom = 0  
+                   move art-codice      to col-collegato(3)
+                   move art-descrizione to col-des(3)
+                   modify gd-catena(riga, 7), cell-data = 
+           col-collegato(3)
+                   modify gd-catena(riga, 8), cell-data = col-des(3)
+                   if bts-rec not = old-bts-rec
+                      set NoSalvato to true                            
+                   else 
+                      set SiSalvato to true
+                   end-if
+                end-if
+           when 9
+                perform VALORE-RIGA
+                move bts-collegato(4) to art-codice
+                move "articoli"     to  como-file
+                call   "zoom-gt" using  como-file, art-rec
+                                 giving stato-zoom
+           
+                if stato-zoom = 0  
+                   move art-codice      to col-collegato(4)
+                   move art-descrizione to col-des(4)
+                   modify gd-catena(riga, 9),  cell-data = 
+           col-collegato(4)
+                   modify gd-catena(riga, 10), cell-data = col-des(4)
+                   if bts-rec not = old-bts-rec
+                      set NoSalvato to true                            
+                   else 
+                      set SiSalvato to true
+                   end-if
+                end-if
+           when 11
+                perform VALORE-RIGA
+                move bts-collegato(5) to art-codice
+                move "articoli"     to  como-file
+                call   "zoom-gt" using  como-file, art-rec
+                                 giving stato-zoom
+           
+                if stato-zoom = 0  
+                   move art-codice      to col-collegato(5)
+                   move art-descrizione to col-des(5)
+                   modify gd-catena(riga, 11), cell-data = 
+           col-collegato(5)
+                   modify gd-catena(riga, 12), cell-data = col-des(5)
+                   if bts-rec not = old-bts-rec
+                      set NoSalvato to true                            
+                   else 
+                      set SiSalvato to true
+                   end-if
+                end-if
+           end-evaluate  
            .
       * <TOTEM:END>
 
@@ -1888,11 +2017,19 @@
                                  enabled       = e-cerca
            else
               evaluate colonna|event-data-1
+              when 1
+                   if nuovo
+                      move BitmapZoomEnabled to BitmapNumZoom
+                      move 1 to e-cerca
+                   else                
+                      move BitmapZoomDisabled to BitmapNumZoom
+                      move 0 to e-cerca
+                   end-if
+              when 3
               when 5
+              when 7
               when 9
-              when 13
-              when 17
-              when 21
+              when 11
                    move BitmapZoomEnabled to BitmapNumZoom
                    move 1 to e-cerca
               when other
@@ -2040,7 +2177,8 @@
            modify gd-catena, reset-grid = 1.
            perform GD-CATENA-CONTENT.
            perform CARICA-CATENE.
-           modify gd-catena, mass-update = 0 
+           modify gd-catena, mass-update = 0.
+           set vecchio to true 
            .
       * <TOTEM:END>
 
@@ -2081,14 +2219,17 @@
            inquire gd-catena, cursor-x in colonna, 
                               cursor-y in riga.
 
-
            perform varying colonna from 1 by 1 
                      until colonna > 13
               perform CONTROLLO
               if errori exit perform end-if
            end-perform.
 
-           if tutto-ok   
+           if tutto-ok     
+              perform CANCELLA-BATTSOST
+                                       
+              move 0 to bts-princ
+              perform VALORE-RIGA
               perform VALORIZZA-DATI-COMUNI
               move 0 to bts-num-el-catena
               perform varying idx from 1 by 1 
@@ -2096,11 +2237,22 @@
                  if bts-collegato(idx)= 0
                     exit perform
                  end-if
-                 move idx to bts-num-el-catena
+                 move idx to bts-num-el-catena save-idx
+              end-perform              
+              write bts-rec
+                                                 
+              move bts-tabella to save-tabella
+
+              perform varying idx from 1 by 1 
+                        until idx > save-idx
+                 initialize bts-rec replacing numeric data by zeroes
+                                         alphanumeric data by spaces
+                 move art-codice         to bts-princ
+                 move save-articolo(idx) to bts-codice
+                 perform VALORIZZA-DATI-COMUNI
+                 write bts-rec 
               end-perform
-              write bts-rec 
-                    invalid rewrite bts-rec
-              end-write
+
               set sisalvato to true
               set vecchio   to true
            else                   
@@ -2139,7 +2291,7 @@
 
            if event-data-2 not = riga
               perform VALORE-RIGA
-              if bts-codice = spaces or zero
+              if bts-codice = 0
                  modify gd-catena, record-to-delete riga
                  set vecchio to true
               else  
@@ -2148,7 +2300,8 @@
                     move riga    to event-data-2
                     move colonna to event-data-1 | (isacco)
                     set event-action to event-action-fail
-                 end-if
+                 end-if                                 
+                 set vecchio to true
               end-if
            else
               if colonna not = event-data-1
@@ -2233,12 +2386,37 @@
            if mod = 0
               set event-action to event-action-fail
            else
+              perform VALORE-RIGA
               evaluate event-data-1
-              when 2
-              when 4
-              when 6
-              when 8
-              when 10
+              when 1
+                   if vecchio       
+                      set event-action to event-action-fail
+                   end-if
+              when 3   
+                   if bts-codice = 0
+                      set event-action to event-action-fail
+                   end-if
+              when 5
+                   if bts-collegato(1) = 0
+                      set event-action to event-action-fail
+                   end-if     
+              when 7                  
+                   if bts-collegato(2) = 0
+                      set event-action to event-action-fail
+                   end-if                   
+              when 9
+                   if bts-collegato(3) = 0
+                      set event-action to event-action-fail
+                   end-if                   
+              when 11
+                   if bts-collegato(4) = 0
+                      set event-action to event-action-fail
+                   end-if          
+              when 2     
+              when 4     
+              when 6     
+              when 8     
+              when 10    
               when 12
                    set event-action to event-action-fail
               end-evaluate
@@ -2327,11 +2505,6 @@
            if e-cerca = 1
               perform CERCA
            end-if 
-           .
-      * <TOTEM:END>
-       tool-CercaTesto-LinkTo.
-      * <TOTEM:PARA. tool-CercaTesto-LinkTo>
-           perform CERCA-TESTO 
            .
       * <TOTEM:END>
        TOOL-ESCI-LinkTo.

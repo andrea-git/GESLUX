@@ -5,7 +5,7 @@
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E461813585-691-1225211812
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E461971750-284-1744312687
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -61,38 +61,38 @@ m_bFixed=1
 
 @}}
 [FDITEM5_]
-m_strName=bts-catena
+m_strName=bts-tabella
 m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM5_
+
+@}}
+[FDITEM6_]
+m_strName=bts-catena
+m_nItemLevel=15
 m_nSync=-1
 m_bOccurs=1
 m_bFixed=1
 m_strRawSize=1000
 m_nSize=1000
-{{@DataItem_m_strDescriptionFDITEM5_
-
-@}}
-[FDITEM6_]
-m_strName=bts-collegato
-m_strRawPic=9(6)
-m_strPic=9(6)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM6_
 
 @}}
 [FDITEM7_]
-m_strName=bts-num-el-catena
-m_strRawPic=9(4)
-m_strPic=9(4)
-m_nItemLevel=10
+m_strName=bts-collegato
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_nItemLevel=20
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM7_
 
 @}}
 [FDITEM8_]
-m_strName=bts-dati-comuni
+m_strName=bts-num-el-catena
+m_strRawPic=9(4)
+m_strPic=9(4)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -100,17 +100,15 @@ m_bFixed=1
 
 @}}
 [FDITEM9_]
-m_strName=bts-data-creazione
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=15
+m_strName=bts-dati-comuni
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM9_
 
 @}}
 [FDITEM10_]
-m_strName=bts-ora-creazione
+m_strName=bts-data-creazione
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=15
@@ -120,9 +118,9 @@ m_bFixed=1
 
 @}}
 [FDITEM11_]
-m_strName=bts-utente-creazione
-m_strRawPic=X(10)
-m_strPic=X(10)
+m_strName=bts-ora-creazione
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -130,9 +128,9 @@ m_bFixed=1
 
 @}}
 [FDITEM12_]
-m_strName=bts-data-ultima-modifica
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=bts-utente-creazione
+m_strRawPic=X(10)
+m_strPic=X(10)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -140,7 +138,7 @@ m_bFixed=1
 
 @}}
 [FDITEM13_]
-m_strName=bts-ora-ultima-modifica
+m_strName=bts-data-ultima-modifica
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=15
@@ -150,9 +148,9 @@ m_bFixed=1
 
 @}}
 [FDITEM14_]
-m_strName=bts-utente-ultima-modifica
-m_strRawPic=X(10)
-m_strPic=X(10)
+m_strName=bts-ora-ultima-modifica
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -160,25 +158,25 @@ m_bFixed=1
 
 @}}
 [FDITEM15_]
-m_strName=bts-vuoti
-m_nItemLevel=10
+m_strName=bts-utente-ultima-modifica
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM15_
 
 @}}
 [FDITEM16_]
-m_strName=bts-num-vuoto-1
-m_strRawPic=9(18)
-m_strPic=9(18)
-m_nItemLevel=15
+m_strName=bts-vuoti
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM16_
 
 @}}
 [FDITEM17_]
-m_strName=bts-num-vuoto-2
+m_strName=bts-num-vuoto-1
 m_strRawPic=9(18)
 m_strPic=9(18)
 m_nItemLevel=15
@@ -188,7 +186,7 @@ m_bFixed=1
 
 @}}
 [FDITEM18_]
-m_strName=bts-num-vuoto-3
+m_strName=bts-num-vuoto-2
 m_strRawPic=9(18)
 m_strPic=9(18)
 m_nItemLevel=15
@@ -198,13 +196,23 @@ m_bFixed=1
 
 @}}
 [FDITEM19_]
+m_strName=bts-num-vuoto-3
+m_strRawPic=9(18)
+m_strPic=9(18)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM19_
+
+@}}
+[FDITEM20_]
 m_strName=bts-alfa-vuoto
 m_strRawPic=X(500)
 m_strPic=X(500)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM19_
+{{@DataItem_m_strDescriptionFDITEM20_
 
 @}}
 [CStoAcucobolSL_]

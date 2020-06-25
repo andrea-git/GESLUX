@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E461813585-771-2298819803
+PROGRAM_UNIQUE_CODE=TOTEM-7E46196310-601-21465569
 
 {{@DESCRIPTION:
 
@@ -276,141 +276,142 @@ m_bFixed=1
 
 @}}
 [FDITEM25_WK]
-m_strName=FILLER
-m_strRawPic=XX
-m_strPic=XX
-m_nItemLevel=1
+m_strName=save-idx
+m_strRawPic=9999
+m_strPic=9999
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM25_WK
 
 @}}
 [FDITEM26_WK]
-m_strName=ricarica
-m_nItemLevel=88
+m_strName=save-tabella
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
-m_strTrue="SI"
-m_strFalse="NO"
+m_strRawSize=1000
+m_nSize=1000
 {{@DataItem_m_strDescriptionFDITEM26_WK
 
 @}}
 [FDITEM27_WK]
-m_strName=STATUS-articoli
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
+m_strName=save-catena
+m_nItemLevel=5
 m_nSync=-1
+m_bOccurs=1
 m_bFixed=1
+m_strRawSize=1000
+m_nSize=1000
 {{@DataItem_m_strDescriptionFDITEM27_WK
 
 @}}
 [FDITEM28_WK]
-m_strName=Valid-STATUS-articoli
-m_nItemLevel=88
+m_strName=save-articolo
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM28_WK
 
 @}}
 [FDITEM29_WK]
-m_strName=status-battsost
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
+m_strName=FILLER
+m_strRawPic=XX
+m_strPic=XX
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM29_WK
 
 @}}
 [FDITEM30_WK]
-m_strName=Valid-status-battsost
+m_strName=ricarica
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
+m_strTrue="SI"
+m_strFalse="NO"
 {{@DataItem_m_strDescriptionFDITEM30_WK
 
 @}}
 [FDITEM31_WK]
-m_strName=rec-grid
-m_nItemLevel=1
+m_strName=STATUS-articoli
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM31_WK
 
 @}}
 [FDITEM32_WK]
-m_strName=Col-art-princ
-m_strRawPic=z(6)
-m_strPic=z(6)
-m_nItemLevel=5
+m_strName=Valid-STATUS-articoli
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM32_WK
 
 @}}
 [FDITEM33_WK]
-m_strName=col-desc-art-princ
-m_strRawPic=x(40)
-m_strPic=x(40)
-m_nItemLevel=5
+m_strName=status-battsost
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM33_WK
 
 @}}
 [FDITEM34_WK]
-m_strName=collegati
-m_nItemLevel=5
+m_strName=Valid-status-battsost
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM34_WK
 
 @}}
 [FDITEM35_WK]
-m_strName=col-collegato-1
-m_strRawPic=z(06)
-m_strPic=z(06)
-m_nItemLevel=10
+m_strName=rec-grid
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM35_WK
 
 @}}
 [FDITEM36_WK]
-m_strName=col-des-1
-m_strRawPic=x(40)
-m_strPic=x(40)
-m_nItemLevel=10
+m_strName=Col-art-princ
+m_strRawPic=z(6)
+m_strPic=z(6)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM36_WK
 
 @}}
 [FDITEM37_WK]
-m_strName=col-collegato-2
-m_strRawPic=z(06)
-m_strPic=z(06)
-m_nItemLevel=10
+m_strName=col-desc-art-princ
+m_strRawPic=x(40)
+m_strPic=x(40)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM37_WK
 
 @}}
 [FDITEM38_WK]
-m_strName=col-des-2
-m_strRawPic=x(40)
-m_strPic=x(40)
-m_nItemLevel=10
+m_strName=collegati
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM38_WK
 
 @}}
 [FDITEM39_WK]
-m_strName=col-collegato-3
+m_strName=col-collegato-1
 m_strRawPic=z(06)
 m_strPic=z(06)
 m_nItemLevel=10
@@ -420,7 +421,7 @@ m_bFixed=1
 
 @}}
 [FDITEM40_WK]
-m_strName=col-des-3
+m_strName=col-des-1
 m_strRawPic=x(40)
 m_strPic=x(40)
 m_nItemLevel=10
@@ -430,7 +431,7 @@ m_bFixed=1
 
 @}}
 [FDITEM41_WK]
-m_strName=col-collegato-4
+m_strName=col-collegato-2
 m_strRawPic=z(06)
 m_strPic=z(06)
 m_nItemLevel=10
@@ -440,7 +441,7 @@ m_bFixed=1
 
 @}}
 [FDITEM42_WK]
-m_strName=col-des-4
+m_strName=col-des-2
 m_strRawPic=x(40)
 m_strPic=x(40)
 m_nItemLevel=10
@@ -450,7 +451,7 @@ m_bFixed=1
 
 @}}
 [FDITEM43_WK]
-m_strName=col-collegato-5
+m_strName=col-collegato-3
 m_strRawPic=z(06)
 m_strPic=z(06)
 m_nItemLevel=10
@@ -460,7 +461,7 @@ m_bFixed=1
 
 @}}
 [FDITEM44_WK]
-m_strName=col-des-5
+m_strName=col-des-3
 m_strRawPic=x(40)
 m_strPic=x(40)
 m_nItemLevel=10
@@ -470,16 +471,56 @@ m_bFixed=1
 
 @}}
 [FDITEM45_WK]
-m_strName=FILLER
-m_nItemLevel=5
-m_bRedefines=1
-m_strRedefines=collegati
+m_strName=col-collegato-4
+m_strRawPic=z(06)
+m_strPic=z(06)
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM45_WK
 
 @}}
 [FDITEM46_WK]
+m_strName=col-des-4
+m_strRawPic=x(40)
+m_strPic=x(40)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM46_WK
+
+@}}
+[FDITEM47_WK]
+m_strName=col-collegato-5
+m_strRawPic=z(06)
+m_strPic=z(06)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM47_WK
+
+@}}
+[FDITEM48_WK]
+m_strName=col-des-5
+m_strRawPic=x(40)
+m_strPic=x(40)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM48_WK
+
+@}}
+[FDITEM49_WK]
+m_strName=FILLER
+m_nItemLevel=5
+m_bRedefines=1
+m_strRedefines=collegati
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM49_WK
+
+@}}
+[FDITEM50_WK]
 m_strName=col-collegato
 m_strRawPic=z(6)
 m_strPic=z(6)
@@ -489,10 +530,10 @@ m_bOccurs=1
 m_bFixed=1
 m_strRawSize=5
 m_nSize=5
-{{@DataItem_m_strDescriptionFDITEM46_WK
+{{@DataItem_m_strDescriptionFDITEM50_WK
 
 @}}
-[FDITEM47_WK]
+[FDITEM51_WK]
 m_strName=col-des
 m_strRawPic=x(40)
 m_strPic=x(40)
@@ -502,10 +543,10 @@ m_bOccurs=1
 m_bFixed=1
 m_strRawSize=5
 m_nSize=5
-{{@DataItem_m_strDescriptionFDITEM47_WK
+{{@DataItem_m_strDescriptionFDITEM51_WK
 
 @}}
-[FDITEM48_WK]
+[FDITEM52_WK]
 m_strName=bottone-exit-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -514,97 +555,97 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM48_WK
-
-@}}
-[FDITEM49_WK]
-m_strName=form2-Handle
-m_nUsage=24
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM49_WK
-
-@}}
-[FDITEM50_WK]
-m_strName=rec-grid-dett
-m_nItemLevel=1
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM50_WK
-
-@}}
-[FDITEM51_WK]
-m_strName=col-nulla-d
-m_strRawPic=X
-m_strPic=X
-m_nItemLevel=5
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM51_WK
-
-@}}
-[FDITEM52_WK]
-m_strName=Col-articolo
-m_strRawPic=z(6)
-m_strPic=z(6)
-m_nItemLevel=5
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM52_WK
 
 @}}
 [FDITEM53_WK]
-m_strName=col-desc-art
-m_strRawPic=x(40)
-m_strPic=x(40)
-m_nItemLevel=5
+m_strName=form2-Handle
+m_nUsage=24
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM53_WK
 
 @}}
 [FDITEM54_WK]
-m_strName=riga-det
-m_strRawPic=9(4)
-m_strPic=9(4)
-m_nItemLevel=77
+m_strName=rec-grid-dett
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM54_WK
 
 @}}
 [FDITEM55_WK]
-m_strName=tot-righe-det
-m_strRawPic=9(4)
-m_strPic=9(4)
-m_nItemLevel=77
+m_strName=col-nulla-d
+m_strRawPic=X
+m_strPic=X
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM55_WK
 
 @}}
 [FDITEM56_WK]
-m_strName=lbl-art-buf
-m_strRawPic=X(50)
-m_strPic=X(50)
-m_nItemLevel=77
+m_strName=Col-articolo
+m_strRawPic=z(6)
+m_strPic=z(6)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM56_WK
 
 @}}
 [FDITEM57_WK]
-m_strName=lbl-descr-art-buf
-m_strRawPic=X(50)
-m_strPic=X(50)
-m_nItemLevel=77
+m_strName=col-desc-art
+m_strRawPic=x(40)
+m_strPic=x(40)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM57_WK
 
 @}}
 [FDITEM58_WK]
+m_strName=riga-det
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM58_WK
+
+@}}
+[FDITEM59_WK]
+m_strName=tot-righe-det
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM59_WK
+
+@}}
+[FDITEM60_WK]
+m_strName=lbl-art-buf
+m_strRawPic=X(50)
+m_strPic=X(50)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM60_WK
+
+@}}
+[FDITEM61_WK]
+m_strName=lbl-descr-art-buf
+m_strRawPic=X(50)
+m_strPic=X(50)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM61_WK
+
+@}}
+[FDITEM62_WK]
 m_strName=CERCA-BMP
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -613,29 +654,29 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM58_WK
+{{@DataItem_m_strDescriptionFDITEM62_WK
 
 @}}
-[FDITEM59_WK]
+[FDITEM63_WK]
 m_strName=ef-art-buf
 m_strRawPic=9(5)
 m_strPic=9(5)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM59_WK
+{{@DataItem_m_strDescriptionFDITEM63_WK
 
 @}}
-[FDITEM60_WK]
+[FDITEM64_WK]
 m_strName=Form1-Tb-1-Handle
 m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM60_WK
+{{@DataItem_m_strDescriptionFDITEM64_WK
 
 @}}
-[FDITEM61_WK]
+[FDITEM65_WK]
 m_strName=toolbar-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -644,7 +685,7 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM61_WK
+{{@DataItem_m_strDescriptionFDITEM65_WK
 
 @}}
 
@@ -1473,51 +1514,6 @@ Begin Screen Form1
          Additional Properties = "BITMAP-NUMBER BitmapNumZoom"
          Link To           = TOOL-CERCA-LinkTo
       End
-      Begin Push-Button tool-CercaTesto
-         SCREEN-COL        = 41,00
-         SCREEN-LINE       = 1,08
-         LOCK-CONTROL      = TRUE
-         LEVEL             = 5
-         (Name)            = tool-CercaTesto
-         Bitmap            = "..\RESOURCE\TOOLBAR.BMP"
-         Bitmap Frame      = FALSE
-         Bitmap Handle     = TOOLBAR-BMP
-         Bitmap Number     = 20
-         Bitmap Square     = TRUE
-         Clines            = 0
-         Clines Unit       = Default
-         Column            = 41,00
-         Copy Resource     = TRUE
-         Csize             = 0
-         Csize Unit        = Default
-         Destroy Type      = Automatic
-         Enable            = NONE
-         Exception Value   = 1234
-         Flat              = TRUE
-         Font              = Small Font
-         Font Variable     = Small-Font
-         Height in Cells   = FALSE
-         Help ID           = 0
-         ID                = 13
-         Line              = 1,08
-         Lines             = 1,81
-         Lines in Pixels   = 23
-         Lines Unit        = Default
-         No Auto Default   = FALSE
-         No Tab            = FALSE
-         Occurs            = 0
-         Self Act          = TRUE
-         Size              = 4,33
-         Size in Pixels    = 24
-         Size Unit         = Default
-         Style             = Other
-         Tab Order         = 9
-         Termination Value = 0
-         Title             = "&Ricerca testo (Ctrl + F)"
-         Visible           = NONE
-         Width in Cells    = FALSE
-         Link To           = tool-CercaTesto-LinkTo
-      End
    End
 End
 
@@ -1757,9 +1753,7 @@ BEGIN-TEXT
               inquire gd-catena, cursor-y  in riga
               perform VALORE-RIGA
 
-              delete battsost record 
-                     invalid  continue 
-              end-delete
+              perform CANCELLA-BATTSOST
 
               modify  gd-catena, record-to-delete = riga 
               inquire gd-catena, last-row in tot-righe
@@ -1772,6 +1766,39 @@ BEGIN-TEXT
            end-if.
 
 
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CANCELLA-BATTSOST
+BEGIN-TEXT
+           move bts-codice to art-codice
+           move low-value  to bts-princ
+           start battsost key >= bts-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read battsost next at end exit perform end-read
+                    if bts-codice not = art-codice
+                       exit perform
+                    end-if
+                    delete battsost record
+                 end-perform
+           end-start.
+
+           move art-codice to bts-princ
+           move low-value  to bts-codice
+           start battsost key >= bts-art-princ
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read battsost next at end exit perform end-read
+                    if bts-princ not = art-codice
+                       exit perform
+                    end-if
+                    delete battsost record
+                 end-perform
+           end-start.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -1791,7 +1818,116 @@ BEGIN-DATA
    BASETYPE          = 3
    PARAGRAPH         = CERCA
 BEGIN-TEXT
-
+           evaluate colonna
+           when 1
+                perform VALORE-RIGA
+                move bts-codice to art-codice
+                move "articoli"     to  como-file
+                call   "zoom-gt" using  como-file, art-rec
+                                 giving stato-zoom
+           
+                if stato-zoom = 0  
+                   move art-codice      to col-art-princ
+                   move art-descrizione to col-desc-art-princ
+                   modify gd-catena(riga, 1), cell-data = col-art-princ
+                   modify gd-catena(riga, 2), cell-data = col-desc-art-princ
+                   if bts-rec not = old-bts-rec
+                      set NoSalvato to true                            
+                   else 
+                      set SiSalvato to true
+                   end-if
+                end-if
+           when 3
+                perform VALORE-RIGA
+                move bts-collegato(1) to art-codice
+                move "articoli"     to  como-file
+                call   "zoom-gt" using  como-file, art-rec
+                                 giving stato-zoom
+           
+                if stato-zoom = 0  
+                   move art-codice      to col-collegato(1)
+                   move art-descrizione to col-des(1)
+                   modify gd-catena(riga, 3), cell-data = col-collegato(1)
+                   modify gd-catena(riga, 4), cell-data = col-des(1)
+                   if bts-rec not = old-bts-rec
+                      set NoSalvato to true                            
+                   else 
+                      set SiSalvato to true
+                   end-if
+                end-if
+           when 5
+                perform VALORE-RIGA
+                move bts-collegato(2) to art-codice
+                move "articoli"     to  como-file
+                call   "zoom-gt" using  como-file, art-rec
+                                 giving stato-zoom
+           
+                if stato-zoom = 0  
+                   move art-codice      to col-collegato(2)
+                   move art-descrizione to col-des(2)
+                   modify gd-catena(riga, 5), cell-data = col-collegato(2)
+                   modify gd-catena(riga, 6), cell-data = col-des(2)
+                   if bts-rec not = old-bts-rec
+                      set NoSalvato to true                            
+                   else 
+                      set SiSalvato to true
+                   end-if
+                end-if
+           when 7
+                perform VALORE-RIGA
+                move bts-collegato(3) to art-codice
+                move "articoli"     to  como-file
+                call   "zoom-gt" using  como-file, art-rec
+                                 giving stato-zoom
+           
+                if stato-zoom = 0  
+                   move art-codice      to col-collegato(3)
+                   move art-descrizione to col-des(3)
+                   modify gd-catena(riga, 7), cell-data = col-collegato(3)
+                   modify gd-catena(riga, 8), cell-data = col-des(3)
+                   if bts-rec not = old-bts-rec
+                      set NoSalvato to true                            
+                   else 
+                      set SiSalvato to true
+                   end-if
+                end-if
+           when 9
+                perform VALORE-RIGA
+                move bts-collegato(4) to art-codice
+                move "articoli"     to  como-file
+                call   "zoom-gt" using  como-file, art-rec
+                                 giving stato-zoom
+           
+                if stato-zoom = 0  
+                   move art-codice      to col-collegato(4)
+                   move art-descrizione to col-des(4)
+                   modify gd-catena(riga, 9),  cell-data = col-collegato(4)
+                   modify gd-catena(riga, 10), cell-data = col-des(4)
+                   if bts-rec not = old-bts-rec
+                      set NoSalvato to true                            
+                   else 
+                      set SiSalvato to true
+                   end-if
+                end-if
+           when 11
+                perform VALORE-RIGA
+                move bts-collegato(5) to art-codice
+                move "articoli"     to  como-file
+                call   "zoom-gt" using  como-file, art-rec
+                                 giving stato-zoom
+           
+                if stato-zoom = 0  
+                   move art-codice      to col-collegato(5)
+                   move art-descrizione to col-des(5)
+                   modify gd-catena(riga, 11), cell-data = col-collegato(5)
+                   modify gd-catena(riga, 12), cell-data = col-des(5)
+                   if bts-rec not = old-bts-rec
+                      set NoSalvato to true                            
+                   else 
+                      set SiSalvato to true
+                   end-if
+                end-if
+           end-evaluate. 
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -1912,11 +2048,19 @@ BEGIN-TEXT
                                  enabled       = e-cerca
            else
               evaluate colonna|event-data-1
+              when 1
+                   if nuovo
+                      move BitmapZoomEnabled to BitmapNumZoom
+                      move 1 to e-cerca
+                   else                
+                      move BitmapZoomDisabled to BitmapNumZoom
+                      move 0 to e-cerca
+                   end-if
+              when 3
               when 5
+              when 7
               when 9
-              when 13
-              when 17
-              when 21
+              when 11
                    move BitmapZoomEnabled to BitmapNumZoom
                    move 1 to e-cerca
               when other
@@ -2071,6 +2215,7 @@ BEGIN-TEXT
            perform GD-CATENA-CONTENT.
            perform CARICA-CATENE.
            modify gd-catena, mass-update = 0.
+           set vecchio to true.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -2113,14 +2258,17 @@ BEGIN-TEXT
            inquire gd-catena, cursor-x in colonna, 
                               cursor-y in riga.
 
-
            perform varying colonna from 1 by 1 
                      until colonna > 13
               perform CONTROLLO
               if errori exit perform end-if
            end-perform.
 
-           if tutto-ok   
+           if tutto-ok     
+              perform CANCELLA-BATTSOST
+                                       
+              move 0 to bts-princ
+              perform VALORE-RIGA
               perform VALORIZZA-DATI-COMUNI
               move 0 to bts-num-el-catena
               perform varying idx from 1 by 1 
@@ -2128,11 +2276,22 @@ BEGIN-TEXT
                  if bts-collegato(idx)= 0
                     exit perform
                  end-if
-                 move idx to bts-num-el-catena
+                 move idx to bts-num-el-catena save-idx
+              end-perform              
+              write bts-rec
+                                                 
+              move bts-tabella to save-tabella
+
+              perform varying idx from 1 by 1 
+                        until idx > save-idx
+                 initialize bts-rec replacing numeric data by zeroes
+                                         alphanumeric data by spaces
+                 move art-codice         to bts-princ
+                 move save-articolo(idx) to bts-codice
+                 perform VALORIZZA-DATI-COMUNI
+                 write bts-rec 
               end-perform
-              write bts-rec 
-                    invalid rewrite bts-rec
-              end-write
+
               set sisalvato to true
               set vecchio   to true
            else                   
@@ -2173,7 +2332,7 @@ BEGIN-TEXT
 
            if event-data-2 not = riga
               perform VALORE-RIGA
-              if bts-codice = spaces or zero
+              if bts-codice = 0
                  modify gd-catena, record-to-delete riga
                  set vecchio to true
               else  
@@ -2182,7 +2341,8 @@ BEGIN-TEXT
                     move riga    to event-data-2
                     move colonna to event-data-1 | (isacco)
                     set event-action to event-action-fail
-                 end-if
+                 end-if                                 
+                 set vecchio to true
               end-if
            else
               if colonna not = event-data-1
@@ -2273,12 +2433,37 @@ BEGIN-TEXT
            if mod = 0
               set event-action to event-action-fail
            else
+              perform VALORE-RIGA
               evaluate event-data-1
-              when 2
-              when 4
-              when 6
-              when 8
-              when 10
+              when 1
+                   if vecchio       
+                      set event-action to event-action-fail
+                   end-if
+              when 3   
+                   if bts-codice = 0
+                      set event-action to event-action-fail
+                   end-if
+              when 5
+                   if bts-collegato(1) = 0
+                      set event-action to event-action-fail
+                   end-if     
+              when 7                  
+                   if bts-collegato(2) = 0
+                      set event-action to event-action-fail
+                   end-if                   
+              when 9
+                   if bts-collegato(3) = 0
+                      set event-action to event-action-fail
+                   end-if                   
+              when 11
+                   if bts-collegato(4) = 0
+                      set event-action to event-action-fail
+                   end-if          
+              when 2     
+              when 4     
+              when 6     
+              when 8     
+              when 10    
               when 12
                    set event-action to event-action-fail
               end-evaluate
@@ -2400,13 +2585,6 @@ BEGIN-TEXT
            if e-cerca = 1
               perform CERCA
            end-if.
-END-TEXT
-END-DATA
-BEGIN-DATA
-   BASETYPE          = 2
-   PARAGRAPH         = tool-CercaTesto-LinkTo
-BEGIN-TEXT
-           perform CERCA-TESTO.
 END-TEXT
 END-DATA
 BEGIN-DATA
