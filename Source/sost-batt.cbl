@@ -4,7 +4,9 @@
        REMARKS. Sostituzione articoli. Vengono sostituiti gli articoli
                 per la sola quantità inevasa. In caso essa sia 0 la 
                 riga viene cancellata, altrimenti la qta ordinata sarà 
-                portata alla stregua di quella evasa
+                portata alla stregua di quella evasa.
+                Funziona solamente se l'articolo da sostituire è il
+                primo della catena ed in base ai parametri.
       ******************************************************************
 
        SPECIAL-NAMES. decimal-point is comma.
@@ -19,7 +21,7 @@
            copy "mrordini.sl".
       *****     copy "timballi.sl".
       *****     copy "timbalqta.sl".
-           copy "catart.sl".
+           copy "battsost.sl".
            copy "tcaumag.sl".
            copy "ttipocli.sl".
            copy "timposte.sl".
@@ -28,8 +30,8 @@
            copy "tmp-sost-art.sl".
            copy "tmagaz.sl".   
            copy "listini.sl".
-           copy "param.sl".
            copy "tcontat.sl".    
+           copy "param.sl".
 
        SELECT logfile
            ASSIGN       TO path-log
@@ -50,7 +52,7 @@
            copy "mrordini.fd".
       *****     copy "timbalqta.fd".
       *****     copy "timballi.fd".
-           copy "catart.fd".
+           copy "battsost.fd".
            copy "tcaumag.fd".
            copy "ttipocli.fd".
            copy "timposte.fd".
@@ -59,8 +61,8 @@
            copy "tmp-sost-art.fd".
            copy "tmagaz.fd".
            copy "listini.fd".
-           copy "param.fd".
            copy "tcontat.fd".    
+           copy "param.fd".
 
        FD  logfile.
        01 riga-log        PIC  x(900).
@@ -105,7 +107,7 @@
        77  status-mrordini      pic xx.
       ***** 77  status-timballi   pic xx.
       ***** 77  status-timbalqta  pic xx.
-       77  status-catart        pic xx.
+       77  status-battsost      pic xx.
        77  status-tcaumag       pic xx.
        77  status-ttipocli      pic xx.
        77  status-timposte      pic xx.
@@ -116,7 +118,7 @@
        77  status-tmp-sost-art  pic xx.
        77  status-tcontat       pic xx.
        77  status-param         pic xx.
-       77  path-tmp-sost-art pic x(256).
+       77  path-tmp-sost-art    pic x(256).
 
        78  titolo value "Sostituzione automatica articoli".
 
@@ -447,37 +449,37 @@
            end-evaluate.
 
       ***---
-       CATART-ERR SECTION.
-           use after error procedure on catart.
+       battsost-ERR SECTION.
+           use after error procedure on battsost.
            set tutto-ok  to true.
-           evaluate status-catart  
+           evaluate status-battsost  
            when "35"
                 set errori to true
                 if RichiamoSchedulato
-                   move "File [CATART] not found!" to como-riga
+                   move "File [battsost] not found!" to como-riga
                    perform SCRIVI-RIGA-LOG
                 else
-                   display message "File [CATART] not found!"
+                   display message "File [battsost] not found!"
                              title titolo
                               icon 3
                 end-if
            when "39"
                 set errori to true
                 if RichiamoSchedulato
-                   move "File [CATART] mismatch size!" to como-riga
+                   move "File [battsost] mismatch size!" to como-riga
                    perform SCRIVI-RIGA-LOG
                 else
-                   display message "File [CATART] mismatch size!"
+                   display message "File [battsost] mismatch size!"
                              title titolo
                               icon 3
                 end-if
            when "98"
                 set errori to true
                 if RichiamoSchedulato
-                   move "[CATART] Indexed file corrupt!" to como-riga
+                   move "[battsost] Indexed file corrupt!" to como-riga
                    perform SCRIVI-RIGA-LOG
                 else
-                   display message "[CATART] Indexed file corrupt!"
+                   display message "[battsost] Indexed file corrupt!"
                              title titolo
                               icon 3
                 end-if
@@ -603,7 +605,7 @@
               move sost-art-log to path-log
               open extend logfile
            end-if.
-           open input mtordini clienti catart tcaumag timposte tcontat
+           open input mtordini clienti battsost tcaumag timposte tcontat
                       destini progmag ttipocli |timbalqta  timballi 
                       tpiombo tmarche tmagaz listini promoeva param.
            open i-o mrordini articoli.
@@ -613,11 +615,20 @@
 
       ***---
        ELABORAZIONE.
+           move sost-art-chiave to mto-chiave. 
+           set tutto-ok  to true.
+           read mtordini no lock key mto-chiave.
+           move mto-cod-cli     to como-prm-cliente.
+           move mto-prg-destino to como-prm-destino.
+           perform TROVA-PARAMETRO.
+           if prm-sost-batt-no
+              exit paragraph
+           end-if.
+           
            set tutto-ok  to true.
            set RecLocked to false.
            initialize geslock-linkage.
            move "mtordini" to geslock-nome-file.
-      
            move sost-art-chiave to mto-chiave. 
            set tutto-ok   to true.
            read mtordini lock key mto-chiave invalid continue end-read.
@@ -785,7 +796,7 @@
                           set record-ok to true      
                           if record-ok
                              move mro-cod-articolo to como-articolo
-                             perform TROVA-PRINCIPALE
+                             perform VERIFICA-SE-PRINCIPALE
                              
                              if record-ok
                                 perform TROVA-ULTIMO-DISPONIBILE
@@ -912,21 +923,21 @@
       *****                      set record-ok  to true
       *****                 end-evaluate
                           if record-ok
-                             move mro-cod-articolo to cat-codice
-                             move 0                to cat-princ
-                             start catart key >= cat-chiave
+                             move mro-cod-articolo to bts-codice
+                             move 0                to bts-princ
+                             start battsost key >= bts-chiave
                                    invalid set record-ok to false
                                not invalid
-                                   read catart next
-                                   if cat-codice not = mro-cod-articolo
+                                   read battsost next
+                                   if bts-codice not = mro-cod-articolo
                                       set record-ok to false
                                    end-if
                              end-start
                              if record-ok
-                                if cat-princ not = 0
-                                   move cat-princ to cat-codice
-                                   move 0         to cat-princ
-                                   read catart no lock 
+                                if bts-princ not = 0
+                                   move bts-princ to bts-codice
+                                   move 0         to bts-princ
+                                   read battsost no lock 
                                 end-if
 
                                 perform TROVA-ULTIMO-DISPONIBILE
@@ -1033,12 +1044,12 @@
                  exit perform
               end-if
               if idx = 1
-                 move cat-codice to como-articolo
+                 move bts-codice to como-articolo
               else
-                 if cat-collegato(idx - 1) = 0
+                 if bts-collegato(idx - 1) = 0
                     exit perform
                  end-if
-                 move cat-collegato(idx - 1) to como-articolo
+                 move bts-collegato(idx - 1) to como-articolo
               end-if
               move como-articolo to art-codice
               read articoli no lock
@@ -1254,25 +1265,14 @@
            end-if.
 
       ***---
-       TROVA-PRINCIPALE.
+       VERIFICA-SE-PRINCIPALE.
            set record-ok to true.
-           move como-articolo to cat-codice.
-           move 0 to cat-princ.
-           start catart  key >= cat-chiave
-                 invalid set record-ok to false
-             not invalid
-                 read catart next
-                 if cat-codice not = como-articolo
-                    set record-ok to false
-                 end-if
-           end-start
-           if record-ok
-              if cat-princ not = 0
-                 move cat-princ to cat-codice
-                 move 0         to cat-princ
-                 read catart no lock 
-              end-if
-           end-if.
+           move como-articolo to bts-codice.
+           move 0 to bts-princ.
+           read battsost
+                invalid set record-ok to false
+            not invalid set record-ok to true
+           end-read.
 
       ***---
        TROVA-ULTIMO-DISPONIBILE.
@@ -1280,12 +1280,12 @@
            perform varying idx from 1 by 1 
                      until idx > 1000
               if idx = 1
-                 move cat-codice to como-articolo
+                 move bts-codice to como-articolo
               else
-                 if cat-collegato(idx - 1) = 0
+                 if bts-collegato(idx - 1) = 0
                     exit perform
                  end-if
-                 move cat-collegato(idx - 1) to como-articolo
+                 move bts-collegato(idx - 1) to como-articolo
               end-if
               move como-articolo to art-codice
               read articoli no lock
@@ -1481,18 +1481,18 @@
 
                  if not invia-mail                 
                     move tmp-sar-codice-orig to como-articolo
-                    perform TROVA-PRINCIPALE
+                    perform VERIFICA-SE-PRINCIPALE
                     if record-ok
                        move 0 to idx-orig idx-dest
-                       if tmp-sar-codice-orig = cat-codice
+                       if tmp-sar-codice-orig = bts-codice
                           move -1 to idx-orig
                        end-if
                        perform varying idx from 1 by 1 
                                  until idx > 1000
-                          if cat-collegato(idx) = tmp-sar-codice-orig
+                          if bts-collegato(idx) = tmp-sar-codice-orig
                              move idx to idx-orig
                           end-if
-                          if cat-collegato(idx) = tmp-sar-codice-dest
+                          if bts-collegato(idx) = tmp-sar-codice-dest
                              move idx to idx-dest
                           end-if
                           if idx-orig not = 0 and idx-dest not = 0
@@ -1592,7 +1592,7 @@
       ***---
        CLOSE-FILES.
            close progmag articoli clienti destini ttipocli tcontat
-                 mtordini mrordini catart tcaumag tpiombo |timbalqta timballi
+                 mtordini mrordini battsost tcaumag tpiombo |timbalqta timballi
                  timposte tmarche tmagaz listini promoeva param.
            if RichiamoSchedulato
               close logfile
