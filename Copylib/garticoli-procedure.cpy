@@ -633,7 +633,8 @@
 
            |78-ID-ef-mag è l'ID del control ef-mag
            when 78-ID-ef-mag
-                inquire ef-mag, value in ef-mag-buf
+                inquire ef-mag, value in ef-mag-buf       
+                move ef-mag-buf to art-mag-std of articoli 
                 move "tmagaz" to nome-file
                 perform RELAZIONI-ARTICOLI
                 if not trovato
@@ -643,7 +644,7 @@
                            title = tit-err
                            icon MB-WARNING-ICON
                 else
-                   if vecchio
+                   if vecchio  
                       set tutto-ok to true
                       initialize prg-chiave 
                                   replacing numeric data by zeroes
@@ -2015,6 +2016,24 @@
                  if not Passwd-StatusOk
                     move old-art-scorta to ef-scorta-buf 
                     display ef-scorta
+                 end-if
+              end-if
+           end-if.
+
+           if tutto-ok  
+              if art-mag-std of articoli not = old-art-mag-std and 
+                 vecchio
+                 move 19 to Passwd-password
+                 call   "passwd" using Passwd-linkage
+                 cancel "passwd"
+
+                 if not Passwd-StatusOk
+                    move old-art-mag-std to ef-mag-buf mag-codice
+                    display ef-mag
+
+                    read tmagaz no lock
+                    move mag-descrizione to lab-mag-buf
+                    display lab-mag
                  end-if
               end-if
            end-if.
