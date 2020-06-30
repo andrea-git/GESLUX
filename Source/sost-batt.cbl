@@ -5,8 +5,6 @@
                 per la sola quantità inevasa. In caso essa sia 0 la 
                 riga viene cancellata, altrimenti la qta ordinata sarà 
                 portata alla stregua di quella evasa.
-                Funziona solamente se l'articolo da sostituire è il
-                primo della catena ed in base ai parametri.
       ******************************************************************
 
        SPECIAL-NAMES. decimal-point is comma.
@@ -796,7 +794,7 @@
                           set record-ok to true      
                           if record-ok
                              move mro-cod-articolo to como-articolo
-                             perform VERIFICA-SE-PRINCIPALE
+                             perform TROVA-PRINCIPALE
                              
                              if record-ok
                                 perform TROVA-ULTIMO-DISPONIBILE
@@ -1265,14 +1263,25 @@
            end-if.
 
       ***---
-       VERIFICA-SE-PRINCIPALE.
+       TROVA-PRINCIPALE.
            set record-ok to true.
            move como-articolo to bts-codice.
            move 0 to bts-princ.
-           read battsost
-                invalid set record-ok to false
-            not invalid set record-ok to true
-           end-read.
+           start battsost  key >= bts-chiave
+                 invalid set record-ok to false
+             not invalid
+                 read battsost next
+                 if bts-codice not = como-articolo
+                    set record-ok to false
+                 end-if
+           end-start
+           if record-ok
+              if bts-princ not = 0
+                 move bts-princ to bts-codice
+                 move 0         to bts-princ
+                 read battsost no lock 
+              end-if
+           end-if.
 
       ***---
        TROVA-ULTIMO-DISPONIBILE.
@@ -1481,7 +1490,7 @@
 
                  if not invia-mail                 
                     move tmp-sar-codice-orig to como-articolo
-                    perform VERIFICA-SE-PRINCIPALE
+                    perform TROVA-PRINCIPALE
                     if record-ok
                        move 0 to idx-orig idx-dest
                        if tmp-sar-codice-orig = bts-codice
