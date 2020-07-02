@@ -11,7 +11,7 @@ MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ordine-Ev-Before-Program
 AFTER_PROGRAM=ordine-Ev-After-Program
 BEFORE_OPEN=ordine-Ev-Before-DSD-Open
-PROGRAM_UNIQUE_CODE=TOTEM-7E4519225847-355-965728031
+PROGRAM_UNIQUE_CODE=TOTEM-7E4729734-614-1612125976
 
 {{@DESCRIPTION:
 
@@ -14924,7 +14924,7 @@ Begin Screen Form1
             Font              = Default Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 84
+            ID                = 85
             Justification     = Unaligned
             Line              = 24,54
             Lines             = 2,50
@@ -15990,7 +15990,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 59
+            ID                = 61
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 24,54
@@ -17398,7 +17398,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 61
+            ID                = 55
             Justification     = Right
             Label Offset      = 20
             Line              = 32,69
@@ -17966,7 +17966,7 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 85
+      ID                = 86
       Kind              = Vertical
       Line              = 1.00
       Line Styles       = Solid
@@ -17995,7 +17995,7 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 86
+      ID                = 87
       Kind              = Vertical
       Line              = 1.00
       Line Styles       = Solid
@@ -18024,7 +18024,7 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 87
+      ID                = 88
       Kind              = Horizontal
       Line              = 1,00
       Line Styles       = Solid
@@ -18053,7 +18053,7 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 88
+      ID                = 89
       Kind              = Horizontal
       Line              = 46,23
       Line Styles       = Solid
@@ -20125,8 +20125,9 @@ PATCH               end-if
                        if save-tpr-codice not = 0
                           perform RIGHE-PROMO-FITTIZIE
                        end-if
-                    else
+                    else                            
                        perform SOSTITUZIONE-ARTICOLO
+                       perform SOSTITUZIONE-BATTERIA
                        if save-tpr-codice not = 0
                           perform RIGHE-PROMO-FITTIZIE
                        end-if

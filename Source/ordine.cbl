@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordine.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 1 maggio 2020 02:15:03.
+       DATE-WRITTEN.        giovedì 2 luglio 2020 12:53:07.
        REMARKS.
       *{TOTEM}END
 
@@ -1598,7 +1598,7 @@
            BOXED,
            COLOR IS 513,
            ENABLED mod-campi,
-           ID IS 84,
+           ID IS 85,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            MAX-TEXT 150,
@@ -2101,7 +2101,7 @@
            LINES 1,31 ,
            SIZE 19,00 ,
            FONT IS Small-Font,
-           ID IS 59,
+           ID IS 61,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2673,7 +2673,7 @@
            SIZE 10,00 ,
            COLOR IS ColorGiacenza,
            FONT IS Small-Font,
-           ID IS 61,
+           ID IS 55,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RIGHT,
@@ -2939,7 +2939,7 @@
            LINE 1,00,
            LINES 45,31 ,
            COLOR IS 14,
-           ID IS 85,
+           ID IS 86,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            WIDTH 3,
@@ -2953,7 +2953,7 @@
            LINE 1,00,
            LINES 45,31 ,
            COLOR IS 14,
-           ID IS 86,
+           ID IS 87,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            WIDTH 3,
@@ -2967,7 +2967,7 @@
            LINE 1,00,
            SIZE 157,83 ,
            COLOR IS 14,
-           ID IS 87,
+           ID IS 88,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            WIDTH 3,
@@ -2981,7 +2981,7 @@
            LINE 46,23,
            SIZE 157,83 ,
            COLOR IS 14,
-           ID IS 88,
+           ID IS 89,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            WIDTH 3,
@@ -13932,7 +13932,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 84 TO CONTROL-ID
+               MOVE 85 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-art's Validation
@@ -15046,8 +15046,8 @@ LUBEXX     move ef-gest-buf to mto-gest-plus.
            if mto-note-libere not = old-mto-note-libere
               and SiSalvato
               set NoSalvato to true
-              |84 è l'ID del campo ef-note-libere
-              move 84 to store-id
+              |85 è l'ID del campo ef-note-libere
+              move 85 to store-id
            end-if
 
            if mto-stato-ordine not = old-mto-stato-ordine
@@ -15757,7 +15757,7 @@ LUBEXX     move ef-gest-buf to mto-gest-plus.
            When 5024 PERFORM ef-note-4-AfterProcedure
            When 5025 PERFORM Form1-DaEf-1-AfterProcedure
            When 5026 PERFORM Form1-DaEf-1-AfterProcedure
-           When 84 PERFORM Form1-DaEf-1-AfterProcedure
+           When 85 PERFORM Form1-DaEf-1-AfterProcedure
            When 5028 PERFORM ef-art-AfterProcedure
            When 5029 PERFORM ef-cou-AfterProcedure
            When 5030 PERFORM Form1-DaCb-1-AfterProcedure
@@ -16372,8 +16372,9 @@ PATCH               end-if
                        if save-tpr-codice not = 0
                           perform RIGHE-PROMO-FITTIZIE
                        end-if
-                    else
+                    else                            
                        perform SOSTITUZIONE-ARTICOLO
+                       perform SOSTITUZIONE-BATTERIA
                        if save-tpr-codice not = 0
                           perform RIGHE-PROMO-FITTIZIE
                        end-if

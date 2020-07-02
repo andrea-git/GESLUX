@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E45101227-760-1378620667
+PROGRAM_UNIQUE_CODE=TOTEM-7E472105217-113-2262219398
 
 {{@DESCRIPTION:
 
@@ -16035,7 +16035,7 @@ Begin Screen Form1
             Font              = Default Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 84
+            ID                = 85
             ID Variable       = AUTO-ID
             Justification     = Unaligned
             Line              = 25,08
@@ -17223,7 +17223,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 60
+            ID                = 62
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 25,08
@@ -18056,7 +18056,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 62
+            ID                = 52
             Line              = 1,38
             Lines             = 3,00
             Lines in Pixels   = 32
@@ -23217,7 +23217,8 @@ PATCH                  commit transaction
                        if mto-chiuso
                           continue
                        else
-                          perform SOSTITUZIONE-ARTICOLO
+                          perform SOSTITUZIONE-ARTICOLO 
+                          perform SOSTITUZIONE-BATTERIA
                        end-if
 
                        close    rordini

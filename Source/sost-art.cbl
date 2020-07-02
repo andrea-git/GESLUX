@@ -5,6 +5,9 @@
                 per la sola quantità inevasa. In caso essa sia 0 la 
                 riga viene cancellata, altrimenti la qta ordinata sarà 
                 portata alla stregua di quella evasa
+                01072020:
+                provo ad evadere prima di tutto l'articolo inserito
+                poi se non riesco con la catena reimposto quello inserito
       ******************************************************************
 
        SPECIAL-NAMES. decimal-point is comma.
@@ -124,6 +127,7 @@
        77  ultimo-disponibile pic 9(6).
        77  righe-trattate     pic 9(5).
        77  como-articolo      pic 9(6).
+       77  master-articolo    pic 9(6).
        77  idx                pic 9(5).
        77  idx-orig           pic s9(5).
        77  idx-dest           pic 9(5).
@@ -193,6 +197,8 @@
            88 si-mail        value 1 false zero.
        01  filler            pic 9.
            88 invia-mail     value 1 false zero.
+       01  filler            pic 9.
+           88 primo-giro-ultimo value 1 false zero.
 
        77  como-data         pic 9(8).
        77  como-ora          pic 9(8).
@@ -1027,20 +1033,43 @@
 
       ***--- 
        ESAURIMENTO-SCORTA.
-           perform varying idx from 1 by 1 
+           move mro-cod-articolo to master-articolo.
+           set primo-giro-ultimo to true.
+           perform varying idx from 0 by 1 
                      until idx > 1000 
               if qta <= 0
                  exit perform
               end-if
-              if idx = 1
-                 move cat-codice to como-articolo
+              |01072020: L'ultimo dev'essere quello inserito
+              if not primo-giro-ultimo
+                 move master-articolo 
+                   to ultimo-disponibile como-articolo
               else
-                 if cat-collegato(idx - 1) = 0
-                    exit perform
+                 |01072020: Provo prima il codice inserito nel master
+                 if idx = 0
+                    move mro-cod-articolo to como-articolo
+                 else
+                    if idx = 1
+                       move cat-codice to como-articolo
+                    else
+                       if cat-collegato(idx - 1) = 0
+                          exit perform
+                       end-if
+                       move cat-collegato(idx - 1) to como-articolo
+                    end-if
                  end-if
-                 move cat-collegato(idx - 1) to como-articolo
-              end-if
+              end-if         
+              |01072020: L'ultimo dev'essere quello inserito
               move como-articolo to art-codice
+              if ultimo-disponibile not = master-articolo
+                 if primo-giro-ultimo
+                    if como-articolo = ultimo-disponibile
+                       set primo-giro-ultimo to false
+                       move master-articolo to ultimo-disponibile
+                    end-if
+                 end-if
+              end-if
+
               read articoli no lock
               if art-bloccato
                  continue
@@ -1320,8 +1349,7 @@
               move mro-cod-articolo   to tmp-sar-codice-orig
                                          art-codice
               read articoli no lock
-                 invalid
-                    continue   
+                   invalid continue   
               end-read
               move mro-prg-tipo-imballo  to tmp-sar-imb-orig
               move mro-des-imballo       to tmp-sar-descr-imb-orig
@@ -1449,8 +1477,7 @@
               move mro-cod-articolo   to tmp-sar-codice-dest
                                          art-codice
               read articoli no lock
-                 invalid
-                    continue
+                   invalid continue
               end-read                     
               move mro-prg-tipo-imballo  to tmp-sar-imb-dest
               move mro-des-imballo       to tmp-sar-descr-imb-dest

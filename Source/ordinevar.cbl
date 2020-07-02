@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordinevar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 1 maggio 2020 02:14:34.
+       DATE-WRITTEN.        giovedì 2 luglio 2020 12:53:29.
        REMARKS.
       *{TOTEM}END
 
@@ -2323,7 +2323,7 @@
            LINES 1,31 ,
            SIZE 19,00 ,
            FONT IS Small-Font,
-           ID IS 60,
+           ID IS 62,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2620,7 +2620,7 @@
            EXCEPTION-VALUE 1001,
            FLAT,
            FONT IS Small-Font,
-           ID IS 62,
+           ID IS 52,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            SELF-ACT,
@@ -19357,7 +19357,8 @@ PATCH                  commit transaction
                        if mto-chiuso
                           continue
                        else
-                          perform SOSTITUZIONE-ARTICOLO
+                          perform SOSTITUZIONE-ARTICOLO 
+                          perform SOSTITUZIONE-BATTERIA
                        end-if
 
                        close    rordini

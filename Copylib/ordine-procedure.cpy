@@ -5263,6 +5263,14 @@ LABLAB***---
            cancel "sost-art".
 
       ***---
+       SOSTITUZIONE-BATTERIA.
+           move mto-chiave to sost-art-chiave.
+           move user-codi  to sost-art-user.
+           set sost-art-salva to true.
+           call   "sost-batt" using sost-art-linkage.
+           cancel "sost-batt".
+
+      ***---
        RIALLINEA-CLIENTE.
            set cli-tipo-C to true.
            move save-cli-codice to cli-codice.
