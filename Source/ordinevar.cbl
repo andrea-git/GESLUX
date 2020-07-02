@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordinevar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 2 luglio 2020 12:53:29.
+       DATE-WRITTEN.        giovedì 2 luglio 2020 15:13:17.
        REMARKS.
       *{TOTEM}END
 
@@ -2166,7 +2166,7 @@
            lab-chiusura, 
            Label, 
            COL 58,34, 
-           LINE 33,54,
+           LINE 42,77,
            LINES 1,31 ,
            SIZE 43,33 ,
            COLOR IS 2,

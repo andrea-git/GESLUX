@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E472105217-113-2262219398
+PROGRAM_UNIQUE_CODE=TOTEM-7E472131123-923-3014425814
 
 {{@DESCRIPTION:
 
@@ -16897,7 +16897,7 @@ Begin Screen Form1
          End
          Begin Label lab-chiusura
             SCREEN-COL        = 58,34
-            SCREEN-LINE       = 33,54
+            SCREEN-LINE       = 42,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-chiusura
@@ -16916,7 +16916,7 @@ Begin Screen Form1
             ID                = 59
             Justification     = Center
             Label Offset      = 20
-            Line              = 21,85
+            Line              = 31,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
