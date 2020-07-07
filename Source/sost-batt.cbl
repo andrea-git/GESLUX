@@ -194,8 +194,7 @@
            88 primo-giro-ultimo value 1 false zero.
 
        77  como-data         pic 9(8).
-       77  como-ora          pic 9(8).
-       77  sost-articoli     pic x.     
+       77  como-ora          pic 9(8). 
        77  batch-notturno    pic x value space.
       ***** 77  como-scorta       pic 9(5).
 

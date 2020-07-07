@@ -3420,6 +3420,8 @@
 
            perform until 1 = 2
               read mtordini next at end exit perform end-read
+
+              if mto-numero = 14029 stop "K" end-if
            
               evaluate true
               when per-numero
