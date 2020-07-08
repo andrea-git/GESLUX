@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7DC15143915-181-1338627135
+PROGRAM_UNIQUE_CODE=TOTEM-7E47875858-176-576522633
 
 {{@DESCRIPTION:
 
@@ -1196,6 +1196,35 @@ m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM110_WK
+
+@}}
+[FDITEM111_WK]
+m_strName=path-tmp-k-ord
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM111_WK
+
+@}}
+[FDITEM112_WK]
+m_strName=STATUS-tmp-k-ord
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM112_WK
+
+@}}
+[FDITEM113_WK]
+m_strName=Valid-STATUS-tmp-k-ord
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM113_WK
 
 @}}
 
@@ -3721,6 +3750,23 @@ BEGIN-DATA
    BASETYPE          = 3
    PARAGRAPH         = CARICA-ORDINI
 BEGIN-TEXT
+           initialize path-tmp-k-ord.
+           accept  path-tmp-k-ord from environment "PATH_ST".
+           inspect path-tmp-k-ord replacing trailing spaces by low-value.
+           accept  como-data from century-date.
+           accept  como-ora  from time.
+           string  path-tmp-k-ord delimited low-value
+                   "ORD_"         delimited size
+                   como-data      delimited size
+                   "_"            delimited size
+                   como-ora       delimited size
+                   ".tmp"         delimited size
+              into path-tmp-k-ord
+           end-string.
+           open output tmp-k-ord.
+           close       tmp-k-ord.
+           open i-o    tmp-k-ord.
+
            move anno-to      to tor-anno.
            move ordine-from  to tor-numero.
 
@@ -3753,7 +3799,8 @@ LUBEXX          start tordini key is >= k4
 LUBEXX                invalid continue
 LUBEXX            not invalid perform SCORRI-ORDINI
 LUBEXX          end-start
-LUBEXX     end-evaluate.
+LUBEXX     end-evaluate.   
+           close tmp-k-ord.
 
 
 LUBEXX*****     if corrispettivi
@@ -4133,7 +4180,7 @@ BEGIN-DATA
    PARAGRAPH         = RIEMPI-GRID
 BEGIN-TEXT
            modify gd-ordini, mass-update = 1.
-           modify gd-ordini, reset-grid = 1.
+           modify gd-ordini, reset-grid  = 1.
            perform GD-ORDINI-CONTENT.
 LUBEXX     evaluate true
 LUBEXX     when inevasi
@@ -4188,10 +4235,44 @@ LUBEXX        end-evaluate
 
               perform VALIDA-ORDINE
               
-              if record-ok perform METTI-IN-GRIGLIA end-if
-           end-perform.
+              if record-ok perform METTI-IN-TMP end-if
+           end-perform.               
 
-           modify gd-ordini, mass-update 0.
+           if trovato
+              perform TMP-TO-GRID
+           end-if.
+
+           modify gd-ordini, mass-update 0.  
+
+      ***---
+       METTI-IN-TMP.             
+           evaluate true
+           when inevasi
+           when corrispettivi
+           when tutti
+                move tor-data-creazione to tko-data
+           when emessa-bolla
+                move tor-data-bolla     to tko-data
+           when fatturati
+                move tor-data-fattura   to tko-data
+           end-evaluate.
+           move tor-chiave         to tko-chiave-pri.
+           write tko-rec.
+           set trovato to true.  
+       
+      ***---
+       TMP-TO-GRID.
+           move low-value to tko-rec.
+           start tmp-k-ord key >= tko-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read tmp-k-ord next at end exit perform end-read
+                    move tko-chiave-pri to tor-chiave
+                    read tordini no lock
+                    perform METTI-IN-GRIGLIA
+                 end-perform
+           end-start.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -4721,8 +4802,8 @@ PROP_DOCU_RULER_EBL=0
 PROP_DOCU_GRID_EBL=0
 PROP_DOCU_GRID=20
 PROP_DOCU_ALIGN=0
-REL_SYM_SIZE=34
-REL_SYM_INFO_L=5
+REL_SYM_SIZE=40
+REL_SYM_INFO_L=6
 REL_SYM_INFO_X0=2301
 REL_SYM_INFO_Y0=1319969264
 REL_SYM_INFO_X1=2301
@@ -4733,6 +4814,8 @@ REL_SYM_INFO_X3=2301
 REL_SYM_INFO_Y3=1459683204
 REL_SYM_INFO_X4=2301
 REL_SYM_INFO_Y4=862383540
+REL_SYM_INFO_X5=2301
+REL_SYM_INFO_Y5=1712592524
 
 [DRAW_BASESYMBOL_2301_1319969264]
 OBJ_NAME=2301
@@ -4974,6 +5057,54 @@ PROP_TRACK_COLOR=12632256
 REL_SYM_SIZE=4
 REL_SYM_INFO_L=0
 
+[DRAW_BASESYMBOL_2301_1712592524]
+OBJ_NAME=2301
+OBJ_ID=1712592524
+KIND=1
+{{@LABEL_2301_1712592524
+tmp-k-ord
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=3446
+TOP=566
+RIGHT=3846
+BOTTOM=788
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
 [DMD_DOCUMENT_0_1760106106]
 OBJ_NAME=0
 OBJ_ID=1760106106
@@ -5135,6 +5266,37 @@ DSN_INFO_END_VALUE=
 DSN_INFO_PRIMARY=0
 DSN_INFO_OPEN=1
 DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1712592524]
+OBJ_NAME=0
+OBJ_ID=1712592524
+REL_M_OBJ_ID=0
+ENTITY=tmp-k-ord
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=2
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tko-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1712592524
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
 DSN_INFO_EXCLUSIVE=0
 DSN_INFO_IS_LOGICAL=0
 DSN_INFO_LOGICAL_FDNAME=

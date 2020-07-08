@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          selmovc.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        lunedì 2 dicembre 2013 18:30:17.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        mercoledì 8 luglio 2020 10:00:40.
        REMARKS.
       *{TOTEM}END
 
@@ -32,6 +32,7 @@
            COPY "rmovmag.sl".
            COPY "tcaumag.sl".
            COPY "tparamge.sl".
+           COPY "tmp-k-ord.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -41,6 +42,7 @@
            COPY "rmovmag.fd".
            COPY "tcaumag.fd".
            COPY "tparamge.fd".
+           COPY "tmp-k-ord.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -51,9 +53,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "comune.def".
-               COPY "utydata.def".
-               COPY "custom.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -199,6 +199,9 @@
                   USAGE IS HANDLE OF FONT.
        77 STATUS-tparamge  PIC  X(2).
            88 Valid-STATUS-tparamge VALUE IS "00" THRU "09". 
+       77 path-tmp-k-ord   PIC  X(256).
+       77 STATUS-tmp-k-ord PIC  X(2).
+           88 Valid-STATUS-tmp-k-ord VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -214,10 +217,11 @@
        77 STATUS-form3-FLAG-REFRESH PIC  9.
           88 form3-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-tmovmag-BUF     PIC X(256).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1356).
-       77 TMP-DataSet1-rmovmag-BUF     PIC X(302).
-       77 TMP-DataSet1-tcaumag-BUF     PIC X(201).
+       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
+       77 TMP-DataSet1-rmovmag-BUF     PIC X(446).
+       77 TMP-DataSet1-tcaumag-BUF     PIC X(254).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
+       77 TMP-DataSet1-tmp-k-ord-BUF     PIC X(20).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -248,6 +252,11 @@
        77 DataSet1-tparamge-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tparamge-KEY-Asc  VALUE "A".
           88 DataSet1-tparamge-KEY-Desc VALUE "D".
+       77 DataSet1-tmp-k-ord-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tmp-k-ord-LOCK  VALUE "Y".
+       77 DataSet1-tmp-k-ord-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tmp-k-ord-KEY-Asc  VALUE "A".
+          88 DataSet1-tmp-k-ord-KEY-Desc VALUE "D".
 
        77 tmovmag-key01-SPLITBUF  PIC X(17).
        77 tmovmag-k2-SPLITBUF  PIC X(20).
@@ -257,7 +266,7 @@
        77 clienti-cli-K4-SPLITBUF  PIC X(8).
        77 rmovmag-k-articolo-SPLITBUF  PIC X(19).
        77 rmovmag-rmo-chiave-ricerca-SPLITBUF  PIC X(25).
-       77 rmovmag-k-progmag-SPLITBUF  PIC X(19).
+       77 rmovmag-k-progmag-SPLITBUF  PIC X(21).
        77 rmovmag-k-art-data-SPLITBUF  PIC X(15).
        77 tcaumag-k-mag-SPLITBUF  PIC X(5).
 
@@ -1292,6 +1301,8 @@
            PERFORM OPEN-tcaumag
       *    tparamge OPEN MODE IS FALSE
       *    PERFORM OPEN-tparamge
+      *    tmp-k-ord OPEN MODE IS FALSE
+      *    PERFORM OPEN-tmp-k-ord
       *    After Open
            .
 
@@ -1355,6 +1366,25 @@
       * <TOTEM:END>
            .
 
+       OPEN-tmp-k-ord.
+      * <TOTEM:EPT. INIT:selmovc, FD:tmp-k-ord, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  I-O tmp-k-ord
+           IF STATUS-tmp-k-ord = "35"
+              OPEN OUTPUT tmp-k-ord
+                IF Valid-STATUS-tmp-k-ord
+                   CLOSE tmp-k-ord
+                   OPEN I-O tmp-k-ord
+                END-IF
+           END-IF
+           IF NOT Valid-STATUS-tmp-k-ord
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:selmovc, FD:tmp-k-ord, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-tmovmag
@@ -1363,6 +1393,8 @@
            PERFORM CLOSE-tcaumag
       *    tparamge CLOSE MODE IS FALSE
       *    PERFORM CLOSE-tparamge
+      *    tmp-k-ord CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-tmp-k-ord
       *    After Close
            .
 
@@ -1392,6 +1424,11 @@
 
        CLOSE-tparamge.
       * <TOTEM:EPT. INIT:selmovc, FD:tparamge, BeforeClose>
+      * <TOTEM:END>
+           .
+
+       CLOSE-tmp-k-ord.
+      * <TOTEM:EPT. INIT:selmovc, FD:tmp-k-ord, BeforeClose>
       * <TOTEM:END>
            .
 
@@ -1837,8 +1874,8 @@
 
        rmovmag-k-progmag-MERGE-SPLITBUF.
            INITIALIZE rmovmag-k-progmag-SPLITBUF
-           MOVE rmo-chiave-progmag OF rmovmag(1:18) TO 
-           rmovmag-k-progmag-SPLITBUF(1:18)
+           MOVE rmo-chiave-progmag OF rmovmag(1:20) TO 
+           rmovmag-k-progmag-SPLITBUF(1:20)
            .
 
        rmovmag-k-art-data-MERGE-SPLITBUF.
@@ -2332,12 +2369,170 @@
       * <TOTEM:END>
            .
 
+       DataSet1-tmp-k-ord-INITSTART.
+           IF DataSet1-tmp-k-ord-KEY-Asc
+              MOVE Low-Value TO tko-chiave
+           ELSE
+              MOVE High-Value TO tko-chiave
+           END-IF
+           .
+
+       DataSet1-tmp-k-ord-INITEND.
+           IF DataSet1-tmp-k-ord-KEY-Asc
+              MOVE High-Value TO tko-chiave
+           ELSE
+              MOVE Low-Value TO tko-chiave
+           END-IF
+           .
+
+      * tmp-k-ord
+       DataSet1-tmp-k-ord-START.
+           IF DataSet1-tmp-k-ord-KEY-Asc
+              START tmp-k-ord KEY >= tko-chiave
+           ELSE
+              START tmp-k-ord KEY <= tko-chiave
+           END-IF
+           .
+
+       DataSet1-tmp-k-ord-START-NOTGREATER.
+           IF DataSet1-tmp-k-ord-KEY-Asc
+              START tmp-k-ord KEY <= tko-chiave
+           ELSE
+              START tmp-k-ord KEY >= tko-chiave
+           END-IF
+           .
+
+       DataSet1-tmp-k-ord-START-GREATER.
+           IF DataSet1-tmp-k-ord-KEY-Asc
+              START tmp-k-ord KEY > tko-chiave
+           ELSE
+              START tmp-k-ord KEY < tko-chiave
+           END-IF
+           .
+
+       DataSet1-tmp-k-ord-START-LESS.
+           IF DataSet1-tmp-k-ord-KEY-Asc
+              START tmp-k-ord KEY < tko-chiave
+           ELSE
+              START tmp-k-ord KEY > tko-chiave
+           END-IF
+           .
+
+       DataSet1-tmp-k-ord-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-tmp-k-ord-LOCK
+              READ tmp-k-ord WITH LOCK 
+              KEY tko-chiave
+           ELSE
+              READ tmp-k-ord WITH NO LOCK 
+              KEY tko-chiave
+           END-IF
+           MOVE STATUS-tmp-k-ord TO TOTEM-ERR-STAT 
+           MOVE "tmp-k-ord" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmp-k-ord-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-tmp-k-ord-KEY-Asc
+              IF DataSet1-tmp-k-ord-LOCK
+                 READ tmp-k-ord NEXT WITH LOCK
+              ELSE
+                 READ tmp-k-ord NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tmp-k-ord-LOCK
+                 READ tmp-k-ord PREVIOUS WITH LOCK
+              ELSE
+                 READ tmp-k-ord PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tmp-k-ord TO TOTEM-ERR-STAT
+           MOVE "tmp-k-ord" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmp-k-ord-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-tmp-k-ord-KEY-Asc
+              IF DataSet1-tmp-k-ord-LOCK
+                 READ tmp-k-ord PREVIOUS WITH LOCK
+              ELSE
+                 READ tmp-k-ord PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tmp-k-ord-LOCK
+                 READ tmp-k-ord NEXT WITH LOCK
+              ELSE
+                 READ tmp-k-ord NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tmp-k-ord TO TOTEM-ERR-STAT
+           MOVE "tmp-k-ord" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmp-k-ord-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, BeforeWrite>
+      * <TOTEM:END>
+           WRITE tko-rec OF tmp-k-ord.
+           MOVE STATUS-tmp-k-ord TO TOTEM-ERR-STAT
+           MOVE "tmp-k-ord" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmp-k-ord-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, BeforeRewrite>
+      * <TOTEM:END>
+           REWRITE tko-rec OF tmp-k-ord.
+           MOVE STATUS-tmp-k-ord TO TOTEM-ERR-STAT
+           MOVE "tmp-k-ord" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmp-k-ord-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, BeforeDelete>
+      * <TOTEM:END>
+           DELETE tmp-k-ord.
+           MOVE STATUS-tmp-k-ord TO TOTEM-ERR-STAT
+           MOVE "tmp-k-ord" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE tmo-rec OF tmovmag
            INITIALIZE cli-rec OF clienti
            INITIALIZE rmo-rec OF rmovmag
            INITIALIZE tca-rec OF tcaumag
            INITIALIZE tge-rec OF tparamge
+           INITIALIZE tko-rec OF tmp-k-ord
            .
 
 
@@ -2404,6 +2599,14 @@
       * FD's Initialize Paragraph
        DataSet1-tparamge-INITREC.
            INITIALIZE tge-rec OF tparamge
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-tmp-k-ord-INITREC.
+           INITIALIZE tko-rec OF tmp-k-ord
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -3415,14 +3618,34 @@
 
        CARICA-MOVIMENTI.
       * <TOTEM:PARA. CARICA-MOVIMENTI>
-      *     move anno-from    to tmo-anno.
+      *     move anno-from    to tmo-anno.     
+
+           initialize path-tmp-k-ord.
+           accept  path-tmp-k-ord from environment "PATH_ST".
+           inspect path-tmp-k-ord replacing trailing spaces by 
+           low-value.
+           accept  como-data from century-date.
+           accept  como-ora  from time.
+           string  path-tmp-k-ord delimited low-value
+                   "ORD_"         delimited size
+                   como-data      delimited size
+                   "_"            delimited size
+                   como-ora       delimited size
+                   ".tmp"         delimited size
+              into path-tmp-k-ord
+           end-string.
+           open output tmp-k-ord.
+           close       tmp-k-ord.
+           open i-o    tmp-k-ord.
+
            move anno-to      to tmo-anno.
            move ordine-from  to tmo-numero.
 
            start tmovmag key not < tmo-chiave
                  invalid continue
              not invalid perform SCORRI-ORDINI
-           end-start 
+           end-start.             
+           close tmp-k-ord 
 
            .
       * <TOTEM:END>
@@ -3687,10 +3910,37 @@
               
               perform VALIDA-MOVIMENTO
               
-              if record-ok perform METTI-IN-GRIGLIA end-if
+              if record-ok perform METTI-IN-TMP end-if
 
-           end-perform.
-           modify gd-mov, mass-update = 0 
+           end-perform.                        
+
+           if trovato
+              perform TMP-TO-GRID
+           end-if.
+
+           modify gd-mov, mass-update 0.
+
+
+      ***---
+       METTI-IN-TMP.
+           move tmo-data-movim to tko-data.
+           move tmo-chiave     to tko-chiave-pri.
+           write tko-rec.
+           set trovato to true.
+
+      ***---
+       TMP-TO-GRID.     
+           move low-value to tko-rec.
+           start tmp-k-ord key >= tko-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read tmp-k-ord next at end exit perform end-read
+                    move tko-chiave-pri to tmo-chiave
+                    read tmovmag no lock
+                    perform METTI-IN-GRIGLIA
+                 end-perform
+           end-start 
            .
       * <TOTEM:END>
 

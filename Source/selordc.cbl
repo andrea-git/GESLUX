@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          selordc.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 1 aprile 2014 19:18:50.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        mercoledì 8 luglio 2020 10:00:16.
        REMARKS.
       *{TOTEM}END
 
@@ -32,6 +32,7 @@
            COPY "destini.sl".
            COPY "tparamge.sl".
            COPY "tescons.sl".
+           COPY "tmp-k-ord.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -41,6 +42,7 @@
            COPY "destini.fd".
            COPY "tparamge.fd".
            COPY "tescons.fd".
+           COPY "tmp-k-ord.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -51,9 +53,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\Lubex\GESLUX\Copylib\UTYDATA.DEF".
-               COPY "F:\Lubex\GESLUX\Copylib\comune.def".
-               COPY "F:\Lubex\GESLUX\Copylib\custom.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -208,6 +208,9 @@
        77 CBO-stato-cons-BUF           PIC  X(50).
        77 STATUS-tescons   PIC  X(2).
            88 Valid-STATUS-tescons VALUE IS "00" THRU "09". 
+       77 path-tmp-k-ord   PIC  X(256).
+       77 STATUS-tmp-k-ord PIC  X(2).
+           88 Valid-STATUS-tmp-k-ord VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -215,18 +218,19 @@
        77 STATUS-Form2-FLAG-REFRESH PIC  9.
           88 Form2-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-Form2-KEY1-ORDER  PIC X VALUE "A".
-       77 TMP-Form2-tordini-RESTOREBUF  PIC X(907).
+       77 TMP-Form2-tordini-RESTOREBUF  PIC X(3898).
        77 TMP-Form2-KEYIS  PIC 9(3) VALUE 1.
-       77 Form2-MULKEY-TMPBUF   PIC X(907).
+       77 Form2-MULKEY-TMPBUF   PIC X(3898).
        77 STATUS-Form1-FLAG-REFRESH PIC  9.
           88 Form1-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 STATUS-form3-FLAG-REFRESH PIC  9.
           88 form3-FLAG-REFRESH  VALUE 1 FALSE 0. 
-       77 TMP-DataSet1-tordini-BUF     PIC X(907).
+       77 TMP-DataSet1-tordini-BUF     PIC X(3898).
        77 TMP-DataSet1-clienti-BUF     PIC X(1910).
-       77 TMP-DataSet1-destini-BUF     PIC X(445).
+       77 TMP-DataSet1-destini-BUF     PIC X(3386).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-tescons-BUF     PIC X(226).
+       77 TMP-DataSet1-tmp-k-ord-BUF     PIC X(20).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -257,6 +261,11 @@
        77 DataSet1-tescons-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tescons-KEY-Asc  VALUE "A".
           88 DataSet1-tescons-KEY-Desc VALUE "D".
+       77 DataSet1-tmp-k-ord-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tmp-k-ord-LOCK  VALUE "Y".
+       77 DataSet1-tmp-k-ord-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tmp-k-ord-KEY-Asc  VALUE "A".
+          88 DataSet1-tmp-k-ord-KEY-Desc VALUE "D".
 
        77 tordini-k-causale-SPLITBUF  PIC X(17).
        77 tordini-k1-SPLITBUF  PIC X(23).
@@ -276,6 +285,8 @@
        77 tordini-k-promo-SPLITBUF  PIC X(29).
        77 tordini-k-or-SPLITBUF  PIC X(21).
        77 tordini-k-tor-inviare-SPLITBUF  PIC X(14).
+       77 tordini-k-tor-tipocli-SPLITBUF  PIC X(25).
+       77 tordini-k-tor-gdo-SPLITBUF  PIC X(28).
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
        77 clienti-cli-K4-SPLITBUF  PIC X(8).
@@ -1372,6 +1383,8 @@
            PERFORM OPEN-destini
            PERFORM OPEN-tparamge
            PERFORM OPEN-tescons
+      *    tmp-k-ord OPEN MODE IS FALSE
+      *    PERFORM OPEN-tmp-k-ord
       *    After Open
            .
 
@@ -1435,6 +1448,25 @@
       * <TOTEM:END>
            .
 
+       OPEN-tmp-k-ord.
+      * <TOTEM:EPT. INIT:selordc, FD:tmp-k-ord, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  I-O tmp-k-ord
+           IF STATUS-tmp-k-ord = "35"
+              OPEN OUTPUT tmp-k-ord
+                IF Valid-STATUS-tmp-k-ord
+                   CLOSE tmp-k-ord
+                   OPEN I-O tmp-k-ord
+                END-IF
+           END-IF
+           IF NOT Valid-STATUS-tmp-k-ord
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:selordc, FD:tmp-k-ord, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-tordini
@@ -1442,6 +1474,8 @@
            PERFORM CLOSE-destini
            PERFORM CLOSE-tparamge
            PERFORM CLOSE-tescons
+      *    tmp-k-ord CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-tmp-k-ord
       *    After Close
            .
 
@@ -1473,6 +1507,11 @@
       * <TOTEM:EPT. INIT:selordc, FD:tescons, BeforeClose>
       * <TOTEM:END>
            CLOSE tescons
+           .
+
+       CLOSE-tmp-k-ord.
+      * <TOTEM:EPT. INIT:selordc, FD:tmp-k-ord, BeforeClose>
+      * <TOTEM:END>
            .
 
        tordini-k-causale-MERGE-SPLITBUF.
@@ -1622,6 +1661,30 @@
            tordini-k-tor-inviare-SPLITBUF(2:12)
            .
 
+       tordini-k-tor-tipocli-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-tor-tipocli-SPLITBUF
+           MOVE tor-tipocli OF tordini(1:2) TO 
+           tordini-k-tor-tipocli-SPLITBUF(1:2)
+           MOVE tor-cod-cli OF tordini(1:5) TO 
+           tordini-k-tor-tipocli-SPLITBUF(3:5)
+           MOVE tor-prg-destino OF tordini(1:5) TO 
+           tordini-k-tor-tipocli-SPLITBUF(8:5)
+           MOVE tor-chiave OF tordini(1:12) TO 
+           tordini-k-tor-tipocli-SPLITBUF(13:12)
+           .
+
+       tordini-k-tor-gdo-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-tor-gdo-SPLITBUF
+           MOVE tor-gdo OF tordini(1:5) TO 
+           tordini-k-tor-gdo-SPLITBUF(1:5)
+           MOVE tor-cod-cli OF tordini(1:5) TO 
+           tordini-k-tor-gdo-SPLITBUF(6:5)
+           MOVE tor-prg-destino OF tordini(1:5) TO 
+           tordini-k-tor-gdo-SPLITBUF(11:5)
+           MOVE tor-chiave OF tordini(1:12) TO 
+           tordini-k-tor-gdo-SPLITBUF(16:12)
+           .
+
        DataSet1-tordini-INITSTART.
            EVALUATE DataSet1-KEYIS
            WHEN 1
@@ -1740,6 +1803,8 @@
            PERFORM tordini-k-promo-MERGE-SPLITBUF
            PERFORM tordini-k-or-MERGE-SPLITBUF
            PERFORM tordini-k-tor-inviare-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-tipocli-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-gdo-MERGE-SPLITBUF
            MOVE STATUS-tordini TO TOTEM-ERR-STAT 
            MOVE "tordini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -1788,6 +1853,8 @@
            PERFORM tordini-k-promo-MERGE-SPLITBUF
            PERFORM tordini-k-or-MERGE-SPLITBUF
            PERFORM tordini-k-tor-inviare-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-tipocli-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-gdo-MERGE-SPLITBUF
            MOVE STATUS-tordini TO TOTEM-ERR-STAT
            MOVE "tordini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -1836,6 +1903,8 @@
            PERFORM tordini-k-promo-MERGE-SPLITBUF
            PERFORM tordini-k-or-MERGE-SPLITBUF
            PERFORM tordini-k-tor-inviare-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-tipocli-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-gdo-MERGE-SPLITBUF
            MOVE STATUS-tordini TO TOTEM-ERR-STAT
            MOVE "tordini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -2542,12 +2611,170 @@
       * <TOTEM:END>
            .
 
+       DataSet1-tmp-k-ord-INITSTART.
+           IF DataSet1-tmp-k-ord-KEY-Asc
+              MOVE Low-Value TO tko-chiave
+           ELSE
+              MOVE High-Value TO tko-chiave
+           END-IF
+           .
+
+       DataSet1-tmp-k-ord-INITEND.
+           IF DataSet1-tmp-k-ord-KEY-Asc
+              MOVE High-Value TO tko-chiave
+           ELSE
+              MOVE Low-Value TO tko-chiave
+           END-IF
+           .
+
+      * tmp-k-ord
+       DataSet1-tmp-k-ord-START.
+           IF DataSet1-tmp-k-ord-KEY-Asc
+              START tmp-k-ord KEY >= tko-chiave
+           ELSE
+              START tmp-k-ord KEY <= tko-chiave
+           END-IF
+           .
+
+       DataSet1-tmp-k-ord-START-NOTGREATER.
+           IF DataSet1-tmp-k-ord-KEY-Asc
+              START tmp-k-ord KEY <= tko-chiave
+           ELSE
+              START tmp-k-ord KEY >= tko-chiave
+           END-IF
+           .
+
+       DataSet1-tmp-k-ord-START-GREATER.
+           IF DataSet1-tmp-k-ord-KEY-Asc
+              START tmp-k-ord KEY > tko-chiave
+           ELSE
+              START tmp-k-ord KEY < tko-chiave
+           END-IF
+           .
+
+       DataSet1-tmp-k-ord-START-LESS.
+           IF DataSet1-tmp-k-ord-KEY-Asc
+              START tmp-k-ord KEY < tko-chiave
+           ELSE
+              START tmp-k-ord KEY > tko-chiave
+           END-IF
+           .
+
+       DataSet1-tmp-k-ord-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-tmp-k-ord-LOCK
+              READ tmp-k-ord WITH LOCK 
+              KEY tko-chiave
+           ELSE
+              READ tmp-k-ord WITH NO LOCK 
+              KEY tko-chiave
+           END-IF
+           MOVE STATUS-tmp-k-ord TO TOTEM-ERR-STAT 
+           MOVE "tmp-k-ord" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmp-k-ord-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-tmp-k-ord-KEY-Asc
+              IF DataSet1-tmp-k-ord-LOCK
+                 READ tmp-k-ord NEXT WITH LOCK
+              ELSE
+                 READ tmp-k-ord NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tmp-k-ord-LOCK
+                 READ tmp-k-ord PREVIOUS WITH LOCK
+              ELSE
+                 READ tmp-k-ord PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tmp-k-ord TO TOTEM-ERR-STAT
+           MOVE "tmp-k-ord" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmp-k-ord-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-tmp-k-ord-KEY-Asc
+              IF DataSet1-tmp-k-ord-LOCK
+                 READ tmp-k-ord PREVIOUS WITH LOCK
+              ELSE
+                 READ tmp-k-ord PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tmp-k-ord-LOCK
+                 READ tmp-k-ord NEXT WITH LOCK
+              ELSE
+                 READ tmp-k-ord NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tmp-k-ord TO TOTEM-ERR-STAT
+           MOVE "tmp-k-ord" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmp-k-ord-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, BeforeWrite>
+      * <TOTEM:END>
+           WRITE tko-rec OF tmp-k-ord.
+           MOVE STATUS-tmp-k-ord TO TOTEM-ERR-STAT
+           MOVE "tmp-k-ord" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmp-k-ord-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, BeforeRewrite>
+      * <TOTEM:END>
+           REWRITE tko-rec OF tmp-k-ord.
+           MOVE STATUS-tmp-k-ord TO TOTEM-ERR-STAT
+           MOVE "tmp-k-ord" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmp-k-ord-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, BeforeDelete>
+      * <TOTEM:END>
+           DELETE tmp-k-ord.
+           MOVE STATUS-tmp-k-ord TO TOTEM-ERR-STAT
+           MOVE "tmp-k-ord" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-k-ord, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE tor-rec OF tordini
            INITIALIZE cli-rec OF clienti
            INITIALIZE des-rec OF destini
            INITIALIZE tge-rec OF tparamge
            INITIALIZE tec-rec OF tescons
+           INITIALIZE tko-rec OF tmp-k-ord
            .
 
 
@@ -2625,6 +2852,14 @@
       * FD's Initialize Paragraph
        DataSet1-tescons-INITREC.
            INITIALIZE tec-rec OF tescons
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-tmp-k-ord-INITREC.
+           INITIALIZE tko-rec OF tmp-k-ord
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -3668,6 +3903,24 @@
 
        CARICA-ORDINI.
       * <TOTEM:PARA. CARICA-ORDINI>
+           initialize path-tmp-k-ord.
+           accept  path-tmp-k-ord from environment "PATH_ST".
+           inspect path-tmp-k-ord replacing trailing spaces by 
+           low-value.
+           accept  como-data from century-date.
+           accept  como-ora  from time.
+           string  path-tmp-k-ord delimited low-value
+                   "ORD_"         delimited size
+                   como-data      delimited size
+                   "_"            delimited size
+                   como-ora       delimited size
+                   ".tmp"         delimited size
+              into path-tmp-k-ord
+           end-string.
+           open output tmp-k-ord.
+           close       tmp-k-ord.
+           open i-o    tmp-k-ord.
+
            move anno-to      to tor-anno.
            move ordine-from  to tor-numero.
 
@@ -3700,7 +3953,8 @@ LUBEXX          start tordini key is >= k4
 LUBEXX                invalid continue
 LUBEXX            not invalid perform SCORRI-ORDINI
 LUBEXX          end-start
-LUBEXX     end-evaluate.
+LUBEXX     end-evaluate.   
+           close tmp-k-ord.
 
 
 LUBEXX*****     if corrispettivi
@@ -4072,7 +4326,7 @@ LUBEXX     end-evaluate.
        RIEMPI-GRID.
       * <TOTEM:PARA. RIEMPI-GRID>
            modify gd-ordini, mass-update = 1.
-           modify gd-ordini, reset-grid = 1.
+           modify gd-ordini, reset-grid  = 1.
            perform GD-ORDINI-CONTENT.
 LUBEXX     evaluate true
 LUBEXX     when inevasi
@@ -4126,10 +4380,44 @@ LUBEXX        end-evaluate
 
               perform VALIDA-ORDINE
               
-              if record-ok perform METTI-IN-GRIGLIA end-if
-           end-perform.
+              if record-ok perform METTI-IN-TMP end-if
+           end-perform.               
 
-           modify gd-ordini, mass-update 0 
+           if trovato
+              perform TMP-TO-GRID
+           end-if.
+
+           modify gd-ordini, mass-update 0.  
+
+      ***---
+       METTI-IN-TMP.             
+           evaluate true
+           when inevasi
+           when corrispettivi
+           when tutti
+                move tor-data-creazione to tko-data
+           when emessa-bolla
+                move tor-data-bolla     to tko-data
+           when fatturati
+                move tor-data-fattura   to tko-data
+           end-evaluate.
+           move tor-chiave         to tko-chiave-pri.
+           write tko-rec.
+           set trovato to true.  
+       
+      ***---
+       TMP-TO-GRID.
+           move low-value to tko-rec.
+           start tmp-k-ord key >= tko-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read tmp-k-ord next at end exit perform end-read
+                    move tko-chiave-pri to tor-chiave
+                    read tordini no lock
+                    perform METTI-IN-GRIGLIA
+                 end-perform
+           end-start 
            .
       * <TOTEM:END>
 

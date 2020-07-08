@@ -1040,6 +1040,7 @@
               if qta <= 0
                  exit perform
               end-if
+              move 0 to ultimo-disponibile
               |01072020: L'ultimo dev'essere quello inserito
               if not primo-giro-ultimo
                  move master-articolo 
@@ -1179,7 +1180,7 @@
                        end-read
                     end-perform
 
-                    if prg-giacenza < QtaImballiOrdine
+                    if giacenza < QtaImballiOrdine
                        move 0 to prg-giacenza
                     end-if
 

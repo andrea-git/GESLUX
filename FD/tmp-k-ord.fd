@@ -1,0 +1,8 @@
+      *(( XFD FILE = tmp-k-ord ))
+       FD  tmp-k-ord.
+       01 tko-rec.
+           03 tko-chiave.
+               05 tko-data         PIC  9(8).
+               05 tko-chiave-pri.
+                   10 tko-anno         PIC  9(4).
+                   10 tko-numero       PIC  9(8).

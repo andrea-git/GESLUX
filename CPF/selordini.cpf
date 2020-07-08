@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4519225858-120-518825974
+PROGRAM_UNIQUE_CODE=TOTEM-7E47871441-652-637331720
 
 {{@DESCRIPTION:
 
@@ -1438,6 +1438,35 @@ m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM126_WK
+
+@}}
+[FDITEM127_WK]
+m_strName=path-tmp-k-ord
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM127_WK
+
+@}}
+[FDITEM128_WK]
+m_strName=STATUS-tmp-k-ord
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM128_WK
+
+@}}
+[FDITEM129_WK]
+m_strName=Valid-STATUS-tmp-k-ord
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM129_WK
 
 @}}
 
@@ -3939,6 +3968,23 @@ BEGIN-TEXT
               move stato-ordine to mto-stato-ordine
            end-if.
 
+           initialize path-tmp-k-ord.
+           accept  path-tmp-k-ord from environment "PATH_ST".
+           inspect path-tmp-k-ord replacing trailing spaces by low-value.
+           accept  como-data from century-date.
+           accept  como-ora  from time.
+           string  path-tmp-k-ord delimited low-value
+                   "ORD_"         delimited size
+                   como-data      delimited size
+                   "_"            delimited size
+                   como-ora       delimited size
+                   ".tmp"         delimited size
+              into path-tmp-k-ord
+           end-string.
+           open output tmp-k-ord.
+           close       tmp-k-ord.
+           open i-o    tmp-k-ord.
+
            evaluate true
            when per-numero
                 move anno-to       to mto-anno
@@ -3970,6 +4016,8 @@ BEGIN-TEXT
                   not invalid perform SCORRI-ORDINI
                 end-start
            end-evaluate.
+                           
+           close tmp-k-ord.
 
       ***---
        SCORRI-ORDINI.
@@ -4006,13 +4054,38 @@ BEGIN-TEXT
               perform VALIDA-RECORD
 
               if record-ok 
-                 perform METTI-IN-GRIGLIA 
+                 perform METTI-IN-TMP 
               end-if
 
            end-perform.
 
+           if trovato
+              perform TMP-TO-GRID
+           end-if.
+
            modify gd-ordini, mass-update 0.
 
+
+      ***---
+       METTI-IN-TMP.
+           move mto-data-ordine to tko-data.
+           move mto-chiave      to tko-chiave-pri.
+           write tko-rec.
+           set trovato to true.
+       
+      ***---
+       TMP-TO-GRID.
+           move low-value to tko-rec.
+           start tmp-k-ord key >= tko-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read tmp-k-ord next at end exit perform end-read
+                    move tko-chiave-pri to mto-chiave
+                    read mtordini no lock
+                    perform METTI-IN-GRIGLIA
+                 end-perform
+           end-start.
 
       ***---
        METTI-IN-GRIGLIA.
@@ -4078,8 +4151,7 @@ LUBEXX     move mto-data-ordine(7:2) to col-data(1:2)
 
            modify gd-ordini(riga), row-color = como-colore.
 
-           modify gd-ordini(riga, 1) hidden-data = mto-stato-ordine.
-           set trovato to true.
+           modify gd-ordini(riga, 1) hidden-data = mto-stato-ordine. 
 
       ***---
        VALIDA-RECORD.
@@ -4765,8 +4837,8 @@ PROP_DOCU_RULER_EBL=0
 PROP_DOCU_GRID_EBL=0
 PROP_DOCU_GRID=20
 PROP_DOCU_ALIGN=0
-REL_SYM_SIZE=28
-REL_SYM_INFO_L=4
+REL_SYM_SIZE=34
+REL_SYM_INFO_L=5
 REL_SYM_INFO_X0=2301
 REL_SYM_INFO_Y0=1908663162
 REL_SYM_INFO_X1=2301
@@ -4775,6 +4847,8 @@ REL_SYM_INFO_X2=2301
 REL_SYM_INFO_Y2=1459683204
 REL_SYM_INFO_X3=2301
 REL_SYM_INFO_Y3=2020738029
+REL_SYM_INFO_X4=2301
+REL_SYM_INFO_Y4=1934911565
 
 [DRAW_BASESYMBOL_2301_1908663162]
 OBJ_NAME=2301
@@ -4968,6 +5042,54 @@ PROP_TRACK_COLOR=12632256
 REL_SYM_SIZE=4
 REL_SYM_INFO_L=0
 
+[DRAW_BASESYMBOL_2301_1934911565]
+OBJ_NAME=2301
+OBJ_ID=1934911565
+KIND=1
+{{@LABEL_2301_1934911565
+tmp-k-ord
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=600
+TOP=313
+RIGHT=1000
+BOTTOM=535
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
 [DMD_DOCUMENT_0_1760106106]
 OBJ_NAME=0
 OBJ_ID=1760106106
@@ -5098,6 +5220,37 @@ DSN_INFO_END_VALUE=
 DSN_INFO_PRIMARY=1
 DSN_INFO_OPEN=1
 DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1934911565]
+OBJ_NAME=0
+OBJ_ID=1934911565
+REL_M_OBJ_ID=0
+ENTITY=tmp-k-ord
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=2
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tko-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1934911565
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
 DSN_INFO_EXCLUSIVE=0
 DSN_INFO_IS_LOGICAL=0
 DSN_INFO_LOGICAL_FDNAME=
