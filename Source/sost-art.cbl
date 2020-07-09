@@ -73,7 +73,7 @@
            copy "link-wprogmag.def".
            copy "link-find-progr.def".
            copy "imposte.def".
-           copy "link-mail-sost-art.def".
+      *****     copy "link-mail-sost-art.def".
            copy "trova-parametro.def". 
            
        01  filler           pic 9.
@@ -129,6 +129,7 @@
        77  como-articolo      pic 9(6).
        77  master-articolo    pic 9(6).
        77  idx                pic 9(5).
+       77  idx2               pic 9(5).
        77  idx-orig           pic s9(5).
        77  idx-dest           pic 9(5).
        77  resto              pic 9(3).
@@ -173,6 +174,9 @@
            88 tutto-ok       value "OK".
            88 errori         value "ER".
 
+       01  catena-articoli.
+           03 el-articolo    pic 9(6) occurs 1000.
+
        01  filler            pic 9 value 0.
            88 RecLocked      value 1 false 0.
 
@@ -193,12 +197,10 @@
            88 GdoInUso       value "S". 
            88 GdoNonInUso    value " ". 
 
-       01  filler            pic 9.
-           88 si-mail        value 1 false zero.
-       01  filler            pic 9.
-           88 invia-mail     value 1 false zero.
-       01  filler            pic 9.
-           88 primo-giro-ultimo value 1 false zero.
+      ***** 01  filler            pic 9.
+      *****     88 si-mail        value 1 false zero.
+      ***** 01  filler            pic 9.
+      *****     88 invia-mail     value 1 false zero.
 
        77  como-data         pic 9(8).
        77  como-ora          pic 9(8).
@@ -669,25 +671,25 @@
                    read ttipocli no lock invalid continue end-read
               end-read
 
-              accept sost-articoli from environment "SOST_ARTICOLI"
-              evaluate sost-articoli
-              when "1"
-                   move cli-tipo to tcl-codice
-                   read ttipocli no lock
-                   if tcl-mail-comm not = space
-                      set si-mail to true
-                   else
-                      set si-mail to false
-                   end-if
-              when "2"
-                   if cli-email not = spaces
-                      set si-mail to true
-                   else
-                      set si-mail to false
-                   end-if
-              when other
-                   set si-mail to false
-              end-evaluate
+      *****        accept sost-articoli from environment "SOST_ARTICOLI"
+      *****        evaluate sost-articoli
+      *****        when "1"
+      *****             move cli-tipo to tcl-codice
+      *****             read ttipocli no lock
+      *****             if tcl-mail-comm not = space
+      *****                set si-mail to true
+      *****             else
+      *****                set si-mail to false
+      *****             end-if
+      *****        when "2"
+      *****             if cli-email not = spaces
+      *****                set si-mail to true
+      *****             else
+      *****                set si-mail to false
+      *****             end-if
+      *****        when other
+      *****             set si-mail to false
+      *****        end-evaluate
 
               move mto-causale to tca-codice
               read tcaumag no lock
@@ -819,20 +821,20 @@
 
       *    Luciano
       *****     if si-mail
-              accept  path-tmp-sost-art from environment "PATH_ST"
-              inspect path-tmp-sost-art 
-                                replacing trailing space by low-value
-              string path-tmp-sost-art delimited by low-value
-                     "Sostituzione_articoli_"  delimited by size
-                     como-data                 delimited by size
-                     "_"                       delimited by size
-                     como-ora                  delimited by size
-                     into path-tmp-sost-art
-              inspect path-tmp-sost-art 
-                                replacing trailing low-value by space 
-              open output tmp-sost-art
-              close       tmp-sost-art
-              open i-o    tmp-sost-art
+      *****        accept  path-tmp-sost-art from environment "PATH_ST"
+      *****        inspect path-tmp-sost-art 
+      *****                          replacing trailing space by low-value
+      *****        string path-tmp-sost-art delimited by low-value
+      *****               "Sostituzione_articoli_"  delimited by size
+      *****               como-data                 delimited by size
+      *****               "_"                       delimited by size
+      *****               como-ora                  delimited by size
+      *****               into path-tmp-sost-art
+      *****        inspect path-tmp-sost-art 
+      *****                          replacing trailing low-value by space 
+      *****        open output tmp-sost-art
+      *****        close       tmp-sost-art
+      *****        open i-o    tmp-sost-art
       *****     end-if
       *    Luciano
 
@@ -1020,56 +1022,47 @@
            end-start.
 
       *    Luciano
-           if si-mail
-              if invia-mail
-                 perform MAIL-SOST-ART
-              end-if
-           end-if.  
-           close       tmp-sost-art.
-           if status-tmp-sost-art = "00"
-              delete file tmp-sost-art
-           end-if.
+      *****     if si-mail
+      *****        if invia-mail
+      *****           perform MAIL-SOST-ART
+      *****        end-if
+      *****     end-if.  
+      *****     close       tmp-sost-art.
+      *****     if status-tmp-sost-art = "00"
+      *****        delete file tmp-sost-art
+      *****     end-if.
       *    Luciano
 
       ***--- 
        ESAURIMENTO-SCORTA.
-           move mro-cod-articolo to master-articolo.
-           set primo-giro-ultimo to true.
-           perform varying idx from 0 by 1 
-                     until idx > 1000 
-              if qta <= 0
+           |0107: modifico la catena in base alle nuove specifiche, 
+           |ossia che il primo e l'ultimo devono essere l'articolo stesso
+           initialize catena-articoli replacing numeric data by zeroes.
+           move mro-cod-articolo to el-articolo(1) master-articolo.
+           move 2 to idx2.
+           if cat-codice not = mro-cod-articolo
+              move cat-codice to el-articolo(2)
+           end-if.
+           perform varying idx from 1 by 1 
+                     until idx > 1000
+              if cat-collegato(idx) = 0
                  exit perform
               end-if
-              move 0 to ultimo-disponibile
-              |01072020: L'ultimo dev'essere quello inserito
-              if not primo-giro-ultimo
-                 move master-articolo 
-                   to ultimo-disponibile como-articolo
-              else
-                 |01072020: Provo prima il codice inserito nel master
-                 if idx = 0
-                    move mro-cod-articolo to como-articolo
-                 else
-                    if idx = 1
-                       move cat-codice to como-articolo
-                    else
-                       if cat-collegato(idx - 1) = 0
-                          exit perform
-                       end-if
-                       move cat-collegato(idx - 1) to como-articolo
-                    end-if
-                 end-if
-              end-if         
-              |01072020: L'ultimo dev'essere quello inserito
-              move como-articolo to art-codice
-              if ultimo-disponibile not = master-articolo
-                 if primo-giro-ultimo
-                    if como-articolo = ultimo-disponibile
-                       set primo-giro-ultimo to false
-                       move master-articolo to ultimo-disponibile
-                    end-if
-                 end-if
+              if cat-collegato(idx) not = master-articolo
+                 add 1 to idx2
+                 move cat-collegato(idx) to el-articolo(idx2)
               end-if
+           end-perform.
+           add 1 to idx2.
+           move master-articolo to el-articolo(idx2) ultimo-disponibile.
+
+           move mro-cod-articolo to master-articolo.
+           perform varying idx from 1 by 1 
+                     until idx > idx2
+              if qta <= 0
+                 exit perform
+              end-if                                      
+              move el-articolo(idx) to como-articolo
 
               read articoli no lock
               if art-bloccato
@@ -1181,7 +1174,7 @@
                     end-perform
 
                     if giacenza < QtaImballiOrdine
-                       move 0 to prg-giacenza
+                       move 0 to giacenza
                     end-if
 
                     if sost-cod-articolo = mro-prg-cod-articolo
@@ -1191,7 +1184,7 @@
                     compute disponibilita = 
                             giacenza - impegnato - giac-utile
                     |Se sono sull'ultimo assegno la qta restante
-                    if como-articolo = ultimo-disponibile
+                    if como-articolo = ultimo-disponibile and idx > 1
                        move qta to disponibilita giacenza
                     end-if
                     if disponibilita > 0 and giacenza > 0
@@ -1213,7 +1206,8 @@
                              add 1 to imballi
                           end-if
                        else
-                          if como-articolo = ultimo-disponibile
+                          if como-articolo = ultimo-disponibile and 
+                             idx > 1
                              move QtaImballiOrdine to disponibilita
                              move 1                to imballi
                           end-if
@@ -1225,7 +1219,7 @@
                           if como-articolo not = init-cod-articolo
                              perform APPLICA-SOSTITUZIONE
                           else
-                             move disponibilita to save-qta
+                             add disponibilita to save-qta
                           end-if
                        end-if
                     end-if
@@ -1346,32 +1340,32 @@
 
       ***---
        APPLICA-SOSTITUZIONE.
-           if si-mail
-              move mro-cod-articolo   to tmp-sar-codice-orig
-                                         art-codice
-              read articoli no lock
-                   invalid continue   
-              end-read
-              move mro-prg-tipo-imballo  to tmp-sar-imb-orig
-              move mro-des-imballo       to tmp-sar-descr-imb-orig
-      *        move mro-qta-imballi       to tmp-sar-qta-imb-orig
-
-              if art-codice-ean-1     not = 0
-                 move art-codice-ean-1   to tmp-sar-ean-orig
-              end-if
-              if art-codice-ean-2     not = 0
-                 move art-codice-ean-2   to tmp-sar-ean-orig
-              end-if
-              if art-codice-ean-3     not = 0
-                 move art-codice-ean-3   to tmp-sar-ean-orig
-              end-if
-              if art-codice-ean-4     not = 0
-                 move art-codice-ean-4   to tmp-sar-ean-orig
-              end-if
-              if art-codice-ean-5     not = 0
-                 move art-codice-ean-5   to tmp-sar-ean-orig
-              end-if
-           end-if.
+      *****     if si-mail
+      *****        move mro-cod-articolo   to tmp-sar-codice-orig
+      *****                                   art-codice
+      *****        read articoli no lock
+      *****             invalid continue   
+      *****        end-read
+      *****        move mro-prg-tipo-imballo  to tmp-sar-imb-orig
+      *****        move mro-des-imballo       to tmp-sar-descr-imb-orig
+      ******        move mro-qta-imballi       to tmp-sar-qta-imb-orig
+      *****
+      *****        if art-codice-ean-1     not = 0
+      *****           move art-codice-ean-1   to tmp-sar-ean-orig
+      *****        end-if
+      *****        if art-codice-ean-2     not = 0
+      *****           move art-codice-ean-2   to tmp-sar-ean-orig
+      *****        end-if
+      *****        if art-codice-ean-3     not = 0
+      *****           move art-codice-ean-3   to tmp-sar-ean-orig
+      *****        end-if
+      *****        if art-codice-ean-4     not = 0
+      *****           move art-codice-ean-4   to tmp-sar-ean-orig
+      *****        end-if
+      *****        if art-codice-ean-5     not = 0
+      *****           move art-codice-ean-5   to tmp-sar-ean-orig
+      *****        end-if
+      *****     end-if.
 
            initialize fp-linkage.
            move mto-chiave to fp-chiave.
@@ -1474,81 +1468,81 @@
                                            
            perform AGGIUNGI-IMPEGNATO.     
 
-           if si-mail
-              move mro-cod-articolo   to tmp-sar-codice-dest
-                                         art-codice
-              read articoli no lock
-                   invalid continue
-              end-read                     
-              move mro-prg-tipo-imballo  to tmp-sar-imb-dest
-              move mro-des-imballo       to tmp-sar-descr-imb-dest
-      *        move mro-qta-imballi       to tmp-sar-qta-imb-dest
-      *        move mro-qta               to tmp-sar-qta-imb-dest
-
-              if art-codice-ean-1     not = zero
-                 move art-codice-ean-1   to tmp-sar-ean-dest
-              end-if
-              if art-codice-ean-2     not = zero
-                 move art-codice-ean-2   to tmp-sar-ean-dest
-              end-if
-              if art-codice-ean-3     not = zero
-                 move art-codice-ean-3   to tmp-sar-ean-dest
-              end-if
-              if art-codice-ean-4     not = zero
-                 move art-codice-ean-4   to tmp-sar-ean-dest
-              end-if
-              if art-codice-ean-5     not = zero
-                 move art-codice-ean-5   to tmp-sar-ean-dest
-              end-if                                           
-
-              if tmp-sar-orig not = tmp-sar-dest
-                 read TMP-SOST-ART
-                    invalid move 0 to tmp-sar-qta
-                 end-read
-                 add mro-qta       to tmp-sar-qta
-
-                 if not invia-mail                 
-                    move tmp-sar-codice-orig to como-articolo
-                    perform TROVA-PRINCIPALE
-                    if record-ok
-                       move 0 to idx-orig idx-dest
-                       if tmp-sar-codice-orig = cat-codice
-                          move -1 to idx-orig
-                       end-if
-                       perform varying idx from 1 by 1 
-                                 until idx > 1000
-                          if cat-collegato(idx) = tmp-sar-codice-orig
-                             move idx to idx-orig
-                          end-if
-                          if cat-collegato(idx) = tmp-sar-codice-dest
-                             move idx to idx-dest
-                          end-if
-                          if idx-orig not = 0 and idx-dest not = 0
-                             exit perform
-                          end-if
-                       end-perform
-                    end-if
-                    if idx-orig < idx-dest
-                       set invia-mail to true
-                    end-if
-                 end-if
-
-                 write tmp-sar-rec
-                       invalid
-                       rewrite tmp-sar-rec
-                               invalid continue
-                       end-rewrite
-      *              not invalid
-      *                 set invia-mail to true                       
-                 end-write
-      *           write tmp-sar-rec
-      *              invalid
-      *                 continue
-      *              not invalid
-      *                 set invia-mail to true                       
-      *           end-write
-              end-if
-           end-if.
+      *****     if si-mail
+      *****        move mro-cod-articolo   to tmp-sar-codice-dest
+      *****                                   art-codice
+      *****        read articoli no lock
+      *****             invalid continue
+      *****        end-read                     
+      *****        move mro-prg-tipo-imballo  to tmp-sar-imb-dest
+      *****        move mro-des-imballo       to tmp-sar-descr-imb-dest
+      ******        move mro-qta-imballi       to tmp-sar-qta-imb-dest
+      ******        move mro-qta               to tmp-sar-qta-imb-dest
+      *****
+      *****        if art-codice-ean-1     not = zero
+      *****           move art-codice-ean-1   to tmp-sar-ean-dest
+      *****        end-if
+      *****        if art-codice-ean-2     not = zero
+      *****           move art-codice-ean-2   to tmp-sar-ean-dest
+      *****        end-if
+      *****        if art-codice-ean-3     not = zero
+      *****           move art-codice-ean-3   to tmp-sar-ean-dest
+      *****        end-if
+      *****        if art-codice-ean-4     not = zero
+      *****           move art-codice-ean-4   to tmp-sar-ean-dest
+      *****        end-if
+      *****        if art-codice-ean-5     not = zero
+      *****           move art-codice-ean-5   to tmp-sar-ean-dest
+      *****        end-if                                           
+      *****
+      *****        if tmp-sar-orig not = tmp-sar-dest
+      *****           read TMP-SOST-ART
+      *****              invalid move 0 to tmp-sar-qta
+      *****           end-read
+      *****           add mro-qta       to tmp-sar-qta
+      *****
+      *****           if not invia-mail                 
+      *****              move tmp-sar-codice-orig to como-articolo
+      *****              perform TROVA-PRINCIPALE
+      *****              if record-ok
+      *****                 move 0 to idx-orig idx-dest
+      *****                 if tmp-sar-codice-orig = cat-codice
+      *****                    move -1 to idx-orig
+      *****                 end-if
+      *****                 perform varying idx from 1 by 1 
+      *****                           until idx > 1000
+      *****                    if cat-collegato(idx) = tmp-sar-codice-orig
+      *****                       move idx to idx-orig
+      *****                    end-if
+      *****                    if cat-collegato(idx) = tmp-sar-codice-dest
+      *****                       move idx to idx-dest
+      *****                    end-if
+      *****                    if idx-orig not = 0 and idx-dest not = 0
+      *****                       exit perform
+      *****                    end-if
+      *****                 end-perform
+      *****              end-if
+      *****              if idx-orig < idx-dest
+      *****                 set invia-mail to true
+      *****              end-if
+      *****           end-if
+      *****
+      *****           write tmp-sar-rec
+      *****                 invalid
+      *****                 rewrite tmp-sar-rec
+      *****                         invalid continue
+      *****                 end-rewrite
+      ******              not invalid
+      ******                 set invia-mail to true                       
+      *****           end-write
+      ******           write tmp-sar-rec
+      ******              invalid
+      ******                 continue
+      ******              not invalid
+      ******                 set invia-mail to true                       
+      ******           end-write
+      *****        end-if
+      *****     end-if.
 
       ***---
        STORNA-IMPEGNATO.
@@ -1605,17 +1599,17 @@
            end-if.
 
       ***---
-       MAIL-SOST-ART.
-           move mto-chiave         to msa-mto-chiave.
-           move path-tmp-sost-art  to msa-path-tmp
-
-           if RichiamoSchedulato
-              move "INVIO MAIL IN CORSO..." to como-riga
-              perform SCRIVI-RIGA-LOG
-           end-if.
-
-           call   "mail-sost-art" using mail-sost-art-linkage.
-           cancel "mail-sost-art".
+      ***** MAIL-SOST-ART.
+      *****     move mto-chiave         to msa-mto-chiave.
+      *****     move path-tmp-sost-art  to msa-path-tmp
+      *****
+      *****     if RichiamoSchedulato
+      *****        move "INVIO MAIL IN CORSO..." to como-riga
+      *****        perform SCRIVI-RIGA-LOG
+      *****     end-if.
+      *****
+      *****     call   "mail-sost-art" using mail-sost-art-linkage.
+      *****     cancel "mail-sost-art".
 
       ***---
        CLOSE-FILES.

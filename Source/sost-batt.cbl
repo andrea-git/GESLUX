@@ -127,6 +127,7 @@
        77  como-articolo      pic 9(6).
        77  master-articolo    pic 9(6).
        77  idx                pic 9(5).
+       77  idx2               pic 9(5).
        77  idx-orig           pic s9(5).
        77  idx-dest           pic 9(5).
        77  resto              pic 9(3).
@@ -162,7 +163,10 @@
          05 save-testa.
            10 save-anno      pic 9(4).
            10 save-numero    pic 9(8).
-         05 save-riga        pic 9(8).
+         05 save-riga        pic 9(8).   
+         
+       01  catena-articoli.
+           03 el-articolo    pic 9(6) occurs 1000.
 
        01  filler            pic 9.
            88 riga-omaggio   value 1, false 0.
@@ -189,9 +193,7 @@
 
        01 GdoInUsoFlag       pic x.
            88 GdoInUso       value "S". 
-           88 GdoNonInUso    value " ". 
-       01  filler            pic 9.
-           88 primo-giro-ultimo value 1 false zero.
+           88 GdoNonInUso    value " ".                  
 
        77  como-data         pic 9(8).
        77  como-ora          pic 9(8). 
@@ -926,44 +928,35 @@
            end-start.
 
       ***--- 
-       ESAURIMENTO-SCORTA.
-           move mro-cod-articolo to master-articolo.
-           set primo-giro-ultimo to true.
-           perform varying idx from 0 by 1 
-                     until idx > 1000 
-              if qta <= 0
+       ESAURIMENTO-SCORTA.      
+           |0107: modifico la catena in base alle nuove specifiche, 
+           |ossia che il primo e l'ultimo devono essere l'articolo stesso
+           initialize catena-articoli replacing numeric data by zeroes.
+           move mro-cod-articolo to el-articolo(1) master-articolo.
+           move 2 to idx2.
+           if bts-codice not = mro-cod-articolo
+              move bts-codice to el-articolo(2)
+           end-if.
+           perform varying idx from 1 by 1 
+                     until idx > 1000
+              if bts-collegato(idx) = 0
                  exit perform
               end-if
-              move 0 to ultimo-disponibile
-              |01072020: L'ultimo dev'essere quello inserito
-              if not primo-giro-ultimo
-                 move master-articolo 
-                   to ultimo-disponibile como-articolo
-              else
-                 |01072020: Provo prima il codice inserito nel master
-                 if idx = 0
-                    move mro-cod-articolo to como-articolo
-                 else
-                    if idx = 1
-                       move bts-codice to como-articolo
-                    else
-                       if bts-collegato(idx - 1) = 0
-                          exit perform
-                       end-if
-                       move bts-collegato(idx - 1) to como-articolo
-                    end-if
-                 end-if
-              end-if         
-              |01072020: L'ultimo dev'essere quello inserito
-              move como-articolo to art-codice
-              if ultimo-disponibile not = master-articolo
-                 if primo-giro-ultimo
-                    if como-articolo = ultimo-disponibile
-                       set primo-giro-ultimo to false
-                       move master-articolo to ultimo-disponibile
-                    end-if
-                 end-if
+              if bts-collegato(idx) not = master-articolo
+                 add 1 to idx2
+                 move bts-collegato(idx) to el-articolo(idx2)
               end-if
+           end-perform.
+           add 1 to idx2.
+           move master-articolo to el-articolo(idx2) ultimo-disponibile.
+
+           move mro-cod-articolo to master-articolo.
+           perform varying idx from 1 by 1 
+                     until idx > idx2
+              if qta <= 0
+                 exit perform
+              end-if  
+              move el-articolo(idx) to como-articolo
 
               read articoli no lock
               if art-bloccato
@@ -1075,7 +1068,7 @@
                     end-perform
 
                     if giacenza < QtaImballiOrdine
-                       move 0 to prg-giacenza
+                       move 0 to giacenza
                     end-if
 
                     if sost-cod-articolo = mro-prg-cod-articolo
@@ -1085,7 +1078,7 @@
                     compute disponibilita = 
                             giacenza - impegnato - giac-utile
                     |Se sono sull'ultimo assegno la qta restante
-                    if como-articolo = ultimo-disponibile
+                    if como-articolo = ultimo-disponibile and idx > 1
                        move qta to disponibilita giacenza
                     end-if
                     if disponibilita > 0 and giacenza > 0
@@ -1107,7 +1100,8 @@
                              add 1 to imballi
                           end-if
                        else
-                          if como-articolo = ultimo-disponibile
+                          if como-articolo = ultimo-disponibile and 
+                             idx > 1
                              move QtaImballiOrdine to disponibilita
                              move 1                to imballi
                           end-if
@@ -1119,7 +1113,7 @@
                           if como-articolo not = init-cod-articolo
                              perform APPLICA-SOSTITUZIONE
                           else
-                             move disponibilita to save-qta
+                             add disponibilita to save-qta
                           end-if
                        end-if
                     end-if
