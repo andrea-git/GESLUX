@@ -931,7 +931,7 @@ LUBEXX***  scarrellamento fisso iniziale della carta
                  if tutto-ok
                     perform ELABORAZIONE
                     |||STATO ORDINE XXX
-                    if stbolle-stampa
+                    if stbolle-giro = 1
                        perform AGGIORNA-MASTER
                     end-if
                     |||XXX                    
@@ -1590,11 +1590,13 @@ LABLAB                             end-if
                                             if stbolle-giro = 1
                                                move " " to st-dest 
                                                move "X" to st-vet 
-                                               move " " to st-mit
-                                               perform STAMPA-DATI    
+                                               move " " to st-mit   
+                                               perform STAMPA-DATI
+                                               set stbolle-ristampa 
+                                                to true
                                                move " " to st-vet 
                                                move " " to st-mit
-                                               move "X" to st-dest
+                                               move "X" to st-dest   
                                                perform STAMPA-DATI
                                             else                      
                                                move " " to st-vet
@@ -1628,8 +1630,9 @@ LABLAB                             end-if
                                 if stbolle-giro = 1
                                    move " " to st-dest      
                                    move "X" to st-vet   
-                                   move " " to st-mit
+                                   move " " to st-mit 
                                    perform STAMPA-DATI
+                                   set stbolle-ristampa to true
                                    move " " to st-vet
                                    move "X" to st-dest  
                                    move " " to st-mit
@@ -2968,11 +2971,12 @@ BLISTR        inspect st-imb replacing trailing low-value by spaces
            if stbolle-giro = 1
               move " " to st-dest 
               move "X" to st-vet 
-              move " " to st-mit
-              perform STAMPA-DATI    
+              move " " to st-mit 
+              perform STAMPA-DATI
+              set stbolle-ristampa to true    
               move " " to st-vet 
               move " " to st-mit
-              move "X" to st-dest
+              move "X" to st-dest   
               perform STAMPA-DATI
            else                      
               move " " to st-vet
@@ -3005,8 +3009,9 @@ BLISTR        inspect st-imb replacing trailing low-value by spaces
                    if stbolle-giro = 1
                       move " " to st-dest 
                       move "X" to st-vet 
-                      move " " to st-mit
-                      perform STAMPA-DATI    
+                      move " " to st-mit 
+                      perform STAMPA-DATI
+                      set stbolle-ristampa to true    
                       move " " to st-vet 
                       move " " to st-mit
                       move "X" to st-dest
