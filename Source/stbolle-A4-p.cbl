@@ -174,6 +174,9 @@
            
        01  filler             pic 9 value 0.
          88 ControlloCausali  value 1, false 0.
+                                            
+       01  filler             pic 9 value 0.
+         88 gia-fatto-progmag value 1, false 0.
            
        77  eva-anno                pic 9(4) value 0.
        77  eva-da                  pic 9(8) value 0.
@@ -2624,6 +2627,8 @@ OMAGGI        end-if
 
       ***---
        AGGIORNA-PROGMAG.
+           if gia-fatto-progmag exit paragraph end-if.
+           set gia-fatto-progmag to true.
            if tca-no-movim-giac and
               tca-no-movim-imp  and
               tca-no-movim-ord  and
