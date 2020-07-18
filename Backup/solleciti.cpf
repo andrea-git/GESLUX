@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=bprepb-Ev-Before-Program
 AFTER_PROGRAM=stdoc-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E37C84857-199-1692828384
+PROGRAM_UNIQUE_CODE=TOTEM-7E4711122059-965-1803527517
 
 {{@DESCRIPTION:
 
@@ -10828,6 +10828,9 @@ BEGIN-TEXT
                     read tvettori no lock
                          invalid 
                          move spaces    to sol-vett of tmp-sol
+                         if vet-codice = 0
+                            move "DIR" to sol-vett of tmp-sol
+                         end-if
                          move spaces    to sol-vet-sigla-pod of tmp-sol
                      not invalid 
                          move vet-sigla to sol-vett of tmp-sol

@@ -86,6 +86,9 @@
          05 filler               pic x.
          05 filler               pic x(8) value "C.A.P.: ".
          05 r-cap                pic x(5).
+         05 filler               pic x(5).
+         05 filler               pic x(7) value "Prov.: ".
+         05 r-prov               pic x(5).
           
        01  riga-4.
          05 filler               pic x(8).
@@ -419,6 +422,9 @@
                   separatore    delimited size
                   "C.A.P. "     delimited size
                   cli-cap       delimited size
+                  separatore    delimited size
+                  "Prov. "      delimited size
+                  cli-prov      delimited size
                   into line-riga
            end-string.
            write line-riga.
@@ -483,6 +489,7 @@
 
            move cli-localita    to r-localita.
            move cli-cap         to r-cap.
+           move cli-prov        to r-prov.
            write line-riga    from riga-3.
            add 1 to WrittenRows.
 

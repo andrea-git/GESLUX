@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 7 luglio 2020 15:52:32.
+       DATE-WRITTEN.        venerdì 17 luglio 2020 10:42:34.
        REMARKS.
       *{TOTEM}END
 
@@ -169,6 +169,8 @@
                   USAGE IS COMP-4
                   VALUE IS 0.
        77 mult PIC  9v99.
+       77 tot-righe-edi    PIC  9(10).
+       77 riga-edi         PIC  9(10).
        77 iva-std          PIC  x(3).
        77 link-path        PIC  x(512).
        77 fido-tmp         PIC  s9(13)v99.
@@ -19138,12 +19140,12 @@ LABLAB        if tcl-si-recupero and
            move 0 to idx-ordini primo-numero ultimo-numero.
                          
            move low-value to emto-rec.              
-           inquire gd-ordini, last-row in tot-righe.
+           inquire gd-ordini, last-row in tot-righe-edi.
 
-           perform varying riga from 2 by 1 
-                     until riga > tot-righe
-              inquire gd-ordini(riga, 2), cell-data in emto-anno
-              inquire gd-ordini(riga, 3), cell-data in emto-numero
+           perform varying riga-edi from 2 by 1 
+                     until riga-edi > tot-righe-edi
+              inquire gd-ordini(riga-edi, 2), cell-data in emto-anno
+              inquire gd-ordini(riga-edi, 3), cell-data in emto-numero
 
               if not RichiamoBatch
                  perform COUNTER-VIDEO
@@ -19151,12 +19153,12 @@ LABLAB        if tcl-si-recupero and
 
               read EDI-mtordini no lock
                    invalid        
-                   subtract 1 from riga
-                   display message "ERR: RIGA(", riga, "): ORDINE NOT FO
-      -    "UND"
+                   subtract 1 from riga-edi
+                   display message "ERR: RIGA(", riga-edi, "): ORDINE NO
+      -    "T FOUND"
                              title tit-err
                               icon 3
-                   add 1 to riga
+                   add 1 to riga-edi
                    exit perform
                not invalid
                    set tutto-ok to true
@@ -19169,12 +19171,12 @@ LABLAB        if tcl-si-recupero and
                    move emto-cod-cli to cli-codice
                    read clienti no lock
                         invalid
-                        subtract 1 from riga
-                        display message "ERR: RIGA(", riga, "): CLIENTE 
-      -    "NOT FOUND"
+                        subtract 1 from riga-edi
+                        display message "ERR: RIGA(", riga-edi, "): CLIE
+      -    "NTE NOT FOUND"
                                   title tit-err
                                    icon 3
-                        add 1 to riga
+                        add 1 to riga-edi
                     not invalid
                         perform varying idx from 1 by 1 
                                   until idx > 100
