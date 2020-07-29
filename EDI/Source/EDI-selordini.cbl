@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 17 luglio 2020 10:42:34.
+       DATE-WRITTEN.        mercoledì 29 luglio 2020 14:24:45.
        REMARKS.
       *{TOTEM}END
 
@@ -222,7 +222,7 @@
        77 StoreDesMagazzino            PIC  x(50).
        01 FILLER           PIC  9.
            88 ChiamaZoomProgressivo VALUE IS 1    WHEN SET TO FALSE  0. 
-       77 counter-edit     PIC  z.zzz.zzz.zz9.
+       77 counter-edit     PIC  z.zzz.zzz.zz9,99.
        01 tab-ordini.
            05 chiave-ordine
                       OCCURS 999 TIMES.
@@ -760,6 +760,7 @@
            88 Valid-STATUS-log-macrobatch VALUE IS "00" THRU "09". 
        77 STATUS-macrobatch            PIC  X(2).
            88 Valid-STATUS-macrobatch VALUE IS "00" THRU "09". 
+       77 tit-elab         PIC  X(30).
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -2737,17 +2738,17 @@
        05
            form3-La-1, 
            Label, 
-           COL 2,00, 
-           LINE 2,00,
+           COL 12,43, 
+           LINE 2,46,
            LINES 2,00 ,
-           SIZE 38,00 ,
+           SIZE 50,00 ,
            FONT IS Verdana12BI-Occidentale,
            ID IS 2,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            CENTER,
            TRANSPARENT,
-           TITLE "Caricamento ordini in corso...",
+           TITLE tit-elab,
            .
 
       * FORM
@@ -4143,7 +4144,7 @@
            form3-La-1a, 
            Label, 
            COL 17,86, 
-           LINE 2,00,
+           LINE 2,46,
            LINES 2,00 ,
            SIZE 38,00 ,
            COLOR IS 5,
@@ -13978,8 +13979,8 @@
 
        form3-Create-Win.
            Display Floating GRAPHICAL WINDOW
-              LINES 3,00,
-              SIZE 40,00,
+              LINES 5,00,
+              SIZE 73,00,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
               COLOR 65793,
@@ -15512,7 +15513,7 @@
 
        form-gen-Create-Win.
            Display Floating GRAPHICAL WINDOW
-              LINES 4,77,
+              LINES 5,00,
               SIZE 72,00,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
@@ -16521,8 +16522,16 @@
            open i-o    tmp-fido.
            modify gd-ordini, mass-update 1.
 
+           if not ControllaCliente
+              move "Caricamento ordini in corso..." to tit-elab
+           else
+              move "Aggiornamento ordini in corso..." to tit-elab
+           end-if.
+           display form3.
+
            perform until 1 = 2
               read EDI-mtordini next at end exit perform end-read
+              perform COUNTER-VIDEO 
               evaluate true
               when per-numero
                    if anno-to not = emto-anno
@@ -16690,6 +16699,7 @@ LUBEXX     move emto-data-ordine(7:2) to col-data(1:2)
                  read clienti no lock
 
                  set tutto-ok to true
+
                  perform CONTROLLA-FUORI-FIDO
    
                  move Sum to emto-Sum 
@@ -17926,6 +17936,7 @@ LUBEXX             cancel "calfido"
                    move saldo            to tfid-saldo
                    move effetti-rischio  to tfid-effetti-rischio
                    move ordini-in-essere to tfid-ordini-in-essere
+                   write tfid-rec end-write
                not invalid
                    move tfid-saldo            to saldo            
                    move tfid-effetti-rischio  to effetti-rischio  
@@ -18012,7 +18023,7 @@ LUBEXX                            icon 2
                  else
                     |Aggiorno il totale con solo quelli che possono attivarsi non con tutti
       *****              add Sum to tfid-Sum
-                    write tfid-rec invalid rewrite tfid-rec end-write
+                    rewrite tfid-rec
 LUBEXX           end-if
               else
 LUBEXX           if scoperto > tot-fido
@@ -18039,8 +18050,8 @@ LUBEXX                 else
 LUBEXX              end-if
                  else
                     |Aggiorno il totale con solo quelli che possono attivarsi non con tutti
-      *****              add Sum to tfid-Sum
-                    write tfid-rec invalid rewrite tfid-rec end-write
+      *****              add Sum to tfid-Sum            
+                    rewrite tfid-rec
 LUBEXX           end-if
               end-if
 LUBEXX     end-if.   

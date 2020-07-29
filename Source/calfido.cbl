@@ -483,7 +483,7 @@
            if batch-notturno = "S"
               move "APERTURA FILES" to como-riga
               perform SCRIVI-RIGA-LOG
-           end-if.
+           end-if.                                                   
            open input PAS PAR CLI G2 DOCES TBLPC TBLTR tordini rordini
                       tparamge tconvanno mtordini mrordini tivaese.
 
@@ -855,7 +855,7 @@
            move como-ora(5:2) to r-sec.
 
       ***---
-       CLOSE-FILES.
+       CLOSE-FILES.                  
            close PAS PAR TBLPC TBLTR DOCES CLI G2 CLZ tordini rordini
                  tparamge tconvanno mtordini mrordini tivaese.
            if batch-notturno = "S" 

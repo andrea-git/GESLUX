@@ -421,7 +421,6 @@
 
       ***---
        SCRIVI-RIGA-COMUNE.                     
-           perform COUNTER-VIDEO.
            move art-scorta to sco-codice.
            read tscorte no lock.
            move art-marca-prodotto to mar-codice.

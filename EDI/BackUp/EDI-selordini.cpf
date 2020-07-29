@@ -2,13 +2,12 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
-DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E47118189-378-1443916291
+PROGRAM_UNIQUE_CODE=TOTEM-7E471D122043-974-8014353
 
 {{@DESCRIPTION:
 
@@ -2819,8 +2818,8 @@ m_strFalse=0
 @}}
 [FDITEM223_WK]
 m_strName=counter-edit
-m_strRawPic=z.zzz.zzz.zz9
-m_strPic=z.zzz.zzz.zz9
+m_strRawPic=z.zzz.zzz.zz9,99
+m_strPic=z.zzz.zzz.zz9,99
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -6919,6 +6918,16 @@ m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM635_WK
 
 @}}
+[FDITEM636_WK]
+m_strName=tit-elab
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM636_WK
+
+@}}
 
 
 [LINKAGE_SECTION]
@@ -10063,7 +10072,7 @@ End
 Begin Screen form3
    PREFIX            = form3
    IMPORTED-SCREEN   = FALSE
-   LOCK-CONTROL      = FALSE
+   LOCK-CONTROL      = TRUE
    LEVEL             = 1
    (Name)            = form3
    Absolute Column   = 0
@@ -10088,7 +10097,7 @@ Begin Screen form3
    Height in Cells   = TRUE
    Help ID           = 0
    Label Offset      = 20
-   Lines             = 3,00
+   Lines             = 5,00
    Link To Thread    = TRUE
    Max Lines         = 0,00
    Max Size          = 0,00
@@ -10099,7 +10108,7 @@ Begin Screen form3
    Operation Mode    = Interactive Mode
    Resizable         = FALSE
    Scroll            = FALSE
-   Size              = 40,00
+   Size              = 73,00
    System Menu       = FALSE
    Title Bar         = FALSE
    Unit              = Cells
@@ -10112,15 +10121,15 @@ Begin Screen form3
    Wrap              = FALSE
    Event Procedure   = form3-Event-Proc
    Begin Label form3-La-1
-      SCREEN-COL        = 2,00
-      SCREEN-LINE       = 2,00
+      SCREEN-COL        = 12,43
+      SCREEN-LINE       = 2,46
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = form3-La-1
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 2,00
+      Column            = 12,43
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -10132,15 +10141,15 @@ Begin Screen form3
       ID                = 2
       Justification     = Center
       Label Offset      = 20
-      Line              = 2,00
+      Line              = 2,46
       Lines             = 2,00
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 38,00
+      Size              = 50,00
       Size Unit         = Default
       Tab Order         = 1
-      Title             = "Caricamento ordini in corso..."
+      Title Variable    = tit-elab
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -13654,7 +13663,7 @@ Begin Screen form-gen
    Height in Cells   = TRUE
    Help ID           = 0
    Label Offset      = 20
-   Lines             = 4,77
+   Lines             = 5,00
    Link To Thread    = TRUE
    Max Lines         = 0,00
    Max Size          = 0,00
@@ -13679,7 +13688,7 @@ Begin Screen form-gen
    Event Procedure   = form3-Event-Proc
    Begin Label form3-La-1a
       SCREEN-COL        = 17,86
-      SCREEN-LINE       = 2,00
+      SCREEN-LINE       = 2,46
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = form3-La-1a
@@ -13698,7 +13707,7 @@ Begin Screen form-gen
       ID                = 2
       Justification     = Center
       Label Offset      = 20
-      Line              = 2,00
+      Line              = 2,46
       Lines             = 2,00
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -15684,8 +15693,16 @@ BEGIN-TEXT
            open i-o    tmp-fido.
            modify gd-ordini, mass-update 1.
 
+           if not ControllaCliente
+              move "Caricamento ordini in corso..." to tit-elab
+           else
+              move "Aggiornamento ordini in corso..." to tit-elab
+           end-if.
+           display form3.
+
            perform until 1 = 2
               read EDI-mtordini next at end exit perform end-read
+              perform COUNTER-VIDEO 
               evaluate true
               when per-numero
                    if anno-to not = emto-anno
@@ -15853,6 +15870,7 @@ LUBEXX     move emto-data-ordine(7:2) to col-data(1:2)
                  read clienti no lock
 
                  set tutto-ok to true
+
                  perform CONTROLLA-FUORI-FIDO
    
                  move Sum to emto-Sum 
@@ -17095,6 +17113,7 @@ LUBEXX             cancel "calfido"
                    move saldo            to tfid-saldo
                    move effetti-rischio  to tfid-effetti-rischio
                    move ordini-in-essere to tfid-ordini-in-essere
+                   write tfid-rec end-write
                not invalid
                    move tfid-saldo            to saldo            
                    move tfid-effetti-rischio  to effetti-rischio  
@@ -17181,7 +17200,7 @@ LUBEXX                            icon 2
                  else
                     |Aggiorno il totale con solo quelli che possono attivarsi non con tutti
       *****              add Sum to tfid-Sum
-                    write tfid-rec invalid rewrite tfid-rec end-write
+                    rewrite tfid-rec
 LUBEXX           end-if
               else
 LUBEXX           if scoperto > tot-fido
@@ -17208,8 +17227,8 @@ LUBEXX                 else
 LUBEXX              end-if
                  else
                     |Aggiorno il totale con solo quelli che possono attivarsi non con tutti
-      *****              add Sum to tfid-Sum
-                    write tfid-rec invalid rewrite tfid-rec end-write
+      *****              add Sum to tfid-Sum            
+                    rewrite tfid-rec
 LUBEXX           end-if
               end-if
 LUBEXX     end-if.   
