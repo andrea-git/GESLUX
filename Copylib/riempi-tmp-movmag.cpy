@@ -563,6 +563,10 @@ LUBEXX     move rmo-peso             to tmp-mov-peso.
               read clienti no lock
                    invalid continue
                not invalid
+                   move cli-gdo  to gdo-codice
+                   read tgrupgdo invalid move spaces to gdo-intestazione
+                   end-read
+
                    |Il file è già stato riempito coi record attivi
                    inspect cli-ragsoc-1 replacing trailing spaces 
                                                         by low-value
@@ -699,10 +703,13 @@ LUBEXX             end-if
                  end-if
               end-if
 
-              move tmp-mov-colli         to r-colli
+              move tmp-mov-colli         to r-colli         
                                           
               move tmp-mov-age-codice    to r-age-codice
               move tmp-mov-age-ragsoc    to r-age-ragsoc
+                                          
+              move gdo-codice            to r-gdo-codice
+              move gdo-intestazione      to r-gdo-intestazione
 
               multiply como-numero by tmp-mov-qta giving como-numero
               move como-numero to r-tot
@@ -817,6 +824,10 @@ LUBEXX             end-if
                      "Agente"            delimited size
                      separatore          delimited size
                      "Ragione Sociale"   delimited size
+                     separatore          delimited size
+                     "Gruppo GDO"        delimited size
+                     separatore          delimited size
+                     "Descrizione"       delimited size
                      into line-riga
               end-string
            else
@@ -990,6 +1001,10 @@ LUBEXX             end-if
                      r-age-codice  delimited size
                      separatore    delimited size
                      r-age-ragsoc  delimited size
+                     separatore    delimited size
+                     r-gdo-codice  delimited size
+                     separatore    delimited size
+                     r-gdo-intestazione delimited size
                      into line-riga
               end-string
            else
