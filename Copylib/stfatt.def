@@ -140,8 +140,8 @@
            03 st-tor-data-ordine     pic x(8).
            03 st-tor-num-bolla       pic z(8).
            03 st-tor-data-bolla      pic X(8).
-           03 st-cli-age             pic X(11).
-           03 st-piva-codfis         pic x(16).
+           03 st-cli-age             pic X(17).
+           03 st-piva-codfis         pic x(14).
 
          02 st-riga-int-3.
            03 st-des-ragsoc-1        pic x(40).

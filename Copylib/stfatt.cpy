@@ -402,6 +402,13 @@
               call "C$JUSTIFY" using codice-ed, "L"
               move codice-ed      to st-cli-age(7:5)
            end-if.
+           inspect st-cli-age replacing trailing spaces by low-value.
+           string  st-cli-age delimited low-value
+                   "/"        delimited size   
+                   cli-tipo   delimited size
+              into st-cli-age
+           end-string.                                               
+           inspect st-cli-age replacing trailing low-value by spaces.
            call "C$JUSTIFY"  using st-cli-age, "C".
 
            if cli-fisica
