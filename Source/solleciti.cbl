@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          solleciti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 17 luglio 2020 14:59:55.
+       DATE-WRITTEN.        martedì 18 agosto 2020 16:24:55.
        REMARKS.
       *{TOTEM}END
 
@@ -372,7 +372,7 @@
            05 col-num          PIC  z(5).
            05 col-clides       PIC  x(40).
            05 col-localita     PIC  x(40).
-           05 col-ord-cli      PIC  x(10).
+           05 col-ord-cli      PIC  x(12).
            05 col-data-ord     PIC  x(10).
            05 col-stato        PIC  x(10).
            05 col-nr-e         PIC  z(8).
@@ -406,7 +406,7 @@
        01 cbo-num-e-buf    PIC  z(8).
        01 cbo-stato-buf    PIC  X(10).
        01 cbo-data-buf     PIC  x(10).
-       01 cbo-numord-buf   PIC  X(10).
+       01 cbo-numord-buf   PIC  X(12).
        01 cbo-loca-buf     PIC  X(40).
        01 cbo-clides-buf   PIC  X(40).
        01 cbo-num-buf      PIC  z(5).
@@ -422,7 +422,7 @@
        01 OLD-lab-num-e-buf            PIC  z(8).
        01 OLD-lab-stato-buf            PIC  X(10).
        01 OLD-lab-data-buf PIC  x(10).
-       01 OLD-lab-numord-buf           PIC  X(10).
+       01 OLD-lab-numord-buf           PIC  X(12).
        01 OLD-lab-loca-buf PIC  X(40).
        01 OLD-lab-clides-buf           PIC  X(40).
        01 OLD-lab-num-buf  PIC  z(5).
@@ -441,7 +441,7 @@
        77 lab-num-e-buf    PIC  z(8).
        77 lab-stato-buf    PIC  X(10).
        77 lab-data-buf     PIC  X(8).
-       77 lab-numord-buf   PIC  X(10).
+       77 lab-numord-buf   PIC  X(12).
        77 lab-loca-buf     PIC  X(40).
        77 lab-clides-buf   PIC  X(40).
        77 lab-num-buf      PIC  z(5).
@@ -588,9 +588,9 @@
        77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
        77 TMP-DataSet1-rordini-BUF     PIC X(667).
        77 TMP-DataSet1-tpromo-BUF     PIC X(263).
-       77 TMP-DataSet1-tmp-sol1-BUF     PIC X(440).
-       77 TMP-DataSet1-tmp-sol-BUF     PIC X(440).
-       77 TMP-DataSet1-tmp-sol2-BUF     PIC X(440).
+       77 TMP-DataSet1-tmp-sol1-BUF     PIC X(442).
+       77 TMP-DataSet1-tmp-sol-BUF     PIC X(442).
+       77 TMP-DataSet1-tmp-sol2-BUF     PIC X(442).
        77 TMP-DataSet1-tmp-ordf-art-BUF     PIC X(112).
        77 TMP-DataSet1-tordforn-BUF     PIC X(556).
        77 TMP-DataSet1-rordforn-BUF     PIC X(544).
@@ -1505,7 +1505,7 @@
        05
            Screen2-Fr-1, 
            Frame, 
-           COL 15,67, 
+           COL 21,83, 
            LINE 1,43,
            LINES 10,86 ,
            SIZE 182,50 ,
@@ -1522,7 +1522,7 @@
        05
            chk-reg, 
            Check-Box, 
-           COL 19,00, 
+           COL 25,16, 
            LINE 3,36,
            LINES 1,31 ,
            SIZE 2,50 ,
@@ -1542,7 +1542,7 @@
        05
            chk-il, 
            Check-Box, 
-           COL 19,00, 
+           COL 25,16, 
            LINE 5,00,
            LINES 1,31 ,
            SIZE 2,50 ,
@@ -1562,7 +1562,7 @@
        05
            chk-sp, 
            Check-Box, 
-           COL 19,00, 
+           COL 25,16, 
            LINE 6,64,
            LINES 1,31 ,
            SIZE 2,50 ,
@@ -1582,7 +1582,7 @@
        05
            chk-st, 
            Check-Box, 
-           COL 19,00, 
+           COL 25,16, 
            LINE 8,29,
            LINES 1,29 ,
            SIZE 2,50 ,
@@ -1602,7 +1602,7 @@
        05
            chk-chiuso, 
            Check-Box, 
-           COL 19,00, 
+           COL 25,16, 
            LINE 9,79,
            LINES 1,29 ,
            SIZE 2,50 ,
@@ -1622,7 +1622,7 @@
        05
            Screen1-La-2j, 
            Label, 
-           COL 22,34, 
+           COL 28,50, 
            LINE 3,14,
            LINES 1,31 ,
            SIZE 25,00 ,
@@ -1638,7 +1638,7 @@
        05
            Screen1-La-2bb, 
            Label, 
-           COL 22,34, 
+           COL 28,50, 
            LINE 4,79,
            LINES 1,31 ,
            SIZE 25,00 ,
@@ -1654,7 +1654,7 @@
        05
            Screen1-La-2cb, 
            Label, 
-           COL 22,34, 
+           COL 28,50, 
            LINE 6,43,
            LINES 1,31 ,
            SIZE 25,00 ,
@@ -1670,7 +1670,7 @@
        05
            Screen1-La-2da, 
            Label, 
-           COL 22,34, 
+           COL 28,50, 
            LINE 8,07,
            LINES 1,29 ,
            SIZE 25,00 ,
@@ -1686,7 +1686,7 @@
        05
            Screen1-La-2ga, 
            Label, 
-           COL 22,34, 
+           COL 28,50, 
            LINE 9,72,
            LINES 1,29 ,
            SIZE 26,00 ,
@@ -1702,7 +1702,7 @@
        05
            Bitmap-freccia-daaaaa, 
            Bitmap, 
-           COL 96,00, 
+           COL 102,16, 
            LINE 3,07,
            LINES 24,00 ,
            SIZE 28,00 ,
@@ -1717,7 +1717,7 @@
        05
            Screen3-La-1acaaa, 
            Label, 
-           COL 101,67, 
+           COL 107,83, 
            LINE 3,22,
            LINES 1,57 ,
            SIZE 7,00 ,
@@ -1735,7 +1735,7 @@
        05
            Bitmap-freccia-finoaaaa, 
            Bitmap, 
-           COL 109,84, 
+           COL 116,00, 
            LINE 3,07,
            LINES 24,00 ,
            SIZE 28,00 ,
@@ -1750,7 +1750,7 @@
        05
            lab-data-to, 
            Label, 
-           COL 116,34, 
+           COL 122,50, 
            LINE 3,22,
            LINES 1,57 ,
            SIZE 10,00 ,
@@ -1768,7 +1768,7 @@
        05
            lab-data-from, 
            Label, 
-           COL 84,67, 
+           COL 90,83, 
            LINE 3,22,
            LINES 1,57 ,
            SIZE 10,00 ,
@@ -1786,7 +1786,7 @@
        05
            lab-descr, 
            Label, 
-           COL 80,50, 
+           COL 86,66, 
            LINE 5,50,
            LINES 1,21 ,
            SIZE 50,00 ,
@@ -1804,7 +1804,7 @@
        05
            lab-descr2, 
            Label, 
-           COL 80,50, 
+           COL 86,66, 
            LINE 6,93,
            LINES 1,21 ,
            SIZE 50,00 ,
@@ -1822,7 +1822,7 @@
        05
            lab-descr3, 
            Label, 
-           COL 80,50, 
+           COL 86,66, 
            LINE 8,43,
            LINES 1,21 ,
            SIZE 50,00 ,
@@ -1840,7 +1840,7 @@
        05
            gd-art2, 
            Grid, 
-           COL 140,00, 
+           COL 146,16, 
            LINE 4,36,
            LINES 7,43 ,
            SIZE 56,00 ,
@@ -1872,7 +1872,7 @@
        05
            cbo-promo, 
            Combo-Box, 
-           COL 140,00, 
+           COL 146,16, 
            LINE 2,36,
            LINES 6,21 ,
            SIZE 56,00 ,
@@ -1894,7 +1894,7 @@
        05
            lab-descr4, 
            Label, 
-           COL 80,50, 
+           COL 86,66, 
            LINE 5,43,
            LINES 1,21 ,
            SIZE 50,00 ,
@@ -1912,7 +1912,7 @@
        05
            lab-descr5, 
            Label, 
-           COL 80,50, 
+           COL 86,66, 
            LINE 9,93,
            LINES 1,21 ,
            SIZE 50,00 ,
@@ -1931,16 +1931,16 @@
            gd, 
            Grid, 
            COL 1,00, 
-           LINE 15,14,
+           LINE 15,07,
            LINES 38,07 ,
-           SIZE 218,17 ,
+           SIZE 224,17 ,
            BOXED,
-           DATA-COLUMNS (1, 2, 7, 47, 87, 97, 107, 117, 125, 133, 141, 
-           149, 157, 165, 171, 201),
+           DATA-COLUMNS (1, 2, 7, 47, 87, 99, 109, 119, 127, 135, 143, 
+           151, 159, 167, 173, 203),
            ALIGNMENT ("U", "R", "U", "U", "R", "R", "C", "R", "C", "R", 
            "C", "R", "C", "C", "U", "C"),
            SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5),
-           DATA-TYPES ("X(1)", "9(4)", "X(40)", "X(40)", "X(10)", "X(10)
+           DATA-TYPES ("X(1)", "9(4)", "X(40)", "X(40)", "X(12)", "X(10)
       -    "", "X(10)", "9(8)", "X(10)", "9(8)", "X(10)", "X", "X", "X(6
       -    ")", "X(30)", "s9"),
            CURSOR-FRAME-WIDTH 2,
@@ -1953,7 +1953,7 @@
            WIDTH-IN-CELLS,
            RECORD-DATA rec-grid,
            TILED-HEADINGS,
-           VIRTUAL-WIDTH 215,
+           VIRTUAL-WIDTH 222,
            VPADDING 15,
            VSCROLL,
            EVENT PROCEDURE gd-Event-Proc,
@@ -2038,7 +2038,7 @@
            COL 108,83, 
            LINE 13,64,
            LINES 25,00 ,
-           SIZE 11,50 ,
+           SIZE 17,50 ,
            BOXED,
            COLOR IS 513,
            FONT IS Small-Font,
@@ -2059,7 +2059,7 @@
        05
            cbo-data, 
            Combo-Box, 
-           COL 119,83, 
+           COL 125,83, 
            LINE 13,64,
            LINES 25,00 ,
            SIZE 8,67 ,
@@ -2083,7 +2083,7 @@
        05
            cbo-stato, 
            Combo-Box, 
-           COL 128,00, 
+           COL 134,00, 
            LINE 13,64,
            LINES 25,00 ,
            SIZE 8,33 ,
@@ -2107,7 +2107,7 @@
        05
            cbo-num-e, 
            Combo-Box, 
-           COL 135,83, 
+           COL 141,83, 
            LINE 13,64,
            LINES 25,00 ,
            SIZE 7,50 ,
@@ -2131,7 +2131,7 @@
        05
            cbo-data-e, 
            Combo-Box, 
-           COL 142,83, 
+           COL 148,83, 
            LINE 13,64,
            LINES 25,00 ,
            SIZE 8,50 ,
@@ -2155,7 +2155,7 @@
        05
            cbo-num-b, 
            Combo-Box, 
-           COL 150,83, 
+           COL 156,83, 
            LINE 13,64,
            LINES 25,00 ,
            SIZE 7,50 ,
@@ -2179,7 +2179,7 @@
        05
            cbo-data-b, 
            Combo-Box, 
-           COL 157,83, 
+           COL 163,83, 
            LINE 13,64,
            LINES 25,00 ,
            SIZE 8,50 ,
@@ -2203,7 +2203,7 @@
        05
            cbo-num-f, 
            Combo-Box, 
-           COL 165,83, 
+           COL 171,83, 
            LINE 13,64,
            LINES 25,00 ,
            SIZE 7,50 ,
@@ -2227,7 +2227,7 @@
        05
            cbo-data-f, 
            Combo-Box, 
-           COL 172,83, 
+           COL 178,83, 
            LINE 13,64,
            LINES 25,00 ,
            SIZE 8,50 ,
@@ -2308,7 +2308,7 @@
            COL 108,83, 
            LINE 12,29,
            LINES 0,93 ,
-           SIZE 11,50 ,
+           SIZE 16,33 ,
            COLOR IS 2,
            FONT IS Arial8B-Occidentale,
            ID IS 46,
@@ -2323,7 +2323,7 @@
        05
            lab-data, 
            Label, 
-           COL 119,83, 
+           COL 125,83, 
            LINE 12,29,
            LINES 0,93 ,
            SIZE 7,17 ,
@@ -2341,7 +2341,7 @@
        05
            lab-stato, 
            Label, 
-           COL 128,00, 
+           COL 134,00, 
            LINE 12,29,
            LINES 0,93 ,
            SIZE 7,17 ,
@@ -2359,7 +2359,7 @@
        05
            lab-num-e, 
            Label, 
-           COL 135,83, 
+           COL 141,83, 
            LINE 12,29,
            LINES 0,93 ,
            SIZE 7,17 ,
@@ -2377,7 +2377,7 @@
        05
            lab-data-e, 
            Label, 
-           COL 142,83, 
+           COL 148,83, 
            LINE 12,29,
            LINES 0,93 ,
            SIZE 7,17 ,
@@ -2395,7 +2395,7 @@
        05
            lab-num-b, 
            Label, 
-           COL 150,83, 
+           COL 156,83, 
            LINE 12,29,
            LINES 0,93 ,
            SIZE 7,17 ,
@@ -2413,7 +2413,7 @@
        05
            lab-data-b, 
            Label, 
-           COL 157,83, 
+           COL 163,83, 
            LINE 12,29,
            LINES 0,93 ,
            SIZE 7,17 ,
@@ -2431,7 +2431,7 @@
        05
            lab-esito, 
            Label, 
-           COL 186,83, 
+           COL 192,83, 
            LINE 12,29,
            LINES 0,93 ,
            SIZE 7,17 ,
@@ -2449,7 +2449,7 @@
        05
            lab-vett, 
            Label, 
-           COL 180,83, 
+           COL 186,83, 
            LINE 12,29,
            LINES 0,93 ,
            SIZE 6,50 ,
@@ -2467,7 +2467,7 @@
        05
            lab-data-f, 
            Label, 
-           COL 172,83, 
+           COL 178,83, 
            LINE 12,29,
            LINES 0,93 ,
            SIZE 8,50 ,
@@ -2485,7 +2485,7 @@
        05
            lab-num-f, 
            Label, 
-           COL 165,83, 
+           COL 171,83, 
            LINE 12,29,
            LINES 0,93 ,
            SIZE 7,17 ,
@@ -2497,23 +2497,6 @@
            CENTER,
            TRANSPARENT,
            TITLE lab-num-f-buf,
-           .
-
-      * LABEL
-       05
-           Screen2-La-1, 
-           Label, 
-           COL 202,83, 
-           LINE 7,57,
-           LINES 1,07 ,
-           SIZE 3,83 ,
-           FONT IS Arial8BU-Occidentale,
-           ID IS 35,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Label",
-           VISIBLE 0,
            .
 
       * TOOLBAR
@@ -2722,7 +2705,6 @@
            DESTROY Arial8B-Occidentale
            DESTROY Verdana10-Occidentale
            DESTROY Verdana12BI-Occidentale
-           DESTROY Arial8BU-Occidentale
            DESTROY Arial8-Occidentale
            CALL "w$bitmap" USING WBITMAP-DESTROY, OK_73X21-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, CANCEL_73X21-BMP
@@ -2797,19 +2779,6 @@
            CALL "W$FONT" USING WFONT-GET-FONT, 
                      Verdana12BI-Occidentale, WFONT-DATA
 
-      * Arial8BU-Occidentale
-           INITIALIZE WFONT-DATA Arial8BU-Occidentale
-           MOVE 8 TO WFONT-SIZE
-           MOVE "Arial" TO WFONT-NAME
-           SET WFCHARSET-DONT-CARE TO TRUE
-           SET WFONT-BOLD TO TRUE
-           SET WFONT-ITALIC TO FALSE
-           SET WFONT-UNDERLINE TO TRUE
-           SET WFONT-STRIKEOUT TO FALSE
-           SET WFONT-FIXED-PITCH TO FALSE
-           MOVE 0 TO WFONT-CHAR-SET
-           CALL "W$FONT" USING WFONT-GET-FONT, 
-                     Arial8BU-Occidentale, WFONT-DATA
       * Arial8-Occidentale
            INITIALIZE WFONT-DATA Arial8-Occidentale
            MOVE 8 TO WFONT-SIZE
@@ -7246,7 +7215,7 @@
                 CELL-DATA = "XXXXXXXXXWXXXXXXXXXWXXXXXXXXXWXXXXXXXXXW",
       * CELLS' SETTING
               MODIFY gd, X = 5, Y = 1,
-                CELL-DATA = "A250F258",
+                CELL-DATA = "XXXXXXXXXXWW",
       * CELLS' SETTING
               MODIFY gd, X = 6, Y = 1,
                 CELL-DATA = "99/99/99",
@@ -7997,7 +7966,7 @@
        scr-ordini-Create-Win.
            Display Independent GRAPHICAL WINDOW
               LINES 52,21,
-              SIZE 218,17,
+              SIZE 224,33,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
               COLOR 65793,
@@ -8030,8 +7999,8 @@
            DISPLAY scr-ordini UPON scr-ordini-Handle
       * DISPLAY-COLUMNS settings
               MODIFY gd-art2, DISPLAY-COLUMNS (1, 10)
-              MODIFY gd, DISPLAY-COLUMNS (1, 4, 11, 60, 109, 120, 128, 
-           136, 143, 151, 158, 166, 173, 181, 187, 210)
+              MODIFY gd, DISPLAY-COLUMNS (1, 4, 11, 60, 109, 126, 134, 
+           142, 149, 157, 164, 172, 179, 187, 193, 216)
            .
 
        scr-ordini-PROC.
