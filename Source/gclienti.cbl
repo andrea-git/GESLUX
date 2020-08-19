@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gclienti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 13 dicembre 2019 09:33:38.
+       DATE-WRITTEN.        mercoledì 19 agosto 2020 11:13:14.
        REMARKS.
       *{TOTEM}END
 
@@ -3357,12 +3357,12 @@
        10
            Form1-La-29baa, 
            Label, 
-           COL 126,33, 
+           COL 126,34, 
            LINE 34,00,
            LINES 1,31 ,
            SIZE 11,00 ,
            FONT IS Small-Font,
-           ID IS 201,
+           ID IS 291,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -6538,7 +6538,7 @@
            COL 79,67, 
            LINE 19,16,
            LINES 6,08 ,
-           ID IS 291,
+           ID IS 292,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            WIDTH 1,
@@ -6552,7 +6552,7 @@
            LINE 20,00,
            LINES 1,31 ,
            SIZE 18,00 ,
-           ID IS 292,
+           ID IS 294,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -6567,7 +6567,7 @@
            LINE 21,47,
            LINES 1,31 ,
            SIZE 18,00 ,
-           ID IS 294,
+           ID IS 295,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -6582,7 +6582,7 @@
            LINE 20,00,
            LINES 1,31 ,
            SIZE 18,00 ,
-           ID IS 295,
+           ID IS 296,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -6596,7 +6596,7 @@
            COL 1,00, 
            LINE 3,69,
            SIZE 158,00 ,
-           ID IS 296,
+           ID IS 297,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            COLORS (8, 8),
@@ -19769,7 +19769,7 @@
                  if tcl-fido-nuovo-si            
                     compute fido-tmp = cli-fido
                  else
-                    compute tot-fido = cli-fido
+                    compute tot-fido = cli-fido + cli-pfa
                  end-if
               else
                  if tcl-fido-nuovo-si

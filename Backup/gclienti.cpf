@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E3CD82347-513-189375883
+PROGRAM_UNIQUE_CODE=TOTEM-7E48139728-262-19731749
 
 {{@DESCRIPTION:
 
@@ -13028,7 +13028,7 @@ Begin Screen Form1
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-29baa
-            SCREEN-COL        = 126,33
+            SCREEN-COL        = 126,34
             SCREEN-LINE       = 34,00
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
@@ -13045,7 +13045,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 201
+            ID                = 291
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 28,23
@@ -21136,7 +21136,7 @@ Begin Screen Form1
                Destroy Type      = Automatic
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 291
+               ID                = 292
                Kind              = Vertical
                Line              = 1,54
                Line Styles       = Solid
@@ -21167,7 +21167,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 292
+               ID                = 294
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 2,38
@@ -21200,7 +21200,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 294
+               ID                = 295
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 3,85
@@ -21233,7 +21233,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 295
+               ID                = 296
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 2,38
@@ -21267,7 +21267,7 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 296
+      ID                = 297
       Kind              = Horizontal
       Line              = 3,69
       Line Styles       = Solid
@@ -25708,7 +25708,7 @@ BEGIN-TEXT
                  if tcl-fido-nuovo-si            
                     compute fido-tmp = cli-fido
                  else
-                    compute tot-fido = cli-fido
+                    compute tot-fido = cli-fido + cli-pfa
                  end-if
               else
                  if tcl-fido-nuovo-si

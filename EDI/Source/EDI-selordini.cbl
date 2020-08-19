@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 29 luglio 2020 14:24:45.
+       DATE-WRITTEN.        mercoledì 19 agosto 2020 11:14:12.
        REMARKS.
       *{TOTEM}END
 
@@ -17961,7 +17961,7 @@ LUBEXX                           effetti-rischio  + ordini-in-essere
                  if tcl-fido-nuovo-si            
                     compute fido-tmp = cli-fido |sf-lince
                  else
-                    compute tot-fido = cli-fido |sf-lince
+                    compute tot-fido = cli-fido + cli-pfa|sf-lince
                  end-if
               else
                  if tcl-fido-nuovo-si

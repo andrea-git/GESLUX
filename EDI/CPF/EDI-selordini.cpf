@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E471D122043-974-8014353
+PROGRAM_UNIQUE_CODE=TOTEM-7E481391339-621-2506223190
 
 {{@DESCRIPTION:
 
@@ -17141,7 +17141,7 @@ LUBEXX                           effetti-rischio  + ordini-in-essere
                  if tcl-fido-nuovo-si            
                     compute fido-tmp = cli-fido |sf-lince
                  else
-                    compute tot-fido = cli-fido |sf-lince
+                    compute tot-fido = cli-fido + cli-pfa|sf-lince
                  end-if
               else
                  if tcl-fido-nuovo-si
