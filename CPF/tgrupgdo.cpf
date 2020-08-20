@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E451922596-993-289711906
+PROGRAM_UNIQUE_CODE=TOTEM-7E4814104948-945-253409359
 
 {{@DESCRIPTION:
 
@@ -1024,9 +1024,9 @@ m_bFixed=1
 
 @}}
 [FDITEM87_WK]
-m_strName=OLD-gdo-num-vuoto-1
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=OLD-gdo-auto-lst
+m_strRawPic=9(1)
+m_strPic=9(1)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1034,29 +1034,29 @@ m_bFixed=1
 
 @}}
 [FDITEM88_WK]
-m_strName=OLD-gdo-num-vuoto-2
-m_strRawPic=9(15)
-m_strPic=9(15)
-m_nItemLevel=15
+m_strName=OLD-gdo-auto-lst-si
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue=1
+m_strFalse=0
 {{@DataItem_m_strDescriptionFDITEM88_WK
 
 @}}
 [FDITEM89_WK]
-m_strName=OLD-gdo-num-vuoto-3
-m_strRawPic=9(15)
-m_strPic=9(15)
-m_nItemLevel=15
+m_strName=OLD-gdo-auto-lst-no
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue=0
+m_strFalse=0
 {{@DataItem_m_strDescriptionFDITEM89_WK
 
 @}}
 [FDITEM90_WK]
-m_strName=OLD-gdo-alfa-vuoto-1
-m_strRawPic=x(13)
-m_strPic=x(13)
+m_strName=OLD-gdo-num-vuoto-1
+m_strRawPic=9(4)
+m_strPic=9(4)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1064,9 +1064,9 @@ m_bFixed=1
 
 @}}
 [FDITEM91_WK]
-m_strName=OLD-gdo-tipocli
-m_strRawPic=x(2)
-m_strPic=x(2)
+m_strName=OLD-gdo-num-vuoto-2
+m_strRawPic=9(15)
+m_strPic=9(15)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1074,9 +1074,9 @@ m_bFixed=1
 
 @}}
 [FDITEM92_WK]
-m_strName=OLD-gdo-capogruppo
-m_strRawPic=x(5)
-m_strPic=x(5)
+m_strName=OLD-gdo-num-vuoto-3
+m_strRawPic=9(15)
+m_strPic=9(15)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1084,9 +1084,9 @@ m_bFixed=1
 
 @}}
 [FDITEM93_WK]
-m_strName=OLD-gdo-codice-G2
-m_strRawPic=x(3)
-m_strPic=x(3)
+m_strName=OLD-gdo-alfa-vuoto-1
+m_strRawPic=x(13)
+m_strPic=x(13)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1094,9 +1094,9 @@ m_bFixed=1
 
 @}}
 [FDITEM94_WK]
-m_strName=OLD-gdo-alfa-vuoto-2
-m_strRawPic=x(17)
-m_strPic=x(17)
+m_strName=OLD-gdo-tipocli
+m_strRawPic=x(2)
+m_strPic=x(2)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1104,9 +1104,9 @@ m_bFixed=1
 
 @}}
 [FDITEM95_WK]
-m_strName=OLD-gdo-alfa-vuoto-3
-m_strRawPic=x(20)
-m_strPic=X(20)
+m_strName=OLD-gdo-capogruppo
+m_strRawPic=x(5)
+m_strPic=x(5)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1114,40 +1114,39 @@ m_bFixed=1
 
 @}}
 [FDITEM96_WK]
-m_strName=lab-capo-buf
-m_strRawPic=X(50)
-m_strPic=X(50)
-m_nItemLevel=77
+m_strName=OLD-gdo-codice-G2
+m_strRawPic=x(3)
+m_strPic=x(3)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM96_WK
 
 @}}
 [FDITEM97_WK]
-m_strName=STATUS-tgrupgdo1
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
+m_strName=OLD-gdo-alfa-vuoto-2
+m_strRawPic=x(17)
+m_strPic=x(17)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM97_WK
 
 @}}
 [FDITEM98_WK]
-m_strName=VALID-STATUS-tgrupgdo1
-m_nItemLevel=88
+m_strName=OLD-gdo-alfa-vuoto-3
+m_strRawPic=x(20)
+m_strPic=X(20)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM98_WK
 
 @}}
 [FDITEM99_WK]
-m_strName=SITFIN_91X21-BMP
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
-m_strDefaultValue=0
+m_strName=lab-capo-buf
+m_strRawPic=X(50)
+m_strPic=X(50)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1155,7 +1154,7 @@ m_bFixed=1
 
 @}}
 [FDITEM100_WK]
-m_strName=STATUS-ttipocli
+m_strName=STATUS-tgrupgdo1
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -1165,7 +1164,7 @@ m_bFixed=1
 
 @}}
 [FDITEM101_WK]
-m_strName=Valid-STATUS-ttipocli
+m_strName=VALID-STATUS-tgrupgdo1
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -1174,9 +1173,11 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM102_WK]
-m_strName=lab-tipocli-buf
-m_strRawPic=X(50)
-m_strPic=X(50)
+m_strName=SITFIN_91X21-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1184,8 +1185,9 @@ m_bFixed=1
 
 @}}
 [FDITEM103_WK]
-m_strName=Verdana10-Occidentale
-m_nUsage=26
+m_strName=STATUS-ttipocli
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1193,19 +1195,18 @@ m_bFixed=1
 
 @}}
 [FDITEM104_WK]
-m_strName=lab-gruppo-buf
-m_strRawPic=X(50)
-m_strPic=X(50)
-m_nItemLevel=77
+m_strName=Valid-STATUS-ttipocli
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM104_WK
 
 @}}
 [FDITEM105_WK]
-m_strName=STATUS-tgruppi
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=lab-tipocli-buf
+m_strRawPic=X(50)
+m_strPic=X(50)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1213,16 +1214,16 @@ m_bFixed=1
 
 @}}
 [FDITEM106_WK]
-m_strName=Valid-STATUS-tgruppi
-m_nItemLevel=88
+m_strName=Verdana10-Occidentale
+m_nUsage=26
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM106_WK
 
 @}}
 [FDITEM107_WK]
-m_strName=lab-cli-rifer-buf
+m_strName=lab-gruppo-buf
 m_strRawPic=X(50)
 m_strPic=X(50)
 m_nItemLevel=77
@@ -1232,7 +1233,7 @@ m_bFixed=1
 
 @}}
 [FDITEM108_WK]
-m_strName=STATUS-clienti
+m_strName=STATUS-tgruppi
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -1242,12 +1243,41 @@ m_bFixed=1
 
 @}}
 [FDITEM109_WK]
-m_strName=Valid-STATUS-clienti
+m_strName=Valid-STATUS-tgruppi
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM109_WK
+
+@}}
+[FDITEM110_WK]
+m_strName=lab-cli-rifer-buf
+m_strRawPic=X(50)
+m_strPic=X(50)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM110_WK
+
+@}}
+[FDITEM111_WK]
+m_strName=STATUS-clienti
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM111_WK
+
+@}}
+[FDITEM112_WK]
+m_strName=Valid-STATUS-clienti
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM112_WK
 
 @}}
 
@@ -1477,7 +1507,7 @@ Begin Screen Form1
    Height in Cells   = FALSE
    Help ID           = 0
    Label Offset      = 23
-   Lines             = 29,94
+   Lines             = 31,75
    Link To Thread    = TRUE
    Max Lines         = 0,00
    Max Size          = 0,00
@@ -2374,6 +2404,57 @@ Begin Screen Form1
       Before Procedure  = ef-gruppo-BeforeProcedure
       After Procedure   = ef-gruppo-AfterProcedure
    End
+   Begin Data.Check-Box chk-auto
+      SCREEN-COL        = 22,00
+      SCREEN-LINE       = 29,13
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = chk-auto
+      Bitmap Frame      = FALSE
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Check Off Value   = "0"
+      Check On Value    = "1"
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 22,00
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Enable Variable   = mod
+      Exception Value   = 0
+      Field Variable    = gdo-auto-lst OF tgrupgdo
+      File              = tgrupgdo
+      Flat              = TRUE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Inserimento automatico listini
+      ID                = 28
+      ID Variable       = AUTO-ID
+      Left Text         = FALSE
+      Line              = 29,13
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Tab            = FALSE
+      Notify            = FALSE
+      Occurs            = 0
+      Self Act          = TRUE
+      Size              = 2,00
+      Size Unit         = Default
+      Tab Order         = 15
+      Termination Value = 0
+      Title             = "Check Box"
+      Value             = 0:FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      My Property       = "CONTROLLO-OLD="
+      Before Procedure  = Form1-DaCb-1-BeforeProcedure
+      After Procedure   = Form1-DaCb-1-AfterProcedure
+   End
    Begin Push-Button pb-logo
       SCREEN-COL        = 132,38
       SCREEN-LINE       = 19,00
@@ -2409,7 +2490,7 @@ Begin Screen Form1
       Size              = 3,00
       Size Unit         = Default
       Style             = Other
-      Tab Order         = 15
+      Tab Order         = 16
       Termination Value = 0
       Title             = "..."
       Visible           = NONE
@@ -2443,7 +2524,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 13,00
       Size Unit         = Default
-      Tab Order         = 16
+      Tab Order         = 17
       Title             = "Codice"
       Transparent       = FALSE
       Visible           = NONE
@@ -2478,7 +2559,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 2,00
       Size Unit         = Default
-      Tab Order         = 17
+      Tab Order         = 18
       Title             = "BlockPgm"
       Transparent       = TRUE
       Visible           = NONE
@@ -2516,7 +2597,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 2,00
       Size Unit         = Default
-      Tab Order         = 18
+      Tab Order         = 19
       Title             = "CUSTOM CONTROL"
       Transparent       = TRUE
       Visible           = NONE
@@ -2549,7 +2630,7 @@ Begin Screen Form1
       Size (Lines)      = 136,13
       Size (Lines) in Pixels = 1089
       Size (Lines) Unit = Default
-      Tab Order         = 19
+      Tab Order         = 20
       Visible           = NONE
       Width             = 2
       Width in Cells    = TRUE
@@ -2581,7 +2662,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 13,00
       Size Unit         = Default
-      Tab Order         = 20
+      Tab Order         = 21
       Title             = "Descrizione"
       Transparent       = TRUE
       Visible           = NONE
@@ -2614,7 +2695,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 13,00
       Size Unit         = Default
-      Tab Order         = 21
+      Tab Order         = 22
       Title             = "All'attenzione di"
       Transparent       = TRUE
       Visible           = NONE
@@ -2647,7 +2728,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 13,00
       Size Unit         = Default
-      Tab Order         = 22
+      Tab Order         = 23
       Title             = "Listino Bosch"
       Transparent       = TRUE
       Visible           = NONE
@@ -2680,7 +2761,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 13,00
       Size Unit         = Default
-      Tab Order         = 23
+      Tab Order         = 24
       Title             = "Listino MA-FRA"
       Transparent       = TRUE
       Visible           = NONE
@@ -2713,7 +2794,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 13,00
       Size Unit         = Default
-      Tab Order         = 24
+      Tab Order         = 25
       Title             = "Linea Ursus"
       Transparent       = TRUE
       Visible           = NONE
@@ -2746,7 +2827,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 13,00
       Size Unit         = Default
-      Tab Order         = 25
+      Tab Order         = 26
       Title             = "Altro"
       Transparent       = TRUE
       Visible           = NONE
@@ -2779,7 +2860,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 13,00
       Size Unit         = Default
-      Tab Order         = 26
+      Tab Order         = 27
       Title             = "Logo"
       Transparent       = TRUE
       Visible           = NONE
@@ -2812,7 +2893,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 16,00
       Size Unit         = Default
-      Tab Order         = 27
+      Tab Order         = 28
       Title             = "Listino in vigore dal"
       Transparent       = TRUE
       Visible           = NONE
@@ -2845,7 +2926,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 28
+      Tab Order         = 29
       Title             = "Codice capogruppo"
       Transparent       = FALSE
       Visible           = NONE
@@ -2878,7 +2959,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 70,00
       Size Unit         = Default
-      Tab Order         = 29
+      Tab Order         = 30
       Title Picture     = X(50)
       Title Variable    = lab-capo-buf
       Transparent       = TRUE
@@ -2922,7 +3003,7 @@ Begin Screen Form1
       Size in Pixels    = 91
       Size Unit         = Default
       Style             = Other
-      Tab Order         = 30
+      Tab Order         = 31
       Termination Value = 0
       Title             = "Visualizza la situazione finanziaria del Cliente verificando situazione attuale fido concesso e scaduto"
       Visible           = FALSE
@@ -2958,7 +3039,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 14,00
       Size Unit         = Default
-      Tab Order         = 31
+      Tab Order         = 32
       Title             = "Tipologia Cliente"
       Transparent       = TRUE
       Visible           = NONE
@@ -2991,7 +3072,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 55,00
       Size Unit         = Default
-      Tab Order         = 32
+      Tab Order         = 33
       Title Picture     = X(50)
       Title Variable    = lab-tipocli-buf
       Transparent       = TRUE
@@ -3025,7 +3106,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 70,00
       Size Unit         = Default
-      Tab Order         = 33
+      Tab Order         = 34
       Title Picture     = X(50)
       Title Variable    = lab-gruppo-buf
       Transparent       = TRUE
@@ -3059,7 +3140,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 34
+      Tab Order         = 35
       Title             = "Gruppo d'invio"
       Transparent       = FALSE
       Visible           = NONE
@@ -3092,7 +3173,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 70,00
       Size Unit         = Default
-      Tab Order         = 35
+      Tab Order         = 36
       Title Picture     = X(50)
       Title Variable    = lab-cli-rifer-buf
       Transparent       = TRUE
@@ -3126,7 +3207,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 18,00
       Size Unit         = Default
-      Tab Order         = 36
+      Tab Order         = 37
       Title             = "Cliente di riferimento"
       Transparent       = FALSE
       Visible           = NONE
@@ -3159,8 +3240,41 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 37
+      Tab Order         = 38
       Title             = "Codice G2"
+      Transparent       = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaaaba
+      SCREEN-COL        = 3,00
+      SCREEN-LINE       = 29,13
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaaaba
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 3,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 27
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 29,13
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 18,50
+      Size Unit         = Default
+      Tab Order         = 39
+      Title             = "Ins. automatico listini"
       Transparent       = FALSE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -3176,7 +3290,7 @@ Begin Screen Form1
       Handle Variable   = Form1-Tb-1-Handle
       Help ID           = 0
       Lines             = 2,69
-      Tab Order         = 38
+      Tab Order         = 40
       Begin Push-Button TOOL-ESCI
          SCREEN-COL        = 1,00
          SCREEN-LINE       = 1,08
@@ -3804,7 +3918,7 @@ Begin Screen Form1
       Handle Variable   = Form1-St-1-Handle
       PANEL-WIDTHS      = ( 75, 23, 999 )
       PANEL-STYLE       = ( 1, 1, 1 )
-      Tab Order         = 39
+      Tab Order         = 41
    End
 End
 
@@ -5256,6 +5370,20 @@ BEGIN-DATA
    PARAGRAPH         = ef-cli-rifer-AfterProcedure
 BEGIN-TEXT
       *<<** Default_Code **>>
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-DaCb-1-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-DaCb-1-AfterProcedure
+BEGIN-TEXT
       *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
 END-TEXT
 END-DATA

@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          tgrupgdo.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        lunedì 12 marzo 2018 17:07:24.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        giovedì 20 agosto 2020 12:57:19.
        REMARKS.
       *{TOTEM}END
 
@@ -57,7 +57,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -138,7 +138,12 @@
                10 OLD-gdo-vuoti.
                    15 OLD-gdo-gruppo-invio         PIC  9(5).
                    15 OLD-gdo-cli-rifer            PIC  9(5).
-                   15 OLD-gdo-num-vuoto-1          PIC  9(5).
+                   15 OLD-gdo-auto-lst PIC  9(1).
+                       88 OLD-gdo-auto-lst-si VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+                       88 OLD-gdo-auto-lst-no VALUE IS 0    WHEN SET TO 
+           FALSE  0. 
+                   15 OLD-gdo-num-vuoto-1          PIC  9(4).
                    15 OLD-gdo-num-vuoto-2          PIC  9(15).
                    15 OLD-gdo-num-vuoto-3          PIC  9(15).
                    15 OLD-gdo-alfa-vuoto-1         PIC  x(13).
@@ -201,6 +206,8 @@
       * Data.Entry-Field
               05 ef-codice-G2-BUF PIC x(3).
               05 ef-codice-G2-VALUEBUF PIC x(3).
+      * Data.Check-Box
+              05 chk-auto-BUF PIC 9 VALUE ZERO.
 
        77 TMP-Form1-KEY1-ORDER  PIC X VALUE "A".
        77 TMP-Form1-tgrupgdo-RESTOREBUF  PIC X(1206).
@@ -266,6 +273,7 @@
        78  78-ID-ef-gruppo VALUE 5012.
        78  78-ID-ef-cli-rifer VALUE 5013.
        78  78-ID-ef-codice-G2 VALUE 5014.
+       78  78-ID-chk-auto VALUE 5015.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -549,6 +557,24 @@
            READ-ONLY,
            VALUE ef-codice-G2-BUF,
            .
+
+      * CHECK BOX
+       05
+           chk-auto, 
+           Check-Box, 
+           COL 22,00, 
+           LINE 29,13,
+           LINES 1,31 ,
+           SIZE 2,00 ,
+           ENABLED mod,
+           FLAT,
+           ID IS 78-ID-chk-auto,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           SELF-ACT,
+           TITLE "Check Box",
+           VALUE chk-auto-BUF,
+            .
 
       * PUSH BUTTON
        05
@@ -899,6 +925,20 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Codice G2",
+           .
+
+      * LABEL
+       05
+           Form1-La-5aaaaba, 
+           Label, 
+           COL 3,00, 
+           LINE 29,13,
+           LINES 1,31 ,
+           SIZE 18,50 ,
+           ID IS 27,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE "Ins. automatico listini",
            .
 
       * TOOLBAR
@@ -2426,7 +2466,7 @@
 
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 29,94,
+              LINES 31,75,
               SIZE 136,13,
               COLOR 65793,
               CONTROL FONT Verdana10-Occidentale,
@@ -2870,6 +2910,8 @@
            INITIALIZE Form1-BUF
       * FORM : Form1
            PERFORM DataSet1-INIT-RECORD
+      * DB_CHECK BOX
+              MOVE 0 TO gdo-auto-lst OF tgrupgdo
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, SetDefault>
       * <TOTEM:END>
            PERFORM Form1-FLD-TO-BUF
@@ -3266,6 +3308,12 @@
            MOVE ef-cli-rifer-BUF TO gdo-cli-rifer of tgrupgdo
       * DB_Entry-Field : ef-codice-G2
            MOVE ef-codice-G2-BUF TO gdo-codice-G2 of tgrupgdo
+      * DB_CHECK BOX : chk-auto
+              IF chk-auto-BUF = 1
+                 MOVE 1 TO gdo-auto-lst OF tgrupgdo
+              ELSE
+                 MOVE 0 TO gdo-auto-lst OF tgrupgdo
+              END-IF
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterBufToFld>
            move ef-data-buf to como-data.
            perform DATE-TO-FILE.
@@ -3306,6 +3354,12 @@
            MOVE gdo-cli-rifer of tgrupgdo TO ef-cli-rifer-BUF
       * DB_Entry-Field : ef-codice-G2
            MOVE gdo-codice-G2 of tgrupgdo TO ef-codice-G2-BUF
+      * DB_CHECK BOX : chk-auto
+              IF gdo-auto-lst OF tgrupgdo = 1
+                 MOVE 1 TO chk-auto-BUF
+              ELSE
+                 MOVE 0 TO chk-auto-BUF
+              END-IF
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterFldToBuf>
            perform VALORIZZA-OLD.
            perform ABILITAZIONI.
@@ -3450,6 +3504,14 @@
               set NoSalvato to true
               |78-ID-ef-codice-G2 è l'ID del campo ef-codice-G2
               move 78-ID-ef-codice-G2 to store-id 
+           end-if
+
+
+           if gdo-auto-lst OF tgrupgdo not = old-gdo-auto-lst
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-chk-auto è l'ID del campo chk-auto
+              move 78-ID-chk-auto to store-id 
            end-if
 
            .
@@ -3619,6 +3681,8 @@
            TOTEM-HINT-TEXT
            WHEN 5014 MOVE "Digitare il gruppo d'invio" to 
            TOTEM-HINT-TEXT
+           WHEN 5015 MOVE "Inserimento automatico listini" to 
+           TOTEM-HINT-TEXT
            WHEN AUTO-ID MOVE "Selezione/visualizzazione immagine associa
       -    "ta" to TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
@@ -3638,6 +3702,7 @@
            When 5012 PERFORM ef-gruppo-BeforeProcedure
            When 5013 PERFORM ef-cli-rifer-BeforeProcedure
            When 5014 PERFORM ef-gruppo-BeforeProcedure
+           When 5015 PERFORM Form1-DaCb-1-BeforeProcedure
            END-EVALUATE
            PERFORM Form1-DISPLAY-STATUS-MSG
            perform Form1-BEFORE-SCREEN
@@ -3659,6 +3724,7 @@
            When 5012 PERFORM ef-gruppo-AfterProcedure
            When 5013 PERFORM ef-cli-rifer-AfterProcedure
            When 5014 PERFORM ef-gruppo-AfterProcedure
+           When 5015 PERFORM Form1-DaCb-1-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -4882,6 +4948,16 @@
            .
       * <TOTEM:END>
 
+       Form1-DaCb-1-BeforeProcedure.
+      * <TOTEM:PARA. Form1-DaCb-1-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       Form1-DaCb-1-AfterProcedure.
+      * <TOTEM:PARA. Form1-DaCb-1-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
 
       *{TOTEM}END
 

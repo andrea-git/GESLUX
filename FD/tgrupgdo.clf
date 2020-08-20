@@ -5,7 +5,7 @@
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E48139726-474-54916219
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E481410471-210-860515495
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -227,9 +227,9 @@ m_bFixed=1
 
 @}}
 [FDITEM22_]
-m_strName=gdo-num-vuoto-1
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=gdo-auto-lst
+m_strRawPic=9(1)
+m_strPic=9(1)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -237,29 +237,29 @@ m_bFixed=1
 
 @}}
 [FDITEM23_]
-m_strName=gdo-num-vuoto-2
-m_strRawPic=9(15)
-m_strPic=9(15)
-m_nItemLevel=15
+m_strName=gdo-auto-lst-si
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue=1
+m_strFalse=0
 {{@DataItem_m_strDescriptionFDITEM23_
 
 @}}
 [FDITEM24_]
-m_strName=gdo-num-vuoto-3
-m_strRawPic=9(15)
-m_strPic=9(15)
-m_nItemLevel=15
+m_strName=gdo-auto-lst-no
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue=0
+m_strFalse=0
 {{@DataItem_m_strDescriptionFDITEM24_
 
 @}}
 [FDITEM25_]
-m_strName=gdo-alfa-vuoto-1
-m_strRawPic=x(13)
-m_strPic=x(13)
+m_strName=gdo-num-vuoto-1
+m_strRawPic=9(4)
+m_strPic=9(4)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -267,9 +267,9 @@ m_bFixed=1
 
 @}}
 [FDITEM26_]
-m_strName=gdo-tipocli
-m_strRawPic=x(2)
-m_strPic=x(2)
+m_strName=gdo-num-vuoto-2
+m_strRawPic=9(15)
+m_strPic=9(15)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -277,9 +277,9 @@ m_bFixed=1
 
 @}}
 [FDITEM27_]
-m_strName=gdo-capogruppo
-m_strRawPic=x(5)
-m_strPic=X(5)
+m_strName=gdo-num-vuoto-3
+m_strRawPic=9(15)
+m_strPic=9(15)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -287,9 +287,9 @@ m_bFixed=1
 
 @}}
 [FDITEM28_]
-m_strName=gdo-codice-G2
-m_strRawPic=x(3)
-m_strPic=x(3)
+m_strName=gdo-alfa-vuoto-1
+m_strRawPic=x(13)
+m_strPic=x(13)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -297,9 +297,9 @@ m_bFixed=1
 
 @}}
 [FDITEM29_]
-m_strName=gdo-alfa-vuoto-2
-m_strRawPic=x(17)
-m_strPic=x(17)
+m_strName=gdo-tipocli
+m_strRawPic=x(2)
+m_strPic=x(2)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -307,13 +307,43 @@ m_bFixed=1
 
 @}}
 [FDITEM30_]
+m_strName=gdo-capogruppo
+m_strRawPic=x(5)
+m_strPic=X(5)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM30_
+
+@}}
+[FDITEM31_]
+m_strName=gdo-codice-G2
+m_strRawPic=x(3)
+m_strPic=x(3)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM31_
+
+@}}
+[FDITEM32_]
+m_strName=gdo-alfa-vuoto-2
+m_strRawPic=x(17)
+m_strPic=x(17)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM32_
+
+@}}
+[FDITEM33_]
 m_strName=gdo-alfa-vuoto-3
 m_strRawPic=x(20)
 m_strPic=X(20)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM30_
+{{@DataItem_m_strDescriptionFDITEM33_
 
 @}}
 [CStoAcucobolSL_]

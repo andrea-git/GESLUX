@@ -2,7 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E371A826-564-1753114507
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E4814105843-872-17798417
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -515,9 +515,9 @@ m_bFixed=1
 
 @}}
 [FDITEM51_]
-m_strName=tge-num-vuoto-1
-m_strRawPic=9(15)
-m_strPic=9(15)
+m_strName=tge-divisore-lstgdo
+m_strRawPic=s9(5)v999
+m_strPic=s9(5)v999
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -525,9 +525,9 @@ m_bFixed=1
 
 @}}
 [FDITEM52_]
-m_strName=tge-num-vuoto-2
-m_strRawPic=9(18)
-m_strPic=9(18)
+m_strName=tge-num-vuoto-1
+m_strRawPic=9(7)
+m_strPic=9(7)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -535,7 +535,7 @@ m_bFixed=1
 
 @}}
 [FDITEM53_]
-m_strName=tge-num-vuoto-3
+m_strName=tge-num-vuoto-2
 m_strRawPic=9(18)
 m_strPic=9(18)
 m_nItemLevel=15
@@ -545,6 +545,16 @@ m_bFixed=1
 
 @}}
 [FDITEM54_]
+m_strName=tge-num-vuoto-3
+m_strRawPic=9(18)
+m_strPic=9(18)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM54_
+
+@}}
+[FDITEM55_]
 m_strName=tge-gg-inizio-vol-pren-old
 m_strRawPic=s9(3)
 m_strPic=s9(3)
@@ -552,23 +562,13 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=tge-gg-inizio-vol
-{{@DataItem_m_strDescriptionFDITEM54_
-
-@}}
-[FDITEM55_]
-m_strName=tge-cod-pag-anticipato
-m_strRawPic=X(3)
-m_strPic=X(3)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM55_
 
 @}}
 [FDITEM56_]
-m_strName=tge-gg-master-chiuso
-m_strRawPic=9(3)
-m_strPic=9(3)
+m_strName=tge-cod-pag-anticipato
+m_strRawPic=X(3)
+m_strPic=X(3)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -576,9 +576,9 @@ m_bFixed=1
 
 @}}
 [FDITEM57_]
-m_strName=tge-ditta-comunicazione-utf
-m_strRawPic=x(20)
-m_strPic=x(20)
+m_strName=tge-gg-master-chiuso
+m_strRawPic=9(3)
+m_strPic=9(3)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -586,9 +586,9 @@ m_bFixed=1
 
 @}}
 [FDITEM58_]
-m_strName=tge-gg-vol-qta
-m_strRawPic=9(3)
-m_strPic=9(3)
+m_strName=tge-ditta-comunicazione-utf
+m_strRawPic=x(20)
+m_strPic=x(20)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -596,6 +596,16 @@ m_bFixed=1
 
 @}}
 [FDITEM59_]
+m_strName=tge-gg-vol-qta
+m_strRawPic=9(3)
+m_strPic=9(3)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM59_
+
+@}}
+[FDITEM60_]
 m_strName=tge-anno-F-pdf
 m_strRawPic=9(4)
 m_strPic=9(4)
@@ -603,23 +613,13 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=tgeanno-f-pdf
-{{@DataItem_m_strDescriptionFDITEM59_
-
-@}}
-[FDITEM60_]
-m_strName=tge-num-F-pdf
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM60_
 
 @}}
 [FDITEM61_]
-m_strName=tge-anno-NC-pdf
-m_strRawPic=9(4)
-m_strPic=9(4)
+m_strName=tge-num-F-pdf
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -627,9 +627,9 @@ m_bFixed=1
 
 @}}
 [FDITEM62_]
-m_strName=tge-num-NC-pdf
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=tge-anno-NC-pdf
+m_strRawPic=9(4)
+m_strPic=9(4)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -637,9 +637,9 @@ m_bFixed=1
 
 @}}
 [FDITEM63_]
-m_strName=tge-blocco-fido
-m_strRawPic=s9(10)v99
-m_strPic=s9(10)v99
+m_strName=tge-num-NC-pdf
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -647,13 +647,23 @@ m_bFixed=1
 
 @}}
 [FDITEM64_]
+m_strName=tge-blocco-fido
+m_strRawPic=s9(10)v99
+m_strPic=s9(10)v99
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM64_
+
+@}}
+[FDITEM65_]
 m_strName=FILLER
 m_strRawPic=X(432)
 m_strPic=X(432)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM64_
+{{@DataItem_m_strDescriptionFDITEM65_
 
 @}}
 [CStoAcucobolSL_]

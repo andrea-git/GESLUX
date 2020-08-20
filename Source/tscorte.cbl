@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          tscorte.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        venerdì 8 giugno 2018 10:23:40.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        giovedì 20 agosto 2020 12:57:37.
        REMARKS.
       *{TOTEM}END
 
@@ -42,7 +42,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -194,6 +194,8 @@
               05 chk-nov-BUF PIC 9 VALUE ZERO.
       * Data.Check-Box
               05 chk-dic-BUF PIC 9 VALUE ZERO.
+      * Data.Check-Box
+              05 chk-preseaaaa-BUF PIC 9 VALUE ZERO.
 
        77 TMP-Form1-KEY1-ORDER  PIC X VALUE "A".
        77 TMP-Form1-KEY2-ORDER  PIC X VALUE "A".
@@ -331,6 +333,10 @@
                    15 old-sco-no-gdo            PIC  9.
                        88 old-sco-no-gdo-si VALUE IS 1.
                        88 old-sco-no-gdo-no VALUE IS 0.
+                   15 old-sco-auto-lst            PIC  9.
+                       88 old-sco-auto-lst-si VALUE IS 1.
+                       88 old-sco-auto-lst-no VALUE IS 0.
+                       
       *{TOTEM}END
 
       *{TOTEM}ID-LOGICI
@@ -362,6 +368,7 @@
        78  78-ID-chk-ott VALUE 5025.
        78  78-ID-chk-nov VALUE 5026.
        78  78-ID-chk-dic VALUE 5027.
+       78  78-ID-chk-preseaaaa VALUE 5028.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -1295,7 +1302,7 @@
            LINES 1,31 ,
            SIZE 14,00 ,
            COLOR IS 80,
-           ID IS 140,
+           ID IS 141,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            CENTER,
@@ -1309,7 +1316,7 @@
            COL 16,71, 
            LINE 46,08,
            SIZE 107,33 ,
-           ID IS 141,
+           ID IS 142,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            COLORS (1),
@@ -1325,7 +1332,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 142,
+           ID IS 143,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1341,7 +1348,7 @@
            LINES 1,31 ,
            SIZE 52,00 ,
            FONT IS Small-Font,
-           ID IS 143,
+           ID IS 144,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1358,7 +1365,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 144,
+           ID IS 145,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1375,7 +1382,7 @@
            LINES 3,38 ,
            SIZE 52,00 ,
            FONT IS Small-Font,
-           ID IS 145,
+           ID IS 146,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1394,7 +1401,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 146,
+           ID IS 147,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1410,7 +1417,7 @@
            LINES 2,23 ,
            SIZE 52,00 ,
            FONT IS Small-Font,
-           ID IS 147,
+           ID IS 148,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1428,7 +1435,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 148,
+           ID IS 149,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1444,7 +1451,7 @@
            LINES 2,08 ,
            SIZE 52,00 ,
            FONT IS Small-Font,
-           ID IS 149,
+           ID IS 150,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1462,7 +1469,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 150,
+           ID IS 151,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1478,7 +1485,7 @@
            LINES 1,31 ,
            SIZE 52,00 ,
            FONT IS Small-Font,
-           ID IS 151,
+           ID IS 152,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1494,7 +1501,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 152,
+           ID IS 153,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1511,7 +1518,7 @@
            LINES 1,31 ,
            SIZE 52,00 ,
            FONT IS Small-Font,
-           ID IS 153,
+           ID IS 154,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1528,7 +1535,7 @@
            LINE 18,54,
            LINES 12,00 ,
            SIZE 35,00 ,
-           ID IS 154,
+           ID IS 155,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Generazione automatica ordini",
@@ -1561,7 +1568,7 @@
            LINE 20,16,
            LINES 1,31 ,
            SIZE 9,00 ,
-           ID IS 156,
+           ID IS 157,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1594,7 +1601,7 @@
            LINE 21,77,
            LINES 1,31 ,
            SIZE 9,00 ,
-           ID IS 158,
+           ID IS 159,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1609,7 +1616,7 @@
            LINE 23,39,
            LINES 1,31 ,
            SIZE 9,00 ,
-           ID IS 159,
+           ID IS 160,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1642,7 +1649,7 @@
            LINE 25,00,
            LINES 1,31 ,
            SIZE 9,00 ,
-           ID IS 161,
+           ID IS 162,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1675,7 +1682,7 @@
            LINE 26,69,
            LINES 1,31 ,
            SIZE 9,00 ,
-           ID IS 163,
+           ID IS 164,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1708,7 +1715,7 @@
            LINE 28,31,
            LINES 1,31 ,
            SIZE 9,00 ,
-           ID IS 165,
+           ID IS 166,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1741,7 +1748,7 @@
            LINE 20,16,
            LINES 1,31 ,
            SIZE 9,00 ,
-           ID IS 167,
+           ID IS 168,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1774,7 +1781,7 @@
            LINE 21,77,
            LINES 1,31 ,
            SIZE 9,00 ,
-           ID IS 169,
+           ID IS 170,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1807,7 +1814,7 @@
            LINE 23,39,
            LINES 1,31 ,
            SIZE 9,00 ,
-           ID IS 171,
+           ID IS 172,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1822,7 +1829,7 @@
            LINE 25,00,
            LINES 1,31 ,
            SIZE 9,00 ,
-           ID IS 172,
+           ID IS 173,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1837,7 +1844,7 @@
            LINE 26,69,
            LINES 1,31 ,
            SIZE 9,00 ,
-           ID IS 173,
+           ID IS 174,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1852,7 +1859,7 @@
            LINE 28,31,
            LINES 1,31 ,
            SIZE 9,00 ,
-           ID IS 174,
+           ID IS 175,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1940,7 +1947,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 179,
+           ID IS 180,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1956,7 +1963,7 @@
            LINES 1,31 ,
            SIZE 70,00 ,
            FONT IS Small-Font,
-           ID IS 180,
+           ID IS 181,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1973,7 +1980,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 181,
+           ID IS 182,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1989,7 +1996,7 @@
            LINES 2,23 ,
            SIZE 52,00 ,
            FONT IS Small-Font,
-           ID IS 182,
+           ID IS 183,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2006,7 +2013,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 179,
+           ID IS 184,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2022,12 +2029,62 @@
            LINES 1,31 ,
            SIZE 70,00 ,
            FONT IS Small-Font,
-           ID IS 180,
+           ID IS 185,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
            TITLE "Non permette l'inserimento dell'articolo nella promo G
       -    "DO",
+           .
+
+      * CHECK BOX
+       05
+           chk-preseaaaa, 
+           Check-Box, 
+           COL 22,33, 
+           LINE 55,15,
+           LINES 1,31 ,
+           SIZE 3,00 ,
+           ENABLED MOD,
+           FLAT,
+           ID IS 78-ID-chk-preseaaaa,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           SELF-ACT,
+           TITLE "Check Box",
+           VALUE chk-preseaaaa-BUF,
+            .
+
+      * LABEL
+       05
+           Screen1-La-11aaaaaaaaa, 
+           Label, 
+           COL 3,00, 
+           LINE 55,15,
+           LINES 1,31 ,
+           SIZE 17,00 ,
+           FONT IS Small-Font,
+           ID IS 187,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Ins. automatico listini",
+           .
+
+      * LABEL
+       05
+           Screen1-La-5aaaaaa, 
+           Label, 
+           COL 31,17, 
+           LINE 55,08,
+           LINES 1,31 ,
+           SIZE 70,00 ,
+           FONT IS Small-Font,
+           ID IS 188,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Inserimento automatico listini",
            .
 
       * TOOLBAR
@@ -2843,7 +2900,7 @@
 
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 56,38,
+              LINES 57,85,
               SIZE 123,00,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
@@ -3446,6 +3503,8 @@
               MOVE 0 TO sco-nov
       * DB_CHECK BOX
               MOVE 0 TO sco-dic
+      * DB_CHECK BOX
+              MOVE 0 TO sco-auto-lst
            MOVE ALL X'9' TO Form1-KEYISTMP2
            MOVE ALL X'9' TO Form1-PKEYTMP
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, SetDefault>
@@ -3766,6 +3825,12 @@
               ELSE
                  MOVE 0 TO sco-dic
               END-IF
+      * DB_CHECK BOX : chk-preseaaaa
+              IF chk-preseaaaa-BUF = 1
+                 MOVE 1 TO sco-auto-lst
+              ELSE
+                 MOVE 0 TO sco-auto-lst
+              END-IF
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterBufToFld>
       * <TOTEM:END>
            .
@@ -3972,6 +4037,12 @@
                  MOVE 1 TO chk-dic-BUF
               ELSE
                  MOVE 0 TO chk-dic-BUF
+              END-IF
+      * DB_CHECK BOX : chk-preseaaaa
+              IF sco-auto-lst = 1
+                 MOVE 1 TO chk-preseaaaa-BUF
+              ELSE
+                 MOVE 0 TO chk-preseaaaa-BUF
               END-IF
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterFldToBuf>
            perform ABILITAZIONI.
@@ -4237,6 +4308,13 @@
               move 78-ID-chk-dic to store-id 
            end-if
 
+           if sco-auto-lst not = old-sco-auto-lst
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-chk-preseaaaa è l'ID del campo chk-preseaaaa
+              move 78-ID-chk-preseaaaa to store-id 
+           end-if
+
            .
        Form1-EXTENDED-FILE-STATUS.
            CALL "C$RERRNAME" USING TOTEM-MSG-ERR-FILE
@@ -4400,6 +4478,7 @@
            WHEN 5025 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 5026 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 5027 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
+           WHEN 5028 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
            EVALUATE Control-Id
@@ -4439,6 +4518,7 @@
            When 5025 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 5026 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 5027 PERFORM Screen1-DaCb-1-BeforeProcedure
+           When 5028 PERFORM Screen1-DaCb-1-BeforeProcedure
            END-EVALUATE
            PERFORM Form1-DISPLAY-STATUS-MSG
            perform Form1-BEFORE-SCREEN
@@ -4482,6 +4562,7 @@
            When 5025 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5026 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5027 PERFORM Screen1-DaCb-1-AfterProcedure
+           When 5028 PERFORM Screen1-DaCb-1-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .

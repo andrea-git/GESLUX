@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          scheduler.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        domenica 23 settembre 2018 23:10:04.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        giovedì 20 agosto 2020 16:20:13.
        REMARKS.
       *{TOTEM}END
 
@@ -55,7 +55,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -118,6 +118,7 @@
                   USAGE IS SIGNED-SHORT.
        77 cmd  PIC  x(200).
        77 SchedulerLog     PIC  x(256).
+       77 debugger-test    PIC  x.
        77 idx-log          PIC  9(3)
                   VALUE IS 0.
        01 tab-log-invio.
@@ -1351,7 +1352,11 @@
       * USER DEFINE PARAGRAPH
        CHIAMA-BATCH.
       * <TOTEM:PARA. CHIAMA-BATCH>
-           perform INVIO-MAIL-INI.
+           move space to debugger-test.
+           accept debugger-test from environment "DEBUGGER_TEST".
+           if debugger-test = space
+              perform INVIO-MAIL-INI
+           end-if.
            initialize wstampa.                 
            perform FORMAT-DATA-OGGI-ORA.
            accept  wstampa from environment "SCHEDULER_PATH_LOG".
@@ -1383,10 +1388,11 @@
            compute secondi-start = como-ss +
                                  ( como-mm * 60 ) +
                                  ( como-hh * 3600 ).
-                                                                  
-           call "C$SYSTEM" using "E:\GESLUX\acu-stop.bat".
-
-           call "C$SLEEP" using 5.
+                  
+           if debugger-test = space
+              call "C$SYSTEM" using "E:\GESLUX\acu-stop.bat"
+              call "C$SLEEP" using 5
+           end-if.
 
            set errore-bloccante to false.
 
@@ -1583,7 +1589,9 @@
            close lineseq.                    
            call "C$SYSTEM" using "E:\GESLUX\acu-start.bat".
 
-           perform INVIO-MAIL-FINE.
+           if debugger-test = space
+              perform INVIO-MAIL-FINE  
+           end-if.
 
       ***---
        FORMAT-DATA-OGGI-ORA.
