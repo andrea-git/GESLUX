@@ -867,7 +867,7 @@
               perform until 1 = 2
                  read articoli next no lock 
                       at end exit perform 
-                 end-read
+                 end-read                              
 
                  if art-si-do and art-attivo
                     move art-scorta to sco-codice
@@ -936,6 +936,7 @@
                        read clienti no lock invalid continue end-read
                        move 0                 to prg-peso-utf
                        move 0                 to prg-peso-non-utf
+                       move 0                 to prg-peso
 
                        move rlis-codice       to tlis-codice
                        read tlistini no lock invalid continue end-read 
