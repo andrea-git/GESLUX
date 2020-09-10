@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4519225917-664-2903122038
+PROGRAM_UNIQUE_CODE=TOTEM-7E49A82642-262-2246223483
 
 {{@DESCRIPTION:
 
@@ -1598,7 +1598,7 @@ Begin Screen Form2
          Font Variable     = Verdana12B-Occidentale
          Height in Cells   = TRUE
          Help ID           = 0
-         ID                = 10
+         ID                = 11
          Justification     = Center
          Label Offset      = 20
          Line              = 2,92
@@ -2412,7 +2412,7 @@ Begin Screen Form2
       Font Variable     = Arial10BI-Occidentale
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 11
+      ID                = 12
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 44,00
@@ -2446,7 +2446,7 @@ Begin Screen Form2
       Font Variable     = Arial10BI-Occidentale
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 12
+      ID                = 13
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 44,00
@@ -2481,7 +2481,7 @@ Begin Screen Form2
       Font Variable     = Arial10BI-Occidentale
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 13
+      ID                = 14
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 42,00
@@ -2516,7 +2516,7 @@ Begin Screen Form2
       Font Variable     = Arial10BI-Occidentale
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 14
+      ID                = 15
       Justification     = Right
       Label Offset      = 20
       Line              = 38,00
@@ -2551,7 +2551,7 @@ Begin Screen Form2
       Font Variable     = Arial10BI-Occidentale
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 15
+      ID                = 16
       Justification     = Right
       Label Offset      = 20
       Line              = 40,00
@@ -2586,7 +2586,7 @@ Begin Screen Form2
       Font Variable     = Arial10BI-Occidentale
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 16
+      ID                = 17
       Justification     = Right
       Label Offset      = 20
       Line              = 44,00
@@ -2621,7 +2621,7 @@ Begin Screen Form2
       Font Variable     = Arial10BI-Occidentale
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 17
+      ID                = 18
       Justification     = Right
       Label Offset      = 20
       Line              = 38,08
@@ -2655,7 +2655,7 @@ Begin Screen Form2
       Font Variable     = Arial10BI-Occidentale
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 18
+      ID                = 19
       Justification     = Right
       Label Offset      = 20
       Line              = 38,08
@@ -2689,7 +2689,7 @@ Begin Screen Form2
       Font Variable     = Arial10BI-Occidentale
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 19
+      ID                = 20
       Justification     = Right
       Label Offset      = 20
       Line              = 38,08
@@ -2723,7 +2723,7 @@ Begin Screen Form2
       Font Variable     = Arial10BI-Occidentale
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 20
+      ID                = 21
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 40,00
@@ -2800,7 +2800,7 @@ Begin Screen Form1
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = frame-limiti
-      3D Style          = Raised
+      3D Style          = Normal
       Alternate         = FALSE
       Clines            = 0
       Clines Unit       = Default
@@ -2822,7 +2822,7 @@ Begin Screen Form1
       Size              = 44,60
       Size Unit         = Default
       Tab Order         = 1
-      Thickness         = Very Heavy
+      Thickness         = Default
       Title             = "Selezione limiti"
       Title Position    = 2:Top center
       Visible           = NONE
@@ -4019,7 +4019,7 @@ Begin Screen Form1
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen4-Fr-1
-      3D Style          = Lowered
+      3D Style          = Normal
       Alternate         = FALSE
       Clines            = 0
       Clines Unit       = Default
@@ -4046,8 +4046,8 @@ Begin Screen Form1
       Visible           = NONE
       Width in Cells    = TRUE
       Begin Push-Button pb-ok
-         SCREEN-COL        = 30,90
-         SCREEN-LINE       = 23,51
+         SCREEN-COL        = 30,80
+         SCREEN-LINE       = 23,43
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = pb-ok
@@ -4058,7 +4058,7 @@ Begin Screen Form1
          Bitmap Square     = TRUE
          Clines            = 0
          Clines Unit       = Default
-         Column            = 30,90
+         Column            = 30,80
          Copy Resource     = TRUE
          Csize             = 0
          Csize Unit        = Default
@@ -4070,7 +4070,7 @@ Begin Screen Form1
          Height in Cells   = FALSE
          Help ID           = 0
          ID                = 200
-         Line              = 1,69
+         Line              = 1,61
          Lines             = 1,56
          Lines in Pixels   = 30
          Lines Unit        = Default
@@ -4091,8 +4091,8 @@ Begin Screen Form1
          Link To           = pb-ok-LinkTo
       End
       Begin Push-Button pb-annulla
-         SCREEN-COL        = 38,80
-         SCREEN-LINE       = 23,51
+         SCREEN-COL        = 38,70
+         SCREEN-LINE       = 23,43
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = pb-annulla
@@ -4103,7 +4103,7 @@ Begin Screen Form1
          Bitmap Square     = TRUE
          Clines            = 0
          Clines Unit       = Default
-         Column            = 38,80
+         Column            = 38,70
          Copy Resource     = TRUE
          Csize             = 0
          Csize Unit        = Default
@@ -4115,7 +4115,7 @@ Begin Screen Form1
          Height in Cells   = FALSE
          Help ID           = 0
          ID                = 201
-         Line              = 1,69
+         Line              = 1,61
          Lines             = 1,56
          Lines in Pixels   = 30
          Lines Unit        = Default
@@ -4354,29 +4354,30 @@ BEGIN-TEXT
            COPY "LINK-GESLOCK.DEF".
            copy "link-st-ordforn.def".
        01 r-riga.
-           05 r-mag            PIC  x(3).
-           05 r-codice         PIC  z(5).
-           05 r-ragsoc         PIC  x(80).
-           05 r-destino        PIC  z(5).
-           05 r-ragsoc-dest    PIC  x(80).
-           05 r-localita       PIC  x(40).
-           05 r-numero         PIC  z(8).
-           05 r-data-mov       PIC  99/99/9999.
-           05 r-marca          PIC  z(4).
-           05 r-articolo       PIC  z(6).
-           05 r-desart         PIC  x(50).
-           05 r-imp-merce      PIC  ----.---.---.--9,9999.
-           05 r-add-pb         PIC  ----.---.---.--9,9999.
-           05 r-cons           PIC  ----.---.---.--9,9999.
-           05 r-coubat         PIC  ----.---.---.--9,9999.
-           05 r-qta-ord        PIC  ---.---.--9.
-           05 r-qta-eva        PIC  ---.---.--9.
-           05 r-prezzo         PIC  ----.---.---.--9,9999.
-           05 r-tot            PIC  ----.---.---.--9,9999.
-           05 r-peso           PIC  zzz.zzz.zz9,999.
-           05 r-utf            PIC  x.
-           05 r-promo          PIC  9(15).
-           05 r-stato          PIC  x(20).
+           05 r-mag            pic x(3).
+           05 r-codice         pic z(5).
+           05 r-ragsoc         pic x(80).
+           05 r-destino        pic z(5).
+           05 r-ragsoc-dest    pic x(80).
+           05 r-localita       pic x(40).
+           05 r-numero         pic z(8).
+           05 r-data-mov       pic 99/99/9999.
+           05 r-marca          pic z(4).
+           05 r-articolo       pic z(6).
+           05 r-desart         pic x(50).
+           05 r-imp-merce      pic ----.---.---.--9,9999.
+           05 r-add-pb         pic ----.---.---.--9,9999.
+           05 r-cons           pic ----.---.---.--9,9999.
+           05 r-coubat         pic ----.---.---.--9,9999.
+           05 r-qta-ord        pic ---.---.--9.
+           05 r-qta-eva        pic ---.---.--9.
+           05 r-prezzo         pic ----.---.---.--9,9999.
+           05 r-tot            pic ----.---.---.--9,9999.
+           05 r-peso           pic zzz.zzz.zz9,999.
+           05 r-utf            pic x.
+           05 r-promo          pic 9(15).
+           05 r-stato          pic x(20).
+           05 r-codartfrn      pic 9(5).
 
        78  78-colore-inevasa    value 513.
        78  78-colore-paraziale  value 481.

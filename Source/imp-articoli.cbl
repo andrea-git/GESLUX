@@ -466,6 +466,10 @@
                             art-litri                  of articoli
                             art-note2                  of articoli
               end-unstring 
+              if art-descrizione1 of articoli = 
+                 "ARQUIVET COLL NYL NERO 2X45"
+                 stop "K"
+                  end-if
               move "PZ"  to art-unita-di-misura of articoli
               move "022" to art-codice-iva      of articoli
               move "C"   to art-tipo-stoc       of articoli

@@ -8,7 +8,7 @@
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
-PROGRAM_UNIQUE_CODE=TOTEM-7E451922585-425-1430325438
+PROGRAM_UNIQUE_CODE=TOTEM-7E491144213-245-153374771
 
 {{@DESCRIPTION:
 
@@ -6802,8 +6802,9 @@ LUBEXX           end-if
                  else
                     move tor-anno to con-anno
                     read tcontat no lock
-
-                    move con-ult-stampa-fatt to imp-data
+                                                        
+                    accept imp-data from century-date
+      *****              move con-ult-stampa-fatt to imp-data
 
                     start timposte key <= imp-chiave
                           invalid continue
@@ -6819,7 +6820,8 @@ LUBEXX           end-if
                     tor-data-bolla > 0
                     move tor-anno to con-anno
                     read tcontat no lock
-                    move con-ult-stampa-fatt to imp-data
+                    accept imp-data from century-date
+      *****              move con-ult-stampa-fatt to imp-data
 
                     start timposte key <= imp-chiave
                           invalid continue

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          vmovordforn.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 16 settembre 2019 00:32:03.
+       DATE-WRITTEN.        giovedì 10 settembre 2020 10:33:46.
        REMARKS.
       *{TOTEM}END
 
@@ -388,29 +388,30 @@
            COPY "LINK-GESLOCK.DEF".
            copy "link-st-ordforn.def".
        01 r-riga.
-           05 r-mag            PIC  x(3).
-           05 r-codice         PIC  z(5).
-           05 r-ragsoc         PIC  x(80).
-           05 r-destino        PIC  z(5).
-           05 r-ragsoc-dest    PIC  x(80).
-           05 r-localita       PIC  x(40).
-           05 r-numero         PIC  z(8).
-           05 r-data-mov       PIC  99/99/9999.
-           05 r-marca          PIC  z(4).
-           05 r-articolo       PIC  z(6).
-           05 r-desart         PIC  x(50).
-           05 r-imp-merce      PIC  ----.---.---.--9,9999.
-           05 r-add-pb         PIC  ----.---.---.--9,9999.
-           05 r-cons           PIC  ----.---.---.--9,9999.
-           05 r-coubat         PIC  ----.---.---.--9,9999.
-           05 r-qta-ord        PIC  ---.---.--9.
-           05 r-qta-eva        PIC  ---.---.--9.
-           05 r-prezzo         PIC  ----.---.---.--9,9999.
-           05 r-tot            PIC  ----.---.---.--9,9999.
-           05 r-peso           PIC  zzz.zzz.zz9,999.
-           05 r-utf            PIC  x.
-           05 r-promo          PIC  9(15).
-           05 r-stato          PIC  x(20).
+           05 r-mag            pic x(3).
+           05 r-codice         pic z(5).
+           05 r-ragsoc         pic x(80).
+           05 r-destino        pic z(5).
+           05 r-ragsoc-dest    pic x(80).
+           05 r-localita       pic x(40).
+           05 r-numero         pic z(8).
+           05 r-data-mov       pic 99/99/9999.
+           05 r-marca          pic z(4).
+           05 r-articolo       pic z(6).
+           05 r-desart         pic x(50).
+           05 r-imp-merce      pic ----.---.---.--9,9999.
+           05 r-add-pb         pic ----.---.---.--9,9999.
+           05 r-cons           pic ----.---.---.--9,9999.
+           05 r-coubat         pic ----.---.---.--9,9999.
+           05 r-qta-ord        pic ---.---.--9.
+           05 r-qta-eva        pic ---.---.--9.
+           05 r-prezzo         pic ----.---.---.--9,9999.
+           05 r-tot            pic ----.---.---.--9,9999.
+           05 r-peso           pic zzz.zzz.zz9,999.
+           05 r-utf            pic x.
+           05 r-promo          pic 9(15).
+           05 r-stato          pic x(20).
+           05 r-codartfrn      pic 9(5).
 
        78  78-colore-inevasa    value 513.
        78  78-colore-paraziale  value 481.
@@ -1054,11 +1055,9 @@
            LINE 1,50,
            LINES 21,00 ,
            SIZE 44,60 ,
-           RAISED,
            ID IS 9,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           VERY-HEAVY,
            TITLE "Selezione limiti",
            TITLE-POSITION 2,
            .
@@ -1532,7 +1531,6 @@
            LINE 22,82,
            LINES 2,78 ,
            SIZE 45,90 ,
-           LOWERED,
            ID IS 32,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -1542,8 +1540,8 @@
        05
            pb-ok, 
            Push-Button, 
-           COL 30,90, 
-           LINE 23,51,
+           COL 30,80, 
+           LINE 23,43,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-OK-BMP,
@@ -1561,8 +1559,8 @@
        05
            pb-annulla, 
            Push-Button, 
-           COL 38,80, 
-           LINE 23,51,
+           COL 38,70, 
+           LINE 23,43,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-CANCEL-BMP,

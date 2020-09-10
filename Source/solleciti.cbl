@@ -2092,6 +2092,7 @@
            FONT IS Small-Font,
            ID IS 19,
            HEIGHT-IN-CELLS,
+
            WIDTH-IN-CELLS,
            MASS-UPDATE 0,
            NOTIFY-DBLCLICK,
@@ -7618,7 +7619,8 @@
            DISPLAY Form1-Tb-1a
            DISPLAY Form1 UPON Form1-Handle
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterDisplay>
-
+
+
            SET LK-BL-SCRITTURA     TO TRUE.
            MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
            MOVE FORM1-HANDLE       TO LK-HND-WIN.

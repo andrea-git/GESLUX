@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          bprenf.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 25 giugno 2019 16:05:19.
+       DATE-WRITTEN.        martedì 1 settembre 2020 16:43:01.
        REMARKS.
       *{TOTEM}END
 
@@ -75,11 +75,11 @@
 
        WORKING-STORAGE      SECTION.
       *{TOTEM}ACU-DEF
-               COPY "ACUGUI.DEF".
-               COPY "ACUCOBOL.DEF".
-               COPY "FONTS.DEF".
-               COPY "CRTVARS.DEF".
-               COPY "SHOWMSG.DEF".
+               COPY "acugui.def".
+               COPY "acucobol.def".
+               COPY "fonts.def".
+               COPY "crtvars.def".
+               COPY "showmsg.def".
                COPY "totem.def".
                COPY "standard.def".
       *{TOTEM}END
@@ -521,6 +521,7 @@
        77 rordini-ror-k-articolo-SPLITBUF  PIC X(24).
        77 rordini-ror-k-master-SPLITBUF  PIC X(35).
        77 rordini-ror-k-stbolle-SPLITBUF  PIC X(30).
+       77 rordini-ror-k-ord-art-SPLITBUF  PIC X(19).
        77 tvettori-k-des-SPLITBUF  PIC X(41).
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
@@ -536,6 +537,7 @@
        77 mrordini-mro-k-articolo-SPLITBUF  PIC X(24).
        77 mrordini-mro-k-progr-SPLITBUF  PIC X(18).
        77 mrordini-mro-k-tprev-SPLITBUF  PIC X(39).
+       77 mrordini-mro-k-ord-art-SPLITBUF  PIC X(19).
        77 mtordini-mto-k-ord-cli-SPLITBUF  PIC X(55).
        77 mtordini-mto-k-data-SPLITBUF  PIC X(21).
        77 mtordini-mto-k-clides-SPLITBUF  PIC X(19).
@@ -3622,6 +3624,16 @@
            rordini-ror-k-stbolle-SPLITBUF(13:17)
            .
 
+       rordini-ror-k-ord-art-MERGE-SPLITBUF.
+           INITIALIZE rordini-ror-k-ord-art-SPLITBUF
+           MOVE ror-anno OF rordini(1:4) TO 
+           rordini-ror-k-ord-art-SPLITBUF(1:4)
+           MOVE ror-num-ordine OF rordini(1:8) TO 
+           rordini-ror-k-ord-art-SPLITBUF(5:8)
+           MOVE ror-cod-articolo OF rordini(1:6) TO 
+           rordini-ror-k-ord-art-SPLITBUF(13:6)
+           .
+
        DataSet1-rordini-INITSTART.
            IF DataSet1-rordini-KEY-Asc
               MOVE Low-Value TO ror-chiave of rordini
@@ -3687,6 +3699,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT 
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -3718,6 +3731,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -3749,6 +3763,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -5899,6 +5914,14 @@
            MOVE mro-chiave(1:17) TO mrordini-mro-k-tprev-SPLITBUF(22:17)
            .
 
+       mrordini-mro-k-ord-art-MERGE-SPLITBUF.
+           INITIALIZE mrordini-mro-k-ord-art-SPLITBUF
+           MOVE mro-chiave-testa(1:12) TO 
+           mrordini-mro-k-ord-art-SPLITBUF(1:12)
+           MOVE mro-cod-articolo(1:6) TO 
+           mrordini-mro-k-ord-art-SPLITBUF(13:6)
+           .
+
        DataSet1-mrordini-INITSTART.
            IF DataSet1-mrordini-KEY-Asc
               MOVE Low-Value TO mro-chiave
@@ -5964,6 +5987,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT 
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -5995,6 +6019,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -6026,6 +6051,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -8971,8 +8997,9 @@ LUBEXX           end-if
                  else
                     move tor-anno to con-anno
                     read tcontat no lock
-
-                    move con-ult-stampa-fatt to imp-data
+                                                        
+                    accept imp-data from century-date
+      *****              move con-ult-stampa-fatt to imp-data
 
                     start timposte key <= imp-chiave
                           invalid continue
@@ -8988,7 +9015,8 @@ LUBEXX           end-if
                     tor-data-bolla > 0
                     move tor-anno to con-anno
                     read tcontat no lock
-                    move con-ult-stampa-fatt to imp-data
+                    accept imp-data from century-date
+      *****              move con-ult-stampa-fatt to imp-data
 
                     start timposte key <= imp-chiave
                           invalid continue

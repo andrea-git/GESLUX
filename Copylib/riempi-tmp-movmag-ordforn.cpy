@@ -134,7 +134,7 @@ LUBEXX           end-if
            end-if.
 
       ***---
-       LOOP-rordforn.
+       LOOP-RORDFORN.
            set tutto-ok to true.
            move tof-chiave to rof-chiave.
            move low-value  to rof-riga.
@@ -264,10 +264,7 @@ LUBEXX           end-if
            move tof-destino    to tmp-movf-destino.
 
            move rof-cod-articolo to art-codice.
-           read articoli no lock 
-              invalid 
-                 continue 
-           end-read.
+           read articoli no lock invalid continue end-read.
 
            move art-marca-prodotto to tmp-movf-marca.
 
@@ -275,10 +272,7 @@ LUBEXX           end-if
 LUBEXX     |Devo utilizzare il peso della riga
 LUBEXX     move rof-peso              to tmp-movf-peso.
 
-           write tmp-movf-rec 
-              invalid 
-                 continue 
-           end-write.
+           write tmp-movf-rec invalid continue end-write.
 
            perform BUG-FIX-THIN-CLIENT.
 
@@ -533,8 +527,6 @@ LUBEXX     move rof-peso              to tmp-movf-peso.
                     end-string
               end-read
 
-              
-
               move tmp-movf-movim      to r-numero
 
               move tmp-movf-data-movim to como-data
@@ -554,6 +546,7 @@ LUBEXX        move "N"                 to r-utf
               read articoli no lock
                    invalid continue
                not invalid
+                   move art-cod-fornitore to r-codartfrn
                    |Il file è già stato riempito coi record attivi
                     move art-descrizione  to r-desart
 LUBEXX              if art-peso-utf not = 0
@@ -633,9 +626,11 @@ LUBEXX              end-if
                         separatore          delimited size
                         "UTF"               delimited size
                         separatore          delimited size
-                        "Promo"             delimited size
+                        "Promo"             delimited size 
                         separatore          delimited size
                         "Stato"             delimited size
+                        separatore          delimited size
+                        "Cod.art.forn."     delimited size
                         into line-riga
                  end-string
                  write line-riga
@@ -696,9 +691,11 @@ LUBEXX              end-if
                      separatore    delimited size
                      r-utf         delimited size
                      separatore    delimited size
-                     r-promo       delimited size
+                     r-promo       delimited size 
                      separatore    delimited size
                      r-stato       delimited size
+                     separatore    delimited size
+                     r-codartfrn   delimited size
                      into line-riga
               end-string
               write line-riga

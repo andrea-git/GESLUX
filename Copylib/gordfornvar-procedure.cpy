@@ -144,12 +144,16 @@
            evaluate true
            when tof-inserito
       *****     when tof-accettato
-                display message box "Cancellare l'ordine corrente?"
-                        title = titolo
-                        type mb-yes-no
-                        default mb-no
-                        giving scelta
-                        icon 2
+                if PgmChiamante = "del-ordinif"
+                   move mb-yes to scelta
+                else
+                   display message "Cancellare l'ordine corrente?"
+                             title titolo
+                              type mb-yes-no
+                           default mb-no
+                            giving scelta
+                             icon 2
+                end-if
            when tof-inviato
                 move mb-no   to scelta
                 display message "Ordine già inviato."
@@ -257,8 +261,11 @@ PATCH            perform SCRIVI-FILE-BACKUP
                  initialize tof-rec 
                         old-tof-rec replacing numeric data by zeroes
                                          alphanumeric data by spaces 
-                 display message "Cancellazione avenuta con successo!"
-                           title titolo
+                 if PgmChiamante not = PgmChiamante
+                    display message 
+                            "Cancellazione avenuta con successo!"
+                              title titolo
+                 end-if
                  set RicaricaGrid   to true
                  set RigaCambiata   to false
                  set PrezzoCambiato to false
@@ -593,9 +600,9 @@ LUBEXX        move tof-stato to save-stato
                  if YesMessage    
                     move 5000 to control-id |TAB-CONTROL
                     move    4 to accept-control
-                    display message box MSG-Record-inesistente
-                            title = tit-err
-                            icon mb-warning-icon
+                    display message MSG-Record-inesistente
+                              title tit-err
+                              icon mb-warning-icon
                  end-if
               end-if
            end-if.
@@ -1954,10 +1961,10 @@ PATCH      end-if.
       *     end-if.
                      
            if NoSalvato
-              display message box MSG-Salvare-le-modifiche
-                            title titolo
-                            type mb-yes-no-cancel
-                            giving scelta
+              display message MSG-Salvare-le-modifiche
+                        title titolo
+                         type mb-yes-no-cancel
+                       giving scelta
 
               evaluate scelta
               when mb-yes
@@ -2396,7 +2403,16 @@ PATCH      call "c$calledby" using PgmChiamante.
            perform DISPLAY-SCREEN.
            move 2 to save-riga event-data-2 riga.
            move 4 to event-data-1 colonna.
-           perform SETTA-RIGA.
+           perform SETTA-RIGA.      
+
+           if PgmChiamante = "del-ordinif"
+              perform MODIFICA
+              if tutto-ok
+                 perform CANCELLA
+              end-if
+              move 27 to key-status
+           end-if.
+
            move LinkNumero to numero-edit.
            display lab-numero.
            if livello-abil < 2 
