@@ -918,10 +918,11 @@ LUBEXX     end-if.
 
       ***---
        SOMMA-DINAMICI.         
-           move art-codice to prg-cod-articolo.
-           move art-codice     to prg-cod-articolo.
-           move storemagazzino to prg-cod-magazzino.
-           move low-value      to prg-tipo-imballo prg-peso.
+           move art-codice  to prg-cod-articolo.
+           move art-codice  to prg-cod-articolo.
+      *****     move storemagazzino to prg-cod-magazzino.
+           move art-mag-std to prg-cod-magazzino.
+           move low-value   to prg-tipo-imballo prg-peso.
            start progmag key >= prg-chiave 
                  invalid continue 
              not invalid
@@ -931,7 +932,8 @@ LUBEXX     end-if.
                          at end exit perform 
                     end-read
                     if prg-cod-articolo  not = art-codice or
-                       prg-cod-magazzino not = StoreMagazzino
+      *****                 prg-cod-magazzino not = StoreMagazzino
+                       prg-cod-magazzino not = art-mag-std
                        exit perform
                     end-if
                     add prg-giacenza   to hid-giacenza
