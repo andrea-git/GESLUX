@@ -21,7 +21,12 @@
                10 gdo-vuoti.
                    15 gdo-gruppo-invio PIC  9(5).
                    15 gdo-cli-rifer    PIC  9(5).
-                   15 gdo-num-vuoto-1  PIC  9(5).
+                   15 gdo-auto-lst     PIC  9(1).
+                       88 gdo-auto-lst-si VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+                       88 gdo-auto-lst-no VALUE IS 0    WHEN SET TO 
+           FALSE  0. 
+                   15 gdo-num-vuoto-1  PIC  9(4).
                    15 gdo-num-vuoto-2  PIC  9(15).
                    15 gdo-num-vuoto-3  PIC  9(15).
                    15 gdo-alfa-vuoto-1 PIC  x(13).

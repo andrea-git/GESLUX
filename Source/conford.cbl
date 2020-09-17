@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          conford.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 21 maggio 2020 17:18:19.
+       DATE-WRITTEN.        martedì 15 settembre 2020 12:30:19.
        REMARKS.
       *{TOTEM}END
 
@@ -27,24 +27,24 @@
        INPUT-OUTPUT         SECTION.
        FILE-CONTROL.
       *{TOTEM}FILE-CONTROL
+           COPY "usr-tel.sl".
+           COPY "tsetinvio.sl".
            COPY "lineseq.sl".
            COPY "lineseq.sl"
                 REPLACING ==lineseq== BY ==lineseq1==,
                           ==STATUS-lineseq== BY ==STATUS-lineseq1==
                 .
-           COPY "usr-tel.sl".
-           COPY "tsetinvio.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
       *{TOTEM}FILE
+           COPY "usr-tel.fd".
+           COPY "tsetinvio.fd".
            COPY "lineseq.fd".
            COPY "lineseq.fd"
                 REPLACING ==lineseq== BY ==lineseq1==,
                           ==STATUS-lineseq== BY ==STATUS-lineseq1==
                 .
-           COPY "usr-tel.fd".
-           COPY "tsetinvio.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -127,11 +127,6 @@
        77 ef-oggetto-buf   PIC  X(300).
        77 note-mail        PIC  X(500).
        77 ef-mail-cc       PIC  X(500).
-       77 wstampa          PIC  X(256).
-       77 STATUS-lineseq   PIC  X(2).
-           88 Valid-STATUS-lineseq VALUE IS "00" THRU "09". 
-       77 STATUS-lineseq1  PIC  X(2).
-           88 VALID-STATUS-lineseq1 VALUE IS "00" THRU "09". 
        77 ef-mail-buf      PIC  X(2000).
        77 status-usr-tel   PIC  X(2).
            88 Valid-status-usr-tel VALUE IS "00" THRU "09". 
@@ -141,6 +136,11 @@
            88 Valid-STATUS-tsetinvio VALUE IS "00" THRU "09". 
        77 AUTO-ID          PIC  9(6)
                   VALUE IS 130.
+       77 wstampa          PIC  X(256).
+       77 STATUS-lineseq   PIC  X(2).
+           88 Valid-STATUS-lineseq VALUE IS "00" THRU "09". 
+       77 STATUS-lineseq1  PIC  X(2).
+           88 VALID-STATUS-lineseq1 VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -149,14 +149,25 @@
           88 Screen2-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 STATUS-form3-FLAG-REFRESH PIC  9.
           88 form3-FLAG-REFRESH  VALUE 1 FALSE 0. 
-       77 TMP-DataSet1-lineseq-BUF     PIC X(900).
-       77 TMP-DataSet1-lineseq1-BUF     PIC X(900).
        77 TMP-DataSet1-usr-tel-BUF     PIC X(1362).
        77 TMP-DataSet1-tsetinvio-BUF     PIC X(1023).
+       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
+       77 TMP-DataSet1-lineseq1-BUF     PIC X(1000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
       * FILE'S LOCK MODE FLAG
+       77 DataSet1-usr-tel-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-usr-tel-LOCK  VALUE "Y".
+       77 DataSet1-KEYIS   PIC 9(3) VALUE 1.
+       77 DataSet1-usr-tel-KEY1-ORDER  PIC X VALUE "A".
+          88 DataSet1-usr-tel-KEY1-Asc  VALUE "A".
+          88 DataSet1-usr-tel-KEY1-Desc VALUE "D".
+       77 DataSet1-tsetinvio-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tsetinvio-LOCK  VALUE "Y".
+       77 DataSet1-tsetinvio-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tsetinvio-KEY-Asc  VALUE "A".
+          88 DataSet1-tsetinvio-KEY-Desc VALUE "D".
        77 DataSet1-lineseq-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-lineseq-LOCK  VALUE "Y".
        77 DataSet1-lineseq-KEY-ORDER  PIC X VALUE "A".
@@ -167,16 +178,6 @@
        77 DataSet1-lineseq1-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-lineseq1-KEY-Asc  VALUE "A".
           88 DataSet1-lineseq1-KEY-Desc VALUE "D".
-       77 DataSet1-usr-tel-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-usr-tel-LOCK  VALUE "Y".
-       77 DataSet1-usr-tel-KEY-ORDER  PIC X VALUE "A".
-          88 DataSet1-usr-tel-KEY-Asc  VALUE "A".
-          88 DataSet1-usr-tel-KEY-Desc VALUE "D".
-       77 DataSet1-tsetinvio-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-tsetinvio-LOCK  VALUE "Y".
-       77 DataSet1-tsetinvio-KEY-ORDER  PIC X VALUE "A".
-          88 DataSet1-tsetinvio-KEY-Asc  VALUE "A".
-          88 DataSet1-tsetinvio-KEY-Desc VALUE "D".
 
 
            copy "mail.def".
@@ -590,38 +591,14 @@
 
        OPEN-FILE-RTN.
       *    Before Open
+           PERFORM OPEN-usr-tel
+      *    tsetinvio OPEN MODE IS FALSE
+      *    PERFORM OPEN-tsetinvio
       *    lineseq OPEN MODE IS FALSE
       *    PERFORM OPEN-lineseq
       *    lineseq1 OPEN MODE IS FALSE
       *    PERFORM OPEN-lineseq1
-           PERFORM OPEN-usr-tel
-      *    tsetinvio OPEN MODE IS FALSE
-      *    PERFORM OPEN-tsetinvio
       *    After Open
-           .
-
-       OPEN-lineseq.
-      * <TOTEM:EPT. INIT:conford, FD:lineseq, BeforeOpen>
-      * <TOTEM:END>
-           OPEN  OUTPUT lineseq
-           IF NOT Valid-STATUS-lineseq
-              PERFORM  Screen2-EXTENDED-FILE-STATUS
-              GO TO EXIT-STOP-ROUTINE
-           END-IF
-      * <TOTEM:EPT. INIT:conford, FD:lineseq, AfterOpen>
-      * <TOTEM:END>
-           .
-
-       OPEN-lineseq1.
-      * <TOTEM:EPT. INIT:conford, FD:lineseq1, BeforeOpen>
-      * <TOTEM:END>
-           OPEN  OUTPUT lineseq1
-           IF NOT VALID-STATUS-lineseq1
-              PERFORM  Screen2-EXTENDED-FILE-STATUS
-              GO TO EXIT-STOP-ROUTINE
-           END-IF
-      * <TOTEM:EPT. INIT:conford, FD:lineseq1, AfterOpen>
-      * <TOTEM:END>
            .
 
        OPEN-usr-tel.
@@ -655,26 +632,40 @@
       * <TOTEM:END>
            .
 
+       OPEN-lineseq.
+      * <TOTEM:EPT. INIT:conford, FD:lineseq, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT lineseq
+           IF NOT Valid-STATUS-lineseq
+              PERFORM  Screen2-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:conford, FD:lineseq, AfterOpen>
+      * <TOTEM:END>
+           .
+
+       OPEN-lineseq1.
+      * <TOTEM:EPT. INIT:conford, FD:lineseq1, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT lineseq1
+           IF NOT VALID-STATUS-lineseq1
+              PERFORM  Screen2-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:conford, FD:lineseq1, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
+           PERFORM CLOSE-usr-tel
+      *    tsetinvio CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-tsetinvio
       *    lineseq CLOSE MODE IS FALSE
       *    PERFORM CLOSE-lineseq
       *    lineseq1 CLOSE MODE IS FALSE
       *    PERFORM CLOSE-lineseq1
-           PERFORM CLOSE-usr-tel
-      *    tsetinvio CLOSE MODE IS FALSE
-      *    PERFORM CLOSE-tsetinvio
       *    After Close
-           .
-
-       CLOSE-lineseq.
-      * <TOTEM:EPT. INIT:conford, FD:lineseq, BeforeClose>
-      * <TOTEM:END>
-           .
-
-       CLOSE-lineseq1.
-      * <TOTEM:EPT. INIT:conford, FD:lineseq1, BeforeClose>
-      * <TOTEM:END>
            .
 
        CLOSE-usr-tel.
@@ -688,201 +679,99 @@
       * <TOTEM:END>
            .
 
-       DataSet1-lineseq-INITSTART.
-           .
-
-       DataSet1-lineseq-INITEND.
-           .
-
-       DataSet1-Change-CurrentKey-Asc.
-           MOVE "A" TO DataSet1-lineseq-KEY-ORDER
-           .
-
-       DataSet1-Change-CurrentKey-Desc.
-           MOVE "D" TO DataSet1-lineseq-KEY-ORDER
-           .
-
-       DataSet1-lineseq-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadRecord>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadRecord>
+       CLOSE-lineseq.
+      * <TOTEM:EPT. INIT:conford, FD:lineseq, BeforeClose>
       * <TOTEM:END>
            .
 
-       DataSet1-lineseq-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadNext>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadNext>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadPrev>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadPrev>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeWrite>
-      * <TOTEM:END>
-           WRITE line-riga OF lineseq.
-           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
-           MOVE "lineseq" TO TOTEM-ERR-FILE
-           MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterWrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRewrite>
-      * <TOTEM:END>
-           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
-           MOVE "lineseq" TO TOTEM-ERR-FILE
-           MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRewrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeDelete>
-      * <TOTEM:END>
-           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
-           MOVE "lineseq" TO TOTEM-ERR-FILE
-           MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterDelete>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq1-INITSTART.
-           .
-
-       DataSet1-lineseq1-INITEND.
-           .
-
-       DataSet1-lineseq1-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeReadRecord>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterReadRecord>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq1-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeReadNext>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterReadNext>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq1-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeReadPrev>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterReadPrev>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq1-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeWrite>
-      * <TOTEM:END>
-           WRITE line-riga OF lineseq1.
-           MOVE STATUS-lineseq1 TO TOTEM-ERR-STAT
-           MOVE "lineseq1" TO TOTEM-ERR-FILE
-           MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterWrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq1-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeRewrite>
-      * <TOTEM:END>
-           MOVE STATUS-lineseq1 TO TOTEM-ERR-STAT
-           MOVE "lineseq1" TO TOTEM-ERR-FILE
-           MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterRewrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq1-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeDelete>
-      * <TOTEM:END>
-           MOVE STATUS-lineseq1 TO TOTEM-ERR-STAT
-           MOVE "lineseq1" TO TOTEM-ERR-FILE
-           MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterDelete>
+       CLOSE-lineseq1.
+      * <TOTEM:EPT. INIT:conford, FD:lineseq1, BeforeClose>
       * <TOTEM:END>
            .
 
        DataSet1-usr-tel-INITSTART.
-           IF DataSet1-usr-tel-KEY-Asc
-              MOVE Low-Value TO usr-chiave
-           ELSE
-              MOVE High-Value TO usr-chiave
-           END-IF
+           EVALUATE DataSet1-KEYIS
+           WHEN 1
+              IF DataSet1-usr-tel-KEY1-Asc
+                 MOVE Low-Value TO usr-chiave
+              ELSE
+                 MOVE High-Value TO usr-chiave
+              END-IF
+           END-EVALUATE
            .
 
        DataSet1-usr-tel-INITEND.
-           IF DataSet1-usr-tel-KEY-Asc
-              MOVE High-Value TO usr-chiave
-           ELSE
-              MOVE Low-Value TO usr-chiave
-           END-IF
+           EVALUATE DataSet1-KEYIS
+           WHEN 1
+              IF DataSet1-usr-tel-KEY1-Asc
+                 MOVE High-Value TO usr-chiave
+              ELSE
+                 MOVE Low-Value TO usr-chiave
+              END-IF
+           END-EVALUATE
+           .
+
+       DataSet1-CHANGETO-KEY1.
+           MOVE 1 TO DataSet1-KEYIS
+           .   
+
+       DataSet1-Change-CurrentKey-Asc.
+           EVALUATE DataSet1-KEYIS
+           WHEN 1
+              MOVE "A" TO DataSet1-usr-tel-KEY1-ORDER
+           END-EVALUATE
+           .
+
+       DataSet1-Change-CurrentKey-Desc.
+           EVALUATE DataSet1-KEYIS
+           WHEN 1
+              MOVE "D" TO DataSet1-usr-tel-KEY1-ORDER
+           END-EVALUATE
            .
 
       * usr-tel
        DataSet1-usr-tel-START.
-           IF DataSet1-usr-tel-KEY-Asc
-              START usr-tel KEY >= usr-chiave
-           ELSE
-              START usr-tel KEY <= usr-chiave
-           END-IF
+           EVALUATE DataSet1-KEYIS
+           WHEN 1
+              IF DataSet1-usr-tel-KEY1-Asc
+                 START usr-tel KEY >= usr-chiave
+              ELSE
+                 START usr-tel KEY <= usr-chiave
+              END-IF
+           END-EVALUATE
            .
 
        DataSet1-usr-tel-START-NOTGREATER.
-           IF DataSet1-usr-tel-KEY-Asc
-              START usr-tel KEY <= usr-chiave
-           ELSE
-              START usr-tel KEY >= usr-chiave
-           END-IF
+           EVALUATE DataSet1-KEYIS
+           WHEN 1
+              IF DataSet1-usr-tel-KEY1-Asc
+                 START usr-tel KEY <= usr-chiave
+              ELSE
+                 START usr-tel KEY >= usr-chiave
+              END-IF
+           END-EVALUATE
            .
 
        DataSet1-usr-tel-START-GREATER.
-           IF DataSet1-usr-tel-KEY-Asc
-              START usr-tel KEY > usr-chiave
-           ELSE
-              START usr-tel KEY < usr-chiave
-           END-IF
+           EVALUATE DataSet1-KEYIS
+           WHEN 1
+              IF DataSet1-usr-tel-KEY1-Asc
+                 START usr-tel KEY > usr-chiave
+              ELSE
+                 START usr-tel KEY < usr-chiave
+              END-IF
+           END-EVALUATE
            .
 
        DataSet1-usr-tel-START-LESS.
-           IF DataSet1-usr-tel-KEY-Asc
-              START usr-tel KEY < usr-chiave
-           ELSE
-              START usr-tel KEY > usr-chiave
-           END-IF
+           EVALUATE DataSet1-KEYIS
+           WHEN 1
+              IF DataSet1-usr-tel-KEY1-Asc
+                 START usr-tel KEY < usr-chiave
+              ELSE
+                 START usr-tel KEY > usr-chiave
+              END-IF
+           END-EVALUATE
            .
 
        DataSet1-usr-tel-Read.
@@ -890,13 +779,16 @@
       * <TOTEM:END>
       * <TOTEM:EPT. FD:DataSet1, FD:usr-tel, BeforeReadRecord>
       * <TOTEM:END>
-           IF DataSet1-usr-tel-LOCK
-              READ usr-tel WITH LOCK 
-              KEY usr-chiave
-           ELSE
-              READ usr-tel WITH NO LOCK 
-              KEY usr-chiave
-           END-IF
+           EVALUATE DataSet1-KEYIS
+           WHEN 1
+              IF DataSet1-usr-tel-LOCK
+                 READ usr-tel WITH LOCK 
+                 KEY usr-chiave
+              ELSE
+                 READ usr-tel WITH NO LOCK 
+                 KEY usr-chiave
+              END-IF
+           END-EVALUATE
            MOVE status-usr-tel TO TOTEM-ERR-STAT 
            MOVE "usr-tel" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -911,19 +803,22 @@
       * <TOTEM:END>
       * <TOTEM:EPT. FD:DataSet1, FD:usr-tel, BeforeReadNext>
       * <TOTEM:END>
-           IF DataSet1-usr-tel-KEY-Asc
-              IF DataSet1-usr-tel-LOCK
-                 READ usr-tel NEXT WITH LOCK
+           EVALUATE DataSet1-KEYIS
+           WHEN 1
+              IF DataSet1-usr-tel-KEY1-Asc
+                 IF DataSet1-usr-tel-LOCK
+                    READ usr-tel NEXT WITH LOCK
+                 ELSE
+                    READ usr-tel NEXT WITH NO LOCK
+                 END-IF
               ELSE
-                 READ usr-tel NEXT WITH NO LOCK
+                 IF DataSet1-usr-tel-LOCK
+                    READ usr-tel PREVIOUS WITH LOCK
+                 ELSE
+                    READ usr-tel PREVIOUS WITH NO LOCK
+                 END-IF
               END-IF
-           ELSE
-              IF DataSet1-usr-tel-LOCK
-                 READ usr-tel PREVIOUS WITH LOCK
-              ELSE
-                 READ usr-tel PREVIOUS WITH NO LOCK
-              END-IF
-           END-IF
+           END-EVALUATE
            MOVE status-usr-tel TO TOTEM-ERR-STAT
            MOVE "usr-tel" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -938,19 +833,22 @@
       * <TOTEM:END>
       * <TOTEM:EPT. FD:DataSet1, FD:usr-tel, BeforeReadPrev>
       * <TOTEM:END>
-           IF DataSet1-usr-tel-KEY-Asc
-              IF DataSet1-usr-tel-LOCK
-                 READ usr-tel PREVIOUS WITH LOCK
+           EVALUATE DataSet1-KEYIS
+           WHEN 1
+              IF DataSet1-usr-tel-KEY1-Asc
+                 IF DataSet1-usr-tel-LOCK
+                    READ usr-tel PREVIOUS WITH LOCK
+                 ELSE
+                    READ usr-tel PREVIOUS WITH NO LOCK
+                 END-IF
               ELSE
-                 READ usr-tel PREVIOUS WITH NO LOCK
+                 IF DataSet1-usr-tel-LOCK
+                    READ usr-tel NEXT WITH LOCK
+                 ELSE
+                    READ usr-tel NEXT WITH NO LOCK
+                 END-IF
               END-IF
-           ELSE
-              IF DataSet1-usr-tel-LOCK
-                 READ usr-tel NEXT WITH LOCK
-              ELSE
-                 READ usr-tel NEXT WITH NO LOCK
-              END-IF
-           END-IF
+           END-EVALUATE
            MOVE status-usr-tel TO TOTEM-ERR-STAT
            MOVE "usr-tel" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -1147,29 +1045,187 @@
       * <TOTEM:END>
            .
 
+       DataSet1-lineseq-INITSTART.
+           .
+
+       DataSet1-lineseq-INITEND.
+           .
+
+       DataSet1-lineseq-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-lineseq-LOCK
+              READ lineseq WITH LOCK 
+           ELSE
+              READ lineseq WITH NO LOCK 
+           END-IF
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT 
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-lineseq-KEY-Asc
+              IF DataSet1-lineseq-LOCK
+                 READ lineseq NEXT WITH LOCK
+              ELSE
+                 READ lineseq NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadPrev>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterDelete>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq1-INITSTART.
+           .
+
+       DataSet1-lineseq1-INITEND.
+           .
+
+       DataSet1-lineseq1-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-lineseq1-LOCK
+              READ lineseq1 WITH LOCK 
+           ELSE
+              READ lineseq1 WITH NO LOCK 
+           END-IF
+           MOVE STATUS-lineseq1 TO TOTEM-ERR-STAT 
+           MOVE "lineseq1" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq1-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-lineseq1-KEY-Asc
+              IF DataSet1-lineseq1-LOCK
+                 READ lineseq1 NEXT WITH LOCK
+              ELSE
+                 READ lineseq1 NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-lineseq1 TO TOTEM-ERR-STAT
+           MOVE "lineseq1" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq1-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeReadPrev>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq1-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq1 TO TOTEM-ERR-STAT
+           MOVE "lineseq1" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq1-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq1 TO TOTEM-ERR-STAT
+           MOVE "lineseq1" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq1-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq1 TO TOTEM-ERR-STAT
+           MOVE "lineseq1" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
-           INITIALIZE line-riga OF lineseq
-           INITIALIZE line-riga OF lineseq1
            INITIALIZE usr-rec OF usr-tel
            INITIALIZE tsi-rec OF tsetinvio
-           .
-
-
-      * FD's Initialize Paragraph
-       DataSet1-lineseq-INITREC.
            INITIALIZE line-riga OF lineseq
-               REPLACING NUMERIC       DATA BY ZEROS
-                         ALPHANUMERIC  DATA BY SPACES
-                         ALPHABETIC    DATA BY SPACES
+           INITIALIZE line-riga OF lineseq1
            .
 
-      * FD's Initialize Paragraph
-       DataSet1-lineseq1-INITREC.
-           INITIALIZE line-riga OF lineseq1
-               REPLACING NUMERIC       DATA BY ZEROS
-                         ALPHANUMERIC  DATA BY SPACES
-                         ALPHABETIC    DATA BY SPACES
-           .
 
       * FD's Initialize Paragraph
        DataSet1-usr-tel-INITREC.
@@ -1182,6 +1238,22 @@
       * FD's Initialize Paragraph
        DataSet1-tsetinvio-INITREC.
            INITIALIZE tsi-rec OF tsetinvio
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-lineseq-INITREC.
+           INITIALIZE line-riga OF lineseq
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-lineseq1-INITREC.
+           INITIALIZE line-riga OF lineseq1
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -1742,35 +1814,35 @@
            if PgmChiamante = "ordinevar"
               string inizio-corpo x"0d0a",                
                   x"0d0a" 
-                   "la presente per inviare in allegato copia della conf
-      -    "erma d'ordine " x"0d0a"
-                   "riportante i prezzi che usciranno in fattura." x"0d0
-      -    "a"
+                  "In allegato copia della conferma d'ordine con i prezz
+      -    "i che saranno riportati in fattura."x"0d0a"
                   x"0d0a" 
                    "Qualora doveste verificare alcune leggere modifiche 
-      -    "in merito ai codici presenti," x"0d0a"
-                   "chiediamo la cortesia di seguirci in tal senso in qu
-      -    "anto variazioni derivate dagli increases" x"0d0a"
-                   "delle materie prime petrolifere, in costante fluttua
-      -    "zione, derivate dalla crisi mondiale del" x"0d0a"
-                   " settore e del valore del piombo, quotato giornalmen
-      -    "te dalla Borsa di Londra." x"0d0a"
+      -    "sulle condizioni chiediamo la cortesia di adeguarle ai vostr
+      -    "i sistemi, in quanto derivanti dagli increases delle materie
+      -    " prime petrolifere e dal valore del piombo, in costante flut
+      -    "tuazione e quotati giornalmente dalla Borsa di Londra." x"0d
+      -    "0a"
                   x"0d0a"
-                   "Certi della totale comprensione da parte vostra, in 
-      -    "scia del rapporto di partnership e piena" x"0d0a"
-                   "collaborazione, rimaniamo a Vostra consueta, solita 
-      -    "e cortese disposizione." x"0d0a"
+                  "N.B. LA MANCATA RISPOSTA ALLA PRESENTE COSTITUIRÀ CON
+      -    "FERMA CERTA DELLE APPLICAZIONI INDICATE, "x"0d0a"
+                  "pertanto non verranno accettate eventuali segnalazion
+      -    "i successive, di qualsiasi genere."x"0d0a"
                   x"0d0a"
-                   "N.B. LA MANCATA RISPOSTA ALLA SUDDETTA COSTITUIRÀ CO
-      -    "NFERMA CERTA DELLE APPLICAZIONI INDICATE," x"0d0a"
-                   "pertanto non verranno accettate eventuali segnalazio
-      -    "ni successive, di qualsiasi genere." x"0d0a"
+                   "Vi ricordiamo che è tassativo verificare al momento 
+      -    "della consegna la conformità della merce con i documenti di 
+      -    "scarico. "x"0d0a"
+                   "Gli eventuali colli mancanti potranno essere riconos
+      -    "ciuti solo se annotati sui documenti."x"0d0a"
+                   x"0d0a"
+                   "Certi della totale comprensione da parte vostra e de
+      -    "lla vostra piena collaborazione, rimaniamo a Vostra cortese 
+      -    "disposizione." x"0d0a"
+                   x"0d0a"
+                   "Grazie e buon lavoro!"x"0d0a"
                   x"0d0a"
-                   "Grazie e buon lavoro."x"0d0a"
-                  x"0d0a"
-                   "Tel. +39-02-26515535 - +39-02-26515532"x"0d0a"
-                  x"0d0a" 
-                   "Fax  +39-02-26515551"x"0d0a"
+                   "Staff Lubex Spa"x"0d0a"
+                   "Tel. +39-02-26515535"x"0d0a"
                    into ef-mail-buf
               end-string
            else                       

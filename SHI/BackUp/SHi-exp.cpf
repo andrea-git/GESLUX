@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=exp-shi-Ev-Before-Program
 AFTER_PROGRAM=exp-shi-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E43C13573-460-2284413496
+PROGRAM_UNIQUE_CODE=TOTEM-7E49119917-971-403629232
 
 {{@DESCRIPTION:
 
@@ -2342,17 +2342,39 @@ BEGIN-TEXT
                 into lm-riga
               end-string
               write lm-riga
+              if exp-ord-path-riepilogo-c not = spaces
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output                  delimited size
+                        "RIEPILOGO COLLI: "       delimited size
+                        exp-ord-path-riepilogo-c  delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
            else
               set splcrt2graf-anteprima  to true
-           
               set splcrt2graf-unix       to true
               set splcrt2graf-verticale  to true
               set splcrt2graf-forza-crt  to true
               set splcrt2graf-10pt    to true
               set splcrt2graf-si-grasssetto to false
            
-              call "splcrt2graf" using splcrt2graf-link
-              cancel "splcrt2graf"
+              call   "splcrt2graf" using splcrt2graf-link
+              cancel "splcrt2graf" 
+              if exp-ord-path-riepilogo-c not = spaces
+                 move exp-ord-path-riepilogo-c to splcrt2graf-percorso-stampa
+                 set splcrt2graf-stampa     to true
+                 set splcrt2graf-unix       to true
+                 set splcrt2graf-verticale  to true
+                 set splcrt2graf-forza-crt  to true
+                 set splcrt2graf-10pt    to true
+                 set splcrt2graf-si-grasssetto to false
+              
+                 call   "splcrt2graf" using splcrt2graf-link
+                 cancel "splcrt2graf"                  
+              end-if
            end-if.
 END-TEXT
 END-DATA

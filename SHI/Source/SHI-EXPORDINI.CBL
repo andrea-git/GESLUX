@@ -12,6 +12,7 @@
            copy "mtordini.sl".
            copy "rordini.sl".
            copy "clienti.sl".
+           copy "ttipocli.sl".
            copy "destini.sl".
            copy "tcaumag.sl".
            copy "tnazioni.sl".
@@ -51,6 +52,11 @@
            ORGANIZATION IS LINE SEQUENTIAL
            ACCESS MODE  IS SEQUENTIAL
            FILE STATUS  IS STATUS-lineseq6.
+       SELECT riepilogo-c
+           ASSIGN       TO  path-riepilogo-c
+           ORGANIZATION IS LINE SEQUENTIAL
+           ACCESS MODE  IS SEQUENTIAL
+           FILE STATUS  IS STATUS-riepilogo-c.
       *****************************************************************
        DATA DIVISION.
        FILE SECTION.
@@ -59,6 +65,7 @@
            copy "mtordini.fd".
            copy "rordini.fd".
            copy "clienti.fd".
+           copy "ttipocli.fd".
            copy "destini.fd".
            copy "tcaumag.fd".
            copy "tnazioni.fd".
@@ -80,9 +87,11 @@
        FD  lineseq4.
        01  line-riga4      PIC  x(1000).
        FD  lineseq5.
-       01  line-riga5      PIC  x(1000).
+       01  line-riga5      PIC  x(1000).  
        FD  lineseq6.
        01  line-riga6      PIC  x(1000).
+       FD  riepilogo-c.
+       01  line-riepilogo-c PIC  x(1000).
 
        
        WORKING-STORAGE SECTION.
@@ -98,6 +107,7 @@
        77  status-rordini       pic xx.
        77  status-clienti       pic xx.
        77  status-destini       pic xx.
+       77  status-ttipocli      pic xx.
        77  status-tcaumag       pic xx.
        77  status-tnazioni      pic xx.
        77  status-articoli      pic xx.
@@ -106,6 +116,7 @@
        77  status-timbalqta     pic xx.
        77  status-prodener      pic xx.
        77  status-progmag       pic xx.
+       77  status-riepilogo-c   pic xx.
        77  status-tmp-tordini-exp  pic xx.  
 
        77  status-lineseq       pic xx.
@@ -121,6 +132,41 @@
        77  wstampa5             pic x(256).
        77  wstampa6             pic x(256).
        77  path-tmp-tordini-exp pic x(256).
+       77  path-riepilogo-c     pic x(256).
+
+       77  primo-numero         pic 9(8) value 0.
+       77  ultimo-numero        pic 9(8) value 0.
+       01  bozze-elab.
+         05 el-bozza-elab       pic 9(8) occurs 20000.
+       77  idx-elab             pic 9(5) value 0.
+
+       78  78-max-bozze-in-line value 6.
+       01  bozze-in-line.                
+         05 filler              pic x(3) value " | ".
+         03 filler              occurs 78-max-bozze-in-line.
+         05 bozza-in-line       pic 9(8) blank zero.
+         05 filler              pic x(3) value " | ".
+       77  cnt-bozze            pic 99 value 0.
+       78  78-line-div          value " +-------------------------------
+      -                           "----------------------------------+".
+       78  78-tit-bozze         value " |           Trasmissione Sinteco
+      -                           " - Numero bozze inviate           |".
+       78  78-tit-colli         value 
+                              " |                           Numero colli
+      -                         "                          |".
+
+       01  tab-colli            occurs 1000 indexed by idx-colli.
+         05 el-collo-tipocli    pic xx.
+         05 el-collo-num        pic 9(9).
+       77  tot-idx-colli        pic 9(5) value 0.
+       01  riga-colli.
+         05 filler              pic x(3) value " | ".
+         05 tipocli-c           pic xx.
+         05 filler              pic x(3) value " | ".
+         05 tipocli-d           pic x(44).
+         05 filler              pic x(3) value " | ".
+         05 num-colli           pic zzz.zzz.zz9.      
+         05 filler              pic x(2) value " |".
 
        01                 pic 9.
            88 prima-volta value 1 false zero. 
@@ -813,6 +859,7 @@
            open input timbalqta.
            open input prodener.
            open input progmag.
+           open input ttipocli.
 
            open output tmp-tordini-exp
            close       tmp-tordini-exp
@@ -820,6 +867,8 @@
 
       ***---
        ELABORAZIONE.
+           initialize bozze-elab replacing numeric data by zeroes.
+           
            move low-value to tor-anno-bolla tor-num-bolla.
  
            start tordini key >= k-bolla
@@ -833,9 +882,15 @@
                  if tor-anno-bolla not = 0 or tor-num-bolla not = 0
                     exit perform
                  end-if
+                 if primo-numero = 0
+                    move tor-numero to primo-numero
+                 end-if
+                 move tor-numero to ultimo-numero
                                        
                  perform VALIDA-ORDINE
                  if tutto-ok
+                    add 1 to idx-elab
+                    move tor-numero to el-bozza-elab(idx-elab)
                     perform GENERA-FILE
                  end-if
               end-perform
@@ -844,6 +899,72 @@
            perform GENERA-PRODENER.
 
            perform SCRIVI-RIEPILOGO.
+
+           if idx-elab > 0
+              perform SCRIVI-RIEPILOGO-COLLI
+           end-if.
+
+      ***---
+       SCRIVI-RIEPILOGO-COLLI.
+           initialize path-riepilogo-c.                  
+           move shi-path-backup-exp to path-riepilogo-c.
+           inspect path-riepilogo-c 
+                   replacing trailing spaces by low-value.
+           string path-riepilogo-c    delimited low-value
+                  "\RIEPILOGO_COLLI_" delimited size
+                  como-data           delimited size
+                  "_"                 delimited size
+                  como-ora            delimited size
+                  ".txt"              delimited size
+             into path-riepilogo-c
+           end-string.          
+           inspect path-riepilogo-c 
+                   replacing trailing low-value by spaces.
+           open output riepilogo-c.           
+           write line-riepilogo-c from spaces.
+           write line-riepilogo-c from 78-line-div.
+           write line-riepilogo-c from 78-tit-bozze.
+           write line-riepilogo-c from 78-line-div.
+           move 0 to cnt-bozze.
+           perform varying idx-elab from 1 by 1 
+                     until idx-elab > 999999
+              if el-bozza-elab(idx-elab) = 0
+                 move bozze-in-line to line-riepilogo-c
+                 write line-riepilogo-c
+                 exit perform
+              end-if
+              add 1 to cnt-bozze
+              move el-bozza-elab(idx-elab) to bozza-in-line(cnt-bozze)
+              if cnt-bozze = 78-max-bozze-in-line
+                 move bozze-in-line to line-riepilogo-c
+                 write line-riepilogo-c
+                 move 0 to cnt-bozze   
+                 perform 78-max-bozze-in-line times
+                    add  1 to cnt-bozze
+                    move 0 to bozza-in-line(cnt-bozze)
+                 end-perform
+                 move 0 to cnt-bozze
+              end-if
+           end-perform.
+           write line-riepilogo-c from 78-line-div.
+           write line-riepilogo-c from spaces.     
+           write line-riepilogo-c from 78-line-div.
+           write line-riepilogo-c from 78-tit-colli.  
+           write line-riepilogo-c from 78-line-div.
+           perform varying idx-colli from 1 by 1 
+                     until idx-colli > tot-idx-colli
+              move el-collo-tipocli(idx-colli) to tcl-codice
+              read ttipocli no lock 
+                   invalid move "*** NON TROVATA **" to tcl-descrizione
+              end-read
+              move tcl-codice      to tipocli-c
+              move tcl-descrizione to tipocli-d
+              move el-collo-num(idx-colli) to num-colli
+              write line-riepilogo-c from riga-colli
+           end-perform.                            
+           write line-riepilogo-c from 78-line-div.
+           close lineseq.
+           move path-riepilogo-c to exp-ord-path-riepilogo-c.
 
       ***---
        SCRIVI-RIEPILOGO.       
@@ -1075,6 +1196,17 @@
                        tor-numero NOT = ror-num-ordine
                        exit perform
                     end-if
+                    move 1 to idx-colli
+                    search tab-colli varying idx-colli
+                      at end 
+                         add 1 to tot-idx-colli
+                         move ror-num-colli 
+                           to el-collo-tipocli(tot-idx-colli)
+                         move cli-tipo 
+                           to el-collo-tipocli(tot-idx-colli)
+                    when el-collo-tipocli(idx-colli) = cli-tipo      
+                         add ror-num-colli to el-collo-num(idx-colli)
+                    end-search
       *              if not ror-si-blister
                        perform EXP-RIGA
       *              end-if
@@ -1283,6 +1415,7 @@
            close prodener.
            close progmag.
            close tmp-tordini-exp.
+           close ttipocli.
   
       ***---
        VALIDA-ORDINE.

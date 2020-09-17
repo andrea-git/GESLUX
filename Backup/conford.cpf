@@ -5,7 +5,7 @@
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Screen2
-PROGRAM_UNIQUE_CODE=TOTEM-7E451515182-354-1524831572
+PROGRAM_UNIQUE_CODE=TOTEM-7E49F101249-756-216181904
 
 {{@DESCRIPTION:
 
@@ -376,9 +376,9 @@ m_bFixed=1
 
 @}}
 [FDITEM35_WK]
-m_strName=wstampa
-m_strRawPic=X(256)
-m_strPic=X(256)
+m_strName=ef-mail-buf
+m_strRawPic=X(2000)
+m_strPic=X(2000)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -386,7 +386,7 @@ m_bFixed=1
 
 @}}
 [FDITEM36_WK]
-m_strName=STATUS-lineseq
+m_strName=status-usr-tel
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -396,7 +396,7 @@ m_bFixed=1
 
 @}}
 [FDITEM37_WK]
-m_strName=Valid-STATUS-lineseq
+m_strName=Valid-status-usr-tel
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -405,7 +405,7 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM38_WK]
-m_strName=STATUS-lineseq1
+m_strName=STATUS-tsetmerc
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -415,7 +415,7 @@ m_bFixed=1
 
 @}}
 [FDITEM39_WK]
-m_strName=VALID-STATUS-lineseq1
+m_strName=Valid-STATUS-tsetmerc
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -424,9 +424,9 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM40_WK]
-m_strName=ef-mail-buf
-m_strRawPic=X(2000)
-m_strPic=X(2000)
+m_strName=STATUS-tsetinvio
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -434,63 +434,15 @@ m_bFixed=1
 
 @}}
 [FDITEM41_WK]
-m_strName=status-usr-tel
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM41_WK
-
-@}}
-[FDITEM42_WK]
-m_strName=Valid-status-usr-tel
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM42_WK
-
-@}}
-[FDITEM43_WK]
-m_strName=STATUS-tsetmerc
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM43_WK
-
-@}}
-[FDITEM44_WK]
-m_strName=Valid-STATUS-tsetmerc
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM44_WK
-
-@}}
-[FDITEM45_WK]
-m_strName=STATUS-tsetinvio
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM45_WK
-
-@}}
-[FDITEM46_WK]
 m_strName=Valid-STATUS-tsetinvio
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM46_WK
+{{@DataItem_m_strDescriptionFDITEM41_WK
 
 @}}
-[FDITEM47_WK]
+[FDITEM42_WK]
 m_strName=AUTO-ID
 m_strRawPic=9(6)
 m_strPic=9(6)
@@ -498,6 +450,54 @@ m_strDefaultValue=130
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM42_WK
+
+@}}
+[FDITEM43_WK]
+m_strName=wstampa
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM43_WK
+
+@}}
+[FDITEM44_WK]
+m_strName=STATUS-lineseq
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM44_WK
+
+@}}
+[FDITEM45_WK]
+m_strName=Valid-STATUS-lineseq
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM45_WK
+
+@}}
+[FDITEM46_WK]
+m_strName=STATUS-lineseq1
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM46_WK
+
+@}}
+[FDITEM47_WK]
+m_strName=VALID-STATUS-lineseq1
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM47_WK
 
 @}}
@@ -1608,25 +1608,22 @@ BEGIN-TEXT
            if PgmChiamante = "ordinevar"
               string inizio-corpo x"0d0a",                
                   x"0d0a" 
-                   "la presente per inviare in allegato copia della conferma d'ordine " x"0d0a"
-                   "riportante i prezzi che usciranno in fattura." x"0d0a"
+                  "In allegato copia della conferma d'ordine con i prezzi che saranno riportati in fattura."x"0d0a"
                   x"0d0a" 
-                   "Qualora doveste verificare alcune leggere modifiche in merito ai codici presenti," x"0d0a"
-                   "chiediamo la cortesia di seguirci in tal senso in quanto variazioni derivate dagli increases" x"0d0a"
-                   "delle materie prime petrolifere, in costante fluttuazione, derivate dalla crisi mondiale del" x"0d0a"
-                   " settore e del valore del piombo, quotato giornalmente dalla Borsa di Londra." x"0d0a"
+                   "Qualora doveste verificare alcune leggere modifiche sulle condizioni chiediamo la cortesia di adeguarle ai vostri sistemi, in quanto derivanti dagli increases delle materie prime petrolifere e dal valore del piombo, in costante fluttuazione e quotati giornalmente dalla Borsa di Londra." x"0d0a"
                   x"0d0a"
-                   "Certi della totale comprensione da parte vostra, in scia del rapporto di partnership e piena" x"0d0a"
-                   "collaborazione, rimaniamo a Vostra consueta, solita e cortese disposizione." x"0d0a"
+                  "N.B. LA MANCATA RISPOSTA ALLA PRESENTE COSTITUIRÀ CONFERMA CERTA DELLE APPLICAZIONI INDICATE, "x"0d0a"
+                  "pertanto non verranno accettate eventuali segnalazioni successive, di qualsiasi genere."x"0d0a"
                   x"0d0a"
-                   "N.B. LA MANCATA RISPOSTA ALLA SUDDETTA COSTITUIRÀ CONFERMA CERTA DELLE APPLICAZIONI INDICATE," x"0d0a"
-                   "pertanto non verranno accettate eventuali segnalazioni successive, di qualsiasi genere." x"0d0a"
+                   "Vi ricordiamo che è tassativo verificare al momento della consegna la conformità della merce con i documenti di scarico. "x"0d0a"
+                   "Gli eventuali colli mancanti potranno essere riconosciuti solo se annotati sui documenti."x"0d0a"
+                   x"0d0a"
+                   "Certi della totale comprensione da parte vostra e della vostra piena collaborazione, rimaniamo a Vostra cortese disposizione." x"0d0a"
+                   x"0d0a"
+                   "Grazie e buon lavoro!"x"0d0a"
                   x"0d0a"
-                   "Grazie e buon lavoro."x"0d0a"
-                  x"0d0a"
-                   "Tel. +39-02-26515535 - +39-02-26515532"x"0d0a"
-                  x"0d0a" 
-                   "Fax  +39-02-26515551"x"0d0a"
+                   "Staff Lubex Spa"x"0d0a"
+                   "Tel. +39-02-26515535"x"0d0a"
                    into ef-mail-buf
               end-string
            else                       
@@ -1763,6 +1760,7 @@ OBJ_ID_0=2092763770
 
 [MULTIPLE_KEY_0]
 COUNT=1
+KEY_0=usr-chiave
 
 [DRAW_DOCUMENT_8001_2092763770]
 OBJ_NAME=8001
@@ -1809,109 +1807,13 @@ PROP_DOCU_ALIGN=0
 REL_SYM_SIZE=28
 REL_SYM_INFO_L=4
 REL_SYM_INFO_X0=2301
-REL_SYM_INFO_Y0=1840157282
+REL_SYM_INFO_Y0=1180089954
 REL_SYM_INFO_X1=2301
-REL_SYM_INFO_Y1=496408304
+REL_SYM_INFO_Y1=1082184229
 REL_SYM_INFO_X2=2301
-REL_SYM_INFO_Y2=1180089954
+REL_SYM_INFO_Y2=2134810518
 REL_SYM_INFO_X3=2301
-REL_SYM_INFO_Y3=1082184229
-
-[DRAW_BASESYMBOL_2301_1840157282]
-OBJ_NAME=2301
-OBJ_ID=1840157282
-KIND=1
-{{@LABEL_2301_1840157282
-lineseq
-@}}
-WK_STEP=0
-BK_POINT=0
-CENTER_X=0
-CENTER_Y=0
-LEFT=160
-TOP=117
-RIGHT=560
-BOTTOM=339
-PROP_OBJ_TYPE=
-PROP_OBJ_TYPE2=
-PROP_FILL_PT=0
-PROP_FILL_FG=0
-PROP_FILL_BG=16777215
-PROP_FONT_HEIGHT=-35
-PROP_FONT_WIDTH=0
-PROP_FONT_ESCAPE=0
-PROP_FONT_ORIENT=0
-PROP_FONT_WEIGHT=400
-PROP_FONT_ITALIC=0
-PROP_FONT_UDLINE=0
-PROP_FONT_SKOUT=0
-PROP_FONT_CHARSET=0
-PROP_FONT_OUTPREC=3
-PROP_FONT_CLIPPREC=2
-PROP_FONT_QUALITY=1
-PROP_FONT_PCH_FAM=18
-PROP_FONT_FACE_NAME=Times New Roman
-PROP_FONT_CR=0
-PROP_LINE_PT=0
-PROP_LINE_WG=1
-PROP_LINE_CR=0
-PROP_SHAD_PT=0
-PROP_SHAD_FG=12632256
-PROP_SHAD_BG=12632256
-PROP_SHAD_EBL=0
-PROP_SHAD_POS=4
-PROP_SHAD_POINT=0
-PROP_TRACK_COLOR=12632256
-REL_SYM_SIZE=4
-REL_SYM_INFO_L=0
-
-[DRAW_BASESYMBOL_2301_496408304]
-OBJ_NAME=2301
-OBJ_ID=496408304
-KIND=1
-{{@LABEL_2301_496408304
-lineseq1
-@}}
-WK_STEP=0
-BK_POINT=0
-CENTER_X=0
-CENTER_Y=0
-LEFT=658
-TOP=104
-RIGHT=1058
-BOTTOM=326
-PROP_OBJ_TYPE=
-PROP_OBJ_TYPE2=
-PROP_FILL_PT=0
-PROP_FILL_FG=0
-PROP_FILL_BG=16777215
-PROP_FONT_HEIGHT=-35
-PROP_FONT_WIDTH=0
-PROP_FONT_ESCAPE=0
-PROP_FONT_ORIENT=0
-PROP_FONT_WEIGHT=400
-PROP_FONT_ITALIC=0
-PROP_FONT_UDLINE=0
-PROP_FONT_SKOUT=0
-PROP_FONT_CHARSET=0
-PROP_FONT_OUTPREC=3
-PROP_FONT_CLIPPREC=2
-PROP_FONT_QUALITY=1
-PROP_FONT_PCH_FAM=18
-PROP_FONT_FACE_NAME=Times New Roman
-PROP_FONT_CR=0
-PROP_LINE_PT=0
-PROP_LINE_WG=1
-PROP_LINE_CR=0
-PROP_SHAD_PT=0
-PROP_SHAD_FG=12632256
-PROP_SHAD_BG=12632256
-PROP_SHAD_EBL=0
-PROP_SHAD_POS=4
-PROP_SHAD_POINT=0
-PROP_TRACK_COLOR=12632256
-REL_SYM_SIZE=4
-REL_SYM_INFO_L=0
+REL_SYM_INFO_Y3=558780646
 
 [DRAW_BASESYMBOL_2301_1180089954]
 OBJ_NAME=2301
@@ -2009,6 +1911,102 @@ PROP_TRACK_COLOR=12632256
 REL_SYM_SIZE=4
 REL_SYM_INFO_L=0
 
+[DRAW_BASESYMBOL_2301_2134810518]
+OBJ_NAME=2301
+OBJ_ID=2134810518
+KIND=1
+{{@LABEL_2301_2134810518
+lineseq
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=101
+TOP=42
+RIGHT=501
+BOTTOM=264
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_558780646]
+OBJ_NAME=2301
+OBJ_ID=558780646
+KIND=1
+{{@LABEL_2301_558780646
+lineseq1
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=689
+TOP=68
+RIGHT=1089
+BOTTOM=290
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
 [DMD_DOCUMENT_0_2092763770]
 OBJ_NAME=0
 OBJ_ID=2092763770
@@ -2023,68 +2021,6 @@ FILE_SHOW_CLPS=0
 FILE_SHOW_BMP=0
 FILE_SHOW_LINE=0
 FILE_SHOW_MINIZE=0
-
-[DMD_FILE_0_1840157282]
-OBJ_NAME=0
-OBJ_ID=1840157282
-REL_M_OBJ_ID=0
-ENTITY=lineseq
-LINK=0
-LINK_NAME=
-DSN_SIZE=32
-FD_SIZE=0
-SL_SIZE=0
-DSN_INFO_OPEN_MODE=1
-DSN_INFO_LOCK_OPTION=0
-DSN_INFO_KEY_IS=
-DSN_INFO_DATA_ORDER=0
-DSN_INFO_START_VALUE=
-DSN_INFO_END_VALUE=
-{{@DSN_INFO_CONDITION_1840157282
-
-@}}
-DSN_INFO_PRIMARY=1
-DSN_INFO_OPEN=0
-DSN_INFO_CLOSE=0
-DSN_INFO_EXCLUSIVE=0
-DSN_INFO_IS_LOGICAL=0
-DSN_INFO_LOGICAL_FDNAME=
-DSN_INFO_ORIGINAL_FDNAME=
-DSN_INFO_REPLACEBY_FILESTATUS=
-DSN_INFO_REPLACEBY_RELATIVEKEY=
-DSN_INFO_REPLACEBY_FDDATA=
-DSN_INFO_REPLACEBY_SLDATA=
-
-[DMD_FILE_0_496408304]
-OBJ_NAME=0
-OBJ_ID=496408304
-REL_M_OBJ_ID=0
-ENTITY=lineseq1
-LINK=0
-LINK_NAME=
-DSN_SIZE=32
-FD_SIZE=0
-SL_SIZE=0
-DSN_INFO_OPEN_MODE=1
-DSN_INFO_LOCK_OPTION=0
-DSN_INFO_KEY_IS=
-DSN_INFO_DATA_ORDER=0
-DSN_INFO_START_VALUE=
-DSN_INFO_END_VALUE=
-{{@DSN_INFO_CONDITION_496408304
-
-@}}
-DSN_INFO_PRIMARY=0
-DSN_INFO_OPEN=0
-DSN_INFO_CLOSE=0
-DSN_INFO_EXCLUSIVE=0
-DSN_INFO_IS_LOGICAL=1
-DSN_INFO_LOGICAL_FDNAME=lineseq1
-DSN_INFO_ORIGINAL_FDNAME=lineseq
-DSN_INFO_REPLACEBY_FILESTATUS=STATUS-lineseq1
-DSN_INFO_REPLACEBY_RELATIVEKEY=
-DSN_INFO_REPLACEBY_FDDATA=
-DSN_INFO_REPLACEBY_SLDATA=
 
 [DMD_FILE_0_1180089954]
 OBJ_NAME=0
@@ -2105,7 +2041,7 @@ DSN_INFO_END_VALUE=
 {{@DSN_INFO_CONDITION_1180089954
 
 @}}
-DSN_INFO_PRIMARY=0
+DSN_INFO_PRIMARY=1
 DSN_INFO_OPEN=1
 DSN_INFO_CLOSE=1
 DSN_INFO_EXCLUSIVE=0
@@ -2144,6 +2080,68 @@ DSN_INFO_IS_LOGICAL=0
 DSN_INFO_LOGICAL_FDNAME=
 DSN_INFO_ORIGINAL_FDNAME=
 DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_2134810518]
+OBJ_NAME=0
+OBJ_ID=2134810518
+REL_M_OBJ_ID=0
+ENTITY=lineseq
+LINK=0
+LINK_NAME=
+DSN_SIZE=32
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_2134810518
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_558780646]
+OBJ_NAME=0
+OBJ_ID=558780646
+REL_M_OBJ_ID=0
+ENTITY=lineseq1
+LINK=0
+LINK_NAME=
+DSN_SIZE=32
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_558780646
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=1
+DSN_INFO_LOGICAL_FDNAME=lineseq1
+DSN_INFO_ORIGINAL_FDNAME=lineseq
+DSN_INFO_REPLACEBY_FILESTATUS=STATUS-lineseq1
 DSN_INFO_REPLACEBY_RELATIVEKEY=
 DSN_INFO_REPLACEBY_FDDATA=
 DSN_INFO_REPLACEBY_SLDATA=

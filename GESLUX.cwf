@@ -15301,6 +15301,18 @@ FOLDER_NAME=FD
 OWNER_PATH=FD\tmp-k-ord.clf
 ATTRIBUTE=0
 
+[FILE_CONTENT-GESLUX:FILE2933]
+RELATIVE_PATH=FD\lineseq-mail.fd
+FOLDER_NAME=FD
+OWNER_PATH=FD\lineseq-mail.clf
+ATTRIBUTE=0
+
+[FILE_CONTENT-GESLUX:FILE2934]
+RELATIVE_PATH=FD\lineseq-mail.sl
+FOLDER_NAME=FD
+OWNER_PATH=FD\lineseq-mail.clf
+ATTRIBUTE=0
+
 [PROJECT_COMPILE_SETTING-GESLUX:Debug Mode]
 ADDITIONAL_OPTIONS=-x -Di -Ga -Zd -Za -Zn -Zz
 ; Standard Options
@@ -15384,7 +15396,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:SOURCE\08listmov.cbl]
-COPY_DEPENDENCE=FD\tparamge.sl;FD\anautf.sl;FD\lineseq.sl;FD\tparamge.fd;FD\anautf.fd;FD\lineseq.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;Copylib\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\splcrt2graf.lks;Copylib\link-listmov.def;Copylib\common-linkage.def;Copylib\blockpgm.lks;Resource\Blue-fino-28x24.bmp;Resource\Blue-da-28x24.bmp;Resource\bottone-ok.bmp;Resource\bottone-cancel.bmp;Resource\toolbar.bmp;Resource\toolbar.bmp;Resource\bottone-stampa.bmp;Copylib\COLOR-CUSTOM.CPY;Copylib\utydata.cpy;Copylib\calcola-colore-trasparente.cpy
+COPY_DEPENDENCE=FD\tparamge.sl;FD\anautf.sl;FD\lineseq.sl;FD\tparamge.fd;FD\anautf.fd;FD\lineseq.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\splcrt2graf.lks;Copylib\link-listmov.def;Copylib\common-linkage.def;Copylib\blockpgm.lks;Resource\Blue-fino-28x24.bmp;Resource\Blue-da-28x24.bmp;Resource\bottone-ok.bmp;Resource\bottone-cancel.bmp;Resource\toolbar.bmp;Resource\toolbar.bmp;Resource\bottone-stampa.bmp;Copylib\COLOR-CUSTOM.CPY;Copylib\utydata.cpy;Copylib\calcola-colore-trasparente.cpy
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
@@ -19909,7 +19921,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:SOURCE\conford.cbl]
-COPY_DEPENDENCE=FD\lineseq.sl;FD\usr-tel.sl;FD\tsetinvio.sl;FD\lineseq.fd;FD\usr-tel.fd;FD\tsetinvio.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\mail.def;Copylib\wait-3-secs.def;Copylib\link-conford.def;Resource\bottone-ok.bmp;Resource\bottone-cancel.bmp;Copylib\utydata.cpy;Copylib\COLOR-CUSTOM.CPY;Copylib\mail.cpy;Copylib\wait-3-secs.cpy
+COPY_DEPENDENCE=FD\usr-tel.sl;FD\tsetinvio.sl;FD\lineseq.sl;FD\usr-tel.fd;FD\tsetinvio.fd;FD\lineseq.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\mail.def;Copylib\wait-3-secs.def;Copylib\link-conford.def;Resource\bottone-ok.bmp;Resource\bottone-cancel.bmp;Copylib\utydata.cpy;Copylib\COLOR-CUSTOM.CPY;Copylib\mail.cpy;Copylib\wait-3-secs.cpy
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
@@ -24107,7 +24119,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:SOURCE\gparam.cbl]
-COPY_DEPENDENCE=FD\ttipocli.sl;FD\tgrupgdo.sl;FD\clienti.sl;FD\destini.sl;FD\tvettori.sl;FD\tmagaz.sl;FD\param.sl;FD\ttipocli.fd;FD\tgrupgdo.fd;FD\clienti.fd;FD\destini.fd;FD\tvettori.fd;FD\tmagaz.fd;FD\param.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\opensave.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;Copylib\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\apri-note.def;Copylib\selprint.lks;Copylib\link-geslock.def;Copylib\common-linkage.def;Copylib\blockpgm.lks;Resource\logo-gparam.bmp;Resource\toolbar.bmp;Copylib\ABILITA-TOOLBAR.CPY;Copylib\COLOR-CUSTOM.CPY;Copylib\status.cpy;Copylib\calcola-colore-trasparente.cpy
+COPY_DEPENDENCE=FD\ttipocli.sl;FD\tgrupgdo.sl;FD\clienti.sl;FD\destini.sl;FD\tvettori.sl;FD\tmagaz.sl;FD\param.sl;FD\ttipocli.fd;FD\tgrupgdo.fd;FD\clienti.fd;FD\destini.fd;FD\tvettori.fd;FD\tmagaz.fd;FD\param.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\opensave.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\apri-note.def;Copylib\selprint.lks;Copylib\link-geslock.def;Copylib\common-linkage.def;Copylib\blockpgm.lks;Resource\logo-gparam.bmp;Resource\toolbar.bmp;Copylib\ABILITA-TOOLBAR.CPY;Copylib\COLOR-CUSTOM.CPY;Copylib\status.cpy;Copylib\calcola-colore-trasparente.cpy
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
@@ -30308,7 +30320,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:SOURCE\selmovc.cbl]
-COPY_DEPENDENCE=FD\tmovmag.sl;FD\clienti.sl;FD\rmovmag.sl;FD\tcaumag.sl;FD\tparamge.sl;FD\tmovmag.fd;FD\clienti.fd;FD\rmovmag.fd;FD\tcaumag.fd;FD\tparamge.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\common-linkage.def;Copylib\blockpgm.lks;Resource\bottone-ok.bmp;Resource\bottone-cancel.bmp;Resource\Blue-da-28x24.bmp;Resource\Blue-fino-28x24.bmp;Resource\toolbar.bmp;Copylib\utydata.cpy;Copylib\COLOR-CUSTOM.CPY;Copylib\calcola-colore-trasparente.cpy;Resource\elemento.bmp
+COPY_DEPENDENCE=FD\tmovmag.sl;FD\clienti.sl;FD\rmovmag.sl;FD\tcaumag.sl;FD\tparamge.sl;FD\tmp-k-ord.sl;FD\tmovmag.fd;FD\clienti.fd;FD\rmovmag.fd;FD\tcaumag.fd;FD\tparamge.fd;FD\tmp-k-ord.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\common-linkage.def;Copylib\blockpgm.lks;Resource\bottone-ok.bmp;Resource\bottone-cancel.bmp;Resource\Blue-da-28x24.bmp;Resource\Blue-fino-28x24.bmp;Resource\toolbar.bmp;Copylib\utydata.cpy;Copylib\COLOR-CUSTOM.CPY;Copylib\calcola-colore-trasparente.cpy;Resource\elemento.bmp
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
@@ -30401,7 +30413,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:SOURCE\selordc.cbl]
-COPY_DEPENDENCE=FD\tordini.sl;FD\clienti.sl;FD\destini.sl;FD\tparamge.sl;FD\tescons.sl;FD\tordini.fd;FD\clienti.fd;FD\destini.fd;FD\tparamge.fd;FD\tescons.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;Copylib\UTYDATA.DEF;Copylib\comune.def;Copylib\messaggi.def;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\combo-stato-ord.def;Copylib\link-gordcvar.def;Copylib\common-linkage.def;Copylib\blockpgm.lks;Resource\bottone-cancel.bmp;Resource\bottone-ok.bmp;Resource\Blue-da-28x24.bmp;Resource\Blue-fino-28x24.bmp;Resource\toolbar.bmp;Resource\toolbar.bmp;Copylib\utydata.cpy;Copylib\COLOR-CUSTOM.CPY;Copylib\calcola-colore-trasparente.cpy;Copylib\riempi-combo-stato-ord.cpy;Resource\elemento.bmp
+COPY_DEPENDENCE=FD\tordini.sl;FD\clienti.sl;FD\destini.sl;FD\tparamge.sl;FD\tescons.sl;FD\tmp-k-ord.sl;FD\tordini.fd;FD\clienti.fd;FD\destini.fd;FD\tparamge.fd;FD\tescons.fd;FD\tmp-k-ord.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\combo-stato-ord.def;Copylib\link-gordcvar.def;Copylib\common-linkage.def;Copylib\blockpgm.lks;Resource\bottone-cancel.bmp;Resource\bottone-ok.bmp;Resource\Blue-da-28x24.bmp;Resource\Blue-fino-28x24.bmp;Resource\toolbar.bmp;Resource\toolbar.bmp;Copylib\utydata.cpy;Copylib\COLOR-CUSTOM.CPY;Copylib\calcola-colore-trasparente.cpy;Copylib\riempi-combo-stato-ord.cpy;Resource\elemento.bmp
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
@@ -30463,7 +30475,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:SOURCE\selordini.cbl]
-COPY_DEPENDENCE=FD\clienti.sl;FD\destini.sl;FD\tparamge.sl;FD\mtordini.sl;FD\clienti.fd;FD\destini.fd;FD\tparamge.fd;FD\mtordini.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\COMBO-STATO-ORDINE.DEF;Copylib\link-gordcvar.def;Copylib\color-stato-m.def;Copylib\common-linkage.def;Copylib\blockpgm.lks;Resource\bottone-cancel.bmp;Resource\bottone-ok.bmp;Resource\Blue-da-28x24.bmp;Resource\Blue-fino-28x24.bmp;Resource\toolbar.bmp;Resource\toolbar.bmp;Copylib\utydata.cpy;Copylib\COLOR-CUSTOM.CPY;Copylib\calcola-colore-trasparente.cpy;Copylib\riempi-combo-stato-ordine.cpy;Resource\elemento.bmp
+COPY_DEPENDENCE=FD\clienti.sl;FD\destini.sl;FD\tparamge.sl;FD\mtordini.sl;FD\tmp-k-ord.sl;FD\clienti.fd;FD\destini.fd;FD\tparamge.fd;FD\mtordini.fd;FD\tmp-k-ord.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\COMBO-STATO-ORDINE.DEF;Copylib\link-gordcvar.def;Copylib\color-stato-m.def;Copylib\common-linkage.def;Copylib\blockpgm.lks;Resource\bottone-cancel.bmp;Resource\bottone-ok.bmp;Resource\Blue-da-28x24.bmp;Resource\Blue-fino-28x24.bmp;Resource\toolbar.bmp;Resource\toolbar.bmp;Copylib\utydata.cpy;Copylib\COLOR-CUSTOM.CPY;Copylib\calcola-colore-trasparente.cpy;Copylib\riempi-combo-stato-ordine.cpy;Resource\elemento.bmp
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
@@ -82945,7 +82957,8 @@ ATTRIBUTE=0
 [FILE_CONTENT-LAB:FILE215]
 RELATIVE_PATH=LAB\FD\rnotacr.sl
 FOLDER_NAME=FD
-OWNER_PATH=LAB\SOURCE\lab-cumulato-p.cbl
+OWNER_PATH=FD\rnotacr.clf
+ATTRIBUTE=0
 
 [FILE_CONTENT-LAB:FILE216]
 RELATIVE_PATH=FD\ttipocli.sl
@@ -82984,7 +82997,8 @@ ATTRIBUTE=0
 [FILE_CONTENT-LAB:FILE222]
 RELATIVE_PATH=LAB\FD\rnotacr.fd
 FOLDER_NAME=FD
-OWNER_PATH=LAB\SOURCE\lab-cumulato-p.cbl
+OWNER_PATH=FD\rnotacr.clf
+ATTRIBUTE=0
 
 [FILE_CONTENT-LAB:FILE223]
 RELATIVE_PATH=FD\ttipocli.fd
@@ -83083,7 +83097,8 @@ OWNER_PATH=LAB\SOURCE\lab-inevaso.cbl
 [FILE_CONTENT-LAB:FILE239]
 RELATIVE_PATH=LAB\FD\mtordini.sl
 FOLDER_NAME=FD
-OWNER_PATH=LAB\SOURCE\lab-inevaso.cbl
+OWNER_PATH=FD\mtordini.clf
+ATTRIBUTE=0
 
 [FILE_CONTENT-LAB:FILE240]
 RELATIVE_PATH=FD\tmp-marca.fd
@@ -83093,7 +83108,8 @@ OWNER_PATH=LAB\SOURCE\lab-inevaso.cbl
 [FILE_CONTENT-LAB:FILE241]
 RELATIVE_PATH=LAB\FD\mtordini.fd
 FOLDER_NAME=FD
-OWNER_PATH=LAB\SOURCE\lab-inevaso.cbl
+OWNER_PATH=FD\mtordini.clf
+ATTRIBUTE=0
 
 [FILE_CONTENT-LAB:FILE242]
 RELATIVE_PATH=LAB\FD\progmag.sl
@@ -86513,7 +86529,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-LAB:Debug Mode:LAB\SOURCE\lab-gtagli.cbl]
-COPY_DEPENDENCE=FD\tagli.sl;FD\articoli.sl;FD\tgrupgdo.sl;FD\listini.sl;FD\mrordini.sl;FD\tagli.fd;FD\articoli.fd;FD\tgrupgdo.fd;FD\listini.fd;FD\mrordini.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;\Lubex\GESLUX\Copylib\standard.def;\Lubex\GESLUX\Copylib\UTYDATA.DEF;\Lubex\GESLUX\Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;\Lubex\GESLUX\Copylib\comune.def;\Lubex\GESLUX\Copylib\messaggi.def;\Lubex\GESLUX\Copylib\link-batch.def;\Lubex\GESLUX\Copylib\link-gesdelete.def;Copylib\link-lab-inevaso.def;\Lubex\GESLUX\Copylib\color-stato-m.def;\Lubex\GESLUX\Copylib\common-linkage.def;\Lubex\GESLUX\Copylib\blockpgm.lks;\Lubex\GESLUX\Resource\bottone-check.bmp;\Lubex\GESLUX\Resource\toolbar.bmp;\Lubex\GESLUX\Resource\esegui_73x21.bmp;\Lubex\GESLUX\Copylib\ABILITA-TOOLBAR.CPY;\Lubex\GESLUX\Copylib\COLOR-CUSTOM.CPY;\Lubex\GESLUX\Copylib\status.cpy;\Lubex\GESLUX\Copylib\utydata.cpy;\Lubex\GESLUX\Copylib\cerca-testo.cpy
+COPY_DEPENDENCE=FD\tagli.sl;FD\articoli.sl;FD\tgrupgdo.sl;FD\listini.sl;FD\mrordini.sl;FD\timbalqta.sl;FD\timballi.sl;FD\tagli.fd;FD\articoli.fd;FD\tgrupgdo.fd;FD\listini.fd;FD\mrordini.fd;FD\timbalqta.fd;FD\timballi.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;\Lubex\GESLUX\Copylib\UTYDATA.DEF;\Lubex\GESLUX\Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;\Lubex\GESLUX\Copylib\comune.def;\Lubex\GESLUX\Copylib\messaggi.def;\Lubex\GESLUX\Copylib\link-batch.def;\Lubex\GESLUX\Copylib\link-gesdelete.def;Copylib\link-lab-inevaso.def;\Lubex\GESLUX\Copylib\color-stato-m.def;\Lubex\GESLUX\Copylib\common-linkage.def;\Lubex\GESLUX\Copylib\blockpgm.lks;\Lubex\GESLUX\Resource\bottone-check.bmp;\Lubex\GESLUX\Resource\toolbar.bmp;\Lubex\GESLUX\Resource\esegui_73x21.bmp;\Lubex\GESLUX\Copylib\ABILITA-TOOLBAR.CPY;\Lubex\GESLUX\Copylib\COLOR-CUSTOM.CPY;\Lubex\GESLUX\Copylib\status.cpy;\Lubex\GESLUX\Copylib\utydata.cpy;\Lubex\GESLUX\Copylib\cerca-testo.cpy
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
@@ -99067,7 +99083,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-SHI:Debug Mode:SHI\SOURCE\SHI-EXPORDINI.CBL]
-COPY_DEPENDENCE=FD\paramSHI.sl;\Lubex\GESLUX\FD\tordini.sl;\Lubex\GESLUX\FD\mtordini.sl;\Lubex\GESLUX\FD\rordini.sl;\Lubex\GESLUX\FD\clienti.sl;\Lubex\GESLUX\FD\destini.sl;FD\tcaumag.sl;\Lubex\GESLUX\FD\tnazioni.sl;FD\articoli.sl;FD\art-exp-shi.sl;\Lubex\GESLUX\FD\tivaese.sl;FD\timbalqta.sl;\Lubex\GESLUX\FD\prodener.sl;\Lubex\GESLUX\FD\progmag.sl;FD\tmp-tordini-exp.sl;\Lubex\GESLUX\FD\fileseq.sl;FD\lineseq.sl;FD\paramSHI.fd;\Lubex\GESLUX\FD\tordini.fd;\Lubex\GESLUX\FD\mtordini.fd;\Lubex\GESLUX\FD\rordini.fd;\Lubex\GESLUX\FD\clienti.fd;\Lubex\GESLUX\FD\destini.fd;FD\tcaumag.fd;\Lubex\GESLUX\FD\tnazioni.fd;FD\articoli.fd;FD\art-exp-shi.fd;\Lubex\GESLUX\FD\tivaese.fd;FD\timbalqta.fd;\Lubex\GESLUX\FD\prodener.fd;\Lubex\GESLUX\FD\progmag.fd;FD\tmp-tordini-exp.fd;\Lubex\GESLUX\FD\fileseq.fd;Copylib\exp-ws.def;Copylib\exparticoli.def;Copylib\link-exp.def;Copylib\link-expordini.def;Copylib\exp-procedure.cpy;Copylib\exparticoli-procedure.cpy
+COPY_DEPENDENCE=FD\paramSHI.sl;\Lubex\GESLUX\FD\tordini.sl;\Lubex\GESLUX\FD\mtordini.sl;\Lubex\GESLUX\FD\rordini.sl;\Lubex\GESLUX\FD\clienti.sl;\Lubex\GESLUX\FD\ttipocli.sl;\Lubex\GESLUX\FD\destini.sl;FD\tcaumag.sl;\Lubex\GESLUX\FD\tnazioni.sl;FD\articoli.sl;FD\art-exp-shi.sl;\Lubex\GESLUX\FD\tivaese.sl;FD\timbalqta.sl;\Lubex\GESLUX\FD\prodener.sl;\Lubex\GESLUX\FD\progmag.sl;FD\tmp-tordini-exp.sl;\Lubex\GESLUX\FD\fileseq.sl;FD\lineseq.sl;FD\paramSHI.fd;\Lubex\GESLUX\FD\tordini.fd;\Lubex\GESLUX\FD\mtordini.fd;\Lubex\GESLUX\FD\rordini.fd;\Lubex\GESLUX\FD\clienti.fd;\Lubex\GESLUX\FD\ttipocli.fd;\Lubex\GESLUX\FD\destini.fd;FD\tcaumag.fd;\Lubex\GESLUX\FD\tnazioni.fd;FD\articoli.fd;FD\art-exp-shi.fd;\Lubex\GESLUX\FD\tivaese.fd;FD\timbalqta.fd;\Lubex\GESLUX\FD\prodener.fd;\Lubex\GESLUX\FD\progmag.fd;FD\tmp-tordini-exp.fd;\Lubex\GESLUX\FD\fileseq.fd;Copylib\exp-ws.def;Copylib\exparticoli.def;Copylib\link-exp.def;Copylib\link-expordini.def;Copylib\exp-procedure.cpy;Copylib\exparticoli-procedure.cpy
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu

@@ -59,7 +59,8 @@
                10 tge-vuoti
                           SYNCHRONIZED .
                    15 tge-gg-mail-volantino        PIC  999.
-                   15 tge-num-vuoto-1  PIC  9(15).
+                   15 tge-divisore-lstgdo          PIC  s9(5)v999.
+                   15 tge-num-vuoto-1  PIC  9(7).
                    15 tge-num-vuoto-2  PIC  9(18).
                    15 tge-num-vuoto-3  PIC  9(18).
       *(( XFD NAME = tge-gg-inizio-vol ))

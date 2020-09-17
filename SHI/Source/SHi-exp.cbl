@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          SHI-exp.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 12 marzo 2020 16:07:56.
+       DATE-WRITTEN.        giovedì 17 settembre 2020 14:43:30.
        REMARKS.
       *{TOTEM}END
 
@@ -137,7 +137,7 @@
        77 STATUS-formFTP-FLAG-REFRESH PIC  9.
           88 formFTP-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-paramSHI-BUF     PIC X(9574).
-       77 TMP-DataSet1-lineseq-BUF     PIC X(900).
+       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-log-macrobatch-BUF     PIC X(1000).
        77 TMP-DataSet1-macrobatch-BUF     PIC X(9848).
       * VARIABLES FOR RECORD LENGTH.
@@ -1833,17 +1833,40 @@
                 into lm-riga
               end-string
               write lm-riga
+              if exp-ord-path-riepilogo-c not = spaces
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output                  delimited size
+                        "RIEPILOGO COLLI: "       delimited size
+                        exp-ord-path-riepilogo-c  delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
            else
               set splcrt2graf-anteprima  to true
-           
               set splcrt2graf-unix       to true
               set splcrt2graf-verticale  to true
               set splcrt2graf-forza-crt  to true
               set splcrt2graf-10pt    to true
               set splcrt2graf-si-grasssetto to false
            
-              call "splcrt2graf" using splcrt2graf-link
-              cancel "splcrt2graf"
+              call   "splcrt2graf" using splcrt2graf-link
+              cancel "splcrt2graf" 
+              if exp-ord-path-riepilogo-c not = spaces
+                 move exp-ord-path-riepilogo-c to 
+           splcrt2graf-percorso-stampa
+                 set splcrt2graf-stampa     to true
+                 set splcrt2graf-unix       to true
+                 set splcrt2graf-verticale  to true
+                 set splcrt2graf-forza-crt  to true
+                 set splcrt2graf-10pt    to true
+                 set splcrt2graf-si-grasssetto to false
+              
+                 call   "splcrt2graf" using splcrt2graf-link
+                 cancel "splcrt2graf"                  
+              end-if
            end-if 
            .
       * <TOTEM:END>

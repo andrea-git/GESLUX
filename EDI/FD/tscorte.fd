@@ -1,6 +1,5 @@
       *
       *
-      *
        FD  tscorte.
        01 sco-rec.
            05 sco-chiave.
@@ -140,7 +139,12 @@
             0. 
                        88 sco-no-gdo-no VALUE IS 0    WHEN SET TO FALSE 
             0. 
-                   15 sco-num-vuoto-2  PIC  9(5).
+                   15 sco-auto-lst     PIC  9(1).
+                       88 sco-auto-lst-si VALUE IS 1    WHEN SET TO 
+           FALSE  0. 
+                       88 sco-auto-lst-no VALUE IS 0    WHEN SET TO 
+           FALSE  0. 
+                   15 sco-num-vuoto-2  PIC  9(4).
                    15 sco-num-vuoto-3  PIC  9(18).
                    15 sco-alfa-vuoto-1 PIC  X(20).
                    15 sco-alfa-vuoto-2 PIC  X(20).

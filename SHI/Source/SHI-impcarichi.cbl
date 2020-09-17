@@ -168,7 +168,6 @@
       
        77  mail           pic x(200).
       
-      
        77  path-pdf          pic x(256).
                                             
        77  tentativi             pic 99.
