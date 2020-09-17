@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          tprev.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        venerdì 6 aprile 2018 12:57:43.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        giovedì 17 settembre 2020 16:54:06.
        REMARKS.
       *{TOTEM}END
 
@@ -65,7 +65,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -274,7 +274,7 @@
        77 TMP-DataSet1-progmag-BUF     PIC X(1090).
        77 TMP-DataSet1-promoeva-BUF     PIC X(817).
        77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
-       77 TMP-DataSet1-lineseq-BUF     PIC X(900).
+       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-tmp-mtordini-BUF     PIC X(157).
        77 TMP-DataSet1-mrordini-BUF     PIC X(891).
        77 TMP-DataSet1-mtordini-BUF     PIC X(2122).
@@ -355,6 +355,7 @@
        77 tpromo-tpr-k-data-ins-SPLITBUF  PIC X(29).
        77 rpromo-k-stampa-SPLITBUF  PIC X(32).
        77 articoli-art-k1-SPLITBUF  PIC X(51).
+       77 articoli-art-k-frn-SPLITBUF  PIC X(16).
        77 progmag-key01-SPLITBUF  PIC X(21).
        77 promoeva-pev-k-art-SPLITBUF  PIC X(22).
        77 promoeva-pev-k-descr-art-SPLITBUF  PIC X(65).
@@ -367,6 +368,7 @@
        77 mrordini-mro-k-articolo-SPLITBUF  PIC X(24).
        77 mrordini-mro-k-progr-SPLITBUF  PIC X(18).
        77 mrordini-mro-k-tprev-SPLITBUF  PIC X(39).
+       77 mrordini-mro-k-ord-art-SPLITBUF  PIC X(19).
        77 mtordini-mto-k-ord-cli-SPLITBUF  PIC X(55).
        77 mtordini-mto-k-data-SPLITBUF  PIC X(21).
        77 mtordini-mto-k-clides-SPLITBUF  PIC X(19).
@@ -1466,6 +1468,12 @@
            articoli-art-k1-SPLITBUF(1:50)
            .
 
+       articoli-art-k-frn-MERGE-SPLITBUF.
+           INITIALIZE articoli-art-k-frn-SPLITBUF
+           MOVE art-cod-art-frn OF articoli(1:15) TO 
+           articoli-art-k-frn-SPLITBUF(1:15)
+           .
+
        DataSet1-articoli-INITSTART.
            IF DataSet1-articoli-KEY-Asc
               MOVE Low-Value TO art-chiave OF articoli
@@ -1528,6 +1536,7 @@
               KEY art-chiave OF articoli
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT 
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -1556,6 +1565,7 @@
               END-IF
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -1584,6 +1594,7 @@
               END-IF
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -2430,6 +2441,14 @@
            MOVE mro-chiave(1:17) TO mrordini-mro-k-tprev-SPLITBUF(22:17)
            .
 
+       mrordini-mro-k-ord-art-MERGE-SPLITBUF.
+           INITIALIZE mrordini-mro-k-ord-art-SPLITBUF
+           MOVE mro-chiave-testa(1:12) TO 
+           mrordini-mro-k-ord-art-SPLITBUF(1:12)
+           MOVE mro-cod-articolo(1:6) TO 
+           mrordini-mro-k-ord-art-SPLITBUF(13:6)
+           .
+
        DataSet1-mrordini-INITSTART.
            IF DataSet1-mrordini-KEY-Asc
               MOVE Low-Value TO mro-chiave
@@ -2495,6 +2514,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT 
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -2526,6 +2546,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -2557,6 +2578,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -4490,6 +4512,43 @@
            .
       * <TOTEM:END>
 
+       OPEN-IO-PROMOEVA-LOCK.
+      * <TOTEM:PARA. OPEN-IO-PROMOEVA-LOCK>
+           perform until 1 = 2
+      *****        move "promoeva" to geslock-nome-file
+      *****        initialize geslock-messaggio
+      *****        string   "Il file delle quantità promo per evasione" 
+      *****          x"0d0a""è in uso su altro terminale." delimited size
+      *****                 into geslock-messaggio
+      *****        end-string
+
+              move 1 to no-msg
+              set tutto-ok  to true
+              set RecLocked to false
+              open i-o promoeva allowing readers
+      *****        if RecLocked
+      *****           set errori to true
+      *****           move 1     to geslock-v-termina
+      *****           move 1     to geslock-v-riprova
+      *****           move 0     to geslock-v-ignora
+      *****           call   "geslock" using geslock-linkage
+      *****           cancel "geslock"
+      *****
+      *****           evaluate true
+      *****           when riprova continue
+      *****           when other   display message "Operazione interrotta!"
+      *****                                  title titolo
+      *****                                   icon 2
+      *****                        exit perform
+      *****           end-evaluate
+      *****        else
+      *****           exit perform
+      *****        end-if
+           end-perform.            
+           move 0 to no-msg 
+           .
+      * <TOTEM:END>
+
        PARAGRAFO-COPY.
       * <TOTEM:PARA. PARAGRAFO-COPY>
            copy "color-custom.cpy".   
@@ -4725,43 +4784,6 @@
            accept pev-data-modifica from century-date.
            accept pev-ora-modifica from time.
            move user-codi to pev-utente-modifica 
-           .
-      * <TOTEM:END>
-
-       OPEN-IO-PROMOEVA-LOCK.
-      * <TOTEM:PARA. OPEN-IO-PROMOEVA-LOCK>
-           perform until 1 = 2
-              move "promoeva" to geslock-nome-file
-              initialize geslock-messaggio
-              string   "Il file delle quantità promo per evasione" 
-                x"0d0a""è in uso su altro terminale." delimited size
-                       into geslock-messaggio
-              end-string
-
-              move 1 to no-msg
-              set tutto-ok  to true
-              set RecLocked to false
-              open i-o promoeva allowing readers
-              if RecLocked
-                 set errori to true
-                 move 1     to geslock-v-termina
-                 move 1     to geslock-v-riprova
-                 move 0     to geslock-v-ignora
-                 call   "geslock" using geslock-linkage
-                 cancel "geslock"
-
-                 evaluate true
-                 when riprova continue
-                 when other   display message "Operazione interrotta!"
-                                        title titolo
-                                         icon 2
-                              exit perform
-                 end-evaluate
-              else
-                 exit perform
-              end-if
-           end-perform.            
-           move 0 to no-msg 
            .
       * <TOTEM:END>
 

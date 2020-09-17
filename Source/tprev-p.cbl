@@ -244,34 +244,34 @@
       ***---
        OPEN-IO-PROMOEVA-LOCK.
            perform until 1 = 2
-              move "promoeva" to geslock-nome-file
-              initialize geslock-messaggio
-              string   "Il file delle quantità promo per evasione" 
-                x"0d0a""è in uso su altro terminale." delimited size
-                       into geslock-messaggio
-              end-string
+      *****        move "promoeva" to geslock-nome-file
+      *****        initialize geslock-messaggio
+      *****        string   "Il file delle quantità promo per evasione" 
+      *****          x"0d0a""è in uso su altro terminale." delimited size
+      *****                 into geslock-messaggio
+      *****        end-string
 
               set tutto-ok  to true
               set RecLocked to false
               open i-o promoeva allowing readers
-              if RecLocked
-                 set errori to true
-                 move 1     to geslock-v-termina
-                 move 1     to geslock-v-riprova
-                 move 0     to geslock-v-ignora
-                 call   "geslock" using geslock-linkage
-                 cancel "geslock"
-
-                 evaluate true
-                 when riprova continue
-                 when other   display message "Operazione interrotta!"
-                                        title titolo
-                                         icon 2
-                              exit perform
-                 end-evaluate
-              else
-                 exit perform
-              end-if
+      *****        if RecLocked
+      *****           set errori to true
+      *****           move 1     to geslock-v-termina
+      *****           move 1     to geslock-v-riprova
+      *****           move 0     to geslock-v-ignora
+      *****           call   "geslock" using geslock-linkage
+      *****           cancel "geslock"
+      *****
+      *****           evaluate true
+      *****           when riprova continue
+      *****           when other   display message "Operazione interrotta!"
+      *****                                  title titolo
+      *****                                   icon 2
+      *****                        exit perform
+      *****           end-evaluate
+      *****        else
+      *****           exit perform
+      *****        end-if
            end-perform.
 
       ***---
