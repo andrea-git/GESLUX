@@ -4862,6 +4862,7 @@ LUBEXX     end-read.
        VALORI-LISTINO-VIDEO.
            initialize rlis-rec replacing numeric data by zeros 
                                     alphanumeric data by spaces.
+           inquire ef-impforn,   value rlis-tipo-tratt-imposte.
            inquire ef-uni,       value rlis-prz-acq.
            inquire ef-sconto-1,  value rlis-sconto-1.
            inquire ef-sconto-2,  value rlis-sconto-2.
