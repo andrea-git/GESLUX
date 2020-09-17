@@ -921,8 +921,13 @@ LUBEXX     end-if.
            move art-codice  to prg-cod-articolo.
            move art-codice  to prg-cod-articolo.
       *****     move storemagazzino to prg-cod-magazzino.
-           move art-mag-std to prg-cod-magazzino.
-           move low-value   to prg-tipo-imballo prg-peso.
+           if art-mag-std = "CAS"
+              move "LBX"       to como-magazzino
+           else
+              move art-mag-std to como-magazzino
+           end-if.
+           move como-magazzino to prg-cod-magazzino.  
+           move low-value      to prg-tipo-imballo prg-peso.
            start progmag key >= prg-chiave 
                  invalid continue 
              not invalid
@@ -933,7 +938,7 @@ LUBEXX     end-if.
                     end-read
                     if prg-cod-articolo  not = art-codice or
       *****                 prg-cod-magazzino not = StoreMagazzino
-                       prg-cod-magazzino not = art-mag-std
+                       prg-cod-magazzino not = como-magazzino
                        exit perform
                     end-if
                     add prg-giacenza   to hid-giacenza
