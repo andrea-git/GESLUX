@@ -16,6 +16,10 @@
            when 78-ID-ef-gdo
                 inquire ef-gdo, value in ef-gdo-buf
 
+           |78-ID-ef-age è l'ID del control ef-age
+           when 78-ID-ef-age
+                inquire ef-age, value in ef-age-buf
+
            |78-ID-ef-cod è l'ID del control ef-cod
            when 78-ID-ef-cod
                 inquire ef-cod, value in ef-cod-buf

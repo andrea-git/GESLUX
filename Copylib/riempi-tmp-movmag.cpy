@@ -118,11 +118,20 @@ LUBEXX                    set record-ok to false
 LUBEXX                 end-if
 LUBEXX                 inquire ef-cod,  value in cli-codice
 LUBEXX                 inquire ef-tipo, value in tcl-codice
-LUBEXX              end-if    
+LUBEXX              end-if      
 
                     if record-ok
                        if ef-gdo-buf not = spaces and
                           ef-gdo-buf not = cli-gdo
+                          |ef-gdo-buf not = tmo-gdo
+                          set record-ok to false
+                       end-if
+                    end-if
+
+                    if record-ok     
+                       move ef-age-buf to age-codice
+                       if age-codice not = 0 and
+                          cli-agente not = age-codice
                           |ef-gdo-buf not = tmo-gdo
                           set record-ok to false
                        end-if

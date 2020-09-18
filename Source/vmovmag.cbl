@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          vmovmag.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 6 agosto 2020 14:22:05.
+       DATE-WRITTEN.        venerdì 18 settembre 2020 14:43:54.
        REMARKS.
       *{TOTEM}END
 
@@ -443,6 +443,10 @@
            88 Valid-STATUS-tprov VALUE IS "00" THRU "09". 
        77 STATUS-tregioni  PIC  X(2).
            88 Valid-STATUS-tregioni VALUE IS "00" THRU "09". 
+       77 e-age            PIC  9
+                  VALUE IS 1.
+       77 e-cli            PIC  9
+                  VALUE IS 1.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -461,6 +465,8 @@
               05 ef-tipo-BUF PIC X(2).
       * Data.Entry-Field
               05 ef-gdo-BUF PIC X(5).
+      * Data.Entry-Field
+              05 ef-age-BUF PIC z(5).
       * Data.Entry-Field
               05 ef-cod-BUF PIC z(5).
       * Data.Entry-Field
@@ -485,6 +491,8 @@
               05 lab-cau-BUF PIC X(40).
       * Data.Label
               05 lab-gdo-BUF PIC X(30).
+      * Data.Label
+              05 lab-age-BUF PIC X(40).
 
        77 STATUS-form3-FLAG-REFRESH PIC  9.
           88 form3-FLAG-REFRESH  VALUE 1 FALSE 0. 
@@ -541,7 +549,7 @@
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-tcaumag-BUF     PIC X(254).
        77 TMP-DataSet1-destinif-BUF     PIC X(1322).
-       77 TMP-DataSet1-lineseq-BUF     PIC X(900).
+       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-ttipocli-BUF     PIC X(889).
        77 TMP-DataSet1-progmag-BUF     PIC X(1090).
        77 TMP-DataSet1-progmagric-BUF     PIC X(564).
@@ -751,11 +759,12 @@
        78  78-ID-ef-data-to VALUE 5002.
        78  78-ID-ef-tipo VALUE 5003.
        78  78-ID-ef-gdo VALUE 5004.
-       78  78-ID-ef-cod VALUE 5005.
-       78  78-ID-ef-des VALUE 5006.
-       78  78-ID-ef-marca VALUE 5007.
-       78  78-ID-ef-art VALUE 5008.
-       78  78-ID-ef-cau VALUE 5009.
+       78  78-ID-ef-age VALUE 5005.
+       78  78-ID-ef-cod VALUE 5006.
+       78  78-ID-ef-des VALUE 5007.
+       78  78-ID-ef-marca VALUE 5008.
+       78  78-ID-ef-art VALUE 5009.
+       78  78-ID-ef-cau VALUE 5010.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -1327,8 +1336,8 @@
            frame-limiti, 
            Frame, 
            COL 1,50, 
-           LINE 1,50,
-           LINES 24,17 ,
+           LINE 1,44,
+           LINES 26,89 ,
            SIZE 44,60 ,
            ID IS 9,
            HEIGHT-IN-CELLS,
@@ -1342,7 +1351,7 @@
            ef-data-from, 
            Entry-Field, 
            COL 2,50, 
-           LINE 3,27,
+           LINE 3,21,
            LINES 1,33 ,
            SIZE 11,00 ,
            BOXED,
@@ -1364,7 +1373,7 @@
            ef-data-to, 
            Entry-Field, 
            COL 30,50, 
-           LINE 3,27,
+           LINE 3,21,
            LINES 1,33 ,
            SIZE 11,00 ,
            BOXED,
@@ -1386,7 +1395,7 @@
            chk-excel, 
            Check-Box, 
            COL 41,80, 
-           LINE 3,00,
+           LINE 2,94,
            LINES 28,00 ,
            SIZE 28,00 ,
            BITMAP-HANDLE EXCEL-BMP,
@@ -1405,7 +1414,7 @@
            rb-cli, 
            Radio-Button, 
            COL 2,50, 
-           LINE 5,50,
+           LINE 5,44,
            LINES 1,17 ,
            SIZE 2,00 ,
            EXCEPTION-VALUE 1001
@@ -1426,7 +1435,7 @@
            rb-for, 
            Radio-Button, 
            COL 13,50, 
-           LINE 5,50,
+           LINE 5,44,
            LINES 1,17 ,
            SIZE 2,00 ,
            EXCEPTION-VALUE 1002
@@ -1447,7 +1456,7 @@
            ef-tipo, 
            Entry-Field, 
            COL 13,00, 
-           LINE 7,22,
+           LINE 7,16,
            LINES 1,33 ,
            SIZE 7,00 ,
            BOXED,
@@ -1465,7 +1474,7 @@
            ef-gdo, 
            Entry-Field, 
            COL 13,00, 
-           LINE 9,72,
+           LINE 9,67,
            LINES 1,33 ,
            SIZE 7,00 ,
            BOXED,
@@ -1481,14 +1490,34 @@
 
       * ENTRY FIELD
        05
-           ef-cod, 
+           ef-age, 
            Entry-Field, 
            COL 13,00, 
-           LINE 12,22,
+           LINE 12,16,
            LINES 1,33 ,
            SIZE 7,00 ,
            BOXED,
            COLOR IS 513,
+           ENABLED e-age,
+           ID IS 78-ID-ef-age,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           MAX-TEXT 5,
+           VALUE ef-age-BUF,
+           .
+
+      * ENTRY FIELD
+       05
+           ef-cod, 
+           Entry-Field, 
+           COL 13,00, 
+           LINE 14,66,
+           LINES 1,33 ,
+           SIZE 7,00 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED e-cli,
            ID IS 78-ID-ef-cod,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -1502,11 +1531,12 @@
            ef-des, 
            Entry-Field, 
            COL 13,00, 
-           LINE 14,72,
+           LINE 17,16,
            LINES 1,33 ,
            SIZE 7,00 ,
            BOXED,
            COLOR IS 513,
+           ENABLED e-des,
            ID IS 78-ID-ef-des,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -1520,7 +1550,7 @@
            ef-marca, 
            Entry-Field, 
            COL 13,00, 
-           LINE 17,22,
+           LINE 19,67,
            LINES 1,33 ,
            SIZE 7,00 ,
            BOXED,
@@ -1538,7 +1568,7 @@
            ef-art, 
            Entry-Field, 
            COL 13,00, 
-           LINE 19,72,
+           LINE 22,17,
            LINES 1,33 ,
            SIZE 7,00 ,
            BOXED,
@@ -1556,7 +1586,7 @@
            ef-cau, 
            Entry-Field, 
            COL 13,00, 
-           LINE 22,50,
+           LINE 24,94,
            LINES 1,33 ,
            SIZE 7,00 ,
            BOXED,
@@ -1574,7 +1604,7 @@
            Screen3-La-1a, 
            Label, 
            COL 18,50, 
-           LINE 3,42,
+           LINE 3,36,
            LINES 1,17 ,
            SIZE 7,00 ,
            ID IS 100,
@@ -1590,7 +1620,7 @@
            Bitmap-freccia-fino, 
            Bitmap, 
            COL 26,50, 
-           LINE 3,27,
+           LINE 3,21,
            LINES 24,00 ,
            SIZE 28,00 ,
            TRANSPARENT-COLOR TR-COLOR,
@@ -1604,7 +1634,7 @@
            Bitmap-freccia-da, 
            Bitmap, 
            COL 14,50, 
-           LINE 3,27,
+           LINE 3,21,
            LINES 24,00 ,
            SIZE 28,00 ,
            TRANSPARENT-COLOR TR-COLOR,
@@ -1618,7 +1648,7 @@
            Screen4-blockpgm-1, 
            Label, 
            COL 20,00, 
-           LINE 2,50,
+           LINE 2,44,
            LINES 0,44 ,
            SIZE 1,60 ,
            ID IS 1,
@@ -1634,7 +1664,7 @@
            Screen3-La-1ac, 
            Label, 
            COL 4,50, 
-           LINE 12,22,
+           LINE 14,67,
            LINES 1,33 ,
            SIZE 8,00 ,
            ID IS 5,
@@ -1649,7 +1679,7 @@
            Screen4-Custom1-2, 
            Label, 
            COL 4,00, 
-           LINE 2,39,
+           LINE 2,33,
            LINES 0,50 ,
            SIZE 2,20 ,
            ID IS 8,
@@ -1663,7 +1693,7 @@
            Screen4-La-1, 
            Label, 
            COL 5,00, 
-           LINE 5,50,
+           LINE 5,44,
            LINES 1,17 ,
            SIZE 7,00 ,
            ID IS 15,
@@ -1678,7 +1708,7 @@
            Screen4-La-2, 
            Label, 
            COL 16,00, 
-           LINE 5,50,
+           LINE 5,44,
            LINES 1,17 ,
            SIZE 8,00 ,
            ID IS 16,
@@ -1693,7 +1723,7 @@
            Screen4-La-3, 
            Label, 
            COL 4,50, 
-           LINE 17,22,
+           LINE 19,67,
            LINES 1,33 ,
            SIZE 8,00 ,
            ID IS 18,
@@ -1708,7 +1738,7 @@
            Screen4-La-4, 
            Label, 
            COL 4,50, 
-           LINE 19,72,
+           LINE 22,17,
            LINES 1,33 ,
            SIZE 8,00 ,
            ID IS 20,
@@ -1723,7 +1753,7 @@
            lab-cod, 
            Label, 
            COL 20,50, 
-           LINE 12,22,
+           LINE 14,67,
            LINES 2,00 ,
            SIZE 24,00 ,
            COLOR IS 5,
@@ -1739,7 +1769,7 @@
            lab-marca, 
            Label, 
            COL 20,50, 
-           LINE 17,22,
+           LINE 19,67,
            LINES 2,00 ,
            SIZE 24,00 ,
            COLOR IS 5,
@@ -1755,7 +1785,7 @@
            lab-art, 
            Label, 
            COL 20,50, 
-           LINE 19,72,
+           LINE 22,17,
            LINES 2,00 ,
            SIZE 24,00 ,
            COLOR IS 5,
@@ -1771,7 +1801,7 @@
            Screen4-La-5, 
            Label, 
            COL 4,50, 
-           LINE 14,72,
+           LINE 17,17,
            LINES 1,33 ,
            SIZE 8,00 ,
            ID IS 24,
@@ -1787,7 +1817,7 @@
            lab-des, 
            Label, 
            COL 20,50, 
-           LINE 14,72,
+           LINE 17,17,
            LINES 2,00 ,
            SIZE 24,00 ,
            COLOR IS 5,
@@ -1804,7 +1834,7 @@
            Screen3-La-1aca, 
            Label, 
            COL 4,50, 
-           LINE 7,22,
+           LINE 7,16,
            LINES 2,00 ,
            SIZE 8,00 ,
            ID IS 28,
@@ -1819,7 +1849,7 @@
            lab-tipo, 
            Label, 
            COL 20,50, 
-           LINE 7,22,
+           LINE 7,16,
            LINES 2,00 ,
            SIZE 24,00 ,
            COLOR IS 5,
@@ -1835,7 +1865,7 @@
            Screen4-La-4a, 
            Label, 
            COL 4,50, 
-           LINE 22,50,
+           LINE 24,94,
            LINES 1,33 ,
            SIZE 8,00 ,
            ID IS 30,
@@ -1850,7 +1880,7 @@
            lab-cau, 
            Label, 
            COL 20,50, 
-           LINE 22,50,
+           LINE 24,94,
            LINES 2,00 ,
            SIZE 24,00 ,
            COLOR IS 5,
@@ -1866,7 +1896,7 @@
            Screen3-La-1acb, 
            Label, 
            COL 4,50, 
-           LINE 9,72,
+           LINE 9,67,
            LINES 1,33 ,
            SIZE 8,00 ,
            ID IS 32,
@@ -1881,7 +1911,7 @@
            lab-gdo, 
            Label, 
            COL 20,50, 
-           LINE 9,72,
+           LINE 9,67,
            LINES 2,00 ,
            SIZE 24,00 ,
            COLOR IS 5,
@@ -1892,15 +1922,45 @@
            TRANSPARENT,
            .
 
+      * LABEL
+       05
+           Screen3-La-1acc, 
+           Label, 
+           COL 4,50, 
+           LINE 12,16,
+           LINES 1,33 ,
+           SIZE 8,00 ,
+           ID IS 5,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Agente",
+           .
+
+      * DB_LABEL
+       05
+           lab-age, 
+           Label, 
+           COL 20,50, 
+           LINE 12,16,
+           LINES 2,00 ,
+           SIZE 24,00 ,
+           COLOR IS 5,
+           ID IS 21,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE lab-age-BUF,
+           TRANSPARENT,
+           .
+
       * FRAME
        05
            Screen4-Fr-1, 
            Frame, 
            COL 1,00, 
-           LINE 26,11,
+           LINE 28,89,
            LINES 2,78 ,
            SIZE 45,90 ,
-           LOWERED,
            ID IS 34,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -1911,7 +1971,7 @@
            pb-ok, 
            Push-Button, 
            COL 30,90, 
-           LINE 26,80,
+           LINE 29,58,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-OK-BMP,
@@ -1930,7 +1990,7 @@
            pb-annulla, 
            Push-Button, 
            COL 38,80, 
-           LINE 26,80,
+           LINE 29,58,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-CANCEL-BMP,
@@ -8862,7 +8922,7 @@
 
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 27,89,
+              LINES 30,78,
               SIZE 45,90,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
@@ -8916,8 +8976,10 @@
                          move como-data to ef-data-to-buf
            end-read.
                                                                      
-           move "<<HELP>> Blank = TUTTE LE TIPOLOGIE" to lab-tipo-buf.
+           move "<<HELP>> Blank = TUTTE LE TIPOLOGIE" to lab-tipo-buf.  
+            
            move "<<HELP>> Blank = TUTTI I CLIENTI"    to lab-cli-buf.
+           move "<<HELP>> Blank = TUTTI GLI AGENTI"   to lab-age-buf.
            move "<<HELP>> Blank = TUTTI I DESTINI"    to lab-des-buf.
            move "<<HELP>> Blank = TUTTE LE CAUSALI"   to lab-cau-buf.
 
@@ -9008,6 +9070,8 @@
            tcl-descrizione
       * DB_LABEL
               MOVE "<<HELP>> Blank = TUTTI I GRUPPI" TO gdo-intestazione
+      * DB_LABEL
+              MOVE "<<HELP>> Blank = TUTTI GLI AGENTI" TO age-ragsoc-1
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, SetDefault>
       * <TOTEM:END>
            PERFORM Form1-FLD-TO-BUF
@@ -9036,12 +9100,20 @@
                MOVE 5004 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
+      * ef-age's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-age-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 5005 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
       * ef-cod's Validation
            SET TOTEM-CHECK-OK TO FALSE
            PERFORM ef-cod-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5005 TO CONTROL-ID
+               MOVE 5006 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-des's Validation
@@ -9049,7 +9121,7 @@
            PERFORM ef-des-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5006 TO CONTROL-ID
+               MOVE 5007 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-marca's Validation
@@ -9057,7 +9129,7 @@
            PERFORM ef-marca-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5007 TO CONTROL-ID
+               MOVE 5008 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-art's Validation
@@ -9065,7 +9137,7 @@
            PERFORM ef-art-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5008 TO CONTROL-ID
+               MOVE 5009 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cau's Validation
@@ -9073,7 +9145,7 @@
            PERFORM ef-cau-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5009 TO CONTROL-ID
+               MOVE 5010 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
            .
@@ -9110,6 +9182,23 @@
            PERFORM ef-gdo-BEFORE-VALIDATION
            SET TOTEM-CHECK-OK TO TRUE
            PERFORM ef-gdo-AFTER-VALIDATION
+           .
+
+       ef-age-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-age, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-age-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-age, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-age's Validation
+       ef-age-VALIDATION.
+           PERFORM ef-age-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-age-AFTER-VALIDATION
            .
 
        ef-cod-BEFORE-VALIDATION.
@@ -9205,6 +9294,8 @@
            MOVE ef-tipo-BUF TO tcl-codice
       * DB_Entry-Field : ef-gdo
            MOVE ef-gdo-BUF TO gdo-codice
+      * DB_Entry-Field : ef-age
+           MOVE ef-age-BUF TO age-codice
       * DB_Entry-Field : ef-cod
            MOVE ef-cod-BUF TO cli-codice
       * DB_Entry-Field : ef-des
@@ -9226,6 +9317,8 @@
            MOVE tcl-codice TO ef-tipo-BUF
       * DB_Entry-Field : ef-gdo
            MOVE gdo-codice TO ef-gdo-BUF
+      * DB_Entry-Field : ef-age
+           MOVE age-codice TO ef-age-BUF
       * DB_Entry-Field : ef-cod
            MOVE cli-codice TO ef-cod-BUF
       * DB_Entry-Field : ef-des
@@ -9250,6 +9343,8 @@
               MOVE tca-descrizione  TO lab-cau-BUF
       * DB_LABEL : lab-gdo
               MOVE gdo-intestazione  TO lab-gdo-BUF
+      * DB_LABEL : lab-age
+              MOVE age-ragsoc-1  TO lab-age-BUF
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterFldToBuf>
       * <TOTEM:END>
            .
@@ -9300,6 +9395,10 @@
            when 78-ID-ef-gdo
                 move 1 to StatusHelp
                 perform STATUS-HELP
+           |78-ID-ef-age è l'ID del campo ef-age
+           when 78-ID-ef-age
+                move 1 to StatusHelp
+                perform STATUS-HELP
            |78-ID-ef-cod è l'ID del campo ef-cod
            when 78-ID-ef-cod
                 move 1 to StatusHelp
@@ -9340,6 +9439,11 @@
 
            |78-ID-ef-gdo è l'ID del campo ef-gdo
            when 78-ID-ef-gdo
+                move 0 to StatusHelp
+                perform STATUS-HELP
+
+           |78-ID-ef-age è l'ID del campo ef-age
+           when 78-ID-ef-age
                 move 0 to StatusHelp
                 perform STATUS-HELP
 
@@ -9390,6 +9494,9 @@
                 perform CONTROLLO
            |78-ID-ef-gdo è l'ID del campo ef-gdo
            when 78-ID-ef-gdo
+                perform CONTROLLO
+           |78-ID-ef-age è l'ID del campo ef-age
+           when 78-ID-ef-age
                 perform CONTROLLO
            |78-ID-ef-cod è l'ID del campo ef-cod
            when 78-ID-ef-cod
@@ -10540,16 +10647,18 @@
            WHEN 5007 MOVE "." to TOTEM-HINT-TEXT
            WHEN 5008 MOVE "." to TOTEM-HINT-TEXT
            WHEN 5009 MOVE "." to TOTEM-HINT-TEXT
+           WHEN 5010 MOVE "." to TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
            EVALUATE Control-Id
            When 5003 PERFORM ef-tipo-BeforeProcedure
            When 5004 PERFORM ef-cod-BeforeProcedure
            When 5005 PERFORM ef-cod-BeforeProcedure
-           When 5006 PERFORM ef-des-BeforeProcedure
-           When 5007 PERFORM ef-marca-BeforeProcedure
-           When 5008 PERFORM ef-art-BeforeProcedure
+           When 5006 PERFORM ef-cod-BeforeProcedure
+           When 5007 PERFORM ef-des-BeforeProcedure
+           When 5008 PERFORM ef-marca-BeforeProcedure
            When 5009 PERFORM ef-art-BeforeProcedure
+           When 5010 PERFORM ef-art-BeforeProcedure
            END-EVALUATE
            perform Form1-BEFORE-SCREEN
            .
@@ -10559,10 +10668,11 @@
            When 5003 PERFORM ef-tipo-AfterProcedure
            When 5004 PERFORM ef-cod-AfterProcedure
            When 5005 PERFORM ef-cod-AfterProcedure
-           When 5006 PERFORM ef-des-AfterProcedure
-           When 5007 PERFORM ef-marca-AfterProcedure
-           When 5008 PERFORM ef-art-AfterProcedure
+           When 5006 PERFORM ef-cod-AfterProcedure
+           When 5007 PERFORM ef-des-AfterProcedure
+           When 5008 PERFORM ef-marca-AfterProcedure
            When 5009 PERFORM ef-art-AfterProcedure
+           When 5010 PERFORM ef-art-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -10668,6 +10778,17 @@
                 if stato-zoom = ZERO  
                    modify ef-gdo,   value gdo-codice
                    modify lab-gdo,  value gdo-intestazione
+                end-if    
+      *
+           when 78-ID-ef-age
+                inquire ef-age    value age-codice
+                move "agenti"       to como-File
+                call   "zoom-gt" using como-file, age-rec
+                                giving stato-zoom
+                cancel "zoom-gt"
+                if stato-zoom = ZERO  
+                   modify ef-age,   value age-codice
+                   modify lab-age,  value age-ragsoc-1
                 end-if                  
       *
            when 78-ID-ef-cod
@@ -10806,14 +10927,15 @@
                                       icon 2
                            move 78-ID-ef-tipo to control-id
                       end-read
-                      move tcl-descrizione   to lab-tipo-buf
-                      move 0                 to ef-cod-buf cli-codice
-                      move "TUTTI I CLIENTI" to lab-cod-buf 
-                      move 0                 to ef-des-buf des-prog 
+                      move tcl-descrizione    to lab-tipo-buf
+                      move 0                  to ef-cod-buf cli-codice
+                      move "TUTTI I CLIENTI"  to lab-cod-buf 
+                      move 0                  to ef-des-buf des-prog 
            desf-prog
-                      move "TUTTI I DESTINI" to lab-des-buf
+                      move "TUTTI I DESTINI"  to lab-des-buf
                       display ef-tipo lab-tipo ef-cod 
                               lab-cod ef-des   lab-des
+                              ef-age lab-age
                    else
                       move "TUTTE LE TIPOLOGIE" to lab-tipo-buf
                       display lab-tipo
@@ -10844,7 +10966,7 @@
            when 78-ID-ef-gdo 
                 if e-gdo = 1
                    inquire ef-gdo, value in gdo-codice
-                   if gdo-codice not = spaces
+                   if gdo-codice not = spaces              
                       read tgrupgdo no lock
                            invalid
                            set errori to true
@@ -10867,14 +10989,40 @@
                       move spaces           to lab-gdo-buf
                    end-if
                    display ef-gdo lab-gdo
-                end-if
+                end-if    
+
+           when 78-ID-ef-age
+                if tipo-rec = 1
+                   inquire ef-age,   value in age-codice
+                   move spaces to age-ragsoc-1
+                   if age-codice not = 0
+                      read agenti no lock
+                           invalid
+                           set errori to true
+                           display message "Inserimento agente NON valid
+      -    "o"
+                                     title tit-err
+                                      icon 2
+                           move 78-ID-ef-cod to control-id 
+                      end-read
+                   else
+                      move "TUTTI GLI AGENTI"   to age-ragsoc-1
+                   end-if     
+                   move age-ragsoc-1 to lab-age-buf
+                   display lab-age
+                else
+                   move 0 to ef-age-buf
+                   move "TUTTI GLI AGENTI"   to lab-age-buf
+                   display ef-age lab-age
+                end-if      
       *
            when 78-ID-ef-cod
                 if tipo-rec = 1 set cli-tipo-C to true
                 else            set cli-tipo-F to true
                 end-if
                 inquire ef-tipo, value in ef-tipo-buf
-                if ef-tipo-buf = spaces
+                inquire ef-age,  value in age-codice
+                if ef-tipo-buf = spaces and age-codice = 0
                    move cli-tipo-CF to Save-CF
 
                    inquire ef-cod,   value in cli-codice
@@ -10911,8 +11059,9 @@
            when 78-ID-ef-des
                 inquire ef-des,   value in des-prog
                 move spaces to des-ragsoc-1 desf-ragsoc-1
-                inquire ef-tipo, value in ef-tipo-buf
-                if ef-tipo-buf = spaces
+                inquire ef-tipo, value in ef-tipo-buf 
+                inquire ef-cod,   value in cli-codice
+                if ef-tipo-buf = spaces and cli-codice not = 0
                    if des-prog not = 0
                       if tipo-rec = 1
                          inquire ef-cod,   value in des-codice
@@ -11018,13 +11167,32 @@
       *               
            end-evaluate.
 
+           perform ABILITAZIONE-CAMPI.
+
            if errori
               perform CANCELLA-COLORE
               move CONTROL-ID to STORE-ID        
               move 4          to ACCEPT-CONTROL  
            end-if.
 
-           display form1 
+           display form1.
+
+      ***---
+       ABILITAZIONE-CAMPI.
+           move 1 to e-cli e-des.
+           if ef-tipo-buf not = spaces or ef-gdo-buf not = spaces or
+              age-codice not = 0
+              move 0 to e-cli e-des
+              move "TUTTI I CLIENTI"   to lab-cod-buf
+              move "TUTTI I DESTINI"   to lab-des-buf
+           end-if.
+           if cli-codice = 0
+              move 0 to e-des
+              if des-prog not = 0
+                 move "TUTTI I DESTINI"   to lab-des-buf
+              end-if
+           end-if.
+           display ef-cod ef-des lab-cod lab-des 
            .
       * <TOTEM:END>
 
@@ -11322,6 +11490,12 @@
               INQUIRE ef-gdo, VALUE IN gdo-codice
               SET TOTEM-CHECK-OK TO FALSE
               PERFORM ef-gdo-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+              INQUIRE ef-age, VALUE IN age-codice
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-age-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
@@ -11792,23 +11966,38 @@
       * <TOTEM:PARA. rb-cli-LinkTo>
 LUBEXX     move 1 to tipo-rec.
 LUBEXX     set Save-C to true.
-           move 1 to e-tipo.
-           display ef-tipo 
+           move 1 to e-tipo e-age e-cli e-des e-gdo e-tipo.
+           perform ABILITAZIONE-CAMPI.   
+                                                                     
+           move "TUTTE LE TIPOLOGIE" to lab-tipo-buf.       
+           move "TUTTI I GRUPPI"     to lab-gdo-buf.      
+           move "TUTTI GLI AGENTI"   to lab-age-buf.
+           move "TUTTI I CLIENTI"    to lab-cod-buf.
+           move "TUTTI I DESTINI"    to lab-des-buf.
+           move "TUTTE LE CAUSALI"   to lab-cau-buf.
+           display form1 
            .
       * <TOTEM:END>
        rb-for-LinkTo.
       * <TOTEM:PARA. rb-for-LinkTo>
 LUBEXX     move 2 to tipo-rec.
 LUBEXX     set Save-F to true.       
-           move 0      to e-tipo.
+           move 0      to e-tipo ef-age-buf e-age.
            move spaces to ef-tipo-buf.
            move spaces to  lab-tipo-buf.
-           display ef-tipo lab-tipo.
+           move spaces to  lab-age-buf.
 
-           move 0      to e-gdo.
+           move 0      to e-gdo e-cod e-des.
            move spaces to ef-gdo-buf.
            move spaces to lab-gdo-buf.
-           display ef-gdo lab-gdo 
+
+           perform ABILITAZIONE-CAMPI.      
+                                                                     
+           move "TUTTI I FORNITORI"  to lab-cod-buf.
+           move "TUTTI I DESTINI"    to lab-des-buf.
+           move "TUTTE LE CAUSALI"   to lab-cau-buf.
+           display form1.
+           perform CANCELLA-COLORE 
            .
       * <TOTEM:END>
        ef-tipo-BeforeProcedure.
