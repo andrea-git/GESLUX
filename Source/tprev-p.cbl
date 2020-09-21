@@ -243,7 +243,7 @@
 
       ***---
        OPEN-IO-PROMOEVA-LOCK.
-           perform until 1 = 2
+      *****     perform until 1 = 2
       *****        move "promoeva" to geslock-nome-file
       *****        initialize geslock-messaggio
       *****        string   "Il file delle quantità promo per evasione" 
@@ -254,6 +254,9 @@
               set tutto-ok  to true
               set RecLocked to false
               open i-o promoeva allowing readers
+              if RecLocked
+                 set errori to true
+              end-if
       *****        if RecLocked
       *****           set errori to true
       *****           move 1     to geslock-v-termina
@@ -272,7 +275,8 @@
       *****        else
       *****           exit perform
       *****        end-if
-           end-perform.
+      *****     end-perform.
+           .
 
       ***---
        ELABORAZIONE.

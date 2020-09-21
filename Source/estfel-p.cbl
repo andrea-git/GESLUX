@@ -344,6 +344,7 @@
                        end-read                 
                        move tno-data-fattura to data-doc
                        move tno-num-fattura  to num-doc
+                       move spaces           to tor-num-ord-cli
                        perform ELABORA-DOCUMENTO
                     end-if
                  end-perform
@@ -1197,8 +1198,6 @@
               write line-riga            
               
               if tor-num-ord-cli = spaces    
-                 inspect tor-num-ord-cli
-                         replacing trailing spaces by low-value
                  initialize line-riga
                  string 78-spazi 
                         78-spazi       
