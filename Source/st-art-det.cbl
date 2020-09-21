@@ -287,11 +287,11 @@
          05 filler                      pic x.
          05 r-gruppi                    pic x.
          05 filler                      pic x(1).
-         05 filler                      pic x(3) value "MV+".
+         05 filler                      pic x(3) value "C/E".
          05 filler                      pic x(1).
          05 r-specialist                pic x.
          05 filler                      pic x(1).
-         05 filler                      pic x(3) value "CEP".
+         05 filler                      pic x(3). |value "CEP".
          05 filler                      pic x.
          05 r-cepsa                     pic x.
          05 filler                      pic x(1).
@@ -329,11 +329,11 @@
                                         value "Qta bancale STD PZ".
          05 r-art-qta-std               pic z.zzz.zz9.
          05 filler                      pic x(30).            
-         05 filler                      pic x(3) value "Age".
+         05 filler                      pic x(3). |value "Age".
          05 filler                      pic x.
          05 r-agenti                    pic x.
          05 filler                      pic x(1).
-         05 filler                      pic x(3) value "Est".
+         05 filler                      pic x(3). |value "Est".
          05 filler                      pic x.
          05 r-estero                    pic x.
          05 filler                      pic x(1).
@@ -341,7 +341,7 @@
          05 filler                      pic x.
          05 r-gds                       pic x.
          05 filler                      pic x(1).
-         05 filler                      pic x(3) value "SPI".
+         05 filler                      pic x(3). |value "SPI".
          05 filler                      pic x(1).
          05 r-spi                       pic x.
          05 filler                      pic x(1).
@@ -1227,27 +1227,27 @@
               else              move spaces to r-gda
               end-if            
 
-              if art-SHARK-si   move "X"    to r-CEPSA
-              else              move spaces to r-CEPSA
-              end-if              
+      *****        if art-SHARK-si   move "X"    to r-CEPSA
+      *****        else              move spaces to r-CEPSA
+      *****        end-if              
 
               move r14 to spl-riga-stampa
               perform SCRIVI
 
               move art-qta-epal to r-art-qta-epal
               move art-qta-std  to r-art-qta-std    
-              if art-si-agenti  move "X"    to r-agenti
-              else              move spaces to r-agenti
-              end-if
-              if art-si-estero  move "X"    to r-estero
-              else              move spaces to r-estero
-              end-if
+      *****        if art-si-agenti  move "X"    to r-agenti
+      *****        else              move spaces to r-agenti
+      *****        end-if
+      *****        if art-si-estero  move "X"    to r-estero
+      *****        else              move spaces to r-estero
+      *****        end-if
       *****        if art-si-gds     move "X"    to r-gds
       *****        else              move spaces to r-gds
       *****        end-if
-              if art-SPI-si     move "X"    to r-spi
-              else              move spaces to r-spi
-              end-if
+      *****        if art-SPI-si     move "X"    to r-spi
+      *****        else              move spaces to r-spi
+      *****        end-if
               if art-AT-si      move "X"    to r-at
               else              move spaces to r-at
               end-if   

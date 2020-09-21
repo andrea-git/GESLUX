@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E33F21929-109-984914690
+PROGRAM_UNIQUE_CODE=TOTEM-7E4915215837-745-417824320
 
 {{@DESCRIPTION:
 
@@ -10433,7 +10433,7 @@ Begin Screen Form1
             Termination Value = 0
             Title             = "art-soggetto-cobat"
             Value             = 0:FALSE
-            Visible           = NONE
+            Visible           = FALSE
             Width in Cells    = TRUE
             My Property       = "CONTROLLO-OLD="
             Before Procedure  = chk-cobat-BeforeProcedure
@@ -10745,7 +10745,7 @@ Begin Screen Form1
             Termination Value = 0
             Title             = "art-soggetto-imposte"
             Value             = 0:FALSE
-            Visible           = NONE
+            Visible           = FALSE
             Width in Cells    = TRUE
             My Property       = "CONTROLLO-OLD="
             Before Procedure  = chk-utf-BeforeProcedure
@@ -10849,7 +10849,7 @@ Begin Screen Form1
             Termination Value = 0
             Title             = "art-soggetto-imposte"
             Value             = 0:FALSE
-            Visible           = NONE
+            Visible           = FALSE
             Width in Cells    = TRUE
             My Property       = "CONTROLLO-OLD="
             Before Procedure  = chk-utf-BeforeProcedure
@@ -11005,7 +11005,7 @@ Begin Screen Form1
             Termination Value = 0
             Title             = "art-soggetto-imposte"
             Value             = 0:FALSE
-            Visible           = NONE
+            Visible           = FALSE
             Width in Cells    = TRUE
             My Property       = "CONTROLLO-OLD="
             Before Procedure  = chk-utf-BeforeProcedure
@@ -12599,7 +12599,7 @@ Begin Screen Form1
             Tab Order         = 109
             Title             = "Agenti"
             Transparent       = TRUE
-            Visible           = NONE
+            Visible           = FALSE
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-18a
@@ -12704,40 +12704,6 @@ Begin Screen Form1
             Visible           = NONE
             Width in Cells    = TRUE
          End
-         Begin Label Form1-La-32ab
-            SCREEN-COL        = 115,50
-            SCREEN-LINE       = 37,77
-            LOCK-CONTROL      = TRUE
-            LEVEL             = 10
-            (Name)            = Form1-La-32ab
-            Clines            = 0
-            Clines Unit       = Default
-            Color             = 0
-            Column            = 113,83
-            Csize             = 0
-            Csize Unit        = Default
-            Destroy Type      = Automatic
-            Enable            = NONE
-            Font              = Small Font
-            Font Variable     = Small-Font
-            Height in Cells   = TRUE
-            Help ID           = 0
-            ID                = 127
-            Justification     = Unaligned
-            Label Offset      = 20
-            Line              = 32,08
-            Lines             = 1,31
-            Lines Unit        = Default
-            No Key Letter     = FALSE
-            Occurs            = 0
-            Size              = 14,00
-            Size Unit         = Default
-            Tab Order         = 113
-            Title             = "MV+"
-            Transparent       = TRUE
-            Visible           = NONE
-            Width in Cells    = TRUE
-         End
          Begin Label Form1-La-32aaa
             SCREEN-COL        = 115,50
             SCREEN-LINE       = 39,77
@@ -12766,10 +12732,10 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 6,00
             Size Unit         = Default
-            Tab Order         = 114
+            Tab Order         = 113
             Title             = "Estero"
             Transparent       = TRUE
-            Visible           = NONE
+            Visible           = FALSE
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-33ab
@@ -12800,7 +12766,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 6,00
             Size Unit         = Default
-            Tab Order         = 115
+            Tab Order         = 114
             Title             = "GDS"
             Transparent       = TRUE
             Visible           = FALSE
@@ -12834,7 +12800,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 13,00
             Size Unit         = Default
-            Tab Order         = 116
+            Tab Order         = 115
             Title             = "Max scorta (pz)"
             Transparent       = TRUE
             Visible           = NONE
@@ -12869,7 +12835,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 8,00
             Size Unit         = Default
-            Tab Order         = 117
+            Tab Order         = 116
             Title             = "GDS/DO"
             Transparent       = TRUE
             Visible           = NONE
@@ -12903,7 +12869,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 13,17
             Size Unit         = Default
-            Tab Order         = 118
+            Tab Order         = 117
             Title             = "Peso Reale (Kg)"
             Transparent       = TRUE
             Visible           = NONE
@@ -12938,7 +12904,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 13,17
             Size Unit         = Default
-            Tab Order         = 119
+            Tab Order         = 118
             Title             = "Magazzino STD"
             Transparent       = TRUE
             Visible           = NONE
@@ -12977,7 +12943,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 41,00
             Size Unit         = Default
-            Tab Order         = 120
+            Tab Order         = 119
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
@@ -13010,7 +12976,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 121
+            Tab Order         = 120
             Title             = "Codice collegato"
             Transparent       = TRUE
             Visible           = NONE
@@ -13044,7 +13010,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 13,00
             Size Unit         = Default
-            Tab Order         = 122
+            Tab Order         = 121
             Title             = "Destino"
             Transparent       = TRUE
             Visible           = NONE
@@ -13083,7 +13049,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 112,00
             Size Unit         = Default
-            Tab Order         = 123
+            Tab Order         = 122
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
@@ -13121,7 +13087,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 40,00
             Size Unit         = Default
-            Tab Order         = 124
+            Tab Order         = 123
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
@@ -13154,7 +13120,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 125
+            Tab Order         = 124
             Title             = "Prod. Energetico"
             Transparent       = TRUE
             Visible           = NONE
@@ -13188,7 +13154,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 13,00
             Size Unit         = Default
-            Tab Order         = 126
+            Tab Order         = 125
             Title             = "Tipo Stoccaggio"
             Transparent       = TRUE
             Visible           = NONE
@@ -13222,7 +13188,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 12,00
             Size Unit         = Default
-            Tab Order         = 127
+            Tab Order         = 126
             Title             = "Confezionato"
             Transparent       = TRUE
             Visible           = NONE
@@ -13256,7 +13222,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 12,00
             Size Unit         = Default
-            Tab Order         = 128
+            Tab Order         = 127
             Title             = "Sfuso"
             Transparent       = TRUE
             Visible           = NONE
@@ -13290,7 +13256,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 6,00
             Size Unit         = Default
-            Tab Order         = 129
+            Tab Order         = 128
             Title             = "WEB"
             Transparent       = TRUE
             Visible           = FALSE
@@ -13324,10 +13290,10 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 6,00
             Size Unit         = Default
-            Tab Order         = 130
+            Tab Order         = 129
             Title             = "SPI"
             Transparent       = TRUE
-            Visible           = NONE
+            Visible           = FALSE
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-32aaba
@@ -13358,7 +13324,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 9,50
             Size Unit         = Default
-            Tab Order         = 131
+            Tab Order         = 130
             Title             = "Trade"
             Transparent       = TRUE
             Visible           = NONE
@@ -13392,7 +13358,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 8,00
             Size Unit         = Default
-            Tab Order         = 132
+            Tab Order         = 131
             Title             = "TEXACO"
             Transparent       = TRUE
             Visible           = NONE
@@ -13426,10 +13392,10 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 7,00
             Size Unit         = Default
-            Tab Order         = 133
+            Tab Order         = 132
             Title             = "CEPSA"
             Transparent       = TRUE
-            Visible           = NONE
+            Visible           = FALSE
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-10aa
@@ -13460,7 +13426,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 13,00
             Size Unit         = Default
-            Tab Order         = 134
+            Tab Order         = 133
             Title             = "Note"
             Transparent       = TRUE
             Visible           = NONE
@@ -13494,8 +13460,42 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 5,00
             Size Unit         = Default
-            Tab Order         = 135
+            Tab Order         = 134
             Title             = "Litri"
+            Transparent       = TRUE
+            Visible           = NONE
+            Width in Cells    = TRUE
+         End
+         Begin Label Form1-La-18aaa
+            SCREEN-COL        = 115,50
+            SCREEN-LINE       = 37,46
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = Form1-La-18aaa
+            Clines            = 0
+            Clines Unit       = Default
+            Color             = 0
+            Column            = 113,83
+            Csize             = 0
+            Csize Unit        = Default
+            Destroy Type      = Automatic
+            Enable            = NONE
+            Font              = Small Font
+            Font Variable     = Small-Font
+            Height in Cells   = TRUE
+            Help ID           = 0
+            ID                = 126
+            Justification     = Unaligned
+            Label Offset      = 20
+            Line              = 31,77
+            Lines             = 2,00
+            Lines Unit        = Default
+            No Key Letter     = FALSE
+            Occurs            = 0
+            Size              = 13,00
+            Size Unit         = Default
+            Tab Order         = 135
+            Title             = "Concorrenza/ Esclusiva"
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
