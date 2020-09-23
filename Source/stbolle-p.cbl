@@ -1490,11 +1490,11 @@ LABLAB                             end-if
                              if LinkPgm = "gordcvar"
                                 perform AGGIUNGI-STAMPANTE
                              else
-                                if tor-anno-fattura = 0 and 
-                                   tor-data-fattura = 0 and
-                                   tor-num-prenot   = 0
+      *                          if tor-anno-fattura = 0 and 
+      *                             tor-data-fattura = 0 and
+      *                             tor-num-prenot   = 0
                                    perform AGGIUNGI-STAMPANTE
-                                end-if
+      *                          end-if
                              end-if
                           end-if
                        end-if
@@ -1699,11 +1699,11 @@ LABLAB                             end-if
                              if LinkPgm = "gordcvar"
                                 perform STAMPA-DATI
                              else
-                                if tor-anno-fattura = 0 and 
-                                   tor-data-fattura = 0 and
-                                   tor-num-prenot   = 0
+      *                          if tor-anno-fattura = 0 and 
+      *                             tor-data-fattura = 0 and
+      *                             tor-num-prenot   = 0
                                    perform STAMPA-DATI
-                                end-if
+      *                          end-if
                              end-if
                           end-if
                        end-if
