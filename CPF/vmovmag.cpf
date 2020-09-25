@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E491212143-190-2990419478
+PROGRAM_UNIQUE_CODE=TOTEM-7E4919201235-954-2479131379
 
 {{@DESCRIPTION:
 
@@ -5134,7 +5134,6 @@ Begin Screen Form1
          Cursor Row        = 0
          Destroy Type      = Automatic
          Enable            = TRUE
-         Enable Variable   = e-des
          Font              = Default Font
          Height in Cells   = TRUE
          Help ID           = 0
@@ -5192,7 +5191,6 @@ Begin Screen Form1
          Cursor Row        = 0
          Destroy Type      = Automatic
          Enable            = TRUE
-         Enable Variable   = e-des
          Font              = Default Font
          Height in Cells   = TRUE
          Help ID           = 0
@@ -5439,7 +5437,7 @@ Begin Screen Form1
       End
       Begin Data.Entry-Field ef-gdo
          SCREEN-COL        = 13,00
-         SCREEN-LINE       = 9,67
+         SCREEN-LINE       = 9,66
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = ef-gdo
@@ -5592,7 +5590,7 @@ Begin Screen Form1
          Height in Cells   = TRUE
          Help ID           = 0
          Hint              = .
-         ID                = 12
+         ID                = 13
          ID Variable       = AUTO-ID
          Justification     = Right
          Line              = 14,22
@@ -5687,7 +5685,7 @@ Begin Screen Form1
       End
       Begin Data.Entry-Field ef-marca
          SCREEN-COL        = 13,00
-         SCREEN-LINE       = 19,67
+         SCREEN-LINE       = 19,66
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = ef-marca
@@ -5748,7 +5746,7 @@ Begin Screen Form1
       End
       Begin Data.Entry-Field ef-art
          SCREEN-COL        = 13,00
-         SCREEN-LINE       = 22,17
+         SCREEN-LINE       = 22,16
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = ef-art
@@ -5919,7 +5917,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = FALSE
          Help ID           = 0
-         ID                = 13
+         ID                = 101
          Line              = 2,77
          Lines             = 1,33
          Lines in Pixels   = 24
@@ -6005,7 +6003,7 @@ Begin Screen Form1
       End
       Begin Label Screen3-La-1ac
          SCREEN-COL        = 4,50
-         SCREEN-LINE       = 14,67
+         SCREEN-LINE       = 14,66
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Screen3-La-1ac
@@ -6142,7 +6140,7 @@ Begin Screen Form1
       End
       Begin Label Screen4-La-3
          SCREEN-COL        = 4,50
-         SCREEN-LINE       = 19,67
+         SCREEN-LINE       = 19,66
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Screen4-La-3
@@ -6175,7 +6173,7 @@ Begin Screen Form1
       End
       Begin Label Screen4-La-4
          SCREEN-COL        = 4,50
-         SCREEN-LINE       = 22,17
+         SCREEN-LINE       = 22,16
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Screen4-La-4
@@ -6208,7 +6206,7 @@ Begin Screen Form1
       End
       Begin Data.Label lab-cod
          SCREEN-COL        = 20,50
-         SCREEN-LINE       = 14,67
+         SCREEN-LINE       = 14,66
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = lab-cod
@@ -6246,7 +6244,7 @@ Begin Screen Form1
       End
       Begin Data.Label lab-marca
          SCREEN-COL        = 20,50
-         SCREEN-LINE       = 19,67
+         SCREEN-LINE       = 19,66
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = lab-marca
@@ -6283,7 +6281,7 @@ Begin Screen Form1
       End
       Begin Data.Label lab-art
          SCREEN-COL        = 20,50
-         SCREEN-LINE       = 22,17
+         SCREEN-LINE       = 22,16
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = lab-art
@@ -6320,7 +6318,7 @@ Begin Screen Form1
       End
       Begin Label Screen4-La-5
          SCREEN-COL        = 4,50
-         SCREEN-LINE       = 17,17
+         SCREEN-LINE       = 17,16
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Screen4-La-5
@@ -6353,7 +6351,7 @@ Begin Screen Form1
       End
       Begin Data.Label lab-des
          SCREEN-COL        = 20,50
-         SCREEN-LINE       = 17,17
+         SCREEN-LINE       = 17,16
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = lab-des
@@ -6532,7 +6530,7 @@ Begin Screen Form1
       End
       Begin Label Screen3-La-1acb
          SCREEN-COL        = 4,50
-         SCREEN-LINE       = 9,67
+         SCREEN-LINE       = 9,66
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Screen3-La-1acb
@@ -6565,7 +6563,7 @@ Begin Screen Form1
       End
       Begin Data.Label lab-gdo
          SCREEN-COL        = 20,50
-         SCREEN-LINE       = 9,67
+         SCREEN-LINE       = 9,66
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = lab-gdo
@@ -6618,7 +6616,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = TRUE
          Help ID           = 0
-         ID                = 5
+         ID                = 34
          Justification     = Unaligned
          Label Offset      = 20
          Line              = 11,72
@@ -6656,7 +6654,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = TRUE
          Help ID           = 0
-         ID                = 21
+         ID                = 35
          Justification     = Unaligned
          Label Offset      = 20
          Line              = 11,72
@@ -6693,7 +6691,7 @@ Begin Screen Form1
       Height in Cells   = TRUE
       Help ID           = 0
       High Color        = 0
-      ID                = 34
+      ID                = 36
       Line              = 28,89
       Lines             = 2,78
       Lines Unit        = Default

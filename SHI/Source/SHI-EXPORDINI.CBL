@@ -1204,6 +1204,8 @@
                            to el-collo-tipocli(tot-idx-colli)
                          move cli-tipo 
                            to el-collo-tipocli(tot-idx-colli)
+                         move ror-num-colli 
+                           to el-collo-num(tot-idx-colli)
                     when el-collo-tipocli(idx-colli) = cli-tipo      
                          add ror-num-colli to el-collo-num(idx-colli)
                     end-search

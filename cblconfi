@@ -471,11 +471,13 @@ SITUACONT_PATH_BACKUP f:\lubex\tmp\sc\b\
 
 #solo address, senza "/" finale, senza cartella remota
 SITUACONT_FTP_SERVER_1 online1.lince.it
-SITUACONT_FTP_SERVER_2 itradeftp.crif.com
+SITUACONT_FTP_SERVER_2 ftp1.cerved.com
+#itradeftp.crif.com
 
-# 21 FTP, 990 SFTP     
+# 21 FTP, 990-8022 SFTP     
 SITUACONT_FTP_PORT_1 21
-SITUACONT_FTP_PORT_2 990
+SITUACONT_FTP_PORT_2 8022
+#990
 
 SITUACONT_FTP_USER_1 lubex
 SITUACONT_FTP_USER_2 878323939
