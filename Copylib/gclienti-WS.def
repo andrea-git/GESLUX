@@ -185,7 +185,7 @@
            88 Valid-STATUS-tgrupgdo VALUE IS "00" THRU "09". 
        01 rec-grid.
            05 col-prog         PIC  z(5).
-           05 col-ragsoc       PIC  X(40).
+           05 col-ragsoc       PIC  X(100).
            05 col-indirizzo    PIC  x(40).
            05 col-cap          PIC  X(5).
            05 col-localita     PIC  X(35).
@@ -220,6 +220,8 @@
       *             88 old-rec-invio-postel VALUE IS "P". 
       *
       *                                               
+      *
+      *
                    88 old-rec-invio-EDI VALUE IS "E". 
                    88 old-rec-invio-nessuno VALUE IS "N". 
       *             88 old-rec-invio-postel VALUE IS "P". 
@@ -236,11 +238,11 @@
            05 old-rec-vuoti.
                10 old-rec-num-vuoto-1          PIC  9(15).
                10 old-rec-num-vuoto-2          PIC  9(15).
-               10 old-rec-num-vuoto-3          PIC  9(15). 
-               10 old-rec-dett-dest-SDI            PIC  x.
-                  88 old-rec-dett-dest-SDI-si VALUE IS "S". 
-                  88 old-rec-dett-dest-SDI-no VALUE IS "N"," ". 
-               10 old-rec-alfa-vuoto-1 PIC  X(19).
+               10 old-rec-num-vuoto-3          PIC  9(15).
+               10 old-rec-dett-dest-SDI        PIC  x.
+                   88 old-rec-dett-dest-SDI-si VALUE IS "S". 
+                   88 old-rec-dett-dest-SDI-no VALUE IS "N" " ". 
+               10 old-rec-alfa-vuoto-1         PIC  X(19).
                10 old-rec-alfa-vuoto-2         PIC  X(20).
                10 old-rec-alfa-vuoto-3         PIC  X(20).
        77 Form1-Pg-3-Visible           PIC  9
@@ -271,12 +273,12 @@
                10 old-not-alfa-vuoto-3         PIC  X(20).
        01 hidden-rec.
            05 hidden-dati.
-               10 hidden-ragsoc-2  PIC  x(40).
+               10 hidden-ragsoc-2  PIC  x(100).
                10 hidden-nazione   PIC  x(3).
                10 hidden-telef-1   PIC  x(15).
                10 hidden-telef-2   PIC  x(15).
                10 hidden-fax       PIC  X(15).
-               10 hidden-mail      PIC  X(30).
+               10 hidden-mail      PIC  X(135).
                10 hidden-cod-ditta PIC  x(15).
                10 hidden-saldi-banco           PIC  9.
                10 hidden-saldi-promo           PIC  9.
@@ -295,7 +297,7 @@
                10 hidden-piva      PIC  9(11).
                10 hidden-note-bolla-1          PIC  x(500).
                10 hidden-note-bolla-2          PIC  x(500).
-               10 hidden-cig     pic x(15).
+               10 hidden-cig       PIC  x(15).
        77 AUTO-ID          PIC  9(6)
                   VALUE IS 0,00.
        77 note-109x23-bmp  PIC  S9(9)

@@ -14,7 +14,7 @@
                10 des-telef-1      PIC  x(15).
                10 des-telef-2      PIC  x(15).
                10 des-fax          PIC  X(15).
-               10 des-mail         PIC  X(30).
+               10 des-mail-old     PIC  X(30).
                10 des-referente    PIC  x(30).
                10 des-vettore      PIC  9(5).
                10 des-deposito-UTF PIC  x.
@@ -64,4 +64,6 @@
                    15 des-note-bolla-1 PIC  X(500).
                    15 des-note-bolla-2 PIC  X(500).
                    15 des-CIG          PIC  X(15).
-                   15 FILLER           PIC  X(1985).
+                   15 des-mail         PIC  X(135).
+      *(( XFD NAME = des-mail2_1 ))
+                   15 FILLER           PIC  X(1850).

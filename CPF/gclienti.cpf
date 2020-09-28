@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4912124554-581-1940322825
+PROGRAM_UNIQUE_CODE=TOTEM-7E491C143842-45-768314579
 
 {{@DESCRIPTION:
 
@@ -74,7 +74,6 @@ m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMBO-INVIO.DEF
 m_nCopyFileLevel=2
 {{@DataItem_m_strDescriptionFDITEM3_WK
 ****     88 invio-postel VALUE IS "P". 
-
 @}}
 [FDITEM4_WK]
 m_strName=invio-nessuno
@@ -332,6 +331,7 @@ m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\CODFIS.LKS
 m_nCopyFileLevel=2
 {{@DataItem_m_strDescriptionFDITEM22_WK
 CORA ATTIVO
+
 @}}
 [FDITEM23_WK]
 m_strName=CF-SESSO
@@ -564,6 +564,7 @@ m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STAMPA.DEF
 m_nCopyFileLevel=2
 {{@DataItem_m_strDescriptionFDITEM39_WK
  con TUTTE le variabili di comodo per i pgm. di stampa da tabella
+
 @}}
 [FDITEM40_WK]
 m_strName=stampa-limiti-num
@@ -3531,8 +3532,8 @@ m_nCopyFileLevel=1
 @}}
 [FDITEM254_WK]
 m_strName=col-ragsoc
-m_strRawPic=X(40)
-m_strPic=X(40)
+m_strRawPic=X(100)
+m_strPic=X(100)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -3941,6 +3942,8 @@ m_nCopyFileLevel=1
              88 old-rec-invio-postel VALUE IS "P". 
 
                                                
+
+
 @}}
 [FDITEM284_WK]
 m_strName=old-rec-invio-nessuno
@@ -3967,7 +3970,6 @@ m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GCLIENTI-WS.DEF
 m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM285_WK
              88 old-rec-invio-postel VALUE IS "P". 
-
 
 
 @}}
@@ -4571,8 +4573,8 @@ m_nCopyFileLevel=1
 @}}
 [FDITEM330_WK]
 m_strName=hidden-ragsoc-2
-m_strRawPic=x(40)
-m_strPic=X(40)
+m_strRawPic=x(100)
+m_strPic=X(100)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -4641,8 +4643,8 @@ m_nCopyFileLevel=1
 @}}
 [FDITEM335_WK]
 m_strName=hidden-mail
-m_strRawPic=X(30)
-m_strPic=X(30)
+m_strRawPic=X(135)
+m_strPic=X(135)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -13076,7 +13078,7 @@ Begin Screen Form1
          Title             = "&Destini"
          Visible Variable  = Form1-Pg-2-Visible
          Begin Grid form1-gd-1
-            SCREEN-COL        = 5,17
+            SCREEN-COL        = 4,33
             SCREEN-LINE       = 7,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
@@ -13084,34 +13086,34 @@ Begin Screen Form1
             Action            = (None)
             Adjustable Columns = TRUE
             Border            = Boxed
-            Cells' Setting    = ( X = 1, Y = 1, Data = "Numero" )
+            Cells' Setting    = ( X = 1, Y = 1, Data = "Num" )
             Cells' Setting    = ( X = 2, Y = 1, Data = "Ragione Sociale" )
             Cells' Setting    = ( X = 3, Y = 1, Data = "Indirizzo" )
-            Cells' Setting    = ( X = 4, Y = 1, Data = "C.A.P." )
+            Cells' Setting    = ( X = 4, Y = 1, Data = "CAP" )
             Cells' Setting    = ( X = 5, Y = 1, Data = "Località" )
-            Cells' Setting    = ( X = 6, Y = 1, Data = "Provincia" )
+            Cells' Setting    = ( X = 6, Y = 1, Data = "Prov." )
             Centered Headings = FALSE
             Color             = 0
-            Column            = 3,00
+            Column            = 2,17
             Column Headings   = TRUE
             Columns' Setting  = ( X = 1, Name = col-prog, READONLY = 0 )
-            Columns' Setting  = ( PIC = "9(5)", TYPE = "9(5)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
-            Columns' Setting  = ( DISP = 8, SEPA = 5, DIVI = 1 )
+            Columns' Setting  = ( PIC = "Z(5)", TYPE = "9(5)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+            Columns' Setting  = ( DISP = 6, SEPA = 5, DIVI = 1 )
             Columns' Setting  = ( X = 2, Name = col-ragsoc, READONLY = 0 )
-            Columns' Setting  = ( PIC = "X(40)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
-            Columns' Setting  = ( DISP = 40, SEPA = 5, DIVI = 1 )
+            Columns' Setting  = ( PIC = "X(100)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
+            Columns' Setting  = ( DISP = 60, SEPA = 5, DIVI = 1 )
             Columns' Setting  = ( X = 3, Name = col-indirizzo, READONLY = 0 )
             Columns' Setting  = ( PIC = "x(40)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
-            Columns' Setting  = ( DISP = 40, SEPA = 5, DIVI = 1 )
+            Columns' Setting  = ( DISP = 37, SEPA = 5, DIVI = 1 )
             Columns' Setting  = ( X = 4, Name = col-cap, READONLY = 0 )
             Columns' Setting  = ( PIC = "X(5)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
-            Columns' Setting  = ( DISP = 8, SEPA = 5, DIVI = 1 )
+            Columns' Setting  = ( DISP = 6, SEPA = 5, DIVI = 1 )
             Columns' Setting  = ( X = 5, Name = col-localita, READONLY = 0 )
             Columns' Setting  = ( PIC = "X(35)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
-            Columns' Setting  = ( DISP = 35, SEPA = 5, DIVI = 1 )
+            Columns' Setting  = ( DISP = 34, SEPA = 5, DIVI = 1 )
             Columns' Setting  = ( X = 6, Name = col-provincia, READONLY = 0 )
             Columns' Setting  = ( PIC = "x(2)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
-            Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
+            Columns' Setting  = ( DISP = 5, SEPA = 5, DIVI = 1 )
             Cursor Color      = 481
             Cursor Frame Width = 2
             Cursor X          = 0
@@ -13142,12 +13144,12 @@ Begin Screen Form1
             Paged             = FALSE
             Row Dividers      = 1
             Row Headings      = FALSE
-            Size              = 144,50
+            Size              = 151,17
             Size Unit         = Default
             Tab Order         = 1
             Tiled Headings    = TRUE
             Use Tab           = TRUE
-            Virtual Width     = 141
+            Virtual Width     = 148
             Visible           = NONE
             Vpadding          = 50
             Vscroll           = TRUE
@@ -13183,8 +13185,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod-destini
             Field Edited (Style) = 0
-            Field Edited Format = X(40)
-            Field Picture     = X(40)
+            Field Edited Format = x(100)
+            Field Picture     = x(100)
             Field Variable    = des-ragsoc-1
             File              = destini
             Font              = Small Font
@@ -13199,7 +13201,7 @@ Begin Screen Form1
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
-            Max Text          = 40
+            Max Text          = 100
             Max Value         = 0
             Min Value         = 0
             No AutoSel        = FALSE
@@ -13246,8 +13248,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod-destini
             Field Edited (Style) = 0
-            Field Edited Format = X(40)
-            Field Picture     = X(40)
+            Field Edited Format = x(100)
+            Field Picture     = x(100)
             Field Variable    = des-ragsoc-2
             File              = destini
             Font              = Small Font
@@ -13262,7 +13264,7 @@ Begin Screen Form1
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
-            Max Text          = 40
+            Max Text          = 100
             Max Value         = 0
             Min Value         = 0
             No AutoSel        = FALSE
@@ -13858,8 +13860,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod-destini
             Field Edited (Style) = 0
-            Field Edited Format = X(30)
-            Field Picture     = X(30)
+            Field Edited Format = X(200)
+            Field Picture     = X(200)
             Field Variable    = des-mail
             File              = destini
             Font              = Small Font
@@ -13874,7 +13876,7 @@ Begin Screen Form1
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
-            Max Text          = 30
+            Max Text          = 135
             Max Value         = 0
             Min Value         = 0
             No AutoSel        = FALSE
@@ -25066,8 +25068,8 @@ BEGIN-TEXT
                10 old-des-codice       PIC  9(5).
                10 old-des-prog         PIC  9(5).
            05 old-des-dati.
-               10 old-des-ragsoc-1     PIC  x(40).
-               10 old-des-ragsoc-2     PIC  x(40).
+               10 old-des-ragsoc-1     PIC  x(100).
+               10 old-des-ragsoc-2     PIC  x(100).
                10 old-des-indirizzo    PIC  x(40).
                10 old-des-cap          PIC  x(5).
                10 old-des-localita     PIC  x(35).
@@ -25076,7 +25078,7 @@ BEGIN-TEXT
                10 old-des-telef-1      PIC  x(15).
                10 old-des-telef-2      PIC  x(15).
                10 old-des-fax          PIC  X(15).
-               10 old-des-mail         PIC  X(30).
+               10 old-des-mail         PIC  X(200).
                10 old-des-referente    PIC  x(30).
                10 old-des-vettore      PIC  9(5).
                10 old-des-deposito-UTF PIC  x.

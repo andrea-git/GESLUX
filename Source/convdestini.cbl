@@ -25,7 +25,7 @@
       *****************************************************************
        DATA DIVISION.
        FILE SECTION.          
-           copy "destini.fd".
+           copy "destini.fd". 
 
        FD  destini-old.
        01 old-des-rec.
@@ -90,9 +90,11 @@
                    15 old-des-invio-fatt   PIC  x.
                        88 old-des-si-invio VALUE IS "S". 
                        88 old-des-no-invio VALUE IS "N". 
-                   15 old-des-alfa-vuoto-1 PIC  X(19).
-                   15 old-des-alfa-vuoto-2 PIC  X(20).
-                   15 old-des-alfa-vuoto-3 PIC  X(20).
+                   15 old-des-note-bolla-1 PIC  X(500).
+                   15 old-des-note-bolla-2 PIC  X(500).
+                   15 old-des-CIG          PIC  X(15).
+      *(( XFD NAME = old-des-mail2_1_2 ))
+                   15 FILLER           PIC  X(1985).
 
 
        WORKING-STORAGE SECTION.
@@ -101,8 +103,8 @@
        77  status-destini       pic X(2).
        77  status-destini-old   pic X(2).
 
-       77  CONT                 PIC 9(3).
-       77  CONT-ED              PIC Z(3).
+       77  CONT                 PIC 9(6).
+       77  CONT-ED              PIC Z(6).
        77  scelta               pic 9.
 
       ******************************************************************
@@ -174,35 +176,83 @@
        MUOVI-RECORD.
            add 1 to cont.
            initialize des-rec replacing numeric data by zeroes
-                                   alphanumeric data by spaces.
-           move old-des-codice               to des-codice             
-           move old-des-prog                 to des-prog               
-           move old-des-ragsoc-1             to des-ragsoc-1           
-           move old-des-ragsoc-2             to des-ragsoc-2           
-           move old-des-indirizzo            to des-indirizzo          
-           move old-des-cap                  to des-cap                
-           move old-des-localita             to des-localita           
-           move old-des-prov                 to des-prov               
-           move old-des-nazione              to des-nazione            
-           move old-des-telef-1              to des-telef-1            
-           move old-des-telef-2              to des-telef-2            
-           move old-des-fax                  to des-fax                
-           move old-des-mail                 to des-mail               
-           move old-des-referente            to des-referente          
-           move old-des-vettore              to des-vettore            
-           move old-des-deposito-UTF         to des-deposito-UTF       
-           move old-des-superamento-500      to des-superamento-500    
-           move old-des-stato                to des-stato              
-           move old-des-piva                 to des-piva               
-           move old-des-piva-dupl            to des-piva-dupl          
-           move old-des-cod-ditta            to des-cod-ditta          
-           move old-des-tipo-art             to des-tipo-art           
-           move old-des-num-vuoto-2          to des-num-vuoto-2        
-           move old-des-saldi-banco          to des-saldi-banco        
-           move old-des-saldi-promo          to des-saldi-promo        
-           move old-des-escludi-evadi-tutto  to des-escludi-evadi-tutto
-           move old-des-accorpa-master       to des-accorpa-master     
-           move old-des-num-vuoto-3          to des-num-vuoto-3        
-           move old-des-invio-fatt           to des-invio-fatt         .
+                                   alphanumeric data by spaces.         
 
-           write des-rec.     
+           move old-des-codice       
+             to des-codice                  
+           move old-des-prog                                               
+             to des-prog                    
+           move old-des-ragsoc-1                                           
+             to des-ragsoc-1                
+           move old-des-ragsoc-2                                           
+             to des-ragsoc-2                
+           move old-des-indirizzo                                          
+             to des-indirizzo               
+           move old-des-cap                                                
+             to des-cap                     
+           move old-des-localita                                           
+             to des-localita                
+           move old-des-prov                                               
+             to des-prov                    
+           move old-des-nazione                                            
+             to des-nazione                 
+           move old-des-telef-1                                            
+             to des-telef-1                 
+           move old-des-telef-2                                            
+             to des-telef-2                 
+           move old-des-fax                                                
+             to des-fax                     
+           move old-des-mail                                               
+             to des-mail                    
+           move old-des-referente                                          
+             to des-referente               
+           move old-des-vettore                                            
+             to des-vettore                 
+           move old-des-deposito-UTF                                       
+             to des-deposito-UTF            
+           move old-des-superamento-500                                    
+             to des-superamento-500         
+           move old-des-stato                                              
+             to des-stato                   
+           move old-des-data-creazione                                     
+             to des-data-creazione          
+           move old-des-ora-creazione                                      
+             to des-ora-creazione           
+           move old-des-utente-creazione                                   
+             to des-utente-creazione        
+           move old-des-data-ultima-modifica                                 
+             to des-data-ultima-modifica    
+           move old-des-ora-ultima-modifica                                  
+             to des-ora-ultima-modifica     
+           move old-des-utente-ultima-modifica                             
+             to des-utente-ultima-modifica  
+           move old-des-piva                  
+             to des-piva                    
+           move old-des-piva-dupl                                          
+             to des-piva-dupl               
+           move old-des-cod-ditta                                          
+             to des-cod-ditta               
+           move old-des-tipo-art                                           
+             to des-tipo-art                
+           move old-des-num-vuoto-2                                        
+             to des-num-vuoto-2             
+           move old-des-saldi-banco                                        
+             to des-saldi-banco             
+           move old-des-saldi-promo                                        
+             to des-saldi-promo             
+           move old-des-escludi-evadi-tutto                                  
+             to des-escludi-evadi-tutto     
+           move old-des-accorpa-master                                       
+             to des-accorpa-master          
+           move old-des-num-vuoto-3                                          
+             to des-num-vuoto-3             
+           move old-des-invio-fatt                                           
+             to des-invio-fatt              
+           move old-des-note-bolla-1                                         
+             to des-note-bolla-1            
+           move old-des-note-bolla-2                                         
+             to des-note-bolla-2            
+           move old-des-CIG                                                  
+             to des-CIG                     
+
+           write des-rec.      

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gclienti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 19 agosto 2020 11:13:14.
+       DATE-WRITTEN.        lunedì 28 settembre 2020 16:35:33.
        REMARKS.
       *{TOTEM}END
 
@@ -270,9 +270,9 @@
       * Page
               05 PAGE-2-BUF.
       * Data.Entry-Field
-              10 ef-ragsoc-1-d-BUF PIC X(40).
+              10 ef-ragsoc-1-d-BUF PIC x(100).
       * Data.Entry-Field
-              10 ef-ragsoc-2-d-BUF PIC X(40).
+              10 ef-ragsoc-2-d-BUF PIC x(100).
       * Data.Entry-Field
               10 ef-indirizzo-d-BUF PIC X(40).
       * Data.Entry-Field
@@ -292,7 +292,7 @@
       * Data.Entry-Field
               10 ef-fax-d-BUF PIC X(15).
       * Data.Entry-Field
-              10 ef-mail-d-BUF PIC X(30).
+              10 ef-mail-d-BUF PIC X(200).
       * Data.Entry-Field
               10 ef-referente-d-BUF PIC X(30).
       * Data.Entry-Field
@@ -438,7 +438,7 @@
           88 scr-note-bolla-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
        77 TMP-DataSet1-tnazioni-BUF     PIC X(190).
-       77 TMP-DataSet1-destini-BUF     PIC X(3386).
+       77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-recapiti-BUF     PIC X(328).
        77 TMP-DataSet1-ttipocli-BUF     PIC X(889).
        77 TMP-DataSet1-tgrupgdo-BUF     PIC X(1206).
@@ -616,7 +616,7 @@
           88 DataSet1-grade-KEY-Desc VALUE "D".
 
        77 tvettori-k-des-SPLITBUF  PIC X(41).
-       77 destini-K1-SPLITBUF  PIC X(51).
+       77 destini-K1-SPLITBUF  PIC X(111).
        77 destini-k-localita-SPLITBUF  PIC X(36).
        77 tgrupgdo-gdo-k-g2-SPLITBUF  PIC X(9).
        77 tcodpag-TBL-CODICE-01-SPLITBUF  PIC X(53).
@@ -759,8 +759,8 @@
                10 old-des-codice       PIC  9(5).
                10 old-des-prog         PIC  9(5).
            05 old-des-dati.
-               10 old-des-ragsoc-1     PIC  x(40).
-               10 old-des-ragsoc-2     PIC  x(40).
+               10 old-des-ragsoc-1     PIC  x(100).
+               10 old-des-ragsoc-2     PIC  x(100).
                10 old-des-indirizzo    PIC  x(40).
                10 old-des-cap          PIC  x(5).
                10 old-des-localita     PIC  x(35).
@@ -769,7 +769,7 @@
                10 old-des-telef-1      PIC  x(15).
                10 old-des-telef-2      PIC  x(15).
                10 old-des-fax          PIC  X(15).
-               10 old-des-mail         PIC  X(30).
+               10 old-des-mail         PIC  X(200).
                10 old-des-referente    PIC  x(30).
                10 old-des-vettore      PIC  9(5).
                10 old-des-deposito-UTF PIC  x.
@@ -3381,13 +3381,13 @@
        10
            form1-gd-1, 
            Grid, 
-           COL 5,17, 
+           COL 4,33, 
            LINE 7,77,
            LINES 15,46 ,
-           SIZE 144,50 ,
+           SIZE 151,17 ,
            ADJUSTABLE-COLUMNS,
            BOXED,
-           DATA-COLUMNS (1, 6, 46, 86, 91, 126),
+           DATA-COLUMNS (1, 6, 106, 146, 151, 186),
            ALIGNMENT ("R", "U", "U", "U", "U", "U"),
            SEPARATION (5, 5, 5, 5, 5, 5),
            DATA-TYPES ("9(5)", "X", "X", "X", "X", "X"),
@@ -3404,7 +3404,7 @@
            WIDTH-IN-CELLS,
            TILED-HEADINGS,
            USE-TAB,
-           VIRTUAL-WIDTH 141,
+           VIRTUAL-WIDTH 148,
            VPADDING 50,
            VSCROLL,
            EVENT PROCEDURE Form1-Gd-1-Event-Proc,
@@ -3425,7 +3425,7 @@
            ID IS 78-ID-ef-ragsoc-1-d,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           MAX-TEXT 40,
+           MAX-TEXT 100,
            VALUE ef-ragsoc-1-d-BUF,
            .
 
@@ -3444,7 +3444,7 @@
            ID IS 78-ID-ef-ragsoc-2-d,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           MAX-TEXT 40,
+           MAX-TEXT 100,
            VALUE ef-ragsoc-2-d-BUF,
            .
       * ENTRY FIELD
@@ -3629,7 +3629,7 @@
            ID IS 78-ID-ef-mail-d,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           MAX-TEXT 30,
+           MAX-TEXT 135,
            VALUE ef-mail-d-BUF,
            .
       * ENTRY FIELD
@@ -9635,9 +9635,9 @@
 
        destini-K1-MERGE-SPLITBUF.
            INITIALIZE destini-K1-SPLITBUF
-           MOVE des-ragsoc-1(1:40) TO destini-K1-SPLITBUF(1:40)
-           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(41:5)
-           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(46:5)
+           MOVE des-ragsoc-1(1:100) TO destini-K1-SPLITBUF(1:100)
+           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(101:5)
+           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(106:5)
            .
 
        destini-k-localita-MERGE-SPLITBUF.
@@ -14103,7 +14103,7 @@
        form1-gd-1-Content.
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 1, Y = 1,
-                CELL-DATA = "Numero",
+                CELL-DATA = "Num",
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 2, Y = 1,
                 CELL-DATA = "Ragione Sociale",
@@ -14112,13 +14112,13 @@
                 CELL-DATA = "Indirizzo",
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 4, Y = 1,
-                CELL-DATA = "C.A.P.",
+                CELL-DATA = "CAP",
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 5, Y = 1,
                 CELL-DATA = "Località",
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 6, Y = 1,
-                CELL-DATA = "Provincia",
+                CELL-DATA = "Prov.",
            .
 
       * COMBO-BOX
@@ -14637,7 +14637,8 @@
               HANDLE IS Form1-St-1-Handle
            DISPLAY Form1 UPON Form1-Handle
       * DISPLAY-COLUMNS settings
-              MODIFY form1-gd-1, DISPLAY-COLUMNS (1, 9, 49, 89, 97, 132)
+              MODIFY form1-gd-1, DISPLAY-COLUMNS (1, 7, 67, 104, 110, 
+           144)
               MODIFY gd-destini-e, DISPLAY-COLUMNS (1, 9, 49, 89)
               MODIFY gd-evasioni, DISPLAY-COLUMNS (1, 6, 50)
               MODIFY gd-prg, DISPLAY-COLUMNS (1, 11, 46, 56, 91, 101, 

@@ -4,8 +4,8 @@
                10 des-codice       PIC  9(5).
                10 des-prog         PIC  9(5).
            05 des-dati.
-               10 des-ragsoc-1     PIC  x(40).
-               10 des-ragsoc-2     PIC  x(40).
+               10 des-ragsoc-1     PIC  x(100).
+               10 des-ragsoc-2     PIC  x(100).
                10 des-indirizzo    PIC  x(40).
                10 des-cap          PIC  x(5).
                10 des-localita     PIC  x(35).
@@ -14,7 +14,7 @@
                10 des-telef-1      PIC  x(15).
                10 des-telef-2      PIC  x(15).
                10 des-fax          PIC  X(15).
-               10 des-mail         PIC  X(30).
+               10 des-mail         PIC  X(200).
                10 des-referente    PIC  x(30).
                10 des-vettore      PIC  9(5).
                10 des-deposito-UTF PIC  x.
@@ -64,4 +64,5 @@
                    15 des-note-bolla-1 PIC  X(500).
                    15 des-note-bolla-2 PIC  X(500).
                    15 des-CIG          PIC  X(15).
+      *(( XFD NAME = des-mail2_1_2 ))
                    15 FILLER           PIC  X(1985).
