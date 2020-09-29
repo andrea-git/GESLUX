@@ -1,7 +1,23 @@
        01  exp-linkage.
-           05 exp-path-log         pic x(256).
-           05 exp-status           signed-short.
-              88 exp-ok            value zero.
-              88 exp-err-bloccante value -1.
-              88 exp-err           value -2.
+           05 exp-path-log                  pic x(256).
+           05 exp-status                    signed-short.
+              88 exp-ok                     value 0.
+              88 exp-err-bloccante          value -1.
+              88 exp-err                    value -2. 
+           03 exp-shi-ordini.
+              05 exp-shi-ordini-file-tordini            pic x(256).
+              05 exp-shi-ordini-file-rordini            pic x(256).
+              05 exp-shi-ordini-file-note-ordini        pic x(256).     
+              05 exp-shi-ordini-file-articoli           pic x(256).
+              05 exp-shi-ordini-file-prodener           pic x(256).
+              05 exp-shi-ordini-file-ean                pic x(256).
+           03 exp-shi-articoli.
+              05 exp-shi-articoli-file-articoli         pic x(256).
+              05 exp-shi-articoli-file-ean              pic x(256).
+              05 exp-shi-articoli-file-prodener         pic x(256).
+           03 exp-shi-anagrafiche.
+              05 exp-shi-anagrafiche-file-vettori       pic x(256).
+              05 exp-shi-anagrafiche-file-fornitori     pic x(256).
+              05 exp-shi-anagrafiche-file-classi        pic x(256).
+           03 filler pic x(5000).
 

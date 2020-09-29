@@ -1506,7 +1506,7 @@
            add   1 to idx.
            move  1                       to xzoom-field-file(Idx).
            move  0                       to xzoom-field-rel(Idx).      
-           move  40                      to xzoom-field-length(idx).
+           move  100                     to xzoom-field-length(idx).
            move  10                      to xzoom-field-offset(idx).
            move  30                      to xzoom-field-column(idx).
            move "Ragione Sociale"        to xzoom-field-name(idx).  
@@ -1518,7 +1518,7 @@
            move  1                       to xzoom-field-file(Idx).
            move  0                       to xzoom-field-rel(Idx).      
            move  40                      to xzoom-field-length(idx).
-           move  90                      to xzoom-field-offset(idx).
+           move  210                     to xzoom-field-offset(idx).
            move  25                      to xzoom-field-column(idx).
            move "Indirizzo"              to xzoom-field-name(idx).  
            set  xzoom-ft-alpha(idx)      to true. 
@@ -1538,7 +1538,7 @@
            move  1                       to xzoom-field-file(Idx).
            move  0                       to xzoom-field-rel(Idx).
            move  35                      to xzoom-field-length(idx).
-           move  135                     to xzoom-field-offset(idx).
+           move  255                     to xzoom-field-offset(idx).
            move  30                      to xzoom-field-column(idx).
            move "Località"               to xzoom-field-name(idx).
            set  xzoom-ft-alpha(idx)      to true.
@@ -1548,7 +1548,7 @@
            move  1                       to xzoom-field-file(Idx).
            move  0                       to xzoom-field-rel(Idx).
            move  2                       to xzoom-field-length(idx).
-           move  170                     to xzoom-field-offset(idx).
+           move  290                     to xzoom-field-offset(idx).
            move  5                       to xzoom-field-column(idx).
            move "Prov."                  to xzoom-field-name(idx).
            set  xzoom-ft-alpha(idx)      to true.
@@ -1630,7 +1630,7 @@
            add   1 to idx.
            move  1                       to xzoom-field-file(Idx).
            move  0                       to xzoom-field-rel(Idx).      
-           move  40                      to xzoom-field-length(idx).
+           move  100                     to xzoom-field-length(idx).
            move  10                      to xzoom-field-offset(idx).
            move  30                      to xzoom-field-column(idx).
            move "Ragione Sociale"        to xzoom-field-name(idx).  
@@ -1641,7 +1641,7 @@
            move  1                       to xzoom-field-file(Idx).
            move  0                       to xzoom-field-rel(Idx).      
            move  40                      to xzoom-field-length(idx).
-           move  90                      to xzoom-field-offset(idx).
+           move  210                     to xzoom-field-offset(idx).
            move  25                      to xzoom-field-column(idx).
            move "Indirizzo"              to xzoom-field-name(idx).  
 
@@ -1652,7 +1652,7 @@
            move  1                       to xzoom-field-file(Idx).
            move  0                       to xzoom-field-rel(Idx).
            move  35                      to xzoom-field-length(idx).
-           move  135                     to xzoom-field-offset(idx).
+           move  255                     to xzoom-field-offset(idx).
            move  30                      to xzoom-field-column(idx).
            move "Località"               to xzoom-field-name(idx).
            set  xzoom-ft-alpha(idx)      to true.
@@ -1662,7 +1662,7 @@
            move  1                       to xzoom-field-file(Idx).
            move  0                       to xzoom-field-rel(Idx).
            move  2                       to xzoom-field-length(idx).
-           move  170                     to xzoom-field-offset(idx).
+           move  290                     to xzoom-field-offset(idx).
            move  5                       to xzoom-field-column(idx).
            move "Prov."                  to xzoom-field-name(idx).
            set  xzoom-ft-alpha(idx)      to true.
@@ -1672,7 +1672,7 @@
            move  1                       to xzoom-field-file(Idx).
            move  0                       to xzoom-field-rel(Idx).
            move  5                       to xzoom-field-length(idx).
-           move  130                     to xzoom-field-offset(idx).
+           move  250                     to xzoom-field-offset(idx).
            move  7                       to xzoom-field-column(idx).
            move "C.A.P."                 to xzoom-field-name(idx).
            set  xzoom-ft-alpha(idx)      to true.

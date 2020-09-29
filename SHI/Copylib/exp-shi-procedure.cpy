@@ -73,97 +73,86 @@
 
            evaluate true
            when crea-ordini
-                move shi-file-tordini      to como-nome
+                move exp-shi-ordini-file-tordini      to como-nome
                 perform COPIA-FILE
-                move shi-file-rordini      to como-nome
+                move exp-shi-ordini-file-rordini      to como-nome
                 perform COPIA-FILE
-                move shi-file-note-ordini  to como-nome
+                move exp-shi-ordini-file-note-ordini  to como-nome
                 perform COPIA-FILE
-                move shi-file-articoli     to como-nome
+                move exp-shi-ordini-file-articoli     to como-nome
                 perform COPIA-FILE
-                move shi-file-ean          to como-nome
+                move exp-shi-ordini-file-ean          to como-nome
                 perform COPIA-FILE
-                move shi-file-prodener     to como-nome
+                move exp-shi-ordini-file-prodener     to como-nome
                 perform COPIA-FILE
            when crea-articoli
-                move shi-file-articoli     to como-nome
+                move exp-shi-articoli-file-articoli     to como-nome
                 perform COPIA-FILE
-                move shi-file-ean          to como-nome
+                move exp-shi-articoli-file-ean          to como-nome
                 perform COPIA-FILE
-                move shi-file-prodener     to como-nome
+                move exp-shi-articoli-file-prodener     to como-nome
                 perform COPIA-FILE
            when crea-anagrafiche
-                move shi-file-vettori      to como-nome
+                move exp-shi-anagrafiche-file-vettori      to como-nome
                 perform COPIA-FILE
-                move shi-file-fornitori    to como-nome
+                move exp-shi-anagrafiche-file-fornitori    to como-nome
                 perform COPIA-FILE
-                move shi-file-classi       to como-nome
+                move exp-shi-anagrafiche-file-classi       to como-nome
                 perform COPIA-FILE
            end-evaluate.
 
 
       ***---
        COPIA-FILE.
-           inspect como-nome replacing trailing space by low-value
-           initialize cont
-           inspect como-nome tallying cont 
-                                      for characters before low-value
-           inspect como-nome replacing trailing low-value by space  
-           subtract 3 from cont
-           move como-nome to como-nome-2
-           initialize como-estensione
-      *    controllo se ho l'estensione
-           if como-nome(cont:1) = "."
-              move space  to como-nome-2(cont:)
-              add 1 to cont
-              move como-nome(cont:3)  to como-estensione
-           end-if.
-              
+           inspect como-nome replacing trailing space by low-value.
+           |Siccome alcuni files hanno già data ed ora estraggo il nome
+           |dal path già creato in modo corretto per l'export.
+           move 0 to cont.
+           inspect como-nome 
+                   tallying cont for characters before low-value.
 
+           perform until 1 = 2
+              if como-nome(cont:1) = "/" or
+                 como-nome(cont:1) = "\"
+                 add 1 to cont 
+                 exit perform
+              end-if
+              subtract 1 from cont
+           end-perform.
+           move como-nome(cont:) to como-nome-2.
+           inspect como-nome-2 replacing trailing spaces by low-value.
 
-           initialize origine
-                      destinazione
-
-           inspect shi-path-exp replacing trailing space by low-value      
+           move como-nome to origine.
+           inspect origine replacing trailing low-value by spaces.
+           inspect shi-path-exp 
+                   replacing trailing space by low-value.
            inspect shi-path-backup-exp
-                                replacing trailing space by low-value      
-           string shi-path-exp  delimited LOW-VALUE,
-                  barra         delimited size,
-                  como-nome     delimited size
-                  into origine
-                  
-           inspect como-nome-2  replacing trailing space by low-value
+                   replacing trailing space by low-value.
 
-           if como-estensione = space
-              string shi-path-backup-exp delimited LOW-VALUE,
-                     barra               delimited size,
-                     como-nome-2         delimited low-value
-                     "_"                 delimited by size        
-                     como-data           delimited by size        
-                     "_"                 delimited by size        
-                     como-ora            delimited by size        
-                     into Destinazione
-           else
-              string shi-path-backup-exp delimited LOW-VALUE,
-                     barra               delimited size,
-                     como-nome-2         delimited low-value
-                     "_"                 delimited by size        
-                     como-data           delimited by size        
-                     "_"                 delimited by size        
-                     como-ora            delimited by size        
-                     "."                 delimited by size        
-                     como-estensione     delimited by size        
-                     into Destinazione
-           end-if
+           initialize destinazione.           
+           string shi-path-exp delimited low-value,
+                  barra        delimited size,
+                  como-nome-2  delimited low-value   
+             into destinazione
+           end-string.
 
-      *     inspect File-Name replacing trailing low-value by space
-           if si-invio-ftp
-              call "RENAME" using origine, 
-                                  Destinazione, 
-                                  RENAME-STATUS
-           else
-              call "C$COPY" using origine, 
-                                  Destinazione, 
-                                  RENAME-STATUS
-           end-if.
+           call "C$COPY" using origine,
+                               destinazione, 
+                               rename-status.
+
+                   
+           string shi-path-backup-exp delimited low-value,
+                  barra               delimited size,
+                  como-nome-2         delimited low-value
+                  "_"                 delimited size        
+                  como-data           delimited size        
+                  "_"                 delimited size        
+                  como-ora            delimited size        
+             into destinazione
+           end-string.
+
+           call "C$COPY" using origine,
+                               destinazione, 
+                               rename-status.
+           call "C$DELETE" using origine.
 

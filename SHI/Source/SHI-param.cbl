@@ -7,8 +7,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          SHI-param.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        venerdì 23 febbraio 2018 09:01:23.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        martedì 29 settembre 2020 16:47:33.
        REMARKS.
       *{TOTEM}END
 
@@ -48,7 +48,7 @@
                COPY "opensave.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -145,103 +145,105 @@
       * Page
               05 Screen1-Pg-4-BUF.
       * Data.Entry-Field
-              10 ef-cod-commitente-BUF PIC x(15).
+              10 ef-cod-commitente-BUF PIC X(15).
       * Data.Entry-Field
-              10 ef-mag-1-BUF PIC x(3).
+              10 ef-mag-1-BUF PIC X(3).
       * Data.Entry-Field
-              10 ef-mag-2-BUF PIC x(3).
+              10 ef-mag-2-BUF PIC X(3).
       * Data.Entry-Field
-              10 ef-path-log-server-BUF PIC x(256).
+              10 ef-path-log-server-BUF PIC X(256).
       * Data.Entry-Field
-              10 ef-path-log-client-BUF PIC x(256).
+              10 ef-path-log-client-BUF PIC X(256).
       * Data.Entry-Field
-              10 ef-sem-BUF PIC x(50).
+              10 ef-sem-BUF PIC X(50).
       * Data.Entry-Field
-              10 ef-mail-mod-bozze-BUF PIC x(200).
+              10 ef-mail-mod-bozze-BUF PIC X(200).
       * Data.Entry-Field
-              10 ef-mail-cc-mod-bozze-BUF PIC x(200).
+              10 ef-mail-cc-mod-bozze-BUF PIC X(200).
       * Data.Entry-Field
-              10 ef-ogg-canc-bozze-BUF PIC x(200).
+              10 ef-ogg-canc-bozze-BUF PIC X(200).
       * Data.Entry-Field
-              10 ef-corpo-canc-bozze-BUF PIC x(200).
+              10 ef-corpo-canc-bozze-BUF PIC X(200).
       * Data.Entry-Field
-              10 ef-ogg-mod-bozze-BUF PIC x(200).
+              10 ef-ogg-mod-bozze-BUF PIC X(200).
       * Data.Entry-Field
-              10 ef-corpo-mod-bozze-BUF PIC x(200).
+              10 ef-corpo-mod-bozze-BUF PIC X(200).
       * Page
               05 Screen1-Pg-1-BUF.
       * Data.Entry-Field
-              10 ef-path-exp-BUF PIC x(256).
+              10 ef-path-exp-BUF PIC X(256).
       * Data.Entry-Field
-              10 ef-path-backup-BUF PIC x(256).
+              10 ef-path-backup-BUF PIC X(256).
       * Data.Entry-Field
-              10 ef-articoli-BUF PIC x(50).
+              10 ef-path-elab-BUF PIC X(256).
       * Data.Entry-Field
-              10 ef-ean-BUF PIC x(50).
+              10 ef-articoli-BUF PIC X(50).
       * Data.Entry-Field
-              10 ef-prodener-BUF PIC x(50).
+              10 ef-ean-BUF PIC X(50).
       * Data.Entry-Field
-              10 ef-vettori-BUF PIC x(50).
+              10 ef-prodener-BUF PIC X(50).
       * Data.Entry-Field
-              10 ef-fornitori-BUF PIC x(50).
+              10 ef-vettori-BUF PIC X(50).
       * Data.Entry-Field
-              10 ef-classi-BUF PIC x(50).
+              10 ef-fornitori-BUF PIC X(50).
       * Data.Entry-Field
-              10 ef-tordini-BUF PIC x(50).
+              10 ef-classi-BUF PIC X(50).
       * Data.Entry-Field
-              10 ef-rordini-BUF PIC x(50).
+              10 ef-tordini-BUF PIC X(50).
       * Data.Entry-Field
-              10 ef-note-BUF PIC x(50).
+              10 ef-rordini-BUF PIC X(50).
       * Data.Entry-Field
-              10 ef-sito-exp-BUF PIC x(100).
+              10 ef-note-BUF PIC X(50).
       * Data.Entry-Field
-              10 ef-user-exp-BUF PIC x(50).
+              10 ef-sito-exp-BUF PIC X(100).
       * Data.Entry-Field
-              10 ef-pwd-exp-BUF PIC x(50).
+              10 ef-user-exp-BUF PIC X(50).
       * Data.Entry-Field
-              10 ef-path-rem-exp-BUF PIC x(100).
+              10 ef-pwd-exp-BUF PIC X(50).
+      * Data.Entry-Field
+              10 ef-path-rem-exp-BUF PIC X(100).
       * Page
               05 Screen1-Pg-2-BUF.
       * Data.Entry-Field
-              10 ef-path-imp-BUF PIC x(256).
+              10 ef-path-imp-BUF PIC X(256).
       * Data.Entry-Field
-              10 ef-path-backup-imp-BUF PIC x(256).
+              10 ef-path-backup-imp-BUF PIC X(256).
       * Data.Entry-Field
-              10 ef-articoli-imp-BUF PIC x(50).
+              10 ef-articoli-imp-BUF PIC X(50).
       * Data.Entry-Field
-              10 ef-tordini-imp-BUF PIC x(50).
+              10 ef-tordini-imp-BUF PIC X(50).
       * Data.Entry-Field
-              10 ef-rordini-imp-BUF PIC x(50).
+              10 ef-rordini-imp-BUF PIC X(50).
       * Data.Entry-Field
-              10 ef-sito-imp-BUF PIC x(100).
+              10 ef-sito-imp-BUF PIC X(100).
       * Data.Entry-Field
-              10 ef-user-imp-BUF PIC x(50).
+              10 ef-user-imp-BUF PIC X(50).
       * Data.Entry-Field
-              10 ef-pwd-imp-BUF PIC x(50).
+              10 ef-pwd-imp-BUF PIC X(50).
       * Data.Entry-Field
-              10 ef-path-rem-imp-BUF PIC x(100).
+              10 ef-path-rem-imp-BUF PIC X(100).
       * Page
               05 Screen1-Pg-3-BUF.
       * Data.Entry-Field
-              10 ef-path-impcar-BUF PIC x(256).
+              10 ef-path-impcar-BUF PIC X(256).
       * Data.Entry-Field
-              10 ef-path-backup-impcar-BUF PIC x(256).
+              10 ef-path-backup-impcar-BUF PIC X(256).
       * Data.Entry-Field
-              10 ef-carichi-BUF PIC x(50).
+              10 ef-carichi-BUF PIC X(50).
       * Data.Entry-Field
-              10 ef-cau-BUF PIC x(4).
+              10 ef-cau-BUF PIC X(4).
       * Data.Entry-Field
-              10 ef-mail-BUF PIC x(100).
+              10 ef-mail-BUF PIC X(100).
       * Data.Entry-Field
-              10 ef-mail-cc-BUF PIC x(100).
+              10 ef-mail-cc-BUF PIC X(100).
       * Data.Entry-Field
-              10 ef-sito-impcar-BUF PIC x(100).
+              10 ef-sito-impcar-BUF PIC X(100).
       * Data.Entry-Field
-              10 ef-user-impcar-BUF PIC x(50).
+              10 ef-user-impcar-BUF PIC X(50).
       * Data.Entry-Field
-              10 ef-pwd-impcar-BUF PIC x(50).
+              10 ef-pwd-impcar-BUF PIC X(50).
       * Data.Entry-Field
-              10 ef-path-rem-impcar-BUF PIC x(100).
+              10 ef-path-rem-impcar-BUF PIC X(100).
       * Data.Label
               10 lbl-cau-BUF PIC X(40).
 
@@ -361,7 +363,8 @@
                        20 old-shi-corpo-canc-bozze         PIC  x(200).
                        20 old-shi-oggetto-mod-bozze        PIC  x(200).
                        20 old-shi-corpo-mod-bozze          PIC  x(200).
-               10 old-shi-mag-SHI-2    PIC  x(3).
+               10 old-shi-mag-SHI-2     PIC  x(3).
+               10 old-shi-path-elab-exp PIC  x(256).
       *{TOTEM}END
 
       *{TOTEM}ID-LOGICI
@@ -378,38 +381,39 @@
        78  78-ID-ef-corpo-mod-bozze VALUE 5010.
        78  78-ID-ef-path-exp VALUE 5011.
        78  78-ID-ef-path-backup VALUE 5012.
-       78  78-ID-ef-articoli VALUE 5013.
-       78  78-ID-ef-ean VALUE 5014.
-       78  78-ID-ef-prodener VALUE 5015.
-       78  78-ID-ef-vettori VALUE 5016.
-       78  78-ID-ef-fornitori VALUE 5017.
-       78  78-ID-ef-classi VALUE 5018.
-       78  78-ID-ef-tordini VALUE 5019.
-       78  78-ID-ef-rordini VALUE 5020.
-       78  78-ID-ef-note VALUE 5021.
-       78  78-ID-ef-sito-exp VALUE 5022.
-       78  78-ID-ef-user-exp VALUE 5023.
-       78  78-ID-ef-pwd-exp VALUE 5024.
-       78  78-ID-ef-path-rem-exp VALUE 5025.
-       78  78-ID-ef-path-imp VALUE 5026.
-       78  78-ID-ef-path-backup-imp VALUE 5027.
-       78  78-ID-ef-articoli-imp VALUE 5028.
-       78  78-ID-ef-tordini-imp VALUE 5029.
-       78  78-ID-ef-rordini-imp VALUE 5030.
-       78  78-ID-ef-sito-imp VALUE 5031.
-       78  78-ID-ef-user-imp VALUE 5032.
-       78  78-ID-ef-pwd-imp VALUE 5033.
-       78  78-ID-ef-path-rem-imp VALUE 5034.
-       78  78-ID-ef-path-impcar VALUE 5035.
-       78  78-ID-ef-path-backup-impcar VALUE 5036.
-       78  78-ID-ef-carichi VALUE 5037.
-       78  78-ID-ef-cau VALUE 5038.
-       78  78-ID-ef-mail VALUE 5039.
-       78  78-ID-ef-mail-cc VALUE 5040.
-       78  78-ID-ef-sito-impcar VALUE 5041.
-       78  78-ID-ef-user-impcar VALUE 5042.
-       78  78-ID-ef-pwd-impcar VALUE 5043.
-       78  78-ID-ef-path-rem-impcar VALUE 5044.
+       78  78-ID-ef-path-elab VALUE 5013.
+       78  78-ID-ef-articoli VALUE 5014.
+       78  78-ID-ef-ean VALUE 5015.
+       78  78-ID-ef-prodener VALUE 5016.
+       78  78-ID-ef-vettori VALUE 5017.
+       78  78-ID-ef-fornitori VALUE 5018.
+       78  78-ID-ef-classi VALUE 5019.
+       78  78-ID-ef-tordini VALUE 5020.
+       78  78-ID-ef-rordini VALUE 5021.
+       78  78-ID-ef-note VALUE 5022.
+       78  78-ID-ef-sito-exp VALUE 5023.
+       78  78-ID-ef-user-exp VALUE 5024.
+       78  78-ID-ef-pwd-exp VALUE 5025.
+       78  78-ID-ef-path-rem-exp VALUE 5026.
+       78  78-ID-ef-path-imp VALUE 5027.
+       78  78-ID-ef-path-backup-imp VALUE 5028.
+       78  78-ID-ef-articoli-imp VALUE 5029.
+       78  78-ID-ef-tordini-imp VALUE 5030.
+       78  78-ID-ef-rordini-imp VALUE 5031.
+       78  78-ID-ef-sito-imp VALUE 5032.
+       78  78-ID-ef-user-imp VALUE 5033.
+       78  78-ID-ef-pwd-imp VALUE 5034.
+       78  78-ID-ef-path-rem-imp VALUE 5035.
+       78  78-ID-ef-path-impcar VALUE 5036.
+       78  78-ID-ef-path-backup-impcar VALUE 5037.
+       78  78-ID-ef-carichi VALUE 5038.
+       78  78-ID-ef-cau VALUE 5039.
+       78  78-ID-ef-mail VALUE 5040.
+       78  78-ID-ef-mail-cc VALUE 5041.
+       78  78-ID-ef-sito-impcar VALUE 5042.
+       78  78-ID-ef-user-impcar VALUE 5043.
+       78  78-ID-ef-pwd-impcar VALUE 5044.
+       78  78-ID-ef-path-rem-impcar VALUE 5045.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -1203,10 +1207,29 @@
 
       * ENTRY FIELD
        10
+           ef-path-elab, 
+           Entry-Field, 
+           COL 20,86, 
+           LINE 12,69,
+           LINES 1,31 ,
+           SIZE 79,00 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED mod,
+           FONT IS Small-Font,
+           ID IS 78-ID-ef-path-elab,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           MAX-TEXT 256,
+           VALUE ef-path-elab-BUF,
+           .
+
+      * ENTRY FIELD
+       10
            ef-articoli, 
            Entry-Field, 
            COL 20,86, 
-           LINE 14,54,
+           LINE 17,62,
            LINES 1,31 ,
            SIZE 79,00 ,
            BOXED,
@@ -1225,7 +1248,7 @@
            ef-ean, 
            Entry-Field, 
            COL 20,86, 
-           LINE 16,54,
+           LINE 19,62,
            LINES 1,31 ,
            SIZE 79,00 ,
            BOXED,
@@ -1244,7 +1267,7 @@
            ef-prodener, 
            Entry-Field, 
            COL 20,86, 
-           LINE 18,54,
+           LINE 21,62,
            LINES 1,31 ,
            SIZE 79,00 ,
            BOXED,
@@ -1263,7 +1286,7 @@
            ef-vettori, 
            Entry-Field, 
            COL 20,86, 
-           LINE 20,54,
+           LINE 23,62,
            LINES 1,31 ,
            SIZE 79,00 ,
            BOXED,
@@ -1282,7 +1305,7 @@
            ef-fornitori, 
            Entry-Field, 
            COL 20,86, 
-           LINE 22,54,
+           LINE 25,62,
            LINES 1,31 ,
            SIZE 79,00 ,
            BOXED,
@@ -1301,7 +1324,7 @@
            ef-classi, 
            Entry-Field, 
            COL 20,86, 
-           LINE 24,54,
+           LINE 27,62,
            LINES 1,31 ,
            SIZE 79,00 ,
            BOXED,
@@ -1320,7 +1343,7 @@
            ef-tordini, 
            Entry-Field, 
            COL 20,86, 
-           LINE 26,54,
+           LINE 29,62,
            LINES 1,31 ,
            SIZE 79,00 ,
            BOXED,
@@ -1339,7 +1362,7 @@
            ef-rordini, 
            Entry-Field, 
            COL 20,86, 
-           LINE 28,54,
+           LINE 31,62,
            LINES 1,31 ,
            SIZE 79,00 ,
            BOXED,
@@ -1358,7 +1381,7 @@
            ef-note, 
            Entry-Field, 
            COL 20,86, 
-           LINE 30,54,
+           LINE 33,62,
            LINES 1,31 ,
            SIZE 79,00 ,
            BOXED,
@@ -1377,7 +1400,7 @@
            ef-sito-exp, 
            Entry-Field, 
            COL 20,86, 
-           LINE 34,54,
+           LINE 38,39,
            LINES 1,31 ,
            SIZE 79,00 ,
            BOXED,
@@ -1396,7 +1419,7 @@
            ef-user-exp, 
            Entry-Field, 
            COL 20,86, 
-           LINE 36,54,
+           LINE 40,39,
            LINES 1,31 ,
            SIZE 79,00 ,
            BOXED,
@@ -1415,7 +1438,7 @@
            ef-pwd-exp, 
            Entry-Field, 
            COL 20,86, 
-           LINE 38,54,
+           LINE 42,39,
            LINES 1,31 ,
            SIZE 79,00 ,
            BOXED,
@@ -1435,7 +1458,7 @@
            ef-path-rem-exp, 
            Entry-Field, 
            COL 20,86, 
-           LINE 40,54,
+           LINE 44,39,
            LINES 1,31 ,
            SIZE 79,00 ,
            BOXED,
@@ -1486,7 +1509,7 @@
            Screen1-La-6, 
            Label, 
            COL 4,86, 
-           LINE 14,54,
+           LINE 17,62,
            LINES 1,31 ,
            SIZE 14,57 ,
            FONT IS Small-Font,
@@ -1502,7 +1525,7 @@
            Screen1-La-7, 
            Label, 
            COL 4,86, 
-           LINE 16,54,
+           LINE 19,62,
            LINES 1,31 ,
            SIZE 14,57 ,
            FONT IS Small-Font,
@@ -1518,7 +1541,7 @@
            Screen1-La-8, 
            Label, 
            COL 4,86, 
-           LINE 18,54,
+           LINE 21,62,
            LINES 1,31 ,
            SIZE 14,57 ,
            FONT IS Small-Font,
@@ -1534,7 +1557,7 @@
            Screen1-La-9, 
            Label, 
            COL 4,86, 
-           LINE 20,54,
+           LINE 23,62,
            LINES 1,31 ,
            SIZE 14,57 ,
            FONT IS Small-Font,
@@ -1550,7 +1573,7 @@
            Screen1-La-10, 
            Label, 
            COL 4,86, 
-           LINE 22,54,
+           LINE 25,62,
            LINES 1,31 ,
            SIZE 14,57 ,
            FONT IS Small-Font,
@@ -1566,7 +1589,7 @@
            Screen1-La-11, 
            Label, 
            COL 4,86, 
-           LINE 26,54,
+           LINE 29,62,
            LINES 1,31 ,
            SIZE 14,57 ,
            FONT IS Small-Font,
@@ -1582,7 +1605,7 @@
            Screen1-La-12, 
            Label, 
            COL 4,86, 
-           LINE 28,54,
+           LINE 31,62,
            LINES 1,31 ,
            SIZE 14,57 ,
            FONT IS Small-Font,
@@ -1598,7 +1621,7 @@
            Screen1-La-13, 
            Label, 
            COL 4,86, 
-           LINE 30,54,
+           LINE 33,62,
            LINES 1,31 ,
            SIZE 14,57 ,
            FONT IS Small-Font,
@@ -1614,7 +1637,7 @@
            Screen1-La-15, 
            Label, 
            COL 4,86, 
-           LINE 34,54,
+           LINE 38,39,
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
@@ -1659,7 +1682,7 @@
            Form1-La-5aaacaaa, 
            Label, 
            COL 3,86, 
-           LINE 12,54,
+           LINE 15,62,
            LINES 1,50 ,
            SIZE 20,00 ,
            COLOR IS 80,
@@ -1675,7 +1698,7 @@
            Form1-Br-2aaaa, 
            Bar,
            COL 24,00, 
-           LINE 13,39,
+           LINE 16,47,
            SIZE 79,00 ,
            ID IS 51,
            HEIGHT-IN-CELLS,
@@ -1688,7 +1711,7 @@
            Form1-La-5aaacaaaa, 
            Label, 
            COL 3,86, 
-           LINE 32,08,
+           LINE 35,93,
            LINES 1,50 ,
            SIZE 20,00 ,
            COLOR IS 80,
@@ -1704,7 +1727,7 @@
            Form1-Br-2aaaaa, 
            Bar,
            COL 24,00, 
-           LINE 32,92,
+           LINE 36,77,
            SIZE 79,00 ,
            ID IS 53,
            HEIGHT-IN-CELLS,
@@ -1717,7 +1740,7 @@
            Screen1-La-13a, 
            Label, 
            COL 4,86, 
-           LINE 24,54,
+           LINE 27,62,
            LINES 1,31 ,
            SIZE 14,57 ,
            FONT IS Small-Font,
@@ -1733,7 +1756,7 @@
            Screen1-La-15b, 
            Label, 
            COL 4,86, 
-           LINE 36,54,
+           LINE 40,39,
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
@@ -1749,7 +1772,7 @@
            Screen1-La-15c, 
            Label, 
            COL 4,86, 
-           LINE 38,54,
+           LINE 42,39,
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
@@ -1765,7 +1788,7 @@
            Screen1-La-15d, 
            Label, 
            COL 4,86, 
-           LINE 40,54,
+           LINE 44,39,
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
@@ -1774,6 +1797,39 @@
            WIDTH-IN-CELLS,
            TRANSPARENT,
            TITLE "Path remota",
+           .
+
+      * PUSH BUTTON
+       10
+           pb-path-elab-exp, 
+           Push-Button, 
+           COL 99,72, 
+           LINE 12,70,
+           LINES 1,31 ,
+           SIZE 2,57 ,
+           ENABLED mod,
+           EXCEPTION-VALUE 1009,
+           FONT IS Small-Font,
+           ID IS 148,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE "...",
+           .
+
+      * LABEL
+       10
+           Screen1-La-5b, 
+           Label, 
+           COL 4,86, 
+           LINE 12,70,
+           LINES 1,31 ,
+           SIZE 14,57 ,
+           FONT IS Small-Font,
+           ID IS 14,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Cartella Elaborazione",
            .
 
       * PAGE
@@ -3857,7 +3913,7 @@
 
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 47,92,
+              LINES 48,08,
               SIZE 105,00,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
@@ -3982,6 +4038,8 @@
                  PERFORM pb-path-exp-LinkTo
               WHEN Key-Status = 1005
                  PERFORM pb-path-backup-exp-LinkTo
+              WHEN Key-Status = 1009
+                 PERFORM pb-path-elab-exp-LinkTo
               WHEN Key-Status = 1006
                  PERFORM pb-path-imp-LinkTo
               WHEN Key-Status = 1007
@@ -4507,6 +4565,16 @@
                MOVE 5012 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
+      * ef-path-elab's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-path-elab-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 2 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 5013 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
       * ef-articoli's Validation
            SET TOTEM-CHECK-OK TO FALSE
            PERFORM ef-articoli-VALIDATION
@@ -4514,7 +4582,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5013 TO CONTROL-ID
+               MOVE 5014 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-ean's Validation
@@ -4524,7 +4592,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5014 TO CONTROL-ID
+               MOVE 5015 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-prodener's Validation
@@ -4534,7 +4602,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5015 TO CONTROL-ID
+               MOVE 5016 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-vettori's Validation
@@ -4544,7 +4612,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5016 TO CONTROL-ID
+               MOVE 5017 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-fornitori's Validation
@@ -4554,7 +4622,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5017 TO CONTROL-ID
+               MOVE 5018 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-classi's Validation
@@ -4564,7 +4632,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5018 TO CONTROL-ID
+               MOVE 5019 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-tordini's Validation
@@ -4574,7 +4642,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5019 TO CONTROL-ID
+               MOVE 5020 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-rordini's Validation
@@ -4584,7 +4652,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5020 TO CONTROL-ID
+               MOVE 5021 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note's Validation
@@ -4594,7 +4662,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5021 TO CONTROL-ID
+               MOVE 5022 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-sito-exp's Validation
@@ -4604,7 +4672,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5022 TO CONTROL-ID
+               MOVE 5023 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-user-exp's Validation
@@ -4614,7 +4682,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5023 TO CONTROL-ID
+               MOVE 5024 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-pwd-exp's Validation
@@ -4624,7 +4692,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5024 TO CONTROL-ID
+               MOVE 5025 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-path-rem-exp's Validation
@@ -4634,7 +4702,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5025 TO CONTROL-ID
+               MOVE 5026 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-path-imp's Validation
@@ -4644,7 +4712,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5026 TO CONTROL-ID
+               MOVE 5027 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-path-backup-imp's Validation
@@ -4654,7 +4722,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5027 TO CONTROL-ID
+               MOVE 5028 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-articoli-imp's Validation
@@ -4664,7 +4732,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5028 TO CONTROL-ID
+               MOVE 5029 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-tordini-imp's Validation
@@ -4674,7 +4742,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5029 TO CONTROL-ID
+               MOVE 5030 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-rordini-imp's Validation
@@ -4684,7 +4752,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5030 TO CONTROL-ID
+               MOVE 5031 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-sito-imp's Validation
@@ -4694,7 +4762,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5031 TO CONTROL-ID
+               MOVE 5032 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-user-imp's Validation
@@ -4704,7 +4772,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5032 TO CONTROL-ID
+               MOVE 5033 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-pwd-imp's Validation
@@ -4714,7 +4782,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5033 TO CONTROL-ID
+               MOVE 5034 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-path-rem-imp's Validation
@@ -4724,7 +4792,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5034 TO CONTROL-ID
+               MOVE 5035 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-path-impcar's Validation
@@ -4734,7 +4802,7 @@
                MOVE 4 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5035 TO CONTROL-ID
+               MOVE 5036 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-path-backup-impcar's Validation
@@ -4744,7 +4812,7 @@
                MOVE 4 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5036 TO CONTROL-ID
+               MOVE 5037 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-carichi's Validation
@@ -4754,7 +4822,7 @@
                MOVE 4 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5037 TO CONTROL-ID
+               MOVE 5038 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cau's Validation
@@ -4764,7 +4832,7 @@
                MOVE 4 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5038 TO CONTROL-ID
+               MOVE 5039 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-mail's Validation
@@ -4774,7 +4842,7 @@
                MOVE 4 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5039 TO CONTROL-ID
+               MOVE 5040 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-mail-cc's Validation
@@ -4784,7 +4852,7 @@
                MOVE 4 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5040 TO CONTROL-ID
+               MOVE 5041 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-sito-impcar's Validation
@@ -4794,7 +4862,7 @@
                MOVE 4 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5041 TO CONTROL-ID
+               MOVE 5042 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-user-impcar's Validation
@@ -4804,7 +4872,7 @@
                MOVE 4 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5042 TO CONTROL-ID
+               MOVE 5043 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-pwd-impcar's Validation
@@ -4814,7 +4882,7 @@
                MOVE 4 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5043 TO CONTROL-ID
+               MOVE 5044 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-path-rem-impcar's Validation
@@ -4824,7 +4892,7 @@
                MOVE 4 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5044 TO CONTROL-ID
+               MOVE 5045 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
            .
@@ -5065,6 +5133,23 @@
            PERFORM ef-path-backup-BEFORE-VALIDATION
            SET TOTEM-CHECK-OK TO TRUE
            PERFORM ef-path-backup-AFTER-VALIDATION
+           .
+
+       ef-path-elab-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-path-elab, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-path-elab-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-path-elab, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-path-elab's Validation
+       ef-path-elab-VALIDATION.
+           PERFORM ef-path-elab-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-path-elab-AFTER-VALIDATION
            .
 
        ef-articoli-BEFORE-VALIDATION.
@@ -5643,6 +5728,8 @@
            MOVE ef-path-exp-BUF TO shi-path-exp
       * DB_Entry-Field : ef-path-backup
            MOVE ef-path-backup-BUF TO shi-path-backup-exp
+      * DB_Entry-Field : ef-path-elab
+           MOVE ef-path-elab-BUF TO shi-path-elab-exp
       * DB_Entry-Field : ef-articoli
            MOVE ef-articoli-BUF TO shi-file-articoli
       * DB_Entry-Field : ef-ean
@@ -5750,6 +5837,8 @@
            MOVE shi-path-exp TO ef-path-exp-BUF
       * DB_Entry-Field : ef-path-backup
            MOVE shi-path-backup-exp TO ef-path-backup-BUF
+      * DB_Entry-Field : ef-path-elab
+           MOVE shi-path-elab-exp TO ef-path-elab-BUF
       * DB_Entry-Field : ef-articoli
            MOVE shi-file-articoli TO ef-articoli-BUF
       * DB_Entry-Field : ef-ean
@@ -5930,6 +6019,13 @@
               set NoSalvato to true
               |78-ID-ef-path-backup è l'ID del campo ef-path-backup
               move 78-ID-ef-path-backup to store-id 
+           end-if
+
+           if shi-path-elab-exp not = old-shi-path-elab-exp
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-ef-path-elab è l'ID del campo ef-path-elab
+              move 78-ID-ef-path-elab to store-id 
            end-if
 
            if shi-file-articoli not = old-shi-file-articoli
@@ -6302,6 +6398,9 @@
            |78-ID-ef-path-backup è l'ID del campo ef-path-backup
            when 78-ID-ef-path-backup
                 perform CONTROLLO
+           |78-ID-ef-path-elab è l'ID del campo ef-path-elab
+           when 78-ID-ef-path-elab
+                perform CONTROLLO
            |78-ID-ef-articoli è l'ID del campo ef-articoli
            when 78-ID-ef-articoli
                 perform CONTROLLO
@@ -6456,7 +6555,7 @@
            WHEN 5010 MOVE "." to TOTEM-HINT-TEXT
            WHEN 5011 MOVE "SENZA \ o / FINALE" to TOTEM-HINT-TEXT
            WHEN 5012 MOVE "SENZA \ o / FINALE" to TOTEM-HINT-TEXT
-           WHEN 5013 MOVE "." to TOTEM-HINT-TEXT
+           WHEN 5013 MOVE "SENZA \ o / FINALE" to TOTEM-HINT-TEXT
            WHEN 5014 MOVE "." to TOTEM-HINT-TEXT
            WHEN 5015 MOVE "." to TOTEM-HINT-TEXT
            WHEN 5016 MOVE "." to TOTEM-HINT-TEXT
@@ -6482,14 +6581,15 @@
            WHEN 5036 MOVE "." to TOTEM-HINT-TEXT
            WHEN 5037 MOVE "." to TOTEM-HINT-TEXT
            WHEN 5038 MOVE "." to TOTEM-HINT-TEXT
-           WHEN 5039 MOVE "Indirizzo Mail a cui verrà spedita la stampa 
-      -    "riepilogativa" to TOTEM-HINT-TEXT
+           WHEN 5039 MOVE "." to TOTEM-HINT-TEXT
            WHEN 5040 MOVE "Indirizzo Mail a cui verrà spedita la stampa 
       -    "riepilogativa" to TOTEM-HINT-TEXT
-           WHEN 5041 MOVE "." to TOTEM-HINT-TEXT
+           WHEN 5041 MOVE "Indirizzo Mail a cui verrà spedita la stampa 
+      -    "riepilogativa" to TOTEM-HINT-TEXT
            WHEN 5042 MOVE "." to TOTEM-HINT-TEXT
            WHEN 5043 MOVE "." to TOTEM-HINT-TEXT
            WHEN 5044 MOVE "." to TOTEM-HINT-TEXT
+           WHEN 5045 MOVE "." to TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
            EVALUATE Control-Id
@@ -6507,38 +6607,39 @@
            When 5010 PERFORM ef-mail-cc-BeforeProcedure
            When 5011 PERFORM ef-path-exp-BeforeProcedure
            When 5012 PERFORM ef-path-backup-BeforeProcedure
-           When 5013 PERFORM ef-articoli-BeforeProcedure
-           When 5014 PERFORM ef-ean-BeforeProcedure
-           When 5015 PERFORM ef-prodener-BeforeProcedure
-           When 5016 PERFORM ef-vettori-BeforeProcedure
-           When 5017 PERFORM ef-fornitori-BeforeProcedure
-           When 5018 PERFORM ef-classi-BeforeProcedure
-           When 5019 PERFORM ef-tordini-BeforeProcedure
-           When 5020 PERFORM ef-rordini-BeforeProcedure
-           When 5021 PERFORM ef-note-BeforeProcedure
-           When 5022 PERFORM ef-sito-exp-BeforeProcedure
-           When 5023 PERFORM ef-user-exp-BeforeProcedure
-           When 5024 PERFORM ef-pwd-exp-BeforeProcedure
-           When 5025 PERFORM ef-path-rem-exp-BeforeProcedure
-           When 5026 PERFORM ef-path-imp-BeforeProcedure
-           When 5027 PERFORM ef-path-backup-imp-BeforeProcedure
-           When 5028 PERFORM ef-articoli-imp-BeforeProcedure
-           When 5029 PERFORM ef-tordini-imp-BeforeProcedure
-           When 5030 PERFORM ef-rordini-imp-BeforeProcedure
-           When 5031 PERFORM ef-sito-imp-BeforeProcedure
-           When 5032 PERFORM ef-user-imp-BeforeProcedure
-           When 5033 PERFORM ef-pwd-imp-BeforeProcedure
-           When 5034 PERFORM ef-path-rem-imp-BeforeProcedure
-           When 5035 PERFORM ef-path-impcar-BeforeProcedure
-           When 5036 PERFORM ef-path-backup-impcar-BeforeProcedure
-           When 5037 PERFORM ef-carichi-BeforeProcedure
-           When 5038 PERFORM ef-cau-BeforeProcedure
-           When 5039 PERFORM ef-mail-BeforeProcedure
-           When 5040 PERFORM ef-mail-cc-BeforeProcedure
-           When 5041 PERFORM ef-sito-impcar-BeforeProcedure
-           When 5042 PERFORM ef-user-impcar-BeforeProcedure
-           When 5043 PERFORM ef-pwd-impcar-BeforeProcedure
-           When 5044 PERFORM ef-path-rem-impcar-BeforeProcedure
+           When 5013 PERFORM ef-path-backup-BeforeProcedure
+           When 5014 PERFORM ef-articoli-BeforeProcedure
+           When 5015 PERFORM ef-ean-BeforeProcedure
+           When 5016 PERFORM ef-prodener-BeforeProcedure
+           When 5017 PERFORM ef-vettori-BeforeProcedure
+           When 5018 PERFORM ef-fornitori-BeforeProcedure
+           When 5019 PERFORM ef-classi-BeforeProcedure
+           When 5020 PERFORM ef-tordini-BeforeProcedure
+           When 5021 PERFORM ef-rordini-BeforeProcedure
+           When 5022 PERFORM ef-note-BeforeProcedure
+           When 5023 PERFORM ef-sito-exp-BeforeProcedure
+           When 5024 PERFORM ef-user-exp-BeforeProcedure
+           When 5025 PERFORM ef-pwd-exp-BeforeProcedure
+           When 5026 PERFORM ef-path-rem-exp-BeforeProcedure
+           When 5027 PERFORM ef-path-imp-BeforeProcedure
+           When 5028 PERFORM ef-path-backup-imp-BeforeProcedure
+           When 5029 PERFORM ef-articoli-imp-BeforeProcedure
+           When 5030 PERFORM ef-tordini-imp-BeforeProcedure
+           When 5031 PERFORM ef-rordini-imp-BeforeProcedure
+           When 5032 PERFORM ef-sito-imp-BeforeProcedure
+           When 5033 PERFORM ef-user-imp-BeforeProcedure
+           When 5034 PERFORM ef-pwd-imp-BeforeProcedure
+           When 5035 PERFORM ef-path-rem-imp-BeforeProcedure
+           When 5036 PERFORM ef-path-impcar-BeforeProcedure
+           When 5037 PERFORM ef-path-backup-impcar-BeforeProcedure
+           When 5038 PERFORM ef-carichi-BeforeProcedure
+           When 5039 PERFORM ef-cau-BeforeProcedure
+           When 5040 PERFORM ef-mail-BeforeProcedure
+           When 5041 PERFORM ef-mail-cc-BeforeProcedure
+           When 5042 PERFORM ef-sito-impcar-BeforeProcedure
+           When 5043 PERFORM ef-user-impcar-BeforeProcedure
+           When 5044 PERFORM ef-pwd-impcar-BeforeProcedure
+           When 5045 PERFORM ef-path-rem-impcar-BeforeProcedure
            END-EVALUATE
            PERFORM Form1-DISPLAY-STATUS-MSG
            perform Form1-BEFORE-SCREEN
@@ -6560,38 +6661,39 @@
            When 5010 PERFORM ef-mail-cc-AfterProcedure
            When 5011 PERFORM ef-path-exp-AfterProcedure
            When 5012 PERFORM ef-path-backup-AfterProcedure
-           When 5013 PERFORM ef-articoli-AfterProcedure
-           When 5014 PERFORM ef-ean-AfterProcedure
-           When 5015 PERFORM ef-prodener-AfterProcedure
-           When 5016 PERFORM ef-vettori-AfterProcedure
-           When 5017 PERFORM ef-fornitori-AfterProcedure
-           When 5018 PERFORM ef-classi-AfterProcedure
-           When 5019 PERFORM ef-tordini-AfterProcedure
-           When 5020 PERFORM ef-rordini-AfterProcedure
-           When 5021 PERFORM ef-note-AfterProcedure
-           When 5022 PERFORM ef-sito-exp-AfterProcedure
-           When 5023 PERFORM ef-user-exp-AfterProcedure
-           When 5024 PERFORM ef-pwd-exp-AfterProcedure
-           When 5025 PERFORM ef-path-rem-exp-AfterProcedure
-           When 5026 PERFORM ef-path-imp-AfterProcedure
-           When 5027 PERFORM ef-path-backup-imp-AfterProcedure
-           When 5028 PERFORM ef-articoli-imp-AfterProcedure
-           When 5029 PERFORM ef-tordini-imp-AfterProcedure
-           When 5030 PERFORM ef-rordini-imp-AfterProcedure
-           When 5031 PERFORM ef-sito-imp-AfterProcedure
-           When 5032 PERFORM ef-user-imp-AfterProcedure
-           When 5033 PERFORM ef-pwd-imp-AfterProcedure
-           When 5034 PERFORM ef-path-rem-imp-AfterProcedure
-           When 5035 PERFORM ef-path-impcar-AfterProcedure
-           When 5036 PERFORM ef-path-backup-impcar-AfterProcedure
-           When 5037 PERFORM ef-carichi-AfterProcedure
-           When 5038 PERFORM ef-cau-AfterProcedure
-           When 5039 PERFORM ef-mail-AfterProcedure
-           When 5040 PERFORM ef-mail-cc-AfterProcedure
-           When 5041 PERFORM ef-sito-impcar-AfterProcedure
-           When 5042 PERFORM ef-user-impcar-AfterProcedure
-           When 5043 PERFORM ef-pwd-impcar-AfterProcedure
-           When 5044 PERFORM ef-path-rem-impcar-AfterProcedure
+           When 5013 PERFORM ef-path-backup-AfterProcedure
+           When 5014 PERFORM ef-articoli-AfterProcedure
+           When 5015 PERFORM ef-ean-AfterProcedure
+           When 5016 PERFORM ef-prodener-AfterProcedure
+           When 5017 PERFORM ef-vettori-AfterProcedure
+           When 5018 PERFORM ef-fornitori-AfterProcedure
+           When 5019 PERFORM ef-classi-AfterProcedure
+           When 5020 PERFORM ef-tordini-AfterProcedure
+           When 5021 PERFORM ef-rordini-AfterProcedure
+           When 5022 PERFORM ef-note-AfterProcedure
+           When 5023 PERFORM ef-sito-exp-AfterProcedure
+           When 5024 PERFORM ef-user-exp-AfterProcedure
+           When 5025 PERFORM ef-pwd-exp-AfterProcedure
+           When 5026 PERFORM ef-path-rem-exp-AfterProcedure
+           When 5027 PERFORM ef-path-imp-AfterProcedure
+           When 5028 PERFORM ef-path-backup-imp-AfterProcedure
+           When 5029 PERFORM ef-articoli-imp-AfterProcedure
+           When 5030 PERFORM ef-tordini-imp-AfterProcedure
+           When 5031 PERFORM ef-rordini-imp-AfterProcedure
+           When 5032 PERFORM ef-sito-imp-AfterProcedure
+           When 5033 PERFORM ef-user-imp-AfterProcedure
+           When 5034 PERFORM ef-pwd-imp-AfterProcedure
+           When 5035 PERFORM ef-path-rem-imp-AfterProcedure
+           When 5036 PERFORM ef-path-impcar-AfterProcedure
+           When 5037 PERFORM ef-path-backup-impcar-AfterProcedure
+           When 5038 PERFORM ef-carichi-AfterProcedure
+           When 5039 PERFORM ef-cau-AfterProcedure
+           When 5040 PERFORM ef-mail-AfterProcedure
+           When 5041 PERFORM ef-mail-cc-AfterProcedure
+           When 5042 PERFORM ef-sito-impcar-AfterProcedure
+           When 5043 PERFORM ef-user-impcar-AfterProcedure
+           When 5044 PERFORM ef-pwd-impcar-AfterProcedure
+           When 5045 PERFORM ef-path-rem-impcar-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -6907,6 +7009,18 @@
                          title tit-err
                          icon  MB-WARNING-ICON
                       move 78-ID-ef-path-backup to CONTROL-ID
+                   end-if
+                 end-if
+           when 78-ID-ef-path-elab
+                if controllo-finale
+                   inquire ef-path-elab, value in ef-path-elab-buf
+                   if ef-path-elab-buf = space
+                      set errori to true
+                      display message "Percorco elaborazione NON valido!
+      -    ""
+                         title tit-err
+                         icon  MB-WARNING-ICON
+                      move 78-ID-ef-path-elab to CONTROL-ID
                    end-if
                  end-if
            when 78-ID-ef-articoli
@@ -8226,6 +8340,12 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+              INQUIRE ef-path-elab, VALUE IN shi-path-elab-exp
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-path-elab-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
@@ -8686,6 +8806,23 @@
            .
       * <TOTEM:END>
 
+       pb-path-elab-exp-LinkTo.
+      * <TOTEM:PARA. pb-path-elab-exp-LinkTo>
+           initialize opensave-data.
+           inquire ef-path-backup value OPNSAV-DEFAULT-DIR
+
+           move 1 to opnsav-default-filter.
+           move "Parametri SHI" to opnsav-title.
+           call "C$OPENSAVEBOX" using OPENSAVE-BROWSE-FOLDER, 
+                                      opensave-data
+                               giving opensave-status.
+
+           if opensave-status = 1
+              move opnsav-filename to ef-path-elab-buf
+              modify ef-path-elab, value = ef-path-elab-buf
+           end-if 
+           .
+      * <TOTEM:END>
 
       *{TOTEM}END
 

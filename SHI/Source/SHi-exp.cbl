@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          SHI-exp.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 17 settembre 2020 14:43:30.
+       DATE-WRITTEN.        martedì 29 settembre 2020 23:13:54.
        REMARKS.
       *{TOTEM}END
 
@@ -94,9 +94,6 @@
        01 FILLER           PIC  9
                   VALUE IS 0.
            88 RichiamoBatch VALUE IS 1    WHEN SET TO FALSE  0. 
-       01 invio-ftp        PIC  9
-                  VALUE IS 1.
-           88 si-invio-ftp VALUE IS 1    WHEN SET TO FALSE  0. 
        77 anno-to          PIC  9(4).
        77 num-from         PIC  9(8).
        77 num-to           PIC  9(8).
@@ -134,8 +131,6 @@
           88 Form1-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 STATUS-form3-FLAG-REFRESH PIC  9.
           88 form3-FLAG-REFRESH  VALUE 1 FALSE 0. 
-       77 STATUS-formFTP-FLAG-REFRESH PIC  9.
-          88 formFTP-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-paramSHI-BUF     PIC X(9574).
        77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-log-macrobatch-BUF     PIC X(1000).
@@ -262,53 +257,6 @@
            TITLE "ANAGRAFICHE",
            .
 
-      * CHECK BOX
-       05
-           Screen4-Cb-1, 
-           Check-Box, 
-           COL 7,70, 
-           LINE 15,00,
-           LINES 1,50 ,
-           SIZE 2,00 ,
-           FLAT,
-           ID IS 6,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TITLE "Check Box",
-           VALUE invio-ftp,
-           AFTER PROCEDURE Screen4-Cb-1-AfterProcedure,
-           BEFORE PROCEDURE Screen4-Cb-1-BeforeProcedure, 
-           .
-      * BAR
-       05
-           Form1-Br-2aaaaca, 
-           Bar,
-           COL 1,00, 
-           LINE 14,00,
-           SIZE 24,00 ,
-           ID IS 185,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           COLORS (8, 8),
-           SHADING (-1, 1),
-           WIDTH 2,
-           .
-
-      * LABEL
-       05
-           Screen4-La-1, 
-           Label, 
-           COL 10,40, 
-           LINE 15,00,
-           LINES 1,50 ,
-           SIZE 7,80 ,
-           ID IS 186,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Invio FTP",
-           .
-
       * FORM
        01 
            form3, 
@@ -329,28 +277,6 @@
            CENTER,
            TRANSPARENT,
            TITLE "Creazione Flussi in corso...",
-           .
-
-      * FORM
-       01 
-           formFTP, 
-           .
-
-      * LABEL
-       05
-           form3-La-1a, 
-           Label, 
-           COL 1,57, 
-           LINE 2,00,
-           LINES 2,00 ,
-           SIZE 51,86 ,
-           FONT IS Verdana12BI-Occidentale,
-           ID IS 2,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           CENTER,
-           TRANSPARENT,
-           TITLE "Invio FTP in corso...",
            .
 
       *{TOTEM}END
@@ -1163,7 +1089,7 @@
 
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 16,00,
+              LINES 13,22,
               SIZE 24,00,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
@@ -1567,230 +1493,6 @@
        form3-Restore-Status.
            .
 
-       formFTP-Open-Routine.
-           PERFORM formFTP-Scrn
-           PERFORM formFTP-Proc
-           .
-
-       formFTP-Scrn.
-           PERFORM formFTP-Create-Win
-           PERFORM formFTP-Init-Value
-           PERFORM formFTP-Init-Data
-      * Tab keystrok settings
-      * Tool Bar
-           PERFORM formFTP-DISPLAY
-           .
-
-       formFTP-Create-Win.
-           Display Floating GRAPHICAL WINDOW
-              LINES 3,00,
-              SIZE 53,14,
-              HEIGHT-IN-CELLS,
-              WIDTH-IN-CELLS,
-              COLOR 65793,
-              LINK TO THREAD,
-              MODELESS,
-              NO SCROLL,
-              USER-GRAY,
-           VISIBLE video-on,
-              USER-WHITE,
-              No WRAP,
-              EVENT PROCEDURE form3-Event-Proc,
-              HANDLE IS formFTP-Handle,
-      * <TOTEM:EPT. FORM:formFTP, FORM:formFTP, AfterCreateWin>
-      * <TOTEM:END>
-
-
-      * Tool Bar    
-      * Status-bar
-           DISPLAY formFTP UPON formFTP-Handle
-      * DISPLAY-COLUMNS settings
-           .
-
-       formFTP-PROC.
-      * <TOTEM:EPT. FORM:formFTP, FORM:formFTP, BeforeAccept>
-           if RichiamoBatch
-              call   "set-ini-log" using r-output
-              cancel "set-ini-log"
-              initialize lm-riga
-              string r-output                      delimited size
-                     "CONTROLLO SEMAFORO FTP..."   delimited size
-                into lm-riga
-              end-string
-              write lm-riga
-           else
-              move 1 to video-on
-              modify formftp-handle, visible video-on
-           end-if.
-
-           set ftp-contr-sem-exp to true
-           call   "SHI-esegui-ftp" using esegui-ftp-linkage
-           cancel "SHI-esegui-ftp" 
-
-           if ftp-si-sem
-              set errori  to true
-              move     "Impossibile Esportare su FTP. File semaforo già 
-      -                "presente" to como-messaggio
-              perform SCRIVI-MESSAGGIO
-              if RichiamoBatch
-                 call   "set-ini-log" using r-output
-                 cancel "set-ini-log"
-                 initialize lm-riga
-                 string r-output                         delimited size
-                        "IMPOSSIBILE ESPORTARE SU FTP. " delimited size
-                        "FILE SEMAFORO GIÀ PRESENTE"     delimited size
-                   into lm-riga
-                 end-string
-                 write lm-riga
-
-                 move lk-mb-id to mb-id
-                 read macrobatch no lock
-                 set mb-shi-exp-stato-err to true
-                 rewrite mb-rec 
-
-              end-if
-           else                  
-              if RichiamoBatch
-                 call   "set-ini-log" using r-output
-                 cancel "set-ini-log"
-                 initialize lm-riga
-                 string r-output                      delimited size
-                        "CONTROLLO SEMAFORO FTP OK"    delimited size
-                   into lm-riga
-                 end-string
-                 write lm-riga
-              end-if
-              perform SCRIVI-FTP
-           end-if.
-
-
-
-
-           perform formFTP-Exit
-
-           .
-      * <TOTEM:END>
-           PERFORM UNTIL Exit-Pushed
-              ACCEPT OMITTED LINE 1 COL 1
-                 ON EXCEPTION
-                    PERFORM formFTP-Evaluate-Func
-                 MOVE 3 TO TOTEM-Form-Index
-              END-ACCEPT
-      * <TOTEM:EPT. FORM:formFTP, FORM:formFTP, AfterEndAccept>
-      * <TOTEM:END>
-           END-PERFORM
-      * <TOTEM:EPT. FORM:formFTP, FORM:formFTP, BeforeDestroyWindow>
-      * <TOTEM:END>
-           DESTROY formFTP-Handle
-           INITIALIZE Key-Status
-           .
-
-       formFTP-Evaluate-Func.
-      * <TOTEM:EPT. FORM:formFTP, FORM:formFTP, AfterAccept>
-      * <TOTEM:END>
-           EVALUATE TRUE
-              WHEN Exit-Pushed
-                 PERFORM formFTP-Exit
-              WHEN Event-Occurred
-                 IF Event-Type = Cmd-Close
-                    PERFORM formFTP-Exit
-                 END-IF
-           END-EVALUATE
-      * avoid changing focus
-           MOVE 4 TO Accept-Control
-           .
-
-       formFTP-CLEAR.
-           PERFORM formFTP-INIT-VALUE
-           PERFORM formFTP-DISPLAY
-           .
-
-       formFTP-DISPLAY.
-      * <TOTEM:EPT. FORM:formFTP, FORM:formFTP, BeforeDisplay>
-      * <TOTEM:END>
-           DISPLAY formFTP UPON formFTP-Handle
-      * <TOTEM:EPT. FORM:formFTP, FORM:formFTP, AfterDisplay>
-      *<<** Customized_Default, SP-G, Screen4-blockpgm-1, Disable **>>
-
-           .
-      * <TOTEM:END>
-           .
-
-       formFTP-Exit.
-      * for main screen
-      * <TOTEM:EPT. FORM:formFTP, FORM:formFTP, BeforeExit>
-      * <TOTEM:END>
-           MOVE 27 TO Key-Status
-           .
-
-       formFTP-Init-Data.
-           MOVE 3 TO TOTEM-Form-Index
-           MOVE 0 TO TOTEM-Frame-Index
-           .
-
-       formFTP-Init-Value.
-      * <TOTEM:EPT. FORM:formFTP, FORM:formFTP, SetDefault>
-      * <TOTEM:END>
-           PERFORM formFTP-FLD-TO-BUF
-           .
-
-
-       formFTP-ALLGRID-RESET.
-           .
-
-      * for Form's Validation
-       formFTP-VALIDATION-ROUTINE.
-           SET TOTEM-CHECK-OK TO TRUE
-           .
-
-
-       formFTP-Buf-To-Fld.
-      * <TOTEM:EPT. FORM:formFTP, FORM:formFTP, BeforeBufToFld>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FORM:formFTP, FORM:formFTP, AfterBufToFld>
-      * <TOTEM:END>
-           .
-
-       formFTP-Fld-To-Buf.
-      * <TOTEM:EPT. FORM:formFTP, FORM:formFTP, BeforeFldToBuf>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FORM:formFTP, FORM:formFTP, AfterFldToBuf>
-      * <TOTEM:END>
-           .
-
-       formFTP-CONTROLLO-OLD.
-           set SiSalvato to true.
-           if mod = 0 exit paragraph end-if.
-           perform formFTP-BUF-TO-FLD.
-           move 0 to scelta.
-           .
-       formFTP-EXTENDED-FILE-STATUS.
-           CALL "C$RERRNAME" USING TOTEM-MSG-ERR-FILE
-           CALL "C$RERR" USING EXTEND-STAT, TEXT-MESSAGE
-           MOVE PRIMARY-ERROR TO TOTEM-MSG-ID
-           PERFORM formFTP-SHOW-MSG-ROUTINE
-           .
-
-       formFTP-SHOW-MSG-ROUTINE.
-           PERFORM SHOW-MSG-ROUTINE
-           PERFORM formFTP-DISPLAY-MESSAGE
-           .
-
-       formFTP-DISPLAY-MESSAGE.
-           PERFORM MESSAGE-BOX-ROUTINE
-           DISPLAY MESSAGE BOX TOTEM-MSG-TEXT
-               TITLE IS TOTEM-MSG-TITLE
-               TYPE  IS TOTEM-MSG-BUTTON-TYPE
-               ICON  IS TOTEM-MSG-DEFAULT-BUTTON
-               RETURNING TOTEM-MSG-RETURN-VALUE
-           .
-
-       formFTP-Save-Status.
-           .             
-
-       formFTP-Restore-Status.
-           .
-
 
 
        Screen4-Event-Proc.
@@ -1891,32 +1593,12 @@
                    into lm-riga
                  end-string
                  write lm-riga
-                 if si-invio-ftp                          
-                    call   "set-ini-log" using r-output
-                    cancel "set-ini-log"
-                    initialize lm-riga
-                    string r-output   delimited size
-                           "I DATI NON VERRANNO EPORTATI VIA FTP" 
-                                      delimited size
-                      into lm-riga
-                    end-string
-                    write lm-riga
-                 end-if
               end-if    
 
               initialize como-messaggio
               move "Creazione file terminata con errori."  
                                          to como-messaggio
               perform SCRIVI-MESSAGGIO
-              if si-invio-ftp
-                 move "I dati non verranno eportati via FTP"
-                                         to como-messaggio
-                 perform SCRIVI-MESSAGGIO
-              end-if
-           else
-              if si-invio-ftp
-                 perform FTP             
-              end-if
            end-if.
 
            if tutto-ok
@@ -2121,85 +1803,6 @@
            .
       * <TOTEM:END>
 
-       FTP.
-      * <TOTEM:PARA. FTP>
-           call "W$MOUSE" using set-mouse-shape, wait-pointer
-           perform formFTP-Open-Routine
-           call "W$MOUSE" using set-mouse-shape, arrow-pointer
-
-           .
-      * <TOTEM:END>
-
-       SCRIVI-FTP.
-      * <TOTEM:PARA. SCRIVI-FTP>
-           if RichiamoBatch
-              call   "set-ini-log" using r-output
-              cancel "set-ini-log"
-              initialize lm-riga
-              string r-output                  delimited size
-                     "ESPORTAZIONE FTP..."     delimited size
-                into lm-riga
-              end-string
-              write lm-riga
-           end-if.
-
-           evaluate true
-           when crea-ordini
-                set ftp-export-ord to true
-           when crea-articoli
-                set ftp-export-art to true
-           when crea-anagrafiche
-                set ftp-export-ana to true
-           end-evaluate
-           
-           call   "SHI-esegui-ftp" using esegui-ftp-linkage
-           cancel "SHI-esegui-ftp" 
-
-           if ftp-ok               
-              if RichiamoBatch 
-                 call   "set-ini-log" using r-output
-                 cancel "set-ini-log"
-                 initialize lm-riga
-                 string r-output               delimited size
-                        "ESPORTAZIONE FTP OK"  delimited size
-                   into lm-riga
-                 end-string
-                 write lm-riga
-
-                 call   "set-ini-log" using r-output
-                 cancel "set-ini-log"
-                 initialize lm-riga
-                 string r-output             delimited size
-                        "METTO SEMAFORO FTP" delimited size
-                   into lm-riga
-                 end-string
-                 write lm-riga
-              end-if
-              set ftp-metti-sem-exp   to true 
-              call   "SHI-esegui-ftp" using esegui-ftp-linkage
-              cancel "SHI-esegui-ftp" 
-           else
-              set errori to true
-              initialize como-messaggio
-              move "Trasmissine FTP fallita. Consultare il file LOG_FTP
-      -            "per maggiori dettagli" to como-messaggio
-              perform SCRIVI-MESSAGGIO 
-              if RichiamoBatch
-                 call   "set-ini-log" using r-output
-                 cancel "set-ini-log"
-                 initialize lm-riga
-                 string r-output                     delimited size
-                        "TRASMISSINE FTP FALLITA. "  delimited size
-                        "CONSULTARE IL FILE LOG_FTP" delimited size
-                        " PER MAGGIORI DETTAGLI"     delimited size
-                   into lm-riga
-                 end-string
-                 write lm-riga
-              end-if
-           end-if 
-           .
-      * <TOTEM:END>
-
        SCRIVI-MESSAGGIO.
       * <TOTEM:PARA. SCRIVI-MESSAGGIO>
            open extend lineseq
@@ -2300,16 +1903,6 @@
               close log-macrobatch
               close macrobatch
            end-if 
-           .
-      * <TOTEM:END>
-       Screen4-Cb-1-BeforeProcedure.
-      * <TOTEM:PARA. Screen4-Cb-1-BeforeProcedure>
-           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
-           .
-      * <TOTEM:END>
-       Screen4-Cb-1-AfterProcedure.
-      * <TOTEM:PARA. Screen4-Cb-1-AfterProcedure>
-           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
        Screen4-Pb-1aa-LinkTo.

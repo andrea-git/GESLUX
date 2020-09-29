@@ -121,12 +121,14 @@
                  continue
            end-read
            close paramshi
-           inspect shi-path-exp replacing trailing space by low-value
+           inspect shi-path-elab-exp 
+                   replacing trailing space by low-value.
 
-           string shi-path-exp           delimited by low-value
-                  "\"                    delimited by size
-                  shi-file-vettori       delimited by size
+           string shi-path-elab-exp  delimited low-value
+                  "\"                delimited size
+                  shi-file-vettori   delimited size
                   into wstampa.
+           move wstampa to exp-shi-anagrafiche-file-vettori.
 
       ***---
        OPEN-FILES.

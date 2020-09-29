@@ -5,7 +5,7 @@
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E491C13558-106-270728162
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E491D222323-224-235053020
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -509,6 +509,7 @@ m_strPic=X(256)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
+m_strName_Xfd=shi-path-backup-im
 {{@DataItem_m_strDescriptionFDITEM49_
 
 @}}
@@ -519,6 +520,7 @@ m_strPic=X(50)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
+m_strName_Xfd=shi-file-articoli-
 {{@DataItem_m_strDescriptionFDITEM50_
 
 @}}
@@ -623,6 +625,7 @@ m_strPic=X(100)
 m_nItemLevel=20
 m_nSync=-1
 m_bFixed=1
+m_strName_Xfd=shi-path-remota-im
 {{@DataItem_m_strDescriptionFDITEM60_
 
 @}}
@@ -811,13 +814,23 @@ m_bFixed=1
 
 @}}
 [FDITEM80_]
-m_strName=shi-alfa-vuoto
-m_strRawPic=x(3797)
-m_strPic=X(3797)
+m_strName=shi-path-elab-exp
+m_strRawPic=x(256)
+m_strPic=X(256)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM80_
+
+@}}
+[FDITEM81_]
+m_strName=shi-alfa-vuoto
+m_strRawPic=x(3541)
+m_strPic=x(3541)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM81_
 
 @}}
 [CStoAcucobolSL_]
@@ -826,6 +839,7 @@ m_strAssignToName="paramSHI"
 m_nFormat=3
 m_nAccessMode=3
 m_strFileStatus=STATUS-paramshi
+m_nNumber=1
 m_nCompression=70
 {{@SL_m_strDescription
 

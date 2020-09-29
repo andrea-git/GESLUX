@@ -1,5 +1,6 @@
        77  path-fileseq         pic x(256).
        01  STATUS-fileseq       pic xx.
+       77  rename-status        pic 9(9) comp-4.
 
        01  controlli            pic xx.
            88 tutto-ok          value "OK".

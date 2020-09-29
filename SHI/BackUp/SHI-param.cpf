@@ -9,7 +9,7 @@ DEF_SKL_PATH=0
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E2214143838-155-223039352
+PROGRAM_UNIQUE_CODE=TOTEM-7E491D144233-683-127411708
 
 {{@DESCRIPTION:
 
@@ -733,7 +733,7 @@ Begin Screen Form1
    Height in Cells   = TRUE
    Help ID           = 0
    Label Offset      = 23
-   Lines             = 47,92
+   Lines             = 48,08
    Link To Thread    = TRUE
    Max Lines         = 0,00
    Max Size          = 0,00
@@ -820,8 +820,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(15)
-            Field Picture     = x(15)
+            Field Edited Format = X(15)
+            Field Picture     = X(15)
             Field Variable    = shi-cod-SHI
             File              = paramSHI
             Font              = Small Font
@@ -883,8 +883,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(3)
-            Field Picture     = x(3)
+            Field Edited Format = X(3)
+            Field Picture     = X(3)
             Field Variable    = shi-mag-SHI-1
             File              = paramSHI
             Font              = Small Font
@@ -946,8 +946,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(3)
-            Field Picture     = x(3)
+            Field Edited Format = X(3)
+            Field Picture     = X(3)
             Field Variable    = shi-mag-SHI-2
             File              = paramSHI
             Font              = Small Font
@@ -1009,8 +1009,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(256)
-            Field Picture     = x(256)
+            Field Edited Format = X(256)
+            Field Picture     = X(256)
             Field Variable    = shi-path-report-server
             File              = paramSHI
             Font              = Small Font
@@ -1114,8 +1114,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(256)
-            Field Picture     = x(256)
+            Field Edited Format = X(256)
+            Field Picture     = X(256)
             Field Variable    = shi-path-report-client
             File              = paramSHI
             Font              = Small Font
@@ -1219,8 +1219,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(50)
-            Field Picture     = x(50)
+            Field Edited Format = X(50)
+            Field Picture     = X(50)
             Field Variable    = shi-nome-semaforo
             File              = paramSHI
             Font              = Small Font
@@ -1282,8 +1282,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(200)
-            Field Picture     = x(200)
+            Field Edited Format = X(200)
+            Field Picture     = X(200)
             Field Variable    = shi-mail-mod-bozze
             File              = paramSHI
             Font              = Small Font
@@ -1344,8 +1344,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(200)
-            Field Picture     = x(200)
+            Field Edited Format = X(200)
+            Field Picture     = X(200)
             Field Variable    = shi-mail-cc-mod-bozze
             File              = paramSHI
             Font              = Small Font
@@ -1406,8 +1406,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = MOD
             Field Edited (Style) = 0
-            Field Edited Format = x(200)
-            Field Picture     = x(200)
+            Field Edited Format = X(200)
+            Field Picture     = X(200)
             Field Variable    = shi-oggetto-canc-bozze
             File              = paramSHI
             Font              = Small Font
@@ -1469,8 +1469,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = MOD
             Field Edited (Style) = 0
-            Field Edited Format = x(200)
-            Field Picture     = x(200)
+            Field Edited Format = X(200)
+            Field Picture     = X(200)
             Field Variable    = shi-corpo-canc-bozze
             File              = paramSHI
             Font              = Small Font
@@ -1532,8 +1532,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = MOD
             Field Edited (Style) = 0
-            Field Edited Format = x(200)
-            Field Picture     = x(200)
+            Field Edited Format = X(200)
+            Field Picture     = X(200)
             Field Variable    = shi-oggetto-mod-bozze
             File              = paramSHI
             Font              = Small Font
@@ -1595,8 +1595,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = MOD
             Field Edited (Style) = 0
-            Field Edited Format = x(200)
-            Field Picture     = x(200)
+            Field Edited Format = X(200)
+            Field Picture     = X(200)
             Field Variable    = shi-corpo-mod-bozze
             File              = paramSHI
             Font              = Small Font
@@ -2529,8 +2529,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(256)
-            Field Picture     = x(256)
+            Field Edited Format = X(256)
+            Field Picture     = X(256)
             Field Variable    = shi-path-exp
             File              = paramSHI
             Font              = Small Font
@@ -2634,8 +2634,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(256)
-            Field Picture     = x(256)
+            Field Edited Format = X(256)
+            Field Picture     = X(256)
             Field Variable    = shi-path-backup-exp
             File              = paramSHI
             Font              = Small Font
@@ -2716,12 +2716,12 @@ Begin Screen Form1
             Width in Cells    = TRUE
             Link To           = pb-path-backup-exp-LinkTo
          End
-         Begin Data.Entry-Field ef-articoli
+         Begin Data.Entry-Field ef-path-elab
             SCREEN-COL        = 20,86
-            SCREEN-LINE       = 14,54
+            SCREEN-LINE       = 12,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
-            (Name)            = ef-articoli
+            (Name)            = ef-path-elab
             Auto              = FALSE
             Auto Decimal      = 0
             Border            = Boxed
@@ -2739,23 +2739,23 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(50)
-            Field Picture     = x(50)
-            Field Variable    = shi-file-articoli
+            Field Edited Format = X(256)
+            Field Picture     = X(256)
+            Field Variable    = shi-path-elab-exp
             File              = paramSHI
             Font              = Small Font
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            Hint              = .
-            ID                = 150
+            Hint              = SENZA \ o / FINALE
+            ID                = 15
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 11,00
+            Line              = 9,15
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
-            Max Text          = 50
+            Max Text          = 256
             Max Value         = 0
             Min Value         = 0
             No AutoSel        = FALSE
@@ -2776,15 +2776,15 @@ Begin Screen Form1
             Visible           = NONE
             Width in Cells    = TRUE
             My Property       = "CONTROLLO=;CONTROLLO-OLD="
-            Before Procedure  = ef-articoli-BeforeProcedure
-            After Procedure   = ef-articoli-AfterProcedure
+            Before Procedure  = ef-path-backup-BeforeProcedure
+            After Procedure   = ef-path-backup-AfterProcedure
          End
-         Begin Data.Entry-Field ef-ean
+         Begin Data.Entry-Field ef-articoli
             SCREEN-COL        = 20,86
-            SCREEN-LINE       = 16,54
+            SCREEN-LINE       = 17,62
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
-            (Name)            = ef-ean
+            (Name)            = ef-articoli
             Auto              = FALSE
             Auto Decimal      = 0
             Border            = Boxed
@@ -2802,19 +2802,19 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(50)
-            Field Picture     = x(50)
-            Field Variable    = shi-file-ean
+            Field Edited Format = X(50)
+            Field Picture     = X(50)
+            Field Variable    = shi-file-articoli
             File              = paramSHI
             Font              = Small Font
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = .
-            ID                = 151
+            ID                = 150
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 13,00
+            Line              = 14,08
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -2839,15 +2839,15 @@ Begin Screen Form1
             Visible           = NONE
             Width in Cells    = TRUE
             My Property       = "CONTROLLO=;CONTROLLO-OLD="
-            Before Procedure  = ef-ean-BeforeProcedure
-            After Procedure   = ef-ean-AfterProcedure
+            Before Procedure  = ef-articoli-BeforeProcedure
+            After Procedure   = ef-articoli-AfterProcedure
          End
-         Begin Data.Entry-Field ef-prodener
+         Begin Data.Entry-Field ef-ean
             SCREEN-COL        = 20,86
-            SCREEN-LINE       = 18,54
+            SCREEN-LINE       = 19,62
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
-            (Name)            = ef-prodener
+            (Name)            = ef-ean
             Auto              = FALSE
             Auto Decimal      = 0
             Border            = Boxed
@@ -2865,19 +2865,19 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(50)
-            Field Picture     = x(50)
-            Field Variable    = shi-file-prodener
+            Field Edited Format = X(50)
+            Field Picture     = X(50)
+            Field Variable    = shi-file-ean
             File              = paramSHI
             Font              = Small Font
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = .
-            ID                = 152
+            ID                = 151
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 15,00
+            Line              = 16,08
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -2902,15 +2902,15 @@ Begin Screen Form1
             Visible           = NONE
             Width in Cells    = TRUE
             My Property       = "CONTROLLO=;CONTROLLO-OLD="
-            Before Procedure  = ef-prodener-BeforeProcedure
-            After Procedure   = ef-prodener-AfterProcedure
+            Before Procedure  = ef-ean-BeforeProcedure
+            After Procedure   = ef-ean-AfterProcedure
          End
-         Begin Data.Entry-Field ef-vettori
+         Begin Data.Entry-Field ef-prodener
             SCREEN-COL        = 20,86
-            SCREEN-LINE       = 20,54
+            SCREEN-LINE       = 21,62
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
-            (Name)            = ef-vettori
+            (Name)            = ef-prodener
             Auto              = FALSE
             Auto Decimal      = 0
             Border            = Boxed
@@ -2928,19 +2928,19 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(50)
-            Field Picture     = x(50)
-            Field Variable    = shi-file-vettori
+            Field Edited Format = X(50)
+            Field Picture     = X(50)
+            Field Variable    = shi-file-prodener
             File              = paramSHI
             Font              = Small Font
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = .
-            ID                = 153
+            ID                = 152
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 17,00
+            Line              = 18,08
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -2965,15 +2965,15 @@ Begin Screen Form1
             Visible           = NONE
             Width in Cells    = TRUE
             My Property       = "CONTROLLO=;CONTROLLO-OLD="
-            Before Procedure  = ef-vettori-BeforeProcedure
-            After Procedure   = ef-vettori-AfterProcedure
+            Before Procedure  = ef-prodener-BeforeProcedure
+            After Procedure   = ef-prodener-AfterProcedure
          End
-         Begin Data.Entry-Field ef-fornitori
+         Begin Data.Entry-Field ef-vettori
             SCREEN-COL        = 20,86
-            SCREEN-LINE       = 22,54
+            SCREEN-LINE       = 23,62
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
-            (Name)            = ef-fornitori
+            (Name)            = ef-vettori
             Auto              = FALSE
             Auto Decimal      = 0
             Border            = Boxed
@@ -2991,19 +2991,19 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(50)
-            Field Picture     = x(50)
-            Field Variable    = shi-file-fornitori
+            Field Edited Format = X(50)
+            Field Picture     = X(50)
+            Field Variable    = shi-file-vettori
             File              = paramSHI
             Font              = Small Font
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = .
-            ID                = 154
+            ID                = 153
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 19,00
+            Line              = 20,08
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -3028,15 +3028,15 @@ Begin Screen Form1
             Visible           = NONE
             Width in Cells    = TRUE
             My Property       = "CONTROLLO=;CONTROLLO-OLD="
-            Before Procedure  = ef-fornitori-BeforeProcedure
-            After Procedure   = ef-fornitori-AfterProcedure
+            Before Procedure  = ef-vettori-BeforeProcedure
+            After Procedure   = ef-vettori-AfterProcedure
          End
-         Begin Data.Entry-Field ef-classi
+         Begin Data.Entry-Field ef-fornitori
             SCREEN-COL        = 20,86
-            SCREEN-LINE       = 24,54
+            SCREEN-LINE       = 25,62
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
-            (Name)            = ef-classi
+            (Name)            = ef-fornitori
             Auto              = FALSE
             Auto Decimal      = 0
             Border            = Boxed
@@ -3054,19 +3054,19 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(50)
-            Field Picture     = x(50)
-            Field Variable    = shi-file-classi
+            Field Edited Format = X(50)
+            Field Picture     = X(50)
+            Field Variable    = shi-file-fornitori
             File              = paramSHI
             Font              = Small Font
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = .
-            ID                = 36
+            ID                = 154
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 21,00
+            Line              = 22,08
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -3091,15 +3091,15 @@ Begin Screen Form1
             Visible           = NONE
             Width in Cells    = TRUE
             My Property       = "CONTROLLO=;CONTROLLO-OLD="
-            Before Procedure  = ef-classi-BeforeProcedure
-            After Procedure   = ef-classi-AfterProcedure
+            Before Procedure  = ef-fornitori-BeforeProcedure
+            After Procedure   = ef-fornitori-AfterProcedure
          End
-         Begin Data.Entry-Field ef-tordini
+         Begin Data.Entry-Field ef-classi
             SCREEN-COL        = 20,86
-            SCREEN-LINE       = 26,54
+            SCREEN-LINE       = 27,62
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
-            (Name)            = ef-tordini
+            (Name)            = ef-classi
             Auto              = FALSE
             Auto Decimal      = 0
             Border            = Boxed
@@ -3117,19 +3117,19 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(50)
-            Field Picture     = x(50)
-            Field Variable    = shi-file-tordini
+            Field Edited Format = X(50)
+            Field Picture     = X(50)
+            Field Variable    = shi-file-classi
             File              = paramSHI
             Font              = Small Font
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = .
-            ID                = 37
+            ID                = 36
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 23,00
+            Line              = 24,08
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -3154,15 +3154,15 @@ Begin Screen Form1
             Visible           = NONE
             Width in Cells    = TRUE
             My Property       = "CONTROLLO=;CONTROLLO-OLD="
-            Before Procedure  = ef-tordini-BeforeProcedure
-            After Procedure   = ef-tordini-AfterProcedure
+            Before Procedure  = ef-classi-BeforeProcedure
+            After Procedure   = ef-classi-AfterProcedure
          End
-         Begin Data.Entry-Field ef-rordini
+         Begin Data.Entry-Field ef-tordini
             SCREEN-COL        = 20,86
-            SCREEN-LINE       = 28,54
+            SCREEN-LINE       = 29,62
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
-            (Name)            = ef-rordini
+            (Name)            = ef-tordini
             Auto              = FALSE
             Auto Decimal      = 0
             Border            = Boxed
@@ -3180,19 +3180,19 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(50)
-            Field Picture     = x(50)
-            Field Variable    = shi-file-rordini
+            Field Edited Format = X(50)
+            Field Picture     = X(50)
+            Field Variable    = shi-file-tordini
             File              = paramSHI
             Font              = Small Font
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = .
-            ID                = 38
+            ID                = 37
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 25,00
+            Line              = 26,08
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -3217,15 +3217,15 @@ Begin Screen Form1
             Visible           = NONE
             Width in Cells    = TRUE
             My Property       = "CONTROLLO=;CONTROLLO-OLD="
-            Before Procedure  = ef-rordini-BeforeProcedure
-            After Procedure   = ef-rordini-AfterProcedure
+            Before Procedure  = ef-tordini-BeforeProcedure
+            After Procedure   = ef-tordini-AfterProcedure
          End
-         Begin Data.Entry-Field ef-note
+         Begin Data.Entry-Field ef-rordini
             SCREEN-COL        = 20,86
-            SCREEN-LINE       = 30,54
+            SCREEN-LINE       = 31,62
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
-            (Name)            = ef-note
+            (Name)            = ef-rordini
             Auto              = FALSE
             Auto Decimal      = 0
             Border            = Boxed
@@ -3243,19 +3243,19 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(50)
-            Field Picture     = x(50)
-            Field Variable    = shi-file-note-ordini
+            Field Edited Format = X(50)
+            Field Picture     = X(50)
+            Field Variable    = shi-file-rordini
             File              = paramSHI
             Font              = Small Font
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = .
-            ID                = 35
+            ID                = 38
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 27,00
+            Line              = 28,08
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -3280,15 +3280,15 @@ Begin Screen Form1
             Visible           = NONE
             Width in Cells    = TRUE
             My Property       = "CONTROLLO=;CONTROLLO-OLD="
-            Before Procedure  = ef-note-BeforeProcedure
-            After Procedure   = ef-note-AfterProcedure
+            Before Procedure  = ef-rordini-BeforeProcedure
+            After Procedure   = ef-rordini-AfterProcedure
          End
-         Begin Data.Entry-Field ef-sito-exp
+         Begin Data.Entry-Field ef-note
             SCREEN-COL        = 20,86
-            SCREEN-LINE       = 34,54
+            SCREEN-LINE       = 33,62
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
-            (Name)            = ef-sito-exp
+            (Name)            = ef-note
             Auto              = FALSE
             Auto Decimal      = 0
             Border            = Boxed
@@ -3306,23 +3306,23 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(100)
-            Field Picture     = x(100)
-            Field Variable    = shi-sito-exp
+            Field Edited Format = X(50)
+            Field Picture     = X(50)
+            Field Variable    = shi-file-note-ordini
             File              = paramSHI
             Font              = Small Font
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = .
-            ID                = 39
+            ID                = 35
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 31,00
+            Line              = 30,08
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
-            Max Text          = 100
+            Max Text          = 50
             Max Value         = 0
             Min Value         = 0
             No AutoSel        = FALSE
@@ -3343,15 +3343,15 @@ Begin Screen Form1
             Visible           = NONE
             Width in Cells    = TRUE
             My Property       = "CONTROLLO=;CONTROLLO-OLD="
-            Before Procedure  = ef-sito-exp-BeforeProcedure
-            After Procedure   = ef-sito-exp-AfterProcedure
+            Before Procedure  = ef-note-BeforeProcedure
+            After Procedure   = ef-note-AfterProcedure
          End
-         Begin Data.Entry-Field ef-user-exp
+         Begin Data.Entry-Field ef-sito-exp
             SCREEN-COL        = 20,86
-            SCREEN-LINE       = 36,54
+            SCREEN-LINE       = 38,39
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
-            (Name)            = ef-user-exp
+            (Name)            = ef-sito-exp
             Auto              = FALSE
             Auto Decimal      = 0
             Border            = Boxed
@@ -3369,23 +3369,23 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(50)
-            Field Picture     = x(50)
-            Field Variable    = shi-user-exp
+            Field Edited Format = X(100)
+            Field Picture     = X(100)
+            Field Variable    = shi-sito-exp
             File              = paramSHI
             Font              = Small Font
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = .
-            ID                = 147
+            ID                = 39
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 33,00
+            Line              = 34,85
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
-            Max Text          = 50
+            Max Text          = 100
             Max Value         = 0
             Min Value         = 0
             No AutoSel        = FALSE
@@ -3406,12 +3406,75 @@ Begin Screen Form1
             Visible           = NONE
             Width in Cells    = TRUE
             My Property       = "CONTROLLO=;CONTROLLO-OLD="
+            Before Procedure  = ef-sito-exp-BeforeProcedure
+            After Procedure   = ef-sito-exp-AfterProcedure
+         End
+         Begin Data.Entry-Field ef-user-exp
+            SCREEN-COL        = 20,86
+            SCREEN-LINE       = 40,39
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = ef-user-exp
+            Auto              = FALSE
+            Auto Decimal      = 0
+            Border            = Boxed
+            Case              = Mixed
+            Clines            = 0
+            Clines Unit       = Default
+            Color             = 513
+            Column            = 19,00
+            Csize             = 0
+            Csize Unit        = Default
+            Cursor            = 0
+            Cursor Col        = 0
+            Cursor Row        = 0
+            Destroy Type      = Automatic
+            Enable            = NONE
+            Enable Variable   = mod
+            Field Edited (Style) = 0
+            Field Edited Format = X(50)
+            Field Picture     = X(50)
+            Field Variable    = shi-user-exp
+            File              = paramSHI
+            Font              = Small Font
+            Font Variable     = Small-Font
+            Height in Cells   = TRUE
+            Help ID           = 0
+            Hint              = .
+            ID                = 147
+            ID Variable       = AUTO-ID
+            Justification     = Unaligned
+            Line              = 36,85
+            Lines             = 1,31
+            Lines Unit        = Default
+            Max Lines         = 0
+            Max Text          = 50
+            Max Value         = 0
+            Min Value         = 0
+            No AutoSel        = FALSE
+            No Tab            = FALSE
+            Notify Change     = FALSE
+            Numeric           = FALSE
+            Occurs            = 0
+            Read Only         = FALSE
+            Required          = FALSE
+            Secure            = FALSE
+            Size              = 79,00
+            Size Unit         = Default
+            Style             = Singleline
+            Tab Order         = 16
+            Use Return        = FALSE
+            Use Tab           = FALSE
+            Value Multiple    = FALSE
+            Visible           = NONE
+            Width in Cells    = TRUE
+            My Property       = "CONTROLLO=;CONTROLLO-OLD="
             Before Procedure  = ef-user-exp-BeforeProcedure
             After Procedure   = ef-user-exp-AfterProcedure
          End
          Begin Data.Entry-Field ef-pwd-exp
             SCREEN-COL        = 20,86
-            SCREEN-LINE       = 38,54
+            SCREEN-LINE       = 42,39
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-pwd-exp
@@ -3432,8 +3495,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(50)
-            Field Picture     = x(50)
+            Field Edited Format = X(50)
+            Field Picture     = X(50)
             Field Variable    = shi-pwd-exp
             File              = paramSHI
             Font              = Small Font
@@ -3444,7 +3507,7 @@ Begin Screen Form1
             ID                = 155
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 35,00
+            Line              = 38,85
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -3462,7 +3525,7 @@ Begin Screen Form1
             Size              = 79,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 16
+            Tab Order         = 17
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -3474,7 +3537,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-path-rem-exp
             SCREEN-COL        = 20,86
-            SCREEN-LINE       = 40,54
+            SCREEN-LINE       = 44,39
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-path-rem-exp
@@ -3495,8 +3558,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(100)
-            Field Picture     = x(100)
+            Field Edited Format = X(100)
+            Field Picture     = X(100)
             Field Variable    = shi-path-remota-exp
             File              = paramSHI
             Font              = Small Font
@@ -3507,7 +3570,7 @@ Begin Screen Form1
             ID                = 156
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 37,00
+            Line              = 40,85
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -3525,7 +3588,7 @@ Begin Screen Form1
             Size              = 79,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 17
+            Tab Order         = 18
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -3563,7 +3626,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 14,57
             Size Unit         = Default
-            Tab Order         = 18
+            Tab Order         = 19
             Title             = "Cartella destinazione"
             Transparent       = TRUE
             Visible           = NONE
@@ -3597,7 +3660,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 14,57
             Size Unit         = Default
-            Tab Order         = 19
+            Tab Order         = 20
             Title             = "Cartella Backup"
             Transparent       = TRUE
             Visible           = NONE
@@ -3605,7 +3668,7 @@ Begin Screen Form1
          End
          Begin Label Screen1-La-6
             SCREEN-COL        = 4,86
-            SCREEN-LINE       = 14,54
+            SCREEN-LINE       = 17,62
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Screen1-La-6
@@ -3624,14 +3687,14 @@ Begin Screen Form1
             ID                = 16
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 11,00
+            Line              = 14,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 14,57
             Size Unit         = Default
-            Tab Order         = 20
+            Tab Order         = 21
             Title             = "Articoli"
             Transparent       = TRUE
             Visible           = NONE
@@ -3639,7 +3702,7 @@ Begin Screen Form1
          End
          Begin Label Screen1-La-7
             SCREEN-COL        = 4,86
-            SCREEN-LINE       = 16,54
+            SCREEN-LINE       = 19,62
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Screen1-La-7
@@ -3658,14 +3721,14 @@ Begin Screen Form1
             ID                = 34
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 13,00
+            Line              = 16,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 14,57
             Size Unit         = Default
-            Tab Order         = 21
+            Tab Order         = 22
             Title             = "Ean Articoli"
             Transparent       = TRUE
             Visible           = NONE
@@ -3673,7 +3736,7 @@ Begin Screen Form1
          End
          Begin Label Screen1-La-8
             SCREEN-COL        = 4,86
-            SCREEN-LINE       = 18,54
+            SCREEN-LINE       = 21,62
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Screen1-La-8
@@ -3692,14 +3755,14 @@ Begin Screen Form1
             ID                = 41
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 15,00
+            Line              = 18,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 14,57
             Size Unit         = Default
-            Tab Order         = 22
+            Tab Order         = 23
             Title             = "Prodotti energetici"
             Transparent       = TRUE
             Visible           = NONE
@@ -3707,7 +3770,7 @@ Begin Screen Form1
          End
          Begin Label Screen1-La-9
             SCREEN-COL        = 4,86
-            SCREEN-LINE       = 20,54
+            SCREEN-LINE       = 23,62
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Screen1-La-9
@@ -3726,14 +3789,14 @@ Begin Screen Form1
             ID                = 42
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 17,00
+            Line              = 20,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 14,57
             Size Unit         = Default
-            Tab Order         = 23
+            Tab Order         = 24
             Title             = "Vettori"
             Transparent       = TRUE
             Visible           = NONE
@@ -3741,7 +3804,7 @@ Begin Screen Form1
          End
          Begin Label Screen1-La-10
             SCREEN-COL        = 4,86
-            SCREEN-LINE       = 22,54
+            SCREEN-LINE       = 25,62
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Screen1-La-10
@@ -3760,14 +3823,14 @@ Begin Screen Form1
             ID                = 43
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 19,00
+            Line              = 22,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 14,57
             Size Unit         = Default
-            Tab Order         = 24
+            Tab Order         = 25
             Title             = "Fornitori"
             Transparent       = TRUE
             Visible           = NONE
@@ -3775,7 +3838,7 @@ Begin Screen Form1
          End
          Begin Label Screen1-La-11
             SCREEN-COL        = 4,86
-            SCREEN-LINE       = 26,54
+            SCREEN-LINE       = 29,62
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Screen1-La-11
@@ -3794,14 +3857,14 @@ Begin Screen Form1
             ID                = 44
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 23,00
+            Line              = 26,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 14,57
             Size Unit         = Default
-            Tab Order         = 25
+            Tab Order         = 26
             Title             = "Testata Ordini"
             Transparent       = TRUE
             Visible           = NONE
@@ -3809,7 +3872,7 @@ Begin Screen Form1
          End
          Begin Label Screen1-La-12
             SCREEN-COL        = 4,86
-            SCREEN-LINE       = 28,54
+            SCREEN-LINE       = 31,62
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Screen1-La-12
@@ -3828,14 +3891,14 @@ Begin Screen Form1
             ID                = 45
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 25,00
+            Line              = 28,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 14,57
             Size Unit         = Default
-            Tab Order         = 26
+            Tab Order         = 27
             Title             = "Righe Ordini"
             Transparent       = TRUE
             Visible           = NONE
@@ -3843,7 +3906,7 @@ Begin Screen Form1
          End
          Begin Label Screen1-La-13
             SCREEN-COL        = 4,86
-            SCREEN-LINE       = 30,54
+            SCREEN-LINE       = 33,62
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Screen1-La-13
@@ -3862,14 +3925,14 @@ Begin Screen Form1
             ID                = 46
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 27,00
+            Line              = 30,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 14,57
             Size Unit         = Default
-            Tab Order         = 27
+            Tab Order         = 28
             Title             = "Note Ordini"
             Transparent       = TRUE
             Visible           = NONE
@@ -3877,7 +3940,7 @@ Begin Screen Form1
          End
          Begin Label Screen1-La-15
             SCREEN-COL        = 4,86
-            SCREEN-LINE       = 34,54
+            SCREEN-LINE       = 38,39
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Screen1-La-15
@@ -3896,14 +3959,14 @@ Begin Screen Form1
             ID                = 47
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 31,00
+            Line              = 34,85
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 28
+            Tab Order         = 29
             Title             = "Sito"
             Transparent       = TRUE
             Visible           = NONE
@@ -3936,7 +3999,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 20,00
             Size Unit         = Default
-            Tab Order         = 29
+            Tab Order         = 30
             Title             = "Percorsi"
             Transparent       = FALSE
             Visible           = NONE
@@ -3966,14 +4029,14 @@ Begin Screen Form1
             Size (Lines)      = 79,00
             Size (Lines) in Pixels = 553
             Size (Lines) Unit = Default
-            Tab Order         = 30
+            Tab Order         = 31
             Visible           = NONE
             Width             = 1
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-5aaacaaa
             SCREEN-COL        = 3,86
-            SCREEN-LINE       = 12,54
+            SCREEN-LINE       = 15,62
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaacaaa
@@ -3991,14 +4054,14 @@ Begin Screen Form1
             ID                = 50
             Justification     = Center
             Label Offset      = 20
-            Line              = 9,00
+            Line              = 12,08
             Lines             = 1,50
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 20,00
             Size Unit         = Default
-            Tab Order         = 31
+            Tab Order         = 32
             Title             = "Nomi Files"
             Transparent       = FALSE
             Visible           = NONE
@@ -4006,7 +4069,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-2aaaa
             SCREEN-COL        = 24,00
-            SCREEN-LINE       = 13,39
+            SCREEN-LINE       = 16,47
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-2aaaa
@@ -4021,21 +4084,21 @@ Begin Screen Form1
             Help ID           = 0
             ID                = 51
             Kind              = Horizontal
-            Line              = 9,85
+            Line              = 12,92
             Line Styles       = Solid
             Occurs            = 0
             Position Shift    = 0
             Size (Lines)      = 79,00
             Size (Lines) in Pixels = 553
             Size (Lines) Unit = Default
-            Tab Order         = 32
+            Tab Order         = 33
             Visible           = NONE
             Width             = 1
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-5aaacaaaa
             SCREEN-COL        = 3,86
-            SCREEN-LINE       = 32,08
+            SCREEN-LINE       = 35,93
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaacaaaa
@@ -4053,14 +4116,14 @@ Begin Screen Form1
             ID                = 52
             Justification     = Center
             Label Offset      = 20
-            Line              = 28,54
+            Line              = 32,38
             Lines             = 1,50
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 20,00
             Size Unit         = Default
-            Tab Order         = 33
+            Tab Order         = 34
             Title             = "Parametri FTP"
             Transparent       = FALSE
             Visible           = NONE
@@ -4068,7 +4131,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-2aaaaa
             SCREEN-COL        = 24,00
-            SCREEN-LINE       = 32,92
+            SCREEN-LINE       = 36,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-2aaaaa
@@ -4083,21 +4146,21 @@ Begin Screen Form1
             Help ID           = 0
             ID                = 53
             Kind              = Horizontal
-            Line              = 29,38
+            Line              = 33,23
             Line Styles       = Solid
             Occurs            = 0
             Position Shift    = 0
             Size (Lines)      = 79,00
             Size (Lines) in Pixels = 553
             Size (Lines) Unit = Default
-            Tab Order         = 34
+            Tab Order         = 35
             Visible           = NONE
             Width             = 1
             Width in Cells    = TRUE
          End
          Begin Label Screen1-La-13a
             SCREEN-COL        = 4,86
-            SCREEN-LINE       = 24,54
+            SCREEN-LINE       = 27,62
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Screen1-La-13a
@@ -4116,14 +4179,14 @@ Begin Screen Form1
             ID                = 146
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 21,00
+            Line              = 24,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 14,57
             Size Unit         = Default
-            Tab Order         = 35
+            Tab Order         = 36
             Title             = "Classi articoli"
             Transparent       = TRUE
             Visible           = NONE
@@ -4131,7 +4194,7 @@ Begin Screen Form1
          End
          Begin Label Screen1-La-15b
             SCREEN-COL        = 4,86
-            SCREEN-LINE       = 36,54
+            SCREEN-LINE       = 40,39
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Screen1-La-15b
@@ -4150,14 +4213,14 @@ Begin Screen Form1
             ID                = 157
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 33,00
+            Line              = 36,85
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 36
+            Tab Order         = 37
             Title             = "Utente"
             Transparent       = TRUE
             Visible           = NONE
@@ -4165,7 +4228,7 @@ Begin Screen Form1
          End
          Begin Label Screen1-La-15c
             SCREEN-COL        = 4,86
-            SCREEN-LINE       = 38,54
+            SCREEN-LINE       = 42,39
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Screen1-La-15c
@@ -4184,14 +4247,14 @@ Begin Screen Form1
             ID                = 158
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 35,00
+            Line              = 38,85
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 37
+            Tab Order         = 38
             Title             = "Password"
             Transparent       = TRUE
             Visible           = NONE
@@ -4199,7 +4262,7 @@ Begin Screen Form1
          End
          Begin Label Screen1-La-15d
             SCREEN-COL        = 4,86
-            SCREEN-LINE       = 40,54
+            SCREEN-LINE       = 44,39
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Screen1-La-15d
@@ -4218,15 +4281,91 @@ Begin Screen Form1
             ID                = 159
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 37,00
+            Line              = 40,85
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 38
+            Tab Order         = 39
             Title             = "Path remota"
+            Transparent       = TRUE
+            Visible           = NONE
+            Width in Cells    = TRUE
+         End
+         Begin Push-Button pb-path-elab-exp
+            SCREEN-COL        = 99,72
+            SCREEN-LINE       = 12,70
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = pb-path-elab-exp
+            Bitmap Frame      = FALSE
+            Bitmap Number     = 1
+            Bitmap Square     = TRUE
+            Clines            = 0
+            Clines Unit       = Default
+            Column            = 97,86
+            Copy Resource     = TRUE
+            Csize             = 0
+            Csize Unit        = Default
+            Destroy Type      = Automatic
+            Enable            = NONE
+            Enable Variable   = mod
+            Exception Value   = 1009
+            Flat              = FALSE
+            Font              = Small Font
+            Font Variable     = Small-Font
+            Height in Cells   = TRUE
+            Help ID           = 0
+            ID                = 148
+            Line              = 9,15
+            Lines             = 1,31
+            Lines Unit        = Default
+            No Auto Default   = FALSE
+            No Tab            = FALSE
+            Occurs            = 0
+            Self Act          = FALSE
+            Size              = 2,57
+            Size Unit         = Default
+            Style             = Other
+            Tab Order         = 40
+            Termination Value = 0
+            Title             = "..."
+            Visible           = NONE
+            Width in Cells    = TRUE
+            Link To           = pb-path-elab-exp-LinkTo
+         End
+         Begin Label Screen1-La-5b
+            SCREEN-COL        = 4,86
+            SCREEN-LINE       = 12,70
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = Screen1-La-5b
+            Clines            = 0
+            Clines Unit       = Default
+            Color             = 0
+            Column            = 3,00
+            Csize             = 0
+            Csize Unit        = Default
+            Destroy Type      = Automatic
+            Enable            = NONE
+            Font              = Small Font
+            Font Variable     = Small-Font
+            Height in Cells   = TRUE
+            Help ID           = 0
+            ID                = 14
+            Justification     = Unaligned
+            Label Offset      = 20
+            Line              = 9,15
+            Lines             = 1,31
+            Lines Unit        = Default
+            No Key Letter     = FALSE
+            Occurs            = 0
+            Size              = 14,57
+            Size Unit         = Default
+            Tab Order         = 41
+            Title             = "Cartella Elaborazione"
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
@@ -4265,8 +4404,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(256)
-            Field Picture     = x(256)
+            Field Edited Format = X(256)
+            Field Picture     = X(256)
             Field Variable    = shi-path-imp
             File              = paramSHI
             Font              = Small Font
@@ -4370,8 +4509,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(256)
-            Field Picture     = x(256)
+            Field Edited Format = X(256)
+            Field Picture     = X(256)
             Field Variable    = shi-path-backup-imp
             File              = paramSHI
             Font              = Small Font
@@ -4475,8 +4614,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(50)
-            Field Picture     = x(50)
+            Field Edited Format = X(50)
+            Field Picture     = X(50)
             Field Variable    = shi-file-articoli-imp
             File              = paramSHI
             Font              = Small Font
@@ -4538,8 +4677,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(50)
-            Field Picture     = x(50)
+            Field Edited Format = X(50)
+            Field Picture     = X(50)
             Field Variable    = shi-file-tordini-imp
             File              = paramSHI
             Font              = Small Font
@@ -4601,8 +4740,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(50)
-            Field Picture     = x(50)
+            Field Edited Format = X(50)
+            Field Picture     = X(50)
             Field Variable    = shi-file-rordini-imp
             File              = paramSHI
             Font              = Small Font
@@ -4664,8 +4803,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(100)
-            Field Picture     = x(100)
+            Field Edited Format = X(100)
+            Field Picture     = X(100)
             Field Variable    = shi-sito-imp
             File              = paramSHI
             Font              = Small Font
@@ -4727,8 +4866,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(50)
-            Field Picture     = x(50)
+            Field Edited Format = X(50)
+            Field Picture     = X(50)
             Field Variable    = shi-user-imp
             File              = paramSHI
             Font              = Small Font
@@ -4790,8 +4929,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(50)
-            Field Picture     = x(50)
+            Field Edited Format = X(50)
+            Field Picture     = X(50)
             Field Variable    = shi-pwd-imp
             File              = paramSHI
             Font              = Small Font
@@ -4853,8 +4992,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(100)
-            Field Picture     = x(100)
+            Field Edited Format = X(100)
+            Field Picture     = X(100)
             Field Variable    = shi-path-remota-imp
             File              = paramSHI
             Font              = Small Font
@@ -5462,8 +5601,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(256)
-            Field Picture     = x(256)
+            Field Edited Format = X(256)
+            Field Picture     = X(256)
             Field Variable    = shi-path-impcar
             File              = paramSHI
             Font              = Small Font
@@ -5567,8 +5706,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(256)
-            Field Picture     = x(256)
+            Field Edited Format = X(256)
+            Field Picture     = X(256)
             Field Variable    = shi-path-backup-impcar
             File              = paramSHI
             Font              = Small Font
@@ -5672,8 +5811,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(50)
-            Field Picture     = x(50)
+            Field Edited Format = X(50)
+            Field Picture     = X(50)
             Field Variable    = shi-file-carichi-impcar
             File              = paramSHI
             Font              = Small Font
@@ -5735,8 +5874,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(4)
-            Field Picture     = x(4)
+            Field Edited Format = X(4)
+            Field Picture     = X(4)
             Field Variable    = shi-causale-impcar
             File              = paramSHI
             Font              = Small Font
@@ -5798,8 +5937,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(100)
-            Field Picture     = x(100)
+            Field Edited Format = X(100)
+            Field Picture     = X(100)
             Field Variable    = shi-mail-impcar
             File              = paramSHI
             Font              = Small Font
@@ -5861,8 +6000,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(100)
-            Field Picture     = x(100)
+            Field Edited Format = X(100)
+            Field Picture     = X(100)
             Field Variable    = shi-mail-cc-impcar
             File              = paramSHI
             Font              = Small Font
@@ -5924,8 +6063,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(100)
-            Field Picture     = x(100)
+            Field Edited Format = X(100)
+            Field Picture     = X(100)
             Field Variable    = shi-sito-impcar
             File              = paramSHI
             Font              = Small Font
@@ -5987,8 +6126,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(50)
-            Field Picture     = x(50)
+            Field Edited Format = X(50)
+            Field Picture     = X(50)
             Field Variable    = shi-user-impcar
             File              = paramSHI
             Font              = Small Font
@@ -6050,8 +6189,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(50)
-            Field Picture     = x(50)
+            Field Edited Format = X(50)
+            Field Picture     = X(50)
             Field Variable    = shi-pwd-impcar
             File              = paramSHI
             Font              = Small Font
@@ -6113,8 +6252,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod
             Field Edited (Style) = 0
-            Field Edited Format = x(100)
-            Field Picture     = x(100)
+            Field Edited Format = X(100)
+            Field Picture     = X(100)
             Field Variable    = shi-path-remota-impcar
             File              = paramSHI
             Font              = Small Font
@@ -7475,7 +7614,8 @@ BEGIN-TEXT
                        20 old-shi-corpo-canc-bozze         PIC  x(200).
                        20 old-shi-oggetto-mod-bozze        PIC  x(200).
                        20 old-shi-corpo-mod-bozze          PIC  x(200).
-               10 old-shi-mag-SHI-2    PIC  x(3).
+               10 old-shi-mag-SHI-2     PIC  x(3).
+               10 old-shi-path-elab-exp PIC  x(256).
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -7985,6 +8125,17 @@ BEGIN-TEXT
                          title tit-err
                          icon  MB-WARNING-ICON
                       move 78-ID-ef-path-backup to CONTROL-ID
+                   end-if
+                 end-if
+           when 78-ID-ef-path-elab
+                if controllo-finale
+                   inquire ef-path-elab, value in ef-path-elab-buf
+                   if ef-path-elab-buf = space
+                      set errori to true
+                      display message "Percorco elaborazione NON valido!"
+                         title tit-err
+                         icon  MB-WARNING-ICON
+                      move 78-ID-ef-path-elab to CONTROL-ID
                    end-if
                  end-if
            when 78-ID-ef-articoli
@@ -9661,6 +9812,26 @@ BEGIN-DATA
 BEGIN-TEXT
       *<<** Default_Code **>>
       *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-path-elab-exp-LinkTo
+BEGIN-TEXT
+           initialize opensave-data.
+           inquire ef-path-backup value OPNSAV-DEFAULT-DIR
+
+           move 1 to opnsav-default-filter.
+           move "Parametri SHI" to opnsav-title.
+           call "C$OPENSAVEBOX" using OPENSAVE-BROWSE-FOLDER, 
+                                      opensave-data
+                               giving opensave-status.
+
+           if opensave-status = 1
+              move opnsav-filename to ef-path-elab-buf
+              modify ef-path-elab, value = ef-path-elab-buf
+           end-if 
+
 END-TEXT
 END-DATA
 

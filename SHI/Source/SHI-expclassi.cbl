@@ -114,12 +114,14 @@
                  continue
            end-read
            close paramshi
-           inspect shi-path-exp replacing trailing space by low-value
+           inspect shi-path-elab-exp 
+                   replacing trailing space by low-value.
 
-           string shi-path-exp     delimited by low-value
-                  "\"              delimited by size
-                  shi-file-classi  delimited by size
-                  into wstampa.
+           string shi-path-elab-exp delimited low-value
+                  "\"               delimited size
+                  shi-file-classi   delimited size
+             into wstampa.
+           move wstampa to exp-shi-anagrafiche-file-classi.
 
 
       ***---
@@ -133,8 +135,7 @@
        ELABORAZIONE.
            move low-value to cl1-codice.
            start tcla1art key is >= cl1-chiave
-              invalid  
-                 set errori to true
+                 invalid set errori to true
            end-start.
            if tutto-ok
               perform until 1 = 2

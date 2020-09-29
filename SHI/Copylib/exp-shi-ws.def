@@ -1,24 +1,28 @@
-           copy "splcrt2graf.lks".
-           copy "link-exp.def".
-           copy "link-expordini.def".
-           copy "link-esegui-ftp.def".
-
-       78  barra value "\".
-
-       77  pattern                 pic X(50)   value SPACES.
       *
-       77  dir-Handle              handle.
-       77  MSG-Folder-Name         pic X(256)  value SPACES.
-       77  origine                 pic X(256)  value SPACES.
-       77  destinazione            pic X(256)  value SPACES.
-       77  RENAME-STATUS            pic 9(9)            comp-4.
-
-       77  como-nome               pic x(50).
-       77  como-nome-2             pic x(50).
-       77  como-estensione         pic x(3).
-       77  cont                    pic 9(3).
-
-       01                       pic 9.
-           88 crea-ordini       value 1.
-           88 crea-articoli     value 2.
-           88 crea-anagrafiche  value 3.
+           COPY  "splcrt2graf.lks".
+           COPY  "link-exp.def".
+           COPY  "link-expordini.def".
+           COPY  "link-esegui-ftp.def".
+       78 barra VALUE IS "\". 
+       77 pattern          PIC  X(50)
+                  VALUE IS SPACES.
+      *
+      *
+       77 dir-Handle
+                  USAGE IS HANDLE.
+       77 MSG-Folder-Name  PIC  X(256)
+                  VALUE IS SPACES.
+       77 origine          PIC  X(256)
+                  VALUE IS SPACES.
+       77 destinazione     PIC  X(256)
+                  VALUE IS SPACES.
+       77 RENAME-STATUS    PIC  9(9)
+                  USAGE IS COMP-4.
+       77 como-nome        PIC  x(256).
+       77 como-nome-2      PIC  x(256).
+       77 como-estensione  PIC  x(3).
+       77 cont PIC  9(3).
+       01 FILLER           PIC  9.
+           88 crea-ordini VALUE IS 1. 
+           88 crea-articoli VALUE IS 2. 
+           88 crea-anagrafiche VALUE IS 3. 

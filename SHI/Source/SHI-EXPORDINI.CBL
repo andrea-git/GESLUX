@@ -790,51 +790,58 @@
            move spaces to shi-codice.
            read  paramshi invalid continue end-read.
            close paramshi.
-           inspect shi-path-exp replacing trailing space by low-value.
+           inspect shi-path-elab-exp 
+                   replacing trailing space by low-value.
 
-           string shi-path-exp        delimited by low-value
-                  "\"                 delimited by size
-                  shi-file-articoli   delimited by size
-                  into wstampa.
+           string shi-path-elab-exp   delimited low-value
+                  "\"                 delimited size
+                  shi-file-articoli   delimited size
+             into wstampa.
+           move wstampa to exp-shi-ordini-file-articoli.
 
-           string shi-path-exp        delimited by low-value
-                  "\"                 delimited by size
-                  shi-file-ean        delimited by size
-                  into wstampa2.
+           string shi-path-elab-exp   delimited low-value
+                  "\"                 delimited size
+                  shi-file-ean        delimited size
+             into wstampa2.                 
+           move wstampa2 to exp-shi-ordini-file-ean.
 
-           string shi-path-exp        delimited by low-value
-                  "\"                 delimited by size
-                  shi-file-prodener   delimited by size
-                  into wstampa3.
+           string shi-path-elab-exp   delimited low-value
+                  "\"                 delimited size
+                  shi-file-prodener   delimited size
+             into wstampa3.            
+           move wstampa3 to exp-shi-ordini-file-prodener.
            initialize tabella-prodener.
 
            inspect shi-file-tordini 
                    replacing trailing spaces by low-value.
-           string shi-path-exp     delimited low-value
-                  "\"              delimited size
-                  shi-file-tordini delimited low-value
-                  "_"              delimited size   
-                  como-data        delimited size
-                  "_"              delimited size   
-                  como-ora         delimited size
-                  ".txt"           delimited size 
-                  into wstampa4.
+           string shi-path-elab-exp   delimited low-value
+
+                  "\"                 delimited size
+                  shi-file-tordini    delimited low-value
+                  "_"                 delimited size   
+                  como-data           delimited size
+                  "_"                 delimited size   
+                  como-ora            delimited size
+                  ".txt"              delimited size 
+             into wstampa4.
+           move wstampa4 to exp-shi-ordini-file-tordini.    
            
            inspect shi-file-rordini 
                    replacing trailing spaces by low-value.
-           string shi-path-exp     delimited low-value
-                  "\"              delimited size
-                  shi-file-rordini delimited low-value
-                  "_"              delimited size   
-                  como-data        delimited size
-                  "_"              delimited size   
-                  como-ora         delimited size     
-                  ".txt"           delimited size 
-                  into wstampa5.
+           string shi-path-elab-exp   delimited low-value
+                  "\"                 delimited size
+                  shi-file-rordini    delimited low-value
+                  "_"                 delimited size   
+                  como-data           delimited size
+                  "_"                 delimited size   
+                  como-ora            delimited size     
+                  ".txt"              delimited size 
+             into wstampa5.
+           move wstampa5 to exp-shi-ordini-file-rordini.
                              
            inspect shi-file-note-ordini 
-                   replacing trailing spaces by low-value.
-           string shi-path-exp         delimited low-value
+                   replacing trailing  spaces by low-value.
+           string shi-path-elab-exp    delimited low-value
                   "\"                  delimited size
                   shi-file-note-ordini delimited low-value
                   "_"                  delimited size   
@@ -842,7 +849,8 @@
                   "_"                  delimited size   
                   como-ora             delimited size 
                   ".txt"               delimited size 
-                  into wstampa6.
+             into wstampa6.
+           move wstampa6 to exp-shi-ordini-file-note-ordini.
 
       ***---
        OPEN-FILES.

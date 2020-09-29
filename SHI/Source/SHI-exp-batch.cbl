@@ -51,9 +51,6 @@
        77  como-riga             pic x(200).
        77  riga-stampa           pic x(200).
 
-       01 invio-ftp        PIC  9  VALUE IS 1.
-           88 si-invio-ftp VALUE IS 1    WHEN SET TO FALSE  0. 
-
       * FLAGS
        77  controllo             pic xx.
            88  tutto-ok          value "OK".
@@ -128,7 +125,6 @@
            move "INIZIO PROGRAMMA" to como-riga.
            perform SETTA-RIGA-STAMPA.
            set tutto-ok      to true.
-           set si-invio-ftp  to true.
 
       ***---
        OPEN-FILES.
@@ -266,7 +262,7 @@
            move "INIZIO ARCHIVIAZIONE DATI" to como-riga
            perform SETTA-RIGA-STAMPA
            set crea-ordini   to true
-           perform COPIA-FILES
+           perform COPIA-FILES.
            if RENAME-STATUS = ZERO or 2
               move "FILE ARCHIVIATO" to como-riga
            else
@@ -354,8 +350,8 @@
            inspect MSG-Folder-Name, 
                    replacing trailing SPACES by LOW-VALUES.
            initialize como-riga.
-           string  "IMPOSSIBILE APRIRE DIRECTORY: "  delimited size,
-                   MSG-Folder-Name                  delimited LOW-VALUE,
+           string  "IMPOSSIBILE APRIRE DIRECTORY: " delimited size,
+                   MSG-Folder-Name                  delimited low-value,
               into como-riga.
 
 

@@ -64,6 +64,10 @@
            when 78-ID-ef-path-backup
                 inquire ef-path-backup, value in ef-path-backup-buf
 
+           |78-ID-ef-path-elab è l'ID del control ef-path-elab
+           when 78-ID-ef-path-elab
+                inquire ef-path-elab, value in ef-path-elab-buf
+
            |78-ID-ef-articoli è l'ID del control ef-articoli
            when 78-ID-ef-articoli
                 inquire ef-articoli, value in ef-articoli-buf

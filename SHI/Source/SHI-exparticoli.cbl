@@ -37,11 +37,11 @@
            copy "prodener.fd".
            copy "fileseq.fd".
        FD  lineseq.
-       01 line-riga        PIC  x(10000).
-       FD  lineseq2.
-       01  line-riga2        PIC  x(900).
-       FD  lineseq3.
-       01  line-riga3        PIC  x(900).
+       01  line-riga         pic  x(10000).
+       fd  lineseq2.
+       01  line-riga2        pic  x(900).
+       fd  lineseq3.
+       01  line-riga3        pic  x(900).
 
        WORKING-STORAGE SECTION.
        copy "exp-ws.def".
@@ -177,7 +177,6 @@
            05 exp-pen-dac          PIC  x(4).
 
        77  cont                    pic 9(5).
-
 
        LINKAGE SECTION.
            copy "link-exp.def".
@@ -405,8 +404,8 @@
 
       ***---
        INIT.
-           accept como-ora from century-date.
-           accept como-ora from time.
+           accept como-data from century-date.
+           accept como-ora  from time.
            perform INITIALIZE-FLAG
            move zero   to num-rec-prodener
                           num-rec-ean
@@ -416,30 +415,43 @@
            open input paramshi.
            move space  to shi-codice
            read paramshi invalid continue end-read.
-           close paramshi
-           inspect shi-path-exp replacing trailing space by low-value
+           close paramshi 
+           inspect shi-path-elab-exp
+                   replacing trailing space by low-value
+           inspect shi-path-exp
+                   replacing trailing space by low-value
+           inspect shi-file-articoli
+                   replacing trailing space by low-value
+           inspect shi-file-ean
+                   replacing trailing space by low-value
+           inspect shi-file-prodener
+                   replacing trailing space by low-value
 
-           string shi-path-exp        delimited by low-value
-                  "\"                 delimited by size
-                  shi-file-articoli   delimited by size
-                  into wstampa
+           string shi-path-elab-exp delimited low-value
+                  "\"               delimited size
+                  shi-file-articoli delimited size
+             into wstampa.
+              
+           move wstampa to exp-shi-articoli-file-articoli.
 
-           string shi-path-exp        delimited by low-value
-                  "\"                 delimited by size
-                  shi-file-ean        delimited by size
-                  into wstampa2
+           string shi-path-elab-exp delimited low-value
+                  "\"               delimited size
+                  shi-file-ean      delimited size
+             into wstampa2.  
+           move wstampa2 to exp-shi-articoli-file-ean.              
 
            inspect shi-file-prodener  replacing trailing spaces 
                                       by low-value.
-           string shi-path-exp        delimited by low-value
-                  "\"                 delimited by size
-                  shi-file-prodener   delimited by low-value
-                  "_"                 delimited by size
-                  como-data           delimited by size
-                  "_"                 delimited by size
-                  como-ora            delimited by size
-                  ".txt"              delimited by size
-                  into wstampa3
+           string shi-path-elab-exp delimited low-value
+                  "\"               delimited size
+                  shi-file-prodener delimited low-value
+                  "_"               delimited size
+                  como-data         delimited size
+                  "_"               delimited size
+                  como-ora          delimited size
+                  ".txt"            delimited size
+             into wstampa3.
+           move wstampa3 to exp-shi-articoli-file-prodener.
            initialize tabella-prodener.
 
       ***---
