@@ -75,7 +75,7 @@
        77  qta-promo        pic 9(8).
        77  idx-b            pic 9(3).
 
-       01  tab-giacenza     occurs 30000.
+       01  tab-giacenza     occurs 99999.
          05 el-giacenza     pic s9(8).
          05 el-giacenza-tot pic s9(8).
          05 el-prenotata    pic s9(8).
