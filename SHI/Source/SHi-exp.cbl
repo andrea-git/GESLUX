@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          SHI-exp.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 29 settembre 2020 23:13:54.
+       DATE-WRITTEN.        mercoledì 30 settembre 2020 18:42:11.
        REMARKS.
       *{TOTEM}END
 
@@ -1557,8 +1557,9 @@
               call   "splcrt2graf" using splcrt2graf-link
               cancel "splcrt2graf" 
               if exp-ord-path-riepilogo-c not = spaces
-                 move exp-ord-path-riepilogo-c to 
-           splcrt2graf-percorso-stampa
+                 move exp-ord-path-riepilogo-c 
+                   to splcrt2graf-percorso-stampa
+                      splcrt2graf-percorso-stampa-u
                  set splcrt2graf-stampa     to true
                  set splcrt2graf-unix       to true
                  set splcrt2graf-verticale  to true

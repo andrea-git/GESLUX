@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=exp-shi-Ev-Before-Program
 AFTER_PROGRAM=exp-shi-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E491D205356-108-2631421164
+PROGRAM_UNIQUE_CODE=TOTEM-7E491E163620-440-199761367
 
 {{@DESCRIPTION:
 
@@ -2068,7 +2068,9 @@ BEGIN-TEXT
               call   "splcrt2graf" using splcrt2graf-link
               cancel "splcrt2graf" 
               if exp-ord-path-riepilogo-c not = spaces
-                 move exp-ord-path-riepilogo-c to splcrt2graf-percorso-stampa
+                 move exp-ord-path-riepilogo-c 
+                   to splcrt2graf-percorso-stampa
+                      splcrt2graf-percorso-stampa-u
                  set splcrt2graf-stampa     to true
                  set splcrt2graf-unix       to true
                  set splcrt2graf-verticale  to true

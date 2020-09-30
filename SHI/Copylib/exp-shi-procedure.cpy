@@ -7,6 +7,8 @@
                                 replacing trailing space by low-value
            inspect shi-path-report-client   
                                 replacing trailing space by low-value
+           
+           initialize wstampa.
            string shi-path-report-server delimited by low-value
                   barra                  delimited by size
                   "exportlog_"           delimited by size
@@ -14,10 +16,12 @@
                   "_"                    delimited by size
                   como-ora               delimited by size
                   ".txt"                 delimited by size
-                  into wstampa
+             into wstampa
+           end-string.
 
            move wstampa   to splcrt2graf-percorso-stampa-u
 
+           initialize splcrt2graf-percorso-stampa.
            string shi-path-report-client delimited by low-value
                   barra                  delimited by size
                   "exportlog_"           delimited by size
@@ -25,7 +29,8 @@
                   "_"                    delimited by size
                   como-ora               delimited by size
                   ".txt"                 delimited by size
-                  into splcrt2graf-percorso-stampa
+             into splcrt2graf-percorso-stampa
+           end-string.
 
            open output lineseq
            close lineseq.
@@ -139,8 +144,8 @@
            call "C$COPY" using origine,
                                destinazione, 
                                rename-status.
-
-                   
+                 
+           initialize destinazione.
            string shi-path-backup-exp delimited low-value,
                   barra               delimited size,
                   como-nome-2         delimited low-value
