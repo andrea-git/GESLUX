@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          tprev.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 17 settembre 2020 16:54:06.
+       DATE-WRITTEN.        giovedì 1 ottobre 2020 14:56:07.
        REMARKS.
       *{TOTEM}END
 
@@ -279,7 +279,7 @@
        77 TMP-DataSet1-mrordini-BUF     PIC X(891).
        77 TMP-DataSet1-mtordini-BUF     PIC X(2122).
        77 TMP-DataSet1-clienti-BUF     PIC X(1910).
-       77 TMP-DataSet1-destini-BUF     PIC X(3386).
+       77 TMP-DataSet1-destini-BUF     PIC X(3676).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -382,7 +382,7 @@
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
        77 clienti-cli-K4-SPLITBUF  PIC X(8).
-       77 destini-K1-SPLITBUF  PIC X(51).
+       77 destini-K1-SPLITBUF  PIC X(111).
        77 destini-k-localita-SPLITBUF  PIC X(36).
 
       *{TOTEM}END
@@ -3071,9 +3071,9 @@
 
        destini-K1-MERGE-SPLITBUF.
            INITIALIZE destini-K1-SPLITBUF
-           MOVE des-ragsoc-1(1:40) TO destini-K1-SPLITBUF(1:40)
-           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(41:5)
-           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(46:5)
+           MOVE des-ragsoc-1(1:100) TO destini-K1-SPLITBUF(1:100)
+           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(101:5)
+           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(106:5)
            .
 
        destini-k-localita-MERGE-SPLITBUF.
@@ -4515,35 +4515,35 @@
        OPEN-IO-PROMOEVA-LOCK.
       * <TOTEM:PARA. OPEN-IO-PROMOEVA-LOCK>
            perform until 1 = 2
-      *****        move "promoeva" to geslock-nome-file
-      *****        initialize geslock-messaggio
-      *****        string   "Il file delle quantità promo per evasione" 
-      *****          x"0d0a""è in uso su altro terminale." delimited size
-      *****                 into geslock-messaggio
-      *****        end-string
+              move "promoeva" to geslock-nome-file
+              initialize geslock-messaggio
+              string   "Il file delle quantità promo per evasione" 
+                x"0d0a""è in uso su altro terminale." delimited size
+                       into geslock-messaggio
+              end-string
 
               move 1 to no-msg
               set tutto-ok  to true
               set RecLocked to false
               open i-o promoeva allowing readers
-      *****        if RecLocked
-      *****           set errori to true
-      *****           move 1     to geslock-v-termina
-      *****           move 1     to geslock-v-riprova
-      *****           move 0     to geslock-v-ignora
-      *****           call   "geslock" using geslock-linkage
-      *****           cancel "geslock"
-      *****
-      *****           evaluate true
-      *****           when riprova continue
-      *****           when other   display message "Operazione interrotta!"
-      *****                                  title titolo
-      *****                                   icon 2
-      *****                        exit perform
-      *****           end-evaluate
-      *****        else
-      *****           exit perform
-      *****        end-if
+              if RecLocked
+                 set errori to true
+                 move 1     to geslock-v-termina
+                 move 1     to geslock-v-riprova
+                 move 0     to geslock-v-ignora
+                 call   "geslock" using geslock-linkage
+                 cancel "geslock"
+      
+                 evaluate true
+                 when riprova continue
+                 when other   display message "Operazione interrotta!"
+                                        title titolo
+                                         icon 2
+                              exit perform
+                 end-evaluate
+              else
+                 exit perform
+              end-if
            end-perform.            
            move 0 to no-msg 
            .
