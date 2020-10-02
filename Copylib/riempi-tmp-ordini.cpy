@@ -60,7 +60,6 @@ LUBEXX*****     end-start.
            if tutto-ok
               perform until 1 = 2
                  read tordini next at end exit perform end-read
-
                  add 1 to counter
                  add 1 to counter2
                  if counter2 = 100
@@ -132,7 +131,13 @@ LUBEXX*****           end-if
                     move tor-causale to tca-codice
                     read tcaumag no lock invalid continue end-read
                     if tca-cliente
-                       perform LOOP-RORDINI
+                       if como-age-codice = 0
+                          perform LOOP-RORDINI
+                       else
+                          if como-age-codice = tor-cod-agente
+                             perform LOOP-RORDINI
+                          end-if
+                       end-if
                     end-if
                  end-if
               end-perform
@@ -159,12 +164,12 @@ LUBEXX*****           end-if
                  read articoli no lock
                       invalid set record-ok to false
                   not invalid
-                      if SaveArticolo not = 0 and
-                         SaveArticolo not = art-codice
+                      if como-art-codice not = 0 and
+                         como-art-codice not = art-codice
                          set record-ok to false
                       end-if
-                      if mar-codice not = 0 and
-                         mar-codice not = art-marca-prodotto
+                      if como-mar-codice not = 0 and
+                         como-mar-codice not = art-marca-prodotto
                          set record-ok  to false
                       end-if
                  end-read
@@ -210,6 +215,11 @@ OMAGGI              end-if
               read destini no lock
               move des-localita   to tmp-ord-localita
            end-if.
+           move tor-cod-agente    to age-codice tmp-ord-age.
+           read agenti no lock
+                invalid move "** NON TROVATO **" to age-ragsoc-1
+           end-read.
+           move age-ragsoc-1      to tmp-ord-age-d.
            move cli-tipo          to tmp-ord-cli-tipo tcl-codice.
            read ttipocli no lock invalid move spaces to tcl-descrizione.
            move tcl-descrizione   to tmp-ord-cli-tipo-d.
@@ -419,6 +429,8 @@ OMAGGI              end-if
                           into r-ragsoc
                    end-string
               end-read
+              move tmp-ord-age        to r-age
+              move tmp-ord-age-d      to r-age-d
               move tmp-ord-localita   to r-destino
               move tmp-ord-evasione   to r-evasione
               move tmp-ord-data-movim to como-data
@@ -457,6 +469,10 @@ OMAGGI              end-if
                         "Ragione Sociale"   delimited size
                         separatore          delimited size
                         "Destinazione"      delimited size
+                        separatore          delimited size  
+                        "Agente"            delimited size
+                        separatore          delimited size
+                        "Ragione Sociale"   delimited size
                         separatore          delimited size
                         "Data Ordine"       delimited size
                         separatore          delimited size
@@ -500,6 +516,10 @@ OMAGGI              end-if
                      r-ragsoc   delimited size
                      separatore delimited size
                      r-destino  delimited size
+                     separatore delimited size 
+                     r-age      delimited size
+                     separatore delimited size
+                     r-age-d    delimited size
                      separatore delimited size
                      r-data-mov delimited size
                      separatore delimited size

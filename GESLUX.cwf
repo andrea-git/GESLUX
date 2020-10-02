@@ -2,6 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+ANDESK-andre=192.168.56.1
 
 
 [WORKSPACE_CONTENT]
@@ -98952,6 +98953,16 @@ FOLDER_NAME=FD
 OWNER_PATH=FD\macrobatch.clf
 ATTRIBUTE=0
 
+[FILE_CONTENT-SHI:FILE208]
+RELATIVE_PATH=FD\listini.sl
+FOLDER_NAME=FD
+OWNER_PATH=SHI\SOURCE\SHI-EXPORDINI.CBL
+
+[FILE_CONTENT-SHI:FILE209]
+RELATIVE_PATH=FD\listini.fd
+FOLDER_NAME=FD
+OWNER_PATH=SHI\SOURCE\SHI-EXPORDINI.CBL
+
 [PROJECT_COMPILE_SETTING-SHI:Debug Mode]
 ADDITIONAL_OPTIONS=-x -Di -Ga -Zd -Za -Zn -Zz
 ; Standard Options
@@ -99283,7 +99294,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-SHI:Debug Mode:SHI\SOURCE\SHI-EXPORDINI.CBL]
-COPY_DEPENDENCE=FD\paramSHI.sl;\Lubex\GESLUX\FD\tordini.sl;\Lubex\GESLUX\FD\mtordini.sl;\Lubex\GESLUX\FD\rordini.sl;\Lubex\GESLUX\FD\clienti.sl;\Lubex\GESLUX\FD\ttipocli.sl;\Lubex\GESLUX\FD\destini.sl;FD\tcaumag.sl;\Lubex\GESLUX\FD\tnazioni.sl;FD\articoli.sl;FD\art-exp-shi.sl;\Lubex\GESLUX\FD\tivaese.sl;FD\timbalqta.sl;\Lubex\GESLUX\FD\prodener.sl;\Lubex\GESLUX\FD\progmag.sl;FD\tmp-tordini-exp.sl;\Lubex\GESLUX\FD\fileseq.sl;FD\lineseq.sl;FD\paramSHI.fd;\Lubex\GESLUX\FD\tordini.fd;\Lubex\GESLUX\FD\mtordini.fd;\Lubex\GESLUX\FD\rordini.fd;\Lubex\GESLUX\FD\clienti.fd;\Lubex\GESLUX\FD\ttipocli.fd;\Lubex\GESLUX\FD\destini.fd;FD\tcaumag.fd;\Lubex\GESLUX\FD\tnazioni.fd;FD\articoli.fd;FD\art-exp-shi.fd;\Lubex\GESLUX\FD\tivaese.fd;FD\timbalqta.fd;\Lubex\GESLUX\FD\prodener.fd;\Lubex\GESLUX\FD\progmag.fd;FD\tmp-tordini-exp.fd;\Lubex\GESLUX\FD\fileseq.fd;Copylib\exp-ws.def;Copylib\exparticoli.def;Copylib\link-exp.def;Copylib\link-expordini.def;Copylib\exp-procedure.cpy;Copylib\exparticoli-procedure.cpy
+COPY_DEPENDENCE=FD\paramSHI.sl;\Lubex\GESLUX\FD\tordini.sl;\Lubex\GESLUX\FD\mtordini.sl;\Lubex\GESLUX\FD\rordini.sl;\Lubex\GESLUX\FD\clienti.sl;\Lubex\GESLUX\FD\ttipocli.sl;\Lubex\GESLUX\FD\destini.sl;FD\tcaumag.sl;\Lubex\GESLUX\FD\tnazioni.sl;FD\articoli.sl;FD\art-exp-shi.sl;\Lubex\GESLUX\FD\tivaese.sl;FD\timbalqta.sl;\Lubex\GESLUX\FD\prodener.sl;\Lubex\GESLUX\FD\progmag.sl;FD\tmp-tordini-exp.sl;\Lubex\GESLUX\FD\listini.sl;\Lubex\GESLUX\FD\fileseq.sl;FD\lineseq.sl;FD\paramSHI.fd;\Lubex\GESLUX\FD\tordini.fd;\Lubex\GESLUX\FD\mtordini.fd;\Lubex\GESLUX\FD\rordini.fd;\Lubex\GESLUX\FD\clienti.fd;\Lubex\GESLUX\FD\ttipocli.fd;\Lubex\GESLUX\FD\destini.fd;FD\tcaumag.fd;\Lubex\GESLUX\FD\tnazioni.fd;FD\articoli.fd;FD\art-exp-shi.fd;\Lubex\GESLUX\FD\tivaese.fd;FD\timbalqta.fd;\Lubex\GESLUX\FD\prodener.fd;\Lubex\GESLUX\FD\progmag.fd;FD\tmp-tordini-exp.fd;\Lubex\GESLUX\FD\listini.fd;\Lubex\GESLUX\FD\fileseq.fd;Copylib\exp-ws.def;Copylib\exparticoli.def;Copylib\link-exp.def;Copylib\link-expordini.def;Copylib\exp-procedure.cpy;Copylib\exparticoli-procedure.cpy
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu

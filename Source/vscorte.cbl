@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          vscorte.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        lunedì 24 settembre 2018 21:32:03.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        sabato 3 ottobre 2020 00:07:34.
        REMARKS.
       *{TOTEM}END
 
@@ -39,6 +39,7 @@
            COPY "tmp-ordini.sl".
            COPY "tcodpag.sl".
            COPY "ttipocli.sl".
+           COPY "agenti.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -55,6 +56,7 @@
            COPY "tmp-ordini.fd".
            COPY "tcodpag.fd".
            COPY "ttipocli.fd".
+           COPY "agenti.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -65,7 +67,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -132,7 +134,6 @@
        77 form2-Handle
                   USAGE IS HANDLE OF WINDOW.
        77 como-riga        PIC  9(6).
-       77 SaveArticolo     PIC  9(5).
        77 num-imballi      PIC  s9(10)v9.
        77 como-data-to     PIC  9(8).
        77 como-data-from   PIC  9(8).
@@ -274,6 +275,9 @@
        77 Form4-Handle
                   USAGE IS HANDLE OF WINDOW.
        77 numero-edit      PIC  z(8).
+       77 como-mar-codice  PIC  9(4).
+       77 como-art-codice  PIC  9(6).
+       77 como-age-codice  PIC  9(5).
        77 ESCI-73X21-BMP   PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
@@ -286,6 +290,8 @@
            05 r-codice         PIC  z(5).
            05 r-ragsoc         PIC  x(80).
            05 r-destino        PIC  x(40).
+           05 r-age            PIC  z(5).
+           05 r-age-d          PIC  x(40).
            05 r-data-mov       PIC  99/99/9999.
            05 r-evasione       PIC  z(8).
            05 r-numdoc         PIC  z(8).
@@ -349,6 +355,8 @@
        77 lab-tot-piombo-buf           PIC  zzz.zzz.zz9,99.
        77 STATUS-ttipocli  PIC  X(2).
            88 Valid-STATUS-ttipocli VALUE IS "00" THRU "09". 
+       77 STATUS-agenti    PIC  X(2).
+           88 Valid-STATUS-agenti VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -364,6 +372,8 @@
       * DATA CONTROL BUFFER
        01 Form1-BUF.
       * Data.Entry-Field
+              05 ef-age-BUF PIC z(5).
+      * Data.Entry-Field
               05 ef-marca-BUF PIC z(4).
       * Data.Entry-Field
               05 ef-art-BUF PIC z(6).
@@ -371,6 +381,8 @@
               05 lab-marca-BUF PIC X(30).
       * Data.Label
               05 lab-art-BUF PIC X(50).
+      * Data.Label
+              05 lab-age-BUF PIC X(40).
 
        77 STATUS-form3-FLAG-REFRESH PIC  9.
           88 form3-FLAG-REFRESH  VALUE 1 FALSE 0. 
@@ -403,7 +415,7 @@
       * Data.Label
               05 lab-cli-BUF PIC X(40).
       * Data.Label
-              05 lab-destino-BUF PIC X(40).
+              05 lab-destino-BUF PIC x(100).
 
        77 TMP-form4-KEY1-ORDER  PIC X VALUE "A".
        77 TMP-form4-tordini-RESTOREBUF  PIC X(3898).
@@ -412,15 +424,16 @@
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-tmarche-BUF     PIC X(217).
        77 TMP-DataSet1-clienti-BUF     PIC X(1910).
-       77 TMP-DataSet1-destini-BUF     PIC X(3386).
+       77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-tcaumag-BUF     PIC X(254).
-       77 TMP-DataSet1-lineseq-BUF     PIC X(900).
+       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-tordini-BUF     PIC X(3898).
        77 TMP-DataSet1-rordini-BUF     PIC X(667).
-       77 TMP-DataSet1-tmp-ordini-BUF     PIC X(447).
+       77 TMP-DataSet1-tmp-ordini-BUF     PIC X(490).
        77 TMP-DataSet1-tcodpag-BUF     PIC X(1380).
        77 TMP-DataSet1-ttipocli-BUF     PIC X(889).
+       77 TMP-DataSet1-agenti-BUF     PIC X(1233).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -486,13 +499,18 @@
        77 DataSet1-ttipocli-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-ttipocli-KEY-Asc  VALUE "A".
           88 DataSet1-ttipocli-KEY-Desc VALUE "D".
+       77 DataSet1-agenti-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-agenti-LOCK  VALUE "Y".
+       77 DataSet1-agenti-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-agenti-KEY-Asc  VALUE "A".
+          88 DataSet1-agenti-KEY-Desc VALUE "D".
 
        77 articoli-art-k1-SPLITBUF  PIC X(51).
        77 articoli-art-k-frn-SPLITBUF  PIC X(16).
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
        77 clienti-cli-K4-SPLITBUF  PIC X(8).
-       77 destini-K1-SPLITBUF  PIC X(51).
+       77 destini-K1-SPLITBUF  PIC X(111).
        77 destini-k-localita-SPLITBUF  PIC X(36).
        77 tcaumag-k-mag-SPLITBUF  PIC X(5).
        77 tordini-k-causale-SPLITBUF  PIC X(17).
@@ -519,6 +537,7 @@
        77 rordini-ror-k-articolo-SPLITBUF  PIC X(24).
        77 rordini-ror-k-master-SPLITBUF  PIC X(35).
        77 rordini-ror-k-stbolle-SPLITBUF  PIC X(30).
+       77 rordini-ror-k-ord-art-SPLITBUF  PIC X(19).
        77 tcodpag-TBL-CODICE-01-SPLITBUF  PIC X(53).
 
       *{TOTEM}END
@@ -527,9 +546,10 @@
       ***** Elenco ID Logici *****
        78  78-ID-ef-data-from VALUE 5001.
        78  78-ID-ef-data-to VALUE 5002.
-       78  78-ID-ef-marca VALUE 5003.
-       78  78-ID-ef-art VALUE 5004.
-       78  78-ID-cbo-tipo-ord VALUE 5005.
+       78  78-ID-ef-age VALUE 5003.
+       78  78-ID-ef-marca VALUE 5004.
+       78  78-ID-ef-art VALUE 5005.
+       78  78-ID-cbo-tipo-ord VALUE 5006.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -1065,13 +1085,11 @@
            Frame, 
            COL 1,70, 
            LINE 1,33,
-           LINES 14,78 ,
+           LINES 16,78 ,
            SIZE 44,60 ,
-           RAISED,
            ID IS 9,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           VERY-HEAVY,
            TITLE "Selezione limiti",
            TITLE-POSITION 2,
            .
@@ -1141,10 +1159,28 @@
            .
       * ENTRY FIELD
        05
+           ef-age, 
+           Entry-Field, 
+           COL 10,70, 
+           LINE 5,05,
+           LINES 1,33 ,
+           SIZE 7,00 ,
+           BOXED,
+           COLOR IS 513,
+           ID IS 78-ID-ef-age,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           MAX-TEXT 5,
+           VALUE ef-age-BUF,
+           .
+
+      * ENTRY FIELD
+       05
            ef-marca, 
            Entry-Field, 
            COL 10,70, 
-           LINE 5,33,
+           LINE 7,00,
            LINES 1,33 ,
            SIZE 7,00 ,
            BOXED,
@@ -1162,7 +1198,7 @@
            ef-art, 
            Entry-Field, 
            COL 10,70, 
-           LINE 7,33,
+           LINE 9,00,
            LINES 1,33 ,
            SIZE 7,00 ,
            BOXED,
@@ -1254,7 +1290,7 @@
            Screen4-La-3, 
            Label, 
            COL 3,70, 
-           LINE 5,33,
+           LINE 7,00,
            LINES 1,33 ,
            SIZE 7,00 ,
            ID IS 16,
@@ -1269,7 +1305,7 @@
            Screen4-La-4, 
            Label, 
            COL 3,70, 
-           LINE 7,33,
+           LINE 9,00,
            LINES 1,33 ,
            SIZE 7,00 ,
            ID IS 18,
@@ -1284,7 +1320,7 @@
            lab-marca, 
            Label, 
            COL 18,70, 
-           LINE 5,33,
+           LINE 7,00,
            LINES 2,00 ,
            SIZE 26,00 ,
            COLOR IS 5,
@@ -1300,7 +1336,7 @@
            lab-art, 
            Label, 
            COL 18,70, 
-           LINE 7,33,
+           LINE 9,00,
            LINES 2,00 ,
            SIZE 26,00 ,
            COLOR IS 5,
@@ -1316,7 +1352,7 @@
            Screen4-La-1, 
            Label, 
            COL 9,50, 
-           LINE 9,83,
+           LINE 11,50,
            LINES 1,00 ,
            SIZE 29,00 ,
            ID IS 4,
@@ -1332,7 +1368,7 @@
            cbo-tipo-ord, 
            Combo-Box, 
            COL 8,00, 
-           LINE 11,33,
+           LINE 13,22,
            LINES 4,00 ,
            SIZE 32,00 ,
            BOXED,
@@ -1345,15 +1381,45 @@
            UNSORTED,
            AFTER PROCEDURE Screen4-Cm-1-AfterProcedure, 
            .
+      * LABEL
+       05
+           Screen4-La-3a, 
+           Label, 
+           COL 3,70, 
+           LINE 5,05,
+           LINES 1,33 ,
+           SIZE 7,00 ,
+           ID IS 16,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Agente",
+           .
+
+      * DB_LABEL
+       05
+           lab-age, 
+           Label, 
+           COL 18,70, 
+           LINE 5,05,
+           LINES 2,00 ,
+           SIZE 26,00 ,
+           COLOR IS 5,
+           ID IS 21,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE lab-age-BUF,
+           TRANSPARENT,
+           .
+
       * FRAME
        05
            Screen4-Fr-1, 
            Frame, 
            COL 1,00, 
-           LINE 16,22,
-           LINES 2,78 ,
+           LINE 18,44,
+           LINES 2,83 ,
            SIZE 46,00 ,
-           LOWERED,
            ID IS 23,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -1364,7 +1430,7 @@
            pb-ok, 
            Push-Button, 
            COL 30,90, 
-           LINE 16,91,
+           LINE 19,13,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-OK-BMP,
@@ -1383,7 +1449,7 @@
            pb-annulla, 
            Push-Button, 
            COL 38,80, 
-           LINE 16,91,
+           LINE 19,13,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-CANCEL-BMP,
@@ -2390,6 +2456,7 @@
       *    PERFORM OPEN-tmp-ordini
            PERFORM OPEN-tcodpag
            PERFORM OPEN-ttipocli
+           PERFORM OPEN-agenti
       *    After Open
            .
 
@@ -2537,6 +2604,18 @@
       * <TOTEM:END>
            .
 
+       OPEN-agenti.
+      * <TOTEM:EPT. INIT:vscorte, FD:agenti, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT agenti
+           IF NOT Valid-STATUS-agenti
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:vscorte, FD:agenti, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-articoli
@@ -2552,6 +2631,7 @@
            PERFORM CLOSE-tmp-ordini
            PERFORM CLOSE-tcodpag
            PERFORM CLOSE-ttipocli
+           PERFORM CLOSE-agenti
       *    After Close
            .
 
@@ -2623,6 +2703,12 @@
       * <TOTEM:EPT. INIT:vscorte, FD:ttipocli, BeforeClose>
       * <TOTEM:END>
            CLOSE ttipocli
+           .
+
+       CLOSE-agenti.
+      * <TOTEM:EPT. INIT:vscorte, FD:agenti, BeforeClose>
+      * <TOTEM:END>
+           CLOSE agenti
            .
 
        articoli-art-k1-MERGE-SPLITBUF.
@@ -3140,9 +3226,9 @@
 
        destini-K1-MERGE-SPLITBUF.
            INITIALIZE destini-K1-SPLITBUF
-           MOVE des-ragsoc-1(1:40) TO destini-K1-SPLITBUF(1:40)
-           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(41:5)
-           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(46:5)
+           MOVE des-ragsoc-1(1:100) TO destini-K1-SPLITBUF(1:100)
+           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(101:5)
+           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(106:5)
            .
 
        destini-k-localita-MERGE-SPLITBUF.
@@ -4159,6 +4245,16 @@
            rordini-ror-k-stbolle-SPLITBUF(13:17)
            .
 
+       rordini-ror-k-ord-art-MERGE-SPLITBUF.
+           INITIALIZE rordini-ror-k-ord-art-SPLITBUF
+           MOVE ror-anno OF rordini(1:4) TO 
+           rordini-ror-k-ord-art-SPLITBUF(1:4)
+           MOVE ror-num-ordine OF rordini(1:8) TO 
+           rordini-ror-k-ord-art-SPLITBUF(5:8)
+           MOVE ror-cod-articolo OF rordini(1:6) TO 
+           rordini-ror-k-ord-art-SPLITBUF(13:6)
+           .
+
        DataSet1-rordini-INITSTART.
            IF DataSet1-rordini-KEY-Asc
               MOVE Low-Value TO ror-chiave of rordini
@@ -4224,6 +4320,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT 
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -4255,6 +4352,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -4286,6 +4384,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -4759,6 +4858,160 @@
       * <TOTEM:END>
            .
 
+       DataSet1-agenti-INITSTART.
+           IF DataSet1-agenti-KEY-Asc
+              MOVE Low-Value TO age-chiave
+           ELSE
+              MOVE High-Value TO age-chiave
+           END-IF
+           .
+
+       DataSet1-agenti-INITEND.
+           IF DataSet1-agenti-KEY-Asc
+              MOVE High-Value TO age-chiave
+           ELSE
+              MOVE Low-Value TO age-chiave
+           END-IF
+           .
+
+      * agenti
+       DataSet1-agenti-START.
+           IF DataSet1-agenti-KEY-Asc
+              START agenti KEY >= age-chiave
+           ELSE
+              START agenti KEY <= age-chiave
+           END-IF
+           .
+
+       DataSet1-agenti-START-NOTGREATER.
+           IF DataSet1-agenti-KEY-Asc
+              START agenti KEY <= age-chiave
+           ELSE
+              START agenti KEY >= age-chiave
+           END-IF
+           .
+
+       DataSet1-agenti-START-GREATER.
+           IF DataSet1-agenti-KEY-Asc
+              START agenti KEY > age-chiave
+           ELSE
+              START agenti KEY < age-chiave
+           END-IF
+           .
+
+       DataSet1-agenti-START-LESS.
+           IF DataSet1-agenti-KEY-Asc
+              START agenti KEY < age-chiave
+           ELSE
+              START agenti KEY > age-chiave
+           END-IF
+           .
+
+       DataSet1-agenti-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-agenti-LOCK
+              READ agenti WITH LOCK 
+              KEY age-chiave
+           ELSE
+              READ agenti WITH NO LOCK 
+              KEY age-chiave
+           END-IF
+           MOVE STATUS-agenti TO TOTEM-ERR-STAT 
+           MOVE "agenti" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-agenti-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-agenti-KEY-Asc
+              IF DataSet1-agenti-LOCK
+                 READ agenti NEXT WITH LOCK
+              ELSE
+                 READ agenti NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-agenti-LOCK
+                 READ agenti PREVIOUS WITH LOCK
+              ELSE
+                 READ agenti PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-agenti TO TOTEM-ERR-STAT
+           MOVE "agenti" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-agenti-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-agenti-KEY-Asc
+              IF DataSet1-agenti-LOCK
+                 READ agenti PREVIOUS WITH LOCK
+              ELSE
+                 READ agenti PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-agenti-LOCK
+                 READ agenti NEXT WITH LOCK
+              ELSE
+                 READ agenti NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-agenti TO TOTEM-ERR-STAT
+           MOVE "agenti" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-agenti-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-agenti TO TOTEM-ERR-STAT
+           MOVE "agenti" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-agenti-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-agenti TO TOTEM-ERR-STAT
+           MOVE "agenti" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-agenti-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-agenti TO TOTEM-ERR-STAT
+           MOVE "agenti" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE art-rec OF articoli
            INITIALIZE mar-rec OF tmarche
@@ -4772,6 +5025,7 @@
            INITIALIZE tmp-ord-rec OF tmp-ordini
            INITIALIZE record-tblpa OF tcodpag
            INITIALIZE tcl-rec OF ttipocli
+           INITIALIZE age-rec OF agenti
            .
 
 
@@ -4941,6 +5195,14 @@
       * FD's Initialize Paragraph
        DataSet1-ttipocli-INITREC.
            INITIALIZE tcl-rec OF ttipocli
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-agenti-INITREC.
+           INITIALIZE age-rec OF agenti
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -5478,7 +5740,7 @@
 
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 18,00,
+              LINES 20,28,
               SIZE 46,00,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
@@ -5532,8 +5794,9 @@
                          move como-data to ef-data-to-buf
            end-read.
 
-           move "0 = Tutte le marche"    to lab-marca-buf.
+           move "0 = Tutte le marche"    to lab-marca-buf.  
            move "0 = Tutti gli articoli" to lab-art-buf.
+           move "0 = Tutti gli agenti"   to lab-age-buf.
 
            display Form1.
 
@@ -5631,12 +5894,20 @@
       * for Form's Validation
        Form1-VALIDATION-ROUTINE.
            SET TOTEM-CHECK-OK TO TRUE
+      * ef-age's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-age-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 5003 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
       * ef-marca's Validation
            SET TOTEM-CHECK-OK TO FALSE
            PERFORM ef-marca-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5003 TO CONTROL-ID
+               MOVE 5004 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-art's Validation
@@ -5644,9 +5915,26 @@
            PERFORM ef-art-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5004 TO CONTROL-ID
+               MOVE 5005 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
+           .
+
+       ef-age-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-age, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-age-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-age, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-age's Validation
+       ef-age-VALIDATION.
+           PERFORM ef-age-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-age-AFTER-VALIDATION
            .
 
        ef-marca-BEFORE-VALIDATION.
@@ -5687,6 +5975,8 @@
        Form1-Buf-To-Fld.
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforeBufToFld>
       * <TOTEM:END>
+      * DB_Entry-Field : ef-age
+           MOVE ef-age-BUF TO age-codice
       * DB_Entry-Field : ef-marca
            MOVE ef-marca-BUF TO mar-codice
       * DB_Entry-Field : ef-art
@@ -5698,6 +5988,8 @@
        Form1-Fld-To-Buf.
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforeFldToBuf>
       * <TOTEM:END>
+      * DB_Entry-Field : ef-age
+           MOVE age-codice TO ef-age-BUF
       * DB_Entry-Field : ef-marca
            MOVE mar-codice TO ef-marca-BUF
       * DB_Entry-Field : ef-art
@@ -5706,6 +5998,8 @@
               MOVE mar-descrizione  TO lab-marca-BUF
       * DB_LABEL : lab-art
               MOVE art-descrizione  TO lab-art-BUF
+      * DB_LABEL : lab-age
+              MOVE age-ragsoc-1  TO lab-age-BUF
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterFldToBuf>
       * <TOTEM:END>
            .
@@ -5748,6 +6042,10 @@
       ***---
        Form1-BEFORE-SCREEN.
            evaluate control-id
+           |78-ID-ef-age è l'ID del campo ef-age
+           when 78-ID-ef-age
+                move 1 to StatusHelp
+                perform STATUS-HELP
            |78-ID-ef-marca è l'ID del campo ef-marca
            when 78-ID-ef-marca
                 move 1 to StatusHelp
@@ -5769,6 +6067,11 @@
       ***---
        Form1-AFTER-SCREEN.
            evaluate control-id
+           |78-ID-ef-age è l'ID del campo ef-age
+           when 78-ID-ef-age
+                move 0 to StatusHelp
+                perform STATUS-HELP
+
            |78-ID-ef-marca è l'ID del campo ef-marca
            when 78-ID-ef-marca
                 move 0 to StatusHelp
@@ -5795,6 +6098,9 @@
                 perform CONTROLLO
            |78-ID-ef-data-to è l'ID del campo ef-data-to
            when 78-ID-ef-data-to
+                perform CONTROLLO
+           |78-ID-ef-age è l'ID del campo ef-age
+           when 78-ID-ef-age
                 perform CONTROLLO
            |78-ID-ef-marca è l'ID del campo ef-marca
            when 78-ID-ef-marca
@@ -5852,8 +6158,9 @@
        form3-PROC.
       * <TOTEM:EPT. FORM:form3, FORM:form3, BeforeAccept>
            call "w$mouse"    using SET-MOUSE-SHAPE, WAIT-POINTER
-           inquire ef-marca, value in mar-codice.
-           inquire ef-art,   value in art-codice.
+           inquire ef-marca, value in como-mar-codice.
+           inquire ef-art,   value in como-art-codice.
+           inquire ef-age,   value in como-age-codice.
            perform RIEMPI-TMP.
 
            call "w$mouse" using SET-MOUSE-SHAPE, ARROW-POINTER.
@@ -6819,12 +7126,14 @@
            WHEN 5003 MOVE "." to TOTEM-HINT-TEXT
            WHEN 5004 MOVE "." to TOTEM-HINT-TEXT
            WHEN 5005 MOVE "." to TOTEM-HINT-TEXT
+           WHEN 5006 MOVE "." to TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
            EVALUATE Control-Id
            When 5003 PERFORM ef-marca-BeforeProcedure
-           When 5004 PERFORM ef-art-BeforeProcedure
-           When 5005 PERFORM Screen4-Cm-1-BeforeProcedure
+           When 5004 PERFORM ef-marca-BeforeProcedure
+           When 5005 PERFORM ef-art-BeforeProcedure
+           When 5006 PERFORM Screen4-Cm-1-BeforeProcedure
            END-EVALUATE
            perform Form1-BEFORE-SCREEN
            .
@@ -6832,7 +7141,8 @@
        Form1-AfterProcedure.
            EVALUATE Control-Id
            When 5003 PERFORM ef-marca-AfterProcedure
-           When 5004 PERFORM ef-art-AfterProcedure
+           When 5004 PERFORM ef-marca-AfterProcedure
+           When 5005 PERFORM ef-art-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -6925,6 +7235,16 @@
                    modify ef-marca,   value mar-codice
                 end-if           
       *
+           when 78-ID-ef-age
+                inquire ef-age value age-codice
+                move "agenti"       to Como-File
+                call   "zoom-gt" using como-file, age-rec
+                                giving stato-zoom
+                cancel "zoom-gt"
+                if stato-zoom = ZERO  
+                   modify ef-age,   value age-codice
+                end-if           
+      *
            when 78-ID-ef-art                      
                 inquire ef-marca  value art-marca-prodotto
                 inquire ef-art    value art-codice
@@ -7004,6 +7324,24 @@
                 move mar-descrizione to lab-marca-buf
                 display lab-marca
       *                        
+           when 78-ID-ef-age
+                inquire ef-age,   value in age-codice
+                move spaces to age-ragsoc-1
+                if age-codice not = 0
+                   read agenti no lock
+                        invalid
+                        set errori to true
+                        display message"Inserimento agente NON valido"
+                                title = tit-err
+                                icon 2
+                        move 78-ID-ef-age to control-id 
+                   end-read
+                else
+                   move "Tutti gli agenti" to age-ragsoc-1
+                end-if     
+                move age-ragsoc-1 to lab-age-buf
+                display lab-age
+      *                        
            when 78-ID-ef-art
                 inquire ef-art,   value in art-codice
                 move spaces to art-descrizione
@@ -7035,7 +7373,6 @@
                 end-if     
                 move art-descrizione to lab-art-buf
                 display lab-art
-                move art-codice to SaveArticolo
       *               
            when 78-ID-cbo-tipo-ord
                 inquire cbo-tipo-ord, value in cbo-tipo-ord-buf
@@ -7329,6 +7666,12 @@ OMAGGI              perform AGGIUNGI-RIGA
       * <TOTEM:END>
        ef-marca-AfterProcedure.
       * <TOTEM:PARA. ef-marca-AfterProcedure>
+              INQUIRE ef-age, VALUE IN age-codice
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-age-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
               INQUIRE ef-marca, VALUE IN mar-codice
               SET TOTEM-CHECK-OK TO FALSE
               PERFORM ef-marca-VALIDATION

@@ -23,6 +23,7 @@
            copy "prodener.sl".
            copy "progmag.sl".
            copy "tmp-tordini-exp.sl".
+           copy "listini.sl".
 
            copy "fileseq.sl".
 
@@ -75,7 +76,8 @@
            copy "timbalqta.fd".
            copy "prodener.fd".
            copy "progmag.fd".
-           copy "tmp-tordini-exp.fd".
+           copy "tmp-tordini-exp.fd".   
+           copy "listini.fd".
 
            copy "fileseq.fd".
        FD  lineseq.
@@ -118,6 +120,7 @@
        77  status-progmag       pic xx.
        77  status-riepilogo-c   pic xx.
        77  status-tmp-tordini-exp  pic xx.  
+       77  status-listini       pic xx.
 
        77  status-lineseq       pic xx.
        77  status-lineseq2      pic xx.
@@ -744,6 +747,26 @@
                 perform SCRIVI-ERORRE
            end-evaluate.
 
+      ***---
+       LISTINI-ERR SECTION.
+           use after error procedure on listini.
+           set tutto-ok  to true.
+           evaluate status-listini
+           when "35"
+                move "Impossibile procedere. File [LISTINI] inesistente"
+                       to como-messaggio
+                set errore-bloccante  to true
+                perform SCRIVI-ERORRE
+           when "39"
+                move "File [LISTINI] Mismatch size!" to como-messaggio
+                set errore-bloccante  to true
+                perform SCRIVI-ERORRE
+           when "98"
+                move "[LISTINI] Indexed file corrupt!" to como-messaggio
+                set errore-bloccante  to true
+                perform SCRIVI-ERORRE
+           end-evaluate.
+
        END DECLARATIVES.
 
       ***--- 
@@ -868,6 +891,7 @@
            open input prodener.
            open input progmag.
            open input ttipocli.
+           open input listini.
 
            open output tmp-tordini-exp
            close       tmp-tordini-exp
@@ -1067,6 +1091,8 @@
            move tor-cod-cli     to cli-codice
            set cli-tipo-C       to true
            read clienti invalid continue end-read.
+           move cli-tipo to tcl-codice.
+           read ttipocli no lock invalid continue end-read.
 
            if tor-prg-destino = 0
               move cli-ragsoc-1  to des-ragsoc-1
@@ -1269,7 +1295,24 @@
            end-if.
 
            move ror-prg-peso    to HUSCRIG_PESO.
+           
            move space           to HUSCRIG_UDF8.
+           if tcl-gdo-si
+              move cli-gdo              to lst-gdo
+              move ror-prg-cod-articolo to lst-articolo
+              move tor-data-ordine      to lst-data
+              start listini key <= lst-k-articolo
+                    invalid continue
+                not invalid
+                    read listini previous
+                    if lst-gdo      = cli-gdo              and
+                       lst-articolo = ror-prg-cod-articolo and
+                       lst-data    <= tor-data-ordine
+                       move lst-cod-art-cli to HUSCRIG_UDF8
+                    end-if
+              end-start
+           end-if.
+
            move space           to HUSCRIG_UDF9.
            move space           to HUSCRIG_UDF10.
            move space           to HUSCRIG_SEQ_ELAB.
@@ -1426,6 +1469,7 @@
            close progmag.
            close tmp-tordini-exp.
            close ttipocli.
+           close listini.
   
       ***---
        VALIDA-ORDINE.

@@ -8,6 +8,10 @@
            when 78-ID-ef-data-to
                 inquire ef-data-to, value in ef-data-to-buf
 
+           |78-ID-ef-age è l'ID del control ef-age
+           when 78-ID-ef-age
+                inquire ef-age, value in ef-age-buf
+
            |78-ID-ef-marca è l'ID del control ef-marca
            when 78-ID-ef-marca
                 inquire ef-marca, value in ef-marca-buf
