@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 27 maggio 2020 12:36:26.
+       DATE-WRITTEN.        venerdì 2 ottobre 2020 23:14:48.
        REMARKS.
       *{TOTEM}END
 
@@ -655,7 +655,7 @@
        77 TMP-DataSet1-tparameva-BUF     PIC X(810).
        77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
        77 TMP-DataSet1-clienti-BUF     PIC X(1910).
-       77 TMP-DataSet1-destini-BUF     PIC X(3386).
+       77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-mrordini-BUF     PIC X(891).
        77 TMP-DataSet1-mtordini-BUF     PIC X(2122).
        77 TMP-DataSet1-tmp-k-mtordini-BUF     PIC X(31).
@@ -684,7 +684,7 @@
        77 TMP-DataSet1-timposte-BUF     PIC X(717).
        77 TMP-DataSet1-tmp-tevacli-BUF     PIC X(31866).
        77 TMP-DataSet1-param-BUF     PIC X(980).
-       77 TMP-DataSet1-lineseq-BUF     PIC X(900).
+       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-multigest-BUF     PIC X(3).
        77 TMP-DataSet1-rpromo-BUF     PIC X(209).
        77 TMP-DataSet1-tmarche-BUF     PIC X(217).
@@ -913,7 +913,7 @@
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
        77 clienti-cli-K4-SPLITBUF  PIC X(8).
-       77 destini-K1-SPLITBUF  PIC X(51).
+       77 destini-K1-SPLITBUF  PIC X(111).
        77 destini-k-localita-SPLITBUF  PIC X(36).
        77 mrordini-mro-k-promo-SPLITBUF  PIC X(33).
        77 mrordini-mro-k-articolo-SPLITBUF  PIC X(24).
@@ -4314,9 +4314,9 @@
 
        destini-K1-MERGE-SPLITBUF.
            INITIALIZE destini-K1-SPLITBUF
-           MOVE des-ragsoc-1(1:40) TO destini-K1-SPLITBUF(1:40)
-           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(41:5)
-           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(46:5)
+           MOVE des-ragsoc-1(1:100) TO destini-K1-SPLITBUF(1:100)
+           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(101:5)
+           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(106:5)
            .
 
        destini-k-localita-MERGE-SPLITBUF.
@@ -12884,8 +12884,10 @@
            if not RichiamoBatch
               move 1 to video-on
               modify scr-elab-tprev-handle, visible video-on
-           end-if.
-           move user-codi             to link-tprev-user.
+              move user-codi             to link-tprev-user
+           else
+              move "MACROBATCH" to link-tprev-user
+           end-if.            
            move scr-elab-tprev-handle to link-tprev-handle.
            call   "tprev-p"  using tprev-linkage.
            cancel "tprev-p".

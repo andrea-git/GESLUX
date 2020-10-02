@@ -49,6 +49,9 @@
        78  78-clear              value 
            "                                                          ".
 
+       77  filler           pic 9 value 0.
+         88 FromMacrobatch  value 1, false 0.
+
        77  status-tpromo    pic xx.
        77  status-tpromo2   pic xx.
        77  status-rpromo    pic xx.
@@ -221,6 +224,9 @@
            call "C$CALLEDBY" using PgmChiamante.
            set  RecLocked to false.
            set  tutto-ok  to true.
+           if link-tprev-user = "MACROBATCH"
+              set FromMacroBatch to true
+           end-if.
            accept versione-evasione from environment "VERSIONE_EVASIONE"
            accept GdoInUsoFlag      from environment "GDO_IN_USO".
 
@@ -338,7 +344,8 @@
                        move tpr-gdo  to cli-gdo gdo-codice
                        read tgrupgdo no lock
                             invalid  
-                            if Pgmchiamante not = "ricaldin-bat"
+                            if Pgmchiamante not = "ricaldin-bat" and not
+                               FromMacroBatch
                                display message "Cancellare promo " 
                                                 tpr-codice 
                                          title titolo

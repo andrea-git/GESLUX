@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=aggmese-Ev-Before-Program
 AFTER_PROGRAM=evacli-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E491E85320-915-2013312933
+PROGRAM_UNIQUE_CODE=TOTEM-7E4A2205745-463-125429317
 
 {{@DESCRIPTION:
 
@@ -10076,8 +10076,10 @@ BEGIN-TEXT
            if not RichiamoBatch
               move 1 to video-on
               modify scr-elab-tprev-handle, visible video-on
-           end-if.
-           move user-codi             to link-tprev-user.
+              move user-codi             to link-tprev-user
+           else
+              move "MACROBATCH" to link-tprev-user
+           end-if.            
            move scr-elab-tprev-handle to link-tprev-handle.
            call   "tprev-p"  using tprev-linkage.
            cancel "tprev-p".
