@@ -3087,22 +3087,22 @@ LUBEXX           move col-iva        to col-cod-iva
            |Se ci sono righe non cambio più il cliente altrimenti
            |dovrei ricontrollare tutti i vari assoggettamenti sia
            |per le imposte che per l'addizionale piombo
-           inquire form1-gd-1, last-row in tot-righe.
-           if tot-righe > 1
-              if btno-data-fatt > 0          or
-                 btno-num-fatt  > 0          or  
-                 btno-data-fm   > 0          or  
-                 btno-num-fm    > 0          or  
-                 btno-data-nc   > 0          or  
-                 btno-num-nc    > 0
-                 modify ef-cli, read-only
-                 perform CANCELLA-COLORE
-                 move 78-ID-ef-des to control-id
-                 move 4            to accept-control
-              end-if
-           else
-              modify ef-cli, not read-only
-           end-if.
+      *****     inquire form1-gd-1, last-row in tot-righe.
+      *****     if tot-righe > 1
+      *****        if btno-data-fatt > 0          or
+      *****           btno-num-fatt  > 0          or  
+      *****           btno-data-fm   > 0          or  
+      *****           btno-num-fm    > 0          or  
+      *****           btno-data-nc   > 0          or  
+      *****           btno-num-nc    > 0
+      *****           modify ef-cli, read-only
+      *****           perform CANCELLA-COLORE
+      *****           move 78-ID-ef-des to control-id
+      *****           move 4            to accept-control
+      *****        end-if
+      *****     else
+      *****        modify ef-cli, not read-only
+      *****     end-if.
 
       ***---
        CONTROLLO-QUANTITA.
