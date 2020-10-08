@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordine.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 2 luglio 2020 12:53:07.
+       DATE-WRITTEN.        venerdì 9 ottobre 2020 00:45:52.
        REMARKS.
       *{TOTEM}END
 
@@ -330,7 +330,7 @@
       * Data.Label
               05 lab-loc-cli-BUF PIC X(35).
       * Data.Label
-              05 lab-des-BUF PIC X(40).
+              05 lab-des-BUF PIC x(100).
       * Data.Label
               05 lab-ind-des-BUF PIC X(40).
       * Data.Label
@@ -435,7 +435,7 @@
        77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
        77 TMP-DataSet1-tivaese-BUF     PIC X(1380).
        77 TMP-DataSet1-clienti-BUF     PIC X(1910).
-       77 TMP-DataSet1-destini-BUF     PIC X(3386).
+       77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-note-BUF     PIC X(284).
        77 TMP-DataSet1-tcodpag-BUF     PIC X(1380).
@@ -456,7 +456,7 @@
        77 TMP-DataSet1-zoom-tcaumag-BUF     PIC X(87).
        77 TMP-DataSet1-tpiombo-BUF     PIC X(739).
        77 TMP-DataSet1-lisagente-BUF     PIC X(245).
-       77 TMP-DataSet1-lineseq-BUF     PIC X(900).
+       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-blister-BUF     PIC X(2967).
        77 TMP-DataSet1-tordini-BUF     PIC X(3898).
        77 TMP-DataSet1-rordini-BUF     PIC X(667).
@@ -727,7 +727,7 @@
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
        77 clienti-cli-K4-SPLITBUF  PIC X(8).
-       77 destini-K1-SPLITBUF  PIC X(51).
+       77 destini-K1-SPLITBUF  PIC X(111).
        77 destini-k-localita-SPLITBUF  PIC X(36).
        77 articoli-art-k1-SPLITBUF  PIC X(51).
        77 articoli-art-k-frn-SPLITBUF  PIC X(16).
@@ -5852,9 +5852,9 @@
 
        destini-K1-MERGE-SPLITBUF.
            INITIALIZE destini-K1-SPLITBUF
-           MOVE des-ragsoc-1(1:40) TO destini-K1-SPLITBUF(1:40)
-           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(41:5)
-           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(46:5)
+           MOVE des-ragsoc-1(1:100) TO destini-K1-SPLITBUF(1:100)
+           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(101:5)
+           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(106:5)
            .
 
        destini-k-localita-MERGE-SPLITBUF.
@@ -16285,6 +16285,11 @@ PATCH       bitmap-number = BitmapNumSave.
 
       ***---
        CONTINUA-SALVATAGGIO.
+           |Rileggo il cliente per aggiornare il fido
+           inquire ef-cli, value in cli-codice.
+           set cli-tipo-C to true.
+           read clienti no lock.
+
            perform CONTROLLA-TOTALE-MAN.
            if tutto-ok
               if tcl-si-gestione-fido or cli-gestione-fido-si

@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4A1125040-92-189336167
+PROGRAM_UNIQUE_CODE=TOTEM-7E4A8224555-850-1511126208
 
 {{@DESCRIPTION:
 
@@ -14561,8 +14561,8 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Enable            = NONE
       Field Edited (Style) = 0
-      Field Edited Format = X(40)
-      Field Picture     = X(40)
+      Field Edited Format = x(100)
+      Field Picture     = x(100)
       Field Variable    = des-ragsoc-1
       File              = destini
       Font              = Small Font
@@ -23027,7 +23027,12 @@ PATCH       bitmap-number = BitmapNumSave.
                  |******
               end-if
               move 4 to accept-control
-           else
+           else                            
+              |Rileggo il cliente per aggiornare il fido
+              inquire ef-cli, value in cli-codice
+              set cli-tipo-C to true
+              read clienti no lock
+
               perform CONTROLLA-TOTALE-MAN
 
               if mto-cod-cli not = old-mto-cod-cli

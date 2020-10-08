@@ -8,7 +8,7 @@ MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ordine-Ev-Before-Program
 AFTER_PROGRAM=ordine-Ev-After-Program
 BEFORE_OPEN=ordine-Ev-Before-DSD-Open
-PROGRAM_UNIQUE_CODE=TOTEM-7E4729734-614-1612125976
+PROGRAM_UNIQUE_CODE=TOTEM-7E4A822346-991-139914157
 
 {{@DESCRIPTION:
 
@@ -13447,8 +13447,8 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Enable            = NONE
       Field Edited (Style) = 0
-      Field Edited Format = X(40)
-      Field Picture     = X(40)
+      Field Edited Format = x(100)
+      Field Picture     = x(100)
       Field Variable    = des-ragsoc-1
       File              = destini
       Font              = Small Font
@@ -20035,6 +20035,11 @@ PATCH       bitmap-number = BitmapNumSave.
 
       ***---
        CONTINUA-SALVATAGGIO.
+           |Rileggo il cliente per aggiornare il fido
+           inquire ef-cli, value in cli-codice.
+           set cli-tipo-C to true.
+           read clienti no lock.
+
            perform CONTROLLA-TOTALE-MAN.
            if tutto-ok
               if tcl-si-gestione-fido or cli-gestione-fido-si

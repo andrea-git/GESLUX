@@ -175,8 +175,7 @@
            open input paramshi.
            move space  to shi-codice
            read paramshi
-              invalid
-                 continue
+                invalid continue
            end-read
            close paramshi
            inspect shi-path-elab-exp 
@@ -201,14 +200,12 @@
            set cli-tipo-f to true
            move low-value to cli-codice.
            start clienti key is >= cli-chiave
-              invalid  
-                 set errori to true
+                 invalid set errori to true
            end-start.
            if tutto-ok
               perform until 1 = 2
                  read clienti next 
-                    at end       
-                       exit perform 
+                    at end exit perform 
                  end-read
                  if not cli-tipo-f
                     exit perform
@@ -258,13 +255,11 @@
                                 tlis-ini-val
                                 tlis-fine-val.
            start tlistini key not < tlis-chiave-ricerca
-              invalid
-                 continue
-              not invalid
+                 invalid continue
+             not invalid
                  perform until 1 = 2
                     read tlistini next
-                       at end
-                          exit perform
+                      at end exit perform
                     end-read
                     if cli-codice not = tlis-fornitore
                        exit perform
@@ -274,7 +269,6 @@
                     end-if
                  end-perform
            end-start.
-
 
       ***---
        GENERA-FILE.
