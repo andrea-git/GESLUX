@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-gpromo.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        venerdì 8 giugno 2018 14:30:14.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        venerdì 9 ottobre 2020 16:45:25.
        REMARKS.
       *{TOTEM}END
 
@@ -89,7 +89,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -120,6 +120,8 @@
        77 font-evidenzia-griglia
                   USAGE IS HANDLE OF FONT.
        77 imballi-ed       PIC  zz.zz9.
+       77 link-tpr-codice  PIC  9(15)
+                  VALUE IS 0.
        77 RigheIniziali    PIC  9(5)
                   VALUE IS 0.
        77 RigaVarDestino   PIC  9(3).
@@ -380,6 +382,12 @@
            88 Valid-STATUS-tsetinvio VALUE IS "00" THRU "09". 
        77 STATUS-tmarche   PIC  X(2).
            88 Valid-STATUS-tmarche VALUE IS "00" THRU "09". 
+       77 copia-base-bmp   PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       78 mod-copia VALUE IS 5000. 
+       77 e-copia          PIC  9
+                  VALUE IS 0.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -421,7 +429,7 @@
        77 Form1-MULKEY-TMPBUF   PIC X(263).
        77 STATUS-Screen1-FLAG-REFRESH PIC  9.
           88 Screen1-FLAG-REFRESH  VALUE 1 FALSE 0. 
-       77 TMP-DataSet1-destini-BUF     PIC X(3386).
+       77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-rpromo-BUF     PIC X(209).
        77 TMP-DataSet1-tgrupgdo-BUF     PIC X(1206).
@@ -432,8 +440,8 @@
        77 TMP-DataSet1-timposte-BUF     PIC X(717).
        77 TMP-DataSet1-timballi-BUF     PIC X(210).
        77 TMP-DataSet1-timbalqta-BUF     PIC X(167).
-       77 TMP-DataSet1-lineseq-BUF     PIC X(900).
-       77 TMP-DataSet1-lineseq1-BUF     PIC X(900).
+       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
+       77 TMP-DataSet1-lineseq1-BUF     PIC X(1000).
        77 TMP-DataSet1-blister-BUF     PIC X(2967).
        77 TMP-DataSet1-clienti-BUF     PIC X(1910).
        77 TMP-DataSet1-tsetinvio-BUF     PIC X(1023).
@@ -535,9 +543,10 @@
           88 DataSet1-tmarche-KEY-Asc  VALUE "A".
           88 DataSet1-tmarche-KEY-Desc VALUE "D".
 
-       77 destini-K1-SPLITBUF  PIC X(51).
+       77 destini-K1-SPLITBUF  PIC X(111).
        77 destini-k-localita-SPLITBUF  PIC X(36).
        77 articoli-art-k1-SPLITBUF  PIC X(51).
+       77 articoli-art-k-frn-SPLITBUF  PIC X(16).
        77 rpromo-k-stampa-SPLITBUF  PIC X(32).
        77 tgrupgdo-gdo-k-g2-SPLITBUF  PIC X(9).
        77 tpromo-tpr-chiave-ricerca-SPLITBUF  PIC X(22).
@@ -620,6 +629,30 @@
            RIGHT,
            MAX-TEXT 15,
            VALUE ef-codice-BUF,
+           .
+
+      * PUSH BUTTON
+       05
+           pb-copia, 
+           Push-Button, 
+           COL 147,00, 
+           LINE 1,00,
+           LINES 2,85 ,
+           SIZE 10,50 ,
+           BITMAP-HANDLE COPIA-BASE-BMP,
+           BITMAP-NUMBER 3,
+           UNFRAMED,
+           SQUARE,
+           ENABLED e-copia,
+           EXCEPTION-VALUE mod-copia,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 30,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE "Copia promo",
+           AFTER PROCEDURE pb-copia-AfterProcedure, 
+           BEFORE PROCEDURE pb-copia-BeforeProcedure, 
            .
 
       * ENTRY FIELD
@@ -1498,7 +1531,6 @@
            LINE 36,11,
            LINES 2,83 ,
            SIZE 66,80 ,
-           LOWERED,
            ID IS 29,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -1569,11 +1601,9 @@
            LINE 1,50,
            LINES 7,28 ,
            SIZE 65,10 ,
-           RAISED,
            ID IS 202,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           VERY-HEAVY,
            TITLE "Parametri",
            TITLE-POSITION 2,
            .
@@ -1981,6 +2011,7 @@
       * <TOTEM:EPT. INIT:lab-gpromo, INIT:lab-gpromo, BeforeDestroyResource>
       * <TOTEM:END>
            DESTROY Verdana12-Occidentale
+           CALL "w$bitmap" USING WBITMAP-DESTROY, COPIA-BASE-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, toolbar-bmp
            CALL "w$bitmap" USING WBITMAP-DESTROY, BOTTONE-OK-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, BOTTONE-CANCEL-BMP
@@ -2028,6 +2059,10 @@
            .
 
        INIT-BMP.
+      * pb-copia
+           COPY RESOURCE "COPIA-BASE.BMP".
+           CALL "w$bitmap" USING WBITMAP-LOAD "COPIA-BASE.BMP", 
+                   GIVING COPIA-BASE-BMP.
       * TOOL-ESCI
            COPY RESOURCE "toolbar.bmp".
            CALL "w$bitmap" USING WBITMAP-LOAD "toolbar.bmp", 
@@ -2455,9 +2490,9 @@
 
        destini-K1-MERGE-SPLITBUF.
            INITIALIZE destini-K1-SPLITBUF
-           MOVE des-ragsoc-1(1:40) TO destini-K1-SPLITBUF(1:40)
-           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(41:5)
-           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(46:5)
+           MOVE des-ragsoc-1(1:100) TO destini-K1-SPLITBUF(1:100)
+           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(101:5)
+           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(106:5)
            .
 
        destini-k-localita-MERGE-SPLITBUF.
@@ -2631,6 +2666,12 @@
            articoli-art-k1-SPLITBUF(1:50)
            .
 
+       articoli-art-k-frn-MERGE-SPLITBUF.
+           INITIALIZE articoli-art-k-frn-SPLITBUF
+           MOVE art-cod-art-frn OF articoli(1:15) TO 
+           articoli-art-k-frn-SPLITBUF(1:15)
+           .
+
        DataSet1-articoli-INITSTART.
            IF DataSet1-articoli-KEY-Asc
               MOVE Low-Value TO art-chiave OF articoli
@@ -2693,6 +2734,7 @@
               KEY art-chiave OF articoli
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT 
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -2721,6 +2763,7 @@
               END-IF
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -2749,6 +2792,7 @@
               END-IF
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -5813,6 +5857,8 @@
                  IF Event-Type = Cmd-Close
                     PERFORM Form1-Exit
                  END-IF
+              WHEN Key-Status = mod-copia
+                 PERFORM pb-copia-LinkTo
               WHEN Key-Status = 1000
                  PERFORM pb-blister-LinkTo
               WHEN Key-Status = 1003
@@ -7164,6 +7210,18 @@
               set Statusvisua to true
               perform STATUS-BAR-MSG
               modify TOOL-MODIFICA value = mod
+           end-if.         
+
+           if nuovo 
+              move 0 to e-copia
+           else
+              move mod to e-copia
+           end-if.
+
+           if e-copia = 0
+              modify pb-copia, bitmap-number = 3, enabled = e-copia
+           else
+              modify pb-copia, bitmap-number = 1, enabled = e-copia
            end-if 
            .
       * <TOTEM:END>
@@ -7801,6 +7859,18 @@
                     end-if
                  end-if
               end-if
+           end-if.       
+
+           if nuovo 
+              move 0 to e-copia
+           else
+              move mod to e-copia
+           end-if.
+
+           if e-copia = 0
+              modify pb-copia, bitmap-number = 3, enabled = e-copia
+           else
+              modify pb-copia, bitmap-number = 1, enabled = e-copia
            end-if 
            .
       * <TOTEM:END>
@@ -8050,6 +8120,18 @@
               perform CANCELLA-COLORE 
               modify tool-modifica, value mod     
               display form1
+           end-if.
+
+           if nuovo 
+              move 0 to e-copia
+           else
+              move mod to e-copia
+           end-if.
+
+           if e-copia = 0
+              modify pb-copia, bitmap-number = 3, enabled = e-copia
+           else
+              modify pb-copia, bitmap-number = 1, enabled = e-copia
            end-if 
            .
       * <TOTEM:END>
@@ -8071,7 +8153,11 @@
               perform STATUS-BAR-MSG  
               set nuovo to true
               modify chk-mail visible true
-              modify lab-mail visible true
+              modify lab-mail visible true  
+
+              move 0 to e-copia
+              modify pb-copia, bitmap-number = 3, enabled = e-copia
+
            end-if 
            .
       * <TOTEM:END>
@@ -8526,7 +8612,19 @@
            set StoSalvando to false.
 
            modify chk-mail visible false.
-           modify lab-mail visible false 
+           modify lab-mail visible false.      
+
+           if nuovo 
+              move 0 to e-copia
+           else
+              move mod to e-copia
+           end-if.
+
+           if e-copia = 0
+              modify pb-copia, bitmap-number = 3, enabled = e-copia
+           else
+              modify pb-copia, bitmap-number = 1, enabled = e-copia
+           end-if 
            .
       * <TOTEM:END>
 
@@ -10019,6 +10117,38 @@
        Screen1-Cb-1-AfterProcedure.
       * <TOTEM:PARA. Screen1-Cb-1-AfterProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       pb-copia-BeforeProcedure.
+      * <TOTEM:PARA. pb-copia-BeforeProcedure>
+           modify pb-copia, bitmap-number = 2 
+           .
+      * <TOTEM:END>
+       pb-copia-AfterProcedure.
+      * <TOTEM:PARA. pb-copia-AfterProcedure>
+           modify pb-copia, bitmap-number = 1 
+           .
+      * <TOTEM:END>
+       pb-copia-LinkTo.
+      * <TOTEM:PARA. pb-copia-LinkTo>
+           perform SALV-MOD.
+           if tutto-ok        
+              display message 
+              "S'intende generare una nuova promo identica a questa?"
+                        title titolo
+                         icon 2
+                         type mb-yes-no
+                       giving scelta
+                       default mb-no
+              if scelta = mb-yes
+                 inquire ef-codice, value in link-tpr-codice
+                 call   "lab-copiapromo" using link-tpr-codice user-codi
+                 cancel "lab-copiapromo"
+                 display message "Creata promo n. " link-tpr-codice
+                           title titolo
+                            icon 2
+              end-if
+           end-if 
            .
       * <TOTEM:END>
 
