@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 2 ottobre 2020 23:14:48.
+       DATE-WRITTEN.        martedì 13 ottobre 2020 13:27:05.
        REMARKS.
       *{TOTEM}END
 
@@ -13716,27 +13716,35 @@
 
               if mess not = "N"
                  if tte-ritira-si
-                    display message 
+                    if RichiamoBatch
+                       move mb-yes to scelta
+                    else
+                       display message 
+                             "Evasione OMAGGIO!!!!"
+                      x"0d0a""Cliente:  " cli-ragsoc-1
+                      x"0d0a""Destino: "  des-ragsoc-1
+                      x"0d0a""Con ritiro presso Lubex."
+                      x"0d0a""Confermi?"
+                                title titolo
+                                 type mb-yes-no
+                                 icon 2
+                               giving scelta
+                    end-if
+                 else            
+                    if RichiamoBatch
+                       move mb-yes to scelta
+                    else
+                       display message 
                           "Evasione OMAGGIO!!!!"
                    x"0d0a""Cliente:  " cli-ragsoc-1
                    x"0d0a""Destino: "  des-ragsoc-1
-                   x"0d0a""Con ritiro presso Lubex."
+                   x"0d0a""Merce franco destino."
                    x"0d0a""Confermi?"
-                             title titolo
-                              type mb-yes-no
-                              icon 2
-                            giving scelta
-                 else
-                    display message 
-                       "Evasione OMAGGIO!!!!"
-                x"0d0a""Cliente:  " cli-ragsoc-1
-                x"0d0a""Destino: "  des-ragsoc-1
-                x"0d0a""Merce franco destino."
-                x"0d0a""Confermi?"
-                             title titolo
-                              type mb-yes-no
-                              icon 2
-                            giving scelta
+                                title titolo
+                                 type mb-yes-no
+                                 icon 2
+                               giving scelta
+                    end-if
                  end-if
                  if scelta = mb-no
                     set record-ok   to false
@@ -14649,9 +14657,11 @@
                  move des-prov to prv-codice
                  read tprov no lock
                       invalid 
-                      display message prv-codice " ERRORE PROVINCIA NON 
-      -    "TROVATA"
-                                 icon 2
+                      if not RichiamoBatch
+                         display message prv-codice " ERRORE PROVINCIA N
+      -    "ON TROVATA"
+                                    icon 2
+                      end-if
                  end-read
                  move prv-regione to reg-codice
                  read tregioni no lock

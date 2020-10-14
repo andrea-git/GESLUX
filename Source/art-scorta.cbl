@@ -12,25 +12,28 @@
        SPECIAL-NAMES.
            DECIMAL-POINT IS COMMA.
 
-       INPUT-OUTPUT         SECTION.
+       INPUT-OUTPUT SECTION.
        FILE-CONTROL.
            COPY "progmag.sl". 
            COPY "articoli.sl".
            COPY "lineseq.sl".
+           copy "timbalqta.sl".
 
-       DATA                 DIVISION.
-       FILE                 SECTION.
+       DATA DIVISION.
+       FILE SECTION.
            COPY "progmag.fd". 
            COPY "articoli.fd".
-           COPY "lineseq.fd".
+           COPY "lineseq.fd".  
+           copy "timbalqta.fd".
 
        WORKING-STORAGE      SECTION.
        78  titolo value "Batch articoli scorta 0/2".
        
-       77  status-articoli pic xx.
-       77  status-progmag  pic xx.
-       77  status-lineseq  pic xx.
-       77  wstampa         pic x(256).
+       77  status-articoli   pic xx.
+       77  status-progmag    pic xx.
+       77  status-timbalqta  pic xx.
+       77  status-lineseq    pic xx.
+       77  wstampa           pic x(256).
 
        01  r-inizio.
          05 filler      pic x(2) value " [".
@@ -119,7 +122,7 @@
       ***---
        OPEN-FILES.
            open i-o   articoli.
-           open input progmag.
+           open input progmag timbalqta.
            if RichiamoSchedulato and errori
               move -1 to batch-status
            end-if.
@@ -161,12 +164,15 @@
                              end-if
                           end-perform
                     end-start
+                    move art-imballo-standard to imq-codice
+                    read timbalqta no lock
+
                     compute somma = giacenza + ordinato
                     evaluate art-scorta also somma
-                    when 0 also > 2
+                    when 0 also > imq-qta-imb
                          move 2 to art-scorta
                          rewrite art-rec
-                    when 2 also <= 0
+                    when 2 also <= imq-qta-imb
                          move 0 to art-scorta
                          rewrite art-rec
                     end-evaluate
@@ -178,7 +184,7 @@
 
       ***---
        CLOSE-FILES.
-           close progmag articoli.
+           close progmag articoli timbalqta.
 
       ***---
        CONTATORE-VIDEO.

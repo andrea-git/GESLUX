@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=PAS004P-Ev-Before-Program
 AFTER_PROGRAM=I-O-BLOCCO
-PROGRAM_UNIQUE_CODE=TOTEM-7E4A1124930-752-2562426748
+PROGRAM_UNIQUE_CODE=TOTEM-7E4AE81635-930-763121393
 
 {{@DESCRIPTION:
 
@@ -2021,6 +2021,26 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM180_WK
 
 @}}
+[FDITEM181_WK]
+m_strName=lab-giac-mag-std-buf
+m_strRawPic=x(20)
+m_strPic=x(20)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM181_WK
+
+@}}
+[FDITEM182_WK]
+m_strName=lab-giac-mag-buf
+m_strRawPic=---.---.--9
+m_strPic=---.---.--9
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM182_WK
+
+@}}
 
 
 [LINKAGE_SECTION]
@@ -2661,7 +2681,7 @@ Begin Screen Form1
       Link To           = pb-stampa-LinkTo
    End
    Begin Label Form1-La-1
-      SCREEN-COL        = 65,86
+      SCREEN-COL        = 48,71
       SCREEN-LINE       = 41,38
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -2669,7 +2689,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 2
-      Column            = 65,86
+      Column            = 48,71
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -2695,7 +2715,7 @@ Begin Screen Form1
       Width in Cells    = TRUE
    End
    Begin Label lab-giac
-      SCREEN-COL        = 86,57
+      SCREEN-COL        = 69,43
       SCREEN-LINE       = 41,38
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -2703,7 +2723,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 2
-      Column            = 86,57
+      Column            = 69,43
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -2725,6 +2745,76 @@ Begin Screen Form1
       Tab Order         = 7
       Title Picture     = ---.---.--9
       Title Variable    = lab-giac-buf
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label lab-giac-mag
+      SCREEN-COL        = 113,71
+      SCREEN-LINE       = 41,38
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lab-giac-mag
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 2
+      Column            = 113,71
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/12/B/C0/@Occidentale
+      Font Variable     = Verdana12B-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 7
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 41,38
+      Lines             = 1,54
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 20,00
+      Size Unit         = Default
+      Tab Order         = 8
+      Title Picture     = ---.---.--9
+      Title Variable    = lab-giac-mag-buf
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label lab-giac-mag-std
+      SCREEN-COL        = 93,00
+      SCREEN-LINE       = 41,38
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lab-giac-mag-std
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 2
+      Column            = 93,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/12/B/C0/@Occidentale
+      Font Variable     = Verdana12B-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 6
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 41,38
+      Lines             = 1,54
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 20,00
+      Size Unit         = Default
+      Tab Order         = 9
+      Title Picture     = x(20)
+      Title Variable    = lab-giac-mag-std-buf
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -3576,8 +3666,38 @@ BEGIN-TEXT
               modify lab-giac, color 5
            else
               modify lab-giac, color 3
+           end-if.               
+
+           initialize prg-chiave replacing numeric data by zeroes
+                                      alphanumeric data by spaces.
+           inquire form1-gd-1(riga, 1), cell-data in pev-articolo.
+           move pev-articolo to prg-cod-articolo art-codice.
+           read articoli no lock.
+           move art-mag-std  to prg-cod-magazzino.
+           move 0            to como-giacenza.
+           start progmag key >= prg-chiave invalid continue end-start.
+           perform until 1 = 2
+              read progmag next at end exit perform end-read
+              if prg-cod-articolo  not = pev-articolo or
+                 prg-cod-magazzino not = art-mag-std
+                 exit perform
+              end-if
+              add prg-giacenza to como-giacenza
+           end-perform.
+           move como-giacenza to lab-giac-mag-buf.
+           display lab-giac-mag.
+           if como-giacenza < 0
+              modify lab-giac-mag, color 5
+           else
+              modify lab-giac-mag, color 3
            end-if.
-           inquire form1-gd-1(event-data-2, 16), cell-data in col-pren
+           inquire form1-gd-1(event-data-2, 16), cell-data in col-pren.
+           initialize lab-giac-mag-std-buf.
+           string "GIACENZA " delimited size
+                  art-mag-std delimited size
+             into lab-giac-mag-std-buf
+           end-string.
+           display lab-giac-mag-std.
 END-TEXT
 END-DATA
 BEGIN-DATA

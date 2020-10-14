@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          tprev.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 1 ottobre 2020 14:56:07.
+       DATE-WRITTEN.        mercoledì 14 ottobre 2020 10:23:17.
        REMARKS.
       *{TOTEM}END
 
@@ -256,6 +256,8 @@
                   VALUE IS 0.
        77 AUTO-ID          PIC  9(6)
                   VALUE IS 1.
+       77 lab-giac-mag-std-buf         PIC  x(20).
+       77 lab-giac-mag-buf PIC  ---.---.--9.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -564,7 +566,7 @@
        05
            Form1-La-1, 
            Label, 
-           COL 65,86, 
+           COL 48,71, 
            LINE 41,38,
            LINES 1,54 ,
            SIZE 20,00 ,
@@ -581,7 +583,7 @@
        05
            lab-giac, 
            Label, 
-           COL 86,57, 
+           COL 69,43, 
            LINE 41,38,
            LINES 1,54 ,
            SIZE 20,00 ,
@@ -592,6 +594,40 @@
            WIDTH-IN-CELLS,
            TRANSPARENT,
            TITLE lab-giac-buf,
+           .
+
+      * LABEL
+       05
+           lab-giac-mag, 
+           Label, 
+           COL 113,71, 
+           LINE 41,38,
+           LINES 1,54 ,
+           SIZE 20,00 ,
+           COLOR IS 2,
+           FONT IS Verdana12B-Occidentale,
+           ID IS 7,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE lab-giac-mag-buf,
+           .
+
+      * LABEL
+       05
+           lab-giac-mag-std, 
+           Label, 
+           COL 93,00, 
+           LINE 41,38,
+           LINES 1,54 ,
+           SIZE 20,00 ,
+           COLOR IS 2,
+           FONT IS Verdana12B-Occidentale,
+           ID IS 6,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE lab-giac-mag-std-buf,
            .
 
       * FORM
@@ -4749,8 +4785,38 @@
               modify lab-giac, color 5
            else
               modify lab-giac, color 3
+           end-if.               
+
+           initialize prg-chiave replacing numeric data by zeroes
+                                      alphanumeric data by spaces.
+           inquire form1-gd-1(riga, 1), cell-data in pev-articolo.
+           move pev-articolo to prg-cod-articolo art-codice.
+           read articoli no lock.
+           move art-mag-std  to prg-cod-magazzino.
+           move 0            to como-giacenza.
+           start progmag key >= prg-chiave invalid continue end-start.
+           perform until 1 = 2
+              read progmag next at end exit perform end-read
+              if prg-cod-articolo  not = pev-articolo or
+                 prg-cod-magazzino not = art-mag-std
+                 exit perform
+              end-if
+              add prg-giacenza to como-giacenza
+           end-perform.
+           move como-giacenza to lab-giac-mag-buf.
+           display lab-giac-mag.
+           if como-giacenza < 0
+              modify lab-giac-mag, color 5
+           else
+              modify lab-giac-mag, color 3
            end-if.
-           inquire form1-gd-1(event-data-2, 16), cell-data in col-pren
+           inquire form1-gd-1(event-data-2, 16), cell-data in col-pren.
+           initialize lab-giac-mag-std-buf.
+           string "GIACENZA " delimited size
+                  art-mag-std delimited size
+             into lab-giac-mag-std-buf
+           end-string.
+           display lab-giac-mag-std 
            .
       * <TOTEM:END>
 
