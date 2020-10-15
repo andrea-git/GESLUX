@@ -240,16 +240,15 @@
               move tor-prg-destino to des-prog
               read destini invalid continue end-read
            end-if.
-
+                          
+           set EsisteRecapito to true
            if des-si-invio
-              set EsisteRecapito to true
               move des-ragsoc-1  to rec-ragsoc-1
               move des-indirizzo to rec-indirizzo
               move des-cap       to rec-cap
               move des-localita  to rec-localita
               move des-prov      to rec-provincia
            else
-              set EsisteRecapito to true
               read recapiti no lock
                    invalid
                    set EsisteRecapito to false
@@ -433,7 +432,20 @@
 
            move 0,6 to spl-passo.
            move des-indirizzo to st-des-indirizzo.
-           move des-localita  to st-des-localita.
+           if des-prov = spaces
+              move des-localita  to st-des-localita
+           else
+              initialize st-des-localita
+              inspect des-localita 
+                      replacing trailing spaces by low-value
+              string  des-localita delimited low-value
+                      " - "        delimited size
+                      des-prov     delimited size
+                 into st-des-localita
+              end-string
+              inspect des-localita 
+                      replacing trailing low-value by spaces
+           end-if.
            move st-riga-int-4 to spl-riga-stampa.
            move 6             to spl-tipo-colonna.
            add spl-passo      to spl-riga.

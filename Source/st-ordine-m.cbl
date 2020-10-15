@@ -1123,9 +1123,31 @@
            perform SCRIVI.
 
            move cli-cap      to t3-cli-cap.
-           move cli-localita to t3-cli-localita.
+           if cli-prov not = spaces
+              inspect cli-localita 
+                      replacing trailing spaces by low-value
+              initialize t3-cli-localita
+              string cli-localita delimited low-value
+                     " - "        delimited size
+                     cli-prov     delimited size
+                into t3-cli-localita
+              end-string
+           else
+              move cli-localita to t3-cli-localita
+           end-if.
            move des-cap      to t3-des-cap.
-           move des-localita to t3-des-localita.
+           if des-prov not = spaces
+              inspect des-localita 
+                      replacing trailing spaces by low-value
+              initialize t3-des-localita
+              string des-localita delimited low-value
+                     " - "        delimited size
+                     des-prov     delimited size
+                into t3-des-localita
+              end-string
+           else
+              move des-localita to t3-des-localita
+           end-if.
            move t3           to spl-riga-stampa.
            perform SCRIVI.
 
