@@ -227,6 +227,7 @@
       *             88 old-rec-invio-postel VALUE IS "P". 
       *
       *
+      *
                    88 old-rec-invio-nessuno VALUE IS "N". 
            05 old-rec-dati-comuni.
                10 old-rec-data-creazione       PIC  9(8).
@@ -242,9 +243,9 @@
                10 old-rec-dett-dest-SDI        PIC  x.
                    88 old-rec-dett-dest-SDI-si VALUE IS "S". 
                    88 old-rec-dett-dest-SDI-no VALUE IS "N" " ". 
-               10 old-rec-alfa-vuoto-1         PIC  X(19).
-               10 old-rec-alfa-vuoto-2         PIC  X(20).
-               10 old-rec-alfa-vuoto-3         PIC  X(20).
+               10 old-rec-escludi-int          PIC  x.
+                   88 old-rec-escludi-int-si VALUE IS "S". 
+                   88 old-rec-escludi-int-no VALUE IS "N"," ". 
        77 Form1-Pg-3-Visible           PIC  9
                   VALUE IS 0.
        01 old-not-rec.

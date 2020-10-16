@@ -25,6 +25,7 @@
            copy "CLI.sl".
            copy "eordini.sl".
            copy "tnazioni.sl".
+           copy "recapiti.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -46,7 +47,8 @@
            copy "tcodpag.fd".
            copy "CLI.fd".
            copy "eordini.fd". 
-           copy "tnazioni.fd".
+           copy "tnazioni.fd".        
+           copy "recapiti.fd".
 
        WORKING-STORAGE SECTION.      
        copy "varsca".
@@ -71,6 +73,7 @@
        77  status-lineseq        pic xx.    
        77  status-eordini        pic xx.
        77  status-tnazioni       pic xx.
+       77  status-recapiti       pic xx.
        77  data-doc              pic 9(8).
        77  num-doc               pic 9(8).
        77  tipo-doc              pic x.
@@ -198,7 +201,8 @@
            tcodpag
            CLI
            eordini
-           tnazioni.
+           tnazioni
+           recapiti.
            if errori goback end-if.
 
 
@@ -274,6 +278,10 @@
                     end-read                       
                     read destini no lock
                          invalid initialize des-rec
+                    end-read
+                    move cli-codice to rec-codice
+                    read recapiti no lock
+                         invalid initialize rec-rec
                     end-read
                     if cli-nazione(1:2) = "IT"
                        move cli-codice to cli-codice-G2
@@ -1690,48 +1698,7 @@
                   como-numero delimited low-value
                   "</NumeroLinea>"
              into line-riga.
-           write line-riga.    
-              
-           initialize line-riga
-           string 78-spazi
-                  78-spazi
-                  78-spazi
-                  78-spazi
-                  "<CodiceArticolo>"
-             into line-riga
-           write line-riga     
-           initialize line-riga  
-           string 78-spazi
-                  78-spazi 
-                  78-spazi
-                  78-spazi
-                  78-spazi
-                  "<CodiceTipo>"
-                  "INT"         
-                  "</CodiceTipo>"
-             into line-riga
-           write line-riga     
-           initialize line-riga 
-           move art-codice to como-numero.
-           perform EDIT-NUMERO.
-           string 78-spazi
-                  78-spazi 
-                  78-spazi
-                  78-spazi
-                  78-spazi
-                  "<CodiceValore>"
-                  como-numero delimited low-value
-                  "</CodiceValore>"
-             into line-riga
-           write line-riga     
-           initialize line-riga  
-           string 78-spazi
-                  78-spazi
-                  78-spazi
-                  78-spazi
-                  "</CodiceArticolo>"
-             into line-riga
-           write line-riga.
+           write line-riga.      
 
            move 0 to como-ean.
            if art-codice-ean-1 > 0 
@@ -1753,6 +1720,50 @@
                  end-if
               end-if
            end-if.   
+ 
+           if rec-escludi-int-no or como-ean = 0   
+              initialize line-riga
+              string 78-spazi
+                     78-spazi
+                     78-spazi
+                     78-spazi
+                     "<CodiceArticolo>"
+                into line-riga
+              write line-riga
+
+              initialize line-riga  
+              string 78-spazi
+                     78-spazi 
+                     78-spazi
+                     78-spazi
+                     78-spazi
+                     "<CodiceTipo>"
+                     "INT"         
+                     "</CodiceTipo>"
+                into line-riga
+              write line-riga     
+              initialize line-riga 
+              move art-codice to como-numero
+              perform EDIT-NUMERO
+              string 78-spazi
+                     78-spazi 
+                     78-spazi
+                     78-spazi
+                     78-spazi
+                     "<CodiceValore>"
+                     como-numero delimited low-value
+                     "</CodiceValore>"
+                into line-riga
+              write line-riga     
+              initialize line-riga  
+              string 78-spazi
+                     78-spazi
+                     78-spazi
+                     78-spazi
+                     "</CodiceArticolo>"
+                into line-riga
+              write line-riga
+           end-if.
 
            if como-ean > 0      
               initialize line-riga
@@ -2448,7 +2459,8 @@
            tcodpag
            CLI
            eordini
-           tnazioni.
+           tnazioni
+           recapiti.
 
       ***---
        EXIT-PGM.                                                        
