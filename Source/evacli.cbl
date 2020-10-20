@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 13 ottobre 2020 13:27:05.
+       DATE-WRITTEN.        martedì 20 ottobre 2020 01:27:07.
        REMARKS.
       *{TOTEM}END
 
@@ -154,6 +154,8 @@
        77 GiacenzaMAG      PIC  s9(8).
        77 como-riga        PIC  9(3).
        77 tot-bozze        PIC  9(3).
+       77 max-peso         PIC  9(18)
+                  VALUE IS 0.
        77 tot-bozze-x      PIC  9(3).
        77 idx-mag-gen      PIC  9(3)
                   VALUE IS 0.
@@ -14031,8 +14033,13 @@
               if tte-split-24000-si
                  if k-mro-blister-no
                     |La riga per intero non ci sta tutta
+                    if save-magazzino = "LBX"
+                       move 24000 to max-peso
+                    else
+                       move 999999999999999999 to max-peso
+                    end-if
                     if ( tot-peso + ( prg-peso * k-mro-evadibile-ok )) 
-           > 24000
+           > max-peso
                        compute peso-riga = prg-peso  * k-mro-qta-imb
                        move 0 to num-imballi
                        compute num-imballi-tot = k-mro-evadibile-ok / 
@@ -14632,8 +14639,14 @@
                  move tte-cliente to como-prm-cliente
                  move tte-destino to como-prm-destino
                  perform TROVA-PARAMETRO
+                                    
+                 if save-magazzino = "LBX"
+                    move 24000 to max-peso
+                 else
+                    move 999999999999999999 to max-peso
+                 end-if
 
-                 if tte-peso > 24000 
+                 if tte-peso > max-peso
                     set tte-split-24000-si to true
                  else
                     set tte-split-24000-no to true
