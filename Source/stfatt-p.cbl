@@ -34,6 +34,12 @@
            ACCESS MODE  IS SEQUENTIAL
            FILE STATUS  IS STATUS-logfile.
 
+       SELECT csvInput
+           ASSIGN       TO path-csvInput
+           ORGANIZATION IS LINE SEQUENTIAL
+           ACCESS MODE  IS SEQUENTIAL
+           FILE STATUS  IS STATUS-csvInput.
+
 
       *****************************************************************
        DATA DIVISION.
@@ -59,6 +65,9 @@
                           ==STATUS-lineseq== BY ==STATUS-lineseq1==.
        FD  logfile.
        01 log-riga        PIC  x(900). 
+
+       FD  csvInput.
+       01 csvInput-riga        PIC  x(900).
 
        WORKING-STORAGE SECTION. 
            copy "acugui.def".
@@ -90,6 +99,8 @@
        77  como-numero      pic x(8).
        77  tentativi        pic 9.
        77  wstampa          pic x(256).  
+       77  path-csvInput    pic x(200).
+       77  status-csvInput  pic xx.
        77  status-lineseq   pic xx.       
        77  status-lineseq1  pic xx.
        77  status-logfile   pic xx.
@@ -619,9 +630,47 @@
                       perform ELABORA-NOTA-CREDITO 
                    end-if
               when Fatture
-                   perform ELABORA-FATTURE
+                   if calling-pgm = "stdoccsv"
+                      move stfatt-path-csv to path-csvInput
+                      open input csvInput
+                      perform until 1 = 2
+                         read csvInput next 
+                              at end exit perform 
+                          not at end
+                              unstring csvInput-riga delimited by ";"
+                                  into tor-anno-fattura
+                                       tor-num-fattura
+                              end-unstring      
+                              move tor-anno-fattura to LinkAnno
+                              move tor-num-fattura  to num-da num-a
+                              perform ELABORA-FATTURE
+                         end-read
+                      end-perform
+                      close csvInput
+                   else
+                      perform ELABORA-FATTURE
+                   end-if
               when NoteCredito
-                   perform ELABORA-NOTA-CREDITO
+                   if calling-pgm = "stdoccsv"
+                      move stfatt-path-csv to path-csvInput
+                      open input csvInput
+                      perform until 1 = 2
+                         read csvInput next 
+                              at end exit perform 
+                          not at end
+                              unstring csvInput-riga delimited by ";"
+                                  into tno-anno-fattura
+                                       tno-num-fattura
+                              end-unstring      
+                              move tno-anno-fattura to LinkAnno
+                              move tno-num-fattura  to num-da num-a
+                              perform ELABORA-NOTA-CREDITO
+                         end-read
+                      end-perform
+                      close csvInput
+                   else
+                      perform ELABORA-NOTA-CREDITO
+                   end-if
               end-evaluate
            else
               perform ELABORA-FATTURE

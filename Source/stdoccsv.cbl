@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          stdoccsv.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 20 ottobre 2020 11:28:21.
+       DATE-WRITTEN.        mercoledì 21 ottobre 2020 01:13:51.
        REMARKS.
       *{TOTEM}END
 
@@ -28,11 +28,15 @@
        FILE-CONTROL.
       *{TOTEM}FILE-CONTROL
            COPY "lineseq.sl".
+           COPY "tnotacr.sl".
+           COPY "tordini.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
       *{TOTEM}FILE
            COPY "lineseq.fd".
+           COPY "tnotacr.fd".
+           COPY "tordini.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -60,6 +64,9 @@
        77 OK-73X21-BMP     PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
+           COPY  "SPLCRT2GRAF.LKS".
+           COPY  "LINK-STBOLLE.DEF".
+           COPY  "LINK-STFATT.DEF".
        77 Screen1-Handle
                   USAGE IS HANDLE OF WINDOW.
        77 CANCEL-73X21-BMP PIC  S9(9)
@@ -80,6 +87,13 @@
                   USAGE IS HANDLE OF FONT.
        77 form1-Handle
                   USAGE IS HANDLE OF WINDOW.
+       01 file-info.
+           05 file-size        PIC  X(8)
+                      USAGE IS COMP-X.
+           05 file-date        PIC  9(8)
+                      USAGE IS COMP-X.
+           05 file-time        PIC  9(8)
+                      USAGE IS COMP-X.
        77 AUTO-ID          PIC  9(6)
                   VALUE IS 0.
        77 Verdana18B-Occidentale
@@ -90,9 +104,17 @@
        77 ef-path-buf      PIC  X(2000).
        77 opensave-status  PIC  s99
                   VALUE IS 0.
+       77 como-anno        PIC  9(4).
+       77 como-numero      PIC  9(8).
        77 wstampa          PIC  X(2000).
        77 STATUS-lineseq   PIC  X(2).
            88 Valid-STATUS-lineseq VALUE IS "00" THRU "09". 
+       77 STATUS-tnotacr   PIC  X(2).
+           88 Valid-STATUS-tnotacr VALUE IS "00" THRU "09". 
+       77 STATUS-tordini   PIC  X(2).
+           88 Valid-STATUS-tordini VALUE IS "00" THRU "09". 
+       77 tipo-doc-s       PIC  S9(1)
+                  VALUE IS 0.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -100,6 +122,8 @@
        77 STATUS-form1-FLAG-REFRESH PIC  9.
           88 form1-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
+       77 TMP-DataSet1-tnotacr-BUF     PIC X(752).
+       77 TMP-DataSet1-tordini-BUF     PIC X(3898).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -109,7 +133,48 @@
        77 DataSet1-lineseq-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-lineseq-KEY-Asc  VALUE "A".
           88 DataSet1-lineseq-KEY-Desc VALUE "D".
+       77 DataSet1-tnotacr-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tnotacr-LOCK  VALUE "Y".
+       77 DataSet1-tnotacr-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tnotacr-KEY-Asc  VALUE "A".
+          88 DataSet1-tnotacr-KEY-Desc VALUE "D".
+       77 DataSet1-tordini-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tordini-LOCK  VALUE "Y".
+       77 DataSet1-tordini-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tordini-KEY-Asc  VALUE "A".
+          88 DataSet1-tordini-KEY-Desc VALUE "D".
 
+       77 tnotacr-k-causale-SPLITBUF  PIC X(17).
+       77 tnotacr-k1-SPLITBUF  PIC X(23).
+       77 tnotacr-k2-SPLITBUF  PIC X(21).
+       77 tnotacr-k-fattura-SPLITBUF  PIC X(13).
+       77 tnotacr-k4-SPLITBUF  PIC X(30).
+       77 tnotacr-k-contab-SPLITBUF  PIC X(14).
+       77 tnotacr-k-data-SPLITBUF  PIC X(17).
+       77 tnotacr-k-agfatt-SPLITBUF  PIC X(42).
+       77 tnotacr-k-andamento-data-SPLITBUF  PIC X(10).
+       77 tnotacr-k-andamento-cliente-SPLITBUF  PIC X(15).
+       77 tnotacr-k-andamento-clides-SPLITBUF  PIC X(20).
+       77 tordini-k-causale-SPLITBUF  PIC X(17).
+       77 tordini-k1-SPLITBUF  PIC X(23).
+       77 tordini-k2-SPLITBUF  PIC X(21).
+       77 tordini-k-bolla-SPLITBUF  PIC X(13).
+       77 tordini-k3-SPLITBUF  PIC X(22).
+       77 tordini-k-fattura-SPLITBUF  PIC X(13).
+       77 tordini-k4-SPLITBUF  PIC X(30).
+       77 tordini-k-contab-SPLITBUF  PIC X(14).
+       77 tordini-k-tipo-SPLITBUF  PIC X(14).
+       77 tordini-k-data-SPLITBUF  PIC X(17).
+       77 tordini-k-agfatt-SPLITBUF  PIC X(42).
+       77 tordini-k-stbolle-SPLITBUF  PIC X(34).
+       77 tordini-k-andamento-data-SPLITBUF  PIC X(10).
+       77 tordini-k-andamento-cliente-SPLITBUF  PIC X(15).
+       77 tordini-k-andamento-clides-SPLITBUF  PIC X(20).
+       77 tordini-k-promo-SPLITBUF  PIC X(29).
+       77 tordini-k-or-SPLITBUF  PIC X(21).
+       77 tordini-k-tor-inviare-SPLITBUF  PIC X(14).
+       77 tordini-k-tor-tipocli-SPLITBUF  PIC X(25).
+       77 tordini-k-tor-gdo-SPLITBUF  PIC X(28).
 
       *{TOTEM}END
 
@@ -153,7 +218,7 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "&bolle",
-           VALUE tipo-doc,
+           VALUE tipo-doc-s,
            AFTER PROCEDURE scr-elab-Rb-1-AfterProcedure, 
            BEFORE PROCEDURE scr-elab-Rb-1-BeforeProcedure, 
            .
@@ -174,7 +239,7 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "&fatture",
-           VALUE tipo-doc,
+           VALUE tipo-doc-s,
            AFTER PROCEDURE scr-elab-Rb-1-AfterProcedure, 
            BEFORE PROCEDURE scr-elab-Rb-1-BeforeProcedure, 
            .
@@ -195,7 +260,7 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "&note credito",
-           VALUE tipo-doc,
+           VALUE tipo-doc-s,
            AFTER PROCEDURE scr-elab-Rb-1-AfterProcedure, 
            BEFORE PROCEDURE scr-elab-Rb-1-BeforeProcedure, 
            .
@@ -212,6 +277,7 @@
            ID IS 78-ID-ef-path,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
+           MAX-TEXT 200,
            VALUE ef-path-buf,
            AFTER PROCEDURE scr-elab-Ef-1-AfterProcedure, 
            BEFORE PROCEDURE scr-elab-Ef-1-BeforeProcedure, 
@@ -494,6 +560,8 @@
       *    Before Open
       *    lineseq OPEN MODE IS FALSE
       *    PERFORM OPEN-lineseq
+           PERFORM OPEN-tnotacr
+           PERFORM OPEN-tordini
       *    After Open
            .
 
@@ -509,16 +577,54 @@
       * <TOTEM:END>
            .
 
+       OPEN-tnotacr.
+      * <TOTEM:EPT. INIT:stdoccsv, FD:tnotacr, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT tnotacr
+           IF NOT Valid-STATUS-tnotacr
+              PERFORM  form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:stdoccsv, FD:tnotacr, AfterOpen>
+      * <TOTEM:END>
+           .
+
+       OPEN-tordini.
+      * <TOTEM:EPT. INIT:stdoccsv, FD:tordini, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT tordini
+           IF NOT Valid-STATUS-tordini
+              PERFORM  form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:stdoccsv, FD:tordini, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
       *    lineseq CLOSE MODE IS FALSE
       *    PERFORM CLOSE-lineseq
+           PERFORM CLOSE-tnotacr
+           PERFORM CLOSE-tordini
       *    After Close
            .
 
        CLOSE-lineseq.
       * <TOTEM:EPT. INIT:stdoccsv, FD:lineseq, BeforeClose>
       * <TOTEM:END>
+           .
+
+       CLOSE-tnotacr.
+      * <TOTEM:EPT. INIT:stdoccsv, FD:tnotacr, BeforeClose>
+      * <TOTEM:END>
+           CLOSE tnotacr
+           .
+
+       CLOSE-tordini.
+      * <TOTEM:EPT. INIT:stdoccsv, FD:tordini, BeforeClose>
+      * <TOTEM:END>
+           CLOSE tordini
            .
 
        DataSet1-lineseq-INITSTART.
@@ -616,14 +722,696 @@
       * <TOTEM:END>
            .
 
+       tnotacr-k-causale-MERGE-SPLITBUF.
+           INITIALIZE tnotacr-k-causale-SPLITBUF
+           MOVE tno-causale(1:4) TO tnotacr-k-causale-SPLITBUF(1:4)
+           MOVE tno-anno(1:4) TO tnotacr-k-causale-SPLITBUF(5:4)
+           MOVE tno-numero(1:8) TO tnotacr-k-causale-SPLITBUF(9:8)
+           .
+
+       tnotacr-k1-MERGE-SPLITBUF.
+           INITIALIZE tnotacr-k1-SPLITBUF
+           MOVE tno-cod-cli(1:5) TO tnotacr-k1-SPLITBUF(1:5)
+           MOVE tno-prg-destino(1:5) TO tnotacr-k1-SPLITBUF(6:5)
+           MOVE tno-anno(1:4) TO tnotacr-k1-SPLITBUF(11:4)
+           MOVE tno-numero(1:8) TO tnotacr-k1-SPLITBUF(15:8)
+           .
+
+       tnotacr-k2-MERGE-SPLITBUF.
+           INITIALIZE tnotacr-k2-SPLITBUF
+           MOVE tno-data-passaggio-ordine(1:8) TO 
+           tnotacr-k2-SPLITBUF(1:8)
+           MOVE tno-anno(1:4) TO tnotacr-k2-SPLITBUF(9:4)
+           MOVE tno-numero(1:8) TO tnotacr-k2-SPLITBUF(13:8)
+           .
+
+       tnotacr-k-fattura-MERGE-SPLITBUF.
+           INITIALIZE tnotacr-k-fattura-SPLITBUF
+           MOVE tno-anno-fattura(1:4) TO tnotacr-k-fattura-SPLITBUF(1:4)
+           MOVE tno-num-fattura(1:8) TO tnotacr-k-fattura-SPLITBUF(5:8)
+           .
+
+       tnotacr-k4-MERGE-SPLITBUF.
+           INITIALIZE tnotacr-k4-SPLITBUF
+           MOVE tno-anno-fattura(1:4) TO tnotacr-k4-SPLITBUF(1:4)
+           MOVE tno-data-fattura(1:8) TO tnotacr-k4-SPLITBUF(5:8)
+           MOVE tno-num-fattura(1:8) TO tnotacr-k4-SPLITBUF(13:8)
+           MOVE tno-num-prenot(1:8) TO tnotacr-k4-SPLITBUF(21:8)
+           MOVE tno-fatt-prenotata(1:1) TO tnotacr-k4-SPLITBUF(29:1)
+           .
+
+       tnotacr-k-contab-MERGE-SPLITBUF.
+           INITIALIZE tnotacr-k-contab-SPLITBUF
+           MOVE tno-agg-contab(1:1) TO tnotacr-k-contab-SPLITBUF(1:1)
+           MOVE tno-anno-fattura(1:4) TO tnotacr-k-contab-SPLITBUF(2:4)
+           MOVE tno-num-fattura(1:8) TO tnotacr-k-contab-SPLITBUF(6:8)
+           .
+
+       tnotacr-k-data-MERGE-SPLITBUF.
+           INITIALIZE tnotacr-k-data-SPLITBUF
+           MOVE tno-data(1:8) TO tnotacr-k-data-SPLITBUF(1:8)
+           MOVE tno-numero(1:8) TO tnotacr-k-data-SPLITBUF(9:8)
+           .
+
+       tnotacr-k-agfatt-MERGE-SPLITBUF.
+           INITIALIZE tnotacr-k-agfatt-SPLITBUF
+           MOVE tno-anno-fattura(1:4) TO tnotacr-k-agfatt-SPLITBUF(1:4)
+           MOVE tno-data-fattura(1:8) TO tnotacr-k-agfatt-SPLITBUF(5:8)
+           MOVE tno-num-fattura(1:8) TO tnotacr-k-agfatt-SPLITBUF(13:8)
+           MOVE tno-num-prenot(1:8) TO tnotacr-k-agfatt-SPLITBUF(21:8)
+           MOVE tno-fatt-prenotata(1:1) TO 
+           tnotacr-k-agfatt-SPLITBUF(29:1)
+           MOVE tno-chiave(1:12) TO tnotacr-k-agfatt-SPLITBUF(30:12)
+           .
+
+       tnotacr-k-andamento-data-MERGE-SPLITBUF.
+           INITIALIZE tnotacr-k-andamento-data-SPLITBUF
+           MOVE tno-agg-contab(1:1) TO 
+           tnotacr-k-andamento-data-SPLITBUF(1:1)
+           MOVE tno-data-fattura(1:8) TO 
+           tnotacr-k-andamento-data-SPLITBUF(2:8)
+           .
+
+       tnotacr-k-andamento-cliente-MERGE-SPLITBUF.
+           INITIALIZE tnotacr-k-andamento-cliente-SPLITBUF
+           MOVE tno-cod-cli(1:5) TO 
+           tnotacr-k-andamento-cliente-SPLITBUF(1:5)
+           MOVE tno-agg-contab(1:1) TO 
+           tnotacr-k-andamento-cliente-SPLITBUF(6:1)
+           MOVE tno-data-fattura(1:8) TO 
+           tnotacr-k-andamento-cliente-SPLITBUF(7:8)
+           .
+
+       tnotacr-k-andamento-clides-MERGE-SPLITBUF.
+           INITIALIZE tnotacr-k-andamento-clides-SPLITBUF
+           MOVE tno-cod-cli(1:5) TO 
+           tnotacr-k-andamento-clides-SPLITBUF(1:5)
+           MOVE tno-prg-destino(1:5) TO 
+           tnotacr-k-andamento-clides-SPLITBUF(6:5)
+           MOVE tno-agg-contab(1:1) TO 
+           tnotacr-k-andamento-clides-SPLITBUF(11:1)
+           MOVE tno-data-fattura(1:8) TO 
+           tnotacr-k-andamento-clides-SPLITBUF(12:8)
+           .
+
+       DataSet1-tnotacr-INITSTART.
+           IF DataSet1-tnotacr-KEY-Asc
+              MOVE Low-Value TO tno-chiave
+           ELSE
+              MOVE High-Value TO tno-chiave
+           END-IF
+           .
+
+       DataSet1-tnotacr-INITEND.
+           IF DataSet1-tnotacr-KEY-Asc
+              MOVE High-Value TO tno-chiave
+           ELSE
+              MOVE Low-Value TO tno-chiave
+           END-IF
+           .
+
+      * tnotacr
+       DataSet1-tnotacr-START.
+           IF DataSet1-tnotacr-KEY-Asc
+              START tnotacr KEY >= tno-chiave
+           ELSE
+              START tnotacr KEY <= tno-chiave
+           END-IF
+           .
+
+       DataSet1-tnotacr-START-NOTGREATER.
+           IF DataSet1-tnotacr-KEY-Asc
+              START tnotacr KEY <= tno-chiave
+           ELSE
+              START tnotacr KEY >= tno-chiave
+           END-IF
+           .
+
+       DataSet1-tnotacr-START-GREATER.
+           IF DataSet1-tnotacr-KEY-Asc
+              START tnotacr KEY > tno-chiave
+           ELSE
+              START tnotacr KEY < tno-chiave
+           END-IF
+           .
+
+       DataSet1-tnotacr-START-LESS.
+           IF DataSet1-tnotacr-KEY-Asc
+              START tnotacr KEY < tno-chiave
+           ELSE
+              START tnotacr KEY > tno-chiave
+           END-IF
+           .
+
+       DataSet1-tnotacr-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:tnotacr, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tnotacr, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-tnotacr-LOCK
+              READ tnotacr WITH LOCK 
+              KEY tno-chiave
+           ELSE
+              READ tnotacr WITH NO LOCK 
+              KEY tno-chiave
+           END-IF
+           PERFORM tnotacr-k-causale-MERGE-SPLITBUF
+           PERFORM tnotacr-k1-MERGE-SPLITBUF
+           PERFORM tnotacr-k2-MERGE-SPLITBUF
+           PERFORM tnotacr-k-fattura-MERGE-SPLITBUF
+           PERFORM tnotacr-k4-MERGE-SPLITBUF
+           PERFORM tnotacr-k-contab-MERGE-SPLITBUF
+           PERFORM tnotacr-k-data-MERGE-SPLITBUF
+           PERFORM tnotacr-k-agfatt-MERGE-SPLITBUF
+           PERFORM tnotacr-k-andamento-data-MERGE-SPLITBUF
+           PERFORM tnotacr-k-andamento-cliente-MERGE-SPLITBUF
+           PERFORM tnotacr-k-andamento-clides-MERGE-SPLITBUF
+           MOVE STATUS-tnotacr TO TOTEM-ERR-STAT 
+           MOVE "tnotacr" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tnotacr, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tnotacr, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tnotacr-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:tnotacr, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tnotacr, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-tnotacr-KEY-Asc
+              IF DataSet1-tnotacr-LOCK
+                 READ tnotacr NEXT WITH LOCK
+              ELSE
+                 READ tnotacr NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tnotacr-LOCK
+                 READ tnotacr PREVIOUS WITH LOCK
+              ELSE
+                 READ tnotacr PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM tnotacr-k-causale-MERGE-SPLITBUF
+           PERFORM tnotacr-k1-MERGE-SPLITBUF
+           PERFORM tnotacr-k2-MERGE-SPLITBUF
+           PERFORM tnotacr-k-fattura-MERGE-SPLITBUF
+           PERFORM tnotacr-k4-MERGE-SPLITBUF
+           PERFORM tnotacr-k-contab-MERGE-SPLITBUF
+           PERFORM tnotacr-k-data-MERGE-SPLITBUF
+           PERFORM tnotacr-k-agfatt-MERGE-SPLITBUF
+           PERFORM tnotacr-k-andamento-data-MERGE-SPLITBUF
+           PERFORM tnotacr-k-andamento-cliente-MERGE-SPLITBUF
+           PERFORM tnotacr-k-andamento-clides-MERGE-SPLITBUF
+           MOVE STATUS-tnotacr TO TOTEM-ERR-STAT
+           MOVE "tnotacr" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tnotacr, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tnotacr, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tnotacr-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:tnotacr, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tnotacr, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-tnotacr-KEY-Asc
+              IF DataSet1-tnotacr-LOCK
+                 READ tnotacr PREVIOUS WITH LOCK
+              ELSE
+                 READ tnotacr PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tnotacr-LOCK
+                 READ tnotacr NEXT WITH LOCK
+              ELSE
+                 READ tnotacr NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM tnotacr-k-causale-MERGE-SPLITBUF
+           PERFORM tnotacr-k1-MERGE-SPLITBUF
+           PERFORM tnotacr-k2-MERGE-SPLITBUF
+           PERFORM tnotacr-k-fattura-MERGE-SPLITBUF
+           PERFORM tnotacr-k4-MERGE-SPLITBUF
+           PERFORM tnotacr-k-contab-MERGE-SPLITBUF
+           PERFORM tnotacr-k-data-MERGE-SPLITBUF
+           PERFORM tnotacr-k-agfatt-MERGE-SPLITBUF
+           PERFORM tnotacr-k-andamento-data-MERGE-SPLITBUF
+           PERFORM tnotacr-k-andamento-cliente-MERGE-SPLITBUF
+           PERFORM tnotacr-k-andamento-clides-MERGE-SPLITBUF
+           MOVE STATUS-tnotacr TO TOTEM-ERR-STAT
+           MOVE "tnotacr" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tnotacr, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tnotacr, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tnotacr-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:tnotacr, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-tnotacr TO TOTEM-ERR-STAT
+           MOVE "tnotacr" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tnotacr, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tnotacr-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:tnotacr, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-tnotacr TO TOTEM-ERR-STAT
+           MOVE "tnotacr" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tnotacr, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tnotacr-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:tnotacr, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-tnotacr TO TOTEM-ERR-STAT
+           MOVE "tnotacr" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tnotacr, AfterDelete>
+      * <TOTEM:END>
+           .
+
+       tordini-k-causale-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-causale-SPLITBUF
+           MOVE tor-causale(1:4) TO tordini-k-causale-SPLITBUF(1:4)
+           MOVE tor-anno(1:4) TO tordini-k-causale-SPLITBUF(5:4)
+           MOVE tor-numero(1:8) TO tordini-k-causale-SPLITBUF(9:8)
+           .
+
+       tordini-k1-MERGE-SPLITBUF.
+           INITIALIZE tordini-k1-SPLITBUF
+           MOVE tor-cod-cli(1:5) TO tordini-k1-SPLITBUF(1:5)
+           MOVE tor-prg-destino(1:5) TO tordini-k1-SPLITBUF(6:5)
+           MOVE tor-anno(1:4) TO tordini-k1-SPLITBUF(11:4)
+           MOVE tor-numero(1:8) TO tordini-k1-SPLITBUF(15:8)
+           .
+
+       tordini-k2-MERGE-SPLITBUF.
+           INITIALIZE tordini-k2-SPLITBUF
+           MOVE tor-data-passaggio-ordine(1:8) TO 
+           tordini-k2-SPLITBUF(1:8)
+           MOVE tor-anno(1:4) TO tordini-k2-SPLITBUF(9:4)
+           MOVE tor-numero(1:8) TO tordini-k2-SPLITBUF(13:8)
+           .
+
+       tordini-k-bolla-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-bolla-SPLITBUF
+           MOVE tor-anno-bolla(1:4) TO tordini-k-bolla-SPLITBUF(1:4)
+           MOVE tor-num-bolla(1:8) TO tordini-k-bolla-SPLITBUF(5:8)
+           .
+
+       tordini-k3-MERGE-SPLITBUF.
+           INITIALIZE tordini-k3-SPLITBUF
+           MOVE tor-anno-bolla(1:4) TO tordini-k3-SPLITBUF(1:4)
+           MOVE tor-data-bolla(1:8) TO tordini-k3-SPLITBUF(5:8)
+           MOVE tor-num-bolla(1:8) TO tordini-k3-SPLITBUF(13:8)
+           MOVE tor-bolla-prenotata(1:1) TO tordini-k3-SPLITBUF(21:1)
+           .
+
+       tordini-k-fattura-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-fattura-SPLITBUF
+           MOVE tor-anno-fattura(1:4) TO tordini-k-fattura-SPLITBUF(1:4)
+           MOVE tor-num-fattura(1:8) TO tordini-k-fattura-SPLITBUF(5:8)
+           .
+
+       tordini-k4-MERGE-SPLITBUF.
+           INITIALIZE tordini-k4-SPLITBUF
+           MOVE tor-anno-fattura(1:4) TO tordini-k4-SPLITBUF(1:4)
+           MOVE tor-data-fattura(1:8) TO tordini-k4-SPLITBUF(5:8)
+           MOVE tor-num-fattura(1:8) TO tordini-k4-SPLITBUF(13:8)
+           MOVE tor-num-prenot(1:8) TO tordini-k4-SPLITBUF(21:8)
+           MOVE tor-fatt-prenotata(1:1) TO tordini-k4-SPLITBUF(29:1)
+           .
+
+       tordini-k-contab-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-contab-SPLITBUF
+           MOVE tor-agg-contab(1:1) TO tordini-k-contab-SPLITBUF(1:1)
+           MOVE tor-anno-fattura(1:4) TO tordini-k-contab-SPLITBUF(2:4)
+           MOVE tor-num-fattura(1:8) TO tordini-k-contab-SPLITBUF(6:8)
+           .
+
+       tordini-k-tipo-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-tipo-SPLITBUF
+           MOVE tor-tipo(1:1) TO tordini-k-tipo-SPLITBUF(1:1)
+           MOVE tor-chiave(1:12) TO tordini-k-tipo-SPLITBUF(2:12)
+           .
+
+       tordini-k-data-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-data-SPLITBUF
+           MOVE tor-data-creazione(1:8) TO tordini-k-data-SPLITBUF(1:8)
+           MOVE tor-numero(1:8) TO tordini-k-data-SPLITBUF(9:8)
+           .
+
+       tordini-k-agfatt-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-agfatt-SPLITBUF
+           MOVE tor-anno-fattura(1:4) TO tordini-k-agfatt-SPLITBUF(1:4)
+           MOVE tor-data-fattura(1:8) TO tordini-k-agfatt-SPLITBUF(5:8)
+           MOVE tor-num-fattura(1:8) TO tordini-k-agfatt-SPLITBUF(13:8)
+           MOVE tor-num-prenot(1:8) TO tordini-k-agfatt-SPLITBUF(21:8)
+           MOVE tor-fatt-prenotata(1:1) TO 
+           tordini-k-agfatt-SPLITBUF(29:1)
+           MOVE tor-chiave(1:12) TO tordini-k-agfatt-SPLITBUF(30:12)
+           .
+
+       tordini-k-stbolle-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-stbolle-SPLITBUF
+           MOVE tor-anno-bolla(1:4) TO tordini-k-stbolle-SPLITBUF(1:4)
+           MOVE tor-data-bolla(1:8) TO tordini-k-stbolle-SPLITBUF(5:8)
+           MOVE tor-num-bolla(1:8) TO tordini-k-stbolle-SPLITBUF(13:8)
+           MOVE tor-bolla-prenotata(1:1) TO 
+           tordini-k-stbolle-SPLITBUF(21:1)
+           MOVE tor-chiave(1:12) TO tordini-k-stbolle-SPLITBUF(22:12)
+           .
+
+       tordini-k-andamento-data-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-andamento-data-SPLITBUF
+           MOVE tor-agg-contab(1:1) TO 
+           tordini-k-andamento-data-SPLITBUF(1:1)
+           MOVE tor-data-fattura(1:8) TO 
+           tordini-k-andamento-data-SPLITBUF(2:8)
+           .
+
+       tordini-k-andamento-cliente-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-andamento-cliente-SPLITBUF
+           MOVE tor-cod-cli(1:5) TO 
+           tordini-k-andamento-cliente-SPLITBUF(1:5)
+           MOVE tor-agg-contab(1:1) TO 
+           tordini-k-andamento-cliente-SPLITBUF(6:1)
+           MOVE tor-data-fattura(1:8) TO 
+           tordini-k-andamento-cliente-SPLITBUF(7:8)
+           .
+
+       tordini-k-andamento-clides-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-andamento-clides-SPLITBUF
+           MOVE tor-cod-cli(1:5) TO 
+           tordini-k-andamento-clides-SPLITBUF(1:5)
+           MOVE tor-prg-destino(1:5) TO 
+           tordini-k-andamento-clides-SPLITBUF(6:5)
+           MOVE tor-agg-contab(1:1) TO 
+           tordini-k-andamento-clides-SPLITBUF(11:1)
+           MOVE tor-data-fattura(1:8) TO 
+           tordini-k-andamento-clides-SPLITBUF(12:8)
+           .
+
+       tordini-k-promo-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-promo-SPLITBUF
+           MOVE tor-stato(1:1) TO tordini-k-promo-SPLITBUF(1:1)
+           MOVE tor-promo(1:1) TO tordini-k-promo-SPLITBUF(2:1)
+           MOVE tor-data-ordine(1:8) TO tordini-k-promo-SPLITBUF(3:8)
+           MOVE tor-numero(1:8) TO tordini-k-promo-SPLITBUF(11:8)
+           MOVE tor-cod-cli(1:5) TO tordini-k-promo-SPLITBUF(19:5)
+           MOVE tor-prg-destino(1:5) TO tordini-k-promo-SPLITBUF(24:5)
+           .
+
+       tordini-k-or-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-or-SPLITBUF
+           MOVE tor-cod-cli(1:5) TO tordini-k-or-SPLITBUF(1:5)
+           MOVE tor-prg-destino(1:5) TO tordini-k-or-SPLITBUF(6:5)
+           MOVE tor-num-ord-cli(1:10) TO tordini-k-or-SPLITBUF(11:10)
+           .
+
+       tordini-k-tor-inviare-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-tor-inviare-SPLITBUF
+           MOVE tor-da-inviare OF tordini(1:1) TO 
+           tordini-k-tor-inviare-SPLITBUF(1:1)
+           MOVE tor-chiave OF tordini(1:12) TO 
+           tordini-k-tor-inviare-SPLITBUF(2:12)
+           .
+
+       tordini-k-tor-tipocli-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-tor-tipocli-SPLITBUF
+           MOVE tor-tipocli OF tordini(1:2) TO 
+           tordini-k-tor-tipocli-SPLITBUF(1:2)
+           MOVE tor-cod-cli OF tordini(1:5) TO 
+           tordini-k-tor-tipocli-SPLITBUF(3:5)
+           MOVE tor-prg-destino OF tordini(1:5) TO 
+           tordini-k-tor-tipocli-SPLITBUF(8:5)
+           MOVE tor-chiave OF tordini(1:12) TO 
+           tordini-k-tor-tipocli-SPLITBUF(13:12)
+           .
+
+       tordini-k-tor-gdo-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-tor-gdo-SPLITBUF
+           MOVE tor-gdo OF tordini(1:5) TO 
+           tordini-k-tor-gdo-SPLITBUF(1:5)
+           MOVE tor-cod-cli OF tordini(1:5) TO 
+           tordini-k-tor-gdo-SPLITBUF(6:5)
+           MOVE tor-prg-destino OF tordini(1:5) TO 
+           tordini-k-tor-gdo-SPLITBUF(11:5)
+           MOVE tor-chiave OF tordini(1:12) TO 
+           tordini-k-tor-gdo-SPLITBUF(16:12)
+           .
+
+       DataSet1-tordini-INITSTART.
+           IF DataSet1-tordini-KEY-Asc
+              MOVE Low-Value TO tor-chiave
+           ELSE
+              MOVE High-Value TO tor-chiave
+           END-IF
+           .
+
+       DataSet1-tordini-INITEND.
+           IF DataSet1-tordini-KEY-Asc
+              MOVE High-Value TO tor-chiave
+           ELSE
+              MOVE Low-Value TO tor-chiave
+           END-IF
+           .
+
+      * tordini
+       DataSet1-tordini-START.
+           IF DataSet1-tordini-KEY-Asc
+              START tordini KEY >= tor-chiave
+           ELSE
+              START tordini KEY <= tor-chiave
+           END-IF
+           .
+
+       DataSet1-tordini-START-NOTGREATER.
+           IF DataSet1-tordini-KEY-Asc
+              START tordini KEY <= tor-chiave
+           ELSE
+              START tordini KEY >= tor-chiave
+           END-IF
+           .
+
+       DataSet1-tordini-START-GREATER.
+           IF DataSet1-tordini-KEY-Asc
+              START tordini KEY > tor-chiave
+           ELSE
+              START tordini KEY < tor-chiave
+           END-IF
+           .
+
+       DataSet1-tordini-START-LESS.
+           IF DataSet1-tordini-KEY-Asc
+              START tordini KEY < tor-chiave
+           ELSE
+              START tordini KEY > tor-chiave
+           END-IF
+           .
+
+       DataSet1-tordini-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-tordini-LOCK
+              READ tordini WITH LOCK 
+              KEY tor-chiave
+           ELSE
+              READ tordini WITH NO LOCK 
+              KEY tor-chiave
+           END-IF
+           PERFORM tordini-k-causale-MERGE-SPLITBUF
+           PERFORM tordini-k1-MERGE-SPLITBUF
+           PERFORM tordini-k2-MERGE-SPLITBUF
+           PERFORM tordini-k-bolla-MERGE-SPLITBUF
+           PERFORM tordini-k3-MERGE-SPLITBUF
+           PERFORM tordini-k-fattura-MERGE-SPLITBUF
+           PERFORM tordini-k4-MERGE-SPLITBUF
+           PERFORM tordini-k-contab-MERGE-SPLITBUF
+           PERFORM tordini-k-tipo-MERGE-SPLITBUF
+           PERFORM tordini-k-data-MERGE-SPLITBUF
+           PERFORM tordini-k-agfatt-MERGE-SPLITBUF
+           PERFORM tordini-k-stbolle-MERGE-SPLITBUF
+           PERFORM tordini-k-andamento-data-MERGE-SPLITBUF
+           PERFORM tordini-k-andamento-cliente-MERGE-SPLITBUF
+           PERFORM tordini-k-andamento-clides-MERGE-SPLITBUF
+           PERFORM tordini-k-promo-MERGE-SPLITBUF
+           PERFORM tordini-k-or-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-inviare-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-tipocli-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-gdo-MERGE-SPLITBUF
+           MOVE STATUS-tordini TO TOTEM-ERR-STAT 
+           MOVE "tordini" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tordini-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-tordini-KEY-Asc
+              IF DataSet1-tordini-LOCK
+                 READ tordini NEXT WITH LOCK
+              ELSE
+                 READ tordini NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tordini-LOCK
+                 READ tordini PREVIOUS WITH LOCK
+              ELSE
+                 READ tordini PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM tordini-k-causale-MERGE-SPLITBUF
+           PERFORM tordini-k1-MERGE-SPLITBUF
+           PERFORM tordini-k2-MERGE-SPLITBUF
+           PERFORM tordini-k-bolla-MERGE-SPLITBUF
+           PERFORM tordini-k3-MERGE-SPLITBUF
+           PERFORM tordini-k-fattura-MERGE-SPLITBUF
+           PERFORM tordini-k4-MERGE-SPLITBUF
+           PERFORM tordini-k-contab-MERGE-SPLITBUF
+           PERFORM tordini-k-tipo-MERGE-SPLITBUF
+           PERFORM tordini-k-data-MERGE-SPLITBUF
+           PERFORM tordini-k-agfatt-MERGE-SPLITBUF
+           PERFORM tordini-k-stbolle-MERGE-SPLITBUF
+           PERFORM tordini-k-andamento-data-MERGE-SPLITBUF
+           PERFORM tordini-k-andamento-cliente-MERGE-SPLITBUF
+           PERFORM tordini-k-andamento-clides-MERGE-SPLITBUF
+           PERFORM tordini-k-promo-MERGE-SPLITBUF
+           PERFORM tordini-k-or-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-inviare-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-tipocli-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-gdo-MERGE-SPLITBUF
+           MOVE STATUS-tordini TO TOTEM-ERR-STAT
+           MOVE "tordini" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tordini-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-tordini-KEY-Asc
+              IF DataSet1-tordini-LOCK
+                 READ tordini PREVIOUS WITH LOCK
+              ELSE
+                 READ tordini PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tordini-LOCK
+                 READ tordini NEXT WITH LOCK
+              ELSE
+                 READ tordini NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM tordini-k-causale-MERGE-SPLITBUF
+           PERFORM tordini-k1-MERGE-SPLITBUF
+           PERFORM tordini-k2-MERGE-SPLITBUF
+           PERFORM tordini-k-bolla-MERGE-SPLITBUF
+           PERFORM tordini-k3-MERGE-SPLITBUF
+           PERFORM tordini-k-fattura-MERGE-SPLITBUF
+           PERFORM tordini-k4-MERGE-SPLITBUF
+           PERFORM tordini-k-contab-MERGE-SPLITBUF
+           PERFORM tordini-k-tipo-MERGE-SPLITBUF
+           PERFORM tordini-k-data-MERGE-SPLITBUF
+           PERFORM tordini-k-agfatt-MERGE-SPLITBUF
+           PERFORM tordini-k-stbolle-MERGE-SPLITBUF
+           PERFORM tordini-k-andamento-data-MERGE-SPLITBUF
+           PERFORM tordini-k-andamento-cliente-MERGE-SPLITBUF
+           PERFORM tordini-k-andamento-clides-MERGE-SPLITBUF
+           PERFORM tordini-k-promo-MERGE-SPLITBUF
+           PERFORM tordini-k-or-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-inviare-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-tipocli-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-gdo-MERGE-SPLITBUF
+           MOVE STATUS-tordini TO TOTEM-ERR-STAT
+           MOVE "tordini" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tordini-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-tordini TO TOTEM-ERR-STAT
+           MOVE "tordini" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tordini-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-tordini TO TOTEM-ERR-STAT
+           MOVE "tordini" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tordini-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-tordini TO TOTEM-ERR-STAT
+           MOVE "tordini" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE line-riga OF lineseq
+           INITIALIZE tno-rec OF tnotacr
+           INITIALIZE tor-rec OF tordini
            .
 
 
       * FD's Initialize Paragraph
        DataSet1-lineseq-INITREC.
            INITIALIZE line-riga OF lineseq
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-tnotacr-INITREC.
+           INITIALIZE tno-rec OF tnotacr
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-tordini-INITREC.
+           INITIALIZE tor-rec OF tordini
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -682,7 +1470,7 @@
 
        form1-PROC.
       * <TOTEM:EPT. FORM:form1, FORM:form1, BeforeAccept>
-           move 1 to tipo-doc.
+           move 1 to tipo-doc-s.
            display form1.
 
            .
@@ -909,7 +1697,7 @@
            end-perform.
 
            if tutto-ok
-              evaluate tipo-doc
+              evaluate tipo-doc-s
               when 1
                    display message "Confermi la ristampa delle bolle?"
                              title titolo
@@ -941,28 +1729,137 @@
            if tutto-ok
               move 0 to docs
               call "W$MOUSE" using set-mouse-shape, wait-pointer
-              call "W$MOUSE" using set-mouse-shape, arrow-pointer
-
-              evaluate tipo-doc
-              when 1
-                   display message "OPERAZIONE TERMINATA!!!"
-                            x"0d0a""STAMPATE " docs " BOLLE"
-                             title titolo
-                              icon 2
-              when 2
-                   display message "OPERAZIONE TERMINATA!!!"
-                            x"0d0a""STAMPATE " docs " FATTURE"
-                             title titolo
-                              icon 2
-              when 3
-                   display message "OPERAZIONE TERMINATA!!!"
-                            x"0d0a""STAMPATE " docs " NOTE CREDITO"
-                             title titolo
-                              icon 2
-              end-evaluate
+              move ef-path-buf to wstampa
+              open input lineseq
+              move 0 to docs
+              perform until 1 = 2
+                 read lineseq next at end exit perform end-read
+                 unstring line-riga delimited by ";"
+                     into como-anno 
+                          como-numero 
+                 end-unstring
+                 add 1 to docs
+                 evaluate tipo-doc-s
+                 when 1 perform CHECK-BOLLE
+                 when 2 perform CHECK-FATTURE
+                 when 3 perform CHECK-NOTECR
+                 end-evaluate
+                 if errori
+                    exit perform
+                 end-if
+              end-perform
+              close lineseq
+              if tutto-ok
+                 evaluate tipo-doc-s
+                 when 1 perform STAMPA-BOLLE
+                 when 2 perform STAMPA-FATTURE
+                 when 3 perform STAMPA-NOTECR
+                 end-evaluate             
+                 display message "OPERAZIONE TERMINATA!!!"          
+                           title titolo
+                           icon 2
+      *****                         x"0d0a""STAMPATE " docs " BOLLE"
+      *****           when 2
+      *****                display message "OPERAZIONE TERMINATA!!!"
+      *****                         x"0d0a""STAMPATE " docs " FATTURE"
+      *****                          title titolo
+      *****                           icon 2
+      *****           when 3
+      *****                display message "OPERAZIONE TERMINATA!!!"
+      *****                         x"0d0a""STAMPATE " docs " NOTE CREDITO"
+      *****                          title titolo
+      *****                           icon 2
+      *****           end-evaluate
+              end-if
+              call "W$MOUSE" using set-mouse-shape, arrow-pointer 
               modify pb-sib, bitmap-number = 1
               move             4 to accept-control
-           end-if 
+           end-if.
+
+      ***---
+       CHECK-BOLLE.           
+           move como-anno   to tor-anno-bolla.
+           move como-numero to tor-num-bolla.
+           read tordini key k-bolla
+                invalid
+                display message "Elaborazione non valida!"
+                         x"0d0a""Bolla non valida" 
+                         x"0d0a""ANNO: ", como-anno
+                         x"0d0a""NUMERO: ", como-numero
+                         x"0d0a""Riga: ", docs
+                set errori to true
+           end-read.    
+
+      ***---
+       CHECK-FATTURE.           
+           move como-anno   to tor-anno-fattura.
+           move como-numero to tor-num-fattura.
+           read tordini key k-fattura
+                invalid
+                display message "Elaborazione non valida!"
+                         x"0d0a""Fattura non valida" 
+                         x"0d0a""ANNO: ", como-anno
+                         x"0d0a""NUMERO: ", como-numero
+                         x"0d0a""Riga: ", docs
+                set errori to true
+           end-read.    
+
+      ***---
+       CHECK-NOTECR.
+           move como-anno   to tno-anno-fattura.
+           move como-numero to tno-num-fattura.
+           read tnotacr key k-fattura
+                invalid
+                display message "Elaborazione non valida!"
+                         x"0d0a""Nota CR non valida" 
+                         x"0d0a""ANNO: ", como-anno
+                         x"0d0a""NUMERO: ", como-numero
+                         x"0d0a""Riga: ", docs
+                set errori to true
+           end-read.    
+
+      ***---
+       STAMPA-BOLLE.
+           initialize stbolle-linkage.
+           set stbolle-ristampa to true.
+           move tor-anno        to stbolle-anno.
+           move ef-path-buf     to stbolle-path-csv.
+           set  stbolle-k-bolla to true.
+           set  stbolle-singola to true.
+
+           move spaces to stbolle-path.
+           call   "stbolle-p" using stbolle-linkage.
+           cancel "stbolle-p".
+
+      ***---
+       STAMPA-FATTURE.  
+           initialize stfatt-linkage replacing numeric data by zeroes
+                                          alphanumeric data by spaces.
+           move ef-path-buf      to stfatt-path-csv.
+           move 1                to LinkElab.
+           set  tutte            to true.
+           move 1                to num-copie.
+           set  Fatture          to true.
+           |STAMPA "COPIA" AD USO INTERNO
+LUBEXX     move 1 to link-tipo-stampa.
+
+           call   "stfatt-p"  using stfatt-linkage.
+           cancel "stfatt-p".
+
+      ***---
+       STAMPA-NOTECR.   
+           initialize stfatt-linkage replacing numeric data by zeroes
+                                          alphanumeric data by spaces.
+           move ef-path-buf      to stfatt-path-csv.
+           move 1                to LinkElab.
+           set  tutte            to true.
+           move 1                to num-copie.
+           set  NoteCredito      to true.
+           |STAMPA "COPIA" AD USO INTERNO
+LUBEXX     move 1 to link-tipo-stampa. 
+
+           call   "stfatt-p"  using stfatt-linkage.
+           cancel "stfatt-p" 
            .
       * <TOTEM:END>
        check-utf-Ev-Before-Program.
@@ -1000,17 +1897,17 @@
       * <TOTEM:END>
        rb-b-LinkTo.
       * <TOTEM:PARA. rb-b-LinkTo>
-           move 1 to tipo-doc 
+           move 1 to tipo-doc-s 
            .
       * <TOTEM:END>
        rb-f-LinkTo.
       * <TOTEM:PARA. rb-f-LinkTo>
-           move 2 to tipo-doc 
+           move 2 to tipo-doc-s 
            .
       * <TOTEM:END>
        rb-nc-LinkTo.
       * <TOTEM:PARA. rb-nc-LinkTo>
-           move 3 to tipo-doc 
+           move 3 to tipo-doc-s 
            .
       * <TOTEM:END>
        pb-sel-LinkTo.

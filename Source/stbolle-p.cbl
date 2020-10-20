@@ -73,7 +73,13 @@
            copy "progmag.sl".
            copy "timposte.sl".
            copy "param.sl".
-           copy "tagli.sl".
+           copy "tagli.sl".               
+
+       SELECT csvInput
+           ASSIGN       TO path-csvInput
+           ORGANIZATION IS LINE SEQUENTIAL
+           ACCESS MODE  IS SEQUENTIAL
+           FILE STATUS  IS STATUS-csvInput.
 
       *****************************************************************
        DATA DIVISION.
@@ -129,7 +135,11 @@
            copy "progmag.fd".
            copy "timposte.fd".
            copy "param.fd".
-           copy "tagli.fd".
+           copy "tagli.fd".             
+
+      *(( XFD FILE = lineseq5 ))
+       FD  csvInput.
+       01 csvInput-riga        PIC  x(900).
 
        WORKING-STORAGE SECTION.
       * FILE DI COPY           
@@ -188,7 +198,9 @@
        77  status-timposte         pic xx.
        77  status-progmag          pic xx.
        77  status-param            pic xx.
+       77  status-csvInput         pic xx.
        77  wstampa                 pic x(256).
+       77  path-csvInput           pic x(200).
        
        77  rlt-numero-ed    PIC  z(8).
        77  rlt-numero-1     PIC  z(8).
@@ -989,15 +1001,38 @@ LUBEXX     |9 misura stampante Lubex primo piano (Epson DFX 5000+)
                        perform APRI-FILES-STAMPANTI
                     end-if
                  end-if
-                 if tutto-ok
-                    perform ELABORAZIONE
-                    |||STATO ORDINE XXX
-                    if stbolle-stampa
-                       perform AGGIORNA-MASTER
-                    end-if
-                    |||XXX                    
-                    if stbolle-piu-stampe-si
-                       perform CHIUDI-FILES-STAMPANTI
+                 if tutto-ok      
+                    if calling-program = "stdoccsv"
+                       move stbolle-path-csv to path-csvInput
+                       open input csvInput
+                       perform until 1 = 2
+                          read csvInput next 
+                               at end exit perform 
+                           not at end
+                               unstring csvInput-riga delimited by ";"
+                                   into tor-anno-bolla
+                                        tor-num-bolla
+                               end-unstring      
+                               read tordini no lock key k-bolla
+                               move tor-anno      to stbolle-anno 
+                                                     save-anno
+                               move tor-numero    to stb-numero-da 
+                                                     stb-numero-a
+                                                     save-numero
+                               perform ELABORAZIONE
+                          end-read
+                       end-perform
+                       close csvInput
+                    else
+                       perform ELABORAZIONE
+                       |||STATO ORDINE XXX
+                       if stbolle-stampa
+                          perform AGGIORNA-MASTER
+                       end-if
+                       |||XXX                    
+                       if stbolle-piu-stampe-si
+                          perform CHIUDI-FILES-STAMPANTI
+                       end-if
                     end-if
                  end-if
               end-if                   

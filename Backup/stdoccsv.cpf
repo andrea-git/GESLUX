@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=form1
 BEFORE_PROGRAM=check-utf-Ev-Before-Program
 AFTER_PROGRAM=check-utf-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4A1492413-769-302234647
+PROGRAM_UNIQUE_CODE=TOTEM-7E4A1422117-259-186055869
 
 {{@DESCRIPTION:
 
@@ -35,15 +35,1138 @@ m_bFixed=1
 
 @}}
 [FDITEM1_WK]
+m_strName=splcrt2graf-link
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM1_WK
+
+@}}
+[FDITEM2_WK]
+m_strName=splcrt2graf-operazione
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM2_WK
+
+@}}
+[FDITEM3_WK]
+m_strName=splcrt2graf-anteprima
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="a"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM3_WK
+
+@}}
+[FDITEM4_WK]
+m_strName=splcrt2graf-stampa
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="s"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM4_WK
+
+@}}
+[FDITEM5_WK]
+m_strName=splcrt2graf-so
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM5_WK
+
+@}}
+[FDITEM6_WK]
+m_strName=splcrt2graf-windows
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="w" " "
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM6_WK
+
+@}}
+[FDITEM7_WK]
+m_strName=splcrt2graf-unix
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="u"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM7_WK
+dalla stampa bolle A4 per indicare il secondo giro 
+
+@}}
+[FDITEM8_WK]
+m_strName=splcrt2graf-percorso-stampa
+m_strRawPic=x(256)
+m_strPic=X(256)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM8_WK
+
+@}}
+[FDITEM9_WK]
+m_strName=splcrt2graf-percorso-stampa-u
+m_strRawPic=x(256)
+m_strPic=X(256)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM9_WK
+dalla stampa bolle A4 per il nome della stampante
+
+@}}
+[FDITEM10_WK]
+m_strName=splcrt2graf-orientamento
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM10_WK
+
+@}}
+[FDITEM11_WK]
+m_strName=splcrt2graf-orizzontale
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="o"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM11_WK
+
+@}}
+[FDITEM12_WK]
+m_strName=splcrt2graf-verticale
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="v" " "
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM12_WK
+
+@}}
+[FDITEM13_WK]
+m_strName=filler
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM13_WK
+
+@}}
+[FDITEM14_WK]
+m_strName=splcrt2graf-forza-crt
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1,
+m_strFalse=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM14_WK
+
+@}}
+[FDITEM15_WK]
+m_strName=splcrt2graf-dim-crt
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM15_WK
+
+@}}
+[FDITEM16_WK]
+m_strName=splcrt2graf-6pt
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=6
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM16_WK
+
+@}}
+[FDITEM17_WK]
+m_strName=splcrt2graf-7pt
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=7
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM17_WK
+
+@}}
+[FDITEM18_WK]
+m_strName=splcrt2graf-8pt
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=8
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM18_WK
+
+@}}
+[FDITEM19_WK]
+m_strName=splcrt2graf-10pt
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=10
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM19_WK
+
+@}}
+[FDITEM20_WK]
+m_strName=splcrt2graf-12pt
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=12
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM20_WK
+
+@}}
+[FDITEM21_WK]
+m_strName=splcrt2graf-grassetto
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM21_WK
+
+@}}
+[FDITEM22_WK]
+m_strName=splcrt2graf-si-grasssetto
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+m_strFalse=space
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_strCopyFile=splcrt2graf.lks
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM22_WK
+
+@}}
+[FDITEM23_WK]
+m_strName=stbolle-linkage
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM23_WK
+
+@}}
+[FDITEM24_WK]
+m_strName=stbolle-TipoStampa
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM24_WK
+
+@}}
+[FDITEM25_WK]
+m_strName=stbolle-Stampa
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM25_WK
+
+@}}
+[FDITEM26_WK]
+m_strName=stbolle-Ristampa
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="R"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM26_WK
+
+@}}
+[FDITEM27_WK]
+m_strName=stbolle-split
+m_strRawPic=x(256)
+m_strPic=X(256)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM27_WK
+
+@}}
+[FDITEM28_WK]
+m_strName=stbolle-Path
+m_strRawPic=x(256)
+m_strPic=X(256)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM28_WK
+
+@}}
+[FDITEM29_WK]
+m_strName=stbolle-data
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM29_WK
+
+@}}
+[FDITEM30_WK]
+m_strName=stbolle-anno
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM30_WK
+
+@}}
+[FDITEM31_WK]
+m_strName=stb-limiti-numero
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM31_WK
+
+@}}
+[FDITEM32_WK]
+m_strName=stb-numero-da
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM32_WK
+
+@}}
+[FDITEM33_WK]
+m_strName=stb-numero-a
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM33_WK
+
+@}}
+[FDITEM34_WK]
+m_strName=link-user
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM34_WK
+
+@}}
+[FDITEM35_WK]
+m_strName=stbolle-chiave
+m_strRawPic=xx
+m_strPic=XX
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM35_WK
+
+@}}
+[FDITEM36_WK]
+m_strName=stbolle-k3
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="K3"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM36_WK
+
+@}}
+[FDITEM37_WK]
+m_strName=stbolle-k-bolla
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="BO"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM37_WK
+
+@}}
+[FDITEM38_WK]
+m_strName=stbolle-ricerca
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM38_WK
+
+@}}
+[FDITEM39_WK]
+m_strName=stbolle-singola
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1,
+m_strFalse=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM39_WK
+
+@}}
+[FDITEM40_WK]
+m_strName=stbolle-piu-stampe
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM40_WK
+****     03 stbolle-tipocli  PIC  x.
+****         88 stbolle-GDO  VALUE IS "G". 
+****         88 stbolle-MV   VALUE IS "M". 
+****         88 stbolle-AT   VALUE IS "A". 
+
+@}}
+[FDITEM41_WK]
+m_strName=stbolle-piu-stampe-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1,
+m_strFalse=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM41_WK
+
+@}}
+[FDITEM42_WK]
+m_strName=stbolle-num-stampe
+m_strRawPic=9(2)
+m_strPic=9(2)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM42_WK
+
+@}}
+[FDITEM43_WK]
+m_strName=stbolle-path1
+m_strRawPic=x(256)
+m_strPic=X(256)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM43_WK
+
+@}}
+[FDITEM44_WK]
+m_strName=stbolle-stampante1
+m_strRawPic=x(100)
+m_strPic=X(100)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM44_WK
+
+@}}
+[FDITEM45_WK]
+m_strName=stbolle-path2
+m_strRawPic=x(256)
+m_strPic=X(256)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM45_WK
+
+@}}
+[FDITEM46_WK]
+m_strName=stbolle-stampante2
+m_strRawPic=x(100)
+m_strPic=X(100)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM46_WK
+
+@}}
+[FDITEM47_WK]
+m_strName=stbolle-path3
+m_strRawPic=x(256)
+m_strPic=X(256)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM47_WK
+
+@}}
+[FDITEM48_WK]
+m_strName=stbolle-stampante3
+m_strRawPic=x(100)
+m_strPic=X(100)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM48_WK
+
+@}}
+[FDITEM49_WK]
+m_strName=stbolle-path4
+m_strRawPic=x(256)
+m_strPic=X(256)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM49_WK
+
+@}}
+[FDITEM50_WK]
+m_strName=stbolle-stampante4
+m_strRawPic=x(100)
+m_strPic=X(100)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM50_WK
+
+@}}
+[FDITEM51_WK]
+m_strName=stbolle-path5
+m_strRawPic=x(256)
+m_strPic=X(256)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM51_WK
+
+@}}
+[FDITEM52_WK]
+m_strName=stbolle-stampante5
+m_strRawPic=x(100)
+m_strPic=X(100)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM52_WK
+
+@}}
+[FDITEM53_WK]
+m_strName=stbolle-path-riepilogo
+m_strRawPic=x(256)
+m_strPic=X(256)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM53_WK
+come path di ritorno per il riepiolo corrieri 
+nuova stampa A4
+@}}
+[FDITEM54_WK]
+m_strName=stbolle-giro
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM54_WK
+
+@}}
+[FDITEM55_WK]
+m_strName=stbolle-prima-bolla
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM55_WK
+
+@}}
+[FDITEM56_WK]
+m_strName=stbolle-ultima-bolla
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM56_WK
+
+@}}
+[FDITEM57_WK]
+m_strName=stbolle-path-file-parallelo
+m_strRawPic=x(200)
+m_strPic=X(200)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM57_WK
+
+@}}
+[FDITEM58_WK]
+m_strName=filler
+m_strRawPic=x(284)
+m_strPic=X(284)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_strCopyFile=link-stbolle.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STBOLLE.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM58_WK
+
+@}}
+[FDITEM59_WK]
+m_strName=stfatt-linkage
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_strCopyFile=link-stfatt.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM59_WK
+
+@}}
+[FDITEM60_WK]
+m_strName=LinkAnno
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_strCopyFile=link-stfatt.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM60_WK
+
+@}}
+[FDITEM61_WK]
+m_strName=LinkElab
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_strCopyFile=link-stfatt.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM61_WK
+
+@}}
+[FDITEM62_WK]
+m_strName=num-da
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_strCopyFile=link-stfatt.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM62_WK
+
+@}}
+[FDITEM63_WK]
+m_strName=num-a
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_strCopyFile=link-stfatt.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM63_WK
+
+@}}
+[FDITEM64_WK]
+m_strName=lotto
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_strCopyFile=link-stfatt.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM64_WK
+
+@}}
+[FDITEM65_WK]
+m_strName=LinkCliente
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_strCopyFile=link-stfatt.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM65_WK
+
+@}}
+[FDITEM66_WK]
+m_strName=Link-tipo-stampa
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_strCopyFile=link-stfatt.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM66_WK
+
+@}}
+[FDITEM67_WK]
+m_strName=tipo-filtro
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_strCopyFile=link-stfatt.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM67_WK
+
+@}}
+[FDITEM68_WK]
+m_strName=agenti
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="A"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_strCopyFile=link-stfatt.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM68_WK
+
+@}}
+[FDITEM69_WK]
+m_strName=NoPostel
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="N"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_strCopyFile=link-stfatt.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM69_WK
+
+@}}
+[FDITEM70_WK]
+m_strName=tutte
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="T"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_strCopyFile=link-stfatt.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM70_WK
+
+@}}
+[FDITEM71_WK]
+m_strName=SoloPDF
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="P"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_strCopyFile=link-stfatt.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM71_WK
+
+@}}
+[FDITEM72_WK]
+m_strName=SoloPDFBatch
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="B"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_strCopyFile=link-stfatt.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM72_WK
+
+@}}
+[FDITEM73_WK]
+m_strName=num-copie
+m_strRawPic=9(3)
+m_strPic=9(3)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_strCopyFile=link-stfatt.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM73_WK
+
+@}}
+[FDITEM74_WK]
+m_strName=tipo-doc
+m_strRawPic=X
+m_strPic=X
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_strCopyFile=link-stfatt.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM74_WK
+
+@}}
+[FDITEM75_WK]
+m_strName=Fatture
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="F"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_strCopyFile=link-stfatt.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM75_WK
+
+@}}
+[FDITEM76_WK]
+m_strName=NoteCredito
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="N"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_strCopyFile=link-stfatt.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM76_WK
+
+@}}
+[FDITEM77_WK]
+m_strName=tutti
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="T"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_strCopyFile=link-stfatt.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM77_WK
+
+@}}
+[FDITEM78_WK]
+m_strName=stfatt-path-log
+m_strRawPic=x(100)
+m_strPic=X(100)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_strCopyFile=link-stfatt.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM78_WK
+
+@}}
+[FDITEM79_WK]
+m_strName=stfatt-path-doc
+m_strRawPic=x(156)
+m_strPic=X(156)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_strCopyFile=link-stfatt.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM79_WK
+
+@}}
+[FDITEM80_WK]
+m_strName=stfatt-status
+m_nUsage=17
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_strCopyFile=link-stfatt.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM80_WK
+
+@}}
+[FDITEM81_WK]
+m_strName=LinkGDO
+m_strRawPic=x(5)
+m_strPic=X(5)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_strCopyFile=link-stfatt.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM81_WK
+
+@}}
+[FDITEM82_WK]
+m_strName=filler
+m_strRawPic=x(95)
+m_strPic=X(95)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_strCopyFile=link-stfatt.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-STFATT.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM82_WK
+
+@}}
+[FDITEM83_WK]
 m_strName=Screen1-Handle
 m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM1_WK
+{{@DataItem_m_strDescriptionFDITEM83_WK
 
 @}}
-[FDITEM2_WK]
+[FDITEM84_WK]
 m_strName=CANCEL-73X21-BMP
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -52,37 +1175,37 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM2_WK
+{{@DataItem_m_strDescriptionFDITEM84_WK
 
 @}}
-[FDITEM3_WK]
+[FDITEM85_WK]
 m_strName=Default-Font
 m_nUsage=38
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM3_WK
+{{@DataItem_m_strDescriptionFDITEM85_WK
 
 @}}
-[FDITEM4_WK]
+[FDITEM86_WK]
 m_strName=Small-Font
 m_nUsage=37
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM4_WK
+{{@DataItem_m_strDescriptionFDITEM86_WK
 
 @}}
-[FDITEM5_WK]
+[FDITEM87_WK]
 m_strName=titolo
 m_strDefaultValue="GESLUX - Stampa documenti da csv"
 m_nItemLevel=78
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM5_WK
+{{@DataItem_m_strDescriptionFDITEM87_WK
 
 @}}
-[FDITEM6_WK]
+[FDITEM88_WK]
 m_strName=bottone-ok-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -91,10 +1214,10 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM6_WK
+{{@DataItem_m_strDescriptionFDITEM88_WK
 
 @}}
-[FDITEM7_WK]
+[FDITEM89_WK]
 m_strName=bottone-cancel-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -103,28 +1226,69 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM7_WK
+{{@DataItem_m_strDescriptionFDITEM89_WK
 
 @}}
-[FDITEM8_WK]
+[FDITEM90_WK]
 m_strName=Verdana12-Occidentale
 m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM8_WK
+{{@DataItem_m_strDescriptionFDITEM90_WK
 
 @}}
-[FDITEM9_WK]
+[FDITEM91_WK]
 m_strName=form1-Handle
 m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM9_WK
+{{@DataItem_m_strDescriptionFDITEM91_WK
 
 @}}
-[FDITEM10_WK]
+[FDITEM92_WK]
+m_strName=file-info
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM92_WK
+
+@}}
+[FDITEM93_WK]
+m_strName=file-size
+m_strRawPic=X(8)
+m_strPic=X(8)
+m_nUsage=8
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM93_WK
+
+@}}
+[FDITEM94_WK]
+m_strName=file-date
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nUsage=8
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM94_WK
+
+@}}
+[FDITEM95_WK]
+m_strName=file-time
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nUsage=8
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM95_WK
+
+@}}
+[FDITEM96_WK]
 m_strName=AUTO-ID
 m_strRawPic=9(6)
 m_strPic=9(6)
@@ -132,29 +1296,29 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM10_WK
+{{@DataItem_m_strDescriptionFDITEM96_WK
 
 @}}
-[FDITEM11_WK]
+[FDITEM97_WK]
 m_strName=Verdana18B-Occidentale
 m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM11_WK
+{{@DataItem_m_strDescriptionFDITEM97_WK
 
 @}}
-[FDITEM12_WK]
+[FDITEM98_WK]
 m_strName=docs
 m_strRawPic=9(5)
 m_strPic=9(5)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM12_WK
+{{@DataItem_m_strDescriptionFDITEM98_WK
 
 @}}
-[FDITEM13_WK]
+[FDITEM99_WK]
 m_strName=tipo-doc
 m_strRawPic=S9(1)
 m_strPic=S9(1)
@@ -162,20 +1326,20 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM13_WK
+{{@DataItem_m_strDescriptionFDITEM99_WK
 
 @}}
-[FDITEM14_WK]
+[FDITEM100_WK]
 m_strName=ef-path-buf
 m_strRawPic=X(2000)
 m_strPic=X(2000)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM14_WK
+{{@DataItem_m_strDescriptionFDITEM100_WK
 
 @}}
-[FDITEM15_WK]
+[FDITEM101_WK]
 m_strName=opensave-status
 m_strRawPic=s99
 m_strPic=s99
@@ -183,36 +1347,105 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM15_WK
+{{@DataItem_m_strDescriptionFDITEM101_WK
 
 @}}
-[FDITEM16_WK]
+[FDITEM102_WK]
+m_strName=como-anno
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM102_WK
+
+@}}
+[FDITEM103_WK]
+m_strName=como-numero
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM103_WK
+
+@}}
+[FDITEM104_WK]
 m_strName=wstampa
 m_strRawPic=X(2000)
 m_strPic=X(2000)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM16_WK
+{{@DataItem_m_strDescriptionFDITEM104_WK
 
 @}}
-[FDITEM17_WK]
+[FDITEM105_WK]
 m_strName=STATUS-lineseq
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM17_WK
+{{@DataItem_m_strDescriptionFDITEM105_WK
 
 @}}
-[FDITEM18_WK]
+[FDITEM106_WK]
 m_strName=Valid-STATUS-lineseq
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM18_WK
+{{@DataItem_m_strDescriptionFDITEM106_WK
+
+@}}
+[FDITEM107_WK]
+m_strName=STATUS-tnotacr
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM107_WK
+
+@}}
+[FDITEM108_WK]
+m_strName=Valid-STATUS-tnotacr
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM108_WK
+
+@}}
+[FDITEM109_WK]
+m_strName=STATUS-tordini
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM109_WK
+
+@}}
+[FDITEM110_WK]
+m_strName=Valid-STATUS-tordini
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM110_WK
+
+@}}
+[FDITEM111_WK]
+m_strName=tipo-doc-s
+m_strRawPic=S9(1)
+m_strPic=S9(1)
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM111_WK
 
 @}}
 
@@ -508,7 +1741,7 @@ Begin Screen form1
       Title             = "&bolle"
       Value             = 0
       Value Picture     = S9(1)
-      Value Variable    = tipo-doc
+      Value Variable    = tipo-doc-s
       Visible           = NONE
       Width in Cells    = TRUE
       Before Procedure  = scr-elab-Rb-1-BeforeProcedure
@@ -559,7 +1792,7 @@ Begin Screen form1
       Title             = "&fatture"
       Value             = 0
       Value Picture     = S9(1)
-      Value Variable    = tipo-doc
+      Value Variable    = tipo-doc-s
       Visible           = NONE
       Width in Cells    = TRUE
       Before Procedure  = scr-elab-Rb-1-BeforeProcedure
@@ -610,7 +1843,7 @@ Begin Screen form1
       Title             = "&note credito"
       Value             = 0
       Value Picture     = S9(1)
-      Value Variable    = tipo-doc
+      Value Variable    = tipo-doc-s
       Visible           = NONE
       Width in Cells    = TRUE
       Before Procedure  = scr-elab-Rb-1-BeforeProcedure
@@ -648,7 +1881,7 @@ Begin Screen form1
       Lines             = 2,50
       Lines Unit        = Default
       Max Lines         = 0
-      Max Text          = 0
+      Max Text          = 200
       Max Value         = 0
       Min Value         = 0
       No AutoSel        = FALSE
@@ -1088,7 +2321,7 @@ BEGIN-DATA
    TEXTMODE          = 0
    ENTRYPOINT        = BeforeAccept
 BEGIN-TEXT
-           move 1 to tipo-doc.
+           move 1 to tipo-doc-s.
            display form1.
 END-TEXT
 END-DATA
@@ -1177,7 +2410,7 @@ BEGIN-TEXT
            end-perform.
 
            if tutto-ok
-              evaluate tipo-doc
+              evaluate tipo-doc-s
               when 1
                    display message "Confermi la ristampa delle bolle?"
                              title titolo
@@ -1208,28 +2441,137 @@ BEGIN-TEXT
            if tutto-ok
               move 0 to docs
               call "W$MOUSE" using set-mouse-shape, wait-pointer
-              call "W$MOUSE" using set-mouse-shape, arrow-pointer
-
-              evaluate tipo-doc
-              when 1
-                   display message "OPERAZIONE TERMINATA!!!"
-                            x"0d0a""STAMPATE " docs " BOLLE"
-                             title titolo
-                              icon 2
-              when 2
-                   display message "OPERAZIONE TERMINATA!!!"
-                            x"0d0a""STAMPATE " docs " FATTURE"
-                             title titolo
-                              icon 2
-              when 3
-                   display message "OPERAZIONE TERMINATA!!!"
-                            x"0d0a""STAMPATE " docs " NOTE CREDITO"
-                             title titolo
-                              icon 2
-              end-evaluate
+              move ef-path-buf to wstampa
+              open input lineseq
+              move 0 to docs
+              perform until 1 = 2
+                 read lineseq next at end exit perform end-read
+                 unstring line-riga delimited by ";"
+                     into como-anno 
+                          como-numero 
+                 end-unstring
+                 add 1 to docs
+                 evaluate tipo-doc-s
+                 when 1 perform CHECK-BOLLE
+                 when 2 perform CHECK-FATTURE
+                 when 3 perform CHECK-NOTECR
+                 end-evaluate
+                 if errori
+                    exit perform
+                 end-if
+              end-perform
+              close lineseq
+              if tutto-ok
+                 evaluate tipo-doc-s
+                 when 1 perform STAMPA-BOLLE
+                 when 2 perform STAMPA-FATTURE
+                 when 3 perform STAMPA-NOTECR
+                 end-evaluate             
+                 display message "OPERAZIONE TERMINATA!!!"          
+                           title titolo
+                           icon 2
+      *****                         x"0d0a""STAMPATE " docs " BOLLE"
+      *****           when 2
+      *****                display message "OPERAZIONE TERMINATA!!!"
+      *****                         x"0d0a""STAMPATE " docs " FATTURE"
+      *****                          title titolo
+      *****                           icon 2
+      *****           when 3
+      *****                display message "OPERAZIONE TERMINATA!!!"
+      *****                         x"0d0a""STAMPATE " docs " NOTE CREDITO"
+      *****                          title titolo
+      *****                           icon 2
+      *****           end-evaluate
+              end-if
+              call "W$MOUSE" using set-mouse-shape, arrow-pointer 
               modify pb-sib, bitmap-number = 1
               move             4 to accept-control
            end-if.
+
+      ***---
+       CHECK-BOLLE.           
+           move como-anno   to tor-anno-bolla.
+           move como-numero to tor-num-bolla.
+           read tordini key k-bolla
+                invalid
+                display message "Elaborazione non valida!"
+                         x"0d0a""Bolla non valida" 
+                         x"0d0a""ANNO: ", como-anno
+                         x"0d0a""NUMERO: ", como-numero
+                         x"0d0a""Riga: ", docs
+                set errori to true
+           end-read.    
+
+      ***---
+       CHECK-FATTURE.           
+           move como-anno   to tor-anno-fattura.
+           move como-numero to tor-num-fattura.
+           read tordini key k-fattura
+                invalid
+                display message "Elaborazione non valida!"
+                         x"0d0a""Fattura non valida" 
+                         x"0d0a""ANNO: ", como-anno
+                         x"0d0a""NUMERO: ", como-numero
+                         x"0d0a""Riga: ", docs
+                set errori to true
+           end-read.    
+
+      ***---
+       CHECK-NOTECR.
+           move como-anno   to tno-anno-fattura.
+           move como-numero to tno-num-fattura.
+           read tnotacr key k-fattura
+                invalid
+                display message "Elaborazione non valida!"
+                         x"0d0a""Nota CR non valida" 
+                         x"0d0a""ANNO: ", como-anno
+                         x"0d0a""NUMERO: ", como-numero
+                         x"0d0a""Riga: ", docs
+                set errori to true
+           end-read.    
+
+      ***---
+       STAMPA-BOLLE.
+           initialize stbolle-linkage.
+           set stbolle-ristampa to true.
+           move tor-anno        to stbolle-anno.
+           move ef-path-buf     to stbolle-path-csv.
+           set  stbolle-k-bolla to true.
+           set  stbolle-singola to true.
+
+           move spaces to stbolle-path.
+           call   "stbolle-p" using stbolle-linkage.
+           cancel "stbolle-p".
+
+      ***---
+       STAMPA-FATTURE.  
+           initialize stfatt-linkage replacing numeric data by zeroes
+                                          alphanumeric data by spaces.
+           move ef-path-buf      to stfatt-path-csv.
+           move 1                to LinkElab.
+           set  tutte            to true.
+           move 1                to num-copie.
+           set  Fatture          to true.
+           |STAMPA "COPIA" AD USO INTERNO
+LUBEXX     move 1 to link-tipo-stampa.
+
+           call   "stfatt-p"  using stfatt-linkage.
+           cancel "stfatt-p".
+
+      ***---
+       STAMPA-NOTECR.   
+           initialize stfatt-linkage replacing numeric data by zeroes
+                                          alphanumeric data by spaces.
+           move ef-path-buf      to stfatt-path-csv.
+           move 1                to LinkElab.
+           set  tutte            to true.
+           move 1                to num-copie.
+           set  NoteCredito      to true.
+           |STAMPA "COPIA" AD USO INTERNO
+LUBEXX     move 1 to link-tipo-stampa. 
+
+           call   "stfatt-p"  using stfatt-linkage.
+           cancel "stfatt-p".
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -1279,21 +2621,21 @@ BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = rb-b-LinkTo
 BEGIN-TEXT
-           move 1 to tipo-doc.
+           move 1 to tipo-doc-s.
 END-TEXT
 END-DATA
 BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = rb-f-LinkTo
 BEGIN-TEXT
-           move 2 to tipo-doc.
+           move 2 to tipo-doc-s.
 END-TEXT
 END-DATA
 BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = rb-nc-LinkTo
 BEGIN-TEXT
-           move 3 to tipo-doc.
+           move 3 to tipo-doc-s.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -1398,10 +2740,14 @@ PROP_DOCU_RULER_EBL=0
 PROP_DOCU_GRID_EBL=0
 PROP_DOCU_GRID=20
 PROP_DOCU_ALIGN=0
-REL_SYM_SIZE=10
-REL_SYM_INFO_L=1
+REL_SYM_SIZE=22
+REL_SYM_INFO_L=3
 REL_SYM_INFO_X0=2301
 REL_SYM_INFO_Y0=1038951080
+REL_SYM_INFO_X1=2301
+REL_SYM_INFO_Y1=1773249708
+REL_SYM_INFO_X2=2301
+REL_SYM_INFO_Y2=1881864396
 
 [DRAW_BASESYMBOL_2301_1038951080]
 OBJ_NAME=2301
@@ -1418,6 +2764,102 @@ LEFT=1748
 TOP=1082
 RIGHT=2148
 BOTTOM=1304
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1773249708]
+OBJ_NAME=2301
+OBJ_ID=1773249708
+KIND=1
+{{@LABEL_2301_1773249708
+tnotacr
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=899
+TOP=566
+RIGHT=1299
+BOTTOM=788
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1881864396]
+OBJ_NAME=2301
+OBJ_ID=1881864396
+KIND=1
+{{@LABEL_2301_1881864396
+tordini
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1182
+TOP=50
+RIGHT=1582
+BOTTOM=272
 PROP_OBJ_TYPE=
 PROP_OBJ_TYPE2=
 PROP_FILL_PT=0
@@ -1488,6 +2930,68 @@ DSN_INFO_END_VALUE=
 DSN_INFO_PRIMARY=1
 DSN_INFO_OPEN=0
 DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1773249708]
+OBJ_NAME=0
+OBJ_ID=1773249708
+REL_M_OBJ_ID=0
+ENTITY=tnotacr
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tno-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1773249708
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1881864396]
+OBJ_NAME=0
+OBJ_ID=1881864396
+REL_M_OBJ_ID=0
+ENTITY=tordini
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tor-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1881864396
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
 DSN_INFO_EXCLUSIVE=0
 DSN_INFO_IS_LOGICAL=0
 DSN_INFO_LOGICAL_FDNAME=

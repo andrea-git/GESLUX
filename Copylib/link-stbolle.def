@@ -38,9 +38,10 @@
            03 stbolle-path-riepilogo pic x(256).
            03 stbolle-giro           pic 9.   
            03 stbolle-prima-bolla    pic 9(8).
-           03 stbolle-ultima-bolla   pic 9(8).
+           03 stbolle-ultima-bolla   pic 9(8).             
            03 stbolle-path-file-parallelo pic x(200).
-           03 filler             pic x(284).
+           03 stbolle-path-csv       pic x(200).
+           03 filler                 pic x(84).
 
 
            

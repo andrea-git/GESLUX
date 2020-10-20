@@ -3,6 +3,10 @@
            if PrimaVolta
               set PrimaVolta to false
               perform APRI-STAMPA-GRAF
+           else
+              if calling-program = "stdoccsv"
+                 perform SALTO-PAGINA-GRAF
+              end-if
            end-if
                                 
            move tor-cod-cli to cli-codice.
