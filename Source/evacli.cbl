@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 20 ottobre 2020 01:27:07.
+       DATE-WRITTEN.        martedì 20 ottobre 2020 12:11:50.
        REMARKS.
       *{TOTEM}END
 
@@ -374,6 +374,10 @@
            05 col-des          PIC  x(50).
        77 counter          PIC  9(10).
        77 counter2         PIC  9(10).
+      *(( XFD NAME = mag-principale_1_2 ))
+       01 save-mag-blocco-24000        PIC  X(1).
+           88 save-mag-blocco-24000-si VALUE IS "S". 
+           88 save-mag-blocco-24000-no VALUE IS "N", " ". 
        01 gd2-rec.
            05 col2-articolo    PIC  z(6).
            05 col2-descrizione PIC  x(50).
@@ -13417,6 +13421,7 @@
                   mag-descrizione delimited size
                   into lab-mag-buf
            end-string.
+           move mag-blocco-24000 to save-mag-blocco-24000.
            display lab-mag.
       *****     if mag-complete-si
       *****        set EvasioneIntera to true
@@ -14033,7 +14038,7 @@
               if tte-split-24000-si
                  if k-mro-blister-no
                     |La riga per intero non ci sta tutta
-                    if save-magazzino = "LBX"
+                    if save-mag-blocco-24000-si
                        move 24000 to max-peso
                     else
                        move 999999999999999999 to max-peso
@@ -14057,7 +14062,7 @@
                              exit perform
                           end-if
                           |Li supererò con la prossima riga
-                          if ( peso-riga + tot-peso ) > 24000
+                          if ( peso-riga + tot-peso ) > max-peso
                              |Significa che la prima riga sfora pertanto
                              |necessita di una nuova testa
                              if num-imballi = 1
@@ -14640,7 +14645,7 @@
                  move tte-destino to como-prm-destino
                  perform TROVA-PARAMETRO
                                     
-                 if save-magazzino = "LBX"
+                 if save-mag-blocco-24000-si
                     move 24000 to max-peso
                  else
                     move 999999999999999999 to max-peso

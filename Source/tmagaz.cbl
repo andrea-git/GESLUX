@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          tmagaz.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 29 febbraio 2020 17:35:23.
+       DATE-WRITTEN.        martedì 20 ottobre 2020 12:08:36.
        REMARKS.
       *{TOTEM}END
 
@@ -137,6 +137,7 @@
            05 col-gen-auto     PIC  X.
                88 col-gen-auto-si VALUE IS "S". 
                88 col-gen-auto-no VALUE IS "N", " ". 
+           05 col-blocco-24000 PIC  x.
        77 Screen1-Handle
                   USAGE IS HANDLE OF WINDOW.
        77 esegui-73x21-bmp PIC  S9(9)
@@ -170,7 +171,7 @@
                    88 old-mag-tutte VALUE IS "T". 
                    88 old-mag-solo-no-utf VALUE IS "S". 
                    88 old-mag-nessuno VALUE IS "N". 
-      *(( XFD NAME = mag-principale_1 ))
+      *(( XFD NAME = mag-principale_1_1 ))
                10 old-mag-utf      PIC  X(1).
                    88 old-mag-si-utf VALUE IS "S". 
                    88 old-mag-no-utf VALUE IS "N". 
@@ -184,17 +185,45 @@
            x(10).
                10 old-mag-vuoti.
                    15 old-mag-perce-riordino       PIC  9(3)v999.
-                   15 old-mag-num-vuoto-1          PIC  9(9).
-                   15 old-mag-num-vuoto-2          PIC  9(15).
-                   15 old-mag-num-vuoto-3          PIC  9(15).
+                   15 old-mag-causali.
+                       20 old-mag-cau-c    PIC  x(4).
+                       20 old-mag-cau-s    PIC  x(4).
+                   15 old-mag-causali-bozza-nc.
+      *(( XFD NAME = mag-cau-c_1 ))
+                       20 old-mag-cau-reso PIC  x(4).
+      *(( XFD NAME = mag-cau-s_1 ))
+                       20 old-mag-cau-diff PIC  x(4).
+                   15 old-mag-vettore  PIC  9(5).
+                   15 old-mag-num-vuoto-3          PIC  9(18).
                    15 old-mag-per-promo            PIC  x.
                        88 old-mag-per-promo-si VALUE IS "S". 
                        88 old-mag-per-promo-no VALUE IS "N". 
                    15 old-mag-causale-eva          PIC  x(4).
                    15 old-mag-causale-omag         PIC  x(4).
-                   15 old-mag-alfa-vuoto-1         PIC  x(11).
-                   15 old-mag-alfa-vuoto-2         PIC  x(20).
-                   15 old-mag-alfa-vuoto-3         PIC  x(19).
+                   15 old-mag-sostituzione         PIC  x.
+                       88 old-mag-sostituzione-si VALUE IS "S". 
+                       88 old-mag-sostituzione-no VALUE IS "N". 
+      *(( XFD NAME = mag-principale_1_2 ))
+                   15 old-mag-blocco-24000         PIC  X(1).
+                       88 old-mag-blocco-24000-si VALUE IS "S". 
+                       88 old-mag-blocco-24000-no VALUE IS "N", " ". 
+                   15 old-mag-blister  PIC  x.
+                       88 old-mag-blister-si VALUE IS "S". 
+                       88 old-mag-blister-no VALUE IS "N". 
+                   15 old-mag-tab-scorte.
+                       20 old-mag-sco-codice           PIC  xx
+                                  OCCURS 20 TIMES.
+                   15 old-mag-ritira-lbx           PIC  x.
+                       88 old-mag-ritira-lbx-si VALUE IS "S". 
+                       88 old-mag-ritira-lbx-no VALUE IS "N". 
+                   15 old-mag-priorita-mag         PIC  99.
+                   15 old-mag-da-inviare           PIC  x.
+                       88 old-mag-da-inviare-si VALUE IS "S". 
+                       88 old-mag-da-inviare-no VALUE IS "N", " ". 
+                   15 old-mag-gen-auto PIC  x.
+                       88 old-mag-gen-auto-si VALUE IS "S". 
+                       88 old-mag-gen-auto-no VALUE IS "N", " ". 
+                   15 old-mag-alfa-vuoto-3         PIC  x(2).
        77 FILLER           PIC  XX.
            88 trovato-uno VALUE IS "SI"    WHEN SET TO FALSE  "NO". 
            88 trovato-nessuno VALUE IS "NO". 
@@ -308,21 +337,21 @@
        05
            form1-gd-1, 
            Grid, 
-           COL 1,50, 
+           COL 1,33, 
            LINE 1,69,
            LINES 29,00 ,
-           SIZE 239,00 ,
+           SIZE 253,17 ,
            ADJUSTABLE-COLUMNS,
            BOXED,
            DATA-COLUMNS (1, 4, 54, 55, 56, 57, 64, 65, 69, 73, 74, 75, 
-           76, 80, 84, 88, 92, 97, 99, 100),
+           76, 80, 84, 88, 92, 97, 99, 100, 101),
            ALIGNMENT ("L", "U", "C", "C", "C", "C", "C", "C", "C", "C", 
-           "C", "C", "C", "C", "C", "C", "R", "R", "C", "C"),
+           "C", "C", "C", "C", "C", "C", "R", "R", "C", "C", "C"),
            SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 
-           5, 5, 5, 5),
+           5, 5, 5, 5, 5),
            DATA-TYPES ("X(3)", "X(50)", "U(1)", "U(1)", "U(1)", "9(7)", 
            "U(1)", "U(4)", "U(4)", "U(1)", "U(1)", "U(1)", "U(4)", "U(4)
-      -    "", "U(4)", "U(4)", "zzzz9", "X", "U(1)", "U(1)"),
+      -    "", "U(4)", "U(4)", "zzzz9", "X", "U(1)", "U(1)", "U(1)"),
            NUM-COL-HEADINGS 1,
            COLUMN-HEADINGS,
            CURSOR-FRAME-WIDTH 2,
@@ -336,7 +365,7 @@
            RECORD-DATA rec-grid,
            TILED-HEADINGS,
            USE-TAB,
-           VIRTUAL-WIDTH 236,
+           VIRTUAL-WIDTH 250,
            VPADDING 30,
            VSCROLL,
            EVENT PROCEDURE Form1-Gd-1-Event-Proc,
@@ -346,7 +375,7 @@
        05
            gd-scorte, 
            Grid, 
-           COL 94,33, 
+           COL 101,33, 
            LINE 33,00,
            LINES 11,92 ,
            SIZE 53,17 ,
@@ -375,7 +404,7 @@
        05
            Form1-La-1, 
            Label, 
-           COL 94,33, 
+           COL 101,33, 
            LINE 31,31,
            LINES 1,31 ,
            SIZE 53,17 ,
@@ -1743,6 +1772,9 @@
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 20, Y = 1,
                 CELL-DATA = "Gen. auto",
+      * CELLS' SETTING
+              MODIFY form1-gd-1, X = 21, Y = 1,
+                CELL-DATA = "Blocco 24000",
       * COLUMNS' SETTING
               MODIFY form1-gd-1, X = 1  
                 COLUMN-FONT = Small-Font,
@@ -1830,7 +1862,7 @@
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
               LINES 46,15,
-              SIZE 240,00,
+              SIZE 254,00,
               COLOR 65793,
               CONTROL FONT Small-Font,
               LINK TO THREAD,
@@ -1866,7 +1898,7 @@
       * DISPLAY-COLUMNS settings
               MODIFY form1-gd-1, DISPLAY-COLUMNS (1, 11, 57, 67, 82, 
            92, 103, 113, 123, 133, 143, 153, 163, 173, 183, 193, 203, 
-           213, 217, 227)
+           213, 217, 227, 237)
               MODIFY gd-scorte, DISPLAY-COLUMNS (1, 7)
            .
 
@@ -2879,7 +2911,7 @@
       * <TOTEM:PARA. COLORE-RIGA>
            if riga < 2 move 2 to riga end-if.
 
-           modify form1-gd-1, start-x = 1, x = 20,
+           modify form1-gd-1, start-x = 1, x = 21,
                                   start-y = riga,
                                         y = riga,
                                   region-color 257,
@@ -3255,6 +3287,18 @@
                                      icon 2
                 end-evaluate
 
+           when 21
+                inquire form1-gd-1(riga, 21) cell-data col-blocco-24000
+                evaluate col-blocco-24000
+                when "S"
+                when "N"   continue
+                when other set errori to true
+                           move 21    to colonna
+                           display message "Valori ammessi: S o N"
+                                    title tit-err
+                                     icon 2
+                end-evaluate
+
            end-evaluate.
 
            if errori
@@ -3391,6 +3435,7 @@
               
                           move mag-da-inviare       to col-da-inviare
                           move mag-gen-auto         to col-gen-auto
+                          move mag-blocco-24000     to col-blocco-24000
                           modify form1-gd-1(riga, 1),  cell-data col-id 
                           
                           modify form1-gd-1(riga, 2),  cell-data 
@@ -3430,7 +3475,9 @@
                           modify form1-gd-1(riga, 19), cell-data 
            col-da-inviare        
                           modify form1-gd-1(riga, 20), cell-data 
-           col-gen-auto
+           col-gen-auto       
+                          modify form1-gd-1(riga, 21), cell-data 
+           col-blocco-24000
 
                           evaluate true
                           when si-principale
@@ -3595,7 +3642,7 @@
 
       * RESTANTI CONTROLLI
            perform varying colonna from 1 by 1 
-                     until colonna > 17
+                     until colonna > 21
               perform CONTROLLO
               if errori exit perform end-if
            end-perform.
@@ -3739,6 +3786,7 @@
            inquire form1-gd-1(riga, 18), cell-data mag-priorita-mag.
            inquire form1-gd-1(riga, 19), cell-data mag-da-inviare.
            inquire form1-gd-1(riga, 20), cell-data mag-gen-auto.
+           inquire form1-gd-1(riga, 21), cell-data mag-blocco-24000.
 
            if mag-principale = spaces
               set no-mag-principale to true
