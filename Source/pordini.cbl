@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 4 marzo 2020 13:13:09.
+       DATE-WRITTEN.        mercoledì 21 ottobre 2020 17:49:25.
        REMARKS.
       *{TOTEM}END
 
@@ -604,7 +604,7 @@
        77 TMP-DataSet1-destinif-BUF     PIC X(1322).
        77 TMP-DataSet1-impforn-BUF     PIC X(220).
        77 TMP-DataSet1-tlistini-BUF     PIC X(257).
-       77 TMP-DataSet1-lineseq-BUF     PIC X(900).
+       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-tmp-ordf-art-BUF     PIC X(112).
        77 TMP-DataSet1-rordforn-BUF     PIC X(544).
        77 TMP-DataSet1-tordforn-BUF     PIC X(556).
@@ -617,7 +617,7 @@
        77 TMP-DataSet1-fileseq-BUF     PIC X(32000).
        77 TMP-DataSet1-tsetinvio-BUF     PIC X(1023).
        77 TMP-DataSet1-param-BUF     PIC X(980).
-       77 TMP-DataSet1-lineseq1-BUF     PIC X(900).
+       77 TMP-DataSet1-lineseq1-BUF     PIC X(1000).
        77 TMP-DataSet1-qta-pordini-BUF     PIC X(7048).
        77 TMP-DataSet1-genlog-BUF     PIC X(900).
       * VARIABLES FOR RECORD LENGTH.
@@ -12274,7 +12274,7 @@
                                if ( ord2-giac + como-ordinato - 
            ord2-promo ) <
                                   ( ( ord2-riordino - ord2-consegna ) * 
-           2 )
+           sco-molt-pordini )
                                   if forza-conferma
                                      set ord2-listino-no to true
                                   else

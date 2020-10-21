@@ -4,5 +4,9 @@
            when 78-ID-ef-codice
                 inquire ef-codice, value in ef-codice-buf
 
+           |78-ID-ef-molt è l'ID del control ef-molt
+           when 78-ID-ef-molt
+                inquire ef-molt, value in ef-molt-buf
+
            end-evaluate.
 
