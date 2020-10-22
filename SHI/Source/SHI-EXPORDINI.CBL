@@ -900,18 +900,19 @@
       ***---
        ELABORAZIONE.
            initialize bozze-elab replacing numeric data by zeroes.
-           
-           move low-value to tor-anno-bolla tor-num-bolla.
+           set tor-da-inviare-si   to true.
+           move low-value          to tor-chiave.
  
-           start tordini key >= tor-chiave
-                 invalid set errori to true
+           start tordini key not < k-tor-inviare
+              invalid  
+                 set errori to true
            end-start.
            if tutto-ok
               perform until 1 = 2
                  read tordini next no lock
                    at end exit perform 
                  end-read        
-                 if tor-anno-bolla not = 0 or tor-num-bolla not = 0
+                 if tor-da-inviare-no
                     exit perform
                  end-if
                  if primo-numero = 0
