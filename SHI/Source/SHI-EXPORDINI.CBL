@@ -903,8 +903,6 @@
            
            move low-value to tor-anno-bolla tor-num-bolla.
  
-           move 2020 to tor-anno
-           move 54036 to tor-numero
            start tordini key >= tor-chiave
                  invalid set errori to true
            end-start.
@@ -913,7 +911,6 @@
                  read tordini next no lock
                    at end exit perform 
                  end-read        
-                 if tor-numero > 54037 exit perform end-if
                  if tor-anno-bolla not = 0 or tor-num-bolla not = 0
                     exit perform
                  end-if
