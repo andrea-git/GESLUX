@@ -45,7 +45,10 @@
                    15 mag-sostituzione PIC  x.
                        88 mag-sostituzione-si VALUE IS "S". 
                        88 mag-sostituzione-no VALUE IS "N". 
-                   15 FILLER           PIC  x.
+      *(( XFD NAME = mag-principale_1_2 ))
+                   15 mag-blocco-24000 PIC  X(1).
+                       88 mag-blocco-24000-si VALUE IS "S". 
+                       88 mag-blocco-24000-no VALUE IS "N", " ". 
                    15 mag-blister      PIC  x.
                        88 mag-blister-si VALUE IS "S". 
                        88 mag-blister-no VALUE IS "N". 
