@@ -4,8 +4,13 @@
               set PrimaVolta to false
               perform APRI-STAMPA-GRAF
            else
-              if calling-program = "stdoccsv"
-                 perform SALTO-PAGINA-GRAF
+              if calling-program = "stdoccsv" 
+                 if stampa--segue
+                    call "W$BITMAP" using wbitmap-destroy, 
+                                          BitmapSfondoHandle
+                 else
+                    perform SALTO-PAGINA-GRAF
+                 end-if
               end-if
            end-if
                                 
@@ -340,7 +345,11 @@
               move 1                  to spl-margine-sinistro
               move 1                  to spl-margine-destro
               move 1                  to spl-margine-inf
-              move "Stampa Bolle"     to spl-nome-job
+              if calling-program = "stdoccsv"
+                 move "Stampa Elenco bolle da csv"  to spl-nome-job
+              else
+                 move "Stampa Bolle"                to spl-nome-job
+              end-if
               call "spooler"        using spooler-link
            else
               set spl-sta-annu to true

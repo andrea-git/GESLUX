@@ -1031,7 +1031,12 @@ LUBEXX           end-if
       ***---
        LOOP-RIGHE-ORDINE.
            initialize spooler-link.
-           move "GESLUX - Stampa Fatture" to spl-nome-job.
+           if calling-pgm = "stdoccsv"
+              move "GESLUX - Stampa elenco fatture da csv" 
+                to spl-nome-job
+           else
+              move "GESLUX - Stampa Fatture" to spl-nome-job
+           end-if.
            if PrimaVolta    
               if SoloPDF
                  perform CREA-PDF
@@ -1121,7 +1126,11 @@ LUBEXX           end-if
       ***---
        LOOP-RIGHE-NOTA-CREDITO.
            if spl-nome-job = spaces
-              move "GESLUX - Stampa NC" to spl-nome-job
+              if calling-pgm = "stdoccsv"
+                 move "GESLUX - Stampa elenco NC da csv" to spl-nome-job
+              else                       
+                 move "GESLUX - Stampa NC" to spl-nome-job
+              end-if
            end-if.
            if PrimaVolta
               if SoloPDF       

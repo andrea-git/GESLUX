@@ -1020,6 +1020,8 @@ LUBEXX     |9 misura stampante Lubex primo piano (Epson DFX 5000+)
                                                      stb-numero-a
                                                      save-numero
                                perform ELABORAZIONE
+                               call "W$BITMAP" using wbitmap-destroy, 
+                                                     BitmapSfondoHandle
                           end-read
                        end-perform
                        close csvInput
