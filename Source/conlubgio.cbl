@@ -166,6 +166,9 @@
        01  filler                pic 9 value 0.
            88 RichiamoSchedulato          value 1, false 0.      
 
+       01  filler                pic 9 value 0.
+           88 ordine-non-trovato       value 1, false 0.      
+
        77  pattern               pic x(50)   value spaces.
        77  dir-Handle            handle.
        77  MSG-Folder-Name       pic x(256)  value spaces.
@@ -191,21 +194,29 @@
                 move "File [TORDINI] inesistente!" to como-messaggio
                 perform COMPONI-RIGA-LOG
                 set errori to true
-                move -1 to batch-status
+                if RichiamoSchedulato
+                   move -1 to batch-status
+                end-if
            when "39"
                 move "File [TORDINI] mismatch size!" to como-messaggio
                 perform COMPONI-RIGA-LOG
                 set errori to true      
-                move -1 to batch-status
+                if RichiamoSchedulato
+                   move -1 to batch-status
+                end-if
            when "98"
                 move "[TORDINI] indexed file corrupt!" to como-messaggio
                 perform COMPONI-RIGA-LOG
-                set errori to true      
-                move -1 to batch-status
+                set errori to true     
+                if RichiamoSchedulato
+                   move -1 to batch-status
+                end-if
            when "93" 
                 move "FILE TORDINI IN USO" to como-messaggio
                 perform COMPONI-RIGA-LOG
-                move -1 to batch-status
+                if RichiamoSchedulato
+                   move -1 to batch-status
+                end-if
                 set errori to true
            when "99" 
                 initialize como-messaggio
@@ -216,7 +227,9 @@
                   into como-messaggio
                 end-string
                 perform COMPONI-RIGA-LOG
-                move 1 to batch-status
+                if RichiamoSchedulato
+                   move -1 to batch-status
+                end-if
                 set errori to true
            end-evaluate. 
 
@@ -280,7 +293,9 @@
               move "PATH IMPORT NON IMPOSTATO: CONLUBGIO_PATH_IMPORT" 
                 to como-messaggio
               perform COMPONI-RIGA-LOG
-              move -1 to batch-status
+              if RichiamoSchedulato
+                 move -1 to batch-status
+              end-if
               set errori to true
            end-if.
                                                                        
@@ -289,7 +304,9 @@
               move "PATH BACKUP NON IMPOSTATO: CONLUBGIO_PATH_BACKUP" 
                 to como-messaggio
               perform COMPONI-RIGA-LOG
-              move -1 to batch-status
+              if RichiamoSchedulato
+                 move -1 to batch-status
+              end-if
               set errori to true
            end-if.
            
@@ -298,7 +315,9 @@
               move "DESTINI POSTA NON IMPOSTATO: CONLUBGIO_ADDRESSES" 
                 to como-messaggio
               perform COMPONI-RIGA-LOG
-              move -1 to batch-status
+              if RichiamoSchedulato
+                 move -1 to batch-status
+              end-if
               set errori to true
            end-if.
 
@@ -416,7 +435,9 @@
                                                     delimited size
                 into como-messaggio
               end-string           
-              move 1 to batch-status
+              if RichiamoSchedulato
+                 move -1 to batch-status
+              end-if
               perform COMPONI-RIGA-LOG        
               add 1 to n-no-bolla
            else
@@ -441,8 +462,13 @@
                           into como-messaggio
                         end-string
                         perform COMPONI-RIGA-LOG
-                        move 1 to batch-status 
-                        add 1 to n-no-ordine
+                        if RichiamoSchedulato
+                           move -1 to batch-status
+                        end-if
+                        add  1 to n-no-ordine
+                        set ordine-non-trovato to true
+                        perform MSG-ERRORE-PRENF      
+                        set ordine-non-trovato to false
                     not invalid
                         if tor-anno-bolla not = 0 or
                            tor-data-bolla not = 0 or
@@ -460,7 +486,9 @@
                                                  delimited size
                              into como-messaggio
                            end-string           
-                           move 1 to batch-status
+                           if RichiamoSchedulato
+                              move -1 to batch-status
+                           end-if
                            perform COMPONI-RIGA-LOG 
                            add 1 to n-gia-bolla
                         else   
@@ -522,7 +550,9 @@
                                                 delimited size
                      into como-messaggio
                    end-string                    
-                   move 1 to batch-status
+                   if RichiamoSchedulato
+                      move -1 to batch-status
+                   end-if
                    perform COMPONI-RIGA-LOG
               end-read                  
            end-if.
@@ -629,42 +659,46 @@
 
       ***---
        MSG-ERRORE-PRENF.
-LUBEXX     evaluate true
-LUBEXX     when errore-contatore
-LUBEXX          move "Contatore anno esercizio inesistente!" 
-                  to msg-err-pren
-
-LUBEXX     when errore-prezzo
-LUBEXX          move "Prezzo incoerente!!!"
-                  to msg-err-pren
-           when errore-omaggio
-                move "Prenotazione impossibile!!!"
-                  to msg-err-pren
-           when errore-iva-no-E15
-                move "Iva E15 non presente"
-                  to msg-err-pren
-           when errore-imposte
-                move "Ricalcolare le imposte ripassando la riga"
-                  to msg-err-pren
-           when errore-prezzo-master
-                move "Il prezzo non coincide con l'ordine master"
-                  to msg-err-pren
-           when errore-prog-master
-                move "L'articolo non coincide con l'ordine master"
-                  to msg-err-pren
-           when errore-E15-no-zero
-                move "Iva esente con valori monetari"
-                  to msg-err-pren
-           when errore-iva-020
-                move "Codice IVA 20"
-                  to msg-err-pren
-           when errore-iva-021
-                move "Prenotazione impossibile!!!"
-                  to msg-err-pren
-           when errore-totale-0
-                move "Importo totale 0"
-                  to msg-err-pren
-           end-evaluate.
+           if ordine-non-trovato
+              move "Ordine non trovato" to msg-err-pren
+           else
+LUBEXX        evaluate true
+LUBEXX        when errore-contatore
+LUBEXX             move "Contatore anno esercizio inesistente!" 
+                     to msg-err-pren
+           
+LUBEXX        when errore-prezzo
+LUBEXX             move "Prezzo incoerente!!!"
+                     to msg-err-pren
+              when errore-omaggio
+                   move "Prenotazione impossibile!!!"
+                     to msg-err-pren
+              when errore-iva-no-E15
+                   move "Iva E15 non presente"
+                     to msg-err-pren
+              when errore-imposte
+                   move "Ricalcolare le imposte ripassando la riga"
+                     to msg-err-pren
+              when errore-prezzo-master
+                   move "Il prezzo non coincide con l'ordine master"
+                     to msg-err-pren
+              when errore-prog-master
+                   move "L'articolo non coincide con l'ordine master"
+                     to msg-err-pren
+              when errore-E15-no-zero
+                   move "Iva esente con valori monetari"
+                     to msg-err-pren
+              when errore-iva-020
+                   move "Codice IVA 20"
+                     to msg-err-pren
+              when errore-iva-021
+                   move "Prenotazione impossibile!!!"
+                     to msg-err-pren
+              when errore-totale-0
+                   move "Importo totale 0"
+                     to msg-err-pren
+              end-evaluate
+           end-if.
            initialize como-messaggio.
            string "FILE: "                       delimited size
                   nome-file                      delimited low-value
@@ -692,15 +726,16 @@ LUBEXX          move "Prezzo incoerente!!!"
              into como-messaggio
            end-string.        
            if idx-err = 0                   
-              accept  wstampa from environment "PATH_ST"
-              inspect wstampa replacing trailing spaces by low-value
-              string  wstampa    delimited low-value
-                      "ERR-SEQ"  delimited size
-                      "_"        delimited size
-                      como-data  delimited size
-                      "_"        delimited size
-                      como-ora   delimited size
-                      ".txt"     delimited size
+              accept  err-seq-path from environment "PATH_ST"
+              inspect err-seq-path 
+                      replacing trailing spaces by low-value
+              string  err-seq-path delimited low-value
+                      "ERR-SEQ"    delimited size
+                      "_"          delimited size
+                      como-data    delimited size
+                      "_"          delimited size
+                      como-ora     delimited size
+                      ".txt"       delimited size
                       into err-seq-path
               end-string
               open output err-seq
@@ -925,7 +960,7 @@ LUBEXX          move "Prezzo incoerente!!!"
               end-string
               perform COMPONI-RIGA-LOG
       
-           end-perform.         
+           end-perform.  
 
            delete file err-seq.
 
