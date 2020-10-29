@@ -1176,10 +1176,10 @@
               move tno-note to tor-note
            end-if.
            inspect tca-descrizione 
-                   replacing trailing spaces by low-value.
+                   replacing trailing spaces by low-value. 
            inspect tor-note
                    replacing trailing spaces by low-value.
-           initialize line-riga.
+           initialize line-riga.                           
            move tor-note to como-des.
            perform NORMALIZZA-DES.
            string 78-spazi 
@@ -2517,7 +2517,6 @@
            inspect como-des replacing all "à" by "a".
            inspect como-des replacing all "è" by "e".
            inspect como-des replacing all "é" by "e".
-
                                                    
            inspect como-des replacing all "/" by " ".
            inspect como-des replacing all "." by " ".
@@ -2532,6 +2531,9 @@
            inspect como-des replacing all "Ì" by " ".
            inspect como-des replacing all "%" by " ".
            inspect como-des replacing all "ø" by " ".
+                                                         
+           inspect como-des replacing all x"0d" by x"20".
+           inspect como-des replacing all x"0a" by x"20".
 
       ***---
        COUNTER-VIDEO.
