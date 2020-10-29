@@ -26,6 +26,7 @@
            copy "eordini.sl".
            copy "tnazioni.sl".
            copy "recapiti.sl".
+           copy "edi-clides.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -48,7 +49,8 @@
            copy "CLI.fd".
            copy "eordini.fd". 
            copy "tnazioni.fd".        
-           copy "recapiti.fd".
+           copy "recapiti.fd".  
+           copy "edi-clides.fd".
 
        WORKING-STORAGE SECTION.      
        copy "varsca".
@@ -74,6 +76,7 @@
        77  status-eordini        pic xx.
        77  status-tnazioni       pic xx.
        77  status-recapiti       pic xx.
+       77  status-edi-clides     pic xx.
        77  data-doc              pic 9(8).
        77  num-doc               pic 9(8).
        77  tipo-doc              pic x.
@@ -202,7 +205,9 @@
            CLI
            eordini
            tnazioni
-           recapiti.
+           recapiti
+           edi-clides.
+
            if errori goback end-if.
 
 
@@ -888,6 +893,7 @@
 
       *****     if cli-codfis not = spaces   
       *****        inspect cli-codfis replacing trailing spaces by low-value
+
       *****        initialize line-riga
       *****        string 78-spazi   
       *****               78-spazi   
@@ -1964,6 +1970,10 @@
               write line-riga
            end-if.
 
+           if des-prog > 0
+              perform SCRIVI-ALTRI-DATI-GESTIONALI
+           end-if.
+
            initialize line-riga.       
            string 78-spazi 
                   78-spazi
@@ -2017,6 +2027,105 @@
                   "</ScontoMaggiorazione>"
              into line-riga
            write line-riga.
+
+      ***---
+       SCRIVI-ALTRI-DATI-GESTIONALI. 
+           initialize line-riga.
+           string 78-spazi 
+                  78-spazi     
+                  78-spazi
+                  78-spazi
+                  "<AltriDatiGestionali>"
+             into line-riga.
+           write line-riga.
+
+           initialize line-riga.
+           string 78-spazi 
+                  78-spazi     
+                  78-spazi           
+                  78-spazi
+                  78-spazi
+                  "<TipoDato>RSD</TipoDato>"
+             into line-riga.
+           write line-riga.  
+      
+           initialize como-des.
+           inspect des-ragsoc-1 replacing trailing spaces by low-value.
+           inspect des-ragsoc-2 replacing trailing spaces by low-value.
+           string  des-ragsoc-1 delimited low-value
+                   des-ragsoc-2 delimited low-value
+               into como-des
+           end-string.
+           perform NORMALIZZA-DES.
+      
+           initialize line-riga.
+           string 78-spazi                 delimited size
+                  78-spazi                 delimited size
+                  78-spazi                 delimited size
+                  78-spazi                 delimited size
+                  78-spazi                 delimited size
+                  "<RiferimentoTesto>"     delimited size
+                  como-des                 delimited low-value
+                  "</RiferimentoTesto>"    delimited size
+             into line-riga.
+           write line-riga. 
+
+           initialize line-riga.
+           string 78-spazi 
+                  78-spazi     
+                  78-spazi
+                  78-spazi
+                  "</AltriDatiGestionali>"
+             into line-riga.
+           write line-riga.
+           
+           initialize ecd-cod-consegna.
+           move des-codice to ecd-cli-codice.
+           move des-prog   to ecd-prg-destino.
+           read edi-clides no lock invalid continue end-read.
+           if ecd-cod-consegna not = spaces
+
+              initialize line-riga
+              string 78-spazi 
+                     78-spazi     
+                     78-spazi
+                     78-spazi
+                     "<AltriDatiGestionali>"
+                into line-riga
+              write line-riga
+
+              initialize line-riga
+              string 78-spazi 
+                     78-spazi     
+                     78-spazi           
+                     78-spazi
+                     78-spazi
+                     "<TipoDato>DP</TipoDato>"
+                into line-riga
+              write line-riga
+              inspect ecd-cod-consegna 
+                      replacing trailing spaces by low-value
+              initialize line-riga
+              string 78-spazi                 delimited size
+                     78-spazi                 delimited size
+                     78-spazi                 delimited size
+                     78-spazi                 delimited size
+                     78-spazi                 delimited size
+                     "<RiferimentoTesto>"     delimited size
+                     ecd-cod-consegna         delimited low-value
+                     "</RiferimentoTesto>"    delimited size
+                into line-riga
+              write line-riga       
+
+              initialize line-riga
+              string 78-spazi 
+                     78-spazi     
+                     78-spazi
+                     78-spazi
+                     "</AltriDatiGestionali>"
+                into line-riga
+              write line-riga
+           end-if.
 
       ***---
        SCRIVI-RIEPILOGO.        
@@ -2460,7 +2569,8 @@
            CLI
            eordini
            tnazioni
-           recapiti.
+           recapiti
+           edi-clides.
 
       ***---
        EXIT-PGM.                                                        

@@ -901,7 +901,7 @@
        ELABORAZIONE.
            initialize bozze-elab replacing numeric data by zeroes.
            move low-value to tor-anno-bolla tor-num-bolla.
- 
+
            start tordini key >= k-bolla
                  invalid set errori to true
            end-start.
@@ -909,7 +909,7 @@
               perform until 1 = 2
                  read tordini next no lock
                    at end exit perform 
-                 end-read        
+                 end-read                 
                  if tor-anno-bolla not = 0 or tor-num-bolla not = 0
                     exit perform
                  end-if

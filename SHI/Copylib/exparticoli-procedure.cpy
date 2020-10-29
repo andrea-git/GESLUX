@@ -1,17 +1,13 @@
       ***---
-       CICLO-PRODENER.
-      * 01  tabella-prodener.
-      *     05 prodener-el  pic x(100) occurs 10000.
+       CICLO-PRODENER.                              
            if art-cod-prodener not = space
               perform varying idx from 1 by 1 until idx > 10000
                  if prodener-el(idx) = art-cod-prodener
                     exit perform
-                 else
-                    if prodener-el(idx) = space
-                       move art-cod-prodener   
-                             to prodener-el(idx)
-                       exit perform
-                    end-if
+                 end-if
+                 if prodener-el(idx) = space
+                    move art-cod-prodener  to prodener-el(idx)
+                    exit perform
                  end-if
               end-perform
            end-if.
@@ -46,7 +42,7 @@
            move zero                     to HART_CF_PESO
            move space                    to HART_SEQ_ELAB
            move zero                     to HART_VPK_NUMERO
-           move space                    to HART_UDF1
+           move space                    to HART_UDF1     
 
       *     move art-marca-prodotto       to mar-codice
       *     read tmarche
@@ -72,11 +68,25 @@
       *     end-read
       *     move cl1-descrizione          to HART_UDF4
            move art-classe-1             to HART_UDF4
+           move art-cod-doganale         to HART_UDF5     
+           move art-perce-imposte(1:3)   to HART_UDF6(1:3)
+           move ","                      to HART_UDF6(4:1)
+           move art-perce-imposte(4:3)   to HART_UDF6(5:3)
+           move art-perce-cou(3:5)       to HART_UDF7(1:3)
+           move ","                      to HART_UDF7(4:1)
+           move art-perce-cou(6:3)       to HART_UDF7(5:3)
 
-           move space                    to HART_UDF5
-           move space                    to HART_UDF6
-           move space                    to HART_UDF7
-           move space                    to HART_UDF8
+           move art-cod-prodener         to pen-codice
+           read prodener no lock 
+                invalid move spaces to pen-sdoppia-riga 
+           end-read.
+
+           if pen-si-sdoppia-riga
+              move 1 to HART-UDF8
+           else
+              move 0 to HART-UDF8
+           end-if.
+                                                     
            move space                    to HART_UDF9
            move space                    to HART_UDF10
 
@@ -97,8 +107,7 @@
            move space                    to HART_CTRL_QUALITA
            move zero                     to HART_ORE_QUARANTENA
 
-
-           perform CONTA-EAN
+           perform CONTA-EAN.
            evaluate cont-ean
            when zero
                 move space               to HART_ARTDET_CODICE
@@ -112,8 +121,7 @@
            move "IV"                     to tbliv-codice1
            move art-codice-iva           to tbliv-codice2
            read tivaese no lock
-              invalid 
-                 continue
+                invalid continue
            end-read.
 
            if tbliv-esenzione = "S"
@@ -141,8 +149,6 @@
            compute HART_PZ_PESO_NETTO = (exp-prg-peso-utf +
                                         exp-prg-peso-non-utf) * 1000
 
-
-
            move space                    to HART_UOM_ALTERNATIVA
 
            move zero                     to HART_UOM_CONV_NUMERATORE
@@ -156,23 +162,23 @@
       ***---
        CONTA-EAN.
            move zero   to cont-ean.
-           if art-codice-ean-1 not = zero
+           if art-codice-ean-1 not = 0
               add 1    to cont-ean
               move art-codice-ean-1   to HART_ARTDET_CODICE
            end-if
-           if art-codice-ean-2 not = zero
+           if art-codice-ean-2 not = 0
               add 1    to cont-ean
               move art-codice-ean-2   to HART_ARTDET_CODICE
            end-if
-           if art-codice-ean-3 not = zero
+           if art-codice-ean-3 not = 0
               add 1    to cont-ean
               move art-codice-ean-3   to HART_ARTDET_CODICE
            end-if
-           if art-codice-ean-4 not = zero
+           if art-codice-ean-4 not = 0
               add 1    to cont-ean
               move art-codice-ean-4   to HART_ARTDET_CODICE
            end-if
-           if art-codice-ean-5 not = zero
+           if art-codice-ean-5 not = 0
               add 1    to cont-ean
               move art-codice-ean-5   to HART_ARTDET_CODICE
            end-if.
@@ -186,18 +192,16 @@
                   imballo-articolo(cont) delimited by size
                   into HART_CODICE
            move imballo-articolo(cont)   to imq-codice
-           read timbalqta
-              invalid
-                 move zero   to imq-qta-imb      
-           end-read
+           read timbalqta invalid move 0 to imq-qta-imb end-read.
            move imq-qta-imb        to HART_PZCF.
 
            move exp-art-rec  to line-riga
            write line-riga.
 
-           if cont-ean > zero
+      *****     if cont-ean > zero
               perform GEN-EAN
-           end-if.
+      *****     end-if.
+           .
 
       ***---
        GEN-EAN.
@@ -208,63 +212,58 @@
            move 1                     to HARTDET_QTAEAN
            move "PZ"                  to HARTDET_UOM_CODICE
 
-           if art-codice-ean-1 not = zero
+      *****     if art-codice-ean-1 not = 0
               move art-codice-ean-1   to HARTDET_CODICE
               move exp-art-det-rec    to line-riga2
-              write line-riga2
               add 1                   to num-rec-ean
-           end-if
-           if art-codice-ean-2 not = zero
+              write line-riga2                     
+      *****     end-if
+      *****     if art-codice-ean-2 not = 0
               move art-codice-ean-2   to HARTDET_CODICE
               move exp-art-det-rec    to line-riga2
               add 1                   to num-rec-ean
               write line-riga2
-           end-if
-           if art-codice-ean-3 not = zero
+      *****     end-if
+      *****     if art-codice-ean-3 not = 0
               move art-codice-ean-3   to HARTDET_CODICE
               move exp-art-det-rec    to line-riga2
               add 1                   to num-rec-ean
               write line-riga2
-           end-if
-           if art-codice-ean-4 not = zero
+      *****     end-if
+      *****     if art-codice-ean-4 not = 0
               move art-codice-ean-4   to HARTDET_CODICE
               move exp-art-det-rec    to line-riga2
               add 1                   to num-rec-ean
               write line-riga2
-           end-if
-           if art-codice-ean-5 not = zero
+      *****     end-if
+      *****     if art-codice-ean-5 not = 0
               move art-codice-ean-5   to HARTDET_CODICE
               move exp-art-det-rec    to line-riga2
               add 1                   to num-rec-ean
               write line-riga2
-           end-if.
+      *****     end-if.
+           .     
 
       ***---
        GENERA-PRODENER.
            perform varying idx from 1 by 1 until idx > 10000
               if prodener-el(idx) = space
                  exit perform
-              else
-                 move prodener-el(idx)  to pen-codice
-                 read prodener
-                    invalid
-                       continue
-                 end-read
-
-
-                 initialize exp-pen-rec
-
-                 move pen-codice      to exp-pen-codice     
-                 move pen-descrizione to exp-pen-descrizione
-                 move pen-cpa         to exp-pen-cpa        
-                 move pen-nc          to exp-pen-nc         
-                 move pen-taric       to exp-pen-taric      
-                 move pen-dac         to exp-pen-dac        
-
-                 move exp-pen-rec     to line-riga3
-                 write line-riga3
-                 add 1                to num-rec-prodener
               end-if
+
+              move prodener-el(idx)  to pen-codice
+              read prodener invalid continue end-read
+              
+              initialize exp-pen-rec
+
+              move pen-codice      to exp-pen-codice     
+              move pen-descrizione to exp-pen-descrizione
+              move pen-cpa         to exp-pen-cpa        
+              move pen-nc          to exp-pen-nc         
+              move pen-taric       to exp-pen-taric      
+              move pen-dac         to exp-pen-dac        
+
+              move exp-pen-rec     to line-riga3
+              write line-riga3
+              add 1                to num-rec-prodener
            end-perform.
-
-
