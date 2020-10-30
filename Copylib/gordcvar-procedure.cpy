@@ -56,7 +56,6 @@
                  move 1 to mod-campi 
                  move 0 to mod-dati-bolla
                  move 2 to NumBitmapDatiBolla
-
               end-if  
 
            else         
@@ -1838,6 +1837,8 @@ LUBEXX        end-if
                       else
 
                          if mto-chiuso or mto-chiuso-man or mro-chiuso
+                           |30/10/2020 utilizzo sempre il magazzino dell'evasione
+                            move mag-codice         to link-magazzino
                             move 0                  to link-impegnato
                             move ror-qta            to link-valore
                             move "0000000000000000" to link-array
@@ -3011,10 +3012,10 @@ PATCH *       Per monitorare l'errore di cancellazione/inserimento altre righe
                      " righe."        delimited size
                      into geslock-messaggio
                  end-string
-                 perform 5 times
-                    call   "geslock" using geslock-linkage
-                    cancel "geslock"
-                 end-perform
+      *****           perform 5 times
+      *****              call   "geslock" using geslock-linkage
+      *****              cancel "geslock"
+      *****           end-perform
               end-if
               
 PATCH**       Invio mail nel caso in cui le righe presenti su

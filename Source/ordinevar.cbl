@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordinevar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 9 ottobre 2020 00:48:23.
+       DATE-WRITTEN.        venerdì 30 ottobre 2020 10:57:53.
        REMARKS.
       *{TOTEM}END
 
@@ -19871,8 +19871,8 @@ PATCH *       Per monitorare l'errore di cancellazione/inserimento altre righe
                      into geslock-messaggio
                  end-string
       *****           perform 5 times
-                    call   "geslock" using geslock-linkage
-                    cancel "geslock"
+      *****              call   "geslock" using geslock-linkage
+      *****              cancel "geslock"
       *****           end-perform
               end-if
 

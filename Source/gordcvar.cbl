@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gordcvar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 5 giugno 2019 11:36:05.
+       DATE-WRITTEN.        venerdì 30 ottobre 2020 10:49:57.
        REMARKS.
       *{TOTEM}END
 
@@ -85,8 +85,8 @@
            COPY "cli-prg.sl".
            COPY "tcontat.sl".
            COPY "tnazioni.sl".
-           COPY "grade.sl".
            COPY "brnotacr.sl".
+           COPY "grade.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -149,18 +149,17 @@
            COPY "cli-prg.fd".
            COPY "tcontat.fd".
            COPY "tnazioni.fd".
-           COPY "grade.fd".
            COPY "brnotacr.fd".
+           COPY "grade.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
       *{TOTEM}ACU-DEF
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\ACUGUI.DEF".
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\ACUCOBOL.DEF"
-           .
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\FONTS.DEF".
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\CRTVARS.DEF".
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\SHOWMSG.DEF".
+               COPY "acugui.def".
+               COPY "acucobol.def".
+               COPY "fonts.def".
+               COPY "crtvars.def".
+               COPY "showmsg.def".
                COPY "totem.def".
                COPY "standard.def".
       *{TOTEM}END
@@ -451,7 +450,7 @@
       * Data.Label
               05 lab-loc-cli-BUF PIC X(35).
       * Data.Label
-              05 lab-des-BUF PIC X(40).
+              05 lab-des-BUF PIC x(100).
       * Data.Label
               05 lab-ind-des-BUF PIC X(40).
       * Data.Label
@@ -554,7 +553,7 @@
        77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
        77 TMP-DataSet1-tivaese-BUF     PIC X(1380).
        77 TMP-DataSet1-clienti-BUF     PIC X(1910).
-       77 TMP-DataSet1-destini-BUF     PIC X(3386).
+       77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-note-BUF     PIC X(284).
        77 TMP-DataSet1-tcodpag-BUF     PIC X(1380).
@@ -578,8 +577,8 @@
        77 TMP-DataSet1-tmp-promo-prz-BUF     PIC X(74).
        77 TMP-DataSet1-tpromo-BUF     PIC X(263).
        77 TMP-DataSet1-listini-BUF     PIC X(207).
-       77 TMP-DataSet1-lineseq-BUF     PIC X(900).
-       77 TMP-DataSet1-lineseq1-BUF     PIC X(900).
+       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
+       77 TMP-DataSet1-lineseq1-BUF     PIC X(1000).
        77 TMP-DataSet1-check-rordini-BUF     PIC X(116).
        77 TMP-DataSet1-tpiombo-BUF     PIC X(739).
        77 TMP-DataSet1-eordini-BUF     PIC X(212).
@@ -603,8 +602,8 @@
        77 TMP-DataSet1-cli-prg-BUF     PIC X(577).
        77 TMP-DataSet1-tcontat-BUF     PIC X(3270).
        77 TMP-DataSet1-tnazioni-BUF     PIC X(190).
-       77 TMP-DataSet1-grade-BUF     PIC X(754).
        77 TMP-DataSet1-brnotacr-BUF     PIC X(424).
+       77 TMP-DataSet1-grade-BUF     PIC X(754).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -885,16 +884,16 @@
        77 DataSet1-tnazioni-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tnazioni-KEY-Asc  VALUE "A".
           88 DataSet1-tnazioni-KEY-Desc VALUE "D".
-       77 DataSet1-grade-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-grade-LOCK  VALUE "Y".
-       77 DataSet1-grade-KEY-ORDER  PIC X VALUE "A".
-          88 DataSet1-grade-KEY-Asc  VALUE "A".
-          88 DataSet1-grade-KEY-Desc VALUE "D".
        77 DataSet1-brnotacr-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-brnotacr-LOCK  VALUE "Y".
        77 DataSet1-brnotacr-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-brnotacr-KEY-Asc  VALUE "A".
           88 DataSet1-brnotacr-KEY-Desc VALUE "D".
+       77 DataSet1-grade-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-grade-LOCK  VALUE "Y".
+       77 DataSet1-grade-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-grade-KEY-Asc  VALUE "A".
+          88 DataSet1-grade-KEY-Desc VALUE "D".
 
        77 tordini-k-causale-SPLITBUF  PIC X(17).
        77 tordini-k1-SPLITBUF  PIC X(23).
@@ -920,12 +919,13 @@
        77 rordini-ror-k-articolo-SPLITBUF  PIC X(24).
        77 rordini-ror-k-master-SPLITBUF  PIC X(35).
        77 rordini-ror-k-stbolle-SPLITBUF  PIC X(30).
+       77 rordini-ror-k-ord-art-SPLITBUF  PIC X(19).
        77 tvettori-k-des-SPLITBUF  PIC X(41).
        77 tivaese-key01-SPLITBUF  PIC X(53).
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
        77 clienti-cli-K4-SPLITBUF  PIC X(8).
-       77 destini-K1-SPLITBUF  PIC X(51).
+       77 destini-K1-SPLITBUF  PIC X(111).
        77 destini-k-localita-SPLITBUF  PIC X(36).
        77 articoli-art-k1-SPLITBUF  PIC X(51).
        77 articoli-art-k-frn-SPLITBUF  PIC X(16).
@@ -959,6 +959,7 @@
        77 mrordini-mro-k-articolo-SPLITBUF  PIC X(24).
        77 mrordini-mro-k-progr-SPLITBUF  PIC X(18).
        77 mrordini-mro-k-tprev-SPLITBUF  PIC X(39).
+       77 mrordini-mro-k-ord-art-SPLITBUF  PIC X(19).
        77 logfile-k-chiave-SPLITBUF  PIC X(22).
        77 logfile-k-program-SPLITBUF  PIC X(22).
        77 blister-k-magaz-SPLITBUF  PIC X(10).
@@ -4748,8 +4749,8 @@
       *    tcontat OPEN MODE IS FALSE
       *    PERFORM OPEN-tcontat
            PERFORM OPEN-tnazioni
-           PERFORM OPEN-grade
            PERFORM OPEN-brnotacr
+           PERFORM OPEN-grade
       *    After Open
            .
 
@@ -5504,18 +5505,6 @@
       * <TOTEM:END>
            .
 
-       OPEN-grade.
-      * <TOTEM:EPT. INIT:gordcvar, FD:grade, BeforeOpen>
-      * <TOTEM:END>
-           OPEN  INPUT grade
-           IF NOT Valid-STATUS-grade
-              PERFORM  Form1-EXTENDED-FILE-STATUS
-              GO TO EXIT-STOP-ROUTINE
-           END-IF
-      * <TOTEM:EPT. INIT:gordcvar, FD:grade, AfterOpen>
-      * <TOTEM:END>
-           .
-
        OPEN-brnotacr.
       * <TOTEM:EPT. INIT:gordcvar, FD:brnotacr, BeforeOpen>
       * <TOTEM:END>
@@ -5532,6 +5521,18 @@
               GO TO EXIT-STOP-ROUTINE
            END-IF
       * <TOTEM:EPT. INIT:gordcvar, FD:brnotacr, AfterOpen>
+      * <TOTEM:END>
+           .
+
+       OPEN-grade.
+      * <TOTEM:EPT. INIT:gordcvar, FD:grade, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT grade
+           IF NOT Valid-STATUS-grade
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:gordcvar, FD:grade, AfterOpen>
       * <TOTEM:END>
            .
 
@@ -5605,8 +5606,8 @@
       *    tcontat CLOSE MODE IS FALSE
       *    PERFORM CLOSE-tcontat
            PERFORM CLOSE-tnazioni
-           PERFORM CLOSE-grade
            PERFORM CLOSE-brnotacr
+           PERFORM CLOSE-grade
       *    After Close
            .
 
@@ -5927,16 +5928,16 @@
            CLOSE tnazioni
            .
 
-       CLOSE-grade.
-      * <TOTEM:EPT. INIT:gordcvar, FD:grade, BeforeClose>
-      * <TOTEM:END>
-           CLOSE grade
-           .
-
        CLOSE-brnotacr.
       * <TOTEM:EPT. INIT:gordcvar, FD:brnotacr, BeforeClose>
       * <TOTEM:END>
            CLOSE brnotacr
+           .
+
+       CLOSE-grade.
+      * <TOTEM:EPT. INIT:gordcvar, FD:grade, BeforeClose>
+      * <TOTEM:END>
+           CLOSE grade
            .
 
        tordini-k-causale-MERGE-SPLITBUF.
@@ -6404,6 +6405,16 @@
            rordini-ror-k-stbolle-SPLITBUF(13:17)
            .
 
+       rordini-ror-k-ord-art-MERGE-SPLITBUF.
+           INITIALIZE rordini-ror-k-ord-art-SPLITBUF
+           MOVE ror-anno OF rordini(1:4) TO 
+           rordini-ror-k-ord-art-SPLITBUF(1:4)
+           MOVE ror-num-ordine OF rordini(1:8) TO 
+           rordini-ror-k-ord-art-SPLITBUF(5:8)
+           MOVE ror-cod-articolo OF rordini(1:6) TO 
+           rordini-ror-k-ord-art-SPLITBUF(13:6)
+           .
+
        DataSet1-rordini-INITSTART.
            IF DataSet1-rordini-KEY-Asc
               MOVE Low-Value TO ror-chiave OF rordini
@@ -6469,6 +6480,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT 
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -6500,6 +6512,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -6531,6 +6544,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -7242,9 +7256,9 @@
 
        destini-K1-MERGE-SPLITBUF.
            INITIALIZE destini-K1-SPLITBUF
-           MOVE des-ragsoc-1(1:40) TO destini-K1-SPLITBUF(1:40)
-           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(41:5)
-           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(46:5)
+           MOVE des-ragsoc-1(1:100) TO destini-K1-SPLITBUF(1:100)
+           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(101:5)
+           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(106:5)
            .
 
        destini-k-localita-MERGE-SPLITBUF.
@@ -12261,6 +12275,14 @@
            MOVE mro-chiave(1:17) TO mrordini-mro-k-tprev-SPLITBUF(22:17)
            .
 
+       mrordini-mro-k-ord-art-MERGE-SPLITBUF.
+           INITIALIZE mrordini-mro-k-ord-art-SPLITBUF
+           MOVE mro-chiave-testa(1:12) TO 
+           mrordini-mro-k-ord-art-SPLITBUF(1:12)
+           MOVE mro-cod-articolo(1:6) TO 
+           mrordini-mro-k-ord-art-SPLITBUF(13:6)
+           .
+
        DataSet1-mrordini-INITSTART.
            IF DataSet1-mrordini-KEY-Asc
               MOVE Low-Value TO mro-chiave
@@ -12326,6 +12348,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT 
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -12357,6 +12380,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -12388,6 +12412,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -15040,160 +15065,6 @@
       * <TOTEM:END>
            .
 
-       DataSet1-grade-INITSTART.
-           IF DataSet1-grade-KEY-Asc
-              MOVE Low-Value TO gra-chiave
-           ELSE
-              MOVE High-Value TO gra-chiave
-           END-IF
-           .
-
-       DataSet1-grade-INITEND.
-           IF DataSet1-grade-KEY-Asc
-              MOVE High-Value TO gra-chiave
-           ELSE
-              MOVE Low-Value TO gra-chiave
-           END-IF
-           .
-
-      * grade
-       DataSet1-grade-START.
-           IF DataSet1-grade-KEY-Asc
-              START grade KEY >= gra-chiave
-           ELSE
-              START grade KEY <= gra-chiave
-           END-IF
-           .
-
-       DataSet1-grade-START-NOTGREATER.
-           IF DataSet1-grade-KEY-Asc
-              START grade KEY <= gra-chiave
-           ELSE
-              START grade KEY >= gra-chiave
-           END-IF
-           .
-
-       DataSet1-grade-START-GREATER.
-           IF DataSet1-grade-KEY-Asc
-              START grade KEY > gra-chiave
-           ELSE
-              START grade KEY < gra-chiave
-           END-IF
-           .
-
-       DataSet1-grade-START-LESS.
-           IF DataSet1-grade-KEY-Asc
-              START grade KEY < gra-chiave
-           ELSE
-              START grade KEY > gra-chiave
-           END-IF
-           .
-
-       DataSet1-grade-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:grade, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:grade, BeforeReadRecord>
-      * <TOTEM:END>
-           IF DataSet1-grade-LOCK
-              READ grade WITH LOCK 
-              KEY gra-chiave
-           ELSE
-              READ grade WITH NO LOCK 
-              KEY gra-chiave
-           END-IF
-           MOVE STATUS-grade TO TOTEM-ERR-STAT 
-           MOVE "grade" TO TOTEM-ERR-FILE
-           MOVE "READ" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:grade, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:grade, AfterReadRecord>
-      * <TOTEM:END>
-           .
-
-       DataSet1-grade-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:grade, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:grade, BeforeReadNext>
-      * <TOTEM:END>
-           IF DataSet1-grade-KEY-Asc
-              IF DataSet1-grade-LOCK
-                 READ grade NEXT WITH LOCK
-              ELSE
-                 READ grade NEXT WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-grade-LOCK
-                 READ grade PREVIOUS WITH LOCK
-              ELSE
-                 READ grade PREVIOUS WITH NO LOCK
-              END-IF
-           END-IF
-           MOVE STATUS-grade TO TOTEM-ERR-STAT
-           MOVE "grade" TO TOTEM-ERR-FILE
-           MOVE "READ NEXT" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:grade, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:grade, AfterReadNext>
-      * <TOTEM:END>
-           .
-
-       DataSet1-grade-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:grade, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:grade, BeforeReadPrev>
-      * <TOTEM:END>
-           IF DataSet1-grade-KEY-Asc
-              IF DataSet1-grade-LOCK
-                 READ grade PREVIOUS WITH LOCK
-              ELSE
-                 READ grade PREVIOUS WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-grade-LOCK
-                 READ grade NEXT WITH LOCK
-              ELSE
-                 READ grade NEXT WITH NO LOCK
-              END-IF
-           END-IF
-           MOVE STATUS-grade TO TOTEM-ERR-STAT
-           MOVE "grade" TO TOTEM-ERR-FILE
-           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:grade, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:grade, AfterReadPrev>
-      * <TOTEM:END>
-           .
-
-       DataSet1-grade-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:grade, BeforeWrite>
-      * <TOTEM:END>
-           MOVE STATUS-grade TO TOTEM-ERR-STAT
-           MOVE "grade" TO TOTEM-ERR-FILE
-           MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:grade, AfterWrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-grade-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:grade, BeforeRewrite>
-      * <TOTEM:END>
-           MOVE STATUS-grade TO TOTEM-ERR-STAT
-           MOVE "grade" TO TOTEM-ERR-FILE
-           MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:grade, AfterRewrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-grade-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:grade, BeforeDelete>
-      * <TOTEM:END>
-           MOVE STATUS-grade TO TOTEM-ERR-STAT
-           MOVE "grade" TO TOTEM-ERR-FILE
-           MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:grade, AfterDelete>
-      * <TOTEM:END>
-           .
-
        brnotacr-brno-k-articolo-MERGE-SPLITBUF.
            INITIALIZE brnotacr-brno-k-articolo-SPLITBUF
            MOVE brno-cod-articolo(1:6) TO 
@@ -15362,6 +15233,160 @@
       * <TOTEM:END>
            .
 
+       DataSet1-grade-INITSTART.
+           IF DataSet1-grade-KEY-Asc
+              MOVE Low-Value TO gra-chiave
+           ELSE
+              MOVE High-Value TO gra-chiave
+           END-IF
+           .
+
+       DataSet1-grade-INITEND.
+           IF DataSet1-grade-KEY-Asc
+              MOVE High-Value TO gra-chiave
+           ELSE
+              MOVE Low-Value TO gra-chiave
+           END-IF
+           .
+
+      * grade
+       DataSet1-grade-START.
+           IF DataSet1-grade-KEY-Asc
+              START grade KEY >= gra-chiave
+           ELSE
+              START grade KEY <= gra-chiave
+           END-IF
+           .
+
+       DataSet1-grade-START-NOTGREATER.
+           IF DataSet1-grade-KEY-Asc
+              START grade KEY <= gra-chiave
+           ELSE
+              START grade KEY >= gra-chiave
+           END-IF
+           .
+
+       DataSet1-grade-START-GREATER.
+           IF DataSet1-grade-KEY-Asc
+              START grade KEY > gra-chiave
+           ELSE
+              START grade KEY < gra-chiave
+           END-IF
+           .
+
+       DataSet1-grade-START-LESS.
+           IF DataSet1-grade-KEY-Asc
+              START grade KEY < gra-chiave
+           ELSE
+              START grade KEY > gra-chiave
+           END-IF
+           .
+
+       DataSet1-grade-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:grade, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:grade, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-grade-LOCK
+              READ grade WITH LOCK 
+              KEY gra-chiave
+           ELSE
+              READ grade WITH NO LOCK 
+              KEY gra-chiave
+           END-IF
+           MOVE STATUS-grade TO TOTEM-ERR-STAT 
+           MOVE "grade" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:grade, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:grade, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-grade-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:grade, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:grade, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-grade-KEY-Asc
+              IF DataSet1-grade-LOCK
+                 READ grade NEXT WITH LOCK
+              ELSE
+                 READ grade NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-grade-LOCK
+                 READ grade PREVIOUS WITH LOCK
+              ELSE
+                 READ grade PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-grade TO TOTEM-ERR-STAT
+           MOVE "grade" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:grade, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:grade, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-grade-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:grade, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:grade, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-grade-KEY-Asc
+              IF DataSet1-grade-LOCK
+                 READ grade PREVIOUS WITH LOCK
+              ELSE
+                 READ grade PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-grade-LOCK
+                 READ grade NEXT WITH LOCK
+              ELSE
+                 READ grade NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-grade TO TOTEM-ERR-STAT
+           MOVE "grade" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:grade, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:grade, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-grade-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:grade, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-grade TO TOTEM-ERR-STAT
+           MOVE "grade" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:grade, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-grade-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:grade, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-grade TO TOTEM-ERR-STAT
+           MOVE "grade" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:grade, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-grade-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:grade, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-grade TO TOTEM-ERR-STAT
+           MOVE "grade" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:grade, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE tor-rec OF tordini
            INITIALIZE ror-rec OF rordini
@@ -15418,8 +15443,8 @@
            INITIALIZE cp-rec OF cli-prg
            INITIALIZE con-rec OF tcontat
            INITIALIZE naz-rec OF tnazioni
-           INITIALIZE gra-rec OF grade
            INITIALIZE brno-rec OF brnotacr
+           INITIALIZE gra-rec OF grade
            .
 
 
@@ -15905,16 +15930,16 @@
            .
 
       * FD's Initialize Paragraph
-       DataSet1-grade-INITREC.
-           INITIALIZE gra-rec OF grade
+       DataSet1-brnotacr-INITREC.
+           INITIALIZE brno-rec OF brnotacr
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
            .
 
       * FD's Initialize Paragraph
-       DataSet1-brnotacr-INITREC.
-           INITIALIZE brno-rec OF brnotacr
+       DataSet1-grade-INITREC.
+           INITIALIZE gra-rec OF grade
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -16525,13 +16550,13 @@ PATCH      end-evaluate.
               perform SALV-MOD
            end-if.
 
-           if ra-idx not = 0
-              move user-codi to ra-user
-              modify lab-attendere, visible true
-              call   "ricalimp-art" using ra-linkage
-              cancel "ricalimp-art"             
-              modify lab-attendere, visible false
-           end-if.
+      *     if ra-idx not = 0
+      *        move user-codi to ra-user
+      *        modify lab-attendere, visible true
+      *        call   "ricalimp-art" using ra-linkage
+      *        cancel "ricalimp-art"             
+      *        modify lab-attendere, visible false
+      *     end-if.
 
            if errori
               move 26 to key-status

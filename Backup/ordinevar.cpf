@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4A8224555-850-1511126208
+PROGRAM_UNIQUE_CODE=TOTEM-7E4A1E95554-234-347516041
 
 {{@DESCRIPTION:
 
@@ -23730,8 +23730,8 @@ PATCH *       Per monitorare l'errore di cancellazione/inserimento altre righe
                      into geslock-messaggio
                  end-string
       *****           perform 5 times
-                    call   "geslock" using geslock-linkage
-                    cancel "geslock"
+      *****              call   "geslock" using geslock-linkage
+      *****              cancel "geslock"
       *****           end-perform
               end-if
 

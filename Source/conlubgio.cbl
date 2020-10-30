@@ -436,7 +436,7 @@
                 into como-messaggio
               end-string           
               if RichiamoSchedulato
-                 move -1 to batch-status
+                 move 1 to batch-status
               end-if
               perform COMPONI-RIGA-LOG        
               add 1 to n-no-bolla
@@ -463,7 +463,7 @@
                         end-string
                         perform COMPONI-RIGA-LOG
                         if RichiamoSchedulato
-                           move -1 to batch-status
+                           move 1 to batch-status
                         end-if
                         add  1 to n-no-ordine
                         set ordine-non-trovato to true
@@ -487,7 +487,7 @@
                              into como-messaggio
                            end-string           
                            if RichiamoSchedulato
-                              move -1 to batch-status
+                              move 1 to batch-status
                            end-if
                            perform COMPONI-RIGA-LOG 
                            add 1 to n-gia-bolla
@@ -551,7 +551,7 @@
                      into como-messaggio
                    end-string                    
                    if RichiamoSchedulato
-                      move -1 to batch-status
+                      move 1 to batch-status
                    end-if
                    perform COMPONI-RIGA-LOG
               end-read                  
@@ -782,7 +782,7 @@ LUBEXX             move "Prezzo incoerente!!!"
               move "COMANDO BACKUP NON RIUSCITO" to como-messaggio
               perform COMPONI-RIGA-LOG
               if RichiamoSchedulato
-                 move 1 to batch-status
+                 move -1 to batch-status
               end-if  
            else                   
               initialize como-messaggio
