@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          SHI-exp.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 30 settembre 2020 18:42:11.
+       DATE-WRITTEN.        mercoledì 4 novembre 2020 18:17:18.
        REMARKS.
       *{TOTEM}END
 
@@ -89,6 +89,9 @@
                   USAGE IS HANDLE OF FONT.
        77 formFTP-Handle
                   USAGE IS HANDLE OF WINDOW.
+       77 status-run
+                  USAGE IS SIGNED-SHORT.
+       77 cmd-lancio       PIC  x(1000).
        77 Small-Font
                   USAGE IS HANDLE OF FONT SMALL-FONT.
        01 FILLER           PIC  9
@@ -1569,6 +1572,22 @@
               
                  call   "splcrt2graf" using splcrt2graf-link
                  cancel "splcrt2graf"                  
+              end-if
+              if exp-ord-path-riepilogo-csv not = spaces
+                 inspect exp-ord-path-riepilogo-csv 
+                         replacing trailing spaces by low-value
+                 string "START "      delimited size
+                       x"22222022"    delimited size
+                         exp-ord-path-riepilogo-csv delimited low-value
+                       x"22"          delimited size
+                  into cmd-lancio
+                 end-string
+                 call "C$SYSTEM" using cmd-lancio, 225
+                                giving status-run
+                 if status-run = -1
+                    call "C$SYSTEM" using cmd-lancio, 64
+                                   giving status-run
+                 end-if
               end-if
            end-if 
            .

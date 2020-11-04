@@ -1,4 +1,5 @@
        01  expordini-linkage.
-           05 exp-ord-path               pic x(256).
+           05 exp-ord-path               pic x(256).     
            05 exp-ord-path-riepilogo-c   pic x(256).
-           05 filler                     pic x(5000).
+           05 exp-ord-path-riepilogo-csv pic x(256).
+           05 filler                     pic x(4744).

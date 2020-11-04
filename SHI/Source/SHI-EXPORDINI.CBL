@@ -143,6 +143,23 @@
          05 el-bozza-elab       pic 9(8) occurs 20000.
        77  idx-elab             pic 9(5) value 0.
 
+
+       01  el-ordine            occurs 999999.
+         05 el-ord-anno         pic 9(4).
+         05 filler              pic x value ";".
+         05 el-ord-numero       pic 9(8).                
+         05 filler              pic x value ";".
+         05 el-ord-ragsoc       pic x(100).                
+         05 filler              pic x value ";".
+         05 el-ord-indirizzo    pic x(100).                
+         05 filler              pic x value ";".
+         05 el-ord-cap          pic x(5).                
+         05 filler              pic x value ";".
+         05 el-ord-local        pic x(100).                
+         05 filler              pic x value ";".
+         05 el-ord-prov         pic xx.                
+         05 filler              pic x value ";".
+
        78  78-max-bozze-in-line value 6.
        01  bozze-in-line.                
          05 filler              pic x(3) value " | ".
@@ -923,6 +940,20 @@
                     add 1 to idx-elab
                     move tor-numero to el-bozza-elab(idx-elab)
                     perform GENERA-FILE
+                    move tor-anno                   
+                      to el-ord-anno(idx-elab)
+                    move tor-numero                 
+                      to el-ord-numero(idx-elab)
+                    move HUSCTES_COMDES_DESCRIZIONE 
+                      to el-ord-ragsoc(idx-elab)
+                    move HUSCTES_DES_INDIRIZZO      
+                      to el-ord-indirizzo(idx-elab)
+                    move HUSCTES_DES_CAP            
+                      to el-ord-cap(idx-elab)
+                    move HUSCTES_DES_LOCALITA       
+                      to el-ord-local(idx-elab)
+                    move HUSCTES_DES_PROVINCIA      
+                      to el-ord-prov(idx-elab)
                  end-if
               end-perform
            end-if.
@@ -933,7 +964,33 @@
 
            if idx-elab > 0
               perform SCRIVI-RIEPILOGO-COLLI
-           end-if.
+              perform SCRIVI-RIEPILOGO-ORDINI
+           end-if.                                               
+
+      ***---
+       SCRIVI-RIEPILOGO-ORDINI.
+           initialize path-riepilogo-c.
+           move shi-path-backup-exp to path-riepilogo-c.
+           inspect path-riepilogo-c 
+                   replacing trailing  spaces by low-value.
+           string path-riepilogo-c     delimited low-value
+                  "\RIEPILOGO_ORDINI_" delimited size
+                  como-data            delimited size
+                  "_"                  delimited size
+                  como-ora             delimited size
+                  ".csv"               delimited size
+             into path-riepilogo-c
+           end-string.          
+           inspect path-riepilogo-c 
+                   replacing trailing low-value by spaces.
+           open output riepilogo-c.                
+           perform varying idx from 1 by 1 
+                     until idx > idx-elab
+              move el-ordine(idx) to line-riepilogo-c
+              write line-riepilogo-c
+           end-perform.
+           close riepilogo-c.
+           move path-riepilogo-c to exp-ord-path-riepilogo-csv.
 
       ***---
        SCRIVI-RIEPILOGO-COLLI.
@@ -994,7 +1051,7 @@
               write line-riepilogo-c from riga-colli
            end-perform.                            
            write line-riepilogo-c from 78-line-div.
-           close lineseq.
+           close riepilogo-c.
            move path-riepilogo-c to exp-ord-path-riepilogo-c.
 
       ***---
