@@ -26546,7 +26546,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:Source\macrobatch.cbl]
-COPY_DEPENDENCE=FD\log-macrobatch.sl;FD\tsetinvio.sl;FD\lineseq.sl;FD\macrobatch.sl;FD\lockfile.sl;FD\log-macrobatch.fd;FD\tsetinvio.fd;FD\lineseq.fd;FD\macrobatch.fd;FD\lockfile.fd;Copylib\log-macrobatch.def;Copylib\mail.def;Copylib\common-linkage.def;Copylib\blockpgm.lks;Copylib\comune.def;Copylib\messaggi.def;Copylib\mail.cpy
+COPY_DEPENDENCE=FD\log-macrobatch.sl;FD\tsetinvio.sl;FD\lineseq.sl;FD\macrobatch.sl;FD\lockfile.sl;FD\log-macrobatch.fd;FD\tsetinvio.fd;FD\lineseq.fd;FD\macrobatch.fd;FD\lockfile.fd;Copylib\log-macrobatch.def;Copylib\mail.def;Copylib\common-linkage.def;Copylib\blockpgm.lks;Copylib\comune.def;Copylib\messaggi.def;Copylib\link-batch.def;Copylib\mail.cpy
 ADDITIONAL_OPTIONS=-x -Di -Ga -Zd -Za -Zn -Zz
 FOLLOW_PROJECT=1
 ; Standard Options

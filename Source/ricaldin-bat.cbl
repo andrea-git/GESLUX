@@ -136,6 +136,7 @@
                                             
        77  FileDest              pic x(256).
        77  FileOrig              pic x(256).
+       77  macrobatch            pic x.
 
        01  r-inizio.
          05 filler              pic x(2)  value " [".
@@ -815,7 +816,13 @@
               initialize wstampa
               accept como-data from century-date
               accept como-ora  from time
-              accept  wstampa from environment "SCHEDULER_PATH_LOG"
+              accept macrobatch from environment "MACROBATCH"
+              if macrobatch = "S"
+                 set environment "MACROBATCH" to " "                                   
+                 accept  wstampa from environment "PATH_MACROBATCH_LOG"
+              else
+                 accept  wstampa from environment "SCHEDULER_PATH_LOG"
+              end-if
               inspect wstampa replacing trailing spaces by low-value
               string  wstampa      delimited low-value
                       "RICALDIN_"  delimited size
@@ -1760,6 +1767,7 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
 
       ***---
        CONTATORE-VIDEO.
+           if batch-win-handle <= 0 exit paragraph end-if.
            add 1 to counter counter2
 
            if counter2 = 300
@@ -1829,7 +1837,7 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
            call   "tprev-p" using tprev-linkage
            cancel "tprev-p".
 
-           if RichiamoSchedulato
+           if RichiamoSchedulato and batch-win-handle > 0
               if nessun-errore
                  move  0 to batch-status
               else              

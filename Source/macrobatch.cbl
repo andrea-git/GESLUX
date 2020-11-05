@@ -12,6 +12,8 @@
              Una volta entrato genera comunque un 
              blocco per gli altri utenti
            - ESPORTAZIONE ORDINI SHI
+           04/11/2020
+           - ricalcolo impegnato (che utilizza però la linkage dei batch)
 
            (*) = per le tipologie contrassegnate da un nuovo flag dedicato
            (**) = per i magazzini contrassegnati da un nuovo flag dedicato
@@ -66,6 +68,7 @@
        copy "mail.def".
        copy "common-linkage.def".
        copy "comune.def".
+       copy "link-batch.def".
                           
        PROCEDURE DIVISION.
        DECLARATIVES.
@@ -169,11 +172,18 @@
            read macrobatch no lock.
            if mb-edi-selordini-stato-ok
               perform CALL-EVACLI
-           end-if.                   
+           end-if.
                                     
            read macrobatch no lock.
            if mb-evacli-stato-ok
               perform CALL-SHI-EXP
+           end-if.
+                                    
+           read macrobatch no lock.
+           if mb-shi-exp-stato-ok
+              set environment "MACROBATCH" to "S"
+              perform CALL-RICALDIN              
+              set environment "MACROBATCH" to " "
            end-if.          
            
            open extend log-macrobatch.
@@ -246,7 +256,28 @@
                    into LinkBody
                  end-string
               end-perform
-           end-if.                                   
+           end-if.     
+           inspect LinkBody replacing trailing spaces by low-value.
+           if batch-status = 0
+              string LinkBody delimited low-value
+                     x"0d0a""RICALCOLO IMPEGNATO" x"0d0a"
+                     x"0d0a"
+                     "ESEGUITO CON SUCCESSO. DETTAGLI LOG:" 
+                     x"0d0a"
+                     batch-log delimited size
+                into LinkBody
+              end-string
+           else
+              string LinkBody delimited low-value
+                     x"0d0a""RICALCOLO IMPEGNATO" x"0d0a"
+                     x"0d0a"
+                     "ESEGUITO CON ERRORI. DETTAGLI LOG:" 
+                     x"0d0a"
+                     batch-log
+                     delimited size
+                into LinkBody
+              end-string
+           end-if.                
 
            accept como-data from time.
            accept como-ora  from century-date.
@@ -350,6 +381,11 @@
                                   LIVELLO-ABIL,
                                   mb-id
            cancel "shi-exp".
+
+      ***---
+       CALL-RICALDIN.
+           call   "ricaldin-bat" using batch-linkage.
+           cancel "ricaldin-bat".
 
       ***---
        PARAGRAFO-COPY.
