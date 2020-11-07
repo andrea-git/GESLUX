@@ -11,7 +11,8 @@
              oggi controllate, ma SOLO in evasione. 
              Una volta entrato genera comunque un 
              blocco per gli altri utenti
-           - ESPORTAZIONE ORDINI SHI
+           06/11/2020 Va eseguito separatamente
+      *     - ESPORTAZIONE ORDINI SHI
            04/11/2020
            - ricalcolo impegnato (che utilizza però la linkage dei batch)
 
@@ -176,11 +177,11 @@
                                     
            read macrobatch no lock.
            if mb-evacli-stato-ok
-              perform CALL-SHI-EXP
-           end-if.
-                                    
-           read macrobatch no lock.
-           if mb-shi-exp-stato-ok
+      *****        perform CALL-SHI-EXP
+      *****     end-if.
+      *****                              
+      *****     read macrobatch no lock.
+      *****     if mb-shi-exp-stato-ok
               set environment "MACROBATCH" to "S"
               perform CALL-RICALDIN              
               set environment "MACROBATCH" to " "

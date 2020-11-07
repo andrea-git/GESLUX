@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          vmovmag.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 25 settembre 2020 22:12:58.
+       DATE-WRITTEN.        venerdì 6 novembre 2020 13:17:51.
        REMARKS.
       *{TOTEM}END
 
@@ -375,6 +375,8 @@
            05 r-age-ragsoc     PIC  x(40).
            05 r-gdo-codice     PIC  x(5).
            05 r-gdo-intestazione           PIC  x(50).
+           05 r-cli-tipo       PIC  x(2).
+           05 r-tcl-descrizione            PIC  x(50).
        77 lab-tot-coubat-buf           PIC  ----.---.--9,99.
        77 lab-tot-cons-buf PIC  ----.---.--9,99.
        77 lab-tot-colimp-buf           PIC  ----.---.--9,99.
@@ -484,7 +486,7 @@
       * Data.Label
               05 lab-art-BUF PIC X(50).
       * Data.Label
-              05 lab-des-BUF PIC X(40).
+              05 lab-des-BUF PIC x(100).
       * Data.Label
               05 lab-tipo-BUF PIC X(35).
       * Data.Label
@@ -542,7 +544,7 @@
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-tmarche-BUF     PIC X(217).
        77 TMP-DataSet1-clienti-BUF     PIC X(1910).
-       77 TMP-DataSet1-destini-BUF     PIC X(3386).
+       77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-tmp-movmag-BUF     PIC X(436).
        77 TMP-DataSet1-tcodpag-BUF     PIC X(1380).
        77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
@@ -705,7 +707,7 @@
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
        77 clienti-cli-K4-SPLITBUF  PIC X(8).
-       77 destini-K1-SPLITBUF  PIC X(51).
+       77 destini-K1-SPLITBUF  PIC X(111).
        77 destini-k-localita-SPLITBUF  PIC X(36).
        77 tmp-movmag-k-cod-cli-SPLITBUF  PIC X(7).
        77 tcodpag-TBL-CODICE-01-SPLITBUF  PIC X(53).
@@ -4638,9 +4640,9 @@
 
        destini-K1-MERGE-SPLITBUF.
            INITIALIZE destini-K1-SPLITBUF
-           MOVE des-ragsoc-1(1:40) TO destini-K1-SPLITBUF(1:40)
-           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(41:5)
-           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(46:5)
+           MOVE des-ragsoc-1(1:100) TO destini-K1-SPLITBUF(1:100)
+           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(101:5)
+           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(106:5)
            .
 
        destini-k-localita-MERGE-SPLITBUF.

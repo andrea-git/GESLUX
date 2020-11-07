@@ -682,7 +682,7 @@
 070509                         rewrite tsq-rec
 070509                    end-read
 
-                          add mro-qta to tms-qta-b
+                          add mro-qta to tms-qta-b     
                           add mro-qta to tms-qta-b-mese(idx-mese)
 
                           write tms-rec

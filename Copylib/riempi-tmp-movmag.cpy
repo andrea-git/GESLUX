@@ -720,6 +720,14 @@ LUBEXX             end-if
               move gdo-codice            to r-gdo-codice
               move gdo-intestazione      to r-gdo-intestazione
 
+              if save-C
+                 move cli-tipo to tcl-codice r-cli-tipo
+                 read ttipocli no lock
+                      invalid move spaces to tcl-descrizione 
+                 end-read
+                 move tcl-descrizione to r-tcl-descrizione
+              end-if
+
               multiply como-numero by tmp-mov-qta giving como-numero
               move como-numero to r-tot
 
@@ -834,7 +842,11 @@ LUBEXX             end-if
                      separatore          delimited size
                      "Ragione Sociale"   delimited size
                      separatore          delimited size
-                     "Gruppo GDO"        delimited size
+                     "Gruppo GDO"        delimited size  
+                     separatore          delimited size
+                     "Descrizione"       delimited size
+                     separatore          delimited size
+                     "Tipologia cliente" delimited size
                      separatore          delimited size
                      "Descrizione"       delimited size
                      into line-riga
@@ -1009,11 +1021,15 @@ LUBEXX             end-if
                      separatore    delimited size
                      r-age-codice  delimited size
                      separatore    delimited size
-                     r-age-ragsoc  delimited size
+                     r-age-ragsoc  delimited size  
                      separatore    delimited size
                      r-gdo-codice  delimited size
                      separatore    delimited size
                      r-gdo-intestazione delimited size
+                     separatore    delimited size
+                     r-cli-tipo    delimited size
+                     separatore    delimited size
+                     r-tcl-descrizione delimited size
                      into line-riga
               end-string
            else
