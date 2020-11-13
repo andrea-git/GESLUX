@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4A1E9752-612-1609411769
+PROGRAM_UNIQUE_CODE=TOTEM-7E4BD85258-544-2422228201
 
 {{@DESCRIPTION:
 
@@ -15060,10 +15060,9 @@ m_bFixed=1
 
 @}}
 [FDITEM1139_WK]
-m_strName=v-form
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=tipoLogProgmag
+m_strRawPic=x
+m_strPic=x
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -15071,41 +15070,140 @@ m_bFixed=1
 
 @}}
 [FDITEM1140_WK]
-m_strName=STATUS-brnotacr
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
+m_strName=progmag-tab
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM1140_WK
 
 @}}
 [FDITEM1141_WK]
-m_strName=Valid-STATUS-brnotacr
-m_nItemLevel=88
+m_strName=el-prg-chiave
+m_nItemLevel=5
 m_nSync=-1
+m_bOccurs=1
 m_bFixed=1
-m_strTrue="00" THRU "09"
+m_strRawSize=999
+m_nSize=999
 {{@DataItem_m_strDescriptionFDITEM1141_WK
 
 @}}
 [FDITEM1142_WK]
-m_strName=STATUS-grade
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
+m_strName=el-prg-cod-articolo
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM1142_WK
 
 @}}
 [FDITEM1143_WK]
+m_strName=el-prg-cod-magazzino
+m_strRawPic=x(3)
+m_strPic=x(3)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1143_WK
+
+@}}
+[FDITEM1144_WK]
+m_strName=el-prg-tipo-imballo
+m_strRawPic=x(3)
+m_strPic=x(3)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1144_WK
+
+@}}
+[FDITEM1145_WK]
+m_strName=el-prg-peso
+m_strRawPic=9(5)v9(3)
+m_strPic=9(5)v9(3)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1145_WK
+
+@}}
+[FDITEM1146_WK]
+m_strName=v-form
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1146_WK
+
+@}}
+[FDITEM1147_WK]
+m_strName=STATUS-brnotacr
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1147_WK
+
+@}}
+[FDITEM1148_WK]
+m_strName=Valid-STATUS-brnotacr
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM1148_WK
+
+@}}
+[FDITEM1149_WK]
+m_strName=STATUS-grade
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1149_WK
+
+@}}
+[FDITEM1150_WK]
 m_strName=Valid-STATUS-grade
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM1143_WK
+{{@DataItem_m_strDescriptionFDITEM1150_WK
+
+@}}
+[FDITEM1151_WK]
+m_strName=path-log-progmag
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1151_WK
+
+@}}
+[FDITEM1152_WK]
+m_strName=STATUS-log-progmag
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1152_WK
+
+@}}
+[FDITEM1153_WK]
+m_strName=Valid-STATUS-log-progmag
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM1153_WK
 
 @}}
 
@@ -22306,6 +22404,39 @@ END-RWDATA
 
 {{@EMBEDDING_CODE:
 BEGIN-DATA
+   BASETYPE          = 13
+   NODESTYLE         = 13
+   PARAGRAPH         = Other Working
+BEGIN-TEXT
+       01 rl-progmag.
+           05 FILLER           PIC  x(13)
+                      VALUE IS "PROGRESSIVO: ".
+           05 rl-prg-cod-articolo    PIC  9(6).
+           05 FILLER           PIC  xx.
+           05 rl-prg-cod-magazzino   PIC  x(3).
+           05 FILLER           PIC  xx.
+           05 rl-prg-tipo-imballo    PIC  x(3).
+           05 FILLER           PIC  xx.
+           05 rl-prg-peso            PIC  9(5)v999.
+           05 FILLER           PIC  xx.
+           05 FILLER           PIC  x(11)
+                      VALUE IS "IMPEGNATO: ".
+           05 rl-prg-impegnato       PIC  s9(8).
+           05 FILLER           PIC  xx.
+           05 FILLER           PIC  x(10)
+                      VALUE IS "I.MASTER: ".
+           05 rl-prg-imp-master      PIC  s9(8).
+           05 FILLER           PIC  xx.
+           05 FILLER           PIC  x(7)
+                      VALUE IS "I.GDO: ".
+           05 rl-prg-imp-gdo         PIC  s9(8).
+           05 FILLER           PIC  xx.
+           05 FILLER           PIC  x(8)
+                      VALUE IS "I.TRAD: ".
+           05 rl-prg-imp-trad        PIC  s9(8).
+END-TEXT
+END-DATA
+BEGIN-DATA
    BASETYPE          = 6
    NODESTYLE         = 7
    PARAGRAPH         = DeletedCode
@@ -22968,13 +23099,13 @@ BEGIN-TEXT
               perform SALV-MOD
            end-if.
 
-      *     if ra-idx not = 0
-      *        move user-codi to ra-user
-      *        modify lab-attendere, visible true
-      *        call   "ricalimp-art" using ra-linkage
-      *        cancel "ricalimp-art"             
-      *        modify lab-attendere, visible false
-      *     end-if.
+           if ra-idx not = 0
+              move user-codi to ra-user
+              modify lab-attendere, visible true
+              call   "ricalimp-art" using ra-linkage
+              cancel "ricalimp-art"             
+              modify lab-attendere, visible false
+           end-if.
 
            if errori
               move 26 to key-status
@@ -25112,8 +25243,8 @@ PROP_DOCU_RULER_EBL=0
 PROP_DOCU_GRID_EBL=0
 PROP_DOCU_GRID=20
 PROP_DOCU_ALIGN=0
-REL_SYM_SIZE=346
-REL_SYM_INFO_L=57
+REL_SYM_SIZE=352
+REL_SYM_INFO_L=58
 REL_SYM_INFO_X0=2301
 REL_SYM_INFO_Y0=594168910
 REL_SYM_INFO_X1=2301
@@ -25203,31 +25334,33 @@ REL_SYM_INFO_Y42=1624259695
 REL_SYM_INFO_X43=2301
 REL_SYM_INFO_Y43=2081063381
 REL_SYM_INFO_X44=2301
-REL_SYM_INFO_Y44=1928355894
+REL_SYM_INFO_Y44=1224375611
 REL_SYM_INFO_X45=2301
-REL_SYM_INFO_Y45=1224375611
+REL_SYM_INFO_Y45=751758982
 REL_SYM_INFO_X46=2301
-REL_SYM_INFO_Y46=751758982
+REL_SYM_INFO_Y46=444947224
 REL_SYM_INFO_X47=2301
-REL_SYM_INFO_Y47=444947224
+REL_SYM_INFO_Y47=948558667
 REL_SYM_INFO_X48=2301
-REL_SYM_INFO_Y48=948558667
+REL_SYM_INFO_Y48=347401061
 REL_SYM_INFO_X49=2301
-REL_SYM_INFO_Y49=347401061
+REL_SYM_INFO_Y49=1565359156
 REL_SYM_INFO_X50=2301
-REL_SYM_INFO_Y50=1565359156
+REL_SYM_INFO_Y50=1653204159
 REL_SYM_INFO_X51=2301
-REL_SYM_INFO_Y51=1653204159
+REL_SYM_INFO_Y51=1839847033
 REL_SYM_INFO_X52=2301
-REL_SYM_INFO_Y52=1839847033
+REL_SYM_INFO_Y52=896934467
 REL_SYM_INFO_X53=2301
-REL_SYM_INFO_Y53=896934467
+REL_SYM_INFO_Y53=301997586
 REL_SYM_INFO_X54=2301
-REL_SYM_INFO_Y54=301997586
+REL_SYM_INFO_Y54=1286391957
 REL_SYM_INFO_X55=2301
-REL_SYM_INFO_Y55=1286391957
+REL_SYM_INFO_Y55=1262383835
 REL_SYM_INFO_X56=2301
-REL_SYM_INFO_Y56=1262383835
+REL_SYM_INFO_Y56=2089751847
+REL_SYM_INFO_X57=2301
+REL_SYM_INFO_Y57=1928355894
 
 [DRAW_BASESYMBOL_2301_594168910]
 OBJ_NAME=2301
@@ -27352,10 +27485,10 @@ WK_STEP=0
 BK_POINT=0
 CENTER_X=0
 CENTER_Y=0
-LEFT=3446
-TOP=566
-RIGHT=3846
-BOTTOM=788
+LEFT=4483
+TOP=196
+RIGHT=4883
+BOTTOM=418
 PROP_OBJ_TYPE=
 PROP_OBJ_TYPE2=
 PROP_FILL_PT=0
@@ -27932,6 +28065,54 @@ LEFT=5710
 TOP=566
 RIGHT=6110
 BOTTOM=788
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_2089751847]
+OBJ_NAME=2301
+OBJ_ID=2089751847
+KIND=1
+{{@LABEL_2301_2089751847
+log-progmag
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=5144
+TOP=50
+RIGHT=5544
+BOTTOM=272
 PROP_OBJ_TYPE=
 PROP_OBJ_TYPE2=
 PROP_FILL_PT=0
@@ -29738,6 +29919,37 @@ DSN_INFO_END_VALUE=
 DSN_INFO_PRIMARY=0
 DSN_INFO_OPEN=1
 DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_2089751847]
+OBJ_NAME=0
+OBJ_ID=2089751847
+REL_M_OBJ_ID=0
+ENTITY=log-progmag
+LINK=0
+LINK_NAME=
+DSN_SIZE=32
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=1
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_2089751847
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
 DSN_INFO_EXCLUSIVE=0
 DSN_INFO_IS_LOGICAL=0
 DSN_INFO_LOGICAL_FDNAME=

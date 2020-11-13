@@ -287,7 +287,7 @@
          05 filler                      pic x.
          05 r-gruppi                    pic x.
          05 filler                      pic x(1).
-         05 filler                      pic x(3) value "C/E".
+         05 filler                      pic x(3) value "EIC".
          05 filler                      pic x(1).
          05 r-specialist                pic x.
          05 filler                      pic x(1).

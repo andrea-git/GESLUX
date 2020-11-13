@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          garticoli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 22 settembre 2020 00:05:32.
+       DATE-WRITTEN.        lunedì 9 novembre 2020 17:44:40.
        REMARKS.
       *{TOTEM}END
 
@@ -3260,11 +3260,11 @@
            LINES 2,00 ,
            SIZE 13,00 ,
            FONT IS Small-Font,
-           ID IS 126,
+           ID IS 680,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
-           TITLE "Concorrenza/ Esclusiva",
+           TITLE "Esclusiva in concorrenza",
            .
 
       * PAGE
@@ -3941,7 +3941,7 @@
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
-           ID IS 680,
+           ID IS 150,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -5271,7 +5271,7 @@
            LINES 1,31 ,
            SIZE 14,00 ,
            COLOR IS 2,
-           ID IS 150,
+           ID IS 699,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            LEFT,
@@ -5767,7 +5767,7 @@
            ENABLED e-distinta,
            EXCEPTION-VALUE 1008,
            FLAT,
-           ID IS 699,
+           ID IS 1762,
            BITMAP-NUMBER = BitmapNumDistinta
            AFTER PROCEDURE pb-distinta-AfterProcedure, 
            BEFORE PROCEDURE pb-distinta-BeforeProcedure, 
@@ -5881,7 +5881,7 @@
            LINES 1,31 ,
            SIZE 113,83 ,
            COLOR IS 5,
-           ID IS 1762,
+           ID IS 762,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,

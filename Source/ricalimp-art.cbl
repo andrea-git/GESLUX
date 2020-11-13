@@ -11,7 +11,7 @@
            Viene chiamato quando modifico un'evasione che proviene da un
            progressivo diverso sul master.
            Differisce da "ricalimp-bat" solo perchè lavora solo su 
-           articoli di un'evasione ce mi vengono passati in linkage.
+           articoli di un'evasione che mi vengono passati in linkage.
            VIENE RICHIAMATO SOLAMENTE DA GORDCVAR ED ESEGUITO SE 
            VALORIZZATO UN FLAG IN CBLCONFI COME "S".
 
@@ -131,13 +131,12 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
            open input tordini rordini clienti destini
                       ttipocli tcaumag mtordini mrordini.
            open i-o progmag.
-           
 
       ***---
        ELABORAZIONE.
            perform AZZERA-PROGMAG.
            perform ELABORA-ORDINI-MASTER.
-           perform ELABORA-INEVASI-E-BOLLA-EMESSA-NON-FATTURATI.
+           perform ELABORA-INEVASI-E-BOLLA-NON-EMESSA.
 
       ***---
        AZZERA-PROGMAG.
@@ -212,7 +211,7 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
            end-start.
                  
       ***---     
-       ELABORA-INEVASI-E-BOLLA-EMESSA-NON-FATTURATI.
+       ELABORA-INEVASI-E-BOLLA-NON-EMESSA.
            move 0 to tor-anno-fattura.
            move 0 to tor-num-fattura.
 

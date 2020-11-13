@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4915215837-745-417824320
+PROGRAM_UNIQUE_CODE=TOTEM-7E4B9164358-749-3129221193
 
 {{@DESCRIPTION:
 
@@ -13484,7 +13484,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 126
+            ID                = 680
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 31,77
@@ -13495,7 +13495,7 @@ Begin Screen Form1
             Size              = 13,00
             Size Unit         = Default
             Tab Order         = 135
-            Title             = "Concorrenza/ Esclusiva"
+            Title             = "Esclusiva in concorrenza"
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
@@ -15363,7 +15363,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 680
+            ID                = 150
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 23,69
@@ -18789,7 +18789,7 @@ Begin Screen Form1
             Font              = Default Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 150
+            ID                = 699
             Justification     = Left
             Label Offset      = 20
             Line              = 34,85
@@ -19915,7 +19915,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = FALSE
       Help ID           = 0
-      ID                = 699
+      ID                = 1762
       Line              = 3,77
       Lines             = 2,27
       Lines in Pixels   = 29
@@ -20181,7 +20181,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 1762
+      ID                = 762
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 2,00

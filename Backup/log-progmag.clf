@@ -1,0 +1,37 @@
+; CaseMaker Totem Layout Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[DATALAYOUT_CONTENT]
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E4BD142645-596-385224614
+[DSNENTITY_]
+[CStoAcucobolFileDefinition_]
+m_nType=1
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+m_strPrefix=log-prog
+{{@FD_m_strDescription
+
+@}}
+[FDITEM0_]
+m_strName=riga-log-progmag
+m_strRawPic=x(200)
+m_strPic=x(200)
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_
+
+@}}
+[CStoAcucobolSL_]
+m_nType=1
+m_strAssignToName=path-log-progmag
+m_nDevice=5
+m_nFormat=1
+m_nAccessMode=1
+m_strFileStatus=STATUS-log-progmag
+m_nNumber=1
+m_nCompression=70
+{{@SL_m_strDescription
+* Usato per i log sulle evasioni prima e dopo le opreazioni di modifica e cancellazione
+@}}

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gordcvar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 30 ottobre 2020 10:49:57.
+       DATE-WRITTEN.        venerdì 13 novembre 2020 15:58:11.
        REMARKS.
       *{TOTEM}END
 
@@ -87,6 +87,7 @@
            COPY "tnazioni.sl".
            COPY "brnotacr.sl".
            COPY "grade.sl".
+           COPY "log-progmag.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -151,6 +152,7 @@
            COPY "tnazioni.fd".
            COPY "brnotacr.fd".
            COPY "grade.fd".
+           COPY "log-progmag.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -416,12 +418,23 @@
        77 invio-sol-bmp    PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
+       77 tipoLogProgmag   PIC  x.
+       01 progmag-tab.
+           05 el-prg-chiave
+                      OCCURS 999 TIMES.
+               10 el-prg-cod-articolo          PIC  9(6).
+               10 el-prg-cod-magazzino         PIC  x(3).
+               10 el-prg-tipo-imballo          PIC  x(3).
+               10 el-prg-peso      PIC  9(5)v9(3).
        77 v-form           PIC  9
                   VALUE IS 0.
        77 STATUS-brnotacr  PIC  X(2).
            88 Valid-STATUS-brnotacr VALUE IS "00" THRU "09". 
        77 STATUS-grade     PIC  X(2).
            88 Valid-STATUS-grade VALUE IS "00" THRU "09". 
+       77 path-log-progmag PIC  X(256).
+       77 STATUS-log-progmag           PIC  X(2).
+           88 Valid-STATUS-log-progmag VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -604,6 +617,7 @@
        77 TMP-DataSet1-tnazioni-BUF     PIC X(190).
        77 TMP-DataSet1-brnotacr-BUF     PIC X(424).
        77 TMP-DataSet1-grade-BUF     PIC X(754).
+       77 TMP-DataSet1-log-progmag-BUF     PIC X(200).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -894,6 +908,11 @@
        77 DataSet1-grade-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-grade-KEY-Asc  VALUE "A".
           88 DataSet1-grade-KEY-Desc VALUE "D".
+       77 DataSet1-log-progmag-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-log-progmag-LOCK  VALUE "Y".
+       77 DataSet1-log-progmag-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-log-progmag-KEY-Asc  VALUE "A".
+          88 DataSet1-log-progmag-KEY-Desc VALUE "D".
 
        77 tordini-k-causale-SPLITBUF  PIC X(17).
        77 tordini-k1-SPLITBUF  PIC X(23).
@@ -981,6 +1000,32 @@
        77 DataSet1-tmp-progmag-zoom-SPLIT-BUF1   PIC X(64).
 
 
+       01 rl-progmag.
+           05 FILLER           PIC  x(13)
+                      VALUE IS "PROGRESSIVO: ".
+           05 rl-prg-cod-articolo    PIC  9(6).
+           05 FILLER           PIC  xx.
+           05 rl-prg-cod-magazzino   PIC  x(3).
+           05 FILLER           PIC  xx.
+           05 rl-prg-tipo-imballo    PIC  x(3).
+           05 FILLER           PIC  xx.
+           05 rl-prg-peso            PIC  9(5)v999.
+           05 FILLER           PIC  xx.
+           05 FILLER           PIC  x(11)
+                      VALUE IS "IMPEGNATO: ".
+           05 rl-prg-impegnato       PIC  s9(8).
+           05 FILLER           PIC  xx.
+           05 FILLER           PIC  x(10)
+                      VALUE IS "I.MASTER: ".
+           05 rl-prg-imp-master      PIC  s9(8).
+           05 FILLER           PIC  xx.
+           05 FILLER           PIC  x(7)
+                      VALUE IS "I.GDO: ".
+           05 rl-prg-imp-gdo         PIC  s9(8).
+           05 FILLER           PIC  xx.
+           05 FILLER           PIC  x(8)
+                      VALUE IS "I.TRAD: ".
+           05 rl-prg-imp-trad        PIC  s9(8).
       *{TOTEM}END
 
       *{TOTEM}ID-LOGICI
@@ -4751,6 +4796,8 @@
            PERFORM OPEN-tnazioni
            PERFORM OPEN-brnotacr
            PERFORM OPEN-grade
+      *    log-progmag OPEN MODE IS FALSE
+      *    PERFORM OPEN-log-progmag
       *    After Open
            .
 
@@ -5536,6 +5583,18 @@
       * <TOTEM:END>
            .
 
+       OPEN-log-progmag.
+      * <TOTEM:EPT. INIT:gordcvar, FD:log-progmag, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  OUTPUT log-progmag
+           IF NOT Valid-STATUS-log-progmag
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:gordcvar, FD:log-progmag, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-tordini
@@ -5608,6 +5667,8 @@
            PERFORM CLOSE-tnazioni
            PERFORM CLOSE-brnotacr
            PERFORM CLOSE-grade
+      *    log-progmag CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-log-progmag
       *    After Close
            .
 
@@ -5938,6 +5999,11 @@
       * <TOTEM:EPT. INIT:gordcvar, FD:grade, BeforeClose>
       * <TOTEM:END>
            CLOSE grade
+           .
+
+       CLOSE-log-progmag.
+      * <TOTEM:EPT. INIT:gordcvar, FD:log-progmag, BeforeClose>
+      * <TOTEM:END>
            .
 
        tordini-k-causale-MERGE-SPLITBUF.
@@ -15387,6 +15453,76 @@
       * <TOTEM:END>
            .
 
+       DataSet1-log-progmag-INITSTART.
+           .
+
+       DataSet1-log-progmag-INITEND.
+           .
+
+       DataSet1-log-progmag-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-progmag, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-progmag, BeforeReadRecord>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-progmag, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-progmag, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-progmag-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-progmag, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-progmag, BeforeReadNext>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-progmag, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-progmag, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-progmag-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-progmag, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-progmag, BeforeReadPrev>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-progmag, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-progmag, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-progmag-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-progmag, BeforeWrite>
+      * <TOTEM:END>
+           WRITE riga-log-progmag OF log-progmag.
+           MOVE STATUS-log-progmag TO TOTEM-ERR-STAT
+           MOVE "log-progmag" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:log-progmag, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-progmag-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-progmag, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-log-progmag TO TOTEM-ERR-STAT
+           MOVE "log-progmag" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:log-progmag, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-progmag-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-progmag, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-log-progmag TO TOTEM-ERR-STAT
+           MOVE "log-progmag" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:log-progmag, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE tor-rec OF tordini
            INITIALIZE ror-rec OF rordini
@@ -15445,6 +15581,7 @@
            INITIALIZE naz-rec OF tnazioni
            INITIALIZE brno-rec OF brnotacr
            INITIALIZE gra-rec OF grade
+           INITIALIZE riga-log-progmag OF log-progmag
            .
 
 
@@ -15940,6 +16077,14 @@
       * FD's Initialize Paragraph
        DataSet1-grade-INITREC.
            INITIALIZE gra-rec OF grade
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-log-progmag-INITREC.
+           INITIALIZE riga-log-progmag OF log-progmag
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -16550,13 +16695,13 @@ PATCH      end-evaluate.
               perform SALV-MOD
            end-if.
 
-      *     if ra-idx not = 0
-      *        move user-codi to ra-user
-      *        modify lab-attendere, visible true
-      *        call   "ricalimp-art" using ra-linkage
-      *        cancel "ricalimp-art"             
-      *        modify lab-attendere, visible false
-      *     end-if.
+           if ra-idx not = 0
+              move user-codi to ra-user
+              modify lab-attendere, visible true
+              call   "ricalimp-art" using ra-linkage
+              cancel "ricalimp-art"             
+              modify lab-attendere, visible false
+           end-if.
 
            if errori
               move 26 to key-status

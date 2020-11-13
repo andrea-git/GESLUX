@@ -162,6 +162,10 @@
               set CancellazioneFisica   to true
               move LinkChiave to tor-chiave
 PATCH         start transaction
+
+              move "C" to tipoLogProgmag
+              perform INI-LOG-PROGMAG
+
               perform DELETE-RIGHE
               if not SystemErrorOccurred
                  perform DELETE-ESITI
@@ -224,6 +228,8 @@ PATCH            perform SCRIVI-FILE-BACKUP
               end-perform
               move 0 to orig-data-bolla tor-data-bolla
               move 0 to orig-num-bolla  tor-num-bolla
+
+              perform FINE-LOG-PROGMAG
                 
               |ATTIVANDO QUESTO FLAG RICHIAMO IL RICALCOLO 
               |DELLE QTA PRENOTATE.
@@ -235,6 +241,105 @@ PATCH            perform SCRIVI-FILE-BACKUP
               perform FORM1-EXIT
               perform DESTROYXX
            end-if.
+
+      ***---
+       INI-LOG-PROGMAG.
+           if mag-codice = "LBX" exit paragraph end-if.
+           move 0 to idx.
+           initialize progmag-tab replacing numeric data by zeroes
+                                       alphanumeric data by spaces.
+           move tor-chiave to ror-chiave.
+           move low-value  to ror-num-riga.
+
+           start rordini key is >= ror-chiave
+                 invalid continue
+             not invalid 
+                 perform until 1 = 2
+                    read rordini next no lock at 
+                         end exit perform 
+                    end-read
+                    if tor-anno   not = ror-anno or
+                       tor-numero not = ror-num-ordine
+                       exit perform
+                    end-if
+                    add 1 to idx
+                    move ror-prg-chiave to el-prg-chiave(idx)
+                 end-perform
+           end-start.
+           accept como-data from century-date.
+           accept como-ora  from time.
+           accept  path-log-progmag from environment "PROGMAG_LOG_PATH"
+           inspect path-log-progmag 
+                   replacing trailing spaces by low-value.
+           inspect user-codi
+                   replacing trailing spaces by low-value.
+           string  path-log-progmag delimited low-value
+                   tor-anno         delimited size
+                   "-"              delimited size
+                   tor-numero       delimited size
+                   "_"              delimited size
+                   como-data        delimited size
+                   "_"              delimited size
+                   como-ora         delimited size
+                   "_"              delimited size
+                   user-codi        delimited low-value
+                   "_"              delimited size
+                   tipoLogProgmag   delimited size
+                   ".log"           delimited size
+              into path-log-progmag
+           end-string.
+           open output log-progmag.
+
+           inspect user-codi
+                   replacing trailing low-value by spaces.
+
+           move "** SITUAZIONE PRIMA **" to riga-log-progmag.
+           write riga-log-progmag.
+           perform SCRIVI-PROGMAG-LOG.
+
+      ***---
+       SCRIVI-PROGMAG-LOG.
+           perform varying idx from 1 by 1 
+                     until idx > 999
+              if el-prg-cod-articolo(idx) = 0
+                 exit perform
+              end-if
+              move el-prg-cod-articolo(idx) to prg-cod-articolo
+              move spaces                   to prg-cod-magazzino
+              move spaces                   to prg-tipo-imballo
+              move 0                        to prg-peso
+              start progmag key >= prg-chiave
+                    invalid continue
+                not invalid
+                    perform until 1 = 2
+                       read progmag next at end exit perform end-read
+                       if prg-cod-articolo not = 
+                          el-prg-cod-articolo(idx)
+                          write riga-log-progmag from spaces
+                          exit perform
+                       end-if
+                       move prg-cod-articolo  to rl-prg-cod-articolo
+                       move prg-cod-magazzino to rl-prg-cod-magazzino
+                       move prg-tipo-imballo  to rl-prg-tipo-imballo
+                       move prg-peso          to rl-prg-peso     
+                       move prg-impegnato     to rl-prg-impegnato
+                       move prg-imp-master    to rl-prg-imp-master
+                       move prg-imp-GDO       to rl-prg-imp-GDO
+                       move prg-imp-TRAD      to rl-prg-imp-TRAD
+                       write riga-log-progmag from rl-progmag
+                    end-perform
+              end-start
+           end-perform.               
+
+           close log-progmag.
+
+      ***---
+       FINE-LOG-PROGMAG.  
+           if mag-codice = "LBX" exit paragraph end-if. 
+           open extend log-progmag.
+           move "** SITUAZIONE DOPO **" to riga-log-progmag.
+           write riga-log-progmag. 
+           perform SCRIVI-PROGMAG-LOG.
 
       ***---
        CANCELLA-FLAG.
@@ -1595,7 +1700,7 @@ LUBEXX        end-if
               string "a.eventi@goodworks.it" delimited size
                      into LinkAddress
               end-string
-           end-if.             
+           end-if.
            move "gordcvar" to NomeProgramma.
            perform 10 times
               perform SEND-MAIL
@@ -1650,9 +1755,6 @@ LUBEXX        end-if
       ***---
        MODIFICA.
            move 5 to key-status.
-
-
-
            inquire tool-modifica, value in mod.
            set tutto-ok to true.
            
@@ -1721,7 +1823,6 @@ LUBEXX        end-if
 
                  move 5000 to control-id
 
-
               end-if
            end-if.
 
@@ -1788,8 +1889,7 @@ LUBEXX        end-if
             x"0d0a""RIGA M" mro-anno, "-", mro-numero, "-", mro-progr
             x"0d0a""NON TROVATA!!!"
             x"0d0a""CONTATTARE ASSISTENZA!!!"
-                             title tit-err                              
-                             
+                             title tit-err
                               icon 2
                not invalid
                    perform READ-MRORDINI-LOCK
@@ -1815,9 +1915,13 @@ LUBEXX        end-if
                    if cancella
 
                       if mro-prg-chiave not = ror-prg-chiave
-                         add 1 to ra-idx
-                         move mro-prg-cod-articolo 
-                           to ra-articolo(ra-idx)
+                         if not ( mto-chiuso     or 
+                                  mto-chiuso-man or 
+                                  mro-chiuso )
+                            add 1 to ra-idx
+                            move mro-prg-cod-articolo 
+                              to ra-articolo(ra-idx)
+                         end-if
                       end-if
 
                       |SE E' BOLLETTATA TUTTA LA GIACENZA VA STORNATA
@@ -1846,6 +1950,8 @@ LUBEXX        end-if
                             move user-codi to link-user of link-wprogmag
                             call   "wprogmag" using link-wprogmag
                             cancel "wprogmag"
+                          |10/11/2020 In questo caso non devo eseguire nessun ricalcolo
+      *                      set master-chiuso to true
                          else
 
                             if mro-qta > mro-qta-e
@@ -2385,6 +2491,10 @@ PATCH               start transaction
                     end-if
 
                     if RigaCambiata or PrezzoCambiato
+              
+                       move "M" to tipoLogProgmag
+                       perform INI-LOG-PROGMAG
+
                        perform SCRIVI-RIGHE-MAN
 PATCH**                Ne ho ritrovato meno di quelle che ho in grid
 PATCH                  if save-tot-righe not = righe-finali
@@ -2437,7 +2547,9 @@ PATCH                  commit transaction
                        end-perform
 
                        unlock tordini all records
-                       move 0 to mod
+                       move 0 to mod       
+
+                       perform FINE-LOG-PROGMAG
                        
                        move LinkChiave to tor-chiave
                        perform CURRENT-RECORD
