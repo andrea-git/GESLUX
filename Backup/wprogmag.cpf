@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Screen1
 BEFORE_PROGRAM=wprogmag-Ev-Before-Program
 AFTER_PROGRAM=wprogmag-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E24D16152-179-1114628172
+PROGRAM_UNIQUE_CODE=TOTEM-7E4BE15119-892-26334464
 
 {{@DESCRIPTION:
 
@@ -3660,7 +3660,7 @@ BEGIN-DATA
    BASETYPE          = 3
    PARAGRAPH         = AGGIORNA-PROGMAG-CAUSALE
 BEGIN-TEXT
-                 set tutto-ok to true.
+           set tutto-ok to true.
            initialize prg-rec.   
            move link-causale to tca-codice.
            read tcaumag no lock 

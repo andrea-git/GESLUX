@@ -1861,6 +1861,9 @@ RELATIVE_PATH=FD\tmp-k-ord.clf
 [DATALAYOUT_CONTENT-GESLUX:DATALAYOUT288]
 RELATIVE_PATH=FD\log-progmag.clf
 
+[DATALAYOUT_CONTENT-GESLUX:DATALAYOUT289]
+RELATIVE_PATH=FD\tmp-ricalimp.clf
+
 [FOLDER_CONTENT-GESLUX:Source]
 ACCEPTED_FILE_EXTENSION=*.cbl;*.cob
 CREATED_TIME=16:44:32, martedì 1 aprile 2014
@@ -15373,6 +15376,18 @@ ATTRIBUTE=0
 RELATIVE_PATH=FD\log-progmag.sl
 FOLDER_NAME=FD
 OWNER_PATH=FD\log-progmag.clf
+ATTRIBUTE=0
+
+[FILE_CONTENT-GESLUX:FILE2946]
+RELATIVE_PATH=FD\tmp-ricalimp.fd
+FOLDER_NAME=FD
+OWNER_PATH=FD\tmp-ricalimp.clf
+ATTRIBUTE=0
+
+[FILE_CONTENT-GESLUX:FILE2947]
+RELATIVE_PATH=FD\tmp-ricalimp.sl
+FOLDER_NAME=FD
+OWNER_PATH=FD\tmp-ricalimp.clf
 ATTRIBUTE=0
 
 [PROJECT_COMPILE_SETTING-GESLUX:Debug Mode]
@@ -29609,7 +29624,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:SOURCE\ricalimp-art.cbl]
-COPY_DEPENDENCE=FD\mtordini.sl;FD\mrordini.sl;FD\tordini.sl;FD\rordini.sl;FD\progmag.sl;FD\clienti.sl;FD\destini.sl;FD\ttipocli.sl;FD\articoli.sl;FD\tcaumag.sl;FD\mtordini.fd;FD\mrordini.fd;FD\tordini.fd;FD\rordini.fd;FD\progmag.fd;FD\clienti.fd;FD\destini.fd;FD\ttipocli.fd;FD\articoli.fd;FD\tcaumag.fd;Copylib\link-wprogmag.def;Copylib\link-ricalimp-art.def;Copylib\direziona-impegnato-common.cpy
+COPY_DEPENDENCE=FD\mtordini.sl;FD\mrordini.sl;FD\tordini.sl;FD\rordini.sl;FD\progmag.sl;FD\clienti.sl;FD\destini.sl;FD\ttipocli.sl;FD\articoli.sl;FD\tcaumag.sl;FD\tmp-ricalimp.sl;FD\mtordini.fd;FD\mrordini.fd;FD\tordini.fd;FD\rordini.fd;FD\progmag.fd;FD\clienti.fd;FD\destini.fd;FD\ttipocli.fd;FD\articoli.fd;FD\tcaumag.fd;FD\tmp-ricalimp.fd;Copylib\link-geslock.def;Copylib\link-ricalimp-art.def;Copylib\direziona-impegnato-common.cpy
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu

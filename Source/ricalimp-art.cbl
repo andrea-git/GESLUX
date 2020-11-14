@@ -30,6 +30,7 @@
            copy "ttipocli.sl".
            copy "articoli.sl".
            copy "tcaumag.sl".
+           copy "tmp-ricalimp.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -43,10 +44,16 @@
            copy "destini.fd".
            copy "ttipocli.fd".
            copy "articoli.fd".
-           copy "tcaumag.fd".
+           copy "tcaumag.fd". 
+           copy "tmp-ricalimp.fd".
 
        WORKING-STORAGE SECTION.
-           copy "link-wprogmag.def".
+           copy "link-geslock.def".         
+
+       01  link-master           pic x.
+         88 link-imp-master      value "M". 
+         88 link-imp-trad        value "T". 
+         88 link-imp-GDO         value "G". 
                                                                     
        77  status-progmag        pic xx.
        77  status-mtordini       pic xx.
@@ -59,9 +66,21 @@
        77  status-tscorte        pic xx.
        77  status-articoli       pic xx.
        77  status-tcaumag        pic xx.
+       77  status-tmp-ricalimp   pic xx.
+       77  path-tmp-ricalimp     pic x(256).
+
+       77  como-valore           pic s9(8).
+       77  como-impegnato        pic s9(8).
+       01  como-impegnati.
+           03 como-imp-master    pic s9(8).
+           03 como-imp-gdo       pic s9(8).
+           03 como-imp-trad      pic s9(8).
 
        77  como-data             pic 9(8).
        77  como-ora              pic 9(8).    
+
+       77  peso-ed               PIC zz9,999.
+       77  codice-ed             PIC z(5).
 
        77  como-articolo         pic 9(6).
        77  sw-esegui             pic x.
@@ -116,9 +135,11 @@
 
       ***---
        INIT.
-           set tutto-ok    to true.
-           set prima-volta to true.
-           set tutto-ok  to true.
+           set tutto-ok     to true.
+           set prima-volta  to true.
+           set tutto-ok     to true.
+           accept como-data from century-date.
+           accept como-ora  from time.
 
       ***---
        OPEN-FILES.
@@ -131,42 +152,142 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
            open input tordini rordini clienti destini
                       ttipocli tcaumag mtordini mrordini.
            open i-o progmag.
+           accept  path-tmp-ricalimp from environment "PATH_ST".
+           inspect path-tmp-ricalimp 
+                   replacing trailing spaces by low-value.
+           string  path-tmp-ricalimp  delimited low-value
+                   "TMP-RICALIMP_"    delimited size
+                   como-data          delimited size
+                   "_"                delimited size
+                   como-ora           delimited size
+                   ".tmp"             delimited size
+              into path-tmp-ricalimp
+           end-string.
+           open output tmp-ricalimp.
+           close       tmp-ricalimp.
+           open i-o    tmp-ricalimp.
 
       ***---
        ELABORAZIONE.
-           perform AZZERA-PROGMAG.
+      *****     perform AZZERA-PROGMAG.
            perform ELABORA-ORDINI-MASTER.
            perform ELABORA-INEVASI-E-BOLLA-NON-EMESSA.
+           perform TMP-TO-PROGMAG.
+
+      ********---
+      ***** AZZERA-PROGMAG.
+      *****     set tutto-ok to true.
+      *****
+      *****     perform varying ra-idx from 1 by 1 until 1 = 2
+      *****        if ra-articolo(ra-idx) = 0
+      *****           exit perform
+      *****        end-if
+      *****        move low-value to prg-rec
+      *****        move ra-articolo(ra-idx) to prg-cod-articolo
+      *****        start progmag key is >= prg-chiave
+      *****              invalid continue
+      *****          not invalid
+      *****              perform until 1 = 2 
+      *****       
+      *****                 read progmag next at end exit perform end-read
+      *****
+      *****                 if prg-cod-articolo not = ra-articolo(ra-idx)
+      *****                    exit perform
+      *****                 end-if
+      *****
+      *****                 move 0 to prg-impegnato
+      *****                 move 0 to prg-imp-master
+      *****                 move 0 to prg-imp-TRAD
+      *****                 move 0 to prg-imp-GDO
+      *****                 rewrite prg-rec invalid continue end-rewrite
+      *****              end-perform                                    
+      *****              unlock progmag all records
+      *****        end-start
+      *****     end-perform.
 
       ***---
-       AZZERA-PROGMAG.
-           set tutto-ok to true.
+       TMP-TO-PROGMAG.
+           move low-value to tric-rec.
+           start tmp-ricalimp key >= tric-prg-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read tmp-ricalimp next at end exit perform end-read
+                    move tric-prg-chiave to prg-chiave
+                    perform READ-PROGMAG-LOCK
+                    if not RecLocked
+                       move tric-prg-impegnato to prg-impegnato
+                       move tric-prg-impegnati to prg-impegnati
+                       rewrite prg-rec
+                       unlock progmag all records
+                       perform ALLINEA-PROGMAG-PADRE
+                    end-if
+                 end-perform
+           end-start.
 
-           perform varying ra-idx from 1 by 1 until 1 = 2
-              if ra-articolo(ra-idx) = 0
-                 exit perform
-              end-if
-              move low-value to prg-rec
-              move ra-articolo(ra-idx) to prg-cod-articolo
-              start progmag key is >= prg-chiave
-                    invalid continue
-                not invalid
-                    perform until 1 = 2 
-             
-                       read progmag next at end exit perform end-read
-
-                       if prg-cod-articolo not = ra-articolo(ra-idx)
-                          exit perform
-                       end-if
-
-                       move 0 to prg-impegnato
-                       move 0 to prg-imp-master
-                       move 0 to prg-imp-TRAD
-                       move 0 to prg-imp-GDO
-                       rewrite prg-rec invalid continue end-rewrite
-                    end-perform                                    
+      ***---
+       ALLINEA-PROGMAG-PADRE.
+           move spaces to prg-cod-magazzino
+           move spaces to prg-tipo-imballo
+           move 0      to prg-peso
+           start progmag key >= prg-chiave
+                 invalid continue
+             not invalid
+                 move 0 to como-impegnato como-imp-master como-imp-gdo 
+                           como-imp-trad
+                 perform until 1 = 2
+                    read progmag next at end exit perform end-read
+                    if prg-peso = 0 exit perform cycle end-if
+                    if prg-cod-articolo not = tric-prg-cod-articolo
+                       exit perform
+                    end-if                             
+                    add prg-impegnato  to como-impegnato
+                    add prg-imp-master to como-imp-master
+                    add prg-imp-gdo    to como-imp-gdo
+                    add prg-imp-trad   to como-imp-trad
+                 end-perform
+                 move tric-prg-cod-articolo to prg-cod-articolo
+                 move spaces to prg-cod-magazzino
+                 move spaces to prg-tipo-imballo
+                 move 0      to prg-peso
+                 perform READ-PROGMAG-LOCK
+                 if not RecLocked
+                    move como-impegnato  to prg-impegnato
+                    move como-imp-master to prg-imp-master
+                    move como-imp-gdo    to prg-imp-gdo
+                    move como-imp-trad   to prg-imp-trad
+                    rewrite prg-rec
                     unlock progmag all records
-              end-start
+                 end-if
+           end-start.         
+
+      ***---
+       READ-PROGMAG-LOCK.           
+           perform until 1 = 2
+              set RecLocked to false
+              read progmag lock
+              if RecLocked
+                 move prg-cod-articolo to codice-ed
+                 move prg-peso         to peso-ed
+                 move "progmag"        to geslock-nome-file
+                 initialize geslock-messaggio
+                 string "Articolo:       ", codice-ed
+                 x"0d0a""Magazzino:  ",     prg-cod-magazzino
+                 x"0d0a""Imballo:       ",  prg-tipo-imballo
+                 x"0d0a""Peso:           ", peso-ed 
+                 x"0d0a""Record già in uso su altro terminale." 
+                             delimited size
+                        into geslock-messaggio
+                 end-string
+                 set errori to true
+                 move 1     to geslock-v-riprova
+                 move 0     to geslock-v-termina
+                 move 1     to geslock-v-ignora
+                 call   "geslock" using geslock-linkage
+                 cancel "geslock"
+              else
+                 exit perform
+LUBEXX        end-if
            end-perform.
 
       ***---
@@ -179,9 +300,7 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
              not invalid
                  perform until 1 = 2
                     read mtordini next at end exit perform end-read
-                    if mto-chiuso
-                       exit perform
-                    end-if
+                    if mto-chiuso exit perform end-if
                     perform LOOP-RIGHE-MRORDINI
                  end-perform
            end-start.
@@ -202,6 +321,7 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
                        continue
                     else
                        move mro-prg-cod-articolo to como-articolo
+                       move mro-prg-chiave       to tric-prg-chiave
                        perform FIND-ARTICOLO        
                        if trovato
                           perform AGGIORNA-IMPEGNATO-MASTER
@@ -249,25 +369,55 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
                        exit perform
                     end-if
                     move ror-prg-cod-articolo  to como-articolo
-                    perform FIND-ARTICOLO
+                    move ror-prg-chiave        to tric-prg-chiave
+                    perform FIND-ARTICOLO                
                     if trovato
-                       move 0                     to link-impegnato
-                       move ra-user               to link-user
-                       move ror-prg-chiave        to link-key
-                       move "0100000000000000"    to link-array
-                       move ror-qta               to link-valore
-                       move tor-causale           to link-causale
-                       move ror-prg-chiave        to link-key
-                       set  link-update           to true
-                       set  link-open-with-lock   to false
-                       set  link-update-um        to true
-                       set  link-update-peso      to false
-                       set  link-update-valore    to false
-                       call   "wprogmag" using link-wprogmag
-                       cancel "wprogmag"
+                       move 0           to como-impegnato
+                       move ror-qta     to como-valore
+                       move tor-causale to tca-codice
+                       perform AGGIORNA-RICALIMP-CAUSALE
                     end-if
                  end-perform
            end-start.
+
+      ***---
+       AGGIORNA-RICALIMP-CAUSALE.
+           initialize prg-rec.   
+           read tcaumag no lock 
+                invalid continue
+            not invalid 
+                perform AGGIORNA-VALORI-UM 
+                rewrite tric-rec
+           end-read.
+
+      ***---
+       AGGIORNA-VALORI-UM.
+           evaluate true
+           when tca-movim-imp-pos 
+                add como-valore to tric-prg-impegnato
+                if como-impegnato not = 0
+                   evaluate true
+                   when link-imp-MASTER
+                        add como-impegnato to tric-prg-imp-master
+                   when link-imp-GDO
+                        add como-impegnato to tric-prg-imp-GDO
+                   when link-imp-TRAD
+                        add como-impegnato to tric-prg-imp-TRAD
+                   end-evaluate
+                end-if
+           when tca-movim-imp-neg 
+                subtract como-valore from tric-prg-impegnato
+                if como-impegnato not = 0
+                   evaluate true
+                   when link-imp-MASTER
+                        subtract como-impegnato from tric-prg-imp-master
+                   when link-imp-GDO
+                        subtract como-impegnato from tric-prg-imp-GDO
+                   when link-imp-TRAD
+                        subtract como-impegnato from tric-prg-imp-TRAD
+                   end-evaluate
+                end-if
+           end-evaluate.        
 
       ***----
        AGGIORNA-IMPEGNATO-MASTER.
@@ -278,24 +428,14 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
            |Ad aumentare l'impegnato sulle qta evase 
            |ci penseranno poi le evasioni
            if mro-qta > mro-qta-e
-              compute link-valore = mro-qta - mro-qta-e
+              compute como-valore = mro-qta - mro-qta-e
            else
-              move 0       to link-valore
+              move 0       to como-valore
            end-if.
-           move link-valore to link-impegnato.
+           move como-valore to como-impegnato.
            perform DIREZIONA-IMPEGNATO.
-
-           move ra-user               to link-user.
-           move "0100000000000000"    to link-array.
-           move mto-causale           to link-causale.
-           move mro-prg-chiave        to link-key.
-           set  link-update           to true.
-           set  link-open-with-lock   to false.
-           set  link-update-um        to true.
-           set  link-update-peso      to false.
-           set  link-update-valore    to false.
-           call   "wprogmag" using link-wprogmag.
-           cancel "wprogmag".
+           move mto-causale to tca-codice.
+           perform AGGIORNA-RICALIMP-CAUSALE.
 
       ***---
        FIND-ARTICOLO.
@@ -303,12 +443,26 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
            set ra-idx to 1.
            search ra-articoli
            when ra-articolo(ra-idx) = como-articolo
-                set trovato to true
+                move tric-prg-chiave to prg-chiave
+                read progmag no lock
+                     invalid continue
+                 not invalid
+                     set trovato to true
+                     read tmp-ricalimp key tric-prg-chiave
+                          invalid 
+                          initialize tric-dati 
+                                     replacing numeric data by zeroes
+                                          alphanumeric data by spaces
+                          write tric-rec
+                     end-read
+                end-read
            end-search.
 
       ***--
        CLOSE-FILES.
            close mtordini mrordini clienti destini tcaumag.
+           close       tmp-ricalimp.
+           delete file tmp-ricalimp.
 
       ***---
        EXIT-PGM.

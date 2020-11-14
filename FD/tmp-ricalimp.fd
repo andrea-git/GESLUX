@@ -1,0 +1,14 @@
+      *(( XFD FILE = tmp-ricalimp ))
+       FD  tmp-ricalimp.
+       01 tric-rec.
+           05 tric-prg-chiave.
+               10 tric-prg-cod-articolo        PIC  9(6).
+               10 tric-prg-cod-magazzino       PIC  x(3).
+               10 tric-prg-tipo-imballo        PIC  x(3).
+               10 tric-prg-peso    PIC  9(5)v999.
+           05 tric-dati.
+               10 tric-prg-impegnato           PIC  S9(8).
+               10 tric-prg-impegnati.
+                   15 tric-prg-imp-master          PIC  s9(8).
+                   15 tric-prg-imp-GDO PIC  s9(8).
+                   15 tric-prg-imp-TRAD            PIC  s9(8).
