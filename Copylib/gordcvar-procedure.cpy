@@ -2548,8 +2548,10 @@ PATCH                  commit transaction
 
                        unlock tordini all records
                        move 0 to mod       
-
-                       perform FINE-LOG-PROGMAG
+                                                    
+                       if RigaCambiata or PrezzoCambiato
+                          perform FINE-LOG-PROGMAG
+                       end-if
                        
                        move LinkChiave to tor-chiave
                        perform CURRENT-RECORD

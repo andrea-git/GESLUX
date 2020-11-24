@@ -28,6 +28,7 @@
            copy "ttipocli.sl".
            copy "tcaumag.sl".
            copy "tmp-ricalimp.sl".  
+           copy "lockfile.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -41,7 +42,8 @@
            copy "destini.fd".
            copy "ttipocli.fd".
            copy "tcaumag.fd". 
-           copy "tmp-ricalimp.fd".
+           copy "tmp-ricalimp.fd".           
+           copy "lockfile.fd".
 
        WORKING-STORAGE SECTION.
            copy "link-geslock.def".         
@@ -60,6 +62,7 @@
        77  status-destini        pic xx.
        77  status-ttipocli       pic xx.
        77  status-tcaumag        pic xx.   
+       77  status-lockfile       pic xx.
        77  status-tmp-ricalimp   pic xx.
        77  path-tmp-ricalimp     pic x(256).
 
@@ -108,6 +111,16 @@
            when "99" set RecLocked to true
            end-evaluate. 
 
+      ***---
+       LOCKFILE-ERR SECTION.
+           use after error procedure on lockfile.
+           set RecLocked to false.
+           set tutto-ok  to true.
+           evaluate status-lockfile
+           when "93"
+           when "99" set RecLocked to true
+           end-evaluate. 
+
        END DECLARATIVES.
 
       ***---
@@ -119,6 +132,25 @@
 
            perform INIT.
            perform OPEN-FILES.
+           move "ricalimp-art" to lck-chiave.
+           read lockfile no lock
+                invalid         
+                move "C" to lck-operazione
+                accept lck-data-creazione from century-date
+                accept lck-ora-creazione  from century-date
+                move ra-user to lck-utente-creazione
+                write lck-rec
+                read lockfile lock end-read
+            not invalid
+                perform until 1 = 2
+                   set RecLocked to false
+                   read lockfile lock end-read
+                   if not RecLocked
+                      exit perform
+                   end-if
+                end-perform
+           end-read.
+                
            if tutto-ok
               perform ELABORAZIONE
               perform CLOSE-FILES
@@ -157,6 +189,7 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
            open output tmp-ricalimp.
            close       tmp-ricalimp.
            open i-o    tmp-ricalimp.
+           open i-o    lockfile.
 
       ***---
        ELABORAZIONE.
@@ -451,13 +484,14 @@ LUBEXX        end-if
 
       ***--
        CLOSE-FILES.
-           close mtordini mrordini clienti destini tcaumag.
+           unlock lockfile all records.
+           close mtordini mrordini clienti destini tcaumag lockfile.
            close       tmp-ricalimp.
            delete file tmp-ricalimp.
 
       ***---
        EXIT-PGM.
-           goback.
+           goback.           
 
       ***---
        PARAGRAFO-COPY.
