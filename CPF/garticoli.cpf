@@ -2,6 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+ANDESK-andre=192.168.56.1
 
 
 [PROGRAM_CONTENT]
@@ -10,7 +11,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4B9164358-749-3129221193
+PROGRAM_UNIQUE_CODE=TOTEM-7E4B18104921-873-458423900
 
 {{@DESCRIPTION:
 
@@ -14040,7 +14041,7 @@ Begin Screen Form1
             Notify Change     = FALSE
             Numeric           = FALSE
             Occurs            = 0
-            Read Only         = TRUE
+            Read Only         = FALSE
             Required          = FALSE
             Secure            = FALSE
             Size              = 10,00
@@ -14103,7 +14104,7 @@ Begin Screen Form1
             Notify Change     = FALSE
             Numeric           = FALSE
             Occurs            = 0
-            Read Only         = TRUE
+            Read Only         = FALSE
             Required          = FALSE
             Secure            = FALSE
             Size              = 10,00
@@ -14166,7 +14167,7 @@ Begin Screen Form1
             Notify Change     = FALSE
             Numeric           = FALSE
             Occurs            = 0
-            Read Only         = TRUE
+            Read Only         = FALSE
             Required          = FALSE
             Secure            = FALSE
             Size              = 10,00
@@ -14229,7 +14230,7 @@ Begin Screen Form1
             Notify Change     = FALSE
             Numeric           = FALSE
             Occurs            = 0
-            Read Only         = TRUE
+            Read Only         = FALSE
             Required          = FALSE
             Secure            = FALSE
             Size              = 10,00
@@ -14292,7 +14293,7 @@ Begin Screen Form1
             Notify Change     = FALSE
             Numeric           = FALSE
             Occurs            = 0
-            Read Only         = TRUE
+            Read Only         = FALSE
             Required          = FALSE
             Secure            = FALSE
             Size              = 10,00
@@ -14355,7 +14356,7 @@ Begin Screen Form1
             Notify Change     = FALSE
             Numeric           = FALSE
             Occurs            = 0
-            Read Only         = TRUE
+            Read Only         = FALSE
             Required          = FALSE
             Secure            = FALSE
             Size              = 18,00
@@ -14417,7 +14418,7 @@ Begin Screen Form1
             Notify Change     = FALSE
             Numeric           = FALSE
             Occurs            = 0
-            Read Only         = TRUE
+            Read Only         = FALSE
             Required          = FALSE
             Secure            = FALSE
             Size              = 10,00
@@ -14480,7 +14481,7 @@ Begin Screen Form1
             Notify Change     = FALSE
             Numeric           = FALSE
             Occurs            = 0
-            Read Only         = TRUE
+            Read Only         = FALSE
             Required          = FALSE
             Secure            = FALSE
             Size              = 10,00
@@ -15644,7 +15645,7 @@ Begin Screen Form1
             Size              = 17,00
             Size Unit         = Default
             Tab Order         = 45
-            Title             = "SHI/GET"
+            Title             = "Dimensioni varie"
             Transparent       = FALSE
             Visible           = NONE
             Width in Cells    = TRUE

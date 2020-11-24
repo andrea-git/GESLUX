@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          garticoli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 9 novembre 2020 17:44:40.
+       DATE-WRITTEN.        martedì 17 novembre 2020 15:23:52.
        REMARKS.
       *{TOTEM}END
 
@@ -3451,7 +3451,6 @@
            WIDTH-IN-CELLS,
            RIGHT,
            MAX-TEXT 9,
-           READ-ONLY,
            VALUE ef-altezza-pz-BUF,
            .
 
@@ -3472,7 +3471,6 @@
            WIDTH-IN-CELLS,
            RIGHT,
            MAX-TEXT 9,
-           READ-ONLY,
            VALUE ef-larghezza-pz-BUF,
            .
 
@@ -3493,7 +3491,6 @@
            WIDTH-IN-CELLS,
            RIGHT,
            MAX-TEXT 9,
-           READ-ONLY,
            VALUE ef-profondita-pz-BUF,
            .
 
@@ -3514,7 +3511,6 @@
            WIDTH-IN-CELLS,
            RIGHT,
            MAX-TEXT 6,
-           READ-ONLY,
            VALUE ef-qta-cartone-BUF,
            .
 
@@ -3535,7 +3531,6 @@
            WIDTH-IN-CELLS,
            RIGHT,
            MAX-TEXT 6,
-           READ-ONLY,
            VALUE ef-qta-stda-BUF,
            .
 
@@ -3555,7 +3550,6 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            MAX-TEXT 15,
-           READ-ONLY,
            VALUE ef-adr-BUF,
            .
 
@@ -3576,7 +3570,6 @@
            WIDTH-IN-CELLS,
            RIGHT,
            MAX-TEXT 10,
-           READ-ONLY,
            VALUE ef-peso-SHI-BUF,
            .
 
@@ -3597,7 +3590,6 @@
            WIDTH-IN-CELLS,
            RIGHT,
            MAX-TEXT 10,
-           READ-ONLY,
            VALUE ef-peso-GET-BUF,
            .
 
@@ -4072,7 +4064,7 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            CENTER,
-           TITLE "SHI/GET",
+           TITLE "Dimensioni varie",
            .
 
       * BAR

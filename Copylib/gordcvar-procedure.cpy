@@ -1915,13 +1915,13 @@ LUBEXX        end-if
                    if cancella
 
                       if mro-prg-chiave not = ror-prg-chiave
-                         if not ( mto-chiuso     or 
-                                  mto-chiuso-man or 
-                                  mro-chiuso )
+      *****                   if not ( mto-chiuso     or 
+      *****                            mto-chiuso-man or 
+      *****                            mro-chiuso )
                             add 1 to ra-idx
                             move mro-prg-cod-articolo 
                               to ra-articolo(ra-idx)
-                         end-if
+      *****                   end-if
                       end-if
 
                       |SE E' BOLLETTATA TUTTA LA GIACENZA VA STORNATA

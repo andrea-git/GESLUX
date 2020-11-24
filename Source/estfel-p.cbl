@@ -1251,34 +1251,33 @@
                    into line-riga
                  write line-riga    
               end-if
-           
               initialize line-riga
-              string 78-spazi 
-                     78-spazi              
-                     78-spazi 
+              string 78-spazi
+                     78-spazi
+                     78-spazi
                      "</DatiOrdineAcquisto>"
                 into line-riga
-              write line-riga 
-           end-if.            
+              write line-riga
+           end-if.
            if lfel-f or des-prog > 0
-              if tor-num-bolla  > 0 or
-                 tor-data-bolla > 0
+              if tor-num-bolla   > 0 or
+                 tor-data-bolla  > 0
                  perform TAG-DDT
               end-if
               perform TAG-TRASPORTO
            end-if.
-           initialize line-riga.        
-           string 78-spazi 
-                  78-spazi                  
+           initialize line-riga.
+           string 78-spazi
+                  78-spazi
                   "</DatiGenerali>"
              into line-riga.
-           write line-riga.             
-           initialize line-riga.     
-           string 78-spazi 
-                  78-spazi                  
+           write line-riga.
+           initialize line-riga.
+           string 78-spazi
+                  78-spazi
                   "<DatiBeniServizi>"
              into line-riga.
-           write line-riga.       
+           write line-riga.
 
            if lfel-f
               move 0 to prg-riga
@@ -1293,14 +1292,14 @@
                        if ror-anno       not = tor-anno or
                           ror-num-ordine not = tor-numero
                           exit perform
-                       end-if          
+                       end-if
                        move ror-cod-articolo to art-codice
-                       read articoli no lock 
-                            invalid 
+                       read articoli no lock
+                            invalid
                             move ror-cod-articolo to bli-codice
                             read blister no lock
                                  invalid initialize art-descrizione
-                             not invalid move bli-descrizione 
+                             not invalid move bli-descrizione
                                            to art-descrizione
                             end-read
                        end-read
@@ -1308,7 +1307,7 @@
                        move ror-cod-iva to tbliv-codice2
                        read tivaese no lock
                             invalid continue
-                       end-read       
+                       end-read
                        perform SCRIVI-RIGA-DOCUMENTO
                     end-perform
               end-start
@@ -1325,15 +1324,15 @@
                        if rno-anno   not = tno-anno or
                           rno-numero not = tno-numero
                           exit perform
-                       end-if          
+                       end-if
                        move rno-cod-articolo to art-codice
                             ror-cod-articolo
-                       read articoli no lock 
-                            invalid 
+                       read articoli no lock
+                            invalid
                             move rno-cod-articolo to bli-codice
                             read blister no lock
                                  invalid initialize art-descrizione
-                             not invalid move bli-descrizione 
+                             not invalid move bli-descrizione
                                            to art-descrizione
                             end-read
                        end-read
@@ -1342,7 +1341,7 @@
                        read tivaese no lock
                             invalid continue
                        end-read
-                       move rno-des-libera    to ror-des-libera 
+                       move rno-des-libera    to ror-des-libera
                        move rno-qta           to ror-qta
                        move rno-imp-consumo   to ror-imp-consumo
                        move rno-imp-cou-cobat to ror-imp-cou-cobat
@@ -1351,39 +1350,39 @@
                        perform SCRIVI-RIGA-DOCUMENTO
                     end-perform
               end-start
-           end-if.   
-           perform SCRIVI-RIEPILOGO.         
+           end-if.
+           perform SCRIVI-RIEPILOGO.
            move "</p:FatturaElettronica>" to line-riga.
            write line-riga.
            close lineseq.
 
       ***---
-       TAG-DDT.               
-           initialize line-riga. 
-           string 78-spazi 
-                  78-spazi       
-                  78-spazi                  
+       TAG-DDT.
+           initialize line-riga.
+           string 78-spazi
+                  78-spazi
+                  78-spazi
                   "<DatiDDT>"
              into line-riga.
-           write line-riga.    
-           initialize line-riga.   
+           write line-riga.
+           initialize line-riga.
            move tor-num-bolla to como-numero.
            perform EDIT-NUMERO.
-           string 78-spazi 
-                  78-spazi       
-                  78-spazi       
-                  78-spazi                  
+           string 78-spazi
+                  78-spazi
+                  78-spazi
+                  78-spazi
                   "<NumeroDDT>"
                   como-numero delimited low-value
                   "</NumeroDDT>"
              into line-riga.
-           write line-riga. 
-           initialize line-riga. 
-           string 78-spazi 
-                  78-spazi       
-                  78-spazi       
-                  78-spazi                  
-                  "<DataDDT>"                     
+           write line-riga.
+           initialize line-riga.
+           string 78-spazi
+                  78-spazi
+                  78-spazi
+                  78-spazi
+                  "<DataDDT>"
                   tor-data-bolla(1:4) delimited size
                   "-"                 delimited size
                   tor-data-bolla(5:2) delimited size
@@ -1391,40 +1390,40 @@
                   tor-data-bolla(7:2) delimited size
                   "</DataDDT>"
              into line-riga.
-           write line-riga. 
-           initialize line-riga. 
-           string 78-spazi 
-                  78-spazi       
-                  78-spazi                  
+           write line-riga.
+           initialize line-riga.
+           string 78-spazi
+                  78-spazi
+                  78-spazi
                   "</DatiDDT>"
              into line-riga.
            write line-riga. 
   
       ***---
        TAG-TRASPORTO.
-           initialize line-riga. 
-           string 78-spazi 
-                  78-spazi       
-                  78-spazi                  
+           initialize line-riga.
+           string 78-spazi
+                  78-spazi
+                  78-spazi
                   "<DatiTrasporto>"
              into line-riga.
-           write line-riga.           
+           write line-riga.
            if lfel-f
               perform TAGS-VETTORE
-           end-if.  
+           end-if.
            if des-prog > 0
               perform TAG-DESTINO
-           end-if.                                   
+           end-if.
            if lfel-f
               move 0 to data-cons ora-cons
               move tor-chiave to eor-tor-chiave
               move high-value to eor-num-riga
               start eordini key <= eor-chiave
                     invalid continue
-                not invalid            
+                not invalid
                     perform until 1 = 2
-                       read eordini previous 
-                            at end exit perform 
+                       read eordini previous
+                            at end exit perform
                        end-read
                        if eor-tor-chiave not = tor-chiave
                           exit perform
@@ -1435,15 +1434,15 @@
                        end-if
                     end-perform
               end-start
-              if data-cons > 0        
+              if data-cons > 0
                  initialize line-riga
-                 string 78-spazi 
-                        78-spazi       
-                        78-spazi       
-                        78-spazi                  
+                 string 78-spazi
+                        78-spazi
+                        78-spazi
+                        78-spazi
                         "<DataOraConsegna>"
                         data-cons(1:4)
-                        "-"                 
+                        "-"
                         data-cons(5:2)
                         "-"
                         data-cons(7:2)
@@ -1454,38 +1453,38 @@
                         ":"
                         ora-cons(5:2)
                         "</DataOraConsegna>"
-                   into line-riga    
+                   into line-riga
                  write line-riga
               end-if
            end-if.
-           initialize line-riga.   
-           string 78-spazi 
-                  78-spazi       
-                  78-spazi                  
+           initialize line-riga.
+           string 78-spazi
+                  78-spazi
+                  78-spazi
                   "</DatiTrasporto>"
              into line-riga.
-           write line-riga.            
+           write line-riga.
 
       ***---
        TAGS-VETTORE.
-           initialize line-riga.               
-           string 78-spazi 
-                  78-spazi       
-                  78-spazi       
-                  78-spazi                  
+           initialize line-riga.
+           string 78-spazi
+                  78-spazi
+                  78-spazi
+                  78-spazi
                   "<DatiAnagraficiVettore>"
              into line-riga.
-           write line-riga.           
-           initialize line-riga.               
-           string 78-spazi 
-                  78-spazi       
-                  78-spazi       
-                  78-spazi                 
-                  78-spazi        
+           write line-riga.
+           initialize line-riga.
+           string 78-spazi
+                  78-spazi
+                  78-spazi
+                  78-spazi
+                  78-spazi
                   "<IdFiscaleIVA>"
              into line-riga.
-           write line-riga.          
-           initialize line-riga.                
+           write line-riga.
+           initialize line-riga.
            string 78-spazi 
                   78-spazi       
                   78-spazi       
@@ -1768,6 +1767,7 @@
                      78-spazi
                      "</CodiceArticolo>"
                 into line-riga
+
               write line-riga
            end-if.
 

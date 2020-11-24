@@ -10,8 +10,6 @@
 
            Viene chiamato quando modifico un'evasione che proviene da un
            progressivo diverso sul master.
-           Differisce da "ricalimp-bat" solo perchè lavora solo su 
-           articoli di un'evasione che mi vengono passati in linkage.
            VIENE RICHIAMATO SOLAMENTE DA GORDCVAR ED ESEGUITO SE 
            VALORIZZATO UN FLAG IN CBLCONFI COME "S".
 
@@ -28,9 +26,8 @@
            copy "clienti.sl".
            copy "destini.sl".
            copy "ttipocli.sl".
-           copy "articoli.sl".
            copy "tcaumag.sl".
-           copy "tmp-ricalimp.sl".
+           copy "tmp-ricalimp.sl".  
 
       *****************************************************************
        DATA DIVISION.
@@ -43,7 +40,6 @@
            copy "clienti.fd".
            copy "destini.fd".
            copy "ttipocli.fd".
-           copy "articoli.fd".
            copy "tcaumag.fd". 
            copy "tmp-ricalimp.fd".
 
@@ -63,9 +59,7 @@
        77  status-clienti        pic xx.
        77  status-destini        pic xx.
        77  status-ttipocli       pic xx.
-       77  status-tscorte        pic xx.
-       77  status-articoli       pic xx.
-       77  status-tcaumag        pic xx.
+       77  status-tcaumag        pic xx.   
        77  status-tmp-ricalimp   pic xx.
        77  path-tmp-ricalimp     pic x(256).
 
@@ -93,8 +87,6 @@
            88 trovato            value 1, false 0.
        77  filler                pic 9.
            88 RecLocked          value 1, false 0.
-       77  filler                pic 9.
-           88 prima-volta        value 1, false 0.
        01  GdoInUsoFlag          pic x.
            88 GdoInUso           value "S". 
            88 GdoNonInUso        value " ".
@@ -136,7 +128,6 @@
       ***---
        INIT.
            set tutto-ok     to true.
-           set prima-volta  to true.
            set tutto-ok     to true.
            accept como-data from century-date.
            accept como-ora  from time.

@@ -1050,7 +1050,8 @@ LUBEXX*****     open i-o reva allowing readers.
            perform ELABORA-INEVASI-E-BOLLA-EMESSA-NON-FATTURATI.  
            perform ELABORA-MOVIMENTI-DI-MAGAZZINO. 
            perform ELABORA-ORDINATO-ORDF.
-           perform ELABORA-ORDINATO-EVASIONI-F.    
+           perform ELABORA-ORDINATO-EVASIONI-F.
+    
       ***---
        AZZERA-PROGMAG.
       *****     perform ACCEPT-FORMAT-TIME.
@@ -1085,7 +1086,7 @@ LUBEXX*****     open i-o reva allowing readers.
       *****              accept  como-ora from time
       *****              display "READ INI " como-ora upon syserr
 
-                    read progmag next at end exit perform end-read
+                    read progmag next at end exit perform end-read 
       *****              accept  como-ora from time
       *****              display "READ FIN " como-ora upon syserr
 
@@ -1507,7 +1508,6 @@ LUBEXX*****     open i-o reva allowing readers.
                        rmo-movim  not =  tmo-numero              
                        exit perform
                     end-if
-   
                     move user-link           to link-user
                     move rmo-chiave-progmag  to link-key
                     |AGISCO SULLA GIACENZA (NORMALE E BLOCCATA)
@@ -1643,7 +1643,6 @@ LUBEXX*****     open i-o reva allowing readers.
                     if rof-chiave-testa not = tof-chiave
                        exit perform
                     end-if
-      
                     |1. AGISCO SULL'ORDINATO col mese attuale
                     |(l'ordinato è già stato azzerato in precedenza)
                     move "0010000000000000"  to link-array
@@ -1844,8 +1843,7 @@ LUBEXX*****     open i-o reva allowing readers.
                     read reva next at end exit perform end-read
                     if reva-chiave-testa not = teva-chiave
                        exit perform
-                    end-if
-      
+                    end-if                
                     move reva-chiave-testa-ordf to tof-chiave
                     read tordforn no lock invalid continue end-read
                     |1. AGISCO SULLA GIACENZA (NORMALE E BLOCCATA)
