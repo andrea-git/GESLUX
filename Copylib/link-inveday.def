@@ -4,8 +4,9 @@
            03 inveday-da-data  PIC  9(8).
            03 inveday-a-data   PIC  9(8).
            03 inveday-tipo-costo           PIC  9.
-               88 inveday-medio VALUE IS 1. 
+               88 inveday-medio VALUE IS 1.  
                88 inveday-ultimo VALUE IS 2. 
+               88 inveday-confronto VALUE IS 3. 
            03 inveday-mag      PIC  x(3).
            03 inveday-marca    PIC  9(5).
            03 inveday-user     PIC  x(20).

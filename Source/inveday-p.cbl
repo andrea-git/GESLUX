@@ -22,6 +22,16 @@
            copy "timbalqta.sl".
            copy "timballi.sl".
            copy "timposte.sl".
+           copy "rlistini.sl".
+           copy "tlistini.sl".
+           copy "tscorte.sl".
+           copy "impforn.sl".
+           copy "distinteb.sl".
+           copy "clienti.sl".
+           copy "destinif.sl".
+           copy "tpiombo.sl".
+           copy "param.sl".
+           copy "tparamge.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -37,19 +47,39 @@
            copy "timbalqta.fd".
            copy "timballi.fd".
            copy "timposte.fd".
+           copy "rlistini.fd".
+           copy "tlistini.fd".
+           copy "tscorte.fd".
+           copy "impforn.fd".  
+           copy "distinteb.fd".  
+           copy "clienti.fd".
+           copy "destinif.fd".
+           copy "tpiombo.fd". 
+           copy "param.fd".   
+           copy "tparamge.fd".
 
        WORKING-STORAGE SECTION.
        copy "Acugui.def".
        copy "link-geslock.def".
        copy "common-excel.def".
-       copy "costo-medio.def".
-       copy "imposte.def".
+       copy "costo-medio.def".       
+       copy "imposte.def".  
+       copy "prz-finito-forn.def".              
+       copy "trova-parametro.def".
+
+       77 imposta-cobat-conf    PIC  9(10)v9999.
+       77 imposta-cou-conf      PIC  9(10)v9999.
+       77 imposta-consumo-conf  PIC  9(10)v9999.
+       77 add-piombo-conf       PIC  9(10)v9999.
+       77 add-piombo-5dec       PIC  9(10)v99999.
 
        78  titolo                value "Stampa Inventario DAY".
        
        77  como-data             pic 9(8).
        77  como-ora              pic 9(8).
        77  scelta                pic 9.
+       77  idx                   pic 999 value 0.
+       77  save-data             pic 9(8) value 0.
 
        77  status-articoli       pic xx.
        77  status-tmovmag        pic xx.
@@ -62,11 +92,21 @@
        77  status-timbalqta      pic xx.
        77  status-timballi       pic xx.
        77  status-timposte       pic xx.
+       77  status-rlistini       pic xx.
+       77  status-tlistini       pic xx.
+       77  status-tscorte        pic xx.
+       77  status-impforn        pic xx.
+       77  status-distinteb      pic xx.
+       77  status-clienti        pic xx.
+       77  status-destinif       pic xx.
+       77  status-tpiombo        pic xx.
+       77  status-param          pic xx.
+       77  status-tparamge       pic xx.
 
        77  path-csv              pic x(256).
        77  path-tmp              pic x(256).
        77  wstampa               pic x(256).
-       77  tipo-costo            pic x(6).
+       77  tipo-costo            pic x(9).
        77  SaveMarca             pic 9(5) value 0.
        77  SaveMagazzino         pic x(3) value spaces.
        77  prg-cod-articolo-edit pic z(6).
@@ -405,11 +445,12 @@
        INIT.
       *-
            move inveday-user to user-codi.
-           if inveday-ultimo
-              move "Ultimo" to tipo-costo
-           else
-              move "Medio"  to tipo-costo
-           end-if.
+           evaluate true                                  
+           when inveday-ultimo    move "Ultimo"    to tipo-costo
+           when inveday-medio     move "Medio"     to tipo-costo
+           when inveday-confronto move "Confronto" to tipo-costo
+           end-evaluate.
+
            accept como-data from century-date.
            accept como-ora  from time.
            perform ACCETTA-SEPARATORE.
@@ -453,6 +494,16 @@
                             timbalqta
                             timballi
                             timposte
+                            rlistini
+                            impforn
+                            tscorte
+                            distinteb
+                            clienti 
+                            destinif
+                            tpiombo
+                            param
+                            tparamge
+                            tlistini
               else
                  close tmp-inveday
                  delete file tmp-inveday
@@ -613,13 +664,21 @@ LUBEXX                 end-if
 
                     end-if
 
-                    if inveday-ultimo
-                       move art-prezzo-vendita to tinv-prezzo
-                    else
+                    evaluate true
+                    when inveday-ultimo
+                         move art-prezzo-vendita to tinv-prezzo
+                    when inveday-medio
       *****                 perform CALCOLA-COSTO-MP
-                       add 0,005 to costo-mp giving costo-mp-2dec
-                       move costo-mp-2dec        to tinv-prezzo
-                    end-if
+                         add 0,005 to costo-mp giving costo-mp-2dec
+                         move costo-mp-2dec        to tinv-prezzo
+                    when inveday-confronto 
+                         if costo-mp-2dec not = 0
+                            move costo-mp-2dec to tinv-prezzo
+                         else
+                            perform CERCA-LISTINO
+                            move prz-confronto to tinv-prezzo
+                         end-if
+                    end-evaluate
 
                     move prg-peso-utf     to tinv-utf
                     move prg-peso-non-utf to tinv-non-utf
@@ -639,6 +698,42 @@ LUBEXX                 end-if
 
               end-perform
            end-if.
+
+      ***---
+       CERCA-LISTINO.
+           move 0                to save-data.
+           move low-value        to rlis-rec.
+           move prg-cod-articolo to rlis-articolo.
+           start rlistini key >= rlis-k-art
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read rlistini next at end exit perform end-read
+                    if rlis-articolo not = prg-cod-articolo
+                       exit perform 
+                    end-if
+                    if rlis-ini-val  <= como-data and
+                       rlis-fine-val >= como-data   
+                       if rlis-ini-val > save-data
+                          set cli-tipo-F to true
+                          move rlis-fornitore to cli-codice desf-codice
+                          move rlis-destino   to desf-prog
+                          read clienti  no lock 
+                               invalid continue 
+                          end-read
+                          read destinif no lock 
+                               invalid 
+                               move cli-nazione to desf-nazione
+                          end-read
+                          move rlis-codice to tlis-codice
+                          read tlistini no lock
+                          move tlis-trasp to como-trasporto
+                          perform CALCOLA-PRZ-FINITO
+                       end-if
+                    end-if
+                 end-perform
+           end-start.
+
 
       ***---
        DESCRIZIONE-IMBALLO.
@@ -1425,9 +1520,24 @@ LUBEXX*****                   |Devo utilizzare il peso della riga
       ***---
        CLOSE-FILES.
            close rmovmag  articoli  progmag tmarche tcaumag
-                 timballi timbalqta tmovmag timposte.
+                 timballi timbalqta tmovmag timposte rlistini
+                 impforn tscorte distinteb clienti destinif tpiombo
+                 param tparamge tlistini.
            close tmp-inveday.
            delete file tmp-inveday.
+
+      ***---
+       CALCOLA-TRASPORTO.
+           move 0 to costo-trasporto.
+           move spaces to tge-chiave.
+           read tparamge no lock.
+           if desf-nazione = "ITA"
+              compute costo-trasporto = 
+                      prg-peso * tge-trasp-italy
+           else
+              compute costo-trasporto = 
+                      prg-peso * tge-trasp-estero
+           end-if.     
   
       ***---
        EXIT-PGM.
@@ -1438,3 +1548,7 @@ LUBEXX*****                   |Devo utilizzare il peso della riga
        copy "common-excel.cpy".
        copy "costo-medio.cpy".
        copy "recupero-anagrafica.cpy".
+       copy "prz-finito-forn.cpy".
+       copy "imposte-fornitore.cpy".
+       copy "addizionale-piombo-fornitore.cpy".
+       copy "trova-parametro.cpy".

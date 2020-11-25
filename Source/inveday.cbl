@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          inveday.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 1 aprile 2014 19:17:10.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        martedì 24 novembre 2020 16:08:39.
        REMARKS.
       *{TOTEM}END
 
@@ -47,9 +47,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\Lubex\GESLUX\Copylib\UTYDATA.DEF".
-               COPY "F:\Lubex\GESLUX\Copylib\comune.def".
-               COPY "F:\Lubex\GESLUX\Copylib\custom.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -75,7 +73,7 @@
        78 78-mag-std VALUE IS "Blank = Tutti i Magazzini". 
        78 78-marca-std VALUE IS "0 = Tutte le Marche". 
        77 AUTO-ID          PIC  9(6)
-                  VALUE IS 0,00.
+                  VALUE IS 9.
        77 bottone-ok-bmp   PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
@@ -150,8 +148,9 @@
        78  78-ID-ef-data VALUE 5001.
        78  78-ID-rb-medio VALUE 5002.
        78  78-ID-rb-ultimo VALUE 5003.
-       78  78-ID-ef-mag VALUE 5004.
-       78  78-ID-ef-marca VALUE 5005.
+       78  78-ID-rb-conf VALUE 5004.
+       78  78-ID-ef-mag VALUE 5005.
+       78  78-ID-ef-marca VALUE 5006.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -227,10 +226,30 @@
            .
       * RADIO BUTTON
        05
+           rb-conf, 
+           Radio-Button, 
+           COL 18,00, 
+           LINE 8,83,
+           LINES 0,94 ,
+           SIZE 14,60 ,
+           FLAT,
+           FONT IS Verdana10-Occidentale,
+           GROUP 1,
+           GROUP-VALUE 3,
+           ID IS 78-ID-rb-conf,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE "Medio + Confronto",
+           VALUE tipo-costo,
+           AFTER PROCEDURE Screen4-Rb-1-AfterProcedure, 
+           BEFORE PROCEDURE Screen4-Rb-1-BeforeProcedure, 
+           .
+      * RADIO BUTTON
+       05
            rb-padri, 
            Radio-Button, 
            COL 18,00, 
-           LINE 9,33,
+           LINE 11,00,
            LINES 0,94 ,
            SIZE 6,00 ,
            EXCEPTION-VALUE 1000
@@ -250,7 +269,7 @@
            rb-figli, 
            Radio-Button, 
            COL 18,00, 
-           LINE 10,83,
+           LINE 12,50,
            LINES 0,94 ,
            SIZE 6,00 ,
            EXCEPTION-VALUE 1002
@@ -270,7 +289,7 @@
            ef-mag, 
            Entry-Field, 
            COL 18,00, 
-           LINE 12,83,
+           LINE 14,50,
            LINES 1,33 ,
            SIZE 7,00 ,
            BOXED,
@@ -289,7 +308,7 @@
            ef-marca, 
            Entry-Field, 
            COL 18,00, 
-           LINE 16,83,
+           LINE 18,50,
            LINES 1,33 ,
            SIZE 7,00 ,
            BOXED,
@@ -308,10 +327,9 @@
            Screen4-Fr-2, 
            Frame, 
            COL 1,00, 
-           LINE 21,44,
+           LINE 23,67,
            LINES 2,78 ,
            SIZE 32,60 ,
-           LOWERED,
            ID IS 11,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -322,7 +340,7 @@
            PB-ESEGUI, 
            Push-Button, 
            COL 17,50, 
-           LINE 22,11,
+           LINE 24,34,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-OK-BMP,
@@ -344,7 +362,7 @@
            Form1-Pb-2, 
            Push-Button, 
            COL 25,30, 
-           LINE 22,11,
+           LINE 24,34,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-CANCEL-BMP,
@@ -427,7 +445,7 @@
            Screen4-La-1a, 
            Label, 
            COL 3,00, 
-           LINE 12,83,
+           LINE 14,50,
            LINES 1,33 ,
            SIZE 11,00 ,
            ID IS 3,
@@ -442,7 +460,7 @@
            Screen4-La-1b, 
            Label, 
            COL 3,00, 
-           LINE 16,83,
+           LINE 18,50,
            LINES 1,33 ,
            SIZE 11,00 ,
            ID IS 4,
@@ -457,7 +475,7 @@
            lab-mag, 
            Label, 
            COL 3,00, 
-           LINE 14,44,
+           LINE 16,11,
            LINES 2,00 ,
            SIZE 26,00 ,
            COLOR IS 5,
@@ -474,7 +492,7 @@
            lab-marca, 
            Label, 
            COL 3,00, 
-           LINE 18,17,
+           LINE 19,83,
            LINES 2,00 ,
            SIZE 26,00 ,
            COLOR IS 5,
@@ -491,7 +509,7 @@
            lab, 
            Label, 
            COL 7,30, 
-           LINE 20,50,
+           LINE 22,39,
            LINES 1,00 ,
            SIZE 20,00 ,
            ID IS 12,
@@ -508,7 +526,7 @@
            Screen4-La-1c, 
            Label, 
            COL 3,00, 
-           LINE 9,50,
+           LINE 11,17,
            LINES 2,00 ,
            SIZE 12,00 ,
            ID IS 13,
@@ -1408,7 +1426,7 @@
 
        Screen2-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 23,22,
+              LINES 25,44,
               SIZE 32,60,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
@@ -1603,14 +1621,14 @@
        Screen2-BeforeProcedure.
            EVALUATE Control-Id
            WHEN 5001 MOVE "." to TOTEM-HINT-TEXT
-           WHEN 5004 MOVE "." to TOTEM-HINT-TEXT
            WHEN 5005 MOVE "." to TOTEM-HINT-TEXT
+           WHEN 5006 MOVE "." to TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
            EVALUATE Control-Id
            When 5001 PERFORM ef-data-BeforeProcedure
-           When 5004 PERFORM ef-mag-BeforeProcedure
-           When 5005 PERFORM ef-marca-BeforeProcedure
+           When 5005 PERFORM ef-mag-BeforeProcedure
+           When 5006 PERFORM ef-marca-BeforeProcedure
            END-EVALUATE
            .
 
