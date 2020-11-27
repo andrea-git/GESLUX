@@ -2789,7 +2789,15 @@ LUBEXX        perform VALORIZZA-OLD
            perform varying riga from 2 by 1
                      until riga > tot-righe
               perform SCRIVI-SOL-R
-           end-perform.           
+           end-perform. 
+           if SollecitiCambiati or SollecitiCambiatiT
+              |Aggiorno i dati salvati nella testata
+              move rof-chiave      to sof-chiave
+              move 0               to sof-prog
+              read sordforn
+              set sof-dati-salvati-si to true
+              rewrite sof-rec
+           end-if.
 
       ***---
        SCRIVI-SOL-R.                                           
@@ -2819,7 +2827,10 @@ LUBEXX        perform VALORIZZA-OLD
               end-if
 
               move rof-chiave      to sof-chiave
-              move rof-dati-comuni to sof-dati-comuni
+              move rof-dati-comuni to sof-dati-comuni   
+              if SollecitiCambiati
+                 set sof-dati-salvati-si to true
+              end-if
 
               write sof-rec 
                     invalid rewrite sof-rec invalid continue end-rewrite
@@ -2831,6 +2842,7 @@ LUBEXX        perform VALORIZZA-OLD
                  move rof-chiave      to sof-chiave
                  move t-sof-data-arr  to sof-data-arr
                  move tof-dati-comuni to sof-dati-comuni
+                 set sof-dati-salvati-si to true
 
                  write sof-rec 
                        invalid 

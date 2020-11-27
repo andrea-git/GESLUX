@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 21 ottobre 2020 17:49:25.
+       DATE-WRITTEN.        giovedì 26 novembre 2020 11:00:50.
        REMARKS.
       *{TOTEM}END
 
@@ -605,7 +605,7 @@
        77 TMP-DataSet1-impforn-BUF     PIC X(220).
        77 TMP-DataSet1-tlistini-BUF     PIC X(257).
        77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
-       77 TMP-DataSet1-tmp-ordf-art-BUF     PIC X(112).
+       77 TMP-DataSet1-tmp-ordf-art-BUF     PIC X(113).
        77 TMP-DataSet1-rordforn-BUF     PIC X(544).
        77 TMP-DataSet1-tordforn-BUF     PIC X(556).
        77 TMP-DataSet1-sordforn-BUF     PIC X(1139).
@@ -3062,7 +3062,6 @@
       *    PERFORM OPEN-tmp-forn
            PERFORM OPEN-clienti
            PERFORM OPEN-timposte
-
            PERFORM OPEN-tpiombo
            PERFORM OPEN-tmagaz
            PERFORM OPEN-qta-vend
@@ -9876,15 +9875,23 @@
                                   move 0 to toa-qta-soll
                                   move 0 to sof-prog
                                   read sordforn
-                                       invalid move 0            to 
+                                       invalid 
+                                       move 0            to 
            toa-data-arrivo
-                                   not invalid move sof-data-arr to 
+                                       move spaces       to 
+           toa-dati-salvati
+                                   not invalid 
+                                       move sof-data-arr     to 
            toa-data-arrivo
+                                       move sof-dati-salvati to 
+           toa-dati-salvati
                                   end-read
-                              not invalid move sof-data-arr to 
+                              not invalid 
+                                  move sof-data-arr     to 
            toa-data-arrivo
-                                          move sof-qta      to 
-           toa-qta-soll
+                                  move sof-qta          to toa-qta-soll
+                                  move sof-dati-salvati to 
+           toa-dati-salvati
                              end-read
                        
                              write toa-rec
@@ -10163,9 +10170,7 @@
            
            set hid-ascending to true.
            move low-value to ord2-rec.
-           move "LBX" to ord2-mag
-           move 17170 to ord2-articolo
-           start ordfor2 key >= ord2-chiave
+           start ordfor2 key >= k-descr
                  invalid continue
            end-start.
            move 2 to store-colonna.
@@ -10230,8 +10235,7 @@
       * <TOTEM:END>
            DISPLAY scr-elab UPON scr-elab-Handle
       * <TOTEM:EPT. FORM:scr-elab, FORM:scr-elab, AfterDisplay>
-
-
+
       *<<** Customized_Default, SP-G, scr-data-blockpgm-1, Disable **>>
 
            .
@@ -10467,8 +10471,7 @@
       * <TOTEM:END>
            DISPLAY scr-data UPON form1-handle
       * <TOTEM:EPT. FORM:scr-data, FORM:scr-data, AfterDisplay>
-
-
+
       *<<** Customized_Default, SP-G, scr-data-blockpgm-1, Disable **>>
 
            .
@@ -12977,9 +12980,9 @@
                       else
                          exit perform
                       end-if
-                  not at end                                             
+                  not at end
                       if secondo-ciclo
-                         if ord2-si-conferma 
+                         if ord2-si-conferma
                             exit perform
                          end-if
                       end-if
@@ -12990,8 +12993,6 @@
                  else
                     read ordfor2 previous at end exit perform end-read
                  end-if
-                  if
-                         ord2-articolo not = 17170 exit perform end-if
               end-if
               |XYZ
               if prima-volta
@@ -13121,7 +13122,6 @@
            move ord2-scost           to col-scost.
            move 1                    to idx.
            move mese-start           to mese.
-           if mese = 0 move 1 to mese end-if
            move 0 to tot-anno.
            perform 12 times
               if mese > 12
@@ -13640,85 +13640,81 @@
               close       coperfab
               open i-o    coperfab
            else
-      *        move 0 to counter2
-      *        |Controllo che sia ancora presente il listino
-      *        |con cui ho fatto la associazione
-      *        move low-value to cpf-rec
-      *        start coperfab key >= cpf-chiave
-      *              invalid continue
-      *          not invalid
-      *              perform until 1 = 2
-      *                 read coperfab next at end exit perform end-read
-      *
-      *                 add 1 to counter
-      *                 add 1 to counter2
-      *                 if counter2 = 10
-      *                    move counter to counter-edit
-      *                    display counter-edit
-      *                       upon scr-elab-handle at column 53
-      *                                                 line 04
-      *                    move 0 to counter2
-      *                 end-if
-      *
-      *                 move cpf-listino  to rlis-codice
-      *                 move cpf-articolo to rlis-articolo
-      *                 read rlistini no lock
-      *                      invalid 
-      *                      delete coperfab record
-      *                 end-read
-      *              end-perform
-      *        end-start          
-      *     end-if.
-      *     perform CALCOLA-PERIODO.                     
+              move 0 to counter2
+              |Controllo che sia ancora presente il listino
+              |con cui ho fatto la associazione
+              move low-value to cpf-rec
+              start coperfab key >= cpf-chiave
+                    invalid continue
+                not invalid
+                    perform until 1 = 2
+                       read coperfab next at end exit perform end-read
+
+                       add 1 to counter
+                       add 1 to counter2
+                       if counter2 = 10
+                          move counter to counter-edit
+                          display counter-edit
+                             upon scr-elab-handle at column 53
+                                                       line 04
+                          move 0 to counter2
+                       end-if
+
+                       move cpf-listino  to rlis-codice
+                       move cpf-articolo to rlis-articolo
+                       read rlistini no lock
+                            invalid 
+                            delete coperfab record
+                       end-read
+                    end-perform
+              end-start          
+           end-if.
+           perform CALCOLA-PERIODO.                     
 
            display "                             "
               upon scr-elab-handle at column 45
                                         line 04
 
-      *     move low-value  to ord2-rec.
-      *     move 17170 to ord2-articolo
-      *     move "LBX" to ord2-mag
-      *     start ordfor2 key is >= ord2-chiave
-      *           invalid set errori to true
-      *     end-start.
-      *
-      *     if tutto-ok        
-      *        move 0 to counter2
-      *        perform until 1 = 2
-      *
-      *           read ordfor2 next at end exit perform end-read
-      *
-      *           if ord2-articolo not = 17170 exit perform end-if
-      *
-      *           add 1 to counter
-      *           add 1 to counter2
-      *           if counter2 = 10
-      *              move counter to counter-edit
-      *              display counter-edit
-      *                 upon scr-elab-handle at column 53
-      *                                           line 04
-      *              move 0 to counter2
-      *           end-if
-      *
-      *           move ord2-articolo to art-codice
-      *           read articoli no lock
-      *                invalid continue
-      *            not invalid
-      *                move ord2-articolo to prg-cod-articolo
-      *                perform TROVA-GIACENZA-IMPEGNATO
-      *                                                      
-      *                move ord2-articolo to prg-cod-articolo
-      *                move spaces        to prg-cod-magazzino
-      *                move spaces        to prg-tipo-imballo
-      *                move 0             to prg-peso
-      *                read progmag no lock
-      *                     invalid continue
-      *                 not invalid perform AGGIORNA-RECORD
-      *                end-read
-      *           end-read
-      *
-      *        end-perform
-      *     end-if.
+           move low-value  to ord2-rec.
+           start ordfor2 key is >= ord2-chiave
+                 invalid set errori to true
+           end-start.
+
+           if tutto-ok        
+              move 0 to counter2
+              perform until 1 = 2
+
+                 read ordfor2 next at end exit perform end-read
+
+                 add 1 to counter
+                 add 1 to counter2
+                 if counter2 = 10
+                    move counter to counter-edit
+                    display counter-edit
+                       upon scr-elab-handle at column 53
+                                                 line 04
+                    move 0 to counter2
+                 end-if
+
+                 move ord2-articolo to art-codice
+                 read articoli no lock
+                      invalid continue
+                  not invalid
+                      move ord2-articolo to prg-cod-articolo
+                      perform TROVA-GIACENZA-IMPEGNATO
+                                                            
+                      move ord2-articolo to prg-cod-articolo
+                      move spaces        to prg-cod-magazzino
+                      move spaces        to prg-tipo-imballo
+                      move 0             to prg-peso
+                      read progmag no lock
+                           invalid continue
+                       not invalid perform AGGIORNA-RECORD
+                      end-read
+                 end-read
+
+              end-perform
+           end-if.
 
            move space  to tge2-codice.
            read tparamge2 no lock invalid continue end-read 

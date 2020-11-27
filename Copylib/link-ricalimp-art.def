@@ -3,3 +3,5 @@
            03 ra-user          pic x(20).
            03 ra-articoli      occurs 999 indexed by ra-idx.
               05 ra-articolo   pic 9(6).
+           03 ra-form-handle   handle of window.
+           03 filler           pic x(1000).

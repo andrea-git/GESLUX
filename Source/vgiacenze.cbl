@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          vgiacenze.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        mercoledì 27 febbraio 2019 12:06:57.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        giovedì 26 novembre 2020 11:57:32.
        REMARKS.
       *{TOTEM}END
 
@@ -75,7 +75,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -338,12 +338,12 @@
        77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
        77 TMP-DataSet1-promoeva-BUF     PIC X(817).
        77 TMP-DataSet1-multigest-BUF     PIC X(3).
-       77 TMP-DataSet1-tmp-ordf-art-BUF     PIC X(112).
+       77 TMP-DataSet1-tmp-ordf-art-BUF     PIC X(113).
        77 TMP-DataSet1-rordforn-BUF     PIC X(544).
        77 TMP-DataSet1-tordforn-BUF     PIC X(556).
        77 TMP-DataSet1-clienti-BUF     PIC X(1910).
        77 TMP-DataSet1-sordforn-BUF     PIC X(1139).
-       77 TMP-DataSet1-lineseq-BUF     PIC X(900).
+       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -6115,13 +6115,19 @@
                             move 0 to toa-qta-soll
                             move 0 to sof-prog
                             read sordforn
-                                 invalid move 0            to 
+                                 invalid 
+                                 move 0      to toa-data-arrivo
+                                 move spaces to toa-dati-salvati
+                             not invalid 
+                                 move sof-data-arr     to 
            toa-data-arrivo
-                             not invalid move sof-data-arr to 
-           toa-data-arrivo
+                                 move sof-dati-salvati to 
+           toa-dati-salvati
                             end-read
-                        not invalid move sof-data-arr to toa-data-arrivo
-                                    move sof-qta      to toa-qta-soll
+                        not invalid 
+                            move sof-data-arr     to toa-data-arrivo
+                            move sof-qta          to toa-qta-soll
+                            move sof-dati-salvati to toa-dati-salvati
                        end-read
                        move tof-data-ordine    to toa-data-ordine
 

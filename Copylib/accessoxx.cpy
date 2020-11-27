@@ -1,7 +1,11 @@
       ***---
        ACCESSOXX.
            INITIALIZE WFONT-DATA font-accesso-handle
-           MOVE 16                 TO WFONT-SIZE
+           call "nomepgm" using NomeProgrammaAccesso.
+           MOVE 16                 TO WFONT-SIZE.
+           if NomeProgrammaAccesso = "ricalimp-art"
+              MOVE 10              TO WFONT-SIZE
+           end-if.
            MOVE "Verdana"          TO WFONT-NAME
            SET WFCHARSET-DONT-CARE TO TRUE
            SET WFONT-BOLD          TO false
@@ -35,7 +39,10 @@
            when PrintXX  
                 move "STAMPA IN CORSO..."        to AccessType
            when InvioXX                                         
-                move "INVIO IN CORSO..."         to AccessType         
+                move "INVIO IN CORSO..."      to AccessType
+           when RicalcoloXX                                         
+                move "RICALCOLO IN CORSO..."  to AccessType
+           when other continue
            end-evaluate.
 
            DISPLAY LABEL UPON form-accesso-handle

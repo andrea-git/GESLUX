@@ -104,7 +104,7 @@
        77  store-riga      pic 9(10).
        77  store-colonna   pic 9(10).
        77  riga-nuova      pic 9.
-
+       
        77  idx             pic 9(10).
 
        77  esercizio-x     pic x(4). |Di comodo per fare le set e le accept
@@ -112,15 +112,18 @@
        77  esercizio-G2    pic x(2). |Conversione dell'anno 2007 --> "A7"
 
       **--> variabili per "ACCESSO AI DATI"
-       77  LineaInizio      pic 9(6)v999.
-       77  ColonnaInizio    pic 9(6)v999.
-       77  font-accesso-handle handle of font value null.
-       77  form-accesso-handle handle of window.
+       77  LineaInizio          pic 9(6)v999.
+       77  ColonnaInizio        pic 9(6)v999.
+       77  NomeProgrammaAccesso pic x(30).
+       77  font-accesso-handle  handle of font value null.
+       77  form-accesso-handle  handle of window.
        77  AccessType       pic x(60).
        01  TipoAccessoXX    pic xx.    
          88 SaveXX          value "SA".
          88 DeleteXX        value "DE".
          88 PrintXX         value "PR".
          88 InvioXX         value "IN".
+         88 OtherXX         value "OT".
+         88 RicalcoloXX     value "RI".
                               
            COPY  "messaggi.def".

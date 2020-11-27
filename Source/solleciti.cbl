@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          solleciti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 18 agosto 2020 16:24:55.
+       DATE-WRITTEN.        giovedì 26 novembre 2020 11:08:27.
        REMARKS.
       *{TOTEM}END
 
@@ -582,7 +582,7 @@
        77 TMP-DataSet1-mtordini-BUF     PIC X(2122).
        77 TMP-DataSet1-mrordini-BUF     PIC X(891).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
-       77 TMP-DataSet1-destini-BUF     PIC X(3386).
+       77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-tescons-BUF     PIC X(226).
        77 TMP-DataSet1-clienti-BUF     PIC X(1910).
        77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
@@ -591,7 +591,7 @@
        77 TMP-DataSet1-tmp-sol1-BUF     PIC X(442).
        77 TMP-DataSet1-tmp-sol-BUF     PIC X(442).
        77 TMP-DataSet1-tmp-sol2-BUF     PIC X(442).
-       77 TMP-DataSet1-tmp-ordf-art-BUF     PIC X(112).
+       77 TMP-DataSet1-tmp-ordf-art-BUF     PIC X(113).
        77 TMP-DataSet1-tordforn-BUF     PIC X(556).
        77 TMP-DataSet1-rordforn-BUF     PIC X(544).
        77 TMP-DataSet1-tgrupgdo-BUF     PIC X(1206).
@@ -746,7 +746,7 @@
        77 mrordini-mro-k-ord-art-SPLITBUF  PIC X(19).
        77 articoli-art-k1-SPLITBUF  PIC X(51).
        77 articoli-art-k-frn-SPLITBUF  PIC X(16).
-       77 destini-K1-SPLITBUF  PIC X(51).
+       77 destini-K1-SPLITBUF  PIC X(111).
        77 destini-k-localita-SPLITBUF  PIC X(36).
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
@@ -2092,7 +2092,6 @@
            FONT IS Small-Font,
            ID IS 19,
            HEIGHT-IN-CELLS,
-
            WIDTH-IN-CELLS,
            MASS-UPDATE 0,
            NOTIFY-DBLCLICK,
@@ -4490,9 +4489,9 @@
 
        destini-K1-MERGE-SPLITBUF.
            INITIALIZE destini-K1-SPLITBUF
-           MOVE des-ragsoc-1(1:40) TO destini-K1-SPLITBUF(1:40)
-           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(41:5)
-           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(46:5)
+           MOVE des-ragsoc-1(1:100) TO destini-K1-SPLITBUF(1:100)
+           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(101:5)
+           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(106:5)
            .
 
        destini-k-localita-MERGE-SPLITBUF.
@@ -7619,8 +7618,7 @@
            DISPLAY Form1-Tb-1a
            DISPLAY Form1 UPON Form1-Handle
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterDisplay>
-
-
+
            SET LK-BL-SCRITTURA     TO TRUE.
            MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
            MOVE FORM1-HANDLE       TO LK-HND-WIN.
@@ -8311,14 +8309,20 @@
                                move 0 to toa-qta-soll
                                move 0 to sof-prog
                                read sordforn
-                                    invalid move 0            to 
+                                    invalid 
+                                    move 0      to toa-data-arrivo
+                                    move space  to toa-dati-salvati
+                                not invalid 
+                                    move sof-data-arr     to 
            toa-data-arrivo
-                                not invalid move sof-data-arr to 
-           toa-data-arrivo
+                                    move sof-dati-salvati to 
+           toa-dati-salvati
                                end-read
-                           not invalid move sof-data-arr to 
-           toa-data-arrivo
-                                       move sof-qta      to toa-qta-soll
+                           not invalid 
+                               move sof-data-arr     to toa-data-arrivo
+                               move sof-qta          to toa-qta-soll    
+            
+                               move sof-dati-salvati to toa-dati-salvati
                           end-read
                           move tof-data-ordine    to toa-data-ordine
 

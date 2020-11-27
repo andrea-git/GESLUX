@@ -5,7 +5,7 @@
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E4BD14287-927-68219568
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E4B1B115948-881-147763881
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -217,13 +217,41 @@ m_bFixed=1
 
 @}}
 [FDITEM21_]
-m_strName=sof-alfa-vuoto
-m_strRawPic=X(500)
-m_strPic=X(500)
+m_strName=sof-dati-salvati
+m_strRawPic=x
+m_strPic=x
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM21_
+
+@}}
+[FDITEM22_]
+m_strName=sof-dati-salvati-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="X"
+{{@DataItem_m_strDescriptionFDITEM22_
+
+@}}
+[FDITEM23_]
+m_strName=sof-dati-salvati-no
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" "
+{{@DataItem_m_strDescriptionFDITEM23_
+
+@}}
+[FDITEM24_]
+m_strName=sof-alfa-vuoto
+m_strRawPic=X(499)
+m_strPic=X(499)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM24_
 
 @}}
 [CStoAcucobolSL_]

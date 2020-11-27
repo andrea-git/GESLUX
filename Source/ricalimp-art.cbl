@@ -46,7 +46,9 @@
            copy "lockfile.fd".
 
        WORKING-STORAGE SECTION.
-           copy "link-geslock.def".         
+           copy "link-geslock.def".  
+           copy "comune.def".
+           copy "fonts.def".
 
        01  link-master           pic x.
          88 link-imp-master      value "M". 
@@ -82,17 +84,15 @@
        77  como-articolo         pic 9(6).
        77  sw-esegui             pic x.
 
-       77  controllo             pic xx.
-           88  tutto-ok          value "OK".
-           88  errori            value "ER".
-                                                  
-       77  filler                pic 9.
-           88 trovato            value 1, false 0.
-       77  filler                pic 9.
-           88 RecLocked          value 1, false 0.
+       01  filler                pic 9 value 0.
+         88 no-screen                  value 0.
+         88 si-screen                  value 1.
+
        01  GdoInUsoFlag          pic x.
            88 GdoInUso           value "S". 
            88 GdoNonInUso        value " ".
+
+       77  form1-handle          handle of window.
 
        LINKAGE SECTION.
        copy "link-ricalimp-art.def".
@@ -118,7 +118,18 @@
            set tutto-ok  to true.
            evaluate status-lockfile
            when "93"
-           when "99" set RecLocked to true
+           when "99" 
+                set RecLocked to true
+                if no-screen
+                   set OtherXX to true
+                   initialize AccessType
+                   string "ATTENDERE. FUNZIONE GIA' IN USO DA: "
+                          lck-utente-creazione
+                     into AccessType
+                   end-string
+                   perform ACCESSOXX
+                   set si-screen to true
+                end-if
            end-evaluate. 
 
        END DECLARATIVES.
@@ -139,18 +150,18 @@
                 accept lck-data-creazione from century-date
                 accept lck-ora-creazione  from century-date
                 move ra-user to lck-utente-creazione
-                write lck-rec
-                read lockfile lock end-read
-            not invalid
-                perform until 1 = 2
-                   set RecLocked to false
-                   read lockfile lock end-read
-                   if not RecLocked
-                      exit perform
-                   end-if
-                end-perform
+                write lck-rec invalid continue end-write
            end-read.
-                
+
+           perform READ-LOCKFILE-LOCK.
+
+           if si-screen
+              perform DESTROYXX
+           end-if.   
+
+           set RicalcoloXX to true.
+           perform ACCESSOXX.
+
            if tutto-ok
               perform ELABORAZIONE
               perform CLOSE-FILES
@@ -163,6 +174,17 @@
            set tutto-ok     to true.
            accept como-data from century-date.
            accept como-ora  from time.
+           move ra-form-handle to form1-handle.          
+
+      ***---
+       READ-LOCKFILE-LOCK.
+           perform until 1 = 2
+              set RecLocked to false
+              read lockfile lock end-read
+              if not RecLocked
+                 exit perform
+              end-if
+           end-perform.
 
       ***---
        OPEN-FILES.
@@ -496,3 +518,4 @@ LUBEXX        end-if
       ***---
        PARAGRAFO-COPY.
            copy "direziona-impegnato-common.cpy".
+           copy "accessoxx.cpy".

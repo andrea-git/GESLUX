@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E321B11618-368-1750022602
+PROGRAM_UNIQUE_CODE=TOTEM-7E4B1A105626-338-1259629134
 
 {{@DESCRIPTION:
 
@@ -5009,11 +5009,17 @@ BEGIN-TEXT
                             move 0 to toa-qta-soll
                             move 0 to sof-prog
                             read sordforn
-                                 invalid move 0            to toa-data-arrivo
-                             not invalid move sof-data-arr to toa-data-arrivo
+                                 invalid 
+                                 move 0      to toa-data-arrivo
+                                 move spaces to toa-dati-salvati
+                             not invalid 
+                                 move sof-data-arr     to toa-data-arrivo
+                                 move sof-dati-salvati to toa-dati-salvati
                             end-read
-                        not invalid move sof-data-arr to toa-data-arrivo
-                                    move sof-qta      to toa-qta-soll
+                        not invalid 
+                            move sof-data-arr     to toa-data-arrivo
+                            move sof-qta          to toa-qta-soll
+                            move sof-dati-salvati to toa-dati-salvati
                        end-read
                        move tof-data-ordine    to toa-data-ordine
 

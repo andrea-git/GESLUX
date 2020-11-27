@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gordcvar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 13 novembre 2020 15:58:11.
+       DATE-WRITTEN.        mercoledì 25 novembre 2020 15:53:25.
        REMARKS.
       *{TOTEM}END
 
@@ -74,7 +74,6 @@
            COPY "blister.sl".
            COPY "mtordini.sl".
            COPY "sitfin.sl".
-           COPY "tagli.sl".
            COPY "tscorte.sl".
            COPY "paramSHI.sl".
            COPY "tmp-mod-rordini.sl".
@@ -88,6 +87,7 @@
            COPY "brnotacr.sl".
            COPY "grade.sl".
            COPY "log-progmag.sl".
+           COPY "tagli.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -139,7 +139,6 @@
            COPY "blister.fd".
            COPY "mtordini.fd".
            COPY "sitfin.fd".
-           COPY "tagli.fd".
            COPY "tscorte.fd".
            COPY "paramSHI.fd".
            COPY "tmp-mod-rordini.fd".
@@ -153,6 +152,7 @@
            COPY "brnotacr.fd".
            COPY "grade.fd".
            COPY "log-progmag.fd".
+           COPY "tagli.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -604,7 +604,6 @@
        77 TMP-DataSet1-blister-BUF     PIC X(2967).
        77 TMP-DataSet1-mtordini-BUF     PIC X(2122).
        77 TMP-DataSet1-sitfin-BUF     PIC X(888).
-       77 TMP-DataSet1-tagli-BUF     PIC X(198).
        77 TMP-DataSet1-tscorte-BUF     PIC X(205).
        77 TMP-DataSet1-paramSHI-BUF     PIC X(9574).
        77 TMP-DataSet1-tmp-mod-rordini-BUF     PIC X(40).
@@ -618,6 +617,7 @@
        77 TMP-DataSet1-brnotacr-BUF     PIC X(424).
        77 TMP-DataSet1-grade-BUF     PIC X(754).
        77 TMP-DataSet1-log-progmag-BUF     PIC X(200).
+       77 TMP-DataSet1-tagli-BUF     PIC X(198).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -843,11 +843,6 @@
        77 DataSet1-sitfin-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-sitfin-KEY-Asc  VALUE "A".
           88 DataSet1-sitfin-KEY-Desc VALUE "D".
-       77 DataSet1-tagli-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-tagli-LOCK  VALUE "Y".
-       77 DataSet1-tagli-KEY-ORDER  PIC X VALUE "A".
-          88 DataSet1-tagli-KEY-Asc  VALUE "A".
-          88 DataSet1-tagli-KEY-Desc VALUE "D".
        77 DataSet1-tscorte-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-tscorte-LOCK  VALUE "Y".
        77 DataSet1-tscorte-KEY-ORDER  PIC X VALUE "A".
@@ -913,6 +908,11 @@
        77 DataSet1-log-progmag-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-log-progmag-KEY-Asc  VALUE "A".
           88 DataSet1-log-progmag-KEY-Desc VALUE "D".
+       77 DataSet1-tagli-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tagli-LOCK  VALUE "Y".
+       77 DataSet1-tagli-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tagli-KEY-Asc  VALUE "A".
+          88 DataSet1-tagli-KEY-Desc VALUE "D".
 
        77 tordini-k-causale-SPLITBUF  PIC X(17).
        77 tordini-k1-SPLITBUF  PIC X(23).
@@ -993,9 +993,9 @@
        77 mtordini-mto-k-bloc-SPLITBUF  PIC X(20).
        77 mtordini-k-giang-SPLITBUF  PIC X(21).
        77 mtordini-mto-k-promo-SPLITBUF  PIC X(25).
-       77 tagli-k2-SPLITBUF  PIC X(9).
        77 tmp-mod-rordini-tmp-mror-k-tipo-SPLITBUF  PIC X(23).
        77 brnotacr-brno-k-articolo-SPLITBUF  PIC X(25).
+       77 tagli-k2-SPLITBUF  PIC X(9).
       * FOR SPLIT KEY BUFFER
        77 DataSet1-tmp-progmag-zoom-SPLIT-BUF1   PIC X(64).
 
@@ -4779,8 +4779,6 @@
            PERFORM OPEN-blister
            PERFORM OPEN-mtordini
            PERFORM OPEN-sitfin
-      *    tagli OPEN MODE IS FALSE
-      *    PERFORM OPEN-tagli
            PERFORM OPEN-tscorte
            PERFORM OPEN-paramSHI
       *    tmp-mod-rordini OPEN MODE IS FALSE
@@ -4798,6 +4796,8 @@
            PERFORM OPEN-grade
       *    log-progmag OPEN MODE IS FALSE
       *    PERFORM OPEN-log-progmag
+      *    tagli OPEN MODE IS FALSE
+      *    PERFORM OPEN-tagli
       *    After Open
            .
 
@@ -5399,25 +5399,6 @@
       * <TOTEM:END>
            .
 
-       OPEN-tagli.
-      * <TOTEM:EPT. INIT:gordcvar, FD:tagli, BeforeOpen>
-      * <TOTEM:END>
-           OPEN  I-O tagli
-           IF STATUS-tagli = "35"
-              OPEN OUTPUT tagli
-                IF Valid-STATUS-tagli
-                   CLOSE tagli
-                   OPEN I-O tagli
-                END-IF
-           END-IF
-           IF NOT Valid-STATUS-tagli
-              PERFORM  Form1-EXTENDED-FILE-STATUS
-              GO TO EXIT-STOP-ROUTINE
-           END-IF
-      * <TOTEM:EPT. INIT:gordcvar, FD:tagli, AfterOpen>
-      * <TOTEM:END>
-           .
-
        OPEN-tscorte.
       * <TOTEM:EPT. INIT:gordcvar, FD:tscorte, BeforeOpen>
       * <TOTEM:END>
@@ -5595,6 +5576,25 @@
       * <TOTEM:END>
            .
 
+       OPEN-tagli.
+      * <TOTEM:EPT. INIT:gordcvar, FD:tagli, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  I-O tagli
+           IF STATUS-tagli = "35"
+              OPEN OUTPUT tagli
+                IF Valid-STATUS-tagli
+                   CLOSE tagli
+                   OPEN I-O tagli
+                END-IF
+           END-IF
+           IF NOT Valid-STATUS-tagli
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:gordcvar, FD:tagli, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-tordini
@@ -5650,8 +5650,6 @@
            PERFORM CLOSE-blister
            PERFORM CLOSE-mtordini
            PERFORM CLOSE-sitfin
-      *    tagli CLOSE MODE IS FALSE
-      *    PERFORM CLOSE-tagli
            PERFORM CLOSE-tscorte
            PERFORM CLOSE-paramSHI
       *    tmp-mod-rordini CLOSE MODE IS FALSE
@@ -5669,6 +5667,8 @@
            PERFORM CLOSE-grade
       *    log-progmag CLOSE MODE IS FALSE
       *    PERFORM CLOSE-log-progmag
+      *    tagli CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-tagli
       *    After Close
            .
 
@@ -5927,11 +5927,6 @@
            CLOSE sitfin
            .
 
-       CLOSE-tagli.
-      * <TOTEM:EPT. INIT:gordcvar, FD:tagli, BeforeClose>
-      * <TOTEM:END>
-           .
-
        CLOSE-tscorte.
       * <TOTEM:EPT. INIT:gordcvar, FD:tscorte, BeforeClose>
       * <TOTEM:END>
@@ -6003,6 +5998,11 @@
 
        CLOSE-log-progmag.
       * <TOTEM:EPT. INIT:gordcvar, FD:log-progmag, BeforeClose>
+      * <TOTEM:END>
+           .
+
+       CLOSE-tagli.
+      * <TOTEM:EPT. INIT:gordcvar, FD:tagli, BeforeClose>
       * <TOTEM:END>
            .
 
@@ -13401,171 +13401,6 @@
       * <TOTEM:END>
            .
 
-       tagli-k2-MERGE-SPLITBUF.
-           INITIALIZE tagli-k2-SPLITBUF
-           MOVE tag-data(1:8) TO tagli-k2-SPLITBUF(1:8)
-           .
-
-       DataSet1-tagli-INITSTART.
-           IF DataSet1-tagli-KEY-Asc
-              MOVE Low-Value TO tag-chiave
-           ELSE
-              MOVE High-Value TO tag-chiave
-           END-IF
-           .
-
-       DataSet1-tagli-INITEND.
-           IF DataSet1-tagli-KEY-Asc
-              MOVE High-Value TO tag-chiave
-           ELSE
-              MOVE Low-Value TO tag-chiave
-           END-IF
-           .
-
-      * tagli
-       DataSet1-tagli-START.
-           IF DataSet1-tagli-KEY-Asc
-              START tagli KEY >= tag-chiave
-           ELSE
-              START tagli KEY <= tag-chiave
-           END-IF
-           .
-
-       DataSet1-tagli-START-NOTGREATER.
-           IF DataSet1-tagli-KEY-Asc
-              START tagli KEY <= tag-chiave
-           ELSE
-              START tagli KEY >= tag-chiave
-           END-IF
-           .
-
-       DataSet1-tagli-START-GREATER.
-           IF DataSet1-tagli-KEY-Asc
-              START tagli KEY > tag-chiave
-           ELSE
-              START tagli KEY < tag-chiave
-           END-IF
-           .
-
-       DataSet1-tagli-START-LESS.
-           IF DataSet1-tagli-KEY-Asc
-              START tagli KEY < tag-chiave
-           ELSE
-              START tagli KEY > tag-chiave
-           END-IF
-           .
-
-       DataSet1-tagli-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:tagli, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tagli, BeforeReadRecord>
-      * <TOTEM:END>
-           IF DataSet1-tagli-LOCK
-              READ tagli WITH LOCK 
-              KEY tag-chiave
-           ELSE
-              READ tagli WITH NO LOCK 
-              KEY tag-chiave
-           END-IF
-           PERFORM tagli-k2-MERGE-SPLITBUF
-           MOVE STATUS-tagli TO TOTEM-ERR-STAT 
-           MOVE "tagli" TO TOTEM-ERR-FILE
-           MOVE "READ" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tagli, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tagli, AfterReadRecord>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tagli-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:tagli, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tagli, BeforeReadNext>
-      * <TOTEM:END>
-           IF DataSet1-tagli-KEY-Asc
-              IF DataSet1-tagli-LOCK
-                 READ tagli NEXT WITH LOCK
-              ELSE
-                 READ tagli NEXT WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-tagli-LOCK
-                 READ tagli PREVIOUS WITH LOCK
-              ELSE
-                 READ tagli PREVIOUS WITH NO LOCK
-              END-IF
-           END-IF
-           PERFORM tagli-k2-MERGE-SPLITBUF
-           MOVE STATUS-tagli TO TOTEM-ERR-STAT
-           MOVE "tagli" TO TOTEM-ERR-FILE
-           MOVE "READ NEXT" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tagli, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tagli, AfterReadNext>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tagli-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:tagli, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tagli, BeforeReadPrev>
-      * <TOTEM:END>
-           IF DataSet1-tagli-KEY-Asc
-              IF DataSet1-tagli-LOCK
-                 READ tagli PREVIOUS WITH LOCK
-              ELSE
-                 READ tagli PREVIOUS WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-tagli-LOCK
-                 READ tagli NEXT WITH LOCK
-              ELSE
-                 READ tagli NEXT WITH NO LOCK
-              END-IF
-           END-IF
-           PERFORM tagli-k2-MERGE-SPLITBUF
-           MOVE STATUS-tagli TO TOTEM-ERR-STAT
-           MOVE "tagli" TO TOTEM-ERR-FILE
-           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tagli, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tagli, AfterReadPrev>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tagli-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:tagli, BeforeWrite>
-      * <TOTEM:END>
-           WRITE tag-rec OF tagli.
-           MOVE STATUS-tagli TO TOTEM-ERR-STAT
-           MOVE "tagli" TO TOTEM-ERR-FILE
-           MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tagli, AfterWrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tagli-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:tagli, BeforeRewrite>
-      * <TOTEM:END>
-           REWRITE tag-rec OF tagli.
-           MOVE STATUS-tagli TO TOTEM-ERR-STAT
-           MOVE "tagli" TO TOTEM-ERR-FILE
-           MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tagli, AfterRewrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tagli-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:tagli, BeforeDelete>
-      * <TOTEM:END>
-           DELETE tagli.
-           MOVE STATUS-tagli TO TOTEM-ERR-STAT
-           MOVE "tagli" TO TOTEM-ERR-FILE
-           MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tagli, AfterDelete>
-      * <TOTEM:END>
-           .
-
        DataSet1-tscorte-INITSTART.
            IF DataSet1-tscorte-KEY-Asc
               MOVE Low-Value TO sco-chiave
@@ -15523,6 +15358,171 @@
       * <TOTEM:END>
            .
 
+       tagli-k2-MERGE-SPLITBUF.
+           INITIALIZE tagli-k2-SPLITBUF
+           MOVE tag-data(1:8) TO tagli-k2-SPLITBUF(1:8)
+           .
+
+       DataSet1-tagli-INITSTART.
+           IF DataSet1-tagli-KEY-Asc
+              MOVE Low-Value TO tag-chiave
+           ELSE
+              MOVE High-Value TO tag-chiave
+           END-IF
+           .
+
+       DataSet1-tagli-INITEND.
+           IF DataSet1-tagli-KEY-Asc
+              MOVE High-Value TO tag-chiave
+           ELSE
+              MOVE Low-Value TO tag-chiave
+           END-IF
+           .
+
+      * tagli
+       DataSet1-tagli-START.
+           IF DataSet1-tagli-KEY-Asc
+              START tagli KEY >= tag-chiave
+           ELSE
+              START tagli KEY <= tag-chiave
+           END-IF
+           .
+
+       DataSet1-tagli-START-NOTGREATER.
+           IF DataSet1-tagli-KEY-Asc
+              START tagli KEY <= tag-chiave
+           ELSE
+              START tagli KEY >= tag-chiave
+           END-IF
+           .
+
+       DataSet1-tagli-START-GREATER.
+           IF DataSet1-tagli-KEY-Asc
+              START tagli KEY > tag-chiave
+           ELSE
+              START tagli KEY < tag-chiave
+           END-IF
+           .
+
+       DataSet1-tagli-START-LESS.
+           IF DataSet1-tagli-KEY-Asc
+              START tagli KEY < tag-chiave
+           ELSE
+              START tagli KEY > tag-chiave
+           END-IF
+           .
+
+       DataSet1-tagli-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:tagli, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tagli, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-tagli-LOCK
+              READ tagli WITH LOCK 
+              KEY tag-chiave
+           ELSE
+              READ tagli WITH NO LOCK 
+              KEY tag-chiave
+           END-IF
+           PERFORM tagli-k2-MERGE-SPLITBUF
+           MOVE STATUS-tagli TO TOTEM-ERR-STAT 
+           MOVE "tagli" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tagli, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tagli, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tagli-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:tagli, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tagli, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-tagli-KEY-Asc
+              IF DataSet1-tagli-LOCK
+                 READ tagli NEXT WITH LOCK
+              ELSE
+                 READ tagli NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tagli-LOCK
+                 READ tagli PREVIOUS WITH LOCK
+              ELSE
+                 READ tagli PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM tagli-k2-MERGE-SPLITBUF
+           MOVE STATUS-tagli TO TOTEM-ERR-STAT
+           MOVE "tagli" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tagli, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tagli, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tagli-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:tagli, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tagli, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-tagli-KEY-Asc
+              IF DataSet1-tagli-LOCK
+                 READ tagli PREVIOUS WITH LOCK
+              ELSE
+                 READ tagli PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tagli-LOCK
+                 READ tagli NEXT WITH LOCK
+              ELSE
+                 READ tagli NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM tagli-k2-MERGE-SPLITBUF
+           MOVE STATUS-tagli TO TOTEM-ERR-STAT
+           MOVE "tagli" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tagli, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tagli, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tagli-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:tagli, BeforeWrite>
+      * <TOTEM:END>
+           WRITE tag-rec OF tagli.
+           MOVE STATUS-tagli TO TOTEM-ERR-STAT
+           MOVE "tagli" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tagli, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tagli-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:tagli, BeforeRewrite>
+      * <TOTEM:END>
+           REWRITE tag-rec OF tagli.
+           MOVE STATUS-tagli TO TOTEM-ERR-STAT
+           MOVE "tagli" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tagli, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tagli-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:tagli, BeforeDelete>
+      * <TOTEM:END>
+           DELETE tagli.
+           MOVE STATUS-tagli TO TOTEM-ERR-STAT
+           MOVE "tagli" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tagli, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE tor-rec OF tordini
            INITIALIZE ror-rec OF rordini
@@ -15568,7 +15568,6 @@
            INITIALIZE bli-rec OF blister
            INITIALIZE mto-rec OF mtordini
            INITIALIZE sf-rec OF sitfin
-           INITIALIZE tag-rec OF tagli
            INITIALIZE sco-rec OF tscorte
            INITIALIZE shi-rec OF paramSHI
            INITIALIZE tmp-mror-rec OF tmp-mod-rordini
@@ -15582,6 +15581,7 @@
            INITIALIZE brno-rec OF brnotacr
            INITIALIZE gra-rec OF grade
            INITIALIZE riga-log-progmag OF log-progmag
+           INITIALIZE tag-rec OF tagli
            .
 
 
@@ -15979,14 +15979,6 @@
            .
 
       * FD's Initialize Paragraph
-       DataSet1-tagli-INITREC.
-           INITIALIZE tag-rec OF tagli
-               REPLACING NUMERIC       DATA BY ZEROS
-                         ALPHANUMERIC  DATA BY SPACES
-                         ALPHABETIC    DATA BY SPACES
-           .
-
-      * FD's Initialize Paragraph
        DataSet1-tscorte-INITREC.
            INITIALIZE sco-rec OF tscorte
                REPLACING NUMERIC       DATA BY ZEROS
@@ -16085,6 +16077,14 @@
       * FD's Initialize Paragraph
        DataSet1-log-progmag-INITREC.
            INITIALIZE riga-log-progmag OF log-progmag
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-tagli-INITREC.
+           INITIALIZE tag-rec OF tagli
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -16698,6 +16698,7 @@ PATCH      end-evaluate.
            if ra-idx not = 0
               move user-codi to ra-user
               modify lab-attendere, visible true
+              move Form1-Handle to ra-form-handle
               call   "ricalimp-art" using ra-linkage
               cancel "ricalimp-art"             
               modify lab-attendere, visible false

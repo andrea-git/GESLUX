@@ -23,4 +23,7 @@
                    15 sof-num-vuoto-1  PIC  9(18).
                    15 sof-num-vuoto-2  PIC  9(18).
                    15 sof-num-vuoto-3  PIC  9(18).
-                   15 sof-alfa-vuoto   PIC  X(500).
+                   15 sof-dati-salvati PIC  x.
+                       88 sof-dati-salvati-si VALUE IS "X". 
+                       88 sof-dati-salvati-no VALUE IS " ". 
+                   15 sof-alfa-vuoto   PIC  X(499).
