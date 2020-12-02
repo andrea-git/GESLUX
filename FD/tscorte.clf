@@ -5,7 +5,7 @@
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E4B1B115949-317-197812481
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E4C29344-232-256432596
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -1119,9 +1119,9 @@ m_bFixed=1
 
 @}}
 [FDITEM115_]
-m_strName=sco-num-vuoto-3
-m_strRawPic=9(18)
-m_strPic=9(18)
+m_strName=sco-moq
+m_strRawPic=9
+m_strPic=9
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1129,33 +1129,61 @@ m_bFixed=1
 
 @}}
 [FDITEM116_]
+m_strName=sco-moq-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM116_
+
+@}}
+[FDITEM117_]
+m_strName=sco-moq-no
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM117_
+
+@}}
+[FDITEM118_]
+m_strName=sco-num-vuoto-3
+m_strRawPic=9(17)
+m_strPic=9(17)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM118_
+
+@}}
+[FDITEM119_]
 m_strName=sco-alfa-vuoto-1
 m_strRawPic=X(20)
 m_strPic=X(20)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM116_
+{{@DataItem_m_strDescriptionFDITEM119_
 
 @}}
-[FDITEM117_]
+[FDITEM120_]
 m_strName=sco-alfa-vuoto-2
 m_strRawPic=X(20)
 m_strPic=X(20)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM117_
+{{@DataItem_m_strDescriptionFDITEM120_
 
 @}}
-[FDITEM118_]
+[FDITEM121_]
 m_strName=sco-alfa-vuoto-3
 m_strRawPic=X(20)
 m_strPic=X(20)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM118_
+{{@DataItem_m_strDescriptionFDITEM121_
 
 @}}
 [CStoAcucobolSL_]

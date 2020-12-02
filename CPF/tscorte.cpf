@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4A16114646-742-3000024763
+PROGRAM_UNIQUE_CODE=TOTEM-7E4C292345-450-2199126606
 
 {{@DESCRIPTION:
 
@@ -605,7 +605,7 @@ Begin Screen Form1
    Height in Cells   = TRUE
    Help ID           = 0
    Label Offset      = 23
-   Lines             = 61,00
+   Lines             = 64,00
    Link To Thread    = TRUE
    Max Lines         = 0,00
    Max Size          = 0,00
@@ -1198,6 +1198,57 @@ Begin Screen Form1
       Before Procedure  = ef-molt-BeforeProcedure
       After Procedure   = ef-molt-AfterProcedure
    End
+   Begin Data.Check-Box chk-immbaa
+      SCREEN-COL        = 22,33
+      SCREEN-LINE       = 35,77
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = chk-immbaa
+      Bitmap Frame      = FALSE
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Check Off Value   = "0"
+      Check On Value    = "1"
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 22,33
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Enable Variable   = MOD
+      Exception Value   = 0
+      Field Variable    = sco-moq
+      File              = tscorte
+      Flat              = TRUE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Seleziona/Deseleziona
+      ID                = 5
+      ID Variable       = AUTO-ID
+      Left Text         = FALSE
+      Line              = 35,77
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Tab            = FALSE
+      Notify            = FALSE
+      Occurs            = 0
+      Self Act          = TRUE
+      Size              = 3,00
+      Size Unit         = Default
+      Tab Order         = 11
+      Termination Value = 0
+      Title             = "Check Box"
+      Value             = 0:FALSE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+      My Property       = "CONTROLLO-OLD="
+      Before Procedure  = Screen1-DaCb-1-BeforeProcedure
+      After Procedure   = Screen1-DaCb-1-AfterProcedure
+   End
    Begin Frame Screen1-Fr-1
       SCREEN-COL        = 87,33
       SCREEN-LINE       = 9,31
@@ -1225,7 +1276,7 @@ Begin Screen Form1
       Low Color         = 0
       Size              = 35,00
       Size Unit         = Default
-      Tab Order         = 11
+      Tab Order         = 12
       Thickness         = Default
       Title             = "Generazione automatica ordini"
       Title Position    = 2:Top center
@@ -1815,7 +1866,7 @@ Begin Screen Form1
    End
    Begin Data.Check-Box chk-imma
       SCREEN-COL        = 22,33
-      SCREEN-LINE       = 38,23
+      SCREEN-LINE       = 40,85
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = chk-imma
@@ -1845,7 +1896,7 @@ Begin Screen Form1
       ID                = 23
       ID Variable       = AUTO-ID
       Left Text         = FALSE
-      Line              = 38,23
+      Line              = 40,85
       Lines             = 1,31
       Lines Unit        = Default
       No Tab            = FALSE
@@ -1854,7 +1905,7 @@ Begin Screen Form1
       Self Act          = TRUE
       Size              = 3,00
       Size Unit         = Default
-      Tab Order         = 12
+      Tab Order         = 13
       Termination Value = 0
       Title             = "Check Box"
       Value             = 0:FALSE
@@ -1866,7 +1917,7 @@ Begin Screen Form1
    End
    Begin Data.Check-Box chk-immaa
       SCREEN-COL        = 22,33
-      SCREEN-LINE       = 41,31
+      SCREEN-LINE       = 43,92
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = chk-immaa
@@ -1896,7 +1947,7 @@ Begin Screen Form1
       ID                = 24
       ID Variable       = AUTO-ID
       Left Text         = FALSE
-      Line              = 41,31
+      Line              = 43,92
       Lines             = 1,31
       Lines Unit        = Default
       No Tab            = FALSE
@@ -1905,7 +1956,7 @@ Begin Screen Form1
       Self Act          = TRUE
       Size              = 3,00
       Size Unit         = Default
-      Tab Order         = 13
+      Tab Order         = 14
       Termination Value = 0
       Title             = "Check Box"
       Value             = 0:FALSE
@@ -1917,7 +1968,7 @@ Begin Screen Form1
    End
    Begin Data.Check-Box chk-chiusura
       SCREEN-COL        = 22,33
-      SCREEN-LINE       = 44,00
+      SCREEN-LINE       = 46,62
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = chk-chiusura
@@ -1947,7 +1998,7 @@ Begin Screen Form1
       ID                = 6
       ID Variable       = AUTO-ID
       Left Text         = FALSE
-      Line              = 44,00
+      Line              = 46,62
       Lines             = 1,31
       Lines Unit        = Default
       No Tab            = FALSE
@@ -1956,7 +2007,7 @@ Begin Screen Form1
       Self Act          = TRUE
       Size              = 3,00
       Size Unit         = Default
-      Tab Order         = 14
+      Tab Order         = 15
       Termination Value = 0
       Title             = "Check Box"
       Value             = 0:FALSE
@@ -1969,7 +2020,7 @@ Begin Screen Form1
    End
    Begin Data.Check-Box chk-chiusura2
       SCREEN-COL        = 22,33
-      SCREEN-LINE       = 47,08
+      SCREEN-LINE       = 49,69
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = chk-chiusura2
@@ -1999,7 +2050,7 @@ Begin Screen Form1
       ID                = 7
       ID Variable       = AUTO-ID
       Left Text         = FALSE
-      Line              = 47,08
+      Line              = 49,69
       Lines             = 1,31
       Lines Unit        = Default
       No Tab            = FALSE
@@ -2008,7 +2059,7 @@ Begin Screen Form1
       Self Act          = TRUE
       Size              = 3,00
       Size Unit         = Default
-      Tab Order         = 15
+      Tab Order         = 16
       Termination Value = 0
       Title             = "Check Box"
       Value             = 0:FALSE
@@ -2047,7 +2098,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 12,00
       Size Unit         = Default
-      Tab Order         = 16
+      Tab Order         = 17
       Title             = "Codice"
       Transparent       = TRUE
       Visible           = NONE
@@ -2085,7 +2136,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 15,00
       Size Unit         = Default
-      Tab Order         = 17
+      Tab Order         = 18
       Title             = "CUSTOM CONTROL"
       Transparent       = TRUE
       Visible           = NONE
@@ -2121,7 +2172,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 8,14
       Size Unit         = Default
-      Tab Order         = 18
+      Tab Order         = 19
       Title             = "BlockPgm"
       Transparent       = TRUE
       Visible           = NONE
@@ -2153,7 +2204,7 @@ Begin Screen Form1
       Size (Lines)      = 123,00
       Size (Lines) in Pixels = 738
       Size (Lines) Unit = Default
-      Tab Order         = 19
+      Tab Order         = 20
       Visible           = NONE
       Width             = 1
       Width in Cells    = TRUE
@@ -2186,7 +2237,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 15,00
       Size Unit         = Default
-      Tab Order         = 20
+      Tab Order         = 21
       Title             = "Descrizione"
       Transparent       = TRUE
       Visible           = NONE
@@ -2220,7 +2271,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 21
+      Tab Order         = 22
       Title             = "Livello scorta"
       Transparent       = TRUE
       Visible           = NONE
@@ -2254,7 +2305,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 22
+      Tab Order         = 23
       Title             = "Mese di Riferimento"
       Transparent       = TRUE
       Visible           = NONE
@@ -2288,7 +2339,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 23
+      Tab Order         = 24
       Title             = "Articolo Attivo"
       Transparent       = TRUE
       Visible           = NONE
@@ -2322,7 +2373,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 24
+      Tab Order         = 25
       Title             = "Programmazione"
       Transparent       = TRUE
       Visible           = NONE
@@ -2356,7 +2407,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 25
+      Tab Order         = 26
       Title             = "Su richiesta"
       Transparent       = TRUE
       Visible           = NONE
@@ -2390,7 +2441,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 52,00
       Size Unit         = Default
-      Tab Order         = 26
+      Tab Order         = 27
       Title             = "Colorazione fabbisogno nero su programma ordini. Quando non attivo (OR) ""Su richiesta"" attivo impedisce la cancellazione del master se presenti ordini fornitori relativi."
       Transparent       = TRUE
       Visible           = NONE
@@ -2424,7 +2475,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 52,00
       Size Unit         = Default
-      Tab Order         = 27
+      Tab Order         = 28
       Title             = "In fase di creazione automatica genera un ordine fornitore per ogni mese fino a quello di riferimento utilizzando il fabbisogno presente"
       Transparent       = TRUE
       Visible           = NONE
@@ -2458,7 +2509,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 52,00
       Size Unit         = Default
-      Tab Order         = 28
+      Tab Order         = 29
       Title             = "Il fabbisogno di tutti i 6 mesi sarà dato da impegnato - giacenza attuale se l'impegnato supererà la giacenza altrimenti sarà sempre 0. Per rifornirsi rapidamente della quantità da evadere. SOLO PER ARTICOLI NON SOSTITUITI"
       Transparent       = TRUE
       Visible           = NONE
@@ -2492,7 +2543,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 52,00
       Size Unit         = Default
-      Tab Order         = 29
+      Tab Order         = 30
       Title             = "Aumento in % della scorta di sicurezza"
       Transparent       = TRUE
       Visible           = NONE
@@ -2526,7 +2577,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 52,00
       Size Unit         = Default
-      Tab Order         = 30
+      Tab Order         = 31
       Title             = "Mese su cui fare l'ordine (programma ordini)"
       Transparent       = TRUE
       Visible           = NONE
@@ -2559,7 +2610,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 14,00
       Size Unit         = Default
-      Tab Order         = 31
+      Tab Order         = 32
       Title             = "Fornitori"
       Transparent       = FALSE
       Visible           = NONE
@@ -2590,14 +2641,14 @@ Begin Screen Form1
       Size (Lines)      = 107,33
       Size (Lines) in Pixels = 644
       Size (Lines) Unit = Default
-      Tab Order         = 32
+      Tab Order         = 33
       Visible           = NONE
       Width             = 1
       Width in Cells    = TRUE
    End
    Begin Label Form1-La-5aaaca
       SCREEN-COL        = 2,00
-      SCREEN-LINE       = 36,15
+      SCREEN-LINE       = 38,77
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-5aaaca
@@ -2615,14 +2666,14 @@ Begin Screen Form1
       ID                = 132
       Justification     = Center
       Label Offset      = 20
-      Line              = 36,15
+      Line              = 38,77
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 14,00
       Size Unit         = Default
-      Tab Order         = 33
+      Tab Order         = 34
       Title             = "Clienti"
       Transparent       = FALSE
       Visible           = NONE
@@ -2630,7 +2681,7 @@ Begin Screen Form1
    End
    Begin Bar Form1-Br-2aa
       SCREEN-COL        = 16,71
-      SCREEN-LINE       = 36,69
+      SCREEN-LINE       = 39,31
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-Br-2aa
@@ -2645,7 +2696,7 @@ Begin Screen Form1
       Help ID           = 0
       ID                = 133
       Kind              = Horizontal
-      Line              = 36,69
+      Line              = 39,31
       Line Styles       = Solid
       Occurs            = 0
       Position Shift    = 0
@@ -2653,14 +2704,14 @@ Begin Screen Form1
       Size (Lines)      = 107,33
       Size (Lines) in Pixels = 644
       Size (Lines) Unit = Default
-      Tab Order         = 34
+      Tab Order         = 35
       Visible           = NONE
       Width             = 1
       Width in Cells    = TRUE
    End
    Begin Label Screen1-La-11aaaa
       SCREEN-COL        = 3,00
-      SCREEN-LINE       = 38,23
+      SCREEN-LINE       = 40,85
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-11aaaa
@@ -2679,14 +2730,14 @@ Begin Screen Form1
       ID                = 134
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 38,23
+      Line              = 40,85
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 35
+      Tab Order         = 36
       Title             = "Evasione forzata"
       Transparent       = TRUE
       Visible           = NONE
@@ -2694,7 +2745,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-5a
       SCREEN-COL        = 31,17
-      SCREEN-LINE       = 37,31
+      SCREEN-LINE       = 39,92
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-5a
@@ -2713,14 +2764,14 @@ Begin Screen Form1
       ID                = 135
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 37,31
+      Line              = 39,92
       Lines             = 3,38
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 52,00
       Size Unit         = Default
-      Tab Order         = 36
+      Tab Order         = 37
       Title             = "In fase di evasione automatica ordini master, gli articoli che ne fanno parte saranno da considerare comunque evadibili senza tener conto degli attuali ragionamenti sulla giacenza."
       Transparent       = TRUE
       Visible           = NONE
@@ -2728,7 +2779,7 @@ Begin Screen Form1
    End
    Begin Data.Check-Box chk-prese
       SCREEN-COL        = 22,33
-      SCREEN-LINE       = 51,31
+      SCREEN-LINE       = 53,92
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = chk-prese
@@ -2757,7 +2808,7 @@ Begin Screen Form1
       Hint              = Seleziona/Deseleziona
       ID                = 136
       Left Text         = FALSE
-      Line              = 51,31
+      Line              = 53,92
       Lines             = 1,31
       Lines Unit        = Default
       No Tab            = FALSE
@@ -2766,7 +2817,7 @@ Begin Screen Form1
       Self Act          = TRUE
       Size              = 3,00
       Size Unit         = Default
-      Tab Order         = 37
+      Tab Order         = 38
       Termination Value = 0
       Title             = "Check Box"
       Value             = 0:FALSE
@@ -2778,7 +2829,7 @@ Begin Screen Form1
    End
    Begin Data.Check-Box chk-presea
       SCREEN-COL        = 22,33
-      SCREEN-LINE       = 53,23
+      SCREEN-LINE       = 55,85
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = chk-presea
@@ -2808,7 +2859,7 @@ Begin Screen Form1
       ID                = 137
       ID Variable       = AUTO-ID
       Left Text         = FALSE
-      Line              = 53,23
+      Line              = 55,85
       Lines             = 1,31
       Lines Unit        = Default
       No Tab            = FALSE
@@ -2817,7 +2868,7 @@ Begin Screen Form1
       Self Act          = TRUE
       Size              = 3,00
       Size Unit         = Default
-      Tab Order         = 38
+      Tab Order         = 39
       Termination Value = 0
       Title             = "Check Box"
       Value             = 0:FALSE
@@ -2829,7 +2880,7 @@ Begin Screen Form1
    End
    Begin Data.Check-Box chk-preseaa
       SCREEN-COL        = 22,33
-      SCREEN-LINE       = 55,15
+      SCREEN-LINE       = 57,77
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = chk-preseaa
@@ -2859,7 +2910,7 @@ Begin Screen Form1
       ID                = 139
       ID Variable       = AUTO-ID
       Left Text         = FALSE
-      Line              = 55,15
+      Line              = 57,77
       Lines             = 1,31
       Lines Unit        = Default
       No Tab            = FALSE
@@ -2868,7 +2919,7 @@ Begin Screen Form1
       Self Act          = TRUE
       Size              = 3,00
       Size Unit         = Default
-      Tab Order         = 39
+      Tab Order         = 40
       Termination Value = 0
       Title             = "Check Box"
       Value             = 0:FALSE
@@ -2880,7 +2931,7 @@ Begin Screen Form1
    End
    Begin Data.Check-Box chk-preseaaa
       SCREEN-COL        = 22,33
-      SCREEN-LINE       = 57,08
+      SCREEN-LINE       = 59,69
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = chk-preseaaa
@@ -2910,7 +2961,7 @@ Begin Screen Form1
       ID                = 140
       ID Variable       = AUTO-ID
       Left Text         = FALSE
-      Line              = 57,08
+      Line              = 59,69
       Lines             = 1,31
       Lines Unit        = Default
       No Tab            = FALSE
@@ -2919,7 +2970,7 @@ Begin Screen Form1
       Self Act          = TRUE
       Size              = 3,00
       Size Unit         = Default
-      Tab Order         = 40
+      Tab Order         = 41
       Termination Value = 0
       Title             = "Check Box"
       Value             = 0:FALSE
@@ -2931,7 +2982,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-5aaacaa
       SCREEN-COL        = 2,00
-      SCREEN-LINE       = 49,38
+      SCREEN-LINE       = 52,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-5aaacaa
@@ -2949,14 +3000,14 @@ Begin Screen Form1
       ID                = 141
       Justification     = Center
       Label Offset      = 20
-      Line              = 49,38
+      Line              = 52,00
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 14,00
       Size Unit         = Default
-      Tab Order         = 41
+      Tab Order         = 42
       Title             = "Altro"
       Transparent       = FALSE
       Visible           = NONE
@@ -2964,7 +3015,7 @@ Begin Screen Form1
    End
    Begin Bar Form1-Br-2aaa
       SCREEN-COL        = 16,71
-      SCREEN-LINE       = 49,92
+      SCREEN-LINE       = 52,54
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-Br-2aaa
@@ -2979,7 +3030,7 @@ Begin Screen Form1
       Help ID           = 0
       ID                = 142
       Kind              = Horizontal
-      Line              = 49,92
+      Line              = 52,54
       Line Styles       = Solid
       Occurs            = 0
       Position Shift    = 0
@@ -2987,14 +3038,14 @@ Begin Screen Form1
       Size (Lines)      = 107,33
       Size (Lines) in Pixels = 644
       Size (Lines) Unit = Default
-      Tab Order         = 42
+      Tab Order         = 43
       Visible           = NONE
       Width             = 1
       Width in Cells    = TRUE
    End
    Begin Label Screen1-La-11aaaaa
       SCREEN-COL        = 3,00
-      SCREEN-LINE       = 51,31
+      SCREEN-LINE       = 53,92
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-11aaaaa
@@ -3013,14 +3064,14 @@ Begin Screen Form1
       ID                = 143
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 51,31
+      Line              = 53,92
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 43
+      Tab Order         = 44
       Title             = "Prese"
       Transparent       = TRUE
       Visible           = NONE
@@ -3028,7 +3079,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-5aa
       SCREEN-COL        = 31,17
-      SCREEN-LINE       = 51,23
+      SCREEN-LINE       = 53,85
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-5aa
@@ -3047,14 +3098,14 @@ Begin Screen Form1
       ID                = 144
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 51,23
+      Line              = 53,85
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 52,00
       Size Unit         = Default
-      Tab Order         = 44
+      Tab Order         = 45
       Title             = "Per considerare gli articoli nella generazione del file delle prese"
       Transparent       = TRUE
       Visible           = NONE
@@ -3088,7 +3139,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 45
+      Tab Order         = 46
       Title             = "Ordine auto"
       Transparent       = TRUE
       Visible           = TRUE
@@ -3122,7 +3173,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 52,00
       Size Unit         = Default
-      Tab Order         = 46
+      Tab Order         = 47
       Title             = "Quando impostato, in combinazione col flag ""Su richiesta"", genera in automatico, durante elanborazione notturna, ordini fornitori EXD in base ai master caricati"
       Transparent       = TRUE
       Visible           = TRUE
@@ -3130,7 +3181,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-11aaaab
       SCREEN-COL        = 3,00
-      SCREEN-LINE       = 44,00
+      SCREEN-LINE       = 46,62
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-11aaaab
@@ -3149,14 +3200,14 @@ Begin Screen Form1
       ID                = 147
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 44,00
+      Line              = 46,62
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 47
+      Tab Order         = 48
       Title             = "Chiusura forzata"
       Transparent       = TRUE
       Visible           = NONE
@@ -3164,7 +3215,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-5ab
       SCREEN-COL        = 31,17
-      SCREEN-LINE       = 43,62
+      SCREEN-LINE       = 46,23
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-5ab
@@ -3183,14 +3234,14 @@ Begin Screen Form1
       ID                = 148
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 43,62
+      Line              = 46,23
       Lines             = 2,23
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 52,00
       Size Unit         = Default
-      Tab Order         = 48
+      Tab Order         = 49
       Title             = "Le righe inevase con questo flag saranno chiuse indipendentemente dallo stato dell'ordine e dal flag tenere saldi."
       Transparent       = TRUE
       Visible           = NONE
@@ -3198,7 +3249,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-11aaaaba
       SCREEN-COL        = 3,00
-      SCREEN-LINE       = 47,08
+      SCREEN-LINE       = 49,69
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-11aaaaba
@@ -3217,14 +3268,14 @@ Begin Screen Form1
       ID                = 149
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 47,08
+      Line              = 49,69
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 49
+      Tab Order         = 50
       Title             = "Chiusura forzata 2"
       Transparent       = TRUE
       Visible           = NONE
@@ -3232,7 +3283,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-5aba
       SCREEN-COL        = 31,17
-      SCREEN-LINE       = 46,69
+      SCREEN-LINE       = 49,31
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-5aba
@@ -3251,14 +3302,14 @@ Begin Screen Form1
       ID                = 150
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 46,69
+      Line              = 49,31
       Lines             = 2,08
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 52,00
       Size Unit         = Default
-      Tab Order         = 50
+      Tab Order         = 51
       Title             = "Il master cui rimangono articoli inevasi con questo flag valorizzato sarà comunque chiuso (indipendentemente dal TENERE SALDI)."
       Transparent       = TRUE
       Visible           = NONE
@@ -3266,7 +3317,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-11aaaaaa
       SCREEN-COL        = 3,00
-      SCREEN-LINE       = 53,23
+      SCREEN-LINE       = 55,85
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-11aaaaaa
@@ -3285,14 +3336,14 @@ Begin Screen Form1
       ID                = 151
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 53,23
+      Line              = 55,85
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 51
+      Tab Order         = 52
       Title             = "Avviso Listino"
       Transparent       = TRUE
       Visible           = NONE
@@ -3300,7 +3351,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-5aaa
       SCREEN-COL        = 31,17
-      SCREEN-LINE       = 53,15
+      SCREEN-LINE       = 55,77
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-5aaa
@@ -3319,14 +3370,14 @@ Begin Screen Form1
       ID                = 152
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 53,15
+      Line              = 55,77
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 52,00
       Size Unit         = Default
-      Tab Order         = 52
+      Tab Order         = 53
       Title             = "In inserimento promo richiede all'utente la conferma"
       Transparent       = TRUE
       Visible           = NONE
@@ -3360,7 +3411,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 53
+      Tab Order         = 54
       Title             = "Produzione"
       Transparent       = TRUE
       Visible           = TRUE
@@ -3394,7 +3445,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 52,00
       Size Unit         = Default
-      Tab Order         = 54
+      Tab Order         = 55
       Title             = "Per questi articoli il ""Prezzo di confronto"" è il COSTO MEDIO"
       Transparent       = TRUE
       Visible           = TRUE
@@ -3427,7 +3478,7 @@ Begin Screen Form1
       Low Color         = 0
       Size              = 35,00
       Size Unit         = Default
-      Tab Order         = 55
+      Tab Order         = 56
       Thickness         = Default
       Title             = "Generazione automatica ordini"
       Title Position    = 2:Top center
@@ -4444,7 +4495,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-11aaaaaaa
       SCREEN-COL        = 3,00
-      SCREEN-LINE       = 55,15
+      SCREEN-LINE       = 57,77
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-11aaaaaaa
@@ -4463,14 +4514,14 @@ Begin Screen Form1
       ID                = 180
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 55,15
+      Line              = 57,77
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 56
+      Tab Order         = 57
       Title             = "Permetti sostituzione"
       Transparent       = TRUE
       Visible           = NONE
@@ -4478,7 +4529,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-5aaaa
       SCREEN-COL        = 31,17
-      SCREEN-LINE       = 55,08
+      SCREEN-LINE       = 57,69
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-5aaaa
@@ -4497,14 +4548,14 @@ Begin Screen Form1
       ID                = 181
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 55,08
+      Line              = 57,69
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 70,00
       Size Unit         = Default
-      Tab Order         = 57
+      Tab Order         = 58
       Title             = "Permette la sostituzione di un articolo con un codice più vecchio (precedente)"
       Transparent       = TRUE
       Visible           = NONE
@@ -4512,7 +4563,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-11aaaac
       SCREEN-COL        = 3,00
-      SCREEN-LINE       = 41,31
+      SCREEN-LINE       = 43,92
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-11aaaac
@@ -4531,14 +4582,14 @@ Begin Screen Form1
       ID                = 182
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 41,31
+      Line              = 43,92
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 58
+      Tab Order         = 59
       Title             = "Forza saldi"
       Transparent       = TRUE
       Visible           = NONE
@@ -4546,7 +4597,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-5ac
       SCREEN-COL        = 31,17
-      SCREEN-LINE       = 40,92
+      SCREEN-LINE       = 43,54
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-5ac
@@ -4565,14 +4616,14 @@ Begin Screen Form1
       ID                = 183
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 40,92
+      Line              = 43,54
       Lines             = 2,23
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 52,00
       Size Unit         = Default
-      Tab Order         = 59
+      Tab Order         = 60
       Title             = "Se attivo forza l'attivazione dei flag saldi all'interno del master (sia in salvataggio che in import EDI)"
       Transparent       = TRUE
       Visible           = NONE
@@ -4580,7 +4631,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-11aaaaaaaa
       SCREEN-COL        = 3,00
-      SCREEN-LINE       = 57,08
+      SCREEN-LINE       = 59,69
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-11aaaaaaaa
@@ -4599,14 +4650,14 @@ Begin Screen Form1
       ID                = 184
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 57,08
+      Line              = 59,69
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 60
+      Tab Order         = 61
       Title             = "No promo GDO"
       Transparent       = TRUE
       Visible           = NONE
@@ -4614,7 +4665,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-5aaaaa
       SCREEN-COL        = 31,17
-      SCREEN-LINE       = 57,00
+      SCREEN-LINE       = 59,62
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-5aaaaa
@@ -4633,14 +4684,14 @@ Begin Screen Form1
       ID                = 185
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 57,00
+      Line              = 59,62
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 70,00
       Size Unit         = Default
-      Tab Order         = 61
+      Tab Order         = 62
       Title             = "Non permette l'inserimento dell'articolo nella promo GDO"
       Transparent       = TRUE
       Visible           = NONE
@@ -4648,7 +4699,7 @@ Begin Screen Form1
    End
    Begin Data.Check-Box chk-preseaaaa
       SCREEN-COL        = 22,33
-      SCREEN-LINE       = 59,00
+      SCREEN-LINE       = 61,62
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = chk-preseaaaa
@@ -4678,7 +4729,7 @@ Begin Screen Form1
       ID                = 186
       ID Variable       = AUTO-ID
       Left Text         = FALSE
-      Line              = 59,00
+      Line              = 61,62
       Lines             = 1,31
       Lines Unit        = Default
       No Tab            = FALSE
@@ -4687,7 +4738,7 @@ Begin Screen Form1
       Self Act          = TRUE
       Size              = 3,00
       Size Unit         = Default
-      Tab Order         = 62
+      Tab Order         = 63
       Termination Value = 0
       Title             = "Check Box"
       Value             = 0:FALSE
@@ -4699,7 +4750,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-11aaaaaaaaa
       SCREEN-COL        = 3,00
-      SCREEN-LINE       = 59,00
+      SCREEN-LINE       = 61,62
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-11aaaaaaaaa
@@ -4718,14 +4769,14 @@ Begin Screen Form1
       ID                = 187
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 59,00
+      Line              = 61,62
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 63
+      Tab Order         = 64
       Title             = "Ins. automatico listini"
       Transparent       = TRUE
       Visible           = NONE
@@ -4733,7 +4784,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-5aaaaaa
       SCREEN-COL        = 31,17
-      SCREEN-LINE       = 58,92
+      SCREEN-LINE       = 61,54
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-5aaaaaa
@@ -4752,14 +4803,14 @@ Begin Screen Form1
       ID                = 188
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 58,92
+      Line              = 61,54
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 70,00
       Size Unit         = Default
-      Tab Order         = 64
+      Tab Order         = 65
       Title             = "Inserimento automatico listini"
       Transparent       = TRUE
       Visible           = NONE
@@ -4783,7 +4834,7 @@ Begin Screen Form1
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 35
+      ID                = 189
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 32,46
@@ -4793,7 +4844,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 65
+      Tab Order         = 66
       Title             = "Moltiplicatore programma ordini"
       Transparent       = TRUE
       Visible           = NONE
@@ -4817,7 +4868,7 @@ Begin Screen Form1
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 65
+      ID                = 190
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 32,46
@@ -4827,10 +4878,78 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 52,00
       Size Unit         = Default
-      Tab Order         = 66
+      Tab Order         = 67
       Title             = "Moltiplica la formula (( ord2-giac + como-ordinato - ord2-promo ) < (( ord2-riordino - ord2-consegna ))"
       Transparent       = TRUE
       Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Screen1-La-11aaabaa
+      SCREEN-COL        = 3,00
+      SCREEN-LINE       = 35,77
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-La-11aaabaa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 3,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 153
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 35,77
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 17,00
+      Size Unit         = Default
+      Tab Order         = 68
+      Title             = "MOQ"
+      Transparent       = TRUE
+      Visible           = TRUE
+      Width in Cells    = TRUE
+   End
+   Begin Label Screen1-La-5baa
+      SCREEN-COL        = 31,17
+      SCREEN-LINE       = 35,77
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-La-5baa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 31,17
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 154
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 35,77
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 52,00
+      Size Unit         = Default
+      Tab Order         = 69
+      Title             = "Attiva il MOQ su articoli e sul programma ordini in automatico"
+      Transparent       = TRUE
+      Visible           = TRUE
       Width in Cells    = TRUE
    End
    Begin Toolbar Form1-Tb-1
@@ -4844,7 +4963,7 @@ Begin Screen Form1
       Handle Variable   = Form1-Tb-1-Handle
       Help ID           = 0
       Lines             = 2,69
-      Tab Order         = 67
+      Tab Order         = 70
       Begin Push-Button TOOL-ESCI
          SCREEN-COL        = 1,00
          SCREEN-LINE       = 1,15
@@ -5523,7 +5642,7 @@ Begin Screen Form1
       Handle Variable   = Form1-St-1-Handle
       PANEL-WIDTHS      = ( 70, 23, 999 )
       PANEL-STYLE       = ( 1, 1, 1 )
-      Tab Order         = 68
+      Tab Order         = 71
    End
 End
 
@@ -5661,7 +5780,10 @@ BEGIN-TEXT
                    15 old-sco-auto-lst            PIC  9.
                        88 old-sco-auto-lst-si VALUE IS 1.
                        88 old-sco-auto-lst-no VALUE IS 0.
-                   15 old-sco-molt-pordini pic s99v99.
+                   15 old-sco-molt-pordini pic s99v99.   
+                   15 old-sco-moq            PIC  9.
+                       88 old-sco-moq-si VALUE IS 1.
+                       88 old-sco-moq-no VALUE IS 0.
                        
 END-TEXT
 END-DATA
@@ -6948,6 +7070,7 @@ BEGIN-DATA
 BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
 
+      *<<** Default_Code **>>
 END-TEXT
 END-DATA
 BEGIN-DATA

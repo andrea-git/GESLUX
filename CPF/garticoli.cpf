@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4B18222818-856-2341632469
+PROGRAM_UNIQUE_CODE=TOTEM-7E4C29345-601-1090626106
 
 {{@DESCRIPTION:
 
@@ -12804,7 +12804,7 @@ Begin Screen Form1
             Size              = 13,00
             Size Unit         = Default
             Tab Order         = 115
-            Title             = "Max scorta (pz)"
+            Title             = "MOQ"
             Transparent       = TRUE
             Visible           = NONE
             Visible Variable  = v-limite
@@ -23458,8 +23458,7 @@ BEGIN-DATA
 BEGIN-TEXT
            if event-data-1 = 1
               move ef-scorta-buf to art-scorta of articoli
-              if art-scorta of articoli = 5 or
-                 art-scorta of articoli = 7
+              if sco-moq-si
                  move 1 to v-limite
               else
                  move 0 to v-limite

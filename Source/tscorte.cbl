@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          tscorte.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 21 ottobre 2020 17:47:18.
+       DATE-WRITTEN.        mercoledì 2 dicembre 2020 10:26:18.
        REMARKS.
       *{TOTEM}END
 
@@ -142,6 +142,8 @@
               05 chk-immba-BUF PIC 9 VALUE ZERO.
       * Data.Entry-Field
               05 ef-molt-BUF PIC --9,99.
+      * Data.Check-Box
+              05 chk-immbaa-BUF PIC 9 VALUE ZERO.
       * Data.Check-Box
               05 chk-lun-BUF PIC 9 VALUE ZERO.
       * Data.Check-Box
@@ -338,7 +340,10 @@
                    15 old-sco-auto-lst            PIC  9.
                        88 old-sco-auto-lst-si VALUE IS 1.
                        88 old-sco-auto-lst-no VALUE IS 0.
-                   15 old-sco-molt-pordini pic s99v99.
+                   15 old-sco-molt-pordini pic s99v99.   
+                   15 old-sco-moq            PIC  9.
+                       88 old-sco-moq-si VALUE IS 1.
+                       88 old-sco-moq-no VALUE IS 0.
                        
       *{TOTEM}END
 
@@ -353,26 +358,27 @@
        78  78-ID-chk-imm VALUE 5007.
        78  78-ID-chk-immb VALUE 5008.
        78  78-ID-ef-molt VALUE 5009.
-       78  78-ID-chk-imma VALUE 5010.
-       78  78-ID-chk-immaa VALUE 5011.
-       78  78-ID-chk-chiusura VALUE 5012.
-       78  78-ID-chk-chiusura2 VALUE 5013.
-       78  78-ID-chk-presea VALUE 5014.
-       78  78-ID-chk-preseaa VALUE 5015.
-       78  78-ID-chk-preseaaa VALUE 5016.
-       78  78-ID-chk-gen VALUE 5017.
-       78  78-ID-chk-feb VALUE 5018.
-       78  78-ID-chk-marz VALUE 5019.
-       78  78-ID-chk-apr VALUE 5020.
-       78  78-ID-chk-mag VALUE 5021.
-       78  78-ID-chk-giu VALUE 5022.
-       78  78-ID-chk-lug VALUE 5023.
-       78  78-ID-chk-ago VALUE 5024.
-       78  78-ID-chk-set VALUE 5025.
-       78  78-ID-chk-ott VALUE 5026.
-       78  78-ID-chk-nov VALUE 5027.
-       78  78-ID-chk-dic VALUE 5028.
-       78  78-ID-chk-preseaaaa VALUE 5029.
+       78  78-ID-chk-immbaa VALUE 5010.
+       78  78-ID-chk-imma VALUE 5011.
+       78  78-ID-chk-immaa VALUE 5012.
+       78  78-ID-chk-chiusura VALUE 5013.
+       78  78-ID-chk-chiusura2 VALUE 5014.
+       78  78-ID-chk-presea VALUE 5015.
+       78  78-ID-chk-preseaa VALUE 5016.
+       78  78-ID-chk-preseaaa VALUE 5017.
+       78  78-ID-chk-gen VALUE 5018.
+       78  78-ID-chk-feb VALUE 5019.
+       78  78-ID-chk-marz VALUE 5020.
+       78  78-ID-chk-apr VALUE 5021.
+       78  78-ID-chk-mag VALUE 5022.
+       78  78-ID-chk-giu VALUE 5023.
+       78  78-ID-chk-lug VALUE 5024.
+       78  78-ID-chk-ago VALUE 5025.
+       78  78-ID-chk-set VALUE 5026.
+       78  78-ID-chk-ott VALUE 5027.
+       78  78-ID-chk-nov VALUE 5028.
+       78  78-ID-chk-dic VALUE 5029.
+       78  78-ID-chk-preseaaaa VALUE 5030.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -586,6 +592,25 @@
            NUMERIC,
            VALUE ef-molt-BUF,
            .
+
+      * CHECK BOX
+       05
+           chk-immbaa, 
+           Check-Box, 
+           COL 22,33, 
+           LINE 35,77,
+           LINES 1,31 ,
+           SIZE 3,00 ,
+           ENABLED MOD,
+           FLAT,
+           ID IS 78-ID-chk-immbaa,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           SELF-ACT,
+           TITLE "Check Box",
+           VALUE chk-immbaa-BUF,
+           VISIBLE 1,
+            .
 
       * FRAME
        05
@@ -838,7 +863,7 @@
            chk-imma, 
            Check-Box, 
            COL 22,33, 
-           LINE 38,23,
+           LINE 40,85,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED MOD,
@@ -856,7 +881,7 @@
            chk-immaa, 
            Check-Box, 
            COL 22,33, 
-           LINE 41,31,
+           LINE 43,92,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED MOD,
@@ -874,7 +899,7 @@
            chk-chiusura, 
            Check-Box, 
            COL 22,33, 
-           LINE 44,00,
+           LINE 46,62,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED MOD,
@@ -893,7 +918,7 @@
            chk-chiusura2, 
            Check-Box, 
            COL 22,33, 
-           LINE 47,08,
+           LINE 49,69,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED MOD,
@@ -1186,7 +1211,7 @@
            Form1-La-5aaaca, 
            Label, 
            COL 2,00, 
-           LINE 36,15,
+           LINE 38,77,
            LINES 1,31 ,
            SIZE 14,00 ,
            COLOR IS 80,
@@ -1202,7 +1227,7 @@
            Form1-Br-2aa, 
            Bar,
            COL 16,71, 
-           LINE 36,69,
+           LINE 39,31,
            SIZE 107,33 ,
            ID IS 133,
            HEIGHT-IN-CELLS,
@@ -1216,7 +1241,7 @@
            Screen1-La-11aaaa, 
            Label, 
            COL 3,00, 
-           LINE 38,23,
+           LINE 40,85,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -1232,7 +1257,7 @@
            Screen1-La-5a, 
            Label, 
            COL 31,17, 
-           LINE 37,31,
+           LINE 39,92,
            LINES 3,38 ,
            SIZE 52,00 ,
            FONT IS Small-Font,
@@ -1251,7 +1276,7 @@
            chk-prese, 
            Check-Box, 
            COL 22,33, 
-           LINE 51,31,
+           LINE 53,92,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED MOD,
@@ -1269,7 +1294,7 @@
            chk-presea, 
            Check-Box, 
            COL 22,33, 
-           LINE 53,23,
+           LINE 55,85,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED MOD,
@@ -1287,7 +1312,7 @@
            chk-preseaa, 
            Check-Box, 
            COL 22,33, 
-           LINE 55,15,
+           LINE 57,77,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED MOD,
@@ -1305,7 +1330,7 @@
            chk-preseaaa, 
            Check-Box, 
            COL 22,33, 
-           LINE 57,08,
+           LINE 59,69,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED MOD,
@@ -1323,7 +1348,7 @@
            Form1-La-5aaacaa, 
            Label, 
            COL 2,00, 
-           LINE 49,38,
+           LINE 52,00,
            LINES 1,31 ,
            SIZE 14,00 ,
            COLOR IS 80,
@@ -1339,7 +1364,7 @@
            Form1-Br-2aaa, 
            Bar,
            COL 16,71, 
-           LINE 49,92,
+           LINE 52,54,
            SIZE 107,33 ,
            ID IS 142,
            HEIGHT-IN-CELLS,
@@ -1353,7 +1378,7 @@
            Screen1-La-11aaaaa, 
            Label, 
            COL 3,00, 
-           LINE 51,31,
+           LINE 53,92,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -1369,7 +1394,7 @@
            Screen1-La-5aa, 
            Label, 
            COL 31,17, 
-           LINE 51,23,
+           LINE 53,85,
            LINES 1,31 ,
            SIZE 52,00 ,
            FONT IS Small-Font,
@@ -1422,7 +1447,7 @@
            Screen1-La-11aaaab, 
            Label, 
            COL 3,00, 
-           LINE 44,00,
+           LINE 46,62,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -1438,7 +1463,7 @@
            Screen1-La-5ab, 
            Label, 
            COL 31,17, 
-           LINE 43,62,
+           LINE 46,23,
            LINES 2,23 ,
            SIZE 52,00 ,
            FONT IS Small-Font,
@@ -1456,7 +1481,7 @@
            Screen1-La-11aaaaba, 
            Label, 
            COL 3,00, 
-           LINE 47,08,
+           LINE 49,69,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -1472,7 +1497,7 @@
            Screen1-La-5aba, 
            Label, 
            COL 31,17, 
-           LINE 46,69,
+           LINE 49,31,
            LINES 2,08 ,
            SIZE 52,00 ,
            FONT IS Small-Font,
@@ -1490,7 +1515,7 @@
            Screen1-La-11aaaaaa, 
            Label, 
            COL 3,00, 
-           LINE 53,23,
+           LINE 55,85,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -1506,7 +1531,7 @@
            Screen1-La-5aaa, 
            Label, 
            COL 31,17, 
-           LINE 53,15,
+           LINE 55,77,
            LINES 1,31 ,
            SIZE 52,00 ,
            FONT IS Small-Font,
@@ -1968,7 +1993,7 @@
            Screen1-La-11aaaaaaa, 
            Label, 
            COL 3,00, 
-           LINE 55,15,
+           LINE 57,77,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -1984,7 +2009,7 @@
            Screen1-La-5aaaa, 
            Label, 
            COL 31,17, 
-           LINE 55,08,
+           LINE 57,69,
            LINES 1,31 ,
            SIZE 70,00 ,
            FONT IS Small-Font,
@@ -2001,7 +2026,7 @@
            Screen1-La-11aaaac, 
            Label, 
            COL 3,00, 
-           LINE 41,31,
+           LINE 43,92,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -2017,7 +2042,7 @@
            Screen1-La-5ac, 
            Label, 
            COL 31,17, 
-           LINE 40,92,
+           LINE 43,54,
            LINES 2,23 ,
            SIZE 52,00 ,
            FONT IS Small-Font,
@@ -2034,7 +2059,7 @@
            Screen1-La-11aaaaaaaa, 
            Label, 
            COL 3,00, 
-           LINE 57,08,
+           LINE 59,69,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -2050,7 +2075,7 @@
            Screen1-La-5aaaaa, 
            Label, 
            COL 31,17, 
-           LINE 57,00,
+           LINE 59,62,
            LINES 1,31 ,
            SIZE 70,00 ,
            FONT IS Small-Font,
@@ -2067,7 +2092,7 @@
            chk-preseaaaa, 
            Check-Box, 
            COL 22,33, 
-           LINE 59,00,
+           LINE 61,62,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED MOD,
@@ -2085,7 +2110,7 @@
            Screen1-La-11aaaaaaaaa, 
            Label, 
            COL 3,00, 
-           LINE 59,00,
+           LINE 61,62,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -2101,7 +2126,7 @@
            Screen1-La-5aaaaaa, 
            Label, 
            COL 31,17, 
-           LINE 58,92,
+           LINE 61,54,
            LINES 1,31 ,
            SIZE 70,00 ,
            FONT IS Small-Font,
@@ -2121,7 +2146,7 @@
            LINES 2,23 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 35,
+           ID IS 189,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2137,12 +2162,47 @@
            LINES 2,23 ,
            SIZE 52,00 ,
            FONT IS Small-Font,
-           ID IS 65,
+           ID IS 190,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
            TITLE "Moltiplica la formula (( ord2-giac + como-ordinato - o
       -    "rd2-promo ) < (( ord2-riordino - ord2-consegna ))",
+           .
+
+      * LABEL
+       05
+           Screen1-La-11aaabaa, 
+           Label, 
+           COL 3,00, 
+           LINE 35,77,
+           LINES 1,31 ,
+           SIZE 17,00 ,
+           FONT IS Small-Font,
+           ID IS 153,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "MOQ",
+           VISIBLE 1,
+           .
+
+      * LABEL
+       05
+           Screen1-La-5baa, 
+           Label, 
+           COL 31,17, 
+           LINE 35,77,
+           LINES 1,31 ,
+           SIZE 52,00 ,
+           FONT IS Small-Font,
+           ID IS 154,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Attiva il MOQ su articoli e sul programma ordini in au
+      -    "tomatico",
+           VISIBLE 1,
            .
 
       * TOOLBAR
@@ -2958,7 +3018,7 @@
 
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 61,00,
+              LINES 64,00,
               SIZE 123,00,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
@@ -3508,6 +3568,8 @@
       * DB_CHECK BOX
               MOVE 0 TO sco-produzione
       * DB_CHECK BOX
+              MOVE 0 TO sco-moq
+      * DB_CHECK BOX
               MOVE 0 TO sco-lun
       * DB_CHECK BOX
               MOVE 0 TO sco-mar
@@ -3748,6 +3810,12 @@
               END-IF
       * DB_Entry-Field : ef-molt
            MOVE ef-molt-BUF TO sco-molt-pordini
+      * DB_CHECK BOX : chk-immbaa
+              IF chk-immbaa-BUF = 1
+                 MOVE 1 TO sco-moq
+              ELSE
+                 MOVE 0 TO sco-moq
+              END-IF
       * DB_CHECK BOX : chk-lun
               IF chk-lun-BUF = 1
                  MOVE 1 TO sco-lun
@@ -3963,6 +4031,12 @@
               END-IF
       * DB_Entry-Field : ef-molt
            MOVE sco-molt-pordini TO ef-molt-BUF
+      * DB_CHECK BOX : chk-immbaa
+              IF sco-moq = 1
+                 MOVE 1 TO chk-immbaa-BUF
+              ELSE
+                 MOVE 0 TO chk-immbaa-BUF
+              END-IF
       * DB_CHECK BOX : chk-lun
               IF sco-lun = 1
                  MOVE 1 TO chk-lun-BUF
@@ -4211,6 +4285,13 @@
               set NoSalvato to true
               |78-ID-ef-molt è l'ID del campo ef-molt
               move 78-ID-ef-molt to store-id 
+           end-if
+
+           if sco-moq not = old-sco-moq
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-chk-immbaa è l'ID del campo chk-immbaa
+              move 78-ID-chk-immbaa to store-id 
            end-if
 
            if sco-lun not = old-sco-lun
@@ -4566,6 +4647,7 @@
            WHEN 5 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 5009 MOVE "Digitare il valore da moltiplicare" to 
            TOTEM-HINT-TEXT
+           WHEN 5010 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 9 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 11 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 14 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
@@ -4573,12 +4655,11 @@
            WHEN 18 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 20 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 22 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
-           WHEN 5010 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 5011 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 5012 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 5013 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
-           WHEN 136 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 5014 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
+           WHEN 136 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 5015 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 5016 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 5017 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
@@ -4594,6 +4675,7 @@
            WHEN 5027 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 5028 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 5029 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
+           WHEN 5030 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
            EVALUATE Control-Id
@@ -4607,6 +4689,7 @@
            When 5008 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 5 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 5009 PERFORM ef-molt-BeforeProcedure
+           When 5010 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 9 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 11 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 14 PERFORM Screen1-DaCb-1-BeforeProcedure
@@ -4614,12 +4697,11 @@
            When 18 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 20 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 22 PERFORM Screen1-DaCb-1-BeforeProcedure
-           When 5010 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 5011 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 5012 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 5013 PERFORM Screen1-DaCb-1-BeforeProcedure
-           When 136 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 5014 PERFORM Screen1-DaCb-1-BeforeProcedure
+           When 136 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 5015 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 5016 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 5017 PERFORM Screen1-DaCb-1-BeforeProcedure
@@ -4635,6 +4717,7 @@
            When 5027 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 5028 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 5029 PERFORM Screen1-DaCb-1-BeforeProcedure
+           When 5030 PERFORM Screen1-DaCb-1-BeforeProcedure
            END-EVALUATE
            PERFORM Form1-DISPLAY-STATUS-MSG
            perform Form1-BEFORE-SCREEN
@@ -4652,6 +4735,7 @@
            When 5008 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5009 PERFORM ef-molt-AfterProcedure
+           When 5010 PERFORM Screen1-DaCb-1-AfterProcedure
            When 9 PERFORM Screen1-DaCb-1-AfterProcedure
            When 11 PERFORM Screen1-DaCb-1-AfterProcedure
            When 14 PERFORM Screen1-DaCb-1-AfterProcedure
@@ -4659,12 +4743,11 @@
            When 18 PERFORM Screen1-DaCb-1-AfterProcedure
            When 20 PERFORM Screen1-DaCb-1-AfterProcedure
            When 22 PERFORM Screen1-DaCb-1-AfterProcedure
-           When 5010 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5011 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5012 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5013 PERFORM Screen1-DaCb-1-AfterProcedure
-           When 136 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5014 PERFORM Screen1-DaCb-1-AfterProcedure
+           When 136 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5015 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5016 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5017 PERFORM Screen1-DaCb-1-AfterProcedure
@@ -4680,6 +4763,7 @@
            When 5027 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5028 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5029 PERFORM Screen1-DaCb-1-AfterProcedure
+           When 5030 PERFORM Screen1-DaCb-1-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -5710,8 +5794,16 @@
        ef-molt-AfterProcedure.
       * <TOTEM:PARA. ef-molt-AfterProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+
+              INQUIRE ef-molt, VALUE IN sco-molt-pordini
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-molt-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
            .
       * <TOTEM:END>
+
        ef-molt-BeforeProcedure.
       * <TOTEM:PARA. ef-molt-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU

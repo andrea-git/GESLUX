@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          garticoli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 17 novembre 2020 15:23:52.
+       DATE-WRITTEN.        mercoledì 2 dicembre 2020 10:27:38.
        REMARKS.
       *{TOTEM}END
 
@@ -2933,7 +2933,7 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
-           TITLE "Max scorta (pz)",
+           TITLE "MOQ",
            VISIBLE v-limite,
            .
 
@@ -22006,8 +22006,7 @@ LABLAB
       * <TOTEM:PARA. Screen1-Ta-1-Ev-Cmd-Tabchanged>
            if event-data-1 = 1
               move ef-scorta-buf to art-scorta of articoli
-              if art-scorta of articoli = 5 or
-                 art-scorta of articoli = 7
+              if sco-moq-si
                  move 1 to v-limite
               else
                  move 0 to v-limite

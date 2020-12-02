@@ -414,6 +414,7 @@
                             art-classe-4               of articoli
                             art-cod-fornitore          of articoli     
                             art-gestione-utf           of articoli
+
                             como-peso-utf
                             como-peso-non-utf          
                             como-peso-standard         
@@ -424,6 +425,7 @@
                             como-prezzo-acquisto      
                             como-perce-sconto-acquisto
                             art-cod-doganale           of articoli
+
                             art-soggetto-imposte       of articoli
                             como-perce-imposte       
                             como-perce-cou        
@@ -434,6 +436,7 @@
                             como-codice-ean-1        
                             como-codice-ean-2        
                             como-codice-ean-3        
+
                             como-codice-ean-4        
                             como-codice-ean-5        
                             art-descrizione-2          of articoli
@@ -444,6 +447,7 @@
                             art-profondita             of articoli
                             art-ALA                    of articoli
                             art-gda                    of articoli
+
                             art-agenti                 of articoli
                             art-specialist             of articoli
                             art-estero                 of articoli

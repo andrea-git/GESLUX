@@ -965,8 +965,7 @@
                                title tit-err
                                icon 2
                 end-read
-                if art-scorta of articoli = 5 or 
-                   art-scorta of articoli = 7
+                if sco-moq-si
                    move 1 to v-limite
                 else
                    move 0 to v-limite
@@ -1640,7 +1639,16 @@
                 perform READ-PRODENER
            when "blister"
                 perform READ-BLISTER
+           when "tscorte"
+                perform READ-TSCORTE
            end-evaluate.
+
+      ***---
+       READ-TSCORTE.
+           read tscorte no lock
+              invalid 
+                 set trovato to false
+           end-read.
 
       ***---
        READ-ARTICOLI1.
@@ -1906,13 +1914,16 @@
                 else
                    move spaces to lab-prodener-buf
                 end-if
-                display lab-prodener
+                display lab-prodener 
            when "blister"  
                 move spaces to lab-des-coll-buf
                 move ef-coll-buf to bli-codice
                 perform RELATIONS
                 move bli-descrizione to lab-des-coll-buf
                 display lab-des-coll
+           when "tscorte"  
+                move ef-scorta-buf to sco-codice
+                perform RELATIONS
            end-evaluate.
 
       ***---
@@ -2764,13 +2775,7 @@ LUBEXX        end-if
            add 0,005 to costo-mp giving costo-mp-2dec.
 
       ***---
-       GARTICOLI-AFTER-FLD-TO-BUF.
-           if art-scorta of articoli = 5 or
-              art-scorta of articoli = 7
-              move 1 to v-limite
-           else
-              move 0 to v-limite
-           end-if.
+       GARTICOLI-AFTER-FLD-TO-BUF.  
            display lab-limite ef-limite.
            if art-scorta of articoli = 9
               move 1 to v-reale
@@ -2801,7 +2806,16 @@ LUBEXX        end-if
            move art-codice of articoli    to  codice-ed.
            move codice-ed     to  ef-codice-buf.   
            call "C$JUSTIFY" using ef-codice-buf, "L".
-           display ef-codice.       
+           display ef-codice.          
+           
+      * ARTICOLI-SCORTE
+           move "tscorte" to nome-file.
+           perform RELAZIONI-ARTICOLI.   
+           if sco-moq-si
+              move 1 to v-limite
+           else
+              move 0 to v-limite
+           end-if.
            
       * ARTICOLI-SETTORE MERCEOLOGICO
            move "tsetmerc" to nome-file.
