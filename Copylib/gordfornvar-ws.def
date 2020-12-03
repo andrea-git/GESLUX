@@ -11,9 +11,10 @@
        77 STATUS-tgrupgdo  PIC  X(2).
            88 Valid-STATUS-tgrupgdo VALUE IS "00" THRU "09". 
        77 como-descr-promo PIC  X(100).
+       77 t-dati-salvati   PIC  x.
        77 data-arrivo      PIC  9(8).
        77 qta-arrivo       PIC  9(8).
-       77 SaveLastPrg      pic 9(8).
+       77 SaveLastPrg      PIC  9(8).
        77 NumBitmapNotaCr  PIC  99.
        77 STATUS-reva      PIC  X(2).
            88 Valid-STATUS-reva VALUE IS "00" THRU "09". 
@@ -72,7 +73,7 @@
        01 FlagRigaCambiata PIC  9.
            88 RigaCambiata VALUE IS 1    WHEN SET TO FALSE  0. 
        01 FlagSollecitiCambiati        PIC  9.
-           88 SollecitiCambiati VALUE IS 1    WHEN SET TO FALSE  0.
+           88 SollecitiCambiati VALUE IS 1    WHEN SET TO FALSE  0. 
        01 FlagSollecitiCambiatiT       PIC  9.
            88 SollecitiCambiatiT VALUE IS 1    WHEN SET TO FALSE  0. 
        01 FILLER           PIC  9.

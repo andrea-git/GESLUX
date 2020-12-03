@@ -1930,6 +1930,8 @@ PATCH         modify tool-salva,
 PATCH                enabled = e-salva,
 PATCH          bitmap-number = BitmapNumSave
               perform CURRENT-RECORD
+              move 2 to riga event-data-2
+              perform SPOSTAMENTO
 PATCH      else
 PATCH         perform FORM1-EXIT
 PATCH      end-if.                   
@@ -2211,6 +2213,43 @@ PATCH                  add 1 to righe-finali
 PATCH               end-perform
 PATCH         end-start
 PATCH      end-if.
+
+      ***---
+      * Se inserisco una riga devo creare il sollecito
+       SCRIVI-SOLLECITI-R.
+           move tof-chiave      to sof-chiave-testa.
+           move 0               to sof-prog
+           read sordforn.
+           move sof-dati-salvati to t-dati-salvati.
+
+           move low-value  to rof-chiave.
+           move tof-chiave to rof-chiave.
+           start rordforn key >= rof-chiave.
+           perform until 1 = 2
+              read rordforn next at end exit perform end-read
+              if rof-chiave-testa not = tof-chiave
+                 exit perform
+              end-if
+              initialize sof-rec replacing numeric data by zeroes
+                                      alphanumeric data by spaces
+              move rof-chiave      to sof-chiave
+              read sordforn no lock
+                   invalid
+                   move spaces          to sof-note    
+                   move t-sof-data-arr  to sof-data-arr
+                   move 0               to sof-qta            
+                   move t-dati-salvati  to sof-dati-salvati
+                   accept sof-data-creazione from century-date
+                   accept sof-ora-creazione  from time
+                   move rof-utente-creazione to sof-utente-creazione
+                   write sof-rec end-write
+               not invalid
+                   if t-dati-salvati not = sof-dati-salvati
+                      move t-dati-salvati to sof-dati-salvati
+                      rewrite sof-rec
+                   end-if
+              end-read
+           end-perform.
 
       ***---
        CHIAMA-PROGMAG.
@@ -2641,7 +2680,7 @@ PATCH      call "c$calledby" using PgmChiamante.
            if not SystemErrorOccurred
               perform CANCELLA-COLORE
               move LinkChiave to tof-chiave
-              perform BEFOREFLDTOBUF-CODE
+              perform BEFORE-FLDTOBUF-CODE
               move como-stato to lab-stato-buf
               display lab-stato
 
@@ -2691,6 +2730,8 @@ PATCH         commit transaction
                        add aor-qta to tof-pz-tot
                     end-perform
               end-start
+
+              perform SCRIVI-SOLLECITI-R
 
               rewrite tof-rec invalid continue end-rewrite
               unlock  tordforn all records
@@ -3086,7 +3127,7 @@ LUBEXX        perform VALORIZZA-OLD
            perform ENABLE-CAMPI-PREZZI.
 
       ***---
-       BEFOREFLDTOBUF-CODE.
+       BEFORE-FLDTOBUF-CODE.
            evaluate true
            when tof-inserito
                 move "INSERITO"       to como-stato

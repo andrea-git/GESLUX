@@ -2,13 +2,12 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
-DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7DFAF135718-72-203714102
+PROGRAM_UNIQUE_CODE=TOTEM-7E4C3125536-126-160912871
 
 {{@DESCRIPTION:
 
@@ -10108,9 +10107,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM727_WK]
-m_strName=data-arrivo
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=t-dati-salvati
+m_strRawPic=x
+m_strPic=x
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -10122,7 +10121,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM728_WK]
-m_strName=qta-arrivo
+m_strName=data-arrivo
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=77
@@ -10136,7 +10135,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM729_WK]
-m_strName=SaveLastPrg
+m_strName=qta-arrivo
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=77
@@ -10150,9 +10149,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM730_WK]
-m_strName=NumBitmapNotaCr
-m_strRawPic=99
-m_strPic=99
+m_strName=SaveLastPrg
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -10164,9 +10163,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM731_WK]
-m_strName=STATUS-reva
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=NumBitmapNotaCr
+m_strRawPic=99
+m_strPic=99
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -10178,6 +10177,20 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM732_WK]
+m_strName=STATUS-reva
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
+m_strCopyFile=GORDFORNVAR-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM732_WK
+
+@}}
+[FDITEM733_WK]
 m_strName=Valid-STATUS-reva
 m_nItemLevel=88
 m_nSync=-1
@@ -10187,10 +10200,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM732_WK
+{{@DataItem_m_strDescriptionFDITEM733_WK
 
 @}}
-[FDITEM733_WK]
+[FDITEM734_WK]
 m_strName=FILLER
 m_strRawPic=9
 m_strPic=9
@@ -10201,10 +10214,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM733_WK
+{{@DataItem_m_strDescriptionFDITEM734_WK
 
 @}}
-[FDITEM734_WK]
+[FDITEM735_WK]
 m_strName=CancellazioneFisica
 m_nItemLevel=88
 m_nSync=-1
@@ -10215,10 +10228,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM734_WK
+{{@DataItem_m_strDescriptionFDITEM735_WK
 
 @}}
-[FDITEM735_WK]
+[FDITEM736_WK]
 m_strName=CancellazioneLogica
 m_nItemLevel=88
 m_nSync=-1
@@ -10229,10 +10242,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM735_WK
+{{@DataItem_m_strDescriptionFDITEM736_WK
 
 @}}
-[FDITEM736_WK]
+[FDITEM737_WK]
 m_strName=sw-check-rordforn
 m_strRawPic=9
 m_strPic=9
@@ -10245,10 +10258,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM736_WK
+{{@DataItem_m_strDescriptionFDITEM737_WK
 
 @}}
-[FDITEM737_WK]
+[FDITEM738_WK]
 m_strName=prova-mail
 m_strRawPic=X
 m_strPic=X
@@ -10259,10 +10272,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM737_WK
+{{@DataItem_m_strDescriptionFDITEM738_WK
 
 @}}
-[FDITEM738_WK]
+[FDITEM739_WK]
 m_strName=MailInProva
 m_nItemLevel=88
 m_nSync=-1
@@ -10273,10 +10286,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM738_WK
+{{@DataItem_m_strDescriptionFDITEM739_WK
 
 @}}
-[FDITEM739_WK]
+[FDITEM740_WK]
 m_strName=FILLER
 m_strRawPic=9
 m_strPic=9
@@ -10287,10 +10300,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM739_WK
+{{@DataItem_m_strDescriptionFDITEM740_WK
 
 @}}
-[FDITEM740_WK]
+[FDITEM741_WK]
 m_strName=SystemErrorOccurred
 m_nItemLevel=88
 m_nSync=-1
@@ -10301,27 +10314,13 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM740_WK
-
-@}}
-[FDITEM741_WK]
-m_strName=DeletedRows
-m_strRawPic=9(3)
-m_strPic=9(3)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
-m_strCopyFile=GORDFORNVAR-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM741_WK
 
 @}}
 [FDITEM742_WK]
-m_strName=righe-iniziali
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=DeletedRows
+m_strRawPic=9(3)
+m_strPic=9(3)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -10333,9 +10332,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM743_WK]
-m_strName=wk-date
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=righe-iniziali
+m_strRawPic=9(5)
+m_strPic=9(5)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -10347,7 +10346,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM744_WK]
-m_strName=wk-hour
+m_strName=wk-date
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=77
@@ -10361,9 +10360,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM745_WK]
-m_strName=wk-path
-m_strRawPic=x(256)
-m_strPic=X(256)
+m_strName=wk-hour
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -10375,8 +10374,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM746_WK]
-m_strName=copy-status
-m_nUsage=17
+m_strName=wk-path
+m_strRawPic=x(256)
+m_strPic=X(256)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -10388,9 +10388,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM747_WK]
-m_strName=save-tot-righe
-m_strRawPic=9(6)
-m_strPic=9(6)
+m_strName=copy-status
+m_nUsage=17
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -10402,7 +10401,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM748_WK]
-m_strName=progressivo
+m_strName=save-tot-righe
 m_strRawPic=9(6)
 m_strPic=9(6)
 m_nItemLevel=77
@@ -10416,9 +10415,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM749_WK]
-m_strName=righe-finali
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=progressivo
+m_strRawPic=9(6)
+m_strPic=9(6)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -10430,7 +10429,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM750_WK]
-m_strName=write-effettuate
+m_strName=righe-finali
 m_strRawPic=9(5)
 m_strPic=9(5)
 m_nItemLevel=77
@@ -10444,9 +10443,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM751_WK]
-m_strName=righe-iniziali-x
-m_strRawPic=zz.zz9
-m_strPic=ZZ.ZZ9
+m_strName=write-effettuate
+m_strRawPic=9(5)
+m_strPic=9(5)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -10458,7 +10457,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM752_WK]
-m_strName=righe-finali-x
+m_strName=righe-iniziali-x
 m_strRawPic=zz.zz9
 m_strPic=ZZ.ZZ9
 m_nItemLevel=77
@@ -10472,8 +10471,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM753_WK]
-m_strName=Screen1-Handle
-m_nUsage=24
+m_strName=righe-finali-x
+m_strRawPic=zz.zz9
+m_strPic=ZZ.ZZ9
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -10485,9 +10485,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM754_WK]
-m_strName=orig-data-bolla
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=Screen1-Handle
+m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -10499,7 +10498,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM755_WK]
-m_strName=orig-num-bolla
+m_strName=orig-data-bolla
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=77
@@ -10513,8 +10512,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM756_WK]
-m_strName=status-type
-m_nUsage=17
+m_strName=orig-num-bolla
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -10526,8 +10526,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM757_WK]
-m_strName=Default-Font
-m_nUsage=38
+m_strName=status-type
+m_nUsage=17
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -10539,8 +10539,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM758_WK]
-m_strName=Small-Font
-m_nUsage=37
+m_strName=Default-Font
+m_nUsage=38
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -10552,9 +10552,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM759_WK]
-m_strName=lotto-x
-m_strRawPic=x(8)
-m_strPic=X(8)
+m_strName=Small-Font
+m_nUsage=37
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -10566,9 +10565,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM760_WK]
-m_strName=save-stato
-m_strRawPic=x
-m_strPic=X
+m_strName=lotto-x
+m_strRawPic=x(8)
+m_strPic=X(8)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -10580,9 +10579,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM761_WK]
-m_strName=tipo-messaggio
-m_strRawPic=9(3)
-m_strPic=9(3)
+m_strName=save-stato
+m_strRawPic=x
+m_strPic=X
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -10594,9 +10593,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM762_WK]
-m_strName=old-hid-blister
-m_strRawPic=9
-m_strPic=9
+m_strName=tipo-messaggio
+m_strRawPic=9(3)
+m_strPic=9(3)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -10608,8 +10607,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM763_WK]
-m_strName=file-info
-m_nItemLevel=1
+m_strName=old-hid-blister
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -10620,11 +10621,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM764_WK]
-m_strName=file-size
-m_strRawPic=X(8)
-m_strPic=X(8)
-m_nUsage=8
-m_nItemLevel=5
+m_strName=file-info
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -10635,9 +10633,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM765_WK]
-m_strName=file-date
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=file-size
+m_strRawPic=X(8)
+m_strPic=X(8)
 m_nUsage=8
 m_nItemLevel=5
 m_nSync=-1
@@ -10650,7 +10648,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM766_WK]
-m_strName=file-time
+m_strName=file-date
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nUsage=8
@@ -10665,10 +10663,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM767_WK]
-m_strName=FILLER
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=1
+m_strName=file-time
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nUsage=8
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -10679,6 +10678,20 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM768_WK]
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
+m_strCopyFile=GORDFORNVAR-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM768_WK
+
+@}}
+[FDITEM769_WK]
 m_strName=TastiGiaAbilitati
 m_nItemLevel=88
 m_nSync=-1
@@ -10689,10 +10702,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM768_WK
+{{@DataItem_m_strDescriptionFDITEM769_WK
 
 @}}
-[FDITEM769_WK]
+[FDITEM770_WK]
 m_strName=TITOLO
 m_strDefaultValue="Geslux - Variazione Ordini Fornitori"
 m_nItemLevel=78
@@ -10703,25 +10716,11 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM769_WK
-
-@}}
-[FDITEM770_WK]
-m_strName=lab-bolla-pren-buf
-m_strRawPic=x(50)
-m_strPic=X(50)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
-m_strCopyFile=GORDFORNVAR-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM770_WK
 
 @}}
 [FDITEM771_WK]
-m_strName=lab-fatt-pren-buf
+m_strName=lab-bolla-pren-buf
 m_strRawPic=x(50)
 m_strPic=X(50)
 m_nItemLevel=77
@@ -10735,7 +10734,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM772_WK]
-m_strName=lab-invio-buf
+m_strName=lab-fatt-pren-buf
 m_strRawPic=x(50)
 m_strPic=X(50)
 m_nItemLevel=77
@@ -10749,9 +10748,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM773_WK]
-m_strName=numero-edit
-m_strRawPic=z(8)
-m_strPic=Z(8)
+m_strName=lab-invio-buf
+m_strRawPic=x(50)
+m_strPic=X(50)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -10763,10 +10762,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM774_WK]
-m_strName=FlagPrezzoCambiato
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=1
+m_strName=numero-edit
+m_strRawPic=z(8)
+m_strPic=Z(8)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -10777,6 +10776,20 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM775_WK]
+m_strName=FlagPrezzoCambiato
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
+m_strCopyFile=GORDFORNVAR-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM775_WK
+
+@}}
+[FDITEM776_WK]
 m_strName=PrezzoCambiato
 m_nItemLevel=88
 m_nSync=-1
@@ -10787,10 +10800,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM775_WK
+{{@DataItem_m_strDescriptionFDITEM776_WK
 
 @}}
-[FDITEM776_WK]
+[FDITEM777_WK]
 m_strName=FlagRigaCambiata
 m_strRawPic=9
 m_strPic=9
@@ -10801,10 +10814,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM776_WK
+{{@DataItem_m_strDescriptionFDITEM777_WK
 
 @}}
-[FDITEM777_WK]
+[FDITEM778_WK]
 m_strName=RigaCambiata
 m_nItemLevel=88
 m_nSync=-1
@@ -10815,10 +10828,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM777_WK
+{{@DataItem_m_strDescriptionFDITEM778_WK
 
 @}}
-[FDITEM778_WK]
+[FDITEM779_WK]
 m_strName=FlagSollecitiCambiati
 m_strRawPic=9
 m_strPic=9
@@ -10829,10 +10842,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM778_WK
+{{@DataItem_m_strDescriptionFDITEM779_WK
 
 @}}
-[FDITEM779_WK]
+[FDITEM780_WK]
 m_strName=SollecitiCambiati
 m_nItemLevel=88
 m_nSync=-1
@@ -10843,10 +10856,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM779_WK
+{{@DataItem_m_strDescriptionFDITEM780_WK
 
 @}}
-[FDITEM780_WK]
+[FDITEM781_WK]
 m_strName=FlagSollecitiCambiatiT
 m_strRawPic=9
 m_strPic=9
@@ -10857,10 +10870,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM780_WK
+{{@DataItem_m_strDescriptionFDITEM781_WK
 
 @}}
-[FDITEM781_WK]
+[FDITEM782_WK]
 m_strName=SollecitiCambiatiT
 m_nItemLevel=88
 m_nSync=-1
@@ -10871,10 +10884,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM781_WK
+{{@DataItem_m_strDescriptionFDITEM782_WK
 
 @}}
-[FDITEM782_WK]
+[FDITEM783_WK]
 m_strName=FILLER
 m_strRawPic=9
 m_strPic=9
@@ -10885,10 +10898,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM782_WK
+{{@DataItem_m_strDescriptionFDITEM783_WK
 
 @}}
-[FDITEM783_WK]
+[FDITEM784_WK]
 m_strName=YesDeleted
 m_nItemLevel=88
 m_nSync=-1
@@ -10899,10 +10912,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM783_WK
+{{@DataItem_m_strDescriptionFDITEM784_WK
 
 @}}
-[FDITEM784_WK]
+[FDITEM785_WK]
 m_strName=AUTO-ID
 m_strRawPic=9(6)
 m_strPic=9(6)
@@ -10915,10 +10928,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM784_WK
+{{@DataItem_m_strDescriptionFDITEM785_WK
 
 @}}
-[FDITEM785_WK]
+[FDITEM786_WK]
 m_strName=tab-iva
 m_nItemLevel=1
 m_nSync=-1
@@ -10927,30 +10940,13 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM785_WK
-
-@}}
-[FDITEM786_WK]
-m_strName=el-imponib
-m_strRawPic=9(6)v99
-m_strPic=9(6)V99
-m_nItemLevel=5
-m_nSync=-1
-m_bOccurs=1
-m_bFixed=1
-m_strRawSize=3
-m_nSize=3
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
-m_strCopyFile=GORDFORNVAR-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM786_WK
 
 @}}
 [FDITEM787_WK]
-m_strName=el-perce-iva
-m_strRawPic=9(3)v99
-m_strPic=9(3)V99
+m_strName=el-imponib
+m_strRawPic=9(6)v99
+m_strPic=9(6)V99
 m_nItemLevel=5
 m_nSync=-1
 m_bOccurs=1
@@ -10965,6 +10961,23 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM788_WK]
+m_strName=el-perce-iva
+m_strRawPic=9(3)v99
+m_strPic=9(3)V99
+m_nItemLevel=5
+m_nSync=-1
+m_bOccurs=1
+m_bFixed=1
+m_strRawSize=3
+m_nSize=3
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
+m_strCopyFile=GORDFORNVAR-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM788_WK
+
+@}}
+[FDITEM789_WK]
 m_strName=NumBitmapDatiBolla
 m_strRawPic=9
 m_strPic=9
@@ -10977,25 +10990,11 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM788_WK
-
-@}}
-[FDITEM789_WK]
-m_strName=tof-data-bolla-dummy
-m_strRawPic=X(30)
-m_strPic=X(30)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
-m_strCopyFile=GORDFORNVAR-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM789_WK
 
 @}}
 [FDITEM790_WK]
-m_strName=tof-num-bolla-dummy
+m_strName=tof-data-bolla-dummy
 m_strRawPic=X(30)
 m_strPic=X(30)
 m_nItemLevel=77
@@ -11009,12 +11008,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM791_WK]
-m_strName=v-nota
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=tof-num-bolla-dummy
+m_strRawPic=X(30)
+m_strPic=X(30)
 m_nItemLevel=77
-m_bValue=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -11025,10 +11022,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM792_WK]
-m_strName=notacr-bmp
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
+m_strName=v-nota
+m_strRawPic=9
+m_strPic=9
 m_strDefaultValue=0
 m_nItemLevel=77
 m_bValue=1
@@ -11042,10 +11038,13 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM793_WK]
-m_strName=lab-lotto-buf
-m_strRawPic=x(50)
-m_strPic=X(50)
+m_strName=notacr-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
 m_nItemLevel=77
+m_bValue=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -11056,6 +11055,20 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM794_WK]
+m_strName=lab-lotto-buf
+m_strRawPic=x(50)
+m_strPic=X(50)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
+m_strCopyFile=GORDFORNVAR-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM794_WK
+
+@}}
+[FDITEM795_WK]
 m_strName=stdoc-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -11069,27 +11082,11 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM794_WK
-
-@}}
-[FDITEM795_WK]
-m_strName=v-stbolla
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
-m_nItemLevel=77
-m_bValue=1
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
-m_strCopyFile=GORDFORNVAR-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM795_WK
 
 @}}
 [FDITEM796_WK]
-m_strName=v-stfatt
+m_strName=v-stbolla
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -11105,10 +11102,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM797_WK]
-m_strName=e-stfatt
+m_strName=v-stfatt
 m_strRawPic=9
 m_strPic=9
-m_strDefaultValue=1
+m_strDefaultValue=0
 m_nItemLevel=77
 m_bValue=1
 m_nSync=-1
@@ -11121,7 +11118,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM798_WK]
-m_strName=e-stbolla
+m_strName=e-stfatt
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=1
@@ -11137,6 +11134,22 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM799_WK]
+m_strName=e-stbolla
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_bValue=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
+m_strCopyFile=GORDFORNVAR-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM799_WK
+
+@}}
+[FDITEM800_WK]
 m_strName=strip-menu-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -11150,10 +11163,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM799_WK
+{{@DataItem_m_strDescriptionFDITEM800_WK
 
 @}}
-[FDITEM800_WK]
+[FDITEM801_WK]
 m_strName=e-stbozza
 m_strRawPic=9
 m_strPic=9
@@ -11166,10 +11179,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM800_WK
+{{@DataItem_m_strDescriptionFDITEM801_WK
 
 @}}
-[FDITEM801_WK]
+[FDITEM802_WK]
 m_strName=v-stbozza
 m_strRawPic=9
 m_strPic=9
@@ -11182,27 +11195,13 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM801_WK
-
-@}}
-[FDITEM802_WK]
-m_strName=PgmChiamante
-m_strRawPic=x(20)
-m_strPic=X(20)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
-m_strCopyFile=GORDFORNVAR-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM802_WK
 
 @}}
 [FDITEM803_WK]
-m_strName=wstampa
-m_strRawPic=X(256)
-m_strPic=X(256)
+m_strName=PgmChiamante
+m_strRawPic=x(20)
+m_strPic=X(20)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -11214,9 +11213,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM804_WK]
-m_strName=STATUS-lineseq
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=wstampa
+m_strRawPic=X(256)
+m_strPic=X(256)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -11228,6 +11227,20 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM805_WK]
+m_strName=STATUS-lineseq
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
+m_strCopyFile=GORDFORNVAR-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM805_WK
+
+@}}
+[FDITEM806_WK]
 m_strName=Valid-STATUS-lineseq
 m_nItemLevel=88
 m_nSync=-1
@@ -11237,10 +11250,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM805_WK
+{{@DataItem_m_strDescriptionFDITEM806_WK
 
 @}}
-[FDITEM806_WK]
+[FDITEM807_WK]
 m_strName=STATUS-tscorte
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -11251,10 +11264,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM806_WK
+{{@DataItem_m_strDescriptionFDITEM807_WK
 
 @}}
-[FDITEM807_WK]
+[FDITEM808_WK]
 m_strName=Valid-STATUS-tscorte
 m_nItemLevel=88
 m_nSync=-1
@@ -11264,10 +11277,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM807_WK
+{{@DataItem_m_strDescriptionFDITEM808_WK
 
 @}}
-[FDITEM808_WK]
+[FDITEM809_WK]
 m_strName=STATUS-brordforn
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -11278,10 +11291,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM808_WK
+{{@DataItem_m_strDescriptionFDITEM809_WK
 
 @}}
-[FDITEM809_WK]
+[FDITEM810_WK]
 m_strName=Valid-STATUS-brordforn
 m_nItemLevel=88
 m_nSync=-1
@@ -11291,10 +11304,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM809_WK
+{{@DataItem_m_strDescriptionFDITEM810_WK
 
 @}}
-[FDITEM810_WK]
+[FDITEM811_WK]
 m_strName=STATUS-btordforn
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -11305,10 +11318,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM810_WK
+{{@DataItem_m_strDescriptionFDITEM811_WK
 
 @}}
-[FDITEM811_WK]
+[FDITEM812_WK]
 m_strName=Valid-STATUS-btordforn
 m_nItemLevel=88
 m_nSync=-1
@@ -11318,10 +11331,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM811_WK
+{{@DataItem_m_strDescriptionFDITEM812_WK
 
 @}}
-[FDITEM812_WK]
+[FDITEM813_WK]
 m_strName=STATUS-lineseq1
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -11332,10 +11345,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM812_WK
+{{@DataItem_m_strDescriptionFDITEM813_WK
 
 @}}
-[FDITEM813_WK]
+[FDITEM814_WK]
 m_strName=VALID-STATUS-lineseq1
 m_nItemLevel=88
 m_nSync=-1
@@ -11345,10 +11358,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM813_WK
+{{@DataItem_m_strDescriptionFDITEM814_WK
 
 @}}
-[FDITEM814_WK]
+[FDITEM815_WK]
 m_strName=path-check-rordforn
 m_strRawPic=X(256)
 m_strPic=X(256)
@@ -11361,10 +11374,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM814_WK
+{{@DataItem_m_strDescriptionFDITEM815_WK
 
 @}}
-[FDITEM815_WK]
+[FDITEM816_WK]
 m_strName=STATUS-check-rordforn
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -11375,10 +11388,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM815_WK
+{{@DataItem_m_strDescriptionFDITEM816_WK
 
 @}}
-[FDITEM816_WK]
+[FDITEM817_WK]
 m_strName=Valid-STATUS-check-rordforn
 m_nItemLevel=88
 m_nSync=-1
@@ -11388,10 +11401,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM816_WK
+{{@DataItem_m_strDescriptionFDITEM817_WK
 
 @}}
-[FDITEM817_WK]
+[FDITEM818_WK]
 m_strName=STATUS-log-file
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -11402,10 +11415,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM817_WK
+{{@DataItem_m_strDescriptionFDITEM818_WK
 
 @}}
-[FDITEM818_WK]
+[FDITEM819_WK]
 m_strName=Valid-STATUS-log-file
 m_nItemLevel=88
 m_nSync=-1
@@ -11415,10 +11428,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM818_WK
+{{@DataItem_m_strDescriptionFDITEM819_WK
 
 @}}
-[FDITEM819_WK]
+[FDITEM820_WK]
 m_strName=STATUS-logfile
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -11429,10 +11442,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM819_WK
+{{@DataItem_m_strDescriptionFDITEM820_WK
 
 @}}
-[FDITEM820_WK]
+[FDITEM821_WK]
 m_strName=Valid-STATUS-logfile
 m_nItemLevel=88
 m_nSync=-1
@@ -11442,10 +11455,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM820_WK
+{{@DataItem_m_strDescriptionFDITEM821_WK
 
 @}}
-[FDITEM821_WK]
+[FDITEM822_WK]
 m_strName=STATUS-tpiombo
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -11456,10 +11469,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM821_WK
+{{@DataItem_m_strDescriptionFDITEM822_WK
 
 @}}
-[FDITEM822_WK]
+[FDITEM823_WK]
 m_strName=Valid-STATUS-tpiombo
 m_nItemLevel=88
 m_nSync=-1
@@ -11469,29 +11482,13 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM822_WK
-
-@}}
-[FDITEM823_WK]
-m_strName=Verdana12B-Occidentale
-m_nUsage=26
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
-m_strCopyFile=GORDFORNVAR-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM823_WK
 
 @}}
 [FDITEM824_WK]
-m_strName=v-fatt
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=Verdana12B-Occidentale
+m_nUsage=26
 m_nItemLevel=77
-m_bValue=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -11502,10 +11499,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM825_WK]
-m_strName=modifica-bolla-bmp
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
+m_strName=v-fatt
+m_strRawPic=9
+m_strPic=9
 m_strDefaultValue=0
 m_nItemLevel=77
 m_bValue=1
@@ -11519,9 +11515,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM826_WK]
-m_strName=v-abil-bolla
-m_strRawPic=9
-m_strPic=9
+m_strName=modifica-bolla-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
 m_strDefaultValue=0
 m_nItemLevel=77
 m_bValue=1
@@ -11535,7 +11532,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM827_WK]
-m_strName=abil-bolla
+m_strName=v-abil-bolla
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -11551,10 +11548,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM828_WK]
-m_strName=STATUS-eordini
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=abil-bolla
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
 m_nItemLevel=77
+m_bValue=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -11565,6 +11564,20 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM829_WK]
+m_strName=STATUS-eordini
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
+m_strCopyFile=GORDFORNVAR-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM829_WK
+
+@}}
+[FDITEM830_WK]
 m_strName=Valid-STATUS-eordini
 m_nItemLevel=88
 m_nSync=-1
@@ -11574,10 +11587,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM829_WK
+{{@DataItem_m_strDescriptionFDITEM830_WK
 
 @}}
-[FDITEM830_WK]
+[FDITEM831_WK]
 m_strName=STATUS-tescons
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -11588,10 +11601,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM830_WK
+{{@DataItem_m_strDescriptionFDITEM831_WK
 
 @}}
-[FDITEM831_WK]
+[FDITEM832_WK]
 m_strName=Valid-STATUS-tescons
 m_nItemLevel=88
 m_nSync=-1
@@ -11601,10 +11614,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM831_WK
+{{@DataItem_m_strDescriptionFDITEM832_WK
 
 @}}
-[FDITEM832_WK]
+[FDITEM833_WK]
 m_strName=storico-ec-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -11618,10 +11631,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM832_WK
+{{@DataItem_m_strDescriptionFDITEM833_WK
 
 @}}
-[FDITEM833_WK]
+[FDITEM834_WK]
 m_strName=STATUS-lisagente
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -11632,10 +11645,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM833_WK
+{{@DataItem_m_strDescriptionFDITEM834_WK
 
 @}}
-[FDITEM834_WK]
+[FDITEM835_WK]
 m_strName=Valid-STATUS-lisagente
 m_nItemLevel=88
 m_nSync=-1
@@ -11645,10 +11658,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM834_WK
+{{@DataItem_m_strDescriptionFDITEM835_WK
 
 @}}
-[FDITEM835_WK]
+[FDITEM836_WK]
 m_strName=STATUS-reltor
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -11659,10 +11672,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM835_WK
+{{@DataItem_m_strDescriptionFDITEM836_WK
 
 @}}
-[FDITEM836_WK]
+[FDITEM837_WK]
 m_strName=Valid-STATUS-reltor
 m_nItemLevel=88
 m_nSync=-1
@@ -11672,10 +11685,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM836_WK
+{{@DataItem_m_strDescriptionFDITEM837_WK
 
 @}}
-[FDITEM837_WK]
+[FDITEM838_WK]
 m_strName=DOC-COLL-BMP
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -11689,27 +11702,13 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM837_WK
-
-@}}
-[FDITEM838_WK]
-m_strName=NumBitmapDocColl
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
-m_strCopyFile=GORDFORNVAR-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM838_WK
 
 @}}
 [FDITEM839_WK]
-m_strName=path-tmp-tordforn-zoom
-m_strRawPic=X(256)
-m_strPic=X(256)
+m_strName=NumBitmapDocColl
+m_strRawPic=9
+m_strPic=9
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -11721,9 +11720,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM840_WK]
-m_strName=STATUS-tmp-tordforn-zoom
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=path-tmp-tordforn-zoom
+m_strRawPic=X(256)
+m_strPic=X(256)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -11735,6 +11734,20 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM841_WK]
+m_strName=STATUS-tmp-tordforn-zoom
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
+m_strCopyFile=GORDFORNVAR-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM841_WK
+
+@}}
+[FDITEM842_WK]
 m_strName=Valid-STATUS-tmp-tordforn-zoom
 m_nItemLevel=88
 m_nSync=-1
@@ -11744,10 +11757,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM841_WK
+{{@DataItem_m_strDescriptionFDITEM842_WK
 
 @}}
-[FDITEM842_WK]
+[FDITEM843_WK]
 m_strName=STATUS-rordforn
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -11758,10 +11771,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM842_WK
+{{@DataItem_m_strDescriptionFDITEM843_WK
 
 @}}
-[FDITEM843_WK]
+[FDITEM844_WK]
 m_strName=Valid-STATUS-rordforn
 m_nItemLevel=88
 m_nSync=-1
@@ -11771,10 +11784,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM843_WK
+{{@DataItem_m_strDescriptionFDITEM844_WK
 
 @}}
-[FDITEM844_WK]
+[FDITEM845_WK]
 m_strName=STATUS-nordforn
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -11785,10 +11798,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM844_WK
+{{@DataItem_m_strDescriptionFDITEM845_WK
 
 @}}
-[FDITEM845_WK]
+[FDITEM846_WK]
 m_strName=Valid-STATUS-nordforn
 m_nItemLevel=88
 m_nSync=-1
@@ -11798,10 +11811,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM845_WK
+{{@DataItem_m_strDescriptionFDITEM846_WK
 
 @}}
-[FDITEM846_WK]
+[FDITEM847_WK]
 m_strName=STATUS-rlistini
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -11812,10 +11825,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM846_WK
+{{@DataItem_m_strDescriptionFDITEM847_WK
 
 @}}
-[FDITEM847_WK]
+[FDITEM848_WK]
 m_strName=Valid-STATUS-rlistini
 m_nItemLevel=88
 m_nSync=-1
@@ -11825,10 +11838,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM847_WK
+{{@DataItem_m_strDescriptionFDITEM848_WK
 
 @}}
-[FDITEM848_WK]
+[FDITEM849_WK]
 m_strName=STATUS-tlistini
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -11839,10 +11852,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM848_WK
+{{@DataItem_m_strDescriptionFDITEM849_WK
 
 @}}
-[FDITEM849_WK]
+[FDITEM850_WK]
 m_strName=Valid-STATUS-tlistini
 m_nItemLevel=88
 m_nSync=-1
@@ -11852,27 +11865,13 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM849_WK
-
-@}}
-[FDITEM850_WK]
-m_strName=path-tmp-nordforn
-m_strRawPic=X(256)
-m_strPic=X(256)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
-m_strCopyFile=GORDFORNVAR-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM850_WK
 
 @}}
 [FDITEM851_WK]
-m_strName=STATUS-tmp-nordforn
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=path-tmp-nordforn
+m_strRawPic=X(256)
+m_strPic=X(256)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -11884,6 +11883,20 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM852_WK]
+m_strName=STATUS-tmp-nordforn
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
+m_strCopyFile=GORDFORNVAR-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM852_WK
+
+@}}
+[FDITEM853_WK]
 m_strName=Valid-STATUS-tmp-nordforn
 m_nItemLevel=88
 m_nSync=-1
@@ -11893,27 +11906,13 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM852_WK
-
-@}}
-[FDITEM853_WK]
-m_strName=cont
-m_strRawPic=9(3)
-m_strPic=9(3)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
-m_strCopyFile=GORDFORNVAR-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM853_WK
 
 @}}
 [FDITEM854_WK]
-m_strName=como-stato
-m_strRawPic=X(50)
-m_strPic=X(50)
+m_strName=cont
+m_strRawPic=9(3)
+m_strPic=9(3)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -11925,9 +11924,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM855_WK]
-m_strName=como-inserimento
-m_strRawPic=X(30)
-m_strPic=X(30)
+m_strName=como-stato
+m_strRawPic=X(50)
+m_strPic=X(50)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -11939,7 +11938,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM856_WK]
-m_strName=como-tipo-inv
+m_strName=como-inserimento
 m_strRawPic=X(30)
 m_strPic=X(30)
 m_nItemLevel=77
@@ -11953,7 +11952,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM857_WK]
-m_strName=como-tipo-chiusura
+m_strName=como-tipo-inv
 m_strRawPic=X(30)
 m_strPic=X(30)
 m_nItemLevel=77
@@ -11967,8 +11966,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM858_WK]
-m_strName=rec-grid
-m_nItemLevel=1
+m_strName=como-tipo-chiusura
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -11979,10 +11980,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM859_WK]
-m_strName=col-num
-m_strRawPic=Z(5)
-m_strPic=Z(5)
-m_nItemLevel=5
+m_strName=rec-grid
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -11993,9 +11992,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM860_WK]
-m_strName=col-art
-m_strRawPic=zzzzz9
-m_strPic=ZZZZZ9
+m_strName=col-num
+m_strRawPic=Z(5)
+m_strPic=Z(5)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -12007,9 +12006,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM861_WK]
-m_strName=col-des
-m_strRawPic=x(50)
-m_strPic=X(50)
+m_strName=col-art
+m_strRawPic=zzzzz9
+m_strPic=ZZZZZ9
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -12021,9 +12020,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM862_WK]
-m_strName=col-qta
-m_strRawPic=z(7)9
-m_strPic=Z(7)9
+m_strName=col-des
+m_strRawPic=x(50)
+m_strPic=X(50)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -12035,7 +12034,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM863_WK]
-m_strName=col-qta-arr
+m_strName=col-qta
 m_strRawPic=z(7)9
 m_strPic=Z(7)9
 m_nItemLevel=5
@@ -12049,9 +12048,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM864_WK]
-m_strName=col-uni
-m_strRawPic=zzz.zz9,9999
-m_strPic=ZZZ.ZZ9,9999
+m_strName=col-qta-arr
+m_strRawPic=z(7)9
+m_strPic=Z(7)9
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -12063,9 +12062,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM865_WK]
-m_strName=col-sconto-1
-m_strRawPic=z9,99
-m_strPic=Z9,99
+m_strName=col-uni
+m_strRawPic=zzz.zz9,9999
+m_strPic=ZZZ.ZZ9,9999
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -12077,7 +12076,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM866_WK]
-m_strName=col-sconto-2
+m_strName=col-sconto-1
 m_strRawPic=z9,99
 m_strPic=Z9,99
 m_nItemLevel=5
@@ -12091,7 +12090,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM867_WK]
-m_strName=col-sconto-3
+m_strName=col-sconto-2
 m_strRawPic=z9,99
 m_strPic=Z9,99
 m_nItemLevel=5
@@ -12105,7 +12104,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM868_WK]
-m_strName=col-sconto-4
+m_strName=col-sconto-3
 m_strRawPic=z9,99
 m_strPic=Z9,99
 m_nItemLevel=5
@@ -12119,7 +12118,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM869_WK]
-m_strName=col-sconto-5
+m_strName=col-sconto-4
 m_strRawPic=z9,99
 m_strPic=Z9,99
 m_nItemLevel=5
@@ -12133,9 +12132,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM870_WK]
-m_strName=col-imp
-m_strRawPic=zzz.zz9,9999
-m_strPic=ZZZ.ZZ9,9999
+m_strName=col-sconto-5
+m_strRawPic=z9,99
+m_strPic=Z9,99
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -12147,7 +12146,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM871_WK]
-m_strName=col-consumo
+m_strName=col-imp
 m_strRawPic=zzz.zz9,9999
 m_strPic=ZZZ.ZZ9,9999
 m_nItemLevel=5
@@ -12161,9 +12160,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM872_WK]
-m_strName=col-cou
-m_strRawPic=z.zz9,9999
-m_strPic=Z.ZZ9,9999
+m_strName=col-consumo
+m_strRawPic=zzz.zz9,9999
+m_strPic=ZZZ.ZZ9,9999
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -12175,8 +12174,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM873_WK]
-m_strName=col-add
-m_strRawPic=Z.ZZ9,9999
+m_strName=col-cou
+m_strRawPic=z.zz9,9999
 m_strPic=Z.ZZ9,9999
 m_nItemLevel=5
 m_nSync=-1
@@ -12189,9 +12188,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM874_WK]
-m_strName=col-costi-agg
-m_strRawPic=zzz.zz9,9999
-m_strPic=ZZZ.ZZ9,9999
+m_strName=col-add
+m_strRawPic=Z.ZZ9,9999
+m_strPic=Z.ZZ9,9999
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -12203,9 +12202,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM875_WK]
-m_strName=col-iva
-m_strRawPic=x(3)
-m_strPic=X(3)
+m_strName=col-costi-agg
+m_strRawPic=zzz.zz9,9999
+m_strPic=ZZZ.ZZ9,9999
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -12217,8 +12216,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM876_WK]
-m_strName=OLD-rec-grid
-m_nItemLevel=1
+m_strName=col-iva
+m_strRawPic=x(3)
+m_strPic=X(3)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -12229,10 +12230,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM877_WK]
-m_strName=OLD-col-num
-m_strRawPic=Z(5)
-m_strPic=Z(5)
-m_nItemLevel=5
+m_strName=OLD-rec-grid
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -12243,9 +12242,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM878_WK]
-m_strName=OLD-col-art
-m_strRawPic=zzzzz9
-m_strPic=ZZZZZ9
+m_strName=OLD-col-num
+m_strRawPic=Z(5)
+m_strPic=Z(5)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -12257,9 +12256,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM879_WK]
-m_strName=OLD-col-des
-m_strRawPic=x(50)
-m_strPic=X(50)
+m_strName=OLD-col-art
+m_strRawPic=zzzzz9
+m_strPic=ZZZZZ9
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -12271,9 +12270,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM880_WK]
-m_strName=OLD-col-qta
-m_strRawPic=z(7)9
-m_strPic=Z(7)9
+m_strName=OLD-col-des
+m_strRawPic=x(50)
+m_strPic=X(50)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -12285,7 +12284,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM881_WK]
-m_strName=OLD-col-qta-arr
+m_strName=OLD-col-qta
 m_strRawPic=z(7)9
 m_strPic=Z(7)9
 m_nItemLevel=5
@@ -12299,9 +12298,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM882_WK]
-m_strName=OLD-col-uni
-m_strRawPic=zzz.zz9,9999
-m_strPic=ZZZ.ZZ9,9999
+m_strName=OLD-col-qta-arr
+m_strRawPic=z(7)9
+m_strPic=Z(7)9
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -12313,9 +12312,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM883_WK]
-m_strName=OLD-col-sconto-1
-m_strRawPic=z9,99
-m_strPic=Z9,99
+m_strName=OLD-col-uni
+m_strRawPic=zzz.zz9,9999
+m_strPic=ZZZ.ZZ9,9999
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -12327,7 +12326,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM884_WK]
-m_strName=OLD-col-sconto-2
+m_strName=OLD-col-sconto-1
 m_strRawPic=z9,99
 m_strPic=Z9,99
 m_nItemLevel=5
@@ -12341,7 +12340,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM885_WK]
-m_strName=OLD-col-sconto-3
+m_strName=OLD-col-sconto-2
 m_strRawPic=z9,99
 m_strPic=Z9,99
 m_nItemLevel=5
@@ -12355,7 +12354,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM886_WK]
-m_strName=OLD-col-sconto-4
+m_strName=OLD-col-sconto-3
 m_strRawPic=z9,99
 m_strPic=Z9,99
 m_nItemLevel=5
@@ -12369,7 +12368,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM887_WK]
-m_strName=OLD-col-sconto-5
+m_strName=OLD-col-sconto-4
 m_strRawPic=z9,99
 m_strPic=Z9,99
 m_nItemLevel=5
@@ -12383,9 +12382,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM888_WK]
-m_strName=OLD-col-imp
-m_strRawPic=zzz.zz9,9999
-m_strPic=ZZZ.ZZ9,9999
+m_strName=OLD-col-sconto-5
+m_strRawPic=z9,99
+m_strPic=Z9,99
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -12397,9 +12396,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM889_WK]
-m_strName=OLD-col-consumo
-m_strRawPic=z.zz9,9999
-m_strPic=Z.ZZ9,9999
+m_strName=OLD-col-imp
+m_strRawPic=zzz.zz9,9999
+m_strPic=ZZZ.ZZ9,9999
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -12411,7 +12410,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM890_WK]
-m_strName=OLD-col-cou
+m_strName=OLD-col-consumo
 m_strRawPic=z.zz9,9999
 m_strPic=Z.ZZ9,9999
 m_nItemLevel=5
@@ -12425,8 +12424,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM891_WK]
-m_strName=OLD-col-add
-m_strRawPic=Z.ZZ9,9999
+m_strName=OLD-col-cou
+m_strRawPic=z.zz9,9999
 m_strPic=Z.ZZ9,9999
 m_nItemLevel=5
 m_nSync=-1
@@ -12439,8 +12438,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM892_WK]
-m_strName=OLD-col-costi-agg
-m_strRawPic=z.zz9,9999
+m_strName=OLD-col-add
+m_strRawPic=Z.ZZ9,9999
 m_strPic=Z.ZZ9,9999
 m_nItemLevel=5
 m_nSync=-1
@@ -12453,9 +12452,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM893_WK]
-m_strName=OLD-col-iva
-m_strRawPic=x(3)
-m_strPic=X(3)
+m_strName=OLD-col-costi-agg
+m_strRawPic=z.zz9,9999
+m_strPic=Z.ZZ9,9999
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -12467,10 +12466,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM894_WK]
-m_strName=78-NUMCOL
-m_strDefaultValue=17
-m_nItemLevel=78
-m_bValue=1
+m_strName=OLD-col-iva
+m_strRawPic=x(3)
+m_strPic=X(3)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -12481,6 +12480,20 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM895_WK]
+m_strName=78-NUMCOL
+m_strDefaultValue=17
+m_nItemLevel=78
+m_bValue=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
+m_strCopyFile=GORDFORNVAR-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM895_WK
+
+@}}
+[FDITEM896_WK]
 m_strName=mod-campi-righe
 m_strRawPic=9
 m_strPic=9
@@ -12493,30 +12506,13 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM895_WK
-
-@}}
-[FDITEM896_WK]
-m_strName=form2-Handle
-m_nUsage=24
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
-m_strCopyFile=GORDFORNVAR-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM896_WK
 
 @}}
 [FDITEM897_WK]
-m_strName=BOTTONE-OK-BMP
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
-m_strDefaultValue=0
+m_strName=form2-Handle
+m_nUsage=24
 m_nItemLevel=77
-m_bValue=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -12527,7 +12523,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM898_WK]
-m_strName=BOTTONE-CANCEL-BMP
+m_strName=BOTTONE-OK-BMP
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -12544,10 +12540,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM899_WK]
-m_strName=e-accettato
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=1
+m_strName=BOTTONE-CANCEL-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
 m_nItemLevel=77
 m_bValue=1
 m_nSync=-1
@@ -12560,7 +12557,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM900_WK]
-m_strName=e-aperto
+m_strName=e-accettato
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=1
@@ -12576,7 +12573,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM901_WK]
-m_strName=e-chiuso
+m_strName=e-aperto
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=1
@@ -12592,7 +12589,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM902_WK]
-m_strName=e-inserito
+m_strName=e-chiuso
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=1
@@ -12608,6 +12605,22 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM903_WK]
+m_strName=e-inserito
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_bValue=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
+m_strCopyFile=GORDFORNVAR-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM903_WK
+
+@}}
+[FDITEM904_WK]
 m_strName=nuovo-stato
 m_strRawPic=S9(1)
 m_strPic=S9(1)
@@ -12620,10 +12633,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM903_WK
+{{@DataItem_m_strDescriptionFDITEM904_WK
 
 @}}
-[FDITEM904_WK]
+[FDITEM905_WK]
 m_strName=n-inserito
 m_nItemLevel=88
 m_nSync=-1
@@ -12633,10 +12646,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM904_WK
+{{@DataItem_m_strDescriptionFDITEM905_WK
 
 @}}
-[FDITEM905_WK]
+[FDITEM906_WK]
 m_strName=n-accettato
 m_nItemLevel=88
 m_nSync=-1
@@ -12646,10 +12659,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM905_WK
+{{@DataItem_m_strDescriptionFDITEM906_WK
 
 @}}
-[FDITEM906_WK]
+[FDITEM907_WK]
 m_strName=n-aperto
 m_nItemLevel=88
 m_nSync=-1
@@ -12659,10 +12672,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM906_WK
+{{@DataItem_m_strDescriptionFDITEM907_WK
 
 @}}
-[FDITEM907_WK]
+[FDITEM908_WK]
 m_strName=n-chiuso
 m_nItemLevel=88
 m_nSync=-1
@@ -12672,26 +12685,12 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM907_WK
-
-@}}
-[FDITEM908_WK]
-m_strName=Large-Font
-m_nUsage=35
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
-m_strCopyFile=GORDFORNVAR-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM908_WK
 
 @}}
 [FDITEM909_WK]
-m_strName=STATUS-sordforn
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=Large-Font
+m_nUsage=35
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -12703,6 +12702,20 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM910_WK]
+m_strName=STATUS-sordforn
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
+m_strCopyFile=GORDFORNVAR-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM910_WK
+
+@}}
+[FDITEM911_WK]
 m_strName=Valid-STATUS-sordforn
 m_nItemLevel=88
 m_nSync=-1
@@ -12712,27 +12725,13 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_strCopyFile=GORDFORNVAR-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM910_WK
-
-@}}
-[FDITEM911_WK]
-m_strName=t-sof-note
-m_strRawPic=x(500)
-m_strPic=X(500)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
-m_strCopyFile=GORDFORNVAR-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM911_WK
 
 @}}
 [FDITEM912_WK]
-m_strName=t-sof-data-arr
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=t-sof-note
+m_strRawPic=x(500)
+m_strPic=X(500)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -12744,7 +12743,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM913_WK]
-m_strName=t-sof-qta
+m_strName=t-sof-data-arr
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=77
@@ -12758,8 +12757,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM914_WK]
-m_strName=hid-sof-rec
-m_nItemLevel=1
+m_strName=t-sof-qta
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -12770,8 +12771,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM915_WK]
-m_strName=hid-sof-rec-1
-m_nItemLevel=2
+m_strName=hid-sof-rec
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -12782,8 +12783,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM916_WK]
-m_strName=hid-sof-chiave
-m_nItemLevel=5
+m_strName=hid-sof-rec-1
+m_nItemLevel=2
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -12794,8 +12795,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM917_WK]
-m_strName=hid-sof-chiave-testa
-m_nItemLevel=10
+m_strName=hid-sof-chiave
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -12806,10 +12807,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM918_WK]
-m_strName=hid-sof-anno
-m_strRawPic=9(4)
-m_strPic=9(4)
-m_nItemLevel=15
+m_strName=hid-sof-chiave-testa
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -12820,9 +12819,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM919_WK]
-m_strName=hid-sof-numero
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=hid-sof-anno
+m_strRawPic=9(4)
+m_strPic=9(4)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -12834,10 +12833,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM920_WK]
-m_strName=hid-sof-prog
-m_strRawPic=9(5)
-m_strPic=9(5)
-m_nItemLevel=10
+m_strName=hid-sof-numero
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -12848,8 +12847,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM921_WK]
-m_strName=hid-sof-rec-2a
-m_nItemLevel=2
+m_strName=hid-sof-prog
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -12860,8 +12861,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM922_WK]
-m_strName=hid-sof-dati
-m_nItemLevel=5
+m_strName=hid-sof-rec-2a
+m_nItemLevel=2
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -12872,8 +12873,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM923_WK]
-m_strName=hid-sof-note
-m_nItemLevel=10
+m_strName=hid-sof-dati
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -12884,8 +12885,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM924_WK]
-m_strName=hid-sof-rec-2
-m_nItemLevel=15
+m_strName=hid-sof-note
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -12896,10 +12897,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM925_WK]
-m_strName=hid-sof-note-1
-m_strRawPic=x(255)
-m_strPic=X(255)
-m_nItemLevel=20
+m_strName=hid-sof-rec-2
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -12910,8 +12909,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM926_WK]
-m_strName=hid-sof-rec-3
-m_nItemLevel=15
+m_strName=hid-sof-note-1
+m_strRawPic=x(255)
+m_strPic=X(255)
+m_nItemLevel=20
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -12922,10 +12923,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM927_WK]
-m_strName=hid-sof-note-2
-m_strRawPic=x(255)
-m_strPic=X(255)
-m_nItemLevel=20
+m_strName=hid-sof-rec-3
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -12936,8 +12935,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM928_WK]
-m_strName=hid-sof-rec-4
-m_nItemLevel=5
+m_strName=hid-sof-note-2
+m_strRawPic=x(255)
+m_strPic=X(255)
+m_nItemLevel=20
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -12948,10 +12949,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM929_WK]
-m_strName=hid-sof-data-arr
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=10
+m_strName=hid-sof-rec-4
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -12962,7 +12961,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM930_WK]
-m_strName=hid-sof-qta
+m_strName=hid-sof-data-arr
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=10
@@ -12976,7 +12975,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM931_WK]
-m_strName=hid-sof-dati-comuni
+m_strName=hid-sof-qta
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -12988,10 +12989,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM932_WK]
-m_strName=hid-sof-data-creazione
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=15
+m_strName=hid-sof-dati-comuni
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -13002,7 +13001,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM933_WK]
-m_strName=hid-sof-ora-creazione
+m_strName=hid-sof-data-creazione
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=15
@@ -13016,9 +13015,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM934_WK]
-m_strName=hid-sof-utente-creazione
-m_strRawPic=X(10)
-m_strPic=X(10)
+m_strName=hid-sof-ora-creazione
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -13030,9 +13029,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM935_WK]
-m_strName=hid-sof-data-ultima-modifica
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=hid-sof-utente-creazione
+m_strRawPic=X(10)
+m_strPic=X(10)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -13044,7 +13043,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM936_WK]
-m_strName=hid-sof-ora-ultima-modifica
+m_strName=hid-sof-data-ultima-modifica
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=15
@@ -13058,9 +13057,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM937_WK]
-m_strName=hid-sof-utente-ultima-modifica
-m_strRawPic=X(10)
-m_strPic=X(10)
+m_strName=hid-sof-ora-ultima-modifica
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -13072,8 +13071,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM938_WK]
-m_strName=hid-sof-vuoti
-m_nItemLevel=10
+m_strName=hid-sof-utente-ultima-modifica
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -13084,10 +13085,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM939_WK]
-m_strName=hid-sof-num-vuoto-1
-m_strRawPic=9(18)
-m_strPic=9(18)
-m_nItemLevel=15
+m_strName=hid-sof-vuoti
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
@@ -13098,7 +13097,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM940_WK]
-m_strName=hid-sof-num-vuoto-2
+m_strName=hid-sof-num-vuoto-1
 m_strRawPic=9(18)
 m_strPic=9(18)
 m_nItemLevel=15
@@ -13112,7 +13111,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM941_WK]
-m_strName=hid-sof-num-vuoto-3
+m_strName=hid-sof-num-vuoto-2
 m_strRawPic=9(18)
 m_strPic=9(18)
 m_nItemLevel=15
@@ -13126,9 +13125,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM942_WK]
-m_strName=hid-sof-alfa-vuoto
-m_strRawPic=X(500)
-m_strPic=X(500)
+m_strName=hid-sof-num-vuoto-3
+m_strRawPic=9(18)
+m_strPic=9(18)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -13140,22 +13139,21 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM943_WK]
-m_strName=tot-pz-ord
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=77
+m_strName=hid-sof-alfa-vuoto
+m_strRawPic=X(500)
+m_strPic=X(500)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\AGGIORNA-STATO-ORDF.DEF
-m_strCopyFile=aggiorna-stato-ordf.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\AGGIORNA-STATO-ORDF.DEF
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
+m_strCopyFile=GORDFORNVAR-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GORDFORNVAR-WS.DEF
 m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM943_WK
 
-
 @}}
 [FDITEM944_WK]
-m_strName=tot-pz-arr
+m_strName=tot-pz-ord
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=77
@@ -13167,12 +13165,13 @@ m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\AGGIORNA-STATO-ORDF.DEF
 m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM944_WK
 
+
 @}}
 [FDITEM945_WK]
-m_strName=filler
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=1
+m_strName=tot-pz-arr
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\AGGIORNA-STATO-ORDF.DEF
@@ -13183,6 +13182,20 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM946_WK]
+m_strName=filler
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\AGGIORNA-STATO-ORDF.DEF
+m_strCopyFile=aggiorna-stato-ordf.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\AGGIORNA-STATO-ORDF.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM946_WK
+
+@}}
+[FDITEM947_WK]
 m_strName=evaso-tutto
 m_nItemLevel=88
 m_nSync=-1
@@ -13193,24 +13206,12 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\AGGIORNA-STATO-ORDF.DEF
 m_strCopyFile=aggiorna-stato-ordf.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\AGGIORNA-STATO-ORDF.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM946_WK
-
-@}}
-[FDITEM947_WK]
-m_strName=link-elmovc
-m_nItemLevel=1
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-ELMOVC.DEF
-m_strCopyFile=link-elmovc.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-ELMOVC.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM947_WK
 
 @}}
 [FDITEM948_WK]
-m_strName=link-tof-chiave
-m_nItemLevel=5
+m_strName=link-elmovc
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-ELMOVC.DEF
@@ -13221,10 +13222,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM949_WK]
-m_strName=link-tof-anno
-m_strRawPic=9(4)
-m_strPic=9(4)
-m_nItemLevel=10
+m_strName=link-tof-chiave
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-ELMOVC.DEF
@@ -13235,9 +13234,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM950_WK]
-m_strName=link-tof-numero
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=link-tof-anno
+m_strRawPic=9(4)
+m_strPic=9(4)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -13249,20 +13248,22 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM951_WK]
-m_strName=link-elmovcd
-m_nItemLevel=1
+m_strName=link-tof-numero
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-ELMOVCD.DEF
-m_strCopyFile=link-elmovcd.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-ELMOVCD.DEF
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-ELMOVC.DEF
+m_strCopyFile=link-elmovc.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-ELMOVC.DEF
 m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM951_WK
 
 @}}
 [FDITEM952_WK]
-m_strName=link-rof-chiave
-m_nItemLevel=5
+m_strName=link-elmovcd
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-ELMOVCD.DEF
@@ -13273,8 +13274,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM953_WK]
-m_strName=link-rof-chiave-testa
-m_nItemLevel=10
+m_strName=link-rof-chiave
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-ELMOVCD.DEF
@@ -13285,10 +13286,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM954_WK]
-m_strName=link-rof-anno
-m_strRawPic=9(4)
-m_strPic=9(4)
-m_nItemLevel=15
+m_strName=link-rof-chiave-testa
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-ELMOVCD.DEF
@@ -13299,9 +13298,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM955_WK]
-m_strName=link-rof-numero
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=link-rof-anno
+m_strRawPic=9(4)
+m_strPic=9(4)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -13313,10 +13312,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM956_WK]
-m_strName=link-rof-riga
-m_strRawPic=9(5)
-m_strPic=9(5)
-m_nItemLevel=10
+m_strName=link-rof-numero
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-ELMOVCD.DEF
@@ -13327,20 +13326,22 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM957_WK]
-m_strName=gsordforn-linkage
-m_nItemLevel=1
+m_strName=link-rof-riga
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
-m_strCopyFile=link-gsordforn.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-ELMOVCD.DEF
+m_strCopyFile=link-elmovcd.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-ELMOVCD.DEF
 m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM957_WK
 
 @}}
 [FDITEM958_WK]
-m_strName=gsordforn-sof-chiave
-m_nItemLevel=5
+m_strName=gsordforn-linkage
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
@@ -13351,8 +13352,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM959_WK]
-m_strName=gsordforn-sof-chiave-testa
-m_nItemLevel=10
+m_strName=gsordforn-sof-chiave
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
@@ -13363,10 +13364,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM960_WK]
-m_strName=gsordforn-sof-anno
-m_strRawPic=9(4)
-m_strPic=9(4)
-m_nItemLevel=15
+m_strName=gsordforn-sof-chiave-testa
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
@@ -13377,9 +13376,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM961_WK]
-m_strName=gsordforn-sof-numero
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=gsordforn-sof-anno
+m_strRawPic=9(4)
+m_strPic=9(4)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -13391,10 +13390,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM962_WK]
-m_strName=gsordforn-sof-prog
-m_strRawPic=9(5)
-m_strPic=9(5)
-m_nItemLevel=10
+m_strName=gsordforn-sof-numero
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
@@ -13405,10 +13404,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM963_WK]
-m_strName=gsordforn-sof-note
-m_strRawPic=x(500)
-m_strPic=X(500)
-m_nItemLevel=5
+m_strName=gsordforn-sof-prog
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
@@ -13419,9 +13418,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM964_WK]
-m_strName=gsordforn-sof-data-arr
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=gsordforn-sof-note
+m_strRawPic=x(500)
+m_strPic=X(500)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -13433,7 +13432,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM965_WK]
-m_strName=gsordforn-sof-qta
+m_strName=gsordforn-sof-data-arr
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=5
@@ -13447,9 +13446,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM966_WK]
-m_strName=gsordforn-articolo
-m_strRawPic=9(6)
-m_strPic=9(6)
+m_strName=gsordforn-sof-qta
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -13461,9 +13460,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM967_WK]
-m_strName=gsordforn-qta
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=gsordforn-articolo
+m_strRawPic=9(6)
+m_strPic=9(6)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -13475,7 +13474,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM968_WK]
-m_strName=gsordforn-qta-eva
+m_strName=gsordforn-qta
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=5
@@ -13489,9 +13488,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM969_WK]
-m_strName=gsordforn-mod
-m_strRawPic=9
-m_strPic=9
+m_strName=gsordforn-qta-eva
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -13503,7 +13502,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM970_WK]
-m_strName=FILLER
+m_strName=gsordforn-mod
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=5
@@ -13517,6 +13516,20 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM971_WK]
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_strCopyFile=link-gsordforn.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM971_WK
+
+@}}
+[FDITEM972_WK]
 m_strName=gsordforn-cambiati
 m_nItemLevel=88
 m_nSync=-1
@@ -13527,10 +13540,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
 m_strCopyFile=link-gsordforn.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM971_WK
+{{@DataItem_m_strDescriptionFDITEM972_WK
 
 @}}
-[FDITEM972_WK]
+[FDITEM973_WK]
 m_strName=passwd-linkage
 m_nItemLevel=1
 m_nSync=-1
@@ -13539,11 +13552,11 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-PASSWD.DEF
 m_strCopyFile=link-passwd.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-PASSWD.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM972_WK
+{{@DataItem_m_strDescriptionFDITEM973_WK
 
 
 @}}
-[FDITEM973_WK]
+[FDITEM974_WK]
 m_strName=Passwd-status
 m_strRawPic=9
 m_strPic=9
@@ -13554,10 +13567,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-PASSWD.DEF
 m_strCopyFile=link-passwd.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-PASSWD.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM973_WK
+{{@DataItem_m_strDescriptionFDITEM974_WK
 
 @}}
-[FDITEM974_WK]
+[FDITEM975_WK]
 m_strName=Passwd-StatusOk
 m_nItemLevel=88
 m_nSync=-1
@@ -13568,10 +13581,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-PASSWD.DEF
 m_strCopyFile=link-passwd.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-PASSWD.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM974_WK
+{{@DataItem_m_strDescriptionFDITEM975_WK
 
 @}}
-[FDITEM975_WK]
+[FDITEM976_WK]
 m_strName=Passwd-password
 m_strRawPic=9(4)
 m_strPic=9(4)
@@ -13582,7 +13595,7 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-PASSWD.DEF
 m_strCopyFile=link-passwd.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-PASSWD.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM975_WK
+{{@DataItem_m_strDescriptionFDITEM976_WK
 
 @}}
 
@@ -14369,7 +14382,7 @@ Begin Screen Form1
       Help ID           = 0
       ID                = 5000
       Line              = 9,38
-      Lines             = 36,31
+      Lines             = 36,54
       Lines Unit        = Default
       Multiline         = FALSE
       No Tab            = FALSE
@@ -14394,7 +14407,7 @@ Begin Screen Form1
          Visible Variable  = Form1-Pg-1-Visible
          Begin Data.Entry-Field ef-data
             SCREEN-COL        = 23,17
-            SCREEN-LINE       = 12,07
+            SCREEN-LINE       = 12,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-data
@@ -14457,7 +14470,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-data-cons
             SCREEN-COL        = 62,17
-            SCREEN-LINE       = 12,07
+            SCREEN-LINE       = 12,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-data-cons
@@ -14520,7 +14533,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-data-listino
             SCREEN-COL        = 96,17
-            SCREEN-LINE       = 12,07
+            SCREEN-LINE       = 12,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-data-listino
@@ -14583,7 +14596,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-promo
             SCREEN-COL        = 23,17
-            SCREEN-LINE       = 14,07
+            SCREEN-LINE       = 14,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-promo
@@ -14646,7 +14659,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-dati-fatt
             SCREEN-COL        = 133,34
-            SCREEN-LINE       = 14,07
+            SCREEN-LINE       = 14,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-dati-fatt
@@ -14697,7 +14710,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-franco
             SCREEN-COL        = 152,17
-            SCREEN-LINE       = 14,07
+            SCREEN-LINE       = 14,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-franco
@@ -14747,7 +14760,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-cliente
             SCREEN-COL        = 23,17
-            SCREEN-LINE       = 16,07
+            SCREEN-LINE       = 16,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-cliente
@@ -14810,7 +14823,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-des-cli
             SCREEN-COL        = 96,17
-            SCREEN-LINE       = 16,07
+            SCREEN-LINE       = 16,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-des-cli
@@ -14873,7 +14886,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box ch-rivisto
             SCREEN-COL        = 152,17
-            SCREEN-LINE       = 15,61
+            SCREEN-LINE       = 15,62
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ch-rivisto
@@ -14923,7 +14936,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-aperto
             SCREEN-COL        = 152,34
-            SCREEN-LINE       = 17,15
+            SCREEN-LINE       = 17,16
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-aperto
@@ -14973,7 +14986,7 @@ Begin Screen Form1
          End
          Begin Push-Button pb-elmovc
             SCREEN-COL        = 137,34
-            SCREEN-LINE       = 11,53
+            SCREEN-LINE       = 11,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = pb-elmovc
@@ -15015,7 +15028,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-referente
             SCREEN-COL        = 23,17
-            SCREEN-LINE       = 20,07
+            SCREEN-LINE       = 20,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-referente
@@ -15078,7 +15091,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-tel
             SCREEN-COL        = 96,17
-            SCREEN-LINE       = 20,07
+            SCREEN-LINE       = 20,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-tel
@@ -15141,7 +15154,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-fax
             SCREEN-COL        = 23,17
-            SCREEN-LINE       = 22,07
+            SCREEN-LINE       = 22,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-fax
@@ -15204,7 +15217,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-mail
             SCREEN-COL        = 96,17
-            SCREEN-LINE       = 22,07
+            SCREEN-LINE       = 22,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-mail
@@ -15267,7 +15280,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-pag
             SCREEN-COL        = 23,17
-            SCREEN-LINE       = 24,07
+            SCREEN-LINE       = 24,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-pag
@@ -15330,7 +15343,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-ese-iva
             SCREEN-COL        = 23,17
-            SCREEN-LINE       = 26,07
+            SCREEN-LINE       = 26,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-ese-iva
@@ -15393,7 +15406,7 @@ Begin Screen Form1
          End
          Begin Push-Button pb-note
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 29,38
+            SCREEN-LINE       = 29,39
             LOCK-CONTROL      = FALSE
             LEVEL             = 10
             (Name)            = pb-note
@@ -15434,7 +15447,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-note-1
             SCREEN-COL        = 23,17
-            SCREEN-LINE       = 28,07
+            SCREEN-LINE       = 28,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-note-1
@@ -15497,7 +15510,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-note-2
             SCREEN-COL        = 96,17
-            SCREEN-LINE       = 28,07
+            SCREEN-LINE       = 28,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-note-2
@@ -15560,7 +15573,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-note-3
             SCREEN-COL        = 23,17
-            SCREEN-LINE       = 30,07
+            SCREEN-LINE       = 30,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-note-3
@@ -15623,7 +15636,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-note-4
             SCREEN-COL        = 96,17
-            SCREEN-LINE       = 30,07
+            SCREEN-LINE       = 30,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-note-4
@@ -15686,7 +15699,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-4
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 16,07
+            SCREEN-LINE       = 16,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-4
@@ -15720,7 +15733,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 12,07
+            SCREEN-LINE       = 12,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5
@@ -15754,7 +15767,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-6
             SCREEN-COL        = 80,17
-            SCREEN-LINE       = 12,07
+            SCREEN-LINE       = 12,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-6
@@ -15788,7 +15801,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-8
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 24,07
+            SCREEN-LINE       = 24,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-8
@@ -15822,7 +15835,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-11
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 28,07
+            SCREEN-LINE       = 28,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-11
@@ -15856,7 +15869,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-12
             SCREEN-COL        = 47,17
-            SCREEN-LINE       = 12,07
+            SCREEN-LINE       = 12,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-12
@@ -15890,7 +15903,7 @@ Begin Screen Form1
          End
          Begin Label lab-pag
             SCREEN-COL        = 32,17
-            SCREEN-LINE       = 24,07
+            SCREEN-LINE       = 24,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-pag
@@ -15925,7 +15938,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaaca
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 18,07
+            SCREEN-LINE       = 18,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaaca
@@ -15958,7 +15971,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-2aa
             SCREEN-COL        = 21,50
-            SCREEN-LINE       = 18,77
+            SCREEN-LINE       = 18,78
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-2aa
@@ -15989,7 +16002,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-4a
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 20,07
+            SCREEN-LINE       = 20,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-4a
@@ -16023,7 +16036,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-4aa
             SCREEN-COL        = 80,17
-            SCREEN-LINE       = 20,07
+            SCREEN-LINE       = 20,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-4aa
@@ -16057,7 +16070,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-4aaa
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 22,07
+            SCREEN-LINE       = 22,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-4aaa
@@ -16091,7 +16104,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-4aaaa
             SCREEN-COL        = 80,17
-            SCREEN-LINE       = 22,07
+            SCREEN-LINE       = 22,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-4aaaa
@@ -16125,7 +16138,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-ins
             SCREEN-COL        = 23,17
-            SCREEN-LINE       = 34,07
+            SCREEN-LINE       = 34,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-ins
@@ -16163,7 +16176,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaacaa
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 32,07
+            SCREEN-LINE       = 32,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaacaa
@@ -16196,7 +16209,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-2aaa
             SCREEN-COL        = 21,50
-            SCREEN-LINE       = 32,77
+            SCREEN-LINE       = 32,78
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-2aaa
@@ -16227,7 +16240,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-11a
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 34,07
+            SCREEN-LINE       = 34,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-11a
@@ -16261,7 +16274,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-tipo-invio
             SCREEN-COL        = 23,17
-            SCREEN-LINE       = 38,07
+            SCREEN-LINE       = 38,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-tipo-invio
@@ -16299,7 +16312,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-11aa
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 38,07
+            SCREEN-LINE       = 38,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-11aa
@@ -16333,7 +16346,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaacaaa
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 36,07
+            SCREEN-LINE       = 36,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaacaaa
@@ -16366,7 +16379,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-2aaaa
             SCREEN-COL        = 21,50
-            SCREEN-LINE       = 36,77
+            SCREEN-LINE       = 36,78
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-2aaaa
@@ -16397,7 +16410,7 @@ Begin Screen Form1
          End
          Begin Data.Label lbl-data-invio
             SCREEN-COL        = 81,00
-            SCREEN-LINE       = 38,07
+            SCREEN-LINE       = 38,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lbl-data-invio
@@ -16435,7 +16448,7 @@ Begin Screen Form1
          End
          Begin Data.Label lbl-ora-invio
             SCREEN-COL        = 104,00
-            SCREEN-LINE       = 38,07
+            SCREEN-LINE       = 38,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lbl-ora-invio
@@ -16473,7 +16486,7 @@ Begin Screen Form1
          End
          Begin Data.Label Form1-DaLa-3
             SCREEN-COL        = 132,00
-            SCREEN-LINE       = 38,07
+            SCREEN-LINE       = 38,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-DaLa-3
@@ -16511,7 +16524,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-11aaa
             SCREEN-COL        = 70,50
-            SCREEN-LINE       = 38,07
+            SCREEN-LINE       = 38,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-11aaa
@@ -16545,7 +16558,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-11aaaa
             SCREEN-COL        = 96,50
-            SCREEN-LINE       = 38,07
+            SCREEN-LINE       = 38,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-11aaaa
@@ -16579,7 +16592,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-11aaab
             SCREEN-COL        = 120,17
-            SCREEN-LINE       = 38,07
+            SCREEN-LINE       = 38,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-11aaab
@@ -16613,7 +16626,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-16
             SCREEN-COL        = 96,17
-            SCREEN-LINE       = 26,07
+            SCREEN-LINE       = 26,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-16
@@ -16647,7 +16660,7 @@ Begin Screen Form1
          End
          Begin Data.Radio-Button rb-urgente
             SCREEN-COL        = 105,84
-            SCREEN-LINE       = 26,07
+            SCREEN-LINE       = 26,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = rb-urgente
@@ -16699,7 +16712,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-17
             SCREEN-COL        = 113,84
-            SCREEN-LINE       = 26,07
+            SCREEN-LINE       = 26,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-17
@@ -16733,7 +16746,7 @@ Begin Screen Form1
          End
          Begin Data.Radio-Button rb-normale
             SCREEN-COL        = 121,84
-            SCREEN-LINE       = 26,07
+            SCREEN-LINE       = 26,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = rb-normale
@@ -16785,7 +16798,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-4aaaaa
             SCREEN-COL        = 80,17
-            SCREEN-LINE       = 26,07
+            SCREEN-LINE       = 26,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-4aaaaa
@@ -16819,7 +16832,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-tipo-chiusura
             SCREEN-COL        = 23,17
-            SCREEN-LINE       = 42,07
+            SCREEN-LINE       = 42,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-tipo-chiusura
@@ -16857,7 +16870,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-11aab
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 42,07
+            SCREEN-LINE       = 42,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-11aab
@@ -16891,7 +16904,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaacaaaa
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 40,07
+            SCREEN-LINE       = 40,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaacaaaa
@@ -16924,7 +16937,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-2aaaaa
             SCREEN-COL        = 21,50
-            SCREEN-LINE       = 40,77
+            SCREEN-LINE       = 40,78
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-2aaaaa
@@ -16955,7 +16968,7 @@ Begin Screen Form1
          End
          Begin Data.Label lbl-data-chiusura
             SCREEN-COL        = 81,00
-            SCREEN-LINE       = 42,07
+            SCREEN-LINE       = 42,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lbl-data-chiusura
@@ -16993,7 +17006,7 @@ Begin Screen Form1
          End
          Begin Data.Label lbl-ora-chiusura
             SCREEN-COL        = 104,00
-            SCREEN-LINE       = 42,07
+            SCREEN-LINE       = 42,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lbl-ora-chiusura
@@ -17031,7 +17044,7 @@ Begin Screen Form1
          End
          Begin Data.Label Form1-DaLa-3a
             SCREEN-COL        = 132,00
-            SCREEN-LINE       = 42,07
+            SCREEN-LINE       = 42,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-DaLa-3a
@@ -17069,7 +17082,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-11aaac
             SCREEN-COL        = 70,50
-            SCREEN-LINE       = 42,07
+            SCREEN-LINE       = 42,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-11aaac
@@ -17103,7 +17116,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-11aaaaa
             SCREEN-COL        = 96,50
-            SCREEN-LINE       = 42,07
+            SCREEN-LINE       = 42,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-11aaaaa
@@ -17137,7 +17150,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-11aaaba
             SCREEN-COL        = 120,17
-            SCREEN-LINE       = 42,07
+            SCREEN-LINE       = 42,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-11aaaba
@@ -17171,7 +17184,7 @@ Begin Screen Form1
          End
          Begin Label lab-ese-iva
             SCREEN-COL        = 32,17
-            SCREEN-LINE       = 26,07
+            SCREEN-LINE       = 26,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-ese-iva
@@ -17206,7 +17219,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-8a
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 26,07
+            SCREEN-LINE       = 26,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-8a
@@ -17240,7 +17253,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-tipo-chiusuraa
             SCREEN-COL        = 23,17
-            SCREEN-LINE       = 44,07
+            SCREEN-LINE       = 44,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-tipo-chiusuraa
@@ -17278,7 +17291,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-11aaba
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 44,07
+            SCREEN-LINE       = 44,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-11aaba
@@ -17312,7 +17325,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-cliente
             SCREEN-COL        = 31,50
-            SCREEN-LINE       = 16,07
+            SCREEN-LINE       = 16,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-cliente
@@ -17350,7 +17363,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-3
             SCREEN-COL        = 144,84
-            SCREEN-LINE       = 15,61
+            SCREEN-LINE       = 15,62
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-3
@@ -17384,7 +17397,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-4b
             SCREEN-COL        = 80,17
-            SCREEN-LINE       = 16,07
+            SCREEN-LINE       = 16,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-4b
@@ -17418,7 +17431,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-des-cli
             SCREEN-COL        = 104,84
-            SCREEN-LINE       = 15,61
+            SCREEN-LINE       = 15,62
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-des-cli
@@ -17431,8 +17444,8 @@ Begin Screen Form1
             Destroy Type      = Automatic
             Enable            = NONE
             Field Edited (Style) = 0
-            Field Edited Format = X(40)
-            Field Picture     = X(40)
+            Field Edited Format = x(100)
+            Field Picture     = x(100)
             Field Variable    = des-ragsoc-1
             File              = destini
             Font              = Small Font
@@ -17456,7 +17469,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-des-loca
             SCREEN-COL        = 104,84
-            SCREEN-LINE       = 16,76
+            SCREEN-LINE       = 16,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-des-loca
@@ -17494,7 +17507,7 @@ Begin Screen Form1
          End
          Begin Push-Button pb-solleciti
             SCREEN-COL        = 117,67
-            SCREEN-LINE       = 11,53
+            SCREEN-LINE       = 11,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = pb-solleciti
@@ -17535,7 +17548,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-6a
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 14,07
+            SCREEN-LINE       = 14,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-6a
@@ -17569,7 +17582,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-promo
             SCREEN-COL        = 40,17
-            SCREEN-LINE       = 14,07
+            SCREEN-LINE       = 14,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-promo
@@ -17607,7 +17620,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-3a
             SCREEN-COL        = 136,84
-            SCREEN-LINE       = 13,92
+            SCREEN-LINE       = 13,93
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-3a
@@ -17641,7 +17654,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-3aa
             SCREEN-COL        = 145,00
-            SCREEN-LINE       = 16,99
+            SCREEN-LINE       = 17,00
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-3aa
@@ -17675,7 +17688,7 @@ Begin Screen Form1
          End
          Begin Label lab-dati-fatt
             SCREEN-COL        = 110,50
-            SCREEN-LINE       = 13,92
+            SCREEN-LINE       = 13,93
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-dati-fatt
@@ -17722,7 +17735,7 @@ Begin Screen Form1
          Begin Group-Item Form1-Grp-1
             GROUP-ITEM-NAME   = campi-grid
             SCREEN-COL        = 75,17
-            SCREEN-LINE       = 33,07
+            SCREEN-LINE       = 33,08
             LOCK-CONTROL      = FALSE
             LEVEL             = 10
             (Name)            = Form1-Grp-1
@@ -17736,7 +17749,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-art
             SCREEN-COL        = 20,17
-            SCREEN-LINE       = 31,07
+            SCREEN-LINE       = 31,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-art
@@ -17799,7 +17812,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-imb-ord
             SCREEN-COL        = 82,17
-            SCREEN-LINE       = 31,07
+            SCREEN-LINE       = 31,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-imb-ord
@@ -17862,7 +17875,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-qta
             SCREEN-COL        = 120,17
-            SCREEN-LINE       = 31,07
+            SCREEN-LINE       = 31,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-qta
@@ -17925,7 +17938,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-uni
             SCREEN-COL        = 20,17
-            SCREEN-LINE       = 33,07
+            SCREEN-LINE       = 33,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-uni
@@ -17988,7 +18001,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-sconto-1
             SCREEN-COL        = 70,17
-            SCREEN-LINE       = 33,07
+            SCREEN-LINE       = 33,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-sconto-1
@@ -18051,7 +18064,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-sconto-2
             SCREEN-COL        = 82,17
-            SCREEN-LINE       = 33,07
+            SCREEN-LINE       = 33,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-sconto-2
@@ -18114,7 +18127,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-sconto-3
             SCREEN-COL        = 94,17
-            SCREEN-LINE       = 33,07
+            SCREEN-LINE       = 33,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-sconto-3
@@ -18177,7 +18190,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-sconto-4
             SCREEN-COL        = 107,17
-            SCREEN-LINE       = 33,07
+            SCREEN-LINE       = 33,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-sconto-4
@@ -18240,7 +18253,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-sconto-5
             SCREEN-COL        = 120,17
-            SCREEN-LINE       = 33,07
+            SCREEN-LINE       = 33,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-sconto-5
@@ -18303,7 +18316,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-cons
             SCREEN-COL        = 20,17
-            SCREEN-LINE       = 35,07
+            SCREEN-LINE       = 35,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-cons
@@ -18366,7 +18379,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-cou
             SCREEN-COL        = 70,17
-            SCREEN-LINE       = 35,07
+            SCREEN-LINE       = 35,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-cou
@@ -18429,7 +18442,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-add
             SCREEN-COL        = 94,17
-            SCREEN-LINE       = 35,07
+            SCREEN-LINE       = 35,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-add
@@ -18492,7 +18505,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-costi-agg
             SCREEN-COL        = 120,17
-            SCREEN-LINE       = 35,07
+            SCREEN-LINE       = 35,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-costi-agg
@@ -18555,7 +18568,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-imp
             SCREEN-COL        = 20,17
-            SCREEN-LINE       = 37,07
+            SCREEN-LINE       = 37,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-imp
@@ -18618,7 +18631,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-cod-iva
             SCREEN-COL        = 70,17
-            SCREEN-LINE       = 37,07
+            SCREEN-LINE       = 37,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-cod-iva
@@ -18681,7 +18694,7 @@ Begin Screen Form1
          End
          Begin Data.Label lbl-anno-ddt
             SCREEN-COL        = 24,17
-            SCREEN-LINE       = 41,07
+            SCREEN-LINE       = 41,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = lbl-anno-ddt
@@ -18719,7 +18732,7 @@ Begin Screen Form1
          End
          Begin Data.Label lbl-num-ddt
             SCREEN-COL        = 12,17
-            SCREEN-LINE       = 41,07
+            SCREEN-LINE       = 41,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = lbl-num-ddt
@@ -18757,7 +18770,7 @@ Begin Screen Form1
          End
          Begin Data.Label lbl-dt-carico
             SCREEN-COL        = 37,17
-            SCREEN-LINE       = 41,07
+            SCREEN-LINE       = 41,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = lbl-dt-carico
@@ -18795,7 +18808,7 @@ Begin Screen Form1
          End
          Begin Data.Label lbl-ora-carico
             SCREEN-COL        = 54,17
-            SCREEN-LINE       = 41,07
+            SCREEN-LINE       = 41,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = lbl-ora-carico
@@ -18833,7 +18846,7 @@ Begin Screen Form1
          End
          Begin Data.Label lbl-utente-carico
             SCREEN-COL        = 69,17
-            SCREEN-LINE       = 41,07
+            SCREEN-LINE       = 41,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = lbl-utente-carico
@@ -18871,7 +18884,7 @@ Begin Screen Form1
          End
          Begin Grid Form1-Gd-1
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 12,07
+            SCREEN-LINE       = 12,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Gd-1
@@ -19000,7 +19013,7 @@ Begin Screen Form1
          End
          Begin Push-Button pb-grid-elimina
             SCREEN-COL        = 142,67
-            SCREEN-LINE       = 30,38
+            SCREEN-LINE       = 30,39
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = pb-grid-elimina
@@ -19049,7 +19062,7 @@ Begin Screen Form1
          End
          Begin Push-Button pb-articoli
             SCREEN-COL        = 139,50
-            SCREEN-LINE       = 35,84
+            SCREEN-LINE       = 35,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = pb-articoli
@@ -19097,7 +19110,7 @@ Begin Screen Form1
          End
          Begin Push-Button pb-grid-nuovo
             SCREEN-COL        = 129,67
-            SCREEN-LINE       = 30,38
+            SCREEN-LINE       = 30,39
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = pb-grid-nuovo
@@ -19146,7 +19159,7 @@ Begin Screen Form1
          End
          Begin Label lab-gia
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 44,07
+            SCREEN-LINE       = 44,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-gia
@@ -19181,7 +19194,7 @@ Begin Screen Form1
          End
          Begin Label lab-imp
             SCREEN-COL        = 63,17
-            SCREEN-LINE       = 44,07
+            SCREEN-LINE       = 44,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-imp
@@ -19216,7 +19229,7 @@ Begin Screen Form1
          End
          Begin Label lab-ord
             SCREEN-COL        = 121,34
-            SCREEN-LINE       = 44,07
+            SCREEN-LINE       = 44,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-ord
@@ -19251,7 +19264,7 @@ Begin Screen Form1
          End
          Begin Label lab-giacenza
             SCREEN-COL        = 22,17
-            SCREEN-LINE       = 44,07
+            SCREEN-LINE       = 44,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-giacenza
@@ -19287,7 +19300,7 @@ Begin Screen Form1
          End
          Begin Label lab-impegnato
             SCREEN-COL        = 83,00
-            SCREEN-LINE       = 44,07
+            SCREEN-LINE       = 44,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-impegnato
@@ -19323,7 +19336,7 @@ Begin Screen Form1
          End
          Begin Label lab-ordinato
             SCREEN-COL        = 142,00
-            SCREEN-LINE       = 44,07
+            SCREEN-LINE       = 44,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-ordinato
@@ -19359,7 +19372,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-1
             SCREEN-COL        = 3,17
-            SCREEN-LINE       = 43,53
+            SCREEN-LINE       = 43,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-1
@@ -19390,7 +19403,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-19
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 31,07
+            SCREEN-LINE       = 31,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-19
@@ -19424,7 +19437,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-20
             SCREEN-COL        = 114,67
-            SCREEN-LINE       = 31,07
+            SCREEN-LINE       = 31,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-20
@@ -19458,7 +19471,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-21
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 33,07
+            SCREEN-LINE       = 33,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-21
@@ -19492,7 +19505,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-22
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 35,07
+            SCREEN-LINE       = 35,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-22
@@ -19526,7 +19539,7 @@ Begin Screen Form1
          End
          Begin Label lab-imposta
             SCREEN-COL        = 55,17
-            SCREEN-LINE       = 35,07
+            SCREEN-LINE       = 35,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-imposta
@@ -19560,7 +19573,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-24
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 37,07
+            SCREEN-LINE       = 37,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-24
@@ -19594,7 +19607,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-25
             SCREEN-COL        = 61,17
-            SCREEN-LINE       = 33,07
+            SCREEN-LINE       = 33,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-25
@@ -19628,7 +19641,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-26
             SCREEN-COL        = 64,67
-            SCREEN-LINE       = 37,07
+            SCREEN-LINE       = 37,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-26
@@ -19662,7 +19675,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-art
             SCREEN-COL        = 29,17
-            SCREEN-LINE       = 31,07
+            SCREEN-LINE       = 31,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-art
@@ -19700,7 +19713,7 @@ Begin Screen Form1
          End
          Begin Label lab-iva
             SCREEN-COL        = 78,17
-            SCREEN-LINE       = 37,15
+            SCREEN-LINE       = 37,16
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-iva
@@ -19735,7 +19748,7 @@ Begin Screen Form1
          End
          Begin Label lab-impostaa
             SCREEN-COL        = 84,17
-            SCREEN-LINE       = 35,07
+            SCREEN-LINE       = 35,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-impostaa
@@ -19769,7 +19782,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-20a
             SCREEN-COL        = 75,67
-            SCREEN-LINE       = 31,07
+            SCREEN-LINE       = 31,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-20a
@@ -19803,7 +19816,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-imb
             SCREEN-COL        = 88,17
-            SCREEN-LINE       = 31,07
+            SCREEN-LINE       = 31,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-imb
@@ -19841,7 +19854,7 @@ Begin Screen Form1
          End
          Begin Label lab-impostaaa
             SCREEN-COL        = 109,17
-            SCREEN-LINE       = 35,07
+            SCREEN-LINE       = 35,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-impostaaa
@@ -19875,7 +19888,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaacab
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 39,07
+            SCREEN-LINE       = 39,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaacab
@@ -19908,7 +19921,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-2aab
             SCREEN-COL        = 21,50
-            SCREEN-LINE       = 39,77
+            SCREEN-LINE       = 39,78
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-2aab
@@ -19939,7 +19952,7 @@ Begin Screen Form1
          End
          Begin Label lab-impostaaaa
             SCREEN-COL        = 6,84
-            SCREEN-LINE       = 41,07
+            SCREEN-LINE       = 41,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-impostaaaa
@@ -19973,7 +19986,7 @@ Begin Screen Form1
          End
          Begin Label lab-impostaaaaa
             SCREEN-COL        = 22,17
-            SCREEN-LINE       = 41,07
+            SCREEN-LINE       = 41,08
             LOCK-CONTROL      = FALSE
             LEVEL             = 10
             (Name)            = lab-impostaaaaa
@@ -20007,7 +20020,7 @@ Begin Screen Form1
          End
          Begin Label lab-impostaaab
             SCREEN-COL        = 32,17
-            SCREEN-LINE       = 41,07
+            SCREEN-LINE       = 41,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-impostaaab
@@ -20041,7 +20054,7 @@ Begin Screen Form1
          End
          Begin Label lab-impostaaaba
             SCREEN-COL        = 50,17
-            SCREEN-LINE       = 41,07
+            SCREEN-LINE       = 41,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-impostaaaba
@@ -20075,7 +20088,7 @@ Begin Screen Form1
          End
          Begin Label lab-impostaaabaa
             SCREEN-COL        = 62,17
-            SCREEN-LINE       = 41,07
+            SCREEN-LINE       = 41,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-impostaaabaa
@@ -20109,7 +20122,7 @@ Begin Screen Form1
          End
          Begin Label lbl-prz-finale
             SCREEN-COL        = 120,17
-            SCREEN-LINE       = 37,07
+            SCREEN-LINE       = 37,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lbl-prz-finale
@@ -20145,7 +20158,7 @@ Begin Screen Form1
          End
          Begin Label lab-impostaab
             SCREEN-COL        = 107,17
-            SCREEN-LINE       = 37,07
+            SCREEN-LINE       = 37,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-impostaab
@@ -20179,7 +20192,7 @@ Begin Screen Form1
          End
          Begin Push-Button pb-elmovcd
             SCREEN-COL        = 138,67
-            SCREEN-LINE       = 40,57
+            SCREEN-LINE       = 40,58
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = pb-elmovcd
@@ -20221,7 +20234,7 @@ Begin Screen Form1
          End
          Begin Label lab-articoli
             SCREEN-COL        = 131,67
-            SCREEN-LINE       = 32,92
+            SCREEN-LINE       = 32,93
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-articoli
@@ -20256,7 +20269,7 @@ Begin Screen Form1
          End
          Begin Push-Button pb-sol-r
             SCREEN-COL        = 89,17
-            SCREEN-LINE       = 40,61
+            SCREEN-LINE       = 40,62
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = pb-sol-r
@@ -20297,7 +20310,7 @@ Begin Screen Form1
          End
          Begin Label lab-impostaaabb
             SCREEN-COL        = 106,17
-            SCREEN-LINE       = 41,07
+            SCREEN-LINE       = 41,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-impostaaabb
@@ -20331,7 +20344,7 @@ Begin Screen Form1
          End
          Begin Data.Label lbl-dt-arrivo
             SCREEN-COL        = 111,17
-            SCREEN-LINE       = 41,07
+            SCREEN-LINE       = 41,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lbl-dt-arrivo
@@ -20369,7 +20382,7 @@ Begin Screen Form1
          End
          Begin Label lab-impostaaaab
             SCREEN-COL        = 124,17
-            SCREEN-LINE       = 41,07
+            SCREEN-LINE       = 41,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-impostaaaab
@@ -20403,7 +20416,7 @@ Begin Screen Form1
          End
          Begin Data.Label lbl-qta-arr
             SCREEN-COL        = 128,17
-            SCREEN-LINE       = 41,07
+            SCREEN-LINE       = 41,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lbl-qta-arr
@@ -20441,7 +20454,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-manuale
             SCREEN-COL        = 70,17
-            SCREEN-LINE       = 30,76
+            SCREEN-LINE       = 30,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-manuale
@@ -20494,7 +20507,7 @@ Begin Screen Form1
          End
          Begin Label lab-impforn
             SCREEN-COL        = 39,17
-            SCREEN-LINE       = 33,07
+            SCREEN-LINE       = 33,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-impforn
@@ -20531,7 +20544,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-impforn
             SCREEN-COL        = 32,17
-            SCREEN-LINE       = 33,07
+            SCREEN-LINE       = 33,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-impforn
@@ -22987,7 +23000,7 @@ BEGIN-DATA
    TEXTMODE          = 0
    ENTRYPOINT        = BeforeFldToBuf
 BEGIN-TEXT
-           perform BEFOREFLDTOBUF-CODE.
+           perform BEFORE-FLDTOBUF-CODE.
 
 END-TEXT
 END-DATA

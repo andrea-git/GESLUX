@@ -1039,6 +1039,7 @@ LUBEXX     end-if.
                    if StoreMagazzino = "EXD"
                       move 1 to v-dati-fatt
                    end-if
+                   set ControllaCampi to false
       *             if DatiBollaManuale  move 1 to v-bolla
       *             else                 move 0 to v-bolla
       *             end-if
