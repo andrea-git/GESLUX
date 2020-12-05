@@ -29,6 +29,7 @@
            copy "tcaumag.sl".
            copy "tmp-ricalimp.sl".  
            copy "lockfile.sl".
+           copy "log-progmag.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -43,7 +44,8 @@
            copy "ttipocli.fd".
            copy "tcaumag.fd". 
            copy "tmp-ricalimp.fd".           
-           copy "lockfile.fd".
+           copy "lockfile.fd".   
+           copy "log-progmag.fd".
 
        WORKING-STORAGE SECTION.
            copy "link-geslock.def".  
@@ -67,6 +69,8 @@
        77  status-lockfile       pic xx.
        77  status-tmp-ricalimp   pic xx.
        77  path-tmp-ricalimp     pic x(256).
+       77  status-log-progmag    pic xx.
+       77  path-log-progmag      pic x(256).
 
        77  como-valore           pic s9(8).
        77  como-impegnato        pic s9(8).
@@ -93,6 +97,33 @@
            88 GdoNonInUso        value " ".
 
        77  form1-handle          handle of window.
+
+       01 rl-progmag.
+           05 FILLER           PIC  x(13)
+                      VALUE IS "PROGRESSIVO: ".
+           05 rl-prg-cod-articolo    PIC  9(6).
+           05 FILLER           PIC  xx.
+           05 rl-prg-cod-magazzino   PIC  x(3).
+           05 FILLER           PIC  xx.
+           05 rl-prg-tipo-imballo    PIC  x(3).
+           05 FILLER           PIC  xx.
+           05 rl-prg-peso            PIC  9(5)v999.
+           05 FILLER           PIC  xx.
+           05 FILLER           PIC  x(11)
+                      VALUE IS "IMPEGNATO: ".
+           05 rl-prg-impegnato       PIC  s9(8).
+           05 FILLER           PIC  xx.
+           05 FILLER           PIC  x(10)
+                      VALUE IS "I.MASTER: ".
+           05 rl-prg-imp-master      PIC  s9(8).
+           05 FILLER           PIC  xx.
+           05 FILLER           PIC  x(7)
+                      VALUE IS "I.GDO: ".
+           05 rl-prg-imp-gdo         PIC  s9(8).
+           05 FILLER           PIC  xx.
+           05 FILLER           PIC  x(8)
+                      VALUE IS "I.TRAD: ".
+           05 rl-prg-imp-trad        PIC  s9(8).
 
        LINKAGE SECTION.
        copy "link-ricalimp-art.def".
@@ -188,6 +219,11 @@
 
       ***---
        OPEN-FILES.
+           move ra-path-log to path-log-progmag.
+           inspect path-log-progmag replacing all "C.log" by "R.log".
+           inspect path-log-progmag replacing all "M.log" by "R.log".
+           open output log-progmag.
+
            |Quando si consolida il magazzino NESSUNO deve essere
            |dentro al file dei movimenti (tranne che in visua) e mi
            |sembra il minimo dato che devo fare operazioni in massa
@@ -214,11 +250,52 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
            open i-o    lockfile.
 
       ***---
-       ELABORAZIONE.
+       ELABORAZIONE.                   
+           move "** SITUAZIONE PRIMA **" to riga-log-progmag.
+           perform WRITE-PROGMAG-LOG.
+
       *****     perform AZZERA-PROGMAG.
            perform ELABORA-ORDINI-MASTER.
            perform ELABORA-INEVASI-E-BOLLA-NON-EMESSA.
-           perform TMP-TO-PROGMAG.
+           perform TMP-TO-PROGMAG.             
+
+           move "** SITUAZIONE DOPO **" to riga-log-progmag.
+           perform WRITE-PROGMAG-LOG.
+
+      ***---
+       WRITE-PROGMAG-LOG.
+           write riga-log-progmag. 
+           perform varying idx from 1 by 1 
+                     until idx > 999
+              if ra-articolo(idx) = 0
+                 exit perform
+              end-if
+              move ra-articolo(idx) to prg-cod-articolo
+              move spaces           to prg-cod-magazzino
+              move spaces           to prg-tipo-imballo
+              move 0                to prg-peso
+              start progmag key >= prg-chiave
+                    invalid continue
+                not invalid
+                    perform until 1 = 2
+                       read progmag next at end exit perform end-read
+                       if prg-cod-articolo not = 
+                          ra-articolo(idx)
+                          write riga-log-progmag from spaces
+                          exit perform
+                       end-if
+                       move prg-cod-articolo  to rl-prg-cod-articolo
+                       move prg-cod-magazzino to rl-prg-cod-magazzino
+                       move prg-tipo-imballo  to rl-prg-tipo-imballo
+                       move prg-peso          to rl-prg-peso     
+                       move prg-impegnato     to rl-prg-impegnato
+                       move prg-imp-master    to rl-prg-imp-master
+                       move prg-imp-GDO       to rl-prg-imp-GDO
+                       move prg-imp-TRAD      to rl-prg-imp-TRAD
+                       write riga-log-progmag from rl-progmag
+                    end-perform
+              end-start
+           end-perform.     
 
       ********---
       ***** AZZERA-PROGMAG.
@@ -253,6 +330,50 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
 
       ***---
        TMP-TO-PROGMAG.
+           move "** SITUAZIONE PRE **" to riga-log-progmag.
+           write riga-log-progmag.  
+           perform varying idx from 1 by 1 
+                     until idx > 999
+              if ra-articolo(idx) = 0
+                 exit perform
+              end-if
+              move ra-articolo(idx) to tric-prg-cod-articolo
+              move spaces           to tric-prg-cod-magazzino
+              move spaces           to tric-prg-tipo-imballo
+              move 0                to tric-prg-peso
+              start tmp-ricalimp key >= tric-prg-chiave
+                    invalid continue
+                not invalid
+                    perform until 1 = 2
+                       read tmp-ricalimp next 
+                         at end exit perform 
+                       end-read
+                       if tric-prg-cod-articolo not = 
+                          ra-articolo(idx)
+                          write riga-log-progmag from spaces
+                          exit perform
+                       end-if
+                       move tric-prg-cod-articolo  
+                         to rl-prg-cod-articolo
+                       move tric-prg-cod-magazzino 
+                         to rl-prg-cod-magazzino
+                       move tric-prg-tipo-imballo  
+                         to rl-prg-tipo-imballo
+                       move tric-prg-peso          
+                         to rl-prg-peso     
+                       move tric-prg-impegnato     
+                         to rl-prg-impegnato
+                       move tric-prg-imp-master    
+                         to rl-prg-imp-master
+                       move tric-prg-imp-GDO       
+                         to rl-prg-imp-GDO
+                       move tric-prg-imp-TRAD      
+                         to rl-prg-imp-TRAD
+                       write riga-log-progmag from rl-progmag
+                    end-perform
+              end-start
+           end-perform.  
+
            move low-value to tric-rec.
            start tmp-ricalimp key >= tric-prg-chiave
                  invalid continue
@@ -510,6 +631,7 @@ LUBEXX        end-if
            close mtordini mrordini clienti destini tcaumag lockfile.
            close       tmp-ricalimp.
            delete file tmp-ricalimp.
+           close log-progmag.
 
       ***---
        EXIT-PGM.

@@ -534,9 +534,7 @@
            add prg-valore-ul          of progmag 
             to tot-prg-valore-ul.      
            add prg-udm-ul2          of progmag 
-            to tot-prg-udm-ul2.      
-           add prg-var-inv-kg          of progmag 
-            to tot-prg-var-inv-kg.      
+            to tot-prg-udm-ul2.         
            add prg-kg-ul2          of progmag 
             to tot-prg-kg-ul2.      
            add prg-valore-ul2          of progmag 

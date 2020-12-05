@@ -288,6 +288,7 @@ PATCH            perform SCRIVI-FILE-BACKUP
                    ".log"           delimited size
               into path-log-progmag
            end-string.
+           move path-log-progmag to ra-path-log.
            open output log-progmag.
 
            inspect user-codi
