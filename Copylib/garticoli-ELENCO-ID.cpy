@@ -76,9 +76,9 @@
            when 78-ID-ef-scorta
                 inquire ef-scorta, value in ef-scorta-buf
 
-           |78-ID-ef-limite è l'ID del control ef-limite
-           when 78-ID-ef-limite
-                inquire ef-limite, value in ef-limite-buf
+           |78-ID-ef-moq è l'ID del control ef-moq
+           when 78-ID-ef-moq
+                inquire ef-moq, value in ef-moq-buf
 
            |78-ID-ef-amperaggio è l'ID del control ef-amperaggio
            when 78-ID-ef-amperaggio

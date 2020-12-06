@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          garticoli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 2 dicembre 2020 10:27:38.
+       DATE-WRITTEN.        domenica 6 dicembre 2020 01:11:05.
        REMARKS.
       *{TOTEM}END
 
@@ -194,7 +194,7 @@
       * Data.Entry-Field
               10 ef-scorta-BUF PIC --------9.
       * Data.Entry-Field
-              10 ef-limite-BUF PIC z(8).
+              10 ef-moq-BUF PIC 9(8).
       * Data.Check-Box
               10 chk-cobat-BUF PIC 9 VALUE ZERO.
       * Data.Entry-Field
@@ -714,7 +714,7 @@
        78  78-ID-ef-perce-imposte VALUE 5025.
        78  78-ID-ef-perce-cou VALUE 5026.
        78  78-ID-ef-scorta VALUE 5027.
-       78  78-ID-ef-limite VALUE 5028.
+       78  78-ID-ef-moq VALUE 5028.
        78  78-ID-chk-cobat VALUE 5029.
        78  78-ID-ef-amperaggio VALUE 5030.
        78  78-ID-cbo-cobat VALUE 5031.
@@ -1384,7 +1384,7 @@
 
       * ENTRY FIELD
        10
-           ef-limite, 
+           ef-moq, 
            Entry-Field, 
            COL 155,17, 
            LINE 23,69,
@@ -1394,13 +1394,13 @@
            COLOR IS 513,
            ENABLED mod-campi,
            FONT IS Small-Font,
-           ID IS 78-ID-ef-limite,                
+           ID IS 78-ID-ef-moq,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RIGHT,
            MAX-TEXT 8,
-           VALUE ef-limite-BUF,
-           VISIBLE v-limite,
+           VALUE ef-moq-BUF,
+           VISIBLE v-moq,
            .
 
       * CHECK BOX
@@ -2922,7 +2922,7 @@
 
       * LABEL
        10
-           lab-limite, 
+           lab-moq, 
            Label, 
            COL 140,67, 
            LINE 23,69,
@@ -2934,7 +2934,7 @@
            WIDTH-IN-CELLS,
            TRANSPARENT,
            TITLE "MOQ",
-           VISIBLE v-limite,
+           VISIBLE v-moq,
            .
 
       * LABEL
@@ -14695,9 +14695,9 @@
                MOVE 5027 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
-      * ef-limite's Validation
+      * ef-moq's Validation
            SET TOTEM-CHECK-OK TO FALSE
-           PERFORM ef-limite-VALIDATION
+           PERFORM ef-moq-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
@@ -15868,21 +15868,21 @@
            PERFORM ef-scorta-AFTER-VALIDATION
            .
 
-       ef-limite-BEFORE-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-limite, BeforeValidation>
+       ef-moq-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-moq, BeforeValidation>
       * <TOTEM:END>
            .
 
-       ef-limite-AFTER-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-limite, AfterValidation>
+       ef-moq-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-moq, AfterValidation>
       * <TOTEM:END>
            .
 
-      * ef-limite's Validation
-       ef-limite-VALIDATION.
-           PERFORM ef-limite-BEFORE-VALIDATION
+      * ef-moq's Validation
+       ef-moq-VALIDATION.
+           PERFORM ef-moq-BEFORE-VALIDATION
            SET TOTEM-CHECK-OK TO TRUE
-           PERFORM ef-limite-AFTER-VALIDATION
+           PERFORM ef-moq-AFTER-VALIDATION
            .
 
        ef-amperaggio-BEFORE-VALIDATION.
@@ -17259,8 +17259,8 @@
            MOVE ef-perce-cou-BUF TO art-perce-cou of articoli
       * DB_Entry-Field : ef-scorta
            MOVE ef-scorta-BUF TO art-scorta of articoli
-      * DB_Entry-Field : ef-limite
-           MOVE ef-limite-BUF TO art-limite-scorta of articoli
+      * DB_Entry-Field : ef-moq
+           MOVE ef-moq-BUF TO art-moq of articoli
       * DB_CHECK BOX : chk-cobat
               IF chk-cobat-BUF = 1
                  MOVE "S" TO art-soggetto-cobat of articoli
@@ -17595,8 +17595,8 @@
            MOVE art-perce-cou of articoli TO ef-perce-cou-BUF
       * DB_Entry-Field : ef-scorta
            MOVE art-scorta of articoli TO ef-scorta-BUF
-      * DB_Entry-Field : ef-limite
-           MOVE art-limite-scorta of articoli TO ef-limite-BUF
+      * DB_Entry-Field : ef-moq
+           MOVE art-moq of articoli TO ef-moq-BUF
       * DB_CHECK BOX : chk-cobat
               IF art-soggetto-cobat of articoli = "S"
                  MOVE 1 TO chk-cobat-BUF
@@ -18091,11 +18091,11 @@
            end-if
 
 
-           if art-limite-scorta of articoli not = old-art-limite-scorta
+           if art-moq of articoli not = old-art-moq
               and SiSalvato
               set NoSalvato to true
-              |78-ID-ef-limite è l'ID del campo ef-limite
-              move 78-ID-ef-limite to store-id 
+              |78-ID-ef-moq è l'ID del campo ef-moq
+              move 78-ID-ef-moq to store-id 
            end-if
 
 
@@ -19123,8 +19123,8 @@
            |78-ID-ef-scorta è l'ID del campo ef-scorta
            when 78-ID-ef-scorta
                 perform CONTROLLO
-           |78-ID-ef-limite è l'ID del campo ef-limite
-           when 78-ID-ef-limite
+           |78-ID-ef-moq è l'ID del campo ef-moq
+           when 78-ID-ef-moq
                 perform CONTROLLO
            |78-ID-ef-amperaggio è l'ID del campo ef-amperaggio
            when 78-ID-ef-amperaggio
@@ -19958,7 +19958,7 @@
            TOTEM-HINT-TEXT
            WHEN 5027 MOVE "Digitare il numero dei pezzi di scorta" to 
            TOTEM-HINT-TEXT
-           WHEN 5028 MOVE "Digitare il limite scorta" to TOTEM-HINT-TEXT
+           WHEN 5028 MOVE "Digitare il valore MOQ" to TOTEM-HINT-TEXT
            WHEN 5029 MOVE "Soggetto/Non soggetto COBAT" to 
            TOTEM-HINT-TEXT
            WHEN 5030 MOVE "Digitare l'amperaggio" to TOTEM-HINT-TEXT
@@ -21218,9 +21218,9 @@ LABLAB
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
-              INQUIRE ef-limite, VALUE IN art-limite-scorta of articoli
+              INQUIRE ef-moq, VALUE IN art-moq of articoli
               SET TOTEM-CHECK-OK TO FALSE
-              PERFORM ef-limite-VALIDATION
+              PERFORM ef-moq-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
@@ -22007,9 +22007,9 @@ LABLAB
            if event-data-1 = 1
               move ef-scorta-buf to art-scorta of articoli
               if sco-moq-si
-                 move 1 to v-limite
+                 move 1 to v-moq
               else
-                 move 0 to v-limite
+                 move 0 to v-moq
               end-if
               if art-scorta of articoli = 9
                  move 1 to v-reale
@@ -22017,10 +22017,10 @@ LABLAB
                  move 0 to v-reale
               end-if
            else
-              move 0 to v-limite
+              move 0 to v-moq
               move 0 to v-reale
            end-if.
-           display ef-limite ef-reale            
+           display ef-moq ef-reale            
            .
       * <TOTEM:END>
        Form1-DaRb-1-BeforeProcedure.

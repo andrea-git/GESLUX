@@ -8,7 +8,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4C292231-506-106171302
+PROGRAM_UNIQUE_CODE=TOTEM-7E4C523384-98-667224023
 
 {{@DESCRIPTION:
 
@@ -571,6 +571,7 @@ m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
 m_nCopyFileLevel=2
 {{@DataItem_m_strDescriptionFDITEM39_WK
     mi serve per collocare/stornare l'ordinato dal mese corretto
+
 
 @}}
 [FDITEM40_WK]
@@ -1895,7 +1896,6 @@ m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE-FORNITORE.DEF
 m_nCopyFileLevel=2
 {{@DataItem_m_strDescriptionFDITEM136_WK
 **** 77 como-imp-cou-cobat           PIC  9(15)v9999.
-
 @}}
 [FDITEM137_WK]
 m_strName=G2Agg-linkage
@@ -2199,6 +2199,7 @@ m_strPic=S9(9)
 m_nUsage=5
 m_strDefaultValue=0
 m_nItemLevel=77
+m_bValue=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -2211,7 +2212,7 @@ m_nCopyFileLevel=1
 [FDITEM160_WK]
 m_strName=ef-frn-buf
 m_strRawPic=x(15)
-m_strPic=x(15)
+m_strPic=X(15)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -4297,7 +4298,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM307_WK]
-m_strName=v-limite
+m_strName=v-moq
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=1
@@ -6066,7 +6067,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM434_WK]
-m_strName=old-art-limite-scorta
+m_strName=old-art-moq
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=10
@@ -6972,6 +6973,34 @@ m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM500_WK
+
+@}}
+[FDITEM501_WK]
+m_strName=cont
+m_strRawPic=9(10)
+m_strPic=9(10)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM501_WK
+
+@}}
+[FDITEM502_WK]
+m_strName=resto
+m_strRawPic=9(10)
+m_strPic=9(10)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM502_WK
 
 @}}
 
@@ -8989,12 +9018,12 @@ Begin Screen Form1
             Before Procedure  = ef-scorta-BeforeProcedure
             After Procedure   = ef-perce-imposte-AfterProcedure
          End
-         Begin Data.Entry-Field ef-limite
+         Begin Data.Entry-Field ef-moq
             SCREEN-COL        = 155,17
             SCREEN-LINE       = 23,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
-            (Name)            = ef-limite
+            (Name)            = ef-moq
             Auto              = FALSE
             Auto Decimal      = 0
             Border            = Boxed
@@ -9012,15 +9041,15 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod-campi
             Field Edited (Style) = 1
-            Field Edited Format = z(8)
+            Field Edited Format = 9(8)
             Field Picture     = 9(8)
-            Field Variable    = art-limite-scorta of articoli
+            Field Variable    = art-moq of articoli
             File              = articoli
             Font              = Small Font
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            Hint              = Digitare il limite scorta
+            Hint              = Digitare il valore MOQ
             ID                = 47
             ID Variable       = AUTO-ID
             Justification     = Right
@@ -9047,7 +9076,7 @@ Begin Screen Form1
             Use Tab           = FALSE
             Value Multiple    = FALSE
             Visible           = NONE
-            Visible Variable  = v-limite
+            Visible Variable  = v-moq
             Width in Cells    = TRUE
             My Property       = "CONTROLLO-OLD=;CONTROLLO="
             Before Procedure  = ef-perce-imposte-BeforeProcedure
@@ -12773,12 +12802,12 @@ Begin Screen Form1
             Visible           = FALSE
             Width in Cells    = TRUE
          End
-         Begin Label lab-limite
+         Begin Label lab-moq
             SCREEN-COL        = 140,67
             SCREEN-LINE       = 23,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
-            (Name)            = lab-limite
+            (Name)            = lab-moq
             Clines            = 0
             Clines Unit       = Default
             Color             = 0
@@ -12805,7 +12834,7 @@ Begin Screen Form1
             Title             = "MOQ"
             Transparent       = TRUE
             Visible           = NONE
-            Visible Variable  = v-limite
+            Visible Variable  = v-moq
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-33aba
@@ -23457,9 +23486,9 @@ BEGIN-TEXT
            if event-data-1 = 1
               move ef-scorta-buf to art-scorta of articoli
               if sco-moq-si
-                 move 1 to v-limite
+                 move 1 to v-moq
               else
-                 move 0 to v-limite
+                 move 0 to v-moq
               end-if
               if art-scorta of articoli = 9
                  move 1 to v-reale
@@ -23467,10 +23496,10 @@ BEGIN-TEXT
                  move 0 to v-reale
               end-if
            else
-              move 0 to v-limite
+              move 0 to v-moq
               move 0 to v-reale
            end-if.
-           display ef-limite ef-reale            
+           display ef-moq ef-reale            
 END-TEXT
 END-DATA
 BEGIN-DATA

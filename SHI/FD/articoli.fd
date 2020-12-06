@@ -88,7 +88,7 @@
                10 art-scorta       PIC  s9(8).
                10 art-prezzo-banco PIC  9(6)v9(2).
                10 art-prz-min-vend PIC  9(5)v9(2).
-               10 art-limite-scorta            PIC  9(8).
+               10 art-moq          PIC  9(8).
                10 art-peso-reale   PIC  9(5)v9(3).
                10 art-do           PIC  9.
                    88 art-si-do VALUE IS 1. 

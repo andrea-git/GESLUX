@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E08A11381-520-474629422
+PROGRAM_UNIQUE_CODE=TOTEM-7E4C60149-377-1254411191
 
 {{@DESCRIPTION:
 
@@ -348,10 +348,10 @@ m_nCopyFileLevel=2
 
 @}}
 [FDITEM24_WK]
-m_strName=filler
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=1
+m_strName=NomePgm
+m_strRawPic=x(30)
+m_strPic=X(30)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
@@ -362,6 +362,20 @@ m_nCopyFileLevel=2
 
 @}}
 [FDITEM25_WK]
+m_strName=filler
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_strCopyFile=costo-medio.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COSTO-MEDIO.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM25_WK
+
+@}}
+[FDITEM26_WK]
 m_strName=forza-giro-completo
 m_nItemLevel=88
 m_nSync=-1
@@ -372,10 +386,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=costo-medio.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COSTO-MEDIO.DEF
 m_nCopyFileLevel=2
-{{@DataItem_m_strDescriptionFDITEM25_WK
+{{@DataItem_m_strDescriptionFDITEM26_WK
 
 @}}
-[FDITEM26_WK]
+[FDITEM27_WK]
 m_strName=tipo-recupero
 m_strRawPic=99
 m_strPic=99
@@ -386,10 +400,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=costo-medio.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COSTO-MEDIO.DEF
 m_nCopyFileLevel=2
-{{@DataItem_m_strDescriptionFDITEM26_WK
+{{@DataItem_m_strDescriptionFDITEM27_WK
 
 @}}
-[FDITEM27_WK]
+[FDITEM28_WK]
 m_strName=recupero-iniziale
 m_nItemLevel=88
 m_nSync=-1
@@ -399,10 +413,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=costo-medio.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COSTO-MEDIO.DEF
 m_nCopyFileLevel=2
-{{@DataItem_m_strDescriptionFDITEM27_WK
+{{@DataItem_m_strDescriptionFDITEM28_WK
 
 @}}
-[FDITEM28_WK]
+[FDITEM29_WK]
 m_strName=recupero-anagrafica
 m_nItemLevel=88
 m_nSync=-1
@@ -412,10 +426,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=costo-medio.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COSTO-MEDIO.DEF
 m_nCopyFileLevel=2
-{{@DataItem_m_strDescriptionFDITEM28_WK
+{{@DataItem_m_strDescriptionFDITEM29_WK
 
 @}}
-[FDITEM29_WK]
+[FDITEM30_WK]
 m_strName=recupero-ini
 m_nItemLevel=88
 m_nSync=-1
@@ -425,10 +439,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=costo-medio.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COSTO-MEDIO.DEF
 m_nCopyFileLevel=2
-{{@DataItem_m_strDescriptionFDITEM29_WK
+{{@DataItem_m_strDescriptionFDITEM30_WK
 
 @}}
-[FDITEM30_WK]
+[FDITEM31_WK]
 m_strName=recupero-acq
 m_nItemLevel=88
 m_nSync=-1
@@ -438,10 +452,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=costo-medio.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COSTO-MEDIO.DEF
 m_nCopyFileLevel=2
-{{@DataItem_m_strDescriptionFDITEM30_WK
+{{@DataItem_m_strDescriptionFDITEM31_WK
 
 @}}
-[FDITEM31_WK]
+[FDITEM32_WK]
 m_strName=recupero-normale
 m_nItemLevel=88
 m_nSync=-1
@@ -451,10 +465,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=costo-medio.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COSTO-MEDIO.DEF
 m_nCopyFileLevel=2
-{{@DataItem_m_strDescriptionFDITEM31_WK
+{{@DataItem_m_strDescriptionFDITEM32_WK
 
 @}}
-[FDITEM32_WK]
+[FDITEM33_WK]
 m_strName=recupero-ultimo
 m_nItemLevel=88
 m_nSync=-1
@@ -464,25 +478,11 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=costo-medio.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COSTO-MEDIO.DEF
 m_nCopyFileLevel=2
-{{@DataItem_m_strDescriptionFDITEM32_WK
-
-@}}
-[FDITEM33_WK]
-m_strName=como-prm-destino
-m_strRawPic=9(5)
-m_strPic=9(5)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_strCopyFile=trova-parametro.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\TROVA-PARAMETRO.DEF
-m_nCopyFileLevel=2
 {{@DataItem_m_strDescriptionFDITEM33_WK
 
 @}}
 [FDITEM34_WK]
-m_strName=como-prm-cliente
+m_strName=como-prm-destino
 m_strRawPic=9(5)
 m_strPic=9(5)
 m_nItemLevel=77
@@ -496,23 +496,23 @@ m_nCopyFileLevel=2
 
 @}}
 [FDITEM35_WK]
-m_strName=prz-scontato
-m_strRawPic=9(6)v9999
-m_strPic=9(6)V9999
+m_strName=como-prm-cliente
+m_strRawPic=9(5)
+m_strPic=9(5)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_strCopyFile=prz-finito-forn.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\PRZ-FINITO-FORN.DEF
+m_strCopyFile=trova-parametro.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\TROVA-PARAMETRO.DEF
 m_nCopyFileLevel=2
 {{@DataItem_m_strDescriptionFDITEM35_WK
 
 @}}
 [FDITEM36_WK]
-m_strName=costi-agg
-m_strRawPic=9(6)v99999
-m_strPic=9(6)V99999
+m_strName=prz-scontato
+m_strRawPic=9(6)v9999
+m_strPic=9(6)V9999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -524,9 +524,9 @@ m_nCopyFileLevel=2
 
 @}}
 [FDITEM37_WK]
-m_strName=start-tasse
-m_strRawPic=9(6)v9999
-m_strPic=9(6)V9999
+m_strName=costi-agg
+m_strRawPic=9(6)v99999
+m_strPic=9(6)V99999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -538,9 +538,9 @@ m_nCopyFileLevel=2
 
 @}}
 [FDITEM38_WK]
-m_strName=costo-trasporto
-m_strRawPic=9(8)v9999
-m_strPic=9(8)V9999
+m_strName=start-tasse
+m_strRawPic=9(6)v9999
+m_strPic=9(6)V9999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -552,9 +552,9 @@ m_nCopyFileLevel=2
 
 @}}
 [FDITEM39_WK]
-m_strName=como-trasporto
-m_strRawPic=9
-m_strPic=9
+m_strName=costo-trasporto
+m_strRawPic=9(8)v9999
+m_strPic=9(8)V9999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -566,9 +566,9 @@ m_nCopyFileLevel=2
 
 @}}
 [FDITEM40_WK]
-m_strName=prz-confronto
-m_strRawPic=9(6)v9999
-m_strPic=9(6)V9999
+m_strName=como-trasporto
+m_strRawPic=9
+m_strPic=9
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -580,7 +580,7 @@ m_nCopyFileLevel=2
 
 @}}
 [FDITEM41_WK]
-m_strName=imponibile-merce
+m_strName=prz-confronto
 m_strRawPic=9(6)v9999
 m_strPic=9(6)V9999
 m_nItemLevel=77
@@ -594,7 +594,7 @@ m_nCopyFileLevel=2
 
 @}}
 [FDITEM42_WK]
-m_strName=prz-reale
+m_strName=imponibile-merce
 m_strRawPic=9(6)v9999
 m_strPic=9(6)V9999
 m_nItemLevel=77
@@ -608,7 +608,7 @@ m_nCopyFileLevel=2
 
 @}}
 [FDITEM43_WK]
-m_strName=premio-FA
+m_strName=prz-reale
 m_strRawPic=9(6)v9999
 m_strPic=9(6)V9999
 m_nItemLevel=77
@@ -622,9 +622,9 @@ m_nCopyFileLevel=2
 
 @}}
 [FDITEM44_WK]
-m_strName=ProgrammaInUso
-m_strRawPic=x(20)
-m_strPic=X(20)
+m_strName=premio-FA
+m_strRawPic=9(6)v9999
+m_strPic=9(6)V9999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -636,21 +636,21 @@ m_nCopyFileLevel=2
 
 @}}
 [FDITEM45_WK]
-m_strName=risultato-imposte
-m_strRawPic=9(10)v9999
-m_strPic=9(10)V9999
+m_strName=ProgrammaInUso
+m_strRawPic=x(20)
+m_strPic=X(20)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_strCopyFile=imposte-fornitore.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE-FORNITORE.DEF
+m_strCopyFile=prz-finito-forn.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\PRZ-FINITO-FORN.DEF
 m_nCopyFileLevel=2
 {{@DataItem_m_strDescriptionFDITEM45_WK
 
 @}}
 [FDITEM46_WK]
-m_strName=imposta-cobat
+m_strName=risultato-imposte
 m_strRawPic=9(10)v9999
 m_strPic=9(10)V9999
 m_nItemLevel=77
@@ -664,7 +664,7 @@ m_nCopyFileLevel=2
 
 @}}
 [FDITEM47_WK]
-m_strName=imposta-cobat-conf
+m_strName=imposta-cobat
 m_strRawPic=9(10)v9999
 m_strPic=9(10)V9999
 m_nItemLevel=77
@@ -678,7 +678,7 @@ m_nCopyFileLevel=2
 
 @}}
 [FDITEM48_WK]
-m_strName=imposta-cou
+m_strName=imposta-cobat-conf
 m_strRawPic=9(10)v9999
 m_strPic=9(10)V9999
 m_nItemLevel=77
@@ -692,7 +692,7 @@ m_nCopyFileLevel=2
 
 @}}
 [FDITEM49_WK]
-m_strName=imposta-cou-conf
+m_strName=imposta-cou
 m_strRawPic=9(10)v9999
 m_strPic=9(10)V9999
 m_nItemLevel=77
@@ -706,7 +706,7 @@ m_nCopyFileLevel=2
 
 @}}
 [FDITEM50_WK]
-m_strName=imposta-consumo
+m_strName=imposta-cou-conf
 m_strRawPic=9(10)v9999
 m_strPic=9(10)V9999
 m_nItemLevel=77
@@ -720,7 +720,7 @@ m_nCopyFileLevel=2
 
 @}}
 [FDITEM51_WK]
-m_strName=imposta-consumo-conf
+m_strName=imposta-consumo
 m_strRawPic=9(10)v9999
 m_strPic=9(10)V9999
 m_nItemLevel=77
@@ -734,7 +734,7 @@ m_nCopyFileLevel=2
 
 @}}
 [FDITEM52_WK]
-m_strName=add-piombo
+m_strName=imposta-consumo-conf
 m_strRawPic=9(10)v9999
 m_strPic=9(10)V9999
 m_nItemLevel=77
@@ -748,7 +748,7 @@ m_nCopyFileLevel=2
 
 @}}
 [FDITEM53_WK]
-m_strName=add-piombo-conf
+m_strName=add-piombo
 m_strRawPic=9(10)v9999
 m_strPic=9(10)V9999
 m_nItemLevel=77
@@ -762,9 +762,9 @@ m_nCopyFileLevel=2
 
 @}}
 [FDITEM54_WK]
-m_strName=add-piombo-5dec
-m_strRawPic=9(10)v99999
-m_strPic=9(10)V99999
+m_strName=add-piombo-conf
+m_strRawPic=9(10)v9999
+m_strPic=9(10)V9999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -776,9 +776,9 @@ m_nCopyFileLevel=2
 
 @}}
 [FDITEM55_WK]
-m_strName=como-data-ordine
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=add-piombo-5dec
+m_strRawPic=9(10)v99999
+m_strPic=9(10)V99999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -790,9 +790,9 @@ m_nCopyFileLevel=2
 
 @}}
 [FDITEM56_WK]
-m_strName=como-prz-unitario
-m_strRawPic=9(10)v9999
-m_strPic=9(10)V9999
+m_strName=como-data-ordine
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -804,6 +804,20 @@ m_nCopyFileLevel=2
 
 @}}
 [FDITEM57_WK]
+m_strName=como-prz-unitario
+m_strRawPic=9(10)v9999
+m_strPic=9(10)V9999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_strCopyFile=imposte-fornitore.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE-FORNITORE.DEF
+m_nCopyFileLevel=2
+{{@DataItem_m_strDescriptionFDITEM57_WK
+
+@}}
+[FDITEM58_WK]
 m_strName=como-imposta
 m_strRawPic=9(10)v99999
 m_strPic=9(10)V99999
@@ -814,26 +828,13 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=imposte-fornitore.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE-FORNITORE.DEF
 m_nCopyFileLevel=2
-{{@DataItem_m_strDescriptionFDITEM57_WK
+{{@DataItem_m_strDescriptionFDITEM58_WK
 **** 77 como-imp-cou-cobat           PIC  9(15)v9999.
 @}}
-[FDITEM58_WK]
+[FDITEM59_WK]
 m_strName=codice-ed
 m_strRawPic=z(6)
 m_strPic=Z(6)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_strCopyFile=VARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM58_WK
-
-@}}
-[FDITEM59_WK]
-m_strName=Form1-Handle
-m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -845,9 +846,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM60_WK]
-m_strName=CodiceIvaStd
-m_strRawPic=x(3)
-m_strPic=X(3)
+m_strName=Form1-Handle
+m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -859,9 +859,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM61_WK]
-m_strName=STATUS-param
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=CodiceIvaStd
+m_strRawPic=x(3)
+m_strPic=X(3)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -873,6 +873,47 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM62_WK]
+m_strName=calcolo-piombo
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_strCopyFile=VARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM62_WK
+
+@}}
+[FDITEM63_WK]
+m_strName=nuovo-calcolo-piombo
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="N"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_strCopyFile=VARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM63_WK
+
+@}}
+[FDITEM64_WK]
+m_strName=STATUS-param
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_strCopyFile=VARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM64_WK
+
+@}}
+[FDITEM65_WK]
 m_strName=Valid-STATUS-param
 m_nItemLevel=88
 m_nSync=-1
@@ -882,10 +923,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM62_WK
+{{@DataItem_m_strDescriptionFDITEM65_WK
 
 @}}
-[FDITEM63_WK]
+[FDITEM66_WK]
 m_strName=STATUS-sort-art-list
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -896,10 +937,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM63_WK
+{{@DataItem_m_strDescriptionFDITEM66_WK
 
 @}}
-[FDITEM64_WK]
+[FDITEM67_WK]
 m_strName=Valid-STATUS-sort-art-list
 m_nItemLevel=88
 m_nSync=-1
@@ -909,10 +950,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM64_WK
+{{@DataItem_m_strDescriptionFDITEM67_WK
 
 @}}
-[FDITEM65_WK]
+[FDITEM68_WK]
 m_strName=data-val-da
 m_strRawPic=9(8)
 m_strPic=9(8)
@@ -923,10 +964,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM65_WK
+{{@DataItem_m_strDescriptionFDITEM68_WK
 
 @}}
-[FDITEM66_WK]
+[FDITEM69_WK]
 m_strName=AUTO-ID
 m_strRawPic=9(6)
 m_strPic=9(6)
@@ -939,54 +980,13 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM66_WK
-
-@}}
-[FDITEM67_WK]
-m_strName=data-val-a
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_strCopyFile=VARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM67_WK
-
-@}}
-[FDITEM68_WK]
-m_strName=STATUS-blister
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_strCopyFile=VARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM68_WK
-
-@}}
-[FDITEM69_WK]
-m_strName=Valid-STATUS-blister
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="00" THRU "09"
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_strCopyFile=VARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM69_WK
 
 @}}
 [FDITEM70_WK]
-m_strName=STATUS-destinif
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=data-val-a
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -998,6 +998,47 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM71_WK]
+m_strName=STATUS-blister
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_strCopyFile=VARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM71_WK
+
+@}}
+[FDITEM72_WK]
+m_strName=Valid-STATUS-blister
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_strCopyFile=VARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM72_WK
+
+@}}
+[FDITEM73_WK]
+m_strName=STATUS-destinif
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_strCopyFile=VARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM73_WK
+
+@}}
+[FDITEM74_WK]
 m_strName=Valid-STATUS-destinif
 m_nItemLevel=88
 m_nSync=-1
@@ -1007,10 +1048,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM71_WK
+{{@DataItem_m_strDescriptionFDITEM74_WK
 
 @}}
-[FDITEM72_WK]
+[FDITEM75_WK]
 m_strName=STATUS-articoli1
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -1021,10 +1062,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM72_WK
+{{@DataItem_m_strDescriptionFDITEM75_WK
 
 @}}
-[FDITEM73_WK]
+[FDITEM76_WK]
 m_strName=VALID-STATUS-articoli1
 m_nItemLevel=88
 m_nSync=-1
@@ -1034,10 +1075,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM73_WK
+{{@DataItem_m_strDescriptionFDITEM76_WK
 
 @}}
-[FDITEM74_WK]
+[FDITEM77_WK]
 m_strName=STATUS-mrordini
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -1048,10 +1089,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM74_WK
+{{@DataItem_m_strDescriptionFDITEM77_WK
 
 @}}
-[FDITEM75_WK]
+[FDITEM78_WK]
 m_strName=Valid-STATUS-mrordini
 m_nItemLevel=88
 m_nSync=-1
@@ -1061,10 +1102,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM75_WK
+{{@DataItem_m_strDescriptionFDITEM78_WK
 
 @}}
-[FDITEM76_WK]
+[FDITEM79_WK]
 m_strName=STATUS-reva
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -1075,10 +1116,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM76_WK
+{{@DataItem_m_strDescriptionFDITEM79_WK
 
 @}}
-[FDITEM77_WK]
+[FDITEM80_WK]
 m_strName=Valid-STATUS-reva
 m_nItemLevel=88
 m_nSync=-1
@@ -1088,10 +1129,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM77_WK
+{{@DataItem_m_strDescriptionFDITEM80_WK
 
 @}}
-[FDITEM78_WK]
+[FDITEM81_WK]
 m_strName=STATUS-rordforn
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -1102,10 +1143,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM78_WK
+{{@DataItem_m_strDescriptionFDITEM81_WK
 
 @}}
-[FDITEM79_WK]
+[FDITEM82_WK]
 m_strName=Valid-STATUS-rordforn
 m_nItemLevel=88
 m_nSync=-1
@@ -1115,10 +1156,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM79_WK
+{{@DataItem_m_strDescriptionFDITEM82_WK
 
 @}}
-[FDITEM80_WK]
+[FDITEM83_WK]
 m_strName=STATUS-impforn
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -1129,10 +1170,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM80_WK
+{{@DataItem_m_strDescriptionFDITEM83_WK
 
 @}}
-[FDITEM81_WK]
+[FDITEM84_WK]
 m_strName=Valid-STATUS-impforn
 m_nItemLevel=88
 m_nSync=-1
@@ -1142,10 +1183,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM81_WK
+{{@DataItem_m_strDescriptionFDITEM84_WK
 
 @}}
-[FDITEM82_WK]
+[FDITEM85_WK]
 m_strName=STATUS-timposte
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -1156,10 +1197,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM82_WK
+{{@DataItem_m_strDescriptionFDITEM85_WK
 
 @}}
-[FDITEM83_WK]
+[FDITEM86_WK]
 m_strName=Valid-STATUS-timposte
 m_nItemLevel=88
 m_nSync=-1
@@ -1169,10 +1210,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM83_WK
+{{@DataItem_m_strDescriptionFDITEM86_WK
 
 @}}
-[FDITEM84_WK]
+[FDITEM87_WK]
 m_strName=STATUS-tpiombo
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -1183,10 +1224,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM84_WK
+{{@DataItem_m_strDescriptionFDITEM87_WK
 
 @}}
-[FDITEM85_WK]
+[FDITEM88_WK]
 m_strName=Valid-STATUS-tpiombo
 m_nItemLevel=88
 m_nSync=-1
@@ -1196,10 +1237,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM85_WK
+{{@DataItem_m_strDescriptionFDITEM88_WK
 
 @}}
-[FDITEM86_WK]
+[FDITEM89_WK]
 m_strName=STATUS-tlistini
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -1210,10 +1251,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM86_WK
+{{@DataItem_m_strDescriptionFDITEM89_WK
 
 @}}
-[FDITEM87_WK]
+[FDITEM90_WK]
 m_strName=Valid-STATUS-tlistini
 m_nItemLevel=88
 m_nSync=-1
@@ -1223,54 +1264,13 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM87_WK
-
-@}}
-[FDITEM88_WK]
-m_strName=STATUS-prodener
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_strCopyFile=VARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM88_WK
-
-@}}
-[FDITEM89_WK]
-m_strName=Valid-STATUS-prodener
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="00" THRU "09"
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_strCopyFile=VARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM89_WK
-
-@}}
-[FDITEM90_WK]
-m_strName=qta-x
-m_strRawPic=z(4)
-m_strPic=Z(4)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_strCopyFile=VARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM90_WK
 
 @}}
 [FDITEM91_WK]
-m_strName=nome-file
-m_strRawPic=x(10)
-m_strPic=X(10)
+m_strName=STATUS-prodener
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1282,6 +1282,47 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM92_WK]
+m_strName=Valid-STATUS-prodener
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_strCopyFile=VARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM92_WK
+
+@}}
+[FDITEM93_WK]
+m_strName=qta-x
+m_strRawPic=z(4)
+m_strPic=Z(4)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_strCopyFile=VARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM93_WK
+
+@}}
+[FDITEM94_WK]
+m_strName=nome-file
+m_strRawPic=x(10)
+m_strPic=X(10)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_strCopyFile=VARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM94_WK
+
+@}}
+[FDITEM95_WK]
 m_strName=MAX-PAGE
 m_strDefaultValue=3
 m_nItemLevel=78
@@ -1292,10 +1333,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM92_WK
+{{@DataItem_m_strDescriptionFDITEM95_WK
 
 @}}
-[FDITEM93_WK]
+[FDITEM96_WK]
 m_strName=TabID
 m_nItemLevel=1
 m_nSync=-1
@@ -1307,10 +1348,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM93_WK
+{{@DataItem_m_strDescriptionFDITEM96_WK
 
 @}}
-[FDITEM94_WK]
+[FDITEM97_WK]
 m_strName=min-id
 m_strRawPic=9(9)
 m_strPic=9(9)
@@ -1321,10 +1362,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM94_WK
+{{@DataItem_m_strDescriptionFDITEM97_WK
 
 @}}
-[FDITEM95_WK]
+[FDITEM98_WK]
 m_strName=max-id
 m_strRawPic=9(9)
 m_strPic=9(9)
@@ -1335,10 +1376,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM95_WK
+{{@DataItem_m_strDescriptionFDITEM98_WK
 
 @}}
-[FDITEM96_WK]
+[FDITEM99_WK]
 m_strName=OPENSAVE-STATUS
 m_strRawPic=S9(2)
 m_strPic=S9(2)
@@ -1351,10 +1392,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM96_WK
+{{@DataItem_m_strDescriptionFDITEM99_WK
 
 @}}
-[FDITEM97_WK]
+[FDITEM100_WK]
 m_strName=Form1-Tb-1-Handle
 m_nUsage=24
 m_nItemLevel=77
@@ -1364,10 +1405,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM97_WK
+{{@DataItem_m_strDescriptionFDITEM100_WK
 
 @}}
-[FDITEM98_WK]
+[FDITEM101_WK]
 m_strName=E-ESCI
 m_strRawPic=9
 m_strPic=9
@@ -1380,54 +1421,12 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM98_WK
-
-@}}
-[FDITEM99_WK]
-m_strName=Form1-St-1-Handle
-m_nUsage=51
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_strCopyFile=VARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM99_WK
-
-@}}
-[FDITEM100_WK]
-m_strName=data-oggi
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_strCopyFile=VARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM100_WK
-
-@}}
-[FDITEM101_WK]
-m_strName=toolbar-bmp
-m_nUsage=45
-m_strDefaultValue=0
-m_nItemLevel=77
-m_bValue=1
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_strCopyFile=VARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM101_WK
 
 @}}
 [FDITEM102_WK]
-m_strName=Default-Font
-m_nUsage=38
+m_strName=Form1-St-1-Handle
+m_nUsage=51
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1439,8 +1438,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM103_WK]
-m_strName=Small-Font
-m_nUsage=37
+m_strName=data-oggi
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1452,9 +1452,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM104_WK]
-m_strName=Form1-Pg-1-Visible
-m_strRawPic=9
-m_strPic=9
+m_strName=toolbar-bmp
+m_nUsage=45
 m_strDefaultValue=0
 m_nItemLevel=77
 m_bValue=1
@@ -1468,12 +1467,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM105_WK]
-m_strName=Form1-Pg-2-Visible
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=Default-Font
+m_nUsage=38
 m_nItemLevel=77
-m_bValue=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
@@ -1484,10 +1480,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM106_WK]
-m_strName=TITOLO
-m_strDefaultValue="Geslux - Visualizzazione Articolo"
-m_nItemLevel=78
-m_bValue=1
+m_strName=Small-Font
+m_nUsage=37
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
@@ -1498,7 +1493,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM107_WK]
-m_strName=mod-campi
+m_strName=Form1-Pg-1-Visible
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -1514,10 +1509,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM108_WK]
-m_strName=STATUS-tcodpag
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=Form1-Pg-2-Visible
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
 m_nItemLevel=77
+m_bValue=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
@@ -1528,11 +1525,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM109_WK]
-m_strName=Valid-STATUS-tcodpag
-m_nItemLevel=88
+m_strName=TITOLO
+m_strDefaultValue="Geslux - Visualizzazione Articolo"
+m_nItemLevel=78
+m_bValue=1
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
@@ -1541,10 +1539,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM110_WK]
-m_strName=STATUS-tivaese
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=mod-campi
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
 m_nItemLevel=77
+m_bValue=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
@@ -1555,6 +1555,47 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM111_WK]
+m_strName=STATUS-tcodpag
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_strCopyFile=VARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM111_WK
+
+@}}
+[FDITEM112_WK]
+m_strName=Valid-STATUS-tcodpag
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_strCopyFile=VARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM112_WK
+
+@}}
+[FDITEM113_WK]
+m_strName=STATUS-tivaese
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_strCopyFile=VARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM113_WK
+
+@}}
+[FDITEM114_WK]
 m_strName=Valid-STATUS-tivaese
 m_nItemLevel=88
 m_nSync=-1
@@ -1564,10 +1605,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM111_WK
+{{@DataItem_m_strDescriptionFDITEM114_WK
 
 @}}
-[FDITEM112_WK]
+[FDITEM115_WK]
 m_strName=STATUS-articoli
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -1578,10 +1619,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM112_WK
+{{@DataItem_m_strDescriptionFDITEM115_WK
 
 @}}
-[FDITEM113_WK]
+[FDITEM116_WK]
 m_strName=Valid-STATUS-articoli
 m_nItemLevel=88
 m_nSync=-1
@@ -1591,10 +1632,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM113_WK
+{{@DataItem_m_strDescriptionFDITEM116_WK
 
 @}}
-[FDITEM114_WK]
+[FDITEM117_WK]
 m_strName=STATUS-tcla1art
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -1605,10 +1646,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM114_WK
+{{@DataItem_m_strDescriptionFDITEM117_WK
 
 @}}
-[FDITEM115_WK]
+[FDITEM118_WK]
 m_strName=Valid-STATUS-tcla1art
 m_nItemLevel=88
 m_nSync=-1
@@ -1618,10 +1659,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM115_WK
+{{@DataItem_m_strDescriptionFDITEM118_WK
 
 @}}
-[FDITEM116_WK]
+[FDITEM119_WK]
 m_strName=STATUS-tnomen
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -1632,10 +1673,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM116_WK
+{{@DataItem_m_strDescriptionFDITEM119_WK
 
 @}}
-[FDITEM117_WK]
+[FDITEM120_WK]
 m_strName=Valid-STATUS-tnomen
 m_nItemLevel=88
 m_nSync=-1
@@ -1645,10 +1686,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM117_WK
+{{@DataItem_m_strDescriptionFDITEM120_WK
 
 @}}
-[FDITEM118_WK]
+[FDITEM121_WK]
 m_strName=STATUS-tudm
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -1659,10 +1700,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM118_WK
+{{@DataItem_m_strDescriptionFDITEM121_WK
 
 @}}
-[FDITEM119_WK]
+[FDITEM122_WK]
 m_strName=Valid-STATUS-tudm
 m_nItemLevel=88
 m_nSync=-1
@@ -1672,10 +1713,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM119_WK
+{{@DataItem_m_strDescriptionFDITEM122_WK
 
 @}}
-[FDITEM120_WK]
+[FDITEM123_WK]
 m_strName=STATUS-tmarche
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -1686,10 +1727,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM120_WK
+{{@DataItem_m_strDescriptionFDITEM123_WK
 
 @}}
-[FDITEM121_WK]
+[FDITEM124_WK]
 m_strName=Valid-STATUS-tmarche
 m_nItemLevel=88
 m_nSync=-1
@@ -1699,10 +1740,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM121_WK
+{{@DataItem_m_strDescriptionFDITEM124_WK
 
 @}}
-[FDITEM122_WK]
+[FDITEM125_WK]
 m_strName=STATUS-tsetmerc
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -1713,10 +1754,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM122_WK
+{{@DataItem_m_strDescriptionFDITEM125_WK
 
 @}}
-[FDITEM123_WK]
+[FDITEM126_WK]
 m_strName=Valid-STATUS-tsetmerc
 m_nItemLevel=88
 m_nSync=-1
@@ -1726,10 +1767,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM123_WK
+{{@DataItem_m_strDescriptionFDITEM126_WK
 
 @}}
-[FDITEM124_WK]
+[FDITEM127_WK]
 m_strName=STATUS-progmag
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -1740,10 +1781,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM124_WK
+{{@DataItem_m_strDescriptionFDITEM127_WK
 
 @}}
-[FDITEM125_WK]
+[FDITEM128_WK]
 m_strName=Valid-STATUS-progmag
 m_nItemLevel=88
 m_nSync=-1
@@ -1753,10 +1794,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM125_WK
+{{@DataItem_m_strDescriptionFDITEM128_WK
 
 @}}
-[FDITEM126_WK]
+[FDITEM129_WK]
 m_strName=STATUS-timballi
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -1767,10 +1808,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM126_WK
+{{@DataItem_m_strDescriptionFDITEM129_WK
 
 @}}
-[FDITEM127_WK]
+[FDITEM130_WK]
 m_strName=Valid-STATUS-timballi
 m_nItemLevel=88
 m_nSync=-1
@@ -1780,10 +1821,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM127_WK
+{{@DataItem_m_strDescriptionFDITEM130_WK
 
 @}}
-[FDITEM128_WK]
+[FDITEM131_WK]
 m_strName=mod-imposte
 m_strRawPic=9
 m_strPic=9
@@ -1796,10 +1837,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM128_WK
+{{@DataItem_m_strDescriptionFDITEM131_WK
 
 @}}
-[FDITEM129_WK]
+[FDITEM132_WK]
 m_strName=mod-cobat
 m_strRawPic=9
 m_strPic=9
@@ -1812,55 +1853,13 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM129_WK
-
-@}}
-[FDITEM130_WK]
-m_strName=cbo-utf-buf
-m_strRawPic=X(12)
-m_strPic=X(12)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_strCopyFile=VARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM130_WK
-
-@}}
-[FDITEM131_WK]
-m_strName=cbo-cobat-buf
-m_strRawPic=x(4)
-m_strPic=X(4)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_strCopyFile=VARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM131_WK
-
-@}}
-[FDITEM132_WK]
-m_strName=cbo-stato-buf
-m_strRawPic=X(9)
-m_strPic=X(9)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_strCopyFile=VARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM132_WK
 
 @}}
 [FDITEM133_WK]
-m_strName=STATUS-tparamge
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=cbo-utf-buf
+m_strRawPic=X(12)
+m_strPic=X(12)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1872,11 +1871,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM134_WK]
-m_strName=Valid-STATUS-tparamge
-m_nItemLevel=88
+m_strName=cbo-cobat-buf
+m_strRawPic=x(4)
+m_strPic=X(4)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
@@ -1885,9 +1885,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM135_WK]
-m_strName=STATUS-timbalqta
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=cbo-stato-buf
+m_strRawPic=X(9)
+m_strPic=X(9)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1899,11 +1899,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM136_WK]
-m_strName=Valid-STATUS-timbalqta
-m_nItemLevel=88
+m_strName=STATUS-tparamge
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
@@ -1912,12 +1913,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM137_WK]
-m_strName=lab-iva-buf
-m_strRawPic=x(100)
-m_strPic=X(100)
-m_nItemLevel=77
+m_strName=Valid-STATUS-tparamge
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
@@ -1926,9 +1926,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM138_WK]
-m_strName=lab-imballo-buf
-m_strRawPic=x(100)
-m_strPic=X(100)
+m_strName=STATUS-timbalqta
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1940,21 +1940,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM139_WK]
-m_strName=STATUS-clienti
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_strCopyFile=VARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM139_WK
-
-@}}
-[FDITEM140_WK]
-m_strName=Valid-STATUS-clienti
+m_strName=Valid-STATUS-timbalqta
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -1963,13 +1949,27 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM139_WK
+
+@}}
+[FDITEM140_WK]
+m_strName=lab-iva-buf
+m_strRawPic=x(100)
+m_strPic=X(100)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_strCopyFile=VARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM140_WK
 
 @}}
 [FDITEM141_WK]
-m_strName=STATUS-tmagaz
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=lab-imballo-buf
+m_strRawPic=x(100)
+m_strPic=X(100)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1981,6 +1981,47 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM142_WK]
+m_strName=STATUS-clienti
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_strCopyFile=VARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM142_WK
+
+@}}
+[FDITEM143_WK]
+m_strName=Valid-STATUS-clienti
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_strCopyFile=VARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM143_WK
+
+@}}
+[FDITEM144_WK]
+m_strName=STATUS-tmagaz
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_strCopyFile=VARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM144_WK
+
+@}}
+[FDITEM145_WK]
 m_strName=Valid-STATUS-tmagaz
 m_nItemLevel=88
 m_nSync=-1
@@ -1990,10 +2031,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM142_WK
+{{@DataItem_m_strDescriptionFDITEM145_WK
 
 @}}
-[FDITEM143_WK]
+[FDITEM146_WK]
 m_strName=STATUS-distinteb
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -2004,10 +2045,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM143_WK
+{{@DataItem_m_strDescriptionFDITEM146_WK
 
 @}}
-[FDITEM144_WK]
+[FDITEM147_WK]
 m_strName=Valid-STATUS-distinteb
 m_nItemLevel=88
 m_nSync=-1
@@ -2017,10 +2058,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM144_WK
+{{@DataItem_m_strDescriptionFDITEM147_WK
 
 @}}
-[FDITEM145_WK]
+[FDITEM148_WK]
 m_strName=Verdana12-Occidentale
 m_nUsage=26
 m_nItemLevel=77
@@ -2030,11 +2071,11 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM145_WK
+{{@DataItem_m_strDescriptionFDITEM148_WK
 
 @}}
-[FDITEM146_WK]
-m_strName=v-limite
+[FDITEM149_WK]
+m_strName=v-moq
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=1
@@ -2046,11 +2087,12 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM146_WK
+{{@DataItem_m_strDescriptionFDITEM149_WK
  77 ef-ean-buf       PIC  9(13).
 
+
 @}}
-[FDITEM147_WK]
+[FDITEM150_WK]
 m_strName=STATUS-rmovmag
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -2061,10 +2103,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM147_WK
+{{@DataItem_m_strDescriptionFDITEM150_WK
 
 @}}
-[FDITEM148_WK]
+[FDITEM151_WK]
 m_strName=Valid-STATUS-rmovmag
 m_nItemLevel=88
 m_nSync=-1
@@ -2074,10 +2116,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM148_WK
+{{@DataItem_m_strDescriptionFDITEM151_WK
 
 @}}
-[FDITEM149_WK]
+[FDITEM152_WK]
 m_strName=STATUS-rordini
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -2088,10 +2130,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM149_WK
+{{@DataItem_m_strDescriptionFDITEM152_WK
 
 @}}
-[FDITEM150_WK]
+[FDITEM153_WK]
 m_strName=Valid-STATUS-rordini
 m_nItemLevel=88
 m_nSync=-1
@@ -2101,10 +2143,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM150_WK
+{{@DataItem_m_strDescriptionFDITEM153_WK
 
 @}}
-[FDITEM151_WK]
+[FDITEM154_WK]
 m_strName=STATUS-rnotacr
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -2115,10 +2157,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM151_WK
+{{@DataItem_m_strDescriptionFDITEM154_WK
 
 @}}
-[FDITEM152_WK]
+[FDITEM155_WK]
 m_strName=Valid-STATUS-rnotacr
 m_nItemLevel=88
 m_nSync=-1
@@ -2128,10 +2170,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM152_WK
+{{@DataItem_m_strDescriptionFDITEM155_WK
 
 @}}
-[FDITEM153_WK]
+[FDITEM156_WK]
 m_strName=STATUS-brnotacr
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -2142,10 +2184,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM153_WK
+{{@DataItem_m_strDescriptionFDITEM156_WK
 
 @}}
-[FDITEM154_WK]
+[FDITEM157_WK]
 m_strName=Valid-STATUS-brnotacr
 m_nItemLevel=88
 m_nSync=-1
@@ -2155,10 +2197,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM154_WK
+{{@DataItem_m_strDescriptionFDITEM157_WK
 
 @}}
-[FDITEM155_WK]
+[FDITEM158_WK]
 m_strName=STATUS-tscorte
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -2169,10 +2211,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM155_WK
+{{@DataItem_m_strDescriptionFDITEM158_WK
 
 @}}
-[FDITEM156_WK]
+[FDITEM159_WK]
 m_strName=Valid-STATUS-tscorte
 m_nItemLevel=88
 m_nSync=-1
@@ -2182,10 +2224,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM156_WK
+{{@DataItem_m_strDescriptionFDITEM159_WK
 
 @}}
-[FDITEM157_WK]
+[FDITEM160_WK]
 m_strName=STATUS-rlistini
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -2196,10 +2238,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM157_WK
+{{@DataItem_m_strDescriptionFDITEM160_WK
 
 @}}
-[FDITEM158_WK]
+[FDITEM161_WK]
 m_strName=Valid-STATUS-rlistini
 m_nItemLevel=88
 m_nSync=-1
@@ -2209,10 +2251,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM158_WK
+{{@DataItem_m_strDescriptionFDITEM161_WK
 
 @}}
-[FDITEM159_WK]
+[FDITEM162_WK]
 m_strName=Form1-Pg-3-Visible
 m_strRawPic=9
 m_strPic=9
@@ -2225,54 +2267,12 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM159_WK
-
-@}}
-[FDITEM160_WK]
-m_strName=rec-grid
-m_nItemLevel=1
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_strCopyFile=VARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM160_WK
-
-@}}
-[FDITEM161_WK]
-m_strName=col-nulla
-m_strRawPic=X
-m_strPic=X
-m_nItemLevel=5
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_strCopyFile=VARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM161_WK
-
-@}}
-[FDITEM162_WK]
-m_strName=col-forn
-m_strRawPic=z(5)
-m_strPic=Z(5)
-m_nItemLevel=5
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_strCopyFile=VARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM162_WK
 
 @}}
 [FDITEM163_WK]
-m_strName=col-descr-forn
-m_strRawPic=x(30)
-m_strPic=X(30)
-m_nItemLevel=5
+m_strName=rec-grid
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
@@ -2283,9 +2283,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM164_WK]
-m_strName=col-data-da
-m_strRawPic=99/99/9999
-m_strPic=99/99/9999
+m_strName=col-nulla
+m_strRawPic=X
+m_strPic=X
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -2297,9 +2297,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM165_WK]
-m_strName=col-data-a
-m_strRawPic=99/99/9999
-m_strPic=99/99/9999
+m_strName=col-forn
+m_strRawPic=z(5)
+m_strPic=Z(5)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -2311,9 +2311,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM166_WK]
-m_strName=col-art-forn
-m_strRawPic=x(20)
-m_strPic=X(20)
+m_strName=col-descr-forn
+m_strRawPic=x(100)
+m_strPic=X(100)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -2325,9 +2325,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM167_WK]
-m_strName=col-prz-fint
-m_strRawPic=zzz.zz9,9999
-m_strPic=ZZZ.ZZ9,9999
+m_strName=col-data-da
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -2339,9 +2339,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM168_WK]
-m_strName=col-prz-conf
-m_strRawPic=zzz.zz9,9999
-m_strPic=ZZZ.ZZ9,9999
+m_strName=col-data-a
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -2353,10 +2353,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM169_WK]
-m_strName=old-forn
-m_strRawPic=9(5)
-m_strPic=9(5)
-m_nItemLevel=77
+m_strName=col-art-forn
+m_strRawPic=x(20)
+m_strPic=X(20)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
@@ -2367,6 +2367,48 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM170_WK]
+m_strName=col-prz-fint
+m_strRawPic=zzz.zz9,9999
+m_strPic=ZZZ.ZZ9,9999
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_strCopyFile=VARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM170_WK
+
+@}}
+[FDITEM171_WK]
+m_strName=col-prz-conf
+m_strRawPic=zzz.zz9,9999
+m_strPic=ZZZ.ZZ9,9999
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_strCopyFile=VARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM171_WK
+
+@}}
+[FDITEM172_WK]
+m_strName=old-forn
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_strCopyFile=VARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM172_WK
+
+@}}
+[FDITEM173_WK]
 m_strName=elemento-bmp
 m_strRawPic=s9(9)
 m_strPic=S9(9)
@@ -2380,10 +2422,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM170_WK
+{{@DataItem_m_strDescriptionFDITEM173_WK
 
 @}}
-[FDITEM171_WK]
+[FDITEM174_WK]
 m_strName=font-evidenzia-griglia
 m_nUsage=26
 m_nItemLevel=77
@@ -2393,10 +2435,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM171_WK
+{{@DataItem_m_strDescriptionFDITEM174_WK
 
 @}}
-[FDITEM172_WK]
+[FDITEM175_WK]
 m_strName=riga-old
 m_strRawPic=9(3)
 m_strPic=9(3)
@@ -2407,10 +2449,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM172_WK
+{{@DataItem_m_strDescriptionFDITEM175_WK
 
 @}}
-[FDITEM173_WK]
+[FDITEM176_WK]
 m_strName=v-reale
 m_strRawPic=9
 m_strPic=9
@@ -2423,55 +2465,13 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM173_WK
-
-@}}
-[FDITEM174_WK]
-m_strName=lab-coll-buf
-m_strRawPic=x(100)
-m_strPic=X(100)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_strCopyFile=VARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM174_WK
-
-@}}
-[FDITEM175_WK]
-m_strName=FILLER
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=1
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_strCopyFile=VARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM175_WK
-
-@}}
-[FDITEM176_WK]
-m_strName=rec-ok
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue=1
-m_strFalse=zero
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_strCopyFile=VARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM176_WK
 
 @}}
 [FDITEM177_WK]
-m_strName=como-altezza
-m_strRawPic=9(10)v99
-m_strPic=9(10)V99
+m_strName=lab-coll-buf
+m_strRawPic=x(100)
+m_strPic=X(100)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2483,10 +2483,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM178_WK]
-m_strName=como-larghezza
-m_strRawPic=9(10)v99
-m_strPic=9(10)V99
-m_nItemLevel=77
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
@@ -2497,12 +2497,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM179_WK]
-m_strName=como-profondita
-m_strRawPic=9(10)v99
-m_strPic=9(10)V99
-m_nItemLevel=77
+m_strName=rec-ok
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue=1
+m_strFalse=zero
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
@@ -2511,9 +2511,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM180_WK]
-m_strName=como-qta-EPAL
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=como-altezza
+m_strRawPic=9(10)v99
+m_strPic=9(10)V99
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2525,9 +2525,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM181_WK]
-m_strName=como-qta-STD
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=como-larghezza
+m_strRawPic=9(10)v99
+m_strPic=9(10)V99
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2539,9 +2539,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM182_WK]
-m_strName=como-scorta
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=como-profondita
+m_strRawPic=9(10)v99
+m_strPic=9(10)V99
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2553,9 +2553,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM183_WK]
-m_strName=como-peso
-m_strRawPic=9(6)v999
-m_strPic=9(6)V999
+m_strName=como-qta-EPAL
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2567,6 +2567,48 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM184_WK]
+m_strName=como-qta-STD
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_strCopyFile=VARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM184_WK
+
+@}}
+[FDITEM185_WK]
+m_strName=como-scorta
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_strCopyFile=VARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM185_WK
+
+@}}
+[FDITEM186_WK]
+m_strName=como-peso
+m_strRawPic=9(6)v999
+m_strPic=9(6)V999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_strCopyFile=VARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM186_WK
+
+@}}
+[FDITEM187_WK]
 m_strName=peso-inserito
 m_strRawPic=9(6)v999
 m_strPic=9(6)V999
@@ -2577,7 +2619,7 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_strCopyFile=VARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\VARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM184_WK
+{{@DataItem_m_strDescriptionFDITEM187_WK
 
 @}}
 
@@ -4402,12 +4444,12 @@ Begin Screen Form1
             Before Procedure  = Form1-Cm-1-BeforeProcedure
             After Procedure   = Form1-Cm-1-AfterProcedure
          End
-         Begin Data.Entry-Field ef-limite
+         Begin Data.Entry-Field ef-moq
             SCREEN-COL        = 155,00
             SCREEN-LINE       = 25,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
-            (Name)            = ef-limite
+            (Name)            = ef-moq
             Auto              = FALSE
             Auto Decimal      = 0
             Border            = Boxed
@@ -4426,7 +4468,7 @@ Begin Screen Form1
             Field Edited (Style) = 1
             Field Edited Format = z(8)
             Field Picture     = 9(8)
-            Field Variable    = art-limite-scorta of articoli
+            Field Variable    = art-moq of articoli
             File              = articoli
             Font              = Small Font
             Font Variable     = Small-Font
@@ -4459,7 +4501,7 @@ Begin Screen Form1
             Use Tab           = FALSE
             Value Multiple    = FALSE
             Visible           = NONE
-            Visible Variable  = v-limite
+            Visible Variable  = v-moq
             Width in Cells    = TRUE
             Before Procedure  = ef-perce-imposte-BeforeProcedure
             After Procedure   = ef-perce-imposte-AfterProcedure
@@ -8742,12 +8784,12 @@ Begin Screen Form1
             Visible           = NONE
             Width in Cells    = TRUE
          End
-         Begin Label lab-limite
+         Begin Label lab-moq
             SCREEN-COL        = 140,67
             SCREEN-LINE       = 25,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
-            (Name)            = lab-limite
+            (Name)            = lab-moq
             Clines            = 0
             Clines Unit       = Default
             Color             = 0
@@ -8771,10 +8813,10 @@ Begin Screen Form1
             Size              = 13,00
             Size Unit         = Default
             Tab Order         = 130
-            Title             = "Max scorta (pz)"
+            Title             = "MOQ"
             Transparent       = TRUE
             Visible           = NONE
-            Visible Variable  = v-limite
+            Visible Variable  = v-moq
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-33aba
@@ -14341,9 +14383,9 @@ BEGIN-TEXT
               move ef-scorta-buf to art-scorta of articoli
               if art-scorta of articoli = 5 or
                  art-scorta of articoli = 7
-                 move 1 to v-limite
+                 move 1 to v-moq
               else
-                 move 0 to v-limite
+                 move 0 to v-moq
               end-if
               if art-scorta of articoli = 9
                  move 1 to v-reale
@@ -14351,10 +14393,10 @@ BEGIN-TEXT
                  move 0 to v-reale
               end-if
            else
-              move 0 to v-limite
+              move 0 to v-moq
               move 0 to v-reale
            end-if.
-           display ef-limite ef-reale            
+           display ef-moq ef-reale            
 END-TEXT
 END-DATA
 BEGIN-DATA

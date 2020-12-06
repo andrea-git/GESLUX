@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 26 novembre 2020 11:00:50.
+       DATE-WRITTEN.        domenica 6 dicembre 2020 00:49:09.
        REMARKS.
       *{TOTEM}END
 
@@ -144,6 +144,7 @@
            COPY  "MAIL.DEF".
            COPY  "TROVA-PARAMETRO.DEF".
        77 como-giorno      PIC  9.
+       77 LinkAuto         PIC  9.
        77 como-mese        PIC  99.
        77 FILLER           PIC  9.
            88 solo-uscita VALUE IS 1    WHEN SET TO FALSE  0. 
@@ -11263,11 +11264,18 @@
 
            move "RICHIAMO PROGRAMMA CREA-ORDFOR" to como-riga.
            perform SCRIVI-RIGA-LOG.
-
+                                        
+           if LK-BL-PROG-ID = "desktop"
+              move 1 to LinkAuto
+           else
+              move 0 to LinkAuto
+           end-if.
+              
            call   "crea-ordfor" using scr-ordfor-handle, 
                                       primo-numero, 
                                       ultimo-numero,
-                                      user-codi.
+                                      user-codi
+                                      LinkAuto.
            cancel "crea-ordfor".          
 
            move "FINE RICHIAMO PROGRAMMA CREA-ORDFOR" to como-riga.

@@ -114,8 +114,8 @@
          05 filler                     pic x(2).
          05 r-mag-descrizione          pic x(30).
          05 filler                     pic x(5).
-         05 r-tit-limite-scorta        pic x(12).
-         05 r-limite-scorta            pic z(7) blank zero.
+         05 r-tit-moq                  pic x(12).
+         05 r-moq                      pic z(7) blank zero.
 
        01  r4.
          05 filler                     pic x(19) value "Classe 1".
@@ -992,9 +992,9 @@
               read tmagaz no lock invalid continue end-read
               move mag-descrizione to r-mag-descrizione
 
-              if art-limite-scorta not = 0
-                 move "Mx Scorta pz"    to r-tit-limite-scorta
-                 move art-limite-scorta to r-limite-scorta
+              if art-moq not = 0
+                 move "MOQ"    to r-tit-moq
+                 move art-moq to r-moq
               end-if
 
               move r3 to spl-riga-stampa
@@ -1147,9 +1147,9 @@
                  move art-codice-ean-2 to r-art-codice-ean-2
               end-if
               
-              if art-limite-scorta not = 0
-                 move "Mx Scorta pz"    to r-tit-limite-scorta
-                 move art-limite-scorta to r-limite-scorta
+              if art-moq not = 0
+                 move "MOQ"    to r-tit-moq
+                 move art-moq to r-moq
               end-if
 
               move r11 to spl-riga-stampa

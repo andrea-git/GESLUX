@@ -219,7 +219,7 @@
        77 como-perce-cou               pic x(20).
        77 como-prezzo-banco            pic x(20).
        77 como-prz-min-vend            pic x(20).
-       77 como-limite-scorta           pic x(20).
+       77 como-moq                     pic x(20).
        77 como-codice-ean-1            pic x(20).
        77 como-codice-ean-2            pic x(20).
        77 como-codice-ean-3            pic x(20).
@@ -454,7 +454,7 @@
                             art-scorta                 of articoli 
                             como-prezzo-banco   
                             como-prz-min-vend   
-                            como-limite-scorta  
+                            como-moq
                             art-do                     of articoli
                             art-cod-art-frn            of articoli
                             art-mag-std                of articoli
@@ -1070,9 +1070,9 @@ LUBEXX     if tutto-ok
            move como-prz-min-vend           to NumericEdi
            perform TRATTA-NUMERICO
            move como-numero to art-prz-min-vend of articoli
-           move como-limite-scorta          to NumericEdi
+           move como-moq            to NumericEdi
            perform TRATTA-NUMERICO
-           move como-numero to art-limite-scorta of articoli
+           move como-numero to art-moq of articoli
 
            |Il primo carattere dev'essere un valore da scartare ed
            |essere riempiti completamente di 13 caratteri successivi
@@ -1293,7 +1293,7 @@ LUBEXX     if tutto-ok
 
            if art-scorta of articoli = 5 or 
               art-scorta of articoli = 7 and
-              art-limite-scorta of articoli = 0
+              art-moq    of articoli = 0
               set errori    to true
               set no-limite to true
               exit paragraph

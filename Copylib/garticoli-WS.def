@@ -224,7 +224,7 @@
        77 Verdana12-Occidentale
                   USAGE IS HANDLE OF FONT.
        77 ef-ean-buf       PIC  9(13).
-       77 v-limite         PIC  9
+       77 v-moq         PIC  9
                   VALUE IS 1.
        77 STATUS-rmovmag   PIC  X(2).
            88 Valid-STATUS-rmovmag VALUE IS "00" THRU "09". 
@@ -386,7 +386,7 @@
                10 old-art-scorta   PIC  s9(8).
                10 old-art-prezzo-banco         PIC  9(6)v9(2).
                10 old-art-prz-min-vend         PIC  9(5)v9(2).
-               10 old-art-limite-scorta        PIC  9(8).
+               10 old-art-moq      PIC  9(8).
                10 old-art-peso-reale           PIC  9(5)v999.
                10 old-art-do       PIC  9.
                    88 old-art-si-do VALUE IS 1. 
@@ -456,5 +456,5 @@
        77 last-codice      PIC  9(6).
        77 old-ultimo-elemento          PIC  9(4).
        77 old-last-codice  PIC  9(6).
-       77 cont  pic 9(10).
-       77 resto pic 9(10).
+       77 cont PIC  9(10).
+       77 resto            PIC  9(10).

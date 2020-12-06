@@ -457,11 +457,11 @@
        GARTICOLI-AFTER-FLD-TO-BUF.
            if art-scorta of articoli = 5 or
               art-scorta of articoli = 7
-              move 1 to v-limite
+              move 1 to v-moq
            else
-              move 0 to v-limite
+              move 0 to v-moq
            end-if.
-           display lab-limite ef-limite.
+           display lab-moq ef-moq.
            if art-scorta of articoli = 9
               move 1 to v-reale
            else

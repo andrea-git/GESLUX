@@ -185,9 +185,14 @@
        77  LinkFirst             pic 9(8).
        77  LinkLast              pic 9(8).
        77  LinkUser              pic x(20).
+       77  LinkAuto              pic 9.
 
       ******************************************************************
-       PROCEDURE DIVISION USING link-handle LinkFirst LinkLast LinkUser.
+       PROCEDURE DIVISION USING link-handle 
+                                LinkFirst 
+                                LinkLast 
+                                LinkUser 
+                                LinkAuto.
 
        DECLARATIVES.
       ***---
@@ -1495,6 +1500,19 @@
            move cpfm-qta-m(1) to rof-qta-ord.
 
            perform QTA-EPAL.
+
+           if LinkAuto = 1
+              move art-scorta to sco-codice
+              read tscorte no lock
+                   invalid continue
+               not invalid
+                   if sco-moq-si
+                      if rof-qta-ord < art-moq
+                         move art-moq to rof-qta-ord
+                      end-if
+                   end-if
+              end-read
+           end-if.
 
            if cli-iva-ese = spaces
               move art-codice-iva to rof-cod-iva

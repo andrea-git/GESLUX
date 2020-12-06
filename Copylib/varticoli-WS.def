@@ -117,7 +117,7 @@
                   USAGE IS HANDLE OF FONT.
       * 77 ef-ean-buf       PIC  9(13).
       *
-       77 v-limite         PIC  9
+       77 v-moq         PIC  9
                   VALUE IS 1.
        77 STATUS-rmovmag   PIC  X(2).
            88 Valid-STATUS-rmovmag VALUE IS "00" THRU "09". 

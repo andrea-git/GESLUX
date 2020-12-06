@@ -325,7 +325,7 @@
                   separatore
                   sco-descrizione
                   separatore
-                  art-limite-scorta               
+                  art-moq
                   separatore
                   r-art-prezzo-banco                
                   separatore

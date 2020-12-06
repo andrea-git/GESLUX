@@ -128,7 +128,7 @@
                10 old-art-scorta       PIC  s9(8).
                10 old-art-prezzo-banco PIC  9(6)v9(2).
                10 old-art-prz-min-vend PIC  9(5)v9(2).
-               10 old-art-limite-scorta            PIC  9(8).
+               10 old-art-moq            PIC  9(8).
                10 old-art-peso-reale   PIC  9(3)v999.
                10 old-art-do           PIC  9.
                    88 old-art-si-do VALUE IS 1. 
@@ -295,7 +295,7 @@
            move old-art-scorta               to art-scorta               
            move old-art-prezzo-banco         to art-prezzo-banco         
            move old-art-prz-min-vend         to art-prz-min-vend         
-           move old-art-limite-scorta        to art-limite-scorta        
+           move old-art-moq                  to art-moq
            move old-art-peso-reale           to art-peso-reale           
            move old-art-do                   to art-do                   
            move old-art-cod-art-frn          to art-cod-art-frn      

@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          varticoli.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        mercoledì 10 agosto 2016 13:38:53.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        domenica 6 dicembre 2020 01:16:43.
        REMARKS.
       *{TOTEM}END
 
@@ -114,7 +114,7 @@
                COPY "opensave.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -193,7 +193,7 @@
       * Data.Entry-Field
               10 ef-amperaggio-BUF PIC zz9.
       * Data.Entry-Field
-              10 ef-limite-BUF PIC z(8).
+              10 ef-moq-BUF PIC z(8).
       * Data.Entry-Field
               10 ef-prezzo-acq-BUF PIC zzz.zzz.zz9,99.
       * Data.Entry-Field
@@ -227,6 +227,7 @@
               10 ef-ean-5-VALUEBUF PIC 9(13).
       * Data.Entry-Field
               10 ef-art-for-BUF PIC X(15).
+              10 ef-art-for-VALUEBUF PIC X(15).
       * Data.Entry-Field
               10 ef-forn-BUF PIC z(5).
       * Data.Entry-Field
@@ -604,6 +605,7 @@
        77 rordini-ror-k-articolo-SPLITBUF  PIC X(24).
        77 rordini-ror-k-master-SPLITBUF  PIC X(35).
        77 rordini-ror-k-stbolle-SPLITBUF  PIC X(30).
+       77 rordini-ror-k-ord-art-SPLITBUF  PIC X(19).
        77 rnotacr-rno-k-articolo-SPLITBUF  PIC X(24).
        77 brnotacr-brno-k-articolo-SPLITBUF  PIC X(25).
        77 rlistini-rlis-k-art-SPLITBUF  PIC X(33).
@@ -611,10 +613,12 @@
        77 destinif-K1-SPLITBUF  PIC X(51).
        77 destinif-desf-k2-SPLITBUF  PIC X(51).
        77 articoli1-art-k1-SPLITBUF  PIC X(51).
+       77 articoli1-art-k-frn-SPLITBUF  PIC X(16).
        77 mrordini-mro-k-promo-SPLITBUF  PIC X(33).
        77 mrordini-mro-k-articolo-SPLITBUF  PIC X(24).
        77 mrordini-mro-k-progr-SPLITBUF  PIC X(18).
        77 mrordini-mro-k-tprev-SPLITBUF  PIC X(39).
+       77 mrordini-mro-k-ord-art-SPLITBUF  PIC X(19).
        77 reva-reva-k-articolo-SPLITBUF  PIC X(26).
        77 rordforn-rof-k-articolo-SPLITBUF  PIC X(24).
        77 rordforn-rof-k-art-mag-SPLITBUF  PIC X(27).
@@ -622,6 +626,7 @@
        77 blister-k-magaz-SPLITBUF  PIC X(10).
        77 blister-k-des-SPLITBUF  PIC X(51).
        77 articoli-art-k1-SPLITBUF  PIC X(51).
+       77 articoli-art-k-frn-SPLITBUF  PIC X(16).
       * FOR SPLIT KEY BUFFER
        77 DataSet1-articoli-SPLIT-BUF2   PIC X(51).
 
@@ -659,7 +664,7 @@
        78  78-ID-chk-cobat VALUE 5027.
        78  78-ID-ef-amperaggio VALUE 5028.
        78  78-ID-cbo-cobat VALUE 5029.
-       78  78-ID-ef-limite VALUE 5030.
+       78  78-ID-ef-moq VALUE 5030.
        78  78-ID-ef-prezzo-acq VALUE 5031.
        78  78-ID-ef-sconto-acquisto VALUE 5032.
        78  78-ID-ef-prz-vend VALUE 5033.
@@ -1288,7 +1293,7 @@
            .
       * ENTRY FIELD
        10
-           ef-limite, 
+           ef-moq, 
            Entry-Field, 
            COL 155,00, 
            LINE 25,69,
@@ -1297,14 +1302,14 @@
            BOXED,
            COLOR IS 513,
            FONT IS Small-Font,
-           ID IS 78-ID-ef-limite,                
+           ID IS 78-ID-ef-moq,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RIGHT,
            MAX-TEXT 8,
            READ-ONLY,
-           VALUE ef-limite-BUF,
-           VISIBLE v-limite,
+           VALUE ef-moq-BUF,
+           VISIBLE v-moq,
            .
       * ENTRY FIELD
        10
@@ -3022,7 +3027,7 @@
 
       * LABEL
        10
-           lab-limite, 
+           lab-moq, 
            Label, 
            COL 140,67, 
            LINE 25,69,
@@ -3033,8 +3038,8 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
-           TITLE "Max scorta (pz)",
-           VISIBLE v-limite,
+           TITLE "MOQ",
+           VISIBLE v-moq,
            .
 
       * LABEL
@@ -8058,6 +8063,16 @@
            rordini-ror-k-stbolle-SPLITBUF(13:17)
            .
 
+       rordini-ror-k-ord-art-MERGE-SPLITBUF.
+           INITIALIZE rordini-ror-k-ord-art-SPLITBUF
+           MOVE ror-anno OF rordini(1:4) TO 
+           rordini-ror-k-ord-art-SPLITBUF(1:4)
+           MOVE ror-num-ordine OF rordini(1:8) TO 
+           rordini-ror-k-ord-art-SPLITBUF(5:8)
+           MOVE ror-cod-articolo OF rordini(1:6) TO 
+           rordini-ror-k-ord-art-SPLITBUF(13:6)
+           .
+
        DataSet1-rordini-INITSTART.
            IF DataSet1-rordini-KEY-Asc
               MOVE Low-Value TO ror-chiave of rordini
@@ -8123,6 +8138,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT 
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -8154,6 +8170,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -8185,6 +8202,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -9218,6 +9236,12 @@
            articoli1-art-k1-SPLITBUF(1:50)
            .
 
+       articoli1-art-k-frn-MERGE-SPLITBUF.
+           INITIALIZE articoli1-art-k-frn-SPLITBUF
+           MOVE art-cod-art-frn OF articoli(1:15) TO 
+           articoli1-art-k-frn-SPLITBUF(1:15)
+           .
+
        DataSet1-articoli1-INITSTART.
            IF DataSet1-articoli1-KEY-Asc
               MOVE Low-Value TO art-chiave OF articoli1
@@ -9280,6 +9304,7 @@
               KEY art-chiave OF articoli1
            END-IF
            PERFORM articoli1-art-k1-MERGE-SPLITBUF
+           PERFORM articoli1-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli1 TO TOTEM-ERR-STAT 
            MOVE "articoli1" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -9308,6 +9333,7 @@
               END-IF
            END-IF
            PERFORM articoli1-art-k1-MERGE-SPLITBUF
+           PERFORM articoli1-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli1 TO TOTEM-ERR-STAT
            MOVE "articoli1" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -9336,6 +9362,7 @@
               END-IF
            END-IF
            PERFORM articoli1-art-k1-MERGE-SPLITBUF
+           PERFORM articoli1-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli1 TO TOTEM-ERR-STAT
            MOVE "articoli1" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -9404,6 +9431,14 @@
            MOVE mro-chiave(1:17) TO mrordini-mro-k-tprev-SPLITBUF(22:17)
            .
 
+       mrordini-mro-k-ord-art-MERGE-SPLITBUF.
+           INITIALIZE mrordini-mro-k-ord-art-SPLITBUF
+           MOVE mro-chiave-testa(1:12) TO 
+           mrordini-mro-k-ord-art-SPLITBUF(1:12)
+           MOVE mro-cod-articolo(1:6) TO 
+           mrordini-mro-k-ord-art-SPLITBUF(13:6)
+           .
+
        DataSet1-mrordini-INITSTART.
            IF DataSet1-mrordini-KEY-Asc
               MOVE Low-Value TO mro-chiave
@@ -9469,6 +9504,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT 
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -9500,6 +9536,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -9531,6 +9568,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -10944,6 +10982,12 @@
            articoli-art-k1-SPLITBUF(1:50)
            .
 
+       articoli-art-k-frn-MERGE-SPLITBUF.
+           INITIALIZE articoli-art-k-frn-SPLITBUF
+           MOVE art-cod-art-frn OF articoli(1:15) TO 
+           articoli-art-k-frn-SPLITBUF(1:15)
+           .
+
        DataSet1-articoli-INITSTART.
            EVALUATE DataSet1-KEYIS
            WHEN 1
@@ -11120,6 +11164,7 @@
               END-IF
            END-EVALUATE
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT 
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -11165,6 +11210,7 @@
               END-IF
            END-EVALUATE
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -11210,6 +11256,7 @@
               END-IF
            END-EVALUATE
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -12553,9 +12600,9 @@
                MOVE 5028 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
-      * ef-limite's Validation
+      * ef-moq's Validation
            SET TOTEM-CHECK-OK TO FALSE
-           PERFORM ef-limite-VALIDATION
+           PERFORM ef-moq-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
@@ -13616,21 +13663,21 @@
            PERFORM ef-amperaggio-AFTER-VALIDATION
            .
 
-       ef-limite-BEFORE-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-limite, BeforeValidation>
+       ef-moq-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-moq, BeforeValidation>
       * <TOTEM:END>
            .
 
-       ef-limite-AFTER-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-limite, AfterValidation>
+       ef-moq-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-moq, AfterValidation>
       * <TOTEM:END>
            .
 
-      * ef-limite's Validation
-       ef-limite-VALIDATION.
-           PERFORM ef-limite-BEFORE-VALIDATION
+      * ef-moq's Validation
+       ef-moq-VALIDATION.
+           PERFORM ef-moq-BEFORE-VALIDATION
            SET TOTEM-CHECK-OK TO TRUE
-           PERFORM ef-limite-AFTER-VALIDATION
+           PERFORM ef-moq-AFTER-VALIDATION
            .
 
        ef-prezzo-acq-BEFORE-VALIDATION.
@@ -14826,8 +14873,8 @@
               END-IF
       * DB_Entry-Field : ef-amperaggio
            MOVE ef-amperaggio-BUF TO art-amperaggio of articoli
-      * DB_Entry-Field : ef-limite
-           MOVE ef-limite-BUF TO art-limite-scorta of articoli
+      * DB_Entry-Field : ef-moq
+           MOVE ef-moq-BUF TO art-moq of articoli
       * DB_Entry-Field : ef-prezzo-acq
            MOVE ef-prezzo-acq-BUF TO art-prezzo-acquisto of articoli
       * DB_Entry-Field : ef-sconto-acquisto
@@ -15087,8 +15134,8 @@
               END-IF
       * DB_Entry-Field : ef-amperaggio
            MOVE art-amperaggio of articoli TO ef-amperaggio-BUF
-      * DB_Entry-Field : ef-limite
-           MOVE art-limite-scorta of articoli TO ef-limite-BUF
+      * DB_Entry-Field : ef-moq
+           MOVE art-moq of articoli TO ef-moq-BUF
       * DB_Entry-Field : ef-prezzo-acq
            MOVE art-prezzo-acquisto of articoli TO ef-prezzo-acq-BUF
       * DB_Entry-Field : ef-sconto-acquisto
@@ -16363,9 +16410,9 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
-              INQUIRE ef-limite, VALUE IN art-limite-scorta of articoli
+              INQUIRE ef-moq, VALUE IN art-moq of articoli
               SET TOTEM-CHECK-OK TO FALSE
-              PERFORM ef-limite-VALIDATION
+              PERFORM ef-moq-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
@@ -16909,9 +16956,9 @@
               move ef-scorta-buf to art-scorta of articoli
               if art-scorta of articoli = 5 or
                  art-scorta of articoli = 7
-                 move 1 to v-limite
+                 move 1 to v-moq
               else
-                 move 0 to v-limite
+                 move 0 to v-moq
               end-if
               if art-scorta of articoli = 9
                  move 1 to v-reale
@@ -16919,10 +16966,10 @@
                  move 0 to v-reale
               end-if
            else
-              move 0 to v-limite
+              move 0 to v-moq
               move 0 to v-reale
            end-if.
-           display ef-limite ef-reale            
+           display ef-moq ef-reale            
            .
       * <TOTEM:END>
        Form1-DaRb-1-BeforeProcedure.

@@ -966,13 +966,13 @@
                                icon 2
                 end-read
                 if sco-moq-si
-                   move 1 to v-limite
+                   move 1 to v-moq
                 else
-                   move 0 to v-limite
-                   move 0 to ef-limite-buf
+                   move 0 to v-moq
+                   move 0 to ef-moq-buf
                 end-if
-                display ef-limite
-                display lab-limite
+                display ef-moq
+                display lab-moq
                 if art-scorta of articoli = 9
                    move 1 to v-reale
                 else
@@ -982,14 +982,14 @@
                 display ef-reale
                 display lab-reale
 
-           |78-ID-ef-limite è l'ID del control ef-limite
-           when 78-ID-ef-limite
-                if v-limite = 1
-                   inquire ef-limite, value in ef-limite-buf
-                   move ef-limite-buf to art-limite-scorta of articoli
-                   if art-limite-scorta of articoli = 0
+           |78-ID-ef-moq è l'ID del control ef-moq
+           when 78-ID-ef-moq
+                if v-moq = 1
+                   inquire ef-moq, value in ef-moq-buf
+                   move ef-moq-buf to art-moq of articoli
+                   if art-moq of articoli = 0
                       set errori to true
-                      display message "Limite scorta obbligatorio"
+                      display message "MOQ obbligatorio"
                                 title tit-err
                                  icon 2
 
@@ -1534,7 +1534,7 @@
               move 0 to mod-imposte, mod-cobat, mod-peso-utf 
               move 1 to NumBitmapCodici
 
-              move 0 to v-limite
+              move 0 to v-moq
               move 0 to v-reale
                         
               display form1
@@ -2776,7 +2776,7 @@ LUBEXX        end-if
 
       ***---
        GARTICOLI-AFTER-FLD-TO-BUF.  
-           display lab-limite ef-limite.
+           display lab-moq ef-moq.
            if art-scorta of articoli = 9
               move 1 to v-reale
            else
@@ -2812,9 +2812,9 @@ LUBEXX        end-if
            move "tscorte" to nome-file.
            perform RELAZIONI-ARTICOLI.   
            if sco-moq-si
-              move 1 to v-limite
+              move 1 to v-moq
            else
-              move 0 to v-limite
+              move 0 to v-moq
            end-if.
            
       * ARTICOLI-SETTORE MERCEOLOGICO
@@ -3532,9 +3532,9 @@ LUBEXX        end-if
                  move como-peso to ef-peso-non-utf-buf
                  display ef-peso-non-utf
               end-if
-              move 0 to ef-limite-buf
-              move 0 to v-limite
-              display ef-limite
+              move 0 to ef-moq-buf
+              move 0 to v-moq
+              display ef-moq
            end-if.
 
       ***---

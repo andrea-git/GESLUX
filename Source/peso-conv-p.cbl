@@ -292,7 +292,7 @@
               move OLD-art-scorta                 to art-scorta                
               move OLD-art-prezzo-banco           to art-prezzo-banco          
               move OLD-art-prz-min-vend           to art-prz-min-vend          
-              move OLD-art-limite-scorta          to art-limite-scorta         
+              move OLD-art-moq                    to art-moq
               move OLD-art-peso-reale             to art-peso-reale            
               move OLD-art-do                     to art-do                    
               move OLD-art-cod-art-frn            to art-cod-art-frn           
