@@ -151,7 +151,11 @@
        77  save-destino          pic 9(5).
        77  save-causale          pic x(4).
        77  save-articolo         pic 9(6).
-       77  tot-qta               pic 9(5).
+       77  tot-qta               pic 9(5). 
+       77  tot-qta-moq           pic 9(15).
+       77  diff-moq              pic 9(15).
+       77  como-qta-moq          pic 9(15).
+       77  ultimo-mese-moq       pic 9(2).
        77  SaveRiga              pic 9(10).
        77  codice-ed             pic z(6).
        77  giacenza              pic s9(8).
@@ -1151,6 +1155,7 @@
                  end-if
                  read coperfab-mag next at end exit perform end-read 
                  move cpfm-articolo to ord2-articolo   
+                 
                  move "LBX"         to ord2-mag
                  read ordfor2 no lock invalid continue end-read
                  if ord2-si-conferma and cpfm-programmazione-si
@@ -1160,6 +1165,17 @@
                          cpfm-qta-m(4) +
                          cpfm-qta-m(5) +
                          cpfm-qta-m(6) ) > 0
+
+                       if LinkAuto = 1             
+                          move cpfm-articolo to art-codice
+                          read articoli no lock
+                          move art-scorta to sco-codice
+                          read tscorte no lock
+                          if sco-moq-si
+                             perform RICALCOLA-QTA-MOQ
+                          end-if
+                       end-if
+
                        if cpfm-causale not = save-causale
                           move cpfm-causale to save-causale
                           move 0 to save-fornitore
@@ -1192,6 +1208,58 @@
 
               |Alla fine di tutto scrivo il contatore
               rewrite con-rec invalid continue end-rewrite
+           end-if.
+
+      ***---
+       RICALCOLA-QTA-MOQ.
+           move 0 to ultimo-mese-moq.
+           |1. arrotondo tutte le quantiaà al bancale successivo senza
+           |   tener conto della % arrotondamento dei par generali
+           perform varying idx from 1 by 1 
+                     until idx > 6
+              if cpfm-qta-m(idx) > 0
+                 move idx to ultimo-mese-moq
+                 move cpfm-qta-m(idx) to como-qta-moq
+                 perform QTA-BANCALE-SUCCESSIVO-MOQ  
+                 move como-qta-moq to cpfm-qta-m(idx)
+              end-if
+           end-perform.
+           |2. Verifico che la somma delle qta sia >= a MOQ
+           move 0 to tot-qta-moq.
+           perform varying idx from 1 by 1 
+                     until idx > 6
+              add cpfm-qta-m(idx) to tot-qta-moq
+           end-perform.
+           |Sto ordinando di più rispetto al MOQ, a posto così
+           if tot-qta-moq >= art-moq
+              exit paragraph
+           end-if.
+           compute diff-moq = art-moq - tot-qta-moq.
+           |3. Aggiungo la differenza alla quantità dell'ultimo mese
+           add diff-moq to cpfm-qta-m(ultimo-mese-moq).
+           |4. La arrotono nuovamente al bancale successivo
+           if art-qta-epal not = 0
+              if cpfm-qta-m(ultimo-mese-moq) > art-qta-epal
+                 move cpfm-qta-m(ultimo-mese-moq) to como-qta-moq
+                 perform QTA-BANCALE-SUCCESSIVO-MOQ  
+                 move como-qta-moq to cpfm-qta-m(ultimo-mese-moq)
+              end-if
+           end-if.
+
+      ***---
+       QTA-BANCALE-SUCCESSIVO-MOQ.
+           if art-qta-epal not = 0
+              if como-qta-moq > art-qta-epal
+                 move 0 to resto
+                 divide como-qta-moq by art-qta-epal
+                             giving num-bancali
+                          remainder resto
+                 if resto not = 0
+                    add 1 to num-bancali
+                 end-if
+                 compute como-qta-moq  =
+                         art-qta-epal * num-bancali
+              end-if
            end-if.
 
       ***---
@@ -1586,7 +1654,6 @@
        SCRIVI-TESTA-PROGRAMMAZIONE.
            perform varying idx from 1 by 1
                      until idx > 6
-
               if cpfm-qta-m(idx) > 0
                  perform SCRIVI-TESTA-MESE
               end-if
@@ -1690,7 +1757,9 @@
 
                  move cpfm-qta-m(idx) to rof-qta-ord
 
-                 perform QTA-EPAL
+                 if LinkAuto = 0 |ho già arrotondato al successivo
+                    perform QTA-EPAL
+                 end-if
 
                  if cli-iva-ese = spaces
                     move art-codice-iva to rof-cod-iva
