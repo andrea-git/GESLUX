@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gordcvar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 25 novembre 2020 15:53:25.
+       DATE-WRITTEN.        domenica 13 dicembre 2020 01:06:59.
        REMARKS.
       *{TOTEM}END
 
@@ -16695,7 +16695,7 @@ PATCH      end-evaluate.
               perform SALV-MOD
            end-if.
 
-           if ra-idx not = 0
+           if ra-idx not = 0 and mag-codice not = "LBX"
               move user-codi to ra-user
               modify lab-attendere, visible true
               move Form1-Handle to ra-form-handle

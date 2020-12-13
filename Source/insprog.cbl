@@ -138,6 +138,7 @@
            accept prg-data-creazione from century-date.
            accept prg-ora-creazione  from time.
            move "INSPROG" to prg-utente-creazione.
+           set prg-attivo to true.
            write prg-rec.
 
       ***---

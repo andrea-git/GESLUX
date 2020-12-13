@@ -1944,16 +1944,29 @@
                      "<AliquotaIVA>00.00</AliquotaIVA>"
                 into line-riga
            else                    
-              string 78-spazi    
-                     78-spazi
-                     78-spazi
-                     78-spazi
-                     "<AliquotaIVA>"
-                     tbliv-percentuale(2:2)
-                     "."                   
-                     tbliv-percentuale(4:2)
-                     "</AliquotaIVA>"
-                into line-riga
+              if tbliv-percentuale(1:1) = "0"
+                 string 78-spazi    
+                        78-spazi
+                        78-spazi
+                        78-spazi
+                        "<AliquotaIVA>"
+                        tbliv-percentuale(3:1)
+                        "."                   
+                        tbliv-percentuale(4:2)
+                        "</AliquotaIVA>"
+                   into line-riga
+              else
+                 string 78-spazi             
+                        78-spazi
+                        78-spazi
+                        78-spazi
+                        "<AliquotaIVA>"
+                        tbliv-percentuale(2:2)
+                        "."                   
+                        tbliv-percentuale(4:2)
+                        "</AliquotaIVA>"
+                   into line-riga
+              end-if
            end-if.
            write line-riga.      
 
