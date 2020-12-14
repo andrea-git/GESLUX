@@ -1944,7 +1944,7 @@
                      "<AliquotaIVA>00.00</AliquotaIVA>"
                 into line-riga
            else                    
-              if tbliv-percentuale(1:1) = "0"
+              if tbliv-percentuale(2:1) = "0"
                  string 78-spazi    
                         78-spazi
                         78-spazi
