@@ -330,46 +330,23 @@
               when 4
                    move Link-TipoNota to tca-codice
                    read tcaumag no lock invalid continue end-read
-                   if tca-cod-magaz not = "LBX"
+                   move tca-cod-magaz to mag-codice
+                   perform VERIFICA-ABIL-ROTTA
+                   if si-rotta
+                      move 0 to v-fatt v-fatt-2
+                      set environment "KEYSTROKE" to "DATA=44 44"
+                      set environment "KEYSTROKE" to "DATA=46 46"
+                      perform RIEMPI-GRID-MERCE-ROTTA
+                      |Se non vengo dalla prima pagina
+                      if pagina not = 1
+                         set ControllaCampi to false
+                      end-if
+                      inquire form1-gd-2, last-row in tot-righe2
+                      move spaces to HiddenKey
+                   else
                       set NonCambiareTab  to true
                       move pagina         to event-data-1
-                   else
-                      perform VERIFICA-ABIL-ROTTA
-                      if si-rotta
-                         move 0 to v-fatt v-fatt-2
-                         set environment "KEYSTROKE" to "DATA=44 44"
-                         set environment "KEYSTROKE" to "DATA=46 46"
-                         perform RIEMPI-GRID-MERCE-ROTTA
-                         |Se non vengo dalla prima pagina
-                         if pagina not = 1
-                            set ControllaCampi to false
-                         end-if
-                         inquire form1-gd-2, last-row in tot-righe2
-                         move spaces to HiddenKey
-                      else
-                         set NonCambiareTab  to true
-                         move pagina         to event-data-1
 
-                      end-if
-                      move spaces to tge-chiave
-                      read tparamge no lock invalid continue end-read
-                      move tge-causale-rotta-s to tca-codice
-                      read tcaumag no lock 
-                           invalid 
-                           set NonCambiareTab  to true
-                           move pagina         to event-data-1
-                       not invalid
-                           move 0 to v-fatt v-fatt-2
-                           set environment "KEYSTROKE" to "DATA=44 44"
-                           set environment "KEYSTROKE" to "DATA=46 46"
-                           perform RIEMPI-GRID-MERCE-ROTTA
-                           |Se non vengo dalla prima pagina
-                           if pagina not = 1
-                              set ControllaCampi to false
-                           end-if
-                           inquire form1-gd-2, last-row in tot-righe2
-                           move spaces to HiddenKey
-                      end-read
                    end-if
               end-evaluate
 
@@ -3208,22 +3185,16 @@ LUBEXX           move col-iva        to col-cod-iva
       ***---
        VERIFICA-ABIL-ROTTA.
            set si-rotta   to true
-           move spaces to tge-chiave
-           read tparamge no lock 
-              invalid 
-                 initialize tge-dati
-           end-read
-
-           move tge-causale-rotta-s to tca-codice
-           read tcaumag no lock 
-              invalid 
-                 set si-rotta   to false
-           end-read
-
-           if si-rotta
-              move tge-causale-rotta-c to tca-codice
-              read tcaumag no lock 
-                 invalid 
-                    set si-rotta   to false
-              end-read
-           end-if.
+           read tmagaz no lock
+                invalid set si-rotta   to false
+            not invalid
+                move mag-cau-carico-rot to tca-codice
+                read tcaumag no lock
+                     invalid set si-rotta   to false
+                 not invalid
+                     move mag-cau-scarico-rot to tca-codice
+                     read tcaumag no lock
+                          invalid set si-rotta   to false
+                     end-read
+                end-read
+           end-read.

@@ -64,14 +64,6 @@
            when 78-ID-ef-cau-omag
                 inquire ef-cau-omag, value in ef-cau-omag-buf
 
-           |78-ID-ef-cau-rotta-s è l'ID del control ef-cau-rotta-s
-           when 78-ID-ef-cau-rotta-s
-                inquire ef-cau-rotta-s, value in ef-cau-rotta-s-buf
-
-           |78-ID-ef-cau-rotta-c è l'ID del control ef-cau-rotta-c
-           when 78-ID-ef-cau-rotta-c
-                inquire ef-cau-rotta-c, value in ef-cau-rotta-c-buf
-
            |78-ID-ef-promo è l'ID del control ef-promo
            when 78-ID-ef-promo
                 inquire ef-promo, value in ef-promo-buf
@@ -96,8 +88,8 @@
            when 78-ID-ef-perce-arrot
                 inquire ef-perce-arrot, value in ef-perce-arrot-buf
 
-           |25 è l'ID del control ef-gg-part
-           when 25
+           |23 è l'ID del control ef-gg-part
+           when 23
                 inquire ef-gg-part, value in ef-gg-part-buf
 
            |78-ID-ef-perce-prog è l'ID del control ef-perce-prog
@@ -108,8 +100,8 @@
            when 78-ID-ef-pile
                 inquire ef-pile, value in ef-pile-buf
 
-           |31 è l'ID del control ef-gg-chiuso
-           when 31
+           |29 è l'ID del control ef-gg-chiuso
+           when 29
                 inquire ef-gg-chiuso, value in ef-gg-chiuso-buf
 
            |78-ID-ef-vet è l'ID del control ef-vet
@@ -136,8 +128,8 @@
            when 78-ID-ef-gg-max
                 inquire ef-gg-max, value in ef-gg-max-buf
 
-           |39 è l'ID del control ef-gg-cons
-           when 39
+           |37 è l'ID del control ef-gg-cons
+           when 37
                 inquire ef-gg-cons, value in ef-gg-cons-buf
 
            |78-ID-ef-vetaaa è l'ID del control ef-vetaaa

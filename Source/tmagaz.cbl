@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          tmagaz.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 20 ottobre 2020 12:08:36.
+       DATE-WRITTEN.        martedì 15 dicembre 2020 13:21:59.
        REMARKS.
       *{TOTEM}END
 
@@ -138,6 +138,8 @@
                88 col-gen-auto-si VALUE IS "S". 
                88 col-gen-auto-no VALUE IS "N", " ". 
            05 col-blocco-24000 PIC  x.
+           05 col-carico-rot   PIC  xxxx.
+           05 col-scarico-rot  PIC  xxxx.
        77 Screen1-Handle
                   USAGE IS HANDLE OF WINDOW.
        77 esegui-73x21-bmp PIC  S9(9)
@@ -344,14 +346,16 @@
            ADJUSTABLE-COLUMNS,
            BOXED,
            DATA-COLUMNS (1, 4, 54, 55, 56, 57, 64, 65, 69, 73, 74, 75, 
-           76, 80, 84, 88, 92, 97, 99, 100, 101),
+           76, 80, 84, 88, 92, 97, 99, 100, 101, 102, 106),
            ALIGNMENT ("L", "U", "C", "C", "C", "C", "C", "C", "C", "C", 
-           "C", "C", "C", "C", "C", "C", "R", "R", "C", "C", "C"),
+           "C", "C", "C", "C", "C", "C", "R", "R", "C", "C", "C", "U", 
+           "U"),
            SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 
-           5, 5, 5, 5, 5),
-           DATA-TYPES ("X(3)", "X(50)", "U(1)", "U(1)", "U(1)", "9(7)", 
+           5, 5, 5, 5, 5, 5, 5),
+           DATA-TYPES ("U(3)", "X(50)", "U(1)", "U(1)", "U(1)", "9(7)", 
            "U(1)", "U(4)", "U(4)", "U(1)", "U(1)", "U(1)", "U(4)", "U(4)
-      -    "", "U(4)", "U(4)", "zzzz9", "X", "U(1)", "U(1)", "U(1)"),
+      -    "", "U(4)", "U(4)", "zzzz9", "X", "U(1)", "U(1)", "U(1)", "U(
+      -    "4)", "U(4)"),
            NUM-COL-HEADINGS 1,
            COLUMN-HEADINGS,
            CURSOR-FRAME-WIDTH 2,
@@ -1723,7 +1727,7 @@
                 CELL-DATA = "Principale",
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 4, Y = 1,
-                CELL-DATA = "Scritture Ausiliarie",
+                CELL-DATA = "Scr.Aus.",
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 5, Y = 1,
                 CELL-DATA = "UTF",
@@ -1775,6 +1779,12 @@
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 21, Y = 1,
                 CELL-DATA = "Blocco 24000",
+      * CELLS' SETTING
+              MODIFY form1-gd-1, X = 22, Y = 1,
+                CELL-DATA = "C ROT",
+      * CELLS' SETTING
+              MODIFY form1-gd-1, X = 23, Y = 1,
+                CELL-DATA = "S ROT",
       * COLUMNS' SETTING
               MODIFY form1-gd-1, X = 1  
                 COLUMN-FONT = Small-Font,
@@ -1896,9 +1906,9 @@
               HANDLE IS Screen1-St-1-Handle
            DISPLAY Form1 UPON Form1-Handle
       * DISPLAY-COLUMNS settings
-              MODIFY form1-gd-1, DISPLAY-COLUMNS (1, 11, 57, 67, 82, 
-           92, 103, 113, 123, 133, 143, 153, 163, 173, 183, 193, 203, 
-           213, 217, 227, 237)
+              MODIFY form1-gd-1, DISPLAY-COLUMNS (1, 9, 55, 65, 75, 85, 
+           96, 106, 116, 126, 135, 143, 153, 163, 173, 181, 189, 197, 
+           201, 211, 221, 235, 243)
               MODIFY gd-scorte, DISPLAY-COLUMNS (1, 7)
            .
 
@@ -2875,6 +2885,34 @@
                       move vet-codice      to col-vett
                       modify form1-gd-1(riga, 17), cell-data col-vett
                    end-if
+                end-if     
+
+                if colonna = 22
+                   inquire form1-gd-1(riga, 1),  cell-data tca-cod-magaz
+                   inquire form1-gd-1(riga, 22), cell-data tca-codice  
+                   move "tcaumag-mag"  to como-file
+                   call "zoom-gt"   using como-file, tca-rec
+                                   giving stato-zoom
+                   cancel "zoom-gt"
+                   if stato-zoom = 0
+                      move tca-codice      to col-carico-rot
+                      modify form1-gd-1(riga, 22), cell-data 
+           col-carico-rot
+                   end-if
+                end-if
+
+                if colonna = 23
+                   inquire form1-gd-1(riga, 1),  cell-data tca-cod-magaz
+                   inquire form1-gd-1(riga, 23), cell-data tca-codice  
+                   move "tcaumag-mag"  to como-file
+                   call "zoom-gt"   using como-file, tca-rec
+                                   giving stato-zoom
+                   cancel "zoom-gt"
+                   if stato-zoom = 0
+                      move tca-codice      to col-scarico-rot
+                      modify form1-gd-1(riga, 23), cell-data 
+           col-scarico-rot
+                   end-if
                 end-if
 
            end-evaluate 
@@ -2911,7 +2949,7 @@
       * <TOTEM:PARA. COLORE-RIGA>
            if riga < 2 move 2 to riga end-if.
 
-           modify form1-gd-1, start-x = 1, x = 21,
+           modify form1-gd-1, start-x = 1, x = 23,
                                   start-y = riga,
                                         y = riga,
                                   region-color 257,
@@ -3299,6 +3337,36 @@
                                      icon 2
                 end-evaluate
 
+           when 22                                   
+                inquire form1-gd-1(riga, 1)  cell-data col-id
+                inquire form1-gd-1(riga, 22) cell-data col-carico-rot
+                if col-carico-rot not = spaces and not = "0000"
+                   move col-carico-rot to tca-codice
+                   read tcaumag no lock
+                        invalid
+                        set errori to true
+                        move 22    to colonna
+                        display message "Causale carico ROT non valida"
+                                  title tit-err
+                                   icon 2
+                   end-read
+                end-if
+
+           when 23                           
+                inquire form1-gd-1(riga, 1)  cell-data col-id
+                inquire form1-gd-1(riga, 23) cell-data col-scarico-rot
+                if col-scarico-rot not = spaces and not = "0000"
+                   move col-scarico-rot to tca-codice
+                   read tcaumag no lock
+                        invalid
+                        set errori to true
+                        move 23    to colonna
+                        display message "Causale scarico ROT non valida"
+                                  title tit-err
+                                   icon 2
+                   end-read
+                end-if
+
            end-evaluate.
 
            if errori
@@ -3385,6 +3453,18 @@
                    end-if
            when 18 move "Priorità magazzino: per mail-giacenze notturno.
       -    " Il magazzino principale dev'essere 1"  to msg-help
+           when 22 move "Verrà usata per gnerare movimento di carico da 
+      -    "bozza nota credito"  to msg-help  
+                   if mod = 1
+                      move BitmapZoomEnabled to BitmapNumZoom
+                      move 1 to e-cerca
+                   end-if 
+           when 23 move "Verrà usata per gnerare movimento di scarico da
+      -    " bozza nota credito" to msg-help  
+                   if mod = 1
+                      move BitmapZoomEnabled to BitmapNumZoom
+                      move 1 to e-cerca
+                   end-if 
            end-evaluate.
            modify Screen1-St-1-Handle, panel-index = 1,
                                        panel-text  = msg-help.
@@ -3436,6 +3516,8 @@
                           move mag-da-inviare       to col-da-inviare
                           move mag-gen-auto         to col-gen-auto
                           move mag-blocco-24000     to col-blocco-24000
+                          move mag-cau-carico-rot   to col-carico-rot
+                          move mag-cau-scarico-rot  to col-scarico-rot 
                           modify form1-gd-1(riga, 1),  cell-data col-id 
                           
                           modify form1-gd-1(riga, 2),  cell-data 
@@ -3478,6 +3560,10 @@
            col-gen-auto       
                           modify form1-gd-1(riga, 21), cell-data 
            col-blocco-24000
+                          modify form1-gd-1(riga, 22), cell-data 
+           col-carico-rot   
+                          modify form1-gd-1(riga, 23), cell-data 
+           col-scarico-rot
 
                           evaluate true
                           when si-principale
@@ -3642,7 +3728,7 @@
 
       * RESTANTI CONTROLLI
            perform varying colonna from 1 by 1 
-                     until colonna > 21
+                     until colonna > 24
               perform CONTROLLO
               if errori exit perform end-if
            end-perform.
@@ -3787,6 +3873,8 @@
            inquire form1-gd-1(riga, 19), cell-data mag-da-inviare.
            inquire form1-gd-1(riga, 20), cell-data mag-gen-auto.
            inquire form1-gd-1(riga, 21), cell-data mag-blocco-24000.
+           inquire form1-gd-1(riga, 22), cell-data mag-cau-carico-rot.  
+           inquire form1-gd-1(riga, 23), cell-data mag-cau-scarico-rot.
 
            if mag-principale = spaces
               set no-mag-principale to true

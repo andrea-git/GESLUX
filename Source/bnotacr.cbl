@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          bnotacr.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 26 luglio 2019 16:04:12.
+       DATE-WRITTEN.        martedì 15 dicembre 2020 10:22:52.
        REMARKS.
       *{TOTEM}END
 
@@ -51,6 +51,7 @@
            COPY "param.sl".
            COPY "tcontat.sl".
            COPY "tnazioni.sl".
+           COPY "tmagaz.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -79,15 +80,16 @@
            COPY "param.fd".
            COPY "tcontat.fd".
            COPY "tnazioni.fd".
+           COPY "tmagaz.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
       *{TOTEM}ACU-DEF
-               COPY "ACUGUI.DEF".
-               COPY "ACUCOBOL.DEF".
-               COPY "FONTS.DEF".
-               COPY "CRTVARS.DEF".
-               COPY "SHOWMSG.DEF".
+               COPY "acugui.def".
+               COPY "acucobol.def".
+               COPY "fonts.def".
+               COPY "crtvars.def".
+               COPY "showmsg.def".
                COPY "totem.def".
                COPY "standard.def".
       *{TOTEM}END
@@ -164,7 +166,7 @@
        77 TMP-DataSet1-btnotacr-BUF     PIC X(912).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-brnotacr-BUF     PIC X(424).
-       77 TMP-DataSet1-destini-BUF     PIC X(3386).
+       77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-clienti-BUF     PIC X(1910).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-tordini-BUF     PIC X(3898).
@@ -185,6 +187,7 @@
        77 TMP-DataSet1-param-BUF     PIC X(980).
        77 TMP-DataSet1-tcontat-BUF     PIC X(3270).
        77 TMP-DataSet1-tnazioni-BUF     PIC X(190).
+       77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -310,6 +313,11 @@
        77 DataSet1-tnazioni-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tnazioni-KEY-Asc  VALUE "A".
           88 DataSet1-tnazioni-KEY-Desc VALUE "D".
+       77 DataSet1-tmagaz-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tmagaz-LOCK  VALUE "Y".
+       77 DataSet1-tmagaz-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tmagaz-KEY-Asc  VALUE "A".
+          88 DataSet1-tmagaz-KEY-Desc VALUE "D".
 
        77 btnotacr-k1-SPLITBUF  PIC X(23).
        77 btnotacr-k-data-SPLITBUF  PIC X(17).
@@ -320,7 +328,7 @@
        77 btnotacr-k-nota-SPLITBUF  PIC X(13).
        77 btnotacr-k-fatman-SPLITBUF  PIC X(13).
        77 brnotacr-brno-k-articolo-SPLITBUF  PIC X(25).
-       77 destini-K1-SPLITBUF  PIC X(51).
+       77 destini-K1-SPLITBUF  PIC X(111).
        77 destini-k-localita-SPLITBUF  PIC X(36).
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
@@ -351,6 +359,7 @@
        77 rordini-ror-k-articolo-SPLITBUF  PIC X(24).
        77 rordini-ror-k-master-SPLITBUF  PIC X(35).
        77 rordini-ror-k-stbolle-SPLITBUF  PIC X(30).
+       77 rordini-ror-k-ord-art-SPLITBUF  PIC X(19).
        77 progmag-key01-SPLITBUF  PIC X(21).
        77 tmp-progmag-zoom-key-des-SPLITBUF  PIC X(64).
        77 tmp-progmag-zoom-key-art-SPLITBUF  PIC X(7).
@@ -2852,6 +2861,7 @@
            PERFORM OPEN-param
            PERFORM OPEN-tcontat
            PERFORM OPEN-tnazioni
+           PERFORM OPEN-tmagaz
       *    After Open
            .
 
@@ -3157,6 +3167,18 @@
       * <TOTEM:END>
            .
 
+       OPEN-tmagaz.
+      * <TOTEM:EPT. INIT:bnotacr, FD:tmagaz, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT tmagaz
+           IF NOT Valid-STATUS-tmagaz
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:bnotacr, FD:tmagaz, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-btnotacr
@@ -3185,6 +3207,7 @@
            PERFORM CLOSE-param
            PERFORM CLOSE-tcontat
            PERFORM CLOSE-tnazioni
+           PERFORM CLOSE-tmagaz
       *    After Close
            .
 
@@ -3328,6 +3351,12 @@
       * <TOTEM:EPT. INIT:bnotacr, FD:tnazioni, BeforeClose>
       * <TOTEM:END>
            CLOSE tnazioni
+           .
+
+       CLOSE-tmagaz.
+      * <TOTEM:EPT. INIT:bnotacr, FD:tmagaz, BeforeClose>
+      * <TOTEM:END>
+           CLOSE tmagaz
            .
 
        btnotacr-k1-MERGE-SPLITBUF.
@@ -3931,9 +3960,9 @@
 
        destini-K1-MERGE-SPLITBUF.
            INITIALIZE destini-K1-SPLITBUF
-           MOVE des-ragsoc-1(1:40) TO destini-K1-SPLITBUF(1:40)
-           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(41:5)
-           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(46:5)
+           MOVE des-ragsoc-1(1:100) TO destini-K1-SPLITBUF(1:100)
+           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(101:5)
+           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(106:5)
            .
 
        destini-k-localita-MERGE-SPLITBUF.
@@ -4877,6 +4906,16 @@
            rordini-ror-k-stbolle-SPLITBUF(13:17)
            .
 
+       rordini-ror-k-ord-art-MERGE-SPLITBUF.
+           INITIALIZE rordini-ror-k-ord-art-SPLITBUF
+           MOVE ror-anno OF rordini(1:4) TO 
+           rordini-ror-k-ord-art-SPLITBUF(1:4)
+           MOVE ror-num-ordine OF rordini(1:8) TO 
+           rordini-ror-k-ord-art-SPLITBUF(5:8)
+           MOVE ror-cod-articolo OF rordini(1:6) TO 
+           rordini-ror-k-ord-art-SPLITBUF(13:6)
+           .
+
        DataSet1-rordini-INITSTART.
            IF DataSet1-rordini-KEY-Asc
               MOVE Low-Value TO ror-chiave of rordini
@@ -4942,6 +4981,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT 
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -4973,6 +5013,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -5004,6 +5045,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -7574,6 +7616,160 @@
       * <TOTEM:END>
            .
 
+       DataSet1-tmagaz-INITSTART.
+           IF DataSet1-tmagaz-KEY-Asc
+              MOVE Low-Value TO mag-chiave
+           ELSE
+              MOVE High-Value TO mag-chiave
+           END-IF
+           .
+
+       DataSet1-tmagaz-INITEND.
+           IF DataSet1-tmagaz-KEY-Asc
+              MOVE High-Value TO mag-chiave
+           ELSE
+              MOVE Low-Value TO mag-chiave
+           END-IF
+           .
+
+      * tmagaz
+       DataSet1-tmagaz-START.
+           IF DataSet1-tmagaz-KEY-Asc
+              START tmagaz KEY >= mag-chiave
+           ELSE
+              START tmagaz KEY <= mag-chiave
+           END-IF
+           .
+
+       DataSet1-tmagaz-START-NOTGREATER.
+           IF DataSet1-tmagaz-KEY-Asc
+              START tmagaz KEY <= mag-chiave
+           ELSE
+              START tmagaz KEY >= mag-chiave
+           END-IF
+           .
+
+       DataSet1-tmagaz-START-GREATER.
+           IF DataSet1-tmagaz-KEY-Asc
+              START tmagaz KEY > mag-chiave
+           ELSE
+              START tmagaz KEY < mag-chiave
+           END-IF
+           .
+
+       DataSet1-tmagaz-START-LESS.
+           IF DataSet1-tmagaz-KEY-Asc
+              START tmagaz KEY < mag-chiave
+           ELSE
+              START tmagaz KEY > mag-chiave
+           END-IF
+           .
+
+       DataSet1-tmagaz-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-tmagaz-LOCK
+              READ tmagaz WITH LOCK 
+              KEY mag-chiave
+           ELSE
+              READ tmagaz WITH NO LOCK 
+              KEY mag-chiave
+           END-IF
+           MOVE STATUS-tmagaz TO TOTEM-ERR-STAT 
+           MOVE "tmagaz" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmagaz-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-tmagaz-KEY-Asc
+              IF DataSet1-tmagaz-LOCK
+                 READ tmagaz NEXT WITH LOCK
+              ELSE
+                 READ tmagaz NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tmagaz-LOCK
+                 READ tmagaz PREVIOUS WITH LOCK
+              ELSE
+                 READ tmagaz PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tmagaz TO TOTEM-ERR-STAT
+           MOVE "tmagaz" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmagaz-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-tmagaz-KEY-Asc
+              IF DataSet1-tmagaz-LOCK
+                 READ tmagaz PREVIOUS WITH LOCK
+              ELSE
+                 READ tmagaz PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tmagaz-LOCK
+                 READ tmagaz NEXT WITH LOCK
+              ELSE
+                 READ tmagaz NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tmagaz TO TOTEM-ERR-STAT
+           MOVE "tmagaz" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmagaz-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-tmagaz TO TOTEM-ERR-STAT
+           MOVE "tmagaz" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmagaz-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-tmagaz TO TOTEM-ERR-STAT
+           MOVE "tmagaz" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmagaz-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-tmagaz TO TOTEM-ERR-STAT
+           MOVE "tmagaz" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE btno-rec OF btnotacr
            INITIALIZE tge-rec OF tparamge
@@ -7599,6 +7795,7 @@
            INITIALIZE prm-rec OF param
            INITIALIZE con-rec OF tcontat
            INITIALIZE naz-rec OF tnazioni
+           INITIALIZE mag-rec OF tmagaz
            .
 
 
@@ -7985,6 +8182,14 @@
       * FD's Initialize Paragraph
        DataSet1-tnazioni-INITREC.
            INITIALIZE naz-rec OF tnazioni
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-tmagaz-INITREC.
+           INITIALIZE mag-rec OF tmagaz
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES

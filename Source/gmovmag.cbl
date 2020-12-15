@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          gmovmag.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 26 gennaio 2016 15:52:33.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        martedì 15 dicembre 2020 11:20:17.
        REMARKS.
       *{TOTEM}END
 
@@ -93,7 +93,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -251,7 +251,7 @@
       * Data.Label
               10 lab-mag-BUF PIC X(50).
       * Data.Label
-              10 lab-destino-BUF PIC X(40).
+              10 lab-destino-BUF PIC x(100).
       * Data.Label
               10 lab-vettore-BUF PIC X(40).
       * Page
@@ -307,12 +307,12 @@
        77 TMP-DataSet1-progmag-BUF     PIC X(1090).
        77 TMP-DataSet1-tmarche-BUF     PIC X(217).
        77 TMP-DataSet1-timballi-BUF     PIC X(210).
-       77 TMP-DataSet1-destini-BUF     PIC X(445).
+       77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-timbalqta-BUF     PIC X(167).
-       77 TMP-DataSet1-tvettori-BUF     PIC X(1787).
+       77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
        77 TMP-DataSet1-ttipocli-BUF     PIC X(889).
        77 TMP-DataSet1-tmp-progmag-zoom-BUF     PIC X(195).
-       77 TMP-DataSet1-tcontat-BUF     PIC X(257).
+       77 TMP-DataSet1-tcontat-BUF     PIC X(3270).
        77 TMP-DataSet1-tgrupgdo-BUF     PIC X(1206).
        77 TMP-DataSet1-reva-BUF     PIC X(260).
        77 TMP-DataSet1-teva-BUF     PIC X(199).
@@ -470,12 +470,14 @@
        77 tcodpag-TBL-CODICE-01-SPLITBUF  PIC X(53).
        77 tcaumag-k-mag-SPLITBUF  PIC X(5).
        77 articoli-art-k1-SPLITBUF  PIC X(51).
+       77 articoli-art-k-frn-SPLITBUF  PIC X(16).
        77 progmag-key01-SPLITBUF  PIC X(21).
-       77 destini-K1-SPLITBUF  PIC X(51).
+       77 destini-K1-SPLITBUF  PIC X(111).
        77 destini-k-localita-SPLITBUF  PIC X(36).
        77 tvettori-k-des-SPLITBUF  PIC X(41).
        77 tmp-progmag-zoom-key-des-SPLITBUF  PIC X(64).
        77 tmp-progmag-zoom-key-art-SPLITBUF  PIC X(7).
+       77 tgrupgdo-gdo-k-g2-SPLITBUF  PIC X(9).
        77 reva-reva-k-articolo-SPLITBUF  PIC X(26).
        77 teva-teva-stato-SPLITBUF  PIC X(14).
        77 rordforn-rof-k-articolo-SPLITBUF  PIC X(24).
@@ -5580,6 +5582,12 @@
            articoli-art-k1-SPLITBUF(1:50)
            .
 
+       articoli-art-k-frn-MERGE-SPLITBUF.
+           INITIALIZE articoli-art-k-frn-SPLITBUF
+           MOVE art-cod-art-frn OF articoli(1:15) TO 
+           articoli-art-k-frn-SPLITBUF(1:15)
+           .
+
        DataSet1-articoli-INITSTART.
            IF DataSet1-articoli-KEY-Asc
               MOVE Low-Value TO art-chiave OF articoli
@@ -5642,6 +5650,7 @@
               KEY art-chiave OF articoli
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT 
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -5670,6 +5679,7 @@
               END-IF
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -5698,6 +5708,7 @@
               END-IF
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -6369,9 +6380,9 @@
 
        destini-K1-MERGE-SPLITBUF.
            INITIALIZE destini-K1-SPLITBUF
-           MOVE des-ragsoc-1(1:40) TO destini-K1-SPLITBUF(1:40)
-           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(41:5)
-           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(46:5)
+           MOVE des-ragsoc-1(1:100) TO destini-K1-SPLITBUF(1:100)
+           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(101:5)
+           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(106:5)
            .
 
        destini-k-localita-MERGE-SPLITBUF.
@@ -7371,6 +7382,14 @@
       * <TOTEM:END>
            .
 
+       tgrupgdo-gdo-k-g2-MERGE-SPLITBUF.
+           INITIALIZE tgrupgdo-gdo-k-g2-SPLITBUF
+           MOVE gdo-codice-G2 OF tgrupgdo(1:3) TO 
+           tgrupgdo-gdo-k-g2-SPLITBUF(1:3)
+           MOVE gdo-chiave OF tgrupgdo(1:5) TO 
+           tgrupgdo-gdo-k-g2-SPLITBUF(4:5)
+           .
+
        DataSet1-tgrupgdo-INITSTART.
            IF DataSet1-tgrupgdo-KEY-Asc
               MOVE Low-Value TO gdo-chiave OF tgrupgdo
@@ -7432,6 +7451,7 @@
               READ tgrupgdo WITH NO LOCK 
               KEY gdo-chiave OF tgrupgdo
            END-IF
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
            MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT 
            MOVE "tgrupgdo" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -7459,6 +7479,7 @@
                  READ tgrupgdo PREVIOUS WITH NO LOCK
               END-IF
            END-IF
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
            MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
            MOVE "tgrupgdo" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -7486,6 +7507,7 @@
                  READ tgrupgdo NEXT WITH NO LOCK
               END-IF
            END-IF
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
            MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
            MOVE "tgrupgdo" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -12761,7 +12783,9 @@ LUBEXX                 rmo-qta           = 0
                                exit perform
                             end-perform
                       end-start
-                      if errori
+                      if tutto-ok
+                         perform CAUSALI-ROTTA
+                      else
                          display message "Bozza non valida"
                                   x"0d0a""Nessun riferimento a merce rot
       -    "ta"
@@ -12775,7 +12799,44 @@ LUBEXX                 rmo-qta           = 0
            if errori
               perform CANCELLA-COLORE
               move 4 to accept-control
-           end-if 
+           end-if.
+
+      ***---
+       CAUSALI-ROTTA. 
+           move btno-causale to tca-codice.
+           read tcaumag no lock.
+           move tca-cod-magaz to mag-codice.
+      
+           read tmagaz no lock
+      
+           move mag-cau-carico-rot to tca-codice.
+           read tcaumag no lock
+              invalid
+                 set errori  to true
+                 display message 
+                          "Causale carico per merce rotta non valida"
+                          title tit-err
+                           icon 2
+              not invalid
+                 move tca-codice    to CausaleRotta-c
+                 move tca-cod-magaz to MagazRotta-c
+           end-read.
+      
+           if tutto-ok
+              move mag-cau-scarico-rot to tca-codice
+              read tcaumag no lock
+                 invalid
+                    set errori  to true
+                    display message 
+                             "Causale scarico per merce rotta non valida
+      -    ""
+                             title tit-err
+                              icon 2
+                 not invalid
+                    move tca-codice    to CausaleRotta-s
+                    move tca-cod-magaz to MagazRotta-s
+              end-read
+           end-if
            .
       * <TOTEM:END>
 
@@ -13723,46 +13784,49 @@ LUBEXX                 rmo-qta           = 0
       * <TOTEM:END>
        pb-rotta-LinkTo.
       * <TOTEM:PARA. pb-rotta-LinkTo>
-           set tutto-ok to true
-           move spaces to tge-codice.
-           read tparamge no lock 
-              invalid 
-                 continue 
-           end-read.
-           move tge-causale-rotta-s to tca-codice.
-           read tcaumag no lock
-              invalid
-                 set errori  to true
-                 display message 
-                          "Causale scarico per merce rotta non valida"
-                          title tit-err
-                           icon 2
-              not invalid
-                 move tca-codice    to CausaleRotta-s
-                 move tca-cod-magaz to MagazRotta-s
-           end-read.
-
-           if tutto-ok
-              move tge-causale-rotta-c to tca-codice
-              read tcaumag no lock
-                 invalid
-                    set errori  to true
-                    display message 
-                             "Causale carico per merce rotta non valida"
-                             title tit-err
-                              icon 2
-                 not invalid
-                    move tca-codice    to CausaleRotta-c
-                    move tca-cod-magaz to MagazRotta-c
-              end-read
-           end-if
-
-
-           if tutto-ok
+      *****     set tutto-ok to true.   
+      *****
+      *****     move "tmagaz"       to como-file
+      *****     call "zoom-gt"   using como-file, mag-rec
+      *****                     giving stato-zoom
+      *****     cancel "zoom-gt"
+      *****
+      *****     read tmagaz no lock
+      *****
+      *****     move mag-cau-carico-rot to tca-codice.
+      *****     read tcaumag no lock
+      *****        invalid
+      *****           set errori  to true
+      *****           display message 
+      *****                    "Causale scarico per merce rotta non valida"
+      *****                    title tit-err
+      *****                     icon 2
+      *****        not invalid
+      *****           move tca-codice    to CausaleRotta-s
+      *****           move tca-cod-magaz to MagazRotta-s
+      *****     end-read.
+      *****
+      *****     if tutto-ok
+      *****        move mag-cau-scarico-rot to tca-codice
+      *****        read tcaumag no lock
+      *****           invalid
+      *****              set errori  to true
+      *****              display message 
+      *****                       "Causale carico per merce rotta non valida"
+      *****                       title tit-err
+      *****                        icon 2
+      *****           not invalid
+      *****              move tca-codice    to CausaleRotta-c
+      *****              move tca-cod-magaz to MagazRotta-c
+      *****        end-read
+      *****     end-if
+      *****
+      *****
+      *****     if tutto-ok
               modify scr-partenza-handle, visible false
               perform SCR-ROTTA-OPEN-ROUTINE
               move 27 to key-status
-           end-if 
+      *****     end-if 
            .
       * <TOTEM:END>
        PB-OK-R-LinkTo.

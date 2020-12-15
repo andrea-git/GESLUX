@@ -2,7 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E4A1493926-338-2058416298
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E4CF8522-275-1650911519
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -308,9 +308,9 @@ m_bFixed=1
 
 @}}
 [FDITEM31_]
-m_strName=mag-num-vuoto-3
-m_strRawPic=9(18)
-m_strPic=9(18)
+m_strName=mag-cau-carico-rot
+m_strRawPic=x(4)
+m_strPic=x(4)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -318,9 +318,9 @@ m_bFixed=1
 
 @}}
 [FDITEM32_]
-m_strName=mag-per-promo
-m_strRawPic=x
-m_strPic=x
+m_strName=mag-cau-scarico-rot
+m_strRawPic=x(4)
+m_strPic=x(4)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -328,47 +328,47 @@ m_bFixed=1
 
 @}}
 [FDITEM33_]
+m_strName=mag-num-vuoto-3
+m_strRawPic=9(10)
+m_strPic=9(10)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM33_
+
+@}}
+[FDITEM34_]
+m_strName=mag-per-promo
+m_strRawPic=x
+m_strPic=x
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM34_
+
+@}}
+[FDITEM35_]
 m_strName=mag-per-promo-si
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S"
-{{@DataItem_m_strDescriptionFDITEM33_
+{{@DataItem_m_strDescriptionFDITEM35_
 
 @}}
-[FDITEM34_]
+[FDITEM36_]
 m_strName=mag-per-promo-no
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="N"
-{{@DataItem_m_strDescriptionFDITEM34_
-
-@}}
-[FDITEM35_]
-m_strName=mag-causale-eva
-m_strRawPic=x(4)
-m_strPic=x(4)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM35_
-
-@}}
-[FDITEM36_]
-m_strName=mag-causale-omag
-m_strRawPic=x(4)
-m_strPic=x(4)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM36_
 
 @}}
 [FDITEM37_]
-m_strName=mag-sostituzione
-m_strRawPic=x
-m_strPic=x
+m_strName=mag-causale-eva
+m_strRawPic=x(4)
+m_strPic=x(4)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -376,24 +376,44 @@ m_bFixed=1
 
 @}}
 [FDITEM38_]
+m_strName=mag-causale-omag
+m_strRawPic=x(4)
+m_strPic=x(4)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM38_
+
+@}}
+[FDITEM39_]
+m_strName=mag-sostituzione
+m_strRawPic=x
+m_strPic=x
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM39_
+
+@}}
+[FDITEM40_]
 m_strName=mag-sostituzione-si
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S"
-{{@DataItem_m_strDescriptionFDITEM38_
+{{@DataItem_m_strDescriptionFDITEM40_
 
 @}}
-[FDITEM39_]
+[FDITEM41_]
 m_strName=mag-sostituzione-no
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="N"
-{{@DataItem_m_strDescriptionFDITEM39_
+{{@DataItem_m_strDescriptionFDITEM41_
 
 @}}
-[FDITEM40_]
+[FDITEM42_]
 m_strName=mag-blocco-24000
 m_strRawPic=X(1)
 m_strPic=X(1)
@@ -401,64 +421,64 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=mag-principale_1_2
-{{@DataItem_m_strDescriptionFDITEM40_
+{{@DataItem_m_strDescriptionFDITEM42_
 
 @}}
-[FDITEM41_]
+[FDITEM43_]
 m_strName=mag-blocco-24000-si
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S"
-{{@DataItem_m_strDescriptionFDITEM41_
+{{@DataItem_m_strDescriptionFDITEM43_
 
 @}}
-[FDITEM42_]
+[FDITEM44_]
 m_strName=mag-blocco-24000-no
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="N", " "
-{{@DataItem_m_strDescriptionFDITEM42_
+{{@DataItem_m_strDescriptionFDITEM44_
 
 @}}
-[FDITEM43_]
+[FDITEM45_]
 m_strName=mag-blister
 m_strRawPic=x
 m_strPic=x
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM43_
+{{@DataItem_m_strDescriptionFDITEM45_
 
 @}}
-[FDITEM44_]
+[FDITEM46_]
 m_strName=mag-blister-si
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S"
-{{@DataItem_m_strDescriptionFDITEM44_
+{{@DataItem_m_strDescriptionFDITEM46_
 
 @}}
-[FDITEM45_]
+[FDITEM47_]
 m_strName=mag-blister-no
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="N"
-{{@DataItem_m_strDescriptionFDITEM45_
+{{@DataItem_m_strDescriptionFDITEM47_
 
 @}}
-[FDITEM46_]
+[FDITEM48_]
 m_strName=mag-tab-scorte
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM46_
+{{@DataItem_m_strDescriptionFDITEM48_
 
 @}}
-[FDITEM47_]
+[FDITEM49_]
 m_strName=mag-sco-codice
 m_strRawPic=xx
 m_strPic=xx
@@ -468,111 +488,111 @@ m_bOccurs=1
 m_bFixed=1
 m_strRawSize=20
 m_nSize=20
-{{@DataItem_m_strDescriptionFDITEM47_
+{{@DataItem_m_strDescriptionFDITEM49_
 
 @}}
-[FDITEM48_]
+[FDITEM50_]
 m_strName=mag-ritira-lbx
 m_strRawPic=x
 m_strPic=x
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM48_
+{{@DataItem_m_strDescriptionFDITEM50_
 
 @}}
-[FDITEM49_]
+[FDITEM51_]
 m_strName=mag-ritira-lbx-si
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S"
-{{@DataItem_m_strDescriptionFDITEM49_
+{{@DataItem_m_strDescriptionFDITEM51_
 
 @}}
-[FDITEM50_]
+[FDITEM52_]
 m_strName=mag-ritira-lbx-no
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="N"
-{{@DataItem_m_strDescriptionFDITEM50_
+{{@DataItem_m_strDescriptionFDITEM52_
 
 @}}
-[FDITEM51_]
+[FDITEM53_]
 m_strName=mag-priorita-mag
 m_strRawPic=99
 m_strPic=99
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM51_
+{{@DataItem_m_strDescriptionFDITEM53_
 
 @}}
-[FDITEM52_]
+[FDITEM54_]
 m_strName=mag-da-inviare
 m_strRawPic=x
 m_strPic=x
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM52_
+{{@DataItem_m_strDescriptionFDITEM54_
 
 @}}
-[FDITEM53_]
+[FDITEM55_]
 m_strName=mag-da-inviare-si
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S"
-{{@DataItem_m_strDescriptionFDITEM53_
+{{@DataItem_m_strDescriptionFDITEM55_
 
 @}}
-[FDITEM54_]
+[FDITEM56_]
 m_strName=mag-da-inviare-no
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="N", " "
-{{@DataItem_m_strDescriptionFDITEM54_
+{{@DataItem_m_strDescriptionFDITEM56_
 
 @}}
-[FDITEM55_]
+[FDITEM57_]
 m_strName=mag-gen-auto
 m_strRawPic=x
 m_strPic=x
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM55_
+{{@DataItem_m_strDescriptionFDITEM57_
 
 @}}
-[FDITEM56_]
+[FDITEM58_]
 m_strName=mag-gen-auto-si
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S"
-{{@DataItem_m_strDescriptionFDITEM56_
+{{@DataItem_m_strDescriptionFDITEM58_
 
 @}}
-[FDITEM57_]
+[FDITEM59_]
 m_strName=mag-gen-auto-no
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="N", " "
-{{@DataItem_m_strDescriptionFDITEM57_
+{{@DataItem_m_strDescriptionFDITEM59_
 
 @}}
-[FDITEM58_]
+[FDITEM60_]
 m_strName=mag-alfa-vuoto-3
 m_strRawPic=x(2)
 m_strPic=x(2)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM58_
+{{@DataItem_m_strDescriptionFDITEM60_
 
 @}}
 [CStoAcucobolSL_]

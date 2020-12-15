@@ -11,6 +11,7 @@
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
            copy "tcaumag.sl".
+           copy "tmagaz.sl".
            copy "tparamge.sl".
            copy "progmag.sl".
            copy "tmovmag.sl".
@@ -24,6 +25,7 @@
        DATA DIVISION.
        FILE SECTION.
            copy "tcaumag.fd".
+           copy "tmagaz.fd".
            copy "tparamge.fd".
            copy "progmag.fd".
            copy "tmovmag.fd".
@@ -40,14 +42,14 @@
       * COSTANTI
        78  titolo              value "MOVIMENTO DI CARICO MERCE ROTTA".
 
-      *FILE-STATUS
+      *FILE-STATUS                  
        77  status-tcaumag    pic xx.
+       77  status-tmagaz     pic xx.
        77  status-tparamge   pic xx.
        77  status-progmag    pic xx.
        77  status-tmovmag    pic xx.
        77  status-rmovmag    pic xx.
        77  status-rmovmag1   pic xx.
-
 
       * FLAGS
        77  controllo             pic xx.
@@ -204,7 +206,7 @@
            perform INIT.
            perform OPEN-FILES.
            if tutto-ok
-              perform LEGGI-PARAMETRI
+              perform LEGGI-CAUSALI-ROT
               if tutto-ok
                  perform ELABORAZIONE
               end-if
@@ -219,6 +221,7 @@
       ***---
        OPEN-FILES.
            open input tcaumag
+           open input tmagaz
            open input tparamge
            open input progmag
            open input rmovmag
@@ -226,17 +229,35 @@
                     rmovmag1.
 
       ***---
-       LEGGI-PARAMETRI.
-           move space  to tge-codice
-           read tparamge
-              invalid
-                 continue
-           end-read.
+       LEGGI-CAUSALI-ROT.
+           move mcr-tmo-chiave  to tmo-chiave.
+           read tmovmag no lock.
 
-           move tge-causale-rotta-c   to tca-codice
-           read tcaumag
-              invalid
-                 continue
+           move tmo-causale to tca-codice.
+           read tcaumag no lock
+           move tca-cod-magaz to mag-codice
+           read tmagaz no lock
+           move mag-cau-carico-rot to tca-codice.
+           read tcaumag no lock
+                invalid           
+                display message
+                            "Impossibile creare il movimento di carico."
+                     x"0d0a""Causale carico ROT non valida"
+                           icon 3
+                          title titolo
+                set errori to true
+                exit paragraph
+           end-read.
+           move mag-cau-scarico-rot to tca-codice.
+           read tcaumag no lock
+                invalid           
+                display message
+                            "Impossibile creare il movimento di carico."
+                     x"0d0a""Causale scarico ROT non valida"
+                           icon 3
+                          title titolo
+                set errori to true
+                exit paragraph
            end-read.
 
 
@@ -271,8 +292,7 @@
 
       ***---
        ELABORAZIONE.
-           move mcr-tmo-chiave  to tmo-chiave
-
+           move mcr-tmo-chiave  to tmo-chiave.
 
            perform READ-RECORD-LOCK
 
@@ -282,20 +302,18 @@
                       icon 3
                       title titolo
               exit paragraph
-           end-if.
+           end-if.                    
 
            move mcr-tmo-anno    to rmo-anno of rmovmag
            move mcr-tmo-numero  to rmo-movim of rmovmag
            move low-value       to rmo-riga of rmovmag
 
-           start rmovmag key not < rmo-chiave of rmovmag
-              invalid
-                 continue
-              not invalid
+           start rmovmag key >= rmo-chiave of rmovmag
+                 invalid continue
+             not invalid
                  perform until 1 = 2
                     read rmovmag next no lock
-                       at end
-                          exit perform
+                       at end exit perform
                     end-read
                     if mcr-tmo-anno  not = rmo-anno of rmovmag or
                        mcr-tmo-numero not = rmo-movim of rmovmag
@@ -305,10 +323,9 @@
                  end-perform
            end-start.
 
-
            add 1 to tmo-numero
-           move tge-causale-rotta-c   to tmo-causale
-           move mcr-peso-tot          to tmo-peso-utf
+           move mag-cau-carico-rot to tmo-causale
+           move mcr-peso-tot       to tmo-peso-utf
 
            write tmo-rec
               invalid
@@ -323,9 +340,9 @@
            move rmo-rec of rmovmag to rmo-rec of rmovmag1
 
            add 1 to rmo-movim of rmovmag1
-           move tge-causale-rotta-c   to rmo-causale  of rmovmag1
+           move mag-cau-carico-rot  to rmo-causale  of rmovmag1
 
-           move tca-cod-magaz         to rmo-codmag of rmovmag1
+           move tca-cod-magaz       to rmo-codmag of rmovmag1
 
            write RMO-REC of rmovmag1.
 
@@ -343,8 +360,7 @@
        VERIFICA-PRG.
            move rmo-chiave-progmag of rmovmag1 to prg-chiave
            read progmag no lock
-              invalid
-                 perform CREA-PRG
+                invalid perform CREA-PRG
            end-read.
 
       ***---
@@ -421,7 +437,8 @@ LUBEXX        rmo-qta of rmovmag1            = 0
                   progmag
                   tmovmag
                   rmovmag
-                  rmovmag1.
+                  rmovmag1
+                  tmagaz.
       
       ***---
        EXIT-PGM.

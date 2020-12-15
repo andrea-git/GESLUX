@@ -44,10 +44,7 @@
                10 tge-gg-scadenza-vol-old      PIC  s9(3).
                10 tge-gg-evadi-parziale-old    PIC  9(3).
                10 tge-gg-cons-max-old          PIC  9(3).
-      *(( XFD NAME = tge-causale-rottas ))
-               10 tge-causale-rotta-s          PIC  X(4).
-      *(( XFD NAME = tge-causale-rottac ))
-               10 tge-causale-rotta-c          PIC  X(4).
+               10 FILLER           PIC  X(8).
                10 tge-dati-comuni.
                    15 tge-data-creazione           PIC  9(8).
                    15 tge-ora-creazione            PIC  9(8).

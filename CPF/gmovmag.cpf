@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=scr-partenza
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4C602033-247-54652645
+PROGRAM_UNIQUE_CODE=TOTEM-7E4CF93331-117-152515146
 
 {{@DESCRIPTION:
 
@@ -8366,8 +8366,8 @@ Begin Screen Form1
             Destroy Type      = Automatic
             Enable            = NONE
             Field Edited (Style) = 0
-            Field Edited Format = X(40)
-            Field Picture     = X(40)
+            Field Edited Format = x(100)
+            Field Picture     = x(100)
             Field Variable    = des-ragsoc-1
             File              = destini
             Font              = Small Font
@@ -14869,7 +14869,9 @@ BEGIN-TEXT
                                exit perform
                             end-perform
                       end-start
-                      if errori
+                      if tutto-ok
+                         perform CAUSALI-ROTTA
+                      else
                          display message "Bozza non valida"
                                   x"0d0a""Nessun riferimento a merce rotta"
                                    title tit-err
@@ -14883,6 +14885,43 @@ BEGIN-TEXT
               perform CANCELLA-COLORE
               move 4 to accept-control
            end-if.
+
+      ***---
+       CAUSALI-ROTTA. 
+           move btno-causale to tca-codice.
+           read tcaumag no lock.
+           move tca-cod-magaz to mag-codice.
+      
+           read tmagaz no lock
+      
+           move mag-cau-carico-rot to tca-codice.
+           read tcaumag no lock
+              invalid
+                 set errori  to true
+                 display message 
+                          "Causale carico per merce rotta non valida"
+                          title tit-err
+                           icon 2
+              not invalid
+                 move tca-codice    to CausaleRotta-c
+                 move tca-cod-magaz to MagazRotta-c
+           end-read.
+      
+           if tutto-ok
+              move mag-cau-scarico-rot to tca-codice
+              read tcaumag no lock
+                 invalid
+                    set errori  to true
+                    display message 
+                             "Causale scarico per merce rotta non valida"
+                             title tit-err
+                              icon 2
+                 not invalid
+                    move tca-codice    to CausaleRotta-s
+                    move tca-cod-magaz to MagazRotta-s
+              end-read
+           end-if
+
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -15855,46 +15894,49 @@ BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = pb-rotta-LinkTo
 BEGIN-TEXT
-           set tutto-ok to true
-           move spaces to tge-codice.
-           read tparamge no lock 
-              invalid 
-                 continue 
-           end-read.
-           move tge-causale-rotta-s to tca-codice.
-           read tcaumag no lock
-              invalid
-                 set errori  to true
-                 display message 
-                          "Causale scarico per merce rotta non valida"
-                          title tit-err
-                           icon 2
-              not invalid
-                 move tca-codice    to CausaleRotta-s
-                 move tca-cod-magaz to MagazRotta-s
-           end-read.
-
-           if tutto-ok
-              move tge-causale-rotta-c to tca-codice
-              read tcaumag no lock
-                 invalid
-                    set errori  to true
-                    display message 
-                             "Causale carico per merce rotta non valida"
-                             title tit-err
-                              icon 2
-                 not invalid
-                    move tca-codice    to CausaleRotta-c
-                    move tca-cod-magaz to MagazRotta-c
-              end-read
-           end-if
-
-
-           if tutto-ok
+      *****     set tutto-ok to true.   
+      *****
+      *****     move "tmagaz"       to como-file
+      *****     call "zoom-gt"   using como-file, mag-rec
+      *****                     giving stato-zoom
+      *****     cancel "zoom-gt"
+      *****
+      *****     read tmagaz no lock
+      *****
+      *****     move mag-cau-carico-rot to tca-codice.
+      *****     read tcaumag no lock
+      *****        invalid
+      *****           set errori  to true
+      *****           display message 
+      *****                    "Causale scarico per merce rotta non valida"
+      *****                    title tit-err
+      *****                     icon 2
+      *****        not invalid
+      *****           move tca-codice    to CausaleRotta-s
+      *****           move tca-cod-magaz to MagazRotta-s
+      *****     end-read.
+      *****
+      *****     if tutto-ok
+      *****        move mag-cau-scarico-rot to tca-codice
+      *****        read tcaumag no lock
+      *****           invalid
+      *****              set errori  to true
+      *****              display message 
+      *****                       "Causale carico per merce rotta non valida"
+      *****                       title tit-err
+      *****                        icon 2
+      *****           not invalid
+      *****              move tca-codice    to CausaleRotta-c
+      *****              move tca-cod-magaz to MagazRotta-c
+      *****        end-read
+      *****     end-if
+      *****
+      *****
+      *****     if tutto-ok
               modify scr-partenza-handle, visible false
               perform SCR-ROTTA-OPEN-ROUTINE
               move 27 to key-status
-           end-if.
+      *****     end-if.
 END-TEXT
 END-DATA
 BEGIN-DATA

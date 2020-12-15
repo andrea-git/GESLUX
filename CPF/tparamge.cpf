@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4C602110-126-2188223587
+PROGRAM_UNIQUE_CODE=TOTEM-7E4CF93218-31-3151516326
 
 {{@DESCRIPTION:
 
@@ -1005,9 +1005,9 @@ m_bFixed=1
 
 @}}
 [FDITEM97_WK]
-m_strName=old-tge-causale-rotta-s
-m_strRawPic=X(4)
-m_strPic=X(4)
+m_strName=FILLER
+m_strRawPic=x(8)
+m_strPic=x(8)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -1015,9 +1015,7 @@ m_bFixed=1
 
 @}}
 [FDITEM98_WK]
-m_strName=old-tge-causale-rotta-c
-m_strRawPic=X(4)
-m_strPic=X(4)
+m_strName=old-tge-dati-comuni
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -1025,15 +1023,17 @@ m_bFixed=1
 
 @}}
 [FDITEM99_WK]
-m_strName=old-tge-dati-comuni
-m_nItemLevel=10
+m_strName=old-tge-data-creazione
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM99_WK
 
 @}}
 [FDITEM100_WK]
-m_strName=old-tge-data-creazione
+m_strName=old-tge-ora-creazione
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=15
@@ -1043,9 +1043,9 @@ m_bFixed=1
 
 @}}
 [FDITEM101_WK]
-m_strName=old-tge-ora-creazione
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=old-tge-utente-creazione
+m_strRawPic=X(10)
+m_strPic=X(10)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1053,9 +1053,9 @@ m_bFixed=1
 
 @}}
 [FDITEM102_WK]
-m_strName=old-tge-utente-creazione
-m_strRawPic=X(10)
-m_strPic=X(10)
+m_strName=old-tge-data-ultima-modifica
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1063,7 +1063,7 @@ m_bFixed=1
 
 @}}
 [FDITEM103_WK]
-m_strName=old-tge-data-ultima-modifica
+m_strName=old-tge-ora-ultima-modifica
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=15
@@ -1073,9 +1073,9 @@ m_bFixed=1
 
 @}}
 [FDITEM104_WK]
-m_strName=old-tge-ora-ultima-modifica
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=old-tge-utente-ultima-modifica
+m_strRawPic=X(10)
+m_strPic=X(10)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1083,27 +1083,27 @@ m_bFixed=1
 
 @}}
 [FDITEM105_WK]
-m_strName=old-tge-utente-ultima-modifica
-m_strRawPic=X(10)
-m_strPic=X(10)
-m_nItemLevel=15
+m_strName=old-tge-vuoti
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM105_WK
 
 @}}
 [FDITEM106_WK]
-m_strName=old-tge-vuoti
-m_nItemLevel=10
+m_strName=old-tge-gg-mail-volantino
+m_strRawPic=999
+m_strPic=999
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM106_WK
 
 @}}
 [FDITEM107_WK]
-m_strName=old-tge-gg-mail-volantino
-m_strRawPic=999
-m_strPic=999
+m_strName=old-tge-divisore-lstgdo
+m_strRawPic=s9(5)v999
+m_strPic=s9(5)v999
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1111,9 +1111,9 @@ m_bFixed=1
 
 @}}
 [FDITEM108_WK]
-m_strName=old-tge-divisore-lstgdo
-m_strRawPic=s9(5)v999
-m_strPic=s9(5)v999
+m_strName=old-tge-num-vuoto-1
+m_strRawPic=9(7)
+m_strPic=9(7)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1121,9 +1121,9 @@ m_bFixed=1
 
 @}}
 [FDITEM109_WK]
-m_strName=old-tge-num-vuoto-1
-m_strRawPic=9(7)
-m_strPic=9(7)
+m_strName=old-tge-num-vuoto-2
+m_strRawPic=9(18)
+m_strPic=9(18)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1131,7 +1131,7 @@ m_bFixed=1
 
 @}}
 [FDITEM110_WK]
-m_strName=old-tge-num-vuoto-2
+m_strName=old-tge-num-vuoto-3
 m_strRawPic=9(18)
 m_strPic=9(18)
 m_nItemLevel=15
@@ -1141,9 +1141,9 @@ m_bFixed=1
 
 @}}
 [FDITEM111_WK]
-m_strName=old-tge-num-vuoto-3
-m_strRawPic=9(18)
-m_strPic=9(18)
+m_strName=old-tge-gg-inizio-vol-pren-old
+m_strRawPic=X(3)
+m_strPic=X(3)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1151,7 +1151,7 @@ m_bFixed=1
 
 @}}
 [FDITEM112_WK]
-m_strName=old-tge-gg-inizio-vol-pren-old
+m_strName=old-tge-cod-pag-anticipato
 m_strRawPic=X(3)
 m_strPic=X(3)
 m_nItemLevel=15
@@ -1161,9 +1161,9 @@ m_bFixed=1
 
 @}}
 [FDITEM113_WK]
-m_strName=old-tge-cod-pag-anticipato
-m_strRawPic=X(3)
-m_strPic=X(3)
+m_strName=old-tge-gg-master-chiuso
+m_strRawPic=9(3)
+m_strPic=9(3)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1171,9 +1171,9 @@ m_bFixed=1
 
 @}}
 [FDITEM114_WK]
-m_strName=old-tge-gg-master-chiuso
-m_strRawPic=9(3)
-m_strPic=9(3)
+m_strName=old-tge-ditta-comunicazione-utf
+m_strRawPic=X(20)
+m_strPic=X(20)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1181,9 +1181,9 @@ m_bFixed=1
 
 @}}
 [FDITEM115_WK]
-m_strName=old-tge-ditta-comunicazione-utf
-m_strRawPic=X(20)
-m_strPic=X(20)
+m_strName=old-tge-gg-vol-qta
+m_strRawPic=9(3)
+m_strPic=9(3)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1191,16 +1191,6 @@ m_bFixed=1
 
 @}}
 [FDITEM116_WK]
-m_strName=old-tge-gg-vol-qta
-m_strRawPic=9(3)
-m_strPic=9(3)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM116_WK
-
-@}}
-[FDITEM117_WK]
 m_strName=old-tge-anno-F-pdf
 m_strRawPic=9(4)
 m_strPic=9(4)
@@ -1208,10 +1198,10 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=tge-alfa-vuoto_1
-{{@DataItem_m_strDescriptionFDITEM117_WK
+{{@DataItem_m_strDescriptionFDITEM116_WK
 
 @}}
-[FDITEM118_WK]
+[FDITEM117_WK]
 m_strName=old-tge-num-F-pdf
 m_strRawPic=9(8)
 m_strPic=9(8)
@@ -1219,10 +1209,10 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=tge-alfa-vuoto_1_1
-{{@DataItem_m_strDescriptionFDITEM118_WK
+{{@DataItem_m_strDescriptionFDITEM117_WK
 
 @}}
-[FDITEM119_WK]
+[FDITEM118_WK]
 m_strName=old-tge-anno-NC-pdf
 m_strRawPic=9(4)
 m_strPic=9(4)
@@ -1230,13 +1220,24 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=tge-alfa-vuoto_1_2
+{{@DataItem_m_strDescriptionFDITEM118_WK
+
+@}}
+[FDITEM119_WK]
+m_strName=old-tge-num-NC-pdf
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=tge-alfa-vuoto_1_3
 {{@DataItem_m_strDescriptionFDITEM119_WK
 
 @}}
 [FDITEM120_WK]
-m_strName=old-tge-num-NC-pdf
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=old-tge-blocco-fido
+m_strRawPic=s9(10)v99
+m_strPic=s9(10)v99
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1245,20 +1246,18 @@ m_strName_Xfd=tge-alfa-vuoto_1_3
 
 @}}
 [FDITEM121_WK]
-m_strName=old-tge-blocco-fido
-m_strRawPic=s9(10)v99
-m_strPic=s9(10)v99
-m_nItemLevel=15
+m_strName=como-ora4
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strName_Xfd=tge-alfa-vuoto_1_3
 {{@DataItem_m_strDescriptionFDITEM121_WK
 
 @}}
 [FDITEM122_WK]
-m_strName=como-ora4
-m_strRawPic=9(4)
-m_strPic=9(4)
+m_strName=Large-Font
+m_nUsage=35
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1266,22 +1265,13 @@ m_bFixed=1
 
 @}}
 [FDITEM123_WK]
-m_strName=Large-Font
-m_nUsage=35
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM123_WK
-
-@}}
-[FDITEM124_WK]
 m_strName=lab-pag-ant-buf
 m_strRawPic=X(100)
 m_strPic=X(100)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM124_WK
+{{@DataItem_m_strDescriptionFDITEM123_WK
 
 @}}
 
@@ -1510,7 +1500,7 @@ Begin Screen Form1
    Height in Cells   = TRUE
    Help ID           = 0
    Label Offset      = 23
-   Lines             = 61,85
+   Lines             = 58,77
    Link To Thread    = TRUE
    Max Lines         = 0,00
    Max Size          = 0,00
@@ -2541,135 +2531,9 @@ Begin Screen Form1
       Before Procedure  = Screen1-DaEf-1-BeforeProcedure
       After Procedure   = ef-codiva-AfterProcedure
    End
-   Begin Data.Entry-Field ef-cau-rotta-s
-      SCREEN-COL        = 23,00
-      SCREEN-LINE       = 27,15
-      LOCK-CONTROL      = TRUE
-      LEVEL             = 5
-      (Name)            = ef-cau-rotta-s
-      Auto              = FALSE
-      Auto Decimal      = 0
-      Border            = Boxed
-      Case              = Upper
-      Clines            = 0
-      Clines Unit       = Default
-      Color             = 513
-      Column            = 23,00
-      Csize             = 0
-      Csize Unit        = Default
-      Cursor            = 0
-      Cursor Col        = 0
-      Cursor Row        = 0
-      Destroy Type      = Automatic
-      Enable            = NONE
-      Enable Variable   = MOD
-      Field Edited (Style) = 1
-      Field Edited Format = X(4)
-      Field Picture     = X(4)
-      Field Variable    = tge-causale-rotta-s
-      File              = tparamge
-      Font              = Small Font
-      Font Variable     = Small-Font
-      Height in Cells   = TRUE
-      Help ID           = 0
-      Hint              = Digitare il codice Causale standard per merce rotta per i carico
-      ID                = 0
-      ID Variable       = AUTO-ID
-      Justification     = Left
-      Line              = 27,15
-      Lines             = 1,31
-      Lines Unit        = Default
-      Max Lines         = 0
-      Max Text          = 4
-      Max Value         = 0
-      Min Value         = 0
-      No AutoSel        = FALSE
-      No Tab            = FALSE
-      Notify Change     = FALSE
-      Numeric           = FALSE
-      Occurs            = 0
-      Read Only         = FALSE
-      Required          = FALSE
-      Secure            = FALSE
-      Size              = 7,00
-      Size Unit         = Default
-      Style             = Singleline
-      Tab Order         = 17
-      Use Return        = FALSE
-      Use Tab           = FALSE
-      Value Multiple    = FALSE
-      Visible           = NONE
-      Width in Cells    = TRUE
-      My Property       = "CONTROLLO-OLD=;CONTROLLO=;ZOOM="
-      Before Procedure  = Screen1-DaEf-1-BeforeProcedure
-      After Procedure   = ef-codiva-AfterProcedure
-   End
-   Begin Data.Entry-Field ef-cau-rotta-c
-      SCREEN-COL        = 23,00
-      SCREEN-LINE       = 28,77
-      LOCK-CONTROL      = TRUE
-      LEVEL             = 5
-      (Name)            = ef-cau-rotta-c
-      Auto              = FALSE
-      Auto Decimal      = 0
-      Border            = Boxed
-      Case              = Upper
-      Clines            = 0
-      Clines Unit       = Default
-      Color             = 513
-      Column            = 23,00
-      Csize             = 0
-      Csize Unit        = Default
-      Cursor            = 0
-      Cursor Col        = 0
-      Cursor Row        = 0
-      Destroy Type      = Automatic
-      Enable            = NONE
-      Enable Variable   = MOD
-      Field Edited (Style) = 1
-      Field Edited Format = X(4)
-      Field Picture     = X(4)
-      Field Variable    = tge-causale-rotta-c
-      File              = Working Storage
-      Font              = Small Font
-      Font Variable     = Small-Font
-      Height in Cells   = TRUE
-      Help ID           = 0
-      Hint              = Digitare il codice Causale standard per merce rotta per lo scarico
-      ID                = 0
-      ID Variable       = AUTO-ID
-      Justification     = Left
-      Line              = 28,77
-      Lines             = 1,31
-      Lines Unit        = Default
-      Max Lines         = 0
-      Max Text          = 4
-      Max Value         = 0
-      Min Value         = 0
-      No AutoSel        = FALSE
-      No Tab            = FALSE
-      Notify Change     = FALSE
-      Numeric           = FALSE
-      Occurs            = 0
-      Read Only         = FALSE
-      Required          = FALSE
-      Secure            = FALSE
-      Size              = 7,00
-      Size Unit         = Default
-      Style             = Singleline
-      Tab Order         = 18
-      Use Return        = FALSE
-      Use Tab           = FALSE
-      Value Multiple    = FALSE
-      Visible           = NONE
-      Width in Cells    = TRUE
-      My Property       = "CONTROLLO-OLD=;CONTROLLO=;ZOOM="
-      Before Procedure  = Screen1-DaEf-1-BeforeProcedure
-      After Procedure   = ef-codiva-AfterProcedure
-   End
    Begin Data.Entry-Field ef-promo
       SCREEN-COL        = 23,00
-      SCREEN-LINE       = 30,38
+      SCREEN-LINE       = 27,31
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-promo
@@ -2702,7 +2566,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 30,38
+      Line              = 27,31
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -2720,7 +2584,7 @@ Begin Screen Form1
       Size              = 7,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 19
+      Tab Order         = 17
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -2732,7 +2596,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-tipocli
       SCREEN-COL        = 23,00
-      SCREEN-LINE       = 32,00
+      SCREEN-LINE       = 28,92
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-tipocli
@@ -2765,7 +2629,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Unaligned
-      Line              = 32,00
+      Line              = 28,92
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -2783,7 +2647,7 @@ Begin Screen Form1
       Size              = 7,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 20
+      Tab Order         = 18
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -2795,7 +2659,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-ditta-utf
       SCREEN-COL        = 23,00
-      SCREEN-LINE       = 33,69
+      SCREEN-LINE       = 30,62
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-ditta-utf
@@ -2828,7 +2692,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Unaligned
-      Line              = 33,69
+      Line              = 30,62
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -2846,7 +2710,7 @@ Begin Screen Form1
       Size              = 20,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 21
+      Tab Order         = 19
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -2858,7 +2722,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-blocco-fido
       SCREEN-COL        = 23,00
-      SCREEN-LINE       = 35,38
+      SCREEN-LINE       = 32,31
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-blocco-fido
@@ -2891,7 +2755,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 35,38
+      Line              = 32,31
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -2909,7 +2773,7 @@ Begin Screen Form1
       Size              = 15,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 22
+      Tab Order         = 20
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -2921,7 +2785,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-div
       SCREEN-COL        = 23,00
-      SCREEN-LINE       = 37,15
+      SCREEN-LINE       = 34,08
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-div
@@ -2954,7 +2818,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 37,15
+      Line              = 34,08
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -2972,7 +2836,7 @@ Begin Screen Form1
       Size              = 15,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 23
+      Tab Order         = 21
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -2984,7 +2848,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-perce-arrot
       SCREEN-COL        = 23,00
-      SCREEN-LINE       = 40,69
+      SCREEN-LINE       = 37,62
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-perce-arrot
@@ -3017,7 +2881,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 40,69
+      Line              = 37,62
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -3035,7 +2899,7 @@ Begin Screen Form1
       Size              = 7,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 24
+      Tab Order         = 22
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3047,7 +2911,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-gg-part
       SCREEN-COL        = 56,14
-      SCREEN-LINE       = 40,69
+      SCREEN-LINE       = 37,62
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-gg-part
@@ -3079,7 +2943,7 @@ Begin Screen Form1
       Hint              = gg da aggiungere alla data odierna per l'invio csv dei volantini
       ID                = 0
       Justification     = Right
-      Line              = 40,69
+      Line              = 37,62
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -3097,7 +2961,7 @@ Begin Screen Form1
       Size              = 7,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 25
+      Tab Order         = 23
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3109,7 +2973,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-perce-prog
       SCREEN-COL        = 81,43
-      SCREEN-LINE       = 40,54
+      SCREEN-LINE       = 37,46
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-perce-prog
@@ -3142,7 +3006,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 40,54
+      Line              = 37,46
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -3160,7 +3024,7 @@ Begin Screen Form1
       Size              = 5,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 26
+      Tab Order         = 24
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3172,7 +3036,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-perce-fido
       SCREEN-COL        = 23,00
-      SCREEN-LINE       = 42,92
+      SCREEN-LINE       = 39,85
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-perce-fido
@@ -3205,7 +3069,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 42,92
+      Line              = 39,85
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -3223,7 +3087,7 @@ Begin Screen Form1
       Size              = 7,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 27
+      Tab Order         = 25
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3235,7 +3099,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-pile
       SCREEN-COL        = 55,86
-      SCREEN-LINE       = 42,92
+      SCREEN-LINE       = 39,85
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-pile
@@ -3268,7 +3132,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Left
-      Line              = 42,92
+      Line              = 39,85
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -3286,7 +3150,7 @@ Begin Screen Form1
       Size              = 20,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 28
+      Tab Order         = 26
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3298,7 +3162,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-perce-fidoa
       SCREEN-COL        = 23,00
-      SCREEN-LINE       = 45,15
+      SCREEN-LINE       = 42,08
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-perce-fidoa
@@ -3331,7 +3195,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 45,15
+      Line              = 42,08
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -3349,7 +3213,7 @@ Begin Screen Form1
       Size              = 7,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 29
+      Tab Order         = 27
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3361,7 +3225,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-perce-fidob
       SCREEN-COL        = 55,86
-      SCREEN-LINE       = 45,15
+      SCREEN-LINE       = 42,08
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-perce-fidob
@@ -3394,7 +3258,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 45,15
+      Line              = 42,08
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -3412,7 +3276,7 @@ Begin Screen Form1
       Size              = 7,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 30
+      Tab Order         = 28
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3424,7 +3288,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-gg-chiuso
       SCREEN-COL        = 81,43
-      SCREEN-LINE       = 45,15
+      SCREEN-LINE       = 42,08
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-gg-chiuso
@@ -3456,7 +3320,7 @@ Begin Screen Form1
       Hint              = I master aventi data di creazione < (oggi - questo valore) si chiudono senza MAI riaprirsi.
       ID                = 0
       Justification     = Right
-      Line              = 45,15
+      Line              = 42,08
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -3474,7 +3338,7 @@ Begin Screen Form1
       Size              = 5,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 31
+      Tab Order         = 29
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3486,7 +3350,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-vet
       SCREEN-COL        = 23,00
-      SCREEN-LINE       = 49,38
+      SCREEN-LINE       = 46,31
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-vet
@@ -3519,7 +3383,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 49,38
+      Line              = 46,31
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -3537,7 +3401,7 @@ Begin Screen Form1
       Size              = 7,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 32
+      Tab Order         = 30
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3549,7 +3413,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-limite
       SCREEN-COL        = 23,00
-      SCREEN-LINE       = 50,92
+      SCREEN-LINE       = 47,85
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-limite
@@ -3582,7 +3446,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 50,92
+      Line              = 47,85
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -3600,7 +3464,7 @@ Begin Screen Form1
       Size              = 7,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 33
+      Tab Order         = 31
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3612,7 +3476,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-gg-ini-pren
       SCREEN-COL        = 48,86
-      SCREEN-LINE       = 50,92
+      SCREEN-LINE       = 47,85
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-gg-ini-pren
@@ -3645,7 +3509,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 50,92
+      Line              = 47,85
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -3663,7 +3527,7 @@ Begin Screen Form1
       Size              = 5,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 34
+      Tab Order         = 32
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3675,7 +3539,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-gg-vol-qta
       SCREEN-COL        = 71,43
-      SCREEN-LINE       = 50,92
+      SCREEN-LINE       = 47,85
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-gg-vol-qta
@@ -3708,7 +3572,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 50,92
+      Line              = 47,85
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -3726,7 +3590,7 @@ Begin Screen Form1
       Size              = 5,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 35
+      Tab Order         = 33
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3738,7 +3602,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-vetaa
       SCREEN-COL        = 23,00
-      SCREEN-LINE       = 52,38
+      SCREEN-LINE       = 49,31
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-vetaa
@@ -3771,7 +3635,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 52,38
+      Line              = 49,31
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -3789,7 +3653,7 @@ Begin Screen Form1
       Size              = 5,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 36
+      Tab Order         = 34
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3801,7 +3665,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-vetab
       SCREEN-COL        = 48,86
-      SCREEN-LINE       = 52,38
+      SCREEN-LINE       = 49,31
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-vetab
@@ -3834,7 +3698,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 52,38
+      Line              = 49,31
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -3852,7 +3716,7 @@ Begin Screen Form1
       Size              = 5,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 37
+      Tab Order         = 35
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3864,7 +3728,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-gg-max
       SCREEN-COL        = 71,43
-      SCREEN-LINE       = 52,38
+      SCREEN-LINE       = 49,31
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-gg-max
@@ -3897,7 +3761,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 52,38
+      Line              = 49,31
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -3915,7 +3779,7 @@ Begin Screen Form1
       Size              = 5,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 38
+      Tab Order         = 36
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3927,7 +3791,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-gg-cons
       SCREEN-COL        = 92,86
-      SCREEN-LINE       = 50,85
+      SCREEN-LINE       = 47,77
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-gg-cons
@@ -3959,7 +3823,7 @@ Begin Screen Form1
       Hint              = Giorni da aggiungere di default alla data consegna in creazione master
       ID                = 0
       Justification     = Right
-      Line              = 50,85
+      Line              = 47,77
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -3977,7 +3841,7 @@ Begin Screen Form1
       Size              = 5,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 39
+      Tab Order         = 37
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3989,7 +3853,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-limitea
       SCREEN-COL        = 23,00
-      SCREEN-LINE       = 57,15
+      SCREEN-LINE       = 54,08
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-limitea
@@ -4021,7 +3885,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 57,15
+      Line              = 54,08
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -4039,7 +3903,7 @@ Begin Screen Form1
       Size              = 7,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 40
+      Tab Order         = 38
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -4051,7 +3915,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-vetaaa
       SCREEN-COL        = 23,00
-      SCREEN-LINE       = 59,00
+      SCREEN-LINE       = 55,92
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-vetaaa
@@ -4084,7 +3948,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 59,00
+      Line              = 55,92
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -4102,7 +3966,7 @@ Begin Screen Form1
       Size              = 10,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 41
+      Tab Order         = 39
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -4114,7 +3978,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-gg-ini-prena
       SCREEN-COL        = 56,00
-      SCREEN-LINE       = 57,15
+      SCREEN-LINE       = 54,08
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-gg-ini-prena
@@ -4146,7 +4010,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 57,15
+      Line              = 54,08
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -4164,7 +4028,7 @@ Begin Screen Form1
       Size              = 7,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 42
+      Tab Order         = 40
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -4176,7 +4040,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-vetaba
       SCREEN-COL        = 56,00
-      SCREEN-LINE       = 59,00
+      SCREEN-LINE       = 55,92
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-vetaba
@@ -4209,7 +4073,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 59,00
+      Line              = 55,92
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -4227,7 +4091,7 @@ Begin Screen Form1
       Size              = 10,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 43
+      Tab Order         = 41
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -4269,7 +4133,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 7,14
       Size Unit         = Default
-      Tab Order         = 44
+      Tab Order         = 42
       Title             = "CUSTOM CONTROL"
       Transparent       = TRUE
       Visible           = NONE
@@ -4305,7 +4169,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 8,14
       Size Unit         = Default
-      Tab Order         = 45
+      Tab Order         = 43
       Title             = "BlockPgm"
       Transparent       = TRUE
       Visible           = NONE
@@ -4340,7 +4204,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 46
+      Tab Order         = 44
       Title             = "Anno Esercizio Attuale"
       Transparent       = TRUE
       Visible           = NONE
@@ -4384,7 +4248,7 @@ Begin Screen Form1
       Size in Pixels    = 1
       Size Unit         = Default
       Style             = Other
-      Tab Order         = 47
+      Tab Order         = 45
       Termination Value = 0
       Visible           = NONE
       Width in Cells    = TRUE
@@ -4417,7 +4281,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 48
+      Tab Order         = 46
       Title             = "Data ultimo Consolidamento Progressivi di Magazzino"
       Transparent       = TRUE
       Visible           = NONE
@@ -4451,7 +4315,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 49
+      Tab Order         = 47
       Title             = "Codice I.V.A. Standard"
       Transparent       = TRUE
       Visible           = NONE
@@ -4485,7 +4349,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 65,00
       Size Unit         = Default
-      Tab Order         = 50
+      Tab Order         = 48
       Title Picture     = X(100)
       Title Variable    = lab-iva-buf
       Transparent       = TRUE
@@ -4520,7 +4384,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 51
+      Tab Order         = 49
       Title             = "Codice I.V.A. Omaggio"
       Transparent       = TRUE
       Visible           = NONE
@@ -4554,7 +4418,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 65,00
       Size Unit         = Default
-      Tab Order         = 52
+      Tab Order         = 50
       Title Picture     = X(100)
       Title Variable    = lab-iva-omag-buf
       Transparent       = TRUE
@@ -4589,7 +4453,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 53
+      Tab Order         = 51
       Title             = "Cliente per corripsettivi"
       Transparent       = TRUE
       Visible           = NONE
@@ -4623,7 +4487,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 65,00
       Size Unit         = Default
-      Tab Order         = 54
+      Tab Order         = 52
       Title Picture     = X(100)
       Title Variable    = lab-cli-buf
       Transparent       = TRUE
@@ -4658,7 +4522,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 55
+      Tab Order         = 53
       Title             = "Codice Pagamento standard"
       Transparent       = TRUE
       Visible           = NONE
@@ -4692,7 +4556,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 65,00
       Size Unit         = Default
-      Tab Order         = 56
+      Tab Order         = 54
       Title Picture     = X(100)
       Title Variable    = lab-pag-buf
       Transparent       = TRUE
@@ -4727,7 +4591,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 57
+      Tab Order         = 55
       Title             = "Causale per corripsettivi"
       Transparent       = TRUE
       Visible           = NONE
@@ -4761,7 +4625,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 65,00
       Size Unit         = Default
-      Tab Order         = 58
+      Tab Order         = 56
       Title Picture     = X(100)
       Title Variable    = lab-cau-buf
       Transparent       = TRUE
@@ -4796,7 +4660,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 59
+      Tab Order         = 57
       Title             = "Causale standard per ordini"
       Transparent       = TRUE
       Visible           = NONE
@@ -4830,7 +4694,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 65,00
       Size Unit         = Default
-      Tab Order         = 60
+      Tab Order         = 58
       Title Picture     = X(100)
       Title Variable    = lab-cau-std-buf
       Transparent       = TRUE
@@ -4839,7 +4703,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-4aeaaabaa
       SCREEN-COL        = 2,29
-      SCREEN-LINE       = 30,38
+      SCREEN-LINE       = 27,31
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-4aeaaabaa
@@ -4858,14 +4722,14 @@ Begin Screen Form1
       ID                = 22
       Justification     = Left
       Label Offset      = 20
-      Line              = 30,38
+      Line              = 27,31
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 61
+      Tab Order         = 59
       Title             = "Codice listino ""promo"""
       Transparent       = TRUE
       Visible           = NONE
@@ -4873,7 +4737,7 @@ Begin Screen Form1
    End
    Begin Label lab-promo
       SCREEN-COL        = 31,00
-      SCREEN-LINE       = 30,38
+      SCREEN-LINE       = 27,31
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = lab-promo
@@ -4892,14 +4756,14 @@ Begin Screen Form1
       ID                = 23
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 30,38
+      Line              = 27,31
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 65,00
       Size Unit         = Default
-      Tab Order         = 62
+      Tab Order         = 60
       Title Picture     = X(100)
       Title Variable    = lab-promo-buf
       Transparent       = TRUE
@@ -4908,7 +4772,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-4aeaaabaaa
       SCREEN-COL        = 2,29
-      SCREEN-LINE       = 32,00
+      SCREEN-LINE       = 28,92
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-4aeaaabaaa
@@ -4927,14 +4791,14 @@ Begin Screen Form1
       ID                = 24
       Justification     = Left
       Label Offset      = 20
-      Line              = 32,00
+      Line              = 28,92
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 63
+      Tab Order         = 61
       Title             = "Tipologia cliente ""PRIVATO"""
       Transparent       = TRUE
       Visible           = NONE
@@ -4942,7 +4806,7 @@ Begin Screen Form1
    End
    Begin Label lab-tipocli
       SCREEN-COL        = 31,00
-      SCREEN-LINE       = 32,00
+      SCREEN-LINE       = 28,92
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = lab-tipocli
@@ -4961,14 +4825,14 @@ Begin Screen Form1
       ID                = 25
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 32,00
+      Line              = 28,92
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 65,00
       Size Unit         = Default
-      Tab Order         = 64
+      Tab Order         = 62
       Title Picture     = X(100)
       Title Variable    = lab-tipocli-buf
       Transparent       = TRUE
@@ -5003,7 +4867,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 65
+      Tab Order         = 63
       Title             = "Causale std ordini Fornitori"
       Transparent       = TRUE
       Visible           = NONE
@@ -5037,7 +4901,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 65,00
       Size Unit         = Default
-      Tab Order         = 66
+      Tab Order         = 64
       Title Picture     = X(100)
       Title Variable    = lab-cau-ord-forn-buf
       Transparent       = TRUE
@@ -5046,7 +4910,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-4aeaaabaaaa
       SCREEN-COL        = 2,29
-      SCREEN-LINE       = 40,69
+      SCREEN-LINE       = 37,62
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-4aeaaabaaaa
@@ -5065,14 +4929,14 @@ Begin Screen Form1
       ID                = 28
       Justification     = Left
       Label Offset      = 20
-      Line              = 40,69
+      Line              = 37,62
       Lines             = 2,00
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 67
+      Tab Order         = 65
       Title             = "% di arrotondamento al bancale"
       Transparent       = TRUE
       Visible           = NONE
@@ -5080,7 +4944,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-4aeaaabaaaaa
       SCREEN-COL        = 2,29
-      SCREEN-LINE       = 42,92
+      SCREEN-LINE       = 39,85
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-4aeaaabaaaaa
@@ -5099,14 +4963,14 @@ Begin Screen Form1
       ID                = 29
       Justification     = Left
       Label Offset      = 20
-      Line              = 42,92
+      Line              = 39,85
       Lines             = 2,00
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 68
+      Tab Order         = 66
       Title             = "% MAX di scostamento scoperto (fido 2^ verifica)"
       Transparent       = TRUE
       Visible           = NONE
@@ -5114,7 +4978,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-4aeaaabaaaaaa
       SCREEN-COL        = 2,29
-      SCREEN-LINE       = 45,15
+      SCREEN-LINE       = 42,08
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-4aeaaabaaaaaa
@@ -5133,14 +4997,14 @@ Begin Screen Form1
       ID                = 30
       Justification     = Left
       Label Offset      = 20
-      Line              = 45,15
+      Line              = 42,08
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 69
+      Tab Order         = 67
       Title             = "Trasporto: € al Kg. Italia"
       Transparent       = TRUE
       Visible           = NONE
@@ -5148,7 +5012,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-4aeaaabaaaaab
       SCREEN-COL        = 35,14
-      SCREEN-LINE       = 45,15
+      SCREEN-LINE       = 42,08
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-4aeaaabaaaaab
@@ -5167,14 +5031,14 @@ Begin Screen Form1
       ID                = 31
       Justification     = Left
       Label Offset      = 20
-      Line              = 45,15
+      Line              = 42,08
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 70
+      Tab Order         = 68
       Title             = "Trasporto: € al Kg. Estero"
       Transparent       = TRUE
       Visible           = NONE
@@ -5208,7 +5072,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 71
+      Tab Order         = 69
       Title             = "Causale std per omaggio"
       Transparent       = TRUE
       Visible           = NONE
@@ -5242,7 +5106,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 65,00
       Size Unit         = Default
-      Tab Order         = 72
+      Tab Order         = 70
       Title Picture     = X(100)
       Title Variable    = lab-cau-omag-buf
       Transparent       = TRUE
@@ -5251,7 +5115,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-4aeaaabaaaaaaa
       SCREEN-COL        = 2,29
-      SCREEN-LINE       = 50,92
+      SCREEN-LINE       = 47,85
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-4aeaaabaaaaaaa
@@ -5270,14 +5134,14 @@ Begin Screen Form1
       ID                = 35
       Justification     = Left
       Label Offset      = 20
-      Line              = 50,92
+      Line              = 47,85
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 73
+      Tab Order         = 71
       Title             = "Limite Kg vettore std"
       Transparent       = TRUE
       Visible           = NONE
@@ -5285,7 +5149,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-4aeaaabaaaaaba
       SCREEN-COL        = 2,29
-      SCREEN-LINE       = 49,38
+      SCREEN-LINE       = 46,31
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-4aeaaabaaaaaba
@@ -5304,14 +5168,14 @@ Begin Screen Form1
       ID                = 36
       Justification     = Left
       Label Offset      = 20
-      Line              = 49,38
+      Line              = 46,31
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 15,86
       Size Unit         = Default
-      Tab Order         = 74
+      Tab Order         = 72
       Title             = "Vettore STD"
       Transparent       = TRUE
       Visible           = NONE
@@ -5319,7 +5183,7 @@ Begin Screen Form1
    End
    Begin Label lab-vet
       SCREEN-COL        = 31,00
-      SCREEN-LINE       = 49,38
+      SCREEN-LINE       = 46,31
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = lab-vet
@@ -5338,14 +5202,14 @@ Begin Screen Form1
       ID                = 37
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 49,38
+      Line              = 46,31
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 65,00
       Size Unit         = Default
-      Tab Order         = 75
+      Tab Order         = 73
       Title Picture     = X(100)
       Title Variable    = lab-vet-buf
       Transparent       = TRUE
@@ -5354,7 +5218,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-4aeaaabaaaaabaa
       SCREEN-COL        = 35,14
-      SCREEN-LINE       = 42,92
+      SCREEN-LINE       = 39,85
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-4aeaaabaaaaabaa
@@ -5373,14 +5237,14 @@ Begin Screen Form1
       ID                = 38
       Justification     = Left
       Label Offset      = 20
-      Line              = 42,92
+      Line              = 39,85
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 76
+      Tab Order         = 74
       Title             = "Registro PILE"
       Transparent       = TRUE
       Visible           = NONE
@@ -5414,7 +5278,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 77
+      Tab Order         = 75
       Title             = "Data effettiva Consolid. Magazzino"
       Transparent       = TRUE
       Visible           = NONE
@@ -5422,7 +5286,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-4aeaaabaaaaababa
       SCREEN-COL        = 2,29
-      SCREEN-LINE       = 52,38
+      SCREEN-LINE       = 49,31
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-4aeaaabaaaaababa
@@ -5441,14 +5305,14 @@ Begin Screen Form1
       ID                = 41
       Justification     = Left
       Label Offset      = 20
-      Line              = 52,38
+      Line              = 49,31
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 78
+      Tab Order         = 76
       Title             = "GG validità volantino"
       Transparent       = TRUE
       Visible           = NONE
@@ -5456,7 +5320,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-4aeaaabaaaaababb
       SCREEN-COL        = 31,86
-      SCREEN-LINE       = 52,38
+      SCREEN-LINE       = 49,31
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-4aeaaabaaaaababb
@@ -5475,14 +5339,14 @@ Begin Screen Form1
       ID                = 42
       Justification     = Left
       Label Offset      = 20
-      Line              = 52,38
+      Line              = 49,31
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 15,00
       Size Unit         = Default
-      Tab Order         = 79
+      Tab Order         = 77
       Title             = "GG evasione parziale"
       Transparent       = TRUE
       Visible           = NONE
@@ -5490,7 +5354,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-4aeaaabaaaaababba
       SCREEN-COL        = 55,43
-      SCREEN-LINE       = 52,38
+      SCREEN-LINE       = 49,31
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-4aeaaabaaaaababba
@@ -5509,91 +5373,22 @@ Begin Screen Form1
       ID                = 43
       Justification     = Left
       Label Offset      = 20
-      Line              = 52,38
+      Line              = 49,31
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 14,50
       Size Unit         = Default
-      Tab Order         = 80
+      Tab Order         = 78
       Title             = "GG consegna max"
-      Transparent       = TRUE
-      Visible           = NONE
-      Width in Cells    = TRUE
-   End
-   Begin Label Screen1-La-4aeaaababaa
-      SCREEN-COL        = 2,29
-      SCREEN-LINE       = 27,15
-      LOCK-CONTROL      = TRUE
-      LEVEL             = 5
-      (Name)            = Screen1-La-4aeaaababaa
-      Clines            = 0
-      Clines Unit       = Default
-      Color             = 0
-      Column            = 2,29
-      Csize             = 0
-      Csize Unit        = Default
-      Destroy Type      = Automatic
-      Enable            = NONE
-      Font              = Small Font
-      Font Variable     = Small-Font
-      Height in Cells   = TRUE
-      Help ID           = 0
-      ID                = 44
-      Justification     = Left
-      Label Offset      = 20
-      Line              = 27,15
-      Lines             = 1,31
-      Lines Unit        = Default
-      No Key Letter     = FALSE
-      Occurs            = 0
-      Size              = 20,00
-      Size Unit         = Default
-      Tab Order         = 81
-      Title             = "Causale merce rotta scarico"
-      Transparent       = TRUE
-      Visible           = NONE
-      Width in Cells    = TRUE
-   End
-   Begin Label lab-cau-rotta-s
-      SCREEN-COL        = 31,00
-      SCREEN-LINE       = 27,15
-      LOCK-CONTROL      = TRUE
-      LEVEL             = 5
-      (Name)            = lab-cau-rotta-s
-      Clines            = 0
-      Clines Unit       = Default
-      Color             = 5
-      Column            = 31,00
-      Csize             = 0
-      Csize Unit        = Default
-      Destroy Type      = Automatic
-      Enable            = NONE
-      Font              = Small Font
-      Font Variable     = Small-Font
-      Height in Cells   = TRUE
-      Help ID           = 0
-      ID                = 45
-      Justification     = Unaligned
-      Label Offset      = 20
-      Line              = 27,15
-      Lines             = 1,31
-      Lines Unit        = Default
-      No Key Letter     = FALSE
-      Occurs            = 0
-      Size              = 65,00
-      Size Unit         = Default
-      Tab Order         = 82
-      Title Picture     = X(100)
-      Title Variable    = lab-cau-rotta-s-buf
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
    End
    Begin Label Screen1-La-4aeaaabaaaaababbaa
       SCREEN-COL        = 78,29
-      SCREEN-LINE       = 52,38
+      SCREEN-LINE       = 49,31
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-4aeaaabaaaaababbaa
@@ -5612,84 +5407,15 @@ Begin Screen Form1
       ID                = 46
       Justification     = Left
       Label Offset      = 20
-      Line              = 52,38
+      Line              = 49,31
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 14,00
       Size Unit         = Default
-      Tab Order         = 83
+      Tab Order         = 79
       Title             = "GG data consegna"
-      Transparent       = TRUE
-      Visible           = NONE
-      Width in Cells    = TRUE
-   End
-   Begin Label Screen1-La-4aeaaababaaa
-      SCREEN-COL        = 2,29
-      SCREEN-LINE       = 28,77
-      LOCK-CONTROL      = TRUE
-      LEVEL             = 5
-      (Name)            = Screen1-La-4aeaaababaaa
-      Clines            = 0
-      Clines Unit       = Default
-      Color             = 0
-      Column            = 2,29
-      Csize             = 0
-      Csize Unit        = Default
-      Destroy Type      = Automatic
-      Enable            = NONE
-      Font              = Small Font
-      Font Variable     = Small-Font
-      Height in Cells   = TRUE
-      Help ID           = 0
-      ID                = 47
-      Justification     = Left
-      Label Offset      = 20
-      Line              = 28,77
-      Lines             = 1,31
-      Lines Unit        = Default
-      No Key Letter     = FALSE
-      Occurs            = 0
-      Size              = 20,00
-      Size Unit         = Default
-      Tab Order         = 84
-      Title             = "Causale merce rotta carico"
-      Transparent       = TRUE
-      Visible           = NONE
-      Width in Cells    = TRUE
-   End
-   Begin Label lab-cau-rotta-c
-      SCREEN-COL        = 31,00
-      SCREEN-LINE       = 28,77
-      LOCK-CONTROL      = TRUE
-      LEVEL             = 5
-      (Name)            = lab-cau-rotta-c
-      Clines            = 0
-      Clines Unit       = Default
-      Color             = 5
-      Column            = 31,00
-      Csize             = 0
-      Csize Unit        = Default
-      Destroy Type      = Automatic
-      Enable            = NONE
-      Font              = Small Font
-      Font Variable     = Small-Font
-      Height in Cells   = TRUE
-      Help ID           = 0
-      ID                = 48
-      Justification     = Unaligned
-      Label Offset      = 20
-      Line              = 28,77
-      Lines             = 1,31
-      Lines Unit        = Default
-      No Key Letter     = FALSE
-      Occurs            = 0
-      Size              = 65,00
-      Size Unit         = Default
-      Tab Order         = 85
-      Title Picture     = X(100)
-      Title Variable    = lab-cau-rotta-c-buf
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -5722,7 +5448,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 86
+      Tab Order         = 80
       Title             = "Fornitore standard"
       Transparent       = TRUE
       Visible           = NONE
@@ -5756,7 +5482,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 65,00
       Size Unit         = Default
-      Tab Order         = 87
+      Tab Order         = 81
       Title Picture     = X(100)
       Title Variable    = lab-forn-buf
       Transparent       = TRUE
@@ -5791,7 +5517,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 88
+      Tab Order         = 82
       Title             = "Ora effettiva Consolid. Magazzino"
       Transparent       = TRUE
       Visible           = NONE
@@ -5825,7 +5551,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 89
+      Tab Order         = 83
       Title             = "Data contabilizzaizone"
       Transparent       = TRUE
       Visible           = NONE
@@ -5859,7 +5585,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 90
+      Tab Order         = 84
       Title             = "Ora Contabilizzazione"
       Transparent       = TRUE
       Visible           = NONE
@@ -5867,7 +5593,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-4aeaaabaaaaababbb
       SCREEN-COL        = 31,86
-      SCREEN-LINE       = 50,92
+      SCREEN-LINE       = 47,85
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-4aeaaabaaaaababbb
@@ -5886,14 +5612,14 @@ Begin Screen Form1
       ID                = 57
       Justification     = Left
       Label Offset      = 20
-      Line              = 50,92
+      Line              = 47,85
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 15,00
       Size Unit         = Default
-      Tab Order         = 91
+      Tab Order         = 85
       Title             = "GG inizio volantino"
       Transparent       = TRUE
       Visible           = NONE
@@ -5901,7 +5627,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-1
       SCREEN-COL        = 37,57
-      SCREEN-LINE       = 47,62
+      SCREEN-LINE       = 44,54
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-1
@@ -5920,14 +5646,14 @@ Begin Screen Form1
       ID                = 39
       Justification     = Center
       Label Offset      = 20
-      Line              = 47,62
+      Line              = 44,54
       Lines             = 1,38
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 25,00
       Size Unit         = Default
-      Tab Order         = 92
+      Tab Order         = 86
       Title             = "VECCHIA EVASIONE"
       Transparent       = TRUE
       Visible           = NONE
@@ -5935,7 +5661,7 @@ Begin Screen Form1
    End
    Begin Bar Screen1-Br-1
       SCREEN-COL        = 63,14
-      SCREEN-LINE       = 48,31
+      SCREEN-LINE       = 45,23
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-Br-1
@@ -5950,21 +5676,21 @@ Begin Screen Form1
       Help ID           = 0
       ID                = 58
       Kind              = Horizontal
-      Line              = 48,31
+      Line              = 45,23
       Line Styles       = Solid
       Occurs            = 0
       Position Shift    = 0
       Size (Lines)      = 36,14
       Size (Lines) in Pixels = 253
       Size (Lines) Unit = Default
-      Tab Order         = 93
+      Tab Order         = 87
       Visible           = NONE
       Width             = 1
       Width in Cells    = TRUE
    End
    Begin Bar Screen1-Br-1a
       SCREEN-COL        = 1,00
-      SCREEN-LINE       = 48,31
+      SCREEN-LINE       = 45,23
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-Br-1a
@@ -5979,14 +5705,14 @@ Begin Screen Form1
       Help ID           = 0
       ID                = 59
       Kind              = Horizontal
-      Line              = 48,31
+      Line              = 45,23
       Line Styles       = Solid
       Occurs            = 0
       Position Shift    = 0
       Size (Lines)      = 36,14
       Size (Lines) in Pixels = 253
       Size (Lines) Unit = Default
-      Tab Order         = 94
+      Tab Order         = 88
       Visible           = NONE
       Width             = 1
       Width in Cells    = TRUE
@@ -6019,7 +5745,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 20,50
       Size Unit         = Default
-      Tab Order         = 95
+      Tab Order         = 89
       Title             = "Codice Pagamento anticipato"
       Transparent       = TRUE
       Visible           = NONE
@@ -6053,7 +5779,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 65,00
       Size Unit         = Default
-      Tab Order         = 96
+      Tab Order         = 90
       Title Picture     = X(100)
       Title Variable    = lab-pag-ant-buf
       Transparent       = TRUE
@@ -6062,7 +5788,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-4aeaaabaaaaababbaaa
       SCREEN-COL        = 66,86
-      SCREEN-LINE       = 45,15
+      SCREEN-LINE       = 42,08
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-4aeaaabaaaaababbaaa
@@ -6081,14 +5807,14 @@ Begin Screen Form1
       ID                = 62
       Justification     = Left
       Label Offset      = 20
-      Line              = 45,15
+      Line              = 42,08
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 14,00
       Size Unit         = Default
-      Tab Order         = 97
+      Tab Order         = 91
       Title             = "GG master chiuso"
       Transparent       = TRUE
       Visible           = NONE
@@ -6118,14 +5844,14 @@ Begin Screen Form1
       Size (Lines)      = 98,29
       Size (Lines) in Pixels = 688
       Size (Lines) Unit = Default
-      Tab Order         = 98
+      Tab Order         = 92
       Visible           = NONE
       Width             = 1
       Width in Cells    = TRUE
    End
    Begin Bar Screen1-Br-2a
       SCREEN-COL        = 1,00
-      SCREEN-LINE       = 39,77
+      SCREEN-LINE       = 36,69
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-Br-2a
@@ -6140,21 +5866,21 @@ Begin Screen Form1
       Help ID           = 0
       ID                = 49
       Kind              = Horizontal
-      Line              = 39,77
+      Line              = 36,69
       Line Styles       = Solid
       Occurs            = 0
       Position Shift    = 0
       Size (Lines)      = 98,29
       Size (Lines) in Pixels = 688
       Size (Lines) Unit = Default
-      Tab Order         = 99
+      Tab Order         = 93
       Visible           = NONE
       Width             = 1
       Width in Cells    = TRUE
    End
    Begin Label Screen1-La-4aeaaabaaab
       SCREEN-COL        = 2,29
-      SCREEN-LINE       = 33,69
+      SCREEN-LINE       = 30,62
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-4aeaaabaaab
@@ -6173,14 +5899,14 @@ Begin Screen Form1
       ID                = 63
       Justification     = Left
       Label Offset      = 20
-      Line              = 33,69
+      Line              = 30,62
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 100
+      Tab Order         = 94
       Title             = "Ditta comunicazioni UTF"
       Transparent       = TRUE
       Visible           = NONE
@@ -6188,7 +5914,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-4aeaaabaaaab
       SCREEN-COL        = 35,43
-      SCREEN-LINE       = 40,69
+      SCREEN-LINE       = 37,62
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-4aeaaabaaaab
@@ -6207,14 +5933,14 @@ Begin Screen Form1
       ID                = 64
       Justification     = Left
       Label Offset      = 20
-      Line              = 40,69
+      Line              = 37,62
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 101
+      Tab Order         = 95
       Title             = "gg partenza mail volantino"
       Transparent       = TRUE
       Visible           = NONE
@@ -6222,7 +5948,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-4aeaaabaaaaababbaaaa
       SCREEN-COL        = 66,86
-      SCREEN-LINE       = 40,54
+      SCREEN-LINE       = 37,46
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-4aeaaabaaaaababbaaaa
@@ -6241,14 +5967,14 @@ Begin Screen Form1
       ID                = 65
       Justification     = Left
       Label Offset      = 20
-      Line              = 40,54
+      Line              = 37,46
       Lines             = 2,15
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 13,14
       Size Unit         = Default
-      Tab Order         = 102
+      Tab Order         = 96
       Title             = "% creazione progressivo"
       Transparent       = TRUE
       Visible           = NONE
@@ -6256,7 +5982,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-4aeaaabaaaaababbba
       SCREEN-COL        = 55,43
-      SCREEN-LINE       = 50,92
+      SCREEN-LINE       = 47,85
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-4aeaaabaaaaababbba
@@ -6275,14 +6001,14 @@ Begin Screen Form1
       ID                = 66
       Justification     = Left
       Label Offset      = 20
-      Line              = 50,92
+      Line              = 47,85
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 14,50
       Size Unit         = Default
-      Tab Order         = 103
+      Tab Order         = 97
       Title             = "GG prenotazione qta"
       Transparent       = TRUE
       Visible           = NONE
@@ -6290,7 +6016,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-4aeaaabaaaaaaaa
       SCREEN-COL        = 2,29
-      SCREEN-LINE       = 57,15
+      SCREEN-LINE       = 54,08
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-4aeaaabaaaaaaaa
@@ -6309,14 +6035,14 @@ Begin Screen Form1
       ID                = 67
       Justification     = Left
       Label Offset      = 20
-      Line              = 57,15
+      Line              = 54,08
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 104
+      Tab Order         = 98
       Title             = "Anno fatture"
       Transparent       = TRUE
       Visible           = NONE
@@ -6324,7 +6050,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-4aeaaabaaaaababaa
       SCREEN-COL        = 2,29
-      SCREEN-LINE       = 59,00
+      SCREEN-LINE       = 55,92
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-4aeaaabaaaaababaa
@@ -6343,14 +6069,14 @@ Begin Screen Form1
       ID                = 68
       Justification     = Left
       Label Offset      = 20
-      Line              = 59,00
+      Line              = 55,92
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 105
+      Tab Order         = 99
       Title             = "Numero fatture"
       Transparent       = TRUE
       Visible           = NONE
@@ -6358,7 +6084,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-4aeaaabaaaaababbc
       SCREEN-COL        = 39,00
-      SCREEN-LINE       = 59,00
+      SCREEN-LINE       = 55,92
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-4aeaaabaaaaababbc
@@ -6377,14 +6103,14 @@ Begin Screen Form1
       ID                = 69
       Justification     = Left
       Label Offset      = 20
-      Line              = 59,00
+      Line              = 55,92
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 15,00
       Size Unit         = Default
-      Tab Order         = 106
+      Tab Order         = 100
       Title             = "Numero NC"
       Transparent       = TRUE
       Visible           = NONE
@@ -6392,7 +6118,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-4aeaaabaaaaababbbb
       SCREEN-COL        = 39,00
-      SCREEN-LINE       = 57,15
+      SCREEN-LINE       = 54,08
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-4aeaaabaaaaababbbb
@@ -6411,14 +6137,14 @@ Begin Screen Form1
       ID                = 70
       Justification     = Left
       Label Offset      = 20
-      Line              = 57,15
+      Line              = 54,08
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 15,00
       Size Unit         = Default
-      Tab Order         = 107
+      Tab Order         = 101
       Title             = "Anno Nc"
       Transparent       = TRUE
       Visible           = NONE
@@ -6426,7 +6152,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-1a
       SCREEN-COL        = 40,14
-      SCREEN-LINE       = 55,00
+      SCREEN-LINE       = 51,92
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-1a
@@ -6445,14 +6171,14 @@ Begin Screen Form1
       ID                = 71
       Justification     = Center
       Label Offset      = 20
-      Line              = 55,00
+      Line              = 51,92
       Lines             = 1,38
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 108
+      Tab Order         = 102
       Title             = "STAMPA PDF"
       Transparent       = TRUE
       Visible           = NONE
@@ -6460,7 +6186,7 @@ Begin Screen Form1
    End
    Begin Bar Screen1-Br-1aa
       SCREEN-COL        = 1,00
-      SCREEN-LINE       = 55,69
+      SCREEN-LINE       = 52,62
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-Br-1aa
@@ -6475,21 +6201,21 @@ Begin Screen Form1
       Help ID           = 0
       ID                = 72
       Kind              = Horizontal
-      Line              = 55,69
+      Line              = 52,62
       Line Styles       = Solid
       Occurs            = 0
       Position Shift    = 0
       Size (Lines)      = 36,14
       Size (Lines) in Pixels = 253
       Size (Lines) Unit = Default
-      Tab Order         = 109
+      Tab Order         = 103
       Visible           = NONE
       Width             = 1
       Width in Cells    = TRUE
    End
    Begin Bar Screen1-Br-1b
       SCREEN-COL        = 63,14
-      SCREEN-LINE       = 55,69
+      SCREEN-LINE       = 52,62
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-Br-1b
@@ -6504,21 +6230,21 @@ Begin Screen Form1
       Help ID           = 0
       ID                = 73
       Kind              = Horizontal
-      Line              = 55,69
+      Line              = 52,62
       Line Styles       = Solid
       Occurs            = 0
       Position Shift    = 0
       Size (Lines)      = 36,14
       Size (Lines) in Pixels = 253
       Size (Lines) Unit = Default
-      Tab Order         = 110
+      Tab Order         = 104
       Visible           = NONE
       Width             = 1
       Width in Cells    = TRUE
    End
    Begin Label Screen1-La-4aeaaabaaaba
       SCREEN-COL        = 2,29
-      SCREEN-LINE       = 35,38
+      SCREEN-LINE       = 32,31
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-4aeaaabaaaba
@@ -6537,14 +6263,14 @@ Begin Screen Form1
       ID                = 74
       Justification     = Left
       Label Offset      = 20
-      Line              = 35,38
+      Line              = 32,31
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 111
+      Tab Order         = 105
       Title             = "Blocco fido"
       Transparent       = TRUE
       Visible           = NONE
@@ -6552,7 +6278,7 @@ Begin Screen Form1
    End
    Begin Label Screen1-La-4aeaaabaaabaa
       SCREEN-COL        = 2,29
-      SCREEN-LINE       = 37,15
+      SCREEN-LINE       = 34,08
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-4aeaaabaaabaa
@@ -6568,17 +6294,17 @@ Begin Screen Form1
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 74
+      ID                = 75
       Justification     = Left
       Label Offset      = 20
-      Line              = 37,15
+      Line              = 34,08
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 112
+      Tab Order         = 106
       Title             = "Divisore ins. automatico listini"
       Transparent       = TRUE
       Visible           = NONE
@@ -6595,7 +6321,7 @@ Begin Screen Form1
       Handle Variable   = Form1-Tb-1-Handle
       Help ID           = 0
       Lines             = 2,69
-      Tab Order         = 113
+      Tab Order         = 107
       Begin Push-Button TOOL-ESCI
          SCREEN-COL        = 1,00
          SCREEN-LINE       = 1,15
@@ -6623,7 +6349,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = FALSE
          Help ID           = 0
-         ID                = 75
+         ID                = 76
          Line              = 1,15
          Lines             = 1,81
          Lines in Pixels   = 23
@@ -6668,7 +6394,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = FALSE
          Help ID           = 0
-         ID                = 76
+         ID                = 77
          Line              = 1,15
          Lines             = 1,81
          Lines in Pixels   = 23
@@ -6714,7 +6440,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = FALSE
          Help ID           = 0
-         ID                = 77
+         ID                = 78
          Line              = 1,15
          Lines             = 1,81
          Lines in Pixels   = 23
@@ -6761,7 +6487,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = FALSE
          Help ID           = 0
-         ID                = 78
+         ID                = 79
          Line              = 1,15
          Lines             = 1,81
          Lines in Pixels   = 23
@@ -6809,7 +6535,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = FALSE
          Help ID           = 0
-         ID                = 79
+         ID                = 80
          Line              = 1,15
          Lines             = 1,81
          Lines in Pixels   = 23
@@ -6857,7 +6583,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = FALSE
          Help ID           = 0
-         ID                = 80
+         ID                = 81
          Left Text         = FALSE
          Line              = 1,15
          Lines             = 0,62
@@ -6988,7 +6714,7 @@ Begin Screen Form1
       Handle Variable   = Form1-St-1-Handle
       PANEL-WIDTHS      = ( 61, 20, 999 )
       PANEL-STYLE       = ( 1, 1, 1 )
-      Tab Order         = 114
+      Tab Order         = 108
    End
 End
 
@@ -7383,16 +7109,6 @@ BEGIN-TEXT
            move tca-descrizione to lab-cau-omag-buf.
            display lab-cau-omag.
 
-           move tge-causale-rotta-s to tca-codice.
-           read tcaumag no lock invalid continue end-read.
-           move tca-descrizione to lab-cau-rotta-s-buf.
-           display lab-cau-rotta-s.
-
-           move tge-causale-rotta-c to tca-codice.
-           read tcaumag no lock invalid continue end-read.
-           move tca-descrizione to lab-cau-rotta-c-buf.
-           display lab-cau-rotta-c.
-
            move tge-listino-promo to lis-codice.
            read lisagente no lock key k-codice invalid continue end-read
            move lis-descrizione to lab-promo-buf.
@@ -7741,32 +7457,6 @@ BEGIN-TEXT
                    move tca-descrizione to lab-cau-ord-forn-buf
                 end-if
                 display ef-cau-ord-forn lab-cau-ord-forn
-
-           when 78-ID-ef-cau-rotta-s
-                move "tcaumag"  to como-file
-                inquire ef-cau-rotta-s, value in tca-codice
-                call "zoom-gt"  using  como-file, tca-rec
-                                giving stato-zoom
-                cancel "zoom-gt"
-
-                if stato-zoom = 0
-                   move tca-codice      to ef-cau-rotta-s-buf
-                   move tca-descrizione to lab-cau-rotta-s-buf
-                end-if
-                display ef-cau-rotta-s lab-cau-rotta-s
-
-           when 78-ID-ef-cau-rotta-c
-                move "tcaumag"  to como-file
-                inquire ef-cau-rotta-c, value in tca-codice
-                call "zoom-gt"  using  como-file, tca-rec
-                                giving stato-zoom
-                cancel "zoom-gt"
-
-                if stato-zoom = 0
-                   move tca-codice      to ef-cau-rotta-c-buf
-                   move tca-descrizione to lab-cau-rotta-c-buf
-                end-if
-                display ef-cau-rotta-c lab-cau-rotta-c
 
            when 78-ID-ef-promo
                 move "lisagente"  to como-file
@@ -8243,88 +7933,6 @@ BEGIN-TEXT
                 end-if
 
                 display lab-cau-omag
-
-           when 78-ID-ef-cau-rotta-s
-                inquire ef-cau-rotta-s, value ef-cau-rotta-s-buf
-                move ef-cau-rotta-s-buf to tca-codice
-
-                if tca-codice = spaces
-                   set errori to true
-                   display message "Codice Causale "
-                                   "merce rotta Obbligatorio!"
-                           title tit-err
-                           icon  mb-warning-icon
-                   move spaces to lab-cau-rotta-s-buf
-                else
-                   read tcaumag no lock
-                      invalid 
-                         set errori to true
-                         display message "Codice Causale merce rotta "
-                                         "NON valido!"
-                                title tit-err
-                                icon mb-warning-icon
-                        move spaces to lab-cau-rotta-s-buf
-                    not invalid
-                        move tca-descrizione to lab-cau-rotta-s-buf
-                        if tca-no-movim-giac-periodo  or
-                           tca-movim-giac-periodo-pos or
-                           tca-no-movim-giac          or
-                           tca-movim-giac-pos         or
-                           tca-cliente
-                           set errori to true
-                           display message "Codice Causale merce rotta "
-                                         "NON valido!"
-                                  x"0d0a""Deve valorizzare giacenza periodo  -"
-                                  x"0d0a""Deve valorizzare giacenza dinamica -"
-                                  x"0d0a""Dev'essere di tipo fornitore"
-                                title tit-err
-                                icon mb-warning-icon
-                        end-if
-                   end-read
-                end-if
-
-                display lab-cau-rotta-s
-
-           when 78-ID-ef-cau-rotta-c
-                inquire ef-cau-rotta-c, value ef-cau-rotta-c-buf
-                move ef-cau-rotta-c-buf to tca-codice
-
-                if tca-codice = spaces
-                   set errori to true
-                   display message "Codice Causale "
-                                   "merce rotta Obbligatorio!"
-                           title tit-err
-                           icon  mb-warning-icon
-                   move spaces to lab-cau-rotta-c-buf
-                else
-                   read tcaumag no lock
-                      invalid 
-                         set errori to true
-                         display message "Codice Causale merce rotta "
-                                         "NON valido!"
-                                title tit-err
-                                icon mb-warning-icon
-                        move spaces to lab-cau-rotta-c-buf
-                    not invalid
-                        move tca-descrizione to lab-cau-rotta-c-buf
-                        if tca-no-movim-giac-periodo  or 
-                           tca-movim-giac-periodo-neg or
-                           tca-no-movim-giac          or
-                           tca-movim-giac-neg         or
-                           tca-cliente
-                           set errori to true
-                           display message "Codice Causale merce rotta "
-                                         "NON valido!"
-                                  x"0d0a""Deve valorizzare giacenza periodo  +"
-                                  x"0d0a""Deve valorizzare giacenza dinamica +"
-                                  x"0d0a""Dev'essere di tipo fornitore"
-                                title tit-err
-                                icon mb-warning-icon
-                        end-if
-                   end-read
-                end-if
-
-                display lab-cau-rotta-c
 
            when 78-ID-ef-promo
                 inquire ef-promo, value ef-promo-buf
