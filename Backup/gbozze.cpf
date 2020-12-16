@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=form1
 BEFORE_PROGRAM=bprepb-Ev-Before-Program
 AFTER_PROGRAM=accetordforn-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E15C133336-930-2111918122
+PROGRAM_UNIQUE_CODE=TOTEM-7E4C10225040-951-341731444
 
 {{@DESCRIPTION:
 
@@ -6531,6 +6531,30 @@ BEGIN-TEXT
            when "93"
            when "99" set RecLocked to true
            end-evaluate.
+
+      ***---
+       TMOVMAG-ERR SECTION.
+           use after error procedure on tmovmag.
+           evaluate status-tmovmag
+           when "35"
+                display message "File [TMOVMAG] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [TMOVMAG] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[TMOVMAG] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "93"
+           when "99"
+                set RecLocked to true
+           end-evaluate.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -8163,13 +8187,25 @@ BEGIN-TEXT
                        display message "Chiusura NON effettuata"
                                  title tit-err
                                   icon 2
-                    else
+                    else                
                        move anno   to teva-anno-movim
                        move numero to teva-num-movim
-                       set teva-chiusa  to true
-                       accept teva-data-ch-man from century-date
-                       move   user-codi to teva-utente-ch-man
-                       rewrite teva-rec
+                       perform READ-TMOVMAG-LOCK
+                       if tutto-ok
+                          move anno   to teva-anno-movim
+                          move numero to teva-num-movim
+                          set teva-chiusa  to true
+                          accept teva-data-ch-man from century-date
+                          move   user-codi to teva-utente-ch-man
+                          rewrite teva-rec
+                          move teva-chiave to tmo-teva-chiave
+                          rewrite tmo-rec
+                          unlock tmovmag all records
+                       else
+                          display message "Chiusura NON effettuata"
+                                    title tit-err
+                                     icon 2
+                       end-if
                        unlock teva all records
                     end-if
                  end-if
@@ -8327,7 +8363,16 @@ BEGIN-TEXT
                              title tit-err
                               icon 2
                not invalid
-                   move 27 to key-status
+                   if tmo-teva-anno   not = 0 or
+                      tmo-teva-numero not = 0
+                      display message "Movimento già assegnato ad altra bozza."
+                               x"0d0a""Anno: " tmo-teva-anno
+                               x"0d0a""Numero: " tmo-teva-numero
+                                title tit-err
+                                 icon 2
+                   else   
+                      move 27 to key-status
+                   end-if
               end-read
            else
               move 27 to key-status

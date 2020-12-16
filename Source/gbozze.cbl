@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          gbozze.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        venerdì 12 maggio 2017 15:41:21.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        giovedì 17 dicembre 2020 00:07:05.
        REMARKS.
       *{TOTEM}END
 
@@ -79,7 +79,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -453,6 +453,7 @@
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
        77 clienti-cli-K4-SPLITBUF  PIC X(8).
        77 articoli-art-k1-SPLITBUF  PIC X(51).
+       77 articoli-art-k-frn-SPLITBUF  PIC X(16).
        77 reva-reva-k-articolo-SPLITBUF  PIC X(26).
        77 teva-teva-stato-SPLITBUF  PIC X(14).
        77 progmag-key01-SPLITBUF  PIC X(21).
@@ -1569,6 +1570,30 @@
            when "99" set RecLocked to true
            end-evaluate.
 
+      ***---
+       TMOVMAG-ERR SECTION.
+           use after error procedure on tmovmag.
+           evaluate status-tmovmag
+           when "35"
+                display message "File [TMOVMAG] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [TMOVMAG] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[TMOVMAG] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "93"
+           when "99"
+                set RecLocked to true
+           end-evaluate.
+
       * <TOTEM:END>
        INPUT-ERROR SECTION.
            USE AFTER STANDARD ERROR PROCEDURE ON INPUT.
@@ -2316,6 +2341,12 @@
            articoli-art-k1-SPLITBUF(1:50)
            .
 
+       articoli-art-k-frn-MERGE-SPLITBUF.
+           INITIALIZE articoli-art-k-frn-SPLITBUF
+           MOVE art-cod-art-frn OF articoli(1:15) TO 
+           articoli-art-k-frn-SPLITBUF(1:15)
+           .
+
        DataSet1-articoli-INITSTART.
            IF DataSet1-articoli-KEY-Asc
               MOVE Low-Value TO art-chiave OF articoli
@@ -2378,6 +2409,7 @@
               KEY art-chiave OF articoli
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT 
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -2406,6 +2438,7 @@
               END-IF
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -2434,6 +2467,7 @@
               END-IF
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -7917,13 +7951,25 @@
                        display message "Chiusura NON effettuata"
                                  title tit-err
                                   icon 2
-                    else
+                    else                
                        move anno   to teva-anno-movim
                        move numero to teva-num-movim
-                       set teva-chiusa  to true
-                       accept teva-data-ch-man from century-date
-                       move   user-codi to teva-utente-ch-man
-                       rewrite teva-rec
+                       perform READ-TMOVMAG-LOCK
+                       if tutto-ok
+                          move anno   to teva-anno-movim
+                          move numero to teva-num-movim
+                          set teva-chiusa  to true
+                          accept teva-data-ch-man from century-date
+                          move   user-codi to teva-utente-ch-man
+                          rewrite teva-rec
+                          move teva-chiave to tmo-teva-chiave
+                          rewrite tmo-rec
+                          unlock tmovmag all records
+                       else
+                          display message "Chiusura NON effettuata"
+                                    title tit-err
+                                     icon 2
+                       end-if
                        unlock teva all records
                     end-if
                  end-if
@@ -8067,7 +8113,17 @@
                              title tit-err
                               icon 2
                not invalid
-                   move 27 to key-status
+                   if tmo-teva-anno   not = 0 or
+                      tmo-teva-numero not = 0
+                      display message "Movimento già assegnato ad altra 
+      -    "bozza."
+                               x"0d0a""Anno: " tmo-teva-anno
+                               x"0d0a""Numero: " tmo-teva-numero
+                                title tit-err
+                                 icon 2
+                   else   
+                      move 27 to key-status
+                   end-if
               end-read
            else
               move 27 to key-status
