@@ -28641,7 +28641,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:Source\prgstato.cbl]
-COPY_DEPENDENCE=FD\progmag.sl;FD\lineseq.sl;FD\progmag.fd;FD\lineseq.fd
+COPY_DEPENDENCE=FD\progmag.sl;FD\progmag.fd
 ADDITIONAL_OPTIONS=-x -Di -Ga -Zd -Za -Zn -Zz
 FOLLOW_PROJECT=1
 ; Standard Options

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gmovmag.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 15 dicembre 2020 11:20:17.
+       DATE-WRITTEN.        mercoledì 16 dicembre 2020 22:56:34.
        REMARKS.
       *{TOTEM}END
 
@@ -12811,28 +12811,28 @@ LUBEXX                 rmo-qta           = 0
       
            move mag-cau-carico-rot to tca-codice.
            read tcaumag no lock
-              invalid
-                 set errori  to true
-                 display message 
-                          "Causale carico per merce rotta non valida"
-                          title tit-err
-                           icon 2
-              not invalid
-                 move tca-codice    to CausaleRotta-c
-                 move tca-cod-magaz to MagazRotta-c
+                invalid
+                set errori  to true
+                display message 
+                         "Causale carico per merce rotta non valida"
+                         title tit-err
+                          icon 2
+            not invalid
+                move tca-codice    to CausaleRotta-c
+                move tca-cod-magaz to MagazRotta-c
            end-read.
       
            if tutto-ok
               move mag-cau-scarico-rot to tca-codice
               read tcaumag no lock
-                 invalid
-                    set errori  to true
-                    display message 
+                   invalid
+                   set errori  to true
+                   display message 
                              "Causale scarico per merce rotta non valida
       -    ""
-                             title tit-err
-                              icon 2
-                 not invalid
+                            title tit-err
+                             icon 2
+                not invalid
                     move tca-codice    to CausaleRotta-s
                     move tca-cod-magaz to MagazRotta-s
               end-read

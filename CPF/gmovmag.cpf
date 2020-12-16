@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=scr-partenza
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4CF93331-117-152515146
+PROGRAM_UNIQUE_CODE=TOTEM-7E4C1022342-957-1321831878
 
 {{@DESCRIPTION:
 
@@ -14896,27 +14896,27 @@ BEGIN-TEXT
       
            move mag-cau-carico-rot to tca-codice.
            read tcaumag no lock
-              invalid
-                 set errori  to true
-                 display message 
-                          "Causale carico per merce rotta non valida"
-                          title tit-err
-                           icon 2
-              not invalid
-                 move tca-codice    to CausaleRotta-c
-                 move tca-cod-magaz to MagazRotta-c
+                invalid
+                set errori  to true
+                display message 
+                         "Causale carico per merce rotta non valida"
+                         title tit-err
+                          icon 2
+            not invalid
+                move tca-codice    to CausaleRotta-c
+                move tca-cod-magaz to MagazRotta-c
            end-read.
       
            if tutto-ok
               move mag-cau-scarico-rot to tca-codice
               read tcaumag no lock
-                 invalid
-                    set errori  to true
-                    display message 
+                   invalid
+                   set errori  to true
+                   display message 
                              "Causale scarico per merce rotta non valida"
-                             title tit-err
-                              icon 2
-                 not invalid
+                            title tit-err
+                             icon 2
+                not invalid
                     move tca-codice    to CausaleRotta-s
                     move tca-cod-magaz to MagazRotta-s
               end-read

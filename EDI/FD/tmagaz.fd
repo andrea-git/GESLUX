@@ -36,7 +36,9 @@
       *(( XFD NAME = mag-cau-s_1 ))
                        20 mag-cau-diff     PIC  x(4).
                    15 mag-vettore      PIC  9(5).
-                   15 mag-num-vuoto-3  PIC  9(18).
+                   15 mag-cau-carico-rot           PIC  x(4).
+                   15 mag-cau-scarico-rot          PIC  x(4).
+                   15 mag-num-vuoto-3  PIC  9(10).
                    15 mag-per-promo    PIC  x.
                        88 mag-per-promo-si VALUE IS "S". 
                        88 mag-per-promo-no VALUE IS "N". 
