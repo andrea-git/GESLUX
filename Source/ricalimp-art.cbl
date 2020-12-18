@@ -28,8 +28,15 @@
            copy "ttipocli.sl".
            copy "tcaumag.sl".
       *****     copy "tmp-ricalimp.sl".  
-           copy "lockfile.sl".
            copy "log-progmag.sl".
+
+       SELECT ra-semaforo |Usato al posto di lockfile
+           ASSIGN       TO  "ra-semaforo"
+           ORGANIZATION IS INDEXED
+           ACCESS MODE  IS DYNAMIC
+           FILE STATUS  IS STATUS-ra-semaforo
+           RECORD KEY   IS ra-chiave
+           WITH DUPLICATES .
 
       *****************************************************************
        DATA DIVISION.
@@ -44,7 +51,11 @@
            copy "ttipocli.fd".
            copy "tcaumag.fd". 
       *****     copy "tmp-ricalimp.fd".           
-           copy "lockfile.fd".   
+       FD ra-semaforo.
+       01  ra-rec.
+         03 ra-chiave        pic x.
+         03 ra-utente-in-uso pic x(20).
+       
            copy "log-progmag.fd".
 
        WORKING-STORAGE SECTION.
@@ -67,7 +78,7 @@
        77  status-destini        pic xx.
        77  status-ttipocli       pic xx.
        77  status-tcaumag        pic xx.   
-       77  status-lockfile       pic xx.
+       77  status-ra-semaforo    pic xx.
       ***** 77  status-tmp-ricalimp   pic xx.
       ***** 77  path-tmp-ricalimp     pic x(256).
        77  status-log-progmag    pic xx.
@@ -141,22 +152,21 @@
            evaluate status-progmag
            when "93"
            when "99" set RecLocked to true
-           end-evaluate. 
+           end-evaluate.  
 
       ***---
-       LOCKFILE-ERR SECTION.
-           use after error procedure on lockfile.
+       RA-SEMAFORO-ERR SECTION.
+           use after error procedure on ra-semaforo.
            set RecLocked to false.
            set tutto-ok  to true.
-           evaluate status-lockfile
-           when "93"
-           when "99" 
+           evaluate status-ra-semaforo
+           when "93" 
                 set RecLocked to true
-                if no-screen
+                if no-screen and ra-utente-in-uso not = spaces
                    set OtherXX to true
                    initialize AccessType
                    string "ATTENDERE. FUNZIONE IN USO DA: "
-                          lck-utente-creazione
+                          ra-utente-in-uso
                      into AccessType
                    end-string
                    perform ACCESSOXX
@@ -173,20 +183,30 @@
               goback
            end-if.
 
-           open i-o lockfile.
-                              
-           move "ricalimp-art" to lck-chiave.
-           read lockfile no lock
-                invalid         
-                move "C" to lck-operazione
-                accept lck-data-creazione from century-date
-                accept lck-ora-creazione  from century-date
-                move ra-user to lck-utente-creazione
-                write lck-rec invalid continue end-write
-           end-read.
+           perform until 1 = 2
+              open i-o ra-semaforo allowing readers
+              if status-ra-semaforo not = "00"
+                 if ra-utente-in-uso = spaces                      
+                   |per dare tempo eventualmente all'altro processo
+                   |di arrivare alla write immediatamente dopo la open
+                   |altrimenti può verificarsi che ancora non ha aggiornato
+                   |e troverebbe l'utente della sessione precedente
+                    call "C$SLEEP" using "1"                     
+                    open input ra-semaforo
+                    move spaces to ra-chiave
+                    read  ra-semaforo
+                    close ra-semaforo
+                    exit perform cycle
+                 end-if
+              else
+                 exit perform
+              end-if
+           end-perform.
 
-           perform READ-LOCKFILE-LOCK.
-
+           move spaces  to ra-chiave.
+           move ra-user to ra-utente-in-uso
+           write ra-rec invalid rewrite ra-rec end-write.
+                        
            if si-screen
               perform DESTROYXX
            end-if.   
@@ -210,16 +230,6 @@
            accept como-data from century-date.
            accept como-ora  from time.
            move ra-form-handle to form1-handle.          
-
-      ***---
-       READ-LOCKFILE-LOCK.
-           perform until 1 = 2
-              set RecLocked to false
-              read lockfile lock end-read
-              if not RecLocked
-                 exit perform
-              end-if
-           end-perform.
 
       ***---
        OPEN-FILES.
@@ -717,8 +727,7 @@ LUBEXX*****        end-if
 
       ***--
        CLOSE-FILES.
-           unlock lockfile all records.
-           close mtordini mrordini clienti destini tcaumag lockfile.
+           close mtordini mrordini clienti destini tcaumag ra-semaforo.
       *****     close       tmp-ricalimp.
       *****     delete file tmp-ricalimp.
            close log-progmag.
