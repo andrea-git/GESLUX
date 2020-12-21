@@ -29797,7 +29797,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:SOURCE\ricalimp-art.cbl]
-COPY_DEPENDENCE=FD\mtordini.sl;FD\mrordini.sl;FD\tordini.sl;FD\rordini.sl;FD\progmag.sl;FD\clienti.sl;FD\destini.sl;FD\ttipocli.sl;FD\tcaumag.sl;FD\log-progmag.sl;FD\mtordini.fd;FD\mrordini.fd;FD\tordini.fd;FD\rordini.fd;FD\progmag.fd;FD\clienti.fd;FD\destini.fd;FD\ttipocli.fd;FD\tcaumag.fd;FD\log-progmag.fd;Copylib\link-geslock.def;Copylib\comune.def;Copylib\messaggi.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;Copylib\link-wprogmag.def;Copylib\link-ricalimp-art.def;Copylib\direziona-impegnato-common.cpy;Copylib\accessoxx.cpy
+COPY_DEPENDENCE=FD\mtordini.sl;FD\mrordini.sl;FD\tordini.sl;FD\rordini.sl;FD\progmag.sl;FD\clienti.sl;FD\destini.sl;FD\ttipocli.sl;FD\tcaumag.sl;FD\lockfile.sl;FD\log-progmag.sl;FD\mtordini.fd;FD\mrordini.fd;FD\tordini.fd;FD\rordini.fd;FD\progmag.fd;FD\clienti.fd;FD\destini.fd;FD\ttipocli.fd;FD\tcaumag.fd;FD\lockfile.fd;FD\log-progmag.fd;Copylib\link-geslock.def;Copylib\comune.def;Copylib\messaggi.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;Copylib\link-wprogmag.def;Copylib\link-ricalimp-art.def;Copylib\direziona-impegnato-common.cpy;Copylib\accessoxx.cpy
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
@@ -103551,254 +103551,245 @@ RELATIVE_PATH=ANDAMENTOCLIENTI\SOURCE\opti-dhl.cbl
 FOLDER_NAME=Source
 
 [FILE_CONTENT-AndamentoClienti:FILE3]
-RELATIVE_PATH=Source\set-ini-log.cbl
-FOLDER_NAME=Source
-
-[FILE_CONTENT-AndamentoClienti:FILE4]
 RELATIVE_PATH=AndamentoClienti\Object\opti-core.acu
 FOLDER_NAME=Object
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE5]
+[FILE_CONTENT-AndamentoClienti:FILE4]
 RELATIVE_PATH=AndamentoClienti\Object\opti-dhl.acu
 FOLDER_NAME=Object
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-dhl.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE6]
+[FILE_CONTENT-AndamentoClienti:FILE5]
 RELATIVE_PATH=Object\opti-core.acu
 FOLDER_NAME=Object
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE7]
+[FILE_CONTENT-AndamentoClienti:FILE6]
 RELATIVE_PATH=Object\opti-dhl.acu
 FOLDER_NAME=Object
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-dhl.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE8]
-RELATIVE_PATH=Object\set-ini-log.acu
-FOLDER_NAME=Object
-OWNER_PATH=Source\set-ini-log.cbl
-
-[FILE_CONTENT-AndamentoClienti:FILE9]
+[FILE_CONTENT-AndamentoClienti:FILE7]
 RELATIVE_PATH=AndamentoClienti\FD\andamento.fd
 FOLDER_NAME=FD
 OWNER_PATH=AndamentoClienti\FD\andamento.clf
 ATTRIBUTE=0
 
-[FILE_CONTENT-AndamentoClienti:FILE10]
+[FILE_CONTENT-AndamentoClienti:FILE8]
 RELATIVE_PATH=AndamentoClienti\FD\andamento.sl
 FOLDER_NAME=FD
 OWNER_PATH=AndamentoClienti\FD\andamento.clf
 ATTRIBUTE=0
 
-[FILE_CONTENT-AndamentoClienti:FILE11]
+[FILE_CONTENT-AndamentoClienti:FILE9]
 RELATIVE_PATH=AndamentoClienti\FD\line-dhl.fd
 FOLDER_NAME=FD
 OWNER_PATH=AndamentoClienti\FD\line-dhl.clf
 ATTRIBUTE=0
 
-[FILE_CONTENT-AndamentoClienti:FILE12]
+[FILE_CONTENT-AndamentoClienti:FILE10]
 RELATIVE_PATH=AndamentoClienti\FD\line-dhl.sl
 FOLDER_NAME=FD
 OWNER_PATH=AndamentoClienti\FD\line-dhl.clf
 ATTRIBUTE=0
 
-[FILE_CONTENT-AndamentoClienti:FILE13]
+[FILE_CONTENT-AndamentoClienti:FILE11]
 RELATIVE_PATH=AndamentoClienti\FD\ttipocli.sl
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE14]
+[FILE_CONTENT-AndamentoClienti:FILE12]
 RELATIVE_PATH=FD\tgrupgdo.sl
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE15]
+[FILE_CONTENT-AndamentoClienti:FILE13]
 RELATIVE_PATH=FD\clienti.sl
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE16]
+[FILE_CONTENT-AndamentoClienti:FILE14]
 RELATIVE_PATH=AndamentoClienti\FD\destini.sl
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE17]
+[FILE_CONTENT-AndamentoClienti:FILE15]
 RELATIVE_PATH=AndamentoClienti\FD\tmarche.sl
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE18]
+[FILE_CONTENT-AndamentoClienti:FILE16]
 RELATIVE_PATH=AndamentoClienti\FD\tordini.sl
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE19]
+[FILE_CONTENT-AndamentoClienti:FILE17]
 RELATIVE_PATH=FD\rordini.sl
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE20]
+[FILE_CONTENT-AndamentoClienti:FILE18]
 RELATIVE_PATH=AndamentoClienti\FD\tnotacr.sl
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE21]
+[FILE_CONTENT-AndamentoClienti:FILE19]
 RELATIVE_PATH=AndamentoClienti\FD\rnotacr.sl
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE22]
+[FILE_CONTENT-AndamentoClienti:FILE20]
 RELATIVE_PATH=FD\articoli.sl
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE23]
+[FILE_CONTENT-AndamentoClienti:FILE21]
 RELATIVE_PATH=AndamentoClienti\FD\tcaumag.sl
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE24]
+[FILE_CONTENT-AndamentoClienti:FILE22]
 RELATIVE_PATH=AndamentoClienti\FD\lineseq.sl
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE25]
+[FILE_CONTENT-AndamentoClienti:FILE23]
 RELATIVE_PATH=AndamentoClienti\FD\ttipocli.fd
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE26]
+[FILE_CONTENT-AndamentoClienti:FILE24]
 RELATIVE_PATH=FD\tgrupgdo.fd
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE27]
+[FILE_CONTENT-AndamentoClienti:FILE25]
 RELATIVE_PATH=FD\clienti.fd
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE28]
+[FILE_CONTENT-AndamentoClienti:FILE26]
 RELATIVE_PATH=AndamentoClienti\FD\destini.fd
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE29]
+[FILE_CONTENT-AndamentoClienti:FILE27]
 RELATIVE_PATH=AndamentoClienti\FD\tmarche.fd
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE30]
+[FILE_CONTENT-AndamentoClienti:FILE28]
 RELATIVE_PATH=AndamentoClienti\FD\tordini.fd
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE31]
+[FILE_CONTENT-AndamentoClienti:FILE29]
 RELATIVE_PATH=FD\rordini.fd
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE32]
+[FILE_CONTENT-AndamentoClienti:FILE30]
 RELATIVE_PATH=AndamentoClienti\FD\tnotacr.fd
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE33]
+[FILE_CONTENT-AndamentoClienti:FILE31]
 RELATIVE_PATH=AndamentoClienti\FD\rnotacr.fd
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE34]
+[FILE_CONTENT-AndamentoClienti:FILE32]
 RELATIVE_PATH=FD\articoli.fd
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE35]
+[FILE_CONTENT-AndamentoClienti:FILE33]
 RELATIVE_PATH=AndamentoClienti\FD\tcaumag.fd
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE36]
+[FILE_CONTENT-AndamentoClienti:FILE34]
 RELATIVE_PATH=AndamentoClienti\FD\lineseq.fd
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE37]
+[FILE_CONTENT-AndamentoClienti:FILE35]
 RELATIVE_PATH=FD\ttipocli.sl
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE38]
+[FILE_CONTENT-AndamentoClienti:FILE36]
 RELATIVE_PATH=FD\destini.sl
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE39]
+[FILE_CONTENT-AndamentoClienti:FILE37]
 RELATIVE_PATH=FD\tmarche.sl
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE40]
+[FILE_CONTENT-AndamentoClienti:FILE38]
 RELATIVE_PATH=FD\tordini.sl
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE41]
+[FILE_CONTENT-AndamentoClienti:FILE39]
 RELATIVE_PATH=FD\tnotacr.sl
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE42]
+[FILE_CONTENT-AndamentoClienti:FILE40]
 RELATIVE_PATH=FD\rnotacr.sl
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE43]
+[FILE_CONTENT-AndamentoClienti:FILE41]
 RELATIVE_PATH=FD\tcaumag.sl
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE44]
+[FILE_CONTENT-AndamentoClienti:FILE42]
 RELATIVE_PATH=FD\lineseq.sl
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE45]
+[FILE_CONTENT-AndamentoClienti:FILE43]
 RELATIVE_PATH=FD\ttipocli.fd
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE46]
+[FILE_CONTENT-AndamentoClienti:FILE44]
 RELATIVE_PATH=FD\destini.fd
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE47]
+[FILE_CONTENT-AndamentoClienti:FILE45]
 RELATIVE_PATH=FD\tmarche.fd
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE48]
+[FILE_CONTENT-AndamentoClienti:FILE46]
 RELATIVE_PATH=FD\tordini.fd
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE49]
+[FILE_CONTENT-AndamentoClienti:FILE47]
 RELATIVE_PATH=FD\tnotacr.fd
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE50]
+[FILE_CONTENT-AndamentoClienti:FILE48]
 RELATIVE_PATH=FD\rnotacr.fd
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE51]
+[FILE_CONTENT-AndamentoClienti:FILE49]
 RELATIVE_PATH=FD\tcaumag.fd
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
 
-[FILE_CONTENT-AndamentoClienti:FILE52]
+[FILE_CONTENT-AndamentoClienti:FILE50]
 RELATIVE_PATH=FD\lineseq.fd
 FOLDER_NAME=FD
 OWNER_PATH=ANDAMENTOCLIENTI\SOURCE\opti-core.cbl
@@ -103890,37 +103881,6 @@ COPY_DEPENDENCE=\Lubex\GESLUX\FD\tordini.sl;\Lubex\GESLUX\FD\rordini.sl;FD\line-
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
-NAME_ERROR_FILE=@.err
-REMOTE_SERVER_NAME=myserver
-REMOTE_SERVER_PORT=5632
-REMOTE_SERVER_DIR=/
-REMOTE_OBJECT_FILE=@.acu
-; Listing Options
-NAME_LISTING_FILE=%listdir%\@.lst
-; Compatibility Options
-COMPATIBILITY_VERSION=16
-; File Options
-; Source Options
-; ReservedWord Options
-; DataStorage Options
-ALIGNMENT_DATA_BOUNDARY=4
-SYNC_BOUNDARY_LIMIT_NUMBER=4
-; Video Options
-; Mapping Options
-; Precompiler Options
-NAME_PRECOMPILE_OUTPUT_FILE=%listdir%\@.asq
-; Native Code Options
-; Debugger Options
-INCLUDE_ALL_INFO=1
-; Miscellaneous Options
-DEBUGGING=1
-CODE_VERSION_NUMBER=16
-
-[FILE_COMPILE_OPTION-AndamentoClienti:Debug Mode:Source\set-ini-log.cbl]
-ADDITIONAL_OPTIONS=-x -Di -Ga -Zd -Za -Zn -Zz
-FOLLOW_PROJECT=1
-; Standard Options
-NAME_OBJECT_FILE=..\Object\@.acu
 NAME_ERROR_FILE=@.err
 REMOTE_SERVER_NAME=myserver
 REMOTE_SERVER_PORT=5632
@@ -104053,35 +104013,6 @@ NAME_PRECOMPILE_OUTPUT_FILE=%listdir%\@.asq
 ; Miscellaneous Options
 CODE_VERSION_NUMBER=16
 
-[FILE_COMPILE_OPTION-AndamentoClienti:Release Mode:Source\set-ini-log.cbl]
-FOLLOW_PROJECT=1
-RECPMPILE=1
-; Standard Options
-NAME_OBJECT_FILE=%objectdir%\@.acu
-NAME_ERROR_FILE=@.err
-REMOTE_SERVER_NAME=myserver
-REMOTE_SERVER_PORT=5632
-REMOTE_SERVER_DIR=/
-REMOTE_OBJECT_FILE=@.acu
-; Listing Options
-NAME_LISTING_FILE=%listdir%\@.lst
-; Compatibility Options
-COMPATIBILITY_VERSION=16
-; File Options
-; Source Options
-; ReservedWord Options
-; DataStorage Options
-ALIGNMENT_DATA_BOUNDARY=4
-SYNC_BOUNDARY_LIMIT_NUMBER=4
-; Video Options
-; Mapping Options
-; Precompiler Options
-NAME_PRECOMPILE_OUTPUT_FILE=%listdir%\@.asq
-; Native Code Options
-; Debugger Options
-; Miscellaneous Options
-CODE_VERSION_NUMBER=16
-
 [PROJECT_COMPILE_SETTING-AndamentoClienti:RELEASE]
 ADDITIONAL_OPTIONS=-x -Di -Ga -Zd -Za -Zn -Zz
 ; Standard Options
@@ -104171,38 +104102,6 @@ FOLLOW_PROJECT=1
 RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
-NAME_ERROR_FILE=@.err
-REMOTE_SERVER_NAME=myserver
-REMOTE_SERVER_PORT=5632
-REMOTE_SERVER_DIR=/
-REMOTE_OBJECT_FILE=@.acu
-; Listing Options
-NAME_LISTING_FILE=%listdir%\@.lst
-; Compatibility Options
-COMPATIBILITY_VERSION=16
-; File Options
-; Source Options
-; ReservedWord Options
-; DataStorage Options
-ALIGNMENT_DATA_BOUNDARY=4
-SYNC_BOUNDARY_LIMIT_NUMBER=4
-; Video Options
-; Mapping Options
-; Precompiler Options
-NAME_PRECOMPILE_OUTPUT_FILE=%listdir%\@.asq
-; Native Code Options
-; Debugger Options
-INCLUDE_ALL_INFO=1
-; Miscellaneous Options
-DEBUGGING=1
-CODE_VERSION_NUMBER=16
-
-[FILE_COMPILE_OPTION-AndamentoClienti:RELEASE:Source\set-ini-log.cbl]
-ADDITIONAL_OPTIONS=-x -Di -Ga -Zd -Za -Zn -Zz
-FOLLOW_PROJECT=1
-RECPMPILE=1
-; Standard Options
-NAME_OBJECT_FILE=..\Object\@.acu
 NAME_ERROR_FILE=@.err
 REMOTE_SERVER_NAME=myserver
 REMOTE_SERVER_PORT=5632
