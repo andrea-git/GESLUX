@@ -16,7 +16,7 @@
       ******************************************************************
 
        SPECIAL-NAMES. decimal-point is comma.
-       INPUT-OUTPUT  SECTION.
+       INPUT-OUTPUT SECTION.
        FILE-CONTROL.
            copy "mtordini.sl".
            copy "mrordini.sl".
