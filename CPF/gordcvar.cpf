@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4C1022347-6-245837450
+PROGRAM_UNIQUE_CODE=TOTEM-7E4C15142749-922-213024144
 
 {{@DESCRIPTION:
 
@@ -23106,6 +23106,7 @@ BEGIN-TEXT
               move user-codi to ra-user
               modify lab-attendere, visible true
               move Form1-Handle to ra-form-handle
+              move tor-chiave   to ra-ordine
               call   "ricalimp-art" using ra-linkage
               cancel "ricalimp-art"             
               modify lab-attendere, visible false
