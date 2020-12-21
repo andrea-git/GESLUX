@@ -28,7 +28,13 @@
            copy "ttipocli.sl".
            copy "tcaumag.sl".
       *****     copy "tmp-ricalimp.sl".  
-           copy "log-progmag.sl".
+           copy "log-progmag.sl".    
+           
+       SELECT ra-log
+           ASSIGN       TO DISK path-ra-log
+           ORGANIZATION IS LINE SEQUENTIAL
+           ACCESS MODE  IS SEQUENTIAL
+           FILE STATUS  IS STATUS-ra-log.
 
        SELECT ra-semaforo |Usato al posto di lockfile
            ASSIGN       TO  "ra-semaforo"
@@ -55,8 +61,13 @@
        01  ra-rec.
          03 ra-chiave        pic x.
          03 ra-utente-in-uso pic x(20).
+         03 ra-data          pic 9(8).
+         03 ra-ora           pic 9(8).
        
            copy "log-progmag.fd".
+
+       FD  ra-log.
+       01 riga-ra-log PIC  x(200).
 
        WORKING-STORAGE SECTION.
            copy "link-geslock.def".  
@@ -77,12 +88,14 @@
        77  status-clienti        pic xx.
        77  status-destini        pic xx.
        77  status-ttipocli       pic xx.
-       77  status-tcaumag        pic xx.   
+       77  status-tcaumag        pic xx.     
        77  status-ra-semaforo    pic xx.
+       77  status-ra-log         pic xx.
       ***** 77  status-tmp-ricalimp   pic xx.
       ***** 77  path-tmp-ricalimp     pic x(256).
-       77  status-log-progmag    pic xx.
+       77  status-log-progmag    pic xx.    
        77  path-log-progmag      pic x(256).
+       77  path-ra-log           pic x(256).
 
        77  como-valore           pic s9(8).
        77  como-impegnato        pic s9(8).
@@ -93,6 +106,8 @@
 
        77  como-data             pic 9(8).
        77  como-ora              pic 9(8).    
+       77  r-output              pic x(25).
+       77  como-riga             pic x(50).
 
        77  peso-ed               PIC zz9,999.
        77  codice-ed             PIC z(5).
@@ -143,7 +158,16 @@
       ******************************************************************
        PROCEDURE DIVISION USING ra-linkage.
 
-       DECLARATIVES.
+       DECLARATIVES.  
+      ***---
+       RA-LOG SECTION.
+           use after error procedure on ra-log.
+           set RecLocked to false.
+           set tutto-ok  to true.
+           evaluate status-ra-log
+           when "35" open output ra-log
+           end-evaluate.  
+
       ***---
        PROGMAG-ERR SECTION.
            use after error procedure on progmag.
@@ -163,10 +187,22 @@
            when "93" 
                 set RecLocked to true
                 if no-screen and ra-utente-in-uso not = spaces
+                   inspect ra-utente-in-uso 
+                           replacing trailing spaces by low-value
                    set OtherXX to true
                    initialize AccessType
-                   string "ATTENDERE. FUNZIONE IN USO DA: "
-                          ra-utente-in-uso
+                   string "IN USO DA: "    delimited size
+                          ra-utente-in-uso delimited low-value
+                          " - "            delimited size
+                          ra-data(7:2)     delimited size
+                          "/"              delimited size
+                          ra-data(5:2)     delimited size
+                          "/"              delimited size
+                          ra-data(1:4)     delimited size
+                          "|"              delimited size
+                          ra-ora(1:2)      delimited size
+                          ":"              delimited size
+                          ra-ora(3:2)      delimited size
                      into AccessType
                    end-string
                    perform ACCESSOXX
@@ -177,7 +213,7 @@
        END DECLARATIVES.
 
       ***---
-       MAIN-PRG.
+       MAIN-PRG.                 
            accept sw-esegui from environment "ESEGUI_RICALIMP_ART".
            if sw-esegui not = "S"
               goback
@@ -201,11 +237,35 @@
               else
                  exit perform
               end-if
-           end-perform.
+           end-perform.          
+
+           accept  path-ra-log from environment "PROGMAG_LOG_PATH"
+           inspect path-ra-log replacing trailing spaces by low-value
+           string  path-ra-log   delimited low-value
+                   "LOG-RA.log"  delimited size
+              into path-ra-log
+           end-string
+           inspect path-ra-log replacing trailing low-value by spaces.
+           open extend ra-log.
+
+                                 
+           initialize como-riga.
+           string "** INIZIO PROGRAMMA: " delimited size
+                  ra-anno                 delimited size
+                  " - "                   delimited size
+                  ra-numero               delimited size
+             into como-riga
+           end-string.
+           perform SCRIVI-RA-LOG.
 
            move spaces  to ra-chiave.
            move ra-user to ra-utente-in-uso
+           accept ra-data from century-date.
+           accept ra-ora  from time.
            write ra-rec invalid rewrite ra-rec end-write.
+                                 
+           move "   SCRITTO SEMAFORO" to como-riga.
+           perform SCRIVI-RA-LOG.
                         
            if si-screen
               perform DESTROYXX
@@ -217,10 +277,23 @@
            perform INIT.
            perform OPEN-FILES.
 
-           if tutto-ok
-              perform ELABORAZIONE
-              perform CLOSE-FILES
-           end-if.
+           if tutto-ok         
+              move "   INIZIO ELABORAZIONE" to como-riga
+              perform SCRIVI-RA-LOG
+
+              perform ELABORAZIONE 
+
+              move "   FINE ELABORAZIONE" to como-riga
+              perform SCRIVI-RA-LOG
+
+              move "   CHIUSURA FILES" to como-riga
+              perform SCRIVI-RA-LOG
+              perform CLOSE-FILES  
+              move "   CHIUSI FILES" to como-riga
+              perform SCRIVI-RA-LOG
+           end-if.        
+           move "** FINE PROGRAMMA" to como-riga
+           perform SCRIVI-RA-LOG.
            perform EXIT-PGM.
 
       ***---
@@ -728,13 +801,30 @@ LUBEXX*****        end-if
       ***--
        CLOSE-FILES.
            close mtordini mrordini clienti destini tcaumag ra-semaforo.
+           delete file ra-semaforo.
       *****     close       tmp-ricalimp.
       *****     delete file tmp-ricalimp.
            close log-progmag.
 
       ***---
        EXIT-PGM.
+           close ra-log.        
+           perform DESTROYXX.
            goback.           
+
+      ***---
+       SCRIVI-RA-LOG.
+           call   "set-ini-log" using r-output.
+           cancel "set-ini-log".
+           initialize riga-ra-log.
+           string r-output      delimited size
+                  " - UTENTE: " delimited size
+                  ra-user       delimited size
+                  como-riga     delimited size
+             into riga-ra-log
+           end-string.
+           write riga-ra-log.
+
 
       ***---
        PARAGRAFO-COPY.

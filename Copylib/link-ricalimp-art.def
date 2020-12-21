@@ -5,4 +5,7 @@
               05 ra-articolo         pic 9(6).
            03 ra-form-handle         handle of window.
            03 ra-path-log            pic x(256).
+           03 ra-evasione.
+              05 ra-anno             pic 9(4).
+              05 ra-numero           pic 9(8).
            03 filler                 pic x(1000).
