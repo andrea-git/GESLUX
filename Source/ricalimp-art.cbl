@@ -388,7 +388,9 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
                     invalid continue
                 not invalid
                     perform until 1 = 2
-                       read progmag next at end exit perform end-read
+                       read progmag next no lock 
+                            at end exit perform 
+                       end-read
                        if prg-cod-articolo not = 
                           ra-articolo(idx)
                           write riga-log-progmag from spaces
@@ -422,11 +424,15 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
                 not invalid
                     perform until 1 = 2 
              
-                       read progmag next at end exit perform end-read
+                       read progmag next no lock
+                            at end exit perform 
+                       end-read
       
                        if prg-cod-articolo not = ra-articolo(ra-idx)
                           exit perform
                        end-if
+
+                       perform READ-PROGMAG-LOCK
       
                        move 0 to prg-impegnato
                        move 0 to prg-imp-master
@@ -538,34 +544,34 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
       *****           end-if
       *****     end-start.         
 
-      ********---
-      ***** READ-PROGMAG-LOCK.           
-      *****     perform until 1 = 2
-      *****        set RecLocked to false
-      *****        read progmag lock
-      *****        if RecLocked
-      *****           move prg-cod-articolo to codice-ed
-      *****           move prg-peso         to peso-ed
-      *****           move "progmag"        to geslock-nome-file
-      *****           initialize geslock-messaggio
-      *****           string "Articolo:       ", codice-ed
-      *****           x"0d0a""Magazzino:  ",     prg-cod-magazzino
-      *****           x"0d0a""Imballo:       ",  prg-tipo-imballo
-      *****           x"0d0a""Peso:           ", peso-ed 
-      *****           x"0d0a""Record già in uso su altro terminale." 
-      *****                       delimited size
-      *****                  into geslock-messaggio
-      *****           end-string
-      *****           set errori to true
-      *****           move 1     to geslock-v-riprova
-      *****           move 0     to geslock-v-termina
-      *****           move 1     to geslock-v-ignora
-      *****           call   "geslock" using geslock-linkage
-      *****           cancel "geslock"
-      *****        else
-      *****           exit perform
-LUBEXX*****        end-if
-      *****     end-perform.
+      ***---
+       READ-PROGMAG-LOCK.           
+           perform until 1 = 2
+              set RecLocked to false
+              read progmag lock
+              if RecLocked
+                 move prg-cod-articolo to codice-ed
+                 move prg-peso         to peso-ed
+                 move "progmag"        to geslock-nome-file
+                 initialize geslock-messaggio
+                 string "Articolo:       ", codice-ed
+                 x"0d0a""Magazzino:  ",     prg-cod-magazzino
+                 x"0d0a""Imballo:       ",  prg-tipo-imballo
+                 x"0d0a""Peso:           ", peso-ed 
+                 x"0d0a""Record in uso su "    delimited size
+                        "altro terminale (R)." delimited size
+                        into geslock-messaggio
+                 end-string
+                 set errori to true
+                 move 1     to geslock-v-riprova
+                 move 0     to geslock-v-termina
+                 move 0     to geslock-v-ignora
+                 call   "geslock" using geslock-linkage
+                 cancel "geslock"
+              else
+                 exit perform
+LUBEXX        end-if
+           end-perform.
 
       ***---
        ELABORA-ORDINI-MASTER.
@@ -824,7 +830,6 @@ LUBEXX*****        end-if
              into riga-ra-log
            end-string.
            write riga-ra-log.
-
 
       ***---
        PARAGRAFO-COPY.
