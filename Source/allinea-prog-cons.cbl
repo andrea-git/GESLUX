@@ -1,5 +1,5 @@
        IDENTIFICATION DIVISION.
-       PROGRAM-ID.                      check-prog-cons.
+       PROGRAM-ID.                      allinea-prog-cons.
        AUTHOR.                          Andrea.
        REMARKS. Controllo della corrispondenza dei valori ( dei valori consolidati)
                 tra il padre e la somma di tutti i suoi figli.
@@ -66,17 +66,17 @@
          05 tot-prg-udm-ul2                 pic s9(15).
          05 tot-prg-kg-ul2                  pic s9(13)v9(3).
          05 tot-prg-valore-ul2              pic s9(13)v9(2).
-         05 tot-giacenza     pic s9(15).
-         05 tot-impegnato    pic s9(15).
-         05 tot-imp-master   pic s9(15).
-         05 tot-imp-gdo      pic s9(15).
-         05 tot-imp-trad     pic s9(15).
-         05 tot-ordinato-1   pic s9(15).
-         05 tot-ordinato-2   pic s9(15).
-         05 tot-ordinato-3   pic s9(15).
-         05 tot-ordinato-4   pic s9(15).
-         05 tot-ordinato-5   pic s9(15).
-         05 tot-ordinato-6   pic s9(15).
+         05 tot-giacenza                    pic s9(15).
+         05 tot-impegnato                   pic s9(15).
+         05 tot-imp-master                  pic s9(15).
+         05 tot-imp-gdo                     pic s9(15).
+         05 tot-imp-trad                    pic s9(15).
+         05 tot-ordinato-1                  pic s9(15).
+         05 tot-ordinato-2                  pic s9(15).
+         05 tot-ordinato-3                  pic s9(15).
+         05 tot-ordinato-4                  pic s9(15).
+         05 tot-ordinato-5                  pic s9(15).
+         05 tot-ordinato-6                  pic s9(15).
 
        01 como-rec.
            05 chiave.
@@ -497,9 +497,7 @@
            add prg-valore-ul          of progmag 
             to tot-prg-valore-ul.      
            add prg-udm-ul2          of progmag 
-            to tot-prg-udm-ul2.      
-           add prg-var-inv-kg          of progmag 
-            to tot-prg-var-inv-kg.      
+            to tot-prg-udm-ul2.  
            add prg-kg-ul2          of progmag 
             to tot-prg-kg-ul2.      
            add prg-valore-ul2          of progmag 
