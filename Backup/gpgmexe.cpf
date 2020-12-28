@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=form1
 BEFORE_PROGRAM=stbolle-Ev-Before-Program
 AFTER_PROGRAM=stbolle-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E43715400-497-274737774
+PROGRAM_UNIQUE_CODE=TOTEM-7E4C1C14488-391-1353711129
 
 {{@DESCRIPTION:
 
@@ -2813,13 +2813,17 @@ BEGIN-TEXT
 
            open extend fileseq
 
+           if ingresso-cacancellazione
+              write rec-stampa from spaces
+           end-if.
+
            initialize rec-stampa.
            perform SETTA-INIZIO-RIGA.
            string r-inizio      delimited size
                   como-stringa  delimited size
                   into rec-stampa
            end-string.
-           write rec-stampa after 2.
+           write rec-stampa.
 
            close fileseq.
 

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gpgmexe.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 7 marzo 2020 16:43:46.
+       DATE-WRITTEN.        lunedì 28 dicembre 2020 15:57:12.
        REMARKS.
       *{TOTEM}END
 
@@ -168,7 +168,7 @@
        77 TMP-DataSet1-USER-BUF     PIC X(1015).
        77 TMP-DataSet1-pass-BUF     PIC X(1000).
        77 TMP-DataSet1-fileseq-BUF     PIC X(32000).
-       77 TMP-DataSet1-lineseq-BUF     PIC X(900).
+       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-PROG-BUF     PIC X(676).
        77 TMP-DataSet1-tmp-cpu-BUF     PIC X(33).
        77 TMP-DataSet1-tsetinvio-BUF     PIC X(1023).
@@ -3387,13 +3387,17 @@
 
            open extend fileseq
 
+           if ingresso-cacancellazione
+              write rec-stampa from spaces
+           end-if.
+
            initialize rec-stampa.
            perform SETTA-INIZIO-RIGA.
            string r-inizio      delimited size
                   como-stringa  delimited size
                   into rec-stampa
            end-string.
-           write rec-stampa after 2.
+           write rec-stampa.
 
            close fileseq.
 
