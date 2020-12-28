@@ -1232,19 +1232,14 @@
            end-perform.
            |Sto ordinando di più rispetto al MOQ, a posto così
            if tot-qta-moq >= art-moq
-              exit paragraph
+              compute diff-moq = art-moq - tot-qta-moq
+              |3. Aggiungo la differenza alla quantità dell'ultimo mese
+              add diff-moq to cpfm-qta-m(ultimo-mese-moq)
            end-if.
-           compute diff-moq = art-moq - tot-qta-moq.
-           |3. Aggiungo la differenza alla quantità dell'ultimo mese
-           add diff-moq to cpfm-qta-m(ultimo-mese-moq).
-           |4. La arrotono nuovamente al bancale successivo
-           if art-qta-epal not = 0
-              if cpfm-qta-m(ultimo-mese-moq) > art-qta-epal
-                 move cpfm-qta-m(ultimo-mese-moq) to como-qta-moq
-                 perform QTA-BANCALE-SUCCESSIVO-MOQ  
-                 move como-qta-moq to cpfm-qta-m(ultimo-mese-moq)
-              end-if
-           end-if.
+           |4. La arrotono comunque nuovamente al bancale successivo
+           move cpfm-qta-m(ultimo-mese-moq) to como-qta-moq.
+           perform QTA-BANCALE-SUCCESSIVO-MOQ.
+           move como-qta-moq to cpfm-qta-m(ultimo-mese-moq).
 
       ***---
        QTA-BANCALE-SUCCESSIVO-MOQ.
@@ -1259,6 +1254,8 @@
                  end-if
                  compute como-qta-moq  =
                          art-qta-epal * num-bancali
+              else
+                 move art-qta-epal to como-qta-moq
               end-if
            end-if.
 
