@@ -1,13 +1,16 @@
       *
        01 geslock-linkage.
            05 geslock-messaggio            PIC  x(200).
-           05 geslock-nome-file            PIC  x(20).
+           05 geslock-nome-file            PIC  x(16). 
+           05 geslock-v-sessioni           pic  9.
+           05 filler                       pic x(3).
            05 geslock-scelta   PIC  x.
                88 riprova VALUE IS "R". 
                88 ignora VALUE IS "I". 
                88 termina VALUE IS "T". 
                88 annulla VALUE IS "A". 
                88 salva VALUE IS "S". 
+               88 sessioni value "E".
            05 geslock-v-riprova            PIC  9.
            05 geslock-v-ignora PIC  9.
            05 geslock-v-termina            PIC  9.

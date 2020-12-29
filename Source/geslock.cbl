@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          geslock.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        giovedì 1 marzo 2018 14:47:26.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        martedì 29 dicembre 2020 15:09:46.
        REMARKS.
       *{TOTEM}END
 
@@ -41,7 +41,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -99,6 +99,10 @@
                   USAGE IS HANDLE OF FONT.
        77 form-geslock-handle
                   USAGE IS HANDLE OF WINDOW.
+       77 v-sessioni       PIC  9
+                  VALUE IS 0.
+       77 line-sessioni    PIC  S9(4)V9(2)
+                  VALUE IS 7,00.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -300,6 +304,29 @@
            BEFORE PROCEDURE pb-salva-BeforeProcedure, 
            .
 
+      * PUSH BUTTON
+       05
+           pb-sessioni, 
+           Push-Button, 
+           COL 23,00, 
+           LINE line-sessioni,
+           LINES 22,00 ,
+           SIZE 73,00 ,
+           BITMAP-HANDLE STRIP_GESLOCK-BMP,
+           BITMAP-NUMBER 7,
+           FRAMED,
+           SQUARE,
+           ENABLED 1,
+           EXCEPTION-VALUE 1010,
+           FLAT,
+           ID IS 1003,
+           SELF-ACT,
+           TITLE "Gesione &Sessioni",
+           VISIBLE v-sessioni,
+           AFTER PROCEDURE pb-sessioni-AfterProcedure, 
+           BEFORE PROCEDURE pb-sessioni-BeforeProcedure, 
+           .
+
       *{TOTEM}END
 
       *{TOTEM}LINKPARA
@@ -465,12 +492,17 @@
                      into lab-messaggio-buf
               end-string
            end-if.
+                        
+           move geslock-v-sessioni to v-sessioni.
+           move geslock-v-riprova  to v-riprova.
+           move geslock-v-ignora   to v-ignora.
+           move geslock-v-termina  to v-termina.
+           move geslock-v-annulla  to v-annulla.
+           move geslock-v-salva    to v-salva.
 
-           move geslock-v-riprova to v-riprova.
-           move geslock-v-ignora  to v-ignora.
-           move geslock-v-termina to v-termina.
-           move geslock-v-annulla to v-annulla.
-           move geslock-v-salva   to v-salva.
+           if v-sessioni = 1
+              move 9,13 to line-sessioni
+           end-if.
 
            display form1.
 
@@ -526,6 +558,8 @@
                  PERFORM pb-annulla-LinkTo
               WHEN Key-Status = 1000
                  PERFORM pb-salva-LinkTo
+              WHEN Key-Status = 1010
+                 PERFORM pb-sessioni-LinkTo
            END-EVALUATE
       * avoid changing focus
            MOVE 4 TO Accept-Control
@@ -553,6 +587,7 @@
            when 1003 perform PB-TERMINA-LINKTO
            when 1004 perform PB-ANNULLA-LINKTO
            when 1005 perform PB-SALVA-LINKTO
+           when 1010 perform PB-SESSIONI-LINKTO
            end-evaluate.
 
            .
@@ -755,6 +790,22 @@
        geslock-Ev-After-Program.
       * <TOTEM:PARA. geslock-Ev-After-Program>
            destroy Impact26B-Occidentale 
+           .
+      * <TOTEM:END>
+       pb-sessioni-BeforeProcedure.
+      * <TOTEM:PARA. pb-sessioni-BeforeProcedure>
+           modify pb-sessioni bitmap-number = 8 
+           .
+      * <TOTEM:END>
+       pb-sessioni-AfterProcedure.
+      * <TOTEM:PARA. pb-sessioni-AfterProcedure>
+           modify pb-sessioni bitmap-number = 7 
+           .
+      * <TOTEM:END>
+       pb-sessioni-LinkTo.
+      * <TOTEM:PARA. pb-sessioni-LinkTo>
+           set sessioni to true.
+           move 27 to key-status 
            .
       * <TOTEM:END>
 

@@ -74,6 +74,7 @@
            copy "comune.def".
            copy "fonts.def".
            copy "link-wprogmag.def".
+           copy "common-linkage.def".
 
       ***** 01  link-master           pic x.
       *****   88 link-imp-master      value "M". 
@@ -107,7 +108,10 @@
        77  como-data             pic 9(8).
        77  como-ora              pic 9(8).    
        77  r-output              pic x(25).
-       77  como-riga             pic x(50).
+       77  como-riga             pic x(50). 
+       77  counter               pic 9(10).
+       77  counter2              pic 9(10). 
+       77  counter-edit          pic z.zzz.zzz.zz9.
 
        77  peso-ed               PIC zz9,999.
        77  codice-ed             PIC z(5).
@@ -302,7 +306,7 @@
            set tutto-ok     to true.
            accept como-data from century-date.
            accept como-ora  from time.
-           move ra-form-handle to form1-handle.          
+           move ra-form-handle to form1-handle.
 
       ***---
        OPEN-FILES.
@@ -430,7 +434,8 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
       
                        if prg-cod-articolo not = ra-articolo(ra-idx)
                           exit perform
-                       end-if
+                       end-if    
+                       perform COUNTER-VIDEO
 
                        perform READ-PROGMAG-LOCK
       
@@ -550,6 +555,7 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
               set RecLocked to false
               read progmag lock
               if RecLocked
+                 move 1                to geslock-v-sessioni
                  move prg-cod-articolo to codice-ed
                  move prg-peso         to peso-ed
                  move "progmag"        to geslock-nome-file
@@ -568,10 +574,33 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
                  move 0     to geslock-v-ignora
                  call   "geslock" using geslock-linkage
                  cancel "geslock"
+                 if sessioni
+                    display message 
+                    "Verranno chiuse tutte le sessioni aperte "
+             x"0d0a""ad eccezione di quella in uso."
+             x"0d0a""Avvisare gli utenti di uscire dal GESLUX."
+             x"0d0a""Procedere?"
+                             title "GESLUX - Ricalcolo impegnato"
+                              icon 2
+                            giving scelta
+                              type 2
+                           default 2
+                    if scelta = 1
+                       perform KILL-PROCESSI-ATTIVI
+                    end-if
+                 end-if
               else
                  exit perform
 LUBEXX        end-if
            end-perform.
+
+      ***---
+       KILL-PROCESSI-ATTIVI.
+           set lk-bl-scrittura to true.
+           move ra-user to user-codi.
+           move 2 to livello-abil.
+           call   "killproc" using lk-blockpgm user-codi livello-abil.
+           cancel "killproc".
 
       ***---
        ELABORA-ORDINI-MASTER.
@@ -583,7 +612,8 @@ LUBEXX        end-if
              not invalid
                  perform until 1 = 2
                     read mtordini next at end exit perform end-read
-                    if mto-chiuso exit perform end-if
+                    if mto-chiuso exit perform end-if     
+                    perform COUNTER-VIDEO
                     perform LOOP-RIGHE-MRORDINI
                  end-perform
            end-start.
@@ -600,6 +630,7 @@ LUBEXX        end-if
                     if mro-chiave-testa not = mto-chiave
                        exit perform
                     end-if
+                    perform COUNTER-VIDEO
                     if mro-chiuso
                        continue
                     else
@@ -626,7 +657,8 @@ LUBEXX        end-if
                     if tor-data-fattura not = 0 or
                        tor-num-fattura  not = 0
                        exit perform
-                    end-if
+                    end-if       
+                    perform COUNTER-VIDEO
 
                     if tor-num-bolla  = 0 and
                        tor-data-bolla = 0
@@ -675,7 +707,8 @@ LUBEXX        end-if
                        exit perform
                     end-if
                     move ror-prg-cod-articolo  to como-articolo
-                    perform FIND-ARTICOLO
+                    perform FIND-ARTICOLO      
+                    perform COUNTER-VIDEO
                     if trovato
                        move 0                     to link-impegnato
                        move ra-user               to link-user
@@ -811,6 +844,18 @@ LUBEXX        end-if
       *****     close       tmp-ricalimp.
       *****     delete file tmp-ricalimp.
            close log-progmag.
+
+      ***---
+       COUNTER-VIDEO.
+           add 1 to counter.
+           add 1 to counter2.
+           if counter2 = 100
+              move counter to counter-edit
+              display counter-edit
+                 upon form-accesso-handle at column 40
+                                               line 1
+              move 0 to counter2
+           end-if.
 
       ***---
        EXIT-PGM.

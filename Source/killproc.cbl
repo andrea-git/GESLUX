@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          killproc.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        sabato 14 gennaio 2017 14:32:45.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        martedì 29 dicembre 2020 16:23:17.
        REMARKS.
       *{TOTEM}END
 
@@ -47,7 +47,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -68,7 +68,10 @@
                   USAGE IS SIGNED-SHORT.
        77 como-pid         PIC  x(10).
        77 path-kill        PIC  x(256).
+       77 tentativi        PIC  9
+                  VALUE IS 0.
        77 tot-sel          PIC  9(3).
+       77 callingPgm       PIC  x(20).
        77 messaggio        PIC  x(250).
        77 como-path-tasklist           PIC  x(256).
        77 como-path-wmic   PIC  x(256).
@@ -95,6 +98,9 @@
            88 NoSel VALUE IS "NO". 
        77 wstampa          PIC  X(256)
                   VALUE IS spaces.
+       77 FILLER           PIC  9
+                  VALUE IS 0.
+           88 fromRicalimp VALUE IS 1    WHEN SET TO FALSE  0. 
        77 STATUS-lineseq   PIC  X(2).
            88 Valid-STATUS-lineseq VALUE IS "00" THRU "09". 
        77 sel-tutto-bmp    PIC  S9(9)
@@ -153,13 +159,15 @@
                   USAGE IS HANDLE OF FONT.
        77 Verdana11I-Occidentale
                   USAGE IS HANDLE OF FONT.
+       77 v-screen         PIC  9
+                  VALUE IS 0.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
       ***********************************************************
        77 STATUS-Form1-FLAG-REFRESH PIC  9.
           88 Form1-FLAG-REFRESH  VALUE 1 FALSE 0. 
-       77 TMP-DataSet1-lineseq-BUF     PIC X(900).
+       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-tmp-cpu-BUF     PIC X(33).
        77 TMP-DataSet1-pgmexe-BUF     PIC X(131).
       * VARIABLES FOR RECORD LENGTH.
@@ -630,17 +638,24 @@
                        " not found on server!"  delimited size
                        into messaggio
                 end-string
-                display message messaggio
-                          x"0d0a""Retry?"
-                           type mb-yes-no
-                         giving scelta
-                          title tit-err
-                           icon 2
+                if tentativi = 0
+                   move 1 to tentativi
+                   move mb-yes to scelta
+                else
+                   display message messaggio
+                             x"0d0a""Ritentare la connessione?"
+                              type mb-yes-no
+                            giving scelta
+                             title tit-err
+                              icon 2
+                end-if
                 if scelta = mb-yes
                    open input lineseq
                    if status-lineseq = "00"
                       set tutto-ok to true
                    end-if
+                else
+                   set errori to true
                 end-if                   
            when "93"
            when "99"
@@ -1383,6 +1398,7 @@
               TITLE titolo,
               WITH SYSTEM MENU,
               USER-GRAY,
+           VISIBLE v-screen,
               USER-WHITE,
               No WRAP,
               EVENT PROCEDURE Screen1-Event-Proc,
@@ -1403,6 +1419,14 @@
        Form1-PROC.
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforeAccept>
            perform RIEMPI-GRID.
+           if fromRicalimp
+              perform PB-SEL-TUTTO-LINKTO
+              perform PB-ESEGUI-LINKTO
+              move 27 to key-status
+           else
+              move 1 to v-screen
+              modify form1-handle, visible v-screen
+           end-if.
 
            .
       * <TOTEM:END>
@@ -1836,6 +1860,8 @@
            perform FORMATTA-STRINGA
            move como-stringa to rp-titolo.
 
+           move 0 to tentativi.
+
 
       ***---
        FORMATTA-STRINGA.
@@ -1906,9 +1932,11 @@
            close tmp-cpu
            open i-o tmp-cpu
 
-
-           move como-path-wmic  to wstampa
-           open input lineseq
+           call "C$SLEEP" using 2.
+           move como-path-wmic  to wstampa.
+           open input lineseq.
+           if errori exit paragraph end-if.
+              
            perform until 1 = 2
               move spaces to line-riga
               read lineseq next 
@@ -2084,19 +2112,23 @@ LUBEXX     end-if.
            if tot-sel = 0
               display message "Nessun processo selezionato!"
                         title titolo
-           else
-              if tot-sel = 1
-                 display message "Terminare il processo selezionato?"
-                           title titolo
-                            icon 2
-                            type mb-yes-no
-                          giving scelta
+           else                        
+              if fromRicalimp
+                 move mb-yes to scelta
               else
-                 display message "Terminare i processi selezionati?"
-                           title titolo
-                            icon 2
-                            type mb-yes-no
-                          giving scelta
+                 if tot-sel = 1
+                    display message "Terminare il processo selezionato?"
+                              title titolo
+                               icon 2
+                               type mb-yes-no
+                             giving scelta
+                 else
+                    display message "Terminare i processi selezionati?"
+                              title titolo
+                               icon 2
+                               type mb-yes-no
+                             giving scelta
+                 end-if
               end-if
               if scelta = mb-yes
                  inquire grid-pid, last-row in tot-righe
@@ -2106,8 +2138,9 @@ LUBEXX     end-if.
                     if YesSel
                        inquire grid-pid(riga, 2), cell-data in col-pid
                        move col-pid to killpid-pid-pgm
-                       call "killpid" using killpid-linkage
+                       call   "killpid" using killpid-linkage
                        cancel "Killpid"
+                       call "C$SLEEP" using 2
       *                 move col-pid to como-pid
       *                 call "C$JUSTIFY" using como-pid, "L"
       *                 inspect como-pid replacing trailing spaces by low-value
@@ -2162,6 +2195,11 @@ LUBEXX*****           end-if.
 
            accept pid-sessione-x  from environment "PID_SESSIONE"
            move pid-sessione-x  to pid-sessione convert
+
+           call "C$CALLEDBY" using callingPgm.
+           if callingPgm = "ricalimp-art"
+              set fromRicalimp to true
+           end-if 
            .
       * <TOTEM:END>
        aggmese-Ev-After-Program.

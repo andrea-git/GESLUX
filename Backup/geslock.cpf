@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=geslock-Ev-Before-Program
 AFTER_PROGRAM=geslock-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E23113408-463-2352631418
+PROGRAM_UNIQUE_CODE=TOTEM-7E4C1D14118-971-925626597
 
 {{@DESCRIPTION:
 
@@ -233,6 +233,28 @@ m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM19_WK
+
+@}}
+[FDITEM20_WK]
+m_strName=v-sessioni
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM20_WK
+
+@}}
+[FDITEM21_WK]
+m_strName=line-sessioni
+m_strRawPic=S9(4)V9(2)
+m_strPic=S9(4)V9(2)
+m_strDefaultValue=7,00
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM21_WK
 
 @}}
 
@@ -938,6 +960,56 @@ Begin Screen Form1
       After Procedure   = pb-salva-AfterProcedure
       Link To           = pb-salva-LinkTo
    End
+   Begin Push-Button pb-sessioni
+      SCREEN-COL        = 23,00
+      SCREEN-LINE       = 7,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-sessioni
+      Bitmap            = "..\RESOURCE\STRIP_GESLOCK.BMP"
+      Bitmap Frame      = TRUE
+      Bitmap Handle     = STRIP_GESLOCK-BMP
+      Bitmap Number     = 7
+      Bitmap Square     = TRUE
+      Ccol              = 0
+      Cline             = 0
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 23,00
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = TRUE
+      Exception Value   = 1010
+      Flat              = TRUE
+      Font              = Default Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 1003
+      Line              = 7,00
+      Line Variable     = line-sessioni
+      Lines             = 1,31
+      Lines in Pixels   = 22
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = TRUE
+      Size              = 9,13
+      Size in Pixels    = 73
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 10
+      Termination Value = 0
+      Title             = "Gesione &Sessioni"
+      Visible           = FALSE
+      Visible Variable  = v-sessioni
+      Width in Cells    = FALSE
+      Before Procedure  = pb-sessioni-BeforeProcedure
+      After Procedure   = pb-sessioni-AfterProcedure
+      Link To           = pb-sessioni-LinkTo
+   End
 End
 
 END-SPDATA
@@ -997,12 +1069,17 @@ BEGIN-TEXT
                      into lab-messaggio-buf
               end-string
            end-if.
+                        
+           move geslock-v-sessioni to v-sessioni.
+           move geslock-v-riprova  to v-riprova.
+           move geslock-v-ignora   to v-ignora.
+           move geslock-v-termina  to v-termina.
+           move geslock-v-annulla  to v-annulla.
+           move geslock-v-salva    to v-salva.
 
-           move geslock-v-riprova to v-riprova.
-           move geslock-v-ignora  to v-ignora.
-           move geslock-v-termina to v-termina.
-           move geslock-v-annulla to v-annulla.
-           move geslock-v-salva   to v-salva.
+           if v-sessioni = 1
+              move 9,13 to line-sessioni
+           end-if.
 
            display form1.
 
@@ -1034,6 +1111,7 @@ BEGIN-TEXT
            when 1003 perform PB-TERMINA-LINKTO
            when 1004 perform PB-ANNULLA-LINKTO
            when 1005 perform PB-SALVA-LINKTO
+           when 1010 perform PB-SESSIONI-LINKTO
            end-evaluate.
 END-TEXT
 END-DATA
@@ -1192,6 +1270,28 @@ BEGIN-DATA
    PARAGRAPH         = geslock-Ev-After-Program
 BEGIN-TEXT
            destroy Impact26B-Occidentale.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-sessioni-BeforeProcedure
+BEGIN-TEXT
+           modify pb-sessioni bitmap-number = 8.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-sessioni-AfterProcedure
+BEGIN-TEXT
+           modify pb-sessioni bitmap-number = 7.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-sessioni-LinkTo
+BEGIN-TEXT
+           set sessioni to true.
+           move 27 to key-status.
 END-TEXT
 END-DATA
 
