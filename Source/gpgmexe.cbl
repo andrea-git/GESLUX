@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gpgmexe.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 28 dicembre 2020 15:57:12.
+       DATE-WRITTEN.        mercoledì 30 dicembre 2020 14:51:50.
        REMARKS.
       *{TOTEM}END
 
@@ -305,7 +305,7 @@
        77  como-colore          pic 9(8).
        77  col-pid-ed           pic z(10).
 
-       77  como-x               pic x.
+       77  como-x               pic x.  
 
        01              pic x.
            88 avanti   value "A".
@@ -313,6 +313,13 @@
 
        78  78-nome-pgm-menu value "gestsessioni".
        77  CALLING-PROGRAM   pic x(20).
+
+       01 file-info.
+           05 file-size        PIC  X(8) COMP-X.
+           05 file-date        PIC  9(8) COMP-X.
+           05 file-time        PIC  9(8) COMP-X.
+
+       77  status-code  signed-short.
       *{TOTEM}END
 
       *{TOTEM}ID-LOGICI
@@ -827,6 +834,11 @@
       *{TOTEM}DECLARATIVE
        DECLARATIVES.
       * <TOTEM:EPT. INIT:gpgmexe, INIT:gpgmexe, BeforeDeclarative>
+      ***---
+       LINESEQ-ERR SECTION.
+           use after error procedure on lineseq.
+           continue.
+           
       ***---
        PGMEXE-ERR SECTION.
            use after error procedure on PGMEXE.
@@ -3067,23 +3079,19 @@
               accept pge-data      from century-date
               accept pge-ora       from time
               read USER no lock
-                 invalid
-                    initialize user-name
+                   invalid initialize user-name
               end-read
               move user-name    to pge-nome-utente
 
               read PROG no lock key is prog-id
-                 invalid
-                    initialize PROG-S-DESC
+                   invalid initialize PROG-S-DESC
               end-read
               move PROG-S-DESC  to pge-nome-pgm
 
               write pge-rec
-                 invalid
-                    rewrite pge-rec
+                    invalid rewrite pge-rec
               end-write
            end-if.
-
 
            close pgmexe.
            close USER.
@@ -3668,26 +3676,21 @@
            if tutto-ok
               open i-o pgmexe
               move low-value to pge-chiave
-              start pgmexe key not < pge-chiave
-                 invalid
-                    continue
-                 not invalid
+              start pgmexe key >= pge-chiave
+                    invalid continue
+                not invalid
                     perform CARICA-TMP
                     perform until 1 = 2
                        read pgmexe next no lock
-                          at end
-                             exit perform
+                          at end exit perform
                        end-read
                        move pge-pid   to cpu-pid
                        read tmp-cpu
                           invalid
-                             delete pgmexe record
-                                invalid
-                                   continue
-                             end-delete
-                             set eliminazione-orfani to true
-                             perform SCRIVI-LOG
-              
+                          delete pgmexe record invalid continue 
+           end-delete
+                          set eliminazione-orfani to true
+                          perform SCRIVI-LOG
                        end-read
                     end-perform
                     close tmp-cpu
@@ -3736,27 +3739,35 @@
            inspect como-path-tasklist
                                 replacing trailing low-value by spaces.
 
-           call "C$SYSTEM" using comando, 96|97
+           call "C$SYSTEM" using comando, 96
                           giving status-call.
 
-           call "C$SLEEP" using 2.
-
            initialize path-tmp-cpu
-           string  path-kill    delimited low-value
-                   "tmp_tasklist"   delimited size
-                   "_"          delimited size
-                   como-data    delimited size
-                   "_"          delimited size
-                   como-ora     delimited size
-                   into path-tmp-cpu
+           string  path-kill  delimited low-value
+                   "tmp_cpu"  delimited size
+                   "_"        delimited size
+                   como-data  delimited size
+                   "_"        delimited size
+                   como-ora   delimited size
+              into path-tmp-cpu
            end-string.
            open output tmp-cpu
-           close tmp-cpu
-           open i-o tmp-cpu
+           close       tmp-cpu
+           open i-o    tmp-cpu
 
 
            move como-path-tasklist  to wstampa
-           open input lineseq
+           |Resto in attesa che il file sia completo
+           perform until 1 = 2
+              call "C$FILEINFO" using wstampa, file-info
+              if file-size > 0
+                 open input lineseq
+                 if status-lineseq = "00"
+                    exit perform
+                 end-if
+              end-if
+           end-perform.
+
            perform until 1 = 2
               move spaces to line-riga
               read lineseq next 
@@ -3775,44 +3786,39 @@
            unstring line-riga delimited by ","
                into rp-nome-exe
                     rp-pid.
+
            move rp-pid    to cpu-pid convert
-           if cpu-pid not = zero
-              write cpu-rec
-                 invalid
-                    rewrite cpu-rec
-              end-write
+
+           if cpu-pid not = 0
+              write cpu-rec invalid rewrite cpu-rec end-write
            end-if 
            .
       * <TOTEM:END>
 
        CANCELLAZIONE-GRIGLIA.
       * <TOTEM:PARA. CANCELLAZIONE-GRIGLIA>
-           inquire form1-gd-1(riga, 1), HIDDEN-DATA pge-chiave
+           inquire form1-gd-1(riga, 1), hidden-data pge-chiave
            move pge-pid   to killpid-pid-pgm
            move low-value to pge-pgm
-           start pgmexe key not < pge-chiave
-              invalid
-                 continue
-              not invalid
+           start pgmexe  key >= pge-chiave
+                 invalid continue
+             not invalid
                  perform until 1 = 2
                     read pgmexe next no lock
-                       at end
-                          exit perform
+                       at end exit perform
                     end-read
                     if pge-pid not = killpid-pid-pgm
                        exit perform
                     end-if
 
-                    delete pgmexe record
-                       invalid
-                          continue
-                    end-delete
+                    delete pgmexe record invalid continue end-delete
+
                     set record-cancellato   to true
                     perform SCRIVI-LOG
                  end-perform
            end-start
        
-           call "killpid" using killpid-linkage
+           call   "killpid" using killpid-linkage
            cancel "killpid"
 
            set si-cancellazione to true

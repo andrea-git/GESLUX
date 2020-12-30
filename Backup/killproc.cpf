@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=aggmese-Ev-Before-Program
 AFTER_PROGRAM=aggmese-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4C1D14197-455-920112144
+PROGRAM_UNIQUE_CODE=TOTEM-7E4C1E131255-433-2363412982
 
 {{@DESCRIPTION:
 
@@ -251,10 +251,9 @@ m_bFixed=1
 
 @}}
 [FDITEM18_WK]
-m_strName=tentativi
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=tot-sel
+m_strRawPic=9(3)
+m_strPic=9(3)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -262,9 +261,9 @@ m_bFixed=1
 
 @}}
 [FDITEM19_WK]
-m_strName=tot-sel
-m_strRawPic=9(3)
-m_strPic=9(3)
+m_strName=callingPgm
+m_strRawPic=x(20)
+m_strPic=x(20)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -272,9 +271,9 @@ m_bFixed=1
 
 @}}
 [FDITEM20_WK]
-m_strName=callingPgm
-m_strRawPic=x(20)
-m_strPic=x(20)
+m_strName=messaggio
+m_strRawPic=x(250)
+m_strPic=x(250)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -282,9 +281,9 @@ m_bFixed=1
 
 @}}
 [FDITEM21_WK]
-m_strName=messaggio
-m_strRawPic=x(250)
-m_strPic=x(250)
+m_strName=como-path-tasklist
+m_strRawPic=x(256)
+m_strPic=x(256)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -292,7 +291,7 @@ m_bFixed=1
 
 @}}
 [FDITEM22_WK]
-m_strName=como-path-tasklist
+m_strName=como-path-wmic
 m_strRawPic=x(256)
 m_strPic=x(256)
 m_nItemLevel=77
@@ -302,26 +301,28 @@ m_bFixed=1
 
 @}}
 [FDITEM23_WK]
-m_strName=como-path-wmic
-m_strRawPic=x(256)
-m_strPic=x(256)
-m_nItemLevel=77
+m_strName=titolo
+m_strDefaultValue="Elenco processi attivi server"
+m_nItemLevel=78
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM23_WK
 
 @}}
 [FDITEM24_WK]
-m_strName=titolo
-m_strDefaultValue="Elenco processi attivi server"
-m_nItemLevel=78
+m_strName=BOTTONE-OK-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM24_WK
 
 @}}
 [FDITEM25_WK]
-m_strName=BOTTONE-OK-BMP
+m_strName=BOTTONE-CANCEL-BMP
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -333,11 +334,8 @@ m_bFixed=1
 
 @}}
 [FDITEM26_WK]
-m_strName=BOTTONE-CANCEL-BMP
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
-m_strDefaultValue=0
+m_strName=Verdana12-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -345,8 +343,9 @@ m_bFixed=1
 
 @}}
 [FDITEM27_WK]
-m_strName=Verdana12-Occidentale
-m_nUsage=26
+m_strName=tasto
+m_strRawPic=x
+m_strPic=x
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -354,9 +353,9 @@ m_bFixed=1
 
 @}}
 [FDITEM28_WK]
-m_strName=tasto
-m_strRawPic=x
-m_strPic=x
+m_strName=comando
+m_strRawPic=x(200)
+m_strPic=x(200)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -364,9 +363,8 @@ m_bFixed=1
 
 @}}
 [FDITEM29_WK]
-m_strName=comando
-m_strRawPic=x(200)
-m_strPic=x(200)
+m_strName=Default-Font
+m_nUsage=38
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -374,8 +372,8 @@ m_bFixed=1
 
 @}}
 [FDITEM30_WK]
-m_strName=Default-Font
-m_nUsage=38
+m_strName=font-evidenzia-griglia
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -383,15 +381,6 @@ m_bFixed=1
 
 @}}
 [FDITEM31_WK]
-m_strName=font-evidenzia-griglia
-m_nUsage=26
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM31_WK
-
-@}}
-[FDITEM32_WK]
 m_strName=elemento-bmp
 m_strRawPic=s9(9)
 m_strPic=s9(9)
@@ -400,38 +389,38 @@ m_strDefaultValue=ZERO
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM32_WK
+{{@DataItem_m_strDescriptionFDITEM31_WK
 
 @}}
-[FDITEM33_WK]
+[FDITEM32_WK]
 m_strName=HiddenSel
 m_strRawPic=xx
 m_strPic=xx
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM33_WK
+{{@DataItem_m_strDescriptionFDITEM32_WK
 
 @}}
-[FDITEM34_WK]
+[FDITEM33_WK]
 m_strName=YesSel
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="SI"
-{{@DataItem_m_strDescriptionFDITEM34_WK
+{{@DataItem_m_strDescriptionFDITEM33_WK
 
 @}}
-[FDITEM35_WK]
+[FDITEM34_WK]
 m_strName=NoSel
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="NO"
-{{@DataItem_m_strDescriptionFDITEM35_WK
+{{@DataItem_m_strDescriptionFDITEM34_WK
 
 @}}
-[FDITEM36_WK]
+[FDITEM35_WK]
 m_strName=wstampa
 m_strRawPic=X(256)
 m_strPic=X(256)
@@ -439,10 +428,10 @@ m_strDefaultValue=spaces
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM36_WK
+{{@DataItem_m_strDescriptionFDITEM35_WK
 
 @}}
-[FDITEM37_WK]
+[FDITEM36_WK]
 m_strName=FILLER
 m_strRawPic=9
 m_strPic=9
@@ -450,40 +439,52 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM37_WK
+{{@DataItem_m_strDescriptionFDITEM36_WK
 
 @}}
-[FDITEM38_WK]
+[FDITEM37_WK]
 m_strName=fromRicalimp
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
 m_strFalse=0
-{{@DataItem_m_strDescriptionFDITEM38_WK
+{{@DataItem_m_strDescriptionFDITEM37_WK
 
 @}}
-[FDITEM39_WK]
+[FDITEM38_WK]
 m_strName=STATUS-lineseq
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM39_WK
+{{@DataItem_m_strDescriptionFDITEM38_WK
 
 @}}
-[FDITEM40_WK]
+[FDITEM39_WK]
 m_strName=Valid-STATUS-lineseq
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM39_WK
+
+@}}
+[FDITEM40_WK]
+m_strName=sel-tutto-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM40_WK
 
 @}}
 [FDITEM41_WK]
-m_strName=sel-tutto-bmp
+m_strName=bottone-aggiorna-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -495,29 +496,27 @@ m_bFixed=1
 
 @}}
 [FDITEM42_WK]
-m_strName=bottone-aggiorna-bmp
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
-m_strDefaultValue=0
-m_nItemLevel=77
+m_strName=rec-grid-pid
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM42_WK
 
 @}}
 [FDITEM43_WK]
-m_strName=rec-grid-pid
-m_nItemLevel=1
+m_strName=col-sel
+m_strRawPic=x
+m_strPic=x
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM43_WK
 
 @}}
 [FDITEM44_WK]
-m_strName=col-sel
-m_strRawPic=x
-m_strPic=x
+m_strName=col-pid
+m_strRawPic=z(9)9
+m_strPic=z(9)9
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -525,9 +524,9 @@ m_bFixed=1
 
 @}}
 [FDITEM45_WK]
-m_strName=col-pid
-m_strRawPic=z(9)9
-m_strPic=z(9)9
+m_strName=col-cpu
+m_strRawPic=z(2)9
+m_strPic=z(2)9
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -535,9 +534,9 @@ m_bFixed=1
 
 @}}
 [FDITEM46_WK]
-m_strName=col-cpu
-m_strRawPic=z(2)9
-m_strPic=z(2)9
+m_strName=col-stato
+m_strRawPic=X(50)
+m_strPic=X(50)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -545,7 +544,7 @@ m_bFixed=1
 
 @}}
 [FDITEM47_WK]
-m_strName=col-stato
+m_strName=col-utente
 m_strRawPic=X(50)
 m_strPic=X(50)
 m_nItemLevel=5
@@ -555,9 +554,9 @@ m_bFixed=1
 
 @}}
 [FDITEM48_WK]
-m_strName=col-utente
-m_strRawPic=X(50)
-m_strPic=X(50)
+m_strName=col-memoria
+m_strRawPic=X(100)
+m_strPic=X(100)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -565,9 +564,9 @@ m_bFixed=1
 
 @}}
 [FDITEM49_WK]
-m_strName=col-memoria
-m_strRawPic=X(100)
-m_strPic=X(100)
+m_strName=col-tempo
+m_strRawPic=X(08)
+m_strPic=X(08)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -575,19 +574,19 @@ m_bFixed=1
 
 @}}
 [FDITEM50_WK]
-m_strName=col-tempo
-m_strRawPic=X(08)
-m_strPic=X(08)
-m_nItemLevel=5
+m_strName=path-tmp-cpu
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM50_WK
 
 @}}
 [FDITEM51_WK]
-m_strName=path-tmp-cpu
-m_strRawPic=X(256)
-m_strPic=X(256)
+m_strName=STATUS-tmp-cpu
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -595,27 +594,26 @@ m_bFixed=1
 
 @}}
 [FDITEM52_WK]
-m_strName=STATUS-tmp-cpu
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM52_WK
-
-@}}
-[FDITEM53_WK]
 m_strName=Valid-STATUS-tmp-cpu
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM52_WK
+
+@}}
+[FDITEM53_WK]
+m_strName=Small-Font
+m_nUsage=37
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM53_WK
 
 @}}
 [FDITEM54_WK]
-m_strName=Small-Font
-m_nUsage=37
+m_strName=Verdana14BI-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -623,8 +621,8 @@ m_bFixed=1
 
 @}}
 [FDITEM55_WK]
-m_strName=Verdana14BI-Occidentale
-m_nUsage=26
+m_strName=Verdana12B-Occidentale
+m_nUsage=38
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -632,26 +630,27 @@ m_bFixed=1
 
 @}}
 [FDITEM56_WK]
-m_strName=Verdana12B-Occidentale
-m_nUsage=38
-m_nItemLevel=77
+m_strName=rec-grid-pgm
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM56_WK
 
 @}}
 [FDITEM57_WK]
-m_strName=rec-grid-pgm
-m_nItemLevel=1
+m_strName=col-nulla
+m_strRawPic=X
+m_strPic=X
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM57_WK
 
 @}}
 [FDITEM58_WK]
-m_strName=col-nulla
-m_strRawPic=X
-m_strPic=X
+m_strName=col-pgm-pgm
+m_strRawPic=x(30)
+m_strPic=x(30)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -659,9 +658,9 @@ m_bFixed=1
 
 @}}
 [FDITEM59_WK]
-m_strName=col-pgm-pgm
-m_strRawPic=x(30)
-m_strPic=x(30)
+m_strName=col-pgm-data
+m_strRawPic=x(10)
+m_strPic=x(10)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -669,9 +668,9 @@ m_bFixed=1
 
 @}}
 [FDITEM60_WK]
-m_strName=col-pgm-data
-m_strRawPic=x(10)
-m_strPic=x(10)
+m_strName=col-pgm-ora
+m_strRawPic=x(5)
+m_strPic=x(5)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -679,36 +678,38 @@ m_bFixed=1
 
 @}}
 [FDITEM61_WK]
-m_strName=col-pgm-ora
-m_strRawPic=x(5)
-m_strPic=x(5)
-m_nItemLevel=5
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM61_WK
-
-@}}
-[FDITEM62_WK]
 m_strName=STATUS-pgmexe
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM62_WK
+{{@DataItem_m_strDescriptionFDITEM61_WK
 
 @}}
-[FDITEM63_WK]
+[FDITEM62_WK]
 m_strName=Valid-STATUS-pgmexe
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM62_WK
+
+@}}
+[FDITEM63_WK]
+m_strName=esci_73x21-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM63_WK
 
 @}}
 [FDITEM64_WK]
-m_strName=esci_73x21-bmp
+m_strName=bottone-exit-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -720,7 +721,7 @@ m_bFixed=1
 
 @}}
 [FDITEM65_WK]
-m_strName=bottone-exit-bmp
+m_strName=bottone-kill-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -732,11 +733,8 @@ m_bFixed=1
 
 @}}
 [FDITEM66_WK]
-m_strName=bottone-kill-bmp
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
-m_strDefaultValue=0
+m_strName=Verdana12BI-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -744,8 +742,9 @@ m_bFixed=1
 
 @}}
 [FDITEM67_WK]
-m_strName=Verdana12BI-Occidentale
-m_nUsage=26
+m_strName=lbl-utente-buf
+m_strRawPic=X(50)
+m_strPic=X(50)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -753,7 +752,7 @@ m_bFixed=1
 
 @}}
 [FDITEM68_WK]
-m_strName=lbl-utente-buf
+m_strName=lbl-postazione-buf
 m_strRawPic=X(50)
 m_strPic=X(50)
 m_nItemLevel=77
@@ -763,7 +762,7 @@ m_bFixed=1
 
 @}}
 [FDITEM69_WK]
-m_strName=lbl-postazione-buf
+m_strName=lbl-nome-buf
 m_strRawPic=X(50)
 m_strPic=X(50)
 m_nItemLevel=77
@@ -773,9 +772,8 @@ m_bFixed=1
 
 @}}
 [FDITEM70_WK]
-m_strName=lbl-nome-buf
-m_strRawPic=X(50)
-m_strPic=X(50)
+m_strName=Fixed-Font
+m_nUsage=39
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -783,8 +781,8 @@ m_bFixed=1
 
 @}}
 [FDITEM71_WK]
-m_strName=Fixed-Font
-m_nUsage=39
+m_strName=Verdana11BI-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -792,7 +790,7 @@ m_bFixed=1
 
 @}}
 [FDITEM72_WK]
-m_strName=Verdana11BI-Occidentale
+m_strName=Verdana9BI-Occidentale
 m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
@@ -801,7 +799,7 @@ m_bFixed=1
 
 @}}
 [FDITEM73_WK]
-m_strName=Verdana9BI-Occidentale
+m_strName=Verdana10BI-Occidentale
 m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
@@ -810,7 +808,7 @@ m_bFixed=1
 
 @}}
 [FDITEM74_WK]
-m_strName=Verdana10BI-Occidentale
+m_strName=Verdana10I-Occidentale
 m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
@@ -819,7 +817,7 @@ m_bFixed=1
 
 @}}
 [FDITEM75_WK]
-m_strName=Verdana10I-Occidentale
+m_strName=Verdana11I-Occidentale
 m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
@@ -828,8 +826,10 @@ m_bFixed=1
 
 @}}
 [FDITEM76_WK]
-m_strName=Verdana11I-Occidentale
-m_nUsage=26
+m_strName=v-screen
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -837,10 +837,9 @@ m_bFixed=1
 
 @}}
 [FDITEM77_WK]
-m_strName=v-screen
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=lab1-buf
+m_strRawPic=x(100)
+m_strPic=x(100)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1093,7 +1092,6 @@ Begin Screen Form1
    User Gray         = TRUE
    User White        = TRUE
    Visible           = NONE
-   Visible Variable  = v-screen
    Width in Cells    = TRUE
    Window Type       = Independent
    Wrap              = FALSE
@@ -1229,6 +1227,7 @@ Begin Screen Form1
       Termination Value = 13
       Title             = "&Aggiorna"
       Visible           = NONE
+      Visible Variable  = v-screen
       Width in Cells    = FALSE
       Before Procedure  = pb-aggiorna-BeforeProcedure
       After Procedure   = pb-aggiorna-AfterProcedure
@@ -1276,6 +1275,7 @@ Begin Screen Form1
       Tab Order         = 3
       Termination Value = 13
       Visible           = NONE
+      Visible Variable  = v-screen
       Width in Cells    = FALSE
       Before Procedure  = pb-sel-tutto-BeforeProcedure
       After Procedure   = pb-sel-tutto-AfterProcedure
@@ -1324,6 +1324,7 @@ Begin Screen Form1
       Termination Value = 13
       Title             = "Terminazione Processo"
       Visible           = NONE
+      Visible Variable  = v-screen
       Width in Cells    = FALSE
       Before Procedure  = PB-ESEGUI-BeforeProcedure
       After Procedure   = PB-ESEGUI-AfterProcedure
@@ -1404,6 +1405,7 @@ Begin Screen Form1
          Termination Value = 0
          Title             = "&Esce dall'applicativo"
          Visible           = NONE
+         Visible Variable  = v-screen
          Width in Cells    = FALSE
          Before Procedure  = Form1-Pb-2-BeforeProcedure
          After Procedure   = Form1-Pb-2-AfterProcedure
@@ -1440,6 +1442,7 @@ Begin Screen Form1
          Title             = "Doppio Click o Invio per selezionare i Processi da terminare."
          Transparent       = TRUE
          Visible           = NONE
+         Visible Variable  = v-screen
          Width in Cells    = TRUE
       End
       Begin Label Screen1-La-1ba
@@ -1474,6 +1477,7 @@ Begin Screen Form1
          Title             = "Non sarà possibile selezionare il processo corrente (evidenziato in giallo)"
          Transparent       = TRUE
          Visible           = NONE
+         Visible Variable  = v-screen
          Width in Cells    = TRUE
       End
    End
@@ -1586,12 +1590,12 @@ Begin Screen Form1
       Visible           = NONE
       Width in Cells    = TRUE
    End
-   Begin Label Screen1-La-1a
+   Begin Label lab1
       SCREEN-COL        = 2,00
       SCREEN-LINE       = 20,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
-      (Name)            = Screen1-La-1a
+      (Name)            = lab1
       Clines            = 0
       Clines Unit       = Default
       Color             = 5
@@ -1615,7 +1619,8 @@ Begin Screen Form1
       Size              = 80,00
       Size Unit         = Default
       Tab Order         = 9
-      Title             = "Programmi Attivi per il processo selezionato"
+      Title Picture     = x(100)
+      Title Variable    = lab1-buf
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -1947,8 +1952,6 @@ BEGIN-TEXT
            05 rw-nome           pic x(50).
            05 rw-cpu            pic x(50).
 
-
-
        77  como-crt    pic x.
        77  como-stringa   pic x(100).
        77  cont           pic 9(3).
@@ -1961,6 +1964,13 @@ BEGIN-TEXT
 
        01                       pic 9.       
            88 sessione-corrente value 1 false zero.
+
+       01 file-info.
+           05 file-size        PIC  X(8) COMP-X.
+           05 file-date        PIC  9(8) COMP-X.
+           05 file-time        PIC  9(8) COMP-X.
+
+       77  status-code  signed-short.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -1979,7 +1989,8 @@ BEGIN-DATA
    TEXTMODE          = 0
    ENTRYPOINT        = AfterCreateWin
 BEGIN-TEXT
-      *<<** Customized_Default, SP-G, Screen1-blockpgm-2 **>>
+      *<<** Customized_Default, SP-G, Screen1-blockpgm-2 **>>  
+           move "ATTENDERE LA CHIUSURA DEI PROCESSI A VIDEO" to lab1-buf
 
 END-TEXT
 END-DATA
@@ -1994,33 +2005,34 @@ BEGIN-TEXT
            use after error procedure on lineseq.
            set tutto-ok  to true.
            evaluate status-lineseq
-           when "35"
-                set errori to true
-                initialize messaggio
-                string "File "        delimited size
-                       wstampa        delimited low-value
-                       " not found on server!"  delimited size
-                       into messaggio
-                end-string
-                if tentativi = 0
-                   move 1 to tentativi
-                   move mb-yes to scelta
-                else
-                   display message messaggio
-                             x"0d0a""Ritentare la connessione?"
-                              type mb-yes-no
-                            giving scelta
-                             title tit-err
-                              icon 2
-                end-if
-                if scelta = mb-yes
-                   open input lineseq
-                   if status-lineseq = "00"
-                      set tutto-ok to true
-                   end-if
-                else
-                   set errori to true
-                end-if                   
+      *****     when "35"
+      *****          set errori to true
+      *****          initialize messaggio
+      *****          string "File "        delimited size
+      *****                 wstampa        delimited low-value
+      *****                 " not found on server!"  delimited size
+      *****                 into messaggio
+      *****          end-string
+      *****          if tentativi = 0
+      *****             call "C$SLEEP" using 1
+      *****             move 1 to tentativi
+      *****             move mb-yes to scelta
+      *****          else
+      *****             display message messaggio
+      *****                       x"0d0a""Ritentare la connessione?"
+      *****                        type mb-yes-no
+      *****                      giving scelta
+      *****                       title tit-err
+      *****                        icon 2
+      *****          end-if
+      *****          if scelta = mb-yes
+      *****             open input lineseq
+      *****             if status-lineseq = "00"
+      *****                set tutto-ok to true
+      *****             end-if
+      *****          else
+      *****             set errori to true
+      *****          end-if                   
            when "93"
            when "99"
                 initialize geslock-messaggio
@@ -2055,13 +2067,27 @@ BEGIN-DATA
    ENTRYPOINT        = BeforeAccept
 BEGIN-TEXT
            perform RIEMPI-GRID.
-           if fromRicalimp
-              perform PB-SEL-TUTTO-LINKTO
-              perform PB-ESEGUI-LINKTO
+           if fromRicalimp 
+              move 0 to v-screen
+              display form1
+              inquire grid-pid, last-row in tot-righe
+              if tot-righe > 2
+                 perform until 1 = 2
+                    perform PB-SEL-TUTTO-LINKTO
+                    perform PB-ESEGUI-LINKTO  
+                    call "C$SLEEP" using 5
+                    inquire grid-pid, last-row in tot-righe
+                    if tot-righe = 2
+                       exit perform
+                    end-if
+                    perform PB-AGGIORNA-LINKTO
+                 end-perform
+              end-if
               move 27 to key-status
            else
+              move "Programmi Attivi per il processo selezionato" to lab1-buf
               move 1 to v-screen
-              modify form1-handle, visible v-screen
+              display form1
            end-if.
 END-TEXT
 END-DATA
@@ -2121,8 +2147,6 @@ BEGIN-TEXT
                    into como-path-tasklist
            end-string.
 
-
-
            initialize como-path-wmic
            string  path-kill delimited low-value
                    "wmic"       delimited size
@@ -2133,7 +2157,7 @@ BEGIN-TEXT
                    ".txt"       delimited size
                    into como-path-wmic
            end-string.
-
+      
            initialize comando
            inspect como-path-wmic
                                 replacing trailing spaces by low-value.
@@ -2151,9 +2175,11 @@ BEGIN-TEXT
            end-string.
            inspect como-path-wmic
                                 replacing trailing low-value by spaces.
-
+      
+           |Restituisce un file di testo che contiene il pid di questa sessione
            call "C$SYSTEM" using comando, 96|97
                           giving status-call.
+           call "C$SLEEP" using 2.
 
            initialize comando
            inspect como-path-tasklist
@@ -2185,9 +2211,10 @@ BEGIN-TEXT
 
 
            call "C$SYSTEM" using comando, 96|97
-                          giving status-call.
+                          giving status-call.  
+           call "C$SLEEP" using 2.
 
-           perform CARICA-TMP-CPU
+           perform CARICA-TMP-CPU.
 
 
 END-TEXT
@@ -2206,15 +2233,20 @@ BEGIN-TEXT
            modify grid-pid, mass-update = 1.
            perform COMPONI-PATH.
            move como-path-tasklist  to wstampa
-           open input lineseq
+           perform until 1 = 2
+              call "C$FILEINFO" using wstampa, file-info
+              if file-size > 0
+                 open input lineseq
+                 if status-lineseq = "00"
+                    exit perform
+                 end-if
+              end-if
+           end-perform.
            move 1 to riga
            if tutto-ok
               perform until 1 = 2
                  move spaces to line-riga
-                 read lineseq next 
-                    at end 
-                       exit perform 
-                  end-read
+                 read lineseq next at end exit perform end-read
                  if line-riga not = space
                     perform PREPARA-RECORD
       *              if rp-nome-exe = "wrun32.exe"
@@ -2233,8 +2265,13 @@ BEGIN-TEXT
               move 0 to riga
               move 2 to event-data-2
               modify grid-pid, cursor-y = 2
-              perform SPOSTAMENTO
+              perform SPOSTAMENTO    
 
+              if not fromRicalimp             
+                 display message "Operazione riuscita"
+                           title titolo
+                            icon 2
+              end-if
            else
               move 27 to key-status
            end-if.
@@ -2256,10 +2293,9 @@ BEGIN-TEXT
 
            move col-pid   to cpu-pid
            read tmp-cpu
-              invalid
-                 move zero   to cpu-perce
+                invalid move 0 to cpu-perce
            end-read
-           move cpu-perce    to col-cpu
+           move cpu-perce to col-cpu
 
            modify grid-pid, record-to-add = rec-grid-pid.
 
@@ -2320,8 +2356,6 @@ BEGIN-TEXT
            move rp-titolo  to como-stringa
            perform FORMATTA-STRINGA
            move como-stringa to rp-titolo.
-
-           move 0 to tentativi.
 
 
       ***---
@@ -2386,7 +2420,7 @@ BEGIN-DATA
 BEGIN-TEXT
            initialize path-tmp-cpu
            string  path-kill    delimited low-value
-                   "tmp_wmic"   delimited size
+                   "tmp_cpu"    delimited size
                    "_"          delimited size
                    como-data    delimited size
                    "_"          delimited size
@@ -2394,20 +2428,24 @@ BEGIN-TEXT
                    into path-tmp-cpu
            end-string.
            open output tmp-cpu
-           close tmp-cpu
-           open i-o tmp-cpu
+           close       tmp-cpu
+           open i-o    tmp-cpu
 
-           call "C$SLEEP" using 2.
-           move como-path-wmic  to wstampa.
-           open input lineseq.
-           if errori exit paragraph end-if.
+           |Recupero il mio pid
+           move como-path-wmic to wstampa.
+           perform until 1 = 2    
+              call "C$FILEINFO" using wstampa, file-info
+              if file-size > 0
+                 open input lineseq
+                 if status-lineseq = "00"
+                    exit perform
+                 end-if
+              end-if
+           end-perform.
               
            perform until 1 = 2
               move spaces to line-riga
-              read lineseq next 
-                 at end 
-                    exit perform 
-              end-read
+              read lineseq next at end exit perform end-read
               perform RIPULISCI-REC
               perform VAL-TMP
            end-perform
@@ -2449,11 +2487,8 @@ BEGIN-TEXT
            move rw-nome   to cpu-immagine
            move rw-cpu    to cpu-perce convert
 
-           if cpu-pid not = zero
-              write cpu-rec
-                 invalid
-                    rewrite cpu-rec
-              end-write
+           if cpu-pid not = 0
+              write cpu-rec invalid rewrite cpu-rec end-write
            end-if.
 END-TEXT
 END-DATA
@@ -2576,13 +2611,15 @@ BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = PB-ESEGUI-LinkTo
 BEGIN-TEXT
-           move 8 to Passwd-password.
-           call   "passwd" using Passwd-linkage.
-           cancel "passwd".
+           if not fromRicalimp
+              move 8 to Passwd-password
+              call   "passwd" using Passwd-linkage
+              cancel "passwd"
 
-           if not Passwd-StatusOk
-LUBEXX        exit paragraph
-LUBEXX     end-if.
+              if not Passwd-StatusOk
+LUBEXX           exit paragraph
+LUBEXX        end-if
+           end-if.
 
            set tutto-ok to true.
            set trovato  to false.
@@ -2618,7 +2655,6 @@ LUBEXX     end-if.
                        move col-pid to killpid-pid-pgm
                        call   "killpid" using killpid-linkage
                        cancel "Killpid"
-                       call "C$SLEEP" using 2
       *                 move col-pid to como-pid
       *                 call "C$JUSTIFY" using como-pid, "L"
       *                 inspect como-pid replacing trailing spaces by low-value

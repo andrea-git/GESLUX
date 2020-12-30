@@ -34,9 +34,9 @@
            call "C$JUSTIFY" using como-pid, "L"
            inspect como-pid replacing trailing spaces by low-value
            initialize comando
-           string path-kill    delimited low-value
-                  "pskill -t " delimited low-value
-                  como-pid     delimited low-value
+           string path-kill      delimited low-value
+                  "pskill64 -t " delimited low-value
+                  como-pid       delimited low-value
                   into comando
            end-string
            move 0 to status-call

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          killproc.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 29 dicembre 2020 16:23:17.
+       DATE-WRITTEN.        mercoledì 30 dicembre 2020 15:34:13.
        REMARKS.
       *{TOTEM}END
 
@@ -68,8 +68,6 @@
                   USAGE IS SIGNED-SHORT.
        77 como-pid         PIC  x(10).
        77 path-kill        PIC  x(256).
-       77 tentativi        PIC  9
-                  VALUE IS 0.
        77 tot-sel          PIC  9(3).
        77 callingPgm       PIC  x(20).
        77 messaggio        PIC  x(250).
@@ -161,6 +159,7 @@
                   USAGE IS HANDLE OF FONT.
        77 v-screen         PIC  9
                   VALUE IS 0.
+       77 lab1-buf         PIC  x(100).
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -210,8 +209,6 @@
            05 rw-nome           pic x(50).
            05 rw-cpu            pic x(50).
 
-
-
        77  como-crt    pic x.
        77  como-stringa   pic x(100).
        77  cont           pic 9(3).
@@ -224,6 +221,13 @@
 
        01                       pic 9.       
            88 sessione-corrente value 1 false zero.
+
+       01 file-info.
+           05 file-size        PIC  X(8) COMP-X.
+           05 file-date        PIC  9(8) COMP-X.
+           05 file-time        PIC  9(8) COMP-X.
+
+       77  status-code  signed-short.
       *{TOTEM}END
 
       *{TOTEM}ID-LOGICI
@@ -293,6 +297,7 @@
            SELF-ACT,
            TERMINATION-VALUE 13,
            TITLE "&Aggiorna",
+           VISIBLE v-screen,
            AFTER PROCEDURE pb-aggiorna-AfterProcedure, 
            BEFORE PROCEDURE pb-aggiorna-BeforeProcedure, 
            .
@@ -314,6 +319,7 @@
            ID IS 500,
            SELF-ACT,
            TERMINATION-VALUE 13,
+           VISIBLE v-screen,
            AFTER PROCEDURE pb-sel-tutto-AfterProcedure, 
            BEFORE PROCEDURE pb-sel-tutto-BeforeProcedure, 
            .
@@ -336,6 +342,7 @@
            SELF-ACT,
            TERMINATION-VALUE 13,
            TITLE "Terminazione Processo",
+           VISIBLE v-screen,
            AFTER PROCEDURE PB-ESEGUI-AfterProcedure, 
            BEFORE PROCEDURE PB-ESEGUI-BeforeProcedure, 
            .
@@ -372,6 +379,7 @@
            SELF-ACT,
            ESCAPE-BUTTON,
            TITLE "&Esce dall'applicativo",
+           VISIBLE v-screen,
            AFTER PROCEDURE Form1-Pb-2-AfterProcedure, 
            BEFORE PROCEDURE Form1-Pb-2-BeforeProcedure, 
            .
@@ -391,6 +399,7 @@
            TRANSPARENT,
            TITLE "Doppio Click o Invio per selezionare i Processi da ter
       -    "minare.",
+           VISIBLE v-screen,
            .
 
       * LABEL
@@ -408,6 +417,7 @@
            TRANSPARENT,
            TITLE "Non sarà possibile selezionare il processo corrente (e
       -    "videnziato in giallo)",
+           VISIBLE v-screen,
            .
 
       * LABEL
@@ -461,7 +471,7 @@
 
       * LABEL
        05
-           Screen1-La-1a, 
+           lab1, 
            Label, 
            COL 2,00, 
            LINE 20,00,
@@ -474,7 +484,7 @@
            WIDTH-IN-CELLS,
            CENTER,
            TRANSPARENT,
-           TITLE "Programmi Attivi per il processo selezionato",
+           TITLE lab1-buf,
            .
 
       * GRID
@@ -630,33 +640,34 @@
            use after error procedure on lineseq.
            set tutto-ok  to true.
            evaluate status-lineseq
-           when "35"
-                set errori to true
-                initialize messaggio
-                string "File "        delimited size
-                       wstampa        delimited low-value
-                       " not found on server!"  delimited size
-                       into messaggio
-                end-string
-                if tentativi = 0
-                   move 1 to tentativi
-                   move mb-yes to scelta
-                else
-                   display message messaggio
-                             x"0d0a""Ritentare la connessione?"
-                              type mb-yes-no
-                            giving scelta
-                             title tit-err
-                              icon 2
-                end-if
-                if scelta = mb-yes
-                   open input lineseq
-                   if status-lineseq = "00"
-                      set tutto-ok to true
-                   end-if
-                else
-                   set errori to true
-                end-if                   
+      *****     when "35"
+      *****          set errori to true
+      *****          initialize messaggio
+      *****          string "File "        delimited size
+      *****                 wstampa        delimited low-value
+      *****                 " not found on server!"  delimited size
+      *****                 into messaggio
+      *****          end-string
+      *****          if tentativi = 0
+      *****             call "C$SLEEP" using 1
+      *****             move 1 to tentativi
+      *****             move mb-yes to scelta
+      *****          else
+      *****             display message messaggio
+      *****                       x"0d0a""Ritentare la connessione?"
+      *****                        type mb-yes-no
+      *****                      giving scelta
+      *****                       title tit-err
+      *****                        icon 2
+      *****          end-if
+      *****          if scelta = mb-yes
+      *****             open input lineseq
+      *****             if status-lineseq = "00"
+      *****                set tutto-ok to true
+      *****             end-if
+      *****          else
+      *****             set errori to true
+      *****          end-if                   
            when "93"
            when "99"
                 initialize geslock-messaggio
@@ -1398,12 +1409,14 @@
               TITLE titolo,
               WITH SYSTEM MENU,
               USER-GRAY,
-           VISIBLE v-screen,
               USER-WHITE,
               No WRAP,
               EVENT PROCEDURE Screen1-Event-Proc,
               HANDLE IS FORM1-HANDLE,
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterCreateWin>
+           move "ATTENDERE LA CHIUSURA DEI PROCESSI A VIDEO" to lab1-buf
+
+           .
       * <TOTEM:END>
 
 
@@ -1419,13 +1432,28 @@
        Form1-PROC.
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforeAccept>
            perform RIEMPI-GRID.
-           if fromRicalimp
-              perform PB-SEL-TUTTO-LINKTO
-              perform PB-ESEGUI-LINKTO
+           if fromRicalimp 
+              move 0 to v-screen
+              display form1
+              inquire grid-pid, last-row in tot-righe
+              if tot-righe > 2
+                 perform until 1 = 2
+                    perform PB-SEL-TUTTO-LINKTO
+                    perform PB-ESEGUI-LINKTO  
+                    call "C$SLEEP" using 5
+                    inquire grid-pid, last-row in tot-righe
+                    if tot-righe = 2
+                       exit perform
+                    end-if
+                    perform PB-AGGIORNA-LINKTO
+                 end-perform
+              end-if
               move 27 to key-status
            else
+              move "Programmi Attivi per il processo selezionato" to 
+           lab1-buf
               move 1 to v-screen
-              modify form1-handle, visible v-screen
+              display form1
            end-if.
 
            .
@@ -1662,8 +1690,6 @@
                    into como-path-tasklist
            end-string.
 
-
-
            initialize como-path-wmic
            string  path-kill delimited low-value
                    "wmic"       delimited size
@@ -1674,7 +1700,7 @@
                    ".txt"       delimited size
                    into como-path-wmic
            end-string.
-
+      
            initialize comando
            inspect como-path-wmic
                                 replacing trailing spaces by low-value.
@@ -1692,9 +1718,11 @@
            end-string.
            inspect como-path-wmic
                                 replacing trailing low-value by spaces.
-
+      
+           |Restituisce un file di testo che contiene il pid di questa sessione
            call "C$SYSTEM" using comando, 96|97
                           giving status-call.
+           call "C$SLEEP" using 2.
 
            initialize comando
            inspect como-path-tasklist
@@ -1726,9 +1754,10 @@
 
 
            call "C$SYSTEM" using comando, 96|97
-                          giving status-call.
+                          giving status-call.  
+           call "C$SLEEP" using 2.
 
-           perform CARICA-TMP-CPU
+           perform CARICA-TMP-CPU 
 
            .
       * <TOTEM:END>
@@ -1745,15 +1774,20 @@
            modify grid-pid, mass-update = 1.
            perform COMPONI-PATH.
            move como-path-tasklist  to wstampa
-           open input lineseq
+           perform until 1 = 2
+              call "C$FILEINFO" using wstampa, file-info
+              if file-size > 0
+                 open input lineseq
+                 if status-lineseq = "00"
+                    exit perform
+                 end-if
+              end-if
+           end-perform.
            move 1 to riga
            if tutto-ok
               perform until 1 = 2
                  move spaces to line-riga
-                 read lineseq next 
-                    at end 
-                       exit perform 
-                  end-read
+                 read lineseq next at end exit perform end-read
                  if line-riga not = space
                     perform PREPARA-RECORD
       *              if rp-nome-exe = "wrun32.exe"
@@ -1772,8 +1806,13 @@
               move 0 to riga
               move 2 to event-data-2
               modify grid-pid, cursor-y = 2
-              perform SPOSTAMENTO
+              perform SPOSTAMENTO    
 
+              if not fromRicalimp             
+                 display message "Operazione riuscita"
+                           title titolo
+                            icon 2
+              end-if
            else
               move 27 to key-status
            end-if.
@@ -1795,10 +1834,9 @@
 
            move col-pid   to cpu-pid
            read tmp-cpu
-              invalid
-                 move zero   to cpu-perce
+                invalid move 0 to cpu-perce
            end-read
-           move cpu-perce    to col-cpu
+           move cpu-perce to col-cpu
 
            modify grid-pid, record-to-add = rec-grid-pid.
 
@@ -1860,8 +1898,6 @@
            perform FORMATTA-STRINGA
            move como-stringa to rp-titolo.
 
-           move 0 to tentativi.
-
 
       ***---
        FORMATTA-STRINGA.
@@ -1921,7 +1957,7 @@
       * <TOTEM:PARA. CARICA-TMP-CPU>
            initialize path-tmp-cpu
            string  path-kill    delimited low-value
-                   "tmp_wmic"   delimited size
+                   "tmp_cpu"    delimited size
                    "_"          delimited size
                    como-data    delimited size
                    "_"          delimited size
@@ -1929,20 +1965,24 @@
                    into path-tmp-cpu
            end-string.
            open output tmp-cpu
-           close tmp-cpu
-           open i-o tmp-cpu
+           close       tmp-cpu
+           open i-o    tmp-cpu
 
-           call "C$SLEEP" using 2.
-           move como-path-wmic  to wstampa.
-           open input lineseq.
-           if errori exit paragraph end-if.
+           |Recupero il mio pid
+           move como-path-wmic to wstampa.
+           perform until 1 = 2    
+              call "C$FILEINFO" using wstampa, file-info
+              if file-size > 0
+                 open input lineseq
+                 if status-lineseq = "00"
+                    exit perform
+                 end-if
+              end-if
+           end-perform.
               
            perform until 1 = 2
               move spaces to line-riga
-              read lineseq next 
-                 at end 
-                    exit perform 
-              end-read
+              read lineseq next at end exit perform end-read
               perform RIPULISCI-REC
               perform VAL-TMP
            end-perform
@@ -1984,11 +2024,8 @@
            move rw-nome   to cpu-immagine
            move rw-cpu    to cpu-perce convert
 
-           if cpu-pid not = zero
-              write cpu-rec
-                 invalid
-                    rewrite cpu-rec
-              end-write
+           if cpu-pid not = 0
+              write cpu-rec invalid rewrite cpu-rec end-write
            end-if 
            .
       * <TOTEM:END>
@@ -2098,13 +2135,15 @@
       * <TOTEM:END>
        PB-ESEGUI-LinkTo.
       * <TOTEM:PARA. PB-ESEGUI-LinkTo>
-           move 8 to Passwd-password.
-           call   "passwd" using Passwd-linkage.
-           cancel "passwd".
+           if not fromRicalimp
+              move 8 to Passwd-password
+              call   "passwd" using Passwd-linkage
+              cancel "passwd"
 
-           if not Passwd-StatusOk
-LUBEXX        exit paragraph
-LUBEXX     end-if.
+              if not Passwd-StatusOk
+LUBEXX           exit paragraph
+LUBEXX        end-if
+           end-if.
 
            set tutto-ok to true.
            set trovato  to false.
@@ -2140,7 +2179,6 @@ LUBEXX     end-if.
                        move col-pid to killpid-pid-pgm
                        call   "killpid" using killpid-linkage
                        cancel "Killpid"
-                       call "C$SLEEP" using 2
       *                 move col-pid to como-pid
       *                 call "C$JUSTIFY" using como-pid, "L"
       *                 inspect como-pid replacing trailing spaces by low-value
