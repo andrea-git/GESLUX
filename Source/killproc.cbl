@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          killproc.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 30 dicembre 2020 15:34:13.
+       DATE-WRITTEN.        mercoledì 30 dicembre 2020 23:56:29.
        REMARKS.
       *{TOTEM}END
 
@@ -1414,7 +1414,13 @@
               EVENT PROCEDURE Screen1-Event-Proc,
               HANDLE IS FORM1-HANDLE,
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterCreateWin>
-           move "ATTENDERE LA CHIUSURA DEI PROCESSI A VIDEO" to lab1-buf
+           if fromRicalimp
+              move "ATTENDERE IL CARICAMENTO DEI PROCESSI" 
+                to lab1-buf
+           else
+              move "Programmi Attivi per il processo selezionato" 
+                to lab1-buf
+           end-if.
 
            .
       * <TOTEM:END>
@@ -1433,6 +1439,8 @@
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforeAccept>
            perform RIEMPI-GRID.
            if fromRicalimp 
+              move "ATTENDERE LA CHIUSURA DEI PROCESSI A VIDEO" 
+                to lab1-buf
               move 0 to v-screen
               display form1
               inquire grid-pid, last-row in tot-righe
@@ -1450,8 +1458,6 @@
               end-if
               move 27 to key-status
            else
-              move "Programmi Attivi per il processo selezionato" to 
-           lab1-buf
               move 1 to v-screen
               display form1
            end-if.

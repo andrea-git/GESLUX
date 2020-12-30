@@ -2,12 +2,13 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
+DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=aggmese-Ev-Before-Program
 AFTER_PROGRAM=aggmese-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4C1E131255-433-2363412982
+PROGRAM_UNIQUE_CODE=TOTEM-7E4C1E214337-60-611921722
 
 {{@DESCRIPTION:
 
@@ -1989,9 +1990,14 @@ BEGIN-DATA
    TEXTMODE          = 0
    ENTRYPOINT        = AfterCreateWin
 BEGIN-TEXT
-      *<<** Customized_Default, SP-G, Screen1-blockpgm-2 **>>  
-           move "ATTENDERE LA CHIUSURA DEI PROCESSI A VIDEO" to lab1-buf
-
+      *<<** Customized_Default, SP-G, Screen1-blockpgm-2 **>>
+           if fromRicalimp
+              move "ATTENDERE IL CARICAMENTO DEI PROCESSI" 
+                to lab1-buf
+           else
+              move "Programmi Attivi per il processo selezionato" 
+                to lab1-buf
+           end-if.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -2068,6 +2074,8 @@ BEGIN-DATA
 BEGIN-TEXT
            perform RIEMPI-GRID.
            if fromRicalimp 
+              move "ATTENDERE LA CHIUSURA DEI PROCESSI A VIDEO" 
+                to lab1-buf
               move 0 to v-screen
               display form1
               inquire grid-pid, last-row in tot-righe
@@ -2085,7 +2093,6 @@ BEGIN-TEXT
               end-if
               move 27 to key-status
            else
-              move "Programmi Attivi per il processo selezionato" to lab1-buf
               move 1 to v-screen
               display form1
            end-if.
