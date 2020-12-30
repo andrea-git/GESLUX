@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          garticoli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        domenica 6 dicembre 2020 01:11:05.
+       DATE-WRITTEN.        mercoledì 30 dicembre 2020 17:05:03.
        REMARKS.
       *{TOTEM}END
 
@@ -19122,9 +19122,6 @@
                 perform CONTROLLO
            |78-ID-ef-scorta è l'ID del campo ef-scorta
            when 78-ID-ef-scorta
-                perform CONTROLLO
-           |78-ID-ef-moq è l'ID del campo ef-moq
-           when 78-ID-ef-moq
                 perform CONTROLLO
            |78-ID-ef-amperaggio è l'ID del campo ef-amperaggio
            when 78-ID-ef-amperaggio

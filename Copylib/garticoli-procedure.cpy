@@ -982,20 +982,6 @@
                 display ef-reale
                 display lab-reale
 
-           |78-ID-ef-moq è l'ID del control ef-moq
-           when 78-ID-ef-moq
-                if v-moq = 1
-                   inquire ef-moq, value in ef-moq-buf
-                   move ef-moq-buf to art-moq of articoli
-                   if art-moq of articoli = 0
-                      set errori to true
-                      display message "MOQ obbligatorio"
-                                title tit-err
-                                 icon 2
-
-                   end-if
-                end-if
-
            |78-ID-ef-reale è l'ID del control ef-reale
            when 78-ID-ef-reale
                 if v-reale = 1

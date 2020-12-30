@@ -2,13 +2,12 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
-DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4C523384-98-667224023
+PROGRAM_UNIQUE_CODE=TOTEM-7E4C1E16418-852-2822415586
 
 {{@DESCRIPTION:
 
@@ -9078,7 +9077,7 @@ Begin Screen Form1
             Visible           = NONE
             Visible Variable  = v-moq
             Width in Cells    = TRUE
-            My Property       = "CONTROLLO-OLD=;CONTROLLO="
+            My Property       = "CONTROLLO-OLD="
             Before Procedure  = ef-perce-imposte-BeforeProcedure
             After Procedure   = ef-perce-imposte-AfterProcedure
          End
