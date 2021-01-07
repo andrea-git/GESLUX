@@ -43,6 +43,8 @@
        77  como-ora              pic 9(8).
        77  scelta                pic 9.
 
+       77  giac-day              pic s9(8).
+
        77  status-articoli       pic xx.
        77  status-lineseq        pic xx.
        77  status-progmag        pic xx.
@@ -375,7 +377,7 @@
                  read timposte previous
            end-start.
 
-           move low-value       to prg-rec.
+           move low-value       to prg-rec.                                      
 
            start progmag key is >= prg-chiave
                  invalid set errori to true
@@ -395,14 +397,39 @@
                     move prg-cod-articolo to art-codice
                     read articoli no lock 
                          invalid continue 
-                    end-read
+                    end-read                               
+
+                    |La giace-day dev'essere la somma dei figli
+                    |del magazzino richiesto
+                    if modulinv-mag = spaces
+                       move prg-giac-day to giac-day
+                    else                           
+                       move 0 to giac-day
+                       perform until 1 = 2
+                          read progmag next at end exit perform end-read
+                          if prg-cod-articolo not = art-codice
+                             exit perform
+                          end-if
+                          if prg-cod-magazzino = modulinv-mag
+                             add prg-giac-day to giac-day
+                          end-if
+                       end-perform
+                       |Mi riposiziono sul padre
+                       initialize prg-chiave 
+                                  replacing numeric data by zeroes
+                                       alphanumeric data by spaces
+                       move art-codice to prg-cod-articolo
+                       start progmag key >= prg-chiave
+                       read progmag next
+                    end-if
+
 
                     if prg-ven-udm      not = 0 or
                        prg-ini-udm      not = 0 or
                        prg-acq-udm      not = 0 or
                        prg-giacenza     not = 0 or
                        prg-giacenza-udm not = 0 or
-                       prg-giac-day     not = 0
+                       giac-day         not = 0
                        set record-padre-ok to true
                     else
                        set record-padre-ok to false
@@ -629,7 +656,7 @@ LUBEXX             end-if
                 move qta-edit to tmod-qta-imballi
            end-read.
                             
-           add prg-giac-day to tmod-giacenza.
+           add giac-day to tmod-giacenza.
 
            move art-mag-std to tmod-mag-std.
 
