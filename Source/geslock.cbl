@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          geslock.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 29 dicembre 2020 15:09:46.
+       DATE-WRITTEN.        giovedì 7 gennaio 2021 12:22:12.
        REMARKS.
       *{TOTEM}END
 
@@ -319,7 +319,7 @@
            ENABLED 1,
            EXCEPTION-VALUE 1010,
            FLAT,
-           ID IS 1003,
+           ID IS 1006,
            SELF-ACT,
            TITLE "Gesione &Sessioni",
            VISIBLE v-sessioni,
@@ -500,6 +500,8 @@
            move geslock-v-annulla  to v-annulla.
            move geslock-v-salva    to v-salva.
 
+           |Da sbloccare
+           move 0 to v-sessioni.
            if v-sessioni = 1
               move 9,13 to line-sessioni
            end-if.

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gordcvar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 22 dicembre 2020 15:04:50.
+       DATE-WRITTEN.        giovedì 7 gennaio 2021 11:56:50.
        REMARKS.
       *{TOTEM}END
 
@@ -16703,6 +16703,8 @@ PATCH      end-evaluate.
               call   "ricalimp-art" using ra-linkage
               cancel "ricalimp-art"             
               modify lab-attendere, visible false
+              initialize ra-linkage replacing numeric data by zeroes
+                                         alphanumeric data by spaces
            end-if.
 
            if errori

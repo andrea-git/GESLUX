@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=geslock-Ev-Before-Program
 AFTER_PROGRAM=geslock-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4C1D14118-971-925626597
+PROGRAM_UNIQUE_CODE=TOTEM-7E517112128-826-2809428575
 
 {{@DESCRIPTION:
 
@@ -989,7 +989,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = FALSE
       Help ID           = 0
-      ID                = 1003
+      ID                = 1006
       Line              = 7,00
       Line Variable     = line-sessioni
       Lines             = 1,31
@@ -1080,6 +1080,8 @@ BEGIN-TEXT
            move geslock-v-annulla  to v-annulla.
            move geslock-v-salva    to v-salva.
 
+           |Da sbloccare
+           move 0 to v-sessioni.
            if v-sessioni = 1
               move 9,13 to line-sessioni
            end-if.

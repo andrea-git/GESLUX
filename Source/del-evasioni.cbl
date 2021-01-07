@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          del-evasioni.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 1 aprile 2014 19:14:06.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        giovedì 7 gennaio 2021 11:54:37.
        REMARKS.
       *{TOTEM}END
 
@@ -43,9 +43,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\Lubex\GESLUX\Copylib\UTYDATA.DEF".
-               COPY "F:\Lubex\GESLUX\Copylib\comune.def".
-               COPY "F:\Lubex\GESLUX\Copylib\custom.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -114,7 +112,7 @@
       * Data.Entry-Field
               05 ef-num-to-BUF PIC zzzzzzz9.
 
-       77 TMP-DataSet1-tordini-BUF     PIC X(907).
+       77 TMP-DataSet1-tordini-BUF     PIC X(3898).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -144,6 +142,8 @@
        77 tordini-k-promo-SPLITBUF  PIC X(29).
        77 tordini-k-or-SPLITBUF  PIC X(21).
        77 tordini-k-tor-inviare-SPLITBUF  PIC X(14).
+       77 tordini-k-tor-tipocli-SPLITBUF  PIC X(25).
+       77 tordini-k-tor-gdo-SPLITBUF  PIC X(28).
 
       *{TOTEM}END
 
@@ -668,6 +668,30 @@
            tordini-k-tor-inviare-SPLITBUF(2:12)
            .
 
+       tordini-k-tor-tipocli-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-tor-tipocli-SPLITBUF
+           MOVE tor-tipocli OF tordini(1:2) TO 
+           tordini-k-tor-tipocli-SPLITBUF(1:2)
+           MOVE tor-cod-cli OF tordini(1:5) TO 
+           tordini-k-tor-tipocli-SPLITBUF(3:5)
+           MOVE tor-prg-destino OF tordini(1:5) TO 
+           tordini-k-tor-tipocli-SPLITBUF(8:5)
+           MOVE tor-chiave OF tordini(1:12) TO 
+           tordini-k-tor-tipocli-SPLITBUF(13:12)
+           .
+
+       tordini-k-tor-gdo-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-tor-gdo-SPLITBUF
+           MOVE tor-gdo OF tordini(1:5) TO 
+           tordini-k-tor-gdo-SPLITBUF(1:5)
+           MOVE tor-cod-cli OF tordini(1:5) TO 
+           tordini-k-tor-gdo-SPLITBUF(6:5)
+           MOVE tor-prg-destino OF tordini(1:5) TO 
+           tordini-k-tor-gdo-SPLITBUF(11:5)
+           MOVE tor-chiave OF tordini(1:12) TO 
+           tordini-k-tor-gdo-SPLITBUF(16:12)
+           .
+
        DataSet1-tordini-INITSTART.
            EVALUATE DataSet1-KEYIS
            WHEN 1
@@ -786,6 +810,8 @@
            PERFORM tordini-k-promo-MERGE-SPLITBUF
            PERFORM tordini-k-or-MERGE-SPLITBUF
            PERFORM tordini-k-tor-inviare-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-tipocli-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-gdo-MERGE-SPLITBUF
            MOVE STATUS-tordini TO TOTEM-ERR-STAT 
            MOVE "tordini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -834,6 +860,8 @@
            PERFORM tordini-k-promo-MERGE-SPLITBUF
            PERFORM tordini-k-or-MERGE-SPLITBUF
            PERFORM tordini-k-tor-inviare-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-tipocli-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-gdo-MERGE-SPLITBUF
            MOVE STATUS-tordini TO TOTEM-ERR-STAT
            MOVE "tordini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -882,6 +910,8 @@
            PERFORM tordini-k-promo-MERGE-SPLITBUF
            PERFORM tordini-k-or-MERGE-SPLITBUF
            PERFORM tordini-k-tor-inviare-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-tipocli-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-gdo-MERGE-SPLITBUF
            MOVE STATUS-tordini TO TOTEM-ERR-STAT
            MOVE "tordini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE

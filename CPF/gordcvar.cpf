@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4C16134339-971-305418355
+PROGRAM_UNIQUE_CODE=TOTEM-7E517105423-45-2767726788
 
 {{@DESCRIPTION:
 
@@ -23110,6 +23110,8 @@ BEGIN-TEXT
               call   "ricalimp-art" using ra-linkage
               cancel "ricalimp-art"             
               modify lab-attendere, visible false
+              initialize ra-linkage replacing numeric data by zeroes
+                                         alphanumeric data by spaces
            end-if.
 
            if errori
