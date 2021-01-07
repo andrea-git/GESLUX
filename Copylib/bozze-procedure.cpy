@@ -2345,7 +2345,7 @@ LUBEXX           end-if
            move 78-ID-ef-cli to control-id.
            move 4            to accept-control.
 
-           string "Esercizio " delimited size
+           string "Es. "       delimited size
                   esercizio    delimited size
                   " ("         delimited size
                   esercizio-G2 delimited size

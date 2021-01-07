@@ -523,9 +523,11 @@ LUBEXX               separatore
                      separatore      
 LUBEXX               tmod-utf
 LUBEXX               separatore
-                     giacenza-ed
+                     giacenza-ed 
                      separatore
-                     tmod-prezzo delimited by size
+                     tmod-prezzo 
+                     separatore
+                     tmod-mag-std delimited by size
                      into line-riga
               end-string
               write line-riga
@@ -561,7 +563,9 @@ LUBEXX               separatore
                      separatore
                      "Giacenza"
                      separatore
-                     "Prezzo"  delimited by size
+                     "Prezzo"  
+                     separatore
+                     "Mag. Std"  delimited by size
                      into line-riga
                end-string
            else
@@ -626,6 +630,8 @@ LUBEXX             end-if
            end-read.
                             
            add prg-giac-day to tmod-giacenza.
+
+           move art-mag-std to tmod-mag-std.
 
            write tmod-rec invalid rewrite tmod-rec end-write.
 

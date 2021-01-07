@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=notacr-Ev-Before-Program
 AFTER_PROGRAM=notacr-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4C1022321-292-340626274
+PROGRAM_UNIQUE_CODE=TOTEM-7E51713370-76-310448027
 
 {{@DESCRIPTION:
 
@@ -1246,6 +1246,34 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM90_WK]
+m_strName=tot-doc
+m_strRawPic=9(9)v99
+m_strPic=9(9)v99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM90_WK
+
+@}}
+[FDITEM91_WK]
+m_strName=lab-tot-buf
+m_strRawPic=z.zzz.zz9,99
+m_strPic=z.zzz.zz9,99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM91_WK
+
+@}}
+[FDITEM92_WK]
 m_strName=save-tor-rec
 m_strRawPic=x(5000)
 m_strPic=X(5000)
@@ -1258,10 +1286,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM90_WK
+{{@DataItem_m_strDescriptionFDITEM92_WK
 
 @}}
-[FDITEM91_WK]
+[FDITEM93_WK]
 m_strName=como-prz
 m_strRawPic=9(12)v99
 m_strPic=9(12)V99
@@ -1272,38 +1300,11 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM91_WK
-
-@}}
-[FDITEM92_WK]
-m_strName=STATUS-tnotacr
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM92_WK
-
-@}}
-[FDITEM93_WK]
-m_strName=Valid-STATUS-tnotacr
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="00" THRU "09"
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM93_WK
 
 @}}
 [FDITEM94_WK]
-m_strName=STATUS-param
+m_strName=STATUS-tnotacr
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -1317,7 +1318,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM95_WK]
-m_strName=Valid-STATUS-param
+m_strName=Valid-STATUS-tnotacr
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -1330,8 +1331,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM96_WK]
-m_strName=LinkChiave
-m_nItemLevel=1
+m_strName=STATUS-param
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -1342,12 +1345,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM97_WK]
-m_strName=LinkAnno
-m_strRawPic=9(4)
-m_strPic=9(4)
-m_nItemLevel=5
+m_strName=Valid-STATUS-param
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -1356,10 +1358,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM98_WK]
-m_strName=LinkNumero
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=5
+m_strName=LinkChiave
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -1370,10 +1370,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM99_WK]
-m_strName=SaveRec
-m_strRawPic=x(500)
-m_strPic=X(500)
-m_nItemLevel=77
+m_strName=LinkAnno
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -1384,10 +1384,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM100_WK]
-m_strName=FILLER
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=1
+m_strName=LinkNumero
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -1398,12 +1398,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM101_WK]
-m_strName=FromSpostamento
-m_nItemLevel=88
+m_strName=SaveRec
+m_strRawPic=x(500)
+m_strPic=X(500)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue=1
-m_strFalse=0
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -1412,10 +1412,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM102_WK]
-m_strName=tot-idx
-m_strRawPic=9(3)
-m_strPic=9(3)
-m_nItemLevel=77
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -1426,14 +1426,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM103_WK]
-m_strName=riga-nuova2
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
-m_nItemLevel=77
-m_bValue=1
+m_strName=FromSpostamento
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue=1
+m_strFalse=0
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -1442,12 +1440,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM104_WK]
-m_strName=SaveData
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_strDefaultValue=0
+m_strName=tot-idx
+m_strRawPic=9(3)
+m_strPic=9(3)
 m_nItemLevel=77
-m_bValue=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -1458,9 +1454,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM105_WK]
-m_strName=tot-righe2
-m_strRawPic=999
-m_strPic=999
+m_strName=riga-nuova2
+m_strRawPic=9
+m_strPic=9
 m_strDefaultValue=0
 m_nItemLevel=77
 m_bValue=1
@@ -1474,10 +1470,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM106_WK]
-m_strName=label-cou-cobat
-m_strRawPic=x(12)
-m_strPic=X(12)
-m_nItemLevel=1
+m_strName=SaveData
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_strDefaultValue=0
+m_nItemLevel=77
+m_bValue=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -1488,6 +1486,36 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM107_WK]
+m_strName=tot-righe2
+m_strRawPic=999
+m_strPic=999
+m_strDefaultValue=0
+m_nItemLevel=77
+m_bValue=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM107_WK
+
+@}}
+[FDITEM108_WK]
+m_strName=label-cou-cobat
+m_strRawPic=x(12)
+m_strPic=X(12)
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM108_WK
+
+@}}
+[FDITEM109_WK]
 m_strName=lab-imp-cou
 m_nItemLevel=88
 m_nSync=-1
@@ -1497,10 +1525,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM107_WK
+{{@DataItem_m_strDescriptionFDITEM109_WK
 
 @}}
-[FDITEM108_WK]
+[FDITEM110_WK]
 m_strName=lab-imp-cobat
 m_nItemLevel=88
 m_nSync=-1
@@ -1510,10 +1538,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM108_WK
+{{@DataItem_m_strDescriptionFDITEM110_WK
 
 @}}
-[FDITEM109_WK]
+[FDITEM111_WK]
 m_strName=lab-imp-coubat
 m_nItemLevel=88
 m_nSync=-1
@@ -1523,40 +1551,12 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM109_WK
-
-@}}
-[FDITEM110_WK]
-m_strName=Screen1-Handle
-m_nUsage=24
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM110_WK
-
-@}}
-[FDITEM111_WK]
-m_strName=num-codici-iva
-m_strRawPic=9(3)
-m_strPic=9(3)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM111_WK
 
 @}}
 [FDITEM112_WK]
-m_strName=como-numero
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=Screen1-Handle
+m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1568,10 +1568,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM113_WK]
-m_strName=FILLER
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=1
+m_strName=num-codici-iva
+m_strRawPic=9(3)
+m_strPic=9(3)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -1582,12 +1582,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM114_WK]
-m_strName=EsisteIVA
-m_nItemLevel=88
+m_strName=como-numero
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue=1
-m_strFalse=0
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -1610,7 +1610,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM116_WK]
-m_strName=si-rotta
+m_strName=EsisteIVA
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -1624,10 +1624,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM117_WK]
-m_strName=StoreDesMagazzino
-m_strRawPic=x(50)
-m_strPic=X(50)
-m_nItemLevel=77
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -1638,12 +1638,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM118_WK]
-m_strName=sum
-m_strRawPic=9(15)v99
-m_strPic=9(15)V99
-m_nItemLevel=77
+m_strName=si-rotta
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue=1
+m_strFalse=0
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -1652,9 +1652,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM119_WK]
-m_strName=SavePrezzo
-m_strRawPic=9(12)v99
-m_strPic=9(12)V99
+m_strName=StoreDesMagazzino
+m_strRawPic=x(50)
+m_strPic=X(50)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1666,9 +1666,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM120_WK]
-m_strName=imballo-descrizione
-m_strRawPic=x(80)
-m_strPic=X(80)
+m_strName=sum
+m_strRawPic=9(15)v99
+m_strPic=9(15)V99
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1680,9 +1680,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM121_WK]
-m_strName=hid-imballi
-m_strRawPic=9(4)
-m_strPic=9(4)
+m_strName=SavePrezzo
+m_strRawPic=9(12)v99
+m_strPic=9(12)V99
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1694,10 +1694,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM122_WK]
-m_strName=FILLER
-m_strRawPic=xx
-m_strPic=XX
-m_nItemLevel=1
+m_strName=imballo-descrizione
+m_strRawPic=x(80)
+m_strPic=X(80)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -1708,6 +1708,34 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM123_WK]
+m_strName=hid-imballi
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM123_WK
+
+@}}
+[FDITEM124_WK]
+m_strName=FILLER
+m_strRawPic=xx
+m_strPic=XX
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM124_WK
+
+@}}
+[FDITEM125_WK]
 m_strName=TotaleSiZero
 m_nItemLevel=88
 m_nSync=-1
@@ -1717,10 +1745,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM123_WK
+{{@DataItem_m_strDescriptionFDITEM125_WK
 
 @}}
-[FDITEM124_WK]
+[FDITEM126_WK]
 m_strName=TotaleNoZero
 m_nItemLevel=88
 m_nSync=-1
@@ -1730,10 +1758,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM124_WK
+{{@DataItem_m_strDescriptionFDITEM126_WK
 
 @}}
-[FDITEM125_WK]
+[FDITEM127_WK]
 m_strName=data-oggi
 m_strRawPic=9(8)
 m_strPic=9(8)
@@ -1744,10 +1772,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM125_WK
+{{@DataItem_m_strDescriptionFDITEM127_WK
 
 @}}
-[FDITEM126_WK]
+[FDITEM128_WK]
 m_strName=cod-iva
 m_strRawPic=x(3)
 m_strPic=X(3)
@@ -1761,39 +1789,13 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM126_WK
-
-@}}
-[FDITEM127_WK]
-m_strName=CallWProgmagFlag
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=1
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM127_WK
-
-@}}
-[FDITEM128_WK]
-m_strName=CallWProgmag
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue=1
-m_strFalse=0
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM128_WK
 
 @}}
 [FDITEM129_WK]
-m_strName=HiddenPeso
+m_strName=CallWProgmagFlag
+m_strRawPic=9
+m_strPic=9
 m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
@@ -1805,12 +1807,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM130_WK]
-m_strName=HiddenUtf
-m_strRawPic=9(5)v9(3)
-m_strPic=9(5)V9(3)
-m_nItemLevel=5
+m_strName=CallWProgmag
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue=1
+m_strFalse=0
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -1819,10 +1821,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM131_WK]
-m_strName=HiddenNonUtf
-m_strRawPic=9(5)v9(3)
-m_strPic=9(5)V9(3)
-m_nItemLevel=5
+m_strName=HiddenPeso
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -1833,10 +1833,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM132_WK]
-m_strName=FILLER
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=1
+m_strName=HiddenUtf
+m_strRawPic=9(5)v9(3)
+m_strPic=9(5)V9(3)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -1847,12 +1847,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM133_WK]
-m_strName=ArticoloSetFocus
-m_nItemLevel=88
+m_strName=HiddenNonUtf
+m_strRawPic=9(5)v9(3)
+m_strPic=9(5)V9(3)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
-m_strTrue=1
-m_strFalse=0
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -1875,7 +1875,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM135_WK]
-m_strName=PrimaVolta
+m_strName=ArticoloSetFocus
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -1889,9 +1889,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM136_WK]
-m_strName=Small-Font
-m_nUsage=37
-m_nItemLevel=77
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -1902,12 +1903,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM137_WK]
-m_strName=pagina
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=77
+m_strName=PrimaVolta
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue=1
+m_strFalse=0
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -1916,8 +1917,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM138_WK]
-m_strName=HiddenValori
-m_nItemLevel=1
+m_strName=Small-Font
+m_nUsage=37
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -1928,10 +1930,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM139_WK]
-m_strName=hid-old-art
-m_strRawPic=9(6)
-m_strPic=9(6)
-m_nItemLevel=5
+m_strName=pagina
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -1942,10 +1944,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM140_WK]
-m_strName=hid-old-qta
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=5
+m_strName=HiddenValori
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -1956,9 +1956,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM141_WK]
-m_strName=hid-old-prz
-m_strRawPic=9(9)v99
-m_strPic=9(9)V99
+m_strName=hid-old-art
+m_strRawPic=9(6)
+m_strPic=9(6)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -1970,9 +1970,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM142_WK]
-m_strName=hid-old-consumo
-m_strRawPic=9(9)v99
-m_strPic=9(9)V99
+m_strName=hid-old-qta
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -1984,7 +1984,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM143_WK]
-m_strName=hid-old-coubat
+m_strName=hid-old-prz
 m_strRawPic=9(9)v99
 m_strPic=9(9)V99
 m_nItemLevel=5
@@ -1998,7 +1998,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM144_WK]
-m_strName=hid-old-piombo
+m_strName=hid-old-consumo
 m_strRawPic=9(9)v99
 m_strPic=9(9)V99
 m_nItemLevel=5
@@ -2012,9 +2012,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM145_WK]
-m_strName=hid-old-iva
-m_strRawPic=x(3)
-m_strPic=X(3)
+m_strName=hid-old-coubat
+m_strRawPic=9(9)v99
+m_strPic=9(9)V99
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -2026,9 +2026,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM146_WK]
-m_strName=hid-peso-utf
-m_strRawPic=9(5)v9(3)
-m_strPic=9(5)V9(3)
+m_strName=hid-old-piombo
+m_strRawPic=9(9)v99
+m_strPic=9(9)V99
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -2040,9 +2040,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM147_WK]
-m_strName=hid-peso-non-utf
-m_strRawPic=9(5)v9(3)
-m_strPic=9(5)V9(3)
+m_strName=hid-old-iva
+m_strRawPic=x(3)
+m_strPic=X(3)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -2054,9 +2054,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM148_WK]
-m_strName=hid-tipo-riga
-m_strRawPic=x
-m_strPic=X
+m_strName=hid-peso-utf
+m_strRawPic=9(5)v9(3)
+m_strPic=9(5)V9(3)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -2068,9 +2068,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM149_WK]
-m_strName=hid-qta-nc
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=hid-peso-non-utf
+m_strRawPic=9(5)v9(3)
+m_strPic=9(5)V9(3)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -2082,10 +2082,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM150_WK]
-m_strName=num-articoli
-m_strRawPic=9(7)
-m_strPic=9(7)
-m_nItemLevel=77
+m_strName=hid-tipo-riga
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -2096,10 +2096,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM151_WK]
-m_strName=FILLER
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=1
+m_strName=hid-qta-nc
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -2110,12 +2110,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM152_WK]
-m_strName=InsertRow2
-m_nItemLevel=88
+m_strName=num-articoli
+m_strRawPic=9(7)
+m_strPic=9(7)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue=1
-m_strFalse=0
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -2138,7 +2138,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM154_WK]
-m_strName=InsertRow
+m_strName=InsertRow2
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -2152,7 +2152,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM155_WK]
-m_strName=tab-id
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
 m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
@@ -2164,6 +2166,32 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM156_WK]
+m_strName=InsertRow
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM156_WK
+
+@}}
+[FDITEM157_WK]
+m_strName=tab-id
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM157_WK
+
+@}}
+[FDITEM158_WK]
 m_strName=min-id
 m_strRawPic=9(5)
 m_strPic=9(5)
@@ -2177,10 +2205,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM156_WK
+{{@DataItem_m_strDescriptionFDITEM158_WK
 
 @}}
-[FDITEM157_WK]
+[FDITEM159_WK]
 m_strName=max-id
 m_strRawPic=9(5)
 m_strPic=9(5)
@@ -2194,10 +2222,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM157_WK
+{{@DataItem_m_strDescriptionFDITEM159_WK
 
 @}}
-[FDITEM158_WK]
+[FDITEM160_WK]
 m_strName=riga-edit
 m_strRawPic=zzz.zzz.zz9
 m_strPic=ZZZ.ZZZ.ZZ9
@@ -2208,10 +2236,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM158_WK
+{{@DataItem_m_strDescriptionFDITEM160_WK
 
 @}}
-[FDITEM159_WK]
+[FDITEM161_WK]
 m_strName=Screen1-Pg-1-Visible
 m_strRawPic=9
 m_strPic=9
@@ -2224,40 +2252,13 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM159_WK
-
-@}}
-[FDITEM160_WK]
-m_strName=hidden-sel
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM160_WK
-
-@}}
-[FDITEM161_WK]
-m_strName=conferma-bmp
-m_nUsage=45
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM161_WK
 
 @}}
 [FDITEM162_WK]
-m_strName=tipo-nota
-m_strRawPic=x(50)
-m_strPic=X(50)
+m_strName=hidden-sel
+m_strRawPic=9
+m_strPic=9
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2269,9 +2270,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM163_WK]
-m_strName=imballi-ed
-m_strRawPic=zz.zz9
-m_strPic=ZZ.ZZ9
+m_strName=conferma-bmp
+m_nUsage=45
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2283,6 +2283,34 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM164_WK]
+m_strName=tipo-nota
+m_strRawPic=x(50)
+m_strPic=X(50)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM164_WK
+
+@}}
+[FDITEM165_WK]
+m_strName=imballi-ed
+m_strRawPic=zz.zz9
+m_strPic=ZZ.ZZ9
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM165_WK
+
+@}}
+[FDITEM166_WK]
 m_strName=Screen1-Pg-2-Visible
 m_strRawPic=9
 m_strPic=9
@@ -2295,40 +2323,13 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM164_WK
-
-@}}
-[FDITEM165_WK]
-m_strName=como-prezzo
-m_strRawPic=9(15)v999
-m_strPic=9(15)V999
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM165_WK
-
-@}}
-[FDITEM166_WK]
-m_strName=codice-ed
-m_strRawPic=z(5)
-m_strPic=Z(5)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM166_WK
 
 @}}
 [FDITEM167_WK]
-m_strName=Form1-St-1-Handle
-m_nUsage=51
+m_strName=como-prezzo
+m_strRawPic=9(15)v999
+m_strPic=9(15)V999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2340,8 +2341,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM168_WK]
-m_strName=Form1-Tb-1-Handle
-m_nUsage=24
+m_strName=codice-ed
+m_strRawPic=z(5)
+m_strPic=Z(5)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2353,6 +2355,32 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM169_WK]
+m_strName=Form1-St-1-Handle
+m_nUsage=51
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM169_WK
+
+@}}
+[FDITEM170_WK]
+m_strName=Form1-Tb-1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM170_WK
+
+@}}
+[FDITEM171_WK]
 m_strName=CountChar
 m_strRawPic=9(3)
 m_strPic=9(3)
@@ -2365,10 +2393,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM169_WK
+{{@DataItem_m_strDescriptionFDITEM171_WK
 
 @}}
-[FDITEM170_WK]
+[FDITEM172_WK]
 m_strName=TOOLBAR-BMP
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -2382,10 +2410,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM170_WK
+{{@DataItem_m_strDescriptionFDITEM172_WK
 
 @}}
-[FDITEM171_WK]
+[FDITEM173_WK]
 m_strName=E-ESCI
 m_strRawPic=9
 m_strPic=9
@@ -2398,10 +2426,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM171_WK
+{{@DataItem_m_strDescriptionFDITEM173_WK
 
 @}}
-[FDITEM172_WK]
+[FDITEM174_WK]
 m_strName=E-NUOVO
 m_strRawPic=9
 m_strPic=9
@@ -2414,43 +2442,11 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM172_WK
-
-@}}
-[FDITEM173_WK]
-m_strName=E-CANCELLA
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
-m_nItemLevel=77
-m_bValue=1
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM173_WK
-
-@}}
-[FDITEM174_WK]
-m_strName=E-SALVA
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=1
-m_nItemLevel=77
-m_bValue=1
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM174_WK
 
 @}}
 [FDITEM175_WK]
-m_strName=E-ANTEPRIMA
+m_strName=E-CANCELLA
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2466,7 +2462,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM176_WK]
-m_strName=E-MODIFICA
+m_strName=E-SALVA
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=1
@@ -2482,7 +2478,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM177_WK]
-m_strName=E-STAMPA
+m_strName=E-ANTEPRIMA
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2498,10 +2494,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM178_WK]
-m_strName=E-CERCA
+m_strName=E-MODIFICA
 m_strRawPic=9
 m_strPic=9
-m_strDefaultValue=0
+m_strDefaultValue=1
 m_nItemLevel=77
 m_bValue=1
 m_nSync=-1
@@ -2514,7 +2510,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM179_WK]
-m_strName=E-SELEZIONA
+m_strName=E-STAMPA
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -2530,10 +2526,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM180_WK]
-m_strName=STATUS-btnotacr
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=E-CERCA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
 m_nItemLevel=77
+m_bValue=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -2544,11 +2542,14 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM181_WK]
-m_strName=Valid-STATUS-btnotacr
-m_nItemLevel=88
+m_strName=E-SELEZIONA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_bValue=1
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -2557,7 +2558,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM182_WK]
-m_strName=STATUS-brnotacr
+m_strName=STATUS-btnotacr
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -2571,7 +2572,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM183_WK]
-m_strName=Valid-STATUS-brnotacr
+m_strName=Valid-STATUS-btnotacr
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -2584,7 +2585,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM184_WK]
-m_strName=STATUS-agenti
+m_strName=STATUS-brnotacr
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -2598,7 +2599,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM185_WK]
-m_strName=Valid-STATUS-agenti
+m_strName=Valid-STATUS-brnotacr
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -2611,7 +2612,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM186_WK]
-m_strName=STATUS-articoli
+m_strName=STATUS-agenti
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -2625,7 +2626,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM187_WK]
-m_strName=Valid-STATUS-articoli
+m_strName=Valid-STATUS-agenti
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -2638,7 +2639,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM188_WK]
-m_strName=STATUS-clienti
+m_strName=STATUS-articoli
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -2652,7 +2653,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM189_WK]
-m_strName=Valid-STATUS-clienti
+m_strName=Valid-STATUS-articoli
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -2665,7 +2666,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM190_WK]
-m_strName=STATUS-destini
+m_strName=STATUS-clienti
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -2679,7 +2680,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM191_WK]
-m_strName=Valid-STATUS-destini
+m_strName=Valid-STATUS-clienti
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -2692,9 +2693,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM192_WK]
-m_strName=path-txt
-m_strRawPic=X(32)
-m_strPic=X(32)
+m_strName=STATUS-destini
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2706,21 +2707,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM193_WK]
-m_strName=STATUS-pass
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM193_WK
-
-@}}
-[FDITEM194_WK]
-m_strName=Valid-STATUS-pass
+m_strName=Valid-STATUS-destini
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -2729,11 +2716,25 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM193_WK
+
+@}}
+[FDITEM194_WK]
+m_strName=path-txt
+m_strRawPic=X(32)
+m_strPic=X(32)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM194_WK
 
 @}}
 [FDITEM195_WK]
-m_strName=status-tcodpag
+m_strName=STATUS-pass
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -2747,7 +2748,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM196_WK]
-m_strName=Valid-status-tcodpag
+m_strName=Valid-STATUS-pass
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -2760,7 +2761,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM197_WK]
-m_strName=STATUS-tcontat
+m_strName=status-tcodpag
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -2774,7 +2775,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM198_WK]
-m_strName=Valid-STATUS-tcontat
+m_strName=Valid-status-tcodpag
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -2787,7 +2788,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM199_WK]
-m_strName=STATUS-tivaese
+m_strName=STATUS-tcontat
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -2801,7 +2802,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM200_WK]
-m_strName=Valid-STATUS-tivaese
+m_strName=Valid-STATUS-tcontat
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -2814,7 +2815,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM201_WK]
-m_strName=STATUS-tparamge
+m_strName=STATUS-tivaese
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -2828,7 +2829,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM202_WK]
-m_strName=Valid-STATUS-tparamge
+m_strName=Valid-STATUS-tivaese
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -2841,7 +2842,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM203_WK]
-m_strName=STATUS-tordini
+m_strName=STATUS-tparamge
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -2855,7 +2856,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM204_WK]
-m_strName=Valid-STATUS-tordini
+m_strName=Valid-STATUS-tparamge
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -2868,8 +2869,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM205_WK]
-m_strName=rec-grid
-m_nItemLevel=1
+m_strName=STATUS-tordini
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -2880,12 +2883,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM206_WK]
-m_strName=col-riga
-m_strRawPic=z(5)
-m_strPic=Z(5)
-m_nItemLevel=5
+m_strName=Valid-STATUS-tordini
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -2894,10 +2896,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM207_WK]
-m_strName=col-codice
-m_strRawPic=zzzzz9
-m_strPic=ZZZZZ9
-m_nItemLevel=5
+m_strName=rec-grid
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -2908,9 +2908,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM208_WK]
-m_strName=col-descr
-m_strRawPic=x(150)
-m_strPic=X(150)
+m_strName=col-riga
+m_strRawPic=z(5)
+m_strPic=Z(5)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -2922,9 +2922,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM209_WK]
-m_strName=col-quantita
-m_strRawPic=z(7)9
-m_strPic=Z(7)9
+m_strName=col-codice
+m_strRawPic=zzzzz9
+m_strPic=ZZZZZ9
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -2936,9 +2936,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM210_WK]
-m_strName=col-imp-merce
-m_strRawPic=zzz.zzz.zz9,99
-m_strPic=ZZZ.ZZZ.ZZ9,99
+m_strName=col-descr
+m_strRawPic=x(150)
+m_strPic=X(150)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -2950,9 +2950,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM211_WK]
-m_strName=col-prezzo
-m_strRawPic=zzz.zzz.zz9,99
-m_strPic=ZZZ.ZZZ.ZZ9,99
+m_strName=col-quantita
+m_strRawPic=z(7)9
+m_strPic=Z(7)9
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -2964,9 +2964,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM212_WK]
-m_strName=col-consumo
-m_strRawPic=z.zz9,99
-m_strPic=Z.ZZ9,99
+m_strName=col-imp-merce
+m_strRawPic=zzz.zzz.zz9,99
+m_strPic=ZZZ.ZZZ.ZZ9,99
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -2978,9 +2978,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM213_WK]
-m_strName=col-coubat
-m_strRawPic=z.zz9,99
-m_strPic=Z.ZZ9,99
+m_strName=col-prezzo
+m_strRawPic=zzz.zzz.zz9,99
+m_strPic=ZZZ.ZZZ.ZZ9,99
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -2992,7 +2992,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM214_WK]
-m_strName=col-add
+m_strName=col-consumo
 m_strRawPic=z.zz9,99
 m_strPic=Z.ZZ9,99
 m_nItemLevel=5
@@ -3006,9 +3006,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM215_WK]
-m_strName=col-cod-iva
-m_strRawPic=x(3)
-m_strPic=X(3)
+m_strName=col-coubat
+m_strRawPic=z.zz9,99
+m_strPic=Z.ZZ9,99
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -3020,8 +3020,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM216_WK]
-m_strName=rec-visua
-m_nItemLevel=1
+m_strName=col-add
+m_strRawPic=z.zz9,99
+m_strPic=Z.ZZ9,99
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -3032,9 +3034,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM217_WK]
-m_strName=col-num
-m_strRawPic=z(5)
-m_strPic=Z(5)
+m_strName=col-cod-iva
+m_strRawPic=x(3)
+m_strPic=X(3)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -3046,10 +3048,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM218_WK]
-m_strName=col-art
-m_strRawPic=zzzzz9
-m_strPic=ZZZZZ9
-m_nItemLevel=5
+m_strName=rec-visua
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -3060,9 +3060,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM219_WK]
-m_strName=col-des
-m_strRawPic=x(150)
-m_strPic=X(150)
+m_strName=col-num
+m_strRawPic=z(5)
+m_strPic=Z(5)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -3074,9 +3074,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM220_WK]
-m_strName=col-qta
-m_strRawPic=z(7)9
-m_strPic=Z(7)9
+m_strName=col-art
+m_strRawPic=zzzzz9
+m_strPic=ZZZZZ9
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -3088,9 +3088,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM221_WK]
-m_strName=col-uni
-m_strRawPic=zzz.zzz.zz9,99
-m_strPic=ZZZ.ZZZ.ZZ9,99
+m_strName=col-des
+m_strRawPic=x(150)
+m_strPic=X(150)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -3102,9 +3102,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM222_WK]
-m_strName=col-sconto
-m_strRawPic=z9,99
-m_strPic=Z9,99
+m_strName=col-qta
+m_strRawPic=z(7)9
+m_strPic=Z(7)9
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -3116,9 +3116,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM223_WK]
-m_strName=col-cons
-m_strRawPic=z.zz9,99
-m_strPic=Z.ZZ9,99
+m_strName=col-uni
+m_strRawPic=zzz.zzz.zz9,99
+m_strPic=ZZZ.ZZZ.ZZ9,99
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -3130,9 +3130,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM224_WK]
-m_strName=col-cou
-m_strRawPic=z.zz9,99
-m_strPic=Z.ZZ9,99
+m_strName=col-sconto
+m_strRawPic=z9,99
+m_strPic=Z9,99
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -3144,7 +3144,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM225_WK]
-m_strName=col-add-pb
+m_strName=col-cons
 m_strRawPic=z.zz9,99
 m_strPic=Z.ZZ9,99
 m_nItemLevel=5
@@ -3158,9 +3158,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM226_WK]
-m_strName=col-imp
-m_strRawPic=zzz.zzz.zz9,99
-m_strPic=ZZZ.ZZZ.ZZ9,99
+m_strName=col-cou
+m_strRawPic=z.zz9,99
+m_strPic=Z.ZZ9,99
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -3172,9 +3172,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM227_WK]
-m_strName=col-iva
-m_strRawPic=x(3)
-m_strPic=X(3)
+m_strName=col-add-pb
+m_strRawPic=z.zz9,99
+m_strPic=Z.ZZ9,99
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -3186,9 +3186,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM228_WK]
-m_strName=col-oma
-m_strRawPic=x
-m_strPic=X
+m_strName=col-imp
+m_strRawPic=zzz.zzz.zz9,99
+m_strPic=ZZZ.ZZZ.ZZ9,99
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -3200,6 +3200,34 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM229_WK]
+m_strName=col-iva
+m_strRawPic=x(3)
+m_strPic=X(3)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM229_WK
+
+@}}
+[FDITEM230_WK]
+m_strName=col-oma
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM230_WK
+
+@}}
+[FDITEM231_WK]
 m_strName=grid-line
 m_strRawPic=S9(4)V9(2)
 m_strPic=S9(4)V9(2)
@@ -3212,10 +3240,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM229_WK
+{{@DataItem_m_strDescriptionFDITEM231_WK
 
 @}}
-[FDITEM230_WK]
+[FDITEM232_WK]
 m_strName=grid-lines
 m_strRawPic=S9(4)V9(2)
 m_strPic=S9(4)V9(2)
@@ -3228,10 +3256,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM230_WK
+{{@DataItem_m_strDescriptionFDITEM232_WK
 
 @}}
-[FDITEM231_WK]
+[FDITEM233_WK]
 m_strName=genera-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -3245,39 +3273,11 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM231_WK
-
-@}}
-[FDITEM232_WK]
-m_strName=lab-iva-buf
-m_strRawPic=x(100)
-m_strPic=X(100)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM232_WK
-
-@}}
-[FDITEM233_WK]
-m_strName=lab-pag-buf
-m_strRawPic=x(100)
-m_strPic=X(100)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM233_WK
 
 @}}
 [FDITEM234_WK]
-m_strName=lab-age-buf
+m_strName=lab-iva-buf
 m_strRawPic=x(100)
 m_strPic=X(100)
 m_nItemLevel=77
@@ -3291,7 +3291,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM235_WK]
-m_strName=lab-des-buf
+m_strName=lab-pag-buf
 m_strRawPic=x(100)
 m_strPic=X(100)
 m_nItemLevel=77
@@ -3305,7 +3305,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM236_WK]
-m_strName=lab-cli-buf
+m_strName=lab-age-buf
 m_strRawPic=x(100)
 m_strPic=X(100)
 m_nItemLevel=77
@@ -3319,7 +3319,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM237_WK]
-m_strName=lab-ind-buf
+m_strName=lab-des-buf
 m_strRawPic=x(100)
 m_strPic=X(100)
 m_nItemLevel=77
@@ -3333,7 +3333,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM238_WK]
-m_strName=lab-loca-bud
+m_strName=lab-cli-buf
 m_strRawPic=x(100)
 m_strPic=X(100)
 m_nItemLevel=77
@@ -3347,7 +3347,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM239_WK]
-m_strName=lab-loca-buf
+m_strName=lab-ind-buf
 m_strRawPic=x(100)
 m_strPic=X(100)
 m_nItemLevel=77
@@ -3361,7 +3361,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM240_WK]
-m_strName=lab-ind-d-buf
+m_strName=lab-loca-bud
 m_strRawPic=x(100)
 m_strPic=X(100)
 m_nItemLevel=77
@@ -3375,7 +3375,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM241_WK]
-m_strName=lab-loca-d-buf
+m_strName=lab-loca-buf
 m_strRawPic=x(100)
 m_strPic=X(100)
 m_nItemLevel=77
@@ -3389,6 +3389,34 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM242_WK]
+m_strName=lab-ind-d-buf
+m_strRawPic=x(100)
+m_strPic=X(100)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM242_WK
+
+@}}
+[FDITEM243_WK]
+m_strName=lab-loca-d-buf
+m_strRawPic=x(100)
+m_strPic=X(100)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM243_WK
+
+@}}
+[FDITEM244_WK]
 m_strName=AUTO-ID
 m_strRawPic=9(6)
 m_strPic=9(6)
@@ -3401,10 +3429,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM242_WK
+{{@DataItem_m_strDescriptionFDITEM244_WK
 
 @}}
-[FDITEM243_WK]
+[FDITEM245_WK]
 m_strName=cbo-stato-buf
 m_strRawPic=X(10)
 m_strPic=X(10)
@@ -3415,40 +3443,12 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM243_WK
-
-@}}
-[FDITEM244_WK]
-m_strName=GiacenzaKey
-m_nItemLevel=1
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM244_WK
-
-@}}
-[FDITEM245_WK]
-m_strName=gia-cod-articolo
-m_strRawPic=9(6)
-m_strPic=9(6)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM245_WK
 
 @}}
 [FDITEM246_WK]
-m_strName=gia-cod-magazzino
-m_strRawPic=X(3)
-m_strPic=X(3)
-m_nItemLevel=10
+m_strName=GiacenzaKey
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -3459,9 +3459,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM247_WK]
-m_strName=gia-tipo-imballo
-m_strRawPic=X(3)
-m_strPic=X(3)
+m_strName=gia-cod-articolo
+m_strRawPic=9(6)
+m_strPic=9(6)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -3473,9 +3473,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM248_WK]
-m_strName=gia-peso
-m_strRawPic=9(5)V9(3)
-m_strPic=9(5)V9(3)
+m_strName=gia-cod-magazzino
+m_strRawPic=X(3)
+m_strPic=X(3)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -3487,8 +3487,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM249_WK]
-m_strName=HiddenKey
-m_nItemLevel=1
+m_strName=gia-tipo-imballo
+m_strRawPic=X(3)
+m_strPic=X(3)
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -3499,9 +3501,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM250_WK]
-m_strName=hid-cod-articolo
-m_strRawPic=9(6)
-m_strPic=9(6)
+m_strName=gia-peso
+m_strRawPic=9(5)V9(3)
+m_strPic=9(5)V9(3)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -3513,10 +3515,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM251_WK]
-m_strName=hid-cod-magazzino
-m_strRawPic=X(3)
-m_strPic=X(3)
-m_nItemLevel=10
+m_strName=HiddenKey
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -3527,9 +3527,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM252_WK]
-m_strName=hid-tipo-imballo
-m_strRawPic=X(3)
-m_strPic=X(3)
+m_strName=hid-cod-articolo
+m_strRawPic=9(6)
+m_strPic=9(6)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -3541,9 +3541,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM253_WK]
-m_strName=hid-peso
-m_strRawPic=9(5)V9(3)
-m_strPic=9(5)V9(3)
+m_strName=hid-cod-magazzino
+m_strRawPic=X(3)
+m_strPic=X(3)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -3555,12 +3555,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM254_WK]
-m_strName=FILLER
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
-m_nItemLevel=1
-m_bValue=1
+m_strName=hid-tipo-imballo
+m_strRawPic=X(3)
+m_strPic=X(3)
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -3571,12 +3569,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM255_WK]
-m_strName=NonCambiareTab
-m_nItemLevel=88
+m_strName=hid-peso
+m_strRawPic=9(5)V9(3)
+m_strPic=9(5)V9(3)
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-m_strTrue=1
-m_strFalse=0
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -3601,7 +3599,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM257_WK]
-m_strName=ControllaCampi
+m_strName=NonCambiareTab
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -3618,7 +3616,7 @@ m_nCopyFileLevel=1
 m_strName=FILLER
 m_strRawPic=9
 m_strPic=9
-m_strDefaultValue=1
+m_strDefaultValue=0
 m_nItemLevel=1
 m_bValue=1
 m_nSync=-1
@@ -3631,7 +3629,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM259_WK]
-m_strName=CheckDestini
+m_strName=ControllaCampi
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -3645,10 +3643,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM260_WK]
-m_strName=nome-file
-m_strRawPic=x(15)
-m_strPic=X(15)
-m_nItemLevel=77
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=1
+m_bValue=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -3659,12 +3659,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM261_WK]
-m_strName=titolo
-m_strRawPic=x(100)
-m_strPic=X(100)
-m_nItemLevel=77
+m_strName=CheckDestini
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue=1
+m_strFalse=0
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -3673,8 +3673,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM262_WK]
-m_strName=Default-Font
-m_nUsage=38
+m_strName=nome-file
+m_strRawPic=x(15)
+m_strPic=X(15)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -3686,8 +3687,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM263_WK]
-m_strName=Form1-handle
-m_nUsage=24
+m_strName=titolo
+m_strRawPic=x(100)
+m_strPic=X(100)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -3699,9 +3701,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM264_WK]
-m_strName=lab-data-buf
-m_strRawPic=99/99/9999
-m_strPic=99/99/9999
+m_strName=Default-Font
+m_nUsage=38
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -3713,12 +3714,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM265_WK]
-m_strName=lab-num-buf
-m_strRawPic=z(8)
-m_strPic=Z(8)
+m_strName=Form1-handle
+m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
-m_nBlank=1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
@@ -3728,9 +3727,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM266_WK]
-m_strName=STATUS-rordini
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=lab-data-buf
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -3742,6 +3741,35 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM267_WK]
+m_strName=lab-num-buf
+m_strRawPic=z(8)
+m_strPic=Z(8)
+m_nItemLevel=77
+m_nSync=-1
+m_nBlank=1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM267_WK
+
+@}}
+[FDITEM268_WK]
+m_strName=STATUS-rordini
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM268_WK
+
+@}}
+[FDITEM269_WK]
 m_strName=Valid-STATUS-rordini
 m_nItemLevel=88
 m_nSync=-1
@@ -3751,10 +3779,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM267_WK
+{{@DataItem_m_strDescriptionFDITEM269_WK
 
 @}}
-[FDITEM268_WK]
+[FDITEM270_WK]
 m_strName=strip-grid-gclienti-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -3768,10 +3796,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM268_WK
+{{@DataItem_m_strDescriptionFDITEM270_WK
 
 @}}
-[FDITEM269_WK]
+[FDITEM271_WK]
 m_strName=sel-tutto-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -3785,40 +3813,13 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM269_WK
-
-@}}
-[FDITEM270_WK]
-m_strName=lab-anno-nc-buf
-m_strRawPic=9(4)
-m_strPic=9(4)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM270_WK
-
-@}}
-[FDITEM271_WK]
-m_strName=Courier-New18-Occidentale
-m_nUsage=26
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM271_WK
 
 @}}
 [FDITEM272_WK]
-m_strName=EF-LinesWithout
-m_strRawPic=S9(4)V9(2)
-m_strPic=S9(4)V9(2)
+m_strName=lab-anno-nc-buf
+m_strRawPic=9(4)
+m_strPic=9(4)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -3830,9 +3831,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM273_WK]
-m_strName=LastPrg
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=Courier-New18-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -3844,9 +3844,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM274_WK]
-m_strName=STATUS-tmarche
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=EF-LinesWithout
+m_strRawPic=S9(4)V9(2)
+m_strPic=S9(4)V9(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -3858,11 +3858,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM275_WK]
-m_strName=Valid-STATUS-tmarche
-m_nItemLevel=88
+m_strName=LastPrg
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -3871,7 +3872,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM276_WK]
-m_strName=STATUS-timposte
+m_strName=STATUS-tmarche
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -3885,7 +3886,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM277_WK]
-m_strName=Valid-STATUS-timposte
+m_strName=Valid-STATUS-tmarche
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -3898,7 +3899,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM278_WK]
-m_strName=STATUS-tcaumag
+m_strName=STATUS-timposte
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -3912,7 +3913,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM279_WK]
-m_strName=Valid-STATUS-tcaumag
+m_strName=Valid-STATUS-timposte
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -3925,7 +3926,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM280_WK]
-m_strName=STATUS-progmag
+m_strName=STATUS-tcaumag
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -3939,7 +3940,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM281_WK]
-m_strName=Valid-STATUS-progmag
+m_strName=Valid-STATUS-tcaumag
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -3952,6 +3953,33 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM282_WK]
+m_strName=STATUS-progmag
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM282_WK
+
+@}}
+[FDITEM283_WK]
+m_strName=Valid-STATUS-progmag
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM283_WK
+
+@}}
+[FDITEM284_WK]
 m_strName=v-fatt
 m_strRawPic=9
 m_strPic=9
@@ -3964,41 +3992,13 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM282_WK
-
-@}}
-[FDITEM283_WK]
-m_strName=lab-cont-buf
-m_strRawPic=x(100)
-m_strPic=X(100)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM283_WK
-
-@}}
-[FDITEM284_WK]
-m_strName=lab-piano-buf
-m_strRawPic=x(100)
-m_strPic=X(100)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM284_WK
 
 @}}
 [FDITEM285_WK]
-m_strName=SaveArticolo
-m_strRawPic=9(6)
-m_strPic=9(6)
+m_strName=lab-cont-buf
+m_strRawPic=x(100)
+m_strPic=X(100)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -4010,9 +4010,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM286_WK]
-m_strName=como-articolo
-m_strRawPic=9(6)
-m_strPic=9(6)
+m_strName=lab-piano-buf
+m_strRawPic=x(100)
+m_strPic=X(100)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -4024,9 +4024,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM287_WK]
-m_strName=como-magazzino
-m_strRawPic=x(3)
-m_strPic=X(3)
+m_strName=SaveArticolo
+m_strRawPic=9(6)
+m_strPic=9(6)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -4038,9 +4038,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM288_WK]
-m_strName=como-giacenza
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=como-articolo
+m_strRawPic=9(6)
+m_strPic=9(6)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -4052,9 +4052,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM289_WK]
-m_strName=como-record
-m_strRawPic=x(32000)
-m_strPic=X(32000)
+m_strName=como-magazzino
+m_strRawPic=x(3)
+m_strPic=X(3)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -4066,10 +4066,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM290_WK]
-m_strName=FILLER
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=1
+m_strName=como-giacenza
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -4080,12 +4080,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM291_WK]
-m_strName=CheckAfterZoom
-m_nItemLevel=88
+m_strName=como-record
+m_strRawPic=x(32000)
+m_strPic=X(32000)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue=1
-m_strFalse=0
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -4108,7 +4108,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM293_WK]
-m_strName=record-ok
+m_strName=CheckAfterZoom
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -4136,7 +4136,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM295_WK]
-m_strName=filtro-articoli
+m_strName=record-ok
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -4150,10 +4150,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM296_WK]
-m_strName=status-mas
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -4164,11 +4164,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM297_WK]
-m_strName=Valid-status-mas
+m_strName=filtro-articoli
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
+m_strTrue=1
+m_strFalse=0
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -4177,9 +4178,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM298_WK]
-m_strName=path-tmp-progmag-zoom
-m_strRawPic=X(256)
-m_strPic=X(256)
+m_strName=status-mas
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -4191,21 +4192,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM299_WK]
-m_strName=STATUS-tmp-progmag-zoom
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM299_WK
-
-@}}
-[FDITEM300_WK]
-m_strName=Valid-STATUS-tmp-progmag-zoom
+m_strName=Valid-status-mas
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -4214,11 +4201,25 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM299_WK
+
+@}}
+[FDITEM300_WK]
+m_strName=path-tmp-progmag-zoom
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM300_WK
 
 @}}
 [FDITEM301_WK]
-m_strName=STATUS-timballi
+m_strName=STATUS-tmp-progmag-zoom
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -4232,7 +4233,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM302_WK]
-m_strName=Valid-STATUS-timballi
+m_strName=Valid-STATUS-tmp-progmag-zoom
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -4245,7 +4246,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM303_WK]
-m_strName=STATUS-timbalqta
+m_strName=STATUS-timballi
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -4259,7 +4260,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM304_WK]
-m_strName=Valid-STATUS-timbalqta
+m_strName=Valid-STATUS-timballi
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -4272,7 +4273,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM305_WK]
-m_strName=STATUS-tmagaz
+m_strName=STATUS-timbalqta
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -4286,7 +4287,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM306_WK]
-m_strName=Valid-STATUS-tmagaz
+m_strName=Valid-STATUS-timbalqta
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -4299,7 +4300,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM307_WK]
-m_strName=STATUS-recapiti
+m_strName=STATUS-tmagaz
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -4313,7 +4314,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM308_WK]
-m_strName=Valid-STATUS-recapiti
+m_strName=Valid-STATUS-tmagaz
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -4326,8 +4327,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM309_WK]
-m_strName=Verdana12B-Occidentale
-m_nUsage=26
+m_strName=STATUS-recapiti
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -4339,12 +4341,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM310_WK]
-m_strName=lab-anno-buf
-m_strRawPic=X(20)
-m_strPic=X(20)
-m_nItemLevel=77
+m_strName=Valid-STATUS-recapiti
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -4353,9 +4354,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM311_WK]
-m_strName=lab-vet-buf
-m_strRawPic=x(100)
-m_strPic=X(100)
+m_strName=Verdana12B-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -4367,9 +4367,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM312_WK]
-m_strName=cbo-colpa-buf
-m_strRawPic=X(30)
-m_strPic=X(30)
+m_strName=lab-anno-buf
+m_strRawPic=X(20)
+m_strPic=X(20)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -4381,8 +4381,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM313_WK]
-m_strName=OLD-btno-rec
-m_nItemLevel=1
+m_strName=lab-vet-buf
+m_strRawPic=x(100)
+m_strPic=X(100)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -4393,8 +4395,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM314_WK]
-m_strName=OLD-btno-chiave
-m_nItemLevel=5
+m_strName=cbo-colpa-buf
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -4405,10 +4409,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM315_WK]
-m_strName=OLD-btno-anno
-m_strRawPic=9(4)
-m_strPic=9(4)
-m_nItemLevel=10
+m_strName=OLD-btno-rec
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -4419,10 +4421,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM316_WK]
-m_strName=OLD-btno-numero
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=10
+m_strName=OLD-btno-chiave
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -4433,8 +4433,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM317_WK]
-m_strName=OLD-btno-dati
-m_nItemLevel=5
+m_strName=OLD-btno-anno
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -4445,9 +4447,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM318_WK]
-m_strName=OLD-btno-causale
-m_strRawPic=x(4)
-m_strPic=X(4)
+m_strName=OLD-btno-numero
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -4459,10 +4461,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM319_WK]
-m_strName=OLD-btno-cod-cli
-m_strRawPic=9(5)
-m_strPic=9(5)
-m_nItemLevel=10
+m_strName=OLD-btno-dati
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -4473,9 +4473,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM320_WK]
-m_strName=OLD-btno-prg-destino
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=OLD-btno-causale
+m_strRawPic=x(4)
+m_strPic=X(4)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -4487,9 +4487,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM321_WK]
-m_strName=OLD-btno-data
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=OLD-btno-cod-cli
+m_strRawPic=9(5)
+m_strPic=9(5)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -4501,9 +4501,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM322_WK]
-m_strName=OLD-btno-cod-pag
-m_strRawPic=x(3)
-m_strPic=X(3)
+m_strName=OLD-btno-prg-destino
+m_strRawPic=9(5)
+m_strPic=9(5)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -4515,9 +4515,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM323_WK]
-m_strName=OLD-btno-vettore
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=OLD-btno-data
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -4529,7 +4529,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM324_WK]
-m_strName=OLD-btno-dati-fm
+m_strName=OLD-btno-cod-pag
+m_strRawPic=x(3)
+m_strPic=X(3)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -4541,10 +4543,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM325_WK]
-m_strName=OLD-btno-fm-tipo
-m_strRawPic=x
-m_strPic=X
-m_nItemLevel=15
+m_strName=OLD-btno-vettore
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -4555,6 +4557,32 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM326_WK]
+m_strName=OLD-btno-dati-fm
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM326_WK
+
+@}}
+[FDITEM327_WK]
+m_strName=OLD-btno-fm-tipo
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM327_WK
+
+@}}
+[FDITEM328_WK]
 m_strName=OLD-btno-fm-vettore
 m_nItemLevel=88
 m_nSync=-1
@@ -4564,10 +4592,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM326_WK
+{{@DataItem_m_strDescriptionFDITEM328_WK
 
 @}}
-[FDITEM327_WK]
+[FDITEM329_WK]
 m_strName=OLD-btno-fm-cliente
 m_nItemLevel=88
 m_nSync=-1
@@ -4577,39 +4605,11 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM327_WK
-
-@}}
-[FDITEM328_WK]
-m_strName=OLD-btno-cod-cli-fm
-m_strRawPic=9(5)
-m_strPic=9(5)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM328_WK
-
-@}}
-[FDITEM329_WK]
-m_strName=OLD-btno-prg-destino-fm
-m_strRawPic=9(5)
-m_strPic=9(5)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM329_WK
 
 @}}
 [FDITEM330_WK]
-m_strName=OLD-btno-vettore-fm
+m_strName=OLD-btno-cod-cli-fm
 m_strRawPic=9(5)
 m_strPic=9(5)
 m_nItemLevel=15
@@ -4623,10 +4623,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM331_WK]
-m_strName=OLD-btno-note
-m_strRawPic=X(300)
-m_strPic=X(300)
-m_nItemLevel=10
+m_strName=OLD-btno-prg-destino-fm
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -4637,8 +4637,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM332_WK]
-m_strName=OLD-btno-bolla
-m_nItemLevel=10
+m_strName=OLD-btno-vettore-fm
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -4649,10 +4651,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM333_WK]
-m_strName=OLD-btno-data-bolla
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=15
+m_strName=OLD-btno-note
+m_strRawPic=X(300)
+m_strPic=X(300)
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -4663,10 +4665,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM334_WK]
-m_strName=OLD-btno-num-bolla
-m_strRawPic=x(20)
-m_strPic=X(20)
-m_nItemLevel=15
+m_strName=OLD-btno-bolla
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -4677,8 +4677,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM335_WK]
-m_strName=OLD-btno-fatt-rif
-m_nItemLevel=10
+m_strName=OLD-btno-data-bolla
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -4689,9 +4691,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM336_WK]
-m_strName=OLD-btno-data-fatt
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=OLD-btno-num-bolla
+m_strRawPic=x(20)
+m_strPic=X(20)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -4703,10 +4705,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM337_WK]
-m_strName=OLD-btno-num-fatt
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=15
+m_strName=OLD-btno-fatt-rif
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -4717,8 +4717,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM338_WK]
-m_strName=OLD-btno-rif-fm
-m_nItemLevel=10
+m_strName=OLD-btno-data-fatt
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -4729,7 +4731,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM339_WK]
-m_strName=OLD-btno-data-fm
+m_strName=OLD-btno-num-fatt
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=15
@@ -4743,10 +4745,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM340_WK]
-m_strName=OLD-btno-num-fm
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=15
+m_strName=OLD-btno-rif-fm
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -4757,8 +4757,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM341_WK]
-m_strName=OLD-btno-rif-nc
-m_nItemLevel=10
+m_strName=OLD-btno-data-fm
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -4769,7 +4771,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM342_WK]
-m_strName=OLD-btno-data-nc
+m_strName=OLD-btno-num-fm
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=15
@@ -4783,10 +4785,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM343_WK]
-m_strName=OLD-btno-num-nc
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=15
+m_strName=OLD-btno-rif-nc
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -4797,10 +4797,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM344_WK]
-m_strName=OLD-btno-motivo-cont
-m_strRawPic=x(200)
-m_strPic=X(200)
-m_nItemLevel=10
+m_strName=OLD-btno-data-nc
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -4811,10 +4811,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM345_WK]
-m_strName=OLD-btno-errore-colpa
-m_strRawPic=x
-m_strPic=X
-m_nItemLevel=10
+m_strName=OLD-btno-num-nc
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -4825,6 +4825,34 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM346_WK]
+m_strName=OLD-btno-motivo-cont
+m_strRawPic=x(200)
+m_strPic=X(200)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM346_WK
+
+@}}
+[FDITEM347_WK]
+m_strName=OLD-btno-errore-colpa
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM347_WK
+
+@}}
+[FDITEM348_WK]
 m_strName=OLD-btno-corriere
 m_nItemLevel=88
 m_nSync=-1
@@ -4834,10 +4862,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM346_WK
+{{@DataItem_m_strDescriptionFDITEM348_WK
 
 @}}
-[FDITEM347_WK]
+[FDITEM349_WK]
 m_strName=OLD-btno-magazzino
 m_nItemLevel=88
 m_nSync=-1
@@ -4847,10 +4875,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM347_WK
+{{@DataItem_m_strDescriptionFDITEM349_WK
 
 @}}
-[FDITEM348_WK]
+[FDITEM350_WK]
 m_strName=OLD-btno-fornitore
 m_nItemLevel=88
 m_nSync=-1
@@ -4860,10 +4888,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM348_WK
+{{@DataItem_m_strDescriptionFDITEM350_WK
 
 @}}
-[FDITEM349_WK]
+[FDITEM351_WK]
 m_strName=OLD-btno-cliente
 m_nItemLevel=88
 m_nSync=-1
@@ -4873,10 +4901,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM349_WK
+{{@DataItem_m_strDescriptionFDITEM351_WK
 
 @}}
-[FDITEM350_WK]
+[FDITEM352_WK]
 m_strName=OLD-btno-ufficio
 m_nItemLevel=88
 m_nSync=-1
@@ -4886,10 +4914,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM350_WK
+{{@DataItem_m_strDescriptionFDITEM352_WK
 
 @}}
-[FDITEM351_WK]
+[FDITEM353_WK]
 m_strName=OLD-btno-stato
 m_strRawPic=X(1)
 m_strPic=X(1)
@@ -4900,10 +4928,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM351_WK
+{{@DataItem_m_strDescriptionFDITEM353_WK
 
 @}}
-[FDITEM352_WK]
+[FDITEM354_WK]
 m_strName=OLD-btno-attivo
 m_nItemLevel=88
 m_nSync=-1
@@ -4913,10 +4941,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM352_WK
+{{@DataItem_m_strDescriptionFDITEM354_WK
 
 @}}
-[FDITEM353_WK]
+[FDITEM355_WK]
 m_strName=OLD-btno-disattivo
 m_nItemLevel=88
 m_nSync=-1
@@ -4926,10 +4954,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM353_WK
+{{@DataItem_m_strDescriptionFDITEM355_WK
 
 @}}
-[FDITEM354_WK]
+[FDITEM356_WK]
 m_strName=OLD-btno-bloccato
 m_nItemLevel=88
 m_nSync=-1
@@ -4939,40 +4967,12 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM354_WK
-
-@}}
-[FDITEM355_WK]
-m_strName=OLD-btno-dati-comuni
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM355_WK
-
-@}}
-[FDITEM356_WK]
-m_strName=OLD-btno-data-creazione
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM356_WK
 
 @}}
 [FDITEM357_WK]
-m_strName=OLD-btno-ora-creazione
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=15
+m_strName=OLD-btno-dati-comuni
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -4983,9 +4983,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM358_WK]
-m_strName=OLD-btno-utente-creazione
-m_strRawPic=X(10)
-m_strPic=X(10)
+m_strName=OLD-btno-data-creazione
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -4997,7 +4997,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM359_WK]
-m_strName=OLD-btno-data-modifica
+m_strName=OLD-btno-ora-creazione
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=15
@@ -5011,9 +5011,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM360_WK]
-m_strName=OLD-btno-ora-modifica
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=OLD-btno-utente-creazione
+m_strRawPic=X(10)
+m_strPic=X(10)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -5025,9 +5025,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM361_WK]
-m_strName=OLD-btno-utente-modifica
-m_strRawPic=X(10)
-m_strPic=X(10)
+m_strName=OLD-btno-data-modifica
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -5039,8 +5039,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM362_WK]
-m_strName=OLD-btno-vuoti
-m_nItemLevel=10
+m_strName=OLD-btno-ora-modifica
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -5051,9 +5053,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM363_WK]
-m_strName=OLD-btno-num-reso
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=OLD-btno-utente-modifica
+m_strRawPic=X(10)
+m_strPic=X(10)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -5065,10 +5067,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM364_WK]
-m_strName=OLD-btno-anno-fatt
-m_strRawPic=9(4)
-m_strPic=9(4)
-m_nItemLevel=15
+m_strName=OLD-btno-vuoti
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -5079,9 +5079,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM365_WK]
-m_strName=OLD-btno-anno-bolla
-m_strRawPic=9(4)
-m_strPic=9(4)
+m_strName=OLD-btno-num-reso
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -5093,7 +5093,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM366_WK]
-m_strName=OLD-btno-anno-nc
+m_strName=OLD-btno-anno-fatt
 m_strRawPic=9(4)
 m_strPic=9(4)
 m_nItemLevel=15
@@ -5107,7 +5107,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM367_WK]
-m_strName=OLD-btno-anno-fm
+m_strName=OLD-btno-anno-bolla
 m_strRawPic=9(4)
 m_strPic=9(4)
 m_nItemLevel=15
@@ -5121,10 +5121,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM368_WK]
-m_strName=OLD-btno-data-ingresso
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=10
+m_strName=OLD-btno-anno-nc
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -5135,10 +5135,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM369_WK]
-m_strName=STATUS-tvettori
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
+m_strName=OLD-btno-anno-fm
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -5149,6 +5149,34 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM370_WK]
+m_strName=OLD-btno-data-ingresso
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM370_WK
+
+@}}
+[FDITEM371_WK]
+m_strName=STATUS-tvettori
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM371_WK
+
+@}}
+[FDITEM372_WK]
 m_strName=Valid-STATUS-tvettori
 m_nItemLevel=88
 m_nSync=-1
@@ -5158,10 +5186,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM370_WK
+{{@DataItem_m_strDescriptionFDITEM372_WK
 
 @}}
-[FDITEM371_WK]
+[FDITEM373_WK]
 m_strName=Screen1-Pg-3-Visible
 m_strRawPic=9
 m_strPic=9
@@ -5174,10 +5202,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM371_WK
+{{@DataItem_m_strDescriptionFDITEM373_WK
 
 @}}
-[FDITEM372_WK]
+[FDITEM374_WK]
 m_strName=v-fatt-2
 m_strRawPic=9
 m_strPic=9
@@ -5190,10 +5218,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM372_WK
+{{@DataItem_m_strDescriptionFDITEM374_WK
 
 @}}
-[FDITEM373_WK]
+[FDITEM375_WK]
 m_strName=mod-campi
 m_strRawPic=9
 m_strPic=9
@@ -5206,10 +5234,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM373_WK
+{{@DataItem_m_strDescriptionFDITEM375_WK
 
 @}}
-[FDITEM374_WK]
+[FDITEM376_WK]
 m_strName=v-manuale
 m_strRawPic=9
 m_strPic=9
@@ -5222,10 +5250,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM374_WK
+{{@DataItem_m_strDescriptionFDITEM376_WK
 
 @}}
-[FDITEM375_WK]
+[FDITEM377_WK]
 m_strName=lab-iva-2-buf
 m_strRawPic=X(100)
 m_strPic=X(100)
@@ -5236,38 +5264,11 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM375_WK
-
-@}}
-[FDITEM376_WK]
-m_strName=STATUS-ttipocli
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM376_WK
-
-@}}
-[FDITEM377_WK]
-m_strName=Valid-STATUS-ttipocli
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="00" THRU "09"
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM377_WK
 
 @}}
 [FDITEM378_WK]
-m_strName=STATUS-tpiombo
+m_strName=STATUS-ttipocli
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -5281,7 +5282,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM379_WK]
-m_strName=Valid-STATUS-tpiombo
+m_strName=Valid-STATUS-ttipocli
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -5294,9 +5295,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM380_WK]
-m_strName=lab-iva-ese-buf
-m_strRawPic=x(100)
-m_strPic=X(100)
+m_strName=STATUS-tpiombo
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -5308,12 +5309,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM381_WK]
-m_strName=lab-iva2-buf
-m_strRawPic=X(100)
-m_strPic=X(100)
-m_nItemLevel=77
+m_strName=Valid-STATUS-tpiombo
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -5322,9 +5322,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM382_WK]
-m_strName=path-tmp-fatturati
-m_strRawPic=X(256)
-m_strPic=X(256)
+m_strName=lab-iva-ese-buf
+m_strRawPic=x(100)
+m_strPic=X(100)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -5336,9 +5336,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM383_WK]
-m_strName=STATUS-tmp-fatturati
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=lab-iva2-buf
+m_strRawPic=X(100)
+m_strPic=X(100)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -5350,11 +5350,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM384_WK]
-m_strName=Valid-STATUS-tmp-fatturati
-m_nItemLevel=88
+m_strName=path-tmp-fatturati
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -5363,9 +5364,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM385_WK]
-m_strName=lab-cli-fm-buf
-m_strRawPic=x(100)
-m_strPic=X(100)
+m_strName=STATUS-tmp-fatturati
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -5377,12 +5378,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM386_WK]
-m_strName=lab-ind--fmbuf
-m_strRawPic=x(100)
-m_strPic=X(100)
-m_nItemLevel=77
+m_strName=Valid-STATUS-tmp-fatturati
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -5391,7 +5391,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM387_WK]
-m_strName=lab-ind-fm-buf
+m_strName=lab-cli-fm-buf
 m_strRawPic=x(100)
 m_strPic=X(100)
 m_nItemLevel=77
@@ -5405,7 +5405,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM388_WK]
-m_strName=lab-loca-fm-buf
+m_strName=lab-ind--fmbuf
 m_strRawPic=x(100)
 m_strPic=X(100)
 m_nItemLevel=77
@@ -5419,7 +5419,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM389_WK]
-m_strName=lab-des-fm-buf
+m_strName=lab-ind-fm-buf
 m_strRawPic=x(100)
 m_strPic=X(100)
 m_nItemLevel=77
@@ -5433,7 +5433,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM390_WK]
-m_strName=lab-ind-d-fm-buf
+m_strName=lab-loca-fm-buf
 m_strRawPic=x(100)
 m_strPic=X(100)
 m_nItemLevel=77
@@ -5447,7 +5447,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM391_WK]
-m_strName=lab-loca-d-fm-buf
+m_strName=lab-des-fm-buf
 m_strRawPic=x(100)
 m_strPic=X(100)
 m_nItemLevel=77
@@ -5461,7 +5461,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM392_WK]
-m_strName=lab-age-fm-buf
+m_strName=lab-ind-d-fm-buf
 m_strRawPic=x(100)
 m_strPic=X(100)
 m_nItemLevel=77
@@ -5475,7 +5475,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM393_WK]
-m_strName=lab-vet-fm-buf
+m_strName=lab-loca-d-fm-buf
 m_strRawPic=x(100)
 m_strPic=X(100)
 m_nItemLevel=77
@@ -5489,9 +5489,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM394_WK]
-m_strName=numero-bozza
-m_strRawPic=z(8)
-m_strPic=Z(8)
+m_strName=lab-age-fm-buf
+m_strRawPic=x(100)
+m_strPic=X(100)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -5503,10 +5503,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM395_WK]
-m_strName=filler
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=1
+m_strName=lab-vet-fm-buf
+m_strRawPic=x(100)
+m_strPic=X(100)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -5517,12 +5517,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM396_WK]
-m_strName=YesDeleted
-m_nItemLevel=88
+m_strName=numero-bozza
+m_strRawPic=z(8)
+m_strPic=Z(8)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue=1,
-m_strFalse=0
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -5545,7 +5545,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM398_WK]
-m_strName=NewRow
+m_strName=YesDeleted
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -5573,7 +5573,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM400_WK]
-m_strName=RigaCambiata
+m_strName=NewRow
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -5587,9 +5587,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM401_WK]
-m_strName=funzione
-m_strRawPic=x
-m_strPic=X
+m_strName=filler
+m_strRawPic=9
+m_strPic=9
 m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
@@ -5601,6 +5601,34 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM402_WK]
+m_strName=RigaCambiata
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1,
+m_strFalse=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM402_WK
+
+@}}
+[FDITEM403_WK]
+m_strName=funzione
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM403_WK
+
+@}}
+[FDITEM404_WK]
 m_strName=inserimento
 m_nItemLevel=88
 m_nSync=-1
@@ -5610,10 +5638,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM402_WK
+{{@DataItem_m_strDescriptionFDITEM404_WK
 
 @}}
-[FDITEM403_WK]
+[FDITEM405_WK]
 m_strName=modifica
 m_nItemLevel=88
 m_nSync=-1
@@ -5623,39 +5651,11 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM403_WK
-
-@}}
-[FDITEM404_WK]
-m_strName=lab-num-nc-buf
-m_strRawPic=z(8)
-m_strPic=Z(8)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM404_WK
-
-@}}
-[FDITEM405_WK]
-m_strName=lab-data-nc-buf
-m_strRawPic=99/99/9999
-m_strPic=99/99/9999
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM405_WK
 
 @}}
 [FDITEM406_WK]
-m_strName=lab-num-fm-buf
+m_strName=lab-num-nc-buf
 m_strRawPic=z(8)
 m_strPic=Z(8)
 m_nItemLevel=77
@@ -5669,7 +5669,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM407_WK]
-m_strName=lab-data-fm-buf
+m_strName=lab-data-nc-buf
 m_strRawPic=99/99/9999
 m_strPic=99/99/9999
 m_nItemLevel=77
@@ -5683,9 +5683,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM408_WK]
-m_strName=NumBitmapNuovoGrid
-m_strRawPic=99
-m_strPic=99
+m_strName=lab-num-fm-buf
+m_strRawPic=z(8)
+m_strPic=Z(8)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -5697,9 +5697,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM409_WK]
-m_strName=NumBitmapEliminaGrid
-m_strRawPic=99
-m_strPic=99
+m_strName=lab-data-fm-buf
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -5711,6 +5711,34 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM410_WK]
+m_strName=NumBitmapNuovoGrid
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM410_WK
+
+@}}
+[FDITEM411_WK]
+m_strName=NumBitmapEliminaGrid
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM411_WK
+
+@}}
+[FDITEM412_WK]
 m_strName=NOTACR-BMP
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -5724,10 +5752,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM410_WK
+{{@DataItem_m_strDescriptionFDITEM412_WK
 
 @}}
-[FDITEM411_WK]
+[FDITEM413_WK]
 m_strName=v-nota
 m_strRawPic=9
 m_strPic=9
@@ -5740,39 +5768,13 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM411_WK
-
-@}}
-[FDITEM412_WK]
-m_strName=NumBitmapPb
-m_strRawPic=99
-m_strPic=99
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM412_WK
-
-@}}
-[FDITEM413_WK]
-m_strName=Verdana10B-Occidentale
-m_nUsage=26
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_strCopyFile=BOZZE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM413_WK
 
 @}}
 [FDITEM414_WK]
-m_strName=Courier-New20-Occidentale
-m_nUsage=26
+m_strName=NumBitmapPb
+m_strRawPic=99
+m_strPic=99
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -5784,12 +5786,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM415_WK]
-m_strName=Screen1-Pg-4-Visible
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=Verdana10B-Occidentale
+m_nUsage=26
 m_nItemLevel=77
-m_bValue=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -5800,12 +5799,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM416_WK]
-m_strName=tot-righe3
-m_strRawPic=999
-m_strPic=999
-m_strDefaultValue=0
+m_strName=Courier-New20-Occidentale
+m_nUsage=26
 m_nItemLevel=77
-m_bValue=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
@@ -5816,7 +5812,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM417_WK]
-m_strName=riga-nuova3
+m_strName=Screen1-Pg-4-Visible
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=0
@@ -5832,7 +5828,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM418_WK]
-m_strName=store-riga2
+m_strName=tot-righe3
 m_strRawPic=999
 m_strPic=999
 m_strDefaultValue=0
@@ -5848,6 +5844,38 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM419_WK]
+m_strName=riga-nuova3
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_bValue=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM419_WK
+
+@}}
+[FDITEM420_WK]
+m_strName=store-riga2
+m_strRawPic=999
+m_strPic=999
+m_strDefaultValue=0
+m_nItemLevel=77
+m_bValue=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_strCopyFile=BOZZE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM420_WK
+
+@}}
+[FDITEM421_WK]
 m_strName=store-riga3
 m_strRawPic=999
 m_strPic=999
@@ -5860,7 +5888,7 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_strCopyFile=BOZZE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BOZZE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM419_WK
+{{@DataItem_m_strDescriptionFDITEM421_WK
 
 @}}
 
@@ -10483,7 +10511,7 @@ Begin Screen Form1
       End
    End
    Begin Label lab-anno
-      SCREEN-COL        = 84,00
+      SCREEN-COL        = 79,00
       SCREEN-LINE       = 1,62
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -10491,7 +10519,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 2
-      Column            = 84,00
+      Column            = 79,00
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -10508,10 +10536,10 @@ Begin Screen Form1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 24,00
+      Size              = 17,00
       Size Unit         = Default
       Tab Order         = 2
-      Title             = "Esercizio 2007 (A7)"
+      Title             = "Es. 2007 (A7)"
       Title Picture     = X(20)
       Title Variable    = lab-anno-buf
       Transparent       = TRUE
@@ -10519,15 +10547,15 @@ Begin Screen Form1
       Width in Cells    = TRUE
    End
    Begin Label Screen1-La-3
-      SCREEN-COL        = 109,50
-      SCREEN-LINE       = 1,62
+      SCREEN-COL        = 99,67
+      SCREEN-LINE       = 1,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-3
       Clines            = 0
       Clines Unit       = Default
-      Color             = 2
-      Column            = 109,50
+      Color             = 1
+      Column            = 99,67
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -10539,7 +10567,7 @@ Begin Screen Form1
       ID                = 4041
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 1,62
+      Line              = 1,00
       Lines             = 1,54
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -10553,15 +10581,15 @@ Begin Screen Form1
       Width in Cells    = TRUE
    End
    Begin Label lab-numero
-      SCREEN-COL        = 117,50
-      SCREEN-LINE       = 1,62
+      SCREEN-COL        = 108,50
+      SCREEN-LINE       = 1,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = lab-numero
       Clines            = 0
       Clines Unit       = Default
-      Color             = 2
-      Column            = 117,50
+      Color             = 1
+      Column            = 108,50
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -10571,9 +10599,9 @@ Begin Screen Form1
       Height in Cells   = TRUE
       Help ID           = 0
       ID                = 4042
-      Justification     = Unaligned
+      Justification     = Left
       Label Offset      = 20
-      Line              = 1,62
+      Line              = 1,00
       Lines             = 1,54
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -10589,7 +10617,7 @@ Begin Screen Form1
       Width in Cells    = TRUE
    End
    Begin Label lab-tipo
-      SCREEN-COL        = 150,00
+      SCREEN-COL        = 150,83
       SCREEN-LINE       = 1,62
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -10597,7 +10625,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 5
-      Column            = 150,00
+      Column            = 150,83
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -10625,7 +10653,7 @@ Begin Screen Form1
       Width in Cells    = TRUE
    End
    Begin Push-Button pb-notacr
-      SCREEN-COL        = 59,83
+      SCREEN-COL        = 56,50
       SCREEN-LINE       = 1,15
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -10637,7 +10665,7 @@ Begin Screen Form1
       Bitmap Square     = TRUE
       Clines            = 0
       Clines Unit       = Default
-      Column            = 59,83
+      Column            = 56,50
       Copy Resource     = TRUE
       Csize             = 0
       Csize Unit        = Default
@@ -10673,15 +10701,15 @@ Begin Screen Form1
       Link To           = pb-notacr-LinkTo
    End
    Begin Label Screen1-La-3b
-      SCREEN-COL        = 128,83
-      SCREEN-LINE       = 1,62
+      SCREEN-COL        = 99,67
+      SCREEN-LINE       = 2,38
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-3b
       Clines            = 0
       Clines Unit       = Default
-      Color             = 2
-      Column            = 128,83
+      Color             = 1
+      Column            = 99,67
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -10693,7 +10721,7 @@ Begin Screen Form1
       ID                = 890
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 1,62
+      Line              = 2,38
       Lines             = 1,54
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -10707,15 +10735,15 @@ Begin Screen Form1
       Width in Cells    = TRUE
    End
    Begin Label lab-data
-      SCREEN-COL        = 133,33
-      SCREEN-LINE       = 1,62
+      SCREEN-COL        = 108,50
+      SCREEN-LINE       = 2,38
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = lab-data
       Clines            = 0
       Clines Unit       = Default
-      Color             = 2
-      Column            = 133,33
+      Color             = 1
+      Column            = 108,50
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -10725,9 +10753,9 @@ Begin Screen Form1
       Height in Cells   = TRUE
       Help ID           = 0
       ID                = 891
-      Justification     = Unaligned
+      Justification     = Left
       Label Offset      = 20
-      Line              = 1,62
+      Line              = 2,38
       Lines             = 1,54
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -10738,6 +10766,75 @@ Begin Screen Form1
       Title             = "99/99/9999"
       Title Picture     = 99/99/9999
       Title Variable    = lab-data-buf
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Screen1-La-3c
+      SCREEN-COL        = 126,17
+      SCREEN-LINE       = 1,62
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-La-3c
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 2
+      Column            = 126,17
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/10/B/C0/@Occidentale
+      Font Variable     = Verdana10B-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 4041
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 1,62
+      Lines             = 1,54
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 7,50
+      Size Unit         = Default
+      Tab Order         = 9
+      Title             = "Totale"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label lab-tot
+      SCREEN-COL        = 135,33
+      SCREEN-LINE       = 1,62
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lab-tot
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 2
+      Column            = 135,33
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/10/B/C0/@Occidentale
+      Font Variable     = Verdana10B-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 891
+      Justification     = Left
+      Label Offset      = 20
+      Line              = 1,62
+      Lines             = 1,54
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 16,17
+      Size Unit         = Default
+      Tab Order         = 10
+      Title Picture     = z.zzz.zz9,99
+      Title Variable    = lab-tot-buf
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -10753,7 +10850,7 @@ Begin Screen Form1
       Handle Variable   = Form1-Tb-1-Handle
       Help ID           = 0
       Lines             = 2,69
-      Tab Order         = 9
+      Tab Order         = 11
       Begin Push-Button TOOL-ESCI
          SCREEN-COL        = 1,00
          SCREEN-LINE       = 1,08
@@ -11194,7 +11291,7 @@ Begin Screen Form1
       Handle Variable   = Form1-St-1-Handle
       PANEL-WIDTHS      = ( 100, 35, 999 )
       PANEL-STYLE       = ( 1, 1, 1 )
-      Tab Order         = 10
+      Tab Order         = 12
    End
 End
 
@@ -11230,6 +11327,8 @@ BEGIN-DATA
    ENTRYPOINT        = BeforeAccept
 BEGIN-TEXT
            perform BEFORE-ACCEPT.
+           move tot-doc to lab-tot-buf.
+           display lab-tot.
            if lk-bl-prog-id = "selnota"
               move 1 to v-nota
               move 1 to NumBitmapPb

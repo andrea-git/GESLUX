@@ -12,6 +12,8 @@
            88 Valid-STATUS-tnazioni VALUE IS "00" THRU "09". 
        77 como-anno        PIC  9(4).
        77 como-data-bolla  PIC  9(8).
+       77 tot-doc          PIC  9(9)v99.
+       77 lab-tot-buf      PIC  z.zzz.zz9,99.
        77 save-tor-rec     PIC  x(5000)
                   VALUE IS spaces.
        77 como-prz         PIC  9(12)v99.

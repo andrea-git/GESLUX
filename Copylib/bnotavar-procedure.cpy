@@ -271,7 +271,13 @@
                        brno-addebito or brno-merce-rotta
                        exit perform
                     end-if
-                    perform AGGIUNGI-RIGA
+                    perform AGGIUNGI-RIGA     
+                    compute tot-doc =
+                            tot-doc +
+                            brno-qta * ( brno-imponib-merce +
+                                         brno-imp-consumo   +
+                                         brno-imp-cou-cobat +
+                                         brno-add-piombo    )
                  end-perform
            end-start.
            modify form1-gd-1, mass-update = 0.

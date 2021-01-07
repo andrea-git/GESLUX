@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          bnotavar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 15 dicembre 2020 10:23:27.
+       DATE-WRITTEN.        giovedì 7 gennaio 2021 14:59:01.
        REMARKS.
       *{TOTEM}END
 
@@ -2221,10 +2221,10 @@
        05
            lab-anno, 
            Label, 
-           COL 84,00, 
+           COL 79,00, 
            LINE 1,62,
            LINES 1,54 ,
-           SIZE 24,00 ,
+           SIZE 17,00 ,
            COLOR IS 2,
            FONT IS Verdana10B-Occidentale,
            ID IS 119,
@@ -2239,11 +2239,11 @@
        05
            Screen1-La-3, 
            Label, 
-           COL 109,50, 
-           LINE 1,62,
+           COL 99,67, 
+           LINE 1,00,
            LINES 1,54 ,
            SIZE 7,50 ,
-           COLOR IS 2,
+           COLOR IS 1,
            FONT IS Verdana10B-Occidentale,
            ID IS 4041,
            HEIGHT-IN-CELLS,
@@ -2256,15 +2256,16 @@
        05
            lab-numero, 
            Label, 
-           COL 117,50, 
-           LINE 1,62,
+           COL 108,50, 
+           LINE 1,00,
            LINES 1,54 ,
            SIZE 10,50 ,
-           COLOR IS 2,
+           COLOR IS 1,
            FONT IS Verdana10B-Occidentale,
            ID IS 4042,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
+           LEFT,
            TRANSPARENT,
            TITLE numero-bozza,
            .
@@ -2273,7 +2274,7 @@
        05
            lab-tipo, 
            Label, 
-           COL 150,00, 
+           COL 150,83, 
            LINE 1,62,
            LINES 1,54 ,
            SIZE 7,00 ,
@@ -2291,7 +2292,7 @@
        05
            pb-notacr, 
            Push-Button, 
-           COL 59,83, 
+           COL 56,50, 
            LINE 1,15,
            LINES 29,00 ,
            SIZE 114,00 ,
@@ -2313,11 +2314,11 @@
        05
            Screen1-La-3b, 
            Label, 
-           COL 128,83, 
-           LINE 1,62,
+           COL 99,67, 
+           LINE 2,38,
            LINES 1,54 ,
            SIZE 4,50 ,
-           COLOR IS 2,
+           COLOR IS 1,
            FONT IS Verdana10B-Occidentale,
            ID IS 890,
            HEIGHT-IN-CELLS,
@@ -2330,17 +2331,53 @@
        05
            lab-data, 
            Label, 
-           COL 133,33, 
-           LINE 1,62,
+           COL 108,50, 
+           LINE 2,38,
            LINES 1,54 ,
            SIZE 15,00 ,
+           COLOR IS 1,
+           FONT IS Verdana10B-Occidentale,
+           ID IS 891,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           LEFT,
+           TRANSPARENT,
+           TITLE lab-data-buf,
+           .
+
+      * LABEL
+       05
+           Screen1-La-3c, 
+           Label, 
+           COL 126,17, 
+           LINE 1,62,
+           LINES 1,54 ,
+           SIZE 7,50 ,
+           COLOR IS 2,
+           FONT IS Verdana10B-Occidentale,
+           ID IS 4041,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Totale",
+           .
+
+      * LABEL
+       05
+           lab-tot, 
+           Label, 
+           COL 135,33, 
+           LINE 1,62,
+           LINES 1,54 ,
+           SIZE 16,17 ,
            COLOR IS 2,
            FONT IS Verdana10B-Occidentale,
            ID IS 891,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
+           LEFT,
            TRANSPARENT,
-           TITLE lab-data-buf,
+           TITLE lab-tot-buf,
            .
 
       * TOOLBAR
@@ -8856,6 +8893,8 @@
        Form1-PROC.
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforeAccept>
            perform BEFORE-ACCEPT.
+           move tot-doc to lab-tot-buf.
+           display lab-tot.
            if lk-bl-prog-id = "selnota"
               move 1 to v-nota
               move 1 to NumBitmapPb
