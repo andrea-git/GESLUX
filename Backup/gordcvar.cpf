@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E517105423-45-2767726788
+PROGRAM_UNIQUE_CODE=TOTEM-7E518113629-233-11734082
 
 {{@DESCRIPTION:
 
@@ -23109,6 +23109,7 @@ BEGIN-TEXT
               modify lab-attendere, visible false
               initialize ra-linkage replacing numeric data by zeroes
                                          alphanumeric data by spaces
+              move 0 to ra-idx
            end-if.
 
            if errori
@@ -23822,7 +23823,8 @@ BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = anagr01-Ev-Before-Program
 BEGIN-TEXT
-      * controllo che sia tutto a posto con le transazioni    
+      * controllo che sia tutto a posto con le transazioni 
+           move 0 to ra-idx.
            open i-o  mrordini.
            if status-mrordini = "9E"
               call "C$RERR" using extend-stat, text-message

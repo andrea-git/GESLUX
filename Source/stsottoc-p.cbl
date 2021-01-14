@@ -106,6 +106,9 @@
             05 el-codice-l pic 9(6).
          03 el-prz-conf    pic 9(9)v99.
 
+       77  col-cli-tipo          pic x(20).
+       77  col-tcl-des           pic x(20).
+
        77  idx                   pic 999.
        77  nazione               pic x(3).
        77  qta-edit              pic ---.---.--9.
@@ -439,6 +442,8 @@ LUBEXX 77  diff-valore-edit      pic ----.---.---.--9,99.
                        if ttipocli-gdo set TrattamentoGDO to true
                        else            set TrattamentoGDO to false
                        end-if
+                    else
+                       move spaces to tcl-descrizione
                     end-if
                     perform LOOP-RIGHE-MOVIMENTO
                  end-if
@@ -706,6 +711,12 @@ LUBEXX***---
       ***---
        VALORIZZA-RIGA. 
            if prima-volta
+              if link-stm-F
+                 move spaces to col-cli-tipo col-tcl-des
+              else
+                 move "Tipol. cliente" to col-cli-tipo
+                 move "Descrizione"    to col-tcl-des
+              end-if
               perform ACCETTA-SEPARATORE
               set prima-volta to false
               initialize line-riga
@@ -736,6 +747,10 @@ LUBEXX***---
                      "Margine"              delimited size
 LUBEXX               separatore             delimited size
 LUBEXX               "Diff. Valore"         delimited size
+LUBEXX               separatore             delimited size
+LUBEXX               col-cli-tipo           delimited size
+LUBEXX               separatore             delimited size
+LUBEXX               col-tcl-des            delimited size
                      into line-riga
               end-string
               write line-riga
@@ -793,6 +808,10 @@ LUBEXX     move diff-valore to diff-valore-edit.
                   margine-edit        delimited size
 LUBEXX            separatore          delimited size
 LUBEXX            diff-valore-edit    delimited size
+                  separatore          delimited size
+                  cli-tipo            delimited size
+                  separatore          delimited size
+                  tcl-descrizione     delimited size
                   into line-riga
            end-string.
            write line-riga.

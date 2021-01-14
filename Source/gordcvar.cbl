@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gordcvar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 7 gennaio 2021 11:56:50.
+       DATE-WRITTEN.        venerdì 8 gennaio 2021 12:42:36.
        REMARKS.
       *{TOTEM}END
 
@@ -16705,6 +16705,7 @@ PATCH      end-evaluate.
               modify lab-attendere, visible false
               initialize ra-linkage replacing numeric data by zeroes
                                          alphanumeric data by spaces
+              move 0 to ra-idx
            end-if.
 
            if errori
@@ -19002,7 +19003,8 @@ LUBEXX     move tor-data-bolla(1:4) to tor-anno-bolla.
       * <TOTEM:END>
        anagr01-Ev-Before-Program.
       * <TOTEM:PARA. anagr01-Ev-Before-Program>
-      * controllo che sia tutto a posto con le transazioni    
+      * controllo che sia tutto a posto con le transazioni 
+           move 0 to ra-idx.
            open i-o  mrordini.
            if status-mrordini = "9E"
               call "C$RERR" using extend-stat, text-message
