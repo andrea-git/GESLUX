@@ -169,7 +169,7 @@
 
                     compute somma = giacenza + ordinato
                     evaluate art-scorta also somma
-                    when 0 also > imq-qta-imb
+                    when 0 also >= imq-qta-imb
                          move 2 to art-scorta
                          rewrite art-rec
                     when 2 also <= imq-qta-imb

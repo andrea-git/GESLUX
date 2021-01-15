@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Screen2
 BEFORE_PROGRAM=aggarc1-Ev-Before-Program
 AFTER_PROGRAM=aggarc1-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4C1022414-622-167002389
+PROGRAM_UNIQUE_CODE=TOTEM-7E51F134048-602-1427520175
 
 {{@DESCRIPTION:
 
@@ -918,8 +918,8 @@ Begin Screen Screen2
       Destroy Type      = Automatic
       Enable            = NONE
       Field Edited (Style) = 0
-      Field Edited Format = x(4)
-      Field Picture     = x(4)
+      Field Edited Format = X(4)
+      Field Picture     = X(4)
       Field Variable    = tmo-causale
       File              = tmovmag
       Font              = Default Font
@@ -1609,7 +1609,7 @@ BEGIN-DATA
    NODESTYLE         = 13
    PARAGRAPH         = Other Working
 BEGIN-TEXT
-           copy "splcrt2graf.lks"
+           copy "splcrt2graf.lks".
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -2033,7 +2033,7 @@ BEGIN-TEXT
                  move smovmagp-path        to splcrt2graf-percorso-stampa
                  set  splcrt2graf-orizzontale   to true
                  set  splcrt2graf-forza-crt   to true
-                 set  splcrt2graf-10pt        to true
+                 set  splcrt2graf-9pt         to true
                  call   "splcrt2graf" using splcrt2graf-link 
                  cancel "splcrt2graf"
               end-if

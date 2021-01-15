@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          smovmag.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 1 aprile 2014 19:18:57.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        venerdì 15 gennaio 2021 15:23:46.
        REMARKS.
       *{TOTEM}END
 
@@ -47,9 +47,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\Lubex\GESLUX\Copylib\UTYDATA.DEF".
-               COPY "F:\Lubex\GESLUX\Copylib\comune.def".
-               COPY "F:\Lubex\GESLUX\Copylib\custom.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -195,7 +193,7 @@
        77 tmovmag-k-data-SPLITBUF  PIC X(17).
        77 tcaumag-k-mag-SPLITBUF  PIC X(5).
 
-           copy "splcrt2graf.lks"
+           copy "splcrt2graf.lks".
       *{TOTEM}END
 
       *{TOTEM}ID-LOGICI
@@ -2078,7 +2076,7 @@
            splcrt2graf-percorso-stampa
                  set  splcrt2graf-orizzontale   to true
                  set  splcrt2graf-forza-crt   to true
-                 set  splcrt2graf-10pt        to true
+                 set  splcrt2graf-9pt         to true
                  call   "splcrt2graf" using splcrt2graf-link 
                  cancel "splcrt2graf"
               end-if
