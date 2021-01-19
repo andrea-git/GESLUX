@@ -33,6 +33,7 @@
            copy "listini.sl".
            copy "param.sl".
            copy "tcontat.sl".    
+           copy "timbalqta.sl".
 
        SELECT logfile
            ASSIGN       TO path-log
@@ -64,6 +65,7 @@
            copy "listini.fd".
            copy "param.fd".
            copy "tcontat.fd".    
+           copy "timbalqta.fd".  
 
        FD  logfile.
        01 riga-log        PIC  x(900).
@@ -78,6 +80,9 @@
            
        01  filler           pic 9.
            88 RichiamoSchedulato    value 1, false 0.
+           
+       01  filler           pic 9 value 0.
+           88 sostituzione  value 1, false 0.
 
        01  r-inizio.
          05 filler                 pic x(2)  value " [".
@@ -119,7 +124,8 @@
        77  status-tmp-sost-art  pic xx.
        77  status-tcontat       pic xx.
        77  status-param         pic xx.
-       77  path-tmp-sost-art pic x(256).
+       77  path-tmp-sost-art    pic x(256).
+       77  status-timbalqta     pic xx.
 
        78  titolo value "Sostituzione automatica articoli".
 
@@ -613,7 +619,8 @@
            end-if.
            open input mtordini clienti catart tcaumag timposte tcontat
                       destini progmag ttipocli |timbalqta  timballi 
-                      tpiombo tmarche tmagaz listini promoeva param.
+                      tpiombo tmarche tmagaz listini promoeva param
+                      timbalqta.
            open i-o mrordini articoli.
            if RecLocked
               set errori to true
@@ -949,7 +956,7 @@
                                 move mro-qta-e      to init-qta-e
                                 compute qta = mro-qta - mro-qta-e
                                 if mro-qta-e not = 0
-                                   move mro-qta-e to  mro-qta
+                                   move mro-qta-e to mro-qta
                                    compute mro-num-colli =
                                            mro-qta / mro-qta-imballi
                                    rewrite mro-rec
@@ -958,48 +965,10 @@
                                 move mro-des-imballo to DesImballiOrdine
                                 move mro-qta-imballi to QtaImballiOrdine
 
-                                perform ESAURIMENTO-SCORTA                             
-                                move low-value to mro-riga
-                                start mrordini key >= mro-chiave
-                                      invalid continue
-                                  not invalid
-                                      perform until 1 = 2
-                                         read mrordini next
-                                              at end  exit perform
-                                         end-read
-                                         if mro-chiave = save-chiave
-                                            move mro-qta  to qta-reale
-                                            move init-qta to mro-qta
-                                            perform STORNA-IMPEGNATO
-                                            if save-qta = 0
-                                               if mro-qta-e not = 0
-                                                  move qta-reale
-                                                    to mro-qta
-                                                  perform 
-                                                    AGGIUNGI-IMPEGNATO
-                                               else
-                                                  delete mrordini record
-                                               end-if
-                                            else
-                                               compute mro-qta =
-                                                       mro-qta-e + 
-                                                       save-qta
-                                               compute mro-num-colli =
-                                                       mro-qta / 
-                                                       mro-qta-imballi
-                                               rewrite mro-rec
-                                              perform AGGIUNGI-IMPEGNATO
-                                            end-if
-                                            if RichiamoSchedulato
-                                               move 
-                                               "SOSTITUZIONE EFFETTUATA"
-                                                 to como-riga
-                                               perform SCRIVI-RIGA-LOG
-                                            end-if
-                                            exit perform
-                                         end-if
-                                      end-perform
-                                end-start
+                                perform ESAURIMENTO-SCORTA
+                                if sostituzione
+                                   perform CANCELLA-RIGA
+                                end-if
                              end-if
                           end-if
                        else          
@@ -1019,22 +988,54 @@
                        end-if
                     end-if
                  end-perform
-           end-start.
+           end-start.   
 
-      *    Luciano
-      *****     if si-mail
-      *****        if invia-mail
-      *****           perform MAIL-SOST-ART
-      *****        end-if
-      *****     end-if.  
-      *****     close       tmp-sost-art.
-      *****     if status-tmp-sost-art = "00"
-      *****        delete file tmp-sost-art
-      *****     end-if.
-      *    Luciano
+      ***---
+       CANCELLA-RIGA.
+           move low-value to mro-riga.
+           start mrordini key >= mro-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read mrordini next
+                         at end  exit perform
+                    end-read
+                    if mro-chiave-testa not = mto-chiave
+                       exit perform
+                    end-if
+                    if mro-chiave = save-chiave
+                       move mro-qta  to qta-reale
+                       move init-qta to mro-qta
+                       perform STORNA-IMPEGNATO
+                       if save-qta = 0
+                          if mro-qta-e not = 0
+                             move qta-reale to mro-qta
+                             perform AGGIUNGI-IMPEGNATO
+                          else
+                             delete mrordini record
+                          end-if
+                       else
+                          compute mro-qta =
+                                  mro-qta-e + 
+                                  save-qta
+                          compute mro-num-colli =
+                                  mro-qta / 
+                                  mro-qta-imballi
+                          rewrite mro-rec
+                          perform AGGIUNGI-IMPEGNATO
+                       end-if
+                       if RichiamoSchedulato
+                          move "SOSTITUZIONE EFFETTUATA" to como-riga
+                          perform SCRIVI-RIGA-LOG
+                       end-if
+                       exit perform
+                    end-if
+                 end-perform
+           end-start.
 
       ***--- 
        ESAURIMENTO-SCORTA.
+           set sostituzione to false.
            |0107: modifico la catena in base alle nuove specifiche, 
            |ossia che il primo e l'ultimo devono essere l'articolo stesso
            initialize catena-articoli replacing numeric data by zeroes.
@@ -1090,8 +1091,8 @@
                              read progmag next 
                                   at end exit perform 
                              end-read
-                             if prg-cod-articolo  not = como-articolo or
-                                prg-cod-magazzino not = tca-cod-magaz
+                             if prg-cod-articolo  not = como-articolo 
+                             or prg-cod-magazzino not = tca-cod-magaz
                                 exit perform
                              end-if
                              if prg-attivo
@@ -1175,7 +1176,7 @@
 
                     if giacenza < QtaImballiOrdine
                        move 0 to giacenza
-                    end-if
+                    end-if                   
 
                     if sost-cod-articolo = mro-prg-cod-articolo
                        compute impegnato = 
@@ -1215,9 +1216,18 @@
                        compute disponibilita =
                                QtaImballiOrdine * imballi
                        if disponibilita > 0
-                          compute qta = qta - disponibilita
                           if como-articolo not = init-cod-articolo
-                             perform APPLICA-SOSTITUZIONE
+                            |Se la qta da assegnare non è > della 
+                            |qta minima dell'imballo non sostituisco
+                             move como-articolo to art-codice
+                             read articoli no lock
+                             move art-imballo-standard to imq-codice
+                             read timbalqta no lock
+                             if disponibilita >= imq-qta-imb
+                                compute qta = qta - disponibilita
+                                perform APPLICA-SOSTITUZIONE
+                                set sostituzione to true
+                             end-if
                           else
                              add disponibilita to save-qta
                           end-if
@@ -1615,7 +1625,8 @@
        CLOSE-FILES.
            close progmag articoli clienti destini ttipocli tcontat
                  mtordini mrordini catart tcaumag tpiombo |timbalqta timballi
-                 timposte tmarche tmagaz listini promoeva param.
+                 timposte tmarche tmagaz listini promoeva param
+                 timbalqta.
            if RichiamoSchedulato
               close logfile
            end-if.
