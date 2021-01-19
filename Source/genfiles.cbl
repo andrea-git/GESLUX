@@ -994,6 +994,7 @@ LABLAB     copy "blister.fd".
                 display message "[TCODPAG] Indexed file corrupt!"
                            title titolo
                             icon 3
+
                 
            end-evaluate.
  
@@ -2995,7 +2996,7 @@ LABLAB     copy "blister.fd".
               close FPGRUPPICS
            end-if.
 
-           open input PAT.
+           open input PAT.         
            if status-pat not = "00"
               display message "ERROR ", status-pat," ON SSI FILE"
                        x"0d0a""[PAT] Not Found. "
@@ -3034,31 +3035,31 @@ LABLAB     copy "blister.fd".
               close PAR
            end-if.
 
-riapri*     open input PNT.
-      *     if status-pnt not = "00"
-      *        display message "ERROR ", status-pnt," ON SSI FILE"
-      *                 x"0d0a""[PNT] Not Found. "
-      *                 x"0d0a""Contattare assistenza!"
-      *                  title "ERROR!"
-      *                   icon 3
-      *        move -1 to link-status
-      *        goback
-      *     else
-      *        close PNT
-      *     end-if.
-      *                 
-      *     open input PNR.
-      *     if status-pnr not = "00"
-      *        display message "ERROR ", status-pnr," ON SSI FILE"
-      *                 x"0d0a""[PNR] Not Found. "
-      *                 x"0d0a""Contattare assistenza!"
-      *                  title "ERROR!"
-      *                   icon 3
-      *        move -1 to link-status
-      *        goback
-      *     else
-      *        close PNR
-      *     end-if.
+           open input PNT.
+           if status-pnt not = "00"
+              display message "ERROR ", status-pnt," ON SSI FILE"
+                       x"0d0a""[PNT] Not Found. "
+                       x"0d0a""Contattare assistenza!"
+                        title "ERROR!"
+                         icon 3
+              move -1 to link-status
+              goback
+           else
+              close PNT
+           end-if.
+                       
+           open input PNR.
+           if status-pnr not = "00"
+              display message "ERROR ", status-pnr," ON SSI FILE"
+                       x"0d0a""[PNR] Not Found. "
+                       x"0d0a""Contattare assistenza!"
+                        title "ERROR!"
+                         icon 3
+              move -1 to link-status
+              goback
+           else
+              close PNR
+           end-if.
 
            open input PNI.
            if status-pni not = "00"
