@@ -2,10 +2,11 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+ANDESK-andre=192.168.56.1
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E517134626-790-780227876
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E511311032-196-283531087
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -22,12 +23,16 @@ m_strPrefix=PAR
 -----------------------------------------------------------------
 ----------------------------------------------------------------
  tk 3645 - Realizzazione property sheet prima nota                                                  | scamar 15/02/2011 09:50:25
-           . inserite clausole di generazione    
-           . redefines campo par-codice-pnr  
+           . inserite clausole di generazione
+           . redefines campo par-codice-pnr
 ----------------------------------------------------------------
+ tk 9015 - Nuova interfaccia per partitari e scadenziari (new gesprs08)                             | scamar 26/02/2020
 
 
 
+
+
+d
 @}}
 [FDITEM0_]
 m_strName=record-par
@@ -62,7 +67,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM3_
 $GEN type=num,dec=0,size=11
-
 @}}
 [FDITEM4_]
 m_strName=PAR-RIGA
@@ -72,8 +76,7 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM4_
-$GEN type=num,dec=0,size=7            
-
+$GEN type=num,dec=0,size=7
 @}}
 [FDITEM5_]
 m_strName=RESTO-RECORD-PAR
@@ -81,7 +84,6 @@ m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM5_
-
 
 
 
@@ -93,7 +95,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM6_
  copy "groupdate.xfc". | DBMaker
-
 @}}
 [FDITEM7_]
 m_strName=AA
@@ -146,7 +147,7 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM11_
-$GEN type=date        
+$GEN type=date
 
 @}}
 [FDITEM12_]
@@ -161,7 +162,6 @@ m_bFixed=1
 
 
 $GEN type=num,dec=0,size=9
-
 @}}
 [FDITEM13_]
 m_strName=PAR-DATA-DOCUMENTO
@@ -171,7 +171,6 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM13_
 
  copy "groupdate.xfc". | DBMaker
-
 @}}
 [FDITEM14_]
 m_strName=AA
@@ -224,8 +223,7 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM18_
-$GEN type=date        
-
+$GEN type=date
 @}}
 [FDITEM19_]
 m_strName=PAR-NUMERO-DOCUMENTO
@@ -268,7 +266,7 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM22_
-
+$GEN type=combobox,comboclass=par_dare_avere,
 @}}
 [FDITEM23_]
 m_strName=PAR-DARE-AVERE-88
@@ -306,7 +304,7 @@ m_nSync=-1
 m_nSign=4
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM26_
-$GEN type=num,dec=2,size=21            
+$GEN type=num,dec=2,size=21
 
 @}}
 [FDITEM27_]
@@ -329,7 +327,8 @@ m_nSync=-1
 m_nSign=4
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM28_
-$GEN type=num,dec=3,size=24        
+$GEN type=num,dec=3,size=24
+
 @}}
 [FDITEM29_]
 m_strName=PAR-CODICE-PNR
@@ -339,6 +338,7 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM29_
+
 
 @}}
 [FDITEM30_]
@@ -359,7 +359,7 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM31_
-$GEN type=codenum,dec=0,size=11,entity=pnt        
+$GEN type=codenum,dec=0,size=11,entity=pnt
 @}}
 [FDITEM32_]
 m_strName=par-codice-pnr-riga
@@ -369,7 +369,7 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM32_
-$GEN type=num,dec=0,size=7            
+$GEN type=num,dec=0,size=7
 @}}
 [FDITEM33_]
 m_strName=PAR-CODICE-PAS
@@ -380,46 +380,76 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM33_
 
+
 @}}
 [FDITEM34_]
-m_strName=PAR-NUM-DOCUMENTO
-m_strRawPic=X(06)
-m_strPic=X(06)
+m_strName=filler
 m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=par-codice-pas
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM34_
 
 @}}
 [FDITEM35_]
-m_strName=PAR-CODICE-IVS
-m_strRawPic=9(13)
-m_strPic=9(13)
-m_nItemLevel=10
+m_strName=par-codice-pas-progressivo
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM35_
 
 @}}
 [FDITEM36_]
+m_strName=par-codice-pas-riga
+m_strRawPic=9(05)
+m_strPic=9(05)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM36_
+$GEN type=num,dec=0,size=7
+@}}
+[FDITEM37_]
+m_strName=PAR-NUM-DOCUMENTO
+m_strRawPic=X(06)
+m_strPic=X(06)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM37_
+
+@}}
+[FDITEM38_]
+m_strName=PAR-CODICE-IVS
+m_strRawPic=9(13)
+m_strPic=9(13)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM38_
+
+@}}
+[FDITEM39_]
 m_strName=PAR-FILLER
 m_strRawPic=X(31)
 m_strPic=X(31)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM36_
+{{@DataItem_m_strDescriptionFDITEM39_
         10  PAR-FILLER              PIC  X(44).                                                   |DS 23/01/2009 11.34
-
 @}}
-[FDITEM37_]
+[FDITEM40_]
 m_strName=PAR-FILLER-RIS
 m_strRawPic=X(40)
 m_strPic=X(40)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM37_
+{{@DataItem_m_strDescriptionFDITEM40_
 
 @}}
 [CStoAcucobolSL_]
@@ -430,7 +460,7 @@ m_nDevice=4
 m_nFormat=3
 m_nAccessMode=3
 m_strFileStatus=STATUS-PAR
-m_nCompression=95
+m_nCompression=70
 {{@SL_m_strDescription
 
 @}}

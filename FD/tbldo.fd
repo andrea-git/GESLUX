@@ -11,8 +11,11 @@
       *   e INTRA 2 BIS ai soli fini statistici ( INTRA 1 BIS colonne 1 e da 5 a 13 -
       *   INTRA 2 BIS colonne 1 e da 6 a 15).
       *---------------------------------------------------------------------------------------------------------------------------
-      * tk. 8602 - FE xml: CONAI - dicitura anche su xml documenti (fatture/note di credito)               | EXT-POZEDO 10/07/2019    
-      *            aggiunto campo tbldo-causaleFeXml 
+      * tk. 8602 - FE xml: CONAI - dicitura anche su xml documenti (fatture/note di credito)               | EXT-POZEDO 10/07/2019
+      *            aggiunto campo tbldo-causaleFeXml
+      *---------------------------------------------------------------------------------------------------------------------------
+      * tk.8987 - Digitalizzazione del Documento di Accompagnamento Semplificato (DAS Digitale)            | biachr 13/02/2020
+      *           .aggiunti flag 'export ead' e flag 'grado obbligatorio'
       *---------------------------------------------------------------------------------------------------------------------------
       *
       * tplvar zmm_title=Tabella documenti di vendita/acquisto
@@ -25,6 +28,7 @@
       *   02.tbldo-descrizione1
       *   03.tbldo-descrizione2
       *
+      *3
        FD  TBLDO.
        01 record-tbldo.
            05 tbldo-codice.
@@ -32,16 +36,13 @@
       *$GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=20,zmm_align=L,zmm_pos=1,zmm_entity=tbldo
       *
                10 tbldo-codice2    PIC  x(20).
-      *
-      *
            05 resto-record-tbldo.
       *$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=2
-      *
                10 tbldo-descrizione1           PIC  x(30).
       *$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=3
+      *
                10 tbldo-descrizione2           PIC  x(30).
       *$GEN type=combobox,comboclass=tbldo_tipo_documento
-      *
                10 tbldo-tipo-documento         PIC  x(01).
                    88 tbldo-tipo-documento-88 VALUE IS "B" "I" "A" "S" 
            "E" "F" "G" "D". 
@@ -59,15 +60,16 @@
       *$GEN type=code,entity=tblmo
                10 tbldo-codice-mo  PIC  x(03).
       *$GEN type=code,entity=tblma
+      *
                10 tbldo-codice-ma  PIC  x(03).
                10 tbldo-numerazione-bolle      PIC  x(02).
       *$GEN type=combobox,comboclass=generic_tipo_cf,comboentity=tbldo-tipo-cf-e3
+      *
                10 tbldo-tipo-cf    PIC  x(01).
                    88 tbldo-tipo-cf-88 VALUE IS "C" "F". 
                    88 tbldo-tipo-cf-88-c VALUE IS "C". 
                    88 tbldo-tipo-cf-88-f VALUE IS "F". 
       *$GEN type=combobox,comboclass=tblmo_prezzo
-      *
                10 tbldo-prezzo     PIC  9(01).
                    88 tbldo-prezzo-88 VALUE IS 0 THRU 7. 
                    88 tbldo-prezzo-88-0 VALUE IS 0. 
@@ -104,8 +106,6 @@
                                   OCCURS 15 TIMES.
                        20 tbldo-tab-05-02  PIC  9(02)
                                   OCCURS 15 TIMES.
-      *
-      *
                10 filler REDEFINES tbldo-tabella.
                    15 tbldo-tabella-01-x.
                        20 tbldo-tab-01-01-x            PIC  x(02)
@@ -132,30 +132,24 @@
                                   OCCURS 15 TIMES.
                        20 tbldo-tab-05-02-x            PIC  x(02)
                                   OCCURS 15 TIMES.
-      *
-      *
                10 filler REDEFINES tbldo-tabella.
                    15 tbldo-tabella-occ            PIC  x(60)
                               OCCURS 5 TIMES.
       *
       *$GEN type=code,entity=var(tbldo-tipo-cf-e3)
-      *
                10 tbldo-codice-cf  PIC  x(08).
       *$GEN type=combobox,comboclass=tbldo_situazione
-      *
                10 tbldo-situazione PIC  9(01).
                    88 tbldo-situazione-88 VALUE IS 0 1 2. 
                    88 tbldo-situazione-88-n VALUE IS 0. 
                    88 tbldo-situazione-88-i VALUE IS 1. 
                    88 tbldo-situazione-88-s VALUE IS 2. 
       *$GEN type=radiobutton,value_1=" ",image_1=1,value_2="A",image_2=2
-      *
                10 tbldo-modulo     PIC  x(01).
                    88 tbldo-modulo-88 VALUE IS " " "A". 
                    88 tbldo-modulo-88-0 VALUE IS " ". 
                    88 tbldo-modulo-88-a VALUE IS "A". 
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
-      *
                10 tbldo-intra      PIC  x(01).
                    88 tbldo-intra-88 VALUE IS " " "S". 
                    88 tbldo-intra-88-0 VALUE IS " ". 
@@ -178,6 +172,7 @@
             "D" "E". 
       *05/2010
       *$GEN type=combobox,comboclass=tbldo_regime
+      *
                10 tbldo-regime     PIC  9(01).
                    88 tbldo-regime-88 VALUE IS 0 THRU 3. 
                    88 tbldo-regime-88-0 VALUE IS 0. 
@@ -190,7 +185,6 @@
                    88 tbldo-provvigioni-88-o VALUE IS " ". 
                    88 tbldo-provvigioni-88-s VALUE IS "S". 
       *$GEN type=combobox,comboclass=tbldo_editoria
-      *
                10 tbldo-editoria   PIC  9(01).
                    88 tbldo-editoria-88 VALUE IS 0 1 2 3 4. 
                    88 tbldo-editoria-88-0 VALUE IS 0. 
@@ -200,16 +194,15 @@
                    88 tbldo-editoria-88-4 VALUE IS 4. 
                10 tbldo-tipo-doc   PIC  x(08).
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
+      *
                10 tbldo-imballi    PIC  x(01).
                    88 tbldo-imballi-88 VALUE IS " " "S". 
                    88 tbldo-imballi-88-o VALUE IS " ". 
                    88 tbldo-imballi-88-s VALUE IS "S". 
                10 tbldo-modulo-65.
       *$GEN type=code,entity=tblmo
-      *
                    15 tbldo-codice-mo-r            PIC  x(03).
       *$GEN type=code,entity=tblmo
-      *
                    15 tbldo-codice-mo-s            PIC  x(03).
       *$GEN type=code,entity=ama
       *
@@ -223,6 +216,7 @@
                    88 tbldo-cliente-ass-si VALUE IS "S"    WHEN SET TO 
            FALSE  space. 
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
+      *
                10 tbldo-stampa-spese           PIC  x(01).
                    88 tbldo-stampa-spese-88 VALUE IS " " "S". 
       *$GEN type=checkbox,truevalue=" ",falsevalue="S"
@@ -231,18 +225,17 @@
                    88 tbldo-provvigionic-88-o VALUE IS " ". 
                    88 tbldo-provvigionic-88-s VALUE IS "S". 
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
-      *
                10 tbldo-obbligo-ins-cmk        PIC  x(01).
                    88 tbldo-obbligo-ins-cmk-88 VALUE IS " " "S". 
                    88 tbldo-obbligo-ins-cmk-si VALUE IS "S"    WHEN SET 
            TO FALSE  space. 
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
-      *
                10 tbldo-abil-movimenti-lotti   PIC  x(01).
                    88 tbldo-abil-movimenti-lotti-88 VALUE IS " " "S". 
                    88 tbldo-abil-movimenti-lotti-si VALUE IS "S"    
            WHEN SET TO FALSE  space. 
       *$GEN type=combobox,comboclass=tbldo_tipo_movimento
+      *
                10 tbldo-tipo-movimento         PIC  x(02).
                    88 tbldo-tipo-movimento-88 VALUE IS "  " "DC" "DI" "D
       -    "B" "EE" "FU" "FB" "NV" "RB" "RC" "RI" "RN" "RS" "SM" "VE" "V
@@ -250,6 +243,16 @@
       *$GEN type=combobox,comboclass=tbldo_tipo_doc1
                10 tbldo-tipo-doc1  PIC  x(01).
                    88 tbldo-tipo-doc1-88 VALUE IS " " "D" "F" "A" "Z". 
+      *
+      *
                10 tbldo-causaleFeXml           PIC  x(200).
-               10 tbldo-filler     PIC  x(700).
+      *
+      *
+               10 tbldo-export-ead PIC  9(01).
+               10 tbldo-grado-obbl PIC  9(01).
+      *
+      *
+               10 tbldo-filler     PIC  x(698).
+      *ldo-filler                       pic  x(700).                                         | EXT-POZEDO 10/07/2019 | biachr 13/02/2020
+      *
                10 tbldo-filler-ris PIC  x(40).

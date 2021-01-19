@@ -7,8 +7,18 @@
       * Aggiunti check-box:
       * - tblna-payline       (indica se la nazione è interessata all'esportazione)
       * - tblna-payline-piva  (indica se deve essere indicata la partita i.v.a.)
-      * Incrementati i campi da portare sulla query, compresi i due nuovi check-box  
-      *---------------------------------------------------------------------------
+      * Incrementati i campi da portare sulla query, compresi i due nuovi check-box
+      *------------------------------------------------------------------------------------------------------------------------
+      * tk.7201 - Gestire la fattura B2B con formato XML 1.2                                               | maxime 20/01/2017
+      *           Codice ISO3166-1
+      *------------------------------------------------------------------------------------------------------------------------
+      * tk.7471 - CADI/CADIW: Comunicazione dati fatture emesse/ricevute                                   | maxime 11/07/2017
+      *           tblna-isCEE
+      *------------------------------------------------------------------------------------------------------------------------
+      * tk.8987 - Digitalizzazione del Documento di Accompagnamento Semplificato (DAS Digitale)            | biachr 13/02/2020
+      *           .aggiunto campo per esportazione prioritaria codice nazione per Acceasy
+      *------------------------------------------------------------------------------------------------------------------------
+      *
       *
       *
       *
@@ -38,6 +48,7 @@
            05 TBLNA-CODICE.
                10 TBLNA-CODICE1    PIC  X(02).
       *$GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=20,zmm_align=L,zmm_pos=1,zmm_entity=tblna
+      *
                10 TBLNA-CODICE2    PIC  X(20).
            05 RESTO-RECORD-TBLNA.
       *$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=2
@@ -46,32 +57,41 @@
                10 TBLNA-DESCRIZIONE2           PIC  X(30).
                10 TBLNA-CODICE-ISO-OLD         PIC  X(02).
       *$GEN type=checkbox,truevalue="A",falsevalue=" "
+      *
                10 TBLNA-DECIMAL-POINT          PIC  X(01).
                    88 TBLNA-DECIMAL-POINT-88 VALUE IS "A" " ". 
-      *$GEN zmm=on,zmm_title=Codice iso,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=4            
+      *$GEN zmm=on,zmm_title=Codice iso,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=4
       *
                10 TBLNA-CODICE-ISO PIC  X(04).
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
-      *
                10 TBLNA-EURO       PIC  X(01).
                    88 TBLNA-EURO-88 VALUE IS "S" " ". 
-      *$GEN zmm=on,zmm_title=Codice stato,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=5            
+      *$GEN zmm=on,zmm_title=Codice stato,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=5
       *
                10 TBLNA-COD-STATO-ESTERO       PIC  X(03).
-      *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Black list,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=6        
-      *
+      *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Black list,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=6
                10 tblna-hasBlackList           PIC  x.
                    88 tblna-hasBlackList-on VALUE IS "S". 
                    88 tblna-hasBlackList-off VALUE IS " ". 
                    88 tblna-hasBlackList-allowed VALUE IS "S" " ". 
+      *
       *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Payline,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=7
+      *
                10 tblna-payline    PIC  x(01).
                    88 tblna-payline-si VALUE IS "S". 
-      *$GEN  type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Partita iva,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=8
+      *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Partita iva,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=8
                10 tblna-payline-piva           PIC  x(01).
                    88 tblna-payline-piva-si VALUE IS "S". 
-               10 tblna-filler     PIC  x(1244).
-      ***        10  TBLNA-FILLER            PIC  X(1247).        |DS 01/04/2005 9.52                      | scamar 09/07/2010 09:57:01
-      *        10  TBLNA-FILLER            PIC  X(1250).                           |DS 01/04/2005 9.52
+      *$GEN type=code,entity=iso3166
+      *
+               10 tblna-iso3166    PIC  x(03).
+               10 tblna-isCEE      PIC  9(01).
+      *
+      *
+               10 tblna-codice-acceasy         PIC  X(02).
+      *
+      *
+               10 tblna-filler     PIC  x(1238).
+      *lna-filler           pic  x(1240).                                                    | biachr 13/02/2020
       *
                10 TBLNA-FILLER-RIS PIC  X(40).

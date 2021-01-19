@@ -2,9 +2,12 @@
       * testata partitari
       *----------------------------------------------------------------
       * tk 3645 - Realizzazione property sheet prima nota                                                  | scamar 15/02/2011 09:50:25
-      *           . modificati gli importi definiti "type=amount" con "type=num,dec=2,size=21"    
-      *             perchè venivano sempre mostrati tre decimali anche se l'importo ne ha due   
-      *----------------------------------------------------------------
+      *           . modificati gli importi definiti "type=amount" con "type=num,dec=2,size=21"
+      *             perchè venivano sempre mostrati tre decimali anche se l'importo ne ha due
+      *-------------------------------------------------------------------------------
+      * tk.9015  Nuova UI per partitari e scadenziari (gesprs08)                     |scamar 09/01/2020
+      *
+      *-------------------------------------------------------------------------------
       *
       * tplvar zmm_title=Partitario
       * tplvar zmm_ver=09.01.00
@@ -35,29 +38,27 @@
       *   21.pat-dare-avere
       *
       *
-      *c
-       FD  PAT
-           RECORD IS VARYING IN SIZE TO 256 CHARACTERS.
+      ***FD  PAT   RECORD 256.                                                                             | scamar 09/01/2020
       *
       *
-      *
-       01 RECORD-PAT.
+      ***01  RECORD-PAT.                                                                                   | scamar 09/01/2020
+       FD  PAT.
+       01 record-pat.
            05 PAT-CODICE.
       *$GEN type=num,dec=0,size=11,zmm=on,zmm_title=Progressivo,zmm_datatype=n,zmm_key=1,zmm_size=13,zmm_align=R,zmm_pos=1,zmm_entity=pat
-      *
                10 PAT-PROGRESSIVO  PIC  9(08).
-      *
       *
       *
            05 RESTO-RECORD-PAT.
                10 PAT-CODICE-CONTO.
+      *$GEN type=combobox,comboclass=generic_tipo_cfm,comboentity=pat-tipo-cfm-e3
+      *
                    15 PAT-TIPO-CFM     PIC  X(01).
                        88 PAT-TIPO-CFM-88 VALUE IS "C" "F" "M". 
                        88 PAT-TIPO-CFM-CLI VALUE IS "C". 
                        88 PAT-TIPO-CFM-FRN VALUE IS "F". 
                        88 PAT-TIPO-CFM-MAS VALUE IS "M". 
-      *$GEN type=code,entity=var(pat-codice-cfm-entity of dab-pat)
-      *
+      *$GEN type=code,entity=var(pat-tipo-cfm-e3 of dab-pat)
                    15 PAT-CODICE-CFM   PIC  X(08).
                10 PAT-CODICE-CONTO-RED REDEFINES PAT-CODICE-CONTO.
       *$GEN type=codecfm,zmm=on,zmm_title=Conto,zmm_datatype=m,zmm_key=2,zmm_size=11,zmm_align=L,zmm_pos=2,zmm_entity=codecfm
@@ -66,7 +67,6 @@
       *
       *
       * copy "groupdate.xfc". | DBMaker
-      *
                10 PAT-DATA-RIFERIMENTO.
       *(( XFD NAME = PAT-RIFERIMENTO-AA ))
                    15 AA   PIC  9(04).
@@ -76,7 +76,6 @@
                    15 GG   PIC  9(02).
                10 FILLER REDEFINES PAT-DATA-RIFERIMENTO.
       *$GEN type=date,zmm=on,zmm_title=Data riferimento,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=4
-      *
                    15 PAT-DATA-RIFERIMENTO-NUM     PIC  9(08).
       *
       *
@@ -89,21 +88,21 @@
                           SIGN IS TRAILING SEPARATE CHARACTER.
       *
       *$GEN type=num,dec=2,size=21,zmm=on,zmm_title=Avere,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=7
-      *
                10 PAT-IMPORTO-AVERE            PIC  S9(13)V9(02)
                           SIGN IS TRAILING SEPARATE CHARACTER.
       *
       *$GEN type=num,dec=2,size=21,zmm=on,zmm_title=Saldo,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=8
+      *
                10 PAT-IMPORTO-SALDO            PIC  S9(13)V9(02)
                           SIGN IS TRAILING SEPARATE CHARACTER.
       *
       *$GEN type=code,entity=tblag,zmm=on,zmm_title=Agente,zmm_datatype=x,zmm_size=3,zmm_align=L,zmm_pos=9,zmm_entity=tblag
+      *
                10 PAT-CODICE-AG    PIC  X(03).
       *$GEN type=code,entity=tblpa,zmm=on,zmm_title=Pagamento,zmm_datatype=x,zmm_size=3,zmm_align=L,zmm_pos=11,zmm_entity=tblpa
                10 PAT-CODICE-PA    PIC  X(03).
       *
       * copy "groupdate.xfc". | DBMaker
-      *
                10 PAT-DATA-CONTEGGIO.
       *(( XFD NAME = PAT-CONTEGGIO-AA ))
                    15 AA   PIC  9(04).
@@ -117,13 +116,13 @@
                    15 PAT-DATA-CONTEGGIO-NUM       PIC  9(08).
       *
       *
-      *
+      *$GEN type=num,dec=0,size=7
                10 PAT-ULTIMA-RIGA-PAR          PIC  9(05).
       *(( XFD NAME = ULTIMA-RIGA-PAS ))
+      *$GEN type=num,dec=0,size=7
                10 PAT-ULTIMA-RIGA-PAS          PIC  9(05).
       *
       * copy "groupdate.xfc". | DBMaker
-      *
                10 PAT-DATA-REGISTRAZIONE.
       *(( XFD NAME = PAT-DATA-REG-AA ))
                    15 AA   PIC  9(04).
@@ -141,7 +140,6 @@
                10 PAT-NUMERO-PROTOCOLLO        PIC  9(06).
       *
       * copy "groupdate.xfc". | DBMaker
-      *
                10 PAT-DATA-DOCUMENTO.
       *(( XFD NAME = PAT-DOCUMENTO-AA ))
                    15 AA   PIC  9(04).
@@ -158,25 +156,35 @@
       *$GEN type=num,dec=0,size=08,zmm=on,zmm_title=Numero documento,zmm_datatype=n,zmm_size=13,zmm_align=R,zmm_pos=17
                10 PAT-NUMERO-DOCUMENTO         PIC  9(06).
       *
-      *$GEN zmm=on,zmm_title=IVA sosp.,zmm_datatype=x,zmm_size=1,zmm_align=L,zmm_pos=18
+      *$GEN type=checkbox,truevalue="S",falsevalue=" ","zmm=on,zmm_title=IVA sosp.,zmm_datatype=x,zmm_size=1,zmm_align=L,zmm_pos=18
                10 PAT-IVA-SOSPENSIONE          PIC  X(01).
                    88 PAT-IVA-SOSPENSIONE-88 VALUE IS "S" " ". 
+                   88 pat-iva-sospensione-ok VALUE IS "S". 
+      *
       *
       *$GEN type=num,dec=2,size=21,zmm=on,zmm_title=Importo documento,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=19
                10 PAT-IMPORTO-DOCUMENTO        PIC  S9(13)V9(02)
                           SIGN IS TRAILING SEPARATE CHARACTER.
       *
       *$GEN zmm=on,zmm_title=Tipo documento,zmm_datatype=x,zmm_size=6,zmm_align=L,zmm_pos=20
-      *
                10 PAT-NUM-DOCUMENTO            PIC  X(06).
       *
       *$GEN zmm=on,zmm_title=D/A,zmm_datatype=x,zmm_size=1,zmm_align=L,zmm_pos=21
+      *
                10 PAT-DARE-AVERE   PIC  X(01).
                    88 PAT-DARE-AVERE-D VALUE IS "D". 
                    88 PAT-DARE-AVERE-A VALUE IS "A". 
+      *$GEN type=radiobutton,value_1=" ",image_1=1,value_2="S",image_2=2,value_3="N",image_3=3
+      *
                10 PAT-ESCLUSO-50   PIC  X(01).
                    88 PAT-ESCLUSO-50-88 VALUE IS "S" "N" " ". 
+                   88 pat-escluso-50-88-addebito VALUE IS "S". 
+                   88 pat-escluso-50-88-nonsoggetto VALUE IS "N". 
+                   88 pat-escluso-50-88-storno VALUE IS " ". 
+      *$GEN type=radiobutton,value_1=" ",image_1=1,value_2="S",image_2=2
                10 PAT-PERCENTUALE-50           PIC  X(01).
                    88 PAT-PERCENTUALE-50-88 VALUE IS "S" " ". 
+                   88 pat-percentuale-50-88-recupero2 VALUE IS "S". 
+                   88 pat-percentuale-50-88-recupero1 VALUE IS " ". 
                10 PAT-FILLER       PIC  X(53).
                10 PAT-FILLER-RIS   PIC  X(40).
