@@ -1215,7 +1215,8 @@
                        end-if
                        compute disponibilita =
                                QtaImballiOrdine * imballi
-                       if disponibilita > 0
+                       if disponibilita > 0        
+                          compute qta = qta - disponibilita
                           if como-articolo not = init-cod-articolo
                             |Se la qta da assegnare non è > della 
                             |qta minima dell'imballo non sostituisco
