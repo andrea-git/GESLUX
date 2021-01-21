@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          gagenti.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        venerdì 12 febbraio 2016 14:24:43.
+       AUTHOR.              Utente.
+       DATE-WRITTEN.        giovedì 21 gennaio 2021 23:43:47.
        REMARKS.
       *{TOTEM}END
 
@@ -33,6 +33,7 @@
            COPY "lisagente.sl".
            COPY "tmarche.sl".
            COPY "tparamge.sl".
+           COPY "clienti.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -43,6 +44,7 @@
            COPY "lisagente.fd".
            COPY "tmarche.fd".
            COPY "tparamge.fd".
+           COPY "clienti.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -52,7 +54,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -211,6 +213,13 @@
        77 STATUS-tparamge  PIC  X(2).
            88 Valid-STATUS-tparamge VALUE IS "00" THRU "09". 
        77 age-path-pod     PIC  X(100).
+       77 Screen1-Pg-3-Visible         PIC  9
+                  VALUE IS 0.
+       01 gd-cli-rec.
+           05 gd-cli-codice    PIC  z(5).
+           05 gd-cli-ragsoc    PIC  x(100).
+       77 STATUS-clienti   PIC  X(2).
+           88 Valid-STATUS-clienti VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -296,6 +305,7 @@
        77 TMP-DataSet1-lisagente-BUF     PIC X(245).
        77 TMP-DataSet1-tmarche-BUF     PIC X(217).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
+       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -334,8 +344,16 @@
        77 DataSet1-tparamge-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tparamge-KEY-Asc  VALUE "A".
           88 DataSet1-tparamge-KEY-Desc VALUE "D".
+       77 DataSet1-clienti-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-clienti-LOCK  VALUE "Y".
+       77 DataSet1-clienti-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-clienti-KEY-Asc  VALUE "A".
+          88 DataSet1-clienti-KEY-Desc VALUE "D".
 
        77 lisagente-k-codice-SPLITBUF  PIC X(5).
+       77 clienti-cli-K1-SPLITBUF  PIC X(47).
+       77 clienti-cli-K3-SPLITBUF  PIC X(12).
+       77 clienti-cli-K4-SPLITBUF  PIC X(8).
 
       *{TOTEM}END
 
@@ -1669,6 +1687,45 @@
            TITLE lab-listino-buf,
            .
 
+      * PAGE
+       05
+           Screen1-Pg-3, 
+           VISIBLE Screen1-Pg-3-Visible,
+           COL 3, 
+           LINE 7,
+           .
+
+      * GRID
+       10
+           gd-cli, 
+           Grid, 
+           COL 4,43, 
+           LINE 7,61,
+           LINES 29,38 ,
+           SIZE 79,86 ,
+           BOXED,
+           DATA-COLUMNS (1, 6),
+           ALIGNMENT ("R", "U"),
+           SEPARATION (5, 5),
+           DATA-TYPES ("z(5)", "x(100)"),
+           NUM-COL-HEADINGS 1,
+           COLUMN-HEADINGS,
+           CURSOR-FRAME-WIDTH 0,
+           DIVIDER-COLOR 1,
+           FONT IS Small-Font,
+           HEADING-COLOR 257,
+           HEADING-DIVIDER-COLOR 1,
+           HSCROLL,
+           ID IS 36,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TILED-HEADINGS,
+           VIRTUAL-WIDTH 90,
+           VPADDING 50,
+           VSCROLL,
+           EVENT PROCEDURE Screen1-Gd-1-Event-Proc,
+           .
+
       * DB_LABEL
        05
            lab-des-cli, 
@@ -2240,6 +2297,7 @@
            PERFORM OPEN-lisagente
            PERFORM OPEN-tmarche
            PERFORM OPEN-tparamge
+           PERFORM OPEN-clienti
       *    After Open
            .
 
@@ -2322,6 +2380,18 @@
       * <TOTEM:END>
            .
 
+       OPEN-clienti.
+      * <TOTEM:EPT. INIT:gagenti, FD:clienti, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT clienti
+           IF NOT Valid-STATUS-clienti
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:gagenti, FD:clienti, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-agenti
@@ -2330,6 +2400,7 @@
            PERFORM CLOSE-lisagente
            PERFORM CLOSE-tmarche
            PERFORM CLOSE-tparamge
+           PERFORM CLOSE-clienti
       *    After Close
            .
 
@@ -2367,6 +2438,12 @@
       * <TOTEM:EPT. INIT:gagenti, FD:tparamge, BeforeClose>
       * <TOTEM:END>
            CLOSE tparamge
+           .
+
+       CLOSE-clienti.
+      * <TOTEM:EPT. INIT:gagenti, FD:clienti, BeforeClose>
+      * <TOTEM:END>
+           CLOSE clienti
            .
 
        DataSet1-agenti-INITSTART.
@@ -3437,6 +3514,193 @@
       * <TOTEM:END>
            .
 
+       clienti-cli-K1-MERGE-SPLITBUF.
+           INITIALIZE clienti-cli-K1-SPLITBUF
+           MOVE cli-tipo-CF OF clienti(1:1) TO 
+           clienti-cli-K1-SPLITBUF(1:1)
+           MOVE cli-ragsoc-1 OF clienti(1:40) TO 
+           clienti-cli-K1-SPLITBUF(2:40)
+           MOVE cli-codice OF clienti(1:5) TO 
+           clienti-cli-K1-SPLITBUF(42:5)
+           .
+
+       clienti-cli-K3-MERGE-SPLITBUF.
+           INITIALIZE clienti-cli-K3-SPLITBUF
+           MOVE cli-gdo OF clienti(1:5) TO clienti-cli-K3-SPLITBUF(1:5)
+           MOVE cli-chiave OF clienti(1:6) TO 
+           clienti-cli-K3-SPLITBUF(6:6)
+           .
+
+       clienti-cli-K4-MERGE-SPLITBUF.
+           INITIALIZE clienti-cli-K4-SPLITBUF
+           MOVE cli-utf OF clienti(1:1) TO clienti-cli-K4-SPLITBUF(1:1)
+           MOVE cli-chiave OF clienti(1:6) TO 
+           clienti-cli-K4-SPLITBUF(2:6)
+           .
+
+       DataSet1-clienti-INITSTART.
+           IF DataSet1-clienti-KEY-Asc
+              MOVE Low-Value TO cli-chiave OF clienti
+           ELSE
+              MOVE High-Value TO cli-chiave OF clienti
+           END-IF
+           .
+
+       DataSet1-clienti-INITEND.
+           IF DataSet1-clienti-KEY-Asc
+              MOVE High-Value TO cli-chiave OF clienti
+           ELSE
+              MOVE Low-Value TO cli-chiave OF clienti
+           END-IF
+           .
+
+      * clienti
+       DataSet1-clienti-START.
+           IF DataSet1-clienti-KEY-Asc
+              START clienti KEY >= cli-chiave OF clienti
+           ELSE
+              START clienti KEY <= cli-chiave OF clienti
+           END-IF
+           .
+
+       DataSet1-clienti-START-NOTGREATER.
+           IF DataSet1-clienti-KEY-Asc
+              START clienti KEY <= cli-chiave OF clienti
+           ELSE
+              START clienti KEY >= cli-chiave OF clienti
+           END-IF
+           .
+
+       DataSet1-clienti-START-GREATER.
+           IF DataSet1-clienti-KEY-Asc
+              START clienti KEY > cli-chiave OF clienti
+           ELSE
+              START clienti KEY < cli-chiave OF clienti
+           END-IF
+           .
+
+       DataSet1-clienti-START-LESS.
+           IF DataSet1-clienti-KEY-Asc
+              START clienti KEY < cli-chiave OF clienti
+           ELSE
+              START clienti KEY > cli-chiave OF clienti
+           END-IF
+           .
+
+       DataSet1-clienti-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-clienti-LOCK
+              READ clienti WITH LOCK 
+              KEY cli-chiave OF clienti
+           ELSE
+              READ clienti WITH NO LOCK 
+              KEY cli-chiave OF clienti
+           END-IF
+           PERFORM clienti-cli-K1-MERGE-SPLITBUF
+           PERFORM clienti-cli-K3-MERGE-SPLITBUF
+           PERFORM clienti-cli-K4-MERGE-SPLITBUF
+           MOVE STATUS-clienti TO TOTEM-ERR-STAT 
+           MOVE "clienti" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-clienti-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-clienti-KEY-Asc
+              IF DataSet1-clienti-LOCK
+                 READ clienti NEXT WITH LOCK
+              ELSE
+                 READ clienti NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-clienti-LOCK
+                 READ clienti PREVIOUS WITH LOCK
+              ELSE
+                 READ clienti PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM clienti-cli-K1-MERGE-SPLITBUF
+           PERFORM clienti-cli-K3-MERGE-SPLITBUF
+           PERFORM clienti-cli-K4-MERGE-SPLITBUF
+           MOVE STATUS-clienti TO TOTEM-ERR-STAT
+           MOVE "clienti" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-clienti-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-clienti-KEY-Asc
+              IF DataSet1-clienti-LOCK
+                 READ clienti PREVIOUS WITH LOCK
+              ELSE
+                 READ clienti PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-clienti-LOCK
+                 READ clienti NEXT WITH LOCK
+              ELSE
+                 READ clienti NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM clienti-cli-K1-MERGE-SPLITBUF
+           PERFORM clienti-cli-K3-MERGE-SPLITBUF
+           PERFORM clienti-cli-K4-MERGE-SPLITBUF
+           MOVE STATUS-clienti TO TOTEM-ERR-STAT
+           MOVE "clienti" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-clienti-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-clienti TO TOTEM-ERR-STAT
+           MOVE "clienti" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-clienti-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-clienti TO TOTEM-ERR-STAT
+           MOVE "clienti" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-clienti-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-clienti TO TOTEM-ERR-STAT
+           MOVE "clienti" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE age-rec OF agenti
            INITIALIZE naz-rec OF tnazioni
@@ -3444,6 +3708,7 @@
            INITIALIZE lis-rec OF lisagente
            INITIALIZE mar-rec OF tmarche
            INITIALIZE tge-rec OF tparamge
+           INITIALIZE cli-rec OF clienti
            .
 
 
@@ -3458,6 +3723,16 @@
       * CELLS' SETTING
               MODIFY gd-marche, X = 3, Y = 1,
                 CELL-DATA = "Percentuale",
+           .
+
+      * GRID
+       gd-cli-Content.
+      * CELLS' SETTING
+              MODIFY gd-cli, X = 1, Y = 1,
+                CELL-DATA = "Codice",
+      * CELLS' SETTING
+              MODIFY gd-cli, X = 2, Y = 1,
+                CELL-DATA = "Ragione sociale",
            .
 
       * FD's Initialize Paragraph
@@ -3503,6 +3778,14 @@
       * FD's Initialize Paragraph
        DataSet1-tparamge-INITREC.
            INITIALIZE tge-rec OF tparamge
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-clienti-INITREC.
+           INITIALIZE cli-rec OF clienti
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -3583,6 +3866,7 @@
            DISPLAY Form1 UPON form1-Handle
       * DISPLAY-COLUMNS settings
               MODIFY gd-marche, DISPLAY-COLUMNS (1, 16, 76)
+              MODIFY gd-cli, DISPLAY-COLUMNS (1, 11)
            .
 
        Form1-PROC.
@@ -3752,14 +4036,18 @@
            TAB-TO-ADD = (
                  "Dati &Anagrafici",
                  "Dati &Condizioni",
+                 "Clienti &seguiti",
                         )
            MOVE 0 TO 
                    Screen1-Pg-1-Visible,
                    Screen1-Pg-2-Visible,
+                   Screen1-Pg-3-Visible,
            MOVE 1 TO Screen1-Pg-1-Visible
            PERFORM Screen1-Ta-1-TABCHANGE
       * GRID
            PERFORM gd-marche-Content
+      * GRID
+           PERFORM gd-cli-Content
            .
 
        Form1-DataSet1-CHANGETO-KEY1.
@@ -4925,6 +5213,7 @@
            Perform VALORIZZA-OLD.
 
            perform RIEMPI-GRID.
+           perform RIEMPI-GRID-GD-CLI.
 
            set ControllaCampi to true.
            set NonCambiareTab to false.
@@ -5273,6 +5562,7 @@
            MOVE 0 TO 
                    Screen1-Pg-1-Visible,
                    Screen1-Pg-2-Visible,
+                   Screen1-Pg-3-Visible,
            EVALUATE Screen1-Ta-1-TAB-VALUE
            WHEN 1
                   MOVE 1 TO Screen1-Pg-1-Visible
@@ -5280,6 +5570,9 @@
            WHEN 2
                   MOVE 1 TO Screen1-Pg-2-Visible
                   MODIFY Screen1-Ta-1, VALUE = 2
+           WHEN 3
+                  MOVE 1 TO Screen1-Pg-3-Visible
+                  MODIFY Screen1-Ta-1, VALUE = 3
            END-EVALUATE
            MOVE 666 TO CONTROL-ID
            DISPLAY Form1
@@ -5442,6 +5735,24 @@
            WHEN Msg-Goto-Cell-Mouse ALSO 5030 ALSO
                     form1-Handle 
               PERFORM gd-marche-Ev-Msg-Goto-Cell-Mouse
+           WHEN Msg-Begin-Drag ALSO 36 ALSO
+                    form1-Handle 
+              PERFORM gd-cli-Ev-Msg-Begin-Drag
+           WHEN Msg-Begin-Entry ALSO 36 ALSO
+                    form1-Handle 
+              PERFORM gd-cli-Ev-Msg-Begin-Entry
+           WHEN Msg-End-Drag ALSO 36 ALSO
+                    form1-Handle 
+              PERFORM gd-cli-Ev-Msg-End-Drag
+           WHEN Msg-Goto-Cell ALSO 36 ALSO
+                    form1-Handle 
+              PERFORM gd-cli-Ev-Msg-Goto-Cell
+           WHEN Msg-Goto-Cell-Drag ALSO 36 ALSO
+                    form1-Handle 
+              PERFORM gd-cli-Ev-Msg-Goto-Cell-Drag
+           WHEN Msg-Goto-Cell-Mouse ALSO 36 ALSO
+                    form1-Handle 
+              PERFORM gd-cli-Ev-Msg-Goto-Cell-Mouse
            END-EVALUATE
            .
 
@@ -6827,6 +7138,52 @@
            .
       * <TOTEM:END>
 
+       RESETTA-GRID-GD-CLI.
+      * <TOTEM:PARA. RESETTA-GRID-GD-CLI>
+           modify gd-cli, reset-grid = 1.
+           perform GD-CLI-CONTENT 
+           .
+      * <TOTEM:END>
+
+       RIEMPI-GRID-GD-CLI.
+      * <TOTEM:PARA. RIEMPI-GRID-GD-CLI>
+           move 0 to idx.
+           perform RESETTA-GRID-GD-CLI.   
+           modify gd-cli, mass-update = 1.
+           move low-value to cli-codice.
+           set cli-tipo-C to true.
+           start clienti key >= cli-chiave
+                 invalid continue
+             not invalid
+                 move 1 to riga
+                 perform until 1 = 2
+                    read clienti next at end exit perform end-read
+                    if cli-tipo-F exit perform end-if
+                    if cli-agente  = age-codice or
+                       cli-agente2 = age-codice
+                       move cli-codice   to gd-cli-codice
+                       move cli-ragsoc-1 to gd-cli-ragsoc
+                       add 1 to riga                       
+                       modify gd-cli(riga, 1), cell-data = gd-cli-codice
+                       modify gd-cli(riga, 2), cell-data = gd-cli-ragsoc
+                    end-if
+                 end-perform
+           end-start.
+           modify gd-cli, mass-update = 0 
+           .
+      * <TOTEM:END>
+
+       SPOSTAMENTO-GD-CLI.
+      * <TOTEM:PARA. SPOSTAMENTO-GD-CLI>
+           modify gd-cli,     start-x = 1,
+                                    x = 2,
+                              start-y = event-data-2,
+                                    y = event-data-2,
+                         region-color = 257,
+                         cursor-color = 257 
+           .
+      * <TOTEM:END>
+
       * EVENT PARAGRAPH
        NUOVO-LinkTo.
       * <TOTEM:PARA. NUOVO-LinkTo>
@@ -7465,6 +7822,36 @@
            .
       * <TOTEM:END>
 
+       gd-cli-Ev-Msg-Begin-Entry.
+      * <TOTEM:PARA. gd-cli-Ev-Msg-Begin-Entry>
+           set event-action to event-action-fail 
+           .
+      * <TOTEM:END>
+       gd-cli-Ev-Msg-Begin-Drag.
+      * <TOTEM:PARA. gd-cli-Ev-Msg-Begin-Drag>
+           perform SPOSTAMENTO-GD-CLI 
+           .
+      * <TOTEM:END>
+       gd-cli-Ev-Msg-End-Drag.
+      * <TOTEM:PARA. gd-cli-Ev-Msg-End-Drag>
+           perform SPOSTAMENTO-GD-CLI 
+           .
+      * <TOTEM:END>
+       gd-cli-Ev-Msg-Goto-Cell.
+      * <TOTEM:PARA. gd-cli-Ev-Msg-Goto-Cell>
+           perform SPOSTAMENTO-GD-CLI 
+           .
+      * <TOTEM:END>
+       gd-cli-Ev-Msg-Goto-Cell-Drag.
+      * <TOTEM:PARA. gd-cli-Ev-Msg-Goto-Cell-Drag>
+           perform SPOSTAMENTO-GD-CLI 
+           .
+      * <TOTEM:END>
+       gd-cli-Ev-Msg-Goto-Cell-Mouse.
+      * <TOTEM:PARA. gd-cli-Ev-Msg-Goto-Cell-Mouse>
+           perform SPOSTAMENTO-GD-CLI 
+           .
+      * <TOTEM:END>
 
       *{TOTEM}END
 
