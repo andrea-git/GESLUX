@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          gagenti.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        venerdì 12 febbraio 2016 14:24:43.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        venerdì 22 gennaio 2021 11:36:34.
        REMARKS.
       *{TOTEM}END
 
@@ -33,6 +33,7 @@
            COPY "lisagente.sl".
            COPY "tmarche.sl".
            COPY "tparamge.sl".
+           COPY "ttipocli.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -43,6 +44,7 @@
            COPY "lisagente.fd".
            COPY "tmarche.fd".
            COPY "tparamge.fd".
+           COPY "ttipocli.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -52,7 +54,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -145,65 +147,6 @@
            05 col-perce        PIC  zz9,99
                       BLANK WHEN ZERO.
        77 lab-listino-buf  PIC  X(50).
-       01 OLD-age-rec.
-           05 OLD-age-chiave.
-               10 OLD-age-codice   PIC  9(5).
-           05 OLD-age-dati.
-               10 OLD-age-dati-anagrafici.
-                   15 OLD-age-ragsoc-1 PIC  X(40).
-                   15 OLD-age-ragsoc-2 PIC  X(40).
-                   15 OLD-age-indirizzo            PIC  X(40).
-                   15 OLD-age-cap      PIC  X(5).
-                   15 OLD-age-localita PIC  X(35).
-                   15 OLD-age-provincia            PIC  X(2).
-                   15 OLD-age-nazione  PIC  X(3).
-                   15 OLD-age-codice-fiscale       PIC  X(16).
-                   15 OLD-age-partita-iva          PIC  X(11).
-                   15 OLD-age-telefono-1           PIC  X(15).
-                   15 OLD-age-fax      PIC  X(15).
-                   15 OLD-age-email    PIC  X(45).
-                   15 OLD-age-iscrizione-cciaa     PIC  X(15).
-                   15 OLD-age-numero-enasarco      PIC  X(10).
-                   15 OLD-age-iscrizione-albo      PIC  X(10).
-                   15 OLD-age-mono-plurimandatario PIC  X(1).
-                       88 OLD-age-mono VALUE IS "M". 
-                       88 OLD-age-pluri VALUE IS "P". 
-               10 OLD-age-dati-condizioni.
-                   15 OLD-age-tipo     PIC  x.
-                       88 OLD-age-normale VALUE IS "N". 
-                       88 OLD-age-speciale VALUE IS "S". 
-                   15 OLD-age-marg     PIC  9(3)v99.
-                   15 OLD-age-minimo   PIC  9(9).
-                   15 OLD-age-prezzo   PIC  9.
-                       88 OLD-age-prezzo-normale VALUE IS 0. 
-                       88 OLD-age-prezzo-speciale VALUE IS 1. 
-                   15 OLD-age-listino  PIC  9(4).
-                   15 OLD-age-tab-marche.
-                       20 OLD-age-marche
-                                  OCCURS 10 TIMES.
-                           25 OLD-age-marca    PIC  9(4).
-                           25 OLD-age-perce-marca          PIC  9(3)v99.
-                   15 OLD-age-omaggi   PIC  9(3).
-               10 OLD-age-dati-comuni.
-                   15 OLD-age-data-creazione       PIC  9(8).
-                   15 OLD-age-ora-creazione        PIC  9(8).
-                   15 OLD-age-utente-creazione     PIC  X(10).
-                   15 OLD-age-data-ultima-modifica PIC  9(8).
-                   15 OLD-age-ora-ultima-modifica  PIC  9(8).
-                   15 OLD-age-utente-ultima-modifica           PIC  
-           X(10).
-               10 OLD-age-vuoti.
-                   15 OLD-age-add-pb   PIC  9.
-                       88 OLD-age-no-add-pb VALUE IS 0. 
-                       88 OLD-age-si-add-pb VALUE IS 1. 
-                   15 OLD-age-num-vuoto-1          PIC  9(14).
-                   15 OLD-age-num-vuoto-2          PIC  9(15).
-                   15 OLD-age-num-vuoto-3          PIC  9(15).
-                   15 OLD-age-telefono-2           PIC  X(15).
-                   15 OLD-age-alfa-vuoto-1         PIC  X(5).
-                   15 OLD-age-alfa-vuoto-2         PIC  X(20).
-                   15 OLD-age-alfa-vuoto-3         PIC  X(20).
-                   15 OLD-age-path-pod PIC  X(100).
        77 STATUS-lisagente PIC  X(2).
            88 Valid-STATUS-lisagente VALUE IS "00" THRU "09". 
        77 STATUS-tmarche   PIC  X(2).
@@ -211,6 +154,8 @@
        77 STATUS-tparamge  PIC  X(2).
            88 Valid-STATUS-tparamge VALUE IS "00" THRU "09". 
        77 age-path-pod     PIC  X(100).
+       77 STATUS-ttipocli  PIC  X(2).
+           88 Valid-STATUS-ttipocli VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -252,6 +197,8 @@
       * Data.Entry-Field
               10 ef-email-BUF PIC X(500).
       * Data.Entry-Field
+              10 ef-tipo-cli-BUF PIC X(2).
+      * Data.Entry-Field
               10 ef-iscr-cciaa-BUF PIC X(15).
       * Data.Entry-Field
               10 ef-num-enasarco-BUF PIC X(10).
@@ -263,6 +210,8 @@
               10 LBL-DES-PROV-BUF PIC X(30).
       * Data.Label
               10 LBL-DES-NAZ-BUF PIC X(30).
+      * Data.Label
+              10 lab-cli-tipo-d-BUF PIC X(30).
       * Page
               05 Screen1-Pg-2-BUF.
       * Data.Radio-Button
@@ -296,6 +245,7 @@
        77 TMP-DataSet1-lisagente-BUF     PIC X(245).
        77 TMP-DataSet1-tmarche-BUF     PIC X(217).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
+       77 TMP-DataSet1-ttipocli-BUF     PIC X(889).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -334,9 +284,73 @@
        77 DataSet1-tparamge-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tparamge-KEY-Asc  VALUE "A".
           88 DataSet1-tparamge-KEY-Desc VALUE "D".
+       77 DataSet1-ttipocli-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-ttipocli-LOCK  VALUE "Y".
+       77 DataSet1-ttipocli-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-ttipocli-KEY-Asc  VALUE "A".
+          88 DataSet1-ttipocli-KEY-Desc VALUE "D".
 
        77 lisagente-k-codice-SPLITBUF  PIC X(5).
 
+       01 old-age-rec.
+           05 old-age-chiave.
+               10 old-age-codice       PIC  9(5).
+           05 old-age-dati.
+               10 old-age-dati-anagrafici.
+                   15 old-age-ragsoc-1     PIC  X(40).
+                   15 old-age-ragsoc-2     PIC  X(40).
+                   15 old-age-indirizzo    PIC  X(40).
+                   15 old-age-cap          PIC  X(5).
+                   15 old-age-localita     PIC  X(35).
+                   15 old-age-provincia    PIC  X(2).
+                   15 old-age-nazione      PIC  X(3).
+                   15 old-age-codice-fiscale           PIC  X(16).
+                   15 old-age-partita-iva  PIC  X(11).
+                   15 old-age-telefono-1   PIC  X(15).
+                   15 old-age-fax          PIC  X(15).
+                   15 old-age-email        PIC  X(500).
+                   15 old-age-iscrizione-cciaa         PIC  X(15).
+                   15 old-age-numero-enasarco          PIC  X(10).
+                   15 old-age-iscrizione-albo          PIC  X(10).
+                   15 old-age-mono-plurimandatario     PIC  X(1).
+                       88 old-age-mono VALUE IS "M". 
+                       88 old-age-pluri VALUE IS "P". 
+               10 old-age-dati-condizioni.
+                   15 old-age-tipo         PIC  x.
+                       88 old-age-normale VALUE IS "N". 
+                       88 old-age-speciale VALUE IS "S". 
+                   15 old-age-marg         PIC  9(3)v99.
+                   15 old-age-minimo       PIC  9(9).
+                   15 old-age-prezzo       PIC  9.
+                       88 old-age-prezzo-normale VALUE IS 0. 
+                       88 old-age-prezzo-speciale VALUE IS 1. 
+                   15 old-age-listino      PIC  9(4).
+                   15 old-age-tab-marche.
+                       20 old-age-marche
+                                  OCCURS 10 TIMES.
+                           25 old-age-marca        PIC  9(4).
+                           25 old-age-perce-marca  PIC  9(3)v99.
+                   15 old-age-omaggi       PIC  9(3).
+               10 old-age-dati-comuni.
+                   15 old-age-data-creazione           PIC  9(8).
+                   15 old-age-ora-creazione            PIC  9(8).
+                   15 old-age-utente-creazione         PIC  X(10).
+                   15 old-age-data-ultima-modifica     PIC  9(8).
+                   15 old-age-ora-ultima-modifica      PIC  9(8).
+                   15 old-age-utente-ultima-modifica   PIC  X(10).
+               10 old-age-vuoti.
+                   15 old-age-add-pb       PIC  9.
+                       88 old-age-si-add-pb VALUE IS 1. 
+                       88 old-age-no-add-pb VALUE IS 0. 
+                   15 old-age-num-vuoto-1  PIC  9(14).
+                   15 old-age-num-vuoto-2  PIC  9(15).
+                   15 old-age-num-vuoto-3  PIC  9(15).
+                   15 old-age-telefono-2   PIC  X(15).
+                   15 old-age-cli-tipo     PIC  X(2).
+                   15 old-age-alfa-vuoto-1 PIC  X(3).
+                   15 old-age-alfa-vuoto-2 PIC  X(20).
+                   15 old-age-alfa-vuoto-3 PIC  X(20).
+                   15 FILLER           PIC  X(200).
       *{TOTEM}END
 
       *{TOTEM}ID-LOGICI
@@ -355,22 +369,23 @@
        78  78-ID-ef-telefono-2 VALUE 5012.
        78  78-ID-ef-fax VALUE 5013.
        78  78-ID-ef-email VALUE 5014.
-       78  78-ID-ef-iscr-cciaa VALUE 5015.
-       78  78-ID-ef-num-enasarco VALUE 5016.
-       78  78-ID-ef-num-iscr-albo VALUE 5017.
-       78  78-ID-rb-mono VALUE 5018.
-       78  78-ID-rb-pluri VALUE 5019.
-       78  78-ID-rb-age-normale VALUE 5020.
-       78  78-ID-rb-age-speciale VALUE 5021.
-       78  78-ID-ef-marg VALUE 5022.
-       78  78-ID-ef-minimo VALUE 5023.
-       78  78-ID-rb-pr-normale VALUE 5024.
-       78  78-ID-rb-pr-speciale VALUE 5025.
-       78  78-ID-ef-listino VALUE 5026.
-       78  78-ID-rb-oma VALUE 5027.
-       78  78-ID-rb-pr-normalea VALUE 5028.
-       78  78-ID-rb-pr-specialea VALUE 5029.
-       78  78-ID-gd-marche VALUE 5030.
+       78  78-ID-ef-tipo-cli VALUE 5015.
+       78  78-ID-ef-iscr-cciaa VALUE 5016.
+       78  78-ID-ef-num-enasarco VALUE 5017.
+       78  78-ID-ef-num-iscr-albo VALUE 5018.
+       78  78-ID-rb-mono VALUE 5019.
+       78  78-ID-rb-pluri VALUE 5020.
+       78  78-ID-rb-age-normale VALUE 5021.
+       78  78-ID-rb-age-speciale VALUE 5022.
+       78  78-ID-ef-marg VALUE 5023.
+       78  78-ID-ef-minimo VALUE 5024.
+       78  78-ID-rb-pr-normale VALUE 5025.
+       78  78-ID-rb-pr-speciale VALUE 5026.
+       78  78-ID-ef-listino VALUE 5027.
+       78  78-ID-rb-oma VALUE 5028.
+       78  78-ID-rb-pr-normalea VALUE 5029.
+       78  78-ID-rb-pr-specialea VALUE 5030.
+       78  78-ID-gd-marche VALUE 5031.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -745,7 +760,7 @@
        10
            ef-email, 
            Entry-Field, 
-           COL 16,14, 
+           COL 16,57, 
            LINE 24,38,
            LINES 5,00 ,
            SIZE 67,57 ,
@@ -764,10 +779,30 @@
 
       * ENTRY FIELD
        10
+           ef-tipo-cli, 
+           Entry-Field, 
+           COL 16,57, 
+           LINE 29,84,
+           LINES 1,31 ,
+           SIZE 4,00 ,
+           BOXED,
+           UPPER,
+           COLOR IS 513,
+           ENABLED MOD,
+           FONT IS Small-Font,
+           ID IS 78-ID-ef-tipo-cli,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           MAX-TEXT 2,
+           VALUE ef-tipo-cli-BUF,
+           .
+
+      * ENTRY FIELD
+       10
            ef-iscr-cciaa, 
            Entry-Field, 
            COL 16,57, 
-           LINE 31,00,
+           LINE 31,77,
            LINES 1,31 ,
            SIZE 16,00 ,
            BOXED,
@@ -787,7 +822,7 @@
            ef-num-enasarco, 
            Entry-Field, 
            COL 46,57, 
-           LINE 31,00,
+           LINE 31,77,
            LINES 1,31 ,
            SIZE 11,00 ,
            BOXED,
@@ -808,7 +843,7 @@
            ef-num-iscr-albo, 
            Entry-Field, 
            COL 72,57, 
-           LINE 31,00,
+           LINE 31,77,
            LINES 1,31 ,
            SIZE 11,00 ,
            BOXED,
@@ -829,7 +864,7 @@
            Screen1-Fr-1, 
            Frame, 
            COL 4,57, 
-           LINE 33,00,
+           LINE 33,77,
            LINES 4,00 ,
            SIZE 39,00 ,
            ENGRAVED,
@@ -845,7 +880,7 @@
            rb-mono, 
            Radio-Button, 
            COL 5,57, 
-           LINE 35,00,
+           LINE 35,77,
            LINES 0,92 ,
            SIZE 2,00 ,
            ENABLED MOD,
@@ -864,7 +899,7 @@
            rb-pluri, 
            Radio-Button, 
            COL 23,57, 
-           LINE 35,00,
+           LINE 35,77,
            LINES 0,92 ,
            SIZE 2,00 ,
            ENABLED MOD,
@@ -883,7 +918,7 @@
            Screen1-La-3, 
            Label, 
            COL 8,43, 
-           LINE 34,62,
+           LINE 35,39,
            LINES 0,85 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -899,7 +934,7 @@
            Screen1-La-3a, 
            Label, 
            COL 26,57, 
-           LINE 34,62,
+           LINE 35,39,
            LINES 0,85 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -1107,7 +1142,7 @@
            Screen1-La-25, 
            Label, 
            COL 4,57, 
-           LINE 31,00,
+           LINE 31,77,
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -1123,7 +1158,7 @@
            Screen1-La-26, 
            Label, 
            COL 33,57, 
-           LINE 31,00,
+           LINE 31,77,
            LINES 1,31 ,
            SIZE 13,00 ,
            FONT IS Small-Font,
@@ -1155,7 +1190,7 @@
            Screen1-La-26a, 
            Label, 
            COL 58,57, 
-           LINE 31,00,
+           LINE 31,77,
            LINES 1,31 ,
            SIZE 14,00 ,
            FONT IS Small-Font,
@@ -1197,6 +1232,39 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE LBL-DES-NAZ-BUF,
+           TRANSPARENT,
+           .
+
+      * LABEL
+       10
+           Screen1-La-14a, 
+           Label, 
+           COL 4,57, 
+           LINE 29,92,
+           LINES 1,31 ,
+           SIZE 11,43 ,
+           FONT IS Small-Font,
+           ID IS 45,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Tipologia cliente",
+           .
+
+      * DB_LABEL
+       10
+           lab-cli-tipo-d, 
+           Label, 
+           COL 21,57, 
+           LINE 29,84,
+           LINES 1,31 ,
+           SIZE 50,00 ,
+           COLOR IS 5,
+           FONT IS Small-Font,
+           ID IS 1,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE lab-cli-tipo-d-BUF,
            TRANSPARENT,
            .
 
@@ -2240,6 +2308,7 @@
            PERFORM OPEN-lisagente
            PERFORM OPEN-tmarche
            PERFORM OPEN-tparamge
+           PERFORM OPEN-ttipocli
       *    After Open
            .
 
@@ -2322,6 +2391,18 @@
       * <TOTEM:END>
            .
 
+       OPEN-ttipocli.
+      * <TOTEM:EPT. INIT:gagenti, FD:ttipocli, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT ttipocli
+           IF NOT Valid-STATUS-ttipocli
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:gagenti, FD:ttipocli, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-agenti
@@ -2330,6 +2411,7 @@
            PERFORM CLOSE-lisagente
            PERFORM CLOSE-tmarche
            PERFORM CLOSE-tparamge
+           PERFORM CLOSE-ttipocli
       *    After Close
            .
 
@@ -2367,6 +2449,12 @@
       * <TOTEM:EPT. INIT:gagenti, FD:tparamge, BeforeClose>
       * <TOTEM:END>
            CLOSE tparamge
+           .
+
+       CLOSE-ttipocli.
+      * <TOTEM:EPT. INIT:gagenti, FD:ttipocli, BeforeClose>
+      * <TOTEM:END>
+           CLOSE ttipocli
            .
 
        DataSet1-agenti-INITSTART.
@@ -3437,6 +3525,160 @@
       * <TOTEM:END>
            .
 
+       DataSet1-ttipocli-INITSTART.
+           IF DataSet1-ttipocli-KEY-Asc
+              MOVE Low-Value TO tcl-chiave
+           ELSE
+              MOVE High-Value TO tcl-chiave
+           END-IF
+           .
+
+       DataSet1-ttipocli-INITEND.
+           IF DataSet1-ttipocli-KEY-Asc
+              MOVE High-Value TO tcl-chiave
+           ELSE
+              MOVE Low-Value TO tcl-chiave
+           END-IF
+           .
+
+      * ttipocli
+       DataSet1-ttipocli-START.
+           IF DataSet1-ttipocli-KEY-Asc
+              START ttipocli KEY >= tcl-chiave
+           ELSE
+              START ttipocli KEY <= tcl-chiave
+           END-IF
+           .
+
+       DataSet1-ttipocli-START-NOTGREATER.
+           IF DataSet1-ttipocli-KEY-Asc
+              START ttipocli KEY <= tcl-chiave
+           ELSE
+              START ttipocli KEY >= tcl-chiave
+           END-IF
+           .
+
+       DataSet1-ttipocli-START-GREATER.
+           IF DataSet1-ttipocli-KEY-Asc
+              START ttipocli KEY > tcl-chiave
+           ELSE
+              START ttipocli KEY < tcl-chiave
+           END-IF
+           .
+
+       DataSet1-ttipocli-START-LESS.
+           IF DataSet1-ttipocli-KEY-Asc
+              START ttipocli KEY < tcl-chiave
+           ELSE
+              START ttipocli KEY > tcl-chiave
+           END-IF
+           .
+
+       DataSet1-ttipocli-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:ttipocli, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:ttipocli, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-ttipocli-LOCK
+              READ ttipocli WITH LOCK 
+              KEY tcl-chiave
+           ELSE
+              READ ttipocli WITH NO LOCK 
+              KEY tcl-chiave
+           END-IF
+           MOVE STATUS-ttipocli TO TOTEM-ERR-STAT 
+           MOVE "ttipocli" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:ttipocli, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:ttipocli, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-ttipocli-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:ttipocli, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:ttipocli, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-ttipocli-KEY-Asc
+              IF DataSet1-ttipocli-LOCK
+                 READ ttipocli NEXT WITH LOCK
+              ELSE
+                 READ ttipocli NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-ttipocli-LOCK
+                 READ ttipocli PREVIOUS WITH LOCK
+              ELSE
+                 READ ttipocli PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-ttipocli TO TOTEM-ERR-STAT
+           MOVE "ttipocli" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:ttipocli, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:ttipocli, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-ttipocli-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:ttipocli, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:ttipocli, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-ttipocli-KEY-Asc
+              IF DataSet1-ttipocli-LOCK
+                 READ ttipocli PREVIOUS WITH LOCK
+              ELSE
+                 READ ttipocli PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-ttipocli-LOCK
+                 READ ttipocli NEXT WITH LOCK
+              ELSE
+                 READ ttipocli NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-ttipocli TO TOTEM-ERR-STAT
+           MOVE "ttipocli" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:ttipocli, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:ttipocli, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-ttipocli-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:ttipocli, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-ttipocli TO TOTEM-ERR-STAT
+           MOVE "ttipocli" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:ttipocli, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-ttipocli-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:ttipocli, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-ttipocli TO TOTEM-ERR-STAT
+           MOVE "ttipocli" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:ttipocli, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-ttipocli-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:ttipocli, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-ttipocli TO TOTEM-ERR-STAT
+           MOVE "ttipocli" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:ttipocli, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE age-rec OF agenti
            INITIALIZE naz-rec OF tnazioni
@@ -3444,6 +3686,7 @@
            INITIALIZE lis-rec OF lisagente
            INITIALIZE mar-rec OF tmarche
            INITIALIZE tge-rec OF tparamge
+           INITIALIZE tcl-rec OF ttipocli
            .
 
 
@@ -3503,6 +3746,14 @@
       * FD's Initialize Paragraph
        DataSet1-tparamge-INITREC.
            INITIALIZE tge-rec OF tparamge
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-ttipocli-INITREC.
+           INITIALIZE tcl-rec OF ttipocli
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -4273,6 +4524,16 @@
                MOVE 5014 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
+      * ef-tipo-cli's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-tipo-cli-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 1 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 5015 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
       * ef-iscr-cciaa's Validation
            SET TOTEM-CHECK-OK TO FALSE
            PERFORM ef-iscr-cciaa-VALIDATION
@@ -4280,7 +4541,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5015 TO CONTROL-ID
+               MOVE 5016 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-num-enasarco's Validation
@@ -4290,7 +4551,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5016 TO CONTROL-ID
+               MOVE 5017 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-num-iscr-albo's Validation
@@ -4300,7 +4561,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5017 TO CONTROL-ID
+               MOVE 5018 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-marg's Validation
@@ -4310,7 +4571,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5022 TO CONTROL-ID
+               MOVE 5023 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-minimo's Validation
@@ -4320,7 +4581,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5023 TO CONTROL-ID
+               MOVE 5024 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-listino's Validation
@@ -4330,7 +4591,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5026 TO CONTROL-ID
+               MOVE 5027 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * rb-oma's Validation
@@ -4340,7 +4601,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5027 TO CONTROL-ID
+               MOVE 5028 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
            .
@@ -4583,6 +4844,23 @@
            PERFORM ef-email-AFTER-VALIDATION
            .
 
+       ef-tipo-cli-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-tipo-cli, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-tipo-cli-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-tipo-cli, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-tipo-cli's Validation
+       ef-tipo-cli-VALIDATION.
+           PERFORM ef-tipo-cli-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-tipo-cli-AFTER-VALIDATION
+           .
+
        ef-iscr-cciaa-BEFORE-VALIDATION.
       * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-iscr-cciaa, BeforeValidation>
       * <TOTEM:END>
@@ -4734,6 +5012,8 @@
            MOVE ef-fax-BUF TO age-fax
       * DB_Entry-Field : ef-email
            MOVE ef-email-BUF TO age-email
+      * DB_Entry-Field : ef-tipo-cli
+           MOVE ef-tipo-cli-BUF TO age-cli-tipo
       * DB_Entry-Field : ef-iscr-cciaa
            MOVE ef-iscr-cciaa-BUF TO age-iscrizione-cciaa
       * DB_Entry-Field : ef-num-enasarco
@@ -4841,6 +5121,8 @@
            MOVE age-fax TO ef-fax-BUF
       * DB_Entry-Field : ef-email
            MOVE age-email TO ef-email-BUF
+      * DB_Entry-Field : ef-tipo-cli
+           MOVE age-cli-tipo TO ef-tipo-cli-BUF
       * DB_Entry-Field : ef-iscr-cciaa
            MOVE age-iscrizione-cciaa TO ef-iscr-cciaa-BUF
       * DB_Entry-Field : ef-num-enasarco
@@ -4860,6 +5142,8 @@
               MOVE prv-descrizione  TO LBL-DES-PROV-BUF
       * DB_LABEL : LBL-DES-NAZ
               MOVE naz-descrizione  TO LBL-DES-NAZ-BUF
+      * DB_LABEL : lab-cli-tipo-d
+              MOVE tcl-descrizione  TO lab-cli-tipo-d-BUF
       * DB_RADIOBOX : rb-age-normale, rb-age-speciale, 
            EVALUATE age-tipo
            WHEN "N"
@@ -4914,13 +5198,19 @@
            read tnazioni no lock 
                 invalid move spaces to naz-descrizione
            end-read.
-           move naz-descrizione to lbl-des-naz-buf.
+           move naz-descrizione to lbl-des-naz-buf. 
 
            move age-listino to lis-codice.
            read lisagente no lock key k-codice
                 invalid move spaces to lis-descrizione 
            end-read.
            move lis-descrizione to lab-listino-buf.
+
+           move age-cli-tipo to tcl-codice.
+           read ttipocli no lock key tcl-chiave
+                invalid move spaces to tcl-descrizione 
+           end-read.
+           move tcl-descrizione to lab-cli-tipo-d-buf.
 
            Perform VALORIZZA-OLD.
 
@@ -5027,6 +5317,13 @@
               set NoSalvato to true
               |78-ID-ef-email è l'ID del campo ef-email
               move 78-ID-ef-email to store-id 
+           end-if
+
+           if age-cli-tipo not = old-age-cli-tipo
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-ef-tipo-cli è l'ID del campo ef-tipo-cli
+              move 78-ID-ef-tipo-cli to store-id 
            end-if
 
            if age-iscrizione-cciaa not = old-age-iscrizione-cciaa
@@ -5199,6 +5496,10 @@
            when 78-ID-ef-nazione
                 move 1 to StatusHelp
                 perform STATUS-HELP
+           |78-ID-ef-tipo-cli è l'ID del campo ef-tipo-cli
+           when 78-ID-ef-tipo-cli
+                move 1 to StatusHelp
+                perform STATUS-HELP
            |78-ID-ef-listino è l'ID del campo ef-listino
            when 78-ID-ef-listino
                 move 1 to StatusHelp
@@ -5223,6 +5524,11 @@
 
            |78-ID-ef-nazione è l'ID del campo ef-nazione
            when 78-ID-ef-nazione
+                move 0 to StatusHelp
+                perform STATUS-HELP
+
+           |78-ID-ef-tipo-cli è l'ID del campo ef-tipo-cli
+           when 78-ID-ef-tipo-cli
                 move 0 to StatusHelp
                 perform STATUS-HELP
 
@@ -5253,6 +5559,9 @@
                 perform CONTROLLO
            |78-ID-ef-nazione è l'ID del campo ef-nazione
            when 78-ID-ef-nazione
+                perform CONTROLLO
+           |78-ID-ef-tipo-cli è l'ID del campo ef-tipo-cli
+           when 78-ID-ef-tipo-cli
                 perform CONTROLLO
            |78-ID-ef-marg è l'ID del campo ef-marg
            when 78-ID-ef-marg
@@ -5309,31 +5618,33 @@
            WHEN 5013 MOVE "Digitare il numero di fax" to TOTEM-HINT-TEXT
            WHEN 5014 MOVE "Digitare l'indirizzo e-mail" to 
            TOTEM-HINT-TEXT
-           WHEN 5015 MOVE "Digitare l'iscrizione CCIAA" to 
+           WHEN 5015 MOVE "Digitare la tipologia cliente seguito" to 
            TOTEM-HINT-TEXT
-           WHEN 5016 MOVE "Digitare il Numero Enasarco" to 
+           WHEN 5016 MOVE "Digitare l'iscrizione CCIAA" to 
            TOTEM-HINT-TEXT
-           WHEN 5017 MOVE "Digitare il Numero di Iscrizione all'albo" 
+           WHEN 5017 MOVE "Digitare il Numero Enasarco" to 
+           TOTEM-HINT-TEXT
+           WHEN 5018 MOVE "Digitare il Numero di Iscrizione all'albo" 
            to TOTEM-HINT-TEXT
-           WHEN 5018 MOVE "Selezionare se il Mandatario è Monomandatario
+           WHEN 5019 MOVE "Selezionare se il Mandatario è Monomandatario
       -    "" to TOTEM-HINT-TEXT
-           WHEN 5019 MOVE "Selezionare se il Mandatario è Plurimandatari
+           WHEN 5020 MOVE "Selezionare se il Mandatario è Plurimandatari
       -    "o" to TOTEM-HINT-TEXT
-           WHEN 5020 MOVE "Tipo agente Normale" to TOTEM-HINT-TEXT
-           WHEN 5021 MOVE "Tipo agente Speciale" to TOTEM-HINT-TEXT
-           WHEN 5022 MOVE "Digitare la marginalità riconosciuta all'agen
+           WHEN 5021 MOVE "Tipo agente Normale" to TOTEM-HINT-TEXT
+           WHEN 5022 MOVE "Tipo agente Speciale" to TOTEM-HINT-TEXT
+           WHEN 5023 MOVE "Digitare la marginalità riconosciuta all'agen
       -    "te" to TOTEM-HINT-TEXT
-           WHEN 5023 MOVE "Digitare il minimo garantito al Kg. (lire)" 
+           WHEN 5024 MOVE "Digitare il minimo garantito al Kg. (lire)" 
            to TOTEM-HINT-TEXT
-           WHEN 5024 MOVE "Solo Imponibile" to TOTEM-HINT-TEXT
-           WHEN 5025 MOVE "Imponibile + I.C. + Cou/Cobat" to 
+           WHEN 5025 MOVE "Solo Imponibile" to TOTEM-HINT-TEXT
+           WHEN 5026 MOVE "Imponibile + I.C. + Cou/Cobat" to 
            TOTEM-HINT-TEXT
-           WHEN 5026 MOVE "Digitare il codice del listino collegato (0 =
+           WHEN 5027 MOVE "Digitare il codice del listino collegato (0 =
       -    " listino base da articoli)" to TOTEM-HINT-TEXT
-           WHEN 5027 MOVE "Digitare la percentuale di addebito all'agent
+           WHEN 5028 MOVE "Digitare la percentuale di addebito all'agent
       -    "e" to TOTEM-HINT-TEXT
-           WHEN 5028 MOVE "Con Add.le Pb" to TOTEM-HINT-TEXT
-           WHEN 5029 MOVE "Al netto dell'add.le Pb" to TOTEM-HINT-TEXT
+           WHEN 5029 MOVE "Con Add.le Pb" to TOTEM-HINT-TEXT
+           WHEN 5030 MOVE "Al netto dell'add.le Pb" to TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
            EVALUATE Control-Id
@@ -5351,21 +5662,22 @@
            When 5012 PERFORM Screen1-DaEf-20-BeforeProcedure
            When 5013 PERFORM Screen1-DaEf-21-BeforeProcedure
            When 5014 PERFORM Screen1-DaEf-23-BeforeProcedure
-           When 5015 PERFORM Screen1-DaEf-25-BeforeProcedure
-           When 5016 PERFORM Screen1-DaEf-26-BeforeProcedure
+           When 5015 PERFORM Screen1-DaEf-14-BeforeProcedure
+           When 5016 PERFORM Screen1-DaEf-25-BeforeProcedure
            When 5017 PERFORM Screen1-DaEf-26-BeforeProcedure
-           When 5018 PERFORM Screen1-DaRb-1-BeforeProcedure
+           When 5018 PERFORM Screen1-DaEf-26-BeforeProcedure
            When 5019 PERFORM Screen1-DaRb-1-BeforeProcedure
            When 5020 PERFORM Screen1-DaRb-1-BeforeProcedure
-           When 5021 PERFORM Screen1-DaRb-2-BeforeProcedure
-           When 5022 PERFORM Screen1-DaEf-2-BeforeProcedure
-           When 5023 PERFORM Screen1-DaEf-3-BeforeProcedure
-           When 5024 PERFORM Screen1-DaRb-3-BeforeProcedure
-           When 5025 PERFORM Screen1-DaRb-4-BeforeProcedure
-           When 5026 PERFORM Screen1-DaEf-5-BeforeProcedure
-           When 5027 PERFORM Screen1-DaEf-10-BeforeProcedure
-           When 5028 PERFORM Screen1-DaRb-3-BeforeProcedure
-           When 5029 PERFORM Screen1-DaRb-4-BeforeProcedure
+           When 5021 PERFORM Screen1-DaRb-1-BeforeProcedure
+           When 5022 PERFORM Screen1-DaRb-2-BeforeProcedure
+           When 5023 PERFORM Screen1-DaEf-2-BeforeProcedure
+           When 5024 PERFORM Screen1-DaEf-3-BeforeProcedure
+           When 5025 PERFORM Screen1-DaRb-3-BeforeProcedure
+           When 5026 PERFORM Screen1-DaRb-4-BeforeProcedure
+           When 5027 PERFORM Screen1-DaEf-5-BeforeProcedure
+           When 5028 PERFORM Screen1-DaEf-10-BeforeProcedure
+           When 5029 PERFORM Screen1-DaRb-3-BeforeProcedure
+           When 5030 PERFORM Screen1-DaRb-4-BeforeProcedure
            END-EVALUATE
            PERFORM Form1-DISPLAY-STATUS-MSG
            perform Form1-BEFORE-SCREEN
@@ -5387,21 +5699,22 @@
            When 5012 PERFORM Screen1-DaEf-20-AfterProcedure
            When 5013 PERFORM Screen1-DaEf-21-AfterProcedure
            When 5014 PERFORM Screen1-DaEf-23-AfterProcedure
-           When 5015 PERFORM Screen1-DaEf-25-AfterProcedure
-           When 5016 PERFORM Screen1-DaEf-26-AfterProcedure
+           When 5015 PERFORM Screen1-DaEf-14-AfterProcedure
+           When 5016 PERFORM Screen1-DaEf-25-AfterProcedure
            When 5017 PERFORM Screen1-DaEf-26-AfterProcedure
-           When 5018 PERFORM Screen1-DaRb-1-AfterProcedure
+           When 5018 PERFORM Screen1-DaEf-26-AfterProcedure
            When 5019 PERFORM Screen1-DaRb-1-AfterProcedure
            When 5020 PERFORM Screen1-DaRb-1-AfterProcedure
-           When 5021 PERFORM Screen1-DaRb-2-AfterProcedure
-           When 5022 PERFORM Screen1-DaEf-2-AfterProcedure
-           When 5023 PERFORM Screen1-DaEf-3-AfterProcedure
-           When 5024 PERFORM Screen1-DaRb-3-AfterProcedure
-           When 5025 PERFORM Screen1-DaRb-4-AfterProcedure
-           When 5026 PERFORM Screen1-DaEf-5-AfterProcedure
-           When 5027 PERFORM Screen1-DaEf-10-AfterProcedure
-           When 5028 PERFORM Screen1-DaRb-3-AfterProcedure
-           When 5029 PERFORM Screen1-DaRb-4-AfterProcedure
+           When 5021 PERFORM Screen1-DaRb-1-AfterProcedure
+           When 5022 PERFORM Screen1-DaRb-2-AfterProcedure
+           When 5023 PERFORM Screen1-DaEf-2-AfterProcedure
+           When 5024 PERFORM Screen1-DaEf-3-AfterProcedure
+           When 5025 PERFORM Screen1-DaRb-3-AfterProcedure
+           When 5026 PERFORM Screen1-DaRb-4-AfterProcedure
+           When 5027 PERFORM Screen1-DaEf-5-AfterProcedure
+           When 5028 PERFORM Screen1-DaEf-10-AfterProcedure
+           When 5029 PERFORM Screen1-DaRb-3-AfterProcedure
+           When 5030 PERFORM Screen1-DaRb-4-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -5421,25 +5734,25 @@
        Screen1-Gd-1-Event-Proc.
            EVALUATE Event-Type ALSO Event-Control-Id ALSO
                                     Event-Window-Handle
-           WHEN Msg-Begin-Drag ALSO 5030 ALSO
+           WHEN Msg-Begin-Drag ALSO 5031 ALSO
                     form1-Handle 
               PERFORM gd-marche-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5030 ALSO
+           WHEN Msg-Begin-Entry ALSO 5031 ALSO
                     form1-Handle 
               PERFORM gd-marche-Ev-Msg-Begin-Entry
-           WHEN Msg-End-Drag ALSO 5030 ALSO
+           WHEN Msg-End-Drag ALSO 5031 ALSO
                     form1-Handle 
               PERFORM gd-marche-Ev-Msg-End-Drag
-           WHEN Msg-Finish-Entry ALSO 5030 ALSO
+           WHEN Msg-Finish-Entry ALSO 5031 ALSO
                     form1-Handle 
               PERFORM gd-marche-Ev-Msg-Finish-Entry
-           WHEN Msg-Goto-Cell ALSO 5030 ALSO
+           WHEN Msg-Goto-Cell ALSO 5031 ALSO
                     form1-Handle 
               PERFORM gd-marche-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5030 ALSO
+           WHEN Msg-Goto-Cell-Drag ALSO 5031 ALSO
                     form1-Handle 
               PERFORM gd-marche-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5030 ALSO
+           WHEN Msg-Goto-Cell-Mouse ALSO 5031 ALSO
                     form1-Handle 
               PERFORM gd-marche-Ev-Msg-Goto-Cell-Mouse
            END-EVALUATE
@@ -5554,7 +5867,7 @@
                 if stato-zoom = ZERO  
                    modify ef-nazione, value naz-codice
                    move 4 to accept-control
-                end-if
+                end-if      
       *
            when 78-ID-ef-listino
                 inquire ef-listino, value in lis-codice
@@ -5566,6 +5879,19 @@
                    modify ef-listino, value lis-codice
                    move lis-descrizione  to lab-listino-buf
                    display lab-listino
+                   move 4 to accept-control
+                end-if
+      *
+           when 78-ID-ef-tipo-cli
+                inquire ef-tipo-cli, value in tcl-codice
+                move "ttipocli" to Como-File
+                call   "zoom-gt" using como-file, tcl-rec
+                                giving stato-zoom
+                cancel "zoom-gt"
+                if stato-zoom = 0
+                   modify ef-tipo-cli, value tcl-codice
+                   move tcl-descrizione  to lab-cli-tipo-d-buf
+                   display lab-cli-tipo-d
                    move 4 to accept-control
                 end-if
       *
@@ -5968,7 +6294,27 @@
                       end-if
                       display lab-listino
                    end-if
-                end-if
+                end-if    
+
+           when 78-ID-ef-tipo-cli
+                inquire ef-tipo-cli, value in age-cli-tipo
+                if age-cli-tipo = spaces
+                   move spaces to tcl-descrizione
+                else
+                   move age-cli-tipo to tcl-codice
+                   read ttipocli key tcl-chiave
+                        invalid
+                        set errori to true
+                        display message "Tipologia NON valida"
+                                  title tit-err
+                                   type mb-ok
+                                   icon mb-warning-icon
+                        move spaces to tcl-descrizione
+                   end-read
+                   move tcl-descrizione to lab-cli-tipo-d-buf
+               end-if
+
+               display lab-cli-tipo-d
            end-evaluate.
       
            if errori
@@ -7089,6 +7435,12 @@
               INQUIRE ef-provincia, VALUE IN age-provincia
               SET TOTEM-CHECK-OK TO FALSE
               PERFORM ef-provincia-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+              INQUIRE ef-tipo-cli, VALUE IN age-cli-tipo
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-tipo-cli-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF

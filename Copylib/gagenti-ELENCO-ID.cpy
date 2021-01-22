@@ -16,6 +16,10 @@
            when 78-ID-ef-nazione
                 inquire ef-nazione, value in ef-nazione-buf
 
+           |78-ID-ef-tipo-cli è l'ID del control ef-tipo-cli
+           when 78-ID-ef-tipo-cli
+                inquire ef-tipo-cli, value in ef-tipo-cli-buf
+
            |78-ID-ef-marg è l'ID del control ef-marg
            when 78-ID-ef-marg
                 inquire ef-marg, value in ef-marg-buf

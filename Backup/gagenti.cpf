@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E02C132422-750-533422281
+PROGRAM_UNIQUE_CODE=TOTEM-7E511693631-961-3167124748
 
 {{@DESCRIPTION:
 
@@ -1060,617 +1060,89 @@ m_bFixed=1
 
 @}}
 [FDITEM90_WK]
-m_strName=OLD-age-rec
-m_nItemLevel=1
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM90_WK
-
-@}}
-[FDITEM91_WK]
-m_strName=OLD-age-chiave
-m_nItemLevel=5
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM91_WK
-
-@}}
-[FDITEM92_WK]
-m_strName=OLD-age-codice
-m_strRawPic=9(5)
-m_strPic=9(5)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM92_WK
-
-@}}
-[FDITEM93_WK]
-m_strName=OLD-age-dati
-m_nItemLevel=5
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM93_WK
-
-@}}
-[FDITEM94_WK]
-m_strName=OLD-age-dati-anagrafici
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM94_WK
-
-@}}
-[FDITEM95_WK]
-m_strName=OLD-age-ragsoc-1
-m_strRawPic=X(40)
-m_strPic=X(40)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM95_WK
-
-@}}
-[FDITEM96_WK]
-m_strName=OLD-age-ragsoc-2
-m_strRawPic=X(40)
-m_strPic=X(40)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM96_WK
-
-@}}
-[FDITEM97_WK]
-m_strName=OLD-age-indirizzo
-m_strRawPic=X(40)
-m_strPic=X(40)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM97_WK
-
-@}}
-[FDITEM98_WK]
-m_strName=OLD-age-cap
-m_strRawPic=X(5)
-m_strPic=X(5)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM98_WK
-
-@}}
-[FDITEM99_WK]
-m_strName=OLD-age-localita
-m_strRawPic=X(35)
-m_strPic=X(35)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM99_WK
-
-@}}
-[FDITEM100_WK]
-m_strName=OLD-age-provincia
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM100_WK
-
-@}}
-[FDITEM101_WK]
-m_strName=OLD-age-nazione
-m_strRawPic=X(3)
-m_strPic=X(3)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM101_WK
-
-@}}
-[FDITEM102_WK]
-m_strName=OLD-age-codice-fiscale
-m_strRawPic=X(16)
-m_strPic=X(16)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM102_WK
-
-@}}
-[FDITEM103_WK]
-m_strName=OLD-age-partita-iva
-m_strRawPic=X(11)
-m_strPic=X(11)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM103_WK
-
-@}}
-[FDITEM104_WK]
-m_strName=OLD-age-telefono-1
-m_strRawPic=X(15)
-m_strPic=X(15)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM104_WK
-
-@}}
-[FDITEM105_WK]
-m_strName=OLD-age-fax
-m_strRawPic=X(15)
-m_strPic=X(15)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM105_WK
-
-@}}
-[FDITEM106_WK]
-m_strName=OLD-age-email
-m_strRawPic=X(45)
-m_strPic=X(45)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM106_WK
-
-@}}
-[FDITEM107_WK]
-m_strName=OLD-age-iscrizione-cciaa
-m_strRawPic=X(15)
-m_strPic=X(15)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM107_WK
-
-@}}
-[FDITEM108_WK]
-m_strName=OLD-age-numero-enasarco
-m_strRawPic=X(10)
-m_strPic=X(10)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM108_WK
-
-@}}
-[FDITEM109_WK]
-m_strName=OLD-age-iscrizione-albo
-m_strRawPic=X(10)
-m_strPic=X(10)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM109_WK
-
-@}}
-[FDITEM110_WK]
-m_strName=OLD-age-mono-plurimandatario
-m_strRawPic=X(1)
-m_strPic=X(1)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM110_WK
-
-@}}
-[FDITEM111_WK]
-m_strName=OLD-age-mono
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="M"
-{{@DataItem_m_strDescriptionFDITEM111_WK
-
-@}}
-[FDITEM112_WK]
-m_strName=OLD-age-pluri
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="P"
-{{@DataItem_m_strDescriptionFDITEM112_WK
-
-@}}
-[FDITEM113_WK]
-m_strName=OLD-age-dati-condizioni
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM113_WK
-
-@}}
-[FDITEM114_WK]
-m_strName=OLD-age-tipo
-m_strRawPic=x
-m_strPic=x
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM114_WK
-
-@}}
-[FDITEM115_WK]
-m_strName=OLD-age-normale
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="N"
-{{@DataItem_m_strDescriptionFDITEM115_WK
-
-@}}
-[FDITEM116_WK]
-m_strName=OLD-age-speciale
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="S"
-{{@DataItem_m_strDescriptionFDITEM116_WK
-
-@}}
-[FDITEM117_WK]
-m_strName=OLD-age-marg
-m_strRawPic=9(3)v99
-m_strPic=9(3)v99
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM117_WK
-
-@}}
-[FDITEM118_WK]
-m_strName=OLD-age-minimo
-m_strRawPic=9(9)
-m_strPic=9(9)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM118_WK
-
-@}}
-[FDITEM119_WK]
-m_strName=OLD-age-prezzo
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM119_WK
-
-@}}
-[FDITEM120_WK]
-m_strName=OLD-age-prezzo-normale
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue=0
-{{@DataItem_m_strDescriptionFDITEM120_WK
-
-@}}
-[FDITEM121_WK]
-m_strName=OLD-age-prezzo-speciale
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue=1
-{{@DataItem_m_strDescriptionFDITEM121_WK
-
-@}}
-[FDITEM122_WK]
-m_strName=OLD-age-listino
-m_strRawPic=9(4)
-m_strPic=9(4)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM122_WK
-
-@}}
-[FDITEM123_WK]
-m_strName=OLD-age-tab-marche
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM123_WK
-
-@}}
-[FDITEM124_WK]
-m_strName=OLD-age-marche
-m_nItemLevel=20
-m_nSync=-1
-m_bOccurs=1
-m_bFixed=1
-m_strRawSize=10
-m_nSize=10
-{{@DataItem_m_strDescriptionFDITEM124_WK
-
-@}}
-[FDITEM125_WK]
-m_strName=OLD-age-marca
-m_strRawPic=9(4)
-m_strPic=9(4)
-m_nItemLevel=25
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM125_WK
-
-@}}
-[FDITEM126_WK]
-m_strName=OLD-age-perce-marca
-m_strRawPic=9(3)v99
-m_strPic=9(3)v99
-m_nItemLevel=25
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM126_WK
-
-@}}
-[FDITEM127_WK]
-m_strName=OLD-age-omaggi
-m_strRawPic=9(3)
-m_strPic=9(3)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM127_WK
-
-@}}
-[FDITEM128_WK]
-m_strName=OLD-age-dati-comuni
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM128_WK
-
-@}}
-[FDITEM129_WK]
-m_strName=OLD-age-data-creazione
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM129_WK
-
-@}}
-[FDITEM130_WK]
-m_strName=OLD-age-ora-creazione
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM130_WK
-
-@}}
-[FDITEM131_WK]
-m_strName=OLD-age-utente-creazione
-m_strRawPic=X(10)
-m_strPic=X(10)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM131_WK
-
-@}}
-[FDITEM132_WK]
-m_strName=OLD-age-data-ultima-modifica
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM132_WK
-
-@}}
-[FDITEM133_WK]
-m_strName=OLD-age-ora-ultima-modifica
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM133_WK
-
-@}}
-[FDITEM134_WK]
-m_strName=OLD-age-utente-ultima-modifica
-m_strRawPic=X(10)
-m_strPic=X(10)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM134_WK
-
-@}}
-[FDITEM135_WK]
-m_strName=OLD-age-vuoti
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM135_WK
-
-@}}
-[FDITEM136_WK]
-m_strName=OLD-age-add-pb
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM136_WK
-
-@}}
-[FDITEM137_WK]
-m_strName=OLD-age-no-add-pb
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue=0
-{{@DataItem_m_strDescriptionFDITEM137_WK
-
-@}}
-[FDITEM138_WK]
-m_strName=OLD-age-si-add-pb
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue=1
-{{@DataItem_m_strDescriptionFDITEM138_WK
-
-@}}
-[FDITEM139_WK]
-m_strName=OLD-age-num-vuoto-1
-m_strRawPic=9(14)
-m_strPic=9(14)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM139_WK
-
-@}}
-[FDITEM140_WK]
-m_strName=OLD-age-num-vuoto-2
-m_strRawPic=9(15)
-m_strPic=9(15)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM140_WK
-
-@}}
-[FDITEM141_WK]
-m_strName=OLD-age-num-vuoto-3
-m_strRawPic=9(15)
-m_strPic=9(15)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM141_WK
-
-@}}
-[FDITEM142_WK]
-m_strName=OLD-age-telefono-2
-m_strRawPic=X(15)
-m_strPic=X(15)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM142_WK
-
-@}}
-[FDITEM143_WK]
-m_strName=OLD-age-alfa-vuoto-1
-m_strRawPic=X(5)
-m_strPic=X(5)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM143_WK
-
-@}}
-[FDITEM144_WK]
-m_strName=OLD-age-alfa-vuoto-2
-m_strRawPic=X(20)
-m_strPic=X(20)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM144_WK
-
-@}}
-[FDITEM145_WK]
-m_strName=OLD-age-alfa-vuoto-3
-m_strRawPic=X(20)
-m_strPic=X(20)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM145_WK
-
-@}}
-[FDITEM146_WK]
-m_strName=OLD-age-path-pod
-m_strRawPic=X(100)
-m_strPic=X(100)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM146_WK
-
-@}}
-[FDITEM147_WK]
 m_strName=STATUS-lisagente
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM147_WK
+{{@DataItem_m_strDescriptionFDITEM90_WK
 
 @}}
-[FDITEM148_WK]
+[FDITEM91_WK]
 m_strName=Valid-STATUS-lisagente
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM148_WK
+{{@DataItem_m_strDescriptionFDITEM91_WK
 
 @}}
-[FDITEM149_WK]
+[FDITEM92_WK]
 m_strName=STATUS-tmarche
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM149_WK
+{{@DataItem_m_strDescriptionFDITEM92_WK
 
 @}}
-[FDITEM150_WK]
+[FDITEM93_WK]
 m_strName=Valid-STATUS-tmarche
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM150_WK
+{{@DataItem_m_strDescriptionFDITEM93_WK
 
 @}}
-[FDITEM151_WK]
+[FDITEM94_WK]
 m_strName=STATUS-tparamge
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM151_WK
+{{@DataItem_m_strDescriptionFDITEM94_WK
 
 @}}
-[FDITEM152_WK]
+[FDITEM95_WK]
 m_strName=Valid-STATUS-tparamge
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM152_WK
+{{@DataItem_m_strDescriptionFDITEM95_WK
 
 @}}
-[FDITEM153_WK]
+[FDITEM96_WK]
 m_strName=age-path-pod
 m_strRawPic=X(100)
 m_strPic=X(100)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM153_WK
+{{@DataItem_m_strDescriptionFDITEM96_WK
+
+@}}
+[FDITEM97_WK]
+m_strName=STATUS-ttipocli
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM97_WK
+
+@}}
+[FDITEM98_WK]
+m_strName=Valid-STATUS-ttipocli
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM98_WK
 
 @}}
 
@@ -2923,7 +2395,7 @@ Begin Screen Form1
             After Procedure   = Screen1-DaEf-21-AfterProcedure
          End
          Begin Data.Entry-Field ef-email
-            SCREEN-COL        = 16,14
+            SCREEN-COL        = 16,57
             SCREEN-LINE       = 24,38
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
@@ -2935,7 +2407,7 @@ Begin Screen Form1
             Clines            = 0
             Clines Unit       = Default
             Color             = 513
-            Column            = 14,57
+            Column            = 15,00
             Csize             = 0
             Csize Unit        = Default
             Cursor            = 0
@@ -2985,10 +2457,73 @@ Begin Screen Form1
             Before Procedure  = Screen1-DaEf-23-BeforeProcedure
             After Procedure   = Screen1-DaEf-23-AfterProcedure
          End
+         Begin Data.Entry-Field ef-tipo-cli
+            SCREEN-COL        = 16,57
+            SCREEN-LINE       = 29,84
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = ef-tipo-cli
+            Auto              = FALSE
+            Auto Decimal      = 0
+            Border            = Boxed
+            Case              = Upper
+            Clines            = 0
+            Clines Unit       = Default
+            Color             = 513
+            Column            = 15,00
+            Csize             = 0
+            Csize Unit        = Default
+            Cursor            = 0
+            Cursor Col        = 0
+            Cursor Row        = 0
+            Destroy Type      = Automatic
+            Enable            = NONE
+            Enable Variable   = MOD
+            Field Edited (Style) = 0
+            Field Edited Format = X(2)
+            Field Picture     = X(2)
+            Field Variable    = age-cli-tipo
+            File              = agenti
+            Font              = Small Font
+            Font Variable     = Small-Font
+            Height in Cells   = TRUE
+            Help ID           = 0
+            Hint              = Digitare la tipologia cliente seguito
+            ID                = 0
+            ID Variable       = AUTO-ID
+            Justification     = Unaligned
+            Line              = 24,46
+            Lines             = 1,31
+            Lines Unit        = Default
+            Max Lines         = 0
+            Max Text          = 2
+            Max Value         = 0
+            Min Value         = 0
+            No AutoSel        = FALSE
+            No Tab            = FALSE
+            Notify Change     = FALSE
+            Numeric           = FALSE
+            Occurs            = 0
+            Read Only         = FALSE
+            Required          = FALSE
+            Secure            = FALSE
+            Size              = 4,00
+            Size Unit         = Default
+            Style             = Singleline
+            Tab Order         = 14
+            Use Return        = FALSE
+            Use Tab           = FALSE
+            Value Multiple    = FALSE
+            Visible           = NONE
+            Width in Cells    = TRUE
+            My Property       = "CONTROLLO-OLD=;CONTROLLO=;ZOOM="
+            Before Procedure  = Screen1-DaEf-14-BeforeProcedure
+            After Procedure   = Screen1-DaEf-14-AfterProcedure
+         End
          Begin Data.Entry-Field ef-iscr-cciaa
             SCREEN-COL        = 16,57
-            SCREEN-LINE       = 31,00
-            LOCK-CONTROL      = TRUE
+            SCREEN-LINE       = 31,77
+            LOCK-CONTROL      = FALSE
             LEVEL             = 10
             (Name)            = ef-iscr-cciaa
             Auto              = FALSE
@@ -3020,7 +2555,7 @@ Begin Screen Form1
             ID                = 0
             ID Variable       = AUTO-ID
             Justification     = Left
-            Line              = 25,62
+            Line              = 26,38
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -3038,7 +2573,7 @@ Begin Screen Form1
             Size              = 16,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 14
+            Tab Order         = 15
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -3050,8 +2585,8 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-num-enasarco
             SCREEN-COL        = 46,57
-            SCREEN-LINE       = 31,00
-            LOCK-CONTROL      = TRUE
+            SCREEN-LINE       = 31,77
+            LOCK-CONTROL      = FALSE
             LEVEL             = 10
             (Name)            = ef-num-enasarco
             Auto              = FALSE
@@ -3083,7 +2618,7 @@ Begin Screen Form1
             ID                = 0
             ID Variable       = AUTO-ID
             Justification     = Left
-            Line              = 25,62
+            Line              = 26,38
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -3101,7 +2636,7 @@ Begin Screen Form1
             Size              = 11,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 15
+            Tab Order         = 16
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -3113,8 +2648,8 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-num-iscr-albo
             SCREEN-COL        = 72,57
-            SCREEN-LINE       = 31,00
-            LOCK-CONTROL      = TRUE
+            SCREEN-LINE       = 31,77
+            LOCK-CONTROL      = FALSE
             LEVEL             = 10
             (Name)            = ef-num-iscr-albo
             Auto              = FALSE
@@ -3146,7 +2681,7 @@ Begin Screen Form1
             ID                = 0
             ID Variable       = AUTO-ID
             Justification     = Left
-            Line              = 25,62
+            Line              = 26,38
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -3164,7 +2699,7 @@ Begin Screen Form1
             Size              = 11,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 16
+            Tab Order         = 17
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -3176,8 +2711,8 @@ Begin Screen Form1
          End
          Begin Frame Screen1-Fr-1
             SCREEN-COL        = 4,57
-            SCREEN-LINE       = 33,00
-            LOCK-CONTROL      = TRUE
+            SCREEN-LINE       = 33,77
+            LOCK-CONTROL      = FALSE
             LEVEL             = 10
             (Name)            = Screen1-Fr-1
             3D Style          = Engraved
@@ -3196,13 +2731,13 @@ Begin Screen Form1
             Help ID           = 0
             High Color        = 0
             ID                = 777
-            Line              = 27,62
+            Line              = 28,38
             Lines             = 4,00
             Lines Unit        = Default
             Low Color         = 0
             Size              = 39,00
             Size Unit         = Default
-            Tab Order         = 17
+            Tab Order         = 18
             Thickness         = Default
             Title             = "Mandatario"
             Title Position    = 0:Unaligned
@@ -3210,7 +2745,7 @@ Begin Screen Form1
             Width in Cells    = TRUE
             Begin Data.Radio-Button rb-mono
                SCREEN-COL        = 5,57
-               SCREEN-LINE       = 35,00
+               SCREEN-LINE       = 35,77
                LOCK-CONTROL      = TRUE
                LEVEL             = 10
                (Name)            = rb-mono
@@ -3263,7 +2798,7 @@ Begin Screen Form1
             End
             Begin Data.Radio-Button rb-pluri
                SCREEN-COL        = 23,57
-               SCREEN-LINE       = 35,00
+               SCREEN-LINE       = 35,77
                LOCK-CONTROL      = TRUE
                LEVEL             = 10
                (Name)            = rb-pluri
@@ -3316,7 +2851,7 @@ Begin Screen Form1
             End
             Begin Label Screen1-La-3
                SCREEN-COL        = 8,43
-               SCREEN-LINE       = 34,62
+               SCREEN-LINE       = 35,39
                LOCK-CONTROL      = TRUE
                LEVEL             = 10
                (Name)            = Screen1-La-3
@@ -3350,7 +2885,7 @@ Begin Screen Form1
             End
             Begin Label Screen1-La-3a
                SCREEN-COL        = 26,57
-               SCREEN-LINE       = 34,62
+               SCREEN-LINE       = 35,39
                LOCK-CONTROL      = TRUE
                LEVEL             = 10
                (Name)            = Screen1-La-3a
@@ -3411,7 +2946,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 10,00
             Size Unit         = Default
-            Tab Order         = 18
+            Tab Order         = 19
             Title             = "Rag. Sociale 1"
             Transparent       = TRUE
             Visible           = NONE
@@ -3445,7 +2980,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 10,00
             Size Unit         = Default
-            Tab Order         = 19
+            Tab Order         = 20
             Title             = "Rag. Sociale 2"
             Transparent       = TRUE
             Visible           = NONE
@@ -3479,7 +3014,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 10,00
             Size Unit         = Default
-            Tab Order         = 20
+            Tab Order         = 21
             Title             = "Codice Fiscale"
             Transparent       = TRUE
             Visible           = NONE
@@ -3513,7 +3048,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 8,00
             Size Unit         = Default
-            Tab Order         = 21
+            Tab Order         = 22
             Title             = "Partita IVA"
             Transparent       = TRUE
             Visible           = NONE
@@ -3547,7 +3082,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 10,00
             Size Unit         = Default
-            Tab Order         = 22
+            Tab Order         = 23
             Title             = "Località"
             Transparent       = TRUE
             Visible           = NONE
@@ -3581,7 +3116,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 4,00
             Size Unit         = Default
-            Tab Order         = 23
+            Tab Order         = 24
             Title             = "CAP"
             Transparent       = TRUE
             Visible           = NONE
@@ -3615,7 +3150,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 6,86
             Size Unit         = Default
-            Tab Order         = 24
+            Tab Order         = 25
             Title             = "Provincia"
             Transparent       = TRUE
             Visible           = NONE
@@ -3649,7 +3184,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 6,00
             Size Unit         = Default
-            Tab Order         = 25
+            Tab Order         = 26
             Title             = "Nazione"
             Transparent       = TRUE
             Visible           = NONE
@@ -3683,7 +3218,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 10,00
             Size Unit         = Default
-            Tab Order         = 26
+            Tab Order         = 27
             Title             = "Telefono 1"
             Transparent       = TRUE
             Visible           = NONE
@@ -3717,7 +3252,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 8,00
             Size Unit         = Default
-            Tab Order         = 27
+            Tab Order         = 28
             Title             = "Telefono 2"
             Transparent       = TRUE
             Visible           = NONE
@@ -3751,7 +3286,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 10,00
             Size Unit         = Default
-            Tab Order         = 28
+            Tab Order         = 29
             Title             = "Fax"
             Transparent       = TRUE
             Visible           = NONE
@@ -3785,7 +3320,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 10,00
             Size Unit         = Default
-            Tab Order         = 29
+            Tab Order         = 30
             Title             = "E-mail"
             Transparent       = TRUE
             Visible           = NONE
@@ -3793,8 +3328,8 @@ Begin Screen Form1
          End
          Begin Label Screen1-La-25
             SCREEN-COL        = 4,57
-            SCREEN-LINE       = 31,00
-            LOCK-CONTROL      = TRUE
+            SCREEN-LINE       = 31,77
+            LOCK-CONTROL      = FALSE
             LEVEL             = 10
             (Name)            = Screen1-La-25
             Clines            = 0
@@ -3812,14 +3347,14 @@ Begin Screen Form1
             ID                = 56
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 25,62
+            Line              = 26,38
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 12,00
             Size Unit         = Default
-            Tab Order         = 30
+            Tab Order         = 31
             Title             = "Iscrizione CCIAA"
             Transparent       = TRUE
             Visible           = NONE
@@ -3827,8 +3362,8 @@ Begin Screen Form1
          End
          Begin Label Screen1-La-26
             SCREEN-COL        = 33,57
-            SCREEN-LINE       = 31,00
-            LOCK-CONTROL      = TRUE
+            SCREEN-LINE       = 31,77
+            LOCK-CONTROL      = FALSE
             LEVEL             = 10
             (Name)            = Screen1-La-26
             Clines            = 0
@@ -3846,14 +3381,14 @@ Begin Screen Form1
             ID                = 57
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 25,62
+            Line              = 26,38
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 13,00
             Size Unit         = Default
-            Tab Order         = 31
+            Tab Order         = 32
             Title             = "Numero Enasarco"
             Transparent       = TRUE
             Visible           = NONE
@@ -3887,7 +3422,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 10,00
             Size Unit         = Default
-            Tab Order         = 32
+            Tab Order         = 33
             Title             = "Indirizzo"
             Transparent       = TRUE
             Visible           = NONE
@@ -3895,8 +3430,8 @@ Begin Screen Form1
          End
          Begin Label Screen1-La-26a
             SCREEN-COL        = 58,57
-            SCREEN-LINE       = 31,00
-            LOCK-CONTROL      = TRUE
+            SCREEN-LINE       = 31,77
+            LOCK-CONTROL      = FALSE
             LEVEL             = 10
             (Name)            = Screen1-La-26a
             Clines            = 0
@@ -3914,14 +3449,14 @@ Begin Screen Form1
             ID                = 60
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 25,62
+            Line              = 26,38
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 14,00
             Size Unit         = Default
-            Tab Order         = 33
+            Tab Order         = 34
             Title             = "Num. Iscrizione albo"
             Transparent       = TRUE
             Visible           = NONE
@@ -3960,7 +3495,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 24,00
             Size Unit         = Default
-            Tab Order         = 34
+            Tab Order         = 35
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
@@ -3998,7 +3533,79 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 24,00
             Size Unit         = Default
-            Tab Order         = 35
+            Tab Order         = 36
+            Transparent       = TRUE
+            Visible           = NONE
+            Width in Cells    = TRUE
+         End
+         Begin Label Screen1-La-14a
+            SCREEN-COL        = 4,57
+            SCREEN-LINE       = 29,92
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = Screen1-La-14a
+            Clines            = 0
+            Clines Unit       = Default
+            Color             = 0
+            Column            = 3,00
+            Csize             = 0
+            Csize Unit        = Default
+            Destroy Type      = Automatic
+            Enable            = NONE
+            Font              = Small Font
+            Font Variable     = Small-Font
+            Height in Cells   = TRUE
+            Help ID           = 0
+            ID                = 45
+            Justification     = Unaligned
+            Label Offset      = 20
+            Line              = 24,54
+            Lines             = 1,31
+            Lines Unit        = Default
+            No Key Letter     = FALSE
+            Occurs            = 0
+            Size              = 11,43
+            Size Unit         = Default
+            Tab Order         = 37
+            Title             = "Tipologia cliente"
+            Transparent       = TRUE
+            Visible           = NONE
+            Width in Cells    = TRUE
+         End
+         Begin Data.Label lab-cli-tipo-d
+            SCREEN-COL        = 21,57
+            SCREEN-LINE       = 29,84
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = lab-cli-tipo-d
+            Clines            = 0
+            Clines Unit       = Default
+            Color             = 5
+            Column            = 20,00
+            Csize             = 0
+            Csize Unit        = Default
+            Destroy Type      = Automatic
+            Enable            = NONE
+            Field Edited (Style) = 0
+            Field Edited Format = X(30)
+            Field Picture     = X(30)
+            Field Variable    = tcl-descrizione
+            File              = ttipocli
+            Font              = Small Font
+            Font Variable     = Small-Font
+            Height in Cells   = TRUE
+            Help ID           = 0
+            ID                = 1
+            Justification     = Unaligned
+            Label Offset      = 20
+            Line              = 24,46
+            Lines             = 1,31
+            Lines Unit        = Default
+            No Key Letter     = FALSE
+            Occurs            = 0
+            Size              = 50,00
+            Size Unit         = Default
+            Tab Order         = 38
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
@@ -5895,6 +5502,72 @@ END-RWDATA
 
 {{@EMBEDDING_CODE:
 BEGIN-DATA
+   BASETYPE          = 13
+   NODESTYLE         = 13
+   PARAGRAPH         = Other Working
+BEGIN-TEXT
+       01 old-age-rec.
+           05 old-age-chiave.
+               10 old-age-codice       PIC  9(5).
+           05 old-age-dati.
+               10 old-age-dati-anagrafici.
+                   15 old-age-ragsoc-1     PIC  X(40).
+                   15 old-age-ragsoc-2     PIC  X(40).
+                   15 old-age-indirizzo    PIC  X(40).
+                   15 old-age-cap          PIC  X(5).
+                   15 old-age-localita     PIC  X(35).
+                   15 old-age-provincia    PIC  X(2).
+                   15 old-age-nazione      PIC  X(3).
+                   15 old-age-codice-fiscale           PIC  X(16).
+                   15 old-age-partita-iva  PIC  X(11).
+                   15 old-age-telefono-1   PIC  X(15).
+                   15 old-age-fax          PIC  X(15).
+                   15 old-age-email        PIC  X(500).
+                   15 old-age-iscrizione-cciaa         PIC  X(15).
+                   15 old-age-numero-enasarco          PIC  X(10).
+                   15 old-age-iscrizione-albo          PIC  X(10).
+                   15 old-age-mono-plurimandatario     PIC  X(1).
+                       88 old-age-mono VALUE IS "M". 
+                       88 old-age-pluri VALUE IS "P". 
+               10 old-age-dati-condizioni.
+                   15 old-age-tipo         PIC  x.
+                       88 old-age-normale VALUE IS "N". 
+                       88 old-age-speciale VALUE IS "S". 
+                   15 old-age-marg         PIC  9(3)v99.
+                   15 old-age-minimo       PIC  9(9).
+                   15 old-age-prezzo       PIC  9.
+                       88 old-age-prezzo-normale VALUE IS 0. 
+                       88 old-age-prezzo-speciale VALUE IS 1. 
+                   15 old-age-listino      PIC  9(4).
+                   15 old-age-tab-marche.
+                       20 old-age-marche
+                                  OCCURS 10 TIMES.
+                           25 old-age-marca        PIC  9(4).
+                           25 old-age-perce-marca  PIC  9(3)v99.
+                   15 old-age-omaggi       PIC  9(3).
+               10 old-age-dati-comuni.
+                   15 old-age-data-creazione           PIC  9(8).
+                   15 old-age-ora-creazione            PIC  9(8).
+                   15 old-age-utente-creazione         PIC  X(10).
+                   15 old-age-data-ultima-modifica     PIC  9(8).
+                   15 old-age-ora-ultima-modifica      PIC  9(8).
+                   15 old-age-utente-ultima-modifica   PIC  X(10).
+               10 old-age-vuoti.
+                   15 old-age-add-pb       PIC  9.
+                       88 old-age-si-add-pb VALUE IS 1. 
+                       88 old-age-no-add-pb VALUE IS 0. 
+                   15 old-age-num-vuoto-1  PIC  9(14).
+                   15 old-age-num-vuoto-2  PIC  9(15).
+                   15 old-age-num-vuoto-3  PIC  9(15).
+                   15 old-age-telefono-2   PIC  X(15).
+                   15 old-age-cli-tipo     PIC  X(2).
+                   15 old-age-alfa-vuoto-1 PIC  X(3).
+                   15 old-age-alfa-vuoto-2 PIC  X(20).
+                   15 old-age-alfa-vuoto-3 PIC  X(20).
+                   15 FILLER           PIC  X(200).
+END-TEXT
+END-DATA
+BEGIN-DATA
    BASETYPE          = 6
    NODESTYLE         = 7
    PARAGRAPH         = DeletedCode
@@ -6146,13 +5819,19 @@ BEGIN-TEXT
            read tnazioni no lock 
                 invalid move spaces to naz-descrizione
            end-read.
-           move naz-descrizione to lbl-des-naz-buf.
+           move naz-descrizione to lbl-des-naz-buf. 
 
            move age-listino to lis-codice.
            read lisagente no lock key k-codice
                 invalid move spaces to lis-descrizione 
            end-read.
            move lis-descrizione to lab-listino-buf.
+
+           move age-cli-tipo to tcl-codice.
+           read ttipocli no lock key tcl-chiave
+                invalid move spaces to tcl-descrizione 
+           end-read.
+           move tcl-descrizione to lab-cli-tipo-d-buf.
 
            Perform VALORIZZA-OLD.
 
@@ -6380,7 +6059,7 @@ BEGIN-TEXT
                 if stato-zoom = ZERO  
                    modify ef-nazione, value naz-codice
                    move 4 to accept-control
-                end-if
+                end-if      
       *
            when 78-ID-ef-listino
                 inquire ef-listino, value in lis-codice
@@ -6392,6 +6071,19 @@ BEGIN-TEXT
                    modify ef-listino, value lis-codice
                    move lis-descrizione  to lab-listino-buf
                    display lab-listino
+                   move 4 to accept-control
+                end-if
+      *
+           when 78-ID-ef-tipo-cli
+                inquire ef-tipo-cli, value in tcl-codice
+                move "ttipocli" to Como-File
+                call   "zoom-gt" using como-file, tcl-rec
+                                giving stato-zoom
+                cancel "zoom-gt"
+                if stato-zoom = 0
+                   modify ef-tipo-cli, value tcl-codice
+                   move tcl-descrizione  to lab-cli-tipo-d-buf
+                   display lab-cli-tipo-d
                    move 4 to accept-control
                 end-if
       *
@@ -6796,7 +6488,27 @@ BEGIN-TEXT
                       end-if
                       display lab-listino
                    end-if
-                end-if
+                end-if    
+
+           when 78-ID-ef-tipo-cli
+                inquire ef-tipo-cli, value in age-cli-tipo
+                if age-cli-tipo = spaces
+                   move spaces to tcl-descrizione
+                else
+                   move age-cli-tipo to tcl-codice
+                   read ttipocli key tcl-chiave
+                        invalid
+                        set errori to true
+                        display message "Tipologia NON valida"
+                                  title tit-err
+                                   type mb-ok
+                                   icon mb-warning-icon
+                        move spaces to tcl-descrizione
+                   end-read
+                   move tcl-descrizione to lab-cli-tipo-d-buf
+               end-if
+
+               display lab-cli-tipo-d
            end-evaluate.
       
            if errori
@@ -8410,8 +8122,8 @@ PROP_DOCU_RULER_EBL=0
 PROP_DOCU_GRID_EBL=0
 PROP_DOCU_GRID=20
 PROP_DOCU_ALIGN=0
-REL_SYM_SIZE=40
-REL_SYM_INFO_L=6
+REL_SYM_SIZE=46
+REL_SYM_INFO_L=7
 REL_SYM_INFO_X0=2301
 REL_SYM_INFO_Y0=1146544667
 REL_SYM_INFO_X1=2301
@@ -8424,6 +8136,8 @@ REL_SYM_INFO_X4=2301
 REL_SYM_INFO_Y4=2028418040
 REL_SYM_INFO_X5=2301
 REL_SYM_INFO_Y5=1277320587
+REL_SYM_INFO_X6=2301
+REL_SYM_INFO_Y6=722617281
 
 [DRAW_BASESYMBOL_2301_1146544667]
 OBJ_NAME=2301
@@ -8713,6 +8427,54 @@ PROP_TRACK_COLOR=12632256
 REL_SYM_SIZE=4
 REL_SYM_INFO_L=0
 
+[DRAW_BASESYMBOL_2301_722617281]
+OBJ_NAME=2301
+OBJ_ID=722617281
+KIND=1
+{{@LABEL_2301_722617281
+ttipocli
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=30
+TOP=292
+RIGHT=430
+BOTTOM=514
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
 [DMD_DOCUMENT_0_1760106106]
 OBJ_NAME=0
 OBJ_ID=1760106106
@@ -8900,6 +8662,37 @@ DSN_INFO_DATA_ORDER=0
 DSN_INFO_START_VALUE=
 DSN_INFO_END_VALUE=
 {{@DSN_INFO_CONDITION_1277320587
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_722617281]
+OBJ_NAME=0
+OBJ_ID=722617281
+REL_M_OBJ_ID=0
+ENTITY=ttipocli
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tcl-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_722617281
 
 @}}
 DSN_INFO_PRIMARY=0
