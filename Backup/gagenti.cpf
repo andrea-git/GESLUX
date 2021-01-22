@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E5115224239-364-438415662
+PROGRAM_UNIQUE_CODE=TOTEM-7E02C132422-750-533422281
 
 {{@DESCRIPTION:
 
@@ -1671,64 +1671,6 @@ m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM153_WK
-
-@}}
-[FDITEM154_WK]
-m_strName=Screen1-Pg-3-Visible
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM154_WK
-
-@}}
-[FDITEM155_WK]
-m_strName=gd-cli-rec
-m_nItemLevel=1
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM155_WK
-
-@}}
-[FDITEM156_WK]
-m_strName=gd-cli-codice
-m_strRawPic=z(5)
-m_strPic=z(5)
-m_nItemLevel=5
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM156_WK
-
-@}}
-[FDITEM157_WK]
-m_strName=gd-cli-ragsoc
-m_strRawPic=x(100)
-m_strPic=x(100)
-m_nItemLevel=5
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM157_WK
-
-@}}
-[FDITEM158_WK]
-m_strName=STATUS-clienti
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM158_WK
-
-@}}
-[FDITEM159_WK]
-m_strName=Valid-STATUS-clienti
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM159_WK
 
 @}}
 
@@ -5204,86 +5146,6 @@ Begin Screen Form1
             Width in Cells    = TRUE
          End
       End
-      Begin Page Screen1-Pg-3
-         LOCK-CONTROL      = FALSE
-         LEVEL             = 5
-         Column            = 1,57
-         Line              = 2,69
-         (Name)            = Screen1-Pg-3
-         Bitmap Number     = 0
-         Tab Order         = 3
-         Title             = "Clienti &seguiti"
-         Visible Variable  = Screen1-Pg-3-Visible
-         Begin Grid gd-cli
-            SCREEN-COL        = 4,43
-            SCREEN-LINE       = 7,61
-            LOCK-CONTROL      = TRUE
-            LEVEL             = 10
-            (Name)            = gd-cli
-            Action            = (None)
-            Adjustable Columns = FALSE
-            Border            = Boxed
-            Cells' Setting    = ( X = 1, Y = 1, Data = "Codice" )
-            Cells' Setting    = ( X = 2, Y = 1, Data = "Ragione sociale" )
-            Centered Headings = FALSE
-            Color             = 0
-            Column            = 2,86
-            Column Headings   = TRUE
-            Columns' Setting  = ( X = 1, Name = gd-cli-codice, READONLY = 0 )
-            Columns' Setting  = ( PIC = "z(5)", TYPE = "z(5)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
-            Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
-            Columns' Setting  = ( X = 2, Name = gd-cli-ragsoc, READONLY = 0 )
-            Columns' Setting  = ( PIC = "x(100)", TYPE = "x(100)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
-            Columns' Setting  = ( DISP = 80, SEPA = 5, DIVI = 1 )
-            Cursor Color      = 0
-            Cursor Frame Width = 0
-            Cursor X          = 0
-            Cursor Y          = 0
-            Destroy Type      = Automatic
-            Divider Color     = 1
-            Drag Color        = 0
-            Enable            = NONE
-            End Color         = 0
-            Font              = Small Font
-            Font Variable     = Small-Font
-            Heading Color     = 257
-            Heading Divider Color = 1
-            Heading Font      = Default Font
-            Height in Cells   = TRUE
-            Help ID           = 0
-            Hscroll           = TRUE
-            ID                = 36
-            Last Row          = 0
-            Line              = 2,23
-            Lines             = 29,38
-            Lines Unit        = Default
-            No Tab            = FALSE
-            Num Col Headings  = 1
-            Num Columns       = 2
-            Num Rows          = 0
-            Occurs            = 0
-            Paged             = FALSE
-            Row Dividers      = 1
-            Row Headings      = FALSE
-            Size              = 79,86
-            Size Unit         = Default
-            Tab Order         = 1
-            Tiled Headings    = TRUE
-            Use Tab           = FALSE
-            Virtual Width     = 90
-            Visible           = NONE
-            Vpadding          = 50
-            Vscroll           = TRUE
-            Width in Cells    = TRUE
-            Event Procedure   = Screen1-Gd-1-Event-Proc
-            Msg-Begin-Drag    = gd-cli-Ev-Msg-Begin-Drag
-            Msg-Begin-Entry   = gd-cli-Ev-Msg-Begin-Entry
-            Msg-End-Drag      = gd-cli-Ev-Msg-End-Drag
-            Msg-Goto-Cell     = gd-cli-Ev-Msg-Goto-Cell
-            Msg-Goto-Cell-Drag = gd-cli-Ev-Msg-Goto-Cell-Drag
-            Msg-Goto-Cell-Mouse = gd-cli-Ev-Msg-Goto-Cell-Mouse
-         End
-      End
    End
    Begin Data.Label lab-des-cli
       SCREEN-COL        = 24,00
@@ -6295,7 +6157,6 @@ BEGIN-TEXT
            Perform VALORIZZA-OLD.
 
            perform RIEMPI-GRID.
-           perform RIEMPI-GRID-GD-CLI.
 
            set ControllaCampi to true.
            set NonCambiareTab to false.
@@ -7827,55 +7688,6 @@ BEGIN-TEXT
 END-TEXT
 END-DATA
 BEGIN-DATA
-   BASETYPE          = 3
-   PARAGRAPH         = RESETTA-GRID-GD-CLI
-BEGIN-TEXT
-           modify gd-cli, reset-grid = 1.
-           perform GD-CLI-CONTENT.
-END-TEXT
-END-DATA
-BEGIN-DATA
-   BASETYPE          = 3
-   PARAGRAPH         = RIEMPI-GRID-GD-CLI
-BEGIN-TEXT
-           move 0 to idx.
-           perform RESETTA-GRID-GD-CLI.   
-           modify gd-cli, mass-update = 1.
-           move low-value to cli-codice.
-           set cli-tipo-C to true.
-           start clienti key >= cli-chiave
-                 invalid continue
-             not invalid
-                 move 1 to riga
-                 perform until 1 = 2
-                    read clienti next at end exit perform end-read
-                    if cli-tipo-F exit perform end-if
-                    if cli-agente  = age-codice or
-                       cli-agente2 = age-codice
-                       move cli-codice   to gd-cli-codice
-                       move cli-ragsoc-1 to gd-cli-ragsoc
-                       add 1 to riga                       
-                       modify gd-cli(riga, 1), cell-data = gd-cli-codice
-                       modify gd-cli(riga, 2), cell-data = gd-cli-ragsoc
-                    end-if
-                 end-perform
-           end-start.
-           modify gd-cli, mass-update = 0.
-END-TEXT
-END-DATA
-BEGIN-DATA
-   BASETYPE          = 3
-   PARAGRAPH         = SPOSTAMENTO-GD-CLI
-BEGIN-TEXT
-           modify gd-cli,     start-x = 1,
-                                    x = 2,
-                              start-y = event-data-2,
-                                    y = event-data-2,
-                         region-color = 257,
-                         cursor-color = 257.
-END-TEXT
-END-DATA
-BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = NUOVO-LinkTo
 BEGIN-TEXT
@@ -8512,48 +8324,6 @@ BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
 END-TEXT
 END-DATA
-BEGIN-DATA
-   BASETYPE          = 2
-   PARAGRAPH         = gd-cli-Ev-Msg-Begin-Entry
-BEGIN-TEXT
-           set event-action to event-action-fail.
-END-TEXT
-END-DATA
-BEGIN-DATA
-   BASETYPE          = 2
-   PARAGRAPH         = gd-cli-Ev-Msg-Begin-Drag
-BEGIN-TEXT
-           perform SPOSTAMENTO-GD-CLI.
-END-TEXT
-END-DATA
-BEGIN-DATA
-   BASETYPE          = 2
-   PARAGRAPH         = gd-cli-Ev-Msg-End-Drag
-BEGIN-TEXT
-           perform SPOSTAMENTO-GD-CLI.
-END-TEXT
-END-DATA
-BEGIN-DATA
-   BASETYPE          = 2
-   PARAGRAPH         = gd-cli-Ev-Msg-Goto-Cell
-BEGIN-TEXT
-           perform SPOSTAMENTO-GD-CLI.
-END-TEXT
-END-DATA
-BEGIN-DATA
-   BASETYPE          = 2
-   PARAGRAPH         = gd-cli-Ev-Msg-Goto-Cell-Drag
-BEGIN-TEXT
-           perform SPOSTAMENTO-GD-CLI.
-END-TEXT
-END-DATA
-BEGIN-DATA
-   BASETYPE          = 2
-   PARAGRAPH         = gd-cli-Ev-Msg-Goto-Cell-Mouse
-BEGIN-TEXT
-           perform SPOSTAMENTO-GD-CLI.
-END-TEXT
-END-DATA
 
 @}}
 
@@ -8640,8 +8410,8 @@ PROP_DOCU_RULER_EBL=0
 PROP_DOCU_GRID_EBL=0
 PROP_DOCU_GRID=20
 PROP_DOCU_ALIGN=0
-REL_SYM_SIZE=46
-REL_SYM_INFO_L=7
+REL_SYM_SIZE=40
+REL_SYM_INFO_L=6
 REL_SYM_INFO_X0=2301
 REL_SYM_INFO_Y0=1146544667
 REL_SYM_INFO_X1=2301
@@ -8654,8 +8424,6 @@ REL_SYM_INFO_X4=2301
 REL_SYM_INFO_Y4=2028418040
 REL_SYM_INFO_X5=2301
 REL_SYM_INFO_Y5=1277320587
-REL_SYM_INFO_X6=2301
-REL_SYM_INFO_Y6=2099377505
 
 [DRAW_BASESYMBOL_2301_1146544667]
 OBJ_NAME=2301
@@ -8945,54 +8713,6 @@ PROP_TRACK_COLOR=12632256
 REL_SYM_SIZE=4
 REL_SYM_INFO_L=0
 
-[DRAW_BASESYMBOL_2301_2099377505]
-OBJ_NAME=2301
-OBJ_ID=2099377505
-KIND=1
-{{@LABEL_2301_2099377505
-clienti
-@}}
-WK_STEP=0
-BK_POINT=0
-CENTER_X=0
-CENTER_Y=0
-LEFT=616
-TOP=1082
-RIGHT=1016
-BOTTOM=1304
-PROP_OBJ_TYPE=
-PROP_OBJ_TYPE2=
-PROP_FILL_PT=0
-PROP_FILL_FG=0
-PROP_FILL_BG=16777215
-PROP_FONT_HEIGHT=-35
-PROP_FONT_WIDTH=0
-PROP_FONT_ESCAPE=0
-PROP_FONT_ORIENT=0
-PROP_FONT_WEIGHT=400
-PROP_FONT_ITALIC=0
-PROP_FONT_UDLINE=0
-PROP_FONT_SKOUT=0
-PROP_FONT_CHARSET=0
-PROP_FONT_OUTPREC=3
-PROP_FONT_CLIPPREC=2
-PROP_FONT_QUALITY=1
-PROP_FONT_PCH_FAM=18
-PROP_FONT_FACE_NAME=Times New Roman
-PROP_FONT_CR=0
-PROP_LINE_PT=0
-PROP_LINE_WG=1
-PROP_LINE_CR=0
-PROP_SHAD_PT=0
-PROP_SHAD_FG=12632256
-PROP_SHAD_BG=12632256
-PROP_SHAD_EBL=0
-PROP_SHAD_POS=4
-PROP_SHAD_POINT=0
-PROP_TRACK_COLOR=12632256
-REL_SYM_SIZE=4
-REL_SYM_INFO_L=0
-
 [DMD_DOCUMENT_0_1760106106]
 OBJ_NAME=0
 OBJ_ID=1760106106
@@ -9180,37 +8900,6 @@ DSN_INFO_DATA_ORDER=0
 DSN_INFO_START_VALUE=
 DSN_INFO_END_VALUE=
 {{@DSN_INFO_CONDITION_1277320587
-
-@}}
-DSN_INFO_PRIMARY=0
-DSN_INFO_OPEN=1
-DSN_INFO_CLOSE=1
-DSN_INFO_EXCLUSIVE=0
-DSN_INFO_IS_LOGICAL=0
-DSN_INFO_LOGICAL_FDNAME=
-DSN_INFO_ORIGINAL_FDNAME=
-DSN_INFO_REPLACEBY_FILESTATUS=
-DSN_INFO_REPLACEBY_RELATIVEKEY=
-DSN_INFO_REPLACEBY_FDDATA=
-DSN_INFO_REPLACEBY_SLDATA=
-
-[DMD_FILE_0_2099377505]
-OBJ_NAME=0
-OBJ_ID=2099377505
-REL_M_OBJ_ID=0
-ENTITY=clienti
-LINK=0
-LINK_NAME=
-DSN_SIZE=53
-FD_SIZE=0
-SL_SIZE=0
-DSN_INFO_OPEN_MODE=0
-DSN_INFO_LOCK_OPTION=0
-DSN_INFO_KEY_IS=cli-chiave OF clienti
-DSN_INFO_DATA_ORDER=0
-DSN_INFO_START_VALUE=
-DSN_INFO_END_VALUE=
-{{@DSN_INFO_CONDITION_2099377505
 
 @}}
 DSN_INFO_PRIMARY=0
