@@ -39,7 +39,7 @@
 
       *****************************************************************
        DATA DIVISION.
-       FILE SECTION.
+       FILE SECTION.             
            copy "coperfab.fd".
            copy "coperfab-mag.fd".
            copy "tordforn.fd".
@@ -1167,7 +1167,7 @@
                          cpfm-qta-m(6) ) > 0
 
                        if LinkAuto = 1             
-                          move cpfm-articolo to art-codice
+                          move cpfm-articolo to art-codice     
                           read articoli no lock
                           move art-scorta to sco-codice
                           read tscorte no lock
@@ -1229,9 +1229,9 @@
            perform varying idx from 1 by 1 
                      until idx > 6
               add cpfm-qta-m(idx) to tot-qta-moq
-           end-perform.
+           end-perform.                    
            |Sto ordinando di più rispetto al MOQ, a posto così
-           if tot-qta-moq >= art-moq
+           if tot-qta-moq < art-moq
               compute diff-moq = art-moq - tot-qta-moq
               |3. Aggiungo la differenza alla quantità dell'ultimo mese
               add diff-moq to cpfm-qta-m(ultimo-mese-moq)
@@ -1731,7 +1731,7 @@
                  end-if
 
                  move numero-ordf(idx)   to rof-numero
-                 |La riga la trovo dopo col sistema di write
+                 |La riga la trovo dopo col sistema di write   
 
                  move cpfm-articolo      to rof-cod-articolo
                                             prg-cod-articolo
