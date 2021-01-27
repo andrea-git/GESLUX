@@ -656,7 +656,7 @@ LUBEXX             end-if
                 move qta-edit to tmod-qta-imballi
            end-read.
                             
-           add giac-day to tmod-giacenza.
+           add prg-giac-day to tmod-giacenza.
 
            move art-mag-std to tmod-mag-std.
 
