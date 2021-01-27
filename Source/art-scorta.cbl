@@ -52,8 +52,8 @@
             10 r-sec    pic xx.             
          05 filler      pic x(2) value "] ".
 
-       77  como-riga    pic x(100).
-       77  riga-stampa  pic x(100).
+       77  como-riga    pic x(200).
+       77  riga-stampa  pic x(200).
 
        01  controllo    pic xx.    
          88 tutto-ok    value "OK".
@@ -99,25 +99,29 @@
               set RichiamoSchedulato to true
            else                             
               set RichiamoSchedulato to false
-           end-if.
-           if RichiamoSchedulato 
+           end-if.                
+           initialize wstampa.
+           if RichiamoSchedulato        
               move 0 to batch-status
-              initialize wstampa
-              accept como-data from century-date
-              accept como-ora  from time
               accept  wstampa  from environment "SCHEDULER_PATH_LOG"
-              inspect wstampa  replacing trailing spaces by low-value
-              string  wstampa       delimited low-value
-                      "ART-SCORTA_" delimited size
-                      como-data     delimited size
-                      "_"           delimited size
-                      como-ora      delimited size
-                      ".log"        delimited size
-                 into wstampa
-              end-string
+           else                                                     
+              accept  wstampa  from environment "PATH_ST"
+           end-if.                
+           accept como-data from century-date.
+           accept como-ora  from time.
+           inspect wstampa  replacing trailing spaces by low-value.
+           string  wstampa       delimited low-value
+                   "ART-SCORTA_" delimited size
+                   como-data     delimited size
+                   "_"           delimited size
+                   como-ora      delimited size
+                   ".log"        delimited size
+              into wstampa
+           end-string.              
+           if RichiamoSchedulato    
               move wstampa to batch-log
-              open output lineseq
            end-if.
+           open output lineseq.
 
       ***---
        OPEN-FILES.
@@ -132,7 +136,7 @@
            move "INIZIO PROGRAMMA" to como-riga.
            perform SETTA-RIGA-STAMPA.
            move 0 to counter counter2.
-           move low-value to art-rec.
+           move low-value to art-rec. 
            start articoli key >= art-chiave.
            perform until 1 = 2
               read articoli next at end exit perform end-read
@@ -140,7 +144,7 @@
                  move 0 to art-scorta
               else
                  if art-scorta = 0 or
-                    art-scorta = 2
+                    art-scorta = 2 
                     move 0 to giacenza ordinato
                     move low-value  to prg-chiave
                     move art-codice to prg-cod-articolo
@@ -165,17 +169,59 @@
                           end-perform
                     end-start
                     move art-imballo-standard to imq-codice
-                    read timbalqta no lock
+                    read timbalqta no lock      
 
+                    initialize como-riga
                     compute somma = giacenza + ordinato
                     evaluate art-scorta also somma
                     when 0 also >= imq-qta-imb
                          move 2 to art-scorta
-                         rewrite art-rec
+                         rewrite art-rec    
+                         string "ELABORATO ARTICOLO: " delimited size
+                                art-codice             delimited size
+                                " - SCORTA: "          delimited size
+                                art-scorta             delimited size
+                                " - QTA IMBALLI: "     delimited size
+                                imq-qta-imb            delimited size
+                                " - GIACENZA: "        delimited size
+                                giacenza               delimited size
+                                " - ORDINATO: "        delimited size
+                                ordinato               delimited size
+                                " - DA SCORTA 0 a 2"   delimited size
+                           into como-riga
+                         end-string                   
                     when 2 also <= imq-qta-imb
                          move 0 to art-scorta
-                         rewrite art-rec
-                    end-evaluate
+                         rewrite art-rec          
+                         string "ELABORATO ARTICOLO: " delimited size
+                                art-codice             delimited size
+                                " - SCORTA: "          delimited size
+                                art-scorta             delimited size
+                                " - QTA IMBALLI: "     delimited size
+                                imq-qta-imb            delimited size
+                                " - GIACENZA: "        delimited size
+                                giacenza               delimited size
+                                " - ORDINATO: "        delimited size
+                                ordinato               delimited size
+                                " - DA SCORTA 2 a 0"   delimited size
+                           into como-riga
+                         end-string           
+                    when other                    
+                         string "ELABORATO ARTICOLO: "    delimited size
+                                art-codice                delimited size
+                                " - SCORTA: "             delimited size
+                                art-scorta                delimited size
+                                " - QTA IMBALLI: "        delimited size
+                                imq-qta-imb               delimited size
+                                " - GIACENZA: "           delimited size
+                                giacenza                  delimited size
+                                " - ORDINATO: "           delimited size
+                                ordinato                  delimited size
+                                " - NESSUNA SOSTITUZIONE" delimited size
+                           into como-riga 
+                         end-string        
+                    end-evaluate           
+                    perform SETTA-RIGA-STAMPA
                  end-if
               end-if
            end-perform.
@@ -206,11 +252,7 @@
                   como-riga delimited size
              into riga-stampa
            end-string.
-           if RichiamoSchedulato
-              write line-riga of lineseq from riga-stampa
-           else
-              display line-riga upon syserr
-           end-if.
+           write line-riga of lineseq from riga-stampa.
 
       ***---
        SETTA-INIZIO-RIGA.
