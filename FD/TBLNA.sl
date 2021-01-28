@@ -4,7 +4,6 @@
       *+
       *;
       *r
-      *
        SELECT OPTIONAL TBLNA
            ASSIGN       TO RANDOM "TBLNA"
            ORGANIZATION IS INDEXED

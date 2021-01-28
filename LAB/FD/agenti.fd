@@ -55,7 +55,8 @@
                    15 age-num-vuoto-2  PIC  9(15).
                    15 age-num-vuoto-3  PIC  9(15).
                    15 age-telefono-2   PIC  X(15).
-                   15 age-alfa-vuoto-1 PIC  X(5).
+                   15 age-cli-tipo     PIC  X(2).
+                   15 age-alfa-vuoto-1 PIC  X(3).
                    15 age-alfa-vuoto-2 PIC  X(20).
                    15 age-alfa-vuoto-3 PIC  X(20).
                    15 FILLER           PIC  X(200).

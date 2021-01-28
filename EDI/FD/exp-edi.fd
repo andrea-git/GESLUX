@@ -13,22 +13,28 @@
            05 exe-pipe-3       PIC  x(2).
       *     4 SI TA02 Identificativo registro: Tipo registro X(1)
       *
+      *
            05 exe-tipo-registro            PIC  x.
            05 exe-pipe-4       PIC  x(2).
       *     5 SI TA03 Identificativo registro: Codice Ufficio X(8)
+      *
            05 exe-cod-ufficio  PIC  x(8).
            05 exe-pipe-5       PIC  x(2).
       *     6 SI Identificativo registro: Anno protocollo (formato "AAAA") 9(4)
+      *
            05 exe-anno-prot    PIC  9(4).
            05 exe-pipe-6       PIC  x(2).
       *     7 SI Identificativo registro: Numero protocollo X(10)
+      *
            05 exe-num-registro PIC  x(10).
            05 exe-pipe-7       PIC  x(2).
       *     8 COND CN11 Numero identificativo record 9(7)
       *
+      *
            05 exe-prog-registro            PIC  9(7).
            05 exe-pipe-8       PIC  x(2).
       *     9 COND CN01, TA13 Codice prodotto X(18)
+      *
       *
            05 exe-cod-prod     PIC  x(18).
            05 exe-pipe-9       PIC  x(2).
@@ -56,6 +62,7 @@
            05 exe-pipe-14      PIC  x(2).
       *     15 COND Numero delle confezioni 9(7)
       *
+      *
            05 exe-num-conf     PIC  9(7).
            05 exe-pipe-15      PIC  x(2).
       *     16 COND CN11, TA05 Tipo documento / verbale X(3)
@@ -63,9 +70,11 @@
            05 exe-pipe-16      PIC  x(2).
       *     17 COND CN03, CN11 Numero documento / verbale X(21)
       *
+      *
            05 exe-num-doc      PIC  x(21).
            05 exe-pipe-17      PIC  x(2).
       *     18 COND CN11 9(8) Data emissione documento / verbale (nel formato "AAAAMMGG")
+      *
       *
            05 exe-data-doc     PIC  9(8).
            05 exe-pipe-18      PIC  x(2).
@@ -75,24 +84,30 @@
            05 exe-pipe-19      PIC  x(2).
       *     20 COND CN09, TA06 X(2) Provenienza / Destinazione della merce (sigla paese comunitario)
       *
+      *
            05 exe-naz          PIC  x(2).
            05 exe-pipe-20      PIC  x(2).
       *     21 COND CN05 X(30) P.IVA Mittente / Destinatario del prodotto. 
       *
+      *
            05 exe-piva         PIC  x(30).
            05 exe-pipe-21      PIC  x(2).
       *     22 SI TA07 Tipo movimentazione X(1)
+      *
            05 exe-tipo-mov     PIC  x.
            05 exe-pipe-22      PIC  x(2).
       *     23 COND Causale di movimentazione 9(3)
+      *
       *
            05 exe-cau-mov      PIC  9(3).
            05 exe-pipe-23      PIC  x(2).
       *     24 COND Codice posizione fiscale 9(3)
       *
+      *
            05 exe-pos-fis      PIC  9(3).
            05 exe-pipe-24      PIC  x(2).
       *     25 COND CN10, CN16 Importo tributi erariali a debito (Imposta di Consumo) 9(9)V9(2)
+      *
            05 exe-imp-tributi  PIC  9(9),9(2).
            05 exe-pipe-25      PIC  x(2).
            05 exe-note         PIC  x(100).
