@@ -2,16 +2,16 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+ANDESK-andre=192.168.56.1
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E517134626-849-3276520990
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E511C92538-129-2720420005
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
 m_bBlockRecords=1
-m_bRecord=1
-m_nRecordMax=256
+m_bRecordFixed=1
 m_bStandard=1
 m_strPrefix=PAT
 {{@FD_m_strDescription
@@ -19,9 +19,12 @@ m_strPrefix=PAT
  testata partitari
 ----------------------------------------------------------------
  tk 3645 - Realizzazione property sheet prima nota                                                  | scamar 15/02/2011 09:50:25
-           . modificati gli importi definiti "type=amount" con "type=num,dec=2,size=21"    
-             perchè venivano sempre mostrati tre decimali anche se l'importo ne ha due   
-----------------------------------------------------------------
+           . modificati gli importi definiti "type=amount" con "type=num,dec=2,size=21"
+             perchè venivano sempre mostrati tre decimali anche se l'importo ne ha due
+-------------------------------------------------------------------------------
+ tk.9015  Nuova UI per partitari e scadenziari (gesprs08)                     |scamar 09/01/2020
+
+-------------------------------------------------------------------------------
 
  tplvar zmm_title=Partitario
  tplvar zmm_ver=09.01.00
@@ -52,16 +55,17 @@ m_strPrefix=PAT
    21.pat-dare-avere
 
 
-c
+**FD  PAT   RECORD 256.                                                                             | scamar 09/01/2020
+
+
+**01  RECORD-PAT.                                                                                   | scamar 09/01/2020
 @}}
 [FDITEM0_]
-m_strName=RECORD-PAT
+m_strName=record-pat
 m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM0_
-
-
 
 @}}
 [FDITEM1_]
@@ -81,7 +85,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM2_
 $GEN type=num,dec=0,size=11,zmm=on,zmm_title=Progressivo,zmm_datatype=n,zmm_key=1,zmm_size=13,zmm_align=R,zmm_pos=1,zmm_entity=pat
-
 @}}
 [FDITEM3_]
 m_strName=RESTO-RECORD-PAT
@@ -89,7 +92,6 @@ m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM3_
-
 
 
 @}}
@@ -109,6 +111,7 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM5_
+$GEN type=combobox,comboclass=generic_tipo_cfm,comboentity=pat-tipo-cfm-e3
 
 @}}
 [FDITEM6_]
@@ -155,8 +158,7 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM10_
-$GEN type=code,entity=var(pat-codice-cfm-entity of dab-pat)
-
+$GEN type=code,entity=var(pat-tipo-cfm-e3 of dab-pat)
 @}}
 [FDITEM11_]
 m_strName=PAT-CODICE-CONTO-RED
@@ -188,7 +190,6 @@ m_bFixed=1
 
 
  copy "groupdate.xfc". | DBMaker
-
 @}}
 [FDITEM14_]
 m_strName=AA
@@ -242,7 +243,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM18_
 $GEN type=date,zmm=on,zmm_title=Data riferimento,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=4
-
 @}}
 [FDITEM19_]
 m_strName=PAT-NUMERO-RIFERIMENTO
@@ -280,7 +280,6 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM21_
 
 $GEN type=num,dec=2,size=21,zmm=on,zmm_title=Avere,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=7
-
 @}}
 [FDITEM22_]
 m_strName=PAT-IMPORTO-SALDO
@@ -293,6 +292,7 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM22_
 
 $GEN type=num,dec=2,size=21,zmm=on,zmm_title=Saldo,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=8
+
 @}}
 [FDITEM23_]
 m_strName=PAT-CODICE-AG
@@ -304,6 +304,7 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM23_
 
 $GEN type=code,entity=tblag,zmm=on,zmm_title=Agente,zmm_datatype=x,zmm_size=3,zmm_align=L,zmm_pos=9,zmm_entity=tblag
+
 @}}
 [FDITEM24_]
 m_strName=PAT-CODICE-PA
@@ -323,7 +324,6 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM25_
 
  copy "groupdate.xfc". | DBMaker
-
 @}}
 [FDITEM26_]
 m_strName=AA
@@ -389,7 +389,7 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM31_
 
 
-
+$GEN type=num,dec=0,size=7
 @}}
 [FDITEM32_]
 m_strName=PAT-ULTIMA-RIGA-PAS
@@ -400,7 +400,7 @@ m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=ULTIMA-RIGA-PAS
 {{@DataItem_m_strDescriptionFDITEM32_
-
+$GEN type=num,dec=0,size=7
 @}}
 [FDITEM33_]
 m_strName=PAT-DATA-REGISTRAZIONE
@@ -410,7 +410,6 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM33_
 
  copy "groupdate.xfc". | DBMaker
-
 @}}
 [FDITEM34_]
 m_strName=AA
@@ -486,7 +485,6 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM40_
 
  copy "groupdate.xfc". | DBMaker
-
 @}}
 [FDITEM41_]
 m_strName=AA
@@ -563,7 +561,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM47_
 
-$GEN zmm=on,zmm_title=IVA sosp.,zmm_datatype=x,zmm_size=1,zmm_align=L,zmm_pos=18
+$GEN type=checkbox,truevalue="S",falsevalue=" ","zmm=on,zmm_title=IVA sosp.,zmm_datatype=x,zmm_size=1,zmm_align=L,zmm_pos=18
 @}}
 [FDITEM48_]
 m_strName=PAT-IVA-SOSPENSIONE-88
@@ -575,6 +573,15 @@ m_strTrue="S" " "
 
 @}}
 [FDITEM49_]
+m_strName=pat-iva-sospensione-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM49_
+
+@}}
+[FDITEM50_]
 m_strName=PAT-IMPORTO-DOCUMENTO
 m_strRawPic=S9(13)V9(02)
 m_strPic=S9(13)V9(02)
@@ -582,140 +589,200 @@ m_nItemLevel=10
 m_nSync=-1
 m_nSign=4
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM49_
+{{@DataItem_m_strDescriptionFDITEM50_
+
 
 $GEN type=num,dec=2,size=21,zmm=on,zmm_title=Importo documento,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=19
 @}}
-[FDITEM50_]
+[FDITEM51_]
 m_strName=PAT-NUM-DOCUMENTO
 m_strRawPic=X(06)
 m_strPic=X(06)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM50_
+{{@DataItem_m_strDescriptionFDITEM51_
 
 $GEN zmm=on,zmm_title=Tipo documento,zmm_datatype=x,zmm_size=6,zmm_align=L,zmm_pos=20
-
 @}}
-[FDITEM51_]
+[FDITEM52_]
 m_strName=PAT-DARE-AVERE
 m_strRawPic=X(01)
 m_strPic=X(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM51_
+{{@DataItem_m_strDescriptionFDITEM52_
 
 $GEN zmm=on,zmm_title=D/A,zmm_datatype=x,zmm_size=1,zmm_align=L,zmm_pos=21
+
 @}}
-[FDITEM52_]
+[FDITEM53_]
 m_strName=PAT-DARE-AVERE-D
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="D"
-{{@DataItem_m_strDescriptionFDITEM52_
+{{@DataItem_m_strDescriptionFDITEM53_
 
 @}}
-[FDITEM53_]
+[FDITEM54_]
 m_strName=PAT-DARE-AVERE-A
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="A"
-{{@DataItem_m_strDescriptionFDITEM53_
+{{@DataItem_m_strDescriptionFDITEM54_
 
 @}}
-[FDITEM54_]
+[FDITEM55_]
 m_strName=PAT-ESCLUSO-50
 m_strRawPic=X(01)
 m_strPic=X(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM54_
+{{@DataItem_m_strDescriptionFDITEM55_
+$GEN type=radiobutton,value_1=" ",image_1=1,value_2="S",image_2=2,value_3="N",image_3=3
 
 @}}
-[FDITEM55_]
+[FDITEM56_]
 m_strName=PAT-ESCLUSO-50-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S" "N" " "
-{{@DataItem_m_strDescriptionFDITEM55_
+{{@DataItem_m_strDescriptionFDITEM56_
 
 @}}
-[FDITEM56_]
+[FDITEM57_]
+m_strName=pat-escluso-50-88-addebito
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM57_
+
+@}}
+[FDITEM58_]
+m_strName=pat-escluso-50-88-nonsoggetto
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="N"
+{{@DataItem_m_strDescriptionFDITEM58_
+
+@}}
+[FDITEM59_]
+m_strName=pat-escluso-50-88-storno
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" "
+{{@DataItem_m_strDescriptionFDITEM59_
+
+@}}
+[FDITEM60_]
 m_strName=PAT-PERCENTUALE-50
 m_strRawPic=X(01)
 m_strPic=X(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM56_
-
+{{@DataItem_m_strDescriptionFDITEM60_
+$GEN type=radiobutton,value_1=" ",image_1=1,value_2="S",image_2=2
 @}}
-[FDITEM57_]
+[FDITEM61_]
 m_strName=PAT-PERCENTUALE-50-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S" " "
-{{@DataItem_m_strDescriptionFDITEM57_
+{{@DataItem_m_strDescriptionFDITEM61_
 
 @}}
-[FDITEM58_]
+[FDITEM62_]
+m_strName=pat-percentuale-50-88-recupero2
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM62_
+
+@}}
+[FDITEM63_]
+m_strName=pat-percentuale-50-88-recupero1
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" "
+{{@DataItem_m_strDescriptionFDITEM63_
+
+@}}
+[FDITEM64_]
 m_strName=PAT-FILLER
 m_strRawPic=X(53)
 m_strPic=X(53)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM58_
+{{@DataItem_m_strDescriptionFDITEM64_
 
 @}}
-[FDITEM59_]
+[FDITEM65_]
 m_strName=PAT-FILLER-RIS
 m_strRawPic=X(40)
 m_strPic=X(40)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM59_
+{{@DataItem_m_strDescriptionFDITEM65_
 
 @}}
 [CStoAcucobolSL_]
 m_nType=1
 m_bOptional=1
-m_strAssignToName="PAT"
-m_nDevice=4
+m_nDevice=5
 m_nFormat=3
 m_nAccessMode=3
-m_strFileStatus=STATUS-PAT
-m_nCompression=95
+m_nLockMode=13
+m_strFileStatus=status-pat
+m_nNumber=1
+m_nCompression=70
 {{@SL_m_strDescription
 
 @}}
 [SLPKEY_]
-m_strName=PAT-CODICE
+m_strName=pat-codice of record-pat
 m_bUnique=1
 {{@Key_m_strDescription
 
 @}}
 [SLKEYATOM0_]
-m_strName=PAT-CODICE
+m_strName=pat-codice of record-pat
 [SLINDEX0_]
-m_strName=PAT-CODICE1
+m_strName=pat-codice1
 m_bUnique=1
 {{@Key_m_strDescriptionSLINDEX0_
 
 @}}
 [SLKEYATOM0_SLINDEX0_]
-m_strName=PAT-CODICE-CONTO
+m_strName=pat-codice-conto of record-pat
 [SLKEYATOM1_SLINDEX0_]
-m_strName=PAT-DATA-RIFERIMENTO
+m_strName=pat-data-riferimento of record-pat
 [SLKEYATOM2_SLINDEX0_]
-m_strName=PAT-NUMERO-RIFERIMENTO
+m_strName=pat-numero-riferimento of record-pat
 [SLKEYATOM3_SLINDEX0_]
-m_strName=PAT-CODICE
+m_strName=pat-codice of record-pat
+[SLINDEX1_]
+m_strName=pat-codice2
+m_bUnique=1
+{{@Key_m_strDescriptionSLINDEX1_
+
+@}}
+[SLKEYATOM0_SLINDEX1_]
+m_strName=pat-data-riferimento of record-pat
+[SLKEYATOM1_SLINDEX1_]
+m_strName=pat-codice-conto of record-pat
+[SLKEYATOM2_SLINDEX1_]
+m_strName=pat-codice of record-pat

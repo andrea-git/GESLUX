@@ -2,7 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E3B1D231648-728-2213320776
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E511311240-767-309283008
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -316,6 +316,7 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM3_
 
 $GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=08,zmm_align=L,zmm_pos=1,zmm_entity=docdi
+
 @}}
 [FDITEM4_]
 m_strName=docdi-codice3
@@ -345,6 +346,7 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM6_
 
 $GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=2
+
 @}}
 [FDITEM7_]
 m_strName=docdi-nome2
@@ -356,6 +358,7 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM7_
 
 $GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=3
+
 @}}
 [FDITEM8_]
 m_strName=docdi-via
@@ -447,6 +450,7 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM16_
 
 $GEN zmm=on,zmm_title=Partita IVA,zmm_datatype=x,zmm_size=11,zmm_align=L,zmm_pos=4
+
 @}}
 [FDITEM17_]
 m_strName=docdi-codice-fiscale
@@ -457,6 +461,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM17_
 $GEN zmm=on,zmm_title=Codice fiscale,zmm_datatype=x,zmm_size=16,zmm_align=L,zmm_pos=5
+
 @}}
 [FDITEM18_]
 m_strName=docdi-persona-fisica
@@ -567,6 +572,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM28_
 $GEN type=radiobutton,value_1="M",image_1=1,value_2="F",image_2=2
+
 @}}
 [FDITEM29_]
 m_strName=DOCDI-SESSO-88
@@ -1522,6 +1528,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM123_
 $GEN type=code,entity=tblva
+
 @}}
 [FDITEM124_]
 m_strName=docdi-mas-euro
@@ -1532,6 +1539,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM124_
 $GEN type=code,entity=mas
+
 @}}
 [FDITEM125_]
 m_strName=docdi-carica-iva-old
@@ -1583,6 +1591,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM129_
 $GEN type=code,entity=ban
+
 @}}
 [FDITEM130_]
 m_strName=DOCDI-ORDINE-GIORNALE
@@ -1622,6 +1631,7 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM133_
 $GEN type=code,entity=tbliv
 
+
 @}}
 [FDITEM134_]
 m_strName=DOCDI-TIPO-FORNITORE-IVA
@@ -1651,6 +1661,7 @@ m_bFixed=1
 **        10  DOCDI-DOMINIO-WWP               PIC  X(30).                                         | mxm 26/02/2007 17.27
 **        10  DOCDI-CARTELLA-WWP              PIC  X(50).                                         | mxm 26/02/2007 17.27
 $GEN type=code,entity=mas
+
 @}}
 [FDITEM136_]
 m_strName=docdi-mas-ivand
@@ -1661,6 +1672,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM136_
 $GEN type=code,entity=mas
+
 @}}
 [FDITEM137_]
 m_strName=filler
@@ -1734,6 +1746,7 @@ $XFD  NAME=DOCDI-COD-GIOVE                                     | ds 18.09.03
        10  DOCDI-CODICE-AZIENDA-GIOVE      PIC  9(05).         | ds 18.09.03
 .09.03
 $GEN type=num,dec=0,size=08
+
 @}}
 [FDITEM143_]
 m_strName=DOCDI-WE-SERVER
@@ -1772,6 +1785,7 @@ campi per collegamento WE (ac)
 
 3.05.03
 
+
 @}}
 [FDITEM146_]
 m_strName=DOCDI-WE-RICHIESTA-PASSWORD-88
@@ -1802,6 +1816,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM148_
 $GEN type=code,entity=g2mail
+
 
 @}}
 [FDITEM149_]
@@ -1840,6 +1855,7 @@ m_bFixed=1
 3.05.03
 3.05.03
 
+
 @}}
 [FDITEM152_]
 m_strName=docdi-codice-fiscale-dichiarante
@@ -1857,6 +1873,7 @@ fine campi per collegamento WE (ac)
 
 
 comunicazione annuale iva (dal 2003)
+
 
 @}}
 [FDITEM153_]
@@ -1952,6 +1969,7 @@ server posta in entrata
 
 
 $GEN type=radiobutton,value_1="O",image_1=1,value_2="S",image_2=2
+
 @}}
 [FDITEM161_]
 m_strName=DOCDI-TIPO-CONTAB-88
@@ -1989,6 +2007,7 @@ m_bFixed=1
 m_strTrue=" " "1" "2" "3" "4" "5"
 {{@DataItem_m_strDescriptionFDITEM164_
 07.04
+
 
 @}}
 [FDITEM165_]
@@ -2054,6 +2073,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM170_
 $GEN type=checkbox,truevalue="S", falsevalue=" "
+
 @}}
 [FDITEM171_]
 m_strName=DOCDI-SOLO-EMAIL-UTENTE
@@ -2220,6 +2240,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM187_
 $GEN type=checkbox,truevalue="S", falsevalue=" "
+
 @}}
 [FDITEM188_]
 m_strName=DOCDI-CREA-FT-DIFFERITA-88
@@ -2238,6 +2259,7 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM189_
+
 
 
 @}}
@@ -2261,6 +2283,7 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM191_
 
 $GEN type=code,entity=tblva
+
 @}}
 [FDITEM192_]
 m_strName=docdi-cciaa
@@ -2346,6 +2369,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM200_
  copy "groupdate.xfc". | DBMaker
+
 @}}
 [FDITEM201_]
 m_strName=aa
@@ -2400,6 +2424,7 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM205_
 $GEN type=date,
 
+
 @}}
 [FDITEM206_]
 m_strName=docdi-accorpa-corr
@@ -2413,6 +2438,7 @@ m_bFixed=1
 
 
  punto vendita: "accorpa scritture contabili corr.giornalieri"                                    | mxm 17/10/2007 17.13
+
 @}}
 [FDITEM207_]
 m_strName=docdi-split-cven
@@ -2537,6 +2563,7 @@ m_bFixed=1
 
  porta server smtp
 
+
 @}}
 [FDITEM219_]
 m_strName=docdi-smtp-port-default
@@ -2610,6 +2637,7 @@ m_nDataType_Xfd=2
 m_strDateFormat_Xfd=yyyymmdd
 {{@DataItem_m_strDescriptionFDITEM224_
 $GEN type=date,
+
 @}}
 [FDITEM225_]
 m_strName=docdi-ktrun
@@ -2619,6 +2647,7 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM225_
+
 
 
 
@@ -2692,6 +2721,7 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM232_
 
 
+
 @}}
 [FDITEM233_]
 m_strName=docdi-codice-tblna
@@ -2704,6 +2734,7 @@ m_bFixed=1
 
 
 $GEN type=code,entity=tblna
+
 @}}
 [FDITEM234_]
 m_strName=docdi-codice-iva-estero
@@ -2785,6 +2816,7 @@ m_nDataType_Xfd=2
 m_strDateFormat_Xfd=yyyymmdd
 {{@DataItem_m_strDescriptionFDITEM241_
 $GEN type=date,
+
 @}}
 [FDITEM242_]
 m_strName=docdi-comune-nascita-dich
@@ -2867,6 +2899,7 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM249_
 
 
+
 @}}
 [FDITEM250_]
 m_strName=docdi-cardov03-riep-taglie-ok
@@ -2935,6 +2968,7 @@ m_bFixed=1
 
 **   10  docdi-filler-01                  pic  x(493).                | maxime 15/04/2011 08:44:12  | rososv 11/05/2011 17:21:12
 
+
 @}}
 [FDITEM256_]
 m_strName=docdi-mig-tk3881-eseguita
@@ -2993,6 +3027,7 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM261_
 
 
+
 @}}
 [FDITEM262_]
 m_strName=docdi-ps-days-ven
@@ -3035,6 +3070,7 @@ m_bFixed=1
 m_strName_Xfd=docdi-codice-tblna
 {{@DataItem_m_strDescriptionFDITEM265_
 $GEN type=code,entity=tblna
+
 @}}
 [FDITEM266_]
 m_strName=docdi-nascondi-msg-ctr-esis
@@ -3072,6 +3108,7 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM269_
+
 
 
 @}}
@@ -3210,6 +3247,7 @@ m_nDataType_Xfd=2
 m_strDateFormat_Xfd=yyyymmdd
 {{@DataItem_m_strDescriptionFDITEM282_
 $GEN type=date,
+
 @}}
 [FDITEM283_]
 m_strName=docdi-denom-sogg-tenuto-com
@@ -3325,6 +3363,7 @@ m_bFixed=1
 
 mento a codice azienda su app mobileFV   | scamar 09/06/2014
 ** indica se si vuole la richiesta interattiva da aggdav della scadenza da movimentare (per note di credito)
+
 @}}
 [FDITEM294_]
 m_strName=docdi-aggdav-richiesta-scad-ok
@@ -3352,6 +3391,7 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM296_
 
 ** causali contabili da proporre nel programma di chiusura contabile                                | Suadal 16/09/2014
+
 @}}
 [FDITEM297_]
 m_strName=docdi-tabella-tblco-chimov
@@ -3393,6 +3433,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM300_
 $GEN type=code,entity=tblco,blanknull=on
+
 @}}
 [FDITEM301_]
 m_strName=docdi-tblco-chiu-patr
@@ -3403,6 +3444,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM301_
 $GEN type=code,entity=tblco,blanknull=on
+
 @}}
 [FDITEM302_]
 m_strName=docdi-tblco-aper-patr
@@ -3413,6 +3455,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM302_
 $GEN type=code,entity=tblco,blanknull=on
+
 
 @}}
 [FDITEM303_]
@@ -3425,6 +3468,7 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM303_
 $GEN type=code,entity=tblco,blanknull=on
 
+
 @}}
 [FDITEM304_]
 m_strName=docdi-tblco-aper-ordine
@@ -3435,6 +3479,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM304_
 $GEN type=code,entity=tblco,blanknull=on
+
 @}}
 [FDITEM305_]
 m_strName=docdi-tblco-utile
@@ -3446,6 +3491,7 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM305_
 $GEN type=code,entity=tblco,blanknull=on
 
+
 @}}
 [FDITEM306_]
 m_strName=docdi-tblco-perdita
@@ -3456,6 +3502,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM306_
 $GEN type=code,entity=tblco,blanknull=on
+
 @}}
 [FDITEM307_]
 m_strName=docdi-ultimo-esercizio
@@ -3466,6 +3513,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM307_
 $GEN type=code,entity=doces,
+
 @}}
 [FDITEM308_]
 m_strName=docdi-codice-azienda-pagheweb
@@ -3477,6 +3525,7 @@ m_bFixed=1
 m_strName_Xfd=docdi-codice-azien
 {{@DataItem_m_strDescriptionFDITEM308_
 $GEN type=num,dec=0,size=08
+
 @}}
 [FDITEM309_]
 m_strName=docdi-tipo-colleg-31

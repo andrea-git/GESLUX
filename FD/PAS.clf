@@ -2,10 +2,11 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+ANDESK-andre=192.168.56.1
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E5116101939-688-39925702
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E511C92538-69-466721938
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -20,22 +21,33 @@ m_strPrefix=PAS
  asgiunto 88 su PAS-A-VISTA                                                                       | mxm 10/12/2004 11.39
 -----------------------------------------------------------------
  Ticket 378 - asgiunto 88 su PAS-SCADENZA-INSOLUTA                                                |ms 30/05/2008 9.41
------------------------------------------------------------------     
+-----------------------------------------------------------------
  tk 3645 - Realizzazione property sheet prima nota                                                  | scamar 15/02/2011 09:50:25
-           . modifiche per deprecaggio "puntoniente" 
+           . modifiche per deprecaggio "puntoniente"
            . modificata clausola di generazione della colonna "pas-codice-va-dare"
            . modificata clausola di generazione della colonna "pas-codice-va-avere"
            . modificata clausola di generazione della colonna "pas-codice-ba"
 ----------------------------------------------------------------
  tk 2761 - Abilitare saldaconto in wizard e renderlo automatico                                     | scamar 26/05/2011 10:58:09
-           . modificata clausola di generazione della colonna "pas-progressivo"           
+           . modificata clausola di generazione della colonna "pas-progressivo"
 ------------------------------------------------------------------
  tk 3673 - tracciabilità flussi finanziari - CIG e CUP su documenti                                 | suadal 06/06/2011 10:49:23
-         - aggiunti pas-codice-cig pas-codice-cup 
+         - aggiunti pas-codice-cig pas-codice-cup
 ------------------------------------------------------------------------------------------------------------------------
- ticket 19 - Implementare (opzionalmente) giroconto ritenute in fase pagamento fattura              | suadal 19/07/2012                         
+ ticket 19 - Implementare (opzionalmente) giroconto ritenute in fase pagamento fattura              | suadal 19/07/2012
          - solo rigenerato
-------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+ Ticket 6442: Aggancio partita su nota credito split                                                | rososv 25/01/2016
+
+ - Campo boolean per identificare record generato da giroconto iva split
+   su note di accredito. Questo record in fase di cancellazione va sempre
+   deletetato, senza alcun ragionamento su importi dare/avere
+----------------------------------------------------------------
+ tk 9015 - Nuova interfaccia per partitari e scadenziari (new gesprs08)                             | scamar 02/03/2020
+           .$gen per pas-saldo-acconto
+
+
+
 
  tplvar zmm_title=Righe scadenzario
  tplvar zmm_ver=09.01.00
@@ -82,7 +94,7 @@ m_strPrefix=PAS
    36.pas-progressivo-dcr
    37.pas-codice-cig
    38.pas-codice-cup
-                                                                 
+
 
 **FD  PAS   RECORD 512.                                                                             | scamar 15/02/2011 14:28:52
 
@@ -142,7 +154,6 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM5_
 
 
-
 @}}
 [FDITEM6_]
 m_strName=PAS-CODICE-CONTO
@@ -198,7 +209,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM11_
 $GEN type=code,entity=var(pas-codice-cfm-entity of dab-pas)
-
 @}}
 [FDITEM12_]
 m_strName=PAS-CODICE-CONTO-RED
@@ -219,7 +229,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM13_
 $GEN type=codecfm,zmm=on,zmm_title=Conto,zmm_datatype=m,zmm_key=3,zmm_size=11,zmm_align=L,zmm_pos=5,zmm_entity=codecfm
-
 @}}
 [FDITEM14_]
 m_strName=PAS-DATA-RIFERIMENTO
@@ -282,7 +291,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM19_
 $GEN type=date,zmm=on,zmm_title=Data riferimento,zmm_datatype=d,zmm_key=4,zmm_size=11,zmm_align=R,zmm_pos=7
-
 @}}
 [FDITEM20_]
 m_strName=PAS-NUMERO-RIFERIMENTO
@@ -295,6 +303,7 @@ m_bFixed=1
 
 
 $GEN zmm=on,zmm_title=Numero riferimento,zmm_datatype=x,zmm_size=12,zmm_align=L,zmm_pos=8
+
 @}}
 [FDITEM21_]
 m_strName=PAS-DATA-SCADENZA
@@ -379,7 +388,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM28_
 $GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=11
-
 @}}
 [FDITEM29_]
 m_strName=PAS-BANCA
@@ -398,152 +406,165 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM30_
 $GEN zmm=on,zmm_title=Banca di appoggio,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=12
-
 @}}
 [FDITEM31_]
-m_strName=PAS-CODICE-ABI
-m_strRawPic=9(05)
-m_strPic=9(05)
+m_strName=pas-codice-abi-x
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM31_
-$GEN zmm=on,zmm_title=ABI,zmm_datatype=x,zmm_size=05,zmm_align=L,zmm_pos=13
 
 @}}
 [FDITEM32_]
+m_strName=PAS-CODICE-ABI
+m_strRawPic=9(05)
+m_strPic=9(05)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM32_
+$GEN zmm=on,zmm_title=ABI,zmm_datatype=x,zmm_size=05,zmm_align=L,zmm_pos=13
+@}}
+[FDITEM33_]
 m_strName=PAS-BANCA2
 m_strRawPic=X(30)
 m_strPic=X(30)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM32_
-$GEN zmm=on,zmm_title=Filiale banca di appoggio,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=14
-@}}
-[FDITEM33_]
-m_strName=PAS-CODICE-CAB
-m_strRawPic=9(05)
-m_strPic=9(05)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM33_
-$GEN zmm=on,zmm_title=CAB,zmm_datatype=x,zmm_size=05,zmm_align=L,zmm_pos=15
+$GEN zmm=on,zmm_title=Filiale banca di appoggio,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=14
 
 @}}
 [FDITEM34_]
+m_strName=PAS-CODICE-CAB-x
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM34_
+
+@}}
+[FDITEM35_]
+m_strName=PAS-CODICE-CAB
+m_strRawPic=9(05)
+m_strPic=9(05)
+m_nItemLevel=20
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM35_
+$GEN zmm=on,zmm_title=CAB,zmm_datatype=x,zmm_size=05,zmm_align=L,zmm_pos=15
+@}}
+[FDITEM36_]
 m_strName=PAS-CODICE-TR
 m_strRawPic=X(01)
 m_strPic=X(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM34_
+{{@DataItem_m_strDescriptionFDITEM36_
 $GEN type=code,entity=tbltr
 @}}
-[FDITEM35_]
+[FDITEM37_]
 m_strName=PAS-RATA
 m_strRawPic=9(02)
 m_strPic=9(02)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM35_
+{{@DataItem_m_strDescriptionFDITEM37_
 $GEN type=num,dec=0,size=3,zmm=on,zmm_title=Rata,zmm_datatype=n,zmm_size=05,zmm_align=R,zmm_pos=16
-
 @}}
-[FDITEM36_]
+[FDITEM38_]
 m_strName=PAS-SALDO-ACCONTO
 m_strRawPic=X(01)
 m_strPic=X(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM36_
-
+{{@DataItem_m_strDescriptionFDITEM38_
+$GEN type=combobox,comboclass=dvr_saldo_acconto
 @}}
-[FDITEM37_]
+[FDITEM39_]
 m_strName=PAS-SALDO-ACCONTO-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S" "A" " "
-{{@DataItem_m_strDescriptionFDITEM37_
+{{@DataItem_m_strDescriptionFDITEM39_
 
 @}}
-[FDITEM38_]
+[FDITEM40_]
 m_strName=PAS-SALDO-ACCONTO-88-A
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="A"
-{{@DataItem_m_strDescriptionFDITEM38_
+{{@DataItem_m_strDescriptionFDITEM40_
 
 @}}
-[FDITEM39_]
+[FDITEM41_]
 m_strName=PAS-SALDO-ACCONTO-88-S
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S"
-{{@DataItem_m_strDescriptionFDITEM39_
+{{@DataItem_m_strDescriptionFDITEM41_
 
 @}}
-[FDITEM40_]
+[FDITEM42_]
 m_strName=PAS-A-VISTA
 m_strRawPic=X(01)
 m_strPic=X(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM40_
+{{@DataItem_m_strDescriptionFDITEM42_
 
 
-$GEN zmm=on,zmm_title=Scadenza a vista,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=18
+$GEN type=combobox,comboclass=pas_a_vista,zmm=on,zmm_title=Scadenza a vista,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=18
 @}}
-[FDITEM41_]
+[FDITEM43_]
 m_strName=PAS-A-VISTA-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S" " "
-{{@DataItem_m_strDescriptionFDITEM41_
+{{@DataItem_m_strDescriptionFDITEM43_
 
 @}}
-[FDITEM42_]
+[FDITEM44_]
 m_strName=PAS-A-VISTA-S
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S"
-{{@DataItem_m_strDescriptionFDITEM42_
+{{@DataItem_m_strDescriptionFDITEM44_
 
 @}}
-[FDITEM43_]
+[FDITEM45_]
 m_strName=PAS-CODICE-SE
 m_strRawPic=X(03)
 m_strPic=X(03)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM43_
+{{@DataItem_m_strDescriptionFDITEM45_
 $GEN type=code,entity=tblse,zmm=on,zmm_title=Segnalazione scad.sospesa,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=19,zmm_entity=tblse
 
 @}}
-[FDITEM44_]
+[FDITEM46_]
 m_strName=PAS-CODICE-VA-DARE
 m_strRawPic=X(03)
 m_strPic=X(03)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM44_
+{{@DataItem_m_strDescriptionFDITEM46_
 
 
 $GEN type=code,entity=tblva,zmm=on,zmm_title=Valuta dare,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=22,zmm_entity=tblva
 @}}
-[FDITEM45_]
+[FDITEM47_]
 m_strName=PAS-IMPORTO-DARE
 m_strRawPic=S9(13)V9(02)
 m_strPic=S9(13)V9(02)
@@ -551,11 +572,10 @@ m_nItemLevel=10
 m_nSync=-1
 m_nSign=4
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM45_
+{{@DataItem_m_strDescriptionFDITEM47_
 $GEN type=num,dec=2,size=21,zmm=on,zmm_title=Importo dare,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=21
-
 @}}
-[FDITEM46_]
+[FDITEM48_]
 m_strName=PAS-IMPORTO-DARE-VA
 m_strRawPic=S9(15)V9(03)
 m_strPic=S9(15)V9(03)
@@ -563,20 +583,20 @@ m_nItemLevel=10
 m_nSync=-1
 m_nSign=4
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM46_
+{{@DataItem_m_strDescriptionFDITEM48_
 $GEN type=num,dec=3,size=24,val=PAS-CODICE-VA-DARE of dab-pas,zmm=on,zmm_title=Importo dare valuta,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=23
 @}}
-[FDITEM47_]
+[FDITEM49_]
 m_strName=PAS-DATA-REGISTRAZIONE-D
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM47_
+{{@DataItem_m_strDescriptionFDITEM49_
 
 
  copy "groupdate.xfc". | DBMaker
 @}}
-[FDITEM48_]
+[FDITEM50_]
 m_strName=AA
 m_strRawPic=9(04)
 m_strPic=9(04)
@@ -584,10 +604,10 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=REGISTRAZIONE-D-AA
-{{@DataItem_m_strDescriptionFDITEM48_
+{{@DataItem_m_strDescriptionFDITEM50_
 
 @}}
-[FDITEM49_]
+[FDITEM51_]
 m_strName=MM
 m_strRawPic=9(02)
 m_strPic=9(02)
@@ -595,10 +615,10 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=REGISTRAZIONE-D-MM
-{{@DataItem_m_strDescriptionFDITEM49_
+{{@DataItem_m_strDescriptionFDITEM51_
 
 @}}
-[FDITEM50_]
+[FDITEM52_]
 m_strName=GG
 m_strRawPic=9(02)
 m_strPic=9(02)
@@ -606,51 +626,51 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=REGISTRAZIONE-D-GG
-{{@DataItem_m_strDescriptionFDITEM50_
+{{@DataItem_m_strDescriptionFDITEM52_
 
 @}}
-[FDITEM51_]
+[FDITEM53_]
 m_strName=FILLER
 m_nItemLevel=10
 m_bRedefines=1
 m_strRedefines=PAS-DATA-REGISTRAZIONE-D
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM51_
+{{@DataItem_m_strDescriptionFDITEM53_
 
 @}}
-[FDITEM52_]
+[FDITEM54_]
 m_strName=PAS-DATA-REGISTRAZIONE-D-NUM
 m_strRawPic=9(08)
 m_strPic=9(08)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM52_
+{{@DataItem_m_strDescriptionFDITEM54_
 $GEN type=date,zmm=on,zmm_title=Data protocollo dare,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=24
 @}}
-[FDITEM53_]
+[FDITEM55_]
 m_strName=PAS-NUMERO-PROTOCOLLO-D
 m_strRawPic=9(06)
 m_strPic=9(06)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM53_
+{{@DataItem_m_strDescriptionFDITEM55_
 
 $GEN type=num,dec=0,size=8,zmm=on,zmm_title=Protocollo dare,zmm_datatype=n,zmm_size=11,zmm_align=R,zmm_pos=25
 
 @}}
-[FDITEM54_]
+[FDITEM56_]
 m_strName=PAS-DATA-DOCUMENTO-D
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM54_
+{{@DataItem_m_strDescriptionFDITEM56_
 
  copy "groupdate.xfc". | DBMaker
 @}}
-[FDITEM55_]
+[FDITEM57_]
 m_strName=AA
 m_strRawPic=9(04)
 m_strPic=9(04)
@@ -658,10 +678,10 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=PAS-DOCUMENTO-D-AA
-{{@DataItem_m_strDescriptionFDITEM55_
+{{@DataItem_m_strDescriptionFDITEM57_
 
 @}}
-[FDITEM56_]
+[FDITEM58_]
 m_strName=MM
 m_strRawPic=9(02)
 m_strPic=9(02)
@@ -669,10 +689,10 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=PAS-DOCUMENTO-D-MM
-{{@DataItem_m_strDescriptionFDITEM56_
+{{@DataItem_m_strDescriptionFDITEM58_
 
 @}}
-[FDITEM57_]
+[FDITEM59_]
 m_strName=GG
 m_strRawPic=9(02)
 m_strPic=9(02)
@@ -680,54 +700,54 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=PAS-DOCUMENTO-D-GG
-{{@DataItem_m_strDescriptionFDITEM57_
+{{@DataItem_m_strDescriptionFDITEM59_
 
 @}}
-[FDITEM58_]
+[FDITEM60_]
 m_strName=FILLER
 m_nItemLevel=10
 m_bRedefines=1
 m_strRedefines=PAS-DATA-DOCUMENTO-D
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM58_
+{{@DataItem_m_strDescriptionFDITEM60_
 
 @}}
-[FDITEM59_]
+[FDITEM61_]
 m_strName=PAS-DATA-DOCUMENTO-D-NUM
 m_strRawPic=9(08)
 m_strPic=9(08)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM59_
+{{@DataItem_m_strDescriptionFDITEM61_
 $GEN type=date,zmm=on,zmm_title=Data documento dare,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=26
+
 @}}
-[FDITEM60_]
+[FDITEM62_]
 m_strName=PAS-NUMERO-DOCUMENTO-D
 m_strRawPic=9(06)
 m_strPic=9(06)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM60_
+{{@DataItem_m_strDescriptionFDITEM62_
 
 $GEN type=num,dec=0,size=8,zmm=on,zmm_title=Documento dare,zmm_datatype=n,zmm_size=11,zmm_align=R,zmm_pos=27
 @}}
-[FDITEM61_]
+[FDITEM63_]
 m_strName=PAS-CODICE-VA-AVERE
 m_strRawPic=X(03)
 m_strPic=X(03)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM61_
+{{@DataItem_m_strDescriptionFDITEM63_
 
 
 $GEN type=code,entity=tblva,zmm=on,zmm_title=Valuta avere,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=29,zmm_entity=tblva
-
 @}}
-[FDITEM62_]
+[FDITEM64_]
 m_strName=PAS-IMPORTO-AVERE
 m_strRawPic=S9(13)V9(02)
 m_strPic=S9(13)V9(02)
@@ -735,10 +755,11 @@ m_nItemLevel=10
 m_nSync=-1
 m_nSign=4
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM62_
+{{@DataItem_m_strDescriptionFDITEM64_
 $GEN type=num,dec=2,size=21,zmm=on,zmm_title=Importo avere,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=28
+
 @}}
-[FDITEM63_]
+[FDITEM65_]
 m_strName=PAS-IMPORTO-AVERE-VA
 m_strRawPic=S9(15)V9(03)
 m_strPic=S9(15)V9(03)
@@ -746,20 +767,20 @@ m_nItemLevel=10
 m_nSync=-1
 m_nSign=4
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM63_
+{{@DataItem_m_strDescriptionFDITEM65_
 $GEN type=num,dec=3,size=24,val=PAS-CODICE-VA-AVERE of dab-pas,zmm=on,zmm_title=Importo avere valuta,zmm_datatype=n,zmm_size=24,zmm_align=R,zmm_pos=30
 @}}
-[FDITEM64_]
+[FDITEM66_]
 m_strName=PAS-DATA-REGISTRAZIONE-A
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM64_
+{{@DataItem_m_strDescriptionFDITEM66_
 
 
  copy "groupdate.xfc". | DBMaker
 @}}
-[FDITEM65_]
+[FDITEM67_]
 m_strName=AA
 m_strRawPic=9(04)
 m_strPic=9(04)
@@ -767,10 +788,10 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=REGISTRAZIONE-A-AA
-{{@DataItem_m_strDescriptionFDITEM65_
+{{@DataItem_m_strDescriptionFDITEM67_
 
 @}}
-[FDITEM66_]
+[FDITEM68_]
 m_strName=MM
 m_strRawPic=9(02)
 m_strPic=9(02)
@@ -778,10 +799,10 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=REGISTRAZIONE-A-MM
-{{@DataItem_m_strDescriptionFDITEM66_
+{{@DataItem_m_strDescriptionFDITEM68_
 
 @}}
-[FDITEM67_]
+[FDITEM69_]
 m_strName=GG
 m_strRawPic=9(02)
 m_strPic=9(02)
@@ -789,20 +810,20 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=REGISTRAZIONE-A-GG
-{{@DataItem_m_strDescriptionFDITEM67_
+{{@DataItem_m_strDescriptionFDITEM69_
 
 @}}
-[FDITEM68_]
+[FDITEM70_]
 m_strName=FILLER
 m_nItemLevel=10
 m_bRedefines=1
 m_strRedefines=PAS-DATA-REGISTRAZIONE-A
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM68_
+{{@DataItem_m_strDescriptionFDITEM70_
 
 @}}
-[FDITEM69_]
+[FDITEM71_]
 m_strName=PAS-DATA-REGISTRAZIONE-A-NUM
 m_strRawPic=9(08)
 m_strPic=9(08)
@@ -810,11 +831,11 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=PAS-DATA-REGISTRAZ
-{{@DataItem_m_strDescriptionFDITEM69_
+{{@DataItem_m_strDescriptionFDITEM71_
 $GEN type=date,zmm=on,zmm_title=Data protocollo avere,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=31
 
 @}}
-[FDITEM70_]
+[FDITEM72_]
 m_strName=PAS-NUMERO-PROTOCOLLO-A
 m_strRawPic=9(06)
 m_strPic=9(06)
@@ -822,21 +843,22 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=PROTOCOLLO-A
-{{@DataItem_m_strDescriptionFDITEM70_
+{{@DataItem_m_strDescriptionFDITEM72_
 
 
 $GEN type=num,dec=0,size=8,zmm=on,zmm_title=Protocollo avere,zmm_datatype=n,zmm_size=11,zmm_align=R,zmm_pos=32
+
 @}}
-[FDITEM71_]
+[FDITEM73_]
 m_strName=PAS-DATA-DOCUMENTO-A
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM71_
+{{@DataItem_m_strDescriptionFDITEM73_
 
  copy "groupdate.xfc". | DBMaker
 @}}
-[FDITEM72_]
+[FDITEM74_]
 m_strName=AA
 m_strRawPic=9(04)
 m_strPic=9(04)
@@ -844,10 +866,10 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=DOCUMENTO-A-AA
-{{@DataItem_m_strDescriptionFDITEM72_
+{{@DataItem_m_strDescriptionFDITEM74_
 
 @}}
-[FDITEM73_]
+[FDITEM75_]
 m_strName=MM
 m_strRawPic=9(02)
 m_strPic=9(02)
@@ -855,10 +877,10 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=DOCUMENTO-A-MM
-{{@DataItem_m_strDescriptionFDITEM73_
+{{@DataItem_m_strDescriptionFDITEM75_
 
 @}}
-[FDITEM74_]
+[FDITEM76_]
 m_strName=GG
 m_strRawPic=9(02)
 m_strPic=9(02)
@@ -866,20 +888,20 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=DOCUMENTO-A-GG
-{{@DataItem_m_strDescriptionFDITEM74_
+{{@DataItem_m_strDescriptionFDITEM76_
 
 @}}
-[FDITEM75_]
+[FDITEM77_]
 m_strName=FILLER
 m_nItemLevel=10
 m_bRedefines=1
 m_strRedefines=PAS-DATA-DOCUMENTO-A
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM75_
+{{@DataItem_m_strDescriptionFDITEM77_
 
 @}}
-[FDITEM76_]
+[FDITEM78_]
 m_strName=PAS-DATA-DOCUMENTO-A-NUM
 m_strRawPic=9(08)
 m_strPic=9(08)
@@ -887,11 +909,11 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=PAS-DATA-DOCUMENTO
-{{@DataItem_m_strDescriptionFDITEM76_
+{{@DataItem_m_strDescriptionFDITEM78_
 $GEN type=date,zmm=on,zmm_title=Data documento avere,zmm_datatype=d,zmm_size=11,zmm_align=R,zmm_pos=33
 
 @}}
-[FDITEM77_]
+[FDITEM79_]
 m_strName=PAS-NUMERO-DOCUMENTO-A
 m_strRawPic=9(06)
 m_strPic=9(06)
@@ -899,44 +921,24 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=NUMERO-DOCUMENTO-A
-{{@DataItem_m_strDescriptionFDITEM77_
+{{@DataItem_m_strDescriptionFDITEM79_
 $GEN type=num,dec=0,size=8,zmm=on,zmm_title=Documento avere,zmm_datatype=n,zmm_size=11,zmm_align=R,zmm_pos=34
 @}}
-[FDITEM78_]
+[FDITEM80_]
 m_strName=PAS-NUMERO-INSOLUTI
 m_strRawPic=9(02)
 m_strPic=9(02)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM78_
+{{@DataItem_m_strDescriptionFDITEM80_
 
 
 @}}
-[FDITEM79_]
+[FDITEM81_]
 m_strName=PAS-NUMERO-SOLLECITI
 m_strRawPic=9(02)
 m_strPic=9(02)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM79_
-
-@}}
-[FDITEM80_]
-m_strName=PAS-CODICE-BA
-m_strRawPic=X(03)
-m_strPic=X(03)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM80_
-$GEN type=code,entity=tblba
-@}}
-[FDITEM81_]
-m_strName=PAS-SITUAZIONE
-m_strRawPic=9(01)
-m_strPic=9(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -944,73 +946,93 @@ m_bFixed=1
 
 @}}
 [FDITEM82_]
+m_strName=PAS-CODICE-BA
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM82_
+$GEN type=code,entity=tblba
+@}}
+[FDITEM83_]
+m_strName=PAS-SITUAZIONE
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM83_
+
+@}}
+[FDITEM84_]
 m_strName=PAS-SITUAZIONE-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=0 1 2
-{{@DataItem_m_strDescriptionFDITEM82_
+{{@DataItem_m_strDescriptionFDITEM84_
 
 @}}
-[FDITEM83_]
+[FDITEM85_]
 m_strName=PAS-SITUAZIONE-88-0
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=0
-{{@DataItem_m_strDescriptionFDITEM83_
+{{@DataItem_m_strDescriptionFDITEM85_
 
 @}}
-[FDITEM84_]
+[FDITEM86_]
 m_strName=PAS-SITUAZIONE-88-1
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
-{{@DataItem_m_strDescriptionFDITEM84_
+{{@DataItem_m_strDescriptionFDITEM86_
 
 @}}
-[FDITEM85_]
+[FDITEM87_]
 m_strName=PAS-SITUAZIONE-88-2
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=2
-{{@DataItem_m_strDescriptionFDITEM85_
+{{@DataItem_m_strDescriptionFDITEM87_
 
 @}}
-[FDITEM86_]
+[FDITEM88_]
 m_strName=PAS-CODICE-DCR
 m_strRawPic=X(13)
 m_strPic=X(13)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM86_
-** ATTENZIONE: per testare la condizione di empty del campo pas-codice-dcr si deve testare lo stesso per space 
-** ed il suo ridefinito (pas-codice-dct) per 0    - rif tk 2436                                   |pg 28/02/2011             
+{{@DataItem_m_strDescriptionFDITEM88_
+** ATTENZIONE: per testare la condizione di empty del campo pas-codice-dcr si deve testare lo stesso per space
+** ed il suo ridefinito (pas-codice-dct) per 0    - rif tk 2436                                   |pg 28/02/2011
 @}}
-[FDITEM87_]
+[FDITEM89_]
 m_strName=FILLER
 m_nItemLevel=10
 m_bRedefines=1
 m_strRedefines=PAS-CODICE-DCR
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM87_
+{{@DataItem_m_strDescriptionFDITEM89_
 
 @}}
-[FDITEM88_]
+[FDITEM90_]
 m_strName=PAS-PROGRESSIVO-DCT
 m_strRawPic=9(08)
 m_strPic=9(08)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM88_
+{{@DataItem_m_strDescriptionFDITEM90_
 $GEN type=num,dec=0,size=11,zmm=on,zmm_title=Progressivo distinta,zmm_datatype=n,zmm_size=13,zmm_align=R,zmm_pos=35,zmm_entity=dct
 @}}
-[FDITEM89_]
+[FDITEM91_]
 m_strName=PAS-PROGRESSIVO-DCR
 m_strRawPic=9(05)
 m_strPic=9(05)
@@ -1018,34 +1040,13 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=PAS-PROGRESSIVO-DC
-{{@DataItem_m_strDescriptionFDITEM89_
+{{@DataItem_m_strDescriptionFDITEM91_
 $GEN type=num,dec=0,size=07,zmm=on,zmm_title=Num. riga distinta,zmm_datatype=n,zmm_size=09,zmm_align=R,zmm_pos=36
-
 @}}
-[FDITEM90_]
+[FDITEM92_]
 m_strName=PAS-RIGA-ORIGINE
 m_strRawPic=9(05)
 m_strPic=9(05)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM90_
-
-@}}
-[FDITEM91_]
-m_strName=PAS-NUMERO-EVASIONE
-m_strRawPic=9(02)
-m_strPic=9(02)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM91_
-
-@}}
-[FDITEM92_]
-m_strName=PAS-SCADENZA-INSOLUTA
-m_strRawPic=X(01)
-m_strPic=X(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -1053,35 +1054,55 @@ m_bFixed=1
 
 @}}
 [FDITEM93_]
+m_strName=PAS-NUMERO-EVASIONE
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM93_
+
+@}}
+[FDITEM94_]
+m_strName=PAS-SCADENZA-INSOLUTA
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM94_
+
+@}}
+[FDITEM95_]
 m_strName=pas-scadenza-insoluta-s
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S"
-{{@DataItem_m_strDescriptionFDITEM93_
+{{@DataItem_m_strDescriptionFDITEM95_
 
 @}}
-[FDITEM94_]
+[FDITEM96_]
 m_strName=pas-scadenza-insoluta-null
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=space
-{{@DataItem_m_strDescriptionFDITEM94_
+{{@DataItem_m_strDescriptionFDITEM96_
 
 @}}
-[FDITEM95_]
+[FDITEM97_]
 m_strName=PAS-NUM-DOCUMENTO-D
 m_strRawPic=X(06)
 m_strPic=X(06)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM95_
+{{@DataItem_m_strDescriptionFDITEM97_
 
 
 @}}
-[FDITEM96_]
+[FDITEM98_]
 m_strName=PAS-NUM-DOCUMENTO-A
 m_strRawPic=X(06)
 m_strPic=X(06)
@@ -1089,19 +1110,19 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=PAS-NUM-DOCUMEN-A
-{{@DataItem_m_strDescriptionFDITEM96_
+{{@DataItem_m_strDescriptionFDITEM98_
 
 @}}
-[FDITEM97_]
+[FDITEM99_]
 m_strName=PAS-DATA-VALUTA
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM97_
+{{@DataItem_m_strDescriptionFDITEM99_
 
  copy "groupdate.xfc". | DBMaker
 @}}
-[FDITEM98_]
+[FDITEM100_]
 m_strName=AA
 m_strRawPic=9(04)
 m_strPic=9(04)
@@ -1109,10 +1130,10 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=PAS-DATA-VALUITA-AA
-{{@DataItem_m_strDescriptionFDITEM98_
+{{@DataItem_m_strDescriptionFDITEM100_
 
 @}}
-[FDITEM99_]
+[FDITEM101_]
 m_strName=MM
 m_strRawPic=9(02)
 m_strPic=9(02)
@@ -1120,35 +1141,13 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=PAS-DATA-VALUITA-MM
-{{@DataItem_m_strDescriptionFDITEM99_
-
-@}}
-[FDITEM100_]
-m_strName=GG
-m_strRawPic=9(02)
-m_strPic=9(02)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM100_
-
-@}}
-[FDITEM101_]
-m_strName=FILLER
-m_nItemLevel=10
-m_bRedefines=1
-m_strRedefines=PAS-DATA-VALUTA
-m_nSync=-1
-m_bFixed=1
-m_strName_Xfd=PAS-DATA-VALUITA-GG
 {{@DataItem_m_strDescriptionFDITEM101_
-09.03
 
 @}}
 [FDITEM102_]
-m_strName=PAS-DATA-VALUTA-NUM
-m_strRawPic=9(08)
-m_strPic=9(08)
+m_strName=GG
+m_strRawPic=9(02)
+m_strPic=9(02)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1156,29 +1155,30 @@ m_bFixed=1
 
 @}}
 [FDITEM103_]
-m_strName=PAS-IBAN
-m_strRawPic=X(34)
-m_strPic=X(34)
+m_strName=FILLER
 m_nItemLevel=10
+m_bRedefines=1
+m_strRedefines=PAS-DATA-VALUTA
 m_nSync=-1
 m_bFixed=1
+m_strName_Xfd=PAS-DATA-VALUITA-GG
 {{@DataItem_m_strDescriptionFDITEM103_
-
+09.03
 @}}
 [FDITEM104_]
-m_strName=PAS-BIC
-m_strRawPic=X(11)
-m_strPic=X(11)
-m_nItemLevel=10
+m_strName=PAS-DATA-VALUTA-NUM
+m_strRawPic=9(08)
+m_strPic=9(08)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM104_
-
+$GEN type=date
 @}}
 [FDITEM105_]
-m_strName=PAS-CONTO-CORRENTE
-m_strRawPic=X(15)
-m_strPic=X(15)
+m_strName=PAS-IBAN
+m_strRawPic=X(34)
+m_strPic=X(34)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -1186,9 +1186,9 @@ m_bFixed=1
 
 @}}
 [FDITEM106_]
-m_strName=PAS-CIN
-m_strRawPic=X(01)
-m_strPic=X(01)
+m_strName=PAS-BIC
+m_strRawPic=X(11)
+m_strPic=X(11)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -1196,50 +1196,99 @@ m_bFixed=1
 
 @}}
 [FDITEM107_]
+m_strName=PAS-CONTO-CORRENTE
+m_strRawPic=X(15)
+m_strPic=X(15)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM107_
+
+@}}
+[FDITEM108_]
+m_strName=PAS-CIN
+m_strRawPic=X(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM108_
+
+@}}
+[FDITEM109_]
 m_strName=pas-codice-cig
 m_strRawPic=x(20)
 m_strPic=X(20)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM107_
+{{@DataItem_m_strDescriptionFDITEM109_
 
 
 09.03
 09.03
 09.03
 09.03
-$GEN zmm=on,zmm_title=Codice CIG,zmm_datatype=x,zmm_size=35,zmm_align=L,zmm_pos=37   
+$GEN zmm=on,zmm_title=Codice CIG,zmm_datatype=x,zmm_size=35,zmm_align=L,zmm_pos=37
 @}}
-[FDITEM108_]
+[FDITEM110_]
 m_strName=pas-codice-cup
 m_strRawPic=x(20)
 m_strPic=X(20)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM108_
+{{@DataItem_m_strDescriptionFDITEM110_
 $GEN zmm=on,zmm_title=Codice CUP,zmm_datatype=x,zmm_size=35,zmm_align=L,zmm_pos=38
 
 @}}
-[FDITEM109_]
-m_strName=PAS-FILLER
-m_strRawPic=X(02)
-m_strPic=X(02)
+[FDITEM111_]
+m_strName=pas-gcto-nc-split
+m_strRawPic=9
+m_strPic=9
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM109_
-        10  PAS-FILLER                      PIC  X(42).        |ds 25.09.03                         | suadal 06/06/2011 12:29:41
+{{@DataItem_m_strDescriptionFDITEM111_
+
 @}}
-[FDITEM110_]
+[FDITEM112_]
+m_strName=pas-gcto-nc-split-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM112_
+
+@}}
+[FDITEM113_]
+m_strName=pas-gcto-nc-split-ko
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM113_
+
+@}}
+[FDITEM114_]
+m_strName=pas-filler
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM114_
+        10  PAS-FILLER                      PIC  X(42).        |ds 25.09.03                         | suadal 06/06/2011 12:29:41
+**        10  PAS-FILLER                      PIC  X(02).    | suadal 06/06/2011 12:29:41           | rososv 25/01/2016
+@}}
+[FDITEM115_]
 m_strName=PAS-FILLER-RIS
 m_strRawPic=X(40)
 m_strPic=X(40)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM110_
+{{@DataItem_m_strDescriptionFDITEM115_
 **      10  PAS-FILLER                      PIC  X(58).
 @}}
 [CStoAcucobolSL_]
@@ -1256,6 +1305,7 @@ m_nCompression=70
 
  
 -
+2
 @}}
 [SLPKEY_]
 m_strName=PAS-CODICE

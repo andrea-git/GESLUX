@@ -2,6 +2,7 @@
       *
       * 
       *-
+      *2
        SELECT OPTIONAL PAS
            ASSIGN       TO RANDOM "PAS"
            ORGANIZATION IS INDEXED

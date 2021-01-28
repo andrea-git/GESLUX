@@ -2,7 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7DF2982552-116-2517918398
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E511311334-822-201518640
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -20,8 +20,18 @@ m_strPrefix=TBLNA
  Aggiunti check-box:
  - tblna-payline       (indica se la nazione è interessata all'esportazione)
  - tblna-payline-piva  (indica se deve essere indicata la partita i.v.a.)
- Incrementati i campi da portare sulla query, compresi i due nuovi check-box  
----------------------------------------------------------------------------
+ Incrementati i campi da portare sulla query, compresi i due nuovi check-box
+------------------------------------------------------------------------------------------------------------------------
+ tk.7201 - Gestire la fattura B2B con formato XML 1.2                                               | maxime 20/01/2017
+           Codice ISO3166-1
+------------------------------------------------------------------------------------------------------------------------
+ tk.7471 - CADI/CADIW: Comunicazione dati fatture emesse/ricevute                                   | maxime 11/07/2017
+           tblna-isCEE
+------------------------------------------------------------------------------------------------------------------------
+ tk.8987 - Digitalizzazione del Documento di Accompagnamento Semplificato (DAS Digitale)            | biachr 13/02/2020
+           .aggiunto campo per esportazione prioritaria codice nazione per Acceasy
+------------------------------------------------------------------------------------------------------------------------
+
 
 
 
@@ -82,6 +92,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM3_
 $GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=20,zmm_align=L,zmm_pos=1,zmm_entity=tblna
+
 @}}
 [FDITEM4_]
 m_strName=RESTO-RECORD-TBLNA
@@ -130,6 +141,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM8_
 $GEN type=checkbox,truevalue="A",falsevalue=" "
+
 @}}
 [FDITEM9_]
 m_strName=TBLNA-DECIMAL-POINT-88
@@ -148,7 +160,7 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM10_
-$GEN zmm=on,zmm_title=Codice iso,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=4            
+$GEN zmm=on,zmm_title=Codice iso,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=4
 
 @}}
 [FDITEM11_]
@@ -160,7 +172,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM11_
 $GEN type=checkbox,truevalue="S",falsevalue=" "
-
 @}}
 [FDITEM12_]
 m_strName=TBLNA-EURO-88
@@ -179,7 +190,7 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM13_
-$GEN zmm=on,zmm_title=Codice stato,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=5            
+$GEN zmm=on,zmm_title=Codice stato,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=5
 
 @}}
 [FDITEM14_]
@@ -190,8 +201,7 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM14_
-$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Black list,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=6        
-
+$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Black list,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=6
 @}}
 [FDITEM15_]
 m_strName=tblna-hasBlackList-on
@@ -228,7 +238,9 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM18_
+
 $GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Payline,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=7
+
 @}}
 [FDITEM19_]
 m_strName=tblna-payline-si
@@ -247,7 +259,7 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM20_
-$GEN  type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Partita iva,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=8
+$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Partita iva,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=8
 @}}
 [FDITEM21_]
 m_strName=tblna-payline-piva-si
@@ -259,25 +271,57 @@ m_strTrue="S"
 
 @}}
 [FDITEM22_]
-m_strName=tblna-filler
-m_strRawPic=x(1244)
-m_strPic=X(1244)
+m_strName=tblna-iso3166
+m_strRawPic=x(03)
+m_strPic=X(03)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM22_
+$GEN type=code,entity=iso3166
 
 @}}
 [FDITEM23_]
+m_strName=tblna-isCEE
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM23_
+
+@}}
+[FDITEM24_]
+m_strName=tblna-codice-acceasy
+m_strRawPic=X(02)
+m_strPic=X(02)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM24_
+
+
+@}}
+[FDITEM25_]
+m_strName=tblna-filler
+m_strRawPic=x(1238)
+m_strPic=X(1238)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM25_
+
+
+@}}
+[FDITEM26_]
 m_strName=TBLNA-FILLER-RIS
 m_strRawPic=X(40)
 m_strPic=X(40)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM23_
-**        10  TBLNA-FILLER            PIC  X(1247).        |DS 01/04/2005 9.52                      | scamar 09/07/2010 09:57:01
-        10  TBLNA-FILLER            PIC  X(1250).                           |DS 01/04/2005 9.52
+{{@DataItem_m_strDescriptionFDITEM26_
+lna-filler           pic  x(1240).                                                    | biachr 13/02/2020
 
 @}}
 [CStoAcucobolSL_]
@@ -296,6 +340,7 @@ b
 +
 ;
 r
+
 @}}
 [SLPKEY_]
 m_strName=TBLNA-CODICE

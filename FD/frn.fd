@@ -92,6 +92,9 @@
       * tk.8518 - Esterometro: avere nello zoom fornitori anche il checkbox "includi in Esterometro"       | quasil 16/04/2019
       * - Aggiunto nello zoom il campo "Includi in Esterometro"
       *---------------------------------------------------------------------------------------------------------------------------
+      * tk.8739 - FE xml: import xml fatture attive (02feht00a) e creazione anagrafica cliente automatica  | EXT-POZEDO 21/11/2019
+      *---------------------------------------------------------------------------------------------------------------------------
+      *
       *
       *
       * tplvar zmm_title=Fornitori
@@ -162,33 +165,34 @@
        FD  FRN.
        01 record-frn.
       *$GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=08,zmm_align=L,zmm_pos=1,zmm_entity=frn
+      *
            05 frn-codice       PIC  x(08).
            05 resto-record-frn.
       *$GEN zmm=on,zmm_title=Codice alternativo,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=4
       *
                10 frn-codice-alternativo       PIC  x(30).
       *$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_key=3,zmm_size=30,zmm_align=L,zmm_pos=2
+      *
                10 frn-descrizione1 PIC  x(30).
       *$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=3
+      *
                10 frn-descrizione2 PIC  x(30).
       *$GEN zmm=on,zmm_title=Indirizzo,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=11
       *
                10 frn-via          PIC  x(30).
       *$GEN zmm=on,zmm_title=Cap,zmm_datatype=x,zmm_size=05,zmm_align=L,zmm_pos=12
-      *
                10 frn-cap          PIC  x(05).
       *$GEN zmm=on,zmm_title=Città,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=13
                10 frn-citta        PIC  x(30).
       *$GEN zmm=on,zmm_title=Provincia,zmm_datatype=x,zmm_size=02,zmm_align=L,zmm_pos=14
-      *
                10 frn-provincia    PIC  x(02).
       *$GEN type=code,entity=tblna,zmm=on,zmm_title=Codice nazione,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=15,zmm_entity=tblna
       *
                10 frn-codice-na    PIC  x(03).
       *$GEN zmm=on,zmm_title=Telefono,zmm_datatype=t,zmm_size=15,zmm_align=L,zmm_pos=7
+      *
                10 frn-telefono     PIC  x(15).
       *$GEN zmm=on,zmm_title=Mobile,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=9
-      *
                10 frn-telex        PIC  x(15).
       *$GEN zmm=on,zmm_title=Fax,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=10
                10 frn-fax          PIC  x(15).
@@ -198,19 +202,17 @@
       *
                10 frn-codice-fiscale           PIC  x(16).
       *$GEN zmm=on,zmm_title=Partita iva intra,zmm_datatype=x,zmm_size=16,zmm_align=L,zmm_pos=17
-      *
                10 frn-partita-iva-intra        PIC  x(16).
       *$GEN type=code,entity=tblpc,zmm=on,zmm_title=Codice tabella gruppi e conti,zmm_datatype=x,zmm_size=04,zmm_align=L,zmm_pos=18,zmm_entity=tblpc
                10 frn-codice-pc    PIC  x(04).
       *$GEN type=code,entity=tblce,zmm=on,zmm_title=Codice piano dei conti cee,zmm_datatype=x,zmm_size=08,zmm_align=L,zmm_pos=20,zmm_entity=tblce
+      *
                10 frn-codice-ce    PIC  x(08).
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
-      *
                10 frn-partite      PIC  x(01).
                    88 frn-partite-88 VALUE IS "S" " ". 
                    88 frn-partite-88-s VALUE IS "S". 
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
-      *
                10 frn-scadenze     PIC  x(01).
                    88 frn-scadenze-88 VALUE IS "S" " ". 
                    88 frn-scadenze-88-s VALUE IS "S". 
@@ -218,16 +220,15 @@
       *$GEN type=code,entity=tblva,zmm=on,zmm_title=Codice valuta,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=22,zmm_entity=tblva
                10 frn-codice-va    PIC  x(03).
       *$GEN type=code,entity=tblva
-      *
                10 frn-codice-va-intra          PIC  x(03).
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
-      *
                10 frn-allegato     PIC  x(01).
                    88 frn-allegato-88 VALUE IS "S" " ". 
                    88 frn-allegato-88-si VALUE IS "S". 
       *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=P.fisica,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=56
                10 frn-individuale  PIC  x(01).
                    88 frn-individuale-88 VALUE IS "S" " ". 
+                   88 frn-individuale-si VALUE IS "S". 
       *$GEN type=code,entity=tblpa,zmm=on,zmm_title=Codice pagamento,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=23,zmm_entity=tblpa
                10 frn-codice-pa    PIC  x(03).
                10 frn-mesi-esclusi.
@@ -237,7 +238,6 @@
                    15 frn-giorno2      PIC  9(02).
                10 frn-banca.
       *$GEN zmm=on,zmm_title=Banca di appoggio,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=25
-      *
                    15 frn-banca1       PIC  x(30).
                    15 frn-codice-abi-x.
       *$GEN zmm=on,zmm_title=Codice ABI,zmm_datatype=x,zmm_size=05,zmm_align=R,zmm_pos=26,zmm_entity=abi
@@ -253,14 +253,11 @@
       *
                        20 frn-codice-cab   PIC  9(05).
       *$GEN zmm=on,zmm_title=Conto corrente,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=30
-      *
                    15 frn-conto-corrente           PIC  x(15).
       *$GEN type=num,size=21,dec=2
-      *
                10 frn-fido         PIC  s9(13)v9(02)
                           SIGN IS TRAILING SEPARATE CHARACTER.
       *$GEN type=code,entity=tblba,zmm=on,zmm_title=Codice banca,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=31,zmm_entity=tblba
-      *
                10 frn-codice-ba    PIC  x(03).
       *$GEN type=code,entity=tblpo,zmm=on,zmm_title=Codice porto resa,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=33,zmm_entity=tblpo
                10 frn-codice-po    PIC  x(03).
@@ -268,14 +265,12 @@
       *
                10 frn-codice-sp    PIC  x(03).
       *$GEN type=code,entity=cli
-      *
                10 frn-codice-collegato         PIC  x(08).
       *$GEN type=code,entity=tbliv,zmm=on,zmm_title=Codice iva,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=37,zmm_entity=tbliv
                10 frn-codice-iv    PIC  x(03).
                10 frn-richiesta-esenzione.
                    15 frn-numero-richiesta-old     PIC  9(06).
       * copy "groupdate.xfc". | DBMaker
-      *
                    15 frn-data-richiesta.
       *(( XFD NAME = FRN-DATA-RIC-ES-AA ))
                        20 aa   PIC  9(04).
@@ -285,15 +280,12 @@
                        20 gg   PIC  9(02).
                    15 filler REDEFINES frn-data-richiesta.
       *$GEN type=date
-      *
                        20 frn-data-richiesta-n         PIC  9(08).
-      *
       *
       *
                10 frn-registrazione-esenzione.
                    15 frn-numero-registrazione-old PIC  9(06).
       * copy "groupdate.xfc". | DBMaker
-      *
                    15 frn-data-registrazione.
       *(( XFD NAME = FRN-DATA-REG-AA ))
                        20 aa   PIC  9(04).
@@ -303,14 +295,11 @@
                        20 gg   PIC  9(02).
                    15 filler REDEFINES frn-data-registrazione.
       *$GEN type=date
-      *
                        20 frn-data-registrazione-n     PIC  9(08).
       *
       *
       *$GEN type=code,entity=tblse
-      *
                10 frn-codice-se    PIC  x(03).
-      *
       *
       *
                10 frn-allegati.
@@ -338,15 +327,12 @@
                        88 frn-tipo-cp-88-m VALUE IS "M". 
                        88 frn-tipo-cp-88-o VALUE IS " ". 
       *$GEN type=code,entity=var(frn-tipo-cp-e3)
-      *
                    15 frn-conto-cp     PIC  x(08).
-      *
       *
       *
                10 frn-comune-nascita           PIC  x(30).
                10 frn-provincia-nascita        PIC  x(02).
       * copy "groupdate.xfc". | DBMaker
-      *
                10 frn-data-nascita.
       *(( XFD NAME = FRN-NASCITA-AA ))
                    15 aa   PIC  9(04).
@@ -356,7 +342,6 @@
                    15 gg   PIC  9(02).
                10 filler REDEFINES frn-data-nascita.
       *$GEN type=date
-      *
                    15 frn-data-nascita-n           PIC  9(08).
       *$GEN type=radiobutton,value_1="M",image_1=1,value_2="F",image_2=2,value_3=" ",image_3=3
                10 frn-sesso        PIC  x(01).
@@ -366,10 +351,8 @@
                    88 frn-sesso-societa VALUE IS " ". 
       *
       *$GEN type=num,size=7,dec=2
-      *
                10 frn-perc-ritenuta            PIC  9(03)v9(02).
       *$GEN type=num,size=4,dec=0
-      *
                10 frn-perc-imponibile          PIC  9(03).
                10 frn-causale-versamento       PIC  x(04).
                10 frn-domicilio.
@@ -382,7 +365,6 @@
       *$GEN zmm=on,zmm_title=Codice IBAN,zmm_datatype=x,zmm_size=34,zmm_align=L,zmm_pos=39
                10 frn-iban         PIC  x(34).
       *$GEN zmm=on,zmm_title=Codice BIC,zmm_datatype=x,zmm_size=11,zmm_align=L,zmm_pos=40
-      *
                10 frn-bic          PIC  x(11).
       *
       *  non toccare questo filler
@@ -399,20 +381,16 @@
       *
       *
       *$GEN type=num,size=21,dec=2
-      *
                10 frn-fatturare    PIC  s9(13)v9(02)
                           SIGN IS TRAILING SEPARATE CHARACTER.
       *$GEN type=num,size=21,dec=2
-      *
                10 frn-ordinato     PIC  s9(13)v9(02)
                           SIGN IS TRAILING SEPARATE CHARACTER.
-      *
       *
       *
                10 frn-35.
                    15 frn-file-listini PIC  x(30).
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
-      *
                    15 frn-crea-articoli            PIC  x(01).
                        88 frn-crea-articoli-88 VALUE IS "S" " ". 
                    15 frn-codice-art-i PIC  9(04).
@@ -435,7 +413,6 @@
                        88 frn-codice-barre-88 VALUE IS 0 THRU 3. 
       *
       * copy "groupdate.xfc". | DBMaker
-      *
                10 frn-data-aggiornamento.
       *(( XFD NAME = FRN-DATA-AGG-AA ))
                    15 aa   PIC  9(04).
@@ -445,42 +422,34 @@
                    15 gg   PIC  9(02).
                10 filler REDEFINES frn-data-aggiornamento.
       *$GEN type=date
-      *
                    15 frn-data-aggiornamento-n     PIC  9(08).
       *
       *
       *$GEN type=code,entity=tblma
-      *
                10 frn-tblma-codice PIC  x(03).
       *$GEN type=combobox,comboclass=frn_tipo_fornitore
-      *
                10 frn-tipo-fornitore           PIC  x(01).
                    88 frn-tipo-fornitore-88 VALUE IS " " "1" "2". 
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
-      *
                10 frn-autofattura  PIC  x(01).
                    88 frn-autofattura-88 VALUE IS "S" " ". 
       *$GEN type=code,entity=tblma
-      *
                10 frn-codice-ma-67 PIC  x(03).
                10 frn-cantine-sociali.
       *$GEN type=code,entity=mas
-      *
                    15 frn-c-capitale   PIC  x(08).
       *$GEN type=combobox,comboclass=frn_tipo_regime
-      *
                    15 frn-tipo-regime  PIC  9(01).
                        88 frn-tipo-regime-88 VALUE IS 0 THRU 3. 
       *$GEN type=num,size=21,dec=2
-      *
                    15 frn-ass-importo  PIC  s9(13)v9(02)
                               SIGN IS TRAILING SEPARATE CHARACTER.
                    15 frn-ass-sld-acc  PIC  x(01).
       *resente su interfaccia
       *$GEN type=checkbox,truevalue="S",falsevalue="N"
+      *
                    15 frn-allegato-f2  PIC  x(01).
                        88 frn-allegato-f2-88 VALUE IS "S" " " "N". 
-      *
       *
       *
                    15 frn-superficie-x.
@@ -488,51 +457,38 @@
                                   OCCURS 4 TIMES.
                    15 filler REDEFINES frn-superficie-x.
       *$GEN type=num,size=11,dec=4
-      *
                        20 frn-superficie-1 PIC  9(04)v9(04).
       *$GEN type=num,size=11,dec=4
-      *
                        20 frn-superficie-2 PIC  9(04)v9(04).
       *$GEN type=num,size=11,dec=4
-      *
                        20 frn-superficie-3 PIC  9(04)v9(04).
       *$GEN type=num,size=11,dec=4
-      *
                        20 frn-superficie-4 PIC  9(04)v9(04).
       *
       *
       *$GEN type=num,size=11,dec=4
-      *
                    15 frn-superficie-tot           PIC  9(04)v9(04).
       *$GEN type=num,size=11,dec=4
-      *
                    15 frn-superficie-prop          PIC  9(04)v9(04).
       *$GEN type=num,size=11,dec=4
-      *
                    15 frn-superficie-altro         PIC  9(04)v9(04).
-      *
       *
       *
                    15 frn-provincia-dic            PIC  x(02).
                    15 frn-codice-istat PIC  x(12).
       *
       *
-      *
                10 frn-inps-professionisti.
       *$GEN type=combobox,comboclass=frn_soggetto_inps
-      *
                    15 frn-soggetto-inps            PIC  9(01).
                        88 frn-soggetto-inps-88 VALUE IS 0 1 2. 
       *$GEN type=combobox,comboclass=frn_supero_fiscale
-      *
                    15 frn-supero-fiscale           PIC  9(01).
                        88 frn-supero-fiscale-88 VALUE IS 0 1. 
       *$GEN type=combobox,comboclass=frn_supero_inps
-      *
                    15 frn-supero-inps  PIC  9(01).
                        88 frn-supero-inps-88 VALUE IS 0 1. 
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
-      *
                10 frn-percipiente  PIC  x(01).
                    88 frn-percipiente-88 VALUE IS "S" " ". 
                10 frn-numero-fattura-87        PIC  9(06).
@@ -577,7 +533,6 @@
       *resente su interfaccia
       *resente su interfaccia
       *resente su interfaccia
-      *
                        88 frn-automatico-88 VALUE IS "S" " ". 
                10 frn-filler-03    PIC  x(03).
                10 frn-lingua       PIC  9(01).
@@ -590,27 +545,23 @@
       *(( XFD NAME = FRN-ESCL-GIORNO2 ))
                10 frn-escluso-dal-giorno2      PIC  9(02).
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
-      *
                10 frn-documenti-wwp            PIC  x(01).
                    88 frn-documenti-wwp-88 VALUE IS " " "S". 
                    88 frn-documenti-wwp-si VALUE IS "S". 
       *$GEN type=combobox,comboclass=cli_tipo_soggetto_magix
-      *
                10 frn-tipo-soggetto-magix      PIC  9(01).
       ***            88  frn-tipo-soggetto-magix-88      value 1 2 3 4 5 6.                                | rososv 28/07/2014
+      *
                    88 frn-tipo-soggetto-magix-88 VALUE IS 1 2 3 4 5 6 7 
            8. 
       *$GEN type=combobox,comboclass=frn_magix_ritenuta
-      *
                10 frn-magix-ritenuta           PIC  x(01).
                    88 frn-magix-ritenuta-88 VALUE IS " " "1" "2" "3" "4"
             "5". 
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
-      *
                10 frn-magix-335    PIC  x(01).
                    88 frn-magix-335-88 VALUE IS " " "S". 
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
-      *
                10 frn-magix-altro  PIC  x(01).
                    88 frn-magix-altro-88 VALUE IS " " "S". 
       *$GEN zmm=on,zmm_title=Sms,zmm_datatype=x,zmm_size=25,zmm_align=L,zmm_pos=52
@@ -622,39 +573,27 @@
                    88 frn-invio-e-mail-88 VALUE IS " " "S". 
                    88 frn-invio-e-mail-si VALUE IS "S". 
       *$GEN type=combobox,comboclass=frn_tipo_fornitore_f1
-      *
                10 frn-tipo-fornitore-f1        PIC  x(01).
                    88 frn-tipo-fornitore-f1-88 VALUE IS " " "1" "2". 
       *$GEN zmm=on,zmm_title=E-mail,zmm_datatype=x,zmm_size=50,zmm_align=L,zmm_pos=8
-      *
                10 frn-e-mail       PIC  x(50).
       *$GEN type=code,entity=tblno
-      *
                10 frn-codice-no    PIC  x(08).
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
-      *
                10 frn-qualita      PIC  x(01).
                    88 frn-qualita-88 VALUE IS " " "S". 
                    88 frn-qualita-si VALUE IS "S". 
       *$GEN type=code,entity=tblna
-      *
                10 frn-codice-na-a  PIC  x(03).
       *$GEN type=code,entity=tblna
                10 frn-codice-na-o  PIC  x(03).
       *$GEN type=radiobutton,value_1=" ",image_1=1,value_2="S",image_2=2,value_3="N",image_3=3
-      *
                10 frn-interessi-mora           PIC  x(01).
                    88 frn-interessi-mora-88 VALUE IS " " "S" "N". 
                    88 frn-interessi-mora-si VALUE IS "S". 
                    88 frn-interessi-mora-no VALUE IS "N". 
                    88 frn-interessi-mora-strono VALUE IS " ". 
                10 frn-causale-pagamento-old    PIC  x(01).
-      *
-      *
-      *
-      *
-      *
-      *
       *        10  frn-causale-pagamento           pic  x(01).  | pic X "as is"                            | Suadal 14/04/2015
       * "as is"                             | Suadal 14/04/2015
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
@@ -680,11 +619,11 @@
       *$GEN type=code,entity=tblzo,zmm=on,zmm_title=Cod.zona,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=41,zmm_entity=tblzo
                10 frn-codice-zo    PIC  x(003).
       *$GEN type=code,entity=tblac,zmm=on,zmm_title=Cod.area,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=43,zmm_entity=tblac
-      *
                10 frn-codice-ac    PIC  x(003).
       *$GEN type=code,entity=tblca,zmm=on,zmm_title=Cod.categoria,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=45,,zmm_entity=tblca
                10 frn-codice-ca    PIC  x(003).
       *$GEN type=code,entity=tblcs,zmm=on,zmm_title=Cod.statistico,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=47,,zmm_entity=tblcs
+      *
                10 frn-codice-cs    PIC  x(003).
       *$GEN zmm=on,zmm_title=Nickname,zmm_datatype=k,zmm_size=30,zmm_align=L,zmm_pos=49
       *
@@ -699,12 +638,9 @@
       *resente su interfaccia
       *resente su interfaccia
       *$GEN type=code,entity=tblvc,zmm=on,zmm_title=Voce analitica,zmm_datatype=x,zmm_size=03,zmm_align=L,zmm_pos=50,zmm_entity=tblvc
+      *
                10 frn-tblvc-codice PIC  x(03).
-      *
-      *
                10 frn-raee-cod-produttore      PIC  x(50).
-      *
-      *
                10 frn-ind-esteso-gen           PIC  9(01).
                    88 frn-ind-esteso-gen-si VALUE IS 1    WHEN SET TO 
            FALSE  0. 
@@ -719,17 +655,13 @@
            FALSE  0. 
       *ato   |mc 12/09/2008 11.31 |mc 26/11/2008 11.11
       *ato   |mc 12/09/2008 11.31 |mc 26/11/2008 11.11
-      *
                10 frn-ind-esteso-dom           PIC  9(01).
                    88 frn-ind-esteso-dom-si VALUE IS 1    WHEN SET TO 
            FALSE  0. 
       *$GEN type=num,size=11,dec=0
-      *
                10 frn-numero-richiesta         PIC  9(08).
       *$GEN type=num,size=11,dec=0
-      *
                10 frn-numero-registrazione     PIC  9(08).
-      *
       *
       *
                10 frn-cognome      PIC  x(30).
@@ -744,7 +676,6 @@
                10 frn-exclude-com-iva          PIC  x.
       *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Escl.spesom.,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=55            
       *ox                                        | suadal 01/03/2011 10:30:36
-      *
                    88 frn-exclude-com-iva-on VALUE IS "S". 
                    88 frn-exclude-com-iva-off VALUE IS " ". 
                    88 frn-exclude-com-iva-ok VALUE IS "S" " ". 
@@ -765,7 +696,6 @@
       *
                10 frn-codice-regione           PIC  9(02).
       * consenso a ricevere proposte commerciali
-      *
                10 frn-consenso-pc  PIC  9(01).
                    88 frn-consenso-pc-ok VALUE IS 1. 
                    88 frn-consenso-pc-ko VALUE IS 0. 
@@ -777,11 +707,10 @@
                    88 frn-non-res-schumacker-ok VALUE IS 1. 
                    88 frn-non-res-schumacker-ko VALUE IS 0. 
       * campo che identifica i percipienti soggetti a ritenuta d'acconto                                   | QUASIL 10/02/2016
+      *
                10 frn-sogg-ritenuta-imposta    PIC  9(01).
                    88 frn-sogg-ritenuta-imposta-ok VALUE IS 1. 
                    88 frn-sogg-ritenuta-imposta-ko VALUE IS 0. 
-      *
-      *
                10 frn-cod-icqrf    PIC  x(08).
                10 frn-includiEsterometro       PIC  9(01).
       ***        10  frn-filler-91                   pic  x(199).        | maxime 17/06/2010               | scamar 09/07/2010 11:43:34
@@ -794,5 +723,6 @@
       *        10  frn-filler-91                   pic  x(156).          | Suadal 14/04/2015               | QUASIL 10/02/2016
       ***        10  frn-filler-91                   pic  x(154).        | QUASIL 10/02/2016               | RCM 02/05/2017
       *n-filler-91                   pic  x(146).                                            | RCM 02/05/2017 | EXT-POZEDO 29/01/2019 
+      *
                10 frn-filler-91    PIC  x(145).
                10 frn-filler-91-ris            PIC  x(512).

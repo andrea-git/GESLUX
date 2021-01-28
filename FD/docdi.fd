@@ -272,14 +272,17 @@
                10 docdi-codice1    PIC  x(02).
       *
       *$GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=08,zmm_align=L,zmm_pos=1,zmm_entity=docdi
+      *
                10 docdi-codice2    PIC  x(08).
                10 docdi-codice3    PIC  9(04).
            05 resto-record-docdi.
       *
       *$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=2
+      *
                10 docdi-nome1      PIC  x(30).
       *
       *$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=3
+      *
                10 docdi-nome2      PIC  x(30).
                10 docdi-via        PIC  x(30).
                10 docdi-cap        PIC  x(05).
@@ -291,8 +294,10 @@
                10 docdi-provincia-f            PIC  x(02).
       *
       *$GEN zmm=on,zmm_title=Partita IVA,zmm_datatype=x,zmm_size=11,zmm_align=L,zmm_pos=4
+      *
                10 docdi-partita-iva            PIC  x(11).
       *$GEN zmm=on,zmm_title=Codice fiscale,zmm_datatype=x,zmm_size=16,zmm_align=L,zmm_pos=5
+      *
                10 docdi-codice-fiscale         PIC  x(16).
       *$GEN type=checkbox,truevalue="S", falsevalue=" "
                10 docdi-persona-fisica         PIC  x(01).
@@ -311,6 +316,7 @@
                    15 docdi-data-nascita-n         PIC  9(08).
                10 DOCDI-PROVINCIA-NASCITA      PIC  X(02).
       *$GEN type=radiobutton,value_1="M",image_1=1,value_2="F",image_2=2
+      *
                10 DOCDI-SESSO      PIC  X(01).
                    88 DOCDI-SESSO-88 VALUE IS "M" "F" " ". 
                    88 DOCDI-SESSO-88-M VALUE IS "M". 
@@ -484,8 +490,10 @@
                    88 docdi-aggiornamenti-acq-88 VALUE IS "S" " ". 
                    88 docdi-aggiornamenti-acq-ok VALUE IS "S". 
       *$GEN type=code,entity=tblva
+      *
                10 docdi-tblva-lire PIC  x(03).
       *$GEN type=code,entity=mas
+      *
                10 docdi-mas-euro   PIC  x(08).
                10 docdi-carica-iva-old         PIC  x(01).
       *(( XFD NAME = DOCDI-COD-FIS-IVA ))
@@ -495,12 +503,14 @@
                10 DOCDI-ULTIMO-MESE-LIFO       PIC  X(01).
                    88 DOCDI-ULTIMO-MESE-LIFO-88 VALUE IS "N" " ". 
       *$GEN type=code,entity=ban
+      *
                10 DOCDI-BAN-CODICE PIC  X(08).
       *$GEN type=radiobutton,value_1=" ",image_1=1,value_2="P",image_2=2
                10 DOCDI-ORDINE-GIORNALE        PIC  X(01).
                    88 DOCDI-ORDINE-GIORNALE-88 VALUE IS "P" " ". 
                    88 DOCDI-ORDINE-GIORNALE-88-P VALUE IS "P". 
       *$GEN type=code,entity=tbliv
+      *
       *
                10 DOCDI-TBLIV-CODICE           PIC  X(03).
       *|****************$GEN type=radiobutton,value_1=0,image_1=1,value_2=1,image_2=2,value_2=10,image_2=3
@@ -515,8 +525,10 @@
       ***        10  DOCDI-DOMINIO-WWP               PIC  X(30).                                         | mxm 26/02/2007 17.27
       ***        10  DOCDI-CARTELLA-WWP              PIC  X(50).                                         | mxm 26/02/2007 17.27
       *$GEN type=code,entity=mas
+      *
                10 docdi-mas-iva-prorata        PIC  x(08).
       *$GEN type=code,entity=mas
+      *
                10 docdi-mas-ivand  PIC  x(08).
                10 filler           PIC  x(14).
       ***        10  filler                          PIC  X(30).         | mxm 26/02/2007 17.27            | rososv 14/03/2016
@@ -538,6 +550,7 @@
       *       10  DOCDI-CODICE-AZIENDA-GIOVE      PIC  9(05).         | ds 18.09.03
       *.09.03
       *$GEN type=num,dec=0,size=08
+      *
                10 DOCDI-CODICE-AZIENDA-SIPED   PIC  9(06).
                10 DOCDI-WE-SERVER  PIC  X(42).
                10 DOCDI-WE-USER    PIC  X(42).
@@ -550,11 +563,13 @@
       *
       *3.05.03
       *
+      *
                10 DOCDI-WE-RICHIESTA-PASSWORD  PIC  9(01).
                    88 DOCDI-WE-RICHIESTA-PASSWORD-88 VALUE IS 1    WHEN 
            SET TO FALSE  0. 
                10 DOCDI-WE-PASSWORD            PIC  X(20).
       *$GEN type=code,entity=g2mail
+      *
       *
                10 DOCDI-WE-E-MAIL  PIC  X(50).
                10 DOCDI-WE-OC-MAIL PIC  x(41).
@@ -567,6 +582,7 @@
       *3.05.03
       *3.05.03
       *
+      *
                10 DOCDI-WE-OC-PASSWORD         PIC  x(20).
       *
       *
@@ -575,6 +591,7 @@
       *
       *
       *comunicazione annuale iva (dal 2003)
+      *
       *
                10 docdi-codice-fiscale-dichiarante         PIC  x(11).
                10 DOCDI-CODICE-AZIENDA-GIOVE   PIC  9(06).
@@ -603,11 +620,13 @@
       *
       *
       *$GEN type=radiobutton,value_1="O",image_1=1,value_2="S",image_2=2
+      *
                10 DOCDI-TIPO-CONTAB            PIC  X(01).
                    88 DOCDI-TIPO-CONTAB-88 VALUE IS " " "O" "S". 
                    88 DOCDI-TIPO-CONTAB-88-O VALUE IS "O". 
                10 DOCDI-TIPO-SUDDIV-GIOVE      PIC  X(01).
       *07.04
+      *
       *
                    88 DOCDI-TIPO-SUDDIV-GIOVE-88 VALUE IS " " "1" "2" "3
       -    "" "4" "5". 
@@ -625,6 +644,7 @@
       *
                    88 docdi-num-lib-iva-88-s VALUE IS "S". 
       *$GEN type=checkbox,truevalue="S", falsevalue=" "
+      *
                10 DOCDI-SW-EMAIL-UTENTE        PIC  X(01).
                    88 DOCDI-SOLO-EMAIL-UTENTE VALUE IS "S"    WHEN SET 
            TO FALSE  SPACE. 
@@ -651,8 +671,10 @@
                10 DOCDI-TAGLIA     PIC  9(02).
                    88 DOCDI-TAGLIA-88 VALUE IS 0 07 THRU 14. 
       *$GEN type=checkbox,truevalue="S", falsevalue=" "
+      *
                10 DOCDI-CREA-FT-DIFFERITA      PIC  X(01).
                    88 DOCDI-CREA-FT-DIFFERITA-88 VALUE IS "S" " ". 
+      *
       *
       *
                10 docdi-elabora-allegati       PIC  9(01).
@@ -660,6 +682,7 @@
            TO FALSE  0. 
       *
       *$GEN type=code,entity=tblva
+      *
                10 docdi-tblva      PIC  x(03).
                10 docdi-cciaa      PIC  x(11).
                10 docdi-prov-cciaa PIC  x(02).
@@ -671,6 +694,7 @@
                    88 docdi-datint-tipo-com-1 VALUE IS 1. 
                    88 docdi-datint-tipo-com-2 VALUE IS 2. 
       * copy "groupdate.xfc". | DBMaker
+      *
                10 docdi-datint-dataimp.
       *(( XFD NAME = DOCDI-IMPEGNO-AA ))
                    15 aa   PIC  9(04).
@@ -681,11 +705,13 @@
                10 filler REDEFINES docdi-datint-dataimp.
       *$GEN type=date,
       *
+      *
                    15 docdi-datint-datai           PIC  9(08).
       *
       *
       *
       * punto vendita: "accorpa scritture contabili corr.giornalieri"                                    | mxm 17/10/2007 17.13
+      *
                10 docdi-accorpa-corr           PIC  9(01).
       *
       * punto vendita: aggiunto flag "contropartite vendite differenziate per articoli"
@@ -712,6 +738,7 @@
       *
       * porta server smtp
       *
+      *
                10 docdi-smtp-port  PIC  9(05).
                    88 docdi-smtp-port-default VALUE IS 25. 
       *
@@ -733,7 +760,9 @@
            FALSE  0. 
       *(( XFD DATE=yyyymmdd ))
       *$GEN type=date,
+      *
                10 docdi-data-inizio-procedura  PIC  9(08).
+      *
       *
       *
       *
@@ -750,10 +779,12 @@
                    88 docdi-sendmail-starttls VALUE IS 2. 
       *
       *
+      *
                10 docdi-sendmail-receipt       PIC  9(01).
       *
       *
       *$GEN type=code,entity=tblna
+      *
                10 docdi-codice-tblna           PIC  x(03).
                10 docdi-codice-iva-estero      PIC  x(30).
                10 docdi-cognome-dich           PIC  x(24).
@@ -765,6 +796,7 @@
                    88 docdi-sesso-dich-ok VALUE IS "M" "F". 
       *(( XFD DATE=yyyymmdd ))
       *$GEN type=date,
+      *
                10 docdi-data-nascita-dich      PIC  9(08).
                10 docdi-comune-nascita-dich    PIC  x(40).
                10 docdi-prov-nascita-dich      PIC  x(02).
@@ -773,6 +805,7 @@
                10 docdi-prov-residenza-dich    PIC  x(02).
                10 docdi-cap-residenza-dich     PIC  x(05).
                10 docdi-telefono-dich          PIC  x(12).
+      *
       *
       *
                10 docdi-cardov03-riep-taglie   PIC  9.
@@ -792,12 +825,14 @@
       *
       ***   10  docdi-filler-01                  pic  x(493).                | maxime 15/04/2011 08:44:12  | rososv 11/05/2011 17:21:12
       *
+      *
                10 docdi-mig-tk3881 PIC  9.
                    88 docdi-mig-tk3881-eseguita VALUE IS 1. 
                10 docdi-zucchetti-mode         PIC  9.
                10 docdi-contratti-pubblici     PIC  9.
                    88 docdi-contratti-pubblici-ok VALUE IS 1. 
                    88 docdi-contratti-pubblici-ko VALUE IS 0. 
+      *
       *
       *
                10 docdi-force-multipart-mixed  PIC  9.
@@ -807,10 +842,12 @@
                10 docdi-ps-days-acq            PIC  9(04).
                10 docdi-carica-iva PIC  x(02).
       *$GEN type=code,entity=tblna
+      *
                10 docdi-codice-tblna-dich      PIC  x(03).
                10 docdi-nascondi-msg-ctr-esis  PIC  9.
                    88 docdi-nascondi-msg-ctr-esis-si VALUE IS 1. 
                    88 docdi-nascondi-msg-ctr-esis-no VALUE IS 0. 
+      *
       *
       *
                10 docdi-chiudi-preventivo      PIC  9.
@@ -837,6 +874,7 @@
                10 docdi-data-inizio-proc       PIC  9(08).
       *(( XFD DATE=yyyymmdd ))
       *$GEN type=date,
+      *
                10 docdi-data-fine-proc         PIC  9(08).
                10 docdi-denom-sogg-tenuto-com  PIC  x(50).
       *(( XFD DATE=yyyymm ))
@@ -859,36 +897,47 @@
       *
       *mento a codice azienda su app mobileFV   | scamar 09/06/2014
       *** indica se si vuole la richiesta interattiva da aggdav della scadenza da movimentare (per note di credito)
+      *
                10 docdi-aggdav-richiesta-scad  PIC  9.
                    88 docdi-aggdav-richiesta-scad-ok VALUE IS 1. 
                    88 docdi-aggdav-richiesta-scad-ko VALUE IS 0. 
       *
       *** causali contabili da proporre nel programma di chiusura contabile                                | Suadal 16/09/2014
+      *
                10 docdi-tabella-tblco-chimov-x.
                    15 docdi-tabella-tblco-chimov
                               OCCURS 07 TIMES.
                        20 docdi-tblco-chimov           PIC  x(03).
                10 filler REDEFINES docdi-tabella-tblco-chimov-x.
       *$GEN type=code,entity=tblco,blanknull=on
+      *
                    15 docdi-tblco-chiu-econ        PIC  x(03).
       *$GEN type=code,entity=tblco,blanknull=on
+      *
                    15 docdi-tblco-chiu-patr        PIC  x(03).
       *$GEN type=code,entity=tblco,blanknull=on
+      *
       *
                    15 docdi-tblco-aper-patr        PIC  x(03).
       *$GEN type=code,entity=tblco,blanknull=on
       *
+      *
                    15 docdi-tblco-chiu-ordine      PIC  x(03).
       *$GEN type=code,entity=tblco,blanknull=on
+      *
                    15 docdi-tblco-aper-ordine      PIC  x(03).
       *$GEN type=code,entity=tblco,blanknull=on
       *
+      *
                    15 docdi-tblco-utile            PIC  x(03).
       *$GEN type=code,entity=tblco,blanknull=on
+      *
                    15 docdi-tblco-perdita          PIC  x(03).
       *$GEN type=code,entity=doces,
+      *
                10 docdi-ultimo-esercizio       PIC  x(02).
       *$GEN type=num,dec=0,size=08
+      *
                10 docdi-codice-azienda-pagheweb            PIC  9(06).
       *** Tipo di collegamento con modulo Zucchetti                                                        | Suadal 16/04/2015
                10 docdi-tipo-colleg-31         PIC  9(01).

@@ -2,7 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E3B1D231739-603-138973728
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E51131140-48-2368932297
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -24,8 +24,11 @@ m_strPrefix=TBLDO
    e INTRA 2 BIS ai soli fini statistici ( INTRA 1 BIS colonne 1 e da 5 a 13 -
    INTRA 2 BIS colonne 1 e da 6 a 15).
 ---------------------------------------------------------------------------------------------------------------------------
- tk. 8602 - FE xml: CONAI - dicitura anche su xml documenti (fatture/note di credito)               | EXT-POZEDO 10/07/2019    
-            aggiunto campo tbldo-causaleFeXml 
+ tk. 8602 - FE xml: CONAI - dicitura anche su xml documenti (fatture/note di credito)               | EXT-POZEDO 10/07/2019
+            aggiunto campo tbldo-causaleFeXml
+---------------------------------------------------------------------------------------------------------------------------
+ tk.8987 - Digitalizzazione del Documento di Accompagnamento Semplificato (DAS Digitale)            | biachr 13/02/2020
+           .aggiunti flag 'export ead' e flag 'grado obbligatorio'
 ---------------------------------------------------------------------------------------------------------------------------
 
  tplvar zmm_title=Tabella documenti di vendita/acquisto
@@ -38,6 +41,7 @@ m_strPrefix=TBLDO
    02.tbldo-descrizione1
    03.tbldo-descrizione2
 
+3
 @}}
 [FDITEM0_]
 m_strName=record-tbldo
@@ -83,7 +87,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM4_
 
-
 @}}
 [FDITEM5_]
 m_strName=tbldo-descrizione1
@@ -94,7 +97,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM5_
 $GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=2
-
 @}}
 [FDITEM6_]
 m_strName=tbldo-descrizione2
@@ -105,6 +107,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM6_
 $GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=3
+
 @}}
 [FDITEM7_]
 m_strName=tbldo-tipo-documento
@@ -115,7 +118,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM7_
 $GEN type=combobox,comboclass=tbldo_tipo_documento
-
 @}}
 [FDITEM8_]
 m_strName=tbldo-tipo-documento-88
@@ -228,6 +230,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM19_
 $GEN type=code,entity=tblma
+
 @}}
 [FDITEM20_]
 m_strName=tbldo-numerazione-bolle
@@ -248,6 +251,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM21_
 $GEN type=combobox,comboclass=generic_tipo_cf,comboentity=tbldo-tipo-cf-e3
+
 @}}
 [FDITEM22_]
 m_strName=tbldo-tipo-cf-88
@@ -285,7 +289,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM25_
 $GEN type=combobox,comboclass=tblmo_prezzo
-
 @}}
 [FDITEM26_]
 m_strName=tbldo-prezzo-88
@@ -555,7 +558,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM51_
 
-
 @}}
 [FDITEM52_]
 m_strName=tbldo-tabella-01-x
@@ -736,7 +738,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM67_
 
-
 @}}
 [FDITEM68_]
 m_strName=tbldo-tabella-occ
@@ -761,7 +762,6 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM69_
 
 $GEN type=code,entity=var(tbldo-tipo-cf-e3)
-
 @}}
 [FDITEM70_]
 m_strName=tbldo-situazione
@@ -772,7 +772,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM70_
 $GEN type=combobox,comboclass=tbldo_situazione
-
 @}}
 [FDITEM71_]
 m_strName=tbldo-situazione-88
@@ -819,7 +818,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM75_
 $GEN type=radiobutton,value_1=" ",image_1=1,value_2="A",image_2=2
-
 @}}
 [FDITEM76_]
 m_strName=tbldo-modulo-88
@@ -857,7 +855,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM79_
 $GEN type=checkbox,truevalue="S",falsevalue=" "
-
 @}}
 [FDITEM80_]
 m_strName=tbldo-intra-88
@@ -1014,6 +1011,7 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM96_
 05/2010
 $GEN type=combobox,comboclass=tbldo_regime
+
 @}}
 [FDITEM97_]
 m_strName=tbldo-regime-88
@@ -1106,7 +1104,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM106_
 $GEN type=combobox,comboclass=tbldo_editoria
-
 @}}
 [FDITEM107_]
 m_strName=tbldo-editoria-88
@@ -1181,6 +1178,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM114_
 $GEN type=checkbox,truevalue="S",falsevalue=" "
+
 @}}
 [FDITEM115_]
 m_strName=tbldo-imballi-88
@@ -1226,7 +1224,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM119_
 $GEN type=code,entity=tblmo
-
 @}}
 [FDITEM120_]
 m_strName=tbldo-codice-mo-s
@@ -1237,7 +1234,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM120_
 $GEN type=code,entity=tblmo
-
 @}}
 [FDITEM121_]
 m_strName=tbldo-codice-mand
@@ -1299,6 +1295,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM126_
 $GEN type=checkbox,truevalue="S",falsevalue=" "
+
 @}}
 [FDITEM127_]
 m_strName=tbldo-stampa-spese-88
@@ -1355,7 +1352,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM132_
 $GEN type=checkbox,truevalue="S",falsevalue=" "
-
 @}}
 [FDITEM133_]
 m_strName=tbldo-obbligo-ins-cmk-88
@@ -1385,7 +1381,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM135_
 $GEN type=checkbox,truevalue="S",falsevalue=" "
-
 @}}
 [FDITEM136_]
 m_strName=tbldo-abil-movimenti-lotti-88
@@ -1415,6 +1410,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM138_
 $GEN type=combobox,comboclass=tbldo_tipo_movimento
+
 @}}
 [FDITEM139_]
 m_strName=tbldo-tipo-movimento-88
@@ -1453,25 +1449,49 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM142_
 
+
 @}}
 [FDITEM143_]
-m_strName=tbldo-filler
-m_strRawPic=x(700)
-m_strPic=X(700)
+m_strName=tbldo-export-ead
+m_strRawPic=9(01)
+m_strPic=9(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM143_
 
+
 @}}
 [FDITEM144_]
+m_strName=tbldo-grado-obbl
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM144_
+
+@}}
+[FDITEM145_]
+m_strName=tbldo-filler
+m_strRawPic=x(698)
+m_strPic=X(698)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM145_
+
+
+@}}
+[FDITEM146_]
 m_strName=tbldo-filler-ris
 m_strRawPic=x(40)
 m_strPic=X(40)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM144_
+{{@DataItem_m_strDescriptionFDITEM146_
+ldo-filler                       pic  x(700).                                         | EXT-POZEDO 10/07/2019 | biachr 13/02/2020
 
 @}}
 [CStoAcucobolSL_]
