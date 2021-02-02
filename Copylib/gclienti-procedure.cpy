@@ -1105,15 +1105,7 @@ LUBEXX                move ef-piva-buf    to cf-piva
                          end-if
                       end-if
                    end-if
-LUBEXX          else
-LUBEXX             if ef-nazione-buf not = "ITA"
-LUBEXX                set errori to true
-LUBEXX                display message "Codice Esenzione obbligatorio"
-LUBEXX                                " per clienti esteri"
-LUBEXX                          title tit-err
-LUBEXX                           icon 2
-LUBEXX             end-if
-                end-if
+LUBEXX          end-if
 
            |78-ID-ef-cod-iva è l'ID del campo ef-cod-iva
            when 78-ID-ef-cod-iva
@@ -3225,6 +3217,28 @@ LUBEXX        end-if
                  end-if
               end-if
            end-if.
+
+           if tutto-ok
+LUBEXX        if ef-nazione-buf not = "ITA" and 
+                 ef-iva-ese-buf     = spaces
+                 if old-cli-nazione not = ef-nazione-buf or
+                    old-cli-iva-ese not = ef-iva-ese-buf
+                    perform CANCELLA-COLORE
+                    move 78-ID-ef-iva-ese to control-id
+                    move 20 to Passwd-password
+                    call   "passwd" using Passwd-linkage
+                    cancel "passwd"
+              
+                    if not Passwd-StatusOk
+LUBEXX                 set errori to true
+LUBEXX                 display message "Codice Esenzione obbligatorio"
+LUBEXX                                 " per clienti esteri"
+LUBEXX                           title tit-err
+LUBEXX                            icon 2
+                    end-if
+                 end-if
+LUBEXX        end-if
+           end-if
            |23/05/2012
 
 

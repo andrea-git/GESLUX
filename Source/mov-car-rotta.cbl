@@ -248,17 +248,17 @@
                 set errori to true
                 exit paragraph
            end-read.
-           move mag-cau-scarico-rot to tca-codice.
-           read tcaumag no lock
-                invalid           
-                display message
-                            "Impossibile creare il movimento di carico."
-                     x"0d0a""Causale scarico ROT non valida"
-                           icon 3
-                          title titolo
-                set errori to true
-                exit paragraph
-           end-read.
+      *****     move mag-cau-scarico-rot to tca-codice.
+      *****     read tcaumag no lock
+      *****          invalid           
+      *****          display message
+      *****                      "Impossibile creare il movimento di scarico."
+      *****               x"0d0a""Causale scarico ROT non valida"
+      *****                     icon 3
+      *****                    title titolo
+      *****          set errori to true
+      *****          exit paragraph
+      *****     end-read.
 
 
       ***---
@@ -327,10 +327,7 @@
            move mag-cau-carico-rot to tmo-causale
            move mcr-peso-tot       to tmo-peso-utf
 
-           write tmo-rec
-              invalid
-                 continue
-           end-write.
+           write tmo-rec invalid continue end-write.
 
            unlock tmovmag all record.
 
