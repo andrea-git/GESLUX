@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          tivaese.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        lunedì 17 dicembre 2018 12:08:51.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        giovedì 4 febbraio 2021 12:12:34.
        REMARKS.
       *{TOTEM}END
 
@@ -43,7 +43,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -286,7 +286,7 @@
       * Data.Check-Box
               05 chk-esenzione-BUF PIC 9 VALUE ZERO.
       * Data.Entry-Field
-              05 ef-aliquotaa-BUF PIC X(02).
+              05 ef-aliquotaa-BUF PIC X(10).
 
        77 TMP-Form1-KEY1-ORDER  PIC X VALUE "A".
        77 TMP-Form1-KEY2-ORDER  PIC X VALUE "A".
@@ -438,17 +438,17 @@
        05
            ef-aliquotaa, 
            Entry-Field, 
-           COL 62,00, 
+           COL 59,00, 
            LINE 11,00,
            LINES 1,33 ,
-           SIZE 5,00 ,
+           SIZE 8,00 ,
            BOXED,
            COLOR IS 513,
            ENABLED MOD,
-           ID IS 3,
+           ID IS 4,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           MAX-TEXT 2,
+           MAX-TEXT 10,
            VALUE ef-aliquotaa-BUF,
            .
 
@@ -566,7 +566,7 @@
            LINE 8,00,
            LINES 1,31 ,
            SIZE 12,00 ,
-           ID IS 4,
+           ID IS 5,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -577,11 +577,11 @@
        05
            Screen1-La-3a, 
            Label, 
-           COL 49,00, 
+           COL 48,00, 
            LINE 11,00,
            LINES 1,33 ,
            SIZE 9,60 ,
-           ID IS 1,
+           ID IS 6,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2158,7 +2158,7 @@
            PERFORM ef-aliquotaa-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 3 TO CONTROL-ID
+               MOVE 4 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
            .
@@ -2343,8 +2343,8 @@
            if tbliv-natura-iva not = old-tbliv-natura-iva
               and SiSalvato
               set NoSalvato to true
-              |3 è l'ID del campo ef-aliquotaa
-              move 3 to store-id
+              |4 è l'ID del campo ef-aliquotaa
+              move 4 to store-id
            end-if
 
            .
@@ -2428,7 +2428,7 @@
            WHEN 5003 MOVE "Digitare la Descrizione" to TOTEM-HINT-TEXT
            WHEN 5004 MOVE "Digitare l'aliquota" to TOTEM-HINT-TEXT
            WHEN 5005 MOVE "Esenzione S/N" to TOTEM-HINT-TEXT
-           WHEN 3 MOVE "Digitare l'aliquota" to TOTEM-HINT-TEXT
+           WHEN 4 MOVE "Digitare l'aliquota" to TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
            EVALUATE Control-Id
@@ -2437,7 +2437,7 @@
            When 5003 PERFORM Screen1-DaEf-2-BeforeProcedure
            When 5004 PERFORM Screen1-DaEf-1-BeforeProcedure
            When 5005 PERFORM Screen1-DaCb-1-BeforeProcedure
-           When 3 PERFORM Screen1-DaEf-1-BeforeProcedure
+           When 4 PERFORM Screen1-DaEf-1-BeforeProcedure
            END-EVALUATE
            PERFORM Form1-DISPLAY-STATUS-MSG
            .
@@ -2449,7 +2449,7 @@
            When 5003 PERFORM Screen1-DaEf-2-AfterProcedure
            When 5004 PERFORM Screen1-DaEf-1-AfterProcedure
            When 5005 PERFORM Screen1-DaCb-1-AfterProcedure
-           When 3 PERFORM Screen1-DaEf-1-AfterProcedure
+           When 4 PERFORM Screen1-DaEf-1-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .

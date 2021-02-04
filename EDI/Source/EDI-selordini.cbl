@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 19 agosto 2020 11:14:12.
+       DATE-WRITTEN.        giovedì 4 febbraio 2021 13:12:46.
        REMARKS.
       *{TOTEM}END
 
@@ -31,7 +31,6 @@
            COPY "destini.sl".
            COPY "EDI-mtordini.sl".
            COPY "agenti.sl".
-           COPY "tivaese.sl".
            COPY "ttipocli.sl".
            COPY "tvettori.sl".
            COPY "pagbloc.sl".
@@ -69,6 +68,7 @@
            COPY "grade.sl".
            COPY "log-macrobatch.sl".
            COPY "macrobatch.sl".
+           COPY "tivaese.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -77,7 +77,6 @@
            COPY "destini.fd".
            COPY "EDI-mtordini.fd".
            COPY "agenti.fd".
-           COPY "tivaese.fd".
            COPY "ttipocli.fd".
            COPY "tvettori.fd".
            COPY "pagbloc.fd".
@@ -115,6 +114,7 @@
            COPY "grade.fd".
            COPY "log-macrobatch.fd".
            COPY "macrobatch.fd".
+           COPY "tivaese.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -865,10 +865,9 @@
        77 STATUS-scr-fine-FLAG-REFRESH PIC  9.
           88 scr-fine-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-clienti-BUF     PIC X(1910).
-       77 TMP-DataSet1-destini-BUF     PIC X(3386).
+       77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-EDI-mtordini-BUF     PIC X(7911).
        77 TMP-DataSet1-agenti-BUF     PIC X(1233).
-       77 TMP-DataSet1-tivaese-BUF     PIC X(1380).
        77 TMP-DataSet1-ttipocli-BUF     PIC X(889).
        77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
        77 TMP-DataSet1-pagbloc-BUF     PIC X(609).
@@ -906,6 +905,7 @@
        77 TMP-DataSet1-grade-BUF     PIC X(754).
        77 TMP-DataSet1-log-macrobatch-BUF     PIC X(1000).
        77 TMP-DataSet1-macrobatch-BUF     PIC X(9848).
+       77 TMP-DataSet1-tivaese-BUF     PIC X(1380).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -931,11 +931,6 @@
        77 DataSet1-agenti-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-agenti-KEY-Asc  VALUE "A".
           88 DataSet1-agenti-KEY-Desc VALUE "D".
-       77 DataSet1-tivaese-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-tivaese-LOCK  VALUE "Y".
-       77 DataSet1-tivaese-KEY-ORDER  PIC X VALUE "A".
-          88 DataSet1-tivaese-KEY-Asc  VALUE "A".
-          88 DataSet1-tivaese-KEY-Desc VALUE "D".
        77 DataSet1-ttipocli-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-ttipocli-LOCK  VALUE "Y".
        77 DataSet1-ttipocli-KEY-ORDER  PIC X VALUE "A".
@@ -1121,17 +1116,21 @@
        77 DataSet1-macrobatch-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-macrobatch-KEY-Asc  VALUE "A".
           88 DataSet1-macrobatch-KEY-Desc VALUE "D".
+       77 DataSet1-tivaese-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tivaese-LOCK  VALUE "Y".
+       77 DataSet1-tivaese-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tivaese-KEY-Asc  VALUE "A".
+          88 DataSet1-tivaese-KEY-Desc VALUE "D".
 
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
        77 clienti-cli-K4-SPLITBUF  PIC X(8).
-       77 destini-K1-SPLITBUF  PIC X(51).
+       77 destini-K1-SPLITBUF  PIC X(111).
        77 destini-k-localita-SPLITBUF  PIC X(36).
        77 EDI-mtordini-emto-k-ord-cli-SPLITBUF  PIC X(55).
        77 EDI-mtordini-k-emto-stato-SPLITBUF  PIC X(14).
        77 EDI-mtordini-k-emto-data-SPLITBUF  PIC X(21).
        77 EDI-mtordini-k-emto-clides-SPLITBUF  PIC X(23).
-       77 tivaese-key01-SPLITBUF  PIC X(53).
        77 tvettori-k-des-SPLITBUF  PIC X(41).
        77 tcaumag-k-mag-SPLITBUF  PIC X(5).
        77 EDI-mrordini-emro-k-articolo-SPLITBUF  PIC X(24).
@@ -1172,6 +1171,7 @@
        77 tcodpag-TBL-CODICE-01-SPLITBUF  PIC X(53).
        77 tmp-progmag-zoom-key-des-SPLITBUF  PIC X(64).
        77 tmp-progmag-zoom-key-art-SPLITBUF  PIC X(7).
+       77 tivaese-key01-SPLITBUF  PIC X(53).
       * FOR SPLIT KEY BUFFER
        77 DataSet1-EDI-mtordini-SPLIT-BUF1   PIC X(14).
 
@@ -4758,7 +4758,6 @@
            PERFORM OPEN-destini
            PERFORM OPEN-EDI-mtordini
            PERFORM OPEN-agenti
-           PERFORM OPEN-tivaese
            PERFORM OPEN-ttipocli
            PERFORM OPEN-tvettori
            PERFORM OPEN-pagbloc
@@ -4801,6 +4800,7 @@
       *    PERFORM OPEN-log-macrobatch
       *    macrobatch OPEN MODE IS FALSE
       *    PERFORM OPEN-macrobatch
+           PERFORM OPEN-tivaese
       *    After Open
            .
 
@@ -4856,18 +4856,6 @@
               GO TO EXIT-STOP-ROUTINE
            END-IF
       * <TOTEM:EPT. INIT:EDI-selordini, FD:agenti, AfterOpen>
-      * <TOTEM:END>
-           .
-
-       OPEN-tivaese.
-      * <TOTEM:EPT. INIT:EDI-selordini, FD:tivaese, BeforeOpen>
-      * <TOTEM:END>
-           OPEN  INPUT tivaese
-           IF NOT Valid-STATUS-tivaese
-              PERFORM  Form-ini-EXTENDED-FILE-STATUS
-              GO TO EXIT-STOP-ROUTINE
-           END-IF
-      * <TOTEM:EPT. INIT:EDI-selordini, FD:tivaese, AfterOpen>
       * <TOTEM:END>
            .
 
@@ -5350,13 +5338,24 @@
       * <TOTEM:END>
            .
 
+       OPEN-tivaese.
+      * <TOTEM:EPT. INIT:EDI-selordini, FD:tivaese, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT tivaese
+           IF NOT Valid-STATUS-tivaese
+              PERFORM  Form-ini-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:EDI-selordini, FD:tivaese, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-clienti
            PERFORM CLOSE-destini
            PERFORM CLOSE-EDI-mtordini
            PERFORM CLOSE-agenti
-           PERFORM CLOSE-tivaese
            PERFORM CLOSE-ttipocli
            PERFORM CLOSE-tvettori
            PERFORM CLOSE-pagbloc
@@ -5399,6 +5398,7 @@
       *    PERFORM CLOSE-log-macrobatch
       *    macrobatch CLOSE MODE IS FALSE
       *    PERFORM CLOSE-macrobatch
+           PERFORM CLOSE-tivaese
       *    After Close
            .
 
@@ -5424,12 +5424,6 @@
       * <TOTEM:EPT. INIT:EDI-selordini, FD:agenti, BeforeClose>
       * <TOTEM:END>
            CLOSE agenti
-           .
-
-       CLOSE-tivaese.
-      * <TOTEM:EPT. INIT:EDI-selordini, FD:tivaese, BeforeClose>
-      * <TOTEM:END>
-           CLOSE tivaese
            .
 
        CLOSE-ttipocli.
@@ -5649,6 +5643,12 @@
       * <TOTEM:END>
            .
 
+       CLOSE-tivaese.
+      * <TOTEM:EPT. INIT:EDI-selordini, FD:tivaese, BeforeClose>
+      * <TOTEM:END>
+           CLOSE tivaese
+           .
+
        clienti-cli-K1-MERGE-SPLITBUF.
            INITIALIZE clienti-cli-K1-SPLITBUF
            MOVE cli-tipo-CF OF clienti(1:1) TO 
@@ -5838,9 +5838,9 @@
 
        destini-K1-MERGE-SPLITBUF.
            INITIALIZE destini-K1-SPLITBUF
-           MOVE des-ragsoc-1(1:40) TO destini-K1-SPLITBUF(1:40)
-           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(41:5)
-           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(46:5)
+           MOVE des-ragsoc-1(1:100) TO destini-K1-SPLITBUF(1:100)
+           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(101:5)
+           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(106:5)
            .
 
        destini-k-localita-MERGE-SPLITBUF.
@@ -6444,170 +6444,6 @@
            MOVE "agenti" TO TOTEM-ERR-FILE
            MOVE "DELETE" TO TOTEM-ERR-MODE
       * <TOTEM:EPT. FD:DataSet1, FD:agenti, AfterDelete>
-      * <TOTEM:END>
-           .
-
-       tivaese-key01-MERGE-SPLITBUF.
-           INITIALIZE tivaese-key01-SPLITBUF
-           MOVE TBLIV-CODICE1(1:2) TO tivaese-key01-SPLITBUF(1:2)
-           MOVE TBLIV-DESCRIZIONE1(1:30) TO tivaese-key01-SPLITBUF(3:30)
-           MOVE TBLIV-CODICE2(1:20) TO tivaese-key01-SPLITBUF(33:20)
-           .
-
-       DataSet1-tivaese-INITSTART.
-           IF DataSet1-tivaese-KEY-Asc
-              MOVE Low-Value TO TBLIV-CODICE
-           ELSE
-              MOVE High-Value TO TBLIV-CODICE
-           END-IF
-           .
-
-       DataSet1-tivaese-INITEND.
-           IF DataSet1-tivaese-KEY-Asc
-              MOVE High-Value TO TBLIV-CODICE
-           ELSE
-              MOVE Low-Value TO TBLIV-CODICE
-           END-IF
-           .
-
-      * tivaese
-       DataSet1-tivaese-START.
-           IF DataSet1-tivaese-KEY-Asc
-              START tivaese KEY >= TBLIV-CODICE
-           ELSE
-              START tivaese KEY <= TBLIV-CODICE
-           END-IF
-           .
-
-       DataSet1-tivaese-START-NOTGREATER.
-           IF DataSet1-tivaese-KEY-Asc
-              START tivaese KEY <= TBLIV-CODICE
-           ELSE
-              START tivaese KEY >= TBLIV-CODICE
-           END-IF
-           .
-
-       DataSet1-tivaese-START-GREATER.
-           IF DataSet1-tivaese-KEY-Asc
-              START tivaese KEY > TBLIV-CODICE
-           ELSE
-              START tivaese KEY < TBLIV-CODICE
-           END-IF
-           .
-
-       DataSet1-tivaese-START-LESS.
-           IF DataSet1-tivaese-KEY-Asc
-              START tivaese KEY < TBLIV-CODICE
-           ELSE
-              START tivaese KEY > TBLIV-CODICE
-           END-IF
-           .
-
-       DataSet1-tivaese-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeReadRecord>
-      * <TOTEM:END>
-           IF DataSet1-tivaese-LOCK
-              READ tivaese WITH LOCK 
-              KEY TBLIV-CODICE
-           ELSE
-              READ tivaese WITH NO LOCK 
-              KEY TBLIV-CODICE
-           END-IF
-           PERFORM tivaese-key01-MERGE-SPLITBUF
-           MOVE STATUS-tivaese TO TOTEM-ERR-STAT 
-           MOVE "tivaese" TO TOTEM-ERR-FILE
-           MOVE "READ" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterReadRecord>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tivaese-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeReadNext>
-      * <TOTEM:END>
-           IF DataSet1-tivaese-KEY-Asc
-              IF DataSet1-tivaese-LOCK
-                 READ tivaese NEXT WITH LOCK
-              ELSE
-                 READ tivaese NEXT WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-tivaese-LOCK
-                 READ tivaese PREVIOUS WITH LOCK
-              ELSE
-                 READ tivaese PREVIOUS WITH NO LOCK
-              END-IF
-           END-IF
-           PERFORM tivaese-key01-MERGE-SPLITBUF
-           MOVE STATUS-tivaese TO TOTEM-ERR-STAT
-           MOVE "tivaese" TO TOTEM-ERR-FILE
-           MOVE "READ NEXT" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterReadNext>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tivaese-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeReadPrev>
-      * <TOTEM:END>
-           IF DataSet1-tivaese-KEY-Asc
-              IF DataSet1-tivaese-LOCK
-                 READ tivaese PREVIOUS WITH LOCK
-              ELSE
-                 READ tivaese PREVIOUS WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-tivaese-LOCK
-                 READ tivaese NEXT WITH LOCK
-              ELSE
-                 READ tivaese NEXT WITH NO LOCK
-              END-IF
-           END-IF
-           PERFORM tivaese-key01-MERGE-SPLITBUF
-           MOVE STATUS-tivaese TO TOTEM-ERR-STAT
-           MOVE "tivaese" TO TOTEM-ERR-FILE
-           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterReadPrev>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tivaese-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeWrite>
-      * <TOTEM:END>
-           MOVE STATUS-tivaese TO TOTEM-ERR-STAT
-           MOVE "tivaese" TO TOTEM-ERR-FILE
-           MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterWrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tivaese-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeRewrite>
-      * <TOTEM:END>
-           MOVE STATUS-tivaese TO TOTEM-ERR-STAT
-           MOVE "tivaese" TO TOTEM-ERR-FILE
-           MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterRewrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tivaese-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeDelete>
-      * <TOTEM:END>
-           MOVE STATUS-tivaese TO TOTEM-ERR-STAT
-           MOVE "tivaese" TO TOTEM-ERR-FILE
-           MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterDelete>
       * <TOTEM:END>
            .
 
@@ -12609,12 +12445,175 @@
       * <TOTEM:END>
            .
 
+       tivaese-key01-MERGE-SPLITBUF.
+           INITIALIZE tivaese-key01-SPLITBUF
+           MOVE TBLIV-CODICE1(1:2) TO tivaese-key01-SPLITBUF(1:2)
+           MOVE TBLIV-DESCRIZIONE1(1:30) TO tivaese-key01-SPLITBUF(3:30)
+           MOVE TBLIV-CODICE2(1:20) TO tivaese-key01-SPLITBUF(33:20)
+           .
+
+       DataSet1-tivaese-INITSTART.
+           IF DataSet1-tivaese-KEY-Asc
+              MOVE Low-Value TO TBLIV-CODICE
+           ELSE
+              MOVE High-Value TO TBLIV-CODICE
+           END-IF
+           .
+
+       DataSet1-tivaese-INITEND.
+           IF DataSet1-tivaese-KEY-Asc
+              MOVE High-Value TO TBLIV-CODICE
+           ELSE
+              MOVE Low-Value TO TBLIV-CODICE
+           END-IF
+           .
+
+      * tivaese
+       DataSet1-tivaese-START.
+           IF DataSet1-tivaese-KEY-Asc
+              START tivaese KEY >= TBLIV-CODICE
+           ELSE
+              START tivaese KEY <= TBLIV-CODICE
+           END-IF
+           .
+
+       DataSet1-tivaese-START-NOTGREATER.
+           IF DataSet1-tivaese-KEY-Asc
+              START tivaese KEY <= TBLIV-CODICE
+           ELSE
+              START tivaese KEY >= TBLIV-CODICE
+           END-IF
+           .
+
+       DataSet1-tivaese-START-GREATER.
+           IF DataSet1-tivaese-KEY-Asc
+              START tivaese KEY > TBLIV-CODICE
+           ELSE
+              START tivaese KEY < TBLIV-CODICE
+           END-IF
+           .
+
+       DataSet1-tivaese-START-LESS.
+           IF DataSet1-tivaese-KEY-Asc
+              START tivaese KEY < TBLIV-CODICE
+           ELSE
+              START tivaese KEY > TBLIV-CODICE
+           END-IF
+           .
+
+       DataSet1-tivaese-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-tivaese-LOCK
+              READ tivaese WITH LOCK 
+              KEY TBLIV-CODICE
+           ELSE
+              READ tivaese WITH NO LOCK 
+              KEY TBLIV-CODICE
+           END-IF
+           PERFORM tivaese-key01-MERGE-SPLITBUF
+           MOVE STATUS-tivaese TO TOTEM-ERR-STAT 
+           MOVE "tivaese" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tivaese-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-tivaese-KEY-Asc
+              IF DataSet1-tivaese-LOCK
+                 READ tivaese NEXT WITH LOCK
+              ELSE
+                 READ tivaese NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tivaese-LOCK
+                 READ tivaese PREVIOUS WITH LOCK
+              ELSE
+                 READ tivaese PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM tivaese-key01-MERGE-SPLITBUF
+           MOVE STATUS-tivaese TO TOTEM-ERR-STAT
+           MOVE "tivaese" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tivaese-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-tivaese-KEY-Asc
+              IF DataSet1-tivaese-LOCK
+                 READ tivaese PREVIOUS WITH LOCK
+              ELSE
+                 READ tivaese PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tivaese-LOCK
+                 READ tivaese NEXT WITH LOCK
+              ELSE
+                 READ tivaese NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM tivaese-key01-MERGE-SPLITBUF
+           MOVE STATUS-tivaese TO TOTEM-ERR-STAT
+           MOVE "tivaese" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tivaese-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-tivaese TO TOTEM-ERR-STAT
+           MOVE "tivaese" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tivaese-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-tivaese TO TOTEM-ERR-STAT
+           MOVE "tivaese" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tivaese-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-tivaese TO TOTEM-ERR-STAT
+           MOVE "tivaese" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE cli-rec OF clienti
            INITIALIZE des-rec OF destini
            INITIALIZE emto-rec OF EDI-mtordini
            INITIALIZE age-rec OF agenti
-           INITIALIZE record-tbliv OF tivaese
            INITIALIZE tcl-rec OF ttipocli
            INITIALIZE vet-rec OF tvettori
            INITIALIZE pgb-rec OF pagbloc
@@ -12652,6 +12651,7 @@
            INITIALIZE gra-rec OF grade
            INITIALIZE lm-riga OF log-macrobatch
            INITIALIZE mb-rec OF macrobatch
+           INITIALIZE record-tbliv OF tivaese
            .
 
 
@@ -12768,14 +12768,6 @@
       * FD's Initialize Paragraph
        DataSet1-agenti-INITREC.
            INITIALIZE age-rec OF agenti
-               REPLACING NUMERIC       DATA BY ZEROS
-                         ALPHANUMERIC  DATA BY SPACES
-                         ALPHABETIC    DATA BY SPACES
-           .
-
-      * FD's Initialize Paragraph
-       DataSet1-tivaese-INITREC.
-           INITIALIZE record-tbliv OF tivaese
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -13072,6 +13064,14 @@
       * FD's Initialize Paragraph
        DataSet1-macrobatch-INITREC.
            INITIALIZE mb-rec OF macrobatch
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-tivaese-INITREC.
+           INITIALIZE record-tbliv OF tivaese
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -16454,11 +16454,11 @@
            move anno-to      to emto-anno.
            move ordine-from  to emto-numero.
 
-           if data-from-AAAAMMGG = 0
-              move anno-to to data-from-AAAAMMGG(1:4)
-              move "01"    to data-from-AAAAMMGG(5:2)
-              move "01"    to data-from-AAAAMMGG(7:2)
-           end-if
+      *****     if data-from-AAAAMMGG = 0
+      *****        move anno-to to data-from-AAAAMMGG(1:4)
+      *****        move "01"    to data-from-AAAAMMGG(5:2)
+      *****        move "01"    to data-from-AAAAMMGG(7:2)
+      *****     end-if
 
            if tutti
               set emto-attivo to true
@@ -16573,17 +16573,17 @@
            move emto-anno     to col-anno.
            move emto-numero   to col-numero.
 
-LUBEXX     move emto-data-ordine(1:4) to col-data(7:4)
-LUBEXX     move emto-data-ordine(5:2) to col-data(4:2)
-LUBEXX     move emto-data-ordine(7:2) to col-data(1:2)
+LUBEXX     move emto-data-ordine(1:4) to col-data(7:4).
+LUBEXX     move emto-data-ordine(5:2) to col-data(4:2).
+LUBEXX     move emto-data-ordine(7:2) to col-data(1:2).
 
            move "/"                   to col-data(3:1)
                                          col-data(6:1).
 
-           move emto-cod-cli           to Col-cliente
+           move emto-cod-cli          to Col-cliente
                                          cli-codice.
 
-           move emto-num-ord-cli           to Col-ord-cli
+           move emto-num-ord-cli      to Col-ord-cli.
 
            set cli-tipo-C to true.
            read clienti   key cli-chiave
@@ -16643,9 +16643,9 @@ LUBEXX     move emto-data-ordine(7:2) to col-data(1:2)
            modify gd-ordini(riga, 1) hidden-data = emto-stato.
            set trovato to true.         
 
-      ***---
+      ***---        
        VALIDA-RECORD.
-           set record-ok to false
+           set record-ok to false.
            if emto-anno = anno-to and
               emto-numero >= ordine-from and
               emto-numero <= ordine-to

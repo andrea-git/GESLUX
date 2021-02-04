@@ -2,15 +2,16 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E2C1185846-846-2512718161
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E52411106-380-451426654
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
 m_bBlockRecords=1
 m_bRecordFixed=1
 m_bStandard=1
-m_strPrefix=TIVAESE
+m_strPrefix=tivaese
 {{@FD_m_strDescription
+
  Record per tabelle iva
 
  tbliv-gruppo-af accetta valori da 0 a 5                                                          |sq 11/07/2007 14.06
@@ -40,15 +41,28 @@ m_strPrefix=TIVAESE
 ----------------------------------------------------------------
  ticket 4537 - Elenchi black list (art. 2 c. 8 L. 44/2012)                                          | rososv 17/01/2014
 
- - Aggiunti campi zoom 
+ - Aggiunti campi zoom
 ----------------------------------------------------------------
  tk. 6107 - gestione Split Payment nelle fatture di vendita verso la PA - (I)                       | Suadal 26/02/2015
-          - inserito nuovo campo per gestione "split payment"  
+          - inserito nuovo campo per gestione "split payment"
 -------------------------------------------------------------------------------------------------------
  tk 7305 - XML per Fatelweb - impossibile coprire tutte le nature iva                               | scamar 15/06/2017
            (ma anche comunicaz.ft.emesse/ricevute)
            . new column tbliv-natura-iva
            . change TBLIV-FILLER size to 1166
+-----------------------------------------------------------------------------------------------------------------------
+ tk.8855 - FE XML gennaio 2020                                                                      | maxime 14/10/2019
+           Natura IVA passa a tre caratteri: il terzo è il "dettaglio"
+           Campo allungato grazie al FILLER - non necessitano recuperi
+-----------------------------------------------------------------------------------------------------------------------  
+ tk. 8915 - Fe xml 2020                                                                             | maxime 03/03/2020
+-----------------------------------------------------------------------------------------------------------------------
+ tk.9109 - FE xml 2020 aumentare ampiezza campi per natura iva                                      | maxime 05/03/2020
+           nature iva portate a 10 char 
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
  tplvar zmm_title=Tabella IVA
  tplvar zmm_ver=09.01.00
  tplvar zmm_class=anagraphic
@@ -78,7 +92,7 @@ m_strPrefix=TIVAESE
    21.tbliv-beneservizio
    22.tbliv-tipo-operazione-e
    23.tbliv-natura-iva-e
-                   
+   
 @}}
 [FDITEM0_]
 m_strName=record-tbliv
@@ -115,6 +129,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM3_
 $GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=20,zmm_align=L,zmm_pos=1,zmm_entity=tbliv
+
 @}}
 [FDITEM4_]
 m_strName=resto-record-tbliv
@@ -153,6 +168,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM7_
 $GEN type=num,dec=02,size=07,zmm=on,zmm_title=Perc.,zmm_datatype=n,zmm_size=10,zmm_align=R,zmm_pos=4
+
 @}}
 [FDITEM8_]
 m_strName=tbliv-detraibilita
@@ -163,6 +179,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM8_
 $GEN type=num,dec=00,size=04,zmm=on,zmm_title=Detraibilità,zmm_datatype=n,zmm_size=10,zmm_align=R,zmm_pos=5
+
 @}}
 [FDITEM9_]
 m_strName=tbliv-gruppo-ac
@@ -173,6 +190,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM9_
 $GEN zmm=on,zmm_title=Telem.clienti,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=7
+
 @}}
 [FDITEM10_]
 m_strName=tbliv-gruppo-ac-88
@@ -192,6 +210,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM11_
 $GEN zmm=on,zmm_title=Telem.forn.,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=8
+
 @}}
 [FDITEM12_]
 m_strName=tbliv-gruppo-af-88
@@ -210,7 +229,6 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM13_
-
 
 @}}
 [FDITEM14_]
@@ -231,7 +249,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM15_
 
-
 @}}
 [FDITEM16_]
 m_strName=tbliv-gruppo-102-88
@@ -251,7 +268,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM17_
 $GEN type=checkbox,truevalue="S",falsevalue=" "
-
 @}}
 [FDITEM18_]
 m_strName=tbliv-recupero-anno-88
@@ -383,7 +399,6 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM31_
 
 $GEN type=checkbox,truevalue="S",falsevalue=" "
-
 @}}
 [FDITEM32_]
 m_strName=TBLIV-VENTILAZIONE-88
@@ -429,7 +444,6 @@ m_nSync=-1
 m_bFixed=1
 m_strTrue="I"
 {{@DataItem_m_strDescriptionFDITEM36_
-04/2005 9.18
 
 @}}
 [FDITEM37_]
@@ -467,8 +481,8 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM40_
-$GEN type=combobox,comboclass=tbliv_agricoltura              
 
+$GEN type=combobox,comboclass=tbliv_agricoltura
 @}}
 [FDITEM41_]
 m_strName=TBLIV-AGRICOLTURA-88
@@ -552,7 +566,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM49_
 $GEN type=code,entity=tbliv
-
 @}}
 [FDITEM50_]
 m_strName=TBLIV-RECUPERO-PERIODO
@@ -637,7 +650,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM58_
 $GEN type=checkbox,truevalue="S",falsevalue=" "
-
 @}}
 [FDITEM59_]
 m_strName=TBLIV-RIPARTIZIONE-88
@@ -666,7 +678,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM61_
 $GEN type=checkbox,truevalue="S",falsevalue=" "
-
 @}}
 [FDITEM62_]
 m_strName=TBLIV-INTRA-NON-SOGG-88
@@ -703,7 +714,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM65_
 $GEN type=num,dec=02,size=07
-
 @}}
 [FDITEM66_]
 m_strName=tbliv-codice-magix-collegato-old
@@ -713,7 +723,6 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM66_
-
 
 @}}
 [FDITEM67_]
@@ -725,6 +734,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM67_
 $GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Tot.op.attive,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=9
+
 @}}
 [FDITEM68_]
 m_strName=TBLIV-ATTIVE-88
@@ -753,6 +763,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM70_
 $GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Op.attive intra,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=15
+
 @}}
 [FDITEM71_]
 m_strName=TBLIV-ATTIVE-INTRA-88
@@ -781,6 +792,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM73_
 $GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Tot.op.passive,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=10
+
 @}}
 [FDITEM74_]
 m_strName=TBLIV-PASSIVE-88
@@ -809,6 +821,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM76_
 $GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Op.passive intra,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=16
+
 @}}
 [FDITEM77_]
 m_strName=TBLIV-PASSIVE-INTRA-88
@@ -1004,6 +1017,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM96_
 $GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Rev.charge,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=6
+
 @}}
 [FDITEM97_]
 m_strName=TBLIV-IVA-ART-74-88
@@ -1086,6 +1100,7 @@ m_bFixed=1
         10  TBLIV-FILLER                    PIC  X(1212).          |ds 23.10.03
         10  TBLIV-FILLER                    PIC  X(1211).          |ds 23.10.03                    | il 03/10/2007 12.39
 $GEN type=checkbox,truevalue="S",falsevalue=" "
+
 @}}
 [FDITEM105_]
 m_strName=tbliv-subfornitura-88
@@ -1226,7 +1241,7 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM118_
-$GEN type=combobox,comboclass=tbliv_tipo_operazione,                                                                         
+$GEN type=combobox,comboclass=tbliv_tipo_operazione,
 @}}
 [FDITEM119_]
 m_strName=tbliv-tipo-operazione-imponibile
@@ -1292,12 +1307,11 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM125_
 r 09/07/2010 15:14:45
 $GEN type=code,entity=tbliv
-
 @}}
 [FDITEM126_]
 m_strName=tbliv-natura-iva
-m_strRawPic=x(02)
-m_strPic=X(02)
+m_strRawPic=x(10)
+m_strPic=X(10)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -1306,116 +1320,105 @@ m_bFixed=1
 $GEN type=combobox,comboclass=tbliv_natura_iva,
 @}}
 [FDITEM127_]
-m_strName=tbliv-natura-iva-allowed
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="IM" "N1" "N2" "N3" "N4" "N5" "N6" "N7" "NN"
-{{@DataItem_m_strDescriptionFDITEM127_
-
-@}}
-[FDITEM128_]
 m_strName=tbliv-natura-iva-imp
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="IM"
-{{@DataItem_m_strDescriptionFDITEM128_
+{{@DataItem_m_strDescriptionFDITEM127_
 
 @}}
-[FDITEM129_]
+[FDITEM128_]
 m_strName=tbliv-natura-iva-escluse
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
-m_strTrue="N1"
-{{@DataItem_m_strDescriptionFDITEM129_
+m_strTrue="N1" THRU "N1zzzzzzzz"
+{{@DataItem_m_strDescriptionFDITEM128_
 
 @}}
-[FDITEM130_]
+[FDITEM129_]
 m_strName=tbliv-natura-iva-non-sogg
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
-m_strTrue="N2"
-{{@DataItem_m_strDescriptionFDITEM130_
-
+m_strTrue="N2" THRU "N2zzzzzzzz"
+{{@DataItem_m_strDescriptionFDITEM129_
+e 05/03/2020
 @}}
-[FDITEM131_]
+[FDITEM130_]
 m_strName=tbliv-natura-iva-non-imp
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
-m_strTrue="N3"
-{{@DataItem_m_strDescriptionFDITEM131_
-
+m_strTrue="N3" THRU "N3zzzzzzzz"
+{{@DataItem_m_strDescriptionFDITEM130_
+e 05/03/2020
 @}}
-[FDITEM132_]
+[FDITEM131_]
 m_strName=tbliv-natura-iva-esenti
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
-m_strTrue="N4"
-{{@DataItem_m_strDescriptionFDITEM132_
-
+m_strTrue="N4" THRU "N4zzzzzzzz"
+{{@DataItem_m_strDescriptionFDITEM131_
+e 05/03/2020
 @}}
-[FDITEM133_]
+[FDITEM132_]
 m_strName=tbliv-natura-iva-non-esposta
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
-m_strTrue="N5"
-{{@DataItem_m_strDescriptionFDITEM133_
-
+m_strTrue="N5" THRU "N5zzzzzzzz"
+{{@DataItem_m_strDescriptionFDITEM132_
+e 05/03/2020
 @}}
-[FDITEM134_]
+[FDITEM133_]
 m_strName=tbliv-natura-iva-reverse-charge
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
-m_strTrue="N6"
-{{@DataItem_m_strDescriptionFDITEM134_
-
+m_strTrue="N6" THRU "N6zzzzzzzz"
+{{@DataItem_m_strDescriptionFDITEM133_
+e 05/03/2020
 @}}
-[FDITEM135_]
+[FDITEM134_]
 m_strName=tbliv-natura-iva-intra
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
-m_strTrue="N7"
-{{@DataItem_m_strDescriptionFDITEM135_
-
+m_strTrue="N7" THRU "N7zzzzzzzz"
+{{@DataItem_m_strDescriptionFDITEM134_
+e 05/03/2020
 @}}
-[FDITEM136_]
+[FDITEM135_]
 m_strName=tbliv-natura-iva-non-comunicare
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="NN"
+{{@DataItem_m_strDescriptionFDITEM135_
+e 05/03/2020
+@}}
+[FDITEM136_]
+m_strName=tbliv-filler
+m_strRawPic=x(1158)
+m_strPic=X(1158)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM136_
 
 @}}
 [FDITEM137_]
-m_strName=tbliv-filler
-m_strRawPic=x(1166)
-m_strPic=X(1166)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM137_
-
-@}}
-[FDITEM138_]
 m_strName=TBLIV-FILLER-RIS
 m_strRawPic=X(40)
 m_strPic=X(40)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM138_
+{{@DataItem_m_strDescriptionFDITEM137_
 
-**        10  TBLIV-FILLER                    PIC  X(1168).             | Suadal 26/02/2015         | scamar 15/06/2017
-**        10  TBLIV-FILLER                    PIC  X(1174).               |ds 22/01/2010 11.18      | scamar 09/07/2010 12:24:43
 @}}
 [CStoAcucobolSL_]
 m_nType=1

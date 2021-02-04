@@ -128,7 +128,7 @@
             05 el-perce-iva      pic 9(3)v99.
             05 el-cod-iva        pic x(3).
             05 el-des-iva        pic x(60).  
-            05 el-natura-iva     pic x(2).
+            05 el-natura-iva     pic x(10).
 
       * FLAGS
        77  controllo             pic xx.
@@ -282,13 +282,16 @@
                          invalid initialize cli-rec
                     end-read                       
                     read destini no lock
-                         invalid initialize des-rec
+                         invalid 
+                         initialize des-rec
+                         move cli-nazione to des-nazione
                     end-read
                     move cli-codice to rec-codice
                     read recapiti no lock
                          invalid initialize rec-rec
                     end-read
-                    if cli-nazione(1:2) = "IT"
+                    if cli-nazione(1:2) = "IT" or 
+                       des-nazione(1:2) = "IT"
                        move cli-codice to cli-codice-G2
                        read CLI no lock
                             invalid initialize record-cli
@@ -1971,13 +1974,15 @@
            write line-riga.      
 
            if tbliv-percentuale = 0
+              inspect tbliv-natura-iva 
+                      replacing trailing spaces by low-value
               initialize line-riga
               string 78-spazi    
                      78-spazi
                      78-spazi
                      78-spazi
                      "<Natura>"
-                     tbliv-natura-iva
+                     tbliv-natura-iva delimited low-value
                      "</Natura>"
                      into line-riga
               write line-riga
@@ -2193,13 +2198,15 @@
                  end-if
                  write line-riga      
                  if el-perce-iva(idx) = 0
+                    inspect el-natura-iva(idx)
+                            replacing trailing spaces by low-value
                     initialize line-riga
                     string 78-spazi    
                            78-spazi
                            78-spazi
                            78-spazi
                            "<Natura>"
-                           el-natura-iva(idx)
+                           el-natura-iva(idx) delimited low-value
                            "</Natura>"
                            into line-riga
                     write line-riga

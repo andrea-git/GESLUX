@@ -541,11 +541,13 @@
 
            set cli-tipo-C to true.
            move low-value to cli-codice.
+      *     move 9340 to cli-codice
            start clienti key >= cli-chiave
                  invalid continue
              not invalid
                  perform until 1 = 2
                     read clienti next at end exit perform end-read
+      *              if cli-codice not = 9340 exit perform end-if
                     if cli-tipo-F exit perform end-if
                     if RichiamoSchedulato
                        perform CONTATORE-VIDEO
@@ -563,12 +565,14 @@
 
            set cli-tipo-C to true.
            move low-value to cli-codice.
+      *     move 9340 to cli-codice
            start clienti key >= cli-chiave
                  invalid continue
              not invalid
                  perform until 1 = 2
                     read clienti next at end exit perform end-read
                     if cli-tipo-F exit perform end-if
+      *              if cli-codice not = 9340 exit perform end-if
                     if RichiamoSchedulato
                        perform CONTATORE-VIDEO
                     end-if
@@ -608,7 +612,8 @@
            move "INIZIO CONTROLLO CLIENTI / GDO" to como-riga.
            perform SETTA-RIGA-LOG.
 
-           move low-value to sf-rec.
+           move low-value to sf-rec.  
+      *     move 02303910505 to sf-chiave
            start sitfin key >= sf-chiave
                  invalid continue
              not invalid
@@ -616,7 +621,8 @@
                     read sitfin next 
                          at end 
                          exit perform 
-                    end-read  
+                    end-read   
+      *              if sf-chiave not = 02303910505 exit perform end-if
                     if RichiamoSchedulato
                        perform CONTATORE-VIDEO
                     end-if
@@ -734,9 +740,11 @@
 
            move low-value to cli-rec.
            set cli-tipo-C to true.    
+      *     move 9340 to cli-codice
            start clienti key >= cli-chiave invalid continue end-start.
            perform until 1 = 2
               read clienti next at end exit perform end-read
+      *              if cli-codice not = 9340 exit perform end-if
               if cli-tipo-F exit perform end-if    
               if RichiamoSchedulato
                  perform CONTATORE-VIDEO
@@ -808,12 +816,14 @@
       
            set cli-tipo-C to true.
            move low-value to cli-codice
+      *     move 9340 to cli-codice
            start clienti key >= cli-chiave
                  invalid continue
              not invalid
                  perform until 1 = 2
                     read clienti next at end exit perform end-read
-                    if cli-tipo-F exit perform end-if
+                    if cli-tipo-F exit perform end-if   
+      *              if cli-codice not = 9340 exit perform end-if
                     move cli-tipo to tcl-codice
                     read ttipocli no lock
                          invalid

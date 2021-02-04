@@ -2,6 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+ANDESK-andre=192.168.56.1
 
 
 [PROGRAM_CONTENT]
@@ -10,7 +11,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E52213573-937-268927378
+PROGRAM_UNIQUE_CODE=TOTEM-7E524111050-798-2689811268
 
 {{@DESCRIPTION:
 
@@ -1932,7 +1933,7 @@ Begin Screen Form1
       After Procedure   = Screen1-DaCb-1-AfterProcedure
    End
    Begin Data.Entry-Field ef-aliquotaa
-      SCREEN-COL        = 62,00
+      SCREEN-COL        = 59,00
       SCREEN-LINE       = 11,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -1944,7 +1945,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 62,00
+      Column            = 59,00
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -1954,21 +1955,21 @@ Begin Screen Form1
       Enable            = NONE
       Enable Variable   = MOD
       Field Edited (Style) = 0
-      Field Edited Format = X(02)
-      Field Picture     = X(02)
+      Field Edited Format = X(10)
+      Field Picture     = X(10)
       Field Variable    = tbliv-natura-iva
       File              = tivaese
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
       Hint              = Digitare l'aliquota
-      ID                = 3
+      ID                = 4
       Justification     = Unaligned
       Line              = 11,00
       Lines             = 1,33
       Lines Unit        = Default
       Max Lines         = 0
-      Max Text          = 2
+      Max Text          = 10
       Max Value         = 0
       Min Value         = 0
       No AutoSel        = FALSE
@@ -1979,7 +1980,7 @@ Begin Screen Form1
       Read Only         = FALSE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 5,00
+      Size              = 8,00
       Size Unit         = Default
       Style             = Singleline
       Tab Order         = 6
@@ -2246,7 +2247,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 4
+      ID                = 5
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 8,00
@@ -2263,7 +2264,7 @@ Begin Screen Form1
       Width in Cells    = TRUE
    End
    Begin Label Screen1-La-3a
-      SCREEN-COL        = 49,00
+      SCREEN-COL        = 48,00
       SCREEN-LINE       = 11,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -2271,7 +2272,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 49,00
+      Column            = 48,00
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -2279,7 +2280,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 1
+      ID                = 6
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 11,00

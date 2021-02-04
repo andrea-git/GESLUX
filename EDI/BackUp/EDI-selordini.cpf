@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E481391339-621-2506223190
+PROGRAM_UNIQUE_CODE=TOTEM-7E524115758-105-1545110755
 
 {{@DESCRIPTION:
 
@@ -15625,11 +15625,11 @@ BEGIN-TEXT
            move anno-to      to emto-anno.
            move ordine-from  to emto-numero.
 
-           if data-from-AAAAMMGG = 0
-              move anno-to to data-from-AAAAMMGG(1:4)
-              move "01"    to data-from-AAAAMMGG(5:2)
-              move "01"    to data-from-AAAAMMGG(7:2)
-           end-if
+      *****     if data-from-AAAAMMGG = 0
+      *****        move anno-to to data-from-AAAAMMGG(1:4)
+      *****        move "01"    to data-from-AAAAMMGG(5:2)
+      *****        move "01"    to data-from-AAAAMMGG(7:2)
+      *****     end-if
 
            if tutti
               set emto-attivo to true
@@ -15744,17 +15744,17 @@ BEGIN-TEXT
            move emto-anno     to col-anno.
            move emto-numero   to col-numero.
 
-LUBEXX     move emto-data-ordine(1:4) to col-data(7:4)
-LUBEXX     move emto-data-ordine(5:2) to col-data(4:2)
-LUBEXX     move emto-data-ordine(7:2) to col-data(1:2)
+LUBEXX     move emto-data-ordine(1:4) to col-data(7:4).
+LUBEXX     move emto-data-ordine(5:2) to col-data(4:2).
+LUBEXX     move emto-data-ordine(7:2) to col-data(1:2).
 
            move "/"                   to col-data(3:1)
                                          col-data(6:1).
 
-           move emto-cod-cli           to Col-cliente
+           move emto-cod-cli          to Col-cliente
                                          cli-codice.
 
-           move emto-num-ord-cli           to Col-ord-cli
+           move emto-num-ord-cli      to Col-ord-cli.
 
            set cli-tipo-C to true.
            read clienti   key cli-chiave
@@ -15814,9 +15814,9 @@ LUBEXX     move emto-data-ordine(7:2) to col-data(1:2)
            modify gd-ordini(riga, 1) hidden-data = emto-stato.
            set trovato to true.         
 
-      ***---
+      ***---        
        VALIDA-RECORD.
-           set record-ok to false
+           set record-ok to false.
            if emto-anno = anno-to and
               emto-numero >= ordine-from and
               emto-numero <= ordine-to
@@ -20754,54 +20754,6 @@ PROP_TRACK_COLOR=12632256
 REL_SYM_SIZE=4
 REL_SYM_INFO_L=0
 
-[DRAW_BASESYMBOL_2301_1071016400]
-OBJ_NAME=2301
-OBJ_ID=1071016400
-KIND=1
-{{@LABEL_2301_1071016400
-tivaese
-@}}
-WK_STEP=0
-BK_POINT=0
-CENTER_X=0
-CENTER_Y=0
-LEFT=2031
-TOP=1082
-RIGHT=2431
-BOTTOM=1304
-PROP_OBJ_TYPE=
-PROP_OBJ_TYPE2=
-PROP_FILL_PT=0
-PROP_FILL_FG=0
-PROP_FILL_BG=16777215
-PROP_FONT_HEIGHT=-35
-PROP_FONT_WIDTH=0
-PROP_FONT_ESCAPE=0
-PROP_FONT_ORIENT=0
-PROP_FONT_WEIGHT=400
-PROP_FONT_ITALIC=0
-PROP_FONT_UDLINE=0
-PROP_FONT_SKOUT=0
-PROP_FONT_CHARSET=0
-PROP_FONT_OUTPREC=3
-PROP_FONT_CLIPPREC=2
-PROP_FONT_QUALITY=1
-PROP_FONT_PCH_FAM=18
-PROP_FONT_FACE_NAME=Times New Roman
-PROP_FONT_CR=0
-PROP_LINE_PT=0
-PROP_LINE_WG=1
-PROP_LINE_CR=0
-PROP_SHAD_PT=0
-PROP_SHAD_FG=12632256
-PROP_SHAD_BG=12632256
-PROP_SHAD_EBL=0
-PROP_SHAD_POS=4
-PROP_SHAD_POINT=0
-PROP_TRACK_COLOR=12632256
-REL_SYM_SIZE=4
-REL_SYM_INFO_L=0
-
 [DRAW_BASESYMBOL_2301_952195598]
 OBJ_NAME=2301
 OBJ_ID=952195598
@@ -22578,6 +22530,54 @@ PROP_TRACK_COLOR=12632256
 REL_SYM_SIZE=4
 REL_SYM_INFO_L=0
 
+[DRAW_BASESYMBOL_2301_1071016400]
+OBJ_NAME=2301
+OBJ_ID=1071016400
+KIND=1
+{{@LABEL_2301_1071016400
+tivaese
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=2031
+TOP=1082
+RIGHT=2431
+BOTTOM=1304
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
 [DMD_DOCUMENT_0_1760106106]
 OBJ_NAME=0
 OBJ_ID=1760106106
@@ -22703,37 +22703,6 @@ DSN_INFO_DATA_ORDER=0
 DSN_INFO_START_VALUE=
 DSN_INFO_END_VALUE=
 {{@DSN_INFO_CONDITION_1262429534
-
-@}}
-DSN_INFO_PRIMARY=0
-DSN_INFO_OPEN=1
-DSN_INFO_CLOSE=1
-DSN_INFO_EXCLUSIVE=0
-DSN_INFO_IS_LOGICAL=0
-DSN_INFO_LOGICAL_FDNAME=
-DSN_INFO_ORIGINAL_FDNAME=
-DSN_INFO_REPLACEBY_FILESTATUS=
-DSN_INFO_REPLACEBY_RELATIVEKEY=
-DSN_INFO_REPLACEBY_FDDATA=
-DSN_INFO_REPLACEBY_SLDATA=
-
-[DMD_FILE_0_1071016400]
-OBJ_NAME=0
-OBJ_ID=1071016400
-REL_M_OBJ_ID=0
-ENTITY=tivaese
-LINK=0
-LINK_NAME=
-DSN_SIZE=44
-FD_SIZE=0
-SL_SIZE=0
-DSN_INFO_OPEN_MODE=0
-DSN_INFO_LOCK_OPTION=0
-DSN_INFO_KEY_IS=TBLIV-CODICE
-DSN_INFO_DATA_ORDER=0
-DSN_INFO_START_VALUE=
-DSN_INFO_END_VALUE=
-{{@DSN_INFO_CONDITION_1071016400
 
 @}}
 DSN_INFO_PRIMARY=0
@@ -23886,6 +23855,37 @@ DSN_INFO_END_VALUE=
 DSN_INFO_PRIMARY=0
 DSN_INFO_OPEN=0
 DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1071016400]
+OBJ_NAME=0
+OBJ_ID=1071016400
+REL_M_OBJ_ID=0
+ENTITY=tivaese
+LINK=0
+LINK_NAME=
+DSN_SIZE=44
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=TBLIV-CODICE
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1071016400
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
 DSN_INFO_EXCLUSIVE=0
 DSN_INFO_IS_LOGICAL=0
 DSN_INFO_LOGICAL_FDNAME=
