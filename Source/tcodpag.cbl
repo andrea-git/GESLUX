@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          tcodpag.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 1 aprile 2014 19:19:41.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        martedì 9 febbraio 2021 13:52:21.
        REMARKS.
       *{TOTEM}END
 
@@ -43,9 +43,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\Lubex\GESLUX\Copylib\UTYDATA.DEF".
-               COPY "F:\Lubex\GESLUX\Copylib\comune.def".
-               COPY "F:\Lubex\GESLUX\Copylib\custom.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -2727,7 +2725,8 @@
                 when "B"
                 when "D"
                 when "T"
-                when "W" continue
+                when "W" 
+                when "E" continue
                 when other
                      set errori to true
                      display message box
@@ -2736,6 +2735,7 @@
                       x"0d0a""- D : Rimessa  diretta"
                       x"0d0a""- T : Tratta"
                       x"0d0a""- W : R.I.B.A."
+                      x"0d0a""- E : Bonfico per estero"
                             title tit-err
                             icon  2
                 end-evaluate
@@ -2889,7 +2889,8 @@
 
            evaluate colonna
            when 2   move "B = Bonifico bancario; D = Rimessa  diretta; T
-      -                  "= Tratta; W = R.I.B.A." 
+      -                  "= Tratta; W = R.I.B.A.; E = Bonifico per l'est
+      -    "ero" 
                       to totem-hint-text
            when 3   move "0 = Data documento; 31 = Fine Mese; 99 = Vista
       -                  "; >31 = gg mese seg. ; Altri = Giorno Mese" 

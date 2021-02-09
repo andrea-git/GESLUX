@@ -1038,7 +1038,7 @@
                   78-spazi   
                   78-spazi     
                   "<Nazione>" 
-                  cli-nazione(1:2) delimited low-value
+                  naz-cod-edi delimited low-value
                   "</Nazione>"
              into line-riga.
            write line-riga.   
@@ -2352,11 +2352,13 @@
               
               evaluate tblpa-codice-tr(idx)   
               when "Z"
-              when "B"   move "MP05" to CodPag
+              when "B"   
+              when "E"   move "MP05" to CodPag
               when "D"   move "MP01" to CodPag
               when "W"   move "MP12" to CodPag
               when other move spaces to CodPag
               end-evaluate
+
               initialize line-riga
               string 78-spazi 
                      78-spazi   

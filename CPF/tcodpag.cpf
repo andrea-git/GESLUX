@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E511C103137-570-862427873
+PROGRAM_UNIQUE_CODE=TOTEM-7E529125133-126-1924222795
 
 {{@DESCRIPTION:
 
@@ -3053,7 +3053,8 @@ BEGIN-TEXT
                 when "B"
                 when "D"
                 when "T"
-                when "W" continue
+                when "W" 
+                when "E" continue
                 when other
                      set errori to true
                      display message box
@@ -3062,6 +3063,7 @@ BEGIN-TEXT
                       x"0d0a""- D : Rimessa  diretta"
                       x"0d0a""- T : Tratta"
                       x"0d0a""- W : R.I.B.A."
+                      x"0d0a""- E : Bonfico per estero"
                             title tit-err
                             icon  2
                 end-evaluate
@@ -3218,7 +3220,7 @@ BEGIN-TEXT
 
            evaluate colonna
            when 2   move "B = Bonifico bancario; D = Rimessa  diretta; T
-      -                  "= Tratta; W = R.I.B.A." 
+      -                  "= Tratta; W = R.I.B.A.; E = Bonifico per l'estero" 
                       to totem-hint-text
            when 3   move "0 = Data documento; 31 = Fine Mese; 99 = Vista
       -                  "; >31 = gg mese seg. ; Altri = Giorno Mese" 
