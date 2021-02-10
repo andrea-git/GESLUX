@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 4 febbraio 2021 13:12:46.
+       DATE-WRITTEN.        mercoledì 10 febbraio 2021 16:00:54.
        REMARKS.
       *{TOTEM}END
 
@@ -31,6 +31,7 @@
            COPY "destini.sl".
            COPY "EDI-mtordini.sl".
            COPY "agenti.sl".
+           COPY "tivaese.sl".
            COPY "ttipocli.sl".
            COPY "tvettori.sl".
            COPY "pagbloc.sl".
@@ -68,7 +69,6 @@
            COPY "grade.sl".
            COPY "log-macrobatch.sl".
            COPY "macrobatch.sl".
-           COPY "tivaese.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -77,6 +77,7 @@
            COPY "destini.fd".
            COPY "EDI-mtordini.fd".
            COPY "agenti.fd".
+           COPY "tivaese.fd".
            COPY "ttipocli.fd".
            COPY "tvettori.fd".
            COPY "pagbloc.fd".
@@ -114,7 +115,6 @@
            COPY "grade.fd".
            COPY "log-macrobatch.fd".
            COPY "macrobatch.fd".
-           COPY "tivaese.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -167,6 +167,8 @@
            COPY  "LOG-MACROBATCH.DEF".
        77 toolbar-bmp      PIC  S9(9)
                   USAGE IS COMP-4
+                  VALUE IS 0.
+       77 data-evadi-dal-old           PIC  9(8)
                   VALUE IS 0.
        77 mult PIC  9v99.
        77 tot-righe-edi    PIC  9(10).
@@ -513,7 +515,8 @@
        78 78-col-prz-EDI VALUE IS 8. 
        78 78-col-prz-GESLUX VALUE IS 9. 
        78 78-col-prz VALUE IS 10. 
-       78 78-col-stato-r VALUE IS 11. 
+       78 78-col-evadi-dal VALUE IS 11. 
+       78 78-col-stato-r VALUE IS 12. 
        01 rec-grid.
            05 col-num          PIC  z(5).
            05 col-art          PIC  zzzzz9.
@@ -525,6 +528,7 @@
            05 col-prz-EDI      PIC  zzz.zzz.zz9,99.
            05 col-prz-GESLUX   PIC  zzz.zzz.zz9,99.
            05 col-prz          PIC  zzz.zzz.zz9,99.
+           05 col-evadi-dal    PIC  99/99/9999.
            05 col-stato-r      PIC  xx.
        77 STATUS-pagbloc   PIC  X(2).
            88 Valid-STATUS-pagbloc VALUE IS "00" THRU "09". 
@@ -797,6 +801,8 @@
       * Data.Entry-Field
               05 ef-data-pass-BUF PIC 99/99/9999.
       * Data.Entry-Field
+              05 ef-evadi-dal-BUF PIC 99/99/9999.
+      * Data.Entry-Field
               05 ef-age-BUF PIC z(5).
       * Data.Entry-Field
               05 ef-pag-BUF PIC X(3).
@@ -868,6 +874,7 @@
        77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-EDI-mtordini-BUF     PIC X(7911).
        77 TMP-DataSet1-agenti-BUF     PIC X(1233).
+       77 TMP-DataSet1-tivaese-BUF     PIC X(1380).
        77 TMP-DataSet1-ttipocli-BUF     PIC X(889).
        77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
        77 TMP-DataSet1-pagbloc-BUF     PIC X(609).
@@ -905,7 +912,6 @@
        77 TMP-DataSet1-grade-BUF     PIC X(754).
        77 TMP-DataSet1-log-macrobatch-BUF     PIC X(1000).
        77 TMP-DataSet1-macrobatch-BUF     PIC X(9848).
-       77 TMP-DataSet1-tivaese-BUF     PIC X(1380).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -931,6 +937,11 @@
        77 DataSet1-agenti-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-agenti-KEY-Asc  VALUE "A".
           88 DataSet1-agenti-KEY-Desc VALUE "D".
+       77 DataSet1-tivaese-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tivaese-LOCK  VALUE "Y".
+       77 DataSet1-tivaese-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tivaese-KEY-Asc  VALUE "A".
+          88 DataSet1-tivaese-KEY-Desc VALUE "D".
        77 DataSet1-ttipocli-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-ttipocli-LOCK  VALUE "Y".
        77 DataSet1-ttipocli-KEY-ORDER  PIC X VALUE "A".
@@ -1116,11 +1127,6 @@
        77 DataSet1-macrobatch-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-macrobatch-KEY-Asc  VALUE "A".
           88 DataSet1-macrobatch-KEY-Desc VALUE "D".
-       77 DataSet1-tivaese-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-tivaese-LOCK  VALUE "Y".
-       77 DataSet1-tivaese-KEY-ORDER  PIC X VALUE "A".
-          88 DataSet1-tivaese-KEY-Asc  VALUE "A".
-          88 DataSet1-tivaese-KEY-Desc VALUE "D".
 
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
@@ -1131,6 +1137,7 @@
        77 EDI-mtordini-k-emto-stato-SPLITBUF  PIC X(14).
        77 EDI-mtordini-k-emto-data-SPLITBUF  PIC X(21).
        77 EDI-mtordini-k-emto-clides-SPLITBUF  PIC X(23).
+       77 tivaese-key01-SPLITBUF  PIC X(53).
        77 tvettori-k-des-SPLITBUF  PIC X(41).
        77 tcaumag-k-mag-SPLITBUF  PIC X(5).
        77 EDI-mrordini-emro-k-articolo-SPLITBUF  PIC X(24).
@@ -1171,7 +1178,6 @@
        77 tcodpag-TBL-CODICE-01-SPLITBUF  PIC X(53).
        77 tmp-progmag-zoom-key-des-SPLITBUF  PIC X(64).
        77 tmp-progmag-zoom-key-art-SPLITBUF  PIC X(7).
-       77 tivaese-key01-SPLITBUF  PIC X(53).
       * FOR SPLIT KEY BUFFER
        77 DataSet1-EDI-mtordini-SPLIT-BUF1   PIC X(14).
 
@@ -1227,6 +1233,7 @@
                10 OLD-emto-stato       PIC  X(1).
                    88 OLD-emto-attivo VALUE IS "A". 
                    88 OLD-emto-bloccato VALUE IS "B". 
+                   88 OLD-emto-caricato VALUE IS "C". 
                10 OLD-emto-errori.
                    15 OLD-emto-cliente     PIC  9.
                        88 OLD-emto-cliente-valido VALUE IS 0. 
@@ -1255,6 +1262,9 @@
                    15 OLD-emto-prz         PIC  9.
                        88 OLD-emto-prz-ok VALUE IS 0. 
                        88 OLD-emto-prz-ko VALUE IS 1. 
+                   15 OLD-emto-esistente   PIC  9.
+                       88 OLD-emto-esistente-no VALUE IS 0. 
+                       88 OLD-emto-esistente-si VALUE IS 1. 
                10 OLD-emto-ordine.
                    15 OLD-emto-ordine-anno PIC  9(4).
                    15 OLD-emto-ordine-numero           PIC  9(8).
@@ -1265,174 +1275,184 @@
                    15 OLD-emto-data-ultima-modifica    PIC  9(8).
                    15 OLD-emto-ora-ultima-modifica     PIC  9(8).
                    15 OLD-emto-utente-ultima-modifica  PIC  X(10).
-               10 OLD-emto-dati-import.
-                   15 OLD-emto-nome-file   PIC  x(100).
-                   15 OLD-emto-riga-file   PIC  9(6).
-                   15 OLD-emto-record-01T.
-                       20 OLD-emto-01T-filler  PIC  x.
-                       20 OLD-emto-02T-filler  PIC  x.
-                       20 OLD-emto-03T-filler  PIC  x.
-                       20 OLD-emto-04T-filler  PIC  x.
-                       20 OLD-emto-05T-filler  PIC  x.
-                       20 OLD-emto-06T-filler  PIC  x.
-                       20 OLD-emto-07T-filler  PIC  x.
-                       20 OLD-emto-08T-filler  PIC  x.
-                       20 OLD-emto-09T-filler  PIC  x.
-                       20 OLD-emto-10T-filler  PIC  x.
-                       20 OLD-emto-01T11-DTM-DATACONS      PIC  x(8).
-                       20 OLD-emto-01T12-RFF-NUMORDC       PIC  x(35).
-                       20 OLD-emto-01T13-RFF-DATAORDC      PIC  x(8).
-                       20 OLD-emto-14T-filler  PIC  x.
-                       20 OLD-emto-15T-filler  PIC  x.
-                       20 OLD-emto-16T-filler  PIC  x.
-                       20 OLD-emto-17T-filler  PIC  x.
-                       20 OLD-emto-18T-filler  PIC  x.
-                       20 OLD-emto-19T-filler  PIC  x.
-                       20 OLD-emto-20T-filler  PIC  x.
-                       20 OLD-emto-01T21-NAB-CODBUYER      PIC  x(17).
-                       20 OLD-emto-22T-filler  PIC  x.
-                       20 OLD-emto-23T-filler  PIC  x.
-                       20 OLD-emto-24T-filler  PIC  x.
-                       20 OLD-emto-25T-filler  PIC  x.
-                       20 OLD-emto-26T-filler  PIC  x.
-                       20 OLD-emto-27T-filler  PIC  x.
-                       20 OLD-emto-01T28-NAD-CODCONS       PIC  x(17).
-                       20 OLD-emto-29T-filler  PIC  x.
-                       20 OLD-emto-30T-filler  PIC  x.
-                       20 OLD-emto-31T-filler  PIC  x.
-                       20 OLD-emto-32T-filler  PIC  x.
-                       20 OLD-emto-33T-filler  PIC  x.
-                       20 OLD-emto-34T-filler  PIC  x.
-                       20 OLD-emto-01T35-FTX-NOTE          PIC  x(350).
-                       20 OLD-emto-36T-filler  PIC  x.
-                       20 OLD-emto-37T-filler  PIC  x.
-                       20 OLD-emto-38T-filler  PIC  x.
-                       20 OLD-emto-39T-filler  PIC  x.
-                       20 OLD-emto-40T-filler  PIC  x.
-                       20 OLD-emto-41T-filler  PIC  x.
-                       20 OLD-emto-42T-filler  PIC  x.
-                       20 OLD-emto-43T-filler  PIC  x.
-                       20 OLD-emto-44T-filler  PIC  x.
-                       20 OLD-emto-45T-filler  PIC  x.
-                       20 OLD-emto-46T-filler  PIC  x.
-                       20 OLD-emto-47T-filler  PIC  x.
-                       20 OLD-emto-48T-filler  PIC  x.
-                       20 OLD-emto-49T-filler  PIC  x.
-                       20 OLD-emto-50T-filler  PIC  x.
-                       20 OLD-emto-51T-filler  PIC  x.
-                       20 OLD-emto-52T-filler  PIC  x.
-                       20 OLD-emto-53T-filler  PIC  x.
-                       20 OLD-emto-54T-filler  PIC  x.
-                       20 OLD-emto-55T-filler  PIC  x.
-                       20 OLD-emto-56T-filler  PIC  x.
-                       20 OLD-emto-57T-filler  PIC  x.
-                       20 OLD-emto-58T-filler  PIC  x.
-                       20 OLD-emto-59T-filler  PIC  x.
-                       20 OLD-emto-60T-filler  PIC  x.
-                       20 OLD-emto-61T-filler  PIC  x.
-                       20 OLD-emto-62T-filler  PIC  x.
-                       20 OLD-emto-63T-filler  PIC  x.
-                       20 OLD-emto-64T-filler  PIC  x.
-                       20 OLD-emto-65T-filler  PIC  x.
-                       20 OLD-emto-66T-filler  PIC  x.
-                       20 OLD-emto-67T-filler  PIC  x.
-                       20 OLD-emto-01T68-FTX-NOTE          PIC  x(350).
-                       20 OLD-emto-01T69-FTX-NOTE          PIC  x(350).
-                       20 OLD-emto-01T70-FTX-NOTE          PIC  x(350).
-                       20 OLD-emto-71T-filler  PIC  x.
-                       20 OLD-emto-72T-filler  PIC  x.
-                       20 OLD-emto-73T-filler  PIC  x.
-                       20 OLD-emto-74T-filler  PIC  x.
-                       20 OLD-emto-75T-filler  PIC  x.
-                       20 OLD-emto-76T-filler  PIC  x.
-                       20 OLD-emto-77T-filler  PIC  x.
-                       20 OLD-emto-78T-filler  PIC  x.
-                       20 OLD-emto-79T-filler  PIC  x.
-                       20 OLD-emto-80T-filler  PIC  x.
-                       20 OLD-emto-81T-filler  PIC  x.
-                       20 OLD-emto-82T-filler  PIC  x.
-                       20 OLD-emto-83T-filler  PIC  x.
-                       20 OLD-emto-84T-filler  PIC  x.
-                       20 OLD-emto-85T-filler  PIC  x.
-                       20 OLD-emto-86T-filler  PIC  x.
-                       20 OLD-emto-87T-filler  PIC  x.
-                       20 OLD-emto-88T-filler  PIC  x.
-                       20 OLD-emto-89T-filler  PIC  x.
-                       20 OLD-emto-90T-filler  PIC  x.
-                       20 OLD-emto-91T-filler  PIC  x.
-                       20 OLD-emto-92T-filler  PIC  x.
-                       20 OLD-emto-93T-filler  PIC  x.
-                       20 OLD-emto-94T-filler  PIC  x.
-                       20 OLD-emto-95T-filler  PIC  x.
-                       20 OLD-emto-96T-filler  PIC  x.
-                       20 OLD-emto-97T-filler  PIC  x.
-                       20 OLD-emto-98T-filler  PIC  x.
-                       20 OLD-emto-99T-filler  PIC  x.
-                       20 OLD-emto-100T-filler PIC  x.
-                       20 OLD-emto-101T-filler PIC  x.
-                       20 OLD-emto-102T-filler PIC  x.
-                       20 OLD-emto-103T-filler PIC  x.
-                       20 OLD-emto-104T-filler PIC  x.
-                       20 OLD-emto-105T-filler PIC  x.
-                       20 OLD-emto-106T-filler PIC  x.
-                       20 OLD-emto-107T-filler PIC  x.
-                       20 OLD-emto-108T-filler PIC  x.
-                       20 OLD-emto-109T-filler PIC  x.
-                       20 OLD-emto-110T-filler PIC  x.
-                       20 OLD-emto-111T-filler PIC  x.
-                       20 OLD-emto-112T-filler PIC  x.
-                       20 OLD-emto-113T-filler PIC  x.
-                       20 OLD-emto-114T-filler PIC  x.
-                       20 OLD-emto-115T-filler PIC  x.
-                       20 OLD-emto-116T-filler PIC  x.
-                       20 OLD-emto-117T-filler PIC  x.
-                       20 OLD-emto-118T-filler PIC  x.
-                       20 OLD-emto-119T-filler PIC  x.
-                       20 OLD-emto-120T-filler PIC  x.
-                       20 OLD-emto-121T-filler PIC  x.
-                       20 OLD-emto-122T-filler PIC  x.
-                       20 OLD-emto-123T-filler PIC  x.
-                       20 OLD-emto-124T-filler PIC  x.
-                       20 OLD-emto-125T-filler PIC  x.
-                       20 OLD-emto-126T-filler PIC  x.
-                       20 OLD-emto-127T-filler PIC  x.
-                       20 OLD-emto-128T-filler PIC  x.
-                       20 OLD-emto-129T-filler PIC  x.
-                       20 OLD-emto-130T-filler PIC  x.
-                       20 OLD-emto-131T-filler PIC  x.
-                       20 OLD-emto-132T-filler PIC  x.
-                       20 OLD-emto-133T-filler PIC  x.
-                       20 OLD-emto-134T-filler PIC  x.
-                       20 OLD-emto-135T-filler PIC  x.
-                       20 OLD-emto-136T-filler PIC  x.
-                       20 OLD-emto-137T-filler PIC  x.
-                       20 OLD-emto-138T-filler PIC  x.
-                       20 OLD-emto-139T-filler PIC  x.
-                       20 OLD-emto-140T-filler PIC  x.
-                       20 OLD-emto-141T-filler PIC  x.
-                       20 OLD-emto-142T-filler PIC  x.
-                       20 OLD-emto-143T-filler PIC  x.
-                       20 OLD-emto-144T-filler PIC  x.
-                       20 OLD-emto-145T-filler PIC  x.
-                       20 OLD-emto-146T-filler PIC  x.
-                       20 OLD-emto-147T-filler PIC  x.
-                       20 OLD-emto-148T-filler PIC  x.
-                       20 OLD-emto-149T-filler PIC  x.
-                       20 OLD-emto-150T-filler PIC  x.
-                       20 OLD-emto-151T-filler PIC  x.
-                       20 OLD-emto-152T-filler PIC  x.
-                       20 OLD-emto-153T-filler PIC  x.
-                       20 OLD-emto-154T-filler PIC  x.
-                       20 OLD-emto-155T-filler PIC  x.
-                       20 OLD-emto-156T-filler PIC  x.
-                       20 OLD-emto-157T-filler PIC  x.
-                       20 OLD-emto-158T-filler PIC  x.
-                       20 OLD-emto-159T-filler PIC  x.
-                       20 OLD-emto-160T-filler PIC  x.
-                       20 OLD-emto-161T-filler PIC  x.
-                       20 OLD-emto-162T-filler PIC  x.
-                       20 OLD-emto-01T163-TOD-CODCOST      PIC  x(3).
-                   15 FILLER           PIC  x(200).
+           05 OLD-emto-dati-import.
+               15 OLD-emto-nome-file   PIC  x(100).
+               15 OLD-emto-riga-file   PIC  9(6).
+               15 OLD-emto-record-01T.
+                   20 OLD-emto-01T-filler  PIC  x(35).
+                   20 OLD-emto-02T-filler  PIC  x(35).
+                   20 OLD-emto-03T-filler  PIC  x(35).
+                   20 OLD-emto-01T04-BGM-DATADOC       PIC  x(8).
+                   20 OLD-emto-01T05-BGM-NUMDOC        PIC  x(35).
+                   20 OLD-emto-06T-filler  PIC  x(35).
+                   20 OLD-emto-07T-filler  PIC  x(35).
+                   20 OLD-emto-08T-filler  PIC  x(35).
+                   20 OLD-emto-09T-filler  PIC  x(35).
+                   20 OLD-emto-10T-filler  PIC  x(35).
+                   20 OLD-emto-01T11-DTM-DATACONS      PIC  x(8).
+                   20 OLD-emto-12T-filler  PIC  x(35).
+                   20 OLD-emto-13T-filler  PIC  x(35).
+                   20 OLD-emto-14T-filler  PIC  x(35).
+                   20 OLD-emto-15T-filler  PIC  x(35).
+                   20 OLD-emto-16T-filler  PIC  x(35).
+                   20 OLD-emto-17T-filler  PIC  x(35).
+                   20 OLD-emto-18T-filler  PIC  x(35).
+                   20 OLD-emto-19T-filler  PIC  x(35).
+                   20 OLD-emto-20T-filler  PIC  x(35).
+                   20 OLD-emto-01T21-NAB-CODBUYER      PIC  x(17).
+                   20 OLD-emto-01T22-NAB-QCODBUYER     PIC  x(35).
+                   20 OLD-emto-01T23-NAB-RAGSOCB       PIC  x(70).
+                   20 OLD-emto-01T24-NAB-INDIRB        PIC  x(35).
+                   20 OLD-emto-01T25-NAB-CITTAB        PIC  x(35).
+                   20 OLD-emto-01T26-NAB-PROVB         PIC  x(3).
+                   20 OLD-emto-01T27-NAB-CAPB          PIC  x(5).
+                   20 OLD-emto-01T28-NAD-CODCONS       PIC  x(17).
+                   20 OLD-emto-29T-filler  PIC  x(35).
+      *(( XFD NAME = OLD-emto-01T23-NAB-RAG ))
+                   20 OLD-emto-01T30-NAD-RAGSOCD       PIC  x(70).
+      *(( XFD NAME = OLD-emto-01T24-NAB-IND ))
+                   20 OLD-emto-01T31-NAD-INDIRD        PIC  x(35).
+      *(( XFD NAME = OLD-emto-01T25-NAB-CIT ))
+                   20 OLD-emto-01T32-NAD-CITTAD        PIC  x(35).
+      *(( XFD NAME = OLD-emto-01T26-NAB-PRO ))
+                   20 OLD-emto-01T33-NAD-PROVD         PIC  x(3).
+      *(( XFD NAME = OLD-emto-01T27-NAB-CAP ))
+                   20 OLD-emto-01T34-NAD-CAPD          PIC  x(5).
+                   20 OLD-emto-01T35-FTX-NOTE          PIC  x(350).
+                   20 OLD-emto-36T-filler  PIC  x(35).
+                   20 OLD-emto-01T37-BGM-CODAZION      PIC  x(35).
+                   20 OLD-emto-38T-filler  PIC  x(35).
+                   20 OLD-emto-39T-filler  PIC  x(35).
+                   20 OLD-emto-40T-filler  PIC  x(35).
+                   20 OLD-emto-01T41-NAI-CODFATT       PIC  x(35).
+                   20 OLD-emto-42T-filler  PIC  x(35).
+                   20 OLD-emto-43T-filler  PIC  x(35).
+                   20 OLD-emto-44T-filler  PIC  x(35).
+                   20 OLD-emto-45T-filler  PIC  x(35).
+                   20 OLD-emto-46T-filler  PIC  x(35).
+                   20 OLD-emto-47T-filler  PIC  x(35).
+                   20 OLD-emto-48T-filler  PIC  x(35).
+                   20 OLD-emto-49T-filler  PIC  x(35).
+                   20 OLD-emto-50T-filler  PIC  x(35).
+                   20 OLD-emto-51T-filler  PIC  x(35).
+                   20 OLD-emto-52T-filler  PIC  x(35).
+                   20 OLD-emto-53T-filler  PIC  x(35).
+                   20 OLD-emto-54T-filler  PIC  x(35).
+                   20 OLD-emto-55T-filler  PIC  x(35).
+                   20 OLD-emto-56T-filler  PIC  x(35).
+                   20 OLD-emto-57T-filler  PIC  x(35).
+                   20 OLD-emto-58T-filler  PIC  x(35).
+                   20 OLD-emto-59T-filler  PIC  x(35).
+                   20 OLD-emto-60T-filler  PIC  x(35).
+                   20 OLD-emto-61T-filler  PIC  x(35).
+                   20 OLD-emto-62T-filler  PIC  x(35).
+                   20 OLD-emto-63T-filler  PIC  x(35).
+                   20 OLD-emto-64T-filler  PIC  x(35).
+                   20 OLD-emto-65T-filler  PIC  x(35).
+                   20 OLD-emto-66T-filler  PIC  x(35).
+                   20 OLD-emto-67T-filler  PIC  x(35).
+                   20 OLD-emto-01T68-FTX-NOTE          PIC  x(350).
+                   20 OLD-emto-01T69-FTX-NOTE          PIC  x(350).
+                   20 OLD-emto-01T70-FTX-NOTE          PIC  x(350).
+                   20 OLD-emto-71T-filler  PIC  x(35).
+                   20 OLD-emto-72T-filler  PIC  x(35).
+                   20 OLD-emto-73T-filler  PIC  x(35).
+                   20 OLD-emto-74T-filler  PIC  x(35).
+                   20 OLD-emto-75T-filler  PIC  x(35).
+                   20 OLD-emto-76T-filler  PIC  x(35).
+                   20 OLD-emto-77T-filler  PIC  x(35).
+                   20 OLD-emto-78T-filler  PIC  x(35).
+                   20 OLD-emto-79T-filler  PIC  x(35).
+                   20 OLD-emto-80T-filler  PIC  x(35).
+                   20 OLD-emto-81T-filler  PIC  x(35).
+                   20 OLD-emto-82T-filler  PIC  x(35).
+                   20 OLD-emto-83T-filler  PIC  x(35).
+                   20 OLD-emto-84T-filler  PIC  x(35).
+                   20 OLD-emto-85T-filler  PIC  x(35).
+                   20 OLD-emto-86T-filler  PIC  x(35).
+                   20 OLD-emto-87T-filler  PIC  x(35).
+                   20 OLD-emto-88T-filler  PIC  x(35).
+                   20 OLD-emto-89T-filler  PIC  x(35).
+                   20 OLD-emto-90T-filler  PIC  x(35).
+                   20 OLD-emto-91T-filler  PIC  x(35).
+                   20 OLD-emto-92T-filler  PIC  x(35).
+                   20 OLD-emto-93T-filler  PIC  x(35).
+                   20 OLD-emto-94T-filler  PIC  x(35).
+                   20 OLD-emto-95T-filler  PIC  x(35).
+                   20 OLD-emto-96T-filler  PIC  x(35).
+                   20 OLD-emto-97T-filler  PIC  x(35).
+                   20 OLD-emto-98T-filler  PIC  x(35).
+                   20 OLD-emto-99T-filler  PIC  x(35).
+                   20 OLD-emto-100T-filler PIC  x(35).
+                   20 OLD-emto-101T-filler PIC  x(35).
+                   20 OLD-emto-102T-filler PIC  x(35).
+                   20 OLD-emto-103T-filler PIC  x(35).
+                   20 OLD-emto-104T-filler PIC  x(35).
+                   20 OLD-emto-105T-filler PIC  x(35).
+                   20 OLD-emto-106T-filler PIC  x(35).
+                   20 OLD-emto-107T-filler PIC  x(35).
+                   20 OLD-emto-108T-filler PIC  x(35).
+                   20 OLD-emto-109T-filler PIC  x(35).
+                   20 OLD-emto-110T-filler PIC  x(35).
+                   20 OLD-emto-111T-filler PIC  x(35).
+                   20 OLD-emto-112T-filler PIC  x(35).
+                   20 OLD-emto-113T-filler PIC  x(35).
+                   20 OLD-emto-114T-filler PIC  x(35).
+                   20 OLD-emto-115T-filler PIC  x(35).
+                   20 OLD-emto-116T-filler PIC  x(35).
+                   20 OLD-emto-117T-filler PIC  x(35).
+                   20 OLD-emto-118T-filler PIC  x(35).
+                   20 OLD-emto-119T-filler PIC  x(35).
+                   20 OLD-emto-120T-filler PIC  x(35).
+                   20 OLD-emto-121T-filler PIC  x(35).
+                   20 OLD-emto-122T-filler PIC  x(35).
+                   20 OLD-emto-123T-filler PIC  x(35).
+                   20 OLD-emto-124T-filler PIC  x(35).
+                   20 OLD-emto-125T-filler PIC  x(35).
+                   20 OLD-emto-126T-filler PIC  x(35).
+                   20 OLD-emto-127T-filler PIC  x(35).
+                   20 OLD-emto-128T-filler PIC  x(35).
+                   20 OLD-emto-129T-filler PIC  x(35).
+                   20 OLD-emto-130T-filler PIC  x(35).
+                   20 OLD-emto-131T-filler PIC  x(35).
+                   20 OLD-emto-132T-filler PIC  x(35).
+                   20 OLD-emto-133T-filler PIC  x(35).
+                   20 OLD-emto-134T-filler PIC  x(35).
+                   20 OLD-emto-135T-filler PIC  x(35).
+                   20 OLD-emto-136T-filler PIC  x(35).
+                   20 OLD-emto-137T-filler PIC  x(35).
+                   20 OLD-emto-138T-filler PIC  x(35).
+                   20 OLD-emto-139T-filler PIC  x(35).
+                   20 OLD-emto-140T-filler PIC  x(35).
+                   20 OLD-emto-141T-filler PIC  x(35).
+                   20 OLD-emto-142T-filler PIC  x(35).
+                   20 OLD-emto-143T-filler PIC  x(35).
+                   20 OLD-emto-144T-filler PIC  x(35).
+                   20 OLD-emto-145T-filler PIC  x(35).
+                   20 OLD-emto-146T-filler PIC  x(35).
+                   20 OLD-emto-147T-filler PIC  x(35).
+                   20 OLD-emto-148T-filler PIC  x(35).
+                   20 OLD-emto-149T-filler PIC  x(35).
+                   20 OLD-emto-150T-filler PIC  x(35).
+                   20 OLD-emto-151T-filler PIC  x(35).
+                   20 OLD-emto-152T-filler PIC  x(35).
+                   20 OLD-emto-153T-filler PIC  x(35).
+                   20 OLD-emto-154T-filler PIC  x(35).
+                   20 OLD-emto-155T-filler PIC  x(35).
+                   20 OLD-emto-156T-filler PIC  x(35).
+                   20 OLD-emto-157T-filler PIC  x(35).
+                   20 OLD-emto-158T-filler PIC  x(35).
+                   20 OLD-emto-159T-filler PIC  x(35).
+                   20 OLD-emto-160T-filler PIC  x(35).
+                   20 OLD-emto-161T-filler PIC  x(35).
+                   20 OLD-emto-162T-filler PIC  x(35).
+                   20 OLD-emto-01T163-TOD-CODCOST      PIC  x(3).
+               15 OLD-emto-bloc-forzato            PIC  9.
+                   88 OLD-emto-bloc-forzato-si VALUE IS 1. 
+                   88 OLD-emto-bloc-forzato-no VALUE IS 0. 
+               15 OLD-emto-Sum         PIC  9(12)v999.
+               15 OLD-emto-evadi-dal   PIC  9(8).
+               15 FILLER           PIC  x(176).
       *{TOTEM}END
 
       *{TOTEM}ID-LOGICI
@@ -1450,21 +1470,22 @@
        78  78-ID-ef-num-ord VALUE 5003.
        78  78-ID-ef-data VALUE 5004.
        78  78-ID-ef-data-pass VALUE 5005.
-       78  78-ID-ef-age VALUE 5006.
-       78  78-ID-ef-pag VALUE 5007.
-       78  78-ID-ef-iva VALUE 5008.
-       78  78-ID-ef-vet VALUE 5009.
-       78  78-ID-ef-note-1 VALUE 5010.
-       78  78-ID-ef-data-cons VALUE 5011.
-       78  78-ID-ef-note-2 VALUE 5012.
-       78  78-ID-ef-note-3 VALUE 5013.
-       78  78-ID-ef-note-4 VALUE 5014.
-       78  78-ID-ef-note VALUE 5015.
-       78  78-ID-chk-ritira VALUE 5016.
-       78  78-ID-chk-prenot VALUE 5017.
-       78  78-ID-chk-saldi-banco VALUE 5018.
-       78  78-ID-chk-saldi-promo VALUE 5019.
-       78  78-ID-Form1-Gd-1 VALUE 5020.
+       78  78-ID-ef-evadi-dal VALUE 5006.
+       78  78-ID-ef-age VALUE 5007.
+       78  78-ID-ef-pag VALUE 5008.
+       78  78-ID-ef-iva VALUE 5009.
+       78  78-ID-ef-vet VALUE 5010.
+       78  78-ID-ef-note-1 VALUE 5011.
+       78  78-ID-ef-data-cons VALUE 5012.
+       78  78-ID-ef-note-2 VALUE 5013.
+       78  78-ID-ef-note-3 VALUE 5014.
+       78  78-ID-ef-note-4 VALUE 5015.
+       78  78-ID-ef-note VALUE 5016.
+       78  78-ID-chk-ritira VALUE 5017.
+       78  78-ID-chk-prenot VALUE 5018.
+       78  78-ID-chk-saldi-banco VALUE 5019.
+       78  78-ID-chk-saldi-promo VALUE 5020.
+       78  78-ID-Form1-Gd-1 VALUE 5021.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -2854,6 +2875,25 @@
            .
       * ENTRY FIELD
        05
+           ef-evadi-dal, 
+           Entry-Field, 
+           COL 113,57, 
+           LINE 18,73,
+           LINES 1,31 ,
+           SIZE 11,00 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED MOD,
+           ID IS 78-ID-ef-evadi-dal,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           CENTER,
+           MAX-TEXT 8,
+           VALUE ef-evadi-dal-BUF,
+           BEFORE PROCEDURE Screen2-DaEf-7-BeforeProcedure, 
+           .
+      * ENTRY FIELD
+       05
            ef-age, 
            Entry-Field, 
            COL 14,00, 
@@ -3111,19 +3151,20 @@
        05
            Form1-Gd-1, 
            Grid, 
-           COL 3,71, 
+           COL 3,43, 
            LINE 31,93,
            LINES 17,73 ,
            SIZE 142,71 ,
            ADJUSTABLE-COLUMNS,
            BOXED,
            CENTERED-HEADINGS,
-           DATA-COLUMNS (1, 6, 12, 62, 65, 73, 81, 89, 103, 117, 131),
+           DATA-COLUMNS (1, 6, 12, 62, 65, 73, 81, 89, 103, 117, 131, 
+           141),
            ALIGNMENT ("R", "R", "U", "U", "R", "R", "R", "R", "R", "R", 
-           "C"),
-           SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5),
+           "C", "C"),
+           SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5),
            DATA-TYPES ("9(5)", "9(6)", "X", "x(3)", "9(8)", "9(8)", "9(8
-      -    ")", "9(12)", "9(12)", "9(12)", "U(2)"),
+      -    ")", "9(12)", "9(12)", "9(12)", "X", "U(2)"),
            NUM-COL-HEADINGS 1,
            COLUMN-HEADINGS,
            CURSOR-FRAME-WIDTH 2,
@@ -3314,7 +3355,7 @@
            LINES 1,31 ,
            SIZE 10,00 ,
            COLOR IS clr-agente,
-           ID IS 129,
+           ID IS 131,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Agente",
@@ -3329,7 +3370,7 @@
            LINES 1,31 ,
            SIZE 10,00 ,
            COLOR IS clr-pagamento,
-           ID IS 131,
+           ID IS 133,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Pagamento",
@@ -3344,7 +3385,7 @@
            LINES 1,31 ,
            SIZE 10,00 ,
            COLOR IS clr-iva,
-           ID IS 133,
+           ID IS 135,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Iva esente",
@@ -3359,7 +3400,7 @@
            LINES 1,31 ,
            SIZE 10,00 ,
            COLOR IS clr-vettore,
-           ID IS 135,
+           ID IS 137,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Vettore",
@@ -3374,7 +3415,7 @@
            LINES 1,31 ,
            SIZE 10,00 ,
            COLOR IS 1,
-           ID IS 137,
+           ID IS 139,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Consegna",
@@ -3389,7 +3430,7 @@
            LINES 1,07 ,
            SIZE 6,00 ,
            COLOR IS 1,
-           ID IS 139,
+           ID IS 141,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Data",
@@ -3404,7 +3445,7 @@
            LINES 1,31 ,
            SIZE 10,00 ,
            COLOR IS 1,
-           ID IS 141,
+           ID IS 143,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Note 2",
@@ -3419,7 +3460,7 @@
            LINES 1,31 ,
            SIZE 10,00 ,
            COLOR IS 1,
-           ID IS 143,
+           ID IS 145,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Note 3",
@@ -3434,7 +3475,7 @@
            LINES 1,31 ,
            SIZE 10,00 ,
            COLOR IS 1,
-           ID IS 145,
+           ID IS 147,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Note 4",
@@ -3449,7 +3490,7 @@
            LINES 1,31 ,
            SIZE 10,00 ,
            COLOR IS 1,
-           ID IS 147,
+           ID IS 149,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Note",
@@ -3498,7 +3539,7 @@
            LINES 1,31 ,
            SIZE 50,00 ,
            COLOR IS 5,
-           ID IS 149,
+           ID IS 150,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3514,7 +3555,7 @@
            LINES 1,31 ,
            SIZE 50,00 ,
            COLOR IS 5,
-           ID IS 150,
+           ID IS 151,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3530,7 +3571,7 @@
            LINES 1,31 ,
            SIZE 50,00 ,
            COLOR IS 5,
-           ID IS 151,
+           ID IS 152,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3546,7 +3587,7 @@
            LINES 1,31 ,
            SIZE 50,00 ,
            COLOR IS 5,
-           ID IS 152,
+           ID IS 153,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3560,7 +3601,7 @@
            COL 1,00, 
            LINE 31,20,
            SIZE 153,43 ,
-           ID IS 153,
+           ID IS 155,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            WIDTH 1,
@@ -3960,6 +4001,21 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Note EDI",
+           .
+
+      * LABEL
+       05
+           Screen2-La-8a, 
+           Label, 
+           COL 102,29, 
+           LINE 18,73,
+           LINES 1,31 ,
+           SIZE 10,00 ,
+           COLOR IS 1,
+           ID IS 24,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE "Evadi dal",
            .
 
       * TOOLBAR
@@ -4758,6 +4814,7 @@
            PERFORM OPEN-destini
            PERFORM OPEN-EDI-mtordini
            PERFORM OPEN-agenti
+           PERFORM OPEN-tivaese
            PERFORM OPEN-ttipocli
            PERFORM OPEN-tvettori
            PERFORM OPEN-pagbloc
@@ -4800,7 +4857,6 @@
       *    PERFORM OPEN-log-macrobatch
       *    macrobatch OPEN MODE IS FALSE
       *    PERFORM OPEN-macrobatch
-           PERFORM OPEN-tivaese
       *    After Open
            .
 
@@ -4856,6 +4912,18 @@
               GO TO EXIT-STOP-ROUTINE
            END-IF
       * <TOTEM:EPT. INIT:EDI-selordini, FD:agenti, AfterOpen>
+      * <TOTEM:END>
+           .
+
+       OPEN-tivaese.
+      * <TOTEM:EPT. INIT:EDI-selordini, FD:tivaese, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT tivaese
+           IF NOT Valid-STATUS-tivaese
+              PERFORM  Form-ini-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:EDI-selordini, FD:tivaese, AfterOpen>
       * <TOTEM:END>
            .
 
@@ -5338,24 +5406,13 @@
       * <TOTEM:END>
            .
 
-       OPEN-tivaese.
-      * <TOTEM:EPT. INIT:EDI-selordini, FD:tivaese, BeforeOpen>
-      * <TOTEM:END>
-           OPEN  INPUT tivaese
-           IF NOT Valid-STATUS-tivaese
-              PERFORM  Form-ini-EXTENDED-FILE-STATUS
-              GO TO EXIT-STOP-ROUTINE
-           END-IF
-      * <TOTEM:EPT. INIT:EDI-selordini, FD:tivaese, AfterOpen>
-      * <TOTEM:END>
-           .
-
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-clienti
            PERFORM CLOSE-destini
            PERFORM CLOSE-EDI-mtordini
            PERFORM CLOSE-agenti
+           PERFORM CLOSE-tivaese
            PERFORM CLOSE-ttipocli
            PERFORM CLOSE-tvettori
            PERFORM CLOSE-pagbloc
@@ -5398,7 +5455,6 @@
       *    PERFORM CLOSE-log-macrobatch
       *    macrobatch CLOSE MODE IS FALSE
       *    PERFORM CLOSE-macrobatch
-           PERFORM CLOSE-tivaese
       *    After Close
            .
 
@@ -5424,6 +5480,12 @@
       * <TOTEM:EPT. INIT:EDI-selordini, FD:agenti, BeforeClose>
       * <TOTEM:END>
            CLOSE agenti
+           .
+
+       CLOSE-tivaese.
+      * <TOTEM:EPT. INIT:EDI-selordini, FD:tivaese, BeforeClose>
+      * <TOTEM:END>
+           CLOSE tivaese
            .
 
        CLOSE-ttipocli.
@@ -5641,12 +5703,6 @@
        CLOSE-macrobatch.
       * <TOTEM:EPT. INIT:EDI-selordini, FD:macrobatch, BeforeClose>
       * <TOTEM:END>
-           .
-
-       CLOSE-tivaese.
-      * <TOTEM:EPT. INIT:EDI-selordini, FD:tivaese, BeforeClose>
-      * <TOTEM:END>
-           CLOSE tivaese
            .
 
        clienti-cli-K1-MERGE-SPLITBUF.
@@ -6444,6 +6500,170 @@
            MOVE "agenti" TO TOTEM-ERR-FILE
            MOVE "DELETE" TO TOTEM-ERR-MODE
       * <TOTEM:EPT. FD:DataSet1, FD:agenti, AfterDelete>
+      * <TOTEM:END>
+           .
+
+       tivaese-key01-MERGE-SPLITBUF.
+           INITIALIZE tivaese-key01-SPLITBUF
+           MOVE TBLIV-CODICE1(1:2) TO tivaese-key01-SPLITBUF(1:2)
+           MOVE TBLIV-DESCRIZIONE1(1:30) TO tivaese-key01-SPLITBUF(3:30)
+           MOVE TBLIV-CODICE2(1:20) TO tivaese-key01-SPLITBUF(33:20)
+           .
+
+       DataSet1-tivaese-INITSTART.
+           IF DataSet1-tivaese-KEY-Asc
+              MOVE Low-Value TO TBLIV-CODICE
+           ELSE
+              MOVE High-Value TO TBLIV-CODICE
+           END-IF
+           .
+
+       DataSet1-tivaese-INITEND.
+           IF DataSet1-tivaese-KEY-Asc
+              MOVE High-Value TO TBLIV-CODICE
+           ELSE
+              MOVE Low-Value TO TBLIV-CODICE
+           END-IF
+           .
+
+      * tivaese
+       DataSet1-tivaese-START.
+           IF DataSet1-tivaese-KEY-Asc
+              START tivaese KEY >= TBLIV-CODICE
+           ELSE
+              START tivaese KEY <= TBLIV-CODICE
+           END-IF
+           .
+
+       DataSet1-tivaese-START-NOTGREATER.
+           IF DataSet1-tivaese-KEY-Asc
+              START tivaese KEY <= TBLIV-CODICE
+           ELSE
+              START tivaese KEY >= TBLIV-CODICE
+           END-IF
+           .
+
+       DataSet1-tivaese-START-GREATER.
+           IF DataSet1-tivaese-KEY-Asc
+              START tivaese KEY > TBLIV-CODICE
+           ELSE
+              START tivaese KEY < TBLIV-CODICE
+           END-IF
+           .
+
+       DataSet1-tivaese-START-LESS.
+           IF DataSet1-tivaese-KEY-Asc
+              START tivaese KEY < TBLIV-CODICE
+           ELSE
+              START tivaese KEY > TBLIV-CODICE
+           END-IF
+           .
+
+       DataSet1-tivaese-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-tivaese-LOCK
+              READ tivaese WITH LOCK 
+              KEY TBLIV-CODICE
+           ELSE
+              READ tivaese WITH NO LOCK 
+              KEY TBLIV-CODICE
+           END-IF
+           PERFORM tivaese-key01-MERGE-SPLITBUF
+           MOVE STATUS-tivaese TO TOTEM-ERR-STAT 
+           MOVE "tivaese" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tivaese-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-tivaese-KEY-Asc
+              IF DataSet1-tivaese-LOCK
+                 READ tivaese NEXT WITH LOCK
+              ELSE
+                 READ tivaese NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tivaese-LOCK
+                 READ tivaese PREVIOUS WITH LOCK
+              ELSE
+                 READ tivaese PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM tivaese-key01-MERGE-SPLITBUF
+           MOVE STATUS-tivaese TO TOTEM-ERR-STAT
+           MOVE "tivaese" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tivaese-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-tivaese-KEY-Asc
+              IF DataSet1-tivaese-LOCK
+                 READ tivaese PREVIOUS WITH LOCK
+              ELSE
+                 READ tivaese PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tivaese-LOCK
+                 READ tivaese NEXT WITH LOCK
+              ELSE
+                 READ tivaese NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM tivaese-key01-MERGE-SPLITBUF
+           MOVE STATUS-tivaese TO TOTEM-ERR-STAT
+           MOVE "tivaese" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tivaese-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-tivaese TO TOTEM-ERR-STAT
+           MOVE "tivaese" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tivaese-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-tivaese TO TOTEM-ERR-STAT
+           MOVE "tivaese" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tivaese-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-tivaese TO TOTEM-ERR-STAT
+           MOVE "tivaese" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterDelete>
       * <TOTEM:END>
            .
 
@@ -12445,175 +12665,12 @@
       * <TOTEM:END>
            .
 
-       tivaese-key01-MERGE-SPLITBUF.
-           INITIALIZE tivaese-key01-SPLITBUF
-           MOVE TBLIV-CODICE1(1:2) TO tivaese-key01-SPLITBUF(1:2)
-           MOVE TBLIV-DESCRIZIONE1(1:30) TO tivaese-key01-SPLITBUF(3:30)
-           MOVE TBLIV-CODICE2(1:20) TO tivaese-key01-SPLITBUF(33:20)
-           .
-
-       DataSet1-tivaese-INITSTART.
-           IF DataSet1-tivaese-KEY-Asc
-              MOVE Low-Value TO TBLIV-CODICE
-           ELSE
-              MOVE High-Value TO TBLIV-CODICE
-           END-IF
-           .
-
-       DataSet1-tivaese-INITEND.
-           IF DataSet1-tivaese-KEY-Asc
-              MOVE High-Value TO TBLIV-CODICE
-           ELSE
-              MOVE Low-Value TO TBLIV-CODICE
-           END-IF
-           .
-
-      * tivaese
-       DataSet1-tivaese-START.
-           IF DataSet1-tivaese-KEY-Asc
-              START tivaese KEY >= TBLIV-CODICE
-           ELSE
-              START tivaese KEY <= TBLIV-CODICE
-           END-IF
-           .
-
-       DataSet1-tivaese-START-NOTGREATER.
-           IF DataSet1-tivaese-KEY-Asc
-              START tivaese KEY <= TBLIV-CODICE
-           ELSE
-              START tivaese KEY >= TBLIV-CODICE
-           END-IF
-           .
-
-       DataSet1-tivaese-START-GREATER.
-           IF DataSet1-tivaese-KEY-Asc
-              START tivaese KEY > TBLIV-CODICE
-           ELSE
-              START tivaese KEY < TBLIV-CODICE
-           END-IF
-           .
-
-       DataSet1-tivaese-START-LESS.
-           IF DataSet1-tivaese-KEY-Asc
-              START tivaese KEY < TBLIV-CODICE
-           ELSE
-              START tivaese KEY > TBLIV-CODICE
-           END-IF
-           .
-
-       DataSet1-tivaese-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeReadRecord>
-      * <TOTEM:END>
-           IF DataSet1-tivaese-LOCK
-              READ tivaese WITH LOCK 
-              KEY TBLIV-CODICE
-           ELSE
-              READ tivaese WITH NO LOCK 
-              KEY TBLIV-CODICE
-           END-IF
-           PERFORM tivaese-key01-MERGE-SPLITBUF
-           MOVE STATUS-tivaese TO TOTEM-ERR-STAT 
-           MOVE "tivaese" TO TOTEM-ERR-FILE
-           MOVE "READ" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterReadRecord>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tivaese-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeReadNext>
-      * <TOTEM:END>
-           IF DataSet1-tivaese-KEY-Asc
-              IF DataSet1-tivaese-LOCK
-                 READ tivaese NEXT WITH LOCK
-              ELSE
-                 READ tivaese NEXT WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-tivaese-LOCK
-                 READ tivaese PREVIOUS WITH LOCK
-              ELSE
-                 READ tivaese PREVIOUS WITH NO LOCK
-              END-IF
-           END-IF
-           PERFORM tivaese-key01-MERGE-SPLITBUF
-           MOVE STATUS-tivaese TO TOTEM-ERR-STAT
-           MOVE "tivaese" TO TOTEM-ERR-FILE
-           MOVE "READ NEXT" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterReadNext>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tivaese-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeReadPrev>
-      * <TOTEM:END>
-           IF DataSet1-tivaese-KEY-Asc
-              IF DataSet1-tivaese-LOCK
-                 READ tivaese PREVIOUS WITH LOCK
-              ELSE
-                 READ tivaese PREVIOUS WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-tivaese-LOCK
-                 READ tivaese NEXT WITH LOCK
-              ELSE
-                 READ tivaese NEXT WITH NO LOCK
-              END-IF
-           END-IF
-           PERFORM tivaese-key01-MERGE-SPLITBUF
-           MOVE STATUS-tivaese TO TOTEM-ERR-STAT
-           MOVE "tivaese" TO TOTEM-ERR-FILE
-           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterReadPrev>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tivaese-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeWrite>
-      * <TOTEM:END>
-           MOVE STATUS-tivaese TO TOTEM-ERR-STAT
-           MOVE "tivaese" TO TOTEM-ERR-FILE
-           MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterWrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tivaese-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeRewrite>
-      * <TOTEM:END>
-           MOVE STATUS-tivaese TO TOTEM-ERR-STAT
-           MOVE "tivaese" TO TOTEM-ERR-FILE
-           MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterRewrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tivaese-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, BeforeDelete>
-      * <TOTEM:END>
-           MOVE STATUS-tivaese TO TOTEM-ERR-STAT
-           MOVE "tivaese" TO TOTEM-ERR-FILE
-           MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tivaese, AfterDelete>
-      * <TOTEM:END>
-           .
-
        DataSet1-INIT-RECORD.
            INITIALIZE cli-rec OF clienti
            INITIALIZE des-rec OF destini
            INITIALIZE emto-rec OF EDI-mtordini
            INITIALIZE age-rec OF agenti
+           INITIALIZE record-tbliv OF tivaese
            INITIALIZE tcl-rec OF ttipocli
            INITIALIZE vet-rec OF tvettori
            INITIALIZE pgb-rec OF pagbloc
@@ -12651,7 +12708,6 @@
            INITIALIZE gra-rec OF grade
            INITIALIZE lm-riga OF log-macrobatch
            INITIALIZE mb-rec OF macrobatch
-           INITIALIZE record-tbliv OF tivaese
            .
 
 
@@ -12734,9 +12790,12 @@
                 CELL-DATA = "Prz OK",
       * CELLS' SETTING
               MODIFY Form1-Gd-1, X = 11, Y = 1,
+                CELL-DATA = "Evadi dal",
+      * CELLS' SETTING
+              MODIFY Form1-Gd-1, X = 12, Y = 1,
                 CELL-DATA = "STATO",
       * COLUMNS' SETTING
-              MODIFY Form1-Gd-1, X = 11  
+              MODIFY Form1-Gd-1, X = 12  
                 COLUMN-COLOR = 481,
                 COLUMN-FONT = Arial10B-Occidentale,
            .
@@ -12768,6 +12827,14 @@
       * FD's Initialize Paragraph
        DataSet1-agenti-INITREC.
            INITIALIZE age-rec OF agenti
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-tivaese-INITREC.
+           INITIALIZE record-tbliv OF tivaese
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -13064,14 +13131,6 @@
       * FD's Initialize Paragraph
        DataSet1-macrobatch-INITREC.
            INITIALIZE mb-rec OF macrobatch
-               REPLACING NUMERIC       DATA BY ZEROS
-                         ALPHANUMERIC  DATA BY SPACES
-                         ALPHABETIC    DATA BY SPACES
-           .
-
-      * FD's Initialize Paragraph
-       DataSet1-tivaese-INITREC.
-           INITIALIZE record-tbliv OF tivaese
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -14189,8 +14248,8 @@
       * Status-bar
            DISPLAY Form1 UPON Form1-handle
       * DISPLAY-COLUMNS settings
-              MODIFY Form1-Gd-1, DISPLAY-COLUMNS (1, 6, 16, 62, 69, 78, 
-           87, 96, 108, 120, 132)
+              MODIFY Form1-Gd-1, DISPLAY-COLUMNS (1, 5, 13, 58, 64, 72, 
+           80, 88, 99, 110, 121, 132)
            .
 
        Form1-PROC.
@@ -14770,12 +14829,20 @@
                MOVE 5005 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
+      * ef-evadi-dal's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-evadi-dal-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 5006 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
       * ef-age's Validation
            SET TOTEM-CHECK-OK TO FALSE
            PERFORM ef-age-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5006 TO CONTROL-ID
+               MOVE 5007 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-pag's Validation
@@ -14783,7 +14850,7 @@
            PERFORM ef-pag-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5007 TO CONTROL-ID
+               MOVE 5008 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-iva's Validation
@@ -14791,7 +14858,7 @@
            PERFORM ef-iva-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5008 TO CONTROL-ID
+               MOVE 5009 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-vet's Validation
@@ -14799,7 +14866,7 @@
            PERFORM ef-vet-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5009 TO CONTROL-ID
+               MOVE 5010 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-1's Validation
@@ -14807,7 +14874,7 @@
            PERFORM ef-note-1-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5010 TO CONTROL-ID
+               MOVE 5011 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-data-cons's Validation
@@ -14815,7 +14882,7 @@
            PERFORM ef-data-cons-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5011 TO CONTROL-ID
+               MOVE 5012 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-2's Validation
@@ -14823,7 +14890,7 @@
            PERFORM ef-note-2-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5012 TO CONTROL-ID
+               MOVE 5013 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-3's Validation
@@ -14831,7 +14898,7 @@
            PERFORM ef-note-3-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5013 TO CONTROL-ID
+               MOVE 5014 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-4's Validation
@@ -14839,7 +14906,7 @@
            PERFORM ef-note-4-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5014 TO CONTROL-ID
+               MOVE 5015 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note's Validation
@@ -14847,7 +14914,7 @@
            PERFORM ef-note-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5015 TO CONTROL-ID
+               MOVE 5016 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
            .
@@ -14935,6 +15002,23 @@
            PERFORM ef-data-pass-BEFORE-VALIDATION
            SET TOTEM-CHECK-OK TO TRUE
            PERFORM ef-data-pass-AFTER-VALIDATION
+           .
+
+       ef-evadi-dal-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-evadi-dal, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-evadi-dal-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-evadi-dal, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-evadi-dal's Validation
+       ef-evadi-dal-VALIDATION.
+           PERFORM ef-evadi-dal-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-evadi-dal-AFTER-VALIDATION
            .
 
        ef-age-BEFORE-VALIDATION.
@@ -15121,6 +15205,8 @@
            MOVE ef-data-BUF TO emto-data-ordine
       * DB_Entry-Field : ef-data-pass
            MOVE ef-data-pass-BUF TO emto-data-passaggio-ordine
+      * DB_Entry-Field : ef-evadi-dal
+           MOVE ef-evadi-dal-BUF TO emto-evadi-dal
       * DB_Entry-Field : ef-age
            MOVE ef-age-BUF TO emto-cod-agente
       * DB_Entry-Field : ef-pag
@@ -15176,7 +15262,11 @@
 
            move ef-data-cons-buf to como-data.
            perform DATE-TO-FILE.
-           move como-data to emto-data-note1.
+           move como-data to emto-data-note1.         
+
+           move ef-evadi-dal-buf to como-data.
+           perform DATE-TO-FILE.
+           move como-data to emto-evadi-dal.
 
            .
       * <TOTEM:END>
@@ -15184,19 +15274,6 @@
 
        Form1-Fld-To-Buf.
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforeFldToBuf>
-           move emto-data-ordine           to como-data.
-           perform DATE-TO-SCREEN.
-           move como-data                  to emto-data-ordine.
-
-           move emto-data-passaggio-ordine to como-data.
-           perform DATE-TO-SCREEN.
-           move como-data                  to emto-data-passaggio-ordine
-
-           move emto-data-note1            to como-data.
-           perform DATE-TO-SCREEN.
-           move como-data                  to emto-data-note1.
-
-           .
       * <TOTEM:END>
       * DB_Entry-Field : ef-cli
            MOVE emto-cod-cli TO ef-cli-BUF
@@ -15208,6 +15285,8 @@
            MOVE emto-data-ordine TO ef-data-BUF
       * DB_Entry-Field : ef-data-pass
            MOVE emto-data-passaggio-ordine TO ef-data-pass-BUF
+      * DB_Entry-Field : ef-evadi-dal
+           MOVE emto-evadi-dal TO ef-evadi-dal-BUF
       * DB_Entry-Field : ef-age
            MOVE emto-cod-agente TO ef-age-BUF
       * DB_Entry-Field : ef-pag
@@ -15356,6 +15435,22 @@
            spaces.
            inspect emto-01T70-FTX-NOTE replacing trailing low-value by 
            spaces.
+
+           move emto-data-ordine           to como-data.
+           perform DATE-TO-SCREEN.
+           move como-data                  to ef-data-buf.
+
+           move emto-data-passaggio-ordine to como-data.
+           perform DATE-TO-SCREEN.
+           move como-data                  to ef-data-pass-buf. 
+
+           move emto-data-note1            to como-data.
+           perform DATE-TO-SCREEN.
+           move como-data                  to ef-data-cons-buf.
+
+           move emto-evadi-dal             to como-data.
+           perform DATE-TO-SCREEN.
+           move como-data                  to ef-evadi-dal-buf.
 
            .
       * <TOTEM:END>
@@ -15989,20 +16084,21 @@
            When 5003 PERFORM Screen2-DaEf-5-AfterProcedure
            When 5004 PERFORM Screen2-DaEf-6-AfterProcedure
            When 5005 PERFORM Screen2-DaEf-7-AfterProcedure
-           When 5006 PERFORM Screen2-DaEf-8-AfterProcedure
-           When 5007 PERFORM Screen2-DaEf-9-AfterProcedure
-           When 5008 PERFORM Screen2-DaEf-10-AfterProcedure
-           When 5009 PERFORM Screen2-DaEf-11-AfterProcedure
-           When 5010 PERFORM Screen2-DaEf-12-AfterProcedure
-           When 5011 PERFORM Screen2-DaEf-13-AfterProcedure
-           When 5012 PERFORM Screen2-DaEf-14-AfterProcedure
-           When 5013 PERFORM Screen2-DaEf-15-AfterProcedure
-           When 5014 PERFORM Screen2-DaEf-16-AfterProcedure
-           When 5015 PERFORM Screen2-DaEf-17-AfterProcedure
-           When 5016 PERFORM Screen2-DaCb-1-AfterProcedure
-           When 5017 PERFORM Screen2-DaCb-3-AfterProcedure
-           When 5018 PERFORM Screen2-DaCb-4-AfterProcedure
-           When 5019 PERFORM Screen2-DaCb-5-AfterProcedure
+           When 5006 PERFORM Screen2-DaEf-7-AfterProcedure
+           When 5007 PERFORM Screen2-DaEf-8-AfterProcedure
+           When 5008 PERFORM Screen2-DaEf-9-AfterProcedure
+           When 5009 PERFORM Screen2-DaEf-10-AfterProcedure
+           When 5010 PERFORM Screen2-DaEf-11-AfterProcedure
+           When 5011 PERFORM Screen2-DaEf-12-AfterProcedure
+           When 5012 PERFORM Screen2-DaEf-13-AfterProcedure
+           When 5013 PERFORM Screen2-DaEf-14-AfterProcedure
+           When 5014 PERFORM Screen2-DaEf-15-AfterProcedure
+           When 5015 PERFORM Screen2-DaEf-16-AfterProcedure
+           When 5016 PERFORM Screen2-DaEf-17-AfterProcedure
+           When 5017 PERFORM Screen2-DaCb-1-AfterProcedure
+           When 5018 PERFORM Screen2-DaCb-3-AfterProcedure
+           When 5019 PERFORM Screen2-DaCb-4-AfterProcedure
+           When 5020 PERFORM Screen2-DaCb-5-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -16055,28 +16151,28 @@
        Form1-Gd-1-Event-Proc.
            EVALUATE Event-Type ALSO Event-Control-Id ALSO
                                     Event-Window-Handle
-           WHEN Msg-Begin-Drag ALSO 5020 ALSO
+           WHEN Msg-Begin-Drag ALSO 5021 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5020 ALSO
+           WHEN Msg-Begin-Entry ALSO 5021 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-Begin-Entry
-           WHEN Msg-Cancel-Entry ALSO 5020 ALSO
+           WHEN Msg-Cancel-Entry ALSO 5021 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-Cancel-Entry
-           WHEN Msg-End-Drag ALSO 5020 ALSO
+           WHEN Msg-End-Drag ALSO 5021 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-End-Drag
-           WHEN Msg-Finish-Entry ALSO 5020 ALSO
+           WHEN Msg-Finish-Entry ALSO 5021 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-Finish-Entry
-           WHEN Msg-Goto-Cell ALSO 5020 ALSO
+           WHEN Msg-Goto-Cell ALSO 5021 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5020 ALSO
+           WHEN Msg-Goto-Cell-Drag ALSO 5021 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5020 ALSO
+           WHEN Msg-Goto-Cell-Mouse ALSO 5021 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-Goto-Cell-Mouse
            END-EVALUATE
@@ -16149,6 +16245,9 @@
            move emro-qta           to col-qta
            move emro-prz-EDI       to col-prz-EDI
            move emro-prz-GESLUX    to col-prz-GESLUX
+           move emro-evadi-dal     to como-data.
+           perform DATE-TO-sCREEN.
+           move como-data          to col-evadi-dal.
 
            if emro-prezzo-non-valido
               |Se il prezzo è DA CONFERMARE (= 0) e non è stato
@@ -16213,9 +16312,11 @@
            modify form1-gd-1(riga,  78-col-prz-EDI),    
                   cell-data col-prz-EDI
            modify form1-gd-1(riga,  78-col-prz-GESLUX), 
-                  cell-data col-prz-GESLUX
+                  cell-data col-prz-GESLUX      
            modify form1-gd-1(riga,  78-col-prz), 
                   cell-data col-prz
+           modify form1-gd-1(riga,  78-col-evadi-dal), 
+                  cell-data col-evadi-dal
       *****     modify form1-gd-1(riga,  78-col-iva), 
       *****            cell-data col-iva 
       *****     modify form1-gd-1(riga,  78-col-oma), 
@@ -17571,6 +17672,46 @@ LABLAB          end-if
                 end-if
                 display ef-data-pass
 
+           |78-ID-ef-data-pass è l'ID del control ef-data-pass
+           when 78-ID-ef-evadi-dal
+                inquire ef-evadi-dal, value in ef-evadi-dal-buf
+                move ef-evadi-dal-buf to como-data
+                if como-data = 0
+                   move data-oggi to como-data
+                   perform DATE-TO-SCREEN
+                   move como-data to ef-evadi-dal-buf
+                else
+                   perform DATE-FORMAT
+                   move como-data to ef-evadi-dal-buf
+                end-if
+                display ef-evadi-dal
+
+                inquire ef-evadi-dal, value in ef-evadi-dal-buf
+                move ef-evadi-dal-buf to como-data
+                perform DATE-TO-FILE
+                if data-evadi-dal-old = 0
+                   move emto-evadi-dal to data-evadi-dal-old
+                end-if
+                if como-data not = data-evadi-dal-old
+                   move como-data to data-evadi-dal-old
+                   display message "E' stata cambiata la data."
+                            x"0d0a""Riportarla su tutte le righe?"
+                             type mb-yes-no
+                             icon 2
+                          default mb-no
+                           giving scelta
+                   if scelta = mb-yes
+                      perform DATE-TO-SCREEN
+                      move como-data to col-evadi-dal
+                      inquire form1-gd-1, last-row in tot-righe
+                      perform varying riga from 2 by 1 
+                                until riga > tot-righe
+                         modify form1-gd-1(riga, 78-col-evadi-dal), 
+                                cell-data col-evadi-dal
+                      end-perform
+                   end-if
+                end-if
+
            |78-ID-ef-age è l'ID del control ef-age
            when 78-ID-ef-age
                 inquire ef-age, value in ef-age-buf  
@@ -18445,7 +18586,16 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
               move 78-colore-fatt-tot to clr-destino
            end-if.
            display destino-lab.
-           perform CARICA-GRID.
+           perform CARICA-GRID.   
+
+           if emto-evadi-dal = 0
+              move emro-evadi-dal to emto-evadi-dal como-data
+              perform DATE-TO-SCREEN
+              move como-data to ef-evadi-dal-buf
+           end-if.
+   
+           move emto-evadi-dal to data-evadi-dal-old.
+           display ef-evadi-dal.
 
            move 2 to riga event-data-2.
            modify form1-gd-1, cursor-y = riga.
@@ -18824,6 +18974,11 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
               SiSalvato 
               set NoSalvato to true
               move 78-ID-chk-saldi-promo to store-id
+           end-if.
+           if emto-evadi-dal not = OLD-emto-evadi-dal and
+              SiSalvato 
+              set NoSalvato to true
+              move 78-ID-ef-evadi-dal to store-id
            end-if.
          
            set tutto-ok to true.
@@ -19929,6 +20084,12 @@ LUBEXX                      read clienti no lock invalid continue
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+              INQUIRE ef-evadi-dal, VALUE IN emto-evadi-dal
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-evadi-dal-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            perform CONTROLLO.
@@ -20418,6 +20579,9 @@ LUBEXX                      read clienti no lock invalid continue
            when 78-col-prz
                 set environment "KEYSTROKE" to "DATA=44 46"
 
+           when 78-col-evadi-dal
+                continue
+
            when other
                 set event-action to event-action-fail
            end-evaluate 
@@ -20538,6 +20702,29 @@ LUBEXX                      read clienti no lock invalid continue
                 perform IMPOSTA-PREZZO
                 set environment "KEYSTROKE" to "DATA=44 44"
                 set environment "KEYSTROKE" to "DATA=46 46"
+
+           when 78-col-evadi-dal
+                inquire form1-gd-1(event-data-2, 78-col-evadi-dal), 
+                        cell-data in col-evadi-dal
+                move col-evadi-dal to como-data
+                if como-data = 0
+                   inquire ef-evadi-dal, value in ef-evadi-dal-buf
+                   move ef-evadi-dal-buf to como-data
+                   if como-data = 0
+                      move data-oggi to como-data
+                      perform DATE-TO-SCREEN
+                      move como-data to col-evadi-dal
+                   else
+                      perform DATE-TO-SCREEN
+                      move como-data to col-evadi-dal
+                   end-if
+                else
+                   perform DATE-FORMAT
+                   move como-data to col-evadi-dal
+                end-if                            
+                modify form1-gd-1(event-data-2, 78-col-evadi-dal), 
+                       cell-data = col-evadi-dal
+
            end-evaluate 
            .
       * <TOTEM:END>

@@ -1166,6 +1166,7 @@
            move ultimo-numero to emto-numero.
            perform until 1 = 2
               add 1 to emto-numero ultimo-numero
+              accept emto-evadi-dal from century-date
               write emto-rec
                     invalid continue
                 not invalid exit perform
