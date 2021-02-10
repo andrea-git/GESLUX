@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 10 febbraio 2021 16:00:54.
+       DATE-WRITTEN.        mercoledì 10 febbraio 2021 21:58:43.
        REMARKS.
       *{TOTEM}END
 
@@ -277,6 +277,9 @@
                    88 hid-emro-progressivo-non-trovato VALUE IS 1. 
                    88 hid-emro-progressivo-non-attivo VALUE IS 2. 
                    88 hid-emro-progressivo-non-forzato VALUE IS 3. 
+           05 hid-emro-qta     PIC  9(8).
+           05 hid-emro-prz     PIC  9(9)v9(2).
+           05 hid-emro-evadi-dal           PIC  9(8).
            05 hid-emro-stato   PIC  X(1).
                88 hid-emro-attivo VALUE IS "A". 
                88 hid-emro-bloccato VALUE IS "B". 
@@ -16242,7 +16245,7 @@
               set hid-emro-qtac-ok to true
            end-if
 
-           move emro-qta           to col-qta
+           move emro-qta           to col-qta hid-emro-qta
            move emro-prz-EDI       to col-prz-EDI
            move emro-prz-GESLUX    to col-prz-GESLUX
            move emro-evadi-dal     to como-data.
@@ -16266,13 +16269,14 @@
               end-if
            end-if
 
-           move emro-prz to col-prz
+           move emro-prz to col-prz hid-emro-prz
            
       *****     move emro-cod-iva           to col-iva
       *****     move emro-omaggio           to col-oma  
            
            move emro-qta-imballi     to hid-emro-qta-imballi
            move emro-bloccato-prezzo to hid-emro-bloccato-prezzo
+           move emro-evadi-dal       to hid-emro-evadi-dal.
            
            modify form1-gd-1(riga, 1), 
                   hidden-data gruppo-hidden
@@ -17701,6 +17705,7 @@ LABLAB          end-if
                           default mb-no
                            giving scelta
                    if scelta = mb-yes
+                      set RigaCambiata to true
                       perform DATE-TO-SCREEN
                       move como-data to col-evadi-dal
                       inquire form1-gd-1, last-row in tot-righe
@@ -18653,6 +18658,10 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
            modify form1-gd-1(event-data-2, 1),
                    hidden-data = gruppo-hidden.
 
+           if hid-emro-prz not = emro-prz
+              set RigaCambiata to true
+           end-if.
+
       *****     modify form1-gd-1(event-data-2, 78-col-iva), 
       *****            cell-data col-iva.
       *****     modify form1-gd-1(event-data-2, 78-col-oma), 
@@ -19156,6 +19165,8 @@ PATCH       bitmap-number = BitmapNumSave.
                       cell-data in col-prz-GESLUX
               inquire form1-gd-1(riga, 78-col-prz),        
                       cell-data in col-prz
+              inquire form1-gd-1(riga, 78-col-evadi-dal),        
+                      cell-data in col-evadi-dal
       *****        inquire form1-gd-1(riga, 78-col-iva),        
       *****                cell-data in col-iva 
       *****        inquire form1-gd-1(riga, 78-col-oma),        
@@ -19168,6 +19179,9 @@ PATCH       bitmap-number = BitmapNumSave.
               move col-prz-EDI    to emro-prz-EDI
               move col-prz-GESLUX to emro-prz-GESLUX
               move col-prz        to emro-prz
+              move col-evadi-dal  to como-data
+              perform DATE-TO-FILE
+              move como-data      to emro-evadi-dal
       *****        if ef-iva-buf not = spaces
       *****           move ef-iva-buf to emro-cod-iva
       *****        else
@@ -20695,13 +20709,26 @@ LUBEXX                      read clienti no lock invalid continue
                               icon 2
                 else
                    set hid-emro-qtac-ok to true
-                   perform STATO-RIGA
+                   perform STATO-RIGA 
+
+                   inquire form1-gd-1(event-data-2, 78-col-qta), 
+                           cell-data in col-qta
+                   move col-qta to emro-qta
+                   if emro-qta not = hid-emro-qta
+                      set RigaCambiata to true
+                   end-if
                 end-if
 
            when 78-col-prz
                 perform IMPOSTA-PREZZO
                 set environment "KEYSTROKE" to "DATA=44 44"
                 set environment "KEYSTROKE" to "DATA=46 46"
+                inquire form1-gd-1(event-data-2, 78-col-prz), 
+                        cell-data in col-prz
+                move col-prz to emro-prz
+                if emro-prz not = hid-emro-prz
+                   set RigaCambiata to true
+                end-if
 
            when 78-col-evadi-dal
                 inquire form1-gd-1(event-data-2, 78-col-evadi-dal), 
@@ -20723,7 +20750,12 @@ LUBEXX                      read clienti no lock invalid continue
                    move como-data to col-evadi-dal
                 end-if                            
                 modify form1-gd-1(event-data-2, 78-col-evadi-dal), 
-                       cell-data = col-evadi-dal
+                       cell-data = col-evadi-dal 
+                move col-evadi-dal to como-data
+                perform DATE-TO-FILE
+                if como-data not = hid-emro-evadi-dal
+                   set RigaCambiata to true
+                end-if
 
            end-evaluate 
            .

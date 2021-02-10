@@ -1162,11 +1162,11 @@
            move "IMPORT EDI"   to emto-utente-creazione.
            move num-riga  to emto-riga-file.
            move nome-file to emto-nome-file.
+           accept emto-evadi-dal from century-date.
 
            move ultimo-numero to emto-numero.
            perform until 1 = 2
               add 1 to emto-numero ultimo-numero
-              accept emto-evadi-dal from century-date
               write emto-rec
                     invalid continue
                 not invalid exit perform
