@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 11 febbraio 2021 01:21:57.
+       DATE-WRITTEN.        giovedì 11 febbraio 2021 10:14:52.
        REMARKS.
       *{TOTEM}END
 
@@ -3226,7 +3226,7 @@
            EXCEPTION-VALUE 1001,
            FLAT,
            FONT IS Small-Font,
-           ID IS 4,
+           ID IS 5,
            TITLE "&Elimina riga",
            AFTER PROCEDURE pb-elimina-AfterProcedure, 
            BEFORE PROCEDURE pb-elimina-BeforeProcedure, 
@@ -19162,11 +19162,11 @@ PATCH       bitmap-number = BitmapNumSave.
            move 0 to mod.
            perform ABILITAZIONI.
            set RicaricaGrid to true.
-           display form1.
-
+           display form1. 
 
       ***---
-       SCRIVI-RIGHE.                
+       SCRIVI-RIGHE.      
+              
            set emto-qta-ok to true.
            set emto-prg-ok to true.
 
@@ -19176,7 +19176,6 @@ PATCH       bitmap-number = BitmapNumSave.
 
               inquire form1-gd-1(riga, 78-col-num),
                       cell-data in col-num
-
               move emto-chiave to emro-chiave-testa
               move col-num     to emro-riga
               read edi-mrordini
@@ -19184,20 +19183,26 @@ PATCH       bitmap-number = BitmapNumSave.
                    initialize emro-dati emro-dati-import
                               replacing numeric data by zeroes
                                    alphanumeric data by spaces
+
+                   move prg-tipo-imballo to imq-codice
+                   read timbalqta        no lock
+                   move imq-qta-imb      to imballi-ed
+                   move imq-tipo         to imb-codice
+                   read timballi no lock
+                        invalid  initialize imb-descrizione
+                   end-read
+                   move imb-descrizione to emro-des-imballo
+
                    accept emro-data-creazione from century-date
                    accept emro-ora-creazione  from time
                    move user-codi to emro-utente-creazione    
                    inquire form1-gd-1(riga, 78-col-art),        
                            hidden-data in gruppo-hidden
-                   move hid-prg-cod-articolo to art-codice
-      *****             read articoli no lock
-      *****             move art-cod-art-cli to emro-cod-art-cli
+                   move hid-prg-cod-articolo to art-codice      
                    move HiddenKey to prg-chiave emro-prg-chiave
                    read progmag no lock
                    move prg-peso-utf     to emro-peso-utf
                    move prg-peso-non-utf to emro-peso-non-utf
-                   move prg-tipo-imballo to emro-cod-imballo
-      *****         10 emro-des-imballo PIC  X(50).
       *****         10 emro-prz-commle  PIC  9(9)v9(2).
                    write emro-rec end-write
 
@@ -21082,9 +21087,7 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
                  
                     if record-ok
                  
-                       move prg-tipo-imballo to imb-codice
-                                                imq-codice
-                       read timballi  no lock invalid continue end-read
+                       move prg-tipo-imballo to imq-codice
                        read timbalqta no lock invalid continue end-read
                  
                        move imq-qta-imb      to imballi-ed
@@ -21105,11 +21108,14 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
                                into imballo-descrizione
                        end-string
                  
-                       move art-codice      to tmp-prg-z-cod-articolo
-                       move art-descrizione to tmp-prg-z-art-des
-                       move tca-cod-magaz   to tmp-prg-z-cod-magazzino
-                       move StoreDesMagazzino  to tmp-prg-z-mag-des
-                       move prg-tipo-imballo   to tmp-prg-z-tipo-imballo
+                       move art-codice          to 
+           tmp-prg-z-cod-articolo
+                       move art-descrizione     to tmp-prg-z-art-des
+                       move tca-cod-magaz       to 
+           tmp-prg-z-cod-magazzino
+                       move StoreDesMagazzino   to tmp-prg-z-mag-des
+                       move prg-tipo-imballo    to 
+           tmp-prg-z-tipo-imballo
                        move imballo-descrizione to tmp-prg-z-imb-des
                        move prg-peso            to tmp-prg-z-peso
                        move prg-giacenza        to tmp-prg-z-giacenza
