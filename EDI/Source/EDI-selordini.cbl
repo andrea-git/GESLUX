@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 10 febbraio 2021 21:58:43.
+       DATE-WRITTEN.        giovedì 11 febbraio 2021 01:21:57.
        REMARKS.
       *{TOTEM}END
 
@@ -768,6 +768,9 @@
        77 STATUS-macrobatch            PIC  X(2).
            88 Valid-STATUS-macrobatch VALUE IS "00" THRU "09". 
        77 tit-elab         PIC  X(30).
+       77 AGGIUNGI-BMP     PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -3187,10 +3190,32 @@
 
       * PUSH BUTTON
        05
+           pb-aggiungi, 
+           Push-Button, 
+           COL 146,71, 
+           LINE 31,60,
+           LINES 40,00 ,
+           SIZE 40,00 ,
+           BITMAP-HANDLE AGGIUNGI-BMP,
+           BITMAP-NUMBER 1,
+           UNFRAMED,
+           SQUARE,
+           ENABLED MOD,
+           EXCEPTION-VALUE 1003,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 4,
+           TITLE "&Elimina riga",
+           AFTER PROCEDURE pb-aggiungi-AfterProcedure, 
+           BEFORE PROCEDURE pb-aggiungi-BeforeProcedure, 
+           .
+
+      * PUSH BUTTON
+       05
            pb-elimina, 
            Push-Button, 
-           COL 147,00, 
-           LINE 31,73,
+           COL 146,71, 
+           LINE 34,60,
            LINES 40,00 ,
            SIZE 40,00 ,
            BITMAP-HANDLE ELIMINA-BMP,
@@ -3718,8 +3743,8 @@
        05
            pb-cambia, 
            Push-Button, 
-           COL 147,00, 
-           LINE 34,67,
+           COL 146,71, 
+           LINE 37,60,
            LINES 3,13 ,
            SIZE 6,86 ,
            BITMAP-HANDLE cambia-bmp,
@@ -4627,6 +4652,7 @@
            CALL "w$bitmap" USING WBITMAP-DESTROY, DESEL-TUTTO-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, toolbar-bmp
            CALL "w$bitmap" USING WBITMAP-DESTROY, TOOLBAR-BMP
+           CALL "w$bitmap" USING WBITMAP-DESTROY, AGGIUNGI-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, ELIMINA-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, cambia-bmp
       *    After-Program
@@ -4795,6 +4821,10 @@
            COPY RESOURCE "TOOLBAR.BMP".
            CALL "w$bitmap" USING WBITMAP-LOAD "TOOLBAR.BMP", 
                    GIVING TOOLBAR-BMP.
+      * pb-aggiungi
+           COPY RESOURCE "AGGIUNGI.BMP".
+           CALL "w$bitmap" USING WBITMAP-LOAD "AGGIUNGI.BMP", 
+                   GIVING AGGIUNGI-BMP.
       * pb-elimina
            COPY RESOURCE "ELIMINA.BMP".
            CALL "w$bitmap" USING WBITMAP-LOAD "ELIMINA.BMP", 
@@ -14361,6 +14391,8 @@
                  END-IF
               WHEN Key-Status = 1000
                  PERFORM chk-ritira-LinkTo
+              WHEN Key-Status = 1003
+                 PERFORM pb-aggiungi-LinkTo
               WHEN Key-Status = 1001
                  PERFORM pb-elimina-LinkTo
               WHEN Key-Status = 1002
@@ -19148,6 +19180,32 @@ PATCH       bitmap-number = BitmapNumSave.
               move emto-chiave to emro-chiave-testa
               move col-num     to emro-riga
               read edi-mrordini
+                   invalid
+                   initialize emro-dati emro-dati-import
+                              replacing numeric data by zeroes
+                                   alphanumeric data by spaces
+                   accept emro-data-creazione from century-date
+                   accept emro-ora-creazione  from time
+                   move user-codi to emro-utente-creazione    
+                   inquire form1-gd-1(riga, 78-col-art),        
+                           hidden-data in gruppo-hidden
+                   move hid-prg-cod-articolo to art-codice
+      *****             read articoli no lock
+      *****             move art-cod-art-cli to emro-cod-art-cli
+                   move HiddenKey to prg-chiave emro-prg-chiave
+                   read progmag no lock
+                   move prg-peso-utf     to emro-peso-utf
+                   move prg-peso-non-utf to emro-peso-non-utf
+                   move prg-tipo-imballo to emro-cod-imballo
+      *****         10 emro-des-imballo PIC  X(50).
+      *****         10 emro-prz-commle  PIC  9(9)v9(2).
+                   write emro-rec end-write
+
+               not invalid
+                    accept emro-data-ultima-modifica from century-date
+                    accept emro-ora-ultima-modifica  from time
+                    move user-codi to emro-utente-ultima-modifica
+              end-read
 
               inquire form1-gd-1(riga, 78-col-art),        
                       cell-data in col-art 
@@ -19224,9 +19282,6 @@ PATCH         |Nel caso in cui passi un prezzo da bloccare
                  set emro-prezzo-non-valido to true
                  set emto-prz-ko            to true
               end-if           
-              accept emro-data-ultima-modifica from century-date
-              accept emro-ora-ultima-modifica  from time
-              move user-codi to emro-utente-ultima-modifica
               rewrite emro-rec
            end-perform 
            .
@@ -21310,6 +21365,106 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
       * <TOTEM:PARA. Screen2-Ef-1-AfterProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       pb-aggiungi-BeforeProcedure.
+      * <TOTEM:PARA. pb-aggiungi-BeforeProcedure>
+           modify pb-aggiungi, bitmap-number = 2 
+           .
+      * <TOTEM:END>
+       pb-aggiungi-AfterProcedure.
+      * <TOTEM:PARA. pb-aggiungi-AfterProcedure>
+           modify pb-aggiungi, bitmap-number = 1 
+           .
+      * <TOTEM:END>
+       pb-aggiungi-LinkTo.
+      * <TOTEM:PARA. pb-aggiungi-LinkTo>
+           move 0              to prg-cod-articolo
+           move tca-cod-magaz  to prg-cod-magazzino
+           move spaces         to prg-tipo-imballo
+           move "progmag-sons" to como-file
+           call "zoom-gt"   using como-file, prg-rec
+                           giving stato-zoom
+           end-call
+           cancel "zoom-gt"
+
+           if stato-zoom = 0   
+              if prg-cod-magazzino not = tca-cod-magaz
+                 display message "Selezionare un progressivo per il maga
+      -    "zzino in uso: " tca-cod-magaz
+                          x"0d0a""Magazzino selezionato: " 
+           prg-cod-magazzino
+                           title tit-err
+                            icon 2
+                 exit paragraph
+              end-if
+              initialize gruppo-hidden rec-grid
+                         replacing numeric data by zeroes
+                              alphanumeric data by spaces  
+
+              inquire form1-gd-1, last-row in tot-righe
+              inquire form1-gd-1(tot-righe, 78-col-num), 
+                      cell-data in emro-riga
+              add 1 to emro-riga giving col-num
+              modify form1-gd-1, insert-rows = 1
+              add 1 to tot-righe giving event-data-2
+
+              move prg-cod-articolo to art-codice
+              read articoli no lock
+
+              move prg-tipo-imballo to imq-codice
+              read timbalqta no lock
+              move imq-qta-imb to col-qta col-qta-EDI col-qta-GESLUX
+
+              move 0    to col-prz-EDI col-prz-GESLUX col-prz
+              move "OK" to col-stato-r
+
+              inquire ef-evadi-dal, value in col-evadi-dal
+
+              move prg-chiave    to HiddenKey              
+              move imq-qta-imb   to hid-emro-qta-imballi
+              move prg-chiave    to HiddenKeyL HiddenKey        
+              move col-evadi-dal to como-data
+              perform DATE-TO-FILE
+              move como-data to hid-emro-evadi-dal
+              set hid-emro-attivo             to true
+              set hid-emro-bloccato-prezzo-no to true
+              set hid-emro-progressivo-valido to true
+              modify form1-gd-1(event-data-2, 78-col-num), 
+                     hidden-data gruppo-hidden
+              modify form1-gd-1(event-data-2, 78-col-num), 
+                     cell-data col-num
+              modify form1-gd-1(event-data-2, 78-col-art), 
+                     cell-data prg-cod-articolo
+              modify form1-gd-1(event-data-2, 78-col-des), 
+                     cell-data art-descrizione
+              modify form1-gd-1(event-data-2, 78-col-imb), 
+                     cell-data prg-tipo-imballo  
+              modify form1-gd-1(event-data-2, 78-col-qta-EDI), 
+                     cell-data col-qta-EDI
+              modify form1-gd-1(event-data-2, 78-col-qta-GESLUX), 
+                     cell-data col-qta-GESLUX
+              modify form1-gd-1(event-data-2, 78-col-qta), 
+                     cell-data col-qta
+              modify form1-gd-1(event-data-2, 78-col-prz-EDI), 
+                     cell-data col-prz-EDI
+              modify form1-gd-1(event-data-2, 78-col-prz-GESLUX), 
+                     cell-data col-prz-GESLUX
+              modify form1-gd-1(event-data-2, 78-col-prz), 
+                     cell-data col-prz
+              modify form1-gd-1(event-data-2, 78-col-evadi-dal), 
+                     cell-data col-evadi-dal
+              modify form1-gd-1(event-data-2, 78-col-stato-r), 
+                     cell-data col-stato-r
+              set hid-emro-progressivo-valido to true
+              perform STATO-RIGA
+              perform SPOSTAMENTO
+              set RigaCambiata to true
+              modify form1-gd-1, cursor-y event-data-2, 
+                                 cursor-x 78-col-art
+              move 78-ID-form1-gd-1 to control-id
+              move 4                to accept-control
+           end-if 
            .
       * <TOTEM:END>
 

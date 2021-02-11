@@ -2,12 +2,13 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
+DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E52A203830-699-2174612174
+PROGRAM_UNIQUE_CODE=TOTEM-7E52A23530-515-1474221907
 
 {{@DESCRIPTION:
 
@@ -6988,6 +6989,18 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM642_WK
 
 @}}
+[FDITEM643_WK]
+m_strName=AGGIUNGI-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM643_WK
+
+@}}
 
 
 [LINKAGE_SECTION]
@@ -11539,9 +11552,57 @@ Begin Screen Form1
       Msg-Goto-Cell-Drag = Form1-Gd-1-Ev-Msg-Goto-Cell-Drag
       Msg-Goto-Cell-Mouse = Form1-Gd-1-Ev-Msg-Goto-Cell-Mouse
    End
+   Begin Push-Button pb-aggiungi
+      SCREEN-COL        = 146,71
+      SCREEN-LINE       = 31,60
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-aggiungi
+      Bitmap            = "..\..\RESOURCE\AGGIUNGI.BMP"
+      Bitmap Frame      = FALSE
+      Bitmap Handle     = AGGIUNGI-BMP
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 146,71
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Enable Variable   = MOD
+      Exception Value   = 1003
+      Flat              = TRUE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 4
+      Line              = 31,60
+      Lines             = 2,63
+      Lines in Pixels   = 40
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 5,86
+      Size in Pixels    = 40
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 22
+      Termination Value = 0
+      Title             = "&Elimina riga"
+      Visible           = NONE
+      Width in Cells    = FALSE
+      Before Procedure  = pb-aggiungi-BeforeProcedure
+      After Procedure   = pb-aggiungi-AfterProcedure
+      Link To           = pb-aggiungi-LinkTo
+   End
    Begin Push-Button pb-elimina
-      SCREEN-COL        = 147,00
-      SCREEN-LINE       = 31,73
+      SCREEN-COL        = 146,71
+      SCREEN-LINE       = 34,60
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = pb-elimina
@@ -11552,7 +11613,7 @@ Begin Screen Form1
       Bitmap Square     = TRUE
       Clines            = 0
       Clines Unit       = Default
-      Column            = 147,00
+      Column            = 146,71
       Copy Resource     = TRUE
       Csize             = 0
       Csize Unit        = Default
@@ -11566,7 +11627,7 @@ Begin Screen Form1
       Height in Cells   = FALSE
       Help ID           = 0
       ID                = 4
-      Line              = 31,73
+      Line              = 34,60
       Lines             = 2,63
       Lines in Pixels   = 40
       Lines Unit        = Default
@@ -11578,7 +11639,7 @@ Begin Screen Form1
       Size in Pixels    = 40
       Size Unit         = Default
       Style             = Other
-      Tab Order         = 22
+      Tab Order         = 23
       Termination Value = 0
       Title             = "&Elimina riga"
       Visible           = NONE
@@ -11615,7 +11676,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 23
+      Tab Order         = 24
       Title             = "Anno"
       Transparent       = TRUE
       Visible           = NONE
@@ -11649,7 +11710,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 24
+      Tab Order         = 25
       Title             = "Numero"
       Transparent       = TRUE
       Visible           = NONE
@@ -11688,7 +11749,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 6,00
       Size Unit         = Default
-      Tab Order         = 25
+      Tab Order         = 26
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -11726,7 +11787,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 9,00
       Size Unit         = Default
-      Tab Order         = 26
+      Tab Order         = 27
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -11759,7 +11820,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 27
+      Tab Order         = 28
       Title             = "Cliente"
       Transparent       = FALSE
       Visible           = NONE
@@ -11793,7 +11854,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 7,00
       Size Unit         = Default
-      Tab Order         = 28
+      Tab Order         = 29
       Title             = "Destino"
       Transparent       = FALSE
       Visible           = NONE
@@ -11826,7 +11887,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 29
+      Tab Order         = 30
       Title             = "N.Ord. Cli."
       Transparent       = FALSE
       Visible           = NONE
@@ -11859,7 +11920,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 4,00
       Size Unit         = Default
-      Tab Order         = 30
+      Tab Order         = 31
       Title             = "del"
       Transparent       = FALSE
       Visible           = NONE
@@ -11892,7 +11953,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 31
+      Tab Order         = 32
       Title             = "Data pass."
       Transparent       = FALSE
       Visible           = NONE
@@ -11926,7 +11987,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 32
+      Tab Order         = 33
       Title             = "Agente"
       Transparent       = FALSE
       Visible           = NONE
@@ -11960,7 +12021,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 33
+      Tab Order         = 34
       Title             = "Pagamento"
       Transparent       = FALSE
       Visible           = NONE
@@ -11994,7 +12055,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 34
+      Tab Order         = 35
       Title             = "Iva esente"
       Transparent       = FALSE
       Visible           = NONE
@@ -12028,7 +12089,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 35
+      Tab Order         = 36
       Title             = "Vettore"
       Transparent       = FALSE
       Visible           = NONE
@@ -12061,7 +12122,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 36
+      Tab Order         = 37
       Title             = "Consegna"
       Transparent       = FALSE
       Visible           = NONE
@@ -12094,7 +12155,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 6,00
       Size Unit         = Default
-      Tab Order         = 37
+      Tab Order         = 38
       Title             = "Data"
       Transparent       = FALSE
       Visible           = NONE
@@ -12127,7 +12188,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 38
+      Tab Order         = 39
       Title             = "Note 2"
       Transparent       = FALSE
       Visible           = NONE
@@ -12160,7 +12221,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 39
+      Tab Order         = 40
       Title             = "Note 3"
       Transparent       = FALSE
       Visible           = NONE
@@ -12193,7 +12254,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 40
+      Tab Order         = 41
       Title             = "Note 4"
       Transparent       = FALSE
       Visible           = NONE
@@ -12226,7 +12287,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 41
+      Tab Order         = 42
       Title             = "Note"
       Transparent       = FALSE
       Visible           = NONE
@@ -12259,7 +12320,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 50,00
       Size Unit         = Default
-      Tab Order         = 42
+      Tab Order         = 43
       Title Variable    = lab-cliente-buf
       Transparent       = TRUE
       Visible           = NONE
@@ -12292,7 +12353,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 50,00
       Size Unit         = Default
-      Tab Order         = 43
+      Tab Order         = 44
       Title Variable    = lab-destino-buf
       Transparent       = TRUE
       Visible           = NONE
@@ -12325,7 +12386,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 50,00
       Size Unit         = Default
-      Tab Order         = 44
+      Tab Order         = 45
       Title Variable    = lab-agente-buf
       Transparent       = TRUE
       Visible           = NONE
@@ -12358,7 +12419,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 50,00
       Size Unit         = Default
-      Tab Order         = 45
+      Tab Order         = 46
       Title Variable    = lab-pagamento-buf
       Transparent       = TRUE
       Visible           = NONE
@@ -12391,7 +12452,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 50,00
       Size Unit         = Default
-      Tab Order         = 46
+      Tab Order         = 47
       Title Variable    = lab-iva-buf
       Transparent       = TRUE
       Visible           = NONE
@@ -12424,7 +12485,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 50,00
       Size Unit         = Default
-      Tab Order         = 47
+      Tab Order         = 48
       Title Variable    = lab-vettore-buf
       Transparent       = TRUE
       Visible           = NONE
@@ -12454,7 +12515,7 @@ Begin Screen Form1
       Size (Lines)      = 153,43
       Size (Lines) in Pixels = 1074
       Size (Lines) Unit = Default
-      Tab Order         = 48
+      Tab Order         = 49
       Visible           = NONE
       Width             = 1
       Width in Cells    = TRUE
@@ -12488,7 +12549,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 14,00
       Size Unit         = Default
-      Tab Order         = 49
+      Tab Order         = 50
       Title Picture     = x(15)
       Title Variable    = lab-stato-buf
       Transparent       = FALSE
@@ -12522,7 +12583,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,50
       Size Unit         = Default
-      Tab Order         = 50
+      Tab Order         = 51
       Title             = "Ritira in LBX"
       Transparent       = FALSE
       Visible           = NONE
@@ -12555,7 +12616,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 15,63
       Size Unit         = Default
-      Tab Order         = 51
+      Tab Order         = 52
       Title             = "Prenotazione q.tà"
       Transparent       = FALSE
       Visible           = NONE
@@ -12588,7 +12649,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 52
+      Tab Order         = 53
       Title             = "Saldi banco"
       Transparent       = FALSE
       Visible           = NONE
@@ -12621,7 +12682,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 53
+      Tab Order         = 54
       Title             = "Saldi promo"
       Transparent       = FALSE
       Visible           = NONE
@@ -12651,7 +12712,7 @@ Begin Screen Form1
       Size (Lines)      = 153,43
       Size (Lines) in Pixels = 1074
       Size (Lines) Unit = Default
-      Tab Order         = 54
+      Tab Order         = 55
       Visible           = NONE
       Width             = 1
       Width in Cells    = TRUE
@@ -12687,7 +12748,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 14,63
       Size Unit         = Default
-      Tab Order         = 55
+      Tab Order         = 56
       Title             = "CUSTOM CONTROL"
       Transparent       = TRUE
       Visible           = NONE
@@ -12695,8 +12756,8 @@ Begin Screen Form1
       Width in Cells    = FALSE
    End
    Begin Push-Button pb-cambia
-      SCREEN-COL        = 147,00
-      SCREEN-LINE       = 34,67
+      SCREEN-COL        = 146,71
+      SCREEN-LINE       = 37,60
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = pb-cambia
@@ -12707,7 +12768,7 @@ Begin Screen Form1
       Bitmap Square     = TRUE
       Clines            = 0
       Clines Unit       = Default
-      Column            = 147,00
+      Column            = 146,71
       Copy Resource     = TRUE
       Csize             = 0
       Csize Unit        = Default
@@ -12721,7 +12782,7 @@ Begin Screen Form1
       Height in Cells   = TRUE
       Help ID           = 0
       ID                = 6
-      Line              = 34,67
+      Line              = 37,60
       Lines             = 3,13
       Lines in Pixels   = 40
       Lines Unit        = Default
@@ -12733,7 +12794,7 @@ Begin Screen Form1
       Size in Pixels    = 40
       Size Unit         = Default
       Style             = Other
-      Tab Order         = 56
+      Tab Order         = 57
       Termination Value = 0
       Title             = "CAMBIA ARTICOLO"
       Visible           = NONE
@@ -12767,7 +12828,7 @@ Begin Screen Form1
       Size (Lines)      = 153,43
       Size (Lines) in Pixels = 1074
       Size (Lines) Unit = Default
-      Tab Order         = 57
+      Tab Order         = 58
       Visible           = NONE
       Width             = 1
       Width in Cells    = TRUE
@@ -12796,7 +12857,7 @@ Begin Screen Form1
       Size (Lines)      = 153,43
       Size (Lines) in Pixels = 1074
       Size (Lines) Unit = Default
-      Tab Order         = 58
+      Tab Order         = 59
       Visible           = NONE
       Width             = 1
       Width in Cells    = TRUE
@@ -12833,7 +12894,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 19,00
       Size Unit         = Default
-      Tab Order         = 59
+      Tab Order         = 60
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -12870,7 +12931,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 50,00
       Size Unit         = Default
-      Tab Order         = 60
+      Tab Order         = 61
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -12907,7 +12968,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 70,00
       Size Unit         = Default
-      Tab Order         = 61
+      Tab Order         = 62
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -12944,7 +13005,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 55,00
       Size Unit         = Default
-      Tab Order         = 62
+      Tab Order         = 63
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -12981,7 +13042,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 5,00
       Size Unit         = Default
-      Tab Order         = 63
+      Tab Order         = 64
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -13018,7 +13079,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 5,00
       Size Unit         = Default
-      Tab Order         = 64
+      Tab Order         = 65
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -13055,7 +13116,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 19,00
       Size Unit         = Default
-      Tab Order         = 65
+      Tab Order         = 66
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -13092,7 +13153,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 50,00
       Size Unit         = Default
-      Tab Order         = 66
+      Tab Order         = 67
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -13129,7 +13190,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 70,00
       Size Unit         = Default
-      Tab Order         = 67
+      Tab Order         = 68
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -13166,7 +13227,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 55,00
       Size Unit         = Default
-      Tab Order         = 68
+      Tab Order         = 69
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -13203,7 +13264,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 5,00
       Size Unit         = Default
-      Tab Order         = 69
+      Tab Order         = 70
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -13240,7 +13301,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 5,00
       Size Unit         = Default
-      Tab Order         = 70
+      Tab Order         = 71
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -13269,7 +13330,7 @@ Begin Screen Form1
       Size (Lines)      = 153,43
       Size (Lines) in Pixels = 1074
       Size (Lines) Unit = Default
-      Tab Order         = 71
+      Tab Order         = 72
       Visible           = NONE
       Width             = 1
       Width in Cells    = TRUE
@@ -13318,7 +13379,7 @@ Begin Screen Form1
       Size              = 127,00
       Size Unit         = Default
       Style             = Vscroll Bar
-      Tab Order         = 72
+      Tab Order         = 73
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -13356,7 +13417,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 73
+      Tab Order         = 74
       Title             = "Note EDI"
       Transparent       = FALSE
       Visible           = NONE
@@ -13389,7 +13450,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 74
+      Tab Order         = 75
       Title             = "Evadi dal"
       Transparent       = FALSE
       Visible           = NONE
@@ -13406,7 +13467,7 @@ Begin Screen Form1
       Handle Variable   = Form1-Tb-1-Handle
       Help ID           = 0
       Lines             = 3,07
-      Tab Order         = 75
+      Tab Order         = 76
       Begin Push-Button TOOL-ESCIa
          SCREEN-COL        = 1,00
          SCREEN-LINE       = 1,00
@@ -18406,6 +18467,32 @@ PATCH       bitmap-number = BitmapNumSave.
               move emto-chiave to emro-chiave-testa
               move col-num     to emro-riga
               read edi-mrordini
+                   invalid
+                   initialize emro-dati emro-dati-import
+                              replacing numeric data by zeroes
+                                   alphanumeric data by spaces
+                   accept emro-data-creazione from century-date
+                   accept emro-ora-creazione  from time
+                   move user-codi to emro-utente-creazione    
+                   inquire form1-gd-1(riga, 78-col-art),        
+                           hidden-data in gruppo-hidden
+                   move hid-prg-cod-articolo to art-codice
+      *****             read articoli no lock
+      *****             move art-cod-art-cli to emro-cod-art-cli
+                   move HiddenKey to prg-chiave emro-prg-chiave
+                   read progmag no lock
+                   move prg-peso-utf     to emro-peso-utf
+                   move prg-peso-non-utf to emro-peso-non-utf
+                   move prg-tipo-imballo to emro-cod-imballo
+      *****         10 emro-des-imballo PIC  X(50).
+      *****         10 emro-prz-commle  PIC  9(9)v9(2).
+                   write emro-rec end-write
+
+               not invalid
+                    accept emro-data-ultima-modifica from century-date
+                    accept emro-ora-ultima-modifica  from time
+                    move user-codi to emro-utente-ultima-modifica
+              end-read
 
               inquire form1-gd-1(riga, 78-col-art),        
                       cell-data in col-art 
@@ -18482,9 +18569,6 @@ PATCH         |Nel caso in cui passi un prezzo da bloccare
                  set emro-prezzo-non-valido to true
                  set emto-prz-ko            to true
               end-if           
-              accept emro-data-ultima-modifica from century-date
-              accept emro-ora-ultima-modifica  from time
-              move user-codi to emro-utente-ultima-modifica
               rewrite emro-rec
            end-perform.
 END-TEXT
@@ -20672,6 +20756,110 @@ BEGIN-DATA
 BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen4-Custom1-1 **>>
       *<<** Customized_Default, SP-G, Screen2-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-aggiungi-BeforeProcedure
+BEGIN-TEXT
+           modify pb-aggiungi, bitmap-number = 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-aggiungi-AfterProcedure
+BEGIN-TEXT
+           modify pb-aggiungi, bitmap-number = 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-aggiungi-LinkTo
+BEGIN-TEXT
+           move 0              to prg-cod-articolo
+           move tca-cod-magaz  to prg-cod-magazzino
+           move spaces         to prg-tipo-imballo
+           move "progmag-sons" to como-file
+           call "zoom-gt"   using como-file, prg-rec
+                           giving stato-zoom
+           end-call
+           cancel "zoom-gt"
+
+           if stato-zoom = 0   
+              if prg-cod-magazzino not = tca-cod-magaz
+                 display message "Selezionare un progressivo per il magazzino in uso: " tca-cod-magaz
+                          x"0d0a""Magazzino selezionato: " prg-cod-magazzino
+                           title tit-err
+                            icon 2
+                 exit paragraph
+              end-if
+              initialize gruppo-hidden rec-grid
+                         replacing numeric data by zeroes
+                              alphanumeric data by spaces  
+
+              inquire form1-gd-1, last-row in tot-righe
+              inquire form1-gd-1(tot-righe, 78-col-num), 
+                      cell-data in emro-riga
+              add 1 to emro-riga giving col-num
+              modify form1-gd-1, insert-rows = 1
+              add 1 to tot-righe giving event-data-2
+
+              move prg-cod-articolo to art-codice
+              read articoli no lock
+
+              move prg-tipo-imballo to imq-codice
+              read timbalqta no lock
+              move imq-qta-imb to col-qta col-qta-EDI col-qta-GESLUX
+
+              move 0    to col-prz-EDI col-prz-GESLUX col-prz
+              move "OK" to col-stato-r
+
+              inquire ef-evadi-dal, value in col-evadi-dal
+
+              move prg-chiave    to HiddenKey              
+              move imq-qta-imb   to hid-emro-qta-imballi
+              move prg-chiave    to HiddenKeyL HiddenKey        
+              move col-evadi-dal to como-data
+              perform DATE-TO-FILE
+              move como-data to hid-emro-evadi-dal
+              set hid-emro-attivo             to true
+              set hid-emro-bloccato-prezzo-no to true
+              set hid-emro-progressivo-valido to true
+              modify form1-gd-1(event-data-2, 78-col-num), 
+                     hidden-data gruppo-hidden
+              modify form1-gd-1(event-data-2, 78-col-num), 
+                     cell-data col-num
+              modify form1-gd-1(event-data-2, 78-col-art), 
+                     cell-data prg-cod-articolo
+              modify form1-gd-1(event-data-2, 78-col-des), 
+                     cell-data art-descrizione
+              modify form1-gd-1(event-data-2, 78-col-imb), 
+                     cell-data prg-tipo-imballo  
+              modify form1-gd-1(event-data-2, 78-col-qta-EDI), 
+                     cell-data col-qta-EDI
+              modify form1-gd-1(event-data-2, 78-col-qta-GESLUX), 
+                     cell-data col-qta-GESLUX
+              modify form1-gd-1(event-data-2, 78-col-qta), 
+                     cell-data col-qta
+              modify form1-gd-1(event-data-2, 78-col-prz-EDI), 
+                     cell-data col-prz-EDI
+              modify form1-gd-1(event-data-2, 78-col-prz-GESLUX), 
+                     cell-data col-prz-GESLUX
+              modify form1-gd-1(event-data-2, 78-col-prz), 
+                     cell-data col-prz
+              modify form1-gd-1(event-data-2, 78-col-evadi-dal), 
+                     cell-data col-evadi-dal
+              modify form1-gd-1(event-data-2, 78-col-stato-r), 
+                     cell-data col-stato-r
+              set hid-emro-progressivo-valido to true
+              perform STATO-RIGA
+              perform SPOSTAMENTO
+              set RigaCambiata to true
+              modify form1-gd-1, cursor-y event-data-2, 
+                                 cursor-x 78-col-art
+              move 78-ID-form1-gd-1 to control-id
+              move 4                to accept-control
+           end-if.
 END-TEXT
 END-DATA
 
