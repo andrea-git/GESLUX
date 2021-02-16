@@ -134,6 +134,7 @@
                 perform PREPARA-FORN-DI-DESTINI |CERCA
            when "articoli-all"
            when "articoli-alfa-all"
+           when "articoli-codice"
                 set TuttiIRec to true
                 perform PREPARA-ARTICOLI
            when "articoli"
@@ -1830,6 +1831,7 @@
            initialize xzoom-linkage xzoom-ext-info(1).
 
            evaluate como-file
+           when "articoli-codice"     move 0 to xzoom-file-key
            when "articoli-marche"     move 1 to xzoom-file-key
            when "articoli"            move 1 to xzoom-file-key
            when "articoli-alfa"       move 1 to xzoom-file-key

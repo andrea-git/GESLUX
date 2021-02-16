@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 11 febbraio 2021 10:14:52.
+       DATE-WRITTEN.        martedì 16 febbraio 2021 11:40:09.
        REMARKS.
       *{TOTEM}END
 
@@ -147,6 +147,9 @@
                   VALUE IS 0.
            88 ControllaCliente VALUE IS 1    WHEN SET TO FALSE  0. 
        78 titolo VALUE IS "GESLUX EDI - Gestione Importazioni". 
+       77 FILLER           PIC  9
+                  VALUE IS 0.
+           88 fromAggiungi VALUE IS 1    WHEN SET TO FALSE  0. 
        77 FILLER           PIC  9
                   VALUE IS 0.
            88 TrovataScortaForzata VALUE IS 1    WHEN SET TO FALSE  0. 
@@ -20968,15 +20971,21 @@ LUBEXX                      read clienti no lock invalid continue
            
 
       ***---                          
-       ZOOM-SU-PROGMAG.                                               
-           inquire form1-gd-1, cursor-y in riga.
-           inquire form1-gd-1(riga, 78-col-art), cell-data in col-art.
-           move 0 to num-articoli.
-           move col-art to art-codice .
-           read articoli no lock
-                invalid move spaces to art-descrizione
-           end-read.
-           move "articoli"    to como-file.
+       ZOOM-SU-PROGMAG.   
+           if fromAggiungi
+              set fromAggiungi to false      
+              initialize art-rec
+              move "articoli-codice" to como-file
+           else                          
+              inquire form1-gd-1, cursor-y in riga
+              inquire form1-gd-1(riga, 78-col-art), cell-data in col-art
+              move 0 to num-articoli
+              move col-art to art-codice
+              read articoli no lock
+                   invalid move spaces to art-descrizione
+              end-read
+              move "articoli"    to como-file
+           end-if.
            call "zoom-gt"  using como-file, art-rec
                           giving stato-zoom
            end-call.
@@ -21385,48 +21394,32 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
       * <TOTEM:END>
        pb-aggiungi-LinkTo.
       * <TOTEM:PARA. pb-aggiungi-LinkTo>
-           move 0              to prg-cod-articolo
-           move tca-cod-magaz  to prg-cod-magazzino
-           move spaces         to prg-tipo-imballo
-           move "progmag-sons" to como-file
-           call "zoom-gt"   using como-file, prg-rec
-                           giving stato-zoom
-           end-call
-           cancel "zoom-gt"
-
+           set fromAggiungi to true.
+           perform ZOOM-SU-PROGMAG.  
            if stato-zoom = 0   
-              if prg-cod-magazzino not = tca-cod-magaz
-                 display message "Selezionare un progressivo per il maga
-      -    "zzino in uso: " tca-cod-magaz
-                          x"0d0a""Magazzino selezionato: " 
-           prg-cod-magazzino
-                           title tit-err
-                            icon 2
-                 exit paragraph
-              end-if
               initialize gruppo-hidden rec-grid
                          replacing numeric data by zeroes
                               alphanumeric data by spaces  
-
+      
               inquire form1-gd-1, last-row in tot-righe
               inquire form1-gd-1(tot-righe, 78-col-num), 
                       cell-data in emro-riga
               add 1 to emro-riga giving col-num
               modify form1-gd-1, insert-rows = 1
               add 1 to tot-righe giving event-data-2
-
+      
               move prg-cod-articolo to art-codice
               read articoli no lock
-
+      
               move prg-tipo-imballo to imq-codice
               read timbalqta no lock
               move imq-qta-imb to col-qta col-qta-EDI col-qta-GESLUX
-
+      
               move 0    to col-prz-EDI col-prz-GESLUX col-prz
               move "OK" to col-stato-r
-
+      
               inquire ef-evadi-dal, value in col-evadi-dal
-
+      
               move prg-chiave    to HiddenKey              
               move imq-qta-imb   to hid-emro-qta-imballi
               move prg-chiave    to HiddenKeyL HiddenKey        
