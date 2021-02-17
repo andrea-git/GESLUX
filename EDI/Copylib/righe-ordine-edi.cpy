@@ -443,7 +443,7 @@
            
            move riga to mro-progr
            
-           accept mro-evadi-dal      from century-date
+           move emro-evadi-dal to mro-evadi-dal. 
            accept mro-data-creazione from century-date
            accept mro-ora-creazione  from time
            move user-codi to mro-utente-creazione

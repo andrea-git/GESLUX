@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 16 febbraio 2021 11:40:09.
+       DATE-WRITTEN.        mercoledì 17 febbraio 2021 01:23:21.
        REMARKS.
       *{TOTEM}END
 
@@ -147,6 +147,9 @@
                   VALUE IS 0.
            88 ControllaCliente VALUE IS 1    WHEN SET TO FALSE  0. 
        78 titolo VALUE IS "GESLUX EDI - Gestione Importazioni". 
+       77 FILLER           PIC  9
+                  VALUE IS 0.
+           88 fromCancella VALUE IS 1    WHEN SET TO FALSE  0. 
        77 FILLER           PIC  9
                   VALUE IS 0.
            88 fromAggiungi VALUE IS 1    WHEN SET TO FALSE  0. 
@@ -18913,7 +18916,7 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
       * <TOTEM:PARA. SALV-MOD>
            set SiSalvato to true.
            set tutto-ok  to true.
-           if mod = 0 exit paragraph end-if.
+           if mod = 0 or fromCancella exit paragraph end-if.
            perform Form1-BUF-TO-FLD.
 
            if emto-cod-cli               not = OLD-emto-cod-cli and
@@ -20863,8 +20866,10 @@ LUBEXX                      read clienti no lock invalid continue
               move emto-chiave to emro-chiave-testa
               move col-num     to emro-riga
               delete EDI-mrordini record 
-                     invalid display message "?"
-              end-delete
+                     invalid continue
+                     |display message "?"
+              end-delete             
+              modify pb-elimina, bitmap-number = 1
 
               modify form1-gd-1, record-to-delete = riga
               if hid-emro-bloccato
@@ -20872,6 +20877,7 @@ LUBEXX                      read clienti no lock invalid continue
               end-if
               inquire form1-gd-1, last-row in tot-righe
               if tot-righe = 1   
+                 set fromCancella to true
                  set RigaCambiata to false
                  perform CANCELLA
               else
@@ -20879,6 +20885,7 @@ LUBEXX                      read clienti no lock invalid continue
                     move tot-righe to riga
                  end-if
                  move riga to event-data-2
+                 modify form1-gd-1, cursor-y riga
                  perform SPOSTAMENTO
                  set RigaCambiata to true
               end-if
@@ -20973,7 +20980,6 @@ LUBEXX                      read clienti no lock invalid continue
       ***---                          
        ZOOM-SU-PROGMAG.   
            if fromAggiungi
-              set fromAggiungi to false      
               initialize art-rec
               move "articoli-codice" to como-file
            else                          
@@ -21016,7 +21022,10 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
                        if stato-zoom = 0 
                           move tmp-prg-z-chiave to prg-chiave
                           read progmag no lock invalid continue end-read
-                          perform CAMBIA-ARTICOLO
+                          if not fromAggiungi             
+                             modify pb-cambia, bitmap-number = 1
+                             perform CAMBIA-ARTICOLO
+                          end-if
                        end-if
                     end-if
                  else
@@ -21219,7 +21228,9 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
            |simulo la scelta di progmag da zoom con il rec. in linea
            move GiacenzaKey   to prg-chiave.
            read progmag no  lock invalid continue end-read.
-           perform CAMBIA-ARTICOLO.
+           if not fromAggiungi
+              perform CAMBIA-ARTICOLO
+           end-if.
 
       ***---
        CAMBIA-ARTICOLO.
@@ -21396,7 +21407,9 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
       * <TOTEM:PARA. pb-aggiungi-LinkTo>
            set fromAggiungi to true.
            perform ZOOM-SU-PROGMAG.  
-           if stato-zoom = 0   
+           if stato-zoom = 0               
+              modify pb-aggiungi, bitmap-number = 1
+              modify form1-gd-1(riga), row-font = Arial10-Occidentale
               initialize gruppo-hidden rec-grid
                          replacing numeric data by zeroes
                               alphanumeric data by spaces  
