@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=scr-oper
 BEFORE_PROGRAM=scheduler-Ev-Before-Program
 AFTER_PROGRAM=scheduler-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4814141633-387-75524698
+PROGRAM_UNIQUE_CODE=TOTEM-7E521185213-807-2416320590
 
 {{@DESCRIPTION:
 
@@ -1252,7 +1252,8 @@ BEGIN-TEXT
                  modify form1-gd-1(riga, 3), cell-data col-fine  
                  initialize batch-linkage replacing numeric data by zeroes
                                                alphanumeric data by spaces
-                 move scr-oper-handle to batch-win-handle
+                 move scr-oper-handle to batch-win-handle       
+                 move 0 to batch-status
                  call col-programma using batch-linkage
                       on overflow                             
                       modify form1-gd-1(riga, 4), cell-color 5

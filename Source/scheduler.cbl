@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          scheduler.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 20 agosto 2020 16:20:13.
+       DATE-WRITTEN.        mercoledì 17 febbraio 2021 09:52:29.
        REMARKS.
       *{TOTEM}END
 
@@ -164,8 +164,8 @@
           88 scr-oper-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-batnott-BUF     PIC X(589).
        77 TMP-DataSet1-tsetinvio-BUF     PIC X(1023).
-       77 TMP-DataSet1-lineseq-BUF     PIC X(900).
-       77 TMP-DataSet1-lineseq1-BUF     PIC X(900).
+       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
+       77 TMP-DataSet1-lineseq1-BUF     PIC X(1000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -1431,7 +1431,8 @@
            zeroes
                                                alphanumeric data by 
            spaces
-                 move scr-oper-handle to batch-win-handle
+                 move scr-oper-handle to batch-win-handle       
+                 move 0 to batch-status
                  call col-programma using batch-linkage
                       on overflow                             
                       modify form1-gd-1(riga, 4), cell-color 5

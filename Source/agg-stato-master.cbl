@@ -190,7 +190,8 @@
            CALL "C$NARG" USING NARGS.
            if nargs not = 0
               accept  path-log from environment "SCHEDULER_PATH_LOG"
-              set RichiamoSchedulato to true
+              set RichiamoSchedulato to true 
+              move  0 to batch-status
            else
               accept  path-log from environment "PATH_ST"
               set RichiamoSchedulato to false
