@@ -56,7 +56,7 @@ LUBEXX 77  margine-prec               pic s9(12)v99.
        77  max-righe                  pic 9(3).
        77  num-max-righe-x            pic x(3).
 
-       01  marche-occurs              occurs 24000 indexed by idx.
+       01  marche-occurs              occurs 48000 indexed by idx.
          05 codice-marca              pic 9(4).
          05 codice-tipocli            pic xx.
          05 codice-mese               pic 99.
