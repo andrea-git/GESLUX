@@ -1,6 +1,6 @@
        IDENTIFICATION DIVISION.
-       PROGRAM-ID.                      convblister.
-       REMARKS. Aumento dimensione campo fido.
+       PROGRAM-ID.                      convcli.
+       REMARKS. Aumento dimensione note.
        ENVIRONMENT          DIVISION.
        CONFIGURATION        SECTION.
        SPECIAL-NAMES. decimal-point is comma.
@@ -8,7 +8,8 @@
 
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
-           copy "clienti.sl".
+           copy "clienti.sl".  
+           
        SELECT clienti-old
            ASSIGN       TO  "clienti-old"
            ORGANIZATION IS INDEXED
@@ -16,16 +17,17 @@
            FILE STATUS  IS STATUS-clienti-old
            RECORD KEY   IS old-cli-chiave OF clienti-old
            ALTERNATE RECORD KEY IS old-cli-K1 of clienti-old = 
-           old-cli-tipo-CF  OF clienti-old, 
-           old-cli-ragsoc-1 OF clienti-old, 
-           old-cli-codice   OF clienti-old
+           old-cli-tipo-CF OF 
+           clienti-old, old-cli-ragsoc-1 OF clienti-old, 
+           old-cli-codice OF clienti-old
            WITH DUPLICATES 
            ALTERNATE RECORD KEY IS old-cli-K3 of clienti-old = 
-           old-cli-gdo      OF clienti-old, 
-           old-cli-chiave   OF clienti-old
+           old-cli-gdo OF 
+           clienti-old, old-cli-chiave OF clienti-old
            WITH DUPLICATES 
            ALTERNATE RECORD KEY IS old-cli-K4 of clienti-old = 
-           old-cli-utf OF clienti-old, old-cli-chiave OF clienti-old
+           old-cli-utf OF 
+           clienti-old, old-cli-chiave OF clienti-old
            WITH DUPLICATES 
            ALTERNATE RECORD KEY IS old-cli-ragsoc-1 OF clienti-old
            WITH DUPLICATES .
@@ -34,6 +36,7 @@
        DATA DIVISION.
        FILE SECTION.
            copy "clienti.fd".
+
        FD  clienti-old.
        01 old-cli-rec.
            05 old-cli-chiave.
@@ -56,6 +59,7 @@
                10 old-cli-fax          PIC  x(15).
                10 old-cli-email        PIC  x(100).
                10 old-cli-web          PIC  x(100).
+      *(( XFD NAME = old-cli-tipo_1 ))
                10 old-cli-tipo         PIC  x(2).
                10 old-cli-gdo          PIC  x(5).
                10 old-cli-utf          PIC  x.
@@ -69,7 +73,7 @@
                10 old-cli-pag          PIC  x(3).
                10 old-cli-spost-ric-agosto         PIC  x.
                10 old-cli-spost-ric-dicembre       PIC  x.
-               10 old-cli-fido         PIC  9(8)v9(2).
+               10 old-cli-fido         PIC  9(11)v9(2).
                10 old-cli-fido-data    PIC  9(8).
                10 old-cli-abi          PIC  x(5).
                10 old-cli-cab          PIC  x(5).
@@ -89,6 +93,7 @@
                10 old-cli-referente-ord            PIC  x(30).
                10 old-cli-tel-dir-ref-ord          PIC  x(20).
                10 old-cli-mail-ref-ord PIC  x(100).
+      *(( XFD NAME = old-cli-blocco-24000_1 ))
                10 old-cli-blocco-24000 PIC  9.
                    88 old-cli-si-blocco VALUE IS 1. 
                    88 old-cli-no-blocco VALUE IS 0. 
@@ -105,6 +110,7 @@
                    88 old-cli-prob-pag VALUE IS "P". 
                    88 old-cli-nuovo-ragsoc VALUE IS "R". 
                    88 old-cli-fuori-fido VALUE IS "F". 
+                   88 old-cli-blocco-amm VALUE IS "A". 
                10 old-cli-dati-comuni.
                    15 old-cli-data-creazione           PIC  9(8).
                    15 old-cli-ora-creazione            PIC  9(8).
@@ -125,13 +131,32 @@
                        88 old-cli-tipo-art-GDA VALUE IS 5. 
                        88 old-cli-tipo-art-GDS VALUE IS 6. 
                        88 old-cli-tipo-art-ESTERO VALUE IS 7. 
-                   15 old-cli-alfa-vuoto-1 PIC  X(498).
+                   15 old-cli-iva          PIC  X(3).
+                   15 old-cli-invio-bolle-EDI          PIC  x.
+                       88 old-cli-invio-bolle-EDI-si VALUE IS "S". 
+                       88 old-cli-invio-bolle-EDI-no VALUE IS "N" " ". 
+                   15 old-cli-destino-auto-EDI         PIC  x.
+                       88 old-cli-destino-auto-EDI-si VALUE IS "S". 
+                       88 old-cli-destino-auto-EDI-no VALUE IS "N" " ". 
+      *(( XFD NAME = old-cli-agente-2 ))
+                   15 old-cli-agente2      PIC  9(5).
+                   15 old-cli-codice-SDI   PIC  X(10).
+                   15 old-cli-pec          PIC  X(100).
+                   15 old-cli-esigibilita-iva          PIC  X.
+                       88 old-cli-esigibilita-iva-immediata VALUE "I". 
+                       88 old-cli-esigibilita-iva-differita VALUE "D". 
+                       88 old-cli-esigibilita-iva-scissione VALUE "S". 
+      *(( XFD NAME = old-cli-alfa-vuoto-1_8 ))
+                   15 FILLER           PIC  X(377).
                    15 old-cli-fidejussione PIC  s9(8)v9(4).
                    15 old-cli-pfa          PIC  s9(8)v9(4).
                    15 old-cli-pfa-perce    PIC  9(3)v999.
-                   15 FILLER           PIC  9(4).
-                   15 old-cli-num-vuoto-2  PIC  9(2).
-                   15 old-cli-num-vuoto-3  PIC  9(18).
+                   15 old-cli-data-fido-extra          PIC  9(8).
+                   15 old-cli-grade        PIC  9(2).
+                   15 old-cli-escludi-fido PIC  9.
+                       88 old-cli-escludi-fido-si VALUE IS 1. 
+                       88 old-cli-escludi-fido-no VALUE IS 0. 
+                   15 old-cli-num-vuoto-3  PIC  9(13).
 
        WORKING-STORAGE SECTION.
            copy "acucobol.def".
@@ -189,14 +214,11 @@
            move low-value to old-cli-chiave.
 
            start clienti-old key >= old-cli-chiave
-              invalid
-                 continue
-              not invalid
+                 invalid continue
+             not invalid
                  perform until 1 = 2
                     read clienti-old next at end exit perform end-read
-
                     perform MUOVI-RECORD
-
                  end-perform
            end-start.
 

@@ -25,7 +25,7 @@
                10 cli-gdo          PIC  x(5).
                10 cli-utf          PIC  x.
                10 cli-referente    PIC  x(30).
-               10 cli-note         PIC  x(300).
+               10 cli-note         PIC  x(2000).
                10 cli-note-agg     PIC  x(256).
                10 cli-vettore      PIC  9(5).
                10 cli-inoltro      PIC  x.

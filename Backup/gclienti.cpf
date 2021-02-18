@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4A10142016-728-208719111
+PROGRAM_UNIQUE_CODE=TOTEM-7E52A14584-149-61917
 
 {{@DESCRIPTION:
 
@@ -6933,7 +6933,7 @@ GRAPHICAL-SCREEN
 Begin Screen Form1
    PREFIX            = Form1
    IMPORTED-SCREEN   = FALSE
-   LOCK-CONTROL      = TRUE
+   LOCK-CONTROL      = FALSE
    LEVEL             = 1
    (Name)            = Form1
    Absolute Column   = 0
@@ -6959,7 +6959,7 @@ Begin Screen Form1
    Height in Cells   = FALSE
    Help ID           = 0
    Label Offset      = 23
-   Lines             = 50,69
+   Lines             = 57,92
    Link To Thread    = TRUE
    Max Lines         = 0,00
    Max Size          = 0,00
@@ -7061,7 +7061,7 @@ Begin Screen Form1
       Help ID           = 0
       ID                = 5000
       Line              = 5,08
-      Lines             = 44,77
+      Lines             = 51,46
       Lines Unit        = Default
       Multiline         = FALSE
       No Tab            = FALSE
@@ -8792,10 +8792,9 @@ Begin Screen Form1
             Cursor Row        = 0
             Destroy Type      = Automatic
             Enable            = NONE
-            Enable Variable   = mod-campi
             Field Edited (Style) = 0
-            Field Edited Format = X(300)
-            Field Picture     = X(300)
+            Field Edited Format = x(2000)
+            Field Picture     = x(2000)
             Field Variable    = cli-note
             File              = clienti
             Font              = Small Font
@@ -8807,10 +8806,10 @@ Begin Screen Form1
             ID Variable       = AUTO-ID
             Justification     = Unaligned
             Line              = 22,69
-            Lines             = 3,00
+            Lines             = 8,50
             Lines Unit        = Default
             Max Lines         = 0
-            Max Text          = 300
+            Max Text          = 2000
             Max Value         = 0
             Min Value         = 0
             No AutoSel        = FALSE
@@ -8818,7 +8817,7 @@ Begin Screen Form1
             Notify Change     = FALSE
             Numeric           = FALSE
             Occurs            = 0
-            Read Only         = FALSE
+            Read Only         = TRUE
             Required          = FALSE
             Secure            = FALSE
             Size              = 133,00
@@ -8836,7 +8835,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-note-agg
             SCREEN-COL        = 21,17
-            SCREEN-LINE       = 31,92
+            SCREEN-LINE       = 37,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-note-agg
@@ -8869,7 +8868,7 @@ Begin Screen Form1
             ID                = 68
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 26,15
+            Line              = 31,92
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -8899,7 +8898,7 @@ Begin Screen Form1
          End
          Begin Push-Button pb-note
             SCREEN-COL        = 151,17
-            SCREEN-LINE       = 31,92
+            SCREEN-LINE       = 37,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = pb-note
@@ -8921,7 +8920,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             ID                = 69
-            Line              = 26,15
+            Line              = 31,92
             Lines             = 1,31
             Lines Unit        = Default
             No Auto Default   = FALSE
@@ -8940,7 +8939,7 @@ Begin Screen Form1
          End
          Begin Combo-Box cbo-sost-art
             SCREEN-COL        = 21,17
-            SCREEN-LINE       = 34,00
+            SCREEN-LINE       = 39,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = cbo-sost-art
@@ -8963,7 +8962,7 @@ Begin Screen Form1
             Hint              = Selezionare il tipo di sostituziona atuomatica dell'articolo
             ID                = 70
             ID Variable       = AUTO-ID
-            Line              = 28,23
+            Line              = 34,00
             Lines             = 5,00
             Lines Unit        = Default
             Mass Update       = 0:Fast-Update
@@ -8989,7 +8988,7 @@ Begin Screen Form1
          End
          Begin Combo-Box cbo-tipo-art
             SCREEN-COL        = 51,17
-            SCREEN-LINE       = 34,00
+            SCREEN-LINE       = 39,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = cbo-tipo-art
@@ -9012,7 +9011,7 @@ Begin Screen Form1
             Hint              = Selezionare la tipologia del cliente
             ID                = 71
             ID Variable       = AUTO-ID
-            Line              = 28,23
+            Line              = 34,00
             Lines             = 5,00
             Lines Unit        = Default
             Mass Update       = 0:Fast-Update
@@ -9038,7 +9037,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-invio-bolle-EDI
             SCREEN-COL        = 85,34
-            SCREEN-LINE       = 34,00
+            SCREEN-LINE       = 39,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-invio-bolle-EDI
@@ -9068,7 +9067,7 @@ Begin Screen Form1
             ID                = 0
             ID Variable       = AUTO-ID
             Left Text         = FALSE
-            Line              = 28,23
+            Line              = 34,00
             Lines             = 1,31
             Lines Unit        = Default
             No Tab            = FALSE
@@ -9088,7 +9087,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-destino-auto
             SCREEN-COL        = 118,67
-            SCREEN-LINE       = 34,00
+            SCREEN-LINE       = 39,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-destino-auto
@@ -9118,7 +9117,7 @@ Begin Screen Form1
             ID                = 0
             ID Variable       = AUTO-ID
             Left Text         = FALSE
-            Line              = 28,23
+            Line              = 34,00
             Lines             = 1,31
             Lines Unit        = Default
             No Tab            = FALSE
@@ -9138,7 +9137,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-escludi-fido
             SCREEN-COL        = 138,67
-            SCREEN-LINE       = 34,00
+            SCREEN-LINE       = 39,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-escludi-fido
@@ -9167,7 +9166,7 @@ Begin Screen Form1
             Hint              = Esclude il cliente dai controlli sul fido (sia il blocco sullo stato cliente che il controllo in inserimento ordine/importazione)
             ID                = 0
             Left Text         = FALSE
-            Line              = 28,23
+            Line              = 34,00
             Lines             = 1,31
             Lines Unit        = Default
             No Tab            = FALSE
@@ -9187,7 +9186,7 @@ Begin Screen Form1
          End
          Begin Data.Radio-Button rb-pers
             SCREEN-COL        = 21,17
-            SCREEN-LINE       = 37,39
+            SCREEN-LINE       = 43,15
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = rb-pers
@@ -9216,7 +9215,7 @@ Begin Screen Form1
             ID                = 178
             ID Variable       = AUTO-ID
             Left Text         = FALSE
-            Line              = 31,62
+            Line              = 37,38
             Lines             = 1,15
             Lines Unit        = Default
             No Group Tab      = FALSE
@@ -9239,7 +9238,7 @@ Begin Screen Form1
          End
          Begin Data.Radio-Button rb-soc
             SCREEN-COL        = 39,17
-            SCREEN-LINE       = 37,39
+            SCREEN-LINE       = 43,15
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = rb-soc
@@ -9268,7 +9267,7 @@ Begin Screen Form1
             ID                = 179
             ID Variable       = AUTO-ID
             Left Text         = FALSE
-            Line              = 31,62
+            Line              = 37,38
             Lines             = 1,15
             Lines Unit        = Default
             No Group Tab      = FALSE
@@ -9290,7 +9289,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-gg
             SCREEN-COL        = 96,17
-            SCREEN-LINE       = 37,15
+            SCREEN-LINE       = 42,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-gg
@@ -9323,7 +9322,7 @@ Begin Screen Form1
             ID                = 41
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 31,38
+            Line              = 37,15
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -9353,7 +9352,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-fido
             SCREEN-COL        = 121,17
-            SCREEN-LINE       = 37,15
+            SCREEN-LINE       = 42,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-fido
@@ -9383,7 +9382,7 @@ Begin Screen Form1
             ID                = 42
             ID Variable       = AUTO-ID
             Left Text         = FALSE
-            Line              = 31,38
+            Line              = 37,15
             Lines             = 1,31
             Lines Unit        = Default
             No Tab            = FALSE
@@ -9404,7 +9403,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-esi
             SCREEN-COL        = 142,84
-            SCREEN-LINE       = 37,15
+            SCREEN-LINE       = 42,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-esi
@@ -9437,7 +9436,7 @@ Begin Screen Form1
             ID                = 43
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 31,38
+            Line              = 37,15
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -9467,7 +9466,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-codfis
             SCREEN-COL        = 21,17
-            SCREEN-LINE       = 39,08
+            SCREEN-LINE       = 44,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-codfis
@@ -9500,7 +9499,7 @@ Begin Screen Form1
             ID                = 17
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 33,31
+            Line              = 39,08
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -9530,7 +9529,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-piva
             SCREEN-COL        = 59,17
-            SCREEN-LINE       = 39,08
+            SCREEN-LINE       = 44,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-piva
@@ -9563,7 +9562,7 @@ Begin Screen Form1
             ID                = 19
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 33,31
+            Line              = 39,08
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -9593,7 +9592,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-iva-ese
             SCREEN-COL        = 96,17
-            SCREEN-LINE       = 39,08
+            SCREEN-LINE       = 44,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-iva-ese
@@ -9626,7 +9625,7 @@ Begin Screen Form1
             ID                = 20
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 33,31
+            Line              = 39,08
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -9656,7 +9655,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-pag
             SCREEN-COL        = 21,17
-            SCREEN-LINE       = 41,08
+            SCREEN-LINE       = 46,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-pag
@@ -9689,7 +9688,7 @@ Begin Screen Form1
             ID                = 21
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 35,31
+            Line              = 41,08
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -9719,7 +9718,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-cod-iva
             SCREEN-COL        = 96,17
-            SCREEN-LINE       = 41,08
+            SCREEN-LINE       = 46,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-cod-iva
@@ -9752,7 +9751,7 @@ Begin Screen Form1
             ID                = 22
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 35,31
+            Line              = 41,08
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -9782,8 +9781,8 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-spost-ago
             SCREEN-COL        = 124,50
-            SCREEN-LINE       = 42,85
-            LOCK-CONTROL      = FALSE
+            SCREEN-LINE       = 48,62
+            LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-spost-ago
             Bitmap Frame      = FALSE
@@ -9812,7 +9811,7 @@ Begin Screen Form1
             ID                = 44
             ID Variable       = AUTO-ID
             Left Text         = FALSE
-            Line              = 37,08
+            Line              = 42,85
             Lines             = 1,31
             Lines Unit        = Default
             No Tab            = FALSE
@@ -9833,8 +9832,8 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-spost-dic
             SCREEN-COL        = 149,50
-            SCREEN-LINE       = 42,85
-            LOCK-CONTROL      = FALSE
+            SCREEN-LINE       = 48,62
+            LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-spost-dic
             Bitmap Frame      = FALSE
@@ -9863,7 +9862,7 @@ Begin Screen Form1
             ID                = 47
             ID Variable       = AUTO-ID
             Left Text         = FALSE
-            Line              = 37,08
+            Line              = 42,85
             Lines             = 1,31
             Lines Unit        = Default
             No Tab            = FALSE
@@ -9883,7 +9882,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-fido
             SCREEN-COL        = 21,17
-            SCREEN-LINE       = 43,08
+            SCREEN-LINE       = 48,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-fido
@@ -9916,7 +9915,7 @@ Begin Screen Form1
             ID                = 50
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 37,31
+            Line              = 43,08
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -9946,7 +9945,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-fido-data
             SCREEN-COL        = 57,50
-            SCREEN-LINE       = 43,08
+            SCREEN-LINE       = 48,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-fido-data
@@ -9979,7 +9978,7 @@ Begin Screen Form1
             ID                = 52
             ID Variable       = AUTO-ID
             Justification     = Center
-            Line              = 37,31
+            Line              = 43,08
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -10009,7 +10008,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-fido-extra
             SCREEN-COL        = 96,17
-            SCREEN-LINE       = 43,08
+            SCREEN-LINE       = 48,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-fido-extra
@@ -10042,7 +10041,7 @@ Begin Screen Form1
             ID                = 53
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 37,31
+            Line              = 43,08
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -10072,7 +10071,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-fide
             SCREEN-COL        = 21,17
-            SCREEN-LINE       = 45,08
+            SCREEN-LINE       = 50,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-fide
@@ -10105,7 +10104,7 @@ Begin Screen Form1
             ID                = 54
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 39,31
+            Line              = 45,08
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -10135,7 +10134,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-PFA
             SCREEN-COL        = 57,50
-            SCREEN-LINE       = 45,08
+            SCREEN-LINE       = 50,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-PFA
@@ -10168,7 +10167,7 @@ Begin Screen Form1
             ID                = 55
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 39,31
+            Line              = 45,08
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -10198,7 +10197,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-data-fido-extra
             SCREEN-COL        = 82,50
-            SCREEN-LINE       = 45,00
+            SCREEN-LINE       = 50,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-data-fido-extra
@@ -10231,7 +10230,7 @@ Begin Screen Form1
             ID                = 56
             ID Variable       = AUTO-ID
             Justification     = Center
-            Line              = 39,23
+            Line              = 45,00
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -10261,7 +10260,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-grade
             SCREEN-COL        = 104,17
-            SCREEN-LINE       = 45,00
+            SCREEN-LINE       = 50,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-grade
@@ -10293,7 +10292,7 @@ Begin Screen Form1
             ID                = 57
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 39,23
+            Line              = 45,00
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -10323,7 +10322,7 @@ Begin Screen Form1
          End
          Begin Push-Button pb-espo
             SCREEN-COL        = 121,84
-            SCREEN-LINE       = 44,62
+            SCREEN-LINE       = 50,38
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = pb-espo
@@ -10347,7 +10346,7 @@ Begin Screen Form1
             Height in Cells   = FALSE
             Help ID           = 0
             ID                = 173
-            Line              = 38,85
+            Line              = 44,62
             Lines             = 1,81
             Lines in Pixels   = 23
             Lines Unit        = Default
@@ -10370,7 +10369,7 @@ Begin Screen Form1
          End
          Begin Push-Button pb-finanz
             SCREEN-COL        = 138,17
-            SCREEN-LINE       = 44,62
+            SCREEN-LINE       = 50,38
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = pb-finanz
@@ -10394,7 +10393,7 @@ Begin Screen Form1
             Height in Cells   = FALSE
             Help ID           = 0
             ID                = 189
-            Line              = 38,85
+            Line              = 44,62
             Lines             = 1,81
             Lines in Pixels   = 23
             Lines Unit        = Default
@@ -10417,7 +10416,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-abi
             SCREEN-COL        = 21,17
-            SCREEN-LINE       = 47,00
+            SCREEN-LINE       = 52,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-abi
@@ -10450,7 +10449,7 @@ Begin Screen Form1
             ID                = 190
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 41,23
+            Line              = 47,00
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -10480,7 +10479,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-cab
             SCREEN-COL        = 57,50
-            SCREEN-LINE       = 47,00
+            SCREEN-LINE       = 52,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-cab
@@ -10513,7 +10512,7 @@ Begin Screen Form1
             ID                = 191
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 41,23
+            Line              = 47,00
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -10543,7 +10542,7 @@ Begin Screen Form1
          End
          Begin Push-Button pb-nota-pie
             SCREEN-COL        = 135,17
-            SCREEN-LINE       = 47,00
+            SCREEN-LINE       = 52,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = pb-nota-pie
@@ -10567,7 +10566,7 @@ Begin Screen Form1
             Height in Cells   = FALSE
             Help ID           = 0
             ID                = 135
-            Line              = 41,23
+            Line              = 47,00
             Lines             = 1,65
             Lines in Pixels   = 21
             Lines Unit        = Default
@@ -10653,7 +10652,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-1abbbaa
             SCREEN-COL        = 4,17
-            SCREEN-LINE       = 35,85
+            SCREEN-LINE       = 41,62
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-1abbbaa
@@ -10671,7 +10670,7 @@ Begin Screen Form1
             ID                = 561
             Justification     = Center
             Label Offset      = 20
-            Line              = 30,08
+            Line              = 35,85
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -10686,7 +10685,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-2acaa
             SCREEN-COL        = 21,84
-            SCREEN-LINE       = 36,31
+            SCREEN-LINE       = 42,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-2acaa
@@ -10701,7 +10700,7 @@ Begin Screen Form1
             Help ID           = 0
             ID                = 562
             Kind              = Horizontal
-            Line              = 30,54
+            Line              = 36,31
             Line Styles       = Solid
             Occurs            = 0
             Position Shift    = 0
@@ -10954,7 +10953,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-9
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 39,08
+            SCREEN-LINE       = 44,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-9
@@ -10973,7 +10972,7 @@ Begin Screen Form1
             ID                = 18
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 33,31
+            Line              = 39,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -10988,7 +10987,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-10
             SCREEN-COL        = 47,17
-            SCREEN-LINE       = 39,08
+            SCREEN-LINE       = 44,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-10
@@ -11007,7 +11006,7 @@ Begin Screen Form1
             ID                = 23
             Justification     = Left
             Label Offset      = 20
-            Line              = 33,31
+            Line              = 39,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -11328,7 +11327,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-21
             SCREEN-COL        = 82,17
-            SCREEN-LINE       = 39,08
+            SCREEN-LINE       = 44,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-21
@@ -11347,7 +11346,7 @@ Begin Screen Form1
             ID                = 40
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 33,31
+            Line              = 39,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -11362,7 +11361,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-22
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 41,08
+            SCREEN-LINE       = 46,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-22
@@ -11381,7 +11380,7 @@ Begin Screen Form1
             ID                = 46
             Justification     = Left
             Label Offset      = 20
-            Line              = 35,31
+            Line              = 41,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -11396,8 +11395,8 @@ Begin Screen Form1
          End
          Begin Label Form1-La-23
             SCREEN-COL        = 110,50
-            SCREEN-LINE       = 42,54
-            LOCK-CONTROL      = FALSE
+            SCREEN-LINE       = 48,31
+            LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-23
             Clines            = 0
@@ -11415,7 +11414,7 @@ Begin Screen Form1
             ID                = 48
             Justification     = Left
             Label Offset      = 20
-            Line              = 36,77
+            Line              = 42,54
             Lines             = 2,00
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -11430,8 +11429,8 @@ Begin Screen Form1
          End
          Begin Label Form1-La-24
             SCREEN-COL        = 133,84
-            SCREEN-LINE       = 42,54
-            LOCK-CONTROL      = FALSE
+            SCREEN-LINE       = 48,31
+            LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-24
             Clines            = 0
@@ -11449,7 +11448,7 @@ Begin Screen Form1
             ID                = 51
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 36,77
+            Line              = 42,54
             Lines             = 2,00
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -11464,7 +11463,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-25
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 43,08
+            SCREEN-LINE       = 48,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-25
@@ -11483,7 +11482,7 @@ Begin Screen Form1
             ID                = 67
             Justification     = Left
             Label Offset      = 20
-            Line              = 37,31
+            Line              = 43,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -11498,7 +11497,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-26
             SCREEN-COL        = 40,50
-            SCREEN-LINE       = 43,08
+            SCREEN-LINE       = 48,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-26
@@ -11517,7 +11516,7 @@ Begin Screen Form1
             ID                = 73
             Justification     = Left
             Label Offset      = 20
-            Line              = 37,31
+            Line              = 43,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -11532,7 +11531,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-27
             SCREEN-COL        = 40,50
-            SCREEN-LINE       = 47,00
+            SCREEN-LINE       = 52,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-27
@@ -11551,7 +11550,7 @@ Begin Screen Form1
             ID                = 74
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 41,23
+            Line              = 47,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -11566,7 +11565,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 47,00
+            SCREEN-LINE       = 52,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28
@@ -11585,7 +11584,7 @@ Begin Screen Form1
             ID                = 75
             Justification     = Left
             Label Offset      = 20
-            Line              = 41,23
+            Line              = 47,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -11770,7 +11769,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-34
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 31,92
+            SCREEN-LINE       = 37,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-34
@@ -11789,7 +11788,7 @@ Begin Screen Form1
             ID                = 80
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 26,15
+            Line              = 31,92
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12106,7 +12105,7 @@ Begin Screen Form1
          End
          Begin Label lab-banca
             SCREEN-COL        = 72,17
-            SCREEN-LINE       = 47,00
+            SCREEN-LINE       = 52,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-banca
@@ -12125,7 +12124,7 @@ Begin Screen Form1
             ID                = 167
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 41,23
+            Line              = 47,00
             Lines             = 2,54
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12141,7 +12140,7 @@ Begin Screen Form1
          End
          Begin Label lab-iva-ese
             SCREEN-COL        = 106,17
-            SCREEN-LINE       = 39,08
+            SCREEN-LINE       = 44,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-iva-ese
@@ -12160,7 +12159,7 @@ Begin Screen Form1
             ID                = 3
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 33,31
+            Line              = 39,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12176,7 +12175,7 @@ Begin Screen Form1
          End
          Begin Label lab-pag
             SCREEN-COL        = 29,17
-            SCREEN-LINE       = 41,08
+            SCREEN-LINE       = 46,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-pag
@@ -12195,7 +12194,7 @@ Begin Screen Form1
             ID                = 172
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 35,31
+            Line              = 41,08
             Lines             = 1,50
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12211,7 +12210,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-66
             SCREEN-COL        = 25,17
-            SCREEN-LINE       = 37,15
+            SCREEN-LINE       = 42,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-66
@@ -12230,7 +12229,7 @@ Begin Screen Form1
             ID                = 174
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 31,38
+            Line              = 37,15
             Lines             = 1,15
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12245,7 +12244,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-67
             SCREEN-COL        = 43,17
-            SCREEN-LINE       = 37,15
+            SCREEN-LINE       = 42,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-67
@@ -12264,7 +12263,7 @@ Begin Screen Form1
             ID                = 180
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 31,38
+            Line              = 37,15
             Lines             = 1,15
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12279,7 +12278,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-26a
             SCREEN-COL        = 76,00
-            SCREEN-LINE       = 43,08
+            SCREEN-LINE       = 48,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-26a
@@ -12298,7 +12297,7 @@ Begin Screen Form1
             ID                = 181
             Justification     = Left
             Label Offset      = 20
-            Line              = 37,31
+            Line              = 43,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12381,7 +12380,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-21a
             SCREEN-COL        = 82,17
-            SCREEN-LINE       = 37,15
+            SCREEN-LINE       = 42,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-21a
@@ -12400,7 +12399,7 @@ Begin Screen Form1
             ID                = 184
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 31,38
+            Line              = 37,15
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12415,7 +12414,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-23a
             SCREEN-COL        = 105,50
-            SCREEN-LINE       = 37,15
+            SCREEN-LINE       = 42,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-23a
@@ -12434,7 +12433,7 @@ Begin Screen Form1
             ID                = 185
             Justification     = Left
             Label Offset      = 20
-            Line              = 31,38
+            Line              = 37,15
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12483,7 +12482,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-25a
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 45,08
+            SCREEN-LINE       = 50,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-25a
@@ -12502,7 +12501,7 @@ Begin Screen Form1
             ID                = 188
             Justification     = Left
             Label Offset      = 20
-            Line              = 39,31
+            Line              = 45,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12517,7 +12516,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-26b
             SCREEN-COL        = 40,50
-            SCREEN-LINE       = 45,08
+            SCREEN-LINE       = 50,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-26b
@@ -12536,7 +12535,7 @@ Begin Screen Form1
             ID                = 193
             Justification     = Left
             Label Offset      = 20
-            Line              = 39,31
+            Line              = 45,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12585,7 +12584,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-29aa
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 34,00
+            SCREEN-LINE       = 39,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-29aa
@@ -12604,7 +12603,7 @@ Begin Screen Form1
             ID                = 195
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 28,23
+            Line              = 34,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12619,7 +12618,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-29aaa
             SCREEN-COL        = 41,84
-            SCREEN-LINE       = 34,00
+            SCREEN-LINE       = 39,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-29aaa
@@ -12638,7 +12637,7 @@ Begin Screen Form1
             ID                = 196
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 28,23
+            Line              = 34,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12653,7 +12652,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-21b
             SCREEN-COL        = 82,17
-            SCREEN-LINE       = 41,08
+            SCREEN-LINE       = 46,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-21b
@@ -12672,7 +12671,7 @@ Begin Screen Form1
             ID                = 197
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 35,31
+            Line              = 41,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12687,7 +12686,7 @@ Begin Screen Form1
          End
          Begin Label lab-cod-iva
             SCREEN-COL        = 106,17
-            SCREEN-LINE       = 41,08
+            SCREEN-LINE       = 46,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-cod-iva
@@ -12706,7 +12705,7 @@ Begin Screen Form1
             ID                = 198
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 35,31
+            Line              = 41,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12722,7 +12721,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-26aa
             SCREEN-COL        = 76,17
-            SCREEN-LINE       = 45,08
+            SCREEN-LINE       = 50,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-26aa
@@ -12741,7 +12740,7 @@ Begin Screen Form1
             ID                = 199
             Justification     = Left
             Label Offset      = 20
-            Line              = 39,31
+            Line              = 45,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12756,7 +12755,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-29b
             SCREEN-COL        = 71,34
-            SCREEN-LINE       = 34,00
+            SCREEN-LINE       = 39,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-29b
@@ -12775,7 +12774,7 @@ Begin Screen Form1
             ID                = 200
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 28,23
+            Line              = 34,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12790,7 +12789,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-29ba
             SCREEN-COL        = 91,34
-            SCREEN-LINE       = 34,00
+            SCREEN-LINE       = 39,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-29ba
@@ -12809,7 +12808,7 @@ Begin Screen Form1
             ID                = 201
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 28,23
+            Line              = 34,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12964,7 +12963,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-81
             SCREEN-COL        = 129,00
-            SCREEN-LINE       = 37,15
+            SCREEN-LINE       = 42,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-81
@@ -12982,7 +12981,7 @@ Begin Screen Form1
             ID                = 289
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 31,38
+            Line              = 37,15
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12997,7 +12996,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-26aaa
             SCREEN-COL        = 96,17
-            SCREEN-LINE       = 45,08
+            SCREEN-LINE       = 50,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-26aaa
@@ -13016,7 +13015,7 @@ Begin Screen Form1
             ID                = 290
             Justification     = Left
             Label Offset      = 20
-            Line              = 39,31
+            Line              = 45,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -13031,7 +13030,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-29baa
             SCREEN-COL        = 126,34
-            SCREEN-LINE       = 34,00
+            SCREEN-LINE       = 39,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-29baa
@@ -13050,7 +13049,7 @@ Begin Screen Form1
             ID                = 291
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 28,23
+            Line              = 34,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -16582,7 +16581,7 @@ Begin Screen Form1
             After Procedure   = Form1-DaCb-1-AfterProcedure
          End
          Begin Data.Check-Box chk-escludi-int
-            SCREEN-COL        = 41,33
+            SCREEN-COL        = 41,34
             SCREEN-LINE       = 17,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
@@ -16609,7 +16608,7 @@ Begin Screen Form1
             Font              = Default Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 293
+            ID                = 294
             ID Variable       = AUTO-ID
             Left Text         = FALSE
             Line              = 12,00
@@ -17580,7 +17579,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 39
+            ID                = 45
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 12,00
@@ -17652,7 +17651,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hscroll           = FALSE
-            ID                = 45
+            ID                = 49
             ID Variable       = AUTO-ID
             Last Row          = 0
             Line              = 2,00
@@ -17713,7 +17712,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Esclude il cliente dalla funzione EVADI TUTTO in evasione automatica
-            ID                = 49
+            ID                = 64
             ID Variable       = AUTO-ID
             Left Text         = FALSE
             Line              = 25,00
@@ -17913,7 +17912,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Tenere/non tenere saldi PROMO
-            ID                = 64
+            ID                = 116
             ID Variable       = AUTO-ID
             Left Text         = FALSE
             Line              = 33,00
@@ -18037,7 +18036,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hscroll           = FALSE
-            ID                = 116
+            ID                = 123
             ID Variable       = AUTO-ID
             Last Row          = 0
             Line              = 25,00
@@ -18096,7 +18095,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = FALSE
             Help ID           = 0
-            ID                = 123
+            ID                = 125
             Line              = 39,69
             Lines             = 3,12
             Lines in Pixels   = 40
@@ -18143,7 +18142,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 125
+            ID                = 164
             Line              = 40,77
             Lines             = 2,15
             Lines in Pixels   = 21
@@ -18562,7 +18561,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hscroll           = TRUE
-            ID                = 164
+            ID                = 233
             ID Variable       = AUTO-ID
             Last Row          = 0
             Line              = 2,62
@@ -18810,7 +18809,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 233
+               ID                = 234
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 3,08
@@ -18856,7 +18855,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 234
+               ID                = 235
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 3,08
@@ -18903,7 +18902,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 235
+               ID                = 236
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 4,69
@@ -18949,7 +18948,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 236
+               ID                = 237
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 4,69
@@ -18996,7 +18995,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 237
+               ID                = 238
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 6,31
@@ -19042,7 +19041,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 238
+               ID                = 239
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 4,77
@@ -19089,7 +19088,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 239
+               ID                = 240
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 6,31
@@ -19135,7 +19134,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 240
+               ID                = 241
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 6,31
@@ -19195,7 +19194,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 241
+               ID                = 242
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 6,31
@@ -19242,7 +19241,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 242
+               ID                = 243
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 8,00
@@ -19288,7 +19287,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 243
+               ID                = 244
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 8,00
@@ -19335,7 +19334,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 244
+               ID                = 245
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 8,00
@@ -19381,7 +19380,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 245
+               ID                = 246
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 8,00
@@ -19428,7 +19427,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 246
+               ID                = 247
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 8,00
@@ -19474,7 +19473,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 247
+               ID                = 248
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 8,00
@@ -19521,7 +19520,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 248
+               ID                = 249
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 8,00
@@ -19567,7 +19566,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 249
+               ID                = 250
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 8,00
@@ -19614,7 +19613,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 250
+               ID                = 251
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 9,69
@@ -19660,7 +19659,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 251
+               ID                = 252
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 9,69
@@ -19720,7 +19719,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 252
+               ID                = 253
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 9,69
@@ -19767,7 +19766,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 253
+               ID                = 254
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 3,23
@@ -19800,7 +19799,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 254
+               ID                = 255
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 4,77
@@ -19833,7 +19832,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 255
+               ID                = 256
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 9,69
@@ -19866,7 +19865,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 256
+               ID                = 257
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 9,69
@@ -19899,7 +19898,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 257
+               ID                = 258
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 3,23
@@ -19932,7 +19931,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 258
+               ID                = 259
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 4,77
@@ -19965,7 +19964,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 259
+               ID                = 260
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 9,69
@@ -19998,7 +19997,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 260
+               ID                = 261
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 1,85
@@ -20031,7 +20030,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 261
+               ID                = 262
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 1,85
@@ -20064,7 +20063,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 262
+               ID                = 263
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 1,85
@@ -20101,7 +20100,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             High Color        = 0
-            ID                = 263
+            ID                = 264
             Line              = 19,92
             Lines             = 23,50
             Lines Unit        = Default
@@ -20131,7 +20130,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 264
+               ID                = 265
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 19,00
@@ -20177,7 +20176,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 265
+               ID                = 266
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 19,00
@@ -20237,7 +20236,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 266
+               ID                = 267
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 19,00
@@ -20284,7 +20283,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 267
+               ID                = 268
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 20,62
@@ -20330,7 +20329,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 268
+               ID                = 269
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 20,62
@@ -20377,7 +20376,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 269
+               ID                = 270
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 20,62
@@ -20423,7 +20422,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 270
+               ID                = 271
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 20,62
@@ -20470,7 +20469,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 271
+               ID                = 272
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 22,31
@@ -20516,7 +20515,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 272
+               ID                = 273
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 22,31
@@ -20563,7 +20562,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 273
+               ID                = 274
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 22,31
@@ -20609,7 +20608,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 274
+               ID                = 275
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 22,31
@@ -20656,7 +20655,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 275
+               ID                = 276
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 22,31
@@ -20702,7 +20701,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 276
+               ID                = 277
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 22,31
@@ -20785,7 +20784,7 @@ Begin Screen Form1
                Height in Cells   = TRUE
                Help ID           = 0
                Hscroll           = TRUE
-               ID                = 277
+               ID                = 279
                Last Row          = 0
                Line              = 2,62
                Lines             = 15,31
@@ -20842,7 +20841,7 @@ Begin Screen Form1
                Font Variable     = Small-Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 279
+               ID                = 280
                Line              = 18,23
                Lines             = 2,15
                Lines in Pixels   = 21
@@ -20881,7 +20880,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 280
+               ID                = 281
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 19,00
@@ -20914,7 +20913,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 281
+               ID                = 282
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 19,00
@@ -20947,7 +20946,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 282
+               ID                = 283
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 19,00
@@ -20984,7 +20983,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             High Color        = 0
-            ID                = 283
+            ID                = 284
             Line              = 12,85
             Lines             = 6,69
             Lines Unit        = Default
@@ -21025,7 +21024,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 284
+               ID                = 285
                ID Variable       = AUTO-ID
                Left Text         = FALSE
                Line              = 2,38
@@ -21073,7 +21072,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 285
+               ID                = 286
                ID Variable       = AUTO-ID
                Left Text         = FALSE
                Line              = 3,85
@@ -21121,7 +21120,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 286
+               ID                = 287
                ID Variable       = AUTO-ID
                Left Text         = FALSE
                Line              = 2,38
@@ -21158,7 +21157,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 287
+               ID                = 288
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 2,38
@@ -21191,7 +21190,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 288
+               ID                = 292
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 2,38
@@ -21222,7 +21221,7 @@ Begin Screen Form1
                Destroy Type      = Automatic
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 292
+               ID                = 295
                Kind              = Vertical
                Line              = 1,54
                Line Styles       = Solid
@@ -21253,7 +21252,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 294
+               ID                = 296
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 2,38
@@ -21286,7 +21285,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 295
+               ID                = 297
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 3,85
@@ -21319,7 +21318,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 296
+               ID                = 298
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 2,38
@@ -21353,7 +21352,7 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 297
+      ID                = 299
       Kind              = Horizontal
       Line              = 3,69
       Line Styles       = Solid
@@ -25050,7 +25049,7 @@ BEGIN-TEXT
                10 old-cli-gdo          PIC  x(5).
                10 old-cli-utf          PIC  x.
                10 old-cli-referente    PIC  x(30).
-               10 old-cli-note         PIC  x(300).
+               10 old-cli-note         PIC  x(2000).
                10 old-cli-note-agg     PIC  x(256).
                10 old-cli-vettore      PIC  9(5).
                10 old-cli-inoltro      PIC  x.

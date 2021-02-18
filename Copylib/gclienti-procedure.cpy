@@ -1833,6 +1833,11 @@ LUBEXX          end-if
            display chk-imp-i chk-imp-a chk-exp-i.
            perform DISPLAY-CAMPI-GRID.
            perform DISPLAY-CAMPI-NOTE.
+           if mod = 0
+              modify ef-note, read-only
+           else      
+              modify ef-note, not read-only
+           end-if.
 
       ***---
        INIT.
@@ -2329,6 +2334,7 @@ LUBEXX          end-if
               add 1         to LastPrg
               move LastPrg  to col-prog des-prog
            else
+
               move des-prog to col-prog
            end-if.
 
