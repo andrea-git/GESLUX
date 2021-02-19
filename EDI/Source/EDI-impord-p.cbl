@@ -1334,7 +1334,11 @@
            move emto-01T32-NAD-CITTAD  to des-localita.
            move emto-01T33-NAD-PROVD   to des-prov.
            move emto-01T34-NAD-CAPD    to des-cap.
-           move cli-nazione to des-nazione.
+           if des-prov = "EE"
+              move cli-nazione to des-nazione
+           else
+              move "ITA"       to des-nazione
+           end-if.
            move sav-vettore to des-vettore.
            move "N"   to des-deposito-UTF.
            set des-attivo   to true.

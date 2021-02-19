@@ -58,6 +58,7 @@
 
        77  wstampa                 pic x(256).
        77  path-log-macrobatch     pic x(256) value spaces.
+       77  debugger-test           pic x.
        
        77  user-cod                pic x(10).   
        77  como-data               pic 9(8).
@@ -301,29 +302,32 @@
            set errori to true.
            move 0 to tentativi.
            move "macrobatch" to NomeProgramma.
-           perform 5 times
-              add 1 to tentativi    
-      
-              call   "set-ini-log" using r-output
-              cancel "set-ini-log"
-              initialize lm-riga
-              string r-output                    delimited size
-                     "INVIO MAIL. TENTATIVO N. " delimited size
-                     tentativi                   delimited size
-                into lm-riga
-              end-string
-              write lm-riga
-      
-              perform SEND-MAIL
-              open input lineseq1
-              read  lineseq1 next
-              if line-riga of lineseq1 = "True"
-                 set tutto-ok to true
+           accept debugger-test from environment "DEBUGGER_TEST".
+           if debugger-test not = "S"
+              perform 5 times
+                 add 1 to tentativi    
+           
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output                    delimited size
+                        "INVIO MAIL. TENTATIVO N. " delimited size
+                        tentativi                   delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+           
+                 perform SEND-MAIL
+                 open input lineseq1
+                 read  lineseq1 next
+                 if line-riga of lineseq1 = "True"
+                    set tutto-ok to true
+                    close lineseq1
+                    exit perform
+                 end-if
                  close lineseq1
-                 exit perform
-              end-if
-              close lineseq1
-           end-perform.
+              end-perform 
+           end-if.
       
            if errori             
               call   "set-ini-log" using r-output
