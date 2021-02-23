@@ -292,7 +292,7 @@
        
        MAIN-LOGIC.
            set tutto-ok to true.    
-           |Settata da scheduler, serve per non dare messaggi a video
+           |Settata da scheduler e macrobtach, serve per non dare messaggi a video
            accept batch-notturno from environment "BATCH_NOTTURNO".
            evaluate true
            when spl-apertura

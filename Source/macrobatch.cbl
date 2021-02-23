@@ -157,6 +157,8 @@
            unlock lockfile all records.
            close  lockfile.
 
+           set environment "BATCH_NOTTURNO" to " ". |per spooler
+
            goback.
 
       ***---
@@ -350,6 +352,7 @@
            move "MACROBATCH" to USER-CODI.
            move 1            to LIVELLO-ABIL.
            set environment "USER_CODI" to user-cod.
+           set environment "BATCH_NOTTURNO" to "S". |per spooler
 
       ***---
        CALL-EDI-IMPORD.                      
