@@ -2,7 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E0A13794-24-3161312321
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E5218222329-963-2476926699
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -1037,14 +1037,25 @@ m_strName_Xfd=tor-gdo_1_1_1
 
 @}}
 [FDITEM107_]
-m_strName=FILLER
-m_strRawPic=X(2000)
-m_strPic=X(2000)
+m_strName=tor-causale-orig
+m_strRawPic=X(4)
+m_strPic=X(4)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=tor-gdo_1_1_2
 {{@DataItem_m_strDescriptionFDITEM107_
+
+@}}
+[FDITEM108_]
+m_strName=FILLER
+m_strRawPic=X(1996)
+m_strPic=X(1996)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=tor-gdo_1_1_2_1
+{{@DataItem_m_strDescriptionFDITEM108_
 
 @}}
 [CStoAcucobolSL_]
@@ -1054,6 +1065,7 @@ m_nFormat=3
 m_nAccessMode=3
 m_nLockMode=3
 m_strFileStatus=STATUS-tordini
+m_nNumber=1
 m_nCompression=70
 {{@SL_m_strDescription
 

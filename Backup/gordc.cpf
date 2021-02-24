@@ -8,7 +8,7 @@ MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=gordc-Ev-Before-Program
 AFTER_PROGRAM=gordc-Ev-After-Program
 BEFORE_OPEN=gordc-Ev-Before-DSD-Open
-PROGRAM_UNIQUE_CODE=TOTEM-7E4118121342-616-1051221513
+PROGRAM_UNIQUE_CODE=TOTEM-7E521822247-656-1136231038
 
 {{@DESCRIPTION:
 
@@ -15064,8 +15064,8 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Enable            = NONE
       Field Edited (Style) = 0
-      Field Edited Format = X(40)
-      Field Picture     = X(40)
+      Field Edited Format = x(100)
+      Field Picture     = x(100)
       Field Variable    = des-ragsoc-1
       File              = destini
       Font              = Small Font
@@ -21548,8 +21548,10 @@ PATCH                  end-if
                        move cli-gdo  to tor-gdo
                        move cli-tipo to tor-tipocli
 
-                       write tor-rec invalid rewrite tor-rec end-write
+                       move tor-causale to tor-causale-orig
 
+                       write tor-rec invalid rewrite tor-rec end-write
+                       
                        unlock tordini all record
               
                        if tor-causale = tge-causale-omag   

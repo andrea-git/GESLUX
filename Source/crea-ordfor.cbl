@@ -1171,9 +1171,7 @@
                           read articoli no lock
                           move art-scorta to sco-codice
                           read tscorte no lock
-                          if sco-moq-si
-                             perform RICALCOLA-QTA-MOQ
-                          end-if
+                          perform RICALCOLA-SCORTA-PROGRAMMAZIONE
                        end-if
 
                        if cpfm-causale not = save-causale
@@ -1211,40 +1209,53 @@
            end-if.
 
       ***---
-       RICALCOLA-QTA-MOQ.
-           move 0 to ultimo-mese-moq.
-           |1. arrotondo tutte le quantiaà al bancale successivo senza
-           |   tener conto della % arrotondamento dei par generali
-           perform varying idx from 1 by 1 
-                     until idx > 6
-              if cpfm-qta-m(idx) > 0
-                 move idx to ultimo-mese-moq
-                 move cpfm-qta-m(idx) to como-qta-moq
-                 perform QTA-BANCALE-SUCCESSIVO-MOQ  
-                 move como-qta-moq to cpfm-qta-m(idx)
-              end-if
-           end-perform.
-           |2. Verifico che la somma delle qta sia >= a MOQ
+       RICALCOLA-SCORTA-PROGRAMMAZIONE.
+      *****     move 0 to ultimo-mese-moq.
+      *****     |1. arrotondo tutte le quantiaà al bancale successivo senza
+      *****     |   tener conto della % arrotondamento dei par generali
+      *****     perform varying idx from 1 by 1 
+      *****               until idx > 6
+      *****        if cpfm-qta-m(idx) > 0
+      *****           move idx to ultimo-mese-moq
+      *****           move cpfm-qta-m(idx) to como-qta-moq
+      *****           perform QTA-BANCALE-SUCCESSIVO-MOQ  
+      *****           move como-qta-moq to cpfm-qta-m(idx)
+      *****        end-if
+      *****     end-perform.
+      *****     |2. Verifico che la somma delle qta sia >= a MOQ
+      *****     move 0 to tot-qta-moq.
+      *****     perform varying idx from 1 by 1 
+      *****               until idx > 6
+      *****        add cpfm-qta-m(idx) to tot-qta-moq
+      *****     end-perform.                    
+      *****     |Sto ordinando di più rispetto al MOQ, a posto così
+      *****     if tot-qta-moq < art-moq
+      *****        compute diff-moq = art-moq - tot-qta-moq
+      *****        |3. Aggiungo la differenza alla quantità dell'ultimo mese
+      *****        add diff-moq to cpfm-qta-m(ultimo-mese-moq)
+      *****     end-if.
+      *****     |4. La arrotono comunque nuovamente al bancale successivo
+      *****     move cpfm-qta-m(ultimo-mese-moq) to como-qta-moq.
+      *****     perform QTA-BANCALE-SUCCESSIVO-MOQ.
+      *****     move como-qta-moq to cpfm-qta-m(ultimo-mese-moq).
+
+           |1. prendo il maggiore tra moq e tot
            move 0 to tot-qta-moq.
            perform varying idx from 1 by 1 
                      until idx > 6
               add cpfm-qta-m(idx) to tot-qta-moq
            end-perform.                    
-           |Sto ordinando di più rispetto al MOQ, a posto così
+           |Sto ordinando di più rispetto al MOQ
            if tot-qta-moq < art-moq
-              compute diff-moq = art-moq - tot-qta-moq
-              |3. Aggiungo la differenza alla quantità dell'ultimo mese
-              add diff-moq to cpfm-qta-m(ultimo-mese-moq)
+              move art-moq to tot-qta-moq
            end-if.
-           |4. La arrotono comunque nuovamente al bancale successivo
-           move cpfm-qta-m(ultimo-mese-moq) to como-qta-moq.
-           perform QTA-BANCALE-SUCCESSIVO-MOQ.
-           move como-qta-moq to cpfm-qta-m(ultimo-mese-moq).
 
-      ***---
-       QTA-BANCALE-SUCCESSIVO-MOQ.
+           |2. Divido per bancale e  3. arrotondo per eccesso
+           if art-qta-epal = 0 and art-qta-std > 0
+              move art-qta-std to art-qta-epal
+           end-if.
            if art-qta-epal not = 0
-              if como-qta-moq > art-qta-epal
+              if tot-qta-moq > art-qta-epal
                  move 0 to resto
                  divide como-qta-moq by art-qta-epal
                              giving num-bancali
@@ -1252,11 +1263,22 @@
                  if resto not = 0
                     add 1 to num-bancali
                  end-if
-                 compute como-qta-moq  =
-                         art-qta-epal * num-bancali
               else
-                 move art-qta-epal to como-qta-moq
+                 move 1 to num-bancali
               end-if
+           end-if.
+               
+           |4. trasformo la qta in pezzi
+           move cpfm-tipo-imballo to imq-codice.
+           read timbalqta no lock invalid continue end-read.
+           move imq-tipo          to imb-codice.
+           read timballi  no lock invalid continue end-read.
+           move imq-qta-imb       to rof-qta-imballi.
+
+           if num-bancali = 0
+              move rof-qta-imballi to tot-qta-moq
+           else
+              compute tot-qta-moq = num-bancali * art-qta-epal
            end-if.
 
       ***---
@@ -1564,20 +1586,7 @@
 
            move cpfm-qta-m(1) to rof-qta-ord.
 
-           perform QTA-EPAL.
-
-           if LinkAuto = 1
-              move art-scorta to sco-codice
-              read tscorte no lock
-                   invalid continue
-               not invalid
-                   if sco-moq-si
-                      if rof-qta-ord < art-moq
-                         move art-moq to rof-qta-ord
-                      end-if
-                   end-if
-              end-read
-           end-if.
+           perform QTA-SCORTA-NON-PROGRAMMATA.
 
            if cli-iva-ese = spaces
               move art-codice-iva to rof-cod-iva
@@ -1755,7 +1764,7 @@
                  move cpfm-qta-m(idx) to rof-qta-ord
 
                  if LinkAuto = 0 |ho già arrotondato al successivo
-                    perform QTA-EPAL
+                    perform QTA-BANCALE-EPAL
                  end-if
 
                  if cli-iva-ese = spaces
@@ -1829,13 +1838,13 @@
            end-if.
 
       ***---
-       QTA-EPAL.
+       QTA-BANCALE-EPAL.
            move cpfm-tipo-imballo to imq-codice.
            read timbalqta no lock invalid continue end-read.
            move imq-tipo          to imb-codice.
            read timballi  no lock invalid continue end-read.
-           move imq-qta-imb     to rof-qta-imballi.
-
+           move imq-qta-imb       to rof-qta-imballi.
+      
            move 0 to resto.
 
            if art-qta-epal = 0
@@ -1852,6 +1861,69 @@
               end-if
            end-if.
 
+           |11/03: Gli articoli "su richiesta" devono 
+           |arrotondare solo gli imballi
+           move art-scorta to sco-codice.
+           read tscorte no lock
+                invalid continue
+            not invalid
+                if not sco-immediato-si
+                   if art-qta-epal not = 0
+                      if rof-qta-ord > art-qta-epal
+                         |resto diventa una variabile di comodo
+                         move 0 to resto
+                         divide rof-qta-ord by art-qta-epal
+                                        giving num-bancali
+                                      remainder resto
+                         if resto not = 0
+      *****                      if cpfm-cod-magazzino = "LBX"
+                               compute resto = 
+                                       rof-qta-ord - 
+                                     ( art-qta-epal * num-bancali )
+                   
+                               compute ris2 =
+                                     ( art-qta-epal * 
+                                       tge-perce-arrot-bancale / 100 )
+                               compute ris = art-qta-epal - ris2
+                   
+                               if resto >= ris
+                                  add 1 to num-bancali
+                               end-if
+      *****                      else
+      *****                         add 1 to num-bancali
+      *****             
+      *****                      end-if
+                   
+                            compute rof-qta-ord  =
+                                    art-qta-epal * num-bancali
+                         end-if
+                      else
+      *****                   if cpfm-cod-magazzino = "LBX"
+                            compute ris = art-qta-epal -
+                                  ( art-qta-epal * 
+                                    tge-perce-arrot-bancale / 100 )
+                   
+                            if rof-qta-ord >= ris
+                               move art-qta-epal to rof-qta-ord
+                            end-if
+      *****                   else
+      *****                      move art-qta-epal to rof-qta-ord
+      *****                   end-if
+                      end-if
+                      
+                   end-if
+                end-if
+           end-read.       
+
+      ***---
+       QTA-SCORTA-NON-PROGRAMMATA.
+           perform CHECK-BANCALE.
+           perform CHECK-MOQ.
+           perform CHECK-IMBALLO.
+
+      ***---
+       CHECK-BANCALE.
+           |CHECK-BANCALE
            |11/03: Gli articoli "su richiesta" devono 
            |arrotondare solo gli imballi
            move art-scorta to sco-codice.
@@ -1904,7 +1976,39 @@
                       
                    end-if
                 end-if
-           end-read.
+           end-read.    
+   
+      ***---
+       CHECK-MOQ.
+           if LinkAuto = 1
+              if rof-qta-ord < art-moq
+                 move art-moq to rof-qta-ord
+              end-if
+           end-if.
+
+      ***---
+       CHECK-IMBALLO.
+           move cpfm-tipo-imballo to imq-codice.
+           read timbalqta no lock invalid continue end-read.
+           move imq-tipo          to imb-codice.
+           read timballi  no lock invalid continue end-read.
+           move imq-qta-imb     to rof-qta-imballi.
+
+           move 0 to resto.
+
+           if art-qta-epal = 0
+              move art-qta-std to art-qta-epal
+           end-if.
+
+           if rof-qta-ord < rof-qta-imballi
+              move rof-qta-imballi to rof-qta-ord
+           else
+              divide rof-qta-ord by rof-qta-imballi giving ris
+                                                 remainder resto
+              if resto not = 0
+                 compute rof-qta-ord = rof-qta-imballi * ( ris + 1 )
+              end-if
+           end-if.
 
       ***---
        SCRIVI-TMP-CONTROLLO.

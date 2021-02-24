@@ -195,7 +195,10 @@ LUBEXX     88 ScrittoComunque    value 1 false 0.
        MAIN-PRG.
            perform INIT.
            perform OPEN-INPUT-FILES.
-           perform TROVA-LOTTO.
+           perform TROVA-CAUSALE-VARIATA.
+           if tutto-ok
+              perform TROVA-LOTTO
+           end-if.
            perform CLOSE-FILES.
 
            display "                                                   "
@@ -340,6 +343,84 @@ LUBEXX     set ScrittoComunque to false.
                                    icon 2
               end-evaluate
            end-if.
+
+      ***---
+      * Verifico che tra le evasioni da considerare non ce ne sia una 
+      * che è stata cambiata dopo l'inserimento. Per evitare il 
+      * problema per cui i PUSI, diventano inspiegabilmente AAAA
+      * e vengono poi fatturati normalmente
+       TROVA-CAUSALE-VARIATA.
+           set tutto-ok to true.
+           |RIPULISCO LA SCREEN DAL CONTATORE
+           display "                      "
+              upon link-handle at column 15
+                                    line 03.
+           ||||||||
+           move LinkAnno to con-anno.
+           read tcontat  no lock invalid continue end-read.
+                                      
+           add  1 to con-num-fatt.
+           set trovato-fatt  to false.
+           move low-value    to tor-rec.
+           set tor-fatt-si-prenotata to true
+LUBEXX*****Utilizzo della chiave appropriata per questo pgm
+LUBEXX     start tordini key is >= k-agfatt
+LUBEXX*****           start tordini key is >= k4 |KEY FATTURA
+                 invalid set errori to true
+           end-start.               
+
+           if tutto-ok
+              perform until 1 = 2
+                 read tordini next with no lock
+                      at end  exit perform
+                 end-read
+
+                 add 1 to counter
+                 add 1 to counter2
+                 if counter2 = 200
+                    if counter = 200
+                       display "CAUS" 
+                          upon link-handle at column 15
+                                                line 03
+                    end-if
+                    move counter to counter-edit
+                    display counter-edit
+                       upon link-handle at column 18,00
+                                             line 03,00
+                    move 0 to counter2
+                 end-if
+
+                 if tor-anno-fattura = 0 and
+                    tor-data-fattura = 0 and
+                    tor-num-prenot   = 0
+                    if tor-fatt-si-prenotata
+                       if tor-causale      not = tor-causale-orig and
+                          tor-causale-orig not = spaces
+                          move tor-numero to tor-numero-edit
+                          initialize geslock-linkage
+                          string "GRAVE ERRORE!!"
+                          x"0d0a""---------------"
+                          x"0d0a""Evasione numero: ", tor-numero-edit,
+                          x"0d0a""ha variato da: "
+                          x"0d0a" tor-causale-orig " a " tor-causale "."
+                                 delimited size
+                            into geslock-messaggio
+                          end-string
+                          
+                          move 0 to geslock-v-riprova
+                          move 0 to geslock-v-ignora
+                          move 1 to geslock-v-termina
+                          call   "geslock" using geslock-linkage
+                          cancel "geslock"
+                          set errori to true
+                          exit perform
+                       end-if
+                    end-if
+                 else
+                    exit perform
+                 end-if
+              end-perform
+           end-if.
       
       ***---
       *Questa fase effettua un controllo per vedere se
@@ -460,7 +541,7 @@ LUBEXX*****Utilizzo della chiave appropriata per questo pgm
 LUBEXX     start tordini key is >= k-agfatt
 LUBEXX*****           start tordini key is >= k4 |KEY FATTURA
                  invalid set errori to true
-           end-start.
+           end-start.               
 
            if tutto-ok
               perform until 1 = 2

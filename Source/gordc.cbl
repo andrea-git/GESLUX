@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gordc.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 24 gennaio 2020 13:14:21.
+       DATE-WRITTEN.        mercoledì 24 febbraio 2021 23:25:06.
        REMARKS.
       *{TOTEM}END
 
@@ -244,7 +244,7 @@
       * Data.Label
               05 lab-loc-cli-BUF PIC X(35).
       * Data.Label
-              05 lab-des-BUF PIC X(40).
+              05 lab-des-BUF PIC x(100).
       * Data.Label
               05 lab-ind-des-BUF PIC X(40).
       * Data.Label
@@ -337,8 +337,8 @@
        77 TMP-DataSet1-agenti-BUF     PIC X(1233).
        77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
        77 TMP-DataSet1-tivaese-BUF     PIC X(1380).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
-       77 TMP-DataSet1-destini-BUF     PIC X(3386).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
+       77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-note-BUF     PIC X(284).
        77 TMP-DataSet1-tcodpag-BUF     PIC X(1380).
@@ -640,7 +640,7 @@
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
        77 clienti-cli-K4-SPLITBUF  PIC X(8).
-       77 destini-K1-SPLITBUF  PIC X(51).
+       77 destini-K1-SPLITBUF  PIC X(111).
        77 destini-k-localita-SPLITBUF  PIC X(36).
        77 articoli-art-k1-SPLITBUF  PIC X(51).
        77 articoli-art-k-frn-SPLITBUF  PIC X(16).
@@ -5809,9 +5809,9 @@
 
        destini-K1-MERGE-SPLITBUF.
            INITIALIZE destini-K1-SPLITBUF
-           MOVE des-ragsoc-1(1:40) TO destini-K1-SPLITBUF(1:40)
-           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(41:5)
-           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(46:5)
+           MOVE des-ragsoc-1(1:100) TO destini-K1-SPLITBUF(1:100)
+           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(101:5)
+           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(106:5)
            .
 
        destini-k-localita-MERGE-SPLITBUF.
@@ -16238,8 +16238,10 @@ PATCH                  end-if
                        move cli-gdo  to tor-gdo
                        move cli-tipo to tor-tipocli
 
-                       write tor-rec invalid rewrite tor-rec end-write
+                       move tor-causale to tor-causale-orig
 
+                       write tor-rec invalid rewrite tor-rec end-write
+                       
                        unlock tordini all record
               
                        if tor-causale = tge-causale-omag   

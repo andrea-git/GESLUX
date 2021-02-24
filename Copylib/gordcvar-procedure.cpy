@@ -2539,6 +2539,8 @@ PATCH                  commit transaction
                           set tor-da-inviare-no to true
                        end-if
 
+                       move tor-causale to tor-causale-orig
+
                        rewrite tor-rec invalid continue end-rewrite
  
                        perform varying idx-master from 1 by 1 
