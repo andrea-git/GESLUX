@@ -92,6 +92,7 @@
       * VARIABILI                           
        77  prg-invio             pic 9(5).
        77  como-des              pic x(80).
+       77  como-note             pic x(500).
        77  data-cons             pic 9(8).
        77  ora-cons              pic 9(8). 
        77  ult-doc               pic 9(8).
@@ -1183,8 +1184,8 @@
            inspect tor-note
                    replacing trailing spaces by low-value.
            initialize line-riga.                           
-           move tor-note to como-des.
-           perform NORMALIZZA-DES.
+           move tor-note to como-note.
+           perform NORMALIZZA-NOTE.
            string 78-spazi 
                   78-spazi       
                   78-spazi 
@@ -1192,7 +1193,7 @@
                   "<Causale>"
                   tca-descrizione delimited low-value
                   " "
-                  como-des        delimited low-value
+                  como-note       delimited low-value
                   "</Causale>"
              into line-riga
            write line-riga.
@@ -2556,6 +2557,33 @@
                                                          
            inspect como-des replacing all x"0d" by x"20".
            inspect como-des replacing all x"0a" by x"20".
+
+      ***---
+       NORMALIZZA-NOTE.
+           inspect como-note replacing trailing spaces by low-value.
+           inspect como-note replacing all "&" by "e".
+           inspect como-note replacing all "€" by "E".
+           inspect como-note replacing all "°" by " ".
+           inspect como-note replacing all "à" by "a".
+           inspect como-note replacing all "è" by "e".
+           inspect como-note replacing all "é" by "e".
+                                                   
+           inspect como-note replacing all "/" by " ".
+           inspect como-note replacing all "." by " ".
+           inspect como-note replacing all "@" by " ".
+           inspect como-note replacing all "#" by " ".
+           inspect como-note replacing all "'" by " ".
+           inspect como-note replacing all "\" by " ".
+           inspect como-note replacing all "È" by " ".
+           inspect como-note replacing all "Ò" by " ".
+           inspect como-note replacing all "À" by " ".
+           inspect como-note replacing all "Ù" by " ".
+           inspect como-note replacing all "Ì" by " ".
+           inspect como-note replacing all "%" by " ".
+           inspect como-note replacing all "ø" by " ".
+                                                         
+           inspect como-note replacing all x"0d" by x"20".
+           inspect como-note replacing all x"0a" by x"20".
 
       ***---
        COUNTER-VIDEO.
