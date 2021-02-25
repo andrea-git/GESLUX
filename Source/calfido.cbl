@@ -458,7 +458,9 @@
            accept batch-notturno from environment "BATCH_NOTTURNO".
            if batch-notturno = "S"
               move calfido-path-log to path-logfile
-              open extend logfile
+              if path-logfile not = spaces
+                 open extend logfile
+              end-if
               move "INIZIO PROGRAMMA" to como-riga
               perform SCRIVI-RIGA-LOG
            end-if.
@@ -833,6 +835,7 @@
 
       ***---
        SCRIVI-RIGA-LOG.
+           if path-logfile = spaces exit paragraph end-if.
            initialize riga-log.
            perform SETTA-INIZIO-RIGA.
            string r-inizio  delimited size
@@ -859,17 +862,17 @@
            close PAS PAR TBLPC TBLTR DOCES CLI G2 CLZ tordini rordini
                  tparamge tconvanno mtordini mrordini tivaese.
            if batch-notturno = "S" 
-              if batch-notturno = "S"
-                 move "CHIUSURA FILES" to como-riga
-                 perform SCRIVI-RIGA-LOG
-              end-if                    
+              move "CHIUSURA FILES" to como-riga
+              perform SCRIVI-RIGA-LOG   
            end-if.
 
       ***---
        EXIT-PGM.                        
-           if batch-notturno = "S"
+           if batch-notturno = "S" 
               move "FINE PROGRAMMA" to como-riga
               perform SCRIVI-RIGA-LOG
-              close logfile
+              if path-logfile not = spaces
+                 close logfile
+              end-if
            end-if.
            goback.

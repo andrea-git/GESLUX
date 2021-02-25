@@ -10236,7 +10236,8 @@
       * <TOTEM:END>
            DISPLAY scr-elab UPON scr-elab-Handle
       * <TOTEM:EPT. FORM:scr-elab, FORM:scr-elab, AfterDisplay>
-
+
+
       *<<** Customized_Default, SP-G, scr-data-blockpgm-1, Disable **>>
 
            .
@@ -10472,7 +10473,8 @@
       * <TOTEM:END>
            DISPLAY scr-data UPON form1-handle
       * <TOTEM:EPT. FORM:scr-data, FORM:scr-data, AfterDisplay>
-
+
+
       *<<** Customized_Default, SP-G, scr-data-blockpgm-1, Disable **>>
 
            .
@@ -13178,6 +13180,16 @@
            compute giacenza rounded = ord2-giac / ord2-qta-imb.
            move giacenza        to col-giac-imb.
            move ord2-promo      to col-promo.
+                                   
+           
+           if ord2-articolo = 15689
+              move 5  to ord2-fabb-qta(1)
+              move 15 to ord2-fabb-qta(2)
+              move 15 to ord2-fabb-qta(3)
+              move 15 to ord2-fabb-qta(4)
+              move 0  to ord2-fabb-qta(5)
+              move 0  to ord2-fabb-qta(6)
+           end-if.
 
            move ord2-fabb-qta(1) to col-F1.
            compute giacenza rounded = ord2-fabb-qta(1) / ord2-qta-imb.
@@ -13187,6 +13199,7 @@
            move ord2-fabb-qta(4) to col-F4.
            move ord2-fabb-qta(5) to col-F5.
            move ord2-fabb-qta(6) to col-F6.
+
            move ord2-qta-ord     to col-qta-ord.
            
            modify form1-gd-1, insert-rows 1.
@@ -14290,7 +14303,17 @@
                        
               perform COPRI-FABBISOGNO
               perform SCRIVI-COPERTURA
-              perform VALUTA-COPERTURA
+              perform VALUTA-COPERTURA 
+                                   
+           
+           if ord2-articolo = 15689
+              move 5  to ord2-fabb-qta(1)
+              move 15 to ord2-fabb-qta(2)
+              move 15 to ord2-fabb-qta(3)
+              move 15 to ord2-fabb-qta(4)
+              move 0  to ord2-fabb-qta(5)
+              move 0  to ord2-fabb-qta(6)
+           end-if
 
               move ord2-fabb-qta(1) to col-F1
               if ord2-fabb-qta(1) <=  ord2-qta-imb

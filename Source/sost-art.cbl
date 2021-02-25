@@ -615,7 +615,9 @@
        OPEN-FILES.             
            if RichiamoSchedulato
               move sost-art-log to path-log
-              open extend logfile
+              if path-log not = spaces
+                 open extend logfile
+              end-if 
            end-if.
            open input mtordini clienti catart tcaumag timposte tcontat
                       destini progmag ttipocli |timbalqta  timballi 
@@ -1629,7 +1631,9 @@
                  timposte tmarche tmagaz listini promoeva param
                  timbalqta.
            if RichiamoSchedulato
-              close logfile
+              if path-log not = spaces
+                 close logfile
+              end-if
            end-if.
 
       ***---
@@ -1638,6 +1642,7 @@
 
       ***---
        SCRIVI-RIGA-LOG.             
+           if path-log = spaces exit paragraph end-if.
            initialize riga-log.
            perform SETTA-INIZIO-RIGA.
            string r-inizio  delimited size

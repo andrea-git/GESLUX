@@ -1257,7 +1257,7 @@
            if art-qta-epal not = 0
               if tot-qta-moq > art-qta-epal
                  move 0 to resto
-                 divide como-qta-moq by art-qta-epal
+                 divide tot-qta-moq by art-qta-epal
                              giving num-bancali
                           remainder resto
                  if resto not = 0
