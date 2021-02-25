@@ -109,6 +109,12 @@
        77  path-tmp-rof-auto     pic x(256).
 
        77  path-coperfab-mag     pic x(256).
+                                          
+       77  tot-qta-mese2         pic 9(8).
+       77  tot-qta-mese3         pic 9(8).
+       77  tot-qta-mese4         pic 9(8).
+       77  tot-qta-mese5         pic 9(8).
+       77  tot-qta-mese6         pic 9(8).
 
       * COSTANTI
        78  titolo                value "Creazione Ordini a Fornitori".
@@ -144,6 +150,8 @@
        77  ris2                  pic 9(8).
        77  resto                 pic 9(8).
        77  como-qta              pic 9(8).
+       77  como-qta-rical        pic s9(8).
+       77  como-qta-ordinata     pic 9(8).
        77  data-consegna         pic 9(8).
        77  giorno                pic 9.
        77  como-numero           pic 9(15)v999.
@@ -156,6 +164,7 @@
        77  diff-moq              pic 9(15).
        77  como-qta-moq          pic 9(15).
        77  ultimo-mese-moq       pic 9(2).
+       77  idx-mese              pic 99.
        77  SaveRiga              pic 9(10).
        77  codice-ed             pic z(6).
        77  giacenza              pic s9(8).
@@ -644,7 +653,9 @@
        END DECLARATIVES.
 
       ***---
-       MAIN-PRG.
+       MAIN-PRG.          
+15689      move 1 to LinkAuto
+
            perform INIT.
            perform OPEN-FILES.
            if tutto-ok
@@ -862,6 +873,7 @@
                     move cpf-articolo to ord2-articolo
                     move "LBX"        to ord2-mag
                     read ordfor2 no lock invalid continue end-read
+
 
                     |SE IL FORNITORE E' STRANIERO SEMPRE SU LBX
                     if art-mag-std not = "LBX"                 
@@ -1238,51 +1250,159 @@
       *****     move cpfm-qta-m(ultimo-mese-moq) to como-qta-moq.
       *****     perform QTA-BANCALE-SUCCESSIVO-MOQ.
       *****     move como-qta-moq to cpfm-qta-m(ultimo-mese-moq).
+           
+      *****     if cpfm-articolo = 15689  
+      *****        move  5 to cpfm-qta-m(1)
+      *****        move 15 to cpfm-qta-m(2)
+      *****        move 15 to cpfm-qta-m(3)
+      *****        move 15 to cpfm-qta-m(4)
+      *****        move "C09" to cpfm-tipo-imballo
+      *****     end-if.     
 
            |1. prendo il maggiore tra moq e tot
            move 0 to tot-qta-moq.
            perform varying idx from 1 by 1 
                      until idx > 6
               add cpfm-qta-m(idx) to tot-qta-moq
+              if cpfm-qta-m(idx) not = 0
+                 move idx to ultimo-mese-moq
+              end-if
            end-perform.                    
            |Sto ordinando di più rispetto al MOQ
            if tot-qta-moq < art-moq
               move art-moq to tot-qta-moq
-           end-if.
-
-           |2. Divido per bancale e  3. arrotondo per eccesso
-           if art-qta-epal = 0 and art-qta-std > 0
+           end-if.                  
+                  
+           if art-qta-epal = 0 and art-qta-std not = 0
               move art-qta-std to art-qta-epal
            end-if.
-           if art-qta-epal not = 0
-              if tot-qta-moq > art-qta-epal
-                 move 0 to resto
-                 divide tot-qta-moq by art-qta-epal
-                             giving num-bancali
-                          remainder resto
-                 if resto not = 0
-                    add 1 to num-bancali
-                 end-if
-              else
-                 move 1 to num-bancali
+           if art-qta-epal = 0 
+              move cpfm-tipo-imballo to imq-codice
+              read timbalqta no lock invalid continue end-read
+              move imq-tipo          to imb-codice
+              read timballi  no lock invalid continue end-read
+              move imq-qta-imb     to art-qta-epal
+              move imq-qta-imb to art-qta-epal
+           end-if.
+
+           if tot-qta-moq > art-qta-epal
+              move 0 to resto
+              divide tot-qta-moq by art-qta-epal
+                          giving num-bancali
+                       remainder resto
+              if resto not = 0
+                 add 1 to num-bancali
               end-if
+           else
+              move 1 to num-bancali
            end-if.
                
            |4. trasformo la qta in pezzi
-           move cpfm-tipo-imballo to imq-codice.
-           read timbalqta no lock invalid continue end-read.
-           move imq-tipo          to imb-codice.
-           read timballi  no lock invalid continue end-read.
-           move imq-qta-imb       to rof-qta-imballi.
+           compute tot-qta-moq = num-bancali * art-qta-epal.
+                                                                 
+           compute tot-qta-mese2 = cpfm-qta-m(1) + 
+                                   cpfm-qta-m(2).
+           compute tot-qta-mese3 = cpfm-qta-m(1) + 
+                                   cpfm-qta-m(2) +
+                                   cpfm-qta-m(3).
+           compute tot-qta-mese4 = cpfm-qta-m(1) + 
+                                   cpfm-qta-m(2) +
+                                   cpfm-qta-m(3) + 
+                                   cpfm-qta-m(4).
+           compute tot-qta-mese5 = cpfm-qta-m(1) + 
+                                   cpfm-qta-m(2) +
+                                   cpfm-qta-m(3) + 
+                                   cpfm-qta-m(4) + 
+                                   cpfm-qta-m(5).
+           compute tot-qta-mese6 = cpfm-qta-m(1) + 
+                                   cpfm-qta-m(2) +
+                                   cpfm-qta-m(3) + 
+                                   cpfm-qta-m(4) + 
+                                   cpfm-qta-m(5) + 
+                                   cpfm-qta-m(6).
 
-           if num-bancali = 0
-              move rof-qta-imballi to tot-qta-moq
-           else
-              compute tot-qta-moq = num-bancali * art-qta-epal
-           end-if.
+           perform varying idx-mese from 1 by 1 
+                     until idx-mese > ultimo-mese-moq
+                 
+              move 0 to como-qta-ordinata
+              perform varying idx from 1 by 1 
+                        until idx = idx-mese
+                 add cpfm-qta-m(idx) to como-qta-ordinata
+              end-perform
+
+              if ultimo-mese-moq = idx-mese
+           
+                 compute como-qta-rical = 
+                         tot-qta-moq - como-qta-ordinata
+                 if como-qta-rical > 0 
+                    if como-qta-rical > art-qta-epal
+                       move 0 to resto
+                       divide como-qta-rical by art-qta-epal
+                                   giving num-bancali
+                                remainder resto
+                       if resto not = 0
+                          add 1 to num-bancali
+                       end-if
+                    else
+                       move 1 to num-bancali
+                    end-if
+                    compute cpfm-qta-m(idx-mese) = 
+                            art-qta-epal * num-bancali
+           
+                    move cpfm-qta-m(idx-mese) to rof-qta-ord
+                    perform CHECK-IMBALLO
+                    move rof-qta-ord to cpfm-qta-m(idx-mese)
+           
+                 else
+                    move 0 to cpfm-qta-m(idx-mese)
+                 end-if 
+              else
+                 evaluate idx-mese
+                 when 1 
+                      move cpfm-qta-m(1) to como-qta-rical
+                 when 2
+                      compute como-qta-rical = 
+                              tot-qta-mese2 - como-qta-ordinata
+                 when 3
+                      compute como-qta-rical = 
+                              tot-qta-mese3 - como-qta-ordinata
+                 when 4
+                      compute como-qta-rical = 
+                              tot-qta-mese4 - como-qta-ordinata
+                 when 5
+                      compute como-qta-rical = 
+                              tot-qta-mese5 - como-qta-ordinata
+                 when 6
+                      compute como-qta-rical = 
+                              tot-qta-mese6 - como-qta-ordinata
+                 end-evaluate
+                 if como-qta-rical > 0 
+                    if como-qta-rical > art-qta-epal
+                       move 0 to resto
+                       divide como-qta-rical by art-qta-epal
+                                   giving num-bancali
+                                remainder resto
+                       if resto not = 0
+                          add 1 to num-bancali
+                       end-if
+                    else
+                       move 1 to num-bancali
+                    end-if
+                    compute cpfm-qta-m(idx-mese) = 
+                            art-qta-epal * num-bancali
+              
+                    move cpfm-qta-m(idx-mese) to rof-qta-ord
+                    perform CHECK-IMBALLO
+                    move rof-qta-ord to cpfm-qta-m(idx-mese)
+              
+                 else
+                    move 0 to cpfm-qta-m(idx-mese)
+                 end-if
+              end-if
+           end-perform.
 
       ***---
-       PROGRAMMAZIONE-ORDINI.
+       PROGRAMMAZIONE-ORDINI.  
            set cpfm-programmazione-si to true.
            compute qta(1) = ord2-fabb-qta(1).
            compute qta(2) = ord2-fabb-qta(2) - ord2-fabb-qta(1).

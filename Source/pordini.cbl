@@ -13184,9 +13184,9 @@
            
            if ord2-articolo = 15689
               move 5  to ord2-fabb-qta(1)
-              move 15 to ord2-fabb-qta(2)
-              move 15 to ord2-fabb-qta(3)
-              move 15 to ord2-fabb-qta(4)
+              move 20 to ord2-fabb-qta(2)
+              move 35 to ord2-fabb-qta(3)
+              move 50 to ord2-fabb-qta(4)
               move 0  to ord2-fabb-qta(5)
               move 0  to ord2-fabb-qta(6)
            end-if.
@@ -14308,9 +14308,9 @@
            
            if ord2-articolo = 15689
               move 5  to ord2-fabb-qta(1)
-              move 15 to ord2-fabb-qta(2)
-              move 15 to ord2-fabb-qta(3)
-              move 15 to ord2-fabb-qta(4)
+              move 20 to ord2-fabb-qta(2)
+              move 35 to ord2-fabb-qta(3)
+              move 50 to ord2-fabb-qta(4)
               move 0  to ord2-fabb-qta(5)
               move 0  to ord2-fabb-qta(6)
            end-if
