@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        domenica 6 dicembre 2020 00:49:09.
+       DATE-WRITTEN.        venerdì 26 febbraio 2021 09:29:59.
        REMARKS.
       *{TOTEM}END
 
@@ -596,7 +596,7 @@
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-tscorte-BUF     PIC X(205).
        77 TMP-DataSet1-tmp-forn-BUF     PIC X(154).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-timposte-BUF     PIC X(717).
        77 TMP-DataSet1-tpiombo-BUF     PIC X(739).
        77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
@@ -10236,8 +10236,7 @@
       * <TOTEM:END>
            DISPLAY scr-elab UPON scr-elab-Handle
       * <TOTEM:EPT. FORM:scr-elab, FORM:scr-elab, AfterDisplay>
-
-
+
       *<<** Customized_Default, SP-G, scr-data-blockpgm-1, Disable **>>
 
            .
@@ -10473,8 +10472,7 @@
       * <TOTEM:END>
            DISPLAY scr-data UPON form1-handle
       * <TOTEM:EPT. FORM:scr-data, FORM:scr-data, AfterDisplay>
-
-
+
       *<<** Customized_Default, SP-G, scr-data-blockpgm-1, Disable **>>
 
            .
@@ -13180,16 +13178,6 @@
            compute giacenza rounded = ord2-giac / ord2-qta-imb.
            move giacenza        to col-giac-imb.
            move ord2-promo      to col-promo.
-                                   
-           
-           if ord2-articolo = 15689
-              move 5  to ord2-fabb-qta(1)
-              move 20 to ord2-fabb-qta(2)
-              move 35 to ord2-fabb-qta(3)
-              move 50 to ord2-fabb-qta(4)
-              move 0  to ord2-fabb-qta(5)
-              move 0  to ord2-fabb-qta(6)
-           end-if.
 
            move ord2-fabb-qta(1) to col-F1.
            compute giacenza rounded = ord2-fabb-qta(1) / ord2-qta-imb.
@@ -13199,7 +13187,6 @@
            move ord2-fabb-qta(4) to col-F4.
            move ord2-fabb-qta(5) to col-F5.
            move ord2-fabb-qta(6) to col-F6.
-
            move ord2-qta-ord     to col-qta-ord.
            
            modify form1-gd-1, insert-rows 1.
@@ -14303,17 +14290,7 @@
                        
               perform COPRI-FABBISOGNO
               perform SCRIVI-COPERTURA
-              perform VALUTA-COPERTURA 
-                                   
-           
-           if ord2-articolo = 15689
-              move 5  to ord2-fabb-qta(1)
-              move 20 to ord2-fabb-qta(2)
-              move 35 to ord2-fabb-qta(3)
-              move 50 to ord2-fabb-qta(4)
-              move 0  to ord2-fabb-qta(5)
-              move 0  to ord2-fabb-qta(6)
-           end-if
+              perform VALUTA-COPERTURA
 
               move ord2-fabb-qta(1) to col-F1
               if ord2-fabb-qta(1) <=  ord2-qta-imb

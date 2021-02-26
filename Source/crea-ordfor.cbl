@@ -654,8 +654,6 @@
 
       ***---
        MAIN-PRG.          
-15689      move 1 to LinkAuto
-
            perform INIT.
            perform OPEN-FILES.
            if tutto-ok
@@ -1324,6 +1322,7 @@
            perform varying idx-mese from 1 by 1 
                      until idx-mese > ultimo-mese-moq
                  
+              |Calcolo la qta precedentemente ordinata
               move 0 to como-qta-ordinata
               perform varying idx from 1 by 1 
                         until idx = idx-mese
@@ -1331,10 +1330,13 @@
               end-perform
 
               if ultimo-mese-moq = idx-mese
-           
+                 
                  compute como-qta-rical = 
-                         tot-qta-moq - como-qta-ordinata
+                         tot-qta-moq -     |Totale qta trasformata
+                         como-qta-ordinata |Differenza con ordinata precedentemente
+
                  if como-qta-rical > 0 
+                    |Arrotondo a bancale
                     if como-qta-rical > art-qta-epal
                        move 0 to resto
                        divide como-qta-rical by art-qta-epal
@@ -1348,7 +1350,8 @@
                     end-if
                     compute cpfm-qta-m(idx-mese) = 
                             art-qta-epal * num-bancali
-           
+                                        
+                    |Arrotondo a imballo
                     move cpfm-qta-m(idx-mese) to rof-qta-ord
                     perform CHECK-IMBALLO
                     move rof-qta-ord to cpfm-qta-m(idx-mese)
@@ -1357,6 +1360,7 @@
                     move 0 to cpfm-qta-m(idx-mese)
                  end-if 
               else
+                 |Totale richiesta - qta ordinata prima
                  evaluate idx-mese
                  when 1 
                       move cpfm-qta-m(1) to como-qta-rical
@@ -1377,6 +1381,7 @@
                               tot-qta-mese6 - como-qta-ordinata
                  end-evaluate
                  if como-qta-rical > 0 
+                    |Arrotondo a bancale
                     if como-qta-rical > art-qta-epal
                        move 0 to resto
                        divide como-qta-rical by art-qta-epal
@@ -1391,6 +1396,7 @@
                     compute cpfm-qta-m(idx-mese) = 
                             art-qta-epal * num-bancali
               
+                    |Arrotondo a imballo
                     move cpfm-qta-m(idx-mese) to rof-qta-ord
                     perform CHECK-IMBALLO
                     move rof-qta-ord to cpfm-qta-m(idx-mese)
@@ -2044,6 +2050,11 @@
       ***---
        CHECK-BANCALE.
            |CHECK-BANCALE
+
+           if art-qta-epal = 0
+              move art-qta-std to art-qta-epal
+           end-if.
+
            |11/03: Gli articoli "su richiesta" devono 
            |arrotondare solo gli imballi
            move art-scorta to sco-codice.
@@ -2115,11 +2126,6 @@
            move imq-qta-imb     to rof-qta-imballi.
 
            move 0 to resto.
-
-           if art-qta-epal = 0
-              move art-qta-std to art-qta-epal
-           end-if.
-
            if rof-qta-ord < rof-qta-imballi
               move rof-qta-imballi to rof-qta-ord
            else
