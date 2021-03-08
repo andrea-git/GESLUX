@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gordcvar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 8 gennaio 2021 12:42:36.
+       DATE-WRITTEN.        lunedì 8 marzo 2021 14:34:42.
        REMARKS.
       *{TOTEM}END
 
@@ -180,6 +180,9 @@
        77 Form1-Tb-1-Handle
                   USAGE IS HANDLE OF WINDOW.
            COPY  "ORDINI-WS.DEF".
+       01 FILLER           PIC  9
+                  VALUE IS 0.
+           88 fatturata VALUE IS 1    WHEN SET TO FALSE  0. 
        77 Form1-St-1-Handle
                   USAGE IS HANDLE OF STATUS-BAR.
        77 NumBitmapNotaCr  PIC  99.
@@ -333,7 +336,7 @@
                   USAGE IS HANDLE OF FONT.
        77 v-fatt           PIC  9
                   VALUE IS 0.
-       77 modifica_bolla-bmp           PIC  S9(9)
+       77 modifica-bolla-bmp           PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
        77 v-abil-bolla     PIC  9
@@ -565,7 +568,7 @@
        77 TMP-DataSet1-agenti-BUF     PIC X(1233).
        77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
        77 TMP-DataSet1-tivaese-BUF     PIC X(1380).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-note-BUF     PIC X(284).
@@ -19784,7 +19787,7 @@ LUBEXX     move tor-data-bolla(1:4) to tor-anno-bolla.
       * <TOTEM:END>
        ef-cau-BeforeProcedure.
       * <TOTEM:PARA. ef-cau-BeforeProcedure>
-           if bollettata or tor-da-ordine-si
+           if fatturata or tor-da-ordine-si
               modify ef-cau, read-only
            else
               modify ef-cau, not read-only

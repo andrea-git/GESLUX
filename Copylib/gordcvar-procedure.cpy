@@ -1,7 +1,7 @@
       ***---
        ABILITA-DISABILITA-CLIENTE-DESTINO.
            if mod = 0
-              move 0 to mod-cliente-destino
+              move 0 to mod-cliente-destino 
               move 0 to e-pb-grid
               move 8 to BitmapNumGridNuovo
               move 7 to BitmapNumGridElimina
@@ -486,6 +486,13 @@ LUBEXX     move tca-contropartita to tor-contropartita.
               set bollettata to true
            else
               set bollettata to false
+           end-if.
+
+           if tor-num-fattura  not = 0 and
+              tor-data-fattura not = 0
+              set fatturata to true
+           else
+              set fatturata to false
            end-if.
 
            if tor-num-fattura  not = 0 and
