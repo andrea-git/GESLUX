@@ -100,7 +100,7 @@ LUBEXX 78  MaxRowsPerPage                value    26.
          88 OrdinamentoEvasioni    value 1, false 0.
 
       * HANDLES        
-       77  CourierNew8                   handle of font.
+       77  CourierNew8                   handle of font.    
        77  CourierNew10                  handle of font.
        77  CourierNew10B                 handle of font.
        77  CourierNew16B                 handle of font.
@@ -273,7 +273,9 @@ LUBEXX 78  MaxRowsPerPage                value    26.
            05 r-bloccato      pic x     value spaces.
            05 r-des-articolo  pic X(33).
            05 r-ast           pic x.
-           05 filler          pic X(2)  value spaces.
+           05 filler          pic X(1)  value spaces.
+           05 r-art-codfrn    pic x(15).
+           05 filler          pic X(3)  value spaces.
       *     05 r-peso-utf      pic Z(3),Z(3).
       *     05 filler          pic X(2)  value spaces.
            05 r-udm           pic X(2).
@@ -1583,6 +1585,8 @@ LUBEXX     end-if.
               move spaces to r-ast
            end-if.
 
+           move art-cod-art-frn to r-art-codfrn.
+
            inspect ror-des-imballo replacing trailing spaces 
                                           by low-value.
            move ror-qta-imballi to imballi-ed.
@@ -1611,11 +1615,12 @@ BLISTR     else
       *     move ror-peso-utf        to r-peso-utf.
            move art-unita-di-misura to r-udm.
 
-           move riga-corpo          to spl-riga-stampa.
+           move riga-corpo          to spl-riga-stampa. 
+LUBEXX     move CourierNew8   to spl-hfont.
            call "spooler"        using spooler-link.
 
 LUBEXX     move 52            to spl-tipo-colonna.
-LUBEXX     move CourierNew12B to spl-hfont.
+LUBEXX     move CourierNew10B to spl-hfont.
 LUBEXX     move ror-qta       to r-qta.
 LUBEXX     move riga-qta      to spl-riga-stampa.
 LUBEXX     call "spooler"  using spooler-link.
@@ -2086,7 +2091,7 @@ LUBEXX     end-if.
               set errori to true
               perform MESSAGGIO-ERR-FONT
               exit paragraph
-           end-if.
+           end-if.  
 
       ***---
        DISTRUGGI-FONT.         
