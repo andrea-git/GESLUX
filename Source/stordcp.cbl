@@ -1855,7 +1855,7 @@ LUBEXX     end-if.
               move "Stampa Ordini"     to spl-nome-job
               call "spooler"        using spooler-link
 
-              compute max-righe-corpo = spl-altezza - 9
+              compute max-righe-corpo = spl-altezza - 8,5
       *    luciano
       *    compute pos-piede       = spl-altezza -  7
               compute pos-piede       = spl-altezza -  8

@@ -1,0 +1,2990 @@
+Runtime version 9.1.0
+Set parameter 'ACUCOBOL' to 'C:\Program Files (x86)\Micro Focus\Acucbl910\AcuGT'
+Using SAFE mode for file access
+Configuration file = 'cblconfi'
+Set parameter 'CODE_PREFIX' to '.\Object\;'
+Set parameter 'FILE_PREFIX' to 'F:\Lubex\archivi; F:\Lubex\arc-G2\arc; F:\Lubex\arc-G2\arc\arc001'
+Set parameter 'F10_IS_MENU' to FALSE
+Set parameter 'IO_CREATES' to TRUE
+Set term attributes to 'CHECK-NUMBERS=NO'
+Set keystroke to 'edit=next terminate=13 ^M'
+Set keystroke to 'Exception=1234         ^F'
+Set keystroke to 'Exception=4321         ^C'
+Set keystroke to 'Exception=5678         ^E'
+Set parameter 'MAX_FILES' to 256
+Set parameter 'MAX_LOCKS' to 8191
+Set parameter 'PRINTER' to '-P SPOOLER-DIRECT'
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set parameter 'V_VERSION' to 4
+Set parameter 'LOCKS_PER_FILE' to 5000
+Set parameter 'TC_CHECK_ALIVE_INTERVAL' to 3600
+Set parameter 'TC_SERVER_TIMEOUT' to 3600
+Set variable 'ASSORTIMENTO' to value 'N'
+Set variable 'SEPARATORE' to value ';'
+Set variable 'VERSIONE_EVASIONE' to value '2'
+Set variable 'STAMPANTE_ANTEPRIMA' to value 'doPDF 10'
+Set variable 'STAMPANTE_DIRETTA_XP' to value 'Epson'
+Set variable 'STAMPANTE_DIRETTA_V' to value 'Epson'
+Set variable 'STAMPANTE_DIRETTA_7' to value 'Epson'
+Set variable 'STAMPANTE_STBROG_XP' to value 'Epson_XP'
+Set variable 'STAMPANTE_STBROG_V' to value 'Epson_V'
+Set variable 'STAMPANTE_STBROG_7' to value 'doPDF 10'
+Set variable 'STAMPANTE_STBOLLE' to value 'DoPDF 10'
+Set variable 'STAMPANTE_STBOLLE_GDO_XP' to value 'EpsonGDO'
+Set variable 'STAMPANTE_STBOLLE_GDO_V' to value 'EpsonGDO'
+Set variable 'STAMPANTE_STBOLLE_GDO_7' to value 'EpsonGDO'
+Set variable 'STAMPANTE_REG_UTF_XP' to value 'Epson'
+Set variable 'STAMPANTE_REG_UTF_V' to value 'Epson'
+Set variable 'STAMPANTE_REG_UTF_7' to value 'Epson'
+Set variable 'PATH_TXT' to value 'f:\lubex\archivi\pass'
+Set variable 'PATH_IMMAGINI' to value '.\Resource'
+Set variable 'DEVONO' to value 'TERMINARE CON "\"'
+Set variable 'PATH_ST' to value 'f:\lubex\tmp\'
+Set variable 'SCHEDULER_ADDRESSES' to value 'andrea.ae@live.it'
+Set variable 'SCHEDULER_PATH_LOG' to value 'f:\lubex\GESLUX\scheduler\'
+Set variable 'PATH_TO_EXCEL' to value 'f:\lubex\tmp\'
+Set variable 'PATH_CONTAB' to value 'f:\lubex\GESLUX\contab\'
+Set variable 'PATH_POSTEL' to value 'C:\host\'
+Set variable 'PATH_VUTIL' to value '"C:\Program Files (x86)\Micro Focus\Acucbl912\AcuGT\bin\vutil32"'
+Set variable 'PATH_BITMAP_ST' to value '.\Resource\bitmap-stampa\logo-st.jpg'
+Set variable 'PATH_SPLASH' to value 'f:\lubex\Resource\splash.jpg'
+Set variable 'PATH_CSV' to value 'f:\lubex\tmp\'
+Set variable 'NUM_REC_THIN_CLIENT' to value '1000'
+Set variable 'GESTIONE_SESSIONI' to value 'S'
+Set variable 'NUM_MAX_RIGHE' to value '62'
+Set variable 'NUM_MAX_RIGHE_ORIZ' to value '42'
+Set variable 'INVIO_SOL_PATH_PDF' to value 'f:\lubex\tmp\bolle\'
+Set variable 'INVIO_SOL_CC' to value 'andrea.ae@live.it;a.eventi@goodoworks.it'
+Set variable 'PR_WORD' to value 'C:\Programmi\Microsoft Office\OFFICE11\WINWORD.exe'
+Set variable 'PR_EXCEL_3' to value 'C:\Programmi\Microsoft Office\OFFICE11\excel.exe'
+Set variable 'PR_EXCEL_7' to value 'C:\Programmi\OpenOffice.org 2.0\program\scalc.exe'
+Set variable 'PR_EXCEL_10' to value 'C:\Programmi\OpenOffice.org 2.0\program\scalc.exe'
+Set variable 'PR_NOTEP' to value 'C:\windows\notepad.exe'
+Set variable 'PATH_KILL' to value 'f:\lubex\GESLUX\comandi\'
+Set variable 'CONTROLLO_SCOSTAMENTO' to value '(nil)'
+Set variable 'SW_RICHIESTA' to value 'S'
+Set variable 'SW_MESS_EVASIONE' to value 'N'
+Set parameter 'LOG_FILE' to 'f:\lubex\GESLUX\transazioni\files.transaction.log'
+Set parameter 'LOG_DIR' to 'f:\lubex\GESLUX\transazioni\'
+Set variable 'PATH_ST_CLIENT' to value 'f:\lubex\tmp\'
+Set variable 'PATH_RECUPERO' to value 'f:\lubex\GESLUX\RecuperoPrezzi\rec-prezzi'
+Set variable 'RECUPERO_EXE' to value 'f:\lubex\GESLUX\RecuperoPrezzi\RecuperaPrezzi.exe'
+Set variable 'RIGHE_PAGE_FEED' to value '(nil)'
+Set variable 'STAMPANTE_BOLLE_DEFAULT' to value 'S'
+Set variable 'VISUALIZZA_TOTALI' to value 'S'
+Set variable 'PATH_CSV_LISTINI' to value 'f:\lubex\IMPORT EXPORT\'
+Set variable 'PATH_INVIO_MAIL' to value 'f:\lubex\GESLUX\InvioMail\InvioMail.exe'
+Set variable 'PATH_INI_MAIL' to value 'f:\lubex\GESLUX\InvioMail\InvioMail.ini'
+Set variable 'PATH_BACKUP' to value 'f:\lubex\GESLUX\InvioMail\backup\'
+Set variable 'PATH_LOG_SOURCE' to value 'f:\lubex\GESLUX\InvioMail\InvioMail.log'
+Set variable 'NIGHT_ADDRESSES' to value 'a.eventi@goodworks.it;'
+Set variable 'PROMO_ADDRESSES' to value 'a.eventi@goodworks.it;'
+Set variable 'SMTP_SERVER' to value 'smtp.fastwebnet.it'
+Set variable 'PROVA_MAIL' to value 'S'
+Set variable 'STAMPANTE_PROMO_XP' to value 'doPDF 8'
+Set variable 'STAMPANTE_PROMO_V' to value 'doPDF 8'
+Set variable 'STAMPANTE_PROMO_7' to value 'doPDF 8'
+Set variable 'CALMAR_ADDRESSES' to value 'gds@lusdfbex.it'
+Set variable 'CALMAR_LOG' to value 'f:\lubex\tmp\calmar.log'
+Set variable 'CALMAR_LOG_INVIO' to value 'f:\lubex\tmp\calmar-attach.log'
+Set variable 'CALMAR_RECUPERO' to value 'f:\lubex\tmp\recupero-prezzi.txt'
+Set variable 'INVIO_SOL_SUBJECT' to value 'prova subject'
+Set variable 'INVIO_SOL_BODY' to value 'prova body'
+Set variable 'PATH_PDF_NOTIFICA' to value 'f:\lubex\GESLUX\Archiviazione_PDF\'
+Set variable 'STAMPANTE_DIRETTA_ORDINI_PDF' to value 'Bullzip PDF Printer'
+Set variable 'STAMPANTE_DIRETTA_ORDINI_FORN_XP' to value 'doPDF 8'
+Set variable 'STAMPANTE_DIRETTA_ORDINI_FORN_V' to value 'doPDF 8'
+Set variable 'STAMPANTE_DIRETTA_ORDINI_FORN_7' to value 'doPDF 8'
+Set variable 'STAMPANTE_DIRETTA_ORDINI_INS_XP' to value 'doPDF 8'
+Set variable 'STAMPANTE_DIRETTA_ORDINI_INS_V' to value 'doPDF 8'
+Set variable 'STAMPANTE_DIRETTA_ORDINI_INS_7' to value 'doPDF 8'
+Set variable 'STAMPANTE_DIRETTA_ORDINI_MOD_XP' to value 'doPDF 8'
+Set variable 'STAMPANTE_DIRETTA_ORDINI_MOD_V' to value 'doPDF 8'
+Set variable 'STAMPANTE_DIRETTA_ORDINI_MOD_7' to value 'doPDF 8'
+Set variable 'STAMPANTE_DIRETTA_ORDINI_TRAD_XP' to value 'doPDF 8'
+Set variable 'STAMPANTE_DIRETTA_ORDINI_TRAD_V' to value 'doPDF 8'
+Set variable 'STAMPANTE_DIRETTA_ORDINI_TRAD_7' to value 'doPDF 8'
+Set variable 'PATH_PDF_ORDFORN' to value 'f:\lubex\tmp\ordforn\'
+Set variable 'PATH_EXE_PDF' to value 'f:\lubex\GESLUX\CreaPDF\CreaPDF.exe'
+Set variable 'RICALDIN_LOG' to value 'f:\lubex\GESLUX\ricaldin.log'
+Set variable 'RICALDIN_LOG_INVIO' to value 'f:\lubex\GESLUX\ricaldin2.log'
+Set variable 'RICALDIN_ADDRESSES' to value 'gds@lubex.it;'
+Set variable 'CHECK_QP_LOG' to value 'f:\lubex\GESLUX\check-qp.log'
+Set variable 'CHECK_QP_LOG_INVIO' to value 'f:\lubex\GESLUX\check-qp2.log'
+Set variable 'CHECK_QP_ADDRESSES' to value 'andrea.ae@libero.it;'
+Set variable 'RICALFOR_LOG' to value 'f:\lubex\GESLUX\ricalfor.log'
+Set variable 'RICALFOR_LOG_INVIO' to value 'f:\lubex\GESLUX\ricalfor2.log'
+Set variable 'RICALFOR_ADDRESSES' to value 'a.eventi@goodworks.it;'
+Set variable 'PATH_RAR' to value 'C:\Program Files\WinRar\'
+Set variable 'PATH_ARCHIVI' to value 'f:\lubex\archivi\'
+Set variable 'PATH_TO_ZIP' to value 'f:\lubex\Rar\'
+Set variable 'PATH_TO_LOG' to value 'C:\Program Files\WinRar\rar.log'
+Set variable 'PATH_OBJECT' to value 'f:\lubex\GESLUX\Object\'
+Set variable 'USER_IMPORT_ESITI' to value '(nil)'
+Set variable 'IMP_ESITI_ADDRESSES' to value '(nil)'
+Set variable 'BANNER_BOL_ADDRESSES:' to value 'wvetrugno@lubex.it'
+Set variable 'BANNER_BOL_LOG:' to value 'f:\lubex\GESLUX\banner.log'
+Set variable 'ORDFORN_ADDRESSES_CC' to value 'andrea.ae@libero.it;'
+Set variable 'STAMPANTE_MASTER_GDO_XP' to value 'doPDF 8'
+Set variable 'STAMPANTE_MASTER_GDO_V' to value 'doPDF 8'
+Set variable 'STAMPANTE_MASTER_GDO_7' to value 'doPDF 8'
+Set variable 'STAMPANTE_MASTER_TRAD_XP' to value 'doPDF 8'
+Set variable 'STAMPANTE_MASTER_TRAD_V' to value 'doPDF 8'
+Set variable 'STAMPANTE_MASTER_TRAD_7' to value 'doPDF 8'
+Set variable 'GDO_IN_USO' to value 'S'
+Set variable 'CONTROLLA_24000' to value 'S'
+Set variable 'CHIU_ORD_MASTER_ADDRESSES_CC' to value 'andrea.ae@libero.it;'
+Set variable 'CHIU_ORD_MASTER_ADDRESSES_FROM' to value 'info@lubex.it'
+Set variable 'CHIU_ORD_MASTER_SUBJECT' to value 'CHIUSURA ORDINE'
+Set variable 'CHIU_ORD_MASTER_BODY' to value 'ORDINE MASTER:Si comunica la chiusura dell'ordine $1/$2 vostro ordine $3 del $4'
+Set variable 'CATART_ADDRESSES_CC' to value 'a.eventi@goodworks.it;'
+Set variable 'CATART_ADDRESSES_FROM' to value 'info@lubex.it'
+Set variable 'CATART_SUBJECT' to value 'Catena articoli'
+Set variable 'CATART_MASTER_BODY' to value 'ORDINE L'articolo:$1verrà sostituito con l'articolo:$2Parte finale della mail'
+Set variable 'SOST_ARTICOLI' to value '2'
+Set variable 'SHI_PATH_EXPVETTORI' to value 'f:\lubex\GESLUX\SHI\tmp\LBXVETTORI'
+Set variable 'SHI_PATH_EXPFORNITORI' to value 'f:\lubex\GESLUX\SHI\tmp\LBXFORNITORI'
+Set variable 'SHI_PATH_EXPARTICOLI' to value 'f:\lubex\GESLUX\SHI\tmp\HSTRX_ANAART'
+Set variable 'SHI_PATH_EXPEAN' to value 'f:\lubex\GESLUX\SHI\tmp\HSTRX_ANAARTDET'
+Set variable 'SHI_PATH_EXPPRODENER' to value 'f:\lubex\GESLUX\SHI\tmp\LBXPRODENER'
+Set variable 'SHI_PATH_EXPTORDINI' to value 'f:\lubex\GESLUX\SHI\tmp\HSTRX_ORDUSCTES'
+Set variable 'SHI_PATH_EXPRORDINI' to value 'f:\lubex\GESLUX\SHI\tmp\HSTRX_ORDUSCRIG'
+Set variable 'SHI_PATH_EXPNOTE' to value 'f:\lubex\GESLUX\SHI\tmp\HSTRX_ORDUSCNOT'
+Set variable 'SHI_MAGAZZINO' to value 'SHI'
+Set variable 'PATH_ISOLATA' to value 'f:\lubex\GESLUX\Evasione\pass'
+Set variable 'PATH_LOG_ISOLATA' to value 'f:\lubex\GESLUX\Evasione\isolata.log'
+Set variable 'MAIL_ISOLATA_SUBJECT' to value 'Evasione Clienti Isolata - cancellazione sessioni'
+Set variable 'MAIL_ISOLATA_BODY' to value 'Cancellazione sessioni eseguita, attivare la nuova password.'
+Set variable 'MAIL_ISOLATA_ADDRESSES' to value 'a.eventi@goodworks.it;wvetrugno@lubex.it;l.quartieri@goodworks.it;'
+Set variable 'STAMPANTE_LUCA_XP' to value 'doPDF 8'
+Set variable 'STAMPANTE_LUCA_V' to value 'doPDF 8'
+Set variable 'STAMPANTE_LUCA_7' to value 'doPDF 8'
+Set variable 'STAMPANTE_MASSIMO_XP' to value 'doPDF 8'
+Set variable 'STAMPANTE_MASSIMO_V' to value 'doPDF 8'
+Set variable 'STAMPANTE_MASSIMO_7' to value 'doPDF 8'
+Set variable 'STAMPANTE_ALTRO_XP' to value 'doPDF 8'
+Set variable 'STAMPANTE_ALTRO_V' to value 'doPDF 8'
+Set variable 'STAMPANTE_ALTRO_7' to value 'doPDF 8'
+Set variable 'GDO_FITTIZIA' to value 'MASTE'
+Set variable 'PATH_POD' to value 'f:\lubex\GESLUX\POD\EXP\'
+Set variable 'ESEGUI_RICALIMP_ART' to value 'S'
+Set variable 'CONFERMA_SUBJECT' to value 'CONFERMA ORDINE'
+Set variable 'CONFERMA_CC' to value '(nil)'
+Set variable 'CONFERMA_FROM' to value 'info@lubex.it'
+Set variable 'CONFERMA_PATH_PDF' to value 'f:\lubex\tmp\conferme\'
+Set variable 'CONFERMA_EVASIONE_SUBJECT' to value 'PROFORMA PER ANTICIPATO'
+Set variable 'CONFERMA_EVASIONE_CC' to value '(nil)'
+Set variable 'CONFERMA_EVASIONE_FROM' to value 'info@lubex.it'
+Set variable 'CONFERMA_EVASIONE_PATH_PDF' to value 'f:\lubex\tmp\conferme\'
+Set variable 'CONFERMA_STAMPANTE_DIRETTA' to value 'Bullzip PDF Printer'
+Set variable 'COMUTFS_SUBJECT' to value 'COMUNICAZIONE AGENZIA DELLE DOGANE DI MILANO 3 SCARICO'
+Set variable 'COMUTFS_BODY' to value 'SCARICO'
+Set variable 'COMUTFS_ADDRESS' to value 'andrea.ae@live.it'
+Set variable 'COMUTFS_ADDRESS_CC' to value 'a.eventi@goodworks.it'
+Set variable 'COMUTFC_SUBJECT' to value 'COMUNICAZIONE AGENZIA DELLE DOGANE DI MILANO 3 CARICO'
+Set variable 'COMUTFC_BODY' to value 'CARICO'
+Set variable 'COMUTFC_ADDRESS' to value 'andrea.ae@live.it'
+Set variable 'COMUTFC_ADDRESS_CC' to value 'a.eventi@goodworks.it'
+Set variable 'STAMPANTE_UTF' to value 'Bullzip PDF Printer'
+Set variable 'COMUTF_PATH' to value 'f:\lubex\tmp\utf\'
+Set variable 'PATH_INI_7' to value 'C:\ProgramData\PDF Writer\Bullzip PDF Printer\'
+Set variable 'PATH_BULLZIP' to value 'f:\lubex\tmp\bullzip\'
+Set variable 'CODICE_SICUREZZA_BATTERIE' to value 'UN 2794'
+Set variable 'MAIL_FIDO_ADDRESSES' to value 'wvetrugno@lubex.it; a.eventi@goodworks.it'
+Set variable 'STAMPANTE_SITFIN_PDF' to value 'Bullzip PDF Printer'
+Set variable 'PATH_ARCHIVI' to value 'f:\lubex\archivi\'
+Set variable 'PATH_ARCHIVI_STO' to value 'f:\lubex\archivi-STO\'
+Set variable 'SCHEDULER_ADDRESSES' to value 'a.eventi@goodworks.it; wvetrugno@lubex.it'
+Set variable 'SCHEDULER_PATH_LOG' to value 'f:\lubex\GESLUX\scheduler\'
+Set variable 'MAIL_TAGLI_ADDRESSES' to value 'andrea.ae@live.it'
+Set variable 'MAIL_TAGLI_ADDRESSES_CC' to value '(nil)'
+Set variable 'MAIL_TAGLI_SUBJECT' to value '(nil)'
+Set variable 'MAIL_TAGLI_BODY' to value 'MAIL-TAGLI'
+Set variable 'ART_NO_COLLI' to value '7924;9834;'
+Set variable 'EDI_IMPORD_PATH' to value 'f:\lubex\GESLUX\EDI\test\import\'
+Set variable 'EDI_IMPORD_PATH_BACKUP' to value 'f:\lubex\GESLUX\EDI\test\backup\'
+Set variable 'EDI_FATT_PATH' to value 'f:\lubex\GESLUX\EDI\test\'
+Set variable 'EDI_FATT_PATH_BACKUP' to value 'f:\lubex\GESLUX\EDI\test\backup\'
+Set variable 'EDI_FATT_PATH_PDF' to value 'f:\lubex\tmp\edi\'
+Set variable 'EDI_FATT_STAMPANTE_DIRETTA' to value 'Bullzip PDF Printer'
+Set variable 'EDI_FATT_ADDRESS' to value 'andrea.ae@live.it'
+Set variable 'EDI_FATT_ADDRESS_CC' to value 'wvetrugno@lubex.it'
+Set variable 'EDI_BOLLE_ADDRESS' to value '(nil)'
+Set variable 'EDI_BOLLE_PATH' to value 'f:\lubex\GESLUX\EDI\test\'
+Set variable 'EDI_BOLLE_PATH_BACKUP' to value 'f:\lubex\GESLUX\EDI\test\backup\'
+Set variable 'PATH_INI_FTP' to value 'f:\lubex\GESLUX\InvioFTP\InvioFTP\bin\Release\ini\InvioFTP.ini'
+Set variable 'PATH_INVIO_FTP' to value 'f:\lubex\GESLUX\InvioFTP\InvioFTP\bin\Release\InvioFTP.exe'
+Set variable 'SITUACONT_PATH_FILESEQ' to value 'f:\lubex\tmp\sc\'
+Set variable 'SITUACONT_PATH_BACKUP' to value 'f:\lubex\tmp\sc\b\'
+Set variable 'SITUACONT_FTP_SERVER_1' to value 'online1.lince.it'
+Set variable 'SITUACONT_FTP_SERVER_2' to value 'ftp1.cerved.com'
+Set variable 'SITUACONT_FTP_PORT_1' to value '21'
+Set variable 'SITUACONT_FTP_PORT_2' to value '8022'
+Set variable 'SITUACONT_FTP_USER_1' to value 'lubex'
+Set variable 'SITUACONT_FTP_USER_2' to value '878323939'
+Set variable 'SITUACONT_FTP_PASSWORD_1' to value 'lbxp2136pay'
+Set variable 'SITUACONT_FTP_PASSWORD_2' to value 'X52jQm4WbGCRHaQSyXR2'
+Set variable 'SITUACONT_FTP_REMOTE_DIR_1' to value '/incoming/'
+Set variable 'SITUACONT_FTP_REMOTE_DIR_2' to value '/'
+Set variable 'SITUACONT_CERTIFICATE_1' to value 'c8:75:37:c8:5d:d2:50:31:86:3b:5f:78:d3:97:f4:5a:0e:7f:a9:ba'
+Set variable 'SITUACONT_CERTIFICATE_2' to value 'af:ab:e4:30:31:51:56:47:7d:69:86:9c:eb:38:bb:98:9d:43:03:02'
+Set variable 'CALCOLO_PIOMBO' to value 'N'
+Set variable 'PATH_FIDO_IMPORT' to value 'f:\lubex\tmp\fido\'
+Set variable 'PATH_FIDO_BACKUP' to value 'f:\lubex\tmp\fido\Backup\'
+Set variable 'BROGM_AUTO_STAMPANTE' to value 'PDF Writer - bioPDF'
+Set variable 'BROGM_AUTO_PATH_PDF' to value 'f:\lubex\tmp\brogliaccio\'
+Set variable 'BROGM_AUTO_CC' to value '(nil)'
+Set variable 'PATH_FATTPAG' to value 'f:\lubex\tmp\'
+Set variable 'PATH_F_PDF' to value 'f:\lubex\tmp\f\'
+Set variable 'PATH_NC_PDF' to value 'f:\lubex\tmp\nc\'
+Set variable 'PATH_BMP_FATTURE' to value 'f:\lubex\GESLUX\Resource\STAMPA\'
+Set variable 'PATH_VENDUTI' to value 'f:\lubex\tmp\venduti.csv'
+Set variable 'STAMPANTE_RIEPILOGO_CORRIERI' to value 'doPDF 10'
+Set variable 'STAMPANTE_STBOLLE_SPLIT' to value 'doPDF 10'
+Set variable 'PATH_BOLLE_PERS' to value 'f:\lubex\GESLUX\Resource\BOLLA\BASE-STAMPA-BOLLA-NO-LUBEX.jpg'
+Set variable 'STAMPANTE_EVASIONI_F' to value 'doPDF 10'
+Set variable 'CONLUBGIO_PATH_IMPORT' to value 'F:\Lubex\GESLUX\conlubgio\imp\'
+Set variable 'CONLUBGIO_PATH_BACKUP' to value 'F:\Lubex\GESLUX\conlubgio\bck\'
+Set variable 'CONLUBGIO_ADDRESSES' to value 'a.eventi@goodworks.it'
+Set variable 'PATH_MACROBATCH_LOG' to value 'F:\Lubex\GESLUX\macrobatch\log\'
+Set variable 'MACROBATCH_ADDRESS' to value 'andrea.ae@live.it'
+Set variable 'MACROBATCH_ADDRESS_CC' to value 'andrea.ae@live.it'
+Set variable 'MACROBATCH_SUBJECT' to value 'PROVA MACROBATCH'
+Set variable 'SE' to value 'valorizzato (con qualisasi valore):non esegue l'invio delle mail e il restart del servizio in scheduler'
+Set variable 'DEBUGGER_TEST' to value 's'
+Set variable 'PROGMAG_LOG_PATH' to value 'F:\Lubex\GESLUX\log-evasioni\'
+C:\Program Files (x86)\Micro Focus\Acucbl910\AcuGT/lib/AcuPgms.lib loaded
+Try loading '.\Object\loginscrn.acu'...
+.\Object\loginscrn.acu loaded
+
+*** STARTING GESLUX... ***
+Try loading '.\Object\getpid.acu'...
+.\Object\getpid.acu loaded
+Set parameter 'CODE_PREFIX' to '.'
+Set parameter 'DLL_CONVENTION' to 1
+Try loading 'msvcrt.dll'...
+Library msvcrt.dll loaded
+Set parameter 'CODE_PREFIX' to '.\Object\;'
+Routine '_getpid' loaded from DLL 'msvcrt.dll'
+Set parameter 'DLL_CONVENTION' to 0
+Set variable 'PID_SESSIONE' to value '9052'
+Try loading '.\Object\genfiles.acu'...
+.\Object\genfiles.acu loaded
+Try loading '.\Object\colors.acu'...
+.\Object\colors.acu loaded
+Set variable 'STORICO' to value ''
+
+*** LOGIN GESLUX ***
+Set variable 'ESERCIZIO' to value '2021'
+Set variable 'ESERCIZIO_G2' to value 'C1'
+*** DATA: 10/03/2021 - ORA: 21:31 USER: BOSS
+Set variable 'USER_CODI' to value 'BOSS'
+Try loading '.\Object\menu.acu'...
+.\Object\menu.acu loaded
+Try loading '.\Object\utydata.acu'...
+.\Object\utydata.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\lanciopgm.acu'...
+.\Object\lanciopgm.acu loaded
+Try loading '.\Object\gpgmexe.acu'...
+.\Object\gpgmexe.acu loaded
+Try loading '.\Object\stordc.acu'...
+.\Object\stordc.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\utydata.acu'...
+.\Object\utydata.acu loaded
+Try loading '.\Object\stordcp.acu'...
+.\Object\stordcp.acu loaded
+Try loading '.\Object\selprint.acu'...
+.\Object\selprint.acu loaded
+Try loading '.\Object\spooler.acu'...
+.\Object\spooler.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\gpgmexe.acu'...
+.\Object\gpgmexe.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\lanciopgm.acu'...
+.\Object\lanciopgm.acu loaded
+Try loading '.\Object\gpgmexe.acu'...
+.\Object\gpgmexe.acu loaded
+Try loading '.\Object\selordc.acu'...
+.\Object\selordc.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\gordcvar.acu'...
+.\Object\gordcvar.acu loaded
+Try loading '.\Object\utydata.acu'...
+.\Object\utydata.acu loaded
+Try loading '.\Object\invio-sol.acu'...
+.\Object\invio-sol.acu loaded
+Try loading '.\Object\nomepgm.acu'...
+.\Object\nomepgm.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\tprev-elab.acu'...
+.\Object\tprev-elab.acu loaded
+Try loading '.\Object\tprev-p.acu'...
+.\Object\tprev-p.acu loaded
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44   44'
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\gpgmexe.acu'...
+.\Object\gpgmexe.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\lanciopgm.acu'...
+.\Object\lanciopgm.acu loaded
+Try loading '.\Object\gpgmexe.acu'...
+.\Object\gpgmexe.acu loaded
+Try loading '.\Object\selordini.acu'...
+.\Object\selordini.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\ordinevar.acu'...
+.\Object\ordinevar.acu loaded
+Try loading '.\Object\utydata.acu'...
+.\Object\utydata.acu loaded
+Try loading '.\Object\check-prog-master.acu'...
+.\Object\check-prog-master.acu loaded
+Try loading '.\Object\nomepgm.acu'...
+.\Object\nomepgm.acu loaded
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44   44'
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\gpgmexe.acu'...
+.\Object\gpgmexe.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\lanciopgm.acu'...
+.\Object\lanciopgm.acu loaded
+Try loading '.\Object\gpgmexe.acu'...
+.\Object\gpgmexe.acu loaded
+Try loading '.\Object\ordine.acu'...
+.\Object\ordine.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\utydata.acu'...
+.\Object\utydata.acu loaded
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Try loading '.\Object\GetActiveWindow.acu'...
+.\Object\GetActiveWindow.acu: Impossibile trovare il file specificato.
+Try loading '.\Object\GetActiveWindow'...
+.\Object\GetActiveWindow: Impossibile trovare il file specificato.
+Try loading '.\Object\GetActiveWindow.DLL'...
+Library error 0
+Try loading 'C:\WINDOWS\system32\GetActiveWindow.DLL'...
+Library error 0
+Try loading 'C:\WINDOWS\GetActiveWindow.DLL'...
+Library error 0
+Try loading '.\Object\User32.dll'...
+Library error 0
+Try loading 'C:\WINDOWS\system32\User32.dll'...
+Library C:\WINDOWS\system32\User32.dll loaded
+Routine 'GetActiveWindow' loaded from DLL 'User32.dll'
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Routine 'GetSystemMetrics' loaded from DLL 'User32.dll'
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\zoom-gt.acu'...
+.\Object\zoom-gt.acu loaded
+Set variable 'XZOOM_HIDE_CLOCK' to value '1'
+Set variable 'XZOOM_WINDOW_DELAYED' to value '1'
+Set variable 'XZOOM_NULL_TEXT_NUMERIC' to value '#Blank#'
+Set variable 'XZOOM_NULL_TEXT_ALPHA' to value '#Blank#'
+Set variable 'XZOOM_LAYOUT' to value 'Grid'
+Try loading '.\Object\XZOOM.acu'...
+.\Object\XZOOM.acu loaded
+Set keystroke to 'Exception=03501 k1'
+Set keystroke to 'Exception=03504 k7'
+Set keystroke to 'Exception=03505 k8'
+Set keystroke to 'Exception=03502 k5'
+Set keystroke to 'Exception=03503 k6'
+Set keystroke to 'Exception=03511 k9'
+Set keystroke to 'Exception=03507 ^M'
+Set keystroke to 'Exception=03512 ^['
+Set keystroke to 'Exception=03515 kh'
+Set keystroke to 'Exception=03516 KE'
+Set keystroke to 'Exception=03517 kP'
+Set keystroke to 'Exception=03518 kN'
+Set parameter 'CURSOR_MODE' to 2
+Set parameter 'SCROLL' to FALSE
+Set parameter 'WRAP' to FALSE
+Set parameter 'FILENAME_SPACES' to FALSE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'DLL_CONVENTION' to 1
+Set parameter 'MOUSE_FLAGS' to 0
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'XZOOM_USER_INTERACTION' to value '0'
+Set variable 'XZOOM_EXCEPTION' to value '0'
+Set variable 'CALENDAR_LAYOUT' to value 'Max'
+Try loading '.\Object\XZRmtF.acu'...
+.\Object\XZRmtF.acu loaded
+Set variable 'XZOOM_USER_INTERACTION' to value '1'
+Set parameter 'CURSOR_MODE' to 3
+Set parameter 'DLL_CONVENTION' to 0
+Set parameter 'FILENAME_SPACES' to TRUE
+Set parameter 'FIELDS_UNBOXED' to FALSE
+Set parameter 'SCROLL' to TRUE
+Set parameter 'WRAP' to TRUE
+Set parameter 'MOUSE_FLAGS' to 1
+Set parameter 'MIN_REC_SIZE' to 1
+Set parameter 'STRIP_TRAILING_SPACES' to TRUE
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\nomepgm.acu'...
+.\Object\nomepgm.acu loaded
+Try loading '.\Object\calfido.acu'...
+.\Object\calfido.acu loaded
+Try loading '.\Object\nambar.acu'...
+.\Object\nambar.acu loaded
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=46 44'
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\sost-art.acu'...
+.\Object\sost-art.acu loaded
+Try loading '.\Object\sost-batt.acu'...
+.\Object\sost-batt.acu loaded
+Try loading '.\Object\st-ordine-m.acu'...
+.\Object\st-ordine-m.acu loaded
+Try loading '.\Object\readutente.acu'...
+.\Object\readutente.acu loaded
+Try loading '.\Object\spooler.acu'...
+.\Object\spooler.acu loaded
+Try loading '.\Object\check-prog-master.acu'...
+.\Object\check-prog-master.acu loaded
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\tprev-elab.acu'...
+.\Object\tprev-elab.acu loaded
+Try loading '.\Object\tprev-p.acu'...
+.\Object\tprev-p.acu loaded
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44   44'
+Try loading '.\Object\gpgmexe.acu'...
+.\Object\gpgmexe.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\lanciopgm.acu'...
+.\Object\lanciopgm.acu loaded
+Try loading '.\Object\gpgmexe.acu'...
+.\Object\gpgmexe.acu loaded
+Try loading '.\Object\selordini.acu'...
+.\Object\selordini.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\ordinevar.acu'...
+.\Object\ordinevar.acu loaded
+Try loading '.\Object\utydata.acu'...
+.\Object\utydata.acu loaded
+Try loading '.\Object\check-prog-master.acu'...
+.\Object\check-prog-master.acu loaded
+Try loading '.\Object\passwd.acu'...
+.\Object\passwd.acu loaded
+Try loading '.\Object\evaord.acu'...
+.\Object\evaord.acu loaded
+Try loading '.\Object\nomepgm.acu'...
+.\Object\nomepgm.acu loaded
+Try loading '.\Object\nambar.acu'...
+.\Object\nambar.acu loaded
+Set keystroke to 'DATA=44 46'
+Set keystroke to 'DATA=46 44'
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\wprogmag.acu'...
+.\Object\wprogmag.acu loaded
+Try loading '.\Object\stordcp.acu'...
+.\Object\stordcp.acu loaded
+Try loading '.\Object\selprint.acu'...
+.\Object\selprint.acu loaded
+Try loading '.\Object\tprev-elab.acu'...
+.\Object\tprev-elab.acu loaded
+Try loading '.\Object\tprev-p.acu'...
+.\Object\tprev-p.acu loaded
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44   44'
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\gpgmexe.acu'...
+.\Object\gpgmexe.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\lanciopgm.acu'...
+.\Object\lanciopgm.acu loaded
+Try loading '.\Object\gpgmexe.acu'...
+.\Object\gpgmexe.acu loaded
+Try loading '.\Object\selordc.acu'...
+.\Object\selordc.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\gordcvar.acu'...
+.\Object\gordcvar.acu loaded
+Try loading '.\Object\utydata.acu'...
+.\Object\utydata.acu loaded
+Try loading '.\Object\invio-sol.acu'...
+.\Object\invio-sol.acu loaded
+Set keystroke to 'DATA=44   44'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44   44'
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\gpgmexe.acu'...
+.\Object\gpgmexe.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\lanciopgm.acu'...
+.\Object\lanciopgm.acu loaded
+Try loading '.\Object\gpgmexe.acu'...
+.\Object\gpgmexe.acu loaded
+Try loading '.\Object\stordc.acu'...
+.\Object\stordc.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\utydata.acu'...
+.\Object\utydata.acu loaded
+Try loading '.\Object\stordcp.acu'...
+.\Object\stordcp.acu loaded
+Try loading '.\Object\selprint.acu'...
+.\Object\selprint.acu loaded
+Try loading '.\Object\spooler.acu'...
+.\Object\spooler.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\stordcp.acu'...
+.\Object\stordcp.acu loaded
+Try loading '.\Object\selprint.acu'...
+.\Object\selprint.acu loaded
+Try loading '.\Object\spooler.acu'...
+.\Object\spooler.acu loaded
+Try loading '.\Object\stordcp.acu'...
+.\Object\stordcp.acu loaded
+Try loading '.\Object\selprint.acu'...
+.\Object\selprint.acu loaded
+Try loading '.\Object\spooler.acu'...
+.\Object\spooler.acu loaded
+Try loading '.\Object\stordcp.acu'...
+.\Object\stordcp.acu loaded
+Try loading '.\Object\selprint.acu'...
+.\Object\selprint.acu loaded
+Try loading '.\Object\spooler.acu'...
+.\Object\spooler.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\lanciopgm.acu'...
+.\Object\lanciopgm.acu loaded
+Try loading '.\Object\gpgmexe.acu'...
+.\Object\gpgmexe.acu loaded
+Try loading '.\Object\garticoli.acu'...
+.\Object\garticoli.acu loaded
+Try loading '.\Object\utydata.acu'...
+.\Object\utydata.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\nomepgm.acu'...
+.\Object\nomepgm.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\check-catart.acu'...
+.\Object\check-catart.acu loaded
+Try loading '.\Object\G2Agg.acu'...
+.\Object\G2Agg.acu loaded
+Try loading '.\Object\stordcp.acu'...
+.\Object\stordcp.acu loaded
+Try loading '.\Object\selprint.acu'...
+.\Object\selprint.acu loaded
+Try loading '.\Object\stordcp.acu'...
+.\Object\stordcp.acu loaded
+Try loading '.\Object\selprint.acu'...
+.\Object\selprint.acu loaded
+Try loading '.\Object\spooler.acu'...
+.\Object\spooler.acu loaded
+Try loading '.\Object\stordcp.acu'...
+.\Object\stordcp.acu loaded
+Try loading '.\Object\selprint.acu'...
+.\Object\selprint.acu loaded
+Try loading '.\Object\spooler.acu'...
+.\Object\spooler.acu loaded
+Try loading '.\Object\stordcp.acu'...
+.\Object\stordcp.acu loaded
+Try loading '.\Object\stordcp.acu'...
+.\Object\stordcp.acu loaded
+Try loading '.\Object\selprint.acu'...
+.\Object\selprint.acu loaded
+Try loading '.\Object\spooler.acu'...
+.\Object\spooler.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Try loading '.\Object\gpgmexe.acu'...
+.\Object\gpgmexe.acu loaded
+Try loading '.\Object\BLOCKPGM.acu'...
+.\Object\BLOCKPGM.acu loaded
+Set keystroke to 'DATA=46   46'
+Set keystroke to 'DATA=44   44'
+Try loading '.\Object\gpgmexe.acu'...
+.\Object\gpgmexe.acu loaded
+Try loading '.\Object\gpgmexe.acu'...
+.\Object\gpgmexe.acu loaded
+*** ENDING GESLUX... ***
