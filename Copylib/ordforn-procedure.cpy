@@ -4369,7 +4369,7 @@ LUBEXX*     display lab-gest ef-gest.
            if not listino-trovato
               initialize tlis-chiave
            else
-              if tlis-trasp-escluso and pgm-name = "gordforn"
+              if tlis-trasp-f-escluso and pgm-name = "gordforn"
       *****           if pgm-name = "gordfornvar"
       *****              if old-tof-franco-part-no and 
       *****                 tof-data-ordine not = old-tof-data-ordine
@@ -4669,14 +4669,15 @@ LUBEXX     end-read.
        CALCOLA-TRASPORTO.
            move 0 to costo-trasporto.
            move spaces to tge-chiave.
-           read tparamge no lock.
-           if desf-nazione = "ITA"
+           read tparamge no lock.   
+           if como-trasporto-f = 1
               compute costo-trasporto = 
-                      prg-peso * tge-trasp-italy
-           else
-              compute costo-trasporto = 
-                      prg-peso * tge-trasp-estero
-           end-if.     
+                      prg-peso * tge-trasp-f
+           end-if.
+           if como-trasporto-c = 1
+              compute costo-trasporto = costo-trasporto +
+                    ( prg-peso * tge-trasp-c)
+           end-if. 
 
       ***---
        CARICA-TMP-PROMO.

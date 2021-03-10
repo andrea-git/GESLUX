@@ -121,7 +121,7 @@
                 end-if
            end-read.
 
-           if como-trasporto = 1
+           if como-trasporto-f = 1 or como-trasporto-c = 1
               perform CALCOLA-TRASPORTO
               add costo-trasporto to prz-confronto
            end-if.

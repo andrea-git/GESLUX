@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          glistini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 8 maggio 2020 01:00:50.
+       DATE-WRITTEN.        mercoledì 10 marzo 2021 12:08:46.
        REMARKS.
       *{TOTEM}END
 
@@ -117,7 +117,6 @@
        77 val-fine         PIC  99/99/9999.
        77 store-forn       PIC  x(5).
        77 store-destino    PIC  x(5).
-       77 store-ini        PIC  9(8).
        77 store-fine       PIC  9(8).
        77 store-codice     PIC  9(15).
        77 data-oggi        PIC  9(8).
@@ -306,7 +305,9 @@
       * Data.Entry-Field
               05 ef-fine-val-BUF PIC 99/99/9999.
       * Data.Check-Box
-              05 chk-trasporto-BUF PIC 9 VALUE ZERO.
+              05 chk-trasporto-f-BUF PIC 9 VALUE ZERO.
+      * Data.Check-Box
+              05 chk-trasporto-c-BUF PIC 9 VALUE ZERO.
       * Data.Label
               05 lab-nome-BUF PIC X(50).
       * Data.Entry-Field
@@ -327,7 +328,7 @@
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-rlistini-BUF     PIC X(448).
        77 TMP-DataSet1-tlistini-BUF     PIC X(257).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-tlistini1-BUF     PIC X(257).
        77 TMP-DataSet1-destinif-BUF     PIC X(1322).
        77 TMP-DataSet1-impforn-BUF     PIC X(220).
@@ -534,10 +535,13 @@
                    15 old-tlis-ora-ultima-modifica     PIC  9(8).
                    15 old-tlis-utente-ultima-modifica  PIC  X(10).
                10 old-tlis-vuoti.
-                   15 old-tlis-trasp        PIC  9.
-                       88 old-tlis-trasp-incluso VALUE 1 FALSE  0. 
-                       88 old-tlis-trasp-escluso VALUE 0 FALSE  1. 
-                   15 old-tlis-num-vuoto-1 PIC  9(17).
+                   15 old-tlis-trasp-f      PIC  9.
+                       88 old-tlis-trasp-f-incluso VALUE 1 FALSE  0. 
+                       88 old-tlis-trasp-f-escluso VALUE 0 FALSE  1. 
+                   15 old-tlis-trasp-c        PIC  9.
+                       88 old-tlis-trasp-c-incluso VALUE 1 FALSE  0. 
+                       88 old-tlis-trasp-c-escluso VALUE 0 FALSE  1. 
+                   15 old-tlis-num-vuoto-1 PIC  9(16).
                    15 old-tlis-num-vuoto-2 PIC  9(18).
                    15 old-tlis-num-vuoto-3 PIC  9(18).
                    15 old-tlis-alfa-vuoto-1            PIC  X(20).
@@ -738,7 +742,7 @@
        05
            ef-fine-val, 
            Entry-Field, 
-           COL 50,00, 
+           COL 43,33, 
            LINE 12,00,
            LINES 1,31 ,
            SIZE 11,00 ,
@@ -756,9 +760,29 @@
 
       * CHECK BOX
        05
-           chk-trasporto, 
+           chk-trasporto-f, 
            Check-Box, 
-           COL 94,00, 
+           COL 73,83, 
+           LINE 12,00,
+           LINES 1,15 ,
+           SIZE 3,00 ,
+           ENABLED mod,
+           EXCEPTION-VALUE 1004
+           FLAT,
+           ID IS 2,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           SELF-ACT,
+           TITLE "Trasporto incluso",
+           VALUE chk-trasporto-f-BUF,
+           BEFORE PROCEDURE Screen1-DaCb-1-BeforeProcedure, 
+            .
+
+      * CHECK BOX
+       05
+           chk-trasporto-c, 
+           Check-Box, 
+           COL 94,67, 
            LINE 12,00,
            LINES 1,15 ,
            SIZE 3,00 ,
@@ -770,7 +794,7 @@
            WIDTH-IN-CELLS,
            SELF-ACT,
            TITLE "Trasporto incluso",
-           VALUE chk-trasporto-BUF,
+           VALUE chk-trasporto-c-BUF,
            BEFORE PROCEDURE Screen1-DaCb-1-BeforeProcedure, 
             .
 
@@ -937,7 +961,7 @@
        05
            Screen1-La-4, 
            Label, 
-           COL 37,00, 
+           COL 30,33, 
            LINE 12,00,
            LINES 1,31 ,
            SIZE 12,00 ,
@@ -1095,16 +1119,16 @@
        05
            Screen1-La-4a, 
            Label, 
-           COL 79,00, 
+           COL 57,17, 
            LINE 12,00,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 16,00 ,
            FONT IS Small-Font,
            ID IS 18,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
-           TITLE "Trasporto escluso",
+           TITLE "Trasporto fornitore",
            .
 
       * ENTRY FIELD
@@ -1210,6 +1234,22 @@
            TRANSPARENT,
            TITLE "(Inserire il codice del Volantino o la Ragione Sociale
       -    " del fornitore)",
+           .
+
+      * LABEL
+       05
+           Screen1-La-4aa, 
+           Label, 
+           COL 78,00, 
+           LINE 12,00,
+           LINES 1,31 ,
+           SIZE 16,00 ,
+           FONT IS Small-Font,
+           ID IS 18,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Trasporto al cliente",
            .
 
       * TOOLBAR
@@ -5675,8 +5715,10 @@
                  IF Event-Type = Cmd-Close
                     PERFORM Form1-Exit
                  END-IF
+              WHEN Key-Status = 1004
+                 PERFORM chk-trasporto-f-LinkTo
               WHEN Key-Status = 1001
-                 PERFORM chk-trasporto-LinkTo
+                 PERFORM chk-trasporto-c-LinkTo
               WHEN Key-Status = 1003
                  PERFORM pb-note-LinkTo
               WHEN Key-Status = 1005
@@ -6040,7 +6082,9 @@
       * FORM : Form1
            PERFORM DataSet1-INIT-RECORD
       * DB_CHECK BOX
-              MOVE 0 TO tlis-trasp OF tlistini
+              MOVE 0 TO tlis-trasp-c OF tlistini
+      * DB_CHECK BOX
+              MOVE 0 TO tlis-trasp-f OF tlistini
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, SetDefault>
       * <TOTEM:END>
            PERFORM Form1-FLD-TO-BUF
@@ -6106,7 +6150,7 @@
            PERFORM ef-note-1-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 13 TO CONTROL-ID
+               MOVE 14 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-2's Validation
@@ -6114,7 +6158,7 @@
            PERFORM ef-note-2-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 14 TO CONTROL-ID
+               MOVE 15 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-3's Validation
@@ -6122,7 +6166,7 @@
            PERFORM ef-note-3-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 15 TO CONTROL-ID
+               MOVE 16 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-4's Validation
@@ -6130,7 +6174,7 @@
            PERFORM ef-note-4-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 16 TO CONTROL-ID
+               MOVE 17 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
            .
@@ -6321,11 +6365,17 @@
            MOVE ef-ini-val-BUF TO tlis-ini-val OF tlistini
       * DB_Entry-Field : ef-fine-val
            MOVE ef-fine-val-BUF TO tlis-fine-val OF tlistini
-      * DB_CHECK BOX : chk-trasporto
-              IF chk-trasporto-BUF = 1
-                 MOVE 1 TO tlis-trasp OF tlistini
+      * DB_CHECK BOX : chk-trasporto-f
+              IF chk-trasporto-f-BUF = 1
+                 MOVE 1 TO tlis-trasp-c OF tlistini
               ELSE
-                 MOVE 0 TO tlis-trasp OF tlistini
+                 MOVE 0 TO tlis-trasp-c OF tlistini
+              END-IF
+      * DB_CHECK BOX : chk-trasporto-c
+              IF chk-trasporto-c-BUF = 1
+                 MOVE 1 TO tlis-trasp-f OF tlistini
+              ELSE
+                 MOVE 0 TO tlis-trasp-f OF tlistini
               END-IF
       * DB_Entry-Field : ef-note-1
            MOVE ef-note-1-BUF TO como-note(1)
@@ -6366,11 +6416,17 @@
            MOVE tlis-ini-val OF tlistini TO ef-ini-val-BUF
       * DB_Entry-Field : ef-fine-val
            MOVE tlis-fine-val OF tlistini TO ef-fine-val-BUF
-      * DB_CHECK BOX : chk-trasporto
-              IF tlis-trasp OF tlistini = 1
-                 MOVE 1 TO chk-trasporto-BUF
+      * DB_CHECK BOX : chk-trasporto-f
+              IF tlis-trasp-c OF tlistini = 1
+                 MOVE 1 TO chk-trasporto-f-BUF
               ELSE
-                 MOVE 0 TO chk-trasporto-BUF
+                 MOVE 0 TO chk-trasporto-f-BUF
+              END-IF
+      * DB_CHECK BOX : chk-trasporto-c
+              IF tlis-trasp-f OF tlistini = 1
+                 MOVE 1 TO chk-trasporto-c-BUF
+              ELSE
+                 MOVE 0 TO chk-trasporto-c-BUF
               END-IF
       * DB_LABEL : lab-nome
               MOVE tlis-descrizione OF tlistini  TO lab-nome-BUF
@@ -6467,39 +6523,47 @@
            end-if
 
 
-           if tlis-trasp OF tlistini not = old-tlis-trasp
+           if tlis-trasp-c OF tlistini not = old-tlis-trasp-c
               and SiSalvato
               set NoSalvato to true
-              |2 è l'ID del campo chk-trasporto
+              |2 è l'ID del campo chk-trasporto-f
+              move 2 to store-id
+           end-if
+
+
+           if tlis-trasp-f OF tlistini not = old-tlis-trasp-f
+              and SiSalvato
+              set NoSalvato to true
+              |2 è l'ID del campo chk-trasporto-c
               move 2 to store-id
            end-if
 
            if como-note(1) not = old-como-note(1)
               and SiSalvato
               set NoSalvato to true
-              |13 è l'ID del campo ef-note-1
-              move 13 to store-id
+              |14 è l'ID del campo ef-note-1
+              move 14 to store-id
            end-if
 
            if como-note(2) not = old-como-note(2)
               and SiSalvato
               set NoSalvato to true
-              |14 è l'ID del campo ef-note-2
-              move 14 to store-id
+              |15 è l'ID del campo ef-note-2
+              move 15 to store-id
            end-if
 
            if como-note(3) not = old-como-note(3)
               and SiSalvato
               set NoSalvato to true
-              |15 è l'ID del campo ef-note-3
-              move 15 to store-id
+              |16 è l'ID del campo ef-note-3
+              move 16 to store-id
            end-if
 
            if como-note(4) not = old-como-note(4)
               and SiSalvato
               set NoSalvato to true
-              |16 è l'ID del campo ef-note-4
-              move 16 to store-id
+              |17 è l'ID del campo ef-note-4
+              move 17 to store-id
            end-if
 
            .
@@ -6854,12 +6918,12 @@
            TOTEM-HINT-TEXT
            WHEN 5006 MOVE "Digitare la data di fine DPO" to 
            TOTEM-HINT-TEXT
-           WHEN 13 MOVE "Digitare i dati di consegna" to TOTEM-HINT-TEXT
-           WHEN 14 MOVE "Digitare le note di destinazione" to 
-           TOTEM-HINT-TEXT
+           WHEN 14 MOVE "Digitare i dati di consegna" to TOTEM-HINT-TEXT
            WHEN 15 MOVE "Digitare le note di destinazione" to 
            TOTEM-HINT-TEXT
            WHEN 16 MOVE "Digitare le note di destinazione" to 
+           TOTEM-HINT-TEXT
+           WHEN 17 MOVE "Digitare le note di destinazione" to 
            TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
@@ -6870,10 +6934,10 @@
            When 5004 PERFORM ef-nome-BeforeProcedure
            When 5005 PERFORM ef-ini-dpo-BeforeProcedure
            When 5006 PERFORM ef-fine-dpo-BeforeProcedure
-           When 13 PERFORM ef-note-1-BeforeProcedure
-           When 14 PERFORM ef-note-2-BeforeProcedure
-           When 15 PERFORM ef-note-3-BeforeProcedure
-           When 16 PERFORM ef-note-4-BeforeProcedure
+           When 14 PERFORM ef-note-1-BeforeProcedure
+           When 15 PERFORM ef-note-2-BeforeProcedure
+           When 16 PERFORM ef-note-3-BeforeProcedure
+           When 17 PERFORM ef-note-4-BeforeProcedure
            END-EVALUATE
            PERFORM Form1-DISPLAY-STATUS-MSG
            perform Form1-BEFORE-SCREEN
@@ -6888,10 +6952,11 @@
            When 5005 PERFORM ef-ini-dpo-AfterProcedure
            When 5006 PERFORM ef-fine-dpo-AfterProcedure
            When 2 PERFORM Screen1-DaCb-1-AfterProcedure
-           When 13 PERFORM ef-note-1-AfterProcedure
-           When 14 PERFORM ef-note-2-AfterProcedure
-           When 15 PERFORM ef-note-3-AfterProcedure
-           When 16 PERFORM ef-note-4-AfterProcedure
+           When 2 PERFORM Screen1-DaCb-1-AfterProcedure
+           When 14 PERFORM ef-note-1-AfterProcedure
+           When 15 PERFORM ef-note-2-AfterProcedure
+           When 16 PERFORM ef-note-3-AfterProcedure
+           When 17 PERFORM ef-note-4-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -6998,14 +7063,13 @@
            read destinif no lock invalid continue end-read.
            move rlis-articolo to art-codice.
            read articoli no lock.
-           if desf-nazione = "ITA"
+           if como-trasporto-f = 1
               compute costo-trasporto = 
-                    ( art-peso-utf + art-peso-non-utf ) * 
-           tge-trasp-italy
-           else
-              compute costo-trasporto = 
-                    ( art-peso-utf + art-peso-non-utf ) * 
-           tge-trasp-estero
+                    ( art-peso-utf + art-peso-non-utf ) * tge-trasp-f
+           end-if.
+           if como-trasporto-c = 1
+              compute costo-trasporto = costo-trasporto +
+                    (( art-peso-utf + art-peso-non-utf ) * tge-trasp-c)
            end-if  
            .
       * <TOTEM:END>
@@ -8065,8 +8129,9 @@
                       invalid move space to imf-descrizione
                  end-read
 
-                 move 0 to prg-peso-utf prg-peso-non-utf
-                 move tlis-trasp of tlistini to como-trasporto
+                 move 0 to prg-peso-utf prg-peso-non-utf          
+                 move tlis-trasp-f of tlistini to como-trasporto-f
+                 move tlis-trasp-c of tlistini to como-trasporto-c
                  perform CALCOLA-PRZ-FINITO
                  move imf-descrizione          to col-des-imp
                  move prz-reale                to col-prz-tot
@@ -8783,8 +8848,9 @@
 
            initialize rlis-rec replacing numeric data by zeroes
                                     alphanumeric data by spaces.
-
-           set tlis-trasp-escluso of tlistini to true.
+                            
+           set tlis-trasp-f-escluso of tlistini to true.
+           set tlis-trasp-c-escluso of tlistini to true.
            write tlis-rec of tlistini
                  invalid rewrite tlis-rec of tlistini 
            end-write.
@@ -9725,8 +9791,9 @@
            if errori
               move 78-ID-gd1 to store-id
               set event-action to event-action-fail
-           else
-              move chk-trasporto-buf to como-trasporto
+           else                                           
+              move chk-trasporto-f-buf to como-trasporto-f
+              move chk-trasporto-c-buf to como-trasporto-c
               move col-tipo-imp      to imf-codice
               move 0 to prg-peso-utf prg-peso-non-utf
               perform CALCOLA-PRZ-FINITO
@@ -9940,25 +10007,6 @@
            end-evaluate 
            .
       * <TOTEM:END>
-       chk-trasporto-LinkTo.
-      * <TOTEM:PARA. chk-trasporto-LinkTo>
-           inquire gd1, last-row in tot-righe.
-           inquire chk-trasporto, value in chk-trasporto-buf.
-           move chk-trasporto-buf to como-trasporto.
-
-           perform varying riga from 2 by 1 
-                     until riga > tot-righe
-              inquire gd1(riga, 78-col-art), cell-data art-codice
-              read articoli no lock invalid continue end-read
-              move art-peso-utf     to prg-peso-utf
-              move art-peso-non-utf to prg-peso-non-utf
-              perform VALORE-RIGA
-              perform CALCOLA-PRZ-FINITO
-              move prz-confronto to col-prz-conf
-              modify gd1(riga, 78-col-prz-conf), cell-data col-prz-conf
-           end-perform 
-           .
-      * <TOTEM:END>
        pb-note-LinkTo.
       * <TOTEM:PARA. pb-note-LinkTo>
            move tlis-chiave of tlistini  to gnlis-tlis-chiave
@@ -10061,6 +10109,44 @@
            perform VAL-DESTINO
 
            inquire ef-forn, value in como-old-forn 
+           .
+      * <TOTEM:END>
+       chk-trasporto-f-LinkTo.
+      * <TOTEM:PARA. chk-trasporto-f-LinkTo>
+           inquire gd1, last-row in tot-righe.
+           inquire chk-trasporto-f, value in chk-trasporto-f-buf.
+           move chk-trasporto-f-buf to como-trasporto-f.
+
+           perform varying riga from 2 by 1 
+                     until riga > tot-righe
+              inquire gd1(riga, 78-col-art), cell-data art-codice
+              read articoli no lock invalid continue end-read
+              move art-peso-utf     to prg-peso-utf
+              move art-peso-non-utf to prg-peso-non-utf
+              perform VALORE-RIGA
+              perform CALCOLA-PRZ-FINITO
+              move prz-confronto to col-prz-conf
+              modify gd1(riga, 78-col-prz-conf), cell-data col-prz-conf
+           end-perform 
+           .
+      * <TOTEM:END>
+       chk-trasporto-c-LinkTo.
+      * <TOTEM:PARA. chk-trasporto-c-LinkTo>
+           inquire gd1, last-row in tot-righe.
+           inquire chk-trasporto-c, value in chk-trasporto-c-buf.
+           move chk-trasporto-c-buf to como-trasporto-c.
+
+           perform varying riga from 2 by 1 
+                     until riga > tot-righe
+              inquire gd1(riga, 78-col-art), cell-data art-codice
+              read articoli no lock invalid continue end-read
+              move art-peso-utf     to prg-peso-utf
+              move art-peso-non-utf to prg-peso-non-utf
+              perform VALORE-RIGA
+              perform CALCOLA-PRZ-FINITO
+              move prz-confronto to col-prz-conf
+              modify gd1(riga, 78-col-prz-conf), cell-data col-prz-conf
+           end-perform 
            .
       * <TOTEM:END>
 

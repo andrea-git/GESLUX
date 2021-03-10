@@ -994,8 +994,9 @@
                        move tlis-fornitore    to desf-codice
                        move rlis-destino      to desf-prog
                        read destinif no lock invalid continue end-read
-
-                       move tlis-trasp        to como-trasporto
+                                                               
+                       move tlis-trasp-f      to como-trasporto-f
+                       move tlis-trasp-c      to como-trasporto-c
                        perform CALCOLA-PRZ-FINITO
            
                        move prz-reale         to sart-prz-fint
@@ -1010,15 +1011,15 @@
        CALCOLA-TRASPORTO.
            move 0 to costo-trasporto.
            move spaces to tge-chiave.
-           read tparamge no lock.
-           if desf-nazione = "ITA"
+           read tparamge no lock.     
+           if como-trasporto-f = 1
               compute costo-trasporto = 
-                      prg-peso * tge-trasp-italy
-           else
-              compute costo-trasporto = 
-                      prg-peso * tge-trasp-estero
-           end-if.     
-
+                      prg-peso * tge-trasp-f
+           end-if.
+           if como-trasporto-c = 1
+              compute costo-trasporto = costo-trasporto +
+                    ( prg-peso * tge-trasp-c)
+           end-if. 
 
       ***---
        SCORRI-SORT.

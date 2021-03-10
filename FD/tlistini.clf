@@ -5,7 +5,7 @@
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E521A81547-164-2743127057
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E53A131549-315-2791814433
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -185,7 +185,7 @@ m_bFixed=1
 
 @}}
 [FDITEM18_]
-m_strName=tlis-trasp
+m_strName=tlis-trasp-f
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=15
@@ -195,7 +195,7 @@ m_bFixed=1
 
 @}}
 [FDITEM19_]
-m_strName=tlis-trasp-incluso
+m_strName=tlis-trasp-f-incluso
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -205,7 +205,7 @@ m_strFalse=0
 
 @}}
 [FDITEM20_]
-m_strName=tlis-trasp-escluso
+m_strName=tlis-trasp-f-escluso
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -215,9 +215,9 @@ m_strFalse=1
 
 @}}
 [FDITEM21_]
-m_strName=tlis-num-vuoto-1
-m_strRawPic=9(17)
-m_strPic=9(17)
+m_strName=tlis-trasp-c
+m_strRawPic=9
+m_strPic=9
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -225,29 +225,29 @@ m_bFixed=1
 
 @}}
 [FDITEM22_]
-m_strName=tlis-num-vuoto-2
-m_strRawPic=9(18)
-m_strPic=9(18)
-m_nItemLevel=15
+m_strName=tlis-trasp-c-incluso
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue=0
+m_strFalse=0
 {{@DataItem_m_strDescriptionFDITEM22_
 
 @}}
 [FDITEM23_]
-m_strName=tlis-num-vuoto-3
-m_strRawPic=9(18)
-m_strPic=9(18)
-m_nItemLevel=15
+m_strName=tlis-trasp-c-escluso
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue=1
+m_strFalse=1
 {{@DataItem_m_strDescriptionFDITEM23_
 
 @}}
 [FDITEM24_]
-m_strName=tlis-alfa-vuoto-1
-m_strRawPic=X(20)
-m_strPic=X(20)
+m_strName=tlis-num-vuoto-1
+m_strRawPic=9(16)
+m_strPic=9(16)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -255,9 +255,9 @@ m_bFixed=1
 
 @}}
 [FDITEM25_]
-m_strName=tlis-alfa-vuoto-2
-m_strRawPic=X(20)
-m_strPic=X(20)
+m_strName=tlis-num-vuoto-2
+m_strRawPic=9(18)
+m_strPic=9(18)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -265,13 +265,43 @@ m_bFixed=1
 
 @}}
 [FDITEM26_]
+m_strName=tlis-num-vuoto-3
+m_strRawPic=9(18)
+m_strPic=9(18)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM26_
+
+@}}
+[FDITEM27_]
+m_strName=tlis-alfa-vuoto-1
+m_strRawPic=X(20)
+m_strPic=X(20)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM27_
+
+@}}
+[FDITEM28_]
+m_strName=tlis-alfa-vuoto-2
+m_strRawPic=X(20)
+m_strPic=X(20)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM28_
+
+@}}
+[FDITEM29_]
 m_strName=tlis-alfa-vuoto-3
 m_strRawPic=X(20)
 m_strPic=X(20)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM26_
+{{@DataItem_m_strDescriptionFDITEM29_
 
 @}}
 [CStoAcucobolSL_]
@@ -280,6 +310,7 @@ m_strAssignToName="tlistini"
 m_nFormat=3
 m_nAccessMode=3
 m_strFileStatus=STATUS-tlistini
+m_nNumber=1
 m_nCompression=70
 {{@SL_m_strDescription
 

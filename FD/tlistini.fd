@@ -17,12 +17,17 @@
                    15 tlis-ora-ultima-modifica     PIC  9(8).
                    15 tlis-utente-ultima-modifica  PIC  X(10).
                10 tlis-vuoti.
-                   15 tlis-trasp       PIC  9.
-                       88 tlis-trasp-incluso VALUE IS 0    WHEN SET TO 
-           FALSE  0. 
-                       88 tlis-trasp-escluso VALUE IS 1    WHEN SET TO 
-           FALSE  1. 
-                   15 tlis-num-vuoto-1 PIC  9(17).
+                   15 tlis-trasp-f     PIC  9.
+                       88 tlis-trasp-f-incluso VALUE IS 0    WHEN SET 
+           TO FALSE  0. 
+                       88 tlis-trasp-f-escluso VALUE IS 1    WHEN SET 
+           TO FALSE  1. 
+                   15 tlis-trasp-c     PIC  9.
+                       88 tlis-trasp-c-incluso VALUE IS 0    WHEN SET 
+           TO FALSE  0. 
+                       88 tlis-trasp-c-escluso VALUE IS 1    WHEN SET 
+           TO FALSE  1. 
+                   15 tlis-num-vuoto-1 PIC  9(16).
                    15 tlis-num-vuoto-2 PIC  9(18).
                    15 tlis-num-vuoto-3 PIC  9(18).
                    15 tlis-alfa-vuoto-1            PIC  X(20).

@@ -486,10 +486,20 @@
            add 0,3  to spl-riga
 
            evaluate true
-           when tlis-trasp-incluso
-                 move "Trasporto incluso"   to spl-riga-stampa
-           when tlis-trasp-escluso 
-                 move "Trasporto escluso"   to spl-riga-stampa
+           when tlis-trasp-f-incluso
+                 move "Trasporto fornitore incluso"  to spl-riga-stampa
+           when tlis-trasp-f-escluso 
+                 move "Trasporto fornitore escluso"  to spl-riga-stampa
+           end-evaluate.
+           call "spooler" using spooler-link.
+
+           add 0,3  to spl-riga
+
+           evaluate true
+           when tlis-trasp-c-incluso
+                 move "Trasporto a cliente incluso"  to spl-riga-stampa
+           when tlis-trasp-c-escluso 
+                 move "Trasporto a ccliente escluso" to spl-riga-stampa
            end-evaluate.
            call "spooler" using spooler-link.
 
@@ -797,9 +807,10 @@ quii       call "spooler"       using spooler-link.
            move rlis-perce-pb               to rl-piombo.
            move rlis-netto                  to rl-netto.
            move rlis-PFA                    to rl-PFA.
-
-           move tlis-trasp to como-trasporto.
-           move 0          to prg-peso-utf prg-peso-non-utf.
+                             
+           move tlis-trasp-f to como-trasporto-f.
+           move tlis-trasp-c to como-trasporto-c.
+           move 0            to prg-peso-utf prg-peso-non-utf.
            perform CALCOLA-PRZ-FINITO.
            move prz-confronto               to rl-prz-confronto.
            move prz-reale                   to rl-prz-reale.
@@ -898,8 +909,9 @@ quii       call "spooler"       using spooler-link.
            move rlis-netto                  to rls-netto.
            move rlis-PFA                    to rls-PFA.
 
-           move tlis-trasp to como-trasporto.
-           move 0          to prg-peso-utf prg-peso-non-utf.
+           move tlis-trasp-f to como-trasporto-f.
+           move tlis-trasp-c to como-trasporto-c.
+           move 0            to prg-peso-utf prg-peso-non-utf.
            perform CALCOLA-PRZ-FINITO.
 
            move prz-confronto          to rls-prz-confronto
@@ -924,15 +936,14 @@ quii       call "spooler"       using spooler-link.
 
            move tlis-fornitore to desf-codice.
            move tlis-destino   to desf-prog.
-           read destinif no lock invalid continue end-read.
-           if desf-nazione = "ITA"
+           read destinif no lock invalid continue end-read.   
+           if como-trasporto-f = 1
               compute costo-trasporto = 
-                    ( art-peso-utf + 
-                      art-peso-non-utf ) * tge-trasp-italy
-           else
-              compute costo-trasporto = 
-                    ( art-peso-utf + 
-                      art-peso-non-utf ) * tge-trasp-estero
+                    ( art-peso-utf + art-peso-non-utf ) * tge-trasp-f
+           end-if.
+           if como-trasporto-c = 1
+              compute costo-trasporto = costo-trasporto +
+                    (( art-peso-utf + art-peso-non-utf ) * tge-trasp-c)
            end-if. 
            
 

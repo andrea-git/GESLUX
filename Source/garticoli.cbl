@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          garticoli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 30 dicembre 2020 17:05:03.
+       DATE-WRITTEN.        mercoledì 10 marzo 2021 12:20:34.
        REMARKS.
       *{TOTEM}END
 
@@ -437,7 +437,7 @@
        77 TMP-DataSet1-tsetmerc-BUF     PIC X(191).
        77 TMP-DataSet1-tudm-BUF     PIC X(189).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-distinteb-BUF     PIC X(672).
        77 TMP-DataSet1-rmovmag-BUF     PIC X(446).
        77 TMP-DataSet1-rordini-BUF     PIC X(667).

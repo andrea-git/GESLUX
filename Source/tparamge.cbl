@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          tparamge.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 15 dicembre 2020 10:32:36.
+       DATE-WRITTEN.        mercoledì 10 marzo 2021 11:54:59.
        REMARKS.
       *{TOTEM}END
 
@@ -113,13 +113,14 @@
        77 accept-bmp       PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
-       77 STATUS-tparamge  PIC  X(2).
        77 STATUS-tivaese   PIC  X(2).
            88 Valid-STATUS-tivaese VALUE IS "00" THRU "09". 
        77 Form1-St-1-Handle
                   USAGE IS HANDLE OF STATUS-BAR.
        77 lab-iva-buf      PIC  X(100).
        77 lab-iva-omag-buf PIC  X(100).
+       77 STATUS-tparamge  PIC  X(2).
+           88 Valid-STATUS-tparamge VALUE IS "00" THRU "09". 
        77 STATUS-clienti   PIC  X(2).
            88 Valid-STATUS-clienti VALUE IS "00" THRU "09". 
        77 lab-cli-buf      PIC  X(100).
@@ -167,8 +168,8 @@
                10 old-tge-forn-corrisp         PIC  9(6).
                10 old-tge-perce-arrot-bancale  PIC  9(3)v99.
                10 old-tge-perce-fido           PIC  s9(3)v99.
-               10 old-tge-trasp-italy          PIC  9(6)v999.
-               10 old-tge-trasp-estero         PIC  9(6)v999.
+               10 old-tge-trasp-f  PIC  9(6)v999.
+               10 old-tge-trasp-c  PIC  9(6)v999.
                10 old-tge-limite-kg-old        PIC  9(3)v999.
                10 old-tge-vettore-std-old      PIC  9(5).
                10 old-tge-gg-plus-consegna-old PIC  9(3).
@@ -317,7 +318,7 @@
        77 Form1-MULKEY-TMPBUF   PIC X(815).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-tivaese-BUF     PIC X(1380).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-tcaumag-BUF     PIC X(254).
        77 TMP-DataSet1-tcodpag-BUF     PIC X(1380).
        77 TMP-DataSet1-lisagente-BUF     PIC X(245).
@@ -1712,7 +1713,7 @@
            WIDTH-IN-CELLS,
            LEFT,
            TRANSPARENT,
-           TITLE "Trasporto: € al Kg. Italia",
+           TITLE "Trasporto fornitore",
            .
 
       * LABEL
@@ -1729,7 +1730,7 @@
            WIDTH-IN-CELLS,
            LEFT,
            TRANSPARENT,
-           TITLE "Trasporto: € al Kg. Estero",
+           TITLE "Trasporto al cliente",
            .
 
       * LABEL
@@ -2813,12 +2814,12 @@
            OPEN  I-O tparamge
            IF STATUS-tparamge = "35"
               OPEN OUTPUT tparamge
-                IF ( STATUS-tparamge(1:1) = 0 )
+                IF Valid-STATUS-tparamge
                    CLOSE tparamge
                    OPEN I-O tparamge
                 END-IF
            END-IF
-           IF NOT ( STATUS-tparamge(1:1) = 0 )
+           IF NOT Valid-STATUS-tparamge
               PERFORM  Form1-EXTENDED-FILE-STATUS
               GO TO EXIT-STOP-ROUTINE
            END-IF
@@ -4641,14 +4642,14 @@
            PERFORM Form1-DUMMY-FIRST
            PERFORM DataSet1-tparamge-INITSTART
            PERFORM DataSet1-tparamge-START
-           IF NOT ( STATUS-tparamge(1:1) = 0 )
+           IF NOT Valid-STATUS-tparamge
               PERFORM Form1-Extended-File-Status
               EXIT PARAGRAPH
            END-IF
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforeFirst>
       * <TOTEM:END>
            PERFORM DataSet1-tparamge-Read-Next
-           IF NOT ( STATUS-tparamge(1:1) = 0 )
+           IF NOT Valid-STATUS-tparamge
               PERFORM Form1-Extended-File-Status
               EXIT PARAGRAPH
            END-IF
@@ -4661,14 +4662,14 @@
        Form1-Previous.
               PERFORM Form1-Buf-To-Fld
               PERFORM DataSet1-tparamge-START-LESS
-           IF NOT ( STATUS-tparamge(1:1) = 0 )
+           IF NOT Valid-STATUS-tparamge
               PERFORM Form1-Extended-File-Status
               EXIT PARAGRAPH
            END-IF
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforePrevious>
       * <TOTEM:END>
            PERFORM DataSet1-tparamge-Read-Prev
-           IF NOT ( STATUS-tparamge(1:1) = 0 )
+           IF NOT Valid-STATUS-tparamge
               PERFORM Form1-Extended-File-Status
               EXIT PARAGRAPH
            END-IF
@@ -4682,14 +4683,14 @@
        Form1-Next.
               PERFORM Form1-Buf-To-Fld
               PERFORM DataSet1-tparamge-START-GREATER
-           IF NOT ( STATUS-tparamge(1:1) = 0 )
+           IF NOT Valid-STATUS-tparamge
               PERFORM Form1-Extended-File-Status
               EXIT PARAGRAPH
            END-IF
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforeNext>
       * <TOTEM:END>
            PERFORM DataSet1-tparamge-Read-Next
-           IF NOT ( STATUS-tparamge(1:1) = 0 )
+           IF NOT Valid-STATUS-tparamge
               PERFORM Form1-Extended-File-Status
               EXIT PARAGRAPH
            END-IF
@@ -4704,14 +4705,14 @@
            PERFORM Form1-DUMMY-LAST
            PERFORM DataSet1-tparamge-INITEND
            PERFORM DataSet1-tparamge-START-NOTGREATER
-           IF NOT ( STATUS-tparamge(1:1) = 0 )
+           IF NOT Valid-STATUS-tparamge
               PERFORM Form1-Extended-File-Status
               EXIT PARAGRAPH
            END-IF
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforeLast>
       * <TOTEM:END>
            PERFORM DataSet1-tparamge-Read-Prev
-           IF NOT ( STATUS-tparamge(1:1) = 0 )
+           IF NOT Valid-STATUS-tparamge
               PERFORM Form1-Extended-File-Status
               EXIT PARAGRAPH
            END-IF
@@ -4734,7 +4735,7 @@
            .
 
        Form1-IUD-Display.
-           IF ( STATUS-tparamge(1:1) = 0 )
+           IF Valid-STATUS-tparamge
               PERFORM Form1-ALLGRID-RESET
               PERFORM Form1-Fld-To-Buf
               PERFORM Form1-NAVI-FOR-MASTERGRID
@@ -4762,7 +4763,7 @@
       * <TOTEM:END>
       * write
            PERFORM DataSet1-tparamge-Rec-Write
-           IF ( STATUS-tparamge(1:1) = 0 )
+           IF Valid-STATUS-tparamge
               PERFORM Form1-RESUMMARY-INS
               PERFORM Form1-DUMMY-UPDATE-INIT
               MOVE "301" TO TOTEM-MSG-ID
@@ -4776,7 +4777,7 @@
        Form1-Update.
            PERFORM Form1-Buf-To-Fld
            PERFORM DataSet1-tparamge-START              
-           IF NOT ( STATUS-tparamge(1:1) = 0 )
+           IF NOT Valid-STATUS-tparamge
               PERFORM Form1-Extended-File-Status
               EXIT PARAGRAPH
            END-IF
@@ -4793,7 +4794,7 @@
       * <TOTEM:END>
       * write
            PERFORM DataSet1-tparamge-Rec-Rewrite
-           IF ( STATUS-tparamge(1:1) = 0 )
+           IF Valid-STATUS-tparamge
               PERFORM Form1-RESUMMARY-DEL
               PERFORM Form1-DUMMY-UPDATE-INIT
               MOVE "302" TO TOTEM-MSG-ID
@@ -4818,7 +4819,7 @@
       * delete
            PERFORM Form1-Buf-To-Fld
            PERFORM DataSet1-tparamge-Rec-Delete
-           IF ( STATUS-tparamge(1:1) = 0 )
+           IF Valid-STATUS-tparamge
               PERFORM Form1-CLEAR
               PERFORM Form1-DUMMY-DELETE-INIT
               MOVE "303" TO TOTEM-MSG-ID
@@ -4833,7 +4834,7 @@
            .
 
        Form1-ERR-CHECKING.
-           IF ( STATUS-tparamge(1:1) = 0 )
+           IF Valid-STATUS-tparamge
               PERFORM Form1-SHOW-MSG-ROUTINE
            ELSE
               PERFORM Form1-Extended-File-Status
@@ -5978,9 +5979,9 @@
       * DB_Entry-Field : ef-pile
            MOVE ef-pile-BUF TO tge-reg-PILE
       * DB_Entry-Field : ef-perce-fidoa
-           MOVE ef-perce-fidoa-BUF TO tge-trasp-italy
+           MOVE ef-perce-fidoa-BUF TO tge-trasp-f
       * DB_Entry-Field : ef-perce-fidob
-           MOVE ef-perce-fidob-BUF TO tge-trasp-estero
+           MOVE ef-perce-fidob-BUF TO tge-trasp-c
       * DB_Entry-Field : ef-gg-chiuso
            MOVE ef-gg-chiuso-BUF TO tge-gg-master-chiuso
       * DB_Entry-Field : ef-vet
@@ -6090,9 +6091,9 @@
       * DB_Entry-Field : ef-pile
            MOVE tge-reg-PILE TO ef-pile-BUF
       * DB_Entry-Field : ef-perce-fidoa
-           MOVE tge-trasp-italy TO ef-perce-fidoa-BUF
+           MOVE tge-trasp-f TO ef-perce-fidoa-BUF
       * DB_Entry-Field : ef-perce-fidob
-           MOVE tge-trasp-estero TO ef-perce-fidob-BUF
+           MOVE tge-trasp-c TO ef-perce-fidob-BUF
       * DB_Entry-Field : ef-gg-chiuso
            MOVE tge-gg-master-chiuso TO ef-gg-chiuso-BUF
       * DB_Entry-Field : ef-vet
@@ -6483,14 +6484,14 @@
               move 78-ID-ef-pile to store-id 
            end-if
 
-           if tge-trasp-italy not = old-tge-trasp-italy
+           if tge-trasp-f not = old-tge-trasp-f
               and SiSalvato
               set NoSalvato to true
               |78-ID-ef-perce-fidoa è l'ID del campo ef-perce-fidoa
               move 78-ID-ef-perce-fidoa to store-id 
            end-if
 
-           if tge-trasp-estero not = old-tge-trasp-estero
+           if tge-trasp-c not = old-tge-trasp-c
               and SiSalvato
               set NoSalvato to true
               |78-ID-ef-perce-fidob è l'ID del campo ef-perce-fidob
@@ -6628,13 +6629,13 @@
            MOVE TMP-Form1-tparamge-RESTOREBUF TO
               tge-rec OF tparamge
            PERFORM DataSet1-tparamge-START
-           IF ( STATUS-tparamge(1:1) = 0 )
+           IF Valid-STATUS-tparamge
               PERFORM DataSet1-tparamge-Read-Next
            ELSE
               PERFORM DataSet1-tparamge-INITREC
            END-IF
-           PERFORM UNTIL NOT ( STATUS-tparamge(1:1) = 0 ) OR
-              (( STATUS-tparamge(1:1) = 0 ) AND
+           PERFORM UNTIL NOT Valid-STATUS-tparamge OR
+              (Valid-STATUS-tparamge AND
                  tge-rec OF tparamge = 
                    TMP-Form1-tparamge-RESTOREBUF)
               PERFORM DataSet1-tparamge-Read-Next
@@ -7107,9 +7108,9 @@
       -    "progressivo" to TOTEM-HINT-TEXT
            WHEN 5024 MOVE "Digitare la Percentuale" to TOTEM-HINT-TEXT
            WHEN 5025 MOVE "Digitare il registro PILE" to TOTEM-HINT-TEXT
-           WHEN 5026 MOVE "Digitare il costo del trasporto in Italia" 
+           WHEN 5026 MOVE "Digitare il costo del trasporto fornitore" 
            to TOTEM-HINT-TEXT
-           WHEN 5027 MOVE "Digitare il costo del trasporto all'estero" 
+           WHEN 5027 MOVE "Digitare il costo del trasporto al cliente" 
            to TOTEM-HINT-TEXT
            WHEN 29 MOVE "I master aventi data di creazione < (oggi - que
       -    "sto valore) si chiudono senza MAI riaprirsi." to 
@@ -8688,13 +8689,13 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
-              INQUIRE ef-perce-fidoa, VALUE IN tge-trasp-italy
+              INQUIRE ef-perce-fidoa, VALUE IN tge-trasp-f
               SET TOTEM-CHECK-OK TO FALSE
               PERFORM ef-perce-fidoa-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
-              INQUIRE ef-perce-fidob, VALUE IN tge-trasp-estero
+              INQUIRE ef-perce-fidob, VALUE IN tge-trasp-c
               SET TOTEM-CHECK-OK TO FALSE
               PERFORM ef-perce-fidob-VALIDATION
               IF NOT TOTEM-CHECK-OK

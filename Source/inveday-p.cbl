@@ -726,14 +726,14 @@ LUBEXX                 end-if
                                move cli-nazione to desf-nazione
                           end-read
                           move rlis-codice to tlis-codice
-                          read tlistini no lock
-                          move tlis-trasp to como-trasporto
+                          read tlistini no lock                
+                          move tlis-trasp-f to como-trasporto-f
+                          move tlis-trasp-c to como-trasporto-c
                           perform CALCOLA-PRZ-FINITO
                        end-if
                     end-if
                  end-perform
            end-start.
-
 
       ***---
        DESCRIZIONE-IMBALLO.
@@ -1531,13 +1531,14 @@ LUBEXX*****                   |Devo utilizzare il peso della riga
            move 0 to costo-trasporto.
            move spaces to tge-chiave.
            read tparamge no lock.
-           if desf-nazione = "ITA"
+           if como-trasporto-f = 1
               compute costo-trasporto = 
-                      prg-peso * tge-trasp-italy
-           else
-              compute costo-trasporto = 
-                      prg-peso * tge-trasp-estero
-           end-if.     
+                      prg-peso * tge-trasp-f
+           end-if.
+           if como-trasporto-c = 1
+              compute costo-trasporto = costo-trasporto +
+                    ( prg-peso * tge-trasp-c)
+           end-if. 
   
       ***---
        EXIT-PGM.

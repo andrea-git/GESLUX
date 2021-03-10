@@ -810,8 +810,9 @@ LUBEXX        if mese-end = 12
 
            move rlis-tipo-tratt-imposte to imf-codice.
            read impforn no lock invalid continue end-read.
-
-           move tlis-trasp to como-trasporto.
+                                                
+           move tlis-trasp-f to como-trasporto-f.
+           move tlis-trasp-c to como-trasporto-c.
 
            perform CALCOLA-PRZ-FINITO.
            add 0,0005         to prz-confronto.
@@ -837,15 +838,14 @@ LUBEXX        if mese-end = 12
 
            move tlis-fornitore to desf-codice.
            move tlis-destino   to desf-prog.
-           read destinif no lock invalid continue end-read.
-           if desf-nazione = "ITA"
+           read destinif no lock invalid continue end-read.  
+           if como-trasporto-f = 1
               compute costo-trasporto = 
-                    ( art-peso-utf + 
-                      art-peso-non-utf ) * tge-trasp-italy
-           else
-              compute costo-trasporto = 
-                    ( art-peso-utf + 
-                      art-peso-non-utf ) * tge-trasp-estero
+                    ( art-peso-utf + art-peso-non-utf ) * tge-trasp-f
+           end-if.
+           if como-trasporto-c = 1
+              compute costo-trasporto = costo-trasporto +
+                    (( art-peso-utf + art-peso-non-utf ) * tge-trasp-c)
            end-if. 
 
       ***---
