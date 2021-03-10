@@ -275,7 +275,7 @@ LUBEXX 78  MaxRowsPerPage                value    26.
            05 r-ast           pic x.
            05 filler          pic X(1)  value spaces.
            05 r-art-codfrn    pic x(15).
-           05 filler          pic X(3)  value spaces.
+           05 filler          pic X(2)  value spaces.
       *     05 r-peso-utf      pic Z(3),Z(3).
       *     05 filler          pic X(2)  value spaces.
            05 r-udm           pic X(2).
@@ -1551,7 +1551,7 @@ LUBEXX           move CourierNew16B to spl-hfont
 
            perform RELAZIONE-RORDINI-ARTICOLI.
 
-           add  0,5                 to spl-riga.
+           add  0,4                 to spl-riga.
 
            move 1                   to spl-colonna.
 
@@ -1616,14 +1616,16 @@ BLISTR     else
            move art-unita-di-misura to r-udm.
 
            move riga-corpo          to spl-riga-stampa. 
-LUBEXX     move CourierNew8   to spl-hfont.
+LUBEXX     move CourierNew8         to spl-hfont.
            call "spooler"        using spooler-link.
 
 LUBEXX     move 52            to spl-tipo-colonna.
 LUBEXX     move CourierNew10B to spl-hfont.
 LUBEXX     move ror-qta       to r-qta.
 LUBEXX     move riga-qta      to spl-riga-stampa.
-LUBEXX     call "spooler"  using spooler-link.
+           subtract 0,05 from spl-riga.
+LUBEXX     call "spooler"  using spooler-link.   
+           add 0,05 to spl-riga.
 LUBEXX     initialize spl-riga-stampa.
 LUBEXX     move 0             to spl-tipo-colonna.
 LUBEXX     move CourierNew10  to spl-hfont.
