@@ -1017,21 +1017,29 @@
               if el-gdo(idx) = spaces
                  exit perform
               end-if         
-              move low-value to lst-rec
+              move low-value   to lst-rec
               move el-gdo(idx) to lst-gdo
               move art-codice  to lst-articolo
+              move high-value  to lst-data
               set trovato to false
               start listini key >= lst-k-articolo   
                     invalid continue
                 not invalid
                     perform until 1 = 2
-                       read listini next at end exit perform end-read
+                       read listini previous 
+                         at end exit perform 
+                       end-read
                        if lst-gdo      not = el-gdo(idx) or
                           lst-articolo not = art-codice
                           exit perform
                        end-if
-                       if lst-data <= como-data
-                          set trovato to true
+                       |Se il più recente non è FA
+                       if lst-data <= como-data 
+                          if lst-prezzo = 99999999,99
+                             set trovato to false
+                          else                       
+                             set trovato to true
+                          end-if
                           exit perform
                        end-if
                     end-perform

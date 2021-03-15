@@ -515,8 +515,9 @@
            move ilf-ini-val     to tlis-ini-val  
            move ilf-fine-val    to tlis-fine-val 
            move ilf-note        to tlis-descrizione
-
-           set tlis-trasp-escluso  to true
+                            
+           set tlis-trasp-f-escluso  to true
+           set tlis-trasp-c-escluso  to true
            
            move como-data to tlis-data-creazione
                              tlis-data-ultima-modifica
@@ -741,7 +742,7 @@
               move rl-lead-time          to rlis-lead-time convert
 
               move rl-tipo-imposte    to rlis-tipo-tratt-imposte convert
-              move 0 to como-trasporto
+              move 0 to como-trasporto-f como-trasporto-c
               move rl-pfa to rlis-pfa
 
               move costi-agg             to rlis-costi-agg-tot

@@ -106,13 +106,9 @@
                        20 tor-fattura-from-data        PIC  9(8).
                        20 tor-fattura-from-numero      PIC  x(8).
                    15 tor-gdo          PIC  X(5).
-      *(( XFD NAME = tor-gdo_1 ))
                    15 tor-tipocli      PIC  X(2).
-      *(( XFD NAME = tor-gdo_1_1 ))
                    15 tor-note-bolla-1 PIC  X(500).
-      *(( XFD NAME = tor-gdo_1_1_1 ))
                    15 tor-note-bolla-2 PIC  X(500).
-      *(( XFD NAME = tor-gdo_1_1_2 ))
                    15 tor-causale-orig PIC  X(4).
       *(( XFD NAME = tor-gdo_1_1_2_1 ))
                    15 FILLER           PIC  X(1996).

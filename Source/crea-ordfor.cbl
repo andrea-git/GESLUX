@@ -1734,7 +1734,7 @@
 
            move rlis-codice to tlis-codice.
            read tlistini no lock invalid continue end-read.
-           if tlis-trasp-escluso
+           if tlis-trasp-f-escluso
               set tof-franco-part-si to true
            end-if.
            rewrite tof-rec  invalid continue end-rewrite. 
@@ -1922,7 +1922,7 @@
 
                  move rlis-codice to tlis-codice
                  read tlistini no lock invalid continue end-read
-                 if tlis-trasp-escluso
+                 if tlis-trasp-f-escluso
                     set tof-franco-part-si to true
                  end-if
                  rewrite tof-rec  invalid continue end-rewrite
@@ -2200,7 +2200,7 @@
 
                       move tra-cod-listino  to tlis-codice
                       read tlistini no lock invalid continue end-read
-                      if tlis-trasp-escluso
+                      if tlis-trasp-f-escluso
                          set tof-franco-part-si to true
                       end-if
                       move tlis-fornitore   to tof-cod-forn

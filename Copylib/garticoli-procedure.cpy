@@ -643,32 +643,32 @@
                    display message box "Codice magazzino NON valido"
                            title = tit-err
                            icon MB-WARNING-ICON
-                else
-                   if vecchio  
-                      set tutto-ok to true
-                      initialize prg-chiave 
-                                  replacing numeric data by zeroes
-                                       alphanumeric data by spaces
-                      move art-codice of articoli to prg-cod-articolo
-                      move mag-codice to prg-cod-magazzino
-                      start progmag key >= prg-chiave
-                            invalid set errori to true
-                        not invalid
-                            read progmag next
-                            if prg-cod-articolo  not = 
-                               art-codice of articoli or
-                               prg-cod-magazzino not = mag-codice
-                               set errori to true
-                            end-if
-                      end-start
-                      if errori
-                         move 78-ID-ef-mag to CONTROL-ID
-                         display message 
-                                "Nessun progressivo su questo magazzino"
-                                   title tit-err
-                                    icon 2
-                      end-if
-                   end-if
+      *****          else
+      *****             if vecchio  
+      *****                set tutto-ok to true
+      *****                initialize prg-chiave 
+      *****                            replacing numeric data by zeroes
+      *****                                 alphanumeric data by spaces
+      *****                move art-codice of articoli to prg-cod-articolo
+      *****                move mag-codice to prg-cod-magazzino
+      *****                start progmag key >= prg-chiave
+      *****                      invalid set errori to true
+      *****                  not invalid
+      *****                      read progmag next
+      *****                      if prg-cod-articolo  not = 
+      *****                         art-codice of articoli or
+      *****                         prg-cod-magazzino not = mag-codice
+      *****                         set errori to true
+      *****                      end-if
+      *****                end-start
+      *****                if errori
+      *****                   move 78-ID-ef-mag to CONTROL-ID
+      *****                   display message 
+      *****                          "Nessun progressivo su questo magazzino"
+      *****                             title tit-err
+      *****                              icon 2
+      *****                end-if
+      *****             end-if
                 end-if
 
            |78-ID-ef-iva è l'ID del control ef-iva
