@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 17 febbraio 2021 01:23:21.
+       DATE-WRITTEN.        martedì 16 marzo 2021 01:13:14.
        REMARKS.
       *{TOTEM}END
 
@@ -178,6 +178,7 @@
                   VALUE IS 0.
        77 mult PIC  9v99.
        77 tot-righe-edi    PIC  9(10).
+       77 tot-doc          PIC  9(10)v99.
        77 riga-edi         PIC  9(10).
        77 iva-std          PIC  x(3).
        77 link-path        PIC  x(512).
@@ -777,6 +778,7 @@
        77 AGGIUNGI-BMP     PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
+       77 lab-tot-buf      PIC  zz.zzz.zz9,99.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -882,7 +884,7 @@
           88 form-gen-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 STATUS-scr-fine-FLAG-REFRESH PIC  9.
           88 scr-fine-FLAG-REFRESH  VALUE 1 FALSE 0. 
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-EDI-mtordini-BUF     PIC X(7911).
        77 TMP-DataSet1-agenti-BUF     PIC X(1233).
@@ -3694,7 +3696,7 @@
            Label, 
            COL 46,14, 
            LINE 29,40,
-           LINES 1,31 ,
+           LINES 1,33 ,
            SIZE 10,00 ,
            COLOR IS 1,
            ID IS 163,
@@ -4050,6 +4052,53 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Evadi dal",
+           .
+
+      * LABEL
+       05
+           Screen2-La-8aa, 
+           Label, 
+           COL 120,86, 
+           LINE 29,40,
+           LINES 1,33 ,
+           SIZE 11,00 ,
+           COLOR IS 5,
+           ID IS 24,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE "Totale ordine",
+           .
+
+      * LABEL
+       05
+           lab-tot, 
+           Label, 
+           COL 131,29, 
+           LINE 29,40,
+           LINES 1,33 ,
+           SIZE 12,00 ,
+           COLOR IS 5,
+           ID IS 24,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           TITLE lab-tot-buf,
+           .
+
+      * LABEL
+       05
+           lab-tota, 
+           Label, 
+           COL 144,14, 
+           LINE 29,40,
+           LINES 1,33 ,
+           SIZE 2,00 ,
+           COLOR IS 5,
+           ID IS 24,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           LEFT,
+           TITLE "€",
            .
 
       * TOOLBAR
@@ -14298,7 +14347,7 @@
            perform ABILITAZIONI.
            accept data-oggi from century-date.
 
-           perform CURRENT-RECORD.
+           perform CURRENT-RECORD.  
 
       *****     
       *****             15 emto-righe       PIC  9.
@@ -16388,6 +16437,37 @@
                         cell-color = 78-colore-fatt-tot
               end-if
            end-if 
+           .
+      * <TOTEM:END>
+
+       CALCOLA-TOTALE.
+      * <TOTEM:PARA. CALCOLA-TOTALE>
+           move 0 to tot-doc.
+           inquire form1-gd-1, last-row in tot-righe.
+           perform varying riga from 2 by 1 
+                     until riga > tot-righe                      
+              inquire form1-gd-1(riga, 7),  cell-data in como-qta
+              inquire form1-gd-1(riga, 10), cell-data in como-prz
+              compute tot-doc = tot-doc + como-qta * como-prz
+           end-perform.
+           if emto-cod-ese-iva = spaces 
+              if emto-causale = tge-causale-ordini-std
+                 move "IV"            to tbliv-codice1
+                 move tge-cod-iva-std to tbliv-codice2
+                 read tivaese no lock
+                 compute tot-doc rounded = 
+                         tot-doc * ( 1 + tbliv-percentuale / 100 )
+              end-if
+           else
+              move "IV"             to tbliv-codice1
+              move emto-cod-ese-iva to tbliv-codice2
+              read tivaese no lock
+              compute tot-doc rounded = 
+                      tot-doc * ( 1 + tbliv-percentuale / 100 )
+           end-if.
+                 
+           move tot-doc to lab-tot-buf.
+           display lab-tot 
            .
       * <TOTEM:END>
 
@@ -18645,7 +18725,9 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
            move 78-ID-form1-gd-1 to control-id.
            move 4 to accept-control.
 
-           perform SPOSTAMENTO 
+           perform SPOSTAMENTO.     
+
+           perform CALCOLA-TOTALE 
            .
       * <TOTEM:END>
 
@@ -20823,7 +20905,9 @@ LUBEXX                      read clienti no lock invalid continue
                    set RigaCambiata to true
                 end-if
 
-           end-evaluate 
+           end-evaluate.
+
+           perform CALCOLA-TOTALE 
            .
       * <TOTEM:END>
        pb-sia-BeforeProcedure.
@@ -20890,7 +20974,8 @@ LUBEXX                      read clienti no lock invalid continue
                  set RigaCambiata to true
               end-if
 
-           end-if 
+           end-if.      
+           perform CALCOLA-TOTALE 
            .
       * <TOTEM:END>
        pb-elimina-BeforeProcedure.
@@ -21039,7 +21124,8 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
                  move 1 to stato-zoom
               end-if
               delete file tmp-progmag-zoom
-           end-if.
+           end-if.       
+           perform CALCOLA-TOTALE.
 
       ***---
        COMPONI-TMP.
@@ -21476,7 +21562,8 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
                                  cursor-x 78-col-art
               move 78-ID-form1-gd-1 to control-id
               move 4                to accept-control
-           end-if 
+           end-if.           
+           perform CALCOLA-TOTALE 
            .
       * <TOTEM:END>
 
