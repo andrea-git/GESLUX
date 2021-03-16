@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="fatturapa_v1.2.xsl"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 http://www.fatturapa.gov.it/export/fatturazione/sdi/fatturapa/v1.2/Schema_del_file_xml_FatturaPA_versione_1.2.xsd">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>04628290159</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>03653</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>0000000</CodiceDestinatario>
+      <PECDestinatario>keideasrl@pec.it</PECDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>00785630963</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>LUBEX SPA</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Giuseppe di Vittorio</Indirizzo>
+        <NumeroCivico>13</NumeroCivico>
+        <CAP>20090</CAP>
+        <Comune>Vimodrone</Comune>
+        <Provincia>MI</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>01969340817</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>KEIDEA SRL - PET</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CADUTI DI NASSIRYA</Indirizzo>
+        <CAP>91022</CAP>
+        <Comune>CASTELVETRANO</Comune>
+        <Provincia>TP</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2021-01-14</Data>
+        <Numero>1</Numero>
+        <ImportoTotaleDocumento>201.20</ImportoTotaleDocumento>
+        <Causale>VENDITA da EXTRA DEPOSITO </Causale>
+      </DatiGeneraliDocumento>
+      <DatiDDT>
+        <NumeroDDT>13026</NumeroDDT>
+        <DataDDT>2021-01-05</DataDDT>
+      </DatiDDT>
+      <DatiTrasporto>
+        <DatiAnagraficiVettore>
+          <IdFiscaleIVA>
+            <IdPaese>IT</IdPaese>
+            <IdCodice>00000000000</IdCodice>
+          </IdFiscaleIVA>
+          <Anagrafica>
+            <Denominazione>DIRETTO</Denominazione>
+          </Anagrafica>
+        </DatiAnagraficiVettore>
+        <IndirizzoResa>
+          <Indirizzo>VIA CADUTI DI NASSIRYA</Indirizzo>
+          <CAP>91022</CAP>
+          <Comune>CASTELVETRANO</Comune>
+          <Provincia>TP</Provincia>
+          <Nazione>IT</Nazione>
+        </IndirizzoResa>
+      </DatiTrasporto>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>25153</CodiceValore>
+        </CodiceArticolo>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8007520018067</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>BUON DOG BOCC POLL VERD G 1250</Descrizione>
+        <Quantita>24.00</Quantita>
+        <PrezzoUnitario>0.78</PrezzoUnitario>
+        <PrezzoTotale>18.72</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>RSD</TipoDato>
+          <RiferimentoTesto>KEIDEA SRL - PET</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>25151</CodiceValore>
+        </CodiceArticolo>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8007520017008</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>BUON DOG BOCCONI CARNE G 1250</Descrizione>
+        <Quantita>48.00</Quantita>
+        <PrezzoUnitario>0.78</PrezzoUnitario>
+        <PrezzoTotale>37.44</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>RSD</TipoDato>
+          <RiferimentoTesto>KEIDEA SRL - PET</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>25154</CodiceValore>
+        </CodiceArticolo>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8007520018029</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>BUON DOG BOCCI POL TACC G 1250</Descrizione>
+        <Quantita>24.00</Quantita>
+        <PrezzoUnitario>0.78</PrezzoUnitario>
+        <PrezzoTotale>18.72</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>RSD</TipoDato>
+          <RiferimentoTesto>KEIDEA SRL - PET</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>25152</CodiceValore>
+        </CodiceArticolo>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8007520017152</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>BUON DOG BOCC CARN VER G 1250</Descrizione>
+        <Quantita>24.00</Quantita>
+        <PrezzoUnitario>0.78</PrezzoUnitario>
+        <PrezzoTotale>18.72</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>RSD</TipoDato>
+          <RiferimentoTesto>KEIDEA SRL - PET</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>25395</CodiceValore>
+        </CodiceArticolo>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8007520017183</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>BUON CAT BOCCONI MANZO G 405</Descrizione>
+        <Quantita>24.00</Quantita>
+        <PrezzoUnitario>0.30</PrezzoUnitario>
+        <PrezzoTotale>7.20</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>RSD</TipoDato>
+          <RiferimentoTesto>KEIDEA SRL - PET</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>25397</CodiceValore>
+        </CodiceArticolo>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8007520017251</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>BUON CAT BOCCONI PESCE G 405</Descrizione>
+        <Quantita>24.00</Quantita>
+        <PrezzoUnitario>0.30</PrezzoUnitario>
+        <PrezzoTotale>7.20</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>RSD</TipoDato>
+          <RiferimentoTesto>KEIDEA SRL - PET</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>7</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>25396</CodiceValore>
+        </CodiceArticolo>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8007520017268</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>BUON CAT BOCCONI POLLO G 405</Descrizione>
+        <Quantita>24.00</Quantita>
+        <PrezzoUnitario>0.30</PrezzoUnitario>
+        <PrezzoTotale>7.20</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>RSD</TipoDato>
+          <RiferimentoTesto>KEIDEA SRL - PET</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>8</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>25253</CodiceValore>
+        </CodiceArticolo>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8007520022200</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>BUON CAT CROCCA POL TACCH KG 2</Descrizione>
+        <Quantita>6.00</Quantita>
+        <PrezzoUnitario>1.93</PrezzoUnitario>
+        <PrezzoTotale>11.58</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>RSD</TipoDato>
+          <RiferimentoTesto>KEIDEA SRL - PET</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>9</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>25252</CodiceValore>
+        </CodiceArticolo>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8007520022217</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>BUON CAT CROCCANTINI COCK KG 2</Descrizione>
+        <Quantita>6.00</Quantita>
+        <PrezzoUnitario>1.93</PrezzoUnitario>
+        <PrezzoTotale>11.58</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>RSD</TipoDato>
+          <RiferimentoTesto>KEIDEA SRL - PET</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>10</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>25400</CodiceValore>
+        </CodiceArticolo>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8007520017145</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>BUON CAT PATE TONN SALM G 100</Descrizione>
+        <Quantita>32.00</Quantita>
+        <PrezzoUnitario>0.24</PrezzoUnitario>
+        <PrezzoTotale>7.68</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>RSD</TipoDato>
+          <RiferimentoTesto>KEIDEA SRL - PET</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>11</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>25398</CodiceValore>
+        </CodiceArticolo>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8007520018104</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>BUON CAT BOCCONI CONIG G 405</Descrizione>
+        <Quantita>24.00</Quantita>
+        <PrezzoUnitario>0.30</PrezzoUnitario>
+        <PrezzoTotale>7.20</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>RSD</TipoDato>
+          <RiferimentoTesto>KEIDEA SRL - PET</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>12</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>25038</CodiceValore>
+        </CodiceArticolo>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8007520017169</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>BUON DOG CROCCHETTE KG 4</Descrizione>
+        <Quantita>4.00</Quantita>
+        <PrezzoUnitario>2.92</PrezzoUnitario>
+        <PrezzoTotale>11.68</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>RSD</TipoDato>
+          <RiferimentoTesto>KEIDEA SRL - PET</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <ImponibileImporto>164.92</ImponibileImporto>
+        <Imposta>36.28</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP01</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP12</ModalitaPagamento>
+        <DataScadenzaPagamento>2021-03-31</DataScadenzaPagamento>
+        <ImportoPagamento>201.20</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

@@ -2534,26 +2534,30 @@
       ***---
        NORMALIZZA-DES.
            inspect como-des replacing trailing spaces by low-value.
-           inspect como-des replacing all "&" by "e".
-           inspect como-des replacing all "€" by "E".
-           inspect como-des replacing all "°" by " ".
-           inspect como-des replacing all "à" by "a".
-           inspect como-des replacing all "è" by "e".
-           inspect como-des replacing all "é" by "e".
+           inspect como-des replacing all "&"   by "e".
+           inspect como-des replacing all "€"   by "E".
+           inspect como-des replacing all "°"   by " ".
+           inspect como-des replacing all "à"   by "a".
+           inspect como-des replacing all "è"   by "e".
+           inspect como-des replacing all "é"   by "e".
                                                    
-           inspect como-des replacing all "/" by " ".
-           inspect como-des replacing all "." by " ".
-           inspect como-des replacing all "@" by " ".
-           inspect como-des replacing all "#" by " ".
-           inspect como-des replacing all "'" by " ".
-           inspect como-des replacing all "\" by " ".
-           inspect como-des replacing all "È" by " ".
-           inspect como-des replacing all "Ò" by " ".
-           inspect como-des replacing all "À" by " ".
-           inspect como-des replacing all "Ù" by " ".
-           inspect como-des replacing all "Ì" by " ".
-           inspect como-des replacing all "%" by " ".
-           inspect como-des replacing all "ø" by " ".
+           inspect como-des replacing all "/"   by " ".
+           inspect como-des replacing all "."   by " ".
+           inspect como-des replacing all "@"   by " ".
+           inspect como-des replacing all "#"   by " ".
+           inspect como-des replacing all "'"   by " ".
+           inspect como-des replacing all "\"   by " ".
+           inspect como-des replacing all "È"   by " ".
+           inspect como-des replacing all "Ò"   by " ".
+           inspect como-des replacing all "À"   by " ".
+           inspect como-des replacing all "Ù"   by " ".
+           inspect como-des replacing all "Ì"   by " ".
+           inspect como-des replacing all "%"   by " ".
+           inspect como-des replacing all "ø"   by " ". 
+           inspect como-des replacing all "<"   by " ".
+           inspect como-des replacing all ">"   by " ".
+           inspect como-des replacing all x"22" by " ".
+           inspect como-des replacing all x"27" by " ".
                                                          
            inspect como-des replacing all x"0d" by x"20".
            inspect como-des replacing all x"0a" by x"20".
@@ -2561,26 +2565,30 @@
       ***---
        NORMALIZZA-NOTE.
            inspect como-note replacing trailing spaces by low-value.
-           inspect como-note replacing all "&" by "e".
-           inspect como-note replacing all "€" by "E".
-           inspect como-note replacing all "°" by " ".
-           inspect como-note replacing all "à" by "a".
-           inspect como-note replacing all "è" by "e".
-           inspect como-note replacing all "é" by "e".
-                                                   
-           inspect como-note replacing all "/" by " ".
-           inspect como-note replacing all "." by " ".
-           inspect como-note replacing all "@" by " ".
-           inspect como-note replacing all "#" by " ".
-           inspect como-note replacing all "'" by " ".
-           inspect como-note replacing all "\" by " ".
-           inspect como-note replacing all "È" by " ".
-           inspect como-note replacing all "Ò" by " ".
-           inspect como-note replacing all "À" by " ".
-           inspect como-note replacing all "Ù" by " ".
-           inspect como-note replacing all "Ì" by " ".
-           inspect como-note replacing all "%" by " ".
-           inspect como-note replacing all "ø" by " ".
+           inspect como-note replacing all "&"   by "e".
+           inspect como-note replacing all "€"   by "E".
+           inspect como-note replacing all "°"   by " ".
+           inspect como-note replacing all "à"   by "a".
+           inspect como-note replacing all "è"   by "e".
+           inspect como-note replacing all "é"   by "e".
+                                                     
+           inspect como-note replacing all "/"   by " ".
+           inspect como-note replacing all "."   by " ".
+           inspect como-note replacing all "@"   by " ".
+           inspect como-note replacing all "#"   by " ".
+           inspect como-note replacing all "'"   by " ".
+           inspect como-note replacing all "\"   by " ".
+           inspect como-note replacing all "È"   by " ".
+           inspect como-note replacing all "Ò"   by " ".
+           inspect como-note replacing all "À"   by " ".
+           inspect como-note replacing all "Ù"   by " ".
+           inspect como-note replacing all "Ì"   by " ".
+           inspect como-note replacing all "%"   by " ".
+           inspect como-note replacing all "ø"   by " ".
+           inspect como-note replacing all "<"   by " ".
+           inspect como-note replacing all ">"   by " ".
+           inspect como-note replacing all x"22" by " ".
+           inspect como-note replacing all x"27" by " ".
                                                          
            inspect como-note replacing all x"0d" by x"20".
            inspect como-note replacing all x"0a" by x"20".
