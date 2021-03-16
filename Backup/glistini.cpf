@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E53A105529-453-1080514801
+PROGRAM_UNIQUE_CODE=TOTEM-7E531094418-650-700127548
 
 {{@DESCRIPTION:
 
@@ -2737,7 +2737,7 @@ Begin Screen Form1
       Enable            = NONE
       Enable Variable   = mod
       Exception Value   = 1004
-      Field Variable    = tlis-trasp-c OF tlistini
+      Field Variable    = tlis-trasp-f OF tlistini
       File              = tlistini
       Flat              = TRUE
       Font              = Default Font
@@ -2787,13 +2787,13 @@ Begin Screen Form1
       Enable            = NONE
       Enable Variable   = mod
       Exception Value   = 1001
-      Field Variable    = tlis-trasp-f OF tlistini
+      Field Variable    = tlis-trasp-c OF tlistini
       File              = tlistini
       Flat              = TRUE
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 2
+      ID                = 3
       Left Text         = FALSE
       Line              = 12,00
       Lines             = 1,15
@@ -3168,7 +3168,7 @@ Begin Screen Form1
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 3
+      ID                = 24
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 6,00
@@ -3927,7 +3927,7 @@ Begin Screen Form1
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 18
+      ID                = 29
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 12,00

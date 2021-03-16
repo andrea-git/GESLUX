@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          glistini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 10 marzo 2021 12:08:46.
+       DATE-WRITTEN.        martedì 16 marzo 2021 10:44:58.
        REMARKS.
       *{TOTEM}END
 
@@ -789,7 +789,7 @@
            ENABLED mod,
            EXCEPTION-VALUE 1001
            FLAT,
-           ID IS 2,
+           ID IS 3,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            SELF-ACT,
@@ -934,7 +934,7 @@
            LINES 1,31 ,
            SIZE 13,00 ,
            FONT IS Small-Font,
-           ID IS 3,
+           ID IS 24,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1245,7 +1245,7 @@
            LINES 1,31 ,
            SIZE 16,00 ,
            FONT IS Small-Font,
-           ID IS 18,
+           ID IS 29,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -6082,9 +6082,9 @@
       * FORM : Form1
            PERFORM DataSet1-INIT-RECORD
       * DB_CHECK BOX
-              MOVE 0 TO tlis-trasp-c OF tlistini
-      * DB_CHECK BOX
               MOVE 0 TO tlis-trasp-f OF tlistini
+      * DB_CHECK BOX
+              MOVE 0 TO tlis-trasp-c OF tlistini
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, SetDefault>
       * <TOTEM:END>
            PERFORM Form1-FLD-TO-BUF
@@ -6367,15 +6367,15 @@
            MOVE ef-fine-val-BUF TO tlis-fine-val OF tlistini
       * DB_CHECK BOX : chk-trasporto-f
               IF chk-trasporto-f-BUF = 1
-                 MOVE 1 TO tlis-trasp-c OF tlistini
-              ELSE
-                 MOVE 0 TO tlis-trasp-c OF tlistini
-              END-IF
-      * DB_CHECK BOX : chk-trasporto-c
-              IF chk-trasporto-c-BUF = 1
                  MOVE 1 TO tlis-trasp-f OF tlistini
               ELSE
                  MOVE 0 TO tlis-trasp-f OF tlistini
+              END-IF
+      * DB_CHECK BOX : chk-trasporto-c
+              IF chk-trasporto-c-BUF = 1
+                 MOVE 1 TO tlis-trasp-c OF tlistini
+              ELSE
+                 MOVE 0 TO tlis-trasp-c OF tlistini
               END-IF
       * DB_Entry-Field : ef-note-1
            MOVE ef-note-1-BUF TO como-note(1)
@@ -6417,13 +6417,13 @@
       * DB_Entry-Field : ef-fine-val
            MOVE tlis-fine-val OF tlistini TO ef-fine-val-BUF
       * DB_CHECK BOX : chk-trasporto-f
-              IF tlis-trasp-c OF tlistini = 1
+              IF tlis-trasp-f OF tlistini = 1
                  MOVE 1 TO chk-trasporto-f-BUF
               ELSE
                  MOVE 0 TO chk-trasporto-f-BUF
               END-IF
       * DB_CHECK BOX : chk-trasporto-c
-              IF tlis-trasp-f OF tlistini = 1
+              IF tlis-trasp-c OF tlistini = 1
                  MOVE 1 TO chk-trasporto-c-BUF
               ELSE
                  MOVE 0 TO chk-trasporto-c-BUF
@@ -6523,7 +6523,7 @@
            end-if
 
 
-           if tlis-trasp-c OF tlistini not = old-tlis-trasp-c
+           if tlis-trasp-f OF tlistini not = old-tlis-trasp-f
               and SiSalvato
               set NoSalvato to true
               |2 è l'ID del campo chk-trasporto-f
@@ -6531,11 +6531,11 @@
            end-if
 
 
-           if tlis-trasp-f OF tlistini not = old-tlis-trasp-f
+           if tlis-trasp-c OF tlistini not = old-tlis-trasp-c
               and SiSalvato
               set NoSalvato to true
-              |2 è l'ID del campo chk-trasporto-c
-              move 2 to store-id
+              |3 è l'ID del campo chk-trasporto-c
+              move 3 to store-id
            end-if
 
            if como-note(1) not = old-como-note(1)
@@ -6952,7 +6952,7 @@
            When 5005 PERFORM ef-ini-dpo-AfterProcedure
            When 5006 PERFORM ef-fine-dpo-AfterProcedure
            When 2 PERFORM Screen1-DaCb-1-AfterProcedure
-           When 2 PERFORM Screen1-DaCb-1-AfterProcedure
+           When 3 PERFORM Screen1-DaCb-1-AfterProcedure
            When 14 PERFORM ef-note-1-AfterProcedure
            When 15 PERFORM ef-note-2-AfterProcedure
            When 16 PERFORM ef-note-3-AfterProcedure
