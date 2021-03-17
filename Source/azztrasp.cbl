@@ -26,9 +26,11 @@
            start tlistini key >= tlis-chiave.
            perform until 1 = 2
               read tlistini next no lock at end exit perform end-read
-              move tlis-trasp-f to tlis-trasp-c
-              move 0 to tlis-trasp-f
-              rewrite tlis-rec
+              if tlis-trasp-f = 1
+                 move tlis-trasp-f to tlis-trasp-c
+                 move 0 to tlis-trasp-f
+                 rewrite tlis-rec
+              end-if
            end-perform.
 
            close tlistini.
