@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          scheduler.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 17 febbraio 2021 09:52:29.
+       DATE-WRITTEN.        giovedì 18 marzo 2021 13:36:53.
        REMARKS.
       *{TOTEM}END
 
@@ -1362,7 +1362,7 @@
            accept  wstampa from environment "SCHEDULER_PATH_LOG".
            inspect wstampa replacing trailing spaces by low-value.
            string  wstampa                          delimited low-value
-                   "RIEPILOGO_BATCH_NOTTTURNI_DEL_" delimited size
+                   "RIEPILOGO_BATCH_NOTTURNI_DEL_"  delimited size
                    como-data                        delimited size
                    "_ORE_"                          delimited size
                    como-ora-hhmmss                  delimited size
