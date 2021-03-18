@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 26 febbraio 2021 09:29:59.
+       DATE-WRITTEN.        giovedì 18 marzo 2021 10:29:11.
        REMARKS.
       *{TOTEM}END
 
@@ -151,6 +151,12 @@
        77 calcolo-piombo   PIC  x.
            88 nuovo-calcolo-piombo VALUE IS "N". 
        77 valore-old       PIC  s9(8).
+       77 periodo-confronto            PIC  9(6).
+       77 periodo-ini      PIC  9(6).
+       01 data-ini.
+           05 anno-ini         PIC  9(4).
+           05 mese-ini         PIC  99.
+           05 giorno-ini       PIC  99.
        77 diff PIC  9(8).
        77 mese-scelto      PIC  99.
        77 como-ordinato    PIC  9(8).
@@ -619,7 +625,7 @@
        77 TMP-DataSet1-tsetinvio-BUF     PIC X(1023).
        77 TMP-DataSet1-param-BUF     PIC X(980).
        77 TMP-DataSet1-lineseq1-BUF     PIC X(1000).
-       77 TMP-DataSet1-qta-pordini-BUF     PIC X(7048).
+       77 TMP-DataSet1-qta-pordini-BUF     PIC X(7051).
        77 TMP-DataSet1-genlog-BUF     PIC X(900).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
@@ -13510,12 +13516,59 @@
                           delete qta-pordini record
                        end-perform
                  end-start
+                 accept data-ini from century-date
+                 move 1 to giorno-ini
+                 evaluate mese-ini
+                 when  1 
+                       subtract 2 from anno-ini
+                       move    11   to mese-ini
+                 when  2                        
+                       subtract 2 from anno-ini
+                       move    12   to mese-ini
+                 when  3        
+                       subtract 1 from anno-ini
+                       move     1   to mese-ini
+                 when  4                        
+                       subtract 1 from anno-ini
+                       move     2   to mese-ini
+                 when  5                        
+                       subtract 1 from anno-ini
+                       move     3   to mese-ini
+                 when  6                        
+                       subtract 1 from anno-ini
+                       move     4   to mese-ini
+                 when  7                        
+                       subtract 1 from anno-ini
+                       move     5   to mese-ini
+                 when  8                        
+                       subtract 1 from anno-ini
+                       move     6   to mese-ini
+                 when  9                        
+                       subtract 1 from anno-ini
+                       move     7   to mese-ini
+                 when 10                        
+                       subtract 1 from anno-ini
+                       move     8   to mese-ini
+                 when 11                        
+                       subtract 1 from anno-ini
+                       move     9   to mese-ini
+                 when 12                        
+                       subtract 1 from anno-ini
+                       move    10   to mese-ini
+                 end-evaluate
+                 move anno-ini to periodo-ini(1:4)
+                 move mese-ini to periodo-ini(5:2)
                  perform until 1 = 2
                     read lineseq1 next at end exit perform end-read
                     unstring line-riga of lineseq1 delimited by ";"
                         into r-articolo r-negativo 
                              r-qta r-anno r-mese r-note
                     end-unstring          
+                    move r-anno to periodo-confronto(1:4)
+                    move r-mese to periodo-confronto(5:2)
+                    if periodo-confronto < periodo-ini
+                       exit perform cycle
+                    end-if
                     if r-articolo is numeric 
                        if r-negativo not = spaces
                           compute r-qta = r-qta * -1

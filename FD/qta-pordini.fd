@@ -4,7 +4,7 @@
                10 qp-articolo      PIC  9(6).
                10 qp-anno          PIC  9(4).
                10 qp-mese          PIC  99.
-               10 qp-prog          PIC  99.
+               10 qp-prog          PIC  9(5).
            05 qp-dati.
                10 qp-qta           PIC  s9(9).
                10 qp-qta-ass       PIC  9(9).
