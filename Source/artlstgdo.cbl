@@ -867,8 +867,8 @@
               perform until 1 = 2
                  read articoli next no lock 
                       at end exit perform 
-                 end-read                              
-
+                 end-read
+                                           
                  if art-si-do and art-attivo
                     move art-scorta to sco-codice
                     read tscorte no lock
@@ -1022,7 +1022,7 @@
               move art-codice  to lst-articolo
               move high-value  to lst-data
               set trovato to false
-              start listini key >= lst-k-articolo   
+              start listini key <= lst-k-articolo   
                     invalid continue
                 not invalid
                     perform until 1 = 2
