@@ -1232,7 +1232,13 @@
                                 set sostituzione to true
                              end-if
                           else
-                             add disponibilita to save-qta
+                             add disponibilita to save-qta  
+                             if mro-qta-e not = 0
+                                move init-qta to mro-qta
+                                compute mro-num-colli =
+                                        mro-qta / mro-qta-imballi
+                                rewrite mro-rec
+                             end-if
                           end-if
                        end-if
                     end-if
