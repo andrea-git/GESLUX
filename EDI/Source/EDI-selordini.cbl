@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 16 marzo 2021 01:13:14.
+       DATE-WRITTEN.        sabato 20 marzo 2021 01:26:02.
        REMARKS.
       *{TOTEM}END
 
@@ -4063,7 +4063,7 @@
            LINES 1,33 ,
            SIZE 11,00 ,
            COLOR IS 5,
-           ID IS 24,
+           ID IS 25,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Totale ordine",
@@ -4078,7 +4078,7 @@
            LINES 1,33 ,
            SIZE 12,00 ,
            COLOR IS 5,
-           ID IS 24,
+           ID IS 26,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RIGHT,
@@ -4094,7 +4094,7 @@
            LINES 1,33 ,
            SIZE 2,00 ,
            COLOR IS 5,
-           ID IS 24,
+           ID IS 27,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            LEFT,
@@ -19267,7 +19267,12 @@ PATCH       bitmap-number = BitmapNumSave.
               move emto-chiave to emro-chiave-testa
               move col-num     to emro-riga
               read edi-mrordini
-                   invalid
+                   invalid                                    
+                   inquire form1-gd-1(riga, 78-col-art),        
+                           hidden-data in gruppo-hidden
+                   move hid-prg-cod-articolo to art-codice      
+                   move HiddenKey to prg-chiave emro-prg-chiave
+                   read progmag no lock
                    initialize emro-dati emro-dati-import
                               replacing numeric data by zeroes
                                    alphanumeric data by spaces
@@ -19284,11 +19289,6 @@ PATCH       bitmap-number = BitmapNumSave.
                    accept emro-data-creazione from century-date
                    accept emro-ora-creazione  from time
                    move user-codi to emro-utente-creazione    
-                   inquire form1-gd-1(riga, 78-col-art),        
-                           hidden-data in gruppo-hidden
-                   move hid-prg-cod-articolo to art-codice      
-                   move HiddenKey to prg-chiave emro-prg-chiave
-                   read progmag no lock
                    move prg-peso-utf     to emro-peso-utf
                    move prg-peso-non-utf to emro-peso-non-utf
       *****         10 emro-prz-commle  PIC  9(9)v9(2).

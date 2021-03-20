@@ -14,6 +14,7 @@
            copy "EDI-mtordini.sl". 
            copy "EDI-mrordini.sl".
            copy "mtordini.sl". 
+           copy "articoli.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -23,6 +24,7 @@
            copy "EDI-mtordini.fd". 
            copy "EDI-mrordini.fd".
            copy "mtordini.fd".
+           copy "articoli.fd".
 
        WORKING-STORAGE SECTION.
            COPY "acucobol.def".
@@ -41,6 +43,7 @@
        77  status-mtordini       pic xx.
        77  status-clienti        pic xx.
        77  status-destini        pic xx.
+       77  status-articoli       pic xx.
 
        77  TimesNewRoman20B      handle of font.
        77  CourierNew10          handle of font.
@@ -77,28 +80,28 @@
            88  errori            value "ER".
 
       * RIGHE PER LA STAMPA
-       01  divisorio   pic x(85) value all "=".
+       01  divisorio   pic x(95) value all "=".
 
        01  t0.
          05 t0-NAB-CODBUYER      PIC  x(40).
-         05 filler               pic x(2).
+         05 filler               pic x(8).
          05 t0-NAD-CODCONS       pic x(40).
 
        01  t1.
          05 t1-cli-ragsoc        pic x(40).
-         05 filler               pic x(2).
+         05 filler               pic x(8).
          05 t1-des-ragsoc        pic x(40).
 
        01  t2.
          05 t2-cli-indirizzo     pic x(40).
-         05 filler               pic x(2).
+         05 filler               pic x(8).
          05 t2-des-indirizzo     pic x(40).
 
        01  t3.
          05 t3-cli-cap           pic x(5).
          05 filler               pic x.
          05 t3-cli-localita      pic x(34).
-         05 filler               pic x(2).
+         05 filler               pic x(8).
          05 t3-des-cap           pic x(5).
          05 filler               pic x.
          05 t3-des-localita      pic x(34).
@@ -148,42 +151,44 @@
          05 filler               pic x(2)  value spaces.
          05 t7-note4             pic x(30).
 
-       01  testata.
+       01  testata.          
+         05 filler     pic x.
          05 filler     pic x(6)  value "  Art.".
          05 filler     pic x(3)  value spaces.
          05 filler     pic x(5)  value "Colli".
          05 filler     pic x(4)  value spaces.
       *****   05 filler     pic x(22) value "Imballo".
       *****   05 filler     pic x(1)  value spaces.
-         05 filler     pic x(40) value "Descrizione".
-         05 filler     pic x(3)  value spaces.     
-         05 filler     pic x(4)  value "Q.tà".
+         05 filler     pic x(45) value "Descrizione".
+         05 filler     pic x(5)  value spaces.     
+         05 filler     pic x(5)  value "Q.tà".
 
        01  testata-prz-bold.
          05 filler     pic x(11) value "     Prezzo".
          
        01  r-riga.
+         05 filler     pic x.
          05 r-art      pic z(6).
          05 filler     pic x(3).
          05 r-colli    pic z.zz9.
          05 filler     pic x(4).
       *****   05 r-imb      pic x(22).
       *****   05 filler     pic x(1).
-         05 r-des      pic x(40).
-         05 filler     pic x(2).
-         05 r-qta      pic zzzz9.   
+         05 r-des      pic x(45).
+         05 filler     pic x(3).
+         05 r-qta      pic zz.zz9.   
 
        01  r-riga-prz-bold.
          05 r-prz      pic zzz.zz9,999.
 
        01  r-totale.
-         05 filler     pic x(60).
+         05 filler     pic x(71).
          05 filler     pic x(8) value "TOTALE:  ".
          05 filler     pic x(2).
          05 r-tot      pic z.zzz.zz9,999.       
 
        01  r-data-ora.
-         05 filler     pic x(29).
+         05 filler     pic x(30).
          05 filler     pic x(13)  value "*** COPIA ***".
          05 filler     pic x(2).
          05 filler     pic x(12) value "Stampata il ".
@@ -292,7 +297,8 @@
       ***---
        OPEN-FILES.              
            open input mtordini clienti destini 
-                      EDI-mtordini EDI-mrordini.
+                      EDI-mtordini EDI-mrordini
+                      articoli.
       
       ***---
        ELABORAZIONE.
@@ -381,28 +387,45 @@
                  emto-numero not = emro-numero
                  exit perform
               end-if 
-              move emro-02D13-LIN-CODFORTU to NumericEdi
-              perform TRATTA-NUMERICO
-              move como-numero             to r-art
-              move emro-02D15-LIN-DESART   to r-des       
+              |Per le righe inserite manualmente
+              if emro-02D13-LIN-CODFORTU = spaces
+                 move emro-cod-articolo to r-art art-codice
+                 read articoli no lock 
+                      invalid move spaces to art-descrizione
+                 end-read
+                 move art-descrizione to r-des
+                 move emro-qta        to r-qta como-qta
+                 move emro-num-colli  to r-colli como-colli
 
-              move emro-02D17-QTAORD       to NumericEdi
-              perform TRATTA-NUMERICO
-              move como-numero             to r-qta como-qta
+              else
+                 move emro-02D13-LIN-CODFORTU to NumericEdi
+                 perform TRATTA-NUMERICO
+                 move como-numero             to r-art
+                 move emro-02D15-LIN-DESART   to r-des       
 
-              move emro-02D22-LIN-NRCUINTU to NumericEdi
-              perform TRATTA-NUMERICO
-              move como-numero             to r-colli como-colli
+                 move emro-02D17-QTAORD       to NumericEdi
+                 perform TRATTA-NUMERICO
+                 move como-numero             to r-qta como-qta
+
+                 move emro-02D22-LIN-NRCUINTU to NumericEdi
+                 perform TRATTA-NUMERICO
+                 move como-numero             to r-colli como-colli
+              end-if
 
               move r-riga to spl-riga-stampa
               perform SCRIVI
               
               move CourierNew10B     to spl-hfont
               set testata-bold       to true    
-
-              move emro-02D19-LIN-PRZUNI   to NumericEdi
-              perform TRATTA-NUMERICO
-              move como-numero             to r-prz como-prz
+                                                 
+              |Per le righe inserite manualmente
+              if emro-02D13-LIN-CODFORTU = spaces
+                 move emro-prz        to r-prz como-prz
+              else
+                 move emro-02D19-LIN-PRZUNI   to NumericEdi
+                 perform TRATTA-NUMERICO
+                 move como-numero             to r-prz como-prz
+              end-if
       
               move r-riga-prz-bold   to spl-riga-stampa
               perform SCRIVI
@@ -678,7 +701,7 @@
        SCRIVI.
            if testata-bold
               subtract 0,5 from spl-riga
-              move 15,5      to spl-colonna
+              move 17,8      to spl-colonna
            else
               move 0,3 to spl-colonna
            end-if.
@@ -822,7 +845,8 @@
       ***---
        CLOSE-FILES.
            close mtordini clienti destini 
-                 EDI-mtordini EDI-mrordini.
+                 EDI-mtordini EDI-mrordini
+                 articoli.
 
       ***---
        EXIT-PGM.

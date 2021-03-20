@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E531010152-938-2191732466
+PROGRAM_UNIQUE_CODE=TOTEM-7E531402445-392-1384410752
 
 {{@DESCRIPTION:
 
@@ -13537,7 +13537,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 24
+      ID                = 25
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 29,40
@@ -13570,7 +13570,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 24
+      ID                = 26
       Justification     = Right
       Label Offset      = 20
       Line              = 29,40
@@ -13605,7 +13605,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 24
+      ID                = 27
       Justification     = Left
       Label Offset      = 20
       Line              = 29,40
@@ -18665,7 +18665,12 @@ PATCH       bitmap-number = BitmapNumSave.
               move emto-chiave to emro-chiave-testa
               move col-num     to emro-riga
               read edi-mrordini
-                   invalid
+                   invalid                                    
+                   inquire form1-gd-1(riga, 78-col-art),        
+                           hidden-data in gruppo-hidden
+                   move hid-prg-cod-articolo to art-codice      
+                   move HiddenKey to prg-chiave emro-prg-chiave
+                   read progmag no lock
                    initialize emro-dati emro-dati-import
                               replacing numeric data by zeroes
                                    alphanumeric data by spaces
@@ -18682,11 +18687,6 @@ PATCH       bitmap-number = BitmapNumSave.
                    accept emro-data-creazione from century-date
                    accept emro-ora-creazione  from time
                    move user-codi to emro-utente-creazione    
-                   inquire form1-gd-1(riga, 78-col-art),        
-                           hidden-data in gruppo-hidden
-                   move hid-prg-cod-articolo to art-codice      
-                   move HiddenKey to prg-chiave emro-prg-chiave
-                   read progmag no lock
                    move prg-peso-utf     to emro-peso-utf
                    move prg-peso-non-utf to emro-peso-non-utf
       *****         10 emro-prz-commle  PIC  9(9)v9(2).
