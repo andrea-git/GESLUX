@@ -15,12 +15,9 @@
                    15 ecd-citta-c      PIC  x(35).
                    15 ecd-prov-c       PIC  x(3).
                    15 ecd-cap-c        PIC  x(5).
-      *(( XFD NAME = ecd-codforn_1 ))
                    15 ecd-cod-dest     PIC  x(17).
-      *(( XFD NAME = ecd-qualif-codforn ))
                    15 ecd-q-cod-dest   PIC  x(3).
                    15 FILLER           PIC  x(100).
-      *(( XFD NAME = ecd-qualif-codforn ))
                    15 ecd-personalizzazione.
                        20 ecd-import.
                            25 ecd-import-importi           PIC  9.
@@ -36,18 +33,11 @@
                                88 ecd-export-imposte-no VALUE IS 0. 
                    15 FILLER           PIC  x(77).
                10 ecd-destino.
-      *(( XFD NAME = ecd-id-edi_1 ))
                    15 ecd-cod-consegna PIC  x(17).
-      *(( XFD NAME = ecd-qualif-id-edi_ ))
                    15 ecd-q-cod-consegna           PIC  x(3).
-      *(( XFD NAME = ecd-codforn_2 ))
                    15 ecd-ragsoc-d     PIC  x(70).
-      *(( XFD NAME = ecd-indirizzo_1 ))
                    15 ecd-indirizzo-d  PIC  x(35).
-      *(( XFD NAME = ecd-citta_1 ))
                    15 ecd-citta-d      PIC  x(35).
-      *(( XFD NAME = ecd-prov_1 ))
                    15 ecd-prov-d       PIC  x(3).
-      *(( XFD NAME = ecd-cap_1 ))
                    15 ecd-cap-d        PIC  x(5).
                    15 FILLER           PIC  x(200).

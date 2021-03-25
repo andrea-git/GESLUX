@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 20 marzo 2021 01:26:02.
+       DATE-WRITTEN.        giovedì 25 marzo 2021 14:24:09.
        REMARKS.
       *{TOTEM}END
 
@@ -3165,10 +3165,10 @@
        05
            Form1-Gd-1, 
            Grid, 
-           COL 3,43, 
+           COL 1,71, 
            LINE 31,93,
            LINES 17,73 ,
-           SIZE 142,71 ,
+           SIZE 144,71 ,
            ADJUSTABLE-COLUMNS,
            BOXED,
            CENTERED-HEADINGS,
@@ -3190,7 +3190,7 @@
            WIDTH-IN-CELLS,
            ROW-HEADINGS,
            TILED-HEADINGS,
-           VIRTUAL-WIDTH 140,
+           VIRTUAL-WIDTH 143,
            VPADDING 40,
            VSCROLL,
            EVENT PROCEDURE Form1-Gd-1-Event-Proc,
@@ -14337,7 +14337,7 @@
            DISPLAY Form1 UPON Form1-handle
       * DISPLAY-COLUMNS settings
               MODIFY Form1-Gd-1, DISPLAY-COLUMNS (1, 5, 13, 58, 64, 72, 
-           80, 88, 99, 110, 121, 132)
+           80, 88, 100, 112, 124, 135)
            .
 
        Form1-PROC.

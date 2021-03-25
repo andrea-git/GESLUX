@@ -112,6 +112,9 @@
                    20 emto-01T25-NAB-CITTAB        PIC  x(35).
                    20 emto-01T26-NAB-PROVB         PIC  x(3).
                    20 emto-01T27-NAB-CAPB          PIC  x(5).
+      *"LBX" = prezzo e cliente LBX
+      *"CLBX" = solo cliente LBX
+      *"PLBX" = solo prezzo LBX
                    20 emto-01T28-NAD-CODCONS       PIC  x(17).
                    20 emto-29T-filler  PIC  x(35).
       *(( XFD NAME = emto-01T23-NAB-RAG ))

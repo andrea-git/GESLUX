@@ -942,7 +942,8 @@
 
            |In caso trovassi il valore LBX devo cercare direttamente 
            |sui file GESLUX
-           if emto-01T22-NAB-QCODBUYER = "LBX"  
+           if emto-01T22-NAB-QCODBUYER = "LBX" or 
+              emto-01T22-NAB-QCODBUYER = "CLBX"
 
               |Li forzo a negativi in quanto non saranno mai
               |recuperati dalla scheda 
@@ -1572,8 +1573,9 @@
 
            if not emro-si-blister
               if emro-articolo-non-valido or OrdineTradizionale
-                 if emto-01T22-NAB-QCODBUYER not = "LBX"
                 |Un ordine con LBX ha già i prezzi corretti
+                 if not ( emto-01T22-NAB-QCODBUYER = "LBX" or
+                          emto-01T22-NAB-QCODBUYER = "PLBX" )
                     move 9999999,99  to emro-prz-GESLUX
                     set  emro-bloccato-prezzo-si to true
                  end-if
@@ -1586,12 +1588,13 @@
               not OrdineTradizionale
               |Recupero il prezzo da listino, se ordine tradizionale lo
               |recupero e lo verifico dopo quando ho l'ordine intero
-
-              if emto-01T22-NAB-QCODBUYER not = "LBX"
-                |Un ordine con LBX ha già i prezzi corretti
-                 perform RECUPERA-PREZZO
-              else
+                                                     
+             |Un ordine con LBX ha già i prezzi corretti
+              if emto-01T22-NAB-QCODBUYER = "LBX" or
+                 emto-01T22-NAB-QCODBUYER = "PLBX"
                  perform RECUPERA-SOLO-PROMO
+              else                          
+                 perform RECUPERA-PREZZO
               end-if
 
            end-if.

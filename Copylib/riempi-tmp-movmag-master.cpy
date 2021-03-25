@@ -84,50 +84,41 @@ LUBEXX           end-if
                     exit perform
                  end-if
                  
-LUBEXX*****           if mto-data-creazione >= como-data-from and
-LUBEXX*****              mto-data-creazione <= como-data-to
+                 if mto-data-creazione < como-data-from
+                    exit perform cycle
+                 end-if                   
 
-                    if cli-codice    not = 0
-                       if cli-codice not = mto-cod-cli
-                          set record-ok to false
-                       end-if
-                       if des-prog not = 0 and
-                          des-prog not = mto-prg-destino
-                          set record-ok to false
-                       end-if
+                 if cli-codice    not = 0
+                    if cli-codice not = mto-cod-cli
+                       exit perform cycle
                     end-if
-LUBEXX              if record-ok
-                       set cli-tipo-C to true
-LUBEXX                 move mto-cod-cli to cli-codice
-LUBEXX                 read clienti no lock
-LUBEXX                      invalid initialize cli-rec
-LUBEXX                 end-read
-LUBEXX                 if tcl-codice not = spaces and
-LUBEXX                    tcl-codice not = cli-tipo
-LUBEXX                    set record-ok to false
-LUBEXX                 end-if
-LUBEXX                 inquire ef-cod,  value in cli-codice
-LUBEXX                 inquire ef-tipo, value in tcl-codice
-LUBEXX              end-if               
+                    if des-prog not = 0 and
+                       des-prog not = mto-prg-destino
+                       exit perform cycle
+                    end-if
+                 end-if
 
-                    if record-ok
-                       if ef-gdo-buf not = spaces and
-                          ef-gdo-buf not = cli-gdo
-                          set record-ok to false
-                       end-if
-                    end-if
+                 set cli-tipo-C to true
+LUBEXX           move mto-cod-cli to cli-codice
+LUBEXX           read clienti no lock
+LUBEXX                invalid initialize cli-rec
+LUBEXX           end-read
+LUBEXX           if tcl-codice not = spaces and
+LUBEXX              tcl-codice not = cli-tipo
+LUBEXX              exit perform cycle
+LUBEXX           end-if
+LUBEXX           inquire ef-cod,  value in cli-codice
+LUBEXX           inquire ef-tipo, value in tcl-codice
+                                                     
+                 if ef-gdo-buf not = spaces and
+                    ef-gdo-buf not = cli-gdo
+                    exit perform cycle
+                 end-if
 
-                    if record-ok
-                       move mto-causale to tca-codice
-                       read tcaumag  no lock invalid continue end-read
-                       move tca-tipo to Save-CF
-                       perform LOOP-mrordini
-                    end-if
-LUBEXX*****           else
-LUBEXX*****              if cli-codice = 0
-LUBEXX*****                 exit perform
-LUBEXX*****              end-if
-LUBEXX*****           end-if                    
+                 move mto-causale to tca-codice
+                 read tcaumag  no lock invalid continue end-read
+                 move tca-tipo to Save-CF
+                 perform LOOP-MRORDINI
 
               end-perform
            end-if.

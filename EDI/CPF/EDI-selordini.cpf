@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E531402445-392-1384410752
+PROGRAM_UNIQUE_CODE=TOTEM-7E5319132253-585-1909514165
 
 {{@DESCRIPTION:
 
@@ -11505,7 +11505,7 @@ Begin Screen Form1
       After Procedure   = Screen2-DaCb-5-AfterProcedure
    End
    Begin Grid Form1-Gd-1
-      SCREEN-COL        = 3,43
+      SCREEN-COL        = 1,71
       SCREEN-LINE       = 31,93
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -11526,7 +11526,7 @@ Begin Screen Form1
       Cells' Setting    = ( X = 12, Y = 1, Data = "STATO" )
       Centered Headings = TRUE
       Color             = 0
-      Column            = 3,43
+      Column            = 1,71
       Column Headings   = TRUE
       Columns' Setting  = ( X = 1, Name = col-num, READONLY = 0 )
       Columns' Setting  = ( PIC = "Z(5)", TYPE = "9(5)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
@@ -11551,13 +11551,13 @@ Begin Screen Form1
       Columns' Setting  = ( DISP = 8, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 8, Name = col-prz-EDI, READONLY = 0 )
       Columns' Setting  = ( PIC = "ZZZ.ZZZ.ZZ9,99", TYPE = "9(12)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
-      Columns' Setting  = ( DISP = 11, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( DISP = 12, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 9, Name = col-prz-GESLUX, READONLY = 0 )
       Columns' Setting  = ( PIC = "ZZZ.ZZZ.ZZ9,99", TYPE = "9(12)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
-      Columns' Setting  = ( DISP = 11, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( DISP = 12, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 10, Name = col-prz, READONLY = 0 )
       Columns' Setting  = ( PIC = "ZZZ.ZZZ.ZZ9,99", TYPE = "9(12)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
-      Columns' Setting  = ( DISP = 11, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( DISP = 12, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 11, Name = col-evadi-dal, READONLY = 0 )
       Columns' Setting  = ( PIC = "99/99/9999", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
       Columns' Setting  = ( DISP = 11, SEPA = 5, DIVI = 1 )
@@ -11596,12 +11596,12 @@ Begin Screen Form1
       Paged             = FALSE
       Row Dividers      = 1
       Row Headings      = TRUE
-      Size              = 142,71
+      Size              = 144,71
       Size Unit         = Default
       Tab Order         = 21
       Tiled Headings    = TRUE
       Use Tab           = FALSE
-      Virtual Width     = 140
+      Virtual Width     = 143
       Visible           = NONE
       Vpadding          = 40
       Vscroll           = TRUE
