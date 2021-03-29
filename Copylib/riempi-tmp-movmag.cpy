@@ -265,7 +265,7 @@ LUBEXX           end-if
 
            move rmo-codmag           to tmp-mov-magazz.
            move rmo-articolo         to tmp-mov-articolo.
-           if Save-C
+           if Save-C                              
               move tmo-num-fattura   to tmp-mov-numdoc  tor-num-fattura
               move tmo-data-fattura  to tmp-mov-datadoc 
               move tmo-data-fattura(1:4) to tor-anno-fattura
@@ -322,6 +322,9 @@ LUBEXX           end-if
                       end-string
                  end-read
               else                                               
+                 move tmo-numdoc-clifor to tmp-mov-num-bolla
+                 move tmo-data-doc      to tmp-mov-data-bolla
+
                  move 0      to tmp-mov-num-ord-cli tmp-mov-data-ordine
                  move spaces to tmp-mov-cod-pag tmp-mov-des-pag
               end-if
