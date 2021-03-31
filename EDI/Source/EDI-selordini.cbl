@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 25 marzo 2021 14:24:09.
+       DATE-WRITTEN.        mercoledì 31 marzo 2021 12:39:22.
        REMARKS.
       *{TOTEM}END
 
@@ -18370,7 +18370,7 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
                           exit perform
                        end-if
                        move emro-qta         to como-qta
-                       move emro-prz-GESLUX  to SavePrezzo
+                       move emro-prz         to SavePrezzo
                        move emro-prg-chiave  to prg-chiave
                        move emto-cod-cli     to mto-cod-cli
                        move emto-prg-destino to mto-prg-destino
