@@ -95,7 +95,15 @@
 
        01 filler                   pic 9.
          88 inserisci              value 1.
-         88 cancella               value 2.
+         88 cancella               value 2.        
+
+       77  wk-des-ragsoc-1         pic x(40).
+       77  wk-des-localita         pic x(35).
+       77  wk-tcl-descrizione      pic x(30).
+       77  wk-gdo-codice           pic x(5).
+       77  wk-gdo-intestazione     pic x(30).
+       77  wk-mar-codice           pic 9(4).
+       77  wk-mar-descrizione      pic x(30).
 
        77  como-qta                pic s9(8).
        77  como-imponib-merce      pic s9(12)v99.
@@ -1505,22 +1513,33 @@ OMAGGI                 subtract ror-qta-omaggi from ror-qta
                  else                move "+" to segno2(idx)
                  end-if
                  move and-qta(idx) to qta-pos(idx)
-              end-perform
+              end-perform    
+
+              |Uso dei comodi perchè se cambia la dimensione 
+              |del campo su file mi sballa questo posizionamento
+              move des-ragsoc-1     to wk-des-ragsoc-1    
+              move des-localita     to wk-des-localita    
+              move tcl-descrizione  to wk-tcl-descrizione 
+              move gdo-codice       to wk-gdo-codice      
+              move gdo-intestazione to wk-gdo-intestazione
+              move mar-codice       to wk-mar-codice      
+              move mar-descrizione  to wk-mar-descrizione 
+                                                        
 
               string and-cliente          delimited size
                      and-cli-ragsoc-1     delimited size
                      and-prg-destino      delimited size
-                     des-ragsoc-1         delimited size
-                     des-localita         delimited size
+                     wk-des-ragsoc-1      delimited size
+                     wk-des-localita      delimited size
                      and-articolo         delimited size
                      and-art-descrizione  delimited size
                      and-art-um           delimited size
                      and-art-prz-acq      delimited size
-                     tcl-descrizione      delimited size
-                     gdo-codice           delimited size
-                     gdo-intestazione     delimited size
-                     mar-codice           delimited size
-                     mar-descrizione      delimited size
+                     wk-tcl-descrizione   delimited size
+                     wk-gdo-codice        delimited size
+                     wk-gdo-intestazione  delimited size
+                     wk-mar-codice        delimited size
+                     wk-mar-descrizione   delimited size
                      segno(1)             delimited size
                      imponibile-pos(1)    delimited size
                      segno2(1)            delimited size
