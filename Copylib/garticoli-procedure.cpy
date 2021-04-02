@@ -593,13 +593,22 @@
            when 78-ID-ef-coll
                 inquire ef-coll, value in ef-coll-buf
                 move ef-coll-buf   to art-collegato of articoli 
-                perform CAMBIO-CODICE-COLLEGATO
-                if art-collegato of articoli = 0
-                   move spaces to lab-des-coll-buf
-                   display lab-des-coll
+                if art-collegato of articoli = art-codice of articoli
+                   set errori to true
+                   move 78-ID-ef-coll to control-id
+                   display message 
+                "L'articolo collegato dev'essere diverso dal principale"
+                             title tit-err
+                              icon MB-WARNING-ICON
                 else
-                   perform IMPOSTA-SCORTA
-                end-if                   
+                   perform CAMBIO-CODICE-COLLEGATO
+                   if art-collegato of articoli = 0
+                      move spaces to lab-des-coll-buf
+                      display lab-des-coll
+                   else
+                      perform IMPOSTA-SCORTA
+                   end-if                   
+                end-if
 
            |78-ID-ef-setmerc è l'ID del control ef-setmerc
            when 78-ID-ef-setmerc

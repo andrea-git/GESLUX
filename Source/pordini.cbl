@@ -10242,7 +10242,8 @@
       * <TOTEM:END>
            DISPLAY scr-elab UPON scr-elab-Handle
       * <TOTEM:EPT. FORM:scr-elab, FORM:scr-elab, AfterDisplay>
-
+
+
       *<<** Customized_Default, SP-G, scr-data-blockpgm-1, Disable **>>
 
            .
@@ -10478,7 +10479,8 @@
       * <TOTEM:END>
            DISPLAY scr-data UPON form1-handle
       * <TOTEM:EPT. FORM:scr-data, FORM:scr-data, AfterDisplay>
-
+
+
       *<<** Customized_Default, SP-G, scr-data-blockpgm-1, Disable **>>
 
            .
@@ -13719,7 +13721,7 @@
                              upon scr-elab-handle at column 53
                                                        line 04
                           move 0 to counter2
-                       end-if
+                       end-if                                                                                                              
 
                        move cpf-listino  to rlis-codice
                        move cpf-articolo to rlis-articolo
@@ -13748,7 +13750,7 @@
                  read ordfor2 next at end exit perform end-read
 
                  add 1 to counter
-                 add 1 to counter2
+                 add 1 to counter2   
                  if counter2 = 10
                     move counter to counter-edit
                     display counter-edit

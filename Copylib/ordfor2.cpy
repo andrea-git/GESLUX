@@ -67,6 +67,9 @@
               move art-codice to save-art-codice
               perform until 1 = 2
                  move art-collegato to art-codice
+                 if art-collegato = art-codice
+                    exit perform
+                 end-if
                  read articoli no lock
                  if art-collegato = 0
                     exit perform
