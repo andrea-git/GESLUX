@@ -110,6 +110,7 @@
        77  wstampa           pic x(256).
        77  path-tmp-Sitfin   pic x(256).
        77  path-pdf          pic x(256).
+       77  blocco-amm-fido   pic x value space.
 
        77  totale            pic s9(12)v99.
                                             
@@ -420,6 +421,7 @@
 
       ***---
        INIT.
+           accept blocco-amm-fido from environment "BLOCCO_AMM_FIDO".
            set nessun-errore to true.
            CALL "C$NARG" USING NARGS.
            if nargs not = 0
@@ -838,20 +840,34 @@
                                     replacing leading x"20" by x"30"
                             call   "calfido"  using calfido-linkage
                             cancel "calfido"
-                            if saldo-scaduto > 0
-                               initialize como-riga
-                               string "CLIENTE: "         delimited size
-                                      cli-codice          delimited size
-                                      " - SCADUTO: "      delimited size
-                                      saldo-scaduto(1:13) delimited size
-                                      ","                 delimited size
-                                      saldo-scaduto(14:2) delimited size
-                                      " - BLOCCATO PER PROBLEMATICHE"
-                                      " DI PAGAMENTO"     delimited size
-                                 into como-riga
-                               end-string          
+                            if saldo-scaduto > 0                   
+                               if cli-blocco-amm and 
+                                  blocco-amm-fido = "S"
+                                  initialize como-riga
+                                  string "CLIENTE: "         
+                                         cli-codice          
+                                         " - SCADUTO: "      
+                                         saldo-scaduto(1:13) 
+                                         ","                 
+                                         saldo-scaduto(14:2) 
+                                         " - GIA' BLOCCO AMMINISTRATIVO"     
+                                    into como-riga
+                                  end-string         
+                               else
+                                  initialize como-riga
+                                  string "CLIENTE: "         
+                                         cli-codice          
+                                         " - SCADUTO: "      
+                                         saldo-scaduto(1:13) 
+                                         ","                 
+                                         saldo-scaduto(14:2) 
+                                         " - BLOCCATO PER PROBLEMATICHE"
+                                         " DI PAGAMENTO"     
+                                    into como-riga
+                                  end-string         
+                                  set cli-prob-pag to true 
+                               end-if
                                perform SETTA-RIGA-LOG
-                               set cli-prob-pag to true
                                set cli-bloccato to true
                                rewrite cli-rec
                             end-if
