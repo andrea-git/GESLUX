@@ -783,7 +783,7 @@
                     end-if
                  else
                     if cli-fuori-fido
-                       set       to true
+                       set cli-attivo to true
                        move spaces to cli-cau-blocco
                        rewrite cli-rec invalid continue end-rewrite
                     end-if

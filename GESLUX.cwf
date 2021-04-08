@@ -18994,7 +18994,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:Source\check-cambio-cau.cbl]
-COPY_DEPENDENCE=FD\tordini.sl;FD\lineseq.sl;FD\tordini.fd;FD\lineseq.fd
+COPY_DEPENDENCE=FD\tsetinvio.sl;FD\tordini.sl;FD\lineseq.sl;FD\tsetinvio.fd;FD\tordini.fd;FD\lineseq.fd;Copylib\mail.def;Copylib\mail.cpy
 ADDITIONAL_OPTIONS=-x -Di -Ga -Zd -Za -Zn -Zz
 FOLLOW_PROJECT=1
 ; Standard Options
@@ -34345,7 +34345,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:SOURCE\stordc.cbl]
-COPY_DEPENDENCE=c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;Copylib\UTYDATA.DEF;Copylib\comune.def;Copylib\messaggi.def;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\link-stordcp.def;Copylib\common-linkage.def;Copylib\blockpgm.lks;Resource\bottone-ok.bmp;Resource\bottone-cancel.bmp;Resource\Blue-fino-28x24.bmp;Resource\Blue-da-28x24.bmp;Copylib\utydata.cpy;Copylib\COLOR-CUSTOM.CPY;Copylib\calcola-colore-trasparente.cpy
+COPY_DEPENDENCE=c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\link-stordcp.def;Copylib\common-linkage.def;Copylib\blockpgm.lks;Resource\bottone-ok.bmp;Resource\bottone-cancel.bmp;Resource\Blue-fino-28x24.bmp;Resource\Blue-da-28x24.bmp;Copylib\utydata.cpy;Copylib\COLOR-CUSTOM.CPY;Copylib\calcola-colore-trasparente.cpy
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
