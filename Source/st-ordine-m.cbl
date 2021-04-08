@@ -897,32 +897,34 @@
                    move mto-cod-cli to cli-codice
                    read clienti  no lock
                    move cli-tipo to tcl-codice
-                   read ttipocli no lock invalid continue end-read
-                   if tcl-gdo-si or tcl-gdo-opz
-      *****             if mto-gdo not = spaces
-                      evaluate true
-                      when ru-SO-XP
-                           accept selprint-stampante 
-                           from environment "STAMPANTE_MASTER_GDO_XP"
-                      when ru-SO-VISTA
-                           accept selprint-stampante 
-                           from environment "STAMPANTE_MASTER_GDO_V"
-                      when ru-SO-7
-                           accept selprint-stampante 
-                           from environment "STAMPANTE_MASTER_GDO_7"
-                      end-evaluate
-                   else
-                      evaluate true
-                      when ru-SO-XP
-                           accept selprint-stampante 
-                           from environment "STAMPANTE_MASTER_TRAD_XP"
-                      when ru-SO-VISTA
-                           accept selprint-stampante 
-                           from environment "STAMPANTE_MASTER_TRAD_V"
-                      when ru-SO-7
-                           accept selprint-stampante 
-                           from environment "STAMPANTE_MASTER_TRAD_7"
-                      end-evaluate
+                   read ttipocli no lock invalid continue end-read   
+                   move tcl-stampante-m to selprint-stampante
+                   if selprint-stampante = spaces
+                      if tcl-gdo-si or tcl-gdo-opz                 
+                         evaluate true
+                         when ru-SO-XP
+                              accept selprint-stampante 
+                              from environment "STAMPANTE_MASTER_GDO_XP"
+                         when ru-SO-VISTA
+                              accept selprint-stampante 
+                              from environment "STAMPANTE_MASTER_GDO_V"
+                         when ru-SO-7
+                              accept selprint-stampante 
+                              from environment "STAMPANTE_MASTER_GDO_7"
+                         end-evaluate
+                      else
+                         evaluate true
+                         when ru-SO-XP
+                              accept selprint-stampante 
+                              from environment"STAMPANTE_MASTER_TRAD_XP"
+                         when ru-SO-VISTA
+                              accept selprint-stampante 
+                              from environment "STAMPANTE_MASTER_TRAD_V"
+                         when ru-SO-7
+                              accept selprint-stampante 
+                              from environment "STAMPANTE_MASTER_TRAD_7"
+                         end-evaluate
+                      end-if
                    end-if
               end-evaluate
            else

@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          ttipocli.
-       AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 29 febbraio 2020 14:09:18.
+       AUTHOR.              Utente.
+       DATE-WRITTEN.        giovedì 8 aprile 2021 10:16:56.
        REMARKS.
       *{TOTEM}END
 
@@ -199,6 +199,7 @@
        77 Form1-St-1-Handle
                   USAGE IS HANDLE OF STATUS-BAR.
        77 cbo-stampante-buf            PIC  x(50).
+       77 cbo-stampante-m-buf          PIC  x(100).
        77 AUTO-ID          PIC  9(6)
                   VALUE IS 13.
        77 ef-mail-comm-buf PIC  X(200).
@@ -237,6 +238,7 @@
       *{TOTEM}ID-LOGICI
       ***** Elenco ID Logici *****
        78  78-ID-cbo-stampante VALUE 5001.
+       78  78-ID-cbo-stampante-m VALUE 5002.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -345,6 +347,27 @@
            AFTER PROCEDURE Form1-Cm-1-AfterProcedure, 
            BEFORE PROCEDURE Form1-Cm-1-BeforeProcedure, 
            .
+      * COMBO-BOX
+       05
+           cbo-stampante-m, 
+           Combo-Box, 
+           COL 112,83, 
+           LINE 39,62,
+           LINES 7,00 ,
+           SIZE 60,00 ,
+           3-D,
+           COLOR IS 513,
+           ENABLED mod,
+           FONT IS Small-Font,
+           ID IS 78-ID-cbo-stampante-m,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           MASS-UPDATE 0,
+           DROP-LIST,
+           UNSORTED,
+           AFTER PROCEDURE Form1-Cm-1-AfterProcedure, 
+           BEFORE PROCEDURE Form1-Cm-1-BeforeProcedure, 
+           .
       * LABEL
        05
            Form1-La-1a, 
@@ -432,6 +455,22 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "...",
+           .
+
+      * LABEL
+       05
+           Form1-La-1b, 
+           Label, 
+           COL 89,17, 
+           LINE 39,62,
+           LINES 1,31 ,
+           SIZE 22,00 ,
+           FONT IS Small-Font,
+           ID IS 4,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Stampante bozze associata",
            .
 
       * TOOLBAR
@@ -1253,6 +1292,10 @@
        cbo-stampante-Content.
            .
 
+      * COMBO-BOX
+       cbo-stampante-m-Content.
+           .
+
       * FD's Initialize Paragraph
        DataSet1-ttipocli-INITREC.
            INITIALIZE tcl-rec OF ttipocli
@@ -1295,7 +1338,7 @@
 
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 51,77,
+              LINES 53,08,
               SIZE 190,83,
               COLOR 65793,
               CONTROL FONT Small-Font,
@@ -1458,6 +1501,8 @@
            PERFORM form1-gd-1-Content
       * COMBO-BOX
            PERFORM cbo-stampante-Content
+      * COMBO-BOX
+           PERFORM cbo-stampante-m-Content
            .
 
        Form1-DataSet1-CHANGETO-KEY1.
@@ -2141,6 +2186,25 @@
                  modify cbo-stampante, value = nome-stampante
               end-if
               add 1 to cont
+           end-perform.    
+           
+           modify cbo-stampante-m, reset-list = 1.
+           call "WIN$PRINTER" using  winprint-get-no-printers, 
+                                     winprint-selection
+                              giving numero-stampanti.
+
+           move 1 to cont.
+           perform numero-stampanti times
+              move cont to winprint-no-of-printers 
+              call "WIN$PRINTER" using  winprint-get-printer-info, 
+                                        winprint-selection
+              move winprint-name to nome-stampante
+
+              modify cbo-stampante-m, item-to-add = nome-stampante
+              if cont = 1
+                 modify cbo-stampante-m, value = nome-stampante
+              end-if
+              add 1 to cont
            end-perform 
            .
       * <TOTEM:END>
@@ -2561,11 +2625,15 @@
                           move tcl-edi-auto                to 
            col-edi-auto
                           modify form1-gd-1, record-to-add = rec-grid
-                          if riga = 2
+                          if riga = 2                              
                              move tcl-stampante       to 
            cbo-stampante-buf
                              modify cbo-stampante, value 
            cbo-stampante-buf
+                             move tcl-stampante-m       to 
+           cbo-stampante-m-buf
+                             modify cbo-stampante-m, value 
+           cbo-stampante-m-buf
                              move tcl-mail-comm to ef-mail-comm-buf
                              modify ef-mail-comm,  value 
            ef-mail-comm-buf
@@ -2624,6 +2692,7 @@
 
            modify tool-modifica, value mod.
            modify cbo-stampante, enabled mod.
+           modify cbo-stampante-m, enabled mod.
            modify ef-mail-comm,  enabled mod.
            modify ef-path-sfondo-bolle,  enabled mod.
            modify pb-path-pdf,   enabled mod 
@@ -2717,7 +2786,7 @@
               if errori 
                  exit perform 
               end-if
-           end-perform.
+           end-perform.         
            if tutto-ok
               inquire cbo-stampante, value in cbo-stampante-buf
               if cbo-stampante-buf = spaces
@@ -2729,9 +2798,21 @@
                  move 4 to accept-control
               end-if
            end-if.
-
            if tutto-ok
+              inquire cbo-stampante-m, value in cbo-stampante-m-buf
+              if cbo-stampante-m-buf = spaces
+                 set errori to true
+                 display message "Selezionare una stampante per master"
+                           title tit-err
+                            icon 2
+                 move 78-ID-cbo-stampante-m to control-id
+                 move 4 to accept-control
+              end-if
+           end-if.
+
+           if tutto-ok                               
               move cbo-stampante-buf to tcl-stampante
+              move cbo-stampante-m-buf to tcl-stampante-m
               move ef-mail-comm-buf  to tcl-mail-comm
               move ef-path-sfondo-bolle-buf   to tcl-path-sfondo-bolle
               perform VALORIZZA-DATI-COMUNI
@@ -2797,6 +2878,15 @@
               modify cbo-stampante, item-to-add = tcl-stampante
               modify cbo-stampante, value tcl-stampante
               move tcl-stampante to cbo-stampante-buf
+           end-if.
+
+           move tcl-stampante-m       to cbo-stampante-m-buf.
+           modify cbo-stampante-m, value cbo-stampante-m-buf.
+           inquire cbo-stampante-m, value cbo-stampante-m-buf.
+           if cbo-stampante-m-buf = spaces
+              modify cbo-stampante-m, item-to-add = tcl-stampante-m
+              modify cbo-stampante-m, value tcl-stampante-m
+              move tcl-stampante-m to cbo-stampante-m-buf
            end-if.
 
            move tcl-mail-comm       to ef-mail-comm-buf.

@@ -73,5 +73,6 @@
                    15 tcl-edi-auto     PIC  x.
                        88 tcl-edi-auto-si VALUE IS "S". 
                        88 tcl-edi-auto-no VALUE IS "N" " ". 
+                   15 tcl-stampante-m  PIC  X(100).
       *(( XFD NAME = tcl-filler_1 ))
-                   15 FILLER           PIC  X(348).
+                   15 FILLER           PIC  X(248).

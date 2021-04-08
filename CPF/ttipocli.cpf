@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=PAS004P-Ev-Before-Program
 AFTER_PROGRAM=I-O-BLOCCO
-PROGRAM_UNIQUE_CODE=TOTEM-7E53F132449-320-1001827146
+PROGRAM_UNIQUE_CODE=TOTEM-7E5488943-419-3100326390
 
 {{@DESCRIPTION:
 
@@ -1401,10 +1401,9 @@ m_bFixed=1
 
 @}}
 [FDITEM136_WK]
-m_strName=AUTO-ID
-m_strRawPic=9(6)
-m_strPic=9(6)
-m_strDefaultValue=13
+m_strName=cbo-stampante-m-buf
+m_strRawPic=x(100)
+m_strPic=x(100)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1412,9 +1411,10 @@ m_bFixed=1
 
 @}}
 [FDITEM137_WK]
-m_strName=ef-mail-comm-buf
-m_strRawPic=X(200)
-m_strPic=X(200)
+m_strName=AUTO-ID
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_strDefaultValue=13
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1422,9 +1422,9 @@ m_bFixed=1
 
 @}}
 [FDITEM138_WK]
-m_strName=ef-path-pdf-buf
-m_strRawPic=X(150)
-m_strPic=X(150)
+m_strName=ef-mail-comm-buf
+m_strRawPic=X(200)
+m_strPic=X(200)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1432,13 +1432,23 @@ m_bFixed=1
 
 @}}
 [FDITEM139_WK]
-m_strName=ef-path-sfondo-bolle-buf
+m_strName=ef-path-pdf-buf
 m_strRawPic=X(150)
 m_strPic=X(150)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM139_WK
+
+@}}
+[FDITEM140_WK]
+m_strName=ef-path-sfondo-bolle-buf
+m_strRawPic=X(150)
+m_strPic=X(150)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM140_WK
 
 @}}
 
@@ -1642,7 +1652,7 @@ GRAPHICAL-SCREEN
 Begin Screen Form1
    PREFIX            = Form1
    IMPORTED-SCREEN   = FALSE
-   LOCK-CONTROL      = TRUE
+   LOCK-CONTROL      = FALSE
    LEVEL             = 1
    (Name)            = Form1
    Absolute Column   = 0
@@ -1668,7 +1678,7 @@ Begin Screen Form1
    Height in Cells   = FALSE
    Help ID           = 0
    Label Offset      = 20
-   Lines             = 51,77
+   Lines             = 53,08
    Link To Thread    = TRUE
    Max Lines         = 0,00
    Max Size          = 0,00
@@ -1943,6 +1953,51 @@ Begin Screen Form1
       Before Procedure  = Form1-Cm-1-BeforeProcedure
       After Procedure   = Form1-Cm-1-AfterProcedure
    End
+   Begin Combo-Box cbo-stampante-m
+      SCREEN-COL        = 112,83
+      SCREEN-LINE       = 39,62
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = cbo-stampante-m
+      Border            = 3D
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 112,83
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Enable Variable   = mod
+      Exception Value   = 0
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 13
+      ID Variable       = AUTO-ID
+      Line              = 39,62
+      Lines             = 7,00
+      Lines Unit        = Default
+      Mass Update       = 0:Fast-Update
+      Max Text          = 0
+      No Tab            = FALSE
+      Notify DblClick   = FALSE
+      Notify SelChange  = FALSE
+      Occurs            = 0
+      Size              = 60,00
+      Size Unit         = Default
+      Style             = Drop List
+      Tab Order         = 5
+      Termination Value = 0
+      Unsorted          = TRUE
+      Value Container   = cbo-stampante-m-buf
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = Form1-Cm-1-BeforeProcedure
+      After Procedure   = Form1-Cm-1-AfterProcedure
+   End
    Begin Label Form1-La-1a
       SCREEN-COL        = 3,00
       SCREEN-LINE       = 42,69
@@ -1971,7 +2026,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 22,00
       Size Unit         = Default
-      Tab Order         = 5
+      Tab Order         = 6
       Title             = "Email commerciale per sostituzione articoli"
       Transparent       = TRUE
       Visible           = NONE
@@ -2022,7 +2077,7 @@ Begin Screen Form1
       Size              = 144,67
       Size Unit         = Default
       Style             = Vscroll Bar
-      Tab Order         = 6
+      Tab Order         = 7
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -2078,7 +2133,7 @@ Begin Screen Form1
       Size              = 141,50
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 7
+      Tab Order         = 8
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -2117,7 +2172,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 22,00
       Size Unit         = Default
-      Tab Order         = 8
+      Tab Order         = 9
       Title             = "Path PDF bolla"
       Transparent       = TRUE
       Visible           = NONE
@@ -2158,12 +2213,46 @@ Begin Screen Form1
       Size              = 4,50
       Size Unit         = Default
       Style             = Other
-      Tab Order         = 9
+      Tab Order         = 10
       Termination Value = 0
       Title             = "..."
       Visible           = NONE
       Width in Cells    = TRUE
       Link To           = pb-path-pdf-LinkTo
+   End
+   Begin Label Form1-La-1b
+      SCREEN-COL        = 89,17
+      SCREEN-LINE       = 39,62
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-1b
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 89,17
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 4
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 39,62
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 22,00
+      Size Unit         = Default
+      Tab Order         = 11
+      Title             = "Stampante bozze associata"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
    End
    Begin Toolbar Form1-Tb-1
       SCREEN-LINE       = 1,00
@@ -2176,7 +2265,7 @@ Begin Screen Form1
       Handle Variable   = Form1-Tb-1-Handle
       Help ID           = 0
       Lines             = 2,69
-      Tab Order         = 10
+      Tab Order         = 12
       Begin Push-Button TOOL-ESCI
          SCREEN-COL        = 1,00
          SCREEN-LINE       = 1,08
@@ -2615,7 +2704,7 @@ Begin Screen Form1
       Font              = Default Font
       Grip              = TRUE
       Handle Variable   = Form1-St-1-Handle
-      Tab Order         = 11
+      Tab Order         = 13
    End
 End
 
@@ -3424,6 +3513,25 @@ BEGIN-TEXT
                  modify cbo-stampante, value = nome-stampante
               end-if
               add 1 to cont
+           end-perform.    
+           
+           modify cbo-stampante-m, reset-list = 1.
+           call "WIN$PRINTER" using  winprint-get-no-printers, 
+                                     winprint-selection
+                              giving numero-stampanti.
+
+           move 1 to cont.
+           perform numero-stampanti times
+              move cont to winprint-no-of-printers 
+              call "WIN$PRINTER" using  winprint-get-printer-info, 
+                                        winprint-selection
+              move winprint-name to nome-stampante
+
+              modify cbo-stampante-m, item-to-add = nome-stampante
+              if cont = 1
+                 modify cbo-stampante-m, value = nome-stampante
+              end-if
+              add 1 to cont
            end-perform.
 END-TEXT
 END-DATA
@@ -3829,9 +3937,11 @@ BEGIN-TEXT
                           move tcl-fido-nuovo              to col-fido-nuovo
                           move tcl-edi-auto                to col-edi-auto
                           modify form1-gd-1, record-to-add = rec-grid
-                          if riga = 2
+                          if riga = 2                              
                              move tcl-stampante       to cbo-stampante-buf
                              modify cbo-stampante, value cbo-stampante-buf
+                             move tcl-stampante-m       to cbo-stampante-m-buf
+                             modify cbo-stampante-m, value cbo-stampante-m-buf
                              move tcl-mail-comm to ef-mail-comm-buf
                              modify ef-mail-comm,  value ef-mail-comm-buf
                              move tcl-path-sfondo-bolle to ef-path-sfondo-bolle-buf
@@ -3888,6 +3998,7 @@ BEGIN-TEXT
 
            modify tool-modifica, value mod.
            modify cbo-stampante, enabled mod.
+           modify cbo-stampante-m, enabled mod.
            modify ef-mail-comm,  enabled mod.
            modify ef-path-sfondo-bolle,  enabled mod.
            modify pb-path-pdf,   enabled mod.
@@ -3985,7 +4096,7 @@ BEGIN-TEXT
               if errori 
                  exit perform 
               end-if
-           end-perform.
+           end-perform.         
            if tutto-ok
               inquire cbo-stampante, value in cbo-stampante-buf
               if cbo-stampante-buf = spaces
@@ -3997,9 +4108,21 @@ BEGIN-TEXT
                  move 4 to accept-control
               end-if
            end-if.
-
            if tutto-ok
+              inquire cbo-stampante-m, value in cbo-stampante-m-buf
+              if cbo-stampante-m-buf = spaces
+                 set errori to true
+                 display message "Selezionare una stampante per master"
+                           title tit-err
+                            icon 2
+                 move 78-ID-cbo-stampante-m to control-id
+                 move 4 to accept-control
+              end-if
+           end-if.
+
+           if tutto-ok                               
               move cbo-stampante-buf to tcl-stampante
+              move cbo-stampante-m-buf to tcl-stampante-m
               move ef-mail-comm-buf  to tcl-mail-comm
               move ef-path-sfondo-bolle-buf   to tcl-path-sfondo-bolle
               perform VALORIZZA-DATI-COMUNI
@@ -4066,6 +4189,15 @@ BEGIN-TEXT
               modify cbo-stampante, item-to-add = tcl-stampante
               modify cbo-stampante, value tcl-stampante
               move tcl-stampante to cbo-stampante-buf
+           end-if.
+
+           move tcl-stampante-m       to cbo-stampante-m-buf.
+           modify cbo-stampante-m, value cbo-stampante-m-buf.
+           inquire cbo-stampante-m, value cbo-stampante-m-buf.
+           if cbo-stampante-m-buf = spaces
+              modify cbo-stampante-m, item-to-add = tcl-stampante-m
+              modify cbo-stampante-m, value tcl-stampante-m
+              move tcl-stampante-m to cbo-stampante-m-buf
            end-if.
 
            move tcl-mail-comm       to ef-mail-comm-buf.
