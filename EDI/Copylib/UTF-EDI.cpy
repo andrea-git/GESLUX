@@ -175,8 +175,9 @@ quiii      move pae-imp-assolta       to tmp-redi-pos-fis.
 
            add  rmo-peso-tot-utf to tmp-redi-qta-kg.
            move rmo-peso-tot-utf to como-peso-imp.
-
-           perform CALCOLA-IMPOSTA.
+                                           
+           perform CALCOLA-IMPOSTA-CONSUMO.
+           perform CALCOLA-IMPOSTA-COU.
 
            move pae-tipo-doc     to tmp-redi-tipo-doc.
            perform VAL-BOLLA.
@@ -343,7 +344,8 @@ quiii      move pae-imp-assolta       to tmp-redi-pos-fis.
            end-read.
 
            compute como-peso = rmo-peso-tot - 
-                             ( rmo-peso-tot / 100 * art-perce-imposte ).
+                             ( rmo-peso-tot / 100 * 
+                             ( art-perce-imposte + art-perce-cou) ).
 
            add como-peso     to tmp-redi-qta-kg.
               
@@ -372,7 +374,8 @@ quii  *     move pae-imp-non-soggetta       to tmp-redi-pos-fis
            add como-peso      to tmp-redi-qta-kg.
 
            move rmo-peso-tot to como-peso-imp.
-           perform CALCOLA-IMPOSTA.
+           perform CALCOLA-IMPOSTA-CONSUMO.
+           perform CALCOLA-IMPOSTA-COU.
 
            move pae-tipo-doc          to tmp-redi-tipo-doc.
            perform VAL-BOLLA.
@@ -502,7 +505,7 @@ LUBEXX           end-if
       *    se 3403 trasferisco la riga solo per
       *    i carichi e se fornitore estero
               if fornitore-estero
-                 if art-perce-imposte not = 0
+                 if art-perce-imposte not = 0 or art-perce-cou not = 0
                     set trasferisci to true
                  end-if
               end-if
@@ -624,9 +627,9 @@ LUBEXX*     if rmo-peso-tot-utf = 0
            end-evaluate.
 
            move tmo-chiave            to tmp-redi-tmo-chiave.
-
+                               
       ***---
-       CALCOLA-IMPOSTA.
+       CALCOLA-IMPOSTA-CONSUMO.
            |03/08/09 richiesta di Walter: gli articoli 2710 con 
            |marca FIAT (11) devono essere sommati al 100%
            if art-cod-doganale = 27100000 and art-marca-prodotto = 11
@@ -639,6 +642,30 @@ LUBEXX*     if rmo-peso-tot-utf = 0
            add 0,005               to como-imposta.
            move como-imposta       to como-imposta-2dec.
            add como-imposta-2dec   to tmp-redi-imp-consumo.
+
+
+      *     compute como-imposta = (como-peso-imp * art-perce-cou / 100) 
+      *                             * imp-cou
+      *
+      *     add 0,005               to como-imposta             
+      *     move como-imposta       to como-imposta-2dec
+      *     add como-imposta-2dec   to tmp-redi-imp-consumo.
+      *
+
+      ***---
+       CALCOLA-IMPOSTA-COU.
+           |03/08/09 richiesta di Walter: gli articoli 2710 con 
+           |marca FIAT (11) devono essere sommati al 100%
+           if art-cod-doganale = 27100000 and art-marca-prodotto = 11
+              compute como-imposta = como-peso-imp * imp-cou
+           else
+              compute como-imposta = ( como-peso-imp             *
+                                       art-perce-cou / 100 ) *
+                                      imp-cou
+           end-if.
+           add 0,005               to como-imposta.
+           move como-imposta       to como-imposta-2dec.
+           add como-imposta-2dec   to tmp-redi-imp-cou.
 
 
       *     compute como-imposta = (como-peso-imp * art-perce-cou / 100) 

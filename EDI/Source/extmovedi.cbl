@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          extmovedi.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 30 dicembre 2014 14:11:34.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        mercoledì 14 aprile 2021 20:25:04.
        REMARKS.
       *{TOTEM}END
 
@@ -41,7 +41,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -389,11 +389,9 @@
            LINE 1,30,
            LINES 12,20 CELLS,
            SIZE 32,80 CELLS,
-           RAISED,
            ID IS 3,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           VERY-HEAVY,
            .
 
       * LABEL

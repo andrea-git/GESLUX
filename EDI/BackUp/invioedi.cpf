@@ -8,7 +8,7 @@ MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=bprepb-Ev-Before-Program
 AFTER_PROGRAM=accetordforn-Ev-After-Program
 AFTER_INIT=invioedi-Ev-After-Init
-PROGRAM_UNIQUE_CODE=TOTEM-7DF45174744-750-91932362
+PROGRAM_UNIQUE_CODE=TOTEM-7E54E173136-849-190692682
 
 {{@DESCRIPTION:
 
@@ -959,9 +959,9 @@ m_bFixed=1
 
 @}}
 [FDITEM85_WK]
-m_strName=col-stato
-m_strRawPic=XX
-m_strPic=XX
+m_strName=col-cou
+m_strRawPic=zz.zzz.zz9,99
+m_strPic=zz.zzz.zz9,99
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -969,9 +969,9 @@ m_bFixed=1
 
 @}}
 [FDITEM86_WK]
-m_strName=col-invio
-m_strRawPic=x
-m_strPic=x
+m_strName=col-stato
+m_strRawPic=XX
+m_strPic=XX
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -979,17 +979,17 @@ m_bFixed=1
 
 @}}
 [FDITEM87_WK]
-m_strName=filtro-nc
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=77
+m_strName=col-invio
+m_strRawPic=x
+m_strPic=x
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM87_WK
 
 @}}
 [FDITEM88_WK]
-m_strName=old-filtro-nc
+m_strName=filtro-nc
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=77
@@ -999,9 +999,9 @@ m_bFixed=1
 
 @}}
 [FDITEM89_WK]
-m_strName=filtro-nc-x
-m_strRawPic=x(8)
-m_strPic=x(8)
+m_strName=old-filtro-nc
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1009,9 +1009,9 @@ m_bFixed=1
 
 @}}
 [FDITEM90_WK]
-m_strName=filtro-nc-z
-m_strRawPic=z(8)
-m_strPic=z(8)
+m_strName=filtro-nc-x
+m_strRawPic=x(8)
+m_strPic=x(8)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1019,9 +1019,9 @@ m_bFixed=1
 
 @}}
 [FDITEM91_WK]
-m_strName=redi-nc-x
-m_strRawPic=x(8)
-m_strPic=x(8)
+m_strName=filtro-nc-z
+m_strRawPic=z(8)
+m_strPic=z(8)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1029,37 +1029,37 @@ m_bFixed=1
 
 @}}
 [FDITEM92_WK]
-m_strName=FILLER
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=1
+m_strName=redi-nc-x
+m_strRawPic=x(8)
+m_strPic=x(8)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM92_WK
 
 @}}
 [FDITEM93_WK]
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM93_WK
+
+@}}
+[FDITEM94_WK]
 m_strName=rec-ok
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
 m_strFalse=0
-{{@DataItem_m_strDescriptionFDITEM93_WK
-
-@}}
-[FDITEM94_WK]
-m_strName=tot-importi
-m_strRawPic=9(12)v999
-m_strPic=9(12)v999
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM94_WK
 
 @}}
 [FDITEM95_WK]
-m_strName=tot-carico
+m_strName=tot-consumo
 m_strRawPic=9(12)v999
 m_strPic=9(12)v999
 m_nItemLevel=77
@@ -1069,7 +1069,7 @@ m_bFixed=1
 
 @}}
 [FDITEM96_WK]
-m_strName=tot-scarico
+m_strName=tot-cou
 m_strRawPic=9(12)v999
 m_strPic=9(12)v999
 m_nItemLevel=77
@@ -1079,9 +1079,9 @@ m_bFixed=1
 
 @}}
 [FDITEM97_WK]
-m_strName=tot-importi-ed
-m_strRawPic=z.zzz.zzz.zz9,99
-m_strPic=z.zzz.zzz.zz9,99
+m_strName=tot-carico
+m_strRawPic=9(12)v999
+m_strPic=9(12)v999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1089,9 +1089,9 @@ m_bFixed=1
 
 @}}
 [FDITEM98_WK]
-m_strName=lab-carico-buf
-m_strRawPic=z.zzz.zzz.zz9,999
-m_strPic=z.zzz.zzz.zz9,999
+m_strName=tot-scarico
+m_strRawPic=9(12)v999
+m_strPic=9(12)v999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1099,9 +1099,9 @@ m_bFixed=1
 
 @}}
 [FDITEM99_WK]
-m_strName=lab-scarico-buf
-m_strRawPic=z.zzz.zzz.zz9,999
-m_strPic=z.zzz.zzz.zz9,999
+m_strName=tot-consumo-ed
+m_strRawPic=z.zzz.zzz.zz9,99
+m_strPic=z.zzz.zzz.zz9,99
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1109,6 +1109,36 @@ m_bFixed=1
 
 @}}
 [FDITEM100_WK]
+m_strName=tot-cou-ed
+m_strRawPic=z.zzz.zzz.zz9,99
+m_strPic=z.zzz.zzz.zz9,99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM100_WK
+
+@}}
+[FDITEM101_WK]
+m_strName=lab-carico-buf
+m_strRawPic=z.zzz.zzz.zz9,999
+m_strPic=z.zzz.zzz.zz9,999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM101_WK
+
+@}}
+[FDITEM102_WK]
+m_strName=lab-scarico-buf
+m_strRawPic=z.zzz.zzz.zz9,999
+m_strPic=z.zzz.zzz.zz9,999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM102_WK
+
+@}}
+[FDITEM103_WK]
 m_strName=EXCEL-BMP
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -1117,36 +1147,36 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM100_WK
+{{@DataItem_m_strDescriptionFDITEM103_WK
 
 @}}
-[FDITEM101_WK]
+[FDITEM104_WK]
 m_strName=wstampa
 m_strRawPic=X(256)
 m_strPic=X(256)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM101_WK
+{{@DataItem_m_strDescriptionFDITEM104_WK
 
 @}}
-[FDITEM102_WK]
+[FDITEM105_WK]
 m_strName=STATUS-lineseq
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM102_WK
+{{@DataItem_m_strDescriptionFDITEM105_WK
 
 @}}
-[FDITEM103_WK]
+[FDITEM106_WK]
 m_strName=Valid-STATUS-lineseq
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM103_WK
+{{@DataItem_m_strDescriptionFDITEM106_WK
 
 @}}
 
@@ -1785,7 +1815,7 @@ End
 Begin Screen Screen2
    PREFIX            = Screen2
    IMPORTED-SCREEN   = FALSE
-   LOCK-CONTROL      = FALSE
+   LOCK-CONTROL      = TRUE
    LEVEL             = 1
    (Name)            = Screen2
    Absolute Column   = 0
@@ -1811,7 +1841,7 @@ Begin Screen Screen2
    Height in Cells   = TRUE
    Help ID           = 0
    Label Offset      = 20
-   Lines             = 43,00
+   Lines             = 44,50
    Link To Thread    = TRUE
    Max Lines         = 0,00
    Max Size          = 0,00
@@ -1822,7 +1852,7 @@ Begin Screen Screen2
    Operation Mode    = Interactive Mode
    Resizable         = FALSE
    Scroll            = FALSE
-   Size              = 158,00
+   Size              = 168,38
    System Menu       = TRUE
    Title Bar         = TRUE
    Title Variable    = TITOLO
@@ -1931,7 +1961,7 @@ Begin Screen Screen2
    End
    Begin Grid gb-rec-b
       SCREEN-COL        = 1,50
-      SCREEN-LINE       = 7,00
+      SCREEN-LINE       = 8,25
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = gb-rec-b
@@ -1954,8 +1984,9 @@ Begin Screen Screen2
       Cells' Setting    = ( X = 15, Y = 1, Data = "Pos. Fiscale" )
       Cells' Setting    = ( X = 16, Y = 1, Data = "Causale" )
       Cells' Setting    = ( X = 17, Y = 1, Data = "Imp.Consumo" )
-      Cells' Setting    = ( X = 18, Y = 1, Data = "Stato" )
-      Cells' Setting    = ( X = 19, Y = 1, Data = "Invio" )
+      Cells' Setting    = ( X = 18, Y = 1, Data = "Imp. COU" )
+      Cells' Setting    = ( X = 19, Y = 1, Data = "Stato" )
+      Cells' Setting    = ( X = 20, Y = 1, Data = "Invio" )
       Centered Headings = TRUE
       Color             = 0
       Column            = 1,50
@@ -2010,11 +2041,14 @@ Begin Screen Screen2
       Columns' Setting  = ( DISP = 8, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 17, Name = col-consumo, READONLY = 0 )
       Columns' Setting  = ( PIC = "zz.zzz.zz9,99", TYPE = "9(8)v99", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
-      Columns' Setting  = ( DISP = 14, SEPA = 5, DIVI = 1 )
-      Columns' Setting  = ( X = 18, Name = col-stato, READONLY = 0 )
+      Columns' Setting  = ( DISP = 13, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 18, Name = col-cou, READONLY = 0 )
+      Columns' Setting  = ( PIC = "zz.zzz.zz9,99", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 13, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 19, Name = col-stato, READONLY = 0 )
       Columns' Setting  = ( PIC = "XX", TYPE = "XX", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
       Columns' Setting  = ( DISP = 7, SEPA = 5, DIVI = 1 )
-      Columns' Setting  = ( X = 19, Name = col-invio, READONLY = 0 )
+      Columns' Setting  = ( X = 20, Name = col-invio, READONLY = 0 )
       Columns' Setting  = ( PIC = "x", TYPE = "x", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
       Columns' Setting  = ( DISP = 8, SEPA = 5, DIVI = 1 )
       Cursor Color      = 0
@@ -2037,18 +2071,18 @@ Begin Screen Screen2
       ID                = 33
       ID Variable       = AUTO-ID
       Last Row          = 0
-      Line              = 7,00
+      Line              = 8,25
       Lines             = 34,50
       Lines Unit        = Default
       No Tab            = FALSE
       Num Col Headings  = 1
-      Num Columns       = 19
+      Num Columns       = 20
       Num Rows          = 0
       Occurs            = 0
       Paged             = FALSE
       Row Dividers      = 1
       Row Headings      = TRUE
-      Size              = 157,13
+      Size              = 167,38
       Size Unit         = Default
       Tab Order         = 3
       Tiled Headings    = TRUE
@@ -2069,7 +2103,7 @@ Begin Screen Screen2
    End
    Begin Bar Screen2-Br-1a
       SCREEN-COL        = 38,00
-      SCREEN-LINE       = 5,70
+      SCREEN-LINE       = 6,94
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen2-Br-1a
@@ -2084,14 +2118,14 @@ Begin Screen Screen2
       Help ID           = 0
       ID                = 19
       Kind              = Horizontal
-      Line              = 5,70
+      Line              = 6,94
       Line Styles       = Solid
       Occurs            = 0
       Position Shift    = 0
       COLORS            = ( 1 )
       SHADING           = ( -1 )
-      Size (Lines)      = 121,00
-      Size (Lines) in Pixels = 968
+      Size (Lines)      = 131,38
+      Size (Lines) in Pixels = 1051
       Size (Lines) Unit = Default
       Tab Order         = 4
       Visible           = TRUE
@@ -2100,7 +2134,7 @@ Begin Screen Screen2
    End
    Begin Label Form1-La-1abbba
       SCREEN-COL        = 2,00
-      SCREEN-LINE       = 5,00
+      SCREEN-LINE       = 6,25
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-1abbba
@@ -2118,7 +2152,7 @@ Begin Screen Screen2
       ID                = 560
       Justification     = Center
       Label Offset      = 20
-      Line              = 5,00
+      Line              = 6,25
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -2273,7 +2307,7 @@ Begin Screen Screen2
    End
    Begin Label lbl-stato
       SCREEN-COL        = 2,50
-      SCREEN-LINE       = 42,31
+      SCREEN-LINE       = 43,56
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = lbl-stato
@@ -2293,7 +2327,7 @@ Begin Screen Screen2
       ID                = 5
       Justification     = Center
       Label Offset      = 20
-      Line              = 42,31
+      Line              = 43,56
       Lines             = 1,19
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -2680,7 +2714,7 @@ Begin Screen Screen2
    End
    Begin Entry-Field ef-filtro-nc
       SCREEN-COL        = 86,00
-      SCREEN-LINE       = 42,31
+      SCREEN-LINE       = 43,56
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-filtro-nc
@@ -2706,7 +2740,7 @@ Begin Screen Screen2
       Help ID           = 0
       ID                = 1
       Justification     = Unaligned
-      Line              = 42,31
+      Line              = 43,56
       Lines             = 1,19
       Lines Unit        = Default
       Max Lines         = 0
@@ -2737,7 +2771,7 @@ Begin Screen Screen2
    End
    Begin Label lbl-statoa
       SCREEN-COL        = 64,00
-      SCREEN-LINE       = 42,31
+      SCREEN-LINE       = 43,56
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = lbl-statoa
@@ -2757,7 +2791,7 @@ Begin Screen Screen2
       ID                = 2
       Justification     = Right
       Label Offset      = 20
-      Line              = 42,31
+      Line              = 43,56
       Lines             = 1,19
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -2770,12 +2804,12 @@ Begin Screen Screen2
       Visible           = NONE
       Width in Cells    = TRUE
    End
-   Begin Label lbl-tot-importi
+   Begin Label lbl-tot-consumo
       SCREEN-COL        = 140,88
       SCREEN-LINE       = 1,38
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
-      (Name)            = lbl-tot-importi
+      (Name)            = lbl-tot-consumo
       Clines            = 0
       Clines Unit       = Default
       Color             = 5
@@ -2800,7 +2834,7 @@ Begin Screen Screen2
       Size Unit         = Default
       Tab Order         = 23
       Title Picture     = z.zzz.zzz.zz9,99
-      Title Variable    = tot-importi-ed
+      Title Variable    = tot-consumo-ed
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -2834,14 +2868,14 @@ Begin Screen Screen2
       Size              = 17,00
       Size Unit         = Default
       Tab Order         = 24
-      Title             = "Totale Imposte:"
+      Title             = "Totale consumo"
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
    End
    Begin Label Form1-La-11ca
       SCREEN-COL        = 123,13
-      SCREEN-LINE       = 3,13
+      SCREEN-LINE       = 4,38
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-11ca
@@ -2860,7 +2894,7 @@ Begin Screen Screen2
       ID                = 6
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 3,13
+      Line              = 4,38
       Lines             = 1,00
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -2875,7 +2909,7 @@ Begin Screen Screen2
    End
    Begin Label Form1-La-11caa
       SCREEN-COL        = 123,13
-      SCREEN-LINE       = 4,38
+      SCREEN-LINE       = 5,63
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-11caa
@@ -2894,7 +2928,7 @@ Begin Screen Screen2
       ID                = 7
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 4,38
+      Line              = 5,63
       Lines             = 1,00
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -2909,7 +2943,7 @@ Begin Screen Screen2
    End
    Begin Label lab-carico
       SCREEN-COL        = 140,88
-      SCREEN-LINE       = 3,13
+      SCREEN-LINE       = 4,38
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = lab-carico
@@ -2928,7 +2962,7 @@ Begin Screen Screen2
       ID                = 8
       Justification     = Right
       Label Offset      = 20
-      Line              = 3,13
+      Line              = 4,38
       Lines             = 1,00
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -2944,7 +2978,7 @@ Begin Screen Screen2
    End
    Begin Label lab-scarico
       SCREEN-COL        = 140,88
-      SCREEN-LINE       = 4,38
+      SCREEN-LINE       = 5,63
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = lab-scarico
@@ -2963,7 +2997,7 @@ Begin Screen Screen2
       ID                = 9
       Justification     = Right
       Label Offset      = 20
-      Line              = 4,38
+      Line              = 5,63
       Lines             = 1,00
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -2998,8 +3032,8 @@ Begin Screen Screen2
       Line Styles       = Solid
       Occurs            = 0
       Position Shift    = 0
-      Size (Lines)      = 4,56
-      Size (Lines) in Pixels = 73
+      Size (Lines)      = 5,94
+      Size (Lines) in Pixels = 95
       Size (Lines) Unit = Default
       Tab Order         = 29
       Visible           = NONE
@@ -3008,7 +3042,7 @@ Begin Screen Screen2
    End
    Begin Bar Screen2-Br-2
       SCREEN-COL        = 122,38
-      SCREEN-LINE       = 2,69
+      SCREEN-LINE       = 3,94
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen2-Br-2
@@ -3023,7 +3057,7 @@ Begin Screen Screen2
       Help ID           = 0
       ID                = 11
       Kind              = Horizontal
-      Line              = 2,69
+      Line              = 3,94
       Line Styles       = Solid
       Occurs            = 0
       Position Shift    = 0
@@ -3085,12 +3119,81 @@ Begin Screen Screen2
       Line Styles       = Solid
       Occurs            = 0
       Position Shift    = 0
-      Size (Lines)      = 4,63
-      Size (Lines) in Pixels = 74
+      Size (Lines)      = 5,94
+      Size (Lines) in Pixels = 95
       Size (Lines) Unit = Default
       Tab Order         = 32
       Visible           = NONE
       Width             = 1
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-11cb
+      SCREEN-COL        = 123,13
+      SCREEN-LINE       = 2,56
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-11cb
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 5
+      Column            = 123,13
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/10/B/C0/@Occidentale
+      Font Variable     = Verdana10B-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 4
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 2,56
+      Lines             = 1,00
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 17,00
+      Size Unit         = Default
+      Tab Order         = 33
+      Title             = "Totale COU"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label lbl-tot-cou
+      SCREEN-COL        = 140,88
+      SCREEN-LINE       = 2,63
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lbl-tot-cou
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 5
+      Column            = 140,88
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/10/B/C0/@Occidentale
+      Font Variable     = Verdana10B-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 3
+      Justification     = Right
+      Label Offset      = 20
+      Line              = 2,63
+      Lines             = 1,00
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 15,00
+      Size Unit         = Default
+      Tab Order         = 34
+      Title Picture     = z.zzz.zzz.zz9,99
+      Title Variable    = tot-cou-ed
+      Transparent       = TRUE
+      Visible           = NONE
       Width in Cells    = TRUE
    End
 End
@@ -3238,7 +3341,7 @@ Begin Screen scr-fine
       LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = Screen1-Fr-1a
-      3D Style          = Raised
+      3D Style          = Normal
       Alternate         = FALSE
       Clines            = 0
       Clines Unit       = Default
@@ -3260,7 +3363,7 @@ Begin Screen scr-fine
       Size              = 32,80
       Size Unit         = Default
       Tab Order         = 1
-      Thickness         = Very Heavy
+      Thickness         = Default
       Title Position    = 0:Unaligned
       Visible           = NONE
       Width in Cells    = TRUE
@@ -3532,8 +3635,9 @@ BEGIN-TEXT
        78  78-col-pos-fiscale   value 15.
        78  78-col-cau           value 16.
        78  78-col-consumo       value 17.
-       78  78-col-stato         value 18.
-       78  78-col-invio         value 19.
+       78  78-col-cou           value 18.
+       78  78-col-stato         value 19.
+       78  78-col-invio         value 20.
 
        77  cont-exp             pic 9(18).
 
@@ -3543,8 +3647,9 @@ BEGIN-TEXT
            02  FILE-TIME    PIC 9(8) COMP-X.  
 
        77  blocco                  pic x.
-
+                        
        77  como-redi-imp-consumo   PIC  9(9)V9(2).
+       77  como-redi-imp-cou       PIC  9(9)V9(2).
 
        77  save-riga               pic 9(5).
 END-TEXT
@@ -3826,6 +3931,14 @@ BEGIN-TEXT
                 else
                    set event-action to event-action-fail      
                 end-if
+           when 78-col-cou
+                perform CONTROLLA-MOD
+                if procedi
+                   set environment "KEYSTROKE" to "DATA=44 46"
+                   move redi-imp-cou to como-redi-imp-cou
+                else
+                   set event-action to event-action-fail      
+                end-if
            when 78-col-stoccaggio
       *     when 78-col-pos-fiscale
            when 78-col-ddt
@@ -4066,16 +4179,18 @@ BEGIN-TEXT
            perform CONTROLLA-CANC
            if procedi
               read redi no lock
-                 invalid
-                    move zero   to redi-imp-consumo
+                 invalid move 0 to redi-imp-consumo redi-imp-cou
               end-read
-              subtract redi-imp-consumo  from tot-importi
-              move tot-importi to tot-importi-ed
-              modify lbl-tot-importi, TITLE tot-importi-ed
+              subtract redi-imp-consumo  from tot-consumo
+              move tot-consumo to tot-consumo-ed
+              modify lbl-tot-consumo, TITLE tot-consumo-ed
+              
+              subtract redi-imp-cou      from tot-cou  
+              move tot-cou to tot-cou-ed
+              modify lbl-tot-cou, TITLE tot-cou-ed
 
               delete redi record
-                 invalid 
-                    continue
+                 invalid continue
               end-delete
 
               modify gb-rec-b, RECORD-TO-DELETE riga
@@ -4133,11 +4248,22 @@ BEGIN-TEXT
                 perform CONTROLLO-RIGA
                 modify gb-rec-b(riga, 78-col-consumo), 
                                                   cell-data col-consumo
-                compute tot-importi = tot-importi           - 
+                compute tot-consumo = tot-consumo           - 
                                       como-redi-imp-consumo +
                                       redi-imp-consumo
-                move tot-importi to tot-importi-ed
-                modify lbl-tot-importi, TITLE tot-importi-ed
+                move tot-consumo to tot-consumo-ed
+                modify lbl-tot-consumo, TITLE tot-consumo-ed
+
+           when 78-col-cou
+                perform CONTROLLO-RIGA
+                modify gb-rec-b(riga, 78-col-cou), 
+                                                  cell-data col-cou
+                compute tot-cou     = tot-cou           - 
+                                      como-redi-imp-cou +
+                                      redi-imp-cou
+                move tot-cou to tot-cou-ed
+                modify lbl-tot-cou, TITLE tot-cou-ed
+
            when 78-col-data-ddt
                 perform CONTROLLO-RIGA
                 modify gb-rec-b(riga, 78-col-data-ddt), 
@@ -4157,8 +4283,9 @@ BEGIN-TEXT
               perform SALVA-RIGA
 
               evaluate colonna
-              when 78-col-kg
+              when 78-col-kg     
               when 78-col-consumo
+              when 78-col-cou
               when 78-col-data-ddt
               when 78-col-ddt
                    perform MSG-SINCRO      

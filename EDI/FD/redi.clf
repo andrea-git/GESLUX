@@ -5,7 +5,7 @@
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E53F132338-563-1080931413
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E54E173136-688-1655423950
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -445,9 +445,9 @@ m_bFixed=1
 
 @}}
 [FDITEM45_]
-m_strName=redi-num-vuoto-1
-m_strRawPic=9(18)
-m_strPic=9(18)
+m_strName=redi-imp-cou
+m_strRawPic=9(9)V9(2)
+m_strPic=9(9)V9(2)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -455,9 +455,9 @@ m_bFixed=1
 
 @}}
 [FDITEM46_]
-m_strName=redi-num-vuoto-2
-m_strRawPic=9(18)
-m_strPic=9(18)
+m_strName=redi-num-vuoto-1
+m_strRawPic=9(7)
+m_strPic=9(7)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -465,7 +465,7 @@ m_bFixed=1
 
 @}}
 [FDITEM47_]
-m_strName=redi-num-vuoto-3
+m_strName=redi-num-vuoto-2
 m_strRawPic=9(18)
 m_strPic=9(18)
 m_nItemLevel=15
@@ -475,9 +475,9 @@ m_bFixed=1
 
 @}}
 [FDITEM48_]
-m_strName=redi-tipo-doc
-m_strRawPic=x(3)
-m_strPic=X(3)
+m_strName=redi-num-vuoto-3
+m_strRawPic=9(18)
+m_strPic=9(18)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -485,7 +485,7 @@ m_bFixed=1
 
 @}}
 [FDITEM49_]
-m_strName=redi-suf-reg
+m_strName=redi-tipo-doc
 m_strRawPic=x(3)
 m_strPic=X(3)
 m_nItemLevel=15
@@ -495,13 +495,23 @@ m_bFixed=1
 
 @}}
 [FDITEM50_]
+m_strName=redi-suf-reg
+m_strRawPic=x(3)
+m_strPic=X(3)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM50_
+
+@}}
+[FDITEM51_]
 m_strName=redi-alfa-vuoto
 m_strRawPic=X(494)
 m_strPic=X(494)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM50_
+{{@DataItem_m_strDescriptionFDITEM51_
 
 @}}
 [CStoAcucobolSL_]
@@ -511,6 +521,7 @@ m_nFormat=3
 m_nAccessMode=3
 m_nLockMode=3
 m_strFileStatus=STATUS-redi
+m_nNumber=1
 m_nCompression=70
 {{@SL_m_strDescription
 

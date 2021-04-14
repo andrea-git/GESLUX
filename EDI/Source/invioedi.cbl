@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          invioedi.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 30 dicembre 2014 14:11:27.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        mercoledì 14 aprile 2021 19:59:23.
        REMARKS.
       *{TOTEM}END
 
@@ -54,7 +54,7 @@
                COPY "opensave.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -162,6 +162,7 @@
            05 col-pos-fiscale  PIC  X(3).
            05 col-cau          PIC  X(3).
            05 col-consumo      PIC  zz.zzz.zz9,99.
+           05 col-cou          PIC  zz.zzz.zz9,99.
            05 col-stato        PIC  XX.
            05 col-invio        PIC  x.
        77 filtro-nc        PIC  9(8).
@@ -171,10 +172,12 @@
        77 redi-nc-x        PIC  x(8).
        01 FILLER           PIC  9.
            88 rec-ok VALUE IS 1    WHEN SET TO FALSE  0. 
-       77 tot-importi      PIC  9(12)v999.
+       77 tot-consumo      PIC  9(12)v999.
+       77 tot-cou          PIC  9(12)v999.
        77 tot-carico       PIC  9(12)v999.
        77 tot-scarico      PIC  9(12)v999.
-       77 tot-importi-ed   PIC  z.zzz.zzz.zz9,99.
+       77 tot-consumo-ed   PIC  z.zzz.zzz.zz9,99.
+       77 tot-cou-ed       PIC  z.zzz.zzz.zz9,99.
        77 lab-carico-buf   PIC  z.zzz.zzz.zz9,999.
        77 lab-scarico-buf  PIC  z.zzz.zzz.zz9,999.
        77 EXCEL-BMP        PIC  S9(9)
@@ -204,7 +207,7 @@
        77 TMP-DataSet1-redi-BUF     PIC X(836).
        77 TMP-DataSet1-exp-edi-BUF     PIC X(387).
        77 TMP-DataSet1-anautf-BUF     PIC X(638).
-       77 TMP-DataSet1-lineseq-BUF     PIC X(900).
+       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -284,8 +287,9 @@
        78  78-col-pos-fiscale   value 15.
        78  78-col-cau           value 16.
        78  78-col-consumo       value 17.
-       78  78-col-stato         value 18.
-       78  78-col-invio         value 19.
+       78  78-col-cou           value 18.
+       78  78-col-stato         value 19.
+       78  78-col-invio         value 20.
 
        77  cont-exp             pic 9(18).
 
@@ -295,8 +299,9 @@
            02  FILE-TIME    PIC 9(8) COMP-X.  
 
        77  blocco                  pic x.
-
+                        
        77  como-redi-imp-consumo   PIC  9(9)V9(2).
+       77  como-redi-imp-cou       PIC  9(9)V9(2).
 
        77  save-riga               pic 9(5).
       *{TOTEM}END
@@ -537,21 +542,21 @@
            gb-rec-b, 
            Grid, 
            COL 1,50, 
-           LINE 7,00,
+           LINE 8,25,
            LINES 34,50 ,
-           SIZE 157,13 ,
+           SIZE 167,38 ,
            ADJUSTABLE-COLUMNS,
            BOXED,
            CENTERED-HEADINGS,
            DATA-COLUMNS (1, 2, 6, 14, 24, 64, 68, 76, 78, 82, 96, 97, 
-           118, 128, 130, 133, 136, 149, 151),
+           118, 128, 130, 133, 136, 149, 162, 164),
            ALIGNMENT ("U", "R", "R", "C", "L", "U", "R", "R", "L", "R", 
-           "C", "R", "C", "C", "C", "C", "R", "C", "C"),
+           "C", "R", "C", "C", "C", "C", "R", "R", "C", "C"),
            SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 
-           5, 5, 5),
+           5, 5, 5, 5),
            DATA-TYPES ("x", "z(4)", "9(8)", "9(8)", "x(40)", "x(4)", "9(
       -    "8)", "9(2)", "x(4)", "9(8),999", "x", "x(21)", "9(8)", "x(2)
-      -    "", "X(3)", "x(3)", "9(8)v99", "XX", "x"),
+      -    "", "X(3)", "x(3)", "9(8)v99", "X", "XX", "x"),
            NUM-COL-HEADINGS 1,
            COLUMN-HEADINGS,
            CURSOR-FRAME-WIDTH 2,
@@ -575,8 +580,8 @@
            Screen2-Br-1a, 
            Bar,
            COL 38,00, 
-           LINE 5,70,
-           SIZE 121,00 ,
+           LINE 6,94,
+           SIZE 131,38 ,
            ID IS 19,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -591,7 +596,7 @@
            Form1-La-1abbba, 
            Label, 
            COL 2,00, 
-           LINE 5,00,
+           LINE 6,25,
            LINES 1,31 ,
            SIZE 36,00 ,
            COLOR IS 80,
@@ -675,7 +680,7 @@
            lbl-stato, 
            Label, 
            COL 2,50, 
-           LINE 42,31,
+           LINE 43,56,
            LINES 1,19 ,
            SIZE 30,00 ,
            COLOR IS col-stato-ordine,
@@ -880,7 +885,7 @@
            ef-filtro-nc, 
            Entry-Field, 
            COL 86,00, 
-           LINE 42,31,
+           LINE 43,56,
            LINES 1,19 ,
            SIZE 10,00 ,
            BOXED,
@@ -902,7 +907,7 @@
            lbl-statoa, 
            Label, 
            COL 64,00, 
-           LINE 42,31,
+           LINE 43,56,
            LINES 1,19 ,
            SIZE 21,00 ,
            COLOR IS col-stato-ordine,
@@ -917,7 +922,7 @@
 
       * LABEL
        05
-           lbl-tot-importi, 
+           lbl-tot-consumo, 
            Label, 
            COL 140,88, 
            LINE 1,38,
@@ -930,7 +935,7 @@
            WIDTH-IN-CELLS,
            RIGHT,
            TRANSPARENT,
-           TITLE tot-importi-ed,
+           TITLE tot-consumo-ed,
            .
 
       * LABEL
@@ -947,7 +952,7 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
-           TITLE "Totale Imposte:",
+           TITLE "Totale consumo",
            .
 
       * LABEL
@@ -955,7 +960,7 @@
            Form1-La-11ca, 
            Label, 
            COL 123,13, 
-           LINE 3,13,
+           LINE 4,38,
            LINES 1,00 ,
            SIZE 17,00 ,
            COLOR IS 481,
@@ -971,7 +976,7 @@
            Form1-La-11caa, 
            Label, 
            COL 123,13, 
-           LINE 4,38,
+           LINE 5,63,
            LINES 1,00 ,
            SIZE 17,00 ,
            COLOR IS 400,
@@ -987,7 +992,7 @@
            lab-carico, 
            Label, 
            COL 140,88, 
-           LINE 3,13,
+           LINE 4,38,
            LINES 1,00 ,
            SIZE 15,00 ,
            COLOR IS 481,
@@ -1004,7 +1009,7 @@
            lab-scarico, 
            Label, 
            COL 140,88, 
-           LINE 4,38,
+           LINE 5,63,
            LINES 1,00 ,
            SIZE 15,00 ,
            COLOR IS 400,
@@ -1022,7 +1027,7 @@
            Bar,
            COL 122,25, 
            LINE 1,13,
-           LINES 4,56 ,
+           LINES 5,94 ,
            ID IS 10,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -1034,7 +1039,7 @@
            Screen2-Br-2, 
            Bar,
            COL 122,38, 
-           LINE 2,69,
+           LINE 3,94,
            SIZE 34,00 ,
            ID IS 11,
            HEIGHT-IN-CELLS,
@@ -1061,11 +1066,46 @@
            Bar,
            COL 156,50, 
            LINE 1,13,
-           LINES 4,63 ,
+           LINES 5,94 ,
            ID IS 13,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            WIDTH 1,
+           .
+
+      * LABEL
+       05
+           Form1-La-11cb, 
+           Label, 
+           COL 123,13, 
+           LINE 2,56,
+           LINES 1,00 ,
+           SIZE 17,00 ,
+           COLOR IS 5,
+           FONT IS Verdana10B-Occidentale,
+           ID IS 4,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Totale COU",
+           .
+
+      * LABEL
+       05
+           lbl-tot-cou, 
+           Label, 
+           COL 140,88, 
+           LINE 2,63,
+           LINES 1,00 ,
+           SIZE 15,00 ,
+           COLOR IS 5,
+           FONT IS Verdana10B-Occidentale,
+           ID IS 3,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           TRANSPARENT,
+           TITLE tot-cou-ed,
            .
 
       * FORM
@@ -1104,11 +1144,9 @@
            LINE 1,30,
            LINES 12,00 CELLS,
            SIZE 32,80 CELLS,
-           RAISED,
            ID IS 3,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           VERY-HEAVY,
            .
 
       * LABEL
@@ -2536,9 +2574,12 @@
                 CELL-DATA = "Imp.Consumo",
       * CELLS' SETTING
               MODIFY gb-rec-b, X = 18, Y = 1,
-                CELL-DATA = "Stato",
+                CELL-DATA = "Imp. COU",
       * CELLS' SETTING
               MODIFY gb-rec-b, X = 19, Y = 1,
+                CELL-DATA = "Stato",
+      * CELLS' SETTING
+              MODIFY gb-rec-b, X = 20, Y = 1,
                 CELL-DATA = "Invio",
            .
 
@@ -2793,8 +2834,8 @@
 
        Screen2-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 43,00,
-              SIZE 158,00,
+              LINES 44,50,
+              SIZE 168,38,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
               COLOR 65793,
@@ -2820,8 +2861,8 @@
            DISPLAY Screen2 UPON Screen2-Handle
       * DISPLAY-COLUMNS settings
               MODIFY gb-rec-b, DISPLAY-COLUMNS (1, 4, 12, 22, 34, 81, 
-           87, 97, 104, 112, 122, 132, 144, 156, 161, 173, 181, 195, 
-           202)
+           87, 97, 104, 112, 122, 132, 144, 156, 161, 173, 181, 194, 
+           207, 214)
            .
 
        Screen2-PROC.
@@ -3729,6 +3770,14 @@
                 else
                    set event-action to event-action-fail      
                 end-if
+           when 78-col-cou
+                perform CONTROLLA-MOD
+                if procedi
+                   set environment "KEYSTROKE" to "DATA=44 46"
+                   move redi-imp-cou to como-redi-imp-cou
+                else
+                   set event-action to event-action-fail      
+                end-if
            when 78-col-stoccaggio
       *     when 78-col-pos-fiscale
            when 78-col-ddt
@@ -3928,16 +3977,18 @@
            perform CONTROLLA-CANC
            if procedi
               read redi no lock
-                 invalid
-                    move zero   to redi-imp-consumo
+                 invalid move 0 to redi-imp-consumo redi-imp-cou
               end-read
-              subtract redi-imp-consumo  from tot-importi
-              move tot-importi to tot-importi-ed
-              modify lbl-tot-importi, TITLE tot-importi-ed
+              subtract redi-imp-consumo  from tot-consumo
+              move tot-consumo to tot-consumo-ed
+              modify lbl-tot-consumo, TITLE tot-consumo-ed
+              
+              subtract redi-imp-cou      from tot-cou  
+              move tot-cou to tot-cou-ed
+              modify lbl-tot-cou, TITLE tot-cou-ed
 
               delete redi record
-                 invalid 
-                    continue
+                 invalid continue
               end-delete
 
               modify gb-rec-b, RECORD-TO-DELETE riga
@@ -3993,11 +4044,22 @@
                 perform CONTROLLO-RIGA
                 modify gb-rec-b(riga, 78-col-consumo), 
                                                   cell-data col-consumo
-                compute tot-importi = tot-importi           - 
+                compute tot-consumo = tot-consumo           - 
                                       como-redi-imp-consumo +
                                       redi-imp-consumo
-                move tot-importi to tot-importi-ed
-                modify lbl-tot-importi, TITLE tot-importi-ed
+                move tot-consumo to tot-consumo-ed
+                modify lbl-tot-consumo, TITLE tot-consumo-ed
+
+           when 78-col-cou
+                perform CONTROLLO-RIGA
+                modify gb-rec-b(riga, 78-col-cou), 
+                                                  cell-data col-cou
+                compute tot-cou     = tot-cou           - 
+                                      como-redi-imp-cou +
+                                      redi-imp-cou
+                move tot-cou to tot-cou-ed
+                modify lbl-tot-cou, TITLE tot-cou-ed
+
            when 78-col-data-ddt
                 perform CONTROLLO-RIGA
                 modify gb-rec-b(riga, 78-col-data-ddt), 
@@ -4017,8 +4079,9 @@
               perform SALVA-RIGA
 
               evaluate colonna
-              when 78-col-kg
+              when 78-col-kg     
               when 78-col-consumo
+              when 78-col-cou
               when 78-col-data-ddt
               when 78-col-ddt
                    perform MSG-SINCRO      

@@ -5,7 +5,7 @@
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E53F132340-859-519924959
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E54E18726-106-1320032675
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -332,9 +332,9 @@ m_bFixed=1
 
 @}}
 [FDITEM33_]
-m_strName=tmp-redi-ragsoc
-m_strRawPic=x(40)
-m_strPic=X(40)
+m_strName=tmp-redi-imp-cou
+m_strRawPic=9(9)V9(2)
+m_strPic=9(9)V9(2)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -342,9 +342,9 @@ m_bFixed=1
 
 @}}
 [FDITEM34_]
-m_strName=tmp-redi-tipo-doc
-m_strRawPic=x(3)
-m_strPic=X(3)
+m_strName=tmp-redi-ragsoc
+m_strRawPic=x(40)
+m_strPic=X(40)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -352,13 +352,23 @@ m_bFixed=1
 
 @}}
 [FDITEM35_]
-m_strName=tmp-redi-suf-reg
+m_strName=tmp-redi-tipo-doc
 m_strRawPic=x(3)
 m_strPic=X(3)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM35_
+
+@}}
+[FDITEM36_]
+m_strName=tmp-redi-suf-reg
+m_strRawPic=x(3)
+m_strPic=X(3)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM36_
 
 @}}
 [CStoAcucobolSL_]
@@ -368,6 +378,7 @@ m_nFormat=3
 m_nAccessMode=3
 m_nLockMode=3
 m_strFileStatus=STATUS-tmp-redi
+m_nNumber=1
 m_nCompression=70
 {{@SL_m_strDescription
 

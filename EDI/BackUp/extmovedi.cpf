@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7DAA1912214-31-2895824440
+PROGRAM_UNIQUE_CODE=TOTEM-7E54E182449-27-2156617625
 
 {{@DESCRIPTION:
 
@@ -1285,7 +1285,7 @@ Begin Screen scr-fine
       LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = Screen1-Fr-1a
-      3D Style          = Raised
+      3D Style          = Normal
       Alternate         = FALSE
       Clines            = 0
       Clines Unit       = Default
@@ -1307,7 +1307,7 @@ Begin Screen scr-fine
       Size              = 32,80
       Size Unit         = Default
       Tab Order         = 1
-      Thickness         = Very Heavy
+      Thickness         = Default
       Title Position    = 0:Unaligned
       Visible           = NONE
       Width in Cells    = TRUE

@@ -44,7 +44,8 @@
                    15 redi-ora-ultima-modifica     PIC  9(8).
                    15 redi-utente-ultima-modifica  PIC  X(10).
                10 redi-vuoti.
-                   15 redi-num-vuoto-1 PIC  9(18).
+                   15 redi-imp-cou     PIC  9(9)V9(2).
+                   15 redi-num-vuoto-1 PIC  9(7).
                    15 redi-num-vuoto-2 PIC  9(18).
                    15 redi-num-vuoto-3 PIC  9(18).
                    15 redi-tipo-doc    PIC  x(3).

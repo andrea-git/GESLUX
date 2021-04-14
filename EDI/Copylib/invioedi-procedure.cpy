@@ -92,7 +92,7 @@
 
       ***---
        LOAD-REDI.
-           move 0 to tot-importi tot-carico tot-scarico.
+           move 0 to tot-consumo tot-cou tot-carico tot-scarico.
            move 1 to riga.
            modify gb-rec-b mass-update = 1
            modify gb-rec-b reset-grid = 1
@@ -103,10 +103,9 @@
                                 redi-data-movimento
                                 redi-tmo-chiave
 
-           start redi key not < redi-k-dt-mov|redi-k-tipo-mov
-              invalid
-                 continue
-              not invalid
+           start redi key >= redi-k-dt-mov|redi-k-tipo-mov
+                 invalid continue
+             not invalid
                  perform until 1 = 2
                     read redi next no lock
                        at end
@@ -131,11 +130,13 @@
            move 1   to riga
            move 2   to event-data-2
            perform SPOSTAMENTO.
-
-           move tot-importi  to tot-importi-ed.
+                                               
+           move tot-consumo  to tot-consumo-ed.
+           move tot-cou      to tot-cou-ed.
            move tot-carico   to lab-carico-buf.
            move tot-scarico  to lab-scarico-buf.
-           display lbl-tot-importi.
+           display lbl-tot-consumo.
+           display lbl-tot-cou.
            display lab-carico
            display lab-scarico.
 
@@ -177,8 +178,9 @@
            move como-data             to col-data-ddt
            move redi-naz              to col-nazione
            move redi-pos-fis          to col-pos-fiscale
-           move redi-cau-movim        to col-cau
+           move redi-cau-movim        to col-cau    
            move redi-imp-consumo      to col-consumo
+           move redi-imp-cou          to col-cou
            move redi-stato            to col-stato
 
            if redi-spedito
@@ -217,8 +219,9 @@
                   bitmap        = elemento-bmp,
                   bitmap-number = 1,
                   bitmap-width  = 16.
-
-           add redi-imp-consumo to tot-importi.
+                                                  
+           add redi-imp-consumo to tot-consumo.
+           add redi-imp-cou     to tot-cou.
 
 
       ***---
@@ -233,8 +236,7 @@
            inquire gb-rec-b(riga, 2) hidden-data = redi-chiave.
 
            read redi
-              invalid
-                 continue
+              invalid continue
            end-read
 
       *     move col-anno        to redi-mov-anno
@@ -255,10 +257,13 @@
            move como-data(5:4)  to redi-mod-dt-doc(1:4)
 
            move col-nazione     to redi-naz
-           move col-pos-fiscale to redi-pos-fis
+           move col-pos-fiscale to redi-pos-fis 
            inquire gb-rec-b(riga, 78-col-consumo) 
                        cell-data = col-consumo.
            move col-consumo     to redi-imp-consumo.
+           inquire gb-rec-b(riga, 78-col-cou) 
+                       cell-data = col-cou.
+           move col-cou         to redi-imp-cou.
 
       ***---
        CONTROLLO-RIGA.
@@ -297,8 +302,9 @@
                 move col-data-ddt  to como-data
                 perform DATE-FORMAT
                 move como-data     to col-data-ddt
-           when 78-col-ddt
+           when 78-col-ddt    
            when 78-col-consumo
+           when 78-col-cou
                 continue
            end-evaluate.           
 
@@ -659,9 +665,11 @@
                   separatore         delimited size
                   "Imp.Consumo"      delimited size
                   separatore         delimited size
+                  "Imp.COU"          delimited size
+                  separatore         delimited size
                   "Stato"            delimited size
                   separatore         delimited size
-                  "Tipo"            delimited size
+                  "Tipo"             delimited size
                   into line-riga
            end-string
            write line-riga
@@ -671,24 +679,42 @@
       *        inquire gb-rec-b(riga,  2), cell-data in col-anno
       *        inquire gb-rec-b(riga,  3), cell-data in col-registro
       *        inquire gb-rec-b(riga,  4), cell-data in col-progressivo
-              inquire gb-rec-b(riga,  2), cell-data in col-anno-tmo   
-              inquire gb-rec-b(riga,  3), cell-data in col-num-tmo    
-              inquire gb-rec-b(riga,  4), cell-data in col-data-mov   
-              inquire gb-rec-b(riga,  5), cell-data in col-ragsoc     
-              inquire gb-rec-b(riga,  6), cell-data in col-cpa        
-              inquire gb-rec-b(riga,  7), cell-data in col-nc         
-              inquire gb-rec-b(riga,  8), cell-data in col-taric      
-              inquire gb-rec-b(riga,  9), cell-data in col-dac        
-              inquire gb-rec-b(riga, 10), cell-data in col-kg         
-              inquire gb-rec-b(riga, 11), cell-data in col-stoccaggio 
-              inquire gb-rec-b(riga, 12), cell-data in col-ddt        
-              inquire gb-rec-b(riga, 13), cell-data in col-data-ddt   
-              inquire gb-rec-b(riga, 14), cell-data in col-nazione    
-              inquire gb-rec-b(riga, 15), cell-data in col-pos-fiscale
-              inquire gb-rec-b(riga, 16), cell-data in col-cau        
-              inquire gb-rec-b(riga, 17), cell-data in col-consumo    
-              inquire gb-rec-b(riga, 18), cell-data in col-stato      
-
+              inquire gb-rec-b(riga, 78-col-anno-tmo   ), 
+                      cell-data in col-anno-tmo   
+              inquire gb-rec-b(riga, 78-col-num-tmo    ), 
+                      cell-data in col-num-tmo    
+              inquire gb-rec-b(riga, 78-col-data-mov   ), 
+                      cell-data in col-data-mov   
+              inquire gb-rec-b(riga, 78-col-ragsoc     ), 
+                      cell-data in col-ragsoc     
+              inquire gb-rec-b(riga, 78-col-cpa        ), 
+                      cell-data in col-cpa        
+              inquire gb-rec-b(riga, 78-col-nc         ), 
+                      cell-data in col-nc         
+              inquire gb-rec-b(riga, 78-col-taric      ), 
+                      cell-data in col-taric      
+              inquire gb-rec-b(riga, 78-col-dac        ), 
+                      cell-data in col-dac        
+              inquire gb-rec-b(riga, 78-col-kg         ), 
+                      cell-data in col-kg         
+              inquire gb-rec-b(riga, 78-col-stoccaggio ), 
+                      cell-data in col-stoccaggio 
+              inquire gb-rec-b(riga, 78-col-ddt        ), 
+                      cell-data in col-ddt        
+              inquire gb-rec-b(riga, 78-col-data-ddt   ), 
+                      cell-data in col-data-ddt   
+              inquire gb-rec-b(riga, 78-col-nazione    ), 
+                      cell-data in col-nazione    
+              inquire gb-rec-b(riga, 78-col-pos-fiscale), 
+                      cell-data in col-pos-fiscale
+              inquire gb-rec-b(riga, 78-col-cau        ), 
+                      cell-data in col-cau        
+              inquire gb-rec-b(riga, 78-col-consumo    ), 
+                      cell-data in col-consumo    
+              inquire gb-rec-b(riga, 78-col-cou        ), 
+                      cell-data in col-cou
+              inquire gb-rec-b(riga, 78-col-stato      ), 
+                      cell-data in col-stato      
               inquire gb-rec-b(riga, 1), hidden-data = como-tipo-mov
               string |col-anno          delimited size
       *               separatore        delimited size
@@ -727,6 +753,8 @@
                      col-cau           delimited size
                      separatore        delimited size
                      col-consumo       delimited size
+                     separatore        delimited size
+                     col-cou           delimited size
                      separatore        delimited size
                      col-stato         delimited size
                      separatore        delimited size
