@@ -1863,7 +1863,7 @@
                    "Di seguito vi comunichiamo le coordinate bancarie do
       -    "ve effettuare il pagamento:" x"0d0a"
                    "INTESTAZIONE: Lubex Spa"x"0d0a"
-                   "IBAN: IT79P0311133590000000000844"x"0d0a"
+                   "IBAN: IT31O0306933590100000061718"x"0d0a"
                   x"0d0a"
                    "Rimaniamo a Vostra disposizione per qualsiasi chiari
       -    "mento in merito" X"0d0a" 
