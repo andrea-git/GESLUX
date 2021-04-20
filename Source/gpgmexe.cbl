@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gpgmexe.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 30 dicembre 2020 14:51:50.
+       DATE-WRITTEN.        martedì 20 aprile 2021 13:25:39.
        REMARKS.
       *{TOTEM}END
 
@@ -3401,28 +3401,14 @@
 
            initialize rec-stampa.
            perform SETTA-INIZIO-RIGA.
+           move pgme-utente     to r-user.
            string r-inizio      delimited size
                   como-stringa  delimited size
                   into rec-stampa
            end-string.
            write rec-stampa.
 
-           close fileseq.
-
-      ***---
-       SETTA-INIZIO-RIGA.
-           accept como-ora  from time.
-           accept como-data from century-date.
-
-           move como-data(3:2)  to r-aa.
-           move como-data(5:2)  to r-mm.
-           move como-data(7:2)  to r-gg.
-
-           move como-ora(1:2)   to r-hh.
-           move como-ora(3:2)   to r-min.
-           move como-ora(5:2)   to r-sec.
-
-           move pgme-utente     to r-user 
+           close fileseq 
            .
       * <TOTEM:END>
 
@@ -3859,6 +3845,12 @@
            when "YES"
                 set si-gest-sessioni  to true
            end-evaluate
+           .
+      * <TOTEM:END>
+
+       PARAGRAFO-COPY.
+      * <TOTEM:PARA. PARAGRAFO-COPY>
+           copy "setta-inizio-riga.cpy" 
            .
       * <TOTEM:END>
 

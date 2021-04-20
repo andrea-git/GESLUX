@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=form1
 BEFORE_PROGRAM=stbolle-Ev-Before-Program
 AFTER_PROGRAM=stbolle-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E54882513-888-75488303
+PROGRAM_UNIQUE_CODE=TOTEM-7E5414112443-845-2232527115
 
 {{@DESCRIPTION:
 
@@ -2830,6 +2830,7 @@ BEGIN-TEXT
 
            initialize rec-stampa.
            perform SETTA-INIZIO-RIGA.
+           move pgme-utente     to r-user.
            string r-inizio      delimited size
                   como-stringa  delimited size
                   into rec-stampa
@@ -2837,22 +2838,6 @@ BEGIN-TEXT
            write rec-stampa.
 
            close fileseq.
-
-      ***---
-       SETTA-INIZIO-RIGA.
-           accept como-ora  from time.
-           accept como-data from century-date.
-
-           move como-data(3:2)  to r-aa.
-           move como-data(5:2)  to r-mm.
-           move como-data(7:2)  to r-gg.
-
-           move como-ora(1:2)   to r-hh.
-           move como-ora(3:2)   to r-min.
-           move como-ora(5:2)   to r-sec.
-
-           move pgme-utente     to r-user.
-
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -3302,6 +3287,13 @@ BEGIN-TEXT
            when "YES"
                 set si-gest-sessioni  to true
            end-evaluate
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = PARAGRAFO-COPY
+BEGIN-TEXT
+           copy "setta-inizio-riga.cpy".
 END-TEXT
 END-DATA
 BEGIN-DATA

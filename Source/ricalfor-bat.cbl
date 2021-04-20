@@ -533,19 +533,6 @@
            end-if.
 
       ***---
-       SETTA-INIZIO-RIGA.
-           accept como-ora  from time.
-           accept como-data from century-date.
-
-           move como-data(3:2) to r-aa. 
-           move como-data(5:2) to r-mm.
-           move como-data(7:2) to r-gg.
-
-           move como-ora(1:2) to r-hh.
-           move como-ora(3:2) to r-min.
-           move como-ora(5:2) to r-sec.
-
-      ***---
        INIT.
            set ricalcolo     to false.
            set nessun-errore to true.  
@@ -1092,6 +1079,7 @@
            copy "imposte.cpy".
            copy "addizionale-piombo.cpy".
            copy "trova-parametro.cpy".
+           copy "setta-inizio-riga.cpy".
 
       ***--- |DUMMY NON TOCCARE
        RECUPERO-ANAGRAFICA.

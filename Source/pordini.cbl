@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 18 marzo 2021 10:29:11.
+       DATE-WRITTEN.        martedì 20 aprile 2021 13:24:38.
        REMARKS.
       *{TOTEM}END
 
@@ -10242,8 +10242,7 @@
       * <TOTEM:END>
            DISPLAY scr-elab UPON scr-elab-Handle
       * <TOTEM:EPT. FORM:scr-elab, FORM:scr-elab, AfterDisplay>
-
-
+
       *<<** Customized_Default, SP-G, scr-data-blockpgm-1, Disable **>>
 
            .
@@ -10479,8 +10478,7 @@
       * <TOTEM:END>
            DISPLAY scr-data UPON form1-handle
       * <TOTEM:EPT. FORM:scr-data, FORM:scr-data, AfterDisplay>
-
-
+
       *<<** Customized_Default, SP-G, scr-data-blockpgm-1, Disable **>>
 
            .
@@ -12526,7 +12524,8 @@
            copy "addizionale-piombo-fornitore.cpy".
            copy "mail.cpy".
            copy "multigest.cpy".
-           copy "trova-parametro.cpy".
+           copy "trova-parametro.cpy".   
+           copy "setta-inizio-riga.cpy".
 
       ***--- DUMMY NON TOCCARE.
        RECUPERO-ANAGRAFICA 
@@ -13436,21 +13435,7 @@
            end-if.
            display como-riga upon syserr.
 
-           delete file lineseq.
-
-
-      ***---
-       SETTA-INIZIO-RIGA.
-           accept como-ora  from time.
-           accept como-data from century-date.
-
-           move como-data(3:2) to r-aa. 
-           move como-data(5:2) to r-mm.
-           move como-data(7:2) to r-gg.
-
-           move como-ora(1:2) to r-hh.
-           move como-ora(3:2) to r-min.
-           move como-ora(5:2) to r-sec 
+           delete file lineseq  
            .
       * <TOTEM:END>
 
@@ -13721,7 +13706,7 @@
                              upon scr-elab-handle at column 53
                                                        line 04
                           move 0 to counter2
-                       end-if                                                                                                              
+                       end-if
 
                        move cpf-listino  to rlis-codice
                        move cpf-articolo to rlis-articolo
@@ -13750,7 +13735,7 @@
                  read ordfor2 next at end exit perform end-read
 
                  add 1 to counter
-                 add 1 to counter2   
+                 add 1 to counter2
                  if counter2 = 10
                     move counter to counter-edit
                     display counter-edit

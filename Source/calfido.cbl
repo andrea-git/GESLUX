@@ -845,19 +845,6 @@
            write riga-log.
 
       ***---
-       SETTA-INIZIO-RIGA.
-           accept como-ora  from time.
-           accept como-data from century-date.
-
-           move como-data(3:2) to r-aa.
-           move como-data(5:2) to r-mm.
-           move como-data(7:2) to r-gg.
-
-           move como-ora(1:2) to r-hh.
-           move como-ora(3:2) to r-min.
-           move como-ora(5:2) to r-sec.
-
-      ***---
        CLOSE-FILES.                  
            close PAS PAR TBLPC TBLTR DOCES CLI G2 CLZ tordini rordini
                  tparamge tconvanno mtordini mrordini tivaese.
@@ -876,3 +863,7 @@
               end-if
            end-if.
            goback.
+
+      ***---
+       PARAGRAFO-COPY.
+           copy "setta-inizio-riga.cpy".

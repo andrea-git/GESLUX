@@ -1000,19 +1000,6 @@
            write log-riga.
 
       ***---
-       SETTA-INIZIO-RIGA.
-           accept como-ora  from time.
-           accept como-data from century-date.
-
-           move como-data(3:2) to r-aa.
-           move como-data(5:2) to r-mm.
-           move como-data(7:2) to r-gg.
-
-           move como-ora(1:2) to r-hh.
-           move como-ora(3:2) to r-min.
-           move como-ora(5:2) to r-sec.
-
-      ***---
        LOOP-RIGHE-RORDINI.
       *****     if visualizza-totali = "S"
       *****        |Guardo i totali delle imposte in maniera preventiva
@@ -2959,3 +2946,7 @@ OMAGGI     end-if.
                 set errori to true
            end-read.
            close tcontat.
+
+      ***---
+       PARAGRAFO-COPY.
+           copy "setta-inizio-riga.cpy".

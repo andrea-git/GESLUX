@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=scr-data
 BEFORE_PROGRAM=ordini-Ev-Before-Program
 AFTER_PROGRAM=ordini-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E54882528-764-2863918717
+PROGRAM_UNIQUE_CODE=TOTEM-7E5414112350-295-1100418288
 
 {{@DESCRIPTION:
 
@@ -11508,7 +11508,8 @@ BEGIN-TEXT
            copy "addizionale-piombo-fornitore.cpy".
            copy "mail.cpy".
            copy "multigest.cpy".
-           copy "trova-parametro.cpy".
+           copy "trova-parametro.cpy".   
+           copy "setta-inizio-riga.cpy".
 
       ***--- DUMMY NON TOCCARE.
        RECUPERO-ANAGRAFICA.
@@ -12422,21 +12423,7 @@ BEGIN-TEXT
            end-if.
            display como-riga upon syserr.
 
-           delete file lineseq.
-
-
-      ***---
-       SETTA-INIZIO-RIGA.
-           accept como-ora  from time.
-           accept como-data from century-date.
-
-           move como-data(3:2) to r-aa. 
-           move como-data(5:2) to r-mm.
-           move como-data(7:2) to r-gg.
-
-           move como-ora(1:2) to r-hh.
-           move como-ora(3:2) to r-min.
-           move como-ora(5:2) to r-sec.
+           delete file lineseq. 
 END-TEXT
 END-DATA
 BEGIN-DATA

@@ -496,20 +496,7 @@
               perform ELABORAZIONE
               perform CLOSE-FILES
            end-if.
-           perform EXIT-PGM.
-
-      ***---
-       SETTA-INIZIO-RIGA.
-           accept como-ora  from time.
-           accept como-data from century-date.
-
-           move como-data(3:2) to r-aa. 
-           move como-data(5:2) to r-mm.
-           move como-data(7:2) to r-gg.
-
-           move como-ora(1:2) to r-hh.
-           move como-ora(3:2) to r-min.
-           move como-ora(5:2) to r-sec.
+           perform EXIT-PGM. 
 
       ***---
        INIT.
@@ -1084,7 +1071,7 @@
 
            |Nel caso non sia valorizzato evito 
            |di mandare in errore il run-time
-           if comodo not = 0
+      *     if comodo not = 0
       *        if tmp-prg-giac-MTN not = 0
       *           move 0 to resto
       *           divide tmp-prg-giac-MTN by comodo giving PalletMTN
@@ -1109,7 +1096,7 @@
       *              add 1 to PalletGIC
       *           end-if
       *        end-if
-           end-if.
+      *     end-if.
 
       ***---
        VALUTA-TOTALI.
@@ -1510,3 +1497,4 @@
            copy "mail.cpy".
            copy "costo-medio.cpy".
            copy "calcola-costo-mp-when-zero.cpy".
+           copy "setta-inizio-riga.cpy".

@@ -190,7 +190,7 @@
                                 " - DA SCORTA 0 a 2"   delimited size
                            into como-riga
                          end-string                   
-                    when 2 also <= imq-qta-imb
+                    when 2 also < imq-qta-imb
                          move 0 to art-scorta
                          rewrite art-rec          
                          string "ELABORATO ARTICOLO: " delimited size
@@ -255,19 +255,6 @@
            write line-riga of lineseq from riga-stampa.
 
       ***---
-       SETTA-INIZIO-RIGA.
-           accept como-ora  from time.
-           accept como-data from century-date.
-                                       
-           move como-data(3:2) to r-aa.
-           move como-data(5:2) to r-mm.
-           move como-data(7:2) to r-gg.
-
-           move como-ora(3:2) to r-hh.
-           move como-ora(5:2) to r-min.
-           move como-ora(7:2) to r-sec.
-
-      ***---
        EXIT-PGM.
            if RichiamoSchedulato
               close lineseq
@@ -277,3 +264,7 @@
                column 35,00
            end-if.
            goback.
+
+      ***---
+       PARAGRAFO-COPY.
+           copy "setta-inizio-riga.cpy".

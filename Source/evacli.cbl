@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 20 ottobre 2020 12:11:50.
+       DATE-WRITTEN.        martedì 20 aprile 2021 13:23:40.
        REMARKS.
       *{TOTEM}END
 
@@ -660,7 +660,7 @@
           88 scr-elab-tprev-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-tparameva-BUF     PIC X(810).
        77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-mrordini-BUF     PIC X(891).
        77 TMP-DataSet1-mtordini-BUF     PIC X(2122).
@@ -14288,7 +14288,8 @@
            copy "trova-parametro.cpy".
            copy "evacli-giang.cpy".
            copy "multigest.cpy".
-           copy "accessoxx.cpy".
+           copy "accessoxx.cpy". 
+           copy "setta-inizio-riga.cpy".
 
       ***--- DUMMY: NON TOCCARE
        AGGIORNA-IMPEGNATO-MASTER 
@@ -15156,21 +15157,6 @@
            move user-codi            to lck-utente-creazione.
            write lck-rec invalid rewrite lck-rec end-write.
            read lockfile lock 
-           .
-      * <TOTEM:END>
-
-       SETTA-INIZIO-RIGA.
-      * <TOTEM:PARA. SETTA-INIZIO-RIGA>
-           accept ora-stampa  from time.
-           accept data-stampa from century-date.
-
-           move data-stampa(3:2) to r-aa. 
-           move data-stampa(5:2) to r-mm.
-           move data-stampa(7:2) to r-gg.
-
-           move ora-stampa(1:2) to r-hh.
-           move ora-stampa(3:2) to r-min.
-           move ora-stampa(5:2) to r-sec 
            .
       * <TOTEM:END>
 

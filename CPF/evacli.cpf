@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=aggmese-Ev-Before-Program
 AFTER_PROGRAM=evacli-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E54882429-570-1071329140
+PROGRAM_UNIQUE_CODE=TOTEM-7E5414112312-139-546820798
 
 {{@DESCRIPTION:
 
@@ -11337,7 +11337,8 @@ BEGIN-TEXT
            copy "trova-parametro.cpy".
            copy "evacli-giang.cpy".
            copy "multigest.cpy".
-           copy "accessoxx.cpy".
+           copy "accessoxx.cpy". 
+           copy "setta-inizio-riga.cpy".
 
       ***--- DUMMY: NON TOCCARE
        AGGIORNA-IMPEGNATO-MASTER.
@@ -12179,22 +12180,6 @@ BEGIN-TEXT
            move user-codi            to lck-utente-creazione.
            write lck-rec invalid rewrite lck-rec end-write.
            read lockfile lock.
-END-TEXT
-END-DATA
-BEGIN-DATA
-   BASETYPE          = 3
-   PARAGRAPH         = SETTA-INIZIO-RIGA
-BEGIN-TEXT
-           accept ora-stampa  from time.
-           accept data-stampa from century-date.
-
-           move data-stampa(3:2) to r-aa. 
-           move data-stampa(5:2) to r-mm.
-           move data-stampa(7:2) to r-gg.
-
-           move ora-stampa(1:2) to r-hh.
-           move ora-stampa(3:2) to r-min.
-           move ora-stampa(5:2) to r-sec.
 END-TEXT
 END-DATA
 BEGIN-DATA
