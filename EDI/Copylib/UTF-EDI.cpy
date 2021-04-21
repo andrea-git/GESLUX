@@ -253,8 +253,9 @@ quiii      move pae-imp-assolta       to tmp-redi-pos-fis.
            else
               move cli-codfis         to tmp-redi-dest
            end-if.
-           move cli-ragsoc-1          to tmp-redi-ragsoc.
+           move cli-ragsoc-1          to tmp-redi-ragsoc.     
            move zero                  to tmp-redi-imp-consumo.
+           move zero                  to tmp-redi-imp-cou.
 
            move space                 to tmp-redi-tipo-doc
                                          tmp-redi-suf-reg.
@@ -588,8 +589,9 @@ LUBEXX*     if rmo-peso-tot-utf = 0
            move tmp-redi-naz             to redi-naz.
            move tmp-redi-dest            to redi-dest.
            move tmp-redi-cau-movim       to redi-cau-movim.
-           move tmp-redi-pos-fis         to redi-pos-fis.
+           move tmp-redi-pos-fis         to redi-pos-fis.    
            move tmp-redi-imp-consumo     to redi-imp-consumo.
+           move tmp-redi-imp-cou         to redi-imp-cou.
            move tmp-redi-ragsoc          to redi-ragsoc.
       *     move tmp-redi-stato           to redi-stato
            move tmp-redi-tmo-chiave      to redi-tmo-chiave.
@@ -659,9 +661,9 @@ LUBEXX*     if rmo-peso-tot-utf = 0
            if art-cod-doganale = 27100000 and art-marca-prodotto = 11
               compute como-imposta = como-peso-imp * imp-cou
            else
-              compute como-imposta = ( como-peso-imp             *
+              compute como-imposta = ( como-peso-imp         *
                                        art-perce-cou / 100 ) *
-                                      imp-cou
+                                       imp-cou
            end-if.
            add 0,005               to como-imposta.
            move como-imposta       to como-imposta-2dec.

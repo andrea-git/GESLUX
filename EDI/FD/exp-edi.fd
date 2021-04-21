@@ -108,10 +108,14 @@
            05 exe-pipe-24      PIC  x(2).
       *     25 COND CN10, CN16 Importo tributi erariali a debito (Imposta di Consumo) 9(9)V9(2)
       *
-           05 exe-imp-tributi  PIC  9(9),9(2).
+           05 exe-imp-consumo  PIC  9(9),9(2).
            05 exe-pipe-25      PIC  x(2).
+      *     25 COND CN10, CN16 Importo tributi erariali a debito (Imposta di Consumo) 9(9)V9(2)
+      *
+           05 exe-imp-cou      PIC  9(9),9(2).
+           05 exe-pipe-26      PIC  x(2).
            05 exe-note         PIC  x(100).
       *    non metto le note quindi metto il doppio finale di campo
       *     26 COND CN18 Note X(800)
       *
-           05 exe-pipe-26      PIC  x(2).
+           05 exe-pipe-27      PIC  x(2).

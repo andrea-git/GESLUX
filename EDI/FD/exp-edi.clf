@@ -5,7 +5,7 @@
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E54E18289-88-3274424062
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E5415103239-944-263444477
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -540,7 +540,7 @@ m_bFixed=1
 
 @}}
 [FDITEM49_]
-m_strName=exe-imp-tributi
+m_strName=exe-imp-consumo
 m_strRawPic=9(9),9(2)
 m_strPic=9(9),9(2)
 m_nItemLevel=5
@@ -561,13 +561,14 @@ m_bFixed=1
 
 @}}
 [FDITEM51_]
-m_strName=exe-note
-m_strRawPic=x(100)
-m_strPic=X(100)
+m_strName=exe-imp-cou
+m_strRawPic=9(9),9(2)
+m_strPic=9(9),9(2)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM51_
+     25 COND CN10, CN16 Importo tributi erariali a debito (Imposta di Consumo) 9(9)V9(2)
 
 @}}
 [FDITEM52_]
@@ -578,6 +579,26 @@ m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM52_
+
+@}}
+[FDITEM53_]
+m_strName=exe-note
+m_strRawPic=x(100)
+m_strPic=X(100)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM53_
+
+@}}
+[FDITEM54_]
+m_strName=exe-pipe-27
+m_strRawPic=x(2)
+m_strPic=X(2)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM54_
     non metto le note quindi metto il doppio finale di campo
      26 COND CN18 Note X(800)
 
@@ -588,6 +609,7 @@ m_strAssignToName=path-exp-edi
 m_nFormat=1
 m_nAccessMode=1
 m_strFileStatus=STATUS-exp-edi
+m_nNumber=1
 m_nCompression=70
 {{@SL_m_strDescription
 

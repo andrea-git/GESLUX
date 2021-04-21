@@ -316,8 +316,7 @@
            accept redi-ora-ultima-modifica  from time.
 
            rewrite redi-rec
-              invalid
-                 continue
+                   invalid continue
            end-rewrite.
 
       ***---
@@ -339,10 +338,8 @@
                     inquire gb-rec-b(riga, 2) hidden-data = redi-chiave
 
                     read redi no lock
-                       invalid
-                          continue
-                       not invalid
-                          perform EXP-RECORD
+                         invalid continue
+                     not invalid perform EXP-RECORD
                     end-read
                  end-if
               end-perform
@@ -389,8 +386,9 @@
                         exe-pipe-22
                         exe-pipe-23
                         exe-pipe-24
-                        exe-pipe-25
+                        exe-pipe-25 
                         exe-pipe-26
+                        exe-pipe-27
 
            move "olluda_b"   to exe-val-fisso
 
@@ -494,7 +492,9 @@
       *     24 COND Codice posizione fiscale 9(3)
            move redi-pos-fis to exe-pos-fis.
       *     25 COND CN10, CN16 Importo tributi erariali a debito (Imposta di Consumo) 9(9)V9(2)
-           move redi-imp-consumo   to exe-imp-tributi.
+           move redi-imp-consumo   to exe-imp-consumo.
+      *     26 COND CN90, Importo contributo CONOU a debito (Imposta di CONOU) 9(9)V9(2)
+           move redi-imp-cou       to exe-imp-cou.
 
            write rec-exe.
 
