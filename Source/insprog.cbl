@@ -11,18 +11,21 @@
        FILE-CONTROL.
            copy "progmag.sl". 
            copy "lineseq.sl".
+           copy "articoli.sl".
 
       *****************************************************************
        DATA DIVISION.
        FILE SECTION.
            copy "progmag.fd". 
            copy "lineseq.fd".
+           copy "articoli.fd".
 
        WORKING-STORAGE SECTION.
 
        78  titolo    value "Inserimento progressivi".
        77  status-progmag   pic xx.  
-       77  status-lineseq   pic xx.
+       77  status-lineseq   pic xx.  
+       77  status-articoli  pic xx.
        77  wstampa          pic x(256).
        77  prg-ok           pic 9(5) value 0.
        77  prg-esiste       pic 9(5) value 0.
@@ -53,7 +56,7 @@
 
       ***---
        OPEN-FILES.
-           open input lineseq.
+           open input lineseq articoli.
            open i-o   progmag.
 
       ***---
@@ -139,11 +142,21 @@
            accept prg-ora-creazione  from time.
            move "INSPROG" to prg-utente-creazione.
            set prg-attivo to true.
+
+           move prg-cod-articolo to art-codice.
+           read articoli no lock.
+           if art-peso-utf > 0
+              move prg-peso to prg-peso-utf
+           end-if.
+           if art-peso-non-utf > 0
+              move prg-peso to prg-peso-non-utf
+           end-if.
+
            write prg-rec.
 
       ***---
        CLOSE-FILES.
-           close progmag lineseq.
+           close progmag lineseq articoli.
 
       ***---
        EXIT-PGM.

@@ -470,10 +470,6 @@
                             art-litri                  of articoli
                             art-note2                  of articoli
               end-unstring 
-              if art-descrizione1 of articoli = 
-                 "ARQUIVET COLL NYL NERO 2X45"
-                 stop "K"
-                  end-if
               move "PZ"  to art-unita-di-misura of articoli
               move "022" to art-codice-iva      of articoli
               move "C"   to art-tipo-stoc       of articoli
@@ -988,6 +984,20 @@ LUBEXX     if tutto-ok
 
               if art-peso-utf     of articoli not = 0 and
                  art-peso-non-utf of articoli not = 0
+                 set err-pesi to true
+                 set errori   to true
+                 exit paragraph
+              end-if
+
+              if art-peso-utf     of articoli = 0 and
+                 art-peso-non-utf of articoli = 0
+                 set err-pesi to true
+                 set errori   to true
+                 exit paragraph
+              end-if
+
+              if art-peso-utf     of articoli is not numeric or
+                 art-peso-non-utf of articoli is not numeric
                  set err-pesi to true
                  set errori   to true
                  exit paragraph
