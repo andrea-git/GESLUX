@@ -1684,7 +1684,7 @@
                        perform until 1 = 2
                           read progmag next at end exit perform end-read
                           if prg-cod-articolo  not = art-codice or
-                             prg-cod-magazzino not = bli-magazzino
+                             prg-cod-magazzino not = "LBX" |Sarà sempre questo il magazzino sia per OMOM che AAAA
                              exit perform
                           end-if
                           if prg-attivo
