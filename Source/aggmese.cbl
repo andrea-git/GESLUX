@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          aggmese.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        giovedì 1 marzo 2018 14:37:14.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        venerdì 23 aprile 2021 13:29:44.
        REMARKS.
       *{TOTEM}END
 
@@ -47,7 +47,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -3178,38 +3178,37 @@ LUBEXX*****           end-if.
        pb-ok-LinkTo.
       * <TOTEM:PARA. pb-ok-LinkTo>
       *
-           initialize splcrt2graf-link.
-           accept splcrt2graf-percorso-stampa from environment "CALMAR_R
-      -    "ECUPERO".
-                                        
-
-           initialize FILE-INFO
-           CALL "C$FILEINFO" USING splcrt2graf-percorso-stampa, 
-           FILE-INFO, 
-                 GIVING STATUS-CODE
-              
-           if file-size = 0
-              display message "File recupero prezzi: " 
-                      x"0d0a"splcrt2graf-percorso-stampa
-                      x"0d0a""non generato in fase di calcolo notturno."
-                      x"0d0a""Confermi l'uscita?"
-                        title titolo
-                         type mb-yes-no
-                       default mb-no
-                         icon 2
-                       giving scelta
-              if scelta = mb-yes
-                 move 27 to key-status
-              end-if
-           else                        
-              set splcrt2graf-windows to true
-              set splcrt2graf-verticale to true
-              set splcrt2graf-forza-crt to true
-              set splcrt2graf-10pt      to true
-              call   "splcrt2graf" using splcrt2graf-link
-              cancel "splcrt2graf"
-              move 27 to key-status
-           end-if 
+      *****     initialize splcrt2graf-link.
+      *****     accept splcrt2graf-percorso-stampa from environment "CALMAR_RECUPERO".
+      *****                                  
+      *****
+      *****     initialize FILE-INFO
+      *****     CALL "C$FILEINFO" USING splcrt2graf-percorso-stampa, FILE-INFO, 
+      *****           GIVING STATUS-CODE
+      *****        
+      *****     if file-size = 0
+      *****        display message "File recupero prezzi: " 
+      *****                x"0d0a"splcrt2graf-percorso-stampa
+      *****                x"0d0a""non generato in fase di calcolo notturno."
+      *****                x"0d0a""Confermi l'uscita?"
+      *****                  title titolo
+      *****                   type mb-yes-no
+      *****                 default mb-no
+      *****                   icon 2
+      *****                 giving scelta
+      *****        if scelta = mb-yes
+      *****           move 27 to key-status
+      *****        end-if
+      *****     else                        
+      *****        set splcrt2graf-windows to true
+      *****        set splcrt2graf-verticale to true
+      *****        set splcrt2graf-forza-crt to true
+      *****        set splcrt2graf-10pt      to true
+      *****        call   "splcrt2graf" using splcrt2graf-link
+      *****        cancel "splcrt2graf"
+      *****        move 27 to key-status
+      *****     end-if.
+           move 27 to key-status 
            .
       * <TOTEM:END>
 

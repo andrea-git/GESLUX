@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          gblister.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        mercoledì 6 febbraio 2019 11:28:22.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        venerdì 23 aprile 2021 13:39:53.
        REMARKS.
       *{TOTEM}END
 
@@ -47,7 +47,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -636,6 +636,7 @@
            WIDTH-IN-CELLS,
            SELF-ACT,
            VALUE chk-alaaa-BUF,
+           VISIBLE 0,
            BEFORE PROCEDURE Screen1-DaCb-1-BeforeProcedure, 
             .
 
@@ -654,6 +655,7 @@
            WIDTH-IN-CELLS,
            SELF-ACT,
            VALUE chk-alaaaa-BUF,
+           VISIBLE 0,
            BEFORE PROCEDURE Screen1-DaCb-1-BeforeProcedure, 
             .
 
@@ -661,7 +663,7 @@
        05
            chk-alaaaaa, 
            Check-Box, 
-           COL 37,50, 
+           COL 43,75, 
            LINE 36,00,
            LINES 1,38 ,
            SIZE 2,00 ,
@@ -679,7 +681,7 @@
        05
            chk-alaaaaaa, 
            Check-Box, 
-           COL 37,50, 
+           COL 43,75, 
            LINE 37,25,
            LINES 1,38 ,
            SIZE 2,00 ,
@@ -690,6 +692,7 @@
            WIDTH-IN-CELLS,
            SELF-ACT,
            VALUE chk-alaaaaaa-BUF,
+           VISIBLE 0,
            BEFORE PROCEDURE Screen1-DaCb-1-BeforeProcedure, 
             .
 
@@ -697,7 +700,7 @@
        05
            chk-alaaaaaaa, 
            Check-Box, 
-           COL 37,50, 
+           COL 43,75, 
            LINE 38,50,
            LINES 1,38 ,
            SIZE 2,00 ,
@@ -715,13 +718,13 @@
        05
            chk-alaaaaaaaa, 
            Check-Box, 
-           COL 37,50, 
+           COL 43,75, 
            LINE 39,75,
            LINES 1,38 ,
            SIZE 2,00 ,
            ENABLED mod-campi,
            FLAT,
-           ID IS 4,
+           ID IS 11,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            SELF-ACT,
@@ -733,7 +736,7 @@
        05
            chk-alaaaaaaaaa, 
            Check-Box, 
-           COL 58,75, 
+           COL 63,75, 
            LINE 36,00,
            LINES 1,38 ,
            SIZE 2,00 ,
@@ -751,7 +754,7 @@
        05
            chk-alaaaaaaaaaa, 
            Check-Box, 
-           COL 58,75, 
+           COL 63,75, 
            LINE 37,25,
            LINES 1,38 ,
            SIZE 2,00 ,
@@ -762,6 +765,7 @@
            WIDTH-IN-CELLS,
            SELF-ACT,
            VALUE chk-alaaaaaaaaaa-BUF,
+           VISIBLE 0,
            BEFORE PROCEDURE Screen1-DaCb-1-BeforeProcedure, 
             .
 
@@ -824,7 +828,7 @@
            LINE 2,00,
            LINES 1,31 ,
            SIZE 9,00 ,
-           ID IS 8,
+           ID IS 22,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -839,7 +843,7 @@
            LINE 7,00,
            LINES 1,31 ,
            SIZE 9,00 ,
-           ID IS 10,
+           ID IS 23,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -854,7 +858,7 @@
            LINE 9,00,
            LINES 1,31 ,
            SIZE 10,00 ,
-           ID IS 12,
+           ID IS 24,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1066,7 +1070,7 @@
            LINE 37,31,
            LINES 1,31 ,
            SIZE 9,00 ,
-           ID IS 3,
+           ID IS 14,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1081,11 +1085,12 @@
            LINE 38,56,
            LINES 1,31 ,
            SIZE 9,00 ,
-           ID IS 3,
+           ID IS 15,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
            TITLE "SPI",
+           VISIBLE 0,
            .
 
       * LABEL
@@ -1096,52 +1101,54 @@
            LINE 39,81,
            LINES 1,31 ,
            SIZE 9,00 ,
-           ID IS 3,
+           ID IS 16,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
            TITLE "AGENTI",
+           VISIBLE 0,
            .
 
       * LABEL
        05
            Screen1-La-1ac, 
            Label, 
-           COL 25,38, 
-           LINE 36,06,
+           COL 21,63, 
+           LINE 36,00,
            LINES 1,31 ,
-           SIZE 9,00 ,
-           ID IS 3,
+           SIZE 21,00 ,
+           ID IS 19,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
-           TITLE "MV+",
+           TITLE "Esclusiva in concorrenza",
            .
 
       * LABEL
        05
            Screen1-La-1ad, 
            Label, 
-           COL 25,38, 
-           LINE 37,31,
+           COL 21,63, 
+           LINE 37,25,
            LINES 1,31 ,
-           SIZE 9,00 ,
-           ID IS 3,
+           SIZE 21,00 ,
+           ID IS 20,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
            TITLE "ESTERO",
+           VISIBLE 0,
            .
 
       * LABEL
        05
            Screen1-La-1ada, 
            Label, 
-           COL 25,38, 
-           LINE 38,56,
+           COL 21,63, 
+           LINE 38,50,
            LINES 1,31 ,
-           SIZE 9,00 ,
-           ID IS 3,
+           SIZE 21,00 ,
+           ID IS 25,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1152,11 +1159,11 @@
        05
            Screen1-La-1adaa, 
            Label, 
-           COL 25,38, 
-           LINE 39,81,
+           COL 21,63, 
+           LINE 39,75,
            LINES 1,31 ,
-           SIZE 9,00 ,
-           ID IS 3,
+           SIZE 21,00 ,
+           ID IS 26,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1167,11 +1174,11 @@
        05
            Screen1-La-1adaaa, 
            Label, 
-           COL 46,63, 
+           COL 51,63, 
            LINE 36,06,
            LINES 1,31 ,
            SIZE 9,00 ,
-           ID IS 3,
+           ID IS 30,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1182,15 +1189,16 @@
        05
            Screen1-La-1adaaaa, 
            Label, 
-           COL 46,63, 
+           COL 51,63, 
            LINE 37,31,
            LINES 1,31 ,
            SIZE 9,00 ,
-           ID IS 3,
+           ID IS 31,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
            TITLE "CEPSA",
+           VISIBLE 0,
            .
 
       * TOOLBAR
@@ -3466,8 +3474,8 @@
            if bli-gdsdo not = old-bli-gdsdo
               and SiSalvato
               set NoSalvato to true
-              |4 è l'ID del campo chk-alaaaaaaaa
-              move 4 to store-id
+              |11 è l'ID del campo chk-alaaaaaaaa
+              move 11 to store-id
            end-if
 
            if bli-texaco not = old-bli-texaco
@@ -3655,7 +3663,7 @@
            When 5010 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5011 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5012 PERFORM Screen1-DaCb-1-AfterProcedure
-           When 4 PERFORM Screen1-DaCb-1-AfterProcedure
+           When 11 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5013 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5014 PERFORM Screen1-DaCb-1-AfterProcedure
            END-EVALUATE

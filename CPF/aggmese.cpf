@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=aggmese-Ev-Before-Program
 AFTER_PROGRAM=aggmese-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E54882443-278-1462318780
+PROGRAM_UNIQUE_CODE=TOTEM-7E5417112723-605-1387021049
 
 {{@DESCRIPTION:
 
@@ -3562,36 +3562,37 @@ BEGIN-DATA
    PARAGRAPH         = pb-ok-LinkTo
 BEGIN-TEXT
       *
-           initialize splcrt2graf-link.
-           accept splcrt2graf-percorso-stampa from environment "CALMAR_RECUPERO".
-                                        
-
-           initialize FILE-INFO
-           CALL "C$FILEINFO" USING splcrt2graf-percorso-stampa, FILE-INFO, 
-                 GIVING STATUS-CODE
-              
-           if file-size = 0
-              display message "File recupero prezzi: " 
-                      x"0d0a"splcrt2graf-percorso-stampa
-                      x"0d0a""non generato in fase di calcolo notturno."
-                      x"0d0a""Confermi l'uscita?"
-                        title titolo
-                         type mb-yes-no
-                       default mb-no
-                         icon 2
-                       giving scelta
-              if scelta = mb-yes
-                 move 27 to key-status
-              end-if
-           else                        
-              set splcrt2graf-windows to true
-              set splcrt2graf-verticale to true
-              set splcrt2graf-forza-crt to true
-              set splcrt2graf-10pt      to true
-              call   "splcrt2graf" using splcrt2graf-link
-              cancel "splcrt2graf"
-              move 27 to key-status
-           end-if.
+      *****     initialize splcrt2graf-link.
+      *****     accept splcrt2graf-percorso-stampa from environment "CALMAR_RECUPERO".
+      *****                                  
+      *****
+      *****     initialize FILE-INFO
+      *****     CALL "C$FILEINFO" USING splcrt2graf-percorso-stampa, FILE-INFO, 
+      *****           GIVING STATUS-CODE
+      *****        
+      *****     if file-size = 0
+      *****        display message "File recupero prezzi: " 
+      *****                x"0d0a"splcrt2graf-percorso-stampa
+      *****                x"0d0a""non generato in fase di calcolo notturno."
+      *****                x"0d0a""Confermi l'uscita?"
+      *****                  title titolo
+      *****                   type mb-yes-no
+      *****                 default mb-no
+      *****                   icon 2
+      *****                 giving scelta
+      *****        if scelta = mb-yes
+      *****           move 27 to key-status
+      *****        end-if
+      *****     else                        
+      *****        set splcrt2graf-windows to true
+      *****        set splcrt2graf-verticale to true
+      *****        set splcrt2graf-forza-crt to true
+      *****        set splcrt2graf-10pt      to true
+      *****        call   "splcrt2graf" using splcrt2graf-link
+      *****        cancel "splcrt2graf"
+      *****        move 27 to key-status
+      *****     end-if.
+           move 27 to key-status.
 END-TEXT
 END-DATA
 

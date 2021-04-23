@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E32610643-404-152517919
+PROGRAM_UNIQUE_CODE=TOTEM-7E5417113355-22-1830621689
 
 {{@DESCRIPTION:
 
@@ -1779,7 +1779,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 4
+      ID                = 5
       ID Variable       = AUTO-ID
       Left Text         = FALSE
       Line              = 37,25
@@ -1828,7 +1828,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 4
+      ID                = 6
       ID Variable       = AUTO-ID
       Left Text         = FALSE
       Line              = 38,50
@@ -1843,7 +1843,7 @@ Begin Screen Form1
       Tab Order         = 15
       Termination Value = 0
       Value             = 0:FALSE
-      Visible           = NONE
+      Visible           = FALSE
       Width in Cells    = TRUE
       My Property       = "CONTROLLO-OLD="
       Before Procedure  = Screen1-DaCb-1-BeforeProcedure
@@ -1877,7 +1877,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 4
+      ID                = 7
       ID Variable       = AUTO-ID
       Left Text         = FALSE
       Line              = 39,75
@@ -1892,14 +1892,14 @@ Begin Screen Form1
       Tab Order         = 16
       Termination Value = 0
       Value             = 0:FALSE
-      Visible           = NONE
+      Visible           = FALSE
       Width in Cells    = TRUE
       My Property       = "CONTROLLO-OLD="
       Before Procedure  = Screen1-DaCb-1-BeforeProcedure
       After Procedure   = Screen1-DaCb-1-AfterProcedure
    End
    Begin Data.Check-Box chk-alaaaaa
-      SCREEN-COL        = 37,50
+      SCREEN-COL        = 43,75
       SCREEN-LINE       = 36,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -1912,7 +1912,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 37,50
+      Column            = 43,75
       Copy Resource     = TRUE
       Csize             = 0
       Csize Unit        = Default
@@ -1926,7 +1926,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 4
+      ID                = 8
       ID Variable       = AUTO-ID
       Left Text         = FALSE
       Line              = 36,00
@@ -1948,7 +1948,7 @@ Begin Screen Form1
       After Procedure   = Screen1-DaCb-1-AfterProcedure
    End
    Begin Data.Check-Box chk-alaaaaaa
-      SCREEN-COL        = 37,50
+      SCREEN-COL        = 43,75
       SCREEN-LINE       = 37,25
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -1961,7 +1961,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 37,50
+      Column            = 43,75
       Copy Resource     = TRUE
       Csize             = 0
       Csize Unit        = Default
@@ -1975,7 +1975,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 4
+      ID                = 9
       ID Variable       = AUTO-ID
       Left Text         = FALSE
       Line              = 37,25
@@ -1990,14 +1990,14 @@ Begin Screen Form1
       Tab Order         = 18
       Termination Value = 0
       Value             = 0:FALSE
-      Visible           = NONE
+      Visible           = FALSE
       Width in Cells    = TRUE
       My Property       = "CONTROLLO-OLD="
       Before Procedure  = Screen1-DaCb-1-BeforeProcedure
       After Procedure   = Screen1-DaCb-1-AfterProcedure
    End
    Begin Data.Check-Box chk-alaaaaaaa
-      SCREEN-COL        = 37,50
+      SCREEN-COL        = 43,75
       SCREEN-LINE       = 38,50
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -2010,7 +2010,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 37,50
+      Column            = 43,75
       Copy Resource     = TRUE
       Csize             = 0
       Csize Unit        = Default
@@ -2024,7 +2024,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 4
+      ID                = 10
       ID Variable       = AUTO-ID
       Left Text         = FALSE
       Line              = 38,50
@@ -2046,7 +2046,7 @@ Begin Screen Form1
       After Procedure   = Screen1-DaCb-1-AfterProcedure
    End
    Begin Data.Check-Box chk-alaaaaaaaa
-      SCREEN-COL        = 37,50
+      SCREEN-COL        = 43,75
       SCREEN-LINE       = 39,75
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -2059,7 +2059,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 37,50
+      Column            = 43,75
       Copy Resource     = TRUE
       Csize             = 0
       Csize Unit        = Default
@@ -2073,7 +2073,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 4
+      ID                = 11
       Left Text         = FALSE
       Line              = 39,75
       Lines             = 1,38
@@ -2094,7 +2094,7 @@ Begin Screen Form1
       After Procedure   = Screen1-DaCb-1-AfterProcedure
    End
    Begin Data.Check-Box chk-alaaaaaaaaa
-      SCREEN-COL        = 58,75
+      SCREEN-COL        = 63,75
       SCREEN-LINE       = 36,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -2107,7 +2107,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 58,75
+      Column            = 63,75
       Copy Resource     = TRUE
       Csize             = 0
       Csize Unit        = Default
@@ -2121,7 +2121,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 4
+      ID                = 12
       ID Variable       = AUTO-ID
       Left Text         = FALSE
       Line              = 36,00
@@ -2143,7 +2143,7 @@ Begin Screen Form1
       After Procedure   = Screen1-DaCb-1-AfterProcedure
    End
    Begin Data.Check-Box chk-alaaaaaaaaaa
-      SCREEN-COL        = 58,75
+      SCREEN-COL        = 63,75
       SCREEN-LINE       = 37,25
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -2156,7 +2156,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 58,75
+      Column            = 63,75
       Copy Resource     = TRUE
       Csize             = 0
       Csize Unit        = Default
@@ -2170,7 +2170,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 4
+      ID                = 13
       ID Variable       = AUTO-ID
       Left Text         = FALSE
       Line              = 37,25
@@ -2185,7 +2185,7 @@ Begin Screen Form1
       Tab Order         = 22
       Termination Value = 0
       Value             = 0:FALSE
-      Visible           = NONE
+      Visible           = FALSE
       Width in Cells    = TRUE
       My Property       = "CONTROLLO-OLD="
       Before Procedure  = Screen1-DaCb-1-BeforeProcedure
@@ -2331,7 +2331,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 8
+      ID                = 22
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 2,00
@@ -2364,7 +2364,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 10
+      ID                = 23
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 7,00
@@ -2397,7 +2397,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 12
+      ID                = 24
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 9,00
@@ -2860,7 +2860,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 3
+      ID                = 14
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 37,31
@@ -2893,7 +2893,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 3
+      ID                = 15
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 38,56
@@ -2906,7 +2906,7 @@ Begin Screen Form1
       Tab Order         = 43
       Title             = "SPI"
       Transparent       = TRUE
-      Visible           = NONE
+      Visible           = FALSE
       Width in Cells    = TRUE
    End
    Begin Label Screen1-La-1ab
@@ -2926,7 +2926,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 3
+      ID                = 16
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 39,81
@@ -2939,19 +2939,19 @@ Begin Screen Form1
       Tab Order         = 44
       Title             = "AGENTI"
       Transparent       = TRUE
-      Visible           = NONE
+      Visible           = FALSE
       Width in Cells    = TRUE
    End
    Begin Label Screen1-La-1ac
-      SCREEN-COL        = 25,38
-      SCREEN-LINE       = 36,06
+      SCREEN-COL        = 21,63
+      SCREEN-LINE       = 36,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-1ac
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 25,38
+      Column            = 21,63
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -2959,32 +2959,32 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 3
+      ID                = 19
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 36,06
+      Line              = 36,00
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 9,00
+      Size              = 21,00
       Size Unit         = Default
       Tab Order         = 45
-      Title             = "MV+"
+      Title             = "Esclusiva in concorrenza"
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
    End
    Begin Label Screen1-La-1ad
-      SCREEN-COL        = 25,38
-      SCREEN-LINE       = 37,31
+      SCREEN-COL        = 21,63
+      SCREEN-LINE       = 37,25
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-1ad
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 25,38
+      Column            = 21,63
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -2992,32 +2992,32 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 3
+      ID                = 20
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 37,31
+      Line              = 37,25
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 9,00
+      Size              = 21,00
       Size Unit         = Default
       Tab Order         = 46
       Title             = "ESTERO"
       Transparent       = TRUE
-      Visible           = NONE
+      Visible           = FALSE
       Width in Cells    = TRUE
    End
    Begin Label Screen1-La-1ada
-      SCREEN-COL        = 25,38
-      SCREEN-LINE       = 38,56
+      SCREEN-COL        = 21,63
+      SCREEN-LINE       = 38,50
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-1ada
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 25,38
+      Column            = 21,63
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -3025,15 +3025,15 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 3
+      ID                = 25
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 38,56
+      Line              = 38,50
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 9,00
+      Size              = 21,00
       Size Unit         = Default
       Tab Order         = 47
       Title             = "TRADE"
@@ -3042,15 +3042,15 @@ Begin Screen Form1
       Width in Cells    = TRUE
    End
    Begin Label Screen1-La-1adaa
-      SCREEN-COL        = 25,38
-      SCREEN-LINE       = 39,81
+      SCREEN-COL        = 21,63
+      SCREEN-LINE       = 39,75
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-La-1adaa
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 25,38
+      Column            = 21,63
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -3058,15 +3058,15 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 3
+      ID                = 26
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 39,81
+      Line              = 39,75
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 9,00
+      Size              = 21,00
       Size Unit         = Default
       Tab Order         = 48
       Title             = "GDS/DO"
@@ -3075,7 +3075,7 @@ Begin Screen Form1
       Width in Cells    = TRUE
    End
    Begin Label Screen1-La-1adaaa
-      SCREEN-COL        = 46,63
+      SCREEN-COL        = 51,63
       SCREEN-LINE       = 36,06
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -3083,7 +3083,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 46,63
+      Column            = 51,63
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -3091,7 +3091,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 3
+      ID                = 30
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 36,06
@@ -3108,7 +3108,7 @@ Begin Screen Form1
       Width in Cells    = TRUE
    End
    Begin Label Screen1-La-1adaaaa
-      SCREEN-COL        = 46,63
+      SCREEN-COL        = 51,63
       SCREEN-LINE       = 37,31
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -3116,7 +3116,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 46,63
+      Column            = 51,63
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -3124,7 +3124,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 3
+      ID                = 31
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 37,31
@@ -3137,7 +3137,7 @@ Begin Screen Form1
       Tab Order         = 50
       Title             = "CEPSA"
       Transparent       = TRUE
-      Visible           = NONE
+      Visible           = FALSE
       Width in Cells    = TRUE
    End
    Begin Toolbar Form1-Tb-1
