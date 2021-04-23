@@ -1674,10 +1674,10 @@
                    invalid continue
               end-read
               if art-attivo
-                 set bli-bloccato   to true
-                 move low-value     to prg-chiave
-                 move art-codice    to prg-cod-articolo
-                 move bli-magazzino to prg-cod-magazzino
+                 set bli-bloccato  to true
+                 move low-value    to prg-chiave
+                 move art-codice   to prg-cod-articolo
+                 move "LBX"        to prg-cod-magazzino
                  start progmag key >= prg-chiave
                        invalid continue
                    not invalid
