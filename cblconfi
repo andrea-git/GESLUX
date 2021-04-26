@@ -463,29 +463,35 @@ EDI_BOLLE_PATH_BACKUP f:\lubex\GESLUX\EDI\test\backup\
 
 
 #       #---------- EXPORT FTP SITUACONT----------#
-PATH_INI_FTP f:\lubex\GESLUX\InvioFTP\InvioFTP\bin\Release\ini\InvioFTP.ini
-PATH_INVIO_FTP f:\lubex\GESLUX\InvioFTP\InvioFTP\bin\Release\InvioFTP.exe
+PATH_INI_FTP F:\Lubex\GESLUX\InvioFTP\WinSCP\putFTP.ini
+PATH_INVIO_FTP F:\Lubex\GESLUX\InvioFTP\WinSCP\putFTP.bat
 #INVIO_FTP_ADDRESSES andrea.ae@live.it
 SITUACONT_PATH_FILESEQ f:\lubex\tmp\sc\
 SITUACONT_PATH_BACKUP f:\lubex\tmp\sc\b\
 
 #solo address, senza "/" finale, senza cartella remota
+SITUACONT_FTP_SERVER gatewayft01.crif.com
 SITUACONT_FTP_SERVER_1 online1.lince.it
 SITUACONT_FTP_SERVER_2 ftp1.cerved.com
 #itradeftp.crif.com
 
 # 21 FTP, 990-8022 SFTP     
+SITUACONT_FTP_PORT 6321
 SITUACONT_FTP_PORT_1 21
 SITUACONT_FTP_PORT_2 8022
 #990
 
+SITUACONT_FTP_USER 878323939
 SITUACONT_FTP_USER_1 lubex
 SITUACONT_FTP_USER_2 878323939
                     
+SITUACONT_FTP_PASSWORD BVnsYSTL4IoWN5pZzheC7
 SITUACONT_FTP_PASSWORD_1 lbxp2136pay
 SITUACONT_FTP_PASSWORD_2 X52jQm4WbGCRHaQSyXR2
 
 #Directory remota in cui fare la copia (se vuota valorizzare con "/", altrimenti "/VALORE/"
+SITUACONT_FTP_REMOTE_DIR //iTrade/in/
+
 SITUACONT_FTP_REMOTE_DIR_1 /incoming/
 SITUACONT_FTP_REMOTE_DIR_2 /
 

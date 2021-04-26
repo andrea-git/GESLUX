@@ -3536,27 +3536,29 @@ LUBEXX        end-if
 
       ***---
        CONTROLLA-PRESENZA-LISTINI-F.
-           move low-value to rlis-rec.
-           move art-codice of articoli to rlis-articolo.
-           start rlistini key >= rlis-k-art
-                 invalid 
-                 set errori to true
-                 display message 
-                  "Nessun listino fornitore relativo presente."
-           x"0d0a""Impossibile attivare l'articolo"
-                           title tit-err
-                            icon 2
-             not invalid
-                 read rlistini next
-                 if rlis-articolo not = art-codice of articoli
+           if user-codi not = "BOSS" 
+              move low-value to rlis-rec
+              move art-codice of articoli to rlis-articolo
+              start rlistini key >= rlis-k-art
+                    invalid 
                     set errori to true
                     display message 
-                  "Nessun listino fornitore relativo presente."
-           x"0d0a""Impossibile attivare l'articolo"
+                     "Nessun listino fornitore relativo presente."
+              x"0d0a""Impossibile attivare l'articolo"
                               title tit-err
                                icon 2
-                 end-if
-           end-start.
+                not invalid
+                    read rlistini next
+                    if rlis-articolo not = art-codice of articoli
+                       set errori to true
+                       display message 
+                     "Nessun listino fornitore relativo presente."
+              x"0d0a""Impossibile attivare l'articolo"
+                                 title tit-err
+                                  icon 2
+                    end-if
+              end-start
+           end-if.
 
       ***---
        AGGIORNA-CATENA.

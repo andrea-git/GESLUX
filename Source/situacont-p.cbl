@@ -19,6 +19,13 @@
            copy "TBLVA.sl".
            copy "G2.sl".
            copy "tsetinvio.sl".
+
+           SELECT iniFtp
+           ASSIGN       TO  iniFtpPath
+           ORGANIZATION IS LINE SEQUENTIAL
+           ACCESS MODE  IS SEQUENTIAL
+           FILE STATUS  IS STATUS-iniFtp.
+
            copy "lineseq.sl".
            COPY "lineseq.sl"
                 REPLACING ==lineseq== BY ==lineseq1==,
@@ -40,6 +47,11 @@
            copy "TBLVA.fd".
            copy "G2.fd".
            copy "tsetinvio.fd".
+
+      *(( XFD FILE = lineseq ))
+       FD  iniFtp.
+       01 iniFtp-riga        PIC  x(1000).
+
            copy "lineseq.fd".
            COPY "lineseq.fd"
                 REPLACING ==lineseq== BY ==lineseq1==,
@@ -71,9 +83,13 @@
        77  status-tsetinvio pic xx.
        77  status-lineseq   pic xx.
        77  status-lineseq1  pic xx.
-       77  wstampa          pic x(256).  
+       77  status-iniFtp    pic xx.
+       77  wstampa          pic x(256). 
+       77  iniFtpPath       pic x(256). 
        77  pattern          pic x(10).
        77  dir-handle       handle.
+
+       77  path-st          pic x(256).
 
        77  counter          pic 9(10) value 0.
        77  counter2         pic 9(10) value 0.
@@ -94,6 +110,13 @@
        77  div              pic 9(4).
        77  como-mese        pic 9(2).
        77  invio            pic 9.
+
+       01  ftp-export.
+         03 ftp-server      pic x(50).
+         03 ftp-port        pic x(4).
+         03 ftp-user        pic x(100).
+         03 ftp-password    pic x(100).
+         03 ftp-remote-dir  pic x(100).
 
        77  user-codi        pic x(10).
        77  tipo-documento   pic x(6).
@@ -190,6 +213,8 @@
 
       ***---
        INIT.
+           accept  path-st from environment "PATH_ST".
+           inspect path-st replacing trailing spaces by low-value.
            set trovato  to false.
            set tutto-ok to true.
            CALL "C$NARG" USING narg.
@@ -250,9 +275,7 @@
            initialize wstampa.
            accept  como-ora  from time.
            accept  como-data from century-date.
-           accept  wstampa   from environment "PATH_ST".
-           inspect wstampa replacing trailing spaces by low-value.
-           string  wstampa      delimited low-value
+           string  path-st   delimited low-value
                    "M32092"       delimited size
                    como-data(1:4) delimited size
                    como-data(5:2) delimited size
@@ -595,9 +618,9 @@
       *****           perform CALL-EXCEL
                  continue
               else
-                 move 1 to invio
-                 perform EXPORT-FTP
-                 move 2 to invio
+      *****           move 1 to invio
+      *****           perform EXPORT-FTP
+      *****           move 2 to invio
                  perform EXPORT-FTP
               end-if
            else
@@ -615,15 +638,14 @@
            initialize wstampa.
            accept  como-data from century-date.
            accept  como-ora  from time.
-           accept  wstampa   from environment "PATH_ST".
-           inspect wstampa replacing trailing spaces by low-value.
-           string  wstampa        delimited low-value
+           initialize wstampa.
+           string  path-st        delimited low-value
                    "C32092"       delimited size
                    como-data(1:4) delimited size
                    como-data(5:2) delimited size
                    ".csv"         delimited size
                    into wstampa
-           end-string.
+           end-string.    
 
            initialize FileName2.
            string "C32092"        delimited size
@@ -810,60 +832,119 @@
 
       ***---
        EXPORT-FTP.     
-           initialize PathFile.
-           accept PathFile from environment "PATH_ST".                               
-           initialize wstampa.
-           accept  wstampa from environment "PATH_INI_FTP".
-           open output lineseq.
-           if invio = 1
-              accept line-riga of lineseq 
-                     from environment "SITUACONT_FTP_SERVER_1"
-              write line-riga  of lineseq
-              accept line-riga of lineseq 
-                     from environment "SITUACONT_FTP_PORT_1"
-              write line-riga  of lineseq
-              accept line-riga of lineseq 
-                     from environment "SITUACONT_FTP_USER_1"
-              write line-riga  of lineseq
-              accept line-riga of lineseq 
-                     from environment "SITUACONT_FTP_PASSWORD_1"
-              write line-riga  of lineseq
-              accept line-riga of lineseq 
-                     from environment "SITUACONT_FTP_REMOTE_DIR_1"
-           else
-              accept line-riga of lineseq 
-                     from environment "SITUACONT_FTP_SERVER_2"
-              write line-riga  of lineseq
-              accept line-riga of lineseq 
-                     from environment "SITUACONT_FTP_PORT_2"
-              write line-riga  of lineseq
-              accept line-riga of lineseq 
-                     from environment "SITUACONT_FTP_USER_2"
-              write line-riga  of lineseq
-              accept line-riga of lineseq 
-                     from environment "SITUACONT_FTP_PASSWORD_2"
-              write line-riga  of lineseq
-              accept line-riga of lineseq 
-                     from environment "SITUACONT_FTP_REMOTE_DIR_2"
-           end-if.
-           write line-riga of lineseq.
-           move FileName1  to line-riga of lineseq.
-           write line-riga of lineseq.
-           move FileName2  to line-riga of lineseq.
-           write line-riga of lineseq.
-           move PathFile   to line-riga of lineseq.
-           write line-riga of lineseq.                
-           if invio = 1
-              accept line-riga of lineseq 
-                     from environment "SITUACONT_CERTIFICATE_1"
-           else
-              accept line-riga of lineseq 
-                     from environment "SITUACONT_CERTIFICATE_2"
-           end-if.
-           write line-riga of lineseq.
+           initialize iniFtpPath.
+           accept  iniFtpPath from environment "PATH_INI_FTP".    
+           open output iniFtp.
 
+           accept ftp-server
+                  from environment "SITUACONT_FTP_SERVER"
+           accept ftp-port
+                  from environment "SITUACONT_FTP_PORT"
+           accept ftp-user
+                  from environment "SITUACONT_FTP_USER"
+           accept ftp-password
+                  from environment "SITUACONT_FTP_PASSWORD"
+           accept ftp-remote-dir
+                  from environment "SITUACONT_FTP_REMOTE_DIR"
+                                                             
 
-           close lineseq.
+           inspect ftp-server     replacing trailing spaces by low-value
+           inspect ftp-user       replacing trailing spaces by low-value
+           inspect ftp-port       replacing trailing spaces by low-value
+           inspect ftp-password   replacing trailing spaces by low-value
+           inspect ftp-remote-dir replacing trailing spaces by low-value
+           inspect FileName1      replacing trailing spaces by low-value
+           inspect FileName2      replacing trailing spaces by low-value
+                                
+           initialize iniFtp-riga.
+           string "open ftp://" delimited size
+                  ftp-user      delimited low-value
+                  ":"           delimited size
+                  ftp-password  delimited low-value
+                  "@"           delimited size
+                  ftp-server    delimited low-value
+                  ":"           delimited size
+                  ftp-port      delimited low-value
+                  " -explicit"  delimited size
+             into iniFtp-riga
+           end-string.
+           write iniFtp-riga.
+                             
+           initialize iniFtp-riga.
+           string "put "         delimited size
+                  path-st        delimited low-value
+                  FileName1      delimited low-value
+                  " "            delimited size
+                  ftp-remote-dir delimited low-value
+                  FileName1      delimited low-value
+             into iniFtp-riga
+           end-string.
+           write iniFtp-riga.
+
+           initialize iniFtp-riga.
+           string "put "         delimited size
+                  path-st        delimited low-value
+                  FileName2      delimited low-value
+                  " "            delimited size
+                  ftp-remote-dir delimited low-value
+                  FileName2      delimited low-value
+             into iniFtp-riga
+           end-string.
+           write iniFtp-riga.
+
+           move "exit" to iniFtp-riga.
+           write iniFtp-riga.
+
+           close iniFtp.
+
+      *****     if invio = 1
+      *****        accept line-riga of lineseq 
+      *****               from environment "SITUACONT_FTP_SERVER_1"
+      *****        write line-riga  of lineseq
+      *****        accept line-riga of lineseq 
+      *****               from environment "SITUACONT_FTP_PORT_1"
+      *****        write line-riga  of lineseq
+      *****        accept line-riga of lineseq 
+      *****               from environment "SITUACONT_FTP_USER_1"
+      *****        write line-riga  of lineseq
+      *****        accept line-riga of lineseq 
+      *****               from environment "SITUACONT_FTP_PASSWORD_1"
+      *****        write line-riga  of lineseq
+      *****        accept line-riga of lineseq 
+      *****               from environment "SITUACONT_FTP_REMOTE_DIR_1"
+      *****     else
+      *****        accept line-riga of lineseq 
+      *****               from environment "SITUACONT_FTP_SERVER_2"
+      *****        write line-riga  of lineseq
+      *****        accept line-riga of lineseq 
+      *****               from environment "SITUACONT_FTP_PORT_2"
+      *****        write line-riga  of lineseq
+      *****        accept line-riga of lineseq 
+      *****               from environment "SITUACONT_FTP_USER_2"
+      *****        write line-riga  of lineseq
+      *****        accept line-riga of lineseq 
+      *****               from environment "SITUACONT_FTP_PASSWORD_2"
+      *****        write line-riga  of lineseq
+      *****        accept line-riga of lineseq 
+      *****               from environment "SITUACONT_FTP_REMOTE_DIR_2"
+      *****     end-if.
+      *****     write line-riga of lineseq.
+      *****     move FileName1  to line-riga of lineseq.
+      *****     write line-riga of lineseq.
+      *****     move FileName2  to line-riga of lineseq.
+      *****     write line-riga of lineseq.
+      *****     move PathFile   to line-riga of lineseq.
+      *****     write line-riga of lineseq.                         
+      *****     if invio = 1
+      *****        accept line-riga of lineseq 
+      *****               from environment "SITUACONT_CERTIFICATE_1"
+      *****     else
+      *****        accept line-riga of lineseq 
+      *****               from environment "SITUACONT_CERTIFICATE_2"
+      *****     end-if.
+      *****     write line-riga of lineseq.
+
+      *****     close lineseq.
 
            accept PathInvioFTP from environment "PATH_INVIO_FTP".
            move 0 to StatusInvioFTP.
