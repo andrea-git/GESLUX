@@ -20,7 +20,7 @@
            copy "G2.sl".
            copy "tsetinvio.sl".
 
-           SELECT iniFtp
+       SELECT iniFtp
            ASSIGN       TO  iniFtpPath
            ORGANIZATION IS LINE SEQUENTIAL
            ACCESS MODE  IS SEQUENTIAL
@@ -48,7 +48,6 @@
            copy "G2.fd".
            copy "tsetinvio.fd".
 
-      *(( XFD FILE = lineseq ))
        FD  iniFtp.
        01 iniFtp-riga        PIC  x(1000).
 

@@ -18,7 +18,13 @@
            ASSIGN       TO  path-logfile
            ORGANIZATION IS LINE SEQUENTIAL
            ACCESS MODE  IS SEQUENTIAL
-           FILE STATUS  IS STATUS-logfile.
+           FILE STATUS  IS STATUS-logfile.  
+
+       SELECT iniFtp
+           ASSIGN       TO  iniFtpPath
+           ORGANIZATION IS LINE SEQUENTIAL
+           ACCESS MODE  IS SEQUENTIAL
+           FILE STATUS  IS STATUS-iniFtp.
 
        copy "clienti.sl".
 
@@ -29,7 +35,11 @@
        01 line-riga       PIC  x(20000).
 
        FD  logfile.
-       01 log-riga        PIC  x(900).  
+       01 log-riga        PIC  x(900). 
+
+       FD  iniFtp.
+       01 iniFtp-riga        PIC  x(1000). 
+
        copy "clienti.fd".  
 
        WORKING-STORAGE SECTION.                                     
@@ -43,10 +53,12 @@
        77  status-lineseq        pic xx.
        77  status-logfile        pic xx.
        77  status-clienti        pic xx.
+       77  status-iniFtp         pic xx.
 
        77  path-logfile          pic x(256).
        77  wstampa               pic x(256).
        77  wstampa2              pic x(256). 
+       77  iniFtpPath            pic x(256).
        77  status-call           signed-short.
 
        77  start-secondi         pic 9(18).
@@ -68,7 +80,17 @@
        77  file-backup           pic x(256).  
        77  cmd                   pic x(200).
        77  como-riga             pic x(200).
-       77  como-data-2mesi       pic 9(8).
+       77  como-data-2mesi       pic 9(8).  
+    
+       77  PathGetFTP            pic x(256).
+       77  StatusGetFTP          pic s9.
+
+       01  ftp-import.
+         03 ftp-server      pic x(50).
+         03 ftp-port        pic x(4).
+         03 ftp-user        pic x(100).
+         03 ftp-password    pic x(100).
+         03 ftp-remote-dir  pic x(100).
 
        77  dir-import-handle     HANDLE.
        77  dir-backup-handle     HANDLE.
@@ -78,10 +100,77 @@
 
 
        01  record-GENERICO.
-         05 r-cod-cli               pic x(6).
+         05 r-cod-cli               pic x(6).   
          05 r2                      pic x.
          05 r3                      pic x.
          05 r4                      pic x.
+         05 r5                      pic x.
+         05 r6                      pic x.
+         05 r7                      pic x.
+         05 r8                      pic x.
+         05 r9                      pic x.
+         05 r10                     pic x.
+         05 r11                     pic x.
+         05 r12                     pic x.
+         05 r13                     pic x.
+         05 r14                     pic x.
+         05 r15                     pic x.
+         05 r16                     pic x.
+         05 r17                     pic x.
+         05 r18                     pic x.
+         05 r19                     pic x.
+         05 r20                     pic x.
+         05 r21                     pic x.
+         05 r22                     pic x.
+         05 r23                     pic x.
+         05 r24                     pic x.
+         05 r25                     pic x.
+         05 r26                     pic x.
+         05 r27                     pic x.
+         05 r28                     pic x.
+         05 r29                     pic x.
+         05 r30                     pic x.
+         05 r31                     pic x.
+         05 r32                     pic x.
+         05 r33                     pic x.
+         05 r34                     pic x.
+         05 r35                     pic x.
+         05 r36                     pic x.
+         05 r37                     pic x.
+         05 r38                     pic x.
+         05 r39                     pic x.
+         05 r40                     pic x.
+         05 r41                     pic x.
+         05 r42                     pic x.
+         05 r43                     pic x.
+         05 r44                     pic x.
+         05 r45                     pic x.
+         05 r46                     pic x.
+         05 r47                     pic x.
+         05 r48                     pic x.
+         05 r49                     pic x.
+         05 r50                     pic x.
+         05 r51                     pic x.
+         05 r52                     pic x.
+         05 r53                     pic x.
+         05 r54                     pic x.
+         05 r55                     pic x.
+         05 r56                     pic x.
+         05 r57                     pic x.
+         05 r58                     pic x.
+         05 r59                     pic x.
+         05 r60                     pic x.
+         05 r61                     pic x.
+         05 r62                     pic x.
+         05 r63                     pic x.
+         05 r64                     pic x.
+         05 r65                     pic x.
+         05 r66                     pic x.
+         05 r67                     pic x.
+         05 r68                     pic x.
+         05 r69                     pic x.
+         05 r70                     pic x.
+         05 r71                     pic x.
          05 r-fido                  pic 9(10).
          05 r-fido-x                pic x(10).
 
@@ -143,8 +232,71 @@
            perform EXIT-PGM.
 
       ***---
-       INIT.    
+       INIT.                         
+           accept como-data from century-date.
+           accept como-ora  from time.
+                      
            initialize path-import path-backup path-log.
+           accept  path-import from environment "PATH_FIDO_IMPORT".
+           accept  path-backup from environment "PATH_FIDO_BACKUP".
+
+           accept iniFtpPath   from environment "PATH_FIDO_FTP_INI". 
+           open output iniFtp.  
+
+           accept ftp-server
+                  from environment "SITUACONT_FTP_SERVER"
+           accept ftp-port
+                  from environment "SITUACONT_FTP_PORT"
+           accept ftp-user
+                  from environment "SITUACONT_FTP_USER"
+           accept ftp-password
+                  from environment "SITUACONT_FTP_PASSWORD"
+           accept ftp-remote-dir
+                  from environment "FIDO_FTP_REMOTE_DIR"
+
+           inspect ftp-server     replacing trailing spaces by low-value
+           inspect ftp-user       replacing trailing spaces by low-value
+           inspect ftp-port       replacing trailing spaces by low-value
+           inspect ftp-password   replacing trailing spaces by low-value
+           inspect ftp-remote-dir replacing trailing spaces by low-value
+                                
+           initialize iniFtp-riga.
+           string "open ftp://" delimited size
+                  ftp-user      delimited low-value
+                  ":"           delimited size
+                  ftp-password  delimited low-value
+                  "@"           delimited size
+                  ftp-server    delimited low-value
+                  ":"           delimited size
+                  ftp-port      delimited low-value
+                  " -explicit"  delimited size
+             into iniFtp-riga
+           end-string.
+           write iniFtp-riga.
+                             
+           initialize iniFtp-riga.
+           string "get "         delimited size
+                  ftp-remote-dir delimited low-value
+                  "PMITRADE_"    delimited size
+                  como-data      delimited size
+                  ".csv"         delimited size
+                  "* "           delimited size
+                  path-import    delimited size
+             into iniFtp-riga
+           end-string.
+           write iniFtp-riga.
+
+           move "exit" to iniFtp-riga.
+           write iniFtp-riga.
+
+           close iniFtp.  
+    
+           accept PathGetFTP from environment "PATH_FIDO_FTP_GET".
+           move 0 to StatusGetFTP.
+           call "C$SYSTEM" using PathGetFTP
+                          giving StatusGetFTP.
+
+                                                       
            CALL "C$NARG" USING NARGS.
            if nargs not = 0
               set RichiamoSchedulato to true
@@ -155,9 +307,7 @@
               accept path-log from environment "PATH_ST"
            end-if.
            set tutto-ok     to true.
-           set prima-volta  to true.
-           accept como-data from century-date.
-           accept como-ora  from time.
+           set prima-volta  to true.   
 
            compute como-data-2mesi = 
                    function integer-of-date (como-data).
@@ -166,9 +316,7 @@
 
            compute como-data-2mesi = 
                    function date-of-integer (como-data-2mesi).
-                                             
-           accept  path-import from environment "PATH_FIDO_IMPORT".
-           accept  path-backup from environment "PATH_FIDO_BACKUP".
+                                                                    
            if path-import = spaces
               set errori to true
            else                 
@@ -292,6 +440,7 @@
               if nome-file not = "."      and
                            not = ".."     and
                            not = "Backup" and
+                           not = "backup" and
                            not = ".DS_Store"
 
                  initialize wstampa
@@ -387,20 +536,82 @@
        ELABORA-FILE-OK.
            perform until 1 = 2
               read lineseq next at end exit perform end-read
-              unstring line-riga delimited by ";"
+              initialize record-GENERICO
+              unstring line-riga delimited by "|"
                   into r-cod-cli
                        r2
                        r3
                        r4
+                       r5
+                       r6
+                       r7
+                       r8
+                       r9
+                       r10
+                       r11
+                       r12
+                       r13
+                       r14
+                       r15
+                       r16
+                       r17
+                       r18
+                       r19
+                       r20
+                       r21
+                       r22
+                       r23
+                       r24
+                       r25
+                       r26
+                       r27
+                       r28
+                       r29
+                       r30
+                       r31
+                       r32
+                       r33
+                       r34
+                       r35
+                       r36
+                       r37
+                       r38
+                       r39
+                       r40
+                       r41
+                       r42
+                       r43
+                       r44
+                       r45
+                       r46
+                       r47
+                       r48
+                       r49
+                       r50
+                       r51
+                       r52
+                       r53
+                       r54
+                       r55
+                       r56
+                       r57
+                       r58
+                       r59
+                       r60
+                       r61
+                       r62
+                       r63
+                       r64
+                       r65
+                       r66
+                       r67
+                       r68
+                       r69
+                       r70
+                       r71
                        r-fido-x
-              end-unstring
-              unstring line-riga delimited by ";"
-                  into r-cod-cli
-                       r2
-                       r3
-                       r4
-                       r-fido
-              end-unstring
+              end-unstring 
+              move r-fido-x to r-fido convert
              |Posson capitare dei codici con lettere che vanno scartati
               call "C$JUSTIFY" using  r-cod-cli, "R"
               inspect r-cod-cli replacing leading x"20" by x"30"

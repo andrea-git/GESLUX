@@ -1,1 +1,1 @@
-"C:\Program Files (x86)\WinSCP\WinSCP.exe" /script=getFtp.ini
+"C:\Program Files (x86)\WinSCP\WinSCP.com" /script=F:\Lubex\GESLUX\InvioFTP\WinSCP\getFtp.ini
