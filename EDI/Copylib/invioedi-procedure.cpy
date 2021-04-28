@@ -388,7 +388,6 @@
                         exe-pipe-24
                         exe-pipe-25 
                         exe-pipe-26
-                        exe-pipe-27
 
            move "olluda_b"   to exe-val-fisso
 

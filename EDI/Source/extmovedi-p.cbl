@@ -79,7 +79,6 @@
        01  filler                  pic 9.
          88 problemi-articoli      value 1, false 0.
 
-
        77  counter                 pic 9(10).
        77  counter2                pic 9(10).
        77  counter-edit            pic z(10).
