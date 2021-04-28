@@ -279,8 +279,7 @@
                   ftp-remote-dir delimited low-value
                   "PMITRADE_"    delimited size
                   como-data      delimited size
-                  ".csv"         delimited size
-                  "* "           delimited size
+                  ".csv "        delimited size
                   path-import    delimited size
              into iniFtp-riga
            end-string.
