@@ -38,30 +38,37 @@
          03 ftp-port        pic x(4).
          03 ftp-user        pic x(100).
          03 ftp-password    pic x(100).
-         03 ftp-remote-dir  pic x(100).
+         03 ftp-remote-dir  pic x(100).  
 
       ******************************************************************
        PROCEDURE DIVISION.
 
       ***---
-       MAIN-PRG.                     
+       MAIN-PRG.                          
            accept como-data from century-date. 
            accept como-ora  from century-date. 
-           accept  path-import from environment "PATH_FIDO_IMPORT".
+           accept  path-import from environment "IMP_FIDO_PATH".
 
-           accept iniFtpPath   from environment "PATH_FIDO_FTP_INI". 
+           accept  iniFtpPath from environment "WINSCP_INI". 
+           inspect iniFtpPath replacing trailing spaces by low-value.
+           string  iniFtpPath   delimited low-value
+                   "getFTP.ini" delimited size
+              into iniFtpPath 
+           end-string.
+           inspect iniFtpPath replacing trailing low-value by spaces.
+
            open output iniFtp.  
       
            accept ftp-server
-                  from environment "SITUACONT_FTP_SERVER"
+                  from environment "WINSCP_SERVER"
            accept ftp-port
-                  from environment "SITUACONT_FTP_PORT"
+                  from environment "WINSCP_PORT"
            accept ftp-user
-                  from environment "SITUACONT_FTP_USER"
+                  from environment "WINSCP_USER"
            accept ftp-password
-                  from environment "SITUACONT_FTP_PASSWORD"
+                  from environment "WINSCP_PASSWORD"
            accept ftp-remote-dir
-                  from environment "FIDO_FTP_REMOTE_DIR"
+                  from environment "IMP_FIDO_FTP_REMOTE_DIR"
       
            inspect ftp-server     replacing trailing spaces by low-value
            inspect ftp-user       replacing trailing spaces by low-value
@@ -97,11 +104,11 @@
            move "exit" to iniFtp-riga.
            write iniFtp-riga.
       
-           close iniFtp.  
+           close iniFtp.        
       
            initialize ftpGetCommand.
-           accept  pathWinSCP    from environment "PATH_WINSCP".
-           accept  pathWinSCPLog from environment "PATH_WINSCP_LOG".
+           accept  pathWinSCP    from environment "WINSCP_PATH".
+           accept  pathWinSCPLog from environment "WINSCP_LOG".
            inspect pathWinSCP    replacing trailing spaces by low-value.
            inspect iniFtpPath    replacing trailing spaces by low-value.
            inspect pathWinSCPLog replacing trailing spaces by low-value.

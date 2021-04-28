@@ -109,6 +109,11 @@
        77  div              pic 9(4).
        77  como-mese        pic 9(2).
        77  invio            pic 9.
+                   
+       77  ftpPutCommand         pic x(256).
+       77  pathWinSCP            pic x(256).
+       77  path-import           pic x(256).
+       77  pathWinSCPLog         pic x(256).
 
        01  ftp-export.
          03 ftp-server      pic x(50).
@@ -832,17 +837,23 @@
       ***---
        EXPORT-FTP.     
            initialize iniFtpPath.
-           accept  iniFtpPath from environment "PATH_INI_FTP".    
+           accept  iniFtpPath from environment "WINSCP_INI".       
+           inspect iniFtpPath replacing trailing spaces by low-value.
+           string  iniFtpPath   delimited low-value
+                   "putFTP.ini" delimited size
+              into iniFtpPath 
+           end-string.
+           inspect iniFtpPath replacing trailing low-value by spaces.
            open output iniFtp.
 
            accept ftp-server
-                  from environment "SITUACONT_FTP_SERVER"
+                  from environment "WINSCP_SERVER"
            accept ftp-port
-                  from environment "SITUACONT_FTP_PORT"
+                  from environment "WINSCP_PORT"
            accept ftp-user
-                  from environment "SITUACONT_FTP_USER"
+                  from environment "WINSCP_USER"
            accept ftp-password
-                  from environment "SITUACONT_FTP_PASSWORD"
+                  from environment "WINSCP_PASSWORD"
            accept ftp-remote-dir
                   from environment "SITUACONT_FTP_REMOTE_DIR"
                                                              
@@ -945,10 +956,32 @@
 
       *****     close lineseq.
 
-           accept PathInvioFTP from environment "PATH_INVIO_FTP".
-           move 0 to StatusInvioFTP.
-           call "C$SYSTEM" using PathInvioFTP
-                          giving StatusInvioFTP.
+      *****     accept PathInvioFTP from environment "PATH_INVIO_FTP".
+      *****     move 0 to StatusInvioFTP.
+      *****     call "C$SYSTEM" using PathInvioFTP
+      *****                    giving StatusInvioFTP. 
+      
+           initialize ftpPutCommand.
+           accept  pathWinSCP    from environment "WINSCP_PATH".
+           accept  pathWinSCPLog from environment "WINSCP_LOG".
+           inspect pathWinSCP    replacing trailing spaces by low-value.
+           inspect iniFtpPath    replacing trailing spaces by low-value.
+           inspect pathWinSCPLog replacing trailing spaces by low-value.
+
+           string  pathWinSCP    delimited low-value
+                   " /script="   delimited size
+                   iniFtpPath    delimited low-value
+                   " /log="      delimited size
+                   pathWinSCPLog delimited low-value
+                   "putFtp"      delimited size
+                   "_"           delimited size
+                   como-data     delimited size
+                   "-"           delimited size
+                   como-ora      delimited size
+                   ".log"        delimited size
+              into ftpPutCommand
+           end-string.
+           call "C$SYSTEM" using ftpPutCommand.
 
            initialize LinkBody.
            move "INVIO FTP SITUAZIONE CONTABILE" to LinkSubject.

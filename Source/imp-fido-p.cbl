@@ -98,7 +98,6 @@
        
        77  nargs                 pic 99  comp-1 value 0.
 
-
        01  record-GENERICO.
          05 r-cod-cli               pic x(6).   
          05 r2                      pic x.
@@ -237,8 +236,8 @@
            accept como-ora  from time.
                       
            initialize path-import path-backup path-log.
-           accept  path-import from environment "PATH_FIDO_IMPORT".
-           accept  path-backup from environment "PATH_FIDO_BACKUP".
+           accept  path-import from environment "IMP_FIDO_PATH".
+           accept  path-backup from environment "IMP_FIDO_PATH_BACKUP".
 
       *****     accept iniFtpPath   from environment "PATH_FIDO_FTP_INI". 
       *****     open output iniFtp.  

@@ -461,52 +461,55 @@ EDI_BOLLE_PATH f:\lubex\GESLUX\EDI\test\
 EDI_BOLLE_PATH_BACKUP f:\lubex\GESLUX\EDI\test\backup\
 
 
+#----------- Parametri WinSCP --------------
+WINSCP_PATH "C:\Program Files (x86)\WinSCP\WinSCP.com"
+WINSCP_LOG F:\Lubex\GESLUX\InvioFTP\WinSCP\log\
+WINSCP_INI F:\Lubex\GESLUX\InvioFTP\WinSCP\ini\
+WINSCP_SERVER gatewayft01.crif.com
+WINSCP_PORT 6321
+WINSCP_USER 878323939
+WINSCP_PASSWORD BVnsYSTL4IoWN5pZzheC7
+
 
 #       #---------- EXPORT FTP SITUACONT----------#
+INVIO_FTP_ADDRESSES andrea.ae@live.it
 
-PATH_WINSCP "C:\Program Files (x86)\WinSCP\WinSCP.com"
-PATH_WINSCP_LOG E:\GESLUX\InvioFTP\WinSCP\log\
+# ---- OBSOLETE ----
+#solo address, senza "/" finale, senza cartella remota
+#SITUACONT_FTP_SERVER_1 online1.lince.it
+#SITUACONT_FTP_SERVER_1 ftp1.cerved.com
+#SITUACONT_FTP_SERVER_2 itradeftp.crif.com
+# 21 FTP, 990 SFTP
+#SITUACONT_FTP_PORT_1 21
+#SITUACONT_FTP_PORT_1 8022
+#SITUACONT_FTP_PORT_2 990
 
-#INVIO_FTP_ADDRESSES andrea.ae@live.it
+#SITUACONT_FTP_USER_1 lubex
+#SITUACONT_FTP_USER_2 878323939
+
+#SITUACONT_FTP_PASSWORD_1 lbxp2136pay
+#SITUACONT_FTP_PASSWORD_2 X52jQm4WbGCRHaQSyXR2
+
+#Directory remota in cui fare la copia (se vuota valorizzare con "/", altrimenti "/VALORE/"
+#SITUACONT_FTP_REMOTE_DIR_1 /incoming/
+#SITUACONT_FTP_REMOTE_DIR_2 /
+
+#Fingerpint(SHA-1)
+#SITUACONT_CERTIFICATE_1 c8:75:37:c8:5d:d2:50:31:86:3b:5f:78:d3:97:f4:5a:0e:7f:a9:ba
+#SITUACONT_CERTIFICATE_2 af:ab:e4:30:31:51:56:47:7d:69:86:9c:eb:38:bb:98:9d:43:03:02
+# -----------------------
+
+SITUACONT_FTP_REMOTE_DIR //iTrade/in/
 SITUACONT_PATH_FILESEQ f:\lubex\tmp\sc\
 SITUACONT_PATH_BACKUP f:\lubex\tmp\sc\b\
 
-#solo address, senza "/" finale, senza cartella remota
-SITUACONT_FTP_SERVER gatewayft01.crif.com
-SITUACONT_FTP_SERVER_1 online1.lince.it
-SITUACONT_FTP_SERVER_2 ftp1.cerved.com
-#itradeftp.crif.com
-
-# 21 FTP, 990-8022 SFTP     
-SITUACONT_FTP_PORT 6321
-SITUACONT_FTP_PORT_1 21
-SITUACONT_FTP_PORT_2 8022
-#990
-
-SITUACONT_FTP_USER 878323939
-SITUACONT_FTP_USER_1 lubex
-SITUACONT_FTP_USER_2 878323939
-                    
-SITUACONT_FTP_PASSWORD BVnsYSTL4IoWN5pZzheC7
-SITUACONT_FTP_PASSWORD_1 lbxp2136pay
-SITUACONT_FTP_PASSWORD_2 X52jQm4WbGCRHaQSyXR2
-
-#Directory remota in cui fare la copia (se vuota valorizzare con "/", altrimenti "/VALORE/"
-SITUACONT_FTP_REMOTE_DIR //iTrade/in/
-
-SITUACONT_FTP_REMOTE_DIR_1 /incoming/
-SITUACONT_FTP_REMOTE_DIR_2 /
-
-#Fingerpint(SHA-1)          
-SITUACONT_CERTIFICATE_1 c8:75:37:c8:5d:d2:50:31:86:3b:5f:78:d3:97:f4:5a:0e:7f:a9:ba
-SITUACONT_CERTIFICATE_2 af:ab:e4:30:31:51:56:47:7d:69:86:9c:eb:38:bb:98:9d:43:03:02
-
+#Importazione fido clienti notturna (imp-fido-p)
+IMP_FIDO_PATH f:\lubex\tmp\fido\
+IMP_FIDO_BACKUP f:\lubex\tmp\fido\Backup\
+IMP_FIDO_FTP_REMOTE_DIR //PWM/Output/
 
 #Indica che tipo di calcolo (N = NUOVO, tutti gli altri valori = CLASSICO)
 CALCOLO_PIOMBO N
-
-PATH_FIDO_IMPORT f:\lubex\tmp\fido\
-PATH_FIDO_BACKUP f:\lubex\tmp\fido\Backup\
 
 FIDO_FTP_REMOTE_DIR //PWM/Output/
 
