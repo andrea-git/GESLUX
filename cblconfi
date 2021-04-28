@@ -463,8 +463,10 @@ EDI_BOLLE_PATH_BACKUP f:\lubex\GESLUX\EDI\test\backup\
 
 
 #       #---------- EXPORT FTP SITUACONT----------#
-PATH_INI_FTP F:\Lubex\GESLUX\InvioFTP\WinSCP\putFTP.ini
-PATH_INVIO_FTP F:\Lubex\GESLUX\InvioFTP\WinSCP\putFTP.bat
+
+PATH_WINSCP "C:\Program Files (x86)\WinSCP\WinSCP.com"
+PATH_WINSCP_LOG E:\GESLUX\InvioFTP\WinSCP\log\
+
 #INVIO_FTP_ADDRESSES andrea.ae@live.it
 SITUACONT_PATH_FILESEQ f:\lubex\tmp\sc\
 SITUACONT_PATH_BACKUP f:\lubex\tmp\sc\b\
@@ -506,8 +508,6 @@ CALCOLO_PIOMBO N
 PATH_FIDO_IMPORT f:\lubex\tmp\fido\
 PATH_FIDO_BACKUP f:\lubex\tmp\fido\Backup\
 
-PATH_FIDO_FTP_GET F:\Lubex\GESLUX\InvioFTP\WinSCP\getFTP.bat
-PATH_FIDO_FTP_INI F:\Lubex\GESLUX\InvioFTP\WinSCP\getFTP.ini
 FIDO_FTP_REMOTE_DIR //PWM/Output/
 
 #----BROGLIACCIO AUTOMATICO ----#

@@ -20,11 +20,11 @@
            ACCESS MODE  IS SEQUENTIAL
            FILE STATUS  IS STATUS-logfile.  
 
-       SELECT iniFtp
-           ASSIGN       TO  iniFtpPath
-           ORGANIZATION IS LINE SEQUENTIAL
-           ACCESS MODE  IS SEQUENTIAL
-           FILE STATUS  IS STATUS-iniFtp.
+      ***** SELECT iniFtp
+      *****     ASSIGN       TO  iniFtpPath
+      *****     ORGANIZATION IS LINE SEQUENTIAL
+      *****     ACCESS MODE  IS SEQUENTIAL
+      *****     FILE STATUS  IS STATUS-iniFtp.
 
        copy "clienti.sl".
 
@@ -37,8 +37,8 @@
        FD  logfile.
        01 log-riga        PIC  x(900). 
 
-       FD  iniFtp.
-       01 iniFtp-riga        PIC  x(1000). 
+      ***** FD  iniFtp.
+      ***** 01 iniFtp-riga        PIC  x(1000). 
 
        copy "clienti.fd".  
 
@@ -53,12 +53,12 @@
        77  status-lineseq        pic xx.
        77  status-logfile        pic xx.
        77  status-clienti        pic xx.
-       77  status-iniFtp         pic xx.
+      ***** 77  status-iniFtp         pic xx.
 
        77  path-logfile          pic x(256).
        77  wstampa               pic x(256).
        77  wstampa2              pic x(256). 
-       77  iniFtpPath            pic x(256).
+      ***** 77  iniFtpPath            pic x(256).
        77  status-call           signed-short.
 
        77  start-secondi         pic 9(18).
@@ -240,60 +240,60 @@
            accept  path-import from environment "PATH_FIDO_IMPORT".
            accept  path-backup from environment "PATH_FIDO_BACKUP".
 
-           accept iniFtpPath   from environment "PATH_FIDO_FTP_INI". 
-           open output iniFtp.  
-
-           accept ftp-server
-                  from environment "SITUACONT_FTP_SERVER"
-           accept ftp-port
-                  from environment "SITUACONT_FTP_PORT"
-           accept ftp-user
-                  from environment "SITUACONT_FTP_USER"
-           accept ftp-password
-                  from environment "SITUACONT_FTP_PASSWORD"
-           accept ftp-remote-dir
-                  from environment "FIDO_FTP_REMOTE_DIR"
-
-           inspect ftp-server     replacing trailing spaces by low-value
-           inspect ftp-user       replacing trailing spaces by low-value
-           inspect ftp-port       replacing trailing spaces by low-value
-           inspect ftp-password   replacing trailing spaces by low-value
-           inspect ftp-remote-dir replacing trailing spaces by low-value
-                                
-           initialize iniFtp-riga.
-           string "open ftp://" delimited size
-                  ftp-user      delimited low-value
-                  ":"           delimited size
-                  ftp-password  delimited low-value
-                  "@"           delimited size
-                  ftp-server    delimited low-value
-                  ":"           delimited size
-                  ftp-port      delimited low-value
-                  " -explicit"  delimited size
-             into iniFtp-riga
-           end-string.
-           write iniFtp-riga.
-                             
-           initialize iniFtp-riga.
-           string "get "         delimited size
-                  ftp-remote-dir delimited low-value
-                  "PMITRADE_"    delimited size
-                  como-data      delimited size
-                  ".csv "        delimited size
-                  path-import    delimited size
-             into iniFtp-riga
-           end-string.
-           write iniFtp-riga.
-
-           move "exit" to iniFtp-riga.
-           write iniFtp-riga.
-
-           close iniFtp.  
-    
-           accept PathGetFTP from environment "PATH_FIDO_FTP_GET".
-           move 0 to StatusGetFTP.
-           call "C$SYSTEM" using PathGetFTP
-                          giving StatusGetFTP.
+      *****     accept iniFtpPath   from environment "PATH_FIDO_FTP_INI". 
+      *****     open output iniFtp.  
+      *****
+      *****     accept ftp-server
+      *****            from environment "SITUACONT_FTP_SERVER"
+      *****     accept ftp-port
+      *****            from environment "SITUACONT_FTP_PORT"
+      *****     accept ftp-user
+      *****            from environment "SITUACONT_FTP_USER"
+      *****     accept ftp-password
+      *****            from environment "SITUACONT_FTP_PASSWORD"
+      *****     accept ftp-remote-dir
+      *****            from environment "FIDO_FTP_REMOTE_DIR"
+      *****
+      *****     inspect ftp-server     replacing trailing spaces by low-value
+      *****     inspect ftp-user       replacing trailing spaces by low-value
+      *****     inspect ftp-port       replacing trailing spaces by low-value
+      *****     inspect ftp-password   replacing trailing spaces by low-value
+      *****     inspect ftp-remote-dir replacing trailing spaces by low-value
+      *****                          
+      *****     initialize iniFtp-riga.
+      *****     string "open ftp://" delimited size
+      *****            ftp-user      delimited low-value
+      *****            ":"           delimited size
+      *****            ftp-password  delimited low-value
+      *****            "@"           delimited size
+      *****            ftp-server    delimited low-value
+      *****            ":"           delimited size
+      *****            ftp-port      delimited low-value
+      *****            " -explicit"  delimited size
+      *****       into iniFtp-riga
+      *****     end-string.
+      *****     write iniFtp-riga.
+      *****                       
+      *****     initialize iniFtp-riga.
+      *****     string "get "         delimited size
+      *****            ftp-remote-dir delimited low-value
+      *****            "PMITRADE_"    delimited size
+      *****            como-data      delimited size
+      *****            ".csv "        delimited size
+      *****            path-import    delimited size
+      *****       into iniFtp-riga
+      *****     end-string.
+      *****     write iniFtp-riga.
+      *****
+      *****     move "exit" to iniFtp-riga.
+      *****     write iniFtp-riga.
+      *****
+      *****     close iniFtp.  
+      *****
+      *****     accept PathGetFTP from environment "PATH_FIDO_FTP_GET".
+      *****     move 0 to StatusGetFTP.
+      *****     call "C$SYSTEM" using PathGetFTP, 0
+      *****                    giving StatusGetFTP.
 
                                                        
            CALL "C$NARG" USING NARGS.
