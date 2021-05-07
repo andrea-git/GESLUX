@@ -237,7 +237,7 @@
                       
            initialize path-import path-backup path-log.
            accept  path-import from environment "IMP_FIDO_PATH".
-           accept  path-backup from environment "IMP_FIDO_PATH_BACKUP".
+           accept  path-backup from environment "IMP_FIDO_BACKUP".
 
       *****     accept iniFtpPath   from environment "PATH_FIDO_FTP_INI". 
       *****     open output iniFtp.  

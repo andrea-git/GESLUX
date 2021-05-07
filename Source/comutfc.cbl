@@ -23,7 +23,12 @@
            copy "lineseq.sl".
            COPY "lineseq.sl"
                 REPLACING ==lineseq== BY ==lineseq1==,
-                          ==STATUS-lineseq== BY ==STATUS-lineseq1==.
+                          ==STATUS-lineseq== BY ==STATUS-lineseq1==.  
+       SELECT logfile
+           ASSIGN       TO logfile-path
+           ORGANIZATION IS LINE SEQUENTIAL
+           ACCESS MODE  IS SEQUENTIAL
+           FILE STATUS  IS STATUS-logfile.
 
       *****************************************************************
        DATA DIVISION.
@@ -41,14 +46,17 @@
            copy "lineseq.fd".
            COPY "lineseq.fd"
                 REPLACING ==lineseq== BY ==lineseq1==,
-                          ==STATUS-lineseq== BY ==STATUS-lineseq1==.
+                          ==STATUS-lineseq== BY ==STATUS-lineseq1==. 
+       FD  logfile.
+       01 logfile-riga        PIC  x(1000).
 
-       WORKING-STORAGE SECTION.                                  
+       WORKING-STORAGE SECTION.   
+       78  nomePgm               value "CARICO".
        78  titolo                value "COMUNICAZIONE UTF CARICO".
        78  78-tipo-doc-parte2    value "_DI_MILANO_3_CARICO_DEL".
        78  78-col-kg             value "      RICEVUTO KG".       
-           copy "comutf.def".                                    
-
+           copy "comutf.def".   
+                                    
 
       ******************************************************************
        PROCEDURE DIVISION.       
@@ -88,6 +96,16 @@
 
               perform FINE-PGM-COMUNE
            end-if.
+           if aggiornaContatore
+              initialize como-riga
+              string "Scrittura ultimo movimento trattato: " 
+                                                      delimited size
+                     tra-ult-mov-comun-utf-c          delimited size
+                into como-riga
+              end-string
+              perform SCRIVI-RIGA-LOG
+              perform AGGIORNA-CONTATORE
+           end-if.
            perform EXIT-PGM.                                    
       
       ***---
@@ -99,16 +117,28 @@
                 invalid   set errori to true
             not invalid   add 1 to tra-ult-mov-comun-utf-c
            end-read.
-           if RecLocked
+           if RecLocked        
+              move "ELABORAZIONE INTERROTTA: file movtrat lock"
+                to como-riga
+              perform SCRIVI-RIGA-LOG
               set errori to true
            end-if.
 
       ***---
        ELABORAZIONE.
+           initialize como-riga.
+           string "Partenza da movimento numero: " delimited size
+                  tra-ult-mov-comun-utf-c          delimited size
+             into como-riga
+           end-string.
+           perform SCRIVI-RIGA-LOG.
+
            move tra-anno                to tmo-anno.
            move tra-ult-mov-comun-utf-c to tmo-numero.
            start tmovmag key is >= tmo-chiave
                  invalid
+                 move "NESSUN MOVIMENTO TROVATO" to como-riga
+                 perform SCRIVI-RIGA-LOG
                  set errori to true
            end-start.
 
@@ -117,7 +147,8 @@
                  read tmovmag next no lock at end exit perform end-read
                  if tmo-anno not = tge-anno
                     exit perform 
-                 end-if
+                 end-if   
+                 move tmo-numero to ult-num-movim
 
                  if tmo-fornitore
                     move tmo-causale to tca-codice
@@ -126,29 +157,64 @@
                      not invalid
                          if tca-movim-giac-pos and
                             tca-si-utf         and
-                            tca-cod-magaz = "LBX"
-                            if tmo-peso-utf > 0
+                            tca-cod-magaz = "LBX"      
+                            if tmo-peso-utf > 0    
+
+                               initialize como-riga
+                               string "Movimento n. " delimited size
+                                      tmo-anno        delimited size
+                                      "-"             delimited size
+                                      tmo-numero      delimited size
+                                      ": TROVATO PESO UTF "
+                                                      delimited size
+                                      tmo-peso-utf    delimited size
+                                 into como-riga
+                               end-string
+                               perform SCRIVI-RIGA-LOG
+
                                if not trovato
                                   set trovato to true
                                   perform SCRIVI-TESTATA
                                end-if
-                               move tmo-numero to ult-num-movim
                                perform SCRIVI-RIGA
+                            else
+
+                               initialize como-riga
+                               string "Movimento n. " delimited size
+                                      tmo-anno        delimited size
+                                      "-"             delimited size
+                                      tmo-numero      delimited size
+                                      ": PESO UTF 0"  delimited size
+                                 into como-riga
+                               end-string
+                               perform SCRIVI-RIGA-LOG
                             end-if
+                            set aggiornaContatore to true
+                            move ult-num-movim 
+                              to tra-ult-mov-comun-utf-c
+                         else
+                            initialize como-riga
+                            string "Movimento n. " delimited size
+                                   tmo-anno        delimited size
+                                   "-"             delimited size
+                                   tmo-numero      delimited size
+                                   ": SCARTATO"    delimited size
+                              into como-riga
+                            end-string
+                            perform SCRIVI-RIGA-LOG
                          end-if
                     end-read
                  end-if
 
               end-perform
 
-              if trovato
-                 move ult-num-movim to tra-ult-mov-comun-utf-c
-              end-if
-
            end-if.                      
            
       ***---
-       SCRIVI-RIGA.
+       SCRIVI-RIGA.             
+           move "SCRITTURA RIGA" to como-riga.
+           perform SCRIVI-RIGA-LOG.
+
            if tmo-data-movim not = 0
               move tmo-data-movim(7:2) to data-x10(1:2)
               move "/"                 to data-x10(3:1)

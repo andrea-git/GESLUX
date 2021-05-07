@@ -5,8 +5,12 @@
            copy "fonts.def".
            copy "selprint.lks".
            copy "link-settaPDF.def".
+           copy "setta-inizio-riga.def".
                                
        77  WFONT-STATUS          pic s9(5) value ZERO.
+
+       77  filler                pic 9 value 0.
+         88 aggiornaContatore          value 1, false 0.
 
        77  status-tmovtrat       pic xx.
        77  status-tsetinvio      pic xx.
@@ -20,6 +24,10 @@
        77  status-tordini        pic xx.
        77  status-rordini        pic xx.
        77  status-destini        pic xx.
+       77  status-logfile        pic xx.
+       77  logfile-path          pic x(200).
+
+       77  como-riga             pic x(200).
            
        77  ult-numero-bolla-S1   pic 9(8) value 0.
        77  ult-numero-bolla-S2   pic 9(8) value 0.

@@ -2,6 +2,22 @@
        INIT.
            set tutto-ok to true.
            set trovato  to false.
+           accept como-data from century-date.
+           accept como-ora  from time.
+           accept  logfile-path from environment "PATH_LOG_COMUTF".
+           inspect logfile-path replacing trailing spaces by low-value.
+           string  logfile-path delimited low-value
+                   nomePgm      delimited size
+                   "_"          delimited size
+                   como-data    delimited size
+                   "_"          delimited size
+                   como-ora     delimited size
+                   ".log"       delimited size
+              into logfile-path
+           end-string.
+           open output logfile.
+           move "INIZIO PROGRAMMA" to como-riga.
+           perform SCRIVI-RIGA-LOG.
 
       ***---
        OPEN-FILES.
@@ -11,6 +27,9 @@
 
       ***---
        SCRIVI-TESTATA.
+           move "SCRIVI TESTATA" to como-riga.
+           perform SCRIVI-RIGA-LOG.
+
            perform CARICA-FONT.
 
            move 0 to num-righe.
@@ -128,6 +147,9 @@
 
       ***---
        CREA-PDF.
+           move "CREA PDF" to como-riga.
+           perform SCRIVI-RIGA-LOG.
+
            accept DestFile from environment "COMUTF_PATH".
       ******    tolgo l'eventuale barra finale
       *****     inspect DestFile replacing trailing spaces by low-value.
@@ -150,7 +172,21 @@
                   into NomeFile
            end-string.
 
-           set settaPDF-setta to true.
+           set settaPDF-setta to true. 
+
+           initialize como-riga.
+           string "NomeFile: " delimited size
+                  NomeFile     delimited size
+             into como-riga
+           end-string.
+           perform SCRIVI-RIGA-LOG.
+
+           initialize como-riga.
+           string "DestFile: " delimited size
+                  DestFile     delimited size
+             into como-riga
+           end-string.
+           perform SCRIVI-RIGA-LOG.
 
            move NomeFile  to settaPDF-nome-file.
            move DestFile  to settaPDF-percorso.
@@ -196,6 +232,9 @@
 
       ***---
        ASPETTA-PDF.
+           move "ASPETTA PDF" to como-riga.
+           perform SCRIVI-RIGA-LOG.
+
            set settaPDF-resetta   to true.
            call   "settaPDF2" using settaPDF-linkage.
            cancel "settaPDF2".
@@ -216,6 +255,14 @@
                  set errori to true
                  move 0 to tentativi
                  perform 5 times
+              
+                    initialize como-riga
+                    string "TENTATIVO MAIL N. " delimited size
+                           tentativi            delimited size
+                      into como-riga
+                    end-string
+                    perform SCRIVI-RIGA-LOG
+
                     add 1 to tentativi
                     perform SEND-MAIL
 
@@ -223,28 +270,57 @@
                     open input lineseq1
                     read  lineseq1 next
                     if line-riga of lineseq1 = "True"
+
+                       move "INVIO MAIL RIUSCITO" to como-riga
+                       perform SCRIVI-RIGA-LOG
+
                        set tutto-ok to true
                        close lineseq1
                        exit perform
+                    else
+                       move line-riga of lineseq1 to como-riga
+                       perform SCRIVI-RIGA-LOG
                     end-if
                     close lineseq1
          
-                  end-perform
-
-                  if trovato
-                     perform AGGIORNA-CONTATORE
-                  end-if
-
-               end-if
-           end-if.
+                 end-perform
+              else                   
+                 move "ERRORE PDF 2" to como-riga
+                 perform SCRIVI-RIGA-LOG
+              end-if
+           else
+              move "ERRORE PDF 1" to como-riga
+              perform SCRIVI-RIGA-LOG
+           end-if. 
 
       ***---                                 
        EXIT-PGM.  
            close tmovtrat.
            destroy Courier8.
+
+           move "FINE PROGRAMMA" to como-riga.
+           perform SCRIVI-RIGA-LOG.
+           close logfile.
+
            goback.                     
 
       ***---
        AGGIORNA-CONTATORE.
+           move "AGGIORNAMENTO CONTATORE" to como-riga.
+           perform SCRIVI-RIGA-LOG.
+
            rewrite tra-rec invalid continue end-rewrite.
            unlock tmovtrat all record.
+
+      ***---
+       SCRIVI-RIGA-LOG.
+           inspect como-riga replacing trailing spaces by low-value.
+           perform SETTA-INIZIO-RIGA.
+           initialize logfile-riga.
+           string r-inizio  delimited size
+                  como-riga delimited low-value
+             into logfile-riga
+           end-string.
+           write logfile-riga.
+
+       copy "setta-inizio-riga.cpy".

@@ -24,6 +24,11 @@
            COPY "lineseq.sl"
                 REPLACING ==lineseq== BY ==lineseq1==,
                           ==STATUS-lineseq== BY ==STATUS-lineseq1==.
+       SELECT logfile
+           ASSIGN       TO logfile-path
+           ORGANIZATION IS LINE SEQUENTIAL
+           ACCESS MODE  IS SEQUENTIAL
+           FILE STATUS  IS STATUS-logfile.
 
       *****************************************************************
        DATA DIVISION.
@@ -42,8 +47,11 @@
            COPY "lineseq.fd"
                 REPLACING ==lineseq== BY ==lineseq1==,
                           ==STATUS-lineseq== BY ==STATUS-lineseq1==.
+       FD  logfile.
+       01 logfile-riga        PIC  x(1000).
 
-       WORKING-STORAGE SECTION.
+       WORKING-STORAGE SECTION.     
+       78  nomePgm               value "SCARICO".
        78  titolo                value "COMUNICAZIONE UTF SCARICO".
        78  78-tipo-doc-parte2    value "_DI_MILANO_3_SCARICO_DEL".
        78  78-col-kg             value "       SPEDITO KG".
@@ -85,7 +93,32 @@
                      from environment "COMUTFS_ADDRESS_CC"
 
               perform FINE-PGM-COMUNE
+           end-if.   
+           if aggiornaContatore 
+              initialize como-riga
+              string "Scrittiura ultima bolla S1 trattata: " 
+                                                     delimited size
+                     tra-bolla-comun-utf-S1          delimited size
+                into como-riga
+              end-string
+              perform SCRIVI-RIGA-LOG
+              initialize como-riga
+              string "Scrittiura ultima bolla S2 trattata: " 
+                                                     delimited size
+                     tra-bolla-comun-utf-S2          delimited size
+                into como-riga
+              end-string
+              perform SCRIVI-RIGA-LOG
+              initialize como-riga
+              string "Scrittiura ultima bolla S3 trattata: " 
+                                                     delimited size
+                     tra-bolla-comun-utf-S3          delimited size
+                into como-riga
+              end-string
+              perform SCRIVI-RIGA-LOG
+              perform AGGIORNA-CONTATORE
            end-if.
+
            perform EXIT-PGM.                              
       
       ***---
@@ -105,52 +138,86 @@
                           add 1 to tra-bolla-comun-UTF-S2
                           add 1 to tra-bolla-comun-UTF-S3
            end-read.
-           if RecLocked
+           if RecLocked      
+              move "ELABORAZIONE INTERROTTA: file movtrat lock"
+                to como-riga
+              perform SCRIVI-RIGA-LOG
               set errori to true
            end-if.
 
       ***---
-       ELABORAZIONE.
+       ELABORAZIONE.       
+           initialize como-riga.
+           string "Partenza da bolla S1 numero: " delimited size
+                  tra-bolla-comun-utf-s1          delimited size
+             into como-riga
+           end-string.
+           perform SCRIVI-RIGA-LOG.
+
+           set tutto-ok                to true.
            move tra-anno               to tor-anno-bolla.
            move tra-bolla-comun-utf-s1 to tor-num-bolla.
            move 500001                 to max-numero.
            start tordini key is >= k-bolla
                  invalid
+                 move "NESSUNA BOLLA S1 TROVATA" to como-riga
+                 perform SCRIVI-RIGA-LOG
                  set errori to true
            end-start.
 
            if tutto-ok
               move 1 to SerieBolle
               perform LOOP-BOLLE
-              move ult-numero-bolla-S1 to tra-bolla-comun-utf-s1
-           end-if.
-
+              move ult-numero-bolla-S1 to tra-bolla-comun-utf-s1  
+           end-if.     
+                 
+           initialize como-riga.
+           string "Partenza da bolla S2 numero: " delimited size
+                  tra-bolla-comun-utf-s2          delimited size
+             into como-riga
+           end-string.
+           perform SCRIVI-RIGA-LOG.
+                        
+           set tutto-ok                to true.
            move tra-anno               to tor-anno-bolla.
            move tra-bolla-comun-utf-s2 to tor-num-bolla.
            move 99999999               to max-numero.
            start tordini key is >= k-bolla
-                 invalid
+                 invalid             
+                 move "NESSUNA BOLLA S2 TROVATA" to como-riga
+                 perform SCRIVI-RIGA-LOG
                  set errori to true
            end-start.
 
            if tutto-ok
               move 2 to SerieBolle
               perform LOOP-BOLLE
-              move ult-numero-bolla-S2 to tra-bolla-comun-utf-S2
-           end-if.
+              move ult-numero-bolla-S2 to tra-bolla-comun-utf-S2 
 
+           end-if.   
+                 
+           initialize como-riga.
+           string "Partenza da bolla S3 numero: " delimited size
+                  tra-bolla-comun-utf-s3          delimited size
+             into como-riga
+           end-string.
+           perform SCRIVI-RIGA-LOG.
+                              
+           set tutto-ok                to true.
            move tra-anno               to tor-anno-bolla.
            move tra-bolla-comun-utf-s3 to tor-num-bolla.
            move 900001                 to max-numero.
            start tordini key is >= k-bolla
-                 invalid
+                 invalid             
+                 move "NESSUNA BOLLA S3 TROVATA" to como-riga
+                 perform SCRIVI-RIGA-LOG
                  set errori to true
            end-start.
 
            if tutto-ok
               move 3 to SerieBolle
               perform LOOP-BOLLE
-              move ult-numero-bolla-S3 to tra-bolla-comun-utf-S3
+              move ult-numero-bolla-S3 to tra-bolla-comun-utf-S3  
            end-if.
 
       ***---
@@ -160,7 +227,7 @@
               if tor-anno-bolla not = tge-anno or
                  tor-num-bolla >= max-numero
                  exit perform
-              end-if
+              end-if 
 
               move tor-causale to tca-codice
               read tcaumag no lock
@@ -170,21 +237,64 @@
                       tca-si-utf         and
                       tca-cod-magaz = "LBX"
                       perform LOOP-RIGHE-BOLLA
-                      if tot-kg > 0
-                         evaluate SerieBolle
-                         when 1
-                              move tor-num-bolla to ult-numero-bolla-S1
-                         when 2
-                              move tor-num-bolla to ult-numero-bolla-S2
-                         when 3
-                              move tor-num-bolla to ult-numero-bolla-S3
-                         end-evaluate
+                      if tot-kg > 0   
+                      
+                         initialize como-riga
+                         string "Bolla S"             delimited size
+                                SerieBolle            delimited size
+                                " n. "                delimited size
+                                tor-anno-bolla        delimited size
+                                "-"                   delimited size
+                                tor-num-bolla         delimited size
+                                ": TROVATO PESO UTF " delimited size
+                                tot-kg                delimited size
+                           into como-riga
+                         end-string
+                         perform SCRIVI-RIGA-LOG
                          if not trovato
                             set trovato to true
                             perform SCRIVI-TESTATA
                          end-if
                          perform SCRIVI-RIGA
+                      else
+                      
+                         initialize como-riga
+                         string "Bolla S"       delimited size
+                                SerieBolle      delimited size
+                                " n. "          delimited size
+                                tor-anno-bolla  delimited size
+                                "-"             delimited size
+                                tor-num-bolla   delimited size
+                                ": PESO UTF 0"  delimited size
+                                tot-kg          delimited size
+                           into como-riga
+                         end-string
+                         perform SCRIVI-RIGA-LOG
                       end-if
+  
+                      set aggiornaContatore to true
+
+                      evaluate SerieBolle
+                      when 1
+                           move tor-num-bolla to ult-numero-bolla-S1
+                      when 2
+                           move tor-num-bolla to ult-numero-bolla-S2
+                      when 3
+                           move tor-num-bolla to ult-numero-bolla-S3
+                      end-evaluate
+              
+                   else
+                      initialize como-riga
+                      string "Bolla S"       delimited size
+                             SerieBolle      delimited size
+                             " n. "          delimited size
+                             tor-anno-bolla  delimited size
+                             "-"             delimited size
+                             tor-num-bolla   delimited size
+                             ": SCARTATA"    delimited size
+                        into como-riga
+                      end-string
+                      perform SCRIVI-RIGA-LOG
                    end-if
               end-read
 
@@ -212,7 +322,10 @@
            end-if.                    
 
       ***---
-       SCRIVI-RIGA.
+       SCRIVI-RIGA.   
+           move "SCRITTURA RIGA" to como-riga.
+           perform SCRIVI-RIGA-LOG.
+
            if tor-data-bolla not = 0
               move tor-data-bolla(7:2) to data-x10(1:2)
               move "/"                 to data-x10(3:1)
