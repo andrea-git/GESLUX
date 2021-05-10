@@ -25,8 +25,10 @@
        77  como-data             pic 9(8).                        
        77  como-ora              pic 9(8).
 
-       77  status-iniFtp         pic xx.
+       77  status-iniFtp         pic xx.    
        77  iniFtpPath            pic x(256).
+       77  ini-path-backup       pic x(256).
+       77  cmd                   pic x(200).
                             
        77  ftpGetCommand         pic x(256).
        77  pathWinSCP            pic x(256).
@@ -46,7 +48,7 @@
       ***---
        MAIN-PRG.                          
            accept como-data from century-date. 
-           accept como-ora  from century-date. 
+           accept como-ora  from time. 
            accept  path-import from environment "IMP_FIDO_PATH".
 
            accept  iniFtpPath from environment "WINSCP_INI". 
@@ -127,4 +129,30 @@
               into ftpGetCommand
            end-string.
            call "C$SYSTEM" using ftpGetCommand.
+                  
+           accept  ini-path-backup from environment "WINSCP_INI_BACKUP". 
+           inspect ini-path-backup 
+                   replacing trailing spaces by low-value
+           string  ini-path-backup delimited low-value
+                   "getFTP"        delimited size
+                   "_"             delimited size
+                   como-data       delimited size
+                   "-"             delimited size
+                   como-ora        delimited size
+                   ".ini"          delimited size
+              into ini-path-backup
+           end-string.
+           inspect ini-path-backup 
+                   replacing trailing low-value by spaces. 
+
+           inspect iniFtpPath replacing trailing spaces by low-value.
+           initialize cmd.
+           string "copy "         delimited size
+                  iniFtpPath      delimited low-value
+                  " "             delimited size
+                  ini-path-backup delimited size
+                  into cmd
+           end-string.
+           call "C$SYSTEM" using cmd, 255.
+
            goback.
