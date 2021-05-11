@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          scheduler.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 18 marzo 2021 13:36:53.
+       DATE-WRITTEN.        martedì 11 maggio 2021 10:48:07.
        REMARKS.
       *{TOTEM}END
 
@@ -121,6 +121,8 @@
        77 debugger-test    PIC  x.
        77 idx-log          PIC  9(3)
                   VALUE IS 0.
+       77 s-data           PIC  9(8).
+       77 diff-gg          PIC  9(8).
        01 tab-log-invio.
            05 el-log-invio     PIC  x(256)
                       OCCURS 50 TIMES.
@@ -1373,6 +1375,7 @@
 
            open output lineseq.
            write line-riga of lineseq from spaces.
+           accept s-data from century-date.
            string "RIEPILOGO BATCH NOTTURNI DEL " delimited size
                   data-oggi          delimited size
                   " - INZIATO ALLE " delimited size
@@ -1514,12 +1517,21 @@
            compute secondi-end = como-ss +
                                ( como-mm * 60 ) +
                                ( como-hh * 3600 ).
+                             
+           accept como-data from century-date.
+           if como-data > s-data 
+              compute diff-gg = function integer-of-date(como-data) -
+                                function integer-of-date(s-data)
+              compute secondi-end = ( 24 * diff-gg * 3600 ) + 
+                                    secondi-end
+           end-if.
                                     
            initialize line-riga of lineseq.
-           string "RIEPILOGO BATCH NOTTURNI DEL " delimited size
-                  data-oggi            delimited size
-                  " - TERMINATO ALLE " delimited size
-                  ora-oggi             delimited size
+           string "RIEPILOGO BATCH NOTTURNI " delimited size
+                  " - TERMINATO IL "          delimited size
+                  data-oggi                   delimited size
+                  " ALLE "                    delimited size
+                  ora-oggi                    delimited size
                   into line-riga of lineseq
            end-string.
            write line-riga of lineseq.

@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=scr-oper
 BEFORE_PROGRAM=scheduler-Ev-Before-Program
 AFTER_PROGRAM=scheduler-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E5312123632-299-1154923478
+PROGRAM_UNIQUE_CODE=TOTEM-7E55B83343-299-9218920
 
 {{@DESCRIPTION:
 
@@ -376,14 +376,34 @@ m_bFixed=1
 
 @}}
 [FDITEM35_WK]
-m_strName=tab-log-invio
-m_nItemLevel=1
+m_strName=s-data
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM35_WK
 
 @}}
 [FDITEM36_WK]
+m_strName=diff-gg
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM36_WK
+
+@}}
+[FDITEM37_WK]
+m_strName=tab-log-invio
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM37_WK
+
+@}}
+[FDITEM38_WK]
 m_strName=el-log-invio
 m_strRawPic=x(256)
 m_strPic=x(256)
@@ -393,41 +413,13 @@ m_bOccurs=1
 m_bFixed=1
 m_strRawSize=50
 m_nSize=50
-{{@DataItem_m_strDescriptionFDITEM36_WK
-
-@}}
-[FDITEM37_WK]
-m_strName=StatusInvioMail
-m_strRawPic=s9
-m_strPic=S9
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
-m_strCopyFile=mail.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM37_WK
-
-@}}
-[FDITEM38_WK]
-m_strName=PathInvioMail
-m_strRawPic=x(80)
-m_strPic=X(80)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
-m_strCopyFile=mail.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM38_WK
 
 @}}
 [FDITEM39_WK]
-m_strName=NomeProgramma
-m_strRawPic=x(30)
-m_strPic=X(30)
+m_strName=StatusInvioMail
+m_strRawPic=s9
+m_strPic=S9
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -439,8 +431,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM40_WK]
-m_strName=LinkMail
-m_nItemLevel=1
+m_strName=PathInvioMail
+m_strRawPic=x(80)
+m_strPic=X(80)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
@@ -448,13 +442,13 @@ m_strCopyFile=mail.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
 m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM40_WK
- PER LE MAIL
+
 @}}
 [FDITEM41_WK]
-m_strName=LinkSubject
-m_strRawPic=x(100)
-m_strPic=X(100)
-m_nItemLevel=5
+m_strName=NomeProgramma
+m_strRawPic=x(30)
+m_strPic=X(30)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
@@ -465,10 +459,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM42_WK]
-m_strName=LinkBody
-m_strRawPic=x(10000)
-m_strPic=X(10000)
-m_nItemLevel=5
+m_strName=LinkMail
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
@@ -476,12 +468,12 @@ m_strCopyFile=mail.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
 m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM42_WK
-
+ PER LE MAIL
 @}}
 [FDITEM43_WK]
-m_strName=LinkAddressFrom
-m_strRawPic=x(3000)
-m_strPic=X(3000)
+m_strName=LinkSubject
+m_strRawPic=x(100)
+m_strPic=X(100)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -493,9 +485,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM44_WK]
-m_strName=LinkAddress
-m_strRawPic=x(3000)
-m_strPic=X(3000)
+m_strName=LinkBody
+m_strRawPic=x(10000)
+m_strPic=X(10000)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -507,7 +499,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM45_WK]
-m_strName=LinkAddressCC
+m_strName=LinkAddressFrom
 m_strRawPic=x(3000)
 m_strPic=X(3000)
 m_nItemLevel=5
@@ -521,9 +513,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM46_WK]
-m_strName=LinkAttach
-m_strRawPic=x(1000)
-m_strPic=X(1000)
+m_strName=LinkAddress
+m_strRawPic=x(3000)
+m_strPic=X(3000)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -535,9 +527,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM47_WK]
-m_strName=LinkPorta
-m_strRawPic=x(3)
-m_strPic=X(3)
+m_strName=LinkAddressCC
+m_strRawPic=x(3000)
+m_strPic=X(3000)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -549,9 +541,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM48_WK]
-m_strName=LinkSSL
-m_strRawPic=x
-m_strPic=X
+m_strName=LinkAttach
+m_strRawPic=x(1000)
+m_strPic=X(1000)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -563,9 +555,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM49_WK]
-m_strName=LinkUser
-m_strRawPic=x(200)
-m_strPic=X(200)
+m_strName=LinkPorta
+m_strRawPic=x(3)
+m_strPic=X(3)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -577,9 +569,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM50_WK]
-m_strName=LinkPassword
-m_strRawPic=x(200)
-m_strPic=X(200)
+m_strName=LinkSSL
+m_strRawPic=x
+m_strPic=X
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -591,6 +583,34 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM51_WK]
+m_strName=LinkUser
+m_strRawPic=x(200)
+m_strPic=X(200)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_strCopyFile=mail.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM51_WK
+
+@}}
+[FDITEM52_WK]
+m_strName=LinkPassword
+m_strRawPic=x(200)
+m_strPic=X(200)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_strCopyFile=mail.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\MAIL.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM52_WK
+
+@}}
+[FDITEM53_WK]
 m_strName=batch-linkage
 m_nItemLevel=1
 m_nSync=-1
@@ -599,40 +619,13 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-BATCH.DEF
 m_strCopyFile=link-batch.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-BATCH.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM51_WK
-
-
-@}}
-[FDITEM52_WK]
-m_strName=batch-win-handle
-m_nUsage=24
-m_nItemLevel=3
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-BATCH.DEF
-m_strCopyFile=link-batch.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-BATCH.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM52_WK
-
-@}}
-[FDITEM53_WK]
-m_strName=batch-log
-m_strRawPic=x(512)
-m_strPic=X(512)
-m_nItemLevel=3
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-BATCH.DEF
-m_strCopyFile=link-batch.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-BATCH.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM53_WK
+
 
 @}}
 [FDITEM54_WK]
-m_strName=batch-status
-m_nUsage=17
+m_strName=batch-win-handle
+m_nUsage=24
 m_nItemLevel=3
 m_nSync=-1
 m_bFixed=1
@@ -644,35 +637,42 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM55_WK]
-m_strName=como-ora-hhmmss
-m_nItemLevel=1
+m_strName=batch-log
+m_strRawPic=x(512)
+m_strPic=X(512)
+m_nItemLevel=3
 m_nSync=-1
 m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-BATCH.DEF
+m_strCopyFile=link-batch.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-BATCH.DEF
+m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM55_WK
 
 @}}
 [FDITEM56_WK]
-m_strName=como-hh
-m_strRawPic=99
-m_strPic=99
-m_nItemLevel=5
+m_strName=batch-status
+m_nUsage=17
+m_nItemLevel=3
 m_nSync=-1
 m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-BATCH.DEF
+m_strCopyFile=link-batch.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-BATCH.DEF
+m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM56_WK
 
 @}}
 [FDITEM57_WK]
-m_strName=como-mm
-m_strRawPic=99
-m_strPic=99
-m_nItemLevel=5
+m_strName=como-ora-hhmmss
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM57_WK
 
 @}}
 [FDITEM58_WK]
-m_strName=como-ss
+m_strName=como-hh
 m_strRawPic=99
 m_strPic=99
 m_nItemLevel=5
@@ -682,23 +682,22 @@ m_bFixed=1
 
 @}}
 [FDITEM59_WK]
-m_strName=FILLER
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
-m_nItemLevel=1
+m_strName=como-mm
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM59_WK
 
 @}}
 [FDITEM60_WK]
-m_strName=errore-bloccante
-m_nItemLevel=88
+m_strName=como-ss
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
-m_strTrue=1
-m_strFalse=0
 {{@DataItem_m_strDescriptionFDITEM60_WK
 
 @}}
@@ -714,7 +713,7 @@ m_bFixed=1
 
 @}}
 [FDITEM62_WK]
-m_strName=CallDettaglio
+m_strName=errore-bloccante
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -724,54 +723,55 @@ m_strFalse=0
 
 @}}
 [FDITEM63_WK]
-m_strName=STATUS-batnott
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM63_WK
 
 @}}
 [FDITEM64_WK]
-m_strName=Valid-STATUS-batnott
+m_strName=CallDettaglio
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
+m_strTrue=1
+m_strFalse=0
 {{@DataItem_m_strDescriptionFDITEM64_WK
 
 @}}
 [FDITEM65_WK]
-m_strName=rec-grid
-m_nItemLevel=1
+m_strName=STATUS-batnott
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM65_WK
 
 @}}
 [FDITEM66_WK]
-m_strName=col-programma
-m_strRawPic=X(25)
-m_strPic=X(25)
-m_nItemLevel=5
+m_strName=Valid-STATUS-batnott
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM66_WK
 
 @}}
 [FDITEM67_WK]
-m_strName=col-ini
-m_strRawPic=X(25)
-m_strPic=X(25)
-m_nItemLevel=5
+m_strName=rec-grid
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM67_WK
 
 @}}
 [FDITEM68_WK]
-m_strName=col-fine
+m_strName=col-programma
 m_strRawPic=X(25)
 m_strPic=X(25)
 m_nItemLevel=5
@@ -781,9 +781,9 @@ m_bFixed=1
 
 @}}
 [FDITEM69_WK]
-m_strName=col-esito
-m_strRawPic=x(5)
-m_strPic=x(5)
+m_strName=col-ini
+m_strRawPic=X(25)
+m_strPic=X(25)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -791,27 +791,28 @@ m_bFixed=1
 
 @}}
 [FDITEM70_WK]
-m_strName=scr-oper-Handle
-m_nUsage=24
-m_nItemLevel=77
+m_strName=col-fine
+m_strRawPic=X(25)
+m_strPic=X(25)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM70_WK
 
 @}}
 [FDITEM71_WK]
-m_strName=Small-Font
-m_nUsage=37
-m_nItemLevel=77
+m_strName=col-esito
+m_strRawPic=x(5)
+m_strPic=x(5)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM71_WK
 
 @}}
 [FDITEM72_WK]
-m_strName=wstampa
-m_strRawPic=X(256)
-m_strPic=X(256)
+m_strName=scr-oper-Handle
+m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -819,9 +820,8 @@ m_bFixed=1
 
 @}}
 [FDITEM73_WK]
-m_strName=STATUS-lineseq
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=Small-Font
+m_nUsage=37
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -829,17 +829,19 @@ m_bFixed=1
 
 @}}
 [FDITEM74_WK]
-m_strName=Valid-STATUS-lineseq
-m_nItemLevel=88
+m_strName=wstampa
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM74_WK
 
 @}}
 [FDITEM75_WK]
-m_strName=Verdana12B-Occidentale
-m_nUsage=26
+m_strName=STATUS-lineseq
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -847,26 +849,25 @@ m_bFixed=1
 
 @}}
 [FDITEM76_WK]
-m_strName=STATUS-tsetinvio
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM76_WK
-
-@}}
-[FDITEM77_WK]
-m_strName=Valid-STATUS-tsetinvio
+m_strName=Valid-STATUS-lineseq
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM76_WK
+
+@}}
+[FDITEM77_WK]
+m_strName=Verdana12B-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM77_WK
 
 @}}
 [FDITEM78_WK]
-m_strName=STATUS-lineseq1
+m_strName=STATUS-tsetinvio
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -876,12 +877,31 @@ m_bFixed=1
 
 @}}
 [FDITEM79_WK]
-m_strName=VALID-STATUS-lineseq1
+m_strName=Valid-STATUS-tsetinvio
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM79_WK
+
+@}}
+[FDITEM80_WK]
+m_strName=STATUS-lineseq1
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM80_WK
+
+@}}
+[FDITEM81_WK]
+m_strName=VALID-STATUS-lineseq1
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM81_WK
 
 @}}
 
@@ -1196,6 +1216,7 @@ BEGIN-TEXT
 
            open output lineseq.
            write line-riga of lineseq from spaces.
+           accept s-data from century-date.
            string "RIEPILOGO BATCH NOTTURNI DEL " delimited size
                   data-oggi          delimited size
                   " - INZIATO ALLE " delimited size
@@ -1334,12 +1355,21 @@ BEGIN-TEXT
            compute secondi-end = como-ss +
                                ( como-mm * 60 ) +
                                ( como-hh * 3600 ).
+                             
+           accept como-data from century-date.
+           if como-data > s-data 
+              compute diff-gg = function integer-of-date(como-data) -
+                                function integer-of-date(s-data)
+              compute secondi-end = ( 24 * diff-gg * 3600 ) + 
+                                    secondi-end
+           end-if.
                                     
            initialize line-riga of lineseq.
-           string "RIEPILOGO BATCH NOTTURNI DEL " delimited size
-                  data-oggi            delimited size
-                  " - TERMINATO ALLE " delimited size
-                  ora-oggi             delimited size
+           string "RIEPILOGO BATCH NOTTURNI " delimited size
+                  " - TERMINATO IL "          delimited size
+                  data-oggi                   delimited size
+                  " ALLE "                    delimited size
+                  ora-oggi                    delimited size
                   into line-riga of lineseq
            end-string.
            write line-riga of lineseq.
