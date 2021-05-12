@@ -397,6 +397,22 @@
        ELABORAZIONE.
            if RichiamoSchedulato
               move 0 to batch-status
+           end-if. 
+
+           initialize Dir-import-Handle
+           call "C$LIST-DIRECTORY" using LISTDIR-OPEN,
+                                         path-import,
+                                         "PMITRADE_*.*"
+
+           move RETURN-CODE        to Dir-import-Handle
+
+           if Dir-import-Handle = ZERO
+              move 1 to batch-status
+
+              move "NESSUN FILE PMITRADE PRESENTE" to como-riga
+              perform SCRIVI-RIGA-LOG
+
+              exit paragraph
            end-if.
 
            move "AZZERAMENTO FIDO CERVED" to como-riga.
@@ -439,7 +455,7 @@
                            not = ".."     and
                            not = "Backup" and
                            not = "backup" and
-                           not = ".DS_Store"
+                           not = ".DS_Store" 
 
                  initialize wstampa
                  inspect nome-file  replacing trailing spaces
@@ -611,12 +627,10 @@
               end-unstring 
               move r-fido-x to r-fido convert
              |Posson capitare dei codici con lettere che vanno scartati
-              call "C$JUSTIFY" using  r-cod-cli, "R"
-              inspect r-cod-cli replacing leading x"20" by x"30"
-              if r-cod-cli is numeric
+              move r-cod-cli to cli-codice convert
+              if cli-codice not = 0
                  add 1 to tot-cli
                  set cli-tipo-C to true
-                 move r-cod-cli to cli-codice
                  read clienti no lock
                       invalid 
                       add  1 to tot-ko
@@ -631,13 +645,7 @@
                       end-string
                       perform SCRIVI-RIGA-LOG
                   not invalid   
-                      initialize como-riga
-                      string "ELABORAZIONE CLIENTE " delimited size
-                             cli-codice              delimited size
-                        into como-riga
-                      end-string
-                      perform SCRIVI-RIGA-LOG
-
+                      inspect r-fido-x replacing all x"22" by x"20"
                       move r-fido    to como-fido
       *****                if cli-fido not = como-fido or 
       *****                   como-data = 20150207 
@@ -657,10 +665,44 @@
                       end-if
                       move como-fido to cli-fido
                       rewrite cli-rec
-                              invalid continue
+                              invalid              
+                                                        
+                              move "ERRORE REWRITE" to como-riga
+                              perform SCRIVI-RIGA-LOG
+
+                              if RichiamoSchedulato
+                                 move 1 to batch-status
+                              end-if
+
                           not invalid 
-                              if not RecLocked
+                              if RecLocked              
+                      
+                                 move "CLIENTE BLOCCATO" to como-riga
+                                 perform SCRIVI-RIGA-LOG
+
+                                 if RichiamoSchedulato
+                                    move 1 to batch-status
+                                 end-if
+
+                              else
                                  add 1 to tot-ok
+                      
+                                 initialize como-riga
+                                 string "AGGIORNATO CLIENTE " 
+                                        delimited size
+                                        cli-codice              
+                                        delimited size
+                                        " FIDO DATA: "
+                                        delimited size
+                                        cli-fido-data
+                                        delimited size
+                                        " - IMPORTO: "
+                                        cli-fido
+                                        delimited size
+                                   into como-riga
+                                 end-string
+                                 perform SCRIVI-RIGA-LOG
+
                               end-if
                       end-rewrite
                  end-read
