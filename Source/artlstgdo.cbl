@@ -1033,13 +1033,7 @@
               end-start 
               perform SETTA-INIZIO-RIGA
               initialize como-riga                             
-              if trovato
-                 string r-inizio                          delimited size
-                        "TROVATO ARTICOLO A LISTINO PER: "delimited size
-                        el-gdo(idx)                       delimited size
-                        into como-riga
-                 end-string
-              else         
+              if not trovato
                  initialize lst-rec replacing numeric data by zeroes
                                          alphanumeric data by spaces
                  add 0,005 to s-prz-confronto giving lst-prezzo
