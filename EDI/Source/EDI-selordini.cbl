@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 31 marzo 2021 12:39:22.
+       DATE-WRITTEN.        sabato 15 maggio 2021 15:02:56.
        REMARKS.
       *{TOTEM}END
 
@@ -19255,8 +19255,9 @@ PATCH       bitmap-number = BitmapNumSave.
       ***---
        SCRIVI-RIGHE.      
               
-           set emto-qta-ok to true.
+           set emto-qta-ok to true. 
            set emto-prg-ok to true.
+           set emto-art-ok to true.
 
            inquire form1-gd-1, last-row in tot-righe.
            perform varying riga from 2 by 1 
@@ -19270,9 +19271,7 @@ PATCH       bitmap-number = BitmapNumSave.
                    invalid                                    
                    inquire form1-gd-1(riga, 78-col-art),        
                            hidden-data in gruppo-hidden
-                   move hid-prg-cod-articolo to art-codice      
-                   move HiddenKey to prg-chiave emro-prg-chiave
-                   read progmag no lock
+                   move hid-prg-cod-articolo to art-codice         
                    initialize emro-dati emro-dati-import
                               replacing numeric data by zeroes
                                    alphanumeric data by spaces
@@ -19352,7 +19351,16 @@ PATCH         |Nel caso in cui passi un prezzo da bloccare
               move hid-emro-errori to emro-errori
               move hid-emro-stato  to emro-stato
               move HiddenKey       to emro-prg-chiave prg-chiave
-              read progmag no lock
+              read progmag no lock 
+                   invalid set emto-prg-ko to true
+              end-read
+
+              move prg-cod-articolo to art-codice
+              read articoli no lock 
+                   invalid
+                   set emto-art-ko to true
+              end-read
+
               move prg-peso-utf     to emro-peso-utf
               move prg-peso-non-utf to emro-peso-non-utf
                               

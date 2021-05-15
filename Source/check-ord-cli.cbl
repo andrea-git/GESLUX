@@ -37,7 +37,7 @@
 
       ***---
        INIT.
-           move 0        to chk-ord-status.
+           move 0 to chk-ord-status.
 
       ***---
        OPEN-FILES.
