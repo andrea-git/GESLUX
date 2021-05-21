@@ -658,11 +658,12 @@
                       |Nel caso in cui la cella fido del file è VUOTA:
                       |considerarlo come se fosse 0 (e quindi importare 0) 
                       |MA CANCELLARE LA DATA.
-                      if r-fido-x = spaces
-                         move 0 to cli-fido-data
-                      else
+      *                if r-fido-x = spaces
+                      |21/05/2021: va elaborato comunque
+      *                   move 0 to cli-fido-data
+      *                else
                          accept cli-fido-data from century-date
-                      end-if
+      *                end-if
                       move como-fido to cli-fido
                       rewrite cli-rec
                               invalid              
