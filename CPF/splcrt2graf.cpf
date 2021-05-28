@@ -9,7 +9,7 @@ QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=SPOOLER-A-Ev-Before-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E551C23120-177-651820373
+PROGRAM_UNIQUE_CODE=TOTEM-7E551C23254-275-3040515019
 
 {{@DESCRIPTION:
 
@@ -1704,6 +1704,16 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM135_WK
 
 @}}
+[FDITEM136_WK]
+m_strName=PosizioneFileDisplay
+m_strRawPic=x(256)
+m_strPic=x(256)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM136_WK
+
+@}}
 
 
 [LINKAGE_SECTION]
@@ -2849,7 +2859,7 @@ Begin Screen Form3
       Size Unit         = Default
       Tab Order         = 2
       Value Picture     = x(256)
-      Value Variable    = PosizioneFile
+      Value Variable    = PosizioneFileDisplay
       Visible           = NONE
       Width in Cells    = TRUE
    End
@@ -3085,6 +3095,18 @@ BEGIN-TEXT
                             icon 3
                 set errori to true
            end-evaluate.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form3
+   ACTOBJ            = Form3
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+           move PosizioneFile to PosizioneFileDisplay.
+           modify form3-wb-1, value PosizioneFileDisplay.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -3353,6 +3375,7 @@ BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = Form1-Pb-1-LinkTo
 BEGIN-TEXT
+           initialize PosizioneFileDisplay.
            perform Form3-Open-Routine
 
 END-TEXT

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          splcrt2graf.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 20 giugno 2019 10:14:43.
+       DATE-WRITTEN.        sabato 29 maggio 2021 01:10:14.
        REMARKS.
       *{TOTEM}END
 
@@ -37,12 +37,11 @@
 
        WORKING-STORAGE      SECTION.
       *{TOTEM}ACU-DEF
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\ACUGUI.DEF".
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\ACUCOBOL.DEF"
-           .
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\FONTS.DEF".
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\CRTVARS.DEF".
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\SHOWMSG.DEF".
+               COPY "acugui.def".
+               COPY "acucobol.def".
+               COPY "fonts.def".
+               COPY "crtvars.def".
+               COPY "showmsg.def".
                COPY "totem.def".
                COPY "standard.def".
       *{TOTEM}END
@@ -137,6 +136,7 @@
        77 bottone-exit-bmp PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
+       77 PosizioneFileDisplay         PIC  x(256).
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -486,7 +486,7 @@
            ID IS 1,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           VALUE PosizioneFile,
+           VALUE PosizioneFileDisplay,
            .
 
       *{TOTEM}END
@@ -1103,6 +1103,10 @@
 
        Form3-PROC.
       * <TOTEM:EPT. FORM:Form3, FORM:Form3, BeforeAccept>
+           move PosizioneFile to PosizioneFileDisplay.
+           modify form3-wb-1, value PosizioneFileDisplay.
+
+           .
       * <TOTEM:END>
            PERFORM UNTIL Exit-Pushed
               ACCEPT Form3
@@ -1542,6 +1546,7 @@
       * <TOTEM:END>
        Form1-Pb-1-LinkTo.
       * <TOTEM:PARA. Form1-Pb-1-LinkTo>
+           initialize PosizioneFileDisplay.
            perform Form3-Open-Routine
            .
       * <TOTEM:END>
