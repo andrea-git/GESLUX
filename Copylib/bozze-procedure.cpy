@@ -489,6 +489,7 @@
                 move ef-cli-buf to des-codice
                 move ef-des-buf to des-prog
                 if des-prog not = 0
+                   move 0 to des-no-bloc
                    perform SELEZIONA-DESTINO
                    display lab-des
                    display lab-ind-d
@@ -496,18 +497,21 @@
                 else
                    if CheckDestini
                       perform TROVA-DESTINO
-                      if trovato
+                      initialize des-rec
+                      if trovato and des-no-bloc not = cli-codice
                          display message "Esiste uno o più destini per"
                                           " il cliente specificato."
                                   x"0d0a""Procedere comunque con "
                                           "progressivo non valorizzato?"
-                                 title = titolo
+                                 title titolo
+                                  icon 2
                                   type mb-yes-no
-                                giving scelta 
-                         initialize des-rec
+                                giving scelta    
                          if scelta = mb-no
                             set errori to true
-                            move 78-ID-ef-des to control-id
+                            move 78-ID-ef-des to control-id       
+                         else
+                            move cli-codice to des-no-bloc
                          end-if
                       end-if
                    else
@@ -689,23 +693,26 @@
                 inquire ef-cli-fm, value in ef-cli-fm-buf
                 move ef-cli-fm-buf to des-codice
                 move ef-des-fm-buf to des-prog
-                if des-prog not = 0
+                if des-prog not = 0    
+                   move 0 to des-no-bloc
                    perform SELEZIONA-DESTINO
                 else
                    if CheckDestini
-                      perform TROVA-DESTINO
-                      if trovato
+                      perform TROVA-DESTINO   
+                      if trovato and des-no-bloc not = cli-codice
                          display message "Esiste uno o più destini per"
                                           " il cliente specificato."
                                   x"0d0a""Procedere comunque con "
                                           "progressivo non valorizzato?"
-                                 title = titolo
+                                 title titolo
+                                  icon 2
                                   type mb-yes-no
                                 giving scelta 
-                         initialize des-rec
                          if scelta = mb-no
                             set errori to true
                             move 78-ID-ef-des-fm to control-id
+                         else
+                            move cli-codice to des-no-bloc
                          end-if
                       end-if
                    else
@@ -1515,7 +1522,9 @@ LUBEXX           end-if
                               icon 2
                    set errori to true
                not invalid      
-                   if cli-disattivo or cli-bloccato
+                   if cli-attivo
+                      move 0 to cli-no-bloc
+                   else
                       if cli-fuori-fido |and cli-fido-extra not = 0
                          |23/05/2012
                          or cli-prob-pag
@@ -1536,20 +1545,36 @@ LUBEXX           end-if
       *****                                            calfido-linkage
       *****                      cancel "sitfin"
       *****                   end-if
-                         if cli-no-angraf or cli-nuovo-ragsoc
-                            move 11 to Passwd-password
-                            call   "passwd" using Passwd-linkage
-                            cancel "passwd"
-
-                            if not Passwd-StatusOk
+      *****                   if cli-no-angraf or cli-nuovo-ragsoc
+      *****                      move 11 to Passwd-password
+      *****                      call   "passwd" using Passwd-linkage
+      *****                      cancel "passwd"
+      *****
+      *****                      if not Passwd-StatusOk
+      *****                         set errori to true
+      *****                      end-if
+      *****                   else
+                            if cli-no-bloc not = cli-codice
+                               display message 
+                                       "Cliente NON attivo. Confermi?"
+                                         title tit-err
+                                          icon 2      
+                                          type mb-yes-no
+                                        giving scelta
+                                       default mb-no
                                set errori to true
+                               if scelta = mb-yes
+                                  move 11 to Passwd-password
+                                  call   "passwd" using Passwd-linkage
+                                  cancel "passwd"
+                               
+                                  if Passwd-StatusOk
+                                     move cli-codice to cli-no-bloc
+                                     set tutto-ok to true
+                                  end-if
+                               end-if
                             end-if
-                         else
-                            display message "Cliente NON attivo"
-                                      title tit-err
-                                       icon 2
-                            set errori to true
-                         end-if
+      *****                   end-if
                       end-if
                    end-if
 

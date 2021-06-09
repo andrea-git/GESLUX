@@ -11,6 +11,10 @@
        77 STATUS-tnazioni  PIC  X(2).
            88 Valid-STATUS-tnazioni VALUE IS "00" THRU "09". 
        77 como-anno        PIC  9(4).
+       77 cli-no-bloc      PIC  9(5)
+                  VALUE IS 0.
+       77 des-no-bloc      PIC  9(5)
+                  VALUE IS 0.
        77 como-data-bolla  PIC  9(8).
        77 tot-doc          PIC  9(9)v99.
        77 lab-tot-buf      PIC  z.zzz.zz9,99.
