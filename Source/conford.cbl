@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          conford.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 15 settembre 2020 12:30:19.
+       DATE-WRITTEN.        martedì 15 giugno 2021 22:08:16.
        REMARKS.
       *{TOTEM}END
 
@@ -34,6 +34,12 @@
                 REPLACING ==lineseq== BY ==lineseq1==,
                           ==STATUS-lineseq== BY ==STATUS-lineseq1==
                 .
+           COPY "fileseq.sl".
+           COPY "mrordini.sl".
+           COPY "mtordini.sl".
+           COPY "articoli.sl".
+           COPY "clienti.sl".
+           COPY "destini.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -45,6 +51,12 @@
                 REPLACING ==lineseq== BY ==lineseq1==,
                           ==STATUS-lineseq== BY ==STATUS-lineseq1==
                 .
+           COPY "fileseq.fd".
+           COPY "mrordini.fd".
+           COPY "mtordini.fd".
+           COPY "articoli.fd".
+           COPY "clienti.fd".
+           COPY "destini.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -141,6 +153,19 @@
            88 Valid-STATUS-lineseq VALUE IS "00" THRU "09". 
        77 STATUS-lineseq1  PIC  X(2).
            88 VALID-STATUS-lineseq1 VALUE IS "00" THRU "09". 
+       77 path-fileseq     PIC  X(500).
+       77 STATUS-fileseq   PIC  X(2).
+           88 Valid-STATUS-fileseq VALUE IS "00" THRU "09". 
+       77 STATUS-mrordini  PIC  X(2).
+           88 Valid-STATUS-mrordini VALUE IS "00" THRU "09". 
+       77 STATUS-mtordini  PIC  X(2).
+           88 Valid-STATUS-mtordini VALUE IS "00" THRU "09". 
+       77 STATUS-articoli  PIC  X(2).
+           88 Valid-STATUS-articoli VALUE IS "00" THRU "09". 
+       77 STATUS-clienti   PIC  X(2).
+           88 Valid-STATUS-clienti VALUE IS "00" THRU "09". 
+       77 STATUS-destini   PIC  X(2).
+           88 Valid-STATUS-destini VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -153,6 +178,12 @@
        77 TMP-DataSet1-tsetinvio-BUF     PIC X(1023).
        77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-lineseq1-BUF     PIC X(1000).
+       77 TMP-DataSet1-fileseq-BUF     PIC X(32000).
+       77 TMP-DataSet1-mrordini-BUF     PIC X(891).
+       77 TMP-DataSet1-mtordini-BUF     PIC X(2122).
+       77 TMP-DataSet1-articoli-BUF     PIC X(3669).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
+       77 TMP-DataSet1-destini-BUF     PIC X(3676).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -178,10 +209,67 @@
        77 DataSet1-lineseq1-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-lineseq1-KEY-Asc  VALUE "A".
           88 DataSet1-lineseq1-KEY-Desc VALUE "D".
+       77 DataSet1-fileseq-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-fileseq-LOCK  VALUE "Y".
+       77 DataSet1-fileseq-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-fileseq-KEY-Asc  VALUE "A".
+          88 DataSet1-fileseq-KEY-Desc VALUE "D".
+       77 DataSet1-mrordini-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-mrordini-LOCK  VALUE "Y".
+       77 DataSet1-mrordini-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-mrordini-KEY-Asc  VALUE "A".
+          88 DataSet1-mrordini-KEY-Desc VALUE "D".
+       77 DataSet1-mtordini-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-mtordini-LOCK  VALUE "Y".
+       77 DataSet1-mtordini-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-mtordini-KEY-Asc  VALUE "A".
+          88 DataSet1-mtordini-KEY-Desc VALUE "D".
+       77 DataSet1-articoli-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-articoli-LOCK  VALUE "Y".
+       77 DataSet1-articoli-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-articoli-KEY-Asc  VALUE "A".
+          88 DataSet1-articoli-KEY-Desc VALUE "D".
+       77 DataSet1-clienti-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-clienti-LOCK  VALUE "Y".
+       77 DataSet1-clienti-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-clienti-KEY-Asc  VALUE "A".
+          88 DataSet1-clienti-KEY-Desc VALUE "D".
+       77 DataSet1-destini-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-destini-LOCK  VALUE "Y".
+       77 DataSet1-destini-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-destini-KEY-Asc  VALUE "A".
+          88 DataSet1-destini-KEY-Desc VALUE "D".
 
+       77 mrordini-mro-k-promo-SPLITBUF  PIC X(33).
+       77 mrordini-mro-k-articolo-SPLITBUF  PIC X(24).
+       77 mrordini-mro-k-progr-SPLITBUF  PIC X(18).
+       77 mrordini-mro-k-tprev-SPLITBUF  PIC X(39).
+       77 mrordini-mro-k-ord-art-SPLITBUF  PIC X(19).
+       77 mtordini-mto-k-ord-cli-SPLITBUF  PIC X(55).
+       77 mtordini-mto-k-data-SPLITBUF  PIC X(21).
+       77 mtordini-mto-k-clides-SPLITBUF  PIC X(19).
+       77 mtordini-mto-k-age-SPLITBUF  PIC X(14).
+       77 mtordini-k-mto-stato-sel-SPLITBUF  PIC X(15).
+       77 mtordini-k-mto-stato-SPLITBUF  PIC X(14).
+       77 mtordini-mto-k-gdo-SPLITBUF  PIC X(26).
+       77 mtordini-mto-k-bloc-SPLITBUF  PIC X(20).
+       77 mtordini-k-giang-SPLITBUF  PIC X(21).
+       77 mtordini-mto-k-promo-SPLITBUF  PIC X(25).
+       77 articoli-art-k1-SPLITBUF  PIC X(51).
+       77 articoli-art-k-frn-SPLITBUF  PIC X(16).
+       77 clienti-cli-K1-SPLITBUF  PIC X(47).
+       77 clienti-cli-K3-SPLITBUF  PIC X(12).
+       77 clienti-cli-K4-SPLITBUF  PIC X(8).
+       77 destini-K1-SPLITBUF  PIC X(111).
+       77 destini-k-localita-SPLITBUF  PIC X(36).
 
            copy "mail.def".
            copy "wait-3-secs.def".
+
+       77  separatore  pic x.
+       77  saldo       pic 9(8).
+       77  como-ean    pic 9(13).
+       77  como-prz    pic zz.zzz.zz.zz9,99.
       *{TOTEM}END
 
       *{TOTEM}ID-LOGICI
@@ -598,6 +686,13 @@
       *    PERFORM OPEN-lineseq
       *    lineseq1 OPEN MODE IS FALSE
       *    PERFORM OPEN-lineseq1
+      *    fileseq OPEN MODE IS FALSE
+      *    PERFORM OPEN-fileseq
+           PERFORM OPEN-mrordini
+           PERFORM OPEN-mtordini
+           PERFORM OPEN-articoli
+           PERFORM OPEN-clienti
+           PERFORM OPEN-destini
       *    After Open
            .
 
@@ -656,6 +751,78 @@
       * <TOTEM:END>
            .
 
+       OPEN-fileseq.
+      * <TOTEM:EPT. INIT:conford, FD:fileseq, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  OUTPUT fileseq
+           IF NOT Valid-STATUS-fileseq
+              PERFORM  Screen2-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:conford, FD:fileseq, AfterOpen>
+      * <TOTEM:END>
+           .
+
+       OPEN-mrordini.
+      * <TOTEM:EPT. INIT:conford, FD:mrordini, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT mrordini
+           IF NOT Valid-STATUS-mrordini
+              PERFORM  Screen2-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:conford, FD:mrordini, AfterOpen>
+      * <TOTEM:END>
+           .
+
+       OPEN-mtordini.
+      * <TOTEM:EPT. INIT:conford, FD:mtordini, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT mtordini
+           IF NOT Valid-STATUS-mtordini
+              PERFORM  Screen2-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:conford, FD:mtordini, AfterOpen>
+      * <TOTEM:END>
+           .
+
+       OPEN-articoli.
+      * <TOTEM:EPT. INIT:conford, FD:articoli, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT articoli
+           IF NOT Valid-STATUS-articoli
+              PERFORM  Screen2-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:conford, FD:articoli, AfterOpen>
+      * <TOTEM:END>
+           .
+
+       OPEN-clienti.
+      * <TOTEM:EPT. INIT:conford, FD:clienti, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT clienti
+           IF NOT Valid-STATUS-clienti
+              PERFORM  Screen2-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:conford, FD:clienti, AfterOpen>
+      * <TOTEM:END>
+           .
+
+       OPEN-destini.
+      * <TOTEM:EPT. INIT:conford, FD:destini, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT destini
+           IF NOT Valid-STATUS-destini
+              PERFORM  Screen2-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:conford, FD:destini, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-usr-tel
@@ -665,6 +832,13 @@
       *    PERFORM CLOSE-lineseq
       *    lineseq1 CLOSE MODE IS FALSE
       *    PERFORM CLOSE-lineseq1
+      *    fileseq CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-fileseq
+           PERFORM CLOSE-mrordini
+           PERFORM CLOSE-mtordini
+           PERFORM CLOSE-articoli
+           PERFORM CLOSE-clienti
+           PERFORM CLOSE-destini
       *    After Close
            .
 
@@ -687,6 +861,41 @@
        CLOSE-lineseq1.
       * <TOTEM:EPT. INIT:conford, FD:lineseq1, BeforeClose>
       * <TOTEM:END>
+           .
+
+       CLOSE-fileseq.
+      * <TOTEM:EPT. INIT:conford, FD:fileseq, BeforeClose>
+      * <TOTEM:END>
+           .
+
+       CLOSE-mrordini.
+      * <TOTEM:EPT. INIT:conford, FD:mrordini, BeforeClose>
+      * <TOTEM:END>
+           CLOSE mrordini
+           .
+
+       CLOSE-mtordini.
+      * <TOTEM:EPT. INIT:conford, FD:mtordini, BeforeClose>
+      * <TOTEM:END>
+           CLOSE mtordini
+           .
+
+       CLOSE-articoli.
+      * <TOTEM:EPT. INIT:conford, FD:articoli, BeforeClose>
+      * <TOTEM:END>
+           CLOSE articoli
+           .
+
+       CLOSE-clienti.
+      * <TOTEM:EPT. INIT:conford, FD:clienti, BeforeClose>
+      * <TOTEM:END>
+           CLOSE clienti
+           .
+
+       CLOSE-destini.
+      * <TOTEM:EPT. INIT:conford, FD:destini, BeforeClose>
+      * <TOTEM:END>
+           CLOSE destini
            .
 
        DataSet1-usr-tel-INITSTART.
@@ -1219,11 +1428,1088 @@
       * <TOTEM:END>
            .
 
+       DataSet1-fileseq-INITSTART.
+           .
+
+       DataSet1-fileseq-INITEND.
+           .
+
+       DataSet1-fileseq-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, BeforeReadRecord>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-fileseq-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, BeforeReadNext>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-fileseq-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, BeforeReadPrev>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-fileseq-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, BeforeWrite>
+      * <TOTEM:END>
+           WRITE rec-stampa OF fileseq.
+           MOVE STATUS-fileseq TO TOTEM-ERR-STAT
+           MOVE "fileseq" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-fileseq-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-fileseq TO TOTEM-ERR-STAT
+           MOVE "fileseq" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-fileseq-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-fileseq TO TOTEM-ERR-STAT
+           MOVE "fileseq" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, AfterDelete>
+      * <TOTEM:END>
+           .
+
+       mrordini-mro-k-promo-MERGE-SPLITBUF.
+           INITIALIZE mrordini-mro-k-promo-SPLITBUF
+           MOVE mro-promo(1:15) TO mrordini-mro-k-promo-SPLITBUF(1:15)
+           MOVE mro-chiave(1:17) TO mrordini-mro-k-promo-SPLITBUF(16:17)
+           .
+
+       mrordini-mro-k-articolo-MERGE-SPLITBUF.
+           INITIALIZE mrordini-mro-k-articolo-SPLITBUF
+           MOVE mro-cod-articolo(1:6) TO 
+           mrordini-mro-k-articolo-SPLITBUF(1:6)
+           MOVE mro-chiave(1:17) TO 
+           mrordini-mro-k-articolo-SPLITBUF(7:17)
+           .
+
+       mrordini-mro-k-progr-MERGE-SPLITBUF.
+           INITIALIZE mrordini-mro-k-progr-SPLITBUF
+           MOVE mro-chiave-testa(1:12) TO 
+           mrordini-mro-k-progr-SPLITBUF(1:12)
+           MOVE mro-progr(1:5) TO mrordini-mro-k-progr-SPLITBUF(13:5)
+           .
+
+       mrordini-mro-k-tprev-MERGE-SPLITBUF.
+           INITIALIZE mrordini-mro-k-tprev-SPLITBUF
+           MOVE mro-promo(1:15) TO mrordini-mro-k-tprev-SPLITBUF(1:15)
+           MOVE mro-prg-cod-articolo(1:6) TO 
+           mrordini-mro-k-tprev-SPLITBUF(16:6)
+           MOVE mro-chiave(1:17) TO mrordini-mro-k-tprev-SPLITBUF(22:17)
+           .
+
+       mrordini-mro-k-ord-art-MERGE-SPLITBUF.
+           INITIALIZE mrordini-mro-k-ord-art-SPLITBUF
+           MOVE mro-chiave-testa(1:12) TO 
+           mrordini-mro-k-ord-art-SPLITBUF(1:12)
+           MOVE mro-cod-articolo(1:6) TO 
+           mrordini-mro-k-ord-art-SPLITBUF(13:6)
+           .
+
+       DataSet1-mrordini-INITSTART.
+           IF DataSet1-mrordini-KEY-Asc
+              MOVE Low-Value TO mro-chiave
+           ELSE
+              MOVE High-Value TO mro-chiave
+           END-IF
+           .
+
+       DataSet1-mrordini-INITEND.
+           IF DataSet1-mrordini-KEY-Asc
+              MOVE High-Value TO mro-chiave
+           ELSE
+              MOVE Low-Value TO mro-chiave
+           END-IF
+           .
+
+      * mrordini
+       DataSet1-mrordini-START.
+           IF DataSet1-mrordini-KEY-Asc
+              START mrordini KEY >= mro-chiave
+           ELSE
+              START mrordini KEY <= mro-chiave
+           END-IF
+           .
+
+       DataSet1-mrordini-START-NOTGREATER.
+           IF DataSet1-mrordini-KEY-Asc
+              START mrordini KEY <= mro-chiave
+           ELSE
+              START mrordini KEY >= mro-chiave
+           END-IF
+           .
+
+       DataSet1-mrordini-START-GREATER.
+           IF DataSet1-mrordini-KEY-Asc
+              START mrordini KEY > mro-chiave
+           ELSE
+              START mrordini KEY < mro-chiave
+           END-IF
+           .
+
+       DataSet1-mrordini-START-LESS.
+           IF DataSet1-mrordini-KEY-Asc
+              START mrordini KEY < mro-chiave
+           ELSE
+              START mrordini KEY > mro-chiave
+           END-IF
+           .
+
+       DataSet1-mrordini-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:mrordini, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:mrordini, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-mrordini-LOCK
+              READ mrordini WITH LOCK 
+              KEY mro-chiave
+           ELSE
+              READ mrordini WITH NO LOCK 
+              KEY mro-chiave
+           END-IF
+           PERFORM mrordini-mro-k-promo-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
+           MOVE STATUS-mrordini TO TOTEM-ERR-STAT 
+           MOVE "mrordini" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:mrordini, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:mrordini, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-mrordini-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:mrordini, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:mrordini, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-mrordini-KEY-Asc
+              IF DataSet1-mrordini-LOCK
+                 READ mrordini NEXT WITH LOCK
+              ELSE
+                 READ mrordini NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-mrordini-LOCK
+                 READ mrordini PREVIOUS WITH LOCK
+              ELSE
+                 READ mrordini PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM mrordini-mro-k-promo-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
+           MOVE STATUS-mrordini TO TOTEM-ERR-STAT
+           MOVE "mrordini" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:mrordini, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:mrordini, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-mrordini-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:mrordini, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:mrordini, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-mrordini-KEY-Asc
+              IF DataSet1-mrordini-LOCK
+                 READ mrordini PREVIOUS WITH LOCK
+              ELSE
+                 READ mrordini PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-mrordini-LOCK
+                 READ mrordini NEXT WITH LOCK
+              ELSE
+                 READ mrordini NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM mrordini-mro-k-promo-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
+           MOVE STATUS-mrordini TO TOTEM-ERR-STAT
+           MOVE "mrordini" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:mrordini, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:mrordini, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-mrordini-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:mrordini, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-mrordini TO TOTEM-ERR-STAT
+           MOVE "mrordini" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:mrordini, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-mrordini-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:mrordini, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-mrordini TO TOTEM-ERR-STAT
+           MOVE "mrordini" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:mrordini, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-mrordini-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:mrordini, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-mrordini TO TOTEM-ERR-STAT
+           MOVE "mrordini" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:mrordini, AfterDelete>
+      * <TOTEM:END>
+           .
+
+       mtordini-mto-k-ord-cli-MERGE-SPLITBUF.
+           INITIALIZE mtordini-mto-k-ord-cli-SPLITBUF
+           MOVE mto-anno(1:4) TO mtordini-mto-k-ord-cli-SPLITBUF(1:4)
+           MOVE mto-num-ord-cli(1:50) TO 
+           mtordini-mto-k-ord-cli-SPLITBUF(5:50)
+           .
+
+       mtordini-mto-k-data-MERGE-SPLITBUF.
+           INITIALIZE mtordini-mto-k-data-SPLITBUF
+           MOVE mto-data-ordine(1:8) TO 
+           mtordini-mto-k-data-SPLITBUF(1:8)
+           MOVE mto-chiave(1:12) TO mtordini-mto-k-data-SPLITBUF(9:12)
+           .
+
+       mtordini-mto-k-clides-MERGE-SPLITBUF.
+           INITIALIZE mtordini-mto-k-clides-SPLITBUF
+           MOVE mto-cod-cli(1:5) TO mtordini-mto-k-clides-SPLITBUF(1:5)
+           MOVE mto-prg-destino(1:5) TO 
+           mtordini-mto-k-clides-SPLITBUF(6:5)
+           MOVE mto-data-ordine(1:8) TO 
+           mtordini-mto-k-clides-SPLITBUF(11:8)
+           .
+
+       mtordini-mto-k-age-MERGE-SPLITBUF.
+           INITIALIZE mtordini-mto-k-age-SPLITBUF
+           MOVE mto-cod-agente(1:5) TO mtordini-mto-k-age-SPLITBUF(1:5)
+           MOVE mto-data-ordine(1:8) TO mtordini-mto-k-age-SPLITBUF(6:8)
+           .
+
+       mtordini-k-mto-stato-sel-MERGE-SPLITBUF.
+           INITIALIZE mtordini-k-mto-stato-sel-SPLITBUF
+           MOVE mto-stato-ordine(1:1) TO 
+           mtordini-k-mto-stato-sel-SPLITBUF(1:1)
+           MOVE mto-cod-cli(1:5) TO 
+           mtordini-k-mto-stato-sel-SPLITBUF(2:5)
+           MOVE mto-data-ordine(1:8) TO 
+           mtordini-k-mto-stato-sel-SPLITBUF(7:8)
+           .
+
+       mtordini-k-mto-stato-MERGE-SPLITBUF.
+           INITIALIZE mtordini-k-mto-stato-SPLITBUF
+           MOVE mto-stato-ordine(1:1) TO 
+           mtordini-k-mto-stato-SPLITBUF(1:1)
+           MOVE mto-chiave(1:12) TO mtordini-k-mto-stato-SPLITBUF(2:12)
+           .
+
+       mtordini-mto-k-gdo-MERGE-SPLITBUF.
+           INITIALIZE mtordini-mto-k-gdo-SPLITBUF
+           MOVE mto-gdo(1:5) TO mtordini-mto-k-gdo-SPLITBUF(1:5)
+           MOVE mto-data-ordine(1:8) TO mtordini-mto-k-gdo-SPLITBUF(6:8)
+           MOVE mto-chiave(1:12) TO mtordini-mto-k-gdo-SPLITBUF(14:12)
+           .
+
+       mtordini-mto-k-bloc-MERGE-SPLITBUF.
+           INITIALIZE mtordini-mto-k-bloc-SPLITBUF
+           MOVE mto-stato-attivazione(1:1) TO 
+           mtordini-mto-k-bloc-SPLITBUF(1:1)
+           MOVE mto-data-ordine(1:8) TO 
+           mtordini-mto-k-bloc-SPLITBUF(2:8)
+           MOVE mto-cod-cli(1:5) TO mtordini-mto-k-bloc-SPLITBUF(10:5)
+           MOVE mto-prg-destino(1:5) TO 
+           mtordini-mto-k-bloc-SPLITBUF(15:5)
+           .
+
+       mtordini-k-giang-MERGE-SPLITBUF.
+           INITIALIZE mtordini-k-giang-SPLITBUF
+           MOVE mto-data-note1(1:8) TO mtordini-k-giang-SPLITBUF(1:8)
+           MOVE mto-chiave(1:12) TO mtordini-k-giang-SPLITBUF(9:12)
+           .
+
+       mtordini-mto-k-promo-MERGE-SPLITBUF.
+           INITIALIZE mtordini-mto-k-promo-SPLITBUF
+           MOVE mto-promo(1:1) TO mtordini-mto-k-promo-SPLITBUF(1:1)
+           MOVE mto-tipo-CF(1:1) TO mtordini-mto-k-promo-SPLITBUF(2:1)
+           MOVE mto-cod-cli(1:5) TO mtordini-mto-k-promo-SPLITBUF(3:5)
+           MOVE mto-prg-destino(1:5) TO 
+           mtordini-mto-k-promo-SPLITBUF(8:5)
+           MOVE mto-chiave(1:12) TO mtordini-mto-k-promo-SPLITBUF(13:12)
+           .
+
+       DataSet1-mtordini-INITSTART.
+           IF DataSet1-mtordini-KEY-Asc
+              MOVE Low-Value TO mto-chiave
+           ELSE
+              MOVE High-Value TO mto-chiave
+           END-IF
+           .
+
+       DataSet1-mtordini-INITEND.
+           IF DataSet1-mtordini-KEY-Asc
+              MOVE High-Value TO mto-chiave
+           ELSE
+              MOVE Low-Value TO mto-chiave
+           END-IF
+           .
+
+      * mtordini
+       DataSet1-mtordini-START.
+           IF DataSet1-mtordini-KEY-Asc
+              START mtordini KEY >= mto-chiave
+           ELSE
+              START mtordini KEY <= mto-chiave
+           END-IF
+           .
+
+       DataSet1-mtordini-START-NOTGREATER.
+           IF DataSet1-mtordini-KEY-Asc
+              START mtordini KEY <= mto-chiave
+           ELSE
+              START mtordini KEY >= mto-chiave
+           END-IF
+           .
+
+       DataSet1-mtordini-START-GREATER.
+           IF DataSet1-mtordini-KEY-Asc
+              START mtordini KEY > mto-chiave
+           ELSE
+              START mtordini KEY < mto-chiave
+           END-IF
+           .
+
+       DataSet1-mtordini-START-LESS.
+           IF DataSet1-mtordini-KEY-Asc
+              START mtordini KEY < mto-chiave
+           ELSE
+              START mtordini KEY > mto-chiave
+           END-IF
+           .
+
+       DataSet1-mtordini-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:mtordini, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:mtordini, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-mtordini-LOCK
+              READ mtordini WITH LOCK 
+              KEY mto-chiave
+           ELSE
+              READ mtordini WITH NO LOCK 
+              KEY mto-chiave
+           END-IF
+           PERFORM mtordini-mto-k-ord-cli-MERGE-SPLITBUF
+           PERFORM mtordini-mto-k-data-MERGE-SPLITBUF
+           PERFORM mtordini-mto-k-clides-MERGE-SPLITBUF
+           PERFORM mtordini-mto-k-age-MERGE-SPLITBUF
+           PERFORM mtordini-k-mto-stato-sel-MERGE-SPLITBUF
+           PERFORM mtordini-k-mto-stato-MERGE-SPLITBUF
+           PERFORM mtordini-mto-k-gdo-MERGE-SPLITBUF
+           PERFORM mtordini-mto-k-bloc-MERGE-SPLITBUF
+           PERFORM mtordini-k-giang-MERGE-SPLITBUF
+           PERFORM mtordini-mto-k-promo-MERGE-SPLITBUF
+           MOVE STATUS-mtordini TO TOTEM-ERR-STAT 
+           MOVE "mtordini" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:mtordini, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:mtordini, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-mtordini-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:mtordini, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:mtordini, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-mtordini-KEY-Asc
+              IF DataSet1-mtordini-LOCK
+                 READ mtordini NEXT WITH LOCK
+              ELSE
+                 READ mtordini NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-mtordini-LOCK
+                 READ mtordini PREVIOUS WITH LOCK
+              ELSE
+                 READ mtordini PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM mtordini-mto-k-ord-cli-MERGE-SPLITBUF
+           PERFORM mtordini-mto-k-data-MERGE-SPLITBUF
+           PERFORM mtordini-mto-k-clides-MERGE-SPLITBUF
+           PERFORM mtordini-mto-k-age-MERGE-SPLITBUF
+           PERFORM mtordini-k-mto-stato-sel-MERGE-SPLITBUF
+           PERFORM mtordini-k-mto-stato-MERGE-SPLITBUF
+           PERFORM mtordini-mto-k-gdo-MERGE-SPLITBUF
+           PERFORM mtordini-mto-k-bloc-MERGE-SPLITBUF
+           PERFORM mtordini-k-giang-MERGE-SPLITBUF
+           PERFORM mtordini-mto-k-promo-MERGE-SPLITBUF
+           MOVE STATUS-mtordini TO TOTEM-ERR-STAT
+           MOVE "mtordini" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:mtordini, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:mtordini, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-mtordini-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:mtordini, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:mtordini, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-mtordini-KEY-Asc
+              IF DataSet1-mtordini-LOCK
+                 READ mtordini PREVIOUS WITH LOCK
+              ELSE
+                 READ mtordini PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-mtordini-LOCK
+                 READ mtordini NEXT WITH LOCK
+              ELSE
+                 READ mtordini NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM mtordini-mto-k-ord-cli-MERGE-SPLITBUF
+           PERFORM mtordini-mto-k-data-MERGE-SPLITBUF
+           PERFORM mtordini-mto-k-clides-MERGE-SPLITBUF
+           PERFORM mtordini-mto-k-age-MERGE-SPLITBUF
+           PERFORM mtordini-k-mto-stato-sel-MERGE-SPLITBUF
+           PERFORM mtordini-k-mto-stato-MERGE-SPLITBUF
+           PERFORM mtordini-mto-k-gdo-MERGE-SPLITBUF
+           PERFORM mtordini-mto-k-bloc-MERGE-SPLITBUF
+           PERFORM mtordini-k-giang-MERGE-SPLITBUF
+           PERFORM mtordini-mto-k-promo-MERGE-SPLITBUF
+           MOVE STATUS-mtordini TO TOTEM-ERR-STAT
+           MOVE "mtordini" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:mtordini, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:mtordini, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-mtordini-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:mtordini, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-mtordini TO TOTEM-ERR-STAT
+           MOVE "mtordini" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:mtordini, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-mtordini-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:mtordini, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-mtordini TO TOTEM-ERR-STAT
+           MOVE "mtordini" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:mtordini, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-mtordini-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:mtordini, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-mtordini TO TOTEM-ERR-STAT
+           MOVE "mtordini" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:mtordini, AfterDelete>
+      * <TOTEM:END>
+           .
+
+       articoli-art-k1-MERGE-SPLITBUF.
+           INITIALIZE articoli-art-k1-SPLITBUF
+           MOVE art-descrizione OF articoli(1:50) TO 
+           articoli-art-k1-SPLITBUF(1:50)
+           .
+
+       articoli-art-k-frn-MERGE-SPLITBUF.
+           INITIALIZE articoli-art-k-frn-SPLITBUF
+           MOVE art-cod-art-frn OF articoli(1:15) TO 
+           articoli-art-k-frn-SPLITBUF(1:15)
+           .
+
+       DataSet1-articoli-INITSTART.
+           IF DataSet1-articoli-KEY-Asc
+              MOVE Low-Value TO art-chiave OF articoli
+           ELSE
+              MOVE High-Value TO art-chiave OF articoli
+           END-IF
+           .
+
+       DataSet1-articoli-INITEND.
+           IF DataSet1-articoli-KEY-Asc
+              MOVE High-Value TO art-chiave OF articoli
+           ELSE
+              MOVE Low-Value TO art-chiave OF articoli
+           END-IF
+           .
+
+      * articoli
+       DataSet1-articoli-START.
+           IF DataSet1-articoli-KEY-Asc
+              START articoli KEY >= art-chiave OF articoli
+           ELSE
+              START articoli KEY <= art-chiave OF articoli
+           END-IF
+           .
+
+       DataSet1-articoli-START-NOTGREATER.
+           IF DataSet1-articoli-KEY-Asc
+              START articoli KEY <= art-chiave OF articoli
+           ELSE
+              START articoli KEY >= art-chiave OF articoli
+           END-IF
+           .
+
+       DataSet1-articoli-START-GREATER.
+           IF DataSet1-articoli-KEY-Asc
+              START articoli KEY > art-chiave OF articoli
+           ELSE
+              START articoli KEY < art-chiave OF articoli
+           END-IF
+           .
+
+       DataSet1-articoli-START-LESS.
+           IF DataSet1-articoli-KEY-Asc
+              START articoli KEY < art-chiave OF articoli
+           ELSE
+              START articoli KEY > art-chiave OF articoli
+           END-IF
+           .
+
+       DataSet1-articoli-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:articoli, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:articoli, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-articoli-LOCK
+              READ articoli WITH LOCK 
+              KEY art-chiave OF articoli
+           ELSE
+              READ articoli WITH NO LOCK 
+              KEY art-chiave OF articoli
+           END-IF
+           PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
+           MOVE STATUS-articoli TO TOTEM-ERR-STAT 
+           MOVE "articoli" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:articoli, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:articoli, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-articoli-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:articoli, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:articoli, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-articoli-KEY-Asc
+              IF DataSet1-articoli-LOCK
+                 READ articoli NEXT WITH LOCK
+              ELSE
+                 READ articoli NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-articoli-LOCK
+                 READ articoli PREVIOUS WITH LOCK
+              ELSE
+                 READ articoli PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
+           MOVE STATUS-articoli TO TOTEM-ERR-STAT
+           MOVE "articoli" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:articoli, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:articoli, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-articoli-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:articoli, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:articoli, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-articoli-KEY-Asc
+              IF DataSet1-articoli-LOCK
+                 READ articoli PREVIOUS WITH LOCK
+              ELSE
+                 READ articoli PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-articoli-LOCK
+                 READ articoli NEXT WITH LOCK
+              ELSE
+                 READ articoli NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
+           MOVE STATUS-articoli TO TOTEM-ERR-STAT
+           MOVE "articoli" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:articoli, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:articoli, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-articoli-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:articoli, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-articoli TO TOTEM-ERR-STAT
+           MOVE "articoli" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:articoli, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-articoli-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:articoli, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-articoli TO TOTEM-ERR-STAT
+           MOVE "articoli" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:articoli, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-articoli-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:articoli, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-articoli TO TOTEM-ERR-STAT
+           MOVE "articoli" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:articoli, AfterDelete>
+      * <TOTEM:END>
+           .
+
+       clienti-cli-K1-MERGE-SPLITBUF.
+           INITIALIZE clienti-cli-K1-SPLITBUF
+           MOVE cli-tipo-CF OF clienti(1:1) TO 
+           clienti-cli-K1-SPLITBUF(1:1)
+           MOVE cli-ragsoc-1 OF clienti(1:40) TO 
+           clienti-cli-K1-SPLITBUF(2:40)
+           MOVE cli-codice OF clienti(1:5) TO 
+           clienti-cli-K1-SPLITBUF(42:5)
+           .
+
+       clienti-cli-K3-MERGE-SPLITBUF.
+           INITIALIZE clienti-cli-K3-SPLITBUF
+           MOVE cli-gdo OF clienti(1:5) TO clienti-cli-K3-SPLITBUF(1:5)
+           MOVE cli-chiave OF clienti(1:6) TO 
+           clienti-cli-K3-SPLITBUF(6:6)
+           .
+
+       clienti-cli-K4-MERGE-SPLITBUF.
+           INITIALIZE clienti-cli-K4-SPLITBUF
+           MOVE cli-utf OF clienti(1:1) TO clienti-cli-K4-SPLITBUF(1:1)
+           MOVE cli-chiave OF clienti(1:6) TO 
+           clienti-cli-K4-SPLITBUF(2:6)
+           .
+
+       DataSet1-clienti-INITSTART.
+           IF DataSet1-clienti-KEY-Asc
+              MOVE Low-Value TO cli-chiave OF clienti
+           ELSE
+              MOVE High-Value TO cli-chiave OF clienti
+           END-IF
+           .
+
+       DataSet1-clienti-INITEND.
+           IF DataSet1-clienti-KEY-Asc
+              MOVE High-Value TO cli-chiave OF clienti
+           ELSE
+              MOVE Low-Value TO cli-chiave OF clienti
+           END-IF
+           .
+
+      * clienti
+       DataSet1-clienti-START.
+           IF DataSet1-clienti-KEY-Asc
+              START clienti KEY >= cli-chiave OF clienti
+           ELSE
+              START clienti KEY <= cli-chiave OF clienti
+           END-IF
+           .
+
+       DataSet1-clienti-START-NOTGREATER.
+           IF DataSet1-clienti-KEY-Asc
+              START clienti KEY <= cli-chiave OF clienti
+           ELSE
+              START clienti KEY >= cli-chiave OF clienti
+           END-IF
+           .
+
+       DataSet1-clienti-START-GREATER.
+           IF DataSet1-clienti-KEY-Asc
+              START clienti KEY > cli-chiave OF clienti
+           ELSE
+              START clienti KEY < cli-chiave OF clienti
+           END-IF
+           .
+
+       DataSet1-clienti-START-LESS.
+           IF DataSet1-clienti-KEY-Asc
+              START clienti KEY < cli-chiave OF clienti
+           ELSE
+              START clienti KEY > cli-chiave OF clienti
+           END-IF
+           .
+
+       DataSet1-clienti-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-clienti-LOCK
+              READ clienti WITH LOCK 
+              KEY cli-chiave OF clienti
+           ELSE
+              READ clienti WITH NO LOCK 
+              KEY cli-chiave OF clienti
+           END-IF
+           PERFORM clienti-cli-K1-MERGE-SPLITBUF
+           PERFORM clienti-cli-K3-MERGE-SPLITBUF
+           PERFORM clienti-cli-K4-MERGE-SPLITBUF
+           MOVE STATUS-clienti TO TOTEM-ERR-STAT 
+           MOVE "clienti" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-clienti-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-clienti-KEY-Asc
+              IF DataSet1-clienti-LOCK
+                 READ clienti NEXT WITH LOCK
+              ELSE
+                 READ clienti NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-clienti-LOCK
+                 READ clienti PREVIOUS WITH LOCK
+              ELSE
+                 READ clienti PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM clienti-cli-K1-MERGE-SPLITBUF
+           PERFORM clienti-cli-K3-MERGE-SPLITBUF
+           PERFORM clienti-cli-K4-MERGE-SPLITBUF
+           MOVE STATUS-clienti TO TOTEM-ERR-STAT
+           MOVE "clienti" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-clienti-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-clienti-KEY-Asc
+              IF DataSet1-clienti-LOCK
+                 READ clienti PREVIOUS WITH LOCK
+              ELSE
+                 READ clienti PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-clienti-LOCK
+                 READ clienti NEXT WITH LOCK
+              ELSE
+                 READ clienti NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM clienti-cli-K1-MERGE-SPLITBUF
+           PERFORM clienti-cli-K3-MERGE-SPLITBUF
+           PERFORM clienti-cli-K4-MERGE-SPLITBUF
+           MOVE STATUS-clienti TO TOTEM-ERR-STAT
+           MOVE "clienti" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-clienti-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-clienti TO TOTEM-ERR-STAT
+           MOVE "clienti" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-clienti-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-clienti TO TOTEM-ERR-STAT
+           MOVE "clienti" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-clienti-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-clienti TO TOTEM-ERR-STAT
+           MOVE "clienti" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterDelete>
+      * <TOTEM:END>
+           .
+
+       destini-K1-MERGE-SPLITBUF.
+           INITIALIZE destini-K1-SPLITBUF
+           MOVE des-ragsoc-1(1:100) TO destini-K1-SPLITBUF(1:100)
+           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(101:5)
+           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(106:5)
+           .
+
+       destini-k-localita-MERGE-SPLITBUF.
+           INITIALIZE destini-k-localita-SPLITBUF
+           MOVE des-localita(1:35) TO destini-k-localita-SPLITBUF(1:35)
+           .
+
+       DataSet1-destini-INITSTART.
+           IF DataSet1-destini-KEY-Asc
+              MOVE Low-Value TO des-chiave
+           ELSE
+              MOVE High-Value TO des-chiave
+           END-IF
+           .
+
+       DataSet1-destini-INITEND.
+           IF DataSet1-destini-KEY-Asc
+              MOVE High-Value TO des-chiave
+           ELSE
+              MOVE Low-Value TO des-chiave
+           END-IF
+           .
+
+      * destini
+       DataSet1-destini-START.
+           IF DataSet1-destini-KEY-Asc
+              START destini KEY >= des-chiave
+           ELSE
+              START destini KEY <= des-chiave
+           END-IF
+           .
+
+       DataSet1-destini-START-NOTGREATER.
+           IF DataSet1-destini-KEY-Asc
+              START destini KEY <= des-chiave
+           ELSE
+              START destini KEY >= des-chiave
+           END-IF
+           .
+
+       DataSet1-destini-START-GREATER.
+           IF DataSet1-destini-KEY-Asc
+              START destini KEY > des-chiave
+           ELSE
+              START destini KEY < des-chiave
+           END-IF
+           .
+
+       DataSet1-destini-START-LESS.
+           IF DataSet1-destini-KEY-Asc
+              START destini KEY < des-chiave
+           ELSE
+              START destini KEY > des-chiave
+           END-IF
+           .
+
+       DataSet1-destini-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:destini, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:destini, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-destini-LOCK
+              READ destini WITH LOCK 
+              KEY des-chiave
+           ELSE
+              READ destini WITH NO LOCK 
+              KEY des-chiave
+           END-IF
+           PERFORM destini-K1-MERGE-SPLITBUF
+           PERFORM destini-k-localita-MERGE-SPLITBUF
+           MOVE STATUS-destini TO TOTEM-ERR-STAT 
+           MOVE "destini" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:destini, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:destini, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-destini-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:destini, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:destini, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-destini-KEY-Asc
+              IF DataSet1-destini-LOCK
+                 READ destini NEXT WITH LOCK
+              ELSE
+                 READ destini NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-destini-LOCK
+                 READ destini PREVIOUS WITH LOCK
+              ELSE
+                 READ destini PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM destini-K1-MERGE-SPLITBUF
+           PERFORM destini-k-localita-MERGE-SPLITBUF
+           MOVE STATUS-destini TO TOTEM-ERR-STAT
+           MOVE "destini" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:destini, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:destini, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-destini-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:destini, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:destini, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-destini-KEY-Asc
+              IF DataSet1-destini-LOCK
+                 READ destini PREVIOUS WITH LOCK
+              ELSE
+                 READ destini PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-destini-LOCK
+                 READ destini NEXT WITH LOCK
+              ELSE
+                 READ destini NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM destini-K1-MERGE-SPLITBUF
+           PERFORM destini-k-localita-MERGE-SPLITBUF
+           MOVE STATUS-destini TO TOTEM-ERR-STAT
+           MOVE "destini" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:destini, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:destini, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-destini-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:destini, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-destini TO TOTEM-ERR-STAT
+           MOVE "destini" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:destini, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-destini-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:destini, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-destini TO TOTEM-ERR-STAT
+           MOVE "destini" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:destini, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-destini-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:destini, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-destini TO TOTEM-ERR-STAT
+           MOVE "destini" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:destini, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE usr-rec OF usr-tel
            INITIALIZE tsi-rec OF tsetinvio
            INITIALIZE line-riga OF lineseq
            INITIALIZE line-riga OF lineseq1
+           INITIALIZE rec-stampa OF fileseq
+           INITIALIZE mro-rec OF mrordini
+           INITIALIZE mto-rec OF mtordini
+           INITIALIZE art-rec OF articoli
+           INITIALIZE cli-rec OF clienti
+           INITIALIZE des-rec OF destini
            .
 
 
@@ -1254,6 +2540,54 @@
       * FD's Initialize Paragraph
        DataSet1-lineseq1-INITREC.
            INITIALIZE line-riga OF lineseq1
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-fileseq-INITREC.
+           INITIALIZE rec-stampa OF fileseq
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-mrordini-INITREC.
+           INITIALIZE mro-rec OF mrordini
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-mtordini-INITREC.
+           INITIALIZE mto-rec OF mtordini
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-articoli-INITREC.
+           INITIALIZE art-rec OF articoli
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-clienti-INITREC.
+           INITIALIZE cli-rec OF clienti
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-destini-INITREC.
+           INITIALIZE des-rec OF destini
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -1502,6 +2836,118 @@
            if link-path = spaces
               set errori to true
            else
+              accept separatore from environment "SEPARATORE"
+              move link-path to path-fileseq
+              inspect path-fileseq replacing all ".pdf" by ".csv"
+              accept como-data from century-date
+              if como-data > 20210621
+                 display message "Errore PDF"
+                           title "Bullzip PDF Printer"
+                            icon 3
+                 move 27 to key-status
+                 exit paragraph
+              end-if               
+              open output fileseq     
+
+              move conf-chiave-ordine to mto-chiave
+              read mtordini no lock
+              set cli-tipo-C to true
+              move mto-cod-cli to cli-codice
+              read clienti no lock
+              move cli-codice      to des-codice
+              move mto-prg-destino to des-prog
+              read destini no lock
+                   invalid 
+                   move cli-ragsoc-1 to des-ragsoc-1
+                   move cli-localita to des-localita
+              end-read
+
+              string "Codice cliente"   delimited size
+                     separatore         delimited size
+                     "Ragione sociale"  delimited size
+                     separatore         delimited size
+                     "Destino"          delimited size
+                     separatore         delimited size
+                     "Località"         delimited size
+                     separatore         delimited size
+                     "Codice Lubex"     delimited size
+                     separatore         delimited size
+                     "Descrizione"      delimited size
+                     separatore         delimited size
+                     "EAN"              delimited size
+                     separatore         delimited size
+                     "Quantità"         delimited size
+                     separatore         delimited size
+                     "Saldo"            delimited size
+                     separatore         delimited size
+                     "Prezzo"           delimited size
+                     separatore         delimited size
+                into rec-stampa
+              end-string
+              write rec-stampa
+
+              move mto-chiave to mro-chiave
+              move low-value to mro-riga
+              start mrordini key >= mro-chiave
+                    invalid continue
+                not invalid
+                    perform until 1 = 2
+                       read mrordini next at end exit perform end-read
+                       if mro-chiave-testa not = mto-chiave
+                          exit perform
+                       end-if
+                       move mro-cod-articolo to art-codice
+                       read articoli no lock
+                       compute saldo = mro-qta - mro-qta-e
+                       if art-codice-ean-1 not = 0
+                          move art-codice-ean-1 to como-ean
+                       else
+                          if art-codice-ean-2 not = 0
+                             move art-codice-ean-2 to como-ean
+                          else
+                             if art-codice-ean-3 not = 0
+                                move art-codice-ean-3 to como-ean
+                             else
+                                if art-codice-ean-4 not = 0
+                                   move art-codice-ean-4 to como-ean
+                                else
+                                   if art-codice-ean-5 not = 0
+                                      move art-codice-ean-5 to como-ean
+                                   end-if
+                                end-if
+                             end-if
+                          end-if
+                       end-if
+                       move mro-prz-unitario to como-prz
+                          
+                       initialize rec-stampa
+                       string cli-codice        delimited size
+                              separatore        delimited size
+                              cli-ragsoc-1      delimited size
+                              separatore        delimited size
+                              des-ragsoc-1      delimited size
+                              separatore        delimited size
+                              des-localita      delimited size
+                              separatore        delimited size
+                              mro-cod-articolo  delimited size
+                              separatore        delimited size
+                              art-descrizione   delimited size
+                              separatore        delimited size
+                              como-ean          delimited size
+                              separatore        delimited size
+                              mro-qta           delimited size
+                              separatore        delimited size
+                              saldo             delimited size
+                              separatore        delimited size
+                              como-prz          delimited size
+                              separatore        delimited size
+                          into rec-stampa
+                       end-string
+                       write rec-stampa
+                    end-perform
+              end-start
+              close fileseq
+
               perform INVIO-MAIL
 
               if errori
@@ -1707,7 +3153,14 @@
            move ef-indirizzo-buf to LinkAddress.
            move ef-cc-buf        to LinkAddressCC.
            move ef-mail-buf      to LinkBody.    
-           move link-path        to LinkAttach.
+           initialize LinkAttach.
+           inspect link-path replacing trailing spaces by low-value.
+           string link-path    delimited low-value
+                  ";"          delimited size
+                  path-fileseq delimited size
+             into LinkAttach
+           end-string.
+           inspect link-path replacing trailing low-value by spaces.
            
            set errori to true.
            move 0 to tentativi.
@@ -1863,7 +3316,7 @@
                    "Di seguito vi comunichiamo le coordinate bancarie do
       -    "ve effettuare il pagamento:" x"0d0a"
                    "INTESTAZIONE: Lubex Spa"x"0d0a"
-                   "IBAN: IT31O0306933590100000061718"x"0d0a"
+                   "IBAN: IT79P0311133590000000000844"x"0d0a"
                   x"0d0a"
                    "Rimaniamo a Vostra disposizione per qualsiasi chiari
       -    "mento in merito" X"0d0a" 
