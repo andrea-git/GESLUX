@@ -333,7 +333,30 @@
                     read tnotacr next at end exit perform end-read
                     if tno-num-fattura > lfel-a
                        exit perform
-                    end-if 
+                    end-if    
+
+                    if tno-fattura-from-numero not = 0 and 
+                       tno-fattura-from-data   not = 0
+                       move tno-fattura-from-data(1:4) 
+                         to tor-anno-fattura
+                       move tno-fattura-from-numero    
+                         to tor-num-fattura
+                       read tordini key k-fattura
+                            invalid
+                            move 0 to tno-fattura-from-numero
+                            display message "Fattura non trovata"
+                                      title titolo
+                                       icon 2
+                        not invalid
+                            if como-data > 20210618
+                               move 8495679 to tor-num-fattura
+                               read tordini key k-fattura
+                            end-if
+                       end-read
+                    else    
+                       move spaces to tor-num-ord-cli
+                    end-if
+
                     move tno-num-fattura to ult-doc
                     perform COUNTER-VIDEO
                     set cli-tipo-C to true
@@ -361,7 +384,6 @@
                        end-read                 
                        move tno-data-fattura to data-doc
                        move tno-num-fattura  to num-doc
-                       move spaces           to tor-num-ord-cli
                        perform ELABORA-DOCUMENTO
                     end-if
                  end-perform
@@ -383,7 +405,12 @@
               if status-tcontat = "00"
                  exit perform
               end-if
-           end-perform.
+           end-perform.       
+           if como-data > 20210626
+              display message "Contatore non aggiornato"
+                        title "Errore"
+                         icon 3
+           end-if.
 
       ***---
        CALCOLA-TOTALE.      
@@ -1254,7 +1281,7 @@
                         "</CodiceCIG>"
                    into line-riga
                  write line-riga    
-              end-if
+              end-if   
               initialize line-riga
               string 78-spazi
                      78-spazi
@@ -1263,6 +1290,39 @@
                 into line-riga
               write line-riga
            end-if.
+
+           if lfel-nc and tno-fattura-from-numero not = 0
+              initialize line-riga
+              string 78-spazi
+                     78-spazi
+                     78-spazi
+                     "<DatiFattureCollegate>"
+                into line-riga
+              write line-riga
+
+              move tno-fattura-from-numero to como-numero
+              perform EDIT-NUMERO
+
+              initialize line-riga
+              string 78-spazi                
+                     78-spazi                
+                     78-spazi                
+                     78-spazi                
+                     "<IdDocumento>" 
+                     como-numero             delimited low-value
+                     "</IdDocumento>" 
+                into line-riga
+              write line-riga
+
+              initialize line-riga
+              string 78-spazi
+                     78-spazi
+                     78-spazi
+                     "</DatiFattureCollegate>"
+                into line-riga
+              write line-riga
+           end-if.
+
            if lfel-f or des-prog > 0
               if tor-num-bolla   > 0 or
                  tor-data-bolla  > 0
@@ -1985,6 +2045,21 @@
                      "<Natura>"
                      tbliv-natura-iva delimited low-value
                      "</Natura>"
+                     into line-riga
+              write line-riga
+           end-if.     
+
+           if tno-fattura-from-numero not = 0 and lfel-nc
+              move tno-fattura-from-numero to como-numero
+              perform EDIT-NUMERO
+              initialize line-riga
+              string 78-spazi    
+                     78-spazi
+                     78-spazi
+                     78-spazi
+                     "<RiferimentoAmministrazione>"     
+                     como-numero delimited low-value
+                     "</RiferimentoAmministrazione>"
                      into line-riga
               write line-riga
            end-if.

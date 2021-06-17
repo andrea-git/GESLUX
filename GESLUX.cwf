@@ -8,7 +8,7 @@
 WORKSPACE_UNIQUE_CODE=TOTEM-7DE41144432-337-117565976
 PROJECT_LIST=GESLUX,LAB,EDI,GET,SHI,STORICO,AndamentoClienti
 CONFIGURATION_LIST=Debug Mode,Release Mode,RELEASE
-CURRENT_CONFIGURATION=Debug Mode
+CURRENT_CONFIGURATION=RELEASE
 
 [FILE_DEFINITION_CONTENT]
 VERSION=1
@@ -22636,7 +22636,6 @@ CODE_VERSION_NUMBER=16
 COPY_DEPENDENCE=FD\tordini.sl;FD\rordini.sl;FD\tnotacr.sl;FD\rnotacr.sl;FD\lineseq.sl;FD\articoli.sl;FD\blister.sl;FD\paramfel.sl;FD\clienti.sl;FD\destini.sl;FD\tcontat.sl;FD\tcaumag.sl;FD\tvettori.sl;FD\tivaese.sl;FD\tcodpag.sl;FD\CLI.sl;FD\eordini.sl;FD\tnazioni.sl;FD\recapiti.sl;FD\EDI-clides.sl;FD\tordini.fd;FD\rordini.fd;FD\tnotacr.fd;FD\rnotacr.fd;FD\lineseq.fd;FD\articoli.fd;FD\blister.fd;FD\paramfel.fd;FD\clienti.fd;FD\destini.fd;FD\tcontat.fd;FD\tcaumag.fd;FD\tvettori.fd;FD\tivaese.fd;FD\tcodpag.fd;FD\CLI.fd;FD\eordini.fd;FD\tnazioni.fd;FD\recapiti.fd;FD\EDI-clides.fd;Copylib\CALSCA\varsca;Copylib\link-geslock.def;Copylib\link-estfel.def
 ADDITIONAL_OPTIONS=-x -Di -Ga -Zd -Za -Zn -Zz
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
 NAME_ERROR_FILE=@.err
@@ -66752,9 +66751,9 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:RELEASE:Source\estfel-p.cbl]
+COPY_DEPENDENCE=FD\tordini.sl;FD\rordini.sl;FD\tnotacr.sl;FD\rnotacr.sl;FD\lineseq.sl;FD\articoli.sl;FD\blister.sl;FD\paramfel.sl;FD\clienti.sl;FD\destini.sl;FD\tcontat.sl;FD\tcaumag.sl;FD\tvettori.sl;FD\tivaese.sl;FD\tcodpag.sl;FD\CLI.sl;FD\eordini.sl;FD\tnazioni.sl;FD\recapiti.sl;FD\EDI-clides.sl;FD\tordini.fd;FD\rordini.fd;FD\tnotacr.fd;FD\rnotacr.fd;FD\lineseq.fd;FD\articoli.fd;FD\blister.fd;FD\paramfel.fd;FD\clienti.fd;FD\destini.fd;FD\tcontat.fd;FD\tcaumag.fd;FD\tvettori.fd;FD\tivaese.fd;FD\tcodpag.fd;FD\CLI.fd;FD\eordini.fd;FD\tnazioni.fd;FD\recapiti.fd;FD\EDI-clides.fd;Copylib\CALSCA\varsca;Copylib\link-geslock.def;Copylib\link-estfel.def
 ADDITIONAL_OPTIONS=-x -Di -Za -Zn -Zz
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
 NAME_ERROR_FILE=@.err
