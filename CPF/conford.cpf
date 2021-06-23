@@ -8,7 +8,7 @@
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Screen2
-PROGRAM_UNIQUE_CODE=TOTEM-7E56F201452-715-2248115484
+PROGRAM_UNIQUE_CODE=TOTEM-7E5617135755-677-218934973
 
 {{@DESCRIPTION:
 
@@ -1550,13 +1550,6 @@ BEGIN-TEXT
               move link-path to path-fileseq
               inspect path-fileseq replacing all ".pdf" by ".csv"
               accept como-data from century-date
-              if como-data > 20210621
-                 display message "Errore PDF"
-                           title "Bullzip PDF Printer"
-                            icon 3
-                 move 27 to key-status
-                 exit paragraph
-              end-if               
               open output fileseq     
 
               move conf-chiave-ordine to mto-chiave
