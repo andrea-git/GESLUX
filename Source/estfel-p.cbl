@@ -401,11 +401,6 @@
                  exit perform
               end-if
            end-perform.       
-           if como-data > 20210626
-              display message "Contatore non aggiornato"
-                        title "Errore"
-                         icon 3
-           end-if.
 
       ***---
        CALCOLA-TOTALE.      
