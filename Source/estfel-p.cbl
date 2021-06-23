@@ -347,11 +347,6 @@
                             display message "Fattura non trovata"
                                       title titolo
                                        icon 2
-                        not invalid
-                            if como-data > 20210618
-                               move 8495679 to tor-num-fattura
-                               read tordini key k-fattura
-                            end-if
                        end-read
                     else    
                        move spaces to tor-num-ord-cli

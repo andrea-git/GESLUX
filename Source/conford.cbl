@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          conford.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 15 giugno 2021 22:08:16.
+       DATE-WRITTEN.        mercoledì 23 giugno 2021 15:48:33.
        REMARKS.
       *{TOTEM}END
 
@@ -2837,16 +2837,11 @@
               set errori to true
            else
               accept separatore from environment "SEPARATORE"
-              move link-path to path-fileseq
+              move link-path to path-fileseq                     
               inspect path-fileseq replacing all ".pdf" by ".csv"
+              inspect path-fileseq replacing trailing low-value by 
+           spaces
               accept como-data from century-date
-              if como-data > 20210621
-                 display message "Errore PDF"
-                           title "Bullzip PDF Printer"
-                            icon 3
-                 move 27 to key-status
-                 exit paragraph
-              end-if               
               open output fileseq     
 
               move conf-chiave-ordine to mto-chiave
@@ -3097,7 +3092,7 @@
            copy "utydata.cpy".
            copy "color-custom.cpy".
            copy "mail.cpy".
-           copy "wait-3-secs.cpy".
+      *     copy "wait-3-secs.cpy".
 
       ***---
        CALCOLA-TRASPORTO.
