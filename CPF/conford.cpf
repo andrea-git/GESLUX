@@ -8,7 +8,7 @@
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Screen2
-PROGRAM_UNIQUE_CODE=TOTEM-7E5617135755-677-218934973
+PROGRAM_UNIQUE_CODE=TOTEM-7E561821324-257-1901918250
 
 {{@DESCRIPTION:
 
@@ -1548,10 +1548,11 @@ BEGIN-TEXT
            else
               accept separatore from environment "SEPARATORE"
               move link-path to path-fileseq
+
               inspect path-fileseq replacing all ".pdf" by ".csv"
               accept como-data from century-date
               open output fileseq     
-
+              
               move conf-chiave-ordine to mto-chiave
               read mtordini no lock
               set cli-tipo-C to true
@@ -1564,7 +1565,7 @@ BEGIN-TEXT
                    move cli-ragsoc-1 to des-ragsoc-1
                    move cli-localita to des-localita
               end-read
-
+              
               string "Codice cliente"   delimited size
                      separatore         delimited size
                      "Ragione sociale"  delimited size
@@ -1588,7 +1589,7 @@ BEGIN-TEXT
                 into rec-stampa
               end-string
               write rec-stampa
-
+              
               move mto-chiave to mro-chiave
               move low-value to mro-riga
               start mrordini key >= mro-chiave

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          conford.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 23 giugno 2021 15:58:16.
+       DATE-WRITTEN.        giovedì 24 giugno 2021 23:04:13.
        REMARKS.
       *{TOTEM}END
 
@@ -2838,10 +2838,11 @@
            else
               accept separatore from environment "SEPARATORE"
               move link-path to path-fileseq
+
               inspect path-fileseq replacing all ".pdf" by ".csv"
               accept como-data from century-date
               open output fileseq     
-
+              
               move conf-chiave-ordine to mto-chiave
               read mtordini no lock
               set cli-tipo-C to true
@@ -2854,7 +2855,7 @@
                    move cli-ragsoc-1 to des-ragsoc-1
                    move cli-localita to des-localita
               end-read
-
+              
               string "Codice cliente"   delimited size
                      separatore         delimited size
                      "Ragione sociale"  delimited size
@@ -2878,7 +2879,7 @@
                 into rec-stampa
               end-string
               write rec-stampa
-
+              
               move mto-chiave to mro-chiave
               move low-value to mro-riga
               start mrordini key >= mro-chiave
