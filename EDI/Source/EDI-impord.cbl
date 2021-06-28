@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-impord.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 11 marzo 2020 23:22:30.
+       DATE-WRITTEN.        lunedì 28 giugno 2021 22:54:33.
        REMARKS.
       *{TOTEM}END
 
@@ -969,7 +969,8 @@
            size
                         "ERRORE!! VERIFICARE FILE DI LOG! " delimited 
            size
-                        batch-log
+                        batch-log                           delimited 
+           size
                    into lm-riga
                  end-string
                  write lm-riga 

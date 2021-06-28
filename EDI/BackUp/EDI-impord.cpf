@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E43B22433-593-143827992
+PROGRAM_UNIQUE_CODE=TOTEM-7E561C205342-197-1334525583
 
 {{@DESCRIPTION:
 
@@ -989,7 +989,7 @@ BEGIN-TEXT
                  initialize lm-riga
                  string r-output                            delimited size
                         "ERRORE!! VERIFICARE FILE DI LOG! " delimited size
-                        batch-log
+                        batch-log                           delimited size
                    into lm-riga
                  end-string
                  write lm-riga 
