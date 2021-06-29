@@ -1290,6 +1290,26 @@
                 into line-riga
               write line-riga
 
+              if tno-Num-Fattura = 2801
+                 initialize line-riga
+                 string 78-spazi                
+                        78-spazi                
+                        78-spazi                
+                        78-spazi                
+                        "</DatiFattureCollegate>" 
+                   into line-riga
+                 write line-riga
+                 initialize line-riga
+                 string 78-spazi                
+                        78-spazi                
+                        78-spazi                
+                        78-spazi                
+                        "<IdDocumento>" 
+                        "</IdDocumento>" 
+                   into line-riga
+                 write line-riga
+              end-if
+
               move tno-fattura-from-numero to como-numero
               perform EDIT-NUMERO
 

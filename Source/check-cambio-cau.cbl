@@ -34,13 +34,19 @@
        77  status-tordini        pic xx.
        77  status-lineseq        pic xx.
        77  status-lineseq1       pic xx.
-       77  status-tsetinvio      pic xx.
+       77  status-tsetinvio      pic xx.  
+       
+       01 el-tor-chiave          occurs 99999.
+          05 el-tor-anno         PIC  9(4).
+          05 el-tor-numero       PIC  9(8).
 
        77  wstampa               pic x(256).
                                           
        77  como-data             pic 9(8).
        77  como-ora              pic 9(8).
        77  separatore            pic x.
+       77  idx                   pic 9(5) value 0.
+       77  tot-idx               pic 9(5) value 0.
 
        01  filler                pic xx.
          88 tutto-ok             value "OK".
@@ -91,7 +97,7 @@
 
       ***---
        OPEN-FILES.
-           open input tordini.
+           open i-o tordini.
 
       ***---
        ELABORAZIONE.
@@ -121,9 +127,22 @@
                        end-string
                        write line-riga of lineseq
                        set errori to true
+                       add 1 to tot-idx
+                       move tor-chiave to el-tor-chiave(tot-idx)
                     end-if
                  end-perform
            end-start.
+
+           perform varying idx from 1 by 1 
+                     until idx > tot-idx
+              move el-tor-chiave(idx) to tor-chiave
+              read tordini no lock
+                   invalid continue
+               not invalid 
+                   move tor-causale-orig to tor-causale
+                   rewrite tor-rec
+              end-read
+           end-perform.
 
       ***---
        CLOSE-FILES.
