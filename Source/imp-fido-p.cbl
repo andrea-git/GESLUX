@@ -48,6 +48,8 @@
 
        77  como-data             pic 9(8).
        77  como-ora              pic 9(8).
+       77  separatore            pic x.
+       77  idx                   pic 9(5).
 
       *    FILE-STATUS                   
        77  status-lineseq        pic xx.
@@ -543,6 +545,20 @@
                    move -1 to batch-status
                 end-if
             not at end
+                |Imposto come valore del separatore di 
+                |colonna il primo che trovo tra: | , ;
+                inspect line-riga replacing trailing spaces by low-value
+                perform varying idx from 1 by 1 until 
+                                idx > 100 |piu che sufficiente per trovarlo
+                   if line-riga(idx:1) = ";"
+                      move ";" to separatore
+                      exit perform
+                   end-if
+                   if line-riga(idx:1) = "|"
+                      move "|" to separatore
+                      exit perform
+                   end-if
+                end-perform
                 perform ELABORA-FILE-OK
            end-read.
 
@@ -551,7 +567,7 @@
            perform until 1 = 2
               read lineseq next at end exit perform end-read
               initialize record-GENERICO
-              unstring line-riga delimited by "|"
+              unstring line-riga delimited by separatore
                   into r-cod-cli
                        r2
                        r3
