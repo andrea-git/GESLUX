@@ -26,6 +26,12 @@
            ACCESS MODE  IS SEQUENTIAL
            FILE STATUS  IS STATUS-iniFtp.
 
+       SELECT logFile
+           ASSIGN       TO logFilePath
+           ORGANIZATION IS LINE SEQUENTIAL
+           ACCESS MODE  IS SEQUENTIAL
+           FILE STATUS  IS STATUS-logFile.
+
            copy "lineseq.sl".
            COPY "lineseq.sl"
                 REPLACING ==lineseq== BY ==lineseq1==,
@@ -46,7 +52,11 @@
            copy "TBLDO.fd".
            copy "TBLVA.fd".
            copy "G2.fd".
-           copy "tsetinvio.fd".
+           copy "tsetinvio.fd".    
+
+
+       FD  logFile.
+       01 logFile-riga       PIC  x(1000).
 
        FD  iniFtp.
        01 iniFtp-riga        PIC  x(1000).
@@ -81,10 +91,13 @@
        77  status-G2        pic xx.
        77  status-tsetinvio pic xx.
        77  status-lineseq   pic xx.
-       77  status-lineseq1  pic xx.
+       77  status-lineseq1  pic xx.   
        77  status-iniFtp    pic xx.
+       77  status-logFile   pic xx.
        77  wstampa          pic x(256). 
+       77  attach1          pic x(256) value spaces . 
        77  iniFtpPath       pic x(256). 
+       77  logFilePath      pic x(256).
        77  pattern          pic x(10).
        77  dir-handle       handle.
 
@@ -108,7 +121,26 @@
        77  como-anno        pic 9(4).
        77  div              pic 9(4).
        77  como-mese        pic 9(2).
-       77  invio            pic 9.
+       77  invio            pic 9.      
+       77  como-riga        pic x(200). 
+       77  ini-path-backup  pic x(200).
+
+       01  r-inizio.
+         05 filler              pic x(2)  value " [".
+         05 r-data.
+            10 r-gg             pic xx.
+            10 filler           pic x     value "/".
+            10 r-mm             pic xx.
+            10 filler           pic x     value "/".
+            10 r-aa             pic xx.
+         05 filler              pic x(5)  value "] - [".
+         05 r-ora.
+            10 r-hh             pic xx.
+            10 filler           pic x     value X"22".
+            10 r-min            pic xx.
+            10 filler           pic x     value "'".
+            10 r-sec            pic xx.
+         05 filler              pic x(2)  value "] ".
                    
        77  ftpPutCommand         pic x(256).
        77  pathWinSCP            pic x(256).
@@ -216,15 +248,15 @@
            perform EXIT-PGM.
 
       ***---
-       INIT.
+       INIT.                                 
            accept  path-st from environment "PATH_ST".
            inspect path-st replacing trailing spaces by low-value.
            set trovato  to false.
            set tutto-ok to true.
            CALL "C$NARG" USING narg.
            if narg = 0
-              set FromBatch to true
               accept como-data from century-date
+              set FromBatch to true
               move como-data(5:2) to como-mese
               if como-mese = 1
                  move 12 to como-mese
@@ -275,16 +307,39 @@
            end-if.
 
       ***---
-       OPEN-FILES.
-           initialize wstampa.
+       OPEN-FILES.       
            accept  como-ora  from time.
            accept  como-data from century-date.
+
+           accept  logFilePath 
+                   from environment "SITUACONT_PATH_BACKUP_ELAB".
+           inspect logFilePath replacing trailing spaces by low-value.
+           string  logFilePath  delimited low-value
+                   "situacont_" delimited size
+                   como-data    delimited size
+                   "-"          delimited size
+                   como-ora     delimited size
+                   ".log"       delimited size
+              into logFilePath
+           end-string.
+           inspect logFilePath replacing trailing low-value by spaces.
+           open output logFile.
+
+           initialize como-riga.
+           perform SETTA-INIZIO-RIGA.
+           string r-inizio           delimited size
+                  "Inizio programma" delimited size
+             into como-riga
+           end-string.
+           perform RIGA-LOG.
+
+           initialize wstampa.
            string  path-st   delimited low-value
                    "M32092"       delimited size
                    como-data(1:4) delimited size
                    como-data(5:2) delimited size
                    ".csv"         delimited size
-                   into wstampa
+              into wstampa
            end-string.
            inspect wstampa replacing trailing low-value by spaces.
 
@@ -293,14 +348,25 @@
                    como-data(1:4) delimited size
                    como-data(5:2) delimited size
                    ".csv"       delimited size
-                   into FileName1
+              into FileName1
            end-string.
 
            open output lineseq.
-           if tutto-ok
+           if tutto-ok         
+              move wstampa to attach1
+              inspect attach1 replacing trailing spaces by low-value
+              initialize como-riga
+              perform SETTA-INIZIO-RIGA
+              string r-inizio                        delimited size
+                     "Creato file per le scadenze: " delimited size
+                     wstampa                         delimited size
+                into como-riga
+              end-string
+              perform RIGA-LOG
+
               open input tordini pnt pnr pas par tblco tcodpag tblva
                          tbldo G2 clienti ttipocli
-           end-if.
+           end-if. 
       
       ***---
        ELABORAZIONE.
@@ -315,6 +381,18 @@
            move tbldo-codice-co to tblco-codice2.
            read tblco  no lock invalid continue end-read.
            move tblco-tipo-documento to tipo-documento.
+                             
+                                
+           initialize como-riga.
+           perform SETTA-INIZIO-RIGA.
+           string r-inizio                          delimited size
+                  "Inizio elaborazione con range: " delimited size
+                  data-from                         delimited size
+                  " - "                             delimited size
+                  data-to                           delimited size
+             into como-riga
+           end-string.
+           perform RIGA-LOG.
 
            initialize tor-rec.
            move data-from(1:4) to tor-anno-fattura.
@@ -418,7 +496,16 @@
       ***---
        SCRIVI-SCADENZE. 
            set trovato-par-pas to true.
-           if not trovato
+           if not trovato   
+  
+              initialize como-riga
+              perform SETTA-INIZIO-RIGA
+              string r-inizio           delimited size
+                     "Trovate scadenze" delimited size
+                into como-riga
+              end-string
+              perform RIGA-LOG
+
               perform ACCETTA-SEPARATORE
               set trovato to true
               initialize line-riga of lineseq
@@ -567,7 +654,6 @@
               move tor-cod-cli to el-cliente(tot-clienti)
            end-if.
 
-
       ***--- 
        CERCA-SCADENZA.
            move 0 to como-data.
@@ -631,12 +717,30 @@
               delete file lineseq
               move spaces to wstampa
               move spaces to FileName1
-           end-if.                  
+           end-if.   
+                               
+           initialize como-riga.
+           perform SETTA-INIZIO-RIGA.
+           string r-inizio         delimited size
+                  "Fine programma" delimited size
+                  into como-riga
+           end-string.
+           perform RIGA-LOG.
+
+           close logFile.
 
            goback.
 
       ***---
-       EXPORT-CLIENTI.        
+       EXPORT-CLIENTI.                   
+           initialize como-riga.
+           perform SETTA-INIZIO-RIGA.
+           string r-inizio               delimited size
+                  "Esportazione clienti" delimited size
+             into como-riga
+           end-string.
+           perform RIGA-LOG.
+
            move "M*.csv"  to pattern
            perform ACCODA-FILE.
            initialize wstampa.
@@ -662,6 +766,15 @@
            inspect wstampa replacing trailing low-value by spaces.
            open output lineseq.
            open input  clienti tcodpag ttipocli.
+
+           initialize como-riga.
+           perform SETTA-INIZIO-RIGA.
+           string r-inizio                       delimited size
+                  "Creazione file per clienti: " delimited size
+                  wstampa                        delimited size
+             into como-riga
+           end-string.
+           perform RIGA-LOG.
                                                     
            perform varying idx-cliente from 1 by 1 
                      until idx-cliente > tot-clienti       
@@ -689,6 +802,17 @@
                    replacing trailing spaces by low-value.
       * CONTROLLO L'ESISTENZA DELLE CARTELLE              
 
+           initialize como-riga.
+           perform SETTA-INIZIO-RIGA.
+           string r-inizio               delimited size
+                  "Accodamente file "    delimited size
+                  pattern                delimited size
+                  " in "                 delimited size
+                  situacont-path-fileseq delimited size
+             into como-riga
+           end-string.
+           perform RIGA-LOG.
+
       *    cartella di export
            call "C$LIST-DIRECTORY" using LISTDIR-OPEN,
                                          situacont-path-fileseq,
@@ -708,7 +832,16 @@
                  
                  if File-Name = spaces
                     exit perform
-                 end-if
+                 end-if     
+
+                 initialize como-riga
+                 perform SETTA-INIZIO-RIGA
+                 string r-inizio         delimited size
+                        "Trovato file "  delimited size
+                        File-Name        delimited size
+                   into como-riga
+                 end-string
+                 perform RIGA-LOG
 
                  |ACCODO IL FILES
                  open extend lineseq
@@ -757,7 +890,17 @@
                         file-backup delimited low-value
                        x"22"        delimited size     
                   into cmd
-                 end-string  
+                 end-string           
+
+                 initialize como-riga
+                 perform SETTA-INIZIO-RIGA
+                 string r-inizio         delimited size
+                        "Backup file "   delimited size
+                        cmd              delimited size
+                   into como-riga
+                 end-string
+                 perform RIGA-LOG
+
                  move 0 to return-code
                  call "C$SYSTEM" using cmd, 225
                                 giving return-code
@@ -835,7 +978,15 @@
            write line-riga of lineseq.
 
       ***---
-       EXPORT-FTP.     
+       EXPORT-FTP.            
+           initialize como-riga.
+           perform SETTA-INIZIO-RIGA.
+           string r-inizio      delimited size
+                  "Export ftp " delimited size
+             into como-riga
+           end-string.
+           perform RIGA-LOG.
+   
            initialize iniFtpPath.
            accept  iniFtpPath from environment "WINSCP_INI".       
            inspect iniFtpPath replacing trailing spaces by low-value.
@@ -905,7 +1056,16 @@
            move "exit" to iniFtp-riga.
            write iniFtp-riga.
 
-           close iniFtp.
+           close iniFtp.       
+        
+           initialize como-riga.
+           perform SETTA-INIZIO-RIGA.
+           string r-inizio             delimited size
+                  "Creato script ftp " delimited size
+                  iniFtpPath           delimited size
+             into como-riga
+           end-string.
+           perform RIGA-LOG.
 
       *****     if invio = 1
       *****        accept line-riga of lineseq 
@@ -980,8 +1140,63 @@
                    como-ora      delimited size
                    ".log"        delimited size
               into ftpPutCommand
+           end-string.    
+                               
+           initialize como-riga.
+           perform SETTA-INIZIO-RIGA.
+           string r-inizio          delimited size
+                  "Esecuzione ftp " delimited size
+                  ftpPutCommand     delimited size
+             into como-riga
            end-string.
+           perform RIGA-LOG.
+
            call "C$SYSTEM" using ftpPutCommand.
+
+           call "C$SLEEP" using 30.      
+                  
+           accept  ini-path-backup from environment "WINSCP_INI_BACKUP". 
+           inspect ini-path-backup 
+                   replacing trailing spaces by low-value
+           string  ini-path-backup delimited low-value
+                   "putFTP"        delimited size
+                   "_"             delimited size
+                   como-data       delimited size
+                   "-"             delimited size
+                   como-ora        delimited size
+                   ".ini"          delimited size
+              into ini-path-backup
+           end-string.
+           inspect ini-path-backup 
+                   replacing trailing low-value by spaces. 
+
+           inspect iniFtpPath replacing trailing spaces by low-value.
+           initialize cmd.
+           string "copy "         delimited size
+                  iniFtpPath      delimited low-value
+                  " "             delimited size
+                  ini-path-backup delimited size
+                  into cmd
+           end-string.
+           call "C$SYSTEM" using cmd, 255.                    
+
+           initialize como-riga.          
+           perform SETTA-INIZIO-RIGA.
+           string r-inizio       delimited size
+                  "Backup ini: " delimited size  
+                  cmd            delimited size
+             into como-riga
+           end-string.
+           perform RIGA-LOG.
+
+                               
+           initialize como-riga.
+           perform SETTA-INIZIO-RIGA.
+           string r-inizio      delimited size
+                  "Invio mail " delimited size
+             into como-riga
+           end-string.
+           perform RIGA-LOG.
 
            initialize LinkBody.
            move "INVIO FTP SITUAZIONE CONTABILE" to LinkSubject.
@@ -992,7 +1207,16 @@
 
            if LinkAddress not = spaces
 
-              move wstampa to LinkAttach
+              if attach1 not = spaces
+                 initialize LinkAttach
+                 string attach1 delimited low-value
+                        ";"     delimited size
+                        wstampa delimited size
+                   into LinkAttach
+                 end-string
+              else
+                 move wstampa to LinkAttach
+              end-if
                                
               move "situacont-p" to NomeProgramma
               set trovato to false
@@ -1000,7 +1224,17 @@
                  perform SEND-MAIL
                  open input lineseq1
                  read lineseq1 next
-                 if line-riga of lineseq1 = "True"
+
+                 initialize como-riga
+                 perform SETTA-INIZIO-RIGA
+                 string r-inizio              delimited size
+                        "Status invio mail: " delimited size
+                        line-riga of lineseq1 delimited size
+                   into como-riga
+                 end-string
+                 perform RIGA-LOG
+
+                 if line-riga of lineseq1 = "True"      
                     set trovato to true
                     close lineseq1
                     exit perform 
@@ -1012,6 +1246,12 @@
            end-if.
 
       ***---
+       RIGA-LOG.
+           initialize logFile-riga.
+           write logFile-riga from como-riga.
+
+      ***---
        PARAGRAFO-COPY.
            copy "common-excel.cpy".
            copy "mail.cpy".
+           copy "setta-inizio-riga.cpy".
