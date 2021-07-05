@@ -48,7 +48,7 @@
 
        77  como-data             pic 9(8).
        77  como-ora              pic 9(8).
-       77  separatore            pic x.
+       77  separatore            pic x value "|".
        77  idx                   pic 9(5).
 
       *    FILE-STATUS                   
@@ -74,6 +74,7 @@
        77  tot-cli               pic 9(5) value 0.
        77  tot-ok                pic 9(5) value 0.
        77  tot-ko                pic 9(5) value 0.
+       77  tot-scart             pic 9(5) value 0.
 
        77  path-import           pic x(256).    
        77  path-backup           pic x(256).
@@ -83,6 +84,7 @@
        77  cmd                   pic x(200).
        77  como-riga             pic x(200).
        77  como-data-2mesi       pic 9(8).  
+       77  riga-csv              pic 9(4).  
     
        77  PathGetFTP            pic x(256).
        77  StatusGetFTP          pic s9.
@@ -545,27 +547,15 @@
                    move -1 to batch-status
                 end-if
             not at end
-                |Imposto come valore del separatore di 
-                |colonna il primo che trovo tra: | , ;
-                inspect line-riga replacing trailing spaces by low-value
-                perform varying idx from 1 by 1 until 
-                                idx > 100 |piu che sufficiente per trovarlo
-                   if line-riga(idx:1) = ";"
-                      move ";" to separatore
-                      exit perform
-                   end-if
-                   if line-riga(idx:1) = "|"
-                      move "|" to separatore
-                      exit perform
-                   end-if
-                end-perform
                 perform ELABORA-FILE-OK
            end-read.
 
       ***---
        ELABORA-FILE-OK.
+           move 1 to riga-csv.
            perform until 1 = 2
               read lineseq next at end exit perform end-read
+              add 1 to riga-csv
               initialize record-GENERICO
               unstring line-riga delimited by separatore
                   into r-cod-cli
@@ -643,6 +633,19 @@
               end-unstring 
               move r-fido-x to r-fido convert
              |Posson capitare dei codici con lettere che vanno scartati
+              if r-cod-cli (2:1) = "A"       
+                 initialize como-riga
+                 string "RIGA: "      delimited size
+                        riga-csv      delimited size
+                        " - CLIENTE " delimited size
+                        r-cod-cli     delimited size
+                        " SCARTATO"   delimited size
+                   into como-riga
+                 end-string
+                 perform SCRIVI-RIGA-LOG
+                 add 1 to tot-scart
+                 exit perform cycle
+              end-if
               move r-cod-cli to cli-codice convert
               if cli-codice not = 0
                  add 1 to tot-cli
@@ -654,7 +657,9 @@
                          move 1 to batch-status        
                       end-if
                       initialize como-riga
-                      string "CLIENTE "     delimited size
+                      string "RIGA: "       delimited size
+                             riga-csv       delimited size
+                             " - CLIENTE "  delimited size
                              cli-codice     delimited size
                              " NON TROVATO" delimited size
                         into como-riga
@@ -683,8 +688,12 @@
                       move como-fido to cli-fido
                       rewrite cli-rec
                               invalid              
-                                                        
-                              move "ERRORE REWRITE" to como-riga
+                              initialize como-riga
+                              string "RIGA: "            delimited size
+                                     riga-csv            delimited size
+                                     " - ERRORE REWRITE" delimited size
+                                into como-riga
+                              end-string
                               perform SCRIVI-RIGA-LOG
 
                               if RichiamoSchedulato
@@ -693,8 +702,16 @@
 
                           not invalid 
                               if RecLocked              
-                      
-                                 move "CLIENTE BLOCCATO" to como-riga
+                                                     
+                                 initialize como-riga
+                                 string "RIGA: "            
+                                        delimited size
+                                        riga-csv            
+                                        delimited size
+                                        " - CLIENTE BLOCCATO" 
+                                        delimited size
+                                   into como-riga
+                                 end-string
                                  perform SCRIVI-RIGA-LOG
 
                                  if RichiamoSchedulato
@@ -705,7 +722,11 @@
                                  add 1 to tot-ok
                       
                                  initialize como-riga
-                                 string "AGGIORNATO CLIENTE " 
+                                 string "RIGA: "      
+                                        delimited size
+                                        riga-csv      
+                                        delimited size
+                                        " - AGGIORNATO CLIENTE " 
                                         delimited size
                                         cli-codice              
                                         delimited size
@@ -760,6 +781,14 @@
                     " AGGIORNATI "            delimited size
                     tot-ko                    delimited size
                     " DA VERIFICARE ****"     delimited size
+               into como-riga
+              end-string
+              perform SCRIVI-RIGA-LOG
+
+              initialize como-riga
+              string "*** RIGHE SCARTATE: " delimited size
+                    tot-scart               delimited size
+                    " ****"                 delimited size
                into como-riga
               end-string
               perform SCRIVI-RIGA-LOG
