@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=PAS004P-Ev-Before-Program
 AFTER_PROGRAM=I-O-BLOCCO
-PROGRAM_UNIQUE_CODE=TOTEM-7E5488943-419-3100326390
+PROGRAM_UNIQUE_CODE=TOTEM-7E57512456-32-889619537
 
 {{@DESCRIPTION:
 
@@ -1972,7 +1972,7 @@ Begin Screen Form1
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 13
+      ID                = 14
       ID Variable       = AUTO-ID
       Line              = 39,62
       Lines             = 7,00
@@ -2013,7 +2013,7 @@ Begin Screen Form1
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 14
+      ID                = 15
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 42,69
@@ -2054,7 +2054,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 15
+      ID                = 16
       Justification     = Unaligned
       Line              = 42,69
       Lines             = 3,46
@@ -2110,7 +2110,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 16
+      ID                = 17
       Justification     = Unaligned
       Line              = 47,31
       Lines             = 1,54
@@ -2159,7 +2159,7 @@ Begin Screen Form1
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 17
+      ID                = 18
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 47,31
@@ -2199,7 +2199,7 @@ Begin Screen Form1
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 18
+      ID                = 19
       Line              = 47,31
       Lines             = 1,54
       Lines Unit        = Default
@@ -2235,7 +2235,7 @@ Begin Screen Form1
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 4
+      ID                = 20
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 39,62
@@ -2243,10 +2243,10 @@ Begin Screen Form1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 22,00
+      Size              = 23,00
       Size Unit         = Default
       Tab Order         = 11
-      Title             = "Stampante bozze associata"
+      Title             = "Stampante master associata"
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE

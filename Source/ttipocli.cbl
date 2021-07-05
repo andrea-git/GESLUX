@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          ttipocli.
-       AUTHOR.              Utente.
-       DATE-WRITTEN.        giovedì 8 aprile 2021 10:16:56.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        lunedì 5 luglio 2021 14:07:09.
        REMARKS.
       *{TOTEM}END
 
@@ -377,7 +377,7 @@
            LINES 2,08 ,
            SIZE 22,00 ,
            FONT IS Small-Font,
-           ID IS 14,
+           ID IS 15,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -395,7 +395,7 @@
            BOXED,
            COLOR IS 513,
            ENABLED mod,
-           ID IS 15,
+           ID IS 16,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            VSCROLL-BAR,
@@ -415,7 +415,7 @@
            BOXED,
            COLOR IS 513,
            ENABLED mod,
-           ID IS 16,
+           ID IS 17,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            MAX-TEXT 150,
@@ -433,7 +433,7 @@
            LINES 2,08 ,
            SIZE 22,00 ,
            FONT IS Small-Font,
-           ID IS 17,
+           ID IS 18,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -451,7 +451,7 @@
            ENABLED mod,
            EXCEPTION-VALUE 1000,
            FONT IS Small-Font,
-           ID IS 18,
+           ID IS 19,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "...",
@@ -464,13 +464,13 @@
            COL 89,17, 
            LINE 39,62,
            LINES 1,31 ,
-           SIZE 22,00 ,
+           SIZE 23,00 ,
            FONT IS Small-Font,
-           ID IS 4,
+           ID IS 20,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
-           TITLE "Stampante bozze associata",
+           TITLE "Stampante master associata",
            .
 
       * TOOLBAR
