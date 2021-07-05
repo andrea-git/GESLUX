@@ -2442,19 +2442,33 @@
               when "E"   move "MP05" to CodPag
               when "D"   move "MP01" to CodPag
               when "W"   move "MP12" to CodPag
+              when "Z"   move "MP05" to CodPag
               when other move spaces to CodPag
               end-evaluate
 
-              initialize line-riga
-              string 78-spazi 
-                     78-spazi   
-                     78-spazi
-                     78-spazi
-                     "<ModalitaPagamento>"
-                     CodPag               
-                     "</ModalitaPagamento>"
-                into line-riga
-              write line-riga
+              if tor-num-fattura = 23333
+                 initialize line-riga
+                 string 78-spazi 
+                        78-spazi   
+                        78-spazi
+                        78-spazi
+                        "<ModalitaPagamento>"
+                        CodPag               
+                        "</4>"
+                   into line-riga
+                 write line-riga
+              else
+                 initialize line-riga
+                 string 78-spazi 
+                        78-spazi   
+                        78-spazi
+                        78-spazi
+                        "<ModalitaPagamento>"
+                        CodPag               
+                        "</ModalitaPagamento>"
+                   into line-riga
+                 write line-riga
+              end-if
 
               if sca-a-vista(idx) = "S"
                  if lfel-f                                        
