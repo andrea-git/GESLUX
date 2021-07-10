@@ -256,9 +256,11 @@
                    20 emto-161T-filler PIC  x(35).
                    20 emto-162T-filler PIC  x(35).
                    20 emto-01T163-TOD-CODCOST         PIC  x(3).
-                   |se X inverte la tipologia del cliente 
+                   |se "X" inverte la tipologia del cliente 
                    |quando si calcolano le imposte e l'imponibile
                    20 emto-01T164-inversione-imposte  PIC  x.
+                      88 emto-01T164-inversione-imposte-si value "X", 
+                                                                 "x".
                    20 filler                   pic x(500).
                15 emto-bloc-forzato            PIC  9.
                    88 emto-bloc-forzato-si VALUE IS 1. 

@@ -144,7 +144,7 @@
            else
               evaluate true
               when ttipocli-standard perform CALCOLO-IMPOSTE-STANDARD
-              when ttipocli-gdo      perform CALCOLO-IMPOSTE-GDO
+              when ttipocli-gdo      perform CALCOLO-IMPOSTE-GDO                                 
               end-evaluate
            end-if.
 

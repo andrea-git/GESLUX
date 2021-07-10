@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 15 maggio 2021 15:02:56.
+       DATE-WRITTEN.        sabato 10 luglio 2021 15:39:27.
        REMARKS.
       *{TOTEM}END
 
@@ -18352,7 +18352,10 @@ LUBEXX*****Se è attiva la causale di movimento "speciale" non
 LUBEXX*****devo fare nessun controllo sul totale del documento
 LUBEXX     if tca-si-speciale exit paragraph end-if.
            move cli-tipo to tcl-codice.
-           read ttipocli no lock invalid continue end-read.
+           read ttipocli no lock invalid continue end-read. 
+
+           perform INVERTI-TIPOLOGIA.
+
            if ttipocli-gdo set TrattamentoGDO to false
            else            set TrattamentoGDO to true
            end-if.
@@ -18384,6 +18387,8 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
               read clienti        
               move cli-tipo to tcl-codice
               read ttipocli
+
+              perform INVERTI-TIPOLOGIA
 
               move ef-des-buf to emto-prg-destino  mto-prg-destino
               move ef-data-buf to como-data
@@ -18796,6 +18801,7 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
       * <TOTEM:PARA. LETTURE-CLIENTE>
            move cli-tipo to tcl-codice.
            read ttipocli no lock invalid continue end-read.   
+           perform INVERTI-TIPOLOGIA.
            move tcl-tipologia-tratt-imposte to TrattamentoInUso.
            move cli-codice to rec-codice.
            read recapiti no lock invalid continue end-read 
@@ -19556,6 +19562,8 @@ LABLAB        if tcl-si-recupero and
                          read clienti  no lock
                          move cli-tipo to tcl-codice
                          read ttipocli no lock 
+
+                         perform INVERTI-TIPOLOGIA
                       
                          move emto-anno to con-anno
                          read tcontat no lock
@@ -19801,6 +19809,21 @@ LUBEXX                      read clienti no lock invalid continue
               open i-o lockfile
               move 78-EDI-impord to lck-nome-pgm
               delete lockfile invalid continue end-delete
+           end-if 
+           .
+      * <TOTEM:END>
+
+       INVERTI-TIPOLOGIA.
+      * <TOTEM:PARA. INVERTI-TIPOLOGIA>
+           if emto-01T164-inversione-imposte-si
+              if ttipocli-standard
+                 set ttipocli-gdo to true
+                 exit paragraph
+              end-if
+              if ttipocli-gdo
+                 set ttipocli-standard to true
+                 exit paragraph
+              end-if
            end-if 
            .
       * <TOTEM:END>

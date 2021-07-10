@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E55F12396-379-282671414
+PROGRAM_UNIQUE_CODE=TOTEM-7E57A13125-234-583520379
 
 {{@DESCRIPTION:
 
@@ -17737,7 +17737,10 @@ LUBEXX*****Se è attiva la causale di movimento "speciale" non
 LUBEXX*****devo fare nessun controllo sul totale del documento
 LUBEXX     if tca-si-speciale exit paragraph end-if.
            move cli-tipo to tcl-codice.
-           read ttipocli no lock invalid continue end-read.
+           read ttipocli no lock invalid continue end-read. 
+
+           perform INVERTI-TIPOLOGIA.
+
            if ttipocli-gdo set TrattamentoGDO to false
            else            set TrattamentoGDO to true
            end-if.
@@ -17768,6 +17771,8 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
               read clienti        
               move cli-tipo to tcl-codice
               read ttipocli
+
+              perform INVERTI-TIPOLOGIA
 
               move ef-des-buf to emto-prg-destino  mto-prg-destino
               move ef-data-buf to como-data
@@ -18182,6 +18187,7 @@ BEGIN-DATA
 BEGIN-TEXT
            move cli-tipo to tcl-codice.
            read ttipocli no lock invalid continue end-read.   
+           perform INVERTI-TIPOLOGIA.
            move tcl-tipologia-tratt-imposte to TrattamentoInUso.
            move cli-codice to rec-codice.
            read recapiti no lock invalid continue end-read.
@@ -18953,6 +18959,8 @@ BEGIN-TEXT
                          read clienti  no lock
                          move cli-tipo to tcl-codice
                          read ttipocli no lock 
+
+                         perform INVERTI-TIPOLOGIA
                       
                          move emto-anno to con-anno
                          read tcontat no lock
@@ -19179,6 +19187,23 @@ BEGIN-TEXT
               move 78-EDI-impord to lck-nome-pgm
               delete lockfile invalid continue end-delete
            end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = INVERTI-TIPOLOGIA
+BEGIN-TEXT
+           if emto-01T164-inversione-imposte-si
+              if ttipocli-standard
+                 set ttipocli-gdo to true
+                 exit paragraph
+              end-if
+              if ttipocli-gdo
+                 set ttipocli-standard to true
+                 exit paragraph
+              end-if
+           end-if.
+
 END-TEXT
 END-DATA
 BEGIN-DATA
