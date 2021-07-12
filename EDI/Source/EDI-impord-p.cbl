@@ -1223,7 +1223,7 @@
            else          set OrdineTradizionale to false
            end-if.
                                                        
-           set emto-inversione-imposte-si to true.
+           set emto-inversione-imposte-no to true.
            |Se dal file di import mi arriva la X e sono su un 
            |tradizionale setto l'inversione
            if emto-01T60-inversione-imposte = "X" or
