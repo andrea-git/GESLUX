@@ -153,13 +153,8 @@
                    20 emto-57T-filler  PIC  x(35).
                    20 emto-58T-filler  PIC  x(35).
                    20 emto-59T-filler  PIC  x(35).
-      * inverte la tipologia del cliente 
-      * si calcolano le imposte e l'imponibile
+      * Valore del campo originale dal file di import
                    20 emto-01T60-inversione-imposte            PIC  x.
-                       88 emto-01T60-inversione-imposte-si VALUE IS "X" 
-           "x". 
-                       88 emto-01T60-inversione-imposte-no VALUE IS " "
-           . 
                    20 emto-60T-filler  PIC  x(34).
                    20 emto-61T-filler  PIC  x(35).
                    20 emto-62T-filler  PIC  x(35).
@@ -270,4 +265,8 @@
                    88 emto-bloc-forzato-no VALUE IS 0. 
                15 emto-Sum         PIC  9(12)v999.
                15 emto-evadi-dal   PIC  9(8).
-               15 FILLER           PIC  x(176).
+      *L'inversione viene impostata solo per clienti tradizionali, quindi conservo il valore nel campo 60 ma poi uso questo
+               15 emto-inversione-imposte      PIC  9.
+                   88 emto-inversione-imposte-si VALUE IS 1. 
+                   88 emto-inversione-imposte-no VALUE IS 0. 
+               15 FILLER           PIC  x(174).

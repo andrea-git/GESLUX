@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E57C113359-318-658315560
+PROGRAM_UNIQUE_CODE=TOTEM-7E57C195920-690-76311833
 
 {{@DESCRIPTION:
 
@@ -19193,15 +19193,14 @@ BEGIN-DATA
    BASETYPE          = 3
    PARAGRAPH         = INVERTI-TIPOLOGIA
 BEGIN-TEXT
-           if emto-01T60-inversione-imposte-si
+           if emto-inversione-imposte-si
+              |Funziona solo per tradizionali
               if ttipocli-standard
                  set ttipocli-gdo to true
                  exit paragraph
               end-if
-              |Funziona solo per tradizionali
               if ttipocli-gdo
-                 set emto-01T60-inversione-imposte-no to true
-      *****           set ttipocli-standard to true
+                 set emto-inversione-imposte-no to true
                  exit paragraph
               end-if
            end-if.

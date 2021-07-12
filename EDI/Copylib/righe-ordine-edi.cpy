@@ -320,7 +320,7 @@
 
                 |Sono su un tradizionale, ma ho invertito 
                 |quindi ricalcolo imponibile merce = prezzo unitario
-                if emto-01T60-inversione-imposte-si
+                if emto-inversione-imposte-si
                    compute mro-prz-unitario = 
                            mro-imponib-merce
                 end-if

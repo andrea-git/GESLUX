@@ -2,10 +2,11 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+AndNote-Utente=192.168.1.99
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E57C113358-631-17595799
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E57C195918-652-1114128176
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -1415,31 +1416,32 @@ m_nItemLevel=20
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM143_
- inverte la tipologia del cliente 
- si calcolano le imposte e l'imponibile
+ Valore del campo originale dal file di import
 @}}
 [FDITEM144_]
-m_strName=emto-01T60-inversione-imposte-si
-m_nItemLevel=88
+m_strName=emto-60T-filler
+m_strRawPic=x(34)
+m_strPic=x(34)
+m_nItemLevel=20
 m_nSync=-1
 m_bFixed=1
-m_strTrue="X" "x"
 {{@DataItem_m_strDescriptionFDITEM144_
 
 @}}
 [FDITEM145_]
-m_strName=emto-01T60-inversione-imposte-no
-m_nItemLevel=88
+m_strName=emto-61T-filler
+m_strRawPic=x(35)
+m_strPic=X(35)
+m_nItemLevel=20
 m_nSync=-1
 m_bFixed=1
-m_strTrue=" "
 {{@DataItem_m_strDescriptionFDITEM145_
 
 @}}
 [FDITEM146_]
-m_strName=emto-60T-filler
-m_strRawPic=x(34)
-m_strPic=x(34)
+m_strName=emto-62T-filler
+m_strRawPic=x(35)
+m_strPic=X(35)
 m_nItemLevel=20
 m_nSync=-1
 m_bFixed=1
@@ -1447,7 +1449,7 @@ m_bFixed=1
 
 @}}
 [FDITEM147_]
-m_strName=emto-61T-filler
+m_strName=emto-63T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1457,7 +1459,7 @@ m_bFixed=1
 
 @}}
 [FDITEM148_]
-m_strName=emto-62T-filler
+m_strName=emto-64T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1467,7 +1469,7 @@ m_bFixed=1
 
 @}}
 [FDITEM149_]
-m_strName=emto-63T-filler
+m_strName=emto-65T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1477,7 +1479,7 @@ m_bFixed=1
 
 @}}
 [FDITEM150_]
-m_strName=emto-64T-filler
+m_strName=emto-66T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1487,7 +1489,7 @@ m_bFixed=1
 
 @}}
 [FDITEM151_]
-m_strName=emto-65T-filler
+m_strName=emto-67T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1497,9 +1499,9 @@ m_bFixed=1
 
 @}}
 [FDITEM152_]
-m_strName=emto-66T-filler
-m_strRawPic=x(35)
-m_strPic=X(35)
+m_strName=emto-01T68-FTX-NOTE
+m_strRawPic=x(350)
+m_strPic=X(350)
 m_nItemLevel=20
 m_nSync=-1
 m_bFixed=1
@@ -1507,9 +1509,9 @@ m_bFixed=1
 
 @}}
 [FDITEM153_]
-m_strName=emto-67T-filler
-m_strRawPic=x(35)
-m_strPic=X(35)
+m_strName=emto-01T69-FTX-NOTE
+m_strRawPic=x(350)
+m_strPic=X(350)
 m_nItemLevel=20
 m_nSync=-1
 m_bFixed=1
@@ -1517,7 +1519,7 @@ m_bFixed=1
 
 @}}
 [FDITEM154_]
-m_strName=emto-01T68-FTX-NOTE
+m_strName=emto-01T70-FTX-NOTE
 m_strRawPic=x(350)
 m_strPic=X(350)
 m_nItemLevel=20
@@ -1527,9 +1529,9 @@ m_bFixed=1
 
 @}}
 [FDITEM155_]
-m_strName=emto-01T69-FTX-NOTE
-m_strRawPic=x(350)
-m_strPic=X(350)
+m_strName=emto-71T-filler
+m_strRawPic=x(35)
+m_strPic=X(35)
 m_nItemLevel=20
 m_nSync=-1
 m_bFixed=1
@@ -1537,9 +1539,9 @@ m_bFixed=1
 
 @}}
 [FDITEM156_]
-m_strName=emto-01T70-FTX-NOTE
-m_strRawPic=x(350)
-m_strPic=X(350)
+m_strName=emto-72T-filler
+m_strRawPic=x(35)
+m_strPic=X(35)
 m_nItemLevel=20
 m_nSync=-1
 m_bFixed=1
@@ -1547,7 +1549,7 @@ m_bFixed=1
 
 @}}
 [FDITEM157_]
-m_strName=emto-71T-filler
+m_strName=emto-73T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1557,7 +1559,7 @@ m_bFixed=1
 
 @}}
 [FDITEM158_]
-m_strName=emto-72T-filler
+m_strName=emto-74T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1567,7 +1569,7 @@ m_bFixed=1
 
 @}}
 [FDITEM159_]
-m_strName=emto-73T-filler
+m_strName=emto-75T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1577,7 +1579,7 @@ m_bFixed=1
 
 @}}
 [FDITEM160_]
-m_strName=emto-74T-filler
+m_strName=emto-76T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1587,7 +1589,7 @@ m_bFixed=1
 
 @}}
 [FDITEM161_]
-m_strName=emto-75T-filler
+m_strName=emto-77T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1597,7 +1599,7 @@ m_bFixed=1
 
 @}}
 [FDITEM162_]
-m_strName=emto-76T-filler
+m_strName=emto-78T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1607,7 +1609,7 @@ m_bFixed=1
 
 @}}
 [FDITEM163_]
-m_strName=emto-77T-filler
+m_strName=emto-79T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1617,7 +1619,7 @@ m_bFixed=1
 
 @}}
 [FDITEM164_]
-m_strName=emto-78T-filler
+m_strName=emto-80T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1627,7 +1629,7 @@ m_bFixed=1
 
 @}}
 [FDITEM165_]
-m_strName=emto-79T-filler
+m_strName=emto-81T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1637,7 +1639,7 @@ m_bFixed=1
 
 @}}
 [FDITEM166_]
-m_strName=emto-80T-filler
+m_strName=emto-82T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1647,7 +1649,7 @@ m_bFixed=1
 
 @}}
 [FDITEM167_]
-m_strName=emto-81T-filler
+m_strName=emto-83T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1657,7 +1659,7 @@ m_bFixed=1
 
 @}}
 [FDITEM168_]
-m_strName=emto-82T-filler
+m_strName=emto-84T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1667,7 +1669,7 @@ m_bFixed=1
 
 @}}
 [FDITEM169_]
-m_strName=emto-83T-filler
+m_strName=emto-85T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1677,7 +1679,7 @@ m_bFixed=1
 
 @}}
 [FDITEM170_]
-m_strName=emto-84T-filler
+m_strName=emto-86T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1687,7 +1689,7 @@ m_bFixed=1
 
 @}}
 [FDITEM171_]
-m_strName=emto-85T-filler
+m_strName=emto-87T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1697,7 +1699,7 @@ m_bFixed=1
 
 @}}
 [FDITEM172_]
-m_strName=emto-86T-filler
+m_strName=emto-88T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1707,7 +1709,7 @@ m_bFixed=1
 
 @}}
 [FDITEM173_]
-m_strName=emto-87T-filler
+m_strName=emto-89T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1717,7 +1719,7 @@ m_bFixed=1
 
 @}}
 [FDITEM174_]
-m_strName=emto-88T-filler
+m_strName=emto-90T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1727,7 +1729,7 @@ m_bFixed=1
 
 @}}
 [FDITEM175_]
-m_strName=emto-89T-filler
+m_strName=emto-91T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1737,7 +1739,7 @@ m_bFixed=1
 
 @}}
 [FDITEM176_]
-m_strName=emto-90T-filler
+m_strName=emto-92T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1747,7 +1749,7 @@ m_bFixed=1
 
 @}}
 [FDITEM177_]
-m_strName=emto-91T-filler
+m_strName=emto-93T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1757,7 +1759,7 @@ m_bFixed=1
 
 @}}
 [FDITEM178_]
-m_strName=emto-92T-filler
+m_strName=emto-94T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1767,7 +1769,7 @@ m_bFixed=1
 
 @}}
 [FDITEM179_]
-m_strName=emto-93T-filler
+m_strName=emto-95T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1777,7 +1779,7 @@ m_bFixed=1
 
 @}}
 [FDITEM180_]
-m_strName=emto-94T-filler
+m_strName=emto-96T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1787,7 +1789,7 @@ m_bFixed=1
 
 @}}
 [FDITEM181_]
-m_strName=emto-95T-filler
+m_strName=emto-97T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1797,7 +1799,7 @@ m_bFixed=1
 
 @}}
 [FDITEM182_]
-m_strName=emto-96T-filler
+m_strName=emto-98T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1807,7 +1809,7 @@ m_bFixed=1
 
 @}}
 [FDITEM183_]
-m_strName=emto-97T-filler
+m_strName=emto-99T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1817,7 +1819,7 @@ m_bFixed=1
 
 @}}
 [FDITEM184_]
-m_strName=emto-98T-filler
+m_strName=emto-100T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1827,7 +1829,7 @@ m_bFixed=1
 
 @}}
 [FDITEM185_]
-m_strName=emto-99T-filler
+m_strName=emto-101T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1837,7 +1839,7 @@ m_bFixed=1
 
 @}}
 [FDITEM186_]
-m_strName=emto-100T-filler
+m_strName=emto-102T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1847,7 +1849,7 @@ m_bFixed=1
 
 @}}
 [FDITEM187_]
-m_strName=emto-101T-filler
+m_strName=emto-103T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1857,7 +1859,7 @@ m_bFixed=1
 
 @}}
 [FDITEM188_]
-m_strName=emto-102T-filler
+m_strName=emto-104T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1867,7 +1869,7 @@ m_bFixed=1
 
 @}}
 [FDITEM189_]
-m_strName=emto-103T-filler
+m_strName=emto-105T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1877,7 +1879,7 @@ m_bFixed=1
 
 @}}
 [FDITEM190_]
-m_strName=emto-104T-filler
+m_strName=emto-106T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1887,7 +1889,7 @@ m_bFixed=1
 
 @}}
 [FDITEM191_]
-m_strName=emto-105T-filler
+m_strName=emto-107T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1897,7 +1899,7 @@ m_bFixed=1
 
 @}}
 [FDITEM192_]
-m_strName=emto-106T-filler
+m_strName=emto-108T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1907,7 +1909,7 @@ m_bFixed=1
 
 @}}
 [FDITEM193_]
-m_strName=emto-107T-filler
+m_strName=emto-109T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1917,7 +1919,7 @@ m_bFixed=1
 
 @}}
 [FDITEM194_]
-m_strName=emto-108T-filler
+m_strName=emto-110T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1927,7 +1929,7 @@ m_bFixed=1
 
 @}}
 [FDITEM195_]
-m_strName=emto-109T-filler
+m_strName=emto-111T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1937,7 +1939,7 @@ m_bFixed=1
 
 @}}
 [FDITEM196_]
-m_strName=emto-110T-filler
+m_strName=emto-112T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1947,7 +1949,7 @@ m_bFixed=1
 
 @}}
 [FDITEM197_]
-m_strName=emto-111T-filler
+m_strName=emto-113T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1957,7 +1959,7 @@ m_bFixed=1
 
 @}}
 [FDITEM198_]
-m_strName=emto-112T-filler
+m_strName=emto-114T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1967,7 +1969,7 @@ m_bFixed=1
 
 @}}
 [FDITEM199_]
-m_strName=emto-113T-filler
+m_strName=emto-115T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1977,7 +1979,7 @@ m_bFixed=1
 
 @}}
 [FDITEM200_]
-m_strName=emto-114T-filler
+m_strName=emto-116T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1987,7 +1989,7 @@ m_bFixed=1
 
 @}}
 [FDITEM201_]
-m_strName=emto-115T-filler
+m_strName=emto-117T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -1997,7 +1999,7 @@ m_bFixed=1
 
 @}}
 [FDITEM202_]
-m_strName=emto-116T-filler
+m_strName=emto-118T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2007,7 +2009,7 @@ m_bFixed=1
 
 @}}
 [FDITEM203_]
-m_strName=emto-117T-filler
+m_strName=emto-119T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2017,7 +2019,7 @@ m_bFixed=1
 
 @}}
 [FDITEM204_]
-m_strName=emto-118T-filler
+m_strName=emto-120T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2027,7 +2029,7 @@ m_bFixed=1
 
 @}}
 [FDITEM205_]
-m_strName=emto-119T-filler
+m_strName=emto-121T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2037,7 +2039,7 @@ m_bFixed=1
 
 @}}
 [FDITEM206_]
-m_strName=emto-120T-filler
+m_strName=emto-122T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2047,7 +2049,7 @@ m_bFixed=1
 
 @}}
 [FDITEM207_]
-m_strName=emto-121T-filler
+m_strName=emto-123T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2057,7 +2059,7 @@ m_bFixed=1
 
 @}}
 [FDITEM208_]
-m_strName=emto-122T-filler
+m_strName=emto-124T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2067,7 +2069,7 @@ m_bFixed=1
 
 @}}
 [FDITEM209_]
-m_strName=emto-123T-filler
+m_strName=emto-125T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2077,7 +2079,7 @@ m_bFixed=1
 
 @}}
 [FDITEM210_]
-m_strName=emto-124T-filler
+m_strName=emto-126T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2087,7 +2089,7 @@ m_bFixed=1
 
 @}}
 [FDITEM211_]
-m_strName=emto-125T-filler
+m_strName=emto-127T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2097,7 +2099,7 @@ m_bFixed=1
 
 @}}
 [FDITEM212_]
-m_strName=emto-126T-filler
+m_strName=emto-128T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2107,7 +2109,7 @@ m_bFixed=1
 
 @}}
 [FDITEM213_]
-m_strName=emto-127T-filler
+m_strName=emto-129T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2117,7 +2119,7 @@ m_bFixed=1
 
 @}}
 [FDITEM214_]
-m_strName=emto-128T-filler
+m_strName=emto-130T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2127,7 +2129,7 @@ m_bFixed=1
 
 @}}
 [FDITEM215_]
-m_strName=emto-129T-filler
+m_strName=emto-131T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2137,7 +2139,7 @@ m_bFixed=1
 
 @}}
 [FDITEM216_]
-m_strName=emto-130T-filler
+m_strName=emto-132T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2147,7 +2149,7 @@ m_bFixed=1
 
 @}}
 [FDITEM217_]
-m_strName=emto-131T-filler
+m_strName=emto-133T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2157,7 +2159,7 @@ m_bFixed=1
 
 @}}
 [FDITEM218_]
-m_strName=emto-132T-filler
+m_strName=emto-134T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2167,7 +2169,7 @@ m_bFixed=1
 
 @}}
 [FDITEM219_]
-m_strName=emto-133T-filler
+m_strName=emto-135T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2177,7 +2179,7 @@ m_bFixed=1
 
 @}}
 [FDITEM220_]
-m_strName=emto-134T-filler
+m_strName=emto-136T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2187,7 +2189,7 @@ m_bFixed=1
 
 @}}
 [FDITEM221_]
-m_strName=emto-135T-filler
+m_strName=emto-137T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2197,7 +2199,7 @@ m_bFixed=1
 
 @}}
 [FDITEM222_]
-m_strName=emto-136T-filler
+m_strName=emto-138T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2207,7 +2209,7 @@ m_bFixed=1
 
 @}}
 [FDITEM223_]
-m_strName=emto-137T-filler
+m_strName=emto-139T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2217,7 +2219,7 @@ m_bFixed=1
 
 @}}
 [FDITEM224_]
-m_strName=emto-138T-filler
+m_strName=emto-140T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2227,7 +2229,7 @@ m_bFixed=1
 
 @}}
 [FDITEM225_]
-m_strName=emto-139T-filler
+m_strName=emto-141T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2237,7 +2239,7 @@ m_bFixed=1
 
 @}}
 [FDITEM226_]
-m_strName=emto-140T-filler
+m_strName=emto-142T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2247,7 +2249,7 @@ m_bFixed=1
 
 @}}
 [FDITEM227_]
-m_strName=emto-141T-filler
+m_strName=emto-143T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2257,7 +2259,7 @@ m_bFixed=1
 
 @}}
 [FDITEM228_]
-m_strName=emto-142T-filler
+m_strName=emto-144T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2267,7 +2269,7 @@ m_bFixed=1
 
 @}}
 [FDITEM229_]
-m_strName=emto-143T-filler
+m_strName=emto-145T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2277,7 +2279,7 @@ m_bFixed=1
 
 @}}
 [FDITEM230_]
-m_strName=emto-144T-filler
+m_strName=emto-146T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2287,7 +2289,7 @@ m_bFixed=1
 
 @}}
 [FDITEM231_]
-m_strName=emto-145T-filler
+m_strName=emto-147T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2297,7 +2299,7 @@ m_bFixed=1
 
 @}}
 [FDITEM232_]
-m_strName=emto-146T-filler
+m_strName=emto-148T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2307,7 +2309,7 @@ m_bFixed=1
 
 @}}
 [FDITEM233_]
-m_strName=emto-147T-filler
+m_strName=emto-149T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2317,7 +2319,7 @@ m_bFixed=1
 
 @}}
 [FDITEM234_]
-m_strName=emto-148T-filler
+m_strName=emto-150T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2327,7 +2329,7 @@ m_bFixed=1
 
 @}}
 [FDITEM235_]
-m_strName=emto-149T-filler
+m_strName=emto-151T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2337,7 +2339,7 @@ m_bFixed=1
 
 @}}
 [FDITEM236_]
-m_strName=emto-150T-filler
+m_strName=emto-152T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2347,7 +2349,7 @@ m_bFixed=1
 
 @}}
 [FDITEM237_]
-m_strName=emto-151T-filler
+m_strName=emto-153T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2357,7 +2359,7 @@ m_bFixed=1
 
 @}}
 [FDITEM238_]
-m_strName=emto-152T-filler
+m_strName=emto-154T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2367,7 +2369,7 @@ m_bFixed=1
 
 @}}
 [FDITEM239_]
-m_strName=emto-153T-filler
+m_strName=emto-155T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2377,7 +2379,7 @@ m_bFixed=1
 
 @}}
 [FDITEM240_]
-m_strName=emto-154T-filler
+m_strName=emto-156T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2387,7 +2389,7 @@ m_bFixed=1
 
 @}}
 [FDITEM241_]
-m_strName=emto-155T-filler
+m_strName=emto-157T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2397,7 +2399,7 @@ m_bFixed=1
 
 @}}
 [FDITEM242_]
-m_strName=emto-156T-filler
+m_strName=emto-158T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2407,7 +2409,7 @@ m_bFixed=1
 
 @}}
 [FDITEM243_]
-m_strName=emto-157T-filler
+m_strName=emto-159T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2417,7 +2419,7 @@ m_bFixed=1
 
 @}}
 [FDITEM244_]
-m_strName=emto-158T-filler
+m_strName=emto-160T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2427,7 +2429,7 @@ m_bFixed=1
 
 @}}
 [FDITEM245_]
-m_strName=emto-159T-filler
+m_strName=emto-161T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2437,7 +2439,7 @@ m_bFixed=1
 
 @}}
 [FDITEM246_]
-m_strName=emto-160T-filler
+m_strName=emto-162T-filler
 m_strRawPic=x(35)
 m_strPic=X(35)
 m_nItemLevel=20
@@ -2447,9 +2449,9 @@ m_bFixed=1
 
 @}}
 [FDITEM247_]
-m_strName=emto-161T-filler
-m_strRawPic=x(35)
-m_strPic=X(35)
+m_strName=emto-01T163-TOD-CODCOST
+m_strRawPic=x(3)
+m_strPic=X(3)
 m_nItemLevel=20
 m_nSync=-1
 m_bFixed=1
@@ -2457,9 +2459,9 @@ m_bFixed=1
 
 @}}
 [FDITEM248_]
-m_strName=emto-162T-filler
-m_strRawPic=x(35)
-m_strPic=X(35)
+m_strName=filler
+m_strRawPic=x(501)
+m_strPic=x(501)
 m_nItemLevel=20
 m_nSync=-1
 m_bFixed=1
@@ -2467,81 +2469,89 @@ m_bFixed=1
 
 @}}
 [FDITEM249_]
-m_strName=emto-01T163-TOD-CODCOST
-m_strRawPic=x(3)
-m_strPic=X(3)
-m_nItemLevel=20
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM249_
-
-@}}
-[FDITEM250_]
-m_strName=filler
-m_strRawPic=x(501)
-m_strPic=x(501)
-m_nItemLevel=20
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM250_
-
-@}}
-[FDITEM251_]
 m_strName=emto-bloc-forzato
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM251_
+{{@DataItem_m_strDescriptionFDITEM249_
 
 @}}
-[FDITEM252_]
+[FDITEM250_]
 m_strName=emto-bloc-forzato-si
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
-{{@DataItem_m_strDescriptionFDITEM252_
+{{@DataItem_m_strDescriptionFDITEM250_
 
 @}}
-[FDITEM253_]
+[FDITEM251_]
 m_strName=emto-bloc-forzato-no
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=0
-{{@DataItem_m_strDescriptionFDITEM253_
+{{@DataItem_m_strDescriptionFDITEM251_
 
 @}}
-[FDITEM254_]
+[FDITEM252_]
 m_strName=emto-Sum
 m_strRawPic=9(12)v999
 m_strPic=9(12)V999
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM254_
+{{@DataItem_m_strDescriptionFDITEM252_
 
 @}}
-[FDITEM255_]
+[FDITEM253_]
 m_strName=emto-evadi-dal
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM253_
+
+@}}
+[FDITEM254_]
+m_strName=emto-inversione-imposte
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM254_
+L'inversione viene impostata solo per clienti tradizionali, quindi conservo il valore nel campo 60 ma poi uso questo
+@}}
+[FDITEM255_]
+m_strName=emto-inversione-imposte-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
 {{@DataItem_m_strDescriptionFDITEM255_
 
 @}}
 [FDITEM256_]
+m_strName=emto-inversione-imposte-no
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM256_
+
+@}}
+[FDITEM257_]
 m_strName=FILLER
-m_strRawPic=x(176)
-m_strPic=X(176)
+m_strRawPic=x(174)
+m_strPic=x(174)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM256_
+{{@DataItem_m_strDescriptionFDITEM257_
 
 @}}
 [CStoAcucobolSL_]

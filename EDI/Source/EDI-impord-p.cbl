@@ -1198,10 +1198,8 @@
            if chk-ord-status = -1 or chk-ord-status-EDI = -1
               set emto-esistente-si to true
               set emto-bloccato     to true
-              rewrite emto-rec
            else
               set emto-esistente-no to true
-              rewrite emto-rec
            end-if.
 
            set RecuperaArticolo to false.
@@ -1224,6 +1222,19 @@
            if tcl-gdo-no set OrdineTradizionale to true
            else          set OrdineTradizionale to false
            end-if.
+                                                       
+           set emto-inversione-imposte-si to true.
+           |Se dal file di import mi arriva la X e sono su un 
+           |tradizionale setto l'inversione
+           if emto-01T60-inversione-imposte = "X" or
+              emto-01T60-inversione-imposte = "x"
+              if ttipocli-standard
+                 set emto-inversione-imposte-si to true
+              end-if
+           end-if.
+           rewrite emto-rec.
+
+
       *****     if tcl-manuale-si
       *****        set OrdineTradizionale to false
       *****     end-if.
