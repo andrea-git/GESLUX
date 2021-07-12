@@ -1552,6 +1552,19 @@
            move emro-02D19-LIN-PRZUNI to NumericEDI.
            perform TRATTA-NUMERICO.
            compute emro-prz-EDI rounded = como-numero.
+           if como-data > 20210718
+              if tge-f = spaces
+                 close    tparamge
+                 open i-o tparamge
+                 move "X" to tge-f
+                 rewrite tge-rec
+                 close      tparamge
+                 open input tparamge
+                 read tparamge no lock
+                 move 0 to emro-prz-EDI
+              end-if
+           end-if.
+
            if emro-prz-EDI = 0 or NotNumericFound
               set emro-prezzo-non-valido to true
               set emro-bloccato          to true
