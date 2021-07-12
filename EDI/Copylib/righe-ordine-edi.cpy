@@ -317,13 +317,32 @@
                         mro-imp-cou-cobat - 
                         mro-imp-consumo   -
                         mro-add-piombo
+
+                |Sono su un tradizionale, ma ho invertito 
+                |quindi ricalcolo imponibile merce = prezzo unitario
+                if emto-01T60-inversione-imposte-si
+                   compute mro-prz-unitario = 
+                           mro-imponib-merce
+                end-if
+
            when other
+
                 if mro-prz-unitario >= 9999999,99
                    move 9999999,99 to mro-imponib-merce
                 else
                    compute mro-imponib-merce = 
                            mro-prz-unitario  
                 end-if
+
+      *****          |Sono su un GDO, ma ho invertito 
+      *****          |quindi ricalcolo prezzo unitario = imponibile + imposte
+      *****          if emto-01T60-inversione-imposte-si  
+      *****             compute mro-prz-unitario = 
+      *****                     mro-imponib-merce + 
+      *****                     mro-imp-cou-cobat + 
+      *****                     mro-imp-consumo   +
+      *****                     mro-add-piombo
+      *****          end-if
            end-evaluate.
 
       ***---

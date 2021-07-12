@@ -5,6 +5,7 @@
                10 emto-numero      PIC  9(8).
       *
       *
+      *
            05 emto-dati.
                10 emto-causale     PIC  x(4).
                10 emto-cod-cli     PIC  9(5).
@@ -152,7 +153,14 @@
                    20 emto-57T-filler  PIC  x(35).
                    20 emto-58T-filler  PIC  x(35).
                    20 emto-59T-filler  PIC  x(35).
-                   20 emto-60T-filler  PIC  x(35).
+      * inverte la tipologia del cliente 
+      * si calcolano le imposte e l'imponibile
+                   20 emto-01T60-inversione-imposte            PIC  x.
+                       88 emto-01T60-inversione-imposte-si VALUE IS "X" 
+           "x". 
+                       88 emto-01T60-inversione-imposte-no VALUE IS " "
+           . 
+                   20 emto-60T-filler  PIC  x(34).
                    20 emto-61T-filler  PIC  x(35).
                    20 emto-62T-filler  PIC  x(35).
                    20 emto-63T-filler  PIC  x(35).
@@ -255,13 +263,8 @@
                    20 emto-160T-filler PIC  x(35).
                    20 emto-161T-filler PIC  x(35).
                    20 emto-162T-filler PIC  x(35).
-                   20 emto-01T163-TOD-CODCOST         PIC  x(3).
-                   |se "X" inverte la tipologia del cliente 
-                   |quando si calcolano le imposte e l'imponibile
-                   20 emto-01T164-inversione-imposte  PIC  x.
-                      88 emto-01T164-inversione-imposte-si value "X", 
-                                                                 "x".
-                   20 filler                   pic x(500).
+                   20 emto-01T163-TOD-CODCOST      PIC  x(3).
+                   20 filler           PIC  x(501).
                15 emto-bloc-forzato            PIC  9.
                    88 emto-bloc-forzato-si VALUE IS 1. 
                    88 emto-bloc-forzato-no VALUE IS 0. 

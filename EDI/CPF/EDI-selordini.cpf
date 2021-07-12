@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E57A13125-234-583520379
+PROGRAM_UNIQUE_CODE=TOTEM-7E57C113359-318-658315560
 
 {{@DESCRIPTION:
 
@@ -12978,8 +12978,8 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Enable            = NONE
       Field Edited (Style) = 0
-      Field Edited Format = x(70)
-      Field Picture     = x(70)
+      Field Edited Format = X(70)
+      Field Picture     = X(70)
       Field Variable    = emto-01T23-NAB-RAGSOCB
       File              = EDI-mtordini
       Font              = Default Font
@@ -13015,8 +13015,8 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Enable            = NONE
       Field Edited (Style) = 0
-      Field Edited Format = x(35)
-      Field Picture     = x(35)
+      Field Edited Format = X(35)
+      Field Picture     = X(35)
       Field Variable    = emto-01T24-NAB-INDIRB
       File              = EDI-mtordini
       Font              = Default Font
@@ -13052,8 +13052,8 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Enable            = NONE
       Field Edited (Style) = 0
-      Field Edited Format = x(35)
-      Field Picture     = x(35)
+      Field Edited Format = X(35)
+      Field Picture     = X(35)
       Field Variable    = emto-01T25-NAB-CITTAB
       File              = EDI-mtordini
       Font              = Default Font
@@ -13089,8 +13089,8 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Enable            = NONE
       Field Edited (Style) = 0
-      Field Edited Format = x(3)
-      Field Picture     = x(3)
+      Field Edited Format = X(3)
+      Field Picture     = X(3)
       Field Variable    = emto-01T26-NAB-PROVB
       File              = EDI-mtordini
       Font              = Default Font
@@ -13126,8 +13126,8 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Enable            = NONE
       Field Edited (Style) = 0
-      Field Edited Format = x(5)
-      Field Picture     = x(5)
+      Field Edited Format = X(5)
+      Field Picture     = X(5)
       Field Variable    = emto-01T27-NAB-CAPB
       File              = EDI-mtordini
       Font              = Default Font
@@ -13200,8 +13200,8 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Enable            = NONE
       Field Edited (Style) = 0
-      Field Edited Format = x(70)
-      Field Picture     = x(70)
+      Field Edited Format = X(70)
+      Field Picture     = X(70)
       Field Variable    = emto-01T30-NAD-RAGSOCD
       File              = EDI-mtordini
       Font              = Default Font
@@ -13237,8 +13237,8 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Enable            = NONE
       Field Edited (Style) = 0
-      Field Edited Format = x(35)
-      Field Picture     = x(35)
+      Field Edited Format = X(35)
+      Field Picture     = X(35)
       Field Variable    = emto-01T31-NAD-INDIRD
       File              = EDI-mtordini
       Font              = Default Font
@@ -13274,8 +13274,8 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Enable            = NONE
       Field Edited (Style) = 0
-      Field Edited Format = x(35)
-      Field Picture     = x(35)
+      Field Edited Format = X(35)
+      Field Picture     = X(35)
       Field Variable    = emto-01T32-NAD-CITTAD
       File              = EDI-mtordini
       Font              = Default Font
@@ -13311,8 +13311,8 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Enable            = NONE
       Field Edited (Style) = 0
-      Field Edited Format = x(3)
-      Field Picture     = x(3)
+      Field Edited Format = X(3)
+      Field Picture     = X(3)
       Field Variable    = emto-01T33-NAD-PROVD
       File              = EDI-mtordini
       Font              = Default Font
@@ -13348,8 +13348,8 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Enable            = NONE
       Field Edited (Style) = 0
-      Field Edited Format = x(5)
-      Field Picture     = x(5)
+      Field Edited Format = X(5)
+      Field Picture     = X(5)
       Field Variable    = emto-01T34-NAD-CAPD
       File              = EDI-mtordini
       Font              = Default Font
@@ -19196,13 +19196,15 @@ BEGIN-DATA
    BASETYPE          = 3
    PARAGRAPH         = INVERTI-TIPOLOGIA
 BEGIN-TEXT
-           if emto-01T164-inversione-imposte-si
+           if emto-01T60-inversione-imposte-si
               if ttipocli-standard
                  set ttipocli-gdo to true
                  exit paragraph
               end-if
+              |Funziona solo per tradizionali
               if ttipocli-gdo
-                 set ttipocli-standard to true
+                 set emto-01T60-inversione-imposte-no to true
+      *****           set ttipocli-standard to true
                  exit paragraph
               end-if
            end-if.

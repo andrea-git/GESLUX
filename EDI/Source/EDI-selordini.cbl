@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 10 luglio 2021 15:39:27.
+       DATE-WRITTEN.        lunedì 12 luglio 2021 17:45:06.
        REMARKS.
       *{TOTEM}END
 
@@ -786,9 +786,9 @@
        77 STATUS-Form2-FLAG-REFRESH PIC  9.
           88 Form2-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-Form2-KEY1-ORDER  PIC X VALUE "A".
-       77 TMP-Form2-EDI-mtordini-RESTOREBUF  PIC X(7911).
+       77 TMP-Form2-EDI-mtordini-RESTOREBUF  PIC X(8412).
        77 TMP-Form2-KEYIS  PIC 9(3) VALUE 1.
-       77 Form2-MULKEY-TMPBUF   PIC X(7911).
+       77 Form2-MULKEY-TMPBUF   PIC X(8412).
        77 Form2-KEYISTMP1   PIC X(13).
       * Form2 : PKEY & AKEY'S TEMP BUFFER
        77 Form2-PKEYTMP   PIC X(12).
@@ -851,32 +851,32 @@
       * Data.Label
               05 lab-nab-codbuyer-BUF PIC X(17).
       * Data.Label
-              05 lab-nab-rafsocb-BUF PIC x(70).
+              05 lab-nab-rafsocb-BUF PIC X(70).
       * Data.Label
-              05 lab-nab-indirb-BUF PIC x(35).
+              05 lab-nab-indirb-BUF PIC X(35).
       * Data.Label
-              05 lab-nab-cittab-BUF PIC x(35).
+              05 lab-nab-cittab-BUF PIC X(35).
       * Data.Label
-              05 lab-nab-provb-BUF PIC x(3).
+              05 lab-nab-provb-BUF PIC X(3).
       * Data.Label
-              05 lab-nab-capb-BUF PIC x(5).
+              05 lab-nab-capb-BUF PIC X(5).
       * Data.Label
               05 lab-nad-codcons-BUF PIC X(17).
       * Data.Label
-              05 lab-nad-ragsocd-BUF PIC x(70).
+              05 lab-nad-ragsocd-BUF PIC X(70).
       * Data.Label
-              05 lab-nad-indird-BUF PIC x(35).
+              05 lab-nad-indird-BUF PIC X(35).
       * Data.Label
-              05 lab-nad-cittad-BUF PIC x(35).
+              05 lab-nad-cittad-BUF PIC X(35).
       * Data.Label
-              05 lab-nad-provd-BUF PIC x(3).
+              05 lab-nad-provd-BUF PIC X(3).
       * Data.Label
-              05 lab-nad-capd-BUF PIC x(5).
+              05 lab-nad-capd-BUF PIC X(5).
 
        77 TMP-Form1-KEY1-ORDER  PIC X VALUE "A".
-       77 TMP-Form1-EDI-mtordini-RESTOREBUF  PIC X(7911).
+       77 TMP-Form1-EDI-mtordini-RESTOREBUF  PIC X(8412).
        77 TMP-Form1-KEYIS  PIC 9(3) VALUE 1.
-       77 Form1-MULKEY-TMPBUF   PIC X(7911).
+       77 Form1-MULKEY-TMPBUF   PIC X(8412).
        77 Form1-KEYISTMP1   PIC X(13).
       * Form1 : PKEY & AKEY'S TEMP BUFFER
        77 Form1-PKEYTMP   PIC X(12).
@@ -886,7 +886,7 @@
           88 scr-fine-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-destini-BUF     PIC X(3676).
-       77 TMP-DataSet1-EDI-mtordini-BUF     PIC X(7911).
+       77 TMP-DataSet1-EDI-mtordini-BUF     PIC X(8412).
        77 TMP-DataSet1-agenti-BUF     PIC X(1233).
        77 TMP-DataSet1-tivaese-BUF     PIC X(1380).
        77 TMP-DataSet1-ttipocli-BUF     PIC X(889).
@@ -19815,13 +19815,15 @@ LUBEXX                      read clienti no lock invalid continue
 
        INVERTI-TIPOLOGIA.
       * <TOTEM:PARA. INVERTI-TIPOLOGIA>
-           if emto-01T164-inversione-imposte-si
+           if emto-01T60-inversione-imposte-si
               if ttipocli-standard
                  set ttipocli-gdo to true
                  exit paragraph
               end-if
+              |Funziona solo per tradizionali
               if ttipocli-gdo
-                 set ttipocli-standard to true
+                 set emto-01T60-inversione-imposte-no to true
+      *****           set ttipocli-standard to true
                  exit paragraph
               end-if
            end-if 

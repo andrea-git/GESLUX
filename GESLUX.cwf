@@ -8,7 +8,7 @@
 WORKSPACE_UNIQUE_CODE=TOTEM-7DE41144432-337-117565976
 PROJECT_LIST=GESLUX,LAB,EDI,GET,SHI,STORICO,AndamentoClienti
 CONFIGURATION_LIST=Debug Mode,Release Mode,RELEASE
-CURRENT_CONFIGURATION=Debug Mode
+CURRENT_CONFIGURATION=RELEASE
 
 [FILE_DEFINITION_CONTENT]
 VERSION=1
@@ -28804,7 +28804,6 @@ CODE_VERSION_NUMBER=16
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:SOURCE\ordinevar.cbl]
 COPY_DEPENDENCE=FD\mtordini.sl;FD\agenti.sl;FD\tvettori.sl;FD\tivaese.sl;FD\clienti.sl;FD\destini.sl;FD\articoli.sl;FD\note.sl;FD\tcodpag.sl;FD\tmagaz.sl;FD\progmag.sl;FD\timposte.sl;FD\tmarche.sl;FD\tmp-assorcli.sl;FD\tcaumag.sl;FD\timbalqta.sl;FD\timballi.sl;FD\recapiti.sl;FD\tparamge.sl;FD\ttipocli.sl;FD\tmp-progmag-zoom.sl;FD\tpromo.sl;FD\lineseq.sl;FD\logfile.sl;FD\lisagente.sl;FD\mrordini.sl;FD\zoom-tcaumag.sl;FD\tpiombo.sl;FD\blister.sl;FD\rordini.sl;FD\tordini.sl;FD\zoom-tor-master.sl;FD\tescons.sl;FD\rmovmag.sl;FD\listini.sl;FD\locali.sl;FD\rpromo.sl;FD\tmp-promo-prz.sl;FD\sitfin.sl;FD\tagli.sl;FD\tscorte.sl;FD\USER.sl;FD\param.sl;FD\cli-prg.sl;FD\pagbloc.sl;FD\tsetinvio.sl;FD\tordforn.sl;FD\rordforn.sl;FD\tcontat.sl;FD\tnazioni.sl;FD\grade.sl;FD\mtordini.fd;FD\agenti.fd;FD\tvettori.fd;FD\tivaese.fd;FD\clienti.fd;FD\destini.fd;FD\articoli.fd;FD\note.fd;FD\tcodpag.fd;FD\tmagaz.fd;FD\progmag.fd;FD\timposte.fd;FD\tmarche.fd;FD\tmp-assorcli.fd;FD\tcaumag.fd;FD\timbalqta.fd;FD\timballi.fd;FD\recapiti.fd;FD\tparamge.fd;FD\ttipocli.fd;FD\tmp-progmag-zoom.fd;FD\tpromo.fd;FD\lineseq.fd;FD\logfile.fd;FD\lisagente.fd;FD\mrordini.fd;FD\zoom-tcaumag.fd;FD\tpiombo.fd;FD\blister.fd;FD\rordini.fd;FD\tordini.fd;FD\zoom-tor-master.fd;FD\tescons.fd;FD\rmovmag.fd;FD\listini.fd;FD\locali.fd;FD\rpromo.fd;FD\tmp-promo-prz.fd;FD\sitfin.fd;FD\tagli.fd;FD\tscorte.fd;FD\USER.fd;FD\param.fd;FD\cli-prg.fd;FD\pagbloc.fd;FD\tsetinvio.fd;FD\tordforn.fd;FD\rordforn.fd;FD\tcontat.fd;FD\tnazioni.fd;FD\grade.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\ordine-ws.def;Copylib\externals.def;Copylib\combo-ordine.def;Copylib\link-wassorcli.def;Copylib\link-wprogmag.def;Copylib\link-imballo.def;Copylib\link-stordcp.def;Copylib\splcrt2graf.lks;Copylib\link-ins-blister.def;Copylib\link-chk-ord-cli.def;Copylib\link-geslock.def;Copylib\mail.def;Copylib\recupera-prz-listino.def;Copylib\recupero-prezzi-tradizionale.def;Copylib\link-nambar.def;Copylib\link-evaord.def;Copylib\aggiorna-stato-master.def;Copylib\costo-medio.def;Copylib\imposte.def;Copylib\link-sitfin.def;Copylib\link-calfido.def;Copylib\link-find-progr.def;Copylib\versione-evasione.def;Copylib\trova-parametro.def;Copylib\link-sost-art.def;Copylib\link-passwd.def;Copylib\link-conford.def;Copylib\color-stato-m.def;Copylib\common-linkage.def;Copylib\blockpgm.lks;Copylib\link-gordcvar.def;Resource\doc-coll.bmp;Resource\recupero.bmp;Resource\strip_grid_gclienti.bmp;Resource\evasioni.bmp;Resource\toolbar.bmp;Copylib\ABILITA-TOOLBAR.CPY;Copylib\riempi-combo-ordine.cpy;Copylib\COLOR-CUSTOM.CPY;Copylib\utydata.cpy;Copylib\ordine-procedure.cpy;Resource\conferma.bmp;Copylib\promo-fittizia.cpy;Copylib\controlla-fuori-fido.cpy;Copylib\mail.cpy;Copylib\addizionale-piombo.cpy;Copylib\recupera-prz-listino.cpy;Copylib\aggiorna-stato-master.cpy;Copylib\costo-medio.cpy;Copylib\recupero-anagrafica.cpy;Copylib\imposte.cpy;Copylib\direziona-impegnato-common.cpy;Copylib\trova-parametro.cpy;Copylib\accessoxx.cpy
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
 NAME_ERROR_FILE=@.err
@@ -94089,7 +94088,6 @@ NAME_LIBRARY_FILE=%objectdir%\@.lib
 [FILE_COMPILE_OPTION-EDI:Debug Mode:EDI\SOURCE\del-edi.cbl]
 COPY_DEPENDENCE=FD\tedi.sl;FD\redi.sl;FD\tedi.fd;FD\redi.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;\Lubex\GESLUX\Copylib\standard.def;\Lubex\GESLUX\Copylib\UTYDATA.DEF;\Lubex\GESLUX\Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;\Lubex\GESLUX\Copylib\comune.def;\Lubex\GESLUX\Copylib\messaggi.def;\Lubex\GESLUX\Copylib\link-geslock.def;\Lubex\GESLUX\Copylib\common-linkage.def;\Lubex\GESLUX\Copylib\blockpgm.lks;\Lubex\GESLUX\Resource\bottone-ok.bmp;\Lubex\GESLUX\Resource\bottone-cancel.bmp;\Lubex\GESLUX\Copylib\COLOR-CUSTOM.CPY;\Lubex\GESLUX\Copylib\utydata.cpy
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
 NAME_ERROR_FILE=@.err
@@ -94122,7 +94120,6 @@ CODE_VERSION_NUMBER=16
 COPY_DEPENDENCE=FD\tparamge.sl;FD\tordini.sl;\Lubex\GESLUX\FD\rordini.sl;FD\tcontat.sl;FD\articoli.sl;FD\lineseq.sl;FD\EDI-clides.sl;FD\EDI-param.sl;FD\tcaumag.sl;FD\clienti.sl;\Lubex\GESLUX\FD\tsetinvio.sl;FD\progmag.sl;FD\tparamge.fd;FD\tordini.fd;\Lubex\GESLUX\FD\rordini.fd;FD\tcontat.fd;FD\articoli.fd;FD\lineseq.fd;FD\EDI-clides.fd;FD\EDI-param.fd;FD\tcaumag.fd;FD\clienti.fd;\Lubex\GESLUX\FD\tsetinvio.fd;FD\progmag.fd;Copylib\EDI-bolle.def;\Lubex\GESLUX\Copylib\link-batch.def;\Lubex\GESLUX\Copylib\setta-inizio-riga.cpy
 ADDITIONAL_OPTIONS=-x -Di -Ga -Zd -Za -Zn -Zz
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=..\Object\@.acu
 NAME_ERROR_FILE=@.err
@@ -94155,7 +94152,6 @@ CODE_VERSION_NUMBER=16
 COPY_DEPENDENCE=FD\edi-mtordini.sl;FD\EDI-mrordini.sl;FD\mtordini.sl;FD\mrordini.sl;FD\blister.sl;FD\clienti.sl;FD\ttipocli.sl;FD\progmag.sl;FD\tmarche.sl;FD\listini.sl;FD\cli-prg.sl;FD\articoli.sl;FD\tparamge.sl;FD\TIVAESE.sl;FD\timposte.sl;FD\tnazioni.sl;FD\tpiombo.sl;FD\destini.sl;FD\tcontat.sl;FD\param.sl;FD\grade.sl;FD\edi-mtordini.fd;FD\EDI-mrordini.fd;FD\mtordini.fd;FD\mrordini.fd;FD\blister.fd;FD\clienti.fd;FD\ttipocli.fd;FD\progmag.fd;FD\tmarche.fd;FD\listini.fd;FD\cli-prg.fd;FD\articoli.fd;FD\tparamge.fd;FD\TIVAESE.fd;FD\timposte.fd;FD\tnazioni.fd;FD\tpiombo.fd;FD\destini.fd;FD\tcontat.fd;FD\param.fd;FD\grade.fd;\Lubex\GESLUX\Copylib\costo-medio.def;\Lubex\GESLUX\Copylib\imposte.def;\Lubex\GESLUX\Copylib\trova-parametro.def;\Lubex\GESLUX\Copylib\link-calfido.def;\Lubex\GESLUX\Copylib\costo-medio.cpy;\Lubex\GESLUX\Copylib\recupero-anagrafica.cpy;\Lubex\GESLUX\Copylib\imposte.cpy;\Lubex\GESLUX\Copylib\addizionale-piombo.cpy;\Lubex\GESLUX\Copylib\trova-parametro.cpy
 ADDITIONAL_OPTIONS=-x -Di -Ga -Zd -Za -Zn -Zz
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=..\Object\@.acu
 NAME_ERROR_FILE=@.err
@@ -94188,7 +94184,6 @@ CODE_VERSION_NUMBER=16
 COPY_DEPENDENCE=FD\edi-mtordini.sl;FD\edi-mtordini.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;\Lubex\GESLUX\Copylib\DECLXER1;\Lubex\GESLUX\Copylib\DECLXER2
 ADDITIONAL_OPTIONS=-x -Di -Ga -Zd -Za -Zn -Zz
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=..\Object\@.acu
 NAME_ERROR_FILE=@.err
@@ -94221,7 +94216,6 @@ CODE_VERSION_NUMBER=16
 COPY_DEPENDENCE=FD\tparamge.sl;FD\tordini.sl;\Lubex\GESLUX\FD\rordini.sl;FD\tnotacr.sl;\Lubex\GESLUX\FD\rnotacr.sl;FD\tcontat.sl;FD\articoli.sl;FD\TIVAESE.sl;FD\lineseq.sl;FD\timbalqta.sl;FD\EDI-param.sl;FD\EDI-tiva.sl;FD\EDI-clides.sl;FD\tcaumag.sl;FD\tcodpag.sl;FD\clienti.sl;FD\recapiti.sl;FD\tparamge.fd;FD\tordini.fd;\Lubex\GESLUX\FD\rordini.fd;FD\tnotacr.fd;\Lubex\GESLUX\FD\rnotacr.fd;FD\tcontat.fd;FD\articoli.fd;FD\TIVAESE.fd;FD\lineseq.fd;FD\timbalqta.fd;FD\EDI-param.fd;FD\EDI-tiva.fd;FD\EDI-clides.fd;FD\tcaumag.fd;FD\tcodpag.fd;FD\clienti.fd;FD\recapiti.fd;Copylib\edi.def;\Lubex\GESLUX\Copylib\link-geslock.def;\Lubex\GESLUX\Copylib\comune.def;\Lubex\GESLUX\Copylib\messaggi.def;\Lubex\GESLUX\Copylib\CALSCA\varsca;\Lubex\GESLUX\Copylib\link-stfatt.def;\Lubex\GESLUX\Copylib\link-batch.def;\Lubex\GESLUX\Copylib\link-edi.def;\Lubex\GESLUX\Copylib\setta-inizio-riga.cpy
 ADDITIONAL_OPTIONS=-x -Di -Ga -Zd -Za -Zn -Zz
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=..\Object\@.acu
 NAME_ERROR_FILE=@.err
@@ -94254,7 +94248,6 @@ CODE_VERSION_NUMBER=16
 COPY_DEPENDENCE=FD\clienti.sl;FD\destini.sl;FD\lineseq.sl;FD\EDI-clides.sl;FD\clienti.fd;FD\destini.fd;FD\lineseq.fd;FD\EDI-clides.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;\Lubex\GESLUX\Copylib\common-excel.def;\Lubex\GESLUX\Copylib\link-readutente.def
 ADDITIONAL_OPTIONS=-x -Di -Ga -Zd -Za -Zn -Zz
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=..\Object\@.acu
 NAME_ERROR_FILE=@.err
@@ -94287,7 +94280,6 @@ CODE_VERSION_NUMBER=16
 COPY_DEPENDENCE=FD\clienti.sl;FD\destini.sl;FD\lineseq.sl;FD\EDI-clides.sl;FD\clienti.fd;FD\destini.fd;FD\lineseq.fd;FD\EDI-clides.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;\Lubex\GESLUX\Copylib\common-excel.def;\Lubex\GESLUX\Copylib\link-readutente.def;\Lubex\GESLUX\Copylib\link-imp-files.def;\Lubex\GESLUX\Copylib\common-excel.cpy;\Lubex\GESLUX\Copylib\imp-files-procedure.cpy
 ADDITIONAL_OPTIONS=-x -Di -Ga -Zd -Za -Zn -Zz
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=..\Object\@.acu
 NAME_ERROR_FILE=@.err
@@ -94320,7 +94312,6 @@ CODE_VERSION_NUMBER=16
 COPY_DEPENDENCE=FD\EDI-clides.sl;FD\clienti.sl;FD\destini.sl;FD\tparamge.sl;FD\edi-mtordini.sl;FD\EDI-mrordini.sl;FD\note.sl;FD\param.sl;FD\articoli.sl;FD\progmag.sl;FD\timballi.sl;FD\timbalqta.sl;FD\ttipocli.sl;FD\tpromo.sl;FD\rpromo.sl;FD\listini.sl;\Lubex\GESLUX\FD\rmovmag.sl;FD\locali.sl;FD\blister.sl;FD\cli-prg.sl;\Lubex\GESLUX\FD\tprov.sl;FD\lockfile.sl;FD\log-macrobatch.sl;FD\EDI-clides.fd;FD\clienti.fd;FD\destini.fd;FD\tparamge.fd;FD\edi-mtordini.fd;FD\EDI-mrordini.fd;FD\note.fd;FD\param.fd;FD\articoli.fd;FD\progmag.fd;FD\timballi.fd;FD\timbalqta.fd;FD\ttipocli.fd;FD\tpromo.fd;FD\rpromo.fd;FD\listini.fd;\Lubex\GESLUX\FD\rmovmag.fd;FD\locali.fd;FD\blister.fd;FD\cli-prg.fd;\Lubex\GESLUX\FD\tprov.fd;FD\lockfile.fd;FD\log-macrobatch.fd;\Lubex\GESLUX\Copylib\link-geslock.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;\Lubex\GESLUX\Copylib\trova-parametro.def;\Lubex\GESLUX\Copylib\link-chk-ord-cli.def;Copylib\tratta-numerico.def;\Lubex\GESLUX\Copylib\recupero-prezzi-tradizionale.def;\Lubex\GESLUX\Copylib\log-macrobatch.def;\Lubex\GESLUX\Copylib\link-batch.def;\Lubex\GESLUX\Copylib\trova-parametro.cpy;Copylib\tratta-numerico.cpy;\Lubex\GESLUX\Copylib\setta-inizio-riga.cpy
 ADDITIONAL_OPTIONS=-x -Di -Ga -Zd -Za -Zn -Zz
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=..\Object\@.acu
 NAME_ERROR_FILE=@.err
@@ -94353,7 +94344,6 @@ CODE_VERSION_NUMBER=16
 COPY_DEPENDENCE=FD\log-macrobatch.sl;FD\macrobatch.sl;FD\log-macrobatch.fd;FD\macrobatch.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;\Lubex\GESLUX\Copylib\UTYDATA.DEF;\Lubex\GESLUX\Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;\Lubex\GESLUX\Copylib\comune.def;\Lubex\GESLUX\Copylib\messaggi.def;\Lubex\GESLUX\Copylib\link-batch.def;\Lubex\GESLUX\Copylib\common-linkage.def;\Lubex\GESLUX\Copylib\blockpgm.lks;\Lubex\GESLUX\Resource\bottone-ok.bmp;\Lubex\GESLUX\Resource\bottone-cancel.bmp
 ADDITIONAL_OPTIONS=-x -Di -Ga -Zd -Za -Zn -Zz
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=..\Object\@.acu
 NAME_ERROR_FILE=@.err
@@ -94385,7 +94375,6 @@ CODE_VERSION_NUMBER=16
 [FILE_COMPILE_OPTION-EDI:Debug Mode:EDI\SOURCE\EDI-param.cbl]
 COPY_DEPENDENCE=FD\EDI-param.sl;FD\EDI-param.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;\Lubex\GESLUX\Copylib\UTYDATA.DEF;\Lubex\GESLUX\Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;\Lubex\GESLUX\Copylib\comune.def;\Lubex\GESLUX\Copylib\messaggi.def;\Lubex\GESLUX\Copylib\link-passwd.def;\Lubex\GESLUX\Copylib\common-linkage.def;\Lubex\GESLUX\Copylib\blockpgm.lks;\Lubex\GESLUX\Resource\accept.bmp;\Lubex\GESLUX\Resource\toolbar.bmp;\Lubex\GESLUX\Copylib\ABILITA-TOOLBAR.CPY;\Lubex\GESLUX\Copylib\COLOR-CUSTOM.CPY;\Lubex\GESLUX\Copylib\utydata.cpy
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
 NAME_ERROR_FILE=@.err
@@ -94450,7 +94439,6 @@ CODE_VERSION_NUMBER=16
 COPY_DEPENDENCE=FD\clienti.sl;FD\destini.sl;FD\edi-mtordini.sl;FD\EDI-mrordini.sl;FD\mtordini.sl;FD\articoli.sl;FD\clienti.fd;FD\destini.fd;FD\edi-mtordini.fd;FD\EDI-mrordini.fd;FD\mtordini.fd;FD\articoli.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;\Lubex\GESLUX\Copylib\spooler.def;\Lubex\GESLUX\Copylib\selprint.lks;Copylib\tratta-numerico.def;Copylib\link-EDI-stbozze.def;Copylib\tratta-numerico.cpy
 ADDITIONAL_OPTIONS=-x -Di -Ga -Zd -Za -Zn -Zz
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=..\Object\@.acu
 NAME_ERROR_FILE=@.err
@@ -94483,7 +94471,6 @@ CODE_VERSION_NUMBER=16
 COPY_DEPENDENCE=c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;\Lubex\GESLUX\Copylib\UTYDATA.DEF;\Lubex\GESLUX\Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;\Lubex\GESLUX\Copylib\comune.def;\Lubex\GESLUX\Copylib\messaggi.def;Copylib\link-EDI-stbozze.def;\Lubex\GESLUX\Copylib\common-linkage.def;\Lubex\GESLUX\Copylib\blockpgm.lks;\Lubex\GESLUX\Resource\bottone-ok.bmp;\Lubex\GESLUX\Resource\bottone-cancel.bmp;\Lubex\GESLUX\Resource\Blue-fino-28x24.bmp;\Lubex\GESLUX\Resource\Blue-da-28x24.bmp;\Lubex\GESLUX\Copylib\utydata.cpy;\Lubex\GESLUX\Copylib\COLOR-CUSTOM.CPY;\Lubex\GESLUX\Copylib\calcola-colore-trasparente.cpy
 ADDITIONAL_OPTIONS=-x -Di -Ga -Zd -Za -Zn -Zz
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=..\Object\@.acu
 NAME_ERROR_FILE=@.err
@@ -94516,7 +94503,6 @@ CODE_VERSION_NUMBER=16
 COPY_DEPENDENCE=FD\tordini.sl;FD\tnotacr.sl;FD\tparamge.sl;FD\zoom-tno-fat.sl;FD\zoom-tor-fat.sl;FD\zoom-tor-bolle.sl;FD\clienti.sl;FD\tcaumag.sl;FD\tordini.fd;FD\tnotacr.fd;FD\tparamge.fd;FD\zoom-tno-fat.fd;FD\zoom-tor-fat.fd;FD\zoom-tor-bolle.fd;FD\clienti.fd;FD\tcaumag.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;\Lubex\GESLUX\Copylib\standard.def;\Lubex\GESLUX\Copylib\UTYDATA.DEF;\Lubex\GESLUX\Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;\Lubex\GESLUX\Copylib\comune.def;\Lubex\GESLUX\Copylib\messaggi.def;\Lubex\GESLUX\Copylib\link-batch.def;\Lubex\GESLUX\Copylib\link-edi.def;\Lubex\GESLUX\Copylib\common-linkage.def;\Lubex\GESLUX\Copylib\blockpgm.lks;\Lubex\GESLUX\Resource\bottone-ok.bmp;\Lubex\GESLUX\Resource\bottone-cancel.bmp;\Lubex\GESLUX\Resource\toolbar.bmp;\Lubex\GESLUX\Copylib\COLOR-CUSTOM.CPY
 ADDITIONAL_OPTIONS=-x -Di -Ga -Zd -Za -Zn -Zz
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=..\Object\@.acu
 NAME_ERROR_FILE=@.err
@@ -94548,7 +94534,6 @@ CODE_VERSION_NUMBER=16
 [FILE_COMPILE_OPTION-EDI:Debug Mode:EDI\SOURCE\EDI-tiva.cbl]
 COPY_DEPENDENCE=FD\EDI-tiva.sl;FD\TIVAESE.sl;FD\EDI-tiva.fd;FD\TIVAESE.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;\Lubex\GESLUX\Copylib\UTYDATA.DEF;\Lubex\GESLUX\Copylib\comune.def;\Lubex\GESLUX\Copylib\messaggi.def;\Lubex\GESLUX\Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;\Lubex\GESLUX\Copylib\common-linkage.def;\Lubex\GESLUX\Copylib\blockpgm.lks;\Lubex\GESLUX\Resource\toolbar.bmp;resource\esegui_73x21.bmp;\Lubex\GESLUX\Copylib\ABILITA-TOOLBAR.CPY;\Lubex\GESLUX\Copylib\COLOR-CUSTOM.CPY;\Lubex\GESLUX\Copylib\cerca-testo.cpy
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
 NAME_ERROR_FILE=@.err
@@ -94580,7 +94565,6 @@ CODE_VERSION_NUMBER=16
 [FILE_COMPILE_OPTION-EDI:Debug Mode:EDI\SOURCE\extmovedi-p.cbl]
 COPY_DEPENDENCE=FD\tmovmag.sl;\Lubex\GESLUX\FD\rmovmag.sl;FD\articoli.sl;FD\tcaumag.sl;FD\tmagaz.sl;FD\clienti.sl;FD\tedi.sl;FD\redi.sl;FD\tmp-redi.sl;FD\prodener.sl;FD\paramedi.sl;FD\tnazioni.sl;FD\timposte.sl;FD\tmp-art-no-prodener.sl;FD\lineseq.sl;FD\tmovmag.fd;\Lubex\GESLUX\FD\rmovmag.fd;FD\articoli.fd;FD\tcaumag.fd;FD\tmagaz.fd;FD\clienti.fd;FD\tedi.fd;FD\redi.fd;FD\tmp-redi.fd;FD\prodener.fd;FD\paramedi.fd;FD\tnazioni.fd;FD\timposte.fd;FD\tmp-art-no-prodener.fd;FD\lineseq.fd;\Lubex\GESLUX\Copylib\link-geslock.def;\Lubex\GESLUX\Copylib\comune.def;\Lubex\GESLUX\Copylib\messaggi.def;Copylib\link-extmovedi.def;Copylib\UTF-EDI.cpy
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
 NAME_ERROR_FILE=@.err
@@ -94612,7 +94596,6 @@ CODE_VERSION_NUMBER=16
 [FILE_COMPILE_OPTION-EDI:Debug Mode:EDI\SOURCE\extmovedi.cbl]
 COPY_DEPENDENCE=c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;\Lubex\GESLUX\Copylib\UTYDATA.DEF;\Lubex\GESLUX\Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;\Lubex\GESLUX\Copylib\comune.def;\Lubex\GESLUX\Copylib\messaggi.def;Copylib\link-extmovedi.def;\Lubex\GESLUX\Copylib\splcrt2graf.lks;\Lubex\GESLUX\Copylib\common-linkage.def;\Lubex\GESLUX\Copylib\blockpgm.lks;\Lubex\GESLUX\Resource\Blue-fino-28x24.bmp;\Lubex\GESLUX\Resource\Blue-da-28x24.bmp;\Lubex\GESLUX\Resource\bottone-ok.bmp;\Lubex\GESLUX\Resource\bottone-cancel.bmp;\Lubex\GESLUX\Copylib\COLOR-CUSTOM.CPY;\Lubex\GESLUX\Copylib\utydata.cpy;\Lubex\GESLUX\Copylib\calcola-colore-trasparente.cpy
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
 NAME_ERROR_FILE=@.err
@@ -94644,7 +94627,6 @@ CODE_VERSION_NUMBER=16
 [FILE_COMPILE_OPTION-EDI:Debug Mode:EDI\SOURCE\imp-prodener-art-p.cbl]
 COPY_DEPENDENCE=FD\articoli.sl;FD\prodener.sl;FD\lineseq.sl;FD\articoli.fd;FD\prodener.fd;FD\lineseq.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;\Lubex\GESLUX\Copylib\common-excel.def;\Lubex\GESLUX\Copylib\link-readutente.def;\Lubex\GESLUX\Copylib\link-imp-files.def;\Lubex\GESLUX\Copylib\common-excel.cpy;\Lubex\GESLUX\Copylib\imp-files-procedure.cpy
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
 NAME_ERROR_FILE=@.err
@@ -94676,7 +94658,6 @@ CODE_VERSION_NUMBER=16
 [FILE_COMPILE_OPTION-EDI:Debug Mode:EDI\SOURCE\imp-prodener-p.cbl]
 COPY_DEPENDENCE=FD\prodener.sl;FD\lineseq.sl;FD\prodener.fd;FD\lineseq.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;\Lubex\GESLUX\Copylib\common-excel.def;\Lubex\GESLUX\Copylib\link-readutente.def;\Lubex\GESLUX\Copylib\link-imp-files.def;\Lubex\GESLUX\Copylib\common-excel.cpy;\Lubex\GESLUX\Copylib\imp-files-procedure.cpy
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
 NAME_ERROR_FILE=@.err
@@ -94708,7 +94689,6 @@ CODE_VERSION_NUMBER=16
 [FILE_COMPILE_OPTION-EDI:Debug Mode:EDI\SOURCE\invioedi.cbl]
 COPY_DEPENDENCE=FD\paramedi.sl;FD\tedi.sl;FD\redi.sl;FD\exp-edi.sl;FD\anautf.sl;FD\lineseq.sl;FD\paramedi.fd;FD\tedi.fd;FD\redi.fd;FD\exp-edi.fd;FD\anautf.fd;FD\lineseq.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\opensave.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;\Lubex\GESLUX\Copylib\UTYDATA.DEF;\Lubex\GESLUX\Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;\Lubex\GESLUX\Copylib\comune.def;\Lubex\GESLUX\Copylib\messaggi.def;\Lubex\GESLUX\Copylib\common-excel.def;\Lubex\GESLUX\Copylib\link-readutente.def;\Lubex\GESLUX\Copylib\link-geslock.def;\Lubex\GESLUX\Copylib\common-linkage.def;\Lubex\GESLUX\Copylib\blockpgm.lks;\Lubex\GESLUX\Resource\bottone-ok.bmp;\Lubex\GESLUX\Resource\bottone-cancel.bmp;\Lubex\GESLUX\Resource\bottone-elimina.bmp;\Lubex\GESLUX\Resource\sel-tutto.bmp;\Lubex\GESLUX\Resource\desel-tutto.bmp;\Lubex\GESLUX\Resource\excel.bmp;\Lubex\GESLUX\Copylib\utydata.cpy;\Lubex\GESLUX\Copylib\COLOR-CUSTOM.CPY;Copylib\invioedi-procedure.cpy;\Lubex\GESLUX\Copylib\common-excel.cpy;FD\EDI\GESLUX\Resource\elemento.bmp;FD\EDI\GESLUX\Resource\conferma.bmp
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
 NAME_ERROR_FILE=@.err
@@ -94740,7 +94720,6 @@ CODE_VERSION_NUMBER=16
 [FILE_COMPILE_OPTION-EDI:Debug Mode:EDI\SOURCE\paramedi.cbl]
 COPY_DEPENDENCE=FD\paramedi.sl;FD\paramedi.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;\Lubex\GESLUX\Copylib\standard.def;\Lubex\GESLUX\Copylib\UTYDATA.DEF;\Lubex\GESLUX\Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;\Lubex\GESLUX\Copylib\comune.def;\Lubex\GESLUX\Copylib\messaggi.def;\Lubex\GESLUX\Copylib\link-passwd.def;\Lubex\GESLUX\Copylib\common-linkage.def;\Lubex\GESLUX\Copylib\blockpgm.lks;\Lubex\GESLUX\Resource\accept.bmp;\Lubex\GESLUX\Resource\toolbar.bmp;\Lubex\GESLUX\Copylib\ABILITA-TOOLBAR.CPY;\Lubex\GESLUX\Copylib\COLOR-CUSTOM.CPY;\Lubex\GESLUX\Copylib\utydata.cpy
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
 NAME_ERROR_FILE=@.err
@@ -94772,7 +94751,6 @@ CODE_VERSION_NUMBER=16
 [FILE_COMPILE_OPTION-EDI:Debug Mode:EDI\SOURCE\prodener.cbl]
 COPY_DEPENDENCE=FD\prodener.sl;FD\prodener.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;\Lubex\GESLUX\Copylib\standard.def;\Lubex\GESLUX\Copylib\UTYDATA.DEF;\Lubex\GESLUX\Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;\Lubex\GESLUX\Copylib\comune.def;\Lubex\GESLUX\Copylib\messaggi.def;\Lubex\GESLUX\Copylib\common-linkage.def;\Lubex\GESLUX\Copylib\blockpgm.lks;\Lubex\GESLUX\Resource\toolbar.bmp;\Lubex\GESLUX\Copylib\ABILITA-TOOLBAR.CPY;\Lubex\GESLUX\Copylib\COLOR-CUSTOM.CPY;\Lubex\GESLUX\Copylib\status.cpy
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
 NAME_ERROR_FILE=@.err
@@ -94804,7 +94782,6 @@ CODE_VERSION_NUMBER=16
 [FILE_COMPILE_OPTION-EDI:Debug Mode:EDI\SOURCE\val-doc-redi.cbl]
 COPY_DEPENDENCE=FD\prodener.sl;FD\redi.sl;FD\paramedi.sl;FD\prodener.fd;FD\redi.fd;FD\paramedi.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
 NAME_ERROR_FILE=@.err
@@ -94836,7 +94813,6 @@ CODE_VERSION_NUMBER=16
 [FILE_COMPILE_OPTION-EDI:Debug Mode:EDI\SOURCE\val-suf-reg.cbl]
 COPY_DEPENDENCE=FD\prodener.sl;FD\prodener.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
 NAME_ERROR_FILE=@.err
@@ -94869,7 +94845,6 @@ CODE_VERSION_NUMBER=16
 COPY_DEPENDENCE=FD\EDI-clides.sl;FD\EDI-clides.fd
 ADDITIONAL_OPTIONS=-x -Di -Ga -Zd -Za -Zn -Zz
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=..\Object\@.acu
 NAME_ERROR_FILE=@.err
@@ -94899,10 +94874,9 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-EDI:Debug Mode:Source\imp-fido-p.cbl]
-COPY_DEPENDENCE=FD\clienti.sl;FD\clienti.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;\Lubex\GESLUX\Copylib\link-batch.def
+COPY_DEPENDENCE=FD\clienti.sl;FD\clienti.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;\Lubex\GESLUX\Copylib\link-batch.def;\Lubex\GESLUX\Copylib\setta-inizio-riga.cpy
 ADDITIONAL_OPTIONS=-x -Di -Ga -Zd -Za -Zn -Zz
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=..\Object\@.acu
 NAME_ERROR_FILE=@.err

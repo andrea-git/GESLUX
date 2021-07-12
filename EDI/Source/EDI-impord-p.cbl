@@ -2383,8 +2383,9 @@
                     emto-56T-filler        
                     emto-57T-filler        
                     emto-58T-filler        
-                    emto-59T-filler        
-                    emto-60T-filler        
+                    emto-59T-filler
+                    emto-01T60-inversione-imposte                
+                    emto-60T-filler
                     emto-61T-filler        
                     emto-62T-filler        
                     emto-63T-filler        
@@ -2487,8 +2488,7 @@
                     emto-160T-filler       
                     emto-161T-filler       
                     emto-162T-filler       
-                    emto-01T163-TOD-CODCOST
-                    emto-01T164-inversione-imposte
+                    emto-01T163-TOD-CODCOST 
            end-unstring.
 
       ***---
