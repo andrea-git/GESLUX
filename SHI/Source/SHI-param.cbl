@@ -8,7 +8,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          SHI-param.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 29 settembre 2020 16:47:33.
+       DATE-WRITTEN.        martedì 13 luglio 2021 13:20:16.
        REMARKS.
       *{TOTEM}END
 
@@ -61,8 +61,8 @@
           88 Screen-No-Input-Field VALUE 97.
           88 Screen-Time-Out VALUE 99.
       * Properties & User defined Working Stoarge
-       78 titolo VALUE IS "Geslux - Tabella Parametri di configurazione"
-           . 
+       78 titolo VALUE IS "Geslux - Tabella Parametri di configurazione 
+      -    "SHI". 
            COPY  "LINK-PASSWD.DEF".
        77 Form1-Tb-1-Handle
                   USAGE IS HANDLE OF WINDOW.
@@ -1698,7 +1698,7 @@
            Form1-Br-2aaaa, 
            Bar,
            COL 24,00, 
-           LINE 16,47,
+           LINE 16,46,
            SIZE 79,00 ,
            ID IS 51,
            HEIGHT-IN-CELLS,
@@ -1711,7 +1711,7 @@
            Form1-La-5aaacaaaa, 
            Label, 
            COL 3,86, 
-           LINE 35,93,
+           LINE 35,92,
            LINES 1,50 ,
            SIZE 20,00 ,
            COLOR IS 80,
@@ -1760,7 +1760,7 @@
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
-           ID IS 157,
+           ID IS 158,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1776,7 +1776,7 @@
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
-           ID IS 158,
+           ID IS 159,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1792,7 +1792,7 @@
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
-           ID IS 159,
+           ID IS 160,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1804,13 +1804,13 @@
            pb-path-elab-exp, 
            Push-Button, 
            COL 99,72, 
-           LINE 12,70,
+           LINE 12,69,
            LINES 1,31 ,
            SIZE 2,57 ,
            ENABLED mod,
            EXCEPTION-VALUE 1009,
            FONT IS Small-Font,
-           ID IS 148,
+           ID IS 161,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "...",
@@ -1821,11 +1821,11 @@
            Screen1-La-5b, 
            Label, 
            COL 4,86, 
-           LINE 12,70,
+           LINE 12,69,
            LINES 1,31 ,
            SIZE 14,57 ,
            FONT IS Small-Font,
-           ID IS 14,
+           ID IS 162,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2153,7 +2153,7 @@
            LINES 1,50 ,
            SIZE 20,00 ,
            COLOR IS 80,
-           ID IS 163,
+           ID IS 57,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            CENTER,

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          SHI-exp.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 4 novembre 2020 18:17:18.
+       DATE-WRITTEN.        martedì 13 luglio 2021 13:34:52.
        REMARKS.
       *{TOTEM}END
 
@@ -27,18 +27,18 @@
        INPUT-OUTPUT         SECTION.
        FILE-CONTROL.
       *{TOTEM}FILE-CONTROL
-           COPY "paramSHI.sl".
            COPY "lineseq.sl".
            COPY "log-macrobatch.sl".
            COPY "macrobatch.sl".
+           COPY "paramSHI.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
       *{TOTEM}FILE
-           COPY "paramSHI.fd".
            COPY "lineseq.fd".
            COPY "log-macrobatch.fd".
            COPY "macrobatch.fd".
+           COPY "paramSHI.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -62,7 +62,6 @@
           88 Screen-No-Input-Field VALUE 97.
           88 Screen-Time-Out VALUE 99.
       * Properties & User defined Working Stoarge
-       78 titolo VALUE IS "Geslux - Esportazione dati SHI". 
        77 form1-Handle
                   USAGE IS HANDLE OF WINDOW.
        77 AUTO-ID          PIC  9(6)
@@ -91,6 +90,7 @@
                   USAGE IS HANDLE OF WINDOW.
        77 status-run
                   USAGE IS SIGNED-SHORT.
+       78 titolo VALUE IS "GESLUX - Export dati SHI". 
        77 cmd-lancio       PIC  x(1000).
        77 Small-Font
                   USAGE IS HANDLE OF FONT SMALL-FONT.
@@ -134,20 +134,14 @@
           88 Form1-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 STATUS-form3-FLAG-REFRESH PIC  9.
           88 form3-FLAG-REFRESH  VALUE 1 FALSE 0. 
-       77 TMP-DataSet1-paramSHI-BUF     PIC X(9574).
        77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-log-macrobatch-BUF     PIC X(1000).
        77 TMP-DataSet1-macrobatch-BUF     PIC X(9848).
+       77 TMP-DataSet1-paramSHI-BUF     PIC X(9574).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
       * FILE'S LOCK MODE FLAG
-       77 DataSet1-paramSHI-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-paramSHI-LOCK  VALUE "Y".
-       77 DataSet1-KEYIS   PIC 9(3) VALUE 1.
-       77 DataSet1-paramSHI-KEY1-ORDER  PIC X VALUE "A".
-          88 DataSet1-paramSHI-KEY1-Asc  VALUE "A".
-          88 DataSet1-paramSHI-KEY1-Desc VALUE "D".
        77 DataSet1-lineseq-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-lineseq-LOCK  VALUE "Y".
        77 DataSet1-lineseq-KEY-ORDER  PIC X VALUE "A".
@@ -163,6 +157,11 @@
        77 DataSet1-macrobatch-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-macrobatch-KEY-Asc  VALUE "A".
           88 DataSet1-macrobatch-KEY-Desc VALUE "D".
+       77 DataSet1-paramSHI-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-paramSHI-LOCK  VALUE "Y".
+       77 DataSet1-paramSHI-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-paramSHI-KEY-Asc  VALUE "A".
+          88 DataSet1-paramSHI-KEY-Desc VALUE "D".
 
 
       *{TOTEM}END
@@ -421,26 +420,14 @@
 
        OPEN-FILE-RTN.
       *    Before Open
-           PERFORM OPEN-paramSHI
       *    lineseq OPEN MODE IS FALSE
       *    PERFORM OPEN-lineseq
       *    log-macrobatch OPEN MODE IS FALSE
       *    PERFORM OPEN-log-macrobatch
       *    macrobatch OPEN MODE IS FALSE
       *    PERFORM OPEN-macrobatch
+           PERFORM OPEN-paramSHI
       *    After Open
-           .
-
-       OPEN-paramSHI.
-      * <TOTEM:EPT. INIT:SHI-exp, FD:paramSHI, BeforeOpen>
-      * <TOTEM:END>
-           OPEN  INPUT paramSHI
-           IF NOT Valid-STATUS-paramshi
-              PERFORM  Form1-EXTENDED-FILE-STATUS
-              GO TO EXIT-STOP-ROUTINE
-           END-IF
-      * <TOTEM:EPT. INIT:SHI-exp, FD:paramSHI, AfterOpen>
-      * <TOTEM:END>
            .
 
        OPEN-lineseq.
@@ -486,22 +473,35 @@
       * <TOTEM:END>
            .
 
+       OPEN-paramSHI.
+      * <TOTEM:EPT. INIT:SHI-exp, FD:paramSHI, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  I-O paramSHI
+           IF STATUS-paramshi = "35"
+              OPEN OUTPUT paramSHI
+                IF Valid-STATUS-paramshi
+                   CLOSE paramSHI
+                   OPEN I-O paramSHI
+                END-IF
+           END-IF
+           IF NOT Valid-STATUS-paramshi
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:SHI-exp, FD:paramSHI, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
-           PERFORM CLOSE-paramSHI
       *    lineseq CLOSE MODE IS FALSE
       *    PERFORM CLOSE-lineseq
       *    log-macrobatch CLOSE MODE IS FALSE
       *    PERFORM CLOSE-log-macrobatch
       *    macrobatch CLOSE MODE IS FALSE
       *    PERFORM CLOSE-macrobatch
+           PERFORM CLOSE-paramSHI
       *    After Close
-           .
-
-       CLOSE-paramSHI.
-      * <TOTEM:EPT. INIT:SHI-exp, FD:paramSHI, BeforeClose>
-      * <TOTEM:END>
-           CLOSE paramSHI
            .
 
        CLOSE-lineseq.
@@ -519,209 +519,24 @@
       * <TOTEM:END>
            .
 
-       DataSet1-paramSHI-INITSTART.
-           EVALUATE DataSet1-KEYIS
-           WHEN 1
-              IF DataSet1-paramSHI-KEY1-Asc
-                 MOVE Low-Value TO shi-chiave OF PARAMSHI
-              ELSE
-                 MOVE High-Value TO shi-chiave OF PARAMSHI
-              END-IF
-           END-EVALUATE
-           .
-
-       DataSet1-paramSHI-INITEND.
-           EVALUATE DataSet1-KEYIS
-           WHEN 1
-              IF DataSet1-paramSHI-KEY1-Asc
-                 MOVE High-Value TO shi-chiave OF PARAMSHI
-              ELSE
-                 MOVE Low-Value TO shi-chiave OF PARAMSHI
-              END-IF
-           END-EVALUATE
-           .
-
-       DataSet1-CHANGETO-KEY1.
-           MOVE 1 TO DataSet1-KEYIS
-           .   
-
-       DataSet1-Change-CurrentKey-Asc.
-           EVALUATE DataSet1-KEYIS
-           WHEN 1
-              MOVE "A" TO DataSet1-paramSHI-KEY1-ORDER
-           END-EVALUATE
-           .
-
-       DataSet1-Change-CurrentKey-Desc.
-           EVALUATE DataSet1-KEYIS
-           WHEN 1
-              MOVE "D" TO DataSet1-paramSHI-KEY1-ORDER
-           END-EVALUATE
-           .
-
-      * paramSHI
-       DataSet1-paramSHI-START.
-           EVALUATE DataSet1-KEYIS
-           WHEN 1
-              IF DataSet1-paramSHI-KEY1-Asc
-                 START paramSHI KEY >= shi-chiave OF PARAMSHI
-              ELSE
-                 START paramSHI KEY <= shi-chiave OF PARAMSHI
-              END-IF
-           END-EVALUATE
-           .
-
-       DataSet1-paramSHI-START-NOTGREATER.
-           EVALUATE DataSet1-KEYIS
-           WHEN 1
-              IF DataSet1-paramSHI-KEY1-Asc
-                 START paramSHI KEY <= shi-chiave OF PARAMSHI
-              ELSE
-                 START paramSHI KEY >= shi-chiave OF PARAMSHI
-              END-IF
-           END-EVALUATE
-           .
-
-       DataSet1-paramSHI-START-GREATER.
-           EVALUATE DataSet1-KEYIS
-           WHEN 1
-              IF DataSet1-paramSHI-KEY1-Asc
-                 START paramSHI KEY > shi-chiave OF PARAMSHI
-              ELSE
-                 START paramSHI KEY < shi-chiave OF PARAMSHI
-              END-IF
-           END-EVALUATE
-           .
-
-       DataSet1-paramSHI-START-LESS.
-           EVALUATE DataSet1-KEYIS
-           WHEN 1
-              IF DataSet1-paramSHI-KEY1-Asc
-                 START paramSHI KEY < shi-chiave OF PARAMSHI
-              ELSE
-                 START paramSHI KEY > shi-chiave OF PARAMSHI
-              END-IF
-           END-EVALUATE
-           .
-
-       DataSet1-paramSHI-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, BeforeRead>
+       CLOSE-paramSHI.
+      * <TOTEM:EPT. INIT:SHI-exp, FD:paramSHI, BeforeClose>
       * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, BeforeReadRecord>
-      * <TOTEM:END>
-           EVALUATE DataSet1-KEYIS
-           WHEN 1
-              IF DataSet1-paramSHI-LOCK
-                 READ paramSHI WITH LOCK 
-                 KEY shi-chiave OF PARAMSHI
-              ELSE
-                 READ paramSHI WITH NO LOCK 
-                 KEY shi-chiave OF PARAMSHI
-              END-IF
-           END-EVALUATE
-           MOVE STATUS-paramshi TO TOTEM-ERR-STAT 
-           MOVE "paramSHI" TO TOTEM-ERR-FILE
-           MOVE "READ" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, AfterReadRecord>
-      * <TOTEM:END>
-           .
-
-       DataSet1-paramSHI-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, BeforeReadNext>
-      * <TOTEM:END>
-           EVALUATE DataSet1-KEYIS
-           WHEN 1
-              IF DataSet1-paramSHI-KEY1-Asc
-                 IF DataSet1-paramSHI-LOCK
-                    READ paramSHI NEXT WITH LOCK
-                 ELSE
-                    READ paramSHI NEXT WITH NO LOCK
-                 END-IF
-              ELSE
-                 IF DataSet1-paramSHI-LOCK
-                    READ paramSHI PREVIOUS WITH LOCK
-                 ELSE
-                    READ paramSHI PREVIOUS WITH NO LOCK
-                 END-IF
-              END-IF
-           END-EVALUATE
-           MOVE STATUS-paramshi TO TOTEM-ERR-STAT
-           MOVE "paramSHI" TO TOTEM-ERR-FILE
-           MOVE "READ NEXT" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, AfterReadNext>
-      * <TOTEM:END>
-           .
-
-       DataSet1-paramSHI-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, BeforeReadPrev>
-      * <TOTEM:END>
-           EVALUATE DataSet1-KEYIS
-           WHEN 1
-              IF DataSet1-paramSHI-KEY1-Asc
-                 IF DataSet1-paramSHI-LOCK
-                    READ paramSHI PREVIOUS WITH LOCK
-                 ELSE
-                    READ paramSHI PREVIOUS WITH NO LOCK
-                 END-IF
-              ELSE
-                 IF DataSet1-paramSHI-LOCK
-                    READ paramSHI NEXT WITH LOCK
-                 ELSE
-                    READ paramSHI NEXT WITH NO LOCK
-                 END-IF
-              END-IF
-           END-EVALUATE
-           MOVE STATUS-paramshi TO TOTEM-ERR-STAT
-           MOVE "paramSHI" TO TOTEM-ERR-FILE
-           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, AfterReadPrev>
-      * <TOTEM:END>
-           .
-
-       DataSet1-paramSHI-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, BeforeWrite>
-      * <TOTEM:END>
-           MOVE STATUS-paramshi TO TOTEM-ERR-STAT
-           MOVE "paramSHI" TO TOTEM-ERR-FILE
-           MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, AfterWrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-paramSHI-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, BeforeRewrite>
-      * <TOTEM:END>
-           MOVE STATUS-paramshi TO TOTEM-ERR-STAT
-           MOVE "paramSHI" TO TOTEM-ERR-FILE
-           MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, AfterRewrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-paramSHI-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, BeforeDelete>
-      * <TOTEM:END>
-           MOVE STATUS-paramshi TO TOTEM-ERR-STAT
-           MOVE "paramSHI" TO TOTEM-ERR-FILE
-           MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, AfterDelete>
-      * <TOTEM:END>
+           CLOSE paramSHI
            .
 
        DataSet1-lineseq-INITSTART.
            .
 
        DataSet1-lineseq-INITEND.
+           .
+
+       DataSet1-Change-CurrentKey-Asc.
+           MOVE "A" TO DataSet1-lineseq-KEY-ORDER
+           .
+
+       DataSet1-Change-CurrentKey-Desc.
+           MOVE "D" TO DataSet1-lineseq-KEY-ORDER
            .
 
        DataSet1-lineseq-Read.
@@ -1032,21 +847,170 @@
       * <TOTEM:END>
            .
 
+       DataSet1-paramSHI-INITSTART.
+           IF DataSet1-paramSHI-KEY-Asc
+              MOVE Low-Value TO shi-chiave OF PARAMSHI
+           ELSE
+              MOVE High-Value TO shi-chiave OF PARAMSHI
+           END-IF
+           .
+
+       DataSet1-paramSHI-INITEND.
+           IF DataSet1-paramSHI-KEY-Asc
+              MOVE High-Value TO shi-chiave OF PARAMSHI
+           ELSE
+              MOVE Low-Value TO shi-chiave OF PARAMSHI
+           END-IF
+           .
+
+      * paramSHI
+       DataSet1-paramSHI-START.
+           IF DataSet1-paramSHI-KEY-Asc
+              START paramSHI KEY >= shi-chiave OF PARAMSHI
+           ELSE
+              START paramSHI KEY <= shi-chiave OF PARAMSHI
+           END-IF
+           .
+
+       DataSet1-paramSHI-START-NOTGREATER.
+           IF DataSet1-paramSHI-KEY-Asc
+              START paramSHI KEY <= shi-chiave OF PARAMSHI
+           ELSE
+              START paramSHI KEY >= shi-chiave OF PARAMSHI
+           END-IF
+           .
+
+       DataSet1-paramSHI-START-GREATER.
+           IF DataSet1-paramSHI-KEY-Asc
+              START paramSHI KEY > shi-chiave OF PARAMSHI
+           ELSE
+              START paramSHI KEY < shi-chiave OF PARAMSHI
+           END-IF
+           .
+
+       DataSet1-paramSHI-START-LESS.
+           IF DataSet1-paramSHI-KEY-Asc
+              START paramSHI KEY < shi-chiave OF PARAMSHI
+           ELSE
+              START paramSHI KEY > shi-chiave OF PARAMSHI
+           END-IF
+           .
+
+       DataSet1-paramSHI-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-paramSHI-LOCK
+              READ paramSHI WITH LOCK 
+              KEY shi-chiave OF PARAMSHI
+           ELSE
+              READ paramSHI WITH NO LOCK 
+              KEY shi-chiave OF PARAMSHI
+           END-IF
+           MOVE STATUS-paramshi TO TOTEM-ERR-STAT 
+           MOVE "paramSHI" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-paramSHI-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-paramSHI-KEY-Asc
+              IF DataSet1-paramSHI-LOCK
+                 READ paramSHI NEXT WITH LOCK
+              ELSE
+                 READ paramSHI NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-paramSHI-LOCK
+                 READ paramSHI PREVIOUS WITH LOCK
+              ELSE
+                 READ paramSHI PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-paramshi TO TOTEM-ERR-STAT
+           MOVE "paramSHI" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-paramSHI-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-paramSHI-KEY-Asc
+              IF DataSet1-paramSHI-LOCK
+                 READ paramSHI PREVIOUS WITH LOCK
+              ELSE
+                 READ paramSHI PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-paramSHI-LOCK
+                 READ paramSHI NEXT WITH LOCK
+              ELSE
+                 READ paramSHI NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-paramshi TO TOTEM-ERR-STAT
+           MOVE "paramSHI" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-paramSHI-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, BeforeWrite>
+      * <TOTEM:END>
+           WRITE shi-rec OF paramSHI.
+           MOVE STATUS-paramshi TO TOTEM-ERR-STAT
+           MOVE "paramSHI" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-paramSHI-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, BeforeRewrite>
+      * <TOTEM:END>
+           REWRITE shi-rec OF paramSHI.
+           MOVE STATUS-paramshi TO TOTEM-ERR-STAT
+           MOVE "paramSHI" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-paramSHI-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, BeforeDelete>
+      * <TOTEM:END>
+           DELETE paramSHI.
+           MOVE STATUS-paramshi TO TOTEM-ERR-STAT
+           MOVE "paramSHI" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:paramSHI, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
-           INITIALIZE shi-rec OF paramSHI
            INITIALIZE line-riga OF lineseq
            INITIALIZE lm-riga OF log-macrobatch
            INITIALIZE mb-rec OF macrobatch
-           .
-
-
-      * FD's Initialize Paragraph
-       DataSet1-paramSHI-INITREC.
            INITIALIZE shi-rec OF paramSHI
-               REPLACING NUMERIC       DATA BY ZEROS
-                         ALPHANUMERIC  DATA BY SPACES
-                         ALPHABETIC    DATA BY SPACES
            .
+
 
       * FD's Initialize Paragraph
        DataSet1-lineseq-INITREC.
@@ -1067,6 +1031,14 @@
       * FD's Initialize Paragraph
        DataSet1-macrobatch-INITREC.
            INITIALIZE mb-rec OF macrobatch
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-paramSHI-INITREC.
+           INITIALIZE shi-rec OF paramSHI
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -1102,7 +1074,7 @@
               LINK TO THREAD,
               NO SCROLL,
               TITLE-BAR,
-              TITLE TITOLO,
+              TITLE titolo,
               WITH SYSTEM MENU,
               USER-GRAY,
            VISIBLE video-on,
@@ -1207,7 +1179,7 @@
            .
 
        Form1-Init-Value.
-           MOVE TITOLO TO TOTEM-MSG-TITLE
+           MOVE titolo TO TOTEM-MSG-TITLE
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, SetDefault>
       * <TOTEM:END>
            PERFORM Form1-FLD-TO-BUF
@@ -1875,7 +1847,7 @@
       * EVENT PARAGRAPH
        Screen4-Pb-1-LinkTo.
       * <TOTEM:PARA. Screen4-Pb-1-LinkTo>
-           set crea-ordini   to true.
+           set crea-ordini to true.
            perform ESPORTA 
            .
       * <TOTEM:END>

@@ -37,7 +37,7 @@
 
       ******************************************************************
        PROCEDURE DIVISION USING r-output.
-
+       MAIN.
            accept como-ora  from time.
            accept como-data from century-date.
 

@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          SHI-imp.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 1 aprile 2014 17:51:33.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        martedì 13 luglio 2021 13:29:07.
        REMARKS.
       *{TOTEM}END
 
@@ -45,9 +45,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\Lubex\GESLUX\Copylib\UTYDATA.DEF".
-               COPY "F:\Lubex\GESLUX\Copylib\comune.def".
-               COPY "F:\Lubex\GESLUX\Copylib\custom.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -60,7 +58,7 @@
           88 Screen-No-Input-Field VALUE 97.
           88 Screen-Time-Out VALUE 99.
       * Properties & User defined Working Stoarge
-       78 titolo VALUE IS "Geslux - Importazione dati SHI". 
+       78 titolo VALUE IS "GESLUX - Import dati SHI". 
        77 form1-Handle
                   USAGE IS HANDLE OF WINDOW.
        77 AUTO-ID          PIC  9(6)
@@ -124,7 +122,7 @@
        77 STATUS-formFTP-FLAG-REFRESH PIC  9.
           88 formFTP-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-paramSHI-BUF     PIC X(9574).
-       77 TMP-DataSet1-lineseq-BUF     PIC X(900).
+       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.

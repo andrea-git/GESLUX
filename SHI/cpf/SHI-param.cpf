@@ -12,7 +12,7 @@ DEF_SKL_PATH=0
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E579134617-562-1323416654
+PROGRAM_UNIQUE_CODE=TOTEM-7E57D18820-529-991630504
 
 {{@DESCRIPTION:
 
@@ -29,7 +29,7 @@ m_bStandard=1
 @}}
 [FDITEM0_WK]
 m_strName=titolo
-m_strDefaultValue="Geslux - Tabella Parametri di configurazione"
+m_strDefaultValue="Geslux - Tabella Parametri di configurazione SHI"
 m_nItemLevel=78
 m_nSync=-1
 m_bFixed=1
@@ -2751,7 +2751,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = SENZA \ o / FINALE
-            ID                = 15
+            ID                = 150
             ID Variable       = AUTO-ID
             Justification     = Unaligned
             Line              = 9,15
@@ -2814,7 +2814,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = .
-            ID                = 150
+            ID                = 151
             ID Variable       = AUTO-ID
             Justification     = Unaligned
             Line              = 14,08
@@ -2877,7 +2877,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = .
-            ID                = 151
+            ID                = 152
             ID Variable       = AUTO-ID
             Justification     = Unaligned
             Line              = 16,08
@@ -2940,7 +2940,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = .
-            ID                = 152
+            ID                = 153
             ID Variable       = AUTO-ID
             Justification     = Unaligned
             Line              = 18,08
@@ -3003,7 +3003,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = .
-            ID                = 153
+            ID                = 154
             ID Variable       = AUTO-ID
             Justification     = Unaligned
             Line              = 20,08
@@ -3066,7 +3066,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = .
-            ID                = 154
+            ID                = 155
             ID Variable       = AUTO-ID
             Justification     = Unaligned
             Line              = 22,08
@@ -3507,7 +3507,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = .
-            ID                = 155
+            ID                = 156
             ID Variable       = AUTO-ID
             Justification     = Unaligned
             Line              = 38,85
@@ -3570,7 +3570,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = .
-            ID                = 156
+            ID                = 157
             ID Variable       = AUTO-ID
             Justification     = Unaligned
             Line              = 40,85
@@ -4072,7 +4072,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-2aaaa
             SCREEN-COL        = 24,00
-            SCREEN-LINE       = 16,47
+            SCREEN-LINE       = 16,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-2aaaa
@@ -4101,7 +4101,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaacaaaa
             SCREEN-COL        = 3,86
-            SCREEN-LINE       = 35,93
+            SCREEN-LINE       = 35,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaacaaaa
@@ -4213,7 +4213,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 157
+            ID                = 158
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 36,85
@@ -4247,7 +4247,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 158
+            ID                = 159
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 38,85
@@ -4281,7 +4281,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 159
+            ID                = 160
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 40,85
@@ -4299,7 +4299,7 @@ Begin Screen Form1
          End
          Begin Push-Button pb-path-elab-exp
             SCREEN-COL        = 99,72
-            SCREEN-LINE       = 12,70
+            SCREEN-LINE       = 12,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = pb-path-elab-exp
@@ -4321,7 +4321,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 148
+            ID                = 161
             Line              = 9,15
             Lines             = 1,31
             Lines Unit        = Default
@@ -4341,7 +4341,7 @@ Begin Screen Form1
          End
          Begin Label Screen1-La-5b
             SCREEN-COL        = 4,86
-            SCREEN-LINE       = 12,70
+            SCREEN-LINE       = 12,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Screen1-La-5b
@@ -4357,7 +4357,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 14
+            ID                = 162
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 9,15
@@ -4416,7 +4416,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = .
-            ID                = 160
+            ID                = 163
             ID Variable       = AUTO-ID
             Justification     = Unaligned
             Line              = 5,00
@@ -5265,7 +5265,7 @@ Begin Screen Form1
             Font              = Default Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 163
+            ID                = 57
             Justification     = Center
             Label Offset      = 20
             Line              = 2,31
