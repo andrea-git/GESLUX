@@ -2446,29 +2446,16 @@
               when other move spaces to CodPag
               end-evaluate
 
-              if tor-num-fattura = 23333
-                 initialize line-riga
-                 string 78-spazi 
-                        78-spazi   
-                        78-spazi
-                        78-spazi
-                        "<ModalitaPagamento>"
-                        CodPag               
-                        "</4>"
-                   into line-riga
-                 write line-riga
-              else
-                 initialize line-riga
-                 string 78-spazi 
-                        78-spazi   
-                        78-spazi
-                        78-spazi
-                        "<ModalitaPagamento>"
-                        CodPag               
-                        "</ModalitaPagamento>"
-                   into line-riga
-                 write line-riga
-              end-if
+              initialize line-riga
+              string 78-spazi 
+                     78-spazi   
+                     78-spazi
+                     78-spazi
+                     "<ModalitaPagamento>"
+                     CodPag               
+                     "</ModalitaPagamento>"
+                into line-riga
+              write line-riga
 
               if sca-a-vista(idx) = "S"
                  if lfel-f                                        
