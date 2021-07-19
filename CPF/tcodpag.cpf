@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E57D104546-611-1319328788
+PROGRAM_UNIQUE_CODE=TOTEM-7E5713131837-578-6479639
 
 {{@DESCRIPTION:
 
@@ -3052,14 +3052,15 @@ BEGIN-TEXT
                 evaluate col-tipo-pag
                 when "B"
                 when "D"
-                when "T"
+                when "T"           
                 when "W" 
+                when "Z" 
                 when "E" continue
                 when other
                      set errori to true
                      display message box
                              "Valori consentiti: "
-                      x"0d0a""- B : Bonifico bancario"
+                      x"0d0a""- B/Z : Bonifico bancario"
                       x"0d0a""- D : Rimessa  diretta"
                       x"0d0a""- T : Tratta"
                       x"0d0a""- W : R.I.B.A."

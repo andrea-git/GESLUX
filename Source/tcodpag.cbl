@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          tcodpag.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 9 febbraio 2021 13:52:21.
+       DATE-WRITTEN.        lunedì 19 luglio 2021 15:19:10.
        REMARKS.
       *{TOTEM}END
 
@@ -2724,14 +2724,15 @@
                 evaluate col-tipo-pag
                 when "B"
                 when "D"
-                when "T"
+                when "T"           
                 when "W" 
+                when "Z" 
                 when "E" continue
                 when other
                      set errori to true
                      display message box
                              "Valori consentiti: "
-                      x"0d0a""- B : Bonifico bancario"
+                      x"0d0a""- B/Z : Bonifico bancario"
                       x"0d0a""- D : Rimessa  diretta"
                       x"0d0a""- T : Tratta"
                       x"0d0a""- W : R.I.B.A."
