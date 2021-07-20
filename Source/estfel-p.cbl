@@ -77,6 +77,7 @@
        77  status-tnazioni       pic xx.
        77  status-recapiti       pic xx.
        77  status-edi-clides     pic xx.
+       77  cod-pag               pic x(3).
        77  data-doc              pic 9(8).
        77  num-doc               pic 9(8).
        77  tipo-doc              pic x.
@@ -310,8 +311,9 @@
                        read tcodpag no lock
                             invalid continue
                        end-read
-                       move tor-data-fattura to data-doc
-                       move tor-num-fattura  to num-doc
+                       move tor-data-fattura  to data-doc
+                       move tor-num-fattura   to num-doc
+                       move tor-cod-pagamento to cod-pag
                        perform ELABORA-DOCUMENTO
                     end-if
                  end-perform
@@ -378,7 +380,8 @@
                             invalid continue
                        end-read                 
                        move tno-data-fattura to data-doc
-                       move tno-num-fattura  to num-doc
+                       move tno-num-fattura  to num-doc 
+                       move tno-cod-pagamento to cod-pag
                        perform ELABORA-DOCUMENTO
                     end-if
                  end-perform
@@ -1230,7 +1233,63 @@
                      78-spazi 
                      "<DatiOrdineAcquisto>"
                 into line-riga
-              write line-riga            
+              write line-riga        
+    
+              if lfel-f
+                 move low-value   to ror-rec
+                 move tor-anno    to ror-anno
+                 move tor-numero  to ror-num-ordine
+                 start rordini key > ror-chiave
+                       invalid continue
+                   not invalid
+                       perform until 1 = 2
+                          read rordini next at end exit perform end-read
+                          if ror-anno       not = tor-anno or
+                             ror-num-ordine not = tor-numero
+                             exit perform
+                          end-if          
+                          move ror-num-riga to como-numero
+                          perform EDIT-NUMERO
+                          initialize line-riga
+                          string 78-spazi
+                                 78-spazi
+                                 78-spazi
+                                 78-spazi
+                                 "<RiferimentoNumeroLinea>"
+                                 como-numero delimited low-value
+                                 "</RiferimentoNumeroLinea>"
+                            into line-riga
+                          write line-riga
+                       end-perform
+                 end-start
+              else        
+                 move low-value   to rno-rec
+                 move tno-anno    to rno-anno
+                 move tno-numero  to rno-numero
+                 start rnotacr key > rno-chiave
+                       invalid continue
+                   not invalid
+                       perform until 1 = 2
+                          read rnotacr next at end exit perform end-read
+                          if rno-anno   not = tno-anno or
+                             rno-numero not = tno-numero
+                             exit perform
+                          end-if          
+                          move rno-num-riga to como-numero
+                          perform EDIT-NUMERO
+                          initialize line-riga
+                          string 78-spazi
+                                 78-spazi
+                                 78-spazi
+                                 78-spazi
+                                 "<RiferimentoNumeroLinea>"
+                                 como-numero delimited low-value
+                                 "</RiferimentoNumeroLinea>"
+                            into line-riga
+                          write line-riga
+                       end-perform        
+                 end-start
+              end-if                      
               
               if tor-num-ord-cli = spaces    
                  initialize line-riga
@@ -1777,7 +1836,7 @@
                   como-numero delimited low-value
                   "</NumeroLinea>"
              into line-riga.
-           write line-riga.      
+           write line-riga. 
 
            move 0 to como-ean.
            if art-codice-ean-1 > 0 
@@ -2404,9 +2463,9 @@
            write line-riga.  
            initialize variabili-varsca replacing numeric data by zeroes
                                             alphanumeric data by spaces.
-           move tor-cod-pagamento to sca-codice-pa.
-           move tor-data-fattura  to sca-data-fattura.
-           move tor-data-fattura  to sca-data-conteggio.
+           move cod-pag           to sca-codice-pa.
+           move data-doc          to sca-data-fattura.
+           move data-doc          to sca-data-conteggio.
            move tot-fattura       to sca-importo-fattura.
            move tot-fattura       to sca-importo-fattura-va.
            move tot-iva           to sca-iva.
