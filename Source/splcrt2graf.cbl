@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          splcrt2graf.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 29 maggio 2021 01:10:14.
+       DATE-WRITTEN.        giovedì 29 luglio 2021 16:00:34.
        REMARKS.
       *{TOTEM}END
 
@@ -28,11 +28,15 @@
        FILE-CONTROL.
       *{TOTEM}FILE-CONTROL
            COPY "STA-splcrt2graf.sl".
+           COPY "binseq-s.sl".
+           COPY "binseq-d.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
       *{TOTEM}FILE
            COPY "STA-splcrt2graf.fd".
+           COPY "binseq-s.fd".
+           COPY "binseq-d.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -137,6 +141,12 @@
                   USAGE IS COMP-4
                   VALUE IS 0.
        77 PosizioneFileDisplay         PIC  x(256).
+       77 path-binseq-s    PIC  X(256).
+       77 STATUS-binseq-s  PIC  X(2).
+           88 Valid-STATUS-binseq-s VALUE IS "00" THRU "09". 
+       77 path-binseq-d    PIC  X(256).
+       77 STATUS-binseq-d  PIC  X(2).
+           88 Valid-STATUS-binseq-d VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -146,6 +156,8 @@
        77 STATUS-Form3-FLAG-REFRESH PIC  9.
           88 Form3-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-STA-INPUT-STA-splcrt2graf-BUF     PIC X(900).
+       77 TMP-STA-INPUT-binseq-s-BUF     PIC X(16000).
+       77 TMP-STA-INPUT-binseq-d-BUF     PIC X(16000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -155,6 +167,16 @@
        77 STA-INPUT-STA-splcrt2graf-KEY-ORDER  PIC X VALUE "A".
           88 STA-INPUT-STA-splcrt2graf-KEY-Asc  VALUE "A".
           88 STA-INPUT-STA-splcrt2graf-KEY-Desc VALUE "D".
+       77 STA-INPUT-binseq-s-LOCK-FLAG   PIC X VALUE SPACE.
+           88 STA-INPUT-binseq-s-LOCK  VALUE "Y".
+       77 STA-INPUT-binseq-s-KEY-ORDER  PIC X VALUE "A".
+          88 STA-INPUT-binseq-s-KEY-Asc  VALUE "A".
+          88 STA-INPUT-binseq-s-KEY-Desc VALUE "D".
+       77 STA-INPUT-binseq-d-LOCK-FLAG   PIC X VALUE SPACE.
+           88 STA-INPUT-binseq-d-LOCK  VALUE "Y".
+       77 STA-INPUT-binseq-d-KEY-ORDER  PIC X VALUE "A".
+          88 STA-INPUT-binseq-d-KEY-Asc  VALUE "A".
+          88 STA-INPUT-binseq-d-KEY-Desc VALUE "D".
 
 
            copy "winprint.def".
@@ -632,6 +654,10 @@
       *    Before Open
       *    STA-splcrt2graf OPEN MODE IS FALSE
       *    PERFORM OPEN-STA-splcrt2graf
+      *    binseq-s OPEN MODE IS FALSE
+      *    PERFORM OPEN-binseq-s
+      *    binseq-d OPEN MODE IS FALSE
+      *    PERFORM OPEN-binseq-d
       *    After Open
            .
 
@@ -647,15 +673,53 @@
       * <TOTEM:END>
            .
 
+       OPEN-binseq-s.
+      * <TOTEM:EPT. INIT:splcrt2graf, FD:binseq-s, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT binseq-s
+           IF NOT Valid-STATUS-binseq-s
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:splcrt2graf, FD:binseq-s, AfterOpen>
+      * <TOTEM:END>
+           .
+
+       OPEN-binseq-d.
+      * <TOTEM:EPT. INIT:splcrt2graf, FD:binseq-d, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT binseq-d
+           IF NOT Valid-STATUS-binseq-d
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:splcrt2graf, FD:binseq-d, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
       *    STA-splcrt2graf CLOSE MODE IS FALSE
       *    PERFORM CLOSE-STA-splcrt2graf
+      *    binseq-s CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-binseq-s
+      *    binseq-d CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-binseq-d
       *    After Close
            .
 
        CLOSE-STA-splcrt2graf.
       * <TOTEM:EPT. INIT:splcrt2graf, FD:STA-splcrt2graf, BeforeClose>
+      * <TOTEM:END>
+           .
+
+       CLOSE-binseq-s.
+      * <TOTEM:EPT. INIT:splcrt2graf, FD:binseq-s, BeforeClose>
+      * <TOTEM:END>
+           .
+
+       CLOSE-binseq-d.
+      * <TOTEM:EPT. INIT:splcrt2graf, FD:binseq-d, BeforeClose>
       * <TOTEM:END>
            .
 
@@ -754,8 +818,184 @@
       * <TOTEM:END>
            .
 
+       STA-INPUT-binseq-s-INITSTART.
+           .
+
+       STA-INPUT-binseq-s-INITEND.
+           .
+
+       STA-INPUT-binseq-s-Read.
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-s, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-s, BeforeReadRecord>
+      * <TOTEM:END>
+           IF STA-INPUT-binseq-s-LOCK
+              READ binseq-s WITH LOCK 
+           ELSE
+              READ binseq-s WITH NO LOCK 
+           END-IF
+           MOVE STATUS-binseq-s TO TOTEM-ERR-STAT 
+           MOVE "binseq-s" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-s, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-s, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       STA-INPUT-binseq-s-Read-Next.
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-s, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-s, BeforeReadNext>
+      * <TOTEM:END>
+           IF STA-INPUT-binseq-s-KEY-Asc
+              IF STA-INPUT-binseq-s-LOCK
+                 READ binseq-s NEXT WITH LOCK
+              ELSE
+                 READ binseq-s NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-binseq-s TO TOTEM-ERR-STAT
+           MOVE "binseq-s" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-s, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-s, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       STA-INPUT-binseq-s-Read-Prev.
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-s, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-s, BeforeReadPrev>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-s, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-s, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       STA-INPUT-binseq-s-Rec-Write.
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-s, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-binseq-s TO TOTEM-ERR-STAT
+           MOVE "binseq-s" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-s, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       STA-INPUT-binseq-s-Rec-Rewrite.
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-s, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-binseq-s TO TOTEM-ERR-STAT
+           MOVE "binseq-s" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-s, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       STA-INPUT-binseq-s-Rec-Delete.
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-s, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-binseq-s TO TOTEM-ERR-STAT
+           MOVE "binseq-s" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-s, AfterDelete>
+      * <TOTEM:END>
+           .
+
+       STA-INPUT-binseq-d-INITSTART.
+           .
+
+       STA-INPUT-binseq-d-INITEND.
+           .
+
+       STA-INPUT-binseq-d-Read.
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-d, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-d, BeforeReadRecord>
+      * <TOTEM:END>
+           IF STA-INPUT-binseq-d-LOCK
+              READ binseq-d WITH LOCK 
+           ELSE
+              READ binseq-d WITH NO LOCK 
+           END-IF
+           MOVE STATUS-binseq-d TO TOTEM-ERR-STAT 
+           MOVE "binseq-d" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-d, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-d, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       STA-INPUT-binseq-d-Read-Next.
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-d, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-d, BeforeReadNext>
+      * <TOTEM:END>
+           IF STA-INPUT-binseq-d-KEY-Asc
+              IF STA-INPUT-binseq-d-LOCK
+                 READ binseq-d NEXT WITH LOCK
+              ELSE
+                 READ binseq-d NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-binseq-d TO TOTEM-ERR-STAT
+           MOVE "binseq-d" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-d, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-d, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       STA-INPUT-binseq-d-Read-Prev.
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-d, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-d, BeforeReadPrev>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-d, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-d, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       STA-INPUT-binseq-d-Rec-Write.
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-d, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-binseq-d TO TOTEM-ERR-STAT
+           MOVE "binseq-d" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-d, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       STA-INPUT-binseq-d-Rec-Rewrite.
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-d, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-binseq-d TO TOTEM-ERR-STAT
+           MOVE "binseq-d" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-d, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       STA-INPUT-binseq-d-Rec-Delete.
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-d, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-binseq-d TO TOTEM-ERR-STAT
+           MOVE "binseq-d" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:STA-INPUT, FD:binseq-d, AfterDelete>
+      * <TOTEM:END>
+           .
+
        STA-INPUT-INIT-RECORD.
            INITIALIZE splcrt2graf-rigo OF STA-splcrt2graf
+           INITIALIZE bin-rec-s OF binseq-s
+           INITIALIZE bin-rec-d OF binseq-d
            .
 
 
@@ -766,6 +1006,22 @@
       * FD's Initialize Paragraph
        STA-INPUT-STA-splcrt2graf-INITREC.
            INITIALIZE splcrt2graf-rigo OF STA-splcrt2graf
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       STA-INPUT-binseq-s-INITREC.
+           INITIALIZE bin-rec-s OF binseq-s
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       STA-INPUT-binseq-d-INITREC.
+           INITIALIZE bin-rec-d OF binseq-d
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -1103,7 +1359,37 @@
 
        Form3-PROC.
       * <TOTEM:EPT. FORM:Form3, FORM:Form3, BeforeAccept>
-           move PosizioneFile to PosizioneFileDisplay.
+           
+           evaluate CallingPrg
+           when "stregutf-a4"
+                accept como-data from century-date
+                accept como-ora  from time
+                move PosizioneFile to path-binseq-s
+                initialize path-binseq-d
+                inspect wstampa replacing trailing spaces by low-value
+                string  wstampa delimited low-value
+                        como-data     delimited size
+                        "_"           delimited size
+                        como-ora      delimited size
+                        ".txt"        delimited size
+                   into path-binseq-d
+                end-string
+                open output binseq-d
+                open input  binseq-s
+                perform until 1 = 2
+                   read binseq-s next at end exit perform end-read
+                   move bin-rec-s to bin-rec-d
+                   inspect bin-rec-d replacing all "-" by "_"
+                   write bin-rec-d
+                end-perform
+                close       binseq-d
+                close       binseq-s
+
+                move path-binseq-d to PosizioneFileDisplay
+
+           when other
+                move PosizioneFile to PosizioneFileDisplay
+           end-evaluate
            modify form3-wb-1, value PosizioneFileDisplay.
 
            .

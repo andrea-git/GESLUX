@@ -8,7 +8,7 @@
 WORKSPACE_UNIQUE_CODE=TOTEM-7DE41144432-337-117565976
 PROJECT_LIST=GESLUX,LAB,EDI,GET,SHI,STORICO,AndamentoClienti
 CONFIGURATION_LIST=Debug Mode,RELEASE
-CURRENT_CONFIGURATION=RELEASE
+CURRENT_CONFIGURATION=Debug Mode
 
 [FILE_DEFINITION_CONTENT]
 VERSION=1
@@ -1863,6 +1863,12 @@ RELATIVE_PATH=FD\TBLDO.clf
 
 [DATALAYOUT_CONTENT-GESLUX:DATALAYOUT289]
 RELATIVE_PATH=FD\tivaese.clf
+
+[DATALAYOUT_CONTENT-GESLUX:DATALAYOUT290]
+RELATIVE_PATH=FD\binseq-s.clf
+
+[DATALAYOUT_CONTENT-GESLUX:DATALAYOUT291]
+RELATIVE_PATH=FD\binseq-d.clf
 
 [FOLDER_CONTENT-GESLUX:Source]
 ACCEPTED_FILE_EXTENSION=*.cbl;*.cob
@@ -15524,6 +15530,42 @@ ATTRIBUTE=0
 RELATIVE_PATH=FD\tmp-ricalimp.sl
 FOLDER_NAME=FD
 OWNER_PATH=FD\tmp-ricalimp.clf
+ATTRIBUTE=0
+
+[FILE_CONTENT-GESLUX:FILE2978]
+RELATIVE_PATH=FD\binseq.fd
+FOLDER_NAME=FD
+OWNER_PATH=FD\binseq.clf
+ATTRIBUTE=0
+
+[FILE_CONTENT-GESLUX:FILE2979]
+RELATIVE_PATH=FD\binseq.sl
+FOLDER_NAME=FD
+OWNER_PATH=FD\binseq.clf
+ATTRIBUTE=0
+
+[FILE_CONTENT-GESLUX:FILE2980]
+RELATIVE_PATH=FD\binseq-s.fd
+FOLDER_NAME=FD
+OWNER_PATH=FD\binseq-s.clf
+ATTRIBUTE=0
+
+[FILE_CONTENT-GESLUX:FILE2981]
+RELATIVE_PATH=FD\binseq-s.sl
+FOLDER_NAME=FD
+OWNER_PATH=FD\binseq-s.clf
+ATTRIBUTE=0
+
+[FILE_CONTENT-GESLUX:FILE2982]
+RELATIVE_PATH=FD\binseq-d.fd
+FOLDER_NAME=FD
+OWNER_PATH=FD\binseq-d.clf
+ATTRIBUTE=0
+
+[FILE_CONTENT-GESLUX:FILE2983]
+RELATIVE_PATH=FD\binseq-d.sl
+FOLDER_NAME=FD
+OWNER_PATH=FD\binseq-d.clf
 ATTRIBUTE=0
 
 [PROJECT_COMPILE_SETTING-GESLUX:Debug Mode]
@@ -32204,7 +32246,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:SOURCE\splcrt2graf.cbl]
-COPY_DEPENDENCE=FD\STA-splcrt2graf.sl;FD\STA-splcrt2graf.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\spooler.def;Copylib\link-readutente.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\winprint.def;Copylib\splcrt2graf.lks;Resource\anteprima.bmp;Resource\bottone-annulla.bmp;Resource\bottone-ok.bmp;Resource\fatto.bmp
+COPY_DEPENDENCE=FD\STA-splcrt2graf.sl;FD\binseq-s.sl;FD\binseq-d.sl;FD\STA-splcrt2graf.fd;FD\binseq-s.fd;FD\binseq-d.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\spooler.def;Copylib\link-readutente.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\winprint.def;Copylib\splcrt2graf.lks;Resource\anteprima.bmp;Resource\bottone-annulla.bmp;Resource\bottone-ok.bmp;Resource\fatto.bmp
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
@@ -58125,7 +58167,6 @@ CODE_VERSION_NUMBER=16
 COPY_DEPENDENCE=FD\anautf.sl;FD\movutf.sl;FD\clienti.sl;FD\lineseq.sl;FD\anautf.fd;FD\movutf.fd;FD\lineseq.fd;FD\clienti.fd;Copylib\link-geslock.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\link-stregutf.def
 ADDITIONAL_OPTIONS=-x -Di -Za -Zn -Zz
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
 NAME_ERROR_FILE=@.err
