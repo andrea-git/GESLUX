@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          bprenf.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 1 settembre 2020 16:43:01.
+       DATE-WRITTEN.        lunedì 2 agosto 2021 16:31:56.
        REMARKS.
       *{TOTEM}END
 
@@ -302,7 +302,7 @@
       * Data.Label
               05 Screen2-DaLa-19-BUF PIC X(30).
       * Data.Label
-              05 Screen2-DaLa-6-BUF PIC X(40).
+              05 Screen2-DaLa-6-BUF PIC x(100).
       * Data.Label
               05 Screen2-DaLa-7-BUF PIC X(40).
       * Data.Label
@@ -351,7 +351,7 @@
       * Data.Label
               05 Screen2-DaLa-5a-BUF PIC X(2).
       * Data.Label
-              05 Screen2-DaLa-6a-BUF PIC X(40).
+              05 Screen2-DaLa-6a-BUF PIC x(100).
       * Data.Label
               05 Screen2-DaLa-7a-BUF PIC X(40).
       * Data.Label
@@ -370,10 +370,10 @@
        77 TMP-scr-fm-KEYIS  PIC 9(3) VALUE 1.
        77 scr-fm-MULKEY-TMPBUF   PIC X(3898).
        77 TMP-DataSet1-tordini-BUF     PIC X(3898).
-       77 TMP-DataSet1-destini-BUF     PIC X(3386).
+       77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-rordini-BUF     PIC X(667).
        77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-tivaese-BUF     PIC X(1380).
        77 TMP-DataSet1-zoom-tordini-BUF     PIC X(141).
@@ -515,7 +515,7 @@
        77 tordini-k-tor-inviare-SPLITBUF  PIC X(14).
        77 tordini-k-tor-tipocli-SPLITBUF  PIC X(25).
        77 tordini-k-tor-gdo-SPLITBUF  PIC X(28).
-       77 destini-K1-SPLITBUF  PIC X(51).
+       77 destini-K1-SPLITBUF  PIC X(111).
        77 destini-k-localita-SPLITBUF  PIC X(36).
        77 rordini-ror-k-promo-SPLITBUF  PIC X(16).
        77 rordini-ror-k-articolo-SPLITBUF  PIC X(24).
@@ -3422,9 +3422,9 @@
 
        destini-K1-MERGE-SPLITBUF.
            INITIALIZE destini-K1-SPLITBUF
-           MOVE des-ragsoc-1(1:40) TO destini-K1-SPLITBUF(1:40)
-           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(41:5)
-           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(46:5)
+           MOVE des-ragsoc-1(1:100) TO destini-K1-SPLITBUF(1:100)
+           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(101:5)
+           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(106:5)
            .
 
        destini-k-localita-MERGE-SPLITBUF.
@@ -9025,10 +9025,11 @@ LUBEXX           end-if
                     end-start
                     perform CONTROLLA-IMPOSTE
                  end-if
-                 if imposte-ko
+                 if imposte-ko 
                     set errore-imposte to true
                     set prenotabile    to false
                  end-if
+                 accept como-data from century-date
 
                  if tor-da-ordine-si
                     move ror-chiave-ordine-testa  to mro-chiave-testa
@@ -9047,7 +9048,14 @@ LUBEXX           end-if
                             set prenotabile          to false
                             set errore-prezzo-master to true
                             move riga                to store-riga
+                         end-if     
+
+                         if tor-num-bolla = 14000
+                            set errore-prog-master to true
+                            set prenotabile        to false
+                            move riga to store-riga
                          end-if
+
                          if ror-prg-cod-articolo  not = 
            mro-prg-cod-articolo
                             set prenotabile        to false
