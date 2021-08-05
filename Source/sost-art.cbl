@@ -1042,9 +1042,10 @@
            |ossia che il primo e l'ultimo devono essere l'articolo stesso
            initialize catena-articoli replacing numeric data by zeroes.
            move mro-cod-articolo to el-articolo(1) master-articolo.
-           move 2 to idx2.
+           move 1 to idx2.
            if cat-codice not = mro-cod-articolo
               move cat-codice to el-articolo(2)
+              move 2 to idx2
            end-if.
            perform varying idx from 1 by 1 
                      until idx > 1000
