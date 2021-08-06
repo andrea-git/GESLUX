@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          rebuild.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 1 aprile 2014 19:18:14.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        venerdì 6 agosto 2021 02:54:35.
        REMARKS.
       *{TOTEM}END
 
@@ -45,9 +45,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\Lubex\GESLUX\Copylib\UTYDATA.DEF".
-               COPY "F:\Lubex\GESLUX\Copylib\comune.def".
-               COPY "F:\Lubex\GESLUX\Copylib\custom.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -122,7 +120,7 @@
        77 STATUS-Form1-FLAG-REFRESH PIC  9.
           88 Form1-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-tmp-listdir-BUF     PIC X(200).
-       77 TMP-DataSet1-lineseq-BUF     PIC X(900).
+       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -1235,7 +1233,6 @@
                                                             by low-value
                        initialize comando
                        string path-vutil   delimited low-value
-                              "vutil32"    delimited size
                               " "          delimited size
                               "-rebuild"   delimited size
                               " -a -q "    delimited size
@@ -1246,38 +1243,28 @@
                        move 0 to status-call
                        call "C$SYSTEM" using comando
                                       giving status-call
-                       if status-call not = 0
-                          move status-call to status-call-x
-                          set errori to true
-                          initialize messaggio
-                          string "Procedura interrotta su " delimited 
-           size
-                                 col-file                   delimited 
-           low-value
-                                 " con status "             delimited 
-           size
-                                 status-call-x              delimited 
-           size
-                                 x"0d0a"                    delimited 
-           size
-                                 "Errore nell'esecuzione del comando" 
-           delimited size
-                                 into messaggio
-                          end-string
-                          display message messaggio
-                                    title tit-err
-                                     icon 3
-                          exit perform
-                       end-if
+      *****                 if status-call not = 0
+      *****                    move status-call to status-call-x
+      *****                    set errori to true
+      *****                    initialize messaggio
+      *****                    string "Procedura interrotta su " delimited size
+      *****                           col-file                   delimited low-value
+      *****                           " con status "             delimited size
+      *****                           status-call-x              delimited size
+      *****                           x"0d0a"                    delimited size
+      *****                           "Errore nell'esecuzione del comando" delimited size
+      *****                           into messaggio
+      *****                    end-string
+      *****                    display message messaggio
+      *****                              title tit-err
+      *****                               icon 3
+      *****                    exit perform
+      *****                 end-if
                     end-if
                  end-perform
                  call "W$MOUSE" using set-mouse-shape, arrow-pointer
                  if tutto-ok
-                    if trovato
-                       display message "Operazione conclusa con successo
-      -    ""
-                                 title titolo
-                    else
+                    if not trovato
                        display message "Operazione non effettuata: nessu
       -    "n elemento selezionato!"
                                  title titolo

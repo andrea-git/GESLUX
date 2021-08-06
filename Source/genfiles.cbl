@@ -172,6 +172,7 @@ LABLAB     copy "blister.sl".
            copy "battsost.sl".
 
            copy "macrobatch.sl".
+           copy "hleb.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -341,7 +342,8 @@ LABLAB     copy "blister.fd".
            copy "tnumordf.fd".
            copy "grade.fd".  
            copy "battsost.fd".
-           copy "macrobatch.fd".
+           copy "macrobatch.fd".  
+           copy "hleb.fd".
 
        WORKING-STORAGE SECTION.
            COPY "acucobol.def".
@@ -511,6 +513,7 @@ LABLAB     copy "blister.fd".
        77  status-grade         pic x(2).
        77  status-battsost      pic x(2).
        77  status-macrobatch    pic x(2).
+       77  status-hleb          pic x(2).
 
            copy "EDI-status.def".
 
@@ -994,6 +997,7 @@ LABLAB     copy "blister.fd".
                 display message "[TCODPAG] Indexed file corrupt!"
                            title titolo
                             icon 3
+
 
                 
            end-evaluate.
@@ -2720,7 +2724,7 @@ LABLAB     copy "blister.fd".
                            title titolo
                             icon 3
                 
-           end-evaluate.
+           end-evaluate.        
 
       ***---
        MACROBATCH-ERR SECTION.
@@ -2737,6 +2741,13 @@ LABLAB     copy "blister.fd".
                            title titolo
                             icon 3
                 
+           end-evaluate.
+
+      ***---
+       HLEB-ERR SECTION.
+           use after error procedure on hleb.
+           evaluate status-hleb
+           when "35" continue
            end-evaluate.
 
            copy "EDI-declaratives.cpy".
@@ -3897,13 +3908,22 @@ LABLAB     copy "blister.fd".
            if status-battsost = "35"
               open output battsost
            end-if.
-           close battsost.
+           close battsost.  
 
            open input macrobatch.
            if status-macrobatch = "35"
               open output macrobatch
            end-if.
            close macrobatch.
+
+           open input hleb.
+           if status-hleb = "35"
+              open output hleb
+              initialize hleb-rec replacing numeric data by zeroes
+                                       alphanumeric data by spaces
+              write hleb-rec
+           end-if.
+           close hleb.
 
            copy "EDI-procedure.cpy".
 

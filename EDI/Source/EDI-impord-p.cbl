@@ -1428,19 +1428,6 @@
                     end-if
               end-start
            end-if.     
- 
-           if como-data > 20210724
-              if tge-f = spaces
-                 close    tparamge
-                 open i-o tparamge
-                 move "X" to tge-f
-                 rewrite tge-rec
-                 close      tparamge
-                 open input tparamge
-                 read tparamge no lock
-                 move 0 to como-numero emro-cod-articolo
-              end-if
-           end-if.
 
            if como-numero > 999999 or NotNumericFound
               move 0 to emro-cod-articolo

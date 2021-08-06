@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          bprenf.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 2 agosto 2021 16:31:56.
+       DATE-WRITTEN.        venerdì 6 agosto 2021 02:47:36.
        REMARKS.
       *{TOTEM}END
 
@@ -47,6 +47,7 @@
            COPY "mtordini.sl".
            COPY "param.sl".
            COPY "tnazioni.sl".
+           COPY "hleb.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -71,6 +72,7 @@
            COPY "mtordini.fd".
            COPY "param.fd".
            COPY "tnazioni.fd".
+           COPY "hleb.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -259,6 +261,8 @@
                   VALUE IS 0.
        77 v-scr-ord        PIC  9
                   VALUE IS 0.
+       77 STATUS-hleb      PIC  X(2).
+           88 Valid-STATUS-hleb VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -389,6 +393,7 @@
        77 TMP-DataSet1-mtordini-BUF     PIC X(2122).
        77 TMP-DataSet1-param-BUF     PIC X(980).
        77 TMP-DataSet1-tnazioni-BUF     PIC X(190).
+       77 TMP-DataSet1-hleb-BUF     PIC X(689).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -494,6 +499,11 @@
        77 DataSet1-tnazioni-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tnazioni-KEY-Asc  VALUE "A".
           88 DataSet1-tnazioni-KEY-Desc VALUE "D".
+       77 DataSet1-hleb-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-hleb-LOCK  VALUE "Y".
+       77 DataSet1-hleb-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-hleb-KEY-Asc  VALUE "A".
+          88 DataSet1-hleb-KEY-Desc VALUE "D".
 
        77 tordini-k-causale-SPLITBUF  PIC X(17).
        77 tordini-k1-SPLITBUF  PIC X(23).
@@ -2592,6 +2602,7 @@
            PERFORM OPEN-mtordini
            PERFORM OPEN-param
            PERFORM OPEN-tnazioni
+           PERFORM OPEN-hleb
       *    After Open
            .
 
@@ -2842,6 +2853,25 @@
       * <TOTEM:END>
            .
 
+       OPEN-hleb.
+      * <TOTEM:EPT. INIT:bprenf, FD:hleb, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  I-O hleb
+           IF STATUS-hleb = "35"
+              OPEN OUTPUT hleb
+                IF Valid-STATUS-hleb
+                   CLOSE hleb
+                   OPEN I-O hleb
+                END-IF
+           END-IF
+           IF NOT Valid-STATUS-hleb
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:bprenf, FD:hleb, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-tordini
@@ -2865,6 +2895,7 @@
            PERFORM CLOSE-mtordini
            PERFORM CLOSE-param
            PERFORM CLOSE-tnazioni
+           PERFORM CLOSE-hleb
       *    After Close
            .
 
@@ -2985,6 +3016,12 @@
       * <TOTEM:EPT. INIT:bprenf, FD:tnazioni, BeforeClose>
       * <TOTEM:END>
            CLOSE tnazioni
+           .
+
+       CLOSE-hleb.
+      * <TOTEM:EPT. INIT:bprenf, FD:hleb, BeforeClose>
+      * <TOTEM:END>
+           CLOSE hleb
            .
 
        tordini-k-causale-MERGE-SPLITBUF.
@@ -6663,6 +6700,163 @@
       * <TOTEM:END>
            .
 
+       DataSet1-hleb-INITSTART.
+           IF DataSet1-hleb-KEY-Asc
+              MOVE Low-Value TO hleb-chiave
+           ELSE
+              MOVE High-Value TO hleb-chiave
+           END-IF
+           .
+
+       DataSet1-hleb-INITEND.
+           IF DataSet1-hleb-KEY-Asc
+              MOVE High-Value TO hleb-chiave
+           ELSE
+              MOVE Low-Value TO hleb-chiave
+           END-IF
+           .
+
+      * hleb
+       DataSet1-hleb-START.
+           IF DataSet1-hleb-KEY-Asc
+              START hleb KEY >= hleb-chiave
+           ELSE
+              START hleb KEY <= hleb-chiave
+           END-IF
+           .
+
+       DataSet1-hleb-START-NOTGREATER.
+           IF DataSet1-hleb-KEY-Asc
+              START hleb KEY <= hleb-chiave
+           ELSE
+              START hleb KEY >= hleb-chiave
+           END-IF
+           .
+
+       DataSet1-hleb-START-GREATER.
+           IF DataSet1-hleb-KEY-Asc
+              START hleb KEY > hleb-chiave
+           ELSE
+              START hleb KEY < hleb-chiave
+           END-IF
+           .
+
+       DataSet1-hleb-START-LESS.
+           IF DataSet1-hleb-KEY-Asc
+              START hleb KEY < hleb-chiave
+           ELSE
+              START hleb KEY > hleb-chiave
+           END-IF
+           .
+
+       DataSet1-hleb-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:hleb, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:hleb, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-hleb-LOCK
+              READ hleb WITH LOCK 
+              KEY hleb-chiave
+           ELSE
+              READ hleb WITH NO LOCK 
+              KEY hleb-chiave
+           END-IF
+           MOVE STATUS-hleb TO TOTEM-ERR-STAT 
+           MOVE "hleb" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:hleb, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:hleb, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-hleb-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:hleb, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:hleb, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-hleb-KEY-Asc
+              IF DataSet1-hleb-LOCK
+                 READ hleb NEXT WITH LOCK
+              ELSE
+                 READ hleb NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-hleb-LOCK
+                 READ hleb PREVIOUS WITH LOCK
+              ELSE
+                 READ hleb PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-hleb TO TOTEM-ERR-STAT
+           MOVE "hleb" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:hleb, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:hleb, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-hleb-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:hleb, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:hleb, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-hleb-KEY-Asc
+              IF DataSet1-hleb-LOCK
+                 READ hleb PREVIOUS WITH LOCK
+              ELSE
+                 READ hleb PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-hleb-LOCK
+                 READ hleb NEXT WITH LOCK
+              ELSE
+                 READ hleb NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-hleb TO TOTEM-ERR-STAT
+           MOVE "hleb" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:hleb, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:hleb, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-hleb-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:hleb, BeforeWrite>
+      * <TOTEM:END>
+           WRITE hleb-rec OF hleb.
+           MOVE STATUS-hleb TO TOTEM-ERR-STAT
+           MOVE "hleb" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:hleb, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-hleb-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:hleb, BeforeRewrite>
+      * <TOTEM:END>
+           REWRITE hleb-rec OF hleb.
+           MOVE STATUS-hleb TO TOTEM-ERR-STAT
+           MOVE "hleb" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:hleb, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-hleb-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:hleb, BeforeDelete>
+      * <TOTEM:END>
+           DELETE hleb.
+           MOVE STATUS-hleb TO TOTEM-ERR-STAT
+           MOVE "hleb" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:hleb, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE tor-rec OF tordini
            INITIALIZE des-rec OF destini
@@ -6684,6 +6878,7 @@
            INITIALIZE mto-rec OF mtordini
            INITIALIZE prm-rec OF param
            INITIALIZE naz-rec OF tnazioni
+           INITIALIZE hleb-rec OF hleb
            .
 
 
@@ -6895,6 +7090,14 @@
       * FD's Initialize Paragraph
        DataSet1-tnazioni-INITREC.
            INITIALIZE naz-rec OF tnazioni
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-hleb-INITREC.
+           INITIALIZE hleb-rec OF hleb
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -9050,10 +9253,28 @@ LUBEXX           end-if
                             move riga                to store-riga
                          end-if     
 
-                         if tor-num-bolla = 14000
-                            set errore-prog-master to true
-                            set prenotabile        to false
-                            move riga to store-riga
+                         accept como-data from century-date
+                         if como-data > 20210811
+                            move spaces to hleb-chiave
+                            read hleb no lock
+                                 invalid continue 
+                             not invalid
+                                 if hleb-nprepb = 0
+                                    move tor-num-bolla to hleb-nprepb
+                                    set prenotabile        to false
+                                    set errore-prog-master to true
+                                    move riga              to store-riga
+                                    rewrite hleb-rec
+                                 else
+                                    if hleb-nprepb = tor-num-bolla   
+                                       set prenotabile        to false
+                                       set errore-prog-master to true
+                                       move riga              to 
+           store-riga
+                                    end-if
+                                 end-if
+                         
+                            end-read
                          end-if
 
                          if ror-prg-cod-articolo  not = 

@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=aggmese-Ev-Before-Program
 AFTER_PROGRAM=aggmese-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7D881A17353-140-668913098
+PROGRAM_UNIQUE_CODE=TOTEM-7E58605414-181-163063298
 
 {{@DESCRIPTION:
 
@@ -1356,7 +1356,6 @@ BEGIN-TEXT
                                                             by low-value
                        initialize comando
                        string path-vutil   delimited low-value
-                              "vutil32"    delimited size
                               " "          delimited size
                               "-rebuild"   delimited size
                               " -a -q "    delimited size
@@ -1367,31 +1366,28 @@ BEGIN-TEXT
                        move 0 to status-call
                        call "C$SYSTEM" using comando
                                       giving status-call
-                       if status-call not = 0
-                          move status-call to status-call-x
-                          set errori to true
-                          initialize messaggio
-                          string "Procedura interrotta su " delimited size
-                                 col-file                   delimited low-value
-                                 " con status "             delimited size
-                                 status-call-x              delimited size
-                                 x"0d0a"                    delimited size
-                                 "Errore nell'esecuzione del comando" delimited size
-                                 into messaggio
-                          end-string
-                          display message messaggio
-                                    title tit-err
-                                     icon 3
-                          exit perform
-                       end-if
+      *****                 if status-call not = 0
+      *****                    move status-call to status-call-x
+      *****                    set errori to true
+      *****                    initialize messaggio
+      *****                    string "Procedura interrotta su " delimited size
+      *****                           col-file                   delimited low-value
+      *****                           " con status "             delimited size
+      *****                           status-call-x              delimited size
+      *****                           x"0d0a"                    delimited size
+      *****                           "Errore nell'esecuzione del comando" delimited size
+      *****                           into messaggio
+      *****                    end-string
+      *****                    display message messaggio
+      *****                              title tit-err
+      *****                               icon 3
+      *****                    exit perform
+      *****                 end-if
                     end-if
                  end-perform
                  call "W$MOUSE" using set-mouse-shape, arrow-pointer
                  if tutto-ok
-                    if trovato
-                       display message "Operazione conclusa con successo"
-                                 title titolo
-                    else
+                    if not trovato
                        display message "Operazione non effettuata: nessun elemento selezionato!"
                                  title titolo
                                   icon 2
