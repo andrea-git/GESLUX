@@ -551,6 +551,8 @@
                    move esercizio to edi-anno
                    add 1 to con-ult-num-nc-EDI giving edi-num-da
                    move 99999999  to edi-num-a
+                   move "ELABORAZIONE NOTE CR" to como-riga
+                   perform SCRIVI-RIGA-LOG
                    perform MAIN-PRG
                 end-if
 
