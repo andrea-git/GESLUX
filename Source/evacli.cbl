@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 20 aprile 2021 13:23:40.
+       DATE-WRITTEN.        mercoledì 11 agosto 2021 15:28:16.
        REMARKS.
       *{TOTEM}END
 
@@ -69,6 +69,8 @@
            COPY "tmp-eva-riep.sl".
            COPY "macrobatch.sl".
            COPY "log-macrobatch.sl".
+           COPY "usr-tel.sl".
+           COPY "tsetinvio.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -115,6 +117,8 @@
            COPY "tmp-eva-riep.fd".
            COPY "macrobatch.fd".
            COPY "log-macrobatch.fd".
+           COPY "usr-tel.fd".
+           COPY "tsetinvio.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -147,6 +151,7 @@
            COPY  "TROVA-PARAMETRO.DEF".
            COPY  "VERSIONE-EVASIONE.DEF".
            COPY  "LINK-GPGMEXE.DEF".
+           COPY  "MAIL.DEF".
        77 Verdana12BI-Occidentale
                   USAGE IS HANDLE OF FONT.
       *
@@ -161,6 +166,8 @@
                   VALUE IS 0.
        77 idx-gen          PIC  9(3)
                   VALUE IS 0.
+       01 FILLER           PIC  9.
+           88 evasioni-generate VALUE IS 1    WHEN SET TO FALSE  0. 
        01 tab-tipologie.
            05 el-tipologia
                       OCCURS 200 TIMES
@@ -638,6 +645,10 @@
                   VALUE IS 0.
        77 hid-col-sel      PIC  9
                   VALUE IS 0.
+       77 status-usr-tel   PIC  X(2).
+           88 Valid-status-usr-tel VALUE IS "00" THRU "09". 
+       77 STATUS-tsetinvio PIC  X(2).
+           88 Valid-STATUS-tsetinvio VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -700,6 +711,8 @@
        77 TMP-DataSet1-tmp-eva-riep-BUF     PIC X(39).
        77 TMP-DataSet1-macrobatch-BUF     PIC X(9848).
        77 TMP-DataSet1-log-macrobatch-BUF     PIC X(1000).
+       77 TMP-DataSet1-usr-tel-BUF     PIC X(1362).
+       77 TMP-DataSet1-tsetinvio-BUF     PIC X(1023).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -915,6 +928,16 @@
        77 DataSet1-log-macrobatch-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-log-macrobatch-KEY-Asc  VALUE "A".
           88 DataSet1-log-macrobatch-KEY-Desc VALUE "D".
+       77 DataSet1-usr-tel-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-usr-tel-LOCK  VALUE "Y".
+       77 DataSet1-usr-tel-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-usr-tel-KEY-Asc  VALUE "A".
+          88 DataSet1-usr-tel-KEY-Desc VALUE "D".
+       77 DataSet1-tsetinvio-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tsetinvio-LOCK  VALUE "Y".
+       77 DataSet1-tsetinvio-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tsetinvio-KEY-Asc  VALUE "A".
+          88 DataSet1-tsetinvio-KEY-Desc VALUE "D".
 
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
@@ -2895,6 +2918,9 @@
       *    PERFORM OPEN-macrobatch
       *    log-macrobatch OPEN MODE IS FALSE
       *    PERFORM OPEN-log-macrobatch
+           PERFORM OPEN-usr-tel
+      *    tsetinvio OPEN MODE IS FALSE
+      *    PERFORM OPEN-tsetinvio
       *    After Open
            .
 
@@ -3479,6 +3505,30 @@
       * <TOTEM:END>
            .
 
+       OPEN-usr-tel.
+      * <TOTEM:EPT. INIT:evacli, FD:usr-tel, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT usr-tel
+           IF NOT Valid-status-usr-tel
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:evacli, FD:usr-tel, AfterOpen>
+      * <TOTEM:END>
+           .
+
+       OPEN-tsetinvio.
+      * <TOTEM:EPT. INIT:evacli, FD:tsetinvio, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT tsetinvio
+           IF NOT Valid-STATUS-tsetinvio
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:evacli, FD:tsetinvio, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-tparameva
@@ -3535,6 +3585,9 @@
       *    PERFORM CLOSE-macrobatch
       *    log-macrobatch CLOSE MODE IS FALSE
       *    PERFORM CLOSE-log-macrobatch
+           PERFORM CLOSE-usr-tel
+      *    tsetinvio CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-tsetinvio
       *    After Close
            .
 
@@ -3775,6 +3828,17 @@
 
        CLOSE-log-macrobatch.
       * <TOTEM:EPT. INIT:evacli, FD:log-macrobatch, BeforeClose>
+      * <TOTEM:END>
+           .
+
+       CLOSE-usr-tel.
+      * <TOTEM:EPT. INIT:evacli, FD:usr-tel, BeforeClose>
+      * <TOTEM:END>
+           CLOSE usr-tel
+           .
+
+       CLOSE-tsetinvio.
+      * <TOTEM:EPT. INIT:evacli, FD:tsetinvio, BeforeClose>
       * <TOTEM:END>
            .
 
@@ -10669,6 +10733,314 @@
       * <TOTEM:END>
            .
 
+       DataSet1-usr-tel-INITSTART.
+           IF DataSet1-usr-tel-KEY-Asc
+              MOVE Low-Value TO usr-chiave
+           ELSE
+              MOVE High-Value TO usr-chiave
+           END-IF
+           .
+
+       DataSet1-usr-tel-INITEND.
+           IF DataSet1-usr-tel-KEY-Asc
+              MOVE High-Value TO usr-chiave
+           ELSE
+              MOVE Low-Value TO usr-chiave
+           END-IF
+           .
+
+      * usr-tel
+       DataSet1-usr-tel-START.
+           IF DataSet1-usr-tel-KEY-Asc
+              START usr-tel KEY >= usr-chiave
+           ELSE
+              START usr-tel KEY <= usr-chiave
+           END-IF
+           .
+
+       DataSet1-usr-tel-START-NOTGREATER.
+           IF DataSet1-usr-tel-KEY-Asc
+              START usr-tel KEY <= usr-chiave
+           ELSE
+              START usr-tel KEY >= usr-chiave
+           END-IF
+           .
+
+       DataSet1-usr-tel-START-GREATER.
+           IF DataSet1-usr-tel-KEY-Asc
+              START usr-tel KEY > usr-chiave
+           ELSE
+              START usr-tel KEY < usr-chiave
+           END-IF
+           .
+
+       DataSet1-usr-tel-START-LESS.
+           IF DataSet1-usr-tel-KEY-Asc
+              START usr-tel KEY < usr-chiave
+           ELSE
+              START usr-tel KEY > usr-chiave
+           END-IF
+           .
+
+       DataSet1-usr-tel-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:usr-tel, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:usr-tel, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-usr-tel-LOCK
+              READ usr-tel WITH LOCK 
+              KEY usr-chiave
+           ELSE
+              READ usr-tel WITH NO LOCK 
+              KEY usr-chiave
+           END-IF
+           MOVE status-usr-tel TO TOTEM-ERR-STAT 
+           MOVE "usr-tel" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:usr-tel, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:usr-tel, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-usr-tel-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:usr-tel, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:usr-tel, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-usr-tel-KEY-Asc
+              IF DataSet1-usr-tel-LOCK
+                 READ usr-tel NEXT WITH LOCK
+              ELSE
+                 READ usr-tel NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-usr-tel-LOCK
+                 READ usr-tel PREVIOUS WITH LOCK
+              ELSE
+                 READ usr-tel PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE status-usr-tel TO TOTEM-ERR-STAT
+           MOVE "usr-tel" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:usr-tel, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:usr-tel, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-usr-tel-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:usr-tel, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:usr-tel, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-usr-tel-KEY-Asc
+              IF DataSet1-usr-tel-LOCK
+                 READ usr-tel PREVIOUS WITH LOCK
+              ELSE
+                 READ usr-tel PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-usr-tel-LOCK
+                 READ usr-tel NEXT WITH LOCK
+              ELSE
+                 READ usr-tel NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE status-usr-tel TO TOTEM-ERR-STAT
+           MOVE "usr-tel" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:usr-tel, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:usr-tel, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-usr-tel-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:usr-tel, BeforeWrite>
+      * <TOTEM:END>
+           MOVE status-usr-tel TO TOTEM-ERR-STAT
+           MOVE "usr-tel" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:usr-tel, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-usr-tel-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:usr-tel, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE status-usr-tel TO TOTEM-ERR-STAT
+           MOVE "usr-tel" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:usr-tel, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-usr-tel-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:usr-tel, BeforeDelete>
+      * <TOTEM:END>
+           MOVE status-usr-tel TO TOTEM-ERR-STAT
+           MOVE "usr-tel" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:usr-tel, AfterDelete>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tsetinvio-INITSTART.
+           IF DataSet1-tsetinvio-KEY-Asc
+              MOVE Low-Value TO tsi-chiave
+           ELSE
+              MOVE High-Value TO tsi-chiave
+           END-IF
+           .
+
+       DataSet1-tsetinvio-INITEND.
+           IF DataSet1-tsetinvio-KEY-Asc
+              MOVE High-Value TO tsi-chiave
+           ELSE
+              MOVE Low-Value TO tsi-chiave
+           END-IF
+           .
+
+      * tsetinvio
+       DataSet1-tsetinvio-START.
+           IF DataSet1-tsetinvio-KEY-Asc
+              START tsetinvio KEY >= tsi-chiave
+           ELSE
+              START tsetinvio KEY <= tsi-chiave
+           END-IF
+           .
+
+       DataSet1-tsetinvio-START-NOTGREATER.
+           IF DataSet1-tsetinvio-KEY-Asc
+              START tsetinvio KEY <= tsi-chiave
+           ELSE
+              START tsetinvio KEY >= tsi-chiave
+           END-IF
+           .
+
+       DataSet1-tsetinvio-START-GREATER.
+           IF DataSet1-tsetinvio-KEY-Asc
+              START tsetinvio KEY > tsi-chiave
+           ELSE
+              START tsetinvio KEY < tsi-chiave
+           END-IF
+           .
+
+       DataSet1-tsetinvio-START-LESS.
+           IF DataSet1-tsetinvio-KEY-Asc
+              START tsetinvio KEY < tsi-chiave
+           ELSE
+              START tsetinvio KEY > tsi-chiave
+           END-IF
+           .
+
+       DataSet1-tsetinvio-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-tsetinvio-LOCK
+              READ tsetinvio WITH LOCK 
+              KEY tsi-chiave
+           ELSE
+              READ tsetinvio WITH NO LOCK 
+              KEY tsi-chiave
+           END-IF
+           MOVE STATUS-tsetinvio TO TOTEM-ERR-STAT 
+           MOVE "tsetinvio" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tsetinvio-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-tsetinvio-KEY-Asc
+              IF DataSet1-tsetinvio-LOCK
+                 READ tsetinvio NEXT WITH LOCK
+              ELSE
+                 READ tsetinvio NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tsetinvio-LOCK
+                 READ tsetinvio PREVIOUS WITH LOCK
+              ELSE
+                 READ tsetinvio PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tsetinvio TO TOTEM-ERR-STAT
+           MOVE "tsetinvio" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tsetinvio-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-tsetinvio-KEY-Asc
+              IF DataSet1-tsetinvio-LOCK
+                 READ tsetinvio PREVIOUS WITH LOCK
+              ELSE
+                 READ tsetinvio PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tsetinvio-LOCK
+                 READ tsetinvio NEXT WITH LOCK
+              ELSE
+                 READ tsetinvio NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tsetinvio TO TOTEM-ERR-STAT
+           MOVE "tsetinvio" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tsetinvio-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-tsetinvio TO TOTEM-ERR-STAT
+           MOVE "tsetinvio" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tsetinvio-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-tsetinvio TO TOTEM-ERR-STAT
+           MOVE "tsetinvio" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tsetinvio-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-tsetinvio TO TOTEM-ERR-STAT
+           MOVE "tsetinvio" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE tpa-rec OF tparameva
            INITIALIZE mag-rec OF tmagaz
@@ -10712,6 +11084,8 @@
            INITIALIZE ter-rec OF tmp-eva-riep
            INITIALIZE mb-rec OF macrobatch
            INITIALIZE lm-riga OF log-macrobatch
+           INITIALIZE usr-rec OF usr-tel
+           INITIALIZE tsi-rec OF tsetinvio
            .
 
 
@@ -11178,6 +11552,22 @@
       * FD's Initialize Paragraph
        DataSet1-log-macrobatch-INITREC.
            INITIALIZE lm-riga OF log-macrobatch
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-usr-tel-INITREC.
+           INITIALIZE usr-rec OF usr-tel
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-tsetinvio-INITREC.
+           INITIALIZE tsi-rec OF tsetinvio
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -13591,6 +13981,7 @@
        FINE-OPERAZIONE.
       * <TOTEM:PARA. FINE-OPERAZIONE>
            if not contatore-lock and stordc-da-num not = 0
+              set evasioni-generate to true
               modify scr-elab-HANDLE, visible false 
       
               perform SCR-FINE-OPEN-ROUTINE
@@ -14290,6 +14681,7 @@
            copy "multigest.cpy".
            copy "accessoxx.cpy". 
            copy "setta-inizio-riga.cpy".
+           copy "mail.cpy".
 
       ***--- DUMMY: NON TOCCARE
        AGGIORNA-IMPEGNATO-MASTER 
@@ -15815,7 +16207,34 @@
               if num-cicli not = 0
                  perform FINE-OPERAZIONE
               end-if
-              close lineseq
+              close lineseq            
+
+              if not RichiamoBatch and evasioni-generate
+                 move user-codi to usr-codice
+                 read usr-tel
+                      invalid move spaces to usr-ind-from
+                 end-read
+                 if usr-ind-from not = spaces
+                    move usr-ind-from to LinkAddress
+                    move wstampa      to LinkAttach
+                    initialize LinkSubject
+                    string "RIEPILOGO BOZZE GENERATE IL " delimited size
+                           como-data(7:2) delimited size
+                           "/"            delimited size
+                           como-data(5:2) delimited size
+                           "/"            delimited size
+                           como-data(1:4) delimited size
+                           " ALLE "       delimited size
+                           como-ora(1:2)  delimited size
+                           ":"            delimited size
+                           como-ora(3:2)  delimited size
+                      into LinkSubject
+                    end-string
+                    move "In allegato riepilogo generazioni" to LinkBody
+                    perform SEND-MAIL
+                 end-if
+              end-if
+
               move 27 to key-status
            end-if 
            .
