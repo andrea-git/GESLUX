@@ -8,7 +8,7 @@
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
-PROGRAM_UNIQUE_CODE=TOTEM-7E58B122743-372-1160414394
+PROGRAM_UNIQUE_CODE=TOTEM-7E5817145516-53-2537224180
 
 {{@DESCRIPTION:
 
@@ -6875,19 +6875,19 @@ LUBEXX           end-if
                          end-if     
 
                          accept como-data from century-date
-                         if como-data > 20210811
+                         if como-data > 20210830
                             move spaces to hleb-chiave
                             read hleb no lock
                                  invalid continue 
                              not invalid
-                                 if hleb-nprepb = 0
-                                    move tor-num-bolla to hleb-nprepb
+                                 if hleb-numordpren = 0
+                                    move tor-numero        to hleb-numordpren
                                     set prenotabile        to false
                                     set errore-prog-master to true
                                     move riga              to store-riga
                                     rewrite hleb-rec
                                  else
-                                    if hleb-nprepb = tor-num-bolla   
+                                    if hleb-numordpren = tor-numero   
                                        set prenotabile        to false
                                        set errore-prog-master to true
                                        move riga              to store-riga

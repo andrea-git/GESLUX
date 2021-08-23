@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          bprenf.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 6 agosto 2021 02:47:36.
+       DATE-WRITTEN.        lunedì 23 agosto 2021 17:10:04.
        REMARKS.
       *{TOTEM}END
 
@@ -9254,19 +9254,20 @@ LUBEXX           end-if
                          end-if     
 
                          accept como-data from century-date
-                         if como-data > 20210811
+                         if como-data > 20210830
                             move spaces to hleb-chiave
                             read hleb no lock
                                  invalid continue 
                              not invalid
-                                 if hleb-nprepb = 0
-                                    move tor-num-bolla to hleb-nprepb
+                                 if hleb-numordpren = 0
+                                    move tor-numero        to 
+           hleb-numordpren
                                     set prenotabile        to false
                                     set errore-prog-master to true
                                     move riga              to store-riga
                                     rewrite hleb-rec
                                  else
-                                    if hleb-nprepb = tor-num-bolla   
+                                    if hleb-numordpren = tor-numero   
                                        set prenotabile        to false
                                        set errore-prog-master to true
                                        move riga              to 
