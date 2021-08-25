@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-doc
 BEFORE_PROGRAM=contab-Ev-Before-Program
 AFTER_PROGRAM=contab-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E582141112-36-2372913021
+PROGRAM_UNIQUE_CODE=TOTEM-7E58199457-227-2460513699
 
 {{@DESCRIPTION:
 
@@ -8226,7 +8226,7 @@ LUBEXX*****        read tmovtrat lock
               if tutto-ok
                  move esercizio to con-anno
 
-                 read tcontat invalid continue end-read
+                 read tcontat invalid continue end-read   
 
                  perform until 1 = 2
                     read tordini next no lock at end exit perform
