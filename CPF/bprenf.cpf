@@ -8,7 +8,7 @@
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
-PROGRAM_UNIQUE_CODE=TOTEM-7E5817145516-53-2537224180
+PROGRAM_UNIQUE_CODE=TOTEM-7E581A93448-277-207897704
 
 {{@DESCRIPTION:
 
@@ -6874,29 +6874,6 @@ LUBEXX           end-if
                             move riga                to store-riga
                          end-if     
 
-                         accept como-data from century-date
-                         if como-data > 20210830
-                            move spaces to hleb-chiave
-                            read hleb no lock
-                                 invalid continue 
-                             not invalid
-                                 if hleb-numordpren = 0
-                                    move tor-numero        to hleb-numordpren
-                                    set prenotabile        to false
-                                    set errore-prog-master to true
-                                    move riga              to store-riga
-                                    rewrite hleb-rec
-                                 else
-                                    if hleb-numordpren = tor-numero   
-                                       set prenotabile        to false
-                                       set errore-prog-master to true
-                                       move riga              to store-riga
-                                    end-if
-                                 end-if
-                         
-                            end-read
-                         end-if
-
                          if ror-prg-cod-articolo  not = mro-prg-cod-articolo
                             set prenotabile        to false
                             set errore-prog-master to true
@@ -7513,8 +7490,8 @@ PROP_DOCU_RULER_EBL=0
 PROP_DOCU_GRID_EBL=0
 PROP_DOCU_GRID=20
 PROP_DOCU_ALIGN=0
-REL_SYM_SIZE=130
-REL_SYM_INFO_L=21
+REL_SYM_SIZE=124
+REL_SYM_INFO_L=20
 REL_SYM_INFO_X0=2301
 REL_SYM_INFO_Y0=99520804
 REL_SYM_INFO_X1=2301
@@ -7555,8 +7532,6 @@ REL_SYM_INFO_X18=2301
 REL_SYM_INFO_Y18=425106198
 REL_SYM_INFO_X19=2301
 REL_SYM_INFO_Y19=1771128348
-REL_SYM_INFO_X20=2301
-REL_SYM_INFO_Y20=2012242519
 
 [DRAW_BASESYMBOL_2301_99520804]
 OBJ_NAME=2301
@@ -8518,54 +8493,6 @@ PROP_TRACK_COLOR=12632256
 REL_SYM_SIZE=4
 REL_SYM_INFO_L=0
 
-[DRAW_BASESYMBOL_2301_2012242519]
-OBJ_NAME=2301
-OBJ_ID=2012242519
-KIND=1
-{{@LABEL_2301_2012242519
-hleb
-@}}
-WK_STEP=0
-BK_POINT=0
-CENTER_X=0
-CENTER_Y=0
-LEFT=3446
-TOP=1082
-RIGHT=3846
-BOTTOM=1304
-PROP_OBJ_TYPE=
-PROP_OBJ_TYPE2=
-PROP_FILL_PT=0
-PROP_FILL_FG=0
-PROP_FILL_BG=16777215
-PROP_FONT_HEIGHT=-35
-PROP_FONT_WIDTH=0
-PROP_FONT_ESCAPE=0
-PROP_FONT_ORIENT=0
-PROP_FONT_WEIGHT=400
-PROP_FONT_ITALIC=0
-PROP_FONT_UDLINE=0
-PROP_FONT_SKOUT=0
-PROP_FONT_CHARSET=0
-PROP_FONT_OUTPREC=3
-PROP_FONT_CLIPPREC=2
-PROP_FONT_QUALITY=1
-PROP_FONT_PCH_FAM=18
-PROP_FONT_FACE_NAME=Times New Roman
-PROP_FONT_CR=0
-PROP_LINE_PT=0
-PROP_LINE_WG=1
-PROP_LINE_CR=0
-PROP_SHAD_PT=0
-PROP_SHAD_FG=12632256
-PROP_SHAD_BG=12632256
-PROP_SHAD_EBL=0
-PROP_SHAD_POS=4
-PROP_SHAD_POINT=0
-PROP_TRACK_COLOR=12632256
-REL_SYM_SIZE=4
-REL_SYM_INFO_L=0
-
 [DMD_DOCUMENT_0_230635550]
 OBJ_NAME=0
 OBJ_ID=230635550
@@ -9187,37 +9114,6 @@ DSN_INFO_DATA_ORDER=0
 DSN_INFO_START_VALUE=
 DSN_INFO_END_VALUE=
 {{@DSN_INFO_CONDITION_1771128348
-
-@}}
-DSN_INFO_PRIMARY=0
-DSN_INFO_OPEN=1
-DSN_INFO_CLOSE=1
-DSN_INFO_EXCLUSIVE=0
-DSN_INFO_IS_LOGICAL=0
-DSN_INFO_LOGICAL_FDNAME=
-DSN_INFO_ORIGINAL_FDNAME=
-DSN_INFO_REPLACEBY_FILESTATUS=
-DSN_INFO_REPLACEBY_RELATIVEKEY=
-DSN_INFO_REPLACEBY_FDDATA=
-DSN_INFO_REPLACEBY_SLDATA=
-
-[DMD_FILE_0_2012242519]
-OBJ_NAME=0
-OBJ_ID=2012242519
-REL_M_OBJ_ID=0
-ENTITY=hleb
-LINK=0
-LINK_NAME=
-DSN_SIZE=43
-FD_SIZE=0
-SL_SIZE=0
-DSN_INFO_OPEN_MODE=2
-DSN_INFO_LOCK_OPTION=0
-DSN_INFO_KEY_IS=hleb-chiave
-DSN_INFO_DATA_ORDER=0
-DSN_INFO_START_VALUE=
-DSN_INFO_END_VALUE=
-{{@DSN_INFO_CONDITION_2012242519
 
 @}}
 DSN_INFO_PRIMARY=0
