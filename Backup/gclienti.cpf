@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E581E1328-463-2036019399
+PROGRAM_UNIQUE_CODE=TOTEM-7E581E223324-197-2941218123
 
 {{@DESCRIPTION:
 
@@ -29088,6 +29088,8 @@ BEGIN-DATA
    PARAGRAPH         = ef-ricerca-piva-BeforeProcedure
 BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, scr-stampa-Custom1-2 **>>
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -29095,6 +29097,8 @@ BEGIN-DATA
    PARAGRAPH         = ef-ricerca-piva-AfterProcedure
 BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, scr-stampa-Custom1-2 **>>
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -29105,13 +29109,15 @@ BEGIN-TEXT
            move ef-ricerca-piva-buf      to link-rc-piva.
            call   "rice-clienti" using rice-clienti-linkage
            cancel "rice-clienti".
-           if link-rc-codice = 0
-              display message "Nessun cliente trovato coi filtri richiesti"
-                        title titolo
-                         icon 2
-           else
-              move link-rc-codice to ef-codice-buf cli-codice
-           end-if
+           if link-rc-annulla = 0
+              if link-rc-codice = 0
+                 display message "Nessun cliente trovato coi filtri richiesti"
+                           title titolo
+                            icon 2
+              else
+                 move link-rc-codice to ef-codice-buf cli-codice
+              end-if
+           end-if.
 
            move 27 to key-status.
 END-TEXT

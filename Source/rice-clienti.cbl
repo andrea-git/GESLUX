@@ -23,6 +23,10 @@
        77  n-rec                       pic 9(5) value 0.
        77  como-data                   pic 9(8).
        77  como-ora                    pic 9(8).
+       77  como-file                   pic x(20).
+       77  stato-zoom                  signed-long.
+
+           copy "externals.def".
 
        LINKAGE SECTION.
        copy "link-rice-clienti.def".
@@ -32,6 +36,15 @@
 
       ***---
        MAIN-PRG.
+           perform INIT.
+           perform OPEN-FILES.
+           perform ELABORAZIONE.
+           perform CLOSE-FILES.
+           perform EXIT-PGM.
+
+      ***---
+       INIT.      
+           move 0 to link-rc-annulla.
            accept como-data from century-date.
            accept como-ora  from time.
            initialize path-tmp-ricerca-clienti
@@ -48,10 +61,16 @@
            end-string.
            inspect path-tmp-ricerca-clienti 
                    replacing trailing low-value by spaces.
+
+      ***---
+       OPEN-FILES.
            open output tmp-ricerca-clienti.
            close       tmp-ricerca-clienti.
            open i-o    tmp-ricerca-clienti.
            open input clienti.
+
+      ***---
+       ELABORAZIONE.
            move low-value to cli-rec.
            set cli-tipo-C to true.
            start clienti key >= cli-chiave
@@ -82,34 +101,25 @@
                  end-perform
            end-start.             
            if n-rec > 1
-           set cli-tipo-c to true.
-           move   "clienti-all"  to como-file.
-           call   "zoom-gt"   using como-file, cli-rec
-                             giving stato-zoom.
-           cancel "zoom-gt".
-      
-           if stato-zoom = 0
-              if old-cli-chiave  not =  cli-chiave
-                 move cli-chiave   to  save-chiave
-                 move cli-ragsoc-1 to  save-ragsoc-K1
-                 perform SALV-MOD
-                 if tutto-ok
-                    move save-ragsoc-K1 to cli-ragsoc-1
-                    move save-chiave    to cli-chiave
-                    move cli-codice     to codice-ed
-                    move codice-ed      to ef-codice-buf   
-                    call "C$JUSTIFY" using ef-codice-buf, "L"
-                    move cli-ragsoc-1   to ef-ragsoc-1-buf 
-                                             lab-des-buf
-                    display ef-codice lab-des ef-ragsoc-1
-                    set     ReadSecca    to true 
-                    perform CANCELLA-COLORE
-                    perform CURRENT-RECORD
-                    move 78-ID-ef-codice to control-id
-                    move 4 to accept-control
-                 end-if
+              move 0 to link-rc-codice
+              move path-tmp-ricerca-clienti to ext-file
+              move   "tmp-ricerca-clienti" to como-file
+              call   "zoom-gt"          using como-file, trc-cli-rec
+                                       giving stato-zoom
+              cancel "zoom-gt"
+              if stato-zoom = 0
+                 move trc-cli-codice to link-rc-codice
+              else
+                 move 1 to link-rc-annulla
               end-if   
            end-if. 
+
+      ***---
+       CLOSE-FILES.
            close tmp-ricerca-clienti clienti.
+
+      ***---
+       EXIT-PGM.
+           goback.
 
                   

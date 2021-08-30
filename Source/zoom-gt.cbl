@@ -386,6 +386,8 @@
                 perform PREPARA-ZOOM-ART-GIAC             
            when "tpromo"
                 perform PREPARA-PROMO
+           when "tmp-ricerca-clienti"
+                perform PREPARA-TMP-RICERCA-CLIENTI
 
            copy "zoom-gt-evaluate-edi.cpy"
 
@@ -4146,6 +4148,7 @@
            move 40                          to xzoom-field-length(idx).
            move 30                          to xzoom-field-column(idx).
            move 4                           to xzoom-field-offset(idx).
+
            move "Descrizione"               to xzoom-field-name(idx).  
            set xzoom-ft-alpha(idx)          to true.
 
@@ -10330,11 +10333,114 @@
               set xzoom-when-true(1)    to true
               set xzoom-begin-with(1)   to true
               set xzoom-ignore-case(1)  to true
-              move como-record(16:5)     to xzoom-wild-value(1)
+              move como-record(16:5)    to xzoom-wild-value(1)
               move 5                    to xzoom-wild-value-length(1)
               move 5                    to xzoom-wild-length(1)
               move 15                   to xzoom-wild-offset(1)
            end-if.
+
+      ***---
+       PREPARA-TMP-RICERCA-CLIENTI.         
+           initialize xzoom-linkage xzoom-ext-info(1).             
+      *
+           move  0                       to idx.
+           move  0                       to xzoom-row.
+           move  0                       to xzoom-cln.
+           move  16                      to xzoom-lw.
+           move  205                     to xzoom-sw.
+           move ext-file                 to xzoom-file-name(1).
+           move  1                       to xzoom-file-key.
+      
+      * CAMPO 1
+           add 1 to idx
+           move  5                       to xzoom-field-length(idx).
+           move  0                       to xzoom-field-offset(idx).
+           move  7                       to xzoom-field-column(idx).
+           move "Codice"                 to xzoom-field-name(idx).  
+           set xzoom-al-right(idx)       to true.
+           set xzoom-field-unsigned(idx) to true.
+           set xzoom-ft-display(idx)     to true.
+           move 5                        to xzoom-field-digits(idx).
+           move  0                       to xzoom-field-dec(idx).
+           move "####0"                  to xzoom-field-fmt(idx).
+      
+      *  CAMPO 2
+           add 1 to idx
+           move  40                      to xzoom-field-length(idx).
+           move  5                       to xzoom-field-offset(idx).
+           move  40                      to xzoom-field-column(idx).
+           move "Ragione Sociale"        to xzoom-field-name(idx).  
+           set  xzoom-ft-alpha(idx)      to true. 
+      
+      * CAMPO 3
+           add 1 to idx
+           move  40                      to xzoom-field-length(idx).
+           move  85                      to xzoom-field-offset(idx).
+           move  30                      to xzoom-field-column(idx).
+           move "Indirizzo"              to xzoom-field-name(idx).  
+           set  xzoom-ft-alpha(idx)      to true. 
+                                       
+      * CAMPO 4
+           add 1 to idx
+           move  5                       to xzoom-field-length(idx).
+           move  125                     to xzoom-field-offset(idx).
+           move  6                       to xzoom-field-column(idx).
+           move "C.A.P."                 to xzoom-field-name(idx).  
+           set  xzoom-ft-alpha(idx)      to true. 
+      
+      * CAMPO 5
+           add 1 to idx
+           move  35                      to xzoom-field-length(idx).
+           move  130                     to xzoom-field-offset(idx).
+           move  30                      to xzoom-field-column(idx).
+           move "Località"               to xzoom-field-name(idx).  
+           set  xzoom-ft-alpha(idx)      to true.      
+      
+      * CAMPO 6
+           add 1 to idx
+           move  2                       to xzoom-field-length(idx).
+           move  165                     to xzoom-field-offset(idx).
+           move  7                       to xzoom-field-column(idx).
+           move "Provincia"              to xzoom-field-name(idx).  
+           set  xzoom-ft-alpha(idx)      to true. 
+      * CAMPO 7
+           add 1 to idx
+           move  3                       to xzoom-field-length(idx).
+           move  167                     to xzoom-field-offset(idx).
+           move  6                       to xzoom-field-column(idx).
+           move "Nazione"                to xzoom-field-name(idx).  
+           set  xzoom-ft-alpha(idx)      to true.         
+      
+      * CAMPO 8
+           add 1 to idx
+           move  16                      to xzoom-field-length(idx).
+           move  170                     to xzoom-field-offset(idx).
+           move  12                      to xzoom-field-column(idx).
+           move "Codice Fiscale"         to xzoom-field-name(idx).  
+           set  xzoom-ft-alpha(idx)      to true.         
+      
+      * CAMPO 9
+           add 1 to idx
+           move  11                      to xzoom-field-length(idx).
+           move  186                     to xzoom-field-offset(idx).
+           move  12                      to xzoom-field-column(idx).
+           move "Partita IVA"            to xzoom-field-name(idx).  
+           set  xzoom-ft-alpha(idx)      to true.         
+
+      * CAMPO 10
+           add 1 to idx
+           move  2                       to xzoom-field-length(idx).
+           move  197                     to xzoom-field-offset(idx).
+           move  6                       to xzoom-field-column(idx).
+           move "Tipo"                   to xzoom-field-name(idx).  
+           set  xzoom-ft-alpha(idx)      to true.         
+
+           move  idx                    to xzoom-fields.  
+
+           move  -1                     to xzoom-delimiter-offset.
+           move  5                      to xzoom-delimiter-length.
+           move "000"                   to xzoom-from-value.
+           move "000"                   to xzoom-to-value.
 
       ***---
            copy "zoom-gt-procedure-edi.cpy".

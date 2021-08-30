@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gclienti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 30 agosto 2021 17:16:51.
+       DATE-WRITTEN.        martedì 31 agosto 2021 01:07:45.
        REMARKS.
       *{TOTEM}END
 
@@ -24015,10 +24015,14 @@
        ef-ricerca-piva-BeforeProcedure.
       * <TOTEM:PARA. ef-ricerca-piva-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-ricerca-piva-AfterProcedure.
       * <TOTEM:PARA. ef-ricerca-piva-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
@@ -24028,14 +24032,16 @@
            move ef-ricerca-piva-buf      to link-rc-piva.
            call   "rice-clienti" using rice-clienti-linkage
            cancel "rice-clienti".
-           if link-rc-codice = 0
-              display message "Nessun cliente trovato coi filtri richies
-      -    "ti"
-                        title titolo
-                         icon 2
-           else
-              move link-rc-codice to ef-codice-buf cli-codice
-           end-if
+           if link-rc-annulla = 0
+              if link-rc-codice = 0
+                 display message "Nessun cliente trovato coi filtri rich
+      -    "iesti"
+                           title titolo
+                            icon 2
+              else
+                 move link-rc-codice to ef-codice-buf cli-codice
+              end-if
+           end-if.
 
            move 27 to key-status 
            .
