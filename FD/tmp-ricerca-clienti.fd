@@ -1,0 +1,17 @@
+      *(( XFD FILE = tmp-ricerca-client ))
+       FD  tmp-ricerca-clienti.
+       01 trc-cli-rec.
+           05 trc-cli-chiave.
+               10 trc-cli-codice   PIC  9(5).
+           05 trc-cli-dati.
+               10 trc-cli-ragsoc-1 PIC  x(40).
+               10 trc-cli-ragsoc-2 PIC  x(40).
+               10 trc-cli-indirizzo            PIC  x(40).
+               10 trc-cli-cap      PIC  x(5).
+               10 trc-cli-localita PIC  x(35).
+               10 trc-cli-prov     PIC  x(2).
+               10 trc-cli-nazione  PIC  x(3).
+               10 trc-cli-codfis   PIC  x(16).
+               10 trc-cli-piva     PIC  x(11).
+      *(( XFD NAME = cli-tipo_1 ))
+               10 trc-cli-tipo     PIC  x(2).

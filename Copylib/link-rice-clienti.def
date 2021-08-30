@@ -1,0 +1,7 @@
+      *
+       01 rice-clienti-linkage.
+           03 link-rc-codice      pic 9(5).
+           03 filler              pic x(2000).
+           03 link-rc-filtri.
+              05 link-rc-piva     pic x(11).
+              05 filler           pic x(2000).
