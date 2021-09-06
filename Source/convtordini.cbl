@@ -1,6 +1,6 @@
        IDENTIFICATION DIVISION.
        PROGRAM-ID.                      convtordini.
-       remarks. Per aggiunta note bolla
+       remarks. Per ampliamento numero ordine cliente
        ENVIRONMENT          DIVISION.
        CONFIGURATION        SECTION.
        SPECIAL-NAMES. decimal-point is comma.
@@ -9,6 +9,7 @@
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
            copy "tordini.sl".
+
        SELECT tordini-old
            ASSIGN       TO  "tordini-old"
            ORGANIZATION IS INDEXED
@@ -16,27 +17,31 @@
            LOCK MODE    IS MANUAL
            FILE STATUS  IS STATUS-tordini-old
            RECORD KEY   IS old-tor-chiave
-           ALTERNATE RECORD KEY IS old-k-causale = old-tor-causale, 
-           old-tor-anno, old-tor-numero
+           ALTERNATE RECORD KEY IS old-k-causale = 
+           old-tor-causale, old-tor-anno, 
+           old-tor-numero
            ALTERNATE RECORD KEY IS old-k1 = old-tor-cod-cli, 
-           old-tor-prg-destino, old-tor-anno, old-tor-numero
+           old-tor-prg-destino, 
+           old-tor-anno, old-tor-numero
            WITH DUPLICATES 
            ALTERNATE RECORD KEY IS old-k2 = 
-           old-tor-data-passaggio-ordine, old-tor-anno, old-tor-numero
+           old-tor-data-passaggio-ordine, 
+           old-tor-anno, old-tor-numero
            WITH DUPLICATES 
            ALTERNATE RECORD KEY IS old-k-bolla = old-tor-anno-bolla, 
            old-tor-num-bolla
            WITH DUPLICATES 
            ALTERNATE RECORD KEY IS old-k3 = old-tor-anno-bolla, 
-           old-tor-data-bolla, old-tor-num-bolla, 
-           old-tor-bolla-prenotata
+           old-tor-data-bolla, 
+           old-tor-num-bolla, old-tor-bolla-prenotata
            WITH DUPLICATES 
            ALTERNATE RECORD KEY IS old-k-fattura = old-tor-anno-fattura, 
            old-tor-num-fattura
            WITH DUPLICATES 
            ALTERNATE RECORD KEY IS old-k4 = old-tor-anno-fattura, 
            old-tor-data-fattura, old-tor-num-fattura, 
-           old-tor-num-prenot, old-tor-fatt-prenotata
+           old-tor-num-prenot, 
+           old-tor-fatt-prenotata
            WITH DUPLICATES 
            ALTERNATE RECORD KEY IS old-k-contab = old-tor-agg-contab, 
            old-tor-anno-fattura, old-tor-num-fattura
@@ -47,32 +52,46 @@
            old-tor-numero
            WITH DUPLICATES 
            ALTERNATE RECORD KEY IS old-k-agfatt = old-tor-anno-fattura, 
-           old-tor-data-fattura, old-tor-num-fattura, old-tor-num-prenot, 
+           old-tor-data-fattura, old-tor-num-fattura, 
+           old-tor-num-prenot, 
            old-tor-fatt-prenotata, old-tor-chiave
            ALTERNATE RECORD KEY IS old-k-stbolle = old-tor-anno-bolla, 
            old-tor-data-bolla, old-tor-num-bolla, 
-           old-tor-bolla-prenotata, old-tor-chiave
+           old-tor-bolla-prenotata, 
+           old-tor-chiave
            ALTERNATE RECORD KEY IS old-k-andamento-data = 
-           old-tor-agg-contab, old-tor-data-fattura
-           WITH DUPLICATES 
-           ALTERNATE RECORD KEY IS old-k-andamento-cliente = 
-           old-tor-cod-cli, old-tor-agg-contab, old-tor-data-fattura
-           WITH DUPLICATES 
-           ALTERNATE RECORD KEY IS old-k-andamento-clides = 
-           old-tor-cod-cli, old-tor-prg-destino, old-tor-agg-contab, 
+           old-tor-agg-contab, 
            old-tor-data-fattura
            WITH DUPLICATES 
+           ALTERNATE RECORD KEY IS old-k-andamento-cliente = 
+           old-tor-cod-cli, 
+           old-tor-agg-contab, old-tor-data-fattura
+           WITH DUPLICATES 
+           ALTERNATE RECORD KEY IS old-k-andamento-clides = 
+           old-tor-cod-cli, 
+           old-tor-prg-destino, old-tor-agg-contab, old-tor-data-fattura
+           WITH DUPLICATES 
            ALTERNATE RECORD KEY IS old-k-promo = old-tor-stato, 
-           old-tor-promo, old-tor-data-ordine, old-tor-numero, 
-           old-tor-cod-cli, old-tor-prg-destino
+           old-tor-promo, 
+           old-tor-data-ordine, old-tor-numero, old-tor-cod-cli, 
+           old-tor-prg-destino
            WITH DUPLICATES 
            ALTERNATE RECORD KEY IS old-k-or = old-tor-cod-cli, 
-           old-tor-prg-destino, old-tor-num-ord-cli
+           old-tor-prg-destino, 
+           old-tor-num-ord-cli
            WITH DUPLICATES 
-           ALTERNATE RECORD KEY IS old-k-tor-inviare = 
-           old-tor-da-inviare OF tordini-old, 
-           old-tor-chiave OF tordini-old
-           WITH DUPLICATES .
+           ALTERNATE RECORD KEY IS old-k-old-tor-inviare = 
+           old-tor-da-inviare, old-tor-chiave 
+           WITH DUPLICATES 
+           ALTERNATE RECORD KEY IS old-k-old-tor-tipocli = 
+           old-tor-tipocli , old-tor-cod-cli, old-tor-prg-destino, 
+           old-tor-chiave
+           WITH DUPLICATES 
+           ALTERNATE RECORD KEY IS old-k-old-tor-gdo = 
+           old-tor-gdo, 
+           old-tor-cod-cli, old-tor-prg-destino, 
+           old-tor-chiave
+           WITH DUPLICATES.
 
 
       *****************************************************************
@@ -188,11 +207,11 @@
                        20 old-tor-fattura-from-data        PIC  9(8).
                        20 old-tor-fattura-from-numero      PIC  x(8).
                    15 old-tor-gdo          PIC  X(5).
-      *(( XFD NAME = old-tor-gdo_1 ))
                    15 old-tor-tipocli      PIC  X(2).
-      *(( XFD NAME = old-tor-gdo_1_1 ))
-                   15 FILLER           PIC  X(9).
-
+                   15 old-tor-note-bolla-1 PIC  X(500).
+                   15 old-tor-note-bolla-2 PIC  X(500).
+                   15 old-tor-causale-orig PIC  X(4).
+                   15 FILLER           PIC  X(1996).
 
        WORKING-STORAGE SECTION.
            copy "acucobol.def".
@@ -200,8 +219,8 @@
        77  status-tordini       pic X(2).
        77  status-tordini-old   pic X(2).
 
-       77  CONT                 PIC 9(3).
-       77  CONT-ED              PIC Z(3).
+       77  CONT                 PIC 9(10).
+       77  CONT-ED              PIC Z(10).
        77  scelta               pic 9.
 
       ******************************************************************
@@ -273,53 +292,75 @@
        MUOVI-RECORD.
            add 1 to cont.
            initialize tor-rec replacing numeric data by zeroes
-                                   alphanumeric data by spaces.        .
-           move old-tor-chiave               to tor-chiave               
-           move old-tor-causale              to tor-causale              
-           move old-tor-cod-cli              to tor-cod-cli              
-           move old-tor-prg-destino          to tor-prg-destino          
-           move old-tor-num-ord-cli          to tor-num-ord-cli          
-           move old-tor-data-ordine          to tor-data-ordine          
-           move old-tor-data-passaggio-ordine
-             to tor-data-passaggio-ordine
-           move old-tor-cod-agente           to tor-cod-agente           
-           move old-tor-cod-pagamento        to tor-cod-pagamento        
-           move old-tor-cod-ese-iva          to tor-cod-ese-iva          
-           move old-tor-spostam-ric-ago      to tor-spostam-ric-ago      
-           move old-tor-spostam-ric-dic      to tor-spostam-ric-dic      
-           move old-tor-vettore              to tor-vettore              
-           move old-tor-note1                to tor-note1                
-           move old-tor-data-note1           to tor-data-note1           
-           move old-tor-note2                to tor-note2                
-           move old-tor-note3                to tor-note3                
-           move old-tor-note4                to tor-note4                
-           move old-tor-invio                to tor-invio                
-           move old-tor-bolla                to tor-bolla.               
-           move old-tor-fattura              to tor-fattura.             
-           move old-tor-mod-caricamento      to tor-mod-caricamento      
-           move old-tor-agg-contab           to tor-agg-contab           
-           move old-tor-tipo                 to tor-tipo                 
-           move old-tor-note                 to tor-note                 
-           move old-tor-contropartita        to tor-contropartita        
-           move old-tor-stato                to tor-stato                
-           move old-tor-dati-comuni          to tor-dati-comuni.         
-           move old-tor-data-contab          to tor-data-contab          
-           move old-tor-promo                to tor-promo                
-           move old-tor-gest-plus            to tor-gest-plus            
-           move old-tor-ritira-in-lubex      to tor-ritira-in-lubex      
-           move old-tor-taglio               to tor-taglio               
-           move old-tor-flag-rec-prezzi      to tor-flag-rec-prezzi      
-           move old-tor-ordine-testa         to tor-ordine-testa         
-           move old-tor-da-ordine            to tor-da-ordine            
-           move old-tor-forn-reso            to tor-forn-reso            
-           move old-tor-num-vuoto-3          to tor-num-vuoto-3          
-           move old-tor-esito-consegna       to tor-esito-consegna       
-           move old-tor-data-bolla-effettiva to tor-data-bolla-effettiva 
-           move old-tor-tipo-evasione        to tor-tipo-evasione        
-           move old-tor-da-inviare           to tor-da-inviare           
-           move old-tor-ora-contab           to tor-ora-contab           
-           move old-tor-fattura-from         to tor-fattura-from         
-           move old-tor-gdo                  to tor-gdo                  
-           move old-tor-tipocli              to tor-tipocli              
+                                   alphanumeric data by spaces.
+           move old-tor-anno                   to tor-anno                    
+           move old-tor-numero                 to tor-numero                  
+           move old-tor-causale                to tor-causale                 
+           move old-tor-cod-cli                to tor-cod-cli                 
+           move old-tor-prg-destino            to tor-prg-destino             
+           move old-tor-num-ord-cli            to tor-num-ord-cli             
+           move old-tor-data-ordine            to tor-data-ordine             
+           move old-tor-data-passaggio-ordine  
+           to tor-data-passaggio-ordine   
+           move old-tor-cod-agente             to tor-cod-agente              
+           move old-tor-cod-pagamento          to tor-cod-pagamento           
+           move old-tor-cod-ese-iva            to tor-cod-ese-iva             
+           move old-tor-spostam-ric-ago        to tor-spostam-ric-ago         
+           move old-tor-spostam-ric-dic        to tor-spostam-ric-dic         
+           move old-tor-vettore                to tor-vettore                 
+           move old-tor-note1                  to tor-note1                   
+           move old-tor-data-note1             to tor-data-note1              
+           move old-tor-note2                  to tor-note2                   
+           move old-tor-note3                  to tor-note3                   
+           move old-tor-note4                  to tor-note4                   
+           move old-tor-invio                  to tor-invio                   
+           move old-tor-anno-bolla             to tor-anno-bolla              
+           move old-tor-num-bolla              to tor-num-bolla               
+           move old-tor-data-bolla             to tor-data-bolla              
+           move old-tor-bolla-prenotata        to tor-bolla-prenotata         
+           move old-tor-anno-fattura           to tor-anno-fattura            
+           move old-tor-num-fattura            to tor-num-fattura             
+           move old-tor-data-fattura           to tor-data-fattura            
+           move old-tor-num-prenot             to tor-num-prenot              
+           move old-tor-fatt-prenotata         to tor-fatt-prenotata          
+           move old-tor-mod-caricamento        to tor-mod-caricamento            
+           move old-tor-agg-contab             to tor-agg-contab              
+           move old-tor-tipo                   to tor-tipo                    
+           move old-tor-note                   to tor-note                    
+           move old-tor-contropartita          to tor-contropartita           
+           move old-tor-stato                  to tor-stato                   
+           move old-tor-data-creazione         to tor-data-creazione          
+           move old-tor-ora-creazione          to tor-ora-creazione           
+           move old-tor-utente-creazione       to tor-utente-creazione        
+           move old-tor-data-ultima-modifica   
+           to tor-data-ultima-modifica    
+           move old-tor-ora-ultima-modifica    
+           to tor-ora-ultima-modifica     
+           move old-tor-utente-ultima-modifica 
+           to tor-utente-ultima-modifica  
+           move old-tor-data-contab            to tor-data-contab             
+           move old-tor-promo                  to tor-promo                   
+           move old-tor-gest-plus              to tor-gest-plus               
+           move old-tor-ritira-in-lubex        to tor-ritira-in-lubex         
+           move old-tor-taglio                 to tor-taglio                  
+           move old-tor-flag-rec-prezzi        to tor-flag-rec-prezzi         
+           move old-tor-ordine-testa           to tor-ordine-testa.                     
+           move old-tor-da-ordine              to tor-da-ordine               
+           move old-tor-forn-reso              to tor-forn-reso               
+           move old-tor-num-vuoto-3            to tor-num-vuoto-3             
+           move old-tor-esito-consegna         to tor-esito-consegna          
+           move old-tor-data-bolla-effettiva   
+           to tor-data-bolla-effettiva    
+           move old-tor-tipo-evasione          to tor-tipo-evasione           
+           move old-tor-da-inviare             to tor-da-inviare              
+           move old-tor-ora-contab             to tor-ora-contab              
+           move old-tor-fattura-from-data      to tor-fattura-from-data       
+           move old-tor-fattura-from-numero    
+           to tor-fattura-from-numero     
+           move old-tor-gdo                    to tor-gdo                     
+           move old-tor-tipocli                to tor-tipocli                 
+           move old-tor-note-bolla-1           to tor-note-bolla-1            
+           move old-tor-note-bolla-2           to tor-note-bolla-2            
+           move old-tor-causale-orig           to tor-causale-orig            
 
-           write tor-rec.     
+           write tor-rec.
