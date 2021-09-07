@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          ric-bozze.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        lunedì 2 dicembre 2013 18:28:45.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        martedì 7 settembre 2021 11:53:50.
        REMARKS.
       *{TOTEM}END
 
@@ -63,9 +63,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "comune.def".
-               COPY "utydata.def".
-               COPY "custom.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -206,7 +204,7 @@
                   USAGE IS HANDLE OF WINDOW.
        77 Verdana12BI-Occidentale
                   USAGE IS HANDLE OF FONT.
-       77 ef-num-buf       PIC  x(10).
+       77 ef-num-buf       PIC  x(50).
        77 cmd  PIC  x(200).
        01 FILLER           PIC  9.
            88 PrimaVolta VALUE IS 1    WHEN SET TO FALSE  0. 
@@ -222,7 +220,7 @@
                       BLANK WHEN ZERO.
            05 col-dt-fatt      PIC  zz/zz/zzzz
                       BLANK WHEN ZERO.
-           05 col-num-ord      PIC  X(10).
+           05 col-num-ord      PIC  X(50).
            05 col-ragsoc       PIC  X(40).
            05 col-localita     PIC  X(35).
            05 col-sito         PIC  x(70).
@@ -240,22 +238,22 @@
        77 STATUS-Form2-FLAG-REFRESH PIC  9.
           88 Form2-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-Form2-KEY1-ORDER  PIC X VALUE "A".
-       77 TMP-Form2-tordini-RESTOREBUF  PIC X(907).
+       77 TMP-Form2-tordini-RESTOREBUF  PIC X(3938).
        77 TMP-Form2-KEYIS  PIC 9(3) VALUE 1.
-       77 Form2-MULKEY-TMPBUF   PIC X(907).
+       77 Form2-MULKEY-TMPBUF   PIC X(3938).
        77 STATUS-form3-FLAG-REFRESH PIC  9.
           88 form3-FLAG-REFRESH  VALUE 1 FALSE 0. 
-       77 TMP-DataSet1-tordini-BUF     PIC X(907).
+       77 TMP-DataSet1-tordini-BUF     PIC X(3938).
        77 TMP-DataSet1-tnotacr-BUF     PIC X(752).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-zoom-tno-fat-BUF     PIC X(77).
        77 TMP-DataSet1-zoom-tor-fat-BUF     PIC X(77).
        77 TMP-DataSet1-zoom-tor-bolle-BUF     PIC X(77).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1356).
-       77 TMP-DataSet1-destini-BUF     PIC X(431).
-       77 TMP-DataSet1-tcaumag-BUF     PIC X(201).
-       77 TMP-DataSet1-tvettori-BUF     PIC X(1181).
-       77 TMP-DataSet1-tmp-solleciti-BUF     PIC X(264).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
+       77 TMP-DataSet1-destini-BUF     PIC X(3676).
+       77 TMP-DataSet1-tcaumag-BUF     PIC X(254).
+       77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
+       77 TMP-DataSet1-tmp-solleciti-BUF     PIC X(304).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -333,8 +331,10 @@
        77 tordini-k-andamento-cliente-SPLITBUF  PIC X(15).
        77 tordini-k-andamento-clides-SPLITBUF  PIC X(20).
        77 tordini-k-promo-SPLITBUF  PIC X(29).
-       77 tordini-k-or-SPLITBUF  PIC X(21).
+       77 tordini-k-or-SPLITBUF  PIC X(61).
        77 tordini-k-tor-inviare-SPLITBUF  PIC X(14).
+       77 tordini-k-tor-tipocli-SPLITBUF  PIC X(25).
+       77 tordini-k-tor-gdo-SPLITBUF  PIC X(28).
        77 tnotacr-k-causale-SPLITBUF  PIC X(17).
        77 tnotacr-k1-SPLITBUF  PIC X(23).
        77 tnotacr-k2-SPLITBUF  PIC X(21).
@@ -352,7 +352,7 @@
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
        77 clienti-cli-K4-SPLITBUF  PIC X(8).
-       77 destini-K1-SPLITBUF  PIC X(51).
+       77 destini-K1-SPLITBUF  PIC X(111).
        77 destini-k-localita-SPLITBUF  PIC X(36).
        77 tcaumag-k-mag-SPLITBUF  PIC X(5).
        77 tvettori-k-des-SPLITBUF  PIC X(41).
@@ -492,7 +492,7 @@
            COL 13,00, 
            LINE 10,50,
            LINES 1,33 ,
-           SIZE 12,00 ,
+           SIZE 25,00 ,
            BOXED,
            COLOR IS 513,
            ENABLED e-elenco,
@@ -500,6 +500,7 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            LEFT,
+           MAX-TEXT 50,
            VALUE ef-num-buf,
            AFTER PROCEDURE ef-num-AfterProcedure, 
            .
@@ -1145,16 +1146,16 @@
            COL 2,67, 
            LINE 2,00,
            LINES 42,00 ,
-           SIZE 161,67 ,
+           SIZE 218,33 ,
            ADJUSTABLE-COLUMNS,
            BOXED,
            CENTERED-HEADINGS,
-           DATA-COLUMNS (1, 2, 6, 14, 22, 32, 40, 50, 60, 100, 135),
+           DATA-COLUMNS (1, 2, 6, 14, 22, 32, 40, 50, 100, 140, 175),
            ALIGNMENT ("C", "C", "R", "R", "C", "R", "C", "U", "U", "U", 
            "U"),
            SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5),
            DATA-TYPES ("X", "X", "X", "X", "99/99/9999", "X", "99/99/999
-      -    "9", "x(10)", "x(40)", "x(35)", "X"),
+      -    "9", "x(50)", "x(40)", "x(35)", "X"),
            NUM-COL-HEADINGS 1,
            COLUMN-HEADINGS,
            CURSOR-FRAME-WIDTH 0,
@@ -1181,7 +1182,7 @@
            COL 1,00, 
            LINE 46,54,
            LINES 3,00 ,
-           SIZE 137,33 ,
+           SIZE 194,83 ,
            LOWERED,
            FULL-HEIGHT,
            ID IS 202,
@@ -1193,10 +1194,10 @@
        05
            Screen1-La-1a, 
            Label, 
-           COL 3,00, 
-           LINE 47,16,
+           COL 29,67, 
+           LINE 47,15,
            LINES 1,54 ,
-           SIZE 135,33 ,
+           SIZE 135,50 ,
            FONT IS Verdana12-Occidentale,
            ID IS 203,
            HEIGHT-IN-CELLS,
@@ -1209,7 +1210,7 @@
        05
            Screen1-Fr-1aaa, 
            Frame, 
-           COL 138,50, 
+           COL 196,00, 
            LINE 46,54,
            LINES 3,00 ,
            SIZE 27,50 ,
@@ -1224,7 +1225,7 @@
        05
            pb-annulla2, 
            Push-Button, 
-           COL 152,33, 
+           COL 209,83, 
            LINE 46,69,
            LINES 30,00 ,
            SIZE 73,00 ,
@@ -1245,7 +1246,7 @@
        05
            pb-ok2, 
            Push-Button, 
-           COL 139,17, 
+           COL 196,67, 
            LINE 46,69,
            LINES 30,00 ,
            SIZE 73,00 ,
@@ -1974,7 +1975,7 @@
            INITIALIZE tordini-k-or-SPLITBUF
            MOVE tor-cod-cli(1:5) TO tordini-k-or-SPLITBUF(1:5)
            MOVE tor-prg-destino(1:5) TO tordini-k-or-SPLITBUF(6:5)
-           MOVE tor-num-ord-cli(1:10) TO tordini-k-or-SPLITBUF(11:10)
+           MOVE tor-num-ord-cli(1:50) TO tordini-k-or-SPLITBUF(11:50)
            .
 
        tordini-k-tor-inviare-MERGE-SPLITBUF.
@@ -1983,6 +1984,30 @@
            tordini-k-tor-inviare-SPLITBUF(1:1)
            MOVE tor-chiave OF tordini(1:12) TO 
            tordini-k-tor-inviare-SPLITBUF(2:12)
+           .
+
+       tordini-k-tor-tipocli-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-tor-tipocli-SPLITBUF
+           MOVE tor-tipocli OF tordini(1:2) TO 
+           tordini-k-tor-tipocli-SPLITBUF(1:2)
+           MOVE tor-cod-cli OF tordini(1:5) TO 
+           tordini-k-tor-tipocli-SPLITBUF(3:5)
+           MOVE tor-prg-destino OF tordini(1:5) TO 
+           tordini-k-tor-tipocli-SPLITBUF(8:5)
+           MOVE tor-chiave OF tordini(1:12) TO 
+           tordini-k-tor-tipocli-SPLITBUF(13:12)
+           .
+
+       tordini-k-tor-gdo-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-tor-gdo-SPLITBUF
+           MOVE tor-gdo OF tordini(1:5) TO 
+           tordini-k-tor-gdo-SPLITBUF(1:5)
+           MOVE tor-cod-cli OF tordini(1:5) TO 
+           tordini-k-tor-gdo-SPLITBUF(6:5)
+           MOVE tor-prg-destino OF tordini(1:5) TO 
+           tordini-k-tor-gdo-SPLITBUF(11:5)
+           MOVE tor-chiave OF tordini(1:12) TO 
+           tordini-k-tor-gdo-SPLITBUF(16:12)
            .
 
        DataSet1-tordini-INITSTART.
@@ -2103,6 +2128,8 @@
            PERFORM tordini-k-promo-MERGE-SPLITBUF
            PERFORM tordini-k-or-MERGE-SPLITBUF
            PERFORM tordini-k-tor-inviare-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-tipocli-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-gdo-MERGE-SPLITBUF
            MOVE STATUS-tordini TO TOTEM-ERR-STAT 
            MOVE "tordini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -2151,6 +2178,8 @@
            PERFORM tordini-k-promo-MERGE-SPLITBUF
            PERFORM tordini-k-or-MERGE-SPLITBUF
            PERFORM tordini-k-tor-inviare-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-tipocli-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-gdo-MERGE-SPLITBUF
            MOVE STATUS-tordini TO TOTEM-ERR-STAT
            MOVE "tordini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -2199,6 +2228,8 @@
            PERFORM tordini-k-promo-MERGE-SPLITBUF
            PERFORM tordini-k-or-MERGE-SPLITBUF
            PERFORM tordini-k-tor-inviare-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-tipocli-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-gdo-MERGE-SPLITBUF
            MOVE STATUS-tordini TO TOTEM-ERR-STAT
            MOVE "tordini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -3262,9 +3293,9 @@
 
        destini-K1-MERGE-SPLITBUF.
            INITIALIZE destini-K1-SPLITBUF
-           MOVE des-ragsoc-1(1:40) TO destini-K1-SPLITBUF(1:40)
-           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(41:5)
-           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(46:5)
+           MOVE des-ragsoc-1(1:100) TO destini-K1-SPLITBUF(1:100)
+           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(101:5)
+           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(106:5)
            .
 
        destini-k-localita-MERGE-SPLITBUF.
@@ -4302,8 +4333,8 @@
 
        Form2-Create-Win.
            Display Floating GRAPHICAL WINDOW
-              LINES 48,54,
-              SIZE 165,00,
+              LINES 48,62,
+              SIZE 222,50,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
               COLOR 65793,
@@ -4329,7 +4360,7 @@
            DISPLAY Form2 UPON form2-Handle
       * DISPLAY-COLUMNS settings
               MODIFY gd-ordini, DISPLAY-COLUMNS (1, 4, 12, 24, 36, 49, 
-           61, 74, 89, 109, 144)
+           61, 74, 99, 119, 154)
            .
 
        Form2-PROC.

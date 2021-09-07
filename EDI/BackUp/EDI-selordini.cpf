@@ -2,12 +2,13 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
+DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E57C195920-690-76311833
+PROGRAM_UNIQUE_CODE=TOTEM-7E5978128-101-2469820960
 
 {{@DESCRIPTION:
 
@@ -4068,8 +4069,8 @@ m_bFixed=1
 @}}
 [FDITEM349_WK]
 m_strName=Col-ord-cli
-m_strRawPic=X(10)
-m_strPic=X(10)
+m_strRawPic=X(50)
+m_strPic=X(50)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -7310,7 +7311,7 @@ Begin Screen Form2
    Operation Mode    = Interactive Mode
    Resizable         = FALSE
    Scroll            = FALSE
-   Size              = 186,83
+   Size              = 198,17
    System Menu       = TRUE
    Title Bar         = TRUE
    Title Variable    = titolo
@@ -7459,8 +7460,8 @@ Begin Screen Form2
       Columns' Setting  = ( PIC = "z(7)9", TYPE = "9(8)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
       Columns' Setting  = ( DISP = 11, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 4, Name = Col-ord-cli, READONLY = 0 )
-      Columns' Setting  = ( PIC = "X(10)", TYPE = "X(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
-      Columns' Setting  = ( DISP = 13, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( PIC = "X(50)", TYPE = "X(50)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
+      Columns' Setting  = ( DISP = 25, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 5, Name = Col-data, READONLY = 0 )
       Columns' Setting  = ( PIC = "99/99/9999", TYPE = "99/99/9999", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
       Columns' Setting  = ( DISP = 13, SEPA = 5, DIVI = 1 )
@@ -7513,12 +7514,12 @@ Begin Screen Form2
       Paged             = FALSE
       Row Dividers      = 1
       Row Headings      = TRUE
-      Size              = 183,67
+      Size              = 195,17
       Size Unit         = Default
       Tab Order         = 2
       Tiled Headings    = TRUE
       Use Tab           = FALSE
-      Virtual Width     = 180
+      Virtual Width     = 192
       Visible           = NONE
       Vpadding          = 50
       Vscroll           = TRUE
@@ -7556,7 +7557,7 @@ Begin Screen Form2
       Lines             = 3,00
       Lines Unit        = Default
       Low Color         = 0
-      Size              = 125,33
+      Size              = 136,83
       Size Unit         = Default
       Tab Order         = 3
       Thickness         = Default
@@ -7598,7 +7599,7 @@ Begin Screen Form2
          Width in Cells    = TRUE
       End
       Begin Push-Button pb-genera
-         SCREEN-COL        = 146,17
+         SCREEN-COL        = 157,83
          SCREEN-LINE       = 46,69
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -7610,7 +7611,7 @@ Begin Screen Form2
          Bitmap Square     = TRUE
          Clines            = 0
          Clines Unit       = Default
-         Column            = 112,67
+         Column            = 124,33
          Copy Resource     = TRUE
          Csize             = 0
          Csize Unit        = Default
@@ -7643,7 +7644,7 @@ Begin Screen Form2
          Link To           = pb-genera-LinkTo
       End
       Begin Push-Button pb-aggiorna
-         SCREEN-COL        = 133,00
+         SCREEN-COL        = 144,67
          SCREEN-LINE       = 46,69
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -7655,7 +7656,7 @@ Begin Screen Form2
          Bitmap Square     = TRUE
          Clines            = 0
          Clines Unit       = Default
-         Column            = 99,50
+         Column            = 111,17
          Copy Resource     = TRUE
          Csize             = 0
          Csize Unit        = Default
@@ -7690,7 +7691,7 @@ Begin Screen Form2
       End
    End
    Begin Frame Screen1-Fr-1aa
-      SCREEN-COL        = 160,33
+      SCREEN-COL        = 171,33
       SCREEN-LINE       = 46,54
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -7700,7 +7701,7 @@ Begin Screen Form2
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 160,33
+      Column            = 171,33
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -7714,7 +7715,7 @@ Begin Screen Form2
       Lines             = 3,00
       Lines Unit        = Default
       Low Color         = 0
-      Size              = 27,50
+      Size              = 27,83
       Size Unit         = Default
       Tab Order         = 4
       Thickness         = Default
@@ -7722,7 +7723,7 @@ Begin Screen Form2
       Visible           = NONE
       Width in Cells    = TRUE
       Begin Push-Button pb-annulla2
-         SCREEN-COL        = 174,16
+         SCREEN-COL        = 185,16
          SCREEN-LINE       = 46,69
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -7766,7 +7767,7 @@ Begin Screen Form2
          After Procedure   = pb-annulla2-AfterProcedure
       End
       Begin Push-Button pb-ok2
-         SCREEN-COL        = 161,00
+         SCREEN-COL        = 172,00
          SCREEN-LINE       = 46,69
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -7975,7 +7976,7 @@ Begin Screen Form2
       Lines             = 4,23
       Lines Unit        = Default
       Low Color         = 0
-      Size              = 183,67
+      Size              = 195,17
       Size Unit         = Default
       Tab Order         = 9
       Thickness         = Default
@@ -7984,15 +7985,15 @@ Begin Screen Form2
       Visible           = NONE
       Width in Cells    = TRUE
       Begin Label Screen1-La-2
-         SCREEN-COL        = 24,33
-         SCREEN-LINE       = 40,93
-         LOCK-CONTROL      = TRUE
+         SCREEN-COL        = 30,00
+         SCREEN-LINE       = 40,92
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = Screen1-La-2
          Clines            = 0
          Clines Unit       = Default
          Color             = 0
-         Column            = 22,83
+         Column            = 28,50
          Csize             = 0
          Csize Unit        = Default
          Destroy Type      = Automatic
@@ -8018,15 +8019,15 @@ Begin Screen Form2
          Width in Cells    = TRUE
       End
       Begin Label Screen1-La-2a
-         SCREEN-COL        = 44,33
-         SCREEN-LINE       = 40,93
-         LOCK-CONTROL      = TRUE
+         SCREEN-COL        = 50,00
+         SCREEN-LINE       = 40,92
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = Screen1-La-2a
          Clines            = 0
          Clines Unit       = Default
          Color             = 0
-         Column            = 42,83
+         Column            = 48,50
          Csize             = 0
          Csize Unit        = Default
          Destroy Type      = Automatic
@@ -8052,15 +8053,15 @@ Begin Screen Form2
          Width in Cells    = TRUE
       End
       Begin Label Screen1-La-2aa
-         SCREEN-COL        = 64,00
-         SCREEN-LINE       = 40,93
-         LOCK-CONTROL      = TRUE
+         SCREEN-COL        = 69,67
+         SCREEN-LINE       = 40,92
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = Screen1-La-2aa
          Clines            = 0
          Clines Unit       = Default
          Color             = 0
-         Column            = 62,50
+         Column            = 68,17
          Csize             = 0
          Csize Unit        = Default
          Destroy Type      = Automatic
@@ -8086,15 +8087,15 @@ Begin Screen Form2
          Width in Cells    = TRUE
       End
       Begin Label Screen1-La-2aaa
-         SCREEN-COL        = 82,33
-         SCREEN-LINE       = 40,93
-         LOCK-CONTROL      = TRUE
+         SCREEN-COL        = 88,00
+         SCREEN-LINE       = 40,92
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = Screen1-La-2aaa
          Clines            = 0
          Clines Unit       = Default
          Color             = 0
-         Column            = 80,83
+         Column            = 86,50
          Csize             = 0
          Csize Unit        = Default
          Destroy Type      = Automatic
@@ -8120,15 +8121,15 @@ Begin Screen Form2
          Width in Cells    = TRUE
       End
       Begin Label Screen1-La-2aaaa
-         SCREEN-COL        = 98,17
-         SCREEN-LINE       = 40,93
-         LOCK-CONTROL      = TRUE
+         SCREEN-COL        = 103,83
+         SCREEN-LINE       = 40,92
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = Screen1-La-2aaaa
          Clines            = 0
          Clines Unit       = Default
          Color             = 0
-         Column            = 96,67
+         Column            = 102,33
          Csize             = 0
          Csize Unit        = Default
          Destroy Type      = Automatic
@@ -8154,15 +8155,15 @@ Begin Screen Form2
          Width in Cells    = TRUE
       End
       Begin Label Screen1-La-2aaab
-         SCREEN-COL        = 119,33
-         SCREEN-LINE       = 40,93
-         LOCK-CONTROL      = TRUE
+         SCREEN-COL        = 125,00
+         SCREEN-LINE       = 40,92
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = Screen1-La-2aaab
          Clines            = 0
          Clines Unit       = Default
          Color             = 0
-         Column            = 117,83
+         Column            = 123,50
          Csize             = 0
          Csize Unit        = Default
          Destroy Type      = Automatic
@@ -8188,15 +8189,15 @@ Begin Screen Form2
          Width in Cells    = TRUE
       End
       Begin Label Screen1-La-2aaac
-         SCREEN-COL        = 145,83
-         SCREEN-LINE       = 40,93
-         LOCK-CONTROL      = TRUE
+         SCREEN-COL        = 151,50
+         SCREEN-LINE       = 40,92
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = Screen1-La-2aaac
          Clines            = 0
          Clines Unit       = Default
          Color             = 0
-         Column            = 144,33
+         Column            = 150,00
          Csize             = 0
          Csize Unit        = Default
          Destroy Type      = Automatic
@@ -8222,16 +8223,16 @@ Begin Screen Form2
          Width in Cells    = TRUE
       End
       Begin Label lab-err-cli
-         SCREEN-COL        = 37,17
-         SCREEN-LINE       = 40,93
-         LOCK-CONTROL      = TRUE
+         SCREEN-COL        = 42,83
+         SCREEN-LINE       = 40,92
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = lab-err-cli
          Clines            = 0
          Clines Unit       = Default
          Color             = 0
          Color Variable    = col-lab-err-cli
-         Column            = 35,67
+         Column            = 41,33
          Csize             = 0
          Csize Unit        = Default
          Destroy Type      = Automatic
@@ -8258,16 +8259,16 @@ Begin Screen Form2
          Width in Cells    = TRUE
       End
       Begin Label lab-err-des
-         SCREEN-COL        = 57,00
-         SCREEN-LINE       = 40,93
-         LOCK-CONTROL      = TRUE
+         SCREEN-COL        = 62,67
+         SCREEN-LINE       = 40,92
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = lab-err-des
          Clines            = 0
          Clines Unit       = Default
          Color             = 0
          Color Variable    = col-lab-err-des
-         Column            = 55,50
+         Column            = 61,17
          Csize             = 0
          Csize Unit        = Default
          Destroy Type      = Automatic
@@ -8294,16 +8295,16 @@ Begin Screen Form2
          Width in Cells    = TRUE
       End
       Begin Label lab-err-righe
-         SCREEN-COL        = 74,50
-         SCREEN-LINE       = 40,93
-         LOCK-CONTROL      = TRUE
+         SCREEN-COL        = 80,17
+         SCREEN-LINE       = 40,92
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = lab-err-righe
          Clines            = 0
          Clines Unit       = Default
          Color             = 0
          Color Variable    = col-lab-err-righe
-         Column            = 73,00
+         Column            = 78,67
          Csize             = 0
          Csize Unit        = Default
          Destroy Type      = Automatic
@@ -8330,16 +8331,16 @@ Begin Screen Form2
          Width in Cells    = TRUE
       End
       Begin Label lab-err-qta
-         SCREEN-COL        = 91,17
-         SCREEN-LINE       = 40,93
-         LOCK-CONTROL      = TRUE
+         SCREEN-COL        = 96,83
+         SCREEN-LINE       = 40,92
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = lab-err-qta
          Clines            = 0
          Clines Unit       = Default
          Color             = 0
          Color Variable    = col-lab-err-qta
-         Column            = 89,67
+         Column            = 95,33
          Csize             = 0
          Csize Unit        = Default
          Destroy Type      = Automatic
@@ -8366,16 +8367,16 @@ Begin Screen Form2
          Width in Cells    = TRUE
       End
       Begin Label lab-err-art
-         SCREEN-COL        = 112,83
-         SCREEN-LINE       = 40,93
-         LOCK-CONTROL      = TRUE
+         SCREEN-COL        = 118,50
+         SCREEN-LINE       = 40,92
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = lab-err-art
          Clines            = 0
          Clines Unit       = Default
          Color             = 0
          Color Variable    = col-lab-err-art
-         Column            = 111,33
+         Column            = 117,00
          Csize             = 0
          Csize Unit        = Default
          Destroy Type      = Automatic
@@ -8402,16 +8403,16 @@ Begin Screen Form2
          Width in Cells    = TRUE
       End
       Begin Label lab-err-prg
-         SCREEN-COL        = 138,83
-         SCREEN-LINE       = 40,93
-         LOCK-CONTROL      = TRUE
+         SCREEN-COL        = 144,50
+         SCREEN-LINE       = 40,92
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = lab-err-prg
          Clines            = 0
          Clines Unit       = Default
          Color             = 0
          Color Variable    = col-lab-err-prg
-         Column            = 137,33
+         Column            = 143,00
          Csize             = 0
          Csize Unit        = Default
          Destroy Type      = Automatic
@@ -8438,16 +8439,16 @@ Begin Screen Form2
          Width in Cells    = TRUE
       End
       Begin Label lab-err-prz
-         SCREEN-COL        = 158,00
-         SCREEN-LINE       = 40,93
-         LOCK-CONTROL      = TRUE
+         SCREEN-COL        = 163,67
+         SCREEN-LINE       = 40,92
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = lab-err-prz
          Clines            = 0
          Clines Unit       = Default
          Color             = 0
          Color Variable    = col-lab-err-prz
-         Column            = 156,50
+         Column            = 162,17
          Csize             = 0
          Csize Unit        = Default
          Destroy Type      = Automatic
@@ -8474,15 +8475,15 @@ Begin Screen Form2
          Width in Cells    = TRUE
       End
       Begin Label Screen1-La-2b
-         SCREEN-COL        = 4,67
-         SCREEN-LINE       = 40,93
-         LOCK-CONTROL      = TRUE
+         SCREEN-COL        = 10,33
+         SCREEN-LINE       = 40,92
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = Screen1-La-2b
          Clines            = 0
          Clines Unit       = Default
          Color             = 0
-         Column            = 3,17
+         Column            = 8,83
          Csize             = 0
          Csize Unit        = Default
          Destroy Type      = Automatic
@@ -8508,16 +8509,16 @@ Begin Screen Form2
          Width in Cells    = TRUE
       End
       Begin Label lab-err-doppio
-         SCREEN-COL        = 16,33
-         SCREEN-LINE       = 40,93
-         LOCK-CONTROL      = TRUE
+         SCREEN-COL        = 22,00
+         SCREEN-LINE       = 40,92
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = lab-err-doppio
          Clines            = 0
          Clines Unit       = Default
          Color             = 0
          Color Variable    = col-lab-err-doppio
-         Column            = 14,83
+         Column            = 20,50
          Csize             = 0
          Csize Unit        = Default
          Destroy Type      = Automatic
@@ -8544,16 +8545,16 @@ Begin Screen Form2
          Width in Cells    = TRUE
       End
       Begin Label lab-err-bloc
-         SCREEN-COL        = 178,00
-         SCREEN-LINE       = 40,93
-         LOCK-CONTROL      = TRUE
+         SCREEN-COL        = 183,67
+         SCREEN-LINE       = 40,92
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = lab-err-bloc
          Clines            = 0
          Clines Unit       = Default
          Color             = 0
          Color Variable    = col-lab-err-bloc
-         Column            = 176,50
+         Column            = 182,17
          Csize             = 0
          Csize Unit        = Default
          Destroy Type      = Automatic
@@ -8580,15 +8581,15 @@ Begin Screen Form2
          Width in Cells    = TRUE
       End
       Begin Label Screen1-La-2aaaca
-         SCREEN-COL        = 165,83
-         SCREEN-LINE       = 40,93
-         LOCK-CONTROL      = TRUE
+         SCREEN-COL        = 171,50
+         SCREEN-LINE       = 40,92
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = Screen1-La-2aaaca
          Clines            = 0
          Clines Unit       = Default
          Color             = 0
-         Column            = 164,33
+         Column            = 170,00
          Csize             = 0
          Csize Unit        = Default
          Destroy Type      = Automatic
@@ -8615,15 +8616,15 @@ Begin Screen Form2
       End
    End
    Begin Label lab-attendere
-      SCREEN-COL        = 74,17
+      SCREEN-COL        = 79,83
       SCREEN-LINE       = 43,62
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = lab-attendere
       Clines            = 0
       Clines Unit       = Default
       Color             = 5
-      Column            = 74,17
+      Column            = 79,83
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          vmovmag.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 6 novembre 2020 13:17:51.
+       DATE-WRITTEN.        martedì 7 settembre 2021 12:23:12.
        REMARKS.
       *{TOTEM}END
 
@@ -344,7 +344,7 @@
            05 r-data-mov       PIC  99/99/9999.
            05 r-num-bolla      PIC  z(8).
            05 r-data-bolla     PIC  99/99/9999.
-           05 r-num-ord-cli    PIC  x(10).
+           05 r-num-ord-cli    PIC  x(50).
            05 r-data-ordine    PIC  99/99/9999.
            05 r-numdoc         PIC  z(8).
            05 r-datadoc        PIC  99/99/9999.
@@ -543,9 +543,9 @@
        77 TMP-DataSet1-rmovmag-BUF     PIC X(446).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-tmarche-BUF     PIC X(217).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-destini-BUF     PIC X(3676).
-       77 TMP-DataSet1-tmp-movmag-BUF     PIC X(436).
+       77 TMP-DataSet1-tmp-movmag-BUF     PIC X(476).
        77 TMP-DataSet1-tcodpag-BUF     PIC X(1380).
        77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
@@ -556,7 +556,7 @@
        77 TMP-DataSet1-progmag-BUF     PIC X(1090).
        77 TMP-DataSet1-progmagric-BUF     PIC X(564).
        77 TMP-DataSet1-timposte-BUF     PIC X(717).
-       77 TMP-DataSet1-tordini-BUF     PIC X(3898).
+       77 TMP-DataSet1-tordini-BUF     PIC X(3938).
        77 TMP-DataSet1-tgrupgdo-BUF     PIC X(1206).
        77 TMP-DataSet1-rordini-BUF     PIC X(667).
        77 TMP-DataSet1-agenti-BUF     PIC X(1233).
@@ -731,7 +731,7 @@
        77 tordini-k-andamento-cliente-SPLITBUF  PIC X(15).
        77 tordini-k-andamento-clides-SPLITBUF  PIC X(20).
        77 tordini-k-promo-SPLITBUF  PIC X(29).
-       77 tordini-k-or-SPLITBUF  PIC X(21).
+       77 tordini-k-or-SPLITBUF  PIC X(61).
        77 tordini-k-tor-inviare-SPLITBUF  PIC X(14).
        77 tordini-k-tor-tipocli-SPLITBUF  PIC X(25).
        77 tordini-k-tor-gdo-SPLITBUF  PIC X(28).
@@ -6578,7 +6578,7 @@
            INITIALIZE tordini-k-or-SPLITBUF
            MOVE tor-cod-cli(1:5) TO tordini-k-or-SPLITBUF(1:5)
            MOVE tor-prg-destino(1:5) TO tordini-k-or-SPLITBUF(6:5)
-           MOVE tor-num-ord-cli(1:10) TO tordini-k-or-SPLITBUF(11:10)
+           MOVE tor-num-ord-cli(1:50) TO tordini-k-or-SPLITBUF(11:50)
            .
 
        tordini-k-tor-inviare-MERGE-SPLITBUF.

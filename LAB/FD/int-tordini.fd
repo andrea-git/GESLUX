@@ -7,7 +7,7 @@
                10 int-tor-causale  PIC  x(4).
                10 int-tor-cod-cli  PIC  9(5).
                10 int-tor-prg-destino          PIC  9(5).
-               10 int-tor-num-ord-cli          PIC  X(10).
+               10 int-tor-num-ord-cli          PIC  X(50).
                10 int-tor-data-ordine          PIC  9(8).
                10 int-tor-data-passaggio-ordine            PIC  9(8).
                10 int-tor-cod-agente           PIC  9(5).

@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=bprepb-Ev-Before-Program
 AFTER_PROGRAM=stdoc-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E59615338-478-2118531415
+PROGRAM_UNIQUE_CODE=TOTEM-7E597132338-729-73623730
 
 {{@DESCRIPTION:
 
@@ -1232,8 +1232,8 @@ m_bFixed=1
 @}}
 [FDITEM112_WK]
 m_strName=ef-num-buf
-m_strRawPic=x(10)
-m_strPic=x(10)
+m_strRawPic=x(50)
+m_strPic=x(50)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1350,8 +1350,8 @@ m_bFixed=1
 @}}
 [FDITEM124_WK]
 m_strName=col-num-ord
-m_strRawPic=X(10)
-m_strPic=X(10)
+m_strRawPic=X(50)
+m_strPic=X(50)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -2023,7 +2023,7 @@ Begin Screen Form1
       Lines             = 1,33
       Lines Unit        = Default
       Max Lines         = 0
-      Max Text          = 0
+      Max Text          = 50
       Max Value         = 0
       Min Value         = 0
       No AutoSel        = FALSE
@@ -2034,14 +2034,14 @@ Begin Screen Form1
       Read Only         = FALSE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 12,00
+      Size              = 25,00
       Size Unit         = Default
       Style             = Singleline
       Tab Order         = 5
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
-      Value Picture     = x(10)
+      Value Picture     = x(50)
       Value Variable    = ef-num-buf
       Visible           = NONE
       Width in Cells    = TRUE
@@ -3639,7 +3639,7 @@ Begin Screen Form2
    Operation Mode    = Interactive Mode
    Resizable         = FALSE
    Scroll            = FALSE
-   Size              = 167,67
+   Size              = 237,50
    System Menu       = TRUE
    Title Bar         = TRUE
    Title Variable    = titolo
@@ -3652,9 +3652,9 @@ Begin Screen Form2
    Wrap              = FALSE
    Event Procedure   = Screen1-Event-Proc
    Begin Grid gd-ordini
-      SCREEN-COL        = 1,83
-      SCREEN-LINE       = 2,00
-      LOCK-CONTROL      = TRUE
+      SCREEN-COL        = 1,67
+      SCREEN-LINE       = 1,92
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = gd-ordini
       Action            = (None)
@@ -3673,7 +3673,7 @@ Begin Screen Form2
       Cells' Setting    = ( X = 12, Y = 1, Data = "Sito Vettore" )
       Centered Headings = TRUE
       Color             = 0
-      Column            = 1,83
+      Column            = 1,67
       Column Headings   = TRUE
       Columns' Setting  = ( X = 1, Name = col-nulla, READONLY = 0 )
       Columns' Setting  = ( PIC = "X", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
@@ -3697,8 +3697,8 @@ Begin Screen Form2
       Columns' Setting  = ( PIC = "99/99/9999", TYPE = "99/99/9999", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
       Columns' Setting  = ( DISP = 13, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 8, Name = col-num-ord, READONLY = 0 )
-      Columns' Setting  = ( PIC = "X(10)", TYPE = "x(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
-      Columns' Setting  = ( DISP = 15, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( PIC = "X(50)", TYPE = "x(50)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
+      Columns' Setting  = ( DISP = 25, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 9, Name = col-ragsoc, READONLY = 0 )
       Columns' Setting  = ( PIC = "X(40)", TYPE = "x(40)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
       Columns' Setting  = ( DISP = 20, SEPA = 5, DIVI = 1 )
@@ -3730,7 +3730,7 @@ Begin Screen Form2
       Hscroll           = TRUE
       ID                = 1
       Last Row          = 0
-      Line              = 2,00
+      Line              = 1,92
       Lines             = 42,00
       Lines Unit        = Default
       No Tab            = FALSE
@@ -3741,12 +3741,12 @@ Begin Screen Form2
       Paged             = FALSE
       Row Dividers      = 1
       Row Headings      = TRUE
-      Size              = 165,83
+      Size              = 236,17
       Size Unit         = Default
       Tab Order         = 1
       Tiled Headings    = TRUE
       Use Tab           = FALSE
-      Virtual Width     = 235
+      Virtual Width     = 245
       Visible           = NONE
       Vpadding          = 50
       Vscroll           = TRUE
@@ -3762,7 +3762,7 @@ Begin Screen Form2
    Begin Frame Screen1-Fr-1aa
       SCREEN-COL        = 1,00
       SCREEN-LINE       = 46,54
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = Screen1-Fr-1aa
       3D Style          = Lowered
@@ -3784,7 +3784,7 @@ Begin Screen Form2
       Lines             = 3,00
       Lines Unit        = Default
       Low Color         = 0
-      Size              = 139,50
+      Size              = 209,33
       Size Unit         = Default
       Tab Order         = 2
       Thickness         = Default
@@ -3792,15 +3792,15 @@ Begin Screen Form2
       Visible           = NONE
       Width in Cells    = TRUE
       Begin Label Screen1-La-1a
-         SCREEN-COL        = 3,00
-         SCREEN-LINE       = 47,16
+         SCREEN-COL        = 43,00
+         SCREEN-LINE       = 47,15
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Screen1-La-1a
          Clines            = 0
          Clines Unit       = Default
          Color             = 0
-         Column            = 3,00
+         Column            = 43,00
          Csize             = 0
          Csize Unit        = Default
          Destroy Type      = Automatic
@@ -3817,7 +3817,7 @@ Begin Screen Form2
          Lines Unit        = Default
          No Key Letter     = FALSE
          Occurs            = 0
-         Size              = 135,33
+         Size              = 135,50
          Size Unit         = Default
          Tab Order         = 1
          Title             = "Doppio Click o Invio per modificare l'ordine"
@@ -3827,7 +3827,7 @@ Begin Screen Form2
       End
    End
    Begin Frame Screen1-Fr-1aaa
-      SCREEN-COL        = 140,83
+      SCREEN-COL        = 210,67
       SCREEN-LINE       = 46,54
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -3837,7 +3837,7 @@ Begin Screen Form2
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 140,83
+      Column            = 210,67
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -3851,7 +3851,7 @@ Begin Screen Form2
       Lines             = 3,00
       Lines Unit        = Default
       Low Color         = 0
-      Size              = 27,50
+      Size              = 27,83
       Size Unit         = Default
       Tab Order         = 3
       Thickness         = Default
@@ -3859,7 +3859,7 @@ Begin Screen Form2
       Visible           = NONE
       Width in Cells    = TRUE
       Begin Push-Button pb-annulla2
-         SCREEN-COL        = 154,66
+         SCREEN-COL        = 224,50
          SCREEN-LINE       = 46,69
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -3903,7 +3903,7 @@ Begin Screen Form2
          After Procedure   = pb-annulla2-AfterProcedure
       End
       Begin Push-Button pb-ok2
-         SCREEN-COL        = 141,50
+         SCREEN-COL        = 211,34
          SCREEN-LINE       = 46,69
          LOCK-CONTROL      = TRUE
          LEVEL             = 5

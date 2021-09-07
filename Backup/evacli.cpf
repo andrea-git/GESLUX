@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=aggmese-Ev-Before-Program
 AFTER_PROGRAM=evacli-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E58B122841-54-1584514450
+PROGRAM_UNIQUE_CODE=TOTEM-7E5978126-800-119944305
 
 {{@DESCRIPTION:
 
@@ -3675,8 +3675,8 @@ m_bFixed=1
 @}}
 [FDITEM308_WK]
 m_strName=col1-num-cli
-m_strRawPic=x(10)
-m_strPic=X(10)
+m_strRawPic=x(50)
+m_strPic=x(50)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -7732,9 +7732,9 @@ Begin Screen Screen2
       Columns' Setting  = ( X = 4, Name = col1-destino, READONLY = 0 )
       Columns' Setting  = ( PIC = "x(40)", TYPE = "X(40)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
       Columns' Setting  = ( DISP = 32, SEPA = 5, DIVI = 1 )
-      Columns' Setting  = ( X = 5, Name = col1-numord-cli, READONLY = 0 )
-      Columns' Setting  = ( PIC = "x", TYPE = "X(1)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
-      Columns' Setting  = ( DISP = 15, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 5, Name = col1-num-cli, READONLY = 0 )
+      Columns' Setting  = ( PIC = "x(50)", TYPE = "X(50)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
+      Columns' Setting  = ( DISP = 17, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 6, Name = col1-data, READONLY = 0 )
       Columns' Setting  = ( PIC = "99/99/9999", TYPE = "X(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
       Columns' Setting  = ( DISP = 12, SEPA = 5, DIVI = 1 )
@@ -7776,7 +7776,7 @@ Begin Screen Screen2
       Tab Order         = 2
       Tiled Headings    = TRUE
       Use Tab           = FALSE
-      Virtual Width     = 138
+      Virtual Width     = 140
       Visible           = TRUE
       Vpadding          = 15
       Vscroll           = TRUE

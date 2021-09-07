@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gordcvar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 8 marzo 2021 14:34:42.
+       DATE-WRITTEN.        martedì 7 settembre 2021 10:32:41.
        REMARKS.
       *{TOTEM}END
 
@@ -474,8 +474,8 @@
       * Page
               05 PAGE-1-BUF.
       * Data.Entry-Field
-              10 ef-num-ord-BUF PIC X(10).
-              10 ef-num-ord-VALUEBUF PIC X(10).
+              10 ef-num-ord-BUF PIC X(50).
+              10 ef-num-ord-VALUEBUF PIC X(50).
       * Data.Entry-Field
               10 ef-data-BUF PIC 99/99/9999.
               10 ef-data-VALUEBUF PIC 9(8).
@@ -560,10 +560,10 @@
               05 lab-cau-BUF PIC X(40).
 
        77 TMP-Form1-KEY1-ORDER  PIC X VALUE "A".
-       77 TMP-Form1-tordini-RESTOREBUF  PIC X(3898).
+       77 TMP-Form1-tordini-RESTOREBUF  PIC X(3938).
        77 TMP-Form1-KEYIS  PIC 9(3) VALUE 1.
-       77 Form1-MULKEY-TMPBUF   PIC X(3898).
-       77 TMP-DataSet1-tordini-BUF     PIC X(3898).
+       77 Form1-MULKEY-TMPBUF   PIC X(3938).
+       77 TMP-DataSet1-tordini-BUF     PIC X(3938).
        77 TMP-DataSet1-rordini-BUF     PIC X(667).
        77 TMP-DataSet1-agenti-BUF     PIC X(1233).
        77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
@@ -933,7 +933,7 @@
        77 tordini-k-andamento-cliente-SPLITBUF  PIC X(15).
        77 tordini-k-andamento-clides-SPLITBUF  PIC X(20).
        77 tordini-k-promo-SPLITBUF  PIC X(29).
-       77 tordini-k-or-SPLITBUF  PIC X(21).
+       77 tordini-k-or-SPLITBUF  PIC X(61).
        77 tordini-k-tor-inviare-SPLITBUF  PIC X(14).
        77 tordini-k-tor-tipocli-SPLITBUF  PIC X(25).
        77 tordini-k-tor-gdo-SPLITBUF  PIC X(28).
@@ -1353,7 +1353,7 @@
            COL 27,17, 
            LINE 13,54,
            LINES 1,31 ,
-           SIZE 18,67 ,
+           SIZE 30,00 ,
            BOXED,
            COLOR IS 513,
            ENABLED mod-campi,
@@ -1361,7 +1361,7 @@
            ID IS 78-ID-ef-num-ord,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           MAX-TEXT 10,
+           MAX-TEXT 50,
            VALUE ef-num-ord-BUF,
            .
 
@@ -1369,7 +1369,7 @@
        10
            ef-data, 
            Entry-Field, 
-           COL 71,17, 
+           COL 74,50, 
            LINE 13,54,
            LINES 1,31 ,
            SIZE 11,00 ,
@@ -1389,7 +1389,7 @@
        10
            ef-gest, 
            Entry-Field, 
-           COL 96,17, 
+           COL 99,50, 
            LINE 13,54,
            LINES 1,31 ,
            SIZE 11,00 ,
@@ -1811,7 +1811,7 @@
        10
            Form1-La-5, 
            Label, 
-           COL 60,17, 
+           COL 63,50, 
            LINE 13,54,
            LINES 1,31 ,
            SIZE 10,00 ,
@@ -2404,7 +2404,7 @@
        10
            lab-gest, 
            Label, 
-           COL 86,17, 
+           COL 89,50, 
            LINE 13,54,
            LINES 1,31 ,
            SIZE 8,00 ,
@@ -6145,7 +6145,7 @@
            INITIALIZE tordini-k-or-SPLITBUF
            MOVE tor-cod-cli(1:5) TO tordini-k-or-SPLITBUF(1:5)
            MOVE tor-prg-destino(1:5) TO tordini-k-or-SPLITBUF(6:5)
-           MOVE tor-num-ord-cli(1:10) TO tordini-k-or-SPLITBUF(11:10)
+           MOVE tor-num-ord-cli(1:50) TO tordini-k-or-SPLITBUF(11:50)
            .
 
        tordini-k-tor-inviare-MERGE-SPLITBUF.

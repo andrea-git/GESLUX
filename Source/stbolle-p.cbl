@@ -332,7 +332,7 @@ LUBEXX     88 si-stampante-bolle-default value "S", "s".
          03 filler                 pic x(2).
          03 st-cod-cli             pic z(5).
          03 filler                 pic x(3).
-         03 st-num-ord-cli         pic x(10) justified right.
+         03 st-num-ord-cli         pic x(50) justified right.
          03 filler                 pic x.
          03 st-data-ordine         pic x(8).
          03 filler                 pic x(1).
@@ -487,7 +487,7 @@ OMAGGI   03 st-qta-oma             pic zz.zzz.zzz.
 
        01  st-ordine-master.
            03 filler               pic x(16) value "Ordine Cliente: ".
-           03 st-om-numordcli      pic x(10).
+           03 st-om-numordcli      pic x(50).
            03 filler               pic x(6)  value " del: ".
            03 st-om-datacli        pic x(10).
            03 filler               pic x(11) value " - Master: ".

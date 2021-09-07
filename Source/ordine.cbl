@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordine.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 9 ottobre 2020 00:45:52.
+       DATE-WRITTEN.        martedì 7 settembre 2021 12:36:47.
        REMARKS.
       *{TOTEM}END
 
@@ -147,7 +147,6 @@
       * Properties & User defined Working Stoarge
        77 Form1-Handle
                   USAGE IS HANDLE OF WINDOW.
-           COPY  "ORDINE-WS.DEF".
            COPY  "LINK-GORDCVAR.DEF".
        77 Form1-Tb-1-Handle
                   USAGE IS HANDLE OF WINDOW.
@@ -258,8 +257,7 @@
                   USAGE IS HANDLE OF FONT.
        01 tipo-scelta      PIC  9.
            88 scelta-si VALUE IS 1. 
-           88 scelta-attesa VALUE IS 2. 
-           88 scelta-annulla VALUE IS 3. 
+           COPY  "ORDINE-WS.DEF".
        77 Verdana12B-Occidentale
                   USAGE IS HANDLE OF FONT.
        77 STATUS-rordini   PIC  X(2).
@@ -434,7 +432,7 @@
        77 TMP-DataSet1-agenti-BUF     PIC X(1233).
        77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
        77 TMP-DataSet1-tivaese-BUF     PIC X(1380).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-note-BUF     PIC X(284).
@@ -458,7 +456,7 @@
        77 TMP-DataSet1-lisagente-BUF     PIC X(245).
        77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-blister-BUF     PIC X(2967).
-       77 TMP-DataSet1-tordini-BUF     PIC X(3898).
+       77 TMP-DataSet1-tordini-BUF     PIC X(3938).
        77 TMP-DataSet1-rordini-BUF     PIC X(667).
        77 TMP-DataSet1-zoom-tor-master-BUF     PIC X(125).
        77 TMP-DataSet1-locali-BUF     PIC X(203).
@@ -765,7 +763,7 @@
        77 tordini-k-andamento-cliente-SPLITBUF  PIC X(15).
        77 tordini-k-andamento-clides-SPLITBUF  PIC X(20).
        77 tordini-k-promo-SPLITBUF  PIC X(29).
-       77 tordini-k-or-SPLITBUF  PIC X(21).
+       77 tordini-k-or-SPLITBUF  PIC X(61).
        77 tordini-k-tor-inviare-SPLITBUF  PIC X(14).
        77 tordini-k-tor-tipocli-SPLITBUF  PIC X(25).
        77 tordini-k-tor-gdo-SPLITBUF  PIC X(28).
@@ -1177,7 +1175,7 @@
            ID IS 78-ID-ef-num-ord,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           MAX-TEXT 35,
+           MAX-TEXT 50,
            VALUE ef-num-ord-BUF,
            .
 
@@ -9628,7 +9626,7 @@
            INITIALIZE tordini-k-or-SPLITBUF
            MOVE tor-cod-cli(1:5) TO tordini-k-or-SPLITBUF(1:5)
            MOVE tor-prg-destino(1:5) TO tordini-k-or-SPLITBUF(6:5)
-           MOVE tor-num-ord-cli(1:10) TO tordini-k-or-SPLITBUF(11:10)
+           MOVE tor-num-ord-cli(1:50) TO tordini-k-or-SPLITBUF(11:50)
            .
 
        tordini-k-tor-inviare-MERGE-SPLITBUF.
@@ -15424,7 +15422,7 @@ LUBEXX     move ef-gest-buf to mto-gest-plus.
 
            modify scr-conf-handle, visible = true.
 
-           set scelta-attesa to true.
+      *     set scelta-attesa to true.
 
            .
       * <TOTEM:END>
@@ -17500,13 +17498,13 @@ LABLAB     end-if
       * <TOTEM:END>
        pb-attesa-LinkTo.
       * <TOTEM:PARA. pb-attesa-LinkTo>
-           set scelta-attesa to true.
+      *     set scelta-attesa to true.
            move 27 to key-status 
            .
       * <TOTEM:END>
        pb-no-LinkTo.
       * <TOTEM:PARA. pb-no-LinkTo>
-           set scelta-annulla to true.
+      *     set scelta-annulla to true.
            move 27 to key-status 
            .
       * <TOTEM:END>

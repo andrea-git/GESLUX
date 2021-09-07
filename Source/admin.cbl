@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          admin.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        lunedì 11 giugno 2018 15:27:29.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        martedì 7 settembre 2021 10:20:13.
        REMARKS.
       *{TOTEM}END
 
@@ -41,7 +41,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING

@@ -8,7 +8,7 @@ MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=gordc-Ev-Before-Program
 AFTER_PROGRAM=gordc-Ev-After-Program
 BEFORE_OPEN=gordc-Ev-Before-DSD-Open
-PROGRAM_UNIQUE_CODE=TOTEM-7E521822247-656-1136231038
+PROGRAM_UNIQUE_CODE=TOTEM-7E597843-892-884911562
 
 {{@DESCRIPTION:
 
@@ -15226,8 +15226,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod-campi
             Field Edited (Style) = 0
-            Field Edited Format = X(10)
-            Field Picture     = X(10)
+            Field Edited Format = X(50)
+            Field Picture     = X(50)
             Field Variable    = tor-num-ord-cli
             File              = tordini
             Font              = Small Font
@@ -15242,7 +15242,7 @@ Begin Screen Form1
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
-            Max Text          = 10
+            Max Text          = 50
             Max Value         = 0
             Min Value         = 0
             No AutoSel        = FALSE
@@ -15253,7 +15253,7 @@ Begin Screen Form1
             Read Only         = FALSE
             Required          = FALSE
             Secure            = FALSE
-            Size              = 18,67
+            Size              = 30,00
             Size Unit         = Default
             Style             = Singleline
             Tab Order         = 1
@@ -15267,7 +15267,7 @@ Begin Screen Form1
             After Procedure   = ef-num-ord-AfterProcedure
          End
          Begin Data.Entry-Field ef-data
-            SCREEN-COL        = 71,17
+            SCREEN-COL        = 74,50
             SCREEN-LINE       = 14,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
@@ -15279,7 +15279,7 @@ Begin Screen Form1
             Clines            = 0
             Clines Unit       = Default
             Color             = 513
-            Column            = 69,00
+            Column            = 72,33
             Csize             = 0
             Csize Unit        = Default
             Cursor            = 0
@@ -15330,7 +15330,7 @@ Begin Screen Form1
             After Procedure   = ef-data-AfterProcedure
          End
          Begin Data.Entry-Field ef-gest
-            SCREEN-COL        = 96,17
+            SCREEN-COL        = 99,50
             SCREEN-LINE       = 14,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
@@ -15342,7 +15342,7 @@ Begin Screen Form1
             Clines            = 0
             Clines Unit       = Default
             Color             = 513
-            Column            = 94,00
+            Column            = 97,33
             Csize             = 0
             Csize Unit        = Default
             Cursor            = 0
@@ -16735,7 +16735,7 @@ Begin Screen Form1
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-5
-            SCREEN-COL        = 60,17
+            SCREEN-COL        = 63,50
             SCREEN-LINE       = 14,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
@@ -16743,7 +16743,7 @@ Begin Screen Form1
             Clines            = 0
             Clines Unit       = Default
             Color             = 0
-            Column            = 58,00
+            Column            = 61,33
             Csize             = 0
             Csize Unit        = Default
             Destroy Type      = Automatic
@@ -17290,7 +17290,7 @@ Begin Screen Form1
             Width in Cells    = TRUE
          End
          Begin Label lab-gest
-            SCREEN-COL        = 86,17
+            SCREEN-COL        = 89,50
             SCREEN-LINE       = 14,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
@@ -17298,7 +17298,7 @@ Begin Screen Form1
             Clines            = 0
             Clines Unit       = Default
             Color             = 0
-            Column            = 84,00
+            Column            = 87,33
             Csize             = 0
             Csize Unit        = Default
             Destroy Type      = Automatic

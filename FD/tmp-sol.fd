@@ -18,7 +18,7 @@
            05 sol-localita     PIC  x(40).
            05 sol-desart       PIC  x(40).
            05 sol-promo        PIC  x(100).
-           05 sol-numord-cli   PIC  x(12).
+           05 sol-numord-cli   PIC  x(50).
            05 sol-data-video   PIC  x(10).
       *(( XFD NAME = sol-data-video_1 ))
            05 sol-data-creazione           PIC  x(10).

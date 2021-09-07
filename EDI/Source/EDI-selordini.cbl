@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
-       AUTHOR.              Utente.
-       DATE-WRITTEN.        lunedì 12 luglio 2021 22:20:40.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        martedì 7 settembre 2021 15:16:49.
        REMARKS.
       *{TOTEM}END
 
@@ -384,7 +384,7 @@
            05 col-nulla        PIC  X.
            05 Col-anno         PIC  9(4).
            05 Col-numero       PIC  z(7)9.
-           05 Col-ord-cli      PIC  X(10).
+           05 Col-ord-cli      PIC  X(50).
            05 Col-data         PIC  x(10).
            05 col-stato        PIC  x(50).
            05 Col-cliente      PIC  z(4)9.
@@ -786,9 +786,9 @@
        77 STATUS-Form2-FLAG-REFRESH PIC  9.
           88 Form2-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-Form2-KEY1-ORDER  PIC X VALUE "A".
-       77 TMP-Form2-EDI-mtordini-RESTOREBUF  PIC X(8411).
+       77 TMP-Form2-EDI-mtordini-RESTOREBUF  PIC X(8412).
        77 TMP-Form2-KEYIS  PIC 9(3) VALUE 1.
-       77 Form2-MULKEY-TMPBUF   PIC X(8411).
+       77 Form2-MULKEY-TMPBUF   PIC X(8412).
        77 Form2-KEYISTMP1   PIC X(13).
       * Form2 : PKEY & AKEY'S TEMP BUFFER
        77 Form2-PKEYTMP   PIC X(12).
@@ -874,9 +874,9 @@
               05 lab-nad-capd-BUF PIC X(5).
 
        77 TMP-Form1-KEY1-ORDER  PIC X VALUE "A".
-       77 TMP-Form1-EDI-mtordini-RESTOREBUF  PIC X(8411).
+       77 TMP-Form1-EDI-mtordini-RESTOREBUF  PIC X(8412).
        77 TMP-Form1-KEYIS  PIC 9(3) VALUE 1.
-       77 Form1-MULKEY-TMPBUF   PIC X(8411).
+       77 Form1-MULKEY-TMPBUF   PIC X(8412).
        77 Form1-KEYISTMP1   PIC X(13).
       * Form1 : PKEY & AKEY'S TEMP BUFFER
        77 Form1-PKEYTMP   PIC X(12).
@@ -886,7 +886,7 @@
           88 scr-fine-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-destini-BUF     PIC X(3676).
-       77 TMP-DataSet1-EDI-mtordini-BUF     PIC X(8411).
+       77 TMP-DataSet1-EDI-mtordini-BUF     PIC X(8412).
        77 TMP-DataSet1-agenti-BUF     PIC X(1233).
        77 TMP-DataSet1-tivaese-BUF     PIC X(1380).
        77 TMP-DataSet1-ttipocli-BUF     PIC X(889).
@@ -1572,13 +1572,13 @@
            COL 2,50, 
            LINE 1,77,
            LINES 37,00 ,
-           SIZE 183,67 ,
+           SIZE 195,17 ,
            BOXED,
-           DATA-COLUMNS (1, 2, 6, 14, 24, 34, 84, 89, 129, 169, 209),
+           DATA-COLUMNS (1, 2, 6, 14, 64, 74, 124, 129, 169, 209, 249),
            ALIGNMENT ("C", "C", "R", "U", "C", "L", "R", "U", "U", "U", 
            "U"),
            SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5),
-           DATA-TYPES ("X", "9(4)", "9(8)", "X(10)", "99/99/9999", "x(50
+           DATA-TYPES ("X", "9(4)", "9(8)", "X(50)", "99/99/9999", "x(50
       -    ")", "9(4)", "x(40)", "x(40)", "x(40)", "x(35)"),
            NUM-COL-HEADINGS 1,
            COLUMN-HEADINGS,
@@ -1593,7 +1593,7 @@
            WIDTH-IN-CELLS,
            ROW-HEADINGS,
            TILED-HEADINGS,
-           VIRTUAL-WIDTH 180,
+           VIRTUAL-WIDTH 192,
            VPADDING 50,
            VSCROLL,
            EVENT PROCEDURE Screen1-Gd-1-Event-Proc,
@@ -1606,7 +1606,7 @@
            COL 34,50, 
            LINE 46,54,
            LINES 3,00 ,
-           SIZE 125,33 ,
+           SIZE 136,83 ,
            LOWERED,
            FULL-HEIGHT,
            ID IS 202,
@@ -1633,7 +1633,7 @@
        05
            pb-genera, 
            Push-Button, 
-           COL 146,17, 
+           COL 157,83, 
            LINE 46,69,
            LINES 30,00 ,
            SIZE 73,00 ,
@@ -1652,7 +1652,7 @@
        05
            pb-aggiorna, 
            Push-Button, 
-           COL 133,00, 
+           COL 144,67, 
            LINE 46,69,
            LINES 30,00 ,
            SIZE 73,00 ,
@@ -1672,10 +1672,10 @@
        05
            Screen1-Fr-1aa, 
            Frame, 
-           COL 160,33, 
+           COL 171,33, 
            LINE 46,54,
            LINES 3,00 ,
-           SIZE 27,50 ,
+           SIZE 27,83 ,
            LOWERED,
            FULL-HEIGHT,
            ID IS 6,
@@ -1687,7 +1687,7 @@
        05
            pb-annulla2, 
            Push-Button, 
-           COL 174,16, 
+           COL 185,16, 
            LINE 46,69,
            LINES 30,00 ,
            SIZE 73,00 ,
@@ -1708,7 +1708,7 @@
        05
            pb-ok2, 
            Push-Button, 
-           COL 161,00, 
+           COL 172,00, 
            LINE 46,69,
            LINES 30,00 ,
            SIZE 73,00 ,
@@ -1796,7 +1796,7 @@
            COL 2,50, 
            LINE 39,08,
            LINES 4,23 ,
-           SIZE 183,67 ,
+           SIZE 195,17 ,
            FONT IS Verdana10B-Occidentale,
            ID IS 3,
            HEIGHT-IN-CELLS,
@@ -1809,8 +1809,8 @@
        05
            Screen1-La-2, 
            Label, 
-           COL 24,33, 
-           LINE 40,93,
+           COL 30,00, 
+           LINE 40,92,
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Verdana10B-Occidentale,
@@ -1824,8 +1824,8 @@
        05
            Screen1-La-2a, 
            Label, 
-           COL 44,33, 
-           LINE 40,93,
+           COL 50,00, 
+           LINE 40,92,
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Verdana10B-Occidentale,
@@ -1839,8 +1839,8 @@
        05
            Screen1-La-2aa, 
            Label, 
-           COL 64,00, 
-           LINE 40,93,
+           COL 69,67, 
+           LINE 40,92,
            LINES 1,31 ,
            SIZE 9,00 ,
            FONT IS Verdana10B-Occidentale,
@@ -1854,8 +1854,8 @@
        05
            Screen1-La-2aaa, 
            Label, 
-           COL 82,33, 
-           LINE 40,93,
+           COL 88,00, 
+           LINE 40,92,
            LINES 1,31 ,
            SIZE 7,00 ,
            FONT IS Verdana10B-Occidentale,
@@ -1869,8 +1869,8 @@
        05
            Screen1-La-2aaaa, 
            Label, 
-           COL 98,17, 
-           LINE 40,93,
+           COL 103,83, 
+           LINE 40,92,
            LINES 1,31 ,
            SIZE 14,00 ,
            FONT IS Verdana10B-Occidentale,
@@ -1884,8 +1884,8 @@
        05
            Screen1-La-2aaab, 
            Label, 
-           COL 119,33, 
-           LINE 40,93,
+           COL 125,00, 
+           LINE 40,92,
            LINES 1,31 ,
            SIZE 19,00 ,
            FONT IS Verdana10B-Occidentale,
@@ -1899,8 +1899,8 @@
        05
            Screen1-La-2aaac, 
            Label, 
-           COL 145,83, 
-           LINE 40,93,
+           COL 151,50, 
+           LINE 40,92,
            LINES 1,31 ,
            SIZE 11,00 ,
            FONT IS Verdana10B-Occidentale,
@@ -1914,8 +1914,8 @@
        05
            lab-err-cli, 
            Label, 
-           COL 37,17, 
-           LINE 40,93,
+           COL 42,83, 
+           LINE 40,92,
            LINES 1,31 ,
            SIZE 6,00 ,
            COLOR IS col-lab-err-cli,
@@ -1931,8 +1931,8 @@
        05
            lab-err-des, 
            Label, 
-           COL 57,00, 
-           LINE 40,93,
+           COL 62,67, 
+           LINE 40,92,
            LINES 1,31 ,
            SIZE 6,00 ,
            COLOR IS col-lab-err-des,
@@ -1948,8 +1948,8 @@
        05
            lab-err-righe, 
            Label, 
-           COL 74,50, 
-           LINE 40,93,
+           COL 80,17, 
+           LINE 40,92,
            LINES 1,31 ,
            SIZE 6,00 ,
            COLOR IS col-lab-err-righe,
@@ -1965,8 +1965,8 @@
        05
            lab-err-qta, 
            Label, 
-           COL 91,17, 
-           LINE 40,93,
+           COL 96,83, 
+           LINE 40,92,
            LINES 1,31 ,
            SIZE 6,00 ,
            COLOR IS col-lab-err-qta,
@@ -1982,8 +1982,8 @@
        05
            lab-err-art, 
            Label, 
-           COL 112,83, 
-           LINE 40,93,
+           COL 118,50, 
+           LINE 40,92,
            LINES 1,31 ,
            SIZE 6,00 ,
            COLOR IS col-lab-err-art,
@@ -1999,8 +1999,8 @@
        05
            lab-err-prg, 
            Label, 
-           COL 138,83, 
-           LINE 40,93,
+           COL 144,50, 
+           LINE 40,92,
            LINES 1,31 ,
            SIZE 6,00 ,
            COLOR IS col-lab-err-prg,
@@ -2016,8 +2016,8 @@
        05
            lab-err-prz, 
            Label, 
-           COL 158,00, 
-           LINE 40,93,
+           COL 163,67, 
+           LINE 40,92,
            LINES 1,31 ,
            SIZE 6,00 ,
            COLOR IS col-lab-err-prz,
@@ -2033,8 +2033,8 @@
        05
            Screen1-La-2b, 
            Label, 
-           COL 4,67, 
-           LINE 40,93,
+           COL 10,33, 
+           LINE 40,92,
            LINES 1,31 ,
            SIZE 11,00 ,
            FONT IS Verdana10B-Occidentale,
@@ -2048,8 +2048,8 @@
        05
            lab-err-doppio, 
            Label, 
-           COL 16,33, 
-           LINE 40,93,
+           COL 22,00, 
+           LINE 40,92,
            LINES 1,31 ,
            SIZE 6,00 ,
            COLOR IS col-lab-err-doppio,
@@ -2065,8 +2065,8 @@
        05
            lab-err-bloc, 
            Label, 
-           COL 178,00, 
-           LINE 40,93,
+           COL 183,67, 
+           LINE 40,92,
            LINES 1,31 ,
            SIZE 6,00 ,
            COLOR IS col-lab-err-bloc,
@@ -2082,8 +2082,8 @@
        05
            Screen1-La-2aaaca, 
            Label, 
-           COL 165,83, 
-           LINE 40,93,
+           COL 171,50, 
+           LINE 40,92,
            LINES 1,31 ,
            SIZE 11,00 ,
            FONT IS Verdana10B-Occidentale,
@@ -2097,7 +2097,7 @@
        05
            lab-attendere, 
            Label, 
-           COL 74,17, 
+           COL 79,83, 
            LINE 43,62,
            LINES 2,85 ,
            SIZE 40,33 ,
@@ -13251,7 +13251,7 @@
        Form2-Create-Win.
            Display Independent GRAPHICAL WINDOW
               LINES 48,54,
-              SIZE 186,83,
+              SIZE 198,17,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
               COLOR 65793,
@@ -13280,8 +13280,8 @@
       * Status-bar
            DISPLAY Form2 UPON form2-Handle
       * DISPLAY-COLUMNS settings
-              MODIFY gd-ordini, DISPLAY-COLUMNS (1, 4, 12, 23, 36, 49, 
-           61, 69, 98, 125, 152)
+              MODIFY gd-ordini, DISPLAY-COLUMNS (1, 4, 12, 23, 48, 61, 
+           73, 81, 110, 137, 164)
            .
 
        Form2-PROC.

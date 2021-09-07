@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=bprepb-Ev-Before-Program
 AFTER_PROGRAM=stdoc-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E59615338-35-3070629916
+PROGRAM_UNIQUE_CODE=TOTEM-7E597132338-236-260822170
 
 {{@DESCRIPTION:
 
@@ -1234,8 +1234,8 @@ m_bFixed=1
 @}}
 [FDITEM112_WK]
 m_strName=ef-num-buf
-m_strRawPic=x(10)
-m_strPic=x(10)
+m_strRawPic=x(50)
+m_strPic=x(50)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1356,8 +1356,8 @@ m_bFixed=1
 @}}
 [FDITEM124_WK]
 m_strName=col-num-ord
-m_strRawPic=X(10)
-m_strPic=X(10)
+m_strRawPic=X(50)
+m_strPic=X(50)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -1951,7 +1951,7 @@ Begin Screen Form1
       Lines             = 1,33
       Lines Unit        = Default
       Max Lines         = 0
-      Max Text          = 0
+      Max Text          = 50
       Max Value         = 0
       Min Value         = 0
       No AutoSel        = FALSE
@@ -1962,14 +1962,14 @@ Begin Screen Form1
       Read Only         = FALSE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 12,00
+      Size              = 25,00
       Size Unit         = Default
       Style             = Singleline
       Tab Order         = 5
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
-      Value Picture     = x(10)
+      Value Picture     = x(50)
       Value Variable    = ef-num-buf
       Visible           = NONE
       Width in Cells    = TRUE
@@ -3479,7 +3479,7 @@ Begin Screen Form2
    Height in Cells   = TRUE
    Help ID           = 0
    Label Offset      = 23
-   Lines             = 48,54
+   Lines             = 48,62
    Link To Thread    = TRUE
    Max Lines         = 0,00
    Max Size          = 0,00
@@ -3490,7 +3490,7 @@ Begin Screen Form2
    Operation Mode    = Interactive Mode
    Resizable         = FALSE
    Scroll            = FALSE
-   Size              = 165,00
+   Size              = 222,50
    System Menu       = TRUE
    Title Bar         = TRUE
    Title Variable    = titolo
@@ -3505,7 +3505,7 @@ Begin Screen Form2
    Begin Grid gd-ordini
       SCREEN-COL        = 2,67
       SCREEN-LINE       = 2,00
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = gd-ordini
       Action            = (None)
@@ -3547,8 +3547,8 @@ Begin Screen Form2
       Columns' Setting  = ( PIC = "99/99/9999", TYPE = "99/99/9999", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
       Columns' Setting  = ( DISP = 13, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 8, Name = col-num-ord, READONLY = 0 )
-      Columns' Setting  = ( PIC = "X(10)", TYPE = "x(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
-      Columns' Setting  = ( DISP = 15, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( PIC = "X(50)", TYPE = "x(50)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
+      Columns' Setting  = ( DISP = 25, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 9, Name = col-ragsoc, READONLY = 0 )
       Columns' Setting  = ( PIC = "X(40)", TYPE = "x(40)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
       Columns' Setting  = ( DISP = 20, SEPA = 5, DIVI = 1 )
@@ -3588,7 +3588,7 @@ Begin Screen Form2
       Paged             = FALSE
       Row Dividers      = 1
       Row Headings      = TRUE
-      Size              = 161,67
+      Size              = 218,33
       Size Unit         = Default
       Tab Order         = 1
       Tiled Headings    = TRUE
@@ -3631,7 +3631,7 @@ Begin Screen Form2
       Lines             = 3,00
       Lines Unit        = Default
       Low Color         = 0
-      Size              = 137,33
+      Size              = 194,83
       Size Unit         = Default
       Tab Order         = 2
       Thickness         = Default
@@ -3639,15 +3639,15 @@ Begin Screen Form2
       Visible           = NONE
       Width in Cells    = TRUE
       Begin Label Screen1-La-1a
-         SCREEN-COL        = 3,00
-         SCREEN-LINE       = 47,16
+         SCREEN-COL        = 29,67
+         SCREEN-LINE       = 47,15
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Screen1-La-1a
          Clines            = 0
          Clines Unit       = Default
          Color             = 0
-         Column            = 3,00
+         Column            = 29,67
          Csize             = 0
          Csize Unit        = Default
          Destroy Type      = Automatic
@@ -3664,7 +3664,7 @@ Begin Screen Form2
          Lines Unit        = Default
          No Key Letter     = FALSE
          Occurs            = 0
-         Size              = 135,33
+         Size              = 135,50
          Size Unit         = Default
          Tab Order         = 1
          Title             = "Doppio Click o Invio per modificare l'ordine"
@@ -3674,9 +3674,9 @@ Begin Screen Form2
       End
    End
    Begin Frame Screen1-Fr-1aaa
-      SCREEN-COL        = 138,50
+      SCREEN-COL        = 196,00
       SCREEN-LINE       = 46,54
-      LOCK-CONTROL      = FALSE
+      LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-Fr-1aaa
       3D Style          = Lowered
@@ -3684,7 +3684,7 @@ Begin Screen Form2
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 138,50
+      Column            = 196,00
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -3706,9 +3706,9 @@ Begin Screen Form2
       Visible           = NONE
       Width in Cells    = TRUE
       Begin Push-Button pb-annulla2
-         SCREEN-COL        = 152,33
+         SCREEN-COL        = 209,83
          SCREEN-LINE       = 46,69
-         LOCK-CONTROL      = TRUE
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = pb-annulla2
          Bitmap            = "..\RESOURCE\BOTTONE-CANCEL.BMP"
@@ -3750,9 +3750,9 @@ Begin Screen Form2
          After Procedure   = pb-annulla2-AfterProcedure
       End
       Begin Push-Button pb-ok2
-         SCREEN-COL        = 139,17
+         SCREEN-COL        = 196,67
          SCREEN-LINE       = 46,69
-         LOCK-CONTROL      = TRUE
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = pb-ok2
          Bitmap            = "..\RESOURCE\BOTTONE-OK.BMP"
@@ -5803,7 +5803,7 @@ MARGIN_RIGHT=150
 MARGIN_BOTTOM=150
 PROP_DOCU_TYPE=ø
 PROP_DOCU_TYPE2=ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
-PROP_DOCU_NAME=DataSet - DataSet1[solleciti(GESLUX)]
+PROP_DOCU_NAME=DataSet - DataSet1[ric-bozze(GESLUX)]
 PROP_DOCU_OWNER=Person A
 PROP_DOCU_CDATE=02/25/04
 PROP_DOCU_MODIFIER=Person B
@@ -5843,15 +5843,15 @@ REL_SYM_INFO_Y4=1654702555
 REL_SYM_INFO_X5=2301
 REL_SYM_INFO_Y5=1476767179
 REL_SYM_INFO_X6=2301
-REL_SYM_INFO_Y6=1985299719
+REL_SYM_INFO_Y6=2146884572
 REL_SYM_INFO_X7=2301
-REL_SYM_INFO_Y7=2146884572
+REL_SYM_INFO_Y7=1780832547
 REL_SYM_INFO_X8=2301
-REL_SYM_INFO_Y8=1780832547
+REL_SYM_INFO_Y8=2143656509
 REL_SYM_INFO_X9=2301
-REL_SYM_INFO_Y9=2143656509
+REL_SYM_INFO_Y9=1089876922
 REL_SYM_INFO_X10=2301
-REL_SYM_INFO_Y10=1089876922
+REL_SYM_INFO_Y10=1985299719
 
 [DRAW_BASESYMBOL_2301_99520804]
 OBJ_NAME=2301
@@ -6153,9 +6153,9 @@ BK_POINT=0
 CENTER_X=0
 CENTER_Y=0
 LEFT=20
-TOP=524
+TOP=521
 RIGHT=420
-BOTTOM=746
+BOTTOM=743
 PROP_OBJ_TYPE=
 PROP_OBJ_TYPE2=
 PROP_FILL_PT=0
@@ -6589,12 +6589,12 @@ REL_M_OBJ_ID=0
 ENTITY=clienti
 LINK=0
 LINK_NAME=
-DSN_SIZE=42
+DSN_SIZE=53
 FD_SIZE=0
 SL_SIZE=0
 DSN_INFO_OPEN_MODE=0
 DSN_INFO_LOCK_OPTION=0
-DSN_INFO_KEY_IS=cli-chiave
+DSN_INFO_KEY_IS=cli-chiave OF clienti
 DSN_INFO_DATA_ORDER=0
 DSN_INFO_START_VALUE=
 DSN_INFO_END_VALUE=

@@ -85,7 +85,7 @@
            05 como-data-doc       pic 9(8).
            05 como-cod-cli        pic 9(5).
            05 como-prg-destino    pic 9(5).
-           05 como-num-ord-cli    pic X(10).
+           05 como-num-ord-cli    pic X(50).
            05 como-cod-agente     pic 9(5).
            05 como-cod-pagamento  pic x(3).
            05 como-vettore        pic 9(5).

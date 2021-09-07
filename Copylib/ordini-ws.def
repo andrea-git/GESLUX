@@ -351,7 +351,7 @@
                10 old-tor-causale  PIC  x(4).
                10 old-tor-cod-cli  PIC  9(5).
                10 old-tor-prg-destino          PIC  9(5).
-               10 old-tor-num-ord-cli          PIC  X(10).
+               10 old-tor-num-ord-cli          PIC  X(50).
                10 old-tor-data-ordine          PIC  9(8).
                10 old-tor-data-passaggio-ordine            PIC  9(8).
                10 old-tor-cod-agente           PIC  9(5).

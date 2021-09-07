@@ -7,7 +7,7 @@
          05 chk-k-ord.
            10 chk-cod-cli       pic 9(5).
            10 chk-prg-destino   pic 9(5).
-           10 chk-num-ord-cli   pic x(10). 
+           10 chk-num-ord-cli   pic x(50). 
          05 chk-ord-chiave-EDI.
            10 chk-ord-anno-EDI      pic 9(4).
            10 chk-ord-numero-EDI    pic 9(8).
@@ -15,4 +15,4 @@
          05 chk-k-ord-EDI.
            10 chk-cod-cli-EDI       pic 9(5).
            10 chk-prg-destino-EDI   pic 9(5).
-           10 chk-num-ord-cli-EDI   pic x(10). 
+           10 chk-num-ord-cli-EDI   pic x(50). 

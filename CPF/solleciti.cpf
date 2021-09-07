@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=bprepb-Ev-Before-Program
 AFTER_PROGRAM=stdoc-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E596153314-168-3187723635
+PROGRAM_UNIQUE_CODE=TOTEM-7E597132344-792-1691632504
 
 {{@DESCRIPTION:
 
@@ -3691,8 +3691,8 @@ m_bFixed=1
 @}}
 [FDITEM323_WK]
 m_strName=col-ord-cli
-m_strRawPic=x(12)
-m_strPic=x(12)
+m_strRawPic=x(50)
+m_strPic=x(50)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -4046,8 +4046,8 @@ m_lstIndex=cbo-data-buf-Idx,
 @}}
 [FDITEM355_WK]
 m_strName=cbo-numord-buf
-m_strRawPic=X(12)
-m_strPic=X(12)
+m_strRawPic=X(50)
+m_strPic=X(50)
 m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
@@ -4469,8 +4469,8 @@ m_bFixed=1
 @}}
 [FDITEM390_WK]
 m_strName=lab-numord-buf
-m_strRawPic=X(12)
-m_strPic=X(12)
+m_strRawPic=X(50)
+m_strPic=X(50)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -8246,7 +8246,7 @@ Begin Screen scr-ordini
       Columns' Setting  = ( PIC = "x(40)", TYPE = "X(40)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
       Columns' Setting  = ( DISP = 49, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 5, Name = col-ord-cli, READONLY = 0 )
-      Columns' Setting  = ( PIC = "x(12)", TYPE = "X(12)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( PIC = "x(50)", TYPE = "X(50)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
       Columns' Setting  = ( DISP = 17, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 6, Name = col-data-ord, READONLY = 0 )
       Columns' Setting  = ( PIC = "x(10)", TYPE = "X(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
@@ -9010,7 +9010,7 @@ Begin Screen scr-ordini
       Size              = 16,33
       Size Unit         = Default
       Tab Order         = 18
-      Title Picture     = X(12)
+      Title Picture     = X(50)
       Title Variable    = lab-numord-buf
       Transparent       = TRUE
       Visible           = NONE

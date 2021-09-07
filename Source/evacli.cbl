@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 11 agosto 2021 15:28:16.
+       DATE-WRITTEN.        martedì 7 settembre 2021 10:11:24.
        REMARKS.
       *{TOTEM}END
 
@@ -343,7 +343,7 @@
            05 col1-numero      PIC  z(8).
            05 col1-cliente     PIC  x(40).
            05 col1-destino     PIC  x(40).
-           05 col1-num-cli     PIC  x(10).
+           05 col1-num-cli     PIC  x(50).
            05 col1-data        PIC  99/99/9999.
            05 col1-agente      PIC  x(40).
        77 BOTTONE-OK-BMP   PIC  S9(9)
@@ -678,7 +678,7 @@
        77 TMP-DataSet1-tmp-k-mtordini-BUF     PIC X(31).
        77 TMP-DataSet1-lockfile-BUF     PIC X(183).
        77 TMP-DataSet1-rordini-BUF     PIC X(667).
-       77 TMP-DataSet1-tordini-BUF     PIC X(3898).
+       77 TMP-DataSet1-tordini-BUF     PIC X(3938).
        77 TMP-DataSet1-promoeva-BUF     PIC X(817).
        77 TMP-DataSet1-agenti-BUF     PIC X(1233).
        77 TMP-DataSet1-tcaumag-BUF     PIC X(254).
@@ -699,7 +699,7 @@
        77 TMP-DataSet1-recapiti-BUF     PIC X(328).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-timposte-BUF     PIC X(717).
-       77 TMP-DataSet1-tmp-tevacli-BUF     PIC X(31866).
+       77 TMP-DataSet1-tmp-tevacli-BUF     PIC X(34866).
        77 TMP-DataSet1-param-BUF     PIC X(980).
        77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-multigest-BUF     PIC X(3).
@@ -983,7 +983,7 @@
        77 tordini-k-andamento-cliente-SPLITBUF  PIC X(15).
        77 tordini-k-andamento-clides-SPLITBUF  PIC X(20).
        77 tordini-k-promo-SPLITBUF  PIC X(29).
-       77 tordini-k-or-SPLITBUF  PIC X(21).
+       77 tordini-k-or-SPLITBUF  PIC X(61).
        77 tordini-k-tor-inviare-SPLITBUF  PIC X(14).
        77 tordini-k-tor-tipocli-SPLITBUF  PIC X(25).
        77 tordini-k-tor-gdo-SPLITBUF  PIC X(28).
@@ -1600,11 +1600,11 @@
            BOXED,
            CENTERED-HEADINGS,
            COLOR IS 516,
-           DATA-COLUMNS (1, 5, 13, 53, 93, 94, 104),
+           DATA-COLUMNS (1, 5, 13, 53, 93, 143, 153),
            ALIGNMENT ("C", "R", "U", "U", "C", "C", "U"),
            SEPARATION (5, 5, 5, 5, 5, 5, 5),
-           DATA-TYPES ("9(4)", "9(8)", "X(40)", "X(40)", "X(1)", "X(10)"
-           , "X(40)"),
+           DATA-TYPES ("9(4)", "9(8)", "X(40)", "X(40)", "X(50)", "X(10)
+      -    "", "X(40)"),
            NUM-COL-HEADINGS 1,
            COLUMN-HEADINGS,
            CURSOR-FRAME-WIDTH 0,
@@ -1615,7 +1615,7 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TILED-HEADINGS,
-           VIRTUAL-WIDTH 138,
+           VIRTUAL-WIDTH 140,
            VISIBLE 1,
            VPADDING 15,
            VSCROLL,
@@ -5676,7 +5676,7 @@
            INITIALIZE tordini-k-or-SPLITBUF
            MOVE tor-cod-cli(1:5) TO tordini-k-or-SPLITBUF(1:5)
            MOVE tor-prg-destino(1:5) TO tordini-k-or-SPLITBUF(6:5)
-           MOVE tor-num-ord-cli(1:10) TO tordini-k-or-SPLITBUF(11:10)
+           MOVE tor-num-ord-cli(1:50) TO tordini-k-or-SPLITBUF(11:50)
            .
 
        tordini-k-tor-inviare-MERGE-SPLITBUF.
@@ -11846,7 +11846,7 @@
            DISPLAY Screen2 UPON Screen2-Handle
       * DISPLAY-COLUMNS settings
               MODIFY gd-art, DISPLAY-COLUMNS (1, 9)
-              MODIFY gd1, DISPLAY-COLUMNS (1, 7, 16, 48, 80, 95, 107)
+              MODIFY gd1, DISPLAY-COLUMNS (1, 7, 16, 48, 80, 97, 109)
               MODIFY gd2, DISPLAY-COLUMNS (1, 8, 61, 68, 78, 87, 96)
               MODIFY gd3, DISPLAY-COLUMNS (1, 6, 13, 42, 69, 75, 110, 
            116, 126, 132, 135, 138)

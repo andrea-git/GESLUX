@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          08listmov.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 18 agosto 2020 16:07:58.
+       DATE-WRITTEN.        martedì 7 settembre 2021 10:20:11.
        REMARKS.
       *{TOTEM}END
 
@@ -189,7 +189,7 @@
           88 scr-visua2-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-anautf-BUF     PIC X(638).
-       77 TMP-DataSet1-lineseq-BUF     PIC X(900).
+       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.

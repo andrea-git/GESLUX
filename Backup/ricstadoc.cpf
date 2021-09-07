@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=bprepb-Ev-Before-Program
 AFTER_PROGRAM=stdoc-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7D95514843-296-3049226108
+PROGRAM_UNIQUE_CODE=TOTEM-7E59795424-619-734828086
 
 {{@DESCRIPTION:
 
@@ -1229,8 +1229,8 @@ m_bFixed=1
 @}}
 [FDITEM112_WK]
 m_strName=ef-num-buf
-m_strRawPic=x(10)
-m_strPic=x(10)
+m_strRawPic=x(50)
+m_strPic=x(50)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1347,8 +1347,8 @@ m_bFixed=1
 @}}
 [FDITEM124_WK]
 m_strName=col-num-ord
-m_strRawPic=X(10)
-m_strPic=X(10)
+m_strRawPic=X(50)
+m_strPic=X(50)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -1470,6 +1470,45 @@ m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM136_WK
+
+@}}
+[FDITEM137_WK]
+m_strName=cont
+m_strRawPic=9(3)
+m_strPic=9(3)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM137_WK
+
+@}}
+[FDITEM138_WK]
+m_strName=path-zoom-bolle
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM138_WK
+
+@}}
+[FDITEM139_WK]
+m_strName=STATUS-zoom-bolle
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM139_WK
+
+@}}
+[FDITEM140_WK]
+m_strName=Valid-STATUS-zoom-bolle
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM140_WK
 
 @}}
 
@@ -1981,7 +2020,7 @@ Begin Screen Form1
       Lines             = 1,33
       Lines Unit        = Default
       Max Lines         = 0
-      Max Text          = 0
+      Max Text          = 50
       Max Value         = 0
       Min Value         = 0
       No AutoSel        = FALSE
@@ -1992,14 +2031,14 @@ Begin Screen Form1
       Read Only         = FALSE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 12,00
+      Size              = 25,00
       Size Unit         = Default
       Style             = Singleline
       Tab Order         = 5
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
-      Value Picture     = x(10)
+      Value Picture     = x(50)
       Value Variable    = ef-num-buf
       Visible           = NONE
       Width in Cells    = TRUE
@@ -3597,7 +3636,7 @@ Begin Screen Form2
    Operation Mode    = Interactive Mode
    Resizable         = FALSE
    Scroll            = FALSE
-   Size              = 167,67
+   Size              = 237,50
    System Menu       = TRUE
    Title Bar         = TRUE
    Title Variable    = titolo
@@ -3610,9 +3649,9 @@ Begin Screen Form2
    Wrap              = FALSE
    Event Procedure   = Screen1-Event-Proc
    Begin Grid gd-ordini
-      SCREEN-COL        = 1,83
-      SCREEN-LINE       = 2,00
-      LOCK-CONTROL      = TRUE
+      SCREEN-COL        = 1,67
+      SCREEN-LINE       = 1,92
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = gd-ordini
       Action            = (None)
@@ -3631,7 +3670,7 @@ Begin Screen Form2
       Cells' Setting    = ( X = 12, Y = 1, Data = "Sito Vettore" )
       Centered Headings = TRUE
       Color             = 0
-      Column            = 1,83
+      Column            = 1,67
       Column Headings   = TRUE
       Columns' Setting  = ( X = 1, Name = col-nulla, READONLY = 0 )
       Columns' Setting  = ( PIC = "X", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
@@ -3655,8 +3694,8 @@ Begin Screen Form2
       Columns' Setting  = ( PIC = "99/99/9999", TYPE = "99/99/9999", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
       Columns' Setting  = ( DISP = 13, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 8, Name = col-num-ord, READONLY = 0 )
-      Columns' Setting  = ( PIC = "X(10)", TYPE = "x(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
-      Columns' Setting  = ( DISP = 15, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( PIC = "X(50)", TYPE = "x(50)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
+      Columns' Setting  = ( DISP = 25, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 9, Name = col-ragsoc, READONLY = 0 )
       Columns' Setting  = ( PIC = "X(40)", TYPE = "x(40)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
       Columns' Setting  = ( DISP = 20, SEPA = 5, DIVI = 1 )
@@ -3688,7 +3727,7 @@ Begin Screen Form2
       Hscroll           = TRUE
       ID                = 1
       Last Row          = 0
-      Line              = 2,00
+      Line              = 1,92
       Lines             = 42,00
       Lines Unit        = Default
       No Tab            = FALSE
@@ -3699,12 +3738,12 @@ Begin Screen Form2
       Paged             = FALSE
       Row Dividers      = 1
       Row Headings      = TRUE
-      Size              = 165,83
+      Size              = 236,17
       Size Unit         = Default
       Tab Order         = 1
       Tiled Headings    = TRUE
       Use Tab           = FALSE
-      Virtual Width     = 235
+      Virtual Width     = 245
       Visible           = NONE
       Vpadding          = 50
       Vscroll           = TRUE
@@ -3720,7 +3759,7 @@ Begin Screen Form2
    Begin Frame Screen1-Fr-1aa
       SCREEN-COL        = 1,00
       SCREEN-LINE       = 46,54
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = Screen1-Fr-1aa
       3D Style          = Lowered
@@ -3742,7 +3781,7 @@ Begin Screen Form2
       Lines             = 3,00
       Lines Unit        = Default
       Low Color         = 0
-      Size              = 139,50
+      Size              = 209,33
       Size Unit         = Default
       Tab Order         = 2
       Thickness         = Default
@@ -3750,15 +3789,15 @@ Begin Screen Form2
       Visible           = NONE
       Width in Cells    = TRUE
       Begin Label Screen1-La-1a
-         SCREEN-COL        = 3,00
-         SCREEN-LINE       = 47,16
+         SCREEN-COL        = 43,00
+         SCREEN-LINE       = 47,15
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Screen1-La-1a
          Clines            = 0
          Clines Unit       = Default
          Color             = 0
-         Column            = 3,00
+         Column            = 43,00
          Csize             = 0
          Csize Unit        = Default
          Destroy Type      = Automatic
@@ -3775,7 +3814,7 @@ Begin Screen Form2
          Lines Unit        = Default
          No Key Letter     = FALSE
          Occurs            = 0
-         Size              = 135,33
+         Size              = 135,50
          Size Unit         = Default
          Tab Order         = 1
          Title             = "Doppio Click o Invio per modificare l'ordine"
@@ -3785,7 +3824,7 @@ Begin Screen Form2
       End
    End
    Begin Frame Screen1-Fr-1aaa
-      SCREEN-COL        = 140,83
+      SCREEN-COL        = 210,67
       SCREEN-LINE       = 46,54
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -3795,7 +3834,7 @@ Begin Screen Form2
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 140,83
+      Column            = 210,67
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -3809,7 +3848,7 @@ Begin Screen Form2
       Lines             = 3,00
       Lines Unit        = Default
       Low Color         = 0
-      Size              = 27,50
+      Size              = 27,83
       Size Unit         = Default
       Tab Order         = 3
       Thickness         = Default
@@ -3817,7 +3856,7 @@ Begin Screen Form2
       Visible           = NONE
       Width in Cells    = TRUE
       Begin Push-Button pb-annulla2
-         SCREEN-COL        = 154,66
+         SCREEN-COL        = 224,50
          SCREEN-LINE       = 46,69
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -3861,7 +3900,7 @@ Begin Screen Form2
          After Procedure   = pb-annulla2-AfterProcedure
       End
       Begin Push-Button pb-ok2
-         SCREEN-COL        = 141,50
+         SCREEN-COL        = 211,34
          SCREEN-LINE       = 46,69
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -5466,6 +5505,160 @@ BEGIN-TEXT
 END-TEXT
 END-DATA
 BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = SCEGLI-ORDINE-BOLLA
+BEGIN-TEXT
+           move ef-bolla-buf    to tor-num-bolla
+           move ef-anno-buf     to tor-anno-bolla
+           move zero   to cont
+           start tordini key not < k-bolla
+              invalid
+                 continue
+              not invalid
+                 perform until 1 = 2
+                    read tordini next no lock
+                       at end
+                          exit perform
+                    end-read
+                    if ef-bolla-buf not = tor-num-bolla or 
+                       ef-anno-buf  not = tor-anno-bolla
+                       exit perform
+                    end-if
+                    add 1 to cont
+                    if cont > 1
+                       exit perform
+                    end-if
+                 end-perform
+           end-start
+
+           evaluate cont 
+           when zero
+                set errori to true
+                display message "Bolla inesistente"
+                        title = tit-err
+                        icon mb-warning-icon
+           when 1 
+                move ef-bolla-buf  to tor-num-bolla
+                move ef-anno-buf   to tor-anno-bolla
+                read tordini no lock key is k-bolla
+                   invalid 
+                      set errori to true
+                      display message "Bolla inesistente"
+                              title = tit-err
+                              icon mb-warning-icon
+                end-read
+           when other
+                perform SCEGLI-ORDINE-BOLLA-2
+           end-evaluate.
+
+      ***---
+       SCEGLI-ORDINE-BOLLA-2.
+           call "W$MOUSE" using set-mouse-shape, wait-pointer.
+
+           accept  path-zoom-bolle        from environment "PATH_ST".
+           accept  como-data              from century-date.
+           accept  como-ora               from time.
+           inspect path-zoom-bolle        replacing trailing
+                                          spaces by low-value.
+           string path-zoom-bolle         delimited by low-value
+                  "zoom-bolle"            delimited by size
+                  "_"                     delimited by size
+                  como-data               delimited by size
+                  "_"                     delimited by size
+                  como-ora                delimited by size
+                  into path-zoom-bolle
+           end-string.
+
+           set trovato to false.
+           open output zoom-bolle.
+           initialize tor-rec.
+           move ef-bolla-buf to tor-num-bolla
+           move ef-anno-buf         to tor-anno-bolla
+
+           start tordini key  not < k-bolla
+              invalid 
+                 continue 
+              not invalid
+                 perform until 1 = 2
+                    read tordini next no lock 
+                       at end 
+                          exit perform 
+                    end-read
+                    
+                    if ef-bolla-buf not = tor-num-bolla or 
+                       ef-anno-buf         not = tor-anno-bolla
+                       exit perform
+                    end-if
+
+                    move tor-anno           to zoom-bol-anno
+                    move tor-numero         to zoom-bol-numero
+                    move tor-data-ordine    to zoom-bol-data-ordine
+                    move tor-causale        to tca-codice
+                    read tcaumag 
+                       invalid 
+                          initialize tca-caus-trasporto 
+                    end-read
+                    move tca-caus-trasporto to zoom-bol-causale
+                    move tor-cod-cli        to zoom-bol-cod-cli
+                                               cli-codice
+                                               des-codice
+                    set cli-tipo-C          to true
+                    move tor-prg-destino    to zoom-bol-prg-destino
+                                               des-prog
+
+                    read clienti no lock
+                       invalid 
+                          initialize cli-rec
+                    end-read
+                    move cli-ragsoc-1       to zoom-bol-cli-ragsoc-1
+
+                    read destini no lock
+                       invalid
+                          initialize des-rec
+                          move cli-localita to des-localita
+                    end-read
+                    move des-localita       to zoom-bol-des-localita
+
+                    move tor-num-fattura    to zoom-bol-num-fat
+                    move tor-data-fattura   to zoom-bol-data-fat
+
+                    write zoom-bol-rec
+                       invalid 
+                          continue 
+                    end-write
+                    set trovato to true
+                 end-perform
+           end-start.
+           close zoom-bolle.
+
+           call "W$MOUSE" using set-mouse-shape, arrow-pointer.
+
+           if trovato
+              move low-value to zoom-bol-anno
+                                zoom-bol-numero
+              move "tordini-bolla" to como-file
+              move path-zoom-bolle to ext-file
+              call   "zoom-gt" using como-file, zoom-bol-rec
+                               giving stato-zoom
+              cancel "zoom-gt"
+           else
+               move 1 to stato-zoom
+           end-if
+           delete file zoom-bolle
+
+           if stato-zoom = 0
+              move zoom-bol-chiave to tor-chiave
+              read tordini no lock
+                 invalid
+                    continue
+              end-read
+           else
+              set errori  to true
+           end-if.
+
+END-TEXT
+END-DATA
+BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = bprepb-Ev-Before-Program
 BEGIN-TEXT
@@ -5554,7 +5747,12 @@ BEGIN-TEXT
                  perform SCARICA-COMBO-STATO-CONS
                  perform ELENCO
               else
-                 perform CHIAMA-MANUTENZIONE
+                 if e-bolla = 1
+                    perform SCEGLI-ORDINE-BOLLA
+                 end-if
+                 if tutto-ok
+                    perform CHIAMA-MANUTENZIONE
+                 end-if
               end-if
               modify pb-esegui, bitmap-number = 1
               move 78-ID-ef-anno to control-id
@@ -6049,7 +6247,7 @@ MARGIN_RIGHT=150
 MARGIN_BOTTOM=150
 PROP_DOCU_TYPE=ø
 PROP_DOCU_TYPE2=ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
-PROP_DOCU_NAME=DataSet - DataSet1[solleciti(GESLUX)]
+PROP_DOCU_NAME=DataSet - DataSet1[ricstadoc(GESLUX)]
 PROP_DOCU_OWNER=Person A
 PROP_DOCU_CDATE=02/25/04
 PROP_DOCU_MODIFIER=Person B
@@ -6074,8 +6272,8 @@ PROP_DOCU_RULER_EBL=0
 PROP_DOCU_GRID_EBL=0
 PROP_DOCU_GRID=20
 PROP_DOCU_ALIGN=0
-REL_SYM_SIZE=76
-REL_SYM_INFO_L=12
+REL_SYM_SIZE=82
+REL_SYM_INFO_L=13
 REL_SYM_INFO_X0=2301
 REL_SYM_INFO_Y0=99520804
 REL_SYM_INFO_X1=2301
@@ -6100,6 +6298,8 @@ REL_SYM_INFO_X10=2301
 REL_SYM_INFO_Y10=1089876922
 REL_SYM_INFO_X11=2301
 REL_SYM_INFO_Y11=1048187420
+REL_SYM_INFO_X12=2301
+REL_SYM_INFO_Y12=907235541
 
 [DRAW_BASESYMBOL_2301_99520804]
 OBJ_NAME=2301
@@ -6677,6 +6877,54 @@ PROP_TRACK_COLOR=12632256
 REL_SYM_SIZE=4
 REL_SYM_INFO_L=0
 
+[DRAW_BASESYMBOL_2301_907235541]
+OBJ_NAME=2301
+OBJ_ID=907235541
+KIND=1
+{{@LABEL_2301_907235541
+zoom-bolle
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1748
+TOP=566
+RIGHT=2148
+BOTTOM=788
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
 [DMD_DOCUMENT_0_230635550]
 OBJ_NAME=0
 OBJ_ID=230635550
@@ -7055,6 +7303,37 @@ DSN_INFO_END_VALUE=
 DSN_INFO_PRIMARY=0
 DSN_INFO_OPEN=1
 DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_907235541]
+OBJ_NAME=0
+OBJ_ID=907235541
+REL_M_OBJ_ID=0
+ENTITY=zoom-bolle
+LINK=0
+LINK_NAME=
+DSN_SIZE=47
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=2
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=zoom-bol-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_907235541
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
 DSN_INFO_EXCLUSIVE=0
 DSN_INFO_IS_LOGICAL=0
 DSN_INFO_LOGICAL_FDNAME=
