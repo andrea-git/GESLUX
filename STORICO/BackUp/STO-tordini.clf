@@ -2,7 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E061D92830-642-2723011139
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E598142311-826-58707503
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -89,8 +89,8 @@ m_bFixed=1
 @}}
 [FDITEM8_]
 m_strName=STO-tor-num-ord-cli
-m_strRawPic=X(10)
-m_strPic=X(10)
+m_strRawPic=X(50)
+m_strPic=X(50)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -1040,14 +1040,25 @@ m_strName_Xfd=tor-gdo_1_1_1
 
 @}}
 [FDITEM107_]
+m_strName=STO-tor-causale-orig
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=tor-gdo_1_1_1_1
+{{@DataItem_m_strDescriptionFDITEM107_
+
+@}}
+[FDITEM108_]
 m_strName=FILLER
-m_strRawPic=X(2000)
-m_strPic=X(2000)
+m_strRawPic=X(1996)
+m_strPic=X(1996)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=tor-gdo_1_1_2
-{{@DataItem_m_strDescriptionFDITEM107_
+{{@DataItem_m_strDescriptionFDITEM108_
 
 @}}
 [CStoAcucobolSL_]

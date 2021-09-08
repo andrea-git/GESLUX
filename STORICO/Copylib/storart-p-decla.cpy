@@ -629,6 +629,8 @@
            set tutto-ok  to true.
            evaluate status-sto-rordini
            when "39"
+                 CALL "C$RERR"
+                      USING EXTEND-STAT, TEXT-MESSAGE
                 set errori to true
                 display message "File [STO-RORDINI] mismatch size!"
                           title titolo

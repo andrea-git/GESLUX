@@ -87,4 +87,8 @@
                    15 STO-mto-utente-evasione      PIC  x(15).
                10 STO-mto-note-bolla-1         PIC  x(500).
                10 STO-mto-note-bolla-2         PIC  x(500).
-               10 FILLER           PIC  x(200).
+               10 STO-mto-urgente  PIC  9.
+                   88 STO-mto-urgente-si VALUE IS 1. 
+                   88 STO-mto-urgente-no VALUE IS 0. 
+               10 STO-mto-note-libere          PIC  x(150).
+               10 FILLER           PIC  x(49).

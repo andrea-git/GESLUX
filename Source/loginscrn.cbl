@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          loginscrn IS INITIAL PROGRAM.
-       AUTHOR.              Utente.
-       DATE-WRITTEN.        venerdì 3 gennaio 2020 23:00:21.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        mercoledì 8 settembre 2021 17:06:38.
        REMARKS.
       *{TOTEM}END
 
@@ -167,7 +167,7 @@
        77 TMP-DataSet1-USER-BUF     PIC X(1015).
        77 TMP-DataSet1-tconvanno-BUF     PIC X(163).
        77 TMP-DataSet1-pass-BUF     PIC X(1000).
-       77 TMP-DataSet1-STO-tordini-BUF     PIC X(3898).
+       77 TMP-DataSet1-STO-tordini-BUF     PIC X(3938).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -210,7 +210,7 @@
        77 STO-tordini-k-andamento-cliente-SPLITBUF  PIC X(15).
        77 STO-tordini-k-andamento-clides-SPLITBUF  PIC X(20).
        77 STO-tordini-k-promo-SPLITBUF  PIC X(29).
-       77 STO-tordini-k-or-SPLITBUF  PIC X(21).
+       77 STO-tordini-k-or-SPLITBUF  PIC X(61).
        77 STO-tordini-k-tor-inviare-SPLITBUF  PIC X(14).
        77 STO-tordini-k-tor-tipocli-SPLITBUF  PIC X(25).
        77 STO-tordini-k-tor-gdo-SPLITBUF  PIC X(28).
@@ -1371,8 +1371,8 @@
            MOVE STO-tor-cod-cli(1:5) TO STO-tordini-k-or-SPLITBUF(1:5)
            MOVE STO-tor-prg-destino(1:5) TO 
            STO-tordini-k-or-SPLITBUF(6:5)
-           MOVE STO-tor-num-ord-cli(1:10) TO 
-           STO-tordini-k-or-SPLITBUF(11:10)
+           MOVE STO-tor-num-ord-cli(1:50) TO 
+           STO-tordini-k-or-SPLITBUF(11:50)
            .
 
        STO-tordini-k-tor-inviare-MERGE-SPLITBUF.

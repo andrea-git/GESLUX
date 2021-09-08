@@ -81,4 +81,7 @@
                        88 ex-STO-mro-tagliare-merce VALUE IS "M". 
                        88 ex-STO-mro-tenere-saldo VALUE IS "T". 
                        88 ex-STO-mro-sostituzione VALUE IS "S". 
-                   15 STO-mro-alfa-vuoto           PIC  X(499).
+                   15 STO-mro-bloccato-prezzo      PIC  9.
+                       88 STO-mro-bloccato-prezzo-si VALUE IS 1. 
+                       88 STO-mro-bloccato-prezzo-no VALUE IS 0. 
+                   15 STO-mro-alfa-vuoto           PIC  X(498).

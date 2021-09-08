@@ -212,6 +212,10 @@
        77  path-sto-contestazioni pic x(256).
        77  path-sto-tagli         pic x(256).
 
+       77 EXTEND-STAT   pic x(5).
+       77 TEXT-MESSAGE  pic x(50).
+       77 STATUS-TYPE   signed-short.
+
        LINKAGE SECTION.
            copy "link-storart.def".
 

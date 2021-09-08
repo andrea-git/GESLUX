@@ -2,7 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7DE1535823-429-2131118956
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E598152019-421-185656951
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -688,13 +688,41 @@ m_strTrue=0
 
 @}}
 [FDITEM70_]
-m_strName=STO-ror-alfa-vuoto
-m_strRawPic=X(200)
-m_strPic=X(200)
+m_strName=STO-ror-bloccato-prezzo
+m_strRawPic=9
+m_strPic=9
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM70_
+
+@}}
+[FDITEM71_]
+m_strName=STO-ror-bloccato-prezzo-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM71_
+
+@}}
+[FDITEM72_]
+m_strName=STO-ror-bloccato-prezzo-no
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM72_
+
+@}}
+[FDITEM73_]
+m_strName=STO-ror-alfa-vuoto
+m_strRawPic=X(199)
+m_strPic=X(199)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM73_
 
 @}}
 [CStoAcucobolSL_]
@@ -753,3 +781,14 @@ m_strName=STO-ror-anno OF STO-rordini
 m_strName=STO-ror-num-ordine OF STO-rordini
 [SLKEYATOM2_SLINDEX3_]
 m_strName=STO-ror-chiave-ordine OF STO-rordini
+[SLINDEX4_]
+m_strName=STO-ror-k-ord-art
+{{@Key_m_strDescriptionSLINDEX4_
+
+@}}
+[SLKEYATOM0_SLINDEX4_]
+m_strName=STO-ror-anno OF STO-rordini
+[SLKEYATOM1_SLINDEX4_]
+m_strName=STO-ror-num-ordine OF STO-rordini
+[SLKEYATOM2_SLINDEX4_]
+m_strName=STO-ror-cod-articolo

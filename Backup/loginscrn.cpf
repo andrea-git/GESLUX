@@ -8,7 +8,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=loginscrn-Ev-Before-Program
 AFTER_PROGRAM=loginscrn-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E413215954-30-1296624498
+PROGRAM_UNIQUE_CODE=TOTEM-7E59815554-996-30462899
 
 {{@DESCRIPTION:
 
@@ -1300,7 +1300,7 @@ Begin Screen Form1
    Begin Check-Box chk-storico
       SCREEN-COL        = 21,80
       SCREEN-LINE       = 10,61
-      LOCK-CONTROL      = FALSE
+      LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = chk-storico
       Bitmap Frame      = FALSE

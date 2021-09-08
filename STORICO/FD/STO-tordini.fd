@@ -8,7 +8,7 @@
                10 STO-tor-causale  PIC  x(4).
                10 STO-tor-cod-cli  PIC  9(5).
                10 STO-tor-prg-destino          PIC  9(5).
-               10 STO-tor-num-ord-cli          PIC  X(10).
+               10 STO-tor-num-ord-cli          PIC  X(50).
                10 STO-tor-data-ordine          PIC  9(8).
                10 STO-tor-data-passaggio-ordine            PIC  9(8).
                10 STO-tor-cod-agente           PIC  9(5).
@@ -114,5 +114,7 @@
                    15 STO-tor-note-bolla-1         PIC  X(500).
       *(( XFD NAME = tor-gdo_1_1_1 ))
                    15 STO-tor-note-bolla-2         PIC  X(500).
+      *(( XFD NAME = tor-gdo_1_1_1_1 ))
+                   15 STO-tor-causale-orig         PIC  9(4).
       *(( XFD NAME = tor-gdo_1_1_2 ))
-                   15 FILLER           PIC  X(2000).
+                   15 FILLER           PIC  X(1996).

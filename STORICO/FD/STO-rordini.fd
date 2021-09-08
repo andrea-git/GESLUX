@@ -77,4 +77,7 @@
                    15 STO-ror-evasa-GET            PIC  9.
                        88 STO-ror-evasa-GET-si VALUE IS 1. 
                        88 STO-ror-evasa-GET-no VALUE IS 0. 
-                   15 STO-ror-alfa-vuoto           PIC  X(200).
+                   15 STO-ror-bloccato-prezzo      PIC  9.
+                       88 STO-ror-bloccato-prezzo-si VALUE IS 1. 
+                       88 STO-ror-bloccato-prezzo-no VALUE IS 0. 
+                   15 STO-ror-alfa-vuoto           PIC  X(199).

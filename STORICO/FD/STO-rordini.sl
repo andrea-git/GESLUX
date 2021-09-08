@@ -19,4 +19,8 @@
            ALTERNATE RECORD KEY IS STO-ror-k-stbolle = STO-ror-anno OF 
            STO-rordini, STO-ror-num-ordine OF STO-rordini, 
            STO-ror-chiave-ordine OF STO-rordini
+           WITH DUPLICATES 
+           ALTERNATE RECORD KEY IS STO-ror-k-ord-art = STO-ror-anno OF 
+           STO-rordini, STO-ror-num-ordine OF STO-rordini, 
+           STO-ror-cod-articolo
            WITH DUPLICATES .
