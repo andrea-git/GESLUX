@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gordc.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 7 settembre 2021 10:33:03.
+       DATE-WRITTEN.        sabato 11 settembre 2021 00:06:11.
        REMARKS.
       *{TOTEM}END
 
@@ -358,7 +358,7 @@
        77 TMP-DataSet1-rordini-BUF     PIC X(667).
        77 TMP-DataSet1-tmp-progmag-zoom-BUF     PIC X(195).
        77 TMP-DataSet1-zoom-tcaumag-BUF     PIC X(87).
-       77 TMP-DataSet1-int-tordini-BUF     PIC X(907).
+       77 TMP-DataSet1-int-tordini-BUF     PIC X(947).
        77 TMP-DataSet1-int-rordini-BUF     PIC X(505).
        77 TMP-DataSet1-listini-BUF     PIC X(207).
        77 TMP-DataSet1-tpromo-BUF     PIC X(263).
@@ -1071,7 +1071,7 @@
            ID IS 78-ID-ef-num-ord,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           MAX-TEXT 50,
+           MAX-TEXT 12,
            VALUE ef-num-ord-BUF,
            .
 

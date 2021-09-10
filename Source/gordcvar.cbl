@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gordcvar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 7 settembre 2021 10:32:41.
+       DATE-WRITTEN.        sabato 11 settembre 2021 00:06:38.
        REMARKS.
       *{TOTEM}END
 
@@ -1361,7 +1361,7 @@
            ID IS 78-ID-ef-num-ord,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           MAX-TEXT 50,
+           MAX-TEXT 12,
            VALUE ef-num-ord-BUF,
            .
 
