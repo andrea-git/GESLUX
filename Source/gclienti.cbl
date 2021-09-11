@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gclienti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 31 agosto 2021 01:07:45.
+       DATE-WRITTEN.        sabato 11 settembre 2021 16:35:30.
        REMARKS.
       *{TOTEM}END
 
@@ -6764,6 +6764,7 @@
            EXCEPTION-VALUE 1014,
            FLAT,
            ID IS 761,
+           SELF-ACT,
            TITLE "&Dettagli",
            AFTER PROCEDURE pb-ricerca-AfterProcedure, 
            BEFORE PROCEDURE pb-ricerca-BeforeProcedure, 
