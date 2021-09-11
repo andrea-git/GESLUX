@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          solleciti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 7 settembre 2021 12:11:32.
+       DATE-WRITTEN.        sabato 11 settembre 2021 16:31:18.
        REMARKS.
       *{TOTEM}END
 
@@ -560,6 +560,7 @@
        77 ef-tipo-buf      PIC  x(2).
        77 STATUS-stato-invio           PIC  X(2).
            88 Valid-STATUS-stato-invio VALUE IS "00" THRU "09". 
+       77 cbo-stato-f-buf  PIC  x(50).
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -817,8 +818,8 @@
            Screen1-Ta-1, 
            Tab-Control, 
            COL 1,50, 
-           LINE 1,19,
-           LINES 28,13 ,
+           LINE 1,00,
+           LINES 31,13 ,
            SIZE 97,50 ,
            ID IS 65,
            HEIGHT-IN-CELLS,
@@ -838,7 +839,7 @@
            EF-data-FROM, 
            Entry-Field, 
            COL 31,00, 
-           LINE 3,94,
+           LINE 3,75,
            LINES 1,38 ,
            SIZE 11,00 ,
            BOXED,
@@ -860,7 +861,7 @@
            EF-DATA-TO, 
            Entry-Field, 
            COL 58,50, 
-           LINE 3,94,
+           LINE 3,75,
            LINES 1,38 ,
            SIZE 11,00 ,
            BOXED,
@@ -877,13 +878,35 @@
            .
 
 
+      * COMBO-BOX
+       10
+           cbo-stato-f, 
+           Combo-Box, 
+           COL 14,00, 
+           LINE 6,12,
+           LINES 7,13 ,
+           SIZE 25,00 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED 1,
+           FONT IS Arial8B-Occidentale,
+           ID IS 11,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           MASS-UPDATE 0,
+           NOTIFY-SELCHANGE,
+           DROP-LIST,
+           UNSORTED,
+           AFTER PROCEDURE cbo-promoa-AfterProcedure, 
+           BEFORE PROCEDURE cbo-promoa-BeforeProcedure, 
+           .
       * ENTRY FIELD
        10
            ef-cli, 
            Entry-Field, 
            COL 14,00, 
-           LINE 6,44,
-           LINES 1,33 ,
+           LINE 8,13,
+           LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
            COLOR IS 513,
@@ -901,7 +924,7 @@
            ef-dest, 
            Entry-Field, 
            COL 14,00, 
-           LINE 8,31,
+           LINE 10,00,
            LINES 1,33 ,
            SIZE 7,00 ,
            BOXED,
@@ -921,7 +944,7 @@
            ef-age, 
            Entry-Field, 
            COL 14,00, 
-           LINE 12,06,
+           LINE 13,75,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -940,7 +963,7 @@
            ef-gdo, 
            Entry-Field, 
            COL 14,00, 
-           LINE 15,31,
+           LINE 17,00,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -960,7 +983,7 @@
            cbo-promoa, 
            Combo-Box, 
            COL 14,00, 
-           LINE 17,38,
+           LINE 19,06,
            LINES 7,13 ,
            SIZE 53,13 ,
            BOXED,
@@ -982,7 +1005,7 @@
            ef-tipo, 
            Entry-Field, 
            COL 14,00, 
-           LINE 20,94,
+           LINE 22,63,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -1001,7 +1024,7 @@
            ef-art, 
            Entry-Field, 
            COL 14,00, 
-           LINE 24,56,
+           LINE 26,25,
            LINES 1,31 ,
            SIZE 6,00 ,
            BOXED,
@@ -1020,7 +1043,7 @@
            Screen1-Fr-1a, 
            Frame, 
            COL 2,00, 
-           LINE 26,06,
+           LINE 28,88,
            LINES 3,00 ,
            SIZE 96,50 ,
            COLOR IS 2,
@@ -1034,7 +1057,7 @@
            PB-ESEGUI, 
            Push-Button, 
            COL 78,13, 
-           LINE 26,62,
+           LINE 29,50,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE OK_73X21-BMP,
@@ -1057,7 +1080,7 @@
            pb-cancel, 
            Push-Button, 
            COL 88,00, 
-           LINE 26,62,
+           LINE 29,50,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE CANCEL_73X21-BMP,
@@ -1080,8 +1103,8 @@
            Screen1-La-2ab, 
            Label, 
            COL 5,00, 
-           LINE 6,44,
-           LINES 1,33 ,
+           LINE 8,13,
+           LINES 1,31 ,
            SIZE 8,00 ,
            ID IS 242,
            HEIGHT-IN-CELLS,
@@ -1095,7 +1118,7 @@
            Screen1-La-2aab, 
            Label, 
            COL 5,00, 
-           LINE 8,31,
+           LINE 10,00,
            LINES 1,33 ,
            SIZE 8,00 ,
            ID IS 244,
@@ -1110,7 +1133,7 @@
            Bitmap-freccia-daaaa, 
            Bitmap, 
            COL 43,00, 
-           LINE 3,94,
+           LINE 3,75,
            LINES 24,00 ,
            SIZE 28,00 ,
            TRANSPARENT-COLOR TR-COLOR,
@@ -1124,7 +1147,7 @@
            Screen3-La-1acaa, 
            Label, 
            COL 46,75, 
-           LINE 3,94,
+           LINE 3,75,
            LINES 1,19 ,
            SIZE 7,00 ,
            ID IS 246,
@@ -1140,7 +1163,7 @@
            Bitmap-freccia-finoaaa, 
            Bitmap, 
            COL 54,50, 
-           LINE 3,94,
+           LINE 3,75,
            LINES 24,00 ,
            SIZE 28,00 ,
            TRANSPARENT-COLOR TR-COLOR,
@@ -1154,7 +1177,7 @@
            lab-cli, 
            Label, 
            COL 22,00, 
-           LINE 6,44,
+           LINE 8,13,
            LINES 1,31 ,
            SIZE 60,00 ,
            COLOR IS 5,
@@ -1171,7 +1194,7 @@
            lab-dest, 
            Label, 
            COL 22,00, 
-           LINE 8,31,
+           LINE 10,00,
            LINES 1,31 ,
            SIZE 60,00 ,
            COLOR IS 5,
@@ -1188,7 +1211,7 @@
            Screen1-La-2aba, 
            Label, 
            COL 5,00, 
-           LINE 12,06,
+           LINE 13,75,
            LINES 1,33 ,
            SIZE 8,00 ,
            ID IS 253,
@@ -1203,7 +1226,7 @@
            lab-age, 
            Label, 
            COL 22,00, 
-           LINE 12,06,
+           LINE 13,75,
            LINES 1,31 ,
            SIZE 60,00 ,
            COLOR IS 5,
@@ -1220,7 +1243,7 @@
            Screen1-La-2abaa, 
            Label, 
            COL 5,00, 
-           LINE 24,56,
+           LINE 26,25,
            LINES 1,31 ,
            SIZE 8,00 ,
            ID IS 257,
@@ -1235,7 +1258,7 @@
            lab-art, 
            Label, 
            COL 21,00, 
-           LINE 24,56,
+           LINE 26,25,
            LINES 1,31 ,
            SIZE 60,00 ,
            COLOR IS 5,
@@ -1252,7 +1275,7 @@
            Screen1-La-2abaaa, 
            Label, 
            COL 5,00, 
-           LINE 17,38,
+           LINE 19,06,
            LINES 1,31 ,
            SIZE 8,00 ,
            ID IS 259,
@@ -1267,7 +1290,7 @@
            Screen1-Br-1, 
            Bar,
            COL 5,25, 
-           LINE 10,63,
+           LINE 12,31,
            SIZE 90,00 ,
            COLOR IS 2,
            ID IS 260,
@@ -1281,7 +1304,7 @@
            Screen1-Br-1a, 
            Bar,
            COL 5,25, 
-           LINE 20,00,
+           LINE 21,69,
            SIZE 90,00 ,
            COLOR IS 2,
            ID IS 261,
@@ -1295,7 +1318,7 @@
            Screen1-Br-1b, 
            Bar,
            COL 5,25, 
-           LINE 14,38,
+           LINE 16,06,
            SIZE 90,00 ,
            COLOR IS 2,
            ID IS 15,
@@ -1309,7 +1332,7 @@
            Screen1-La-2abab, 
            Label, 
            COL 5,00, 
-           LINE 15,31,
+           LINE 17,00,
            LINES 1,33 ,
            SIZE 8,00 ,
            ID IS 16,
@@ -1324,7 +1347,7 @@
            lab-gdo, 
            Label, 
            COL 22,00, 
-           LINE 15,31,
+           LINE 17,00,
            LINES 1,31 ,
            SIZE 60,00 ,
            COLOR IS 5,
@@ -1341,7 +1364,7 @@
            Screen1-La-2ababa, 
            Label, 
            COL 5,00, 
-           LINE 20,56,
+           LINE 22,25,
            LINES 2,13 ,
            SIZE 8,00 ,
            ID IS 18,
@@ -1356,7 +1379,7 @@
            lab-tipo, 
            Label, 
            COL 22,00, 
-           LINE 20,94,
+           LINE 22,63,
            LINES 1,31 ,
            SIZE 60,00 ,
            COLOR IS 5,
@@ -1373,7 +1396,7 @@
            Screen1-Br-1ab, 
            Bar,
            COL 5,25, 
-           LINE 23,13,
+           LINE 24,81,
            SIZE 90,00 ,
            COLOR IS 2,
            ID IS 20,
@@ -1387,13 +1410,28 @@
            Screen1-Br-1aaa, 
            Bar,
            COL 5,25, 
-           LINE 23,38,
+           LINE 25,06,
            SIZE 90,00 ,
            COLOR IS 2,
            ID IS 14,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            WIDTH 1,
+           .
+
+      * LABEL
+       10
+           Screen1-La-2abaaaa, 
+           Label, 
+           COL 5,00, 
+           LINE 6,19,
+           LINES 1,31 ,
+           SIZE 8,00 ,
+           ID IS 259,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Stato",
            .
 
       * LABEL
@@ -7185,6 +7223,10 @@
 
 
       * COMBO-BOX
+       cbo-stato-f-Content.
+           .
+
+      * COMBO-BOX
        cbo-promoa-Content.
            .
 
@@ -7494,7 +7536,7 @@
 
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 28,81,
+              LINES 31,13,
               SIZE 98,00,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
@@ -7543,7 +7585,16 @@
 
            perform DATE-TO-SCREEN.
            move como-data to ef-data-from-buf.
+                                           
+           modify cbo-stato-f, item-to-add = "Tutti".     
+           modify cbo-stato-f, item-to-add = "Registrato (REG)".
+           modify cbo-stato-f, item-to-add = "In lavorazione (LAV)".
+           modify cbo-stato-f, item-to-add = "Spedito parzialmente (SP)"
+           .
+           modify cbo-stato-f, item-to-add = "Spedito totalmente (ST)".
+           modify cbo-stato-f, item-to-add = "Chiuso".
 
+           modify cbo-stato-f, value "Tutti".
            display form1.
 
            move 1 to num-screen.
@@ -7649,6 +7700,8 @@
                    Screen1-Pg-2-Visible,
            MOVE 1 TO Screen1-Pg-2-Visible
            PERFORM Screen1-Ta-1-TABCHANGE
+      * COMBO-BOX
+           PERFORM cbo-stato-f-Content
       * COMBO-BOX
            PERFORM cbo-promoa-Content
            .
@@ -8020,6 +8073,34 @@
            perform INTESTAZIONE.
            perform INITIALIZE-FILTRI.
 
+           evaluate cbo-stato-f-buf       
+           when "Tutti"
+                move 1 to chk-reg-buf chk-il-buf chk-sp-buf
+                          chk-st-buf chk-chiuso-buf
+           when "Registrato (REG)"                 
+                move 1 to chk-reg-buf 
+                move 0 to chk-il-buf chk-sp-buf
+                          chk-st-buf chk-chiuso-buf
+           when "In lavorazione (LAV)"
+                move 1 to chk-il-buf 
+                move 0 to chk-reg-buf chk-sp-buf
+                          chk-st-buf chk-chiuso-buf
+           when "Spedito parzialmente (SP)"
+                move 1 to chk-sp-buf 
+                move 0 to chk-il-buf chk-reg-buf
+                          chk-st-buf chk-chiuso-buf
+           when "Spedito totalmente (ST)"          
+                move 1 to chk-st-buf 
+                move 0 to chk-il-buf chk-reg-buf
+                          chk-sp-buf chk-chiuso-buf
+           when "Chiuso"        
+                move 1 to chk-chiuso-buf 
+                move 0 to chk-il-buf chk-reg-buf
+                          chk-st-buf chk-sp-buf
+           end-evaluate.                   
+
+           display chk-sp chk-il chk-reg chk-st chk-chiuso
+
            if ef-gdo-buf not = spaces
               move spaces to old-gdo-buf
               move cbo-promo-buf     to old-cbo-promo-buf
@@ -8116,7 +8197,8 @@
            end-perform.
 
            modify cbo-promo, value cbo-promo-buf.
-           if cbo-promo-buf not = 78-tutti-vol
+           if cbo-promo-buf   not = 78-tutti-vol or
+              cbo-stato-f-buf not = "Tutti"
               perform FILTRA-RECORD
            end-if.
 
@@ -11682,7 +11764,7 @@
            unlock tmp-sol2 all record
 
 
-           call "stsolleciti" using stsolleciti-linkage.
+           call   "stsolleciti" using stsolleciti-linkage.
            cancel "stsolleciti" 
 
 
@@ -11845,8 +11927,9 @@
               else
                  set scelta-articoli to true
               end-if
-
-              inquire cbo-promoa, value in cbo-promo-buf
+                            
+              inquire cbo-stato-f, value in cbo-stato-f-buf
+              inquire cbo-promoa,  value in cbo-promo-buf
               modify form1-handle, visible false
               perform CANCELLA-COLORE
               perform SCR-ELAB-OPEN-ROUTINE
