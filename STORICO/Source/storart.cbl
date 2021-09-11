@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          storart.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 1 aprile 2014 17:53:11.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        sabato 11 settembre 2021 16:48:27.
        REMARKS.
       *{TOTEM}END
 
@@ -41,9 +41,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\Lubex\GESLUX\Copylib\UTYDATA.DEF".
-               COPY "F:\Lubex\GESLUX\Copylib\comune.def".
-               COPY "F:\Lubex\GESLUX\Copylib\custom.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -465,7 +463,7 @@
            pb-fatto, 
            Push-Button, 
            COL 19,00, 
-           LINE 56,90,
+           LINE 64,90,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE FATTO-BMP,
@@ -786,7 +784,7 @@
 
        scr-elab-Create-Win.
            Display Floating GRAPHICAL WINDOW
-              LINES 60,00,
+              LINES 68,00,
               SIZE 44,20,
               CELL HEIGHT 10,
               CELL WIDTH 10,

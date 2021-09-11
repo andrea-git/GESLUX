@@ -30,7 +30,9 @@
            copy "btnotacr.sl".
            copy "brnotacr.sl".    
            copy "contestazioni.sl".
-           copy "tagli.sl".
+           copy "tagli.sl".       
+           copy "edi-mtordini.sl".
+           copy "edi-mrordini.sl".
                                     
            copy "sto-tordini.sl".
            copy "sto-rordini.sl".
@@ -56,7 +58,9 @@
            copy "sto-btnotacr.sl".
            copy "sto-brnotacr.sl".    
            copy "sto-contestazioni.sl".
-           copy "sto-tagli.sl".
+           copy "sto-tagli.sl".  
+           copy "sto-edi-mtordini.sl".
+           copy "sto-edi-mrordini.sl".
 
       ******************************************************************
        DATA DIVISION.
@@ -85,7 +89,9 @@
            copy "btnotacr.fd".
            copy "brnotacr.fd".
            copy "contestazioni.fd".
-           copy "tagli.fd".   
+           copy "tagli.fd".  
+           copy "edi-mtordini.fd".
+           copy "edi-mrordini.fd". 
 
            copy "sto-tordini.fd".
            copy "sto-rordini.fd".
@@ -111,7 +117,9 @@
            copy "sto-btnotacr.fd".
            copy "sto-brnotacr.fd".
            copy "sto-contestazioni.fd".
-           copy "sto-tagli.fd".   
+           copy "sto-tagli.fd". 
+           copy "sto-edi-mtordini.fd".
+           copy "sto-edi-mrordini.fd".  
 
       ******************************************************************
        WORKING-STORAGE SECTION.
@@ -153,6 +161,8 @@
        77  status-brnotacr      pic xx.
        77  status-contestazioni pic xx.
        77  status-tagli         pic xx.
+       77  status-edi-mtordini  pic xx.
+       77  status-edi-mrordini  pic xx.
                                         
        77  status-STO-tordini       pic xx.
        77  status-STO-rordini       pic xx.
@@ -178,7 +188,9 @@
        77  status-sto-btnotacr      pic xx.
        77  status-sto-brnotacr      pic xx.
        77  status-sto-contestazioni pic xx.
-       77  status-sto-tagli         pic xx.
+       77  status-sto-tagli         pic xx.  
+       77  status-sto-edi-mtordini  pic xx.
+       77  status-sto-edi-mrordini  pic xx.
 
        77  path-archivi           pic x(256).
        77  path-archivi-sto       pic x(256).
@@ -209,8 +221,10 @@
        77  path-sto-reva          pic x(256).      
        77  path-sto-btnotacr      pic x(256).
        77  path-sto-brnotacr      pic x(256).
-       77  path-sto-contestazioni pic x(256).
+       77  path-sto-contestazioni pic x(256).   
        77  path-sto-tagli         pic x(256).
+       77  path-sto-edi-mtordini  pic x(256).
+       77  path-sto-edi-mrordini  pic x(256).
 
        77 EXTEND-STAT   pic x(5).
        77 TEXT-MESSAGE  pic x(50).
@@ -304,6 +318,14 @@
                                                          if tutto-ok
                                                           perform
                                                      OPEN-TAGLI-LOCK
+                                                          if tutto-ok
+                                                             perform
+                                                  OPEN-EDI-MTORDINI-LOCK
+                                                            if tutto-ok
+                                                               perform   
+                                                  OPEN-EDI-MRORDINI-LOCK
+                                                            end-if
+                                                          end-if
                                                          end-if
                                                        end-if
                                                      end-if
@@ -496,6 +518,86 @@
                  open output sto-mrordini
                  close       sto-mrordini
                  open i-o    sto-mrordini
+              end-if
+           end-if.                
+
+      ***---
+       OPEN-EDI-MTORDINI-LOCK.
+           string   "Il file dei master EDI " 
+             x"0d0a""risulta in uso su altro terminale."
+                 delimited size
+                 into geslock-messaggio
+           end-string.
+           move "edi-mtordini" to geslock-nome-file.
+
+           set tutto-ok   to true.
+           perform until 1 = 2
+              set RecLocked to false
+              open i-o edi-mtordini allowing readers
+              if not RecLocked
+                 exit perform
+              end-if
+
+              move 1 to geslock-v-riprova
+              move 0 to geslock-v-ignora
+              move 1 to geslock-v-termina
+              call   "geslock" using geslock-linkage
+              cancel "geslock"
+              evaluate true
+              when riprova continue
+              when termina 
+                   set errori to true
+                   exit perform
+              end-evaluate
+           end-perform.  
+           if tutto-ok
+              perform COMPONI-PATH
+              move path-file to path-sto-edi-mtordini
+              open i-o sto-edi-mtordini
+              if status-sto-edi-mtordini = "35"
+                 open output sto-edi-mtordini
+                 close       sto-edi-mtordini
+                 open i-o    sto-edi-mtordini
+              end-if
+           end-if.
+
+      ***---
+       OPEN-EDI-MRORDINI-LOCK.
+           string   "Il file dei master EDI " 
+             x"0d0a""risulta in uso su altro terminale."
+                 delimited size
+                 into geslock-messaggio
+           end-string.
+           move "edi-mrordini" to geslock-nome-file.
+
+           set tutto-ok   to true.
+           perform until 1 = 2
+              set RecLocked to false
+              open i-o edi-mrordini allowing readers
+              if not RecLocked
+                 exit perform
+              end-if
+
+              move 1 to geslock-v-riprova
+              move 0 to geslock-v-ignora
+              move 1 to geslock-v-termina
+              call   "geslock" using geslock-linkage
+              cancel "geslock"
+              evaluate true
+              when riprova continue
+              when termina 
+                   set errori to true
+                   exit perform
+              end-evaluate
+           end-perform.  
+           if tutto-ok
+              perform COMPONI-PATH
+              move path-file to path-sto-edi-mrordini
+              open i-o sto-edi-mrordini
+              if status-sto-edi-mrordini = "35"
+                 open output sto-edi-mrordini
+                 close       sto-edi-mrordini
+                 open i-o    sto-edi-mrordini
               end-if
            end-if.
 
@@ -1434,7 +1536,51 @@
                     end-write
                     delete mrordini record
                  end-perform
-           end-start.         
+           end-start.    
+                               
+           move "EDI-MTORDINI"  to nome-file.
+           add  interlinea      to line-file.
+           move low-value       to emto-rec.
+           move storart-anno-da to emto-anno.
+           move 0 to counter counter2.
+           start edi-mtordini key >= emto-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read edi-mtordini next at end exit perform end-read
+                    if emto-anno > storart-anno-a
+                       exit perform
+                    end-if
+                    perform CONTATORE-SCREEN 
+                    move emto-rec to sto-emto-rec
+                    write sto-emto-rec 
+                          invalid rewrite sto-emto-rec
+                    end-write
+                    delete edi-mtordini record
+                 end-perform
+           end-start.  
+                               
+           move "EDI-MRORDINI"  to nome-file.
+           add  interlinea      to line-file.
+           move low-value       to emro-rec.
+           move storart-anno-da to emro-anno.
+           move 0 to counter counter2.
+           start edi-mrordini key >= emro-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read edi-mrordini next at end exit perform end-read
+                    if emro-anno > storart-anno-a
+                       exit perform
+                    end-if
+                    perform CONTATORE-SCREEN 
+                    move emro-rec to sto-emro-rec
+                    write sto-emro-rec 
+                          invalid rewrite sto-emro-rec
+                    end-write
+                    delete edi-mrordini record
+                 end-perform
+           end-start.           
 
            move "TRASPORTI"     to nome-file.
            add  interlinea      to line-file.
@@ -1945,7 +2091,7 @@
         
            move "MTORDINI"      to nome-file.
            add  interlinea      to line-file.
-           move low-value       to sto-tor-rec.
+           move low-value       to sto-mto-rec.
            move storart-anno-da to sto-mto-anno.
            start sto-mtordini key >= sto-mto-chiave
                  invalid continue
@@ -1984,7 +2130,53 @@
                     end-write
                     delete sto-mrordini record
                  end-perform
-           end-start.         
+           end-start.    
+        
+           move "EDI-MTORDINI"  to nome-file.
+           add  interlinea      to line-file.
+           move low-value       to sto-emto-rec.
+           move storart-anno-da to sto-emto-anno.
+           start sto-edi-mtordini key >= sto-emto-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read sto-edi-mtordini next 
+                         at end exit perform 
+                    end-read
+                    if sto-emto-anno > storart-anno-a
+                       exit perform
+                    end-if
+                    perform CONTATORE-SCREEN
+                    move sto-emto-rec to emto-rec
+                    write emto-rec 
+                          invalid rewrite emto-rec
+                    end-write
+                    delete sto-edi-mtordini record
+                 end-perform
+           end-start.    
+        
+           move "EDI-MRORDINI"  to nome-file.
+           add  interlinea      to line-file.
+           move low-value       to sto-emro-rec.
+           move storart-anno-da to sto-emro-anno.
+           start sto-edi-mrordini key >= sto-emro-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read sto-edi-mrordini next 
+                         at end exit perform 
+                    end-read
+                    if sto-emro-anno > storart-anno-a
+                       exit perform
+                    end-if
+                    perform CONTATORE-SCREEN
+                    move sto-emro-rec to emro-rec
+                    write emro-rec 
+                          invalid rewrite emro-rec
+                    end-write
+                    delete sto-edi-mrordini record
+                 end-perform
+           end-start.       
                                
            move "TRASPORTI"     to nome-file.
            add  interlinea      to line-file.
@@ -2492,6 +2684,8 @@
            unlock brnotacr       all records. 
            unlock contestazioni  all records.
            unlock tagli          all records.
+           unlock edi-mtordini   all records.
+           unlock edi-mrordini   all records.
 
            close mtordini.            
            close mrordini.
@@ -2518,6 +2712,8 @@
            close brnotacr.
            close contestazioni.
            close tagli.
+           close edi-mtordini.
+           close edi-mrordini.
                          
            unlock STO-tordini        all records.
            unlock STO-rordini        all records.
@@ -2544,6 +2740,8 @@
            unlock STO-brnotacr       all records.
            unlock STO-contestazioni  all records.
            unlock STO-tagli          all records.
+           unlock STO-edi-mtordini   all records.
+           unlock STO-edi-mrordini   all records.
     
            close STO-tordini.
            close STO-rordini.
@@ -2569,7 +2767,9 @@
            close STO-btnotacr.
            close STO-brnotacr. 
            close STO-contestazioni.
-           close STO-tagli.
+           close STO-tagli.       
+           close STO-edi-mtordini.
+           close STO-edi-mrordini.
 
            if tutto-ok                 
                move "tordini"       to nome-file
@@ -2621,6 +2821,10 @@
                move "contestazioni" to nome-file
                perform CALL-REBUILD     
                move "tagli"         to nome-file
+               perform CALL-REBUILD     
+               move "EDI-mtordini"  to nome-file
+               perform CALL-REBUILD     
+               move "EDI-mrordini"  to nome-file
                perform CALL-REBUILD     
            end-if.   
 

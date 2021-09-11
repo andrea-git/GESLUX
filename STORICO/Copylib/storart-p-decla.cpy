@@ -598,7 +598,53 @@
                 set errori to true
            when "93"
            when "99" set RecLocked to true
-           end-evaluate.       
+           end-evaluate.                                            
+           
+      ***---
+       EDI-MTORDINI-ERR SECTION.
+           use after error procedure on edi-mtordini.
+           set RecLocked to false.
+           set tutto-ok  to true.
+           evaluate status-edi-mtordini
+           when "39"
+                set errori to true
+                display message "File [EDI-MTORDINI] mismatch size!"
+                          title titolo
+                           icon 3
+           when "98"
+                set errori to true
+                display message 
+                        "[EDI-MTORDINI] Indexed file corrupt!"
+                          title titolo
+                           icon 3
+           when "35"               
+                set errori to true
+           when "93"
+           when "99" set RecLocked to true
+           end-evaluate.                                          
+           
+      ***---
+       EDI-MRORDINI-ERR SECTION.
+           use after error procedure on edi-mrordini.
+           set RecLocked to false.
+           set tutto-ok  to true.
+           evaluate status-edi-mrordini
+           when "39"
+                set errori to true
+                display message "File [EDI-MRORDINI] mismatch size!"
+                          title titolo
+                           icon 3
+           when "98"
+                set errori to true
+                display message 
+                        "[EDI-MRORDINI] Indexed file corrupt!"
+                          title titolo
+                           icon 3
+           when "35"               
+                set errori to true
+           when "93"
+           when "99" set RecLocked to true
+           end-evaluate.
 
       ***---
        STO-TORDINI-ERR SECTION.
@@ -1126,6 +1172,52 @@
            when "98"
                 set errori to true
                 display message "[STO-TAGLI] Indexed file corrupt!"
+                          title titolo
+                           icon 3
+           when "35"               
+                set errori to true
+           when "93"
+           when "99" set RecLocked to true
+           end-evaluate.                                
+           
+      ***---
+       STO-EDI-MTORDINI-ERR SECTION.
+           use after error procedure on STO-edi-mtordini.
+           set RecLocked to false.
+           set tutto-ok  to true.
+           evaluate status-STO-edi-mtordini
+           when "39"
+                set errori to true
+                display message "File [STO-EDI-MTORDINI] mismatch size!"
+                          title titolo
+                           icon 3
+           when "98"
+                set errori to true
+                display message 
+                        "[STO-EDI-MTORDINI] Indexed file corrupt!"
+                          title titolo
+                           icon 3
+           when "35"               
+                set errori to true
+           when "93"
+           when "99" set RecLocked to true
+           end-evaluate.                                
+           
+      ***---
+       STO-EDI-MRORDINI-ERR SECTION.
+           use after error procedure on STO-edi-mrordini.
+           set RecLocked to false.
+           set tutto-ok  to true.
+           evaluate status-STO-edi-mrordini
+           when "39"
+                set errori to true
+                display message "File [STO-EDI-MRORDINI] mismatch size!"
+                          title titolo
+                           icon 3
+           when "98"
+                set errori to true
+                display message 
+                        "[STO-EDI-MRORDINI] Indexed file corrupt!"
                           title titolo
                            icon 3
            when "35"               

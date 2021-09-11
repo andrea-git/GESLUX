@@ -1,0 +1,276 @@
+      *(( XFD FILE = STO-edi-mtordini ))
+       FD  STO-edi-mtordini.
+       01 sto-emto-rec.
+           05 sto-emto-chiave.
+               10 sto-emto-anno    PIC  9(4).
+               10 sto-emto-numero  PIC  9(8).
+      *
+      *
+      *
+           05 sto-emto-dati.
+               10 sto-emto-causale PIC  x(4).
+               10 sto-emto-cod-cli PIC  9(5).
+               10 sto-emto-prg-destino         PIC  9(5).
+               10 sto-emto-gdo     PIC  x(5).
+               10 sto-emto-num-ord-cli         PIC  X(50).
+               10 sto-emto-data-ordine         PIC  9(8).
+               10 sto-emto-data-passaggio-ordine           PIC  9(8).
+               10 sto-emto-cod-agente          PIC  9(5).
+               10 sto-emto-cod-pagamento       PIC  x(3).
+               10 sto-emto-cod-ese-iva         PIC  x(3).
+               10 sto-emto-vettore PIC  9(5).
+               10 sto-emto-note1   PIC  X(19).
+               10 sto-emto-data-note1          PIC  9(8).
+               10 sto-emto-note2   PIC  X(30).
+               10 sto-emto-note3   PIC  X(30).
+               10 sto-emto-note4   PIC  X(30).
+               10 sto-emto-note    PIC  X(500).
+               10 sto-emto-pz-tot  PIC  9(8).
+               10 sto-emto-ritira-in-lubex     PIC  9.
+                   88 sto-emto-ritira-si VALUE IS 1. 
+                   88 sto-emto-ritira-no VALUE IS 0. 
+               10 sto-emto-prenotazione-qta    PIC  9(1).
+                   88 sto-emto-prenotazione-qta-si VALUE IS 1. 
+                   88 sto-emto-prenotazione-qta-no VALUE IS 0. 
+               10 sto-emto-saldi-banco         PIC  9(1).
+                   88 sto-emto-saldi-banco-si VALUE IS 1. 
+                   88 sto-emto-saldi-banco-no VALUE IS 0. 
+               10 sto-emto-saldi-promo         PIC  9(1).
+                   88 sto-emto-saldi-promo-si VALUE IS 1. 
+                   88 sto-emto-saldi-promo-no VALUE IS 0. 
+               10 sto-emto-stato   PIC  X(1).
+                   88 sto-emto-attivo VALUE IS "A". 
+                   88 sto-emto-bloccato VALUE IS "B". 
+                   88 sto-emto-caricato VALUE IS "C". 
+               10 sto-emto-errori.
+                   15 sto-emto-cliente PIC  9.
+                       88 sto-emto-cliente-valido VALUE IS 0. 
+                       88 sto-emto-clides-non-valido VALUE IS 1. 
+                       88 sto-emto-cliente-non-valido VALUE IS 2. 
+                       88 sto-emto-cliente-non-attivo VALUE IS 3. 
+                   15 sto-emto-cliente-fido        PIC  9.
+                       88 sto-emto-cliente-fido-ok VALUE IS 0. 
+                       88 sto-emto-cliente-fuori-fido VALUE IS 1. 
+                   15 sto-emto-destino PIC  9.
+                       88 sto-emto-destino-valido VALUE IS 0. 
+                       88 sto-emto-destino-non-valido VALUE IS 1. 
+                       88 sto-emto-destino-non-attivo VALUE IS 2. 
+                   15 sto-emto-righe   PIC  9.
+                       88 sto-emto-righe-presenti VALUE IS 0. 
+                       88 sto-emto-righe-non-presenti VALUE IS 1. 
+                   15 sto-emto-qta     PIC  9.
+                       88 sto-emto-qta-ok VALUE IS 0. 
+                       88 sto-emto-qta-ko VALUE IS 1. 
+                   15 sto-emto-art     PIC  9.
+                       88 sto-emto-art-ok VALUE IS 0. 
+                       88 sto-emto-art-ko VALUE IS 1. 
+                   15 sto-emto-prg     PIC  9.
+                       88 sto-emto-prg-ok VALUE IS 0. 
+                       88 sto-emto-prg-ko VALUE IS 1. 
+                   15 sto-emto-prz     PIC  9.
+                       88 sto-emto-prz-ok VALUE IS 0. 
+                       88 sto-emto-prz-ko VALUE IS 1. 
+                   15 sto-emto-esistente           PIC  9.
+                       88 sto-emto-esistente-no VALUE IS 0. 
+                       88 sto-emto-esistente-si VALUE IS 1. 
+               10 sto-emto-ordine.
+                   15 sto-emto-ordine-anno         PIC  9(4).
+                   15 sto-emto-ordine-numero       PIC  9(8).
+               10 sto-emto-dati-comuni.
+                   15 sto-emto-data-creazione      PIC  9(8).
+                   15 sto-emto-ora-creazione       PIC  9(8).
+                   15 sto-emto-utente-creazione    PIC  X(10).
+                   15 sto-emto-data-ultima-modifica            PIC  
+           9(8).
+                   15 sto-emto-ora-ultima-modifica PIC  9(8).
+                   15 sto-emto-utente-ultima-modifica          PIC  
+           X(10).
+           05 sto-emto-dati-import.
+               15 sto-emto-nome-file           PIC  x(100).
+               15 sto-emto-riga-file           PIC  9(6).
+               15 sto-emto-record-01T.
+                   20 sto-emto-01T-filler          PIC  x(35).
+                   20 sto-emto-02T-filler          PIC  x(35).
+                   20 sto-emto-03T-filler          PIC  x(35).
+                   20 sto-emto-01T04-BGM-DATADOC   PIC  x(8).
+                   20 sto-emto-01T05-BGM-NUMDOC    PIC  x(35).
+                   20 sto-emto-06T-filler          PIC  x(35).
+                   20 sto-emto-07T-filler          PIC  x(35).
+                   20 sto-emto-08T-filler          PIC  x(35).
+                   20 sto-emto-09T-filler          PIC  x(35).
+                   20 sto-emto-10T-filler          PIC  x(35).
+                   20 sto-emto-01T11-DTM-DATACONS  PIC  x(8).
+                   20 sto-emto-12T-filler          PIC  x(35).
+                   20 sto-emto-13T-filler          PIC  x(35).
+                   20 sto-emto-14T-filler          PIC  x(35).
+                   20 sto-emto-15T-filler          PIC  x(35).
+                   20 sto-emto-16T-filler          PIC  x(35).
+                   20 sto-emto-17T-filler          PIC  x(35).
+                   20 sto-emto-18T-filler          PIC  x(35).
+                   20 sto-emto-19T-filler          PIC  x(35).
+                   20 sto-emto-20T-filler          PIC  x(35).
+                   20 sto-emto-01T21-NAB-CODBUYER  PIC  x(17).
+                   20 sto-emto-01T22-NAB-QCODBUYER PIC  x(35).
+                   20 sto-emto-01T23-NAB-RAGSOCB   PIC  x(70).
+                   20 sto-emto-01T24-NAB-INDIRB    PIC  x(35).
+                   20 sto-emto-01T25-NAB-CITTAB    PIC  x(35).
+                   20 sto-emto-01T26-NAB-PROVB     PIC  x(3).
+                   20 sto-emto-01T27-NAB-CAPB      PIC  x(5).
+      *"LBX" = prezzo e cliente LBX
+      *"CLBX" = solo cliente LBX
+      *"PLBX" = solo prezzo LBX
+                   20 sto-emto-01T28-NAD-CODCONS   PIC  x(17).
+                   20 sto-emto-29T-filler          PIC  x(35).
+      *(( XFD NAME = emto-01T23-NAB-RAG ))
+                   20 sto-emto-01T30-NAD-RAGSOCD   PIC  x(70).
+      *(( XFD NAME = emto-01T24-NAB-IND ))
+                   20 sto-emto-01T31-NAD-INDIRD    PIC  x(35).
+      *(( XFD NAME = emto-01T25-NAB-CIT ))
+                   20 sto-emto-01T32-NAD-CITTAD    PIC  x(35).
+      *(( XFD NAME = emto-01T26-NAB-PRO ))
+                   20 sto-emto-01T33-NAD-PROVD     PIC  x(3).
+      *(( XFD NAME = emto-01T27-NAB-CAP ))
+                   20 sto-emto-01T34-NAD-CAPD      PIC  x(5).
+                   20 sto-emto-01T35-FTX-NOTE      PIC  x(350).
+                   20 sto-emto-36T-filler          PIC  x(35).
+                   20 sto-emto-01T37-BGM-CODAZION  PIC  x(35).
+                   20 sto-emto-38T-filler          PIC  x(35).
+                   20 sto-emto-39T-filler          PIC  x(35).
+                   20 sto-emto-40T-filler          PIC  x(35).
+                   20 sto-emto-01T41-NAI-CODFATT   PIC  x(35).
+                   20 sto-emto-42T-filler          PIC  x(35).
+                   20 sto-emto-43T-filler          PIC  x(35).
+                   20 sto-emto-44T-filler          PIC  x(35).
+                   20 sto-emto-45T-filler          PIC  x(35).
+                   20 sto-emto-46T-filler          PIC  x(35).
+                   20 sto-emto-47T-filler          PIC  x(35).
+                   20 sto-emto-48T-filler          PIC  x(35).
+                   20 sto-emto-49T-filler          PIC  x(35).
+                   20 sto-emto-50T-filler          PIC  x(35).
+                   20 sto-emto-51T-filler          PIC  x(35).
+                   20 sto-emto-52T-filler          PIC  x(35).
+                   20 sto-emto-53T-filler          PIC  x(35).
+                   20 sto-emto-54T-filler          PIC  x(35).
+                   20 sto-emto-55T-filler          PIC  x(35).
+                   20 sto-emto-56T-filler          PIC  x(35).
+                   20 sto-emto-57T-filler          PIC  x(35).
+                   20 sto-emto-58T-filler          PIC  x(35).
+                   20 sto-emto-59T-filler          PIC  x(35).
+      * Valore del campo originale dal file di import
+                   20 sto-emto-01T60-inversione-imposte        PIC  x.
+                   20 sto-emto-60T-filler          PIC  x(34).
+                   20 sto-emto-61T-filler          PIC  x(35).
+                   20 sto-emto-62T-filler          PIC  x(35).
+                   20 sto-emto-63T-filler          PIC  x(35).
+                   20 sto-emto-64T-filler          PIC  x(35).
+                   20 sto-emto-65T-filler          PIC  x(35).
+                   20 sto-emto-66T-filler          PIC  x(35).
+                   20 sto-emto-67T-filler          PIC  x(35).
+                   20 sto-emto-01T68-FTX-NOTE      PIC  x(350).
+                   20 sto-emto-01T69-FTX-NOTE      PIC  x(350).
+                   20 sto-emto-01T70-FTX-NOTE      PIC  x(350).
+                   20 sto-emto-71T-filler          PIC  x(35).
+                   20 sto-emto-72T-filler          PIC  x(35).
+                   20 sto-emto-73T-filler          PIC  x(35).
+                   20 sto-emto-74T-filler          PIC  x(35).
+                   20 sto-emto-75T-filler          PIC  x(35).
+                   20 sto-emto-76T-filler          PIC  x(35).
+                   20 sto-emto-77T-filler          PIC  x(35).
+                   20 sto-emto-78T-filler          PIC  x(35).
+                   20 sto-emto-79T-filler          PIC  x(35).
+                   20 sto-emto-80T-filler          PIC  x(35).
+                   20 sto-emto-81T-filler          PIC  x(35).
+                   20 sto-emto-82T-filler          PIC  x(35).
+                   20 sto-emto-83T-filler          PIC  x(35).
+                   20 sto-emto-84T-filler          PIC  x(35).
+                   20 sto-emto-85T-filler          PIC  x(35).
+                   20 sto-emto-86T-filler          PIC  x(35).
+                   20 sto-emto-87T-filler          PIC  x(35).
+                   20 sto-emto-88T-filler          PIC  x(35).
+                   20 sto-emto-89T-filler          PIC  x(35).
+                   20 sto-emto-90T-filler          PIC  x(35).
+                   20 sto-emto-91T-filler          PIC  x(35).
+                   20 sto-emto-92T-filler          PIC  x(35).
+                   20 sto-emto-93T-filler          PIC  x(35).
+                   20 sto-emto-94T-filler          PIC  x(35).
+                   20 sto-emto-95T-filler          PIC  x(35).
+                   20 sto-emto-96T-filler          PIC  x(35).
+                   20 sto-emto-97T-filler          PIC  x(35).
+                   20 sto-emto-98T-filler          PIC  x(35).
+                   20 sto-emto-99T-filler          PIC  x(35).
+                   20 sto-emto-100T-filler         PIC  x(35).
+                   20 sto-emto-101T-filler         PIC  x(35).
+                   20 sto-emto-102T-filler         PIC  x(35).
+                   20 sto-emto-103T-filler         PIC  x(35).
+                   20 sto-emto-104T-filler         PIC  x(35).
+                   20 sto-emto-105T-filler         PIC  x(35).
+                   20 sto-emto-106T-filler         PIC  x(35).
+                   20 sto-emto-107T-filler         PIC  x(35).
+                   20 sto-emto-108T-filler         PIC  x(35).
+                   20 sto-emto-109T-filler         PIC  x(35).
+                   20 sto-emto-110T-filler         PIC  x(35).
+                   20 sto-emto-111T-filler         PIC  x(35).
+                   20 sto-emto-112T-filler         PIC  x(35).
+                   20 sto-emto-113T-filler         PIC  x(35).
+                   20 sto-emto-114T-filler         PIC  x(35).
+                   20 sto-emto-115T-filler         PIC  x(35).
+                   20 sto-emto-116T-filler         PIC  x(35).
+                   20 sto-emto-117T-filler         PIC  x(35).
+                   20 sto-emto-118T-filler         PIC  x(35).
+                   20 sto-emto-119T-filler         PIC  x(35).
+                   20 sto-emto-120T-filler         PIC  x(35).
+                   20 sto-emto-121T-filler         PIC  x(35).
+                   20 sto-emto-122T-filler         PIC  x(35).
+                   20 sto-emto-123T-filler         PIC  x(35).
+                   20 sto-emto-124T-filler         PIC  x(35).
+                   20 sto-emto-125T-filler         PIC  x(35).
+                   20 sto-emto-126T-filler         PIC  x(35).
+                   20 sto-emto-127T-filler         PIC  x(35).
+                   20 sto-emto-128T-filler         PIC  x(35).
+                   20 sto-emto-129T-filler         PIC  x(35).
+                   20 sto-emto-130T-filler         PIC  x(35).
+                   20 sto-emto-131T-filler         PIC  x(35).
+                   20 sto-emto-132T-filler         PIC  x(35).
+                   20 sto-emto-133T-filler         PIC  x(35).
+                   20 sto-emto-134T-filler         PIC  x(35).
+                   20 sto-emto-135T-filler         PIC  x(35).
+                   20 sto-emto-136T-filler         PIC  x(35).
+                   20 sto-emto-137T-filler         PIC  x(35).
+                   20 sto-emto-138T-filler         PIC  x(35).
+                   20 sto-emto-139T-filler         PIC  x(35).
+                   20 sto-emto-140T-filler         PIC  x(35).
+                   20 sto-emto-141T-filler         PIC  x(35).
+                   20 sto-emto-142T-filler         PIC  x(35).
+                   20 sto-emto-143T-filler         PIC  x(35).
+                   20 sto-emto-144T-filler         PIC  x(35).
+                   20 sto-emto-145T-filler         PIC  x(35).
+                   20 sto-emto-146T-filler         PIC  x(35).
+                   20 sto-emto-147T-filler         PIC  x(35).
+                   20 sto-emto-148T-filler         PIC  x(35).
+                   20 sto-emto-149T-filler         PIC  x(35).
+                   20 sto-emto-150T-filler         PIC  x(35).
+                   20 sto-emto-151T-filler         PIC  x(35).
+                   20 sto-emto-152T-filler         PIC  x(35).
+                   20 sto-emto-153T-filler         PIC  x(35).
+                   20 sto-emto-154T-filler         PIC  x(35).
+                   20 sto-emto-155T-filler         PIC  x(35).
+                   20 sto-emto-156T-filler         PIC  x(35).
+                   20 sto-emto-157T-filler         PIC  x(35).
+                   20 sto-emto-158T-filler         PIC  x(35).
+                   20 sto-emto-159T-filler         PIC  x(35).
+                   20 sto-emto-160T-filler         PIC  x(35).
+                   20 sto-emto-161T-filler         PIC  x(35).
+                   20 sto-emto-162T-filler         PIC  x(35).
+                   20 sto-emto-01T163-TOD-CODCOST  PIC  x(3).
+                   20 sto-filler       PIC  x(501).
+               15 sto-emto-bloc-forzato        PIC  9.
+                   88 sto-emto-bloc-forzato-si VALUE IS 1. 
+                   88 sto-emto-bloc-forzato-no VALUE IS 0. 
+               15 sto-emto-Sum     PIC  9(12)v999.
+               15 sto-emto-evadi-dal           PIC  9(8).
+      *L'inversione viene impostata solo per clienti tradizionali, quindi conservo il valore nel campo 60 ma poi uso questo
+      *
+               15 sto-emto-inversione-imposte  PIC  9.
+                   88 sto-emto-inversione-imposte-si VALUE IS 1. 
+                   88 sto-emto-inversione-imposte-no VALUE IS 0. 
+               15 FILLER           PIC  x(175).

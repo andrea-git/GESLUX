@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=bprepb-Ev-Before-Program
 AFTER_PROGRAM=accetordforn-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E59B10338-407-59065973
+PROGRAM_UNIQUE_CODE=TOTEM-7E59B144759-788-130317477
 
 {{@DESCRIPTION:
 
@@ -1371,7 +1371,7 @@ Begin Screen scr-elab
    Height in Cells   = TRUE
    Help ID           = 1
    Label Offset      = 0
-   Lines             = 60,00
+   Lines             = 68,00
    Link To Thread    = TRUE
    Max Lines         = 0,00
    Max Size          = 0,00
@@ -1429,7 +1429,7 @@ Begin Screen scr-elab
    End
    Begin Push-Button pb-fatto
       SCREEN-COL        = 19,00
-      SCREEN-LINE       = 56,90
+      SCREEN-LINE       = 64,90
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = pb-fatto
@@ -1454,7 +1454,7 @@ Begin Screen scr-elab
       Height in Cells   = FALSE
       Help ID           = 0
       ID                = 500
-      Line              = 56,90
+      Line              = 64,90
       Lines             = 3,70
       Lines in Pixels   = 30
       Lines Unit        = Default
