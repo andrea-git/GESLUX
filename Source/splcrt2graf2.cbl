@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          splcrt2graf2.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 1 luglio 2019 13:38:56.
+       DATE-WRITTEN.        sabato 11 settembre 2021 12:35:18.
        REMARKS.
       *{TOTEM}END
 
@@ -39,11 +39,11 @@
 
        WORKING-STORAGE      SECTION.
       *{TOTEM}ACU-DEF
-               COPY "ACUGUI.DEF".
-               COPY "ACUCOBOL.DEF".
-               COPY "FONTS.DEF".
-               COPY "CRTVARS.DEF".
-               COPY "SHOWMSG.DEF".
+               COPY "acugui.def".
+               COPY "acucobol.def".
+               COPY "fonts.def".
+               COPY "crtvars.def".
+               COPY "showmsg.def".
                COPY "totem.def".
                COPY "standard.def".
       *{TOTEM}END
@@ -155,7 +155,7 @@
        77 STATUS-Form3-FLAG-REFRESH PIC  9.
           88 Form3-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-STA-INPUT-STA-splcrt2graf-BUF     PIC X(900).
-       77 TMP-STA-INPUT-lineseq-BUF     PIC X(900).
+       77 TMP-STA-INPUT-lineseq-BUF     PIC X(1000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.

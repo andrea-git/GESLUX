@@ -4880,7 +4880,7 @@
                                    giving return-code
            when 6                                          
                 call "WIN$PRINTER"  using winprint-set-data-columns,
-                                          6, 16, 24, 42, 77
+                                          6, 18, 26, 44, 79
                                    giving return-code
                                                                  
                 if spl-logo = "N"                              

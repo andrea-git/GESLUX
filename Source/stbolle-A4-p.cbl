@@ -340,7 +340,7 @@ LUBEXX     88 si-stampante-bolle-default value "S", "s".
                                    value "Bolle collegate".
        01 st-testa.
          03 st-cod-cli             pic z(5).
-         03 st-num-ord-cli         pic x(10) justified right.
+         03 st-num-ord-cli         pic x(12).
          03 st-data-ordine         pic x(8).
          03 st-causale             pic x(18).
          03 st-collegate           pic x(35).
