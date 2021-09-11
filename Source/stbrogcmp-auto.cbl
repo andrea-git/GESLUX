@@ -180,14 +180,14 @@
            05 filler             pic x(2).
            05 filler             pic x(7)  value "Ord Cli".
            05 filler             pic x(1).
-           05 t1-num-ord-cli     pic x(10).
+           05 t1-num-ord-cli     pic x(12).
            05 filler             pic x(5)  value space.|"Bolla".
            05 filler             pic x(3).
            05 t1-bolla-ord       pic z(8).
            05 filler             pic x(2).
            05 t1-datbolla-ord    pic x(8).
            05 filler             pic x(2).
-           05 filler             pic x(7)  value space.|"Fattura".
+           05 filler             pic x(5)  value space.|"Fattura".
            05 filler             pic x(2).
            05 t1-fattura-ord     pic z(8).
            05 filler             pic x(2).

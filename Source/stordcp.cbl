@@ -252,7 +252,7 @@ LUBEXX 78  MaxRowsPerPage                value    26.
            05 r-cod-cli       pic Z(5).
            05 filler          pic X(5)  value spaces.
            05 filler          pic X(2)  value "N.".
-           05 r-num-ord-cli   pic X(10).
+           05 r-num-ord-cli   pic X(12).
            05 filler          pic X(2)  value spaces.
            05 filler          pic X(4)  value "DEL".
            05 r-data.                   

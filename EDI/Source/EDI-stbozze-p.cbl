@@ -108,7 +108,7 @@
 
        01  t4.
          05 filler               pic x(21) value "Dati Ordine GESLUX :".
-         05 t4-numero            pic z(10).
+         05 t4-numero            pic z(12).
          05 filler               pic x(5)  value " del ".
          05 t4-del               pic x(10).
          05 filler               pic x(3)  value " - ".
@@ -120,7 +120,7 @@
 
        01  t4b.
          05 filler               pic x(21) value "Dati import EDI....:".
-         05 t4b-numero           pic z(10).
+         05 t4b-numero           pic z(12).
          05 filler               pic x(5)  value " del ".
          05 t4b-del              pic x(10).
          05 filler               pic x(3)  value " - ".
@@ -132,7 +132,7 @@
 
        01  t5.
          05 filler               pic x(21) value "Dati Bozza EDI.....:".
-         05 t5-num-ord-cli       pic x(10).
+         05 t5-num-ord-cli       pic x(12).
          05 filler               pic x(5)  value " del ".
          05 t5-del               pic x(10).
          05 filler               pic x(3).

@@ -332,7 +332,7 @@ LUBEXX     88 si-stampante-bolle-default value "S", "s".
          03 filler                 pic x(2).
          03 st-cod-cli             pic z(5).
          03 filler                 pic x(3).
-         03 st-num-ord-cli         pic x(50) justified right.
+         03 st-num-ord-cli         pic x(12).
          03 filler                 pic x.
          03 st-data-ordine         pic x(8).
          03 filler                 pic x(1).

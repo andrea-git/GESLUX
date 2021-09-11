@@ -810,10 +810,10 @@
                 when "stfatt-p"
                      call "win$printer"  using winprint-set-data-columns
                                           | 10, 8,  8,  8, 11, 16
-                                               11, 19, 27, 35, 49
+                                               13, 21, 29, 37, 51
                                         giving return-code
                                         
-                     move 0,5             to    winprint-col-start
+                     move 0,3             to    winprint-col-start
                      call "WIN$PRINTER"   using winprint-set-page-column 
                                                 winprint-column
                                          giving return-code
@@ -4643,7 +4643,7 @@
 
            when 4          
                 call "WIN$PRINTER"  using winprint-set-data-columns,
-                                          1, 8, 21, 30, 49, 83 
+                                          1, 8, 23, 32, 51, 85 
                                    giving return-code
                                    
                 move wprtalign-left   to winprint-col-alignment

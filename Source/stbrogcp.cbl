@@ -140,7 +140,8 @@ LUBEXX     88  StampaPrenotate   value 1, false 0.
            05 filler             pic x(2).
            05 filler             pic x(7)  value "Ord Cli".
            05 filler             pic x(1).
-           05 t1-num-ord-cli     pic x(10).
+           05 t1-num-ord-cli     pic x(12).
+           05 filler             pic x(1).  
            05 filler             pic x(5)  value "Bolla".
            05 filler             pic x(3).
            05 t1-bolla-ord       pic z(8).
@@ -150,9 +151,9 @@ LUBEXX     88  StampaPrenotate   value 1, false 0.
            05 filler             pic x(7)  value "Fattura".
            05 filler             pic x(2).
            05 t1-fattura-ord     pic z(8).
-           05 filler             pic x(2).
+           05 filler             pic x(1).
            05 t1-datfattura-ord  pic x(8).
-           05 filler             pic x(21) value "  Blocco 500 Kg UTF".
+           05 filler             pic x(19) value " Blocco 500 Kg UTF".
            05 t1-blocco-500      pic x(2).
 
        01  testata-2-ord.
