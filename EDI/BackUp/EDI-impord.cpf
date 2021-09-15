@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E561C205342-197-1334525583
+PROGRAM_UNIQUE_CODE=TOTEM-7E59F95044-331-228075464
 
 {{@DESCRIPTION:
 
@@ -982,7 +982,7 @@ BEGIN-TEXT
               cancel "EDI-impord-p"
               open extend log-macrobatch
            end-if.                                 
-           if batch-status = -1
+           if batch-status not = 0
               if RichiamoBatch
                  call   "set-ini-log" using r-output
                  cancel "set-ini-log"

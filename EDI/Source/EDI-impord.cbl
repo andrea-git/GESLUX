@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-impord.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 28 giugno 2021 22:54:33.
+       DATE-WRITTEN.        mercoledì 15 settembre 2021 11:52:28.
        REMARKS.
       *{TOTEM}END
 
@@ -960,7 +960,7 @@
               cancel "EDI-impord-p"
               open extend log-macrobatch
            end-if.                                 
-           if batch-status = -1
+           if batch-status not = 0
               if RichiamoBatch
                  call   "set-ini-log" using r-output
                  cancel "set-ini-log"

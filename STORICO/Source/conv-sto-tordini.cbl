@@ -11,7 +11,7 @@
        copy "STO-tordini.sl".
 
        SELECT STO-tordini-old
-           ASSIGN       TO  "STO-tordini-old"
+           ASSIGN       TO  "tordini-old"
            ORGANIZATION IS INDEXED
            ACCESS MODE  IS DYNAMIC
            LOCK MODE    IS MANUAL
@@ -232,6 +232,7 @@
        77  scelta               pic 9.
        77  path-archivi         pic x(1200).
        77  PATH-STO-TORDINI     pic x(1200).
+       77  filePrefix           pic x(1000).
 
       ******************************************************************
        PROCEDURE DIVISION.     
@@ -242,6 +243,7 @@
            COPY "DECLXER2".
 
        MAIN-PRG.         
+           accept filePrefix from environment "FILE_PREFIX".
            accept path-archivi from environment "PATH_ARCHIVI_STO".
            set environment "FILE_PREFIX" to path-archivi.
            inspect path-archivi replacing trailing spaces by low-value.
@@ -251,17 +253,19 @@
            end-string.
 
            display message box
-                         "Confermi la conversione del file STO-tordini?"
+                     "Confermi la conversione del file STORICO tordini?"
                           x"0D0A"
                           "Prima di procedere con la conversione"
                           x"0D0A"
                           "rinominare il file "
                           x"22"
-                          "sto-tordini"
+                          "tordini"
                           x"22"
                           " in "
                           x"22"
-                          "sto-tordini-old"
+                          "tordini-old"
+                          x"22"
+                          "nella cartella Archivi-STO"
                           x"22"
                           "."
                           type mb-yes-no
@@ -271,7 +275,8 @@
            if scelta = mb-yes
               perform CONVERSIONE
            end-if.
-
+                  
+           set environment "FILE_PREFIX" to filePrefix.
            goback.
 
 

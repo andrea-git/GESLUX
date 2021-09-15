@@ -807,8 +807,8 @@
                        end-if
                     else                   
                        initialize como-riga
-                       string "BACKUP RIUSCITO: " delimited size
-                              file-backup         delimited low-value
+                       string "COMANDO BACKUP RIUSCITO: " delimited size
+                              file-backup            delimited low-value
                          into como-riga
                        end-string
                        perform SCRIVI-RIGA-LOG
@@ -836,7 +836,7 @@
                           initialize cmd
                           inspect file-backup 
                                   replacing trailing spaces by low-value
-                          string "move "     delimited size
+                          string "copy "     delimited size
                                  file-backup delimited low-value
                                  " "         delimited size
                                  file-import delimited size
@@ -853,11 +853,28 @@
                           call "C$SYSTEM" using cmd, 225
                                          giving status-call
                           if status-call = 0
-                             move "RIPRISTINO OK" to como-riga
+                             move "COMANDO RIPRISTINO OK" to como-riga
                              perform SCRIVI-RIGA-LOG
+
+                             move file-import to wstampa 
+                             perform 5 times
+                                call "C$SLEEP" using 2
+                                open input lineseq
+                                if status-lineseq = "00"
+                                   close lineseq
+                                   exit perform
+                                end-if                      
+                             end-perform
+                             if status-lineseq not = "00"
+                                move 
+                                "*** RIPRISTINO NON RIUSCITO ***" 
+                                  to como-riga          
+                                perform SCRIVI-RIGA-LOG
+                             end-if
+
                           else
                              move 
-                             "RIPRISTINO OK, ELABORAZIONE INTERROTTA" 
+                             "RIPRISTINO KO, ELABORAZIONE INTERROTTA" 
                                to como-riga          
                              perform SCRIVI-RIGA-LOG
                              move -1 to batch-status  
