@@ -487,7 +487,7 @@ OMAGGI   03 st-qta-oma             pic zz.zzz.zzz.
 
        01  st-ordine-master.
            03 filler               pic x(16) value "Ordine Cliente: ".
-           03 st-om-numordcli      pic x(50).
+           03 st-om-numordcli      pic x(12).
            03 filler               pic x(6)  value " del: ".
            03 st-om-datacli        pic x(10).
            03 filler               pic x(11) value " - Master: ".
