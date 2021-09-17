@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          solleciti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 11 settembre 2021 16:31:18.
+       DATE-WRITTEN.        venerdì 17 settembre 2021 17:13:08.
        REMARKS.
       *{TOTEM}END
 
@@ -819,7 +819,7 @@
            Tab-Control, 
            COL 1,50, 
            LINE 1,00,
-           LINES 31,13 ,
+           LINES 32,88 ,
            SIZE 97,50 ,
            ID IS 65,
            HEIGHT-IN-CELLS,
@@ -878,34 +878,12 @@
            .
 
 
-      * COMBO-BOX
-       10
-           cbo-stato-f, 
-           Combo-Box, 
-           COL 14,00, 
-           LINE 6,12,
-           LINES 7,13 ,
-           SIZE 25,00 ,
-           BOXED,
-           COLOR IS 513,
-           ENABLED 1,
-           FONT IS Arial8B-Occidentale,
-           ID IS 11,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           MASS-UPDATE 0,
-           NOTIFY-SELCHANGE,
-           DROP-LIST,
-           UNSORTED,
-           AFTER PROCEDURE cbo-promoa-AfterProcedure, 
-           BEFORE PROCEDURE cbo-promoa-BeforeProcedure, 
-           .
       * ENTRY FIELD
        10
            ef-cli, 
            Entry-Field, 
            COL 14,00, 
-           LINE 8,13,
+           LINE 6,25,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -924,7 +902,7 @@
            ef-dest, 
            Entry-Field, 
            COL 14,00, 
-           LINE 10,00,
+           LINE 8,13,
            LINES 1,33 ,
            SIZE 7,00 ,
            BOXED,
@@ -944,7 +922,7 @@
            ef-age, 
            Entry-Field, 
            COL 14,00, 
-           LINE 13,75,
+           LINE 11,88,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -963,7 +941,7 @@
            ef-gdo, 
            Entry-Field, 
            COL 14,00, 
-           LINE 17,00,
+           LINE 15,13,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -983,14 +961,14 @@
            cbo-promoa, 
            Combo-Box, 
            COL 14,00, 
-           LINE 19,06,
+           LINE 17,19,
            LINES 7,13 ,
            SIZE 53,13 ,
            BOXED,
            COLOR IS 513,
            ENABLED 1,
            FONT IS Arial8B-Occidentale,
-           ID IS 11,
+           ID IS 256,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            MASS-UPDATE 0,
@@ -1005,7 +983,7 @@
            ef-tipo, 
            Entry-Field, 
            COL 14,00, 
-           LINE 22,63,
+           LINE 20,75,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -1024,7 +1002,7 @@
            ef-art, 
            Entry-Field, 
            COL 14,00, 
-           LINE 26,25,
+           LINE 24,38,
            LINES 1,31 ,
            SIZE 6,00 ,
            BOXED,
@@ -1038,12 +1016,34 @@
            .
 
 
+      * COMBO-BOX
+       10
+           cbo-stato-f, 
+           Combo-Box, 
+           COL 14,00, 
+           LINE 26,63,
+           LINES 6,69 ,
+           SIZE 25,00 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED 1,
+           FONT IS Arial8B-Occidentale,
+           ID IS 11,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           MASS-UPDATE 0,
+           NOTIFY-SELCHANGE,
+           DROP-LIST,
+           UNSORTED,
+           AFTER PROCEDURE cbo-promoa-AfterProcedure, 
+           BEFORE PROCEDURE cbo-promoa-BeforeProcedure, 
+           .
       * FRAME
        10
            Screen1-Fr-1a, 
            Frame, 
            COL 2,00, 
-           LINE 28,88,
+           LINE 30,63,
            LINES 3,00 ,
            SIZE 96,50 ,
            COLOR IS 2,
@@ -1057,7 +1057,7 @@
            PB-ESEGUI, 
            Push-Button, 
            COL 78,13, 
-           LINE 29,50,
+           LINE 31,25,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE OK_73X21-BMP,
@@ -1080,7 +1080,7 @@
            pb-cancel, 
            Push-Button, 
            COL 88,00, 
-           LINE 29,50,
+           LINE 31,25,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE CANCEL_73X21-BMP,
@@ -1103,7 +1103,7 @@
            Screen1-La-2ab, 
            Label, 
            COL 5,00, 
-           LINE 8,13,
+           LINE 6,25,
            LINES 1,31 ,
            SIZE 8,00 ,
            ID IS 242,
@@ -1118,7 +1118,7 @@
            Screen1-La-2aab, 
            Label, 
            COL 5,00, 
-           LINE 10,00,
+           LINE 8,13,
            LINES 1,33 ,
            SIZE 8,00 ,
            ID IS 244,
@@ -1177,7 +1177,7 @@
            lab-cli, 
            Label, 
            COL 22,00, 
-           LINE 8,13,
+           LINE 6,25,
            LINES 1,31 ,
            SIZE 60,00 ,
            COLOR IS 5,
@@ -1194,7 +1194,7 @@
            lab-dest, 
            Label, 
            COL 22,00, 
-           LINE 10,00,
+           LINE 8,13,
            LINES 1,31 ,
            SIZE 60,00 ,
            COLOR IS 5,
@@ -1211,7 +1211,7 @@
            Screen1-La-2aba, 
            Label, 
            COL 5,00, 
-           LINE 13,75,
+           LINE 11,88,
            LINES 1,33 ,
            SIZE 8,00 ,
            ID IS 253,
@@ -1226,11 +1226,11 @@
            lab-age, 
            Label, 
            COL 22,00, 
-           LINE 13,75,
+           LINE 11,88,
            LINES 1,31 ,
            SIZE 60,00 ,
            COLOR IS 5,
-           ID IS 256,
+           ID IS 257,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            NO-KEY-LETTER,
@@ -1243,10 +1243,10 @@
            Screen1-La-2abaa, 
            Label, 
            COL 5,00, 
-           LINE 26,25,
+           LINE 24,38,
            LINES 1,31 ,
            SIZE 8,00 ,
-           ID IS 257,
+           ID IS 258,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1258,11 +1258,11 @@
            lab-art, 
            Label, 
            COL 21,00, 
-           LINE 26,25,
+           LINE 24,38,
            LINES 1,31 ,
            SIZE 60,00 ,
            COLOR IS 5,
-           ID IS 258,
+           ID IS 259,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            NO-KEY-LETTER,
@@ -1275,10 +1275,10 @@
            Screen1-La-2abaaa, 
            Label, 
            COL 5,00, 
-           LINE 19,06,
+           LINE 17,19,
            LINES 1,31 ,
            SIZE 8,00 ,
-           ID IS 259,
+           ID IS 260,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1290,21 +1290,7 @@
            Screen1-Br-1, 
            Bar,
            COL 5,25, 
-           LINE 12,31,
-           SIZE 90,00 ,
-           COLOR IS 2,
-           ID IS 260,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           WIDTH 1,
-           .
-
-      * BAR
-       10
-           Screen1-Br-1a, 
-           Bar,
-           COL 5,25, 
-           LINE 21,69,
+           LINE 10,44,
            SIZE 90,00 ,
            COLOR IS 2,
            ID IS 261,
@@ -1315,10 +1301,24 @@
 
       * BAR
        10
+           Screen1-Br-1a, 
+           Bar,
+           COL 5,25, 
+           LINE 19,81,
+           SIZE 90,00 ,
+           COLOR IS 2,
+           ID IS 262,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           WIDTH 1,
+           .
+
+      * BAR
+       10
            Screen1-Br-1b, 
            Bar,
            COL 5,25, 
-           LINE 16,06,
+           LINE 14,19,
            SIZE 90,00 ,
            COLOR IS 2,
            ID IS 15,
@@ -1332,7 +1332,7 @@
            Screen1-La-2abab, 
            Label, 
            COL 5,00, 
-           LINE 17,00,
+           LINE 15,13,
            LINES 1,33 ,
            SIZE 8,00 ,
            ID IS 16,
@@ -1347,7 +1347,7 @@
            lab-gdo, 
            Label, 
            COL 22,00, 
-           LINE 17,00,
+           LINE 15,13,
            LINES 1,31 ,
            SIZE 60,00 ,
            COLOR IS 5,
@@ -1364,7 +1364,7 @@
            Screen1-La-2ababa, 
            Label, 
            COL 5,00, 
-           LINE 22,25,
+           LINE 20,38,
            LINES 2,13 ,
            SIZE 8,00 ,
            ID IS 18,
@@ -1379,7 +1379,7 @@
            lab-tipo, 
            Label, 
            COL 22,00, 
-           LINE 22,63,
+           LINE 20,75,
            LINES 1,31 ,
            SIZE 60,00 ,
            COLOR IS 5,
@@ -1396,7 +1396,7 @@
            Screen1-Br-1ab, 
            Bar,
            COL 5,25, 
-           LINE 24,81,
+           LINE 22,94,
            SIZE 90,00 ,
            COLOR IS 2,
            ID IS 20,
@@ -1410,7 +1410,7 @@
            Screen1-Br-1aaa, 
            Bar,
            COL 5,25, 
-           LINE 25,06,
+           LINE 23,19,
            SIZE 90,00 ,
            COLOR IS 2,
            ID IS 14,
@@ -1424,10 +1424,10 @@
            Screen1-La-2abaaaa, 
            Label, 
            COL 5,00, 
-           LINE 6,19,
+           LINE 26,75,
            LINES 1,31 ,
            SIZE 8,00 ,
-           ID IS 259,
+           ID IS 21,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -7223,11 +7223,11 @@
 
 
       * COMBO-BOX
-       cbo-stato-f-Content.
+       cbo-promoa-Content.
            .
 
       * COMBO-BOX
-       cbo-promoa-Content.
+       cbo-stato-f-Content.
            .
 
       * GRID
@@ -7536,7 +7536,7 @@
 
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 31,13,
+              LINES 32,88,
               SIZE 98,00,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
@@ -7701,9 +7701,9 @@
            MOVE 1 TO Screen1-Pg-2-Visible
            PERFORM Screen1-Ta-1-TABCHANGE
       * COMBO-BOX
-           PERFORM cbo-stato-f-Content
-      * COMBO-BOX
            PERFORM cbo-promoa-Content
+      * COMBO-BOX
+           PERFORM cbo-stato-f-Content
            .
 
        Form1-Init-Value.

@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=bprepb-Ev-Before-Program
 AFTER_PROGRAM=stdoc-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E59F213318-215-1364325704
+PROGRAM_UNIQUE_CODE=TOTEM-7E5911151037-323-2519719556
 
 {{@DESCRIPTION:
 
@@ -5609,7 +5609,7 @@ Begin Screen Form1
    Height in Cells   = TRUE
    Help ID           = 0
    Label Offset      = 20
-   Lines             = 31,13
+   Lines             = 32,88
    Link To Thread    = TRUE
    Max Lines         = 0,00
    Max Size          = 0,00
@@ -5651,7 +5651,7 @@ Begin Screen Form1
       Help ID           = 0
       ID                = 65
       Line              = 1,00
-      Lines             = 31,13
+      Lines             = 32,88
       Lines Unit        = Default
       Multiline         = FALSE
       Next Tab Key      = KT
@@ -5792,52 +5792,9 @@ Begin Screen Form1
             Before Procedure  = EF-DATA-TO-BeforeProcedure
             After Procedure   = EF-DATA-TO-AfterProcedure
          End
-         Begin Combo-Box cbo-stato-f
-            SCREEN-COL        = 14,00
-            SCREEN-LINE       = 6,12
-            LOCK-CONTROL      = TRUE
-            LEVEL             = 10
-            (Name)            = cbo-stato-f
-            Border            = Boxed
-            Case              = Mixed
-            Clines            = 0
-            Clines Unit       = Default
-            Color             = 513
-            Column            = 13,00
-            Csize             = 0
-            Csize Unit        = Default
-            Destroy Type      = Automatic
-            Enable            = TRUE
-            Exception Value   = 0
-            Font              = Arial/8/B/C0/@Occidentale
-            Font Variable     = Arial8B-Occidentale
-            Height in Cells   = TRUE
-            Help ID           = 0
-            ID                = 11
-            Line              = 4,56
-            Lines             = 7,13
-            Lines Unit        = Default
-            Mass Update       = 0:Fast-Update
-            Max Text          = 0
-            No Tab            = FALSE
-            Notify DblClick   = FALSE
-            Notify SelChange  = TRUE
-            Occurs            = 0
-            Size              = 25,00
-            Size Unit         = Default
-            Style             = Drop List
-            Tab Order         = 3
-            Termination Value = 0
-            Unsorted          = TRUE
-            Value Container   = cbo-stato-f-buf
-            Visible           = NONE
-            Width in Cells    = TRUE
-            Before Procedure  = cbo-promoa-BeforeProcedure
-            After Procedure   = cbo-promoa-AfterProcedure
-         End
          Begin Entry-Field ef-cli
             SCREEN-COL        = 14,00
-            SCREEN-LINE       = 8,13
+            SCREEN-LINE       = 6,25
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-cli
@@ -5863,7 +5820,7 @@ Begin Screen Form1
             ID                = 234
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 6,56
+            Line              = 4,69
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -5881,7 +5838,7 @@ Begin Screen Form1
             Size              = 7,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 4
+            Tab Order         = 3
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -5895,7 +5852,7 @@ Begin Screen Form1
          End
          Begin Entry-Field ef-dest
             SCREEN-COL        = 14,00
-            SCREEN-LINE       = 10,00
+            SCREEN-LINE       = 8,13
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-dest
@@ -5922,7 +5879,7 @@ Begin Screen Form1
             ID                = 235
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 8,44
+            Line              = 6,56
             Lines             = 1,33
             Lines Unit        = Default
             Max Lines         = 0
@@ -5940,7 +5897,7 @@ Begin Screen Form1
             Size              = 7,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 5
+            Tab Order         = 4
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -5954,7 +5911,7 @@ Begin Screen Form1
          End
          Begin Entry-Field ef-age
             SCREEN-COL        = 14,00
-            SCREEN-LINE       = 13,75
+            SCREEN-LINE       = 11,88
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-age
@@ -5980,7 +5937,7 @@ Begin Screen Form1
             ID                = 254
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 12,19
+            Line              = 10,31
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -5998,7 +5955,7 @@ Begin Screen Form1
             Size              = 7,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 6
+            Tab Order         = 5
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -6012,7 +5969,7 @@ Begin Screen Form1
          End
          Begin Entry-Field ef-gdo
             SCREEN-COL        = 14,00
-            SCREEN-LINE       = 17,00
+            SCREEN-LINE       = 15,13
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-gdo
@@ -6038,7 +5995,7 @@ Begin Screen Form1
             ID                = 255
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 15,44
+            Line              = 13,56
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -6056,7 +6013,7 @@ Begin Screen Form1
             Size              = 7,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 7
+            Tab Order         = 6
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -6070,7 +6027,7 @@ Begin Screen Form1
          End
          Begin Combo-Box cbo-promoa
             SCREEN-COL        = 14,00
-            SCREEN-LINE       = 19,06
+            SCREEN-LINE       = 17,19
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = cbo-promoa
@@ -6089,8 +6046,8 @@ Begin Screen Form1
             Font Variable     = Arial8B-Occidentale
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 11
-            Line              = 17,50
+            ID                = 256
+            Line              = 15,63
             Lines             = 7,13
             Lines Unit        = Default
             Mass Update       = 0:Fast-Update
@@ -6102,7 +6059,7 @@ Begin Screen Form1
             Size              = 53,13
             Size Unit         = Default
             Style             = Drop List
-            Tab Order         = 8
+            Tab Order         = 7
             Termination Value = 0
             Unsorted          = TRUE
             Value Container   = cbo-promo-buf
@@ -6113,7 +6070,7 @@ Begin Screen Form1
          End
          Begin Entry-Field ef-tipo
             SCREEN-COL        = 14,00
-            SCREEN-LINE       = 22,63
+            SCREEN-LINE       = 20,75
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-tipo
@@ -6139,7 +6096,7 @@ Begin Screen Form1
             ID                = 12
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 21,06
+            Line              = 19,19
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -6157,7 +6114,7 @@ Begin Screen Form1
             Size              = 7,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 9
+            Tab Order         = 8
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -6171,7 +6128,7 @@ Begin Screen Form1
          End
          Begin Entry-Field ef-art
             SCREEN-COL        = 14,00
-            SCREEN-LINE       = 26,25
+            SCREEN-LINE       = 24,38
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-art
@@ -6197,7 +6154,7 @@ Begin Screen Form1
             ID                = 13
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 24,69
+            Line              = 22,81
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -6215,7 +6172,7 @@ Begin Screen Form1
             Size              = 6,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 10
+            Tab Order         = 9
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -6227,9 +6184,52 @@ Begin Screen Form1
             Before Procedure  = ef-cli-BeforeProcedure
             After Procedure   = ef-cli-AfterProcedure
          End
+         Begin Combo-Box cbo-stato-f
+            SCREEN-COL        = 14,00
+            SCREEN-LINE       = 26,63
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = cbo-stato-f
+            Border            = Boxed
+            Case              = Mixed
+            Clines            = 0
+            Clines Unit       = Default
+            Color             = 513
+            Column            = 13,00
+            Csize             = 0
+            Csize Unit        = Default
+            Destroy Type      = Automatic
+            Enable            = TRUE
+            Exception Value   = 0
+            Font              = Arial/8/B/C0/@Occidentale
+            Font Variable     = Arial8B-Occidentale
+            Height in Cells   = TRUE
+            Help ID           = 0
+            ID                = 11
+            Line              = 25,06
+            Lines             = 6,69
+            Lines Unit        = Default
+            Mass Update       = 0:Fast-Update
+            Max Text          = 0
+            No Tab            = FALSE
+            Notify DblClick   = FALSE
+            Notify SelChange  = TRUE
+            Occurs            = 0
+            Size              = 25,00
+            Size Unit         = Default
+            Style             = Drop List
+            Tab Order         = 10
+            Termination Value = 0
+            Unsorted          = TRUE
+            Value Container   = cbo-stato-f-buf
+            Visible           = NONE
+            Width in Cells    = TRUE
+            Before Procedure  = cbo-promoa-BeforeProcedure
+            After Procedure   = cbo-promoa-AfterProcedure
+         End
          Begin Frame Screen1-Fr-1a
             SCREEN-COL        = 2,00
-            SCREEN-LINE       = 28,88
+            SCREEN-LINE       = 30,63
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Screen1-Fr-1a
@@ -6248,7 +6248,7 @@ Begin Screen Form1
             Help ID           = 0
             High Color        = 0
             ID                = 239
-            Line              = 27,31
+            Line              = 29,06
             Lines             = 3,00
             Lines Unit        = Default
             Low Color         = 0
@@ -6261,7 +6261,7 @@ Begin Screen Form1
             Width in Cells    = TRUE
             Begin Push-Button PB-ESEGUI
                SCREEN-COL        = 78,13
-               SCREEN-LINE       = 29,50
+               SCREEN-LINE       = 31,25
                LOCK-CONTROL      = TRUE
                LEVEL             = 15
                (Name)            = PB-ESEGUI
@@ -6309,7 +6309,7 @@ Begin Screen Form1
             End
             Begin Push-Button pb-cancel
                SCREEN-COL        = 88,00
-               SCREEN-LINE       = 29,50
+               SCREEN-LINE       = 31,25
                LOCK-CONTROL      = TRUE
                LEVEL             = 15
                (Name)            = pb-cancel
@@ -6357,7 +6357,7 @@ Begin Screen Form1
          End
          Begin Label Screen1-La-2ab
             SCREEN-COL        = 5,00
-            SCREEN-LINE       = 8,13
+            SCREEN-LINE       = 6,25
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Screen1-La-2ab
@@ -6375,7 +6375,7 @@ Begin Screen Form1
             ID                = 242
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 6,56
+            Line              = 4,69
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -6390,7 +6390,7 @@ Begin Screen Form1
          End
          Begin Label Screen1-La-2aab
             SCREEN-COL        = 5,00
-            SCREEN-LINE       = 10,00
+            SCREEN-LINE       = 8,13
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Screen1-La-2aab
@@ -6408,7 +6408,7 @@ Begin Screen Form1
             ID                = 244
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 8,44
+            Line              = 6,56
             Lines             = 1,33
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -6522,7 +6522,7 @@ Begin Screen Form1
          End
          Begin Label lab-cli
             SCREEN-COL        = 22,00
-            SCREEN-LINE       = 8,13
+            SCREEN-LINE       = 6,25
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-cli
@@ -6540,7 +6540,7 @@ Begin Screen Form1
             ID                = 248
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 6,56
+            Line              = 4,69
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = TRUE
@@ -6556,7 +6556,7 @@ Begin Screen Form1
          End
          Begin Label lab-dest
             SCREEN-COL        = 22,00
-            SCREEN-LINE       = 10,00
+            SCREEN-LINE       = 8,13
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-dest
@@ -6574,7 +6574,7 @@ Begin Screen Form1
             ID                = 249
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 8,44
+            Line              = 6,56
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = TRUE
@@ -6591,7 +6591,7 @@ Begin Screen Form1
          End
          Begin Label Screen1-La-2aba
             SCREEN-COL        = 5,00
-            SCREEN-LINE       = 13,75
+            SCREEN-LINE       = 11,88
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Screen1-La-2aba
@@ -6609,7 +6609,7 @@ Begin Screen Form1
             ID                = 253
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 12,19
+            Line              = 10,31
             Lines             = 1,33
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -6624,7 +6624,7 @@ Begin Screen Form1
          End
          Begin Label lab-age
             SCREEN-COL        = 22,00
-            SCREEN-LINE       = 13,75
+            SCREEN-LINE       = 11,88
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-age
@@ -6639,10 +6639,10 @@ Begin Screen Form1
             Font              = Default Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 256
+            ID                = 257
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 12,19
+            Line              = 10,31
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = TRUE
@@ -6658,7 +6658,7 @@ Begin Screen Form1
          End
          Begin Label Screen1-La-2abaa
             SCREEN-COL        = 5,00
-            SCREEN-LINE       = 26,25
+            SCREEN-LINE       = 24,38
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Screen1-La-2abaa
@@ -6673,10 +6673,10 @@ Begin Screen Form1
             Font              = Default Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 257
+            ID                = 258
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 24,69
+            Line              = 22,81
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -6691,7 +6691,7 @@ Begin Screen Form1
          End
          Begin Label lab-art
             SCREEN-COL        = 21,00
-            SCREEN-LINE       = 26,25
+            SCREEN-LINE       = 24,38
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-art
@@ -6706,10 +6706,10 @@ Begin Screen Form1
             Font              = Default Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 258
+            ID                = 259
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 24,69
+            Line              = 22,81
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = TRUE
@@ -6726,7 +6726,7 @@ Begin Screen Form1
          End
          Begin Label Screen1-La-2abaaa
             SCREEN-COL        = 5,00
-            SCREEN-LINE       = 19,06
+            SCREEN-LINE       = 17,19
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Screen1-La-2abaaa
@@ -6741,10 +6741,10 @@ Begin Screen Form1
             Font              = Default Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 259
+            ID                = 260
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 17,50
+            Line              = 15,63
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -6759,7 +6759,7 @@ Begin Screen Form1
          End
          Begin Bar Screen1-Br-1
             SCREEN-COL        = 5,25
-            SCREEN-LINE       = 12,31
+            SCREEN-LINE       = 10,44
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Screen1-Br-1
@@ -6772,9 +6772,9 @@ Begin Screen Form1
             Destroy Type      = Automatic
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 260
+            ID                = 261
             Kind              = Horizontal
-            Line              = 10,75
+            Line              = 8,88
             Line Styles       = Solid
             Occurs            = 0
             Position Shift    = 0
@@ -6788,7 +6788,7 @@ Begin Screen Form1
          End
          Begin Bar Screen1-Br-1a
             SCREEN-COL        = 5,25
-            SCREEN-LINE       = 21,69
+            SCREEN-LINE       = 19,81
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Screen1-Br-1a
@@ -6801,9 +6801,9 @@ Begin Screen Form1
             Destroy Type      = Automatic
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 261
+            ID                = 262
             Kind              = Horizontal
-            Line              = 20,13
+            Line              = 18,25
             Line Styles       = Solid
             Occurs            = 0
             Position Shift    = 0
@@ -6817,7 +6817,7 @@ Begin Screen Form1
          End
          Begin Bar Screen1-Br-1b
             SCREEN-COL        = 5,25
-            SCREEN-LINE       = 16,06
+            SCREEN-LINE       = 14,19
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Screen1-Br-1b
@@ -6832,7 +6832,7 @@ Begin Screen Form1
             Help ID           = 0
             ID                = 15
             Kind              = Horizontal
-            Line              = 14,50
+            Line              = 12,63
             Line Styles       = Solid
             Occurs            = 0
             Position Shift    = 0
@@ -6846,7 +6846,7 @@ Begin Screen Form1
          End
          Begin Label Screen1-La-2abab
             SCREEN-COL        = 5,00
-            SCREEN-LINE       = 17,00
+            SCREEN-LINE       = 15,13
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Screen1-La-2abab
@@ -6864,7 +6864,7 @@ Begin Screen Form1
             ID                = 16
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 15,44
+            Line              = 13,56
             Lines             = 1,33
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -6879,7 +6879,7 @@ Begin Screen Form1
          End
          Begin Label lab-gdo
             SCREEN-COL        = 22,00
-            SCREEN-LINE       = 17,00
+            SCREEN-LINE       = 15,13
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-gdo
@@ -6897,7 +6897,7 @@ Begin Screen Form1
             ID                = 17
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 15,44
+            Line              = 13,56
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = TRUE
@@ -6913,7 +6913,7 @@ Begin Screen Form1
          End
          Begin Label Screen1-La-2ababa
             SCREEN-COL        = 5,00
-            SCREEN-LINE       = 22,25
+            SCREEN-LINE       = 20,38
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Screen1-La-2ababa
@@ -6931,7 +6931,7 @@ Begin Screen Form1
             ID                = 18
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 20,69
+            Line              = 18,81
             Lines             = 2,13
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -6946,7 +6946,7 @@ Begin Screen Form1
          End
          Begin Label lab-tipo
             SCREEN-COL        = 22,00
-            SCREEN-LINE       = 22,63
+            SCREEN-LINE       = 20,75
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-tipo
@@ -6964,7 +6964,7 @@ Begin Screen Form1
             ID                = 19
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 21,06
+            Line              = 19,19
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = TRUE
@@ -6980,7 +6980,7 @@ Begin Screen Form1
          End
          Begin Bar Screen1-Br-1ab
             SCREEN-COL        = 5,25
-            SCREEN-LINE       = 24,81
+            SCREEN-LINE       = 22,94
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Screen1-Br-1ab
@@ -6995,7 +6995,7 @@ Begin Screen Form1
             Help ID           = 0
             ID                = 20
             Kind              = Horizontal
-            Line              = 23,25
+            Line              = 21,38
             Line Styles       = Solid
             Occurs            = 0
             Position Shift    = 0
@@ -7009,7 +7009,7 @@ Begin Screen Form1
          End
          Begin Bar Screen1-Br-1aaa
             SCREEN-COL        = 5,25
-            SCREEN-LINE       = 25,06
+            SCREEN-LINE       = 23,19
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Screen1-Br-1aaa
@@ -7024,7 +7024,7 @@ Begin Screen Form1
             Help ID           = 0
             ID                = 14
             Kind              = Horizontal
-            Line              = 23,50
+            Line              = 21,63
             Line Styles       = Solid
             Occurs            = 0
             Position Shift    = 0
@@ -7038,8 +7038,8 @@ Begin Screen Form1
          End
          Begin Label Screen1-La-2abaaaa
             SCREEN-COL        = 5,00
-            SCREEN-LINE       = 6,19
-            LOCK-CONTROL      = TRUE
+            SCREEN-LINE       = 26,75
+            LOCK-CONTROL      = FALSE
             LEVEL             = 10
             (Name)            = Screen1-La-2abaaaa
             Clines            = 0
@@ -7053,10 +7053,10 @@ Begin Screen Form1
             Font              = Default Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 259
+            ID                = 21
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 4,63
+            Line              = 25,19
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
