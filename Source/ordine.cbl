@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordine.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 11 settembre 2021 00:07:02.
+       DATE-WRITTEN.        venerdì 17 settembre 2021 14:10:48.
        REMARKS.
       *{TOTEM}END
 
@@ -1175,7 +1175,7 @@
            ID IS 78-ID-ef-num-ord,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           MAX-TEXT 12,
+           MAX-TEXT 50,
            VALUE ef-num-ord-BUF,
            .
 
