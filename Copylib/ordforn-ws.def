@@ -480,6 +480,7 @@
       *
       *
       *
+      *
        01 HiddenKey.
            05 hid-cod-articolo PIC  9(6).
            05 hid-cod-magazzino            PIC  X(3).
@@ -603,7 +604,4 @@
                    15 old-tof-st-dati-fatt         PIC  9.
                        88 old-tof-st-dati-fatt-si VALUE IS 1. 
                        88 old-tof-st-dati-fatt-no VALUE IS 0. 
-                   15 old-tof-num-vuoto-3          PIC  9(13).
-                   15 old-tof-alfa-vuoto-1         PIC  X(20).
-                   15 old-tof-alfa-vuoto-2         PIC  X(20).
-                   15 old-tof-alfa-vuoto-3         PIC  X(20).
+                   15 old-tof-evasione PIC  9(6).

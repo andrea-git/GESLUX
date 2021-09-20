@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          gforn.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        giovedì 22 novembre 2018 13:21:07.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        lunedì 20 settembre 2021 18:13:00.
        REMARKS.
       *{TOTEM}END
 
@@ -78,7 +78,7 @@
                COPY "opensave.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -142,7 +142,7 @@
       * Data.Check-Box
               10 chk-saldi-BUF PIC 9 VALUE ZERO.
       * Data.Entry-Field
-              10 ef-note-BUF PIC X(300).
+              10 ef-note-BUF PIC x(2000).
       * Data.Entry-Field
               10 ef-note-agg-BUF PIC X(256).
       * Data.Radio-Button
@@ -201,6 +201,8 @@
               10 chk-saldi-d-BUF PIC 9 VALUE ZERO.
       * Data.Entry-Field
               10 ef-pag-d-BUF PIC x(3).
+      * Data.Check-Box
+              10 chk-immediata-d-BUF PIC 9 VALUE ZERO.
       * Data.Entry-Field
               10 ef-ref-ord-d-BUF PIC X(30).
       * Data.Entry-Field
@@ -240,9 +242,9 @@
 
        77 TMP-Form1-KEY1-ORDER  PIC X VALUE "A".
        77 TMP-Form1-KEY2-ORDER  PIC X VALUE "A".
-       77 TMP-Form1-clienti-RESTOREBUF  PIC X(1910).
+       77 TMP-Form1-clienti-RESTOREBUF  PIC X(3610).
        77 TMP-Form1-KEYIS  PIC 9(3) VALUE 1.
-       77 Form1-MULKEY-TMPBUF   PIC X(1910).
+       77 Form1-MULKEY-TMPBUF   PIC X(3610).
        77 Form1-KEYISTMP2   PIC X(46).
       * Form1 : PKEY & AKEY'S TEMP BUFFER
        77 Form1-PKEYTMP   PIC X(6).
@@ -260,7 +262,7 @@
        77 TMP-DataSet1-ABI-BUF     PIC X(167).
        77 TMP-DataSet1-tmp-nforn-BUF     PIC X(375).
        77 TMP-DataSet1-nforn-BUF     PIC X(375).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
 
        77 TMP-DataSet1-tmp-nforn-dest-BUF     PIC X(379).
        77 TMP-DataSet1-nforn-dest-BUF     PIC X(379).
@@ -1244,7 +1246,7 @@
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
-           ID IS 16,
+           ID IS 18,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1260,7 +1262,7 @@
            LINES 1,31 ,
            SIZE 9,00 ,
            FONT IS Small-Font,
-           ID IS 18,
+           ID IS 20,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            LEFT,
@@ -1277,7 +1279,7 @@
            LINES 1,31 ,
            SIZE 9,00 ,
            FONT IS Small-Font,
-           ID IS 20,
+           ID IS 21,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1689,7 +1691,7 @@
        10
            Form1-La-8a, 
            Label, 
-           COL 127,66, 
+           COL 127,67, 
            LINE 13,84,
            LINES 1,31 ,
            SIZE 10,00 ,
@@ -2085,6 +2087,24 @@
            VALUE ef-pag-d-BUF,
            .
 
+      * CHECK BOX
+       10
+           chk-immediata-d, 
+           Check-Box, 
+           COL 92,50, 
+           LINE 32,69,
+           LINES 1,46 ,
+           SIZE 2,83 ,
+           ENABLED mod-destini,
+           FLAT,
+           ID IS 76,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           NOTIFY,
+           SELF-ACT,
+           TITLE "Check Box",
+           VALUE chk-immediata-d-BUF,
+            .
       * ENTRY FIELD
        10
            ef-ref-ord-d, 
@@ -2781,7 +2801,7 @@
            EXCEPTION-VALUE 1005,
            FLAT,
            FONT IS Small-Font,
-           ID IS 21,
+           ID IS 45,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            SELF-ACT,
@@ -3014,6 +3034,22 @@
            TITLE lab-pag-d-BUF,
            NO-KEY-LETTER,
            TRANSPARENT,
+           .
+
+      * LABEL
+       10
+           Form1-La-34aaa, 
+           Label, 
+           COL 78,50, 
+           LINE 32,84,
+           LINES 1,31 ,
+           SIZE 12,00 ,
+           FONT IS Small-Font,
+           ID IS 195,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Ev. immediata",
            .
 
       * BAR
@@ -7906,6 +7942,8 @@
       * DB_CHECK BOX
               MOVE 0 TO desf-saldi
       * DB_CHECK BOX
+              MOVE "N" TO desf-ev-immediata
+      * DB_CHECK BOX
               MOVE SPACE TO desf-premio-netto
            MOVE ALL X'9' TO Form1-KEYISTMP2
            MOVE ALL X'9' TO Form1-PKEYTMP
@@ -9353,6 +9391,12 @@
               END-IF
       * DB_Entry-Field : ef-pag-d
            MOVE ef-pag-d-BUF TO desf-pag
+      * DB_CHECK BOX : chk-immediata-d
+              IF chk-immediata-d-BUF = 1
+                 MOVE "S" TO desf-ev-immediata
+              ELSE
+                 MOVE "N" TO desf-ev-immediata
+              END-IF
       * DB_Entry-Field : ef-ref-ord-d
            MOVE ef-ref-ord-d-BUF TO desf-referente-ord
       * DB_Entry-Field : ef-tel-ord-d
@@ -9502,6 +9546,12 @@
               END-IF
       * DB_Entry-Field : ef-pag-d
            MOVE desf-pag TO ef-pag-d-BUF
+      * DB_CHECK BOX : chk-immediata-d
+              IF desf-ev-immediata = "S"
+                 MOVE 1 TO chk-immediata-d-BUF
+              ELSE
+                 MOVE 0 TO chk-immediata-d-BUF
+              END-IF
       * DB_Entry-Field : ef-ref-ord-d
            MOVE desf-referente-ord TO ef-ref-ord-d-BUF
       * DB_Entry-Field : ef-tel-ord-d
@@ -10320,6 +10370,8 @@
            WHEN 5045 MOVE "Selezionare uno stato" to TOTEM-HINT-TEXT
            WHEN 5046 MOVE "Digitare il codice pagamento del destino" to 
            TOTEM-HINT-TEXT
+           WHEN 76 MOVE "Se attivo chiude l'ordine fornitore EXD al mome
+      -    "nto dell'evasione manuale" to TOTEM-HINT-TEXT
            WHEN 5047 MOVE "Digitare il referente" to TOTEM-HINT-TEXT
            WHEN 5048 MOVE "Digitare il numero di telefono diretto" to 
            TOTEM-HINT-TEXT
@@ -10390,6 +10442,7 @@
            When 76 PERFORM Form1-DaCb-1-BeforeProcedure
            When 5045 PERFORM cbo-stato-d-BeforeProcedure
            When 5046 PERFORM ef-pag-d-BeforeProcedure
+           When 76 PERFORM Form1-DaCb-1-BeforeProcedure
            When 5047 PERFORM ef-ref-ord-BeforeProcedure
            When 5048 PERFORM ef-tel-ord-BeforeProcedure
            When 5049 PERFORM ef-perce-premi-BeforeProcedure
@@ -10452,6 +10505,7 @@
            When 5044 PERFORM ef-note-agg-AfterProcedure
            When 76 PERFORM Form1-DaCb-1-AfterProcedure
            When 5046 PERFORM ef-pag-d-AfterProcedure
+           When 76 PERFORM Form1-DaCb-1-AfterProcedure
            When 5047 PERFORM ef-ref-ord-AfterProcedure
            When 5048 PERFORM ef-tel-ord-AfterProcedure
            When 5049 PERFORM ef-perce-premi-AfterProcedure

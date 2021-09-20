@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E59F213256-576-306997628
+PROGRAM_UNIQUE_CODE=TOTEM-7E5914192033-561-510919285
 
 {{@DESCRIPTION:
 
@@ -14410,7 +14410,7 @@ Begin Screen Form1
          Visible Variable  = Form1-Pg-1-Visible
          Begin Data.Entry-Field ef-data
             SCREEN-COL        = 23,17
-            SCREEN-LINE       = 12,08
+            SCREEN-LINE       = 12,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-data
@@ -14473,7 +14473,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-data-cons
             SCREEN-COL        = 62,17
-            SCREEN-LINE       = 12,08
+            SCREEN-LINE       = 12,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-data-cons
@@ -14536,7 +14536,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-data-listino
             SCREEN-COL        = 96,17
-            SCREEN-LINE       = 12,08
+            SCREEN-LINE       = 12,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-data-listino
@@ -14599,7 +14599,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-promo
             SCREEN-COL        = 23,17
-            SCREEN-LINE       = 14,08
+            SCREEN-LINE       = 14,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-promo
@@ -14662,7 +14662,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-dati-fatt
             SCREEN-COL        = 133,34
-            SCREEN-LINE       = 14,08
+            SCREEN-LINE       = 14,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-dati-fatt
@@ -14713,7 +14713,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-franco
             SCREEN-COL        = 152,17
-            SCREEN-LINE       = 14,08
+            SCREEN-LINE       = 14,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-franco
@@ -14763,7 +14763,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-cliente
             SCREEN-COL        = 23,17
-            SCREEN-LINE       = 16,08
+            SCREEN-LINE       = 16,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-cliente
@@ -14826,7 +14826,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-des-cli
             SCREEN-COL        = 96,17
-            SCREEN-LINE       = 16,08
+            SCREEN-LINE       = 16,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-des-cli
@@ -14889,7 +14889,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box ch-rivisto
             SCREEN-COL        = 152,17
-            SCREEN-LINE       = 15,62
+            SCREEN-LINE       = 15,61
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ch-rivisto
@@ -14939,7 +14939,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-aperto
             SCREEN-COL        = 152,34
-            SCREEN-LINE       = 17,16
+            SCREEN-LINE       = 17,15
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-aperto
@@ -14987,9 +14987,72 @@ Begin Screen Form1
             Before Procedure  = Form1-DaCb-1-BeforeProcedure
             After Procedure   = Form1-DaCb-1-AfterProcedure
          End
+         Begin Data.Entry-Field ef-clientea
+            SCREEN-COL        = 23,17
+            SCREEN-LINE       = 18,15
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = ef-clientea
+            Auto              = FALSE
+            Auto Decimal      = 0
+            Border            = Boxed
+            Case              = Mixed
+            Clines            = 0
+            Clines Unit       = Default
+            Color             = 513
+            Column            = 21,00
+            Csize             = 0
+            Csize Unit        = Default
+            Cursor            = 0
+            Cursor Col        = 0
+            Cursor Row        = 0
+            Destroy Type      = Automatic
+            Enable            = NONE
+            Enable Variable   = mod-campi-testa
+            Field Edited (Style) = 1
+            Field Edited Format = z(6)
+            Field Picture     = 9(6)
+            Field Variable    = tof-evasione
+            File              = tordforn
+            Font              = Small Font
+            Font Variable     = Small-Font
+            Height in Cells   = TRUE
+            Help ID           = 0
+            Hint              = Digitare il numero di evasione
+            ID                = 0
+            ID Variable       = AUTO-ID
+            Justification     = Right
+            Line              = 8,08
+            Lines             = 1,31
+            Lines Unit        = Default
+            Max Lines         = 0
+            Max Text          = 6
+            Max Value         = 0
+            Min Value         = 0
+            No AutoSel        = FALSE
+            No Tab            = FALSE
+            Notify Change     = FALSE
+            Numeric           = FALSE
+            Occurs            = 0
+            Read Only         = FALSE
+            Required          = FALSE
+            Secure            = FALSE
+            Size              = 7,00
+            Size Unit         = Default
+            Style             = Singleline
+            Tab Order         = 11
+            Use Return        = FALSE
+            Use Tab           = FALSE
+            Value Multiple    = FALSE
+            Visible           = NONE
+            Width in Cells    = TRUE
+            My Property       = "CONTROLLO-OLD=;CONTROLLO=;ZOOM="
+            Before Procedure  = ef-num-ord-BeforeProcedure
+            After Procedure   = ef-num-ord-AfterProcedure
+         End
          Begin Push-Button pb-elmovc
             SCREEN-COL        = 137,34
-            SCREEN-LINE       = 11,54
+            SCREEN-LINE       = 11,53
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = pb-elmovc
@@ -15022,7 +15085,7 @@ Begin Screen Form1
             Size              = 18,67
             Size Unit         = Default
             Style             = Other
-            Tab Order         = 11
+            Tab Order         = 12
             Termination Value = 0
             Title             = "Evasioni Collegate"
             Visible           = NONE
@@ -15031,7 +15094,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-referente
             SCREEN-COL        = 23,17
-            SCREEN-LINE       = 20,08
+            SCREEN-LINE       = 21,61
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-referente
@@ -15064,7 +15127,7 @@ Begin Screen Form1
             ID                = 0
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 10,00
+            Line              = 11,54
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -15082,7 +15145,7 @@ Begin Screen Form1
             Size              = 55,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 12
+            Tab Order         = 13
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -15094,7 +15157,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-tel
             SCREEN-COL        = 96,17
-            SCREEN-LINE       = 20,08
+            SCREEN-LINE       = 21,61
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-tel
@@ -15127,7 +15190,7 @@ Begin Screen Form1
             ID                = 0
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 10,00
+            Line              = 11,54
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -15145,7 +15208,7 @@ Begin Screen Form1
             Size              = 55,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 13
+            Tab Order         = 14
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -15157,7 +15220,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-fax
             SCREEN-COL        = 23,17
-            SCREEN-LINE       = 22,08
+            SCREEN-LINE       = 23,30
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-fax
@@ -15190,7 +15253,7 @@ Begin Screen Form1
             ID                = 0
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 12,00
+            Line              = 13,23
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -15208,7 +15271,7 @@ Begin Screen Form1
             Size              = 55,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 14
+            Tab Order         = 15
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -15220,7 +15283,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-mail
             SCREEN-COL        = 96,17
-            SCREEN-LINE       = 22,08
+            SCREEN-LINE       = 23,30
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-mail
@@ -15253,7 +15316,7 @@ Begin Screen Form1
             ID                = 0
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 12,00
+            Line              = 13,23
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -15271,7 +15334,7 @@ Begin Screen Form1
             Size              = 55,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 15
+            Tab Order         = 16
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -15283,7 +15346,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-pag
             SCREEN-COL        = 23,17
-            SCREEN-LINE       = 24,08
+            SCREEN-LINE       = 25,00
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-pag
@@ -15316,7 +15379,7 @@ Begin Screen Form1
             ID                = 0
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 14,00
+            Line              = 14,92
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -15334,7 +15397,7 @@ Begin Screen Form1
             Size              = 7,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 16
+            Tab Order         = 17
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -15346,7 +15409,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-ese-iva
             SCREEN-COL        = 23,17
-            SCREEN-LINE       = 26,08
+            SCREEN-LINE       = 26,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-ese-iva
@@ -15379,7 +15442,7 @@ Begin Screen Form1
             ID                = 0
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 16,00
+            Line              = 16,62
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -15397,7 +15460,7 @@ Begin Screen Form1
             Size              = 7,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 17
+            Tab Order         = 18
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -15409,8 +15472,8 @@ Begin Screen Form1
          End
          Begin Push-Button pb-note
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 29,39
-            LOCK-CONTROL      = FALSE
+            SCREEN-LINE       = 29,38
+            LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = pb-note
             Bitmap Frame      = FALSE
@@ -15441,7 +15504,7 @@ Begin Screen Form1
             Size              = 14,33
             Size Unit         = Default
             Style             = Other
-            Tab Order         = 18
+            Tab Order         = 19
             Termination Value = 0
             Title             = "Note"
             Visible           = NONE
@@ -15450,7 +15513,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-note-1
             SCREEN-COL        = 23,17
-            SCREEN-LINE       = 28,08
+            SCREEN-LINE       = 28,38
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-note-1
@@ -15483,7 +15546,7 @@ Begin Screen Form1
             ID                = 0
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 18,00
+            Line              = 18,31
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -15501,7 +15564,7 @@ Begin Screen Form1
             Size              = 55,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 19
+            Tab Order         = 20
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -15513,7 +15576,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-note-2
             SCREEN-COL        = 96,17
-            SCREEN-LINE       = 28,08
+            SCREEN-LINE       = 28,38
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-note-2
@@ -15546,7 +15609,7 @@ Begin Screen Form1
             ID                = 0
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 18,00
+            Line              = 18,31
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -15564,7 +15627,7 @@ Begin Screen Form1
             Size              = 55,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 20
+            Tab Order         = 21
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -15576,7 +15639,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-note-3
             SCREEN-COL        = 23,17
-            SCREEN-LINE       = 30,08
+            SCREEN-LINE       = 30,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-note-3
@@ -15627,7 +15690,7 @@ Begin Screen Form1
             Size              = 55,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 21
+            Tab Order         = 22
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -15639,7 +15702,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-note-4
             SCREEN-COL        = 96,17
-            SCREEN-LINE       = 30,08
+            SCREEN-LINE       = 30,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-note-4
@@ -15690,7 +15753,7 @@ Begin Screen Form1
             Size              = 55,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 22
+            Tab Order         = 23
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -15702,7 +15765,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-4
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 16,08
+            SCREEN-LINE       = 16,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-4
@@ -15728,7 +15791,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 17,00
             Size Unit         = Default
-            Tab Order         = 23
+            Tab Order         = 24
             Title             = "Cliente"
             Transparent       = TRUE
             Visible           = NONE
@@ -15736,7 +15799,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 12,08
+            SCREEN-LINE       = 12,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5
@@ -15762,7 +15825,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 10,00
             Size Unit         = Default
-            Tab Order         = 24
+            Tab Order         = 25
             Title             = "Data ordine"
             Transparent       = TRUE
             Visible           = NONE
@@ -15770,7 +15833,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-6
             SCREEN-COL        = 80,17
-            SCREEN-LINE       = 12,08
+            SCREEN-LINE       = 12,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-6
@@ -15796,7 +15859,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 10,00
             Size Unit         = Default
-            Tab Order         = 25
+            Tab Order         = 26
             Title             = "Data Listino"
             Transparent       = TRUE
             Visible           = NONE
@@ -15804,7 +15867,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-8
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 24,08
+            SCREEN-LINE       = 25,00
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-8
@@ -15823,14 +15886,14 @@ Begin Screen Form1
             ID                = 21
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 14,00
+            Line              = 14,92
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 17,00
             Size Unit         = Default
-            Tab Order         = 26
+            Tab Order         = 27
             Title             = "Codice pagamento"
             Transparent       = TRUE
             Visible           = NONE
@@ -15838,7 +15901,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-11
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 28,08
+            SCREEN-LINE       = 28,38
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-11
@@ -15857,14 +15920,14 @@ Begin Screen Form1
             ID                = 27
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 18,00
+            Line              = 18,31
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 17,00
             Size Unit         = Default
-            Tab Order         = 27
+            Tab Order         = 28
             Title             = "Note"
             Transparent       = TRUE
             Visible           = NONE
@@ -15872,7 +15935,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-12
             SCREEN-COL        = 47,17
-            SCREEN-LINE       = 12,08
+            SCREEN-LINE       = 12,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-12
@@ -15898,7 +15961,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 13,00
             Size Unit         = Default
-            Tab Order         = 28
+            Tab Order         = 29
             Title             = "Data Consegna"
             Transparent       = TRUE
             Visible           = NONE
@@ -15906,7 +15969,7 @@ Begin Screen Form1
          End
          Begin Label lab-pag
             SCREEN-COL        = 32,17
-            SCREEN-LINE       = 24,08
+            SCREEN-LINE       = 25,00
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-pag
@@ -15925,14 +15988,14 @@ Begin Screen Form1
             ID                = 46
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 14,00
+            Line              = 14,92
             Lines             = 1,54
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 46,00
             Size Unit         = Default
-            Tab Order         = 29
+            Tab Order         = 30
             Title Picture     = X(100)
             Title Variable    = lab-pag-buf
             Transparent       = TRUE
@@ -15941,7 +16004,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaaca
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 18,08
+            SCREEN-LINE       = 19,61
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaaca
@@ -15959,14 +16022,14 @@ Begin Screen Form1
             ID                = 128
             Justification     = Center
             Label Offset      = 20
-            Line              = 8,00
+            Line              = 9,54
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 17,00
             Size Unit         = Default
-            Tab Order         = 30
+            Tab Order         = 31
             Title             = "Dati Fornitore"
             Transparent       = FALSE
             Visible           = NONE
@@ -15974,7 +16037,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-2aa
             SCREEN-COL        = 21,50
-            SCREEN-LINE       = 18,78
+            SCREEN-LINE       = 20,30
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-2aa
@@ -15989,7 +16052,7 @@ Begin Screen Form1
             Help ID           = 0
             ID                = 129
             Kind              = Horizontal
-            Line              = 8,70
+            Line              = 10,23
             Line Styles       = Solid
             Occurs            = 0
             Position Shift    = 0
@@ -15998,14 +16061,14 @@ Begin Screen Form1
             Size (Lines)      = 135,33
             Size (Lines) in Pixels = 812
             Size (Lines) Unit = Default
-            Tab Order         = 31
+            Tab Order         = 32
             Visible           = NONE
             Width             = 2
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-4a
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 20,08
+            SCREEN-LINE       = 21,61
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-4a
@@ -16024,14 +16087,14 @@ Begin Screen Form1
             ID                = 130
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 10,00
+            Line              = 11,54
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 17,00
             Size Unit         = Default
-            Tab Order         = 32
+            Tab Order         = 33
             Title             = "Referente"
             Transparent       = TRUE
             Visible           = NONE
@@ -16039,7 +16102,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-4aa
             SCREEN-COL        = 80,17
-            SCREEN-LINE       = 20,08
+            SCREEN-LINE       = 21,61
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-4aa
@@ -16058,14 +16121,14 @@ Begin Screen Form1
             ID                = 131
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 10,00
+            Line              = 11,54
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 13,00
             Size Unit         = Default
-            Tab Order         = 33
+            Tab Order         = 34
             Title             = "Telefono diretto"
             Transparent       = TRUE
             Visible           = NONE
@@ -16073,7 +16136,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-4aaa
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 22,08
+            SCREEN-LINE       = 23,30
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-4aaa
@@ -16092,14 +16155,14 @@ Begin Screen Form1
             ID                = 132
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 12,00
+            Line              = 13,23
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 17,00
             Size Unit         = Default
-            Tab Order         = 34
+            Tab Order         = 35
             Title             = "Fax"
             Transparent       = TRUE
             Visible           = NONE
@@ -16107,7 +16170,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-4aaaa
             SCREEN-COL        = 80,17
-            SCREEN-LINE       = 22,08
+            SCREEN-LINE       = 23,30
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-4aaaa
@@ -16126,14 +16189,14 @@ Begin Screen Form1
             ID                = 133
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 12,00
+            Line              = 13,23
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 13,00
             Size Unit         = Default
-            Tab Order         = 35
+            Tab Order         = 36
             Title             = "E-mail"
             Transparent       = TRUE
             Visible           = NONE
@@ -16141,7 +16204,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-ins
             SCREEN-COL        = 23,17
-            SCREEN-LINE       = 34,08
+            SCREEN-LINE       = 34,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-ins
@@ -16172,14 +16235,14 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 45,00
             Size Unit         = Default
-            Tab Order         = 36
+            Tab Order         = 37
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-5aaacaa
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 32,08
+            SCREEN-LINE       = 32,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaacaa
@@ -16204,7 +16267,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 17,00
             Size Unit         = Default
-            Tab Order         = 37
+            Tab Order         = 38
             Title             = "Dati Ordine"
             Transparent       = FALSE
             Visible           = NONE
@@ -16212,7 +16275,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-2aaa
             SCREEN-COL        = 21,50
-            SCREEN-LINE       = 32,78
+            SCREEN-LINE       = 32,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-2aaa
@@ -16236,14 +16299,14 @@ Begin Screen Form1
             Size (Lines)      = 135,33
             Size (Lines) in Pixels = 812
             Size (Lines) Unit = Default
-            Tab Order         = 38
+            Tab Order         = 39
             Visible           = NONE
             Width             = 2
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-11a
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 34,08
+            SCREEN-LINE       = 34,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-11a
@@ -16269,7 +16332,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 16,00
             Size Unit         = Default
-            Tab Order         = 39
+            Tab Order         = 40
             Title             = "Modo Inserimento"
             Transparent       = TRUE
             Visible           = NONE
@@ -16277,7 +16340,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-tipo-invio
             SCREEN-COL        = 23,17
-            SCREEN-LINE       = 38,08
+            SCREEN-LINE       = 38,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-tipo-invio
@@ -16308,14 +16371,14 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 45,00
             Size Unit         = Default
-            Tab Order         = 40
+            Tab Order         = 41
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-11aa
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 38,08
+            SCREEN-LINE       = 38,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-11aa
@@ -16341,7 +16404,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 16,00
             Size Unit         = Default
-            Tab Order         = 41
+            Tab Order         = 42
             Title             = "Modalità"
             Transparent       = TRUE
             Visible           = NONE
@@ -16349,7 +16412,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaacaaa
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 36,08
+            SCREEN-LINE       = 36,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaacaaa
@@ -16374,7 +16437,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 17,00
             Size Unit         = Default
-            Tab Order         = 42
+            Tab Order         = 43
             Title             = "Dati Invio"
             Transparent       = FALSE
             Visible           = NONE
@@ -16382,7 +16445,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-2aaaa
             SCREEN-COL        = 21,50
-            SCREEN-LINE       = 36,78
+            SCREEN-LINE       = 36,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-2aaaa
@@ -16406,14 +16469,14 @@ Begin Screen Form1
             Size (Lines)      = 135,33
             Size (Lines) in Pixels = 812
             Size (Lines) Unit = Default
-            Tab Order         = 43
+            Tab Order         = 44
             Visible           = NONE
             Width             = 2
             Width in Cells    = TRUE
          End
          Begin Data.Label lbl-data-invio
             SCREEN-COL        = 81,00
-            SCREEN-LINE       = 38,08
+            SCREEN-LINE       = 38,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lbl-data-invio
@@ -16444,14 +16507,14 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 44
+            Tab Order         = 45
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
          End
          Begin Data.Label lbl-ora-invio
             SCREEN-COL        = 104,00
-            SCREEN-LINE       = 38,08
+            SCREEN-LINE       = 38,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lbl-ora-invio
@@ -16482,14 +16545,14 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 45
+            Tab Order         = 46
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
          End
          Begin Data.Label Form1-DaLa-3
             SCREEN-COL        = 132,00
-            SCREEN-LINE       = 38,08
+            SCREEN-LINE       = 38,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-DaLa-3
@@ -16520,14 +16583,14 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 18,67
             Size Unit         = Default
-            Tab Order         = 46
+            Tab Order         = 47
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-11aaa
             SCREEN-COL        = 70,50
-            SCREEN-LINE       = 38,08
+            SCREEN-LINE       = 38,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-11aaa
@@ -16553,7 +16616,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 5,00
             Size Unit         = Default
-            Tab Order         = 47
+            Tab Order         = 48
             Title             = "Data"
             Transparent       = TRUE
             Visible           = NONE
@@ -16561,7 +16624,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-11aaaa
             SCREEN-COL        = 96,50
-            SCREEN-LINE       = 38,08
+            SCREEN-LINE       = 38,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-11aaaa
@@ -16587,7 +16650,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 5,00
             Size Unit         = Default
-            Tab Order         = 48
+            Tab Order         = 49
             Title             = "ora"
             Transparent       = TRUE
             Visible           = NONE
@@ -16595,7 +16658,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-11aaab
             SCREEN-COL        = 120,17
-            SCREEN-LINE       = 38,08
+            SCREEN-LINE       = 38,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-11aaab
@@ -16621,7 +16684,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 5,00
             Size Unit         = Default
-            Tab Order         = 49
+            Tab Order         = 50
             Title             = "utente"
             Transparent       = TRUE
             Visible           = NONE
@@ -16629,7 +16692,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-16
             SCREEN-COL        = 96,17
-            SCREEN-LINE       = 26,08
+            SCREEN-LINE       = 26,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-16
@@ -16648,14 +16711,14 @@ Begin Screen Form1
             ID                = 41
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 16,00
+            Line              = 16,62
             Lines             = 1,15
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 8,17
             Size Unit         = Default
-            Tab Order         = 50
+            Tab Order         = 51
             Title             = "&Urgente"
             Transparent       = TRUE
             Visible           = NONE
@@ -16663,7 +16726,7 @@ Begin Screen Form1
          End
          Begin Data.Radio-Button rb-urgente
             SCREEN-COL        = 105,84
-            SCREEN-LINE       = 26,08
+            SCREEN-LINE       = 26,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = rb-urgente
@@ -16691,7 +16754,7 @@ Begin Screen Form1
             Help ID           = 0
             ID                = 0
             Left Text         = FALSE
-            Line              = 16,00
+            Line              = 16,62
             Lines             = 1,15
             Lines Unit        = Default
             No Group Tab      = TRUE
@@ -16702,7 +16765,7 @@ Begin Screen Form1
             Self Act          = FALSE
             Size              = 3,00
             Size Unit         = Default
-            Tab Order         = 51
+            Tab Order         = 52
             Termination Value = 0
             Title             = "&Urgente"
             Value             = 1
@@ -16715,7 +16778,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-17
             SCREEN-COL        = 113,84
-            SCREEN-LINE       = 26,08
+            SCREEN-LINE       = 26,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-17
@@ -16734,14 +16797,14 @@ Begin Screen Form1
             ID                = 42
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 16,00
+            Line              = 16,62
             Lines             = 1,15
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 7,00
             Size Unit         = Default
-            Tab Order         = 52
+            Tab Order         = 53
             Title             = "&Normale"
             Transparent       = TRUE
             Visible           = NONE
@@ -16749,7 +16812,7 @@ Begin Screen Form1
          End
          Begin Data.Radio-Button rb-normale
             SCREEN-COL        = 121,84
-            SCREEN-LINE       = 26,08
+            SCREEN-LINE       = 26,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = rb-normale
@@ -16777,7 +16840,7 @@ Begin Screen Form1
             Help ID           = 0
             ID                = 0
             Left Text         = FALSE
-            Line              = 16,00
+            Line              = 16,62
             Lines             = 1,15
             Lines Unit        = Default
             No Group Tab      = TRUE
@@ -16788,7 +16851,7 @@ Begin Screen Form1
             Self Act          = FALSE
             Size              = 3,00
             Size Unit         = Default
-            Tab Order         = 53
+            Tab Order         = 54
             Termination Value = 0
             Title             = "&Normale"
             Value             = 0
@@ -16801,7 +16864,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-4aaaaa
             SCREEN-COL        = 80,17
-            SCREEN-LINE       = 26,08
+            SCREEN-LINE       = 26,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-4aaaaa
@@ -16820,14 +16883,14 @@ Begin Screen Form1
             ID                = 43
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 16,00
+            Line              = 16,62
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 13,00
             Size Unit         = Default
-            Tab Order         = 54
+            Tab Order         = 55
             Title             = "Scarico"
             Transparent       = TRUE
             Visible           = NONE
@@ -16835,7 +16898,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-tipo-chiusura
             SCREEN-COL        = 23,17
-            SCREEN-LINE       = 42,08
+            SCREEN-LINE       = 42,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-tipo-chiusura
@@ -16866,14 +16929,14 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 45,00
             Size Unit         = Default
-            Tab Order         = 55
+            Tab Order         = 56
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-11aab
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 42,08
+            SCREEN-LINE       = 42,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-11aab
@@ -16899,7 +16962,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 16,00
             Size Unit         = Default
-            Tab Order         = 56
+            Tab Order         = 57
             Title             = "Modalità"
             Transparent       = TRUE
             Visible           = NONE
@@ -16907,7 +16970,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaacaaaa
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 40,08
+            SCREEN-LINE       = 40,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaacaaaa
@@ -16932,7 +16995,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 17,00
             Size Unit         = Default
-            Tab Order         = 57
+            Tab Order         = 58
             Title             = "Dati Chiusura"
             Transparent       = FALSE
             Visible           = NONE
@@ -16940,7 +17003,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-2aaaaa
             SCREEN-COL        = 21,50
-            SCREEN-LINE       = 40,78
+            SCREEN-LINE       = 40,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-2aaaaa
@@ -16964,14 +17027,14 @@ Begin Screen Form1
             Size (Lines)      = 135,33
             Size (Lines) in Pixels = 812
             Size (Lines) Unit = Default
-            Tab Order         = 58
+            Tab Order         = 59
             Visible           = NONE
             Width             = 2
             Width in Cells    = TRUE
          End
          Begin Data.Label lbl-data-chiusura
             SCREEN-COL        = 81,00
-            SCREEN-LINE       = 42,08
+            SCREEN-LINE       = 42,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lbl-data-chiusura
@@ -17002,14 +17065,14 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 59
+            Tab Order         = 60
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
          End
          Begin Data.Label lbl-ora-chiusura
             SCREEN-COL        = 104,00
-            SCREEN-LINE       = 42,08
+            SCREEN-LINE       = 42,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lbl-ora-chiusura
@@ -17040,14 +17103,14 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 60
+            Tab Order         = 61
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
          End
          Begin Data.Label Form1-DaLa-3a
             SCREEN-COL        = 132,00
-            SCREEN-LINE       = 42,08
+            SCREEN-LINE       = 42,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-DaLa-3a
@@ -17078,14 +17141,14 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 18,67
             Size Unit         = Default
-            Tab Order         = 61
+            Tab Order         = 62
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-11aaac
             SCREEN-COL        = 70,50
-            SCREEN-LINE       = 42,08
+            SCREEN-LINE       = 42,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-11aaac
@@ -17111,7 +17174,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 5,00
             Size Unit         = Default
-            Tab Order         = 62
+            Tab Order         = 63
             Title             = "Data"
             Transparent       = TRUE
             Visible           = NONE
@@ -17119,7 +17182,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-11aaaaa
             SCREEN-COL        = 96,50
-            SCREEN-LINE       = 42,08
+            SCREEN-LINE       = 42,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-11aaaaa
@@ -17145,7 +17208,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 5,00
             Size Unit         = Default
-            Tab Order         = 63
+            Tab Order         = 64
             Title             = "ora"
             Transparent       = TRUE
             Visible           = NONE
@@ -17153,7 +17216,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-11aaaba
             SCREEN-COL        = 120,17
-            SCREEN-LINE       = 42,08
+            SCREEN-LINE       = 42,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-11aaaba
@@ -17179,7 +17242,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 5,00
             Size Unit         = Default
-            Tab Order         = 64
+            Tab Order         = 65
             Title             = "utente"
             Transparent       = TRUE
             Visible           = NONE
@@ -17187,7 +17250,7 @@ Begin Screen Form1
          End
          Begin Label lab-ese-iva
             SCREEN-COL        = 32,17
-            SCREEN-LINE       = 26,08
+            SCREEN-LINE       = 26,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-ese-iva
@@ -17206,14 +17269,14 @@ Begin Screen Form1
             ID                = 60
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 16,00
+            Line              = 16,62
             Lines             = 1,54
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 46,00
             Size Unit         = Default
-            Tab Order         = 65
+            Tab Order         = 66
             Title Picture     = X(100)
             Title Variable    = lab-ese-iva-buf
             Transparent       = TRUE
@@ -17222,7 +17285,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-8a
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 26,08
+            SCREEN-LINE       = 26,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-8a
@@ -17241,14 +17304,14 @@ Begin Screen Form1
             ID                = 61
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 16,00
+            Line              = 16,62
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 17,00
             Size Unit         = Default
-            Tab Order         = 66
+            Tab Order         = 67
             Title             = "Codice Ese. IVA"
             Transparent       = TRUE
             Visible           = NONE
@@ -17256,7 +17319,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-tipo-chiusuraa
             SCREEN-COL        = 23,17
-            SCREEN-LINE       = 44,08
+            SCREEN-LINE       = 44,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-tipo-chiusuraa
@@ -17287,14 +17350,14 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 100,00
             Size Unit         = Default
-            Tab Order         = 67
+            Tab Order         = 68
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-11aaba
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 44,08
+            SCREEN-LINE       = 44,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-11aaba
@@ -17320,7 +17383,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 16,00
             Size Unit         = Default
-            Tab Order         = 68
+            Tab Order         = 69
             Title             = "Nota"
             Transparent       = TRUE
             Visible           = NONE
@@ -17328,7 +17391,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-cliente
             SCREEN-COL        = 31,50
-            SCREEN-LINE       = 16,08
+            SCREEN-LINE       = 16,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-cliente
@@ -17359,14 +17422,14 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 45,00
             Size Unit         = Default
-            Tab Order         = 69
+            Tab Order         = 70
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-3
             SCREEN-COL        = 144,84
-            SCREEN-LINE       = 15,62
+            SCREEN-LINE       = 15,61
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-3
@@ -17392,7 +17455,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 6,00
             Size Unit         = Default
-            Tab Order         = 70
+            Tab Order         = 71
             Title             = "Rivisto"
             Transparent       = TRUE
             Visible           = NONE
@@ -17400,7 +17463,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-4b
             SCREEN-COL        = 80,17
-            SCREEN-LINE       = 16,08
+            SCREEN-LINE       = 16,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-4b
@@ -17426,7 +17489,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 13,00
             Size Unit         = Default
-            Tab Order         = 71
+            Tab Order         = 72
             Title             = "Destino"
             Transparent       = TRUE
             Visible           = NONE
@@ -17434,7 +17497,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-des-cli
             SCREEN-COL        = 104,84
-            SCREEN-LINE       = 15,62
+            SCREEN-LINE       = 15,61
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-des-cli
@@ -17465,14 +17528,14 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 39,00
             Size Unit         = Default
-            Tab Order         = 72
+            Tab Order         = 73
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
          End
          Begin Data.Label lab-des-loca
             SCREEN-COL        = 104,84
-            SCREEN-LINE       = 16,77
+            SCREEN-LINE       = 16,76
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-des-loca
@@ -17503,14 +17566,14 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 39,00
             Size Unit         = Default
-            Tab Order         = 73
+            Tab Order         = 74
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
          End
          Begin Push-Button pb-solleciti
             SCREEN-COL        = 117,67
-            SCREEN-LINE       = 11,54
+            SCREEN-LINE       = 11,53
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = pb-solleciti
@@ -17542,7 +17605,7 @@ Begin Screen Form1
             Size              = 18,67
             Size Unit         = Default
             Style             = Other
-            Tab Order         = 74
+            Tab Order         = 75
             Termination Value = 0
             Title             = "Solleciti"
             Visible           = NONE
@@ -17551,7 +17614,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-6a
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 14,08
+            SCREEN-LINE       = 14,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-6a
@@ -17577,7 +17640,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 10,00
             Size Unit         = Default
-            Tab Order         = 75
+            Tab Order         = 76
             Title             = "Promo"
             Transparent       = TRUE
             Visible           = NONE
@@ -17585,7 +17648,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-promo
             SCREEN-COL        = 40,17
-            SCREEN-LINE       = 14,08
+            SCREEN-LINE       = 14,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-promo
@@ -17616,14 +17679,14 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 69,33
             Size Unit         = Default
-            Tab Order         = 76
+            Tab Order         = 77
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-3a
             SCREEN-COL        = 136,84
-            SCREEN-LINE       = 13,93
+            SCREEN-LINE       = 13,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-3a
@@ -17649,7 +17712,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 14,00
             Size Unit         = Default
-            Tab Order         = 77
+            Tab Order         = 78
             Title             = "Franco Partenza"
             Transparent       = TRUE
             Visible           = NONE
@@ -17657,7 +17720,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-3aa
             SCREEN-COL        = 145,00
-            SCREEN-LINE       = 17,00
+            SCREEN-LINE       = 16,99
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-3aa
@@ -17683,7 +17746,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 5,83
             Size Unit         = Default
-            Tab Order         = 78
+            Tab Order         = 79
             Title             = "Aperto"
             Transparent       = TRUE
             Visible           = NONE
@@ -17691,7 +17754,7 @@ Begin Screen Form1
          End
          Begin Label lab-dati-fatt
             SCREEN-COL        = 110,50
-            SCREEN-LINE       = 13,93
+            SCREEN-LINE       = 13,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-dati-fatt
@@ -17717,11 +17780,45 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 21,00
             Size Unit         = Default
-            Tab Order         = 79
+            Tab Order         = 80
             Title             = "Stampa dati di fatturazione"
             Transparent       = TRUE
             Visible           = FALSE
             Visible Variable  = v-dati-fatt
+            Width in Cells    = TRUE
+         End
+         Begin Label Form1-La-4c
+            SCREEN-COL        = 5,17
+            SCREEN-LINE       = 18,15
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = Form1-La-4c
+            Clines            = 0
+            Clines Unit       = Default
+            Color             = 0
+            Column            = 3,00
+            Csize             = 0
+            Csize Unit        = Default
+            Destroy Type      = Automatic
+            Enable            = NONE
+            Font              = Small Font
+            Font Variable     = Small-Font
+            Height in Cells   = TRUE
+            Help ID           = 0
+            ID                = 13
+            Justification     = Unaligned
+            Label Offset      = 20
+            Line              = 8,08
+            Lines             = 1,31
+            Lines Unit        = Default
+            No Key Letter     = FALSE
+            Occurs            = 0
+            Size              = 17,00
+            Size Unit         = Default
+            Tab Order         = 81
+            Title             = "Evasione"
+            Transparent       = TRUE
+            Visible           = NONE
             Width in Cells    = TRUE
          End
       End
@@ -17738,7 +17835,7 @@ Begin Screen Form1
          Begin Group-Item Form1-Grp-1
             GROUP-ITEM-NAME   = campi-grid
             SCREEN-COL        = 75,17
-            SCREEN-LINE       = 33,08
+            SCREEN-LINE       = 33,07
             LOCK-CONTROL      = FALSE
             LEVEL             = 10
             (Name)            = Form1-Grp-1
@@ -17752,7 +17849,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-art
             SCREEN-COL        = 20,17
-            SCREEN-LINE       = 31,08
+            SCREEN-LINE       = 31,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-art
@@ -17815,7 +17912,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-imb-ord
             SCREEN-COL        = 82,17
-            SCREEN-LINE       = 31,08
+            SCREEN-LINE       = 31,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-imb-ord
@@ -17878,7 +17975,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-qta
             SCREEN-COL        = 120,17
-            SCREEN-LINE       = 31,08
+            SCREEN-LINE       = 31,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-qta
@@ -17941,7 +18038,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-uni
             SCREEN-COL        = 20,17
-            SCREEN-LINE       = 33,08
+            SCREEN-LINE       = 33,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-uni
@@ -18004,7 +18101,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-sconto-1
             SCREEN-COL        = 70,17
-            SCREEN-LINE       = 33,08
+            SCREEN-LINE       = 33,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-sconto-1
@@ -18067,7 +18164,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-sconto-2
             SCREEN-COL        = 82,17
-            SCREEN-LINE       = 33,08
+            SCREEN-LINE       = 33,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-sconto-2
@@ -18130,7 +18227,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-sconto-3
             SCREEN-COL        = 94,17
-            SCREEN-LINE       = 33,08
+            SCREEN-LINE       = 33,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-sconto-3
@@ -18193,7 +18290,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-sconto-4
             SCREEN-COL        = 107,17
-            SCREEN-LINE       = 33,08
+            SCREEN-LINE       = 33,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-sconto-4
@@ -18256,7 +18353,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-sconto-5
             SCREEN-COL        = 120,17
-            SCREEN-LINE       = 33,08
+            SCREEN-LINE       = 33,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-sconto-5
@@ -18319,7 +18416,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-cons
             SCREEN-COL        = 20,17
-            SCREEN-LINE       = 35,08
+            SCREEN-LINE       = 35,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-cons
@@ -18382,7 +18479,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-cou
             SCREEN-COL        = 70,17
-            SCREEN-LINE       = 35,08
+            SCREEN-LINE       = 35,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-cou
@@ -18445,7 +18542,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-add
             SCREEN-COL        = 94,17
-            SCREEN-LINE       = 35,08
+            SCREEN-LINE       = 35,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-add
@@ -18508,7 +18605,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-costi-agg
             SCREEN-COL        = 120,17
-            SCREEN-LINE       = 35,08
+            SCREEN-LINE       = 35,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-costi-agg
@@ -18571,7 +18668,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-imp
             SCREEN-COL        = 20,17
-            SCREEN-LINE       = 37,08
+            SCREEN-LINE       = 37,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-imp
@@ -18634,7 +18731,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-cod-iva
             SCREEN-COL        = 70,17
-            SCREEN-LINE       = 37,08
+            SCREEN-LINE       = 37,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = ef-cod-iva
@@ -18697,7 +18794,7 @@ Begin Screen Form1
          End
          Begin Data.Label lbl-anno-ddt
             SCREEN-COL        = 24,17
-            SCREEN-LINE       = 41,08
+            SCREEN-LINE       = 41,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = lbl-anno-ddt
@@ -18735,7 +18832,7 @@ Begin Screen Form1
          End
          Begin Data.Label lbl-num-ddt
             SCREEN-COL        = 12,17
-            SCREEN-LINE       = 41,08
+            SCREEN-LINE       = 41,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = lbl-num-ddt
@@ -18773,7 +18870,7 @@ Begin Screen Form1
          End
          Begin Data.Label lbl-dt-carico
             SCREEN-COL        = 37,17
-            SCREEN-LINE       = 41,08
+            SCREEN-LINE       = 41,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = lbl-dt-carico
@@ -18811,7 +18908,7 @@ Begin Screen Form1
          End
          Begin Data.Label lbl-ora-carico
             SCREEN-COL        = 54,17
-            SCREEN-LINE       = 41,08
+            SCREEN-LINE       = 41,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = lbl-ora-carico
@@ -18849,7 +18946,7 @@ Begin Screen Form1
          End
          Begin Data.Label lbl-utente-carico
             SCREEN-COL        = 69,17
-            SCREEN-LINE       = 41,08
+            SCREEN-LINE       = 41,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 15
             (Name)            = lbl-utente-carico
@@ -18887,7 +18984,7 @@ Begin Screen Form1
          End
          Begin Grid Form1-Gd-1
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 12,08
+            SCREEN-LINE       = 12,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Gd-1
@@ -19016,7 +19113,7 @@ Begin Screen Form1
          End
          Begin Push-Button pb-grid-elimina
             SCREEN-COL        = 142,67
-            SCREEN-LINE       = 30,39
+            SCREEN-LINE       = 30,38
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = pb-grid-elimina
@@ -19065,7 +19162,7 @@ Begin Screen Form1
          End
          Begin Push-Button pb-articoli
             SCREEN-COL        = 139,50
-            SCREEN-LINE       = 35,85
+            SCREEN-LINE       = 35,84
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = pb-articoli
@@ -19113,7 +19210,7 @@ Begin Screen Form1
          End
          Begin Push-Button pb-grid-nuovo
             SCREEN-COL        = 129,67
-            SCREEN-LINE       = 30,39
+            SCREEN-LINE       = 30,38
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = pb-grid-nuovo
@@ -19162,7 +19259,7 @@ Begin Screen Form1
          End
          Begin Label lab-gia
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 44,08
+            SCREEN-LINE       = 44,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-gia
@@ -19197,7 +19294,7 @@ Begin Screen Form1
          End
          Begin Label lab-imp
             SCREEN-COL        = 63,17
-            SCREEN-LINE       = 44,08
+            SCREEN-LINE       = 44,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-imp
@@ -19232,7 +19329,7 @@ Begin Screen Form1
          End
          Begin Label lab-ord
             SCREEN-COL        = 121,34
-            SCREEN-LINE       = 44,08
+            SCREEN-LINE       = 44,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-ord
@@ -19267,7 +19364,7 @@ Begin Screen Form1
          End
          Begin Label lab-giacenza
             SCREEN-COL        = 22,17
-            SCREEN-LINE       = 44,08
+            SCREEN-LINE       = 44,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-giacenza
@@ -19303,7 +19400,7 @@ Begin Screen Form1
          End
          Begin Label lab-impegnato
             SCREEN-COL        = 83,00
-            SCREEN-LINE       = 44,08
+            SCREEN-LINE       = 44,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-impegnato
@@ -19339,7 +19436,7 @@ Begin Screen Form1
          End
          Begin Label lab-ordinato
             SCREEN-COL        = 142,00
-            SCREEN-LINE       = 44,08
+            SCREEN-LINE       = 44,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-ordinato
@@ -19375,7 +19472,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-1
             SCREEN-COL        = 3,17
-            SCREEN-LINE       = 43,54
+            SCREEN-LINE       = 43,53
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-1
@@ -19406,7 +19503,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-19
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 31,08
+            SCREEN-LINE       = 31,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-19
@@ -19440,7 +19537,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-20
             SCREEN-COL        = 114,67
-            SCREEN-LINE       = 31,08
+            SCREEN-LINE       = 31,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-20
@@ -19474,7 +19571,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-21
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 33,08
+            SCREEN-LINE       = 33,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-21
@@ -19508,7 +19605,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-22
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 35,08
+            SCREEN-LINE       = 35,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-22
@@ -19542,7 +19639,7 @@ Begin Screen Form1
          End
          Begin Label lab-imposta
             SCREEN-COL        = 55,17
-            SCREEN-LINE       = 35,08
+            SCREEN-LINE       = 35,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-imposta
@@ -19576,7 +19673,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-24
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 37,08
+            SCREEN-LINE       = 37,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-24
@@ -19610,7 +19707,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-25
             SCREEN-COL        = 61,17
-            SCREEN-LINE       = 33,08
+            SCREEN-LINE       = 33,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-25
@@ -19644,7 +19741,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-26
             SCREEN-COL        = 64,67
-            SCREEN-LINE       = 37,08
+            SCREEN-LINE       = 37,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-26
@@ -19678,7 +19775,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-art
             SCREEN-COL        = 29,17
-            SCREEN-LINE       = 31,08
+            SCREEN-LINE       = 31,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-art
@@ -19716,7 +19813,7 @@ Begin Screen Form1
          End
          Begin Label lab-iva
             SCREEN-COL        = 78,17
-            SCREEN-LINE       = 37,16
+            SCREEN-LINE       = 37,15
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-iva
@@ -19751,7 +19848,7 @@ Begin Screen Form1
          End
          Begin Label lab-impostaa
             SCREEN-COL        = 84,17
-            SCREEN-LINE       = 35,08
+            SCREEN-LINE       = 35,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-impostaa
@@ -19785,7 +19882,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-20a
             SCREEN-COL        = 75,67
-            SCREEN-LINE       = 31,08
+            SCREEN-LINE       = 31,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-20a
@@ -19819,7 +19916,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-imb
             SCREEN-COL        = 88,17
-            SCREEN-LINE       = 31,08
+            SCREEN-LINE       = 31,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-imb
@@ -19857,7 +19954,7 @@ Begin Screen Form1
          End
          Begin Label lab-impostaaa
             SCREEN-COL        = 109,17
-            SCREEN-LINE       = 35,08
+            SCREEN-LINE       = 35,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-impostaaa
@@ -19891,7 +19988,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaacab
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 39,08
+            SCREEN-LINE       = 39,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaacab
@@ -19924,7 +20021,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-2aab
             SCREEN-COL        = 21,50
-            SCREEN-LINE       = 39,78
+            SCREEN-LINE       = 39,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-2aab
@@ -19955,7 +20052,7 @@ Begin Screen Form1
          End
          Begin Label lab-impostaaaa
             SCREEN-COL        = 6,84
-            SCREEN-LINE       = 41,08
+            SCREEN-LINE       = 41,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-impostaaaa
@@ -19989,7 +20086,7 @@ Begin Screen Form1
          End
          Begin Label lab-impostaaaaa
             SCREEN-COL        = 22,17
-            SCREEN-LINE       = 41,08
+            SCREEN-LINE       = 41,07
             LOCK-CONTROL      = FALSE
             LEVEL             = 10
             (Name)            = lab-impostaaaaa
@@ -20023,7 +20120,7 @@ Begin Screen Form1
          End
          Begin Label lab-impostaaab
             SCREEN-COL        = 32,17
-            SCREEN-LINE       = 41,08
+            SCREEN-LINE       = 41,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-impostaaab
@@ -20057,7 +20154,7 @@ Begin Screen Form1
          End
          Begin Label lab-impostaaaba
             SCREEN-COL        = 50,17
-            SCREEN-LINE       = 41,08
+            SCREEN-LINE       = 41,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-impostaaaba
@@ -20091,7 +20188,7 @@ Begin Screen Form1
          End
          Begin Label lab-impostaaabaa
             SCREEN-COL        = 62,17
-            SCREEN-LINE       = 41,08
+            SCREEN-LINE       = 41,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-impostaaabaa
@@ -20125,7 +20222,7 @@ Begin Screen Form1
          End
          Begin Label lbl-prz-finale
             SCREEN-COL        = 120,17
-            SCREEN-LINE       = 37,08
+            SCREEN-LINE       = 37,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lbl-prz-finale
@@ -20161,7 +20258,7 @@ Begin Screen Form1
          End
          Begin Label lab-impostaab
             SCREEN-COL        = 107,17
-            SCREEN-LINE       = 37,08
+            SCREEN-LINE       = 37,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-impostaab
@@ -20195,7 +20292,7 @@ Begin Screen Form1
          End
          Begin Push-Button pb-elmovcd
             SCREEN-COL        = 138,67
-            SCREEN-LINE       = 40,58
+            SCREEN-LINE       = 40,57
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = pb-elmovcd
@@ -20237,7 +20334,7 @@ Begin Screen Form1
          End
          Begin Label lab-articoli
             SCREEN-COL        = 131,67
-            SCREEN-LINE       = 32,93
+            SCREEN-LINE       = 32,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-articoli
@@ -20272,7 +20369,7 @@ Begin Screen Form1
          End
          Begin Push-Button pb-sol-r
             SCREEN-COL        = 89,17
-            SCREEN-LINE       = 40,62
+            SCREEN-LINE       = 40,61
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = pb-sol-r
@@ -20313,7 +20410,7 @@ Begin Screen Form1
          End
          Begin Label lab-impostaaabb
             SCREEN-COL        = 106,17
-            SCREEN-LINE       = 41,08
+            SCREEN-LINE       = 41,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-impostaaabb
@@ -20347,7 +20444,7 @@ Begin Screen Form1
          End
          Begin Data.Label lbl-dt-arrivo
             SCREEN-COL        = 111,17
-            SCREEN-LINE       = 41,08
+            SCREEN-LINE       = 41,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lbl-dt-arrivo
@@ -20385,7 +20482,7 @@ Begin Screen Form1
          End
          Begin Label lab-impostaaaab
             SCREEN-COL        = 124,17
-            SCREEN-LINE       = 41,08
+            SCREEN-LINE       = 41,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-impostaaaab
@@ -20419,7 +20516,7 @@ Begin Screen Form1
          End
          Begin Data.Label lbl-qta-arr
             SCREEN-COL        = 128,17
-            SCREEN-LINE       = 41,08
+            SCREEN-LINE       = 41,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lbl-qta-arr
@@ -20457,7 +20554,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-manuale
             SCREEN-COL        = 70,17
-            SCREEN-LINE       = 30,77
+            SCREEN-LINE       = 30,76
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-manuale
@@ -20510,7 +20607,7 @@ Begin Screen Form1
          End
          Begin Label lab-impforn
             SCREEN-COL        = 39,17
-            SCREEN-LINE       = 33,08
+            SCREEN-LINE       = 33,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-impforn
@@ -20547,7 +20644,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-impforn
             SCREEN-COL        = 32,17
-            SCREEN-LINE       = 33,08
+            SCREEN-LINE       = 33,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-impforn

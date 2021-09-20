@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gordfornvar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 3 dicembre 2020 15:01:48.
+       DATE-WRITTEN.        lunedì 20 settembre 2021 21:18:17.
        REMARKS.
       *{TOTEM}END
 
@@ -197,6 +197,8 @@
       * Data.Check-Box
               10 chk-aperto-BUF PIC 9 VALUE ZERO.
       * Data.Entry-Field
+              10 ef-clientea-BUF PIC z(6).
+      * Data.Entry-Field
               10 ef-referente-BUF PIC X(40).
       * Data.Entry-Field
               10 ef-tel-BUF PIC X(20).
@@ -344,8 +346,8 @@
        77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
        77 TMP-DataSet1-tpiombo-BUF     PIC X(739).
        77 TMP-DataSet1-rlistini-BUF     PIC X(448).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
-       77 TMP-DataSet1-clienti1-BUF     PIC X(1910).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
+       77 TMP-DataSet1-clienti1-BUF     PIC X(3610).
        77 TMP-DataSet1-lockfile-BUF     PIC X(183).
        77 TMP-DataSet1-art-ordforn-BUF     PIC X(302).
        77 TMP-DataSet1-destinif-BUF     PIC X(1322).
@@ -623,35 +625,36 @@
        78  78-ID-ef-des-cli VALUE 5011.
        78  78-ID-ch-rivisto VALUE 5012.
        78  78-ID-chk-aperto VALUE 5013.
-       78  78-ID-ef-referente VALUE 5014.
-       78  78-ID-ef-tel VALUE 5015.
-       78  78-ID-ef-fax VALUE 5016.
-       78  78-ID-ef-mail VALUE 5017.
-       78  78-ID-ef-pag VALUE 5018.
-       78  78-ID-ef-ese-iva VALUE 5019.
-       78  78-ID-ef-note-1 VALUE 5020.
-       78  78-ID-ef-note-2 VALUE 5021.
-       78  78-ID-ef-note-3 VALUE 5022.
-       78  78-ID-ef-note-4 VALUE 5023.
-       78  78-ID-ef-art VALUE 5024.
-       78  78-ID-ef-imb-ord VALUE 5025.
-       78  78-ID-ef-qta VALUE 5026.
-       78  78-ID-ef-uni VALUE 5027.
-       78  78-ID-ef-sconto-1 VALUE 5028.
-       78  78-ID-ef-sconto-2 VALUE 5029.
-       78  78-ID-ef-sconto-3 VALUE 5030.
-       78  78-ID-ef-sconto-4 VALUE 5031.
-       78  78-ID-ef-sconto-5 VALUE 5032.
-       78  78-ID-ef-cons VALUE 5033.
-       78  78-ID-ef-cou VALUE 5034.
-       78  78-ID-ef-add VALUE 5035.
-       78  78-ID-ef-costi-agg VALUE 5036.
-       78  78-ID-ef-imp VALUE 5037.
-       78  78-ID-ef-cod-iva VALUE 5038.
-       78  78-ID-Form1-Gd-1 VALUE 5039.
-       78  78-ID-chk-manuale VALUE 5040.
-       78  78-ID-ef-impforn VALUE 5041.
-       78  78-ID-ef-dest VALUE 5042.
+       78  78-ID-ef-clientea VALUE 5014.
+       78  78-ID-ef-referente VALUE 5015.
+       78  78-ID-ef-tel VALUE 5016.
+       78  78-ID-ef-fax VALUE 5017.
+       78  78-ID-ef-mail VALUE 5018.
+       78  78-ID-ef-pag VALUE 5019.
+       78  78-ID-ef-ese-iva VALUE 5020.
+       78  78-ID-ef-note-1 VALUE 5021.
+       78  78-ID-ef-note-2 VALUE 5022.
+       78  78-ID-ef-note-3 VALUE 5023.
+       78  78-ID-ef-note-4 VALUE 5024.
+       78  78-ID-ef-art VALUE 5025.
+       78  78-ID-ef-imb-ord VALUE 5026.
+       78  78-ID-ef-qta VALUE 5027.
+       78  78-ID-ef-uni VALUE 5028.
+       78  78-ID-ef-sconto-1 VALUE 5029.
+       78  78-ID-ef-sconto-2 VALUE 5030.
+       78  78-ID-ef-sconto-3 VALUE 5031.
+       78  78-ID-ef-sconto-4 VALUE 5032.
+       78  78-ID-ef-sconto-5 VALUE 5033.
+       78  78-ID-ef-cons VALUE 5034.
+       78  78-ID-ef-cou VALUE 5035.
+       78  78-ID-ef-add VALUE 5036.
+       78  78-ID-ef-costi-agg VALUE 5037.
+       78  78-ID-ef-imp VALUE 5038.
+       78  78-ID-ef-cod-iva VALUE 5039.
+       78  78-ID-Form1-Gd-1 VALUE 5040.
+       78  78-ID-chk-manuale VALUE 5041.
+       78  78-ID-ef-impforn VALUE 5042.
+       78  78-ID-ef-dest VALUE 5043.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -859,7 +862,7 @@
            ef-data, 
            Entry-Field, 
            COL 23,17, 
-           LINE 12,08,
+           LINE 12,07,
            LINES 1,31 ,
            SIZE 11,00 ,
            BOXED,
@@ -879,7 +882,7 @@
            ef-data-cons, 
            Entry-Field, 
            COL 62,17, 
-           LINE 12,08,
+           LINE 12,07,
            LINES 1,31 ,
            SIZE 11,00 ,
            BOXED,
@@ -899,7 +902,7 @@
            ef-data-listino, 
            Entry-Field, 
            COL 96,17, 
-           LINE 12,08,
+           LINE 12,07,
            LINES 1,31 ,
            SIZE 11,00 ,
            BOXED,
@@ -919,7 +922,7 @@
            ef-promo, 
            Entry-Field, 
            COL 23,17, 
-           LINE 14,08,
+           LINE 14,07,
            LINES 1,31 ,
            SIZE 16,00 ,
            BOXED,
@@ -939,7 +942,7 @@
            chk-dati-fatt, 
            Check-Box, 
            COL 133,34, 
-           LINE 14,08,
+           LINE 14,07,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED mod-campi,
@@ -957,7 +960,7 @@
            chk-franco, 
            Check-Box, 
            COL 152,17, 
-           LINE 14,08,
+           LINE 14,07,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED mod-campi-testa,
@@ -974,7 +977,7 @@
            ef-cliente, 
            Entry-Field, 
            COL 23,17, 
-           LINE 16,08,
+           LINE 16,07,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -994,7 +997,7 @@
            ef-des-cli, 
            Entry-Field, 
            COL 96,17, 
-           LINE 16,08,
+           LINE 16,07,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -1014,7 +1017,7 @@
            ch-rivisto, 
            Check-Box, 
            COL 152,17, 
-           LINE 15,62,
+           LINE 15,61,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED mod-campi-testa,
@@ -1031,7 +1034,7 @@
            chk-aperto, 
            Check-Box, 
            COL 152,34, 
-           LINE 17,16,
+           LINE 17,15,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED mod-campi,
@@ -1043,12 +1046,32 @@
            VALUE chk-aperto-BUF,
             .
 
+      * ENTRY FIELD
+       10
+           ef-clientea, 
+           Entry-Field, 
+           COL 23,17, 
+           LINE 18,15,
+           LINES 1,31 ,
+           SIZE 7,00 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED mod-campi-testa,
+           FONT IS Small-Font,
+           ID IS 78-ID-ef-clientea,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           MAX-TEXT 6,
+           VALUE ef-clientea-BUF,
+           .
+
       * PUSH BUTTON
        10
            pb-elmovc, 
            Push-Button, 
            COL 137,34, 
-           LINE 11,54,
+           LINE 11,53,
            LINES 2,00 ,
            SIZE 18,67 ,
            ENABLED e-pb-elmovc,
@@ -1065,7 +1088,7 @@
            ef-referente, 
            Entry-Field, 
            COL 23,17, 
-           LINE 20,08,
+           LINE 21,61,
            LINES 1,31 ,
            SIZE 55,00 ,
            BOXED,
@@ -1084,7 +1107,7 @@
            ef-tel, 
            Entry-Field, 
            COL 96,17, 
-           LINE 20,08,
+           LINE 21,61,
            LINES 1,31 ,
            SIZE 55,00 ,
            BOXED,
@@ -1103,7 +1126,7 @@
            ef-fax, 
            Entry-Field, 
            COL 23,17, 
-           LINE 22,08,
+           LINE 23,30,
            LINES 1,31 ,
            SIZE 55,00 ,
            BOXED,
@@ -1122,7 +1145,7 @@
            ef-mail, 
            Entry-Field, 
            COL 96,17, 
-           LINE 22,08,
+           LINE 23,30,
            LINES 1,31 ,
            SIZE 55,00 ,
            BOXED,
@@ -1141,7 +1164,7 @@
            ef-pag, 
            Entry-Field, 
            COL 23,17, 
-           LINE 24,08,
+           LINE 25,00,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -1160,7 +1183,7 @@
            ef-ese-iva, 
            Entry-Field, 
            COL 23,17, 
-           LINE 26,08,
+           LINE 26,69,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -1179,7 +1202,7 @@
            pb-note, 
            Push-Button, 
            COL 5,17, 
-           LINE 29,39,
+           LINE 29,38,
            LINES 2,00 ,
            SIZE 14,33 ,
            EXCEPTION-VALUE 1003,
@@ -1195,7 +1218,7 @@
            ef-note-1, 
            Entry-Field, 
            COL 23,17, 
-           LINE 28,08,
+           LINE 28,38,
            LINES 1,31 ,
            SIZE 55,00 ,
            BOXED,
@@ -1214,7 +1237,7 @@
            ef-note-2, 
            Entry-Field, 
            COL 96,17, 
-           LINE 28,08,
+           LINE 28,38,
            LINES 1,31 ,
            SIZE 55,00 ,
            BOXED,
@@ -1233,7 +1256,7 @@
            ef-note-3, 
            Entry-Field, 
            COL 23,17, 
-           LINE 30,08,
+           LINE 30,07,
            LINES 1,31 ,
            SIZE 55,00 ,
            BOXED,
@@ -1252,7 +1275,7 @@
            ef-note-4, 
            Entry-Field, 
            COL 96,17, 
-           LINE 30,08,
+           LINE 30,07,
            LINES 1,31 ,
            SIZE 55,00 ,
            BOXED,
@@ -1271,7 +1294,7 @@
            Form1-La-4, 
            Label, 
            COL 5,17, 
-           LINE 16,08,
+           LINE 16,07,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -1287,7 +1310,7 @@
            Form1-La-5, 
            Label, 
            COL 5,17, 
-           LINE 12,08,
+           LINE 12,07,
            LINES 1,31 ,
            SIZE 10,00 ,
            FONT IS Small-Font,
@@ -1303,7 +1326,7 @@
            Form1-La-6, 
            Label, 
            COL 80,17, 
-           LINE 12,08,
+           LINE 12,07,
            LINES 1,31 ,
            SIZE 10,00 ,
            FONT IS Small-Font,
@@ -1319,7 +1342,7 @@
            Form1-La-8, 
            Label, 
            COL 5,17, 
-           LINE 24,08,
+           LINE 25,00,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -1335,7 +1358,7 @@
            Form1-La-11, 
            Label, 
            COL 5,17, 
-           LINE 28,08,
+           LINE 28,38,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -1351,7 +1374,7 @@
            Form1-La-12, 
            Label, 
            COL 47,17, 
-           LINE 12,08,
+           LINE 12,07,
            LINES 1,31 ,
            SIZE 13,00 ,
            FONT IS Small-Font,
@@ -1367,7 +1390,7 @@
            lab-pag, 
            Label, 
            COL 32,17, 
-           LINE 24,08,
+           LINE 25,00,
            LINES 1,54 ,
            SIZE 46,00 ,
            COLOR IS 5,
@@ -1384,7 +1407,7 @@
            Form1-La-5aaaca, 
            Label, 
            COL 4,34, 
-           LINE 18,08,
+           LINE 19,61,
            LINES 1,31 ,
            SIZE 17,00 ,
            COLOR IS 80,
@@ -1400,7 +1423,7 @@
            Form1-Br-2aa, 
            Bar,
            COL 21,50, 
-           LINE 18,78,
+           LINE 20,30,
            SIZE 135,33 ,
            ID IS 129,
            HEIGHT-IN-CELLS,
@@ -1415,7 +1438,7 @@
            Form1-La-4a, 
            Label, 
            COL 5,17, 
-           LINE 20,08,
+           LINE 21,61,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -1431,7 +1454,7 @@
            Form1-La-4aa, 
            Label, 
            COL 80,17, 
-           LINE 20,08,
+           LINE 21,61,
            LINES 1,31 ,
            SIZE 13,00 ,
            FONT IS Small-Font,
@@ -1447,7 +1470,7 @@
            Form1-La-4aaa, 
            Label, 
            COL 5,17, 
-           LINE 22,08,
+           LINE 23,30,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -1463,7 +1486,7 @@
            Form1-La-4aaaa, 
            Label, 
            COL 80,17, 
-           LINE 22,08,
+           LINE 23,30,
            LINES 1,31 ,
            SIZE 13,00 ,
            FONT IS Small-Font,
@@ -1479,7 +1502,7 @@
            lab-ins, 
            Label, 
            COL 23,17, 
-           LINE 34,08,
+           LINE 34,07,
            LINES 1,31 ,
            SIZE 45,00 ,
            COLOR IS 5,
@@ -1497,7 +1520,7 @@
            Form1-La-5aaacaa, 
            Label, 
            COL 4,34, 
-           LINE 32,08,
+           LINE 32,07,
            LINES 1,31 ,
            SIZE 17,00 ,
            COLOR IS 80,
@@ -1513,7 +1536,7 @@
            Form1-Br-2aaa, 
            Bar,
            COL 21,50, 
-           LINE 32,78,
+           LINE 32,77,
            SIZE 135,33 ,
            ID IS 16,
            HEIGHT-IN-CELLS,
@@ -1528,7 +1551,7 @@
            Form1-La-11a, 
            Label, 
            COL 5,17, 
-           LINE 34,08,
+           LINE 34,07,
            LINES 1,31 ,
            SIZE 16,00 ,
            FONT IS Small-Font,
@@ -1544,7 +1567,7 @@
            lab-tipo-invio, 
            Label, 
            COL 23,17, 
-           LINE 38,08,
+           LINE 38,07,
            LINES 1,31 ,
            SIZE 45,00 ,
            COLOR IS 5,
@@ -1562,7 +1585,7 @@
            Form1-La-11aa, 
            Label, 
            COL 5,17, 
-           LINE 38,08,
+           LINE 38,07,
            LINES 1,31 ,
            SIZE 16,00 ,
            FONT IS Small-Font,
@@ -1578,7 +1601,7 @@
            Form1-La-5aaacaaa, 
            Label, 
            COL 4,34, 
-           LINE 36,08,
+           LINE 36,07,
            LINES 1,31 ,
            SIZE 17,00 ,
            COLOR IS 80,
@@ -1594,7 +1617,7 @@
            Form1-Br-2aaaa, 
            Bar,
            COL 21,50, 
-           LINE 36,78,
+           LINE 36,77,
            SIZE 135,33 ,
            ID IS 23,
            HEIGHT-IN-CELLS,
@@ -1609,7 +1632,7 @@
            lbl-data-invio, 
            Label, 
            COL 81,00, 
-           LINE 38,08,
+           LINE 38,07,
            LINES 1,31 ,
            SIZE 15,00 ,
            COLOR IS 2,
@@ -1626,7 +1649,7 @@
            lbl-ora-invio, 
            Label, 
            COL 104,00, 
-           LINE 38,08,
+           LINE 38,07,
            LINES 1,31 ,
            SIZE 15,00 ,
            COLOR IS 2,
@@ -1643,7 +1666,7 @@
            Form1-DaLa-3, 
            Label, 
            COL 132,00, 
-           LINE 38,08,
+           LINE 38,07,
            LINES 1,31 ,
            SIZE 18,67 ,
            COLOR IS 2,
@@ -1660,7 +1683,7 @@
            Form1-La-11aaa, 
            Label, 
            COL 70,50, 
-           LINE 38,08,
+           LINE 38,07,
            LINES 1,31 ,
            SIZE 5,00 ,
            FONT IS Small-Font,
@@ -1676,7 +1699,7 @@
            Form1-La-11aaaa, 
            Label, 
            COL 96,50, 
-           LINE 38,08,
+           LINE 38,07,
            LINES 1,31 ,
            SIZE 5,00 ,
            FONT IS Small-Font,
@@ -1692,7 +1715,7 @@
            Form1-La-11aaab, 
            Label, 
            COL 120,17, 
-           LINE 38,08,
+           LINE 38,07,
            LINES 1,31 ,
            SIZE 5,00 ,
            FONT IS Small-Font,
@@ -1708,7 +1731,7 @@
            Form1-La-16, 
            Label, 
            COL 96,17, 
-           LINE 26,08,
+           LINE 26,69,
            LINES 1,15 ,
            SIZE 8,17 ,
            FONT IS Small-Font,
@@ -1724,7 +1747,7 @@
            rb-urgente, 
            Radio-Button, 
            COL 105,84, 
-           LINE 26,08,
+           LINE 26,69,
            LINES 1,15 ,
            SIZE 3,00 ,
            ENABLED mod-campi-testa,
@@ -1745,7 +1768,7 @@
            Form1-La-17, 
            Label, 
            COL 113,84, 
-           LINE 26,08,
+           LINE 26,69,
            LINES 1,15 ,
            SIZE 7,00 ,
            FONT IS Small-Font,
@@ -1761,7 +1784,7 @@
            rb-normale, 
            Radio-Button, 
            COL 121,84, 
-           LINE 26,08,
+           LINE 26,69,
            LINES 1,15 ,
            SIZE 3,00 ,
            ENABLED mod-campi-testa,
@@ -1782,7 +1805,7 @@
            Form1-La-4aaaaa, 
            Label, 
            COL 80,17, 
-           LINE 26,08,
+           LINE 26,69,
            LINES 1,31 ,
            SIZE 13,00 ,
            FONT IS Small-Font,
@@ -1798,7 +1821,7 @@
            lab-tipo-chiusura, 
            Label, 
            COL 23,17, 
-           LINE 42,08,
+           LINE 42,07,
            LINES 1,31 ,
            SIZE 45,00 ,
            COLOR IS 5,
@@ -1816,7 +1839,7 @@
            Form1-La-11aab, 
            Label, 
            COL 5,17, 
-           LINE 42,08,
+           LINE 42,07,
            LINES 1,31 ,
            SIZE 16,00 ,
            FONT IS Small-Font,
@@ -1832,7 +1855,7 @@
            Form1-La-5aaacaaaa, 
            Label, 
            COL 4,34, 
-           LINE 40,08,
+           LINE 40,07,
            LINES 1,31 ,
            SIZE 17,00 ,
            COLOR IS 80,
@@ -1848,7 +1871,7 @@
            Form1-Br-2aaaaa, 
            Bar,
            COL 21,50, 
-           LINE 40,78,
+           LINE 40,77,
            SIZE 135,33 ,
            ID IS 53,
            HEIGHT-IN-CELLS,
@@ -1863,7 +1886,7 @@
            lbl-data-chiusura, 
            Label, 
            COL 81,00, 
-           LINE 42,08,
+           LINE 42,07,
            LINES 1,31 ,
            SIZE 15,00 ,
            COLOR IS 2,
@@ -1880,7 +1903,7 @@
            lbl-ora-chiusura, 
            Label, 
            COL 104,00, 
-           LINE 42,08,
+           LINE 42,07,
            LINES 1,31 ,
            SIZE 15,00 ,
            COLOR IS 2,
@@ -1897,7 +1920,7 @@
            Form1-DaLa-3a, 
            Label, 
            COL 132,00, 
-           LINE 42,08,
+           LINE 42,07,
            LINES 1,31 ,
            SIZE 18,67 ,
            COLOR IS 2,
@@ -1914,7 +1937,7 @@
            Form1-La-11aaac, 
            Label, 
            COL 70,50, 
-           LINE 42,08,
+           LINE 42,07,
            LINES 1,31 ,
            SIZE 5,00 ,
            FONT IS Small-Font,
@@ -1930,7 +1953,7 @@
            Form1-La-11aaaaa, 
            Label, 
            COL 96,50, 
-           LINE 42,08,
+           LINE 42,07,
            LINES 1,31 ,
            SIZE 5,00 ,
            FONT IS Small-Font,
@@ -1946,7 +1969,7 @@
            Form1-La-11aaaba, 
            Label, 
            COL 120,17, 
-           LINE 42,08,
+           LINE 42,07,
            LINES 1,31 ,
            SIZE 5,00 ,
            FONT IS Small-Font,
@@ -1962,7 +1985,7 @@
            lab-ese-iva, 
            Label, 
            COL 32,17, 
-           LINE 26,08,
+           LINE 26,69,
            LINES 1,54 ,
            SIZE 46,00 ,
            COLOR IS 5,
@@ -1979,7 +2002,7 @@
            Form1-La-8a, 
            Label, 
            COL 5,17, 
-           LINE 26,08,
+           LINE 26,69,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -1995,7 +2018,7 @@
            lab-tipo-chiusuraa, 
            Label, 
            COL 23,17, 
-           LINE 44,08,
+           LINE 44,07,
            LINES 1,31 ,
            SIZE 100,00 ,
            COLOR IS 5,
@@ -2013,7 +2036,7 @@
            Form1-La-11aaba, 
            Label, 
            COL 5,17, 
-           LINE 44,08,
+           LINE 44,07,
            LINES 1,31 ,
            SIZE 16,00 ,
            FONT IS Small-Font,
@@ -2029,7 +2052,7 @@
            lab-cliente, 
            Label, 
            COL 31,50, 
-           LINE 16,08,
+           LINE 16,07,
            LINES 1,31 ,
            SIZE 45,00 ,
            COLOR IS 5,
@@ -2047,7 +2070,7 @@
            Form1-La-3, 
            Label, 
            COL 144,84, 
-           LINE 15,62,
+           LINE 15,61,
            LINES 1,31 ,
            SIZE 6,00 ,
            FONT IS Small-Font,
@@ -2064,7 +2087,7 @@
            Form1-La-4b, 
            Label, 
            COL 80,17, 
-           LINE 16,08,
+           LINE 16,07,
            LINES 1,31 ,
            SIZE 13,00 ,
            FONT IS Small-Font,
@@ -2080,7 +2103,7 @@
            lab-des-cli, 
            Label, 
            COL 104,84, 
-           LINE 15,62,
+           LINE 15,61,
            LINES 1,31 ,
            SIZE 39,00 ,
            COLOR IS 5,
@@ -2098,7 +2121,7 @@
            lab-des-loca, 
            Label, 
            COL 104,84, 
-           LINE 16,77,
+           LINE 16,76,
            LINES 1,31 ,
            SIZE 39,00 ,
            COLOR IS 5,
@@ -2116,7 +2139,7 @@
            pb-solleciti, 
            Push-Button, 
            COL 117,67, 
-           LINE 11,54,
+           LINE 11,53,
            LINES 2,00 ,
            SIZE 18,67 ,
            EXCEPTION-VALUE 1008,
@@ -2132,7 +2155,7 @@
            Form1-La-6a, 
            Label, 
            COL 5,17, 
-           LINE 14,08,
+           LINE 14,07,
            LINES 1,31 ,
            SIZE 10,00 ,
            FONT IS Small-Font,
@@ -2148,7 +2171,7 @@
            lab-promo, 
            Label, 
            COL 40,17, 
-           LINE 14,08,
+           LINE 14,07,
            LINES 1,31 ,
            SIZE 69,33 ,
            COLOR IS 5,
@@ -2166,7 +2189,7 @@
            Form1-La-3a, 
            Label, 
            COL 136,84, 
-           LINE 13,93,
+           LINE 13,92,
            LINES 1,31 ,
            SIZE 14,00 ,
            FONT IS Small-Font,
@@ -2183,7 +2206,7 @@
            Form1-La-3aa, 
            Label, 
            COL 145,00, 
-           LINE 17,00,
+           LINE 16,99,
            LINES 1,31 ,
            SIZE 5,83 ,
            FONT IS Small-Font,
@@ -2199,7 +2222,7 @@
            lab-dati-fatt, 
            Label, 
            COL 110,50, 
-           LINE 13,93,
+           LINE 13,92,
            LINES 1,31 ,
            SIZE 21,00 ,
            FONT IS Small-Font,
@@ -2209,6 +2232,22 @@
            TRANSPARENT,
            TITLE "Stampa dati di fatturazione",
            VISIBLE v-dati-fatt,
+           .
+
+      * LABEL
+       10
+           Form1-La-4c, 
+           Label, 
+           COL 5,17, 
+           LINE 18,15,
+           LINES 1,31 ,
+           SIZE 17,00 ,
+           FONT IS Small-Font,
+           ID IS 13,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Evasione",
            .
 
       * PAGE
@@ -2231,7 +2270,7 @@
            ef-art, 
            Entry-Field, 
            COL 20,17, 
-           LINE 31,08,
+           LINE 31,07,
            LINES 1,31 ,
            SIZE 8,00 ,
            BOXED,
@@ -2251,7 +2290,7 @@
            ef-imb-ord, 
            Entry-Field, 
            COL 82,17, 
-           LINE 31,08,
+           LINE 31,07,
            LINES 1,31 ,
            SIZE 5,00 ,
            BOXED,
@@ -2271,7 +2310,7 @@
            ef-qta, 
            Entry-Field, 
            COL 120,17, 
-           LINE 31,08,
+           LINE 31,07,
            LINES 1,31 ,
            SIZE 9,00 ,
            BOXED,
@@ -2291,7 +2330,7 @@
            ef-uni, 
            Entry-Field, 
            COL 20,17, 
-           LINE 33,08,
+           LINE 33,07,
            LINES 1,31 ,
            SIZE 11,00 ,
            BOXED,
@@ -2311,7 +2350,7 @@
            ef-sconto-1, 
            Entry-Field, 
            COL 70,17, 
-           LINE 33,08,
+           LINE 33,07,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -2331,7 +2370,7 @@
            ef-sconto-2, 
            Entry-Field, 
            COL 82,17, 
-           LINE 33,08,
+           LINE 33,07,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -2351,7 +2390,7 @@
            ef-sconto-3, 
            Entry-Field, 
            COL 94,17, 
-           LINE 33,08,
+           LINE 33,07,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -2371,7 +2410,7 @@
            ef-sconto-4, 
            Entry-Field, 
            COL 107,17, 
-           LINE 33,08,
+           LINE 33,07,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -2391,7 +2430,7 @@
            ef-sconto-5, 
            Entry-Field, 
            COL 120,17, 
-           LINE 33,08,
+           LINE 33,07,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -2411,7 +2450,7 @@
            ef-cons, 
            Entry-Field, 
            COL 20,17, 
-           LINE 35,08,
+           LINE 35,07,
            LINES 1,31 ,
            SIZE 10,00 ,
            BOXED,
@@ -2431,7 +2470,7 @@
            ef-cou, 
            Entry-Field, 
            COL 70,17, 
-           LINE 35,08,
+           LINE 35,07,
            LINES 1,31 ,
            SIZE 10,00 ,
            BOXED,
@@ -2451,7 +2490,7 @@
            ef-add, 
            Entry-Field, 
            COL 94,17, 
-           LINE 35,08,
+           LINE 35,07,
            LINES 1,31 ,
            SIZE 10,00 ,
            BOXED,
@@ -2471,7 +2510,7 @@
            ef-costi-agg, 
            Entry-Field, 
            COL 120,17, 
-           LINE 35,08,
+           LINE 35,07,
            LINES 1,31 ,
            SIZE 10,00 ,
            BOXED,
@@ -2491,7 +2530,7 @@
            ef-imp, 
            Entry-Field, 
            COL 20,17, 
-           LINE 37,08,
+           LINE 37,07,
            LINES 1,31 ,
            SIZE 11,00 ,
            BOXED,
@@ -2512,7 +2551,7 @@
            ef-cod-iva, 
            Entry-Field, 
            COL 70,17, 
-           LINE 37,08,
+           LINE 37,07,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -2532,7 +2571,7 @@
            lbl-anno-ddt, 
            Label, 
            COL 24,17, 
-           LINE 41,08,
+           LINE 41,07,
            LINES 1,31 ,
            SIZE 5,00 ,
            COLOR IS 5,
@@ -2549,7 +2588,7 @@
            lbl-num-ddt, 
            Label, 
            COL 12,17, 
-           LINE 41,08,
+           LINE 41,07,
            LINES 1,31 ,
            SIZE 9,00 ,
            COLOR IS 5,
@@ -2567,7 +2606,7 @@
            lbl-dt-carico, 
            Label, 
            COL 37,17, 
-           LINE 41,08,
+           LINE 41,07,
            LINES 1,31 ,
            SIZE 10,00 ,
            COLOR IS 5,
@@ -2584,7 +2623,7 @@
            lbl-ora-carico, 
            Label, 
            COL 54,17, 
-           LINE 41,08,
+           LINE 41,07,
            LINES 1,31 ,
            SIZE 5,00 ,
            COLOR IS 5,
@@ -2601,7 +2640,7 @@
            lbl-utente-carico, 
            Label, 
            COL 69,17, 
-           LINE 41,08,
+           LINE 41,07,
            LINES 1,31 ,
            SIZE 18,67 ,
            COLOR IS 5,
@@ -2618,7 +2657,7 @@
            Form1-Gd-1, 
            Grid, 
            COL 5,17, 
-           LINE 12,08,
+           LINE 12,07,
            LINES 17,69 ,
            SIZE 150,00 ,
            ADJUSTABLE-COLUMNS,
@@ -2658,7 +2697,7 @@
            pb-grid-elimina, 
            Push-Button, 
            COL 142,67, 
-           LINE 30,39,
+           LINE 30,38,
            LINES 2,15 ,
            SIZE 13,50 ,
            BITMAP-HANDLE STRIP_GRID_GCLIENTI-BMP,
@@ -2683,7 +2722,7 @@
            pb-articoli, 
            Push-Button, 
            COL 139,50, 
-           LINE 35,85,
+           LINE 35,84,
            LINES 29,00 ,
            SIZE 83,00 ,
            BITMAP-HANDLE DA-CONF-BMP,
@@ -2706,7 +2745,7 @@
            pb-grid-nuovo, 
            Push-Button, 
            COL 129,67, 
-           LINE 30,39,
+           LINE 30,38,
            LINES 2,15 ,
            SIZE 13,50 ,
            BITMAP-HANDLE STRIP_GRID_GCLIENTI-BMP,
@@ -2731,7 +2770,7 @@
            lab-gia, 
            Label, 
            COL 5,17, 
-           LINE 44,08,
+           LINE 44,07,
            LINES 1,31 ,
            SIZE 16,00 ,
            COLOR IS Colorgiacenza,
@@ -2748,7 +2787,7 @@
            lab-imp, 
            Label, 
            COL 63,17, 
-           LINE 44,08,
+           LINE 44,07,
            LINES 1,31 ,
            SIZE 19,00 ,
            COLOR IS ColorImpegnato,
@@ -2765,7 +2804,7 @@
            lab-ord, 
            Label, 
            COL 121,34, 
-           LINE 44,08,
+           LINE 44,07,
            LINES 1,31 ,
            SIZE 19,00 ,
            COLOR IS ColorOrdinato,
@@ -2782,7 +2821,7 @@
            lab-giacenza, 
            Label, 
            COL 22,17, 
-           LINE 44,08,
+           LINE 44,07,
            LINES 1,31 ,
            SIZE 10,00 ,
            COLOR IS ColorGiacenza,
@@ -2800,7 +2839,7 @@
            lab-impegnato, 
            Label, 
            COL 83,00, 
-           LINE 44,08,
+           LINE 44,07,
            LINES 1,31 ,
            SIZE 10,00 ,
            COLOR IS ColorImpegnato,
@@ -2818,7 +2857,7 @@
            lab-ordinato, 
            Label, 
            COL 142,00, 
-           LINE 44,08,
+           LINE 44,07,
            LINES 1,31 ,
            SIZE 10,00 ,
            COLOR IS ColorOrdinato,
@@ -2836,7 +2875,7 @@
            Form1-Br-1, 
            Bar,
            COL 3,17, 
-           LINE 43,54,
+           LINE 43,53,
            SIZE 153,67 ,
            ID IS 78,
            HEIGHT-IN-CELLS,
@@ -2851,7 +2890,7 @@
            Form1-La-19, 
            Label, 
            COL 5,17, 
-           LINE 31,08,
+           LINE 31,07,
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -2867,7 +2906,7 @@
            Form1-La-20, 
            Label, 
            COL 114,67, 
-           LINE 31,08,
+           LINE 31,07,
            LINES 1,31 ,
            SIZE 3,00 ,
            FONT IS Small-Font,
@@ -2883,7 +2922,7 @@
            Form1-La-21, 
            Label, 
            COL 5,17, 
-           LINE 33,08,
+           LINE 33,07,
            LINES 1,31 ,
            SIZE 13,00 ,
            FONT IS Small-Font,
@@ -2899,7 +2938,7 @@
            Form1-La-22, 
            Label, 
            COL 5,17, 
-           LINE 35,08,
+           LINE 35,07,
            LINES 1,31 ,
            SIZE 14,00 ,
            FONT IS Small-Font,
@@ -2915,7 +2954,7 @@
            lab-imposta, 
            Label, 
            COL 55,17, 
-           LINE 35,08,
+           LINE 35,07,
            LINES 1,31 ,
            SIZE 13,00 ,
            FONT IS Small-Font,
@@ -2932,7 +2971,7 @@
            Form1-La-24, 
            Label, 
            COL 5,17, 
-           LINE 37,08,
+           LINE 37,07,
            LINES 1,31 ,
            SIZE 14,00 ,
            FONT IS Small-Font,
@@ -2948,7 +2987,7 @@
            Form1-La-25, 
            Label, 
            COL 61,17, 
-           LINE 33,08,
+           LINE 33,07,
            LINES 1,31 ,
            SIZE 7,00 ,
            FONT IS Small-Font,
@@ -2965,7 +3004,7 @@
            Form1-La-26, 
            Label, 
            COL 64,67, 
-           LINE 37,08,
+           LINE 37,07,
            LINES 1,31 ,
            SIZE 3,50 ,
            FONT IS Small-Font,
@@ -2981,7 +3020,7 @@
            lab-art, 
            Label, 
            COL 29,17, 
-           LINE 31,08,
+           LINE 31,07,
            LINES 1,31 ,
            SIZE 40,00 ,
            COLOR IS 5,
@@ -2999,7 +3038,7 @@
            lab-iva, 
            Label, 
            COL 78,17, 
-           LINE 37,16,
+           LINE 37,15,
            LINES 2,08 ,
            SIZE 27,00 ,
            COLOR IS 5,
@@ -3017,7 +3056,7 @@
            lab-impostaa, 
            Label, 
            COL 84,17, 
-           LINE 35,08,
+           LINE 35,07,
            LINES 1,31 ,
            SIZE 9,00 ,
            FONT IS Small-Font,
@@ -3033,7 +3072,7 @@
            Form1-La-20a, 
            Label, 
            COL 75,67, 
-           LINE 31,08,
+           LINE 31,07,
            LINES 1,31 ,
            SIZE 6,00 ,
            FONT IS Small-Font,
@@ -3049,7 +3088,7 @@
            lab-imb, 
            Label, 
            COL 88,17, 
-           LINE 31,08,
+           LINE 31,07,
            LINES 1,31 ,
            SIZE 25,00 ,
            COLOR IS 5,
@@ -3067,7 +3106,7 @@
            lab-impostaaa, 
            Label, 
            COL 109,17, 
-           LINE 35,08,
+           LINE 35,07,
            LINES 1,31 ,
            SIZE 9,00 ,
            FONT IS Small-Font,
@@ -3084,7 +3123,7 @@
            Form1-La-5aaacab, 
            Label, 
            COL 4,34, 
-           LINE 39,08,
+           LINE 39,07,
            LINES 1,31 ,
            SIZE 17,00 ,
            COLOR IS 80,
@@ -3100,7 +3139,7 @@
            Form1-Br-2aab, 
            Bar,
            COL 21,50, 
-           LINE 39,78,
+           LINE 39,77,
            SIZE 135,33 ,
            ID IS 93,
            HEIGHT-IN-CELLS,
@@ -3115,7 +3154,7 @@
            lab-impostaaaa, 
            Label, 
            COL 6,84, 
-           LINE 41,08,
+           LINE 41,07,
            LINES 1,31 ,
            SIZE 4,00 ,
            FONT IS Small-Font,
@@ -3131,7 +3170,7 @@
            lab-impostaaaaa, 
            Label, 
            COL 22,17, 
-           LINE 41,08,
+           LINE 41,07,
            LINES 1,31 ,
            SIZE 2,00 ,
            FONT IS Small-Font,
@@ -3147,7 +3186,7 @@
            lab-impostaaab, 
            Label, 
            COL 32,17, 
-           LINE 41,08,
+           LINE 41,07,
            LINES 1,31 ,
            SIZE 4,00 ,
            FONT IS Small-Font,
@@ -3163,7 +3202,7 @@
            lab-impostaaaba, 
            Label, 
            COL 50,17, 
-           LINE 41,08,
+           LINE 41,07,
            LINES 1,31 ,
            SIZE 4,00 ,
            FONT IS Small-Font,
@@ -3179,7 +3218,7 @@
            lab-impostaaabaa, 
            Label, 
            COL 62,17, 
-           LINE 41,08,
+           LINE 41,07,
            LINES 1,31 ,
            SIZE 6,00 ,
            FONT IS Small-Font,
@@ -3195,7 +3234,7 @@
            lbl-prz-finale, 
            Label, 
            COL 120,17, 
-           LINE 37,08,
+           LINE 37,07,
            LINES 1,31 ,
            SIZE 13,00 ,
            COLOR IS 5,
@@ -3213,7 +3252,7 @@
            lab-impostaab, 
            Label, 
            COL 107,17, 
-           LINE 37,08,
+           LINE 37,07,
            LINES 1,31 ,
            SIZE 11,00 ,
            FONT IS Large-Font,
@@ -3229,7 +3268,7 @@
            pb-elmovcd, 
            Push-Button, 
            COL 138,67, 
-           LINE 40,58,
+           LINE 40,57,
            LINES 2,00 ,
            SIZE 16,00 ,
            ENABLED e-pb-elmovcd,
@@ -3246,7 +3285,7 @@
            lab-articoli, 
            Label, 
            COL 131,67, 
-           LINE 32,93,
+           LINE 32,92,
            LINES 2,46 ,
            SIZE 24,33 ,
            COLOR IS 5,
@@ -3265,7 +3304,7 @@
            pb-sol-r, 
            Push-Button, 
            COL 89,17, 
-           LINE 40,62,
+           LINE 40,61,
            LINES 2,00 ,
            SIZE 16,00 ,
            EXCEPTION-VALUE 1009,
@@ -3282,7 +3321,7 @@
            lab-impostaaabb, 
            Label, 
            COL 106,17, 
-           LINE 41,08,
+           LINE 41,07,
            LINES 1,31 ,
            SIZE 4,00 ,
            FONT IS Small-Font,
@@ -3298,7 +3337,7 @@
            lbl-dt-arrivo, 
            Label, 
            COL 111,17, 
-           LINE 41,08,
+           LINE 41,07,
            LINES 1,31 ,
            SIZE 10,00 ,
            COLOR IS 5,
@@ -3315,7 +3354,7 @@
            lab-impostaaaab, 
            Label, 
            COL 124,17, 
-           LINE 41,08,
+           LINE 41,07,
            LINES 1,31 ,
            SIZE 4,00 ,
            FONT IS Small-Font,
@@ -3331,7 +3370,7 @@
            lbl-qta-arr, 
            Label, 
            COL 128,17, 
-           LINE 41,08,
+           LINE 41,07,
            LINES 1,31 ,
            SIZE 9,00 ,
            COLOR IS 5,
@@ -3349,7 +3388,7 @@
            chk-manuale, 
            Check-Box, 
            COL 70,17, 
-           LINE 30,77,
+           LINE 30,76,
            LINES 16,00 ,
            SIZE 16,00 ,
            BITMAP-HANDLE MOD_PREZZO-BMP,
@@ -3370,7 +3409,7 @@
            lab-impforn, 
            Label, 
            COL 39,17, 
-           LINE 33,08,
+           LINE 33,07,
            LINES 1,31 ,
            SIZE 19,00 ,
            COLOR IS 5,
@@ -3388,7 +3427,7 @@
            ef-impforn, 
            Entry-Field, 
            COL 32,17, 
-           LINE 33,08,
+           LINE 33,07,
            LINES 1,31 ,
            SIZE 6,00 ,
            BOXED,
@@ -13101,6 +13140,16 @@
                MOVE 5011 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
+      * ef-clientea's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-clientea-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 1 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 5014 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
       * ef-referente's Validation
            SET TOTEM-CHECK-OK TO FALSE
            PERFORM ef-referente-VALIDATION
@@ -13108,7 +13157,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5014 TO CONTROL-ID
+               MOVE 5015 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-tel's Validation
@@ -13118,7 +13167,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5015 TO CONTROL-ID
+               MOVE 5016 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-fax's Validation
@@ -13128,7 +13177,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5016 TO CONTROL-ID
+               MOVE 5017 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-mail's Validation
@@ -13138,7 +13187,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5017 TO CONTROL-ID
+               MOVE 5018 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-pag's Validation
@@ -13148,7 +13197,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5018 TO CONTROL-ID
+               MOVE 5019 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-ese-iva's Validation
@@ -13158,7 +13207,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5019 TO CONTROL-ID
+               MOVE 5020 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-1's Validation
@@ -13168,7 +13217,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5020 TO CONTROL-ID
+               MOVE 5021 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-2's Validation
@@ -13178,7 +13227,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5021 TO CONTROL-ID
+               MOVE 5022 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-3's Validation
@@ -13188,7 +13237,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5022 TO CONTROL-ID
+               MOVE 5023 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-4's Validation
@@ -13198,7 +13247,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5023 TO CONTROL-ID
+               MOVE 5024 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-art's Validation
@@ -13208,7 +13257,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5024 TO CONTROL-ID
+               MOVE 5025 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-imb-ord's Validation
@@ -13218,7 +13267,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5025 TO CONTROL-ID
+               MOVE 5026 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-qta's Validation
@@ -13228,7 +13277,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5026 TO CONTROL-ID
+               MOVE 5027 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-uni's Validation
@@ -13238,7 +13287,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5027 TO CONTROL-ID
+               MOVE 5028 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-sconto-1's Validation
@@ -13248,7 +13297,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5028 TO CONTROL-ID
+               MOVE 5029 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-sconto-2's Validation
@@ -13258,7 +13307,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5029 TO CONTROL-ID
+               MOVE 5030 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-sconto-3's Validation
@@ -13268,7 +13317,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5030 TO CONTROL-ID
+               MOVE 5031 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-sconto-4's Validation
@@ -13278,7 +13327,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5031 TO CONTROL-ID
+               MOVE 5032 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-sconto-5's Validation
@@ -13288,7 +13337,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5032 TO CONTROL-ID
+               MOVE 5033 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cons's Validation
@@ -13298,7 +13347,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5033 TO CONTROL-ID
+               MOVE 5034 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cou's Validation
@@ -13308,7 +13357,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5034 TO CONTROL-ID
+               MOVE 5035 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-add's Validation
@@ -13318,7 +13367,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5035 TO CONTROL-ID
+               MOVE 5036 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-costi-agg's Validation
@@ -13328,7 +13377,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5036 TO CONTROL-ID
+               MOVE 5037 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-imp's Validation
@@ -13338,7 +13387,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5037 TO CONTROL-ID
+               MOVE 5038 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cod-iva's Validation
@@ -13348,7 +13397,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5038 TO CONTROL-ID
+               MOVE 5039 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-impforn's Validation
@@ -13358,7 +13407,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5041 TO CONTROL-ID
+               MOVE 5042 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-dest's Validation
@@ -13366,7 +13415,7 @@
            PERFORM ef-dest-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5042 TO CONTROL-ID
+               MOVE 5043 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
            .
@@ -13522,6 +13571,23 @@
            PERFORM ef-des-cli-BEFORE-VALIDATION
            SET TOTEM-CHECK-OK TO TRUE
            PERFORM ef-des-cli-AFTER-VALIDATION
+           .
+
+       ef-clientea-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-clientea, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-clientea-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-clientea, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-clientea's Validation
+       ef-clientea-VALIDATION.
+           PERFORM ef-clientea-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-clientea-AFTER-VALIDATION
            .
 
        ef-referente-BEFORE-VALIDATION.
@@ -14029,6 +14095,8 @@
               ELSE
                  MOVE 0 TO tof-aperto
               END-IF
+      * DB_Entry-Field : ef-clientea
+           MOVE ef-clientea-BUF TO tof-evasione
       * DB_Entry-Field : ef-referente
            MOVE ef-referente-BUF TO tof-referente
       * DB_Entry-Field : ef-tel
@@ -14159,6 +14227,8 @@
               ELSE
                  MOVE 0 TO chk-aperto-BUF
               END-IF
+      * DB_Entry-Field : ef-clientea
+           MOVE tof-evasione TO ef-clientea-BUF
       * DB_Entry-Field : ef-referente
            MOVE tof-referente TO ef-referente-BUF
       * DB_Entry-Field : ef-tel
@@ -14380,6 +14450,13 @@
               move 78-ID-chk-aperto to store-id 
            end-if
 
+           if tof-evasione not = old-tof-evasione
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-ef-clientea è l'ID del campo ef-clientea
+              move 78-ID-ef-clientea to store-id 
+           end-if
+
            if tof-referente not = old-tof-referente
               and SiSalvato
               set NoSalvato to true
@@ -14534,6 +14611,10 @@
            when 78-ID-ef-des-cli
                 move 1 to StatusHelp
                 perform STATUS-HELP
+           |78-ID-ef-clientea è l'ID del campo ef-clientea
+           when 78-ID-ef-clientea
+                move 1 to StatusHelp
+                perform STATUS-HELP
            |78-ID-ef-pag è l'ID del campo ef-pag
            when 78-ID-ef-pag
                 move 1 to StatusHelp
@@ -14682,6 +14763,11 @@
 
            |78-ID-ef-des-cli è l'ID del campo ef-des-cli
            when 78-ID-ef-des-cli
+                move 0 to StatusHelp
+                perform STATUS-HELP
+
+           |78-ID-ef-clientea è l'ID del campo ef-clientea
+           when 78-ID-ef-clientea
                 move 0 to StatusHelp
                 perform STATUS-HELP
 
@@ -14859,17 +14945,20 @@
            |78-ID-ef-des-cli è l'ID del campo ef-des-cli
            when 78-ID-ef-des-cli
                 perform CONTROLLO
+           |78-ID-ef-clientea è l'ID del campo ef-clientea
+           when 78-ID-ef-clientea
+                perform CONTROLLO
            |78-ID-ef-pag è l'ID del campo ef-pag
            when 78-ID-ef-pag
                 perform CONTROLLO
            |78-ID-ef-ese-iva è l'ID del campo ef-ese-iva
            when 78-ID-ef-ese-iva
                 perform CONTROLLO
-           |27 è l'ID del campo rb-urgente
-           when 27
-                perform CONTROLLO
-           |28 è l'ID del campo rb-normale
+           |28 è l'ID del campo rb-urgente
            when 28
+                perform CONTROLLO
+           |29 è l'ID del campo rb-normale
+           when 29
                 perform CONTROLLO
            |78-ID-ef-art è l'ID del campo ef-art
            when 78-ID-ef-art
@@ -15233,48 +15322,50 @@
            WHEN 5012 MOVE "Rivisto/Non rivisto" to TOTEM-HINT-TEXT
            WHEN 5013 MOVE "Aperto = NON lavora sull'ordinato" to 
            TOTEM-HINT-TEXT
-           WHEN 5014 MOVE "Digitare il nome del referente" to 
+           WHEN 5014 MOVE "Digitare il numero di evasione" to 
            TOTEM-HINT-TEXT
-           WHEN 5015 MOVE "Digitare il telefono diretto" to 
+           WHEN 5015 MOVE "Digitare il nome del referente" to 
            TOTEM-HINT-TEXT
-           WHEN 5016 MOVE "Digitare il Fax" to TOTEM-HINT-TEXT
-           WHEN 5017 MOVE "Digitare la Mail" to TOTEM-HINT-TEXT
-           WHEN 5018 MOVE "Digitare il codice di pagamento" to 
+           WHEN 5016 MOVE "Digitare il telefono diretto" to 
            TOTEM-HINT-TEXT
-           WHEN 5019 MOVE "Digitare il codice di Esenzione Iva" to 
+           WHEN 5017 MOVE "Digitare il Fax" to TOTEM-HINT-TEXT
+           WHEN 5018 MOVE "Digitare la Mail" to TOTEM-HINT-TEXT
+           WHEN 5019 MOVE "Digitare il codice di pagamento" to 
            TOTEM-HINT-TEXT
-           WHEN 5020 MOVE "Digitare i dati di consegna" to 
+           WHEN 5020 MOVE "Digitare il codice di Esenzione Iva" to 
            TOTEM-HINT-TEXT
-           WHEN 5021 MOVE "Digitare le note di destinazione" to 
+           WHEN 5021 MOVE "Digitare i dati di consegna" to 
            TOTEM-HINT-TEXT
            WHEN 5022 MOVE "Digitare le note di destinazione" to 
            TOTEM-HINT-TEXT
            WHEN 5023 MOVE "Digitare le note di destinazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5024 MOVE "Digitare il codice dell'articolo" to 
+           WHEN 5024 MOVE "Digitare le note di destinazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5025 MOVE "Imballo ordinato" to TOTEM-HINT-TEXT
-           WHEN 5026 MOVE "Digitare la quantit" to TOTEM-HINT-TEXT
-           WHEN 5027 MOVE "Digitare il prezzo unitario" to 
+           WHEN 5025 MOVE "Digitare il codice dell'articolo" to 
            TOTEM-HINT-TEXT
-           WHEN 5028 MOVE "Percentuale di sconto" to TOTEM-HINT-TEXT
+           WHEN 5026 MOVE "Imballo ordinato" to TOTEM-HINT-TEXT
+           WHEN 5027 MOVE "Digitare la quantit" to TOTEM-HINT-TEXT
+           WHEN 5028 MOVE "Digitare il prezzo unitario" to 
+           TOTEM-HINT-TEXT
            WHEN 5029 MOVE "Percentuale di sconto" to TOTEM-HINT-TEXT
            WHEN 5030 MOVE "Percentuale di sconto" to TOTEM-HINT-TEXT
            WHEN 5031 MOVE "Percentuale di sconto" to TOTEM-HINT-TEXT
            WHEN 5032 MOVE "Percentuale di sconto" to TOTEM-HINT-TEXT
-           WHEN 5033 MOVE "Valore imposta sul consumo" to 
+           WHEN 5033 MOVE "Percentuale di sconto" to TOTEM-HINT-TEXT
+           WHEN 5034 MOVE "Valore imposta sul consumo" to 
            TOTEM-HINT-TEXT
-           WHEN 5034 MOVE "Valore imposta COU/COBAT" to TOTEM-HINT-TEXT
-           WHEN 5035 MOVE "Valore addizionale piombo" to TOTEM-HINT-TEXT
+           WHEN 5035 MOVE "Valore imposta COU/COBAT" to TOTEM-HINT-TEXT
            WHEN 5036 MOVE "Valore addizionale piombo" to TOTEM-HINT-TEXT
-           WHEN 5037 MOVE "Valore imponibile della merce" to 
+           WHEN 5037 MOVE "Valore addizionale piombo" to TOTEM-HINT-TEXT
+           WHEN 5038 MOVE "Valore imponibile della merce" to 
            TOTEM-HINT-TEXT
-           WHEN 5038 MOVE "Codice I.V.A." to TOTEM-HINT-TEXT
-           WHEN 5040 MOVE "Variazione manuale di Prezzo/Imposte" to 
+           WHEN 5039 MOVE "Codice I.V.A." to TOTEM-HINT-TEXT
+           WHEN 5041 MOVE "Variazione manuale di Prezzo/Imposte" to 
            TOTEM-HINT-TEXT
-           WHEN 5041 MOVE "Indicare l'assoggettamento imposte" to 
+           WHEN 5042 MOVE "Indicare l'assoggettamento imposte" to 
            TOTEM-HINT-TEXT
-           WHEN 5042 MOVE "Immettere il cliente dell'ordine" to 
+           WHEN 5043 MOVE "Immettere il cliente dell'ordine" to 
            TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
@@ -15292,34 +15383,35 @@
            When 5011 PERFORM ef-num-ord-BeforeProcedure
            When 5012 PERFORM Form1-DaCb-1-BeforeProcedure
            When 5013 PERFORM Form1-DaCb-1-BeforeProcedure
-           When 5014 PERFORM ef-note-2-BeforeProcedure
+           When 5014 PERFORM ef-num-ord-BeforeProcedure
            When 5015 PERFORM ef-note-2-BeforeProcedure
            When 5016 PERFORM ef-note-2-BeforeProcedure
            When 5017 PERFORM ef-note-2-BeforeProcedure
-           When 5018 PERFORM ef-pag-BeforeProcedure
+           When 5018 PERFORM ef-note-2-BeforeProcedure
            When 5019 PERFORM ef-pag-BeforeProcedure
-           When 5020 PERFORM ef-note-1-BeforeProcedure
-           When 5021 PERFORM ef-note-2-BeforeProcedure
-           When 5022 PERFORM ef-note-3-BeforeProcedure
-           When 5023 PERFORM ef-note-4-BeforeProcedure
-           When 5024 PERFORM ef-art-BeforeProcedure
-           When 5025 PERFORM ef-qta-BeforeProcedure
+           When 5020 PERFORM ef-pag-BeforeProcedure
+           When 5021 PERFORM ef-note-1-BeforeProcedure
+           When 5022 PERFORM ef-note-2-BeforeProcedure
+           When 5023 PERFORM ef-note-3-BeforeProcedure
+           When 5024 PERFORM ef-note-4-BeforeProcedure
+           When 5025 PERFORM ef-art-BeforeProcedure
            When 5026 PERFORM ef-qta-BeforeProcedure
-           When 5027 PERFORM ef-uni-BeforeProcedure
-           When 5028 PERFORM ef-sconto-BeforeProcedure
+           When 5027 PERFORM ef-qta-BeforeProcedure
+           When 5028 PERFORM ef-uni-BeforeProcedure
            When 5029 PERFORM ef-sconto-BeforeProcedure
            When 5030 PERFORM ef-sconto-BeforeProcedure
            When 5031 PERFORM ef-sconto-BeforeProcedure
            When 5032 PERFORM ef-sconto-BeforeProcedure
-           When 5033 PERFORM ef-cons-BeforeProcedure
-           When 5034 PERFORM ef-cou-BeforeProcedure
+           When 5033 PERFORM ef-sconto-BeforeProcedure
+           When 5034 PERFORM ef-cons-BeforeProcedure
            When 5035 PERFORM ef-cou-BeforeProcedure
            When 5036 PERFORM ef-cou-BeforeProcedure
-           When 5037 PERFORM ef-imp-BeforeProcedure
-           When 5038 PERFORM ef-cod-iva-BeforeProcedure
-           When 5040 PERFORM chk-manuale-BeforeProcedure
-           When 5041 PERFORM Form1-DaEf-1-BeforeProcedure
-           When 5042 PERFORM ef-dest-BeforeProcedure
+           When 5037 PERFORM ef-cou-BeforeProcedure
+           When 5038 PERFORM ef-imp-BeforeProcedure
+           When 5039 PERFORM ef-cod-iva-BeforeProcedure
+           When 5041 PERFORM chk-manuale-BeforeProcedure
+           When 5042 PERFORM Form1-DaEf-1-BeforeProcedure
+           When 5043 PERFORM ef-dest-BeforeProcedure
            END-EVALUATE
            PERFORM Form1-DISPLAY-STATUS-MSG
            perform Form1-BEFORE-SCREEN
@@ -15340,36 +15432,37 @@
            When 5011 PERFORM ef-num-ord-AfterProcedure
            When 5012 PERFORM Form1-DaCb-1-AfterProcedure
            When 5013 PERFORM Form1-DaCb-1-AfterProcedure
-           When 5014 PERFORM ef-note-2-AfterProcedure
+           When 5014 PERFORM ef-num-ord-AfterProcedure
            When 5015 PERFORM ef-note-2-AfterProcedure
            When 5016 PERFORM ef-note-2-AfterProcedure
            When 5017 PERFORM ef-note-2-AfterProcedure
-           When 5018 PERFORM ef-pag-AfterProcedure
+           When 5018 PERFORM ef-note-2-AfterProcedure
            When 5019 PERFORM ef-pag-AfterProcedure
-           When 5020 PERFORM ef-note-1-AfterProcedure
-           When 5021 PERFORM ef-note-2-AfterProcedure
-           When 5022 PERFORM ef-note-3-AfterProcedure
-           When 5023 PERFORM ef-note-4-AfterProcedure
-           When 27 PERFORM rb-man-AfterProcedure
-           When 28 PERFORM rb-gui-AfterProcedure
-           When 5024 PERFORM ef-art-AfterProcedure
-           When 5025 PERFORM ef-qta-AfterProcedure
+           When 5020 PERFORM ef-pag-AfterProcedure
+           When 5021 PERFORM ef-note-1-AfterProcedure
+           When 5022 PERFORM ef-note-2-AfterProcedure
+           When 5023 PERFORM ef-note-3-AfterProcedure
+           When 5024 PERFORM ef-note-4-AfterProcedure
+           When 28 PERFORM rb-man-AfterProcedure
+           When 29 PERFORM rb-gui-AfterProcedure
+           When 5025 PERFORM ef-art-AfterProcedure
            When 5026 PERFORM ef-qta-AfterProcedure
-           When 5027 PERFORM ef-uni-AfterProcedure
-           When 5028 PERFORM ef-sconto-AfterProcedure
+           When 5027 PERFORM ef-qta-AfterProcedure
+           When 5028 PERFORM ef-uni-AfterProcedure
            When 5029 PERFORM ef-sconto-AfterProcedure
            When 5030 PERFORM ef-sconto-AfterProcedure
            When 5031 PERFORM ef-sconto-AfterProcedure
            When 5032 PERFORM ef-sconto-AfterProcedure
-           When 5033 PERFORM ef-cons-AfterProcedure
-           When 5034 PERFORM ef-cou-AfterProcedure
+           When 5033 PERFORM ef-sconto-AfterProcedure
+           When 5034 PERFORM ef-cons-AfterProcedure
            When 5035 PERFORM ef-cou-AfterProcedure
            When 5036 PERFORM ef-cou-AfterProcedure
-           When 5037 PERFORM ef-imp-AfterProcedure
-           When 5038 PERFORM ef-cod-iva-AfterProcedure
-           When 5040 PERFORM chk-manuale-AfterProcedure
-           When 5041 PERFORM Form1-DaEf-1-AfterProcedure
-           When 5042 PERFORM ef-dest-AfterProcedure
+           When 5037 PERFORM ef-cou-AfterProcedure
+           When 5038 PERFORM ef-imp-AfterProcedure
+           When 5039 PERFORM ef-cod-iva-AfterProcedure
+           When 5041 PERFORM chk-manuale-AfterProcedure
+           When 5042 PERFORM Form1-DaEf-1-AfterProcedure
+           When 5043 PERFORM ef-dest-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -15389,22 +15482,22 @@
        Form1-Gd-1-Event-Proc.
            EVALUATE Event-Type ALSO Event-Control-Id ALSO
                                     Event-Window-Handle
-           WHEN Msg-Begin-Drag ALSO 5039 ALSO
+           WHEN Msg-Begin-Drag ALSO 5040 ALSO
                     Form1-Handle 
               PERFORM Form1-Gd-1-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5039 ALSO
+           WHEN Msg-Begin-Entry ALSO 5040 ALSO
                     Form1-Handle 
               PERFORM Form1-Gd-1-Ev-Msg-Begin-Entry
-           WHEN Msg-End-Drag ALSO 5039 ALSO
+           WHEN Msg-End-Drag ALSO 5040 ALSO
                     Form1-Handle 
               PERFORM Form1-Gd-1-Ev-Msg-End-Drag
-           WHEN Msg-Goto-Cell ALSO 5039 ALSO
+           WHEN Msg-Goto-Cell ALSO 5040 ALSO
                     Form1-Handle 
               PERFORM Form1-Gd-1-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5039 ALSO
+           WHEN Msg-Goto-Cell-Drag ALSO 5040 ALSO
                     Form1-Handle 
               PERFORM Form1-Gd-1-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5039 ALSO
+           WHEN Msg-Goto-Cell-Mouse ALSO 5040 ALSO
                     Form1-Handle 
               PERFORM Form1-Gd-1-Ev-Msg-Goto-Cell-Mouse
            END-EVALUATE
@@ -15761,6 +15854,12 @@ LUBEXX                 move store-riga to riga
               INQUIRE ef-des-cli, VALUE IN tof-destino-c
               SET TOTEM-CHECK-OK TO FALSE
               PERFORM ef-des-cli-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+              INQUIRE ef-clientea, VALUE IN tof-evasione
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-clientea-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF

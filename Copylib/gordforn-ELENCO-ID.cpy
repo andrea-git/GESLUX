@@ -40,6 +40,10 @@
            when 78-ID-ef-des-cli
                 inquire ef-des-cli, value in ef-des-cli-buf
 
+           |78-ID-ef-evasione è l'ID del control ef-evasione
+           when 78-ID-ef-evasione
+                inquire ef-evasione, value in ef-evasione-buf
+
            |78-ID-ef-pag è l'ID del control ef-pag
            when 78-ID-ef-pag
                 inquire ef-pag, value in ef-pag-buf
@@ -48,12 +52,12 @@
            when 78-ID-ef-ese-iva
                 inquire ef-ese-iva, value in ef-ese-iva-buf
 
-           |21 è l'ID del control rb-urgente
-           when 21
+           |22 è l'ID del control rb-urgente
+           when 22
                 inquire rb-urgente, value in rb-urgente-buf
 
-           |22 è l'ID del control rb-normale
-           when 22
+           |23 è l'ID del control rb-normale
+           when 23
                 inquire rb-normale, value in rb-normale-buf
 
            |78-ID-ef-art è l'ID del control ef-art

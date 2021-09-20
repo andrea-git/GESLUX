@@ -5,7 +5,7 @@
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E5911151037-13-2212410638
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E5914192029-187-494910781
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -797,9 +797,9 @@ m_strTrue=0
 
 @}}
 [FDITEM82_]
-m_strName=tof-num-vuoto-2
-m_strRawPic=9(13)
-m_strPic=9(13)
+m_strName=tof-evasione
+m_strRawPic=9(6)
+m_strPic=9(6)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -808,19 +808,20 @@ m_strName_Xfd=tof-num-vuoto-2_1_
 
 @}}
 [FDITEM83_]
-m_strName=tof-num-vuoto-3
-m_strRawPic=9(18)
-m_strPic=9(18)
+m_strName=tof-num-vuoto-2
+m_strRawPic=9(7)
+m_strPic=9(7)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
+m_strName_Xfd=tof-num-vuoto-2_1_
 {{@DataItem_m_strDescriptionFDITEM83_
 
 @}}
 [FDITEM84_]
-m_strName=tof-alfa-vuoto-1
-m_strRawPic=X(20)
-m_strPic=X(20)
+m_strName=tof-num-vuoto-3
+m_strRawPic=9(18)
+m_strPic=9(18)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -828,7 +829,7 @@ m_bFixed=1
 
 @}}
 [FDITEM85_]
-m_strName=tof-alfa-vuoto-2
+m_strName=tof-alfa-vuoto-1
 m_strRawPic=X(20)
 m_strPic=X(20)
 m_nItemLevel=15
@@ -838,9 +839,9 @@ m_bFixed=1
 
 @}}
 [FDITEM86_]
-m_strName=tof-stampante
-m_strRawPic=X
-m_strPic=X
+m_strName=tof-alfa-vuoto-2
+m_strRawPic=X(20)
+m_strPic=X(20)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -848,40 +849,50 @@ m_bFixed=1
 
 @}}
 [FDITEM87_]
+m_strName=tof-stampante
+m_strRawPic=X
+m_strPic=X
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM87_
+
+@}}
+[FDITEM88_]
 m_strName=tof-stampante-A
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=" "
-{{@DataItem_m_strDescriptionFDITEM87_
+{{@DataItem_m_strDescriptionFDITEM88_
 
 @}}
-[FDITEM88_]
+[FDITEM89_]
 m_strName=tof-stampante-L
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="L"
-{{@DataItem_m_strDescriptionFDITEM88_
+{{@DataItem_m_strDescriptionFDITEM89_
 
 @}}
-[FDITEM89_]
+[FDITEM90_]
 m_strName=tof-stampante-M
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="M"
-{{@DataItem_m_strDescriptionFDITEM89_
+{{@DataItem_m_strDescriptionFDITEM90_
 
 @}}
-[FDITEM90_]
+[FDITEM91_]
 m_strName=tof-alfa-vuoto-3
 m_strRawPic=X(19)
 m_strPic=X(19)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM90_
+{{@DataItem_m_strDescriptionFDITEM91_
 
 @}}
 [CStoAcucobolSL_]

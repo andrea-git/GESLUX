@@ -1069,7 +1069,7 @@ LUBEXX          end-if
                    ef-vettore-d   ef-ref-ord-d
                    ef-tel-ord-d   ef-mail-ord-d
                    ef-perce-premi-d chk-netto-PFA-d
-                   ef-gg chk-saldi-d.
+                   ef-gg chk-saldi-d chk-immediata-d.
 
 
       ***---
@@ -1227,6 +1227,12 @@ LUBEXX          end-if
                        move 0 to hidden-saldi-d
                     end-if
 
+                    if desf-ev-immediata-si
+                       move 1 to hidden-ei-d
+                    else
+                       move 0 to hidden-ei-d
+                    end-if
+
                     move desf-stato     to hidden-stato
                  
                     modify form1-gd-1(riga, 7)  
@@ -1279,6 +1285,8 @@ LUBEXX          end-if
                            hidden-data hidden-saldi-d
                     modify form1-gd-1(riga, 31) 
                            hidden-data hidden-ufficio-d
+                    modify form1-gd-1(riga, 32) 
+                           hidden-data hidden-ei-d
 
               end-perform   
              
@@ -1505,6 +1513,7 @@ LUBEXX          end-if
            move ef-perce-premi-d-BUF to hidden-perce-premi-fine-anno
            move chk-netto-PFA-d-buf  to hidden-netto-PFA.
            move chk-saldi-d-buf      to hidden-saldi-d.
+           move chk-immediata-d-buf  to hidden-ei-d.
 
            modify form1-gd-1(riga, 1)  cell-data col-prog.
            modify form1-gd-1(riga, 2)  cell-data col-ragsoc.
@@ -1541,6 +1550,7 @@ LUBEXX          end-if
            modify form1-gd-1(riga, 29) hidden-data hidden-netto-PFA.
            modify form1-gd-1(riga, 30) hidden-data hidden-saldi-d.
            modify form1-gd-1(riga, 31) hidden-data hidden-ufficio-d.
+           modify form1-gd-1(riga, 32) hidden-data hidden-ei-d.
 
            move 0 to riga-nuova.
 
@@ -1560,6 +1570,7 @@ LUBEXX          end-if
            move hidden-ufficio-d   to cbo-ufficio-d-buf.
            move hidden-mail        to ef-mail-d-buf.
            move hidden-referente   to ef-referente-d-buf.
+
            move hidden-vettore     to ef-vettore-d-buf.
            move hidden-pag         to ef-pag-d-buf.
            move hidden-gg-consegna to ef-gg-buf
@@ -1572,6 +1583,7 @@ LUBEXX          end-if
            move hidden-perce-premi-fine-anno to ef-perce-premi-d-BUF.
            move hidden-netto-PFA             to chk-netto-PFA-d-buf.
            move hidden-saldi-d               to chk-saldi-d-buf.
+           move hidden-ei-d                  to chk-immediata-d-buf.
 
            move hidden-stato to stato-destini.
            perform CARICA-COMBO-DESTINI.
@@ -1703,6 +1715,11 @@ LUBEXX          end-if
               set desf-saldi-si to true
            else
               set desf-saldi-no to true
+           end-if.
+           if chk-immediata-d-buf = 1
+              set desf-ev-immediata-si to true
+           else
+              set desf-ev-immediata-no to true
            end-if.
            move ef-gg-buf             to desf-gg-consegna
 
@@ -2560,6 +2577,7 @@ LUBEXX     |   end-if
            inquire form1-gd-1(riga, 30) 
                                hidden-data hidden-saldi-d.
            inquire form1-gd-1(riga, 31) hidden-data hidden-ufficio-d.
+           inquire form1-gd-1(riga, 32) hidden-data hidden-ei-d.
 
       ***---
        VALORIZZA-NUOVO.

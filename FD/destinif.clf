@@ -5,7 +5,7 @@
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E591184925-967-1150822910
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E5914192029-71-2098116494
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -525,13 +525,41 @@ m_bFixed=1
 
 @}}
 [FDITEM53_]
-m_strName=desf-alfa-vuoto
-m_strRawPic=X(496)
-m_strPic=X(496)
+m_strName=desf-ev-immediata
+m_strRawPic=x
+m_strPic=x
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM53_
+
+@}}
+[FDITEM54_]
+m_strName=desf-ev-immediata-no
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" ", "N"
+{{@DataItem_m_strDescriptionFDITEM54_
+
+@}}
+[FDITEM55_]
+m_strName=desf-ev-immediata-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM55_
+
+@}}
+[FDITEM56_]
+m_strName=desf-alfa-vuoto
+m_strRawPic=X(495)
+m_strPic=X(495)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM56_
 
 @}}
 [CStoAcucobolSL_]

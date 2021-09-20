@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 11 settembre 2021 00:07:57.
+       DATE-WRITTEN.        lunedì 20 settembre 2021 18:05:31.
        REMARKS.
       *{TOTEM}END
 
@@ -2845,7 +2845,7 @@
            ID IS 78-ID-ef-num-ord,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           MAX-TEXT 12,
+           MAX-TEXT 50,
            VALUE ef-num-ord-BUF,
            BEFORE PROCEDURE Screen2-DaEf-5-BeforeProcedure, 
            .

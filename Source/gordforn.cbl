@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          gordforn.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        domenica 10 maggio 2015 22:33:06.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        lunedì 20 settembre 2021 21:19:47.
        REMARKS.
       *{TOTEM}END
 
@@ -121,7 +121,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -173,9 +173,9 @@
       * Data.Entry-Field
               10 ef-data-listino-BUF PIC 99/99/9999.
       * Data.Check-Box
-              10 chk-franco-BUF PIC 9 VALUE ZERO.
-      * Data.Check-Box
               10 chk-aperto-BUF PIC 9 VALUE ZERO.
+      * Data.Check-Box
+              10 chk-franco-BUF PIC 9 VALUE ZERO.
       * Data.Entry-Field
               10 ef-promo-BUF PIC z(15).
       * Data.Check-Box
@@ -184,6 +184,8 @@
               10 ef-cliente-BUF PIC z(5).
       * Data.Entry-Field
               10 ef-des-cli-BUF PIC z(5).
+      * Data.Entry-Field
+              10 ef-evasione-BUF PIC z(6).
       * Data.Entry-Field
               10 ef-referente-BUF PIC X(40).
       * Data.Entry-Field
@@ -209,7 +211,7 @@
       * Data.Label
               10 lab-cliente-BUF PIC X(40).
       * Data.Label
-              10 lab-des-cli-BUF PIC X(40).
+              10 lab-des-cli-BUF PIC x(100).
       * Data.Label
               10 lab-des-loca-BUF PIC X(35).
       * Data.Label
@@ -273,7 +275,7 @@
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-timballi-BUF     PIC X(210).
        77 TMP-DataSet1-zoom-tcaumag-BUF     PIC X(87).
-       77 TMP-DataSet1-blister-BUF     PIC X(1817).
+       77 TMP-DataSet1-blister-BUF     PIC X(2967).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-tcodpag-BUF     PIC X(1380).
        77 TMP-DataSet1-timposte-BUF     PIC X(717).
@@ -283,20 +285,20 @@
        77 TMP-DataSet1-tmp-progmag-zoom-BUF     PIC X(195).
        77 TMP-DataSet1-nordforn-BUF     PIC X(381).
        77 TMP-DataSet1-tivaese-BUF     PIC X(1380).
-       77 TMP-DataSet1-tpiombo-BUF     PIC X(179).
+       77 TMP-DataSet1-tpiombo-BUF     PIC X(739).
        77 TMP-DataSet1-locali-BUF     PIC X(203).
        77 TMP-DataSet1-tlistini-BUF     PIC X(257).
        77 TMP-DataSet1-rlistini-BUF     PIC X(448).
        77 TMP-DataSet1-tcaumag-BUF     PIC X(254).
        77 TMP-DataSet1-tmp-nordforn-BUF     PIC X(381).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
-       77 TMP-DataSet1-clienti1-BUF     PIC X(1910).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
+       77 TMP-DataSet1-clienti1-BUF     PIC X(3610).
        77 TMP-DataSet1-lockfile-BUF     PIC X(183).
        77 TMP-DataSet1-art-ordforn-BUF     PIC X(302).
        77 TMP-DataSet1-destinif-BUF     PIC X(1322).
        77 TMP-DataSet1-impforn-BUF     PIC X(220).
        77 TMP-DataSet1-rordforn-BUF     PIC X(544).
-       77 TMP-DataSet1-destini-BUF     PIC X(445).
+       77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-tpromo-BUF     PIC X(263).
        77 TMP-DataSet1-tmp-tpromo-zoom-BUF     PIC X(86).
        77 TMP-DataSet1-tgrupgdo-BUF     PIC X(1206).
@@ -504,6 +506,7 @@
        77 blister-k-magaz-SPLITBUF  PIC X(10).
        77 blister-k-des-SPLITBUF  PIC X(51).
        77 articoli-art-k1-SPLITBUF  PIC X(51).
+       77 articoli-art-k-frn-SPLITBUF  PIC X(16).
        77 tcodpag-TBL-CODICE-01-SPLITBUF  PIC X(53).
        77 progmag-key01-SPLITBUF  PIC X(21).
        77 tmp-progmag-zoom-key-des-SPLITBUF  PIC X(64).
@@ -525,7 +528,7 @@
        77 destinif-desf-k2-SPLITBUF  PIC X(51).
        77 rordforn-rof-k-articolo-SPLITBUF  PIC X(24).
        77 rordforn-rof-k-art-mag-SPLITBUF  PIC X(27).
-       77 destini-K1-SPLITBUF  PIC X(51).
+       77 destini-K1-SPLITBUF  PIC X(111).
        77 destini-k-localita-SPLITBUF  PIC X(36).
        77 tpromo-tpr-chiave-ricerca-SPLITBUF  PIC X(22).
        77 tpromo-tpr-chiave-gdo-fine-SPLITBUF  PIC X(22).
@@ -535,6 +538,7 @@
        77 tpromo-tpr-k-fine-vol-SPLITBUF  PIC X(22).
        77 tpromo-tpr-k-data-ins-SPLITBUF  PIC X(29).
        77 tmp-tpromo-zoom-tmp-tpr-z-k1-SPLITBUF  PIC X(14).
+       77 tgrupgdo-gdo-k-g2-SPLITBUF  PIC X(9).
        77 distinteb-k-articolo-SPLITBUF  PIC X(12).
        77 distinteb-k-progmag-SPLITBUF  PIC X(21).
       * FOR SPLIT KEY BUFFER
@@ -552,35 +556,36 @@
        78  78-ID-ef-data VALUE 5005.
        78  78-ID-ef-data-cons VALUE 5006.
        78  78-ID-ef-data-listino VALUE 5007.
-       78  78-ID-chk-franco VALUE 5008.
-       78  78-ID-chk-aperto VALUE 5009.
+       78  78-ID-chk-aperto VALUE 5008.
+       78  78-ID-chk-franco VALUE 5009.
        78  78-ID-ef-promo VALUE 5010.
        78  78-ID-chk-dati-fatt VALUE 5011.
        78  78-ID-ef-cliente VALUE 5012.
        78  78-ID-ef-des-cli VALUE 5013.
-       78  78-ID-ef-pag VALUE 5014.
-       78  78-ID-ef-ese-iva VALUE 5015.
-       78  78-ID-ef-note-1 VALUE 5016.
-       78  78-ID-ef-note-2 VALUE 5017.
-       78  78-ID-ef-note-3 VALUE 5018.
-       78  78-ID-ef-note-4 VALUE 5019.
-       78  78-ID-ef-art VALUE 5020.
-       78  78-ID-ef-imb-ord VALUE 5021.
-       78  78-ID-ef-qta VALUE 5022.
-       78  78-ID-ef-uni VALUE 5023.
-       78  78-ID-ef-sconto-1 VALUE 5024.
-       78  78-ID-ef-sconto-2 VALUE 5025.
-       78  78-ID-ef-sconto-3 VALUE 5026.
-       78  78-ID-ef-sconto-4 VALUE 5027.
-       78  78-ID-ef-sconto-5 VALUE 5028.
-       78  78-ID-ef-cons VALUE 5029.
-       78  78-ID-ef-cou VALUE 5030.
-       78  78-ID-ef-add VALUE 5031.
-       78  78-ID-ef-costi-agg VALUE 5032.
-       78  78-ID-ef-imp VALUE 5033.
-       78  78-ID-ef-cod-iva VALUE 5034.
-       78  78-ID-chk-manuale VALUE 5035.
-       78  78-ID-ef-impforn VALUE 5036.
+       78  78-ID-ef-evasione VALUE 5014.
+       78  78-ID-ef-pag VALUE 5015.
+       78  78-ID-ef-ese-iva VALUE 5016.
+       78  78-ID-ef-note-1 VALUE 5017.
+       78  78-ID-ef-note-2 VALUE 5018.
+       78  78-ID-ef-note-3 VALUE 5019.
+       78  78-ID-ef-note-4 VALUE 5020.
+       78  78-ID-ef-art VALUE 5021.
+       78  78-ID-ef-imb-ord VALUE 5022.
+       78  78-ID-ef-qta VALUE 5023.
+       78  78-ID-ef-uni VALUE 5024.
+       78  78-ID-ef-sconto-1 VALUE 5025.
+       78  78-ID-ef-sconto-2 VALUE 5026.
+       78  78-ID-ef-sconto-3 VALUE 5027.
+       78  78-ID-ef-sconto-4 VALUE 5028.
+       78  78-ID-ef-sconto-5 VALUE 5029.
+       78  78-ID-ef-cons VALUE 5030.
+       78  78-ID-ef-cou VALUE 5031.
+       78  78-ID-ef-add VALUE 5032.
+       78  78-ID-ef-costi-agg VALUE 5033.
+       78  78-ID-ef-imp VALUE 5034.
+       78  78-ID-ef-cod-iva VALUE 5035.
+       78  78-ID-chk-manuale VALUE 5036.
+       78  78-ID-ef-impforn VALUE 5037.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -881,23 +886,6 @@
 
       * CHECK BOX
        10
-           chk-franco, 
-           Check-Box, 
-           COL 152,17, 
-           LINE 11,84,
-           LINES 1,31 ,
-           SIZE 3,00 ,
-           ENABLED mod-campi,
-           FLAT,
-           ID IS 78-ID-chk-franco,                
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           SELF-ACT,
-           VALUE chk-franco-BUF,
-            .
-
-      * CHECK BOX
-       10
            chk-aperto, 
            Check-Box, 
            COL 125,17, 
@@ -911,6 +899,23 @@
            WIDTH-IN-CELLS,
            SELF-ACT,
            VALUE chk-aperto-BUF,
+            .
+
+      * CHECK BOX
+       10
+           chk-franco, 
+           Check-Box, 
+           COL 152,17, 
+           LINE 11,84,
+           LINES 1,31 ,
+           SIZE 3,00 ,
+           ENABLED mod-campi,
+           FLAT,
+           ID IS 78-ID-chk-franco,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           SELF-ACT,
+           VALUE chk-franco-BUF,
             .
 
       * ENTRY FIELD
@@ -993,10 +998,30 @@
 
       * ENTRY FIELD
        10
+           ef-evasione, 
+           Entry-Field, 
+           COL 23,17, 
+           LINE 17,61,
+           LINES 1,31 ,
+           SIZE 7,00 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED mod-campi,
+           FONT IS Small-Font,
+           ID IS 78-ID-ef-evasione,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           MAX-TEXT 6,
+           VALUE ef-evasione-BUF,
+           .
+
+      * ENTRY FIELD
+       10
            ef-referente, 
            Entry-Field, 
            COL 23,17, 
-           LINE 19,69,
+           LINE 21,23,
            LINES 1,31 ,
            SIZE 55,00 ,
            BOXED,
@@ -1014,7 +1039,7 @@
            ef-tel, 
            Entry-Field, 
            COL 23,17, 
-           LINE 21,69,
+           LINE 23,08,
            LINES 1,31 ,
            SIZE 55,00 ,
            BOXED,
@@ -1032,7 +1057,7 @@
            ef-fax, 
            Entry-Field, 
            COL 23,17, 
-           LINE 23,69,
+           LINE 25,00,
            LINES 1,31 ,
            SIZE 55,00 ,
            BOXED,
@@ -1050,7 +1075,7 @@
            ef-mail, 
            Entry-Field, 
            COL 23,17, 
-           LINE 25,69,
+           LINE 26,92,
            LINES 1,31 ,
            SIZE 55,00 ,
            BOXED,
@@ -1068,7 +1093,7 @@
            ef-pag, 
            Entry-Field, 
            COL 23,17, 
-           LINE 27,69,
+           LINE 28,92,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -1087,7 +1112,7 @@
            ef-ese-iva, 
            Entry-Field, 
            COL 23,17, 
-           LINE 29,69,
+           LINE 30,85,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -1106,7 +1131,7 @@
            rb-urgente, 
            Radio-Button, 
            COL 23,17, 
-           LINE 31,69,
+           LINE 32,85,
            LINES 1,15 ,
            SIZE 3,00 ,
            ENABLED mod-campi-testa,
@@ -1126,7 +1151,7 @@
            rb-normale, 
            Radio-Button, 
            COL 35,17, 
-           LINE 31,69,
+           LINE 32,85,
            LINES 1,15 ,
            SIZE 3,00 ,
            ENABLED mod-campi-testa,
@@ -1270,7 +1295,7 @@
            Form1-La-8, 
            Label, 
            COL 5,17, 
-           LINE 27,69,
+           LINE 28,85,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -1318,7 +1343,7 @@
            lab-pag, 
            Label, 
            COL 32,17, 
-           LINE 27,69,
+           LINE 28,92,
            LINES 1,54 ,
            SIZE 100,00 ,
            COLOR IS 5,
@@ -1335,7 +1360,7 @@
            Form1-La-5aaaca, 
            Label, 
            COL 4,34, 
-           LINE 17,69,
+           LINE 19,23,
            LINES 1,31 ,
            SIZE 17,00 ,
            COLOR IS 80,
@@ -1351,7 +1376,7 @@
            Form1-Br-2aa, 
            Bar,
            COL 21,50, 
-           LINE 18,39,
+           LINE 19,92,
            SIZE 135,33 ,
            ID IS 129,
            HEIGHT-IN-CELLS,
@@ -1366,7 +1391,7 @@
            Form1-La-4a, 
            Label, 
            COL 5,17, 
-           LINE 19,69,
+           LINE 21,15,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -1382,7 +1407,7 @@
            Form1-La-4aa, 
            Label, 
            COL 5,17, 
-           LINE 21,69,
+           LINE 23,15,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -1398,7 +1423,7 @@
            Form1-La-4aaa, 
            Label, 
            COL 5,17, 
-           LINE 23,69,
+           LINE 25,00,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -1414,7 +1439,7 @@
            Form1-La-4aaaa, 
            Label, 
            COL 5,17, 
-           LINE 25,69,
+           LINE 26,92,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -1430,7 +1455,7 @@
            pb-note, 
            Push-Button, 
            COL 23,17, 
-           LINE 33,69,
+           LINE 34,54,
            LINES 2,62 ,
            SIZE 14,33 ,
            EXCEPTION-VALUE 1003,
@@ -1446,7 +1471,7 @@
            Form1-La-8a, 
            Label, 
            COL 5,17, 
-           LINE 29,69,
+           LINE 30,85,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -1462,7 +1487,7 @@
            lab-ese-iva, 
            Label, 
            COL 32,17, 
-           LINE 29,69,
+           LINE 30,84,
            LINES 1,54 ,
            SIZE 100,00 ,
            COLOR IS 5,
@@ -1479,7 +1504,7 @@
            Form1-La-16, 
            Label, 
            COL 27,17, 
-           LINE 31,69,
+           LINE 32,85,
            LINES 1,15 ,
            SIZE 8,17 ,
            FONT IS Small-Font,
@@ -1495,7 +1520,7 @@
            Form1-La-17, 
            Label, 
            COL 40,17, 
-           LINE 31,69,
+           LINE 32,85,
            LINES 1,15 ,
            SIZE 7,00 ,
            FONT IS Small-Font,
@@ -1511,7 +1536,7 @@
            Form1-La-4aaaaa, 
            Label, 
            COL 5,17, 
-           LINE 31,69,
+           LINE 32,85,
            LINES 1,31 ,
            SIZE 10,00 ,
            FONT IS Small-Font,
@@ -1675,6 +1700,22 @@
            TRANSPARENT,
            TITLE "Stampa dati di fatturazione",
            VISIBLE v-dati-fatt,
+           .
+
+      * LABEL
+       10
+           Form1-La-4c, 
+           Label, 
+           COL 5,17, 
+           LINE 17,62,
+           LINES 1,31 ,
+           SIZE 17,00 ,
+           FONT IS Small-Font,
+           ID IS 13,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Evasione",
            .
 
       * PAGE
@@ -5249,6 +5290,12 @@
            articoli-art-k1-SPLITBUF(1:50)
            .
 
+       articoli-art-k-frn-MERGE-SPLITBUF.
+           INITIALIZE articoli-art-k-frn-SPLITBUF
+           MOVE art-cod-art-frn OF articoli(1:15) TO 
+           articoli-art-k-frn-SPLITBUF(1:15)
+           .
+
        DataSet1-articoli-INITSTART.
            IF DataSet1-articoli-KEY-Asc
               MOVE Low-Value TO art-chiave OF articoli
@@ -5311,6 +5358,7 @@
               KEY art-chiave OF articoli
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT 
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -5339,6 +5387,7 @@
               END-IF
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -5367,6 +5416,7 @@
               END-IF
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -8888,9 +8938,9 @@
 
        destini-K1-MERGE-SPLITBUF.
            INITIALIZE destini-K1-SPLITBUF
-           MOVE des-ragsoc-1(1:40) TO destini-K1-SPLITBUF(1:40)
-           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(41:5)
-           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(46:5)
+           MOVE des-ragsoc-1(1:100) TO destini-K1-SPLITBUF(1:100)
+           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(101:5)
+           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(106:5)
            .
 
        destini-k-localita-MERGE-SPLITBUF.
@@ -9475,6 +9525,14 @@
       * <TOTEM:END>
            .
 
+       tgrupgdo-gdo-k-g2-MERGE-SPLITBUF.
+           INITIALIZE tgrupgdo-gdo-k-g2-SPLITBUF
+           MOVE gdo-codice-G2 OF tgrupgdo(1:3) TO 
+           tgrupgdo-gdo-k-g2-SPLITBUF(1:3)
+           MOVE gdo-chiave OF tgrupgdo(1:5) TO 
+           tgrupgdo-gdo-k-g2-SPLITBUF(4:5)
+           .
+
        DataSet1-tgrupgdo-INITSTART.
            IF DataSet1-tgrupgdo-KEY-Asc
               MOVE Low-Value TO gdo-chiave OF tgrupgdo
@@ -9536,6 +9594,7 @@
               READ tgrupgdo WITH NO LOCK 
               KEY gdo-chiave OF tgrupgdo
            END-IF
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
            MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT 
            MOVE "tgrupgdo" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -9563,6 +9622,7 @@
                  READ tgrupgdo PREVIOUS WITH NO LOCK
               END-IF
            END-IF
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
            MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
            MOVE "tgrupgdo" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -9590,6 +9650,7 @@
                  READ tgrupgdo NEXT WITH NO LOCK
               END-IF
            END-IF
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
            MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
            MOVE "tgrupgdo" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -11497,9 +11558,9 @@ LUBEXX           delete lockfile record invalid continue end-delete
       * FORM : Form1
            PERFORM DataSet1-INIT-RECORD
       * DB_CHECK BOX
-              MOVE 0 TO tof-franco-part
-      * DB_CHECK BOX
               MOVE 0 TO tof-aperto
+      * DB_CHECK BOX
+              MOVE 0 TO tof-franco-part
       * DB_CHECK BOX
               MOVE 0 TO tof-st-dati-fatt
       * DB_RADIO-BUTTON
@@ -11610,6 +11671,16 @@ LUBEXX           delete lockfile record invalid continue end-delete
                MOVE 5013 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
+      * ef-evasione's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-evasione-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 1 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 5014 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
       * ef-referente's Validation
            SET TOTEM-CHECK-OK TO FALSE
            PERFORM ef-referente-VALIDATION
@@ -11617,7 +11688,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 15 TO CONTROL-ID
+               MOVE 16 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-tel's Validation
@@ -11627,7 +11698,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 16 TO CONTROL-ID
+               MOVE 17 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-fax's Validation
@@ -11637,7 +11708,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 17 TO CONTROL-ID
+               MOVE 18 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-mail's Validation
@@ -11647,7 +11718,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 18 TO CONTROL-ID
+               MOVE 19 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-pag's Validation
@@ -11657,7 +11728,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5014 TO CONTROL-ID
+               MOVE 5015 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-ese-iva's Validation
@@ -11667,7 +11738,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5015 TO CONTROL-ID
+               MOVE 5016 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-1's Validation
@@ -11677,7 +11748,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5016 TO CONTROL-ID
+               MOVE 5017 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-2's Validation
@@ -11687,7 +11758,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5017 TO CONTROL-ID
+               MOVE 5018 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-3's Validation
@@ -11697,7 +11768,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5018 TO CONTROL-ID
+               MOVE 5019 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-4's Validation
@@ -11707,7 +11778,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5019 TO CONTROL-ID
+               MOVE 5020 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-art's Validation
@@ -11717,7 +11788,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5020 TO CONTROL-ID
+               MOVE 5021 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-imb-ord's Validation
@@ -11727,7 +11798,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5021 TO CONTROL-ID
+               MOVE 5022 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-qta's Validation
@@ -11737,7 +11808,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5022 TO CONTROL-ID
+               MOVE 5023 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-uni's Validation
@@ -11747,7 +11818,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5023 TO CONTROL-ID
+               MOVE 5024 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-sconto-1's Validation
@@ -11757,7 +11828,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5024 TO CONTROL-ID
+               MOVE 5025 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-sconto-2's Validation
@@ -11767,7 +11838,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5025 TO CONTROL-ID
+               MOVE 5026 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-sconto-3's Validation
@@ -11777,7 +11848,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5026 TO CONTROL-ID
+               MOVE 5027 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-sconto-4's Validation
@@ -11787,7 +11858,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5027 TO CONTROL-ID
+               MOVE 5028 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-sconto-5's Validation
@@ -11797,7 +11868,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5028 TO CONTROL-ID
+               MOVE 5029 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cons's Validation
@@ -11807,7 +11878,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5029 TO CONTROL-ID
+               MOVE 5030 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cou's Validation
@@ -11817,7 +11888,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5030 TO CONTROL-ID
+               MOVE 5031 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-add's Validation
@@ -11827,7 +11898,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5031 TO CONTROL-ID
+               MOVE 5032 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-costi-agg's Validation
@@ -11837,7 +11908,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5032 TO CONTROL-ID
+               MOVE 5033 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-imp's Validation
@@ -11847,7 +11918,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5033 TO CONTROL-ID
+               MOVE 5034 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cod-iva's Validation
@@ -11857,7 +11928,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5034 TO CONTROL-ID
+               MOVE 5035 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-impforn's Validation
@@ -11867,7 +11938,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5036 TO CONTROL-ID
+               MOVE 5037 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
            .
@@ -12040,6 +12111,23 @@ LUBEXX           delete lockfile record invalid continue end-delete
            PERFORM ef-des-cli-BEFORE-VALIDATION
            SET TOTEM-CHECK-OK TO TRUE
            PERFORM ef-des-cli-AFTER-VALIDATION
+           .
+
+       ef-evasione-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-evasione, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-evasione-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-evasione, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-evasione's Validation
+       ef-evasione-VALIDATION.
+           PERFORM ef-evasione-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-evasione-AFTER-VALIDATION
            .
 
        ef-referente-BEFORE-VALIDATION.
@@ -12502,17 +12590,17 @@ LUBEXX           delete lockfile record invalid continue end-delete
            MOVE ef-data-cons-BUF TO tof-data-consegna
       * DB_Entry-Field : ef-data-listino
            MOVE ef-data-listino-BUF TO tof-data-listino
-      * DB_CHECK BOX : chk-franco
-              IF chk-franco-BUF = 1
-                 MOVE 1 TO tof-franco-part
-              ELSE
-                 MOVE 0 TO tof-franco-part
-              END-IF
       * DB_CHECK BOX : chk-aperto
               IF chk-aperto-BUF = 1
                  MOVE 1 TO tof-aperto
               ELSE
                  MOVE 0 TO tof-aperto
+              END-IF
+      * DB_CHECK BOX : chk-franco
+              IF chk-franco-BUF = 1
+                 MOVE 1 TO tof-franco-part
+              ELSE
+                 MOVE 0 TO tof-franco-part
               END-IF
       * DB_Entry-Field : ef-promo
            MOVE ef-promo-BUF TO tof-promo
@@ -12526,6 +12614,8 @@ LUBEXX           delete lockfile record invalid continue end-delete
            MOVE ef-cliente-BUF TO tof-cliente
       * DB_Entry-Field : ef-des-cli
            MOVE ef-des-cli-BUF TO tof-destino-c
+      * DB_Entry-Field : ef-evasione
+           MOVE ef-evasione-BUF TO tof-evasione
       * DB_Entry-Field : ef-referente
            MOVE ef-referente-BUF TO tof-referente
       * DB_Entry-Field : ef-tel
@@ -12623,17 +12713,17 @@ LUBEXX           delete lockfile record invalid continue end-delete
            MOVE tof-data-consegna TO ef-data-cons-BUF
       * DB_Entry-Field : ef-data-listino
            MOVE tof-data-listino TO ef-data-listino-BUF
-      * DB_CHECK BOX : chk-franco
-              IF tof-franco-part = 1
-                 MOVE 1 TO chk-franco-BUF
-              ELSE
-                 MOVE 0 TO chk-franco-BUF
-              END-IF
       * DB_CHECK BOX : chk-aperto
               IF tof-aperto = 1
                  MOVE 1 TO chk-aperto-BUF
               ELSE
                  MOVE 0 TO chk-aperto-BUF
+              END-IF
+      * DB_CHECK BOX : chk-franco
+              IF tof-franco-part = 1
+                 MOVE 1 TO chk-franco-BUF
+              ELSE
+                 MOVE 0 TO chk-franco-BUF
               END-IF
       * DB_Entry-Field : ef-promo
            MOVE tof-promo TO ef-promo-BUF
@@ -12647,6 +12737,8 @@ LUBEXX           delete lockfile record invalid continue end-delete
            MOVE tof-cliente TO ef-cliente-BUF
       * DB_Entry-Field : ef-des-cli
            MOVE tof-destino-c TO ef-des-cli-BUF
+      * DB_Entry-Field : ef-evasione
+           MOVE tof-evasione TO ef-evasione-BUF
       * DB_Entry-Field : ef-referente
            MOVE tof-referente TO ef-referente-BUF
       * DB_Entry-Field : ef-tel
@@ -12767,18 +12859,18 @@ LUBEXX           delete lockfile record invalid continue end-delete
               move 78-ID-ef-data-listino to store-id 
            end-if
 
-           if tof-franco-part not = old-tof-franco-part
-              and SiSalvato
-              set NoSalvato to true
-              |78-ID-chk-franco è l'ID del campo chk-franco
-              move 78-ID-chk-franco to store-id 
-           end-if
-
            if tof-aperto not = old-tof-aperto
               and SiSalvato
               set NoSalvato to true
               |78-ID-chk-aperto è l'ID del campo chk-aperto
               move 78-ID-chk-aperto to store-id 
+           end-if
+
+           if tof-franco-part not = old-tof-franco-part
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-chk-franco è l'ID del campo chk-franco
+              move 78-ID-chk-franco to store-id 
            end-if
 
            if tof-promo not = old-tof-promo
@@ -12809,32 +12901,39 @@ LUBEXX           delete lockfile record invalid continue end-delete
               move 78-ID-ef-des-cli to store-id 
            end-if
 
+           if tof-evasione not = old-tof-evasione
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-ef-evasione è l'ID del campo ef-evasione
+              move 78-ID-ef-evasione to store-id 
+           end-if
+
            if tof-referente not = old-tof-referente
               and SiSalvato
               set NoSalvato to true
-              |15 è l'ID del campo ef-referente
-              move 15 to store-id
+              |16 è l'ID del campo ef-referente
+              move 16 to store-id
            end-if
 
            if tof-tel-dir not = old-tof-tel-dir
               and SiSalvato
               set NoSalvato to true
-              |16 è l'ID del campo ef-tel
-              move 16 to store-id
+              |17 è l'ID del campo ef-tel
+              move 17 to store-id
            end-if
 
            if tof-fax not = old-tof-fax
               and SiSalvato
               set NoSalvato to true
-              |17 è l'ID del campo ef-fax
-              move 17 to store-id
+              |18 è l'ID del campo ef-fax
+              move 18 to store-id
            end-if
 
            if tof-email not = old-tof-email
               and SiSalvato
               set NoSalvato to true
-              |18 è l'ID del campo ef-mail
-              move 18 to store-id
+              |19 è l'ID del campo ef-mail
+              move 19 to store-id
            end-if
 
            if tof-cod-pagamento not = old-tof-cod-pagamento
@@ -12954,6 +13053,10 @@ LUBEXX           delete lockfile record invalid continue end-delete
                 perform STATUS-HELP
            |78-ID-ef-des-cli è l'ID del campo ef-des-cli
            when 78-ID-ef-des-cli
+                move 1 to StatusHelp
+                perform STATUS-HELP
+           |78-ID-ef-evasione è l'ID del campo ef-evasione
+           when 78-ID-ef-evasione
                 move 1 to StatusHelp
                 perform STATUS-HELP
            |78-ID-ef-pag è l'ID del campo ef-pag
@@ -13100,6 +13203,11 @@ LUBEXX           delete lockfile record invalid continue end-delete
 
            |78-ID-ef-des-cli è l'ID del campo ef-des-cli
            when 78-ID-ef-des-cli
+                move 0 to StatusHelp
+                perform STATUS-HELP
+
+           |78-ID-ef-evasione è l'ID del campo ef-evasione
+           when 78-ID-ef-evasione
                 move 0 to StatusHelp
                 perform STATUS-HELP
 
@@ -13275,17 +13383,20 @@ LUBEXX           delete lockfile record invalid continue end-delete
            |78-ID-ef-des-cli è l'ID del campo ef-des-cli
            when 78-ID-ef-des-cli
                 perform CONTROLLO
+           |78-ID-ef-evasione è l'ID del campo ef-evasione
+           when 78-ID-ef-evasione
+                perform CONTROLLO
            |78-ID-ef-pag è l'ID del campo ef-pag
            when 78-ID-ef-pag
                 perform CONTROLLO
            |78-ID-ef-ese-iva è l'ID del campo ef-ese-iva
            when 78-ID-ef-ese-iva
                 perform CONTROLLO
-           |21 è l'ID del campo rb-urgente
-           when 21
-                perform CONTROLLO
-           |22 è l'ID del campo rb-normale
+           |22 è l'ID del campo rb-urgente
            when 22
+                perform CONTROLLO
+           |23 è l'ID del campo rb-normale
+           when 23
                 perform CONTROLLO
            |78-ID-ef-art è l'ID del campo ef-art
            when 78-ID-ef-art
@@ -13376,9 +13487,9 @@ LUBEXX           delete lockfile record invalid continue end-delete
            TOTEM-HINT-TEXT
            WHEN 5007 MOVE "Digitare la data del Listino" to 
            TOTEM-HINT-TEXT
-           WHEN 5008 MOVE "Franco Partenza" to TOTEM-HINT-TEXT
-           WHEN 5009 MOVE "Aperto = NON lavora sull'ordinato" to 
+           WHEN 5008 MOVE "Aperto = NON lavora sull'ordinato" to 
            TOTEM-HINT-TEXT
+           WHEN 5009 MOVE "Franco Partenza" to TOTEM-HINT-TEXT
            WHEN 5010 MOVE "Digitare il codice della Promo" to 
            TOTEM-HINT-TEXT
            WHEN 5011 MOVE "Rende visibile il riquadro DATI DI FATTURAZIO
@@ -13387,50 +13498,52 @@ LUBEXX           delete lockfile record invalid continue end-delete
            TOTEM-HINT-TEXT
            WHEN 5013 MOVE "Digitare il Destino di consegna" to 
            TOTEM-HINT-TEXT
-           WHEN 15 MOVE "Digitare il nome del referente" to 
+           WHEN 5014 MOVE "Digitare il numero di evasione" to 
            TOTEM-HINT-TEXT
-           WHEN 16 MOVE "Digitare il telefono diretto" to 
+           WHEN 16 MOVE "Digitare il nome del referente" to 
            TOTEM-HINT-TEXT
-           WHEN 17 MOVE "Digitare il Fax" to TOTEM-HINT-TEXT
-           WHEN 18 MOVE "Digitare la Mail" to TOTEM-HINT-TEXT
-           WHEN 5014 MOVE "Digitare il codice di pagamento" to 
+           WHEN 17 MOVE "Digitare il telefono diretto" to 
            TOTEM-HINT-TEXT
-           WHEN 5015 MOVE "Digitare il codice di Esenzione Iva" to 
+           WHEN 18 MOVE "Digitare il Fax" to TOTEM-HINT-TEXT
+           WHEN 19 MOVE "Digitare la Mail" to TOTEM-HINT-TEXT
+           WHEN 5015 MOVE "Digitare il codice di pagamento" to 
            TOTEM-HINT-TEXT
-           WHEN 21 MOVE "Modalità d'inserimento manuale" to 
+           WHEN 5016 MOVE "Digitare il codice di Esenzione Iva" to 
            TOTEM-HINT-TEXT
-           WHEN 22 MOVE "Modalità d'inserimento guidata" to 
+           WHEN 22 MOVE "Modalità d'inserimento manuale" to 
            TOTEM-HINT-TEXT
-           WHEN 5016 MOVE "Digitare i dati di consegna" to 
+           WHEN 23 MOVE "Modalità d'inserimento guidata" to 
            TOTEM-HINT-TEXT
-           WHEN 5017 MOVE "Digitare le note di destinazione" to 
+           WHEN 5017 MOVE "Digitare i dati di consegna" to 
            TOTEM-HINT-TEXT
            WHEN 5018 MOVE "Digitare le note di destinazione" to 
            TOTEM-HINT-TEXT
            WHEN 5019 MOVE "Digitare le note di destinazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5020 MOVE "Digitare il codice dell'articolo" to 
+           WHEN 5020 MOVE "Digitare le note di destinazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5021 MOVE "Imballo ordinato" to TOTEM-HINT-TEXT
-           WHEN 5022 MOVE "Digitare la quantit" to TOTEM-HINT-TEXT
-           WHEN 5023 MOVE "Digitare il prezzo unitario" to 
+           WHEN 5021 MOVE "Digitare il codice dell'articolo" to 
            TOTEM-HINT-TEXT
-           WHEN 5024 MOVE "Percentuale di sconto" to TOTEM-HINT-TEXT
+           WHEN 5022 MOVE "Imballo ordinato" to TOTEM-HINT-TEXT
+           WHEN 5023 MOVE "Digitare la quantit" to TOTEM-HINT-TEXT
+           WHEN 5024 MOVE "Digitare il prezzo unitario" to 
+           TOTEM-HINT-TEXT
            WHEN 5025 MOVE "Percentuale di sconto" to TOTEM-HINT-TEXT
            WHEN 5026 MOVE "Percentuale di sconto" to TOTEM-HINT-TEXT
            WHEN 5027 MOVE "Percentuale di sconto" to TOTEM-HINT-TEXT
            WHEN 5028 MOVE "Percentuale di sconto" to TOTEM-HINT-TEXT
-           WHEN 5029 MOVE "Valore imposta sul consumo" to 
+           WHEN 5029 MOVE "Percentuale di sconto" to TOTEM-HINT-TEXT
+           WHEN 5030 MOVE "Valore imposta sul consumo" to 
            TOTEM-HINT-TEXT
-           WHEN 5030 MOVE "Valore imposta COU/COBAT" to TOTEM-HINT-TEXT
-           WHEN 5031 MOVE "Valore addizionale piombo" to TOTEM-HINT-TEXT
+           WHEN 5031 MOVE "Valore imposta COU/COBAT" to TOTEM-HINT-TEXT
            WHEN 5032 MOVE "Valore addizionale piombo" to TOTEM-HINT-TEXT
-           WHEN 5033 MOVE "Valore imponibile della merce" to 
+           WHEN 5033 MOVE "Valore addizionale piombo" to TOTEM-HINT-TEXT
+           WHEN 5034 MOVE "Valore imponibile della merce" to 
            TOTEM-HINT-TEXT
-           WHEN 5034 MOVE "Codice I.V.A." to TOTEM-HINT-TEXT
-           WHEN 5035 MOVE "Variazione manuale di Prezzo/Imposte" to 
+           WHEN 5035 MOVE "Codice I.V.A." to TOTEM-HINT-TEXT
+           WHEN 5036 MOVE "Variazione manuale di Prezzo/Imposte" to 
            TOTEM-HINT-TEXT
-           WHEN 5036 MOVE "Indicare l'assoggettamento imposte" to 
+           WHEN 5037 MOVE "Indicare l'assoggettamento imposte" to 
            TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
@@ -13448,35 +13561,36 @@ LUBEXX           delete lockfile record invalid continue end-delete
            When 5011 PERFORM Form1-DaCb-1-BeforeProcedure
            When 5012 PERFORM ef-num-ord-BeforeProcedure
            When 5013 PERFORM ef-num-ord-BeforeProcedure
-           When 15 PERFORM ef-note-2-BeforeProcedure
+           When 5014 PERFORM ef-num-ord-BeforeProcedure
            When 16 PERFORM ef-note-2-BeforeProcedure
            When 17 PERFORM ef-note-2-BeforeProcedure
            When 18 PERFORM ef-note-2-BeforeProcedure
-           When 5014 PERFORM ef-pag-BeforeProcedure
+           When 19 PERFORM ef-note-2-BeforeProcedure
            When 5015 PERFORM ef-pag-BeforeProcedure
-           When 21 PERFORM rb-man-BeforeProcedure
-           When 22 PERFORM rb-gui-BeforeProcedure
-           When 5016 PERFORM ef-note-1-BeforeProcedure
-           When 5017 PERFORM ef-note-2-BeforeProcedure
-           When 5018 PERFORM ef-note-3-BeforeProcedure
-           When 5019 PERFORM ef-note-4-BeforeProcedure
-           When 5020 PERFORM ef-art-BeforeProcedure
-           When 5021 PERFORM ef-qta-BeforeProcedure
+           When 5016 PERFORM ef-pag-BeforeProcedure
+           When 22 PERFORM rb-man-BeforeProcedure
+           When 23 PERFORM rb-gui-BeforeProcedure
+           When 5017 PERFORM ef-note-1-BeforeProcedure
+           When 5018 PERFORM ef-note-2-BeforeProcedure
+           When 5019 PERFORM ef-note-3-BeforeProcedure
+           When 5020 PERFORM ef-note-4-BeforeProcedure
+           When 5021 PERFORM ef-art-BeforeProcedure
            When 5022 PERFORM ef-qta-BeforeProcedure
-           When 5023 PERFORM ef-uni-BeforeProcedure
-           When 5024 PERFORM ef-sconto-BeforeProcedure
+           When 5023 PERFORM ef-qta-BeforeProcedure
+           When 5024 PERFORM ef-uni-BeforeProcedure
            When 5025 PERFORM ef-sconto-BeforeProcedure
            When 5026 PERFORM ef-sconto-BeforeProcedure
            When 5027 PERFORM ef-sconto-BeforeProcedure
            When 5028 PERFORM ef-sconto-BeforeProcedure
-           When 5029 PERFORM ef-cons-BeforeProcedure
-           When 5030 PERFORM ef-cou-BeforeProcedure
+           When 5029 PERFORM ef-sconto-BeforeProcedure
+           When 5030 PERFORM ef-cons-BeforeProcedure
            When 5031 PERFORM ef-cou-BeforeProcedure
            When 5032 PERFORM ef-cou-BeforeProcedure
-           When 5033 PERFORM ef-imp-BeforeProcedure
-           When 5034 PERFORM ef-cod-iva-BeforeProcedure
-           When 5035 PERFORM chk-manuale-BeforeProcedure
-           When 5036 PERFORM Form1-DaEf-1-BeforeProcedure
+           When 5033 PERFORM ef-cou-BeforeProcedure
+           When 5034 PERFORM ef-imp-BeforeProcedure
+           When 5035 PERFORM ef-cod-iva-BeforeProcedure
+           When 5036 PERFORM chk-manuale-BeforeProcedure
+           When 5037 PERFORM Form1-DaEf-1-BeforeProcedure
            END-EVALUATE
            PERFORM Form1-DISPLAY-STATUS-MSG
            perform Form1-BEFORE-SCREEN
@@ -13497,35 +13611,36 @@ LUBEXX           delete lockfile record invalid continue end-delete
            When 5011 PERFORM Form1-DaCb-1-AfterProcedure
            When 5012 PERFORM ef-num-ord-AfterProcedure
            When 5013 PERFORM ef-num-ord-AfterProcedure
-           When 15 PERFORM ef-note-2-AfterProcedure
+           When 5014 PERFORM ef-num-ord-AfterProcedure
            When 16 PERFORM ef-note-2-AfterProcedure
            When 17 PERFORM ef-note-2-AfterProcedure
            When 18 PERFORM ef-note-2-AfterProcedure
-           When 5014 PERFORM ef-pag-AfterProcedure
+           When 19 PERFORM ef-note-2-AfterProcedure
            When 5015 PERFORM ef-pag-AfterProcedure
-           When 21 PERFORM rb-man-AfterProcedure
-           When 22 PERFORM rb-gui-AfterProcedure
-           When 5016 PERFORM ef-note-1-AfterProcedure
-           When 5017 PERFORM ef-note-2-AfterProcedure
-           When 5018 PERFORM ef-note-3-AfterProcedure
-           When 5019 PERFORM ef-note-4-AfterProcedure
-           When 5020 PERFORM ef-art-AfterProcedure
-           When 5021 PERFORM ef-qta-AfterProcedure
+           When 5016 PERFORM ef-pag-AfterProcedure
+           When 22 PERFORM rb-man-AfterProcedure
+           When 23 PERFORM rb-gui-AfterProcedure
+           When 5017 PERFORM ef-note-1-AfterProcedure
+           When 5018 PERFORM ef-note-2-AfterProcedure
+           When 5019 PERFORM ef-note-3-AfterProcedure
+           When 5020 PERFORM ef-note-4-AfterProcedure
+           When 5021 PERFORM ef-art-AfterProcedure
            When 5022 PERFORM ef-qta-AfterProcedure
-           When 5023 PERFORM ef-uni-AfterProcedure
-           When 5024 PERFORM ef-sconto-AfterProcedure
+           When 5023 PERFORM ef-qta-AfterProcedure
+           When 5024 PERFORM ef-uni-AfterProcedure
            When 5025 PERFORM ef-sconto-AfterProcedure
            When 5026 PERFORM ef-sconto-AfterProcedure
            When 5027 PERFORM ef-sconto-AfterProcedure
            When 5028 PERFORM ef-sconto-AfterProcedure
-           When 5029 PERFORM ef-cons-AfterProcedure
-           When 5030 PERFORM ef-cou-AfterProcedure
+           When 5029 PERFORM ef-sconto-AfterProcedure
+           When 5030 PERFORM ef-cons-AfterProcedure
            When 5031 PERFORM ef-cou-AfterProcedure
            When 5032 PERFORM ef-cou-AfterProcedure
-           When 5033 PERFORM ef-imp-AfterProcedure
-           When 5034 PERFORM ef-cod-iva-AfterProcedure
-           When 5035 PERFORM chk-manuale-AfterProcedure
-           When 5036 PERFORM Form1-DaEf-1-AfterProcedure
+           When 5033 PERFORM ef-cou-AfterProcedure
+           When 5034 PERFORM ef-imp-AfterProcedure
+           When 5035 PERFORM ef-cod-iva-AfterProcedure
+           When 5036 PERFORM chk-manuale-AfterProcedure
+           When 5037 PERFORM Form1-DaEf-1-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -13697,6 +13812,12 @@ LUBEXX           delete lockfile record invalid continue end-delete
               INQUIRE ef-des-cli, VALUE IN tof-destino-c
               SET TOTEM-CHECK-OK TO FALSE
               PERFORM ef-des-cli-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+              INQUIRE ef-evasione, VALUE IN tof-evasione
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-evasione-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
