@@ -36,9 +36,9 @@
            when 78-ID-ef-des-cli
                 inquire ef-des-cli, value in ef-des-cli-buf
 
-           |78-ID-ef-clientea è l'ID del control ef-clientea
-           when 78-ID-ef-clientea
-                inquire ef-clientea, value in ef-clientea-buf
+           |78-ID-ef-evasione è l'ID del control ef-evasione
+           when 78-ID-ef-evasione
+                inquire ef-evasione, value in ef-evasione-buf
 
            |78-ID-ef-pag è l'ID del control ef-pag
            when 78-ID-ef-pag

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gordfornvar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 20 settembre 2021 21:18:17.
+       DATE-WRITTEN.        martedì 21 settembre 2021 09:29:23.
        REMARKS.
       *{TOTEM}END
 
@@ -197,7 +197,7 @@
       * Data.Check-Box
               10 chk-aperto-BUF PIC 9 VALUE ZERO.
       * Data.Entry-Field
-              10 ef-clientea-BUF PIC z(6).
+              10 ef-evasione-BUF PIC z(6).
       * Data.Entry-Field
               10 ef-referente-BUF PIC X(40).
       * Data.Entry-Field
@@ -625,7 +625,7 @@
        78  78-ID-ef-des-cli VALUE 5011.
        78  78-ID-ch-rivisto VALUE 5012.
        78  78-ID-chk-aperto VALUE 5013.
-       78  78-ID-ef-clientea VALUE 5014.
+       78  78-ID-ef-evasione VALUE 5014.
        78  78-ID-ef-referente VALUE 5015.
        78  78-ID-ef-tel VALUE 5016.
        78  78-ID-ef-fax VALUE 5017.
@@ -1048,7 +1048,7 @@
 
       * ENTRY FIELD
        10
-           ef-clientea, 
+           ef-evasione, 
            Entry-Field, 
            COL 23,17, 
            LINE 18,15,
@@ -1058,12 +1058,12 @@
            COLOR IS 513,
            ENABLED mod-campi-testa,
            FONT IS Small-Font,
-           ID IS 78-ID-ef-clientea,                
+           ID IS 78-ID-ef-evasione,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RIGHT,
            MAX-TEXT 6,
-           VALUE ef-clientea-BUF,
+           VALUE ef-evasione-BUF,
            .
 
       * PUSH BUTTON
@@ -1164,7 +1164,7 @@
            ef-pag, 
            Entry-Field, 
            COL 23,17, 
-           LINE 25,00,
+           LINE 24,99,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -1342,7 +1342,7 @@
            Form1-La-8, 
            Label, 
            COL 5,17, 
-           LINE 25,00,
+           LINE 24,99,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -1390,7 +1390,7 @@
            lab-pag, 
            Label, 
            COL 32,17, 
-           LINE 25,00,
+           LINE 24,99,
            LINES 1,54 ,
            SIZE 46,00 ,
            COLOR IS 5,
@@ -2243,7 +2243,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 13,
+           ID IS 113,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3309,7 +3309,7 @@
            SIZE 16,00 ,
            EXCEPTION-VALUE 1009,
            FONT IS Small-Font,
-           ID IS 113,
+           ID IS 114,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            SELF-ACT,
@@ -3325,7 +3325,7 @@
            LINES 1,31 ,
            SIZE 4,00 ,
            FONT IS Small-Font,
-           ID IS 114,
+           ID IS 115,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3342,7 +3342,7 @@
            SIZE 10,00 ,
            COLOR IS 5,
            FONT IS Small-Font,
-           ID IS 115,
+           ID IS 116,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE lbl-dt-arrivo-BUF,
@@ -3358,7 +3358,7 @@
            LINES 1,31 ,
            SIZE 4,00 ,
            FONT IS Small-Font,
-           ID IS 116,
+           ID IS 117,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3375,7 +3375,7 @@
            SIZE 9,00 ,
            COLOR IS 5,
            FONT IS Small-Font,
-           ID IS 117,
+           ID IS 118,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE lbl-qta-arr-BUF,
@@ -3452,7 +3452,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 121,
+           ID IS 122,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3469,7 +3469,7 @@
            SIZE 65,00 ,
            COLOR IS 5,
            FONT IS Small-Font,
-           ID IS 122,
+           ID IS 123,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE lab-cau-BUF,
@@ -3487,7 +3487,7 @@
            SIZE 9,83 ,
            COLOR IS 2,
            FONT IS Verdana10B-Occidentale,
-           ID IS 123,
+           ID IS 124,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3504,7 +3504,7 @@
            SIZE 9,50 ,
            COLOR IS 2,
            FONT IS Verdana10B-Occidentale,
-           ID IS 124,
+           ID IS 125,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            LEFT,
@@ -3522,7 +3522,7 @@
            SIZE 45,00 ,
            COLOR IS 5,
            FONT IS Verdana12B-Occidentale,
-           ID IS 125,
+           ID IS 126,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE lab-stato-BUF,
@@ -3541,7 +3541,7 @@
            ENABLED mod-campi,
            EXCEPTION-VALUE 2004,
            FONT IS Small-Font,
-           ID IS 126,
+           ID IS 127,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Cambia Stato",
@@ -3557,7 +3557,7 @@
            SIZE 45,00 ,
            COLOR IS 5,
            FONT IS Small-Font,
-           ID IS 127,
+           ID IS 134,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE lab-dest-BUF,
@@ -3575,7 +3575,7 @@
            SIZE 45,00 ,
            COLOR IS 5,
            FONT IS Small-Font,
-           ID IS 134,
+           ID IS 135,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE lab-ind-dest-BUF,
@@ -3593,7 +3593,7 @@
            SIZE 45,00 ,
            COLOR IS 5,
            FONT IS Small-Font,
-           ID IS 135,
+           ID IS 136,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE lab-loc-dest-BUF,
@@ -3630,7 +3630,7 @@
            LINES 1,31 ,
            SIZE 7,00 ,
            FONT IS Small-Font,
-           ID IS 136,
+           ID IS 137,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3645,7 +3645,7 @@
            LINE 1,00,
            SIZE 157,83 ,
            COLOR IS 5,
-           ID IS 137,
+           ID IS 138,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            WIDTH 3,
@@ -3659,7 +3659,7 @@
            LINE 7,92,
            SIZE 157,83 ,
            COLOR IS 5,
-           ID IS 138,
+           ID IS 139,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            WIDTH 3,
@@ -3673,7 +3673,7 @@
            LINE 1,00,
            LINES 45,31 ,
            COLOR IS 5,
-           ID IS 139,
+           ID IS 140,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            WIDTH 3,
@@ -3687,7 +3687,7 @@
            LINE 46,23,
            SIZE 157,83 ,
            COLOR IS 5,
-           ID IS 140,
+           ID IS 141,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            WIDTH 3,
@@ -3701,7 +3701,7 @@
            LINE 1,00,
            LINES 45,31 ,
            COLOR IS 5,
-           ID IS 141,
+           ID IS 142,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            WIDTH 3,
@@ -3727,7 +3727,7 @@
            ENABLED E-ESCI,
            EXCEPTION-VALUE 27,
            FLAT,
-           ID IS 142,
+           ID IS 143,
            SELF-ACT,
            ESCAPE-BUTTON,
            TITLE "Esci (Esc)",
@@ -3746,7 +3746,7 @@
            SQUARE,
            ENABLED 0,
            FLAT,
-           ID IS 143,
+           ID IS 144,
            SELF-ACT,
            TITLE "Nuovo (F2)",
            BITMAP-NUMBER=BitmapNumNew
@@ -3766,7 +3766,7 @@
            ENABLED E-CANCELLA,
            EXCEPTION-VALUE 4,
            FLAT,
-           ID IS 144,
+           ID IS 145,
            SELF-ACT,
            TITLE "Cancella (F4)",
            BITMAP-NUMBER BitmapNumDelete
@@ -3786,7 +3786,7 @@
            ENABLED E-SALVA,
            EXCEPTION-VALUE 3,
            FLAT,
-           ID IS 145,
+           ID IS 146,
            SELF-ACT,
            TITLE "Salva (F3)",
            BITMAP-NUMBER BitmapNumSave
@@ -3807,7 +3807,7 @@
            ENABLED E-ANTEPRIMA,
            EXCEPTION-VALUE 6,
            FLAT,
-           ID IS 146,
+           ID IS 147,
            SELF-ACT,
            TITLE "Anteprima (F6)",
            .
@@ -3827,7 +3827,7 @@
            ENABLED E-MODIFICA,
            EXCEPTION-VALUE 150
            FLAT,
-           ID IS 147,
+           ID IS 148,
            SELF-ACT,
            TITLE "Modifica (F5)",
            BITMAP-NUMBER BitmapNumEdit
@@ -3849,7 +3849,7 @@
            ENABLED 1,
            EXCEPTION-VALUE 7,
            FLAT,
-           ID IS 148,
+           ID IS 149,
            SELF-ACT,
            TITLE "Stampa (F7)",
            .
@@ -3868,7 +3868,7 @@
            ENABLED E-CERCA,
            EXCEPTION-VALUE 8,
            FLAT,
-           ID IS 149,
+           ID IS 150,
            SELF-ACT,
            TITLE "Cerca (F8)",
            BITMAP-NUMBER BitmapNumZoom
@@ -3887,7 +3887,7 @@
            SQUARE,
            ENABLED E-SELEZIONA,
            FLAT,
-           ID IS 150,
+           ID IS 151,
            SELF-ACT,
            TITLE "Seleziona (F9)",
            BITMAP-NUMBER BitmapNumSelect
@@ -13140,9 +13140,9 @@
                MOVE 5011 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
-      * ef-clientea's Validation
+      * ef-evasione's Validation
            SET TOTEM-CHECK-OK TO FALSE
-           PERFORM ef-clientea-VALIDATION
+           PERFORM ef-evasione-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
@@ -13573,21 +13573,21 @@
            PERFORM ef-des-cli-AFTER-VALIDATION
            .
 
-       ef-clientea-BEFORE-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-clientea, BeforeValidation>
+       ef-evasione-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-evasione, BeforeValidation>
       * <TOTEM:END>
            .
 
-       ef-clientea-AFTER-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-clientea, AfterValidation>
+       ef-evasione-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-evasione, AfterValidation>
       * <TOTEM:END>
            .
 
-      * ef-clientea's Validation
-       ef-clientea-VALIDATION.
-           PERFORM ef-clientea-BEFORE-VALIDATION
+      * ef-evasione's Validation
+       ef-evasione-VALIDATION.
+           PERFORM ef-evasione-BEFORE-VALIDATION
            SET TOTEM-CHECK-OK TO TRUE
-           PERFORM ef-clientea-AFTER-VALIDATION
+           PERFORM ef-evasione-AFTER-VALIDATION
            .
 
        ef-referente-BEFORE-VALIDATION.
@@ -14095,8 +14095,8 @@
               ELSE
                  MOVE 0 TO tof-aperto
               END-IF
-      * DB_Entry-Field : ef-clientea
-           MOVE ef-clientea-BUF TO tof-evasione
+      * DB_Entry-Field : ef-evasione
+           MOVE ef-evasione-BUF TO tof-evasione
       * DB_Entry-Field : ef-referente
            MOVE ef-referente-BUF TO tof-referente
       * DB_Entry-Field : ef-tel
@@ -14227,8 +14227,8 @@
               ELSE
                  MOVE 0 TO chk-aperto-BUF
               END-IF
-      * DB_Entry-Field : ef-clientea
-           MOVE tof-evasione TO ef-clientea-BUF
+      * DB_Entry-Field : ef-evasione
+           MOVE tof-evasione TO ef-evasione-BUF
       * DB_Entry-Field : ef-referente
            MOVE tof-referente TO ef-referente-BUF
       * DB_Entry-Field : ef-tel
@@ -14453,8 +14453,8 @@
            if tof-evasione not = old-tof-evasione
               and SiSalvato
               set NoSalvato to true
-              |78-ID-ef-clientea è l'ID del campo ef-clientea
-              move 78-ID-ef-clientea to store-id 
+              |78-ID-ef-evasione è l'ID del campo ef-evasione
+              move 78-ID-ef-evasione to store-id 
            end-if
 
            if tof-referente not = old-tof-referente
@@ -14611,8 +14611,8 @@
            when 78-ID-ef-des-cli
                 move 1 to StatusHelp
                 perform STATUS-HELP
-           |78-ID-ef-clientea è l'ID del campo ef-clientea
-           when 78-ID-ef-clientea
+           |78-ID-ef-evasione è l'ID del campo ef-evasione
+           when 78-ID-ef-evasione
                 move 1 to StatusHelp
                 perform STATUS-HELP
            |78-ID-ef-pag è l'ID del campo ef-pag
@@ -14766,8 +14766,8 @@
                 move 0 to StatusHelp
                 perform STATUS-HELP
 
-           |78-ID-ef-clientea è l'ID del campo ef-clientea
-           when 78-ID-ef-clientea
+           |78-ID-ef-evasione è l'ID del campo ef-evasione
+           when 78-ID-ef-evasione
                 move 0 to StatusHelp
                 perform STATUS-HELP
 
@@ -14945,8 +14945,8 @@
            |78-ID-ef-des-cli è l'ID del campo ef-des-cli
            when 78-ID-ef-des-cli
                 perform CONTROLLO
-           |78-ID-ef-clientea è l'ID del campo ef-clientea
-           when 78-ID-ef-clientea
+           |78-ID-ef-evasione è l'ID del campo ef-evasione
+           when 78-ID-ef-evasione
                 perform CONTROLLO
            |78-ID-ef-pag è l'ID del campo ef-pag
            when 78-ID-ef-pag
@@ -15857,9 +15857,9 @@ LUBEXX                 move store-riga to riga
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
-              INQUIRE ef-clientea, VALUE IN tof-evasione
+              INQUIRE ef-evasione, VALUE IN tof-evasione
               SET TOTEM-CHECK-OK TO FALSE
-              PERFORM ef-clientea-VALIDATION
+              PERFORM ef-evasione-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF

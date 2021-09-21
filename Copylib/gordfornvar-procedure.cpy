@@ -1850,7 +1850,7 @@ PATCH       bitmap-number = BitmapNumSave.
 
            set StoSalvando to true.
            perform  varying CONTROL-ID from 78-ID-ef-anno by 1
-                      until CONTROL-ID > 78-ID-ef-data-cons
+                      until CONTROL-ID > 78-ID-ef-note-4
               perform CONTROLLO
               if errori 
                  exit perform 
@@ -1924,14 +1924,21 @@ PATCH       bitmap-number = BitmapNumSave.
               set environment "KEYSTROKE" to "DATA=44   44"
               set environment "KEYSTROKE" to "DATA=46   46"
 
-PATCH         move BitmapSaveDisabled to BitmapNumSave
-PATCH         move 0 to e-salva
+              if mod = 0
+PATCH            move BitmapSaveDisabled to BitmapNumSave
+PATCH            move 0 to e-salva
+              else                
+PATCH            move BitmapSaveEnabled to BitmapNumSave
+PATCH            move 1 to e-salva
+              end-if
 PATCH         modify tool-salva, 
 PATCH                enabled = e-salva,
 PATCH          bitmap-number = BitmapNumSave
-              perform CURRENT-RECORD
-              move 2 to riga event-data-2
-              perform SPOSTAMENTO
+              if tutto-ok
+                 perform CURRENT-RECORD
+                 move 2 to riga event-data-2
+                 perform SPOSTAMENTO
+              end-if
 PATCH      else
 PATCH         perform FORM1-EXIT
 PATCH      end-if.                   
@@ -2559,6 +2566,10 @@ PATCH      call "c$calledby" using PgmChiamante.
            if tof-urgente move 1 to form1-radio-1-buf
            else           move 2 to form1-radio-1-buf
            end-if.
+
+           if tof-destino-c = 0
+              move spaces to lab-des-cli-buf lab-des-loca-buf
+           end-if.   
 
            perform VALORIZZA-OLD.
       *                            

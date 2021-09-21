@@ -1357,9 +1357,9 @@ LABLAB*          end-if
                 inquire ef-anno, value in ef-anno-buf
                 if ef-anno-buf = 0
                    set errori to true
-                   display message box "Inserimento anno mancante"
-                           title = tit-err
-                           icon mb-warning-icon
+                   display message "Inserimento anno mancante"
+                             title tit-err
+                              icon mb-warning-icon
                    move 78-ID-ef-anno to control-id
                 end-if
                 move ef-anno-buf to como-anno
@@ -1724,7 +1724,8 @@ LUBEXX             end-if
                       invalid
                          set errori   to true
                          display message box "Cliente non valido"
-                             title titolo
+                             title tit-err
+                              icon mb-warning-icon
                          move 78-id-ef-cliente to control-id
                          move space   to cli-ragsoc-1 of clienti1
                    end-read
@@ -1744,7 +1745,8 @@ LUBEXX             end-if
                       invalid
                          set errori   to true
                          display message box "Destino non valido"
-                             title titolo
+                             title tit-err
+                              icon mb-warning-icon
                          move 78-ID-ef-des-cli to control-id
                          move spaces to lab-des-cli-buf
                          move spaces to lab-des-loca-buf
@@ -1754,6 +1756,17 @@ LUBEXX             end-if
                 modify lab-des-cli  title lab-des-cli-buf
                 move des-localita      to lab-des-loca-buf
                 modify lab-des-loca title lab-des-loca-buf
+
+           when 78-ID-ef-evasione
+                if desf-ev-immediata-si 
+                   move ef-evasione-buf to tof-evasione
+                   if tof-evasione = 0
+                      set errori to true
+                      display message "Numero evasione obbligatoria"
+                             title tit-err
+                              icon mb-warning-icon
+                   end-if
+                end-if   
 
            when 78-ID-ef-data-listino
                 inquire ef-data-listino, value in ef-data-listino-buf
@@ -1819,8 +1832,8 @@ LUBEXX             end-if
                       invalid
                          set errori   to true
                          display message "Promo non valida"
-                                   title titolo
-                                    icon 2
+                             title tit-err
+                              icon mb-warning-icon
                          move space   to como-descr-promo
                                          lab-promo-buf
                        not invalid
