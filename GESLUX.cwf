@@ -71702,7 +71702,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-EDI:Debug Mode:EDI\Source\EDI-bolle-p.cbl]
-COPY_DEPENDENCE=FD\tparamge.sl;FD\tordini.sl;\Lubex\GESLUX\FD\rordini.sl;FD\tcontat.sl;FD\articoli.sl;FD\lineseq.sl;FD\EDI-clides.sl;FD\EDI-param.sl;FD\tcaumag.sl;FD\clienti.sl;\Lubex\GESLUX\FD\tsetinvio.sl;FD\progmag.sl;FD\tparamge.fd;FD\tordini.fd;\Lubex\GESLUX\FD\rordini.fd;FD\tcontat.fd;FD\articoli.fd;FD\lineseq.fd;FD\EDI-clides.fd;FD\EDI-param.fd;FD\tcaumag.fd;FD\clienti.fd;\Lubex\GESLUX\FD\tsetinvio.fd;FD\progmag.fd;Copylib\EDI-bolle.def;\Lubex\GESLUX\Copylib\link-batch.def;\Lubex\GESLUX\Copylib\setta-inizio-riga.cpy
+COPY_DEPENDENCE=FD\tparamge.sl;\Lubex\GESLUX\FD\tordini.sl;\Lubex\GESLUX\FD\rordini.sl;FD\tcontat.sl;FD\articoli.sl;FD\lineseq.sl;FD\EDI-clides.sl;FD\EDI-param.sl;FD\tcaumag.sl;FD\clienti.sl;\Lubex\GESLUX\FD\tsetinvio.sl;FD\progmag.sl;FD\tparamge.fd;\Lubex\GESLUX\FD\tordini.fd;\Lubex\GESLUX\FD\rordini.fd;FD\tcontat.fd;FD\articoli.fd;FD\lineseq.fd;FD\EDI-clides.fd;FD\EDI-param.fd;FD\tcaumag.fd;FD\clienti.fd;\Lubex\GESLUX\FD\tsetinvio.fd;FD\progmag.fd;Copylib\EDI-bolle.def;\Lubex\GESLUX\Copylib\link-batch.def;\Lubex\GESLUX\Copylib\setta-inizio-riga.cpy
 ADDITIONAL_OPTIONS=-x -Di -Ga -Zd -Za -Zn -Zz
 FOLLOW_PROJECT=1
 ; Standard Options
@@ -72570,7 +72570,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-EDI:RELEASE:EDI\Source\EDI-bolle-p.cbl]
-COPY_DEPENDENCE=FD\tparamge.sl;FD\tordini.sl;\Lubex\GESLUX\FD\rordini.sl;FD\tcontat.sl;FD\articoli.sl;FD\lineseq.sl;FD\EDI-clides.sl;FD\EDI-param.sl;FD\tcaumag.sl;FD\clienti.sl;\Lubex\GESLUX\FD\tsetinvio.sl;FD\progmag.sl;FD\tparamge.fd;FD\tordini.fd;\Lubex\GESLUX\FD\rordini.fd;FD\tcontat.fd;FD\articoli.fd;FD\lineseq.fd;FD\EDI-clides.fd;FD\EDI-param.fd;FD\tcaumag.fd;FD\clienti.fd;\Lubex\GESLUX\FD\tsetinvio.fd;FD\progmag.fd;Copylib\EDI-bolle.def;\Lubex\GESLUX\Copylib\link-batch.def;\Lubex\GESLUX\Copylib\setta-inizio-riga.cpy
+COPY_DEPENDENCE=FD\tparamge.sl;\Lubex\GESLUX\FD\tordini.sl;\Lubex\GESLUX\FD\rordini.sl;FD\tcontat.sl;FD\articoli.sl;FD\lineseq.sl;FD\EDI-clides.sl;FD\EDI-param.sl;FD\tcaumag.sl;FD\clienti.sl;\Lubex\GESLUX\FD\tsetinvio.sl;FD\progmag.sl;FD\tparamge.fd;\Lubex\GESLUX\FD\tordini.fd;\Lubex\GESLUX\FD\rordini.fd;FD\tcontat.fd;FD\articoli.fd;FD\lineseq.fd;FD\EDI-clides.fd;FD\EDI-param.fd;FD\tcaumag.fd;FD\clienti.fd;\Lubex\GESLUX\FD\tsetinvio.fd;FD\progmag.fd;Copylib\EDI-bolle.def;\Lubex\GESLUX\Copylib\link-batch.def;\Lubex\GESLUX\Copylib\setta-inizio-riga.cpy
 ADDITIONAL_OPTIONS=-x -Di -Ga -Zd -Za -Zn -Zz
 FOLLOW_PROJECT=1
 ; Standard Options
@@ -72666,7 +72666,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-EDI:RELEASE:EDI\Source\EDI-fatt-p.cbl]
-COPY_DEPENDENCE=FD\tparamge.sl;FD\tordini.sl;\Lubex\GESLUX\FD\rordini.sl;FD\tnotacr.sl;\Lubex\GESLUX\FD\rnotacr.sl;FD\tcontat.sl;FD\articoli.sl;FD\TIVAESE.sl;FD\lineseq.sl;FD\timbalqta.sl;FD\EDI-param.sl;FD\EDI-tiva.sl;FD\EDI-clides.sl;FD\tcaumag.sl;FD\tcodpag.sl;FD\clienti.sl;FD\recapiti.sl;FD\tparamge.fd;FD\tordini.fd;\Lubex\GESLUX\FD\rordini.fd;FD\tnotacr.fd;\Lubex\GESLUX\FD\rnotacr.fd;FD\tcontat.fd;FD\articoli.fd;FD\TIVAESE.fd;FD\lineseq.fd;FD\timbalqta.fd;FD\EDI-param.fd;FD\EDI-tiva.fd;FD\EDI-clides.fd;FD\tcaumag.fd;FD\tcodpag.fd;FD\clienti.fd;FD\recapiti.fd;Copylib\edi.def;\Lubex\GESLUX\Copylib\link-geslock.def;\Lubex\GESLUX\Copylib\comune.def;\Lubex\GESLUX\Copylib\messaggi.def;\Lubex\GESLUX\Copylib\CALSCA\varsca;\Lubex\GESLUX\Copylib\link-stfatt.def;\Lubex\GESLUX\Copylib\link-batch.def;\Lubex\GESLUX\Copylib\link-edi.def;\Lubex\GESLUX\Copylib\setta-inizio-riga.cpy
+COPY_DEPENDENCE=FD\tparamge.sl;\Lubex\GESLUX\FD\tordini.sl;\Lubex\GESLUX\FD\rordini.sl;FD\tnotacr.sl;\Lubex\GESLUX\FD\rnotacr.sl;FD\tcontat.sl;FD\articoli.sl;FD\TIVAESE.sl;FD\lineseq.sl;FD\timbalqta.sl;FD\EDI-param.sl;FD\EDI-tiva.sl;FD\EDI-clides.sl;FD\tcaumag.sl;FD\tcodpag.sl;FD\clienti.sl;FD\recapiti.sl;FD\tparamge.fd;\Lubex\GESLUX\FD\tordini.fd;\Lubex\GESLUX\FD\rordini.fd;FD\tnotacr.fd;\Lubex\GESLUX\FD\rnotacr.fd;FD\tcontat.fd;FD\articoli.fd;FD\TIVAESE.fd;FD\lineseq.fd;FD\timbalqta.fd;FD\EDI-param.fd;FD\EDI-tiva.fd;FD\EDI-clides.fd;FD\tcaumag.fd;FD\tcodpag.fd;FD\clienti.fd;FD\recapiti.fd;Copylib\edi.def;\Lubex\GESLUX\Copylib\link-geslock.def;\Lubex\GESLUX\Copylib\comune.def;\Lubex\GESLUX\Copylib\messaggi.def;\Lubex\GESLUX\Copylib\CALSCA\varsca;\Lubex\GESLUX\Copylib\link-stfatt.def;\Lubex\GESLUX\Copylib\link-batch.def;\Lubex\GESLUX\Copylib\link-edi.def;\Lubex\GESLUX\Copylib\setta-inizio-riga.cpy
 ADDITIONAL_OPTIONS=-x -Di -Ga -Zd -Za -Zn -Zz
 FOLLOW_PROJECT=1
 ; Standard Options
@@ -72953,7 +72953,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-EDI:RELEASE:EDI\Source\EDI-stdoc.cbl]
-COPY_DEPENDENCE=FD\tordini.sl;FD\tnotacr.sl;FD\tparamge.sl;FD\zoom-tno-fat.sl;FD\zoom-tor-fat.sl;FD\zoom-tor-bolle.sl;FD\clienti.sl;FD\tcaumag.sl;FD\tordini.fd;FD\tnotacr.fd;FD\tparamge.fd;FD\zoom-tno-fat.fd;FD\zoom-tor-fat.fd;FD\zoom-tor-bolle.fd;FD\clienti.fd;FD\tcaumag.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;\Lubex\GESLUX\Copylib\standard.def;\Lubex\GESLUX\Copylib\UTYDATA.DEF;\Lubex\GESLUX\Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;\Lubex\GESLUX\Copylib\comune.def;\Lubex\GESLUX\Copylib\messaggi.def;\Lubex\GESLUX\Copylib\link-batch.def;\Lubex\GESLUX\Copylib\link-edi.def;\Lubex\GESLUX\Copylib\common-linkage.def;\Lubex\GESLUX\Copylib\blockpgm.lks;\Lubex\GESLUX\Resource\bottone-ok.bmp;\Lubex\GESLUX\Resource\bottone-cancel.bmp;\Lubex\GESLUX\Resource\toolbar.bmp;\Lubex\GESLUX\Copylib\COLOR-CUSTOM.CPY
+COPY_DEPENDENCE=\Lubex\GESLUX\FD\tordini.sl;FD\tnotacr.sl;FD\tparamge.sl;FD\zoom-tno-fat.sl;FD\zoom-tor-fat.sl;FD\zoom-tor-bolle.sl;FD\clienti.sl;FD\tcaumag.sl;\Lubex\GESLUX\FD\tordini.fd;FD\tnotacr.fd;FD\tparamge.fd;FD\zoom-tno-fat.fd;FD\zoom-tor-fat.fd;FD\zoom-tor-bolle.fd;FD\clienti.fd;FD\tcaumag.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;\Lubex\GESLUX\Copylib\standard.def;\Lubex\GESLUX\Copylib\UTYDATA.DEF;\Lubex\GESLUX\Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;\Lubex\GESLUX\Copylib\comune.def;\Lubex\GESLUX\Copylib\messaggi.def;\Lubex\GESLUX\Copylib\link-batch.def;\Lubex\GESLUX\Copylib\link-edi.def;\Lubex\GESLUX\Copylib\common-linkage.def;\Lubex\GESLUX\Copylib\blockpgm.lks;\Lubex\GESLUX\Resource\bottone-ok.bmp;\Lubex\GESLUX\Resource\bottone-cancel.bmp;\Lubex\GESLUX\Resource\toolbar.bmp;\Lubex\GESLUX\Copylib\COLOR-CUSTOM.CPY
 ADDITIONAL_OPTIONS=-x -Di -Ga -Zd -Za -Zn -Zz
 FOLLOW_PROJECT=1
 ; Standard Options
