@@ -858,8 +858,13 @@ LUBEXX     if tcl-codice not = save-ttipocli-privato
                               lab-agente-buf
                    modify ef-agente,   value = ef-agente-buf
                    modify lab-agente,  title = lab-agente-buf
+                   initialize ef-agente2-buf
+                              lab-agente2-buf
+                   modify ef-agente2,   value = ef-agente2-buf
+                   modify lab-agente2,  title = lab-agente2-buf
                 end-if
-                modify ef-agente, enabled = mod-agente
+                modify ef-agente,  enabled = mod-agente
+                modify ef-agente2, enabled = mod-agente
 
            |78-ID-ef-gdo è l'ID del campo ef-gdo
            when 78-ID-ef-gdo
@@ -1798,7 +1803,7 @@ LUBEXX          end-if
                    ef-tel-2, ef-fax, ef-mail, ef-url, ef-cod-ditta
                    ef-tipo, ef-gdo, chk-utf, ef-referente, ef-piva-d,
                    ef-vettore, chk-inoltro, chk-superamento, ef-agente, 
-                   cbo-stato, ef-note, ef-note-agg,
+                   ef-agente2, cbo-stato, ef-note, ef-note-agg,
                    pb-note, ef-codfis, ef-piva, ef-iva-ese, ef-cod-iva,
                    ef-pag, chk-spost-ago, chk-spost-dic, 
                    ef-fido, ef-fido-data, ef-data-fido-extra, ef-cab, 
@@ -3153,8 +3158,13 @@ LUBEXX        end-if
                               lab-agente-buf
                    modify ef-agente,   value = ef-agente-buf
                    modify lab-agente,  title = lab-agente-buf
+                   initialize ef-agente2-buf
+                              lab-agente2-buf
+                   modify ef-agente2,   value = ef-agente2-buf
+                   modify lab-agente2,  title = lab-agente2-buf
                 end-if
-                modify ef-agente, enabled = mod-agente
+                modify ef-agente,  enabled = mod-agente
+                modify ef-agente2, enabled = mod-agente
               end-if
            end-if.
 
@@ -3970,6 +3980,7 @@ LUBEXX        perform DELETE-LOCKFILE
            when 78-ID-ef-gdo
            when 78-ID-ef-vettore
            when 78-ID-ef-agente
+           when 78-ID-ef-agente2
            when 78-ID-ef-iva-ese
            when 78-ID-ef-cod-iva
            when 78-ID-ef-pag
