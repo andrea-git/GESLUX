@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E5914184343-238-309112822
+PROGRAM_UNIQUE_CODE=TOTEM-7E591B92427-150-109004902
 
 {{@DESCRIPTION:
 
@@ -10679,7 +10679,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Se attivo chiude l'ordine fornitore EXD al momento dell'evasione manuale
-            ID                = 76
+            ID                = 37
             Left Text         = FALSE
             Line              = 26,85
             Lines             = 1,46
@@ -10731,7 +10731,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Digitare il referente
-            ID                = 37
+            ID                = 38
             ID Variable       = AUTO-ID
             Justification     = Unaligned
             Line              = 31,08
@@ -10855,7 +10855,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Digitare la % premi fine anno
-            ID                = 38
+            ID                = 39
             ID Variable       = AUTO-ID
             Justification     = Right
             Line              = 31,08
@@ -10914,7 +10914,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Indica se il calcolo del PFA deve tener conto o no delle imposte
-            ID                = 39
+            ID                = 44
             ID Variable       = AUTO-ID
             Left Text         = FALSE
             Line              = 31,08
@@ -11084,7 +11084,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = FALSE
             Help ID           = 0
-            ID                = 44
+            ID                = 45
             Line              = 30,62
             Lines             = 1,81
             Lines in Pixels   = 23
@@ -12398,7 +12398,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 45
+            ID                = 46
             Line              = 11,77
             Lines             = 2,15
             Lines in Pixels   = 21
@@ -12914,7 +12914,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 195
+            ID                = 204
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 27,00
@@ -12922,10 +12922,10 @@ Begin Screen Form1
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
-            Size              = 12,00
+            Size              = 13,00
             Size Unit         = Default
             Tab Order         = 75
-            Title             = "Ev. immediata"
+            Title             = "Ev. obbligatoria"
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE

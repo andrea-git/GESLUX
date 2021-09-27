@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gforn.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 20 settembre 2021 18:13:00.
+       DATE-WRITTEN.        lunedì 27 settembre 2021 11:25:00.
        REMARKS.
       *{TOTEM}END
 
@@ -2097,7 +2097,7 @@
            SIZE 2,83 ,
            ENABLED mod-destini,
            FLAT,
-           ID IS 76,
+           ID IS 37,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            NOTIFY,
@@ -2231,7 +2231,7 @@
            EXCEPTION-VALUE 1008,
            FLAT,
            FONT IS Small-Font,
-           ID IS 44,
+           ID IS 45,
            TITLE "&Note a pié bolla",
            AFTER PROCEDURE pb-nota-ord-d-AfterProcedure, 
            BEFORE PROCEDURE pb-nota-ord-d-BeforeProcedure, 
@@ -2801,7 +2801,7 @@
            EXCEPTION-VALUE 1005,
            FLAT,
            FONT IS Small-Font,
-           ID IS 45,
+           ID IS 46,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            SELF-ACT,
@@ -3043,13 +3043,13 @@
            COL 78,50, 
            LINE 32,84,
            LINES 1,31 ,
-           SIZE 12,00 ,
+           SIZE 13,00 ,
            FONT IS Small-Font,
-           ID IS 195,
+           ID IS 204,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
-           TITLE "Ev. immediata",
+           TITLE "Ev. obbligatoria",
            .
 
       * BAR
@@ -10370,7 +10370,7 @@
            WHEN 5045 MOVE "Selezionare uno stato" to TOTEM-HINT-TEXT
            WHEN 5046 MOVE "Digitare il codice pagamento del destino" to 
            TOTEM-HINT-TEXT
-           WHEN 76 MOVE "Se attivo chiude l'ordine fornitore EXD al mome
+           WHEN 37 MOVE "Se attivo chiude l'ordine fornitore EXD al mome
       -    "nto dell'evasione manuale" to TOTEM-HINT-TEXT
            WHEN 5047 MOVE "Digitare il referente" to TOTEM-HINT-TEXT
            WHEN 5048 MOVE "Digitare il numero di telefono diretto" to 
@@ -10442,7 +10442,7 @@
            When 76 PERFORM Form1-DaCb-1-BeforeProcedure
            When 5045 PERFORM cbo-stato-d-BeforeProcedure
            When 5046 PERFORM ef-pag-d-BeforeProcedure
-           When 76 PERFORM Form1-DaCb-1-BeforeProcedure
+           When 37 PERFORM Form1-DaCb-1-BeforeProcedure
            When 5047 PERFORM ef-ref-ord-BeforeProcedure
            When 5048 PERFORM ef-tel-ord-BeforeProcedure
            When 5049 PERFORM ef-perce-premi-BeforeProcedure
@@ -10505,7 +10505,7 @@
            When 5044 PERFORM ef-note-agg-AfterProcedure
            When 76 PERFORM Form1-DaCb-1-AfterProcedure
            When 5046 PERFORM ef-pag-d-AfterProcedure
-           When 76 PERFORM Form1-DaCb-1-AfterProcedure
+           When 37 PERFORM Form1-DaCb-1-AfterProcedure
            When 5047 PERFORM ef-ref-ord-AfterProcedure
            When 5048 PERFORM ef-tel-ord-AfterProcedure
            When 5049 PERFORM ef-perce-premi-AfterProcedure
