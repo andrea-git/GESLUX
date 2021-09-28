@@ -737,7 +737,9 @@ LUBEXX***---
                      separatore             delimited size
                      "Cod. Art."            delimited size
                      separatore             delimited size
-                     "Descrizione Articolo" delimited size
+                     "Descrizione articolo" delimited size
+                     separatore             delimited size
+                     "Scorta articolo"      delimited size
                      separatore             delimited size
                      "Q.tà"                 delimited size
                      separatore             delimited size
@@ -799,6 +801,8 @@ LUBEXX     move diff-valore to diff-valore-edit.
                   art-codice          delimited size
                   separatore          delimited size
                   art-descrizione     delimited size
+                  separatore          delimited size
+                  art-scorta          delimited size
                   separatore          delimited size
                   qta-edit            delimited size
                   separatore          delimited size
