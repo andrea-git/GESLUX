@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evasione.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 5 dicembre 2019 14:41:13.
+       DATE-WRITTEN.        martedì 28 settembre 2021 12:29:21.
        REMARKS.
       *{TOTEM}END
 
@@ -320,7 +320,7 @@
        77 TMP-Screen2-tordforn-RESTOREBUF  PIC X(556).
        77 TMP-Screen2-KEYIS  PIC 9(3) VALUE 1.
        77 Screen2-MULKEY-TMPBUF   PIC X(556).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-tordforn-BUF     PIC X(556).
        77 TMP-DataSet1-rordforn-BUF     PIC X(544).
@@ -7164,6 +7164,8 @@
 
        STAMPE.
       * <TOTEM:PARA. STAMPE>
+           exit paragraph.
+
            move spaces to selprint-stampante.
            accept selprint-stampante from environment "STAMPANTE_EVASION
       -    "I_F".
