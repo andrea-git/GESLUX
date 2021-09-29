@@ -1311,7 +1311,7 @@
                         78-spazi 
                         78-spazi 
                         "<IdDocumento>"
-                        tor-num-ord-cli delimited low-value
+                        tor-num-ord-cli(1:20) delimited low-value
                         "</IdDocumento>"
                    into line-riga
                  write line-riga

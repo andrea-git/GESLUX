@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evasione.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 28 settembre 2021 12:29:21.
+       DATE-WRITTEN.        mercoledì 29 settembre 2021 13:46:02.
        REMARKS.
       *{TOTEM}END
 
@@ -7164,8 +7164,6 @@
 
        STAMPE.
       * <TOTEM:PARA. STAMPE>
-           exit paragraph.
-
            move spaces to selprint-stampante.
            accept selprint-stampante from environment "STAMPANTE_EVASION
       -    "I_F".
@@ -7180,6 +7178,7 @@
               move teva-chiave      to stobz-a-teva-chiave
               call   "st-bozze"  using st-bozze-linkage
               cancel "st-bozze"
+              exit paragraph
               perform varying idx-ordf from 1 by 1 until idx-ordf > idx
                  move tab-chiave(idx-ordf) to stof-tof-chiave
                                               stof-tof-chiave-a

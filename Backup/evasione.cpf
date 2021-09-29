@@ -2,12 +2,13 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
+DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=bprepb-Ev-Before-Program
 AFTER_PROGRAM=accetordforn-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E591C102716-776-197228173
+PROGRAM_UNIQUE_CODE=TOTEM-7E591D114346-963-2199520529
 
 {{@DESCRIPTION:
 
@@ -6369,8 +6370,6 @@ BEGIN-DATA
    BASETYPE          = 3
    PARAGRAPH         = STAMPE
 BEGIN-TEXT
-           exit paragraph.
-
            move spaces to selprint-stampante.
            accept selprint-stampante from environment "STAMPANTE_EVASIONI_F".
            if selprint-stampante = spaces
@@ -6384,6 +6383,7 @@ BEGIN-TEXT
               move teva-chiave      to stobz-a-teva-chiave
               call   "st-bozze"  using st-bozze-linkage
               cancel "st-bozze"
+              exit paragraph
               perform varying idx-ordf from 1 by 1 until idx-ordf > idx
                  move tab-chiave(idx-ordf) to stof-tof-chiave
                                               stof-tof-chiave-a
