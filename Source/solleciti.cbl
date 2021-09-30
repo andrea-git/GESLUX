@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          solleciti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 17 settembre 2021 17:13:08.
+       DATE-WRITTEN.        giovedì 30 settembre 2021 16:42:30.
        REMARKS.
       *{TOTEM}END
 
@@ -526,6 +526,9 @@
        77 lab-art-buf      PIC  x(50).
        77 e-destini        PIC  9
                   VALUE IS 0.
+       77 FILLER           PIC  9
+                  VALUE IS 1.
+           88 tutti-stati VALUE IS 1    WHEN SET TO FALSE  0. 
        77 path-tmp-ordf-art            PIC  x(256).
        01 file-info.
            05 file-size        PIC  X(8)
@@ -560,7 +563,6 @@
        77 ef-tipo-buf      PIC  x(2).
        77 STATUS-stato-invio           PIC  X(2).
            88 Valid-STATUS-stato-invio VALUE IS "00" THRU "09". 
-       77 cbo-stato-f-buf  PIC  x(50).
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -883,7 +885,7 @@
            ef-cli, 
            Entry-Field, 
            COL 14,00, 
-           LINE 6,25,
+           LINE 5,62,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -902,7 +904,7 @@
            ef-dest, 
            Entry-Field, 
            COL 14,00, 
-           LINE 8,13,
+           LINE 7,50,
            LINES 1,33 ,
            SIZE 7,00 ,
            BOXED,
@@ -922,7 +924,7 @@
            ef-age, 
            Entry-Field, 
            COL 14,00, 
-           LINE 11,88,
+           LINE 11,25,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -941,7 +943,7 @@
            ef-gdo, 
            Entry-Field, 
            COL 14,00, 
-           LINE 15,13,
+           LINE 14,50,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -961,7 +963,7 @@
            cbo-promoa, 
            Combo-Box, 
            COL 14,00, 
-           LINE 17,19,
+           LINE 16,56,
            LINES 7,13 ,
            SIZE 53,13 ,
            BOXED,
@@ -983,7 +985,7 @@
            ef-tipo, 
            Entry-Field, 
            COL 14,00, 
-           LINE 20,75,
+           LINE 20,12,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -1002,7 +1004,7 @@
            ef-art, 
            Entry-Field, 
            COL 14,00, 
-           LINE 24,38,
+           LINE 23,75,
            LINES 1,31 ,
            SIZE 6,00 ,
            BOXED,
@@ -1016,34 +1018,107 @@
            .
 
 
-      * COMBO-BOX
+      * CHECK BOX
        10
-           cbo-stato-f, 
-           Combo-Box, 
-           COL 14,00, 
-           LINE 26,63,
-           LINES 6,69 ,
-           SIZE 25,00 ,
-           BOXED,
-           COLOR IS 513,
+           chk-reg-ini, 
+           Check-Box, 
+           COL 14,50, 
+           LINE 27,19,
+           LINES 1,13 ,
+           SIZE 1,88 ,
            ENABLED 1,
-           FONT IS Arial8B-Occidentale,
-           ID IS 11,
+           FLAT,
+           FONT IS Verdana10-Occidentale,
+           ID IS 3,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           MASS-UPDATE 0,
-           NOTIFY-SELCHANGE,
-           DROP-LIST,
-           UNSORTED,
-           AFTER PROCEDURE cbo-promoa-AfterProcedure, 
-           BEFORE PROCEDURE cbo-promoa-BeforeProcedure, 
+           TITLE "Check Box",
+           VALUE chk-reg-buf,
+           AFTER PROCEDURE chk-reg-ini-AfterProcedure,
+           BEFORE PROCEDURE chk-reg-ini-BeforeProcedure, 
+           .
+      * CHECK BOX
+       10
+           chk-il-ini, 
+           Check-Box, 
+           COL 14,50, 
+           LINE 28,63,
+           LINES 1,13 ,
+           SIZE 1,88 ,
+           ENABLED 1,
+           FLAT,
+           FONT IS Verdana10-Occidentale,
+           ID IS 10,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE "Check Box",
+           VALUE chk-il-buf,
+           AFTER PROCEDURE chk-il-ini-AfterProcedure,
+           BEFORE PROCEDURE chk-il-ini-BeforeProcedure, 
+           .
+      * CHECK BOX
+       10
+           chk-sp-ini, 
+           Check-Box, 
+           COL 39,50, 
+           LINE 27,19,
+           LINES 1,13 ,
+           SIZE 1,88 ,
+           ENABLED 1,
+           FLAT,
+           FONT IS Verdana10-Occidentale,
+           ID IS 25,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE "Check Box",
+           VALUE chk-sp-buf,
+           AFTER PROCEDURE chk-sp-ini-AfterProcedure,
+           BEFORE PROCEDURE chk-sp-ini-BeforeProcedure, 
+           .
+      * CHECK BOX
+       10
+           chk-st-ini, 
+           Check-Box, 
+           COL 39,50, 
+           LINE 28,63,
+           LINES 1,13 ,
+           SIZE 1,88 ,
+           ENABLED 1,
+           FLAT,
+           FONT IS Verdana10-Occidentale,
+           ID IS 27,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE "Check Box",
+           VALUE chk-st-buf,
+           AFTER PROCEDURE chk-st-ini-AfterProcedure,
+           BEFORE PROCEDURE chk-st-ini-BeforeProcedure, 
+           .
+      * CHECK BOX
+       10
+           chk-chiuso-ini, 
+           Check-Box, 
+           COL 69,50, 
+           LINE 27,19,
+           LINES 1,13 ,
+           SIZE 1,88 ,
+           ENABLED 1,
+           FLAT,
+           FONT IS Verdana10-Occidentale,
+           ID IS 33,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE "Check Box",
+           VALUE chk-chiuso-buf,
+           AFTER PROCEDURE chk-chiuso-ini-AfterProcedure,
+           BEFORE PROCEDURE chk-chiuso-ini-BeforeProcedure, 
            .
       * FRAME
        10
            Screen1-Fr-1a, 
            Frame, 
            COL 2,00, 
-           LINE 30,63,
+           LINE 30,62,
            LINES 3,00 ,
            SIZE 96,50 ,
            COLOR IS 2,
@@ -1057,7 +1132,7 @@
            PB-ESEGUI, 
            Push-Button, 
            COL 78,13, 
-           LINE 31,25,
+           LINE 31,18,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE OK_73X21-BMP,
@@ -1080,7 +1155,7 @@
            pb-cancel, 
            Push-Button, 
            COL 88,00, 
-           LINE 31,25,
+           LINE 31,18,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE CANCEL_73X21-BMP,
@@ -1103,7 +1178,7 @@
            Screen1-La-2ab, 
            Label, 
            COL 5,00, 
-           LINE 6,25,
+           LINE 5,62,
            LINES 1,31 ,
            SIZE 8,00 ,
            ID IS 242,
@@ -1118,7 +1193,7 @@
            Screen1-La-2aab, 
            Label, 
            COL 5,00, 
-           LINE 8,13,
+           LINE 7,50,
            LINES 1,33 ,
            SIZE 8,00 ,
            ID IS 244,
@@ -1177,7 +1252,7 @@
            lab-cli, 
            Label, 
            COL 22,00, 
-           LINE 6,25,
+           LINE 5,62,
            LINES 1,31 ,
            SIZE 60,00 ,
            COLOR IS 5,
@@ -1194,7 +1269,7 @@
            lab-dest, 
            Label, 
            COL 22,00, 
-           LINE 8,13,
+           LINE 7,50,
            LINES 1,31 ,
            SIZE 60,00 ,
            COLOR IS 5,
@@ -1211,7 +1286,7 @@
            Screen1-La-2aba, 
            Label, 
            COL 5,00, 
-           LINE 11,88,
+           LINE 11,25,
            LINES 1,33 ,
            SIZE 8,00 ,
            ID IS 253,
@@ -1226,7 +1301,7 @@
            lab-age, 
            Label, 
            COL 22,00, 
-           LINE 11,88,
+           LINE 11,25,
            LINES 1,31 ,
            SIZE 60,00 ,
            COLOR IS 5,
@@ -1243,7 +1318,7 @@
            Screen1-La-2abaa, 
            Label, 
            COL 5,00, 
-           LINE 24,38,
+           LINE 23,75,
            LINES 1,31 ,
            SIZE 8,00 ,
            ID IS 258,
@@ -1258,7 +1333,7 @@
            lab-art, 
            Label, 
            COL 21,00, 
-           LINE 24,38,
+           LINE 23,75,
            LINES 1,31 ,
            SIZE 60,00 ,
            COLOR IS 5,
@@ -1275,7 +1350,7 @@
            Screen1-La-2abaaa, 
            Label, 
            COL 5,00, 
-           LINE 17,19,
+           LINE 16,56,
            LINES 1,31 ,
            SIZE 8,00 ,
            ID IS 260,
@@ -1290,7 +1365,7 @@
            Screen1-Br-1, 
            Bar,
            COL 5,25, 
-           LINE 10,44,
+           LINE 9,81,
            SIZE 90,00 ,
            COLOR IS 2,
            ID IS 261,
@@ -1304,7 +1379,7 @@
            Screen1-Br-1a, 
            Bar,
            COL 5,25, 
-           LINE 19,81,
+           LINE 19,19,
            SIZE 90,00 ,
            COLOR IS 2,
            ID IS 262,
@@ -1318,7 +1393,7 @@
            Screen1-Br-1b, 
            Bar,
            COL 5,25, 
-           LINE 14,19,
+           LINE 13,56,
            SIZE 90,00 ,
            COLOR IS 2,
            ID IS 15,
@@ -1332,7 +1407,7 @@
            Screen1-La-2abab, 
            Label, 
            COL 5,00, 
-           LINE 15,13,
+           LINE 14,50,
            LINES 1,33 ,
            SIZE 8,00 ,
            ID IS 16,
@@ -1347,7 +1422,7 @@
            lab-gdo, 
            Label, 
            COL 22,00, 
-           LINE 15,13,
+           LINE 14,50,
            LINES 1,31 ,
            SIZE 60,00 ,
            COLOR IS 5,
@@ -1364,7 +1439,7 @@
            Screen1-La-2ababa, 
            Label, 
            COL 5,00, 
-           LINE 20,38,
+           LINE 19,75,
            LINES 2,13 ,
            SIZE 8,00 ,
            ID IS 18,
@@ -1379,7 +1454,7 @@
            lab-tipo, 
            Label, 
            COL 22,00, 
-           LINE 20,75,
+           LINE 20,12,
            LINES 1,31 ,
            SIZE 60,00 ,
            COLOR IS 5,
@@ -1396,7 +1471,7 @@
            Screen1-Br-1ab, 
            Bar,
            COL 5,25, 
-           LINE 22,94,
+           LINE 22,31,
            SIZE 90,00 ,
            COLOR IS 2,
            ID IS 20,
@@ -1410,7 +1485,7 @@
            Screen1-Br-1aaa, 
            Bar,
            COL 5,25, 
-           LINE 23,19,
+           LINE 22,56,
            SIZE 90,00 ,
            COLOR IS 2,
            ID IS 14,
@@ -1421,13 +1496,102 @@
 
       * LABEL
        10
-           Screen1-La-2abaaaa, 
+           Screen1-La-2ja, 
+           Label, 
+           COL 17,00, 
+           LINE 27,12,
+           LINES 1,13 ,
+           SIZE 19,00 ,
+           ID IS 36,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Inevaso / Registrato (REG)",
+           .
+
+      * LABEL
+       10
+           Screen1-La-2bba, 
+           Label, 
+           COL 17,00, 
+           LINE 28,56,
+           LINES 1,13 ,
+           SIZE 19,00 ,
+           ID IS 24,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "In lavorazione (LAV)",
+           .
+
+      * LABEL
+       10
+           Screen1-La-2cba, 
+           Label, 
+           COL 42,00, 
+           LINE 27,12,
+           LINES 1,13 ,
+           SIZE 22,00 ,
+           ID IS 26,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Spedito Parzialmente (SP)",
+           .
+
+      * LABEL
+       10
+           Screen1-La-2daa, 
+           Label, 
+           COL 42,00, 
+           LINE 28,56,
+           LINES 1,13 ,
+           SIZE 22,00 ,
+           ID IS 28,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Spedito Totalmente (ST)",
+           .
+
+      * LABEL
+       10
+           Screen1-La-2gaa, 
+           Label, 
+           COL 72,00, 
+           LINE 27,12,
+           LINES 1,13 ,
+           SIZE 19,50 ,
+           ID IS 34,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Chiuso",
+           .
+
+      * BAR
+       10
+           Screen1-Br-1aa, 
+           Bar,
+           COL 5,25, 
+           LINE 26,06,
+           SIZE 90,00 ,
+           COLOR IS 2,
+           ID IS 35,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           WIDTH 1,
+           .
+
+      * LABEL
+       10
+           Screen1-La-2abaab, 
            Label, 
            COL 5,00, 
-           LINE 26,75,
-           LINES 1,31 ,
+           LINE 27,12,
+           LINES 1,13 ,
            SIZE 8,00 ,
-           ID IS 21,
+           ID IS 37,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1459,7 +1623,7 @@
            LINES 0,56 ,
            SIZE 8,63 ,
            FONT IS Default-Font,
-           ID IS 3,
+           ID IS 4,
            TRANSPARENT,
            TITLE "CUSTOM CONTROL",
            VISIBLE v-custom,
@@ -7226,10 +7390,6 @@
        cbo-promoa-Content.
            .
 
-      * COMBO-BOX
-       cbo-stato-f-Content.
-           .
-
       * GRID
        gd-art2-Content.
       * CELLS' SETTING
@@ -7585,16 +7745,13 @@
 
            perform DATE-TO-SCREEN.
            move como-data to ef-data-from-buf.
-                                           
-           modify cbo-stato-f, item-to-add = "Tutti".     
-           modify cbo-stato-f, item-to-add = "Registrato (REG)".
-           modify cbo-stato-f, item-to-add = "In lavorazione (LAV)".
-           modify cbo-stato-f, item-to-add = "Spedito parzialmente (SP)"
-           .
-           modify cbo-stato-f, item-to-add = "Spedito totalmente (ST)".
-           modify cbo-stato-f, item-to-add = "Chiuso".
+                                 
+           move 1 to chk-reg-buf.
+           move 1 to chk-il-buf.
+           move 1 to chk-sp-buf.
+           move 1 to chk-st-buf.
+           move 1 to chk-chiuso-buf.
 
-           modify cbo-stato-f, value "Tutti".
            display form1.
 
            move 1 to num-screen.
@@ -7702,8 +7859,6 @@
            PERFORM Screen1-Ta-1-TABCHANGE
       * COMBO-BOX
            PERFORM cbo-promoa-Content
-      * COMBO-BOX
-           PERFORM cbo-stato-f-Content
            .
 
        Form1-Init-Value.
@@ -8071,33 +8226,7 @@
            end-if.
 
            perform INTESTAZIONE.
-           perform INITIALIZE-FILTRI.
-
-           evaluate cbo-stato-f-buf       
-           when "Tutti"
-                move 1 to chk-reg-buf chk-il-buf chk-sp-buf
-                          chk-st-buf chk-chiuso-buf
-           when "Registrato (REG)"                 
-                move 1 to chk-reg-buf 
-                move 0 to chk-il-buf chk-sp-buf
-                          chk-st-buf chk-chiuso-buf
-           when "In lavorazione (LAV)"
-                move 1 to chk-il-buf 
-                move 0 to chk-reg-buf chk-sp-buf
-                          chk-st-buf chk-chiuso-buf
-           when "Spedito parzialmente (SP)"
-                move 1 to chk-sp-buf 
-                move 0 to chk-il-buf chk-reg-buf
-                          chk-st-buf chk-chiuso-buf
-           when "Spedito totalmente (ST)"          
-                move 1 to chk-st-buf 
-                move 0 to chk-il-buf chk-reg-buf
-                          chk-sp-buf chk-chiuso-buf
-           when "Chiuso"        
-                move 1 to chk-chiuso-buf 
-                move 0 to chk-il-buf chk-reg-buf
-                          chk-st-buf chk-sp-buf
-           end-evaluate.                   
+           perform INITIALIZE-FILTRI.      
 
            display chk-sp chk-il chk-reg chk-st chk-chiuso
 
@@ -8198,7 +8327,7 @@
 
            modify cbo-promo, value cbo-promo-buf.
            if cbo-promo-buf   not = 78-tutti-vol or
-              cbo-stato-f-buf not = "Tutti"
+              not tutti-stati
               perform FILTRA-RECORD
            end-if.
 
@@ -11102,15 +11231,7 @@
            move 0 to tot-idx-promo.
 
            initialize tab1 tab2 tab3  tab4  tab5  tab6  tab7 
-                      tab8 tab9 tab10 tab11 tab12 tab13 tab14 tab15.
-
-           move 1 to chk-reg-buf chk-il-buf chk-sp-buf chk-st-buf
-                     |chk-fp-buf chk-ft-buf 
-                     chk-chiuso-buf.
-
-           display chk-reg chk-il chk-sp chk-st
-                   |chk-fp  chk-ft 
-                   chk-chiuso 
+                      tab8 tab9 tab10 tab11 tab12 tab13 tab14 tab15   
            .
       * <TOTEM:END>
 
@@ -11913,7 +12034,29 @@
               end-if
            end-perform.
 
+           if tutto-ok   
+              if chk-reg-buf    = 0 and
+                 chk-il-buf     = 0 and
+                 chk-sp-buf     = 0 and
+                 chk-st-buf     = 0 and
+                 chk-chiuso-buf = 0
+                 set errori to true
+                 display message "Selezionare almeno uno stato"
+                           title titolo
+                            icon 2
+              end-if
+           end-if.
+
            if tutto-ok
+
+              set tutti-stati to false
+              if chk-reg-buf    = 1 and
+                 chk-il-buf     = 1 and
+                 chk-sp-buf     = 1 and
+                 chk-st-buf     = 1 and
+                 chk-chiuso-buf = 1
+                 set tutti-stati to true
+              end-if
 
               initialize tab-articoli old-tab-articoli
               move 0 to tot-idx-art idx-art
@@ -11928,7 +12071,7 @@
                  set scelta-articoli to true
               end-if
                             
-              inquire cbo-stato-f, value in cbo-stato-f-buf
+      *        inquire cbo-stato-f, value in cbo-stato-f-buf
               inquire cbo-promoa,  value in cbo-promo-buf
               modify form1-handle, visible false
               perform CANCELLA-COLORE
@@ -12507,6 +12650,56 @@
        TOOL-STAMPA-LinkTo.
       * <TOTEM:PARA. TOOL-STAMPA-LinkTo>
            perform STAMPA 
+           .
+      * <TOTEM:END>
+       chk-reg-ini-BeforeProcedure.
+      * <TOTEM:PARA. chk-reg-ini-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       chk-il-ini-BeforeProcedure.
+      * <TOTEM:PARA. chk-il-ini-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       chk-sp-ini-BeforeProcedure.
+      * <TOTEM:PARA. chk-sp-ini-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       chk-st-ini-BeforeProcedure.
+      * <TOTEM:PARA. chk-st-ini-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       chk-chiuso-ini-BeforeProcedure.
+      * <TOTEM:PARA. chk-chiuso-ini-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       chk-reg-ini-AfterProcedure.
+      * <TOTEM:PARA. chk-reg-ini-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       chk-il-ini-AfterProcedure.
+      * <TOTEM:PARA. chk-il-ini-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       chk-sp-ini-AfterProcedure.
+      * <TOTEM:PARA. chk-sp-ini-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       chk-st-ini-AfterProcedure.
+      * <TOTEM:PARA. chk-st-ini-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       chk-chiuso-ini-AfterProcedure.
+      * <TOTEM:PARA. chk-chiuso-ini-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
 
