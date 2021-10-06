@@ -2004,21 +2004,10 @@ LUBEXX                end-if
                    move spaces to lab-vet-buf
                    display lab-vet
                 end-if
-                if ef-vet-buf not = SaveVet
-                   
-                   move ef-vet-buf to vet-codice
-                   read tvettori
-                        invalid continue
-                    not invalid 
-                        if vet-su-autorizz-si
-                           move 12 to Passwd-password
-                           call   "passwd" using Passwd-linkage
-                           cancel "passwd"
-                        else
-                           set Passwd-StatusOk to true
-                        end-if
-                   end-read
-
+                if ef-vet-buf not = SaveVet 
+                   move 21 to Passwd-password
+                   call   "passwd" using Passwd-linkage
+                   cancel "passwd"
                    if not Passwd-StatusOk
                       move SaveVet to ef-vet-buf
                       display ef-vet
@@ -2031,19 +2020,45 @@ LUBEXX                end-if
                    else
                       move ef-vet-buf to vet-codice
                       read tvettori
-                           invalid
-                           set errori to true
-                           display message "Codice vettore NON valido"
-                                     title tit-err
-                                      icon mb-warning-icon
-                           move 78-ID-ef-vet to control-id
-                           move SaveVet      to ef-vet-buf
-                           display ef-vet
+                           invalid continue
                        not invalid 
-                           move vet-descrizione to lab-vet-buf
-                           move ef-vet-buf to SaveVet
-                           display lab-vet
+                           if vet-su-autorizz-si
+                              move 12 to Passwd-password
+                              call   "passwd" using Passwd-linkage
+                              cancel "passwd"
+                           else
+                              set Passwd-StatusOk to true
+                           end-if
                       end-read
+                   
+                      if not Passwd-StatusOk
+                         move SaveVet to ef-vet-buf
+                         display ef-vet
+                         move ef-vet-buf to vet-codice
+                         read tvettori 
+                              invalid continue
+                          not invalid 
+                              move vet-descrizione to lab-vet-buf
+                              display lab-vet
+                         end-read
+                      else
+                         move ef-vet-buf to vet-codice
+                         read tvettori
+                              invalid
+                              set errori to true
+                              display message 
+                                        "Codice vettore NON valido"
+                                        title tit-err
+                                         icon mb-warning-icon
+                              move 78-ID-ef-vet to control-id
+                              move SaveVet      to ef-vet-buf
+                              display ef-vet
+                          not invalid 
+                              move vet-descrizione to lab-vet-buf
+                              move ef-vet-buf to SaveVet
+                              display lab-vet
+                         end-read
+                      end-if
                    end-if
                 end-if
 
