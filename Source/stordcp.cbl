@@ -93,7 +93,7 @@
            copy "spooler.def".
            copy "selprint.lks".
 
-LUBEXX 78  MaxRowsPerPage                value    26.    
+LUBEXX 78  MaxRowsPerPage                value    33.
        01  filler  pic 9 value 0. 
          88 fai-tutto    value 1, false 0.
        01  filler  pic 9 value 0. 
