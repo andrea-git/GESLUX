@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordinevar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 17 settembre 2021 14:11:16.
+       DATE-WRITTEN.        mercoledì 6 ottobre 2021 10:44:11.
        REMARKS.
       *{TOTEM}END
 
@@ -19397,11 +19397,11 @@ PATCH                  commit transaction
                        
                        perform AGGIORNA-DATI-TESTATA
 
-                       if PrezzoCambiato
-                          call   "st-ordine-m" using mto-chiave, 
-                                                     link-path, "P"
-                          cancel "st-ordine-m"
-                       end-if
+      *****                 if PrezzoCambiato
+      *****                    call   "st-ordine-m" using mto-chiave, 
+      *****                                               link-path, "P"
+      *****                    cancel "st-ordine-m"
+      *****                 end-if
       *****
       *****                 if RigaCambiata
       *****                    call   "st-ordine" using mto-chiave, 

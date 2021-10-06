@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E59157460-37-5335629
+PROGRAM_UNIQUE_CODE=TOTEM-7E5A684332-816-500523776
 
 {{@DESCRIPTION:
 
@@ -23310,11 +23310,11 @@ PATCH                  commit transaction
                        
                        perform AGGIORNA-DATI-TESTATA
 
-                       if PrezzoCambiato
-                          call   "st-ordine-m" using mto-chiave, 
-                                                     link-path, "P"
-                          cancel "st-ordine-m"
-                       end-if
+      *****                 if PrezzoCambiato
+      *****                    call   "st-ordine-m" using mto-chiave, 
+      *****                                               link-path, "P"
+      *****                    cancel "st-ordine-m"
+      *****                 end-if
       *****
       *****                 if RigaCambiata
       *****                    call   "st-ordine" using mto-chiave, 
