@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordine.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 17 settembre 2021 14:10:48.
+       DATE-WRITTEN.        sabato 9 ottobre 2021 16:23:17.
        REMARKS.
       *{TOTEM}END
 
@@ -73,6 +73,8 @@
            COPY "tcontat.sl".
            COPY "tnazioni.sl".
            COPY "grade.sl".
+           COPY "tregioni.sl".
+           COPY "tprov.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -123,6 +125,8 @@
            COPY "tcontat.fd".
            COPY "tnazioni.fd".
            COPY "grade.fd".
+           COPY "tregioni.fd".
+           COPY "tprov.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -301,6 +305,10 @@
                   VALUE IS 0.
        77 STATUS-grade     PIC  X(2).
            88 Valid-STATUS-grade VALUE IS "00" THRU "09". 
+       77 STATUS-tprov     PIC  X(2).
+           88 Valid-STATUS-tprov VALUE IS "00" THRU "09". 
+       77 STATUS-tregioni  PIC  X(2).
+           88 Valid-STATUS-tregioni VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -474,6 +482,8 @@
        77 TMP-DataSet1-tcontat-BUF     PIC X(3270).
        77 TMP-DataSet1-tnazioni-BUF     PIC X(190).
        77 TMP-DataSet1-grade-BUF     PIC X(754).
+       77 TMP-DataSet1-tregioni-BUF     PIC X(190).
+       77 TMP-DataSet1-tprov-BUF     PIC X(192).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -709,6 +719,16 @@
        77 DataSet1-grade-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-grade-KEY-Asc  VALUE "A".
           88 DataSet1-grade-KEY-Desc VALUE "D".
+       77 DataSet1-tregioni-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tregioni-LOCK  VALUE "Y".
+       77 DataSet1-tregioni-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tregioni-KEY-Asc  VALUE "A".
+          88 DataSet1-tregioni-KEY-Desc VALUE "D".
+       77 DataSet1-tprov-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tprov-LOCK  VALUE "Y".
+       77 DataSet1-tprov-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tprov-KEY-Asc  VALUE "A".
+          88 DataSet1-tprov-KEY-Desc VALUE "D".
 
        77 mtordini-mto-k-ord-cli-SPLITBUF  PIC X(55).
        77 mtordini-mto-k-data-SPLITBUF  PIC X(21).
@@ -3932,6 +3952,8 @@
       *    PERFORM OPEN-tcontat
            PERFORM OPEN-tnazioni
            PERFORM OPEN-grade
+           PERFORM OPEN-tregioni
+           PERFORM OPEN-tprov
       *    After Open
            .
 
@@ -4532,6 +4554,30 @@
       * <TOTEM:END>
            .
 
+       OPEN-tregioni.
+      * <TOTEM:EPT. INIT:ordine, FD:tregioni, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT tregioni
+           IF NOT Valid-STATUS-tregioni
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:ordine, FD:tregioni, AfterOpen>
+      * <TOTEM:END>
+           .
+
+       OPEN-tprov.
+      * <TOTEM:EPT. INIT:ordine, FD:tprov, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT tprov
+           IF NOT Valid-STATUS-tprov
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:ordine, FD:tprov, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-mtordini
@@ -4589,6 +4635,8 @@
       *    PERFORM CLOSE-tcontat
            PERFORM CLOSE-tnazioni
            PERFORM CLOSE-grade
+           PERFORM CLOSE-tregioni
+           PERFORM CLOSE-tprov
       *    After Close
            .
 
@@ -4867,6 +4915,18 @@
       * <TOTEM:EPT. INIT:ordine, FD:grade, BeforeClose>
       * <TOTEM:END>
            CLOSE grade
+           .
+
+       CLOSE-tregioni.
+      * <TOTEM:EPT. INIT:ordine, FD:tregioni, BeforeClose>
+      * <TOTEM:END>
+           CLOSE tregioni
+           .
+
+       CLOSE-tprov.
+      * <TOTEM:EPT. INIT:ordine, FD:tprov, BeforeClose>
+      * <TOTEM:END>
+           CLOSE tprov
            .
 
        mtordini-mto-k-ord-cli-MERGE-SPLITBUF.
@@ -12706,6 +12766,314 @@
       * <TOTEM:END>
            .
 
+       DataSet1-tregioni-INITSTART.
+           IF DataSet1-tregioni-KEY-Asc
+              MOVE Low-Value TO reg-chiave
+           ELSE
+              MOVE High-Value TO reg-chiave
+           END-IF
+           .
+
+       DataSet1-tregioni-INITEND.
+           IF DataSet1-tregioni-KEY-Asc
+              MOVE High-Value TO reg-chiave
+           ELSE
+              MOVE Low-Value TO reg-chiave
+           END-IF
+           .
+
+      * tregioni
+       DataSet1-tregioni-START.
+           IF DataSet1-tregioni-KEY-Asc
+              START tregioni KEY >= reg-chiave
+           ELSE
+              START tregioni KEY <= reg-chiave
+           END-IF
+           .
+
+       DataSet1-tregioni-START-NOTGREATER.
+           IF DataSet1-tregioni-KEY-Asc
+              START tregioni KEY <= reg-chiave
+           ELSE
+              START tregioni KEY >= reg-chiave
+           END-IF
+           .
+
+       DataSet1-tregioni-START-GREATER.
+           IF DataSet1-tregioni-KEY-Asc
+              START tregioni KEY > reg-chiave
+           ELSE
+              START tregioni KEY < reg-chiave
+           END-IF
+           .
+
+       DataSet1-tregioni-START-LESS.
+           IF DataSet1-tregioni-KEY-Asc
+              START tregioni KEY < reg-chiave
+           ELSE
+              START tregioni KEY > reg-chiave
+           END-IF
+           .
+
+       DataSet1-tregioni-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-tregioni-LOCK
+              READ tregioni WITH LOCK 
+              KEY reg-chiave
+           ELSE
+              READ tregioni WITH NO LOCK 
+              KEY reg-chiave
+           END-IF
+           MOVE STATUS-tregioni TO TOTEM-ERR-STAT 
+           MOVE "tregioni" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tregioni-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-tregioni-KEY-Asc
+              IF DataSet1-tregioni-LOCK
+                 READ tregioni NEXT WITH LOCK
+              ELSE
+                 READ tregioni NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tregioni-LOCK
+                 READ tregioni PREVIOUS WITH LOCK
+              ELSE
+                 READ tregioni PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tregioni TO TOTEM-ERR-STAT
+           MOVE "tregioni" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tregioni-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-tregioni-KEY-Asc
+              IF DataSet1-tregioni-LOCK
+                 READ tregioni PREVIOUS WITH LOCK
+              ELSE
+                 READ tregioni PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tregioni-LOCK
+                 READ tregioni NEXT WITH LOCK
+              ELSE
+                 READ tregioni NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tregioni TO TOTEM-ERR-STAT
+           MOVE "tregioni" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tregioni-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-tregioni TO TOTEM-ERR-STAT
+           MOVE "tregioni" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tregioni-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-tregioni TO TOTEM-ERR-STAT
+           MOVE "tregioni" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tregioni-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-tregioni TO TOTEM-ERR-STAT
+           MOVE "tregioni" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, AfterDelete>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tprov-INITSTART.
+           IF DataSet1-tprov-KEY-Asc
+              MOVE Low-Value TO prv-chiave
+           ELSE
+              MOVE High-Value TO prv-chiave
+           END-IF
+           .
+
+       DataSet1-tprov-INITEND.
+           IF DataSet1-tprov-KEY-Asc
+              MOVE High-Value TO prv-chiave
+           ELSE
+              MOVE Low-Value TO prv-chiave
+           END-IF
+           .
+
+      * tprov
+       DataSet1-tprov-START.
+           IF DataSet1-tprov-KEY-Asc
+              START tprov KEY >= prv-chiave
+           ELSE
+              START tprov KEY <= prv-chiave
+           END-IF
+           .
+
+       DataSet1-tprov-START-NOTGREATER.
+           IF DataSet1-tprov-KEY-Asc
+              START tprov KEY <= prv-chiave
+           ELSE
+              START tprov KEY >= prv-chiave
+           END-IF
+           .
+
+       DataSet1-tprov-START-GREATER.
+           IF DataSet1-tprov-KEY-Asc
+              START tprov KEY > prv-chiave
+           ELSE
+              START tprov KEY < prv-chiave
+           END-IF
+           .
+
+       DataSet1-tprov-START-LESS.
+           IF DataSet1-tprov-KEY-Asc
+              START tprov KEY < prv-chiave
+           ELSE
+              START tprov KEY > prv-chiave
+           END-IF
+           .
+
+       DataSet1-tprov-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-tprov-LOCK
+              READ tprov WITH LOCK 
+              KEY prv-chiave
+           ELSE
+              READ tprov WITH NO LOCK 
+              KEY prv-chiave
+           END-IF
+           MOVE STATUS-tprov TO TOTEM-ERR-STAT 
+           MOVE "tprov" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tprov-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-tprov-KEY-Asc
+              IF DataSet1-tprov-LOCK
+                 READ tprov NEXT WITH LOCK
+              ELSE
+                 READ tprov NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tprov-LOCK
+                 READ tprov PREVIOUS WITH LOCK
+              ELSE
+                 READ tprov PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tprov TO TOTEM-ERR-STAT
+           MOVE "tprov" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tprov-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-tprov-KEY-Asc
+              IF DataSet1-tprov-LOCK
+                 READ tprov PREVIOUS WITH LOCK
+              ELSE
+                 READ tprov PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tprov-LOCK
+                 READ tprov NEXT WITH LOCK
+              ELSE
+                 READ tprov NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tprov TO TOTEM-ERR-STAT
+           MOVE "tprov" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tprov-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-tprov TO TOTEM-ERR-STAT
+           MOVE "tprov" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tprov-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-tprov TO TOTEM-ERR-STAT
+           MOVE "tprov" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tprov-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-tprov TO TOTEM-ERR-STAT
+           MOVE "tprov" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE mto-rec OF mtordini
            INITIALIZE age-rec OF agenti
@@ -12753,6 +13121,8 @@
            INITIALIZE con-rec OF tcontat
            INITIALIZE naz-rec OF tnazioni
            INITIALIZE gra-rec OF grade
+           INITIALIZE reg-rec OF tregioni
+           INITIALIZE prv-rec OF tprov
            .
 
 
@@ -13160,6 +13530,22 @@
       * FD's Initialize Paragraph
        DataSet1-grade-INITREC.
            INITIALIZE gra-rec OF grade
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-tregioni-INITREC.
+           INITIALIZE reg-rec OF tregioni
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-tprov-INITREC.
+           INITIALIZE prv-rec OF tprov
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 20 settembre 2021 18:05:31.
+       DATE-WRITTEN.        mercoledì 13 ottobre 2021 10:53:05.
        REMARKS.
       *{TOTEM}END
 
@@ -1211,8 +1211,6 @@
            05 OLD-emto-chiave.
                10 OLD-emto-anno        PIC  9(4).
                10 OLD-emto-numero      PIC  9(8).
-      *
-      *
            05 OLD-emto-dati.
                10 OLD-emto-causale     PIC  x(4).
                10 OLD-emto-cod-cli     PIC  9(5).
@@ -1320,6 +1318,9 @@
                    20 OLD-emto-01T25-NAB-CITTAB        PIC  x(35).
                    20 OLD-emto-01T26-NAB-PROVB         PIC  x(3).
                    20 OLD-emto-01T27-NAB-CAPB          PIC  x(5).
+      *"LBX" = prezzo e cliente LBX
+      *"CLBX" = solo cliente LBX
+      *"PLBX" = solo prezzo LBX
                    20 OLD-emto-01T28-NAD-CODCONS       PIC  x(17).
                    20 OLD-emto-29T-filler  PIC  x(35).
       *(( XFD NAME = OLD-emto-01T23-NAB-RAG ))
@@ -1357,7 +1358,10 @@
                    20 OLD-emto-57T-filler  PIC  x(35).
                    20 OLD-emto-58T-filler  PIC  x(35).
                    20 OLD-emto-59T-filler  PIC  x(35).
-                   20 OLD-emto-60T-filler  PIC  x(35).
+      * Valore del campo originale dal file di import
+                   20 OLD-emto-01T60-inversione-imposte            PIC  
+           x.
+                   20 OLD-emto-60T-filler  PIC  x(34).
                    20 OLD-emto-61T-filler  PIC  x(35).
                    20 OLD-emto-62T-filler  PIC  x(35).
                    20 OLD-emto-63T-filler  PIC  x(35).
@@ -1461,12 +1465,17 @@
                    20 OLD-emto-161T-filler PIC  x(35).
                    20 OLD-emto-162T-filler PIC  x(35).
                    20 OLD-emto-01T163-TOD-CODCOST      PIC  x(3).
+                   20 filler           PIC  x(501).
                15 OLD-emto-bloc-forzato            PIC  9.
                    88 OLD-emto-bloc-forzato-si VALUE IS 1. 
                    88 OLD-emto-bloc-forzato-no VALUE IS 0. 
                15 OLD-emto-Sum         PIC  9(12)v999.
                15 OLD-emto-evadi-dal   PIC  9(8).
-               15 FILLER           PIC  x(176).
+      *L'inversione viene impostata solo per clienti tradizionali, quindi conservo il valore nel campo 60 ma poi uso questo
+               15 OLD-emto-inversione-imposte      PIC  9.
+                   88 OLD-emto-inversione-imposte-si VALUE IS 1. 
+                   88 OLD-emto-inversione-imposte-no VALUE IS 0. 
+               15 FILLER           PIC  x(175).
       *{TOTEM}END
 
       *{TOTEM}ID-LOGICI

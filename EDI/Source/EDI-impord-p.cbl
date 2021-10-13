@@ -53,6 +53,7 @@
        copy "tprov.sl".
        copy "lockfile.sl".   
        copy "log-macrobatch.sl".
+       copy "tregioni.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -89,6 +90,7 @@
        copy "tprov.fd".
        copy "lockfile.fd".      
        copy "log-macrobatch.fd".
+       copy "tregioni.fd".
 
        WORKING-STORAGE SECTION.
       *    COPY
@@ -135,6 +137,7 @@
        77  status-tprov          pic xx.
        77  status-lockfile       pic xx.
        77  status-log-macrobatch pic xx.
+       77  status-tregioni       pic xx.
                                             
        77  path-logfile          pic x(256).
        77  path-log-macrobatch   pic x(256).
@@ -167,6 +170,7 @@
        77  qta-ord-EDI           pic 9(8).
        77  qta-imb-EDI           pic 9(7).
        77  riga                  pic 9(5).
+       77  como-prov             pic xx.
                                          
        77  tot-file-ko           pic 999 value 0.
        77  tot-file-ok           pic 999 value 0.
@@ -711,6 +715,7 @@
                  open input clienti tparamge note param articoli progmag 
                             timballi timbalqta ttipocli  tpromo rpromo 
                             listini rmovmag locali blister cli-prg tprov
+                            tregioni
               end-if
            end-if.
 
@@ -1116,11 +1121,20 @@
            move cli-iva-ese to emto-cod-ese-iva.
            if emto-01T163-TOD_CODCOST = "CC"
               set emto-ritira-si to true
-           else
+           else                     
+              move 0 to emto-vettore
               if des-vettore not = 0
-                 move des-vettore to emto-vettore
-              else
-                 move cli-vettore to emto-vettore
+                 move des-prov to como-prov
+                 perform VETTORE-PROV-REG
+                 if emto-vettore = 0
+                    move des-vettore to emto-vettore
+                 end-if
+              else                         
+                 move cli-prov to como-prov
+                 perform VETTORE-PROV-REG
+                 if emto-vettore = 0
+                    move cli-vettore to emto-vettore
+                 end-if
               end-if
            end-if.                       
            move emto-01T70-FTX-note to emto-note.
@@ -2279,7 +2293,7 @@
            close EDI-clides clienti destini tparamge EDI-mtordini note
                  param EDI-mrordini articoli progmag timballi timbalqta
                  rpromo tpromo listini ttipocli rmovmag tprov
-                 locali blister cli-prg lockfile.
+                 locali blister cli-prg lockfile tregioni.
 
       ***---
        EXIT-PGM.
@@ -3397,6 +3411,53 @@ BLISTR              end-if
                  rewrite emto-rec
               end-if
            end-if.
+
+      ***---
+       VETTORE-PROV-REG.
+           |CERCO PER PROVINCIA
+           move como-prov to prv-codice.
+           read tprov no lock
+                invalid continue
+            not invalid
+                if prv-vet-5 > 0
+                   move prv-vet-5 to emto-vettore
+                end-if
+                if prv-vet-4 > 0
+                   move prv-vet-4 to emto-vettore
+                end-if
+                if prv-vet-3 > 0
+                   move prv-vet-3 to emto-vettore
+                end-if
+                if prv-vet-2 > 0
+                   move prv-vet-2 to emto-vettore
+                end-if
+                if prv-vet-1 > 0
+                   move prv-vet-1 to emto-vettore
+                end-if
+                if emto-vettore = 0
+                  |CERCO PER REGIONE
+                   move prv-regione to reg-codice
+                   read tregioni no lock
+                        invalid continue
+                    not invalid
+                        if reg-vet-5 > 0
+                           move reg-vet-5 to emto-vettore
+                        end-if
+                        if reg-vet-4 > 0
+                           move reg-vet-4 to emto-vettore
+                        end-if
+                        if reg-vet-3 > 0
+                           move reg-vet-3 to emto-vettore
+                        end-if
+                        if reg-vet-2 > 0
+                           move reg-vet-2 to emto-vettore
+                        end-if
+                        if reg-vet-1 > 0
+                           move reg-vet-1 to emto-vettore
+                        end-if
+                   end-read
+                end-if
+           end-read.
 
       ***---
        PARAGRAFO-COPY.

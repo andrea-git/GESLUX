@@ -1140,10 +1140,62 @@ LUBEXX     end-if.
            else
               move des-superamento-500 to flag-superamento-500
            end-if.
-
-           move ef-vet-buf to vet-codice.
+                                 
       *****     if vet-codice = 0
+
+           move 0 to vet-codice
+
+           |CERCO PER PROVINCIA
+           move des-prov to prv-codice.
+           read tprov no lock
+                invalid continue
+            not invalid
+                if prv-vet-5 > 0
+                   move prv-vet-5 to vet-codice
+                end-if
+                if prv-vet-4 > 0
+                   move prv-vet-4 to vet-codice
+                end-if
+                if prv-vet-3 > 0
+                   move prv-vet-3 to vet-codice
+                end-if
+                if prv-vet-2 > 0
+                   move prv-vet-2 to vet-codice
+                end-if
+                if prv-vet-1 > 0
+                   move prv-vet-1 to vet-codice
+                end-if
+                if vet-codice = 0
+                  |CERCO PER REGIONE
+                   move prv-regione to reg-codice
+                   read tregioni no lock
+                        invalid continue
+                    not invalid
+                        if reg-vet-5 > 0
+                           move reg-vet-5 to vet-codice
+                        end-if
+                        if reg-vet-4 > 0
+                           move reg-vet-4 to vet-codice
+                        end-if
+                        if reg-vet-3 > 0
+                           move reg-vet-3 to vet-codice
+                        end-if
+                        if reg-vet-2 > 0
+                           move reg-vet-2 to vet-codice
+                        end-if
+                        if reg-vet-1 > 0
+                           move reg-vet-1 to vet-codice
+                        end-if
+                   end-read
+                end-if
+           end-read.
+                                    
+           if vet-codice not = 0
+              move vet-codice to ef-vet-buf
+           else
               move des-vettore         to ef-vet-buf vet-codice
+           end-if.
+
               move spaces to lab-vet-buf
               read tvettori invalid continue
                         not invalid move vet-descrizione to lab-vet-buf
