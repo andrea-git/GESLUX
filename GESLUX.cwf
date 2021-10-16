@@ -17537,7 +17537,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:SOURCE\azzera-fe.cbl]
-COPY_DEPENDENCE=FD\clienti.sl;FD\clienti.fd
+COPY_DEPENDENCE=FD\clienti.sl;FD\lineseq.sl;FD\clienti.fd;FD\lineseq.fd;Copylib\link-batch.def;Copylib\setta-inizio-riga.cpy
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
@@ -22359,7 +22359,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:SOURCE\del-split.cbl]
-COPY_DEPENDENCE=FD\tordini.sl;FD\rordini.sl;FD\tordini.fd;FD\rordini.fd
+COPY_DEPENDENCE=FD\tordini.sl;FD\rordini.sl;FD\lineseq.sl;FD\tordini.fd;FD\rordini.fd;FD\lineseq.fd;Copylib\link-batch.def;Copylib\setta-inizio-riga.cpy
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
@@ -40277,7 +40277,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:RELEASE:SOURCE\azzera-fe.cbl]
-COPY_DEPENDENCE=FD\clienti.sl;FD\clienti.fd
+COPY_DEPENDENCE=FD\clienti.sl;FD\lineseq.sl;FD\clienti.fd;FD\lineseq.fd;Copylib\link-batch.def;Copylib\setta-inizio-riga.cpy
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
@@ -45067,7 +45067,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:RELEASE:SOURCE\del-split.cbl]
-COPY_DEPENDENCE=FD\tordini.sl;FD\rordini.sl;FD\tordini.fd;FD\rordini.fd
+COPY_DEPENDENCE=FD\tordini.sl;FD\rordini.sl;FD\lineseq.sl;FD\tordini.fd;FD\rordini.fd;FD\lineseq.fd;Copylib\link-batch.def;Copylib\setta-inizio-riga.cpy
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu

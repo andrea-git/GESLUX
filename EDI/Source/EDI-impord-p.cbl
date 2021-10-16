@@ -881,6 +881,7 @@
                        end-perform
                        |CLOSE B1
                        close      lineseq-bckp
+                       |Verifico che il nuovo file creato sia accessibile
                        |OPEN B2
                        open input lineseq-bckp       
                        if status-lineseq-bckp = "00"
