@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          vmovmas.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 1 aprile 2014 19:20:52.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        martedì 19 ottobre 2021 14:27:17.
        REMARKS.
       *{TOTEM}END
 
@@ -71,9 +71,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\Lubex\GESLUX\Copylib\UTYDATA.DEF".
-               COPY "F:\Lubex\GESLUX\Copylib\comune.def".
-               COPY "F:\Lubex\GESLUX\Copylib\custom.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -396,9 +394,9 @@
        77 STATUS-Form2-FLAG-REFRESH PIC  9.
           88 Form2-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-Form2-KEY1-ORDER  PIC X VALUE "A".
-       77 TMP-Form2-mtordini-RESTOREBUF  PIC X(882).
+       77 TMP-Form2-mtordini-RESTOREBUF  PIC X(2122).
        77 TMP-Form2-KEYIS  PIC 9(3) VALUE 1.
-       77 Form2-MULKEY-TMPBUF   PIC X(882).
+       77 Form2-MULKEY-TMPBUF   PIC X(2122).
        77 STATUS-Form1-FLAG-REFRESH PIC  9.
           88 Form1-FLAG-REFRESH  VALUE 1 FALSE 0. 
       * DATA CONTROL BUFFER
@@ -422,7 +420,7 @@
       * Data.Label
               05 lab-art-BUF PIC X(50).
       * Data.Label
-              05 lab-des-BUF PIC X(40).
+              05 lab-des-BUF PIC x(100).
       * Data.Label
               05 lab-tipo-BUF PIC X(35).
       * Data.Label
@@ -459,23 +457,23 @@
               05 lab-destino-BUF PIC X(35).
 
        77 TMP-form4-KEY1-ORDER  PIC X VALUE "A".
-       77 TMP-form4-mtordini-RESTOREBUF  PIC X(882).
+       77 TMP-form4-mtordini-RESTOREBUF  PIC X(2122).
        77 TMP-form4-KEYIS  PIC 9(3) VALUE 1.
-       77 form4-MULKEY-TMPBUF   PIC X(882).
+       77 form4-MULKEY-TMPBUF   PIC X(2122).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-tmarche-BUF     PIC X(217).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
-       77 TMP-DataSet1-destini-BUF     PIC X(445).
-       77 TMP-DataSet1-tmp-movmag-BUF     PIC X(364).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
+       77 TMP-DataSet1-destini-BUF     PIC X(3676).
+       77 TMP-DataSet1-tmp-movmag-BUF     PIC X(476).
        77 TMP-DataSet1-tcodpag-BUF     PIC X(1380).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-tcaumag-BUF     PIC X(254).
        77 TMP-DataSet1-destinif-BUF     PIC X(1322).
-       77 TMP-DataSet1-lineseq-BUF     PIC X(900).
-       77 TMP-DataSet1-ttipocli-BUF     PIC X(193).
+       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
+       77 TMP-DataSet1-ttipocli-BUF     PIC X(889).
        77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
        77 TMP-DataSet1-tgrupgdo-BUF     PIC X(1206).
-       77 TMP-DataSet1-mtordini-BUF     PIC X(882).
+       77 TMP-DataSet1-mtordini-BUF     PIC X(2122).
        77 TMP-DataSet1-mrordini-BUF     PIC X(891).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
@@ -559,17 +557,19 @@
           88 DataSet1-mrordini-KEY-Desc VALUE "D".
 
        77 articoli-art-k1-SPLITBUF  PIC X(51).
+       77 articoli-art-k-frn-SPLITBUF  PIC X(16).
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
        77 clienti-cli-K4-SPLITBUF  PIC X(8).
-       77 destini-K1-SPLITBUF  PIC X(51).
+       77 destini-K1-SPLITBUF  PIC X(111).
        77 destini-k-localita-SPLITBUF  PIC X(36).
        77 tmp-movmag-k-cod-cli-SPLITBUF  PIC X(7).
        77 tcodpag-TBL-CODICE-01-SPLITBUF  PIC X(53).
        77 tcaumag-k-mag-SPLITBUF  PIC X(5).
        77 destinif-K1-SPLITBUF  PIC X(51).
        77 destinif-desf-k2-SPLITBUF  PIC X(51).
-       77 mtordini-mto-k-ord-cli-SPLITBUF  PIC X(15).
+       77 tgrupgdo-gdo-k-g2-SPLITBUF  PIC X(9).
+       77 mtordini-mto-k-ord-cli-SPLITBUF  PIC X(55).
        77 mtordini-mto-k-data-SPLITBUF  PIC X(21).
        77 mtordini-mto-k-clides-SPLITBUF  PIC X(19).
        77 mtordini-mto-k-age-SPLITBUF  PIC X(14).
@@ -578,10 +578,12 @@
        77 mtordini-mto-k-gdo-SPLITBUF  PIC X(26).
        77 mtordini-mto-k-bloc-SPLITBUF  PIC X(20).
        77 mtordini-k-giang-SPLITBUF  PIC X(21).
+       77 mtordini-mto-k-promo-SPLITBUF  PIC X(25).
        77 mrordini-mro-k-promo-SPLITBUF  PIC X(33).
        77 mrordini-mro-k-articolo-SPLITBUF  PIC X(24).
        77 mrordini-mro-k-progr-SPLITBUF  PIC X(18).
        77 mrordini-mro-k-tprev-SPLITBUF  PIC X(39).
+       77 mrordini-mro-k-ord-art-SPLITBUF  PIC X(19).
 
       *{TOTEM}END
 
@@ -2993,6 +2995,12 @@
            articoli-art-k1-SPLITBUF(1:50)
            .
 
+       articoli-art-k-frn-MERGE-SPLITBUF.
+           INITIALIZE articoli-art-k-frn-SPLITBUF
+           MOVE art-cod-art-frn OF articoli(1:15) TO 
+           articoli-art-k-frn-SPLITBUF(1:15)
+           .
+
        DataSet1-articoli-INITSTART.
            IF DataSet1-articoli-KEY-Asc
               MOVE Low-Value TO art-chiave OF articoli
@@ -3055,6 +3063,7 @@
               KEY art-chiave OF articoli
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT 
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -3083,6 +3092,7 @@
               END-IF
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -3111,6 +3121,7 @@
               END-IF
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -3493,9 +3504,9 @@
 
        destini-K1-MERGE-SPLITBUF.
            INITIALIZE destini-K1-SPLITBUF
-           MOVE des-ragsoc-1(1:40) TO destini-K1-SPLITBUF(1:40)
-           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(41:5)
-           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(46:5)
+           MOVE des-ragsoc-1(1:100) TO destini-K1-SPLITBUF(1:100)
+           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(101:5)
+           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(106:5)
            .
 
        destini-k-localita-MERGE-SPLITBUF.
@@ -4819,6 +4830,14 @@
       * <TOTEM:END>
            .
 
+       tgrupgdo-gdo-k-g2-MERGE-SPLITBUF.
+           INITIALIZE tgrupgdo-gdo-k-g2-SPLITBUF
+           MOVE gdo-codice-G2 OF tgrupgdo(1:3) TO 
+           tgrupgdo-gdo-k-g2-SPLITBUF(1:3)
+           MOVE gdo-chiave OF tgrupgdo(1:5) TO 
+           tgrupgdo-gdo-k-g2-SPLITBUF(4:5)
+           .
+
        DataSet1-tgrupgdo-INITSTART.
            IF DataSet1-tgrupgdo-KEY-Asc
               MOVE Low-Value TO gdo-chiave OF tgrupgdo
@@ -4880,6 +4899,7 @@
               READ tgrupgdo WITH NO LOCK 
               KEY gdo-chiave OF tgrupgdo
            END-IF
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
            MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT 
            MOVE "tgrupgdo" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -4907,6 +4927,7 @@
                  READ tgrupgdo PREVIOUS WITH NO LOCK
               END-IF
            END-IF
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
            MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
            MOVE "tgrupgdo" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -4934,6 +4955,7 @@
                  READ tgrupgdo NEXT WITH NO LOCK
               END-IF
            END-IF
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
            MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
            MOVE "tgrupgdo" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -4976,8 +4998,8 @@
        mtordini-mto-k-ord-cli-MERGE-SPLITBUF.
            INITIALIZE mtordini-mto-k-ord-cli-SPLITBUF
            MOVE mto-anno(1:4) TO mtordini-mto-k-ord-cli-SPLITBUF(1:4)
-           MOVE mto-num-ord-cli(1:10) TO 
-           mtordini-mto-k-ord-cli-SPLITBUF(5:10)
+           MOVE mto-num-ord-cli(1:50) TO 
+           mtordini-mto-k-ord-cli-SPLITBUF(5:50)
            .
 
        mtordini-mto-k-data-MERGE-SPLITBUF.
@@ -5041,6 +5063,16 @@
            INITIALIZE mtordini-k-giang-SPLITBUF
            MOVE mto-data-note1(1:8) TO mtordini-k-giang-SPLITBUF(1:8)
            MOVE mto-chiave(1:12) TO mtordini-k-giang-SPLITBUF(9:12)
+           .
+
+       mtordini-mto-k-promo-MERGE-SPLITBUF.
+           INITIALIZE mtordini-mto-k-promo-SPLITBUF
+           MOVE mto-promo(1:1) TO mtordini-mto-k-promo-SPLITBUF(1:1)
+           MOVE mto-tipo-CF(1:1) TO mtordini-mto-k-promo-SPLITBUF(2:1)
+           MOVE mto-cod-cli(1:5) TO mtordini-mto-k-promo-SPLITBUF(3:5)
+           MOVE mto-prg-destino(1:5) TO 
+           mtordini-mto-k-promo-SPLITBUF(8:5)
+           MOVE mto-chiave(1:12) TO mtordini-mto-k-promo-SPLITBUF(13:12)
            .
 
        DataSet1-mtordini-INITSTART.
@@ -5152,6 +5184,7 @@
            PERFORM mtordini-mto-k-gdo-MERGE-SPLITBUF
            PERFORM mtordini-mto-k-bloc-MERGE-SPLITBUF
            PERFORM mtordini-k-giang-MERGE-SPLITBUF
+           PERFORM mtordini-mto-k-promo-MERGE-SPLITBUF
            MOVE STATUS-mtordini TO TOTEM-ERR-STAT 
            MOVE "mtordini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -5191,6 +5224,7 @@
            PERFORM mtordini-mto-k-gdo-MERGE-SPLITBUF
            PERFORM mtordini-mto-k-bloc-MERGE-SPLITBUF
            PERFORM mtordini-k-giang-MERGE-SPLITBUF
+           PERFORM mtordini-mto-k-promo-MERGE-SPLITBUF
            MOVE STATUS-mtordini TO TOTEM-ERR-STAT
            MOVE "mtordini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -5230,6 +5264,7 @@
            PERFORM mtordini-mto-k-gdo-MERGE-SPLITBUF
            PERFORM mtordini-mto-k-bloc-MERGE-SPLITBUF
            PERFORM mtordini-k-giang-MERGE-SPLITBUF
+           PERFORM mtordini-mto-k-promo-MERGE-SPLITBUF
            MOVE STATUS-mtordini TO TOTEM-ERR-STAT
            MOVE "mtordini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -5298,6 +5333,14 @@
            MOVE mro-chiave(1:17) TO mrordini-mro-k-tprev-SPLITBUF(22:17)
            .
 
+       mrordini-mro-k-ord-art-MERGE-SPLITBUF.
+           INITIALIZE mrordini-mro-k-ord-art-SPLITBUF
+           MOVE mro-chiave-testa(1:12) TO 
+           mrordini-mro-k-ord-art-SPLITBUF(1:12)
+           MOVE mro-cod-articolo(1:6) TO 
+           mrordini-mro-k-ord-art-SPLITBUF(13:6)
+           .
+
        DataSet1-mrordini-INITSTART.
            IF DataSet1-mrordini-KEY-Asc
               MOVE Low-Value TO mro-chiave
@@ -5363,6 +5406,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT 
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -5394,6 +5438,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -5425,6 +5470,7 @@
            PERFORM mrordini-mro-k-articolo-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-progr-MERGE-SPLITBUF
            PERFORM mrordini-mro-k-tprev-MERGE-SPLITBUF
+           PERFORM mrordini-mro-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-mrordini TO TOTEM-ERR-STAT
            MOVE "mrordini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE

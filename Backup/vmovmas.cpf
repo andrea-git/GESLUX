@@ -2,12 +2,13 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
+DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7DDC2151524-854-23271148
+PROGRAM_UNIQUE_CODE=TOTEM-7E5A1312755-438-1979013918
 
 {{@DESCRIPTION:
 
@@ -4672,7 +4673,7 @@ Begin Screen Form1
       Begin Data.Entry-Field ef-cod
          SCREEN-COL        = 13,00
          SCREEN-LINE       = 11,50
-         LOCK-CONTROL      = FALSE
+         LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = ef-cod
          Auto              = FALSE
@@ -4733,7 +4734,7 @@ Begin Screen Form1
       Begin Data.Entry-Field ef-des
          SCREEN-COL        = 13,00
          SCREEN-LINE       = 14,00
-         LOCK-CONTROL      = FALSE
+         LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = ef-des
          Auto              = FALSE
@@ -4794,7 +4795,7 @@ Begin Screen Form1
       Begin Data.Entry-Field ef-marca
          SCREEN-COL        = 13,00
          SCREEN-LINE       = 16,50
-         LOCK-CONTROL      = FALSE
+         LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = ef-marca
          Auto              = FALSE
@@ -4855,7 +4856,7 @@ Begin Screen Form1
       Begin Data.Entry-Field ef-art
          SCREEN-COL        = 13,00
          SCREEN-LINE       = 19,00
-         LOCK-CONTROL      = FALSE
+         LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = ef-art
          Auto              = FALSE
@@ -5051,7 +5052,7 @@ Begin Screen Form1
       Begin Label Screen3-La-1ac
          SCREEN-COL        = 4,50
          SCREEN-LINE       = 11,50
-         LOCK-CONTROL      = FALSE
+         LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Screen3-La-1ac
          Clines            = 0
@@ -5122,7 +5123,7 @@ Begin Screen Form1
       Begin Label Screen4-La-3
          SCREEN-COL        = 4,50
          SCREEN-LINE       = 16,50
-         LOCK-CONTROL      = FALSE
+         LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Screen4-La-3
          Clines            = 0
@@ -5155,7 +5156,7 @@ Begin Screen Form1
       Begin Label Screen4-La-4
          SCREEN-COL        = 4,50
          SCREEN-LINE       = 19,00
-         LOCK-CONTROL      = FALSE
+         LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Screen4-La-4
          Clines            = 0
@@ -5188,7 +5189,7 @@ Begin Screen Form1
       Begin Data.Label lab-cod
          SCREEN-COL        = 20,50
          SCREEN-LINE       = 11,50
-         LOCK-CONTROL      = FALSE
+         LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = lab-cod
          Clines            = 0
@@ -5226,7 +5227,7 @@ Begin Screen Form1
       Begin Data.Label lab-marca
          SCREEN-COL        = 20,50
          SCREEN-LINE       = 16,50
-         LOCK-CONTROL      = FALSE
+         LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = lab-marca
          Clines            = 0
@@ -5263,7 +5264,7 @@ Begin Screen Form1
       Begin Data.Label lab-art
          SCREEN-COL        = 20,50
          SCREEN-LINE       = 19,00
-         LOCK-CONTROL      = FALSE
+         LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = lab-art
          Clines            = 0
@@ -5300,7 +5301,7 @@ Begin Screen Form1
       Begin Label Screen4-La-5
          SCREEN-COL        = 4,50
          SCREEN-LINE       = 14,00
-         LOCK-CONTROL      = FALSE
+         LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Screen4-La-5
          Clines            = 0
@@ -5333,7 +5334,7 @@ Begin Screen Form1
       Begin Data.Label lab-des
          SCREEN-COL        = 20,50
          SCREEN-LINE       = 14,00
-         LOCK-CONTROL      = FALSE
+         LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = lab-des
          Clines            = 0
@@ -5345,8 +5346,8 @@ Begin Screen Form1
          Destroy Type      = Automatic
          Enable            = NONE
          Field Edited (Style) = 0
-         Field Edited Format = X(40)
-         Field Picture     = X(40)
+         Field Edited Format = x(100)
+         Field Picture     = x(100)
          Field Variable    = des-ragsoc-1
          File              = destini
          Font              = Default Font

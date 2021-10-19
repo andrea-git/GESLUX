@@ -67,7 +67,12 @@ LUBEXX     end-if.
                        upon form3-handle at column 22
                                               line 03
                     move 0 to counter2
-                 end-if
+                 end-if   
+                       
+                 inquire ef-cod,  value cli-codice
+                 inquire ef-des,  value des-prog
+                 inquire ef-gdo,  value ef-gdo-buf
+                 inquire ef-tipo, value tcl-codice
 
 LUBEXX           if cli-codice not = 0
 LUBEXX              if cli-codice  not = mto-cod-cli
@@ -86,7 +91,7 @@ LUBEXX           end-if
                  
                  if mto-data-creazione < como-data-from
                     exit perform cycle
-                 end-if                   
+                 end-if   
 
                  if cli-codice    not = 0
                     if cli-codice not = mto-cod-cli
@@ -107,8 +112,6 @@ LUBEXX           if tcl-codice not = spaces and
 LUBEXX              tcl-codice not = cli-tipo
 LUBEXX              exit perform cycle
 LUBEXX           end-if
-LUBEXX           inquire ef-cod,  value in cli-codice
-LUBEXX           inquire ef-tipo, value in tcl-codice
                                                      
                  if ef-gdo-buf not = spaces and
                     ef-gdo-buf not = cli-gdo
@@ -148,6 +151,7 @@ LUBEXX           inquire ef-tipo, value in tcl-codice
                          SaveArticolo not = art-codice
                          set record-ok to false
                       end-if
+                      inquire ef-marca value in mar-codice
                       if mar-codice not = 0 and
                          mar-codice not = art-marca-prodotto
                          set record-ok  to false
