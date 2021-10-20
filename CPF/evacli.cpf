@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=aggmese-Ev-Before-Program
 AFTER_PROGRAM=evacli-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E5A1474139-538-99428849
+PROGRAM_UNIQUE_CODE=TOTEM-7E5A14102822-445-24738685
 
 {{@DESCRIPTION:
 
@@ -11018,6 +11018,9 @@ BEGIN-TEXT
            call   "evaomag" using tge-anno primo-numero ultimo-numero.
            cancel "evaomag".
 
+           call   "evacontras" using tge-anno primo-numero ultimo-numero.
+           cancel "evacontras".
+
       ***---
        DOMANDE-EVASIONE.
            set record-ok to true
@@ -11170,7 +11173,7 @@ BEGIN-TEXT
               end-if
               read tcaumag no lock invalid continue end-read
               move tte-cliente        to tor-cod-cli
-              move tte-destino        to tor-prg-destino
+              move tte-destino        to tor-prg-destino   
               if tte-num-master = 1
                  move tte-num-ord-cli-m(1) to tor-num-ord-cli
                  move tte-data-ordine-m(1) to tor-data-ordine
@@ -11180,7 +11183,6 @@ BEGIN-TEXT
               end-if
               accept tor-data-passaggio-ordine from century-date
               move tte-cod-agente-m(1)    to tor-cod-agente
-              move tte-contrassegno-m(1)  to tor-contrassegno
               move tte-cod-pagamento-m(1) to tor-cod-pagamento
               move tte-cod-ese-iva-m(1)   to tor-cod-ese-iva
 
@@ -12046,7 +12048,6 @@ BEGIN-TEXT
                        move prv-vet-1 to tte-vettore
                     end-if  
 
-
                     |ASSEGNO IL VETTORE
                     if prm-minore-kg2 not = 0 and tte-peso <
                        prm-minore-kg2
@@ -12276,7 +12277,6 @@ BEGIN-TEXT
               move mto-num-ord-cli   to tte-num-ord-cli-m(tte-num-master)
               move mto-data-ordine   to tte-data-ordine-m(tte-num-master)
               move mto-cod-agente    to tte-cod-agente-m(tte-num-master)
-              move mto-contrassegno  to tte-contrassegno-m(tte-num-master)
               move mto-cod-pagamento to tte-cod-pagamento-m(tte-num-master)
               move mto-cod-ese-iva   to tte-cod-ese-iva-m(tte-num-master)
 

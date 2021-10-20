@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 20 ottobre 2021 10:05:43.
+       DATE-WRITTEN.        mercoledì 20 ottobre 2021 14:45:40.
        REMARKS.
       *{TOTEM}END
 
@@ -699,7 +699,7 @@
        77 TMP-DataSet1-recapiti-BUF     PIC X(328).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-timposte-BUF     PIC X(717).
-       77 TMP-DataSet1-tmp-tevacli-BUF     PIC X(32478).
+       77 TMP-DataSet1-tmp-tevacli-BUF     PIC X(32766).
        77 TMP-DataSet1-param-BUF     PIC X(980).
        77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-multigest-BUF     PIC X(3).
@@ -14097,6 +14097,10 @@
            call   "evaomag" using tge-anno primo-numero ultimo-numero.
            cancel "evaomag".
 
+           call   "evacontras" using tge-anno primo-numero 
+           ultimo-numero.
+           cancel "evacontras".
+
       ***---
        DOMANDE-EVASIONE.
            set record-ok to true
@@ -14250,7 +14254,7 @@
               end-if
               read tcaumag no lock invalid continue end-read
               move tte-cliente        to tor-cod-cli
-              move tte-destino        to tor-prg-destino
+              move tte-destino        to tor-prg-destino   
               if tte-num-master = 1
                  move tte-num-ord-cli-m(1) to tor-num-ord-cli
                  move tte-data-ordine-m(1) to tor-data-ordine
@@ -14260,7 +14264,6 @@
               end-if
               accept tor-data-passaggio-ordine from century-date
               move tte-cod-agente-m(1)    to tor-cod-agente
-              move tte-contrassegno-m(1)  to tor-contrassegno
               move tte-cod-pagamento-m(1) to tor-cod-pagamento
               move tte-cod-ese-iva-m(1)   to tor-cod-ese-iva
 
@@ -15148,7 +15151,6 @@
                        move prv-vet-1 to tte-vettore
                     end-if  
 
-
                     |ASSEGNO IL VETTORE
                     if prm-minore-kg2 not = 0 and tte-peso <
                        prm-minore-kg2
@@ -15381,8 +15383,6 @@
               move mto-data-ordine   to 
            tte-data-ordine-m(tte-num-master)
               move mto-cod-agente    to tte-cod-agente-m(tte-num-master)
-              move mto-contrassegno  to 
-           tte-contrassegno-m(tte-num-master)
               move mto-cod-pagamento to 
            tte-cod-pagamento-m(tte-num-master)
               move mto-cod-ese-iva   to 
