@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 7 settembre 2021 10:11:24.
+       DATE-WRITTEN.        mercoledì 20 ottobre 2021 10:05:43.
        REMARKS.
       *{TOTEM}END
 
@@ -699,7 +699,7 @@
        77 TMP-DataSet1-recapiti-BUF     PIC X(328).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-timposte-BUF     PIC X(717).
-       77 TMP-DataSet1-tmp-tevacli-BUF     PIC X(34866).
+       77 TMP-DataSet1-tmp-tevacli-BUF     PIC X(32478).
        77 TMP-DataSet1-param-BUF     PIC X(980).
        77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-multigest-BUF     PIC X(3).
@@ -14260,6 +14260,7 @@
               end-if
               accept tor-data-passaggio-ordine from century-date
               move tte-cod-agente-m(1)    to tor-cod-agente
+              move tte-contrassegno-m(1)  to tor-contrassegno
               move tte-cod-pagamento-m(1) to tor-cod-pagamento
               move tte-cod-ese-iva-m(1)   to tor-cod-ese-iva
 
@@ -15380,6 +15381,8 @@
               move mto-data-ordine   to 
            tte-data-ordine-m(tte-num-master)
               move mto-cod-agente    to tte-cod-agente-m(tte-num-master)
+              move mto-contrassegno  to 
+           tte-contrassegno-m(tte-num-master)
               move mto-cod-pagamento to 
            tte-cod-pagamento-m(tte-num-master)
               move mto-cod-ese-iva   to 

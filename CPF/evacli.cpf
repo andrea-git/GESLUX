@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=aggmese-Ev-Before-Program
 AFTER_PROGRAM=evacli-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E5A913217-27-2469319751
+PROGRAM_UNIQUE_CODE=TOTEM-7E5A1474139-538-99428849
 
 {{@DESCRIPTION:
 
@@ -11180,6 +11180,7 @@ BEGIN-TEXT
               end-if
               accept tor-data-passaggio-ordine from century-date
               move tte-cod-agente-m(1)    to tor-cod-agente
+              move tte-contrassegno-m(1)  to tor-contrassegno
               move tte-cod-pagamento-m(1) to tor-cod-pagamento
               move tte-cod-ese-iva-m(1)   to tor-cod-ese-iva
 
@@ -12275,6 +12276,7 @@ BEGIN-TEXT
               move mto-num-ord-cli   to tte-num-ord-cli-m(tte-num-master)
               move mto-data-ordine   to tte-data-ordine-m(tte-num-master)
               move mto-cod-agente    to tte-cod-agente-m(tte-num-master)
+              move mto-contrassegno  to tte-contrassegno-m(tte-num-master)
               move mto-cod-pagamento to tte-cod-pagamento-m(tte-num-master)
               move mto-cod-ese-iva   to tte-cod-ese-iva-m(tte-num-master)
 

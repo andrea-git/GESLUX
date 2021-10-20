@@ -2,14 +2,13 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
-Adesk-andre=10.129.6.23
 
 
 [WORKSPACE_CONTENT]
 WORKSPACE_UNIQUE_CODE=TOTEM-7DE41144432-337-117565976
 PROJECT_LIST=GESLUX,LAB,EDI,GET,SHI,STORICO,AndamentoClienti
 CONFIGURATION_LIST=Debug Mode,RELEASE
-CURRENT_CONFIGURATION=RELEASE
+CURRENT_CONFIGURATION=Debug Mode
 
 [FILE_DEFINITION_CONTENT]
 VERSION=1
@@ -45627,7 +45626,7 @@ NAME_PRECOMPILE_OUTPUT_FILE=%listdir%\@.asq
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:RELEASE:SOURCE\evaord.cbl]
-COPY_DEPENDENCE=FD\articoli.sl;FD\timballi.sl;FD\tmagaz.sl;FD\timbalqta.sl;FD\progmag.sl;FD\timposte.sl;FD\tmarche.sl;FD\tpiombo.sl;FD\tordini.sl;FD\rordini.sl;FD\clienti.sl;FD\mrordini.sl;FD\mtordini.sl;FD\recapiti.sl;FD\tcaumag.sl;FD\tparamge.sl;FD\destini.sl;FD\ttipocli.sl;FD\blister.sl;FD\param.sl;FD\tcontat.sl;FD\paramSHI.sl;FD\listini.sl;FD\articoli.fd;FD\timballi.fd;FD\tmagaz.fd;FD\timbalqta.fd;FD\progmag.fd;FD\timposte.fd;FD\tmarche.fd;FD\tpiombo.fd;FD\tordini.fd;FD\rordini.fd;FD\clienti.fd;FD\mrordini.fd;FD\mtordini.fd;FD\recapiti.fd;FD\tcaumag.fd;FD\tparamge.fd;FD\destini.fd;FD\ttipocli.fd;FD\blister.fd;FD\param.fd;FD\tcontat.fd;FD\paramSHI.fd;FD\listini.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;Copylib\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\link-imballo.def;Copylib\link-geslock.def;Copylib\link-nambar.def;Copylib\imposte.def;Copylib\link-stordcp.def;Copylib\link-wprogmag.def;Copylib\versione-evasione.def;Copylib\trova-parametro.def;Copylib\link-evaord.def;Resource\bottone-ok.bmp;Resource\bottone-cancel.bmp;Copylib\utydata.cpy;Copylib\COLOR-CUSTOM.CPY;Copylib\imposte.cpy;Copylib\addizionale-piombo.cpy;Copylib\chiudi-master.cpy;Copylib\direziona-impegnato-common.cpy;Copylib\trova-parametro.cpy;Copylib\accessoxx.cpy
+COPY_DEPENDENCE=FD\articoli.sl;FD\timballi.sl;FD\tmagaz.sl;FD\timbalqta.sl;FD\progmag.sl;FD\timposte.sl;FD\tmarche.sl;FD\tpiombo.sl;FD\tordini.sl;FD\rordini.sl;FD\clienti.sl;FD\mrordini.sl;FD\mtordini.sl;FD\recapiti.sl;FD\tcaumag.sl;FD\tparamge.sl;FD\destini.sl;FD\ttipocli.sl;FD\blister.sl;FD\param.sl;FD\tcontat.sl;FD\paramSHI.sl;FD\listini.sl;FD\articoli.fd;FD\timballi.fd;FD\tmagaz.fd;FD\timbalqta.fd;FD\progmag.fd;FD\timposte.fd;FD\tmarche.fd;FD\tpiombo.fd;FD\tordini.fd;FD\rordini.fd;FD\clienti.fd;FD\mrordini.fd;FD\mtordini.fd;FD\recapiti.fd;FD\tcaumag.fd;FD\tparamge.fd;FD\destini.fd;FD\ttipocli.fd;FD\blister.fd;FD\param.fd;FD\tcontat.fd;FD\paramSHI.fd;FD\listini.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\link-imballo.def;Copylib\link-geslock.def;Copylib\link-nambar.def;Copylib\imposte.def;Copylib\link-stordcp.def;Copylib\link-wprogmag.def;Copylib\versione-evasione.def;Copylib\trova-parametro.def;Copylib\link-evaord.def;Resource\bottone-ok.bmp;Resource\bottone-cancel.bmp;Copylib\utydata.cpy;Copylib\COLOR-CUSTOM.CPY;Copylib\imposte.cpy;Copylib\addizionale-piombo.cpy;Copylib\chiudi-master.cpy;Copylib\direziona-impegnato-common.cpy;Copylib\trova-parametro.cpy;Copylib\accessoxx.cpy
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu

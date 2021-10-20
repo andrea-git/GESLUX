@@ -17,7 +17,7 @@
                    88 tte-ritira-si VALUE IS 1. 
                    88 tte-ritira-no VALUE IS 0. 
                10 tte-dati-master
-                          OCCURS 75 TIMES.
+                          OCCURS 74 TIMES.
                    15 tte-master.
                        20 tte-anno-m       PIC  9(4).
                        20 tte-numero-m     PIC  9(8).
@@ -35,6 +35,7 @@
                    15 tte-note-bolla-1-m           PIC  x(130).
                    15 tte-note-bolla-2-m           PIC  x(130).
                    15 tte-stato-attivazione-m      PIC  x.
+                   15 tte-contrassegno-m           PIC  x.
                10 tte-bloccato     PIC  9.
                    88 tte-bloccato-si VALUE IS 1. 
                    88 tte-bloccato-no VALUE IS 0. 

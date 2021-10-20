@@ -5,7 +5,7 @@
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E5A1471632-420-1479018839
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E5A1474139-4-744828948
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -175,8 +175,8 @@ m_nItemLevel=10
 m_nSync=-1
 m_bOccurs=1
 m_bFixed=1
-m_strRawSize=75
-m_nSize=75
+m_strRawSize=74
+m_nSize=74
 {{@DataItem_m_strDescriptionFDITEM16_
 
 @}}
@@ -341,7 +341,7 @@ m_bFixed=1
 [FDITEM33_]
 m_strName=tte-stato-attivazione-m
 m_strRawPic=x
-m_strPic=X
+m_strPic=x
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -349,115 +349,127 @@ m_bFixed=1
 
 @}}
 [FDITEM34_]
+m_strName=tte-contrassegno-m
+m_strRawPic=x
+m_strPic=x
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strRawSize=2
+m_nSize=2
+{{@DataItem_m_strDescriptionFDITEM34_
+
+@}}
+[FDITEM35_]
 m_strName=tte-bloccato
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM34_
+{{@DataItem_m_strDescriptionFDITEM35_
 
 @}}
-[FDITEM35_]
+[FDITEM36_]
 m_strName=tte-bloccato-si
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
-{{@DataItem_m_strDescriptionFDITEM35_
+{{@DataItem_m_strDescriptionFDITEM36_
 
 @}}
-[FDITEM36_]
+[FDITEM37_]
 m_strName=tte-bloccato-no
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=0
-{{@DataItem_m_strDescriptionFDITEM36_
+{{@DataItem_m_strDescriptionFDITEM37_
 
 @}}
-[FDITEM37_]
+[FDITEM38_]
 m_strName=tte-split-500
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM37_
+{{@DataItem_m_strDescriptionFDITEM38_
 
 @}}
-[FDITEM38_]
+[FDITEM39_]
 m_strName=tte-split-500-si
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
-{{@DataItem_m_strDescriptionFDITEM38_
+{{@DataItem_m_strDescriptionFDITEM39_
 
 @}}
-[FDITEM39_]
+[FDITEM40_]
 m_strName=tte-split-500-no
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=0
-{{@DataItem_m_strDescriptionFDITEM39_
+{{@DataItem_m_strDescriptionFDITEM40_
 
 @}}
-[FDITEM40_]
+[FDITEM41_]
 m_strName=tte-split-24000
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM40_
+{{@DataItem_m_strDescriptionFDITEM41_
 
 @}}
-[FDITEM41_]
+[FDITEM42_]
 m_strName=tte-split-24000-si
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
-{{@DataItem_m_strDescriptionFDITEM41_
+{{@DataItem_m_strDescriptionFDITEM42_
 
 @}}
-[FDITEM42_]
+[FDITEM43_]
 m_strName=tte-split-24000-no
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=0
-{{@DataItem_m_strDescriptionFDITEM42_
+{{@DataItem_m_strDescriptionFDITEM43_
 
 @}}
-[FDITEM43_]
+[FDITEM44_]
 m_strName=tte-blocco-peso
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM43_
+{{@DataItem_m_strDescriptionFDITEM44_
 
 @}}
-[FDITEM44_]
+[FDITEM45_]
 m_strName=tte-blocco-peso-si
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
-{{@DataItem_m_strDescriptionFDITEM44_
+{{@DataItem_m_strDescriptionFDITEM45_
 
 @}}
-[FDITEM45_]
+[FDITEM46_]
 m_strName=tte-blocco-peso-no
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=0
-{{@DataItem_m_strDescriptionFDITEM45_
+{{@DataItem_m_strDescriptionFDITEM46_
 
 @}}
 [CStoAcucobolSL_]

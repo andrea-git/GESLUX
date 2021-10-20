@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordinevar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 20 ottobre 2021 09:23:41.
+       DATE-WRITTEN.        mercoledì 20 ottobre 2021 10:17:46.
        REMARKS.
       *{TOTEM}END
 
@@ -1623,7 +1623,7 @@
            chk-urgente, 
            Check-Box, 
            COL 110,50, 
-           LINE 24,31,
+           LINE 23,92,
            LINES 1,31 ,
            SIZE 2,67 ,
            ENABLED mod-campi,
@@ -2344,7 +2344,7 @@
            Form1-La-28aaaaa, 
            Label, 
            COL 96,17, 
-           LINE 24,31,
+           LINE 23,92,
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,

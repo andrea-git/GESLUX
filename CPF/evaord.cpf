@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Screen2
 BEFORE_PROGRAM=bprepb-Ev-Before-Program
 AFTER_PROGRAM=accetordforn-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E5A8131351-996-1748312438
+PROGRAM_UNIQUE_CODE=TOTEM-7E5A1473949-349-2253816600
 
 {{@DESCRIPTION:
 
@@ -4141,21 +4141,22 @@ BEGIN-TEXT
            perform VALORIZZA-NUMERO.
            if tutto-ok         
 
-              move evaord-anno     to mto-anno
-              move evaord-numero   to mto-numero
-              move tge-anno        to tor-anno
-              move mto-causale     to tor-causale tca-codice
+              move evaord-anno       to mto-anno
+              move evaord-numero     to mto-numero
+              move tge-anno          to tor-anno
+              move mto-causale       to tor-causale tca-codice
               read tcaumag no lock invalid continue end-read
-              move mto-cod-cli     to tor-cod-cli
-              move mto-prg-destino to tor-prg-destino
-              move mto-num-ord-cli to tor-num-ord-cli
-              move mto-data-ordine to tor-data-ordine
+              move mto-cod-cli       to tor-cod-cli
+              move mto-prg-destino   to tor-prg-destino
+              move mto-num-ord-cli   to tor-num-ord-cli
+              move mto-data-ordine   to tor-data-ordine
               move mto-data-passaggio-ordine to tor-data-passaggio-ordine
-              move mto-cod-agente  to tor-cod-agente
+              move mto-cod-agente    to tor-cod-agente
               move mto-cod-pagamento to tor-cod-pagamento
-              move mto-cod-ese-iva to tor-cod-ese-iva
-              set tor-no-ric-ago   to true
-              set tor-no-ric-dic   to true
+              move mto-cod-ese-iva   to tor-cod-ese-iva
+              set tor-no-ric-ago     to true
+              set tor-no-ric-dic     to true
+              move mto-contrassegno  to tor-contrassegno
 
               set tor-bolla-no-prenotata to true
               set tor-fatt-no-prenotata  to true

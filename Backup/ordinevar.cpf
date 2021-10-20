@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E5A1472149-92-3057727033
+PROGRAM_UNIQUE_CODE=TOTEM-7E5A1481712-726-120563189
 
 {{@DESCRIPTION:
 
@@ -15609,7 +15609,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-urgente
             SCREEN-COL        = 110,50
-            SCREEN-LINE       = 24,31
+            SCREEN-LINE       = 23,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-urgente
@@ -15638,7 +15638,7 @@ Begin Screen Form1
             ID                = 0
             ID Variable       = AUTO-ID
             Left Text         = FALSE
-            Line              = 12,62
+            Line              = 12,23
             Lines             = 1,31
             Lines Unit        = Default
             No Tab            = FALSE
@@ -17176,7 +17176,7 @@ Begin Screen Form1
          Begin Label Form1-La-28aaa
             SCREEN-COL        = 120,17
             SCREEN-LINE       = 21,92
-            LOCK-CONTROL      = FALSE
+            LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28aaa
             Clines            = 0
@@ -17311,7 +17311,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28aaaaa
             SCREEN-COL        = 96,17
-            SCREEN-LINE       = 24,31
+            SCREEN-LINE       = 23,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28aaaaa
@@ -17330,7 +17330,7 @@ Begin Screen Form1
             ID                = 61
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 12,62
+            Line              = 12,23
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
