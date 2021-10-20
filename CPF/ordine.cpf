@@ -11,7 +11,7 @@ MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ordine-Ev-Before-Program
 AFTER_PROGRAM=ordine-Ev-After-Program
 BEFORE_OPEN=ordine-Ev-Before-DSD-Open
-PROGRAM_UNIQUE_CODE=TOTEM-7E5A9142629-154-859014046
+PROGRAM_UNIQUE_CODE=TOTEM-7E5A1473731-58-2453412711
 
 {{@DESCRIPTION:
 
@@ -2322,7 +2322,6 @@ m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\SPLCRT2GRAF.LKS
 m_nCopyFileLevel=2
 {{@DataItem_m_strDescriptionFDITEM197_WK
 dalla stampa bolle A4 per indicare il secondo giro 
-
 @}}
 [FDITEM198_WK]
 m_strName=splcrt2graf-percorso-stampa
@@ -4343,6 +4342,7 @@ m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\AGGIORNA-STATO-MASTER.DEF
 m_nCopyFileLevel=2
 {{@DataItem_m_strDescriptionFDITEM345_WK
 IN-P, RICALDIN-BAT, EVAART, EVAART-GDO
+
 @}}
 [FDITEM346_WK]
 m_strName=no-tagli
@@ -4369,6 +4369,7 @@ m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\AGGIORNA-STATO-MASTER.DEF
 m_nCopyFileLevel=2
 {{@DataItem_m_strDescriptionFDITEM347_WK
 E-P
+
 @}}
 [FDITEM348_WK]
 m_strName=filler
@@ -10824,7 +10825,6 @@ m_nCopyFileLevel=1
 
 
 
-
 @}}
 [FDITEM808_WK]
 m_strName=prezzo-sp
@@ -11550,6 +11550,7 @@ m_nCopyFileLevel=1
 ****             88 mto-fatt-tot VALUE IS 6. 
 
 
+
 @}}
 [FDITEM861_WK]
 m_strName=OLD-mto-dati-comuni
@@ -11857,9 +11858,8 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\ORDINE-WS.DEF
 m_strCopyFile=ORDINE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\ORDINE-WS.DEF
 m_nCopyFileLevel=1
-m_strName_Xfd=mto-num-vuoto-3_1
 {{@DataItem_m_strDescriptionFDITEM883_WK
-
+(( XFD NAME = mto-num-vuoto-3_1 ))
 
 
 @}}
@@ -12056,10 +12056,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM898_WK]
-m_strName=FILLER
+m_strName=old-mto-contrassegno
 m_strRawPic=x
-m_strPic=X
-m_nItemLevel=1
+m_strPic=x
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\ORDINE-WS.DEF
@@ -12070,6 +12070,20 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM899_WK]
+m_strName=FILLER
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\ORDINE-WS.DEF
+m_strCopyFile=ORDINE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\ORDINE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM899_WK
+
+@}}
+[FDITEM900_WK]
 m_strName=si-prg-listino
 m_nItemLevel=88
 m_nSync=-1
@@ -12079,10 +12093,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\ORDINE-WS.DEF
 m_strCopyFile=ORDINE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\ORDINE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM899_WK
+{{@DataItem_m_strDescriptionFDITEM900_WK
 
 @}}
-[FDITEM900_WK]
+[FDITEM901_WK]
 m_strName=no-prg-listino
 m_nItemLevel=88
 m_nSync=-1
@@ -12092,10 +12106,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\ORDINE-WS.DEF
 m_strCopyFile=ORDINE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\ORDINE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM900_WK
+{{@DataItem_m_strDescriptionFDITEM901_WK
 
 @}}
-[FDITEM901_WK]
+[FDITEM902_WK]
 m_strName=bl-prg-listino
 m_nItemLevel=88
 m_nSync=-1
@@ -12105,10 +12119,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\ORDINE-WS.DEF
 m_strCopyFile=ORDINE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\ORDINE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM901_WK
+{{@DataItem_m_strDescriptionFDITEM902_WK
 
 @}}
-[FDITEM902_WK]
+[FDITEM903_WK]
 m_strName=nv-prg-listino
 m_nItemLevel=88
 m_nSync=-1
@@ -12118,10 +12132,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\ORDINE-WS.DEF
 m_strCopyFile=ORDINE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\ORDINE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM902_WK
+{{@DataItem_m_strDescriptionFDITEM903_WK
 
 @}}
-[FDITEM903_WK]
+[FDITEM904_WK]
 m_strName=nc-prg-listino
 m_nItemLevel=88
 m_nSync=-1
@@ -12131,26 +12145,12 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\ORDINE-WS.DEF
 m_strCopyFile=ORDINE-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\ORDINE-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM903_WK
-
-@}}
-[FDITEM904_WK]
-m_strName=como-prg-chiave
-m_nItemLevel=1
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\ORDINE-WS.DEF
-m_strCopyFile=ORDINE-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\ORDINE-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM904_WK
 
 @}}
 [FDITEM905_WK]
-m_strName=como-prg-cod-articolo
-m_strRawPic=9(6)
-m_strPic=9(6)
-m_nItemLevel=10
+m_strName=como-prg-chiave
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\ORDINE-WS.DEF
@@ -12161,9 +12161,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM906_WK]
-m_strName=como-prg-cod-magazzino
-m_strRawPic=X(3)
-m_strPic=X(3)
+m_strName=como-prg-cod-articolo
+m_strRawPic=9(6)
+m_strPic=9(6)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -12175,7 +12175,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM907_WK]
-m_strName=como-prg-tipo-imballo
+m_strName=como-prg-cod-magazzino
 m_strRawPic=X(3)
 m_strPic=X(3)
 m_nItemLevel=10
@@ -12189,9 +12189,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM908_WK]
-m_strName=como-prg-peso
-m_strRawPic=9(5)V9(3)
-m_strPic=9(5)V9(3)
+m_strName=como-prg-tipo-imballo
+m_strRawPic=X(3)
+m_strPic=X(3)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -12203,10 +12203,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM909_WK]
-m_strName=como-cons
-m_strRawPic=9(15)v99
-m_strPic=9(15)V99
-m_nItemLevel=77
+m_strName=como-prg-peso
+m_strRawPic=9(5)V9(3)
+m_strPic=9(5)V9(3)
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\ORDINE-WS.DEF
@@ -12217,7 +12217,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM910_WK]
-m_strName=como-cou
+m_strName=como-cons
 m_strRawPic=9(15)v99
 m_strPic=9(15)V99
 m_nItemLevel=77
@@ -12231,7 +12231,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM911_WK]
-m_strName=como-add
+m_strName=como-cou
 m_strRawPic=9(15)v99
 m_strPic=9(15)V99
 m_nItemLevel=77
@@ -12245,7 +12245,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM912_WK]
-m_strName=como-imp
+m_strName=como-add
 m_strRawPic=9(15)v99
 m_strPic=9(15)V99
 m_nItemLevel=77
@@ -12259,9 +12259,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM913_WK]
-m_strName=como-tot
-m_strRawPic=s9(12)v99
-m_strPic=S9(12)V99
+m_strName=como-imp
+m_strRawPic=9(15)v99
+m_strPic=9(15)V99
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -12273,36 +12273,40 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM914_WK]
+m_strName=como-tot
+m_strRawPic=s9(12)v99
+m_strPic=S9(12)V99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\ORDINE-WS.DEF
+m_strCopyFile=ORDINE-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\ORDINE-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM914_WK
+
+@}}
+[FDITEM915_WK]
 m_strName=scelta-attesa
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=2
-{{@DataItem_m_strDescriptionFDITEM914_WK
+{{@DataItem_m_strDescriptionFDITEM915_WK
 
 @}}
-[FDITEM915_WK]
+[FDITEM916_WK]
 m_strName=scelta-annulla
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=3
-{{@DataItem_m_strDescriptionFDITEM915_WK
-
-@}}
-[FDITEM916_WK]
-m_strName=Verdana12B-Occidentale
-m_nUsage=26
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM916_WK
 
 @}}
 [FDITEM917_WK]
-m_strName=STATUS-rordini
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=Verdana12B-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -12310,47 +12314,47 @@ m_bFixed=1
 
 @}}
 [FDITEM918_WK]
+m_strName=STATUS-rordini
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM918_WK
+
+@}}
+[FDITEM919_WK]
 m_strName=Valid-STATUS-rordini
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM918_WK
+{{@DataItem_m_strDescriptionFDITEM919_WK
 
 @}}
-[FDITEM919_WK]
+[FDITEM920_WK]
 m_strName=STATUS-tordini
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM919_WK
+{{@DataItem_m_strDescriptionFDITEM920_WK
 
 @}}
-[FDITEM920_WK]
+[FDITEM921_WK]
 m_strName=Valid-STATUS-tordini
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM920_WK
-
-@}}
-[FDITEM921_WK]
-m_strName=path-tmp-tordini-zoom
-m_strRawPic=X(256)
-m_strPic=X(256)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM921_WK
 
 @}}
 [FDITEM922_WK]
-m_strName=STATUS-tmp-tordini-zoom
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=path-tmp-tordini-zoom
+m_strRawPic=X(256)
+m_strPic=X(256)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -12358,15 +12362,25 @@ m_bFixed=1
 
 @}}
 [FDITEM923_WK]
+m_strName=STATUS-tmp-tordini-zoom
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM923_WK
+
+@}}
+[FDITEM924_WK]
 m_strName=Valid-STATUS-tmp-tordini-zoom
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM923_WK
+{{@DataItem_m_strDescriptionFDITEM924_WK
 
 @}}
-[FDITEM924_WK]
+[FDITEM925_WK]
 m_strName=mod-vettori
 m_strRawPic=9
 m_strPic=9
@@ -12374,80 +12388,70 @@ m_strDefaultValue=1
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM924_WK
+{{@DataItem_m_strDescriptionFDITEM925_WK
 
 @}}
-[FDITEM925_WK]
+[FDITEM926_WK]
 m_strName=STATUS-sitfin
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM925_WK
+{{@DataItem_m_strDescriptionFDITEM926_WK
 
 @}}
-[FDITEM926_WK]
+[FDITEM927_WK]
 m_strName=Valid-STATUS-sitfin
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM926_WK
+{{@DataItem_m_strDescriptionFDITEM927_WK
 
 @}}
-[FDITEM927_WK]
+[FDITEM928_WK]
 m_strName=status-catart
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM927_WK
+{{@DataItem_m_strDescriptionFDITEM928_WK
 
 @}}
-[FDITEM928_WK]
+[FDITEM929_WK]
 m_strName=Valid-status-catart
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM928_WK
+{{@DataItem_m_strDescriptionFDITEM929_WK
 
 @}}
-[FDITEM929_WK]
+[FDITEM930_WK]
 m_strName=STATUS-tscorte
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM929_WK
+{{@DataItem_m_strDescriptionFDITEM930_WK
 
 @}}
-[FDITEM930_WK]
+[FDITEM931_WK]
 m_strName=Valid-STATUS-tscorte
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM930_WK
-
-@}}
-[FDITEM931_WK]
-m_strName=como-prezzo-proposto
-m_strRawPic=9(9)v99
-m_strPic=9(9)v99
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM931_WK
 
 @}}
 [FDITEM932_WK]
-m_strName=como-sconto-proposto
-m_strRawPic=9(2)v99
-m_strPic=9(2)v99
+m_strName=como-prezzo-proposto
+m_strRawPic=9(9)v99
+m_strPic=9(9)v99
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -12455,9 +12459,9 @@ m_bFixed=1
 
 @}}
 [FDITEM933_WK]
-m_strName=STATUS-evaclides
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=como-sconto-proposto
+m_strRawPic=9(2)v99
+m_strPic=9(2)v99
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -12465,47 +12469,47 @@ m_bFixed=1
 
 @}}
 [FDITEM934_WK]
+m_strName=STATUS-evaclides
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM934_WK
+
+@}}
+[FDITEM935_WK]
 m_strName=Valid-STATUS-evaclides
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM934_WK
+{{@DataItem_m_strDescriptionFDITEM935_WK
 
 @}}
-[FDITEM935_WK]
+[FDITEM936_WK]
 m_strName=STATUS-param
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM935_WK
+{{@DataItem_m_strDescriptionFDITEM936_WK
 
 @}}
-[FDITEM936_WK]
+[FDITEM937_WK]
 m_strName=Valid-STATUS-param
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM936_WK
-
-@}}
-[FDITEM937_WK]
-m_strName=lab-tipo-iva-buf
-m_strRawPic=X(30)
-m_strPic=X(30)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM937_WK
 
 @}}
 [FDITEM938_WK]
-m_strName=STATUS-cli-prg
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=lab-tipo-iva-buf
+m_strRawPic=X(30)
+m_strPic=X(30)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -12513,84 +12517,84 @@ m_bFixed=1
 
 @}}
 [FDITEM939_WK]
+m_strName=STATUS-cli-prg
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM939_WK
+
+@}}
+[FDITEM940_WK]
 m_strName=Valid-STATUS-cli-prg
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM939_WK
+{{@DataItem_m_strDescriptionFDITEM940_WK
 
 @}}
-[FDITEM940_WK]
+[FDITEM941_WK]
 m_strName=STATUS-pagbloc
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM940_WK
+{{@DataItem_m_strDescriptionFDITEM941_WK
 
 @}}
-[FDITEM941_WK]
+[FDITEM942_WK]
 m_strName=Valid-STATUS-pagbloc
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM941_WK
+{{@DataItem_m_strDescriptionFDITEM942_WK
 
 @}}
-[FDITEM942_WK]
+[FDITEM943_WK]
 m_strName=STATUS-rordforn
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM942_WK
+{{@DataItem_m_strDescriptionFDITEM943_WK
 
 @}}
-[FDITEM943_WK]
+[FDITEM944_WK]
 m_strName=Valid-STATUS-rordforn
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM943_WK
+{{@DataItem_m_strDescriptionFDITEM944_WK
 
 @}}
-[FDITEM944_WK]
+[FDITEM945_WK]
 m_strName=STATUS-tordforn
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM944_WK
+{{@DataItem_m_strDescriptionFDITEM945_WK
 
 @}}
-[FDITEM945_WK]
+[FDITEM946_WK]
 m_strName=Valid-STATUS-tordforn
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM945_WK
-
-@}}
-[FDITEM946_WK]
-m_strName=scr-data-Handle
-m_nUsage=24
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM946_WK
 
 @}}
 [FDITEM947_WK]
-m_strName=ef-dal-tutto-buf
-m_strRawPic=99/99/9999
-m_strPic=99/99/9999
+m_strName=scr-data-Handle
+m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -12598,9 +12602,9 @@ m_bFixed=1
 
 @}}
 [FDITEM948_WK]
-m_strName=STATUS-tcontat
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=ef-dal-tutto-buf
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -12608,34 +12612,44 @@ m_bFixed=1
 
 @}}
 [FDITEM949_WK]
+m_strName=STATUS-tcontat
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM949_WK
+
+@}}
+[FDITEM950_WK]
 m_strName=Valid-STATUS-tcontat
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM949_WK
+{{@DataItem_m_strDescriptionFDITEM950_WK
 
 @}}
-[FDITEM950_WK]
+[FDITEM951_WK]
 m_strName=STATUS-tnazioni
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM950_WK
+{{@DataItem_m_strDescriptionFDITEM951_WK
 
 @}}
-[FDITEM951_WK]
+[FDITEM952_WK]
 m_strName=Valid-STATUS-tnazioni
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM951_WK
+{{@DataItem_m_strDescriptionFDITEM952_WK
 
 @}}
-[FDITEM952_WK]
+[FDITEM953_WK]
 m_strName=v-form
 m_strRawPic=9
 m_strPic=9
@@ -12643,64 +12657,64 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM952_WK
+{{@DataItem_m_strDescriptionFDITEM953_WK
 
 @}}
-[FDITEM953_WK]
+[FDITEM954_WK]
 m_strName=STATUS-grade
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM953_WK
+{{@DataItem_m_strDescriptionFDITEM954_WK
 
 @}}
-[FDITEM954_WK]
+[FDITEM955_WK]
 m_strName=Valid-STATUS-grade
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM954_WK
+{{@DataItem_m_strDescriptionFDITEM955_WK
 
 @}}
-[FDITEM955_WK]
+[FDITEM956_WK]
 m_strName=STATUS-tprov
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM955_WK
+{{@DataItem_m_strDescriptionFDITEM956_WK
 
 @}}
-[FDITEM956_WK]
+[FDITEM957_WK]
 m_strName=Valid-STATUS-tprov
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM956_WK
+{{@DataItem_m_strDescriptionFDITEM957_WK
 
 @}}
-[FDITEM957_WK]
+[FDITEM958_WK]
 m_strName=STATUS-tregioni
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM957_WK
+{{@DataItem_m_strDescriptionFDITEM958_WK
 
 @}}
-[FDITEM958_WK]
+[FDITEM959_WK]
 m_strName=Valid-STATUS-tregioni
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM958_WK
+{{@DataItem_m_strDescriptionFDITEM959_WK
 
 @}}
 
@@ -14337,6 +14351,56 @@ Begin Screen Form1
             Before Procedure  = ef-vet-BeforeProcedure
             After Procedure   = ef-vet-AfterProcedure
          End
+         Begin Data.Check-Box chk-contrassegno
+            SCREEN-COL        = 110,50
+            SCREEN-LINE       = 22,31
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = chk-contrassegno
+            Bitmap Frame      = FALSE
+            Bitmap Number     = 1
+            Bitmap Square     = TRUE
+            Check Off Value   = "N"
+            Check On Value    = "S"
+            Clines            = 0
+            Clines Unit       = Default
+            Color             = 0
+            Column            = 108,33
+            Copy Resource     = TRUE
+            Csize             = 0
+            Csize Unit        = Default
+            Destroy Type      = Automatic
+            Enable            = NONE
+            Enable Variable   = mod-campi
+            Exception Value   = 0
+            Field Variable    = mto-contrassegno
+            File              = mtordini
+            Flat              = TRUE
+            Font              = Default Font
+            Height in Cells   = TRUE
+            Help ID           = 0
+            ID                = 0
+            ID Variable       = AUTO-ID
+            Left Text         = FALSE
+            Line              = 10,62
+            Lines             = 1,31
+            Lines Unit        = Default
+            No Tab            = FALSE
+            Notify            = FALSE
+            Occurs            = 0
+            Self Act          = TRUE
+            Size              = 2,67
+            Size Unit         = Default
+            Tab Order         = 12
+            Termination Value = 0
+            Title             = "Urgente"
+            Value             = 0:FALSE
+            Visible           = NONE
+            Width in Cells    = TRUE
+            My Property       = "CONTOLLO-OLD="
+            Before Procedure  = chk-urgente-BeforeProcedure
+            After Procedure   = chk-urgente-AfterProcedure
+         End
          Begin Data.Check-Box chk-saldi-promo
             SCREEN-COL        = 142,17
             SCREEN-LINE       = 22,31
@@ -14377,7 +14441,7 @@ Begin Screen Form1
             Self Act          = FALSE
             Size              = 2,67
             Size Unit         = Default
-            Tab Order         = 12
+            Tab Order         = 13
             Termination Value = 0
             Value             = 0:FALSE
             Visible           = NONE
@@ -14440,7 +14504,7 @@ Begin Screen Form1
             Size              = 7,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 13
+            Tab Order         = 14
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -14452,7 +14516,7 @@ Begin Screen Form1
             After Procedure   = ef-vet-AfterProcedure
          End
          Begin Data.Check-Box chk-urgente
-            SCREEN-COL        = 108,84
+            SCREEN-COL        = 110,50
             SCREEN-LINE       = 24,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
@@ -14460,10 +14524,12 @@ Begin Screen Form1
             Bitmap Frame      = FALSE
             Bitmap Number     = 1
             Bitmap Square     = TRUE
+            Check Off Value   = "0"
+            Check On Value    = "1"
             Clines            = 0
             Clines Unit       = Default
             Color             = 0
-            Column            = 106,67
+            Column            = 108,33
             Copy Resource     = TRUE
             Csize             = 0
             Csize Unit        = Default
@@ -14489,7 +14555,7 @@ Begin Screen Form1
             Self Act          = TRUE
             Size              = 2,67
             Size Unit         = Default
-            Tab Order         = 14
+            Tab Order         = 15
             Termination Value = 0
             Title             = "Urgente"
             Value             = 0:FALSE
@@ -14539,7 +14605,7 @@ Begin Screen Form1
             Self Act          = FALSE
             Size              = 2,67
             Size Unit         = Default
-            Tab Order         = 15
+            Tab Order         = 16
             Termination Value = 0
             Value             = 0:FALSE
             Visible           = NONE
@@ -14601,7 +14667,7 @@ Begin Screen Form1
             Size              = 35,17
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 16
+            Tab Order         = 17
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -14664,7 +14730,7 @@ Begin Screen Form1
             Size              = 11,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 17
+            Tab Order         = 18
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -14727,7 +14793,7 @@ Begin Screen Form1
             Size              = 55,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 18
+            Tab Order         = 19
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -14790,7 +14856,7 @@ Begin Screen Form1
             Size              = 55,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 19
+            Tab Order         = 20
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -14853,7 +14919,7 @@ Begin Screen Form1
             Size              = 55,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 20
+            Tab Order         = 21
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -14914,7 +14980,7 @@ Begin Screen Form1
             Size              = 124,00
             Size Unit         = Default
             Style             = Vscroll Bar
-            Tab Order         = 21
+            Tab Order         = 22
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -14975,7 +15041,7 @@ Begin Screen Form1
             Size              = 124,00
             Size Unit         = Default
             Style             = Vscroll Bar
-            Tab Order         = 22
+            Tab Order         = 23
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -15035,7 +15101,7 @@ Begin Screen Form1
             Size              = 124,00
             Size Unit         = Default
             Style             = Vscroll Bar
-            Tab Order         = 23
+            Tab Order         = 24
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -15081,7 +15147,7 @@ Begin Screen Form1
             Size              = 17,00
             Size Unit         = Default
             Style             = Drop List
-            Tab Order         = 24
+            Tab Order         = 25
             Termination Value = 0
             Unsorted          = TRUE
             Value Container   = mto-stato-ordine
@@ -15121,7 +15187,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 19,00
             Size Unit         = Default
-            Tab Order         = 25
+            Tab Order         = 26
             Title             = "Numero ordine cliente"
             Transparent       = TRUE
             Visible           = NONE
@@ -15155,7 +15221,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 10,00
             Size Unit         = Default
-            Tab Order         = 26
+            Tab Order         = 27
             Title             = "Data ordine"
             Transparent       = TRUE
             Visible           = NONE
@@ -15189,7 +15255,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 19,00
             Size Unit         = Default
-            Tab Order         = 27
+            Tab Order         = 28
             Title             = "Data passaggio ordine"
             Transparent       = TRUE
             Visible           = NONE
@@ -15223,7 +15289,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 19,00
             Size Unit         = Default
-            Tab Order         = 28
+            Tab Order         = 29
             Title             = "Codice agente"
             Transparent       = TRUE
             Visible           = NONE
@@ -15257,7 +15323,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 19,00
             Size Unit         = Default
-            Tab Order         = 29
+            Tab Order         = 30
             Title             = "Codice pagamento"
             Transparent       = TRUE
             Visible           = NONE
@@ -15291,7 +15357,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 19,00
             Size Unit         = Default
-            Tab Order         = 30
+            Tab Order         = 31
             Title Picture     = X(30)
             Title Variable    = lab-tipo-iva-buf
             Transparent       = TRUE
@@ -15326,7 +15392,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 19,00
             Size Unit         = Default
-            Tab Order         = 31
+            Tab Order         = 32
             Title             = "Codice vettore"
             Transparent       = TRUE
             Visible           = NONE
@@ -15360,7 +15426,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 19,00
             Size Unit         = Default
-            Tab Order         = 32
+            Tab Order         = 33
             Title             = "Dati di consegna"
             Transparent       = TRUE
             Visible           = NONE
@@ -15394,7 +15460,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 5,00
             Size Unit         = Default
-            Tab Order         = 33
+            Tab Order         = 34
             Title             = "Data"
             Transparent       = TRUE
             Visible           = NONE
@@ -15428,7 +15494,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 8,00
             Size Unit         = Default
-            Tab Order         = 34
+            Tab Order         = 35
             Title             = "Note 2"
             Transparent       = TRUE
             Visible           = NONE
@@ -15462,7 +15528,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 19,00
             Size Unit         = Default
-            Tab Order         = 35
+            Tab Order         = 36
             Title             = "Note 3"
             Transparent       = TRUE
             Visible           = NONE
@@ -15496,7 +15562,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 8,00
             Size Unit         = Default
-            Tab Order         = 36
+            Tab Order         = 37
             Title             = "Note 4"
             Transparent       = TRUE
             Visible           = NONE
@@ -15530,7 +15596,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 10,00
             Size Unit         = Default
-            Tab Order         = 37
+            Tab Order         = 38
             Title             = "Stato"
             Transparent       = TRUE
             Visible           = NONE
@@ -15569,7 +15635,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 60,00
             Size Unit         = Default
-            Tab Order         = 38
+            Tab Order         = 39
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
@@ -15607,7 +15673,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 60,00
             Size Unit         = Default
-            Tab Order         = 39
+            Tab Order         = 40
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
@@ -15640,7 +15706,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 60,00
             Size Unit         = Default
-            Tab Order         = 40
+            Tab Order         = 41
             Title Picture     = X(100)
             Title Variable    = lab-pag-buf
             Transparent       = TRUE
@@ -15675,7 +15741,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 60,00
             Size Unit         = Default
-            Tab Order         = 41
+            Tab Order         = 42
             Title Picture     = x(100)
             Title Variable    = lab-iva-buf
             Transparent       = TRUE
@@ -15710,7 +15776,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 8,00
             Size Unit         = Default
-            Tab Order         = 42
+            Tab Order         = 43
             Title             = "Gest Plus"
             Transparent       = TRUE
             Visible           = NONE
@@ -15745,7 +15811,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 12,00
             Size Unit         = Default
-            Tab Order         = 43
+            Tab Order         = 44
             Title             = "Ritira in Lubex"
             Transparent       = TRUE
             Visible           = NONE
@@ -15779,7 +15845,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 20,00
             Size Unit         = Default
-            Tab Order         = 44
+            Tab Order         = 45
             Title             = "Prenotazione quantità (no saldi)"
             Transparent       = TRUE
             Visible           = NONE
@@ -15813,7 +15879,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 20,00
             Size Unit         = Default
-            Tab Order         = 45
+            Tab Order         = 46
             Title             = "TENERE SALDI BANCO"
             Transparent       = TRUE
             Visible           = NONE
@@ -15847,7 +15913,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 19,00
             Size Unit         = Default
-            Tab Order         = 46
+            Tab Order         = 47
             Title             = "Fornitore associato"
             Transparent       = TRUE
             Visible           = FALSE
@@ -15887,7 +15953,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 60,00
             Size Unit         = Default
-            Tab Order         = 47
+            Tab Order         = 48
             Transparent       = TRUE
             Visible           = FALSE
             Visible Variable  = v-forn
@@ -15921,7 +15987,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 20,50
             Size Unit         = Default
-            Tab Order         = 48
+            Tab Order         = 49
             Title             = "TENERE SALDI PROMO"
             Transparent       = TRUE
             Visible           = TRUE
@@ -15955,7 +16021,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 20,50
             Size Unit         = Default
-            Tab Order         = 49
+            Tab Order         = 50
             Title             = "EVASIONE IMMEDIATA"
             Transparent       = TRUE
             Visible           = TRUE
@@ -15989,7 +16055,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 19,00
             Size Unit         = Default
-            Tab Order         = 50
+            Tab Order         = 51
             Title             = "Note bolla 1"
             Transparent       = TRUE
             Visible           = NONE
@@ -16023,7 +16089,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 19,00
             Size Unit         = Default
-            Tab Order         = 51
+            Tab Order         = 52
             Title             = "Note bolla 2"
             Transparent       = TRUE
             Visible           = NONE
@@ -16032,7 +16098,7 @@ Begin Screen Form1
          Begin Label Form1-La-28aaaaa
             SCREEN-COL        = 96,17
             SCREEN-LINE       = 24,31
-            LOCK-CONTROL      = FALSE
+            LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28aaaaa
             Clines            = 0
@@ -16057,7 +16123,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 10,00
             Size Unit         = Default
-            Tab Order         = 52
+            Tab Order         = 53
             Title             = "URGENTE"
             Transparent       = TRUE
             Visible           = TRUE
@@ -16091,10 +16157,44 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 19,00
             Size Unit         = Default
-            Tab Order         = 53
+            Tab Order         = 54
             Title             = "Note libere"
             Transparent       = TRUE
             Visible           = NONE
+            Width in Cells    = TRUE
+         End
+         Begin Label Form1-La-28aaaaaa
+            SCREEN-COL        = 96,17
+            SCREEN-LINE       = 22,31
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = Form1-La-28aaaaaa
+            Clines            = 0
+            Clines Unit       = Default
+            Color             = 0
+            Column            = 94,00
+            Csize             = 0
+            Csize Unit        = Default
+            Destroy Type      = Automatic
+            Enable            = NONE
+            Font              = Small Font
+            Font Variable     = Small-Font
+            Height in Cells   = TRUE
+            Help ID           = 0
+            ID                = 62
+            Justification     = Unaligned
+            Label Offset      = 20
+            Line              = 10,62
+            Lines             = 1,31
+            Lines Unit        = Default
+            No Key Letter     = FALSE
+            Occurs            = 0
+            Size              = 12,00
+            Size Unit         = Default
+            Tab Order         = 55
+            Title             = "Contrassegno"
+            Transparent       = TRUE
+            Visible           = TRUE
             Width in Cells    = TRUE
          End
       End
@@ -17525,7 +17625,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 62
+            ID                = 56
             Justification     = Right
             Label Offset      = 20
             Line              = 32,69

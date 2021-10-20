@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E5A813228-405-246896754
+PROGRAM_UNIQUE_CODE=TOTEM-7E5A1473742-619-80517757
 
 {{@DESCRIPTION:
 
@@ -16820,7 +16820,7 @@ Begin Screen Form1
             After Procedure   = ef-vet-AfterProcedure
          End
          Begin Push-Button pb-escons
-            SCREEN-COL        = 99,34
+            SCREEN-COL        = 101,00
             SCREEN-LINE       = 22,15
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
@@ -16832,7 +16832,7 @@ Begin Screen Form1
             Bitmap Square     = FALSE
             Clines            = 0
             Clines Unit       = Default
-            Column            = 97,17
+            Column            = 98,83
             Copy Resource     = TRUE
             Csize             = 0
             Csize Unit        = Default
@@ -16865,6 +16865,56 @@ Begin Screen Form1
             Before Procedure  = pb-escons-BeforeProcedure
             After Procedure   = pb-escons-AfterProcedure
             Link To           = pb-escons-LinkTo
+         End
+         Begin Data.Check-Box chk-contrassegno
+            SCREEN-COL        = 135,50
+            SCREEN-LINE       = 23,23
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = chk-contrassegno
+            Bitmap Frame      = FALSE
+            Bitmap Number     = 1
+            Bitmap Square     = TRUE
+            Check Off Value   = "N"
+            Check On Value    = "S"
+            Clines            = 0
+            Clines Unit       = Default
+            Color             = 0
+            Column            = 133,33
+            Copy Resource     = TRUE
+            Csize             = 0
+            Csize Unit        = Default
+            Destroy Type      = Automatic
+            Enable            = NONE
+            Enable Variable   = mod-campi
+            Exception Value   = 0
+            Field Variable    = tor-contrassegno
+            File              = tordini
+            Flat              = TRUE
+            Font              = Default Font
+            Height in Cells   = TRUE
+            Help ID           = 0
+            ID                = 0
+            ID Variable       = AUTO-ID
+            Left Text         = FALSE
+            Line              = 11,54
+            Lines             = 1,31
+            Lines Unit        = Default
+            No Tab            = FALSE
+            Notify            = FALSE
+            Occurs            = 0
+            Self Act          = TRUE
+            Size              = 2,67
+            Size Unit         = Default
+            Tab Order         = 11
+            Termination Value = 0
+            Title             = "contrassegno"
+            Value             = 0:FALSE
+            Visible           = NONE
+            Width in Cells    = TRUE
+            My Property       = "CONTROLLO-OLD="
+            Before Procedure  = chk-contrassegno-BeforeProcedure
+            After Procedure   = chk-contrassegno-AfterProcedure
          End
          Begin Data.Entry-Field ef-note-1
             SCREEN-COL        = 27,17
@@ -16919,7 +16969,7 @@ Begin Screen Form1
             Size              = 35,17
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 11
+            Tab Order         = 12
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -16982,7 +17032,7 @@ Begin Screen Form1
             Size              = 11,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 12
+            Tab Order         = 13
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -17045,7 +17095,7 @@ Begin Screen Form1
             Size              = 55,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 13
+            Tab Order         = 14
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -17108,7 +17158,7 @@ Begin Screen Form1
             Size              = 55,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 14
+            Tab Order         = 15
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -17171,7 +17221,7 @@ Begin Screen Form1
             Size              = 55,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 15
+            Tab Order         = 16
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -17232,7 +17282,7 @@ Begin Screen Form1
             Size              = 124,00
             Size Unit         = Default
             Style             = Vscroll Bar
-            Tab Order         = 16
+            Tab Order         = 17
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -17293,7 +17343,7 @@ Begin Screen Form1
             Size              = 124,00
             Size Unit         = Default
             Style             = Vscroll Bar
-            Tab Order         = 17
+            Tab Order         = 18
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -17340,7 +17390,7 @@ Begin Screen Form1
             Size              = 17,00
             Size Unit         = Default
             Style             = Drop List
-            Tab Order         = 18
+            Tab Order         = 19
             Termination Value = 0
             Unsorted          = TRUE
             Value Container   = tor-stato
@@ -17379,7 +17429,7 @@ Begin Screen Form1
             Low Color         = 0
             Size              = 34,00
             Size Unit         = Default
-            Tab Order         = 19
+            Tab Order         = 20
             Thickness         = Default
             Title             = "Modalità di caricamento righe"
             Title Position    = 2:Top center
@@ -17588,7 +17638,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 19,00
             Size Unit         = Default
-            Tab Order         = 20
+            Tab Order         = 21
             Title             = "Numero ordine cliente"
             Transparent       = TRUE
             Visible           = NONE
@@ -17622,7 +17672,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 10,00
             Size Unit         = Default
-            Tab Order         = 21
+            Tab Order         = 22
             Title             = "Data ordine"
             Transparent       = TRUE
             Visible           = NONE
@@ -17656,7 +17706,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 19,00
             Size Unit         = Default
-            Tab Order         = 22
+            Tab Order         = 23
             Title             = "Data passaggio ordine"
             Transparent       = TRUE
             Visible           = NONE
@@ -17690,7 +17740,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 19,00
             Size Unit         = Default
-            Tab Order         = 23
+            Tab Order         = 24
             Title             = "Codice agente"
             Transparent       = TRUE
             Visible           = NONE
@@ -17724,7 +17774,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 19,00
             Size Unit         = Default
-            Tab Order         = 24
+            Tab Order         = 25
             Title             = "Codice pagamento"
             Transparent       = TRUE
             Visible           = NONE
@@ -17758,7 +17808,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 19,00
             Size Unit         = Default
-            Tab Order         = 25
+            Tab Order         = 26
             Title Picture     = X(30)
             Title Variable    = lab-tipo-iva-buf
             Transparent       = TRUE
@@ -17793,7 +17843,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 19,00
             Size Unit         = Default
-            Tab Order         = 26
+            Tab Order         = 27
             Title             = "Codice vettore"
             Transparent       = TRUE
             Visible           = NONE
@@ -17827,7 +17877,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 19,00
             Size Unit         = Default
-            Tab Order         = 27
+            Tab Order         = 28
             Title             = "Dati di consegna"
             Transparent       = TRUE
             Visible           = NONE
@@ -17861,7 +17911,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 5,00
             Size Unit         = Default
-            Tab Order         = 28
+            Tab Order         = 29
             Title             = "Data"
             Transparent       = TRUE
             Visible           = NONE
@@ -17895,7 +17945,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 8,00
             Size Unit         = Default
-            Tab Order         = 29
+            Tab Order         = 30
             Title             = "Note 2"
             Transparent       = TRUE
             Visible           = NONE
@@ -17929,7 +17979,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 19,00
             Size Unit         = Default
-            Tab Order         = 30
+            Tab Order         = 31
             Title             = "Note 3"
             Transparent       = TRUE
             Visible           = NONE
@@ -17963,7 +18013,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 8,00
             Size Unit         = Default
-            Tab Order         = 31
+            Tab Order         = 32
             Title             = "Note 4"
             Transparent       = TRUE
             Visible           = NONE
@@ -17997,7 +18047,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 10,00
             Size Unit         = Default
-            Tab Order         = 32
+            Tab Order         = 33
             Title             = "Stato"
             Transparent       = TRUE
             Visible           = NONE
@@ -18036,7 +18086,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 100,00
             Size Unit         = Default
-            Tab Order         = 33
+            Tab Order         = 34
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
@@ -18074,7 +18124,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 100,00
             Size Unit         = Default
-            Tab Order         = 34
+            Tab Order         = 35
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
@@ -18107,7 +18157,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 100,00
             Size Unit         = Default
-            Tab Order         = 35
+            Tab Order         = 36
             Title Picture     = X(100)
             Title Variable    = lab-pag-buf
             Transparent       = TRUE
@@ -18142,7 +18192,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 100,00
             Size Unit         = Default
-            Tab Order         = 36
+            Tab Order         = 37
             Title Picture     = x(100)
             Title Variable    = lab-iva-buf
             Transparent       = TRUE
@@ -18176,7 +18226,7 @@ Begin Screen Form1
             Low Color         = 0
             Size              = 100,00
             Size Unit         = Default
-            Tab Order         = 37
+            Tab Order         = 38
             Thickness         = Default
             Title Position    = 0:Unaligned
             Visible           = NONE
@@ -18639,7 +18689,7 @@ Begin Screen Form1
             Low Color         = 0
             Size              = 30,83
             Size Unit         = Default
-            Tab Order         = 38
+            Tab Order         = 39
             Thickness         = Default
             Title             = "Dati di bollettazione"
             Title Position    = 2:Top center
@@ -18876,7 +18926,7 @@ Begin Screen Form1
             Size in Pixels    = 87
             Size Unit         = Default
             Style             = Other
-            Tab Order         = 39
+            Tab Order         = 40
             Termination Value = 0
             Title             = "Visualizza l'ordine di riferimento"
             Visible           = FALSE
@@ -18915,7 +18965,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 8,00
             Size Unit         = Default
-            Tab Order         = 40
+            Tab Order         = 41
             Title             = "Gest Plus"
             Transparent       = TRUE
             Visible           = NONE
@@ -18961,7 +19011,7 @@ Begin Screen Form1
             Size in Pixels    = 87
             Size Unit         = Default
             Style             = Other
-            Tab Order         = 41
+            Tab Order         = 42
             Termination Value = 0
             Title             = "Modifica dati di bollettazione"
             Visible           = NONE
@@ -18999,7 +19049,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 19,00
             Size Unit         = Default
-            Tab Order         = 42
+            Tab Order         = 43
             Title             = "Esito consegna"
             Transparent       = TRUE
             Visible           = NONE
@@ -19038,7 +19088,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 60,00
             Size Unit         = Default
-            Tab Order         = 43
+            Tab Order         = 44
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
@@ -19071,7 +19121,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 19,00
             Size Unit         = Default
-            Tab Order         = 44
+            Tab Order         = 45
             Title             = "Fornitore associato"
             Transparent       = TRUE
             Visible           = FALSE
@@ -19111,7 +19161,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 60,00
             Size Unit         = Default
-            Tab Order         = 45
+            Tab Order         = 46
             Transparent       = TRUE
             Visible           = FALSE
             Visible Variable  = v-forn
@@ -19149,7 +19199,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 11,33
             Size Unit         = Default
-            Tab Order         = 46
+            Tab Order         = 47
             Title             = "CUSTOM CONTROL"
             Transparent       = TRUE
             Visible           = NONE
@@ -19184,7 +19234,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 19,00
             Size Unit         = Default
-            Tab Order         = 47
+            Tab Order         = 48
             Title             = "Note bolla 1"
             Transparent       = TRUE
             Visible           = NONE
@@ -19218,10 +19268,44 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 19,00
             Size Unit         = Default
-            Tab Order         = 48
+            Tab Order         = 49
             Title             = "Note bolla 2"
             Transparent       = TRUE
             Visible           = NONE
+            Width in Cells    = TRUE
+         End
+         Begin Label Form1-La-28aaaaa
+            SCREEN-COL        = 121,17
+            SCREEN-LINE       = 23,23
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = Form1-La-28aaaaa
+            Clines            = 0
+            Clines Unit       = Default
+            Color             = 0
+            Column            = 119,00
+            Csize             = 0
+            Csize Unit        = Default
+            Destroy Type      = Automatic
+            Enable            = NONE
+            Font              = Small Font
+            Font Variable     = Small-Font
+            Height in Cells   = TRUE
+            Help ID           = 0
+            ID                = 100
+            Justification     = Unaligned
+            Label Offset      = 20
+            Line              = 11,54
+            Lines             = 1,31
+            Lines Unit        = Default
+            No Key Letter     = FALSE
+            Occurs            = 0
+            Size              = 12,00
+            Size Unit         = Default
+            Tab Order         = 50
+            Title             = "Contrassegno"
+            Transparent       = TRUE
+            Visible           = TRUE
             Width in Cells    = TRUE
          End
       End
@@ -21169,7 +21253,7 @@ Begin Screen Form1
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 100
+      ID                = 101
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 2,00
@@ -21209,7 +21293,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = FALSE
       Help ID           = 0
-      ID                = 101
+      ID                = 102
       Line              = 9,69
       Lines             = 2,27
       Lines in Pixels   = 29
@@ -21255,7 +21339,7 @@ Begin Screen Form1
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 102
+      ID                = 103
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 2,00
@@ -21733,7 +21817,7 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 103
+      ID                = 125
       Kind              = Horizontal
       Line              = 1,08
       Line Styles       = Solid
@@ -22260,7 +22344,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = FALSE
          Help ID           = 0
-         ID                = 125
+         ID                = 126
          Left Text         = FALSE
          Line              = 1,08
          Lines             = 0,69
@@ -25190,6 +25274,20 @@ BEGIN-TEXT
            if isol-status = 0
               modify pb-invio-sol, bitmap-number = 3
            end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = chk-contrassegno-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = chk-contrassegno-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
 END-TEXT
 END-DATA
 

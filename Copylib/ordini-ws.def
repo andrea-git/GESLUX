@@ -343,115 +343,122 @@
                    15 old-asc-alfa-vuoto-1         PIC  x(20).
                    15 old-asc-alfa-vuoto-2         PIC  x(20).
                    15 old-asc-alfa-vuoto-3         PIC  x(20).
+
        01 old-tor-rec.
            05 old-tor-chiave.
-               10 old-tor-anno     PIC  9(4).
-               10 old-tor-numero   PIC  9(8).
+               10 old-tor-anno         PIC  9(4).
+               10 old-tor-numero       PIC  9(8).
            05 old-tor-dati.
-               10 old-tor-causale  PIC  x(4).
-               10 old-tor-cod-cli  PIC  9(5).
-               10 old-tor-prg-destino          PIC  9(5).
-               10 old-tor-num-ord-cli          PIC  X(50).
-               10 old-tor-data-ordine          PIC  9(8).
-               10 old-tor-data-passaggio-ordine            PIC  9(8).
-               10 old-tor-cod-agente           PIC  9(5).
-               10 old-tor-cod-pagamento        PIC  x(3).
-               10 old-tor-cod-ese-iva          PIC  x(3).
-               10 old-tor-spostam-ric-ago      PIC  X(1).
+               10 old-tor-causale      PIC  x(4).
+               10 old-tor-cod-cli      PIC  9(5).
+               10 old-tor-prg-destino  PIC  9(5).
+               10 old-tor-num-ord-cli  PIC  X(50).
+               10 old-tor-data-ordine  PIC  9(8).
+               10 old-tor-data-passaggio-ordine    PIC  9(8).
+               10 old-tor-cod-agente   PIC  9(5).
+               10 old-tor-cod-pagamento            PIC  x(3).
+               10 old-tor-cod-ese-iva  PIC  x(3).
+               10 old-tor-spostam-ric-ago          PIC  X(1).
                    88 old-tor-si-ric-ago VALUE IS "S". 
                    88 old-tor-no-ric-ago VALUE IS "N". 
-               10 old-tor-spostam-ric-dic      PIC  X(1).
+               10 old-tor-spostam-ric-dic          PIC  X(1).
                    88 old-tor-si-ric-dic VALUE IS "S". 
                    88 old-tor-no-ric-dic VALUE IS "N". 
-               10 old-tor-vettore  PIC  9(5).
-               10 old-tor-note1    PIC  X(19).
-               10 old-tor-data-note1           PIC  9(8).
-               10 old-tor-note2    PIC  X(30).
-               10 old-tor-note3    PIC  X(30).
-               10 old-tor-note4    PIC  X(30).
-               10 old-tor-invio    PIC  x.
+               10 old-tor-vettore      PIC  9(5).
+               10 old-tor-note1        PIC  X(19).
+               10 old-tor-data-note1   PIC  9(8).
+               10 old-tor-note2        PIC  X(30).
+               10 old-tor-note3        PIC  X(30).
+               10 old-tor-note4        PIC  X(30).
+               10 old-tor-invio        PIC  x.
                    88 old-tor-invio-manuale VALUE IS "M". 
                    88 old-tor-invio-postel VALUE IS "P". 
+                   88 old-tor-invio-edi VALUE IS "E". 
                10 old-tor-bolla.
-                   15 old-tor-anno-bolla           PIC  9(4).
-                   15 old-tor-num-bolla            PIC  9(8).
-                   15 old-tor-data-bolla           PIC  9(8).
-                   15 old-tor-bolla-prenotata      PIC  x.
+                   15 old-tor-anno-bolla   PIC  9(4).
+                   15 old-tor-num-bolla    PIC  9(8).
+                   15 old-tor-data-bolla   PIC  9(8).
+                   15 old-tor-bolla-prenotata          PIC  x.
                        88 old-tor-bolla-si-prenotata VALUE IS "S". 
                        88 old-tor-bolla-no-prenotata VALUE IS "N". 
                10 old-tor-fattura.
-                   15 old-tor-anno-fattura         PIC  9(4).
-                   15 old-tor-num-fattura          PIC  9(8).
-                   15 old-tor-data-fattura         PIC  9(8).
-                   15 old-tor-num-prenot           PIC  9(8).
-                   15 old-tor-fatt-prenotata       PIC  x.
+                   15 old-tor-anno-fattura PIC  9(4).
+                   15 old-tor-num-fattura  PIC  9(8).
+                   15 old-tor-data-fattura PIC  9(8).
+                   15 old-tor-num-prenot   PIC  9(8).
+                   15 old-tor-fatt-prenotata           PIC  x.
                        88 old-tor-fatt-si-prenotata VALUE IS "S". 
                        88 old-tor-fatt-no-prenotata VALUE IS "N". 
-               10 old-tor-mod-caricamento      PIC  X(1).
+               10 old-tor-mod-caricamento          PIC  X(1).
                    88 old-tor-manuale VALUE IS "M". 
                    88 old-tor-guidata VALUE IS "G". 
-               10 old-tor-agg-contab           PIC  x.
+               10 old-tor-agg-contab   PIC  x.
                    88 old-tor-si-agg-contab VALUE IS "S". 
                    88 old-tor-no-agg-contab VALUE IS "N". 
-               10 old-tor-tipo     PIC  x.
+               10 old-tor-tipo         PIC  x.
                    88 old-tor-fattura-manuale VALUE IS "M". 
                    88 old-tor-ordine VALUE IS "O". 
-               10 old-tor-note     PIC  X(500).
+               10 old-tor-note         PIC  X(500).
       *(( XFD NAME = old-tor-contropartita_ ))
-               10 old-tor-contropartita        PIC  X(8).
-               10 old-tor-stato    PIC  X(1).
+               10 old-tor-contropartita            PIC  X(8).
+               10 old-tor-stato        PIC  X(1).
                    88 old-tor-attivo VALUE IS "A". 
                    88 old-tor-disattivo VALUE IS "D". 
                    88 old-tor-bloccato VALUE IS "B". 
                10 old-tor-dati-comuni.
-                   15 old-tor-data-creazione       PIC  9(8).
-                   15 old-tor-ora-creazione        PIC  9(8).
-                   15 old-tor-utente-creazione     PIC  X(10).
-                   15 old-tor-data-ultima-modifica PIC  9(8).
-                   15 old-tor-ora-ultima-modifica  PIC  9(8).
-                   15 old-tor-utente-ultima-modifica           PIC  
-           X(10).
+                   15 old-tor-data-creazione           PIC  9(8).
+                   15 old-tor-ora-creazione            PIC  9(8).
+                   15 old-tor-utente-creazione         PIC  X(10).
+                   15 old-tor-data-ultima-modifica     PIC  9(8).
+                   15 old-tor-ora-ultima-modifica      PIC  9(8).
+                   15 old-tor-utente-ultima-modifica   PIC  X(10).
                10 old-tor-vuoti.
-                   15 old-tor-data-contab          PIC  9(8).
-                   15 old-tor-promo    PIC  9.
+                   15 old-tor-data-contab  PIC  9(8).
+                   15 old-tor-promo        PIC  9.
                        88 old-tor-si-promo VALUE IS 1. 
                        88 old-tor-no-promo VALUE IS 0. 
-                   15 old-tor-gest-plus            PIC  9(5).
-                   15 old-tor-ritira-in-lubex      PIC  9.
+                   15 old-tor-gest-plus    PIC  9(5).
+                   15 old-tor-ritira-in-lubex          PIC  9.
                        88 old-tor-ritira-si VALUE IS 1. 
                        88 old-tor-ritira-no VALUE IS 0. 
-                   15 old-tor-taglio   PIC  9(6).
-                   15 old-tor-flag-rec-prezzi      PIC  9.
+                   15 old-tor-taglio       PIC  9(6).
+                   15 old-tor-flag-rec-prezzi          PIC  9.
                        88 old-tor-rec-prezzi VALUE IS 1    WHEN SET TO 
            FALSE  0. 
                    15 old-tor-ordine-testa.
-                       20 old-tor-anno-testa           PIC  9(4).
-                       20 old-tor-num-testa            PIC  9(8).
-                   15 old-tor-da-ordine            PIC  9.
+                       20 old-tor-anno-testa   PIC  9(4).
+                       20 old-tor-num-testa    PIC  9(8).
+                   15 old-tor-da-ordine    PIC  9.
                        88 old-tor-da-ordine-no VALUE IS 0. 
                        88 old-tor-da-ordine-si VALUE IS 1. 
-                   15 old-tor-forn-reso            PIC  9(5).
-                   15 old-tor-num-vuoto-3          PIC  9(5).
-                   15 old-tor-esito-consegna       PIC  X(10).
-                   15 old-tor-data-bolla-effettiva PIC  9(8).
-                   15 old-tor-tipo-evasione        PIC  X(1).
+                   15 old-tor-forn-reso    PIC  9(5).
+                   15 old-tor-num-vuoto-3  PIC  9(5).
+                   15 old-tor-esito-consegna           PIC  X(10).
+                   15 old-tor-data-bolla-effettiva     PIC  9(8).
+                   15 old-tor-tipo-evasione            PIC  X(1).
                        88 old-tor-ev-singola VALUE IS "S". 
                        88 old-tor-ev-manuale VALUE IS "M". 
+                       88 old-tor-ev-immediata VALUE IS "I". 
+                       88 old-tor-ev-normale VALUE IS "N". 
                        88 old-tor-ev-auto-trad VALUE IS "T". 
                        88 old-tor-ev-auto-gdo VALUE IS "G". 
-                   15 old-tor-da-inviare           PIC  X(1).
+                   15 old-tor-da-inviare   PIC  X(1).
                        88 old-tor-da-inviare-si VALUE IS "S". 
-                       88 old-tor-da-inviare-no VALUE IS "N" " "    
-           WHEN SET TO FALSE  " ". 
-                   15 old-tor-ora-contab           PIC  9(8).
+                       88 old-tor-da-inviare-no VALUE IS "N" " "    WHEN 
+           SET TO FALSE  " ". 
+                   15 old-tor-ora-contab   PIC  9(8).
                    15 old-tor-fattura-from.
-                       20 old-tor-fattura-from-data    PIC  9(8).
-                       20 old-tor-fattura-from-numero  PIC  x(8).
-                   15 old-tor-gdo      PIC  X(5).
-                   15 old-tor-tipocli  PIC  X(2).
-                   15 old-tor-note-bolla-1         PIC  X(500).
-                   15 old-tor-note-bolla-2         PIC  X(500).
-                   15 FILLER           PIC  X(2000).
+                       20 old-tor-fattura-from-data        PIC  9(8).
+                       20 old-tor-fattura-from-numero      PIC  x(8).
+                   15 old-tor-gdo          PIC  X(5).
+                   15 old-tor-tipocli      PIC  X(2).
+                   15 old-tor-note-bolla-1 PIC  X(500).
+                   15 old-tor-note-bolla-2 PIC  X(500).
+                   15 old-tor-causale-orig PIC  X(4).
+                   15 old-tor-contrassegno PIC  x.
+                       88 old-tor-contrassegno-no VALUE IS "N" , " ". 
+                       88 old-tor-contrassegno-si VALUE IS "S". 
+
        01 rec-grid.
            05 col-num          PIC  z(5).
            05 col-art          PIC  zzzzz9.

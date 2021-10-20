@@ -2,7 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E59614319-383-217674436
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E5A1471146-550-253629510
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -1044,14 +1044,42 @@ m_bFixed=1
 
 @}}
 [FDITEM108_]
+m_strName=tor-contrassegno
+m_strRawPic=x
+m_strPic=x
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM108_
+
+@}}
+[FDITEM109_]
+m_strName=tor-contrassegno-no
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="N" , " "
+{{@DataItem_m_strDescriptionFDITEM109_
+
+@}}
+[FDITEM110_]
+m_strName=tor-contrassegno-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM110_
+
+@}}
+[FDITEM111_]
 m_strName=FILLER
-m_strRawPic=X(1996)
-m_strPic=X(1996)
+m_strRawPic=X(1995)
+m_strPic=X(1995)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=tor-gdo_1_1_2_1
-{{@DataItem_m_strDescriptionFDITEM108_
+{{@DataItem_m_strDescriptionFDITEM111_
 
 @}}
 [CStoAcucobolSL_]

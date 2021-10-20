@@ -438,6 +438,7 @@
       *
       *
       *
+      *
        77 num-blist        PIC  9(8).
        77 rest-blist       PIC  9(8).
        77 como-prezzo2     PIC  9(9)v99.
@@ -504,6 +505,7 @@
       *****             88 mto-fatt-tot VALUE IS 6. 
       *
       *
+      *
                    88 OLD-mto-chiuso VALUE IS 7. 
                10 OLD-mto-dati-comuni.
                    15 OLD-mto-data-creazione       PIC  9(8).
@@ -546,6 +548,7 @@
                10 OLD-mto-note-bolla-2         PIC  x(500).
                10 old-mto-urgente  PIC  9.
                10 old-mto-note-libere          PIC  x(150).
+               10 old-mto-contrassegno         PIC  x.
        01 FILLER           PIC  x.
            88 si-prg-listino VALUE IS "S". 
            88 no-prg-listino VALUE IS "N". 

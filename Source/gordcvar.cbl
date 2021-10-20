@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gordcvar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 11 settembre 2021 00:06:38.
+       DATE-WRITTEN.        mercoledì 20 ottobre 2021 09:33:51.
        REMARKS.
       *{TOTEM}END
 
@@ -494,6 +494,8 @@
               10 ef-vet-BUF PIC 9(5).
       * Data.Entry-Field
               10 ef-forn-BUF PIC 9(5).
+      * Data.Check-Box
+              10 chk-contrassegno-BUF PIC 9 VALUE ZERO.
       * Data.Entry-Field
               10 ef-note-1-BUF PIC X(19).
       * Data.Entry-Field
@@ -1046,29 +1048,30 @@
        78  78-ID-ef-iva VALUE 5011.
        78  78-ID-ef-vet VALUE 5012.
        78  78-ID-ef-forn VALUE 5013.
-       78  78-ID-ef-note-1 VALUE 5014.
-       78  78-ID-ef-data-cons VALUE 5015.
-       78  78-ID-ef-note-2 VALUE 5016.
-       78  78-ID-ef-note-3 VALUE 5017.
-       78  78-ID-ef-note-4 VALUE 5018.
-       78  78-ID-ef-note-bolla-1 VALUE 5019.
-       78  78-ID-ef-note-bolla-2 VALUE 5020.
-       78  78-ID-cbo-stato VALUE 5021.
-       78  78-ID-rb-man VALUE 5022.
-       78  78-ID-rb-gui VALUE 5023.
-       78  78-ID-ef-data-bolla VALUE 5024.
-       78  78-ID-ef-num-bolla VALUE 5025.
-       78  78-ID-ef-art VALUE 5026.
-       78  78-ID-chk-blister VALUE 5027.
-       78  78-ID-ef-qta VALUE 5028.
-       78  78-ID-ef-qta-oma VALUE 5029.
-       78  78-ID-ef-uni VALUE 5030.
-       78  78-ID-ef-sconto VALUE 5031.
-       78  78-ID-ef-cons VALUE 5032.
-       78  78-ID-ef-cou VALUE 5033.
-       78  78-ID-ef-imp VALUE 5034.
-       78  78-ID-ef-cod-iva VALUE 5035.
-       78  78-ID-ef-add VALUE 5036.
+       78  78-ID-chk-contrassegno VALUE 5014.
+       78  78-ID-ef-note-1 VALUE 5015.
+       78  78-ID-ef-data-cons VALUE 5016.
+       78  78-ID-ef-note-2 VALUE 5017.
+       78  78-ID-ef-note-3 VALUE 5018.
+       78  78-ID-ef-note-4 VALUE 5019.
+       78  78-ID-ef-note-bolla-1 VALUE 5020.
+       78  78-ID-ef-note-bolla-2 VALUE 5021.
+       78  78-ID-cbo-stato VALUE 5022.
+       78  78-ID-rb-man VALUE 5023.
+       78  78-ID-rb-gui VALUE 5024.
+       78  78-ID-ef-data-bolla VALUE 5025.
+       78  78-ID-ef-num-bolla VALUE 5026.
+       78  78-ID-ef-art VALUE 5027.
+       78  78-ID-chk-blister VALUE 5028.
+       78  78-ID-ef-qta VALUE 5029.
+       78  78-ID-ef-qta-oma VALUE 5030.
+       78  78-ID-ef-uni VALUE 5031.
+       78  78-ID-ef-sconto VALUE 5032.
+       78  78-ID-ef-cons VALUE 5033.
+       78  78-ID-ef-cou VALUE 5034.
+       78  78-ID-ef-imp VALUE 5035.
+       78  78-ID-ef-cod-iva VALUE 5036.
+       78  78-ID-ef-add VALUE 5037.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -1530,7 +1533,7 @@
        10
            pb-escons, 
            Push-Button, 
-           COL 99,34, 
+           COL 101,00, 
            LINE 22,15,
            LINES 29,00 ,
            SIZE 92,00 ,
@@ -1546,6 +1549,25 @@
            AFTER PROCEDURE pb-escons-AfterProcedure, 
            BEFORE PROCEDURE pb-escons-BeforeProcedure, 
            .
+
+      * CHECK BOX
+       10
+           chk-contrassegno, 
+           Check-Box, 
+           COL 135,50, 
+           LINE 23,23,
+           LINES 1,31 ,
+           SIZE 2,67 ,
+           ENABLED mod-campi,
+           FLAT,
+           ID IS 78-ID-chk-contrassegno,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           SELF-ACT,
+           TITLE "contrassegno",
+           VALUE chk-contrassegno-BUF,
+           BEFORE PROCEDURE chk-contrassegno-BeforeProcedure, 
+            .
 
       * ENTRY FIELD
        10
@@ -2557,6 +2579,23 @@
            TITLE "Note bolla 2",
            .
 
+      * LABEL
+       10
+           Form1-La-28aaaaa, 
+           Label, 
+           COL 121,17, 
+           LINE 23,23,
+           LINES 1,31 ,
+           SIZE 12,00 ,
+           FONT IS Small-Font,
+           ID IS 100,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Contrassegno",
+           VISIBLE 1,
+           .
+
       * PAGE
        05
            PAGE-2, 
@@ -3380,7 +3419,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 100,
+           ID IS 101,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3401,7 +3440,7 @@
            SQUARE,
            EXCEPTION-VALUE 1010,
            FLAT,
-           ID IS 101,
+           ID IS 102,
            SELF-ACT,
            TITLE "POD",
            VISIBLE v-pod,
@@ -3419,7 +3458,7 @@
            SIZE 65,00 ,
            COLOR IS 5,
            FONT IS Small-Font,
-           ID IS 102,
+           ID IS 103,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE lab-cau-BUF,
@@ -3655,7 +3694,7 @@
            LINE 1,08,
            SIZE 157,83 ,
            COLOR IS 3,
-           ID IS 103,
+           ID IS 125,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            WIDTH 3,
@@ -3879,7 +3918,7 @@
            FRAMED,
            SQUARE,
            EXCEPTION-VALUE 1008
-           ID IS 125,
+           ID IS 126,
            SELF-ACT,
            TITLE "Modifica (F5)",
            VALUE abil-bolla,
@@ -17027,6 +17066,8 @@ PATCH      end-evaluate.
            INITIALIZE Form1-BUF
       * FORM : Form1
            PERFORM DataSet1-INIT-RECORD
+      * DB_CHECK BOX
+              MOVE "N" TO tor-contrassegno
       * DB_RADIO-BUTTON
               MOVE 1 TO tor-mod-caricamento
       * DB_CHECK BOX
@@ -17172,7 +17213,7 @@ PATCH      end-evaluate.
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5014 TO CONTROL-ID
+               MOVE 5015 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-data-cons's Validation
@@ -17182,7 +17223,7 @@ PATCH      end-evaluate.
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5015 TO CONTROL-ID
+               MOVE 5016 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-2's Validation
@@ -17192,7 +17233,7 @@ PATCH      end-evaluate.
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5016 TO CONTROL-ID
+               MOVE 5017 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-3's Validation
@@ -17202,7 +17243,7 @@ PATCH      end-evaluate.
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5017 TO CONTROL-ID
+               MOVE 5018 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-4's Validation
@@ -17212,7 +17253,7 @@ PATCH      end-evaluate.
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5018 TO CONTROL-ID
+               MOVE 5019 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-bolla-1's Validation
@@ -17222,7 +17263,7 @@ PATCH      end-evaluate.
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5019 TO CONTROL-ID
+               MOVE 5020 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-bolla-2's Validation
@@ -17232,7 +17273,7 @@ PATCH      end-evaluate.
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5020 TO CONTROL-ID
+               MOVE 5021 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-data-bolla's Validation
@@ -17242,7 +17283,7 @@ PATCH      end-evaluate.
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5024 TO CONTROL-ID
+               MOVE 5025 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-num-bolla's Validation
@@ -17252,7 +17293,7 @@ PATCH      end-evaluate.
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5025 TO CONTROL-ID
+               MOVE 5026 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-art's Validation
@@ -17262,7 +17303,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5026 TO CONTROL-ID
+               MOVE 5027 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-qta's Validation
@@ -17272,7 +17313,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5028 TO CONTROL-ID
+               MOVE 5029 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-qta-oma's Validation
@@ -17282,7 +17323,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5029 TO CONTROL-ID
+               MOVE 5030 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-uni's Validation
@@ -17292,7 +17333,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5030 TO CONTROL-ID
+               MOVE 5031 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-sconto's Validation
@@ -17302,7 +17343,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5031 TO CONTROL-ID
+               MOVE 5032 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cons's Validation
@@ -17312,7 +17353,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5032 TO CONTROL-ID
+               MOVE 5033 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cou's Validation
@@ -17322,7 +17363,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5033 TO CONTROL-ID
+               MOVE 5034 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-imp's Validation
@@ -17332,7 +17373,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5034 TO CONTROL-ID
+               MOVE 5035 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cod-iva's Validation
@@ -17342,7 +17383,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5035 TO CONTROL-ID
+               MOVE 5036 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-add's Validation
@@ -17352,7 +17393,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5036 TO CONTROL-ID
+               MOVE 5037 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
            .
@@ -17931,6 +17972,12 @@ PATCH      end-evaluate.
            MOVE ef-vet-BUF TO tor-vettore
       * DB_Entry-Field : ef-forn
            MOVE ef-forn-BUF TO tor-forn-reso
+      * DB_CHECK BOX : chk-contrassegno
+              IF chk-contrassegno-BUF = 1
+                 MOVE "S" TO tor-contrassegno
+              ELSE
+                 MOVE "N" TO tor-contrassegno
+              END-IF
       * DB_Entry-Field : ef-note-1
            MOVE ef-note-1-BUF TO tor-note1
       * DB_Entry-Field : ef-data-cons
@@ -18085,6 +18132,12 @@ LUBEXX     move tor-data-bolla(1:4) to tor-anno-bolla.
            MOVE tor-vettore TO ef-vet-BUF
       * DB_Entry-Field : ef-forn
            MOVE tor-forn-reso TO ef-forn-BUF
+      * DB_CHECK BOX : chk-contrassegno
+              IF tor-contrassegno = "S"
+                 MOVE 1 TO chk-contrassegno-BUF
+              ELSE
+                 MOVE 0 TO chk-contrassegno-BUF
+              END-IF
       * DB_Entry-Field : ef-note-1
            MOVE tor-note1 TO ef-note-1-BUF
       * DB_Entry-Field : ef-data-cons
@@ -18401,6 +18454,13 @@ LUBEXX     move tor-data-bolla(1:4) to tor-anno-bolla.
               set NoSalvato to true
               |78-ID-ef-forn è l'ID del campo ef-forn
               move 78-ID-ef-forn to store-id 
+           end-if
+
+           if tor-contrassegno not = old-tor-contrassegno
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-chk-contrassegno è l'ID del campo chk-contrassegno
+              move 78-ID-chk-contrassegno to store-id 
            end-if
 
            if tor-note1 not = old-tor-note1
@@ -18822,42 +18882,42 @@ LUBEXX     move tor-data-bolla(1:4) to tor-anno-bolla.
            TOTEM-HINT-TEXT
            WHEN 5013 MOVE "Digitare il codice del fornitore associato (r
       -    "eso)" to TOTEM-HINT-TEXT
-           WHEN 5014 MOVE "Digitare i dati di consegna" to 
+           WHEN 5015 MOVE "Digitare i dati di consegna" to 
            TOTEM-HINT-TEXT
-           WHEN 5015 MOVE "Digitare la data di consegna" to 
-           TOTEM-HINT-TEXT
-           WHEN 5016 MOVE "Digitare le note di destinazione" to 
+           WHEN 5016 MOVE "Digitare la data di consegna" to 
            TOTEM-HINT-TEXT
            WHEN 5017 MOVE "Digitare le note di destinazione" to 
            TOTEM-HINT-TEXT
            WHEN 5018 MOVE "Digitare le note di destinazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5021 MOVE "Selezionare uno stato" to TOTEM-HINT-TEXT
-           WHEN 5022 MOVE "Modalità d'inserimento manuale" to 
+           WHEN 5019 MOVE "Digitare le note di destinazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5023 MOVE "Modalità d'inserimento guidata" to 
+           WHEN 5022 MOVE "Selezionare uno stato" to TOTEM-HINT-TEXT
+           WHEN 5023 MOVE "Modalità d'inserimento manuale" to 
            TOTEM-HINT-TEXT
-           WHEN 5024 MOVE "Digitare la data dell'ordine" to 
+           WHEN 5024 MOVE "Modalità d'inserimento guidata" to 
            TOTEM-HINT-TEXT
            WHEN 5025 MOVE "Digitare la data dell'ordine" to 
            TOTEM-HINT-TEXT
-           WHEN 5026 MOVE "Digitare il codice dell'articolo" to 
+           WHEN 5026 MOVE "Digitare la data dell'ordine" to 
            TOTEM-HINT-TEXT
-           WHEN 5027 MOVE "Indica se l'articolo selezionato è da conside
+           WHEN 5027 MOVE "Digitare il codice dell'articolo" to 
+           TOTEM-HINT-TEXT
+           WHEN 5028 MOVE "Indica se l'articolo selezionato è da conside
       -    "rarsi componente di un blister" to TOTEM-HINT-TEXT
-           WHEN 5028 MOVE "Digitare la quantit" to TOTEM-HINT-TEXT
-           WHEN 5029 MOVE "Digitare la quantità che s'intende come omagg
+           WHEN 5029 MOVE "Digitare la quantit" to TOTEM-HINT-TEXT
+           WHEN 5030 MOVE "Digitare la quantità che s'intende come omagg
       -    "io" to TOTEM-HINT-TEXT
-           WHEN 5030 MOVE "Digitare il prezzo unitario" to 
+           WHEN 5031 MOVE "Digitare il prezzo unitario" to 
            TOTEM-HINT-TEXT
-           WHEN 5031 MOVE "Percentuale di sconto" to TOTEM-HINT-TEXT
-           WHEN 5032 MOVE "Valore imposta sul consumo" to 
+           WHEN 5032 MOVE "Percentuale di sconto" to TOTEM-HINT-TEXT
+           WHEN 5033 MOVE "Valore imposta sul consumo" to 
            TOTEM-HINT-TEXT
-           WHEN 5033 MOVE "Valore imposta COU/COBAT" to TOTEM-HINT-TEXT
-           WHEN 5034 MOVE "Valore imponibile della merce" to 
+           WHEN 5034 MOVE "Valore imposta COU/COBAT" to TOTEM-HINT-TEXT
+           WHEN 5035 MOVE "Valore imponibile della merce" to 
            TOTEM-HINT-TEXT
-           WHEN 5035 MOVE "Codice I.V.A." to TOTEM-HINT-TEXT
-           WHEN 5036 MOVE "Valore addizionale piombo" to TOTEM-HINT-TEXT
+           WHEN 5036 MOVE "Codice I.V.A." to TOTEM-HINT-TEXT
+           WHEN 5037 MOVE "Valore addizionale piombo" to TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
            EVALUATE Control-Id
@@ -18874,27 +18934,27 @@ LUBEXX     move tor-data-bolla(1:4) to tor-anno-bolla.
            When 5011 PERFORM ef-iva-BeforeProcedure
            When 5012 PERFORM ef-vet-BeforeProcedure
            When 5013 PERFORM ef-vet-BeforeProcedure
-           When 5014 PERFORM ef-note-1-BeforeProcedure
-           When 5015 PERFORM ef-data-cons-BeforeProcedure
-           When 5016 PERFORM ef-note-2-BeforeProcedure
-           When 5017 PERFORM ef-note-3-BeforeProcedure
-           When 5018 PERFORM ef-note-4-BeforeProcedure
-           When 5021 PERFORM cbo-stato-BeforeProcedure
-           When 5022 PERFORM rb-man-BeforeProcedure
-           When 5023 PERFORM rb-gui-BeforeProcedure
-           When 5024 PERFORM ef-data-bolla-BeforeProcedure
-           When 5025 PERFORM ef-num-bolla-BeforeProcedure
-           When 5026 PERFORM ef-art-BeforeProcedure
-           When 5027 PERFORM Form1-DaCb-1-BeforeProcedure
-           When 5028 PERFORM ef-qta-BeforeProcedure
-           When 5029 PERFORM ef-qta-oma-BeforeProcedure
-           When 5030 PERFORM ef-uni-BeforeProcedure
-           When 5031 PERFORM ef-sconto-BeforeProcedure
-           When 5032 PERFORM ef-cons-BeforeProcedure
-           When 5033 PERFORM ef-cou-BeforeProcedure
-           When 5034 PERFORM ef-imp-BeforeProcedure
-           When 5035 PERFORM ef-cod-iva-BeforeProcedure
-           When 5036 PERFORM ef-cou-BeforeProcedure
+           When 5015 PERFORM ef-note-1-BeforeProcedure
+           When 5016 PERFORM ef-data-cons-BeforeProcedure
+           When 5017 PERFORM ef-note-2-BeforeProcedure
+           When 5018 PERFORM ef-note-3-BeforeProcedure
+           When 5019 PERFORM ef-note-4-BeforeProcedure
+           When 5022 PERFORM cbo-stato-BeforeProcedure
+           When 5023 PERFORM rb-man-BeforeProcedure
+           When 5024 PERFORM rb-gui-BeforeProcedure
+           When 5025 PERFORM ef-data-bolla-BeforeProcedure
+           When 5026 PERFORM ef-num-bolla-BeforeProcedure
+           When 5027 PERFORM ef-art-BeforeProcedure
+           When 5028 PERFORM Form1-DaCb-1-BeforeProcedure
+           When 5029 PERFORM ef-qta-BeforeProcedure
+           When 5030 PERFORM ef-qta-oma-BeforeProcedure
+           When 5031 PERFORM ef-uni-BeforeProcedure
+           When 5032 PERFORM ef-sconto-BeforeProcedure
+           When 5033 PERFORM ef-cons-BeforeProcedure
+           When 5034 PERFORM ef-cou-BeforeProcedure
+           When 5035 PERFORM ef-imp-BeforeProcedure
+           When 5036 PERFORM ef-cod-iva-BeforeProcedure
+           When 5037 PERFORM ef-cou-BeforeProcedure
            END-EVALUATE
            PERFORM Form1-DISPLAY-STATUS-MSG
            perform Form1-BEFORE-SCREEN
@@ -18915,28 +18975,29 @@ LUBEXX     move tor-data-bolla(1:4) to tor-anno-bolla.
            When 5011 PERFORM ef-iva-AfterProcedure
            When 5012 PERFORM ef-vet-AfterProcedure
            When 5013 PERFORM ef-vet-AfterProcedure
-           When 5014 PERFORM ef-note-1-AfterProcedure
-           When 5015 PERFORM ef-data-cons-AfterProcedure
-           When 5016 PERFORM ef-note-2-AfterProcedure
-           When 5017 PERFORM ef-note-3-AfterProcedure
-           When 5018 PERFORM ef-note-4-AfterProcedure
-           When 5019 PERFORM Form1-DaEf-1-AfterProcedure
+           When 5014 PERFORM chk-contrassegno-AfterProcedure
+           When 5015 PERFORM ef-note-1-AfterProcedure
+           When 5016 PERFORM ef-data-cons-AfterProcedure
+           When 5017 PERFORM ef-note-2-AfterProcedure
+           When 5018 PERFORM ef-note-3-AfterProcedure
+           When 5019 PERFORM ef-note-4-AfterProcedure
            When 5020 PERFORM Form1-DaEf-1-AfterProcedure
-           When 5022 PERFORM rb-man-AfterProcedure
-           When 5023 PERFORM rb-gui-AfterProcedure
-           When 5024 PERFORM ef-data-bolla-AfterProcedure
-           When 5025 PERFORM ef-num-bolla-AfterProcedure
-           When 5026 PERFORM ef-art-AfterProcedure
-           When 5027 PERFORM Form1-DaCb-1-AfterProcedure
-           When 5028 PERFORM ef-qta-AfterProcedure
+           When 5021 PERFORM Form1-DaEf-1-AfterProcedure
+           When 5023 PERFORM rb-man-AfterProcedure
+           When 5024 PERFORM rb-gui-AfterProcedure
+           When 5025 PERFORM ef-data-bolla-AfterProcedure
+           When 5026 PERFORM ef-num-bolla-AfterProcedure
+           When 5027 PERFORM ef-art-AfterProcedure
+           When 5028 PERFORM Form1-DaCb-1-AfterProcedure
            When 5029 PERFORM ef-qta-AfterProcedure
-           When 5030 PERFORM ef-uni-AfterProcedure
-           When 5031 PERFORM ef-sconto-AfterProcedure
-           When 5032 PERFORM ef-cons-AfterProcedure
-           When 5033 PERFORM ef-cou-AfterProcedure
-           When 5034 PERFORM ef-imp-AfterProcedure
-           When 5035 PERFORM ef-cod-iva-AfterProcedure
-           When 5036 PERFORM ef-cou-AfterProcedure
+           When 5030 PERFORM ef-qta-AfterProcedure
+           When 5031 PERFORM ef-uni-AfterProcedure
+           When 5032 PERFORM ef-sconto-AfterProcedure
+           When 5033 PERFORM ef-cons-AfterProcedure
+           When 5034 PERFORM ef-cou-AfterProcedure
+           When 5035 PERFORM ef-imp-AfterProcedure
+           When 5036 PERFORM ef-cod-iva-AfterProcedure
+           When 5037 PERFORM ef-cou-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -20328,6 +20389,16 @@ LUBEXX     move 1 to link-tipo-stampa.
            if isol-status = 0
               modify pb-invio-sol, bitmap-number = 3
            end-if 
+           .
+      * <TOTEM:END>
+       chk-contrassegno-BeforeProcedure.
+      * <TOTEM:PARA. chk-contrassegno-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       chk-contrassegno-AfterProcedure.
+      * <TOTEM:PARA. chk-contrassegno-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
 

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordine.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 9 ottobre 2021 16:23:17.
+       DATE-WRITTEN.        mercoledì 20 ottobre 2021 09:16:49.
        REMARKS.
       *{TOTEM}END
 
@@ -368,6 +368,8 @@
               10 chk-saldi-banco-BUF PIC 9 VALUE ZERO.
       * Data.Entry-Field
               10 ef-vet-BUF PIC 9(5).
+      * Data.Check-Box
+              10 chk-contrassegno-BUF PIC 9 VALUE ZERO.
       * Data.Check-Box
               10 chk-saldi-promo-BUF PIC 9 VALUE ZERO.
       * Data.Entry-Field
@@ -834,30 +836,31 @@
        78  78-ID-ef-iva VALUE 5013.
        78  78-ID-chk-saldi-banco VALUE 5014.
        78  78-ID-ef-vet VALUE 5015.
-       78  78-ID-chk-saldi-promo VALUE 5016.
-       78  78-ID-ef-forn VALUE 5017.
-       78  78-ID-chk-urgente VALUE 5018.
-       78  78-ID-chk-immediato VALUE 5019.
-       78  78-ID-ef-note-1 VALUE 5020.
-       78  78-ID-ef-data-cons VALUE 5021.
-       78  78-ID-ef-note-2 VALUE 5022.
-       78  78-ID-ef-note-3 VALUE 5023.
-       78  78-ID-ef-note-4 VALUE 5024.
-       78  78-ID-ef-note-bolla-1 VALUE 5025.
-       78  78-ID-ef-note-bolla-2 VALUE 5026.
-       78  78-ID-cbo-stato VALUE 5027.
-       78  78-ID-ef-art VALUE 5028.
-       78  78-ID-ef-evadi-dal VALUE 5029.
-       78  78-ID-chk-blister VALUE 5030.
-       78  78-ID-ef-qta VALUE 5031.
-       78  78-ID-ef-qta-oma VALUE 5032.
-       78  78-ID-ef-uni VALUE 5033.
-       78  78-ID-ef-sconto VALUE 5034.
-       78  78-ID-ef-cons VALUE 5035.
-       78  78-ID-ef-cou VALUE 5036.
-       78  78-ID-ef-imp VALUE 5037.
-       78  78-ID-ef-cod-iva VALUE 5038.
-       78  78-ID-ef-add VALUE 5039.
+       78  78-ID-chk-contrassegno VALUE 5016.
+       78  78-ID-chk-saldi-promo VALUE 5017.
+       78  78-ID-ef-forn VALUE 5018.
+       78  78-ID-chk-urgente VALUE 5019.
+       78  78-ID-chk-immediato VALUE 5020.
+       78  78-ID-ef-note-1 VALUE 5021.
+       78  78-ID-ef-data-cons VALUE 5022.
+       78  78-ID-ef-note-2 VALUE 5023.
+       78  78-ID-ef-note-3 VALUE 5024.
+       78  78-ID-ef-note-4 VALUE 5025.
+       78  78-ID-ef-note-bolla-1 VALUE 5026.
+       78  78-ID-ef-note-bolla-2 VALUE 5027.
+       78  78-ID-cbo-stato VALUE 5028.
+       78  78-ID-ef-art VALUE 5029.
+       78  78-ID-ef-evadi-dal VALUE 5030.
+       78  78-ID-chk-blister VALUE 5031.
+       78  78-ID-ef-qta VALUE 5032.
+       78  78-ID-ef-qta-oma VALUE 5033.
+       78  78-ID-ef-uni VALUE 5034.
+       78  78-ID-ef-sconto VALUE 5035.
+       78  78-ID-ef-cons VALUE 5036.
+       78  78-ID-ef-cou VALUE 5037.
+       78  78-ID-ef-imp VALUE 5038.
+       78  78-ID-ef-cod-iva VALUE 5039.
+       78  78-ID-ef-add VALUE 5040.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -1395,6 +1398,26 @@
 
       * CHECK BOX
        10
+           chk-contrassegno, 
+           Check-Box, 
+           COL 110,50, 
+           LINE 22,31,
+           LINES 1,31 ,
+           SIZE 2,67 ,
+           ENABLED mod-campi,
+           FLAT,
+           ID IS 78-ID-chk-contrassegno,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           SELF-ACT,
+           TITLE "Urgente",
+           VALUE chk-contrassegno-BUF,
+           BEFORE PROCEDURE chk-urgente-BeforeProcedure, 
+            .
+
+
+      * CHECK BOX
+       10
            chk-saldi-promo, 
            Check-Box, 
            COL 142,17, 
@@ -1436,7 +1459,7 @@
        10
            chk-urgente, 
            Check-Box, 
-           COL 108,84, 
+           COL 110,50, 
            LINE 24,31,
            LINES 1,31 ,
            SIZE 2,67 ,
@@ -2126,6 +2149,23 @@
            TITLE "Note libere",
            .
 
+      * LABEL
+       10
+           Form1-La-28aaaaaa, 
+           Label, 
+           COL 96,17, 
+           LINE 22,31,
+           LINES 1,31 ,
+           SIZE 12,00 ,
+           FONT IS Small-Font,
+           ID IS 62,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Contrassegno",
+           VISIBLE 1,
+           .
+
       * PAGE
        05
            PAGE-2, 
@@ -2709,7 +2749,7 @@
            SIZE 10,00 ,
            COLOR IS ColorImpegnato,
            FONT IS Small-Font,
-           ID IS 62,
+           ID IS 56,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RIGHT,
@@ -14098,6 +14138,8 @@
       * DB_CHECK BOX
               MOVE 0 TO mto-saldi-banco
       * DB_CHECK BOX
+              MOVE "N" TO mto-contrassegno
+      * DB_CHECK BOX
               MOVE 0 TO mto-saldi-promo
       * DB_CHECK BOX
               MOVE 0 TO mto-urgente
@@ -14236,7 +14278,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5017 TO CONTROL-ID
+               MOVE 5018 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-1's Validation
@@ -14246,7 +14288,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5020 TO CONTROL-ID
+               MOVE 5021 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-data-cons's Validation
@@ -14256,7 +14298,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5021 TO CONTROL-ID
+               MOVE 5022 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-2's Validation
@@ -14266,7 +14308,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5022 TO CONTROL-ID
+               MOVE 5023 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-3's Validation
@@ -14276,7 +14318,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5023 TO CONTROL-ID
+               MOVE 5024 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-4's Validation
@@ -14286,7 +14328,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5024 TO CONTROL-ID
+               MOVE 5025 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-bolla-1's Validation
@@ -14296,7 +14338,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5025 TO CONTROL-ID
+               MOVE 5026 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-bolla-2's Validation
@@ -14306,7 +14348,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5026 TO CONTROL-ID
+               MOVE 5027 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-libere's Validation
@@ -14326,7 +14368,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5028 TO CONTROL-ID
+               MOVE 5029 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-evadi-dal's Validation
@@ -14336,7 +14378,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5029 TO CONTROL-ID
+               MOVE 5030 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-qta's Validation
@@ -14346,7 +14388,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5031 TO CONTROL-ID
+               MOVE 5032 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-qta-oma's Validation
@@ -14356,7 +14398,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5032 TO CONTROL-ID
+               MOVE 5033 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-uni's Validation
@@ -14366,7 +14408,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5033 TO CONTROL-ID
+               MOVE 5034 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-sconto's Validation
@@ -14376,7 +14418,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5034 TO CONTROL-ID
+               MOVE 5035 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cons's Validation
@@ -14386,7 +14428,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5035 TO CONTROL-ID
+               MOVE 5036 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cou's Validation
@@ -14396,7 +14438,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5036 TO CONTROL-ID
+               MOVE 5037 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-imp's Validation
@@ -14406,7 +14448,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5037 TO CONTROL-ID
+               MOVE 5038 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cod-iva's Validation
@@ -14416,7 +14458,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5038 TO CONTROL-ID
+               MOVE 5039 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-add's Validation
@@ -14426,7 +14468,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5039 TO CONTROL-ID
+               MOVE 5040 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
            .
@@ -15021,6 +15063,12 @@
               END-IF
       * DB_Entry-Field : ef-vet
            MOVE ef-vet-BUF TO mto-vettore
+      * DB_CHECK BOX : chk-contrassegno
+              IF chk-contrassegno-BUF = 1
+                 MOVE "S" TO mto-contrassegno
+              ELSE
+                 MOVE "N" TO mto-contrassegno
+              END-IF
       * DB_CHECK BOX : chk-saldi-promo
               IF chk-saldi-promo-BUF = 1
                  MOVE 1 TO mto-saldi-promo
@@ -15180,6 +15228,12 @@ LUBEXX     move ef-gest-buf to mto-gest-plus.
               END-IF
       * DB_Entry-Field : ef-vet
            MOVE mto-vettore TO ef-vet-BUF
+      * DB_CHECK BOX : chk-contrassegno
+              IF mto-contrassegno = "S"
+                 MOVE 1 TO chk-contrassegno-BUF
+              ELSE
+                 MOVE 0 TO chk-contrassegno-BUF
+              END-IF
       * DB_CHECK BOX : chk-saldi-promo
               IF mto-saldi-promo = 1
                  MOVE 1 TO chk-saldi-promo-BUF
@@ -15189,10 +15243,10 @@ LUBEXX     move ef-gest-buf to mto-gest-plus.
       * DB_Entry-Field : ef-forn
            MOVE mto-forn-reso TO ef-forn-BUF
       * DB_CHECK BOX : chk-urgente
-              IF mto-urgente = 0
-                 MOVE 0 TO chk-urgente-BUF
-              ELSE
+              IF mto-urgente = 1
                  MOVE 1 TO chk-urgente-BUF
+              ELSE
+                 MOVE 0 TO chk-urgente-BUF
               END-IF
       * DB_CHECK BOX : chk-immediato
               IF mto-immediato = 1
@@ -16041,37 +16095,37 @@ LUBEXX     move ef-gest-buf to mto-gest-plus.
            TOTEM-HINT-TEXT
            WHEN 5015 MOVE "Digitare il codice del vettore" to 
            TOTEM-HINT-TEXT
-           WHEN 5017 MOVE "Digitare il codice del fornitore associato (r
+           WHEN 5018 MOVE "Digitare il codice del fornitore associato (r
       -    "eso)" to TOTEM-HINT-TEXT
-           WHEN 5020 MOVE "Digitare i dati di consegna" to 
+           WHEN 5021 MOVE "Digitare i dati di consegna" to 
            TOTEM-HINT-TEXT
-           WHEN 5021 MOVE "Digitare la data di consegna" to 
-           TOTEM-HINT-TEXT
-           WHEN 5022 MOVE "Digitare le note di destinazione" to 
+           WHEN 5022 MOVE "Digitare la data di consegna" to 
            TOTEM-HINT-TEXT
            WHEN 5023 MOVE "Digitare le note di destinazione" to 
            TOTEM-HINT-TEXT
            WHEN 5024 MOVE "Digitare le note di destinazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5027 MOVE "Selezionare uno stato" to TOTEM-HINT-TEXT
-           WHEN 5028 MOVE "Digitare il codice dell'articolo" to 
+           WHEN 5025 MOVE "Digitare le note di destinazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5029 MOVE "Data di evadibilit" to TOTEM-HINT-TEXT
-           WHEN 5030 MOVE "Indica se l'articolo selezionato è da conside
+           WHEN 5028 MOVE "Selezionare uno stato" to TOTEM-HINT-TEXT
+           WHEN 5029 MOVE "Digitare il codice dell'articolo" to 
+           TOTEM-HINT-TEXT
+           WHEN 5030 MOVE "Data di evadibilit" to TOTEM-HINT-TEXT
+           WHEN 5031 MOVE "Indica se l'articolo selezionato è da conside
       -    "rarsi componente di un blister" to TOTEM-HINT-TEXT
-           WHEN 5031 MOVE "Digitare la quantit" to TOTEM-HINT-TEXT
-           WHEN 5032 MOVE "Digitare la quantità che s'intende come omagg
+           WHEN 5032 MOVE "Digitare la quantit" to TOTEM-HINT-TEXT
+           WHEN 5033 MOVE "Digitare la quantità che s'intende come omagg
       -    "io" to TOTEM-HINT-TEXT
-           WHEN 5033 MOVE "Digitare il prezzo unitario" to 
+           WHEN 5034 MOVE "Digitare il prezzo unitario" to 
            TOTEM-HINT-TEXT
-           WHEN 5034 MOVE "Percentuale di sconto" to TOTEM-HINT-TEXT
-           WHEN 5035 MOVE "Valore imposta sul consumo" to 
+           WHEN 5035 MOVE "Percentuale di sconto" to TOTEM-HINT-TEXT
+           WHEN 5036 MOVE "Valore imposta sul consumo" to 
            TOTEM-HINT-TEXT
-           WHEN 5036 MOVE "Valore imposta COU/COBAT" to TOTEM-HINT-TEXT
-           WHEN 5037 MOVE "Valore imponibile della merce" to 
+           WHEN 5037 MOVE "Valore imposta COU/COBAT" to TOTEM-HINT-TEXT
+           WHEN 5038 MOVE "Valore imponibile della merce" to 
            TOTEM-HINT-TEXT
-           WHEN 5038 MOVE "Codice I.V.A." to TOTEM-HINT-TEXT
-           WHEN 5039 MOVE "Valore addizionale piombo" to TOTEM-HINT-TEXT
+           WHEN 5039 MOVE "Codice I.V.A." to TOTEM-HINT-TEXT
+           WHEN 5040 MOVE "Valore addizionale piombo" to TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
            EVALUATE Control-Id
@@ -16089,25 +16143,25 @@ LUBEXX     move ef-gest-buf to mto-gest-plus.
            When 5012 PERFORM chk-evas-tot-BeforeProcedure
            When 5013 PERFORM ef-iva-BeforeProcedure
            When 5015 PERFORM ef-vet-BeforeProcedure
-           When 5017 PERFORM ef-vet-BeforeProcedure
-           When 5020 PERFORM ef-note-1-BeforeProcedure
-           When 5021 PERFORM ef-data-cons-BeforeProcedure
-           When 5022 PERFORM ef-note-2-BeforeProcedure
-           When 5023 PERFORM ef-note-3-BeforeProcedure
-           When 5024 PERFORM ef-note-4-BeforeProcedure
-           When 5027 PERFORM cbo-stato-BeforeProcedure
-           When 5028 PERFORM ef-art-BeforeProcedure
-           When 5029 PERFORM ef-cou-BeforeProcedure
-           When 5030 PERFORM Form1-DaCb-1-BeforeProcedure
-           When 5031 PERFORM ef-qta-BeforeProcedure
+           When 5018 PERFORM ef-vet-BeforeProcedure
+           When 5021 PERFORM ef-note-1-BeforeProcedure
+           When 5022 PERFORM ef-data-cons-BeforeProcedure
+           When 5023 PERFORM ef-note-2-BeforeProcedure
+           When 5024 PERFORM ef-note-3-BeforeProcedure
+           When 5025 PERFORM ef-note-4-BeforeProcedure
+           When 5028 PERFORM cbo-stato-BeforeProcedure
+           When 5029 PERFORM ef-art-BeforeProcedure
+           When 5030 PERFORM ef-cou-BeforeProcedure
+           When 5031 PERFORM Form1-DaCb-1-BeforeProcedure
            When 5032 PERFORM ef-qta-BeforeProcedure
-           When 5033 PERFORM ef-uni-BeforeProcedure
-           When 5034 PERFORM ef-sconto-BeforeProcedure
-           When 5035 PERFORM ef-cons-BeforeProcedure
-           When 5036 PERFORM ef-cou-BeforeProcedure
-           When 5037 PERFORM ef-imp-BeforeProcedure
-           When 5038 PERFORM ef-cod-iva-BeforeProcedure
-           When 5039 PERFORM ef-cou-BeforeProcedure
+           When 5033 PERFORM ef-qta-BeforeProcedure
+           When 5034 PERFORM ef-uni-BeforeProcedure
+           When 5035 PERFORM ef-sconto-BeforeProcedure
+           When 5036 PERFORM ef-cons-BeforeProcedure
+           When 5037 PERFORM ef-cou-BeforeProcedure
+           When 5038 PERFORM ef-imp-BeforeProcedure
+           When 5039 PERFORM ef-cod-iva-BeforeProcedure
+           When 5040 PERFORM ef-cou-BeforeProcedure
            END-EVALUATE
            PERFORM Form1-DISPLAY-STATUS-MSG
            perform Form1-BEFORE-SCREEN
@@ -16130,30 +16184,31 @@ LUBEXX     move ef-gest-buf to mto-gest-plus.
            When 5013 PERFORM ef-iva-AfterProcedure
            When 5014 PERFORM chk-saldi-banco-AfterProcedure
            When 5015 PERFORM ef-vet-AfterProcedure
-           When 5016 PERFORM chk-saldi-bancoa-AfterProcedure
-           When 5017 PERFORM ef-vet-AfterProcedure
-           When 5018 PERFORM chk-urgente-AfterProcedure
-           When 5019 PERFORM chk-saldi-bancoa-AfterProcedure
-           When 5020 PERFORM ef-note-1-AfterProcedure
-           When 5021 PERFORM ef-data-cons-AfterProcedure
-           When 5022 PERFORM ef-note-2-AfterProcedure
-           When 5023 PERFORM ef-note-3-AfterProcedure
-           When 5024 PERFORM ef-note-4-AfterProcedure
-           When 5025 PERFORM Form1-DaEf-1-AfterProcedure
+           When 5016 PERFORM chk-urgente-AfterProcedure
+           When 5017 PERFORM chk-saldi-bancoa-AfterProcedure
+           When 5018 PERFORM ef-vet-AfterProcedure
+           When 5019 PERFORM chk-urgente-AfterProcedure
+           When 5020 PERFORM chk-saldi-bancoa-AfterProcedure
+           When 5021 PERFORM ef-note-1-AfterProcedure
+           When 5022 PERFORM ef-data-cons-AfterProcedure
+           When 5023 PERFORM ef-note-2-AfterProcedure
+           When 5024 PERFORM ef-note-3-AfterProcedure
+           When 5025 PERFORM ef-note-4-AfterProcedure
            When 5026 PERFORM Form1-DaEf-1-AfterProcedure
+           When 5027 PERFORM Form1-DaEf-1-AfterProcedure
            When 85 PERFORM Form1-DaEf-1-AfterProcedure
-           When 5028 PERFORM ef-art-AfterProcedure
-           When 5029 PERFORM ef-cou-AfterProcedure
-           When 5030 PERFORM Form1-DaCb-1-AfterProcedure
-           When 5031 PERFORM ef-qta-AfterProcedure
+           When 5029 PERFORM ef-art-AfterProcedure
+           When 5030 PERFORM ef-cou-AfterProcedure
+           When 5031 PERFORM Form1-DaCb-1-AfterProcedure
            When 5032 PERFORM ef-qta-AfterProcedure
-           When 5033 PERFORM ef-uni-AfterProcedure
-           When 5034 PERFORM ef-sconto-AfterProcedure
-           When 5035 PERFORM ef-cons-AfterProcedure
-           When 5036 PERFORM ef-cou-AfterProcedure
-           When 5037 PERFORM ef-imp-AfterProcedure
-           When 5038 PERFORM ef-cod-iva-AfterProcedure
-           When 5039 PERFORM ef-cou-AfterProcedure
+           When 5033 PERFORM ef-qta-AfterProcedure
+           When 5034 PERFORM ef-uni-AfterProcedure
+           When 5035 PERFORM ef-sconto-AfterProcedure
+           When 5036 PERFORM ef-cons-AfterProcedure
+           When 5037 PERFORM ef-cou-AfterProcedure
+           When 5038 PERFORM ef-imp-AfterProcedure
+           When 5039 PERFORM ef-cod-iva-AfterProcedure
+           When 5040 PERFORM ef-cou-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .

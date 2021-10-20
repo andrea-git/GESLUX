@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordinevar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 9 ottobre 2021 16:27:54.
+       DATE-WRITTEN.        mercoledì 20 ottobre 2021 09:23:41.
        REMARKS.
       *{TOTEM}END
 
@@ -82,8 +82,8 @@
            COPY "tcontat.sl".
            COPY "tnazioni.sl".
            COPY "grade.sl".
-           COPY "tregioni.sl".
            COPY "tprov.sl".
+           COPY "tregioni.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -143,8 +143,8 @@
            COPY "tcontat.fd".
            COPY "tnazioni.fd".
            COPY "grade.fd".
-           COPY "tregioni.fd".
            COPY "tprov.fd".
+           COPY "tregioni.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -512,6 +512,8 @@
       * Data.Entry-Field
               10 ef-vet-BUF PIC 9(5).
       * Data.Check-Box
+              10 chk-contrassegno-BUF PIC 9 VALUE ZERO.
+      * Data.Check-Box
               10 chk-saldi-promo-BUF PIC 9 VALUE ZERO.
       * Data.Entry-Field
               10 ef-forn-BUF PIC 9(5).
@@ -629,8 +631,8 @@
        77 TMP-DataSet1-tcontat-BUF     PIC X(3270).
        77 TMP-DataSet1-tnazioni-BUF     PIC X(190).
        77 TMP-DataSet1-grade-BUF     PIC X(754).
-       77 TMP-DataSet1-tregioni-BUF     PIC X(190).
        77 TMP-DataSet1-tprov-BUF     PIC X(192).
+       77 TMP-DataSet1-tregioni-BUF     PIC X(190).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -896,16 +898,16 @@
        77 DataSet1-grade-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-grade-KEY-Asc  VALUE "A".
           88 DataSet1-grade-KEY-Desc VALUE "D".
-       77 DataSet1-tregioni-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-tregioni-LOCK  VALUE "Y".
-       77 DataSet1-tregioni-KEY-ORDER  PIC X VALUE "A".
-          88 DataSet1-tregioni-KEY-Asc  VALUE "A".
-          88 DataSet1-tregioni-KEY-Desc VALUE "D".
        77 DataSet1-tprov-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-tprov-LOCK  VALUE "Y".
        77 DataSet1-tprov-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tprov-KEY-Asc  VALUE "A".
           88 DataSet1-tprov-KEY-Desc VALUE "D".
+       77 DataSet1-tregioni-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tregioni-LOCK  VALUE "Y".
+       77 DataSet1-tregioni-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tregioni-KEY-Asc  VALUE "A".
+          88 DataSet1-tregioni-KEY-Desc VALUE "D".
 
        77 mtordini-mto-k-ord-cli-SPLITBUF  PIC X(55).
        77 mtordini-mto-k-data-SPLITBUF  PIC X(21).
@@ -1014,31 +1016,32 @@
        78  78-ID-ef-iva VALUE 5013.
        78  78-ID-chk-saldi-banco VALUE 5014.
        78  78-ID-ef-vet VALUE 5015.
-       78  78-ID-chk-saldi-promo VALUE 5016.
-       78  78-ID-ef-forn VALUE 5017.
-       78  78-ID-chk-urgente VALUE 5018.
-       78  78-ID-chk-immediato VALUE 5019.
-       78  78-ID-ef-note-1 VALUE 5020.
-       78  78-ID-ef-data-cons VALUE 5021.
-       78  78-ID-ef-note-2 VALUE 5022.
-       78  78-ID-ef-note-3 VALUE 5023.
-       78  78-ID-ef-note-4 VALUE 5024.
-       78  78-ID-ef-note-bolla-1 VALUE 5025.
-       78  78-ID-ef-note-bolla-2 VALUE 5026.
-       78  78-ID-ef-note-libere VALUE 5027.
-       78  78-ID-cbo-stato VALUE 5028.
-       78  78-ID-ef-art VALUE 5029.
-       78  78-ID-chk-blister VALUE 5030.
-       78  78-ID-ef-qta VALUE 5031.
-       78  78-ID-ef-qta-oma VALUE 5032.
-       78  78-ID-ef-uni VALUE 5033.
-       78  78-ID-ef-sconto VALUE 5034.
-       78  78-ID-ef-cons VALUE 5035.
-       78  78-ID-ef-cou VALUE 5036.
-       78  78-ID-ef-imp VALUE 5037.
-       78  78-ID-ef-cod-iva VALUE 5038.
-       78  78-ID-ef-add VALUE 5039.
-       78  78-ID-ef-evadi-dal VALUE 5040.
+       78  78-ID-chk-contrassegno VALUE 5016.
+       78  78-ID-chk-saldi-promo VALUE 5017.
+       78  78-ID-ef-forn VALUE 5018.
+       78  78-ID-chk-urgente VALUE 5019.
+       78  78-ID-chk-immediato VALUE 5020.
+       78  78-ID-ef-note-1 VALUE 5021.
+       78  78-ID-ef-data-cons VALUE 5022.
+       78  78-ID-ef-note-2 VALUE 5023.
+       78  78-ID-ef-note-3 VALUE 5024.
+       78  78-ID-ef-note-4 VALUE 5025.
+       78  78-ID-ef-note-bolla-1 VALUE 5026.
+       78  78-ID-ef-note-bolla-2 VALUE 5027.
+       78  78-ID-ef-note-libere VALUE 5028.
+       78  78-ID-cbo-stato VALUE 5029.
+       78  78-ID-ef-art VALUE 5030.
+       78  78-ID-chk-blister VALUE 5031.
+       78  78-ID-ef-qta VALUE 5032.
+       78  78-ID-ef-qta-oma VALUE 5033.
+       78  78-ID-ef-uni VALUE 5034.
+       78  78-ID-ef-sconto VALUE 5035.
+       78  78-ID-ef-cons VALUE 5036.
+       78  78-ID-ef-cou VALUE 5037.
+       78  78-ID-ef-imp VALUE 5038.
+       78  78-ID-ef-cod-iva VALUE 5039.
+       78  78-ID-ef-add VALUE 5040.
+       78  78-ID-ef-evadi-dal VALUE 5041.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -1559,6 +1562,25 @@
 
       * CHECK BOX
        10
+           chk-contrassegno, 
+           Check-Box, 
+           COL 110,50, 
+           LINE 21,92,
+           LINES 1,31 ,
+           SIZE 2,67 ,
+           ENABLED mod-campi,
+           FLAT,
+           ID IS 78-ID-chk-contrassegno,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           SELF-ACT,
+           TITLE "Urgente",
+           VALUE chk-contrassegno-BUF,
+           BEFORE PROCEDURE chk-contrassegno-BeforeProcedure, 
+            .
+
+      * CHECK BOX
+       10
            chk-saldi-promo, 
            Check-Box, 
            COL 142,17, 
@@ -1600,7 +1622,7 @@
        10
            chk-urgente, 
            Check-Box, 
-           COL 108,84, 
+           COL 110,50, 
            LINE 24,31,
            LINES 1,31 ,
            SIZE 2,67 ,
@@ -2324,7 +2346,7 @@
            COL 96,17, 
            LINE 24,31,
            LINES 1,31 ,
-           SIZE 10,00 ,
+           SIZE 12,00 ,
            FONT IS Small-Font,
            ID IS 61,
            HEIGHT-IN-CELLS,
@@ -2348,6 +2370,23 @@
            WIDTH-IN-CELLS,
            TRANSPARENT,
            TITLE "Note libere",
+           .
+
+      * LABEL
+       10
+           Form1-La-28aaaaaa, 
+           Label, 
+           COL 96,17, 
+           LINE 21,92,
+           LINES 1,31 ,
+           SIZE 12,00 ,
+           FONT IS Small-Font,
+           ID IS 63,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Contrassegno",
+           VISIBLE 1,
            .
 
       * PAGE
@@ -2850,7 +2889,7 @@
            SIZE 19,00 ,
            COLOR IS ColorImpegnato,
            FONT IS Small-Font,
-           ID IS 63,
+           ID IS 20,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4318,8 +4357,8 @@
       *    PERFORM OPEN-tcontat
            PERFORM OPEN-tnazioni
            PERFORM OPEN-grade
-           PERFORM OPEN-tregioni
            PERFORM OPEN-tprov
+           PERFORM OPEN-tregioni
       *    After Open
            .
 
@@ -5003,18 +5042,6 @@
       * <TOTEM:END>
            .
 
-       OPEN-tregioni.
-      * <TOTEM:EPT. INIT:ordinevar, FD:tregioni, BeforeOpen>
-      * <TOTEM:END>
-           OPEN  INPUT tregioni
-           IF NOT Valid-STATUS-tregioni
-              PERFORM  Form1-EXTENDED-FILE-STATUS
-              GO TO EXIT-STOP-ROUTINE
-           END-IF
-      * <TOTEM:EPT. INIT:ordinevar, FD:tregioni, AfterOpen>
-      * <TOTEM:END>
-           .
-
        OPEN-tprov.
       * <TOTEM:EPT. INIT:ordinevar, FD:tprov, BeforeOpen>
       * <TOTEM:END>
@@ -5024,6 +5051,18 @@
               GO TO EXIT-STOP-ROUTINE
            END-IF
       * <TOTEM:EPT. INIT:ordinevar, FD:tprov, AfterOpen>
+      * <TOTEM:END>
+           .
+
+       OPEN-tregioni.
+      * <TOTEM:EPT. INIT:ordinevar, FD:tregioni, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT tregioni
+           IF NOT Valid-STATUS-tregioni
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:ordinevar, FD:tregioni, AfterOpen>
       * <TOTEM:END>
            .
 
@@ -5091,8 +5130,8 @@
       *    PERFORM CLOSE-tcontat
            PERFORM CLOSE-tnazioni
            PERFORM CLOSE-grade
-           PERFORM CLOSE-tregioni
            PERFORM CLOSE-tprov
+           PERFORM CLOSE-tregioni
       *    After Close
            .
 
@@ -5398,16 +5437,16 @@
            CLOSE grade
            .
 
-       CLOSE-tregioni.
-      * <TOTEM:EPT. INIT:ordinevar, FD:tregioni, BeforeClose>
-      * <TOTEM:END>
-           CLOSE tregioni
-           .
-
        CLOSE-tprov.
       * <TOTEM:EPT. INIT:ordinevar, FD:tprov, BeforeClose>
       * <TOTEM:END>
            CLOSE tprov
+           .
+
+       CLOSE-tregioni.
+      * <TOTEM:EPT. INIT:ordinevar, FD:tregioni, BeforeClose>
+      * <TOTEM:END>
+           CLOSE tregioni
            .
 
        mtordini-mto-k-ord-cli-MERGE-SPLITBUF.
@@ -14122,160 +14161,6 @@
       * <TOTEM:END>
            .
 
-       DataSet1-tregioni-INITSTART.
-           IF DataSet1-tregioni-KEY-Asc
-              MOVE Low-Value TO reg-chiave
-           ELSE
-              MOVE High-Value TO reg-chiave
-           END-IF
-           .
-
-       DataSet1-tregioni-INITEND.
-           IF DataSet1-tregioni-KEY-Asc
-              MOVE High-Value TO reg-chiave
-           ELSE
-              MOVE Low-Value TO reg-chiave
-           END-IF
-           .
-
-      * tregioni
-       DataSet1-tregioni-START.
-           IF DataSet1-tregioni-KEY-Asc
-              START tregioni KEY >= reg-chiave
-           ELSE
-              START tregioni KEY <= reg-chiave
-           END-IF
-           .
-
-       DataSet1-tregioni-START-NOTGREATER.
-           IF DataSet1-tregioni-KEY-Asc
-              START tregioni KEY <= reg-chiave
-           ELSE
-              START tregioni KEY >= reg-chiave
-           END-IF
-           .
-
-       DataSet1-tregioni-START-GREATER.
-           IF DataSet1-tregioni-KEY-Asc
-              START tregioni KEY > reg-chiave
-           ELSE
-              START tregioni KEY < reg-chiave
-           END-IF
-           .
-
-       DataSet1-tregioni-START-LESS.
-           IF DataSet1-tregioni-KEY-Asc
-              START tregioni KEY < reg-chiave
-           ELSE
-              START tregioni KEY > reg-chiave
-           END-IF
-           .
-
-       DataSet1-tregioni-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, BeforeReadRecord>
-      * <TOTEM:END>
-           IF DataSet1-tregioni-LOCK
-              READ tregioni WITH LOCK 
-              KEY reg-chiave
-           ELSE
-              READ tregioni WITH NO LOCK 
-              KEY reg-chiave
-           END-IF
-           MOVE STATUS-tregioni TO TOTEM-ERR-STAT 
-           MOVE "tregioni" TO TOTEM-ERR-FILE
-           MOVE "READ" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, AfterReadRecord>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tregioni-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, BeforeReadNext>
-      * <TOTEM:END>
-           IF DataSet1-tregioni-KEY-Asc
-              IF DataSet1-tregioni-LOCK
-                 READ tregioni NEXT WITH LOCK
-              ELSE
-                 READ tregioni NEXT WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-tregioni-LOCK
-                 READ tregioni PREVIOUS WITH LOCK
-              ELSE
-                 READ tregioni PREVIOUS WITH NO LOCK
-              END-IF
-           END-IF
-           MOVE STATUS-tregioni TO TOTEM-ERR-STAT
-           MOVE "tregioni" TO TOTEM-ERR-FILE
-           MOVE "READ NEXT" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, AfterReadNext>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tregioni-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, BeforeReadPrev>
-      * <TOTEM:END>
-           IF DataSet1-tregioni-KEY-Asc
-              IF DataSet1-tregioni-LOCK
-                 READ tregioni PREVIOUS WITH LOCK
-              ELSE
-                 READ tregioni PREVIOUS WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-tregioni-LOCK
-                 READ tregioni NEXT WITH LOCK
-              ELSE
-                 READ tregioni NEXT WITH NO LOCK
-              END-IF
-           END-IF
-           MOVE STATUS-tregioni TO TOTEM-ERR-STAT
-           MOVE "tregioni" TO TOTEM-ERR-FILE
-           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, AfterReadPrev>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tregioni-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, BeforeWrite>
-      * <TOTEM:END>
-           MOVE STATUS-tregioni TO TOTEM-ERR-STAT
-           MOVE "tregioni" TO TOTEM-ERR-FILE
-           MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, AfterWrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tregioni-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, BeforeRewrite>
-      * <TOTEM:END>
-           MOVE STATUS-tregioni TO TOTEM-ERR-STAT
-           MOVE "tregioni" TO TOTEM-ERR-FILE
-           MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, AfterRewrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tregioni-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, BeforeDelete>
-      * <TOTEM:END>
-           MOVE STATUS-tregioni TO TOTEM-ERR-STAT
-           MOVE "tregioni" TO TOTEM-ERR-FILE
-           MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, AfterDelete>
-      * <TOTEM:END>
-           .
-
        DataSet1-tprov-INITSTART.
            IF DataSet1-tprov-KEY-Asc
               MOVE Low-Value TO prv-chiave
@@ -14430,6 +14315,160 @@
       * <TOTEM:END>
            .
 
+       DataSet1-tregioni-INITSTART.
+           IF DataSet1-tregioni-KEY-Asc
+              MOVE Low-Value TO reg-chiave
+           ELSE
+              MOVE High-Value TO reg-chiave
+           END-IF
+           .
+
+       DataSet1-tregioni-INITEND.
+           IF DataSet1-tregioni-KEY-Asc
+              MOVE High-Value TO reg-chiave
+           ELSE
+              MOVE Low-Value TO reg-chiave
+           END-IF
+           .
+
+      * tregioni
+       DataSet1-tregioni-START.
+           IF DataSet1-tregioni-KEY-Asc
+              START tregioni KEY >= reg-chiave
+           ELSE
+              START tregioni KEY <= reg-chiave
+           END-IF
+           .
+
+       DataSet1-tregioni-START-NOTGREATER.
+           IF DataSet1-tregioni-KEY-Asc
+              START tregioni KEY <= reg-chiave
+           ELSE
+              START tregioni KEY >= reg-chiave
+           END-IF
+           .
+
+       DataSet1-tregioni-START-GREATER.
+           IF DataSet1-tregioni-KEY-Asc
+              START tregioni KEY > reg-chiave
+           ELSE
+              START tregioni KEY < reg-chiave
+           END-IF
+           .
+
+       DataSet1-tregioni-START-LESS.
+           IF DataSet1-tregioni-KEY-Asc
+              START tregioni KEY < reg-chiave
+           ELSE
+              START tregioni KEY > reg-chiave
+           END-IF
+           .
+
+       DataSet1-tregioni-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-tregioni-LOCK
+              READ tregioni WITH LOCK 
+              KEY reg-chiave
+           ELSE
+              READ tregioni WITH NO LOCK 
+              KEY reg-chiave
+           END-IF
+           MOVE STATUS-tregioni TO TOTEM-ERR-STAT 
+           MOVE "tregioni" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tregioni-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-tregioni-KEY-Asc
+              IF DataSet1-tregioni-LOCK
+                 READ tregioni NEXT WITH LOCK
+              ELSE
+                 READ tregioni NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tregioni-LOCK
+                 READ tregioni PREVIOUS WITH LOCK
+              ELSE
+                 READ tregioni PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tregioni TO TOTEM-ERR-STAT
+           MOVE "tregioni" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tregioni-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-tregioni-KEY-Asc
+              IF DataSet1-tregioni-LOCK
+                 READ tregioni PREVIOUS WITH LOCK
+              ELSE
+                 READ tregioni PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tregioni-LOCK
+                 READ tregioni NEXT WITH LOCK
+              ELSE
+                 READ tregioni NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tregioni TO TOTEM-ERR-STAT
+           MOVE "tregioni" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tregioni-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-tregioni TO TOTEM-ERR-STAT
+           MOVE "tregioni" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tregioni-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-tregioni TO TOTEM-ERR-STAT
+           MOVE "tregioni" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tregioni-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-tregioni TO TOTEM-ERR-STAT
+           MOVE "tregioni" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tregioni, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE mto-rec OF mtordini
            INITIALIZE age-rec OF agenti
@@ -14483,8 +14522,8 @@
            INITIALIZE con-rec OF tcontat
            INITIALIZE naz-rec OF tnazioni
            INITIALIZE gra-rec OF grade
-           INITIALIZE reg-rec OF tregioni
            INITIALIZE prv-rec OF tprov
+           INITIALIZE reg-rec OF tregioni
            .
 
 
@@ -14949,16 +14988,16 @@
            .
 
       * FD's Initialize Paragraph
-       DataSet1-tregioni-INITREC.
-           INITIALIZE reg-rec OF tregioni
+       DataSet1-tprov-INITREC.
+           INITIALIZE prv-rec OF tprov
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
            .
 
       * FD's Initialize Paragraph
-       DataSet1-tprov-INITREC.
-           INITIALIZE prv-rec OF tprov
+       DataSet1-tregioni-INITREC.
+           INITIALIZE reg-rec OF tregioni
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -15717,6 +15756,8 @@ PATCH      end-evaluate.
       * DB_CHECK BOX
               MOVE 0 TO mto-saldi-banco
       * DB_CHECK BOX
+              MOVE "N" TO mto-contrassegno
+      * DB_CHECK BOX
               MOVE 0 TO mto-saldi-promo
       * DB_CHECK BOX
               MOVE 0 TO mto-urgente
@@ -15855,7 +15896,7 @@ PATCH      end-evaluate.
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5017 TO CONTROL-ID
+               MOVE 5018 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-1's Validation
@@ -15865,7 +15906,7 @@ PATCH      end-evaluate.
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5020 TO CONTROL-ID
+               MOVE 5021 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-data-cons's Validation
@@ -15875,7 +15916,7 @@ PATCH      end-evaluate.
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5021 TO CONTROL-ID
+               MOVE 5022 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-2's Validation
@@ -15885,7 +15926,7 @@ PATCH      end-evaluate.
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5022 TO CONTROL-ID
+               MOVE 5023 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-3's Validation
@@ -15895,7 +15936,7 @@ PATCH      end-evaluate.
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5023 TO CONTROL-ID
+               MOVE 5024 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-4's Validation
@@ -15905,7 +15946,7 @@ PATCH      end-evaluate.
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5024 TO CONTROL-ID
+               MOVE 5025 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-bolla-1's Validation
@@ -15915,7 +15956,7 @@ PATCH      end-evaluate.
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5025 TO CONTROL-ID
+               MOVE 5026 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-bolla-2's Validation
@@ -15925,7 +15966,7 @@ PATCH      end-evaluate.
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5026 TO CONTROL-ID
+               MOVE 5027 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-libere's Validation
@@ -15935,7 +15976,7 @@ PATCH      end-evaluate.
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5027 TO CONTROL-ID
+               MOVE 5028 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-art's Validation
@@ -15945,7 +15986,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5029 TO CONTROL-ID
+               MOVE 5030 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-qta's Validation
@@ -15955,7 +15996,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5031 TO CONTROL-ID
+               MOVE 5032 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-qta-oma's Validation
@@ -15965,7 +16006,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5032 TO CONTROL-ID
+               MOVE 5033 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-uni's Validation
@@ -15975,7 +16016,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5033 TO CONTROL-ID
+               MOVE 5034 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-sconto's Validation
@@ -15985,7 +16026,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5034 TO CONTROL-ID
+               MOVE 5035 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cons's Validation
@@ -15995,7 +16036,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5035 TO CONTROL-ID
+               MOVE 5036 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cou's Validation
@@ -16005,7 +16046,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5036 TO CONTROL-ID
+               MOVE 5037 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-imp's Validation
@@ -16015,7 +16056,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5037 TO CONTROL-ID
+               MOVE 5038 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cod-iva's Validation
@@ -16025,7 +16066,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5038 TO CONTROL-ID
+               MOVE 5039 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-add's Validation
@@ -16035,7 +16076,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5039 TO CONTROL-ID
+               MOVE 5040 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-evadi-dal's Validation
@@ -16045,7 +16086,7 @@ PATCH      end-evaluate.
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5040 TO CONTROL-ID
+               MOVE 5041 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
            .
@@ -16640,6 +16681,12 @@ PATCH      end-evaluate.
               END-IF
       * DB_Entry-Field : ef-vet
            MOVE ef-vet-BUF TO mto-vettore
+      * DB_CHECK BOX : chk-contrassegno
+              IF chk-contrassegno-BUF = 1
+                 MOVE "S" TO mto-contrassegno
+              ELSE
+                 MOVE "N" TO mto-contrassegno
+              END-IF
       * DB_CHECK BOX : chk-saldi-promo
               IF chk-saldi-promo-BUF = 1
                  MOVE 1 TO mto-saldi-promo
@@ -16793,6 +16840,12 @@ PATCH      end-evaluate.
               END-IF
       * DB_Entry-Field : ef-vet
            MOVE mto-vettore TO ef-vet-BUF
+      * DB_CHECK BOX : chk-contrassegno
+              IF mto-contrassegno = "S"
+                 MOVE 1 TO chk-contrassegno-BUF
+              ELSE
+                 MOVE 0 TO chk-contrassegno-BUF
+              END-IF
       * DB_CHECK BOX : chk-saldi-promo
               IF mto-saldi-promo = 1
                  MOVE 1 TO chk-saldi-promo-BUF
@@ -17092,6 +17145,13 @@ PATCH      end-evaluate.
               set NoSalvato to true
               |78-ID-ef-vet è l'ID del campo ef-vet
               move 78-ID-ef-vet to store-id 
+           end-if
+
+           if mto-contrassegno not = old-mto-contrassegno
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-chk-contrassegno è l'ID del campo chk-contrassegno
+              move 78-ID-chk-contrassegno to store-id 
            end-if
 
            if mto-saldi-promo not = old-mto-saldi-promo
@@ -17550,37 +17610,37 @@ PATCH      end-evaluate.
            TOTEM-HINT-TEXT
            WHEN 5015 MOVE "Digitare il codice del vettore" to 
            TOTEM-HINT-TEXT
-           WHEN 5017 MOVE "Digitare il codice del fornitore associato (r
+           WHEN 5018 MOVE "Digitare il codice del fornitore associato (r
       -    "eso)" to TOTEM-HINT-TEXT
-           WHEN 5020 MOVE "Digitare i dati di consegna" to 
+           WHEN 5021 MOVE "Digitare i dati di consegna" to 
            TOTEM-HINT-TEXT
-           WHEN 5021 MOVE "Digitare la data di consegna" to 
-           TOTEM-HINT-TEXT
-           WHEN 5022 MOVE "Digitare le note di destinazione" to 
+           WHEN 5022 MOVE "Digitare la data di consegna" to 
            TOTEM-HINT-TEXT
            WHEN 5023 MOVE "Digitare le note di destinazione" to 
            TOTEM-HINT-TEXT
            WHEN 5024 MOVE "Digitare le note di destinazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5028 MOVE "Selezionare uno stato" to TOTEM-HINT-TEXT
-           WHEN 5029 MOVE "Digitare il codice dell'articolo" to 
+           WHEN 5025 MOVE "Digitare le note di destinazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5030 MOVE "Indica se l'articolo selezionato è da conside
+           WHEN 5029 MOVE "Selezionare uno stato" to TOTEM-HINT-TEXT
+           WHEN 5030 MOVE "Digitare il codice dell'articolo" to 
+           TOTEM-HINT-TEXT
+           WHEN 5031 MOVE "Indica se l'articolo selezionato è da conside
       -    "rarsi componente di un blister" to TOTEM-HINT-TEXT
-           WHEN 5031 MOVE "Digitare la quantit" to TOTEM-HINT-TEXT
-           WHEN 5032 MOVE "Digitare la quantità che s'intende come omagg
+           WHEN 5032 MOVE "Digitare la quantit" to TOTEM-HINT-TEXT
+           WHEN 5033 MOVE "Digitare la quantità che s'intende come omagg
       -    "io" to TOTEM-HINT-TEXT
-           WHEN 5033 MOVE "Digitare il prezzo unitario" to 
+           WHEN 5034 MOVE "Digitare il prezzo unitario" to 
            TOTEM-HINT-TEXT
-           WHEN 5034 MOVE "Percentuale di sconto" to TOTEM-HINT-TEXT
-           WHEN 5035 MOVE "Valore imposta sul consumo" to 
+           WHEN 5035 MOVE "Percentuale di sconto" to TOTEM-HINT-TEXT
+           WHEN 5036 MOVE "Valore imposta sul consumo" to 
            TOTEM-HINT-TEXT
-           WHEN 5036 MOVE "Valore imposta COU/COBAT" to TOTEM-HINT-TEXT
-           WHEN 5037 MOVE "Valore imponibile della merce" to 
+           WHEN 5037 MOVE "Valore imposta COU/COBAT" to TOTEM-HINT-TEXT
+           WHEN 5038 MOVE "Valore imponibile della merce" to 
            TOTEM-HINT-TEXT
-           WHEN 5038 MOVE "Codice I.V.A." to TOTEM-HINT-TEXT
-           WHEN 5039 MOVE "Valore addizionale piombo" to TOTEM-HINT-TEXT
-           WHEN 5040 MOVE "Data di evadibilit" to TOTEM-HINT-TEXT
+           WHEN 5039 MOVE "Codice I.V.A." to TOTEM-HINT-TEXT
+           WHEN 5040 MOVE "Valore addizionale piombo" to TOTEM-HINT-TEXT
+           WHEN 5041 MOVE "Data di evadibilit" to TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
            EVALUATE Control-Id
@@ -17598,25 +17658,25 @@ PATCH      end-evaluate.
            When 5012 PERFORM chk-evas-tot-BeforeProcedure
            When 5013 PERFORM ef-iva-BeforeProcedure
            When 5015 PERFORM ef-vet-BeforeProcedure
-           When 5017 PERFORM ef-vet-BeforeProcedure
-           When 5020 PERFORM ef-note-1-BeforeProcedure
-           When 5021 PERFORM ef-data-cons-BeforeProcedure
-           When 5022 PERFORM ef-note-2-BeforeProcedure
-           When 5023 PERFORM ef-note-3-BeforeProcedure
-           When 5024 PERFORM ef-note-4-BeforeProcedure
-           When 5028 PERFORM cbo-stato-BeforeProcedure
-           When 5029 PERFORM ef-art-BeforeProcedure
-           When 5030 PERFORM Form1-DaCb-1-BeforeProcedure
-           When 5031 PERFORM ef-qta-BeforeProcedure
-           When 5032 PERFORM ef-qta-oma-BeforeProcedure
-           When 5033 PERFORM ef-uni-BeforeProcedure
-           When 5034 PERFORM ef-sconto-BeforeProcedure
-           When 5035 PERFORM ef-cons-BeforeProcedure
-           When 5036 PERFORM ef-cou-BeforeProcedure
-           When 5037 PERFORM ef-imp-BeforeProcedure
-           When 5038 PERFORM ef-cod-iva-BeforeProcedure
-           When 5039 PERFORM ef-cou-BeforeProcedure
+           When 5018 PERFORM ef-vet-BeforeProcedure
+           When 5021 PERFORM ef-note-1-BeforeProcedure
+           When 5022 PERFORM ef-data-cons-BeforeProcedure
+           When 5023 PERFORM ef-note-2-BeforeProcedure
+           When 5024 PERFORM ef-note-3-BeforeProcedure
+           When 5025 PERFORM ef-note-4-BeforeProcedure
+           When 5029 PERFORM cbo-stato-BeforeProcedure
+           When 5030 PERFORM ef-art-BeforeProcedure
+           When 5031 PERFORM Form1-DaCb-1-BeforeProcedure
+           When 5032 PERFORM ef-qta-BeforeProcedure
+           When 5033 PERFORM ef-qta-oma-BeforeProcedure
+           When 5034 PERFORM ef-uni-BeforeProcedure
+           When 5035 PERFORM ef-sconto-BeforeProcedure
+           When 5036 PERFORM ef-cons-BeforeProcedure
+           When 5037 PERFORM ef-cou-BeforeProcedure
+           When 5038 PERFORM ef-imp-BeforeProcedure
+           When 5039 PERFORM ef-cod-iva-BeforeProcedure
            When 5040 PERFORM ef-cou-BeforeProcedure
+           When 5041 PERFORM ef-cou-BeforeProcedure
            END-EVALUATE
            PERFORM Form1-DISPLAY-STATUS-MSG
            perform Form1-BEFORE-SCREEN
@@ -17639,30 +17699,31 @@ PATCH      end-evaluate.
            When 5013 PERFORM ef-iva-AfterProcedure
            When 5014 PERFORM chk-evas-tot-AfterProcedure
            When 5015 PERFORM ef-vet-AfterProcedure
-           When 5016 PERFORM chk-evas-tot-AfterProcedure
-           When 5017 PERFORM ef-vet-AfterProcedure
-           When 5018 PERFORM chk-urgente-AfterProcedure
-           When 5019 PERFORM chk-evas-tot-AfterProcedure
-           When 5020 PERFORM ef-note-1-AfterProcedure
-           When 5021 PERFORM ef-data-cons-AfterProcedure
-           When 5022 PERFORM ef-note-2-AfterProcedure
-           When 5023 PERFORM ef-note-3-AfterProcedure
-           When 5024 PERFORM ef-note-4-AfterProcedure
-           When 5025 PERFORM Form1-DaEf-1-AfterProcedure
+           When 5016 PERFORM chk-contrassegno-AfterProcedure
+           When 5017 PERFORM chk-evas-tot-AfterProcedure
+           When 5018 PERFORM ef-vet-AfterProcedure
+           When 5019 PERFORM chk-urgente-AfterProcedure
+           When 5020 PERFORM chk-evas-tot-AfterProcedure
+           When 5021 PERFORM ef-note-1-AfterProcedure
+           When 5022 PERFORM ef-data-cons-AfterProcedure
+           When 5023 PERFORM ef-note-2-AfterProcedure
+           When 5024 PERFORM ef-note-3-AfterProcedure
+           When 5025 PERFORM ef-note-4-AfterProcedure
            When 5026 PERFORM Form1-DaEf-1-AfterProcedure
            When 5027 PERFORM Form1-DaEf-1-AfterProcedure
-           When 5029 PERFORM ef-art-AfterProcedure
-           When 5030 PERFORM Form1-DaCb-1-AfterProcedure
-           When 5031 PERFORM ef-qta-AfterProcedure
+           When 5028 PERFORM Form1-DaEf-1-AfterProcedure
+           When 5030 PERFORM ef-art-AfterProcedure
+           When 5031 PERFORM Form1-DaCb-1-AfterProcedure
            When 5032 PERFORM ef-qta-AfterProcedure
-           When 5033 PERFORM ef-uni-AfterProcedure
-           When 5034 PERFORM ef-sconto-AfterProcedure
-           When 5035 PERFORM ef-cons-AfterProcedure
-           When 5036 PERFORM ef-cou-AfterProcedure
-           When 5037 PERFORM ef-imp-AfterProcedure
-           When 5038 PERFORM ef-cod-iva-AfterProcedure
-           When 5039 PERFORM ef-cou-AfterProcedure
+           When 5033 PERFORM ef-qta-AfterProcedure
+           When 5034 PERFORM ef-uni-AfterProcedure
+           When 5035 PERFORM ef-sconto-AfterProcedure
+           When 5036 PERFORM ef-cons-AfterProcedure
+           When 5037 PERFORM ef-cou-AfterProcedure
+           When 5038 PERFORM ef-imp-AfterProcedure
+           When 5039 PERFORM ef-cod-iva-AfterProcedure
            When 5040 PERFORM ef-cou-AfterProcedure
+           When 5041 PERFORM ef-cou-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -21709,6 +21770,16 @@ LUBEXX                       move store-riga to riga
       * <TOTEM:END>
        chk-urgente-AfterProcedure.
       * <TOTEM:PARA. chk-urgente-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       chk-contrassegno-BeforeProcedure.
+      * <TOTEM:PARA. chk-contrassegno-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       chk-contrassegno-AfterProcedure.
+      * <TOTEM:PARA. chk-contrassegno-AfterProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>

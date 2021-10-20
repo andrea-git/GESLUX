@@ -5,7 +5,7 @@
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E5A1312755-169-200341840
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E5A1473729-855-677125784
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -822,13 +822,41 @@ m_bFixed=1
 
 @}}
 [FDITEM84_]
-m_strName=FILLER
-m_strRawPic=x(49)
-m_strPic=x(49)
+m_strName=mto-contrassegno
+m_strRawPic=x
+m_strPic=x
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM84_
+
+@}}
+[FDITEM85_]
+m_strName=mto-contrassegno-no
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="N" , " "
+{{@DataItem_m_strDescriptionFDITEM85_
+
+@}}
+[FDITEM86_]
+m_strName=mto-contrassegno-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM86_
+
+@}}
+[FDITEM87_]
+m_strName=FILLER
+m_strRawPic=x(48)
+m_strPic=x(48)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM87_
 
 @}}
 [CStoAcucobolSL_]
