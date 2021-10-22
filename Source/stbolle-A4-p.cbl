@@ -373,9 +373,14 @@ OMAGGI   03 st-qta-oma             pic zz.zzz.zzz.
          03 filler                 pic x(5)  value "---->".
 
        01 st-riga-pag.
-         03 filler                 pic x(2).
+         03 filler                 pic x(2).                  
          03 filler                 pic x(102) value all "-".
          03 st-pag                 pic x(23).
+
+       01 st-riga-pag-contras.
+         03 filler                 pic x(2).                  
+         03 filler                 pic x(102) value all "_".
+         03 st-pag-contras         pic x(23).
 
        01  st-riga-piede-1.
          03 filler                 pic x(2).
@@ -475,8 +480,8 @@ OMAGGI   03 st-qta-oma             pic zz.zzz.zzz.
 
       * COSTANTI
        78  titolo                  value "Stampa Bolle".
-       78  NumRigheConNote         value 18.
-       78  NumRigheSenzaNote       value 21.
+       78  NumRigheConNote         value 17.
+       78  NumRigheSenzaNote       value 20.
 
        78  max-righe               value 66.
                                                                           
@@ -2734,24 +2739,48 @@ BLISTR        inspect st-imb replacing trailing low-value by spaces
       ***---
        STAMPA-NOTE-TOTALI.   
            move "@#77" to line-riga.
-           perform STAMPA-RIGA.
-
+           perform STAMPA-RIGA.     
+                 
            subtract WrittenRows from RowsPerPage giving n-vuote.
-           perform RIGHE-VUOTE.
+           perform RIGHE-VUOTE.     
               
            move 0 to st-tot-peso-utf-2710
                      st-tot-peso-utf-3403
                      st-tot-peso-non-utf st-tot-peso-tot
            initialize st-pag.
-           move PagePerBolla to PagePerBollaEdit.
-           string "*Tot. Pag. "    delimited size
-                  PagePerBollaEdit delimited size
-                  " - FINE*"       delimited size
-                  into st-pag
-           end-string.      
 
-           move st-riga-pag to line-riga.
-           perform STAMPA-RIGA.
+           if tor-contrassegno-no
+              move PagePerBolla to PagePerBollaEdit
+              string "*Tot. Pag. "    delimited size
+                     PagePerBollaEdit delimited size
+                     " - FINE*"       delimited size
+                     into st-pag
+              end-string
+              move st-riga-pag to line-riga
+              perform STAMPA-RIGA
+           else                  
+              move PagePerBolla to PagePerBollaEdit
+              string "*Tot. Pag. "    delimited size
+                     PagePerBollaEdit delimited size
+                     " - FINE*"       delimited size
+                     into st-pag-contras
+              end-string
+              move st-riga-pag-contras to line-riga
+              perform STAMPA-RIGA
+
+              move "@<0049" to line-riga
+              perform STAMPA-RIGA 
+              move "@+3" to line-riga
+              perform STAMPA-RIGA
+
+              accept line-riga from environment "CONTRAS_NOTE_BOLLA"
+              perform STAMPA-RIGA
+                                  
+              move "@-3" to line-riga
+              perform STAMPA-RIGA     
+              move "@>0007" to line-riga
+              perform STAMPA-RIGA 
+           end-if.
 
            if esiste-note
               move  tor-note1           to st-note-1
