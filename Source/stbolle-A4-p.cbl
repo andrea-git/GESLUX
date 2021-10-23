@@ -267,6 +267,17 @@
        77  num-bolla-ed            pic z(8).
        77  data-bolla-ed           pic x(10).
        77  dati-bolla              pic x(25).
+       77  tot-imp                 pic 9(12)v99.
+       77  idx-i                   pic 9 value 0.
+       01  tab-iva.
+           03 el-iva               occurs 3.
+              05 el-cod-iva        pic x(3).
+              05 el-imp            pic 9(12)v99.
+                                                
+       77  como-iva                pic 9(12)v999.
+       77  como-iva-2dec           pic 9(12)v99.
+       01  filler                  pic 9 value 0.
+         88 trovataIva                   value 1, false 0.
 
        01  GdoInUsoFlag            pic x.
            88 GdoInUso             value "S". 
@@ -371,6 +382,16 @@ OMAGGI   03 st-qta-oma             pic zz.zzz.zzz.
          03 filler                 pic x.
          03 filler                 pic x(5)  value "Pag. ".
          03 st-num-page            pic z(2).
+         03 filler                 pic x(4)  value "  - ".
+         03 filler                 pic x(6)  value "Segue ".
+         03 filler                 pic x(5)  value "---->".
+
+       01  st-riga-segue-contras.
+         03 filler                 pic x(2).
+         03 filler                 pic x(104) value all "_".
+         03 filler                 pic x.
+         03 filler                 pic x(5)  value "Pag. ".
+         03 st-num-page-contras    pic z(2).
          03 filler                 pic x(4)  value "  - ".
          03 filler                 pic x(6)  value "Segue ".
          03 filler                 pic x(5)  value "---->".
@@ -963,7 +984,9 @@ LUBEXX***  scarrellamento fisso iniziale della carta
            perform EXIT-PGM.
 
       ***---
-       INIT.             
+       INIT.  
+           accept contras-note-bolla 
+                  from environment "CONTRAS_NOTE_BOLLA".
            if stbolle-stampa
               move 99999999 to stbolle-prima-bolla
            end-if.
@@ -2347,7 +2370,10 @@ LUBEXX*****        end-evaluate
                  invalid set errori to true
            end-start.
               
-           move 0 to tot-bolla-n.         
+           move 0 to tot-bolla-n.  
+           initialize tab-iva replacing numeric data by zeroes
+                                   alphanumeric data by spaces.
+       
            perform until 1 = 2
 
               read rordini next  at end exit perform end-read
@@ -2356,12 +2382,53 @@ LUBEXX*****        end-evaluate
                  exit perform
               end-if
 
-              compute tot-bolla-n = tot-bolla-n        + 
-                                  ( ror-qta of rordini *
-                                  ( ror-imp-consumo   of rordini +
-                                    ror-imp-cou-cobat of rordini +
-                                    ror-imponib-merce of rordini +
-                                    ror-add-piombo    of rordini ))
+              compute tot-imp = ror-qta of rordini *
+                              ( ror-imp-consumo   of rordini +
+                                ror-imp-cou-cobat of rordini +
+                                ror-imponib-merce of rordini +
+                                ror-add-piombo    of rordini )
+                    
+              set trovataIva to false
+              perform varying idx-i from 1 by 1 
+                        until idx-i > 3
+                 if ror-cod-iva of rordini = el-cod-iva(idx-i)
+                    add tot-imp    to el-imp(idx-i)
+                    set trovataIva to true
+                    exit perform
+                 end-if
+              end-perform
+
+              if not trovataIva      
+                 perform varying idx-i from 1 by 1 
+                           until idx-i > 3
+                    if el-cod-iva(idx-i) = spaces
+                       move ror-cod-iva of rordini to el-cod-iva(idx-i)
+                       add tot-imp      to el-imp(idx-i)
+                       exit perform
+                    end-if
+                 end-perform
+              end-if
+
+           end-perform.
+                                          
+           move 0 to como-iva tot-bolla-n.
+           perform varying idx-i from 1 by 1 
+                     until idx-i > 3
+              if el-cod-iva(idx-i) = spaces
+                 exit perform
+              end-if
+              move "IV"              to tbliv-codice1
+              move el-cod-iva(idx-i) to tbliv-codice2
+              read tivaese no lock
+              move 0 to como-iva-2dec
+              if tbliv-percentuale > 0
+                 compute como-iva = 
+                         el-imp(idx-i) * tbliv-percentuale / 100
+                 add 0,005          to como-iva
+                 move como-iva      to como-iva-2dec
+              end-if
+              compute tot-bolla-n = tot-bolla-n   +
+                                    como-iva-2dec + el-imp(idx-i)
            end-perform.
 
            move tot-bolla-n to tot-bolla-z.
@@ -2764,8 +2831,35 @@ BLISTR        inspect st-imb replacing trailing low-value by spaces
            move "@#77" to line-riga.
            perform STAMPA-RIGA.
 
-           move st-riga-segue to line-riga.
-           perform STAMPA-RIGA.
+
+           if tor-contrassegno-no
+              move st-riga-segue to line-riga
+              perform STAMPA-RIGA
+           else 
+              move st-num-page           to st-num-page-contras
+              move st-riga-segue-contras to line-riga
+              perform STAMPA-RIGA
+
+              move "@<0049" to line-riga
+              perform STAMPA-RIGA 
+              move "@+3" to line-riga
+              perform STAMPA-RIGA
+                            
+              inspect contras-note-bolla 
+                      replacing trailing spaces by low-value
+              initialize line-riga
+              string  contras-note-bolla delimited low-value
+                      " "                delimited size
+                      tot-bolla-x        delimited low-value
+                 into line-riga
+              end-string
+              perform STAMPA-RIGA
+                                  
+              move "@-3" to line-riga
+              perform STAMPA-RIGA     
+              move "@>0007" to line-riga
+              perform STAMPA-RIGA 
+           end-if.
 
            if esiste-note move 20 to n-vuote
            else           move 17 to n-vuote
@@ -2810,9 +2904,6 @@ BLISTR        inspect st-imb replacing trailing low-value by spaces
               perform STAMPA-RIGA 
               move "@+3" to line-riga
               perform STAMPA-RIGA
-
-              accept  contras-note-bolla 
-                      from environment "CONTRAS_NOTE_BOLLA"
               inspect contras-note-bolla 
                       replacing trailing spaces by low-value
               initialize line-riga
