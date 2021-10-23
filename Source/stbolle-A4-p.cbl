@@ -31,6 +31,7 @@
            copy "tvettori.sl".
            copy "articoli.sl".
            copy "lineseq.sl". 
+           copy "tivaese.sl".
        SELECT lineseq1
            ASSIGN       TO  wstampa
            ORGANIZATION IS LINE SEQUENTIAL
@@ -108,7 +109,8 @@
            copy "clienti.fd".
            copy "destini.fd". 
            copy "tvettori.fd".
-           copy "lineseq.fd". 
+           copy "lineseq.fd".   
+           copy "tivaese.fd".
       *(( XFD FILE = lineseq1 ))
        FD  lineseq1.
        01 line-riga1        PIC  x(900).
@@ -222,6 +224,7 @@
        77  status-timposte         pic xx.
        77  status-progmag          pic xx.
        77  status-param            pic xx.    
+       77  status-tivaese          pic xx.
        77  wstampa                 pic x(256).
        77  path-globale            pic x(256).
        
@@ -465,6 +468,10 @@ OMAGGI   03 st-qta-oma             pic zz.zzz.zzz.
        77  como-lst-data           pic 9(8).
        77  como-ora                pic 9(8).
        77  como-bolla              pic 9(8).
+       77  contras-note-bolla      pic x(100).
+       77  tot-bolla-x             pic x(20).
+       77  tot-bolla-z             pic zzz.zzz.zzz.zzz,zz.
+       77  tot-bolla-n             pic 9(15)v99.
        01  como-chiave.
          05 como-anno              pic 9(4).
          05 como-numero            pic 9(8).
@@ -1141,7 +1148,7 @@ LUBEXX*****            from environment "STAMPANTE_BOLLE_DEFAULT".
                              articoli tcaumag  tnomen tmarche timposte
                              listini  reltor   ttipocli |evaclides
                              tparamge prodener tscorte 
-                             progmag
+                             progmag  tivaese 
                  open i-o tpromo rpromo
               else
                  close tcontat tordini
@@ -2329,7 +2336,38 @@ LUBEXX*****        end-evaluate
            if LogoPers         
               move "@<0010" to line-riga
               perform STAMPA-RIGA
-           end-if.
+           end-if.         
+
+           move tor-anno   to ror-anno of rordini.
+           move tor-numero to ror-num-ordine of rordini.
+           move low-value  to ror-num-riga of rordini
+                              ror-chiave-ordine OF rordini
+
+           start rordini key is >= ror-k-stbolle of rordini
+                 invalid set errori to true
+           end-start.
+              
+           move 0 to tot-bolla-n.         
+           perform until 1 = 2
+
+              read rordini next  at end exit perform end-read
+              if ror-anno       of rordini not = tor-anno    or 
+                 ror-num-ordine of rordini not = tor-numero
+                 exit perform
+              end-if
+
+              compute tot-bolla-n = tot-bolla-n        + 
+                                  ( ror-qta of rordini *
+                                  ( ror-imp-consumo   of rordini +
+                                    ror-imp-cou-cobat of rordini +
+                                    ror-imponib-merce of rordini +
+                                    ror-add-piombo    of rordini ))
+           end-perform.
+
+           move tot-bolla-n to tot-bolla-z.
+           move tot-bolla-z to tot-bolla-x.
+           call "C$JUSTIFY" using tot-bolla-x, "L".
+           inspect tot-bolla-x replacing trailing spaces by low-value.
 
            move tor-anno   to ror-anno of rordini.
            move tor-numero to ror-num-ordine of rordini.
@@ -2773,7 +2811,16 @@ BLISTR        inspect st-imb replacing trailing low-value by spaces
               move "@+3" to line-riga
               perform STAMPA-RIGA
 
-              accept line-riga from environment "CONTRAS_NOTE_BOLLA"
+              accept  contras-note-bolla 
+                      from environment "CONTRAS_NOTE_BOLLA"
+              inspect contras-note-bolla 
+                      replacing trailing spaces by low-value
+              initialize line-riga
+              string  contras-note-bolla delimited low-value
+                      " "                delimited size
+                      tot-bolla-x        delimited low-value
+                 into line-riga
+              end-string
               perform STAMPA-RIGA
                                   
               move "@-3" to line-riga
@@ -3125,7 +3172,7 @@ BLISTR        inspect st-imb replacing trailing low-value by spaces
                  destini  tvettori rordini mtordini tmarche timposte
                  articoli tcontat  tcaumag ttipocli
                  tnomen   listini reltor  rordini1 param
-                 tparamge prodener tpromo  rpromo tscorte |evaclides.
+                 tparamge prodener tpromo  rpromo tscorte tivaese.
 
            close lineseq.
 
