@@ -5,7 +5,7 @@
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E5A1471632-742-323034763
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E5A1D101331-885-2467530715
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -14,6 +14,71 @@ m_bRecordFixed=1
 m_bStandard=1
 m_strPrefix=TBLCO
 {{@FD_m_strDescription
+ 29/10/2021
+  Record per tabelle causali contabili
+
+ tolta la calusola di generazione sul campo "tblco-scorporo-iva"                                  |ms 04/10/2007 13.56
+ poikè essendo gìa numerico non ha bisogno di "editazione" in virtù                               |ms 04/10/2007 13.56
+ dell'associazione del campo stesso ad un checkbox                                                |ms 04/10/2007 13.56
+
+---------------------------------------------------------------------------------------------------------------------------------
+ tk.240 new prima nota (ex lav.4395)
+ varie lav.4395 new prima nota                             | mxm 08/01/2008 14.17 lav.4395        |ms 19/11/2008 10.29
+---------------------------------------------------------------------------------------------------------------------------------
+ SR 2198/LAV 4442 - aggiunto chekbox per identificare nota di variazione relativa a fatture anni precedenti |sq 22/01/2008 13.03
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+ tk 240 - new prima nota                                                                          |ms 19/11/2008 11.46
+        - aggiunti livelli 88 per campo tblco-registro
+        - aggiunti livelli 88 per campo tblco-input-totale
+        - aggiunti livelli 88 per campo tblco-ratei-risconti
+---------------------------------------------------------------------------------------------------------------------------------
+ tk 1780 - aggiunto flag tblco-iva-per-cassa per nuova gestione iva per cassa                     |ds 01/04/2009 9.57
+---------------------------------------------------------------------------------------------------------------------------------
+ ticket 2026 - aggiunti dati per gestione automatica enasarco                                     |DS 08/10/2009 10.26
+---------------------------------------------------------------------------------------------------------------------------------
+ Ticket 2969 - Generazione automatica beni/servizi intra da movimenti primanota                   |or 23/04/2010
+ Implementazione:
+ - Aggiunta richiesta flag per aggiornamento INTRA da movimento primanota
+ - Aggiunta richiesta natura transazione
+-------------------------------------------------------------------------------------------------------
+ ticket 2984 - intra beni con soli valori statistici                                              |or 20/05/2010
+ IMPLEMENTAZIONE:
+ - Gestire l'aggiornamento dei servizi relativi a beni mobili eseguiti in uno stato
+   comunitario a favore di un committente comunitario di altro stato membro.
+   Il movimento viene identificato dalla natura di transazione "4" "5" "D" "E".
+   In questo caso, ai fini intrastat, devono essere compilati i modelli INTRA 1 BIS
+   e INTRA 2 BIS ai soli fini statistici ( INTRA 1 BIS colonne 1 e da 5 a 13 -
+   INTRA 2 BIS colonne 1 e da 6 a 15).
+-------------------------------------------------------------------------------------------------------
+ ticket 3313 - Black list iva: DL nr. 40/2010 - Comunicazione telematica operazioni con           |mc 15/09/2010
+               paesi appartenenti black list
+ Implementazione: - aggiunto flag di richiesta codice fornitore originale
+-------------------------------------------------------------------------------------------------------
+ Ticket 5066 - Aggiunto flag per individuare le note di variazione                                  | MACGIU 22/04/2013
+-------------------------------------------------------------------------------------------------------
+ tk. 5380 - In tblco.dpb modificare i nomi delle colonne ws-blacklist-registro-ven-88 e             | CERMIC 12/11/2013
+            ws-blacklist-registro-acq-88, in modo da rispettare la namespace dei tracciati record
+-------------------------------------------------------------------------------------------------------
+ tk. 6107 - gestione Split Payment nelle fatture di vendita verso la PA - (I)                       | Suadal 25/02/2015
+          - inseriti nuovi campi per gestione "split payment"
+-------------------------------------------------------------------------------------------------------
+ tk 5497 - Adeguamento tracciati export verso Ago Infinity secondo nuove specifiche                 | Suadal 18/06/2015
+         - aggiunto livello 88 per campo tblco-iva-spedizionieri
+---------------------------------------------------------------------------------------------
+ tk 6277 - Stampa riepilogo iva - Inserire le indicazioni delle fatture SPLIT                       | Suadal 13/07/2016
+         - inseriti livelli 88
+-------------------------------------------------------------------------------------------------------
+ tk 7305 - XML per Fatelweb - impossibile coprire tutte le nature iva                               | scamar 30/06/2017
+           (ma anche comunicaz.ft.emesse/ricevute)
+           . new column tblco-tipo-doc
+-----------------------------------------------------------------------------------------------------------------------
+ tk.8292 - Possibilità di definire causali contabili per fatture "non elettroniche"                 | maxime 04/01/2019
+-----------------------------------------------------------------------------------------------------------------------
+ tk.9544 -  FE XML Gestire nuovi tipi documento previsti nelle specifiche 1.6.1                     | maxime 04/01/2021
+-----------------------------------------------------------------------------------------------------------------------
+
  tplvar zmm_title=Tabella causali contabili
  tplvar zmm_ver=09.01.00
  tplvar zmm_class=anagraphic
@@ -24,7 +89,6 @@ m_strPrefix=TBLCO
    02.tblco-descrizione1
    03.tblco-descrizione2
 
-i
 @}}
 [FDITEM0_]
 m_strName=record-tblco
@@ -61,6 +125,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM3_
 $GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=20,zmm_align=L,zmm_pos=1,zmm_entity=tblco
+
 @}}
 [FDITEM4_]
 m_strName=resto-record-tblco
@@ -89,7 +154,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM6_
 $GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=3
-
 @}}
 [FDITEM7_]
 m_strName=tblco-tipo-documento
@@ -116,6 +180,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM9_
 $GEN type=code,entity=tblai
+
 @}}
 [FDITEM10_]
 m_strName=tblco-registro
@@ -126,7 +191,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM10_
 $GEN type=combobox,comboclass=tblco_registro
-
 @}}
 [FDITEM11_]
 m_strName=tblco-registro-88
@@ -216,7 +280,7 @@ m_nSync=-1
 m_bFixed=1
 m_strTrue="F" "T"
 {{@DataItem_m_strDescriptionFDITEM20_
-
+11/2008 11.41
 @}}
 [FDITEM21_]
 m_strName=tblco-blacklist-registro-ven-88
@@ -225,6 +289,7 @@ m_nSync=-1
 m_bFixed=1
 m_strTrue="C" "S" "D" "I" "E"
 {{@DataItem_m_strDescriptionFDITEM21_
+11/2008 11.41
 **                    88  ws-blacklist-registro-ven-88  value "C" "S" "D" "I" "E". |mc 15/09/2010   | CERMIC 12/11/2013
 **                    88  ws-blacklist-registro-acq-88  value "F" "T".             |mc 15/09/2010   | CERMIC 12/11/2013
 @}}
@@ -246,7 +311,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM23_
 C 12/11/2013
-
 @}}
 [FDITEM24_]
 m_strName=tblco-numero-documento
@@ -306,6 +370,7 @@ m_bFixed=1
 
 
 $GEN type=checkbox,truevalue=" ",falsevalue="N"
+
 @}}
 [FDITEM30_]
 m_strName=tblco-allegati-88
@@ -317,17 +382,35 @@ m_strTrue="N" " "
 
 @}}
 [FDITEM31_]
+m_strName=tblco-allegati-ko
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="N"
+{{@DataItem_m_strDescriptionFDITEM31_
+
+@}}
+[FDITEM32_]
+m_strName=tblco-allegati-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" "
+{{@DataItem_m_strDescriptionFDITEM32_
+
+@}}
+[FDITEM33_]
 m_strName=tblco-autofattura-co
 m_strRawPic=x(03)
 m_strPic=X(03)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM31_
+{{@DataItem_m_strDescriptionFDITEM33_
 
 $GEN type=code,entity=tblco
 @}}
-[FDITEM32_]
+[FDITEM34_]
 m_strName=tblco-autofattura-cli
 m_strRawPic=x(08)
 m_strPic=X(08)
@@ -335,117 +418,96 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=tblco-auto-cli
-{{@DataItem_m_strDescriptionFDITEM32_
+{{@DataItem_m_strDescriptionFDITEM34_
 
 $GEN type=code,entity=cli
+
 @}}
-[FDITEM33_]
+[FDITEM35_]
 m_strName=tblco-partite
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM33_
+{{@DataItem_m_strDescriptionFDITEM35_
 $GEN type=combobox,comboclass=tblco_partite
-
 @}}
-[FDITEM34_]
+[FDITEM36_]
 m_strName=tblco-partite-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="A" "M" "E" " "
-{{@DataItem_m_strDescriptionFDITEM34_
+{{@DataItem_m_strDescriptionFDITEM36_
 
 @}}
-[FDITEM35_]
+[FDITEM37_]
 m_strName=tblco-partite-88-a
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="A"
-{{@DataItem_m_strDescriptionFDITEM35_
+{{@DataItem_m_strDescriptionFDITEM37_
 
 @}}
-[FDITEM36_]
+[FDITEM38_]
 m_strName=tblco-partite-88-m
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="M"
-{{@DataItem_m_strDescriptionFDITEM36_
+{{@DataItem_m_strDescriptionFDITEM38_
 
 @}}
-[FDITEM37_]
+[FDITEM39_]
 m_strName=tblco-partite-88-e
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="E"
-{{@DataItem_m_strDescriptionFDITEM37_
+{{@DataItem_m_strDescriptionFDITEM39_
 
 @}}
-[FDITEM38_]
+[FDITEM40_]
 m_strName=tblco-partite-88-o
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=" "
-{{@DataItem_m_strDescriptionFDITEM38_
+{{@DataItem_m_strDescriptionFDITEM40_
 
 @}}
-[FDITEM39_]
+[FDITEM41_]
 m_strName=tblco-scadenze
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM39_
+{{@DataItem_m_strDescriptionFDITEM41_
 $GEN type=checkbox,truevalue="S",falsevalue=" "
-
 @}}
-[FDITEM40_]
+[FDITEM42_]
 m_strName=tblco-scadenze-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S" " "
-{{@DataItem_m_strDescriptionFDITEM40_
+{{@DataItem_m_strDescriptionFDITEM42_
 
 @}}
-[FDITEM41_]
+[FDITEM43_]
 m_strName=tblco-scadenze-88-s
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S"
-{{@DataItem_m_strDescriptionFDITEM41_
-
-@}}
-[FDITEM42_]
-m_strName=tblco-automatico
-m_strRawPic=x(01)
-m_strPic=X(01)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM42_
-$GEN type=checkbox,truevalue="S",falsevalue=" "
-
-@}}
-[FDITEM43_]
-m_strName=tblco-automatico-88
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="S" " "
 {{@DataItem_m_strDescriptionFDITEM43_
 
 @}}
 [FDITEM44_]
-m_strName=tblco-insoluti
+m_strName=tblco-automatico
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=10
@@ -455,7 +517,7 @@ m_bFixed=1
 $GEN type=checkbox,truevalue="S",falsevalue=" "
 @}}
 [FDITEM45_]
-m_strName=tblco-insoluti-88
+m_strName=tblco-automatico-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -464,172 +526,192 @@ m_strTrue="S" " "
 
 @}}
 [FDITEM46_]
+m_strName=tblco-insoluti
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM46_
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+@}}
+[FDITEM47_]
+m_strName=tblco-insoluti-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM47_
+
+@}}
+[FDITEM48_]
 m_strName=tblco-insoluti-S
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S"
-{{@DataItem_m_strDescriptionFDITEM46_
+{{@DataItem_m_strDescriptionFDITEM48_
 
 @}}
-[FDITEM47_]
+[FDITEM49_]
 m_strName=tblco-analitica
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM47_
+{{@DataItem_m_strDescriptionFDITEM49_
 $GEN type=combobox,comboclass=tblco_analitica
 @}}
-[FDITEM48_]
+[FDITEM50_]
 m_strName=tblco-analitica-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="A" "S" " "
-{{@DataItem_m_strDescriptionFDITEM48_
+{{@DataItem_m_strDescriptionFDITEM50_
 
 @}}
-[FDITEM49_]
+[FDITEM51_]
 m_strName=tblco-analitica-88-a
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="A"
-{{@DataItem_m_strDescriptionFDITEM49_
+{{@DataItem_m_strDescriptionFDITEM51_
 
 @}}
-[FDITEM50_]
+[FDITEM52_]
 m_strName=tblco-analitica-88-s
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S"
-{{@DataItem_m_strDescriptionFDITEM50_
+{{@DataItem_m_strDescriptionFDITEM52_
 
 @}}
-[FDITEM51_]
+[FDITEM53_]
 m_strName=tblco-analitica-88-o
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=" "
-{{@DataItem_m_strDescriptionFDITEM51_
+{{@DataItem_m_strDescriptionFDITEM53_
 
 @}}
-[FDITEM52_]
+[FDITEM54_]
 m_strName=tblco-bilancio
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM52_
+{{@DataItem_m_strDescriptionFDITEM54_
 $GEN type=combobox,comboclass=tblco_bilancio
 
 @}}
-[FDITEM53_]
+[FDITEM55_]
 m_strName=tblco-bilancio-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=" " "A" "C"
-{{@DataItem_m_strDescriptionFDITEM53_
+{{@DataItem_m_strDescriptionFDITEM55_
 
 @}}
-[FDITEM54_]
+[FDITEM56_]
 m_strName=tblco-bilancio-88-o
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=" "
-{{@DataItem_m_strDescriptionFDITEM54_
+{{@DataItem_m_strDescriptionFDITEM56_
 
 @}}
-[FDITEM55_]
+[FDITEM57_]
 m_strName=tblco-bilancio-88-a
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="A"
-{{@DataItem_m_strDescriptionFDITEM55_
+{{@DataItem_m_strDescriptionFDITEM57_
 
 @}}
-[FDITEM56_]
+[FDITEM58_]
 m_strName=tblco-bilancio-88-c
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="C"
-{{@DataItem_m_strDescriptionFDITEM56_
+{{@DataItem_m_strDescriptionFDITEM58_
 
 @}}
-[FDITEM57_]
+[FDITEM59_]
 m_strName=tblco-percipienti
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM57_
+{{@DataItem_m_strDescriptionFDITEM59_
 $GEN type=combobox,comboclass=tblco_percipienti
+
 @}}
-[FDITEM58_]
+[FDITEM60_]
 m_strName=tblco-percipienti-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="A" "P" "V" "T" " "
-{{@DataItem_m_strDescriptionFDITEM58_
+{{@DataItem_m_strDescriptionFDITEM60_
 
 @}}
-[FDITEM59_]
+[FDITEM61_]
 m_strName=tblco-percipienti-88-a
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="A"
-{{@DataItem_m_strDescriptionFDITEM59_
+{{@DataItem_m_strDescriptionFDITEM61_
 
 @}}
-[FDITEM60_]
+[FDITEM62_]
 m_strName=tblco-percipienti-88-p
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="P"
-{{@DataItem_m_strDescriptionFDITEM60_
+{{@DataItem_m_strDescriptionFDITEM62_
 
 @}}
-[FDITEM61_]
+[FDITEM63_]
 m_strName=tblco-percipienti-88-v
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="V"
-{{@DataItem_m_strDescriptionFDITEM61_
+{{@DataItem_m_strDescriptionFDITEM63_
 
 @}}
-[FDITEM62_]
+[FDITEM64_]
 m_strName=tblco-percipienti-88-t
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="T"
-{{@DataItem_m_strDescriptionFDITEM62_
+{{@DataItem_m_strDescriptionFDITEM64_
 
 @}}
-[FDITEM63_]
+[FDITEM65_]
 m_strName=tblco-percipienti-88-o
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=" "
-{{@DataItem_m_strDescriptionFDITEM63_
+{{@DataItem_m_strDescriptionFDITEM65_
 
 @}}
-[FDITEM64_]
+[FDITEM66_]
 m_strName=tblco-imponibile
 m_strRawPic=9(03)
 m_strPic=9(03)
@@ -637,11 +719,11 @@ m_nItemLevel=10
 m_nSync=-1
 m_nSign=4
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM64_
+{{@DataItem_m_strDescriptionFDITEM66_
 $GEN type=num,dec=0,size=04
 
 @}}
-[FDITEM65_]
+[FDITEM67_]
 m_strName=tblco-ritenuta
 m_strRawPic=9(03)v9(02)
 m_strPic=9(03)V9(02)
@@ -649,61 +731,63 @@ m_nItemLevel=10
 m_nSync=-1
 m_nSign=4
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM65_
+{{@DataItem_m_strDescriptionFDITEM67_
 $GEN type=num,dec=02,size=07
+
 @}}
-[FDITEM66_]
+[FDITEM68_]
 m_strName=tblco-causale-versamento
 m_strRawPic=x(04)
 m_strPic=X(04)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM66_
+{{@DataItem_m_strDescriptionFDITEM68_
 
 @}}
-[FDITEM67_]
+[FDITEM69_]
 m_strName=tblco-solo-mese
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM67_
+{{@DataItem_m_strDescriptionFDITEM69_
 $GEN type=checkbox,truevalue="S",falsevalue=" "
+
 @}}
-[FDITEM68_]
+[FDITEM70_]
 m_strName=tblco-solo-mese-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S" " "
-{{@DataItem_m_strDescriptionFDITEM68_
+{{@DataItem_m_strDescriptionFDITEM70_
 
 @}}
-[FDITEM69_]
+[FDITEM71_]
 m_strName=tblco-percipienti-mas
 m_strRawPic=x(08)
 m_strPic=X(08)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM69_
+{{@DataItem_m_strDescriptionFDITEM71_
 $GEN type=code,entity=mas
 
 @}}
-[FDITEM70_]
+[FDITEM72_]
 m_strName=tblco-tabella-conti-x
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM70_
+{{@DataItem_m_strDescriptionFDITEM72_
 
 
 
 
 @}}
-[FDITEM71_]
+[FDITEM73_]
 m_strName=tblco-tabella-conti
 m_nItemLevel=15
 m_nSync=-1
@@ -711,175 +795,175 @@ m_bOccurs=1
 m_bFixed=1
 m_strRawSize=10
 m_nSize=10
-{{@DataItem_m_strDescriptionFDITEM71_
+{{@DataItem_m_strDescriptionFDITEM73_
 
 @}}
-[FDITEM72_]
+[FDITEM74_]
 m_strName=tblco-tipo-cfm
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=20
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM72_
+{{@DataItem_m_strDescriptionFDITEM74_
 
 @}}
-[FDITEM73_]
+[FDITEM75_]
 m_strName=tblco-tipo-cfm-88-c
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="C"
-{{@DataItem_m_strDescriptionFDITEM73_
+{{@DataItem_m_strDescriptionFDITEM75_
 
 @}}
-[FDITEM74_]
+[FDITEM76_]
 m_strName=tblco-tipo-cfm-88-f
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="F"
-{{@DataItem_m_strDescriptionFDITEM74_
+{{@DataItem_m_strDescriptionFDITEM76_
 
 @}}
-[FDITEM75_]
+[FDITEM77_]
 m_strName=tblco-tipo-cfm-88-m
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="M"
-{{@DataItem_m_strDescriptionFDITEM75_
+{{@DataItem_m_strDescriptionFDITEM77_
 
 @}}
-[FDITEM76_]
+[FDITEM78_]
 m_strName=tblco-tipo-cfm-88-o
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=" "
-{{@DataItem_m_strDescriptionFDITEM76_
+{{@DataItem_m_strDescriptionFDITEM78_
 
 @}}
-[FDITEM77_]
+[FDITEM79_]
 m_strName=tblco-tipo-cfm-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="C" "F" "M" " "
-{{@DataItem_m_strDescriptionFDITEM77_
+{{@DataItem_m_strDescriptionFDITEM79_
 
 @}}
-[FDITEM78_]
+[FDITEM80_]
 m_strName=tblco-codice-cfm
 m_strRawPic=x(08)
 m_strPic=X(08)
 m_nItemLevel=20
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM78_
+{{@DataItem_m_strDescriptionFDITEM80_
 $GEN entity=codecfm
 
 @}}
-[FDITEM79_]
+[FDITEM81_]
 m_strName=tblco-segno-cfm
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=20
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM79_
+{{@DataItem_m_strDescriptionFDITEM81_
 
 @}}
-[FDITEM80_]
+[FDITEM82_]
 m_strName=tblco-segno-cfm-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="D" "A" " "
-{{@DataItem_m_strDescriptionFDITEM80_
+{{@DataItem_m_strDescriptionFDITEM82_
 
 @}}
-[FDITEM81_]
+[FDITEM83_]
 m_strName=tblco-segno-cfm-88-d
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="D"
-{{@DataItem_m_strDescriptionFDITEM81_
+{{@DataItem_m_strDescriptionFDITEM83_
 
 @}}
-[FDITEM82_]
+[FDITEM84_]
 m_strName=tblco-segno-cfm-88-a
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="A"
-{{@DataItem_m_strDescriptionFDITEM82_
+{{@DataItem_m_strDescriptionFDITEM84_
 
 @}}
-[FDITEM83_]
+[FDITEM85_]
 m_strName=tblco-segno-cfm-88-o
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=" "
-{{@DataItem_m_strDescriptionFDITEM83_
+{{@DataItem_m_strDescriptionFDITEM85_
 
 @}}
-[FDITEM84_]
+[FDITEM86_]
 m_strName=filler
 m_nItemLevel=10
 m_bRedefines=1
 m_strRedefines=tblco-tabella-conti-x
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM84_
+{{@DataItem_m_strDescriptionFDITEM86_
 
 @}}
-[FDITEM85_]
+[FDITEM87_]
 m_strName=tblco-tipo-cfm-01
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM85_
+{{@DataItem_m_strDescriptionFDITEM87_
 $GEN type=combobox,comboclass=generic_tipo_cfm,comboentity=tblco-tipo-cfm-01-e3
 
 @}}
-[FDITEM86_]
+[FDITEM88_]
 m_strName=tblco-codice-cfm-01
 m_strRawPic=x(08)
 m_strPic=X(08)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM86_
+{{@DataItem_m_strDescriptionFDITEM88_
 $GEN type=code,entity=var(tblco-tipo-cfm-01-e3)
+
 @}}
-[FDITEM87_]
+[FDITEM89_]
 m_strName=tblco-segno-cfm-01
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM87_
+{{@DataItem_m_strDescriptionFDITEM89_
 $GEN type=combobox,comboclass=tblce_contabile
 
 @}}
-[FDITEM88_]
+[FDITEM90_]
 m_strName=tblco-tipo-cfm-02
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM88_
+{{@DataItem_m_strDescriptionFDITEM90_
 $GEN type=combobox,comboclass=generic_tipo_cfm,comboentity=tblco-tipo-cfm-02-e3
-
 @}}
-[FDITEM89_]
+[FDITEM91_]
 m_strName=tblco-codice-cfm-02
 m_strRawPic=x(08)
 m_strPic=X(08)
@@ -887,33 +971,32 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=tblco-codice-cfm-0
-{{@DataItem_m_strDescriptionFDITEM89_
+{{@DataItem_m_strDescriptionFDITEM91_
 $GEN type=code,entity=var(tblco-tipo-cfm-02-e3)
 
 @}}
-[FDITEM90_]
+[FDITEM92_]
 m_strName=tblco-segno-cfm-02
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM90_
+{{@DataItem_m_strDescriptionFDITEM92_
 $GEN type=combobox,comboclass=tblce_contabile
 
 @}}
-[FDITEM91_]
+[FDITEM93_]
 m_strName=tblco-tipo-cfm-03
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM91_
+{{@DataItem_m_strDescriptionFDITEM93_
 $GEN type=combobox,comboclass=generic_tipo_cfm,comboentity=tblco-tipo-cfm-03-e3
-
 @}}
-[FDITEM92_]
+[FDITEM94_]
 m_strName=tblco-codice-cfm-03
 m_strRawPic=x(08)
 m_strPic=X(08)
@@ -921,31 +1004,32 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=tblco-codice-cfm-0
-{{@DataItem_m_strDescriptionFDITEM92_
+{{@DataItem_m_strDescriptionFDITEM94_
 $GEN type=code,entity=var(tblco-tipo-cfm-03-e3)
 
 @}}
-[FDITEM93_]
+[FDITEM95_]
 m_strName=tblco-segno-cfm-03
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM93_
+{{@DataItem_m_strDescriptionFDITEM95_
 $GEN type=combobox,comboclass=tblce_contabile
+
 @}}
-[FDITEM94_]
+[FDITEM96_]
 m_strName=tblco-tipo-cfm-04
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM94_
+{{@DataItem_m_strDescriptionFDITEM96_
 $GEN type=combobox,comboclass=generic_tipo_cfm,comboentity=tblco-tipo-cfm-04-e3
 @}}
-[FDITEM95_]
+[FDITEM97_]
 m_strName=tblco-codice-cfm-04
 m_strRawPic=x(08)
 m_strPic=X(08)
@@ -953,33 +1037,33 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=tblco-codice-cfm-0
-{{@DataItem_m_strDescriptionFDITEM95_
+{{@DataItem_m_strDescriptionFDITEM97_
 $GEN type=code,entity=var(tblco-tipo-cfm-04-e3)
 
 @}}
-[FDITEM96_]
+[FDITEM98_]
 m_strName=tblco-segno-cfm-04
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM96_
+{{@DataItem_m_strDescriptionFDITEM98_
 $GEN type=combobox,comboclass=tblce_contabile
 
 @}}
-[FDITEM97_]
+[FDITEM99_]
 m_strName=tblco-tipo-cfm-05
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM97_
+{{@DataItem_m_strDescriptionFDITEM99_
 $GEN type=combobox,comboclass=generic_tipo_cfm,comboentity=tblco-tipo-cfm-05-e3
 
 @}}
-[FDITEM98_]
+[FDITEM100_]
 m_strName=tblco-codice-cfm-05
 m_strRawPic=x(08)
 m_strPic=X(08)
@@ -987,33 +1071,32 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=tblco-codice-cfm-0
-{{@DataItem_m_strDescriptionFDITEM98_
+{{@DataItem_m_strDescriptionFDITEM100_
 $GEN type=code,entity=var(tblco-tipo-cfm-05-e3)
 
 @}}
-[FDITEM99_]
+[FDITEM101_]
 m_strName=tblco-segno-cfm-05
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM99_
+{{@DataItem_m_strDescriptionFDITEM101_
 $GEN type=combobox,comboclass=tblce_contabile
 
 @}}
-[FDITEM100_]
+[FDITEM102_]
 m_strName=tblco-tipo-cfm-06
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM100_
+{{@DataItem_m_strDescriptionFDITEM102_
 $GEN type=combobox,comboclass=generic_tipo_cfm,comboentity=tblco-tipo-cfm-06-e3
-
 @}}
-[FDITEM101_]
+[FDITEM103_]
 m_strName=tblco-codice-cfm-06
 m_strRawPic=x(08)
 m_strPic=X(08)
@@ -1021,32 +1104,33 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=tblco-codice-cfm-0
-{{@DataItem_m_strDescriptionFDITEM101_
+{{@DataItem_m_strDescriptionFDITEM103_
 $GEN type=code,entity=var(tblco-tipo-cfm-06-e3)
 
 @}}
-[FDITEM102_]
+[FDITEM104_]
 m_strName=tblco-segno-cfm-06
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM102_
+{{@DataItem_m_strDescriptionFDITEM104_
 $GEN type=combobox,comboclass=tblce_contabile
 
 @}}
-[FDITEM103_]
+[FDITEM105_]
 m_strName=tblco-tipo-cfm-07
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM103_
+{{@DataItem_m_strDescriptionFDITEM105_
 $GEN type=combobox,comboclass=generic_tipo_cfm,comboentity=tblco-tipo-cfm-07-e3
+
 @}}
-[FDITEM104_]
+[FDITEM106_]
 m_strName=tblco-codice-cfm-07
 m_strRawPic=x(08)
 m_strPic=X(08)
@@ -1054,33 +1138,32 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=tblco-codice-cfm-0
-{{@DataItem_m_strDescriptionFDITEM104_
+{{@DataItem_m_strDescriptionFDITEM106_
 $GEN type=code,entity=var(tblco-tipo-cfm-07-e3)
-
 @}}
-[FDITEM105_]
+[FDITEM107_]
 m_strName=tblco-segno-cfm-07
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM105_
+{{@DataItem_m_strDescriptionFDITEM107_
 $GEN type=combobox,comboclass=tblce_contabile
 
 @}}
-[FDITEM106_]
+[FDITEM108_]
 m_strName=tblco-tipo-cfm-08
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM106_
+{{@DataItem_m_strDescriptionFDITEM108_
 $GEN type=combobox,comboclass=generic_tipo_cfm,comboentity=tblco-tipo-cfm-08-e3
 
 @}}
-[FDITEM107_]
+[FDITEM109_]
 m_strName=tblco-codice-cfm-08
 m_strRawPic=x(08)
 m_strPic=X(08)
@@ -1088,32 +1171,33 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=tblco-codice-cfm-0
-{{@DataItem_m_strDescriptionFDITEM107_
+{{@DataItem_m_strDescriptionFDITEM109_
 $GEN type=code,entity=var(tblco-tipo-cfm-08-e3)
 
 @}}
-[FDITEM108_]
+[FDITEM110_]
 m_strName=tblco-segno-cfm-08
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM108_
+{{@DataItem_m_strDescriptionFDITEM110_
 $GEN type=combobox,comboclass=tblce_contabile
 
 @}}
-[FDITEM109_]
+[FDITEM111_]
 m_strName=tblco-tipo-cfm-09
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM109_
+{{@DataItem_m_strDescriptionFDITEM111_
 $GEN type=combobox,comboclass=generic_tipo_cfm,comboentity=tblco-tipo-cfm-09-e3
+
 @}}
-[FDITEM110_]
+[FDITEM112_]
 m_strName=tblco-codice-cfm-09
 m_strRawPic=x(08)
 m_strPic=X(08)
@@ -1121,54 +1205,55 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=tblco-codice-cfm-0
-{{@DataItem_m_strDescriptionFDITEM110_
+{{@DataItem_m_strDescriptionFDITEM112_
 $GEN type=code,entity=var(tblco-tipo-cfm-09-e3)
 
 @}}
-[FDITEM111_]
+[FDITEM113_]
 m_strName=tblco-segno-cfm-09
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM111_
+{{@DataItem_m_strDescriptionFDITEM113_
 $GEN type=combobox,comboclass=tblce_contabile
 
 @}}
-[FDITEM112_]
+[FDITEM114_]
 m_strName=tblco-tipo-cfm-10
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM112_
+{{@DataItem_m_strDescriptionFDITEM114_
 $GEN type=combobox,comboclass=generic_tipo_cfm,comboentity=tblco-tipo-cfm-10-e3
+
 @}}
-[FDITEM113_]
+[FDITEM115_]
 m_strName=tblco-codice-cfm-10
 m_strRawPic=x(08)
 m_strPic=X(08)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM113_
+{{@DataItem_m_strDescriptionFDITEM115_
 $GEN type=code,entity=var(tblco-tipo-cfm-10-e3)
 
 @}}
-[FDITEM114_]
+[FDITEM116_]
 m_strName=tblco-segno-cfm-10
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM114_
+{{@DataItem_m_strDescriptionFDITEM116_
 $GEN type=combobox,comboclass=tblce_contabile
 
 @}}
-[FDITEM115_]
+[FDITEM117_]
 m_strName=tblco-percipienti-co
 m_strRawPic=x(03)
 m_strPic=X(03)
@@ -1176,36 +1261,15 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=TBLCO-PERC-CO
-{{@DataItem_m_strDescriptionFDITEM115_
+{{@DataItem_m_strDescriptionFDITEM117_
 
 
 
 
 $GEN type=code,entity=tblco
-
-@}}
-[FDITEM116_]
-m_strName=tblco-commesse
-m_strRawPic=x(01)
-m_strPic=X(01)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM116_
-$GEN type=checkbox,truevalue="S",falsevalue=" "
-
-@}}
-[FDITEM117_]
-m_strName=tblco-commesse-88
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="S" " "
-{{@DataItem_m_strDescriptionFDITEM117_
-
 @}}
 [FDITEM118_]
-m_strName=tblco-input-totale
+m_strName=tblco-commesse
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=10
@@ -1216,7 +1280,7 @@ $GEN type=checkbox,truevalue="S",falsevalue=" "
 
 @}}
 [FDITEM119_]
-m_strName=tblco-input-totale-88
+m_strName=tblco-commesse-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -1225,207 +1289,210 @@ m_strTrue="S" " "
 
 @}}
 [FDITEM120_]
+m_strName=tblco-input-totale
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM120_
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+
+@}}
+[FDITEM121_]
+m_strName=tblco-input-totale-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM121_
+
+@}}
+[FDITEM122_]
 m_strName=tblco-input-totale-88-s
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S"
-{{@DataItem_m_strDescriptionFDITEM120_
+{{@DataItem_m_strDescriptionFDITEM122_
 
 @}}
-[FDITEM121_]
+[FDITEM123_]
 m_strName=tblco-input-totale-88-null
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=" "
-{{@DataItem_m_strDescriptionFDITEM121_
+{{@DataItem_m_strDescriptionFDITEM123_
 
 @}}
-[FDITEM122_]
+[FDITEM124_]
 m_strName=tblco-tblco-codice-sos
 m_strRawPic=x(03)
 m_strPic=X(03)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM122_
+{{@DataItem_m_strDescriptionFDITEM124_
 
 
 $GEN type=code,entity=tblco
 
 @}}
-[FDITEM123_]
+[FDITEM125_]
 m_strName=tblco-tblcc-codice
 m_strRawPic=x(03)
 m_strPic=X(03)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM123_
+{{@DataItem_m_strDescriptionFDITEM125_
 $GEN type=code,entity=tblcc
+
 @}}
-[FDITEM124_]
+[FDITEM126_]
 m_strName=tblco-data-valuta
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM124_
+{{@DataItem_m_strDescriptionFDITEM126_
 $GEN type=combobox,comboclass=tblco_data_valuta
 
 @}}
-[FDITEM125_]
+[FDITEM127_]
 m_strName=tblco-data-valuta-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="A" "M" " "
-{{@DataItem_m_strDescriptionFDITEM125_
+{{@DataItem_m_strDescriptionFDITEM127_
 
 @}}
-[FDITEM126_]
+[FDITEM128_]
 m_strName=tblco-data-valuta-88-a
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="A"
-{{@DataItem_m_strDescriptionFDITEM126_
+{{@DataItem_m_strDescriptionFDITEM128_
 
 @}}
-[FDITEM127_]
+[FDITEM129_]
 m_strName=tblco-data-valuta-88-m
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="M"
-{{@DataItem_m_strDescriptionFDITEM127_
+{{@DataItem_m_strDescriptionFDITEM129_
 
 @}}
-[FDITEM128_]
+[FDITEM130_]
 m_strName=tblco-data-valuta-88-o
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=" "
-{{@DataItem_m_strDescriptionFDITEM128_
+{{@DataItem_m_strDescriptionFDITEM130_
 
 @}}
-[FDITEM129_]
+[FDITEM131_]
 m_strName=tblco-ratei-risconti
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM129_
+{{@DataItem_m_strDescriptionFDITEM131_
 $GEN type=checkbox,truevalue="S",falsevalue=" "
+
 @}}
-[FDITEM130_]
+[FDITEM132_]
 m_strName=tblco-ratei-risconti-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S" " "
-{{@DataItem_m_strDescriptionFDITEM130_
+{{@DataItem_m_strDescriptionFDITEM132_
 
 @}}
-[FDITEM131_]
+[FDITEM133_]
 m_strName=tblco-ratei-risconti-88-si
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S"
-{{@DataItem_m_strDescriptionFDITEM131_
+{{@DataItem_m_strDescriptionFDITEM133_
 
 @}}
-[FDITEM132_]
+[FDITEM134_]
 m_strName=tblco-ratei-risconti-88-no
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=" "
-{{@DataItem_m_strDescriptionFDITEM132_
+{{@DataItem_m_strDescriptionFDITEM134_
 
 @}}
-[FDITEM133_]
+[FDITEM135_]
 m_strName=tblco-modulo-69
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM133_
+{{@DataItem_m_strDescriptionFDITEM135_
 $GEN type=combobox,comboclass=tblco_inps_prof
+
 @}}
-[FDITEM134_]
+[FDITEM136_]
 m_strName=tblco-modulo-69-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="A" "P" "V" " "
-{{@DataItem_m_strDescriptionFDITEM134_
+{{@DataItem_m_strDescriptionFDITEM136_
 
 @}}
-[FDITEM135_]
+[FDITEM137_]
 m_strName=tblco-modulo-69-88-a
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="A"
-{{@DataItem_m_strDescriptionFDITEM135_
+{{@DataItem_m_strDescriptionFDITEM137_
 
 @}}
-[FDITEM136_]
+[FDITEM138_]
 m_strName=tblco-modulo-69-88-p
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="P"
-{{@DataItem_m_strDescriptionFDITEM136_
+{{@DataItem_m_strDescriptionFDITEM138_
 
 @}}
-[FDITEM137_]
+[FDITEM139_]
 m_strName=tblco-modulo-69-88-v
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="V"
-{{@DataItem_m_strDescriptionFDITEM137_
+{{@DataItem_m_strDescriptionFDITEM139_
 
 @}}
-[FDITEM138_]
+[FDITEM140_]
 m_strName=tblco-modulo-69-88-o
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=" "
-{{@DataItem_m_strDescriptionFDITEM138_
-
-@}}
-[FDITEM139_]
-m_strName=tblco-solo-mese-69
-m_strRawPic=x(01)
-m_strPic=X(01)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM139_
-$GEN type=checkbox,truevalue="S",falsevalue=" "
-
-@}}
-[FDITEM140_]
-m_strName=tblco-solo-mese-69-88
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="S" " "
 {{@DataItem_m_strDescriptionFDITEM140_
 
 @}}
 [FDITEM141_]
-m_strName=tblco-magix-01
+m_strName=tblco-solo-mese-69
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=10
@@ -1436,7 +1503,7 @@ $GEN type=checkbox,truevalue="S",falsevalue=" "
 
 @}}
 [FDITEM142_]
-m_strName=tblco-magix-01-88
+m_strName=tblco-solo-mese-69-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -1445,7 +1512,7 @@ m_strTrue="S" " "
 
 @}}
 [FDITEM143_]
-m_strName=tblco-magix-02
+m_strName=tblco-magix-01
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=10
@@ -1453,9 +1520,10 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM143_
 $GEN type=checkbox,truevalue="S",falsevalue=" "
+
 @}}
 [FDITEM144_]
-m_strName=tblco-magix-02-88
+m_strName=tblco-magix-01-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -1464,7 +1532,7 @@ m_strTrue="S" " "
 
 @}}
 [FDITEM145_]
-m_strName=tblco-magix-03
+m_strName=tblco-magix-02
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=10
@@ -1472,9 +1540,10 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM145_
 $GEN type=checkbox,truevalue="S",falsevalue=" "
+
 @}}
 [FDITEM146_]
-m_strName=tblco-magix-03-88
+m_strName=tblco-magix-02-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -1483,7 +1552,7 @@ m_strTrue="S" " "
 
 @}}
 [FDITEM147_]
-m_strName=tblco-magix-04
+m_strName=tblco-magix-03
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=10
@@ -1494,7 +1563,7 @@ $GEN type=checkbox,truevalue="S",falsevalue=" "
 
 @}}
 [FDITEM148_]
-m_strName=tblco-magix-04-88
+m_strName=tblco-magix-03-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -1503,7 +1572,7 @@ m_strTrue="S" " "
 
 @}}
 [FDITEM149_]
-m_strName=tblco-magix-05
+m_strName=tblco-magix-04
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=10
@@ -1514,7 +1583,7 @@ $GEN type=checkbox,truevalue="S",falsevalue=" "
 
 @}}
 [FDITEM150_]
-m_strName=tblco-magix-05-88
+m_strName=tblco-magix-04-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -1523,7 +1592,7 @@ m_strTrue="S" " "
 
 @}}
 [FDITEM151_]
-m_strName=tblco-magix-06
+m_strName=tblco-magix-05
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=10
@@ -1531,9 +1600,10 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM151_
 $GEN type=checkbox,truevalue="S",falsevalue=" "
+
 @}}
 [FDITEM152_]
-m_strName=tblco-magix-06-88
+m_strName=tblco-magix-05-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -1542,7 +1612,7 @@ m_strTrue="S" " "
 
 @}}
 [FDITEM153_]
-m_strName=tblco-movimenti-interni
+m_strName=tblco-magix-06
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=10
@@ -1553,7 +1623,7 @@ $GEN type=checkbox,truevalue="S",falsevalue=" "
 
 @}}
 [FDITEM154_]
-m_strName=tblco-movimenti-interni-88
+m_strName=tblco-magix-06-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -1562,7 +1632,7 @@ m_strTrue="S" " "
 
 @}}
 [FDITEM155_]
-m_strName=tblco-iva-spedizionieri
+m_strName=tblco-movimenti-interni
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=10
@@ -1573,7 +1643,7 @@ $GEN type=checkbox,truevalue="S",falsevalue=" "
 
 @}}
 [FDITEM156_]
-m_strName=tblco-iva-spedizionieri-88
+m_strName=tblco-movimenti-interni-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -1582,6 +1652,52 @@ m_strTrue="S" " "
 
 @}}
 [FDITEM157_]
+m_strName=tblco-movimenti-interni-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM157_
+
+@}}
+[FDITEM158_]
+m_strName=tblco-movimenti-interni-ko
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" "
+{{@DataItem_m_strDescriptionFDITEM158_
+
+@}}
+[FDITEM159_]
+m_strName=tblco-iva-spedizionieri
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM159_
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+@}}
+[FDITEM160_]
+m_strName=tblco-iva-spedizionieri-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM160_
+
+@}}
+[FDITEM161_]
+m_strName=tblco-iva-spedizionieri-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM161_
+
+@}}
+[FDITEM162_]
 m_strName=tblco-tblco-codice-sos1
 m_strRawPic=x(03)
 m_strPic=X(03)
@@ -1589,258 +1705,210 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=TBLCO-CODICE-SOS1
-{{@DataItem_m_strDescriptionFDITEM157_
+{{@DataItem_m_strDescriptionFDITEM162_
+
 $GEN type=code,entity=tblco
+
 @}}
-[FDITEM158_]
+[FDITEM163_]
 m_strName=tblco-cmk-codice
 m_strRawPic=x(03)
 m_strPic=X(03)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM158_
+{{@DataItem_m_strDescriptionFDITEM163_
 $GEN type=code,entity=cmk
-
 @}}
-[FDITEM159_]
+[FDITEM164_]
 m_strName=tblco-tipo-movimento-magix
 m_strRawPic=x(02)
 m_strPic=X(02)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM159_
+{{@DataItem_m_strDescriptionFDITEM164_
 $GEN type=combobox,comboclass=tblco_tipo_mov_magix
 @}}
-[FDITEM160_]
+[FDITEM165_]
 m_strName=tblco-tipo-movimento-magix-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="MC" "FA" "NA" "FV" "NV" "CP" "CM" "IS" "PS" "IP" "PP" "SA" "SV"
-{{@DataItem_m_strDescriptionFDITEM160_
+{{@DataItem_m_strDescriptionFDITEM165_
 
 @}}
-[FDITEM161_]
+[FDITEM166_]
 m_strName=tblco-tipo-movimento-magix-88-mc
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="MC"
-{{@DataItem_m_strDescriptionFDITEM161_
+{{@DataItem_m_strDescriptionFDITEM166_
 
 @}}
-[FDITEM162_]
+[FDITEM167_]
 m_strName=tblco-tipo-movimento-magix-88-fa
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="FA"
-{{@DataItem_m_strDescriptionFDITEM162_
+{{@DataItem_m_strDescriptionFDITEM167_
 
 @}}
-[FDITEM163_]
+[FDITEM168_]
 m_strName=tblco-tipo-movimento-magix-88-na
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="NA"
-{{@DataItem_m_strDescriptionFDITEM163_
+{{@DataItem_m_strDescriptionFDITEM168_
 
 @}}
-[FDITEM164_]
+[FDITEM169_]
 m_strName=tblco-tipo-movimento-magix-88-fv
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="FV"
-{{@DataItem_m_strDescriptionFDITEM164_
+{{@DataItem_m_strDescriptionFDITEM169_
 
 @}}
-[FDITEM165_]
+[FDITEM170_]
 m_strName=tblco-tipo-movimento-magix-88-nv
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="NV"
-{{@DataItem_m_strDescriptionFDITEM165_
+{{@DataItem_m_strDescriptionFDITEM170_
 
 @}}
-[FDITEM166_]
+[FDITEM171_]
 m_strName=tblco-tipo-movimento-magix-88-cp
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="CP"
-{{@DataItem_m_strDescriptionFDITEM166_
+{{@DataItem_m_strDescriptionFDITEM171_
 
 @}}
-[FDITEM167_]
+[FDITEM172_]
 m_strName=tblco-tipo-movimento-magix-88-cm
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="CM"
-{{@DataItem_m_strDescriptionFDITEM167_
+{{@DataItem_m_strDescriptionFDITEM172_
 
 @}}
-[FDITEM168_]
+[FDITEM173_]
 m_strName=tblco-tipo-movimento-magix-88-is
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="IS"
-{{@DataItem_m_strDescriptionFDITEM168_
+{{@DataItem_m_strDescriptionFDITEM173_
 
 @}}
-[FDITEM169_]
+[FDITEM174_]
 m_strName=tblco-tipo-movimento-magix-88-ps
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="PS"
-{{@DataItem_m_strDescriptionFDITEM169_
+{{@DataItem_m_strDescriptionFDITEM174_
 
 @}}
-[FDITEM170_]
+[FDITEM175_]
 m_strName=tblco-tipo-movimento-magix-88-ip
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="IP"
-{{@DataItem_m_strDescriptionFDITEM170_
+{{@DataItem_m_strDescriptionFDITEM175_
 
 @}}
-[FDITEM171_]
+[FDITEM176_]
 m_strName=tblco-tipo-movimento-magix-88-pp
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="PP"
-{{@DataItem_m_strDescriptionFDITEM171_
+{{@DataItem_m_strDescriptionFDITEM176_
 
 @}}
-[FDITEM172_]
+[FDITEM177_]
 m_strName=tblco-tipo-movimento-magix-88-sa
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="SA"
-{{@DataItem_m_strDescriptionFDITEM172_
+{{@DataItem_m_strDescriptionFDITEM177_
 
 @}}
-[FDITEM173_]
+[FDITEM178_]
 m_strName=tblco-tipo-movimento-magix-88-sv
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="SV"
-{{@DataItem_m_strDescriptionFDITEM173_
+{{@DataItem_m_strDescriptionFDITEM178_
 
 @}}
-[FDITEM174_]
+[FDITEM179_]
 m_strName=tblco-art74-co
 m_strRawPic=x(03)
 m_strPic=X(03)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM174_
+{{@DataItem_m_strDescriptionFDITEM179_
 $GEN type=code,entity=tblco
-
 @}}
-[FDITEM175_]
+[FDITEM180_]
 m_strName=tblco-art74-cli
 m_strRawPic=x(08)
 m_strPic=X(08)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM175_
+{{@DataItem_m_strDescriptionFDITEM180_
 $GEN type=code,entity=cli
+
 @}}
-[FDITEM176_]
+[FDITEM181_]
 m_strName=tblco-obbligo-ins-cmk
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM176_
+{{@DataItem_m_strDescriptionFDITEM181_
 $GEN type=checkbox,truevalue="S",falsevalue=" "
 @}}
-[FDITEM177_]
+[FDITEM182_]
 m_strName=tblco-obbligo-ins-cmk-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=" " "S"
-{{@DataItem_m_strDescriptionFDITEM177_
+{{@DataItem_m_strDescriptionFDITEM182_
 
 @}}
-[FDITEM178_]
+[FDITEM183_]
 m_strName=tblco-codice-attivita
 m_strRawPic=x(03)
 m_strPic=X(03)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM178_
+{{@DataItem_m_strDescriptionFDITEM183_
 $GEN type=code,entity=01tat
 
 @}}
-[FDITEM179_]
-m_strName=tblco-modulo-33
-m_strRawPic=x(01)
-m_strPic=X(01)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM179_
-$GEN type=checkbox,truevalue="S",falsevalue=" "
-
-@}}
-[FDITEM180_]
-m_strName=tblco-modulo-33-88
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="S" " "
-{{@DataItem_m_strDescriptionFDITEM180_
-
-@}}
-[FDITEM181_]
-m_strName=tblco-modulo-33-88-s
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="S"
-{{@DataItem_m_strDescriptionFDITEM181_
-
-@}}
-[FDITEM182_]
-m_strName=tblco-scorporo-iva
-m_strRawPic=9(01)
-m_strPic=9(01)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM182_
-
-@}}
-[FDITEM183_]
-m_strName=tblco-scorporo-iva-si
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue=1
-m_strFalse=0
-{{@DataItem_m_strDescriptionFDITEM183_
-
-@}}
 [FDITEM184_]
-m_strName=tblco-notasufat-aa-prec
+m_strName=tblco-modulo-33
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=10
@@ -1848,9 +1916,10 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM184_
 $GEN type=checkbox,truevalue="S",falsevalue=" "
+
 @}}
 [FDITEM185_]
-m_strName=tblco-notasufat-aa-p-88
+m_strName=tblco-modulo-33-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -1859,256 +1928,386 @@ m_strTrue="S" " "
 
 @}}
 [FDITEM186_]
+m_strName=tblco-modulo-33-88-s
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM186_
+
+@}}
+[FDITEM187_]
+m_strName=tblco-scorporo-iva
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM187_
+
+@}}
+[FDITEM188_]
+m_strName=tblco-scorporo-iva-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM188_
+
+@}}
+[FDITEM189_]
+m_strName=tblco-notasufat-aa-prec
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM189_
+$GEN type=checkbox,truevalue="S",falsevalue=" "
+
+@}}
+[FDITEM190_]
+m_strName=tblco-notasufat-aa-p-88
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S" " "
+{{@DataItem_m_strDescriptionFDITEM190_
+
+@}}
+[FDITEM191_]
 m_strName=tblco-iva-per-cassa
 m_strRawPic=9(01)
 m_strPic=9(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM186_
+{{@DataItem_m_strDescriptionFDITEM191_
 
 @}}
-[FDITEM187_]
+[FDITEM192_]
 m_strName=tblco-iva-per-cassa-si
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
 m_strFalse=0
-{{@DataItem_m_strDescriptionFDITEM187_
+{{@DataItem_m_strDescriptionFDITEM192_
 
 @}}
-[FDITEM188_]
+[FDITEM193_]
 m_strName=tblco-enasarco-mas
 m_strRawPic=x(08)
 m_strPic=X(08)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM188_
+{{@DataItem_m_strDescriptionFDITEM193_
 $GEN type=code,entity=mas
 
 @}}
-[FDITEM189_]
+[FDITEM194_]
 m_strName=tblco-enasarco-tblco
 m_strRawPic=x(03)
 m_strPic=X(03)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM189_
+{{@DataItem_m_strDescriptionFDITEM194_
 $GEN type=code,entity=tblco
+
 @}}
-[FDITEM190_]
+[FDITEM195_]
 m_strName=tblco-flag-intra-pnota
 m_strRawPic=9(01)
 m_strPic=9(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM190_
-
+{{@DataItem_m_strDescriptionFDITEM195_
 
 @}}
-[FDITEM191_]
+[FDITEM196_]
 m_strName=tblco-flag-intra-pnota-ok
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
-{{@DataItem_m_strDescriptionFDITEM191_
+{{@DataItem_m_strDescriptionFDITEM196_
 
 @}}
-[FDITEM192_]
+[FDITEM197_]
 m_strName=tblco-flag-intra-pnota-ko
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=0
-{{@DataItem_m_strDescriptionFDITEM192_
+{{@DataItem_m_strDescriptionFDITEM197_
 
 @}}
-[FDITEM193_]
+[FDITEM198_]
 m_strName=tblco-transazione
 m_strRawPic=x(1)
 m_strPic=X(1)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM193_
+{{@DataItem_m_strDescriptionFDITEM198_
 
 $GEN type=combobox,comboclass=tbldo_transazione,
-
 @}}
-[FDITEM194_]
+[FDITEM199_]
 m_strName=tblco-transazione-88
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="0" THRU "9" " " "A" THRU "I"
-{{@DataItem_m_strDescriptionFDITEM194_
+{{@DataItem_m_strDescriptionFDITEM199_
 
 @}}
-[FDITEM195_]
+[FDITEM200_]
 m_strName=tblco-transazione-88-0
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="0" " "
-{{@DataItem_m_strDescriptionFDITEM195_
-04/2010
+{{@DataItem_m_strDescriptionFDITEM200_
+
 @}}
-[FDITEM196_]
+[FDITEM201_]
 m_strName=tblco-transazione-88-a
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="1" "A"
-{{@DataItem_m_strDescriptionFDITEM196_
+{{@DataItem_m_strDescriptionFDITEM201_
 
 @}}
-[FDITEM197_]
+[FDITEM202_]
 m_strName=tblco-transazione-88-b
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="2" "B"
-{{@DataItem_m_strDescriptionFDITEM197_
+{{@DataItem_m_strDescriptionFDITEM202_
 
 @}}
-[FDITEM198_]
+[FDITEM203_]
 m_strName=tblco-transazione-88-c
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="3" "C"
-{{@DataItem_m_strDescriptionFDITEM198_
+{{@DataItem_m_strDescriptionFDITEM203_
 
 @}}
-[FDITEM199_]
+[FDITEM204_]
 m_strName=tblco-transazione-88-d
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="4" "D"
-{{@DataItem_m_strDescriptionFDITEM199_
+{{@DataItem_m_strDescriptionFDITEM204_
 
 @}}
-[FDITEM200_]
+[FDITEM205_]
 m_strName=tblco-transazione-88-e
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="5" "E"
-{{@DataItem_m_strDescriptionFDITEM200_
+{{@DataItem_m_strDescriptionFDITEM205_
 
 @}}
-[FDITEM201_]
+[FDITEM206_]
 m_strName=tblco-transazione-88-f
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="6" "F"
-{{@DataItem_m_strDescriptionFDITEM201_
+{{@DataItem_m_strDescriptionFDITEM206_
 
 @}}
-[FDITEM202_]
+[FDITEM207_]
 m_strName=tblco-transazione-88-g
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="7" "G"
-{{@DataItem_m_strDescriptionFDITEM202_
+{{@DataItem_m_strDescriptionFDITEM207_
 
 @}}
-[FDITEM203_]
+[FDITEM208_]
 m_strName=tblco-transazione-88-h
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="8" "H"
-{{@DataItem_m_strDescriptionFDITEM203_
+{{@DataItem_m_strDescriptionFDITEM208_
 
 @}}
-[FDITEM204_]
+[FDITEM209_]
 m_strName=tblco-transazione-88-i
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="9" "I"
-{{@DataItem_m_strDescriptionFDITEM204_
+{{@DataItem_m_strDescriptionFDITEM209_
 
 @}}
-[FDITEM205_]
+[FDITEM210_]
 m_strName=tblco-transazione-solo-statistici
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="4" "5" "D" "E"
-{{@DataItem_m_strDescriptionFDITEM205_
+{{@DataItem_m_strDescriptionFDITEM210_
 
 @}}
-[FDITEM206_]
+[FDITEM211_]
 m_strName=tblco-flag-frn-orig
 m_strRawPic=x(01)
 m_strPic=X(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM206_
+{{@DataItem_m_strDescriptionFDITEM211_
 05/2010
 $GEN type=checkbox,truevalue="S",falsevalue=" "
-
 @}}
-[FDITEM207_]
+[FDITEM212_]
 m_strName=tblco-flag-frn-orig-ok
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S"
-{{@DataItem_m_strDescriptionFDITEM207_
+{{@DataItem_m_strDescriptionFDITEM212_
 
 @}}
-[FDITEM208_]
+[FDITEM213_]
 m_strName=tblco-flag-frn-orig-ko
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=" "
-{{@DataItem_m_strDescriptionFDITEM208_
+{{@DataItem_m_strDescriptionFDITEM213_
 
 @}}
-[FDITEM209_]
+[FDITEM214_]
 m_strName=tblco-nota-variazione
 m_strRawPic=9(01)
 m_strPic=9(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM209_
+{{@DataItem_m_strDescriptionFDITEM214_
 $GEN type=checkbox
+
 @}}
-[FDITEM210_]
-m_strName=tblco-filler
-m_strRawPic=x(1046)
-m_strPic=X(1046)
+[FDITEM215_]
+m_strName=tblco-split-payment
+m_strRawPic=9(01)
+m_strPic=9(01)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM210_
+{{@DataItem_m_strDescriptionFDITEM215_
+
         10  tblco-filler                    pic  x(1061).                                         |DS 08/10/2009 10.00
        10  tblco-filler                    pic  x(1050).                                          |DS 08/10/2009 10.00  |or 23/04/2010
         10  tblco-filler                    pic  x(1048).                         |or 23/04/2010  |mc 15/09/2010
 **        10  tblco-filler                    pic  x(1047).                       |mc 15/09/2010    | MACGIU 22/04/2013
+
 @}}
-[FDITEM211_]
+[FDITEM216_]
+m_strName=tblco-split-payment-ok
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM216_
+
+@}}
+[FDITEM217_]
+m_strName=tblco-split-payment-ko
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM217_
+
+@}}
+[FDITEM218_]
+m_strName=tblco-tblco-giro-iva-split
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM218_
+$GEN type=code,entity=tblco
+@}}
+[FDITEM219_]
+m_strName=tblco-tbltr-solo-iva-split
+m_strRawPic=x(01)
+m_strPic=X(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM219_
+$GEN type=code,entity=tbltr
+@}}
+[FDITEM220_]
+m_strName=tblco-tipo-doc
+m_strRawPic=x(04)
+m_strPic=X(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM220_
+$GEN type=combobox,comboclass=tblco_tipo_doc,
+
+@}}
+[FDITEM221_]
+m_strName=tblco-excludeFattEl
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM221_
+
+@}}
+[FDITEM222_]
+m_strName=tblco-tipo-doc-integrazione
+m_strRawPic=x(04)
+m_strPic=X(04)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM222_
+$GEN type=combobox,comboclass=tblco_tipo_doc,
+
+@}}
+[FDITEM223_]
+m_strName=tblco-filler
+m_strRawPic=x(1032)
+m_strPic=X(1032)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM223_
+
+@}}
+[FDITEM224_]
 m_strName=tblco-filler-ris
 m_strRawPic=x(40)
 m_strPic=X(40)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM211_
+{{@DataItem_m_strDescriptionFDITEM224_
 
 @}}
 [CStoAcucobolSL_]
@@ -2119,12 +2318,12 @@ m_nDevice=4
 m_nFormat=3
 m_nAccessMode=3
 m_strFileStatus=STATUS-TBLCO
-m_nNumber=1
 m_nCompression=70
 {{@SL_m_strDescription
 
 "
 R
+9
 @}}
 [SLPKEY_]
 m_strName=TBLCO-CODICE

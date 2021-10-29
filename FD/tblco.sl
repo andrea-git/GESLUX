@@ -1,6 +1,7 @@
       *
       *"
       *R
+      *9
        SELECT OPTIONAL TBLCO
            ASSIGN       TO RANDOM "TBLCO"
            ORGANIZATION IS INDEXED

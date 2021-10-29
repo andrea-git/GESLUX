@@ -2,7 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7DF298257-733-3262127706
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E5A1D101314-9-3279838
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -11,6 +11,7 @@ m_bRecordFixed=1
 m_bStandard=1
 m_strPrefix=TBLAG
 {{@FD_m_strDescription
+ 29/10/2021
 -----------------------------------------------------------------
  agenti
 -----------------------------------------------------------------
@@ -34,8 +35,26 @@ m_strPrefix=TBLAG
  tk 5599 - G2Mobile: collegamento con applicazioni InfinityMobile                                   | scamar 03/06/2014
            .new column tblag-fvMod74-user
            .resize filler to 920
+---------------------------------------------------------------------------------------------
+ Ticket 5818 - Tentata vendita e Fatturazione Elettronica PA: gestire diversi tipi documento        | MACGIU 29/07/2014
+               - Inseriti nuovi campi
+                 tblag-cod-doc-bolval-pa (codice documento da utilizzare per le bolle
+                                          valorizzate per clienti Pubblica Amministrazione)
+                 tblag-cod-doc-bolqta-pa (codice documento da utilizzare per le bolle
+                                          a quantità per clienti Pubblica Amministrazione)
 
- 
+---------------------------------------------------------------------------------------------
+ tk. 93 - Gestire il campo indirizzo mail sull'agente; nella stampa provvigioni agente attivare     | Cermic 05/09/2014
+          il tipo stampa = 8 (invio email) per consentire di spedire l'estratto conto provvigioni 
+          direttamente via mail all'agente.
+          Aggiunti campi: tblag-e-mail (indirizzo email)   
+                          tblag-invio-e-mail (flag di consenso all'invio email)                       
+---------------------------------------------------------------------------------------------
+ tk. 9263 - Accesso ODBC a file TBLAG: errore per nome campo troppo lungo                           | quasil 24/03/2021
+ per il campo TBLAG-CODICE-ABILITAZIONE-notused inserita la clausola $XFD  NAME=TBLAG-notused       | quasil 24/03/2021
+---------------------------------------------------------------------------------------------
+   
+
 @}}
 [FDITEM0_]
 m_strName=RECORD-TBLAG
@@ -90,7 +109,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM5_
 $GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=2
-
 @}}
 [FDITEM6_]
 m_strName=TBLAG-DESCRIZIONE2
@@ -122,7 +140,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM8_
 $GEN type=code,entity=tbldo
-
 @}}
 [FDITEM9_]
 m_strName=TBLAG-CODICE-DO-BOLVAL
@@ -144,7 +161,6 @@ m_bFixed=1
 m_strName_Xfd=TBLAG-DO-BOLQTA
 {{@DataItem_m_strDescriptionFDITEM10_
 $GEN type=code,entity=tbldo
-
 @}}
 [FDITEM11_]
 m_strName=TBLAG-CODICE-DO-BOLXE
@@ -156,7 +172,6 @@ m_bFixed=1
 m_strName_Xfd=TBLAG-DO-BOLXE
 {{@DataItem_m_strDescriptionFDITEM11_
 $GEN type=code,entity=tbldo
-
 @}}
 [FDITEM12_]
 m_strName=TBLAG-CODICE-MO-INTEGR
@@ -167,7 +182,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM12_
 $GEN type=code,entity=tblmo
-
 @}}
 [FDITEM13_]
 m_strName=TBLAG-CODICE-MO-SCARICO
@@ -189,7 +203,6 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM14_
        10  TBLAG-CODICE-MO-SOST    PIC  X(03).
        10  TBLAG-CODICE-MO-RESI    PIC  X(03).
-
 @}}
 [FDITEM15_]
 m_strName=TBLAG-CODICE-MO-RIPOS
@@ -212,6 +225,7 @@ m_bFixed=1
 m_strName_Xfd=TBLAG-MO-RINEG
 {{@DataItem_m_strDescriptionFDITEM16_
 $GEN type=code,entity=tblmo
+
 @}}
 [FDITEM17_]
 m_strName=TBLAG-CODICE-MO-RICP
@@ -223,7 +237,6 @@ m_bFixed=1
 m_strName_Xfd=TBLAG-MO-RICP
 {{@DataItem_m_strDescriptionFDITEM17_
 $GEN type=code,entity=tblmo
-
 @}}
 [FDITEM18_]
 m_strName=TBLAG-CODICE-TBLK2
@@ -234,7 +247,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM18_
 $GEN type=code,entity=tblk2
-
 @}}
 [FDITEM19_]
 m_strName=TBLAG-CODICE-MA
@@ -267,6 +279,7 @@ m_strRawSize=20
 m_nSize=20
 {{@DataItem_m_strDescriptionFDITEM21_
 $GEN entity=tblzo
+
 @}}
 [FDITEM22_]
 m_strName=TBLAG-TABELLA1
@@ -333,7 +346,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM27_
 $GEN type=code,entity=tblzo,blanknull=on
-
 @}}
 [FDITEM28_]
 m_strName=TBLAG-CODICE-ZO-03
@@ -376,6 +388,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM31_
 $GEN type=code,entity=tblzo,blanknull=on
+
 @}}
 [FDITEM32_]
 m_strName=TBLAG-CODICE-ZO-07
@@ -396,7 +409,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM33_
 $GEN type=code,entity=tblzo,blanknull=on
-
 @}}
 [FDITEM34_]
 m_strName=TBLAG-CODICE-ZO-09
@@ -417,7 +429,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM35_
 $GEN type=code,entity=tblzo,blanknull=on
-
 @}}
 [FDITEM36_]
 m_strName=TBLAG-CODICE-ZO-11
@@ -439,6 +450,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM37_
 $GEN type=code,entity=tblzo,blanknull=on
+
 @}}
 [FDITEM38_]
 m_strName=TBLAG-CODICE-ZO-13
@@ -449,6 +461,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM38_
 $GEN type=code,entity=tblzo,blanknull=on
+
 @}}
 [FDITEM39_]
 m_strName=TBLAG-CODICE-ZO-14
@@ -470,6 +483,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM40_
 $GEN type=code,entity=tblzo,blanknull=on
+
 @}}
 [FDITEM41_]
 m_strName=TBLAG-CODICE-ZO-16
@@ -480,7 +494,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM41_
 $GEN type=code,entity=tblzo,blanknull=on
-
 @}}
 [FDITEM42_]
 m_strName=TBLAG-CODICE-ZO-17
@@ -491,7 +504,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM42_
 $GEN type=code,entity=tblzo,blanknull=on
-
 @}}
 [FDITEM43_]
 m_strName=TBLAG-CODICE-ZO-18
@@ -502,7 +514,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM43_
 $GEN type=code,entity=tblzo,blanknull=on
-
 @}}
 [FDITEM44_]
 m_strName=TBLAG-CODICE-ZO-19
@@ -513,7 +524,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM44_
 $GEN type=code,entity=tblzo,blanknull=on
-
 @}}
 [FDITEM45_]
 m_strName=TBLAG-CODICE-ZO-20
@@ -524,6 +534,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM45_
 $GEN type=code,entity=tblzo,blanknull=on
+
 @}}
 [FDITEM46_]
 m_strName=TBLAG-VALORE-MAX-ABBUONI
@@ -566,7 +577,6 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM49_
 **        10  TBLAG-FLAG-MODIF-CODPA          PIC  9(01).                                           | MACGIU 25/02/2014
 **            88  TBLAG-FLAG-MODIF-CODPA-88       VALUE 0, 1.                                       | MACGIU 25/02/2014
-
 @}}
 [FDITEM50_]
 m_strName=TBLAG-FLAG-MODIF-CODPA-old-88
@@ -608,7 +618,6 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM53_
 **        10  TBLAG-MAGAZZINO-BLOCCATO        PIC  9(01).                                           | MACGIU 25/02/2014
 **            88  TBLAG-MAGAZZINO-BLOCCATO-88    VALUE 0, 1.                                        | MACGIU 25/02/2014
-
 @}}
 [FDITEM54_]
 m_strName=TBLAG-MAGAZZINO-BLOCCATO-old-88
@@ -636,6 +645,7 @@ m_strPic=X(10)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
+m_strName_Xfd=TBLAG-notused
 {{@DataItem_m_strDescriptionFDITEM56_
 **        10  TBLAG-CODICE-ABILITAZIONE       PIC  X(10).                                           | MACGIU 25/02/2014
 @}}
@@ -946,7 +956,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM84_
 $GEN type=checkbox,truevalue="S",falsevalue=" "
-
 @}}
 [FDITEM85_]
 m_strName=TBLAG-ISPETTORE-88
@@ -987,7 +996,6 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM88_
 **        10  TBLAG-DIR-TRASF-IN              PIC  X(50).                         |nb 05/07/2005    | MACGIU 25/02/2014
 **        10  TBLAG-DIR-TRASF-OUT             PIC  X(50).                         |nb 05/07/2005    | MACGIU 25/02/2014
-
 @}}
 [FDITEM89_]
 m_strName=TBLAG-DIR-TRASF-OUT-old
@@ -1009,7 +1017,6 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM90_
 **        10  TBLAG-ABI-OMAGGI                PIC  9(01).                      |nb 19/10/2005       | MACGIU 25/02/2014
 **            88  TBLAG-ABI-OMAGGI-88         VALUE 0 1.                       |nb 19/10/200        | MACGIU 25/02/2014
-
 @}}
 [FDITEM91_]
 m_strName=TBLAG-ABI-OMAGGI-old-88
@@ -1050,7 +1057,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM94_
 $GEN type=num,dec=00,size=4
-
 @}}
 [FDITEM95_]
 m_strName=TBLAG-PERC-VARIA-SC
@@ -1074,28 +1080,88 @@ m_bFixed=1
 
 @}}
 [FDITEM97_]
-m_strName=TBLAG-FILLER
-m_strRawPic=X(920)
-m_strPic=X(920)
+m_strName=tblag-cod-doc-bolval-pa
+m_strRawPic=x(03)
+m_strPic=X(03)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM97_
 e FV Mobile        | scamar 03/06/2014
-
+$GEN type=code,entity=tbldo
 @}}
 [FDITEM98_]
+m_strName=tblag-cod-doc-bolqta-pa
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM98_
+$GEN type=code,entity=tbldo
+
+@}}
+[FDITEM99_]
+m_strName=tblag-e-mail
+m_strRawPic=x(100)
+m_strPic=X(100)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM99_
+
+@}}
+[FDITEM100_]
+m_strName=tblag-invio-e-mail
+m_strRawPic=9(01)
+m_strPic=9(01)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM100_
+
+@}}
+[FDITEM101_]
+m_strName=tblag-invio-e-mail-off
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM101_
+
+@}}
+[FDITEM102_]
+m_strName=tblag-invio-e-mail-on
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM102_
+
+@}}
+[FDITEM103_]
+m_strName=TBLAG-FILLER
+m_strRawPic=X(813)
+m_strPic=X(813)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM103_
+
+@}}
+[FDITEM104_]
 m_strName=TBLAG-FILLER-RIS
 m_strRawPic=X(40)
 m_strPic=X(40)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM98_
+{{@DataItem_m_strDescriptionFDITEM104_
+**        10  TBLAG-FILLER                    PIC  X(914).                     | MACGIU 29/07/2014  | Cermic 05/09/2014
+**        10  TBLAG-FILLER                    PIC  X(920).                     | scamar 03/06/2014  | MACGIU 29/07/2014
 **        10  TBLAG-FILLER                    PIC  X(924).    |nb 19/10/2005 14.32                  | scamar 03/06/2014
        10  TBLAG-FILLER                    PIC  X(930).                        |nb 05/07/2005 12.27
         10  TBLAG-FILLER                    PIC  X(1030).                      |nb 05/07/2005 12.27
-
 @}}
 [CStoAcucobolSL_]
 m_nType=1

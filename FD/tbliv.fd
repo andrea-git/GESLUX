@@ -1,0 +1,302 @@
+      * 29/10/2021
+      * Record per tabelle iva
+      *
+      * tbliv-gruppo-af accetta valori da 0 a 5                                                          |sq 11/07/2007 14.06
+      * tbliv-cod-reparto gestione casse                                                                 | il 03/10/2007 12.38
+      * - lav.4250 inserito tbliv-subfornitura                                    |ds 29/10/2007 11.46
+      * - lav.4289 s.r.1883 aumentato il campo tbliv-codice-magix-collegato       |ds 08/11/2007 10.50
+      *
+      *
+      *
+      * --------------------------------------------------------------------------
+      *
+      * tk 240 - new prima nota                                                                          |ms 19/11/2008 14.12
+      *        - aggiunti livelli 88 per colonna TBLIV-PRO-RATA
+      *        - aggiunti livelli 88 per colonna TBLIV-IVA-ART-74
+      *        - aggiunti livelli 88 per colonna TBLIV-RITENUTA
+      *
+      *--------------------------------------------------------------------------
+      * ticket 1704 - Nuovi data warehouse via Kettle                                                    |mc 11/03/2009 13.54
+      *               Aggiunti livelli 88 su campi tipo checkbox                                         |mc 11/03/2009 13.54
+      *--------------------------------------------------------------------------
+      * ticket 2026 - aggiunto flag per gestione automatica enasarco                                     |DS 08/10/2009 11.17
+      *--------------------------------------------------------------------------
+      * ticket 2669 - aggiunto campo per nuova comunicazione iva 2010                                    |DS 22/01/2010 11.17
+      *-------------------------------------------------------------
+      * Tk 3194 - Black List                                                                            | scamar 09/07/2010 11:15:29
+      *         - aggiunti nuovi campi per la compilazione del modello BlackList
+      *----------------------------------------------------------------
+      * ticket 4537 - Elenchi black list (art. 2 c. 8 L. 44/2012)                                          | rososv 17/01/2014
+      *
+      * - Aggiunti campi zoom
+      *----------------------------------------------------------------
+      * tk. 6107 - gestione Split Payment nelle fatture di vendita verso la PA - (I)                       | Suadal 26/02/2015
+      *          - inserito nuovo campo per gestione "split payment"
+      *-------------------------------------------------------------------------------------------------------
+      * tk 7305 - XML per Fatelweb - impossibile coprire tutte le nature iva                               | scamar 15/06/2017
+      *           (ma anche comunicaz.ft.emesse/ricevute)
+      *           . new column tbliv-natura-iva
+      *           . change TBLIV-FILLER size to 1166
+      *-----------------------------------------------------------------------------------------------------------------------
+      * tk.8855 - FE XML gennaio 2020                                                                      | maxime 14/10/2019
+      *           Natura IVA passa a tre caratteri: il terzo è il "dettaglio"
+      *           Campo allungato grazie al FILLER - non necessitano recuperi
+      *-----------------------------------------------------------------------------------------------------------------------  
+      * tk. 8915 - Fe xml 2020                                                                             | maxime 03/03/2020
+      *-----------------------------------------------------------------------------------------------------------------------
+      * tk.9109 - FE xml 2020 aumentare ampiezza campi per natura iva                                      | maxime 05/03/2020
+      *           nature iva portate a 10 char 
+      *---------------------------------------------------------------------------------------------------------------------------
+      * tk.9065 - NSO gestione ordine preconcordato                                                        | EXT-POZEDO 11/03/2020                                                                                                                                                                      
+      *           aggiunto campo tbliv-nso-taxID per natura iva peppol per NSO
+      *---------------------------------------------------------------------------------------------------------------------------
+      
+      
+      
+      * tplvar zmm_title=Tabella IVA
+      * tplvar zmm_ver=09.01.00
+      * tplvar zmm_class=anagraphic
+      * tplvar zmm_returnkey=tbliv-codice2
+      *
+      * ZoomFields seq:
+      *   01.tbliv-codice2
+      *   02.tbliv-descrizione1
+      *   03.tbliv-descrizione2
+      *   04.tbliv-percentuale
+      *   05.tbliv-detraibilita
+      *   06.tbliv-iva-art-74
+      *   07.tbliv-gruppo-ac
+      *   08.tbliv-gruppo-af
+      *   09.tbliv-attive
+      *   10.tbliv-passive
+      *   11.tbliv-non-imponibile
+      *   12.tbliv-non-imponibile-passive
+      *   13.tbliv-esente
+      *   14.tbliv-esente-passive
+      *   15.tbliv-attive-intra
+      *   16.tbliv-passive-intra
+      *   17.tbliv-beni-strumen-attive-e
+      *   18.tbliv-beni-strumen-passive-e
+      *   19.tbliv-importazioni-rottami
+      *   20.tbliv-importazioni-oro
+      *   21.tbliv-beneservizio
+      *   22.tbliv-tipo-operazione-e
+      *   23.tbliv-natura-iva-e
+      *
+       FD tivaese.
+       01 record-tbliv.
+          05   tbliv-codice.
+              10  tbliv-codice1          pic x(02).
+      *$GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=20,zmm_align=L,zmm_pos=1,zmm_entity=tbliv
+              10  tbliv-codice2          pic x(20).
+          05  resto-record-tbliv.
+      *$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=2
+              10  tbliv-descrizione1      pic  x(30).
+      *$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=3
+              10  tbliv-descrizione2      pic  x(30).
+      *$GEN type=num,dec=02,size=07,zmm=on,zmm_title=Perc.,zmm_datatype=n,zmm_size=10,zmm_align=R,zmm_pos=4
+              10  tbliv-percentuale       pic  9(03)v9(02).
+      *$GEN type=num,dec=00,size=04,zmm=on,zmm_title=Detraibilità,zmm_datatype=n,zmm_size=10,zmm_align=R,zmm_pos=5
+              10  tbliv-detraibilita      pic  9(03).
+      *$GEN zmm=on,zmm_title=Telem.clienti,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=7
+              10  tbliv-gruppo-ac         pic  9(01).
+                  88  tbliv-gruppo-ac-88  value 0 thru 4.                                                |pm 05/03/2007 12.33
+      *$GEN zmm=on,zmm_title=Telem.forn.,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=8
+              10  tbliv-gruppo-af         pic  9(01).
+      *            88  tbliv-gruppo-af-88  value 0 thru 4.                                                |pm 05/03/2007 12.33
+                  88  tbliv-gruppo-af-88  value 0 thru 5.                                                |sq 11/07/2007 14.07
+      
+              10  tbliv-gruppo-101        pic  9(01).
+                  88  tbliv-gruppo-101-88 value 0 2.
+      
+              10  tbliv-gruppo-102        pic  9(01).
+                  88  tbliv-gruppo-102-88 value 0 3 5 6.
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+              10  tbliv-recupero-anno     pic  x(01).
+                  88  tbliv-recupero-anno-88    value "S" " ".
+                  88  tbliv-recupero-anno-si    value "S".                                               |mc 11/03/2009 13.54
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+              10  tbliv-plafond           pic  x(01).
+                  88  tbliv-plafond-88    value "S" " ".
+                  88  tbliv-plafond-si    value "S".                                                     |mc 11/03/2009 13.54
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+              10  tbliv-esenzione         pic  x(01).
+                  88  tbliv-esenzione-88  value "S" " ".
+                  88  tbliv-esenzione-si  value "S".                                                     |mc 11/03/2009 13.54
+      *$GEN type=combobox,comboclass=tbliv_ritenuta
+              10  tbliv-ritenuta          pic  x(01).
+                  88  tbliv-ritenuta-88              value "S" " " "F".
+                  88  tbliv-ritenuta-soggetto        value "S".                                          |ms 19/11/2008 14.10
+                  88  tbliv-ritenuta-non-soggetto    value " ".                                          |ms 19/11/2008 14.10
+                  88  tbliv-ritenuta-fuori-conteggio value "F".                                          |ms 19/11/2008 14.10
+      
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+              10  TBLIV-VENTILAZIONE      PIC  X(01).
+                  88  TBLIV-VENTILAZIONE-88     VALUE "S" " ".
+                  88  tbliv-ventilazione-si     value "S".                                               |mc 11/03/2009 13.54
+      *$GEN type=combobox,comboclass=tbliv_pro_rata
+              10  TBLIV-PRO-RATA          PIC  X(01).
+      *            88  TBLIV-PRO-RATA-88   VALUE "S" " ".                         |DS 15/04/2005 9.18
+                  88  TBLIV-PRO-RATA-88           VALUE "I" "E" "N" " ".                |DS 15/04/2005 9.18
+                  88  tbliv-pro-rata-imponibile       value "I".                                         |ms 19/11/2008 16.34
+                  88  tbliv-pro-rata-esente           value "E".                                         |ms 19/11/2008 16.34
+                  88  tbliv-pro-rata-non-imponibile   value "N".                                         |ms 19/11/2008 16.34
+                  88  tbliv-pro-rata-non-gestito      value " ".                                         |ms 19/11/2008 16.34
+      
+      *$GEN type=combobox,comboclass=tbliv_agricoltura
+              10  TBLIV-AGRICOLTURA       PIC  X(01).
+                  88  TBLIV-AGRICOLTURA-88      VALUE "S" "M" " ".
+                  88  TBLIV-AGRICOLTURA-88-s    VALUE "S".
+                  88  TBLIV-AGRICOLTURA-88-m    VALUE "M".
+                  88  TBLIV-AGRICOLTURA-88-o    VALUE " ".
+                  88  TBLIV-AGRICOLTURA-88-g    VALUE "S" "M".
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+              10  TBLIV-SPESE-BOLLO       PIC  X(01).
+                  88  TBLIV-SPESE-BOLLO-88      VALUE "S" " ".
+                  88  tbliv-spese-bollo-si      value "S".                                               |mc 11/03/2009 13.54
+      *$GEN type=code,entity=tbliv
+              10  tbliv-iva-ventilazione  pic  x(03).
+              10  TBLIV-RECUPERO-PERIODO  PIC  X(01).
+                  88  TBLIV-RECUPERO-PERIODO-88 VALUE "S" " ".
+                  88  tbliv-recupero-periodo-si value "S".                                               |mc 11/03/2009 13.54
+              10  TBLIV-AGENZIE-VIAGGIO   PIC  X(01).
+                  88  TBLIV-AGENZIE-VIAGGIO-88-o    VALUE " ".
+                  88  TBLIV-AGENZIE-VIAGGIO-88-e    VALUE "C".
+                  88  TBLIV-AGENZIE-VIAGGIO-88-c    VALUE "E".
+                  88  TBLIV-AGENZIE-VIAGGIO-88-g    VALUE " " "C" "E".
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+              10  TBLIV-RIPARTIZIONE              PIC  X(01).
+                  88  TBLIV-RIPARTIZIONE-88           VALUE " " "S".
+                  88  tbliv-ripartizione-si           value "S".                                         |mc 11/03/2009 13.54
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+              10  TBLIV-INTRA-NON-SOGG            PIC  X(01).
+                  88  TBLIV-INTRA-NON-SOGG-88        VALUE " " "S".
+                  88  tbliv-intra-non-sogg-si        value "S".                                          |mc 11/03/2009 13.54
+              10  TBLIV-PERCE-COMPENSAZIONE-ALFA.
+      *$GEN type=num,dec=02,size=07
+                  15  tbliv-perce-compensazione   PIC  9(03)V9(02).
+      
+              10  tbliv-codice-magix-collegato-old    pic  x(03).                 |DS 08/11/2007 10.57
+      *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Tot.op.attive,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=9
+              10  TBLIV-ATTIVE                    PIC  X(01).
+                  88  TBLIV-ATTIVE-88                 VALUE "S" " ".
+                  88  tbliv-attive-si                 value "S".                                         |mc 11/03/2009 13.54
+      *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Op.attive intra,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=15
+              10  TBLIV-ATTIVE-INTRA              PIC  X(01).
+                  88  TBLIV-ATTIVE-INTRA-88           VALUE "S" " ".
+                  88  tbliv-attive-intra-si           value "S".                                         |mc 11/03/2009 13.54
+      *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Tot.op.passive,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=10
+              10  TBLIV-PASSIVE                   PIC  X(01).
+                  88  TBLIV-PASSIVE-88                VALUE "S" " ".
+                  88  tbliv-passive-si                value "S".                                         |mc 11/03/2009 13.54
+      *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Op.passive intra,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=16
+              10  TBLIV-PASSIVE-INTRA             PIC  X(01).
+                  88  TBLIV-PASSIVE-INTRA-88          VALUE "S" " ".
+                  88  tbliv-passive-intra-si          value "S".                                         |mc 11/03/2009 13.54
+      *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Import. oro,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=20
+              10  TBLIV-IMPORTAZIONI-ORO          PIC  X(01).
+                  88  TBLIV-IMPORTAZIONI-ORO-88       VALUE "S" " ".
+                  88  tbliv-importazioni-oro-si       value "S".                                         |mc 11/03/2009 13.54
+      *
+      * comunicazione annule dati iva dal 2003
+      *
+      *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Op.attive n.imp.,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=11
+              10  TBLIV-NON-IMPONIBILE            PIC  X(01).
+                  88  TBLIV-NON-IMPONIBILE-88         VALUE "S" " ".
+                  88  tbliv-non-imponibile-si         value "S".                                         |mc 11/03/2009 13.54
+      *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Op.attive esenti,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=13
+              10  TBLIV-ESENTE                    PIC  X(01).
+                  88  TBLIV-ESENTE-88                 VALUE "S" " ".
+                  88  tbliv-esente-si                 value "S".                                         |mc 11/03/2009 13.54
+              10  TBLIV-FUORI-CAMPO               PIC  X(01).
+                  88  TBLIV-FUORI-CAMPO-88            VALUE "S" " ".
+      *
+      *
+      *
+      *
+      *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Op.passive n.imp.,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=12
+              10  TBLIV-NON-IMPONIBILE-PASSIVE    PIC  X(01).
+                  88  TBLIV-NON-IMPONIBILE-PASSIVE-88  VALUE "S" " ".
+                  88  tbliv-non-imponibile-passive-si  value "S".                                        |mc 11/03/2009 13.54
+      *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Op.passive esenti,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=14
+              10  TBLIV-ESENTE-PASSIVE            PIC  X(01).
+                  88  TBLIV-ESENTE-PASSIVE-88          VALUE "S" " ".
+                  88  tbliv-esente-passive-si          value "S".                                        |mc 11/03/2009 13.54
+      *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Rev.charge,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=6
+              10  TBLIV-IVA-ART-74                PIC  X(01).            |ds 23.10.03
+                  88  TBLIV-IVA-ART-74-88            VALUE "S" " ".      |ds 23.10.03
+                  88  tbliv-iva-art-74-88-si         value "S".                                          |ms 19/11/2008 14.09
+                  88  tbliv-iva-art-74-88-no         value " ".                                          |ms 19/11/2008 14.09
+      
+      
+      
+      
+      *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Rottami,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=19
+              10  TBLIV-IMPORTAZIONI-ROTTAMI      PIC  X(01).            |ds 10.01.05
+                  88  TBLIV-IMPORTAZIONI-ROTTAMI-88  VALUE "S" " ".      |ds 10.01.05
+                  88  tbliv-importazioni-rottami-si  value "S".                                          |mc 11/03/2009 13.54
+              10   tbliv-cod-reparto               pic  x(03).                                            | il 03/10/2007 12.40
+      *        10  TBLIV-FILLER                    PIC  X(1212).          |ds 23.10.03
+      *        10  TBLIV-FILLER                    PIC  X(1211).          |ds 23.10.03                    | il 03/10/2007 12.39
+      *$GEN type=checkbox,truevalue="S",falsevalue=" "
+              10  tbliv-subfornitura               pic  x(01).                    |ds 29/10/2007 11.44
+                  88  tbliv-subfornitura-88        value "S" " ".                     |ds 29/10/2007 11.44
+                  88  tbliv-subfornitura-S         value "S".                         |ds 29/10/2007 11.44
+      *        10  TBLIV-FILLER                    PIC  X(1208).                  |ds 29/10/2007 11.44
+      *        10  TBLIV-FILLER                    PIC  X(1207).                  |DS 08/11/2007 10.59|ds 29/10/2007 11.44
+              10  tbliv-codice-magix-collegato    pic  x(30).                    |DS 08/11/2007 10.57
+              10  tbliv-enasarco                  pic  9(01).                                            |ds 08/10/2009 11.22
+                  88   tbliv-enasarco-si          value 1 false 0.                                       |DS 08/10/2009 11.22
+      *        10  TBLIV-FILLER                    PIC  X(1177).                                         |ds 08/10/2009 11.23
+              10  tbliv-beni-strumen-attive       pic  9(01).                                            |ds 22/01/2010 11.24
+                  88   tbliv-beni-strumen-attive-si   value 1 false 0.                                   |ds 22/01/2010 11.24
+              10  tbliv-beni-strumen-passive      pic  9(01).                                            |ds 22/01/2010 11.24
+                  88   tbliv-beni-strumen-passive-si  value 1 false 0.                                   |ds 22/01/2010 11.24
+      *        10  TBLIV-FILLER                    PIC  X(1176).                                         |ds 22/01/2010 11.18
+      *$GEN type=radiobutton,value_1="B",image_1=1,value_2="S",image_2=2,,zmm=on,zmm_title=Bene/serv.,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=21
+              10  tbliv-beneservizio              pic x.	                                           | scamar 09/07/2010 11:42:18
+                  88 tbliv-beneservizio-bene      value "B".	                                           | scamar 09/07/2010 11:42:19 
+                  88 tbliv-beneservizio-servizio  value "S".	                                           | scamar 09/07/2010 11:42:19
+                  88 tbliv-beneservizio-ok        value "B" "S".                                         | scamar 09/07/2010 11:42:20
+      *$GEN type=combobox,comboclass=tbliv_tipo_operazione,
+              10  tbliv-tipo-operazione                   pic x(02).                                | scamar 09/07/2010 11:42:18
+                  88 tbliv-tipo-operazione-imponibile     value "IM".                                 | scamar 09/07/2010 12:13:38
+                  88 tbliv-tipo-operazione-non-imponibile value "NI".                                 | scamar 09/07/2010 12:13:38
+                  88 tbliv-tipo-operazione-esente         value "ES".                                 | scamar 09/07/2010 12:13:38
+                  88 tbliv-tipo-operazione-non-soggetta   value "NS".                                 | scamar 09/07/2010 12:13:38
+                  88 tbliv-tipo-operazione-fuori-campo    value "FC".                                 | scamar 09/07/2010 12:13:39
+                  88 tbliv-tipo-operazione-ok             
+                     value  "IM" "NI" "ES" "NS" "FC".             | scamar 09/07/2010 15:14:45
+      *$GEN type=code,entity=tbliv
+              10  tbliv-tbliv-codice-split        pic  x(03).                                              | Suadal 26/02/2015
+      *        10  TBLIV-FILLER                    PIC  X(1171).           | scamar 09/07/2010 12:25:16    | Suadal 26/02/2015
+      *$GEN type=combobox,comboclass=tbliv_natura_iva,
+              10  tbliv-natura-iva                pic  x(10).                                              | maxime 05/03/2020
+          
+                  88 tbliv-natura-iva-imp                value "IM".
+                  88 tbliv-natura-iva-escluse            
+                     value "N1" thru "N1zzzzzzzz".                     | maxime 05/03/2020
+                  88 tbliv-natura-iva-non-sogg           
+                     value "N2" thru "N2zzzzzzzz".                     | maxime 05/03/2020
+                  88 tbliv-natura-iva-non-imp            
+                     value "N3" thru "N3zzzzzzzz".                     | maxime 05/03/2020
+                  88 tbliv-natura-iva-esenti             
+                     value "N4" thru "N4zzzzzzzz".                     | maxime 05/03/2020
+                  88 tbliv-natura-iva-non-esposta        
+                     value "N5" thru "N5zzzzzzzz".                     | maxime 05/03/2020
+                  88 tbliv-natura-iva-reverse-charge     
+                     value "N6" thru "N6zzzzzzzz".                     | maxime 05/03/2020
+                  88 tbliv-natura-iva-intra              
+                     value "N7" thru "N7zzzzzzzz".                     | maxime 05/03/2020
+                  88 tbliv-natura-iva-non-comunicare     value "NN".
+                  
+      *$GEN type=combobox,comboclass=11nsr_taxid,
+              10  tbliv-nso-taxID                 pic x(02).  | cac:ClassifiedTaxCategory.ID               | EXT-POZEDO 11/03/2020            
+                  88 tbliv-nso-taxID-ok           
+                     value "  " "AE" "E" "S" "Z" "G" "O" "K" "L" "M".         | EXT-POZEDO 11/03/2020 
+                  88 tbliv-nso-taxID-empty        value "  ".                                              | EXT-POZEDO 11/03/2020
+                 
+              10  tbliv-filler                    pic  x(1156).                                            | EXT-POZEDO 11/03/2020                                           
+      
+              10  TBLIV-FILLER-RIS                PIC  X(40).
+

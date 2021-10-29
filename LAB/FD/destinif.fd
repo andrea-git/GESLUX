@@ -52,4 +52,7 @@
                        88 desf-ufficio-luca VALUE IS "L". 
                        88 desf-ufficio-massimo VALUE IS "M". 
                    15 desf-pag         PIC  x(3).
-                   15 desf-alfa-vuoto  PIC  X(496).
+                   15 desf-ev-immediata            PIC  x.
+                       88 desf-ev-immediata-no VALUE IS " ", "N". 
+                       88 desf-ev-immediata-si VALUE IS "S". 
+                   15 desf-alfa-vuoto  PIC  X(495).

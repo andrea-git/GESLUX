@@ -1,3 +1,4 @@
+      * 29/10/2021
       *-----------------------------------------------------------------
       * agenti
       *-----------------------------------------------------------------
@@ -21,8 +22,26 @@
       * tk 5599 - G2Mobile: collegamento con applicazioni InfinityMobile                                   | scamar 03/06/2014
       *           .new column tblag-fvMod74-user
       *           .resize filler to 920
+      *---------------------------------------------------------------------------------------------
+      * Ticket 5818 - Tentata vendita e Fatturazione Elettronica PA: gestire diversi tipi documento        | MACGIU 29/07/2014
+      *               - Inseriti nuovi campi
+      *                 tblag-cod-doc-bolval-pa (codice documento da utilizzare per le bolle
+      *                                          valorizzate per clienti Pubblica Amministrazione)
+      *                 tblag-cod-doc-bolqta-pa (codice documento da utilizzare per le bolle
+      *                                          a quantità per clienti Pubblica Amministrazione)
       *
-      * 
+      *---------------------------------------------------------------------------------------------
+      * tk. 93 - Gestire il campo indirizzo mail sull'agente; nella stampa provvigioni agente attivare     | Cermic 05/09/2014
+      *          il tipo stampa = 8 (invio email) per consentire di spedire l'estratto conto provvigioni 
+      *          direttamente via mail all'agente.
+      *          Aggiunti campi: tblag-e-mail (indirizzo email)   
+      *                          tblag-invio-e-mail (flag di consenso all'invio email)                       
+      *---------------------------------------------------------------------------------------------
+      * tk. 9263 - Accesso ODBC a file TBLAG: errore per nome campo troppo lungo                           | quasil 24/03/2021
+      * per il campo TBLAG-CODICE-ABILITAZIONE-notused inserita la clausola $XFD  NAME=TBLAG-notused       | quasil 24/03/2021
+      *---------------------------------------------------------------------------------------------
+      *   
+      *
        FD  TBLAG.
        01 RECORD-TBLAG.
            05 TBLAG-CODICE.
@@ -31,52 +50,46 @@
                10 TBLAG-CODICE2    PIC  X(20).
            05 RESTO-RECORD-TBLAG.
       *$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=2
-      *
                10 TBLAG-DESCRIZIONE1           PIC  X(30).
       *$GEN zmm=on,zmm_title=Descrizione 2,zmm_datatype=x,zmm_size=30,zmm_align=L,zmm_pos=3
       *
                10 TBLAG-DESCRIZIONE2           PIC  X(30).
                10 TBLAG-NUMERO-TERMINALE       PIC  9(03).
       *$GEN type=code,entity=tbldo
-      *
                10 TBLAG-CODICE-DO-FAT          PIC  X(03).
       *$GEN type=code,entity=tbldo
                10 TBLAG-CODICE-DO-BOLVAL       PIC  X(03).
       *(( XFD NAME = TBLAG-DO-BOLQTA ))
       *$GEN type=code,entity=tbldo
-      *
                10 TBLAG-CODICE-DO-BOLQTA       PIC  X(03).
       *(( XFD NAME = TBLAG-DO-BOLXE ))
       *$GEN type=code,entity=tbldo
-      *
                10 TBLAG-CODICE-DO-BOLXE        PIC  X(03).
       *$GEN type=code,entity=tblmo
-      *
                10 TBLAG-CODICE-MO-INTEGR       PIC  X(03).
       *$GEN type=code,entity=tblmo
                10 TBLAG-CODICE-MO-SCARICO      PIC  X(03).
       *       10  TBLAG-CODICE-MO-SOST    PIC  X(03).
       *       10  TBLAG-CODICE-MO-RESI    PIC  X(03).
-      *
                10 TBLAG-FILLER1    PIC  X(06).
       *$GEN type=code,entity=tblmo
       *
                10 TBLAG-CODICE-MO-RIPOS        PIC  X(03).
       *(( XFD NAME = TBLAG-MO-RINEG ))
       *$GEN type=code,entity=tblmo
+      *
                10 TBLAG-CODICE-MO-RINEG        PIC  X(03).
       *(( XFD NAME = TBLAG-MO-RICP ))
       *$GEN type=code,entity=tblmo
-      *
                10 TBLAG-CODICE-MO-RICP         PIC  X(03).
       *$GEN type=code,entity=tblk2
-      *
                10 TBLAG-CODICE-TBLK2           PIC  X(03).
       *$GEN type=code,entity=tblma
       *
                10 TBLAG-CODICE-MA  PIC  X(03).
                10 TBLAG-TABELLA.
       *$GEN entity=tblzo
+      *
                    15 TBLAG-CODICE-ZO  PIC  X(03)
                               OCCURS 20 TIMES.
                10 TBLAG-TABELLA1 REDEFINES TBLAG-TABELLA.
@@ -88,7 +101,6 @@
       *$GEN type=code,entity=tblzo,blanknull=on
                    15 TBLAG-CODICE-ZO-01           PIC  X(03).
       *$GEN type=code,entity=tblzo,blanknull=on
-      *
                    15 TBLAG-CODICE-ZO-02           PIC  X(03).
       *$GEN type=code,entity=tblzo,blanknull=on
       *
@@ -99,42 +111,41 @@
       *$GEN type=code,entity=tblzo,blanknull=on
                    15 TBLAG-CODICE-ZO-05           PIC  X(03).
       *$GEN type=code,entity=tblzo,blanknull=on
+      *
                    15 TBLAG-CODICE-ZO-06           PIC  X(03).
       *$GEN type=code,entity=tblzo,blanknull=on
                    15 TBLAG-CODICE-ZO-07           PIC  X(03).
       *$GEN type=code,entity=tblzo,blanknull=on
-      *
                    15 TBLAG-CODICE-ZO-08           PIC  X(03).
       *$GEN type=code,entity=tblzo,blanknull=on
                    15 TBLAG-CODICE-ZO-09           PIC  X(03).
       *$GEN type=code,entity=tblzo,blanknull=on
-      *
                    15 TBLAG-CODICE-ZO-10           PIC  X(03).
       *$GEN type=code,entity=tblzo,blanknull=on
       *
                    15 TBLAG-CODICE-ZO-11           PIC  X(03).
       *$GEN type=code,entity=tblzo,blanknull=on
+      *
                    15 TBLAG-CODICE-ZO-12           PIC  X(03).
       *$GEN type=code,entity=tblzo,blanknull=on
+      *
                    15 TBLAG-CODICE-ZO-13           PIC  X(03).
       *$GEN type=code,entity=tblzo,blanknull=on
       *
                    15 TBLAG-CODICE-ZO-14           PIC  X(03).
       *$GEN type=code,entity=tblzo,blanknull=on
+      *
                    15 TBLAG-CODICE-ZO-15           PIC  X(03).
       *$GEN type=code,entity=tblzo,blanknull=on
-      *
                    15 TBLAG-CODICE-ZO-16           PIC  X(03).
       *$GEN type=code,entity=tblzo,blanknull=on
-      *
                    15 TBLAG-CODICE-ZO-17           PIC  X(03).
       *$GEN type=code,entity=tblzo,blanknull=on
-      *
                    15 TBLAG-CODICE-ZO-18           PIC  X(03).
       *$GEN type=code,entity=tblzo,blanknull=on
-      *
                    15 TBLAG-CODICE-ZO-19           PIC  X(03).
       *$GEN type=code,entity=tblzo,blanknull=on
+      *
                    15 TBLAG-CODICE-ZO-20           PIC  X(03).
       *$GEN type=num,dec=03,size=11
       *
@@ -145,7 +156,6 @@
                    88 TBLAG-FLAG-ABILITA-MAGAZ-old-88 VALUE IS 0, 1. 
       ***        10  TBLAG-FLAG-MODIF-CODPA          PIC  9(01).                                           | MACGIU 25/02/2014
       ***            88  TBLAG-FLAG-MODIF-CODPA-88       VALUE 0, 1.                                       | MACGIU 25/02/2014
-      *
                10 TBLAG-FLAG-MODIF-CODPA-old   PIC  9(01).
                    88 TBLAG-FLAG-MODIF-CODPA-old-88 VALUE IS 0, 1. 
       ***        10  TBLAG-PREZZO-BLOCCATO           PIC  9(01).                                           | MACGIU 25/02/2014
@@ -155,11 +165,11 @@
                    88 TBLAG-PREZZO-BLOCCATO-old-88 VALUE IS 0, 1. 
       ***        10  TBLAG-MAGAZZINO-BLOCCATO        PIC  9(01).                                           | MACGIU 25/02/2014
       ***            88  TBLAG-MAGAZZINO-BLOCCATO-88    VALUE 0, 1.                                        | MACGIU 25/02/2014
-      *
                10 TBLAG-MAGAZZINO-BLOCCATO-old PIC  9(01).
                    88 TBLAG-MAGAZZINO-BLOCCATO-old-88 VALUE IS 0, 1. 
       ***        10  TBLAG-DIR-TRASF                 PIC  X(50).                                           | MACGIU 25/02/2014
                10 TBLAG-DIR-TRASF-not-used     PIC  X(50).
+      *(( XFD NAME = TBLAG-notused ))
       ***        10  TBLAG-CODICE-ABILITAZIONE       PIC  X(10).                                           | MACGIU 25/02/2014
                10 TBLAG-CODICE-ABILITAZIONE-notused        PIC  X(10).
                10 TBLAG-TABELLA-ABILITAZIONI.
@@ -194,7 +204,6 @@
                               OCCURS 10 TIMES.
                10 TBLAG-DIR-TRASF1 PIC  X(30).
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
-      *
                10 TBLAG-ISPETTORE  PIC  X(01).
                    88 TBLAG-ISPETTORE-88 VALUE IS " " "S". 
                    88 tblag-ispettore-si VALUE IS "S"    WHEN SET TO 
@@ -202,12 +211,10 @@
                10 TBLAG-PREFISSO-CLP           PIC  X(03).
       ***        10  TBLAG-DIR-TRASF-IN              PIC  X(50).                         |nb 05/07/2005    | MACGIU 25/02/2014
       ***        10  TBLAG-DIR-TRASF-OUT             PIC  X(50).                         |nb 05/07/2005    | MACGIU 25/02/2014
-      *
                10 TBLAG-DIR-TRASF-IN-old       PIC  X(50).
                10 TBLAG-DIR-TRASF-OUT-old      PIC  X(50).
       ***        10  TBLAG-ABI-OMAGGI                PIC  9(01).                      |nb 19/10/2005       | MACGIU 25/02/2014
       ***            88  TBLAG-ABI-OMAGGI-88         VALUE 0 1.                       |nb 19/10/200        | MACGIU 25/02/2014
-      *
                10 TBLAG-ABI-OMAGGI-old         PIC  9(01).
                    88 TBLAG-ABI-OMAGGI-old-88 VALUE IS 0 1. 
       ***        10  TBLAG-NASCONDI-PRZ              PIC  9(01).                      |nb 19/10/2005       | MACGIU 25/02/2014
@@ -216,17 +223,25 @@
                10 TBLAG-NASCONDI-PRZ-old       PIC  9(01).
                    88 TBLAG-NASCONDI-PRZ-old-88 VALUE IS 0 1. 
       *$GEN type=num,dec=00,size=4
-      *
                10 TBLAG-PERC-VARIA-PRZ         PIC  9(02).
       *$GEN type=num,dec=00,size=4
       *
                10 TBLAG-PERC-VARIA-SC          PIC  9(02).
                10 tblag-fvMod74-user           PIC  9(04).
       *e FV Mobile        | scamar 03/06/2014
+      *$GEN type=code,entity=tbldo
+               10 tblag-cod-doc-bolval-pa      PIC  x(03).
+      *$GEN type=code,entity=tbldo
       *
-               10 TBLAG-FILLER     PIC  X(920).
+               10 tblag-cod-doc-bolqta-pa      PIC  x(03).
+               10 tblag-e-mail     PIC  x(100).
+               10 tblag-invio-e-mail           PIC  9(01).
+                   88 tblag-invio-e-mail-off VALUE IS 0. 
+                   88 tblag-invio-e-mail-on VALUE IS 1. 
+               10 TBLAG-FILLER     PIC  X(813).
+      ***        10  TBLAG-FILLER                    PIC  X(914).                     | MACGIU 29/07/2014  | Cermic 05/09/2014
+      ***        10  TBLAG-FILLER                    PIC  X(920).                     | scamar 03/06/2014  | MACGIU 29/07/2014
       ***        10  TBLAG-FILLER                    PIC  X(924).    |nb 19/10/2005 14.32                  | scamar 03/06/2014
       *       10  TBLAG-FILLER                    PIC  X(930).                        |nb 05/07/2005 12.27
       *        10  TBLAG-FILLER                    PIC  X(1030).                      |nb 05/07/2005 12.27
-      *
                10 TBLAG-FILLER-RIS PIC  X(40).

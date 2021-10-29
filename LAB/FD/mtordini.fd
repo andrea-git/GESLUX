@@ -88,4 +88,7 @@
                    88 mto-urgente-si VALUE IS 1. 
                    88 mto-urgente-no VALUE IS 0. 
                10 mto-note-libere  PIC  x(150).
-               10 FILLER           PIC  x(49).
+               10 mto-contrassegno PIC  x.
+                   88 mto-contrassegno-no VALUE IS "N" , " ". 
+                   88 mto-contrassegno-si VALUE IS "S". 
+               10 FILLER           PIC  x(48).

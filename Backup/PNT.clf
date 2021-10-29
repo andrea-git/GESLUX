@@ -2,7 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E3B1D231717-552-3115525760
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E5A1D101233-485-3082885
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -12,6 +12,7 @@ m_bStandard=1
 m_strPrefix=PNT
 {{@FD_m_strDescription
 
+ 29/10/2021
  
 -----------------------------------------------------------------
  testata prima nota
@@ -41,14 +42,16 @@ m_strPrefix=PNT
           errore in compilazione del c_qry
 
 -----------------------------------------------------------------------------------------------------------------------
- Tk.4013 - Utility telematico operazioni 3000                                                       | maxime 14/07/2011
+ Tk.4013 - Utility telematico operazioni 3000                                                       | maxime 14/07/2011 
            nuovi campi zoom
 -----------------------------------------------------------------------------------------------------------------------
  tk 8434 - primanota: nuova normativa competenza iva                                                | suadal 16/04/2019
          - inserito campo che marca i record nuovi e quindi sottoposti alla compilazione della
            competenza iva sula base della nuova normativa (settaggio in al_pnt).
          - aggiunti livelli 88 a campo pnt-registro
-----------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
+ tk.9544 -  FE XML Gestire nuovi tipi documento previsti nelle specifiche 1.6.1                     | maxime 13/01/2021
+-----------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -85,7 +88,6 @@ m_strPrefix=PNT
 
 
 
-
 @}}
 [FDITEM0_]
 m_strName=RECORD-PNT
@@ -201,6 +203,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM11_
 $GEN type=num,dec=0,size=08,zmm=on,zmm_title=Nr.Documento,zmm_datatype=n,zmm_key=4,zmm_size=13,zmm_align=R,zmm_pos=4
+
 @}}
 [FDITEM12_]
 m_strName=PNT-TIPO-DOCUMENTO
@@ -237,7 +240,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM15_
  copy "groupdate.xfc". | DBMaker
-
 @}}
 [FDITEM16_]
 m_strName=AA
@@ -309,6 +311,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM22_
 $GEN type=num,dec=0,size=08,zmm=on,zmm_title=Protocollo,zmm_datatype=n,zmm_key=3,zmm_size=13,zmm_align=R,zmm_pos=3
+
 @}}
 [FDITEM23_]
 m_strName=PNT-TIPO-PROTOCOLLO
@@ -375,6 +378,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM29_
 $GEN type=code,entity=tblco,zmm=on,zmm_title=Causale,zmm_datatype=x,zmm_entity=tblco,zmm_size=03,zmm_align=L,zmm_pos=7
+
 @}}
 [FDITEM30_]
 m_strName=pnt-note-testata
@@ -607,7 +611,6 @@ m_bFixed=1
 
  modificata $gen
 $GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Stampato giornale,zmm_datatype=x,zmm_size=02,zmm_align=L,zmm_pos=12
-
 @}}
 [FDITEM51_]
 m_strName=pnt-stampa-giornale-yes
@@ -649,6 +652,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM54_
  copy "groupdateyyyymm.xfc". | DBMaker
+
 @}}
 [FDITEM55_]
 m_strName=AA
@@ -703,6 +707,7 @@ m_bFixed=1
 
  nuova clausola $GEN                                                                              | mxm 18/01/2008 9.56
 $GEN type=num,dec=0,size=7
+
 @}}
 [FDITEM60_]
 m_strName=PNT-PROGRESSIVO-77
@@ -731,6 +736,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM62_
  copy "groupdateyyyymm.xfc". | DBMaker
+
 @}}
 [FDITEM63_]
 m_strName=AA
@@ -783,7 +789,6 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM67_
 $GEN type=code,entity=01tat,zmm=on,zmm_title=Codice attività,zmm_datatype=x,zmm_entity=01tat,zmm_size=03,zmm_align=L,zmm_pos=15
-
 @}}
 [FDITEM68_]
 m_strName=pnt-origine
@@ -848,6 +853,7 @@ m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM73_
 $GEN entity=tpk
+
 @}}
 [FDITEM74_]
 m_strName=pnt-has-dl119-18
@@ -885,25 +891,64 @@ m_strTrue=0
 
 @}}
 [FDITEM77_]
-m_strName=PNT-FILLER
-m_strRawPic=X(08)
-m_strPic=X(08)
+m_strName=pnt-tipoDocIntegrazione
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
+m_bUseGroup_Xfd=1
 {{@DataItem_m_strDescriptionFDITEM77_
-        10  PNT-FILLER              PIC  X(09).                           |ms 24/04/2009 8.34       | suadal 16/04/2019
+tipoDocIntegrazione è il "TDxx" dell'integrazione collegata al PNT                    | maxime 13/01/2021
+e impostato da "c02pnttd16_create" o da "c02pnttd16_update"
+e pulito esclusivamente da trigger delete in fm_02feh                                 | maxime 13/01/2021
+
 @}}
 [FDITEM78_]
+m_strName=filler
+m_strRawPic=x(02)
+m_strPic=X(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM78_
+
+@}}
+[FDITEM79_]
+m_strName=pnt-hasIntegrazione
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="TD"
+{{@DataItem_m_strDescriptionFDITEM79_
+
+@}}
+[FDITEM80_]
+m_strName=filler
+m_strRawPic=x(03)
+m_strPic=X(03)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM80_
+
+@}}
+[FDITEM81_]
+m_strName=PNT-FILLER
+m_strRawPic=X(03)
+m_strPic=X(03)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM81_
+
+@}}
+[FDITEM82_]
 m_strName=PNT-FILLER-RIS
 m_strRawPic=X(40)
 m_strPic=X(40)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM78_
-        10  PNT-FILLER              PIC  X(23).                                                   |pm 13/09/2006 10.59
-        10  PNT-FILLER              PIC  X(26).                                                   |pm 24/07/2006 16.05
+{{@DataItem_m_strDescriptionFDITEM82_
 
 @}}
 [CStoAcucobolSL_]

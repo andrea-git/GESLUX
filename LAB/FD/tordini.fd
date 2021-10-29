@@ -110,5 +110,8 @@
                    15 tor-note-bolla-1 PIC  X(500).
                    15 tor-note-bolla-2 PIC  X(500).
                    15 tor-causale-orig PIC  X(4).
+                   15 tor-contrassegno PIC  x.
+                       88 tor-contrassegno-no VALUE IS "N" , " ". 
+                       88 tor-contrassegno-si VALUE IS "S". 
       *(( XFD NAME = tor-gdo_1_1_2_1 ))
-                   15 FILLER           PIC  X(1996).
+                   15 FILLER           PIC  X(1995).
