@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 13 ottobre 2021 10:53:05.
+       DATE-WRITTEN.        martedì 2 novembre 2021 15:22:24.
        REMARKS.
       *{TOTEM}END
 
@@ -844,6 +844,8 @@
               05 chk-saldi-banco-BUF PIC 9 VALUE ZERO.
       * Data.Check-Box
               05 chk-saldi-promo-BUF PIC 9 VALUE ZERO.
+      * Data.Check-Box
+              05 chk-ev-immediata-BUF PIC 9 VALUE ZERO.
       * Data.Label
               05 lab-anno-BUF PIC 9(4).
       * Data.Label
@@ -1475,7 +1477,10 @@
                15 OLD-emto-inversione-imposte      PIC  9.
                    88 OLD-emto-inversione-imposte-si VALUE IS 1. 
                    88 OLD-emto-inversione-imposte-no VALUE IS 0. 
-               15 FILLER           PIC  x(175).
+               15 OLD-emto-ev-immediata      PIC  9.
+                   88 OLD-emto-ev-immediata-si VALUE IS 1. 
+                   88 OLD-emto-ev-immediata-no VALUE IS 0. 
+               15 FILLER           PIC  x(174).
       *{TOTEM}END
 
       *{TOTEM}ID-LOGICI
@@ -1508,7 +1513,8 @@
        78  78-ID-chk-prenot VALUE 5018.
        78  78-ID-chk-saldi-banco VALUE 5019.
        78  78-ID-chk-saldi-promo VALUE 5020.
-       78  78-ID-Form1-Gd-1 VALUE 5021.
+       78  78-ID-chk-ev-immediata VALUE 5021.
+       78  78-ID-Form1-Gd-1 VALUE 5022.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -3159,8 +3165,8 @@
            Check-Box, 
            COL 78,57, 
            LINE 29,40,
-           LINES 1,31 ,
-           SIZE 2,50 ,
+           LINES 1,33 ,
+           SIZE 2,57 ,
            ENABLED MOD,
            FLAT,
            ID IS 78-ID-chk-saldi-promo,                
@@ -3168,6 +3174,23 @@
            WIDTH-IN-CELLS,
            SELF-ACT,
            VALUE chk-saldi-promo-BUF,
+           BEFORE PROCEDURE Screen2-DaCb-5-BeforeProcedure, 
+            .
+      * CHECK BOX
+       05
+           chk-ev-immediata, 
+           Check-Box, 
+           COL 106,86, 
+           LINE 29,40,
+           LINES 1,33 ,
+           SIZE 2,57 ,
+           ENABLED MOD,
+           FLAT,
+           ID IS 78-ID-chk-ev-immediata,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           SELF-ACT,
+           VALUE chk-ev-immediata-BUF,
            BEFORE PROCEDURE Screen2-DaCb-5-BeforeProcedure, 
             .
       * GRID
@@ -3720,7 +3743,7 @@
            Label, 
            COL 66,57, 
            LINE 29,40,
-           LINES 1,31 ,
+           LINES 1,33 ,
            SIZE 10,00 ,
            COLOR IS 1,
            ID IS 164,
@@ -4108,6 +4131,21 @@
            WIDTH-IN-CELLS,
            LEFT,
            TITLE "€",
+           .
+
+      * LABEL
+       05
+           Screen2-La-5abaa, 
+           Label, 
+           COL 88,43, 
+           LINE 29,40,
+           LINES 1,33 ,
+           SIZE 17,00 ,
+           COLOR IS 1,
+           ID IS 164,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE "Evasione immediata",
            .
 
       * TOOLBAR
@@ -14874,6 +14912,8 @@
               MOVE 0 TO emto-saldi-banco
       * DB_CHECK BOX
               MOVE 0 TO emto-saldi-promo
+      * DB_CHECK BOX
+              MOVE 0 TO emto-ev-immediata
            MOVE ALL X'9' TO Form1-KEYISTMP1
            MOVE ALL X'9' TO Form1-PKEYTMP
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, SetDefault>
@@ -15350,6 +15390,12 @@
               ELSE
                  MOVE 0 TO emto-saldi-promo
               END-IF
+      * DB_CHECK BOX : chk-ev-immediata
+              IF chk-ev-immediata-BUF = 1
+                 MOVE 1 TO emto-ev-immediata
+              ELSE
+                 MOVE 0 TO emto-ev-immediata
+              END-IF
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterBufToFld>
            move ef-data-buf to como-data.
            perform DATE-TO-FILE.
@@ -15429,6 +15475,12 @@
                  MOVE 1 TO chk-saldi-promo-BUF
               ELSE
                  MOVE 0 TO chk-saldi-promo-BUF
+              END-IF
+      * DB_CHECK BOX : chk-ev-immediata
+              IF emto-ev-immediata = 1
+                 MOVE 1 TO chk-ev-immediata-BUF
+              ELSE
+                 MOVE 0 TO chk-ev-immediata-BUF
               END-IF
       * DB_LABEL : lab-anno
               MOVE emto-anno  TO lab-anno-BUF
@@ -16198,6 +16250,7 @@
            When 5018 PERFORM Screen2-DaCb-3-AfterProcedure
            When 5019 PERFORM Screen2-DaCb-4-AfterProcedure
            When 5020 PERFORM Screen2-DaCb-5-AfterProcedure
+           When 5021 PERFORM Screen2-DaCb-5-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -16250,28 +16303,28 @@
        Form1-Gd-1-Event-Proc.
            EVALUATE Event-Type ALSO Event-Control-Id ALSO
                                     Event-Window-Handle
-           WHEN Msg-Begin-Drag ALSO 5021 ALSO
+           WHEN Msg-Begin-Drag ALSO 5022 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5021 ALSO
+           WHEN Msg-Begin-Entry ALSO 5022 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-Begin-Entry
-           WHEN Msg-Cancel-Entry ALSO 5021 ALSO
+           WHEN Msg-Cancel-Entry ALSO 5022 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-Cancel-Entry
-           WHEN Msg-End-Drag ALSO 5021 ALSO
+           WHEN Msg-End-Drag ALSO 5022 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-End-Drag
-           WHEN Msg-Finish-Entry ALSO 5021 ALSO
+           WHEN Msg-Finish-Entry ALSO 5022 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-Finish-Entry
-           WHEN Msg-Goto-Cell ALSO 5021 ALSO
+           WHEN Msg-Goto-Cell ALSO 5022 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5021 ALSO
+           WHEN Msg-Goto-Cell-Drag ALSO 5022 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5021 ALSO
+           WHEN Msg-Goto-Cell-Mouse ALSO 5022 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-Goto-Cell-Mouse
            END-EVALUATE
@@ -19124,6 +19177,11 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
               set NoSalvato to true
               move 78-ID-ef-evadi-dal to store-id
            end-if.
+           if emto-ev-immediata not = OLD-emto-ev-immediata and
+              SiSalvato 
+              set NoSalvato to true
+              move 78-ID-chk-ev-immediata to store-id
+           end-if.
          
            set tutto-ok to true.
 
@@ -19652,6 +19710,8 @@ LABLAB                   end-if
                       
                          set mto-registrato to true
                          set mto-attivo to true  
+
+                         move emto-ev-immediata to mto-immediato
                       
                          move emto-chiave to mto-ordine-EDI
                       

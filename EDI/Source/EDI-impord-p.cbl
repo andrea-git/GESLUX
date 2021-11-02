@@ -1523,6 +1523,14 @@
                  set emto-inversione-imposte-si to true
               end-if
            end-if.
+                                                       
+           set emto-ev-immediata-no to true.
+           |Se dal file di import mi arriva la X e sono su un 
+           |tradizionale setto l'inversione
+           if emto-01T61-ev-immediata = "X" or
+              emto-01T61-ev-immediata = "x"
+              set emto-ev-immediata-si to true
+           end-if.
            rewrite emto-rec.
 
 
@@ -2687,7 +2695,8 @@
                     emto-57T-filler        
                     emto-58T-filler        
                     emto-59T-filler
-                    emto-01T60-inversione-imposte                
+                    emto-01T60-inversione-imposte
+                    emto-01T61-ev-immediata
                     emto-60T-filler
                     emto-61T-filler        
                     emto-62T-filler        

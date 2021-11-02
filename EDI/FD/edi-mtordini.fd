@@ -155,7 +155,9 @@
                    20 emto-59T-filler  PIC  x(35).
       * Valore del campo originale dal file di import
                    20 emto-01T60-inversione-imposte            PIC  x.
-                   20 emto-60T-filler  PIC  x(34).
+      * Valore del campo originale dal file di import
+                   20 emto-01T61-ev-immediata      PIC  x.
+                   20 emto-60T-filler  PIC  x(33).
                    20 emto-61T-filler  PIC  x(35).
                    20 emto-62T-filler  PIC  x(35).
                    20 emto-63T-filler  PIC  x(35).
@@ -269,4 +271,8 @@
                15 emto-inversione-imposte      PIC  9.
                    88 emto-inversione-imposte-si VALUE IS 1. 
                    88 emto-inversione-imposte-no VALUE IS 0. 
-               15 FILLER           PIC  x(175).
+      *L'inversione viene impostata solo per clienti tradizionali, quindi conservo il valore nel campo 60 ma poi uso questo
+               15 emto-ev-immediata            PIC  9.
+                   88 emto-ev-immediata-si VALUE IS 1. 
+                   88 emto-ev-immediata-no VALUE IS 0. 
+               15 FILLER           PIC  x(174).
