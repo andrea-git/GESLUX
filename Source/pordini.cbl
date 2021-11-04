@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
-       AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 20 aprile 2021 13:24:38.
+       AUTHOR.              Utente.
+       DATE-WRITTEN.        giovedì 4 novembre 2021 22:09:25.
        REMARKS.
       *{TOTEM}END
 
@@ -12620,10 +12620,17 @@
 
        QTA-PROMO.
       * <TOTEM:PARA. QTA-PROMO>
-           close ordfor2.
-           call   "sos-ordini" using data-sos,
-                                     scr-elab-handle.
-           cancel "sos-ordini".
+           close ordfor2. 
+           if LK-BL-PROG-ID = "desktop"
+              call   "sos-ordini" using data-sos,
+                                        scr-elab-handle
+                                        "X"
+              cancel "sos-ordini"
+           else
+              call   "sos-ordini" using data-sos,
+                                        scr-elab-handle
+              cancel "sos-ordini"
+           end-if.
            open i-o ordfor2 allowing readers.      
            if LK-BL-PROG-ID = "desktop"
               modify scr-elab-handle, visible true

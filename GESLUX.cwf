@@ -32309,7 +32309,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:SOURCE\sos-ordini.cbl]
-COPY_DEPENDENCE=FD\mrordini.sl;FD\tpromo.sl;FD\rpromo.sl;FD\articoli.sl;FD\blister.sl;FD\ordfor2.sl;FD\tmp-sellout.sl;FD\tmp-sellout-qta.sl;FD\param.sl;FD\clienti.sl;FD\tgrupgdo.sl;FD\mrordini.fd;FD\tpromo.fd;FD\rpromo.fd;FD\articoli.fd;FD\blister.fd;FD\ordfor2.fd;FD\tmp-sellout.fd;FD\tmp-sellout-qta.fd;FD\param.fd;FD\clienti.fd;FD\tgrupgdo.fd;Copylib\link-geslock.def;Copylib\trova-parametro.def;Copylib\trova-parametro.cpy
+COPY_DEPENDENCE=FD\mrordini.sl;FD\tpromo.sl;FD\rpromo.sl;FD\articoli.sl;FD\blister.sl;FD\ordfor2.sl;FD\tmp-sellout.sl;FD\tmp-sellout-qta.sl;FD\param.sl;FD\clienti.sl;FD\tgrupgdo.sl;FD\lineseq.sl;FD\mrordini.fd;FD\tpromo.fd;FD\rpromo.fd;FD\articoli.fd;FD\blister.fd;FD\ordfor2.fd;FD\tmp-sellout.fd;FD\tmp-sellout-qta.fd;FD\param.fd;FD\clienti.fd;FD\tgrupgdo.fd;FD\lineseq.fd;Copylib\link-geslock.def;Copylib\trova-parametro.def;Copylib\setta-inizio-riga.def;Copylib\trova-parametro.cpy;Copylib\setta-inizio-riga.cpy
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
@@ -53017,7 +53017,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:RELEASE:SOURCE\ricaldin-bat.cbl]
-COPY_DEPENDENCE=FD\tsetinvio.sl;FD\mtordini.sl;FD\mrordini.sl;FD\tmovmag.sl;FD\rmovmag.sl;FD\tordini.sl;FD\rordini.sl;FD\tnotacr.sl;FD\rnotacr.sl;FD\progmag.sl;FD\tparamge.sl;FD\tordforn.sl;FD\rordforn.sl;FD\teva.sl;FD\reva.sl;FD\lineseq.sl;FD\tpromo.sl;FD\clienti.sl;FD\destini.sl;FD\tagli.sl;FD\ttipocli.sl;FD\tscorte.sl;FD\articoli.sl;FD\tcaumag.sl;FD\timposte.sl;FD\tmarche.sl;FD\param.sl;FD\tsetinvio.fd;FD\mtordini.fd;FD\mrordini.fd;FD\tmovmag.fd;FD\rmovmag.fd;FD\tnotacr.fd;FD\rnotacr.fd;FD\tordini.fd;FD\rordini.fd;FD\progmag.fd;FD\tparamge.fd;FD\tordforn.fd;FD\rordforn.fd;FD\teva.fd;FD\reva.fd;FD\lineseq.fd;FD\tpromo.fd;FD\clienti.fd;FD\destini.fd;FD\tagli.fd;FD\ttipocli.fd;FD\tscorte.fd;FD\articoli.fd;FD\tcaumag.fd;FD\timposte.fd;FD\tmarche.fd;FD\param.fd;Copylib\link-wprogmag.def;Copylib\mail.def;Copylib\aggiorna-stato-ordf.def;Copylib\aggiorna-stato-master.def;Copylib\costo-medio.def;Copylib\imposte.def;Copylib\link-geslock.def;Copylib\versione-evasione.def;Copylib\trova-parametro.def;Copylib\link-tprev-p.def;Copylib\link-batch.def;Copylib\mail.cpy;Copylib\aggiorna-stato-ordf.cpy;Copylib\direziona-impegnato-common.cpy;Copylib\trova-parametro.cpy;Copylib\setta-inizio-riga.cpy
+COPY_DEPENDENCE=FD\tsetinvio.sl;FD\mtordini.sl;FD\mrordini.sl;FD\tmovmag.sl;FD\rmovmag.sl;FD\tordini.sl;FD\rordini.sl;FD\tnotacr.sl;FD\rnotacr.sl;FD\progmag.sl;FD\tparamge.sl;FD\tordforn.sl;FD\rordforn.sl;FD\teva.sl;FD\reva.sl;FD\lineseq.sl;FD\tpromo.sl;FD\clienti.sl;FD\destini.sl;FD\tagli.sl;FD\ttipocli.sl;FD\tscorte.sl;FD\articoli.sl;FD\tcaumag.sl;FD\timposte.sl;FD\tmarche.sl;FD\param.sl;FD\tsetinvio.fd;FD\mtordini.fd;FD\mrordini.fd;FD\tmovmag.fd;FD\rmovmag.fd;FD\tnotacr.fd;FD\rnotacr.fd;FD\tordini.fd;FD\rordini.fd;FD\progmag.fd;FD\tparamge.fd;FD\tordforn.fd;FD\rordforn.fd;FD\teva.fd;FD\reva.fd;FD\lineseq.fd;FD\tpromo.fd;FD\clienti.fd;FD\destini.fd;FD\tagli.fd;FD\ttipocli.fd;FD\tscorte.fd;FD\articoli.fd;FD\tcaumag.fd;FD\timposte.fd;FD\tmarche.fd;FD\param.fd;Copylib\link-wprogmag.def;Copylib\mail.def;Copylib\aggiorna-stato-ordf.def;Copylib\aggiorna-stato-master.def;Copylib\costo-medio.def;Copylib\imposte.def;Copylib\link-geslock.def;Copylib\versione-evasione.def;Copylib\trova-parametro.def;Copylib\link-tprev-p.def;Copylib\setta-inizio-riga.def;Copylib\link-batch.def;Copylib\mail.cpy;Copylib\aggiorna-stato-ordf.cpy;Copylib\direziona-impegnato-common.cpy;Copylib\trova-parametro.cpy;Copylib\setta-inizio-riga.cpy
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
@@ -55042,7 +55042,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:RELEASE:SOURCE\sos-ordini.cbl]
-COPY_DEPENDENCE=FD\mrordini.sl;FD\tpromo.sl;FD\rpromo.sl;FD\articoli.sl;FD\blister.sl;FD\ordfor2.sl;FD\tmp-sellout.sl;FD\tmp-sellout-qta.sl;FD\param.sl;FD\clienti.sl;FD\tgrupgdo.sl;FD\mrordini.fd;FD\tpromo.fd;FD\rpromo.fd;FD\articoli.fd;FD\blister.fd;FD\ordfor2.fd;FD\tmp-sellout.fd;FD\tmp-sellout-qta.fd;FD\param.fd;FD\clienti.fd;FD\tgrupgdo.fd;Copylib\link-geslock.def;Copylib\trova-parametro.def;Copylib\trova-parametro.cpy
+COPY_DEPENDENCE=FD\mrordini.sl;FD\tpromo.sl;FD\rpromo.sl;FD\articoli.sl;FD\blister.sl;FD\ordfor2.sl;FD\tmp-sellout.sl;FD\tmp-sellout-qta.sl;FD\param.sl;FD\clienti.sl;FD\tgrupgdo.sl;FD\lineseq.sl;FD\mrordini.fd;FD\tpromo.fd;FD\rpromo.fd;FD\articoli.fd;FD\blister.fd;FD\ordfor2.fd;FD\tmp-sellout.fd;FD\tmp-sellout-qta.fd;FD\param.fd;FD\clienti.fd;FD\tgrupgdo.fd;FD\lineseq.fd;Copylib\link-geslock.def;Copylib\trova-parametro.def;Copylib\setta-inizio-riga.def;Copylib\trova-parametro.cpy;Copylib\setta-inizio-riga.cpy
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu

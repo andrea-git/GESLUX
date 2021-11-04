@@ -28,6 +28,7 @@
            copy "param.sl".
            copy "clienti.sl".
            copy "tgrupgdo.sl".
+           copy "lineseq.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -46,11 +47,13 @@
            copy "param.fd".
            copy "clienti.fd".
            copy "tgrupgdo.fd".
+           copy "lineseq.fd".
 
        WORKING-STORAGE SECTION.
       * COPY
        copy "link-geslock.def".
-       copy "trova-parametro.def".
+       copy "trova-parametro.def".      
+           copy "setta-inizio-riga.def".
 
        77  status-mrordini                pic xx.
        77  status-tpromo                  pic xx.
@@ -58,6 +61,7 @@
        77  status-articoli                pic xx.
        77  status-blister                 pic xx.
        77  status-ordfor2                 pic xx.
+       77  status-lineseq                 pic xx.
        77  status-tmp-sellout             pic xx.
 070509 77  status-tmp-sellout-qta         pic xx.
        77  path-tmp-sellout               pic x(256).
@@ -68,6 +72,7 @@
        77  status-param                   pic xx.
        77  status-clienti                 pic xx.
        77  status-tgrupgdo                pic xx.
+       77  wstampa                        pic x(256).
 
       * COSTANTI
        78  titolo                value "Sell Out Sicuro".
@@ -89,7 +94,7 @@
        77  filler                pic 9.
            88 CurrMonthOrNext    value 1 false 0.
        77  filler                pic 9.
-           88 LancioNotturno     value 1 false 0.
+           88 RichiamoSchedulato     value 1 false 0.
 
       * VARIABILI
        77  PgmChiamante          pic x(15).
@@ -112,6 +117,7 @@
            10 el-mese            pic 99.
            10 el-ini-dpo         pic 9(8).
 
+       77  como-riga             pic x(150).
        77  data-oggi             pic 9(8).
        77  como-data             pic 9(8).
        77  Plus20gg              pic 9(8).
@@ -130,13 +136,17 @@
        77  mese-5                pic 99.
        77  mese-6                pic 99.
 
+       77  nargs                 pic 9(3) comp-1.
+
        LINKAGE SECTION.
        77  link-data             pic 9(8).
        77  link-handle           handle of window.
+       77  link-scheduler        pic x.
 
       ******************************************************************
        PROCEDURE DIVISION using link-data,
-                                link-handle.
+                                link-handle
+                                link-scheduler.
 
        DECLARATIVES.
       ***---
@@ -354,19 +364,40 @@
            perform EXIT-PGM.
 
       ***---
-       INIT.
+       INIT.                           
+           accept  como-data from century-date.
+           accept  como-ora  from time.
            accept data-oggi from century-date.
            compute Plus20gg = function integer-of-date (data-oggi).
            add 20 to Plus20gg.
            compute Plus20gg = function date-of-integer (Plus20gg).
-
+                                                
+           set RichiamoSchedulato to false.
            set scritto-avviso to false.
            call "C$CALLEDBY" using PgmChiamante.
            if PgmChiamante = "pordini"
-              set LancioNotturno to false              
-           else
-              set LancioNotturno to true
-           end-if.
+              call "C$NARG" using nargs
+              if nargs = 3
+                 if link-scheduler = "X"
+                    set RichiamoSchedulato to true
+                    accept wstampa 
+                           from environment "SCHEDULER_PATH_LOG"
+                    inspect wstampa 
+                            replacing trailing spaces by low-value
+                    string wstampa            delimited low-value
+                           "LOG_SOS-ORDINI_"  delimited size
+                           como-data          delimited size
+                           "_"                delimited size
+                           como-ora           delimited size
+                           ".log"             delimited size
+                           into wstampa
+                    end-string
+                    open output lineseq
+                    move "INIZIO PROGRAMMA" to como-riga
+                    perform SCRIVI-RIGA-LOG
+                 end-if
+              end-if
+           end-if.              
 
            move 0    to idx.
            move 0        to counter counter2.
@@ -374,8 +405,6 @@
            set RecLocked to false.
            set trovato   to false.
            initialize path-tmp-sellout.
-           accept  como-data from century-date.
-           accept  como-ora  from time.
            accept  path-tmp-sellout from environment "PATH_ST".
            inspect path-tmp-sellout replacing trailing 
                                     spaces by low-value.
@@ -496,7 +525,12 @@
            move como-data(5:2) to mese-1a.
 
       ***---
-       OPEN-FILES.
+       OPEN-FILES.      
+           if RichiamoSchedulato            
+              move "OPEN-FILES" to como-riga
+              perform SCRIVI-RIGA-LOG
+           end-if.
+
            open output tmp-sellout tmp-sellout-qta.
            if tutto-ok
               close tmp-sellout tmp-sellout-qta
@@ -509,7 +543,12 @@
 
       ***---
        ELABORAZIONE.     
-           if not LancioNotturno
+           if RichiamoSchedulato            
+              move "ELABORAZIONE" to como-riga
+              perform SCRIVI-RIGA-LOG
+           end-if.
+
+           if not RichiamoSchedulato
               modify link-handle visible true
            end-if.
 
@@ -541,7 +580,7 @@
            
                     read tpromo next at end exit perform end-read
 
-                    if not LancioNotturno
+                    if not RichiamoSchedulato
                        add 1 to counter
                        add 1 to counter2
                        if counter2 = 10
@@ -630,7 +669,7 @@
                              exit perform
                           end-if      
 
-                          if not LancioNotturno
+                          if not RichiamoSchedulato
                              add 1 to counter
                              add 1 to counter2
                              if counter2 = 10
@@ -698,6 +737,10 @@
 
       ***---
        SCRIVI-RIFERIMENTI-PROMO.
+           if RichiamoSchedulato            
+              move "SCRIVI-RIFERIMENTI-PROMO" to como-riga
+              perform SCRIVI-RIGA-LOG
+           end-if.
            move 0 to counter2.
            perform varying idx from 1 by 1
                      until idx > tot-idx
@@ -713,7 +756,7 @@
                           exit perform
                        end-if 
 
-                       if not LancioNotturno
+                       if not RichiamoSchedulato
                           add 1 to counter
                           add 1 to counter2
                           if counter2 = 10
@@ -792,7 +835,11 @@
 070509     write tsq-rec invalid rewrite tsq-rec end-write.
 
       ***---
-       ASSEGNA-QTA.
+       ASSEGNA-QTA.             
+           if RichiamoSchedulato            
+              move "ASSEGNA-QTA" to como-riga
+              perform SCRIVI-RIGA-LOG
+           end-if.
            move 0 to counter2.
            move low-value to tms-rec.
            start tmp-sellout key >= tms-chiave
@@ -825,7 +872,11 @@
            end-perform.
 
       ***---
-       PROMO-URGENTI.
+       PROMO-URGENTI.           
+           if RichiamoSchedulato            
+              move "PROMO-URGENTI" to como-riga
+              perform SCRIVI-RIGA-LOG
+           end-if.
            move 0 to counter2.
            move low-value to ord2-rec.
            start ordfor2 key >= ord2-chiave
@@ -834,7 +885,7 @@
                  perform until 1 = 2
                     read ordfor2 next at end exit perform end-read 
 
-                    if not LancioNotturno
+                    if not RichiamoSchedulato
                        add 1 to counter
                        add 1 to counter2
                        if counter2 = 10
@@ -877,7 +928,7 @@
                     set record-ok to false
                     read tpromo next at end    exit perform end-read
 
-                    if not LancioNotturno
+                    if not RichiamoSchedulato
                        add 1 to counter
                        add 1 to counter2
                        if counter2 = 10
@@ -964,7 +1015,11 @@
       *****     end-start.
 
       ***---
-       QTA-PROMO-URGENTI.
+       QTA-PROMO-URGENTI.         
+           if RichiamoSchedulato            
+              move "QTA-PROMO-URGENTI" to como-riga
+              perform SCRIVI-RIGA-LOG
+           end-if.
            move 0 to counter2.
            move low-value   to tpr-rec.
            start tpromo key >= tpr-chiave-ini
@@ -990,7 +1045,7 @@
                                    exit perform
                                 end-if       
 
-                                if not LancioNotturno
+                                if not RichiamoSchedulato
                                    add 1 to counter
                                    add 1 to counter2
                                    if counter2 = 10
@@ -1027,20 +1082,41 @@
            end-start.
 
       ***---
-       CLOSE-FILES.
+       CLOSE-FILES.                   
+           if RichiamoSchedulato            
+              move "CLOSE-FILES" to como-riga
+              perform SCRIVI-RIGA-LOG
+           end-if.
+
            close articoli mrordini ordfor2 tmp-sellout param clienti
                  rpromo tpromo blister tgrupgdo. |useravv ttipoavv user 
            delete file tmp-sellout.
 
       ***---
        EXIT-PGM.
-           if not LancioNotturno
+           if not RichiamoSchedulato
               display "                                           "
                       upon link-handle at column 15,00 line 06,00
+           end-if.                                        
+                    
+           if RichiamoSchedulato            
+              move "FINE PROGRAMMA" to como-riga
+              perform SCRIVI-RIGA-LOG
            end-if.
 
-           goback.
+           goback.         
+
+      ***---
+       SCRIVI-RIGA-LOG.        
+           perform SETTA-INIZIO-RIGA.
+           initialize line-riga.       
+           string r-inizio  delimited size
+                  como-riga delimited size
+                  into line-riga
+           end-string.
+           write line-riga.
 
       ***---
        PARAGRAFO-COPY.
-           copy "trova-parametro.cpy".
+           copy "trova-parametro.cpy".  
+           copy "setta-inizio-riga.cpy".
