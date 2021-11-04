@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-listini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 30 maggio 2019 13:29:40.
+       DATE-WRITTEN.        giovedì 4 novembre 2021 11:23:54.
        REMARKS.
       *{TOTEM}END
 
@@ -45,6 +45,7 @@
                           ==STATUS-listini== BY ==STATUS-listini1==
                 .
            COPY "tmarche.sl".
+           COPY "lineseq.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -67,16 +68,16 @@
                           ==STATUS-listini== BY ==STATUS-listini1==
                 .
            COPY "tmarche.fd".
+           COPY "lineseq.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
       *{TOTEM}ACU-DEF
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\ACUGUI.DEF".
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\ACUCOBOL.DEF"
-           .
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\FONTS.DEF".
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\CRTVARS.DEF".
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\SHOWMSG.DEF".
+               COPY "acugui.def".
+               COPY "acucobol.def".
+               COPY "fonts.def".
+               COPY "crtvars.def".
+               COPY "showmsg.def".
                COPY "totem.def".
                COPY "standard.def".
       *{TOTEM}END
@@ -119,6 +120,7 @@
        01 FILLER           PIC  x.
            88 carica VALUE IS "C". 
            88 chiamata VALUE IS "S". 
+           88 excel VALUE IS "E". 
            88 stampa-diretta VALUE IS "D". 
        77 data-vigore      PIC  9(8).
        77 ok-73x21-bmp     PIC  S9(9)
@@ -261,6 +263,13 @@
        77 STATUS-listini2  PIC  X(2).
            88 VALID-STATUS-listini2 VALUE IS "00" THRU "09". 
        77 ef-cod-art-cli-buf           PIC  x(15).
+       77 chk-escludi-buf  PIC  9.
+       77 excel-bmp        PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 wstampa          PIC  X(256).
+       77 STATUS-lineseq   PIC  X(2).
+           88 Valid-STATUS-lineseq VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -286,11 +295,12 @@
        77 TMP-DataSet1-progmag-BUF     PIC X(1090).
        77 TMP-DataSet1-param-BUF     PIC X(980).
        77 TMP-DataSet1-tpiombo-BUF     PIC X(739).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-ttipocli-BUF     PIC X(889).
        77 TMP-DataSet1-listini-BUF     PIC X(207).
        77 TMP-DataSet1-listini1-BUF     PIC X(207).
        77 TMP-DataSet1-tmarche-BUF     PIC X(217).
+       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -371,6 +381,11 @@
        77 DataSet1-tmarche-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tmarche-KEY-Asc  VALUE "A".
           88 DataSet1-tmarche-KEY-Desc VALUE "D".
+       77 DataSet1-lineseq-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-lineseq-LOCK  VALUE "Y".
+       77 DataSet1-lineseq-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-lineseq-KEY-Asc  VALUE "A".
+          88 DataSet1-lineseq-KEY-Desc VALUE "D".
 
        77 tgrupgdo-gdo-k-g2-SPLITBUF  PIC X(9).
        77 articoli-art-k1-SPLITBUF  PIC X(51).
@@ -395,6 +410,7 @@
        77 listini1-lst-k-articolo-SPLITBUF  PIC X(20).
        77 listini1-lst-k-cod-art-cli-SPLITBUF  PIC X(29).
 
+           copy "common-excel.def".
       *{TOTEM}END
 
       *{TOTEM}ID-LOGICI
@@ -403,6 +419,7 @@
        78  78-ID-ef-data VALUE 5002.
        78  78-ID-ef-art VALUE 5003.
        78  78-ID-ef-cod-art-cli VALUE 5004.
+       78  78-ID-chk-escludi VALUE 5005.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -526,6 +543,23 @@
            BEFORE PROCEDURE ef-cod-art-cli-BeforeProcedure, 
            .
 
+      * CHECK BOX
+       05
+           chk-escludi, 
+           Check-Box, 
+           COL 35,00, 
+           LINE 9,44,
+           LINES 1,33 ,
+           SIZE 1,40 ,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 78-ID-chk-escludi,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           VALUE chk-escludi-buf,
+           AFTER PROCEDURE Screen4-Cb-1-AfterProcedure,
+           BEFORE PROCEDURE Screen4-Cb-1-BeforeProcedure, 
+           .
       * LABEL
        05
            Screen4-Custom1-2, 
@@ -632,6 +666,21 @@
            TITLE "Cod. art. cli",
            .
 
+      * LABEL
+       05
+           Screen4-La-2aa, 
+           Label, 
+           COL 37,60, 
+           LINE 9,44,
+           LINES 1,33 ,
+           SIZE 10,50 ,
+           ID IS 205,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Escludi FA",
+           .
+
       * FRAME
        05
            Screen4-Fr-1, 
@@ -724,7 +773,7 @@
            ENABLED E-ESCI,
            EXCEPTION-VALUE 27,
            FLAT,
-           ID IS 205,
+           ID IS 206,
            SELF-ACT,
            ESCAPE-BUTTON,
            TITLE "&Esci",
@@ -745,7 +794,7 @@
            ENABLED E-CERCA,
            EXCEPTION-VALUE 8,
            FLAT,
-           ID IS 206,
+           ID IS 207,
            SELF-ACT,
            TITLE "Cerca (F8)",
            .
@@ -1080,9 +1129,28 @@
 
       * PUSH BUTTON
        05
+           pb-excel, 
+           Push-Button, 
+           COL 154,00, 
+           LINE 46,82,
+           LINES 30,00 ,
+           SIZE 28,00 ,
+           BITMAP-HANDLE EXCEL-BMP,
+           BITMAP-NUMBER 1,
+           UNFRAMED,
+           SQUARE,
+           EXCEPTION-VALUE 1002,
+           FLAT,
+           ID IS 200,
+           AFTER PROCEDURE pb-excel-AfterProcedure, 
+           BEFORE PROCEDURE pb-excel-BeforeProcedure, 
+           .
+
+      * PUSH BUTTON
+       05
            pb-stampa, 
            Push-Button, 
-           COL 158,75, 
+           COL 158,38, 
            LINE 46,82,
            LINES 30,00 ,
            SIZE 73,00 ,
@@ -1092,7 +1160,7 @@
            SQUARE,
            EXCEPTION-VALUE 1000,
            FLAT,
-           ID IS 200,
+           ID IS 201,
            AFTER PROCEDURE pb-stampa-AfterProcedure, 
            BEFORE PROCEDURE pb-stampa-BeforeProcedure, 
            .
@@ -1101,7 +1169,7 @@
        05
            pb-esci, 
            Push-Button, 
-           COL 168,63, 
+           COL 168,25, 
            LINE 46,82,
            LINES 30,00 ,
            SIZE 73,00 ,
@@ -1111,7 +1179,7 @@
            SQUARE,
            EXCEPTION-VALUE 27,
            FLAT,
-           ID IS 201,
+           ID IS 202,
            SELF-ACT,
            ESCAPE-BUTTON,
            AFTER PROCEDURE pb-esci-AfterProcedure, 
@@ -1254,6 +1322,7 @@
            CALL "w$bitmap" USING WBITMAP-DESTROY, BOTTONE-CANCEL-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, TOOLBAR-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, BOTTONE-ELIMINA-BMP
+           CALL "w$bitmap" USING WBITMAP-DESTROY, EXCEL-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, BOTTONE-EXIT-BMP
       *    After-Program
            PERFORM ginqui-Ev-After-Program
@@ -1383,6 +1452,10 @@
            COPY RESOURCE "BOTTONE-ELIMINA.BMP".
            CALL "w$bitmap" USING WBITMAP-LOAD "BOTTONE-ELIMINA.BMP", 
                    GIVING BOTTONE-ELIMINA-BMP.
+      * pb-excel
+           COPY RESOURCE "EXCEL.BMP".
+           CALL "w$bitmap" USING WBITMAP-LOAD "EXCEL.BMP", 
+                   GIVING EXCEL-BMP.
       * pb-esci
            COPY RESOURCE "BOTTONE-EXIT.BMP".
            CALL "w$bitmap" USING WBITMAP-LOAD "BOTTONE-EXIT.BMP", 
@@ -1413,6 +1486,8 @@
            PERFORM OPEN-listini
            PERFORM OPEN-listini1
            PERFORM OPEN-tmarche
+      *    lineseq OPEN MODE IS FALSE
+      *    PERFORM OPEN-lineseq
       *    After Open
            .
 
@@ -1603,6 +1678,18 @@
       * <TOTEM:END>
            .
 
+       OPEN-lineseq.
+      * <TOTEM:EPT. INIT:lab-listini, FD:lineseq, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  OUTPUT lineseq
+           IF NOT Valid-STATUS-lineseq
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:lab-listini, FD:lineseq, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-tgrupgdo
@@ -1621,6 +1708,8 @@
            PERFORM CLOSE-listini
            PERFORM CLOSE-listini1
            PERFORM CLOSE-tmarche
+      *    lineseq CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-lineseq
       *    After Close
            .
 
@@ -1711,6 +1800,11 @@
       * <TOTEM:EPT. INIT:lab-listini, FD:tmarche, BeforeClose>
       * <TOTEM:END>
            CLOSE tmarche
+           .
+
+       CLOSE-lineseq.
+      * <TOTEM:EPT. INIT:lab-listini, FD:lineseq, BeforeClose>
+      * <TOTEM:END>
            .
 
        tgrupgdo-gdo-k-g2-MERGE-SPLITBUF.
@@ -4279,6 +4373,76 @@
       * <TOTEM:END>
            .
 
+       DataSet1-lineseq-INITSTART.
+           .
+
+       DataSet1-lineseq-INITEND.
+           .
+
+       DataSet1-lineseq-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadRecord>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadNext>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadPrev>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeWrite>
+      * <TOTEM:END>
+           WRITE line-riga OF lineseq.
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE gdo-rec OF tgrupgdo
            INITIALIZE art-rec OF articoli
@@ -4295,6 +4459,7 @@
            INITIALIZE lst-rec OF listini
            INITIALIZE lst-rec OF listini1
            INITIALIZE mar-rec OF tmarche
+           INITIALIZE line-riga OF lineseq
            .
 
 
@@ -4470,6 +4635,14 @@
       * FD's Initialize Paragraph
        DataSet1-tmarche-INITREC.
            INITIALIZE mar-rec OF tmarche
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-lineseq-INITREC.
+           INITIALIZE line-riga OF lineseq
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -4776,6 +4949,8 @@
                  END-IF
               WHEN Key-Status = 1001
                  PERFORM pb-elimina-LinkTo
+              WHEN Key-Status = 1002
+                 PERFORM pb-excel-LinkTo
               WHEN Key-Status = 1000
                  PERFORM pb-stampa-LinkTo
            END-EVALUATE
@@ -4973,6 +5148,11 @@
                 move "Stampa listino in corso..."      to tit
                 display lab
                 perform CHIAMATA-STAMPA
+
+           when excel
+                move "Estrazione escel in corso..."    to tit
+                display lab
+                perform ESTRAZIONE-EXCEL
 
            when stampa-diretta
                 move "Stampa listino in corso..."      to tit
@@ -5292,6 +5472,113 @@
            .
       * <TOTEM:END>
 
+       ESTRAZIONE-EXCEL.
+      * <TOTEM:PARA. ESTRAZIONE-EXCEL>
+           initialize wstampa.
+           accept como-data from century-date.
+           accept como-ora from time.
+           accept  wstampa from environment "PATH_ST".
+           inspect wstampa replacing trailing spaces by low-value.
+           string  wstampa    delimited low-value
+                   "LISTINI_" delimited size
+                   como-data  delimited size
+                   "-"        delimited size
+                   como-ora   delimited size
+                   ".csv"     delimited size
+              into wstampa
+           end-string.
+           inspect wstampa replacing trailing low-value by spaces.
+           perform ACCETTA-SEPARATORE.
+           open output lineseq.
+           string "N."            delimited size
+                  separatore      delimited size
+                  "Articolo"      delimited size
+                  separatore      delimited size
+                  "Valido dal"    delimited size
+                  separatore      delimited size
+                  "Art Cod Cli"   delimited size
+                  separatore      delimited size
+                  "Descrizione"   delimited size
+                  separatore      delimited size
+                  "Imb"           delimited size
+                  separatore      delimited size
+                  "EAN"           delimited size
+                  separatore      delimited size
+                  "Prod."         delimited size
+                  separatore      delimited size
+                  "Cons."         delimited size
+                  separatore      delimited size
+                  "Cou/Cob"       delimited size
+                  separatore      delimited size
+                  "Add. Pb"       delimited size
+                  separatore      delimited size
+                  "Prezzo"        delimited size
+                  separatore      delimited size
+                  "Prezzo Promo"  delimited size
+                  separatore      delimited size
+                  "Faro"          delimited size
+                  separatore      delimited size
+             into line-riga
+           end-string.
+           write line-riga.
+
+           inquire gd-listini, last-row tot-righe.
+           perform varying riga from 2 by 1 
+                     until riga > tot-righe
+              inquire gd-listini(riga, 1),  cell-data col-num    
+              inquire gd-listini(riga, 2),  cell-data col-art    
+              inquire gd-listini(riga, 3),  cell-data col-data   
+              inquire gd-listini(riga, 4),  cell-data col-cod-art
+              inquire gd-listini(riga, 5),  cell-data col-des    
+              inquire gd-listini(riga, 6),  cell-data col-imb    
+              inquire gd-listini(riga, 7),  cell-data col-ean    
+              inquire gd-listini(riga, 8),  cell-data col-cons   
+              inquire gd-listini(riga, 9),  cell-data col-prod   
+              inquire gd-listini(riga, 10), cell-data col-cou    
+              inquire gd-listini(riga, 11), cell-data col-add    
+              inquire gd-listini(riga, 12), cell-data col-prz    
+              inquire gd-listini(riga, 13), cell-data col-promo  
+              inquire gd-listini(riga, 14), cell-data col-faro   
+              initialize line-riga
+              string col-num       delimited size
+                     separatore    delimited size
+                     col-art       delimited size
+                     separatore    delimited size
+                     col-data      delimited size
+                     separatore    delimited size
+                     col-cod-art   delimited size
+                     separatore    delimited size
+                     col-des       delimited size
+                     separatore    delimited size
+                     col-imb       delimited size
+                     separatore    delimited size
+                     col-ean       delimited size
+                     separatore    delimited size
+                     col-cons      delimited size
+                     separatore    delimited size
+                     col-prod      delimited size
+                     separatore    delimited size
+                     col-cou       delimited size
+                     separatore    delimited size
+                     col-add       delimited size
+                     separatore    delimited size
+                     col-prz       delimited size
+                     separatore    delimited size
+                     col-promo     delimited size
+                     separatore    delimited size
+                     col-faro      delimited size
+                     separatore    delimited size
+                into line-riga
+             end-string
+             write line-riga
+           end-perform.
+
+           close lineseq.
+
+           perform CALL-EXCEL 
+           .
+      * <TOTEM:END>
+
        PARAGRAFO-COPY.
       * <TOTEM:PARA. PARAGRAFO-COPY>
            copy "color-custom.cpy".
@@ -5299,6 +5586,7 @@
            copy "imposte.cpy".
            copy "addizionale-piombo.cpy".
            copy "trova-parametro.cpy".
+           copy "common-excel.cpy".
 
       ***--- DUMMY ---> NON TOCCARE!!!!
        STATUS-HELP.
@@ -5441,9 +5729,22 @@
               read tmp-listini next 
                  at end 
                     exit perform 
-              end-read
-              add 1 to idx
+              end-read    
               initialize rec-grid
+              evaluate tlst-prezzo
+              when 0         
+                   move "SP"        to col-prz
+              when 999999,99 
+                   move "FA"   to col-prz
+                   move spaces to col-prod
+                   if chk-escludi-buf = 1
+                      exit perform cycle
+                   end-if
+              when other     
+                   move tlst-prezzo to prezzo-edit
+                   move prezzo-edit to col-prz
+              end-evaluate
+              add 1 to idx
               move idx                  to col-num
               move tlst-articolo        to col-art
               string tlst-data-vigore(7:2) delimited size
@@ -5467,16 +5768,6 @@
                  move prezzo-edit       to col-prod
               end-if
               move tlst-cod-art-cli     to col-cod-art
-              evaluate tlst-prezzo
-              when 0         
-                   move "SP"        to col-prz
-              when 999999,99 
-                   move "FA"   to col-prz
-                   move spaces to col-prod
-              when other     
-                   move tlst-prezzo to prezzo-edit
-                   move prezzo-edit to col-prz
-              end-evaluate
               move tlst-promo           to col-promo
                                                        
               add 1 to idx giving riga
@@ -6220,6 +6511,42 @@
       * <TOTEM:PARA. ef-cod-art-cli-AfterProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            perform CONTROLLO 
+           .
+      * <TOTEM:END>
+       Screen4-Cb-1-BeforeProcedure.
+      * <TOTEM:PARA. Screen4-Cb-1-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       Screen4-Cb-1-AfterProcedure.
+      * <TOTEM:PARA. Screen4-Cb-1-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       pb-excel-BeforeProcedure.
+      * <TOTEM:PARA. pb-excel-BeforeProcedure>
+           modify pb-excel, bitmap-number = 2 
+           .
+      * <TOTEM:END>
+       pb-excel-AfterProcedure.
+      * <TOTEM:PARA. pb-excel-AfterProcedure>
+           modify pb-excel, bitmap-number = 1 
+           .
+      * <TOTEM:END>
+       pb-excel-LinkTo.
+      * <TOTEM:PARA. pb-excel-LinkTo>
+           display message "Estrarre in excel le righe a video?"
+                     title titolo
+                      icon 2
+                      type mb-yes-no
+                    giving scelta
+
+           if scelta = mb-yes
+              call "W$MOUSE" using set-mouse-shape, wait-pointer
+              set excel to true
+              perform FORM3-OPEN-ROUTINE
+              call "W$MOUSE" using set-mouse-shape, arrow-pointer
+           end-if 
            .
       * <TOTEM:END>
 
