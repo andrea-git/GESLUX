@@ -24,6 +24,7 @@
            copy "mtordini.sl".
            copy "mrordini.sl".
            copy "tmp-ord-mast.sl".
+           copy "agenti.sl".
 
       *file di sort per stampare le evasioni in stordcp
        SELECT tmp-ord-ev
@@ -61,6 +62,7 @@
            copy "mtordini.fd".
            copy "mrordini.fd".    
            copy "tmp-ord-mast.fd".  
+           copy "agenti.fd".
 
       *(( XFD FILE = tmp-ord-mast ))
        FD  tmp-ord-ev.
@@ -115,6 +117,7 @@ LUBEXX 78  MaxRowsPerPage                value    33.
        77  IdxChar            pic 999  value 0.
        77  NumChar            pic 999  value 0.
        77  como-art           pic x(6).
+       77  age-codice-x       pic x(5).
  
       * COMODI
        77  como-cap           pic x(5).
@@ -124,8 +127,7 @@ LUBEXX 78  MaxRowsPerPage                value    33.
        77  messaggio          pic X(150) value spaces.
        77  WFONT-STATUS       pic S9(5)  value ZERO.
        77  font-size-dply     pic Z(5)   value ZERO.
-       77  data-6             pic X(8)   value spaces.
-       77  ora-4              pic X(5)   value spaces.
+       
        77  como-data          pic 9(8)   value ZERO.
        77  como-ora           pic 9(8)   value ZERO.     
        77  edit-numero-8      pic Z(8).
@@ -198,6 +200,7 @@ LUBEXX 78  MaxRowsPerPage                value    33.
        77  status-tmp-ord-mast     pic xx.
        77  status-tmp-ord-ev       pic xx.
        77  status-tmp-ord-ev2      pic xx.
+       77  status-agenti           pic xx.
 
        77  path-tmp-riep-vet       pic x(256).
        77  path-tmp-ord-mast       pic x(256).
@@ -237,6 +240,16 @@ LUBEXX 78  MaxRowsPerPage                value    33.
 
        77  filler             pic X.
            88 trovato-master-urgente    value "S", false "N".
+           
+       01  riga-agente.                      
+           05 filler             pic x(70) value spaces.
+           05 filler             pic x(8)  value "Agente: ".
+           05 r-agente           pic x(36).
+
+       01  riga-data-ora.
+           05 data-6             pic X(8).
+           05 filler             pic x(3)  value " - ".
+           05 ora-4              pic X(5).  
 
        01  riga-master.
            05 filler          pic x  value "*".
@@ -660,7 +673,8 @@ LUBEXX 78  MaxRowsPerPage                value    33.
                        tpromo
                        tivaese
                        mtordini
-                       mrordini.
+                       mrordini
+                       agenti.
 
            accept  path-tmp-ord-mast from environment "PATH_ST"
            inspect path-tmp-ord-mast 
@@ -723,7 +737,8 @@ LUBEXX 78  MaxRowsPerPage                value    33.
                        tpromo
                        tivaese
                        mtordini
-                       mrordini.
+                       mrordini
+                       agenti.
                                   
            close       tmp-ord-ev.
            delete file tmp-ord-ev.
@@ -1292,42 +1307,47 @@ LUBEXX             ")"             delimited size
 
       * STAMPA DATI DEL DESTINO (solo se presenti)
       *     if tor-prg-destino not = ZERO
-              if des-ragsoc-1 not = space
-                 move des-ragsoc-1    to spl-riga-stampa
-              else
-                 move cli-ragsoc-1    to spl-riga-stampa
-              end-if
-              move 1                  to spl-riga
-              move 10                 to spl-colonna
-              call "spooler"       using spooler-link
-              
-              if des-indirizzo not = space
-                 move des-indirizzo   to spl-riga-stampa
-              else
-                 move cli-indirizzo   to spl-riga-stampa
-              end-if
-              add  0,5                to spl-riga
-              move 10                 to spl-colonna
-              call "spooler"       using spooler-link
+           if des-ragsoc-1 not = space
+              move des-ragsoc-1    to spl-riga-stampa
+           else
+              move cli-ragsoc-1    to spl-riga-stampa
+           end-if
+           move 1                  to spl-riga
+           move 10                 to spl-colonna
+           call "spooler"       using spooler-link
+           
+           if des-indirizzo not = space
+              move des-indirizzo   to spl-riga-stampa
+           else
+              move cli-indirizzo   to spl-riga-stampa
+           end-if
+           add  0,5                to spl-riga
+           move 10                 to spl-colonna
+           call "spooler"       using spooler-link
 
-              if des-cap not = spaces
-                 move des-cap to como-cap
-              else
-                 move cli-cap to como-cap
-              end-if
+           if des-cap not = spaces
+              move des-cap to como-cap
+           else
+              move cli-cap to como-cap
+           end-if
 
-              if des-localita not = space
-                 move des-localita    to como-loca
-              else
-                 move cli-localita    to como-loca
-              end-if
-              inspect como-loca replacing trailing spaces by low-value
+           if des-localita not = space
+              move des-localita    to como-loca
+           else
+              move cli-localita    to como-loca
+           end-if
+           inspect como-loca replacing trailing spaces by low-value
 
-              if des-prov not = space
-                 move des-prov        to como-prov
-              else
-                 move cli-prov        to como-prov
-              end-if              
+           if des-prov not = space
+              move des-prov        to como-prov
+           else
+              move cli-prov        to como-prov
+           end-if         
+     
+           move tor-cod-agente to age-codice
+           read agenti no lock
+                invalid move spaces to age-ragsoc-1
+           end-read.
 
            initialize spl-riga-stampa.
            string  como-cap        delimited size,
@@ -1343,6 +1363,24 @@ LUBEXX             ")"             delimited size
            call "spooler"       using spooler-link.
 
       *     end-if.
+                                                                       
+           inspect age-ragsoc-1 replacing trailing spaces by low-value.
+           move age-codice to age-codice-x.
+           inspect age-codice-x replacing leading x"30" by x"20".
+           call "C$JUSTIFY" using age-codice-x, "L"
+           inspect age-codice-x replacing trailing spaces by low-value.
+           initialize r-agente.
+           string age-codice-x delimited low-value
+                  " "          delimited size
+                  age-ragsoc-1 delimited low-value
+             into r-agente
+           end-string.
+
+           move CourierNew8        to spl-hfont.
+           move riga-agente        to spl-riga-stampa.
+           move 3,1                to spl-riga.
+           move 1                  to spl-colonna.
+           call "spooler"       using spooler-link.
 
       * DATA ED ORA
       *    RESTITUISCE LA DATA IN FORMATO gg/mm/aa
@@ -1355,12 +1393,9 @@ LUBEXX             ")"             delimited size
            move all ":"            to ora-4.
            move como-ora(1:2)      to ora-4(1:2).
            move como-ora(3:2)      to ora-4(4:2).
-
-           initialize spl-riga-stampa.
-           string  data-6          delimited size,
-                   " - "           delimited size,
-                   ora-4           delimited size,
-              into spl-riga-stampa.
+                                                
+           move CourierNew10       to spl-hfont.
+           move riga-data-ora      to spl-riga-stampa.
            move 3                  to spl-riga.
            move 1                  to spl-colonna.
            call "spooler"       using spooler-link.

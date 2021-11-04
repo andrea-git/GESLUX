@@ -8,7 +8,7 @@
 WORKSPACE_UNIQUE_CODE=TOTEM-7DE41144432-337-117565976
 PROJECT_LIST=GESLUX,LAB,EDI,GET,SHI,STORICO,AndamentoClienti
 CONFIGURATION_LIST=Debug Mode,RELEASE
-CURRENT_CONFIGURATION=Debug Mode
+CURRENT_CONFIGURATION=RELEASE
 
 [FILE_DEFINITION_CONTENT]
 VERSION=1
@@ -34842,7 +34842,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:SOURCE\stordcp.cbl]
-COPY_DEPENDENCE=FD\tordini.sl;FD\rordini.sl;FD\clienti.sl;FD\articoli.sl;FD\tudm.sl;FD\destini.sl;FD\tvettori.sl;FD\ttipocli.sl;FD\blister.sl;FD\tcaumag.sl;FD\tmp-riep-vet.sl;FD\tmp-riep-bli-mas.sl;FD\tmp-riep-bli-man.sl;FD\tparamge.sl;FD\tcodpag.sl;FD\tpromo.sl;FD\tivaese.sl;FD\mtordini.sl;FD\mrordini.sl;FD\tmp-ord-mast.sl;FD\tordini.fd;FD\rordini.fd;FD\clienti.fd;FD\articoli.fd;FD\tudm.fd;FD\destini.fd;FD\tvettori.fd;FD\ttipocli.fd;FD\blister.fd;FD\tcaumag.fd;FD\tmp-riep-vet.fd;FD\tmp-riep-bli-mas.fd;FD\tmp-riep-bli-man.fd;FD\tparamge.fd;FD\tcodpag.fd;FD\tpromo.fd;FD\tivaese.fd;FD\mtordini.fd;FD\mrordini.fd;FD\tmp-ord-mast.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\spooler.def;Copylib\selprint.lks;Copylib\link-stordcp.def
+COPY_DEPENDENCE=FD\tordini.sl;FD\rordini.sl;FD\clienti.sl;FD\articoli.sl;FD\tudm.sl;FD\destini.sl;FD\tvettori.sl;FD\ttipocli.sl;FD\blister.sl;FD\tcaumag.sl;FD\tmp-riep-vet.sl;FD\tmp-riep-bli-mas.sl;FD\tmp-riep-bli-man.sl;FD\tparamge.sl;FD\tcodpag.sl;FD\tpromo.sl;FD\tivaese.sl;FD\mtordini.sl;FD\mrordini.sl;FD\tmp-ord-mast.sl;FD\agenti.sl;FD\tordini.fd;FD\rordini.fd;FD\clienti.fd;FD\articoli.fd;FD\tudm.fd;FD\destini.fd;FD\tvettori.fd;FD\ttipocli.fd;FD\blister.fd;FD\tcaumag.fd;FD\tmp-riep-vet.fd;FD\tmp-riep-bli-mas.fd;FD\tmp-riep-bli-man.fd;FD\tparamge.fd;FD\tcodpag.fd;FD\tpromo.fd;FD\tivaese.fd;FD\mtordini.fd;FD\mrordini.fd;FD\tmp-ord-mast.fd;FD\agenti.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\spooler.def;Copylib\selprint.lks;Copylib\link-stordcp.def
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
@@ -57555,7 +57555,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:RELEASE:SOURCE\stordcp.cbl]
-COPY_DEPENDENCE=FD\tordini.sl;FD\rordini.sl;FD\clienti.sl;FD\articoli.sl;FD\tudm.sl;FD\destini.sl;FD\tvettori.sl;FD\ttipocli.sl;FD\blister.sl;FD\tcaumag.sl;FD\tmp-riep-vet.sl;FD\tmp-riep-bli-mas.sl;FD\tmp-riep-bli-man.sl;FD\tparamge.sl;FD\tcodpag.sl;FD\tpromo.sl;FD\tivaese.sl;FD\mtordini.sl;FD\mrordini.sl;FD\tmp-ord-mast.sl;FD\tordini.fd;FD\rordini.fd;FD\clienti.fd;FD\articoli.fd;FD\tudm.fd;FD\destini.fd;FD\tvettori.fd;FD\ttipocli.fd;FD\blister.fd;FD\tcaumag.fd;FD\tmp-riep-vet.fd;FD\tmp-riep-bli-mas.fd;FD\tmp-riep-bli-man.fd;FD\tparamge.fd;FD\tcodpag.fd;FD\tpromo.fd;FD\tivaese.fd;FD\mtordini.fd;FD\mrordini.fd;FD\tmp-ord-mast.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\spooler.def;Copylib\selprint.lks;Copylib\link-stordcp.def
+COPY_DEPENDENCE=FD\tordini.sl;FD\rordini.sl;FD\clienti.sl;FD\articoli.sl;FD\tudm.sl;FD\destini.sl;FD\tvettori.sl;FD\ttipocli.sl;FD\blister.sl;FD\tcaumag.sl;FD\tmp-riep-vet.sl;FD\tmp-riep-bli-mas.sl;FD\tmp-riep-bli-man.sl;FD\tparamge.sl;FD\tcodpag.sl;FD\tpromo.sl;FD\tivaese.sl;FD\mtordini.sl;FD\mrordini.sl;FD\tmp-ord-mast.sl;FD\agenti.sl;FD\tordini.fd;FD\rordini.fd;FD\clienti.fd;FD\articoli.fd;FD\tudm.fd;FD\destini.fd;FD\tvettori.fd;FD\ttipocli.fd;FD\blister.fd;FD\tcaumag.fd;FD\tmp-riep-vet.fd;FD\tmp-riep-bli-mas.fd;FD\tmp-riep-bli-man.fd;FD\tparamge.fd;FD\tcodpag.fd;FD\tpromo.fd;FD\tivaese.fd;FD\mtordini.fd;FD\mrordini.fd;FD\tmp-ord-mast.fd;FD\agenti.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\spooler.def;Copylib\selprint.lks;Copylib\link-stordcp.def
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
