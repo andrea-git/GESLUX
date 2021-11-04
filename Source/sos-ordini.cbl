@@ -595,7 +595,7 @@
                             move 4 to el-mese(idx)
                        when mese = mese-5 
                             move 5 to el-mese(idx)
-                       when mese = mese-6 
+                       when other
                             move 6 to el-mese(idx)
                        end-evaluate
 
