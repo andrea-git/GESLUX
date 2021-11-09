@@ -54,6 +54,7 @@
 
       *    COSTANTI
        78  titolo                value "Generazione bolle invio EDI".
+       78  78-min-bolla-serie-2  value 400000.
                                           
        77  como-data             pic 9(8).
        77  como-ora              pic 9(8).
@@ -378,13 +379,13 @@
               if tor-num-bolla = 0
                  move 99999999 to tor-num-bolla
               end-if
-            else
+           else
               add 1 to con-ult-num-bolle-edi-2 giving tor-num-bolla
               if tor-num-bolla = 0
                  move 99999999 to tor-num-bolla
               end-if
-              if tor-num-bolla < 900000
-                 move 900000 to tor-num-bolla
+              if tor-num-bolla <= 78-min-bolla-serie-2 
+                 add 1 to 78-min-bolla-serie-2 giving tor-num-bolla
               end-if
            end-if.
            start tordini key  is >= k-bolla
@@ -397,8 +398,8 @@
                  if tor-anno-bolla not = con-anno
                     exit perform
                  end-if   
-                 if SerieBOlle = 1
-                    if tor-num-bolla >= 500000
+                 if SerieBolle = 1
+                    if tor-num-bolla > 78-min-bolla-serie-2 
                        exit perform
                     end-if
                  end-if            
@@ -463,6 +464,7 @@
                  end-if
                  move tor-num-bolla to bolla-a
                  add 1 to tot-doc
+
                  if SerieBolle = 1
                     move tor-num-bolla to con-ult-num-bolle-edi-1
                  else                                            

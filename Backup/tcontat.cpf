@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E2C9225147-875-8618756
+PROGRAM_UNIQUE_CODE=TOTEM-7E5B9131156-289-243889664
 
 {{@DESCRIPTION:
 
@@ -612,7 +612,7 @@ Begin Screen Form1
    Height in Cells   = TRUE
    Help ID           = 0
    Label Offset      = 23
-   Lines             = 35,31
+   Lines             = 35,46
    Link To Thread    = TRUE
    Max Lines         = 0,00
    Max Size          = 0,00
@@ -3508,10 +3508,10 @@ Begin Screen Form1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 19,00
+      Size              = 20,00
       Size Unit         = Default
       Tab Order         = 61
-      Title             = "Ultimo numero bolle trattato SERIE 1"
+      Title             = "Ultimo numero bolle SERIE 1 (LBX da 1 a 400.000)"
       Transparent       = TRUE
       Visible           = TRUE
       Width in Cells    = TRUE
@@ -3545,7 +3545,7 @@ Begin Screen Form1
       Size              = 19,00
       Size Unit         = Default
       Tab Order         = 62
-      Title             = "Ultimo numero bolle trattato SERIE 2"
+      Title             = "Ultimo numero bolle SERIE 2 (SIN da 400.001 in poi)"
       Transparent       = TRUE
       Visible           = TRUE
       Width in Cells    = TRUE
@@ -3568,7 +3568,7 @@ Begin Screen Form1
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 20
+      ID                = 26
       Justification     = Left
       Label Offset      = 20
       Line              = 33,08
@@ -3602,7 +3602,7 @@ Begin Screen Form1
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 19
+      ID                = 27
       Justification     = Left
       Label Offset      = 20
       Line              = 33,08
@@ -3636,7 +3636,7 @@ Begin Screen Form1
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 23
+      ID                = 28
       Justification     = Center
       Label Offset      = 20
       Line              = 31,46

@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          tcontat.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        venerdì 14 dicembre 2018 15:13:33.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        martedì 9 novembre 2021 14:20:26.
        REMARKS.
       *{TOTEM}END
 
@@ -44,7 +44,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -1382,14 +1382,14 @@
            COL 37,57, 
            LINE 28,77,
            LINES 2,15 ,
-           SIZE 19,00 ,
+           SIZE 20,00 ,
            FONT IS Small-Font,
            ID IS 24,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            LEFT,
            TRANSPARENT,
-           TITLE "Ultimo numero bolle trattato SERIE 1",
+           TITLE "Ultimo numero bolle SERIE 1 (LBX da 1 a 400.000)",
            VISIBLE 1,
            .
 
@@ -1407,7 +1407,7 @@
            WIDTH-IN-CELLS,
            LEFT,
            TRANSPARENT,
-           TITLE "Ultimo numero bolle trattato SERIE 2",
+           TITLE "Ultimo numero bolle SERIE 2 (SIN da 400.001 in poi)",
            VISIBLE 1,
            .
 
@@ -2400,7 +2400,7 @@
 
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 35,31,
+              LINES 35,46,
               SIZE 104,57,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
