@@ -2208,7 +2208,7 @@
                   78-spazi                 delimited size
                   78-spazi                 delimited size
                   "<RiferimentoTesto>"     delimited size
-                  como-des                 delimited low-value
+                  como-des(1:60)           delimited low-value
                   "</RiferimentoTesto>"    delimited size
              into line-riga.
            write line-riga. 
