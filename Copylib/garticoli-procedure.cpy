@@ -2114,6 +2114,13 @@ LUBEXX        if tutto-ok
                     modify tool-modifica, value = mod
                     set link-batch to true
                     perform SCRIVI-PROGMAG
+
+                    if ef-mag-buf not = "LBX"            
+                       modify ef-mag, value = "LBX"
+                       set link-batch to true
+                       perform SCRIVI-PROGMAG        
+                       modify ef-mag, value = art-mag-std of articoli
+                    end-if
                  else
       *              if art-attivo   of articoli or 
       *                 art-bloccato of articoli
