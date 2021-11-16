@@ -2,6 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+Adesk-andre=192.168.56.1
 
 
 [PROGRAM_CONTENT]
@@ -9,7 +10,7 @@ QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=vprogmag-Ev-Before-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E5B9213549-367-90119955
+PROGRAM_UNIQUE_CODE=TOTEM-7E5B10214716-610-288203005
 
 {{@DESCRIPTION:
 
@@ -754,6 +755,16 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM70_WK
 
 @}}
+[FDITEM71_WK]
+m_strName=giac-buona
+m_strRawPic=s9(8)
+m_strPic=s9(8)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM71_WK
+
+@}}
 
 
 [LINKAGE_SECTION]
@@ -863,7 +874,7 @@ Begin Screen Form1
    Operation Mode    = Interactive Mode
    Resizable         = FALSE
    Scroll            = FALSE
-   Size              = 127,00
+   Size              = 130,00
    System Menu       = TRUE
    Title Bar         = TRUE
    Title Variable    = TITOLO
@@ -1519,7 +1530,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare il peso UTF
+      Hint              = Peso UTF
       ID                = 0
       Justification     = Right
       Line              = 13,00
@@ -1537,7 +1548,7 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 14,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
       Tab Order         = 15
@@ -1550,7 +1561,7 @@ Begin Screen Form1
       After Procedure   = ef-voce-AfterProcedure
    End
    Begin Data.Entry-Field ef-peso-non-utf
-      SCREEN-COL        = 50,00
+      SCREEN-COL        = 55,33
       SCREEN-LINE       = 13,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -1562,7 +1573,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 50,00
+      Column            = 55,33
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -1579,7 +1590,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare il peso non UTF
+      Hint              = Peso non UTF
       ID                = 0
       Justification     = Right
       Line              = 13,00
@@ -1597,7 +1608,7 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 15,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
       Tab Order         = 16
@@ -1639,7 +1650,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare il Costo Ultimo
+      Hint              = Costo Ultimo
       ID                = 0
       Justification     = Right
       Line              = 17,00
@@ -1657,7 +1668,7 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 14,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
       Tab Order         = 17
@@ -1670,7 +1681,7 @@ Begin Screen Form1
       After Procedure   = ef-voce-AfterProcedure
    End
    Begin Data.Entry-Field EF-COSTO-MEDIO
-      SCREEN-COL        = 50,00
+      SCREEN-COL        = 55,33
       SCREEN-LINE       = 17,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -1682,7 +1693,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 50,00
+      Column            = 55,33
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -1699,7 +1710,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare il Costo Medio
+      Hint              = Costo Medio
       ID                = 0
       Justification     = Right
       Line              = 17,00
@@ -1717,10 +1728,70 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 15,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
       Tab Order         = 18
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = ef-voce-AfterProcedure
+   End
+   Begin Data.Entry-Field EF-COSTO-MEDIOa
+      SCREEN-COL        = 92,33
+      SCREEN-LINE       = 17,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-COSTO-MEDIOa
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 92,33
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ---.---.--9
+      Field Picture     = s9(8)
+      Field Variable    = giac-buona
+      File              = Working Storage
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Giacenza 'buona' (magazzini con Pren Promo = S)
+      ID                = 0
+      Justification     = Right
+      Line              = 17,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 9
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = TRUE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 17,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 19
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -1759,7 +1830,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare il Valore della Giacenza
+      Hint              = Valore della Giacenza
       ID                = 0
       Justification     = Right
       Line              = 19,00
@@ -1777,10 +1848,10 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 14,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 19
+      Tab Order         = 20
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -1790,7 +1861,7 @@ Begin Screen Form1
       After Procedure   = EF-PREZZO-FINITO-AfterProcedure
    End
    Begin Data.Entry-Field EF-ORD-CLI
-      SCREEN-COL        = 50,00
+      SCREEN-COL        = 55,33
       SCREEN-LINE       = 19,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -1802,7 +1873,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 50,00
+      Column            = 55,33
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -1819,7 +1890,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare l'impegnato (Ordinazione da Clienti)
+      Hint              = Impegnato (Ordinazione da Clienti)
       ID                = 0
       Justification     = Right
       Line              = 19,00
@@ -1837,10 +1908,10 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 15,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 20
+      Tab Order         = 21
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -1879,7 +1950,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare l'ordinato (Ordinazione a Fornitorii)
+      Hint              = Ordinato (Ordinazione a Fornitorii)
       ID                = 0
       Justification     = Right
       Line              = 23,00
@@ -1897,10 +1968,10 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 14,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 21
+      Tab Order         = 22
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -1910,7 +1981,7 @@ Begin Screen Form1
       After Procedure   = ef-voce-AfterProcedure
    End
    Begin Data.Entry-Field EF-ORD-FORN-2
-      SCREEN-COL        = 35,00
+      SCREEN-COL        = 36,67
       SCREEN-LINE       = 23,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -1922,7 +1993,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 35,00
+      Column            = 36,67
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -1939,7 +2010,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare l'ordinato (Ordinazione a Fornitorii)
+      Hint              = Ordinato (Ordinazione a Fornitorii)
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
@@ -1958,10 +2029,10 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 14,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 22
+      Tab Order         = 23
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -1971,7 +2042,7 @@ Begin Screen Form1
       After Procedure   = ef-voce-AfterProcedure
    End
    Begin Data.Entry-Field EF-ORD-FORN-3
-      SCREEN-COL        = 52,00
+      SCREEN-COL        = 55,33
       SCREEN-LINE       = 23,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -1983,7 +2054,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 52,00
+      Column            = 55,33
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -2000,7 +2071,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare l'ordinato (Ordinazione a Fornitorii)
+      Hint              = Ordinato (Ordinazione a Fornitorii)
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
@@ -2019,10 +2090,10 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 14,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 23
+      Tab Order         = 24
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -2032,7 +2103,7 @@ Begin Screen Form1
       After Procedure   = ef-voce-AfterProcedure
    End
    Begin Data.Entry-Field EF-ORD-FORN-4
-      SCREEN-COL        = 69,00
+      SCREEN-COL        = 74,00
       SCREEN-LINE       = 23,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -2044,7 +2115,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 69,00
+      Column            = 74,00
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -2061,7 +2132,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare l'ordinato (Ordinazione a Fornitorii)
+      Hint              = Ordinato (Ordinazione a Fornitorii)
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
@@ -2080,10 +2151,10 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 14,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 24
+      Tab Order         = 25
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -2122,7 +2193,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare la quantità iniziale espressa nell'Unità di Misura
+      Hint              = Quantità iniziale espressa nell'Unità di Misura
       ID                = 0
       Justification     = Right
       Line              = 28,46
@@ -2140,10 +2211,10 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 14,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 25
+      Tab Order         = 26
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -2153,7 +2224,7 @@ Begin Screen Form1
       After Procedure   = ef-voce-AfterProcedure
    End
    Begin Data.Entry-Field EF-INI-KG
-      SCREEN-COL        = 50,00
+      SCREEN-COL        = 55,33
       SCREEN-LINE       = 28,46
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -2165,7 +2236,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 50,00
+      Column            = 55,33
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -2182,7 +2253,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare il peso iniziale espresso in Kg.
+      Hint              = Peso iniziale espresso in Kg.
       ID                = 0
       Justification     = Right
       Line              = 28,46
@@ -2200,10 +2271,10 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 15,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 26
+      Tab Order         = 27
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -2213,7 +2284,7 @@ Begin Screen Form1
       After Procedure   = ef-voce-AfterProcedure
    End
    Begin Data.Entry-Field EF-INI-VALORE
-      SCREEN-COL        = 82,00
+      SCREEN-COL        = 92,33
       SCREEN-LINE       = 28,46
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -2225,7 +2296,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 82,00
+      Column            = 92,33
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -2242,7 +2313,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare il Valore iniziale espresso in Euro.
+      Hint              = Valore iniziale espresso in Euro.
       ID                = 0
       Justification     = Right
       Line              = 28,46
@@ -2263,7 +2334,7 @@ Begin Screen Form1
       Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 27
+      Tab Order         = 28
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -2302,7 +2373,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare la quantità degli acquisti espressi nell'Unità di Misura
+      Hint              = Quantità degli acquisti espressi nell'Unità di Misura
       ID                = 0
       Justification     = Right
       Line              = 30,46
@@ -2320,10 +2391,10 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 14,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 28
+      Tab Order         = 29
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -2333,7 +2404,7 @@ Begin Screen Form1
       After Procedure   = ef-voce-AfterProcedure
    End
    Begin Data.Entry-Field EF-ACQ-KG
-      SCREEN-COL        = 50,00
+      SCREEN-COL        = 55,33
       SCREEN-LINE       = 30,46
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -2345,7 +2416,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 50,00
+      Column            = 55,33
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -2362,7 +2433,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare il peso degli acquisti espresso in Kg.
+      Hint              = Peso degli acquisti espresso in Kg.
       ID                = 0
       Justification     = Right
       Line              = 30,46
@@ -2380,10 +2451,10 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 15,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 29
+      Tab Order         = 30
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -2393,7 +2464,7 @@ Begin Screen Form1
       After Procedure   = ef-voce-AfterProcedure
    End
    Begin Data.Entry-Field EF-ACQ-VALORE
-      SCREEN-COL        = 82,00
+      SCREEN-COL        = 92,33
       SCREEN-LINE       = 30,46
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -2405,7 +2476,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 82,00
+      Column            = 92,33
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -2422,7 +2493,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare il Valore degli acquisti espresso in Euro.
+      Hint              = Valore degli acquisti espresso in Euro.
       ID                = 0
       Justification     = Right
       Line              = 30,46
@@ -2443,7 +2514,7 @@ Begin Screen Form1
       Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 30
+      Tab Order         = 31
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -2482,7 +2553,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare la quantità delle vendite espresse nell'Unità di Misura
+      Hint              = Quantità delle vendite espresse nell'Unità di Misura
       ID                = 0
       Justification     = Right
       Line              = 32,46
@@ -2500,10 +2571,10 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 14,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 31
+      Tab Order         = 32
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -2513,7 +2584,7 @@ Begin Screen Form1
       After Procedure   = ef-voce-AfterProcedure
    End
    Begin Data.Entry-Field EF-VEN-KG
-      SCREEN-COL        = 50,00
+      SCREEN-COL        = 55,33
       SCREEN-LINE       = 32,46
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -2525,7 +2596,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 50,00
+      Column            = 55,33
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -2542,7 +2613,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare il peso delle vendite espresso in Kg.
+      Hint              = Peso delle vendite espresso in Kg.
       ID                = 0
       Justification     = Right
       Line              = 32,46
@@ -2560,10 +2631,10 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 15,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 32
+      Tab Order         = 33
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -2573,7 +2644,7 @@ Begin Screen Form1
       After Procedure   = ef-voce-AfterProcedure
    End
    Begin Data.Entry-Field EF-VEN-VALORE
-      SCREEN-COL        = 82,00
+      SCREEN-COL        = 92,33
       SCREEN-LINE       = 32,46
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -2585,7 +2656,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 82,00
+      Column            = 92,33
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -2602,7 +2673,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare il Valore delle vendite espresso in Euro.
+      Hint              = Valore delle vendite espresso in Euro.
       ID                = 0
       Justification     = Right
       Line              = 32,46
@@ -2623,7 +2694,7 @@ Begin Screen Form1
       Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 33
+      Tab Order         = 34
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -2662,7 +2733,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare la quantità delle variazioni inventariali espresse nell'Unità di Misura
+      Hint              = Quantità delle variazioni inventariali espresse nell'Unità di Misura
       ID                = 0
       Justification     = Right
       Line              = 34,46
@@ -2680,10 +2751,10 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 14,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 34
+      Tab Order         = 35
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -2693,7 +2764,7 @@ Begin Screen Form1
       After Procedure   = ef-voce-AfterProcedure
    End
    Begin Data.Entry-Field EF-VAR-KG
-      SCREEN-COL        = 50,00
+      SCREEN-COL        = 55,33
       SCREEN-LINE       = 34,46
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -2705,7 +2776,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 50,00
+      Column            = 55,33
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -2722,7 +2793,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare il peso delle variazioni inventariali espresso in Kg.
+      Hint              = Peso delle variazioni inventariali espresso in Kg.
       ID                = 0
       Justification     = Right
       Line              = 34,46
@@ -2740,10 +2811,10 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 15,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 35
+      Tab Order         = 36
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -2753,7 +2824,7 @@ Begin Screen Form1
       After Procedure   = ef-voce-AfterProcedure
    End
    Begin Data.Entry-Field EF-VAR-VALORE
-      SCREEN-COL        = 82,00
+      SCREEN-COL        = 92,33
       SCREEN-LINE       = 34,46
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -2765,7 +2836,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 82,00
+      Column            = 92,33
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -2782,7 +2853,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare il Valore delle variazioni inventarialii espresso in Euro.
+      Hint              = Valore delle variazioni inventarialii espresso in Euro.
       ID                = 0
       Justification     = Right
       Line              = 34,46
@@ -2803,7 +2874,7 @@ Begin Screen Form1
       Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 36
+      Tab Order         = 37
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -2842,7 +2913,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare i resi ai Fornitori espressi nell'Unità di Misura
+      Hint              = Resi ai Fornitori espressi nell'Unità di Misura
       ID                = 0
       Justification     = Right
       Line              = 36,46
@@ -2860,10 +2931,10 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 14,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 37
+      Tab Order         = 38
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -2873,7 +2944,7 @@ Begin Screen Form1
       After Procedure   = ef-voce-AfterProcedure
    End
    Begin Data.Entry-Field EF-FORN-KG
-      SCREEN-COL        = 50,00
+      SCREEN-COL        = 55,33
       SCREEN-LINE       = 36,46
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -2885,7 +2956,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 50,00
+      Column            = 55,33
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -2902,7 +2973,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare il peso dei Resi ai Fornitori espresso in Kg.
+      Hint              = Peso dei Resi ai Fornitori espresso in Kg.
       ID                = 0
       Justification     = Right
       Line              = 36,46
@@ -2920,10 +2991,10 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 15,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 38
+      Tab Order         = 39
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -2933,7 +3004,7 @@ Begin Screen Form1
       After Procedure   = ef-voce-AfterProcedure
    End
    Begin Data.Entry-Field EF-FORN-VALORE
-      SCREEN-COL        = 82,00
+      SCREEN-COL        = 92,33
       SCREEN-LINE       = 36,46
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -2945,7 +3016,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 82,00
+      Column            = 92,33
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -2962,7 +3033,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare il Valore dei Resi ai Fornitori espresso in Euro
+      Hint              = Valore dei Resi ai Fornitori espresso in Euro
       ID                = 0
       Justification     = Right
       Line              = 36,46
@@ -2983,7 +3054,7 @@ Begin Screen Form1
       Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 39
+      Tab Order         = 40
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3022,7 +3093,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare i resi dai Clienti espressi nell'Unità di Misura
+      Hint              = Resi dai Clienti espressi nell'Unità di Misura
       ID                = 0
       Justification     = Right
       Line              = 38,46
@@ -3040,10 +3111,10 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 14,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 40
+      Tab Order         = 41
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3053,7 +3124,7 @@ Begin Screen Form1
       After Procedure   = ef-voce-AfterProcedure
    End
    Begin Data.Entry-Field EF-CLI-KG
-      SCREEN-COL        = 50,00
+      SCREEN-COL        = 55,33
       SCREEN-LINE       = 38,46
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -3065,7 +3136,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 50,00
+      Column            = 55,33
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -3082,7 +3153,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare il peso dei Resi dai Clienti espresso in Kg.
+      Hint              = Peso dei Resi dai Clienti espresso in Kg.
       ID                = 0
       Justification     = Right
       Line              = 38,46
@@ -3100,10 +3171,10 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 15,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 41
+      Tab Order         = 42
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3113,7 +3184,7 @@ Begin Screen Form1
       After Procedure   = ef-voce-AfterProcedure
    End
    Begin Data.Entry-Field EF-CLI-VALORE
-      SCREEN-COL        = 82,00
+      SCREEN-COL        = 92,33
       SCREEN-LINE       = 38,46
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -3125,7 +3196,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 82,00
+      Column            = 92,33
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -3142,7 +3213,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare il Valore dei Resi dai Clienti espresso in Euro
+      Hint              = Valore dei Resi dai Clienti espresso in Euro
       ID                = 0
       Justification     = Right
       Line              = 38,46
@@ -3163,7 +3234,7 @@ Begin Screen Form1
       Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 42
+      Tab Order         = 43
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3202,7 +3273,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare le entrate di lavorazione espresse in Unità di Misura
+      Hint              = Entrate di lavorazione espresse in Unità di Misura
       ID                = 0
       Justification     = Right
       Line              = 40,46
@@ -3220,10 +3291,10 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 14,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 43
+      Tab Order         = 44
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3233,7 +3304,7 @@ Begin Screen Form1
       After Procedure   = ef-voce-AfterProcedure
    End
    Begin Data.Entry-Field ef-kg-el
-      SCREEN-COL        = 50,00
+      SCREEN-COL        = 55,33
       SCREEN-LINE       = 40,46
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -3245,7 +3316,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 50,00
+      Column            = 55,33
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -3262,7 +3333,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare le entrate di lavorazione espresse in Kg
+      Hint              = Entrate di lavorazione espresse in Kg
       ID                = 0
       Justification     = Right
       Line              = 40,46
@@ -3280,10 +3351,10 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 15,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 44
+      Tab Order         = 45
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3293,7 +3364,7 @@ Begin Screen Form1
       After Procedure   = ef-voce-AfterProcedure
    End
    Begin Data.Entry-Field ef-valore-el
-      SCREEN-COL        = 82,00
+      SCREEN-COL        = 92,33
       SCREEN-LINE       = 40,46
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -3305,7 +3376,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 82,00
+      Column            = 92,33
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -3322,7 +3393,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare le entrate di lavorazione espresse in Euro
+      Hint              = Entrate di lavorazione espresse in Euro
       ID                = 0
       Justification     = Right
       Line              = 40,46
@@ -3343,7 +3414,7 @@ Begin Screen Form1
       Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 45
+      Tab Order         = 46
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3382,7 +3453,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare le uscite di lavorazione espresse in Unità di Misura
+      Hint              = Uscite di lavorazione espresse in Unità di Misura
       ID                = 0
       Justification     = Right
       Line              = 42,46
@@ -3400,10 +3471,10 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 14,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 46
+      Tab Order         = 47
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3413,7 +3484,7 @@ Begin Screen Form1
       After Procedure   = ef-voce-AfterProcedure
    End
    Begin Data.Entry-Field ef-kg-ul
-      SCREEN-COL        = 50,00
+      SCREEN-COL        = 55,33
       SCREEN-LINE       = 42,46
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -3425,7 +3496,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 50,00
+      Column            = 55,33
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -3442,7 +3513,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare le uscite di lavorazione espresse in Kg
+      Hint              = Uscite di lavorazione espresse in Kg
       ID                = 0
       Justification     = Right
       Line              = 42,46
@@ -3460,10 +3531,10 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 15,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 47
+      Tab Order         = 48
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3473,7 +3544,7 @@ Begin Screen Form1
       After Procedure   = ef-voce-AfterProcedure
    End
    Begin Data.Entry-Field ef-valore-ul
-      SCREEN-COL        = 82,00
+      SCREEN-COL        = 92,33
       SCREEN-LINE       = 42,46
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -3485,7 +3556,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 82,00
+      Column            = 92,33
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -3502,7 +3573,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare le uscite di lavorazione espresse in Euro
+      Hint              = Uscite di lavorazione espresse in Euro
       ID                = 0
       Justification     = Right
       Line              = 42,46
@@ -3523,7 +3594,7 @@ Begin Screen Form1
       Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 48
+      Tab Order         = 49
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3563,6 +3634,7 @@ Begin Screen Form1
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
+      Hint              = Giacenza periodo espressa in Unità di Misura
       ID                = 6
       Justification     = Right
       Line              = 44,46
@@ -3580,10 +3652,10 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 14,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 49
+      Tab Order         = 50
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3593,7 +3665,7 @@ Begin Screen Form1
       After Procedure   = Form1-DaEf-1-AfterProcedure
    End
    Begin Data.Entry-Field ef-gia-kg
-      SCREEN-COL        = 50,00
+      SCREEN-COL        = 55,33
       SCREEN-LINE       = 44,46
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -3605,7 +3677,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 50,00
+      Column            = 55,33
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -3623,6 +3695,7 @@ Begin Screen Form1
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
+      Hint              = Giacenza Kg espressa in Kg
       ID                = 21
       Justification     = Right
       Line              = 44,46
@@ -3640,10 +3713,10 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 15,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 50
+      Tab Order         = 51
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3653,7 +3726,7 @@ Begin Screen Form1
       After Procedure   = Form1-DaEf-2-AfterProcedure
    End
    Begin Combo-Box cbo-stato
-      SCREEN-COL        = 110,00
+      SCREEN-COL        = 110,67
       SCREEN-LINE       = 44,46
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -3663,7 +3736,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 110,00
+      Column            = 110,67
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -3685,10 +3758,10 @@ Begin Screen Form1
       Notify DblClick   = FALSE
       Notify SelChange  = FALSE
       Occurs            = 0
-      Size              = 14,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Drop List
-      Tab Order         = 51
+      Tab Order         = 52
       Termination Value = 0
       Unsorted          = TRUE
       Value Container   = prg-stato of progmag
@@ -3722,10 +3795,10 @@ Begin Screen Form1
       Position Shift    = 0
       COLORS            = ( 8, 8 )
       SHADING           = ( -1, 1 )
-      Size (Lines)      = 108,00
-      Size (Lines) in Pixels = 648
+      Size (Lines)      = 111,00
+      Size (Lines) in Pixels = 666
       Size (Lines) Unit = Default
-      Tab Order         = 52
+      Tab Order         = 53
       Visible           = NONE
       Width             = 2
       Width in Cells    = TRUE
@@ -3755,9 +3828,9 @@ Begin Screen Form1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 15,00
+      Size              = 14,50
       Size Unit         = Default
-      Tab Order         = 53
+      Tab Order         = 54
       Title             = "Costo Ultimo"
       Transparent       = TRUE
       Visible           = NONE
@@ -3788,9 +3861,9 @@ Begin Screen Form1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 11,00
+      Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 54
+      Tab Order         = 55
       Title             = "Costo Medio"
       Transparent       = TRUE
       Visible           = NONE
@@ -3821,9 +3894,9 @@ Begin Screen Form1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 11,00
+      Size              = 14,50
       Size Unit         = Default
-      Tab Order         = 55
+      Tab Order         = 56
       Title             = "Giacenza"
       Transparent       = TRUE
       Visible           = NONE
@@ -3854,9 +3927,9 @@ Begin Screen Form1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 9,00
+      Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 56
+      Tab Order         = 57
       Title             = "Impegnato"
       Transparent       = TRUE
       Visible           = NONE
@@ -3887,9 +3960,9 @@ Begin Screen Form1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 7,00
+      Size              = 14,50
       Size Unit         = Default
-      Tab Order         = 57
+      Tab Order         = 58
       Title             = "Ordinato"
       Transparent       = TRUE
       Visible           = NONE
@@ -3920,9 +3993,9 @@ Begin Screen Form1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 13,00
+      Size              = 14,50
       Size Unit         = Default
-      Tab Order         = 58
+      Tab Order         = 59
       Title             = "Giacenze Iniziali"
       Transparent       = TRUE
       Visible           = NONE
@@ -3955,7 +4028,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 5,00
       Size Unit         = Default
-      Tab Order         = 59
+      Tab Order         = 60
       Title             = "Stato"
       Transparent       = FALSE
       Visible           = NONE
@@ -3988,7 +4061,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 60
+      Tab Order         = 61
       Title             = "Valori Dinamici"
       Transparent       = FALSE
       Visible           = NONE
@@ -4021,7 +4094,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 61
+      Tab Order         = 62
       Title             = "Valori Consolidati"
       Transparent       = FALSE
       Visible           = NONE
@@ -4050,10 +4123,10 @@ Begin Screen Form1
       Position Shift    = 0
       COLORS            = ( 8, 8 )
       SHADING           = ( -1, 1 )
-      Size (Lines)      = 108,00
-      Size (Lines) in Pixels = 648
+      Size (Lines)      = 111,00
+      Size (Lines) in Pixels = 666
       Size (Lines) Unit = Default
-      Tab Order         = 62
+      Tab Order         = 63
       Visible           = NONE
       Width             = 2
       Width in Cells    = TRUE
@@ -4083,9 +4156,9 @@ Begin Screen Form1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 10,00
+      Size              = 14,50
       Size Unit         = Default
-      Tab Order         = 63
+      Tab Order         = 64
       Title             = "Acquisti"
       Transparent       = TRUE
       Visible           = NONE
@@ -4116,9 +4189,9 @@ Begin Screen Form1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 10,00
+      Size              = 14,50
       Size Unit         = Default
-      Tab Order         = 64
+      Tab Order         = 65
       Title             = "Vendite"
       Transparent       = TRUE
       Visible           = NONE
@@ -4149,9 +4222,9 @@ Begin Screen Form1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 14,00
+      Size              = 14,50
       Size Unit         = Default
-      Tab Order         = 65
+      Tab Order         = 66
       Title             = "Var. Inventariali"
       Transparent       = TRUE
       Visible           = NONE
@@ -4182,9 +4255,9 @@ Begin Screen Form1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 13,00
+      Size              = 14,50
       Size Unit         = Default
-      Tab Order         = 66
+      Tab Order         = 67
       Title             = "Resi a Fornitori"
       Transparent       = TRUE
       Visible           = NONE
@@ -4215,9 +4288,9 @@ Begin Screen Form1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 13,00
+      Size              = 14,50
       Size Unit         = Default
-      Tab Order         = 67
+      Tab Order         = 68
       Title             = "Resi da Clienti"
       Transparent       = TRUE
       Visible           = NONE
@@ -4248,16 +4321,16 @@ Begin Screen Form1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 14,00
+      Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 68
+      Tab Order         = 69
       Title             = "U.M."
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
    End
    Begin Label Form1-La-5aaabaaabaa
-      SCREEN-COL        = 50,00
+      SCREEN-COL        = 55,33
       SCREEN-LINE       = 27,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -4265,7 +4338,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 2
-      Column            = 50,00
+      Column            = 55,33
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -4281,16 +4354,16 @@ Begin Screen Form1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 15,00
+      Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 69
+      Tab Order         = 70
       Title             = "KG."
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
    End
    Begin Label Form1-La-5aaabaaabab
-      SCREEN-COL        = 82,00
+      SCREEN-COL        = 92,33
       SCREEN-LINE       = 27,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -4298,7 +4371,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 2
-      Column            = 82,00
+      Column            = 92,33
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -4316,7 +4389,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 70
+      Tab Order         = 71
       Title             = "Valore"
       Transparent       = TRUE
       Visible           = NONE
@@ -4348,9 +4421,9 @@ Begin Screen Form1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 14,00
+      Size              = 14,50
       Size Unit         = Default
-      Tab Order         = 71
+      Tab Order         = 72
       Title             = "Giacenza Periodo"
       Transparent       = TRUE
       Visible           = NONE
@@ -4381,9 +4454,9 @@ Begin Screen Form1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 10,00
+      Size              = 14,50
       Size Unit         = Default
-      Tab Order         = 72
+      Tab Order         = 73
       Title             = "Entrate Lav."
       Transparent       = TRUE
       Visible           = NONE
@@ -4414,9 +4487,9 @@ Begin Screen Form1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 10,00
+      Size              = 14,50
       Size Unit         = Default
-      Tab Order         = 73
+      Tab Order         = 74
       Title             = "Uscite Lav."
       Transparent       = TRUE
       Visible           = NONE
@@ -4445,10 +4518,10 @@ Begin Screen Form1
       Position Shift    = 0
       COLORS            = ( 8, 8 )
       SHADING           = ( -1, 1 )
-      Size (Lines)      = 108,00
-      Size (Lines) in Pixels = 648
+      Size (Lines)      = 111,00
+      Size (Lines) in Pixels = 666
       Size (Lines) Unit = Default
-      Tab Order         = 74
+      Tab Order         = 75
       Visible           = NONE
       Width             = 2
       Width in Cells    = TRUE
@@ -4478,9 +4551,9 @@ Begin Screen Form1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 15,00
+      Size              = 14,50
       Size Unit         = Default
-      Tab Order         = 75
+      Tab Order         = 76
       Title             = "Peso Utf"
       Transparent       = TRUE
       Visible           = NONE
@@ -4511,9 +4584,9 @@ Begin Screen Form1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 12,00
+      Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 76
+      Tab Order         = 77
       Title             = "Peso non UTF"
       Transparent       = TRUE
       Visible           = NONE
@@ -4546,7 +4619,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 77
+      Tab Order         = 78
       Title             = "Peso"
       Transparent       = FALSE
       Visible           = NONE
@@ -4577,16 +4650,16 @@ Begin Screen Form1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 14,00
+      Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 78
+      Tab Order         = 79
       Title             = "Mese 1"
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
    End
    Begin Label Form1-La-5aaabaaaaba
-      SCREEN-COL        = 35,00
+      SCREEN-COL        = 36,67
       SCREEN-LINE       = 21,38
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -4594,7 +4667,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 35,00
+      Column            = 36,67
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -4610,16 +4683,16 @@ Begin Screen Form1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 7,00
+      Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 79
+      Tab Order         = 80
       Title             = "Mese 2"
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
    End
    Begin Label Form1-La-5aaabaaaabb
-      SCREEN-COL        = 52,00
+      SCREEN-COL        = 55,33
       SCREEN-LINE       = 21,38
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -4627,7 +4700,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 52,00
+      Column            = 55,33
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -4643,16 +4716,16 @@ Begin Screen Form1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 14,00
+      Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 80
+      Tab Order         = 81
       Title             = "Mese 3"
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
    End
    Begin Label Form1-La-5aaabaaaabc
-      SCREEN-COL        = 69,00
+      SCREEN-COL        = 74,00
       SCREEN-LINE       = 21,38
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -4660,7 +4733,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 69,00
+      Column            = 74,00
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -4676,16 +4749,16 @@ Begin Screen Form1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 14,00
+      Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 81
+      Tab Order         = 82
       Title             = "Mese 4"
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
    End
    Begin Data.Entry-Field EF-ORD-FORN-4a
-      SCREEN-COL        = 85,67
+      SCREEN-COL        = 92,33
       SCREEN-LINE       = 23,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -4697,7 +4770,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 85,67
+      Column            = 92,33
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -4714,7 +4787,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare l'ordinato (Ordinazione a Fornitorii)
+      Hint              = Ordinato (Ordinazione a Fornitorii)
       ID                = 0
       Justification     = Right
       Line              = 23,00
@@ -4732,10 +4805,10 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 14,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 82
+      Tab Order         = 83
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -4745,7 +4818,7 @@ Begin Screen Form1
       After Procedure   = ef-voce-AfterProcedure
    End
    Begin Label Form1-La-5aaabaaaabca
-      SCREEN-COL        = 85,67
+      SCREEN-COL        = 92,33
       SCREEN-LINE       = 21,38
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -4753,7 +4826,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 85,67
+      Column            = 92,33
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -4769,16 +4842,16 @@ Begin Screen Form1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 14,00
+      Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 83
+      Tab Order         = 84
       Title             = "Mese 5"
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
    End
    Begin Data.Entry-Field EF-ORD-FORN-4b
-      SCREEN-COL        = 102,33
+      SCREEN-COL        = 110,67
       SCREEN-LINE       = 23,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -4790,7 +4863,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 102,33
+      Column            = 110,67
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -4807,7 +4880,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      Hint              = Digitare l'ordinato (Ordinazione a Fornitorii)
+      Hint              = Ordinato (Ordinazione a Fornitorii)
       ID                = 0
       Justification     = Right
       Line              = 23,00
@@ -4825,10 +4898,10 @@ Begin Screen Form1
       Read Only         = TRUE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 14,00
+      Size              = 17,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 84
+      Tab Order         = 85
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -4838,7 +4911,7 @@ Begin Screen Form1
       After Procedure   = ef-voce-AfterProcedure
    End
    Begin Label Form1-La-5aaabaaaabcb
-      SCREEN-COL        = 102,33
+      SCREEN-COL        = 110,67
       SCREEN-LINE       = 21,38
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -4846,7 +4919,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 102,33
+      Column            = 110,67
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -4862,10 +4935,43 @@ Begin Screen Form1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 14,00
+      Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 85
+      Tab Order         = 86
       Title             = "Mese 6"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-5aaaba
+      SCREEN-COL        = 74,00
+      SCREEN-LINE       = 17,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaaba
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 74,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 5
+      Justification     = Left
+      Label Offset      = 20
+      Line              = 17,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 17,00
+      Size Unit         = Default
+      Tab Order         = 87
+      Title             = "Giacenza buona"
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -4879,7 +4985,7 @@ Begin Screen Form1
       Handle Variable   = Form1-St-1-Handle
       PANEL-WIDTHS      = ( 78, 23, 999 )
       PANEL-STYLE       = ( 1, 1, 1 )
-      Tab Order         = 86
+      Tab Order         = 88
    End
 End
 
@@ -4963,7 +5069,9 @@ BEGIN-TEXT
            move art-descrizione to lbl-des-articolo-buf.
 
            move prg-cod-magazzino to mag-codice.
-           read tmagaz   no lock  invalid move spaces to mag-descrizione           end-read.
+           read tmagaz no lock 
+                invalid move spaces to mag-descrizione           
+           end-read.
            move mag-descrizione to lbl-des-magazz-buf.
 
            move prg-tipo-imballo  to imq-codice.
@@ -4994,7 +5102,33 @@ BEGIN-TEXT
                      art-udm-imballo delimited by size
                      into lab-imballo-buf
               end-string
-           end-if.
+           end-if.     
+           
+           move 0 to giac-buona.
+           initialize prg-rec replacing alphanumeric data by spaces
+                                             numeric data by zeroes.
+           
+           move link-prg-cod-articolo to prg-cod-articolo.
+           start progmag key >= prg-chiave
+                 invalid continue
+             not invalid 
+                 perform until 1 = 2
+                    read progmag next at end exit perform end-read
+                    if prg-cod-articolo not = link-prg-cod-articolo
+                       exit perform
+                    end-if
+                    move prg-cod-magazzino to mag-codice
+                    read tmagaz no lock
+                         invalid continue
+                     not invalid
+                         if mag-per-promo-si
+                            add prg-giacenza to giac-buona
+                         end-if
+                    end-read
+                 end-perform
+           end-start.
+
+           move link-prg-chiave to prg-chiave.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -5138,7 +5272,8 @@ BEGIN-DATA
    PARAGRAPH         = pb-indietro-LinkTo
 BEGIN-TEXT
            if not scorrimento exit paragraph end-if.
-           perform RIEMPI-CHIAVE.
+           perform RIEMPI-CHIAVE.         
+           read progmag.
 
            read progmag previous
               at end
@@ -5173,7 +5308,8 @@ BEGIN-DATA
 BEGIN-TEXT
            if not scorrimento exit paragraph end-if.
 
-           perform RIEMPI-CHIAVE.
+           perform RIEMPI-CHIAVE.   
+           read progmag.
 
            read progmag next
               at end

@@ -81,6 +81,7 @@
        77 nome-file        PIC  x(10).
        77 old-peso         PIC  9(10)v999.
        77 peso PIC  9(10)v999.
+       77 giac-buona       PIC  S9(8).
        77 countchar        PIC  9(3).
        77 pagina           PIC  9
                   VALUE IS 1.
@@ -224,7 +225,7 @@
        77 Verdana12-Occidentale
                   USAGE IS HANDLE OF FONT.
        77 ef-ean-buf       PIC  9(13).
-       77 v-moq         PIC  9
+       77 v-moq            PIC  9
                   VALUE IS 1.
        77 STATUS-rmovmag   PIC  X(2).
            88 Valid-STATUS-rmovmag VALUE IS "00" THRU "09". 
@@ -269,6 +270,7 @@
       *     05 col-diponibilita PIC  z.zzz.zz9.
       *     05 col-lead-time    PIC  zz9.
       *     05 col-tipo-imp     PIC  x.
+      *
       *
       *
       *

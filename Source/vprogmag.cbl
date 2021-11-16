@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          vprogmag.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 1 aprile 2014 19:21:04.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        martedì 16 novembre 2021 23:30:01.
        REMARKS.
       *{TOTEM}END
 
@@ -50,9 +50,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\Lubex\GESLUX\Copylib\UTYDATA.DEF".
-               COPY "F:\Lubex\GESLUX\Copylib\comune.def".
-               COPY "F:\Lubex\GESLUX\Copylib\custom.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -170,6 +168,7 @@
        77 fatto-bmp        PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
+       77 giac-buona       PIC  s9(8).
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -202,6 +201,8 @@
               05 EF-COSTO-ULTIMO-BUF PIC ----.---.--9,9(2).
       * Data.Entry-Field
               05 EF-COSTO-MEDIO-BUF PIC ----.---.--9,9(2).
+      * Data.Entry-Field
+              05 EF-COSTO-MEDIOa-BUF PIC ---.---.--9.
       * Data.Entry-Field
               05 EF-GIACENZA-BUF PIC ---.---.--9.
       * Data.Entry-Field
@@ -313,6 +314,7 @@
 
        77 progmag-key01-SPLITBUF  PIC X(21).
        77 articoli-art-k1-SPLITBUF  PIC X(51).
+       77 articoli-art-k-frn-SPLITBUF  PIC X(16).
 
       *{TOTEM}END
 
@@ -608,7 +610,7 @@
            COL 18,00, 
            LINE 13,00,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -625,10 +627,10 @@
        05
            ef-peso-non-utf, 
            Entry-Field, 
-           COL 50,00, 
+           COL 55,33, 
            LINE 13,00,
            LINES 1,31 ,
-           SIZE 15,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -648,7 +650,7 @@
            COL 18,00, 
            LINE 17,00,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -665,10 +667,10 @@
        05
            EF-COSTO-MEDIO, 
            Entry-Field, 
-           COL 50,00, 
+           COL 55,33, 
            LINE 17,00,
            LINES 1,31 ,
-           SIZE 15,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -683,12 +685,32 @@
            .
       * ENTRY FIELD
        05
+           EF-COSTO-MEDIOa, 
+           Entry-Field, 
+           COL 92,33, 
+           LINE 17,00,
+           LINES 1,31 ,
+           SIZE 17,00 ,
+           BOXED,
+           UPPER,
+           COLOR IS 513,
+           ENABLED MOD-CAMPI,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           MAX-TEXT 9,
+           NUMERIC,
+           READ-ONLY,
+           VALUE EF-COSTO-MEDIOa-BUF,
+           .
+      * ENTRY FIELD
+       05
            EF-GIACENZA, 
            Entry-Field, 
            COL 18,00, 
            LINE 19,00,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -705,10 +727,10 @@
        05
            EF-ORD-CLI, 
            Entry-Field, 
-           COL 50,00, 
+           COL 55,33, 
            LINE 19,00,
            LINES 1,31 ,
-           SIZE 15,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -728,7 +750,7 @@
            COL 18,00, 
            LINE 23,00,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -745,10 +767,10 @@
        05
            EF-ORD-FORN-2, 
            Entry-Field, 
-           COL 35,00, 
+           COL 36,67, 
            LINE 23,00,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -766,10 +788,10 @@
        05
            EF-ORD-FORN-3, 
            Entry-Field, 
-           COL 52,00, 
+           COL 55,33, 
            LINE 23,00,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -787,10 +809,10 @@
        05
            EF-ORD-FORN-4, 
            Entry-Field, 
-           COL 69,00, 
+           COL 74,00, 
            LINE 23,00,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -811,7 +833,7 @@
            COL 18,00, 
            LINE 28,46,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -828,10 +850,10 @@
        05
            EF-INI-KG, 
            Entry-Field, 
-           COL 50,00, 
+           COL 55,33, 
            LINE 28,46,
            LINES 1,31 ,
-           SIZE 15,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -847,7 +869,7 @@
        05
            EF-INI-VALORE, 
            Entry-Field, 
-           COL 82,00, 
+           COL 92,33, 
            LINE 28,46,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -869,7 +891,7 @@
            COL 18,00, 
            LINE 30,46,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -886,10 +908,10 @@
        05
            EF-ACQ-KG, 
            Entry-Field, 
-           COL 50,00, 
+           COL 55,33, 
            LINE 30,46,
            LINES 1,31 ,
-           SIZE 15,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -905,7 +927,7 @@
        05
            EF-ACQ-VALORE, 
            Entry-Field, 
-           COL 82,00, 
+           COL 92,33, 
            LINE 30,46,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -927,7 +949,7 @@
            COL 18,00, 
            LINE 32,46,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -944,10 +966,10 @@
        05
            EF-VEN-KG, 
            Entry-Field, 
-           COL 50,00, 
+           COL 55,33, 
            LINE 32,46,
            LINES 1,31 ,
-           SIZE 15,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -963,7 +985,7 @@
        05
            EF-VEN-VALORE, 
            Entry-Field, 
-           COL 82,00, 
+           COL 92,33, 
            LINE 32,46,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -985,7 +1007,7 @@
            COL 18,00, 
            LINE 34,46,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -1002,10 +1024,10 @@
        05
            EF-VAR-KG, 
            Entry-Field, 
-           COL 50,00, 
+           COL 55,33, 
            LINE 34,46,
            LINES 1,31 ,
-           SIZE 15,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -1021,7 +1043,7 @@
        05
            EF-VAR-VALORE, 
            Entry-Field, 
-           COL 82,00, 
+           COL 92,33, 
            LINE 34,46,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -1043,7 +1065,7 @@
            COL 18,00, 
            LINE 36,46,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -1060,10 +1082,10 @@
        05
            EF-FORN-KG, 
            Entry-Field, 
-           COL 50,00, 
+           COL 55,33, 
            LINE 36,46,
            LINES 1,31 ,
-           SIZE 15,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -1079,7 +1101,7 @@
        05
            EF-FORN-VALORE, 
            Entry-Field, 
-           COL 82,00, 
+           COL 92,33, 
            LINE 36,46,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -1101,7 +1123,7 @@
            COL 18,00, 
            LINE 38,46,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -1118,10 +1140,10 @@
        05
            EF-CLI-KG, 
            Entry-Field, 
-           COL 50,00, 
+           COL 55,33, 
            LINE 38,46,
            LINES 1,31 ,
-           SIZE 15,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -1137,7 +1159,7 @@
        05
            EF-CLI-VALORE, 
            Entry-Field, 
-           COL 82,00, 
+           COL 92,33, 
            LINE 38,46,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -1159,7 +1181,7 @@
            COL 18,00, 
            LINE 40,46,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -1176,10 +1198,10 @@
        05
            ef-kg-el, 
            Entry-Field, 
-           COL 50,00, 
+           COL 55,33, 
            LINE 40,46,
            LINES 1,31 ,
-           SIZE 15,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -1195,7 +1217,7 @@
        05
            ef-valore-el, 
            Entry-Field, 
-           COL 82,00, 
+           COL 92,33, 
            LINE 40,46,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -1217,7 +1239,7 @@
            COL 18,00, 
            LINE 42,46,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -1234,10 +1256,10 @@
        05
            ef-kg-ul, 
            Entry-Field, 
-           COL 50,00, 
+           COL 55,33, 
            LINE 42,46,
            LINES 1,31 ,
-           SIZE 15,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -1253,7 +1275,7 @@
        05
            ef-valore-ul, 
            Entry-Field, 
-           COL 82,00, 
+           COL 92,33, 
            LINE 42,46,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -1275,7 +1297,7 @@
            COL 18,00, 
            LINE 44,46,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            COLOR IS 513,
            ENABLED MOD-CAMPI,
@@ -1287,16 +1309,15 @@
            MAX-TEXT 9,
            READ-ONLY,
            VALUE ef-gia-udm-BUF,
-           BEFORE PROCEDURE Form1-DaEf-1-BeforeProcedure, 
            .
       * ENTRY FIELD
        05
            ef-gia-kg, 
            Entry-Field, 
-           COL 50,00, 
+           COL 55,33, 
            LINE 44,46,
            LINES 1,31 ,
-           SIZE 15,00 ,
+           SIZE 17,00 ,
            BOXED,
            COLOR IS 513,
            ENABLED MOD-CAMPI,
@@ -1308,16 +1329,15 @@
            MAX-TEXT 14,
            READ-ONLY,
            VALUE ef-gia-kg-BUF,
-           BEFORE PROCEDURE Form1-DaEf-2-BeforeProcedure, 
            .
       * COMBO-BOX
        05
            cbo-stato, 
            Combo-Box, 
-           COL 110,00, 
+           COL 110,67, 
            LINE 44,46,
            LINES 3,00 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            NO-BOX,
            COLOR IS 513,
            ENABLED MOD,
@@ -1336,7 +1356,7 @@
            Bar,
            COL 19,50, 
            LINE 15,69,
-           SIZE 108,00 ,
+           SIZE 111,00 ,
            ID IS 100,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -1352,7 +1372,7 @@
            COL 2,50, 
            LINE 17,00,
            LINES 1,31 ,
-           SIZE 15,00 ,
+           SIZE 14,50 ,
            ID IS 4,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -1367,7 +1387,7 @@
            COL 37,00, 
            LINE 17,00,
            LINES 1,31 ,
-           SIZE 11,00 ,
+           SIZE 17,00 ,
            ID IS 5,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -1383,7 +1403,7 @@
            COL 2,50, 
            LINE 19,00,
            LINES 1,31 ,
-           SIZE 11,00 ,
+           SIZE 14,50 ,
            ID IS 8,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -1399,7 +1419,7 @@
            COL 37,00, 
            LINE 19,00,
            LINES 1,31 ,
-           SIZE 9,00 ,
+           SIZE 17,00 ,
            ID IS 9,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -1414,7 +1434,7 @@
            COL 2,50, 
            LINE 23,00,
            LINES 1,31 ,
-           SIZE 7,00 ,
+           SIZE 14,50 ,
            ID IS 11,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -1429,7 +1449,7 @@
            COL 2,50, 
            LINE 28,46,
            LINES 1,31 ,
-           SIZE 13,00 ,
+           SIZE 14,50 ,
            COLOR IS 2,
            ID IS 12,
            HEIGHT-IN-CELLS,
@@ -1491,7 +1511,7 @@
            Bar,
            COL 19,50, 
            LINE 26,15,
-           SIZE 108,00 ,
+           SIZE 111,00 ,
            ID IS 20,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -1507,7 +1527,7 @@
            COL 2,50, 
            LINE 30,46,
            LINES 1,31 ,
-           SIZE 10,00 ,
+           SIZE 14,50 ,
            COLOR IS 2,
            ID IS 10,
            HEIGHT-IN-CELLS,
@@ -1524,7 +1544,7 @@
            COL 2,50, 
            LINE 32,46,
            LINES 1,31 ,
-           SIZE 10,00 ,
+           SIZE 14,50 ,
            COLOR IS 2,
            ID IS 25,
            HEIGHT-IN-CELLS,
@@ -1541,7 +1561,7 @@
            COL 2,50, 
            LINE 34,46,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 14,50 ,
            COLOR IS 2,
            ID IS 28,
            HEIGHT-IN-CELLS,
@@ -1558,7 +1578,7 @@
            COL 2,50, 
            LINE 36,46,
            LINES 1,31 ,
-           SIZE 13,00 ,
+           SIZE 14,50 ,
            COLOR IS 2,
            ID IS 35,
            HEIGHT-IN-CELLS,
@@ -1575,7 +1595,7 @@
            COL 2,50, 
            LINE 38,46,
            LINES 1,31 ,
-           SIZE 13,00 ,
+           SIZE 14,50 ,
            COLOR IS 2,
            ID IS 38,
            HEIGHT-IN-CELLS,
@@ -1592,7 +1612,7 @@
            COL 18,00, 
            LINE 27,00,
            LINES 1,00 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            COLOR IS 2,
            ID IS 41,
            HEIGHT-IN-CELLS,
@@ -1606,10 +1626,10 @@
        05
            Form1-La-5aaabaaabaa, 
            Label, 
-           COL 50,00, 
+           COL 55,33, 
            LINE 27,00,
            LINES 1,00 ,
-           SIZE 15,00 ,
+           SIZE 17,00 ,
            COLOR IS 2,
            ID IS 42,
            HEIGHT-IN-CELLS,
@@ -1623,7 +1643,7 @@
        05
            Form1-La-5aaabaaabab, 
            Label, 
-           COL 82,00, 
+           COL 92,33, 
            LINE 27,00,
            LINES 1,00 ,
            SIZE 17,00 ,
@@ -1643,7 +1663,7 @@
            COL 2,50, 
            LINE 44,46,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 14,50 ,
            COLOR IS 2,
            FONT IS Small-Font,
            ID IS 44,
@@ -1660,7 +1680,7 @@
            COL 2,50, 
            LINE 40,46,
            LINES 1,31 ,
-           SIZE 10,00 ,
+           SIZE 14,50 ,
            COLOR IS 2,
            ID IS 23,
            HEIGHT-IN-CELLS,
@@ -1677,7 +1697,7 @@
            COL 2,50, 
            LINE 42,46,
            LINES 1,31 ,
-           SIZE 10,00 ,
+           SIZE 14,50 ,
            COLOR IS 2,
            ID IS 24,
            HEIGHT-IN-CELLS,
@@ -1693,7 +1713,7 @@
            Bar,
            COL 19,50, 
            LINE 11,69,
-           SIZE 108,00 ,
+           SIZE 111,00 ,
            ID IS 26,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -1709,7 +1729,7 @@
            COL 2,50, 
            LINE 13,00,
            LINES 1,31 ,
-           SIZE 15,00 ,
+           SIZE 14,50 ,
            ID IS 27,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -1724,7 +1744,7 @@
            COL 37,00, 
            LINE 13,00,
            LINES 1,31 ,
-           SIZE 12,00 ,
+           SIZE 17,00 ,
            ID IS 29,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -1756,7 +1776,7 @@
            COL 18,00, 
            LINE 21,38,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            ID IS 31,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -1769,10 +1789,10 @@
        05
            Form1-La-5aaabaaaaba, 
            Label, 
-           COL 35,00, 
+           COL 36,67, 
            LINE 21,38,
            LINES 1,31 ,
-           SIZE 7,00 ,
+           SIZE 17,00 ,
            ID IS 32,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -1785,10 +1805,10 @@
        05
            Form1-La-5aaabaaaabb, 
            Label, 
-           COL 52,00, 
+           COL 55,33, 
            LINE 21,38,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            ID IS 33,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -1801,10 +1821,10 @@
        05
            Form1-La-5aaabaaaabc, 
            Label, 
-           COL 69,00, 
+           COL 74,00, 
            LINE 21,38,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            ID IS 34,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -1817,10 +1837,10 @@
        05
            EF-ORD-FORN-4a, 
            Entry-Field, 
-           COL 85,67, 
+           COL 92,33, 
            LINE 23,00,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -1837,10 +1857,10 @@
        05
            Form1-La-5aaabaaaabca, 
            Label, 
-           COL 85,67, 
+           COL 92,33, 
            LINE 21,38,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            ID IS 36,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -1853,10 +1873,10 @@
        05
            EF-ORD-FORN-4b, 
            Entry-Field, 
-           COL 102,33, 
+           COL 110,67, 
            LINE 23,00,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -1873,16 +1893,32 @@
        05
            Form1-La-5aaabaaaabcb, 
            Label, 
-           COL 102,33, 
+           COL 110,67, 
            LINE 21,38,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            ID IS 37,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            CENTER,
            TRANSPARENT,
            TITLE "Mese 6",
+           .
+
+      * LABEL
+       05
+           Form1-La-5aaaba, 
+           Label, 
+           COL 74,00, 
+           LINE 17,00,
+           LINES 1,31 ,
+           SIZE 17,00 ,
+           ID IS 5,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           LEFT,
+           TRANSPARENT,
+           TITLE "Giacenza buona",
            .
 
       *{TOTEM}END
@@ -2438,6 +2474,12 @@
            articoli-art-k1-SPLITBUF(1:50)
            .
 
+       articoli-art-k-frn-MERGE-SPLITBUF.
+           INITIALIZE articoli-art-k-frn-SPLITBUF
+           MOVE art-cod-art-frn OF articoli(1:15) TO 
+           articoli-art-k-frn-SPLITBUF(1:15)
+           .
+
        DataSet1-articoli-INITSTART.
            IF DataSet1-articoli-KEY-Asc
               MOVE Low-Value TO art-chiave OF articoli
@@ -2500,6 +2542,7 @@
               KEY art-chiave OF articoli
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT 
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -2528,6 +2571,7 @@
               END-IF
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -2556,6 +2600,7 @@
               END-IF
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -3149,7 +3194,7 @@
        Form1-Create-Win.
            Display Floating GRAPHICAL WINDOW
               LINES 49,92,
-              SIZE 127,00,
+              SIZE 130,00,
               COLOR 65793,
               CONTROL FONT Small-Font,
               CONTROLS-UNCROPPED,
@@ -3624,12 +3669,20 @@
                MOVE 11 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
+      * EF-COSTO-MEDIOa's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM EF-COSTO-MEDIOa-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 12 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
       * EF-GIACENZA's Validation
            SET TOTEM-CHECK-OK TO FALSE
            PERFORM EF-GIACENZA-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 12 TO CONTROL-ID
+               MOVE 13 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-ORD-CLI's Validation
@@ -3637,7 +3690,7 @@
            PERFORM EF-ORD-CLI-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 13 TO CONTROL-ID
+               MOVE 14 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-ORD-FORN-1's Validation
@@ -3645,7 +3698,7 @@
            PERFORM EF-ORD-FORN-1-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 14 TO CONTROL-ID
+               MOVE 15 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-ORD-FORN-2's Validation
@@ -3677,7 +3730,7 @@
            PERFORM EF-INI-UDM-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 18 TO CONTROL-ID
+               MOVE 19 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-INI-KG's Validation
@@ -3685,7 +3738,7 @@
            PERFORM EF-INI-KG-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 19 TO CONTROL-ID
+               MOVE 20 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-INI-VALORE's Validation
@@ -3693,7 +3746,7 @@
            PERFORM EF-INI-VALORE-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 20 TO CONTROL-ID
+               MOVE 21 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-ACQ-UDM's Validation
@@ -3701,7 +3754,7 @@
            PERFORM EF-ACQ-UDM-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 21 TO CONTROL-ID
+               MOVE 22 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-ACQ-KG's Validation
@@ -3709,7 +3762,7 @@
            PERFORM EF-ACQ-KG-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 22 TO CONTROL-ID
+               MOVE 23 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-ACQ-VALORE's Validation
@@ -3717,7 +3770,7 @@
            PERFORM EF-ACQ-VALORE-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 23 TO CONTROL-ID
+               MOVE 24 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-VEN-UDM's Validation
@@ -3725,7 +3778,7 @@
            PERFORM EF-VEN-UDM-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 24 TO CONTROL-ID
+               MOVE 25 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-VEN-KG's Validation
@@ -3733,7 +3786,7 @@
            PERFORM EF-VEN-KG-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 25 TO CONTROL-ID
+               MOVE 26 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-VEN-VALORE's Validation
@@ -3741,7 +3794,7 @@
            PERFORM EF-VEN-VALORE-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 26 TO CONTROL-ID
+               MOVE 27 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-VAR-UDM's Validation
@@ -3749,7 +3802,7 @@
            PERFORM EF-VAR-UDM-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 27 TO CONTROL-ID
+               MOVE 28 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-VAR-KG's Validation
@@ -3757,7 +3810,7 @@
            PERFORM EF-VAR-KG-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 28 TO CONTROL-ID
+               MOVE 29 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-VAR-VALORE's Validation
@@ -3765,7 +3818,7 @@
            PERFORM EF-VAR-VALORE-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 29 TO CONTROL-ID
+               MOVE 30 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-FORN-UDM's Validation
@@ -3773,7 +3826,7 @@
            PERFORM EF-FORN-UDM-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 30 TO CONTROL-ID
+               MOVE 31 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-FORN-KG's Validation
@@ -3781,7 +3834,7 @@
            PERFORM EF-FORN-KG-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 31 TO CONTROL-ID
+               MOVE 32 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-FORN-VALORE's Validation
@@ -3789,7 +3842,7 @@
            PERFORM EF-FORN-VALORE-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 32 TO CONTROL-ID
+               MOVE 33 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-CLI-UDM's Validation
@@ -3797,7 +3850,7 @@
            PERFORM EF-CLI-UDM-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 33 TO CONTROL-ID
+               MOVE 34 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-CLI-KG's Validation
@@ -3805,7 +3858,7 @@
            PERFORM EF-CLI-KG-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 34 TO CONTROL-ID
+               MOVE 35 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-CLI-VALORE's Validation
@@ -3813,7 +3866,7 @@
            PERFORM EF-CLI-VALORE-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 35 TO CONTROL-ID
+               MOVE 36 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-udm-el's Validation
@@ -3821,7 +3874,7 @@
            PERFORM ef-udm-el-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 36 TO CONTROL-ID
+               MOVE 37 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-kg-el's Validation
@@ -3829,7 +3882,7 @@
            PERFORM ef-kg-el-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 37 TO CONTROL-ID
+               MOVE 38 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-valore-el's Validation
@@ -3837,7 +3890,7 @@
            PERFORM ef-valore-el-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 38 TO CONTROL-ID
+               MOVE 39 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-udm-ul's Validation
@@ -3845,7 +3898,7 @@
            PERFORM ef-udm-ul-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 39 TO CONTROL-ID
+               MOVE 40 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-kg-ul's Validation
@@ -3853,7 +3906,7 @@
            PERFORM ef-kg-ul-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 40 TO CONTROL-ID
+               MOVE 41 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-valore-ul's Validation
@@ -3861,7 +3914,7 @@
            PERFORM ef-valore-ul-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 41 TO CONTROL-ID
+               MOVE 42 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-gia-udm's Validation
@@ -3885,7 +3938,7 @@
            PERFORM EF-ORD-FORN-4a-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 45 TO CONTROL-ID
+               MOVE 46 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-ORD-FORN-4b's Validation
@@ -3893,7 +3946,7 @@
            PERFORM EF-ORD-FORN-4b-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 46 TO CONTROL-ID
+               MOVE 47 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
            .
@@ -4032,6 +4085,23 @@
            PERFORM EF-COSTO-MEDIO-BEFORE-VALIDATION
            SET TOTEM-CHECK-OK TO TRUE
            PERFORM EF-COSTO-MEDIO-AFTER-VALIDATION
+           .
+
+       EF-COSTO-MEDIOa-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:EF-COSTO-MEDIOa, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       EF-COSTO-MEDIOa-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:EF-COSTO-MEDIOa, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * EF-COSTO-MEDIOa's Validation
+       EF-COSTO-MEDIOa-VALIDATION.
+           PERFORM EF-COSTO-MEDIOa-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM EF-COSTO-MEDIOa-AFTER-VALIDATION
            .
 
        EF-GIACENZA-BEFORE-VALIDATION.
@@ -4632,6 +4702,8 @@
            MOVE EF-COSTO-ULTIMO-BUF TO prg-costo-ultimo of progmag
       * DB_Entry-Field : EF-COSTO-MEDIO
            MOVE EF-COSTO-MEDIO-BUF TO prg-costo-medio of progmag
+      * DB_Entry-Field : EF-COSTO-MEDIOa
+           MOVE EF-COSTO-MEDIOa-BUF TO giac-buona
       * DB_Entry-Field : EF-GIACENZA
            MOVE EF-GIACENZA-BUF TO prg-giacenza of progmag
       * DB_Entry-Field : EF-ORD-CLI
@@ -4728,6 +4800,8 @@
            MOVE prg-costo-ultimo of progmag TO EF-COSTO-ULTIMO-BUF
       * DB_Entry-Field : EF-COSTO-MEDIO
            MOVE prg-costo-medio of progmag TO EF-COSTO-MEDIO-BUF
+      * DB_Entry-Field : EF-COSTO-MEDIOa
+           MOVE giac-buona TO EF-COSTO-MEDIOa-BUF
       * DB_Entry-Field : EF-GIACENZA
            MOVE prg-giacenza of progmag TO EF-GIACENZA-BUF
       * DB_Entry-Field : EF-ORD-CLI
@@ -4818,8 +4892,9 @@
            move art-descrizione to lbl-des-articolo-buf.
 
            move prg-cod-magazzino to mag-codice.
-           read tmagaz   no lock  invalid move spaces to 
-           mag-descrizione           end-read.
+           read tmagaz no lock 
+                invalid move spaces to mag-descrizione           
+           end-read.
            move mag-descrizione to lbl-des-magazz-buf.
 
            move prg-tipo-imballo  to imq-codice.
@@ -4850,7 +4925,33 @@
                      art-udm-imballo delimited by size
                      into lab-imballo-buf
               end-string
-           end-if.
+           end-if.     
+           
+           move 0 to giac-buona.
+           initialize prg-rec replacing alphanumeric data by spaces
+                                             numeric data by zeroes.
+           
+           move link-prg-cod-articolo to prg-cod-articolo.
+           start progmag key >= prg-chiave
+                 invalid continue
+             not invalid 
+                 perform until 1 = 2
+                    read progmag next at end exit perform end-read
+                    if prg-cod-articolo not = link-prg-cod-articolo
+                       exit perform
+                    end-if
+                    move prg-cod-magazzino to mag-codice
+                    read tmagaz no lock
+                         invalid continue
+                     not invalid
+                         if mag-per-promo-si
+                            add prg-giacenza to giac-buona
+                         end-if
+                    end-read
+                 end-perform
+           end-start.
+
+           move link-prg-chiave to prg-chiave.
 
            .
       * <TOTEM:END>
@@ -4959,75 +5060,79 @@
            WHEN 5003 MOVE "Digitare il Codice del Tipo Imballo" to 
            TOTEM-HINT-TEXT
            WHEN 5004 MOVE "Digitare il Peso" to TOTEM-HINT-TEXT
-           WHEN 8 MOVE "Digitare il peso UTF" to TOTEM-HINT-TEXT
-           WHEN 9 MOVE "Digitare il peso non UTF" to TOTEM-HINT-TEXT
-           WHEN 10 MOVE "Digitare il Costo Ultimo" to TOTEM-HINT-TEXT
-           WHEN 11 MOVE "Digitare il Costo Medio" to TOTEM-HINT-TEXT
-           WHEN 12 MOVE "Digitare il Valore della Giacenza" to 
-           TOTEM-HINT-TEXT
-           WHEN 13 MOVE "Digitare l'impegnato (Ordinazione da Clienti)" 
-           to TOTEM-HINT-TEXT
-           WHEN 14 MOVE "Digitare l'ordinato (Ordinazione a Fornitorii)"
-            to TOTEM-HINT-TEXT
-           WHEN 5005 MOVE "Digitare l'ordinato (Ordinazione a Fornitorii
-      -    ")" to TOTEM-HINT-TEXT
-           WHEN 5006 MOVE "Digitare l'ordinato (Ordinazione a Fornitorii
-      -    ")" to TOTEM-HINT-TEXT
-           WHEN 5007 MOVE "Digitare l'ordinato (Ordinazione a Fornitorii
-      -    ")" to TOTEM-HINT-TEXT
-           WHEN 18 MOVE "Digitare la quantità iniziale espressa nell'Uni
-      -    "tà di Misura" to TOTEM-HINT-TEXT
-           WHEN 19 MOVE "Digitare il peso iniziale espresso in Kg." to 
-           TOTEM-HINT-TEXT
-           WHEN 20 MOVE "Digitare il Valore iniziale espresso in Euro." 
-           to TOTEM-HINT-TEXT
-           WHEN 21 MOVE "Digitare la quantità degli acquisti espressi ne
-      -    "ll'Unità di Misura" to TOTEM-HINT-TEXT
-           WHEN 22 MOVE "Digitare il peso degli acquisti espresso in Kg.
+           WHEN 8 MOVE "Peso UTF" to TOTEM-HINT-TEXT
+           WHEN 9 MOVE "Peso non UTF" to TOTEM-HINT-TEXT
+           WHEN 10 MOVE "Costo Ultimo" to TOTEM-HINT-TEXT
+           WHEN 11 MOVE "Costo Medio" to TOTEM-HINT-TEXT
+           WHEN 12 MOVE "Giacenza 'buona' (magazzini con Pren Promo = S)
       -    "" to TOTEM-HINT-TEXT
-           WHEN 23 MOVE "Digitare il Valore degli acquisti espresso in E
-      -    "uro." to TOTEM-HINT-TEXT
-           WHEN 24 MOVE "Digitare la quantità delle vendite espresse nel
-      -    "l'Unità di Misura" to TOTEM-HINT-TEXT
-           WHEN 25 MOVE "Digitare il peso delle vendite espresso in Kg."
+           WHEN 13 MOVE "Valore della Giacenza" to TOTEM-HINT-TEXT
+           WHEN 14 MOVE "Impegnato (Ordinazione da Clienti)" to 
+           TOTEM-HINT-TEXT
+           WHEN 15 MOVE "Ordinato (Ordinazione a Fornitorii)" to 
+           TOTEM-HINT-TEXT
+           WHEN 5005 MOVE "Ordinato (Ordinazione a Fornitorii)" to 
+           TOTEM-HINT-TEXT
+           WHEN 5006 MOVE "Ordinato (Ordinazione a Fornitorii)" to 
+           TOTEM-HINT-TEXT
+           WHEN 5007 MOVE "Ordinato (Ordinazione a Fornitorii)" to 
+           TOTEM-HINT-TEXT
+           WHEN 19 MOVE "Quantità iniziale espressa nell'Unità di Misura
+      -    "" to TOTEM-HINT-TEXT
+           WHEN 20 MOVE "Peso iniziale espresso in Kg." to 
+           TOTEM-HINT-TEXT
+           WHEN 21 MOVE "Valore iniziale espresso in Euro." to 
+           TOTEM-HINT-TEXT
+           WHEN 22 MOVE "Quantità degli acquisti espressi nell'Unità di 
+      -    "Misura" to TOTEM-HINT-TEXT
+           WHEN 23 MOVE "Peso degli acquisti espresso in Kg." to 
+           TOTEM-HINT-TEXT
+           WHEN 24 MOVE "Valore degli acquisti espresso in Euro." to 
+           TOTEM-HINT-TEXT
+           WHEN 25 MOVE "Quantità delle vendite espresse nell'Unità di M
+      -    "isura" to TOTEM-HINT-TEXT
+           WHEN 26 MOVE "Peso delle vendite espresso in Kg." to 
+           TOTEM-HINT-TEXT
+           WHEN 27 MOVE "Valore delle vendite espresso in Euro." to 
+           TOTEM-HINT-TEXT
+           WHEN 28 MOVE "Quantità delle variazioni inventariali espresse
+      -    " nell'Unità di Misura" to TOTEM-HINT-TEXT
+           WHEN 29 MOVE "Peso delle variazioni inventariali espresso in 
+      -    "Kg." to TOTEM-HINT-TEXT
+           WHEN 30 MOVE "Valore delle variazioni inventarialii espresso 
+      -    "in Euro." to TOTEM-HINT-TEXT
+           WHEN 31 MOVE "Resi ai Fornitori espressi nell'Unità di Misura
+      -    "" to TOTEM-HINT-TEXT
+           WHEN 32 MOVE "Peso dei Resi ai Fornitori espresso in Kg." to 
+           TOTEM-HINT-TEXT
+           WHEN 33 MOVE "Valore dei Resi ai Fornitori espresso in Euro" 
+           to TOTEM-HINT-TEXT
+           WHEN 34 MOVE "Resi dai Clienti espressi nell'Unità di Misura"
             to TOTEM-HINT-TEXT
-           WHEN 26 MOVE "Digitare il Valore delle vendite espresso in Eu
-      -    "ro." to TOTEM-HINT-TEXT
-           WHEN 27 MOVE "Digitare la quantità delle variazioni inventari
-      -    "ali espresse nell'Unità di Misura" to TOTEM-HINT-TEXT
-           WHEN 28 MOVE "Digitare il peso delle variazioni inventariali 
-      -    "espresso in Kg." to TOTEM-HINT-TEXT
-           WHEN 29 MOVE "Digitare il Valore delle variazioni inventarial
-      -    "ii espresso in Euro." to TOTEM-HINT-TEXT
-           WHEN 30 MOVE "Digitare i resi ai Fornitori espressi nell'Unit
-      -    "à di Misura" to TOTEM-HINT-TEXT
-           WHEN 31 MOVE "Digitare il peso dei Resi ai Fornitori espresso
-      -    " in Kg." to TOTEM-HINT-TEXT
-           WHEN 32 MOVE "Digitare il Valore dei Resi ai Fornitori espres
-      -    "so in Euro" to TOTEM-HINT-TEXT
-           WHEN 33 MOVE "Digitare i resi dai Clienti espressi nell'Unità
-      -    " di Misura" to TOTEM-HINT-TEXT
-           WHEN 34 MOVE "Digitare il peso dei Resi dai Clienti espresso 
-      -    "in Kg." to TOTEM-HINT-TEXT
-           WHEN 35 MOVE "Digitare il Valore dei Resi dai Clienti espress
-      -    "o in Euro" to TOTEM-HINT-TEXT
-           WHEN 36 MOVE "Digitare le entrate di lavorazione espresse in 
-      -    "Unità di Misura" to TOTEM-HINT-TEXT
-           WHEN 37 MOVE "Digitare le entrate di lavorazione espresse in 
-      -    "Kg" to TOTEM-HINT-TEXT
-           WHEN 38 MOVE "Digitare le entrate di lavorazione espresse in 
-      -    "Euro" to TOTEM-HINT-TEXT
-           WHEN 39 MOVE "Digitare le uscite di lavorazione espresse in U
-      -    "nità di Misura" to TOTEM-HINT-TEXT
-           WHEN 40 MOVE "Digitare le uscite di lavorazione espresse in K
-      -    "g" to TOTEM-HINT-TEXT
-           WHEN 41 MOVE "Digitare le uscite di lavorazione espresse in E
-      -    "uro" to TOTEM-HINT-TEXT
-           WHEN 44 MOVE "Selezionare uno Stato" to TOTEM-HINT-TEXT
-           WHEN 45 MOVE "Digitare l'ordinato (Ordinazione a Fornitorii)"
-            to TOTEM-HINT-TEXT
-           WHEN 46 MOVE "Digitare l'ordinato (Ordinazione a Fornitorii)"
-            to TOTEM-HINT-TEXT
+           WHEN 35 MOVE "Peso dei Resi dai Clienti espresso in Kg." to 
+           TOTEM-HINT-TEXT
+           WHEN 36 MOVE "Valore dei Resi dai Clienti espresso in Euro" 
+           to TOTEM-HINT-TEXT
+           WHEN 37 MOVE "Entrate di lavorazione espresse in Unità di Mis
+      -    "ura" to TOTEM-HINT-TEXT
+           WHEN 38 MOVE "Entrate di lavorazione espresse in Kg" to 
+           TOTEM-HINT-TEXT
+           WHEN 39 MOVE "Entrate di lavorazione espresse in Euro" to 
+           TOTEM-HINT-TEXT
+           WHEN 40 MOVE "Uscite di lavorazione espresse in Unità di Misu
+      -    "ra" to TOTEM-HINT-TEXT
+           WHEN 41 MOVE "Uscite di lavorazione espresse in Kg" to 
+           TOTEM-HINT-TEXT
+           WHEN 42 MOVE "Uscite di lavorazione espresse in Euro" to 
+           TOTEM-HINT-TEXT
+           WHEN 6 MOVE "Giacenza periodo espressa in Unità di Misura" 
+           to TOTEM-HINT-TEXT
+           WHEN 21 MOVE "Giacenza Kg espressa in Kg" to TOTEM-HINT-TEXT
+           WHEN 45 MOVE "Selezionare uno Stato" to TOTEM-HINT-TEXT
+           WHEN 46 MOVE "Ordinato (Ordinazione a Fornitorii)" to 
+           TOTEM-HINT-TEXT
+           WHEN 47 MOVE "Ordinato (Ordinazione a Fornitorii)" to 
+           TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
            EVALUATE Control-Id
@@ -5038,10 +5143,10 @@
            When 12 PERFORM ef-voce-BeforeProcedure
            When 13 PERFORM ef-voce-BeforeProcedure
            When 14 PERFORM ef-voce-BeforeProcedure
+           When 15 PERFORM ef-voce-BeforeProcedure
            When 5005 PERFORM ef-voce-BeforeProcedure
            When 5006 PERFORM ef-voce-BeforeProcedure
            When 5007 PERFORM ef-voce-BeforeProcedure
-           When 18 PERFORM ef-voce-BeforeProcedure
            When 19 PERFORM ef-voce-BeforeProcedure
            When 20 PERFORM ef-voce-BeforeProcedure
            When 21 PERFORM ef-voce-BeforeProcedure
@@ -5065,9 +5170,12 @@
            When 39 PERFORM ef-voce-BeforeProcedure
            When 40 PERFORM ef-voce-BeforeProcedure
            When 41 PERFORM ef-voce-BeforeProcedure
-           When 44 PERFORM Form1-Cm-1-BeforeProcedure
-           When 45 PERFORM ef-voce-BeforeProcedure
+           When 42 PERFORM ef-voce-BeforeProcedure
+           When 6 PERFORM Form1-DaEf-1-BeforeProcedure
+           When 21 PERFORM Form1-DaEf-2-BeforeProcedure
+           When 45 PERFORM Form1-Cm-1-BeforeProcedure
            When 46 PERFORM ef-voce-BeforeProcedure
+           When 47 PERFORM ef-voce-BeforeProcedure
            END-EVALUATE
            PERFORM Form1-DISPLAY-STATUS-MSG
            .
@@ -5082,13 +5190,13 @@
            When 9 PERFORM ef-voce-AfterProcedure
            When 10 PERFORM ef-voce-AfterProcedure
            When 11 PERFORM ef-voce-AfterProcedure
-           When 12 PERFORM EF-PREZZO-FINITO-AfterProcedure
-           When 13 PERFORM ef-voce-AfterProcedure
+           When 12 PERFORM ef-voce-AfterProcedure
+           When 13 PERFORM EF-PREZZO-FINITO-AfterProcedure
            When 14 PERFORM ef-voce-AfterProcedure
+           When 15 PERFORM ef-voce-AfterProcedure
            When 5005 PERFORM ef-voce-AfterProcedure
            When 5006 PERFORM ef-voce-AfterProcedure
            When 5007 PERFORM ef-voce-AfterProcedure
-           When 18 PERFORM ef-voce-AfterProcedure
            When 19 PERFORM ef-voce-AfterProcedure
            When 20 PERFORM ef-voce-AfterProcedure
            When 21 PERFORM ef-voce-AfterProcedure
@@ -5112,10 +5220,11 @@
            When 39 PERFORM ef-voce-AfterProcedure
            When 40 PERFORM ef-voce-AfterProcedure
            When 41 PERFORM ef-voce-AfterProcedure
+           When 42 PERFORM ef-voce-AfterProcedure
            When 6 PERFORM Form1-DaEf-1-AfterProcedure
            When 21 PERFORM Form1-DaEf-2-AfterProcedure
-           When 45 PERFORM ef-voce-AfterProcedure
            When 46 PERFORM ef-voce-AfterProcedure
+           When 47 PERFORM ef-voce-AfterProcedure
            END-EVALUATE
            .
 
@@ -5142,7 +5251,8 @@
        pb-indietro-LinkTo.
       * <TOTEM:PARA. pb-indietro-LinkTo>
            if not scorrimento exit paragraph end-if.
-           perform RIEMPI-CHIAVE.
+           perform RIEMPI-CHIAVE.         
+           read progmag.
 
            read progmag previous
               at end
@@ -5172,7 +5282,8 @@
       * <TOTEM:PARA. pb-avanti-LinkTo>
            if not scorrimento exit paragraph end-if.
 
-           perform RIEMPI-CHIAVE.
+           perform RIEMPI-CHIAVE.   
+           read progmag.
 
            read progmag next
               at end
@@ -5234,6 +5345,12 @@
            progmag
               SET TOTEM-CHECK-OK TO FALSE
               PERFORM EF-COSTO-MEDIO-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+              INQUIRE EF-COSTO-MEDIOa, VALUE IN giac-buona
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM EF-COSTO-MEDIOa-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF

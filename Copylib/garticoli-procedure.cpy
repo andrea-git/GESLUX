@@ -975,7 +975,9 @@
                                icon 2
                 end-read
                 if sco-moq-si
-                   move 1 to v-moq
+                   if Form1-Pg-1-Visible = 1
+                      move 1 to v-moq
+                   end-if
                 else
                    move 0 to v-moq
                    move 0 to ef-moq-buf
@@ -2768,6 +2770,30 @@ LUBEXX        end-if
       ***---
        GARTICOLI-BEFORE-FLD-TO-BUF.
       * CLIENTI-PROGRESSIVI
+           move 0 to giac-buona.
+           initialize prg-rec replacing alphanumeric data by spaces
+                                             numeric data by zeroes.
+           
+           move art-codice of articoli to prg-cod-articolo.
+           start progmag key >= prg-chiave
+                 invalid continue
+             not invalid 
+                 perform until 1 = 2
+                    read progmag next at end exit perform end-read
+                    if prg-cod-articolo not = art-codice of articoli
+                       exit perform
+                    end-if
+                    move prg-cod-magazzino to mag-codice
+                    read tmagaz no lock
+                         invalid continue
+                     not invalid
+                         if mag-per-promo-si
+                            add prg-giacenza to giac-buona
+                         end-if
+                    end-read
+                 end-perform
+           end-start.
+
            initialize prg-rec replacing alphanumeric data by spaces
                                              numeric data by zeroes.
            
@@ -2814,7 +2840,9 @@ LUBEXX        end-if
            move "tscorte" to nome-file.
            perform RELAZIONI-ARTICOLI.   
            if sco-moq-si
-              move 1 to v-moq
+              if Form1-Pg-1-Visible = 1
+                 move 1 to v-moq
+              end-if
            else
               move 0 to v-moq
            end-if.

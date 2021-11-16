@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          garticoli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 10 marzo 2021 12:20:34.
+       DATE-WRITTEN.        martedì 16 novembre 2021 22:32:10.
        REMARKS.
       *{TOTEM}END
 
@@ -338,9 +338,13 @@
       * Data.Entry-Field
               10 EF-COSTO-MEDIO-BUF PIC ----.---.--9,9(2).
       * Data.Entry-Field
+              10 EF-COSTO-MP-BUF PIC ----.---.---.--9,99.
+      * Data.Entry-Field
               10 EF-GIACENZA-BUF PIC ---.---.--9.
       * Data.Entry-Field
               10 EF-ORD-CLI-BUF PIC ---.---.--9.
+      * Data.Entry-Field
+              10 ef-giac-buona-BUF PIC ---.---.--9.
       * Data.Entry-Field
               10 EF-ORD-FORN-BUF PIC ---.---.--9.
       * Data.Entry-Field
@@ -349,6 +353,10 @@
               10 EF-ORD-FORNb-BUF PIC ---.---.--9.
       * Data.Entry-Field
               10 EF-ORD-FORNc-BUF PIC ---.---.--9.
+      * Data.Entry-Field
+              10 EF-ORD-FORNca-BUF PIC ---.---.--9.
+      * Data.Entry-Field
+              10 EF-ORD-FORNcb-BUF PIC ---.---.--9.
       * Data.Entry-Field
               10 EF-INI-UDM-BUF PIC ---.---.--9.
       * Data.Entry-Field
@@ -401,12 +409,6 @@
               10 ef-gia-udm-BUF PIC ---.---.--9.
       * Data.Entry-Field
               10 ef-gia-kg-BUF PIC ----.---.--9,999.
-      * Data.Entry-Field
-              10 EF-COSTO-MP-BUF PIC ----.---.---.--9,99.
-      * Data.Entry-Field
-              10 EF-ORD-FORNca-BUF PIC ---.---.--9.
-      * Data.Entry-Field
-              10 EF-ORD-FORNcb-BUF PIC ---.---.--9.
       * Page
               05 Form1-Pg-1-BUF.
       * Data.Entry-Field
@@ -820,7 +822,7 @@
            Tab-Control, 
            COL 2,00, 
            LINE 5,00,
-           LINES 45,50 ,
+           LINES 45,54 ,
            SIZE 166,00 ,
            ID IS 5000,
            HEIGHT-IN-CELLS,
@@ -4238,9 +4240,9 @@
            ef-peso-utf-prg, 
            Entry-Field, 
            COL 19,67, 
-           LINE 10,07,
+           LINE 10,08,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -4257,10 +4259,10 @@
        10
            ef-peso-non-utf-prg, 
            Entry-Field, 
-           COL 51,67, 
-           LINE 10,07,
+           COL 60,33, 
+           LINE 10,08,
            LINES 1,31 ,
-           SIZE 15,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -4280,7 +4282,7 @@
            COL 19,67, 
            LINE 14,69,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -4297,10 +4299,10 @@
        10
            EF-COSTO-MEDIO, 
            Entry-Field, 
-           COL 51,67, 
+           COL 60,33, 
            LINE 14,69,
            LINES 1,31 ,
-           SIZE 15,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -4315,12 +4317,32 @@
            .
       * ENTRY FIELD
        10
+           EF-COSTO-MP, 
+           Entry-Field, 
+           COL 100,67, 
+           LINE 14,69,
+           LINES 1,31 ,
+           SIZE 17,00 ,
+           BOXED,
+           UPPER,
+           COLOR IS 513,
+           ENABLED mod-campi,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           MAX-TEXT 16,
+           NUMERIC,
+           READ-ONLY,
+           VALUE EF-COSTO-MP-BUF,
+           .
+      * ENTRY FIELD
+       10
            EF-GIACENZA, 
            Entry-Field, 
            COL 19,67, 
            LINE 16,69,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -4337,10 +4359,10 @@
        10
            EF-ORD-CLI, 
            Entry-Field, 
-           COL 51,67, 
+           COL 60,33, 
            LINE 16,69,
            LINES 1,31 ,
-           SIZE 15,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -4355,12 +4377,32 @@
            .
       * ENTRY FIELD
        10
+           ef-giac-buona, 
+           Entry-Field, 
+           COL 100,67, 
+           LINE 16,69,
+           LINES 1,31 ,
+           SIZE 17,00 ,
+           BOXED,
+           UPPER,
+           COLOR IS 513,
+           ENABLED mod-campi,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           MAX-TEXT 9,
+           NUMERIC,
+           READ-ONLY,
+           VALUE ef-giac-buona-BUF,
+           .
+      * ENTRY FIELD
+       10
            EF-ORD-FORN, 
            Entry-Field, 
            COL 19,67, 
-           LINE 20,19,
+           LINE 20,23,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -4377,10 +4419,10 @@
        10
            EF-ORD-FORNa, 
            Entry-Field, 
-           COL 36,67, 
+           COL 40,00, 
            LINE 20,23,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -4398,10 +4440,10 @@
        10
            EF-ORD-FORNb, 
            Entry-Field, 
-           COL 53,67, 
+           COL 60,33, 
            LINE 20,23,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -4419,10 +4461,10 @@
        10
            EF-ORD-FORNc, 
            Entry-Field, 
-           COL 70,67, 
+           COL 80,67, 
            LINE 20,23,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -4438,12 +4480,52 @@
            .
       * ENTRY FIELD
        10
+           EF-ORD-FORNca, 
+           Entry-Field, 
+           COL 100,67, 
+           LINE 20,23,
+           LINES 1,31 ,
+           SIZE 17,00 ,
+           BOXED,
+           UPPER,
+           COLOR IS 513,
+           ENABLED mod-campi,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           MAX-TEXT 9,
+           NUMERIC,
+           READ-ONLY,
+           VALUE EF-ORD-FORNca-BUF,
+           .
+      * ENTRY FIELD
+       10
+           EF-ORD-FORNcb, 
+           Entry-Field, 
+           COL 120,67, 
+           LINE 20,23,
+           LINES 1,31 ,
+           SIZE 17,00 ,
+           BOXED,
+           UPPER,
+           COLOR IS 513,
+           ENABLED mod-campi,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           MAX-TEXT 9,
+           NUMERIC,
+           READ-ONLY,
+           VALUE EF-ORD-FORNcb-BUF,
+           .
+      * ENTRY FIELD
+       10
            EF-INI-UDM, 
            Entry-Field, 
            COL 19,67, 
            LINE 26,54,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -4460,10 +4542,10 @@
        10
            EF-INI-KG, 
            Entry-Field, 
-           COL 51,67, 
+           COL 60,33, 
            LINE 26,54,
            LINES 1,31 ,
-           SIZE 15,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -4479,7 +4561,7 @@
        10
            EF-INI-VALORE, 
            Entry-Field, 
-           COL 83,67, 
+           COL 100,67, 
            LINE 26,54,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -4501,7 +4583,7 @@
            COL 19,67, 
            LINE 28,54,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -4518,10 +4600,10 @@
        10
            EF-ACQ-KG, 
            Entry-Field, 
-           COL 51,67, 
+           COL 60,33, 
            LINE 28,54,
            LINES 1,31 ,
-           SIZE 15,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -4537,7 +4619,7 @@
        10
            EF-ACQ-VALORE, 
            Entry-Field, 
-           COL 83,67, 
+           COL 100,67, 
            LINE 28,54,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -4559,7 +4641,7 @@
            COL 19,67, 
            LINE 30,54,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -4576,10 +4658,10 @@
        10
            EF-VEN-KG, 
            Entry-Field, 
-           COL 51,67, 
+           COL 60,33, 
            LINE 30,54,
            LINES 1,31 ,
-           SIZE 15,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -4595,7 +4677,7 @@
        10
            EF-VEN-VALORE, 
            Entry-Field, 
-           COL 83,67, 
+           COL 100,67, 
            LINE 30,54,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -4617,7 +4699,7 @@
            COL 19,67, 
            LINE 32,54,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -4634,10 +4716,10 @@
        10
            EF-VAR-KG, 
            Entry-Field, 
-           COL 51,67, 
+           COL 60,33, 
            LINE 32,54,
            LINES 1,31 ,
-           SIZE 15,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -4653,7 +4735,7 @@
        10
            EF-VAR-VALORE, 
            Entry-Field, 
-           COL 83,67, 
+           COL 100,67, 
            LINE 32,54,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -4675,7 +4757,7 @@
            COL 19,67, 
            LINE 34,54,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -4692,10 +4774,10 @@
        10
            EF-FORN-KG, 
            Entry-Field, 
-           COL 51,67, 
+           COL 60,33, 
            LINE 34,54,
            LINES 1,31 ,
-           SIZE 15,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -4711,7 +4793,7 @@
        10
            EF-FORN-VALORE, 
            Entry-Field, 
-           COL 83,67, 
+           COL 100,67, 
            LINE 34,54,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -4733,7 +4815,7 @@
            COL 19,67, 
            LINE 36,54,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -4750,10 +4832,10 @@
        10
            EF-CLI-KG, 
            Entry-Field, 
-           COL 51,67, 
+           COL 60,33, 
            LINE 36,54,
            LINES 1,31 ,
-           SIZE 15,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -4769,7 +4851,7 @@
        10
            EF-CLI-VALORE, 
            Entry-Field, 
-           COL 83,67, 
+           COL 100,67, 
            LINE 36,54,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -4791,7 +4873,7 @@
            COL 19,67, 
            LINE 38,54,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -4808,10 +4890,10 @@
        10
            EF-FORN-KGa, 
            Entry-Field, 
-           COL 51,67, 
+           COL 60,33, 
            LINE 38,54,
            LINES 1,31 ,
-           SIZE 15,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -4827,7 +4909,7 @@
        10
            EF-FORN-VALOREa, 
            Entry-Field, 
-           COL 83,67, 
+           COL 100,67, 
            LINE 38,54,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -4849,7 +4931,7 @@
            COL 19,67, 
            LINE 40,54,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -4866,10 +4948,10 @@
        10
            EF-CLI-KGa, 
            Entry-Field, 
-           COL 51,67, 
+           COL 60,33, 
            LINE 40,54,
            LINES 1,31 ,
-           SIZE 15,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -4885,7 +4967,7 @@
        10
            EF-CLI-VALOREa, 
            Entry-Field, 
-           COL 83,67, 
+           COL 100,67, 
            LINE 40,54,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -4938,7 +5020,7 @@
            COL 19,67, 
            LINE 42,54,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -4955,10 +5037,10 @@
        10
            ef-gia-kg, 
            Entry-Field, 
-           COL 51,67, 
+           COL 60,33, 
            LINE 42,54,
            LINES 1,31 ,
-           SIZE 15,00 ,
+           SIZE 17,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -4974,10 +5056,10 @@
        10
            Form1-La-5aaab, 
            Label, 
-           COL 36,67, 
+           COL 40,00, 
            LINE 14,69,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            COLOR IS 2,
            ID IS 175,
            HEIGHT-IN-CELLS,
@@ -5008,10 +5090,10 @@
        10
            Form1-La-5aaabab, 
            Label, 
-           COL 36,67, 
+           COL 40,00, 
            LINE 16,69,
            LINES 1,31 ,
-           SIZE 10,00 ,
+           SIZE 17,00 ,
            COLOR IS 2,
            ID IS 177,
            HEIGHT-IN-CELLS,
@@ -5193,7 +5275,7 @@
            COL 19,67, 
            LINE 24,54,
            LINES 1,00 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            COLOR IS 2,
            ID IS 695,
            HEIGHT-IN-CELLS,
@@ -5207,10 +5289,10 @@
        10
            Form1-La-5aaabaaabaa, 
            Label, 
-           COL 51,67, 
+           COL 60,33, 
            LINE 24,54,
            LINES 1,00 ,
-           SIZE 15,00 ,
+           SIZE 17,00 ,
            COLOR IS 2,
            ID IS 696,
            HEIGHT-IN-CELLS,
@@ -5224,7 +5306,7 @@
        10
            Form1-La-5aaabaaabab, 
            Label, 
-           COL 83,67, 
+           COL 100,67, 
            LINE 24,54,
            LINES 1,00 ,
            SIZE 17,00 ,
@@ -5292,10 +5374,10 @@
        10
            Form1-La-5aaabb, 
            Label, 
-           COL 36,67, 
-           LINE 10,07,
+           COL 40,00, 
+           LINE 10,08,
            LINES 1,31 ,
-           SIZE 12,00 ,
+           SIZE 17,00 ,
            COLOR IS 2,
            ID IS 152,
            HEIGHT-IN-CELLS,
@@ -5352,34 +5434,14 @@
            WIDTH 2,
            .
 
-      * ENTRY FIELD
-       10
-           EF-COSTO-MP, 
-           Entry-Field, 
-           COL 83,34, 
-           LINE 14,69,
-           LINES 1,31 ,
-           SIZE 15,00 ,
-           BOXED,
-           UPPER,
-           COLOR IS 513,
-           ENABLED mod-campi,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           RIGHT,
-           MAX-TEXT 16,
-           NUMERIC,
-           READ-ONLY,
-           VALUE EF-COSTO-MP-BUF,
-           .
       * LABEL
        10
            Form1-La-5aaaba, 
            Label, 
-           COL 68,34, 
+           COL 80,67, 
            LINE 14,69,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            COLOR IS 5,
            ID IS 181,
            HEIGHT-IN-CELLS,
@@ -5414,7 +5476,7 @@
            COL 19,67, 
            LINE 18,77,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            COLOR IS 2,
            ID IS 183,
            HEIGHT-IN-CELLS,
@@ -5428,10 +5490,10 @@
        10
            Form1-La-5aaabaaaaaa, 
            Label, 
-           COL 36,67, 
+           COL 40,00, 
            LINE 18,77,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            COLOR IS 2,
            ID IS 184,
            HEIGHT-IN-CELLS,
@@ -5445,10 +5507,10 @@
        10
            Form1-La-5aaabaaaaab, 
            Label, 
-           COL 53,67, 
+           COL 60,33, 
            LINE 18,77,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            COLOR IS 2,
            ID IS 185,
            HEIGHT-IN-CELLS,
@@ -5462,10 +5524,10 @@
        10
            Form1-La-5aaabaaaaac, 
            Label, 
-           COL 70,67, 
+           COL 80,67, 
            LINE 18,77,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            COLOR IS 2,
            ID IS 186,
            HEIGHT-IN-CELLS,
@@ -5479,10 +5541,10 @@
        10
            Form1-La-5aaabaaaaaca, 
            Label, 
-           COL 87,34, 
+           COL 100,67, 
            LINE 18,77,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            COLOR IS 2,
            ID IS 187,
            HEIGHT-IN-CELLS,
@@ -5492,34 +5554,14 @@
            TITLE "Mese 5",
            .
 
-      * ENTRY FIELD
-       10
-           EF-ORD-FORNca, 
-           Entry-Field, 
-           COL 87,34, 
-           LINE 20,23,
-           LINES 1,31 ,
-           SIZE 14,00 ,
-           BOXED,
-           UPPER,
-           COLOR IS 513,
-           ENABLED mod-campi,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           RIGHT,
-           MAX-TEXT 9,
-           NUMERIC,
-           READ-ONLY,
-           VALUE EF-ORD-FORNca-BUF,
-           .
       * LABEL
        10
            Form1-La-5aaabaaaaacb, 
            Label, 
-           COL 104,00, 
+           COL 120,67, 
            LINE 18,77,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 17,00 ,
            COLOR IS 2,
            ID IS 188,
            HEIGHT-IN-CELLS,
@@ -5529,26 +5571,23 @@
            TITLE "Mese 6",
            .
 
-      * ENTRY FIELD
+      * LABEL
        10
-           EF-ORD-FORNcb, 
-           Entry-Field, 
-           COL 104,00, 
-           LINE 20,23,
+           Form1-La-5aaababa, 
+           Label, 
+           COL 80,67, 
+           LINE 16,62,
            LINES 1,31 ,
-           SIZE 14,00 ,
-           BOXED,
-           UPPER,
-           COLOR IS 513,
-           ENABLED mod-campi,
+           SIZE 17,00 ,
+           COLOR IS 2,
+           ID IS 177,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           RIGHT,
-           MAX-TEXT 9,
-           NUMERIC,
-           READ-ONLY,
-           VALUE EF-ORD-FORNcb-BUF,
+           LEFT,
+           TRANSPARENT,
+           TITLE "Giacenza buona",
            .
+
       * PAGE
        05
            Form1-Pg-1, 
@@ -15105,6 +15144,16 @@
                MOVE 93 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
+      * EF-COSTO-MP's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM EF-COSTO-MP-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 94 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
       * EF-GIACENZA's Validation
            SET TOTEM-CHECK-OK TO FALSE
            PERFORM EF-GIACENZA-VALIDATION
@@ -15112,7 +15161,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 94 TO CONTROL-ID
+               MOVE 95 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-ORD-CLI's Validation
@@ -15122,7 +15171,17 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 95 TO CONTROL-ID
+               MOVE 96 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * ef-giac-buona's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-giac-buona-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 97 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-ORD-FORN's Validation
@@ -15132,7 +15191,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 96 TO CONTROL-ID
+               MOVE 98 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-ORD-FORNa's Validation
@@ -15165,276 +15224,6 @@
                MOVE 5085 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
-      * EF-INI-UDM's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM EF-INI-UDM-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
-               PERFORM Screen1-Ta-1-TABCHANGE
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 100 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * EF-INI-KG's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM EF-INI-KG-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
-               PERFORM Screen1-Ta-1-TABCHANGE
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 101 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * EF-INI-VALORE's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM EF-INI-VALORE-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
-               PERFORM Screen1-Ta-1-TABCHANGE
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 102 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * EF-ACQ-UDM's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM EF-ACQ-UDM-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
-               PERFORM Screen1-Ta-1-TABCHANGE
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 103 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * EF-ACQ-KG's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM EF-ACQ-KG-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
-               PERFORM Screen1-Ta-1-TABCHANGE
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 104 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * EF-ACQ-VALORE's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM EF-ACQ-VALORE-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
-               PERFORM Screen1-Ta-1-TABCHANGE
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 105 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * EF-VEN-UDM's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM EF-VEN-UDM-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
-               PERFORM Screen1-Ta-1-TABCHANGE
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 106 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * EF-VEN-KG's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM EF-VEN-KG-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
-               PERFORM Screen1-Ta-1-TABCHANGE
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 107 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * EF-VEN-VALORE's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM EF-VEN-VALORE-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
-               PERFORM Screen1-Ta-1-TABCHANGE
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 108 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * EF-VAR-UDM's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM EF-VAR-UDM-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
-               PERFORM Screen1-Ta-1-TABCHANGE
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 109 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * EF-VAR-KG's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM EF-VAR-KG-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
-               PERFORM Screen1-Ta-1-TABCHANGE
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 110 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * EF-VAR-VALORE's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM EF-VAR-VALORE-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
-               PERFORM Screen1-Ta-1-TABCHANGE
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 111 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * EF-FORN-UDM's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM EF-FORN-UDM-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
-               PERFORM Screen1-Ta-1-TABCHANGE
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 112 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * EF-FORN-KG's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM EF-FORN-KG-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
-               PERFORM Screen1-Ta-1-TABCHANGE
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 113 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * EF-FORN-VALORE's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM EF-FORN-VALORE-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
-               PERFORM Screen1-Ta-1-TABCHANGE
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 114 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * EF-CLI-UDM's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM EF-CLI-UDM-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
-               PERFORM Screen1-Ta-1-TABCHANGE
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 115 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * EF-CLI-KG's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM EF-CLI-KG-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
-               PERFORM Screen1-Ta-1-TABCHANGE
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 116 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * EF-CLI-VALORE's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM EF-CLI-VALORE-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
-               PERFORM Screen1-Ta-1-TABCHANGE
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 117 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * EF-FORN-UDMa's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM EF-FORN-UDMa-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
-               PERFORM Screen1-Ta-1-TABCHANGE
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 118 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * EF-FORN-KGa's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM EF-FORN-KGa-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
-               PERFORM Screen1-Ta-1-TABCHANGE
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 119 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * EF-FORN-VALOREa's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM EF-FORN-VALOREa-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
-               PERFORM Screen1-Ta-1-TABCHANGE
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 120 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * EF-CLI-UDMa's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM EF-CLI-UDMa-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
-               PERFORM Screen1-Ta-1-TABCHANGE
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 121 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * EF-CLI-KGa's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM EF-CLI-KGa-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
-               PERFORM Screen1-Ta-1-TABCHANGE
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 122 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * EF-CLI-VALOREa's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM EF-CLI-VALOREa-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
-               PERFORM Screen1-Ta-1-TABCHANGE
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 123 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * ef-gia-udm's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM ef-gia-udm-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
-               PERFORM Screen1-Ta-1-TABCHANGE
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 124 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * ef-gia-kg's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM ef-gia-kg-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
-               PERFORM Screen1-Ta-1-TABCHANGE
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 125 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * EF-COSTO-MP's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM EF-COSTO-MP-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
-               PERFORM Screen1-Ta-1-TABCHANGE
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 126 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
       * EF-ORD-FORNca's Validation
            SET TOTEM-CHECK-OK TO FALSE
            PERFORM EF-ORD-FORNca-VALIDATION
@@ -15442,7 +15231,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 127 TO CONTROL-ID
+               MOVE 102 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-ORD-FORNcb's Validation
@@ -15452,7 +15241,267 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
+               MOVE 103 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * EF-INI-UDM's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM EF-INI-UDM-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 104 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * EF-INI-KG's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM EF-INI-KG-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 105 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * EF-INI-VALORE's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM EF-INI-VALORE-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 106 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * EF-ACQ-UDM's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM EF-ACQ-UDM-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 107 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * EF-ACQ-KG's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM EF-ACQ-KG-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 108 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * EF-ACQ-VALORE's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM EF-ACQ-VALORE-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 109 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * EF-VEN-UDM's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM EF-VEN-UDM-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 110 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * EF-VEN-KG's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM EF-VEN-KG-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 111 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * EF-VEN-VALORE's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM EF-VEN-VALORE-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 112 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * EF-VAR-UDM's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM EF-VAR-UDM-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 113 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * EF-VAR-KG's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM EF-VAR-KG-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 114 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * EF-VAR-VALORE's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM EF-VAR-VALORE-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 115 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * EF-FORN-UDM's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM EF-FORN-UDM-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 116 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * EF-FORN-KG's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM EF-FORN-KG-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 117 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * EF-FORN-VALORE's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM EF-FORN-VALORE-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 118 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * EF-CLI-UDM's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM EF-CLI-UDM-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 119 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * EF-CLI-KG's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM EF-CLI-KG-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 120 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * EF-CLI-VALORE's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM EF-CLI-VALORE-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 121 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * EF-FORN-UDMa's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM EF-FORN-UDMa-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 122 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * EF-FORN-KGa's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM EF-FORN-KGa-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 123 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * EF-FORN-VALOREa's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM EF-FORN-VALOREa-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 124 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * EF-CLI-UDMa's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM EF-CLI-UDMa-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 125 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * EF-CLI-KGa's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM EF-CLI-KGa-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 126 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * EF-CLI-VALOREa's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM EF-CLI-VALOREa-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 127 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * ef-gia-udm's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-gia-udm-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
                MOVE 128 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * ef-gia-kg's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-gia-kg-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 3 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 129 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-dt-val-da's Validation
@@ -16565,6 +16614,23 @@
            PERFORM EF-COSTO-MEDIO-AFTER-VALIDATION
            .
 
+       EF-COSTO-MP-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:EF-COSTO-MP, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       EF-COSTO-MP-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:EF-COSTO-MP, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * EF-COSTO-MP's Validation
+       EF-COSTO-MP-VALIDATION.
+           PERFORM EF-COSTO-MP-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM EF-COSTO-MP-AFTER-VALIDATION
+           .
+
        EF-GIACENZA-BEFORE-VALIDATION.
       * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:EF-GIACENZA, BeforeValidation>
       * <TOTEM:END>
@@ -16597,6 +16663,23 @@
            PERFORM EF-ORD-CLI-BEFORE-VALIDATION
            SET TOTEM-CHECK-OK TO TRUE
            PERFORM EF-ORD-CLI-AFTER-VALIDATION
+           .
+
+       ef-giac-buona-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-giac-buona, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-giac-buona-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-giac-buona, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-giac-buona's Validation
+       ef-giac-buona-VALIDATION.
+           PERFORM ef-giac-buona-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-giac-buona-AFTER-VALIDATION
            .
 
        EF-ORD-FORN-BEFORE-VALIDATION.
@@ -16665,6 +16748,40 @@
            PERFORM EF-ORD-FORNc-BEFORE-VALIDATION
            SET TOTEM-CHECK-OK TO TRUE
            PERFORM EF-ORD-FORNc-AFTER-VALIDATION
+           .
+
+       EF-ORD-FORNca-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:EF-ORD-FORNca, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       EF-ORD-FORNca-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:EF-ORD-FORNca, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * EF-ORD-FORNca's Validation
+       EF-ORD-FORNca-VALIDATION.
+           PERFORM EF-ORD-FORNca-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM EF-ORD-FORNca-AFTER-VALIDATION
+           .
+
+       EF-ORD-FORNcb-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:EF-ORD-FORNcb, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       EF-ORD-FORNcb-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:EF-ORD-FORNcb, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * EF-ORD-FORNcb's Validation
+       EF-ORD-FORNcb-VALIDATION.
+           PERFORM EF-ORD-FORNcb-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM EF-ORD-FORNcb-AFTER-VALIDATION
            .
 
        EF-INI-UDM-BEFORE-VALIDATION.
@@ -17109,57 +17226,6 @@
            PERFORM ef-gia-kg-AFTER-VALIDATION
            .
 
-       EF-COSTO-MP-BEFORE-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:EF-COSTO-MP, BeforeValidation>
-      * <TOTEM:END>
-           .
-
-       EF-COSTO-MP-AFTER-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:EF-COSTO-MP, AfterValidation>
-      * <TOTEM:END>
-           .
-
-      * EF-COSTO-MP's Validation
-       EF-COSTO-MP-VALIDATION.
-           PERFORM EF-COSTO-MP-BEFORE-VALIDATION
-           SET TOTEM-CHECK-OK TO TRUE
-           PERFORM EF-COSTO-MP-AFTER-VALIDATION
-           .
-
-       EF-ORD-FORNca-BEFORE-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:EF-ORD-FORNca, BeforeValidation>
-      * <TOTEM:END>
-           .
-
-       EF-ORD-FORNca-AFTER-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:EF-ORD-FORNca, AfterValidation>
-      * <TOTEM:END>
-           .
-
-      * EF-ORD-FORNca's Validation
-       EF-ORD-FORNca-VALIDATION.
-           PERFORM EF-ORD-FORNca-BEFORE-VALIDATION
-           SET TOTEM-CHECK-OK TO TRUE
-           PERFORM EF-ORD-FORNca-AFTER-VALIDATION
-           .
-
-       EF-ORD-FORNcb-BEFORE-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:EF-ORD-FORNcb, BeforeValidation>
-      * <TOTEM:END>
-           .
-
-       EF-ORD-FORNcb-AFTER-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:EF-ORD-FORNcb, AfterValidation>
-      * <TOTEM:END>
-           .
-
-      * EF-ORD-FORNcb's Validation
-       EF-ORD-FORNcb-VALIDATION.
-           PERFORM EF-ORD-FORNcb-BEFORE-VALIDATION
-           SET TOTEM-CHECK-OK TO TRUE
-           PERFORM EF-ORD-FORNcb-AFTER-VALIDATION
-           .
-
        ef-dt-val-da-BEFORE-VALIDATION.
       * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-dt-val-da, BeforeValidation>
       * <TOTEM:END>
@@ -17445,10 +17511,14 @@
            MOVE EF-COSTO-ULTIMO-BUF TO prg-costo-ultimo
       * DB_Entry-Field : EF-COSTO-MEDIO
            MOVE EF-COSTO-MEDIO-BUF TO prg-costo-medio
+      * DB_Entry-Field : EF-COSTO-MP
+           MOVE EF-COSTO-MP-BUF TO costo-mp-2dec
       * DB_Entry-Field : EF-GIACENZA
            MOVE EF-GIACENZA-BUF TO prg-giacenza
       * DB_Entry-Field : EF-ORD-CLI
            MOVE EF-ORD-CLI-BUF TO prg-impegnato
+      * DB_Entry-Field : ef-giac-buona
+           MOVE ef-giac-buona-BUF TO giac-buona
       * DB_Entry-Field : EF-ORD-FORN
            MOVE EF-ORD-FORN-BUF TO prg-ordinato-1
       * DB_Entry-Field : EF-ORD-FORNa
@@ -17457,6 +17527,10 @@
            MOVE EF-ORD-FORNb-BUF TO prg-ordinato-3
       * DB_Entry-Field : EF-ORD-FORNc
            MOVE EF-ORD-FORNc-BUF TO prg-ordinato-4
+      * DB_Entry-Field : EF-ORD-FORNca
+           MOVE EF-ORD-FORNca-BUF TO prg-ordinato-5
+      * DB_Entry-Field : EF-ORD-FORNcb
+           MOVE EF-ORD-FORNcb-BUF TO prg-ordinato-6
       * DB_Entry-Field : EF-INI-UDM
            MOVE EF-INI-UDM-BUF TO prg-ini-udm
       * DB_Entry-Field : EF-INI-KG
@@ -17509,12 +17583,6 @@
            MOVE ef-gia-udm-BUF TO prg-giacenza-udm
       * DB_Entry-Field : ef-gia-kg
            MOVE ef-gia-kg-BUF TO prg-giacenza-kg
-      * DB_Entry-Field : EF-COSTO-MP
-           MOVE EF-COSTO-MP-BUF TO costo-mp-2dec
-      * DB_Entry-Field : EF-ORD-FORNca
-           MOVE EF-ORD-FORNca-BUF TO prg-ordinato-5
-      * DB_Entry-Field : EF-ORD-FORNcb
-           MOVE EF-ORD-FORNcb-BUF TO prg-ordinato-6
       * DB_Entry-Field : ef-dt-val-da
            MOVE ef-dt-val-da-BUF TO data-val-da
       * DB_Entry-Field : ef-dt-val-a
@@ -17799,10 +17867,14 @@
            MOVE prg-costo-ultimo TO EF-COSTO-ULTIMO-BUF
       * DB_Entry-Field : EF-COSTO-MEDIO
            MOVE prg-costo-medio TO EF-COSTO-MEDIO-BUF
+      * DB_Entry-Field : EF-COSTO-MP
+           MOVE costo-mp-2dec TO EF-COSTO-MP-BUF
       * DB_Entry-Field : EF-GIACENZA
            MOVE prg-giacenza TO EF-GIACENZA-BUF
       * DB_Entry-Field : EF-ORD-CLI
            MOVE prg-impegnato TO EF-ORD-CLI-BUF
+      * DB_Entry-Field : ef-giac-buona
+           MOVE giac-buona TO ef-giac-buona-BUF
       * DB_Entry-Field : EF-ORD-FORN
            MOVE prg-ordinato-1 TO EF-ORD-FORN-BUF
       * DB_Entry-Field : EF-ORD-FORNa
@@ -17811,6 +17883,10 @@
            MOVE prg-ordinato-3 TO EF-ORD-FORNb-BUF
       * DB_Entry-Field : EF-ORD-FORNc
            MOVE prg-ordinato-4 TO EF-ORD-FORNc-BUF
+      * DB_Entry-Field : EF-ORD-FORNca
+           MOVE prg-ordinato-5 TO EF-ORD-FORNca-BUF
+      * DB_Entry-Field : EF-ORD-FORNcb
+           MOVE prg-ordinato-6 TO EF-ORD-FORNcb-BUF
       * DB_Entry-Field : EF-INI-UDM
            MOVE prg-ini-udm TO EF-INI-UDM-BUF
       * DB_Entry-Field : EF-INI-KG
@@ -17863,12 +17939,6 @@
            MOVE prg-giacenza-udm TO ef-gia-udm-BUF
       * DB_Entry-Field : ef-gia-kg
            MOVE prg-giacenza-kg TO ef-gia-kg-BUF
-      * DB_Entry-Field : EF-COSTO-MP
-           MOVE costo-mp-2dec TO EF-COSTO-MP-BUF
-      * DB_Entry-Field : EF-ORD-FORNca
-           MOVE prg-ordinato-5 TO EF-ORD-FORNca-BUF
-      * DB_Entry-Field : EF-ORD-FORNcb
-           MOVE prg-ordinato-6 TO EF-ORD-FORNcb-BUF
       * DB_Entry-Field : ef-dt-val-da
            MOVE data-val-da TO ef-dt-val-da-BUF
       * DB_Entry-Field : ef-dt-val-a
@@ -20045,66 +20115,68 @@
            WHEN 91 MOVE "Valore del costo medio" to TOTEM-HINT-TEXT
            WHEN 92 MOVE "Valore del costo ultimo" to TOTEM-HINT-TEXT
            WHEN 93 MOVE "Valore del costo medio" to TOTEM-HINT-TEXT
-           WHEN 94 MOVE "Valore della giacenza" to TOTEM-HINT-TEXT
-           WHEN 95 MOVE "Valore impegnato" to TOTEM-HINT-TEXT
-           WHEN 96 MOVE "Valore ordinato" to TOTEM-HINT-TEXT
+           WHEN 94 MOVE "Valore del costo medio" to TOTEM-HINT-TEXT
+           WHEN 95 MOVE "Valore della giacenza" to TOTEM-HINT-TEXT
+           WHEN 96 MOVE "Valore impegnato" to TOTEM-HINT-TEXT
+           WHEN 97 MOVE "Valore giacenza 'buona' (magazzini con Pren Pro
+      -    "mo = S)" to TOTEM-HINT-TEXT
+           WHEN 98 MOVE "Valore ordinato" to TOTEM-HINT-TEXT
            WHEN 5083 MOVE "Valore ordinato" to TOTEM-HINT-TEXT
            WHEN 5084 MOVE "Valore ordinato" to TOTEM-HINT-TEXT
            WHEN 5085 MOVE "Valore ordinato" to TOTEM-HINT-TEXT
-           WHEN 100 MOVE "Quantità iniziale espressa in unità di misura"
+           WHEN 102 MOVE "Valore ordinato" to TOTEM-HINT-TEXT
+           WHEN 103 MOVE "Valore ordinato" to TOTEM-HINT-TEXT
+           WHEN 104 MOVE "Quantità iniziale espressa in unità di misura"
             to TOTEM-HINT-TEXT
-           WHEN 101 MOVE "Peso iniziale espresso in Kg." to 
+           WHEN 105 MOVE "Peso iniziale espresso in Kg." to 
            TOTEM-HINT-TEXT
-           WHEN 102 MOVE "Valore in euro iniziale" to TOTEM-HINT-TEXT
-           WHEN 103 MOVE "Quantità degli acquisti espressa in unità di m
+           WHEN 106 MOVE "Valore in euro iniziale" to TOTEM-HINT-TEXT
+           WHEN 107 MOVE "Quantità degli acquisti espressa in unità di m
       -    "isura" to TOTEM-HINT-TEXT
-           WHEN 104 MOVE "Peso degli acquisti espresso in Kg." to 
+           WHEN 108 MOVE "Peso degli acquisti espresso in Kg." to 
            TOTEM-HINT-TEXT
-           WHEN 105 MOVE "Valore in euro degli acquisti" to 
+           WHEN 109 MOVE "Valore in euro degli acquisti" to 
            TOTEM-HINT-TEXT
-           WHEN 106 MOVE "Quantità delle vendite espressa in unità di mi
+           WHEN 110 MOVE "Quantità delle vendite espressa in unità di mi
       -    "sura" to TOTEM-HINT-TEXT
-           WHEN 107 MOVE "Peso delle vendite espresso in Kg." to 
+           WHEN 111 MOVE "Peso delle vendite espresso in Kg." to 
            TOTEM-HINT-TEXT
-           WHEN 108 MOVE "Valore in euro delle vendite" to 
+           WHEN 112 MOVE "Valore in euro delle vendite" to 
            TOTEM-HINT-TEXT
-           WHEN 109 MOVE "Quantità delle variazioni inventariali espress
+           WHEN 113 MOVE "Quantità delle variazioni inventariali espress
       -    "a in unità di misura" to TOTEM-HINT-TEXT
-           WHEN 110 MOVE "Peso delle variazioni inventariali espresso in
+           WHEN 114 MOVE "Peso delle variazioni inventariali espresso in
       -    " Kg." to TOTEM-HINT-TEXT
-           WHEN 111 MOVE "Valore in euro delle variazioni inventariali" 
+           WHEN 115 MOVE "Valore in euro delle variazioni inventariali" 
            to TOTEM-HINT-TEXT
-           WHEN 112 MOVE "Quantità dei resi ai fornitori espressa in uni
+           WHEN 116 MOVE "Quantità dei resi ai fornitori espressa in uni
       -    "tà di misura" to TOTEM-HINT-TEXT
-           WHEN 113 MOVE "Peso dei resi ai fornitori espresso in Kg." 
+           WHEN 117 MOVE "Peso dei resi ai fornitori espresso in Kg." 
            to TOTEM-HINT-TEXT
-           WHEN 114 MOVE "Valore in euro dei resi ai fornitori" to 
+           WHEN 118 MOVE "Valore in euro dei resi ai fornitori" to 
            TOTEM-HINT-TEXT
-           WHEN 115 MOVE "Quantità dei resi dai clienti espressa in unit
+           WHEN 119 MOVE "Quantità dei resi dai clienti espressa in unit
       -    "à di misura" to TOTEM-HINT-TEXT
-           WHEN 116 MOVE "Peso dei resi dai clienti espresso in Kg." to 
+           WHEN 120 MOVE "Peso dei resi dai clienti espresso in Kg." to 
            TOTEM-HINT-TEXT
-           WHEN 117 MOVE "Valore in euro dei resi dai clienti" to 
+           WHEN 121 MOVE "Valore in euro dei resi dai clienti" to 
            TOTEM-HINT-TEXT
-           WHEN 118 MOVE "Quantità delle entrate di lavorazione espressa
+           WHEN 122 MOVE "Quantità delle entrate di lavorazione espressa
       -    " in unità di misura" to TOTEM-HINT-TEXT
-           WHEN 119 MOVE "Peso delle entrate di lavorazione espressa in 
+           WHEN 123 MOVE "Peso delle entrate di lavorazione espressa in 
       -    "Kg" to TOTEM-HINT-TEXT
-           WHEN 120 MOVE "Valore delle entrate di lavorazione espresso i
+           WHEN 124 MOVE "Valore delle entrate di lavorazione espresso i
       -    "n Euro" to TOTEM-HINT-TEXT
-           WHEN 121 MOVE "Quantità delle uscite di lavorazione espressa 
+           WHEN 125 MOVE "Quantità delle uscite di lavorazione espressa 
       -    "in unità di misura" to TOTEM-HINT-TEXT
-           WHEN 122 MOVE "Peso delle uscite di lavorazione espressa in K
+           WHEN 126 MOVE "Peso delle uscite di lavorazione espressa in K
       -    "g" to TOTEM-HINT-TEXT
-           WHEN 123 MOVE "Valore delle uscite di lavorazione espresso in
+           WHEN 127 MOVE "Valore delle uscite di lavorazione espresso in
       -    " Euro" to TOTEM-HINT-TEXT
-           WHEN 124 MOVE "Quantità delle vendite espressa in unità di mi
+           WHEN 128 MOVE "Quantità delle vendite espressa in unità di mi
       -    "sura" to TOTEM-HINT-TEXT
-           WHEN 125 MOVE "Peso delle vendite espresso in Kg." to 
+           WHEN 129 MOVE "Peso delle vendite espresso in Kg." to 
            TOTEM-HINT-TEXT
-           WHEN 126 MOVE "Valore del costo medio" to TOTEM-HINT-TEXT
-           WHEN 127 MOVE "Valore ordinato" to TOTEM-HINT-TEXT
-           WHEN 128 MOVE "Valore ordinato" to TOTEM-HINT-TEXT
            WHEN 5086 MOVE "." to TOTEM-HINT-TEXT
            WHEN 5087 MOVE "." to TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
@@ -20198,11 +20270,11 @@
            When 94 PERFORM ef-voce-BeforeProcedure
            When 95 PERFORM ef-voce-BeforeProcedure
            When 96 PERFORM ef-voce-BeforeProcedure
+           When 97 PERFORM ef-voce-BeforeProcedure
+           When 98 PERFORM ef-voce-BeforeProcedure
            When 5083 PERFORM ef-voce-BeforeProcedure
            When 5084 PERFORM ef-voce-BeforeProcedure
            When 5085 PERFORM ef-voce-BeforeProcedure
-           When 100 PERFORM ef-voce-BeforeProcedure
-           When 101 PERFORM ef-voce-BeforeProcedure
            When 102 PERFORM ef-voce-BeforeProcedure
            When 103 PERFORM ef-voce-BeforeProcedure
            When 104 PERFORM ef-voce-BeforeProcedure
@@ -20230,6 +20302,7 @@
            When 126 PERFORM ef-voce-BeforeProcedure
            When 127 PERFORM ef-voce-BeforeProcedure
            When 128 PERFORM ef-voce-BeforeProcedure
+           When 129 PERFORM ef-voce-BeforeProcedure
            When 5086 PERFORM ef-voce-BeforeProcedure
            When 5087 PERFORM ef-voce-BeforeProcedure
            END-EVALUATE
@@ -20323,14 +20396,14 @@
            When 91 PERFORM ef-voce-AfterProcedure
            When 92 PERFORM ef-voce-AfterProcedure
            When 93 PERFORM ef-voce-AfterProcedure
-           When 94 PERFORM EF-PREZZO-FINITO-AfterProcedure
-           When 95 PERFORM ef-voce-AfterProcedure
+           When 94 PERFORM ef-voce-AfterProcedure
+           When 95 PERFORM EF-PREZZO-FINITO-AfterProcedure
            When 96 PERFORM ef-voce-AfterProcedure
+           When 97 PERFORM ef-voce-AfterProcedure
+           When 98 PERFORM ef-voce-AfterProcedure
            When 5083 PERFORM ef-voce-AfterProcedure
            When 5084 PERFORM ef-voce-AfterProcedure
            When 5085 PERFORM ef-voce-AfterProcedure
-           When 100 PERFORM ef-voce-AfterProcedure
-           When 101 PERFORM ef-voce-AfterProcedure
            When 102 PERFORM ef-voce-AfterProcedure
            When 103 PERFORM ef-voce-AfterProcedure
            When 104 PERFORM ef-voce-AfterProcedure
@@ -20358,6 +20431,7 @@
            When 126 PERFORM ef-voce-AfterProcedure
            When 127 PERFORM ef-voce-AfterProcedure
            When 128 PERFORM ef-voce-AfterProcedure
+           When 129 PERFORM ef-voce-AfterProcedure
            When 5086 PERFORM ef-voce-AfterProcedure
            When 5087 PERFORM ef-voce-AfterProcedure
            END-EVALUATE
@@ -21577,9 +21651,21 @@ LABLAB
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+              INQUIRE EF-COSTO-MP, VALUE IN costo-mp-2dec
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM EF-COSTO-MP-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
               INQUIRE EF-ORD-CLI, VALUE IN prg-impegnato
               SET TOTEM-CHECK-OK TO FALSE
               PERFORM EF-ORD-CLI-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+              INQUIRE ef-giac-buona, VALUE IN giac-buona
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-giac-buona-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
@@ -21604,6 +21690,18 @@ LABLAB
               INQUIRE EF-ORD-FORNc, VALUE IN prg-ordinato-4
               SET TOTEM-CHECK-OK TO FALSE
               PERFORM EF-ORD-FORNc-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+              INQUIRE EF-ORD-FORNca, VALUE IN prg-ordinato-5
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM EF-ORD-FORNca-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+              INQUIRE EF-ORD-FORNcb, VALUE IN prg-ordinato-6
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM EF-ORD-FORNcb-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
@@ -21760,24 +21858,6 @@ LABLAB
               INQUIRE ef-gia-kg, VALUE IN prg-giacenza-kg
               SET TOTEM-CHECK-OK TO FALSE
               PERFORM ef-gia-kg-VALIDATION
-              IF NOT TOTEM-CHECK-OK
-                 MOVE 1 TO ACCEPT-CONTROL
-              END-IF
-              INQUIRE EF-COSTO-MP, VALUE IN costo-mp-2dec
-              SET TOTEM-CHECK-OK TO FALSE
-              PERFORM EF-COSTO-MP-VALIDATION
-              IF NOT TOTEM-CHECK-OK
-                 MOVE 1 TO ACCEPT-CONTROL
-              END-IF
-              INQUIRE EF-ORD-FORNca, VALUE IN prg-ordinato-5
-              SET TOTEM-CHECK-OK TO FALSE
-              PERFORM EF-ORD-FORNca-VALIDATION
-              IF NOT TOTEM-CHECK-OK
-                 MOVE 1 TO ACCEPT-CONTROL
-              END-IF
-              INQUIRE EF-ORD-FORNcb, VALUE IN prg-ordinato-6
-              SET TOTEM-CHECK-OK TO FALSE
-              PERFORM EF-ORD-FORNcb-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
