@@ -25,6 +25,7 @@
            open output tmp-movmag.
            set FileOpen to true.
            perform CICLO-LETTURA-ORDINI.
+           perform CICLO-LETTURA-NOTECR.
            perform RIEMPI-GRIGLIA.
            move tot-colimp to lab-tot-colimp-buf
            move tot-cons   to lab-tot-cons-buf.
@@ -173,6 +174,140 @@ LUBEXX           end-if
            end-if.
 
       ***---
+       CICLO-LETTURA-NOTECR.
+           move low-value to tor-chiave.
+           move como-data-from to tno-data tno-anno.
+LUBEXX     if cli-codice not = 0    
+LUBEXX        set cli-tipo-C to true
+LUBEXX        move cli-codice  to tno-cod-cli
+LUBEXX        if des-prog not = 0
+LUBEXX           move des-prog to tno-prg-destino
+LUBEXX        end-if
+LUBEXX        start tnotacr key is >= k1
+LUBEXX              invalid set errori to true
+LUBEXX        end-start
+LUBEXX     else
+LUBEXX        start tnotacr key is >= k-data
+LUBEXX              invalid set errori to true
+LUBEXX        end-start
+LUBEXX     end-if.
+      *
+           if tutto-ok
+              perform until 1 = 2
+                 set record-ok to true
+                 read tnotacr next at end exit perform end-read
+
+                 add 1 to counter
+                 add 1 to counter2
+                 if counter2 = 100
+                    move counter to counter-edit
+                    display counter-edit
+                       upon form3-handle at column 22
+                                              line 03
+                    move 0 to counter2
+                 end-if
+
+LUBEXX           if cli-codice not = 0
+LUBEXX              if cli-codice  not = tno-cod-cli
+LUBEXX                 exit perform
+LUBEXX              end-if
+LUBEXX              if des-prog not = 0
+LUBEXX                 if des-prog not = tno-prg-destino
+LUBEXX                    exit perform
+LUBEXX                 end-if
+LUBEXX              end-if
+                 else
+                    if tno-data > como-data-to
+                       exit perform
+                    end-if
+LUBEXX           end-if
+                 
+LUBEXX           if tno-data >= como-data-from and
+LUBEXX              tno-data <= como-data-to
+
+                    if cli-codice    not = 0
+                       if cli-codice not = tno-cod-cli
+                          set record-ok to false
+                       end-if
+                       if des-prog not = 0 and
+                          des-prog not = tno-prg-destino
+                          set record-ok to false
+                       end-if
+                    end-if
+LUBEXX              if record-ok
+                       set cli-tipo-C to true
+LUBEXX                 move tno-cod-cli to cli-codice
+LUBEXX                 read clienti no lock
+LUBEXX                      invalid initialize cli-rec
+LUBEXX                 end-read
+LUBEXX                 if tcl-codice not = spaces and
+LUBEXX                    tcl-codice not = cli-tipo
+LUBEXX                    set record-ok to false
+LUBEXX                 end-if
+LUBEXX                 inquire ef-cod,  value in cli-codice
+LUBEXX                 inquire ef-tipo, value in tcl-codice
+LUBEXX              end-if               
+
+                    if record-ok
+                       if ef-gdo-buf not = spaces and
+                          ef-gdo-buf not = cli-gdo
+                          set record-ok to false
+                       end-if
+                    end-if
+
+                    if record-ok
+                       move tno-causale to tca-codice
+                       read tcaumag  no lock invalid continue end-read
+
+                       move spaces to vet-sigla
+
+      *****                 move tca-tipo to Save-CF
+                       perform LOOP-RNOTACR
+                    end-if
+LUBEXX           else
+LUBEXX              if cli-codice = 0
+LUBEXX                 exit perform
+LUBEXX              end-if
+LUBEXX           end-if                    
+
+              end-perform
+           end-if.
+
+      ***---
+       LOOP-RNOTACR.
+           set tutto-ok to true.
+           move tno-chiave to rno-chiave.
+           move low-value  to rno-num-riga.
+           start rnotacr key is >= rno-chiave
+                 invalid set errori to true
+           end-start.
+
+           if tutto-ok
+              perform until 1 = 2
+                 read rnotacr next at end exit perform end-read
+                 if rno-anno     not = tno-anno or
+                    rno-numero   not = tno-numero
+                    exit perform
+                 end-if
+                 set record-ok     to true
+                 move rno-cod-articolo to art-codice
+                 read articoli no lock 
+                      invalid set record-ok to false
+                  not invalid
+                      if SaveArticolo not = 0 and
+                         SaveArticolo not = art-codice
+                         set record-ok to false
+                      end-if
+                      if mar-codice not = 0 and
+                         mar-codice not = art-marca-prodotto
+                         set record-ok  to false
+                      end-if
+                 end-read
+                 if record-ok perform MOVE-DATI-NOTECR end-if
+              end-perform
+           end-if.     
+
+      ***---
        MOVE-DATI.
            set trovato to true.
            initialize tmp-mov-rec replacing numeric data by zeroes
@@ -246,7 +381,7 @@ LUBEXX           end-if
               subtract tmp-mov-imp-calcolato from tot-imp
               set tmp-mov-causale-neg to true
 
-              compute tmp-mov-qta = tmp-mov-qta - ( tmp-mov-qta * 2 )
+              compute tmp-mov-qta = tmp-mov-qta * -1
 
            end-if.
 
@@ -279,6 +414,124 @@ LUBEXX     move ror-prg-peso              to tmp-mov-peso.
            move ror-chiave-ordine to tmp-mov-chiave-master.
 
            move tor-cod-agente    to tmp-mov-age-codice age-codice.
+           read agenti no lock 
+                invalid move spaces to age-ragsoc-1 
+           end-read.
+           move age-ragsoc-1 to tmp-mov-age-ragsoc.
+
+           move vet-sigla to tmp-mov-vet-sigla.
+
+           write tmp-mov-rec invalid continue end-write.
+
+           perform BUG-FIX-THIN-CLIENT.
+
+      ***---
+       MOVE-DATI-NOTECR.
+           set trovato to true.
+           initialize tmp-mov-rec replacing numeric data by zeroes
+                                       alphanumeric data by spaces.
+
+           move art-descrizione    to tmp-mov-desart.
+           move rno-anno           to tmp-mov-anno.
+           move rno-numero         to tmp-mov-movim.
+           move rno-num-riga       to tmp-mov-riga.
+           move tno-causale        to tmp-mov-causale.
+           move tno-data           to tmp-mov-data-movim.
+           move rno-qta            to tmp-mov-qta.
+           move rno-imp-consumo    to tmp-mov-cons.
+           move rno-imp-cou-cobat  to tmp-mov-coubat.
+                                                    
+      *     move rno-num-colli        to tmp-mov-colli.
+           move rno-prg-tipo-imballo to tmp-mov-imballo.
+
+           compute tmp-mov-imp = 
+                   rno-prz-unitario  -
+                   rno-imp-consumo   -
+                   rno-imp-cou-cobat -
+                   rno-add-piombo
+
+           move rno-add-piombo     to tmp-mov-add.
+
+           if rno-qta = 0
+              move 1 to rno-qta
+           end-if.
+           compute tmp-mov-imp-calcolato =  
+                   rno-prz-unitario * rno-qta.
+      
+           move tmp-mov-causale to tca-codice.
+           read tcaumag no lock invalid continue end-read.
+           move tca-cod-magaz to tmo-codmag.
+
+           if tca-imponibile-pos
+           
+              compute tot-colimp = 
+                      tot-colimp + ( tmp-mov-imp    * tmp-mov-qta)
+           
+              compute tot-add-pb = 
+                      tot-add-pb + ( tmp-mov-add    * tmp-mov-qta)
+
+              compute tot-cons   = 
+                      tot-cons   + ( tmp-mov-cons   * tmp-mov-qta)
+              compute tot-coubat = 
+                      tot-coubat + ( tmp-mov-coubat * tmp-mov-qta )
+
+              compute tot-kg  = tot-kg + 
+                   (( ror-peso-utf + ror-peso-non-utf ) * ror-qta )
+
+              add tmp-mov-imp-calcolato to tot-imp
+              set tmp-mov-causale-pos   to true
+           else
+           
+              compute tot-colimp = 
+                      tot-colimp - ( tmp-mov-imp    * tmp-mov-qta)
+           
+              compute tot-add-pb = 
+                      tot-add-pb + ( tmp-mov-add    * tmp-mov-qta)
+
+              compute tot-cons   = 
+                      tot-cons   - ( tmp-mov-cons   * tmp-mov-qta)
+              compute tot-coubat = 
+                      tot-coubat - ( tmp-mov-coubat * tmp-mov-qta )
+
+              compute tot-kg  = tot-kg -
+                   (( ror-peso-utf + ror-peso-non-utf ) * ror-qta )
+
+              subtract tmp-mov-imp-calcolato from tot-imp
+              set tmp-mov-causale-neg to true
+
+              compute tmp-mov-qta = tmp-mov-qta - ( tmp-mov-qta * 2 )
+
+           end-if.
+
+           move tno-cod-cli        to tmp-mov-codice.
+           move tno-prg-destino    to tmp-mov-destino.  
+
+           move cli-gdo        to tmp-mov-gdo.
+           move cli-tipo       to tmp-mov-tipocli.
+
+           move rno-cod-articolo to art-codice.
+           read articoli no lock invalid continue end-read.
+
+           move art-marca-prodotto to tmp-mov-marca.
+
+           move rno-prg-cod-magazzino to tmp-mov-magazz.
+           move rno-cod-articolo      to tmp-mov-articolo.
+      *****     if Save-C
+      *        move tno-num-bolla      to tmp-mov-num-bolla
+      *        move tno-data-bolla     to tmp-mov-data-bolla
+
+              move tno-num-fattura    to tmp-mov-numdoc
+              move tno-data-fattura   to tmp-mov-datadoc
+      *****     else
+      *****        move tor-num-bolla      to tmp-mov-numdoc
+      *****        move tor-data-bolla     to tmp-mov-datadoc
+      *****     end-if.
+LUBEXX     |Devo utilizzare il peso della riga
+LUBEXX     move rno-prg-peso              to tmp-mov-peso.
+                                                            
+      *     move rno-chiave-ordine to tmp-mov-chiave-master.
+
+           move tno-cod-agente    to tmp-mov-age-codice age-codice.
            read agenti no lock 
                 invalid move spaces to age-ragsoc-1 
            end-read.
@@ -582,6 +835,18 @@ LUBEXX             end-if
 
               move tmp-mov-vet-sigla to r-vet-sigla
 
+              compute como-numero = tmp-mov-imp * tmp-mov-qta
+              move como-numero to r-imp-tot
+
+              compute como-numero = tmp-mov-add * tmp-mov-qta
+              move como-numero to r-add-tot
+
+              compute como-numero = tmp-mov-cons * tmp-mov-qta
+              move como-numero to r-cons-tot
+
+              compute como-numero = tmp-mov-coubat * tmp-mov-qta
+              move como-numero to r-cou-tot
+
               if prima-volta
       *****           if Save-C
                     move "Nr. Fattura"  to tipo-doc
@@ -591,167 +856,184 @@ LUBEXX             end-if
       *****              move "Data Bolla"   to data-doc
       *****           end-if
                  initialize line-riga
-                 string "Causale"           delimited size
-                        separatore          delimited size
-                        "Codice"            delimited size
-                        separatore          delimited size
-                        "Gruppo GDO"        delimited size
-                        separatore          delimited size
+                 string "Causale"              delimited size
+                        separatore             delimited size
+                        "Codice"               delimited size
+                        separatore             delimited size
+                        "Gruppo GDO"           delimited size
+                        separatore             delimited size
                         "Gruppo GDO originale" delimited size
-                        separatore          delimited size
-                        "Tipol. cliente"    delimited size
-                        separatore          delimited size
-                        "Ragione Sociale"   delimited size
-                        separatore          delimited size
-                        "Destino"           delimited size
-                        separatore          delimited size
-                        "Località"          delimited size
-                        separatore          delimited size
-                        "Prov."             delimited size
-                        separatore          delimited size
-                        "Descrizione"       delimited size
-                        separatore          delimited size
-                        "Regione"           delimited size
-                        separatore          delimited size
-                        "Nr. Ord."          delimited size
-                        separatore          delimited size
-                        "Data Creazione"    delimited size
-                        separatore          delimited size
-                        "Nr. Bolla"         delimited size
-                        separatore          delimited size
-                        "Data Bolla"        delimited size
-                        separatore          delimited size
-                        "Nr. Fattura"       delimited size
-                        separatore          delimited size
-                        "Data Fattura"      delimited size
-                        separatore          delimited size
-                        "Marca"             delimited size
-                        separatore          delimited size
-                        "Mag."              delimited size
-                        separatore          delimited size
-                        "Articolo"          delimited size
-                        separatore          delimited size
-                        "Prodotto"          delimited size
-                        separatore          delimited size
-                        "Imballo"           delimited size
-                        separatore          delimited size
-                        "Colli"             delimited size
-                        separatore          delimited size
-                        "Imp. Merce"        delimited size
-                        separatore          delimited size
-                        "Add. Pb"           delimited size
-                        separatore          delimited size
-                        "I. Consumo"        delimited size
-                        separatore          delimited size
-                        "COU/Cobat"         delimited size
-                        separatore          delimited size
-                        "Q.tà"              delimited size
-                        separatore          delimited size
-                        "Prezzo"            delimited size
-                        separatore          delimited size
-                        "Totale"            delimited size
-                        separatore          delimited size
-                        "Peso"              delimited size
-                        separatore          delimited size
-                        "UTF"               delimited size
-                        separatore          delimited size
-                        "Promo"             delimited size
-                        separatore          delimited size
-                        "Anno M"            delimited size
-                        separatore          delimited size
-                        "Numero M"          delimited size
-                        separatore          delimited size
-                        "Riga M"            delimited size
-                        separatore          delimited size
-                        "Agente"            delimited size 
-                        separatore          delimited size
-                        "Ragione Sociale"   delimited size
-                        separatore          delimited size
-                        "Sigla vettore"     delimited size
-                        into line-riga
-                 end-string
+                        separatore             delimited size
+                        "Tipol. cliente"       delimited size
+                        separatore             delimited size
+                        "Ragione Sociale"      delimited size
+                        separatore             delimited size
+                        "Destino"              delimited size
+                        separatore             delimited size
+                        "Località"             delimited size
+                        separatore             delimited size
+                        "Prov."                delimited size
+                        separatore             delimited size
+                        "Descrizione"          delimited size
+                        separatore             delimited size
+                        "Regione"              delimited size
+                        separatore             delimited size
+                        "Nr. Ord."             delimited size
+                        separatore             delimited size
+                        "Data Creazione"       delimited size
+                        separatore             delimited size
+                        "Nr. Bolla"            delimited size
+                        separatore             delimited size
+                        "Data Bolla"           delimited size
+                        separatore             delimited size
+                        "Nr. Fattura"          delimited size
+                        separatore             delimited size
+                        "Data Fattura"         delimited size
+                        separatore             delimited size
+                        "Marca"                delimited size
+                        separatore             delimited size
+                        "Mag."                 delimited size
+                        separatore             delimited size
+                        "Articolo"             delimited size
+                        separatore             delimited size
+                        "Prodotto"             delimited size
+                        separatore             delimited size
+                        "Imballo"              delimited size
+                        separatore             delimited size
+                        "Colli"                delimited size
+                        separatore             delimited size
+                        "Imp. Merce"           delimited size
+                        separatore             delimited size
+                        "Add. Pb"              delimited size
+                        separatore             delimited size
+                        "I. Consumo"           delimited size
+                        separatore             delimited size
+                        "COU/Cobat"            delimited size
+                        separatore             delimited size
+                        "Q.tà"                 delimited size
+                        separatore             delimited size
+                        "Prezzo"               delimited size
+                        separatore             delimited size
+                        "Totale"               delimited size
+                        separatore             delimited size
+                        "Peso"                 delimited size
+                        separatore             delimited size
+                        "UTF"                  delimited size
+                        separatore             delimited size
+                        "Promo"                delimited size
+                        separatore             delimited size
+                        "Anno M"               delimited size
+                        separatore             delimited size
+                        "Numero M"             delimited size
+                        separatore             delimited size
+                        "Riga M"               delimited size
+                        separatore             delimited size
+                        "Agente"               delimited size 
+                        separatore             delimited size
+                        "Ragione Sociale"      delimited size
+                        separatore             delimited size
+                        "Sigla vettore"        delimited size
+                        separatore             delimited size
+                        "Imp TOT"              delimited size
+                        separatore             delimited size
+                        "Add. Pb TOT"          delimited size
+                        separatore             delimited size
+                        "I. Cons. TOT"         delimited size
+                        separatore             delimited size
+                        "COU/Cobat TOT"        delimited size
+                        into line-riga         
+                 end-string                    
                  write line-riga
                  set prima-volta to false
               end-if
               initialize line-riga
-              string r-causale     delimited size
-                     separatore    delimited size
-                     r-codice      delimited size
-                     separatore    delimited size
-                     r-gdo         delimited size
-                     separatore    delimited size
+              string r-causale        delimited size
+                     separatore       delimited size
+                     r-codice         delimited size
+                     separatore       delimited size
+                     r-gdo            delimited size
+                     separatore       delimited size
                      gdo-intestazione delimited size
-                     separatore    delimited size
+                     separatore       delimited size
                      tcl-descrizione  delimited size
-                     separatore    delimited size
-                     r-ragsoc      delimited size
-                     separatore    delimited size
-                     r-destino     delimited size
-                     separatore    delimited size
-                     r-localita    delimited size
-                     separatore    delimited size
-                     r-prov        delimited size
-                     separatore    delimited size
-                     r-prov-d      delimited size
-                     separatore    delimited size
-                     r-regione     delimited size
-                     separatore    delimited size
-                     r-numero      delimited size
-                     separatore    delimited size
-                     r-data-mov    delimited size
-                     separatore    delimited size
-                     r-num-bolla   delimited size
-                     separatore    delimited size
-                     r-data-bolla  delimited size
-                     separatore    delimited size
-                     r-numdoc      delimited size
-                     separatore    delimited size
-                     r-datadoc     delimited size
-                     separatore    delimited size
-                     r-marca       delimited size
-                     separatore    delimited size
-                     r-mag         delimited size
-                     separatore    delimited size
-                     r-articolo    delimited size
-                     separatore    delimited size
-                     r-desart      delimited size
-                     separatore    delimited size
-                     r-imballo     delimited size
-                     separatore    delimited size
-                     r-colli       delimited size
-                     separatore    delimited size
-                     r-imp-merce   delimited size
-                     separatore    delimited size
-                     r-add-pb      delimited size
-                     separatore    delimited size
-                     r-cons        delimited size
-                     separatore    delimited size
-                     r-coubat      delimited size
-                     separatore    delimited size
-                     r-qta         delimited size
-                     separatore    delimited size
-                     r-prezzo      delimited size
-                     separatore    delimited size
-                     r-tot         delimited size
-                     separatore    delimited size
-                     r-peso        delimited size
-                     separatore    delimited size
-                     r-utf         delimited size
-                     separatore    delimited size
-                     r-promo       delimited size
-                     separatore    delimited size
-                     r-anno-m      delimited size
-                     separatore    delimited size
-                     r-numero-m    delimited size
-                     separatore    delimited size
-                     r-riga-m      delimited size
-                     separatore    delimited size
-                     r-age-codice  delimited size
-                     separatore    delimited size
-                     r-age-ragsoc  delimited size
-                     separatore    delimited size
-                     r-vet-sigla   delimited size
-                     into line-riga
+                     separatore       delimited size
+                     r-ragsoc         delimited size
+                     separatore       delimited size
+                     r-destino        delimited size
+                     separatore       delimited size
+                     r-localita       delimited size
+                     separatore       delimited size
+                     r-prov           delimited size
+                     separatore       delimited size
+                     r-prov-d         delimited size
+                     separatore       delimited size
+                     r-regione        delimited size
+                     separatore       delimited size
+                     r-numero         delimited size
+                     separatore       delimited size
+                     r-data-mov       delimited size
+                     separatore       delimited size
+                     r-num-bolla      delimited size
+                     separatore       delimited size
+                     r-data-bolla     delimited size
+                     separatore       delimited size
+                     r-numdoc         delimited size
+                     separatore       delimited size
+                     r-datadoc        delimited size
+                     separatore       delimited size
+                     r-marca          delimited size
+                     separatore       delimited size
+                     r-mag            delimited size
+                     separatore       delimited size
+                     r-articolo       delimited size
+                     separatore       delimited size
+                     r-desart         delimited size
+                     separatore       delimited size
+                     r-imballo        delimited size
+                     separatore       delimited size
+                     r-colli          delimited size
+                     separatore       delimited size
+                     r-imp-merce      delimited size
+                     separatore       delimited size
+                     r-add-pb         delimited size
+                     separatore       delimited size
+                     r-cons           delimited size
+                     separatore       delimited size
+                     r-coubat         delimited size
+                     separatore       delimited size
+                     r-qta            delimited size
+                     separatore       delimited size
+                     r-prezzo         delimited size
+                     separatore       delimited size
+                     r-tot            delimited size
+                     separatore       delimited size
+                     r-peso           delimited size
+                     separatore       delimited size
+                     r-utf            delimited size
+                     separatore       delimited size
+                     r-promo          delimited size
+                     separatore       delimited size
+                     r-anno-m         delimited size
+                     separatore       delimited size
+                     r-numero-m       delimited size
+                     separatore       delimited size
+                     r-riga-m         delimited size
+                     separatore       delimited size
+                     r-age-codice     delimited size
+                     separatore       delimited size
+                     r-age-ragsoc     delimited size
+                     separatore       delimited size
+                     r-vet-sigla      delimited size
+                     separatore       delimited size
+                     r-imp-tot        delimited size
+                     separatore       delimited size
+                     r-add-tot        delimited size
+                     separatore       delimited size
+                     r-cons-tot       delimited size
+                     separatore       delimited size
+                     r-cou-tot        delimited size
+
+                into line-riga
               end-string
               write line-riga
            end-perform.
