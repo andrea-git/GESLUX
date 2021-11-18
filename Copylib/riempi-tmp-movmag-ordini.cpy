@@ -444,19 +444,18 @@ LUBEXX     move ror-prg-peso              to tmp-mov-peso.
       *     move rno-num-colli        to tmp-mov-colli.
            move rno-prg-tipo-imballo to tmp-mov-imballo.
 
-           compute tmp-mov-imp = 
-                   rno-prz-unitario  -
-                   rno-imp-consumo   -
-                   rno-imp-cou-cobat -
-                   rno-add-piombo
+           move rno-prz-unitario to tmp-mov-imp.
 
            move rno-add-piombo     to tmp-mov-add.
 
            if rno-qta = 0
               move 1 to rno-qta
            end-if.
-           compute tmp-mov-imp-calcolato =  
-                   rno-prz-unitario * rno-qta.
+           compute tmp-mov-imp-calcolato =      
+                 ( rno-prz-unitario  +
+                   rno-imp-consumo   +
+                   rno-imp-cou-cobat +
+                   rno-add-piombo ) * rno-qta.
       
            move tmp-mov-causale to tca-codice.
            read tcaumag no lock invalid continue end-read.
