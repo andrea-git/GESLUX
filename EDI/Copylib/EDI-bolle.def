@@ -42,9 +42,9 @@
          05 02D19-LIN-DESCR          pic x(35).
          05 02D21-LIN-QTAORD-S       pic x(1)  value "+".
          05 02D22-LIN-QTAORD         pic x(35).
-         05 02D-filler4              pic x(4)  value all separatore.
+      *   05 02D-filler4              pic x(4)  value all separatore.
          05 02D27-LIN-UDMQORD        pic x(3)  value "PCE".
-         05 02D-filler5              pic x(13) value all separatore.
+         05 02D-filler8              pic x(8) value all separatore.
          05 02D41-MEA-IDMISURA       pic x(3)  value "AAA".         
          05 02D-filler6              pic x(1)  value separatore.
          05 02D43-MEA-VALORE         pic x(15).
