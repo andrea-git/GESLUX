@@ -8,7 +8,7 @@
 WORKSPACE_UNIQUE_CODE=TOTEM-7DE41144432-337-117565976
 PROJECT_LIST=GESLUX,LAB,EDI,GET,SHI,STORICO,AndamentoClienti
 CONFIGURATION_LIST=Debug Mode,RELEASE
-CURRENT_CONFIGURATION=Debug Mode
+CURRENT_CONFIGURATION=RELEASE
 
 [FILE_DEFINITION_CONTENT]
 VERSION=1
@@ -19127,7 +19127,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:SOURCE\cerca-ean.cbl]
-COPY_DEPENDENCE=FD\articoli.sl;FD\articoli.fd;Copylib\link-geslock.def
+COPY_DEPENDENCE=FD\articoli.sl;FD\tmp-articoli.sl;FD\articoli.fd;FD\tmp-articoli.fd;Copylib\link-geslock.def;Copylib\externals.def
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu

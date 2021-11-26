@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          garticoli.
-       AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 16 novembre 2021 22:32:10.
+       AUTHOR.              Utente.
+       DATE-WRITTEN.        venerdì 26 novembre 2021 22:56:11.
        REMARKS.
       *{TOTEM}END
 
@@ -4240,7 +4240,7 @@
            ef-peso-utf-prg, 
            Entry-Field, 
            COL 19,67, 
-           LINE 10,08,
+           LINE 10,07,
            LINES 1,31 ,
            SIZE 17,00 ,
            BOXED,
@@ -4259,8 +4259,8 @@
        10
            ef-peso-non-utf-prg, 
            Entry-Field, 
-           COL 60,33, 
-           LINE 10,08,
+           COL 60,34, 
+           LINE 10,07,
            LINES 1,31 ,
            SIZE 17,00 ,
            BOXED,
@@ -4299,7 +4299,7 @@
        10
            EF-COSTO-MEDIO, 
            Entry-Field, 
-           COL 60,33, 
+           COL 60,34, 
            LINE 14,69,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -4359,7 +4359,7 @@
        10
            EF-ORD-CLI, 
            Entry-Field, 
-           COL 60,33, 
+           COL 60,34, 
            LINE 16,69,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -4400,7 +4400,7 @@
            EF-ORD-FORN, 
            Entry-Field, 
            COL 19,67, 
-           LINE 20,23,
+           LINE 20,19,
            LINES 1,31 ,
            SIZE 17,00 ,
            BOXED,
@@ -4440,7 +4440,7 @@
        10
            EF-ORD-FORNb, 
            Entry-Field, 
-           COL 60,33, 
+           COL 60,34, 
            LINE 20,23,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -4542,7 +4542,7 @@
        10
            EF-INI-KG, 
            Entry-Field, 
-           COL 60,33, 
+           COL 60,34, 
            LINE 26,54,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -4600,7 +4600,7 @@
        10
            EF-ACQ-KG, 
            Entry-Field, 
-           COL 60,33, 
+           COL 60,34, 
            LINE 28,54,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -4658,7 +4658,7 @@
        10
            EF-VEN-KG, 
            Entry-Field, 
-           COL 60,33, 
+           COL 60,34, 
            LINE 30,54,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -4716,7 +4716,7 @@
        10
            EF-VAR-KG, 
            Entry-Field, 
-           COL 60,33, 
+           COL 60,34, 
            LINE 32,54,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -4774,7 +4774,7 @@
        10
            EF-FORN-KG, 
            Entry-Field, 
-           COL 60,33, 
+           COL 60,34, 
            LINE 34,54,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -4832,7 +4832,7 @@
        10
            EF-CLI-KG, 
            Entry-Field, 
-           COL 60,33, 
+           COL 60,34, 
            LINE 36,54,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -4890,7 +4890,7 @@
        10
            EF-FORN-KGa, 
            Entry-Field, 
-           COL 60,33, 
+           COL 60,34, 
            LINE 38,54,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -4948,7 +4948,7 @@
        10
            EF-CLI-KGa, 
            Entry-Field, 
-           COL 60,33, 
+           COL 60,34, 
            LINE 40,54,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -5037,7 +5037,7 @@
        10
            ef-gia-kg, 
            Entry-Field, 
-           COL 60,33, 
+           COL 60,34, 
            LINE 42,54,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -5289,7 +5289,7 @@
        10
            Form1-La-5aaabaaabaa, 
            Label, 
-           COL 60,33, 
+           COL 60,34, 
            LINE 24,54,
            LINES 1,00 ,
            SIZE 17,00 ,
@@ -5375,7 +5375,7 @@
            Form1-La-5aaabb, 
            Label, 
            COL 40,00, 
-           LINE 10,08,
+           LINE 10,07,
            LINES 1,31 ,
            SIZE 17,00 ,
            COLOR IS 2,
@@ -5507,7 +5507,7 @@
        10
            Form1-La-5aaabaaaaab, 
            Label, 
-           COL 60,33, 
+           COL 60,34, 
            LINE 18,77,
            LINES 1,31 ,
            SIZE 17,00 ,
@@ -5576,11 +5576,11 @@
            Form1-La-5aaababa, 
            Label, 
            COL 80,67, 
-           LINE 16,62,
+           LINE 16,61,
            LINES 1,31 ,
            SIZE 17,00 ,
            COLOR IS 2,
-           ID IS 177,
+           ID IS 189,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            LEFT,
@@ -5659,7 +5659,7 @@
            HEADING-COLOR 257,
            HEADING-DIVIDER-COLOR 1,
            HSCROLL,
-           ID IS 189,
+           ID IS 190,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            ROW-HEADINGS,
@@ -5680,7 +5680,7 @@
            LINES 1,31 ,
            SIZE 3,00 ,
            COLOR IS 2,
-           ID IS 190,
+           ID IS 191,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            CENTER,
@@ -5697,7 +5697,7 @@
            LINES 1,31 ,
            SIZE 10,00 ,
            COLOR IS 2,
-           ID IS 191,
+           ID IS 193,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -5711,7 +5711,7 @@
            COL 1,00, 
            LINE 3,62,
            SIZE 168,33 ,
-           ID IS 193,
+           ID IS 194,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            COLORS (8, 8),
@@ -6240,6 +6240,7 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RIGHT,
+           MAX-TEXT 13,
            VALUE ef-ean-buf,
            AFTER PROCEDURE ef-gdo-AfterProcedure, 
            .
@@ -20490,25 +20491,25 @@
        gd-righe-Event-Proc.
            EVALUATE Event-Type ALSO Event-Control-Id ALSO
                                     Event-Window-Handle
-           WHEN Msg-Begin-Drag ALSO 189 ALSO
+           WHEN Msg-Begin-Drag ALSO 190 ALSO
                     Form1-Handle 
               PERFORM gd-righe-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 189 ALSO
+           WHEN Msg-Begin-Entry ALSO 190 ALSO
                     Form1-Handle 
               PERFORM gd-righe-Ev-Msg-Begin-Entry
-           WHEN Msg-End-Drag ALSO 189 ALSO
+           WHEN Msg-End-Drag ALSO 190 ALSO
                     Form1-Handle 
               PERFORM gd-righe-Ev-Msg-End-Drag
-           WHEN Msg-Goto-Cell ALSO 189 ALSO
+           WHEN Msg-Goto-Cell ALSO 190 ALSO
                     Form1-Handle 
               PERFORM gd-righe-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 189 ALSO
+           WHEN Msg-Goto-Cell-Drag ALSO 190 ALSO
                     Form1-Handle 
               PERFORM gd-righe-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 189 ALSO
+           WHEN Msg-Goto-Cell-Mouse ALSO 190 ALSO
                     Form1-Handle 
               PERFORM gd-righe-Ev-Msg-Goto-Cell-Mouse
-           WHEN Msg-Heading-Clicked ALSO 189 ALSO
+           WHEN Msg-Heading-Clicked ALSO 190 ALSO
                     Form1-Handle 
               PERFORM gd-righe-Ev-Msg-Heading-Clicked
            END-EVALUATE

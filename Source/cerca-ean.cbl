@@ -17,7 +17,8 @@
 
        WORKING-STORAGE SECTION.
       * COPY
-           copy "link-geslock.def".
+           copy "link-geslock.def".            
+           copy "externals.def".
 
       * COSTANTI
        78  titolo value "Ricerca Codice EAN".
@@ -216,6 +217,8 @@
                    como-ora          delimited size
               into path-tmp-articoli
            end-string.
+           inspect path-tmp-articoli 
+                   replacing trailing low-value by spaces.
            open output tmp-articoli.
            close       tmp-articoli.
            open i-o    tmp-articoli.
@@ -226,7 +229,9 @@
                             art-codice-ean-4
                             art-codice-ean-5
 
-           move "tmp-articoli" to como-file.
+           move "articoli-ean"    to como-file.
+           move path-tmp-articoli to ext-file.
+
            evaluate true
            when trovati-ean-1 
                 move link-ean  to art-codice-ean-1
@@ -244,10 +249,70 @@
                           write tmp-art-rec
                        end-perform
                 end-start
-           when trovati-ean-2 move "articoli-ean-2" to como-file
-           when trovati-ean-3 move "articoli-ean-3" to como-file
-           when trovati-ean-4 move "articoli-ean-4" to como-file
-           when trovati-ean-5 move "articoli-ean-5" to como-file
+           when trovati-ean-2 
+                move link-ean  to art-codice-ean-2
+                start articoli key >= art-codice-ean-2
+                       invalid continue
+                   not invalid
+                       perform until 1 = 2
+                          read articoli next 
+                               at end exit perform 
+                          end-read
+                          if art-codice-ean-2 not = link-ean
+                             exit perform
+                          end-if
+                          move art-rec to tmp-art-rec
+                          write tmp-art-rec
+                       end-perform
+                end-start
+           when trovati-ean-3 
+                move link-ean  to art-codice-ean-3
+                start articoli key >= art-codice-ean-3
+                       invalid continue
+                   not invalid
+                       perform until 1 = 2
+                          read articoli next 
+                               at end exit perform 
+                          end-read
+                          if art-codice-ean-3 not = link-ean
+                             exit perform
+                          end-if
+                          move art-rec to tmp-art-rec
+                          write tmp-art-rec
+                       end-perform
+                end-start
+           when trovati-ean-4 
+                move link-ean  to art-codice-ean-4
+                start articoli key >= art-codice-ean-4
+                       invalid continue
+                   not invalid
+                       perform until 1 = 2
+                          read articoli next 
+                               at end exit perform 
+                          end-read
+                          if art-codice-ean-4 not = link-ean
+                             exit perform
+                          end-if
+                          move art-rec to tmp-art-rec
+                          write tmp-art-rec
+                       end-perform
+                end-start
+           when trovati-ean-5
+                move link-ean  to art-codice-ean-5
+                start articoli key >= art-codice-ean-5
+                       invalid continue
+                   not invalid
+                       perform until 1 = 2
+                          read articoli next 
+                               at end exit perform 
+                          end-read
+                          if art-codice-ean-5 not = link-ean
+                             exit perform
+                          end-if
+                          move art-rec to tmp-art-rec
+                          write tmp-art-rec
+                       end-perform
+                end-start
            end-evaluate.
 
            close tmp-articoli.

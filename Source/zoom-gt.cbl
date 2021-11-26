@@ -135,16 +135,12 @@
            when "articoli-all"
            when "articoli-alfa-all"
            when "articoli-codice"
-           when "articoli-ean-1"
-           when "articoli-ean-2"
-           when "articoli-ean-3"
-           when "articoli-ean-4"
-           when "articoli-ean-5"
-                set TuttiIRec to true
-                perform PREPARA-ARTICOLI
            when "articoli"
            when "articoli-alfa"
-                perform PREPARA-ARTICOLI           |CERCA E/O SELEZIONA
+                set TuttiIRec to true
+                perform PREPARA-ARTICOLI
+           when "articoli-ean" 
+                perform PREPARA-ARTICOLI-EAN       |CERCA E/O SELEZIONA
            when "clienti-gdo"
                 perform PREPARA-CLIENTI-GDO        |CERCA
            when "clienti-no-gdo"
@@ -1848,11 +1844,6 @@
            when "articoli-alfa-all"   move 1 to xzoom-file-key
            when "art-des-marche-all"  move 1 to xzoom-file-key
            when "articoli-frn"        move 7 to xzoom-file-key
-           when "articoli-ean-1"      move 2 to xzoom-file-key
-           when "articoli-ean-2"      move 3 to xzoom-file-key
-           when "articoli-ean-3"      move 4 to xzoom-file-key
-           when "articoli-ean-4"      move 5 to xzoom-file-key
-           when "articoli-ean-5"      move 6 to xzoom-file-key
            end-evaluate.
 
            move  zero to idx.
@@ -2011,64 +2002,176 @@
               move 1                    to xzoom-wild-value-length(idx)
               move 1                    to xzoom-wild-length(idx)
               move 2411                 to xzoom-wild-offset(idx)
-           end-if.
+           end-if.                                            
 
-           evaluate como-file
-           when "articoli-ean-1"
-                add 1 to idx
-                set xzoom-when-true(idx)    to true
-                set xzoom-equal(idx)        to true
-                set xzoom-ignore-case(idx)  to true  
-                                 
-                move como-record(209:13) to xzoom-wild-value(idx)
-                move 13                  to xzoom-wild-value-length(idx)
-                move 13                  to xzoom-wild-length(idx)
-                move 208                 to xzoom-wild-offset(idx)
-                       
-           when "articoli-ean-2"
-                add 1 to idx
-                set xzoom-when-true(idx)    to true
-                set xzoom-equal(idx)        to true
-                set xzoom-ignore-case(idx)  to true     
-                                 
-                move como-record(209:13) to xzoom-wild-value(idx)
-                move 1                   to xzoom-wild-value-length(idx)
-                move 1                   to xzoom-wild-length(idx)
-                move 208                 to xzoom-wild-offset(idx)
+           move  -1                      to xzoom-delimiter-offset.
+           move  5                       to xzoom-delimiter-length.
+           move "000"                    to xzoom-from-value.
+           move "000"                    to xzoom-to-value.   
 
-           when "articoli-ean-3"
-                add 1 to idx
-                set xzoom-when-true(idx)    to true
-                set xzoom-equal(idx)        to true
-                set xzoom-ignore-case(idx)  to true     
-                                 
-                move como-record(209:13) to xzoom-wild-value(idx)
-                move 1                   to xzoom-wild-value-length(idx)
-                move 1                   to xzoom-wild-length(idx)
-                move 208                 to xzoom-wild-offset(idx)
+      ***---
+       PREPARA-ARTICOLI-EAN.
+           initialize xzoom-linkage xzoom-ext-info(1).
 
-           when "articoli-ean-4"
-                add 1 to idx
-                set xzoom-when-true(idx)    to true
-                set xzoom-equal(idx)        to true
-                set xzoom-ignore-case(idx)  to true    
-                                 
-                move como-record(209:13) to xzoom-wild-value(idx)
-                move 1                   to xzoom-wild-value-length(idx)
-                move 1                   to xzoom-wild-length(idx)
-                move 208                 to xzoom-wild-offset(idx)
+           move 1 to xzoom-file-key.
 
-           when "articoli-ean-5"
-                add 1 to idx
-                set xzoom-when-true(idx)    to true
-                set xzoom-equal(idx)        to true
-                set xzoom-ignore-case(idx)  to true    
-                                 
-                move como-record(209:13) to xzoom-wild-value(idx)
-                move 1                   to xzoom-wild-value-length(idx)
-                move 1                   to xzoom-wild-length(idx)
-                move 208                 to xzoom-wild-offset(idx)
-           end-evaluate.
+           move  zero to idx.
+           move  zero                    to xzoom-row.
+           move  zero                    to xzoom-cln.
+           move  16                      to xzoom-lw.
+           move  143                     to xzoom-sw.
+           move ext-file                 to xzoom-file-name(1).
+           move "timbalqta"              to xzoom-file-name(2).
+           move "timballi"               to xzoom-file-name(3).
+           move  7                       to xzoom-fields.
+
+      * CAMPO 1
+           add 1 to idx
+           move  1                       to xzoom-field-file(Idx).
+           move  0                       to xzoom-field-rel(Idx).      
+           move  6                       to xzoom-field-length(idx).
+           move  0                       to xzoom-field-offset(idx).
+           move  9                       to xzoom-field-column(idx).
+           move "Codice"                 to xzoom-field-name(idx).  
+           set xzoom-al-right(idx)       to true.
+           set xzoom-field-unsigned(idx) to true.
+           set xzoom-ft-display(idx)     to true.
+           move 6                        to xzoom-field-digits(idx).
+           move  0                       to xzoom-field-dec(idx).
+           move "#####0"                 to xzoom-field-fmt(idx).
+
+      * CAMPO 2
+           add 1 to idx.
+           move  1                       to xzoom-field-file(Idx).
+           move  0                       to xzoom-field-rel(Idx).      
+           move  50                      to xzoom-field-length(idx).
+           move  6                       to xzoom-field-offset(idx).
+           move  50                      to xzoom-field-column(idx).
+           move "Descrizione"            to xzoom-field-name(idx).  
+           set  xzoom-ft-alpha(idx)      to true.                
+
+      * CAMPO 3
+           add 1 to idx.
+           move    1                     to xzoom-field-file(Idx).
+           move    0                     to xzoom-field-rel(Idx).      
+           move    3                     to xzoom-field-length(idx).
+           move  109                     to xzoom-field-offset(idx).
+           move    9                     to xzoom-field-column(idx).
+           move "Imballo Std."           to xzoom-field-name(idx).  
+           set  xzoom-ft-alpha(idx)      to true.
+
+      * CAMPO 4
+           add   1 to idx.
+           move  3                       to xzoom-field-file(Idx).
+           move  2                       to xzoom-field-rel(Idx).      
+           move  50                      to xzoom-field-length(idx).
+           move  3                       to xzoom-field-offset(idx).
+           move  20                      to xzoom-field-column(idx).
+           move "Descrizione"            to xzoom-field-name(idx).  
+           set  xzoom-ft-alpha(idx)      to true.
+
+      * CAMPO 5
+           add   1                          to Idx.
+           move  2                          to xzoom-field-file(Idx).
+           move  1                          to xzoom-field-rel(Idx).      
+           move  4                          to xzoom-field-length(idx).
+           move  6                          to xzoom-field-offset(idx).
+           move  4                          to xzoom-field-column(idx).
+           move "Q.tà"                      to xzoom-field-name(idx).  
+           move  4                          to xzoom-field-digits(Idx).
+           move  0                          to xzoom-field-dec(Idx).
+           move "###0"                      to xzoom-field-fmt(Idx).
+           set xzoom-al-right(Idx)          to true.
+           set xzoom-field-unsigned(Idx )   to true.
+           set xzoom-ft-display(Idx)        to true.
+      
+      * CAMPO 6
+           add   1                          to Idx.
+           move  1                          to xzoom-field-file(Idx).
+           move  0                          to xzoom-field-rel(Idx).      
+           move  9                          to xzoom-field-length(idx).
+           move  101                        to xzoom-field-offset(idx).
+           move  8                          to xzoom-field-column(idx).
+           move "Peso"                      to xzoom-field-name(idx).  
+           move 8                           to xzoom-field-digits(Idx).
+           move 3                           to xzoom-field-dec(Idx).
+           move "##.##0,000"                to xzoom-field-fmt(Idx).
+           set xzoom-al-right(Idx)          to true.
+           set xzoom-field-unsigned(Idx )   to true.
+           set xzoom-ft-display(Idx)        to true.
+      
+      * CAMPO 7
+           add   1                          to Idx.
+           move  1                          to xzoom-field-file(Idx).
+           move  0                          to xzoom-field-rel(Idx).      
+           move  8                          to xzoom-field-length(idx).
+           move  85                         to xzoom-field-offset(idx).
+           move  8                          to xzoom-field-column(idx).
+           move "di cui UTF"                to xzoom-field-name(idx).  
+           move 8                           to xzoom-field-digits(Idx).
+           move 3                           to xzoom-field-dec(Idx).
+           move "##.##0,000"                to xzoom-field-fmt(Idx).
+
+           set xzoom-al-right(Idx)          to true.
+           set xzoom-field-unsigned(Idx )   to true.
+           set xzoom-ft-display(Idx)        to true.
+
+      *    1
+      *    File Reference Settings - Relazione articoli > timbalqta
+           move   1                to Idx.
+           move   1                to xzoom-ref-m-file (Idx).
+           move   2                to xzoom-ref-s-file (Idx).
+           move   0                to xzoom-ref-s-key  (Idx).
+           move   1                to xzoom-ref-fields (Idx).
+           set xzoom-ref-join-outer(Idx) to true.
+           
+      *            Master File Settings
+           move   3  to xzoom-ref-m-length(Idx, 1).
+           move 109  to xzoom-ref-m-offset (Idx, 1).
+           set xzoom-ref-m-unsigned (Idx, 1) to true.
+           
+      *            Slave File Settings
+           move 3 to xzoom-ref-s-length(Idx, 1).
+           move 0 to xzoom-ref-s-offset (Idx, 1).
+           set xzoom-ref-s-unsigned (Idx, 1) to true.
+
+      *    RELAZIONE #2
+      **    File Reference Settings - Relazione timbalqta > timballi
+           add    1                to Idx.
+           move   2                to xzoom-ref-m-file (Idx).
+           move   3                to xzoom-ref-s-file (Idx).
+           move   0                to xzoom-ref-s-key  (Idx).
+           move   1                to xzoom-ref-fields (Idx).
+           set xzoom-ref-join-outer(Idx) to true.
+           
+      *            Master File Settings
+           move 3 to xzoom-ref-m-length(Idx, 1).
+           move 3 to xzoom-ref-m-offset (Idx, 1).
+           set xzoom-ref-m-unsigned (Idx, 1) to true.
+           set xzoom-ref-m-alpha    (Idx, 1) to true.
+           
+      *            Slave File Settings
+           move 3 to xzoom-ref-s-length(Idx, 1).
+           move 0 to xzoom-ref-s-offset (Idx, 1).
+           set xzoom-ref-s-unsigned (Idx, 1) to true.
+           set xzoom-ref-s-alpha    (Idx, 1) to true.
+
+           move 0 to idx.
+
+      *****     |FILTRO SU RECORD ATTIVI
+      *****     if not TuttiIRec
+      *****        add 1    to idx
+      *****        move "A" to como-record(2412:1)
+      *****
+      *****        set xzoom-when-true(idx)    to true
+      *****        set xzoom-begin-with(idx)   to true
+      *****        set xzoom-ignore-case(idx)  to true
+      *****                           
+      *****        move como-record(2412:1)  to xzoom-wild-value(idx)
+      *****        move 1                    to xzoom-wild-value-length(idx)
+      *****        move 1                    to xzoom-wild-length(idx)
+      *****        move 2411                 to xzoom-wild-offset(idx)
+      *****     end-if.
 
            move  -1                      to xzoom-delimiter-offset.
            move  5                       to xzoom-delimiter-length.

@@ -2,7 +2,6 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
-Adesk-andre=10.129.6.10
 
 
 [PROGRAM_CONTENT]
@@ -16090,7 +16089,7 @@ Begin Screen Form1
          Visible Variable  = Form1-Pg-2-Visible
          Begin Data.Entry-Field ef-peso-utf-prg
             SCREEN-COL        = 19,67
-            SCREEN-LINE       = 10,08
+            SCREEN-LINE       = 10,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-peso-utf-prg
@@ -16149,8 +16148,8 @@ Begin Screen Form1
             After Procedure   = ef-voce-AfterProcedure
          End
          Begin Data.Entry-Field ef-peso-non-utf-prg
-            SCREEN-COL        = 60,33
-            SCREEN-LINE       = 10,08
+            SCREEN-COL        = 60,34
+            SCREEN-LINE       = 10,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-peso-non-utf-prg
@@ -16269,7 +16268,7 @@ Begin Screen Form1
             After Procedure   = ef-voce-AfterProcedure
          End
          Begin Data.Entry-Field EF-COSTO-MEDIO
-            SCREEN-COL        = 60,33
+            SCREEN-COL        = 60,34
             SCREEN-LINE       = 14,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
@@ -16449,7 +16448,7 @@ Begin Screen Form1
             After Procedure   = EF-PREZZO-FINITO-AfterProcedure
          End
          Begin Data.Entry-Field EF-ORD-CLI
-            SCREEN-COL        = 60,33
+            SCREEN-COL        = 60,34
             SCREEN-LINE       = 16,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
@@ -16570,7 +16569,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-ORD-FORN
             SCREEN-COL        = 19,67
-            SCREEN-LINE       = 20,23
+            SCREEN-LINE       = 20,19
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-ORD-FORN
@@ -16690,7 +16689,7 @@ Begin Screen Form1
             After Procedure   = ef-voce-AfterProcedure
          End
          Begin Data.Entry-Field EF-ORD-FORNb
-            SCREEN-COL        = 60,33
+            SCREEN-COL        = 60,34
             SCREEN-LINE       = 20,23
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
@@ -16992,7 +16991,7 @@ Begin Screen Form1
             After Procedure   = ef-voce-AfterProcedure
          End
          Begin Data.Entry-Field EF-INI-KG
-            SCREEN-COL        = 60,33
+            SCREEN-COL        = 60,34
             SCREEN-LINE       = 26,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
@@ -17172,7 +17171,7 @@ Begin Screen Form1
             After Procedure   = ef-voce-AfterProcedure
          End
          Begin Data.Entry-Field EF-ACQ-KG
-            SCREEN-COL        = 60,33
+            SCREEN-COL        = 60,34
             SCREEN-LINE       = 28,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
@@ -17352,7 +17351,7 @@ Begin Screen Form1
             After Procedure   = ef-voce-AfterProcedure
          End
          Begin Data.Entry-Field EF-VEN-KG
-            SCREEN-COL        = 60,33
+            SCREEN-COL        = 60,34
             SCREEN-LINE       = 30,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
@@ -17532,7 +17531,7 @@ Begin Screen Form1
             After Procedure   = ef-voce-AfterProcedure
          End
          Begin Data.Entry-Field EF-VAR-KG
-            SCREEN-COL        = 60,33
+            SCREEN-COL        = 60,34
             SCREEN-LINE       = 32,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
@@ -17712,7 +17711,7 @@ Begin Screen Form1
             After Procedure   = ef-voce-AfterProcedure
          End
          Begin Data.Entry-Field EF-FORN-KG
-            SCREEN-COL        = 60,33
+            SCREEN-COL        = 60,34
             SCREEN-LINE       = 34,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
@@ -17892,7 +17891,7 @@ Begin Screen Form1
             After Procedure   = ef-voce-AfterProcedure
          End
          Begin Data.Entry-Field EF-CLI-KG
-            SCREEN-COL        = 60,33
+            SCREEN-COL        = 60,34
             SCREEN-LINE       = 36,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
@@ -18072,7 +18071,7 @@ Begin Screen Form1
             After Procedure   = ef-voce-AfterProcedure
          End
          Begin Data.Entry-Field EF-FORN-KGa
-            SCREEN-COL        = 60,33
+            SCREEN-COL        = 60,34
             SCREEN-LINE       = 38,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
@@ -18252,7 +18251,7 @@ Begin Screen Form1
             After Procedure   = ef-voce-AfterProcedure
          End
          Begin Data.Entry-Field EF-CLI-KGa
-            SCREEN-COL        = 60,33
+            SCREEN-COL        = 60,34
             SCREEN-LINE       = 40,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
@@ -18496,7 +18495,7 @@ Begin Screen Form1
             After Procedure   = ef-voce-AfterProcedure
          End
          Begin Data.Entry-Field ef-gia-kg
-            SCREEN-COL        = 60,33
+            SCREEN-COL        = 60,34
             SCREEN-LINE       = 42,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
@@ -19016,7 +19015,7 @@ Begin Screen Form1
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-5aaabaaabaa
-            SCREEN-COL        = 60,33
+            SCREEN-COL        = 60,34
             SCREEN-LINE       = 24,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
@@ -19182,7 +19181,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaabb
             SCREEN-COL        = 40,00
-            SCREEN-LINE       = 10,08
+            SCREEN-LINE       = 10,07
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaabb
@@ -19444,7 +19443,7 @@ Begin Screen Form1
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-5aaabaaaaab
-            SCREEN-COL        = 60,33
+            SCREEN-COL        = 60,34
             SCREEN-LINE       = 18,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
@@ -19577,7 +19576,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaababa
             SCREEN-COL        = 80,67
-            SCREEN-LINE       = 16,62
+            SCREEN-LINE       = 16,61
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaababa
@@ -19592,7 +19591,7 @@ Begin Screen Form1
             Font              = Default Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 177
+            ID                = 189
             Justification     = Left
             Label Offset      = 20
             Line              = 10,92
@@ -19801,7 +19800,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hscroll           = TRUE
-            ID                = 189
+            ID                = 190
             Last Row          = 0
             Line              = 5,00
             Lines             = 35,00
@@ -19850,7 +19849,7 @@ Begin Screen Form1
             Font              = Default Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 190
+            ID                = 191
             Justification     = Center
             Label Offset      = 20
             Line              = 3,00
@@ -19883,7 +19882,7 @@ Begin Screen Form1
             Font              = Default Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 191
+            ID                = 193
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 3,00
@@ -19916,7 +19915,7 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 193
+      ID                = 194
       Kind              = Horizontal
       Line              = 3,62
       Line Styles       = Solid
@@ -21200,7 +21199,7 @@ Begin Screen form-ean
          Lines             = 1,33
          Lines Unit        = Default
          Max Lines         = 0
-         Max Text          = 0
+         Max Text          = 13
          Max Value         = 0
          Min Value         = 0
          No AutoSel        = FALSE

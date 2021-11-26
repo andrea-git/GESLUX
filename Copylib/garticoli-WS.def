@@ -224,7 +224,7 @@
                   VALUE IS 0.
        77 Verdana12-Occidentale
                   USAGE IS HANDLE OF FONT.
-       77 ef-ean-buf       PIC  9(13).
+       77 ef-ean-buf       PIC  9(13)b.
        77 v-moq            PIC  9
                   VALUE IS 1.
        77 STATUS-rmovmag   PIC  X(2).

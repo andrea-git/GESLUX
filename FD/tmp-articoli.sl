@@ -1,6 +1,6 @@
       *usato per la ricerca EAN
        SELECT tmp-articoli
-           ASSIGN       TO  path-tmp-aricoli
+           ASSIGN       TO  path-tmp-articoli
            ORGANIZATION IS INDEXED
            ACCESS MODE  IS DYNAMIC
            FILE STATUS  IS STATUS-tmp-articoli
