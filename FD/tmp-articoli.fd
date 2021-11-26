@@ -1,0 +1,155 @@
+      *(( XFD FILE = tmp-articoli ))
+       FD  tmp-articoli.
+       01 tmp-art-rec.
+           05 tmp-art-chiave.
+               10 tmp-art-codice   PIC  9(6).
+           05 tmp-art-dati.
+      *(( XFD NAME = art-descrizione-X ))
+               10 tmp-art-descrizione.
+      *(( XFD NAME = art-descrizione ))
+                   15 tmp-art-descrizione1         PIC  x(30).
+                   15 tmp-art-descrizione2         PIC  x(20).
+               10 tmp-art-settore-merceologico PIC  9(4).
+               10 tmp-art-marca-prodotto       PIC  9(4).
+               10 tmp-art-classe-1 PIC  9(4).
+               10 tmp-art-classe-2 PIC  9(3).
+               10 tmp-art-classe-3 PIC  9(3).
+               10 tmp-art-classe-4 PIC  9(3).
+               10 tmp-art-unita-di-misura      PIC  X(2).
+               10 tmp-art-cod-fornitore        PIC  9(5).
+               10 tmp-art-gestione-utf         PIC  X(1).
+                   88 tmp-art-si-utf VALUE IS "S". 
+                   88 tmp-art-misto VALUE IS "M". 
+                   88 tmp-art-no-utf VALUE IS "N". 
+               10 tmp-art-peso-utf PIC  9(5)v9(3).
+               10 tmp-art-peso-non-utf         PIC  9(5)v9(3).
+               10 tmp-art-peso-standard        PIC  9(5)v9(3).
+               10 tmp-art-imballo-standard     PIC  X(3).
+               10 tmp-art-udm-imballo          PIC  x(5).
+               10 tmp-art-codice-iva           PIC  x(3).
+               10 tmp-art-prezzo-vendita       PIC  9(9)v9(2).
+               10 tmp-art-perce-sconto-agente  PIC  9(2)v9(2).
+               10 tmp-art-prezzo-acquisto      PIC  9(9)v9(2).
+      *(( XFD NAME = art-perce-sconto-a ))
+               10 tmp-art-perce-sconto-acquisto            PIC  
+           9(2)v9(2).
+               10 tmp-art-cod-doganale         PIC  9(8).
+               10 tmp-art-soggetto-imposte     PIC  X(1).
+                   88 tmp-art-si-imposte VALUE IS "S". 
+                   88 tmp-art-no-imposte VALUE IS "N". 
+               10 tmp-art-perce-imposte        PIC  9(3)v9(3).
+               10 tmp-art-perce-cou            PIC  9(5)v9(3).
+               10 tmp-art-soggetto-cobat       PIC  X(1).
+                   88 tmp-art-si-cobat VALUE IS "S". 
+                   88 tmp-art-no-cobat VALUE IS "N". 
+               10 tmp-art-amperaggio           PIC  9(3).
+               10 tmp-art-auto-moto-per-cobat  PIC  X(1).
+                   88 tmp-art-auto-cobat VALUE IS "A". 
+                   88 tmp-art-moto-cobat VALUE IS "M". 
+               10 tmp-art-note     PIC  X(30).
+               10 tmp-art-codice-ean-1         PIC  9(13).
+               10 tmp-art-codice-ean-2         PIC  9(13).
+               10 tmp-art-codice-ean-3         PIC  9(13).
+               10 tmp-art-codice-ean-4         PIC  9(13).
+               10 tmp-art-codice-ean-5         PIC  9(13).
+               10 tmp-art-foto     PIC  X(512).
+               10 tmp-art-note-agg PIC  x(512).
+               10 tmp-art-scheda-tecnica       PIC  X(512).
+               10 tmp-art-tossicologica        PIC  x(512).
+               10 tmp-art-descrizione-2        PIC  x(50).
+               10 tmp-art-qta-epal PIC  9(8).
+               10 tmp-art-qta-std  PIC  9(8).
+               10 tmp-art-misure.
+                   15 tmp-art-altezza  PIC  9(6)v99.
+                   15 tmp-art-larghezza            PIC  9(6)v99.
+                   15 tmp-art-profondita           PIC  9(6)v99.
+               10 tmp-art-stato    PIC  X(1).
+                   88 tmp-art-attivo VALUE IS "A". 
+                   88 tmp-art-disattivo VALUE IS "D". 
+                   88 tmp-art-bloccato VALUE IS "B". 
+               10 tmp-art-ALA      PIC  9.
+                   88 tmp-art-si-ALA VALUE IS 1. 
+                   88 tmp-art-no-ALA VALUE IS 0. 
+               10 tmp-art-gruppi   PIC  9.
+                   88 tmp-art-si-gruppi VALUE IS 1. 
+                   88 tmp-art-no-gruppi VALUE IS 0. 
+               10 tmp-art-gda      PIC  9.
+                   88 tmp-art-si-gda VALUE IS 1. 
+                   88 tmp-art-no-gda VALUE IS 0. 
+               10 tmp-art-agenti   PIC  9.
+                   88 tmp-art-si-agenti VALUE IS 1. 
+                   88 tmp-art-no-agenti VALUE IS 0. 
+               10 tmp-art-specialist           PIC  9.
+                   88 tmp-art-si-specialist VALUE IS 1. 
+                   88 tmp-art-no-specialist VALUE IS 0. 
+               10 tmp-art-estero   PIC  9.
+                   88 tmp-art-si-estero VALUE IS 1. 
+                   88 tmp-art-no-estero VALUE IS 0. 
+               10 tmp-art-gds      PIC  9.
+                   88 tmp-art-si-gds VALUE IS 1. 
+                   88 tmp-art-no-gds VALUE IS 0. 
+               10 tmp-art-scorta   PIC  s9(8).
+               10 tmp-art-prezzo-banco         PIC  9(6)v9(2).
+               10 tmp-art-prz-min-vend         PIC  9(5)v9(2).
+               10 tmp-art-moq      PIC  9(8).
+               10 tmp-art-peso-reale           PIC  9(5)v9(3).
+               10 tmp-art-do       PIC  9.
+                   88 tmp-art-si-do VALUE IS 1. 
+                   88 tmp-art-no-do VALUE IS 0. 
+               10 tmp-art-cod-art-frn          PIC  x(15).
+               10 tmp-art-mag-std  PIC  x(3).
+               10 tmp-art-collegato            PIC  9(6).
+               10 tmp-art-cod-desf-forn        PIC  9(5).
+               10 tmp-art-cod-prodener         PIC  x(10).
+               10 tmp-art-tipo-stoc            PIC  x.
+                   88 tmp-art-confezionato VALUE IS "C" " ". 
+                   88 tmp-art-sfuso VALUE IS "S". 
+               10 tmp-art-logo-brand           PIC  X(512).
+               10 tmp-art-conf-cartone         PIC  9(6).
+               10 tmp-art-cartone-UDC          PIC  9(6).
+               10 tmp-art-misure-pz.
+                   20 tmp-art-altezza-pz           PIC  9(6)v99.
+                   20 tmp-art-larghezza-pz         PIC  9(6)v99.
+                   20 tmp-art-profondita-pz        PIC  9(6)v99.
+               10 tmp-art-web      PIC  9.
+                   88 tmp-art-web-si VALUE IS 1. 
+                   88 tmp-art-web-no VALUE IS 0. 
+               10 tmp-art-adr      PIC  x(15).
+               10 tmp-art-dati-comuni.
+                   15 tmp-art-data-creazione       PIC  9(8).
+                   15 tmp-art-ora-creazione        PIC  9(8).
+                   15 tmp-art-utente-creazione     PIC  X(10).
+                   15 tmp-art-data-ultima-modifica PIC  9(8).
+                   15 tmp-art-ora-ultima-modifica  PIC  9(8).
+                   15 tmp-art-utente-ultima-modifica           PIC  
+           X(10).
+               10 tmp-art-vuoti.
+                   15 tmp-art-peso-SHI PIC  9(6)v999.
+                   15 tmp-art-SPI      PIC  9.
+                       88 tmp-art-SPI-si VALUE IS 1. 
+                       88 tmp-art-SPI-no VALUE IS 0. 
+                   15 tmp-art-T1       PIC  9.
+                       88 tmp-art-T1-si VALUE IS 1. 
+                       88 tmp-art-T1-no VALUE IS 0. 
+                   15 tmp-art-T2       PIC  9.
+                       88 tmp-art-T2-si VALUE IS 1. 
+                       88 tmp-art-T2-no VALUE IS 0. 
+                   15 tmp-art-T3       PIC  9.
+                       88 tmp-art-T3-si VALUE IS 1. 
+                       88 tmp-art-T3-no VALUE IS 0. 
+                   15 tmp-art-peso-GET PIC  9(6)v999.
+                   15 tmp-art-AT       PIC  9.
+                       88 tmp-art-AT-si VALUE IS 1. 
+                       88 tmp-art-AT-no VALUE IS 0. 
+                   15 tmp-art-TEXACO   PIC  9.
+                       88 tmp-art-TEXACO-si VALUE IS 1. 
+                       88 tmp-art-TEXACO-no VALUE IS 0. 
+                   15 tmp-art-SHARK    PIC  9.
+                       88 tmp-art-SHARK-si VALUE IS 1. 
+                       88 tmp-art-SHARK-no VALUE IS 0. 
+                   15 tmp-art-litri    PIC  9(4)v999.
+                   15 tmp-art-num-vuoto-2          PIC  9(4).
+                   15 tmp-art-num-vuoto-3          PIC  9(18).
+                   15 tmp-art-note2    PIC  X(300).
+      *(( XFD NAME = art-alfa-vuoto_1 ))
+                   15 tmp-art-alfa-vuoto           PIC  X(200).

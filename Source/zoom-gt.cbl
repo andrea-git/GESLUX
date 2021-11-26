@@ -135,6 +135,11 @@
            when "articoli-all"
            when "articoli-alfa-all"
            when "articoli-codice"
+           when "articoli-ean-1"
+           when "articoli-ean-2"
+           when "articoli-ean-3"
+           when "articoli-ean-4"
+           when "articoli-ean-5"
                 set TuttiIRec to true
                 perform PREPARA-ARTICOLI
            when "articoli"
@@ -1843,6 +1848,11 @@
            when "articoli-alfa-all"   move 1 to xzoom-file-key
            when "art-des-marche-all"  move 1 to xzoom-file-key
            when "articoli-frn"        move 7 to xzoom-file-key
+           when "articoli-ean-1"      move 2 to xzoom-file-key
+           when "articoli-ean-2"      move 3 to xzoom-file-key
+           when "articoli-ean-3"      move 4 to xzoom-file-key
+           when "articoli-ean-4"      move 5 to xzoom-file-key
+           when "articoli-ean-5"      move 6 to xzoom-file-key
            end-evaluate.
 
            move  zero to idx.
@@ -2003,6 +2013,63 @@
               move 2411                 to xzoom-wild-offset(idx)
            end-if.
 
+           evaluate como-file
+           when "articoli-ean-1"
+                add 1 to idx
+                set xzoom-when-true(idx)    to true
+                set xzoom-equal(idx)        to true
+                set xzoom-ignore-case(idx)  to true  
+                                 
+                move como-record(209:13) to xzoom-wild-value(idx)
+                move 13                  to xzoom-wild-value-length(idx)
+                move 13                  to xzoom-wild-length(idx)
+                move 208                 to xzoom-wild-offset(idx)
+                       
+           when "articoli-ean-2"
+                add 1 to idx
+                set xzoom-when-true(idx)    to true
+                set xzoom-equal(idx)        to true
+                set xzoom-ignore-case(idx)  to true     
+                                 
+                move como-record(209:13) to xzoom-wild-value(idx)
+                move 1                   to xzoom-wild-value-length(idx)
+                move 1                   to xzoom-wild-length(idx)
+                move 208                 to xzoom-wild-offset(idx)
+
+           when "articoli-ean-3"
+                add 1 to idx
+                set xzoom-when-true(idx)    to true
+                set xzoom-equal(idx)        to true
+                set xzoom-ignore-case(idx)  to true     
+                                 
+                move como-record(209:13) to xzoom-wild-value(idx)
+                move 1                   to xzoom-wild-value-length(idx)
+                move 1                   to xzoom-wild-length(idx)
+                move 208                 to xzoom-wild-offset(idx)
+
+           when "articoli-ean-4"
+                add 1 to idx
+                set xzoom-when-true(idx)    to true
+                set xzoom-equal(idx)        to true
+                set xzoom-ignore-case(idx)  to true    
+                                 
+                move como-record(209:13) to xzoom-wild-value(idx)
+                move 1                   to xzoom-wild-value-length(idx)
+                move 1                   to xzoom-wild-length(idx)
+                move 208                 to xzoom-wild-offset(idx)
+
+           when "articoli-ean-5"
+                add 1 to idx
+                set xzoom-when-true(idx)    to true
+                set xzoom-equal(idx)        to true
+                set xzoom-ignore-case(idx)  to true    
+                                 
+                move como-record(209:13) to xzoom-wild-value(idx)
+                move 1                   to xzoom-wild-value-length(idx)
+                move 1                   to xzoom-wild-length(idx)
+                move 208                 to xzoom-wild-offset(idx)
+           end-evaluate.
+
            move  -1                      to xzoom-delimiter-offset.
            move  5                       to xzoom-delimiter-length.
            move "000"                    to xzoom-from-value.
@@ -2097,6 +2164,7 @@
            |SOLO CLIENTI           
            move "C"                      to xzoom-wild-value(idx).                                
            move 1                        to xzoom-wild-value-length(idx)
+
            move 2                        to xzoom-wild-length(idx).
            move 0                        to xzoom-wild-offset(idx).
 
