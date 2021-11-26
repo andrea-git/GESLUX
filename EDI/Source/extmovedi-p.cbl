@@ -602,16 +602,6 @@
            inspect path-tmp-art-no-prodener
                                 replacing trailing low-value by space.
 
-
-           open input timposte
-           accept imp-data from century-date.
-           start timposte key <= imp-chiave
-                 invalid continue
-             not invalid
-                 read timposte previous
-           end-start.
-           close timposte.
-
       ***---
        OPEN-FILES.
            if tutto-ok

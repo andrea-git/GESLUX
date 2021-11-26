@@ -445,6 +445,7 @@ quii  *     move pae-imp-non-soggetta       to tmp-redi-pos-fis
 
       ***---
        LOOP-RIGHE-EDI.
+           perform LEGGI-IMPOSTE.
            set trasferisci  to false
       *    faccio il giro sulle righe del movimento
            set  tutto-ok   to true
@@ -834,3 +835,13 @@ LUBEXX*     if rmo-peso-tot-utf = 0
            if not trasferisci
               set errori  to true
            end-if.
+
+      ***---
+       LEGGI-IMPOSTE.
+           move tmo-data-movim to imp-data.
+           start timposte key <= imp-chiave
+                 invalid continue
+             not invalid
+                 read timposte previous
+           end-start.
+      
