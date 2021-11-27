@@ -15,4 +15,7 @@
            WITH DUPLICATES 
            ALTERNATE RECORD KEY IS tof-k-data = tof-data-ordine OF 
            tordforn, tof-chiave OF tordforn
+           WITH DUPLICATES 
+           ALTERNATE RECORD KEY IS tof-k-consegna = tof-data-consegna 
+           OF tordforn, tof-chiave OF tordforn
            WITH DUPLICATES .

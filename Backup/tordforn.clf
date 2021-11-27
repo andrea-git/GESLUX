@@ -2,7 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E5914184430-865-2949130172
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E5B1B141212-983-3221719187
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -952,4 +952,13 @@ m_strName=tof-k-data
 [SLKEYATOM0_SLINDEX3_]
 m_strName=tof-data-ordine OF tordforn
 [SLKEYATOM1_SLINDEX3_]
+m_strName=tof-chiave OF tordforn
+[SLINDEX4_]
+m_strName=tof-k-consegna
+{{@Key_m_strDescriptionSLINDEX4_
+
+@}}
+[SLKEYATOM0_SLINDEX4_]
+m_strName=tof-data-consegna OF tordforn
+[SLKEYATOM1_SLINDEX4_]
 m_strName=tof-chiave OF tordforn

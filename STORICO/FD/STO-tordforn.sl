@@ -16,4 +16,7 @@
            WITH DUPLICATES 
            ALTERNATE RECORD KEY IS STO-tof-k-data = STO-tof-data-ordine 
            OF STO-tordforn, STO-tof-chiave OF STO-tordforn
+           WITH DUPLICATES 
+           ALTERNATE RECORD KEY IS STO-tof-k-consegna = 
+           STO-tof-data-consegna, STO-tof-chiave
            WITH DUPLICATES .

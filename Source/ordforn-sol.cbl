@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          ordforn-sol.
-       AUTHOR.              Utente.
-       DATE-WRITTEN.        sabato 27 novembre 2021 00:05:26.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        sabato 27 novembre 2021 15:26:19.
        REMARKS.
       *{TOTEM}END
 
@@ -34,6 +34,7 @@
            COPY "destini.sl".
            COPY "rordforn.sl".
            COPY "tordforn.sl".
+           COPY "sordforn.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -45,6 +46,7 @@
            COPY "destini.fd".
            COPY "rordforn.fd".
            COPY "tordforn.fd".
+           COPY "sordforn.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -249,6 +251,8 @@
        77 STATUS-tordforn  PIC  X(2).
            88 Valid-STATUS-tordforn VALUE IS "00" THRU "09". 
        77 ef-data-buf      PIC  99/99/9999.
+       77 STATUS-sordforn  PIC  X(2).
+           88 Valid-STATUS-sordforn VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -268,6 +272,7 @@
        77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-rordforn-BUF     PIC X(544).
        77 TMP-DataSet1-tordforn-BUF     PIC X(556).
+       77 TMP-DataSet1-sordforn-BUF     PIC X(1139).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -308,6 +313,11 @@
        77 DataSet1-tordforn-KEY1-ORDER  PIC X VALUE "A".
           88 DataSet1-tordforn-KEY1-Asc  VALUE "A".
           88 DataSet1-tordforn-KEY1-Desc VALUE "D".
+       77 DataSet1-sordforn-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-sordforn-LOCK  VALUE "Y".
+       77 DataSet1-sordforn-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-sordforn-KEY-Asc  VALUE "A".
+          88 DataSet1-sordforn-KEY-Desc VALUE "D".
 
        77 articoli-art-k1-SPLITBUF  PIC X(51).
        77 articoli-art-k-frn-SPLITBUF  PIC X(16).
@@ -323,6 +333,7 @@
        77 tordforn-tof-k-stato-SPLITBUF  PIC X(14).
        77 tordforn-k-fornitore-SPLITBUF  PIC X(24).
        77 tordforn-tof-k-data-SPLITBUF  PIC X(21).
+       77 tordforn-tof-k-consegna-SPLITBUF  PIC X(21).
 
       *{TOTEM}END
 
@@ -343,6 +354,7 @@
       * FORM
        01 
            Form1, 
+           AFTER PROCEDURE  Form1-AFTER-SCREEN
            .
 
       * FRAME
@@ -376,7 +388,6 @@
            AFTER PROCEDURE ef-data-AfterProcedure, 
            BEFORE PROCEDURE ef-data-BeforeProcedure, 
            .
-
 
 
       * LABEL
@@ -465,6 +476,7 @@
        01 
            scr-elab, 
            HELP-ID 1,
+           AFTER PROCEDURE  scr-elab-AFTER-SCREEN
            .
 
       * LABEL
@@ -564,6 +576,7 @@
            INITIALIZE WFONT-DATA Verdana8B-Occidentale
            MOVE 8 TO WFONT-SIZE
            MOVE "Verdana" TO WFONT-NAME
+           SET WFCHARSET-DONT-CARE TO TRUE
            SET WFONT-BOLD TO TRUE
            SET WFONT-ITALIC TO FALSE
            SET WFONT-UNDERLINE TO FALSE
@@ -618,6 +631,7 @@
            PERFORM OPEN-destini
            PERFORM OPEN-rordforn
            PERFORM OPEN-tordforn
+           PERFORM OPEN-sordforn
       *    After Open
            .
 
@@ -684,14 +698,7 @@
        OPEN-rordforn.
       * <TOTEM:EPT. INIT:ordforn-sol, FD:rordforn, BeforeOpen>
       * <TOTEM:END>
-           OPEN  I-O rordforn
-           IF STATUS-rordforn = "35"
-              OPEN OUTPUT rordforn
-                IF Valid-STATUS-rordforn
-                   CLOSE rordforn
-                   OPEN I-O rordforn
-                END-IF
-           END-IF
+           OPEN  INPUT rordforn
            IF NOT Valid-STATUS-rordforn
               PERFORM  Form1-EXTENDED-FILE-STATUS
               GO TO EXIT-STOP-ROUTINE
@@ -703,19 +710,31 @@
        OPEN-tordforn.
       * <TOTEM:EPT. INIT:ordforn-sol, FD:tordforn, BeforeOpen>
       * <TOTEM:END>
-           OPEN  I-O tordforn
-           IF STATUS-tordforn = "35"
-              OPEN OUTPUT tordforn
-                IF Valid-STATUS-tordforn
-                   CLOSE tordforn
-                   OPEN I-O tordforn
-                END-IF
-           END-IF
+           OPEN  INPUT tordforn
            IF NOT Valid-STATUS-tordforn
               PERFORM  Form1-EXTENDED-FILE-STATUS
               GO TO EXIT-STOP-ROUTINE
            END-IF
       * <TOTEM:EPT. INIT:ordforn-sol, FD:tordforn, AfterOpen>
+      * <TOTEM:END>
+           .
+
+       OPEN-sordforn.
+      * <TOTEM:EPT. INIT:ordforn-sol, FD:sordforn, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  I-O sordforn
+           IF STATUS-sordforn = "35"
+              OPEN OUTPUT sordforn
+                IF Valid-STATUS-sordforn
+                   CLOSE sordforn
+                   OPEN I-O sordforn
+                END-IF
+           END-IF
+           IF NOT Valid-STATUS-sordforn
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:ordforn-sol, FD:sordforn, AfterOpen>
       * <TOTEM:END>
            .
 
@@ -728,6 +747,7 @@
            PERFORM CLOSE-destini
            PERFORM CLOSE-rordforn
            PERFORM CLOSE-tordforn
+           PERFORM CLOSE-sordforn
       *    After Close
            .
 
@@ -771,6 +791,12 @@
       * <TOTEM:EPT. INIT:ordforn-sol, FD:tordforn, BeforeClose>
       * <TOTEM:END>
            CLOSE tordforn
+           .
+
+       CLOSE-sordforn.
+      * <TOTEM:EPT. INIT:ordforn-sol, FD:sordforn, BeforeClose>
+      * <TOTEM:END>
+           CLOSE sordforn
            .
 
        articoli-art-k1-MERGE-SPLITBUF.
@@ -1777,7 +1803,6 @@
        DataSet1-rordforn-Rec-Write.
       * <TOTEM:EPT. FD:DataSet1, FD:rordforn, BeforeWrite>
       * <TOTEM:END>
-           WRITE rof-rec OF rordforn.
            MOVE STATUS-rordforn TO TOTEM-ERR-STAT
            MOVE "rordforn" TO TOTEM-ERR-FILE
            MOVE "WRITE" TO TOTEM-ERR-MODE
@@ -1788,7 +1813,6 @@
        DataSet1-rordforn-Rec-Rewrite.
       * <TOTEM:EPT. FD:DataSet1, FD:rordforn, BeforeRewrite>
       * <TOTEM:END>
-           REWRITE rof-rec OF rordforn.
            MOVE STATUS-rordforn TO TOTEM-ERR-STAT
            MOVE "rordforn" TO TOTEM-ERR-FILE
            MOVE "REWRITE" TO TOTEM-ERR-MODE
@@ -1799,7 +1823,6 @@
        DataSet1-rordforn-Rec-Delete.
       * <TOTEM:EPT. FD:DataSet1, FD:rordforn, BeforeDelete>
       * <TOTEM:END>
-           DELETE rordforn.
            MOVE STATUS-rordforn TO TOTEM-ERR-STAT
            MOVE "rordforn" TO TOTEM-ERR-FILE
            MOVE "DELETE" TO TOTEM-ERR-MODE
@@ -1834,6 +1857,14 @@
            tordforn-tof-k-data-SPLITBUF(1:8)
            MOVE tof-chiave OF tordforn(1:12) TO 
            tordforn-tof-k-data-SPLITBUF(9:12)
+           .
+
+       tordforn-tof-k-consegna-MERGE-SPLITBUF.
+           INITIALIZE tordforn-tof-k-consegna-SPLITBUF
+           MOVE tof-data-consegna OF tordforn(1:8) TO 
+           tordforn-tof-k-consegna-SPLITBUF(1:8)
+           MOVE tof-chiave OF tordforn(1:12) TO 
+           tordforn-tof-k-consegna-SPLITBUF(9:12)
            .
 
        DataSet1-tordforn-INITSTART.
@@ -1940,6 +1971,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT 
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -1974,6 +2006,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -2008,6 +2041,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -2020,7 +2054,6 @@
        DataSet1-tordforn-Rec-Write.
       * <TOTEM:EPT. FD:DataSet1, FD:tordforn, BeforeWrite>
       * <TOTEM:END>
-           WRITE tof-rec OF tordforn.
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "WRITE" TO TOTEM-ERR-MODE
@@ -2031,7 +2064,6 @@
        DataSet1-tordforn-Rec-Rewrite.
       * <TOTEM:EPT. FD:DataSet1, FD:tordforn, BeforeRewrite>
       * <TOTEM:END>
-           REWRITE tof-rec OF tordforn.
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "REWRITE" TO TOTEM-ERR-MODE
@@ -2042,11 +2074,167 @@
        DataSet1-tordforn-Rec-Delete.
       * <TOTEM:EPT. FD:DataSet1, FD:tordforn, BeforeDelete>
       * <TOTEM:END>
-           DELETE tordforn.
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "DELETE" TO TOTEM-ERR-MODE
       * <TOTEM:EPT. FD:DataSet1, FD:tordforn, AfterDelete>
+      * <TOTEM:END>
+           .
+
+       DataSet1-sordforn-INITSTART.
+           IF DataSet1-sordforn-KEY-Asc
+              MOVE Low-Value TO sof-chiave OF sordforn
+           ELSE
+              MOVE High-Value TO sof-chiave OF sordforn
+           END-IF
+           .
+
+       DataSet1-sordforn-INITEND.
+           IF DataSet1-sordforn-KEY-Asc
+              MOVE High-Value TO sof-chiave OF sordforn
+           ELSE
+              MOVE Low-Value TO sof-chiave OF sordforn
+           END-IF
+           .
+
+      * sordforn
+       DataSet1-sordforn-START.
+           IF DataSet1-sordforn-KEY-Asc
+              START sordforn KEY >= sof-chiave OF sordforn
+           ELSE
+              START sordforn KEY <= sof-chiave OF sordforn
+           END-IF
+           .
+
+       DataSet1-sordforn-START-NOTGREATER.
+           IF DataSet1-sordforn-KEY-Asc
+              START sordforn KEY <= sof-chiave OF sordforn
+           ELSE
+              START sordforn KEY >= sof-chiave OF sordforn
+           END-IF
+           .
+
+       DataSet1-sordforn-START-GREATER.
+           IF DataSet1-sordforn-KEY-Asc
+              START sordforn KEY > sof-chiave OF sordforn
+           ELSE
+              START sordforn KEY < sof-chiave OF sordforn
+           END-IF
+           .
+
+       DataSet1-sordforn-START-LESS.
+           IF DataSet1-sordforn-KEY-Asc
+              START sordforn KEY < sof-chiave OF sordforn
+           ELSE
+              START sordforn KEY > sof-chiave OF sordforn
+           END-IF
+           .
+
+       DataSet1-sordforn-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-sordforn-LOCK
+              READ sordforn WITH LOCK 
+              KEY sof-chiave OF sordforn
+           ELSE
+              READ sordforn WITH NO LOCK 
+              KEY sof-chiave OF sordforn
+           END-IF
+           MOVE STATUS-sordforn TO TOTEM-ERR-STAT 
+           MOVE "sordforn" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-sordforn-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-sordforn-KEY-Asc
+              IF DataSet1-sordforn-LOCK
+                 READ sordforn NEXT WITH LOCK
+              ELSE
+                 READ sordforn NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-sordforn-LOCK
+                 READ sordforn PREVIOUS WITH LOCK
+              ELSE
+                 READ sordforn PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-sordforn TO TOTEM-ERR-STAT
+           MOVE "sordforn" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-sordforn-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-sordforn-KEY-Asc
+              IF DataSet1-sordforn-LOCK
+                 READ sordforn PREVIOUS WITH LOCK
+              ELSE
+                 READ sordforn PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-sordforn-LOCK
+                 READ sordforn NEXT WITH LOCK
+              ELSE
+                 READ sordforn NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-sordforn TO TOTEM-ERR-STAT
+           MOVE "sordforn" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-sordforn-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, BeforeWrite>
+      * <TOTEM:END>
+           WRITE sof-rec OF sordforn.
+           MOVE STATUS-sordforn TO TOTEM-ERR-STAT
+           MOVE "sordforn" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-sordforn-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, BeforeRewrite>
+      * <TOTEM:END>
+           REWRITE sof-rec OF sordforn.
+           MOVE STATUS-sordforn TO TOTEM-ERR-STAT
+           MOVE "sordforn" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-sordforn-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, BeforeDelete>
+      * <TOTEM:END>
+           DELETE sordforn.
+           MOVE STATUS-sordforn TO TOTEM-ERR-STAT
+           MOVE "sordforn" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, AfterDelete>
       * <TOTEM:END>
            .
 
@@ -2058,6 +2246,7 @@
            INITIALIZE des-rec OF destini
            INITIALIZE rof-rec OF rordforn
            INITIALIZE tof-rec OF tordforn
+           INITIALIZE sof-rec OF sordforn
            .
 
 
@@ -2160,6 +2349,14 @@
       * FD's Initialize Paragraph
        DataSet1-tordforn-INITREC.
            INITIALIZE tof-rec OF tordforn
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-sordforn-INITREC.
+           INITIALIZE sof-rec OF sordforn
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -2822,6 +3019,25 @@
            END-PERFORM
            .
 
+
+      * Paragrafo per la struttura del codice in AFTER sulla screen Form1
+      ***---
+       Form1-AFTER-SCREEN.
+
+      * Generazione risettaggio keyboard "." ---> "."
+
+      * Generazione stringa perform CONTROLLO
+           evaluate control-id
+           |2 è l'ID del campo ef-data
+           when 2
+                perform CONTROLLO
+           |99999 è un valore fittizio, che non sarà MAI usato,
+           |ma mi serve per non riscontrare errori di compilazione
+           |in caso non avessi generato nulla nella AFTER CONTROLLO della screen
+           when 99999 continue
+           when other continue
+           end-evaluate.
+
        scr-elab-Open-Routine.
            PERFORM scr-elab-Scrn
            PERFORM scr-elab-Proc
@@ -2866,6 +3082,20 @@
 
        scr-elab-PROC.
       * <TOTEM:EPT. FORM:scr-elab, FORM:scr-elab, BeforeAccept>
+           move ef-data-buf to como-data.
+           perform DATE-TO-FILE.
+
+           05 sof-chiave.
+               10 sof-chiave-testa.
+                   15 sof-anno         PIC  9(4).
+                   15 sof-numero       PIC  9(8).
+               10 sof-prog         PIC  9(5).
+           05 sof-dati.
+               10 sof-note         PIC  x(500).
+               10 sof-data-arr     PIC  9(8).
+               10 sof-qta          PIC  9(8).
+
+
       *****     close promoeva.
       *****     move user-codi       to link-tprev-user.
       *****     move scr-elab-handle to link-tprev-handle.
@@ -3009,6 +3239,22 @@
 
        scr-elab-Restore-Status.
            .
+
+
+      * Paragrafo per la struttura del codice in AFTER sulla screen scr-elab
+      ***---
+       scr-elab-AFTER-SCREEN.
+
+      * Generazione risettaggio keyboard "." ---> "."
+
+      * Generazione stringa perform CONTROLLO
+           evaluate control-id
+           |99999 è un valore fittizio, che non sarà MAI usato,
+           |ma mi serve per non riscontrare errori di compilazione
+           |in caso non avessi generato nulla nella AFTER CONTROLLO della screen
+           when 99999 continue
+           when other continue
+           end-evaluate.
 
 
 
@@ -3675,7 +3921,9 @@
            move ef-data-buf to como-data.
            perform DATE-FORMAT.
            move como-data to ef-data-buf.
-           display ef-data 
+           display ef-data.
+
+           perform SCR-ELAB-OPEN-ROUTINE 
            .
       * <TOTEM:END>
 
