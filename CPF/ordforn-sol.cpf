@@ -2,7 +2,6 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
-Adesk-andre=192.168.56.1
 
 
 [PROGRAM_CONTENT]
@@ -27,64 +26,6 @@ m_bStandard=1
 
 @}}
 [FDITEM0_WK]
-m_strName=STATUS-tregioni
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM0_WK
-
-@}}
-[FDITEM1_WK]
-m_strName=Valid-STATUS-tregioni
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM1_WK
-
-@}}
-[FDITEM2_WK]
-m_strName=tprev-linkage
-m_nItemLevel=1
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-TPREV-P.DEF
-m_strCopyFile=LINK-TPREV-P.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-TPREV-P.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM2_WK
-
-@}}
-[FDITEM3_WK]
-m_strName=link-tprev-user
-m_strRawPic=x(20)
-m_strPic=X(20)
-m_nItemLevel=3
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-TPREV-P.DEF
-m_strCopyFile=LINK-TPREV-P.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-TPREV-P.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM3_WK
-
-@}}
-[FDITEM4_WK]
-m_strName=link-tprev-handle
-m_nUsage=24
-m_nItemLevel=3
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-TPREV-P.DEF
-m_strCopyFile=LINK-TPREV-P.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-TPREV-P.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM4_WK
-
-@}}
-[FDITEM5_WK]
 m_strName=ext-file
 m_strRawPic=x(256)
 m_strPic=X(256)
@@ -96,463 +37,11 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\EXTERNALS.DEF
 m_strCopyFile=externals.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\EXTERNALS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM5_WK
+{{@DataItem_m_strDescriptionFDITEM0_WK
 
 
 @}}
-[FDITEM6_WK]
-m_strName=open-key-handle
-m_nUsage=22
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_strCopyFile=common-excel.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM6_WK
-
-@}}
-[FDITEM7_WK]
-m_strName=sam-desired
-m_nUsage=22
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_strCopyFile=common-excel.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM7_WK
-
-@}}
-[FDITEM8_WK]
-m_strName=subkey-handle
-m_nUsage=22
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_strCopyFile=common-excel.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM8_WK
-
-@}}
-[FDITEM9_WK]
-m_strName=data-type
-m_nUsage=22
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_strCopyFile=common-excel.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM9_WK
-
-@}}
-[FDITEM10_WK]
-m_strName=data-size
-m_nUsage=22
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_strCopyFile=common-excel.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM10_WK
-
-@}}
-[FDITEM11_WK]
-m_strName=subkey-to-be-opened
-m_strRawPic=x(256)
-m_strPic=X(256)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_strCopyFile=common-excel.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM11_WK
-
-@}}
-[FDITEM12_WK]
-m_strName=value-data
-m_strRawPic=x(256)
-m_strPic=X(256)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_strCopyFile=common-excel.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM12_WK
-
-@}}
-[FDITEM13_WK]
-m_strName=new-registry
-m_strRawPic=x(256)
-m_strPic=X(256)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_strCopyFile=common-excel.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM13_WK
-
-@}}
-[FDITEM14_WK]
-m_strName=value-key
-m_strRawPic=x(256)
-m_strPic=X(256)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_strCopyFile=common-excel.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM14_WK
-
-@}}
-[FDITEM15_WK]
-m_strName=row-command
-m_strRawPic=x(256)
-m_strPic=X(256)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_strCopyFile=common-excel.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM15_WK
-
-@}}
-[FDITEM16_WK]
-m_strName=cmd-lancio
-m_strRawPic=x(256)
-m_strPic=X(256)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_strCopyFile=common-excel.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM16_WK
-
-@}}
-[FDITEM17_WK]
-m_strName=descr-prog
-m_strRawPic=x(50)
-m_strPic=X(50)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_strCopyFile=common-excel.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM17_WK
-
-@}}
-[FDITEM18_WK]
-m_strName=var-prog
-m_strRawPic=x(20)
-m_strPic=X(20)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_strCopyFile=common-excel.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM18_WK
-
-@}}
-[FDITEM19_WK]
-m_strName=status-code
-m_strRawPic=s9
-m_strPic=S9
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_strCopyFile=common-excel.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM19_WK
-
-@}}
-[FDITEM20_WK]
-m_strName=status-run
-m_strRawPic=s9
-m_strPic=S9
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_strCopyFile=common-excel.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM20_WK
-
-@}}
-[FDITEM21_WK]
-m_strName=cont
-m_strRawPic=999
-m_strPic=999
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_strCopyFile=common-excel.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM21_WK
-
-@}}
-[FDITEM22_WK]
-m_strName=cont2
-m_strRawPic=999
-m_strPic=999
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_strCopyFile=common-excel.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM22_WK
-
-@}}
-[FDITEM23_WK]
-m_strName=row-empty
-m_strRawPic=x
-m_strPic=X
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_strCopyFile=common-excel.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM23_WK
-
-@}}
-[FDITEM24_WK]
-m_strName=separatore
-m_strRawPic=x
-m_strPic=X
-m_strDefaultValue=space
-m_nItemLevel=77
-m_bValue=1
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_strCopyFile=common-excel.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM24_WK
-
-@}}
-[FDITEM25_WK]
-m_strName=path-to-excel
-m_strRawPic=x(256)
-m_strPic=X(256)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_strCopyFile=common-excel.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM25_WK
-
-@}}
-[FDITEM26_WK]
-m_strName=path-to-subst
-m_strRawPic=x(256)
-m_strPic=X(256)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_strCopyFile=common-excel.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM26_WK
-
-@}}
-[FDITEM27_WK]
-m_strName=path-launch
-m_strRawPic=x(256)
-m_strPic=X(256)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_strCopyFile=common-excel.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-EXCEL.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM27_WK
-
-@}}
-[FDITEM28_WK]
-m_strName=gordcvar-linkage
-m_nItemLevel=1
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
-m_strCopyFile=link-gordcvar.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM28_WK
-
-@}}
-[FDITEM29_WK]
-m_strName=LinkChiave
-m_nItemLevel=3
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
-m_strCopyFile=link-gordcvar.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM29_WK
-
-@}}
-[FDITEM30_WK]
-m_strName=LinkAnno
-m_strRawPic=9(4)
-m_strPic=9(4)
-m_nItemLevel=5
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
-m_strCopyFile=link-gordcvar.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM30_WK
-
-@}}
-[FDITEM31_WK]
-m_strName=linkNumero
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=5
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
-m_strCopyFile=link-gordcvar.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM31_WK
-
-@}}
-[FDITEM32_WK]
-m_strName=LinkPgm
-m_strRawPic=x(20)
-m_strPic=X(20)
-m_nItemLevel=3
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
-m_strCopyFile=link-gordcvar.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM32_WK
-
-@}}
-[FDITEM33_WK]
-m_strName=LinkStatus
-m_nUsage=17
-m_nItemLevel=3
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
-m_strCopyFile=link-gordcvar.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM33_WK
-
-@}}
-[FDITEM34_WK]
-m_strName=LinkRicaricaGrid
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=3
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
-m_strCopyFile=link-gordcvar.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM34_WK
-
-@}}
-[FDITEM35_WK]
-m_strName=RicaricaGrid
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue=1
-m_strFalse=0
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
-m_strCopyFile=link-gordcvar.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM35_WK
-
-@}}
-[FDITEM36_WK]
-m_strName=LinkOrdine
-m_nItemLevel=3
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
-m_strCopyFile=link-gordcvar.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM36_WK
-
-@}}
-[FDITEM37_WK]
-m_strName=OrdineAnno
-m_strRawPic=9(4)
-m_strPic=9(4)
-m_nItemLevel=5
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
-m_strCopyFile=link-gordcvar.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM37_WK
-
-@}}
-[FDITEM38_WK]
-m_strName=OrdineNumero
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=5
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
-m_strCopyFile=link-gordcvar.def
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GORDCVAR.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM38_WK
-
-@}}
-[FDITEM39_WK]
+[FDITEM1_WK]
 m_strName=geslock-linkage
 m_nItemLevel=1
 m_nSync=-1
@@ -561,11 +50,11 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_strCopyFile=link-geslock.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM39_WK
+{{@DataItem_m_strDescriptionFDITEM1_WK
 
 
 @}}
-[FDITEM40_WK]
+[FDITEM2_WK]
 m_strName=geslock-messaggio
 m_strRawPic=x(200)
 m_strPic=X(200)
@@ -576,10 +65,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_strCopyFile=link-geslock.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM40_WK
+{{@DataItem_m_strDescriptionFDITEM2_WK
 
 @}}
-[FDITEM41_WK]
+[FDITEM3_WK]
 m_strName=geslock-nome-file
 m_strRawPic=x(20)
 m_strPic=X(20)
@@ -590,10 +79,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_strCopyFile=link-geslock.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM41_WK
+{{@DataItem_m_strDescriptionFDITEM3_WK
 
 @}}
-[FDITEM42_WK]
+[FDITEM4_WK]
 m_strName=geslock-scelta
 m_strRawPic=x
 m_strPic=X
@@ -604,10 +93,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_strCopyFile=link-geslock.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM42_WK
+{{@DataItem_m_strDescriptionFDITEM4_WK
 
 @}}
-[FDITEM43_WK]
+[FDITEM5_WK]
 m_strName=riprova
 m_nItemLevel=88
 m_nSync=-1
@@ -617,10 +106,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_strCopyFile=link-geslock.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM43_WK
+{{@DataItem_m_strDescriptionFDITEM5_WK
 
 @}}
-[FDITEM44_WK]
+[FDITEM6_WK]
 m_strName=ignora
 m_nItemLevel=88
 m_nSync=-1
@@ -630,10 +119,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_strCopyFile=link-geslock.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM44_WK
+{{@DataItem_m_strDescriptionFDITEM6_WK
 
 @}}
-[FDITEM45_WK]
+[FDITEM7_WK]
 m_strName=termina
 m_nItemLevel=88
 m_nSync=-1
@@ -643,10 +132,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_strCopyFile=link-geslock.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM45_WK
+{{@DataItem_m_strDescriptionFDITEM7_WK
 
 @}}
-[FDITEM46_WK]
+[FDITEM8_WK]
 m_strName=annulla
 m_nItemLevel=88
 m_nSync=-1
@@ -656,10 +145,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_strCopyFile=link-geslock.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM46_WK
+{{@DataItem_m_strDescriptionFDITEM8_WK
 
 @}}
-[FDITEM47_WK]
+[FDITEM9_WK]
 m_strName=salva
 m_nItemLevel=88
 m_nSync=-1
@@ -669,10 +158,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_strCopyFile=link-geslock.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM47_WK
+{{@DataItem_m_strDescriptionFDITEM9_WK
 
 @}}
-[FDITEM48_WK]
+[FDITEM10_WK]
 m_strName=geslock-v-riprova
 m_strRawPic=9
 m_strPic=9
@@ -683,10 +172,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_strCopyFile=link-geslock.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM48_WK
+{{@DataItem_m_strDescriptionFDITEM10_WK
 
 @}}
-[FDITEM49_WK]
+[FDITEM11_WK]
 m_strName=geslock-v-ignora
 m_strRawPic=9
 m_strPic=9
@@ -697,10 +186,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_strCopyFile=link-geslock.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM49_WK
+{{@DataItem_m_strDescriptionFDITEM11_WK
 
 @}}
-[FDITEM50_WK]
+[FDITEM12_WK]
 m_strName=geslock-v-termina
 m_strRawPic=9
 m_strPic=9
@@ -711,10 +200,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_strCopyFile=link-geslock.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM50_WK
+{{@DataItem_m_strDescriptionFDITEM12_WK
 
 @}}
-[FDITEM51_WK]
+[FDITEM13_WK]
 m_strName=geslock-v-annulla
 m_strRawPic=9
 m_strPic=9
@@ -725,10 +214,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_strCopyFile=link-geslock.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM51_WK
+{{@DataItem_m_strDescriptionFDITEM13_WK
 
 @}}
-[FDITEM52_WK]
+[FDITEM14_WK]
 m_strName=geslock-v-salva
 m_strRawPic=9
 m_strPic=9
@@ -739,10 +228,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_strCopyFile=link-geslock.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM52_WK
+{{@DataItem_m_strDescriptionFDITEM14_WK
 
 @}}
-[FDITEM53_WK]
+[FDITEM15_WK]
 m_strName=geslock-tipo-messaggio
 m_strRawPic=9
 m_strPic=9
@@ -753,10 +242,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_strCopyFile=link-geslock.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM53_WK
+{{@DataItem_m_strDescriptionFDITEM15_WK
 
 @}}
-[FDITEM54_WK]
+[FDITEM16_WK]
 m_strName=geslock-lock
 m_nItemLevel=88
 m_nSync=-1
@@ -766,10 +255,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_strCopyFile=link-geslock.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM54_WK
+{{@DataItem_m_strDescriptionFDITEM16_WK
 
 @}}
-[FDITEM55_WK]
+[FDITEM17_WK]
 m_strName=geslock-righe
 m_nItemLevel=88
 m_nSync=-1
@@ -779,10 +268,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_strCopyFile=link-geslock.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM55_WK
+{{@DataItem_m_strDescriptionFDITEM17_WK
 
 @}}
-[FDITEM56_WK]
+[FDITEM18_WK]
 m_strName=geslock-omom
 m_nItemLevel=88
 m_nSync=-1
@@ -792,10 +281,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_strCopyFile=link-geslock.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GESLOCK.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM56_WK
+{{@DataItem_m_strDescriptionFDITEM18_WK
 
 @}}
-[FDITEM57_WK]
+[FDITEM19_WK]
 m_strName=TIPO-DATA
 m_strRawPic=9(8)
 m_strPic=9(8)
@@ -804,470 +293,182 @@ m_nItemLevel=77
 m_bValue=1
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM57_WK
+{{@DataItem_m_strDescriptionFDITEM19_WK
 
 
 @}}
-[FDITEM58_WK]
+[FDITEM20_WK]
 m_strName=Form1-Handle
 m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM58_WK
+{{@DataItem_m_strDescriptionFDITEM20_WK
 
 @}}
-[FDITEM59_WK]
-m_strName=spunta2-nera-bmp
-m_nUsage=45
-m_strDefaultValue=0
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM59_WK
-
-@}}
-[FDITEM60_WK]
+[FDITEM21_WK]
 m_strName=Form1-Tb-1-Handle
 m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM60_WK
+{{@DataItem_m_strDescriptionFDITEM21_WK
 
 @}}
-[FDITEM61_WK]
+[FDITEM22_WK]
 m_strName=titolo
-m_strDefaultValue="Geslux - Quantità promo per evasione"
+m_strDefaultValue="Geslux - Pannello qta solleciti ordini fornitori"
 m_nItemLevel=78
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM61_WK
+{{@DataItem_m_strDescriptionFDITEM22_WK
 
 @}}
-[FDITEM62_WK]
-m_strName=E-ESCI
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=1
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM62_WK
-
-@}}
-[FDITEM63_WK]
-m_strName=E-NUOVO
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=1
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM63_WK
-
-@}}
-[FDITEM64_WK]
-m_strName=save-articolo
-m_strRawPic=9(6)
-m_strPic=9(6)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM64_WK
-
-@}}
-[FDITEM65_WK]
+[FDITEM23_WK]
 m_strName=colore
 m_strRawPic=9(5)
 m_strPic=9(5)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM65_WK
+{{@DataItem_m_strDescriptionFDITEM23_WK
 
 @}}
-[FDITEM66_WK]
+[FDITEM24_WK]
 m_strName=chiave
 m_strRawPic=9(5)
 m_strPic=9(5)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM66_WK
+{{@DataItem_m_strDescriptionFDITEM24_WK
 
 @}}
-[FDITEM67_WK]
+[FDITEM25_WK]
 m_strName=como-x
 m_strRawPic=x
 m_strPic=x
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM67_WK
+{{@DataItem_m_strDescriptionFDITEM25_WK
 
 @}}
-[FDITEM68_WK]
-m_strName=como-giacenza
-m_strRawPic=s9(8)
-m_strPic=s9(8)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM68_WK
-
-@}}
-[FDITEM69_WK]
-m_strName=old-qta
-m_strRawPic=s9(8)
-m_strPic=s9(8)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM69_WK
-
-@}}
-[FDITEM70_WK]
-m_strName=new-qta
-m_strRawPic=s9(8)
-m_strPic=s9(8)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM70_WK
-
-@}}
-[FDITEM71_WK]
+[FDITEM26_WK]
 m_strName=FILLER
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM71_WK
+{{@DataItem_m_strDescriptionFDITEM26_WK
 
 @}}
-[FDITEM72_WK]
+[FDITEM27_WK]
 m_strName=PrenQta
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
 m_strFalse=0
-{{@DataItem_m_strDescriptionFDITEM72_WK
+{{@DataItem_m_strDescriptionFDITEM27_WK
 
 @}}
-[FDITEM73_WK]
+[FDITEM28_WK]
 m_strName=FILLER
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM73_WK
+{{@DataItem_m_strDescriptionFDITEM28_WK
 
 @}}
-[FDITEM74_WK]
+[FDITEM29_WK]
 m_strName=BeginEntry
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
 m_strFalse=0
-{{@DataItem_m_strDescriptionFDITEM74_WK
+{{@DataItem_m_strDescriptionFDITEM29_WK
 
 @}}
-[FDITEM75_WK]
-m_strName=corr-rec
-m_nItemLevel=1
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM75_WK
-
-@}}
-[FDITEM76_WK]
-m_strName=corr-chiave
-m_nItemLevel=5
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM76_WK
-
-@}}
-[FDITEM77_WK]
-m_strName=corr-articolo
-m_strRawPic=9(6)
-m_strPic=9(6)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM77_WK
-
-@}}
-[FDITEM78_WK]
-m_strName=corr-prog
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM78_WK
-
-@}}
-[FDITEM79_WK]
-m_strName=corr-dati
-m_strRawPic=x(5000)
-m_strPic=x(5000)
-m_nItemLevel=5
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM79_WK
-
-@}}
-[FDITEM80_WK]
-m_strName=prec-rec
-m_nItemLevel=1
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM80_WK
-
-@}}
-[FDITEM81_WK]
-m_strName=prec-chiave
-m_nItemLevel=5
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM81_WK
-
-@}}
-[FDITEM82_WK]
-m_strName=prec-articolo
-m_strRawPic=9(6)
-m_strPic=9(6)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM82_WK
-
-@}}
-[FDITEM83_WK]
-m_strName=prec-prog
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM83_WK
-
-@}}
-[FDITEM84_WK]
-m_strName=prec-dati
-m_strRawPic=x(5000)
-m_strPic=x(5000)
-m_nItemLevel=5
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM84_WK
-
-@}}
-[FDITEM85_WK]
-m_strName=succ-rec
-m_nItemLevel=1
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM85_WK
-
-@}}
-[FDITEM86_WK]
-m_strName=succ-chiave
-m_nItemLevel=5
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM86_WK
-
-@}}
-[FDITEM87_WK]
-m_strName=succ-articolo
-m_strRawPic=9(6)
-m_strPic=9(6)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM87_WK
-
-@}}
-[FDITEM88_WK]
-m_strName=succ-prog
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM88_WK
-
-@}}
-[FDITEM89_WK]
-m_strName=succ-dati
-m_strRawPic=x(5000)
-m_strPic=x(5000)
-m_nItemLevel=5
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM89_WK
-
-@}}
-[FDITEM90_WK]
+[FDITEM30_WK]
 m_strName=gruppo-hidden
 m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM90_WK
+{{@DataItem_m_strDescriptionFDITEM30_WK
 
 @}}
-[FDITEM91_WK]
-m_strName=hid-chiave
+[FDITEM31_WK]
+m_strName=hid-rof-chiave
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM91_WK
+{{@DataItem_m_strDescriptionFDITEM31_WK
 
 @}}
-[FDITEM92_WK]
-m_strName=hid-articolo
-m_strRawPic=9(6)
-m_strPic=9(6)
+[FDITEM32_WK]
+m_strName=hid-rof-chiave-testa
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM92_WK
+{{@DataItem_m_strDescriptionFDITEM32_WK
 
 @}}
-[FDITEM93_WK]
-m_strName=hid-prog
+[FDITEM33_WK]
+m_strName=hid-rof-anno
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM33_WK
+
+@}}
+[FDITEM34_WK]
+m_strName=hid-rof-numero
 m_strRawPic=9(8)
 m_strPic=9(8)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM34_WK
+
+@}}
+[FDITEM35_WK]
+m_strName=hid-rof-riga
+m_strRawPic=9(5)
+m_strPic=9(5)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM93_WK
+{{@DataItem_m_strDescriptionFDITEM35_WK
 
 @}}
-[FDITEM94_WK]
-m_strName=hid-cambio
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=5
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM94_WK
-
-@}}
-[FDITEM95_WK]
-m_strName=imp-master
-m_strRawPic=s9(8)
-m_strPic=s9(8)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM95_WK
-
-@}}
-[FDITEM96_WK]
-m_strName=giac-utile
-m_strRawPic=s9(8)
-m_strPic=s9(8)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM96_WK
-
-@}}
-[FDITEM97_WK]
+[FDITEM36_WK]
 m_strName=FILLER
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM97_WK
+{{@DataItem_m_strDescriptionFDITEM36_WK
 
 @}}
-[FDITEM98_WK]
+[FDITEM37_WK]
 m_strName=CambioQta
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
 m_strFalse=0
-{{@DataItem_m_strDescriptionFDITEM98_WK
+{{@DataItem_m_strDescriptionFDITEM37_WK
 
 @}}
-[FDITEM99_WK]
-m_strName=E-CANCELLA
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=1
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM99_WK
-
-@}}
-[FDITEM100_WK]
-m_strName=E-SALVA
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=1
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM100_WK
-
-@}}
-[FDITEM101_WK]
-m_strName=E-ANTEPRIMA
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM101_WK
-
-@}}
-[FDITEM102_WK]
-m_strName=E-MODIFICA
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=1
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM102_WK
-
-@}}
-[FDITEM103_WK]
-m_strName=E-STAMPA
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM103_WK
-
-@}}
-[FDITEM104_WK]
-m_strName=E-CERCA
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=1
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM104_WK
-
-@}}
-[FDITEM105_WK]
+[FDITEM38_WK]
 m_strName=MESSAGGIO
 m_strRawPic=X(300)
 m_strPic=X(300)
@@ -1275,169 +476,157 @@ m_strDefaultValue=SPACE
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM105_WK
+{{@DataItem_m_strDescriptionFDITEM38_WK
 
 @}}
-[FDITEM106_WK]
+[FDITEM39_WK]
 m_strName=Small-Font
 m_nUsage=37
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM106_WK
+{{@DataItem_m_strDescriptionFDITEM39_WK
 
 @}}
-[FDITEM107_WK]
-m_strName=toolbar-bmp
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
-m_strDefaultValue=0
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM107_WK
-
-@}}
-[FDITEM108_WK]
+[FDITEM40_WK]
 m_strName=rec-grid
 m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM108_WK
+{{@DataItem_m_strDescriptionFDITEM40_WK
 
 @}}
-[FDITEM109_WK]
+[FDITEM41_WK]
 m_strName=col-mag-codice
 m_strRawPic=x(3)
 m_strPic=x(3)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM109_WK
+{{@DataItem_m_strDescriptionFDITEM41_WK
 
 @}}
-[FDITEM110_WK]
+[FDITEM42_WK]
 m_strName=col-mag-descrizione
 m_strRawPic=X(50)
 m_strPic=X(50)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM110_WK
+{{@DataItem_m_strDescriptionFDITEM42_WK
 
 @}}
-[FDITEM111_WK]
+[FDITEM43_WK]
 m_strName=col-cli-codice
 m_strRawPic=9(5)
 m_strPic=9(5)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM111_WK
+{{@DataItem_m_strDescriptionFDITEM43_WK
 
 @}}
-[FDITEM112_WK]
+[FDITEM44_WK]
 m_strName=col-cli-ragsoc
 m_strRawPic=x(100)
 m_strPic=x(100)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM112_WK
+{{@DataItem_m_strDescriptionFDITEM44_WK
 
 @}}
-[FDITEM113_WK]
+[FDITEM45_WK]
 m_strName=col-tof-numero
 m_strRawPic=z(6)
 m_strPic=z(6)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM113_WK
+{{@DataItem_m_strDescriptionFDITEM45_WK
 
 @}}
-[FDITEM114_WK]
+[FDITEM46_WK]
 m_strName=col-tof-data
 m_strRawPic=99/99/9999
 m_strPic=99/99/9999
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM114_WK
+{{@DataItem_m_strDescriptionFDITEM46_WK
 
 @}}
-[FDITEM115_WK]
+[FDITEM47_WK]
 m_strName=col-rof-cod-articolo
 m_strRawPic=z(6)
 m_strPic=z(6)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM115_WK
+{{@DataItem_m_strDescriptionFDITEM47_WK
 
 @}}
-[FDITEM116_WK]
+[FDITEM48_WK]
 m_strName=col-art-descrizione
 m_strRawPic=x(100)
 m_strPic=x(100)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM116_WK
+{{@DataItem_m_strDescriptionFDITEM48_WK
 
 @}}
-[FDITEM117_WK]
+[FDITEM49_WK]
 m_strName=col-rof-qta
 m_strRawPic=---.---.--9
 m_strPic=---.---.--9
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM117_WK
+{{@DataItem_m_strDescriptionFDITEM49_WK
 
 @}}
-[FDITEM118_WK]
+[FDITEM50_WK]
 m_strName=col-rof-qta-eva
 m_strRawPic=---.---.--9
 m_strPic=---.---.--9
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM118_WK
+{{@DataItem_m_strDescriptionFDITEM50_WK
 
 @}}
-[FDITEM119_WK]
+[FDITEM51_WK]
 m_strName=col-qta-soll
 m_strRawPic=---.---.--9
 m_strPic=---.---.--9
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM119_WK
+{{@DataItem_m_strDescriptionFDITEM51_WK
 
 @}}
-[FDITEM120_WK]
+[FDITEM52_WK]
 m_strName=col-data-soll
 m_strRawPic=99/99/9999
 m_strPic=99/99/9999
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM120_WK
+{{@DataItem_m_strDescriptionFDITEM52_WK
 
 @}}
-[FDITEM121_WK]
+[FDITEM53_WK]
 m_strName=Screen1-Handle
 m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM121_WK
+{{@DataItem_m_strDescriptionFDITEM53_WK
 
 @}}
-[FDITEM122_WK]
-m_strName=esegui_73x21-bmp
+[FDITEM54_WK]
+m_strName=esegui-73x21-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -1445,536 +634,188 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM122_WK
+{{@DataItem_m_strDescriptionFDITEM54_WK
 
 @}}
-[FDITEM123_WK]
-m_strName=cod
-m_strRawPic=z(3)
-m_strPic=z(3)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM123_WK
-
-@}}
-[FDITEM124_WK]
-m_strName=des
-m_strRawPic=x(30)
-m_strPic=x(30)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM124_WK
-
-@}}
-[FDITEM125_WK]
-m_strName=e-cod
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=1
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM125_WK
-
-@}}
-[FDITEM126_WK]
-m_strName=e-des
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM126_WK
-
-@}}
-[FDITEM127_WK]
+[FDITEM55_WK]
 m_strName=Default-Font
 m_nUsage=38
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM127_WK
+{{@DataItem_m_strDescriptionFDITEM55_WK
 
 @}}
-[FDITEM128_WK]
+[FDITEM56_WK]
 m_strName=lab-des2
 m_strRawPic=x(50)
 m_strPic=x(50)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM128_WK
+{{@DataItem_m_strDescriptionFDITEM56_WK
 
 @}}
-[FDITEM129_WK]
+[FDITEM57_WK]
 m_strName=FILLER
 m_strRawPic=XX
 m_strPic=XX
 m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM129_WK
+{{@DataItem_m_strDescriptionFDITEM57_WK
 
 @}}
-[FDITEM130_WK]
+[FDITEM58_WK]
 m_strName=ricarica
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="SI"
 m_strFalse="NO"
-{{@DataItem_m_strDescriptionFDITEM130_WK
+{{@DataItem_m_strDescriptionFDITEM58_WK
 
 @}}
-[FDITEM131_WK]
+[FDITEM59_WK]
 m_strName=STATUS-articoli
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM131_WK
+{{@DataItem_m_strDescriptionFDITEM59_WK
 
 @}}
-[FDITEM132_WK]
+[FDITEM60_WK]
 m_strName=Valid-STATUS-articoli
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM132_WK
+{{@DataItem_m_strDescriptionFDITEM60_WK
 
 @}}
-[FDITEM133_WK]
+[FDITEM61_WK]
 m_strName=STATUS-progmag
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM133_WK
+{{@DataItem_m_strDescriptionFDITEM61_WK
 
 @}}
-[FDITEM134_WK]
+[FDITEM62_WK]
 m_strName=Valid-STATUS-progmag
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM134_WK
+{{@DataItem_m_strDescriptionFDITEM62_WK
 
 @}}
-[FDITEM135_WK]
-m_strName=STATUS-promo-eva
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM135_WK
-
-@}}
-[FDITEM136_WK]
-m_strName=Valid-STATUS-promo-eva
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM136_WK
-
-@}}
-[FDITEM137_WK]
-m_strName=STATUS-rpromo
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM137_WK
-
-@}}
-[FDITEM138_WK]
-m_strName=Valid-STATUS-rpromo
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM138_WK
-
-@}}
-[FDITEM139_WK]
-m_strName=STATUS-tpromo
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM139_WK
-
-@}}
-[FDITEM140_WK]
-m_strName=Valid-STATUS-tpromo
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM140_WK
-
-@}}
-[FDITEM141_WK]
+[FDITEM63_WK]
 m_strName=scr-elab-SF-HANDLE
 m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM141_WK
+{{@DataItem_m_strDescriptionFDITEM63_WK
 
 @}}
-[FDITEM142_WK]
-m_strName=BOTTONE-OK-BMP
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
-m_strDefaultValue=0
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM142_WK
-
-@}}
-[FDITEM143_WK]
-m_strName=BOTTONE-CANCEL-BMP
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
-m_strDefaultValue=0
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM143_WK
-
-@}}
-[FDITEM144_WK]
+[FDITEM64_WK]
 m_strName=Verdana12B-Occidentale
 m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM144_WK
+{{@DataItem_m_strDescriptionFDITEM64_WK
 
 @}}
-[FDITEM145_WK]
+[FDITEM65_WK]
 m_strName=scr-elab-HANDLE
 m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM145_WK
+{{@DataItem_m_strDescriptionFDITEM65_WK
 
 @}}
-[FDITEM146_WK]
+[FDITEM66_WK]
 m_strName=Verdana8-Occidentale
 m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM146_WK
+{{@DataItem_m_strDescriptionFDITEM66_WK
 
 @}}
-[FDITEM147_WK]
-m_strName=freccia_su-bmp
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
-m_strDefaultValue=0
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM147_WK
-
-@}}
-[FDITEM148_WK]
-m_strName=freccia_giu-bmp
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
-m_strDefaultValue=0
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM148_WK
-
-@}}
-[FDITEM149_WK]
-m_strName=STATUS-promoeva
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM149_WK
-
-@}}
-[FDITEM150_WK]
-m_strName=Valid-STATUS-promoeva
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM150_WK
-
-@}}
-[FDITEM151_WK]
+[FDITEM67_WK]
 m_strName=STATUS-tmagaz
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM151_WK
+{{@DataItem_m_strDescriptionFDITEM67_WK
 
 @}}
-[FDITEM152_WK]
+[FDITEM68_WK]
 m_strName=Valid-STATUS-tmagaz
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM152_WK
+{{@DataItem_m_strDescriptionFDITEM68_WK
 
 @}}
-[FDITEM153_WK]
+[FDITEM69_WK]
 m_strName=Large-Font
 m_nUsage=35
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM153_WK
+{{@DataItem_m_strDescriptionFDITEM69_WK
 
 @}}
-[FDITEM154_WK]
-m_strName=e-sposta-su
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=1
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM154_WK
-
-@}}
-[FDITEM155_WK]
-m_strName=e-sposta-giu
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=1
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM155_WK
-
-@}}
-[FDITEM156_WK]
-m_strName=REFRESH-BMP
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
-m_strDefaultValue=0
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM156_WK
-
-@}}
-[FDITEM157_WK]
-m_strName=excel-bmp
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
-m_strDefaultValue=0
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM157_WK
-
-@}}
-[FDITEM158_WK]
-m_strName=wstampa
-m_strRawPic=X(256)
-m_strPic=X(256)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM158_WK
-
-@}}
-[FDITEM159_WK]
-m_strName=STATUS-lineseq
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM159_WK
-
-@}}
-[FDITEM160_WK]
-m_strName=Valid-STATUS-lineseq
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM160_WK
-
-@}}
-[FDITEM161_WK]
+[FDITEM70_WK]
 m_strName=Medium-Font
 m_nUsage=36
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM161_WK
+{{@DataItem_m_strDescriptionFDITEM70_WK
 
 @}}
-[FDITEM162_WK]
+[FDITEM71_WK]
 m_strName=Verdana8B-Occidentale
 m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM162_WK
+{{@DataItem_m_strDescriptionFDITEM71_WK
 
 @}}
-[FDITEM163_WK]
-m_strName=path-tmp-mtordini
-m_strRawPic=X(256)
-m_strPic=X(256)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM163_WK
-
-@}}
-[FDITEM164_WK]
-m_strName=STATUS-tmp-mtordini
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM164_WK
-
-@}}
-[FDITEM165_WK]
-m_strName=Valid-STATUS-tmp-mtordini
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM165_WK
-
-@}}
-[FDITEM166_WK]
-m_strName=STATUS-mrordini
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM166_WK
-
-@}}
-[FDITEM167_WK]
-m_strName=Valid-STATUS-mrordini
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM167_WK
-
-@}}
-[FDITEM168_WK]
-m_strName=STATUS-mtordini
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM168_WK
-
-@}}
-[FDITEM169_WK]
-m_strName=Valid-STATUS-mtordini
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM169_WK
-
-@}}
-[FDITEM170_WK]
+[FDITEM72_WK]
 m_strName=STATUS-clienti
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM170_WK
+{{@DataItem_m_strDescriptionFDITEM72_WK
 
 @}}
-[FDITEM171_WK]
+[FDITEM73_WK]
 m_strName=Valid-STATUS-clienti
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM171_WK
+{{@DataItem_m_strDescriptionFDITEM73_WK
 
 @}}
-[FDITEM172_WK]
-m_strName=STATUS-destini
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM172_WK
-
-@}}
-[FDITEM173_WK]
-m_strName=Valid-STATUS-destini
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM173_WK
-
-@}}
-[FDITEM174_WK]
-m_strName=lab-giac-buf
-m_strRawPic=---.---.--9
-m_strPic=---.---.--9
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM174_WK
-
-@}}
-[FDITEM175_WK]
-m_strName=no-msg
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM175_WK
-
-@}}
-[FDITEM176_WK]
+[FDITEM74_WK]
 m_strName=AUTO-ID
 m_strRawPic=9(6)
 m_strPic=9(6)
@@ -1982,94 +823,93 @@ m_strDefaultValue=1
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM176_WK
+{{@DataItem_m_strDescriptionFDITEM74_WK
 
 @}}
-[FDITEM177_WK]
-m_strName=lab-giac-mag-std-buf
-m_strRawPic=x(20)
-m_strPic=x(20)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM177_WK
-
-@}}
-[FDITEM178_WK]
-m_strName=lab-giac-mag-buf
-m_strRawPic=---.---.--9
-m_strPic=---.---.--9
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM178_WK
-
-@}}
-[FDITEM179_WK]
+[FDITEM75_WK]
 m_strName=STATUS-rordforn
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM179_WK
+{{@DataItem_m_strDescriptionFDITEM75_WK
 
 @}}
-[FDITEM180_WK]
+[FDITEM76_WK]
 m_strName=Valid-STATUS-rordforn
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM180_WK
+{{@DataItem_m_strDescriptionFDITEM76_WK
 
 @}}
-[FDITEM181_WK]
+[FDITEM77_WK]
 m_strName=STATUS-tordforn
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM181_WK
+{{@DataItem_m_strDescriptionFDITEM77_WK
 
 @}}
-[FDITEM182_WK]
+[FDITEM78_WK]
 m_strName=Valid-STATUS-tordforn
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM182_WK
+{{@DataItem_m_strDescriptionFDITEM78_WK
 
 @}}
-[FDITEM183_WK]
+[FDITEM79_WK]
 m_strName=ef-data-buf
 m_strRawPic=99/99/9999
 m_strPic=99/99/9999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM183_WK
+{{@DataItem_m_strDescriptionFDITEM79_WK
 
 @}}
-[FDITEM184_WK]
+[FDITEM80_WK]
 m_strName=STATUS-sordforn
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM184_WK
+{{@DataItem_m_strDescriptionFDITEM80_WK
 
 @}}
-[FDITEM185_WK]
+[FDITEM81_WK]
 m_strName=Valid-STATUS-sordforn
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM185_WK
+{{@DataItem_m_strDescriptionFDITEM81_WK
+
+@}}
+[FDITEM82_WK]
+m_strName=STATUS-tcaumag
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM82_WK
+
+@}}
+[FDITEM83_WK]
+m_strName=Valid-STATUS-tcaumag
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM83_WK
 
 @}}
 
@@ -2481,7 +1321,7 @@ Begin Screen Form1
       Width in Cells    = TRUE
    End
    Begin Grid form1-gd-1
-      SCREEN-COL        = 4,43
+      SCREEN-COL        = 1,86
       SCREEN-LINE       = 6,77
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -2497,54 +1337,54 @@ Begin Screen Form1
       Cells' Setting    = ( X = 6, Y = 1, Data = "Data" )
       Cells' Setting    = ( X = 7, Y = 1, Data = "Art." )
       Cells' Setting    = ( X = 8, Y = 1, Data = "Descrizione" )
-      Cells' Setting    = ( X = 9, Y = 1, Data = "Qta ordinata" )
-      Cells' Setting    = ( X = 10, Y = 1, Data = "Qta evasa" )
+      Cells' Setting    = ( X = 9, Y = 1, Data = "Qta ord" )
+      Cells' Setting    = ( X = 10, Y = 1, Data = "Qta eva" )
       Cells' Setting    = ( X = 11, Y = 1, Font = Verdana/8/B/C0/@Occidentale, Font Variable = Verdana8B-Occidentale )
       Cells' Setting    = ( Data = "Qta solleciti" )
       Cells' Setting    = ( X = 12, Y = 1, Font = Verdana/8/B/C0/@Occidentale, Font Variable = Verdana8B-Occidentale )
       Cells' Setting    = ( Data = "Data solleciti" )
       Centered Headings = TRUE
       Color             = 0
-      Column            = 4,43
+      Column            = 1,86
       Column Headings   = TRUE
       Columns' Setting  = ( X = 1, Name = col-mag-codice, READONLY = 0 )
-      Columns' Setting  = ( PIC = "x(3)", TYPE = "9(6)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( PIC = "x(3)", TYPE = "9(6)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
       Columns' Setting  = ( DISP = 6, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 2, Name = col-mag-descrizione, READONLY = 0 )
       Columns' Setting  = ( PIC = "X(50)", TYPE = "X(50)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
-      Columns' Setting  = ( DISP = 30, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( DISP = 34, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 3, Name = col-cli-codice, READONLY = 0 )
-      Columns' Setting  = ( PIC = "9(5)", TYPE = "X(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "L" )
+      Columns' Setting  = ( PIC = "9(5)", TYPE = "X(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
       Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 4, Name = col-cli-ragsoc, READONLY = 0 )
-      Columns' Setting  = ( PIC = "x(100)", TYPE = "9(15)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
-      Columns' Setting  = ( DISP = 50, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( PIC = "x(100)", TYPE = "9(15)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
+      Columns' Setting  = ( DISP = 45, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 5, Name = col-tof-numero, READONLY = 0 )
-      Columns' Setting  = ( PIC = "z(6)", TYPE = "X(50)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
+      Columns' Setting  = ( PIC = "z(6)", TYPE = "X(50)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
       Columns' Setting  = ( DISP = 8, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 6, Name = col-tof-data, READONLY = 0 )
       Columns' Setting  = ( PIC = "99/99/9999", TYPE = "X(5)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
-      Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( DISP = 12, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 7, Name = col-rof-cod-articolo, READONLY = 0 )
       Columns' Setting  = ( PIC = "z(6)", TYPE = "X(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
       Columns' Setting  = ( DISP = 8, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 8, Name = col-art-descrizione, READONLY = 0 )
       Columns' Setting  = ( PIC = "x(100)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
-      Columns' Setting  = ( DISP = 40, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( DISP = 52, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 9, Name = col-rof-qta, READONLY = 0 )
       Columns' Setting  = ( PIC = "---.---.--9", TYPE = "9(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
-      Columns' Setting  = ( DISP = 12, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 10, Name = col-rof-qta-evasa, READONLY = 0 )
       Columns' Setting  = ( PIC = "---.---.--9", TYPE = "9(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
-      Columns' Setting  = ( DISP = 12, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 11, Name = col-qta-soll, READONLY = 0 )
       Columns' Setting  = ( Font = Verdana/8/B/C0/@Occidentale, Font Variable = Verdana8B-Occidentale )
       Columns' Setting  = ( PIC = "---.---.--9", TYPE = "9(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
-      Columns' Setting  = ( DISP = 15, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( DISP = 13, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 12, Name = col-data-soll, READONLY = 0 )
       Columns' Setting  = ( Font = Verdana/8/B/C0/@Occidentale, Font Variable = Verdana8B-Occidentale )
-      Columns' Setting  = ( PIC = "99/99/9999", TYPE = "9(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
-      Columns' Setting  = ( DISP = 15, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( PIC = "99/99/9999", TYPE = "9(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
+      Columns' Setting  = ( DISP = 13, SEPA = 5, DIVI = 1 )
       Cursor Color      = 0
       Cursor Frame Width = 2
       Cursor X          = 0
@@ -2576,12 +1416,12 @@ Begin Screen Form1
       Record Data       = rec-grid
       Row Dividers      = 1
       Row Headings      = FALSE
-      Size              = 218,71
+      Size              = 223,86
       Size Unit         = Default
       Tab Order         = 3
       Tiled Headings    = TRUE
       Use Tab           = FALSE
-      Virtual Width     = 216
+      Virtual Width     = 221
       Visible           = NONE
       Vpadding          = 50
       Vscroll           = TRUE
@@ -2738,6 +1578,17 @@ END-RWDATA
 
 {{@EMBEDDING_CODE:
 BEGIN-DATA
+   BASETYPE          = 13
+   NODESTYLE         = 13
+   PARAGRAPH         = Other Working
+BEGIN-TEXT
+
+       77  counter                 pic 9(10).
+       77  counter2                pic 9(10).
+       77  counter-edit            pic z(10).
+END-TEXT
+END-DATA
+BEGIN-DATA
    BASETYPE          = 6
    NODESTYLE         = 7
    PARAGRAPH         = DeletedCode
@@ -2753,6 +1604,11 @@ BEGIN-DATA
    TEXTMODE          = 0
    ENTRYPOINT        = BeforeAccept
 BEGIN-TEXT
+           accept como-data from century-date.
+           perform DATE-TO-SCREEN.
+           move como-data to ef-data-buf.
+           display ef-data.
+
            perform FORM1-GD-1-CONTENT.
            
            move 2 to chiave.
@@ -2853,36 +1709,20 @@ BEGIN-DATA
    TEXTMODE          = 0
    ENTRYPOINT        = BeforeAccept
 BEGIN-TEXT
+           move 0 to counter counter2.
+           modify form1-gd-1, mass-update = 1.
+                     
+           modify form1-gd-1, reset-grid = 1.
+           perform FORM1-GD-1-CONTENT.
+
            move ef-data-buf to como-data.
            perform DATE-TO-FILE.
+           move low-value to tof-chiave.
+           move como-data to tof-data-consegna.
 
-           05 sof-chiave.
-               10 sof-chiave-testa.
-                   15 sof-anno         PIC  9(4).
-                   15 sof-numero       PIC  9(8).
-               10 sof-prog         PIC  9(5).
-           05 sof-dati.
-               10 sof-note         PIC  x(500).
-               10 sof-data-arr     PIC  9(8).
-               10 sof-qta          PIC  9(8).
+           perform LOAD-RECORD.
 
-
-      *****     close promoeva.
-      *****     move user-codi       to link-tprev-user.
-      *****     move scr-elab-handle to link-tprev-handle.
-      *****     call   "tprev-p"  using tprev-linkage.
-      *****     cancel "tprev-p".
-      *****     move 27 to key-status.
-      *****     open input promoeva.
-      *****     
-      *****     move 2 to chiave.
-      *****     perform LOAD-RECORD.
-      *****
-      *****     move 2  to event-data-2.
-      *****     perform SPOSTAMENTO.
-      *****
-      *****     perform INIT.
-      *****     set CambioQta to false.
+           move 27 to key-status.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -3032,7 +1872,7 @@ BEGIN-TEXT
       **********     end-if.
            modify form1-gd-1, start-x 1,    x 12,
                               start-y riga, y riga,
-                         region-color colore.
+                         region-color 481.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -3093,6 +1933,114 @@ BEGIN-DATA
    BASETYPE          = 3
    PARAGRAPH         = LOAD-RECORD
 BEGIN-TEXT
+           start tordforn key < tof-k-consegna
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read tordforn previous at end exit perform end-read
+                    if tof-chiuso
+                       exit perform cycle
+                    end-if              
+                    perform COUNTER-VIDEO
+                    perform LOOP-RIGHE
+                 end-perform
+           end-start.
+           
+           modify form1-gd-1, mass-update = 0.
+
+      ***---
+       LOOP-RIGHE.           
+           move tof-causale to tca-codice.
+           read tcaumag no lock.
+           move tca-cod-magaz to mag-codice.
+           read tmagaz no lock.
+
+           move tof-cod-forn to cli-codice.
+           set cli-tipo-F to true.
+           read clienti no lock.
+
+           move 1 to riga
+           move low-value  to rof-chiave.
+           move tof-chiave to rof-chiave-testa.
+           start rordforn key >= rof-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read rordforn next at end exit perform end-read
+                    if rof-chiave-testa not = tof-chiave
+                       exit perform
+                    end-if   
+
+                    perform COUNTER-VIDEO
+
+                    add 1 to riga
+                    move mag-codice       to col-mag-codice
+                    move mag-descrizione  to col-mag-descrizione
+                    move tof-cod-forn     to col-cli-codice
+                    move cli-ragsoc-1     to col-cli-ragsoc
+                    move tof-numero       to col-tof-numero
+                    move tof-data-ordine  to como-data
+                    perform DATE-TO-SCREEN
+                    move como-data        to col-tof-data
+                    move rof-cod-articolo to col-rof-cod-articolo art-codice
+                    read articoli no lock
+                    move art-descrizione  to col-art-descrizione
+                    move rof-qta-ord      to col-rof-qta
+                    move rof-qta-evasa    to col-rof-qta-eva
+
+                    move rof-chiave to sof-chiave
+                    read sordforn no lock
+                         invalid move 0 to sof-data-arr sof-qta
+                    end-read
+                    move sof-data-arr to como-data
+                    perform DATE-TO-SCREEN
+                    move como-data to col-data-soll
+
+                    move sof-qta to col-qta-soll
+                                 
+                    modify form1-gd-1(riga, 1),  cell-data col-mag-codice
+                    modify form1-gd-1(riga, 2),  cell-data col-mag-descrizione
+                    modify form1-gd-1(riga, 3),  cell-data col-cli-codice   
+                    modify form1-gd-1(riga, 4),  cell-data col-cli-ragsoc   
+                    modify form1-gd-1(riga, 5),  cell-data col-tof-numero   
+                    modify form1-gd-1(riga, 6),  cell-data col-tof-data     
+                    modify form1-gd-1(riga, 7),  cell-data col-rof-cod-articolo
+                    modify form1-gd-1(riga, 8),  cell-data col-art-descrizione
+                    modify form1-gd-1(riga, 9),  cell-data col-rof-qta      
+                    modify form1-gd-1(riga, 10), cell-data col-rof-qta-eva  
+                    modify form1-gd-1(riga, 11), cell-data col-qta-soll 
+                    modify form1-gd-1(riga, 12), cell-data col-data-soll
+
+                    move rof-chiave to hid-rof-chiave
+                    modify form1-gd-1(riga, 1), hidden-data gruppo-hidden    
+
+                    if colore = 257
+                       move 513 to colore
+                    else
+                       move 257 to colore
+                    end-if
+                    modify form1-gd-1(riga), row-color colore
+
+                 end-perform
+           end-start.
+
+      *****     close promoeva.
+      *****     move user-codi       to link-tprev-user.
+      *****     move scr-elab-handle to link-tprev-handle.
+      *****     call   "tprev-p"  using tprev-linkage.
+      *****     cancel "tprev-p".
+      *****     move 27 to key-status.
+      *****     open input promoeva.
+      *****     
+      *****     move 2 to chiave.
+      *****     perform LOAD-RECORD.
+      *****
+      *****     move 2  to event-data-2.
+      *****     perform SPOSTAMENTO.
+      *****
+      *****     perform INIT.
+      *****     set CambioQta to false.
+
       *****     move low-value to pev-rec.
       *****     start promoeva key >= pev-chiave
       *****           invalid  perform SCR-ELAB-OPEN-ROUTINE
@@ -3338,158 +2286,34 @@ BEGIN-DATA
    BASETYPE          = 3
    PARAGRAPH         = SPOSTAMENTO
 BEGIN-TEXT
-      *****     inquire form1-gd-1, cursor-x in colonna, cursor-y in riga, 
-      *****             last-row in tot-righe.
-      *****     move event-data-2 to riga.
-      **********
-      **********     if event-data-2 not in riga
-      **********        perform VALORE-RIGA
-      **********        if reg-codice in spaces or zero
-      **********           modify form1-gd-1, record-to-delete riga
-      **********           set vecchio to true
-      **********        else  
-      **********           perform SALVA
-      **********           if errori
-      **********              move riga    to event-data-2
-      **********              move colonna to event-data-1 | (isacco)
-      **********              set event-action to event-action-fail
-      **********           end-if
-      **********        end-if
-      **********     else
-      **********        if colonna not in event-data-1
-      **********           perform CONTROLLO
-      **********           if errori
-      **********              set event-action to event-action-fail
-      **********           end-if
-      **********        end-if
-      **********     end-if.
-      **********
-      ****** COLORAZIONE RIGA IN GRID
-      *****     perform COLORE-RIGA.
+           inquire form1-gd-1, cursor-x in colonna, cursor-y in riga, 
+                   last-row in tot-righe.
+           move event-data-2 to riga.
       *****
-      *****     inquire form1-gd-1(riga, 11), cell-data in col-pev-evasa.
-      *****     move col-pev-evasa to pev-evasa.
-      *****     if pev-evasa = 0
-      *****        if riga < tot-righe
-      *****           add 1 to riga giving store-riga
-      *****           inquire form1-gd-1(store-riga, 11), cell-data in col-pev-evasa
-      *****           move col-pev-evasa to pev-evasa
-      *****           if pev-evasa = 0
-      *****              move 1 to e-sposta-giu
-      *****              modify pb-giu, enabled = e-sposta-giu, bitmap-number = 1
-      *****           else
-      *****              move 0 to e-sposta-giu
-      *****              modify pb-giu, enabled = e-sposta-giu, bitmap-number = 3
+      *****     if event-data-2 not in riga
+      *****        perform VALORE-RIGA
+      *****        if reg-codice in spaces or zero
+      *****           modify form1-gd-1, record-to-delete riga
+      *****           set vecchio to true
+      *****        else  
+      *****           perform SALVA
+      *****           if errori
+      *****              move riga    to event-data-2
+      *****              move colonna to event-data-1 | (isacco)
+      *****              set event-action to event-action-fail
       *****           end-if
-      *****        else
-      *****           move 0 to e-sposta-giu
-      *****           modify pb-giu, enabled = e-sposta-giu, bitmap-number = 3
       *****        end-if
-      *****
-      *****        if riga > 2
-      *****           subtract 1 from riga giving store-riga
-      *****           inquire form1-gd-1(store-riga, 11), cell-data in col-pev-evasa
-      *****           move col-pev-evasa to pev-evasa
-      *****           if pev-evasa = 0
-      *****              move 1 to e-sposta-su
-      *****              modify pb-su, enabled = e-sposta-su, bitmap-number = 1
-      *****           else
-      *****              move 0 to e-sposta-su
-      *****              modify pb-su, enabled = e-sposta-su, bitmap-number = 3
+      *****     else
+      *****        if colonna not in event-data-1
+      *****           perform CONTROLLO
+      *****           if errori
+      *****              set event-action to event-action-fail
       *****           end-if
-      *****        else
-      *****           move 0 to e-sposta-su
-      *****           modify pb-su, enabled = e-sposta-su, bitmap-number = 3
-      *****        end-if
-      *****     else
-      *****        move 0 to e-sposta-su
-      *****        move 0 to e-sposta-giu
-      *****        modify pb-su,  enabled = e-sposta-su,  bitmap-number = 3
-      *****        modify pb-giu, enabled = e-sposta-giu, bitmap-number = 3
-      *****     end-if.
-      *****     
-      *****     inquire form1-gd-1(riga, 1), cell-data in col-art-codice.
-      *****     move col-art-codice to pev-articolo.
-      *****
-      *****     if e-sposta-giu = 1
-      *****        add 1 to riga giving store-riga
-      *****        inquire form1-gd-1(store-riga, 1), cell-data in col-art-codice
-      *****        move col-art-codice to succ-articolo
-      *****        if succ-articolo = pev-articolo
-      *****           move 1 to e-sposta-giu
-      *****           modify pb-giu, enabled = e-sposta-giu, bitmap-number = 1
-      *****        else
-      *****           move 0 to e-sposta-giu
-      *****           modify pb-giu, enabled = e-sposta-giu, bitmap-number = 3
       *****        end-if
       *****     end-if.
       *****
-      *****     if e-sposta-su = 1
-      *****        subtract 1 from riga giving store-riga
-      *****        inquire form1-gd-1(store-riga, 1), cell-data in col-art-codice
-      *****        move col-art-codice to prec-articolo
-      *****        if prec-articolo = pev-articolo
-      *****           move 1 to e-sposta-su
-      *****           modify pb-su, enabled = e-sposta-su, bitmap-number = 1
-      *****        else
-      *****           move 0 to e-sposta-su
-      *****           modify pb-su, enabled = e-sposta-su, bitmap-number = 3
-      *****        end-if
-      *****     end-if.
-      *****
-      *****     initialize prg-chiave replacing numeric data by zeroes
-      *****                                alphanumeric data by spaces.
-      *****     inquire form1-gd-1(riga, 1), cell-data in pev-articolo.
-      *****     move pev-articolo to prg-cod-articolo.
-      *****     move "LBX"        to prg-cod-magazzino.
-      *****     move 0            to como-giacenza.
-      *****     start progmag key >= prg-chiave invalid continue end-start.
-      *****     perform until 1 = 2
-      *****        read progmag next at end exit perform end-read
-      *****        if prg-cod-articolo  not = pev-articolo or
-      *****           prg-cod-magazzino not = "LBX"
-      *****           exit perform
-      *****        end-if
-      *****        add prg-giacenza to como-giacenza
-      *****     end-perform.
-      *****     move como-giacenza to lab-giac-buf.
-      *****     display lab-giac.
-      *****     if como-giacenza < 0
-      *****        modify lab-giac, color 5
-      *****     else
-      *****        modify lab-giac, color 3
-      *****     end-if.               
-      *****
-      *****     initialize prg-chiave replacing numeric data by zeroes
-      *****                                alphanumeric data by spaces.
-      *****     inquire form1-gd-1(riga, 1), cell-data in pev-articolo.
-      *****     move pev-articolo to prg-cod-articolo art-codice.
-      *****     read articoli no lock.
-      *****     move art-mag-std  to prg-cod-magazzino.
-      *****     move 0            to como-giacenza.
-      *****     start progmag key >= prg-chiave invalid continue end-start.
-      *****     perform until 1 = 2
-      *****        read progmag next at end exit perform end-read
-      *****        if prg-cod-articolo  not = pev-articolo or
-      *****           prg-cod-magazzino not = art-mag-std
-      *****           exit perform
-      *****        end-if
-      *****        add prg-giacenza to como-giacenza
-      *****     end-perform.
-      *****     move como-giacenza to lab-giac-mag-buf.
-      *****     display lab-giac-mag.
-      *****     if como-giacenza < 0
-      *****        modify lab-giac-mag, color 5
-      *****     else
-      *****        modify lab-giac-mag, color 3
-      *****     end-if.
-      *****     inquire form1-gd-1(event-data-2, 16), cell-data in col-pren.
-      *****     initialize lab-giac-mag-std-buf.
-      *****     string "GIACENZA " delimited size
-      *****            art-mag-std delimited size
-      *****       into lab-giac-mag-std-buf
-      *****     end-string.
-      *****     display lab-giac-mag-std.
+      * COLORAZIONE RIGA IN GRID
+           perform COLORE-RIGA.  
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -3526,6 +2350,21 @@ BEGIN-TEXT
 END-TEXT
 END-DATA
 BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = COUNTER-VIDEO
+BEGIN-TEXT
+           add 1 to counter
+           add 1 to counter2
+           if counter2 = 10
+              move counter to counter-edit
+              display counter-edit
+                 upon scr-elab-HANDLE at column 41
+                                           line 04
+              move 0 to counter2
+           end-if.           
+END-TEXT
+END-DATA
+BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = I-O-BLOCCO
 BEGIN-TEXT
@@ -3545,6 +2384,21 @@ BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = form1-gd-1-Ev-Msg-Begin-Entry
 BEGIN-TEXT
+           evaluate event-data-1
+           when  1
+           when  2
+           when  3
+           when  4
+           when  5
+           when  6
+           when  7
+           when  8
+           when  9
+           when 10 
+                set event-action to event-action-fail
+           end-evaluate.
+
+
       *****     evaluate event-data-1
       *****     when  9
       *****          inquire form1-gd-1(riga, 9), cell-data in old-qta
@@ -3647,6 +2501,28 @@ BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = form1-gd-1-Ev-Msg-Finish-Entry
 BEGIN-TEXT
+           inquire form1-gd-1(event-data-2, 1), hidden-data in gruppo-hidden
+           move hid-rof-chiave to sof-chiave
+
+           evaluate event-data-1
+           when 11                                                             
+                inquire form1-gd-1(event-data-2, 11), cell-data in col-qta-soll
+                modify  form1-gd-1(event-data-2, 11), cell-data col-qta-soll
+                read sordforn 
+                move col-qta-soll to sof-qta
+                rewrite sof-rec
+           when 12 
+                inquire form1-gd-1(event-data-2, 12), cell-data in col-data-soll
+                move col-data-soll to como-data
+                perform DATE-FORMAT
+                move como-data to col-data-soll
+                modify form1-gd-1(event-data-2, 12), cell-data col-data-soll
+                read sordforn 
+                move col-data-soll to como-data
+                perform DATE-TO-FILE
+                move como-data to sof-data-arr
+                rewrite sof-rec
+           end-evaluate.
       *****     evaluate event-data-1
       *****     when 9
       *****          inquire form1-gd-1(riga, 9), cell-data in new-qta
@@ -3776,13 +2652,13 @@ REL_SYM_INFO_Y2=1153942566
 REL_SYM_INFO_X3=2301
 REL_SYM_INFO_Y3=1864646741
 REL_SYM_INFO_X4=2301
-REL_SYM_INFO_Y4=1913828293
+REL_SYM_INFO_Y4=1288436511
 REL_SYM_INFO_X5=2301
-REL_SYM_INFO_Y5=1288436511
+REL_SYM_INFO_Y5=1613725785
 REL_SYM_INFO_X6=2301
-REL_SYM_INFO_Y6=1613725785
+REL_SYM_INFO_Y6=845488315
 REL_SYM_INFO_X7=2301
-REL_SYM_INFO_Y7=845488315
+REL_SYM_INFO_Y7=1465677227
 
 [DRAW_BASESYMBOL_2301_1309992118]
 OBJ_NAME=2301
@@ -3976,54 +2852,6 @@ PROP_TRACK_COLOR=12632256
 REL_SYM_SIZE=4
 REL_SYM_INFO_L=0
 
-[DRAW_BASESYMBOL_2301_1913828293]
-OBJ_NAME=2301
-OBJ_ID=1913828293
-KIND=1
-{{@LABEL_2301_1913828293
-destini
-@}}
-WK_STEP=0
-BK_POINT=0
-CENTER_X=0
-CENTER_Y=0
-LEFT=3362
-TOP=421
-RIGHT=3762
-BOTTOM=643
-PROP_OBJ_TYPE=
-PROP_OBJ_TYPE2=
-PROP_FILL_PT=0
-PROP_FILL_FG=0
-PROP_FILL_BG=16777215
-PROP_FONT_HEIGHT=-35
-PROP_FONT_WIDTH=0
-PROP_FONT_ESCAPE=0
-PROP_FONT_ORIENT=0
-PROP_FONT_WEIGHT=400
-PROP_FONT_ITALIC=0
-PROP_FONT_UDLINE=0
-PROP_FONT_SKOUT=0
-PROP_FONT_CHARSET=0
-PROP_FONT_OUTPREC=3
-PROP_FONT_CLIPPREC=2
-PROP_FONT_QUALITY=1
-PROP_FONT_PCH_FAM=18
-PROP_FONT_FACE_NAME=Times New Roman
-PROP_FONT_CR=0
-PROP_LINE_PT=0
-PROP_LINE_WG=1
-PROP_LINE_CR=0
-PROP_SHAD_PT=0
-PROP_SHAD_FG=12632256
-PROP_SHAD_BG=12632256
-PROP_SHAD_EBL=0
-PROP_SHAD_POS=4
-PROP_SHAD_POINT=0
-PROP_TRACK_COLOR=12632256
-REL_SYM_SIZE=4
-REL_SYM_INFO_L=0
-
 [DRAW_BASESYMBOL_2301_1288436511]
 OBJ_NAME=2301
 OBJ_ID=1288436511
@@ -4135,6 +2963,54 @@ LEFT=3446
 TOP=1082
 RIGHT=3846
 BOTTOM=1304
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1465677227]
+OBJ_NAME=2301
+OBJ_ID=1465677227
+KIND=1
+{{@LABEL_2301_1465677227
+tcaumag
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1855
+TOP=447
+RIGHT=2255
+BOTTOM=669
 PROP_OBJ_TYPE=
 PROP_OBJ_TYPE2=
 PROP_FILL_PT=0
@@ -4307,37 +3183,6 @@ DSN_INFO_REPLACEBY_RELATIVEKEY=
 DSN_INFO_REPLACEBY_FDDATA=
 DSN_INFO_REPLACEBY_SLDATA=
 
-[DMD_FILE_0_1913828293]
-OBJ_NAME=0
-OBJ_ID=1913828293
-REL_M_OBJ_ID=0
-ENTITY=destini
-LINK=0
-LINK_NAME=
-DSN_SIZE=42
-FD_SIZE=0
-SL_SIZE=0
-DSN_INFO_OPEN_MODE=0
-DSN_INFO_LOCK_OPTION=0
-DSN_INFO_KEY_IS=des-chiave
-DSN_INFO_DATA_ORDER=0
-DSN_INFO_START_VALUE=
-DSN_INFO_END_VALUE=
-{{@DSN_INFO_CONDITION_1913828293
-
-@}}
-DSN_INFO_PRIMARY=0
-DSN_INFO_OPEN=1
-DSN_INFO_CLOSE=1
-DSN_INFO_EXCLUSIVE=0
-DSN_INFO_IS_LOGICAL=0
-DSN_INFO_LOGICAL_FDNAME=
-DSN_INFO_ORIGINAL_FDNAME=
-DSN_INFO_REPLACEBY_FILESTATUS=
-DSN_INFO_REPLACEBY_RELATIVEKEY=
-DSN_INFO_REPLACEBY_FDDATA=
-DSN_INFO_REPLACEBY_SLDATA=
-
 [DMD_FILE_0_1288436511]
 OBJ_NAME=0
 OBJ_ID=1288436511
@@ -4417,6 +3262,37 @@ DSN_INFO_DATA_ORDER=0
 DSN_INFO_START_VALUE=
 DSN_INFO_END_VALUE=
 {{@DSN_INFO_CONDITION_845488315
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1465677227]
+OBJ_NAME=0
+OBJ_ID=1465677227
+REL_M_OBJ_ID=0
+ENTITY=tcaumag
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tca-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1465677227
 
 @}}
 DSN_INFO_PRIMARY=0

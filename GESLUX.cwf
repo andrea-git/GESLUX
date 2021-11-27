@@ -2,14 +2,13 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
-Adesk-andre=192.168.56.1
 
 
 [WORKSPACE_CONTENT]
 WORKSPACE_UNIQUE_CODE=TOTEM-7DE41144432-337-117565976
 PROJECT_LIST=GESLUX,LAB,EDI,GET,SHI,STORICO,AndamentoClienti
 CONFIGURATION_LIST=Debug Mode,RELEASE
-CURRENT_CONFIGURATION=RELEASE
+CURRENT_CONFIGURATION=Debug Mode
 
 [FILE_DEFINITION_CONTENT]
 VERSION=1
@@ -51513,7 +51512,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:RELEASE:Source\ordforn-sol.cbl]
-COPY_DEPENDENCE=FD\articoli.sl;FD\progmag.sl;FD\tmagaz.sl;FD\clienti.sl;FD\destini.sl;FD\rordforn.sl;FD\tordforn.sl;FD\sordforn.sl;FD\articoli.fd;FD\progmag.fd;FD\tmagaz.fd;FD\clienti.fd;FD\destini.fd;FD\rordforn.fd;FD\tordforn.fd;FD\sordforn.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\link-tprev-p.def;Copylib\externals.def;Copylib\common-excel.def;Copylib\link-readutente.def;Copylib\link-gordcvar.def;Copylib\link-geslock.def;Copylib\common-linkage.def;Copylib\blockpgm.lks;Copylib\COLOR-CUSTOM.CPY;Copylib\utydata.cpy
+COPY_DEPENDENCE=FD\articoli.sl;FD\progmag.sl;FD\tmagaz.sl;FD\clienti.sl;FD\destini.sl;FD\rordforn.sl;FD\tordforn.sl;FD\sordforn.sl;FD\tcaumag.sl;FD\articoli.fd;FD\progmag.fd;FD\tmagaz.fd;FD\clienti.fd;FD\destini.fd;FD\rordforn.fd;FD\tordforn.fd;FD\sordforn.fd;FD\tcaumag.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\link-tprev-p.def;Copylib\externals.def;Copylib\common-excel.def;Copylib\link-readutente.def;Copylib\link-gordcvar.def;Copylib\link-geslock.def;Copylib\common-linkage.def;Copylib\blockpgm.lks;Copylib\COLOR-CUSTOM.CPY;Copylib\utydata.cpy
 ADDITIONAL_OPTIONS=-Di -Za -Zn -Zz
 FOLLOW_PROJECT=1
 ; Standard Options
@@ -79990,6 +79989,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-STORICO:RELEASE:STORICO\Source\conv-sto-tordforn.cbl]
+COPY_DEPENDENCE=FD\STO-tordforn.sl;FD\STO-tordforn.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;\Lubex\GESLUX\Copylib\DECLXER1;\Lubex\GESLUX\Copylib\DECLXER2
 ADDITIONAL_OPTIONS=-x -Di -Za -Zn -Zz
 FOLLOW_PROJECT=1
 ; Standard Options

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordforn-sol.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 27 novembre 2021 15:26:19.
+       DATE-WRITTEN.        sabato 27 novembre 2021 16:42:43.
        REMARKS.
       *{TOTEM}END
 
@@ -31,10 +31,10 @@
            COPY "progmag.sl".
            COPY "tmagaz.sl".
            COPY "clienti.sl".
-           COPY "destini.sl".
            COPY "rordforn.sl".
            COPY "tordforn.sl".
            COPY "sordforn.sl".
+           COPY "tcaumag.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -43,10 +43,10 @@
            COPY "progmag.fd".
            COPY "tmagaz.fd".
            COPY "clienti.fd".
-           COPY "destini.fd".
            COPY "rordforn.fd".
            COPY "tordforn.fd".
            COPY "sordforn.fd".
+           COPY "tcaumag.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -69,12 +69,7 @@
           88 Event-Occurred VALUE 96.
           88 Screen-No-Input-Field VALUE 97.
       * Properties & User defined Working Stoarge
-       77 STATUS-tregioni  PIC  X(2).
-           88 Valid-STATUS-tregioni VALUE IS "00" THRU "09". 
-           COPY  "LINK-TPREV-P.DEF".
            COPY  "EXTERNALS.DEF".
-           COPY  "COMMON-EXCEL.DEF".
-           COPY  "LINK-GORDCVAR.DEF".
            COPY  "LINK-GESLOCK.DEF".
       *
       *
@@ -82,70 +77,29 @@
                   VALUE IS 0.
        77 Form1-Handle
                   USAGE IS HANDLE OF WINDOW.
-       77 spunta2-nera-bmp
-                  USAGE IS HANDLE OF BITMAP
-                  VALUE IS 0.
        77 Form1-Tb-1-Handle
                   USAGE IS HANDLE OF WINDOW.
-       78 titolo VALUE IS "Geslux - Quantità promo per evasione". 
-       77 E-ESCI           PIC  9
-                  VALUE IS 1.
-       77 E-NUOVO          PIC  9
-                  VALUE IS 1.
-       77 save-articolo    PIC  9(6).
+       78 titolo VALUE IS "Geslux - Pannello qta solleciti ordini fornit
+      -    "ori". 
        77 colore           PIC  9(5).
        77 chiave           PIC  9(5).
        77 como-x           PIC  x.
-       77 como-giacenza    PIC  s9(8).
-       77 old-qta          PIC  s9(8).
-       77 new-qta          PIC  s9(8).
        77 FILLER           PIC  9.
            88 PrenQta VALUE IS 1    WHEN SET TO FALSE  0. 
        77 FILLER           PIC  9.
            88 BeginEntry VALUE IS 1    WHEN SET TO FALSE  0. 
-       01 corr-rec.
-           05 corr-chiave.
-               10 corr-articolo    PIC  9(6).
-               10 corr-prog        PIC  9(8).
-           05 corr-dati        PIC  x(5000).
-       01 prec-rec.
-           05 prec-chiave.
-               10 prec-articolo    PIC  9(6).
-               10 prec-prog        PIC  9(8).
-           05 prec-dati        PIC  x(5000).
-       01 succ-rec.
-           05 succ-chiave.
-               10 succ-articolo    PIC  9(6).
-               10 succ-prog        PIC  9(8).
-           05 succ-dati        PIC  x(5000).
        01 gruppo-hidden.
-           05 hid-chiave.
-               10 hid-articolo     PIC  9(6).
-               10 hid-prog         PIC  9(8).
-           05 hid-cambio       PIC  9.
-       77 imp-master       PIC  s9(8).
-       77 giac-utile       PIC  s9(8).
+           05 hid-rof-chiave.
+               10 hid-rof-chiave-testa.
+                   15 hid-rof-anno     PIC  9(4).
+                   15 hid-rof-numero   PIC  9(8).
+               10 hid-rof-riga     PIC  9(5).
        01 FILLER           PIC  9.
            88 CambioQta VALUE IS 1    WHEN SET TO FALSE  0. 
-       77 E-CANCELLA       PIC  9
-                  VALUE IS 1.
-       77 E-SALVA          PIC  9
-                  VALUE IS 1.
-       77 E-ANTEPRIMA      PIC  9
-                  VALUE IS 0.
-       77 E-MODIFICA       PIC  9
-                  VALUE IS 1.
-       77 E-STAMPA         PIC  9
-                  VALUE IS 0.
-       77 E-CERCA          PIC  9
-                  VALUE IS 1.
        77 MESSAGGIO        PIC  X(300)
                   VALUE IS SPACE.
        77 Small-Font
                   USAGE IS HANDLE OF FONT SMALL-FONT.
-       77 toolbar-bmp      PIC  S9(9)
-                  USAGE IS COMP-4
-                  VALUE IS 0.
        01 rec-grid.
            05 col-mag-codice   PIC  x(3).
            05 col-mag-descrizione          PIC  X(50).
@@ -161,14 +115,8 @@
            05 col-data-soll    PIC  99/99/9999.
        77 Screen1-Handle
                   USAGE IS HANDLE OF WINDOW.
-       77 esegui_73x21-bmp PIC  S9(9)
+       77 esegui-73x21-bmp PIC  S9(9)
                   USAGE IS COMP-4
-                  VALUE IS 0.
-       77 cod  PIC  z(3).
-       77 des  PIC  x(30).
-       77 e-cod            PIC  9
-                  VALUE IS 1.
-       77 e-des            PIC  9
                   VALUE IS 0.
        77 Default-Font
                   USAGE IS HANDLE OF FONT DEFAULT-FONT.
@@ -179,73 +127,26 @@
            88 Valid-STATUS-articoli VALUE IS "00" THRU "09". 
        77 STATUS-progmag   PIC  X(2).
            88 Valid-STATUS-progmag VALUE IS "00" THRU "09". 
-       77 STATUS-promo-eva PIC  X(2).
-           88 Valid-STATUS-promo-eva VALUE IS "00" THRU "09". 
-       77 STATUS-rpromo    PIC  X(2).
-           88 Valid-STATUS-rpromo VALUE IS "00" THRU "09". 
-       77 STATUS-tpromo    PIC  X(2).
-           88 Valid-STATUS-tpromo VALUE IS "00" THRU "09". 
        77 scr-elab-SF-HANDLE
                   USAGE IS HANDLE OF WINDOW.
-       77 BOTTONE-OK-BMP   PIC  S9(9)
-                  USAGE IS COMP-4
-                  VALUE IS 0.
-       77 BOTTONE-CANCEL-BMP           PIC  S9(9)
-                  USAGE IS COMP-4
-                  VALUE IS 0.
        77 Verdana12B-Occidentale
                   USAGE IS HANDLE OF FONT.
        77 scr-elab-HANDLE
                   USAGE IS HANDLE OF WINDOW.
        77 Verdana8-Occidentale
                   USAGE IS HANDLE OF FONT.
-       77 freccia_su-bmp   PIC  S9(9)
-                  USAGE IS COMP-4
-                  VALUE IS 0.
-       77 freccia_giu-bmp  PIC  S9(9)
-                  USAGE IS COMP-4
-                  VALUE IS 0.
-       77 STATUS-promoeva  PIC  X(2).
-           88 Valid-STATUS-promoeva VALUE IS "00" THRU "09". 
        77 STATUS-tmagaz    PIC  X(2).
            88 Valid-STATUS-tmagaz VALUE IS "00" THRU "09". 
        77 Large-Font
                   USAGE IS HANDLE OF FONT LARGE-FONT.
-       77 e-sposta-su      PIC  9
-                  VALUE IS 1.
-       77 e-sposta-giu     PIC  9
-                  VALUE IS 1.
-       77 REFRESH-BMP      PIC  S9(9)
-                  USAGE IS COMP-4
-                  VALUE IS 0.
-       77 excel-bmp        PIC  S9(9)
-                  USAGE IS COMP-4
-                  VALUE IS 0.
-       77 wstampa          PIC  X(256).
-       77 STATUS-lineseq   PIC  X(2).
-           88 Valid-STATUS-lineseq VALUE IS "00" THRU "09". 
        77 Medium-Font
                   USAGE IS HANDLE OF FONT MEDIUM-FONT.
        77 Verdana8B-Occidentale
                   USAGE IS HANDLE OF FONT.
-       77 path-tmp-mtordini            PIC  X(256).
-       77 STATUS-tmp-mtordini          PIC  X(2).
-           88 Valid-STATUS-tmp-mtordini VALUE IS "00" THRU "09". 
-       77 STATUS-mrordini  PIC  X(2).
-           88 Valid-STATUS-mrordini VALUE IS "00" THRU "09". 
-       77 STATUS-mtordini  PIC  X(2).
-           88 Valid-STATUS-mtordini VALUE IS "00" THRU "09". 
        77 STATUS-clienti   PIC  X(2).
            88 Valid-STATUS-clienti VALUE IS "00" THRU "09". 
-       77 STATUS-destini   PIC  X(2).
-           88 Valid-STATUS-destini VALUE IS "00" THRU "09". 
-       77 lab-giac-buf     PIC  ---.---.--9.
-       77 no-msg           PIC  9
-                  VALUE IS 0.
        77 AUTO-ID          PIC  9(6)
                   VALUE IS 1.
-       77 lab-giac-mag-std-buf         PIC  x(20).
-       77 lab-giac-mag-buf PIC  ---.---.--9.
        77 STATUS-rordforn  PIC  X(2).
            88 Valid-STATUS-rordforn VALUE IS "00" THRU "09". 
        77 STATUS-tordforn  PIC  X(2).
@@ -253,6 +154,8 @@
        77 ef-data-buf      PIC  99/99/9999.
        77 STATUS-sordforn  PIC  X(2).
            88 Valid-STATUS-sordforn VALUE IS "00" THRU "09". 
+       77 STATUS-tcaumag   PIC  X(2).
+           88 Valid-STATUS-tcaumag VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -269,10 +172,10 @@
        77 TMP-DataSet1-progmag-BUF     PIC X(1090).
        77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
        77 TMP-DataSet1-clienti-BUF     PIC X(3610).
-       77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-rordforn-BUF     PIC X(544).
        77 TMP-DataSet1-tordforn-BUF     PIC X(556).
        77 TMP-DataSet1-sordforn-BUF     PIC X(1139).
+       77 TMP-DataSet1-tcaumag-BUF     PIC X(254).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -297,11 +200,6 @@
        77 DataSet1-clienti-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-clienti-KEY-Asc  VALUE "A".
           88 DataSet1-clienti-KEY-Desc VALUE "D".
-       77 DataSet1-destini-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-destini-LOCK  VALUE "Y".
-       77 DataSet1-destini-KEY-ORDER  PIC X VALUE "A".
-          88 DataSet1-destini-KEY-Asc  VALUE "A".
-          88 DataSet1-destini-KEY-Desc VALUE "D".
        77 DataSet1-rordforn-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-rordforn-LOCK  VALUE "Y".
        77 DataSet1-rordforn-KEY-ORDER  PIC X VALUE "A".
@@ -318,6 +216,11 @@
        77 DataSet1-sordforn-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-sordforn-KEY-Asc  VALUE "A".
           88 DataSet1-sordforn-KEY-Desc VALUE "D".
+       77 DataSet1-tcaumag-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tcaumag-LOCK  VALUE "Y".
+       77 DataSet1-tcaumag-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tcaumag-KEY-Asc  VALUE "A".
+          88 DataSet1-tcaumag-KEY-Desc VALUE "D".
 
        77 articoli-art-k1-SPLITBUF  PIC X(51).
        77 articoli-art-k-frn-SPLITBUF  PIC X(16).
@@ -325,8 +228,6 @@
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
        77 clienti-cli-K4-SPLITBUF  PIC X(8).
-       77 destini-K1-SPLITBUF  PIC X(111).
-       77 destini-k-localita-SPLITBUF  PIC X(36).
        77 rordforn-rof-k-articolo-SPLITBUF  PIC X(24).
        77 rordforn-rof-k-art-mag-SPLITBUF  PIC X(27).
        77 tordforn-tof-k-causale-SPLITBUF  PIC X(17).
@@ -334,7 +235,12 @@
        77 tordforn-k-fornitore-SPLITBUF  PIC X(24).
        77 tordforn-tof-k-data-SPLITBUF  PIC X(21).
        77 tordforn-tof-k-consegna-SPLITBUF  PIC X(21).
+       77 tcaumag-k-mag-SPLITBUF  PIC X(5).
 
+
+       77  counter                 pic 9(10).
+       77  counter2                pic 9(10).
+       77  counter-edit            pic z(10).
       *{TOTEM}END
 
       *{TOTEM}ID-LOGICI
@@ -425,17 +331,17 @@
        05
            form1-gd-1, 
            Grid, 
-           COL 4,43, 
+           COL 1,86, 
            LINE 6,77,
            LINES 37,08 ,
-           SIZE 218,71 ,
+           SIZE 223,86 ,
            ADJUSTABLE-COLUMNS,
            BOXED,
            CENTERED-HEADINGS,
            DATA-COLUMNS (1, 4, 54, 59, 159, 165, 175, 181, 281, 292, 
            303, 314),
-           ALIGNMENT ("R", "U", "L", "R", "U", "C", "R", "U", "R", "R", 
-           "R", "R"),
+           ALIGNMENT ("U", "U", "R", "U", "R", "C", "R", "U", "R", "R", 
+           "R", "C"),
            SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5),
            DATA-TYPES ("9(6)", "X(50)", "X(10)", "9(15)", "X(50)", "X(5)
       -    "", "X(10)", "X", "9(10)", "9(10)", "9(10)", "9(10)"),
@@ -451,7 +357,7 @@
            WIDTH-IN-CELLS,
            RECORD-DATA rec-grid,
            TILED-HEADINGS,
-           VIRTUAL-WIDTH 216,
+           VIRTUAL-WIDTH 221,
            VPADDING 50,
            VSCROLL,
            EVENT PROCEDURE Form1-Gd-1-Event-Proc,
@@ -628,10 +534,10 @@
            PERFORM OPEN-progmag
            PERFORM OPEN-tmagaz
            PERFORM OPEN-clienti
-           PERFORM OPEN-destini
            PERFORM OPEN-rordforn
            PERFORM OPEN-tordforn
            PERFORM OPEN-sordforn
+           PERFORM OPEN-tcaumag
       *    After Open
            .
 
@@ -683,18 +589,6 @@
       * <TOTEM:END>
            .
 
-       OPEN-destini.
-      * <TOTEM:EPT. INIT:ordforn-sol, FD:destini, BeforeOpen>
-      * <TOTEM:END>
-           OPEN  INPUT destini
-           IF NOT Valid-STATUS-destini
-              PERFORM  Form1-EXTENDED-FILE-STATUS
-              GO TO EXIT-STOP-ROUTINE
-           END-IF
-      * <TOTEM:EPT. INIT:ordforn-sol, FD:destini, AfterOpen>
-      * <TOTEM:END>
-           .
-
        OPEN-rordforn.
       * <TOTEM:EPT. INIT:ordforn-sol, FD:rordforn, BeforeOpen>
       * <TOTEM:END>
@@ -738,16 +632,28 @@
       * <TOTEM:END>
            .
 
+       OPEN-tcaumag.
+      * <TOTEM:EPT. INIT:ordforn-sol, FD:tcaumag, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT tcaumag
+           IF NOT Valid-STATUS-tcaumag
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:ordforn-sol, FD:tcaumag, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-articoli
            PERFORM CLOSE-progmag
            PERFORM CLOSE-tmagaz
            PERFORM CLOSE-clienti
-           PERFORM CLOSE-destini
            PERFORM CLOSE-rordforn
            PERFORM CLOSE-tordforn
            PERFORM CLOSE-sordforn
+           PERFORM CLOSE-tcaumag
       *    After Close
            .
 
@@ -775,12 +681,6 @@
            CLOSE clienti
            .
 
-       CLOSE-destini.
-      * <TOTEM:EPT. INIT:ordforn-sol, FD:destini, BeforeClose>
-      * <TOTEM:END>
-           CLOSE destini
-           .
-
        CLOSE-rordforn.
       * <TOTEM:EPT. INIT:ordforn-sol, FD:rordforn, BeforeClose>
       * <TOTEM:END>
@@ -797,6 +697,12 @@
       * <TOTEM:EPT. INIT:ordforn-sol, FD:sordforn, BeforeClose>
       * <TOTEM:END>
            CLOSE sordforn
+           .
+
+       CLOSE-tcaumag.
+      * <TOTEM:EPT. INIT:ordforn-sol, FD:tcaumag, BeforeClose>
+      * <TOTEM:END>
+           CLOSE tcaumag
            .
 
        articoli-art-k1-MERGE-SPLITBUF.
@@ -1480,178 +1386,6 @@
       * <TOTEM:END>
            .
 
-       destini-K1-MERGE-SPLITBUF.
-           INITIALIZE destini-K1-SPLITBUF
-           MOVE des-ragsoc-1(1:100) TO destini-K1-SPLITBUF(1:100)
-           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(101:5)
-           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(106:5)
-           .
-
-       destini-k-localita-MERGE-SPLITBUF.
-           INITIALIZE destini-k-localita-SPLITBUF
-           MOVE des-localita(1:35) TO destini-k-localita-SPLITBUF(1:35)
-           .
-
-       DataSet1-destini-INITSTART.
-           IF DataSet1-destini-KEY-Asc
-              MOVE Low-Value TO des-chiave
-           ELSE
-              MOVE High-Value TO des-chiave
-           END-IF
-           .
-
-       DataSet1-destini-INITEND.
-           IF DataSet1-destini-KEY-Asc
-              MOVE High-Value TO des-chiave
-           ELSE
-              MOVE Low-Value TO des-chiave
-           END-IF
-           .
-
-      * destini
-       DataSet1-destini-START.
-           IF DataSet1-destini-KEY-Asc
-              START destini KEY >= des-chiave
-           ELSE
-              START destini KEY <= des-chiave
-           END-IF
-           .
-
-       DataSet1-destini-START-NOTGREATER.
-           IF DataSet1-destini-KEY-Asc
-              START destini KEY <= des-chiave
-           ELSE
-              START destini KEY >= des-chiave
-           END-IF
-           .
-
-       DataSet1-destini-START-GREATER.
-           IF DataSet1-destini-KEY-Asc
-              START destini KEY > des-chiave
-           ELSE
-              START destini KEY < des-chiave
-           END-IF
-           .
-
-       DataSet1-destini-START-LESS.
-           IF DataSet1-destini-KEY-Asc
-              START destini KEY < des-chiave
-           ELSE
-              START destini KEY > des-chiave
-           END-IF
-           .
-
-       DataSet1-destini-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:destini, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:destini, BeforeReadRecord>
-      * <TOTEM:END>
-           IF DataSet1-destini-LOCK
-              READ destini WITH LOCK 
-              KEY des-chiave
-           ELSE
-              READ destini WITH NO LOCK 
-              KEY des-chiave
-           END-IF
-           PERFORM destini-K1-MERGE-SPLITBUF
-           PERFORM destini-k-localita-MERGE-SPLITBUF
-           MOVE STATUS-destini TO TOTEM-ERR-STAT 
-           MOVE "destini" TO TOTEM-ERR-FILE
-           MOVE "READ" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:destini, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:destini, AfterReadRecord>
-      * <TOTEM:END>
-           .
-
-       DataSet1-destini-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:destini, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:destini, BeforeReadNext>
-      * <TOTEM:END>
-           IF DataSet1-destini-KEY-Asc
-              IF DataSet1-destini-LOCK
-                 READ destini NEXT WITH LOCK
-              ELSE
-                 READ destini NEXT WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-destini-LOCK
-                 READ destini PREVIOUS WITH LOCK
-              ELSE
-                 READ destini PREVIOUS WITH NO LOCK
-              END-IF
-           END-IF
-           PERFORM destini-K1-MERGE-SPLITBUF
-           PERFORM destini-k-localita-MERGE-SPLITBUF
-           MOVE STATUS-destini TO TOTEM-ERR-STAT
-           MOVE "destini" TO TOTEM-ERR-FILE
-           MOVE "READ NEXT" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:destini, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:destini, AfterReadNext>
-      * <TOTEM:END>
-           .
-
-       DataSet1-destini-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:destini, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:destini, BeforeReadPrev>
-      * <TOTEM:END>
-           IF DataSet1-destini-KEY-Asc
-              IF DataSet1-destini-LOCK
-                 READ destini PREVIOUS WITH LOCK
-              ELSE
-                 READ destini PREVIOUS WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-destini-LOCK
-                 READ destini NEXT WITH LOCK
-              ELSE
-                 READ destini NEXT WITH NO LOCK
-              END-IF
-           END-IF
-           PERFORM destini-K1-MERGE-SPLITBUF
-           PERFORM destini-k-localita-MERGE-SPLITBUF
-           MOVE STATUS-destini TO TOTEM-ERR-STAT
-           MOVE "destini" TO TOTEM-ERR-FILE
-           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:destini, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:destini, AfterReadPrev>
-      * <TOTEM:END>
-           .
-
-       DataSet1-destini-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:destini, BeforeWrite>
-      * <TOTEM:END>
-           MOVE STATUS-destini TO TOTEM-ERR-STAT
-           MOVE "destini" TO TOTEM-ERR-FILE
-           MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:destini, AfterWrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-destini-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:destini, BeforeRewrite>
-      * <TOTEM:END>
-           MOVE STATUS-destini TO TOTEM-ERR-STAT
-           MOVE "destini" TO TOTEM-ERR-FILE
-           MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:destini, AfterRewrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-destini-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:destini, BeforeDelete>
-      * <TOTEM:END>
-           MOVE STATUS-destini TO TOTEM-ERR-STAT
-           MOVE "destini" TO TOTEM-ERR-FILE
-           MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:destini, AfterDelete>
-      * <TOTEM:END>
-           .
-
        rordforn-rof-k-articolo-MERGE-SPLITBUF.
            INITIALIZE rordforn-rof-k-articolo-SPLITBUF
            MOVE rof-cod-articolo OF rordforn(1:6) TO 
@@ -2238,15 +1972,178 @@
       * <TOTEM:END>
            .
 
+       tcaumag-k-mag-MERGE-SPLITBUF.
+           INITIALIZE tcaumag-k-mag-SPLITBUF
+           MOVE tca-cod-magaz(1:3) TO tcaumag-k-mag-SPLITBUF(1:3)
+           MOVE tca-ord-forn(1:1) TO tcaumag-k-mag-SPLITBUF(4:1)
+           .
+
+       DataSet1-tcaumag-INITSTART.
+           IF DataSet1-tcaumag-KEY-Asc
+              MOVE Low-Value TO tca-chiave
+           ELSE
+              MOVE High-Value TO tca-chiave
+           END-IF
+           .
+
+       DataSet1-tcaumag-INITEND.
+           IF DataSet1-tcaumag-KEY-Asc
+              MOVE High-Value TO tca-chiave
+           ELSE
+              MOVE Low-Value TO tca-chiave
+           END-IF
+           .
+
+      * tcaumag
+       DataSet1-tcaumag-START.
+           IF DataSet1-tcaumag-KEY-Asc
+              START tcaumag KEY >= tca-chiave
+           ELSE
+              START tcaumag KEY <= tca-chiave
+           END-IF
+           .
+
+       DataSet1-tcaumag-START-NOTGREATER.
+           IF DataSet1-tcaumag-KEY-Asc
+              START tcaumag KEY <= tca-chiave
+           ELSE
+              START tcaumag KEY >= tca-chiave
+           END-IF
+           .
+
+       DataSet1-tcaumag-START-GREATER.
+           IF DataSet1-tcaumag-KEY-Asc
+              START tcaumag KEY > tca-chiave
+           ELSE
+              START tcaumag KEY < tca-chiave
+           END-IF
+           .
+
+       DataSet1-tcaumag-START-LESS.
+           IF DataSet1-tcaumag-KEY-Asc
+              START tcaumag KEY < tca-chiave
+           ELSE
+              START tcaumag KEY > tca-chiave
+           END-IF
+           .
+
+       DataSet1-tcaumag-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:tcaumag, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tcaumag, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-tcaumag-LOCK
+              READ tcaumag WITH LOCK 
+              KEY tca-chiave
+           ELSE
+              READ tcaumag WITH NO LOCK 
+              KEY tca-chiave
+           END-IF
+           PERFORM tcaumag-k-mag-MERGE-SPLITBUF
+           MOVE STATUS-tcaumag TO TOTEM-ERR-STAT 
+           MOVE "tcaumag" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tcaumag, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tcaumag, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tcaumag-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:tcaumag, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tcaumag, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-tcaumag-KEY-Asc
+              IF DataSet1-tcaumag-LOCK
+                 READ tcaumag NEXT WITH LOCK
+              ELSE
+                 READ tcaumag NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tcaumag-LOCK
+                 READ tcaumag PREVIOUS WITH LOCK
+              ELSE
+                 READ tcaumag PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM tcaumag-k-mag-MERGE-SPLITBUF
+           MOVE STATUS-tcaumag TO TOTEM-ERR-STAT
+           MOVE "tcaumag" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tcaumag, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tcaumag, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tcaumag-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:tcaumag, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tcaumag, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-tcaumag-KEY-Asc
+              IF DataSet1-tcaumag-LOCK
+                 READ tcaumag PREVIOUS WITH LOCK
+              ELSE
+                 READ tcaumag PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tcaumag-LOCK
+                 READ tcaumag NEXT WITH LOCK
+              ELSE
+                 READ tcaumag NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM tcaumag-k-mag-MERGE-SPLITBUF
+           MOVE STATUS-tcaumag TO TOTEM-ERR-STAT
+           MOVE "tcaumag" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tcaumag, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tcaumag, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tcaumag-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:tcaumag, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-tcaumag TO TOTEM-ERR-STAT
+           MOVE "tcaumag" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tcaumag, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tcaumag-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:tcaumag, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-tcaumag TO TOTEM-ERR-STAT
+           MOVE "tcaumag" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tcaumag, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tcaumag-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:tcaumag, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-tcaumag TO TOTEM-ERR-STAT
+           MOVE "tcaumag" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tcaumag, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE art-rec OF articoli
            INITIALIZE prg-rec OF progmag
            INITIALIZE mag-rec OF tmagaz
            INITIALIZE cli-rec OF clienti
-           INITIALIZE des-rec OF destini
            INITIALIZE rof-rec OF rordforn
            INITIALIZE tof-rec OF tordforn
            INITIALIZE sof-rec OF sordforn
+           INITIALIZE tca-rec OF tcaumag
            .
 
 
@@ -2278,10 +2175,10 @@
                 CELL-DATA = "Descrizione",
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 9, Y = 1,
-                CELL-DATA = "Qta ordinata",
+                CELL-DATA = "Qta ord",
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 10, Y = 1,
-                CELL-DATA = "Qta evasa",
+                CELL-DATA = "Qta eva",
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 11, Y = 1,
                 CELL-FONT Verdana8B-Occidentale,
@@ -2331,14 +2228,6 @@
            .
 
       * FD's Initialize Paragraph
-       DataSet1-destini-INITREC.
-           INITIALIZE des-rec OF destini
-               REPLACING NUMERIC       DATA BY ZEROS
-                         ALPHANUMERIC  DATA BY SPACES
-                         ALPHABETIC    DATA BY SPACES
-           .
-
-      * FD's Initialize Paragraph
        DataSet1-rordforn-INITREC.
            INITIALIZE rof-rec OF rordforn
                REPLACING NUMERIC       DATA BY ZEROS
@@ -2357,6 +2246,14 @@
       * FD's Initialize Paragraph
        DataSet1-sordforn-INITREC.
            INITIALIZE sof-rec OF sordforn
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-tcaumag-INITREC.
+           INITIALIZE tca-rec OF tcaumag
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -2409,12 +2306,17 @@
       * Status-bar
            DISPLAY Form1 UPON Form1-Handle
       * DISPLAY-COLUMNS settings
-              MODIFY form1-gd-1, DISPLAY-COLUMNS (1, 7, 37, 47, 97, 
-           105, 115, 123, 163, 175, 187, 202)
+              MODIFY form1-gd-1, DISPLAY-COLUMNS (1, 7, 41, 51, 96, 
+           104, 116, 124, 176, 186, 196, 209)
            .
 
        Form1-PROC.
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforeAccept>
+           accept como-data from century-date.
+           perform DATE-TO-SCREEN.
+           move como-data to ef-data-buf.
+           display ef-data.
+
            perform FORM1-GD-1-CONTENT.
            
            move 2 to chiave.
@@ -3082,36 +2984,20 @@
 
        scr-elab-PROC.
       * <TOTEM:EPT. FORM:scr-elab, FORM:scr-elab, BeforeAccept>
+           move 0 to counter counter2.
+           modify form1-gd-1, mass-update = 1.
+                     
+           modify form1-gd-1, reset-grid = 1.
+           perform FORM1-GD-1-CONTENT.
+
            move ef-data-buf to como-data.
            perform DATE-TO-FILE.
+           move low-value to tof-chiave.
+           move como-data to tof-data-consegna.
 
-           05 sof-chiave.
-               10 sof-chiave-testa.
-                   15 sof-anno         PIC  9(4).
-                   15 sof-numero       PIC  9(8).
-               10 sof-prog         PIC  9(5).
-           05 sof-dati.
-               10 sof-note         PIC  x(500).
-               10 sof-data-arr     PIC  9(8).
-               10 sof-qta          PIC  9(8).
+           perform LOAD-RECORD.
 
-
-      *****     close promoeva.
-      *****     move user-codi       to link-tprev-user.
-      *****     move scr-elab-handle to link-tprev-handle.
-      *****     call   "tprev-p"  using tprev-linkage.
-      *****     cancel "tprev-p".
-      *****     move 27 to key-status.
-      *****     open input promoeva.
-      *****     
-      *****     move 2 to chiave.
-      *****     perform LOAD-RECORD.
-      *****
-      *****     move 2  to event-data-2.
-      *****     perform SPOSTAMENTO.
-      *****
-      *****     perform INIT.
-      *****     set CambioQta to false.
+           move 27 to key-status.
 
            .
       * <TOTEM:END>
@@ -3307,7 +3193,7 @@
       **********     end-if.
            modify form1-gd-1, start-x 1,    x 12,
                               start-y riga, y riga,
-                         region-color colore 
+                         region-color 481 
            .
       * <TOTEM:END>
 
@@ -3365,6 +3251,126 @@
 
        LOAD-RECORD.
       * <TOTEM:PARA. LOAD-RECORD>
+           start tordforn key < tof-k-consegna
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read tordforn previous at end exit perform end-read
+                    if tof-chiuso
+                       exit perform cycle
+                    end-if              
+                    perform COUNTER-VIDEO
+                    perform LOOP-RIGHE
+                 end-perform
+           end-start.
+           
+           modify form1-gd-1, mass-update = 0.
+
+      ***---
+       LOOP-RIGHE.           
+           move tof-causale to tca-codice.
+           read tcaumag no lock.
+           move tca-cod-magaz to mag-codice.
+           read tmagaz no lock.
+
+           move tof-cod-forn to cli-codice.
+           set cli-tipo-F to true.
+           read clienti no lock.
+
+           move 1 to riga
+           move low-value  to rof-chiave.
+           move tof-chiave to rof-chiave-testa.
+           start rordforn key >= rof-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read rordforn next at end exit perform end-read
+                    if rof-chiave-testa not = tof-chiave
+                       exit perform
+                    end-if   
+
+                    perform COUNTER-VIDEO
+
+                    add 1 to riga
+                    move mag-codice       to col-mag-codice
+                    move mag-descrizione  to col-mag-descrizione
+                    move tof-cod-forn     to col-cli-codice
+                    move cli-ragsoc-1     to col-cli-ragsoc
+                    move tof-numero       to col-tof-numero
+                    move tof-data-ordine  to como-data
+                    perform DATE-TO-SCREEN
+                    move como-data        to col-tof-data
+                    move rof-cod-articolo to col-rof-cod-articolo 
+           art-codice
+                    read articoli no lock
+                    move art-descrizione  to col-art-descrizione
+                    move rof-qta-ord      to col-rof-qta
+                    move rof-qta-evasa    to col-rof-qta-eva
+
+                    move rof-chiave to sof-chiave
+                    read sordforn no lock
+                         invalid move 0 to sof-data-arr sof-qta
+                    end-read
+                    move sof-data-arr to como-data
+                    perform DATE-TO-SCREEN
+                    move como-data to col-data-soll
+
+                    move sof-qta to col-qta-soll
+                                 
+                    modify form1-gd-1(riga, 1),  cell-data 
+           col-mag-codice
+                    modify form1-gd-1(riga, 2),  cell-data 
+           col-mag-descrizione
+                    modify form1-gd-1(riga, 3),  cell-data 
+           col-cli-codice   
+                    modify form1-gd-1(riga, 4),  cell-data 
+           col-cli-ragsoc   
+                    modify form1-gd-1(riga, 5),  cell-data 
+           col-tof-numero   
+                    modify form1-gd-1(riga, 6),  cell-data col-tof-data 
+               
+                    modify form1-gd-1(riga, 7),  cell-data 
+           col-rof-cod-articolo
+                    modify form1-gd-1(riga, 8),  cell-data 
+           col-art-descrizione
+                    modify form1-gd-1(riga, 9),  cell-data col-rof-qta  
+               
+                    modify form1-gd-1(riga, 10), cell-data 
+           col-rof-qta-eva  
+                    modify form1-gd-1(riga, 11), cell-data col-qta-soll 
+                    modify form1-gd-1(riga, 12), cell-data col-data-soll
+
+                    move rof-chiave to hid-rof-chiave
+                    modify form1-gd-1(riga, 1), hidden-data 
+           gruppo-hidden    
+
+                    if colore = 257
+                       move 513 to colore
+                    else
+                       move 257 to colore
+                    end-if
+                    modify form1-gd-1(riga), row-color colore
+
+                 end-perform
+           end-start.
+
+      *****     close promoeva.
+      *****     move user-codi       to link-tprev-user.
+      *****     move scr-elab-handle to link-tprev-handle.
+      *****     call   "tprev-p"  using tprev-linkage.
+      *****     cancel "tprev-p".
+      *****     move 27 to key-status.
+      *****     open input promoeva.
+      *****     
+      *****     move 2 to chiave.
+      *****     perform LOAD-RECORD.
+      *****
+      *****     move 2  to event-data-2.
+      *****     perform SPOSTAMENTO.
+      *****
+      *****     perform INIT.
+      *****     set CambioQta to false.
+
       *****     move low-value to pev-rec.
       *****     start promoeva key >= pev-chiave
       *****           invalid  perform SCR-ELAB-OPEN-ROUTINE
@@ -3604,158 +3610,34 @@
 
        SPOSTAMENTO.
       * <TOTEM:PARA. SPOSTAMENTO>
-      *****     inquire form1-gd-1, cursor-x in colonna, cursor-y in riga, 
-      *****             last-row in tot-righe.
-      *****     move event-data-2 to riga.
-      **********
-      **********     if event-data-2 not in riga
-      **********        perform VALORE-RIGA
-      **********        if reg-codice in spaces or zero
-      **********           modify form1-gd-1, record-to-delete riga
-      **********           set vecchio to true
-      **********        else  
-      **********           perform SALVA
-      **********           if errori
-      **********              move riga    to event-data-2
-      **********              move colonna to event-data-1 | (isacco)
-      **********              set event-action to event-action-fail
-      **********           end-if
-      **********        end-if
-      **********     else
-      **********        if colonna not in event-data-1
-      **********           perform CONTROLLO
-      **********           if errori
-      **********              set event-action to event-action-fail
-      **********           end-if
-      **********        end-if
-      **********     end-if.
-      **********
-      ****** COLORAZIONE RIGA IN GRID
-      *****     perform COLORE-RIGA.
+           inquire form1-gd-1, cursor-x in colonna, cursor-y in riga, 
+                   last-row in tot-righe.
+           move event-data-2 to riga.
       *****
-      *****     inquire form1-gd-1(riga, 11), cell-data in col-pev-evasa.
-      *****     move col-pev-evasa to pev-evasa.
-      *****     if pev-evasa = 0
-      *****        if riga < tot-righe
-      *****           add 1 to riga giving store-riga
-      *****           inquire form1-gd-1(store-riga, 11), cell-data in col-pev-evasa
-      *****           move col-pev-evasa to pev-evasa
-      *****           if pev-evasa = 0
-      *****              move 1 to e-sposta-giu
-      *****              modify pb-giu, enabled = e-sposta-giu, bitmap-number = 1
-      *****           else
-      *****              move 0 to e-sposta-giu
-      *****              modify pb-giu, enabled = e-sposta-giu, bitmap-number = 3
+      *****     if event-data-2 not in riga
+      *****        perform VALORE-RIGA
+      *****        if reg-codice in spaces or zero
+      *****           modify form1-gd-1, record-to-delete riga
+      *****           set vecchio to true
+      *****        else  
+      *****           perform SALVA
+      *****           if errori
+      *****              move riga    to event-data-2
+      *****              move colonna to event-data-1 | (isacco)
+      *****              set event-action to event-action-fail
       *****           end-if
-      *****        else
-      *****           move 0 to e-sposta-giu
-      *****           modify pb-giu, enabled = e-sposta-giu, bitmap-number = 3
       *****        end-if
-      *****
-      *****        if riga > 2
-      *****           subtract 1 from riga giving store-riga
-      *****           inquire form1-gd-1(store-riga, 11), cell-data in col-pev-evasa
-      *****           move col-pev-evasa to pev-evasa
-      *****           if pev-evasa = 0
-      *****              move 1 to e-sposta-su
-      *****              modify pb-su, enabled = e-sposta-su, bitmap-number = 1
-      *****           else
-      *****              move 0 to e-sposta-su
-      *****              modify pb-su, enabled = e-sposta-su, bitmap-number = 3
+      *****     else
+      *****        if colonna not in event-data-1
+      *****           perform CONTROLLO
+      *****           if errori
+      *****              set event-action to event-action-fail
       *****           end-if
-      *****        else
-      *****           move 0 to e-sposta-su
-      *****           modify pb-su, enabled = e-sposta-su, bitmap-number = 3
-      *****        end-if
-      *****     else
-      *****        move 0 to e-sposta-su
-      *****        move 0 to e-sposta-giu
-      *****        modify pb-su,  enabled = e-sposta-su,  bitmap-number = 3
-      *****        modify pb-giu, enabled = e-sposta-giu, bitmap-number = 3
-      *****     end-if.
-      *****     
-      *****     inquire form1-gd-1(riga, 1), cell-data in col-art-codice.
-      *****     move col-art-codice to pev-articolo.
-      *****
-      *****     if e-sposta-giu = 1
-      *****        add 1 to riga giving store-riga
-      *****        inquire form1-gd-1(store-riga, 1), cell-data in col-art-codice
-      *****        move col-art-codice to succ-articolo
-      *****        if succ-articolo = pev-articolo
-      *****           move 1 to e-sposta-giu
-      *****           modify pb-giu, enabled = e-sposta-giu, bitmap-number = 1
-      *****        else
-      *****           move 0 to e-sposta-giu
-      *****           modify pb-giu, enabled = e-sposta-giu, bitmap-number = 3
       *****        end-if
       *****     end-if.
       *****
-      *****     if e-sposta-su = 1
-      *****        subtract 1 from riga giving store-riga
-      *****        inquire form1-gd-1(store-riga, 1), cell-data in col-art-codice
-      *****        move col-art-codice to prec-articolo
-      *****        if prec-articolo = pev-articolo
-      *****           move 1 to e-sposta-su
-      *****           modify pb-su, enabled = e-sposta-su, bitmap-number = 1
-      *****        else
-      *****           move 0 to e-sposta-su
-      *****           modify pb-su, enabled = e-sposta-su, bitmap-number = 3
-      *****        end-if
-      *****     end-if.
-      *****
-      *****     initialize prg-chiave replacing numeric data by zeroes
-      *****                                alphanumeric data by spaces.
-      *****     inquire form1-gd-1(riga, 1), cell-data in pev-articolo.
-      *****     move pev-articolo to prg-cod-articolo.
-      *****     move "LBX"        to prg-cod-magazzino.
-      *****     move 0            to como-giacenza.
-      *****     start progmag key >= prg-chiave invalid continue end-start.
-      *****     perform until 1 = 2
-      *****        read progmag next at end exit perform end-read
-      *****        if prg-cod-articolo  not = pev-articolo or
-      *****           prg-cod-magazzino not = "LBX"
-      *****           exit perform
-      *****        end-if
-      *****        add prg-giacenza to como-giacenza
-      *****     end-perform.
-      *****     move como-giacenza to lab-giac-buf.
-      *****     display lab-giac.
-      *****     if como-giacenza < 0
-      *****        modify lab-giac, color 5
-      *****     else
-      *****        modify lab-giac, color 3
-      *****     end-if.               
-      *****
-      *****     initialize prg-chiave replacing numeric data by zeroes
-      *****                                alphanumeric data by spaces.
-      *****     inquire form1-gd-1(riga, 1), cell-data in pev-articolo.
-      *****     move pev-articolo to prg-cod-articolo art-codice.
-      *****     read articoli no lock.
-      *****     move art-mag-std  to prg-cod-magazzino.
-      *****     move 0            to como-giacenza.
-      *****     start progmag key >= prg-chiave invalid continue end-start.
-      *****     perform until 1 = 2
-      *****        read progmag next at end exit perform end-read
-      *****        if prg-cod-articolo  not = pev-articolo or
-      *****           prg-cod-magazzino not = art-mag-std
-      *****           exit perform
-      *****        end-if
-      *****        add prg-giacenza to como-giacenza
-      *****     end-perform.
-      *****     move como-giacenza to lab-giac-mag-buf.
-      *****     display lab-giac-mag.
-      *****     if como-giacenza < 0
-      *****        modify lab-giac-mag, color 5
-      *****     else
-      *****        modify lab-giac-mag, color 3
-      *****     end-if.
-      *****     inquire form1-gd-1(event-data-2, 16), cell-data in col-pren.
-      *****     initialize lab-giac-mag-std-buf.
-      *****     string "GIACENZA " delimited size
-      *****            art-mag-std delimited size
-      *****       into lab-giac-mag-std-buf
-      *****     end-string.
-      *****     display lab-giac-mag-std 
+      * COLORAZIONE RIGA IN GRID
+           perform COLORE-RIGA   
            .
       * <TOTEM:END>
 
@@ -3790,6 +3672,20 @@
            .
       * <TOTEM:END>
 
+       COUNTER-VIDEO.
+      * <TOTEM:PARA. COUNTER-VIDEO>
+           add 1 to counter
+           add 1 to counter2
+           if counter2 = 10
+              move counter to counter-edit
+              display counter-edit
+                 upon scr-elab-HANDLE at column 41
+                                           line 04
+              move 0 to counter2
+           end-if            
+           .
+      * <TOTEM:END>
+
       * EVENT PARAGRAPH
        I-O-BLOCCO.
       * <TOTEM:PARA. I-O-BLOCCO>
@@ -3805,6 +3701,21 @@
       * <TOTEM:END>
        form1-gd-1-Ev-Msg-Begin-Entry.
       * <TOTEM:PARA. form1-gd-1-Ev-Msg-Begin-Entry>
+           evaluate event-data-1
+           when  1
+           when  2
+           when  3
+           when  4
+           when  5
+           when  6
+           when  7
+           when  8
+           when  9
+           when 10 
+                set event-action to event-action-fail
+           end-evaluate.
+
+
       *****     evaluate event-data-1
       *****     when  9
       *****          inquire form1-gd-1(riga, 9), cell-data in old-qta
@@ -3893,6 +3804,34 @@
       * <TOTEM:END>
        form1-gd-1-Ev-Msg-Finish-Entry.
       * <TOTEM:PARA. form1-gd-1-Ev-Msg-Finish-Entry>
+           inquire form1-gd-1(event-data-2, 1), hidden-data in 
+           gruppo-hidden
+           move hid-rof-chiave to sof-chiave
+
+           evaluate event-data-1
+           when 11                                                      
+                  
+                inquire form1-gd-1(event-data-2, 11), cell-data in 
+           col-qta-soll
+                modify  form1-gd-1(event-data-2, 11), cell-data 
+           col-qta-soll
+                read sordforn 
+                move col-qta-soll to sof-qta
+                rewrite sof-rec
+           when 12 
+                inquire form1-gd-1(event-data-2, 12), cell-data in 
+           col-data-soll
+                move col-data-soll to como-data
+                perform DATE-FORMAT
+                move como-data to col-data-soll
+                modify form1-gd-1(event-data-2, 12), cell-data 
+           col-data-soll
+                read sordforn 
+                move col-data-soll to como-data
+                perform DATE-TO-FILE
+                move como-data to sof-data-arr
+                rewrite sof-rec
+           end-evaluate.
       *****     evaluate event-data-1
       *****     when 9
       *****          inquire form1-gd-1(riga, 9), cell-data in new-qta
