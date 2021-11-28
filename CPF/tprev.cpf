@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=PAS004P-Ev-Before-Program
 AFTER_PROGRAM=I-O-BLOCCO
-PROGRAM_UNIQUE_CODE=TOTEM-7E5B1B14268-288-2640510816
+PROGRAM_UNIQUE_CODE=TOTEM-7E5B1B234559-76-443323561
 
 {{@DESCRIPTION:
 
@@ -1476,7 +1476,7 @@ m_bFixed=1
 
 @}}
 [FDITEM126_WK]
-m_strName=esegui_73x21-bmp
+m_strName=esegui-73x21-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -1724,7 +1724,7 @@ m_bFixed=1
 
 @}}
 [FDITEM151_WK]
-m_strName=freccia_su-bmp
+m_strName=freccia-su-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -1736,7 +1736,7 @@ m_bFixed=1
 
 @}}
 [FDITEM152_WK]
-m_strName=freccia_giu-bmp
+m_strName=freccia-giu-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -2770,7 +2770,7 @@ Begin Screen Form1
       Font Variable     = Verdana12B-Occidentale
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 7
+      ID                = 8
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 41,38
@@ -2805,7 +2805,7 @@ Begin Screen Form1
       Font Variable     = Verdana12B-Occidentale
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 6
+      ID                = 9
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 41,38

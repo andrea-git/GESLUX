@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordforn-sol.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 27 novembre 2021 16:42:43.
+       DATE-WRITTEN.        domenica 28 novembre 2021 01:14:23.
        REMARKS.
       *{TOTEM}END
 
@@ -82,6 +82,9 @@
        78 titolo VALUE IS "Geslux - Pannello qta solleciti ordini fornit
       -    "ori". 
        77 colore           PIC  9(5).
+       77 old-qta          PIC  9(8).
+       77 old-data-ini     PIC  9(8).
+       77 old-data         PIC  9(8).
        77 chiave           PIC  9(5).
        77 como-x           PIC  x.
        77 FILLER           PIC  9.
@@ -412,6 +415,29 @@
       *{TOTEM}DECLARATIVE
        DECLARATIVES.
       * <TOTEM:EPT. INIT:ordforn-sol, INIT:ordforn-sol, BeforeDeclarative>
+       SORDFORN-ERR SECTION.
+           use after error procedure on sordforn.
+           evaluate status-sordforn
+           when "35"
+                display message "File [SORDFORN] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [SORDFORN] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[SORDFORN] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "93"             
+           when "99"
+                set RecLocked to true
+           end-evaluate.
+
       * <TOTEM:END>
        INPUT-ERROR SECTION.
            USE AFTER STANDARD ERROR PROCEDURE ON INPUT.
@@ -3253,7 +3279,8 @@
       * <TOTEM:PARA. LOAD-RECORD>
            start tordforn key < tof-k-consegna
                  invalid continue
-             not invalid
+             not invalid                        
+                 move 1 to riga
                  perform until 1 = 2
                     read tordforn previous at end exit perform end-read
                     if tof-chiuso
@@ -3276,8 +3303,7 @@
            move tof-cod-forn to cli-codice.
            set cli-tipo-F to true.
            read clienti no lock.
-
-           move 1 to riga
+                         
            move low-value  to rof-chiave.
            move tof-chiave to rof-chiave-testa.
            start rordforn key >= rof-chiave
@@ -3713,6 +3739,16 @@
            when  9
            when 10 
                 set event-action to event-action-fail
+           when 11
+                inquire form1-gd-1(event-data-2, event-data-1), 
+                        cell-data in col-qta-soll
+                move col-qta-soll to old-qta
+           when 12
+                inquire form1-gd-1(event-data-2, event-data-1), 
+                        cell-data in col-data-soll
+                move col-data-soll to como-data
+                perform DATE-TO-FILE
+                move como-data to old-data
            end-evaluate.
 
 
@@ -3812,26 +3848,88 @@
            when 11                                                      
                   
                 inquire form1-gd-1(event-data-2, 11), cell-data in 
-           col-qta-soll
-                modify  form1-gd-1(event-data-2, 11), cell-data 
-           col-qta-soll
-                read sordforn 
+           col-qta-soll 
                 move col-qta-soll to sof-qta
-                rewrite sof-rec
+                if sof-qta not = old-qta
+                   move "sordforn" to geslock-nome-file
+                   initialize geslock-messaggio
+                   string "Il file dei solleciti" 
+                   x"0d0a""è in uso su altro terminale." delimited size
+                     into geslock-messaggio
+                   end-string
+                   perform until 1 = 2
+                      set RecLocked to false
+                      read sordforn lock
+                      if RecLocked 
+                         move 1     to geslock-v-termina
+                         move 1     to geslock-v-riprova
+                         move 0     to geslock-v-ignora
+                         call   "geslock" using geslock-linkage
+                         cancel "geslock"
+                         evaluate true
+                         when riprova continue
+                         when other   exit perform
+                         end-evaluate
+                      else
+                         exit perform
+                      end-if
+                   end-perform      
+                   if RecLocked
+                      move old-qta to col-qta-soll
+                   else
+                      move col-qta-soll to sof-qta
+                      rewrite sof-rec
+                      unlock sordforn all records
+                   end-if      
+                end-if
+                modify  form1-gd-1(event-data-2, 11), cell-data 
+           col-qta-soll   
            when 12 
                 inquire form1-gd-1(event-data-2, 12), cell-data in 
            col-data-soll
                 move col-data-soll to como-data
                 perform DATE-FORMAT
+                perform DATE-TO-FILE
+                if como-data not = old-data
+
+                   move "sordforn" to geslock-nome-file
+                   initialize geslock-messaggio
+                   string "Il file dei solleciti" 
+                   x"0d0a""è in uso su altro terminale." delimited size
+                     into geslock-messaggio
+                   end-string
+                   perform until 1 = 2
+                      set RecLocked to false
+                      read sordforn lock
+                      if RecLocked 
+                         move 1     to geslock-v-termina
+                         move 1     to geslock-v-riprova
+                         move 0     to geslock-v-ignora
+                         call   "geslock" using geslock-linkage
+                         cancel "geslock"
+                         evaluate true
+                         when riprova continue
+                         when other   exit perform
+                         end-evaluate
+                      else
+                         exit perform
+                      end-if
+                   end-perform      
+                   if RecLocked
+                      move old-data to como-data
+                   else
+                      move como-data to sof-data-arr
+                      rewrite sof-rec
+                      unlock sordforn all records
+                   end-if   
+                end-if
+                perform DATE-TO-SCREEN
                 move como-data to col-data-soll
                 modify form1-gd-1(event-data-2, 12), cell-data 
            col-data-soll
-                read sordforn 
-                move col-data-soll to como-data
-                perform DATE-TO-FILE
-                move como-data to sof-data-arr
-                rewrite sof-rec
            end-evaluate.
+           move 78-ID-form1-gd-1 to control-id
+           move 4 to accept-control.
       *****     evaluate event-data-1
       *****     when 9
       *****          inquire form1-gd-1(riga, 9), cell-data in new-qta
@@ -3862,7 +3960,11 @@
            move como-data to ef-data-buf.
            display ef-data.
 
-           perform SCR-ELAB-OPEN-ROUTINE 
+           perform DATE-TO-FILE.
+           if como-data not = old-data-ini 
+              move como-data to old-data-ini
+              perform SCR-ELAB-OPEN-ROUTINE
+           end-if 
            .
       * <TOTEM:END>
 

@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=PAS004P-Ev-Before-Program
 AFTER_PROGRAM=I-O-BLOCCO
-PROGRAM_UNIQUE_CODE=TOTEM-7E5B1B141213-41-1654123441
+PROGRAM_UNIQUE_CODE=TOTEM-7E5B1B234525-649-320356421
 
 {{@DESCRIPTION:
 
@@ -335,9 +335,9 @@ m_bFixed=1
 
 @}}
 [FDITEM24_WK]
-m_strName=chiave
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=old-qta
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -345,9 +345,9 @@ m_bFixed=1
 
 @}}
 [FDITEM25_WK]
-m_strName=como-x
-m_strRawPic=x
-m_strPic=x
+m_strName=old-data-ini
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -355,9 +355,9 @@ m_bFixed=1
 
 @}}
 [FDITEM26_WK]
-m_strName=FILLER
-m_strRawPic=9
-m_strPic=9
+m_strName=old-data
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -365,19 +365,19 @@ m_bFixed=1
 
 @}}
 [FDITEM27_WK]
-m_strName=PrenQta
-m_nItemLevel=88
+m_strName=chiave
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue=1
-m_strFalse=0
 {{@DataItem_m_strDescriptionFDITEM27_WK
 
 @}}
 [FDITEM28_WK]
-m_strName=FILLER
-m_strRawPic=9
-m_strPic=9
+m_strName=como-x
+m_strRawPic=x
+m_strPic=x
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -385,63 +385,63 @@ m_bFixed=1
 
 @}}
 [FDITEM29_WK]
-m_strName=BeginEntry
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM29_WK
+
+@}}
+[FDITEM30_WK]
+m_strName=PrenQta
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
 m_strFalse=0
-{{@DataItem_m_strDescriptionFDITEM29_WK
-
-@}}
-[FDITEM30_WK]
-m_strName=gruppo-hidden
-m_nItemLevel=1
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM30_WK
 
 @}}
 [FDITEM31_WK]
-m_strName=hid-rof-chiave
-m_nItemLevel=5
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM31_WK
 
 @}}
 [FDITEM32_WK]
-m_strName=hid-rof-chiave-testa
-m_nItemLevel=10
+m_strName=BeginEntry
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue=1
+m_strFalse=0
 {{@DataItem_m_strDescriptionFDITEM32_WK
 
 @}}
 [FDITEM33_WK]
-m_strName=hid-rof-anno
-m_strRawPic=9(4)
-m_strPic=9(4)
-m_nItemLevel=15
+m_strName=gruppo-hidden
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM33_WK
 
 @}}
 [FDITEM34_WK]
-m_strName=hid-rof-numero
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=15
+m_strName=hid-rof-chiave
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM34_WK
 
 @}}
 [FDITEM35_WK]
-m_strName=hid-rof-riga
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=hid-rof-chiave-testa
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -449,26 +449,56 @@ m_bFixed=1
 
 @}}
 [FDITEM36_WK]
-m_strName=FILLER
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=1
+m_strName=hid-rof-anno
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM36_WK
 
 @}}
 [FDITEM37_WK]
+m_strName=hid-rof-numero
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM37_WK
+
+@}}
+[FDITEM38_WK]
+m_strName=hid-rof-riga
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM38_WK
+
+@}}
+[FDITEM39_WK]
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM39_WK
+
+@}}
+[FDITEM40_WK]
 m_strName=CambioQta
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
 m_strFalse=0
-{{@DataItem_m_strDescriptionFDITEM37_WK
+{{@DataItem_m_strDescriptionFDITEM40_WK
 
 @}}
-[FDITEM38_WK]
+[FDITEM41_WK]
 m_strName=MESSAGGIO
 m_strRawPic=X(300)
 m_strPic=X(300)
@@ -476,60 +506,30 @@ m_strDefaultValue=SPACE
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM38_WK
-
-@}}
-[FDITEM39_WK]
-m_strName=Small-Font
-m_nUsage=37
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM39_WK
-
-@}}
-[FDITEM40_WK]
-m_strName=rec-grid
-m_nItemLevel=1
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM40_WK
-
-@}}
-[FDITEM41_WK]
-m_strName=col-mag-codice
-m_strRawPic=x(3)
-m_strPic=x(3)
-m_nItemLevel=5
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM41_WK
 
 @}}
 [FDITEM42_WK]
-m_strName=col-mag-descrizione
-m_strRawPic=X(50)
-m_strPic=X(50)
-m_nItemLevel=5
+m_strName=Small-Font
+m_nUsage=37
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM42_WK
 
 @}}
 [FDITEM43_WK]
-m_strName=col-cli-codice
-m_strRawPic=9(5)
-m_strPic=9(5)
-m_nItemLevel=5
+m_strName=rec-grid
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM43_WK
 
 @}}
 [FDITEM44_WK]
-m_strName=col-cli-ragsoc
-m_strRawPic=x(100)
-m_strPic=x(100)
+m_strName=col-mag-codice
+m_strRawPic=x(3)
+m_strPic=x(3)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -537,9 +537,9 @@ m_bFixed=1
 
 @}}
 [FDITEM45_WK]
-m_strName=col-tof-numero
-m_strRawPic=z(6)
-m_strPic=z(6)
+m_strName=col-mag-descrizione
+m_strRawPic=X(50)
+m_strPic=X(50)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -547,9 +547,9 @@ m_bFixed=1
 
 @}}
 [FDITEM46_WK]
-m_strName=col-tof-data
-m_strRawPic=99/99/9999
-m_strPic=99/99/9999
+m_strName=col-cli-codice
+m_strRawPic=9(5)
+m_strPic=9(5)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -557,9 +557,9 @@ m_bFixed=1
 
 @}}
 [FDITEM47_WK]
-m_strName=col-rof-cod-articolo
-m_strRawPic=z(6)
-m_strPic=z(6)
+m_strName=col-cli-ragsoc
+m_strRawPic=x(100)
+m_strPic=x(100)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -567,9 +567,9 @@ m_bFixed=1
 
 @}}
 [FDITEM48_WK]
-m_strName=col-art-descrizione
-m_strRawPic=x(100)
-m_strPic=x(100)
+m_strName=col-tof-numero
+m_strRawPic=z(6)
+m_strPic=z(6)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -577,9 +577,9 @@ m_bFixed=1
 
 @}}
 [FDITEM49_WK]
-m_strName=col-rof-qta
-m_strRawPic=---.---.--9
-m_strPic=---.---.--9
+m_strName=col-tof-data
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -587,9 +587,9 @@ m_bFixed=1
 
 @}}
 [FDITEM50_WK]
-m_strName=col-rof-qta-eva
-m_strRawPic=---.---.--9
-m_strPic=---.---.--9
+m_strName=col-rof-cod-articolo
+m_strRawPic=z(6)
+m_strPic=z(6)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -597,9 +597,9 @@ m_bFixed=1
 
 @}}
 [FDITEM51_WK]
-m_strName=col-qta-soll
-m_strRawPic=---.---.--9
-m_strPic=---.---.--9
+m_strName=col-art-descrizione
+m_strRawPic=x(100)
+m_strPic=x(100)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -607,9 +607,9 @@ m_bFixed=1
 
 @}}
 [FDITEM52_WK]
-m_strName=col-data-soll
-m_strRawPic=99/99/9999
-m_strPic=99/99/9999
+m_strName=col-rof-qta
+m_strRawPic=---.---.--9
+m_strPic=---.---.--9
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -617,15 +617,45 @@ m_bFixed=1
 
 @}}
 [FDITEM53_WK]
-m_strName=Screen1-Handle
-m_nUsage=24
-m_nItemLevel=77
+m_strName=col-rof-qta-eva
+m_strRawPic=---.---.--9
+m_strPic=---.---.--9
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM53_WK
 
 @}}
 [FDITEM54_WK]
+m_strName=col-qta-soll
+m_strRawPic=---.---.--9
+m_strPic=---.---.--9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM54_WK
+
+@}}
+[FDITEM55_WK]
+m_strName=col-data-soll
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM55_WK
+
+@}}
+[FDITEM56_WK]
+m_strName=Screen1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM56_WK
+
+@}}
+[FDITEM57_WK]
 m_strName=esegui-73x21-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -634,52 +664,22 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM54_WK
+{{@DataItem_m_strDescriptionFDITEM57_WK
 
 @}}
-[FDITEM55_WK]
+[FDITEM58_WK]
 m_strName=Default-Font
 m_nUsage=38
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM55_WK
-
-@}}
-[FDITEM56_WK]
-m_strName=lab-des2
-m_strRawPic=x(50)
-m_strPic=x(50)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM56_WK
-
-@}}
-[FDITEM57_WK]
-m_strName=FILLER
-m_strRawPic=XX
-m_strPic=XX
-m_nItemLevel=1
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM57_WK
-
-@}}
-[FDITEM58_WK]
-m_strName=ricarica
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="SI"
-m_strFalse="NO"
 {{@DataItem_m_strDescriptionFDITEM58_WK
 
 @}}
 [FDITEM59_WK]
-m_strName=STATUS-articoli
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=lab-des2
+m_strRawPic=x(50)
+m_strPic=x(50)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -687,45 +687,48 @@ m_bFixed=1
 
 @}}
 [FDITEM60_WK]
-m_strName=Valid-STATUS-articoli
-m_nItemLevel=88
+m_strName=FILLER
+m_strRawPic=XX
+m_strPic=XX
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM60_WK
 
 @}}
 [FDITEM61_WK]
-m_strName=STATUS-progmag
+m_strName=ricarica
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="SI"
+m_strFalse="NO"
+{{@DataItem_m_strDescriptionFDITEM61_WK
+
+@}}
+[FDITEM62_WK]
+m_strName=STATUS-articoli
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM61_WK
-
-@}}
-[FDITEM62_WK]
-m_strName=Valid-STATUS-progmag
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM62_WK
 
 @}}
 [FDITEM63_WK]
-m_strName=scr-elab-SF-HANDLE
-m_nUsage=24
-m_nItemLevel=77
+m_strName=Valid-STATUS-articoli
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM63_WK
 
 @}}
 [FDITEM64_WK]
-m_strName=Verdana12B-Occidentale
-m_nUsage=26
+m_strName=STATUS-progmag
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -733,17 +736,17 @@ m_bFixed=1
 
 @}}
 [FDITEM65_WK]
-m_strName=scr-elab-HANDLE
-m_nUsage=24
-m_nItemLevel=77
+m_strName=Valid-STATUS-progmag
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM65_WK
 
 @}}
 [FDITEM66_WK]
-m_strName=Verdana8-Occidentale
-m_nUsage=26
+m_strName=scr-elab-SF-HANDLE
+m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -751,9 +754,8 @@ m_bFixed=1
 
 @}}
 [FDITEM67_WK]
-m_strName=STATUS-tmagaz
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=Verdana12B-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -761,17 +763,17 @@ m_bFixed=1
 
 @}}
 [FDITEM68_WK]
-m_strName=Valid-STATUS-tmagaz
-m_nItemLevel=88
+m_strName=scr-elab-HANDLE
+m_nUsage=24
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM68_WK
 
 @}}
 [FDITEM69_WK]
-m_strName=Large-Font
-m_nUsage=35
+m_strName=Verdana8-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -779,8 +781,9 @@ m_bFixed=1
 
 @}}
 [FDITEM70_WK]
-m_strName=Medium-Font
-m_nUsage=36
+m_strName=STATUS-tmagaz
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -788,18 +791,17 @@ m_bFixed=1
 
 @}}
 [FDITEM71_WK]
-m_strName=Verdana8B-Occidentale
-m_nUsage=26
-m_nItemLevel=77
+m_strName=Valid-STATUS-tmagaz
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM71_WK
 
 @}}
 [FDITEM72_WK]
-m_strName=STATUS-clienti
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=Large-Font
+m_nUsage=35
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -807,19 +809,17 @@ m_bFixed=1
 
 @}}
 [FDITEM73_WK]
-m_strName=Valid-STATUS-clienti
-m_nItemLevel=88
+m_strName=Medium-Font
+m_nUsage=36
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM73_WK
 
 @}}
 [FDITEM74_WK]
-m_strName=AUTO-ID
-m_strRawPic=9(6)
-m_strPic=9(6)
-m_strDefaultValue=1
+m_strName=Verdana8B-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -827,7 +827,7 @@ m_bFixed=1
 
 @}}
 [FDITEM75_WK]
-m_strName=STATUS-rordforn
+m_strName=STATUS-clienti
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -837,7 +837,7 @@ m_bFixed=1
 
 @}}
 [FDITEM76_WK]
-m_strName=Valid-STATUS-rordforn
+m_strName=Valid-STATUS-clienti
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -846,9 +846,10 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM77_WK]
-m_strName=STATUS-tordforn
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=AUTO-ID
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_strDefaultValue=1
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -856,26 +857,26 @@ m_bFixed=1
 
 @}}
 [FDITEM78_WK]
-m_strName=Valid-STATUS-tordforn
-m_nItemLevel=88
+m_strName=STATUS-rordforn
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM78_WK
 
 @}}
 [FDITEM79_WK]
-m_strName=ef-data-buf
-m_strRawPic=99/99/9999
-m_strPic=99/99/9999
-m_nItemLevel=77
+m_strName=Valid-STATUS-rordforn
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM79_WK
 
 @}}
 [FDITEM80_WK]
-m_strName=STATUS-sordforn
+m_strName=STATUS-tordforn
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -885,7 +886,7 @@ m_bFixed=1
 
 @}}
 [FDITEM81_WK]
-m_strName=Valid-STATUS-sordforn
+m_strName=Valid-STATUS-tordforn
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -894,9 +895,9 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM82_WK]
-m_strName=STATUS-tcaumag
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=ef-data-buf
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -904,12 +905,41 @@ m_bFixed=1
 
 @}}
 [FDITEM83_WK]
+m_strName=STATUS-sordforn
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM83_WK
+
+@}}
+[FDITEM84_WK]
+m_strName=Valid-STATUS-sordforn
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM84_WK
+
+@}}
+[FDITEM85_WK]
+m_strName=STATUS-tcaumag
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM85_WK
+
+@}}
+[FDITEM86_WK]
 m_strName=Valid-STATUS-tcaumag
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM83_WK
+{{@DataItem_m_strDescriptionFDITEM86_WK
 
 @}}
 
@@ -1856,6 +1886,38 @@ BEGIN-TEXT
 END-TEXT
 END-DATA
 BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 0
+   PARENT            = ordforn-sol
+   ACTOBJ            = ordforn-sol
+   ENTRYPOINT        = BeforeDeclarative
+BEGIN-TEXT
+       SORDFORN-ERR SECTION.
+           use after error procedure on sordforn.
+           evaluate status-sordforn
+           when "35"
+                display message "File [SORDFORN] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [SORDFORN] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[SORDFORN] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "93"             
+           when "99"
+                set RecLocked to true
+           end-evaluate.
+                                                 
+END-TEXT
+END-DATA
+BEGIN-DATA
    BASETYPE          = 3
    PARAGRAPH         = COLORE-RIGA
 BEGIN-TEXT
@@ -1935,7 +1997,8 @@ BEGIN-DATA
 BEGIN-TEXT
            start tordforn key < tof-k-consegna
                  invalid continue
-             not invalid
+             not invalid                        
+                 move 1 to riga
                  perform until 1 = 2
                     read tordforn previous at end exit perform end-read
                     if tof-chiuso
@@ -1958,8 +2021,7 @@ BEGIN-TEXT
            move tof-cod-forn to cli-codice.
            set cli-tipo-F to true.
            read clienti no lock.
-
-           move 1 to riga
+                         
            move low-value  to rof-chiave.
            move tof-chiave to rof-chiave-testa.
            start rordforn key >= rof-chiave
@@ -2396,6 +2458,16 @@ BEGIN-TEXT
            when  9
            when 10 
                 set event-action to event-action-fail
+           when 11
+                inquire form1-gd-1(event-data-2, event-data-1), 
+                        cell-data in col-qta-soll
+                move col-qta-soll to old-qta
+           when 12
+                inquire form1-gd-1(event-data-2, event-data-1), 
+                        cell-data in col-data-soll
+                move col-data-soll to como-data
+                perform DATE-TO-FILE
+                move como-data to old-data
            end-evaluate.
 
 
@@ -2506,23 +2578,85 @@ BEGIN-TEXT
 
            evaluate event-data-1
            when 11                                                             
-                inquire form1-gd-1(event-data-2, 11), cell-data in col-qta-soll
-                modify  form1-gd-1(event-data-2, 11), cell-data col-qta-soll
-                read sordforn 
+                inquire form1-gd-1(event-data-2, 11), cell-data in col-qta-soll 
                 move col-qta-soll to sof-qta
-                rewrite sof-rec
+                if sof-qta not = old-qta
+                   move "sordforn" to geslock-nome-file
+                   initialize geslock-messaggio
+                   string "Il file dei solleciti" 
+                   x"0d0a""è in uso su altro terminale." delimited size
+                     into geslock-messaggio
+                   end-string
+                   perform until 1 = 2
+                      set RecLocked to false
+                      read sordforn lock
+                      if RecLocked 
+                         move 1     to geslock-v-termina
+                         move 1     to geslock-v-riprova
+                         move 0     to geslock-v-ignora
+                         call   "geslock" using geslock-linkage
+                         cancel "geslock"
+                         evaluate true
+                         when riprova continue
+                         when other   exit perform
+                         end-evaluate
+                      else
+                         exit perform
+                      end-if
+                   end-perform      
+                   if RecLocked
+                      move old-qta to col-qta-soll
+                   else
+                      move col-qta-soll to sof-qta
+                      rewrite sof-rec
+                      unlock sordforn all records
+                   end-if      
+                end-if
+                modify  form1-gd-1(event-data-2, 11), cell-data col-qta-soll   
            when 12 
                 inquire form1-gd-1(event-data-2, 12), cell-data in col-data-soll
                 move col-data-soll to como-data
                 perform DATE-FORMAT
+                perform DATE-TO-FILE
+                if como-data not = old-data
+
+                   move "sordforn" to geslock-nome-file
+                   initialize geslock-messaggio
+                   string "Il file dei solleciti" 
+                   x"0d0a""è in uso su altro terminale." delimited size
+                     into geslock-messaggio
+                   end-string
+                   perform until 1 = 2
+                      set RecLocked to false
+                      read sordforn lock
+                      if RecLocked 
+                         move 1     to geslock-v-termina
+                         move 1     to geslock-v-riprova
+                         move 0     to geslock-v-ignora
+                         call   "geslock" using geslock-linkage
+                         cancel "geslock"
+                         evaluate true
+                         when riprova continue
+                         when other   exit perform
+                         end-evaluate
+                      else
+                         exit perform
+                      end-if
+                   end-perform      
+                   if RecLocked
+                      move old-data to como-data
+                   else
+                      move como-data to sof-data-arr
+                      rewrite sof-rec
+                      unlock sordforn all records
+                   end-if   
+                end-if
+                perform DATE-TO-SCREEN
                 move como-data to col-data-soll
                 modify form1-gd-1(event-data-2, 12), cell-data col-data-soll
-                read sordforn 
-                move col-data-soll to como-data
-                perform DATE-TO-FILE
-                move como-data to sof-data-arr
-                rewrite sof-rec
            end-evaluate.
+           move 78-ID-form1-gd-1 to control-id
+           move 4 to accept-control.
       *****     evaluate event-data-1
       *****     when 9
       *****          inquire form1-gd-1(riga, 9), cell-data in new-qta
@@ -2557,7 +2691,11 @@ BEGIN-TEXT
            move como-data to ef-data-buf.
            display ef-data.
 
-           perform SCR-ELAB-OPEN-ROUTINE.
+           perform DATE-TO-FILE.
+           if como-data not = old-data-ini 
+              move como-data to old-data-ini
+              perform SCR-ELAB-OPEN-ROUTINE
+           end-if.
 END-TEXT
 END-DATA
 

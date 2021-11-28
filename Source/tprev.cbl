@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          tprev.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 14 ottobre 2020 10:23:17.
+       DATE-WRITTEN.        domenica 28 novembre 2021 00:54:57.
        REMARKS.
       *{TOTEM}END
 
@@ -173,7 +173,7 @@
            05 col-pren         PIC  x.
        77 Screen1-Handle
                   USAGE IS HANDLE OF WINDOW.
-       77 esegui_73x21-bmp PIC  S9(9)
+       77 esegui-73x21-bmp PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
        77 cod  PIC  z(3).
@@ -211,10 +211,10 @@
                   USAGE IS HANDLE OF WINDOW.
        77 Verdana8-Occidentale
                   USAGE IS HANDLE OF FONT.
-       77 freccia_su-bmp   PIC  S9(9)
+       77 freccia-su-bmp   PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
-       77 freccia_giu-bmp  PIC  S9(9)
+       77 freccia-giu-bmp  PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
        77 STATUS-promoeva  PIC  X(2).
@@ -280,7 +280,7 @@
        77 TMP-DataSet1-tmp-mtordini-BUF     PIC X(157).
        77 TMP-DataSet1-mrordini-BUF     PIC X(891).
        77 TMP-DataSet1-mtordini-BUF     PIC X(2122).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-destini-BUF     PIC X(3676).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
@@ -606,7 +606,7 @@
            SIZE 20,00 ,
            COLOR IS 2,
            FONT IS Verdana12B-Occidentale,
-           ID IS 7,
+           ID IS 8,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -623,7 +623,7 @@
            SIZE 20,00 ,
            COLOR IS 2,
            FONT IS Verdana12B-Occidentale,
-           ID IS 6,
+           ID IS 9,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
