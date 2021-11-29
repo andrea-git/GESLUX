@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=PAS004P-Ev-Before-Program
 AFTER_PROGRAM=I-O-BLOCCO
-PROGRAM_UNIQUE_CODE=TOTEM-7E5B1B234525-649-320356421
+PROGRAM_UNIQUE_CODE=TOTEM-7E5B1D103650-638-26427457
 
 {{@DESCRIPTION:
 
@@ -430,7 +430,7 @@ m_bFixed=1
 
 @}}
 [FDITEM34_WK]
-m_strName=hid-rof-chiave
+m_strName=hid-tos-chiave
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -438,7 +438,9 @@ m_bFixed=1
 
 @}}
 [FDITEM35_WK]
-m_strName=hid-rof-chiave-testa
+m_strName=hid-tos-data
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -446,19 +448,17 @@ m_bFixed=1
 
 @}}
 [FDITEM36_WK]
-m_strName=hid-rof-anno
-m_strRawPic=9(4)
-m_strPic=9(4)
-m_nItemLevel=15
+m_strName=hid-tos-tof-chiave
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM36_WK
 
 @}}
 [FDITEM37_WK]
-m_strName=hid-rof-numero
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=hid-tos-tof-anno
+m_strRawPic=9(4)
+m_strPic=9(4)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -466,36 +466,46 @@ m_bFixed=1
 
 @}}
 [FDITEM38_WK]
-m_strName=hid-rof-riga
-m_strRawPic=9(5)
-m_strPic=9(5)
-m_nItemLevel=10
+m_strName=hid-tos-tof-numero
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM38_WK
 
 @}}
 [FDITEM39_WK]
-m_strName=FILLER
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=1
+m_strName=hid-tos-tof-riga
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM39_WK
 
 @}}
 [FDITEM40_WK]
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM40_WK
+
+@}}
+[FDITEM41_WK]
 m_strName=CambioQta
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
 m_strFalse=0
-{{@DataItem_m_strDescriptionFDITEM40_WK
+{{@DataItem_m_strDescriptionFDITEM41_WK
 
 @}}
-[FDITEM41_WK]
+[FDITEM42_WK]
 m_strName=MESSAGGIO
 m_strRawPic=X(300)
 m_strPic=X(300)
@@ -503,40 +513,30 @@ m_strDefaultValue=SPACE
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM41_WK
-
-@}}
-[FDITEM42_WK]
-m_strName=Small-Font
-m_nUsage=37
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM42_WK
 
 @}}
 [FDITEM43_WK]
-m_strName=rec-grid
-m_nItemLevel=1
+m_strName=Small-Font
+m_nUsage=37
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM43_WK
 
 @}}
 [FDITEM44_WK]
-m_strName=col-mag-codice
-m_strRawPic=x(3)
-m_strPic=x(3)
-m_nItemLevel=5
+m_strName=rec-grid
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM44_WK
 
 @}}
 [FDITEM45_WK]
-m_strName=col-mag-descrizione
-m_strRawPic=X(50)
-m_strPic=X(50)
+m_strName=col-mag-codice
+m_strRawPic=x(3)
+m_strPic=x(3)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -544,9 +544,9 @@ m_bFixed=1
 
 @}}
 [FDITEM46_WK]
-m_strName=col-cli-codice
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=col-mag-descrizione
+m_strRawPic=X(50)
+m_strPic=X(50)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -554,9 +554,9 @@ m_bFixed=1
 
 @}}
 [FDITEM47_WK]
-m_strName=col-cli-ragsoc
-m_strRawPic=x(100)
-m_strPic=x(100)
+m_strName=col-cli-codice
+m_strRawPic=9(5)
+m_strPic=9(5)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -564,9 +564,9 @@ m_bFixed=1
 
 @}}
 [FDITEM48_WK]
-m_strName=col-tof-numero
-m_strRawPic=z(6)
-m_strPic=z(6)
+m_strName=col-cli-ragsoc
+m_strRawPic=x(100)
+m_strPic=x(100)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -574,9 +574,9 @@ m_bFixed=1
 
 @}}
 [FDITEM49_WK]
-m_strName=col-tof-data
-m_strRawPic=99/99/9999
-m_strPic=99/99/9999
+m_strName=col-tof-numero
+m_strRawPic=z(6)
+m_strPic=z(6)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -584,9 +584,9 @@ m_bFixed=1
 
 @}}
 [FDITEM50_WK]
-m_strName=col-rof-cod-articolo
-m_strRawPic=z(6)
-m_strPic=z(6)
+m_strName=col-tof-data
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -594,9 +594,9 @@ m_bFixed=1
 
 @}}
 [FDITEM51_WK]
-m_strName=col-art-descrizione
-m_strRawPic=x(100)
-m_strPic=x(100)
+m_strName=col-rof-cod-articolo
+m_strRawPic=z(6)
+m_strPic=z(6)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -604,9 +604,9 @@ m_bFixed=1
 
 @}}
 [FDITEM52_WK]
-m_strName=col-rof-qta
-m_strRawPic=---.---.--9
-m_strPic=---.---.--9
+m_strName=col-art-descrizione
+m_strRawPic=x(100)
+m_strPic=x(100)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -614,7 +614,7 @@ m_bFixed=1
 
 @}}
 [FDITEM53_WK]
-m_strName=col-rof-qta-eva
+m_strName=col-rof-qta
 m_strRawPic=---.---.--9
 m_strPic=---.---.--9
 m_nItemLevel=5
@@ -624,7 +624,7 @@ m_bFixed=1
 
 @}}
 [FDITEM54_WK]
-m_strName=col-qta-soll
+m_strName=col-rof-qta-eva
 m_strRawPic=---.---.--9
 m_strPic=---.---.--9
 m_nItemLevel=5
@@ -634,9 +634,9 @@ m_bFixed=1
 
 @}}
 [FDITEM55_WK]
-m_strName=col-data-soll
-m_strRawPic=99/99/9999
-m_strPic=99/99/9999
+m_strName=col-qta-soll
+m_strRawPic=---.---.--9
+m_strPic=---.---.--9
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -644,15 +644,25 @@ m_bFixed=1
 
 @}}
 [FDITEM56_WK]
-m_strName=Screen1-Handle
-m_nUsage=24
-m_nItemLevel=77
+m_strName=col-data-soll
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM56_WK
 
 @}}
 [FDITEM57_WK]
+m_strName=Screen1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM57_WK
+
+@}}
+[FDITEM58_WK]
 m_strName=esegui-73x21-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -661,22 +671,12 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM57_WK
-
-@}}
-[FDITEM58_WK]
-m_strName=Default-Font
-m_nUsage=38
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM58_WK
 
 @}}
 [FDITEM59_WK]
-m_strName=lab-des2
-m_strRawPic=x(50)
-m_strPic=x(50)
+m_strName=Default-Font
+m_nUsage=38
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -684,75 +684,76 @@ m_bFixed=1
 
 @}}
 [FDITEM60_WK]
-m_strName=FILLER
-m_strRawPic=XX
-m_strPic=XX
-m_nItemLevel=1
+m_strName=lab-des2
+m_strRawPic=x(50)
+m_strPic=x(50)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM60_WK
 
 @}}
 [FDITEM61_WK]
+m_strName=FILLER
+m_strRawPic=XX
+m_strPic=XX
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM61_WK
+
+@}}
+[FDITEM62_WK]
 m_strName=ricarica
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="SI"
 m_strFalse="NO"
-{{@DataItem_m_strDescriptionFDITEM61_WK
+{{@DataItem_m_strDescriptionFDITEM62_WK
 
 @}}
-[FDITEM62_WK]
+[FDITEM63_WK]
 m_strName=STATUS-articoli
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM62_WK
+{{@DataItem_m_strDescriptionFDITEM63_WK
 
 @}}
-[FDITEM63_WK]
+[FDITEM64_WK]
 m_strName=Valid-STATUS-articoli
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM63_WK
+{{@DataItem_m_strDescriptionFDITEM64_WK
 
 @}}
-[FDITEM64_WK]
+[FDITEM65_WK]
 m_strName=STATUS-progmag
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM64_WK
+{{@DataItem_m_strDescriptionFDITEM65_WK
 
 @}}
-[FDITEM65_WK]
+[FDITEM66_WK]
 m_strName=Valid-STATUS-progmag
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM65_WK
-
-@}}
-[FDITEM66_WK]
-m_strName=scr-elab-SF-HANDLE
-m_nUsage=24
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM66_WK
 
 @}}
 [FDITEM67_WK]
-m_strName=Verdana12B-Occidentale
-m_nUsage=26
+m_strName=scr-elab-SF-HANDLE
+m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -760,8 +761,8 @@ m_bFixed=1
 
 @}}
 [FDITEM68_WK]
-m_strName=scr-elab-HANDLE
-m_nUsage=24
+m_strName=Verdana12B-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -769,8 +770,8 @@ m_bFixed=1
 
 @}}
 [FDITEM69_WK]
-m_strName=Verdana8-Occidentale
-m_nUsage=26
+m_strName=scr-elab-HANDLE
+m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -778,9 +779,8 @@ m_bFixed=1
 
 @}}
 [FDITEM70_WK]
-m_strName=STATUS-tmagaz
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=Verdana8-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -788,26 +788,27 @@ m_bFixed=1
 
 @}}
 [FDITEM71_WK]
+m_strName=STATUS-tmagaz
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM71_WK
+
+@}}
+[FDITEM72_WK]
 m_strName=Valid-STATUS-tmagaz
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM71_WK
-
-@}}
-[FDITEM72_WK]
-m_strName=Large-Font
-m_nUsage=35
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM72_WK
 
 @}}
 [FDITEM73_WK]
-m_strName=Medium-Font
-m_nUsage=36
+m_strName=Large-Font
+m_nUsage=35
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -815,8 +816,8 @@ m_bFixed=1
 
 @}}
 [FDITEM74_WK]
-m_strName=Verdana8B-Occidentale
-m_nUsage=26
+m_strName=Medium-Font
+m_nUsage=36
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -824,9 +825,8 @@ m_bFixed=1
 
 @}}
 [FDITEM75_WK]
-m_strName=STATUS-clienti
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=Verdana8B-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -834,15 +834,25 @@ m_bFixed=1
 
 @}}
 [FDITEM76_WK]
+m_strName=STATUS-clienti
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM76_WK
+
+@}}
+[FDITEM77_WK]
 m_strName=Valid-STATUS-clienti
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM76_WK
+{{@DataItem_m_strDescriptionFDITEM77_WK
 
 @}}
-[FDITEM77_WK]
+[FDITEM78_WK]
 m_strName=AUTO-ID
 m_strRawPic=9(6)
 m_strPic=9(6)
@@ -850,61 +860,51 @@ m_strDefaultValue=1
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM77_WK
+{{@DataItem_m_strDescriptionFDITEM78_WK
 
 @}}
-[FDITEM78_WK]
+[FDITEM79_WK]
 m_strName=STATUS-rordforn
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM78_WK
+{{@DataItem_m_strDescriptionFDITEM79_WK
 
 @}}
-[FDITEM79_WK]
+[FDITEM80_WK]
 m_strName=Valid-STATUS-rordforn
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM79_WK
+{{@DataItem_m_strDescriptionFDITEM80_WK
 
 @}}
-[FDITEM80_WK]
+[FDITEM81_WK]
 m_strName=STATUS-tordforn
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM80_WK
+{{@DataItem_m_strDescriptionFDITEM81_WK
 
 @}}
-[FDITEM81_WK]
+[FDITEM82_WK]
 m_strName=Valid-STATUS-tordforn
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM81_WK
-
-@}}
-[FDITEM82_WK]
-m_strName=ef-data-buf
-m_strRawPic=99/99/9999
-m_strPic=99/99/9999
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM82_WK
 
 @}}
 [FDITEM83_WK]
-m_strName=STATUS-sordforn
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=ef-data-buf
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -912,31 +912,70 @@ m_bFixed=1
 
 @}}
 [FDITEM84_WK]
+m_strName=STATUS-sordforn
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM84_WK
+
+@}}
+[FDITEM85_WK]
 m_strName=Valid-STATUS-sordforn
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM84_WK
+{{@DataItem_m_strDescriptionFDITEM85_WK
 
 @}}
-[FDITEM85_WK]
+[FDITEM86_WK]
 m_strName=STATUS-tcaumag
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM85_WK
+{{@DataItem_m_strDescriptionFDITEM86_WK
 
 @}}
-[FDITEM86_WK]
+[FDITEM87_WK]
 m_strName=Valid-STATUS-tcaumag
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM86_WK
+{{@DataItem_m_strDescriptionFDITEM87_WK
+
+@}}
+[FDITEM88_WK]
+m_strName=path-tmp-ordforn-sol
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM88_WK
+
+@}}
+[FDITEM89_WK]
+m_strName=STATUS-tmp-ordforn-sol
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM89_WK
+
+@}}
+[FDITEM90_WK]
+m_strName=Valid-STATUS-tmp-ordforn-sol
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM90_WK
 
 @}}
 
@@ -1631,21 +1670,21 @@ BEGIN-DATA
    TEXTMODE          = 0
    ENTRYPOINT        = BeforeAccept
 BEGIN-TEXT
+           perform INIT.
+           
            accept como-data from century-date.
+           move como-data to old-data-ini.
            perform DATE-TO-SCREEN.
            move como-data to ef-data-buf.
            display ef-data.
 
            perform FORM1-GD-1-CONTENT.
-           
-           move 2 to chiave.
-           perform LOAD-RECORD.
+                                          
+           perform SCR-ELAB-OPEN-ROUTINE.
 
            move 2  to event-data-2.
            perform SPOSTAMENTO.
-
-           perform INIT.
-           set CambioQta to false.
+                        
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -1992,33 +2031,30 @@ BEGIN-DATA
    BASETYPE          = 3
    PARAGRAPH         = LOAD-RECORD
 BEGIN-TEXT
-           start tordforn key < tof-k-consegna
+           close       tmp-ordforn-sol.
+           open output tmp-ordforn-sol.
+           close       tmp-ordforn-sol.
+           open i-o    tmp-ordforn-sol.
+
+           move low-value to tof-rec.
+           set tof-inserito to true.
+           start tordforn key >= tof-k-stato
                  invalid continue
-             not invalid                        
-                 move 1 to riga
+             not invalid
                  perform until 1 = 2
-                    read tordforn previous at end exit perform end-read
+                    read tordforn next no lock at end exit perform end-read
                     if tof-chiuso
-                       exit perform cycle
+                       exit perform
                     end-if              
                     perform COUNTER-VIDEO
                     perform LOOP-RIGHE
                  end-perform
            end-start.
-           
-           modify form1-gd-1, mass-update = 0.
+
+           perform CARICA-GRIGLIA.   
 
       ***---
-       LOOP-RIGHE.           
-           move tof-causale to tca-codice.
-           read tcaumag no lock.
-           move tca-cod-magaz to mag-codice.
-           read tmagaz no lock.
-
-           move tof-cod-forn to cli-codice.
-           set cli-tipo-F to true.
-           read clienti no lock.
-                         
+       LOOP-RIGHE.       
            move low-value  to rof-chiave.
            move tof-chiave to rof-chiave-testa.
            start rordforn key >= rof-chiave
@@ -2030,32 +2066,97 @@ BEGIN-TEXT
                        exit perform
                     end-if   
 
-                    perform COUNTER-VIDEO
+                    perform COUNTER-VIDEO 
+
+                    move 0 to tos-data 
+                    move rof-chiave       to sof-chiave
+                    read sordforn no lock
+                         invalid move 0 to tos-data tos-qta-soll
+                     not invalid move sof-data-arr to tos-data
+                                 move sof-qta      to tos-qta-soll
+                    end-read
+                    if tos-data > 0
+                       set tos-data-from-soll-r to true
+                    else
+                       move 0 to sof-prog
+                       read sordforn no lock
+                            invalid move 0 to tos-data tos-qta-soll
+                        not invalid move sof-data-arr to tos-data
+                                    move sof-qta      to tos-qta-soll
+                       end-read
+                       if tos-data > 0
+                          set tos-data-from-soll-t to true
+                       else        
+                          move tof-data-consegna to tos-data
+                          set tos-data-from-tordforn to true
+                       end-if
+                    end-if
+
+                    if tos-data >= old-data-ini
+                       exit perform cycle
+                    end-if
+       
+                    if tos-qta-soll = 0
+                       compute tos-qta-soll = 
+                               rof-qta-ord -
+                               rof-qta-evasa
+                    end-if
+
+                    move rof-chiave       to tos-tof-chiave
+                    move mag-codice       to tos-mag-codice
+                    move tof-cod-forn     to tos-cod-forn
+                    move tof-causale      to tos-causale
+                    move tof-data-ordine  to tos-data-ordine
+                    move rof-cod-articolo to tos-cod-articolo
+                    move rof-qta-ord      to tos-qta-ord 
+                    move rof-qta-evasa    to tos-qta-ev
+                    
+                    write tos-rec
+                 end-perform
+           end-start.
+
+      ***---
+       CARICA-GRIGLIA.
+           modify form1-gd-1, mass-update = 1, reset-grid = 1.
+           perform FORM1-GD-1-CONTENT.
+
+           move 1 to riga.
+
+           move high-value to tos-rec.
+           start tmp-ordforn-sol key <= tos-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read tmp-ordforn-sol previous at end exit perform end-read               
+                    move tos-causale to tca-codice
+                    read tcaumag no lock
+                    move tca-cod-magaz to mag-codice
+                    read tmagaz no lock
+
+                    move tos-cod-forn to cli-codice
+                    set cli-tipo-F to true
+                    read clienti no lock      
 
                     add 1 to riga
                     move mag-codice       to col-mag-codice
                     move mag-descrizione  to col-mag-descrizione
-                    move tof-cod-forn     to col-cli-codice
+                    move tos-cod-forn     to col-cli-codice
                     move cli-ragsoc-1     to col-cli-ragsoc
-                    move tof-numero       to col-tof-numero
-                    move tof-data-ordine  to como-data
+                    move tos-tof-numero   to col-tof-numero
+                    move tos-data-ordine  to como-data
                     perform DATE-TO-SCREEN
                     move como-data        to col-tof-data
-                    move rof-cod-articolo to col-rof-cod-articolo art-codice
+                    move tos-cod-articolo to col-rof-cod-articolo art-codice
                     read articoli no lock
                     move art-descrizione  to col-art-descrizione
-                    move rof-qta-ord      to col-rof-qta
-                    move rof-qta-evasa    to col-rof-qta-eva
+                    move tos-qta-ord      to col-rof-qta
+                    move tos-qta-ev       to col-rof-qta-eva
 
-                    move rof-chiave to sof-chiave
-                    read sordforn no lock
-                         invalid move 0 to sof-data-arr sof-qta
-                    end-read
-                    move sof-data-arr to como-data
+                    move tos-data         to como-data
                     perform DATE-TO-SCREEN
-                    move como-data to col-data-soll
+                    move como-data        to col-data-soll
 
-                    move sof-qta to col-qta-soll
+                    move tos-qta-soll     to col-qta-soll
                                  
                     modify form1-gd-1(riga, 1),  cell-data col-mag-codice
                     modify form1-gd-1(riga, 2),  cell-data col-mag-descrizione
@@ -2070,7 +2171,7 @@ BEGIN-TEXT
                     modify form1-gd-1(riga, 11), cell-data col-qta-soll 
                     modify form1-gd-1(riga, 12), cell-data col-data-soll
 
-                    move rof-chiave to hid-rof-chiave
+                    move tos-chiave to hid-tos-chiave
                     modify form1-gd-1(riga, 1), hidden-data gruppo-hidden    
 
                     if colore = 257
@@ -2082,6 +2183,10 @@ BEGIN-TEXT
 
                  end-perform
            end-start.
+
+
+
+           modify form1-gd-1, mass-update = 0.
 
       *****     close promoeva.
       *****     move user-codi       to link-tprev-user.
@@ -2424,10 +2529,77 @@ BEGIN-TEXT
 END-TEXT
 END-DATA
 BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = REWRITE-SOLLECITI
+BEGIN-TEXT
+           move "sordforn" to geslock-nome-file
+           initialize geslock-messaggio
+           string "Il file dei solleciti" 
+           x"0d0a""è in uso su altro terminale." delimited size
+             into geslock-messaggio
+           end-string
+           perform until 1 = 2
+              set RecLocked to false
+              read sordforn lock
+              if RecLocked 
+                 move 1     to geslock-v-termina
+                 move 1     to geslock-v-riprova
+                 move 0     to geslock-v-ignora
+                 call   "geslock" using geslock-linkage
+                 cancel "geslock"
+                 evaluate true
+                 when riprova continue
+                 when other   exit perform
+                 end-evaluate
+              else
+                 exit perform
+              end-if
+           end-perform      
+           if RecLocked
+              move old-qta  to col-qta-soll
+              move old-data to col-data-soll
+           else             
+              inquire form1-gd-1(event-data-2, 11), cell-data in col-qta-soll
+              move col-qta-soll to sof-qta
+              inquire form1-gd-1(event-data-2, 12), cell-data in col-data-soll
+              move col-data-soll to como-data
+              perform DATE-TO-FILE
+              move como-data to sof-data-arr
+
+              rewrite sof-rec
+              unlock sordforn all records
+           end-if      .
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = WRITE-SOLLECITI
+BEGIN-TEXT
+           initialize sof-rec replacing numeric data by zeroes
+                                   alphanumeric data by spaces.
+           move tos-tof-chiave to sof-chiave.
+           accept sof-data-creazione from century-date.
+           accept sof-ora-creazione  from time.
+           move user-codi to sof-utente-creazione.
+           inquire form1-gd-1(event-data-2, 11), cell-data in col-qta-soll
+           move col-qta-soll to sof-qta
+           inquire form1-gd-1(event-data-2, 12), cell-data in col-data-soll
+           move col-data-soll to como-data
+           perform DATE-TO-FILE
+           move como-data to sof-data-arr
+           write sof-rec
+
+           set tos-data-from-soll-r to true.
+           rewrite tos-rec.
+END-TEXT
+END-DATA
+BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = I-O-BLOCCO
 BEGIN-TEXT
       *<<** Customized_Default, SP-G, CST-BLOCKPGM **>>                  
+           close       tmp-ordforn-sol.
+           delete file tmp-ordforn-sol.
 
 END-TEXT
 END-DATA
@@ -2436,6 +2608,21 @@ BEGIN-DATA
    PARAGRAPH         = PAS004P-Ev-Before-Program
 BEGIN-TEXT
       *<<** Customized_Default, SP-G, CST-BLOCKPGM **>>       
+           accept como-data from century-date.
+           accept como-ora  from time.
+           accept  path-tmp-ordforn-sol from environment "PATH_ST".
+           inspect path-tmp-ordforn-sol replacing trailing spaces by low-value.
+           string  path-tmp-ordforn-sol delimited low-value                    
+                   "TMP-ORDFORN-SOL_"   delimited size
+                   como-data            delimited size
+                   "_"                  delimited size
+                   como-ora             delimited size
+              into path-tmp-ordforn-sol 
+           end-string.
+           inspect path-tmp-ordforn-sol replacing trailing low-value by spaces.
+           open output tmp-ordforn-sol.
+           close       tmp-ordforn-sol.
+           open i-o    tmp-ordforn-sol.
 
 END-TEXT
 END-DATA
@@ -2571,82 +2758,48 @@ BEGIN-DATA
    PARAGRAPH         = form1-gd-1-Ev-Msg-Finish-Entry
 BEGIN-TEXT
            inquire form1-gd-1(event-data-2, 1), hidden-data in gruppo-hidden
-           move hid-rof-chiave to sof-chiave
+           move hid-tos-chiave to tos-chiave
+           read tmp-ordforn-sol no lock.
 
            evaluate event-data-1
            when 11                                                             
                 inquire form1-gd-1(event-data-2, 11), cell-data in col-qta-soll 
                 move col-qta-soll to sof-qta
                 if sof-qta not = old-qta
-                   move "sordforn" to geslock-nome-file
-                   initialize geslock-messaggio
-                   string "Il file dei solleciti" 
-                   x"0d0a""è in uso su altro terminale." delimited size
-                     into geslock-messaggio
-                   end-string
-                   perform until 1 = 2
-                      set RecLocked to false
-                      read sordforn lock
-                      if RecLocked 
-                         move 1     to geslock-v-termina
-                         move 1     to geslock-v-riprova
-                         move 0     to geslock-v-ignora
-                         call   "geslock" using geslock-linkage
-                         cancel "geslock"
-                         evaluate true
-                         when riprova continue
-                         when other   exit perform
-                         end-evaluate
-                      else
-                         exit perform
-                      end-if
-                   end-perform      
-                   if RecLocked
-                      move old-qta to col-qta-soll
-                   else
-                      move col-qta-soll to sof-qta
-                      rewrite sof-rec
-                      unlock sordforn all records
-                   end-if      
+                   evaluate true
+                   when tos-data-from-tordforn
+                        move tos-tof-chiave to tof-chiave
+                        perform WRITE-SOLLECITI
+                   when tos-data-from-soll-t
+                        move tos-tof-chiave to sof-chiave
+                        move 0 to sof-prog
+                        perform REWRITE-SOLLECITI
+                   when tos-data-from-soll-r
+                        move tos-tof-chiave to sof-chiave
+                        perform REWRITE-SOLLECITI
+                   end-evaluate 
                 end-if
                 modify  form1-gd-1(event-data-2, 11), cell-data col-qta-soll   
            when 12 
                 inquire form1-gd-1(event-data-2, 12), cell-data in col-data-soll
                 move col-data-soll to como-data
                 perform DATE-FORMAT
+                move como-data to col-data-soll
+                modify form1-gd-1(event-data-2, 12), cell-data col-data-soll
                 perform DATE-TO-FILE
                 if como-data not = old-data
-
-                   move "sordforn" to geslock-nome-file
-                   initialize geslock-messaggio
-                   string "Il file dei solleciti" 
-                   x"0d0a""è in uso su altro terminale." delimited size
-                     into geslock-messaggio
-                   end-string
-                   perform until 1 = 2
-                      set RecLocked to false
-                      read sordforn lock
-                      if RecLocked 
-                         move 1     to geslock-v-termina
-                         move 1     to geslock-v-riprova
-                         move 0     to geslock-v-ignora
-                         call   "geslock" using geslock-linkage
-                         cancel "geslock"
-                         evaluate true
-                         when riprova continue
-                         when other   exit perform
-                         end-evaluate
-                      else
-                         exit perform
-                      end-if
-                   end-perform      
-                   if RecLocked
-                      move old-data to como-data
-                   else
-                      move como-data to sof-data-arr
-                      rewrite sof-rec
-                      unlock sordforn all records
-                   end-if   
+                   evaluate true
+                   when tos-data-from-tordforn
+                        move tos-tof-chiave to tof-chiave
+                        perform WRITE-SOLLECITI
+                   when tos-data-from-soll-t
+                        move tos-tof-chiave to sof-chiave
+                        move 0 to sof-prog
+                        perform REWRITE-SOLLECITI
+                   when tos-data-from-soll-r
+                        move tos-tof-chiave to sof-chiave
+                        perform REWRITE-SOLLECITI
+                   end-evaluate 
                 end-if
                 perform DATE-TO-SCREEN
                 move como-data to col-data-soll
@@ -2654,6 +2807,13 @@ BEGIN-TEXT
            end-evaluate.
            move 78-ID-form1-gd-1 to control-id
            move 4 to accept-control.
+
+
+
+
+
+
+
       *****     evaluate event-data-1
       *****     when 9
       *****          inquire form1-gd-1(riga, 9), cell-data in new-qta
@@ -2776,8 +2936,8 @@ PROP_DOCU_RULER_EBL=0
 PROP_DOCU_GRID_EBL=0
 PROP_DOCU_GRID=20
 PROP_DOCU_ALIGN=0
-REL_SYM_SIZE=52
-REL_SYM_INFO_L=8
+REL_SYM_SIZE=58
+REL_SYM_INFO_L=9
 REL_SYM_INFO_X0=2301
 REL_SYM_INFO_Y0=1309992118
 REL_SYM_INFO_X1=2301
@@ -2794,6 +2954,8 @@ REL_SYM_INFO_X6=2301
 REL_SYM_INFO_Y6=845488315
 REL_SYM_INFO_X7=2301
 REL_SYM_INFO_Y7=1465677227
+REL_SYM_INFO_X8=2301
+REL_SYM_INFO_Y8=1664277394
 
 [DRAW_BASESYMBOL_2301_1309992118]
 OBJ_NAME=2301
@@ -3179,6 +3341,54 @@ PROP_TRACK_COLOR=12632256
 REL_SYM_SIZE=4
 REL_SYM_INFO_L=0
 
+[DRAW_BASESYMBOL_2301_1664277394]
+OBJ_NAME=2301
+OBJ_ID=1664277394
+KIND=1
+{{@LABEL_2301_1664277394
+tmp-ordforn-sol
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=2880
+TOP=566
+RIGHT=3280
+BOTTOM=788
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
 [DMD_DOCUMENT_0_2113416747]
 OBJ_NAME=0
 OBJ_ID=2113416747
@@ -3433,6 +3643,37 @@ DSN_INFO_END_VALUE=
 DSN_INFO_PRIMARY=0
 DSN_INFO_OPEN=1
 DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1664277394]
+OBJ_NAME=0
+OBJ_ID=1664277394
+REL_M_OBJ_ID=0
+ENTITY=tmp-ordforn-sol
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=2
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tos-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1664277394
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
 DSN_INFO_EXCLUSIVE=0
 DSN_INFO_IS_LOGICAL=0
 DSN_INFO_LOGICAL_FDNAME=

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordforn-sol.
        AUTHOR.              andre.
-       DATE-WRITTEN.        domenica 28 novembre 2021 01:14:23.
+       DATE-WRITTEN.        lunedì 29 novembre 2021 14:34:26.
        REMARKS.
       *{TOTEM}END
 
@@ -35,6 +35,7 @@
            COPY "tordforn.sl".
            COPY "sordforn.sl".
            COPY "tcaumag.sl".
+           COPY "tmp-ordforn-sol.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -47,6 +48,7 @@
            COPY "tordforn.fd".
            COPY "sordforn.fd".
            COPY "tcaumag.fd".
+           COPY "tmp-ordforn-sol.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -92,11 +94,12 @@
        77 FILLER           PIC  9.
            88 BeginEntry VALUE IS 1    WHEN SET TO FALSE  0. 
        01 gruppo-hidden.
-           05 hid-rof-chiave.
-               10 hid-rof-chiave-testa.
-                   15 hid-rof-anno     PIC  9(4).
-                   15 hid-rof-numero   PIC  9(8).
-               10 hid-rof-riga     PIC  9(5).
+           05 hid-tos-chiave.
+               10 hid-tos-data     PIC  9(8).
+               10 hid-tos-tof-chiave.
+                   15 hid-tos-tof-anno PIC  9(4).
+                   15 hid-tos-tof-numero           PIC  9(8).
+                   15 hid-tos-tof-riga PIC  9(5).
        01 FILLER           PIC  9.
            88 CambioQta VALUE IS 1    WHEN SET TO FALSE  0. 
        77 MESSAGGIO        PIC  X(300)
@@ -159,6 +162,9 @@
            88 Valid-STATUS-sordforn VALUE IS "00" THRU "09". 
        77 STATUS-tcaumag   PIC  X(2).
            88 Valid-STATUS-tcaumag VALUE IS "00" THRU "09". 
+       77 path-tmp-ordforn-sol         PIC  X(256).
+       77 STATUS-tmp-ordforn-sol       PIC  X(2).
+           88 Valid-STATUS-tmp-ordforn-sol VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -179,6 +185,7 @@
        77 TMP-DataSet1-tordforn-BUF     PIC X(556).
        77 TMP-DataSet1-sordforn-BUF     PIC X(1139).
        77 TMP-DataSet1-tcaumag-BUF     PIC X(254).
+       77 TMP-DataSet1-tmp-ordforn-sol-BUF     PIC X(76).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -224,6 +231,11 @@
        77 DataSet1-tcaumag-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tcaumag-KEY-Asc  VALUE "A".
           88 DataSet1-tcaumag-KEY-Desc VALUE "D".
+       77 DataSet1-tmp-ordforn-sol-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tmp-ordforn-sol-LOCK  VALUE "Y".
+       77 DataSet1-tmp-ordforn-sol-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tmp-ordforn-sol-KEY-Asc  VALUE "A".
+          88 DataSet1-tmp-ordforn-sol-KEY-Desc VALUE "D".
 
        77 articoli-art-k1-SPLITBUF  PIC X(51).
        77 articoli-art-k-frn-SPLITBUF  PIC X(16).
@@ -564,6 +576,8 @@
            PERFORM OPEN-tordforn
            PERFORM OPEN-sordforn
            PERFORM OPEN-tcaumag
+      *    tmp-ordforn-sol OPEN MODE IS FALSE
+      *    PERFORM OPEN-tmp-ordforn-sol
       *    After Open
            .
 
@@ -670,6 +684,25 @@
       * <TOTEM:END>
            .
 
+       OPEN-tmp-ordforn-sol.
+      * <TOTEM:EPT. INIT:ordforn-sol, FD:tmp-ordforn-sol, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  I-O tmp-ordforn-sol
+           IF STATUS-tmp-ordforn-sol = "35"
+              OPEN OUTPUT tmp-ordforn-sol
+                IF Valid-STATUS-tmp-ordforn-sol
+                   CLOSE tmp-ordforn-sol
+                   OPEN I-O tmp-ordforn-sol
+                END-IF
+           END-IF
+           IF NOT Valid-STATUS-tmp-ordforn-sol
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:ordforn-sol, FD:tmp-ordforn-sol, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-articoli
@@ -680,6 +713,8 @@
            PERFORM CLOSE-tordforn
            PERFORM CLOSE-sordforn
            PERFORM CLOSE-tcaumag
+      *    tmp-ordforn-sol CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-tmp-ordforn-sol
       *    After Close
            .
 
@@ -729,6 +764,11 @@
       * <TOTEM:EPT. INIT:ordforn-sol, FD:tcaumag, BeforeClose>
       * <TOTEM:END>
            CLOSE tcaumag
+           .
+
+       CLOSE-tmp-ordforn-sol.
+      * <TOTEM:EPT. INIT:ordforn-sol, FD:tmp-ordforn-sol, BeforeClose>
+      * <TOTEM:END>
            .
 
        articoli-art-k1-MERGE-SPLITBUF.
@@ -2161,6 +2201,163 @@
       * <TOTEM:END>
            .
 
+       DataSet1-tmp-ordforn-sol-INITSTART.
+           IF DataSet1-tmp-ordforn-sol-KEY-Asc
+              MOVE Low-Value TO tos-chiave
+           ELSE
+              MOVE High-Value TO tos-chiave
+           END-IF
+           .
+
+       DataSet1-tmp-ordforn-sol-INITEND.
+           IF DataSet1-tmp-ordforn-sol-KEY-Asc
+              MOVE High-Value TO tos-chiave
+           ELSE
+              MOVE Low-Value TO tos-chiave
+           END-IF
+           .
+
+      * tmp-ordforn-sol
+       DataSet1-tmp-ordforn-sol-START.
+           IF DataSet1-tmp-ordforn-sol-KEY-Asc
+              START tmp-ordforn-sol KEY >= tos-chiave
+           ELSE
+              START tmp-ordforn-sol KEY <= tos-chiave
+           END-IF
+           .
+
+       DataSet1-tmp-ordforn-sol-START-NOTGREATER.
+           IF DataSet1-tmp-ordforn-sol-KEY-Asc
+              START tmp-ordforn-sol KEY <= tos-chiave
+           ELSE
+              START tmp-ordforn-sol KEY >= tos-chiave
+           END-IF
+           .
+
+       DataSet1-tmp-ordforn-sol-START-GREATER.
+           IF DataSet1-tmp-ordforn-sol-KEY-Asc
+              START tmp-ordforn-sol KEY > tos-chiave
+           ELSE
+              START tmp-ordforn-sol KEY < tos-chiave
+           END-IF
+           .
+
+       DataSet1-tmp-ordforn-sol-START-LESS.
+           IF DataSet1-tmp-ordforn-sol-KEY-Asc
+              START tmp-ordforn-sol KEY < tos-chiave
+           ELSE
+              START tmp-ordforn-sol KEY > tos-chiave
+           END-IF
+           .
+
+       DataSet1-tmp-ordforn-sol-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-ordforn-sol, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-ordforn-sol, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-tmp-ordforn-sol-LOCK
+              READ tmp-ordforn-sol WITH LOCK 
+              KEY tos-chiave
+           ELSE
+              READ tmp-ordforn-sol WITH NO LOCK 
+              KEY tos-chiave
+           END-IF
+           MOVE STATUS-tmp-ordforn-sol TO TOTEM-ERR-STAT 
+           MOVE "tmp-ordforn-sol" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-ordforn-sol, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-ordforn-sol, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmp-ordforn-sol-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-ordforn-sol, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-ordforn-sol, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-tmp-ordforn-sol-KEY-Asc
+              IF DataSet1-tmp-ordforn-sol-LOCK
+                 READ tmp-ordforn-sol NEXT WITH LOCK
+              ELSE
+                 READ tmp-ordforn-sol NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tmp-ordforn-sol-LOCK
+                 READ tmp-ordforn-sol PREVIOUS WITH LOCK
+              ELSE
+                 READ tmp-ordforn-sol PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tmp-ordforn-sol TO TOTEM-ERR-STAT
+           MOVE "tmp-ordforn-sol" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-ordforn-sol, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-ordforn-sol, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmp-ordforn-sol-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-ordforn-sol, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-ordforn-sol, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-tmp-ordforn-sol-KEY-Asc
+              IF DataSet1-tmp-ordforn-sol-LOCK
+                 READ tmp-ordforn-sol PREVIOUS WITH LOCK
+              ELSE
+                 READ tmp-ordforn-sol PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tmp-ordforn-sol-LOCK
+                 READ tmp-ordforn-sol NEXT WITH LOCK
+              ELSE
+                 READ tmp-ordforn-sol NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tmp-ordforn-sol TO TOTEM-ERR-STAT
+           MOVE "tmp-ordforn-sol" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-ordforn-sol, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-ordforn-sol, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmp-ordforn-sol-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-ordforn-sol, BeforeWrite>
+      * <TOTEM:END>
+           WRITE tos-rec OF tmp-ordforn-sol.
+           MOVE STATUS-tmp-ordforn-sol TO TOTEM-ERR-STAT
+           MOVE "tmp-ordforn-sol" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-ordforn-sol, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmp-ordforn-sol-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-ordforn-sol, BeforeRewrite>
+      * <TOTEM:END>
+           REWRITE tos-rec OF tmp-ordforn-sol.
+           MOVE STATUS-tmp-ordforn-sol TO TOTEM-ERR-STAT
+           MOVE "tmp-ordforn-sol" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-ordforn-sol, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmp-ordforn-sol-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-ordforn-sol, BeforeDelete>
+      * <TOTEM:END>
+           DELETE tmp-ordforn-sol.
+           MOVE STATUS-tmp-ordforn-sol TO TOTEM-ERR-STAT
+           MOVE "tmp-ordforn-sol" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-ordforn-sol, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE art-rec OF articoli
            INITIALIZE prg-rec OF progmag
@@ -2170,6 +2367,7 @@
            INITIALIZE tof-rec OF tordforn
            INITIALIZE sof-rec OF sordforn
            INITIALIZE tca-rec OF tcaumag
+           INITIALIZE tos-rec OF tmp-ordforn-sol
            .
 
 
@@ -2285,6 +2483,14 @@
                          ALPHABETIC    DATA BY SPACES
            .
 
+      * FD's Initialize Paragraph
+       DataSet1-tmp-ordforn-sol-INITREC.
+           INITIALIZE tos-rec OF tmp-ordforn-sol
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
       *
        DataSet1-DISPATCH-BUFTOFLD.
            EVALUATE TOTEM-Form-Index ALSO TOTEM-Frame-Index
@@ -2338,21 +2544,20 @@
 
        Form1-PROC.
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforeAccept>
+           perform INIT.
+           
            accept como-data from century-date.
+           move como-data to old-data-ini.
            perform DATE-TO-SCREEN.
            move como-data to ef-data-buf.
            display ef-data.
 
            perform FORM1-GD-1-CONTENT.
-           
-           move 2 to chiave.
-           perform LOAD-RECORD.
+                                          
+           perform SCR-ELAB-OPEN-ROUTINE.
 
            move 2  to event-data-2.
            perform SPOSTAMENTO.
-
-           perform INIT.
-           set CambioQta to false.
 
            .
       * <TOTEM:END>
@@ -3277,33 +3482,31 @@
 
        LOAD-RECORD.
       * <TOTEM:PARA. LOAD-RECORD>
-           start tordforn key < tof-k-consegna
+           close       tmp-ordforn-sol.
+           open output tmp-ordforn-sol.
+           close       tmp-ordforn-sol.
+           open i-o    tmp-ordforn-sol.
+
+           move low-value to tof-rec.
+           set tof-inserito to true.
+           start tordforn key >= tof-k-stato
                  invalid continue
-             not invalid                        
-                 move 1 to riga
+             not invalid
                  perform until 1 = 2
-                    read tordforn previous at end exit perform end-read
+                    read tordforn next no lock at end exit perform 
+           end-read
                     if tof-chiuso
-                       exit perform cycle
+                       exit perform
                     end-if              
                     perform COUNTER-VIDEO
                     perform LOOP-RIGHE
                  end-perform
            end-start.
-           
-           modify form1-gd-1, mass-update = 0.
+
+           perform CARICA-GRIGLIA.   
 
       ***---
-       LOOP-RIGHE.           
-           move tof-causale to tca-codice.
-           read tcaumag no lock.
-           move tca-cod-magaz to mag-codice.
-           read tmagaz no lock.
-
-           move tof-cod-forn to cli-codice.
-           set cli-tipo-F to true.
-           read clienti no lock.
-                         
+       LOOP-RIGHE.       
            move low-value  to rof-chiave.
            move tof-chiave to rof-chiave-testa.
            start rordforn key >= rof-chiave
@@ -3315,33 +3518,99 @@
                        exit perform
                     end-if   
 
-                    perform COUNTER-VIDEO
+                    perform COUNTER-VIDEO 
+
+                    move 0 to tos-data 
+                    move rof-chiave       to sof-chiave
+                    read sordforn no lock
+                         invalid move 0 to tos-data tos-qta-soll
+                     not invalid move sof-data-arr to tos-data
+                                 move sof-qta      to tos-qta-soll
+                    end-read
+                    if tos-data > 0
+                       set tos-data-from-soll-r to true
+                    else
+                       move 0 to sof-prog
+                       read sordforn no lock
+                            invalid move 0 to tos-data tos-qta-soll
+                        not invalid move sof-data-arr to tos-data
+                                    move sof-qta      to tos-qta-soll
+                       end-read
+                       if tos-data > 0
+                          set tos-data-from-soll-t to true
+                       else        
+                          move tof-data-consegna to tos-data
+                          set tos-data-from-tordforn to true
+                       end-if
+                    end-if
+
+                    if tos-data >= old-data-ini
+                       exit perform cycle
+                    end-if
+       
+                    if tos-qta-soll = 0
+                       compute tos-qta-soll = 
+                               rof-qta-ord -
+                               rof-qta-evasa
+                    end-if
+
+                    move rof-chiave       to tos-tof-chiave
+                    move mag-codice       to tos-mag-codice
+                    move tof-cod-forn     to tos-cod-forn
+                    move tof-causale      to tos-causale
+                    move tof-data-ordine  to tos-data-ordine
+                    move rof-cod-articolo to tos-cod-articolo
+                    move rof-qta-ord      to tos-qta-ord 
+                    move rof-qta-evasa    to tos-qta-ev
+                    
+                    write tos-rec
+                 end-perform
+           end-start.
+
+      ***---
+       CARICA-GRIGLIA.
+           modify form1-gd-1, mass-update = 1, reset-grid = 1.
+           perform FORM1-GD-1-CONTENT.
+
+           move 1 to riga.
+
+           move high-value to tos-rec.
+           start tmp-ordforn-sol key <= tos-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read tmp-ordforn-sol previous at end exit perform 
+           end-read               
+                    move tos-causale to tca-codice
+                    read tcaumag no lock
+                    move tca-cod-magaz to mag-codice
+                    read tmagaz no lock
+
+                    move tos-cod-forn to cli-codice
+                    set cli-tipo-F to true
+                    read clienti no lock      
 
                     add 1 to riga
                     move mag-codice       to col-mag-codice
                     move mag-descrizione  to col-mag-descrizione
-                    move tof-cod-forn     to col-cli-codice
+                    move tos-cod-forn     to col-cli-codice
                     move cli-ragsoc-1     to col-cli-ragsoc
-                    move tof-numero       to col-tof-numero
-                    move tof-data-ordine  to como-data
+                    move tos-tof-numero   to col-tof-numero
+                    move tos-data-ordine  to como-data
                     perform DATE-TO-SCREEN
                     move como-data        to col-tof-data
-                    move rof-cod-articolo to col-rof-cod-articolo 
+                    move tos-cod-articolo to col-rof-cod-articolo 
            art-codice
                     read articoli no lock
                     move art-descrizione  to col-art-descrizione
-                    move rof-qta-ord      to col-rof-qta
-                    move rof-qta-evasa    to col-rof-qta-eva
+                    move tos-qta-ord      to col-rof-qta
+                    move tos-qta-ev       to col-rof-qta-eva
 
-                    move rof-chiave to sof-chiave
-                    read sordforn no lock
-                         invalid move 0 to sof-data-arr sof-qta
-                    end-read
-                    move sof-data-arr to como-data
+                    move tos-data         to como-data
                     perform DATE-TO-SCREEN
-                    move como-data to col-data-soll
+                    move como-data        to col-data-soll
 
-                    move sof-qta to col-qta-soll
+                    move tos-qta-soll     to col-qta-soll
                                  
                     modify form1-gd-1(riga, 1),  cell-data 
            col-mag-codice
@@ -3366,7 +3635,7 @@
                     modify form1-gd-1(riga, 11), cell-data col-qta-soll 
                     modify form1-gd-1(riga, 12), cell-data col-data-soll
 
-                    move rof-chiave to hid-rof-chiave
+                    move tos-chiave to hid-tos-chiave
                     modify form1-gd-1(riga, 1), hidden-data 
            gruppo-hidden    
 
@@ -3379,6 +3648,10 @@
 
                  end-perform
            end-start.
+
+
+
+           modify form1-gd-1, mass-update = 0.
 
       *****     close promoeva.
       *****     move user-codi       to link-tprev-user.
@@ -3712,17 +3985,104 @@
            .
       * <TOTEM:END>
 
+       REWRITE-SOLLECITI.
+      * <TOTEM:PARA. REWRITE-SOLLECITI>
+           move "sordforn" to geslock-nome-file
+           initialize geslock-messaggio
+           string "Il file dei solleciti" 
+           x"0d0a""è in uso su altro terminale." delimited size
+             into geslock-messaggio
+           end-string
+           perform until 1 = 2
+              set RecLocked to false
+              read sordforn lock
+              if RecLocked 
+                 move 1     to geslock-v-termina
+                 move 1     to geslock-v-riprova
+                 move 0     to geslock-v-ignora
+                 call   "geslock" using geslock-linkage
+                 cancel "geslock"
+                 evaluate true
+                 when riprova continue
+                 when other   exit perform
+                 end-evaluate
+              else
+                 exit perform
+              end-if
+           end-perform      
+           if RecLocked
+              move old-qta  to col-qta-soll
+              move old-data to col-data-soll
+           else             
+              inquire form1-gd-1(event-data-2, 11), cell-data in 
+           col-qta-soll
+              move col-qta-soll to sof-qta
+              inquire form1-gd-1(event-data-2, 12), cell-data in 
+           col-data-soll
+              move col-data-soll to como-data
+              perform DATE-TO-FILE
+              move como-data to sof-data-arr
+
+              rewrite sof-rec
+              unlock sordforn all records
+           end-if       
+           .
+      * <TOTEM:END>
+
+       WRITE-SOLLECITI.
+      * <TOTEM:PARA. WRITE-SOLLECITI>
+           initialize sof-rec replacing numeric data by zeroes
+                                   alphanumeric data by spaces.
+           move tos-tof-chiave to sof-chiave.
+           accept sof-data-creazione from century-date.
+           accept sof-ora-creazione  from time.
+           move user-codi to sof-utente-creazione.
+           inquire form1-gd-1(event-data-2, 11), cell-data in 
+           col-qta-soll
+           move col-qta-soll to sof-qta
+           inquire form1-gd-1(event-data-2, 12), cell-data in 
+           col-data-soll
+           move col-data-soll to como-data
+           perform DATE-TO-FILE
+           move como-data to sof-data-arr
+           write sof-rec
+
+           set tos-data-from-soll-r to true.
+           rewrite tos-rec 
+           .
+      * <TOTEM:END>
+
       * EVENT PARAGRAPH
        I-O-BLOCCO.
       * <TOTEM:PARA. I-O-BLOCCO>
            SET LK-BL-CANCELLAZIONE TO TRUE.
            MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
-           CALL "BLOCKPGM"  USING LK-BLOCKPGM 
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           close       tmp-ordforn-sol.
+           delete file tmp-ordforn-sol 
            .
       * <TOTEM:END>
        PAS004P-Ev-Before-Program.
       * <TOTEM:PARA. PAS004P-Ev-Before-Program>
-           move LK-BL-PROG-ID    TO COMO-PROG-ID 
+           move LK-BL-PROG-ID    TO COMO-PROG-ID.
+           accept como-data from century-date.
+           accept como-ora  from time.
+           accept  path-tmp-ordforn-sol from environment "PATH_ST".
+           inspect path-tmp-ordforn-sol replacing trailing spaces by 
+           low-value.
+           string  path-tmp-ordforn-sol delimited low-value             
+                  
+                   "TMP-ORDFORN-SOL_"   delimited size
+                   como-data            delimited size
+                   "_"                  delimited size
+                   como-ora             delimited size
+              into path-tmp-ordforn-sol 
+           end-string.
+           inspect path-tmp-ordforn-sol replacing trailing low-value by 
+           spaces.
+           open output tmp-ordforn-sol.
+           close       tmp-ordforn-sol.
+           open i-o    tmp-ordforn-sol 
            .
       * <TOTEM:END>
        form1-gd-1-Ev-Msg-Begin-Entry.
@@ -3842,7 +4202,8 @@
       * <TOTEM:PARA. form1-gd-1-Ev-Msg-Finish-Entry>
            inquire form1-gd-1(event-data-2, 1), hidden-data in 
            gruppo-hidden
-           move hid-rof-chiave to sof-chiave
+           move hid-tos-chiave to tos-chiave
+           read tmp-ordforn-sol no lock.
 
            evaluate event-data-1
            when 11                                                      
@@ -3851,36 +4212,18 @@
            col-qta-soll 
                 move col-qta-soll to sof-qta
                 if sof-qta not = old-qta
-                   move "sordforn" to geslock-nome-file
-                   initialize geslock-messaggio
-                   string "Il file dei solleciti" 
-                   x"0d0a""è in uso su altro terminale." delimited size
-                     into geslock-messaggio
-                   end-string
-                   perform until 1 = 2
-                      set RecLocked to false
-                      read sordforn lock
-                      if RecLocked 
-                         move 1     to geslock-v-termina
-                         move 1     to geslock-v-riprova
-                         move 0     to geslock-v-ignora
-                         call   "geslock" using geslock-linkage
-                         cancel "geslock"
-                         evaluate true
-                         when riprova continue
-                         when other   exit perform
-                         end-evaluate
-                      else
-                         exit perform
-                      end-if
-                   end-perform      
-                   if RecLocked
-                      move old-qta to col-qta-soll
-                   else
-                      move col-qta-soll to sof-qta
-                      rewrite sof-rec
-                      unlock sordforn all records
-                   end-if      
+                   evaluate true
+                   when tos-data-from-tordforn
+                        move tos-tof-chiave to tof-chiave
+                        perform WRITE-SOLLECITI
+                   when tos-data-from-soll-t
+                        move tos-tof-chiave to sof-chiave
+                        move 0 to sof-prog
+                        perform REWRITE-SOLLECITI
+                   when tos-data-from-soll-r
+                        move tos-tof-chiave to sof-chiave
+                        perform REWRITE-SOLLECITI
+                   end-evaluate 
                 end-if
                 modify  form1-gd-1(event-data-2, 11), cell-data 
            col-qta-soll   
@@ -3889,39 +4232,23 @@
            col-data-soll
                 move col-data-soll to como-data
                 perform DATE-FORMAT
+                move como-data to col-data-soll
+                modify form1-gd-1(event-data-2, 12), cell-data 
+           col-data-soll
                 perform DATE-TO-FILE
                 if como-data not = old-data
-
-                   move "sordforn" to geslock-nome-file
-                   initialize geslock-messaggio
-                   string "Il file dei solleciti" 
-                   x"0d0a""è in uso su altro terminale." delimited size
-                     into geslock-messaggio
-                   end-string
-                   perform until 1 = 2
-                      set RecLocked to false
-                      read sordforn lock
-                      if RecLocked 
-                         move 1     to geslock-v-termina
-                         move 1     to geslock-v-riprova
-                         move 0     to geslock-v-ignora
-                         call   "geslock" using geslock-linkage
-                         cancel "geslock"
-                         evaluate true
-                         when riprova continue
-                         when other   exit perform
-                         end-evaluate
-                      else
-                         exit perform
-                      end-if
-                   end-perform      
-                   if RecLocked
-                      move old-data to como-data
-                   else
-                      move como-data to sof-data-arr
-                      rewrite sof-rec
-                      unlock sordforn all records
-                   end-if   
+                   evaluate true
+                   when tos-data-from-tordforn
+                        move tos-tof-chiave to tof-chiave
+                        perform WRITE-SOLLECITI
+                   when tos-data-from-soll-t
+                        move tos-tof-chiave to sof-chiave
+                        move 0 to sof-prog
+                        perform REWRITE-SOLLECITI
+                   when tos-data-from-soll-r
+                        move tos-tof-chiave to sof-chiave
+                        perform REWRITE-SOLLECITI
+                   end-evaluate 
                 end-if
                 perform DATE-TO-SCREEN
                 move como-data to col-data-soll
@@ -3930,6 +4257,13 @@
            end-evaluate.
            move 78-ID-form1-gd-1 to control-id
            move 4 to accept-control.
+
+
+
+
+
+
+
       *****     evaluate event-data-1
       *****     when 9
       *****          inquire form1-gd-1(riga, 9), cell-data in new-qta

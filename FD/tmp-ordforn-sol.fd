@@ -1,0 +1,23 @@
+      *(( XFD FILE = tmp-ordforn-sol ))
+       FD  tmp-ordforn-sol.
+       01 tos-rec.
+           05 tos-chiave.
+               10 tos-data         PIC  9(8).
+               10 tos-tof-chiave.
+                   15 tos-tof-anno     PIC  9(4).
+                   15 tos-tof-numero   PIC  9(8).
+                   15 tos-tof-riga     PIC  9(5).
+           05 tos-dati.
+               10 tos-mag-codice   PIC  x(3).
+               10 tos-causale      PIC  x(4).
+               10 tos-cod-forn     PIC  9(5).
+      *(( XFD NAME = tos-data_1 ))
+               10 tos-data-ordine  PIC  9(8).
+               10 tos-cod-articolo PIC  9(6).
+               10 tos-qta-ord      PIC  9(8).
+               10 tos-qta-ev       PIC  9(8).
+               10 tos-qta-soll     PIC  9(8).
+               10 tos-data-from    PIC  9.
+                   88 tos-data-from-tordforn VALUE IS 0. 
+                   88 tos-data-from-soll-t VALUE IS 1. 
+                   88 tos-data-from-soll-r VALUE IS 2. 
