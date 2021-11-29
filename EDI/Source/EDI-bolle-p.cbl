@@ -637,10 +637,10 @@
                   separatore            delimited size
                   02D22-LIN-QTAORD      delimited low-value
                   separatore            delimited size
-      *            02D-filler4           delimited size     
+                  02D-filler4           delimited size     
                   02D27-LIN-UDMQORD     delimited low-value
                   separatore            delimited size
-                  02D-filler8           delimited size
+                  02D-filler5           delimited size
                   02D41-MEA-IDMISURA    delimited low-value
                   separatore            delimited size
                   02D-filler6           delimited size
