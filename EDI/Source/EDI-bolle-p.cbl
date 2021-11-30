@@ -569,7 +569,7 @@
            compute como-numero = 
                  ( prg-peso-utf + prg-peso-non-utf ) * ror-qta.
            perform TRATTA-NUMERICO.
-           move NumericEDI to 02D43-MEA-VALORE. 
+           move NumericEDI to 02D34-VALORE. 
 
            inspect 02D1-BGM-TIPODOC                          
                    replacing trailing spaces by low-value
@@ -599,9 +599,9 @@
                    replacing trailing spaces by low-value
            inspect 02D22-LIN-QTAORD                        
                    replacing trailing spaces by low-value 
-           inspect 02D27-LIN-UDMQORD                         
+           inspect 02D23-LIN-UDMNRCUINTU                         
                    replacing trailing spaces by low-value
-           inspect 02D43-MEA-VALORE
+           inspect 02D34-VALORE
                    replacing trailing spaces by low-value
            initialize line-riga of lineseq.
            string 02D1-BGM-TIPODOC      delimited low-value
@@ -637,17 +637,16 @@
                   separatore            delimited size
                   02D22-LIN-QTAORD      delimited low-value
                   separatore            delimited size
-                  02D-filler4           delimited size     
-                  02D27-LIN-UDMQORD     delimited low-value
+                  02D23-LIN-UDMNRCUINTU delimited size     
+                  separatore            delimited size
+                  02D-filler4           delimited size
+                  02D32-AAA             delimited size
+                  separatore            delimited size
+                  separatore            delimited size
+                  02D34-VALORE          delimited low-value
                   separatore            delimited size
                   02D-filler5           delimited size
-                  02D41-MEA-IDMISURA    delimited low-value
-                  separatore            delimited size
-                  02D-filler6           delimited size
-                  02D43-MEA-VALORE      delimited low-value
-                  separatore            delimited size
-                  02D-filler7           delimited size
-                  02D46-MEA-UNIMIS      delimited low-value
+                  02D37-KGM             delimited size
                   separatore            delimited size
                   end-02D               delimited size
                   into line-riga of lineseq
