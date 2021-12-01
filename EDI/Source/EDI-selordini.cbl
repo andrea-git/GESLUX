@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 2 novembre 2021 15:22:24.
+       DATE-WRITTEN.        mercoledì 1 dicembre 2021 16:46:10.
        REMARKS.
       *{TOTEM}END
 
@@ -3685,7 +3685,7 @@
            SIZE 14,00 ,
            COLOR IS col-lab-stato,
            FONT IS Arial10B-Occidentale,
-           ID IS 159,
+           ID IS 160,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            CENTER,
@@ -3701,7 +3701,7 @@
            LINES 1,31 ,
            SIZE 10,50 ,
            COLOR IS 1,
-           ID IS 160,
+           ID IS 161,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Ritira in LBX",
@@ -4142,7 +4142,7 @@
            LINES 1,33 ,
            SIZE 17,00 ,
            COLOR IS 1,
-           ID IS 164,
+           ID IS 28,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Evasione immediata",
@@ -18434,12 +18434,13 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
                        if emro-chiave-testa not = emto-chiave
                           exit perform
                        end-if
-                       move emro-qta         to como-qta
-                       move emro-prz         to SavePrezzo
-                       move emro-prg-chiave  to prg-chiave
-                       move emto-cod-cli     to mto-cod-cli
-                       move emto-prg-destino to mto-prg-destino
-                       move emto-data-ordine to mto-data-ordine
+                       move emro-qta          to como-qta
+                       move emro-prz          to SavePrezzo
+                       move emro-prg-chiave   to prg-chiave
+                       move emto-cod-cli      to mto-cod-cli
+                       move emro-cod-articolo to como-articolo
+                       move emto-prg-destino  to mto-prg-destino
+                       move emto-data-ordine  to mto-data-ordine
                        perform AGGIUNGI-VALORI
                     end-perform
               end-start

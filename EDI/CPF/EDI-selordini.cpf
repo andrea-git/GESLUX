@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E5B1B142343-968-2662731517
+PROGRAM_UNIQUE_CODE=TOTEM-7E5C1154220-476-704428434
 
 {{@DESCRIPTION:
 
@@ -11532,7 +11532,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 158
+      ID                = 159
       ID Variable       = AUTO-ID
       Left Text         = FALSE
       Line              = 29,40
@@ -12651,7 +12651,7 @@ Begin Screen Form1
       Font Variable     = Arial10B-Occidentale
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 159
+      ID                = 160
       Justification     = Center
       Label Offset      = 20
       Line              = 1,56
@@ -12685,7 +12685,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 160
+      ID                = 161
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 29,40
@@ -13686,7 +13686,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 164
+      ID                = 28
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 29,40
@@ -17851,12 +17851,13 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
                        if emro-chiave-testa not = emto-chiave
                           exit perform
                        end-if
-                       move emro-qta         to como-qta
-                       move emro-prz         to SavePrezzo
-                       move emro-prg-chiave  to prg-chiave
-                       move emto-cod-cli     to mto-cod-cli
-                       move emto-prg-destino to mto-prg-destino
-                       move emto-data-ordine to mto-data-ordine
+                       move emro-qta          to como-qta
+                       move emro-prz          to SavePrezzo
+                       move emro-prg-chiave   to prg-chiave
+                       move emto-cod-cli      to mto-cod-cli
+                       move emro-cod-articolo to como-articolo
+                       move emto-prg-destino  to mto-prg-destino
+                       move emto-data-ordine  to mto-data-ordine
                        perform AGGIUNGI-VALORI
                     end-perform
               end-start
