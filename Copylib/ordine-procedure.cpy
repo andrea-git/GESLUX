@@ -2822,26 +2822,32 @@ LUBEXX                end-if
                     if cli-fuori-fido and cli-fido-extra not = 0
                        continue
                     else
-                       if cli-fuori-fido
-                          initialize calfido-linkage 
-                                      sitfin-linkage
-                                     replacing numeric data by zeroes
-                                          alphanumeric data by spaces
-                          move ef-cli-buf   to link-cli-codice
-                          call "C$JUSTIFY"  using link-cli-codice, "R"
-                          inspect link-cli-codice 
-                                  replacing leading x"20" by x"30"
-                          call   "sitfin"  using sitfin-linkage
-                                                calfido-linkage
-                          cancel "sitfin"
+                       if cli-prob-pag   or 
+                          cli-blocco-amm or
+                          cli-fuori-fido
+                          continue
+                       else
+                          if cli-fuori-fido
+                             initialize calfido-linkage 
+                                         sitfin-linkage
+                                        replacing numeric data by zeroes
+                                             alphanumeric data by spaces
+                             move ef-cli-buf   to link-cli-codice
+                             call "C$JUSTIFY" using link-cli-codice, "R"
+                             inspect link-cli-codice 
+                                     replacing leading x"20" by x"30"
+                             call   "sitfin"  using sitfin-linkage
+                                                   calfido-linkage
+                             cancel "sitfin"
+                          end-if
+                          display message "Cliente NON attivo"
+                                    title tit-err
+                                     icon 2
+                          set errori to true
+                          move spaces to lab-cli-buf
+                          move spaces to lab-ind-cli-buf
+                          move spaces to lab-loc-cli-buf
                        end-if
-                       display message "Cliente NON attivo"
-                                 title tit-err
-                                  icon 2
-                       set errori to true
-                       move spaces to lab-cli-buf
-                       move spaces to lab-ind-cli-buf
-                       move spaces to lab-loc-cli-buf
                     end-if
                  end-if   
               end-if
@@ -2890,28 +2896,35 @@ LUBEXX                end-if
                       if not tmp
                          if cli-fuori-fido and cli-fido-extra not = 0
                             continue
-                         else
-                            if cli-fuori-fido
-                               initialize calfido-linkage 
-                                           sitfin-linkage
+                         else  
+                            if cli-prob-pag   or 
+                               cli-blocco-amm or
+                               cli-fuori-fido
+                               continue
+                            else
+                               if cli-fuori-fido
+                                  initialize calfido-linkage 
+                                              sitfin-linkage
                                         replacing numeric data by zeroes
                                              alphanumeric data by spaces
-                               move ef-cli-buf   to link-cli-codice
-                               call "C$JUSTIFY"  using 
-                                                 link-cli-codice, "R"
-                               inspect link-cli-codice 
-                                       replacing leading x"20" by x"30"
-                               call   "sitfin"  using sitfin-linkage
-                                                     calfido-linkage
-                               cancel "sitfin"
+                                  move ef-cli-buf   to link-cli-codice
+                                  call "C$JUSTIFY"  using 
+                                                    link-cli-codice, "R"
+                                  inspect link-cli-codice 
+                                          replacing leading x"20" 
+                                                         by x"30"
+                                  call   "sitfin"  using sitfin-linkage
+                                                        calfido-linkage
+                                  cancel "sitfin"
+                               end-if
+                               display message "Cliente NON attivo"
+                                         title tit-err
+                                          icon 2
+                               set errori to true
+                               move spaces to lab-cli-buf
+                               move spaces to lab-ind-cli-buf
+                               move spaces to lab-loc-cli-buf
                             end-if
-                            display message "Cliente NON attivo"
-                                      title tit-err
-                                       icon 2
-                            set errori to true
-                            move spaces to lab-cli-buf
-                            move spaces to lab-ind-cli-buf
-                            move spaces to lab-loc-cli-buf
                          end-if
                       end-if
                    end-if
