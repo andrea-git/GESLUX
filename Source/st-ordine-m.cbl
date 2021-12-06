@@ -236,7 +236,7 @@
 
        01  t5.
          05 filler               pic x(21) value "Dati Ordine Cliente:".
-         05 t5-num-ord-cli       pic x(12).
+         05 t5-num-ord-cli       pic x(50).
          05 filler               pic x(5)  value " del ".
          05 t5-del               pic x(10).
          05 filler               pic x(3).
