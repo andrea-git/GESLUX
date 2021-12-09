@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 1 dicembre 2021 16:46:10.
+       DATE-WRITTEN.        giovedì 9 dicembre 2021 12:42:22.
        REMARKS.
       *{TOTEM}END
 
@@ -5326,7 +5326,14 @@
        OPEN-tpromo.
       * <TOTEM:EPT. INIT:EDI-selordini, FD:tpromo, BeforeOpen>
       * <TOTEM:END>
-           OPEN  INPUT tpromo
+           OPEN  I-O tpromo
+           IF STATUS-tpromo = "35"
+              OPEN OUTPUT tpromo
+                IF Valid-STATUS-tpromo
+                   CLOSE tpromo
+                   OPEN I-O tpromo
+                END-IF
+           END-IF
            IF NOT Valid-STATUS-tpromo
               PERFORM  Form-ini-EXTENDED-FILE-STATUS
               GO TO EXIT-STOP-ROUTINE
@@ -10349,6 +10356,7 @@
        DataSet1-tpromo-Rec-Write.
       * <TOTEM:EPT. FD:DataSet1, FD:tpromo, BeforeWrite>
       * <TOTEM:END>
+           WRITE tpr-rec OF tpromo.
            MOVE STATUS-tpromo TO TOTEM-ERR-STAT
            MOVE "tpromo" TO TOTEM-ERR-FILE
            MOVE "WRITE" TO TOTEM-ERR-MODE
@@ -10359,6 +10367,7 @@
        DataSet1-tpromo-Rec-Rewrite.
       * <TOTEM:EPT. FD:DataSet1, FD:tpromo, BeforeRewrite>
       * <TOTEM:END>
+           REWRITE tpr-rec OF tpromo.
            MOVE STATUS-tpromo TO TOTEM-ERR-STAT
            MOVE "tpromo" TO TOTEM-ERR-FILE
            MOVE "REWRITE" TO TOTEM-ERR-MODE
@@ -10369,6 +10378,7 @@
        DataSet1-tpromo-Rec-Delete.
       * <TOTEM:EPT. FD:DataSet1, FD:tpromo, BeforeDelete>
       * <TOTEM:END>
+           DELETE tpromo.
            MOVE STATUS-tpromo TO TOTEM-ERR-STAT
            MOVE "tpromo" TO TOTEM-ERR-FILE
            MOVE "DELETE" TO TOTEM-ERR-MODE
