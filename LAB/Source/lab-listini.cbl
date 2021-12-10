@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-listini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 4 novembre 2021 11:23:54.
+       DATE-WRITTEN.        venerdì 10 dicembre 2021 13:21:48.
        REMARKS.
       *{TOTEM}END
 
@@ -106,6 +106,8 @@
        77 form1-Handle
                   USAGE IS HANDLE OF WINDOW.
        77 data-richiesta   PIC  9(8).
+       77 data-richiesta-dal           PIC  9(8).
+       77 data-richiesta-al            PIC  9(8).
        77 AUTO-ID          PIC  9(6)
                   VALUE IS 0.
        77 tot-consumo      PIC  9(9)v99.
@@ -270,6 +272,18 @@
        77 wstampa          PIC  X(256).
        77 STATUS-lineseq   PIC  X(2).
            88 Valid-STATUS-lineseq VALUE IS "00" THRU "09". 
+       77 chk-esclud-sp-buf            PIC  9
+                  VALUE IS 0.
+       77 chk-escludi-sp-buf           PIC  9
+                  VALUE IS 0.
+       77 tipo-data        PIC  9
+                  VALUE IS 1.
+       77 ef-data-dal-buf  PIC  99/99/9999.
+       77 ef-data-al-buf   PIC  99/99/9999.
+       77 e-data           PIC  9
+                  VALUE IS 1.
+       77 e-periodo        PIC  9
+                  VALUE IS 0.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -416,10 +430,15 @@
       *{TOTEM}ID-LOGICI
       ***** Elenco ID Logici *****
        78  78-ID-ef-gdo VALUE 5001.
-       78  78-ID-ef-data VALUE 5002.
-       78  78-ID-ef-art VALUE 5003.
-       78  78-ID-ef-cod-art-cli VALUE 5004.
-       78  78-ID-chk-escludi VALUE 5005.
+       78  78-ID-ef-art VALUE 5002.
+       78  78-ID-ef-cod-art-cli VALUE 5003.
+       78  78-ID-chk-escludi VALUE 5004.
+       78  78-ID-chk-escludi-sp VALUE 5005.
+       78  78-ID-rb-data VALUE 5006.
+       78  78-ID-rb-dal VALUE 5007.
+       78  78-ID-ef-data VALUE 5008.
+       78  78-ID-ef-data-dal VALUE 5009.
+       78  78-ID-ef-data-al VALUE 5010.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -442,7 +461,7 @@
            Frame, 
            COL 1,60, 
            LINE 1,50,
-           LINES 10,22 ,
+           LINES 12,39 ,
            SIZE 70,90 ,
            ID IS 9,
            HEIGHT-IN-CELLS,
@@ -473,19 +492,173 @@
 
       * ENTRY FIELD
        05
+           ef-art, 
+           Entry-Field, 
+           COL 13,60, 
+           LINE 5,72,
+           LINES 1,33 ,
+           SIZE 7,00 ,
+           BOXED,
+           COLOR IS 513,
+           ID IS 78-ID-ef-art,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           VALUE ef-art-buf,
+           AFTER PROCEDURE Screen4-Ef-2-AfterProcedure, 
+           BEFORE PROCEDURE Screen4-Ef-2-BeforeProcedure, 
+           .
+
+      * ENTRY FIELD
+       05
+           ef-cod-art-cli, 
+           Entry-Field, 
+           COL 13,60, 
+           LINE 7,78,
+           LINES 1,33 ,
+           SIZE 18,00 ,
+           BOXED,
+           COLOR IS 513,
+           ID IS 78-ID-ef-cod-art-cli,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           VALUE ef-cod-art-cli-buf,
+           AFTER PROCEDURE ef-cod-art-cli-AfterProcedure, 
+           BEFORE PROCEDURE ef-cod-art-cli-BeforeProcedure, 
+           .
+
+      * CHECK BOX
+       05
+           chk-escludi, 
+           Check-Box, 
+           COL 35,00, 
+           LINE 7,78,
+           LINES 1,33 ,
+           SIZE 1,40 ,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 78-ID-chk-escludi,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           VALUE chk-escludi-buf,
+           AFTER PROCEDURE Screen4-Cb-1-AfterProcedure,
+           BEFORE PROCEDURE Screen4-Cb-1-BeforeProcedure, 
+           .
+      * CHECK BOX
+       05
+           chk-escludi-sp, 
+           Check-Box, 
+           COL 49,00, 
+           LINE 7,78,
+           LINES 1,33 ,
+           SIZE 1,40 ,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 78-ID-chk-escludi-sp,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           VALUE chk-escludi-sp-buf,
+           AFTER PROCEDURE Screen4-Cb-1-AfterProcedure,
+           BEFORE PROCEDURE Screen4-Cb-1-BeforeProcedure, 
+           .
+      * RADIO BUTTON
+       05
+           rb-data, 
+           Radio-Button, 
+           COL 3,00, 
+           LINE 9,83,
+           LINES 1,33 ,
+           SIZE 1,40 ,
+           EXCEPTION-VALUE 1002
+           FLAT,
+           FONT IS Small-Font,
+           GROUP 1,
+           GROUP-VALUE 1,
+           ID IS 78-ID-rb-data,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE "Radio Button",
+           VALUE tipo-data,
+           AFTER PROCEDURE Screen4-Rb-1-AfterProcedure, 
+           BEFORE PROCEDURE Screen4-Rb-1-BeforeProcedure, 
+           .
+      * RADIO BUTTON
+       05
+           rb-dal, 
+           Radio-Button, 
+           COL 3,00, 
+           LINE 11,78,
+           LINES 1,33 ,
+           SIZE 1,40 ,
+           EXCEPTION-VALUE 1003
+           FLAT,
+           FONT IS Small-Font,
+           GROUP 1,
+           GROUP-VALUE 2,
+           ID IS 78-ID-rb-dal,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE "Radio Button",
+           VALUE tipo-data,
+           AFTER PROCEDURE Screen4-Rb-1-AfterProcedure, 
+           BEFORE PROCEDURE Screen4-Rb-1-BeforeProcedure, 
+           .
+      * ENTRY FIELD
+       05
            ef-data, 
            Entry-Field, 
            COL 13,60, 
-           LINE 5,44,
+           LINE 9,83,
            LINES 1,33 ,
            SIZE 11,00 ,
            BOXED,
            COLOR IS 513,
+           ENABLED e-data,
            ID IS 78-ID-ef-data,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            CENTER,
            VALUE ef-data-buf,
+           AFTER PROCEDURE Screen4-Ef-1-AfterProcedure, 
+           BEFORE PROCEDURE Screen4-Ef-1-BeforeProcedure, 
+           .
+
+      * ENTRY FIELD
+       05
+           ef-data-dal, 
+           Entry-Field, 
+           COL 13,60, 
+           LINE 11,78,
+           LINES 1,33 ,
+           SIZE 11,00 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED e-periodo,
+           ID IS 78-ID-ef-data-dal,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           CENTER,
+           VALUE ef-data-dal-buf,
+           AFTER PROCEDURE Screen4-Ef-1-AfterProcedure, 
+           BEFORE PROCEDURE Screen4-Ef-1-BeforeProcedure, 
+           .
+
+      * ENTRY FIELD
+       05
+           ef-data-al, 
+           Entry-Field, 
+           COL 30,60, 
+           LINE 11,78,
+           LINES 1,33 ,
+           SIZE 11,00 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED e-periodo,
+           ID IS 78-ID-ef-data-al,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           CENTER,
+           VALUE ef-data-al-buf,
            AFTER PROCEDURE Screen4-Ef-1-AfterProcedure, 
            BEFORE PROCEDURE Screen4-Ef-1-BeforeProcedure, 
            .
@@ -506,60 +679,6 @@
            VISIBLE v-custom,
            .
 
-      * ENTRY FIELD
-       05
-           ef-art, 
-           Entry-Field, 
-           COL 13,60, 
-           LINE 7,39,
-           LINES 1,33 ,
-           SIZE 7,00 ,
-           BOXED,
-           COLOR IS 513,
-           ID IS 78-ID-ef-art,                
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           RIGHT,
-           VALUE ef-art-buf,
-           AFTER PROCEDURE Screen4-Ef-2-AfterProcedure, 
-           BEFORE PROCEDURE Screen4-Ef-2-BeforeProcedure, 
-           .
-
-      * ENTRY FIELD
-       05
-           ef-cod-art-cli, 
-           Entry-Field, 
-           COL 13,60, 
-           LINE 9,44,
-           LINES 1,33 ,
-           SIZE 18,00 ,
-           BOXED,
-           COLOR IS 513,
-           ID IS 78-ID-ef-cod-art-cli,                
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           VALUE ef-cod-art-cli-buf,
-           AFTER PROCEDURE ef-cod-art-cli-AfterProcedure, 
-           BEFORE PROCEDURE ef-cod-art-cli-BeforeProcedure, 
-           .
-
-      * CHECK BOX
-       05
-           chk-escludi, 
-           Check-Box, 
-           COL 35,00, 
-           LINE 9,44,
-           LINES 1,33 ,
-           SIZE 1,40 ,
-           FLAT,
-           FONT IS Small-Font,
-           ID IS 78-ID-chk-escludi,                
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           VALUE chk-escludi-buf,
-           AFTER PROCEDURE Screen4-Cb-1-AfterProcedure,
-           BEFORE PROCEDURE Screen4-Cb-1-BeforeProcedure, 
-           .
       * LABEL
        05
            Screen4-Custom1-2, 
@@ -568,7 +687,7 @@
            LINE 2,39,
            LINES 0,50 ,
            SIZE 2,20 ,
-           ID IS 8,
+           ID IS 3,
            TRANSPARENT,
            TITLE "CUSTOM CONTROL",
            VISIBLE v-custom,
@@ -582,7 +701,7 @@
            LINE 3,50,
            LINES 1,33 ,
            SIZE 10,50 ,
-           ID IS 10,
+           ID IS 4,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -609,15 +728,15 @@
        05
            Screen4-La-1, 
            Label, 
-           COL 2,60, 
-           LINE 5,44,
+           COL 5,70, 
+           LINE 9,83,
            LINES 1,33 ,
-           SIZE 10,50 ,
-           ID IS 3,
+           SIZE 6,00 ,
+           ID IS 11,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
-           TITLE "Data Listino",
+           TITLE "Data",
            .
 
       * LABEL
@@ -625,10 +744,10 @@
            Screen4-La-2, 
            Label, 
            COL 2,60, 
-           LINE 7,39,
+           LINE 5,72,
            LINES 1,33 ,
            SIZE 10,50 ,
-           ID IS 4,
+           ID IS 14,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -640,11 +759,11 @@
            lab-art, 
            Label, 
            COL 21,60, 
-           LINE 7,39,
+           LINE 5,72,
            LINES 1,33 ,
            SIZE 50,00 ,
            COLOR IS 5,
-           ID IS 11,
+           ID IS 15,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -656,7 +775,7 @@
            Screen4-La-2a, 
            Label, 
            COL 2,60, 
-           LINE 9,44,
+           LINE 7,78,
            LINES 1,33 ,
            SIZE 10,50 ,
            ID IS 203,
@@ -671,7 +790,7 @@
            Screen4-La-2aa, 
            Label, 
            COL 37,60, 
-           LINE 9,44,
+           LINE 7,78,
            LINES 1,33 ,
            SIZE 10,50 ,
            ID IS 205,
@@ -681,12 +800,57 @@
            TITLE "Escludi FA",
            .
 
+      * LABEL
+       05
+           Screen4-La-2aaa, 
+           Label, 
+           COL 51,60, 
+           LINE 7,78,
+           LINES 1,33 ,
+           SIZE 10,50 ,
+           ID IS 206,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Escludi SP",
+           .
+
+      * LABEL
+       05
+           Screen4-La-1a, 
+           Label, 
+           COL 5,70, 
+           LINE 11,72,
+           LINES 1,33 ,
+           SIZE 6,00 ,
+           ID IS 207,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Dal",
+           .
+
+      * LABEL
+       05
+           Screen4-La-1aa, 
+           Label, 
+           COL 26,70, 
+           LINE 11,72,
+           LINES 1,33 ,
+           SIZE 2,00 ,
+           ID IS 208,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "al",
+           .
+
       * FRAME
        05
            Screen4-Fr-1, 
            Frame, 
            COL 1,00, 
-           LINE 12,28,
+           LINE 14,50,
            LINES 2,83 ,
            SIZE 72,40 ,
            ID IS 29,
@@ -699,7 +863,7 @@
            pb-ok, 
            Push-Button, 
            COL 1,00, 
-           LINE 12,97,
+           LINE 15,19,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-OK-BMP,
@@ -718,7 +882,7 @@
            pb-stampa-diretta, 
            Push-Button, 
            COL 9,20, 
-           LINE 12,95,
+           LINE 15,17,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-STAMPA-BMP,
@@ -737,7 +901,7 @@
            pb-annulla, 
            Push-Button, 
            COL 65,30, 
-           LINE 12,97,
+           LINE 15,19,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-CANCEL-BMP,
@@ -773,7 +937,7 @@
            ENABLED E-ESCI,
            EXCEPTION-VALUE 27,
            FLAT,
-           ID IS 206,
+           ID IS 209,
            SELF-ACT,
            ESCAPE-BUTTON,
            TITLE "&Esci",
@@ -794,7 +958,7 @@
            ENABLED E-CERCA,
            EXCEPTION-VALUE 8,
            FLAT,
-           ID IS 207,
+           ID IS 210,
            SELF-ACT,
            TITLE "Cerca (F8)",
            .
@@ -4669,7 +4833,7 @@
 
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 14,11,
+              LINES 16,33,
               SIZE 72,40,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
@@ -4711,6 +4875,18 @@
            move como-data to ef-data-buf.
            display ef-data.
 
+           accept como-data from century-date.
+           move "0101" to como-data(5:4).
+           perform DATE-TO-SCREEN.
+           move como-data to ef-data-dal-buf.
+           display ef-data-dal.
+
+           accept como-data from century-date.
+           move "1231" to como-data(5:4).
+           perform DATE-TO-SCREEN.
+           move como-data to ef-data-al-buf.
+           display ef-data-al.
+
            .
       * <TOTEM:END>
            PERFORM UNTIL Exit-Pushed
@@ -4738,6 +4914,10 @@
                  IF Event-Type = Cmd-Close
                     PERFORM Form1-Exit
                  END-IF
+              WHEN Key-Status = 1002
+                 PERFORM rb-data-LinkTo
+              WHEN Key-Status = 1003
+                 PERFORM rb-dal-LinkTo
               WHEN Key-Status = 1000
                  PERFORM pb-ok-LinkTo
               WHEN Key-Status = 1001
@@ -5422,6 +5602,43 @@
                 display ef-data
                 perform DATE-TO-FILE
                 move como-data to data-richiesta 
+           
+           when 78-ID-ef-data-dal
+                inquire ef-data-dal, value in ef-data-dal-buf
+                move ef-data-dal-buf to como-data
+                if como-data not = 0
+                   perform DATE-FORMAT
+                end-if
+                move como-data to ef-data-dal-buf
+                display ef-data-dal
+                perform DATE-TO-FILE
+                move como-data to data-richiesta-dal
+           
+           when 78-ID-ef-data-al
+                inquire ef-data-al, value in ef-data-al-buf
+                move ef-data-al-buf to como-data
+                if como-data not = 0 and not = 99999999
+                   perform DATE-FORMAT
+                else
+                   move 99999999 to como-data
+                end-if
+                move como-data to ef-data-al-buf
+                display ef-data-al
+                perform DATE-TO-FILE
+                move como-data to data-richiesta-al
+
+                
+                inquire ef-data-dal, value in ef-data-dal-buf
+                move ef-data-dal-buf to como-data
+                perform DATE-TO-FILE
+                move como-data to data-richiesta-dal
+
+                if data-richiesta-dal > data-richiesta-al    
+                   set errori to true
+                   display message "Periodo non valido"
+                             title tit-err
+                              icon 2
+                end-if
 
            when 78-ID-ef-art
                 inquire ef-art, value in art-codice
@@ -5734,6 +5951,9 @@
               evaluate tlst-prezzo
               when 0         
                    move "SP"        to col-prz
+                   if chk-escludi-sp-buf = 1
+                      exit perform cycle
+                   end-if
               when 999999,99 
                    move "FA"   to col-prz
                    move spaces to col-prod
@@ -5808,9 +6028,12 @@
            read ttipocli no lock invalid initialize tcl-rec end-read.
 
            move ef-gdo-buf  to lst-gdo of listini.
-           move ef-data-buf to como-data.
-           perform DATE-TO-FILE.
-           move como-data   to lst-data of listini.
+
+           if tipo-data = 1
+              move data-richiesta     to lst-data of listini
+           else
+              move data-richiesta-al  to lst-data of listini
+           end-if.
 
            move ef-art-buf         to save-articolo.
            move ef-cod-art-cli-buf to save-cod-art-cli.
@@ -5925,6 +6148,11 @@
                  end-if
                  if save-cod-art-cli not = spaces
                     if save-cod-art-cli not = lst-cod-art-cli of listini
+                       exit perform
+                    end-if
+                 end-if
+                 if tipo-data = 2
+                    if lst-data of listini < data-richiesta-dal
                        exit perform
                     end-if
                  end-if
@@ -6052,10 +6280,14 @@
                         move bli-el-articolo(idx) to art-codice
                         read articoli no lock invalid continue end-read
 
-                        move ef-gdo-buf  to lst-gdo of listini1
-                        move ef-data-buf to como-data
-                        perform DATE-TO-FILE
-                        move como-data   to lst-data of listini1
+                        move ef-gdo-buf     to lst-gdo of listini1
+                        if tipo-data = 1
+                           move data-richiesta    
+                             to lst-data of listini1
+                        else
+                           move data-richiesta-al 
+                             to lst-data of listini1
+                        end-if
 
                         move art-codice to lst-articolo of listini1
                         start listini1 key <= lst-k-articolo of listini1
@@ -6064,19 +6296,36 @@
                               read listini1 previous no lock
                               if lst-gdo of listini1 = ef-gdo-buf and
                                  lst-articolo of listini1 = art-codice
-
+            
                                  if lst-prg-cod-articolo of listini1 
            not = 0
-                                    move lst-prg-chiave  of listini1 to 
-           prg-chiave
-                                    read progmag no lock
-                                         invalid continue
-                                     not invalid
-                                         move prg-peso-utf     to 
-           art-peso-utf
-                                         move prg-peso-non-utf to 
-           art-peso-non-utf
-                                    end-read
+                                    if tipo-data = 1
+                                       move lst-prg-chiave of listini1 
+                                         to prg-chiave
+                                       read progmag no lock
+                                            invalid continue
+                                        not invalid
+                                            move prg-peso-utf     
+                                              to art-peso-utf
+                                            move prg-peso-non-utf 
+                                              to art-peso-non-utf
+                                       end-read
+                                    else
+                                       if lst-data of listini1 >= 
+           data-richiesta-dal
+                                          move lst-prg-chiave of 
+           listini1 
+                                            to prg-chiave
+                                          read progmag no lock
+                                               invalid continue
+                                           not invalid
+                                               move prg-peso-utf     
+                                                 to art-peso-utf
+                                               move prg-peso-non-utf 
+                                                 to art-peso-non-utf
+                                          end-read
+                                       end-if
+                                    end-if
                                  end-if
                               end-if
                         end-start
@@ -6263,7 +6512,7 @@
            move CONTROL-ID to mem-id.
 
            perform  varying CONTROL-ID from 78-ID-ef-gdo by 1
-                      until CONTROL-ID > 78-ID-ef-cod-art-cli
+                      until CONTROL-ID > 78-ID-ef-data-al
               perform CONTROLLO
               if errori exit perform end-if
            end-perform.
@@ -6471,9 +6720,8 @@
               accept lst-data-modifica of listini   from century-date
               accept lst-ora-modifica of listini    from time
               move user-codi         to lst-utente-modifica of listini
-              rewrite lst-rec of listini
-                 invalid
-                    set errori  to true
+              rewrite lst-rec of listini 
+                      invalid set errori  to true
               end-rewrite
            end-if
 
@@ -6547,6 +6795,30 @@
               perform FORM3-OPEN-ROUTINE
               call "W$MOUSE" using set-mouse-shape, arrow-pointer
            end-if 
+           .
+      * <TOTEM:END>
+       Screen4-Rb-1-BeforeProcedure.
+      * <TOTEM:PARA. Screen4-Rb-1-BeforeProcedure>
+           modify control-handle, color = colore-nu
+           .
+      * <TOTEM:END>
+       Screen4-Rb-1-AfterProcedure.
+      * <TOTEM:PARA. Screen4-Rb-1-AfterProcedure>
+           modify control-handle, color = colore-or
+           .
+      * <TOTEM:END>
+       rb-data-LinkTo.
+      * <TOTEM:PARA. rb-data-LinkTo>
+           move 1 to e-data.
+           move 0 to e-periodo.
+           display ef-data-dal ef-data-al ef-data 
+           .
+      * <TOTEM:END>
+       rb-dal-LinkTo.
+      * <TOTEM:PARA. rb-dal-LinkTo>
+           move 0 to e-data.
+           move 1 to e-periodo.
+           display ef-data-dal ef-data-al ef-data 
            .
       * <TOTEM:END>
 
