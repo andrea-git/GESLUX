@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=bprepb-Ev-Before-Program
 AFTER_PROGRAM=stdoc-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E5B1B14260-368-5978201
+PROGRAM_UNIQUE_CODE=TOTEM-7E5CA103139-836-3223518169
 
 {{@DESCRIPTION:
 
@@ -6242,7 +6242,7 @@ Begin Screen Form1
          End
          Begin Check-Box chk-il-ini
             SCREEN-COL        = 14,50
-            SCREEN-LINE       = 28,63
+            SCREEN-LINE       = 28,62
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-il-ini
@@ -6332,7 +6332,7 @@ Begin Screen Form1
          End
          Begin Check-Box chk-st-ini
             SCREEN-COL        = 39,50
-            SCREEN-LINE       = 28,63
+            SCREEN-LINE       = 28,62
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-st-ini
@@ -11044,7 +11044,7 @@ BEGIN-TEXT
                           end-if
                           move cli-ragsoc-1 to sol-localita of tmp-sol
                        else
-                          if k-agente or k-tipo or mto-prg-destino = 0
+                          if k-agente or mto-prg-destino = 0
                              set  cli-tipo-C  to true
                              move mto-cod-cli to cli-codice
                              read clienti no lock invalid continue end-read
