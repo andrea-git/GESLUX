@@ -33,6 +33,7 @@
        78  78-MaxRows            value 45.
       * RIGHE PER LA STAMPA
        01  r-data                pic x(10).
+       01  r-periodo             pic x(25).
 
        01  r-titolo              pic x(40).
 
@@ -96,6 +97,7 @@
 
        77  Verdana20BI           handle of font.
        77  Verdana14B            handle of font.
+       77  Verdana12B            handle of font.
        77  Verdana8BI            handle of font.
        77  Verdana8B             handle of font.
        77  Verdana6              handle of font.
@@ -404,19 +406,38 @@
            set spl-nero                 to true.
            perform SCRIVI.
 
-           string stlst-data-ric(7:2) delimited size
-                  "/"                 delimited size
-                  stlst-data-ric(5:2) delimited size
-                  "/"                 delimited size
-                  stlst-data-ric(1:4) delimited size
-                  into r-data
-           end-string.
-                                 
-           move 2,8 to save-riga.
-           move r-data                  to spl-riga-stampa.
-           move Verdana14B              to spl-hfont.
+           if stlst-data-ric = 0
+              string stlst-data-ric-dal(7:2) delimited size
+                     "/"                     delimited size
+                     stlst-data-ric-dal(5:2) delimited size
+                     "/"                     delimited size
+                     stlst-data-ric-dal(1:4) delimited size
+                     " - "                   delimited size
+                     stlst-data-ric-al(7:2)  delimited size
+                     "/"                     delimited size
+                     stlst-data-ric-al(5:2)  delimited size
+                     "/"                     delimited size
+                     stlst-data-ric-al(1:4)  delimited size
+                     into r-periodo
+              end-string                                   
+              move Verdana12B              to spl-hfont  
+              move 14,0                    to spl-colonna    
+              move r-periodo               to spl-riga-stampa
+           else
+              string stlst-data-ric(7:2) delimited size
+                     "/"                 delimited size
+                     stlst-data-ric(5:2) delimited size
+                     "/"                 delimited size
+                     stlst-data-ric(1:4) delimited size
+                     into r-data
+              end-string
+              move Verdana14B              to spl-hfont
+              move r-data                  to spl-riga-stampa
+              move 17,0                    to spl-colonna
+           end-if.
+                                                       
+           move 2,8                     to save-riga.
            move 0                       to spl-tipo-colonna.
-           move 17,0                    to spl-colonna.
            set spl-rosso                to true.
            perform SCRIVI.
       
@@ -763,6 +784,28 @@
               exit paragraph
            end-if. 
 
+      * Verdana 12B
+           initialize wfont-data Verdana12B.
+           move 12 to wfont-size.
+           move "Verdana"            to wfont-name.
+           set  wfcharset-dont-care  to true.
+           set  wfont-bold           to true.
+           set  wfont-italic         to false.
+           set  wfont-underline      to false.
+           set  wfont-strikeout      to false.
+           set  wfont-fixed-pitch    to false.
+           move 0                    to wfont-char-set.
+           set  wfdevice-win-printer to true. |E' un carattere per la stampante
+           call "W$FONT" using wfont-get-font, Verdana12B, wfont-data
+                        giving wfont-status.
+
+      * ISACCO (QUESTI TEST CONTROLLANO L'ESISTENZA DEL FONT)
+           if wfont-status not = 1
+              set errori to true
+              perform MESSAGGIO-ERR-FONT
+              exit paragraph
+           end-if. 
+
       * Verdana 8B
            initialize wfont-data Verdana8B.
            move 8 to wfont-size.
@@ -928,6 +971,7 @@
 
            destroy Verdana20BI.
            destroy Verdana14B.
+           destroy Verdana12B.
            destroy Verdana8B.
            destroy Verdana8BI.
            destroy Verdana6.

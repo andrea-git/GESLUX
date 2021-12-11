@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-listini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 10 dicembre 2021 13:21:48.
+       DATE-WRITTEN.        sabato 11 dicembre 2021 12:50:24.
        REMARKS.
       *{TOTEM}END
 
@@ -114,9 +114,13 @@
        77 tot-cou          PIC  9(9)v99.
        77 tot-cobat        PIC  9(9)v99.
        77 tot-add          PIC  9(9)v99.
+       01 FILLER           PIC  9
+                  VALUE IS 0.
+           88 ricarica VALUE IS 1    WHEN SET TO FALSE  0. 
        77 prezzo-z         PIC  zzz.zzz.zz9,99.
        77 como-mese        PIC  9(2).
        77 prezzo-x         PIC  x(14).
+       77 como-prezzo      PIC  9(10)v99.
        77 mese-ini         PIC  x(5).
        77 mese-fine        PIC  x(5).
        01 FILLER           PIC  x.
@@ -191,6 +195,7 @@
                   USAGE IS COMP-4
                   VALUE IS 0.
        77 save-articolo    PIC  9(6).
+       77 old-col-prz      PIC  x(10).
        77 save-cod-art-cli PIC  x(15).
        01 rec-grid.
            05 col-num          PIC  z(7).
@@ -284,6 +289,33 @@
                   VALUE IS 1.
        77 e-periodo        PIC  9
                   VALUE IS 0.
+       77 lab-data-ric-dal-buf         PIC  99/99/9999.
+       77 lab-data-ric-al-buf          PIC  99/99/9999.
+       77 v-periodo        PIC  9
+                  VALUE IS 1.
+       77 v-data           PIC  9
+                  VALUE IS 1.
+       77 aggiungi-BMP     PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 BOTTONE-inserisci-BMP        PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 Verdana12BI-Occidentale
+                  USAGE IS HANDLE OF FONT.
+       77 v-screen1        PIC  9
+                  VALUE IS 1.
+       77 Form1-Tb-1-Handleaa
+                  USAGE IS HANDLE OF WINDOW.
+       77 lab-art-i-buf    PIC  x(40).
+       77 ef-art-i-buf     PIC  z(6).
+       77 ef-data-i-buf    PIC  99/99/9999.
+       77 ef-cod-art-cli-i-buf         PIC  x(15).
+       77 ef-prz-i-buf     PIC  zzz.zz9,99.
+       77 E-CERCA-I        PIC  9
+                  VALUE IS 1.
+       77 form1a-Handle
+                  USAGE IS HANDLE OF WINDOW.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -299,6 +331,8 @@
 
        77 STATUS-form3-FLAG-REFRESH PIC  9.
           88 form3-FLAG-REFRESH  VALUE 1 FALSE 0. 
+       77 STATUS-Form1a-FLAG-REFRESH PIC  9.
+          88 Form1a-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-tgrupgdo-BUF     PIC X(1206).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-rpromo-BUF     PIC X(209).
@@ -439,6 +473,10 @@
        78  78-ID-ef-data VALUE 5008.
        78  78-ID-ef-data-dal VALUE 5009.
        78  78-ID-ef-data-al VALUE 5010.
+       78  78-ID-ef-art-i VALUE 5001.
+       78  78-ID-ef-data-i VALUE 5002.
+       78  78-ID-ef-cod-art-cli-i VALUE 5003.
+       78  78-ID-ef-prz-i VALUE 5004.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -1254,6 +1292,45 @@
            CENTER,
            TRANSPARENT,
            TITLE lab-data-ric-buf,
+           VISIBLE v-data,
+           .
+
+      * LABEL
+       05
+           lab-data-ric-dal, 
+           Label, 
+           COL 64,51, 
+           LINE 5,88,
+           LINES 1,00 ,
+           SIZE 15,00 ,
+           COLOR IS 5,
+           FONT IS Verdana12B-Occidentale,
+           ID IS 19,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           CENTER,
+           TRANSPARENT,
+           TITLE lab-data-ric-dal-buf,
+           VISIBLE v-periodo,
+           .
+
+      * LABEL
+       05
+           lab-data-ric-al, 
+           Label, 
+           COL 99,51, 
+           LINE 5,88,
+           LINES 1,00 ,
+           SIZE 15,00 ,
+           COLOR IS 5,
+           FONT IS Verdana12B-Occidentale,
+           ID IS 21,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           CENTER,
+           TRANSPARENT,
+           TITLE lab-data-ric-al-buf,
+           VISIBLE v-periodo,
            .
 
       * FRAME
@@ -1295,7 +1372,7 @@
        05
            pb-excel, 
            Push-Button, 
-           COL 154,00, 
+           COL 143,63, 
            LINE 46,82,
            LINES 30,00 ,
            SIZE 28,00 ,
@@ -1312,6 +1389,25 @@
 
       * PUSH BUTTON
        05
+           pb-inserisci, 
+           Push-Button, 
+           COL 148,38, 
+           LINE 46,82,
+           LINES 30,00 ,
+           SIZE 73,00 ,
+           BITMAP-HANDLE BOTTONE-inserisci-BMP,
+           BITMAP-NUMBER 1,
+           UNFRAMED,
+           SQUARE,
+           EXCEPTION-VALUE 1003,
+           FLAT,
+           ID IS 201,
+           AFTER PROCEDURE pb-inserisci-AfterProcedure, 
+           BEFORE PROCEDURE pb-inserisci-BeforeProcedure, 
+           .
+
+      * PUSH BUTTON
+       05
            pb-stampa, 
            Push-Button, 
            COL 158,38, 
@@ -1324,7 +1420,7 @@
            SQUARE,
            EXCEPTION-VALUE 1000,
            FLAT,
-           ID IS 201,
+           ID IS 202,
            AFTER PROCEDURE pb-stampa-AfterProcedure, 
            BEFORE PROCEDURE pb-stampa-BeforeProcedure, 
            .
@@ -1343,7 +1439,7 @@
            SQUARE,
            EXCEPTION-VALUE 27,
            FLAT,
-           ID IS 202,
+           ID IS 203,
            SELF-ACT,
            ESCAPE-BUTTON,
            AFTER PROCEDURE pb-esci-AfterProcedure, 
@@ -1360,7 +1456,7 @@
            SIZE 41,00 ,
            COLOR IS 176,
            FONT IS Verdana12B-Occidentale,
-           ID IS 19,
+           ID IS 204,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            CENTER,
@@ -1377,7 +1473,7 @@
            SIZE 52,50 ,
            COLOR IS 2,
            FONT IS Verdana12B-Occidentale,
-           ID IS 21,
+           ID IS 205,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            LEFT,
@@ -1405,6 +1501,306 @@
            CENTER,
            TRANSPARENT,
            TITLE tit,
+           .
+
+      * FORM
+       01 
+           Form1a, 
+           .
+
+      * FRAME
+       05
+           frame-limitia, 
+           Frame, 
+           COL 1,60, 
+           LINE 1,50,
+           LINES 10,33 ,
+           SIZE 70,90 ,
+           ID IS 9,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE "Nuova riga listino",
+           TITLE-POSITION 2,
+           .
+
+      * ENTRY FIELD
+       05
+           ef-art-i, 
+           Entry-Field, 
+           COL 13,60, 
+           LINE 3,50,
+           LINES 1,33 ,
+           SIZE 7,00 ,
+           BOXED,
+           COLOR IS 513,
+           ID IS 78-ID-ef-art-i,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           VALUE ef-art-i-buf,
+           AFTER PROCEDURE ef-art-i-AfterProcedure, 
+           BEFORE PROCEDURE ef-art-i-BeforeProcedure, 
+           .
+
+      * ENTRY FIELD
+       05
+           ef-data-i, 
+           Entry-Field, 
+           COL 13,60, 
+           LINE 5,44,
+           LINES 1,33 ,
+           SIZE 11,00 ,
+           BOXED,
+           COLOR IS 513,
+           ID IS 78-ID-ef-data-i,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           CENTER,
+           VALUE ef-data-i-buf,
+           AFTER PROCEDURE ef-data-i-AfterProcedure, 
+           BEFORE PROCEDURE ef-data-i-BeforeProcedure, 
+           .
+
+      * ENTRY FIELD
+       05
+           ef-cod-art-cli-i, 
+           Entry-Field, 
+           COL 13,60, 
+           LINE 7,44,
+           LINES 1,33 ,
+           SIZE 18,00 ,
+           BOXED,
+           COLOR IS 513,
+           ID IS 78-ID-ef-cod-art-cli-i,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           VALUE ef-cod-art-cli-i-buf,
+           AFTER PROCEDURE ef-cod-art-cli-i-AfterProcedure, 
+           BEFORE PROCEDURE ef-cod-art-cli-i-BeforeProcedure, 
+           .
+
+      * ENTRY FIELD
+       05
+           ef-prz-i, 
+           Entry-Field, 
+           COL 13,60, 
+           LINE 9,50,
+           LINES 1,33 ,
+           SIZE 11,00 ,
+           BOXED,
+           COLOR IS 513,
+           ID IS 78-ID-ef-prz-i,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           VALUE ef-prz-i-buf,
+           AFTER PROCEDURE ef-prz-i-AfterProcedure, 
+           BEFORE PROCEDURE ef-prz-i-BeforeProcedure, 
+           .
+
+      * LABEL
+       05
+           Screen4-Custom1-2a, 
+           Label, 
+           COL 4,10, 
+           LINE 2,39,
+           LINES 0,50 ,
+           SIZE 2,20 ,
+           ID IS 3,
+           TRANSPARENT,
+           TITLE "CUSTOM CONTROL",
+           VISIBLE v-custom,
+           .
+
+      * LABEL
+       05
+           Screen4-La-1b, 
+           Label, 
+           COL 2,60, 
+           LINE 5,44,
+           LINES 1,33 ,
+           SIZE 10,50 ,
+           ID IS 11,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Valido dal",
+           .
+
+      * LABEL
+       05
+           Screen4-La-2b, 
+           Label, 
+           COL 2,60, 
+           LINE 3,50,
+           LINES 1,33 ,
+           SIZE 10,50 ,
+           ID IS 14,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Articolo",
+           .
+
+      * LABEL
+       05
+           lab-art-i, 
+           Label, 
+           COL 21,60, 
+           LINE 3,50,
+           LINES 1,33 ,
+           SIZE 50,00 ,
+           COLOR IS 5,
+           ID IS 15,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE lab-art-i-buf,
+           .
+
+      * LABEL
+       05
+           Screen4-La-2ab, 
+           Label, 
+           COL 2,60, 
+           LINE 7,44,
+           LINES 1,33 ,
+           SIZE 10,50 ,
+           ID IS 203,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Cod. art. cli",
+           .
+
+      * LABEL
+       05
+           Screen4-La-1ab, 
+           Label, 
+           COL 2,60, 
+           LINE 9,44,
+           LINES 1,33 ,
+           SIZE 10,50 ,
+           ID IS 207,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Prezzo",
+           .
+
+      * LABEL
+       05
+           Screen4a-blockpgm-1, 
+           Label, 
+           COL 23,10, 
+           LINE 2,50,
+           LINES 0,44 ,
+           SIZE 2,00 ,
+           ID IS 1,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "BlockPgm",
+           VISIBLE v-custom,
+           .
+
+      * FRAME
+       05
+           Screen4-Fr-1b, 
+           Frame, 
+           COL 1,00, 
+           LINE 12,28,
+           LINES 2,83 ,
+           SIZE 72,40 ,
+           ID IS 29,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           .
+
+      * PUSH BUTTON
+       05
+           pb-ok-i, 
+           Push-Button, 
+           COL 1,00, 
+           LINE 12,97,
+           LINES 30,00 ,
+           SIZE 73,00 ,
+           BITMAP-HANDLE BOTTONE-OK-BMP,
+           BITMAP-NUMBER 1,
+           UNFRAMED,
+           SQUARE,
+           EXCEPTION-VALUE 1000,
+           FLAT,
+           ID IS 201,
+           AFTER PROCEDURE pb-ok-i-AfterProcedure, 
+           BEFORE PROCEDURE pb-ok-i-BeforeProcedure, 
+           .
+
+      * PUSH BUTTON
+       05
+           pb-annulla-i, 
+           Push-Button, 
+           COL 65,30, 
+           LINE 12,97,
+           LINES 30,00 ,
+           SIZE 73,00 ,
+           BITMAP-HANDLE BOTTONE-CANCEL-BMP,
+           BITMAP-NUMBER 1,
+           UNFRAMED,
+           SQUARE,
+           EXCEPTION-VALUE 27,
+           FLAT,
+           ID IS 202,
+           SELF-ACT,
+           ESCAPE-BUTTON,
+           AFTER PROCEDURE pb-annulla-i-AfterProcedure, 
+           BEFORE PROCEDURE pb-annulla-i-BeforeProcedure, 
+           .
+
+      * TOOLBAR
+       01
+           Form1-Tb-1aa,
+           .    
+
+      * PUSH BUTTON
+       05
+           TOOL-ESCIa, 
+           Push-Button, 
+           COL 1,00, 
+           LINE 1,08,
+           LINES 23,00 ,
+           SIZE 24,00 ,
+           BITMAP-HANDLE TOOLBAR-BMP,
+           BITMAP-NUMBER 1,
+           UNFRAMED,
+           SQUARE,
+           ENABLED E-ESCI,
+           EXCEPTION-VALUE 27,
+           FLAT,
+           ID IS 209,
+           SELF-ACT,
+           ESCAPE-BUTTON,
+           TITLE "&Esci",
+           .
+
+      * PUSH BUTTON
+       05
+           TOOL-CERCA-i, 
+           Push-Button, 
+           COL 6,00, 
+           LINE 1,08,
+           LINES 23,00 ,
+           SIZE 24,00 ,
+           BITMAP-HANDLE TOOLBAR-BMP,
+           BITMAP-NUMBER 8,
+           UNFRAMED,
+           SQUARE,
+           ENABLED E-CERCA-I,
+           EXCEPTION-VALUE 1001,
+           FLAT,
+           ID IS 210,
+           SELF-ACT,
+           TITLE "Cerca (F8)",
            .
 
       *{TOTEM}END
@@ -1487,6 +1883,7 @@
            CALL "w$bitmap" USING WBITMAP-DESTROY, TOOLBAR-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, BOTTONE-ELIMINA-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, EXCEL-BMP
+           CALL "w$bitmap" USING WBITMAP-DESTROY, BOTTONE-inserisci-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, BOTTONE-EXIT-BMP
       *    After-Program
            PERFORM ginqui-Ev-After-Program
@@ -1620,6 +2017,10 @@
            COPY RESOURCE "EXCEL.BMP".
            CALL "w$bitmap" USING WBITMAP-LOAD "EXCEL.BMP", 
                    GIVING EXCEL-BMP.
+      * pb-inserisci
+           COPY RESOURCE "BOTTONE-inserisci.BMP".
+           CALL "w$bitmap" USING WBITMAP-LOAD "BOTTONE-inserisci.BMP", 
+                   GIVING BOTTONE-inserisci-BMP.
       * pb-esci
            COPY RESOURCE "BOTTONE-EXIT.BMP".
            CALL "w$bitmap" USING WBITMAP-LOAD "BOTTONE-EXIT.BMP", 
@@ -5131,6 +5532,8 @@
                  PERFORM pb-elimina-LinkTo
               WHEN Key-Status = 1002
                  PERFORM pb-excel-LinkTo
+              WHEN Key-Status = 1003
+                 PERFORM pb-inserisci-LinkTo
               WHEN Key-Status = 1000
                  PERFORM pb-stampa-LinkTo
            END-EVALUATE
@@ -5312,7 +5715,6 @@
                 if trovato
 
                    modify gd-listini, mass-update = 1
-                   move ef-data-buf to lab-data-ric-buf
           
                    move 0 to idx
                    perform RIEMPI-GRID
@@ -5477,6 +5879,201 @@
        form3-Restore-Status.
            .
 
+       Form1a-Open-Routine.
+           PERFORM Form1a-Scrn
+           PERFORM Form1a-Proc
+           .
+
+       Form1a-Scrn.
+           PERFORM Form1a-Create-Win
+           PERFORM Form1a-Init-Value
+           PERFORM Form1a-Init-Data
+      * Tab keystrok settings
+      * Tool Bar
+           DISPLAY Form1-Tb-1aa
+           PERFORM Form1a-DISPLAY
+           .
+
+       Form1a-Create-Win.
+           Display Independent GRAPHICAL WINDOW
+              LINES 14,11,
+              SIZE 72,40,
+              HEIGHT-IN-CELLS,
+              WIDTH-IN-CELLS,
+              COLOR 65793,
+              CONTROL FONT Verdana12-Occidentale,
+              LABEL-OFFSET 23,
+              LINK TO THREAD,
+              NO SCROLL,
+              TITLE-BAR,
+              TITLE TITOLO,
+              AUTO-MINIMIZE,
+              WITH SYSTEM MENU,
+              USER-GRAY,
+              USER-WHITE,
+              No WRAP,
+              EVENT PROCEDURE Screen4-Event-Proc,
+              HANDLE IS form1a-Handle,
+      * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, AfterCreateWin>
+      * <TOTEM:END>
+
+
+      * Tool Bar    
+           DISPLAY TOOL-BAR 
+              LINES 2,67,   
+              HANDLE IN Form1-Tb-1-Handleaa
+           DISPLAY Form1-Tb-1aa UPON Form1-Tb-1-Handleaa
+
+      * Status-bar
+           DISPLAY Form1a UPON form1a-Handle
+      * DISPLAY-COLUMNS settings
+           .
+
+       Form1a-PROC.
+      * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, BeforeAccept>
+           accept como-data from century-date.
+           perform DATE-TO-SCREEN.
+           move como-data to ef-data-i-buf.
+           display ef-data-i.
+
+           move 0 to ef-art-i-buf.
+           move spaces to ef-cod-art-cli-i-buf.
+           move 0 to ef-prz-i-buf.
+
+           display ef-art-i ef-cod-art-cli-i ef-prz-i.
+
+           .
+      * <TOTEM:END>
+           PERFORM UNTIL Exit-Pushed
+              ACCEPT Form1a
+                 ON EXCEPTION
+                    PERFORM Form1a-Evaluate-Func
+                 MOVE 4 TO TOTEM-Form-Index
+              END-ACCEPT
+      * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, AfterEndAccept>
+      * <TOTEM:END>
+           END-PERFORM
+      * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, BeforeDestroyWindow>
+      * <TOTEM:END>
+           DESTROY form1a-Handle
+           INITIALIZE Key-Status
+           .
+
+       Form1a-Evaluate-Func.
+      * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, AfterAccept>
+      * <TOTEM:END>
+           EVALUATE TRUE
+              WHEN Exit-Pushed
+                 PERFORM Form1a-Exit
+              WHEN Event-Occurred
+                 IF Event-Type = Cmd-Close
+                    PERFORM Form1a-Exit
+                 END-IF
+              WHEN Key-Status = 1000
+                 PERFORM pb-ok-i-LinkTo
+              WHEN Key-Status = 1001
+                 PERFORM TOOL-CERCA-i-LinkTo
+           END-EVALUATE
+      * avoid changing focus
+           MOVE 4 TO Accept-Control
+           .
+
+       Form1a-CLEAR.
+           PERFORM Form1a-INIT-VALUE
+           PERFORM Form1a-DISPLAY
+           .
+
+       Form1a-DISPLAY.
+      * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, BeforeDisplay>
+      * <TOTEM:END>
+           DISPLAY Form1-Tb-1aa
+           DISPLAY Form1a UPON form1a-Handle
+      * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, AfterDisplay>
+           SET LK-BL-SCRITTURA     TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           MOVE FORM1-HANDLE       TO LK-HND-WIN.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           CANCEL "BLOCKPGM".
+
+           .
+      * <TOTEM:END>
+           .
+
+       Form1a-Exit.
+      * for main screen
+      * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, BeforeExit>
+      * <TOTEM:END>
+           MOVE 27 TO Key-Status
+           .
+
+       Form1a-Init-Data.
+           MOVE 4 TO TOTEM-Form-Index
+           MOVE 0 TO TOTEM-Frame-Index
+           .
+
+       Form1a-Init-Value.
+      * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, SetDefault>
+      * <TOTEM:END>
+           PERFORM Form1a-FLD-TO-BUF
+           .
+
+
+       Form1a-ALLGRID-RESET.
+           .
+
+      * for Form's Validation
+       Form1a-VALIDATION-ROUTINE.
+           SET TOTEM-CHECK-OK TO TRUE
+           .
+
+
+       Form1a-Buf-To-Fld.
+      * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, BeforeBufToFld>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, AfterBufToFld>
+      * <TOTEM:END>
+           .
+
+       Form1a-Fld-To-Buf.
+      * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, BeforeFldToBuf>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, AfterFldToBuf>
+      * <TOTEM:END>
+           .
+
+       Form1a-CONTROLLO-OLD.
+           set SiSalvato to true.
+           if mod = 0 exit paragraph end-if.
+           perform Form1a-BUF-TO-FLD.
+           move 0 to scelta.
+           .
+       Form1a-EXTENDED-FILE-STATUS.
+           CALL "C$RERRNAME" USING TOTEM-MSG-ERR-FILE
+           CALL "C$RERR" USING EXTEND-STAT, TEXT-MESSAGE
+           MOVE PRIMARY-ERROR TO TOTEM-MSG-ID
+           PERFORM Form1a-SHOW-MSG-ROUTINE
+           .
+
+       Form1a-SHOW-MSG-ROUTINE.
+           PERFORM SHOW-MSG-ROUTINE
+           PERFORM Form1a-DISPLAY-MESSAGE
+           .
+
+       Form1a-DISPLAY-MESSAGE.
+           PERFORM MESSAGE-BOX-ROUTINE
+           DISPLAY MESSAGE BOX TOTEM-MSG-TEXT
+               TITLE IS TOTEM-MSG-TITLE
+               TYPE  IS TOTEM-MSG-BUTTON-TYPE
+               ICON  IS TOTEM-MSG-DEFAULT-BUTTON
+               RETURNING TOTEM-MSG-RETURN-VALUE
+           .
+
+       Form1a-Save-Status.
+           .             
+
+       Form1a-Restore-Status.
+           .
+
 
 
        Form1-BeforeProcedure.
@@ -5551,6 +6148,19 @@
                    move art-descrizione to lab-art-buf
                    display ef-art lab-art
                 end-if
+
+           when 78-ID-ef-art
+                inquire ef-art, value in art-codice
+                move   "articoli"     to como-file
+                call   "zoom-gt"   using como-file, art-rec
+                                  giving stato-zoom
+                cancel "zoom-gt"
+      
+                if stato-zoom = 0
+                   move art-codice      to ef-art-i-buf
+                   move art-descrizione to lab-art-i-buf
+                   display ef-art-i lab-art-i
+                end-if
                 
            end-evaluate 
            .
@@ -5567,9 +6177,18 @@
            move form3-handle       to stlst-handle.
            move path-tmp-listini   to stlst-path.
            move RowsToPrint        to stlst-righe.
-           move ef-data-buf        to como-data.
-           perform DATE-TO-FILE.
-           move como-data          to stlst-data-ric.
+           if tipo-data = 1
+              move ef-data-buf        to como-data
+              perform DATE-TO-FILE
+              move como-data          to stlst-data-ric
+           else                                        
+              move ef-data-dal-buf    to como-data
+              perform DATE-TO-FILE
+              move como-data          to stlst-data-ric-dal
+              move ef-data-al-buf     to como-data
+              perform DATE-TO-FILE
+              move como-data          to stlst-data-ric-al
+           end-if
            call   "lab-st-listini" using st-listini-linkage.
            cancel "lab-st-listini" 
            .
@@ -5990,7 +6609,7 @@
               move tlst-cod-art-cli     to col-cod-art
               move tlst-promo           to col-promo
                                                        
-              add 1 to idx giving riga
+              add 1 to idx giving riga        
 
               modify gd-listini(riga, 1),  cell-data col-num
               modify gd-listini(riga, 2),  cell-data col-art
@@ -5999,7 +6618,7 @@
               modify gd-listini(riga, 5),  cell-data col-des    
               modify gd-listini(riga, 6),  cell-data col-imb    
               modify gd-listini(riga, 7),  cell-data col-ean
-              modify gd-listini(riga, 8),  cell-data col-prod
+              modify gd-listini(riga, 8),  cell-data col-prod 
               modify gd-listini(riga, 9),  cell-data col-cons
               modify gd-listini(riga, 10), cell-data col-cou
               modify gd-listini(riga, 11), cell-data col-add
@@ -6076,6 +6695,14 @@
                           set trovato to true
                        end-if
                  end-start
+              end-if
+           end-if.
+
+           if trovato and tipo-data = 2
+              set trovato to false
+              if lst-data of listini >= data-richiesta-dal and
+                 lst-data of listini <= data-richiesta-al 
+                 set trovato to true
               end-if
            end-if.
 
@@ -6254,6 +6881,26 @@
 
        VALORIZZA-RIGA-TMP.
       * <TOTEM:PARA. VALORIZZA-RIGA-TMP>
+           perform CALCOLA-IMPOSTE-PROD.
+
+           perform RECUPERA-PROMO.
+
+           move lst-cod-art-cli  of listini     to tlst-cod-art-cli.
+           move lst-prezzo       of listini     to tlst-prezzo.
+           move lst-data         of listini     to tlst-data-vigore.
+           move gdo-data-vigore      to data-vigore.
+           if lst-data-modifica  of listini = 0
+              move lst-data-creazione  of listini to tlst-data-modifica
+           end-if.
+           move lst-chiave of listini     to tlst-chiave-listino.
+      *    Luciano
+           move lst-prg-chiave of listini to tlst-prg-chiave.
+      *    Luciano
+           write tlst-rec invalid continue end-write.
+           add 1 to idx.
+
+      ***---
+       CALCOLA-IMPOSTE-PROD.
            initialize rec-grid.
            move lst-articolo of listini to tlst-articolo art-codice.
            read articoli no lock
@@ -6427,23 +7074,7 @@
                    move 0 to tlst-prod
                 end-if
 
-           end-read.
-
-           perform RECUPERA-PROMO.
-
-           move lst-cod-art-cli  of listini     to tlst-cod-art-cli.
-           move lst-prezzo       of listini     to tlst-prezzo.
-           move lst-data         of listini     to tlst-data-vigore.
-           move gdo-data-vigore      to data-vigore.
-           if lst-data-modifica  of listini = 0
-              move lst-data-creazione  of listini to tlst-data-modifica
-           end-if.
-           move lst-chiave of listini     to tlst-chiave-listino.
-      *    Luciano
-           move lst-prg-chiave of listini to tlst-prg-chiave.
-      *    Luciano
-           write tlst-rec invalid continue end-write.
-           add 1 to idx 
+           end-read 
            .
       * <TOTEM:END>
 
@@ -6483,9 +7114,79 @@
            .
       * <TOTEM:END>
 
+       CONTROLLO-I.
+      * <TOTEM:PARA. CONTROLLO-I>
+           set tutto-ok to true.
+
+           evaluate CONTROL-ID
+      *    
+           when 78-ID-ef-data-i
+                inquire ef-data-i, value in ef-data-i-buf
+                move ef-data-i-buf to como-data
+                perform DATE-FORMAT
+                move como-data to ef-data-i-buf
+                display ef-data-i
+
+           when 78-ID-ef-art-i
+                inquire ef-art-i, value in art-codice
+                read articoli no lock
+                     invalid
+                     move art-codice to bli-codice
+                     read blister no lock
+                          invalid
+                          move spaces to lab-art-i-buf
+                          set errori to true
+                          display message "Articolo non valido"
+                                    title tit-err
+                                     icon 2
+                      not invalid
+                          move bli-descrizione to lab-art-i-buf
+                     end-read
+                 not invalid
+                     move art-descrizione to lab-art-i-buf
+                end-read
+                display lab-art-i
+
+           when 78-ID-ef-cod-art-cli-i
+                inquire ef-cod-art-cli-i, value in ef-cod-art-cli-i-buf
+                if ef-cod-art-cli-i-buf = spaces
+                   move ef-gdo-buf to lst-gdo      of listini
+                   move art-codice to lst-articolo of listini
+                   move 99999999   to lst-data     of listini
+                   start listini key <= lst-k-articolo
+                         invalid continue
+                     not invalid
+                         perform until 1 = 2
+                            read listini previous at end exit perform 
+           end-read
+                            if lst-gdo      of listini not = ef-gdo-buf 
+           or
+                               lst-articolo of listini not = art-codice
+                               exit perform
+                            end-if
+                            if lst-cod-art-cli  of listini not = spaces
+                               move lst-cod-art-cli  of listini 
+                                 to ef-cod-art-cli-i-buf
+                               display ef-cod-art-cli-i
+                               exit perform
+                            end-if
+                         end-perform
+                   end-start
+                end-if
+           end-evaluate.
+
+           if errori
+              perform CANCELLA-COLORE
+              move CONTROL-ID to STORE-ID        
+              move 4          to ACCEPT-CONTROL  
+           end-if 
+           .
+      * <TOTEM:END>
+
       * EVENT PARAGRAPH
        ginqui-Ev-Before-Program.
       * <TOTEM:PARA. ginqui-Ev-Before-Program>
+           move LK-BL-PROG-ID    TO COMO-PROG-ID.
            move LK-BL-PROG-ID    TO COMO-PROG-ID 
            .
       * <TOTEM:END>
@@ -6494,7 +7195,10 @@
            SET LK-BL-CANCELLAZIONE TO TRUE.
            MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
            CALL "BLOCKPGM"  USING LK-BLOCKPGM.
-           delete file tmp-listini 
+           delete file tmp-listini.
+           SET LK-BL-CANCELLAZIONE TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM 
            .
       * <TOTEM:END>
        pb-ok-BeforeProcedure.
@@ -6517,16 +7221,36 @@
               if errori exit perform end-if
            end-perform.
 
-           if tutto-ok
-              modify form1-handle, visible 0
-              perform FORM2-OPEN-ROUTINE
-              modify form1-handle, visible 1
-              modify pb-ok,        bitmap-number = 1
-              modify pb-annulla,   bitmap-number = 1
-              perform CANCELLA-COLORE
-              move 78-ID-ef-gdo to control-id
-              move 4            to accept-control
-           end-if             
+           perform until 1 = 2
+              if tutto-ok
+                 if tipo-data = 1
+                    move 1 to v-data
+                    move 0 to v-periodo
+                    move ef-data-buf to lab-data-ric-buf
+                    move 0 to lab-data-ric-dal-buf 
+                              lab-data-ric-al-buf        
+                 else                  
+                    move 0 to v-data
+                    move 1 to v-periodo
+                    move ef-data-dal-buf to lab-data-ric-dal-buf
+                    move ef-data-al-buf  to lab-data-ric-al-buf
+                    move 0 to lab-data-ric-buf          
+                 end-if                  
+           
+                 modify form1-handle, visible 0
+                 set ricarica to false
+                 perform FORM2-OPEN-ROUTINE
+                 if not ricarica
+                    modify form1-handle, visible 1
+                    modify pb-ok,        bitmap-number = 1
+                    modify pb-annulla,   bitmap-number = 1
+                    perform CANCELLA-COLORE
+                    move 78-ID-ef-gdo to control-id
+                    move 4            to accept-control
+                    exit perform
+                 end-if
+              end-if
+           end-perform 
            .
       * <TOTEM:END>
        pb-annulla-BeforeProcedure.
@@ -6549,7 +7273,8 @@
       * <TOTEM:PARA. ef-gdo-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            move 1 to e-cerca.
-           modify tool-cerca, enabled e-cerca 
+           modify tool-cerca, enabled e-cerca.
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-gdo-AfterProcedure.
@@ -6557,25 +7282,29 @@
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            move 0 to e-cerca.
            modify tool-cerca, enabled e-cerca.
-           perform CONTROLLO 
+           perform CONTROLLO.
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
        Screen4-Ef-1-BeforeProcedure.
       * <TOTEM:PARA. Screen4-Ef-1-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        Screen4-Ef-1-AfterProcedure.
       * <TOTEM:PARA. Screen4-Ef-1-AfterProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
-           perform CONTROLLO 
+           perform CONTROLLO.
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
        Screen4-Ef-2-BeforeProcedure.
       * <TOTEM:PARA. Screen4-Ef-2-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            move 1 to e-cerca.
-           modify tool-cerca, enabled e-cerca 
+           modify tool-cerca, enabled e-cerca.
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        Screen4-Ef-2-AfterProcedure.
@@ -6583,7 +7312,8 @@
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            move 0 to e-cerca.
            modify tool-cerca, enabled e-cerca.
-           perform CONTROLLO 
+           perform CONTROLLO.
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
        pb-stampa-BeforeProcedure.
@@ -6621,7 +7351,10 @@
                      inquire gd-listini, CURSOR-Y = riga
                      set CallManutenzione to true
                 end-evaluate
-           when 4 continue
+           when 4  continue
+           when 12 
+                set environment "KEYSTROKE" to "DATA=44 46"
+                inquire gd-listini, cell-data in old-col-prz
            when other set EVENT-ACTION to EVENT-ACTION-FAIL
            end-evaluate.
       *    Luciano
@@ -6747,27 +7480,98 @@
            lst-cod-art-cli of listini
                    rewrite lst-rec of listini
               end-read
+           end-if. 
+
+           if event-data-1 = 12
+              inquire gd-listini(riga, 1), hidden-data lst-chiave of 
+           listini
+              read listini no lock
+                   invalid display message "NO LISTINO FOUND"
+               not invalid 
+                   inquire gd-listini(riga, 12), cell-data col-prz
+                   
+                   evaluate col-prz
+                   when "SP"
+                        move 0 to lst-prezzo of listini
+                        move 0 to col-add tlst-add
+                        modify gd-listini(riga, 11), cell-data col-add
+                   when "FA" 
+                        move 999999,99 to lst-prezzo of listini
+                        move 0 to col-add tlst-add
+                        modify gd-listini(riga, 11), cell-data col-add
+                   when other                    
+                        inquire gd-listini(riga, 12), cell-data 
+           como-prezzo
+                        evaluate true
+                        when como-prezzo = 0
+                             move "SP" to col-prz
+                             move 0 to lst-prezzo of listini
+                             move 0 to col-add tlst-add
+                             modify gd-listini(riga, 11), cell-data 
+           col-add
+                        when como-prezzo >= 999999,99
+                             move "FA" to col-prz
+                             move 999999,99 to lst-prezzo of listini
+                             move 0 to col-add tlst-add
+                             modify gd-listini(riga, 11), cell-data 
+           col-add
+                        when other
+                             inquire gd-listini(riga, 12), cell-data 
+           prezzo-edit
+                             move prezzo-edit to lst-prezzo of listini 
+                             perform CALCOLA-IMPOSTE-PROD
+                             move tlst-add to col-add  
+                             move prezzo-edit to col-prz
+                             modify gd-listini(riga, 11), cell-data 
+           col-add
+                        end-evaluate
+                   end-evaluate
+                                              
+                   rewrite lst-rec of listini                       
+
+                   inquire gd-listini(riga, 9),  cell-data tot-consumo
+                   inquire gd-listini(riga, 10), cell-data tot-cou
+
+                   compute comodo = lst-prezzo   of listini -
+                                    tot-consumo -
+                                    tot-cou     -
+                                    tlst-add     
+
+                   if comodo > 0
+                      move comodo to col-prod
+                   else
+                      move 0 to col-prod
+                   end-if                                          
+                   modify gd-listini(riga, 8),  cell-data col-prod 
+                   modify gd-listini(riga, 12), cell-data col-prz
+              end-read                                   
+              set environment "KEYSTROKE" to "DATA=44 44"
+              set environment "KEYSTROKE" to "DATA=46 46"
            end-if  
            .
       * <TOTEM:END>
        ef-cod-art-cli-BeforeProcedure.
       * <TOTEM:PARA. ef-cod-art-cli-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-cod-art-cli-AfterProcedure.
       * <TOTEM:PARA. ef-cod-art-cli-AfterProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
-           perform CONTROLLO 
+           perform CONTROLLO.
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
        Screen4-Cb-1-BeforeProcedure.
       * <TOTEM:PARA. Screen4-Cb-1-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        Screen4-Cb-1-AfterProcedure.
       * <TOTEM:PARA. Screen4-Cb-1-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
@@ -6800,10 +7604,12 @@
        Screen4-Rb-1-BeforeProcedure.
       * <TOTEM:PARA. Screen4-Rb-1-BeforeProcedure>
            modify control-handle, color = colore-nu
+           modify control-handle, color = colore-nu
            .
       * <TOTEM:END>
        Screen4-Rb-1-AfterProcedure.
       * <TOTEM:PARA. Screen4-Rb-1-AfterProcedure>
+           modify control-handle, color = colore-or
            modify control-handle, color = colore-or
            .
       * <TOTEM:END>
@@ -6819,6 +7625,150 @@
            move 0 to e-data.
            move 1 to e-periodo.
            display ef-data-dal ef-data-al ef-data 
+           .
+      * <TOTEM:END>
+       pb-inserisci-BeforeProcedure.
+      * <TOTEM:PARA. pb-inserisci-BeforeProcedure>
+           modify pb-inserisci, bitmap-number = 2 
+           .
+      * <TOTEM:END>
+       pb-inserisci-AfterProcedure.
+      * <TOTEM:PARA. pb-inserisci-AfterProcedure>
+           modify pb-inserisci, bitmap-number = 1 
+           .
+      * <TOTEM:END>
+       ef-art-i-BeforeProcedure.
+      * <TOTEM:PARA. ef-art-i-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           move 1 to e-cerca-i.
+           modify tool-cerca-i, enabled e-cerca-i.
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       TOOL-CERCA-i-LinkTo.
+      * <TOTEM:PARA. TOOL-CERCA-i-LinkTo>
+           inquire tool-cerca-i, enabled in e-cerca-i.
+           if e-cerca-i = 1 perform CERCA end-if 
+           .
+      * <TOTEM:END>
+       ef-art-i-AfterProcedure.
+      * <TOTEM:PARA. ef-art-i-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           move 1 to e-cerca-i.
+           modify tool-cerca-i, enabled e-cerca-i.
+           perform CONTROLLO-I.
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       ef-cod-art-cli-i-BeforeProcedure.
+      * <TOTEM:PARA. ef-cod-art-cli-i-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       ef-data-i-BeforeProcedure.
+      * <TOTEM:PARA. ef-data-i-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       ef-prz-i-BeforeProcedure.
+      * <TOTEM:PARA. ef-prz-i-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       ef-cod-art-cli-i-AfterProcedure.
+      * <TOTEM:PARA. ef-cod-art-cli-i-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           perform CONTROLLO-I.
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       ef-data-i-AfterProcedure.
+      * <TOTEM:PARA. ef-data-i-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           perform CONTROLLO-I.
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       ef-prz-i-AfterProcedure.
+      * <TOTEM:PARA. ef-prz-i-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       pb-ok-i-BeforeProcedure.
+      * <TOTEM:PARA. pb-ok-i-BeforeProcedure>
+           modify pb-ok-i, bitmap-number 2 
+           .
+      * <TOTEM:END>
+       pb-ok-i-AfterProcedure.
+      * <TOTEM:PARA. pb-ok-i-AfterProcedure>
+           modify pb-ok-i, bitmap-number 1 
+           .
+      * <TOTEM:END>
+       pb-ok-i-LinkTo.
+      * <TOTEM:PARA. pb-ok-i-LinkTo>
+           move CONTROL-ID to mem-id.
+
+           perform  varying CONTROL-ID from 78-ID-ef-art-i by 1
+                      until CONTROL-ID > 78-ID-ef-prz-i
+              perform CONTROLLO-I
+              if errori exit perform end-if
+           end-perform.
+
+           if tutto-ok                           
+              initialize lst-rec of listini
+                         replacing numeric data by zeroes
+                              alphanumeric data by spaces
+              move ef-gdo-buf    to lst-gdo of listini
+              move ef-data-i-buf to como-data
+              perform DATE-TO-FILE
+              move como-data            to lst-data of listini
+              move ef-art-i-buf         to lst-articolo of listini
+              move ef-cod-art-cli-i-buf to lst-cod-art-cli of listini
+              move ef-prz-i-buf         to lst-prezzo of listini
+              accept lst-data-creazione of listini from century-date
+              accept lst-ora-creazione of listini  from time
+              move user-codi to lst-utente-creazione of listini
+              write lst-rec of listini
+                    invalid     
+                    display message "Articolo a listino già presente. So
+      -    "vrascrivo?"
+                              title titolo
+                            default mb-no
+                               type mb-yes-no
+                               icon 2
+                             giving scelta
+                    if scelta = mb-yes
+                       rewrite lst-rec of listini
+                       move 27 to key-status 
+                       set ricarica to true
+                    end-if
+                not invalid
+                    move 27 to key-status    
+                    set ricarica to true
+              end-write
+           end-if             
+           .
+      * <TOTEM:END>
+       pb-annulla-i-BeforeProcedure.
+      * <TOTEM:PARA. pb-annulla-i-BeforeProcedure>
+           modify pb-annulla-i, bitmap-number 2 
+           .
+      * <TOTEM:END>
+       pb-annulla-i-AfterProcedure.
+      * <TOTEM:PARA. pb-annulla-i-AfterProcedure>
+           modify pb-annulla-i, bitmap-number 1 
+           .
+      * <TOTEM:END>
+       pb-inserisci-LinkTo.
+      * <TOTEM:PARA. pb-inserisci-LinkTo>
+           perform FORM1A-OPEN-ROUTINE.
+           if ricarica 
+              move 27 to key-status
+           end-if 
            .
       * <TOTEM:END>
 
