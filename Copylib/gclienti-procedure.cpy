@@ -159,6 +159,29 @@
       ***---
        CERCA.
            evaluate control-id
+           when 78-ID-ef-cap               
+                move "anacap"        to como-file         
+                inquire ef-cap,   value in anc-cap
+                call "zoom-gt"   using como-file, anc-rec
+                                giving stato-zoom
+                end-call
+                cancel "zoom-gt"
+                if stato-zoom = 0
+                   move anc-cap to ef-cap-buf
+                   display ef-cap 
+                end-if        
+
+           when 78-ID-ef-cap-d
+                move "anacap"        to como-file         
+                inquire ef-cap-d,   value in anc-cap
+                call "zoom-gt"   using como-file, anc-rec
+                                giving stato-zoom
+                end-call
+                cancel "zoom-gt"
+                if stato-zoom = 0
+                   move anc-cap to ef-cap-d-buf
+                   display ef-cap-d
+                end-if
 
            when 78-ID-ef-prov               
                 move "tprov"     to como-file         
@@ -772,7 +795,22 @@ LUBEXX     if tcl-codice not = save-ttipocli-privato
                    display message box "Inserimento CAP mancante"
                            title = tit-err
                            icon mb-warning-icon
-                end-if
+                else
+                   if ef-prov-buf = "EE"
+                      set trovato to true
+                   else
+                      move "anacap" to nome-file
+                      perform RELAZIONI-CLIENTI
+                      if not trovato
+                         set errori to true
+                         move 78-ID-ef-cap to control-id
+                         display message box "CAP NON valido"
+                                 title = tit-err
+                                 icon mb-warning-icon
+                      end-if
+                   end-if
+                end-if 
+
            |78-ID-ef-indirizzo è l'ID del campo ef-indirizzo
            when 78-ID-ef-indirizzo
                 inquire ef-indirizzo, value in ef-indirizzo-buf
@@ -815,7 +853,7 @@ LUBEXX     if tcl-codice not = save-ttipocli-privato
                    display message box "Nazione NON valida"
                            title = tit-err
                            icon mb-warning-icon
-                end-if
+                end-if  
 
            |78-ID-ef-mail è l'ID del campo ef-mail
            when 78-ID-ef-mail
@@ -1325,6 +1363,20 @@ LUBEXX          end-if
                               "Inserimento CAP destinatario mancante"
                               title = tit-err
                               icon mb-warning-icon
+                   else
+                      if ef-prov-d-buf = "EE"
+                         set trovato to true
+                      else
+                         move "anacap" to nome-file
+                         perform RELAZIONI-DESTINI
+                         if not trovato
+                            set errori to true
+                            move 78-ID-ef-cap-d to control-id
+                            display message"CAP destinatario NON valido"
+                                      title tit-err
+                                       icon mb-warning-icon
+                         end-if
+                      end-if
                    end-if
                 end-if  
 
@@ -2742,6 +2794,7 @@ LUBEXX        end-if
            set trovato to true.
 
            evaluate nome-file
+           when "anacap"      perform READ-ANACAP
            when "tvettori"    perform READ-TVETTORI
            when "tprov"       perform READ-TPROV
            when "tnazioni"    perform READ-TNAZIONI
@@ -2754,6 +2807,12 @@ LUBEXX        end-if
            when "tcodpag"     perform READ-TCODPAG
            when "ABI"         perform READ-ABI
            end-evaluate.
+
+      ***---
+       READ-ANACAP.   
+           read anacap no lock
+                invalid set trovato to false
+           end-read. 
 
       ***---
        READ-TVETTORI.
@@ -2849,7 +2908,10 @@ LUBEXX        end-if
        RELAZIONI-CLIENTI.
            set trovato to false.
 
-           evaluate nome-file
+           evaluate nome-file 
+           when "anacap"  
+                move ef-cap-buf to anc-cap
+                perform RELATIONS
            when "tvettori"  
                 move spaces to lab-vettore-buf
                 move ef-vettore-buf to vet-codice
@@ -2980,6 +3042,9 @@ LUBEXX        end-if
            set trovato to false.
 
            evaluate nome-file
+           when "anacap" 
+                move ef-cap-d-buf to anc-cap
+                perform RELATIONS
            when "tvettori" 
                 move spaces to lab-vettore-d-buf 
                 move ef-vettore-d-buf to vet-codice

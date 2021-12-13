@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gclienti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 11 settembre 2021 16:35:30.
+       DATE-WRITTEN.        lunedì 13 dicembre 2021 15:50:13.
        REMARKS.
       *{TOTEM}END
 
@@ -58,6 +58,7 @@
                 .
            COPY "clienti.sl".
            COPY "grade.sl".
+           COPY "anacap.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -93,6 +94,7 @@
                 .
            COPY "clienti.fd".
            COPY "grade.fd".
+           COPY "anacap.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -139,6 +141,8 @@
        77 Form1-Tb-1-Handleaa
                   USAGE IS HANDLE OF WINDOW.
        77 ef-ricerca-piva-buf          PIC  X(11).
+       77 STATUS-anacap    PIC  X(2).
+           88 Valid-STATUS-anacap VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -477,6 +481,7 @@
 
 
        77 TMP-DataSet1-grade-BUF     PIC X(754).
+       77 TMP-DataSet1-anacap-BUF     PIC X(1209).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -625,6 +630,11 @@
        77 DataSet1-grade-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-grade-KEY-Asc  VALUE "A".
           88 DataSet1-grade-KEY-Desc VALUE "D".
+       77 DataSet1-anacap-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-anacap-LOCK  VALUE "Y".
+       77 DataSet1-anacap-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-anacap-KEY-Asc  VALUE "A".
+          88 DataSet1-anacap-KEY-Desc VALUE "D".
 
        77 tvettori-k-des-SPLITBUF  PIC X(41).
        77 destini-K1-SPLITBUF  PIC X(111).
@@ -641,6 +651,8 @@
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
        77 clienti-cli-K4-SPLITBUF  PIC X(8).
+       77 anacap-k-prov-SPLITBUF  PIC X(158).
+       77 anacap-k-comune-SPLITBUF  PIC X(158).
 
        01 old-cli-rec.
            05 old-cli-chiave.
@@ -8898,6 +8910,7 @@
            PERFORM OPEN-note1
            PERFORM OPEN-clienti
            PERFORM OPEN-grade
+           PERFORM OPEN-anacap
       *    After Open
            .
 
@@ -9300,6 +9313,18 @@
       * <TOTEM:END>
            .
 
+       OPEN-anacap.
+      * <TOTEM:EPT. INIT:gclienti, FD:anacap, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT anacap
+           IF NOT Valid-STATUS-anacap
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:gclienti, FD:anacap, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-tvettori
@@ -9331,6 +9356,7 @@
            PERFORM CLOSE-note1
            PERFORM CLOSE-clienti
            PERFORM CLOSE-grade
+           PERFORM CLOSE-anacap
       *    After Close
            .
 
@@ -9499,6 +9525,12 @@
       * <TOTEM:EPT. INIT:gclienti, FD:grade, BeforeClose>
       * <TOTEM:END>
            CLOSE grade
+           .
+
+       CLOSE-anacap.
+      * <TOTEM:EPT. INIT:gclienti, FD:anacap, BeforeClose>
+      * <TOTEM:END>
+           CLOSE anacap
            .
 
        tvettori-k-des-MERGE-SPLITBUF.
@@ -14235,6 +14267,180 @@
       * <TOTEM:END>
            .
 
+       anacap-k-prov-MERGE-SPLITBUF.
+           INITIALIZE anacap-k-prov-SPLITBUF
+           MOVE anc-prov(1:2) TO anacap-k-prov-SPLITBUF(1:2)
+           MOVE anc-comune(1:150) TO anacap-k-prov-SPLITBUF(3:150)
+           MOVE anc-chiave(1:5) TO anacap-k-prov-SPLITBUF(153:5)
+           .
+
+       anacap-k-comune-MERGE-SPLITBUF.
+           INITIALIZE anacap-k-comune-SPLITBUF
+           MOVE anc-comune(1:150) TO anacap-k-comune-SPLITBUF(1:150)
+           MOVE anc-prov(1:2) TO anacap-k-comune-SPLITBUF(151:2)
+           MOVE anc-chiave(1:5) TO anacap-k-comune-SPLITBUF(153:5)
+           .
+
+       DataSet1-anacap-INITSTART.
+           IF DataSet1-anacap-KEY-Asc
+              MOVE Low-Value TO anc-chiave
+           ELSE
+              MOVE High-Value TO anc-chiave
+           END-IF
+           .
+
+       DataSet1-anacap-INITEND.
+           IF DataSet1-anacap-KEY-Asc
+              MOVE High-Value TO anc-chiave
+           ELSE
+              MOVE Low-Value TO anc-chiave
+           END-IF
+           .
+
+      * anacap
+       DataSet1-anacap-START.
+           IF DataSet1-anacap-KEY-Asc
+              START anacap KEY >= anc-chiave
+           ELSE
+              START anacap KEY <= anc-chiave
+           END-IF
+           .
+
+       DataSet1-anacap-START-NOTGREATER.
+           IF DataSet1-anacap-KEY-Asc
+              START anacap KEY <= anc-chiave
+           ELSE
+              START anacap KEY >= anc-chiave
+           END-IF
+           .
+
+       DataSet1-anacap-START-GREATER.
+           IF DataSet1-anacap-KEY-Asc
+              START anacap KEY > anc-chiave
+           ELSE
+              START anacap KEY < anc-chiave
+           END-IF
+           .
+
+       DataSet1-anacap-START-LESS.
+           IF DataSet1-anacap-KEY-Asc
+              START anacap KEY < anc-chiave
+           ELSE
+              START anacap KEY > anc-chiave
+           END-IF
+           .
+
+       DataSet1-anacap-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-anacap-LOCK
+              READ anacap WITH LOCK 
+              KEY anc-chiave
+           ELSE
+              READ anacap WITH NO LOCK 
+              KEY anc-chiave
+           END-IF
+           PERFORM anacap-k-prov-MERGE-SPLITBUF
+           PERFORM anacap-k-comune-MERGE-SPLITBUF
+           MOVE STATUS-anacap TO TOTEM-ERR-STAT 
+           MOVE "anacap" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-anacap-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-anacap-KEY-Asc
+              IF DataSet1-anacap-LOCK
+                 READ anacap NEXT WITH LOCK
+              ELSE
+                 READ anacap NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-anacap-LOCK
+                 READ anacap PREVIOUS WITH LOCK
+              ELSE
+                 READ anacap PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM anacap-k-prov-MERGE-SPLITBUF
+           PERFORM anacap-k-comune-MERGE-SPLITBUF
+           MOVE STATUS-anacap TO TOTEM-ERR-STAT
+           MOVE "anacap" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-anacap-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-anacap-KEY-Asc
+              IF DataSet1-anacap-LOCK
+                 READ anacap PREVIOUS WITH LOCK
+              ELSE
+                 READ anacap PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-anacap-LOCK
+                 READ anacap NEXT WITH LOCK
+              ELSE
+                 READ anacap NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM anacap-k-prov-MERGE-SPLITBUF
+           PERFORM anacap-k-comune-MERGE-SPLITBUF
+           MOVE STATUS-anacap TO TOTEM-ERR-STAT
+           MOVE "anacap" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-anacap-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-anacap TO TOTEM-ERR-STAT
+           MOVE "anacap" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-anacap-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-anacap TO TOTEM-ERR-STAT
+           MOVE "anacap" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-anacap-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-anacap TO TOTEM-ERR-STAT
+           MOVE "anacap" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE vet-rec OF tvettori
            INITIALIZE naz-rec OF tnazioni
@@ -14264,6 +14470,7 @@
            INITIALIZE not-rec OF note1
            INITIALIZE cli-rec OF clienti
            INITIALIZE gra-rec OF grade
+           INITIALIZE anc-rec OF anacap
            .
 
 
@@ -14736,6 +14943,14 @@
       * FD's Initialize Paragraph
        DataSet1-grade-INITREC.
            INITIALIZE gra-rec OF grade
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-anacap-INITREC.
+           INITIALIZE anc-rec OF anacap
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -19243,6 +19458,10 @@
       ***---
        Form1-BEFORE-SCREEN.
            evaluate control-id
+           |78-ID-ef-cap è l'ID del campo ef-cap
+           when 78-ID-ef-cap
+                move 1 to StatusHelp
+                perform STATUS-HELP
            |78-ID-ef-prov è l'ID del campo ef-prov
            when 78-ID-ef-prov
                 move 1 to StatusHelp
@@ -19289,6 +19508,10 @@
                 perform STATUS-HELP
            |78-ID-ef-cab è l'ID del campo ef-cab
            when 78-ID-ef-cab
+                move 1 to StatusHelp
+                perform STATUS-HELP
+           |78-ID-ef-cap-d è l'ID del campo ef-cap-d
+           when 78-ID-ef-cap-d
                 move 1 to StatusHelp
                 perform STATUS-HELP
            |78-ID-ef-prov-d è l'ID del campo ef-prov-d
@@ -19366,6 +19589,11 @@
       ***---
        Form1-AFTER-SCREEN.
            evaluate control-id
+           |78-ID-ef-cap è l'ID del campo ef-cap
+           when 78-ID-ef-cap
+                move 0 to StatusHelp
+                perform STATUS-HELP
+
            |78-ID-ef-prov è l'ID del campo ef-prov
            when 78-ID-ef-prov
                 move 0 to StatusHelp
@@ -19423,6 +19651,11 @@
 
            |78-ID-ef-cab è l'ID del campo ef-cab
            when 78-ID-ef-cab
+                move 0 to StatusHelp
+                perform STATUS-HELP
+
+           |78-ID-ef-cap-d è l'ID del campo ef-cap-d
+           when 78-ID-ef-cap-d
                 move 0 to StatusHelp
                 perform STATUS-HELP
 

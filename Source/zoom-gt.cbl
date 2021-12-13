@@ -69,6 +69,8 @@
            when "tmarche"
            when "tmarche-alfa"
                 perform PREPARA-TMARCHE            |CERCA
+           when "anacap"
+                perform PREPARA-ANACAP |CERCA
            when "tprov"
                 perform PREPARA-TPROV              |CERCA
            when "tnazioni"
@@ -701,6 +703,47 @@
            move  2                       to xzoom-field-dec(idx).
            move "##,00"                  to xzoom-field-fmt(idx).
       
+           move  -1                     to xzoom-delimiter-offset.
+           move  5                      to xzoom-delimiter-length.
+           move "000"                   to xzoom-from-value.
+           move "000"                   to xzoom-to-value.
+
+      ***---
+       PREPARA-ANACAP.
+           initialize xzoom-linkage xzoom-ext-info(1).
+
+           move zero to idx.
+           move  zero                    to xzoom-row.
+           move  zero                    to xzoom-cln.
+           move  16                      to xzoom-lw.
+           move  84                      to xzoom-sw.
+           move "anacap"                 to xzoom-file-name(1).
+           move  3                       to xzoom-fields.
+
+      * CAMPO 1
+           add 1 to idx
+           move  5                       to xzoom-field-length(idx).
+           move  0                       to xzoom-field-offset(idx).
+           move  10                      to xzoom-field-column(idx).
+           move "CAP"                    to xzoom-field-name(idx).  
+           set  xzoom-ft-alpha(idx)      to true. 
+
+      * CAMPO 2
+           add 1 to idx
+           move  150                     to xzoom-field-length(idx).
+           move  5                       to xzoom-field-offset(idx).
+           move  45                      to xzoom-field-column(idx).
+           move "Comune"                 to xzoom-field-name(idx).  
+           set  xzoom-ft-alpha(idx)      to true. 
+
+      * CAMPO 3
+           add 1 to idx
+           move  2                       to xzoom-field-length(idx).
+           move  155                     to xzoom-field-offset(idx).
+           move  6                       to xzoom-field-column(idx).
+           move "Provincia"              to xzoom-field-name(idx).  
+           set  xzoom-ft-alpha(idx)      to true. 
+
            move  -1                     to xzoom-delimiter-offset.
            move  5                      to xzoom-delimiter-length.
            move "000"                   to xzoom-from-value.
@@ -6729,6 +6772,7 @@
            set xzoom-al-right(Idx)          to true.
            set xzoom-field-unsigned(Idx )   to true.
            set xzoom-ft-display(Idx)        to true.
+
 
            move  idx                        to xzoom-fields.
 

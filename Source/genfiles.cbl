@@ -173,6 +173,7 @@ LABLAB     copy "blister.sl".
 
            copy "macrobatch.sl".
            copy "hleb.sl".
+           copy "anacap.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -343,7 +344,8 @@ LABLAB     copy "blister.fd".
            copy "grade.fd".  
            copy "battsost.fd".
            copy "macrobatch.fd".  
-           copy "hleb.fd".
+           copy "hleb.fd".              
+           copy "anacap.fd".
 
        WORKING-STORAGE SECTION.
            COPY "acucobol.def".
@@ -514,6 +516,7 @@ LABLAB     copy "blister.fd".
        77  status-battsost      pic x(2).
        77  status-macrobatch    pic x(2).
        77  status-hleb          pic x(2).
+       77  status-anacap        pic x(2).
 
            copy "EDI-status.def".
 
@@ -2750,6 +2753,23 @@ LABLAB     copy "blister.fd".
            when "35" continue
            end-evaluate.
 
+      ***---
+       ANACAP-ERR SECTION.
+           use after error procedure on anacap.
+           evaluate status-anacap
+           when "35" continue
+           when "39"
+                display message "File [ANACAP] Mismatch size!"
+                           title titolo
+                            icon 3
+                
+           when "98"
+                display message "[ANACAP] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                
+           end-evaluate.
+
            copy "EDI-declaratives.cpy".
 
        END DECLARATIVES.
@@ -3923,7 +3943,13 @@ LABLAB     copy "blister.fd".
                                        alphanumeric data by spaces
               write hleb-rec
            end-if.
-           close hleb.
+           close hleb.      
+
+           open input anacap.
+           if status-anacap = "35"
+              open output anacap
+           end-if.
+           close anacap.
 
            copy "EDI-procedure.cpy".
 
