@@ -57,6 +57,7 @@
        copy "blister.sl".
        copy "cli-prg.sl".
        copy "tprov.sl".
+       copy "anacap.sl".
        copy "lockfile.sl".   
        copy "log-macrobatch.sl".
        copy "tregioni.sl".
@@ -99,7 +100,8 @@
        copy "tprov.fd".
        copy "lockfile.fd".      
        copy "log-macrobatch.fd".
-       copy "tregioni.fd".
+       copy "tregioni.fd".        
+       copy "anacap.fd".
 
        WORKING-STORAGE SECTION.
       *    COPY
@@ -148,6 +150,7 @@
        77  status-lockfile       pic xx.
        77  status-log-macrobatch pic xx.
        77  status-tregioni       pic xx.
+       77  status-anacap         pic xx.
                                             
        77  path-logfile          pic x(256).
        77  path-log-macrobatch   pic x(256).
@@ -790,7 +793,7 @@
                  open input clienti tparamge note param articoli progmag 
                             timballi timbalqta ttipocli  tpromo rpromo 
                             listini rmovmag locali blister cli-prg tprov
-                            tregioni
+                            tregioni anacap
               end-if
            end-if.
 
@@ -1647,6 +1650,20 @@
               move cli-nazione to des-nazione
            else
               move "ITA"       to des-nazione
+                    
+              move des-prov to prv-codice
+              read tprov no lock
+                   invalid 
+                   set emto-destino-non-valido to true
+                   set emto-clides-non-valido  to true
+              end-read
+              move des-cap to anc-cap
+              read anacap no lock
+                   invalid 
+                   set emto-destino-non-valido to true
+                   set emto-clides-non-valido  to true
+              end-read
+
            end-if.
            move sav-vettore to des-vettore.
            move "N"   to des-deposito-UTF.
@@ -1654,7 +1671,8 @@
            set des-no-invio to true.
            accept des-data-creazione from century-date.
            accept des-ora-creazione  from time.
-           move "IMPORT EDI" to des-utente-creazione
+           move "IMPORT EDI" to des-utente-creazione  
+
            write des-rec.
 
            initialize ecd-rec replacing numeric data by zeroes
@@ -2558,8 +2576,8 @@
        CLOSE-FILES.
            close EDI-clides clienti destini tparamge EDI-mtordini note
                  param EDI-mrordini articoli progmag timballi timbalqta
-                 rpromo tpromo listini ttipocli rmovmag tprov
-                 locali blister cli-prg lockfile tregioni.
+                 rpromo tpromo listini ttipocli rmovmag tprov locali 
+                 blister cli-prg lockfile tregioni anacap.
 
       ***---
        EXIT-PGM.

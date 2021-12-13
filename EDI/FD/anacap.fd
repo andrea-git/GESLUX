@@ -1,0 +1,15 @@
+       FD  anacap.
+       01 anc-rec.
+           05 anc-chiave.
+               10 anc-cap          PIC  x(5).
+           05 anc-dati.
+               10 anc-comune       PIC  x(150).
+               10 anc-prov         PIC  xx.
+               10 anc-dati-comuni.
+                   15 anc-data-creazione           PIC  9(8).
+                   15 anc-ora-creazione            PIC  9(8).
+                   15 anc-utente-creazione         PIC  X(10).
+                   15 anc-data-ultima-modifica     PIC  9(8).
+                   15 anc-ora-ultima-modifica      PIC  9(8).
+                   15 anc-utente-ultima-modifica   PIC  X(10).
+               10 anc-filler       PIC  x(1000).

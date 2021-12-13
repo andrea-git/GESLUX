@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 9 dicembre 2021 12:42:22.
+       DATE-WRITTEN.        lunedì 13 dicembre 2021 18:24:17.
        REMARKS.
       *{TOTEM}END
 
@@ -69,6 +69,9 @@
            COPY "grade.sl".
            COPY "log-macrobatch.sl".
            COPY "macrobatch.sl".
+           COPY "tprov.sl".
+           COPY "EDI-clides.sl".
+           COPY "anacap.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -115,6 +118,9 @@
            COPY "grade.fd".
            COPY "log-macrobatch.fd".
            COPY "macrobatch.fd".
+           COPY "tprov.fd".
+           COPY "EDI-clides.fd".
+           COPY "anacap.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -180,6 +186,8 @@
        77 tot-righe-edi    PIC  9(10).
        77 tot-doc          PIC  9(10)v99.
        77 riga-edi         PIC  9(10).
+       77 old-des-cap      PIC  x(5).
+       77 old-des-prov     PIC  xx.
        77 iva-std          PIC  x(3).
        77 link-path        PIC  x(512).
        77 fido-tmp         PIC  s9(13)v99.
@@ -779,6 +787,14 @@
                   USAGE IS COMP-4
                   VALUE IS 0.
        77 lab-tot-buf      PIC  zz.zzz.zz9,99.
+       77 STATUS-anautf    PIC  X(2).
+           88 Valid-STATUS-anautf VALUE IS "00" THRU "09". 
+       77 STATUS-tprov     PIC  X(2).
+           88 Valid-STATUS-tprov VALUE IS "00" THRU "09". 
+       77 STATUS-EDI-clides            PIC  X(2).
+           88 Valid-STATUS-EDI-clides VALUE IS "00" THRU "09". 
+       77 STATUS-anacap    PIC  X(2).
+           88 Valid-STATUS-anacap VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -806,6 +822,10 @@
       * Data.Entry-Field
               05 ef-des-BUF PIC 9(5).
               05 ef-des-VALUEBUF PIC 9(5).
+      * Data.Entry-Field
+              05 ef-prov-d-BUF PIC X(2).
+      * Data.Entry-Field
+              05 ef-cap-d-BUF PIC X(5).
       * Data.Entry-Field
               05 ef-num-ord-BUF PIC X(50).
               05 ef-num-ord-VALUEBUF PIC X(50).
@@ -928,6 +948,9 @@
        77 TMP-DataSet1-grade-BUF     PIC X(754).
        77 TMP-DataSet1-log-macrobatch-BUF     PIC X(1000).
        77 TMP-DataSet1-macrobatch-BUF     PIC X(9848).
+       77 TMP-DataSet1-tprov-BUF     PIC X(192).
+       77 TMP-DataSet1-EDI-clides-BUF     PIC X(840).
+       77 TMP-DataSet1-anacap-BUF     PIC X(1209).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -1143,6 +1166,21 @@
        77 DataSet1-macrobatch-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-macrobatch-KEY-Asc  VALUE "A".
           88 DataSet1-macrobatch-KEY-Desc VALUE "D".
+       77 DataSet1-tprov-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tprov-LOCK  VALUE "Y".
+       77 DataSet1-tprov-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tprov-KEY-Asc  VALUE "A".
+          88 DataSet1-tprov-KEY-Desc VALUE "D".
+       77 DataSet1-EDI-clides-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-EDI-clides-LOCK  VALUE "Y".
+       77 DataSet1-EDI-clides-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-EDI-clides-KEY-Asc  VALUE "A".
+          88 DataSet1-EDI-clides-KEY-Desc VALUE "D".
+       77 DataSet1-anacap-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-anacap-LOCK  VALUE "Y".
+       77 DataSet1-anacap-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-anacap-KEY-Asc  VALUE "A".
+          88 DataSet1-anacap-KEY-Desc VALUE "D".
 
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
@@ -1194,6 +1232,9 @@
        77 tcodpag-TBL-CODICE-01-SPLITBUF  PIC X(53).
        77 tmp-progmag-zoom-key-des-SPLITBUF  PIC X(64).
        77 tmp-progmag-zoom-key-art-SPLITBUF  PIC X(7).
+       77 EDI-clides-ecd-k-orders-SPLITBUF  PIC X(35).
+       77 anacap-k-prov-SPLITBUF  PIC X(158).
+       77 anacap-k-comune-SPLITBUF  PIC X(158).
       * FOR SPLIT KEY BUFFER
        77 DataSet1-EDI-mtordini-SPLIT-BUF1   PIC X(14).
 
@@ -1495,26 +1536,28 @@
        78  78-ID-CBO-STATO-ORDINE VALUE 5007.
        78  78-ID-ef-cli VALUE 5001.
        78  78-ID-ef-des VALUE 5002.
-       78  78-ID-ef-num-ord VALUE 5003.
-       78  78-ID-ef-data VALUE 5004.
-       78  78-ID-ef-data-pass VALUE 5005.
-       78  78-ID-ef-evadi-dal VALUE 5006.
-       78  78-ID-ef-age VALUE 5007.
-       78  78-ID-ef-pag VALUE 5008.
-       78  78-ID-ef-iva VALUE 5009.
-       78  78-ID-ef-vet VALUE 5010.
-       78  78-ID-ef-note-1 VALUE 5011.
-       78  78-ID-ef-data-cons VALUE 5012.
-       78  78-ID-ef-note-2 VALUE 5013.
-       78  78-ID-ef-note-3 VALUE 5014.
-       78  78-ID-ef-note-4 VALUE 5015.
-       78  78-ID-ef-note VALUE 5016.
-       78  78-ID-chk-ritira VALUE 5017.
-       78  78-ID-chk-prenot VALUE 5018.
-       78  78-ID-chk-saldi-banco VALUE 5019.
-       78  78-ID-chk-saldi-promo VALUE 5020.
-       78  78-ID-chk-ev-immediata VALUE 5021.
-       78  78-ID-Form1-Gd-1 VALUE 5022.
+       78  78-ID-ef-prov-d VALUE 5003.
+       78  78-ID-ef-cap-d VALUE 5004.
+       78  78-ID-ef-num-ord VALUE 5005.
+       78  78-ID-ef-data VALUE 5006.
+       78  78-ID-ef-data-pass VALUE 5007.
+       78  78-ID-ef-evadi-dal VALUE 5008.
+       78  78-ID-ef-age VALUE 5009.
+       78  78-ID-ef-pag VALUE 5010.
+       78  78-ID-ef-iva VALUE 5011.
+       78  78-ID-ef-vet VALUE 5012.
+       78  78-ID-ef-note-1 VALUE 5013.
+       78  78-ID-ef-data-cons VALUE 5014.
+       78  78-ID-ef-note-2 VALUE 5015.
+       78  78-ID-ef-note-3 VALUE 5016.
+       78  78-ID-ef-note-4 VALUE 5017.
+       78  78-ID-ef-note VALUE 5018.
+       78  78-ID-chk-ritira VALUE 5019.
+       78  78-ID-chk-prenot VALUE 5020.
+       78  78-ID-chk-saldi-banco VALUE 5021.
+       78  78-ID-chk-saldi-promo VALUE 5022.
+       78  78-ID-chk-ev-immediata VALUE 5023.
+       78  78-ID-Form1-Gd-1 VALUE 5024.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -2833,7 +2876,7 @@
            Entry-Field, 
            COL 86,43, 
            LINE 3,73,
-           LINES 1,31 ,
+           LINES 1,33 ,
            SIZE 7,00 ,
            BOXED,
            COLOR IS 513,
@@ -2848,10 +2891,48 @@
 
       * ENTRY FIELD
        05
+           ef-prov-d, 
+           Entry-Field, 
+           COL 86,43, 
+           LINE 5,40,
+           LINES 1,33 ,
+           SIZE 4,00 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED MOD,
+           ID IS 78-ID-ef-prov-d,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           MAX-TEXT 2,
+           VALUE ef-prov-d-BUF,
+           BEFORE PROCEDURE ef-prov-d-BeforeProcedure, 
+           .
+
+      * ENTRY FIELD
+       05
+           ef-cap-d, 
+           Entry-Field, 
+           COL 100,71, 
+           LINE 5,40,
+           LINES 1,31 ,
+           SIZE 8,00 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED MOD,
+           ID IS 78-ID-ef-cap-d,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           MAX-TEXT 5,
+           VALUE ef-cap-d-BUF,
+           BEFORE PROCEDURE ef-cap-d-BeforeProcedure, 
+           .
+
+      * ENTRY FIELD
+       05
            ef-num-ord, 
            Entry-Field, 
            COL 14,00, 
-           LINE 18,73,
+           LINE 19,73,
            LINES 1,31 ,
            SIZE 31,00 ,
            BOXED,
@@ -2869,7 +2950,7 @@
            ef-data, 
            Entry-Field, 
            COL 55,00, 
-           LINE 18,73,
+           LINE 19,73,
            LINES 1,31 ,
            SIZE 11,00 ,
            BOXED,
@@ -2888,7 +2969,7 @@
            ef-data-pass, 
            Entry-Field, 
            COL 86,43, 
-           LINE 18,73,
+           LINE 19,73,
            LINES 1,31 ,
            SIZE 11,00 ,
            BOXED,
@@ -2907,7 +2988,7 @@
            ef-evadi-dal, 
            Entry-Field, 
            COL 113,57, 
-           LINE 18,73,
+           LINE 19,73,
            LINES 1,31 ,
            SIZE 11,00 ,
            BOXED,
@@ -2926,7 +3007,7 @@
            ef-age, 
            Entry-Field, 
            COL 14,00, 
-           LINE 20,27,
+           LINE 21,27,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -2945,7 +3026,7 @@
            ef-pag, 
            Entry-Field, 
            COL 86,43, 
-           LINE 20,27,
+           LINE 21,27,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -2964,7 +3045,7 @@
            ef-iva, 
            Entry-Field, 
            COL 14,00, 
-           LINE 21,80,
+           LINE 22,80,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -2983,7 +3064,7 @@
            ef-vet, 
            Entry-Field, 
            COL 86,43, 
-           LINE 21,80,
+           LINE 22,80,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -3002,7 +3083,7 @@
            ef-note-1, 
            Entry-Field, 
            COL 14,00, 
-           LINE 23,40,
+           LINE 24,40,
            LINES 1,31 ,
            SIZE 30,00 ,
            BOXED,
@@ -3020,7 +3101,7 @@
            ef-data-cons, 
            Entry-Field, 
            COL 55,00, 
-           LINE 23,40,
+           LINE 24,40,
            LINES 1,33 ,
            SIZE 11,00 ,
            BOXED,
@@ -3039,7 +3120,7 @@
            ef-note-2, 
            Entry-Field, 
            COL 86,43, 
-           LINE 23,40,
+           LINE 24,40,
            LINES 1,33 ,
            SIZE 52,00 ,
            BOXED,
@@ -3057,7 +3138,7 @@
            ef-note-3, 
            Entry-Field, 
            COL 14,00, 
-           LINE 24,93,
+           LINE 25,93,
            LINES 1,31 ,
            SIZE 52,00 ,
            BOXED,
@@ -3075,7 +3156,7 @@
            ef-note-4, 
            Entry-Field, 
            COL 86,57, 
-           LINE 24,93,
+           LINE 25,93,
            LINES 1,31 ,
            SIZE 52,00 ,
            BOXED,
@@ -3093,7 +3174,7 @@
            ef-note, 
            Entry-Field, 
            COL 14,00, 
-           LINE 26,47,
+           LINE 27,47,
            LINES 2,60 ,
            SIZE 127,00 ,
            BOXED,
@@ -3112,7 +3193,7 @@
            chk-ritira, 
            Check-Box, 
            COL 14,00, 
-           LINE 29,40,
+           LINE 30,40,
            LINES 1,31 ,
            SIZE 2,50 ,
            ENABLED MOD,
@@ -3130,7 +3211,7 @@
            chk-prenot, 
            Check-Box, 
            COL 38,57, 
-           LINE 29,40,
+           LINE 30,40,
            LINES 1,31 ,
            SIZE 2,50 ,
            ENABLED MOD,
@@ -3147,7 +3228,7 @@
            chk-saldi-banco, 
            Check-Box, 
            COL 58,14, 
-           LINE 29,40,
+           LINE 30,40,
            LINES 1,31 ,
            SIZE 2,50 ,
            ENABLED MOD,
@@ -3164,7 +3245,7 @@
            chk-saldi-promo, 
            Check-Box, 
            COL 78,57, 
-           LINE 29,40,
+           LINE 30,40,
            LINES 1,33 ,
            SIZE 2,57 ,
            ENABLED MOD,
@@ -3181,7 +3262,7 @@
            chk-ev-immediata, 
            Check-Box, 
            COL 106,86, 
-           LINE 29,40,
+           LINE 30,40,
            LINES 1,33 ,
            SIZE 2,57 ,
            ENABLED MOD,
@@ -3198,7 +3279,7 @@
            Form1-Gd-1, 
            Grid, 
            COL 1,71, 
-           LINE 31,93,
+           LINE 32,93,
            LINES 17,73 ,
            SIZE 144,71 ,
            ADJUSTABLE-COLUMNS,
@@ -3233,7 +3314,7 @@
            pb-aggiungi, 
            Push-Button, 
            COL 146,71, 
-           LINE 31,60,
+           LINE 32,60,
            LINES 40,00 ,
            SIZE 40,00 ,
            BITMAP-HANDLE AGGIUNGI-BMP,
@@ -3255,7 +3336,7 @@
            pb-elimina, 
            Push-Button, 
            COL 146,71, 
-           LINE 34,60,
+           LINE 35,60,
            LINES 40,00 ,
            SIZE 40,00 ,
            BITMAP-HANDLE ELIMINA-BMP,
@@ -3360,7 +3441,7 @@
            Label, 
            COL 75,00, 
            LINE 3,73,
-           LINES 1,31 ,
+           LINES 1,33 ,
            SIZE 7,00 ,
            COLOR IS clr-destino,
            ID IS 119,
@@ -3374,7 +3455,7 @@
            Screen2-La-6, 
            Label, 
            COL 3,00, 
-           LINE 18,73,
+           LINE 19,73,
            LINES 1,31 ,
            SIZE 10,00 ,
            COLOR IS 1,
@@ -3389,7 +3470,7 @@
            Screen2-La-7, 
            Label, 
            COL 48,29, 
-           LINE 18,73,
+           LINE 19,73,
            LINES 1,31 ,
            SIZE 4,00 ,
            COLOR IS 1,
@@ -3404,7 +3485,7 @@
            Screen2-La-8, 
            Label, 
            COL 75,14, 
-           LINE 18,73,
+           LINE 19,73,
            LINES 1,31 ,
            SIZE 10,00 ,
            COLOR IS 1,
@@ -3419,7 +3500,7 @@
            agente-lab, 
            Label, 
            COL 3,00, 
-           LINE 20,27,
+           LINE 21,27,
            LINES 1,31 ,
            SIZE 10,00 ,
            COLOR IS clr-agente,
@@ -3434,7 +3515,7 @@
            pagamento-lab, 
            Label, 
            COL 75,14, 
-           LINE 20,27,
+           LINE 21,27,
            LINES 1,31 ,
            SIZE 10,00 ,
            COLOR IS clr-pagamento,
@@ -3449,7 +3530,7 @@
            iva-lab, 
            Label, 
            COL 3,00, 
-           LINE 21,80,
+           LINE 22,80,
            LINES 1,31 ,
            SIZE 10,00 ,
            COLOR IS clr-iva,
@@ -3464,7 +3545,7 @@
            vettore-lab, 
            Label, 
            COL 75,14, 
-           LINE 21,80,
+           LINE 22,80,
            LINES 1,31 ,
            SIZE 10,00 ,
            COLOR IS clr-vettore,
@@ -3479,7 +3560,7 @@
            Screen2-La-13, 
            Label, 
            COL 3,00, 
-           LINE 23,40,
+           LINE 24,40,
            LINES 1,31 ,
            SIZE 10,00 ,
            COLOR IS 1,
@@ -3494,7 +3575,7 @@
            Screen2-La-14, 
            Label, 
            COL 48,25, 
-           LINE 23,40,
+           LINE 24,40,
            LINES 1,07 ,
            SIZE 6,00 ,
            COLOR IS 1,
@@ -3509,7 +3590,7 @@
            Screen2-La-15, 
            Label, 
            COL 75,14, 
-           LINE 23,40,
+           LINE 24,40,
            LINES 1,31 ,
            SIZE 10,00 ,
            COLOR IS 1,
@@ -3524,7 +3605,7 @@
            Screen2-La-16, 
            Label, 
            COL 3,00, 
-           LINE 24,93,
+           LINE 25,93,
            LINES 1,31 ,
            SIZE 10,00 ,
            COLOR IS 1,
@@ -3539,7 +3620,7 @@
            Screen2-La-17, 
            Label, 
            COL 75,14, 
-           LINE 24,93,
+           LINE 25,93,
            LINES 1,31 ,
            SIZE 10,00 ,
            COLOR IS 1,
@@ -3554,7 +3635,7 @@
            Screen2-La-18, 
            Label, 
            COL 3,00, 
-           LINE 26,47,
+           LINE 27,47,
            LINES 1,31 ,
            SIZE 10,00 ,
            COLOR IS 1,
@@ -3573,7 +3654,7 @@
            LINES 2,00 ,
            SIZE 50,00 ,
            COLOR IS 5,
-           ID IS 121,
+           ID IS 150,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            NO-KEY-LETTER,
@@ -3587,10 +3668,10 @@
            Label, 
            COL 95,00, 
            LINE 3,73,
-           LINES 2,00 ,
-           SIZE 50,00 ,
+           LINES 1,20 ,
+           SIZE 58,00 ,
            COLOR IS 5,
-           ID IS 122,
+           ID IS 151,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            NO-KEY-LETTER,
@@ -3603,11 +3684,11 @@
            lab-agente, 
            Label, 
            COL 23,43, 
-           LINE 20,27,
+           LINE 21,27,
            LINES 1,31 ,
            SIZE 50,00 ,
            COLOR IS 5,
-           ID IS 150,
+           ID IS 152,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3619,11 +3700,11 @@
            lab-pagamento, 
            Label, 
            COL 95,43, 
-           LINE 20,27,
+           LINE 21,27,
            LINES 1,31 ,
            SIZE 50,00 ,
            COLOR IS 5,
-           ID IS 151,
+           ID IS 153,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3635,11 +3716,11 @@
            lab-iva, 
            Label, 
            COL 23,43, 
-           LINE 21,80,
+           LINE 22,80,
            LINES 1,31 ,
            SIZE 50,00 ,
            COLOR IS 5,
-           ID IS 152,
+           ID IS 155,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3651,11 +3732,11 @@
            lab-vettore, 
            Label, 
            COL 95,43, 
-           LINE 21,80,
+           LINE 22,80,
            LINES 1,31 ,
            SIZE 50,00 ,
            COLOR IS 5,
-           ID IS 153,
+           ID IS 160,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3667,9 +3748,9 @@
            Screen2-Br-1a, 
            Bar,
            COL 1,00, 
-           LINE 31,20,
+           LINE 32,20,
            SIZE 153,43 ,
-           ID IS 155,
+           ID IS 161,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            WIDTH 1,
@@ -3685,7 +3766,7 @@
            SIZE 14,00 ,
            COLOR IS col-lab-stato,
            FONT IS Arial10B-Occidentale,
-           ID IS 160,
+           ID IS 162,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            CENTER,
@@ -3697,11 +3778,11 @@
            Screen2-La-5, 
            Label, 
            COL 3,00, 
-           LINE 29,40,
+           LINE 30,40,
            LINES 1,31 ,
            SIZE 10,50 ,
            COLOR IS 1,
-           ID IS 161,
+           ID IS 163,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Ritira in LBX",
@@ -3712,11 +3793,11 @@
            Screen2-La-5aa, 
            Label, 
            COL 21,57, 
-           LINE 29,40,
+           LINE 30,40,
            LINES 1,31 ,
            SIZE 15,63 ,
            COLOR IS 1,
-           ID IS 162,
+           ID IS 164,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Prenotazione q.tà",
@@ -3727,11 +3808,11 @@
            Screen2-La-5ab, 
            Label, 
            COL 46,14, 
-           LINE 29,40,
+           LINE 30,40,
            LINES 1,33 ,
            SIZE 10,00 ,
            COLOR IS 1,
-           ID IS 163,
+           ID IS 165,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Saldi banco",
@@ -3742,11 +3823,11 @@
            Screen2-La-5aba, 
            Label, 
            COL 66,57, 
-           LINE 29,40,
+           LINE 30,40,
            LINES 1,33 ,
            SIZE 10,00 ,
            COLOR IS 1,
-           ID IS 164,
+           ID IS 166,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Saldi promo",
@@ -3759,7 +3840,7 @@
            COL 1,00, 
            LINE 3,20,
            SIZE 153,43 ,
-           ID IS 165,
+           ID IS 167,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            WIDTH 1,
@@ -3784,7 +3865,7 @@
            pb-cambia, 
            Push-Button, 
            COL 146,71, 
-           LINE 37,60,
+           LINE 38,60,
            LINES 3,13 ,
            SIZE 6,86 ,
            BITMAP-HANDLE cambia-bmp,
@@ -3809,7 +3890,7 @@
            Screen2-Br-1aba, 
            Bar,
            COL 1,00, 
-           LINE 6,27,
+           LINE 7,27,
            SIZE 153,43 ,
            ID IS 7,
            HEIGHT-IN-CELLS,
@@ -3822,7 +3903,7 @@
            Screen2-Br-1abb, 
            Bar,
            COL 1,00, 
-           LINE 12,80,
+           LINE 13,80,
            SIZE 153,43 ,
            ID IS 8,
            HEIGHT-IN-CELLS,
@@ -3835,7 +3916,7 @@
            lab-nab-codbuyer, 
            Label, 
            COL 3,00, 
-           LINE 7,13,
+           LINE 8,13,
            LINES 1,31 ,
            SIZE 19,00 ,
            COLOR IS 5,
@@ -3851,7 +3932,7 @@
            lab-nab-rafsocb, 
            Label, 
            COL 23,00, 
-           LINE 7,13,
+           LINE 8,13,
            LINES 1,31 ,
            SIZE 50,00 ,
            COLOR IS 5,
@@ -3867,7 +3948,7 @@
            lab-nab-indirb, 
            Label, 
            COL 3,00, 
-           LINE 8,80,
+           LINE 9,80,
            LINES 1,31 ,
            SIZE 70,00 ,
            COLOR IS 5,
@@ -3883,7 +3964,7 @@
            lab-nab-cittab, 
            Label, 
            COL 3,00, 
-           LINE 10,53,
+           LINE 11,53,
            LINES 1,31 ,
            SIZE 55,00 ,
            COLOR IS 5,
@@ -3899,7 +3980,7 @@
            lab-nab-provb, 
            Label, 
            COL 59,00, 
-           LINE 10,53,
+           LINE 11,53,
            LINES 1,31 ,
            SIZE 5,00 ,
            COLOR IS 5,
@@ -3915,7 +3996,7 @@
            lab-nab-capb, 
            Label, 
            COL 65,00, 
-           LINE 10,60,
+           LINE 11,60,
            LINES 1,31 ,
            SIZE 5,00 ,
            COLOR IS 5,
@@ -3931,7 +4012,7 @@
            lab-nad-codcons, 
            Label, 
            COL 75,00, 
-           LINE 7,13,
+           LINE 8,13,
            LINES 1,31 ,
            SIZE 19,00 ,
            COLOR IS 5,
@@ -3947,7 +4028,7 @@
            lab-nad-ragsocd, 
            Label, 
            COL 95,00, 
-           LINE 7,13,
+           LINE 8,13,
            LINES 1,31 ,
            SIZE 50,00 ,
            COLOR IS 5,
@@ -3963,7 +4044,7 @@
            lab-nad-indird, 
            Label, 
            COL 75,00, 
-           LINE 8,80,
+           LINE 9,80,
            LINES 1,31 ,
            SIZE 70,00 ,
            COLOR IS 5,
@@ -3979,7 +4060,7 @@
            lab-nad-cittad, 
            Label, 
            COL 75,00, 
-           LINE 10,53,
+           LINE 11,53,
            LINES 1,31 ,
            SIZE 55,00 ,
            COLOR IS 5,
@@ -3994,8 +4075,8 @@
        05
            lab-nad-provd, 
            Label, 
-           COL 131,00, 
-           LINE 10,53,
+           COL 133,86, 
+           LINE 11,53,
            LINES 1,31 ,
            SIZE 5,00 ,
            COLOR IS 5,
@@ -4010,8 +4091,8 @@
        05
            lab-nad-capd, 
            Label, 
-           COL 137,00, 
-           LINE 10,53,
+           COL 139,86, 
+           LINE 11,53,
            LINES 1,31 ,
            SIZE 5,00 ,
            COLOR IS 5,
@@ -4027,7 +4108,7 @@
            Screen2-Br-1abba, 
            Bar,
            COL 1,00, 
-           LINE 17,87,
+           LINE 18,87,
            SIZE 153,43 ,
            ID IS 21,
            HEIGHT-IN-CELLS,
@@ -4040,7 +4121,7 @@
            ef-note-edi, 
            Entry-Field, 
            COL 14,00, 
-           LINE 13,33,
+           LINE 14,33,
            LINES 4,00 ,
            SIZE 127,00 ,
            BOXED,
@@ -4061,7 +4142,7 @@
            Screen2-La-6a, 
            Label, 
            COL 3,00, 
-           LINE 13,33,
+           LINE 14,33,
            LINES 1,31 ,
            SIZE 10,00 ,
            COLOR IS 1,
@@ -4076,7 +4157,7 @@
            Screen2-La-8a, 
            Label, 
            COL 102,29, 
-           LINE 18,73,
+           LINE 19,73,
            LINES 1,31 ,
            SIZE 10,00 ,
            COLOR IS 1,
@@ -4091,7 +4172,7 @@
            Screen2-La-8aa, 
            Label, 
            COL 120,86, 
-           LINE 29,40,
+           LINE 30,40,
            LINES 1,33 ,
            SIZE 11,00 ,
            COLOR IS 5,
@@ -4106,7 +4187,7 @@
            lab-tot, 
            Label, 
            COL 131,29, 
-           LINE 29,40,
+           LINE 30,40,
            LINES 1,33 ,
            SIZE 12,00 ,
            COLOR IS 5,
@@ -4122,7 +4203,7 @@
            lab-tota, 
            Label, 
            COL 144,14, 
-           LINE 29,40,
+           LINE 30,40,
            LINES 1,33 ,
            SIZE 2,00 ,
            COLOR IS 5,
@@ -4138,7 +4219,7 @@
            Screen2-La-5abaa, 
            Label, 
            COL 88,43, 
-           LINE 29,40,
+           LINE 30,40,
            LINES 1,33 ,
            SIZE 17,00 ,
            COLOR IS 1,
@@ -4146,6 +4227,36 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Evasione immediata",
+           .
+
+      * LABEL
+       05
+           provincia-lab, 
+           Label, 
+           COL 75,00, 
+           LINE 5,40,
+           LINES 1,33 ,
+           SIZE 8,00 ,
+           COLOR IS clr-destino,
+           ID IS 119,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE "Provincia",
+           .
+
+      * LABEL
+       05
+           cap-lab, 
+           Label, 
+           COL 93,57, 
+           LINE 5,40,
+           LINES 1,33 ,
+           SIZE 5,00 ,
+           COLOR IS clr-destino,
+           ID IS 119,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE "CAP",
            .
 
       * TOOLBAR
@@ -4992,6 +5103,9 @@
       *    PERFORM OPEN-log-macrobatch
       *    macrobatch OPEN MODE IS FALSE
       *    PERFORM OPEN-macrobatch
+           PERFORM OPEN-tprov
+           PERFORM OPEN-EDI-clides
+           PERFORM OPEN-anacap
       *    After Open
            .
 
@@ -5010,7 +5124,14 @@
        OPEN-destini.
       * <TOTEM:EPT. INIT:EDI-selordini, FD:destini, BeforeOpen>
       * <TOTEM:END>
-           OPEN  INPUT destini
+           OPEN  I-O destini
+           IF STATUS-destini = "35"
+              OPEN OUTPUT destini
+                IF Valid-STATUS-destini
+                   CLOSE destini
+                   OPEN I-O destini
+                END-IF
+           END-IF
            IF NOT Valid-STATUS-destini
               PERFORM  Form-ini-EXTENDED-FILE-STATUS
               GO TO EXIT-STOP-ROUTINE
@@ -5548,6 +5669,49 @@
       * <TOTEM:END>
            .
 
+       OPEN-tprov.
+      * <TOTEM:EPT. INIT:EDI-selordini, FD:tprov, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT tprov
+           IF NOT Valid-STATUS-tprov
+              PERFORM  Form-ini-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:EDI-selordini, FD:tprov, AfterOpen>
+      * <TOTEM:END>
+           .
+
+       OPEN-EDI-clides.
+      * <TOTEM:EPT. INIT:EDI-selordini, FD:EDI-clides, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  I-O EDI-clides
+           IF STATUS-EDI-clides = "35"
+              OPEN OUTPUT EDI-clides
+                IF Valid-STATUS-EDI-clides
+                   CLOSE EDI-clides
+                   OPEN I-O EDI-clides
+                END-IF
+           END-IF
+           IF NOT Valid-STATUS-EDI-clides
+              PERFORM  Form-ini-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:EDI-selordini, FD:EDI-clides, AfterOpen>
+      * <TOTEM:END>
+           .
+
+       OPEN-anacap.
+      * <TOTEM:EPT. INIT:EDI-selordini, FD:anacap, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT anacap
+           IF NOT Valid-STATUS-anacap
+              PERFORM  Form-ini-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:EDI-selordini, FD:anacap, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-clienti
@@ -5597,6 +5761,9 @@
       *    PERFORM CLOSE-log-macrobatch
       *    macrobatch CLOSE MODE IS FALSE
       *    PERFORM CLOSE-macrobatch
+           PERFORM CLOSE-tprov
+           PERFORM CLOSE-EDI-clides
+           PERFORM CLOSE-anacap
       *    After Close
            .
 
@@ -5845,6 +6012,24 @@
        CLOSE-macrobatch.
       * <TOTEM:EPT. INIT:EDI-selordini, FD:macrobatch, BeforeClose>
       * <TOTEM:END>
+           .
+
+       CLOSE-tprov.
+      * <TOTEM:EPT. INIT:EDI-selordini, FD:tprov, BeforeClose>
+      * <TOTEM:END>
+           CLOSE tprov
+           .
+
+       CLOSE-EDI-clides.
+      * <TOTEM:EPT. INIT:EDI-selordini, FD:EDI-clides, BeforeClose>
+      * <TOTEM:END>
+           CLOSE EDI-clides
+           .
+
+       CLOSE-anacap.
+      * <TOTEM:EPT. INIT:EDI-selordini, FD:anacap, BeforeClose>
+      * <TOTEM:END>
+           CLOSE anacap
            .
 
        clienti-cli-K1-MERGE-SPLITBUF.
@@ -6179,6 +6364,7 @@
        DataSet1-destini-Rec-Write.
       * <TOTEM:EPT. FD:DataSet1, FD:destini, BeforeWrite>
       * <TOTEM:END>
+           WRITE des-rec OF destini.
            MOVE STATUS-destini TO TOTEM-ERR-STAT
            MOVE "destini" TO TOTEM-ERR-FILE
            MOVE "WRITE" TO TOTEM-ERR-MODE
@@ -6189,6 +6375,7 @@
        DataSet1-destini-Rec-Rewrite.
       * <TOTEM:EPT. FD:DataSet1, FD:destini, BeforeRewrite>
       * <TOTEM:END>
+           REWRITE des-rec OF destini.
            MOVE STATUS-destini TO TOTEM-ERR-STAT
            MOVE "destini" TO TOTEM-ERR-FILE
            MOVE "REWRITE" TO TOTEM-ERR-MODE
@@ -6199,6 +6386,7 @@
        DataSet1-destini-Rec-Delete.
       * <TOTEM:EPT. FD:DataSet1, FD:destini, BeforeDelete>
       * <TOTEM:END>
+           DELETE destini.
            MOVE STATUS-destini TO TOTEM-ERR-STAT
            MOVE "destini" TO TOTEM-ERR-FILE
            MOVE "DELETE" TO TOTEM-ERR-MODE
@@ -12810,6 +12998,502 @@
       * <TOTEM:END>
            .
 
+       DataSet1-tprov-INITSTART.
+           IF DataSet1-tprov-KEY-Asc
+              MOVE Low-Value TO prv-chiave
+           ELSE
+              MOVE High-Value TO prv-chiave
+           END-IF
+           .
+
+       DataSet1-tprov-INITEND.
+           IF DataSet1-tprov-KEY-Asc
+              MOVE High-Value TO prv-chiave
+           ELSE
+              MOVE Low-Value TO prv-chiave
+           END-IF
+           .
+
+      * tprov
+       DataSet1-tprov-START.
+           IF DataSet1-tprov-KEY-Asc
+              START tprov KEY >= prv-chiave
+           ELSE
+              START tprov KEY <= prv-chiave
+           END-IF
+           .
+
+       DataSet1-tprov-START-NOTGREATER.
+           IF DataSet1-tprov-KEY-Asc
+              START tprov KEY <= prv-chiave
+           ELSE
+              START tprov KEY >= prv-chiave
+           END-IF
+           .
+
+       DataSet1-tprov-START-GREATER.
+           IF DataSet1-tprov-KEY-Asc
+              START tprov KEY > prv-chiave
+           ELSE
+              START tprov KEY < prv-chiave
+           END-IF
+           .
+
+       DataSet1-tprov-START-LESS.
+           IF DataSet1-tprov-KEY-Asc
+              START tprov KEY < prv-chiave
+           ELSE
+              START tprov KEY > prv-chiave
+           END-IF
+           .
+
+       DataSet1-tprov-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-tprov-LOCK
+              READ tprov WITH LOCK 
+              KEY prv-chiave
+           ELSE
+              READ tprov WITH NO LOCK 
+              KEY prv-chiave
+           END-IF
+           MOVE STATUS-tprov TO TOTEM-ERR-STAT 
+           MOVE "tprov" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tprov-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-tprov-KEY-Asc
+              IF DataSet1-tprov-LOCK
+                 READ tprov NEXT WITH LOCK
+              ELSE
+                 READ tprov NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tprov-LOCK
+                 READ tprov PREVIOUS WITH LOCK
+              ELSE
+                 READ tprov PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tprov TO TOTEM-ERR-STAT
+           MOVE "tprov" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tprov-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-tprov-KEY-Asc
+              IF DataSet1-tprov-LOCK
+                 READ tprov PREVIOUS WITH LOCK
+              ELSE
+                 READ tprov PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tprov-LOCK
+                 READ tprov NEXT WITH LOCK
+              ELSE
+                 READ tprov NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tprov TO TOTEM-ERR-STAT
+           MOVE "tprov" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tprov-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-tprov TO TOTEM-ERR-STAT
+           MOVE "tprov" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tprov-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-tprov TO TOTEM-ERR-STAT
+           MOVE "tprov" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tprov-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-tprov TO TOTEM-ERR-STAT
+           MOVE "tprov" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tprov, AfterDelete>
+      * <TOTEM:END>
+           .
+
+       EDI-clides-ecd-k-orders-MERGE-SPLITBUF.
+           INITIALIZE EDI-clides-ecd-k-orders-SPLITBUF
+           MOVE ecd-cod-dest(1:17) TO 
+           EDI-clides-ecd-k-orders-SPLITBUF(1:17)
+           MOVE ecd-cod-consegna(1:17) TO 
+           EDI-clides-ecd-k-orders-SPLITBUF(18:17)
+           .
+
+       DataSet1-EDI-clides-INITSTART.
+           IF DataSet1-EDI-clides-KEY-Asc
+              MOVE Low-Value TO ecd-chiave
+           ELSE
+              MOVE High-Value TO ecd-chiave
+           END-IF
+           .
+
+       DataSet1-EDI-clides-INITEND.
+           IF DataSet1-EDI-clides-KEY-Asc
+              MOVE High-Value TO ecd-chiave
+           ELSE
+              MOVE Low-Value TO ecd-chiave
+           END-IF
+           .
+
+      * EDI-clides
+       DataSet1-EDI-clides-START.
+           IF DataSet1-EDI-clides-KEY-Asc
+              START EDI-clides KEY >= ecd-chiave
+           ELSE
+              START EDI-clides KEY <= ecd-chiave
+           END-IF
+           .
+
+       DataSet1-EDI-clides-START-NOTGREATER.
+           IF DataSet1-EDI-clides-KEY-Asc
+              START EDI-clides KEY <= ecd-chiave
+           ELSE
+              START EDI-clides KEY >= ecd-chiave
+           END-IF
+           .
+
+       DataSet1-EDI-clides-START-GREATER.
+           IF DataSet1-EDI-clides-KEY-Asc
+              START EDI-clides KEY > ecd-chiave
+           ELSE
+              START EDI-clides KEY < ecd-chiave
+           END-IF
+           .
+
+       DataSet1-EDI-clides-START-LESS.
+           IF DataSet1-EDI-clides-KEY-Asc
+              START EDI-clides KEY < ecd-chiave
+           ELSE
+              START EDI-clides KEY > ecd-chiave
+           END-IF
+           .
+
+       DataSet1-EDI-clides-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:EDI-clides, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:EDI-clides, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-EDI-clides-LOCK
+              READ EDI-clides WITH LOCK 
+              KEY ecd-chiave
+           ELSE
+              READ EDI-clides WITH NO LOCK 
+              KEY ecd-chiave
+           END-IF
+           PERFORM EDI-clides-ecd-k-orders-MERGE-SPLITBUF
+           MOVE STATUS-EDI-clides TO TOTEM-ERR-STAT 
+           MOVE "EDI-clides" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:EDI-clides, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:EDI-clides, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-EDI-clides-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:EDI-clides, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:EDI-clides, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-EDI-clides-KEY-Asc
+              IF DataSet1-EDI-clides-LOCK
+                 READ EDI-clides NEXT WITH LOCK
+              ELSE
+                 READ EDI-clides NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-EDI-clides-LOCK
+                 READ EDI-clides PREVIOUS WITH LOCK
+              ELSE
+                 READ EDI-clides PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM EDI-clides-ecd-k-orders-MERGE-SPLITBUF
+           MOVE STATUS-EDI-clides TO TOTEM-ERR-STAT
+           MOVE "EDI-clides" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:EDI-clides, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:EDI-clides, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-EDI-clides-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:EDI-clides, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:EDI-clides, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-EDI-clides-KEY-Asc
+              IF DataSet1-EDI-clides-LOCK
+                 READ EDI-clides PREVIOUS WITH LOCK
+              ELSE
+                 READ EDI-clides PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-EDI-clides-LOCK
+                 READ EDI-clides NEXT WITH LOCK
+              ELSE
+                 READ EDI-clides NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM EDI-clides-ecd-k-orders-MERGE-SPLITBUF
+           MOVE STATUS-EDI-clides TO TOTEM-ERR-STAT
+           MOVE "EDI-clides" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:EDI-clides, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:EDI-clides, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-EDI-clides-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:EDI-clides, BeforeWrite>
+      * <TOTEM:END>
+           WRITE ecd-rec OF EDI-clides.
+           MOVE STATUS-EDI-clides TO TOTEM-ERR-STAT
+           MOVE "EDI-clides" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:EDI-clides, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-EDI-clides-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:EDI-clides, BeforeRewrite>
+      * <TOTEM:END>
+           REWRITE ecd-rec OF EDI-clides.
+           MOVE STATUS-EDI-clides TO TOTEM-ERR-STAT
+           MOVE "EDI-clides" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:EDI-clides, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-EDI-clides-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:EDI-clides, BeforeDelete>
+      * <TOTEM:END>
+           DELETE EDI-clides.
+           MOVE STATUS-EDI-clides TO TOTEM-ERR-STAT
+           MOVE "EDI-clides" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:EDI-clides, AfterDelete>
+      * <TOTEM:END>
+           .
+
+       anacap-k-prov-MERGE-SPLITBUF.
+           INITIALIZE anacap-k-prov-SPLITBUF
+           MOVE anc-prov(1:2) TO anacap-k-prov-SPLITBUF(1:2)
+           MOVE anc-comune(1:150) TO anacap-k-prov-SPLITBUF(3:150)
+           MOVE anc-chiave(1:5) TO anacap-k-prov-SPLITBUF(153:5)
+           .
+
+       anacap-k-comune-MERGE-SPLITBUF.
+           INITIALIZE anacap-k-comune-SPLITBUF
+           MOVE anc-comune(1:150) TO anacap-k-comune-SPLITBUF(1:150)
+           MOVE anc-prov(1:2) TO anacap-k-comune-SPLITBUF(151:2)
+           MOVE anc-chiave(1:5) TO anacap-k-comune-SPLITBUF(153:5)
+           .
+
+       DataSet1-anacap-INITSTART.
+           IF DataSet1-anacap-KEY-Asc
+              MOVE Low-Value TO anc-chiave
+           ELSE
+              MOVE High-Value TO anc-chiave
+           END-IF
+           .
+
+       DataSet1-anacap-INITEND.
+           IF DataSet1-anacap-KEY-Asc
+              MOVE High-Value TO anc-chiave
+           ELSE
+              MOVE Low-Value TO anc-chiave
+           END-IF
+           .
+
+      * anacap
+       DataSet1-anacap-START.
+           IF DataSet1-anacap-KEY-Asc
+              START anacap KEY >= anc-chiave
+           ELSE
+              START anacap KEY <= anc-chiave
+           END-IF
+           .
+
+       DataSet1-anacap-START-NOTGREATER.
+           IF DataSet1-anacap-KEY-Asc
+              START anacap KEY <= anc-chiave
+           ELSE
+              START anacap KEY >= anc-chiave
+           END-IF
+           .
+
+       DataSet1-anacap-START-GREATER.
+           IF DataSet1-anacap-KEY-Asc
+              START anacap KEY > anc-chiave
+           ELSE
+              START anacap KEY < anc-chiave
+           END-IF
+           .
+
+       DataSet1-anacap-START-LESS.
+           IF DataSet1-anacap-KEY-Asc
+              START anacap KEY < anc-chiave
+           ELSE
+              START anacap KEY > anc-chiave
+           END-IF
+           .
+
+       DataSet1-anacap-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-anacap-LOCK
+              READ anacap WITH LOCK 
+              KEY anc-chiave
+           ELSE
+              READ anacap WITH NO LOCK 
+              KEY anc-chiave
+           END-IF
+           PERFORM anacap-k-prov-MERGE-SPLITBUF
+           PERFORM anacap-k-comune-MERGE-SPLITBUF
+           MOVE STATUS-anacap TO TOTEM-ERR-STAT 
+           MOVE "anacap" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-anacap-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-anacap-KEY-Asc
+              IF DataSet1-anacap-LOCK
+                 READ anacap NEXT WITH LOCK
+              ELSE
+                 READ anacap NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-anacap-LOCK
+                 READ anacap PREVIOUS WITH LOCK
+              ELSE
+                 READ anacap PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM anacap-k-prov-MERGE-SPLITBUF
+           PERFORM anacap-k-comune-MERGE-SPLITBUF
+           MOVE STATUS-anacap TO TOTEM-ERR-STAT
+           MOVE "anacap" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-anacap-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-anacap-KEY-Asc
+              IF DataSet1-anacap-LOCK
+                 READ anacap PREVIOUS WITH LOCK
+              ELSE
+                 READ anacap PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-anacap-LOCK
+                 READ anacap NEXT WITH LOCK
+              ELSE
+                 READ anacap NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM anacap-k-prov-MERGE-SPLITBUF
+           PERFORM anacap-k-comune-MERGE-SPLITBUF
+           MOVE STATUS-anacap TO TOTEM-ERR-STAT
+           MOVE "anacap" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-anacap-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-anacap TO TOTEM-ERR-STAT
+           MOVE "anacap" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-anacap-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-anacap TO TOTEM-ERR-STAT
+           MOVE "anacap" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-anacap-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-anacap TO TOTEM-ERR-STAT
+           MOVE "anacap" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:anacap, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE cli-rec OF clienti
            INITIALIZE des-rec OF destini
@@ -12853,6 +13537,9 @@
            INITIALIZE gra-rec OF grade
            INITIALIZE lm-riga OF log-macrobatch
            INITIALIZE mb-rec OF macrobatch
+           INITIALIZE prv-rec OF tprov
+           INITIALIZE ecd-rec OF EDI-clides
+           INITIALIZE anc-rec OF anacap
            .
 
 
@@ -13276,6 +13963,30 @@
       * FD's Initialize Paragraph
        DataSet1-macrobatch-INITREC.
            INITIALIZE mb-rec OF macrobatch
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-tprov-INITREC.
+           INITIALIZE prv-rec OF tprov
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-EDI-clides-INITREC.
+           INITIALIZE ecd-rec OF EDI-clides
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-anacap-INITREC.
+           INITIALIZE anc-rec OF anacap
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -14362,7 +15073,7 @@
 
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 49,07,
+              LINES 50,27,
               SIZE 153,43,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
@@ -14404,7 +15115,9 @@
            perform ABILITAZIONI.
            accept data-oggi from century-date.
 
-           perform CURRENT-RECORD.  
+           perform CURRENT-RECORD. 
+           
+           
 
       *****     
       *****             15 emto-righe       PIC  9.
@@ -14954,12 +15667,28 @@
                MOVE 5002 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
+      * ef-prov-d's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-prov-d-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 5003 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * ef-cap-d's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-cap-d-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 5004 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
       * ef-num-ord's Validation
            SET TOTEM-CHECK-OK TO FALSE
            PERFORM ef-num-ord-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5003 TO CONTROL-ID
+               MOVE 5005 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-data's Validation
@@ -14967,7 +15696,7 @@
            PERFORM ef-data-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5004 TO CONTROL-ID
+               MOVE 5006 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-data-pass's Validation
@@ -14975,7 +15704,7 @@
            PERFORM ef-data-pass-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5005 TO CONTROL-ID
+               MOVE 5007 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-evadi-dal's Validation
@@ -14983,7 +15712,7 @@
            PERFORM ef-evadi-dal-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5006 TO CONTROL-ID
+               MOVE 5008 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-age's Validation
@@ -14991,7 +15720,7 @@
            PERFORM ef-age-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5007 TO CONTROL-ID
+               MOVE 5009 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-pag's Validation
@@ -14999,7 +15728,7 @@
            PERFORM ef-pag-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5008 TO CONTROL-ID
+               MOVE 5010 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-iva's Validation
@@ -15007,7 +15736,7 @@
            PERFORM ef-iva-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5009 TO CONTROL-ID
+               MOVE 5011 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-vet's Validation
@@ -15015,7 +15744,7 @@
            PERFORM ef-vet-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5010 TO CONTROL-ID
+               MOVE 5012 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-1's Validation
@@ -15023,7 +15752,7 @@
            PERFORM ef-note-1-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5011 TO CONTROL-ID
+               MOVE 5013 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-data-cons's Validation
@@ -15031,7 +15760,7 @@
            PERFORM ef-data-cons-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5012 TO CONTROL-ID
+               MOVE 5014 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-2's Validation
@@ -15039,7 +15768,7 @@
            PERFORM ef-note-2-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5013 TO CONTROL-ID
+               MOVE 5015 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-3's Validation
@@ -15047,7 +15776,7 @@
            PERFORM ef-note-3-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5014 TO CONTROL-ID
+               MOVE 5016 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-4's Validation
@@ -15055,7 +15784,7 @@
            PERFORM ef-note-4-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5015 TO CONTROL-ID
+               MOVE 5017 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note's Validation
@@ -15063,7 +15792,7 @@
            PERFORM ef-note-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5016 TO CONTROL-ID
+               MOVE 5018 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
            .
@@ -15100,6 +15829,40 @@
            PERFORM ef-des-BEFORE-VALIDATION
            SET TOTEM-CHECK-OK TO TRUE
            PERFORM ef-des-AFTER-VALIDATION
+           .
+
+       ef-prov-d-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-prov-d, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-prov-d-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-prov-d, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-prov-d's Validation
+       ef-prov-d-VALIDATION.
+           PERFORM ef-prov-d-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-prov-d-AFTER-VALIDATION
+           .
+
+       ef-cap-d-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-cap-d, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-cap-d-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-cap-d, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-cap-d's Validation
+       ef-cap-d-VALIDATION.
+           PERFORM ef-cap-d-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-cap-d-AFTER-VALIDATION
            .
 
        ef-num-ord-BEFORE-VALIDATION.
@@ -15348,6 +16111,10 @@
            MOVE ef-cli-BUF TO emto-cod-cli
       * DB_Entry-Field : ef-des
            MOVE ef-des-BUF TO emto-prg-destino
+      * DB_Entry-Field : ef-prov-d
+           MOVE ef-prov-d-BUF TO des-prov
+      * DB_Entry-Field : ef-cap-d
+           MOVE ef-cap-d-BUF TO des-cap
       * DB_Entry-Field : ef-num-ord
            MOVE ef-num-ord-BUF TO emto-num-ord-cli
       * DB_Entry-Field : ef-data
@@ -15434,6 +16201,10 @@
            MOVE emto-cod-cli TO ef-cli-BUF
       * DB_Entry-Field : ef-des
            MOVE emto-prg-destino TO ef-des-BUF
+      * DB_Entry-Field : ef-prov-d
+           MOVE des-prov TO ef-prov-d-BUF
+      * DB_Entry-Field : ef-cap-d
+           MOVE des-cap TO ef-cap-d-BUF
       * DB_Entry-Field : ef-num-ord
            MOVE emto-num-ord-cli TO ef-num-ord-BUF
       * DB_Entry-Field : ef-data
@@ -15683,6 +16454,14 @@
            when 78-ID-ef-des
                 move 1 to StatusHelp
                 perform STATUS-HELP
+           |78-ID-ef-prov-d è l'ID del campo ef-prov-d
+           when 78-ID-ef-prov-d
+                move 1 to StatusHelp
+                perform STATUS-HELP
+           |78-ID-ef-cap-d è l'ID del campo ef-cap-d
+           when 78-ID-ef-cap-d
+                move 1 to StatusHelp
+                perform STATUS-HELP
            |78-ID-ef-age è l'ID del campo ef-age
            when 78-ID-ef-age
                 move 1 to StatusHelp
@@ -15719,6 +16498,16 @@
 
            |78-ID-ef-des è l'ID del campo ef-des
            when 78-ID-ef-des
+                move 0 to StatusHelp
+                perform STATUS-HELP
+
+           |78-ID-ef-prov-d è l'ID del campo ef-prov-d
+           when 78-ID-ef-prov-d
+                move 0 to StatusHelp
+                perform STATUS-HELP
+
+           |78-ID-ef-cap-d è l'ID del campo ef-cap-d
+           when 78-ID-ef-cap-d
                 move 0 to StatusHelp
                 perform STATUS-HELP
 
@@ -16242,25 +17031,27 @@
            EVALUATE Control-Id
            When 5001 PERFORM Screen2-DaEf-2-AfterProcedure
            When 5002 PERFORM Screen2-DaEf-3-AfterProcedure
-           When 5003 PERFORM Screen2-DaEf-5-AfterProcedure
-           When 5004 PERFORM Screen2-DaEf-6-AfterProcedure
-           When 5005 PERFORM Screen2-DaEf-7-AfterProcedure
-           When 5006 PERFORM Screen2-DaEf-7-AfterProcedure
-           When 5007 PERFORM Screen2-DaEf-8-AfterProcedure
-           When 5008 PERFORM Screen2-DaEf-9-AfterProcedure
-           When 5009 PERFORM Screen2-DaEf-10-AfterProcedure
-           When 5010 PERFORM Screen2-DaEf-11-AfterProcedure
-           When 5011 PERFORM Screen2-DaEf-12-AfterProcedure
-           When 5012 PERFORM Screen2-DaEf-13-AfterProcedure
-           When 5013 PERFORM Screen2-DaEf-14-AfterProcedure
-           When 5014 PERFORM Screen2-DaEf-15-AfterProcedure
-           When 5015 PERFORM Screen2-DaEf-16-AfterProcedure
-           When 5016 PERFORM Screen2-DaEf-17-AfterProcedure
-           When 5017 PERFORM Screen2-DaCb-1-AfterProcedure
-           When 5018 PERFORM Screen2-DaCb-3-AfterProcedure
-           When 5019 PERFORM Screen2-DaCb-4-AfterProcedure
-           When 5020 PERFORM Screen2-DaCb-5-AfterProcedure
-           When 5021 PERFORM Screen2-DaCb-5-AfterProcedure
+           When 5003 PERFORM ef-prov-d-AfterProcedure
+           When 5004 PERFORM ef-cap-d-AfterProcedure
+           When 5005 PERFORM Screen2-DaEf-5-AfterProcedure
+           When 5006 PERFORM Screen2-DaEf-6-AfterProcedure
+           When 5007 PERFORM Screen2-DaEf-7-AfterProcedure
+           When 5008 PERFORM Screen2-DaEf-7-AfterProcedure
+           When 5009 PERFORM Screen2-DaEf-8-AfterProcedure
+           When 5010 PERFORM Screen2-DaEf-9-AfterProcedure
+           When 5011 PERFORM Screen2-DaEf-10-AfterProcedure
+           When 5012 PERFORM Screen2-DaEf-11-AfterProcedure
+           When 5013 PERFORM Screen2-DaEf-12-AfterProcedure
+           When 5014 PERFORM Screen2-DaEf-13-AfterProcedure
+           When 5015 PERFORM Screen2-DaEf-14-AfterProcedure
+           When 5016 PERFORM Screen2-DaEf-15-AfterProcedure
+           When 5017 PERFORM Screen2-DaEf-16-AfterProcedure
+           When 5018 PERFORM Screen2-DaEf-17-AfterProcedure
+           When 5019 PERFORM Screen2-DaCb-1-AfterProcedure
+           When 5020 PERFORM Screen2-DaCb-3-AfterProcedure
+           When 5021 PERFORM Screen2-DaCb-4-AfterProcedure
+           When 5022 PERFORM Screen2-DaCb-5-AfterProcedure
+           When 5023 PERFORM Screen2-DaCb-5-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -16313,28 +17104,28 @@
        Form1-Gd-1-Event-Proc.
            EVALUATE Event-Type ALSO Event-Control-Id ALSO
                                     Event-Window-Handle
-           WHEN Msg-Begin-Drag ALSO 5022 ALSO
+           WHEN Msg-Begin-Drag ALSO 5024 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5022 ALSO
+           WHEN Msg-Begin-Entry ALSO 5024 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-Begin-Entry
-           WHEN Msg-Cancel-Entry ALSO 5022 ALSO
+           WHEN Msg-Cancel-Entry ALSO 5024 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-Cancel-Entry
-           WHEN Msg-End-Drag ALSO 5022 ALSO
+           WHEN Msg-End-Drag ALSO 5024 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-End-Drag
-           WHEN Msg-Finish-Entry ALSO 5022 ALSO
+           WHEN Msg-Finish-Entry ALSO 5024 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-Finish-Entry
-           WHEN Msg-Goto-Cell ALSO 5022 ALSO
+           WHEN Msg-Goto-Cell ALSO 5024 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5022 ALSO
+           WHEN Msg-Goto-Cell-Drag ALSO 5024 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5022 ALSO
+           WHEN Msg-Goto-Cell-Mouse ALSO 5024 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-Goto-Cell-Mouse
            END-EVALUATE
@@ -17114,6 +17905,45 @@ LUBEXX     move emto-data-ordine(7:2) to col-data(1:2).
                    move cli-codice     to ef-cli-buf
                    perform RAGSOC-CLIENTE
                    display ef-cli lab-cliente
+                end-if    
+
+           when 78-ID-ef-prov-d
+                inquire ef-prov-d, value in prv-codice
+                move "tprov"    to como-file
+                call "zoom-gt"  using como-file, prv-rec
+                                giving stato-zoom
+                end-call
+                cancel "zoom-gt"
+                if stato-zoom = 0
+                   move prv-codice to ef-prov-d-buf
+                   display ef-prov-d
+                end-if 
+
+           when 78-ID-ef-cap-d
+                inquire ef-cap-d, value in anc-cap
+                move "anacap"      to como-file
+                call "zoom-gt"  using como-file, anc-rec
+                                giving stato-zoom
+                end-call
+                cancel "zoom-gt"
+                if stato-zoom = 0
+                   move anc-cap to ef-cap-d-buf
+                   display ef-cap-d
+                end-if 
+
+           when 78-ID-ef-des
+                inquire ef-cli, value in des-codice
+                set cli-tipo-c to true
+                move "clienti-des"    to como-file
+                inquire ef-des, value in des-prog
+                call "zoom-gt"  using como-file, des-rec
+                                giving stato-zoom
+                end-call
+                cancel "zoom-gt"
+                if stato-zoom = 0
+                   move des-prog     to ef-des-buf
+                   perform RAGSOC-DESTINO
+                   display ef-des lab-destino
                 end-if
 
            when 78-ID-ef-des
@@ -17905,7 +18735,29 @@ LABLAB          end-if
                                 cell-data col-evadi-dal
                       end-perform
                    end-if
-                end-if
+                end-if  
+                                                  
+           when 78-ID-ef-prov-d
+                inquire ef-prov-d, value in prv-codice
+                read tprov
+                     invalid
+                     set errori to true        
+                     display message "Provincia NON valida"
+                               title tit-err
+                                icon mb-warning-icon
+                     move 78-ID-ef-prov-d to control-id
+                end-read
+
+           when 78-ID-ef-cap-d
+                inquire ef-cap-d, value in anc-cap
+                read anacap
+                     invalid
+                     set errori to true        
+                     display message "CAP NON valido"
+                               title tit-err
+                                icon mb-warning-icon
+                     move 78-ID-ef-cap-d to control-id
+                end-read
 
            |78-ID-ef-age è l'ID del control ef-age
            when 78-ID-ef-age
@@ -18786,7 +19638,7 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
            if emto-clides-non-valido
               move 78-colore-fatt-tot to clr-destino
            end-if.
-           display destino-lab.
+           display destino-lab cap-lab provincia-lab.
            perform CARICA-GRID.   
 
            if emto-evadi-dal = 0
@@ -18801,7 +19653,18 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
            move 2 to riga event-data-2.
            modify form1-gd-1, cursor-y = riga.
            move 78-ID-form1-gd-1 to control-id.
-           move 4 to accept-control.
+           move 4 to accept-control.   
+
+           read destini no lock 
+                invalid move spaces to des-cap des-prov
+           end-read.                 
+
+           move des-cap  to old-des-cap.
+           move des-prov to old-des-prov.
+           
+           move des-cap  to ef-cap-d-buf.
+           move des-prov to ef-prov-d-buf.
+           display ef-cap-d ef-prov-d.
 
            perform SPOSTAMENTO.     
 
@@ -18924,7 +19787,7 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
                  move 78-ID-ef-cli to CONTROL-ID
                  perform STATUS-BAR-MSG 
                  unlock EDI-mtordini all records
-                 perform CURRENT-RECORD
+                 perform CURRENT-RECORD 
               end-if
            end-if
                      
@@ -19103,6 +19966,16 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
               set NoSalvato to true
               move 78-ID-ef-data to store-id
            end-if.
+                                       
+           if des-cap not = old-des-cap and SiSalvato
+              set NoSalvato to true
+              move 78-ID-ef-cap-d to store-id
+           end-if.
+                                       
+           if des-prov not = old-des-prov and SiSalvato
+              set NoSalvato to true
+              move 78-ID-ef-prov-d to store-id
+           end-if.
 
            if   emto-data-passaggio-ordine not = 
             OLD-emto-data-passaggio-ordine and
@@ -19273,7 +20146,31 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
 
            if errori
               perform CANCELLA-COLORE
-           else   
+           else                  
+
+              if old-des-prov not = des-prov or
+                 old-des-cap  not = des-cap  
+                 if des-prog not = 0
+                    read destini no lock                    
+                    move ef-cap-d-buf  to des-cap  old-des-cap
+                    move ef-prov-d-buf to des-prov old-des-prov
+                    rewrite des-rec
+                 end-if
+
+                 set emto-destino-valido  to true
+
+                 if ecd-prg-destino not = 0
+                    read edi-clides no lock
+                    move ef-cap-d-buf  to ecd-cap-d
+                    move ef-prov-d-buf to ecd-prov-d
+                    rewrite ecd-rec                
+                 end-if
+
+                 move des-prov to old-des-prov
+                 move des-cap  to old-des-cap
+              end-if
+
+
               perform FORM1-BUF-TO-FLD
               perform SCRIVI-RIGHE
               perform CANCELLA-COLORE
@@ -19282,7 +20179,8 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
               accept emto-ora-ultima-modifica  from time
               move user-codi to emto-utente-ultima-modifica
               rewrite emto-rec 
-              unlock EDI-mtordini all record
+              unlock EDI-mtordini all record 
+
            end-if.
 
 PATCH      move BitmapSaveEnabled to BitmapNumSave
@@ -21678,6 +22576,56 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
            perform CALCOLA-TOTALE 
            .
       * <TOTEM:END>
+       ef-prov-d-BeforeProcedure.
+      * <TOTEM:PARA. ef-prov-d-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           move 1 to StatusHelp.
+           perform STATUS-HELP 
+           .
+      * <TOTEM:END>
+       ef-cap-d-BeforeProcedure.
+      * <TOTEM:PARA. ef-cap-d-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           move 1 to StatusHelp.
+           perform STATUS-HELP 
+           .
+      * <TOTEM:END>
+       ef-prov-d-AfterProcedure.
+      * <TOTEM:PARA. ef-prov-d-AfterProcedure>
+              INQUIRE ef-prov-d, VALUE IN des-prov
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-prov-d-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           move 0 to StatusHelp.
+           perform STATUS-HELP.
+           perform CONTROLLO.
+
+           .
+      * <TOTEM:END>
+
+       ef-cap-d-AfterProcedure.
+      * <TOTEM:PARA. ef-cap-d-AfterProcedure>
+              INQUIRE ef-cap-d, VALUE IN des-cap
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-cap-d-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           move 0 to StatusHelp.
+           perform STATUS-HELP.
+           perform CONTROLLO.
+
+           .
+      * <TOTEM:END>
+
 
       *{TOTEM}END
 
