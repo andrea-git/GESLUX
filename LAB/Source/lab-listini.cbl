@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-listini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 14 dicembre 2021 11:17:29.
+       DATE-WRITTEN.        martedì 14 dicembre 2021 11:36:05.
        REMARKS.
       *{TOTEM}END
 
@@ -339,7 +339,7 @@
        77 TMP-DataSet1-tpromo-BUF     PIC X(263).
        77 TMP-DataSet1-blister-BUF     PIC X(2967).
        77 TMP-DataSet1-timposte-BUF     PIC X(717).
-       77 TMP-DataSet1-tmp-listini-BUF     PIC X(240).
+       77 TMP-DataSet1-tmp-listini-BUF     PIC X(243).
        77 TMP-DataSet1-progmag-BUF     PIC X(1090).
        77 TMP-DataSet1-param-BUF     PIC X(980).
        77 TMP-DataSet1-tpiombo-BUF     PIC X(739).
@@ -6791,25 +6791,28 @@
                  |or lst-data not = como-data
                     exit perform
                  end-if
-                 if save-articolo not = 0
-                    if save-articolo not = lst-articolo of listini
-                       exit perform
+                 if tipo-data = 1
+                    if save-articolo not = 0
+                       if save-articolo not = lst-articolo of listini
+                          exit perform
+                       end-if
                     end-if
-                 end-if
-                 if save-cod-art-cli not = spaces
-                    if save-cod-art-cli not = lst-cod-art-cli of listini
-                       exit perform
+                    if save-cod-art-cli not = spaces
+                       if save-cod-art-cli not = lst-cod-art-cli of 
+           listini
+                          exit perform
+                       end-if
                     end-if
-                 end-if
-                 if tipo-data = 2
+                    move lst-articolo of listini to tlst-articolo
+                    read tmp-listini no lock key tmp-k-articolo
+                         invalid perform VALORIZZA-RIGA-TMP
+                    end-read
+                 else
                     if lst-data of listini < data-richiesta-dal
                        exit perform
                     end-if
-                 end-if
-                 move lst-articolo of listini to tlst-articolo
-                 read tmp-listini no lock key tmp-k-articolo
-                      invalid perform VALORIZZA-RIGA-TMP
-                 end-read
+                    perform VALORIZZA-RIGA-TMP
+                 end-if 
               end-perform
            end-if 
            .
@@ -6918,8 +6921,18 @@
            move lst-chiave of listini     to tlst-chiave-listino.
       *    Luciano
            move lst-prg-chiave of listini to tlst-prg-chiave.
-      *    Luciano
-           write tlst-rec invalid continue end-write.
+      *    Luciano               
+           move 0 to tlst-prog
+           if tipo-data = 1
+              write tlst-rec invalid continue end-write
+           else                  
+              perform until 1 = 2
+                 write tlst-rec 
+                       invalid add 1 to tlst-prog
+                   not invalid exit perform
+                 end-write
+              end-perform
+           end-if.
            add 1 to idx.
 
       ***---
