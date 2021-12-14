@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordforn-sol.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 29 novembre 2021 14:34:26.
+       DATE-WRITTEN.        martedì 14 dicembre 2021 11:59:35.
        REMARKS.
       *{TOTEM}END
 
@@ -282,7 +282,7 @@
        05
            Form1-Fr-1, 
            Frame, 
-           COL 98,43, 
+           COL 82,14, 
            LINE 1,69,
            LINES 3,38 ,
            SIZE 30,57 ,
@@ -295,7 +295,7 @@
        05
            ef-data, 
            Entry-Field, 
-           COL 114,86, 
+           COL 98,57, 
            LINE 2,92,
            LINES 1,54 ,
            SIZE 12,00 ,
@@ -315,7 +315,7 @@
        05
            Form1-La-1, 
            Label, 
-           COL 100,43, 
+           COL 84,14, 
            LINE 2,92,
            LINES 1,54 ,
            SIZE 13,00 ,
@@ -346,20 +346,20 @@
        05
            form1-gd-1, 
            Grid, 
-           COL 1,86, 
+           COL 2,57, 
            LINE 6,77,
            LINES 37,08 ,
-           SIZE 223,86 ,
+           SIZE 189,71 ,
            ADJUSTABLE-COLUMNS,
            BOXED,
            CENTERED-HEADINGS,
-           DATA-COLUMNS (1, 4, 54, 59, 159, 165, 175, 181, 281, 292, 
-           303, 314),
-           ALIGNMENT ("U", "U", "R", "U", "R", "C", "R", "U", "R", "R", 
-           "R", "C"),
-           SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5),
-           DATA-TYPES ("9(6)", "X(50)", "X(10)", "9(15)", "X(50)", "X(5)
-      -    "", "X(10)", "X", "9(10)", "9(10)", "9(10)", "9(10)"),
+           DATA-COLUMNS (1, 4, 9, 109, 115, 125, 131, 231, 242, 253, 
+           264),
+           ALIGNMENT ("U", "R", "U", "R", "C", "R", "U", "R", "R", "R", 
+           "C"),
+           SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5),
+           DATA-TYPES ("9(6)", "X(10)", "9(15)", "X(50)", "X(5)", "X(10)
+      -    "", "X", "9(10)", "9(10)", "9(10)", "9(10)"),
            NUM-COL-HEADINGS 1,
            COLUMN-HEADINGS,
            CURSOR-FRAME-WIDTH 2,
@@ -372,7 +372,7 @@
            WIDTH-IN-CELLS,
            RECORD-DATA rec-grid,
            TILED-HEADINGS,
-           VIRTUAL-WIDTH 221,
+           VIRTUAL-WIDTH 187,
            VPADDING 50,
            VSCROLL,
            EVENT PROCEDURE Form1-Gd-1-Event-Proc,
@@ -2378,44 +2378,40 @@
                 CELL-DATA = "Mag.",
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 2, Y = 1,
-                CELL-DATA = "Descrizione",
-      * CELLS' SETTING
-              MODIFY form1-gd-1, X = 3, Y = 1,
                 CELL-DATA = "Fornitore",
       * CELLS' SETTING
-              MODIFY form1-gd-1, X = 4, Y = 1,
+              MODIFY form1-gd-1, X = 3, Y = 1,
                 CELL-DATA = "Ragione sociale",
       * CELLS' SETTING
-              MODIFY form1-gd-1, X = 5, Y = 1,
+              MODIFY form1-gd-1, X = 4, Y = 1,
                 CELL-DATA = "Numero",
       * CELLS' SETTING
-              MODIFY form1-gd-1, X = 6, Y = 1,
+              MODIFY form1-gd-1, X = 5, Y = 1,
                 CELL-DATA = "Data",
       * CELLS' SETTING
-              MODIFY form1-gd-1, X = 7, Y = 1,
+              MODIFY form1-gd-1, X = 6, Y = 1,
                 CELL-DATA = "Art.",
       * CELLS' SETTING
-              MODIFY form1-gd-1, X = 8, Y = 1,
+              MODIFY form1-gd-1, X = 7, Y = 1,
                 CELL-DATA = "Descrizione",
       * CELLS' SETTING
-              MODIFY form1-gd-1, X = 9, Y = 1,
+              MODIFY form1-gd-1, X = 8, Y = 1,
                 CELL-DATA = "Qta ord",
       * CELLS' SETTING
-              MODIFY form1-gd-1, X = 10, Y = 1,
+              MODIFY form1-gd-1, X = 9, Y = 1,
                 CELL-DATA = "Qta eva",
       * CELLS' SETTING
-              MODIFY form1-gd-1, X = 11, Y = 1,
+              MODIFY form1-gd-1, X = 10, Y = 1,
                 CELL-FONT Verdana8B-Occidentale,
                 CELL-DATA = "Qta solleciti",
       * CELLS' SETTING
-              MODIFY form1-gd-1, X = 12, Y = 1,
-                CELL-FONT Verdana8B-Occidentale,
+              MODIFY form1-gd-1, X = 11, Y = 1,
                 CELL-DATA = "Data solleciti",
       * COLUMNS' SETTING
-              MODIFY form1-gd-1, X = 11  
+              MODIFY form1-gd-1, X = 10  
                 COLUMN-FONT = Verdana8B-Occidentale,
       * COLUMNS' SETTING
-              MODIFY form1-gd-1, X = 12  
+              MODIFY form1-gd-1, X = 11  
                 COLUMN-FONT = Verdana8B-Occidentale,
            .
 
@@ -2516,7 +2512,7 @@
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
               LINES 44,62,
-              SIZE 225,57,
+              SIZE 192,86,
               COLOR 65793,
               CONTROL FONT Verdana8-Occidentale,
               LINK TO THREAD,
@@ -2538,8 +2534,8 @@
       * Status-bar
            DISPLAY Form1 UPON Form1-Handle
       * DISPLAY-COLUMNS settings
-              MODIFY form1-gd-1, DISPLAY-COLUMNS (1, 7, 41, 51, 96, 
-           104, 116, 124, 176, 186, 196, 209)
+              MODIFY form1-gd-1, DISPLAY-COLUMNS (1, 7, 17, 62, 70, 82, 
+           90, 142, 152, 162, 175)
            .
 
        Form1-PROC.
@@ -3422,7 +3418,7 @@
       **********     else
       *****        move 481 to colore
       **********     end-if.
-           modify form1-gd-1, start-x 1,    x 12,
+           modify form1-gd-1, start-x 1,    x 11,
                               start-y riga, y riga,
                          region-color 481 
            .
@@ -3615,25 +3611,23 @@
                     modify form1-gd-1(riga, 1),  cell-data 
            col-mag-codice
                     modify form1-gd-1(riga, 2),  cell-data 
-           col-mag-descrizione
-                    modify form1-gd-1(riga, 3),  cell-data 
            col-cli-codice   
-                    modify form1-gd-1(riga, 4),  cell-data 
+                    modify form1-gd-1(riga, 3),  cell-data 
            col-cli-ragsoc   
-                    modify form1-gd-1(riga, 5),  cell-data 
+                    modify form1-gd-1(riga, 4),  cell-data 
            col-tof-numero   
-                    modify form1-gd-1(riga, 6),  cell-data col-tof-data 
+                    modify form1-gd-1(riga, 5),  cell-data col-tof-data 
                
-                    modify form1-gd-1(riga, 7),  cell-data 
+                    modify form1-gd-1(riga, 6),  cell-data 
            col-rof-cod-articolo
-                    modify form1-gd-1(riga, 8),  cell-data 
+                    modify form1-gd-1(riga, 7),  cell-data 
            col-art-descrizione
-                    modify form1-gd-1(riga, 9),  cell-data col-rof-qta  
+                    modify form1-gd-1(riga, 8),  cell-data col-rof-qta  
                
-                    modify form1-gd-1(riga, 10), cell-data 
+                    modify form1-gd-1(riga, 9), cell-data 
            col-rof-qta-eva  
-                    modify form1-gd-1(riga, 11), cell-data col-qta-soll 
-                    modify form1-gd-1(riga, 12), cell-data col-data-soll
+                    modify form1-gd-1(riga, 10), cell-data col-qta-soll 
+                    modify form1-gd-1(riga, 11), cell-data col-data-soll
 
                     move tos-chiave to hid-tos-chiave
                     modify form1-gd-1(riga, 1), hidden-data 
@@ -4014,10 +4008,10 @@
               move old-qta  to col-qta-soll
               move old-data to col-data-soll
            else             
-              inquire form1-gd-1(event-data-2, 11), cell-data in 
+              inquire form1-gd-1(event-data-2, 10), cell-data in 
            col-qta-soll
               move col-qta-soll to sof-qta
-              inquire form1-gd-1(event-data-2, 12), cell-data in 
+              inquire form1-gd-1(event-data-2, 11), cell-data in 
            col-data-soll
               move col-data-soll to como-data
               perform DATE-TO-FILE
@@ -4037,10 +4031,10 @@
            accept sof-data-creazione from century-date.
            accept sof-ora-creazione  from time.
            move user-codi to sof-utente-creazione.
-           inquire form1-gd-1(event-data-2, 11), cell-data in 
+           inquire form1-gd-1(event-data-2, 10), cell-data in 
            col-qta-soll
            move col-qta-soll to sof-qta
-           inquire form1-gd-1(event-data-2, 12), cell-data in 
+           inquire form1-gd-1(event-data-2, 11), cell-data in 
            col-data-soll
            move col-data-soll to como-data
            perform DATE-TO-FILE
@@ -4096,14 +4090,13 @@
            when  6
            when  7
            when  8
-           when  9
-           when 10 
+           when  9  
                 set event-action to event-action-fail
-           when 11
+           when 10
                 inquire form1-gd-1(event-data-2, event-data-1), 
                         cell-data in col-qta-soll
                 move col-qta-soll to old-qta
-           when 12
+           when 11
                 inquire form1-gd-1(event-data-2, event-data-1), 
                         cell-data in col-data-soll
                 move col-data-soll to como-data
@@ -4206,9 +4199,8 @@
            read tmp-ordforn-sol no lock.
 
            evaluate event-data-1
-           when 11                                                      
-                  
-                inquire form1-gd-1(event-data-2, 11), cell-data in 
+           when 10
+                inquire form1-gd-1(event-data-2, 10), cell-data in 
            col-qta-soll 
                 move col-qta-soll to sof-qta
                 if sof-qta not = old-qta
@@ -4225,15 +4217,15 @@
                         perform REWRITE-SOLLECITI
                    end-evaluate 
                 end-if
-                modify  form1-gd-1(event-data-2, 11), cell-data 
+                modify  form1-gd-1(event-data-2, 10), cell-data 
            col-qta-soll   
-           when 12 
-                inquire form1-gd-1(event-data-2, 12), cell-data in 
+           when 11 
+                inquire form1-gd-1(event-data-2, 11), cell-data in 
            col-data-soll
                 move col-data-soll to como-data
                 perform DATE-FORMAT
                 move como-data to col-data-soll
-                modify form1-gd-1(event-data-2, 12), cell-data 
+                modify form1-gd-1(event-data-2, 11), cell-data 
            col-data-soll
                 perform DATE-TO-FILE
                 if como-data not = old-data
@@ -4252,7 +4244,7 @@
                 end-if
                 perform DATE-TO-SCREEN
                 move como-data to col-data-soll
-                modify form1-gd-1(event-data-2, 12), cell-data 
+                modify form1-gd-1(event-data-2, 11), cell-data 
            col-data-soll
            end-evaluate.
            move 78-ID-form1-gd-1 to control-id

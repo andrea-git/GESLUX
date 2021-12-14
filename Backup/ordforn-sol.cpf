@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=PAS004P-Ev-Before-Program
 AFTER_PROGRAM=I-O-BLOCCO
-PROGRAM_UNIQUE_CODE=TOTEM-7E5B1D103650-638-26427457
+PROGRAM_UNIQUE_CODE=TOTEM-7E5CE105111-422-1721923957
 
 {{@DESCRIPTION:
 
@@ -1216,7 +1216,7 @@ Begin Screen Form1
    Operation Mode    = Interactive Mode
    Resizable         = FALSE
    Scroll            = FALSE
-   Size              = 225,57
+   Size              = 192,86
    System Menu       = TRUE
    Title Bar         = TRUE
    Title Variable    = titolo
@@ -1229,7 +1229,7 @@ Begin Screen Form1
    Wrap              = FALSE
    Event Procedure   = Form1-Event-Proc
    Begin Frame Form1-Fr-1
-      SCREEN-COL        = 98,43
+      SCREEN-COL        = 82,14
       SCREEN-LINE       = 1,69
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -1239,7 +1239,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 98,43
+      Column            = 82,14
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -1261,7 +1261,7 @@ Begin Screen Form1
       Visible           = NONE
       Width in Cells    = TRUE
       Begin Entry-Field ef-data
-         SCREEN-COL        = 114,86
+         SCREEN-COL        = 98,57
          SCREEN-LINE       = 2,92
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -1317,7 +1317,7 @@ Begin Screen Form1
          After Procedure   = ef-data-AfterProcedure
       End
       Begin Label Form1-La-1
-         SCREEN-COL        = 100,43
+         SCREEN-COL        = 84,14
          SCREEN-LINE       = 2,92
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -1387,7 +1387,7 @@ Begin Screen Form1
       Width in Cells    = TRUE
    End
    Begin Grid form1-gd-1
-      SCREEN-COL        = 1,86
+      SCREEN-COL        = 2,57
       SCREEN-LINE       = 6,77
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -1396,58 +1396,53 @@ Begin Screen Form1
       Adjustable Columns = TRUE
       Border            = Boxed
       Cells' Setting    = ( X = 1, Y = 1, Data = "Mag." )
-      Cells' Setting    = ( X = 2, Y = 1, Data = "Descrizione" )
-      Cells' Setting    = ( X = 3, Y = 1, Data = "Fornitore" )
-      Cells' Setting    = ( X = 4, Y = 1, Data = "Ragione sociale" )
-      Cells' Setting    = ( X = 5, Y = 1, Data = "Numero" )
-      Cells' Setting    = ( X = 6, Y = 1, Data = "Data" )
-      Cells' Setting    = ( X = 7, Y = 1, Data = "Art." )
-      Cells' Setting    = ( X = 8, Y = 1, Data = "Descrizione" )
-      Cells' Setting    = ( X = 9, Y = 1, Data = "Qta ord" )
-      Cells' Setting    = ( X = 10, Y = 1, Data = "Qta eva" )
-      Cells' Setting    = ( X = 11, Y = 1, Font = Verdana/8/B/C0/@Occidentale, Font Variable = Verdana8B-Occidentale )
+      Cells' Setting    = ( X = 2, Y = 1, Data = "Fornitore" )
+      Cells' Setting    = ( X = 3, Y = 1, Data = "Ragione sociale" )
+      Cells' Setting    = ( X = 4, Y = 1, Data = "Numero" )
+      Cells' Setting    = ( X = 5, Y = 1, Data = "Data" )
+      Cells' Setting    = ( X = 6, Y = 1, Data = "Art." )
+      Cells' Setting    = ( X = 7, Y = 1, Data = "Descrizione" )
+      Cells' Setting    = ( X = 8, Y = 1, Data = "Qta ord" )
+      Cells' Setting    = ( X = 9, Y = 1, Data = "Qta eva" )
+      Cells' Setting    = ( X = 10, Y = 1, Font = Verdana/8/B/C0/@Occidentale, Font Variable = Verdana8B-Occidentale )
       Cells' Setting    = ( Data = "Qta solleciti" )
-      Cells' Setting    = ( X = 12, Y = 1, Font = Verdana/8/B/C0/@Occidentale, Font Variable = Verdana8B-Occidentale )
-      Cells' Setting    = ( Data = "Data solleciti" )
+      Cells' Setting    = ( X = 11, Y = 1, Data = "Data solleciti" )
       Centered Headings = TRUE
       Color             = 0
-      Column            = 1,86
+      Column            = 2,57
       Column Headings   = TRUE
       Columns' Setting  = ( X = 1, Name = col-mag-codice, READONLY = 0 )
       Columns' Setting  = ( PIC = "x(3)", TYPE = "9(6)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
       Columns' Setting  = ( DISP = 6, SEPA = 5, DIVI = 1 )
-      Columns' Setting  = ( X = 2, Name = col-mag-descrizione, READONLY = 0 )
-      Columns' Setting  = ( PIC = "X(50)", TYPE = "X(50)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
-      Columns' Setting  = ( DISP = 34, SEPA = 5, DIVI = 1 )
-      Columns' Setting  = ( X = 3, Name = col-cli-codice, READONLY = 0 )
+      Columns' Setting  = ( X = 2, Name = col-cli-codice, READONLY = 0 )
       Columns' Setting  = ( PIC = "9(5)", TYPE = "X(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
       Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
-      Columns' Setting  = ( X = 4, Name = col-cli-ragsoc, READONLY = 0 )
+      Columns' Setting  = ( X = 3, Name = col-cli-ragsoc, READONLY = 0 )
       Columns' Setting  = ( PIC = "x(100)", TYPE = "9(15)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
       Columns' Setting  = ( DISP = 45, SEPA = 5, DIVI = 1 )
-      Columns' Setting  = ( X = 5, Name = col-tof-numero, READONLY = 0 )
+      Columns' Setting  = ( X = 4, Name = col-tof-numero, READONLY = 0 )
       Columns' Setting  = ( PIC = "z(6)", TYPE = "X(50)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
       Columns' Setting  = ( DISP = 8, SEPA = 5, DIVI = 1 )
-      Columns' Setting  = ( X = 6, Name = col-tof-data, READONLY = 0 )
+      Columns' Setting  = ( X = 5, Name = col-tof-data, READONLY = 0 )
       Columns' Setting  = ( PIC = "99/99/9999", TYPE = "X(5)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
       Columns' Setting  = ( DISP = 12, SEPA = 5, DIVI = 1 )
-      Columns' Setting  = ( X = 7, Name = col-rof-cod-articolo, READONLY = 0 )
+      Columns' Setting  = ( X = 6, Name = col-rof-cod-articolo, READONLY = 0 )
       Columns' Setting  = ( PIC = "z(6)", TYPE = "X(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
       Columns' Setting  = ( DISP = 8, SEPA = 5, DIVI = 1 )
-      Columns' Setting  = ( X = 8, Name = col-art-descrizione, READONLY = 0 )
+      Columns' Setting  = ( X = 7, Name = col-art-descrizione, READONLY = 0 )
       Columns' Setting  = ( PIC = "x(100)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
       Columns' Setting  = ( DISP = 52, SEPA = 5, DIVI = 1 )
-      Columns' Setting  = ( X = 9, Name = col-rof-qta, READONLY = 0 )
+      Columns' Setting  = ( X = 8, Name = col-rof-qta, READONLY = 0 )
       Columns' Setting  = ( PIC = "---.---.--9", TYPE = "9(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
       Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
-      Columns' Setting  = ( X = 10, Name = col-rof-qta-evasa, READONLY = 0 )
+      Columns' Setting  = ( X = 9, Name = col-rof-qta-evasa, READONLY = 0 )
       Columns' Setting  = ( PIC = "---.---.--9", TYPE = "9(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
       Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
-      Columns' Setting  = ( X = 11, Name = col-qta-soll, READONLY = 0 )
+      Columns' Setting  = ( X = 10, Name = col-qta-soll, READONLY = 0 )
       Columns' Setting  = ( Font = Verdana/8/B/C0/@Occidentale, Font Variable = Verdana8B-Occidentale )
       Columns' Setting  = ( PIC = "---.---.--9", TYPE = "9(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
       Columns' Setting  = ( DISP = 13, SEPA = 5, DIVI = 1 )
-      Columns' Setting  = ( X = 12, Name = col-data-soll, READONLY = 0 )
+      Columns' Setting  = ( X = 11, Name = col-data-soll, READONLY = 0 )
       Columns' Setting  = ( Font = Verdana/8/B/C0/@Occidentale, Font Variable = Verdana8B-Occidentale )
       Columns' Setting  = ( PIC = "99/99/9999", TYPE = "9(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
       Columns' Setting  = ( DISP = 13, SEPA = 5, DIVI = 1 )
@@ -1475,19 +1470,19 @@ Begin Screen Form1
       Lines Unit        = Default
       No Tab            = FALSE
       Num Col Headings  = 1
-      Num Columns       = 12
+      Num Columns       = 11
       Num Rows          = 0
       Occurs            = 0
       Paged             = FALSE
       Record Data       = rec-grid
       Row Dividers      = 1
       Row Headings      = FALSE
-      Size              = 223,86
+      Size              = 189,71
       Size Unit         = Default
       Tab Order         = 3
       Tiled Headings    = TRUE
       Use Tab           = FALSE
-      Virtual Width     = 221
+      Virtual Width     = 187
       Visible           = NONE
       Vpadding          = 50
       Vscroll           = TRUE
@@ -1968,7 +1963,7 @@ BEGIN-TEXT
       **********     else
       *****        move 481 to colore
       **********     end-if.
-           modify form1-gd-1, start-x 1,    x 12,
+           modify form1-gd-1, start-x 1,    x 11,
                               start-y riga, y riga,
                          region-color 481.
 END-TEXT
@@ -2159,17 +2154,16 @@ BEGIN-TEXT
                     move tos-qta-soll     to col-qta-soll
                                  
                     modify form1-gd-1(riga, 1),  cell-data col-mag-codice
-                    modify form1-gd-1(riga, 2),  cell-data col-mag-descrizione
-                    modify form1-gd-1(riga, 3),  cell-data col-cli-codice   
-                    modify form1-gd-1(riga, 4),  cell-data col-cli-ragsoc   
-                    modify form1-gd-1(riga, 5),  cell-data col-tof-numero   
-                    modify form1-gd-1(riga, 6),  cell-data col-tof-data     
-                    modify form1-gd-1(riga, 7),  cell-data col-rof-cod-articolo
-                    modify form1-gd-1(riga, 8),  cell-data col-art-descrizione
-                    modify form1-gd-1(riga, 9),  cell-data col-rof-qta      
-                    modify form1-gd-1(riga, 10), cell-data col-rof-qta-eva  
-                    modify form1-gd-1(riga, 11), cell-data col-qta-soll 
-                    modify form1-gd-1(riga, 12), cell-data col-data-soll
+                    modify form1-gd-1(riga, 2),  cell-data col-cli-codice   
+                    modify form1-gd-1(riga, 3),  cell-data col-cli-ragsoc   
+                    modify form1-gd-1(riga, 4),  cell-data col-tof-numero   
+                    modify form1-gd-1(riga, 5),  cell-data col-tof-data     
+                    modify form1-gd-1(riga, 6),  cell-data col-rof-cod-articolo
+                    modify form1-gd-1(riga, 7),  cell-data col-art-descrizione
+                    modify form1-gd-1(riga, 8),  cell-data col-rof-qta      
+                    modify form1-gd-1(riga, 9), cell-data col-rof-qta-eva  
+                    modify form1-gd-1(riga, 10), cell-data col-qta-soll 
+                    modify form1-gd-1(riga, 11), cell-data col-data-soll
 
                     move tos-chiave to hid-tos-chiave
                     modify form1-gd-1(riga, 1), hidden-data gruppo-hidden    
@@ -2559,9 +2553,9 @@ BEGIN-TEXT
               move old-qta  to col-qta-soll
               move old-data to col-data-soll
            else             
-              inquire form1-gd-1(event-data-2, 11), cell-data in col-qta-soll
+              inquire form1-gd-1(event-data-2, 10), cell-data in col-qta-soll
               move col-qta-soll to sof-qta
-              inquire form1-gd-1(event-data-2, 12), cell-data in col-data-soll
+              inquire form1-gd-1(event-data-2, 11), cell-data in col-data-soll
               move col-data-soll to como-data
               perform DATE-TO-FILE
               move como-data to sof-data-arr
@@ -2581,9 +2575,9 @@ BEGIN-TEXT
            accept sof-data-creazione from century-date.
            accept sof-ora-creazione  from time.
            move user-codi to sof-utente-creazione.
-           inquire form1-gd-1(event-data-2, 11), cell-data in col-qta-soll
+           inquire form1-gd-1(event-data-2, 10), cell-data in col-qta-soll
            move col-qta-soll to sof-qta
-           inquire form1-gd-1(event-data-2, 12), cell-data in col-data-soll
+           inquire form1-gd-1(event-data-2, 11), cell-data in col-data-soll
            move col-data-soll to como-data
            perform DATE-TO-FILE
            move como-data to sof-data-arr
@@ -2639,14 +2633,13 @@ BEGIN-TEXT
            when  6
            when  7
            when  8
-           when  9
-           when 10 
+           when  9  
                 set event-action to event-action-fail
-           when 11
+           when 10
                 inquire form1-gd-1(event-data-2, event-data-1), 
                         cell-data in col-qta-soll
                 move col-qta-soll to old-qta
-           when 12
+           when 11
                 inquire form1-gd-1(event-data-2, event-data-1), 
                         cell-data in col-data-soll
                 move col-data-soll to como-data
@@ -2762,8 +2755,8 @@ BEGIN-TEXT
            read tmp-ordforn-sol no lock.
 
            evaluate event-data-1
-           when 11                                                             
-                inquire form1-gd-1(event-data-2, 11), cell-data in col-qta-soll 
+           when 10
+                inquire form1-gd-1(event-data-2, 10), cell-data in col-qta-soll 
                 move col-qta-soll to sof-qta
                 if sof-qta not = old-qta
                    evaluate true
@@ -2779,13 +2772,13 @@ BEGIN-TEXT
                         perform REWRITE-SOLLECITI
                    end-evaluate 
                 end-if
-                modify  form1-gd-1(event-data-2, 11), cell-data col-qta-soll   
-           when 12 
-                inquire form1-gd-1(event-data-2, 12), cell-data in col-data-soll
+                modify  form1-gd-1(event-data-2, 10), cell-data col-qta-soll   
+           when 11 
+                inquire form1-gd-1(event-data-2, 11), cell-data in col-data-soll
                 move col-data-soll to como-data
                 perform DATE-FORMAT
                 move como-data to col-data-soll
-                modify form1-gd-1(event-data-2, 12), cell-data col-data-soll
+                modify form1-gd-1(event-data-2, 11), cell-data col-data-soll
                 perform DATE-TO-FILE
                 if como-data not = old-data
                    evaluate true
@@ -2803,7 +2796,7 @@ BEGIN-TEXT
                 end-if
                 perform DATE-TO-SCREEN
                 move como-data to col-data-soll
-                modify form1-gd-1(event-data-2, 12), cell-data col-data-soll
+                modify form1-gd-1(event-data-2, 11), cell-data col-data-soll
            end-evaluate.
            move 78-ID-form1-gd-1 to control-id
            move 4 to accept-control.
