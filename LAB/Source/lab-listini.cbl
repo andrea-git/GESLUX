@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-listini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 11 dicembre 2021 12:50:24.
+       DATE-WRITTEN.        martedì 14 dicembre 2021 11:17:29.
        REMARKS.
       *{TOTEM}END
 
@@ -5288,6 +5288,9 @@
            move como-data to ef-data-al-buf.
            display ef-data-al.
 
+           move 1 to chk-escludi-buf chk-escludi-sp-buf.
+           display chk-escludi chk-escludi-sp.
+
            .
       * <TOTEM:END>
            PERFORM UNTIL Exit-Pushed
@@ -5341,6 +5344,11 @@
            DISPLAY Form1-Tb-1a
            DISPLAY Form1 UPON form1-Handle
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterDisplay>
+           SET LK-BL-SCRITTURA     TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           MOVE FORM1-HANDLE       TO LK-HND-WIN.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           CANCEL "BLOCKPGM".
            SET LK-BL-SCRITTURA     TO TRUE.
            MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
            MOVE FORM1-HANDLE       TO LK-HND-WIN.
@@ -5573,6 +5581,11 @@
            MOVE FORM1-HANDLE       TO LK-HND-WIN.
            CALL "BLOCKPGM"  USING LK-BLOCKPGM.
            CANCEL "BLOCKPGM".
+           SET LK-BL-SCRITTURA     TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           MOVE FORM1-HANDLE       TO LK-HND-WIN.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           CANCEL "BLOCKPGM".
 
            .
       * <TOTEM:END>
@@ -5799,6 +5812,11 @@
            MOVE FORM1-HANDLE       TO LK-HND-WIN.
            CALL "BLOCKPGM"  USING LK-BLOCKPGM.
            CANCEL "BLOCKPGM".
+           SET LK-BL-SCRITTURA     TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           MOVE FORM1-HANDLE       TO LK-HND-WIN.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           CANCEL "BLOCKPGM".
 
            .
       * <TOTEM:END>
@@ -5989,6 +6007,11 @@
            DISPLAY Form1-Tb-1aa
            DISPLAY Form1a UPON form1a-Handle
       * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, AfterDisplay>
+           SET LK-BL-SCRITTURA     TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           MOVE FORM1-HANDLE       TO LK-HND-WIN.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           CANCEL "BLOCKPGM".
            SET LK-BL-SCRITTURA     TO TRUE.
            MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
            MOVE FORM1-HANDLE       TO LK-HND-WIN.

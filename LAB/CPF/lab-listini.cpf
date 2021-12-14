@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E5CD173126-26-269215700
+PROGRAM_UNIQUE_CODE=TOTEM-7E5CE101648-379-120177641
 
 {{@DESCRIPTION:
 
@@ -5641,6 +5641,9 @@ BEGIN-TEXT
            perform DATE-TO-SCREEN.
            move como-data to ef-data-al-buf.
            display ef-data-al.
+
+           move 1 to chk-escludi-buf chk-escludi-sp-buf.
+           display chk-escludi chk-escludi-sp.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -5756,6 +5759,7 @@ BEGIN-DATA
    ENTRYPOINT        = AfterDisplay
 BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen4-blockpgm-1 **>>   
+      *<<** Customized_Default, SP-G, Screen4a-blockpgm-1 **>>
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -5767,6 +5771,7 @@ BEGIN-DATA
    ENTRYPOINT        = AfterDisplay
 BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen4-blockpgm-1 **>>
+      *<<** Customized_Default, SP-G, Screen4a-blockpgm-1 **>>
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -5778,6 +5783,7 @@ BEGIN-DATA
    ENTRYPOINT        = AfterDisplay
 BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen4-blockpgm-1 **>>  
+      *<<** Customized_Default, SP-G, Screen4a-blockpgm-1 **>>
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -5837,6 +5843,7 @@ BEGIN-DATA
    ENTRYPOINT        = AfterDisplay
 BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen4-blockpgm-1 **>>  
+      *<<** Customized_Default, SP-G, Screen4a-blockpgm-1 **>>
 END-TEXT
 END-DATA
 BEGIN-DATA
