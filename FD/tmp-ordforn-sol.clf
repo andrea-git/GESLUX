@@ -2,11 +2,10 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
-Adesk-andre=169.254.54.220
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E5CE11520-858-911319159
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E5CE222451-226-2460617015
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -100,9 +99,9 @@ m_bFixed=1
 
 @}}
 [FDITEM9_]
-m_strName=tos-causale
-m_strRawPic=x(4)
-m_strPic=x(4)
+m_strName=tos-cod-forn
+m_strRawPic=9(5)
+m_strPic=9(5)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -110,9 +109,9 @@ m_bFixed=1
 
 @}}
 [FDITEM10_]
-m_strName=tos-cod-forn
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=tos-frn-ragsoc
+m_strRawPic=x(100)
+m_strPic=x(100)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -141,9 +140,9 @@ m_bFixed=1
 
 @}}
 [FDITEM13_]
-m_strName=tos-qta-ord
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=tos-art-descrizione
+m_strRawPic=x(100)
+m_strPic=x(100)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -151,7 +150,7 @@ m_bFixed=1
 
 @}}
 [FDITEM14_]
-m_strName=tos-qta-ev
+m_strName=tos-qta-ord
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=10
@@ -161,7 +160,7 @@ m_bFixed=1
 
 @}}
 [FDITEM15_]
-m_strName=tos-qta-soll
+m_strName=tos-qta-ev
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=10
@@ -171,9 +170,9 @@ m_bFixed=1
 
 @}}
 [FDITEM16_]
-m_strName=tos-data-from
-m_strRawPic=9
-m_strPic=9
+m_strName=tos-qta-soll
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -181,30 +180,40 @@ m_bFixed=1
 
 @}}
 [FDITEM17_]
+m_strName=tos-data-from
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM17_
+
+@}}
+[FDITEM18_]
 m_strName=tos-data-from-tordforn
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=0
-{{@DataItem_m_strDescriptionFDITEM17_
+{{@DataItem_m_strDescriptionFDITEM18_
 
 @}}
-[FDITEM18_]
+[FDITEM19_]
 m_strName=tos-data-from-soll-t
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
-{{@DataItem_m_strDescriptionFDITEM18_
+{{@DataItem_m_strDescriptionFDITEM19_
 
 @}}
-[FDITEM19_]
+[FDITEM20_]
 m_strName=tos-data-from-soll-r
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=2
-{{@DataItem_m_strDescriptionFDITEM19_
+{{@DataItem_m_strDescriptionFDITEM20_
 
 @}}
 [CStoAcucobolSL_]
@@ -226,3 +235,48 @@ m_bUnique=1
 @}}
 [SLKEYATOM0_]
 m_strName=tos-chiave
+[SLINDEX0_]
+m_strName=k-mag
+{{@Key_m_strDescriptionSLINDEX0_
+
+@}}
+[SLKEYATOM0_SLINDEX0_]
+m_strName=tos-mag-codice
+[SLKEYATOM1_SLINDEX0_]
+m_strName=tos-tof-chiave
+[SLINDEX1_]
+m_strName=k-frn-ragsoc
+{{@Key_m_strDescriptionSLINDEX1_
+
+@}}
+[SLKEYATOM0_SLINDEX1_]
+m_strName=tos-frn-ragsoc
+[SLKEYATOM1_SLINDEX1_]
+m_strName=tos-tof-chiave
+[SLINDEX2_]
+m_strName=k-data
+{{@Key_m_strDescriptionSLINDEX2_
+
+@}}
+[SLKEYATOM0_SLINDEX2_]
+m_strName=tos-data-ordine
+[SLKEYATOM1_SLINDEX2_]
+m_strName=tos-tof-chiave
+[SLINDEX3_]
+m_strName=k-art
+{{@Key_m_strDescriptionSLINDEX3_
+
+@}}
+[SLKEYATOM0_SLINDEX3_]
+m_strName=tos-cod-articolo
+[SLKEYATOM1_SLINDEX3_]
+m_strName=tos-tof-chiave
+[SLINDEX4_]
+m_strName=k-art-des
+{{@Key_m_strDescriptionSLINDEX4_
+
+@}}
+[SLKEYATOM0_SLINDEX4_]
+m_strName=tos-art-descrizione
+[SLKEYATOM1_SLINDEX4_]
+m_strName=tos-tof-chiave

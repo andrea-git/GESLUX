@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordforn-sol.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 14 dicembre 2021 11:59:35.
+       DATE-WRITTEN.        mercoledì 15 dicembre 2021 00:15:59.
        REMARKS.
       *{TOTEM}END
 
@@ -88,7 +88,11 @@
        77 old-data-ini     PIC  9(8).
        77 old-data         PIC  9(8).
        77 chiave           PIC  9(5).
+       77 nstart           PIC  9.
        77 como-x           PIC  x.
+       77 tipoRead         PIC  xx.
+           88 sortAZ VALUE IS "AZ"    WHEN SET TO FALSE  0. 
+           88 sortZA VALUE IS "ZA"    WHEN SET TO FALSE  0. 
        77 FILLER           PIC  9.
            88 PrenQta VALUE IS 1    WHEN SET TO FALSE  0. 
        77 FILLER           PIC  9.
@@ -108,7 +112,6 @@
                   USAGE IS HANDLE OF FONT SMALL-FONT.
        01 rec-grid.
            05 col-mag-codice   PIC  x(3).
-           05 col-mag-descrizione          PIC  X(50).
            05 col-cli-codice   PIC  9(5).
            05 col-cli-ragsoc   PIC  x(100).
            05 col-tof-numero   PIC  z(6).
@@ -185,7 +188,7 @@
        77 TMP-DataSet1-tordforn-BUF     PIC X(556).
        77 TMP-DataSet1-sordforn-BUF     PIC X(1139).
        77 TMP-DataSet1-tcaumag-BUF     PIC X(254).
-       77 TMP-DataSet1-tmp-ordforn-sol-BUF     PIC X(76).
+       77 TMP-DataSet1-tmp-ordforn-sol-BUF     PIC X(272).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -251,6 +254,11 @@
        77 tordforn-tof-k-data-SPLITBUF  PIC X(21).
        77 tordforn-tof-k-consegna-SPLITBUF  PIC X(21).
        77 tcaumag-k-mag-SPLITBUF  PIC X(5).
+       77 tmp-ordforn-sol-k-mag-SPLITBUF  PIC X(21).
+       77 tmp-ordforn-sol-k-frn-ragsoc-SPLITBUF  PIC X(118).
+       77 tmp-ordforn-sol-k-data-SPLITBUF  PIC X(26).
+       77 tmp-ordforn-sol-k-art-SPLITBUF  PIC X(24).
+       77 tmp-ordforn-sol-k-art-des-SPLITBUF  PIC X(118).
 
 
        77  counter                 pic 9(10).
@@ -282,7 +290,7 @@
        05
            Form1-Fr-1, 
            Frame, 
-           COL 82,14, 
+           COL 86,14, 
            LINE 1,69,
            LINES 3,38 ,
            SIZE 30,57 ,
@@ -295,7 +303,7 @@
        05
            ef-data, 
            Entry-Field, 
-           COL 98,57, 
+           COL 102,57, 
            LINE 2,92,
            LINES 1,54 ,
            SIZE 12,00 ,
@@ -315,7 +323,7 @@
        05
            Form1-La-1, 
            Label, 
-           COL 84,14, 
+           COL 88,14, 
            LINE 2,92,
            LINES 1,54 ,
            SIZE 13,00 ,
@@ -349,13 +357,13 @@
            COL 2,57, 
            LINE 6,77,
            LINES 37,08 ,
-           SIZE 189,71 ,
+           SIZE 197,71 ,
            ADJUSTABLE-COLUMNS,
            BOXED,
            CENTERED-HEADINGS,
            DATA-COLUMNS (1, 4, 9, 109, 115, 125, 131, 231, 242, 253, 
            264),
-           ALIGNMENT ("U", "R", "U", "R", "C", "R", "U", "R", "R", "R", 
+           ALIGNMENT ("C", "R", "U", "R", "C", "R", "U", "R", "R", "R", 
            "C"),
            SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5),
            DATA-TYPES ("9(6)", "X(10)", "9(15)", "X(50)", "X(5)", "X(10)
@@ -372,7 +380,7 @@
            WIDTH-IN-CELLS,
            RECORD-DATA rec-grid,
            TILED-HEADINGS,
-           VIRTUAL-WIDTH 187,
+           VIRTUAL-WIDTH 195,
            VPADDING 50,
            VSCROLL,
            EVENT PROCEDURE Form1-Gd-1-Event-Proc,
@@ -2201,6 +2209,46 @@
       * <TOTEM:END>
            .
 
+       tmp-ordforn-sol-k-mag-MERGE-SPLITBUF.
+           INITIALIZE tmp-ordforn-sol-k-mag-SPLITBUF
+           MOVE tos-mag-codice(1:3) TO 
+           tmp-ordforn-sol-k-mag-SPLITBUF(1:3)
+           MOVE tos-tof-chiave(1:17) TO 
+           tmp-ordforn-sol-k-mag-SPLITBUF(4:17)
+           .
+
+       tmp-ordforn-sol-k-frn-ragsoc-MERGE-SPLITBUF.
+           INITIALIZE tmp-ordforn-sol-k-frn-ragsoc-SPLITBUF
+           MOVE tos-frn-ragsoc(1:100) TO 
+           tmp-ordforn-sol-k-frn-ragsoc-SPLITBUF(1:100)
+           MOVE tos-tof-chiave(1:17) TO 
+           tmp-ordforn-sol-k-frn-ragsoc-SPLITBUF(101:17)
+           .
+
+       tmp-ordforn-sol-k-data-MERGE-SPLITBUF.
+           INITIALIZE tmp-ordforn-sol-k-data-SPLITBUF
+           MOVE tos-data-ordine(1:8) TO 
+           tmp-ordforn-sol-k-data-SPLITBUF(1:8)
+           MOVE tos-tof-chiave(1:17) TO 
+           tmp-ordforn-sol-k-data-SPLITBUF(9:17)
+           .
+
+       tmp-ordforn-sol-k-art-MERGE-SPLITBUF.
+           INITIALIZE tmp-ordforn-sol-k-art-SPLITBUF
+           MOVE tos-cod-articolo(1:6) TO 
+           tmp-ordforn-sol-k-art-SPLITBUF(1:6)
+           MOVE tos-tof-chiave(1:17) TO 
+           tmp-ordforn-sol-k-art-SPLITBUF(7:17)
+           .
+
+       tmp-ordforn-sol-k-art-des-MERGE-SPLITBUF.
+           INITIALIZE tmp-ordforn-sol-k-art-des-SPLITBUF
+           MOVE tos-art-descrizione(1:100) TO 
+           tmp-ordforn-sol-k-art-des-SPLITBUF(1:100)
+           MOVE tos-tof-chiave(1:17) TO 
+           tmp-ordforn-sol-k-art-des-SPLITBUF(101:17)
+           .
+
        DataSet1-tmp-ordforn-sol-INITSTART.
            IF DataSet1-tmp-ordforn-sol-KEY-Asc
               MOVE Low-Value TO tos-chiave
@@ -2262,6 +2310,11 @@
               READ tmp-ordforn-sol WITH NO LOCK 
               KEY tos-chiave
            END-IF
+           PERFORM tmp-ordforn-sol-k-mag-MERGE-SPLITBUF
+           PERFORM tmp-ordforn-sol-k-frn-ragsoc-MERGE-SPLITBUF
+           PERFORM tmp-ordforn-sol-k-data-MERGE-SPLITBUF
+           PERFORM tmp-ordforn-sol-k-art-MERGE-SPLITBUF
+           PERFORM tmp-ordforn-sol-k-art-des-MERGE-SPLITBUF
            MOVE STATUS-tmp-ordforn-sol TO TOTEM-ERR-STAT 
            MOVE "tmp-ordforn-sol" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -2289,6 +2342,11 @@
                  READ tmp-ordforn-sol PREVIOUS WITH NO LOCK
               END-IF
            END-IF
+           PERFORM tmp-ordforn-sol-k-mag-MERGE-SPLITBUF
+           PERFORM tmp-ordforn-sol-k-frn-ragsoc-MERGE-SPLITBUF
+           PERFORM tmp-ordforn-sol-k-data-MERGE-SPLITBUF
+           PERFORM tmp-ordforn-sol-k-art-MERGE-SPLITBUF
+           PERFORM tmp-ordforn-sol-k-art-des-MERGE-SPLITBUF
            MOVE STATUS-tmp-ordforn-sol TO TOTEM-ERR-STAT
            MOVE "tmp-ordforn-sol" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -2316,6 +2374,11 @@
                  READ tmp-ordforn-sol NEXT WITH NO LOCK
               END-IF
            END-IF
+           PERFORM tmp-ordforn-sol-k-mag-MERGE-SPLITBUF
+           PERFORM tmp-ordforn-sol-k-frn-ragsoc-MERGE-SPLITBUF
+           PERFORM tmp-ordforn-sol-k-data-MERGE-SPLITBUF
+           PERFORM tmp-ordforn-sol-k-art-MERGE-SPLITBUF
+           PERFORM tmp-ordforn-sol-k-art-des-MERGE-SPLITBUF
            MOVE STATUS-tmp-ordforn-sol TO TOTEM-ERR-STAT
            MOVE "tmp-ordforn-sol" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -2375,25 +2438,25 @@
        form1-gd-1-Content.
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 1, Y = 1,
-                CELL-DATA = "Mag.",
+                CELL-DATA = "*Mag.",
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 2, Y = 1,
                 CELL-DATA = "Fornitore",
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 3, Y = 1,
-                CELL-DATA = "Ragione sociale",
+                CELL-DATA = "*Ragione sociale",
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 4, Y = 1,
-                CELL-DATA = "Numero",
+                CELL-DATA = "*Numero",
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 5, Y = 1,
-                CELL-DATA = "Data",
+                CELL-DATA = "*Data",
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 6, Y = 1,
-                CELL-DATA = "Art.",
+                CELL-DATA = "*Art.",
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 7, Y = 1,
-                CELL-DATA = "Descrizione",
+                CELL-DATA = "*Descrizione",
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 8, Y = 1,
                 CELL-DATA = "Qta ord",
@@ -2512,7 +2575,7 @@
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
               LINES 44,62,
-              SIZE 192,86,
+              SIZE 201,00,
               COLOR 65793,
               CONTROL FONT Verdana8-Occidentale,
               LINK TO THREAD,
@@ -2534,8 +2597,8 @@
       * Status-bar
            DISPLAY Form1 UPON Form1-Handle
       * DISPLAY-COLUMNS settings
-              MODIFY form1-gd-1, DISPLAY-COLUMNS (1, 7, 17, 62, 70, 82, 
-           90, 142, 152, 162, 175)
+              MODIFY form1-gd-1, DISPLAY-COLUMNS (1, 11, 21, 66, 78, 
+           90, 98, 150, 160, 170, 183)
            .
 
        Form1-PROC.
@@ -2548,6 +2611,8 @@
            move como-data to ef-data-buf.
            display ef-data.
 
+           move 3 to nstart.
+           set sortAZ to true.
            perform FORM1-GD-1-CONTENT.
                                           
            perform SCR-ELAB-OPEN-ROUTINE.
@@ -3211,12 +3276,6 @@
 
        scr-elab-PROC.
       * <TOTEM:EPT. FORM:scr-elab, FORM:scr-elab, BeforeAccept>
-           move 0 to counter counter2.
-           modify form1-gd-1, mass-update = 1.
-                     
-           modify form1-gd-1, reset-grid = 1.
-           perform FORM1-GD-1-CONTENT.
-
            move ef-data-buf to como-data.
            perform DATE-TO-FILE.
            move low-value to tof-chiave.
@@ -3553,12 +3612,30 @@
                     move rof-chiave       to tos-tof-chiave
                     move mag-codice       to tos-mag-codice
                     move tof-cod-forn     to tos-cod-forn
-                    move tof-causale      to tos-causale
+                    move tof-causale      to tca-codice
+                    read tcaumag no lock
+                    move tca-cod-magaz to tos-mag-codice
+
                     move tof-data-ordine  to tos-data-ordine
                     move rof-cod-articolo to tos-cod-articolo
                     move rof-qta-ord      to tos-qta-ord 
-                    move rof-qta-evasa    to tos-qta-ev
-                    
+                    move rof-qta-evasa    to tos-qta-ev 
+
+                    move tos-cod-articolo to art-codice
+                    read articoli no lock      
+                    move art-descrizione  to tos-art-descrizione
+
+                    move tos-cod-forn to cli-codice
+                    set cli-tipo-F to true
+                    read clienti no lock  
+                    initialize tos-frn-ragsoc
+                    inspect cli-ragsoc-1 replacing trailing spaces by 
+           low-value
+                    string  cli-ragsoc-1 delimited low-value
+                            " "          delimited size
+                            cli-ragsoc-1 delimited size
+                       into tos-frn-ragsoc
+                    end-string
                     write tos-rec
                  end-perform
            end-start.
@@ -3567,201 +3644,211 @@
        CARICA-GRIGLIA.
            modify form1-gd-1, mass-update = 1, reset-grid = 1.
            perform FORM1-GD-1-CONTENT.
+           evaluate nstart
+           when 1
+                if sortAZ
+                   modify form1-gd-1(1, 4), cell-data = "Numero >>"
+                else
+                   modify form1-gd-1(1, 4), cell-data = "Numero <<"
+                end-if                                             
+                modify form1-gd-1(1, 4), cell-font = 
+           Verdana8B-Occidentale,
+                                         cell-color 5
+           when 2     
+                if sortAZ
+                   modify form1-gd-1(1, 1), cell-data = "Mag. >>"
+                else
+                   modify form1-gd-1(1, 1), cell-data = "Mag. <<"
+                end-if
+                modify form1-gd-1(1, 1), cell-font = 
+           Verdana8B-Occidentale,
+                                         cell-color 5
+           when 3
+                if sortAZ
+                   modify form1-gd-1(1, 3), cell-data = "Ragione sociale
+      -    " >>"
+                else                    
+                   modify form1-gd-1(1, 3), cell-data = "Ragione sociale
+      -    " <<"
+                end-if                
+                modify form1-gd-1(1, 3), cell-font = 
+           Verdana8B-Occidentale,
+                                         cell-color 5
+           when 4
+                if sortAZ
+                   modify form1-gd-1(1, 5), cell-data = "Data >>"
+                else
+                   modify form1-gd-1(1, 5), cell-data = "Data <<"
+                end-if                
+                modify form1-gd-1(1, 5), cell-font = 
+           Verdana8B-Occidentale,
+                                         cell-color 5
+           when 5
+                if sortAZ
+                   modify form1-gd-1(1, 6), cell-data = "Art. >>"
+                else
+                   modify form1-gd-1(1, 6), cell-data = "Art. <<"
+                end-if               
+                modify form1-gd-1(1, 6), cell-font = 
+           Verdana8B-Occidentale,
+                                         cell-color 5
+           when 6
+                if sortAZ
+                   modify form1-gd-1(1, 7), cell-data = "Descrizione >>"
+                else
+                   modify form1-gd-1(1, 7), cell-data = "Descrizione <<"
+                end-if               
+                modify form1-gd-1(1, 7), cell-font = 
+           Verdana8B-Occidentale,
+                                         cell-color 5
+           end-evaluate.
+           
+           move 0 to riga.
 
-           move 1 to riga.
+           if sortAZ
+              move low-value  to tos-rec
+           else
+              move high-value to tos-rec
+           end-if.
 
-           move high-value to tos-rec.
-           start tmp-ordforn-sol key <= tos-chiave
-                 invalid continue
-             not invalid
-                 perform until 1 = 2
+           evaluate nstart
+           when 1
+                if sortAZ
+                   start tmp-ordforn-sol key >= tos-chiave
+                         invalid continue
+                     not invalid move 1 to riga
+                   end-start
+                else        
+                   start tmp-ordforn-sol key <= tos-chiave
+                         invalid continue
+                     not invalid move 1 to riga
+                   end-start
+                end-if
+           when 2
+                if sortAZ
+                   start tmp-ordforn-sol key >= k-mag
+                         invalid continue      
+                     not invalid move 1 to riga
+                   end-start
+                else        
+                   start tmp-ordforn-sol key <= k-mag
+                         invalid continue      
+                     not invalid move 1 to riga
+                   end-start
+                end-if
+           when 3
+                if sortAZ
+                   start tmp-ordforn-sol key >= k-frn-ragsoc
+                         invalid continue      
+                     not invalid move 1 to riga
+                   end-start
+                else
+                   start tmp-ordforn-sol key <= k-frn-ragsoc
+                         invalid continue      
+                     not invalid move 1 to riga
+                   end-start
+                end-if
+           when 4
+                if sortAZ
+                   start tmp-ordforn-sol key >= k-data
+                         invalid continue      
+                     not invalid move 1 to riga
+                   end-start
+                else
+                   start tmp-ordforn-sol key <= k-data
+                         invalid continue      
+                     not invalid move 1 to riga
+                   end-start
+                end-if
+           when 5
+                if sortAZ
+                   start tmp-ordforn-sol key >= k-art
+                         invalid continue      
+                     not invalid move 1 to riga
+                   end-start
+                else        
+                   start tmp-ordforn-sol key <= k-art
+                         invalid continue      
+                     not invalid move 1 to riga
+                   end-start
+                end-if
+           when 6
+                if sortAZ
+                   start tmp-ordforn-sol key >= k-art-des
+                         invalid continue      
+                     not invalid move 1 to riga
+                   end-start
+                else
+                   start tmp-ordforn-sol key <= k-art-des
+                         invalid continue      
+                     not invalid move 1 to riga
+                   end-start
+                end-if
+           end-evaluate.
+                
+           if riga = 1
+              perform until 1 = 2
+                 if sortAZ
+                    read tmp-ordforn-sol next at end exit perform 
+           end-read               
+                 else
                     read tmp-ordforn-sol previous at end exit perform 
            end-read               
-                    move tos-causale to tca-codice
-                    read tcaumag no lock
-                    move tca-cod-magaz to mag-codice
-                    read tmagaz no lock
+                 end-if
 
-                    move tos-cod-forn to cli-codice
-                    set cli-tipo-F to true
-                    read clienti no lock      
+                 add 1 to riga
+                 move tos-mag-codice   to col-mag-codice
+                 move tos-cod-forn     to col-cli-codice
+                 move tos-frn-ragsoc   to col-cli-ragsoc
+                 move tos-tof-numero   to col-tof-numero 
+                 move tos-data-ordine  to como-data
+                 perform DATE-TO-SCREEN
+                 move como-data        to col-tof-data
+                 move tos-cod-articolo to col-rof-cod-articolo
+                 move tos-art-descrizione  to col-art-descrizione
+                 move tos-qta-ord      to col-rof-qta
+                 move tos-qta-ev       to col-rof-qta-eva
 
-                    add 1 to riga
-                    move mag-codice       to col-mag-codice
-                    move mag-descrizione  to col-mag-descrizione
-                    move tos-cod-forn     to col-cli-codice
-                    move cli-ragsoc-1     to col-cli-ragsoc
-                    move tos-tof-numero   to col-tof-numero
-                    move tos-data-ordine  to como-data
-                    perform DATE-TO-SCREEN
-                    move como-data        to col-tof-data
-                    move tos-cod-articolo to col-rof-cod-articolo 
-           art-codice
-                    read articoli no lock
-                    move art-descrizione  to col-art-descrizione
-                    move tos-qta-ord      to col-rof-qta
-                    move tos-qta-ev       to col-rof-qta-eva
+                 move tos-data         to como-data
+                 perform DATE-TO-SCREEN
+                 move como-data        to col-data-soll
 
-                    move tos-data         to como-data
-                    perform DATE-TO-SCREEN
-                    move como-data        to col-data-soll
-
-                    move tos-qta-soll     to col-qta-soll
-                                 
-                    modify form1-gd-1(riga, 1),  cell-data 
-           col-mag-codice
-                    modify form1-gd-1(riga, 2),  cell-data 
-           col-cli-codice   
-                    modify form1-gd-1(riga, 3),  cell-data 
-           col-cli-ragsoc   
-                    modify form1-gd-1(riga, 4),  cell-data 
-           col-tof-numero   
-                    modify form1-gd-1(riga, 5),  cell-data col-tof-data 
-               
-                    modify form1-gd-1(riga, 6),  cell-data 
+                 move tos-qta-soll     to col-qta-soll
+                              
+                 modify form1-gd-1(riga, 1),  cell-data col-mag-codice
+                 modify form1-gd-1(riga, 2),  cell-data col-cli-codice  
+            
+                 modify form1-gd-1(riga, 3),  cell-data col-cli-ragsoc  
+            
+                 modify form1-gd-1(riga, 4),  cell-data col-tof-numero  
+            
+                 modify form1-gd-1(riga, 5),  cell-data col-tof-data    
+            
+                 modify form1-gd-1(riga, 6),  cell-data 
            col-rof-cod-articolo
-                    modify form1-gd-1(riga, 7),  cell-data 
+                 modify form1-gd-1(riga, 7),  cell-data 
            col-art-descrizione
-                    modify form1-gd-1(riga, 8),  cell-data col-rof-qta  
-               
-                    modify form1-gd-1(riga, 9), cell-data 
-           col-rof-qta-eva  
-                    modify form1-gd-1(riga, 10), cell-data col-qta-soll 
-                    modify form1-gd-1(riga, 11), cell-data col-data-soll
+                 modify form1-gd-1(riga, 8),  cell-data col-rof-qta     
+            
+                 modify form1-gd-1(riga, 9), cell-data col-rof-qta-eva  
+                 modify form1-gd-1(riga, 10), cell-data col-qta-soll 
+                 modify form1-gd-1(riga, 11), cell-data col-data-soll
 
-                    move tos-chiave to hid-tos-chiave
-                    modify form1-gd-1(riga, 1), hidden-data 
-           gruppo-hidden    
+                 move tos-chiave to hid-tos-chiave
+                 modify form1-gd-1(riga, 1), hidden-data gruppo-hidden  
+             
 
-                    if colore = 257
-                       move 513 to colore
-                    else
-                       move 257 to colore
-                    end-if
-                    modify form1-gd-1(riga), row-color colore
+                 if colore = 257
+                    move 513 to colore
+                 else
+                    move 257 to colore
+                 end-if
+                 modify form1-gd-1(riga), row-color colore
 
-                 end-perform
-           end-start.
+              end-perform
+           end-if.
 
-
-
-           modify form1-gd-1, mass-update = 0.
-
-      *****     close promoeva.
-      *****     move user-codi       to link-tprev-user.
-      *****     move scr-elab-handle to link-tprev-handle.
-      *****     call   "tprev-p"  using tprev-linkage.
-      *****     cancel "tprev-p".
-      *****     move 27 to key-status.
-      *****     open input promoeva.
-      *****     
-      *****     move 2 to chiave.
-      *****     perform LOAD-RECORD.
-      *****
-      *****     move 2  to event-data-2.
-      *****     perform SPOSTAMENTO.
-      *****
-      *****     perform INIT.
-      *****     set CambioQta to false.
-
-      *****     move low-value to pev-rec.
-      *****     start promoeva key >= pev-chiave
-      *****           invalid  perform SCR-ELAB-OPEN-ROUTINE
-      *****     end-start.
-      *****
-      *****     move 0   to save-articolo.
-      *****     move 257 to colore.
-      *****     modify form1-gd-1, mass-update 1, reset-grid 1.
-      *****     perform FORM1-GD-1-CONTENT.
-      *****     move low-value to pev-rec.
-      *****     evaluate chiave
-      *****     when 1
-      *****          start promoeva key >= pev-chiave
-      *****                invalid  continue
-      *****            not invalid  perform RIEMPI-GRID
-      *****          end-start
-      *****     when 2
-      *****          start promoeva key >= pev-k-descr-art
-      *****                invalid  continue
-      *****            not invalid  perform RIEMPI-GRID
-      *****          end-start
-      *****     when 3
-      *****          start promoeva key >= pev-k-gdo
-      *****                invalid  continue
-      *****            not invalid  perform RIEMPI-GRID
-      *****          end-start
-      *****     when 4
-      *****          start promoeva key >= pev-k-promo
-      *****                invalid  continue
-      *****            not invalid  perform RIEMPI-GRID
-      *****          end-start
-      *****     when 5
-      *****          start promoeva key >= pev-k-descr-promo
-      *****                invalid  continue
-      *****            not invalid  perform RIEMPI-GRID
-      *****          end-start
-      *****     end-evaluate.
-      *****     
-      *****     modify form1-gd-1, mass-update 0.
-      *****
-      ********---
-      ***** RIEMPI-GRID.
-      *****     perform varying riga from 2 by 1
-      *****             until 1 = 2
-      *****        read promoeva next at end exit perform end-read
-      *****        if pev-articolo not = save-articolo
-      *****           move pev-articolo to save-articolo
-      *****           if colore = 257
-      *****              move 513 to colore
-      *****           else
-      *****              move 257 to colore
-      *****           end-if
-      *****        end-if   
-      *****        move pev-articolo to art-codice col-art-codice
-      *****        read articoli no lock invalid continue end-read
-      ******        move art-descrizione to col-art-descrizione
-      *****        move pev-descr-art     to col-art-descrizione
-      *****
-      *****        move pev-data-ins(1:4) to col-pev-data-ins(7:4)
-      *****        move "/"               to col-pev-data-ins(6:1)
-      *****        move pev-data-ins(5:2) to col-pev-data-ins(4:2)
-      *****        move "/"               to col-pev-data-ins(3:1)
-      *****        move pev-data-ins(7:2) to col-pev-data-ins(1:2)
-      *****
-      *****        move pev-tpr-codice         to col-tpr-codice tpr-codice
-      *****        read tpromo no lock invalid continue end-read
-      *****        move pev-tpr-descrizione    to col-tpr-descrizione
-      *****        move pev-gdo                to col-tpr-gdo
-      *****
-      *****        move tpr-ini-volantino(1:4) to col-tpr-ini-vol(7:4)
-      *****        move "/"                    to col-tpr-ini-vol(6:1)
-      *****        move tpr-ini-volantino(5:2) to col-tpr-ini-vol(4:2)
-      *****        move "/"                    to col-tpr-ini-vol(3:1)
-      *****        move tpr-ini-volantino(7:2) to col-tpr-ini-vol(1:2)
-      *****
-      *****        move tpr-fine-volantino(1:4) to col-tpr-fine-vol(7:4)
-      *****        move "/"                     to col-tpr-fine-vol(6:1)
-      *****        move tpr-fine-volantino(5:2) to col-tpr-fine-vol(4:2)
-      *****        move "/"                     to col-tpr-fine-vol(3:1)
-      *****        move tpr-fine-volantino(7:2) to col-tpr-fine-vol(1:2)
-      *****
-      *****        move pev-rpr-qta    to col-rpr-qta
-      *****        move pev-prenotata  to col-pev-prenotata
-      *****        move pev-evasa      to col-pev-evasa
-      *****        move pev-boll       to col-pev-boll
-      *****        move pev-rimanenza  to col-pev-rimanenza
-      *****        move pev-impegnato  to col-pev-impegnato
-      *****        move pev-giac-utile to col-pev-giac-utile
-      *****        move pev-rpr-prenotazioni to col-pren
-      *****        perform METTI-RIGA  
-      *****        modify form1-gd-1(riga), row-color colore
-      *****        modify form1-gd-1(riga, 10), cell-color 432
-      *****
-      *****        if pev-rpr-qta > pev-prenotata
-      *****           modify form1-gd-1(riga, 9), cell-color = 385
-      *****        end-if
-      *****     end-perform.
-      *****     
+           modify form1-gd-1, mass-update = 0 
            .
       * <TOTEM:END>
 
@@ -4158,37 +4245,81 @@
       * <TOTEM:END>
        form1-gd-1-Ev-Msg-Heading-Dblclick.
       * <TOTEM:PARA. form1-gd-1-Ev-Msg-Heading-Dblclick>
-      *****     evaluate event-data-1
-      *****     when 1
-      *****          move 1 to chiave
-      *****          perform LOAD-RECORD
-      *****          perform COLORA-CELLE
-      *****     when 2
-      *****          move 2 to chiave
-      *****          perform LOAD-RECORD
-      *****          perform COLORA-CELLE
-      *****     when 4
-      *****          move 4 to chiave
-      *****          perform LOAD-RECORD
-      *****          perform COLORA-CELLE
-      *****     when 5
-      *****          move 5 to chiave
-      *****          perform LOAD-RECORD
-      *****          perform COLORA-CELLE
-      *****     when 6
-      *****          move 3 to chiave
-      *****          perform LOAD-RECORD
-      *****          perform COLORA-CELLE
-      *****     end-evaluate.
-      *****
-      ********---
-      ***** COLORA-CELLE.
-      *****     modify form1-gd-1(1, 1), cell-font = Verdana8-Occidentale, cell-color = 0.
-      *****     modify form1-gd-1(1, 2), cell-font = Verdana8-Occidentale, cell-color = 0.
-      *****     modify form1-gd-1(1, 6), cell-font = Verdana8-Occidentale, cell-color = 0.
-      *****
-      *****     modify form1-gd-1(1, event-data-1), 
-      *****            cell-color = 5, cell-font = Verdana8B-Occidentale 
+           evaluate event-data-1
+           when 1
+                if nstart not = 2
+                   move 2 to nstart
+                   set sortAZ to true
+                else
+                   if sortAZ
+                      set sortZA to true
+                   else
+                      set sortAZ to true
+                   end-if
+                end-if
+                perform SCR-ELAB-OPEN-ROUTINE  
+
+           when 3
+                if nstart not = 3
+                   move 3 to nstart
+                   set sortAZ to true
+                else
+                   if sortAZ
+                      set sortZA to true
+                   else
+                      set sortAZ to true
+                   end-if
+                end-if
+                perform SCR-ELAB-OPEN-ROUTINE  
+           when 4
+                if nstart not = 1
+                   move 1 to nstart
+                   set sortAZ to true
+                else
+                   if sortAZ
+                      set sortZA to true
+                   else
+                      set sortAZ to true
+                   end-if
+                end-if
+                perform SCR-ELAB-OPEN-ROUTINE
+           when 5
+                if nstart not = 4
+                   move 4 to nstart
+                   set sortAZ to true
+                else
+                   if sortAZ
+                      set sortZA to true
+                   else
+                      set sortAZ to true
+                   end-if
+                end-if
+                perform SCR-ELAB-OPEN-ROUTINE
+           when 6
+                if nstart not = 5
+                   move 5 to nstart
+                   set sortAZ to true
+                else
+                   if sortAZ
+                      set sortZA to true
+                   else
+                      set sortAZ to true
+                   end-if
+                end-if
+                perform SCR-ELAB-OPEN-ROUTINE
+           when 7
+                if nstart not = 6
+                   move 6 to nstart
+                   set sortAZ to true
+                else
+                   if sortAZ
+                      set sortZA to true
+                   else
+                      set sortAZ to true
+                   end-if
+                end-if
+                perform SCR-ELAB-OPEN-ROUTINE
+           end-evaluate 
            .
       * <TOTEM:END>
        form1-gd-1-Ev-Msg-Finish-Entry.
