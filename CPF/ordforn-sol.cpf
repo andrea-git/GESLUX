@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=PAS004P-Ev-Before-Program
 AFTER_PROGRAM=I-O-BLOCCO
-PROGRAM_UNIQUE_CODE=TOTEM-7E5CE222451-309-2825311439
+PROGRAM_UNIQUE_CODE=TOTEM-7E5CF93752-144-118722414
 
 {{@DESCRIPTION:
 
@@ -385,9 +385,9 @@ m_bFixed=1
 
 @}}
 [FDITEM29_WK]
-m_strName=como-x
-m_strRawPic=x
-m_strPic=x
+m_strName=como-numero-x
+m_strRawPic=x(8)
+m_strPic=x(8)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -395,9 +395,9 @@ m_bFixed=1
 
 @}}
 [FDITEM30_WK]
-m_strName=tipoRead
-m_strRawPic=xx
-m_strPic=xx
+m_strName=como-x
+m_strRawPic=x
+m_strPic=x
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -405,93 +405,95 @@ m_bFixed=1
 
 @}}
 [FDITEM31_WK]
+m_strName=tipoRead
+m_strRawPic=xx
+m_strPic=xx
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM31_WK
+
+@}}
+[FDITEM32_WK]
 m_strName=sortAZ
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="AZ"
 m_strFalse=0
-{{@DataItem_m_strDescriptionFDITEM31_WK
+{{@DataItem_m_strDescriptionFDITEM32_WK
 
 @}}
-[FDITEM32_WK]
+[FDITEM33_WK]
 m_strName=sortZA
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="ZA"
 m_strFalse=0
-{{@DataItem_m_strDescriptionFDITEM32_WK
+{{@DataItem_m_strDescriptionFDITEM33_WK
 
 @}}
-[FDITEM33_WK]
+[FDITEM34_WK]
 m_strName=FILLER
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM33_WK
+{{@DataItem_m_strDescriptionFDITEM34_WK
 
 @}}
-[FDITEM34_WK]
+[FDITEM35_WK]
 m_strName=PrenQta
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
 m_strFalse=0
-{{@DataItem_m_strDescriptionFDITEM34_WK
+{{@DataItem_m_strDescriptionFDITEM35_WK
 
 @}}
-[FDITEM35_WK]
+[FDITEM36_WK]
 m_strName=FILLER
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM35_WK
+{{@DataItem_m_strDescriptionFDITEM36_WK
 
 @}}
-[FDITEM36_WK]
+[FDITEM37_WK]
 m_strName=BeginEntry
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
 m_strFalse=0
-{{@DataItem_m_strDescriptionFDITEM36_WK
-
-@}}
-[FDITEM37_WK]
-m_strName=gruppo-hidden
-m_nItemLevel=1
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM37_WK
 
 @}}
 [FDITEM38_WK]
-m_strName=hid-tos-chiave
-m_nItemLevel=5
+m_strName=gruppo-hidden
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM38_WK
 
 @}}
 [FDITEM39_WK]
-m_strName=hid-tos-data
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=10
+m_strName=hid-tos-chiave
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM39_WK
 
 @}}
 [FDITEM40_WK]
-m_strName=hid-tos-tof-chiave
+m_strName=hid-tos-data
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -499,19 +501,17 @@ m_bFixed=1
 
 @}}
 [FDITEM41_WK]
-m_strName=hid-tos-tof-anno
-m_strRawPic=9(4)
-m_strPic=9(4)
-m_nItemLevel=15
+m_strName=hid-tos-tof-chiave
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM41_WK
 
 @}}
 [FDITEM42_WK]
-m_strName=hid-tos-tof-numero
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=hid-tos-tof-anno
+m_strRawPic=9(4)
+m_strPic=9(4)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -519,9 +519,9 @@ m_bFixed=1
 
 @}}
 [FDITEM43_WK]
-m_strName=hid-tos-tof-riga
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=hid-tos-tof-numero
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -529,26 +529,36 @@ m_bFixed=1
 
 @}}
 [FDITEM44_WK]
-m_strName=FILLER
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=1
+m_strName=hid-tos-tof-riga
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM44_WK
 
 @}}
 [FDITEM45_WK]
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM45_WK
+
+@}}
+[FDITEM46_WK]
 m_strName=CambioQta
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
 m_strFalse=0
-{{@DataItem_m_strDescriptionFDITEM45_WK
+{{@DataItem_m_strDescriptionFDITEM46_WK
 
 @}}
-[FDITEM46_WK]
+[FDITEM47_WK]
 m_strName=MESSAGGIO
 m_strRawPic=X(300)
 m_strPic=X(300)
@@ -556,40 +566,30 @@ m_strDefaultValue=SPACE
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM46_WK
-
-@}}
-[FDITEM47_WK]
-m_strName=Small-Font
-m_nUsage=37
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM47_WK
 
 @}}
 [FDITEM48_WK]
-m_strName=rec-grid
-m_nItemLevel=1
+m_strName=Small-Font
+m_nUsage=37
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM48_WK
 
 @}}
 [FDITEM49_WK]
-m_strName=col-mag-codice
-m_strRawPic=x(3)
-m_strPic=x(3)
-m_nItemLevel=5
+m_strName=rec-grid
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM49_WK
 
 @}}
 [FDITEM50_WK]
-m_strName=col-cli-codice
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=col-mag-codice
+m_strRawPic=x(3)
+m_strPic=x(3)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -597,9 +597,9 @@ m_bFixed=1
 
 @}}
 [FDITEM51_WK]
-m_strName=col-cli-ragsoc
-m_strRawPic=x(100)
-m_strPic=x(100)
+m_strName=col-cli-codice
+m_strRawPic=9(5)
+m_strPic=9(5)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -607,9 +607,9 @@ m_bFixed=1
 
 @}}
 [FDITEM52_WK]
-m_strName=col-tof-numero
-m_strRawPic=z(6)
-m_strPic=z(6)
+m_strName=col-cli-ragsoc
+m_strRawPic=x(100)
+m_strPic=x(100)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -617,9 +617,9 @@ m_bFixed=1
 
 @}}
 [FDITEM53_WK]
-m_strName=col-tof-data
-m_strRawPic=99/99/9999
-m_strPic=99/99/9999
+m_strName=col-tof-anno-numero
+m_strRawPic=x(15)
+m_strPic=x(15)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -627,9 +627,9 @@ m_bFixed=1
 
 @}}
 [FDITEM54_WK]
-m_strName=col-rof-cod-articolo
-m_strRawPic=z(6)
-m_strPic=z(6)
+m_strName=col-tof-data
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -637,9 +637,9 @@ m_bFixed=1
 
 @}}
 [FDITEM55_WK]
-m_strName=col-art-descrizione
-m_strRawPic=x(100)
-m_strPic=x(100)
+m_strName=col-rof-cod-articolo
+m_strRawPic=z(6)
+m_strPic=z(6)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -647,9 +647,9 @@ m_bFixed=1
 
 @}}
 [FDITEM56_WK]
-m_strName=col-rof-qta
-m_strRawPic=---.---.--9
-m_strPic=---.---.--9
+m_strName=col-art-descrizione
+m_strRawPic=x(100)
+m_strPic=x(100)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -657,7 +657,7 @@ m_bFixed=1
 
 @}}
 [FDITEM57_WK]
-m_strName=col-rof-qta-eva
+m_strName=col-rof-qta
 m_strRawPic=---.---.--9
 m_strPic=---.---.--9
 m_nItemLevel=5
@@ -667,7 +667,7 @@ m_bFixed=1
 
 @}}
 [FDITEM58_WK]
-m_strName=col-qta-soll
+m_strName=col-rof-qta-eva
 m_strRawPic=---.---.--9
 m_strPic=---.---.--9
 m_nItemLevel=5
@@ -677,9 +677,9 @@ m_bFixed=1
 
 @}}
 [FDITEM59_WK]
-m_strName=col-data-soll
-m_strRawPic=99/99/9999
-m_strPic=99/99/9999
+m_strName=col-qta-soll
+m_strRawPic=---.---.--9
+m_strPic=---.---.--9
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -687,15 +687,25 @@ m_bFixed=1
 
 @}}
 [FDITEM60_WK]
-m_strName=Screen1-Handle
-m_nUsage=24
-m_nItemLevel=77
+m_strName=col-data-soll
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM60_WK
 
 @}}
 [FDITEM61_WK]
+m_strName=Screen1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM61_WK
+
+@}}
+[FDITEM62_WK]
 m_strName=esegui-73x21-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -704,22 +714,12 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM61_WK
-
-@}}
-[FDITEM62_WK]
-m_strName=Default-Font
-m_nUsage=38
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM62_WK
 
 @}}
 [FDITEM63_WK]
-m_strName=lab-des2
-m_strRawPic=x(50)
-m_strPic=x(50)
+m_strName=Default-Font
+m_nUsage=38
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -727,75 +727,76 @@ m_bFixed=1
 
 @}}
 [FDITEM64_WK]
-m_strName=FILLER
-m_strRawPic=XX
-m_strPic=XX
-m_nItemLevel=1
+m_strName=lab-des2
+m_strRawPic=x(50)
+m_strPic=x(50)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM64_WK
 
 @}}
 [FDITEM65_WK]
+m_strName=FILLER
+m_strRawPic=XX
+m_strPic=XX
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM65_WK
+
+@}}
+[FDITEM66_WK]
 m_strName=ricarica
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="SI"
 m_strFalse="NO"
-{{@DataItem_m_strDescriptionFDITEM65_WK
+{{@DataItem_m_strDescriptionFDITEM66_WK
 
 @}}
-[FDITEM66_WK]
+[FDITEM67_WK]
 m_strName=STATUS-articoli
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM66_WK
+{{@DataItem_m_strDescriptionFDITEM67_WK
 
 @}}
-[FDITEM67_WK]
+[FDITEM68_WK]
 m_strName=Valid-STATUS-articoli
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM67_WK
+{{@DataItem_m_strDescriptionFDITEM68_WK
 
 @}}
-[FDITEM68_WK]
+[FDITEM69_WK]
 m_strName=STATUS-progmag
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM68_WK
+{{@DataItem_m_strDescriptionFDITEM69_WK
 
 @}}
-[FDITEM69_WK]
+[FDITEM70_WK]
 m_strName=Valid-STATUS-progmag
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM69_WK
-
-@}}
-[FDITEM70_WK]
-m_strName=scr-elab-SF-HANDLE
-m_nUsage=24
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM70_WK
 
 @}}
 [FDITEM71_WK]
-m_strName=Verdana12B-Occidentale
-m_nUsage=26
+m_strName=scr-elab-SF-HANDLE
+m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -803,8 +804,8 @@ m_bFixed=1
 
 @}}
 [FDITEM72_WK]
-m_strName=scr-elab-HANDLE
-m_nUsage=24
+m_strName=Verdana12B-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -812,8 +813,8 @@ m_bFixed=1
 
 @}}
 [FDITEM73_WK]
-m_strName=Verdana8-Occidentale
-m_nUsage=26
+m_strName=scr-elab-HANDLE
+m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -821,9 +822,8 @@ m_bFixed=1
 
 @}}
 [FDITEM74_WK]
-m_strName=STATUS-tmagaz
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=Verdana8-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -831,26 +831,27 @@ m_bFixed=1
 
 @}}
 [FDITEM75_WK]
+m_strName=STATUS-tmagaz
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM75_WK
+
+@}}
+[FDITEM76_WK]
 m_strName=Valid-STATUS-tmagaz
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM75_WK
-
-@}}
-[FDITEM76_WK]
-m_strName=Large-Font
-m_nUsage=35
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM76_WK
 
 @}}
 [FDITEM77_WK]
-m_strName=Medium-Font
-m_nUsage=36
+m_strName=Large-Font
+m_nUsage=35
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -858,8 +859,8 @@ m_bFixed=1
 
 @}}
 [FDITEM78_WK]
-m_strName=Verdana8B-Occidentale
-m_nUsage=26
+m_strName=Medium-Font
+m_nUsage=36
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -867,9 +868,8 @@ m_bFixed=1
 
 @}}
 [FDITEM79_WK]
-m_strName=STATUS-clienti
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=Verdana8B-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -877,15 +877,25 @@ m_bFixed=1
 
 @}}
 [FDITEM80_WK]
+m_strName=STATUS-clienti
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM80_WK
+
+@}}
+[FDITEM81_WK]
 m_strName=Valid-STATUS-clienti
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM80_WK
+{{@DataItem_m_strDescriptionFDITEM81_WK
 
 @}}
-[FDITEM81_WK]
+[FDITEM82_WK]
 m_strName=AUTO-ID
 m_strRawPic=9(6)
 m_strPic=9(6)
@@ -893,61 +903,51 @@ m_strDefaultValue=1
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM81_WK
+{{@DataItem_m_strDescriptionFDITEM82_WK
 
 @}}
-[FDITEM82_WK]
+[FDITEM83_WK]
 m_strName=STATUS-rordforn
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM82_WK
+{{@DataItem_m_strDescriptionFDITEM83_WK
 
 @}}
-[FDITEM83_WK]
+[FDITEM84_WK]
 m_strName=Valid-STATUS-rordforn
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM83_WK
+{{@DataItem_m_strDescriptionFDITEM84_WK
 
 @}}
-[FDITEM84_WK]
+[FDITEM85_WK]
 m_strName=STATUS-tordforn
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM84_WK
+{{@DataItem_m_strDescriptionFDITEM85_WK
 
 @}}
-[FDITEM85_WK]
+[FDITEM86_WK]
 m_strName=Valid-STATUS-tordforn
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM85_WK
-
-@}}
-[FDITEM86_WK]
-m_strName=ef-data-buf
-m_strRawPic=99/99/9999
-m_strPic=99/99/9999
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM86_WK
 
 @}}
 [FDITEM87_WK]
-m_strName=STATUS-sordforn
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=ef-data-buf
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -955,47 +955,47 @@ m_bFixed=1
 
 @}}
 [FDITEM88_WK]
+m_strName=STATUS-sordforn
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM88_WK
+
+@}}
+[FDITEM89_WK]
 m_strName=Valid-STATUS-sordforn
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM88_WK
+{{@DataItem_m_strDescriptionFDITEM89_WK
 
 @}}
-[FDITEM89_WK]
+[FDITEM90_WK]
 m_strName=STATUS-tcaumag
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM89_WK
+{{@DataItem_m_strDescriptionFDITEM90_WK
 
 @}}
-[FDITEM90_WK]
+[FDITEM91_WK]
 m_strName=Valid-STATUS-tcaumag
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM90_WK
-
-@}}
-[FDITEM91_WK]
-m_strName=path-tmp-ordforn-sol
-m_strRawPic=X(256)
-m_strPic=X(256)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM91_WK
 
 @}}
 [FDITEM92_WK]
-m_strName=STATUS-tmp-ordforn-sol
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=path-tmp-ordforn-sol
+m_strRawPic=X(256)
+m_strPic=X(256)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1003,12 +1003,22 @@ m_bFixed=1
 
 @}}
 [FDITEM93_WK]
+m_strName=STATUS-tmp-ordforn-sol
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM93_WK
+
+@}}
+[FDITEM94_WK]
 m_strName=Valid-STATUS-tmp-ordforn-sol
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM93_WK
+{{@DataItem_m_strDescriptionFDITEM94_WK
 
 @}}
 
@@ -1345,7 +1355,6 @@ Begin Screen Form1
          Value Variable    = ef-data-buf
          Visible           = NONE
          Width in Cells    = TRUE
-         My Property       = "CONTROLLO="
          Before Procedure  = ef-data-BeforeProcedure
          After Procedure   = ef-data-AfterProcedure
       End
@@ -1420,7 +1429,7 @@ Begin Screen Form1
       Width in Cells    = TRUE
    End
    Begin Grid form1-gd-1
-      SCREEN-COL        = 2,57
+      SCREEN-COL        = 2,14
       SCREEN-LINE       = 6,77
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -1442,7 +1451,7 @@ Begin Screen Form1
       Cells' Setting    = ( X = 11, Y = 1, Data = "Data solleciti" )
       Centered Headings = TRUE
       Color             = 0
-      Column            = 2,57
+      Column            = 2,14
       Column Headings   = TRUE
       Columns' Setting  = ( X = 1, Name = col-mag-codice, READONLY = 0 )
       Columns' Setting  = ( PIC = "x(3)", TYPE = "9(6)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
@@ -1453,9 +1462,9 @@ Begin Screen Form1
       Columns' Setting  = ( X = 3, Name = col-cli-ragsoc, READONLY = 0 )
       Columns' Setting  = ( PIC = "x(100)", TYPE = "9(15)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
       Columns' Setting  = ( DISP = 45, SEPA = 5, DIVI = 1 )
-      Columns' Setting  = ( X = 4, Name = col-tof-numero, READONLY = 0 )
-      Columns' Setting  = ( PIC = "z(6)", TYPE = "X(50)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
-      Columns' Setting  = ( DISP = 12, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 4, Name = col-tof-anno-numero, READONLY = 0 )
+      Columns' Setting  = ( PIC = "x(15)", TYPE = "X(50)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
+      Columns' Setting  = ( DISP = 13, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 5, Name = col-tof-data, READONLY = 0 )
       Columns' Setting  = ( PIC = "99/99/9999", TYPE = "X(5)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
       Columns' Setting  = ( DISP = 12, SEPA = 5, DIVI = 1 )
@@ -1510,12 +1519,12 @@ Begin Screen Form1
       Record Data       = rec-grid
       Row Dividers      = 1
       Row Headings      = FALSE
-      Size              = 197,71
+      Size              = 198,71
       Size Unit         = Default
       Tab Order         = 3
       Tiled Headings    = TRUE
       Use Tab           = FALSE
-      Virtual Width     = 195
+      Virtual Width     = 196
       Visible           = NONE
       Vpadding          = 50
       Vscroll           = TRUE
@@ -1981,66 +1990,12 @@ BEGIN-DATA
    BASETYPE          = 3
    PARAGRAPH         = COLORE-RIGA
 BEGIN-TEXT
-      *****     if riga < 2 
-      *****        move 2 to riga
-      *****     end-if.
-      *****
-      *****     inquire form1-gd-1(riga,  9), cell-data in pev-rpr-qta.
-      *****     inquire form1-gd-1(riga, 10), cell-data in pev-prenotata.
-      **********     if pev-rpr-qta > pev-prenotata
-      **********        move 485 to colore
-      **********     else
-      *****        move 481 to colore
-      **********     end-if.
+           if riga < 2 
+              move 2 to riga
+           end-if.
            modify form1-gd-1, start-x 1,    x 11,
                               start-y riga, y riga,
                          region-color 481.
-END-TEXT
-END-DATA
-BEGIN-DATA
-   BASETYPE          = 3
-   PARAGRAPH         = CONTROLLO
-BEGIN-TEXT
-      *****     set tutto-ok to true.
-      *****
-      *****     inquire form1-gd-1, cursor-y in riga.
-      *****
-      *****     perform VALORE-RIGA.
-      *****
-      *****     evaluate colonna
-      *****     when 1
-      *****          if nuovo
-      *****             if reg-codice in zero or spaces 
-      *****                set errori to true
-      *****                move 1     to colonna
-      *****                display message box MSG-Codice-obbligatorio
-      *****                        title in tit-err
-      *****                        icon mb-warning-icon
-      *****             else  
-      *****                read tregioni
-      *****                     not invalid
-      *****                         set errori to true
-      *****                         display message MGS-codice-gia-inserito|"Codice già inserito!"
-      *****                                 title in tit-err
-      *****                                 icon mb-warning-icon
-      *****                end-read
-      *****             end-if
-      *****          end-if
-      *****     when 2
-      *****          if reg-descrizione in spaces
-      *****             set errori to true
-      *****             move 2 to colonna
-      *****             display message box MSG-Descrizione-mancante|"Descrizione mancante"
-      *****                     title in tit-err
-      *****                     icon mb-warning-icon
-      *****          end-if
-      *****     end-evaluate.
-      *****
-      *****     if errori
-      *****        modify form1-gd-1, cursor-y in riga, cursor-x in colonna
-      *****        move riga    to event-data-2
-      *****        move colonna to event-data-1
-      *****     end-if.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -2306,7 +2261,16 @@ BEGIN-TEXT
                  move tos-mag-codice   to col-mag-codice
                  move tos-cod-forn     to col-cli-codice
                  move tos-frn-ragsoc   to col-cli-ragsoc
-                 move tos-tof-numero   to col-tof-numero 
+                 move tos-tof-numero   to como-numero-x
+                 call "C$JUSTIFY" using como-numero-x, "L"
+                 inspect como-numero-x replacing leading x"30" by x"20"
+                 call "C$JUSTIFY" using como-numero-x, "L"
+                 initialize col-tof-anno-numero 
+                 string tos-tof-anno   delimited size
+                        " - "          delimited size
+                        como-numero-x  delimited size
+                   into col-tof-anno-numero 
+                 end-string
                  move tos-data-ordine  to como-data
                  perform DATE-TO-SCREEN
                  move como-data        to col-tof-data
@@ -2324,7 +2288,7 @@ BEGIN-TEXT
                  modify form1-gd-1(riga, 1),  cell-data col-mag-codice
                  modify form1-gd-1(riga, 2),  cell-data col-cli-codice   
                  modify form1-gd-1(riga, 3),  cell-data col-cli-ragsoc   
-                 modify form1-gd-1(riga, 4),  cell-data col-tof-numero   
+                 modify form1-gd-1(riga, 4),  cell-data col-tof-anno-numero   
                  modify form1-gd-1(riga, 5),  cell-data col-tof-data     
                  modify form1-gd-1(riga, 6),  cell-data col-rof-cod-articolo
                  modify form1-gd-1(riga, 7),  cell-data col-art-descrizione
@@ -2351,77 +2315,6 @@ END-TEXT
 END-DATA
 BEGIN-DATA
    BASETYPE          = 3
-   PARAGRAPH         = METTI-RIGA
-BEGIN-TEXT
-      *****     modify form1-gd-1(riga,  1), cell-data col-art-codice.
-      *****     modify form1-gd-1(riga,  2), cell-data col-art-descrizione.
-      *****     modify form1-gd-1(riga,  3), cell-data col-pev-data-ins.
-      *****     modify form1-gd-1(riga,  4), cell-data col-tpr-codice.
-      *****     modify form1-gd-1(riga,  5), cell-data col-tpr-descrizione.
-      *****     modify form1-gd-1(riga,  6), cell-data col-tpr-gdo.
-      *****     modify form1-gd-1(riga,  7), cell-data col-tpr-ini-vol.
-      *****     modify form1-gd-1(riga,  8), cell-data col-tpr-fine-vol.
-      *****     modify form1-gd-1(riga,  9), cell-data col-rpr-qta.
-      *****     modify form1-gd-1(riga, 10), cell-data col-pev-prenotata.
-      *****     modify form1-gd-1(riga, 11), cell-data col-pev-evasa.
-      *****     modify form1-gd-1(riga, 12), cell-data col-pev-boll.
-      *****     modify form1-gd-1(riga, 13), cell-data col-pev-rimanenza.
-      *****     modify form1-gd-1(riga, 14), cell-data col-pev-impegnato.
-      *****     modify form1-gd-1(riga, 15), cell-data col-pev-giac-utile.
-      *****     modify form1-gd-1(riga, 16), hidden-data col-pren.
-      *****     if col-pren = "S"              
-      *****        modify form1-gd-1(riga, 16) bitmap spunta2-nera-bmp, 
-      *****                                    bitmap-number = 2 
-      *****                                    bitmap-width  = 20
-      *****     else
-      *****        modify form1-gd-1(riga, 16) bitmap spunta2-nera-bmp, 
-      *****                                    bitmap-number = 1
-      *****                                    bitmap-width  = 20
-      *****     end-if.
-      *****     move pev-chiave to hid-chiave.
-      *****     modify form1-gd-1(riga, 1), hidden-data gruppo-hidden.
-END-TEXT
-END-DATA
-BEGIN-DATA
-   BASETYPE          = 3
-   PARAGRAPH         = OPEN-IO-PROMOEVA-LOCK
-BEGIN-TEXT
-      *****     perform until 1 = 2
-      *****        move "promoeva" to geslock-nome-file
-      *****        initialize geslock-messaggio
-      *****        string   "Il file delle quantità promo per evasione" 
-      *****          x"0d0a""è in uso su altro terminale." delimited size
-      *****                 into geslock-messaggio
-      *****        end-string
-      *****
-      *****        move 1 to no-msg
-      *****        set tutto-ok  to true
-      *****        set RecLocked to false
-      *****        open i-o promoeva allowing readers
-      *****        if RecLocked
-      *****           set errori to true
-      *****           move 1     to geslock-v-termina
-      *****           move 1     to geslock-v-riprova
-      *****           move 0     to geslock-v-ignora
-      *****           call   "geslock" using geslock-linkage
-      *****           cancel "geslock"
-      *****
-      *****           evaluate true
-      *****           when riprova continue
-      *****           when other   display message "Operazione interrotta!"
-      *****                                  title titolo
-      *****                                   icon 2
-      *****                        exit perform
-      *****           end-evaluate
-      *****        else
-      *****           exit perform
-      *****        end-if
-      *****     end-perform.            
-      *****     move 0 to no-msg.
-END-TEXT
-END-DATA
-BEGIN-DATA
-   BASETYPE          = 3
    PARAGRAPH         = PARAGRAFO-COPY
 BEGIN-TEXT
            copy "color-custom.cpy".   
@@ -2430,131 +2323,12 @@ END-TEXT
 END-DATA
 BEGIN-DATA
    BASETYPE          = 3
-   PARAGRAPH         = SALV-MOD
-BEGIN-TEXT
-      *****     if nuovo
-      *****        perform VALORE-RIGA
-      *****        if reg-rec not in old-reg-rec
-      *****           set NoSalvato to true
-      *****        else
-      *****           set SiSalvato to true
-      *****        end-if
-      *****     end-if.
-      *****
-      *****     set tutto-ok to true.
-      *****     if NoSalvato
-      *****        display message box MSG-Salvare-le-modifiche, 
-      *****                       title in titolo
-      *****                       type in mb-yes-no-cancel
-      *****                       giving scelta
-      *****
-      *****        evaluate scelta
-      *****        when mb-yes    perform SALVA
-      *****        when mb-cancel set errori    to true
-      *****        when mb-no     set tutto-ok  to true
-      *****                       set SiSalvato to true
-      *****                       set ricarica  to true
-      *****        end-evaluate
-      *****
-      *****     end-if.
-END-TEXT
-END-DATA
-BEGIN-DATA
-   BASETYPE          = 3
-   PARAGRAPH         = SALVA
-BEGIN-TEXT
-      *****     if sisalvato or mod in 0 exit paragraph end-if.
-      *****
-      *****     inquire form1-gd-1, cursor-x in colonna, 
-      *****                         cursor-y in riga.
-      *****
-      *****
-      *****     perform varying colonna from 1 by 1 
-      *****               until colonna > 2
-      *****        perform CONTROLLO
-      *****        if errori exit perform end-if
-      *****     end-perform.
-      *****
-      *****     if tutto-ok
-      ******    luciano start
-      *****        perform VALORIZZA-DATI-COMUNI
-      ******    luciano end
-      *****        write reg-rec 
-      *****           invalid 
-      *****              rewrite reg-rec
-      *****        end-write
-      *****        set sisalvato to true
-      *****        set vecchio   to true
-      *****     else                   
-      *****        perform ABILITAZIONI
-      *****     end-if.                 
-END-TEXT
-END-DATA
-BEGIN-DATA
-   BASETYPE          = 3
    PARAGRAPH         = SPOSTAMENTO
 BEGIN-TEXT
            inquire form1-gd-1, cursor-x in colonna, cursor-y in riga, 
                    last-row in tot-righe.
-           move event-data-2 to riga.
-      *****
-      *****     if event-data-2 not in riga
-      *****        perform VALORE-RIGA
-      *****        if reg-codice in spaces or zero
-      *****           modify form1-gd-1, record-to-delete riga
-      *****           set vecchio to true
-      *****        else  
-      *****           perform SALVA
-      *****           if errori
-      *****              move riga    to event-data-2
-      *****              move colonna to event-data-1 | (isacco)
-      *****              set event-action to event-action-fail
-      *****           end-if
-      *****        end-if
-      *****     else
-      *****        if colonna not in event-data-1
-      *****           perform CONTROLLO
-      *****           if errori
-      *****              set event-action to event-action-fail
-      *****           end-if
-      *****        end-if
-      *****     end-if.
-      *****
-      * COLORAZIONE RIGA IN GRID
+           move event-data-2 to riga.   
            perform COLORE-RIGA.  
-END-TEXT
-END-DATA
-BEGIN-DATA
-   BASETYPE          = 3
-   PARAGRAPH         = VALORE-RIGA
-BEGIN-TEXT
-      *****     inquire form1-gd-1(riga,  1), cell-data in col-art-codice.
-      *****     inquire form1-gd-1(riga,  2), cell-data in col-art-descrizione.
-      *****     inquire form1-gd-1(riga,  3), cell-data in col-pev-data-ins.
-      *****     inquire form1-gd-1(riga,  4), cell-data in col-tpr-codice.
-      *****     inquire form1-gd-1(riga,  5), cell-data in col-tpr-descrizione.
-      *****     inquire form1-gd-1(riga,  6), cell-data in col-tpr-gdo.
-      *****     inquire form1-gd-1(riga,  7), cell-data in col-tpr-ini-vol.
-      *****     inquire form1-gd-1(riga,  8), cell-data in col-tpr-fine-vol.
-      *****     inquire form1-gd-1(riga,  9), cell-data in col-rpr-qta       
-      *****     inquire form1-gd-1(riga, 10), cell-data in col-pev-prenotata
-      *****     inquire form1-gd-1(riga, 11), cell-data in col-pev-evasa.
-      *****     inquire form1-gd-1(riga, 12), cell-data in col-pev-boll.
-      *****     inquire form1-gd-1(riga, 13), cell-data in col-pev-rimanenza.
-      *****     inquire form1-gd-1(riga, 14), cell-data in col-pev-impegnato.
-      *****     inquire form1-gd-1(riga, 15), cell-data in col-pev-giac-utile
-      *****     inquire form1-gd-1(riga, 16), cell-data in col-pren.
-      *****     inquire form1-gd-1(riga, 1), hidden-data in gruppo-hidden.
-END-TEXT
-END-DATA
-BEGIN-DATA
-   BASETYPE          = 3
-   PARAGRAPH         = VALORIZZA-DATI-COMUNI
-BEGIN-TEXT
-      ******    se non ho valorizzato i campi di creazione li valorizzo
-      *****     accept pev-data-modifica from century-date.
-      *****     accept pev-ora-modifica from time.
-      *****     move user-codi to pev-utente-modifica.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -2894,27 +2668,7 @@ BEGIN-TEXT
            end-evaluate.
            move 78-ID-form1-gd-1 to control-id
            move 4 to accept-control.
-
-
-
-
-
-
-
-      *****     evaluate event-data-1
-      *****     when 9
-      *****          inquire form1-gd-1(riga, 9), cell-data in new-qta
-      *****          move new-qta to col-rpr-qta
-      *****          modify form1-gd-1(riga, 9),  cell-data col-rpr-qta
-      *****     end-evaluate.
-      *****
-      *****     if old-qta not = new-qta
-      *****        set CambioQta to true
-      *****        inquire form1-gd-1(riga, 1), hidden-data in gruppo-hidden
-      *****        move 1 to hid-cambio
-      *****        modify form1-gd-1(riga, 1),  hidden-data    gruppo-hidden
-      *****     end-if
-      *****        
+                                     
 END-TEXT
 END-DATA
 BEGIN-DATA

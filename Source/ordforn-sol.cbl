@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordforn-sol.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 15 dicembre 2021 00:15:59.
+       DATE-WRITTEN.        mercoledì 15 dicembre 2021 10:50:46.
        REMARKS.
       *{TOTEM}END
 
@@ -89,6 +89,7 @@
        77 old-data         PIC  9(8).
        77 chiave           PIC  9(5).
        77 nstart           PIC  9.
+       77 como-numero-x    PIC  x(8).
        77 como-x           PIC  x.
        77 tipoRead         PIC  xx.
            88 sortAZ VALUE IS "AZ"    WHEN SET TO FALSE  0. 
@@ -114,7 +115,7 @@
            05 col-mag-codice   PIC  x(3).
            05 col-cli-codice   PIC  9(5).
            05 col-cli-ragsoc   PIC  x(100).
-           05 col-tof-numero   PIC  z(6).
+           05 col-tof-anno-numero          PIC  x(15).
            05 col-tof-data     PIC  99/99/9999.
            05 col-rof-cod-articolo         PIC  z(6).
            05 col-art-descrizione          PIC  x(100).
@@ -283,7 +284,6 @@
       * FORM
        01 
            Form1, 
-           AFTER PROCEDURE  Form1-AFTER-SCREEN
            .
 
       * FRAME
@@ -317,7 +317,6 @@
            AFTER PROCEDURE ef-data-AfterProcedure, 
            BEFORE PROCEDURE ef-data-BeforeProcedure, 
            .
-
 
       * LABEL
        05
@@ -354,16 +353,16 @@
        05
            form1-gd-1, 
            Grid, 
-           COL 2,57, 
+           COL 2,14, 
            LINE 6,77,
            LINES 37,08 ,
-           SIZE 197,71 ,
+           SIZE 198,71 ,
            ADJUSTABLE-COLUMNS,
            BOXED,
            CENTERED-HEADINGS,
-           DATA-COLUMNS (1, 4, 9, 109, 115, 125, 131, 231, 242, 253, 
-           264),
-           ALIGNMENT ("C", "R", "U", "R", "C", "R", "U", "R", "R", "R", 
+           DATA-COLUMNS (1, 4, 9, 109, 124, 134, 140, 240, 251, 262, 
+           273),
+           ALIGNMENT ("C", "R", "U", "C", "C", "R", "U", "R", "R", "R", 
            "C"),
            SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5),
            DATA-TYPES ("9(6)", "X(10)", "9(15)", "X(50)", "X(5)", "X(10)
@@ -380,7 +379,7 @@
            WIDTH-IN-CELLS,
            RECORD-DATA rec-grid,
            TILED-HEADINGS,
-           VIRTUAL-WIDTH 195,
+           VIRTUAL-WIDTH 196,
            VPADDING 50,
            VSCROLL,
            EVENT PROCEDURE Form1-Gd-1-Event-Proc,
@@ -405,7 +404,6 @@
        01 
            scr-elab, 
            HELP-ID 1,
-           AFTER PROCEDURE  scr-elab-AFTER-SCREEN
            .
 
       * LABEL
@@ -2597,8 +2595,8 @@
       * Status-bar
            DISPLAY Form1 UPON Form1-Handle
       * DISPLAY-COLUMNS settings
-              MODIFY form1-gd-1, DISPLAY-COLUMNS (1, 11, 21, 66, 78, 
-           90, 98, 150, 160, 170, 183)
+              MODIFY form1-gd-1, DISPLAY-COLUMNS (1, 11, 21, 66, 79, 
+           91, 99, 151, 161, 171, 184)
            .
 
        Form1-PROC.
@@ -3213,25 +3211,6 @@
            END-PERFORM
            .
 
-
-      * Paragrafo per la struttura del codice in AFTER sulla screen Form1
-      ***---
-       Form1-AFTER-SCREEN.
-
-      * Generazione risettaggio keyboard "." ---> "."
-
-      * Generazione stringa perform CONTROLLO
-           evaluate control-id
-           |2 è l'ID del campo ef-data
-           when 2
-                perform CONTROLLO
-           |99999 è un valore fittizio, che non sarà MAI usato,
-           |ma mi serve per non riscontrare errori di compilazione
-           |in caso non avessi generato nulla nella AFTER CONTROLLO della screen
-           when 99999 continue
-           when other continue
-           end-evaluate.
-
        scr-elab-Open-Routine.
            PERFORM scr-elab-Scrn
            PERFORM scr-elab-Proc
@@ -3413,22 +3392,6 @@
            .
 
 
-      * Paragrafo per la struttura del codice in AFTER sulla screen scr-elab
-      ***---
-       scr-elab-AFTER-SCREEN.
-
-      * Generazione risettaggio keyboard "." ---> "."
-
-      * Generazione stringa perform CONTROLLO
-           evaluate control-id
-           |99999 è un valore fittizio, che non sarà MAI usato,
-           |ma mi serve per non riscontrare errori di compilazione
-           |in caso non avessi generato nulla nella AFTER CONTROLLO della screen
-           when 99999 continue
-           when other continue
-           end-evaluate.
-
-
 
        Form1-Event-Proc.
            .
@@ -3466,65 +3429,12 @@
       * USER DEFINE PARAGRAPH
        COLORE-RIGA.
       * <TOTEM:PARA. COLORE-RIGA>
-      *****     if riga < 2 
-      *****        move 2 to riga
-      *****     end-if.
-      *****
-      *****     inquire form1-gd-1(riga,  9), cell-data in pev-rpr-qta.
-      *****     inquire form1-gd-1(riga, 10), cell-data in pev-prenotata.
-      **********     if pev-rpr-qta > pev-prenotata
-      **********        move 485 to colore
-      **********     else
-      *****        move 481 to colore
-      **********     end-if.
+           if riga < 2 
+              move 2 to riga
+           end-if.
            modify form1-gd-1, start-x 1,    x 11,
                               start-y riga, y riga,
                          region-color 481 
-           .
-      * <TOTEM:END>
-
-       CONTROLLO.
-      * <TOTEM:PARA. CONTROLLO>
-      *****     set tutto-ok to true.
-      *****
-      *****     inquire form1-gd-1, cursor-y in riga.
-      *****
-      *****     perform VALORE-RIGA.
-      *****
-      *****     evaluate colonna
-      *****     when 1
-      *****          if nuovo
-      *****             if reg-codice in zero or spaces 
-      *****                set errori to true
-      *****                move 1     to colonna
-      *****                display message box MSG-Codice-obbligatorio
-      *****                        title in tit-err
-      *****                        icon mb-warning-icon
-      *****             else  
-      *****                read tregioni
-      *****                     not invalid
-      *****                         set errori to true
-      *****                         display message MGS-codice-gia-inserito|"Codice già inserito!"
-      *****                                 title in tit-err
-      *****                                 icon mb-warning-icon
-      *****                end-read
-      *****             end-if
-      *****          end-if
-      *****     when 2
-      *****          if reg-descrizione in spaces
-      *****             set errori to true
-      *****             move 2 to colonna
-      *****             display message box MSG-Descrizione-mancante|"Descrizione mancante"
-      *****                     title in tit-err
-      *****                     icon mb-warning-icon
-      *****          end-if
-      *****     end-evaluate.
-      *****
-      *****     if errori
-      *****        modify form1-gd-1, cursor-y in riga, cursor-x in colonna
-      *****        move riga    to event-data-2
-      *****        move colonna to event-data-1
-      *****     end-if 
            .
       * <TOTEM:END>
 
@@ -3800,7 +3710,16 @@
                  move tos-mag-codice   to col-mag-codice
                  move tos-cod-forn     to col-cli-codice
                  move tos-frn-ragsoc   to col-cli-ragsoc
-                 move tos-tof-numero   to col-tof-numero 
+                 move tos-tof-numero   to como-numero-x
+                 call "C$JUSTIFY" using como-numero-x, "L"
+                 inspect como-numero-x replacing leading x"30" by x"20"
+                 call "C$JUSTIFY" using como-numero-x, "L"
+                 initialize col-tof-anno-numero 
+                 string tos-tof-anno   delimited size
+                        " - "          delimited size
+                        como-numero-x  delimited size
+                   into col-tof-anno-numero 
+                 end-string
                  move tos-data-ordine  to como-data
                  perform DATE-TO-SCREEN
                  move como-data        to col-tof-data
@@ -3820,8 +3739,8 @@
             
                  modify form1-gd-1(riga, 3),  cell-data col-cli-ragsoc  
             
-                 modify form1-gd-1(riga, 4),  cell-data col-tof-numero  
-            
+                 modify form1-gd-1(riga, 4),  cell-data 
+           col-tof-anno-numero   
                  modify form1-gd-1(riga, 5),  cell-data col-tof-data    
             
                  modify form1-gd-1(riga, 6),  cell-data 
@@ -3852,75 +3771,6 @@
            .
       * <TOTEM:END>
 
-       METTI-RIGA.
-      * <TOTEM:PARA. METTI-RIGA>
-      *****     modify form1-gd-1(riga,  1), cell-data col-art-codice.
-      *****     modify form1-gd-1(riga,  2), cell-data col-art-descrizione.
-      *****     modify form1-gd-1(riga,  3), cell-data col-pev-data-ins.
-      *****     modify form1-gd-1(riga,  4), cell-data col-tpr-codice.
-      *****     modify form1-gd-1(riga,  5), cell-data col-tpr-descrizione.
-      *****     modify form1-gd-1(riga,  6), cell-data col-tpr-gdo.
-      *****     modify form1-gd-1(riga,  7), cell-data col-tpr-ini-vol.
-      *****     modify form1-gd-1(riga,  8), cell-data col-tpr-fine-vol.
-      *****     modify form1-gd-1(riga,  9), cell-data col-rpr-qta.
-      *****     modify form1-gd-1(riga, 10), cell-data col-pev-prenotata.
-      *****     modify form1-gd-1(riga, 11), cell-data col-pev-evasa.
-      *****     modify form1-gd-1(riga, 12), cell-data col-pev-boll.
-      *****     modify form1-gd-1(riga, 13), cell-data col-pev-rimanenza.
-      *****     modify form1-gd-1(riga, 14), cell-data col-pev-impegnato.
-      *****     modify form1-gd-1(riga, 15), cell-data col-pev-giac-utile.
-      *****     modify form1-gd-1(riga, 16), hidden-data col-pren.
-      *****     if col-pren = "S"              
-      *****        modify form1-gd-1(riga, 16) bitmap spunta2-nera-bmp, 
-      *****                                    bitmap-number = 2 
-      *****                                    bitmap-width  = 20
-      *****     else
-      *****        modify form1-gd-1(riga, 16) bitmap spunta2-nera-bmp, 
-      *****                                    bitmap-number = 1
-      *****                                    bitmap-width  = 20
-      *****     end-if.
-      *****     move pev-chiave to hid-chiave.
-      *****     modify form1-gd-1(riga, 1), hidden-data gruppo-hidden 
-           .
-      * <TOTEM:END>
-
-       OPEN-IO-PROMOEVA-LOCK.
-      * <TOTEM:PARA. OPEN-IO-PROMOEVA-LOCK>
-      *****     perform until 1 = 2
-      *****        move "promoeva" to geslock-nome-file
-      *****        initialize geslock-messaggio
-      *****        string   "Il file delle quantità promo per evasione" 
-      *****          x"0d0a""è in uso su altro terminale." delimited size
-      *****                 into geslock-messaggio
-      *****        end-string
-      *****
-      *****        move 1 to no-msg
-      *****        set tutto-ok  to true
-      *****        set RecLocked to false
-      *****        open i-o promoeva allowing readers
-      *****        if RecLocked
-      *****           set errori to true
-      *****           move 1     to geslock-v-termina
-      *****           move 1     to geslock-v-riprova
-      *****           move 0     to geslock-v-ignora
-      *****           call   "geslock" using geslock-linkage
-      *****           cancel "geslock"
-      *****
-      *****           evaluate true
-      *****           when riprova continue
-      *****           when other   display message "Operazione interrotta!"
-      *****                                  title titolo
-      *****                                   icon 2
-      *****                        exit perform
-      *****           end-evaluate
-      *****        else
-      *****           exit perform
-      *****        end-if
-      *****     end-perform.            
-      *****     move 0 to no-msg 
-           .
-      * <TOTEM:END>
-
        PARAGRAFO-COPY.
       * <TOTEM:PARA. PARAGRAFO-COPY>
            copy "color-custom.cpy".   
@@ -3928,127 +3778,12 @@
            .
       * <TOTEM:END>
 
-       SALV-MOD.
-      * <TOTEM:PARA. SALV-MOD>
-      *****     if nuovo
-      *****        perform VALORE-RIGA
-      *****        if reg-rec not in old-reg-rec
-      *****           set NoSalvato to true
-      *****        else
-      *****           set SiSalvato to true
-      *****        end-if
-      *****     end-if.
-      *****
-      *****     set tutto-ok to true.
-      *****     if NoSalvato
-      *****        display message box MSG-Salvare-le-modifiche, 
-      *****                       title in titolo
-      *****                       type in mb-yes-no-cancel
-      *****                       giving scelta
-      *****
-      *****        evaluate scelta
-      *****        when mb-yes    perform SALVA
-      *****        when mb-cancel set errori    to true
-      *****        when mb-no     set tutto-ok  to true
-      *****                       set SiSalvato to true
-      *****                       set ricarica  to true
-      *****        end-evaluate
-      *****
-      *****     end-if 
-           .
-      * <TOTEM:END>
-
-       SALVA.
-      * <TOTEM:PARA. SALVA>
-      *****     if sisalvato or mod in 0 exit paragraph end-if.
-      *****
-      *****     inquire form1-gd-1, cursor-x in colonna, 
-      *****                         cursor-y in riga.
-      *****
-      *****
-      *****     perform varying colonna from 1 by 1 
-      *****               until colonna > 2
-      *****        perform CONTROLLO
-      *****        if errori exit perform end-if
-      *****     end-perform.
-      *****
-      *****     if tutto-ok
-      ******    luciano start
-      *****        perform VALORIZZA-DATI-COMUNI
-      ******    luciano end
-      *****        write reg-rec 
-      *****           invalid 
-      *****              rewrite reg-rec
-      *****        end-write
-      *****        set sisalvato to true
-      *****        set vecchio   to true
-      *****     else                   
-      *****        perform ABILITAZIONI
-      *****     end-if                  
-           .
-      * <TOTEM:END>
-
        SPOSTAMENTO.
       * <TOTEM:PARA. SPOSTAMENTO>
            inquire form1-gd-1, cursor-x in colonna, cursor-y in riga, 
                    last-row in tot-righe.
-           move event-data-2 to riga.
-      *****
-      *****     if event-data-2 not in riga
-      *****        perform VALORE-RIGA
-      *****        if reg-codice in spaces or zero
-      *****           modify form1-gd-1, record-to-delete riga
-      *****           set vecchio to true
-      *****        else  
-      *****           perform SALVA
-      *****           if errori
-      *****              move riga    to event-data-2
-      *****              move colonna to event-data-1 | (isacco)
-      *****              set event-action to event-action-fail
-      *****           end-if
-      *****        end-if
-      *****     else
-      *****        if colonna not in event-data-1
-      *****           perform CONTROLLO
-      *****           if errori
-      *****              set event-action to event-action-fail
-      *****           end-if
-      *****        end-if
-      *****     end-if.
-      *****
-      * COLORAZIONE RIGA IN GRID
+           move event-data-2 to riga.   
            perform COLORE-RIGA   
-           .
-      * <TOTEM:END>
-
-       VALORE-RIGA.
-      * <TOTEM:PARA. VALORE-RIGA>
-      *****     inquire form1-gd-1(riga,  1), cell-data in col-art-codice.
-      *****     inquire form1-gd-1(riga,  2), cell-data in col-art-descrizione.
-      *****     inquire form1-gd-1(riga,  3), cell-data in col-pev-data-ins.
-      *****     inquire form1-gd-1(riga,  4), cell-data in col-tpr-codice.
-      *****     inquire form1-gd-1(riga,  5), cell-data in col-tpr-descrizione.
-      *****     inquire form1-gd-1(riga,  6), cell-data in col-tpr-gdo.
-      *****     inquire form1-gd-1(riga,  7), cell-data in col-tpr-ini-vol.
-      *****     inquire form1-gd-1(riga,  8), cell-data in col-tpr-fine-vol.
-      *****     inquire form1-gd-1(riga,  9), cell-data in col-rpr-qta       
-      *****     inquire form1-gd-1(riga, 10), cell-data in col-pev-prenotata
-      *****     inquire form1-gd-1(riga, 11), cell-data in col-pev-evasa.
-      *****     inquire form1-gd-1(riga, 12), cell-data in col-pev-boll.
-      *****     inquire form1-gd-1(riga, 13), cell-data in col-pev-rimanenza.
-      *****     inquire form1-gd-1(riga, 14), cell-data in col-pev-impegnato.
-      *****     inquire form1-gd-1(riga, 15), cell-data in col-pev-giac-utile
-      *****     inquire form1-gd-1(riga, 16), cell-data in col-pren.
-      *****     inquire form1-gd-1(riga, 1), hidden-data in gruppo-hidden 
-           .
-      * <TOTEM:END>
-
-       VALORIZZA-DATI-COMUNI.
-      * <TOTEM:PARA. VALORIZZA-DATI-COMUNI>
-      ******    se non ho valorizzato i campi di creazione li valorizzo
-      *****     accept pev-data-modifica from century-date.
-      *****     accept pev-ora-modifica from time.
-      *****     move user-codi to pev-utente-modifica 
            .
       * <TOTEM:END>
 
@@ -4379,28 +4114,8 @@
            col-data-soll
            end-evaluate.
            move 78-ID-form1-gd-1 to control-id
-           move 4 to accept-control.
-
-
-
-
-
-
-
-      *****     evaluate event-data-1
-      *****     when 9
-      *****          inquire form1-gd-1(riga, 9), cell-data in new-qta
-      *****          move new-qta to col-rpr-qta
-      *****          modify form1-gd-1(riga, 9),  cell-data col-rpr-qta
-      *****     end-evaluate.
-      *****
-      *****     if old-qta not = new-qta
-      *****        set CambioQta to true
-      *****        inquire form1-gd-1(riga, 1), hidden-data in gruppo-hidden
-      *****        move 1 to hid-cambio
-      *****        modify form1-gd-1(riga, 1),  hidden-data    gruppo-hidden
-      *****     end-if
-      *****        
+           move 4 to accept-control 
+                                     
            .
       * <TOTEM:END>
        ef-data-BeforeProcedure.
