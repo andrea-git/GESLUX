@@ -4793,6 +4793,22 @@
                                           winprint-column             
                                    giving return-code
 
+           when 8
+                call "WIN$PRINTER"  using winprint-set-data-columns,
+                                         150
+                                   giving return-code                      
+                move wprtalign-right to winprint-col-alignment
+                                   
+                move 1,10               to winprint-col-start
+                call "WIN$PRINTER"  using winprint-set-page-column, 
+                                          winprint-column             
+                                   giving return-code
+                                   
+                move 14,0               to winprint-col-start
+                call "WIN$PRINTER"  using winprint-set-page-column, 
+                                          winprint-column             
+                                   giving return-code
+
            end-evaluate.
 
       ***---

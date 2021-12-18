@@ -311,7 +311,7 @@
            if wfont-status = wfonterr-font-not-found
               set errori to true
               perform MESSAGGIO-ERR-FONT
-           end-if.
+           end-if.   
 
            initialize wfont-data.
            move 12                  to wfont-size.
@@ -326,6 +326,26 @@
            set wfdevice-win-printer to true.
            CALL "W$FONT" USING wfont-get-closest-font, 
                                courier-g, wfont-data
+                               giving wfont-status.
+      
+           if wfont-status = wfonterr-font-not-found
+              set errori to true
+              perform MESSAGGIO-ERR-FONT
+           end-if.
+
+           initialize wfont-data.
+           move 8                   to wfont-size.
+           move "Courier New"       to wfont-name.
+           set wfont-bold           to true.
+           set wfcharset-dont-care  to true    
+           set wfont-italic         to false   
+           set wfont-underline      to false
+           set wfont-strikeout      to false   
+           set wfont-fixed-pitch    to false   
+           move zero                to wfont-char-set
+           set wfdevice-win-printer to true.
+           CALL "W$FONT" USING wfont-get-closest-font, 
+                               courier-8gb, wfont-data
                                giving wfont-status.
       
            if wfont-status = wfonterr-font-not-found
@@ -709,6 +729,89 @@ OMAGGI        end-if
 
       ***---
        STAMPA-NOTE-TOTALI-GRAF.
+           if tor-contrassegno-si
+              accept contras-note-bolla 
+                     from environment "CONTRAS_NOTE_BOLLA"
+
+              move tor-anno   to ror-anno of rordini
+              move tor-numero to ror-num-ordine of rordini
+              move low-value  to ror-num-riga of rordini
+                                 ror-chiave-ordine OF rordini
+           
+              start rordini key is >= ror-k-stbolle of rordini
+                    invalid set errori to true
+              end-start
+                 
+              move 0 to tot-bolla-n
+              initialize tab-iva replacing numeric data by zeroes
+                                      alphanumeric data by spaces
+           
+              perform until 1 = 2
+           
+                 read rordini next  at end exit perform end-read
+                 if ror-anno       of rordini not = tor-anno    or 
+                    ror-num-ordine of rordini not = tor-numero
+                    exit perform
+                 end-if
+           
+                 compute tot-imp = ror-qta of rordini *
+                                 ( ror-imp-consumo   of rordini +
+                                   ror-imp-cou-cobat of rordini +
+                                   ror-imponib-merce of rordini +
+                                   ror-add-piombo    of rordini )
+                       
+                 set trovataIva to false
+                 perform varying idx-i from 1 by 1 
+                           until idx-i > 3
+                    if ror-cod-iva of rordini = el-cod-iva(idx-i)
+                       add tot-imp    to el-imp(idx-i)
+                       set trovataIva to true
+                       exit perform
+                    end-if
+                 end-perform
+           
+                 if not trovataIva      
+                    perform varying idx-i from 1 by 1 
+                              until idx-i > 3
+                       if el-cod-iva(idx-i) = spaces
+                          move ror-cod-iva of rordini 
+                            to el-cod-iva(idx-i)
+                          add tot-imp      to el-imp(idx-i)
+                          exit perform
+                       end-if
+                    end-perform
+                 end-if
+           
+              end-perform
+                                             
+              move 0 to como-iva tot-bolla-n
+              perform varying idx-i from 1 by 1 
+                        until idx-i > 3
+                 if el-cod-iva(idx-i) = spaces
+                    exit perform
+                 end-if
+                 move "IV"              to tbliv-codice1
+                 move el-cod-iva(idx-i) to tbliv-codice2
+                 read tivaese no lock
+                 move 0 to como-iva-2dec
+                 if tbliv-percentuale > 0
+                    compute como-iva = 
+                            el-imp(idx-i) * tbliv-percentuale / 100
+                    add 0,005          to como-iva
+                    move como-iva      to como-iva-2dec
+                 end-if
+                 compute tot-bolla-n = tot-bolla-n   +
+                                       como-iva-2dec + el-imp(idx-i)
+              end-perform
+           
+              move tot-bolla-n to tot-bolla-z
+              move tot-bolla-z to tot-bolla-x
+              call "C$JUSTIFY" using tot-bolla-x, "L"
+              inspect tot-bolla-x replacing trailing spaces by low-value
+                                         
+
+           end-if.
+
            subtract WrittenRows from RowsPerPage giving n-vuote.
            compute spl-riga = spl-riga + (n-vuote * 0,3)
            move zero   to spl-tipo-colonna
@@ -723,11 +826,35 @@ OMAGGI        end-if
                   into line-riga
            end-string.
 
-           move 55 to limite
-           move line-riga(1:21) to line-riga(limite:21)
-           move  all"-" to line-riga(1:limite - 1)
-           move 6   to spl-tipo-colonna
+           move 55 to limite.
+           move line-riga(1:21) to line-riga(limite:21).
+                  
+           if tor-contrassegno-si     
+              inspect contras-note-bolla 
+                      replacing trailing spaces by low-value
+              initialize ini-contras-bolla
+              string  contras-note-bolla delimited low-value
+                      " "                delimited size
+                      tot-bolla-x        delimited low-value
+                 into ini-contras-bolla
+              end-string
+              move spaces to line-riga(1:limite - 1)
+
+           else
+              move all"-" to line-riga(1:limite - 1)
+           end-if.
+           move 6   to spl-tipo-colonna.
            perform STAMPA-RIGA-GRAF.
+
+           if tor-contrassegno-si        
+              subtract 0,3 from spl-riga
+              move courier-8gb to spl-hfont
+              move ini-contras-bolla to line-riga
+              move 8  to spl-tipo-colonna
+              perform STAMPA-RIGA-GRAF    
+              move 6   to spl-tipo-colonna
+              move courier-7 to spl-hfont
+           end-if.
 
            if esiste-note
               move  tor-note1           to st-note-1
@@ -982,8 +1109,9 @@ OMAGGI        end-if
 
       ***---
        DISTRUGGI-FONT.
-           Destroy courier.
-           Destroy courier-10.
-           Destroy courier-7.
-           Destroy courier-7g.
-           Destroy courier-g.
+           destroy courier.
+           destroy courier-10.
+           destroy courier-7.
+           destroy courier-7g.
+           destroy courier-g.
+           destroy courier-8gb.

@@ -73,7 +73,8 @@
            copy "progmag.sl".
            copy "timposte.sl".
            copy "param.sl".
-           copy "tagli.sl".               
+           copy "tagli.sl".  
+           copy "tivaese.sl".  
 
        SELECT csvInput
            ASSIGN       TO path-csvInput
@@ -135,7 +136,8 @@
            copy "progmag.fd".
            copy "timposte.fd".
            copy "param.fd".
-           copy "tagli.fd".             
+           copy "tagli.fd".  
+           copy "tivaese.fd".           
 
       *(( XFD FILE = lineseq5 ))
        FD  csvInput.
@@ -158,6 +160,24 @@
            
        01  filler             pic 9 value 0.
          88 ControlloCausali  value 1, false 0.
+         
+       77  tot-imp                 pic 9(12)v99.
+       77  idx-i                   pic 9 value 0.
+       01  tab-iva.
+           03 el-iva               occurs 3.
+              05 el-cod-iva        pic x(3).
+              05 el-imp            pic 9(12)v99.
+                                                
+       77  como-iva                pic 9(12)v999.
+       77  como-iva-2dec           pic 9(12)v99.
+       01  filler                  pic 9 value 0.
+         88 trovataIva                   value 1, false 0.
+
+       77  contras-note-bolla      pic x(100).
+       77  ini-contras-bolla       pic x(50).
+       77  tot-bolla-x             pic x(20).
+       77  tot-bolla-z             pic zzz.zzz.zzz.zzz,zz.
+       77  tot-bolla-n             pic 9(15)v99.
                                                     
        77  eva-anno                pic 9(4) value 0.
        77  eva-da                  pic 9(8) value 0.
@@ -198,6 +218,7 @@
        77  status-timposte         pic xx.
        77  status-progmag          pic xx.
        77  status-param            pic xx.
+       77  status-tivaese          pic xx.
        77  status-csvInput         pic xx.
        77  wstampa                 pic x(256).
        77  path-csvInput           pic x(200).
@@ -594,6 +615,7 @@ LUBEXX     |9 misura stampante Lubex primo piano (Epson DFX 5000+)
        77  courier-7     handle of font.
        77  courier-7g    handle of font.
        77  courier-g     handle of font.
+       77  courier-8gb   handle of font.
 
        77  messaggio          pic X(150) value spaces.
        77  font-size-dply     pic Z(5).
@@ -1242,7 +1264,7 @@ LUBEXX*****            from environment "STAMPANTE_BOLLE_DEFAULT".
                              articoli tcaumag  tnomen tmarche timposte
                              listini  reltor   ttipocli |evaclides
                              tparamge prodener tscorte 
-                             progmag
+                             progmag tivaese
                  open i-o tpromo rpromo
               else
                  close tcontat tordini
@@ -3378,7 +3400,7 @@ BLISTR        inspect st-imb replacing trailing low-value by spaces
        CLOSE-FILES.
            close tordini  clienti mrordini assorcli progmag
                  destini  tvettori rordini mtordini tmarche timposte
-                 articoli tcontat  tcaumag ttipocli
+                 articoli tcontat  tcaumag ttipocli tivaese
                  tnomen   listini reltor  rordini1 param
                  tparamge prodener tpromo  rpromo tscorte |evaclides.
 
