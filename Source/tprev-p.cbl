@@ -608,9 +608,9 @@
               end-if
               
               move rpr-qta to pev-rpr-qta
-              if pev-impegnato > pev-rpr-qta
-                 move pev-impegnato to pev-rpr-qta
-              end-if
+      *****        if pev-impegnato > pev-rpr-qta
+      *****           move pev-impegnato to pev-rpr-qta
+      *****        end-if
               if pev-impegnato < pev-rpr-qta
                  move pev-tpr-codice to tpr-codice    
                  read tpromo no lock
@@ -621,9 +621,9 @@
                       subtract tge-gg-vol-qta from como-data    
                       compute como-data = function
                               date-of-integer(como-data)
-                      if como-data < data-oggi
-                         move pev-impegnato to pev-rpr-qta
-                      end-if
+      *****                if como-data < data-oggi
+      *****                   move pev-impegnato to pev-rpr-qta
+      *****                end-if
                  end-read                                     
       *           Al cambio di pev-rpr-qta <> da rpr-qta,
       *           aggiornare rpr-qta
