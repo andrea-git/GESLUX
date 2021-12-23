@@ -22,7 +22,7 @@
        77  param-size pic 9(5).
        77  nome-file  pic X(256).
 
-       77  stato-zoom signed-long.
+       77  stato-zoom signed-long.    
 
        77  idx pic 9(3).
 
@@ -3507,10 +3507,10 @@
            move zero to idx.
            move  zero                    to xzoom-row.
            move  zero                    to xzoom-cln.
-           move  16                      to xzoom-lw.
-           move  80                      to xzoom-sw.
+           move  20                      to xzoom-lw.
+           move  55                      to xzoom-sw.
            move "tcla1art"               to xzoom-file-name(1).
-           move  2                       to xzoom-fields.
+           move  3                       to xzoom-fields.
 
       * CAMPO 1
            add 1 to idx
@@ -3529,8 +3529,16 @@
            add 1 to idx
            move  30                      to xzoom-field-length(idx).
            move  4                       to xzoom-field-offset(idx).
-           move  51                      to xzoom-field-column(idx).
+           move  43                      to xzoom-field-column(idx).
            move "Descrizione"            to xzoom-field-name(idx).  
+           set  xzoom-ft-alpha(idx)      to true. 
+
+      * CAMPO 3
+           add 1 to idx
+           move  2                       to xzoom-field-length(idx).
+           move  86                      to xzoom-field-offset(idx).
+           move  6                       to xzoom-field-column(idx).
+           move "Livello"                to xzoom-field-name(idx).  
            set  xzoom-ft-alpha(idx)      to true. 
 
            move  -1                     to xzoom-delimiter-offset.
@@ -3538,6 +3546,16 @@
            move "000"                   to xzoom-from-value.
            move "000"                   to xzoom-to-value.
 
+           |FILTRO SUL LIVELLO
+           if como-record(87:2) not = "00"
+              move como-record(87:2)       to xzoom-wild-value(1)
+              move 2                       to xzoom-wild-value-length(1)
+              move 2                       to xzoom-wild-length(1)
+              move 86                      to xzoom-wild-offset(1)
+              set xzoom-when-true(1)       to true
+              set xzoom-begin-with(1)      to true
+              set xzoom-ignore-case(1)     to false
+           end-if.
 
       ***---
        PREPARA-TUDM.

@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E5B1A173517-640-2682717826
+PROGRAM_UNIQUE_CODE=TOTEM-7E5C17143516-527-1099326232
 
 {{@DESCRIPTION:
 
@@ -8119,7 +8119,7 @@ Begin Screen Form1
             Value Multiple    = FALSE
             Visible           = NONE
             Width in Cells    = TRUE
-            My Property       = "CONTROLLO-OLD="
+            My Property       = "CONTROLLO-OLD=;CONTROLLO=;ZOOM="
             Before Procedure  = ef-classe-2-BeforeProcedure
             After Procedure   = ef-classe-2-AfterProcedure
          End
@@ -8182,15 +8182,16 @@ Begin Screen Form1
             Value Multiple    = FALSE
             Visible           = NONE
             Width in Cells    = TRUE
+            My Property       = "CONTROLLO-OLD=;CONTROLLO=;ZOOM="
             Before Procedure  = ef-classe-3-BeforeProcedure
             After Procedure   = ef-classe-3-AfterProcedure
          End
-         Begin Data.Entry-Field ef-clase-4
+         Begin Data.Entry-Field ef-classe-4
             SCREEN-COL        = 157,00
             SCREEN-LINE       = 15,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
-            (Name)            = ef-clase-4
+            (Name)            = ef-classe-4
             Auto              = FALSE
             Auto Decimal      = 0
             Border            = Boxed
@@ -8244,7 +8245,7 @@ Begin Screen Form1
             Value Multiple    = FALSE
             Visible           = NONE
             Width in Cells    = TRUE
-            My Property       = "CONTROLLO-OLD="
+            My Property       = "CONTROLLO-OLD=;CONTROLLO=;ZOOM="
             Before Procedure  = ef-clase-4-BeforeProcedure
             After Procedure   = ef-clase-4-AfterProcedure
          End

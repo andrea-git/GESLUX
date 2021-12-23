@@ -2,7 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7D99E154449-531-101638222
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E5C17142710-757-1406215922
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -134,9 +134,9 @@ m_bFixed=1
 
 @}}
 [FDITEM13_]
-m_strName=cl1-num-vuoto-1
-m_strRawPic=9(15)
-m_strPic=9(15)
+m_strName=cl1-livello
+m_strRawPic=99
+m_strPic=99
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -144,9 +144,9 @@ m_bFixed=1
 
 @}}
 [FDITEM14_]
-m_strName=cl1-num-vuoto-2
-m_strRawPic=9(15)
-m_strPic=9(15)
+m_strName=cl1-num-vuoto-1
+m_strRawPic=9(13)
+m_strPic=9(13)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -154,7 +154,7 @@ m_bFixed=1
 
 @}}
 [FDITEM15_]
-m_strName=cl1-num-vuoto-3
+m_strName=cl1-num-vuoto-2
 m_strRawPic=9(15)
 m_strPic=9(15)
 m_nItemLevel=15
@@ -164,9 +164,9 @@ m_bFixed=1
 
 @}}
 [FDITEM16_]
-m_strName=cl1-alfa-vuoto-1
-m_strRawPic=x(20)
-m_strPic=X(20)
+m_strName=cl1-num-vuoto-3
+m_strRawPic=9(15)
+m_strPic=9(15)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -174,7 +174,7 @@ m_bFixed=1
 
 @}}
 [FDITEM17_]
-m_strName=cl1-alfa-vuoto-2
+m_strName=cl1-alfa-vuoto-1
 m_strRawPic=x(20)
 m_strPic=X(20)
 m_nItemLevel=15
@@ -184,7 +184,7 @@ m_bFixed=1
 
 @}}
 [FDITEM18_]
-m_strName=cl1-alfa-vuoto-3
+m_strName=cl1-alfa-vuoto-2
 m_strRawPic=x(20)
 m_strPic=X(20)
 m_nItemLevel=15
@@ -193,12 +193,23 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM18_
 
 @}}
+[FDITEM19_]
+m_strName=cl1-alfa-vuoto-3
+m_strRawPic=x(20)
+m_strPic=X(20)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM19_
+
+@}}
 [CStoAcucobolSL_]
 m_nType=1
 m_strAssignToName="tcla1art"
 m_nFormat=3
 m_nAccessMode=3
 m_strFileStatus=STATUS-tcla1art
+m_nNumber=1
 m_nCompression=70
 {{@SL_m_strDescription
 

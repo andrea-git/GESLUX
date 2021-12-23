@@ -362,6 +362,7 @@
            when 78-ID-ef-classe-1
                 move "tcla1art"  to como-file         
                 inquire ef-classe-1, value in cl1-codice
+                move 1 to cl1-livello
                 call "zoom-gt"   using como-file, cl1-rec
                                 giving stato-zoom
                 end-call
@@ -370,6 +371,45 @@
                    move cl1-codice      to ef-classe-1-buf
                    move cl1-descrizione to lab-classe-buf
                    display ef-classe-1 lab-classe
+                end-if
+      
+           when 78-ID-ef-classe-2
+                move "tcla1art"  to como-file         
+                inquire ef-classe-2, value in cl1-codice
+                move 2 to cl1-livello
+                call "zoom-gt"   using como-file, cl1-rec
+                                giving stato-zoom
+                end-call
+                cancel "zoom-gt"   
+                if stato-zoom = 0
+                   move cl1-codice      to ef-classe-2-buf
+                   display ef-classe-2
+                end-if
+      
+           when 78-ID-ef-classe-3
+                move "tcla1art"  to como-file         
+                inquire ef-classe-3, value in cl1-codice
+                move 3 to cl1-livello
+                call "zoom-gt"   using como-file, cl1-rec
+                                giving stato-zoom
+                end-call
+                cancel "zoom-gt"
+                if stato-zoom = 0
+                   move cl1-codice      to ef-classe-3-buf
+                   display ef-classe-3
+                end-if
+      
+           when 78-ID-ef-classe-4
+                move "tcla1art"  to como-file         
+                inquire ef-classe-4, value in cl1-codice
+                move 4 to cl1-livello
+                call "zoom-gt"   using como-file, cl1-rec
+                                giving stato-zoom
+                end-call
+                cancel "zoom-gt"
+                if stato-zoom = 0
+                   move cl1-codice      to ef-classe-4-buf
+                   display ef-classe-4
                 end-if
       
            when 78-ID-ef-udm
@@ -723,9 +763,54 @@
                 if not trovato
                    set errori to true
                    move 78-ID-ef-classe-1 to CONTROL-ID
-                   display message box "Classe NON valida"
+                   display message box "Classe 1 NON valida"
                            title = tit-err
                            icon MB-WARNING-ICON
+                end-if
+                      
+           when 78-ID-ef-classe-2
+                inquire ef-classe-2, value in ef-classe-2-buf        
+                move ef-classe-2-buf to cl1-livello
+                if cl1-livello not = 0
+                   move "tcla2art" to nome-file
+                   perform RELAZIONI-ARTICOLI
+                   if not trovato
+                      set errori to true
+                      move 78-ID-ef-classe-2 to CONTROL-ID
+                      display message box "Classe 2 NON valida"
+                              title = tit-err
+                              icon MB-WARNING-ICON
+                   end-if
+                end-if
+      
+           when 78-ID-ef-classe-3
+                inquire ef-classe-3, value in ef-classe-3-buf        
+                move ef-classe-3-buf to cl1-livello
+                if cl1-livello not = 0
+                   move "tcla3art" to nome-file
+                   perform RELAZIONI-ARTICOLI
+                   if not trovato
+                      set errori to true
+                      move 78-ID-ef-classe-3 to CONTROL-ID
+                      display message box "Classe 3 NON valida"
+                              title = tit-err
+                              icon MB-WARNING-ICON
+                   end-if                   
+                end-if
+      
+           when 78-ID-ef-classe-4
+                inquire ef-classe-4, value in ef-classe-4-buf        
+                move ef-classe-4-buf to cl1-livello
+                if cl1-livello not = 0
+                   move "tcla4art" to nome-file
+                   perform RELAZIONI-ARTICOLI
+                   if not trovato
+                      set errori to true
+                      move 78-ID-ef-classe-4 to CONTROL-ID
+                      display message box "Classe 4 NON valida"
+                              title = tit-err
+                              icon MB-WARNING-ICON
+                   end-if
                 end-if
 
            |78-ID-ef-udm è l'ID del control ef-udm
@@ -1619,6 +1704,9 @@
            when "tmagaz"     
                 perform READ-TMAGAZ
            when "tcla1art"   
+           when "tcla2art"   
+           when "tcla3art"   
+           when "tcla4art"   
                 perform READ-TCLA1ART
            when "tivaese"    
                 perform READ-TIVAESE
@@ -1695,6 +1783,29 @@
            read tcla1art no lock
                 invalid move spaces to cl1-descrizione
                         set trovato to false
+            not invalid
+                evaluate nome-file
+                when "tcla1art" 
+                      if cl1-livello not = 1
+                         move spaces to cl1-descrizione
+                         set trovato to false
+                      end-if
+                when "tcla2art" 
+                      if cl1-livello not = 2
+                         move spaces to cl1-descrizione
+                         set trovato to false
+                      end-if  
+                when "tcla3art" 
+                      if cl1-livello not = 3
+                         move spaces to cl1-descrizione
+                         set trovato to false
+                      end-if  
+                when "tcla4art" 
+                      if cl1-livello not = 4
+                         move spaces to cl1-descrizione
+                         set trovato to false
+                      end-if  
+                end-evaluate
            end-read.
        
       ***---
@@ -1786,7 +1897,7 @@
                    move mag-descrizione to lab-mag-buf
                 end-if
                 display lab-mag
-           when "tcla1art"                
+           when "tcla1art"     
                 move spaces to lab-classe-buf
                 move ef-classe-1-buf to cl1-codice
                 if cl1-codice not = 0
@@ -1794,6 +1905,21 @@
                    move cl1-descrizione to lab-classe-buf
                 end-if
                 display lab-classe
+           when "tcla2art"     
+                move ef-classe-2-buf to cl1-codice
+                if cl1-codice not = 0
+                   perform RELATIONS
+                end-if
+           when "tcla3art"     
+                move ef-classe-3-buf to cl1-codice
+                if cl1-codice not = 0
+                   perform RELATIONS
+                end-if
+           when "tcla4art"      
+                move ef-classe-4-buf to cl1-codice
+                if cl1-codice not = 0
+                   perform RELATIONS
+                end-if          
            when "tivaese"
                 initialize lab-iva-buf
                 move "IV"       to tbliv-codice1

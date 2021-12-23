@@ -36,6 +36,18 @@
            when 78-ID-ef-classe-1
                 inquire ef-classe-1, value in ef-classe-1-buf
 
+           |78-ID-ef-classe-2 è l'ID del control ef-classe-2
+           when 78-ID-ef-classe-2
+                inquire ef-classe-2, value in ef-classe-2-buf
+
+           |78-ID-ef-classe-3 è l'ID del control ef-classe-3
+           when 78-ID-ef-classe-3
+                inquire ef-classe-3, value in ef-classe-3-buf
+
+           |78-ID-ef-classe-4 è l'ID del control ef-classe-4
+           when 78-ID-ef-classe-4
+                inquire ef-classe-4, value in ef-classe-4-buf
+
            |78-ID-ef-udm è l'ID del control ef-udm
            when 78-ID-ef-udm
                 inquire ef-udm, value in ef-udm-buf

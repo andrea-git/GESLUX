@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          tcla1art.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 1 aprile 2014 19:19:40.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        giovedì 23 dicembre 2021 15:40:06.
        REMARKS.
       *{TOTEM}END
 
@@ -42,9 +42,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\Lubex\GESLUX\Copylib\UTYDATA.DEF".
-               COPY "F:\Lubex\GESLUX\Copylib\comune.def".
-               COPY "F:\Lubex\GESLUX\Copylib\custom.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -94,6 +92,7 @@
        01 rec-grid.
            05 col-id           PIC  z(4).
            05 col-des          PIC  X(30).
+           05 col-liv          PIC  zz.
        77 Screen1-Handle
                   USAGE IS HANDLE OF WINDOW.
        77 esegui_73x21-bmp PIC  S9(9)
@@ -124,7 +123,8 @@
                    10 old-cl1-utente-ultima-modifica           PIC  
            x(10).
                05 old-cl1-vuoti.
-                   10 old-cl1-num-vuoto-1          PIC  9(15).
+                   10 old-cl1-livello  PIC  99.
+                   10 old-cl1-num-vuoto-1          PIC  9(13).
                    10 old-cl1-num-vuoto-2          PIC  9(15).
                    10 old-cl1-num-vuoto-3          PIC  9(15).
                    10 old-cl1-alfa-vuoto-1         PIC  x(20).
@@ -196,29 +196,28 @@
            form1-gd-1, 
            Grid, 
            COL 2,00, 
-           LINE 1,92,
+           LINE 1,85,
            LINES 37,00 ,
-           SIZE 73,00 ,
+           SIZE 83,17 ,
            ADJUSTABLE-COLUMNS,
-           3-D,
-           DATA-COLUMNS (1, 5),
-           ALIGNMENT ("R", "U"),
-           SEPARATION (5, 5),
-           DATA-TYPES ("9(4)", "X(30)"),
+           BOXED,
+           DATA-COLUMNS (1, 5, 35),
+           ALIGNMENT ("R", "U", "R"),
+           SEPARATION (5, 5, 5),
+           DATA-TYPES ("9(4)", "X(30)", "z9"),
            NUM-COL-HEADINGS 1,
            COLUMN-HEADINGS,
            CURSOR-FRAME-WIDTH 2,
            DIVIDER-COLOR 1,
            HEADING-COLOR 257,
            HEADING-DIVIDER-COLOR 1,
-           HSCROLL,
            ID IS 1,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RECORD-DATA rec-grid,
            TILED-HEADINGS,
            USE-TAB,
-           VIRTUAL-WIDTH 69,
+           VIRTUAL-WIDTH 80,
            VPADDING 50,
            VSCROLL,
            EVENT PROCEDURE Form1-Gd-1-Event-Proc,
@@ -983,6 +982,9 @@
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 2, Y = 1,
                 CELL-DATA = "Descrizione",
+      * CELLS' SETTING
+              MODIFY form1-gd-1, X = 3, Y = 1,
+                CELL-DATA = "Livello",
       * COLUMNS' SETTING
               MODIFY form1-gd-1, X = 1  
                 COLUMN-FONT = Small-Font,
@@ -1025,7 +1027,7 @@
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
               LINES 39,00,
-              SIZE 75,00,
+              SIZE 85,17,
               COLOR 65793,
               CONTROL FONT Small-Font,
               LINK TO THREAD,
@@ -1052,7 +1054,7 @@
       * Status-bar
            DISPLAY Form1 UPON Form1-Handle
       * DISPLAY-COLUMNS settings
-              MODIFY form1-gd-1, DISPLAY-COLUMNS (1, 11)
+              MODIFY form1-gd-1, DISPLAY-COLUMNS (1, 11, 71)
            .
 
        Form1-PROC.
@@ -1850,7 +1852,7 @@
               move 2 to riga 
            end-if.
 
-           modify form1-gd-1, start-x = 1, x     = 2,
+           modify form1-gd-1, start-x = 1, x     = 3,
                                   start-y = riga,
                                         y = riga,
                                   region-color 257,
@@ -1884,12 +1886,27 @@
                                        icon mb-warning-icon
                       end-read
                    end-if
-                end-if
+                end-if 
            when 2
                 if cl1-descrizione = spaces
                    set errori to true
                    move 2 to colonna
                    display message box MSG-Descrizione-mancante|"Descrizione mancante"
+                           title = tit-err
+                           icon mb-warning-icon
+                end-if
+           when 3
+                if cl1-livello > 4
+                   set errori to true
+                   move 3 to colonna
+                   display message box "Livello massimo 4"
+                           title = tit-err
+                           icon mb-warning-icon
+                end-if
+                if cl1-livello = 0
+                   set errori to true
+                   move 3 to colonna
+                   display message box "Livello obbligatorio"
                            title = tit-err
                            icon mb-warning-icon
                 end-if
@@ -1925,8 +1942,9 @@
 
        INTESTAZIONE.
       * <TOTEM:PARA. INTESTAZIONE>
-           modify form1-gd-1(1, 1), cell-data = "Codice".
-           modify form1-gd-1(1, 2), cell-data = "Descrizione" 
+           modify form1-gd-1(1, 1), cell-data = "Codice".         
+           modify form1-gd-1(1, 2), cell-data = "Descrizione".
+           modify form1-gd-1(1, 3), cell-data = "Livello" 
            .
       * <TOTEM:END>
 
@@ -1944,6 +1962,7 @@
                       not at end
                           move cl1-codice      to col-id
                           move cl1-descrizione to col-des
+                          move cl1-livello     to col-liv
                           modify form1-gd-1, record-to-add = rec-grid
                      end-read                                           
                   end-perform
@@ -2077,7 +2096,7 @@
 
 
            perform varying colonna from 1 by 1 
-                     until colonna > 2
+                     until colonna > 3
               perform CONTROLLO
               if errori exit perform end-if
            end-perform.
@@ -2087,8 +2106,7 @@
               perform VALORIZZA-DATI-COMUNI
       *    luciano end
               write cl1-rec 
-                 invalid 
-                    rewrite cl1-rec
+                    invalid rewrite cl1-rec
               end-write
               set sisalvato to true
               set vecchio   to true
@@ -2146,7 +2164,8 @@
        VALORE-RIGA.
       * <TOTEM:PARA. VALORE-RIGA>
            inquire form1-gd-1(riga, 1), cell-data cl1-codice.
-           inquire form1-gd-1(riga, 2), cell-data cl1-descrizione  
+           inquire form1-gd-1(riga, 2), cell-data cl1-descrizione. 
+           inquire form1-gd-1(riga, 3), cell-data cl1-livello  
            .
       * <TOTEM:END>
 

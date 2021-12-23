@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          garticoli.
-       AUTHOR.              Utente.
-       DATE-WRITTEN.        venerdì 26 novembre 2021 22:56:11.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        giovedì 23 dicembre 2021 15:46:23.
        REMARKS.
       *{TOTEM}END
 
@@ -168,7 +168,7 @@
       * Data.Entry-Field
               10 ef-classe-3-BUF PIC zz9.
       * Data.Entry-Field
-              10 ef-clase-4-BUF PIC zz9.
+              10 ef-classe-4-BUF PIC zz9.
       * Data.Entry-Field
               10 ef-udm-BUF PIC X(2).
       * Data.Entry-Field
@@ -701,7 +701,7 @@
        78  78-ID-ef-classe-1 VALUE 5010.
        78  78-ID-ef-classe-2 VALUE 5011.
        78  78-ID-ef-classe-3 VALUE 5012.
-       78  78-ID-ef-clase-4 VALUE 5013.
+       78  78-ID-ef-classe-4 VALUE 5013.
        78  78-ID-ef-udm VALUE 5014.
        78  78-ID-ef-imballo VALUE 5015.
        78  78-ID-ef-udm-imballo VALUE 5016.
@@ -1084,9 +1084,10 @@
            MAX-TEXT 3,
            VALUE ef-classe-3-BUF,
            .
+
       * ENTRY FIELD
        10
-           ef-clase-4, 
+           ef-classe-4, 
            Entry-Field, 
            COL 157,00, 
            LINE 15,69,
@@ -1096,12 +1097,12 @@
            COLOR IS 513,
            ENABLED mod-campi,
            FONT IS Small-Font,
-           ID IS 78-ID-ef-clase-4,                
+           ID IS 78-ID-ef-classe-4,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RIGHT,
            MAX-TEXT 3,
-           VALUE ef-clase-4-BUF,
+           VALUE ef-classe-4-BUF,
            .
 
       * ENTRY FIELD
@@ -14625,9 +14626,9 @@
                MOVE 5012 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
-      * ef-clase-4's Validation
+      * ef-classe-4's Validation
            SET TOTEM-CHECK-OK TO FALSE
-           PERFORM ef-clase-4-VALIDATION
+           PERFORM ef-classe-4-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
@@ -15731,21 +15732,21 @@
            PERFORM ef-classe-3-AFTER-VALIDATION
            .
 
-       ef-clase-4-BEFORE-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-clase-4, BeforeValidation>
+       ef-classe-4-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-classe-4, BeforeValidation>
       * <TOTEM:END>
            .
 
-       ef-clase-4-AFTER-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-clase-4, AfterValidation>
+       ef-classe-4-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-classe-4, AfterValidation>
       * <TOTEM:END>
            .
 
-      * ef-clase-4's Validation
-       ef-clase-4-VALIDATION.
-           PERFORM ef-clase-4-BEFORE-VALIDATION
+      * ef-classe-4's Validation
+       ef-classe-4-VALIDATION.
+           PERFORM ef-classe-4-BEFORE-VALIDATION
            SET TOTEM-CHECK-OK TO TRUE
-           PERFORM ef-clase-4-AFTER-VALIDATION
+           PERFORM ef-classe-4-AFTER-VALIDATION
            .
 
        ef-udm-BEFORE-VALIDATION.
@@ -17289,8 +17290,8 @@
            MOVE ef-classe-2-BUF TO art-classe-2 of articoli
       * DB_Entry-Field : ef-classe-3
            MOVE ef-classe-3-BUF TO art-classe-3 of articoli
-      * DB_Entry-Field : ef-clase-4
-           MOVE ef-clase-4-BUF TO art-classe-4 of articoli
+      * DB_Entry-Field : ef-classe-4
+           MOVE ef-classe-4-BUF TO art-classe-4 of articoli
       * DB_Entry-Field : ef-udm
            MOVE ef-udm-BUF TO art-unita-di-misura of articoli
       * DB_Entry-Field : ef-imballo
@@ -17627,8 +17628,8 @@
            MOVE art-classe-2 of articoli TO ef-classe-2-BUF
       * DB_Entry-Field : ef-classe-3
            MOVE art-classe-3 of articoli TO ef-classe-3-BUF
-      * DB_Entry-Field : ef-clase-4
-           MOVE art-classe-4 of articoli TO ef-clase-4-BUF
+      * DB_Entry-Field : ef-classe-4
+           MOVE art-classe-4 of articoli TO ef-classe-4-BUF
       * DB_Entry-Field : ef-udm
            MOVE art-unita-di-misura of articoli TO ef-udm-BUF
       * DB_Entry-Field : ef-imballo
@@ -18039,11 +18040,19 @@
            end-if
 
 
+           if art-classe-3 of articoli not = old-art-classe-3
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-ef-classe-3 è l'ID del campo ef-classe-3
+              move 78-ID-ef-classe-3 to store-id 
+           end-if
+
+
            if art-classe-4 of articoli not = old-art-classe-4
               and SiSalvato
               set NoSalvato to true
-              |78-ID-ef-clase-4 è l'ID del campo ef-clase-4
-              move 78-ID-ef-clase-4 to store-id 
+              |78-ID-ef-classe-4 è l'ID del campo ef-classe-4
+              move 78-ID-ef-classe-4 to store-id 
            end-if
 
 
@@ -18695,6 +18704,18 @@
            when 78-ID-ef-classe-1
                 move 1 to StatusHelp
                 perform STATUS-HELP
+           |78-ID-ef-classe-2 è l'ID del campo ef-classe-2
+           when 78-ID-ef-classe-2
+                move 1 to StatusHelp
+                perform STATUS-HELP
+           |78-ID-ef-classe-3 è l'ID del campo ef-classe-3
+           when 78-ID-ef-classe-3
+                move 1 to StatusHelp
+                perform STATUS-HELP
+           |78-ID-ef-classe-4 è l'ID del campo ef-classe-4
+           when 78-ID-ef-classe-4
+                move 1 to StatusHelp
+                perform STATUS-HELP
            |78-ID-ef-udm è l'ID del campo ef-udm
            when 78-ID-ef-udm
                 move 1 to StatusHelp
@@ -18906,6 +18927,21 @@
 
            |78-ID-ef-classe-1 è l'ID del campo ef-classe-1
            when 78-ID-ef-classe-1
+                move 0 to StatusHelp
+                perform STATUS-HELP
+
+           |78-ID-ef-classe-2 è l'ID del campo ef-classe-2
+           when 78-ID-ef-classe-2
+                move 0 to StatusHelp
+                perform STATUS-HELP
+
+           |78-ID-ef-classe-3 è l'ID del campo ef-classe-3
+           when 78-ID-ef-classe-3
+                move 0 to StatusHelp
+                perform STATUS-HELP
+
+           |78-ID-ef-classe-4 è l'ID del campo ef-classe-4
+           when 78-ID-ef-classe-4
                 move 0 to StatusHelp
                 perform STATUS-HELP
 
@@ -19163,6 +19199,15 @@
                 perform CONTROLLO
            |78-ID-ef-classe-1 è l'ID del campo ef-classe-1
            when 78-ID-ef-classe-1
+                perform CONTROLLO
+           |78-ID-ef-classe-2 è l'ID del campo ef-classe-2
+           when 78-ID-ef-classe-2
+                perform CONTROLLO
+           |78-ID-ef-classe-3 è l'ID del campo ef-classe-3
+           when 78-ID-ef-classe-3
+                perform CONTROLLO
+           |78-ID-ef-classe-4 è l'ID del campo ef-classe-4
+           when 78-ID-ef-classe-4
                 perform CONTROLLO
            |78-ID-ef-udm è l'ID del campo ef-udm
            when 78-ID-ef-udm
@@ -21056,9 +21101,9 @@ LABLAB
 
        ef-clase-4-AfterProcedure.
       * <TOTEM:PARA. ef-clase-4-AfterProcedure>
-              INQUIRE ef-clase-4, VALUE IN art-classe-4 of articoli
+              INQUIRE ef-classe-4, VALUE IN art-classe-4 of articoli
               SET TOTEM-CHECK-OK TO FALSE
-              PERFORM ef-clase-4-VALIDATION
+              PERFORM ef-classe-4-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
