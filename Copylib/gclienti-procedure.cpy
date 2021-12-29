@@ -21,9 +21,9 @@
               if cbo-stato-buf not = "Disattivo" 
                  move 1 to mod-campi
                  perform VALORIZZA-ENABLE-VARIABLE
-                 if cbo-stato-d-buf not = "Disattivo"
+      *           if cbo-stato-d-buf not = "Disattivo"
                     move 1 to mod-destini  
-                 end-if
+      *           end-if
               end-if
 
               if cbo-stato-buf = "Bloccato" 
@@ -1560,6 +1560,7 @@ LUBEXX          end-if
       *****                     icon mb-warning-icon
       *****          end-if
 
+
            |78-ID-ef-data-dich è l'ID del control ef-data-dich
            when 78-ID-ef-data-dich
                 inquire ef-data-dich, value in ef-data-dich-buf
@@ -2401,11 +2402,11 @@ LUBEXX          end-if
            perform SCARICA-COMBO-TIPO-ART-D.
            move tipo-art to hidden-tipo-art. 
 
-           if hidden-stato = "D" |Disattivo
-              move 0 to mod-destini
-           else
+      *     if hidden-stato = "D" |Disattivo
+      *        move 0 to mod-destini
+      *     else
               move 1 to mod-destini
-           end-if.
+      *     end-if.
                                 
            move ef-note-1-buf      to hidden-note-1.
 
@@ -2514,7 +2515,7 @@ LUBEXX          end-if
               evaluate true
               when bloccato-d  move 1 to mod-destini
               when attivo-d    move 1 to mod-destini
-              when disattivo-d move 0 to mod-destini
+              when disattivo-d move 1 to mod-destini
               end-evaluate
            end-if.
            
@@ -4000,6 +4001,7 @@ LUBEXX        perform DELETE-LOCKFILE
        VALORIZZA-OLD.
            move cli-rec                 to old-cli-rec.
            move rec-rec                 to old-rec-rec.
+
            set vecchio                  to true.
 
            if old-cli-utf = space
@@ -4337,7 +4339,7 @@ LUBEXX     perform DELETE-LOCKFILE.
               evaluate true
               when bloccato  move 1 to mod-destini
               when attivo    move 1 to mod-destini
-              when disattivo move 0 to mod-destini
+              when disattivo move 1 to mod-destini
               end-evaluate
            end-if.
 

@@ -18,6 +18,9 @@
        77 frn-BMP          PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
+       77 cl1-descrizione-2            PIC  X(30).
+       77 cl1-descrizione-4            PIC  X(30).
+       77 cl1-descrizione-3            PIC  X(30).
        77 ef-frn-buf       PIC  x(15).
        77 Courier-New12-Occidentale
                   USAGE IS HANDLE OF FONT.

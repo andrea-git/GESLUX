@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E5C17211659-824-3072511735
+PROGRAM_UNIQUE_CODE=TOTEM-7E5C1D164753-742-102604445
 
 {{@DESCRIPTION:
 
@@ -655,7 +655,6 @@ m_nCopyFileLevel=2
     mi serve per leggere:
     - l'ordine fornitore e sapere se l'ordine ha il flag di
       aperto attivato e quindi non lavoro sull'ordinato
-
 
 @}}
 [FDITEM46_WK]
@@ -1952,6 +1951,7 @@ m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\IMPOSTE-FORNITORE.DEF
 m_nCopyFileLevel=2
 {{@DataItem_m_strDescriptionFDITEM140_WK
 **** 77 como-imp-cou-cobat           PIC  9(15)v9999.
+
 @}}
 [FDITEM141_WK]
 m_strName=G2Agg-linkage
@@ -2266,9 +2266,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM164_WK]
-m_strName=ef-frn-buf
-m_strRawPic=x(15)
-m_strPic=X(15)
+m_strName=cl1-descrizione-2
+m_strRawPic=X(30)
+m_strPic=X(30)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2280,8 +2280,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM165_WK]
-m_strName=Courier-New12-Occidentale
-m_nUsage=26
+m_strName=cl1-descrizione-4
+m_strRawPic=X(30)
+m_strPic=X(30)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2293,8 +2294,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM166_WK]
-m_strName=Courier-New14-Occidentale
-m_nUsage=26
+m_strName=cl1-descrizione-3
+m_strRawPic=X(30)
+m_strPic=X(30)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2306,8 +2308,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM167_WK]
-m_strName=Courier-New10-Occidentale
-m_nUsage=26
+m_strName=ef-frn-buf
+m_strRawPic=x(15)
+m_strPic=X(15)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2319,9 +2322,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM168_WK]
-m_strName=calcolo-piombo
-m_strRawPic=x
-m_strPic=X
+m_strName=Courier-New12-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2333,11 +2335,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM169_WK]
-m_strName=nuovo-calcolo-piombo
-m_nItemLevel=88
+m_strName=Courier-New14-Occidentale
+m_nUsage=26
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="N"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -2346,8 +2348,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM170_WK]
-m_strName=Form1-Handle
-m_nUsage=24
+m_strName=Courier-New10-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2359,9 +2361,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM171_WK]
-m_strName=lab-des-buf
-m_strRawPic=x(50)
-m_strPic=X(50)
+m_strName=calcolo-piombo
+m_strRawPic=x
+m_strPic=X
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2373,11 +2375,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM172_WK]
-m_strName=MS-Sans-Serif14-Occidentale
-m_nUsage=26
-m_nItemLevel=77
+m_strName=nuovo-calcolo-piombo
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="N"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -2386,9 +2388,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM173_WK]
-m_strName=CodiceIvaStd
-m_strRawPic=x(3)
-m_strPic=X(3)
+m_strName=Form1-Handle
+m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2400,9 +2401,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM174_WK]
-m_strName=STATUS-param
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=lab-des-buf
+m_strRawPic=x(50)
+m_strPic=X(50)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2414,11 +2415,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM175_WK]
-m_strName=Valid-STATUS-param
-m_nItemLevel=88
+m_strName=MS-Sans-Serif14-Occidentale
+m_nUsage=26
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -2427,9 +2428,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM176_WK]
-m_strName=STATUS-sort-art-list
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=CodiceIvaStd
+m_strRawPic=x(3)
+m_strPic=X(3)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2441,11 +2442,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM177_WK]
-m_strName=Valid-STATUS-sort-art-list
-m_nItemLevel=88
+m_strName=STATUS-param
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -2454,12 +2456,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM178_WK]
-m_strName=data-val-da
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=77
+m_strName=Valid-STATUS-param
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -2468,12 +2469,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM179_WK]
-m_strName=Form1-Pg-4-Visible
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=STATUS-sort-art-list
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
-m_bValue=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -2484,12 +2483,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM180_WK]
-m_strName=data-val-a
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=77
+m_strName=Valid-STATUS-sort-art-list
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -2498,9 +2496,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM181_WK]
-m_strName=num-articoli
-m_strRawPic=9(3)
-m_strPic=9(3)
+m_strName=data-val-da
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2512,10 +2510,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM182_WK]
-m_strName=lista-bmp
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
+m_strName=Form1-Pg-4-Visible
+m_strRawPic=9
+m_strPic=9
 m_strDefaultValue=0
 m_nItemLevel=77
 m_bValue=1
@@ -2529,9 +2526,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM183_WK]
-m_strName=STATUS-blister
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=data-val-a
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2543,11 +2540,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM184_WK]
-m_strName=Valid-STATUS-blister
-m_nItemLevel=88
+m_strName=num-articoli
+m_strRawPic=9(3)
+m_strPic=9(3)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -2556,10 +2554,13 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM185_WK]
-m_strName=codice-x
-m_strRawPic=x(6)
-m_strPic=X(6)
+m_strName=lista-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
 m_nItemLevel=77
+m_bValue=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -2570,9 +2571,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM186_WK]
-m_strName=save-codice
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=STATUS-blister
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2584,21 +2585,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM187_WK]
-m_strName=STATUS-destinif
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM187_WK
-
-@}}
-[FDITEM188_WK]
-m_strName=Valid-STATUS-destinif
+m_strName=Valid-STATUS-blister
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -2607,13 +2594,27 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM187_WK
+
+@}}
+[FDITEM188_WK]
+m_strName=codice-x
+m_strRawPic=x(6)
+m_strPic=X(6)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM188_WK
 
 @}}
 [FDITEM189_WK]
-m_strName=STATUS-articoli1
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=save-codice
+m_strRawPic=9(5)
+m_strPic=9(5)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2625,6 +2626,47 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM190_WK]
+m_strName=STATUS-destinif
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM190_WK
+
+@}}
+[FDITEM191_WK]
+m_strName=Valid-STATUS-destinif
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM191_WK
+
+@}}
+[FDITEM192_WK]
+m_strName=STATUS-articoli1
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM192_WK
+
+@}}
+[FDITEM193_WK]
 m_strName=VALID-STATUS-articoli1
 m_nItemLevel=88
 m_nSync=-1
@@ -2634,10 +2676,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM190_WK
+{{@DataItem_m_strDescriptionFDITEM193_WK
 
 @}}
-[FDITEM191_WK]
+[FDITEM194_WK]
 m_strName=STATUS-mrordini
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -2648,10 +2690,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM191_WK
+{{@DataItem_m_strDescriptionFDITEM194_WK
 
 @}}
-[FDITEM192_WK]
+[FDITEM195_WK]
 m_strName=Valid-STATUS-mrordini
 m_nItemLevel=88
 m_nSync=-1
@@ -2661,10 +2703,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM192_WK
+{{@DataItem_m_strDescriptionFDITEM195_WK
 
 @}}
-[FDITEM193_WK]
+[FDITEM196_WK]
 m_strName=STATUS-reva
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -2675,10 +2717,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM193_WK
+{{@DataItem_m_strDescriptionFDITEM196_WK
 
 @}}
-[FDITEM194_WK]
+[FDITEM197_WK]
 m_strName=Valid-STATUS-reva
 m_nItemLevel=88
 m_nSync=-1
@@ -2688,10 +2730,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM194_WK
+{{@DataItem_m_strDescriptionFDITEM197_WK
 
 @}}
-[FDITEM195_WK]
+[FDITEM198_WK]
 m_strName=STATUS-rordforn
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -2702,10 +2744,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM195_WK
+{{@DataItem_m_strDescriptionFDITEM198_WK
 
 @}}
-[FDITEM196_WK]
+[FDITEM199_WK]
 m_strName=Valid-STATUS-rordforn
 m_nItemLevel=88
 m_nSync=-1
@@ -2715,10 +2757,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM196_WK
+{{@DataItem_m_strDescriptionFDITEM199_WK
 
 @}}
-[FDITEM197_WK]
+[FDITEM200_WK]
 m_strName=STATUS-impforn
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -2729,10 +2771,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM197_WK
+{{@DataItem_m_strDescriptionFDITEM200_WK
 
 @}}
-[FDITEM198_WK]
+[FDITEM201_WK]
 m_strName=Valid-STATUS-impforn
 m_nItemLevel=88
 m_nSync=-1
@@ -2742,10 +2784,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM198_WK
+{{@DataItem_m_strDescriptionFDITEM201_WK
 
 @}}
-[FDITEM199_WK]
+[FDITEM202_WK]
 m_strName=STATUS-timposte
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -2756,10 +2798,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM199_WK
+{{@DataItem_m_strDescriptionFDITEM202_WK
 
 @}}
-[FDITEM200_WK]
+[FDITEM203_WK]
 m_strName=Valid-STATUS-timposte
 m_nItemLevel=88
 m_nSync=-1
@@ -2769,10 +2811,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM200_WK
+{{@DataItem_m_strDescriptionFDITEM203_WK
 
 @}}
-[FDITEM201_WK]
+[FDITEM204_WK]
 m_strName=STATUS-tpiombo
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -2783,10 +2825,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM201_WK
+{{@DataItem_m_strDescriptionFDITEM204_WK
 
 @}}
-[FDITEM202_WK]
+[FDITEM205_WK]
 m_strName=Valid-STATUS-tpiombo
 m_nItemLevel=88
 m_nSync=-1
@@ -2796,10 +2838,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM202_WK
+{{@DataItem_m_strDescriptionFDITEM205_WK
 
 @}}
-[FDITEM203_WK]
+[FDITEM206_WK]
 m_strName=STATUS-tlistini
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -2810,10 +2852,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM203_WK
+{{@DataItem_m_strDescriptionFDITEM206_WK
 
 @}}
-[FDITEM204_WK]
+[FDITEM207_WK]
 m_strName=Valid-STATUS-tlistini
 m_nItemLevel=88
 m_nSync=-1
@@ -2823,10 +2865,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM204_WK
+{{@DataItem_m_strDescriptionFDITEM207_WK
 
 @}}
-[FDITEM205_WK]
+[FDITEM208_WK]
 m_strName=STATUS-prodener
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -2837,10 +2879,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM205_WK
+{{@DataItem_m_strDescriptionFDITEM208_WK
 
 @}}
-[FDITEM206_WK]
+[FDITEM209_WK]
 m_strName=Valid-STATUS-prodener
 m_nItemLevel=88
 m_nSync=-1
@@ -2850,10 +2892,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM206_WK
+{{@DataItem_m_strDescriptionFDITEM209_WK
 
 @}}
-[FDITEM207_WK]
+[FDITEM210_WK]
 m_strName=BitmapNumDistinta
 m_strRawPic=9
 m_strPic=9
@@ -2864,54 +2906,12 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM207_WK
-
-@}}
-[FDITEM208_WK]
-m_strName=FlagsChanged
-m_nItemLevel=1
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM208_WK
-
-@}}
-[FDITEM209_WK]
-m_strName=FILLER
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=5
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM209_WK
-
-@}}
-[FDITEM210_WK]
-m_strName=peso-changed
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue=1
-m_strFalse=0
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM210_WK
 
 @}}
 [FDITEM211_WK]
-m_strName=FILLER
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=5
+m_strName=FlagsChanged
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -2922,6 +2922,48 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM212_WK]
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM212_WK
+
+@}}
+[FDITEM213_WK]
+m_strName=peso-changed
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM213_WK
+
+@}}
+[FDITEM214_WK]
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM214_WK
+
+@}}
+[FDITEM215_WK]
 m_strName=imballo-changed
 m_nItemLevel=88
 m_nSync=-1
@@ -2932,10 +2974,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM212_WK
+{{@DataItem_m_strDescriptionFDITEM215_WK
 
 @}}
-[FDITEM213_WK]
+[FDITEM216_WK]
 m_strName=FILLER
 m_strRawPic=9
 m_strPic=9
@@ -2946,10 +2988,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM213_WK
+{{@DataItem_m_strDescriptionFDITEM216_WK
 
 @}}
-[FDITEM214_WK]
+[FDITEM217_WK]
 m_strName=sincro-progmag
 m_nItemLevel=88
 m_nSync=-1
@@ -2960,55 +3002,13 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM214_WK
-
-@}}
-[FDITEM215_WK]
-m_strName=qta-x
-m_strRawPic=z(4)
-m_strPic=Z(4)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM215_WK
-
-@}}
-[FDITEM216_WK]
-m_strName=nome-file
-m_strRawPic=x(10)
-m_strPic=X(10)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM216_WK
-
-@}}
-[FDITEM217_WK]
-m_strName=old-peso
-m_strRawPic=9(10)v999
-m_strPic=9(10)V999
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM217_WK
 
 @}}
 [FDITEM218_WK]
-m_strName=peso
-m_strRawPic=9(10)v999
-m_strPic=9(10)V999
+m_strName=qta-x
+m_strRawPic=z(4)
+m_strPic=Z(4)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -3020,9 +3020,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM219_WK]
-m_strName=giac-buona
-m_strRawPic=S9(8)
-m_strPic=S9(8)
+m_strName=nome-file
+m_strRawPic=x(10)
+m_strPic=X(10)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -3034,9 +3034,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM220_WK]
-m_strName=countchar
-m_strRawPic=9(3)
-m_strPic=9(3)
+m_strName=old-peso
+m_strRawPic=9(10)v999
+m_strPic=9(10)V999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -3048,6 +3048,48 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM221_WK]
+m_strName=peso
+m_strRawPic=9(10)v999
+m_strPic=9(10)V999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM221_WK
+
+@}}
+[FDITEM222_WK]
+m_strName=giac-buona
+m_strRawPic=S9(8)
+m_strPic=S9(8)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM222_WK
+
+@}}
+[FDITEM223_WK]
+m_strName=countchar
+m_strRawPic=9(3)
+m_strPic=9(3)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM223_WK
+
+@}}
+[FDITEM224_WK]
 m_strName=pagina
 m_strRawPic=9
 m_strPic=9
@@ -3060,10 +3102,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM221_WK
+{{@DataItem_m_strDescriptionFDITEM224_WK
 
 @}}
-[FDITEM222_WK]
+[FDITEM225_WK]
 m_strName=save-art-k1
 m_nItemLevel=1
 m_nSync=-1
@@ -3072,56 +3114,13 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM222_WK
-
-@}}
-[FDITEM223_WK]
-m_strName=save-descrizione-K1
-m_strRawPic=x(50)
-m_strPic=X(50)
-m_nItemLevel=5
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM223_WK
-
-@}}
-[FDITEM224_WK]
-m_strName=MAX-PAGE
-m_strDefaultValue=4
-m_nItemLevel=78
-m_bValue=1
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM224_WK
-
-@}}
-[FDITEM225_WK]
-m_strName=TabID
-m_nItemLevel=1
-m_nSync=-1
-m_bOccurs=1
-m_bFixed=1
-m_strRawSize=MAX-PAGE
-m_nSize=4
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM225_WK
 
 @}}
 [FDITEM226_WK]
-m_strName=min-id
-m_strRawPic=9(9)
-m_strPic=9(9)
+m_strName=save-descrizione-K1
+m_strRawPic=x(50)
+m_strPic=X(50)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -3133,10 +3132,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM227_WK]
-m_strName=max-id
-m_strRawPic=9(9)
-m_strPic=9(9)
-m_nItemLevel=5
+m_strName=MAX-PAGE
+m_strDefaultValue=4
+m_nItemLevel=78
+m_bValue=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -3147,6 +3146,49 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM228_WK]
+m_strName=TabID
+m_nItemLevel=1
+m_nSync=-1
+m_bOccurs=1
+m_bFixed=1
+m_strRawSize=MAX-PAGE
+m_nSize=4
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM228_WK
+
+@}}
+[FDITEM229_WK]
+m_strName=min-id
+m_strRawPic=9(9)
+m_strPic=9(9)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM229_WK
+
+@}}
+[FDITEM230_WK]
+m_strName=max-id
+m_strRawPic=9(9)
+m_strPic=9(9)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM230_WK
+
+@}}
+[FDITEM231_WK]
 m_strName=OPENSAVE-STATUS
 m_strRawPic=S9(2)
 m_strPic=S9(2)
@@ -3159,53 +3201,12 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM228_WK
-
-@}}
-[FDITEM229_WK]
-m_strName=result
-m_nUsage=17
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM229_WK
-
-@}}
-[FDITEM230_WK]
-m_strName=counter
-m_strRawPic=9(3)
-m_strPic=9(3)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM230_WK
-
-@}}
-[FDITEM231_WK]
-m_strName=Form1-Tb-1-Handle
-m_nUsage=24
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM231_WK
 
 @}}
 [FDITEM232_WK]
-m_strName=COMO-RECORD
-m_strRawPic=X(32000)
-m_strPic=X(32000)
+m_strName=result
+m_nUsage=17
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -3217,6 +3218,47 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM233_WK]
+m_strName=counter
+m_strRawPic=9(3)
+m_strPic=9(3)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM233_WK
+
+@}}
+[FDITEM234_WK]
+m_strName=Form1-Tb-1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM234_WK
+
+@}}
+[FDITEM235_WK]
+m_strName=COMO-RECORD
+m_strRawPic=X(32000)
+m_strPic=X(32000)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM235_WK
+
+@}}
+[FDITEM236_WK]
 m_strName=FLAG-MOD
 m_strRawPic=9
 m_strPic=9
@@ -3229,10 +3271,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM233_WK
+{{@DataItem_m_strDescriptionFDITEM236_WK
 
 @}}
-[FDITEM234_WK]
+[FDITEM237_WK]
 m_strName=CONTROL-COMO
 m_strRawPic=9(2)
 m_strPic=9(2)
@@ -3245,59 +3287,11 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM234_WK
-
-@}}
-[FDITEM235_WK]
-m_strName=E-ESCI
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=1
-m_nItemLevel=77
-m_bValue=1
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM235_WK
-
-@}}
-[FDITEM236_WK]
-m_strName=E-NUOVO
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=1
-m_nItemLevel=77
-m_bValue=1
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM236_WK
-
-@}}
-[FDITEM237_WK]
-m_strName=E-SALVA
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=1
-m_nItemLevel=77
-m_bValue=1
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM237_WK
 
 @}}
 [FDITEM238_WK]
-m_strName=E-CANCELLA
+m_strName=E-ESCI
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=1
@@ -3313,7 +3307,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM239_WK]
-m_strName=E-MODIFICA
+m_strName=E-NUOVO
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=1
@@ -3329,10 +3323,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM240_WK]
-m_strName=E-ANTEPRIMA
+m_strName=E-SALVA
 m_strRawPic=9
 m_strPic=9
-m_strDefaultValue=0
+m_strDefaultValue=1
 m_nItemLevel=77
 m_bValue=1
 m_nSync=-1
@@ -3345,10 +3339,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM241_WK]
-m_strName=E-STAMPA
+m_strName=E-CANCELLA
 m_strRawPic=9
 m_strPic=9
-m_strDefaultValue=0
+m_strDefaultValue=1
 m_nItemLevel=77
 m_bValue=1
 m_nSync=-1
@@ -3361,10 +3355,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM242_WK]
-m_strName=E-CERCA
+m_strName=E-MODIFICA
 m_strRawPic=9
 m_strPic=9
-m_strDefaultValue=0
+m_strDefaultValue=1
 m_nItemLevel=77
 m_bValue=1
 m_nSync=-1
@@ -3377,9 +3371,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM243_WK]
-m_strName=Form1-St-1-Handle
-m_nUsage=51
+m_strName=E-ANTEPRIMA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
 m_nItemLevel=77
+m_bValue=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -3390,10 +3387,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM244_WK]
-m_strName=Status-cod
+m_strName=E-STAMPA
 m_strRawPic=9
 m_strPic=9
+m_strDefaultValue=0
 m_nItemLevel=77
+m_bValue=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -3404,10 +3403,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM245_WK]
-m_strName=data-oggi
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=E-CERCA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
 m_nItemLevel=77
+m_bValue=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -3418,6 +3419,47 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM246_WK]
+m_strName=Form1-St-1-Handle
+m_nUsage=51
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM246_WK
+
+@}}
+[FDITEM247_WK]
+m_strName=Status-cod
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM247_WK
+
+@}}
+[FDITEM248_WK]
+m_strName=data-oggi
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM248_WK
+
+@}}
+[FDITEM249_WK]
 m_strName=E-SELEZIONA
 m_strRawPic=9
 m_strPic=9
@@ -3430,10 +3472,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM246_WK
+{{@DataItem_m_strDescriptionFDITEM249_WK
 
 @}}
-[FDITEM247_WK]
+[FDITEM250_WK]
 m_strName=toolbar-bmp
 m_nUsage=45
 m_strDefaultValue=0
@@ -3445,53 +3487,13 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM247_WK
-
-@}}
-[FDITEM248_WK]
-m_strName=Screen1-Handle
-m_nUsage=24
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM248_WK
-
-@}}
-[FDITEM249_WK]
-m_strName=Default-Font
-m_nUsage=38
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM249_WK
-
-@}}
-[FDITEM250_WK]
-m_strName=Small-Font
-m_nUsage=37
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM250_WK
 
 @}}
 [FDITEM251_WK]
-m_strName=primo-id-dati
-m_strDefaultValue=5002
-m_nItemLevel=78
-m_bValue=1
+m_strName=Screen1-Handle
+m_nUsage=24
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -3502,8 +3504,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM252_WK]
-m_strName=Form2-Handle
-m_nUsage=24
+m_strName=Default-Font
+m_nUsage=38
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -3515,6 +3517,46 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM253_WK]
+m_strName=Small-Font
+m_nUsage=37
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM253_WK
+
+@}}
+[FDITEM254_WK]
+m_strName=primo-id-dati
+m_strDefaultValue=5002
+m_nItemLevel=78
+m_bValue=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM254_WK
+
+@}}
+[FDITEM255_WK]
+m_strName=Form2-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM255_WK
+
+@}}
+[FDITEM256_WK]
 m_strName=Form1-Pg-1-Visible
 m_strRawPic=9
 m_strPic=9
@@ -3527,10 +3569,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM253_WK
+{{@DataItem_m_strDescriptionFDITEM256_WK
 
 @}}
-[FDITEM254_WK]
+[FDITEM257_WK]
 m_strName=Default-bmp
 m_strRawPic=S9(6)
 m_strPic=S9(6)
@@ -3544,10 +3586,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM254_WK
+{{@DataItem_m_strDescriptionFDITEM257_WK
 
 @}}
-[FDITEM255_WK]
+[FDITEM258_WK]
 m_strName=Form1-Pg-2-Visible
 m_strRawPic=9
 m_strPic=9
@@ -3560,10 +3602,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM255_WK
+{{@DataItem_m_strDescriptionFDITEM258_WK
 
 @}}
-[FDITEM256_WK]
+[FDITEM259_WK]
 m_strName=TITOLO
 m_strDefaultValue="Geslux - Gestione Articoli"
 m_nItemLevel=78
@@ -3574,10 +3616,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM256_WK
+{{@DataItem_m_strDescriptionFDITEM259_WK
 
 @}}
-[FDITEM257_WK]
+[FDITEM260_WK]
 m_strName=mod-campi
 m_strRawPic=9
 m_strPic=9
@@ -3590,10 +3632,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM257_WK
+{{@DataItem_m_strDescriptionFDITEM260_WK
 
 @}}
-[FDITEM258_WK]
+[FDITEM261_WK]
 m_strName=save-chiave
 m_nItemLevel=1
 m_nSync=-1
@@ -3602,10 +3644,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM258_WK
+{{@DataItem_m_strDescriptionFDITEM261_WK
 
 @}}
-[FDITEM259_WK]
+[FDITEM262_WK]
 m_strName=save-art-codice
 m_strRawPic=9(6)
 m_strPic=9(6)
@@ -3616,10 +3658,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM259_WK
+{{@DataItem_m_strDescriptionFDITEM262_WK
 
 @}}
-[FDITEM260_WK]
+[FDITEM263_WK]
 m_strName=AUTO-ID
 m_strRawPic=9(6)
 m_strPic=9(6)
@@ -3632,10 +3674,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM260_WK
+{{@DataItem_m_strDescriptionFDITEM263_WK
 
 @}}
-[FDITEM261_WK]
+[FDITEM264_WK]
 m_strName=STATUS-tcodpag
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -3646,10 +3688,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM261_WK
+{{@DataItem_m_strDescriptionFDITEM264_WK
 
 @}}
-[FDITEM262_WK]
+[FDITEM265_WK]
 m_strName=Valid-STATUS-tcodpag
 m_nItemLevel=88
 m_nSync=-1
@@ -3659,10 +3701,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM262_WK
+{{@DataItem_m_strDescriptionFDITEM265_WK
 
 @}}
-[FDITEM263_WK]
+[FDITEM266_WK]
 m_strName=STATUS-tivaese
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -3673,10 +3715,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM263_WK
+{{@DataItem_m_strDescriptionFDITEM266_WK
 
 @}}
-[FDITEM264_WK]
+[FDITEM267_WK]
 m_strName=Valid-STATUS-tivaese
 m_nItemLevel=88
 m_nSync=-1
@@ -3686,10 +3728,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM264_WK
+{{@DataItem_m_strDescriptionFDITEM267_WK
 
 @}}
-[FDITEM265_WK]
+[FDITEM268_WK]
 m_strName=STATUS-articoli
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -3700,10 +3742,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM265_WK
+{{@DataItem_m_strDescriptionFDITEM268_WK
 
 @}}
-[FDITEM266_WK]
+[FDITEM269_WK]
 m_strName=Valid-STATUS-articoli
 m_nItemLevel=88
 m_nSync=-1
@@ -3713,10 +3755,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM266_WK
+{{@DataItem_m_strDescriptionFDITEM269_WK
 
 @}}
-[FDITEM267_WK]
+[FDITEM270_WK]
 m_strName=STATUS-tcla1art
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -3727,10 +3769,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM267_WK
+{{@DataItem_m_strDescriptionFDITEM270_WK
 
 @}}
-[FDITEM268_WK]
+[FDITEM271_WK]
 m_strName=Valid-STATUS-tcla1art
 m_nItemLevel=88
 m_nSync=-1
@@ -3740,10 +3782,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM268_WK
+{{@DataItem_m_strDescriptionFDITEM271_WK
 
 @}}
-[FDITEM269_WK]
+[FDITEM272_WK]
 m_strName=STATUS-tnomen
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -3754,10 +3796,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM269_WK
+{{@DataItem_m_strDescriptionFDITEM272_WK
 
 @}}
-[FDITEM270_WK]
+[FDITEM273_WK]
 m_strName=Valid-STATUS-tnomen
 m_nItemLevel=88
 m_nSync=-1
@@ -3767,10 +3809,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM270_WK
+{{@DataItem_m_strDescriptionFDITEM273_WK
 
 @}}
-[FDITEM271_WK]
+[FDITEM274_WK]
 m_strName=STATUS-tudm
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -3781,10 +3823,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM271_WK
+{{@DataItem_m_strDescriptionFDITEM274_WK
 
 @}}
-[FDITEM272_WK]
+[FDITEM275_WK]
 m_strName=Valid-STATUS-tudm
 m_nItemLevel=88
 m_nSync=-1
@@ -3794,10 +3836,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM272_WK
+{{@DataItem_m_strDescriptionFDITEM275_WK
 
 @}}
-[FDITEM273_WK]
+[FDITEM276_WK]
 m_strName=STATUS-tmarche
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -3808,10 +3850,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM273_WK
+{{@DataItem_m_strDescriptionFDITEM276_WK
 
 @}}
-[FDITEM274_WK]
+[FDITEM277_WK]
 m_strName=Valid-STATUS-tmarche
 m_nItemLevel=88
 m_nSync=-1
@@ -3821,10 +3863,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM274_WK
+{{@DataItem_m_strDescriptionFDITEM277_WK
 
 @}}
-[FDITEM275_WK]
+[FDITEM278_WK]
 m_strName=STATUS-tsetmerc
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -3835,10 +3877,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM275_WK
+{{@DataItem_m_strDescriptionFDITEM278_WK
 
 @}}
-[FDITEM276_WK]
+[FDITEM279_WK]
 m_strName=Valid-STATUS-tsetmerc
 m_nItemLevel=88
 m_nSync=-1
@@ -3848,10 +3890,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM276_WK
+{{@DataItem_m_strDescriptionFDITEM279_WK
 
 @}}
-[FDITEM277_WK]
+[FDITEM280_WK]
 m_strName=STATUS-progmag
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -3862,10 +3904,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM277_WK
+{{@DataItem_m_strDescriptionFDITEM280_WK
 
 @}}
-[FDITEM278_WK]
+[FDITEM281_WK]
 m_strName=Valid-STATUS-progmag
 m_nItemLevel=88
 m_nSync=-1
@@ -3875,10 +3917,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM278_WK
+{{@DataItem_m_strDescriptionFDITEM281_WK
 
 @}}
-[FDITEM279_WK]
+[FDITEM282_WK]
 m_strName=STATUS-timballi
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -3889,10 +3931,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM279_WK
+{{@DataItem_m_strDescriptionFDITEM282_WK
 
 @}}
-[FDITEM280_WK]
+[FDITEM283_WK]
 m_strName=Valid-STATUS-timballi
 m_nItemLevel=88
 m_nSync=-1
@@ -3902,10 +3944,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM280_WK
+{{@DataItem_m_strDescriptionFDITEM283_WK
 
 @}}
-[FDITEM281_WK]
+[FDITEM284_WK]
 m_strName=mod-imposte
 m_strRawPic=9
 m_strPic=9
@@ -3918,10 +3960,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM281_WK
+{{@DataItem_m_strDescriptionFDITEM284_WK
 
 @}}
-[FDITEM282_WK]
+[FDITEM285_WK]
 m_strName=mod-cobat
 m_strRawPic=9
 m_strPic=9
@@ -3934,10 +3976,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM282_WK
+{{@DataItem_m_strDescriptionFDITEM285_WK
 
 @}}
-[FDITEM283_WK]
+[FDITEM286_WK]
 m_strName=cbo-utf-buf
 m_strRawPic=X(12)
 m_strPic=X(12)
@@ -3948,10 +3990,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM283_WK
+{{@DataItem_m_strDescriptionFDITEM286_WK
 
 @}}
-[FDITEM284_WK]
+[FDITEM287_WK]
 m_strName=cbo-cobat-buf
 m_strRawPic=x(4)
 m_strPic=X(4)
@@ -3962,10 +4004,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM284_WK
+{{@DataItem_m_strDescriptionFDITEM287_WK
 
 @}}
-[FDITEM285_WK]
+[FDITEM288_WK]
 m_strName=cbo-stato-buf
 m_strRawPic=X(9)
 m_strPic=X(9)
@@ -3976,10 +4018,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM285_WK
+{{@DataItem_m_strDescriptionFDITEM288_WK
 
 @}}
-[FDITEM286_WK]
+[FDITEM289_WK]
 m_strName=mod-peso-utf
 m_strRawPic=9
 m_strPic=9
@@ -3992,10 +4034,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM286_WK
+{{@DataItem_m_strDescriptionFDITEM289_WK
 
 @}}
-[FDITEM287_WK]
+[FDITEM290_WK]
 m_strName=mod-peso-non-utf
 m_strRawPic=9
 m_strPic=9
@@ -4008,10 +4050,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM287_WK
+{{@DataItem_m_strDescriptionFDITEM290_WK
 
 @}}
-[FDITEM288_WK]
+[FDITEM291_WK]
 m_strName=STATUS-tparamge
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -4022,10 +4064,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM288_WK
+{{@DataItem_m_strDescriptionFDITEM291_WK
 
 @}}
-[FDITEM289_WK]
+[FDITEM292_WK]
 m_strName=Valid-STATUS-tparamge
 m_nItemLevel=88
 m_nSync=-1
@@ -4035,54 +4077,13 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM289_WK
-
-@}}
-[FDITEM290_WK]
-m_strName=STATUS-timbalqta
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM290_WK
-
-@}}
-[FDITEM291_WK]
-m_strName=Valid-STATUS-timbalqta
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="00" THRU "09"
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM291_WK
-
-@}}
-[FDITEM292_WK]
-m_strName=lab-iva-buf
-m_strRawPic=x(100)
-m_strPic=X(100)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM292_WK
 
 @}}
 [FDITEM293_WK]
-m_strName=lab-imballo-buf
-m_strRawPic=x(100)
-m_strPic=X(100)
+m_strName=STATUS-timbalqta
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -4094,21 +4095,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM294_WK]
-m_strName=STATUS-clienti
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM294_WK
-
-@}}
-[FDITEM295_WK]
-m_strName=Valid-STATUS-clienti
+m_strName=Valid-STATUS-timbalqta
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -4117,13 +4104,27 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM294_WK
+
+@}}
+[FDITEM295_WK]
+m_strName=lab-iva-buf
+m_strRawPic=x(100)
+m_strPic=X(100)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM295_WK
 
 @}}
 [FDITEM296_WK]
-m_strName=STATUS-tmagaz
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=lab-imballo-buf
+m_strRawPic=x(100)
+m_strPic=X(100)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -4135,11 +4136,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM297_WK]
-m_strName=Valid-STATUS-tmagaz
-m_nItemLevel=88
+m_strName=STATUS-clienti
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -4148,15 +4150,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM298_WK]
-m_strName=Dettagli-bmp
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
-m_strDefaultValue=0
-m_nItemLevel=77
-m_bValue=1
+m_strName=Valid-STATUS-clienti
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -4165,13 +4163,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM299_WK]
-m_strName=alternativi-bmp
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
-m_strDefaultValue=0
+m_strName=STATUS-tmagaz
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
-m_bValue=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -4182,12 +4177,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM300_WK]
-m_strName=NumBitmapCodici
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=77
+m_strName=Valid-STATUS-tmagaz
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -4196,7 +4190,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM301_WK]
-m_strName=distinta-bmp
+m_strName=Dettagli-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -4213,9 +4207,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM302_WK]
-m_strName=e-distinta
-m_strRawPic=9
-m_strPic=9
+m_strName=alternativi-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
 m_strDefaultValue=0
 m_nItemLevel=77
 m_bValue=1
@@ -4229,9 +4224,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM303_WK]
-m_strName=STATUS-distinteb
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=NumBitmapCodici
+m_strRawPic=9
+m_strPic=9
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -4243,11 +4238,15 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM304_WK]
-m_strName=Valid-STATUS-distinteb
-m_nItemLevel=88
+m_strName=distinta-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_bValue=1
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -4256,10 +4255,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM305_WK]
-m_strName=STAMPA-BMP
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
+m_strName=e-distinta
+m_strRawPic=9
+m_strPic=9
 m_strDefaultValue=0
 m_nItemLevel=77
 m_bValue=1
@@ -4273,13 +4271,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM306_WK]
-m_strName=bottone-stampa-bmp
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
-m_strDefaultValue=0
+m_strName=STATUS-distinteb
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
-m_bValue=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -4290,15 +4285,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM307_WK]
-m_strName=ean-bmp
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
-m_strDefaultValue=0
-m_nItemLevel=77
-m_bValue=1
+m_strName=Valid-STATUS-distinteb
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -4307,7 +4298,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM308_WK]
-m_strName=BOTTONE-OK-BMP
+m_strName=STAMPA-BMP
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -4324,7 +4315,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM309_WK]
-m_strName=BOTTONE-CANCEL-BMP
+m_strName=bottone-stampa-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -4341,9 +4332,13 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM310_WK]
-m_strName=Verdana12-Occidentale
-m_nUsage=26
+m_strName=ean-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
 m_nItemLevel=77
+m_bValue=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -4354,10 +4349,13 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM311_WK]
-m_strName=ef-ean-buf
-m_strRawPic=9(13)
-m_strPic=9(13)
+m_strName=BOTTONE-OK-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
 m_nItemLevel=77
+m_bValue=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -4368,10 +4366,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM312_WK]
-m_strName=v-moq
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=1
+m_strName=BOTTONE-CANCEL-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
 m_nItemLevel=77
 m_bValue=1
 m_nSync=-1
@@ -4384,9 +4383,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM313_WK]
-m_strName=STATUS-rmovmag
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=Verdana12-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -4398,11 +4396,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM314_WK]
-m_strName=Valid-STATUS-rmovmag
-m_nItemLevel=88
+m_strName=ef-ean-buf
+m_strRawPic=9(13)b
+m_strPic=9(13)B
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -4411,10 +4410,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM315_WK]
-m_strName=STATUS-rordini
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=v-moq
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
 m_nItemLevel=77
+m_bValue=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -4425,6 +4426,47 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM316_WK]
+m_strName=STATUS-rmovmag
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM316_WK
+
+@}}
+[FDITEM317_WK]
+m_strName=Valid-STATUS-rmovmag
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM317_WK
+
+@}}
+[FDITEM318_WK]
+m_strName=STATUS-rordini
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM318_WK
+
+@}}
+[FDITEM319_WK]
 m_strName=Valid-STATUS-rordini
 m_nItemLevel=88
 m_nSync=-1
@@ -4434,10 +4476,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM316_WK
+{{@DataItem_m_strDescriptionFDITEM319_WK
 
 @}}
-[FDITEM317_WK]
+[FDITEM320_WK]
 m_strName=STATUS-rnotacr
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -4448,10 +4490,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM317_WK
+{{@DataItem_m_strDescriptionFDITEM320_WK
 
 @}}
-[FDITEM318_WK]
+[FDITEM321_WK]
 m_strName=Valid-STATUS-rnotacr
 m_nItemLevel=88
 m_nSync=-1
@@ -4461,10 +4503,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM318_WK
+{{@DataItem_m_strDescriptionFDITEM321_WK
 
 @}}
-[FDITEM319_WK]
+[FDITEM322_WK]
 m_strName=STATUS-brnotacr
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -4475,10 +4517,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM319_WK
+{{@DataItem_m_strDescriptionFDITEM322_WK
 
 @}}
-[FDITEM320_WK]
+[FDITEM323_WK]
 m_strName=Valid-STATUS-brnotacr
 m_nItemLevel=88
 m_nSync=-1
@@ -4488,10 +4530,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM320_WK
+{{@DataItem_m_strDescriptionFDITEM323_WK
 
 @}}
-[FDITEM321_WK]
+[FDITEM324_WK]
 m_strName=STATUS-tscorte
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -4502,10 +4544,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM321_WK
+{{@DataItem_m_strDescriptionFDITEM324_WK
 
 @}}
-[FDITEM322_WK]
+[FDITEM325_WK]
 m_strName=Valid-STATUS-tscorte
 m_nItemLevel=88
 m_nSync=-1
@@ -4515,10 +4557,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM322_WK
+{{@DataItem_m_strDescriptionFDITEM325_WK
 
 @}}
-[FDITEM323_WK]
+[FDITEM326_WK]
 m_strName=STATUS-rlistini
 m_strRawPic=X(2)
 m_strPic=X(2)
@@ -4529,10 +4571,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM323_WK
+{{@DataItem_m_strDescriptionFDITEM326_WK
 
 @}}
-[FDITEM324_WK]
+[FDITEM327_WK]
 m_strName=Valid-STATUS-rlistini
 m_nItemLevel=88
 m_nSync=-1
@@ -4542,10 +4584,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM324_WK
+{{@DataItem_m_strDescriptionFDITEM327_WK
 
 @}}
-[FDITEM325_WK]
+[FDITEM328_WK]
 m_strName=Form1-Pg-3-Visible
 m_strRawPic=9
 m_strPic=9
@@ -4558,54 +4600,12 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM325_WK
-
-@}}
-[FDITEM326_WK]
-m_strName=rec-grid
-m_nItemLevel=1
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM326_WK
-
-@}}
-[FDITEM327_WK]
-m_strName=col-nulla
-m_strRawPic=X
-m_strPic=X
-m_nItemLevel=5
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM327_WK
-
-@}}
-[FDITEM328_WK]
-m_strName=col-forn
-m_strRawPic=z(5)
-m_strPic=Z(5)
-m_nItemLevel=5
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM328_WK
 
 @}}
 [FDITEM329_WK]
-m_strName=col-descr-forn
-m_strRawPic=x(100)
-m_strPic=X(100)
-m_nItemLevel=5
+m_strName=rec-grid
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -4616,9 +4616,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM330_WK]
-m_strName=col-data-da
-m_strRawPic=99/99/9999
-m_strPic=99/99/9999
+m_strName=col-nulla
+m_strRawPic=X
+m_strPic=X
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -4630,9 +4630,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM331_WK]
-m_strName=col-data-a
-m_strRawPic=99/99/9999
-m_strPic=99/99/9999
+m_strName=col-forn
+m_strRawPic=z(5)
+m_strPic=Z(5)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -4644,9 +4644,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM332_WK]
-m_strName=col-art-forn
-m_strRawPic=x(20)
-m_strPic=X(20)
+m_strName=col-descr-forn
+m_strRawPic=x(100)
+m_strPic=X(100)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -4658,9 +4658,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM333_WK]
-m_strName=col-prz-fint
-m_strRawPic=zzz.zz9,9999
-m_strPic=ZZZ.ZZ9,9999
+m_strName=col-data-da
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -4672,9 +4672,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM334_WK]
-m_strName=col-prz-conf
-m_strRawPic=zzz.zz9,9999
-m_strPic=ZZZ.ZZ9,9999
+m_strName=col-data-a
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -4686,6 +4686,48 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM335_WK]
+m_strName=col-art-forn
+m_strRawPic=x(20)
+m_strPic=X(20)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM335_WK
+
+@}}
+[FDITEM336_WK]
+m_strName=col-prz-fint
+m_strRawPic=zzz.zz9,9999
+m_strPic=ZZZ.ZZ9,9999
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM336_WK
+
+@}}
+[FDITEM337_WK]
+m_strName=col-prz-conf
+m_strRawPic=zzz.zz9,9999
+m_strPic=ZZZ.ZZ9,9999
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM337_WK
+
+@}}
+[FDITEM338_WK]
 m_strName=old-forn
 m_strRawPic=9(5)
 m_strPic=9(5)
@@ -4696,7 +4738,7 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM335_WK
+{{@DataItem_m_strDescriptionFDITEM338_WK
  01 rec-grid.
      05 col-nulla        PIC  X.
      05 col-forn         PIC  z(5).
@@ -4727,7 +4769,7 @@ m_nCopyFileLevel=1
 
 
 @}}
-[FDITEM336_WK]
+[FDITEM339_WK]
 m_strName=elemento-bmp
 m_strRawPic=s9(9)
 m_strPic=S9(9)
@@ -4741,10 +4783,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM336_WK
+{{@DataItem_m_strDescriptionFDITEM339_WK
 
 @}}
-[FDITEM337_WK]
+[FDITEM340_WK]
 m_strName=font-evidenzia-griglia
 m_nUsage=26
 m_nItemLevel=77
@@ -4754,10 +4796,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM337_WK
+{{@DataItem_m_strDescriptionFDITEM340_WK
 
 @}}
-[FDITEM338_WK]
+[FDITEM341_WK]
 m_strName=riga-old
 m_strRawPic=9(3)
 m_strPic=9(3)
@@ -4768,10 +4810,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM338_WK
+{{@DataItem_m_strDescriptionFDITEM341_WK
 
 @}}
-[FDITEM339_WK]
+[FDITEM342_WK]
 m_strName=v-reale
 m_strRawPic=9
 m_strPic=9
@@ -4784,55 +4826,13 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM339_WK
-
-@}}
-[FDITEM340_WK]
-m_strName=lab-coll-buf
-m_strRawPic=x(100)
-m_strPic=X(100)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM340_WK
-
-@}}
-[FDITEM341_WK]
-m_strName=FILLER
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=1
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM341_WK
-
-@}}
-[FDITEM342_WK]
-m_strName=rec-ok
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue=1
-m_strFalse=zero
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM342_WK
 
 @}}
 [FDITEM343_WK]
-m_strName=como-articolo
-m_strRawPic=9(6)
-m_strPic=9(6)
+m_strName=lab-coll-buf
+m_strRawPic=x(100)
+m_strPic=X(100)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -4844,10 +4844,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM344_WK]
-m_strName=como-altezza
-m_strRawPic=9(10)v99
-m_strPic=9(10)V99
-m_nItemLevel=77
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -4858,12 +4858,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM345_WK]
-m_strName=como-larghezza
-m_strRawPic=9(10)v99
-m_strPic=9(10)V99
-m_nItemLevel=77
+m_strName=rec-ok
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue=1
+m_strFalse=zero
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -4872,9 +4872,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM346_WK]
-m_strName=como-profondita
-m_strRawPic=9(10)v99
-m_strPic=9(10)V99
+m_strName=como-articolo
+m_strRawPic=9(6)
+m_strPic=9(6)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -4886,9 +4886,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM347_WK]
-m_strName=como-qta-EPAL
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=como-altezza
+m_strRawPic=9(10)v99
+m_strPic=9(10)V99
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -4900,9 +4900,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM348_WK]
-m_strName=como-qta-STD
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=como-larghezza
+m_strRawPic=9(10)v99
+m_strPic=9(10)V99
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -4914,9 +4914,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM349_WK]
-m_strName=como-scorta
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=como-profondita
+m_strRawPic=9(10)v99
+m_strPic=9(10)V99
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -4928,9 +4928,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM350_WK]
-m_strName=como-peso
-m_strRawPic=9(6)v999
-m_strPic=9(6)V999
+m_strName=como-qta-EPAL
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -4942,9 +4942,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM351_WK]
-m_strName=peso-inserito
-m_strRawPic=9(6)v999
-m_strPic=9(6)V999
+m_strName=como-qta-STD
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -4956,8 +4956,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM352_WK]
-m_strName=old-art-rec
-m_nItemLevel=1
+m_strName=como-scorta
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -4968,8 +4970,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM353_WK]
-m_strName=old-art-chiave
-m_nItemLevel=5
+m_strName=como-peso
+m_strRawPic=9(6)v999
+m_strPic=9(6)V999
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -4980,10 +4984,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM354_WK]
-m_strName=old-art-codice
-m_strRawPic=9(6)
-m_strPic=9(6)
-m_nItemLevel=10
+m_strName=peso-inserito
+m_strRawPic=9(6)v999
+m_strPic=9(6)V999
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -4994,8 +4998,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM355_WK]
-m_strName=old-art-dati
-m_nItemLevel=5
+m_strName=old-art-rec
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -5006,8 +5010,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM356_WK]
-m_strName=old-art-descrizione
-m_nItemLevel=10
+m_strName=old-art-chiave
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -5018,10 +5022,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM357_WK]
-m_strName=old-art-descrizione1
-m_strRawPic=x(30)
-m_strPic=X(30)
-m_nItemLevel=15
+m_strName=old-art-codice
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -5032,10 +5036,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM358_WK]
-m_strName=old-art-descrizione2
-m_strRawPic=x(20)
-m_strPic=X(20)
-m_nItemLevel=15
+m_strName=old-art-dati
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -5046,9 +5048,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM359_WK]
-m_strName=old-art-settore-merceologico
-m_strRawPic=9(4)
-m_strPic=9(4)
+m_strName=old-art-descrizione
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -5060,10 +5060,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM360_WK]
-m_strName=old-art-marca-prodotto
-m_strRawPic=9(4)
-m_strPic=9(4)
-m_nItemLevel=10
+m_strName=old-art-descrizione1
+m_strRawPic=x(30)
+m_strPic=X(30)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -5074,10 +5074,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM361_WK]
-m_strName=old-art-classe-1
-m_strRawPic=9(4)
-m_strPic=9(4)
-m_nItemLevel=10
+m_strName=old-art-descrizione2
+m_strRawPic=x(20)
+m_strPic=X(20)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -5088,9 +5088,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM362_WK]
-m_strName=old-art-classe-2
-m_strRawPic=9(3)
-m_strPic=9(3)
+m_strName=old-art-settore-merceologico
+m_strRawPic=9(4)
+m_strPic=9(4)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -5102,9 +5102,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM363_WK]
-m_strName=old-art-classe-3
-m_strRawPic=9(3)
-m_strPic=9(3)
+m_strName=old-art-marca-prodotto
+m_strRawPic=9(4)
+m_strPic=9(4)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -5116,9 +5116,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM364_WK]
-m_strName=old-art-classe-4
-m_strRawPic=9(3)
-m_strPic=9(3)
+m_strName=old-art-classe-1
+m_strRawPic=9(4)
+m_strPic=9(4)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -5130,9 +5130,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM365_WK]
-m_strName=old-art-unita-di-misura
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=old-art-classe-2
+m_strRawPic=9(3)
+m_strPic=9(3)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -5144,9 +5144,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM366_WK]
-m_strName=old-art-cod-fornitore
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=old-art-classe-3
+m_strRawPic=9(3)
+m_strPic=9(3)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -5158,9 +5158,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM367_WK]
-m_strName=old-art-gestione-utf
-m_strRawPic=X(1)
-m_strPic=X(1)
+m_strName=old-art-classe-4
+m_strRawPic=9(3)
+m_strPic=9(3)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -5172,6 +5172,48 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM368_WK]
+m_strName=old-art-unita-di-misura
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM368_WK
+
+@}}
+[FDITEM369_WK]
+m_strName=old-art-cod-fornitore
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM369_WK
+
+@}}
+[FDITEM370_WK]
+m_strName=old-art-gestione-utf
+m_strRawPic=X(1)
+m_strPic=X(1)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM370_WK
+
+@}}
+[FDITEM371_WK]
 m_strName=old-art-si-utf
 m_nItemLevel=88
 m_nSync=-1
@@ -5181,10 +5223,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM368_WK
+{{@DataItem_m_strDescriptionFDITEM371_WK
 
 @}}
-[FDITEM369_WK]
+[FDITEM372_WK]
 m_strName=old-art-misto
 m_nItemLevel=88
 m_nSync=-1
@@ -5194,10 +5236,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM369_WK
+{{@DataItem_m_strDescriptionFDITEM372_WK
 
 @}}
-[FDITEM370_WK]
+[FDITEM373_WK]
 m_strName=old-art-no-utf
 m_nItemLevel=88
 m_nSync=-1
@@ -5207,55 +5249,13 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM370_WK
-
-@}}
-[FDITEM371_WK]
-m_strName=old-art-peso-utf
-m_strRawPic=9(5)v9(3)
-m_strPic=9(5)V9(3)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM371_WK
-
-@}}
-[FDITEM372_WK]
-m_strName=old-art-peso-non-utf
-m_strRawPic=9(5)v9(3)
-m_strPic=9(5)V9(3)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM372_WK
-
-@}}
-[FDITEM373_WK]
-m_strName=old-art-peso-standard
-m_strRawPic=9(5)v9(3)
-m_strPic=9(5)V9(3)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM373_WK
 
 @}}
 [FDITEM374_WK]
-m_strName=old-art-imballo-standard
-m_strRawPic=X(3)
-m_strPic=X(3)
+m_strName=old-art-peso-utf
+m_strRawPic=9(5)v9(3)
+m_strPic=9(5)V9(3)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -5267,9 +5267,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM375_WK]
-m_strName=old-art-udm-imballo
-m_strRawPic=x(5)
-m_strPic=X(5)
+m_strName=old-art-peso-non-utf
+m_strRawPic=9(5)v9(3)
+m_strPic=9(5)V9(3)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -5281,9 +5281,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM376_WK]
-m_strName=old-art-codice-iva
-m_strRawPic=x(3)
-m_strPic=X(3)
+m_strName=old-art-peso-standard
+m_strRawPic=9(5)v9(3)
+m_strPic=9(5)V9(3)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -5295,9 +5295,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM377_WK]
-m_strName=old-art-prezzo-vendita
-m_strRawPic=9(9)v9(2)
-m_strPic=9(9)V9(2)
+m_strName=old-art-imballo-standard
+m_strRawPic=X(3)
+m_strPic=X(3)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -5309,9 +5309,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM378_WK]
-m_strName=old-art-perce-sconto-agente
-m_strRawPic=9(2)v9(2)
-m_strPic=9(2)V9(2)
+m_strName=old-art-udm-imballo
+m_strRawPic=x(5)
+m_strPic=X(5)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -5323,9 +5323,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM379_WK]
-m_strName=old-art-prezzo-acquisto
-m_strRawPic=9(9)v9(2)
-m_strPic=9(9)V9(2)
+m_strName=old-art-codice-iva
+m_strRawPic=x(3)
+m_strPic=X(3)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -5337,9 +5337,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM380_WK]
-m_strName=old-art-perce-sconto-acquisto
-m_strRawPic=9(2)v9(2)
-m_strPic=9(2)V9(2)
+m_strName=old-art-prezzo-vendita
+m_strRawPic=9(9)v9(2)
+m_strPic=9(9)V9(2)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -5351,9 +5351,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM381_WK]
-m_strName=old-art-cod-doganale
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=old-art-perce-sconto-agente
+m_strRawPic=9(2)v9(2)
+m_strPic=9(2)V9(2)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -5365,9 +5365,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM382_WK]
-m_strName=old-art-soggetto-imposte
-m_strRawPic=X(1)
-m_strPic=X(1)
+m_strName=old-art-prezzo-acquisto
+m_strRawPic=9(9)v9(2)
+m_strPic=9(9)V9(2)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -5379,11 +5379,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM383_WK]
-m_strName=old-art-si-imposte
-m_nItemLevel=88
+m_strName=old-art-perce-sconto-acquisto
+m_strRawPic=9(2)v9(2)
+m_strPic=9(2)V9(2)
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-m_strTrue="S"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -5392,11 +5393,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM384_WK]
-m_strName=old-art-no-imposte
-m_nItemLevel=88
+m_strName=old-art-cod-doganale
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-m_strTrue="N"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -5405,9 +5407,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM385_WK]
-m_strName=old-art-perce-imposte
-m_strRawPic=9(3)v9(3)
-m_strPic=9(3)V9(3)
+m_strName=old-art-soggetto-imposte
+m_strRawPic=X(1)
+m_strPic=X(1)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -5419,6 +5421,46 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM386_WK]
+m_strName=old-art-si-imposte
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM386_WK
+
+@}}
+[FDITEM387_WK]
+m_strName=old-art-no-imposte
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="N"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM387_WK
+
+@}}
+[FDITEM388_WK]
+m_strName=old-art-perce-imposte
+m_strRawPic=9(3)v9(3)
+m_strPic=9(3)V9(3)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM388_WK
+
+@}}
+[FDITEM389_WK]
 m_strName=old-art-perce-cou
 m_strRawPic=9(5)v9(3)
 m_strPic=9(5)V9(3)
@@ -5429,53 +5471,13 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM386_WK
-
-@}}
-[FDITEM387_WK]
-m_strName=old-art-soggetto-cobat
-m_strRawPic=X(1)
-m_strPic=X(1)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM387_WK
-
-@}}
-[FDITEM388_WK]
-m_strName=old-art-si-cobat
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="S"
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM388_WK
-
-@}}
-[FDITEM389_WK]
-m_strName=old-art-no-cobat
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="N"
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM389_WK
 
 @}}
 [FDITEM390_WK]
-m_strName=old-art-amperaggio
-m_strRawPic=9(3)
-m_strPic=9(3)
+m_strName=old-art-soggetto-cobat
+m_strRawPic=X(1)
+m_strPic=X(1)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -5487,12 +5489,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM391_WK]
-m_strName=old-art-auto-moto-per-cobat
-m_strRawPic=X(1)
-m_strPic=X(1)
-m_nItemLevel=10
+m_strName=old-art-si-cobat
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="S"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -5501,11 +5502,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM392_WK]
-m_strName=old-art-auto-cobat
+m_strName=old-art-no-cobat
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
-m_strTrue="A"
+m_strTrue="N"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -5514,11 +5515,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM393_WK]
-m_strName=old-art-moto-cobat
-m_nItemLevel=88
+m_strName=old-art-amperaggio
+m_strRawPic=9(3)
+m_strPic=9(3)
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-m_strTrue="M"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -5527,9 +5529,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM394_WK]
-m_strName=old-art-note
-m_strRawPic=X(30)
-m_strPic=X(30)
+m_strName=old-art-auto-moto-per-cobat
+m_strRawPic=X(1)
+m_strPic=X(1)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -5541,12 +5543,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM395_WK]
-m_strName=old-art-codice-ean-1
-m_strRawPic=9(13)
-m_strPic=9(13)
-m_nItemLevel=10
+m_strName=old-art-auto-cobat
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="A"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -5555,12 +5556,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM396_WK]
-m_strName=old-art-codice-ean-2
-m_strRawPic=9(13)
-m_strPic=9(13)
-m_nItemLevel=10
+m_strName=old-art-moto-cobat
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="M"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -5569,9 +5569,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM397_WK]
-m_strName=old-art-codice-ean-3
-m_strRawPic=9(13)
-m_strPic=9(13)
+m_strName=old-art-note
+m_strRawPic=X(30)
+m_strPic=X(30)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -5583,7 +5583,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM398_WK]
-m_strName=old-art-codice-ean-4
+m_strName=old-art-codice-ean-1
 m_strRawPic=9(13)
 m_strPic=9(13)
 m_nItemLevel=10
@@ -5597,7 +5597,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM399_WK]
-m_strName=old-art-codice-ean-5
+m_strName=old-art-codice-ean-2
 m_strRawPic=9(13)
 m_strPic=9(13)
 m_nItemLevel=10
@@ -5611,9 +5611,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM400_WK]
-m_strName=old-art-foto
-m_strRawPic=X(512)
-m_strPic=X(512)
+m_strName=old-art-codice-ean-3
+m_strRawPic=9(13)
+m_strPic=9(13)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -5625,9 +5625,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM401_WK]
-m_strName=old-art-note-agg
-m_strRawPic=x(512)
-m_strPic=X(512)
+m_strName=old-art-codice-ean-4
+m_strRawPic=9(13)
+m_strPic=9(13)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -5639,9 +5639,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM402_WK]
-m_strName=old-art-scheda-tecnica
-m_strRawPic=X(512)
-m_strPic=X(512)
+m_strName=old-art-codice-ean-5
+m_strRawPic=9(13)
+m_strPic=9(13)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -5653,8 +5653,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM403_WK]
-m_strName=old-art-tossicologica
-m_strRawPic=x(512)
+m_strName=old-art-foto
+m_strRawPic=X(512)
 m_strPic=X(512)
 m_nItemLevel=10
 m_nSync=-1
@@ -5667,9 +5667,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM404_WK]
-m_strName=old-art-descrizione-2
-m_strRawPic=x(50)
-m_strPic=X(50)
+m_strName=old-art-note-agg
+m_strRawPic=x(512)
+m_strPic=X(512)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -5681,9 +5681,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM405_WK]
-m_strName=old-art-qta-epal
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=old-art-scheda-tecnica
+m_strRawPic=X(512)
+m_strPic=X(512)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -5695,9 +5695,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM406_WK]
-m_strName=old-art-qta-std
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=old-art-tossicologica
+m_strRawPic=x(512)
+m_strPic=X(512)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -5709,7 +5709,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM407_WK]
-m_strName=old-art-misure
+m_strName=old-art-descrizione-2
+m_strRawPic=x(50)
+m_strPic=X(50)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -5721,10 +5723,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM408_WK]
-m_strName=old-art-altezza
-m_strRawPic=9(6)v99
-m_strPic=9(6)V99
-m_nItemLevel=15
+m_strName=old-art-qta-epal
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -5735,10 +5737,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM409_WK]
-m_strName=old-art-larghezza
-m_strRawPic=9(6)v99
-m_strPic=9(6)V99
-m_nItemLevel=15
+m_strName=old-art-qta-std
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -5749,10 +5751,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM410_WK]
-m_strName=old-art-profondita
-m_strRawPic=9(6)v99
-m_strPic=9(6)V99
-m_nItemLevel=15
+m_strName=old-art-misure
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -5763,10 +5763,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM411_WK]
-m_strName=old-art-stato
-m_strRawPic=X(1)
-m_strPic=X(1)
-m_nItemLevel=10
+m_strName=old-art-altezza
+m_strRawPic=9(6)v99
+m_strPic=9(6)V99
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -5777,6 +5777,48 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM412_WK]
+m_strName=old-art-larghezza
+m_strRawPic=9(6)v99
+m_strPic=9(6)V99
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM412_WK
+
+@}}
+[FDITEM413_WK]
+m_strName=old-art-profondita
+m_strRawPic=9(6)v99
+m_strPic=9(6)V99
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM413_WK
+
+@}}
+[FDITEM414_WK]
+m_strName=old-art-stato
+m_strRawPic=X(1)
+m_strPic=X(1)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM414_WK
+
+@}}
+[FDITEM415_WK]
 m_strName=old-art-attivo
 m_nItemLevel=88
 m_nSync=-1
@@ -5786,10 +5828,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM412_WK
+{{@DataItem_m_strDescriptionFDITEM415_WK
 
 @}}
-[FDITEM413_WK]
+[FDITEM416_WK]
 m_strName=old-art-disattivo
 m_nItemLevel=88
 m_nSync=-1
@@ -5799,10 +5841,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM413_WK
+{{@DataItem_m_strDescriptionFDITEM416_WK
 
 @}}
-[FDITEM414_WK]
+[FDITEM417_WK]
 m_strName=old-art-bloccato
 m_nItemLevel=88
 m_nSync=-1
@@ -5812,51 +5854,11 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM414_WK
-
-@}}
-[FDITEM415_WK]
-m_strName=old-art-ALA
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM415_WK
-
-@}}
-[FDITEM416_WK]
-m_strName=old-art-si-ALA
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM416_WK
-
-@}}
-[FDITEM417_WK]
-m_strName=old-art-no-ALA
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue=0
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM417_WK
 
 @}}
 [FDITEM418_WK]
-m_strName=old-art-gruppi
+m_strName=old-art-ALA
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=10
@@ -5870,7 +5872,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM419_WK]
-m_strName=old-art-si-gruppi
+m_strName=old-art-si-ALA
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -5883,7 +5885,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM420_WK]
-m_strName=old-art-no-gruppi
+m_strName=old-art-no-ALA
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -5896,7 +5898,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM421_WK]
-m_strName=old-art-gda
+m_strName=old-art-gruppi
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=10
@@ -5910,7 +5912,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM422_WK]
-m_strName=old-art-si-gda
+m_strName=old-art-si-gruppi
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -5923,7 +5925,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM423_WK]
-m_strName=old-art-no-gda
+m_strName=old-art-no-gruppi
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -5936,7 +5938,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM424_WK]
-m_strName=old-art-agenti
+m_strName=old-art-gda
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=10
@@ -5950,7 +5952,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM425_WK]
-m_strName=old-art-si-agenti
+m_strName=old-art-si-gda
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -5963,7 +5965,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM426_WK]
-m_strName=old-art-no-agenti
+m_strName=old-art-no-gda
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -5976,7 +5978,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM427_WK]
-m_strName=old-art-specialist
+m_strName=old-art-agenti
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=10
@@ -5990,7 +5992,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM428_WK]
-m_strName=old-art-si-specialist
+m_strName=old-art-si-agenti
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -6003,7 +6005,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM429_WK]
-m_strName=old-art-no-specialist
+m_strName=old-art-no-agenti
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -6016,7 +6018,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM430_WK]
-m_strName=old-art-estero
+m_strName=old-art-specialist
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=10
@@ -6030,7 +6032,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM431_WK]
-m_strName=old-art-si-estero
+m_strName=old-art-si-specialist
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -6043,7 +6045,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM432_WK]
-m_strName=old-art-no-estero
+m_strName=old-art-no-specialist
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -6056,7 +6058,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM433_WK]
-m_strName=old-art-gds
+m_strName=old-art-estero
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=10
@@ -6070,7 +6072,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM434_WK]
-m_strName=old-art-si-gds
+m_strName=old-art-si-estero
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -6083,7 +6085,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM435_WK]
-m_strName=old-art-no-gds
+m_strName=old-art-no-estero
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -6096,9 +6098,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM436_WK]
-m_strName=old-art-scorta
-m_strRawPic=s9(8)
-m_strPic=S9(8)
+m_strName=old-art-gds
+m_strRawPic=9
+m_strPic=9
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -6110,12 +6112,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM437_WK]
-m_strName=old-art-prezzo-banco
-m_strRawPic=9(6)v9(2)
-m_strPic=9(6)V9(2)
-m_nItemLevel=10
+m_strName=old-art-si-gds
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6124,12 +6125,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM438_WK]
-m_strName=old-art-prz-min-vend
-m_strRawPic=9(5)v9(2)
-m_strPic=9(5)V9(2)
-m_nItemLevel=10
+m_strName=old-art-no-gds
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue=0
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6138,9 +6138,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM439_WK]
-m_strName=old-art-moq
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=old-art-scorta
+m_strRawPic=s9(8)
+m_strPic=S9(8)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -6152,9 +6152,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM440_WK]
-m_strName=old-art-peso-reale
-m_strRawPic=9(5)v999
-m_strPic=9(5)V999
+m_strName=old-art-prezzo-banco
+m_strRawPic=9(6)v9(2)
+m_strPic=9(6)V9(2)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -6166,9 +6166,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM441_WK]
-m_strName=old-art-do
-m_strRawPic=9
-m_strPic=9
+m_strName=old-art-prz-min-vend
+m_strRawPic=9(5)v9(2)
+m_strPic=9(5)V9(2)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -6180,11 +6180,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM442_WK]
-m_strName=old-art-si-do
-m_nItemLevel=88
+m_strName=old-art-moq
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-m_strTrue=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6193,11 +6194,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM443_WK]
-m_strName=old-art-no-do
-m_nItemLevel=88
+m_strName=old-art-peso-reale
+m_strRawPic=9(5)v999
+m_strPic=9(5)V999
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-m_strTrue=0
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6206,9 +6208,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM444_WK]
-m_strName=old-art-cod-art-frn
-m_strRawPic=x(15)
-m_strPic=X(15)
+m_strName=old-art-do
+m_strRawPic=9
+m_strPic=9
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -6220,12 +6222,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM445_WK]
-m_strName=old-art-mag-std
-m_strRawPic=x(3)
-m_strPic=X(3)
-m_nItemLevel=10
+m_strName=old-art-si-do
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6234,12 +6235,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM446_WK]
-m_strName=old-art-collegato
-m_strRawPic=9(6)
-m_strPic=9(6)
-m_nItemLevel=10
+m_strName=old-art-no-do
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue=0
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6248,9 +6248,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM447_WK]
-m_strName=old-art-cod-desf-forn
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=old-art-cod-art-frn
+m_strRawPic=x(15)
+m_strPic=X(15)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -6262,9 +6262,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM448_WK]
-m_strName=old-art-cod-prodener
-m_strRawPic=x(10)
-m_strPic=X(10)
+m_strName=old-art-mag-std
+m_strRawPic=x(3)
+m_strPic=X(3)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -6276,9 +6276,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM449_WK]
-m_strName=old-art-tipo-stoc
-m_strRawPic=x
-m_strPic=X
+m_strName=old-art-collegato
+m_strRawPic=9(6)
+m_strPic=9(6)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -6290,11 +6290,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM450_WK]
-m_strName=old-art-confezionato
-m_nItemLevel=88
+m_strName=old-art-cod-desf-forn
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-m_strTrue="C" " "
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6303,11 +6304,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM451_WK]
-m_strName=old-art-sfuso
-m_nItemLevel=88
+m_strName=old-art-cod-prodener
+m_strRawPic=x(10)
+m_strPic=X(10)
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-m_strTrue="S"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6316,9 +6318,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM452_WK]
-m_strName=old-art-logo-brand
-m_strRawPic=X(512)
-m_strPic=X(512)
+m_strName=old-art-tipo-stoc
+m_strRawPic=x
+m_strPic=X
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -6330,12 +6332,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM453_WK]
-m_strName=old-art-conf-cartone
-m_strRawPic=9(6)
-m_strPic=9(6)
-m_nItemLevel=10
+m_strName=old-art-confezionato
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="C" " "
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6344,12 +6345,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM454_WK]
-m_strName=old-art-cartone-UDC
-m_strRawPic=9(6)
-m_strPic=9(6)
-m_nItemLevel=10
+m_strName=old-art-sfuso
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="S"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6358,7 +6358,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM455_WK]
-m_strName=old-art-misure-pz
+m_strName=old-art-logo-brand
+m_strRawPic=X(512)
+m_strPic=X(512)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -6370,10 +6372,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM456_WK]
-m_strName=old-art-altezza-pz
-m_strRawPic=9(6)v99
-m_strPic=9(6)V99
-m_nItemLevel=20
+m_strName=old-art-conf-cartone
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6384,10 +6386,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM457_WK]
-m_strName=old-art-larghezza-pz
-m_strRawPic=9(6)v99
-m_strPic=9(6)V99
-m_nItemLevel=20
+m_strName=old-art-cartone-UDC
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6398,10 +6400,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM458_WK]
-m_strName=old-art-profondita-pz
-m_strRawPic=9(6)v99
-m_strPic=9(6)V99
-m_nItemLevel=20
+m_strName=old-art-misure-pz
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6412,10 +6412,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM459_WK]
-m_strName=old-art-web
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=10
+m_strName=old-art-altezza-pz
+m_strRawPic=9(6)v99
+m_strPic=9(6)V99
+m_nItemLevel=20
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6426,11 +6426,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM460_WK]
-m_strName=old-art-web-si
-m_nItemLevel=88
+m_strName=old-art-larghezza-pz
+m_strRawPic=9(6)v99
+m_strPic=9(6)V99
+m_nItemLevel=20
 m_nSync=-1
 m_bFixed=1
-m_strTrue=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6439,11 +6440,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM461_WK]
-m_strName=old-art-web-no
-m_nItemLevel=88
+m_strName=old-art-profondita-pz
+m_strRawPic=9(6)v99
+m_strPic=9(6)V99
+m_nItemLevel=20
 m_nSync=-1
 m_bFixed=1
-m_strTrue=0
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6452,9 +6454,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM462_WK]
-m_strName=old-art-adr
-m_strRawPic=x(15)
-m_strPic=X(15)
+m_strName=old-art-web
+m_strRawPic=9
+m_strPic=9
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -6466,10 +6468,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM463_WK]
-m_strName=old-art-dati-comuni
-m_nItemLevel=10
+m_strName=old-art-web-si
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6478,12 +6481,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM464_WK]
-m_strName=old-art-data-creazione
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=15
+m_strName=old-art-web-no
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue=0
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6492,10 +6494,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM465_WK]
-m_strName=old-art-ora-creazione
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=15
+m_strName=old-art-adr
+m_strRawPic=x(15)
+m_strPic=X(15)
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6506,10 +6508,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM466_WK]
-m_strName=old-art-utente-creazione
-m_strRawPic=X(10)
-m_strPic=X(10)
-m_nItemLevel=15
+m_strName=old-art-dati-comuni
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6520,7 +6520,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM467_WK]
-m_strName=old-art-data-ultima-modifica
+m_strName=old-art-data-creazione
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=15
@@ -6534,7 +6534,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM468_WK]
-m_strName=old-art-ora-ultima-modifica
+m_strName=old-art-ora-creazione
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=15
@@ -6548,7 +6548,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM469_WK]
-m_strName=old-art-utente-ultima-modifica
+m_strName=old-art-utente-creazione
 m_strRawPic=X(10)
 m_strPic=X(10)
 m_nItemLevel=15
@@ -6562,8 +6562,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM470_WK]
-m_strName=old-art-vuoti
-m_nItemLevel=10
+m_strName=old-art-data-ultima-modifica
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6574,9 +6576,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM471_WK]
-m_strName=old-art-peso-SHI
-m_strRawPic=9(6)v999
-m_strPic=9(6)V999
+m_strName=old-art-ora-ultima-modifica
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -6588,9 +6590,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM472_WK]
-m_strName=old-art-SPI
-m_strRawPic=9
-m_strPic=9
+m_strName=old-art-utente-ultima-modifica
+m_strRawPic=X(10)
+m_strPic=X(10)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -6602,11 +6604,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM473_WK]
-m_strName=old-art-SPI-si
-m_nItemLevel=88
+m_strName=old-art-vuoti
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
-m_strTrue=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6615,11 +6616,12 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM474_WK]
-m_strName=old-art-SPI-no
-m_nItemLevel=88
+m_strName=old-art-peso-SHI
+m_strRawPic=9(6)v999
+m_strPic=9(6)V999
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-m_strTrue=0
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6628,7 +6630,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM475_WK]
-m_strName=OLD-art-T1
+m_strName=old-art-SPI
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=15
@@ -6642,7 +6644,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM476_WK]
-m_strName=OLD-art-T1-si
+m_strName=old-art-SPI-si
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -6655,7 +6657,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM477_WK]
-m_strName=OLD-art-T1-no
+m_strName=old-art-SPI-no
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -6668,7 +6670,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM478_WK]
-m_strName=OLD-art-T2
+m_strName=OLD-art-T1
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=15
@@ -6682,7 +6684,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM479_WK]
-m_strName=OLD-art-T2-si
+m_strName=OLD-art-T1-si
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -6695,7 +6697,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM480_WK]
-m_strName=OLD-art-T2-no
+m_strName=OLD-art-T1-no
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -6708,7 +6710,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM481_WK]
-m_strName=OLD-art-T3
+m_strName=OLD-art-T2
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=15
@@ -6722,7 +6724,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM482_WK]
-m_strName=OLD-art-T3-si
+m_strName=OLD-art-T2-si
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -6735,7 +6737,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM483_WK]
-m_strName=OLD-art-T3-no
+m_strName=OLD-art-T2-no
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -6748,9 +6750,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM484_WK]
-m_strName=old-art-peso-GET
-m_strRawPic=9(6)v999
-m_strPic=9(6)V999
+m_strName=OLD-art-T3
+m_strRawPic=9
+m_strPic=9
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -6762,21 +6764,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM485_WK]
-m_strName=old-art-AT
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_strCopyFile=GARTICOLI-WS.DEF
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
-m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM485_WK
-
-@}}
-[FDITEM486_WK]
-m_strName=old-art-AT-si
+m_strName=OLD-art-T3-si
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -6785,11 +6773,11 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM486_WK
+{{@DataItem_m_strDescriptionFDITEM485_WK
 
 @}}
-[FDITEM487_WK]
-m_strName=old-art-AT-no
+[FDITEM486_WK]
+m_strName=OLD-art-T3-no
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -6798,11 +6786,25 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM486_WK
+
+@}}
+[FDITEM487_WK]
+m_strName=old-art-peso-GET
+m_strRawPic=9(6)v999
+m_strPic=9(6)V999
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM487_WK
 
 @}}
 [FDITEM488_WK]
-m_strName=old-art-TEXACO
+m_strName=old-art-AT
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=15
@@ -6816,7 +6818,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM489_WK]
-m_strName=old-art-TEXACO-si
+m_strName=old-art-AT-si
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -6829,7 +6831,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM490_WK]
-m_strName=old-art-TEXACO-no
+m_strName=old-art-AT-no
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -6842,7 +6844,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM491_WK]
-m_strName=old-art-SHARK
+m_strName=old-art-TEXACO
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=15
@@ -6856,7 +6858,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM492_WK]
-m_strName=old-art-SHARK-si
+m_strName=old-art-TEXACO-si
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -6869,7 +6871,7 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM493_WK]
-m_strName=old-art-SHARK-no
+m_strName=old-art-TEXACO-no
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -6882,9 +6884,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM494_WK]
-m_strName=old-art-litri
-m_strRawPic=9(4)v999
-m_strPic=9(4)V999
+m_strName=old-art-SHARK
+m_strRawPic=9
+m_strPic=9
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -6896,12 +6898,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM495_WK]
-m_strName=old-art-num-vuoto-2
-m_strRawPic=9(4)
-m_strPic=9(4)
-m_nItemLevel=15
+m_strName=old-art-SHARK-si
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6910,12 +6911,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM496_WK]
-m_strName=old-art-num-vuoto-3
-m_strRawPic=9(18)
-m_strPic=9(18)
-m_nItemLevel=15
+m_strName=old-art-SHARK-no
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue=0
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6924,9 +6924,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM497_WK]
-m_strName=old-art-note2
-m_strRawPic=X(300)
-m_strPic=X(300)
+m_strName=old-art-litri
+m_strRawPic=9(4)v999
+m_strPic=9(4)V999
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -6938,9 +6938,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM498_WK]
-m_strName=form3-Handle
-m_nUsage=24
-m_nItemLevel=77
+m_strName=old-art-num-vuoto-2
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6951,9 +6952,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM499_WK]
-m_strName=Verdana12BI-Occidentale
-m_nUsage=26
-m_nItemLevel=77
+m_strName=old-art-num-vuoto-3
+m_strRawPic=9(18)
+m_strPic=9(18)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6964,10 +6966,10 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM500_WK]
-m_strName=status-catart
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
+m_strName=old-art-note2
+m_strRawPic=X(300)
+m_strPic=X(300)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6978,11 +6980,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM501_WK]
-m_strName=Valid-status-catart
-m_nItemLevel=88
+m_strName=form3-Handle
+m_nUsage=24
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -6991,9 +6993,8 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM502_WK]
-m_strName=ultimo-elemento
-m_strRawPic=9(4)
-m_strPic=9(4)
+m_strName=Verdana12BI-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -7005,9 +7006,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM503_WK]
-m_strName=last-codice
-m_strRawPic=9(6)
-m_strPic=9(6)
+m_strName=status-catart
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -7019,12 +7020,11 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM504_WK]
-m_strName=old-ultimo-elemento
-m_strRawPic=9(4)
-m_strPic=9(4)
-m_nItemLevel=77
+m_strName=Valid-status-catart
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
@@ -7033,9 +7033,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM505_WK]
-m_strName=old-last-codice
-m_strRawPic=9(6)
-m_strPic=9(6)
+m_strName=ultimo-elemento
+m_strRawPic=9(4)
+m_strPic=9(4)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -7047,9 +7047,9 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM506_WK]
-m_strName=cont
-m_strRawPic=9(10)
-m_strPic=9(10)
+m_strName=last-codice
+m_strRawPic=9(6)
+m_strPic=9(6)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -7061,6 +7061,48 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM507_WK]
+m_strName=old-ultimo-elemento
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM507_WK
+
+@}}
+[FDITEM508_WK]
+m_strName=old-last-codice
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM508_WK
+
+@}}
+[FDITEM509_WK]
+m_strName=cont
+m_strRawPic=9(10)
+m_strPic=9(10)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_strCopyFile=GARTICOLI-WS.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM509_WK
+
+@}}
+[FDITEM510_WK]
 m_strName=resto
 m_strRawPic=9(10)
 m_strPic=9(10)
@@ -7071,7 +7113,7 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_strCopyFile=GARTICOLI-WS.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\GARTICOLI-WS.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM507_WK
+{{@DataItem_m_strDescriptionFDITEM510_WK
 
 @}}
 
@@ -7275,7 +7317,7 @@ GRAPHICAL-SCREEN
 Begin Screen Form1
    PREFIX            = Form1
    IMPORTED-SCREEN   = FALSE
-   LOCK-CONTROL      = FALSE
+   LOCK-CONTROL      = TRUE
    LEVEL             = 1
    (Name)            = Form1
    Absolute Column   = 0
@@ -7301,7 +7343,7 @@ Begin Screen Form1
    Height in Cells   = TRUE
    Help ID           = 0
    Label Offset      = 23
-   Lines             = 52,31
+   Lines             = 55,23
    Link To Thread    = TRUE
    Max Lines         = 0,00
    Max Size          = 0,00
@@ -7402,7 +7444,7 @@ Begin Screen Form1
       Help ID           = 0
       ID                = 5000
       Line              = 5,00
-      Lines             = 45,54
+      Lines             = 48,77
       Lines Unit        = Default
       Multiline         = FALSE
       No Tab            = FALSE
@@ -7427,7 +7469,7 @@ Begin Screen Form1
          Visible Variable  = Form1-Pg-1-Visible
          Begin Data.Label lab-dest
             SCREEN-COL        = 30,67
-            SCREEN-LINE       = 39,92
+            SCREEN-LINE       = 41,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-dest
@@ -7451,7 +7493,7 @@ Begin Screen Form1
             ID                = 136
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 34,23
+            Line              = 36,23
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = TRUE
@@ -7465,7 +7507,7 @@ Begin Screen Form1
          End
          Begin Frame Form1-Fr-1
             SCREEN-COL        = 96,84
-            SCREEN-LINE       = 34,46
+            SCREEN-LINE       = 36,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Fr-1
@@ -7484,7 +7526,7 @@ Begin Screen Form1
             Help ID           = 0
             High Color        = 0
             ID                = 171
-            Line              = 28,77
+            Line              = 30,77
             Lines             = 9,31
             Lines Unit        = Default
             Low Color         = 0
@@ -8127,8 +8169,8 @@ Begin Screen Form1
             After Procedure   = ef-classe-2-AfterProcedure
          End
          Begin Data.Entry-Field ef-classe-3
-            SCREEN-COL        = 127,67
-            SCREEN-LINE       = 15,69
+            SCREEN-COL        = 21,67
+            SCREEN-LINE       = 17,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-classe-3
@@ -8139,7 +8181,7 @@ Begin Screen Form1
             Clines            = 0
             Clines Unit       = Default
             Color             = 513
-            Column            = 126,00
+            Column            = 20,00
             Csize             = 0
             Csize Unit        = Default
             Cursor            = 0
@@ -8161,7 +8203,7 @@ Begin Screen Form1
             ID                = 12
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 10,00
+            Line              = 12,00
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -8190,8 +8232,8 @@ Begin Screen Form1
             After Procedure   = ef-classe-3-AfterProcedure
          End
          Begin Data.Entry-Field ef-classe-4
-            SCREEN-COL        = 157,00
-            SCREEN-LINE       = 15,69
+            SCREEN-COL        = 91,67
+            SCREEN-LINE       = 17,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-classe-4
@@ -8202,7 +8244,7 @@ Begin Screen Form1
             Clines            = 0
             Clines Unit       = Default
             Color             = 513
-            Column            = 155,33
+            Column            = 90,00
             Csize             = 0
             Csize Unit        = Default
             Cursor            = 0
@@ -8224,7 +8266,7 @@ Begin Screen Form1
             ID                = 14
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 10,00
+            Line              = 12,00
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -8254,7 +8296,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-udm
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 17,69
+            SCREEN-LINE       = 19,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-udm
@@ -8287,7 +8329,7 @@ Begin Screen Form1
             ID                = 16
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 12,00
+            Line              = 14,00
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -8317,7 +8359,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-imballo
             SCREEN-COL        = 91,67
-            SCREEN-LINE       = 17,69
+            SCREEN-LINE       = 19,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-imballo
@@ -8350,7 +8392,7 @@ Begin Screen Form1
             ID                = 26
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 12,00
+            Line              = 14,00
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -8380,7 +8422,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-udm-imballo
             SCREEN-COL        = 157,00
-            SCREEN-LINE       = 17,69
+            SCREEN-LINE       = 19,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-udm-imballo
@@ -8413,7 +8455,7 @@ Begin Screen Form1
             ID                = 0
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 12,00
+            Line              = 14,00
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -8443,7 +8485,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-dogana
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 19,69
+            SCREEN-LINE       = 21,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-dogana
@@ -8476,7 +8518,7 @@ Begin Screen Form1
             ID                = 38
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 14,00
+            Line              = 16,00
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -8506,7 +8548,7 @@ Begin Screen Form1
          End
          Begin Combo-Box cbo-utf
             SCREEN-COL        = 91,67
-            SCREEN-LINE       = 19,69
+            SCREEN-LINE       = 21,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = cbo-utf
@@ -8529,7 +8571,7 @@ Begin Screen Form1
             Hint              = Selezionare il tipo d'assoggettamento UTF
             ID                = 60
             ID Variable       = AUTO-ID
-            Line              = 14,00
+            Line              = 16,00
             Lines             = 5,00
             Lines Unit        = Default
             Mass Update       = 0:Fast-Update
@@ -8557,7 +8599,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-peso-utf
             SCREEN-COL        = 127,67
-            SCREEN-LINE       = 19,69
+            SCREEN-LINE       = 21,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-peso-utf
@@ -8590,7 +8632,7 @@ Begin Screen Form1
             ID                = 22
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 14,00
+            Line              = 16,00
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -8620,7 +8662,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-peso-non-utf
             SCREEN-COL        = 155,17
-            SCREEN-LINE       = 19,69
+            SCREEN-LINE       = 21,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-peso-non-utf
@@ -8653,7 +8695,7 @@ Begin Screen Form1
             ID                = 24
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 14,00
+            Line              = 16,00
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -8683,7 +8725,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-prodener
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 21,69
+            SCREEN-LINE       = 23,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-prodener
@@ -8716,7 +8758,7 @@ Begin Screen Form1
             ID                = 668
             ID Variable       = AUTO-ID
             Justification     = Left
-            Line              = 16,00
+            Line              = 18,00
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -8746,7 +8788,7 @@ Begin Screen Form1
          End
          Begin Data.Radio-Button Form1-DaRb-1
             SCREEN-COL        = 127,67
-            SCREEN-LINE       = 21,69
+            SCREEN-LINE       = 23,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-DaRb-1
@@ -8776,7 +8818,7 @@ Begin Screen Form1
             ID                = 669
             ID Variable       = AUTO-ID
             Left Text         = FALSE
-            Line              = 16,00
+            Line              = 18,00
             Lines             = 1,31
             Lines Unit        = Default
             No Group Tab      = FALSE
@@ -8799,7 +8841,7 @@ Begin Screen Form1
          End
          Begin Data.Radio-Button Form1-DaRb-2
             SCREEN-COL        = 145,67
-            SCREEN-LINE       = 21,69
+            SCREEN-LINE       = 23,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-DaRb-2
@@ -8829,7 +8871,7 @@ Begin Screen Form1
             ID                = 166
             ID Variable       = AUTO-ID
             Left Text         = FALSE
-            Line              = 16,00
+            Line              = 18,00
             Lines             = 1,31
             Lines Unit        = Default
             No Group Tab      = FALSE
@@ -8852,7 +8894,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-imposte
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 25,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-imposte
@@ -8881,7 +8923,7 @@ Begin Screen Form1
             ID                = 58
             ID Variable       = AUTO-ID
             Left Text         = FALSE
-            Line              = 18,00
+            Line              = 20,00
             Lines             = 1,15
             Lines Unit        = Default
             No Tab            = FALSE
@@ -8903,7 +8945,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-perce-imposte
             SCREEN-COL        = 56,67
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 25,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-perce-imposte
@@ -8936,7 +8978,7 @@ Begin Screen Form1
             ID                = 40
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 18,00
+            Line              = 20,00
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -8966,7 +9008,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-perce-cou
             SCREEN-COL        = 91,67
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 25,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-perce-cou
@@ -8999,7 +9041,7 @@ Begin Screen Form1
             ID                = 41
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 18,00
+            Line              = 20,00
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -9029,7 +9071,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-scorta
             SCREEN-COL        = 127,67
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 25,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-scorta
@@ -9062,7 +9104,7 @@ Begin Screen Form1
             ID                = 42
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 18,00
+            Line              = 20,00
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -9092,7 +9134,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-moq
             SCREEN-COL        = 155,17
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 25,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-moq
@@ -9125,7 +9167,7 @@ Begin Screen Form1
             ID                = 47
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 18,00
+            Line              = 20,00
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -9156,7 +9198,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-cobat
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 25,69
+            SCREEN-LINE       = 27,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-cobat
@@ -9185,7 +9227,7 @@ Begin Screen Form1
             ID                = 57
             ID Variable       = AUTO-ID
             Left Text         = FALSE
-            Line              = 20,00
+            Line              = 22,00
             Lines             = 1,15
             Lines Unit        = Default
             No Tab            = FALSE
@@ -9207,7 +9249,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-amperaggio
             SCREEN-COL        = 91,67
-            SCREEN-LINE       = 25,69
+            SCREEN-LINE       = 27,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-amperaggio
@@ -9240,7 +9282,7 @@ Begin Screen Form1
             ID                = 20
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 20,00
+            Line              = 22,00
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -9270,7 +9312,7 @@ Begin Screen Form1
          End
          Begin Combo-Box cbo-cobat
             SCREEN-COL        = 127,67
-            SCREEN-LINE       = 25,69
+            SCREEN-LINE       = 27,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = cbo-cobat
@@ -9293,7 +9335,7 @@ Begin Screen Form1
             Hint              = Selezionare il tipo di COBAT
             ID                = 66
             ID Variable       = AUTO-ID
-            Line              = 20,00
+            Line              = 22,00
             Lines             = 4,00
             Lines Unit        = Default
             Mass Update       = 0:Fast-Update
@@ -9319,7 +9361,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-reale
             SCREEN-COL        = 155,17
-            SCREEN-LINE       = 25,69
+            SCREEN-LINE       = 27,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-reale
@@ -9352,7 +9394,7 @@ Begin Screen Form1
             ID                = 51
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 20,00
+            Line              = 22,00
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -9383,7 +9425,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-prezzo-acq
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 27,69
+            SCREEN-LINE       = 29,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-prezzo-acq
@@ -9416,7 +9458,7 @@ Begin Screen Form1
             ID                = 30
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 22,00
+            Line              = 24,00
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -9446,7 +9488,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-sconto-acquisto
             SCREEN-COL        = 91,67
-            SCREEN-LINE       = 27,69
+            SCREEN-LINE       = 29,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-sconto-acquisto
@@ -9479,7 +9521,7 @@ Begin Screen Form1
             ID                = 36
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 22,00
+            Line              = 24,00
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -9509,7 +9551,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-prz-vend
             SCREEN-COL        = 127,67
-            SCREEN-LINE       = 27,69
+            SCREEN-LINE       = 29,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-prz-vend
@@ -9542,7 +9584,7 @@ Begin Screen Form1
             ID                = 37
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 22,00
+            Line              = 24,00
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -9572,7 +9614,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-litri
             SCREEN-COL        = 155,17
-            SCREEN-LINE       = 27,69
+            SCREEN-LINE       = 29,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-litri
@@ -9604,7 +9646,7 @@ Begin Screen Form1
             ID                = 39
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 22,00
+            Line              = 24,00
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -9634,7 +9676,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-prezzo-banco
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 29,69
+            SCREEN-LINE       = 31,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-prezzo-banco
@@ -9667,7 +9709,7 @@ Begin Screen Form1
             ID                = 34
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 24,00
+            Line              = 26,00
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -9697,7 +9739,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-sconto-agente
             SCREEN-COL        = 56,67
-            SCREEN-LINE       = 29,69
+            SCREEN-LINE       = 31,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-sconto-agente
@@ -9730,7 +9772,7 @@ Begin Screen Form1
             ID                = 32
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 24,00
+            Line              = 26,00
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -9760,7 +9802,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-min-vend
             SCREEN-COL        = 91,67
-            SCREEN-LINE       = 29,69
+            SCREEN-LINE       = 31,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-min-vend
@@ -9793,7 +9835,7 @@ Begin Screen Form1
             ID                = 97
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 24,00
+            Line              = 26,00
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -9823,7 +9865,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-ean-1
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 31,92
+            SCREEN-LINE       = 33,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-ean-1
@@ -9856,7 +9898,7 @@ Begin Screen Form1
             ID                = 44
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 26,23
+            Line              = 28,23
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -9886,7 +9928,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-ean-2
             SCREEN-COL        = 56,67
-            SCREEN-LINE       = 31,92
+            SCREEN-LINE       = 33,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-ean-2
@@ -9919,7 +9961,7 @@ Begin Screen Form1
             ID                = 46
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 26,23
+            Line              = 28,23
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -9949,7 +9991,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-ean-3
             SCREEN-COL        = 91,67
-            SCREEN-LINE       = 31,92
+            SCREEN-LINE       = 33,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-ean-3
@@ -9982,7 +10024,7 @@ Begin Screen Form1
             ID                = 48
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 26,23
+            Line              = 28,23
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -10012,7 +10054,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-ean-4
             SCREEN-COL        = 127,67
-            SCREEN-LINE       = 31,92
+            SCREEN-LINE       = 33,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-ean-4
@@ -10045,7 +10087,7 @@ Begin Screen Form1
             ID                = 50
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 26,23
+            Line              = 28,23
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -10075,7 +10117,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-ean-5
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 33,92
+            SCREEN-LINE       = 35,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-ean-5
@@ -10108,7 +10150,7 @@ Begin Screen Form1
             ID                = 52
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 28,23
+            Line              = 30,23
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -10138,7 +10180,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-art-for
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 35,92
+            SCREEN-LINE       = 37,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-art-for
@@ -10171,7 +10213,7 @@ Begin Screen Form1
             ID                = 103
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 30,23
+            Line              = 32,23
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -10201,7 +10243,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-forn
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 37,92
+            SCREEN-LINE       = 39,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-forn
@@ -10234,7 +10276,7 @@ Begin Screen Form1
             ID                = 18
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 32,23
+            Line              = 34,23
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -10264,7 +10306,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-destino
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 39,92
+            SCREEN-LINE       = 41,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-destino
@@ -10297,7 +10339,7 @@ Begin Screen Form1
             ID                = 19
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 34,23
+            Line              = 36,23
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -10327,7 +10369,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-note2
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 44,23
+            SCREEN-LINE       = 46,23
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-note2
@@ -10359,7 +10401,7 @@ Begin Screen Form1
             ID                = 192
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 38,54
+            Line              = 40,54
             Lines             = 5,38
             Lines Unit        = Default
             Max Lines         = 0
@@ -10389,7 +10431,7 @@ Begin Screen Form1
          End
          Begin Combo-Box cbo-stato
             SCREEN-COL        = 150,00
-            SCREEN-LINE       = 44,31
+            SCREEN-LINE       = 46,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = cbo-stato
@@ -10412,7 +10454,7 @@ Begin Screen Form1
             Hint              = Selezionare lo stato dell'articolo
             ID                = 76
             ID Variable       = AUTO-ID
-            Line              = 38,62
+            Line              = 40,62
             Lines             = 5,00
             Lines Unit        = Default
             Mass Update       = 0:Fast-Update
@@ -10440,7 +10482,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-ala
             SCREEN-COL        = 110,67
-            SCREEN-LINE       = 35,77
+            SCREEN-LINE       = 37,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-ala
@@ -10470,7 +10512,7 @@ Begin Screen Form1
             ID                = 45
             ID Variable       = AUTO-ID
             Left Text         = FALSE
-            Line              = 30,08
+            Line              = 32,08
             Lines             = 1,31
             Lines Unit        = Default
             No Tab            = FALSE
@@ -10492,7 +10534,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-agenti
             SCREEN-COL        = 130,67
-            SCREEN-LINE       = 35,77
+            SCREEN-LINE       = 37,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-agenti
@@ -10522,7 +10564,7 @@ Begin Screen Form1
             ID                = 56
             ID Variable       = AUTO-ID
             Left Text         = FALSE
-            Line              = 30,08
+            Line              = 32,08
             Lines             = 1,31
             Lines Unit        = Default
             No Tab            = FALSE
@@ -10543,8 +10585,8 @@ Begin Screen Form1
             Link To           = chk-cobat-LinkTo
          End
          Begin Data.Check-Box chk-eg
-            SCREEN-COL        = 145,34
-            SCREEN-LINE       = 35,84
+            SCREEN-COL        = 145,33
+            SCREEN-LINE       = 37,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-eg
@@ -10574,7 +10616,7 @@ Begin Screen Form1
             ID                = 54
             ID Variable       = AUTO-ID
             Left Text         = FALSE
-            Line              = 30,15
+            Line              = 32,15
             Lines             = 1,31
             Lines Unit        = Default
             No Tab            = FALSE
@@ -10596,7 +10638,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-gda
             SCREEN-COL        = 110,67
-            SCREEN-LINE       = 37,77
+            SCREEN-LINE       = 39,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-gda
@@ -10626,7 +10668,7 @@ Begin Screen Form1
             ID                = 55
             ID Variable       = AUTO-ID
             Left Text         = FALSE
-            Line              = 32,08
+            Line              = 34,08
             Lines             = 1,31
             Lines Unit        = Default
             No Tab            = FALSE
@@ -10648,7 +10690,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-specialist
             SCREEN-COL        = 130,67
-            SCREEN-LINE       = 37,77
+            SCREEN-LINE       = 39,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-specialist
@@ -10678,7 +10720,7 @@ Begin Screen Form1
             ID                = 53
             ID Variable       = AUTO-ID
             Left Text         = FALSE
-            Line              = 32,08
+            Line              = 34,08
             Lines             = 1,31
             Lines Unit        = Default
             No Tab            = FALSE
@@ -10700,7 +10742,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-gds
             SCREEN-COL        = 145,34
-            SCREEN-LINE       = 37,84
+            SCREEN-LINE       = 39,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-gds
@@ -10730,7 +10772,7 @@ Begin Screen Form1
             ID                = 61
             ID Variable       = AUTO-ID
             Left Text         = FALSE
-            Line              = 32,15
+            Line              = 34,15
             Lines             = 1,31
             Lines Unit        = Default
             No Tab            = FALSE
@@ -10752,7 +10794,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-gruppi
             SCREEN-COL        = 110,67
-            SCREEN-LINE       = 39,77
+            SCREEN-LINE       = 41,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-gruppi
@@ -10782,7 +10824,7 @@ Begin Screen Form1
             ID                = 49
             ID Variable       = AUTO-ID
             Left Text         = FALSE
-            Line              = 34,08
+            Line              = 36,08
             Lines             = 1,31
             Lines Unit        = Default
             No Tab            = FALSE
@@ -10804,7 +10846,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-estero
             SCREEN-COL        = 130,67
-            SCREEN-LINE       = 39,77
+            SCREEN-LINE       = 41,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-estero
@@ -10834,7 +10876,7 @@ Begin Screen Form1
             ID                = 59
             ID Variable       = AUTO-ID
             Left Text         = FALSE
-            Line              = 34,08
+            Line              = 36,08
             Lines             = 1,31
             Lines Unit        = Default
             No Tab            = FALSE
@@ -10856,7 +10898,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-web
             SCREEN-COL        = 145,34
-            SCREEN-LINE       = 39,77
+            SCREEN-LINE       = 41,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-web
@@ -10886,7 +10928,7 @@ Begin Screen Form1
             ID                = 62
             ID Variable       = AUTO-ID
             Left Text         = FALSE
-            Line              = 34,08
+            Line              = 36,08
             Lines             = 1,31
             Lines Unit        = Default
             No Tab            = FALSE
@@ -10908,7 +10950,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-SPI
             SCREEN-COL        = 110,67
-            SCREEN-LINE       = 41,77
+            SCREEN-LINE       = 43,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-SPI
@@ -10938,7 +10980,7 @@ Begin Screen Form1
             ID                = 63
             ID Variable       = AUTO-ID
             Left Text         = FALSE
-            Line              = 36,08
+            Line              = 38,08
             Lines             = 1,31
             Lines Unit        = Default
             No Tab            = FALSE
@@ -10960,7 +11002,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-AT
             SCREEN-COL        = 130,67
-            SCREEN-LINE       = 41,77
+            SCREEN-LINE       = 43,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-AT
@@ -10990,7 +11032,7 @@ Begin Screen Form1
             ID                = 64
             ID Variable       = AUTO-ID
             Left Text         = FALSE
-            Line              = 36,08
+            Line              = 38,08
             Lines             = 1,31
             Lines Unit        = Default
             No Tab            = FALSE
@@ -11012,7 +11054,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-ATa
             SCREEN-COL        = 145,34
-            SCREEN-LINE       = 41,77
+            SCREEN-LINE       = 43,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-ATa
@@ -11042,7 +11084,7 @@ Begin Screen Form1
             ID                = 65
             ID Variable       = AUTO-ID
             Left Text         = FALSE
-            Line              = 36,08
+            Line              = 38,08
             Lines             = 1,31
             Lines Unit        = Default
             No Tab            = FALSE
@@ -11063,8 +11105,8 @@ Begin Screen Form1
             Link To           = chk-imposte-LinkTo
          End
          Begin Data.Check-Box chk-cepsa
-            SCREEN-COL        = 160,34
-            SCREEN-LINE       = 35,84
+            SCREEN-COL        = 160,33
+            SCREEN-LINE       = 37,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-cepsa
@@ -11094,7 +11136,7 @@ Begin Screen Form1
             ID                = 67
             ID Variable       = AUTO-ID
             Left Text         = FALSE
-            Line              = 30,15
+            Line              = 32,15
             Lines             = 1,31
             Lines Unit        = Default
             No Tab            = FALSE
@@ -11285,15 +11327,15 @@ Begin Screen Form1
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-7
-            SCREEN-COL        = 113,67
-            SCREEN-LINE       = 15,69
+            SCREEN-COL        = 4,67
+            SCREEN-LINE       = 17,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-7
             Clines            = 0
             Clines Unit       = Default
             Color             = 0
-            Column            = 112,00
+            Column            = 3,00
             Csize             = 0
             Csize Unit        = Default
             Destroy Type      = Automatic
@@ -11305,7 +11347,7 @@ Begin Screen Form1
             ID                = 25
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 10,00
+            Line              = 12,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -11319,15 +11361,15 @@ Begin Screen Form1
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-8
-            SCREEN-COL        = 140,67
-            SCREEN-LINE       = 15,69
+            SCREEN-COL        = 76,67
+            SCREEN-LINE       = 17,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-8
             Clines            = 0
             Clines Unit       = Default
             Color             = 0
-            Column            = 139,00
+            Column            = 75,00
             Csize             = 0
             Csize Unit        = Default
             Destroy Type      = Automatic
@@ -11339,7 +11381,7 @@ Begin Screen Form1
             ID                = 27
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 10,00
+            Line              = 12,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -11354,7 +11396,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-9
             SCREEN-COL        = 4,67
-            SCREEN-LINE       = 17,69
+            SCREEN-LINE       = 19,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-9
@@ -11373,7 +11415,7 @@ Begin Screen Form1
             ID                = 68
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 12,00
+            Line              = 14,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -11388,7 +11430,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-10
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 37,92
+            SCREEN-LINE       = 39,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-10
@@ -11407,7 +11449,7 @@ Begin Screen Form1
             ID                = 69
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 32,23
+            Line              = 34,23
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -11422,7 +11464,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-12
             SCREEN-COL        = 113,67
-            SCREEN-LINE       = 19,69
+            SCREEN-LINE       = 21,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-12
@@ -11441,7 +11483,7 @@ Begin Screen Form1
             ID                = 70
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 14,00
+            Line              = 16,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -11456,7 +11498,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-13
             SCREEN-COL        = 140,67
-            SCREEN-LINE       = 19,69
+            SCREEN-LINE       = 21,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-13
@@ -11475,7 +11517,7 @@ Begin Screen Form1
             ID                = 71
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 14,00
+            Line              = 16,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -11490,7 +11532,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-14
             SCREEN-COL        = 76,67
-            SCREEN-LINE       = 17,69
+            SCREEN-LINE       = 19,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-14
@@ -11509,7 +11551,7 @@ Begin Screen Form1
             ID                = 72
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 12,00
+            Line              = 14,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -11524,7 +11566,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-16
             SCREEN-COL        = 4,67
-            SCREEN-LINE       = 27,69
+            SCREEN-LINE       = 29,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-16
@@ -11543,7 +11585,7 @@ Begin Screen Form1
             ID                = 77
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 22,00
+            Line              = 24,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -11558,7 +11600,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-17
             SCREEN-COL        = 41,67
-            SCREEN-LINE       = 29,69
+            SCREEN-LINE       = 31,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-17
@@ -11577,7 +11619,7 @@ Begin Screen Form1
             ID                = 78
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 24,00
+            Line              = 26,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -11592,7 +11634,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-18
             SCREEN-COL        = 113,67
-            SCREEN-LINE       = 27,69
+            SCREEN-LINE       = 29,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-18
@@ -11611,7 +11653,7 @@ Begin Screen Form1
             ID                = 79
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 22,00
+            Line              = 24,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -11626,7 +11668,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-19
             SCREEN-COL        = 76,67
-            SCREEN-LINE       = 27,69
+            SCREEN-LINE       = 29,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-19
@@ -11645,7 +11687,7 @@ Begin Screen Form1
             ID                = 80
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 22,00
+            Line              = 24,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -11660,7 +11702,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-21
             SCREEN-COL        = 4,67
-            SCREEN-LINE       = 19,69
+            SCREEN-LINE       = 21,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-21
@@ -11679,7 +11721,7 @@ Begin Screen Form1
             ID                = 81
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 14,00
+            Line              = 16,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -11694,7 +11736,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-22
             SCREEN-COL        = 41,67
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 25,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-22
@@ -11713,7 +11755,7 @@ Begin Screen Form1
             ID                = 82
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 18,00
+            Line              = 20,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -11728,7 +11770,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-11
             SCREEN-COL        = 76,67
-            SCREEN-LINE       = 25,69
+            SCREEN-LINE       = 27,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-11
@@ -11747,7 +11789,7 @@ Begin Screen Form1
             ID                = 83
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 20,00
+            Line              = 22,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -11762,7 +11804,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-24
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 31,92
+            SCREEN-LINE       = 33,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-24
@@ -11781,7 +11823,7 @@ Begin Screen Form1
             ID                = 84
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 26,23
+            Line              = 28,23
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -11796,7 +11838,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-25
             SCREEN-COL        = 41,67
-            SCREEN-LINE       = 31,92
+            SCREEN-LINE       = 33,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-25
@@ -11815,7 +11857,7 @@ Begin Screen Form1
             ID                = 85
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 26,23
+            Line              = 28,23
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -11830,7 +11872,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-26
             SCREEN-COL        = 76,67
-            SCREEN-LINE       = 31,92
+            SCREEN-LINE       = 33,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-26
@@ -11849,7 +11891,7 @@ Begin Screen Form1
             ID                = 86
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 26,23
+            Line              = 28,23
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -11864,7 +11906,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-27
             SCREEN-COL        = 113,67
-            SCREEN-LINE       = 31,92
+            SCREEN-LINE       = 33,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-27
@@ -11883,7 +11925,7 @@ Begin Screen Form1
             ID                = 87
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 26,23
+            Line              = 28,23
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -11898,7 +11940,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 33,92
+            SCREEN-LINE       = 35,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28
@@ -11917,7 +11959,7 @@ Begin Screen Form1
             ID                = 88
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 28,23
+            Line              = 30,23
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12008,7 +12050,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-31
             SCREEN-COL        = 82,67
-            SCREEN-LINE       = 19,69
+            SCREEN-LINE       = 21,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-31
@@ -12027,7 +12069,7 @@ Begin Screen Form1
             ID                = 93
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 14,00
+            Line              = 16,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12042,7 +12084,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-32
             SCREEN-COL        = 4,67
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 25,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-32
@@ -12061,7 +12103,7 @@ Begin Screen Form1
             ID                = 94
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 18,00
+            Line              = 20,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12076,7 +12118,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-33
             SCREEN-COL        = 4,67
-            SCREEN-LINE       = 25,69
+            SCREEN-LINE       = 27,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-33
@@ -12095,7 +12137,7 @@ Begin Screen Form1
             ID                = 98
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 20,00
+            Line              = 22,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12110,7 +12152,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-34
             SCREEN-COL        = 113,67
-            SCREEN-LINE       = 25,69
+            SCREEN-LINE       = 27,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-34
@@ -12129,7 +12171,7 @@ Begin Screen Form1
             ID                = 99
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 20,00
+            Line              = 22,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12182,7 +12224,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-udm
             SCREEN-COL        = 30,67
-            SCREEN-LINE       = 17,69
+            SCREEN-LINE       = 19,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-udm
@@ -12206,7 +12248,7 @@ Begin Screen Form1
             ID                = 101
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 12,00
+            Line              = 14,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = TRUE
@@ -12220,7 +12262,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-35
             SCREEN-COL        = 144,67
-            SCREEN-LINE       = 44,31
+            SCREEN-LINE       = 46,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-35
@@ -12239,7 +12281,7 @@ Begin Screen Form1
             ID                = 102
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 38,62
+            Line              = 40,62
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12254,7 +12296,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-dogana
             SCREEN-COL        = 40,67
-            SCREEN-LINE       = 19,69
+            SCREEN-LINE       = 21,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-dogana
@@ -12278,7 +12320,7 @@ Begin Screen Form1
             ID                = 104
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 14,00
+            Line              = 16,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = TRUE
@@ -12292,7 +12334,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-8a
             SCREEN-COL        = 140,67
-            SCREEN-LINE       = 17,69
+            SCREEN-LINE       = 19,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-8a
@@ -12311,7 +12353,7 @@ Begin Screen Form1
             ID                = 105
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 12,00
+            Line              = 14,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12326,7 +12368,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-22a
             SCREEN-COL        = 76,67
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 25,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-22a
@@ -12345,7 +12387,7 @@ Begin Screen Form1
             ID                = 106
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 18,00
+            Line              = 20,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12395,7 +12437,7 @@ Begin Screen Form1
          End
          Begin Label lab-imballo
             SCREEN-COL        = 100,67
-            SCREEN-LINE       = 17,69
+            SCREEN-LINE       = 19,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-imballo
@@ -12414,7 +12456,7 @@ Begin Screen Form1
             ID                = 108
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 12,00
+            Line              = 14,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12430,7 +12472,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-forn
             SCREEN-COL        = 30,67
-            SCREEN-LINE       = 37,92
+            SCREEN-LINE       = 39,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-forn
@@ -12454,7 +12496,7 @@ Begin Screen Form1
             ID                = 109
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 32,23
+            Line              = 34,23
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = TRUE
@@ -12502,7 +12544,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-22aa
             SCREEN-COL        = 113,67
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 25,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-22aa
@@ -12521,7 +12563,7 @@ Begin Screen Form1
             ID                = 111
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 18,00
+            Line              = 20,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12570,7 +12612,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-32a
             SCREEN-COL        = 98,00
-            SCREEN-LINE       = 35,77
+            SCREEN-LINE       = 37,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-32a
@@ -12589,7 +12631,7 @@ Begin Screen Form1
             ID                = 119
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 30,08
+            Line              = 32,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12604,7 +12646,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-33a
             SCREEN-COL        = 98,00
-            SCREEN-LINE       = 37,77
+            SCREEN-LINE       = 39,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-33a
@@ -12623,7 +12665,7 @@ Begin Screen Form1
             ID                = 120
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 32,08
+            Line              = 34,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12638,7 +12680,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-32aa
             SCREEN-COL        = 98,00
-            SCREEN-LINE       = 39,77
+            SCREEN-LINE       = 41,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-32aa
@@ -12657,7 +12699,7 @@ Begin Screen Form1
             ID                = 121
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 34,08
+            Line              = 36,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12672,7 +12714,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-33aa
             SCREEN-COL        = 115,50
-            SCREEN-LINE       = 35,77
+            SCREEN-LINE       = 37,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-33aa
@@ -12691,7 +12733,7 @@ Begin Screen Form1
             ID                = 122
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 30,08
+            Line              = 32,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12706,7 +12748,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-18a
             SCREEN-COL        = 4,67
-            SCREEN-LINE       = 29,31
+            SCREEN-LINE       = 31,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-18a
@@ -12725,7 +12767,7 @@ Begin Screen Form1
             ID                = 123
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 23,62
+            Line              = 25,62
             Lines             = 2,00
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12740,7 +12782,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28b
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 35,92
+            SCREEN-LINE       = 37,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28b
@@ -12759,7 +12801,7 @@ Begin Screen Form1
             ID                = 124
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 30,23
+            Line              = 32,23
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12774,7 +12816,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-18aa
             SCREEN-COL        = 76,67
-            SCREEN-LINE       = 29,69
+            SCREEN-LINE       = 31,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-18aa
@@ -12793,7 +12835,7 @@ Begin Screen Form1
             ID                = 126
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 24,00
+            Line              = 26,00
             Lines             = 2,00
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12808,7 +12850,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-32aaa
             SCREEN-COL        = 115,50
-            SCREEN-LINE       = 39,77
+            SCREEN-LINE       = 41,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-32aaa
@@ -12827,7 +12869,7 @@ Begin Screen Form1
             ID                = 128
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 34,08
+            Line              = 36,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12842,7 +12884,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-33ab
             SCREEN-COL        = 136,00
-            SCREEN-LINE       = 37,84
+            SCREEN-LINE       = 39,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-33ab
@@ -12861,7 +12903,7 @@ Begin Screen Form1
             ID                = 129
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 32,15
+            Line              = 34,15
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12876,7 +12918,7 @@ Begin Screen Form1
          End
          Begin Label lab-moq
             SCREEN-COL        = 140,67
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 25,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-moq
@@ -12895,7 +12937,7 @@ Begin Screen Form1
             ID                = 130
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 18,00
+            Line              = 20,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12911,7 +12953,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-33aba
             SCREEN-COL        = 136,00
-            SCREEN-LINE       = 35,84
+            SCREEN-LINE       = 37,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-33aba
@@ -12930,7 +12972,7 @@ Begin Screen Form1
             ID                = 131
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 30,15
+            Line              = 32,15
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -12945,7 +12987,7 @@ Begin Screen Form1
          End
          Begin Label lab-reale
             SCREEN-COL        = 140,67
-            SCREEN-LINE       = 25,69
+            SCREEN-LINE       = 27,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-reale
@@ -12964,7 +13006,7 @@ Begin Screen Form1
             ID                = 132
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 20,00
+            Line              = 22,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -13086,7 +13128,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-10a
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 39,92
+            SCREEN-LINE       = 41,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-10a
@@ -13105,7 +13147,7 @@ Begin Screen Form1
             ID                = 137
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 34,23
+            Line              = 36,23
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -13158,7 +13200,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-prodener
             SCREEN-COL        = 40,67
-            SCREEN-LINE       = 21,69
+            SCREEN-LINE       = 23,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-prodener
@@ -13182,7 +13224,7 @@ Begin Screen Form1
             ID                = 167
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 16,00
+            Line              = 18,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = TRUE
@@ -13196,7 +13238,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-21a
             SCREEN-COL        = 4,67
-            SCREEN-LINE       = 21,69
+            SCREEN-LINE       = 23,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-21a
@@ -13215,7 +13257,7 @@ Begin Screen Form1
             ID                = 168
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 16,00
+            Line              = 18,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -13230,7 +13272,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-12a
             SCREEN-COL        = 113,67
-            SCREEN-LINE       = 21,69
+            SCREEN-LINE       = 23,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-12a
@@ -13249,7 +13291,7 @@ Begin Screen Form1
             ID                = 670
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 16,00
+            Line              = 18,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -13264,7 +13306,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-12aa
             SCREEN-COL        = 132,67
-            SCREEN-LINE       = 21,69
+            SCREEN-LINE       = 23,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-12aa
@@ -13283,7 +13325,7 @@ Begin Screen Form1
             ID                = 671
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 16,00
+            Line              = 18,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -13298,7 +13340,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-12aaa
             SCREEN-COL        = 148,67
-            SCREEN-LINE       = 21,69
+            SCREEN-LINE       = 23,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-12aaa
@@ -13317,7 +13359,7 @@ Begin Screen Form1
             ID                = 672
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 16,00
+            Line              = 18,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -13332,7 +13374,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-33abb
             SCREEN-COL        = 136,00
-            SCREEN-LINE       = 39,77
+            SCREEN-LINE       = 41,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-33abb
@@ -13351,7 +13393,7 @@ Begin Screen Form1
             ID                = 673
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 34,08
+            Line              = 36,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -13366,7 +13408,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-32aab
             SCREEN-COL        = 98,00
-            SCREEN-LINE       = 41,77
+            SCREEN-LINE       = 43,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-32aab
@@ -13385,7 +13427,7 @@ Begin Screen Form1
             ID                = 674
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 36,08
+            Line              = 38,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -13400,7 +13442,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-32aaba
             SCREEN-COL        = 115,50
-            SCREEN-LINE       = 41,77
+            SCREEN-LINE       = 43,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-32aaba
@@ -13419,7 +13461,7 @@ Begin Screen Form1
             ID                = 675
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 36,08
+            Line              = 38,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -13434,7 +13476,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-32aabaa
             SCREEN-COL        = 136,00
-            SCREEN-LINE       = 41,77
+            SCREEN-LINE       = 43,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-32aabaa
@@ -13453,7 +13495,7 @@ Begin Screen Form1
             ID                = 676
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 36,08
+            Line              = 38,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -13468,7 +13510,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-32aabaaa
             SCREEN-COL        = 151,84
-            SCREEN-LINE       = 35,84
+            SCREEN-LINE       = 37,85
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-32aabaaa
@@ -13487,7 +13529,7 @@ Begin Screen Form1
             ID                = 677
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 30,15
+            Line              = 32,15
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -13502,7 +13544,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-10aa
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 44,23
+            SCREEN-LINE       = 46,23
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-10aa
@@ -13521,7 +13563,7 @@ Begin Screen Form1
             ID                = 678
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 38,54
+            Line              = 40,54
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -13536,7 +13578,7 @@ Begin Screen Form1
          End
          Begin Label lab-realea
             SCREEN-COL        = 147,34
-            SCREEN-LINE       = 27,69
+            SCREEN-LINE       = 29,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-realea
@@ -13555,7 +13597,7 @@ Begin Screen Form1
             ID                = 679
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 22,00
+            Line              = 24,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -13570,7 +13612,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-18aaa
             SCREEN-COL        = 115,50
-            SCREEN-LINE       = 37,46
+            SCREEN-LINE       = 39,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-18aaa
@@ -13589,7 +13631,7 @@ Begin Screen Form1
             ID                = 680
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 31,77
+            Line              = 33,77
             Lines             = 2,00
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -13598,6 +13640,120 @@ Begin Screen Form1
             Size Unit         = Default
             Tab Order         = 135
             Title             = "Esclusiva in concorrenza"
+            Transparent       = TRUE
+            Visible           = NONE
+            Width in Cells    = TRUE
+         End
+         Begin Data.Label lab-classe-2
+            SCREEN-COL        = 100,67
+            SCREEN-LINE       = 15,69
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = lab-classe-2
+            Clines            = 0
+            Clines Unit       = Default
+            Color             = 5
+            Column            = 99,00
+            Csize             = 0
+            Csize Unit        = Default
+            Destroy Type      = Automatic
+            Enable            = NONE
+            Field Edited (Style) = 0
+            Field Edited Format = X(30)
+            Field Picture     = X(30)
+            Field Variable    = cl1-descrizione-2
+            File              = Working Storage
+            Font              = Small Font
+            Font Variable     = Small-Font
+            Height in Cells   = TRUE
+            Help ID           = 0
+            ID                = 100
+            Justification     = Unaligned
+            Label Offset      = 20
+            Line              = 10,00
+            Lines             = 1,31
+            Lines Unit        = Default
+            No Key Letter     = TRUE
+            Occurs            = 0
+            Size              = 41,00
+            Size Unit         = Default
+            Tab Order         = 136
+            Transparent       = TRUE
+            Visible           = NONE
+            Width in Cells    = TRUE
+         End
+         Begin Data.Label lab-classe-4
+            SCREEN-COL        = 100,67
+            SCREEN-LINE       = 17,69
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = lab-classe-4
+            Clines            = 0
+            Clines Unit       = Default
+            Color             = 5
+            Column            = 99,00
+            Csize             = 0
+            Csize Unit        = Default
+            Destroy Type      = Automatic
+            Enable            = NONE
+            Field Edited (Style) = 0
+            Field Edited Format = X(30)
+            Field Picture     = X(30)
+            Field Variable    = cl1-descrizione-4
+            File              = Working Storage
+            Font              = Small Font
+            Font Variable     = Small-Font
+            Height in Cells   = TRUE
+            Help ID           = 0
+            ID                = 100
+            Justification     = Unaligned
+            Label Offset      = 20
+            Line              = 12,00
+            Lines             = 1,31
+            Lines Unit        = Default
+            No Key Letter     = TRUE
+            Occurs            = 0
+            Size              = 41,00
+            Size Unit         = Default
+            Tab Order         = 137
+            Transparent       = TRUE
+            Visible           = NONE
+            Width in Cells    = TRUE
+         End
+         Begin Data.Label lab-classe-3
+            SCREEN-COL        = 30,67
+            SCREEN-LINE       = 17,69
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = lab-classe-3
+            Clines            = 0
+            Clines Unit       = Default
+            Color             = 5
+            Column            = 29,00
+            Csize             = 0
+            Csize Unit        = Default
+            Destroy Type      = Automatic
+            Enable            = NONE
+            Field Edited (Style) = 0
+            Field Edited Format = X(30)
+            Field Picture     = X(30)
+            Field Variable    = cl1-descrizione-3
+            File              = Working Storage
+            Font              = Small Font
+            Font Variable     = Small-Font
+            Height in Cells   = TRUE
+            Help ID           = 0
+            ID                = 100
+            Justification     = Unaligned
+            Label Offset      = 20
+            Line              = 12,00
+            Lines             = 1,31
+            Lines Unit        = Default
+            No Key Letter     = TRUE
+            Occurs            = 0
+            Size              = 41,00
+            Size Unit         = Default
+            Tab Order         = 138
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE

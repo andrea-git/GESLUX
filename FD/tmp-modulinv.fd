@@ -16,3 +16,8 @@
                10 tmod-giacenza    PIC  s9(8).
                10 tmod-prezzo      PIC  ----.---.---.--9,99.
                10 tmod-mag-std     PIC  x(3).
+               10 tmod-codice-ean-1            PIC  9(13).
+               10 tmod-codice-ean-2            PIC  9(13).
+               10 tmod-codice-ean-3            PIC  9(13).
+               10 tmod-codice-ean-4            PIC  9(13).
+               10 tmod-codice-ean-5            PIC  9(13).
