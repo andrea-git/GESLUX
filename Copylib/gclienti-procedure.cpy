@@ -1354,13 +1354,15 @@ LUBEXX          end-if
 
            |78-ID-ef-cap-d è l'ID del campo ef-cap-d
            when 78-ID-ef-cap-d
-                if tot-righe > 1 or riga-nuova = 1
+                perform SCARICA-COMBO-DESTINI
+                if ( tot-righe > 1 or riga-nuova = 1 ) and attivo-d
                    inquire ef-cap-d, value in ef-cap-d-buf
                    if ef-cap-d-buf = spaces 
                       set errori to true  
                       move 78-ID-ef-cap-d to control-id
                       display message box 
-                              "Inserimento CAP destinatario mancante"
+                              "Inserimento CAP destinatario " des-prog 
+                              " mancante"
                               title = tit-err
                               icon mb-warning-icon
                    else
@@ -1372,7 +1374,8 @@ LUBEXX          end-if
                          if not trovato
                             set errori to true
                             move 78-ID-ef-cap-d to control-id
-                            display message"CAP destinatario NON valido"
+                            display message "CAP destinatario " des-prog
+                                            " NON valido"
                                       title tit-err
                                        icon mb-warning-icon
                          end-if
@@ -1559,6 +1562,7 @@ LUBEXX          end-if
       *****                     title = tit-err
       *****                     icon mb-warning-icon
       *****          end-if
+
 
            |78-ID-ef-data-dich è l'ID del control ef-data-dich
            when 78-ID-ef-data-dich
@@ -3332,6 +3336,43 @@ LUBEXX*****           if tutto-ok perform SALVA-RIGA end-if.
 
 LUBEXX     if tutto-ok perform SALVA-RIGA end-if.
 
+           if tutto-ok
+              move riga to store-riga
+              perform X-Y
+              perform varying riga from 2 by 1
+                        until riga > tot-righe
+                 inquire form1-gd-1(riga, 4), cell-data   in col-cap
+                 move col-cap to anc-cap
+                 read anacap no lock
+                      invalid
+                      inquire form1-gd-1(riga, 1), 
+                              cell-data in col-prog
+                      if riga = store-riga
+                         perform SCARICA-COMBO-DESTINI
+                         if attivo-d
+                            move "A" to hidden-stato
+                         else
+                            move "B" to hidden-stato
+                         end-if
+                      else
+                         inquire form1-gd-1(riga, 17),
+                                 hidden-data in hidden-stato
+                      end-if
+                      if hidden-stato = "A" 
+                         set errori to true
+                         move 78-ID-ef-cap-d to control-id
+                         display message "CAP destinatario " col-prog
+                                         " NON valido"
+                                   title tit-err
+                                    icon mb-warning-icon
+                         exit perform
+                      end-if
+                 end-read
+              end-perform                                            
+              move store-riga to riga
+
+           end-if.
+
            if errori
       *        perform ABILITAZIONI
               |controllo che l'errore sia sulla pagina corrente
@@ -4000,6 +4041,7 @@ LUBEXX        perform DELETE-LOCKFILE
        VALORIZZA-OLD.
            move cli-rec                 to old-cli-rec.
            move rec-rec                 to old-rec-rec.
+
            set vecchio                  to true.
 
            if old-cli-utf = space
