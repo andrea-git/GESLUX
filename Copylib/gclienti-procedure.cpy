@@ -3340,34 +3340,37 @@ LUBEXX     if tutto-ok perform SALVA-RIGA end-if.
               move riga to store-riga
               perform X-Y
               perform varying riga from 2 by 1
-                        until riga > tot-righe
-                 inquire form1-gd-1(riga, 4), cell-data   in col-cap
-                 move col-cap to anc-cap
-                 read anacap no lock
-                      invalid
-                      inquire form1-gd-1(riga, 1), 
-                              cell-data in col-prog
-                      if riga = store-riga
-                         perform SCARICA-COMBO-DESTINI
-                         if attivo-d
-                            move "A" to hidden-stato
+                        until riga > tot-righe                      
+                 inquire form1-gd-1(riga, 6), cell-data in col-prov
+                 inquire form1-gd-1(riga, 4), cell-data in col-cap
+                 if col-prov not = "EE"
+                    move col-cap to anc-cap
+                    read anacap no lock
+                         invalid
+                         inquire form1-gd-1(riga, 1), 
+                                 cell-data in col-prog
+                         if riga = store-riga
+                            perform SCARICA-COMBO-DESTINI
+                            if attivo-d
+                               move "A" to hidden-stato
+                            else
+                               move "B" to hidden-stato
+                            end-if
                          else
-                            move "B" to hidden-stato
+                            inquire form1-gd-1(riga, 17),
+                                    hidden-data in hidden-stato
                          end-if
-                      else
-                         inquire form1-gd-1(riga, 17),
-                                 hidden-data in hidden-stato
-                      end-if
-                      if hidden-stato = "A" 
-                         set errori to true
-                         move 78-ID-ef-cap-d to control-id
-                         display message "CAP destinatario " col-prog
-                                         " NON valido"
-                                   title tit-err
-                                    icon mb-warning-icon
-                         exit perform
-                      end-if
-                 end-read
+                         if hidden-stato = "A" 
+                            set errori to true
+                            move 78-ID-ef-cap-d to control-id
+                            display message "CAP destinatario " col-prog
+                                            " NON valido"
+                                      title tit-err
+                                       icon mb-warning-icon
+                            exit perform
+                         end-if
+                    end-read
+                 end-if
               end-perform                                            
               move store-riga to riga
 
