@@ -259,7 +259,7 @@
            write line-riga from spaces
 
            initialize line-riga
-           move "titolare della licenza U.T.I.F.  nr. __________"
+           move "Titolare della licenza nr. __________"
                 to line-riga(40 - 78-ini:)
            write line-riga
 
@@ -267,14 +267,15 @@
 
            initialize line-riga
            move
-           "per l'esercizio del deposito per la vendita di oli minerali"
+           "Per l'esercizio del deposito per la vendita di oli lubrifica
+      -    "nti"
            to line-riga(40 - 78-ini:)
            write line-riga
 
            write line-riga from spaces
 
            initialize line-riga
-           move "sito in VIMODRONE Via G. Di Vittorio n. 13/15"
+           move "Sito in VIMODRONE Via G. Di Vittorio n. 13/15"
                 to line-riga(40 - 78-ini:)
            write line-riga
 
@@ -282,14 +283,14 @@
            perform RIGHE-VUOTE
 
            initialize line-riga
-           move "U F F I C I O   T E C N I C O   di   F I N A N Z A"
+           move "U F F I C I O   D E L L E   D O G A N E"
                 to line-riga(40 - 78-ini:)
            write line-riga
 
            write line-riga from spaces
 
            initialize line-riga
-           move "              di  M I L A N O" 
+           move "           di  M I L A N O   3" 
              to line-riga(40 - 78-ini:)
            write line-riga
 
