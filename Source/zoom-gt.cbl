@@ -3514,10 +3514,10 @@
 
       * CAMPO 1
            add 1 to idx
-           move  4                       to xzoom-field-length(idx).
-           move  0                       to xzoom-field-offset(idx).
-           move  9                      to xzoom-field-column(idx).
-           move "Codice"                 to xzoom-field-name(idx).  
+           move  4                          to xzoom-field-length(idx).
+           move  0                          to xzoom-field-offset(idx).
+           move  9                          to xzoom-field-column(idx).
+           move "Codice"                    to xzoom-field-name(idx).  
            move 4                           to xzoom-field-digits(Idx).
            move 0                           to xzoom-field-dec(Idx).
            move "###0"                      to xzoom-field-fmt(Idx).
@@ -3539,7 +3539,12 @@
            move  86                      to xzoom-field-offset(idx).
            move  6                       to xzoom-field-column(idx).
            move "Livello"                to xzoom-field-name(idx).  
-           set  xzoom-ft-alpha(idx)      to true. 
+           move 2                           to xzoom-field-digits(Idx).
+           move 0                           to xzoom-field-dec(Idx).
+           move "#0"                        to xzoom-field-fmt(Idx).
+           set xzoom-al-right(Idx)          to true.
+           set xzoom-field-unsigned(Idx )   to true.
+           set xzoom-ft-display(Idx)        to true.
 
            move  -1                     to xzoom-delimiter-offset.
            move  5                      to xzoom-delimiter-length.

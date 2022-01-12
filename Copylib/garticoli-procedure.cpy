@@ -383,7 +383,8 @@
                 cancel "zoom-gt"   
                 if stato-zoom = 0
                    move cl1-codice      to ef-classe-2-buf
-                   display ef-classe-2
+                   move cl1-descrizione to lab-classe-2-buf
+                   display ef-classe-2 lab-classe-2
                 end-if
       
            when 78-ID-ef-classe-3
@@ -396,7 +397,8 @@
                 cancel "zoom-gt"
                 if stato-zoom = 0
                    move cl1-codice      to ef-classe-3-buf
-                   display ef-classe-3
+                   move cl1-descrizione to lab-classe-3-buf
+                   display ef-classe-3 lab-classe-3
                 end-if
       
            when 78-ID-ef-classe-4
@@ -409,7 +411,8 @@
                 cancel "zoom-gt"
                 if stato-zoom = 0
                    move cl1-codice      to ef-classe-4-buf
-                   display ef-classe-4
+                   move cl1-descrizione to lab-classe-4-buf
+                   display ef-classe-4 lab-classe-4
                 end-if
       
            when 78-ID-ef-udm
@@ -771,7 +774,10 @@
            when 78-ID-ef-classe-2
                 inquire ef-classe-2, value in ef-classe-2-buf        
                 move ef-classe-2-buf to cl1-livello
-                if cl1-livello not = 0
+                if cl1-livello = 0
+                   move spaces to lab-classe-2-buf
+                   display lab-classe-2
+                else
                    move "tcla2art" to nome-file
                    perform RELAZIONI-ARTICOLI
                    if not trovato
@@ -786,7 +792,10 @@
            when 78-ID-ef-classe-3
                 inquire ef-classe-3, value in ef-classe-3-buf        
                 move ef-classe-3-buf to cl1-livello
-                if cl1-livello not = 0
+                if cl1-livello = 0                
+                   move spaces to lab-classe-3-buf
+                   display lab-classe-3
+                else
                    move "tcla3art" to nome-file
                    perform RELAZIONI-ARTICOLI
                    if not trovato
@@ -801,7 +810,10 @@
            when 78-ID-ef-classe-4
                 inquire ef-classe-4, value in ef-classe-4-buf        
                 move ef-classe-4-buf to cl1-livello
-                if cl1-livello not = 0
+                if cl1-livello  = 0           
+                   move spaces to lab-classe-4-buf
+                   display lab-classe-4
+                else
                    move "tcla4art" to nome-file
                    perform RELAZIONI-ARTICOLI
                    if not trovato
@@ -1580,6 +1592,7 @@
               perform STATUS-HELP
            end-if.
 
+
       ***---
        NUOVO.
            perform SALV-MOD.
@@ -1789,11 +1802,11 @@
                       if cl1-livello not = 1
                          move spaces to cl1-descrizione
                          set trovato to false
-                      end-if
+                      end-if                                   
                 when "tcla2art" 
                       if cl1-livello not = 2
                          move spaces to cl1-descrizione
-                         set trovato to false
+                         set trovato to false                   
                       end-if  
                 when "tcla3art" 
                       if cl1-livello not = 3
@@ -1908,18 +1921,24 @@
            when "tcla2art"     
                 move ef-classe-2-buf to cl1-codice
                 if cl1-codice not = 0
-                   perform RELATIONS
-                end-if
+                   perform RELATIONS                     
+                   move cl1-descrizione to lab-classe-2-buf
+                end-if            
+                display lab-classe-2
            when "tcla3art"     
                 move ef-classe-3-buf to cl1-codice
                 if cl1-codice not = 0
-                   perform RELATIONS
-                end-if
+                   perform RELATIONS                        
+                   move cl1-descrizione to lab-classe-3-buf
+                end-if              
+                display lab-classe-3
            when "tcla4art"      
                 move ef-classe-4-buf to cl1-codice
                 if cl1-codice not = 0
-                   perform RELATIONS
-                end-if          
+                   perform RELATIONS                    
+                   move cl1-descrizione to lab-classe-4-buf
+                end-if              
+                display lab-classe-4
            when "tivaese"
                 initialize lab-iva-buf
                 move "IV"       to tbliv-codice1
@@ -2103,7 +2122,19 @@
               if errori 
                  exit perform 
               end-if
-           end-perform.
+           end-perform.       
+
+           if tutto-ok
+              if art-mag-std of articoli = "EXD" and 
+                 art-scorta  of articoli not = 12
+                 set errori to true
+                 move 78-ID-ef-scorta  to store-id
+                 display message 
+                         "Possibile solo scorta 12 per articoli EXD"
+                           title tit-err
+                           icon 2 
+              end-if
+           end-if.
 
            if tutto-ok
               move ef-qta-std-buf  to art-qta-std  of articoli
@@ -2999,6 +3030,18 @@ LUBEXX        end-if
            
       * ARTICOLI-CLASSE
            move "tcla1art" to nome-file.
+           perform RELAZIONI-ARTICOLI.
+           
+      * ARTICOLI-CLASSE
+           move "tcla2art" to nome-file.
+           perform RELAZIONI-ARTICOLI.
+           
+      * ARTICOLI-CLASSE
+           move "tcla3art" to nome-file.
+           perform RELAZIONI-ARTICOLI.
+           
+      * ARTICOLI-CLASSE
+           move "tcla4art" to nome-file.
            perform RELAZIONI-ARTICOLI.
            
       * ARTICOLI-DOGANA

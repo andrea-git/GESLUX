@@ -554,7 +554,18 @@ LUBEXX               separatore
                      separatore
                      tmod-prezzo 
                      separatore
-                     tmod-mag-std delimited by size
+                     tmod-mag-std     
+                     separatore
+                     tmod-codice-ean-1
+                     separatore
+                     tmod-codice-ean-2
+                     separatore
+                     tmod-codice-ean-3
+                     separatore
+                     tmod-codice-ean-4
+                     separatore
+                     tmod-codice-ean-5
+                     delimited by size
                      into line-riga
               end-string
               write line-riga
@@ -578,7 +589,7 @@ LUBEXX               separatore
                      separatore
                      "Descrizione Articolo"
                      separatore
-                     "Cod."             
+                     "Cod."                                
                      separatore
                      "Imballo"
                      separatore
@@ -590,9 +601,19 @@ LUBEXX               separatore
                      separatore
                      "Giacenza"
                      separatore
-                     "Prezzo"  
+                     "Prezzo"    
                      separatore
-                     "Mag. Std"  delimited by size
+                     "Mag. Std"   
+                     separatore
+                     "Codice EAN 1"
+                     separatore
+                     "Codice EAN 2"
+                     separatore
+                     "Codice EAN 3"
+                     separatore
+                     "Codice EAN 4"
+                     separatore
+                     "Codice EAN 5"  delimited by size
                      into line-riga
                end-string
            else
@@ -612,7 +633,12 @@ LUBEXX               separatore
            move prg-peso            to tmod-peso.
 
            read tmp-modulinv no lock
-                invalid
+                invalid                                     
+                move art-codice-ean-1   to tmod-codice-ean-1
+                move art-codice-ean-2   to tmod-codice-ean-2
+                move art-codice-ean-3   to tmod-codice-ean-3
+                move art-codice-ean-4   to tmod-codice-ean-4
+                move art-codice-ean-5   to tmod-codice-ean-5
                 move art-marca-prodotto to tmod-marca mar-codice
                 move art-descrizione    to tmod-art-descrizione
                 read tmarche  no lock invalid continue end-read

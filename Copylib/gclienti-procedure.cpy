@@ -21,9 +21,9 @@
               if cbo-stato-buf not = "Disattivo" 
                  move 1 to mod-campi
                  perform VALORIZZA-ENABLE-VARIABLE
-                 if cbo-stato-d-buf not = "Disattivo"
+      *           if cbo-stato-d-buf not = "Disattivo"
                     move 1 to mod-destini  
-                 end-if
+      *           end-if
               end-if
 
               if cbo-stato-buf = "Bloccato" 
@@ -2405,11 +2405,11 @@ LUBEXX          end-if
            perform SCARICA-COMBO-TIPO-ART-D.
            move tipo-art to hidden-tipo-art. 
 
-           if hidden-stato = "D" |Disattivo
-              move 0 to mod-destini
-           else
+      *     if hidden-stato = "D" |Disattivo
+      *        move 0 to mod-destini
+      *     else
               move 1 to mod-destini
-           end-if.
+      *     end-if.
                                 
            move ef-note-1-buf      to hidden-note-1.
 
@@ -2518,7 +2518,7 @@ LUBEXX          end-if
               evaluate true
               when bloccato-d  move 1 to mod-destini
               when attivo-d    move 1 to mod-destini
-              when disattivo-d move 0 to mod-destini
+              when disattivo-d move 1 to mod-destini
               end-evaluate
            end-if.
            
@@ -4382,7 +4382,7 @@ LUBEXX     perform DELETE-LOCKFILE.
               evaluate true
               when bloccato  move 1 to mod-destini
               when attivo    move 1 to mod-destini
-              when disattivo move 0 to mod-destini
+              when disattivo move 1 to mod-destini
               end-evaluate
            end-if.
 
