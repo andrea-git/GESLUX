@@ -2,6 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+Adesk-andre=169.254.54.220
 
 
 [DATALAYOUT_CONTENT]
@@ -683,7 +684,6 @@ m_strPic=X(27)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-m_strName_Xfd=tcl-filler_1
 {{@DataItem_m_strDescriptionFDITEM70_
 
 @}}
@@ -694,7 +694,6 @@ m_strPic=x(5)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-m_strName_Xfd=tcl-filler_1_1
 {{@DataItem_m_strDescriptionFDITEM71_
 
 @}}
@@ -705,19 +704,46 @@ m_strPic=x(5)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-m_strName_Xfd=tcl-filler_1_2
 {{@DataItem_m_strDescriptionFDITEM72_
 
 @}}
 [FDITEM73_]
-m_strName=FILLER
-m_strRawPic=X(211)
-m_strPic=X(211)
+m_strName=tcl-no-blocco-prob-pag
+m_strRawPic=X(1)
+m_strPic=X(1)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-m_strName_Xfd=tcl-filler_1_1_1
 {{@DataItem_m_strDescriptionFDITEM73_
+
+@}}
+[FDITEM74_]
+m_strName=tcl-no-blocco-prob-pag-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM74_
+
+@}}
+[FDITEM75_]
+m_strName=tcl-no-blocco-prob-pag-no
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="N", " "
+{{@DataItem_m_strDescriptionFDITEM75_
+
+@}}
+[FDITEM76_]
+m_strName=FILLER
+m_strRawPic=X(210)
+m_strPic=X(210)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=tcl-filler_1_1_1_1
+{{@DataItem_m_strDescriptionFDITEM76_
 
 @}}
 [CStoAcucobolSL_]

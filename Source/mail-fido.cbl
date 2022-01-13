@@ -769,7 +769,9 @@
                              set cli-fuori-fido to true
                           end-if
                           if not sf-verifica-2-ok
-                             set cli-prob-pag   to true
+                             if tcl-no-blocco-prob-pag-no
+                                set cli-prob-pag   to true
+                             end-if
                           end-if          
                           initialize como-riga
                           string "CLIENTE: "         delimited size
@@ -865,7 +867,9 @@
                                          " DI PAGAMENTO"     
                                     into como-riga
                                   end-string         
-                                  set cli-prob-pag to true 
+                                  if tcl-no-blocco-prob-pag-no
+                                     set cli-prob-pag   to true
+                                  end-if
                                end-if
                                perform SETTA-RIGA-LOG
                                set cli-bloccato to true

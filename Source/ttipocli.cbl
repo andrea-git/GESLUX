@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ttipocli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 13 gennaio 2022 15:02:35.
+       DATE-WRITTEN.        giovedì 13 gennaio 2022 15:55:54.
        REMARKS.
       *{TOTEM}END
 
@@ -213,6 +213,8 @@
        77 lab-banca-buf    PIC  X(100).
        77 STATUS-ABI       PIC  X(2).
            88 Valid-STATUS-ABI VALUE IS "00" THRU "09". 
+       77 chk-no-blocco-buf            PIC  9
+                  VALUE IS 0.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -258,6 +260,7 @@
        78  78-ID-ef-iban VALUE 5003.
        78  78-ID-ef-abi VALUE 5004.
        78  78-ID-ef-cab VALUE 5005.
+       78  78-ID-chk-no-blocco VALUE 5006.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -272,8 +275,8 @@
       * FORM
        01 
            Form1, 
+           BEFORE PROCEDURE Form1-BeforeProcedure,
            AFTER PROCEDURE  Form1-AFTER-SCREEN
-           BEFORE PROCEDURE  Form1-BEFORE-SCREEN
            .
 
       * LABEL
@@ -394,7 +397,7 @@
            Form1-La-1a, 
            Label, 
            COL 3,00, 
-           LINE 42,69,
+           LINE 41,92,
            LINES 2,08 ,
            SIZE 22,00 ,
            FONT IS Small-Font,
@@ -410,7 +413,7 @@
            ef-mail-comm, 
            Entry-Field, 
            COL 26,67, 
-           LINE 42,69,
+           LINE 41,92,
            LINES 3,46 ,
            SIZE 144,67 ,
            BOXED,
@@ -430,7 +433,7 @@
            ef-path-sfondo-bolle, 
            Entry-Field, 
            COL 26,67, 
-           LINE 47,31,
+           LINE 45,77,
            LINES 1,54 ,
            SIZE 141,50 ,
            BOXED,
@@ -450,7 +453,7 @@
            Form1-La-1aa, 
            Label, 
            COL 3,00, 
-           LINE 47,31,
+           LINE 45,77,
            LINES 2,08 ,
            SIZE 22,00 ,
            FONT IS Small-Font,
@@ -466,7 +469,7 @@
            pb-path-pdf, 
            Push-Button, 
            COL 169,00, 
-           LINE 47,31,
+           LINE 45,77,
            LINES 1,54 ,
            SIZE 4,50 ,
            ENABLED mod,
@@ -483,7 +486,7 @@
            ef-iban, 
            Entry-Field, 
            COL 26,67, 
-           LINE 50,31,
+           LINE 48,00,
            LINES 1,54 ,
            SIZE 45,00 ,
            BOXED,
@@ -503,7 +506,7 @@
            ef-abi, 
            Entry-Field, 
            COL 83,33, 
-           LINE 50,23,
+           LINE 47,92,
            LINES 1,54 ,
            SIZE 8,00 ,
            BOXED,
@@ -524,7 +527,7 @@
            ef-cab, 
            Entry-Field, 
            COL 101,67, 
-           LINE 50,23,
+           LINE 47,92,
            LINES 1,54 ,
            SIZE 8,00 ,
            BOXED,
@@ -540,6 +543,22 @@
            .
 
 
+      * CHECK BOX
+       05
+           chk-no-blocco, 
+           Check-Box, 
+           COL 26,67, 
+           LINE 50,31,
+           LINES 1,15 ,
+           SIZE 2,50 ,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 78-ID-chk-no-blocco,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           VALUE chk-no-blocco-buf,
+           AFTER PROCEDURE Form1-Cb-1-AfterProcedure,
+           .
       * LABEL
        05
            Form1-La-1b, 
@@ -561,8 +580,8 @@
            Form1-La-1aaa, 
            Label, 
            COL 3,00, 
-           LINE 50,23,
-           LINES 1,00 ,
+           LINE 47,92,
+           LINES 1,54 ,
            SIZE 22,00 ,
            FONT IS Small-Font,
            ID IS 24,
@@ -577,8 +596,8 @@
            Form1-La-1aaaa, 
            Label, 
            COL 76,33, 
-           LINE 50,23,
-           LINES 1,00 ,
+           LINE 47,92,
+           LINES 1,54 ,
            SIZE 4,00 ,
            FONT IS Small-Font,
            ID IS 25,
@@ -593,8 +612,8 @@
            Form1-La-1aaaaa, 
            Label, 
            COL 94,67, 
-           LINE 50,23,
-           LINES 1,00 ,
+           LINE 47,92,
+           LINES 1,54 ,
            SIZE 4,00 ,
            FONT IS Small-Font,
            ID IS 26,
@@ -608,8 +627,8 @@
        05
            lab-banca, 
            Label, 
-           COL 116,33, 
-           LINE 50,23,
+           COL 113,00, 
+           LINE 47,92,
            LINES 1,54 ,
            SIZE 65,00 ,
            COLOR IS 5,
@@ -619,6 +638,39 @@
            WIDTH-IN-CELLS,
            TRANSPARENT,
            TITLE lab-banca-buf,
+           .
+
+      * LABEL
+       05
+           Form1-La-1aaab, 
+           Label, 
+           COL 3,00, 
+           LINE 50,23,
+           LINES 2,00 ,
+           SIZE 22,00 ,
+           FONT IS Small-Font,
+           ID IS 24,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "No blocco automatico problematiche pagamento",
+           .
+
+      * LABEL
+       05
+           lab-bancaa, 
+           Label, 
+           COL 31,33, 
+           LINE 50,31,
+           LINES 2,00 ,
+           SIZE 64,83 ,
+           FONT IS Small-Font,
+           ID IS 26,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Attivandolo evita che i clienti con problematiche di p
+      -    "agamento vengano bloccati in notturna",
            .
 
       * TOOLBAR
@@ -2504,6 +2556,20 @@
 
 
 
+       Form1-BeforeProcedure.
+           EVALUATE Control-Id
+           WHEN 5006 MOVE "Attivandolo evita che i clienti con problemat
+      -    "iche di pagamento vengano bloccati in notturna" to 
+           TOTEM-HINT-TEXT
+           WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
+           END-EVALUATE
+           EVALUATE Control-Id
+           When 5006 PERFORM Form1-Cb-1-BeforeProcedure
+           END-EVALUATE
+           PERFORM Form1-DISPLAY-STATUS-MSG
+           perform Form1-BEFORE-SCREEN
+           .
+
        Form1-Event-Proc.
            .
 
@@ -3159,7 +3225,12 @@
                              move tcl-iban to ef-iban-buf
                              move tcl-abi  to ef-abi-buf
                              move tcl-cab  to ef-cab-buf
-                             display ef-iban ef-abi ef-cab
+                             if tcl-no-blocco-prob-pag-si
+                                move 1 to chk-no-blocco-buf
+                             else
+                                move 0 to chk-no-blocco-buf
+                             end-if
+                             display ef-iban ef-abi ef-cab chk-no-blocco
                           end-if
                      end-read                                           
                   end-perform
@@ -3217,7 +3288,8 @@
            modify pb-path-pdf,   enabled mod.
            modify ef-iban,   enabled mod.
            modify ef-abi,   enabled mod.
-           modify ef-cab,   enabled mod 
+           modify ef-cab,   enabled mod.
+           modify chk-no-blocco, enabled mod 
            .
       * <TOTEM:END>
 
@@ -3344,7 +3416,12 @@
               move ef-path-sfondo-bolle-buf   to tcl-path-sfondo-bolle
               move ef-iban-buf to tcl-iban
               move ef-abi-buf to tcl-abi
-              move ef-cab-buf to tcl-cab
+              move ef-cab-buf to tcl-cab  
+              if chk-no-blocco-buf = 1
+                 set tcl-no-blocco-prob-pag-si to true
+              else                                    
+                 set tcl-no-blocco-prob-pag-no to true
+              end-if
               perform VALORIZZA-DATI-COMUNI
               write tcl-rec invalid rewrite tcl-rec end-write
 
@@ -3447,7 +3524,14 @@
            move tcl-abi to ef-abi-buf.
            display ef-abi.
            move tcl-cab to ef-cab-buf.
-           display ef-cab     
+           display ef-cab.         
+
+           if tcl-no-blocco-prob-pag-si 
+              move 1 to chk-no-blocco-buf
+           else
+              move 0 to chk-no-blocco-buf
+           end-if.
+           display chk-no-blocco 
            .
       * <TOTEM:END>
 
@@ -3851,6 +3935,16 @@
            move 0 to StatusHelp.
            perform STATUS-HELP.
            perform CONTROLLO-BANCA 
+           .
+      * <TOTEM:END>
+       Form1-Cb-1-BeforeProcedure.
+      * <TOTEM:PARA. Form1-Cb-1-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       Form1-Cb-1-AfterProcedure.
+      * <TOTEM:PARA. Form1-Cb-1-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
 

@@ -1507,6 +1507,17 @@ m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM146_WK
 
 @}}
+[FDITEM147_WK]
+m_strName=chk-no-blocco-buf
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM147_WK
+
+@}}
 
 
 [LINKAGE_SECTION]
@@ -2056,7 +2067,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-1a
       SCREEN-COL        = 3,00
-      SCREEN-LINE       = 42,69
+      SCREEN-LINE       = 41,92
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-1a
@@ -2075,7 +2086,7 @@ Begin Screen Form1
       ID                = 15
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 42,69
+      Line              = 41,92
       Lines             = 2,08
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -2090,7 +2101,7 @@ Begin Screen Form1
    End
    Begin Entry-Field ef-mail-comm
       SCREEN-COL        = 26,67
-      SCREEN-LINE       = 42,69
+      SCREEN-LINE       = 41,92
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-mail-comm
@@ -2115,7 +2126,7 @@ Begin Screen Form1
       Help ID           = 0
       ID                = 16
       Justification     = Unaligned
-      Line              = 42,69
+      Line              = 41,92
       Lines             = 3,46
       Lines Unit        = Default
       Max Lines         = 0
@@ -2146,7 +2157,7 @@ Begin Screen Form1
    End
    Begin Entry-Field ef-path-sfondo-bolle
       SCREEN-COL        = 26,67
-      SCREEN-LINE       = 47,31
+      SCREEN-LINE       = 45,77
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-path-sfondo-bolle
@@ -2171,7 +2182,7 @@ Begin Screen Form1
       Help ID           = 0
       ID                = 17
       Justification     = Unaligned
-      Line              = 47,31
+      Line              = 45,77
       Lines             = 1,54
       Lines Unit        = Default
       Max Lines         = 0
@@ -2202,7 +2213,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-1aa
       SCREEN-COL        = 3,00
-      SCREEN-LINE       = 47,31
+      SCREEN-LINE       = 45,77
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-1aa
@@ -2221,7 +2232,7 @@ Begin Screen Form1
       ID                = 18
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 47,31
+      Line              = 45,77
       Lines             = 2,08
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -2236,7 +2247,7 @@ Begin Screen Form1
    End
    Begin Push-Button pb-path-pdf
       SCREEN-COL        = 169,00
-      SCREEN-LINE       = 47,31
+      SCREEN-LINE       = 45,77
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = pb-path-pdf
@@ -2259,7 +2270,7 @@ Begin Screen Form1
       Height in Cells   = TRUE
       Help ID           = 0
       ID                = 19
-      Line              = 47,31
+      Line              = 45,77
       Lines             = 1,54
       Lines Unit        = Default
       No Auto Default   = FALSE
@@ -2278,7 +2289,7 @@ Begin Screen Form1
    End
    Begin Entry-Field ef-iban
       SCREEN-COL        = 26,67
-      SCREEN-LINE       = 50,31
+      SCREEN-LINE       = 48,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-iban
@@ -2304,7 +2315,7 @@ Begin Screen Form1
       ID                = 20
       ID Variable       = AUTO-ID
       Justification     = Unaligned
-      Line              = 50,31
+      Line              = 48,00
       Lines             = 1,54
       Lines Unit        = Default
       Max Lines         = 0
@@ -2335,7 +2346,7 @@ Begin Screen Form1
    End
    Begin Entry-Field ef-abi
       SCREEN-COL        = 83,33
-      SCREEN-LINE       = 50,23
+      SCREEN-LINE       = 47,92
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-abi
@@ -2361,7 +2372,7 @@ Begin Screen Form1
       ID                = 21
       ID Variable       = AUTO-ID
       Justification     = Unaligned
-      Line              = 50,23
+      Line              = 47,92
       Lines             = 1,54
       Lines Unit        = Default
       Max Lines         = 0
@@ -2393,7 +2404,7 @@ Begin Screen Form1
    End
    Begin Entry-Field ef-cab
       SCREEN-COL        = 101,67
-      SCREEN-LINE       = 50,23
+      SCREEN-LINE       = 47,92
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-cab
@@ -2419,7 +2430,7 @@ Begin Screen Form1
       ID                = 22
       ID Variable       = AUTO-ID
       Justification     = Unaligned
-      Line              = 50,23
+      Line              = 47,92
       Lines             = 1,54
       Lines Unit        = Default
       Max Lines         = 0
@@ -2449,6 +2460,52 @@ Begin Screen Form1
       Before Procedure  = ef-cab-BeforeProcedure
       After Procedure   = ef-cab-AfterProcedure
    End
+   Begin Check-Box chk-no-blocco
+      SCREEN-COL        = 26,67
+      SCREEN-LINE       = 50,31
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = chk-no-blocco
+      Bitmap Frame      = FALSE
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 26,67
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 0
+      Flat              = TRUE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Attivandolo evita che i clienti con problematiche di pagamento vengano bloccati in notturna
+      ID                = 27
+      ID Variable       = AUTO-ID
+      Left Text         = FALSE
+      Line              = 50,31
+      Lines             = 1,15
+      Lines Unit        = Default
+      No Tab            = FALSE
+      Notify            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 2,50
+      Size Unit         = Default
+      Tab Order         = 14
+      Termination Value = 0
+      Value             = 0:FALSE
+      Value Variable    = chk-no-blocco-buf
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = Form1-Cb-1-BeforeProcedure
+      After Procedure   = Form1-Cb-1-AfterProcedure
+   End
    Begin Label Form1-La-1b
       SCREEN-COL        = 89,17
       SCREEN-LINE       = 39,62
@@ -2477,7 +2534,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 23,00
       Size Unit         = Default
-      Tab Order         = 14
+      Tab Order         = 15
       Title             = "Stampante master associata"
       Transparent       = TRUE
       Visible           = NONE
@@ -2485,7 +2542,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-1aaa
       SCREEN-COL        = 3,00
-      SCREEN-LINE       = 50,23
+      SCREEN-LINE       = 47,92
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-1aaa
@@ -2504,14 +2561,14 @@ Begin Screen Form1
       ID                = 24
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 50,23
-      Lines             = 1,00
+      Line              = 47,92
+      Lines             = 1,54
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 22,00
       Size Unit         = Default
-      Tab Order         = 15
+      Tab Order         = 16
       Title             = "Codice IBAN"
       Transparent       = TRUE
       Visible           = NONE
@@ -2519,7 +2576,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-1aaaa
       SCREEN-COL        = 76,33
-      SCREEN-LINE       = 50,23
+      SCREEN-LINE       = 47,92
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-1aaaa
@@ -2538,14 +2595,14 @@ Begin Screen Form1
       ID                = 25
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 50,23
-      Lines             = 1,00
+      Line              = 47,92
+      Lines             = 1,54
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 4,00
       Size Unit         = Default
-      Tab Order         = 16
+      Tab Order         = 17
       Title             = "ABI"
       Transparent       = TRUE
       Visible           = NONE
@@ -2553,7 +2610,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-1aaaaa
       SCREEN-COL        = 94,67
-      SCREEN-LINE       = 50,23
+      SCREEN-LINE       = 47,92
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-1aaaaa
@@ -2572,29 +2629,29 @@ Begin Screen Form1
       ID                = 26
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 50,23
-      Lines             = 1,00
+      Line              = 47,92
+      Lines             = 1,54
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 4,00
       Size Unit         = Default
-      Tab Order         = 17
+      Tab Order         = 18
       Title             = "CAB"
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
    End
    Begin Label lab-banca
-      SCREEN-COL        = 116,33
-      SCREEN-LINE       = 50,23
+      SCREEN-COL        = 113,00
+      SCREEN-LINE       = 47,92
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = lab-banca
       Clines            = 0
       Clines Unit       = Default
       Color             = 5
-      Column            = 116,33
+      Column            = 113,00
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -2606,16 +2663,84 @@ Begin Screen Form1
       ID                = 26
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 50,23
+      Line              = 47,92
       Lines             = 1,54
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 65,00
       Size Unit         = Default
-      Tab Order         = 18
+      Tab Order         = 19
       Title Picture     = X(100)
       Title Variable    = lab-banca-buf
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-1aaab
+      SCREEN-COL        = 3,00
+      SCREEN-LINE       = 50,23
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-1aaab
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 3,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 24
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 50,23
+      Lines             = 2,00
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 22,00
+      Size Unit         = Default
+      Tab Order         = 20
+      Title             = "No blocco automatico problematiche pagamento"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label lab-bancaa
+      SCREEN-COL        = 31,33
+      SCREEN-LINE       = 50,31
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lab-bancaa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 31,33
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 26
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 50,31
+      Lines             = 2,00
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 64,83
+      Size Unit         = Default
+      Tab Order         = 21
+      Title             = "Attivandolo evita che i clienti con problematiche di pagamento vengano bloccati in notturna"
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -2631,7 +2756,7 @@ Begin Screen Form1
       Handle Variable   = Form1-Tb-1-Handle
       Help ID           = 0
       Lines             = 2,69
-      Tab Order         = 19
+      Tab Order         = 22
       Begin Push-Button TOOL-ESCI
          SCREEN-COL        = 1,00
          SCREEN-LINE       = 1,08
@@ -3070,7 +3195,7 @@ Begin Screen Form1
       Font              = Default Font
       Grip              = TRUE
       Handle Variable   = Form1-St-1-Handle
-      Tab Order         = 20
+      Tab Order         = 23
    End
 End
 
@@ -4379,7 +4504,12 @@ BEGIN-TEXT
                              move tcl-iban to ef-iban-buf
                              move tcl-abi  to ef-abi-buf
                              move tcl-cab  to ef-cab-buf
-                             display ef-iban ef-abi ef-cab
+                             if tcl-no-blocco-prob-pag-si
+                                move 1 to chk-no-blocco-buf
+                             else
+                                move 0 to chk-no-blocco-buf
+                             end-if
+                             display ef-iban ef-abi ef-cab chk-no-blocco
                           end-if
                      end-read                                           
                   end-perform
@@ -4439,6 +4569,7 @@ BEGIN-TEXT
            modify ef-iban,   enabled mod.
            modify ef-abi,   enabled mod.
            modify ef-cab,   enabled mod.
+           modify chk-no-blocco, enabled mod.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -4569,7 +4700,12 @@ BEGIN-TEXT
               move ef-path-sfondo-bolle-buf   to tcl-path-sfondo-bolle
               move ef-iban-buf to tcl-iban
               move ef-abi-buf to tcl-abi
-              move ef-cab-buf to tcl-cab
+              move ef-cab-buf to tcl-cab  
+              if chk-no-blocco-buf = 1
+                 set tcl-no-blocco-prob-pag-si to true
+              else                                    
+                 set tcl-no-blocco-prob-pag-no to true
+              end-if
               perform VALORIZZA-DATI-COMUNI
               write tcl-rec invalid rewrite tcl-rec end-write
 
@@ -4673,7 +4809,14 @@ BEGIN-TEXT
            move tcl-abi to ef-abi-buf.
            display ef-abi.
            move tcl-cab to ef-cab-buf.
-           display ef-cab.    
+           display ef-cab.         
+
+           if tcl-no-blocco-prob-pag-si 
+              move 1 to chk-no-blocco-buf
+           else
+              move 0 to chk-no-blocco-buf
+           end-if.
+           display chk-no-blocco.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -5169,6 +5312,20 @@ BEGIN-TEXT
            move 0 to StatusHelp.
            perform STATUS-HELP.
            perform CONTROLLO-BANCA.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Cb-1-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-Cb-1-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>
 END-TEXT
 END-DATA
 
