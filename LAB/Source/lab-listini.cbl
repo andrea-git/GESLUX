@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-listini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 14 dicembre 2021 11:36:05.
+       DATE-WRITTEN.        giovedì 13 gennaio 2022 15:38:21.
        REMARKS.
       *{TOTEM}END
 
@@ -1796,7 +1796,7 @@
            UNFRAMED,
            SQUARE,
            ENABLED E-CERCA-I,
-           EXCEPTION-VALUE 1001,
+           EXCEPTION-VALUE 8,
            FLAT,
            ID IS 210,
            SELF-ACT,
@@ -5989,7 +5989,7 @@
                  END-IF
               WHEN Key-Status = 1000
                  PERFORM pb-ok-i-LinkTo
-              WHEN Key-Status = 1001
+              WHEN Key-Status = 8
                  PERFORM TOOL-CERCA-i-LinkTo
            END-EVALUATE
       * avoid changing focus
@@ -6185,6 +6185,25 @@
                    display ef-art-i lab-art-i
                 end-if
                 
+           end-evaluate 
+           .
+      * <TOTEM:END>
+
+       CERCA-I.
+      * <TOTEM:PARA. CERCA-I>
+           evaluate control-id
+           when 78-ID-ef-art-i
+                inquire ef-art-i, value in art-codice
+                move   "articoli"     to como-file
+                call   "zoom-gt"   using como-file, art-rec
+                                  giving stato-zoom
+                cancel "zoom-gt"
+      
+                if stato-zoom = 0
+                   move art-codice      to ef-art-i-buf
+                   move art-descrizione to lab-art-i-buf
+                   display ef-art-i lab-art-i
+                end-if
            end-evaluate 
            .
       * <TOTEM:END>
@@ -7684,13 +7703,13 @@
        TOOL-CERCA-i-LinkTo.
       * <TOTEM:PARA. TOOL-CERCA-i-LinkTo>
            inquire tool-cerca-i, enabled in e-cerca-i.
-           if e-cerca-i = 1 perform CERCA end-if 
+           if e-cerca-i = 1 perform CERCA-I end-if 
            .
       * <TOTEM:END>
        ef-art-i-AfterProcedure.
       * <TOTEM:PARA. ef-art-i-AfterProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
-           move 1 to e-cerca-i.
+           move 0 to e-cerca-i.
            modify tool-cerca-i, enabled e-cerca-i.
            perform CONTROLLO-I.
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR

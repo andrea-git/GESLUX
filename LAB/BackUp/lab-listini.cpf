@@ -2,12 +2,13 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
+DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E5CE102654-807-261665600
+PROGRAM_UNIQUE_CODE=TOTEM-7E61D143532-825-189628648
 
 {{@DESCRIPTION:
 
@@ -5542,7 +5543,7 @@ Begin Screen Form1a
          Destroy Type      = Automatic
          Enable            = NONE
          Enable Variable   = E-CERCA-I
-         Exception Value   = 1001
+         Exception Value   = 8
          Flat              = TRUE
          Font              = Default Font
          Height in Cells   = FALSE
@@ -5907,6 +5908,26 @@ BEGIN-TEXT
                    display ef-art-i lab-art-i
                 end-if
                 
+           end-evaluate.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CERCA-I
+BEGIN-TEXT
+           evaluate control-id
+           when 78-ID-ef-art-i
+                inquire ef-art-i, value in art-codice
+                move   "articoli"     to como-file
+                call   "zoom-gt"   using como-file, art-rec
+                                  giving stato-zoom
+                cancel "zoom-gt"
+      
+                if stato-zoom = 0
+                   move art-codice      to ef-art-i-buf
+                   move art-descrizione to lab-art-i-buf
+                   display ef-art-i lab-art-i
+                end-if
            end-evaluate.
 END-TEXT
 END-DATA
@@ -7487,7 +7508,7 @@ BEGIN-DATA
    PARAGRAPH         = TOOL-CERCA-i-LinkTo
 BEGIN-TEXT
            inquire tool-cerca-i, enabled in e-cerca-i.
-           if e-cerca-i = 1 perform CERCA end-if.
+           if e-cerca-i = 1 perform CERCA-I end-if.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -7495,7 +7516,7 @@ BEGIN-DATA
    PARAGRAPH         = ef-art-i-AfterProcedure
 BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen4-Custom1-2 **>>  
-           move 1 to e-cerca-i.
+           move 0 to e-cerca-i.
            modify tool-cerca-i, enabled e-cerca-i.
            perform CONTROLLO-I.
       *<<** Customized_Default, SP-G, Screen4-Custom1-2a **>>

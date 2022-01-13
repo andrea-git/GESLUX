@@ -2967,7 +2967,7 @@ LUBEXX             end-if
            end-start.   
            set cli-tipo-c to true.
       
-           move "clienti-des-alf" to como-file.
+           move "clienti-des-alf-A" to como-file.
            call "zoom-gt"  using  como-file, des-rec
                           giving  stato-zoom.
            cancel "zoom-gt".
@@ -3342,7 +3342,7 @@ LUBEXX            from environment "CONTROLLO_SCOSTAMENTO".
                 if not bollettata and tor-da-ordine-no
                    inquire ef-cli, value in des-codice
                    set cli-tipo-c to true
-                   move "clienti-des"    to como-file
+                   move "clienti-des-A"    to como-file
                    inquire ef-des, value in des-prog
                    call "zoom-gt"  using como-file, des-rec
                                    giving stato-zoom

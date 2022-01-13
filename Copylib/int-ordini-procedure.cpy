@@ -377,7 +377,7 @@
            end-start.   
            set cli-tipo-c to true.
       
-           move "clienti-des-alf" to como-file.
+           move "clienti-des-alf-A" to como-file.
            call "zoom-gt" using   como-file, des-rec
                           giving  stato-zoom.
            cancel "zoom-gt".

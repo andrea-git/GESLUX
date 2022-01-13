@@ -117,6 +117,8 @@
                 perform PREPARA-VIDEO-DESTINIF     |CERCA
            when "clienti-des"
            when "clienti-des-alf"
+           when "clienti-des-A"
+           when "clienti-des-alf-A"
                 perform PREPARA-CLIENTI-DI-DESTINI |CERCA
            when "clienti-des-all"
            when "clienti-des-alf-all"
@@ -2584,6 +2586,21 @@
            if destinif perform PREPARA-VIDEO-DESTINIF
            else        perform PREPARA-VIDEO-DESTINI
            end-if.
+
+           evaluate como-file
+           when "clienti-des-A"
+           when "clienti-des-alf-A"
+                add 1 to idx
+                set xzoom-when-true(idx)       to true
+                set xzoom-begin-with(idx)      to true
+                set xzoom-ignore-case(idx)     to false
+                                      
+                move "A" to xzoom-wild-value(idx)
+                move 1   to xzoom-wild-value-length(idx)
+                move 1   to xzoom-wild-length(idx)
+                move 577 to xzoom-wild-offset(idx)
+
+           end-evaluate.
 
            add 1 to idx.
            set xzoom-when-true(idx)       to true.
