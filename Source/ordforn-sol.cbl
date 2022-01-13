@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordforn-sol.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 15 dicembre 2021 10:50:46.
+       DATE-WRITTEN.        giovedì 13 gennaio 2022 15:14:06.
        REMARKS.
       *{TOTEM}END
 
@@ -3704,6 +3704,10 @@
                  else
                     read tmp-ordforn-sol previous at end exit perform 
            end-read               
+                 end-if
+
+                 if tos-qta-ord <= tos-qta-ev
+                    exit perform cycle
                  end-if
 
                  add 1 to riga

@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=PAS004P-Ev-Before-Program
 AFTER_PROGRAM=I-O-BLOCCO
-PROGRAM_UNIQUE_CODE=TOTEM-7E5C17134546-664-230815168
+PROGRAM_UNIQUE_CODE=TOTEM-7E61D14138-117-132776606
 
 {{@DESCRIPTION:
 
@@ -2255,6 +2255,10 @@ BEGIN-TEXT
                     read tmp-ordforn-sol next at end exit perform end-read               
                  else
                     read tmp-ordforn-sol previous at end exit perform end-read               
+                 end-if
+
+                 if tos-qta-ord <= tos-qta-ev
+                    exit perform cycle
                  end-if
 
                  add 1 to riga
