@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ttipocli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 5 luglio 2021 14:07:09.
+       DATE-WRITTEN.        giovedì 13 gennaio 2022 15:02:35.
        REMARKS.
       *{TOTEM}END
 
@@ -28,11 +28,13 @@
        FILE-CONTROL.
       *{TOTEM}FILE-CONTROL
            COPY "ttipocli.sl".
+           COPY "ABI.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
       *{TOTEM}FILE
            COPY "ttipocli.fd".
+           COPY "ABI.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -205,6 +207,12 @@
        77 ef-mail-comm-buf PIC  X(200).
        77 ef-path-pdf-buf  PIC  X(150).
        77 ef-path-sfondo-bolle-buf     PIC  X(150).
+       77 ef-iban-buf      PIC  X(27).
+       77 ef-cab-buf       PIC  x(5).
+       77 ef-abi-buf       PIC  x(5).
+       77 lab-banca-buf    PIC  X(100).
+       77 STATUS-ABI       PIC  X(2).
+           88 Valid-STATUS-ABI VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -218,6 +226,7 @@
        77 STATUS-SCREEN-SEARCH-FLAG-REFRESH PIC  9.
           88 SCREEN-SEARCH-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-ttipocli-BUF     PIC X(889).
+       77 TMP-DataSet1-ABI-BUF     PIC X(167).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -228,7 +237,14 @@
        77 DataSet1-ttipocli-KEY1-ORDER  PIC X VALUE "A".
           88 DataSet1-ttipocli-KEY1-Asc  VALUE "A".
           88 DataSet1-ttipocli-KEY1-Desc VALUE "D".
+       77 DataSet1-ABI-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-ABI-LOCK  VALUE "Y".
+       77 DataSet1-ABI-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-ABI-KEY-Asc  VALUE "A".
+          88 DataSet1-ABI-KEY-Desc VALUE "D".
 
+       77 ABI-ABI-CODICE1-SPLITBUF  PIC X(101).
+       77 ABI-ABI-CODICE2-SPLITBUF  PIC X(101).
 
            copy "winprint.def".                  
        77 OPENSAVE-STATUS  PIC  S9(2)
@@ -239,6 +255,9 @@
       ***** Elenco ID Logici *****
        78  78-ID-cbo-stampante VALUE 5001.
        78  78-ID-cbo-stampante-m VALUE 5002.
+       78  78-ID-ef-iban VALUE 5003.
+       78  78-ID-ef-abi VALUE 5004.
+       78  78-ID-ef-cab VALUE 5005.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -253,6 +272,8 @@
       * FORM
        01 
            Form1, 
+           AFTER PROCEDURE  Form1-AFTER-SCREEN
+           BEFORE PROCEDURE  Form1-BEFORE-SCREEN
            .
 
       * LABEL
@@ -457,6 +478,68 @@
            TITLE "...",
            .
 
+      * ENTRY FIELD
+       05
+           ef-iban, 
+           Entry-Field, 
+           COL 26,67, 
+           LINE 50,31,
+           LINES 1,54 ,
+           SIZE 45,00 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED mod,
+           ID IS 78-ID-ef-iban,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           MAX-TEXT 27,
+           VALUE ef-iban-buf,
+           AFTER PROCEDURE ef-iban-AfterProcedure, 
+           BEFORE PROCEDURE ef-iban-BeforeProcedure, 
+           .
+
+      * ENTRY FIELD
+       05
+           ef-abi, 
+           Entry-Field, 
+           COL 83,33, 
+           LINE 50,23,
+           LINES 1,54 ,
+           SIZE 8,00 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED mod,
+           ID IS 78-ID-ef-abi,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           MAX-TEXT 5,
+           VALUE ef-abi-buf,
+           AFTER PROCEDURE ef-abi-AfterProcedure, 
+           BEFORE PROCEDURE ef-abi-BeforeProcedure, 
+           .
+
+
+      * ENTRY FIELD
+       05
+           ef-cab, 
+           Entry-Field, 
+           COL 101,67, 
+           LINE 50,23,
+           LINES 1,54 ,
+           SIZE 8,00 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED mod,
+           ID IS 78-ID-ef-cab,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           MAX-TEXT 5,
+           VALUE ef-cab-buf,
+           AFTER PROCEDURE ef-cab-AfterProcedure, 
+           BEFORE PROCEDURE ef-cab-BeforeProcedure, 
+           .
+
+
       * LABEL
        05
            Form1-La-1b, 
@@ -466,11 +549,76 @@
            LINES 1,31 ,
            SIZE 23,00 ,
            FONT IS Small-Font,
-           ID IS 20,
+           ID IS 23,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
            TITLE "Stampante master associata",
+           .
+
+      * LABEL
+       05
+           Form1-La-1aaa, 
+           Label, 
+           COL 3,00, 
+           LINE 50,23,
+           LINES 1,00 ,
+           SIZE 22,00 ,
+           FONT IS Small-Font,
+           ID IS 24,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Codice IBAN",
+           .
+
+      * LABEL
+       05
+           Form1-La-1aaaa, 
+           Label, 
+           COL 76,33, 
+           LINE 50,23,
+           LINES 1,00 ,
+           SIZE 4,00 ,
+           FONT IS Small-Font,
+           ID IS 25,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "ABI",
+           .
+
+      * LABEL
+       05
+           Form1-La-1aaaaa, 
+           Label, 
+           COL 94,67, 
+           LINE 50,23,
+           LINES 1,00 ,
+           SIZE 4,00 ,
+           FONT IS Small-Font,
+           ID IS 26,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "CAB",
+           .
+
+      * LABEL
+       05
+           lab-banca, 
+           Label, 
+           COL 116,33, 
+           LINE 50,23,
+           LINES 1,54 ,
+           SIZE 65,00 ,
+           COLOR IS 5,
+           FONT IS Small-Font,
+           ID IS 26,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE lab-banca-buf,
            .
 
       * TOOLBAR
@@ -664,6 +812,8 @@
       * FORM
        01 
            SCREEN-SEARCH, 
+           AFTER PROCEDURE  SCREEN-SEARCH-AFTER-SCREEN
+           BEFORE PROCEDURE  SCREEN-SEARCH-BEFORE-SCREEN
            .
 
       * ENTRY FIELD
@@ -983,6 +1133,7 @@
        OPEN-FILE-RTN.
       *    Before Open
            PERFORM OPEN-ttipocli
+           PERFORM OPEN-ABI
       *    After Open
            .
 
@@ -1005,9 +1156,22 @@
       * <TOTEM:END>
            .
 
+       OPEN-ABI.
+      * <TOTEM:EPT. INIT:ttipocli, FD:ABI, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT ABI
+           IF NOT Valid-STATUS-ABI
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:ttipocli, FD:ABI, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-ttipocli
+           PERFORM CLOSE-ABI
       *    After Close
            .
 
@@ -1015,6 +1179,12 @@
       * <TOTEM:EPT. INIT:ttipocli, FD:ttipocli, BeforeClose>
       * <TOTEM:END>
            CLOSE ttipocli
+           .
+
+       CLOSE-ABI.
+      * <TOTEM:EPT. INIT:ttipocli, FD:ABI, BeforeClose>
+      * <TOTEM:END>
+           CLOSE ABI
            .
 
        DataSet1-ttipocli-INITSTART.
@@ -1219,8 +1389,185 @@
       * <TOTEM:END>
            .
 
+       ABI-ABI-CODICE1-MERGE-SPLITBUF.
+           INITIALIZE ABI-ABI-CODICE1-SPLITBUF
+           MOVE ABI-BANCA1(1:30) TO ABI-ABI-CODICE1-SPLITBUF(1:30)
+           MOVE ABI-CITTA(1:30) TO ABI-ABI-CODICE1-SPLITBUF(31:30)
+           MOVE ABI-BANCA2(1:30) TO ABI-ABI-CODICE1-SPLITBUF(61:30)
+           MOVE ABI-CODICE(1:10) TO ABI-ABI-CODICE1-SPLITBUF(91:10)
+           .
+
+       ABI-ABI-CODICE2-MERGE-SPLITBUF.
+           INITIALIZE ABI-ABI-CODICE2-SPLITBUF
+           MOVE ABI-CITTA(1:30) TO ABI-ABI-CODICE2-SPLITBUF(1:30)
+           MOVE ABI-BANCA1(1:30) TO ABI-ABI-CODICE2-SPLITBUF(31:30)
+           MOVE ABI-BANCA2(1:30) TO ABI-ABI-CODICE2-SPLITBUF(61:30)
+           MOVE ABI-CODICE(1:10) TO ABI-ABI-CODICE2-SPLITBUF(91:10)
+           .
+
+       DataSet1-ABI-INITSTART.
+           IF DataSet1-ABI-KEY-Asc
+              MOVE Low-Value TO ABI-CODICE
+           ELSE
+              MOVE High-Value TO ABI-CODICE
+           END-IF
+           .
+
+       DataSet1-ABI-INITEND.
+           IF DataSet1-ABI-KEY-Asc
+              MOVE High-Value TO ABI-CODICE
+           ELSE
+              MOVE Low-Value TO ABI-CODICE
+           END-IF
+           .
+
+      * ABI
+       DataSet1-ABI-START.
+           IF DataSet1-ABI-KEY-Asc
+              START ABI KEY >= ABI-CODICE
+           ELSE
+              START ABI KEY <= ABI-CODICE
+           END-IF
+           .
+
+       DataSet1-ABI-START-NOTGREATER.
+           IF DataSet1-ABI-KEY-Asc
+              START ABI KEY <= ABI-CODICE
+           ELSE
+              START ABI KEY >= ABI-CODICE
+           END-IF
+           .
+
+       DataSet1-ABI-START-GREATER.
+           IF DataSet1-ABI-KEY-Asc
+              START ABI KEY > ABI-CODICE
+           ELSE
+              START ABI KEY < ABI-CODICE
+           END-IF
+           .
+
+       DataSet1-ABI-START-LESS.
+           IF DataSet1-ABI-KEY-Asc
+              START ABI KEY < ABI-CODICE
+           ELSE
+              START ABI KEY > ABI-CODICE
+           END-IF
+           .
+
+       DataSet1-ABI-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:ABI, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:ABI, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-ABI-LOCK
+              READ ABI WITH LOCK 
+              KEY ABI-CODICE
+           ELSE
+              READ ABI WITH NO LOCK 
+              KEY ABI-CODICE
+           END-IF
+           PERFORM ABI-ABI-CODICE1-MERGE-SPLITBUF
+           PERFORM ABI-ABI-CODICE2-MERGE-SPLITBUF
+           MOVE STATUS-ABI TO TOTEM-ERR-STAT 
+           MOVE "ABI" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:ABI, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:ABI, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-ABI-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:ABI, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:ABI, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-ABI-KEY-Asc
+              IF DataSet1-ABI-LOCK
+                 READ ABI NEXT WITH LOCK
+              ELSE
+                 READ ABI NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-ABI-LOCK
+                 READ ABI PREVIOUS WITH LOCK
+              ELSE
+                 READ ABI PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM ABI-ABI-CODICE1-MERGE-SPLITBUF
+           PERFORM ABI-ABI-CODICE2-MERGE-SPLITBUF
+           MOVE STATUS-ABI TO TOTEM-ERR-STAT
+           MOVE "ABI" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:ABI, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:ABI, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-ABI-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:ABI, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:ABI, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-ABI-KEY-Asc
+              IF DataSet1-ABI-LOCK
+                 READ ABI PREVIOUS WITH LOCK
+              ELSE
+                 READ ABI PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-ABI-LOCK
+                 READ ABI NEXT WITH LOCK
+              ELSE
+                 READ ABI NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM ABI-ABI-CODICE1-MERGE-SPLITBUF
+           PERFORM ABI-ABI-CODICE2-MERGE-SPLITBUF
+           MOVE STATUS-ABI TO TOTEM-ERR-STAT
+           MOVE "ABI" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:ABI, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:ABI, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-ABI-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:ABI, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-ABI TO TOTEM-ERR-STAT
+           MOVE "ABI" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:ABI, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-ABI-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:ABI, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-ABI TO TOTEM-ERR-STAT
+           MOVE "ABI" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:ABI, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-ABI-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:ABI, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-ABI TO TOTEM-ERR-STAT
+           MOVE "ABI" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:ABI, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE tcl-rec OF ttipocli
+           INITIALIZE RECORD-ABI OF ABI
            .
 
 
@@ -1299,6 +1646,14 @@
       * FD's Initialize Paragraph
        DataSet1-ttipocli-INITREC.
            INITIALIZE tcl-rec OF ttipocli
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-ABI-INITREC.
+           INITIALIZE RECORD-ABI OF ABI
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -1871,6 +2226,66 @@
            END-PERFORM
            .
 
+
+      * Paragrafo per la struttura del codice in BEFORE sulla screen Form1
+      ***---
+       Form1-BEFORE-SCREEN.
+           evaluate control-id
+           |78-ID-ef-abi è l'ID del campo ef-abi
+           when 78-ID-ef-abi
+                move 1 to StatusHelp
+                perform STATUS-HELP
+           |78-ID-ef-cab è l'ID del campo ef-cab
+           when 78-ID-ef-cab
+                move 1 to StatusHelp
+                perform STATUS-HELP
+           |99999 è un valore fittizio, che non sarà MAI usato,
+           |ma mi serve per non riscontrare errori di compilazione
+           |in caso non avessi generato nulla nella BEFORE della screen
+           when 99999 continue
+           when other continue
+           end-evaluate.
+
+      * Generazione settaggio keyboard "." ---> ","
+
+      * Paragrafo per la struttura del codice in AFTER sulla screen Form1
+      ***---
+       Form1-AFTER-SCREEN.
+           evaluate control-id
+           |78-ID-ef-abi è l'ID del campo ef-abi
+           when 78-ID-ef-abi
+                move 0 to StatusHelp
+                perform STATUS-HELP
+
+           |78-ID-ef-cab è l'ID del campo ef-cab
+           when 78-ID-ef-cab
+                move 0 to StatusHelp
+                perform STATUS-HELP
+
+           |99999 è un valore fittizio, che non sarà MAI usato,
+           |ma mi serve per non riscontrare errori di compilazione
+           |in caso non avessi generato nulla nella AFTER della screen
+           when 99999 continue
+           when other continue
+           end-evaluate.
+
+      * Generazione risettaggio keyboard "." ---> "."
+
+      * Generazione stringa perform CONTROLLO
+           evaluate control-id
+           |78-ID-ef-abi è l'ID del campo ef-abi
+           when 78-ID-ef-abi
+                perform CONTROLLO
+           |78-ID-ef-cab è l'ID del campo ef-cab
+           when 78-ID-ef-cab
+                perform CONTROLLO
+           |99999 è un valore fittizio, che non sarà MAI usato,
+           |ma mi serve per non riscontrare errori di compilazione
+           |in caso non avessi generato nulla nella AFTER CONTROLLO della screen
+           when 99999 continue
+           when other continue
+           end-evaluate.
+
        SCREEN-SEARCH-Open-Routine.
            PERFORM SCREEN-SEARCH-Scrn
            PERFORM SCREEN-SEARCH-Proc
@@ -2052,6 +2467,42 @@
            .
 
 
+      * Paragrafo per la struttura del codice in BEFORE sulla screen SCREEN-SEARCH
+      ***---
+       SCREEN-SEARCH-BEFORE-SCREEN.
+           evaluate control-id
+           |99999 è un valore fittizio, che non sarà MAI usato,
+           |ma mi serve per non riscontrare errori di compilazione
+           |in caso non avessi generato nulla nella BEFORE della screen
+           when 99999 continue
+           when other continue
+           end-evaluate.
+
+      * Generazione settaggio keyboard "." ---> ","
+
+      * Paragrafo per la struttura del codice in AFTER sulla screen SCREEN-SEARCH
+      ***---
+       SCREEN-SEARCH-AFTER-SCREEN.
+           evaluate control-id
+           |99999 è un valore fittizio, che non sarà MAI usato,
+           |ma mi serve per non riscontrare errori di compilazione
+           |in caso non avessi generato nulla nella AFTER della screen
+           when 99999 continue
+           when other continue
+           end-evaluate.
+
+      * Generazione risettaggio keyboard "." ---> "."
+
+      * Generazione stringa perform CONTROLLO
+           evaluate control-id
+           |99999 è un valore fittizio, che non sarà MAI usato,
+           |ma mi serve per non riscontrare errori di compilazione
+           |in caso non avessi generato nulla nella AFTER CONTROLLO della screen
+           when 99999 continue
+           when other continue
+           end-evaluate.
+
+
 
        Form1-Event-Proc.
            .
@@ -2211,7 +2662,43 @@
 
        CERCA.
       * <TOTEM:PARA. CERCA>
-           continue 
+           evaluate control-id
+           when 78-ID-ef-abi
+           when 78-ID-ef-cab
+                move "ABI"   to como-file              
+                inquire ef-abi,     value in abi-codice-abi-x
+                inquire ef-cab,     value in abi-codice-cab-x
+                call "zoom-gt"   using como-file, record-abi
+                                giving stato-zoom
+                end-call
+                cancel "zoom-gt"
+                if stato-zoom = 0
+                   move abi-codice-abi-x to ef-abi-buf
+                   move abi-codice-cab-x to ef-cab-buf
+                   display ef-abi ef-cab
+
+                   move spaces to lab-banca-buf
+                   move ef-abi-buf to abi-codice-abi-x
+                   move ef-cab-buf to abi-codice-cab-x
+                   if abi-codice not = spaces  
+                      read abi no lock
+                           invalid move spaces to abi-banca1
+                                                  abi-banca2
+                                   set trovato to false
+                      end-read
+                      initialize lab-banca-buf
+                      inspect abi-banca1 replacing trailing 
+                                         spaces by low-value
+                      string abi-banca1  delimited low-value
+                             " "         delimited size
+                             abi-banca2  delimited size
+                             into lab-banca-buf
+                      end-string
+                   end-if
+                   display lab-banca
+
+                end-if
+           end-evaluate 
            .
       * <TOTEM:END>
 
@@ -2516,7 +3003,35 @@
               modify form1-gd-1, cursor-y = riga, cursor-x = colonna
               move riga    to event-data-2
               move colonna to event-data-1
-           end-if 
+           end-if.
+
+      ***---
+       CONTROLLO-BANCA.                             
+           inquire ef-abi, value in abi-codice-abi-x
+           inquire ef-cab, value in abi-codice-cab-x
+           if abi-codice-abi-x = spaces and abi-codice-cab-x = spaces
+              move spaces to lab-banca-buf
+           else                      
+              read abi no lock
+                   invalid 
+                   move spaces to abi-banca1
+                                  abi-banca2
+                   set trovato to false
+                   set errori to true
+                   display message "Coordinate bancarie non valide"
+                             title tit-err
+                              icon 2
+              end-read
+              initialize lab-banca-buf
+              inspect abi-banca1 replacing trailing 
+                                 spaces by low-value
+              string abi-banca1  delimited low-value
+                     " "         delimited size
+                     abi-banca2  delimited size
+                     into lab-banca-buf
+              end-string
+           end-if.
+           display lab-banca 
            .
       * <TOTEM:END>
 
@@ -2641,6 +3156,10 @@
            ef-path-sfondo-bolle-buf
                              modify ef-path-sfondo-bolle,  value 
            ef-path-sfondo-bolle-buf
+                             move tcl-iban to ef-iban-buf
+                             move tcl-abi  to ef-abi-buf
+                             move tcl-cab  to ef-cab-buf
+                             display ef-iban ef-abi ef-cab
                           end-if
                      end-read                                           
                   end-perform
@@ -2695,7 +3214,10 @@
            modify cbo-stampante-m, enabled mod.
            modify ef-mail-comm,  enabled mod.
            modify ef-path-sfondo-bolle,  enabled mod.
-           modify pb-path-pdf,   enabled mod 
+           modify pb-path-pdf,   enabled mod.
+           modify ef-iban,   enabled mod.
+           modify ef-abi,   enabled mod.
+           modify ef-cab,   enabled mod 
            .
       * <TOTEM:END>
 
@@ -2738,7 +3260,8 @@
       * <TOTEM:PARA. PARAGRAFO-COPY>
            copy "abilita-toolbar.cpy".
            copy "color-custom.cpy".   
-           copy "cerca-testo.cpy" 
+           copy "cerca-testo.cpy".
+           copy "status.cpy" 
            .
       * <TOTEM:END>
 
@@ -2810,11 +3333,18 @@
               end-if
            end-if.
 
+           if tutto-ok
+              perform CONTROLLO-BANCA
+           end-if.
+
            if tutto-ok                               
               move cbo-stampante-buf to tcl-stampante
               move cbo-stampante-m-buf to tcl-stampante-m
               move ef-mail-comm-buf  to tcl-mail-comm
               move ef-path-sfondo-bolle-buf   to tcl-path-sfondo-bolle
+              move ef-iban-buf to tcl-iban
+              move ef-abi-buf to tcl-abi
+              move ef-cab-buf to tcl-cab
               perform VALORIZZA-DATI-COMUNI
               write tcl-rec invalid rewrite tcl-rec end-write
 
@@ -2859,7 +3389,7 @@
                     set event-action to event-action-fail
                  end-if
               end-if
-           end-if.
+           end-if.      
 
       * VALORIZZO L'OLD DELLA RIGA SU CUI SONO ANDATO
            move event-data-2 to riga.
@@ -2869,8 +3399,8 @@
       * COLORAZIONE RIGA IN GRID
            perform COLORE-RIGA.
 
-           perform GRID-HELP.
-
+           perform GRID-HELP.  
+                                  
            move tcl-stampante       to cbo-stampante-buf.
            modify cbo-stampante, value cbo-stampante-buf.
            inquire cbo-stampante, value cbo-stampante-buf.
@@ -2893,7 +3423,31 @@
            modify ef-mail-comm, value ef-mail-comm-buf.
 
            move tcl-path-sfondo-bolle       to ef-path-sfondo-bolle-buf.
-           modify ef-path-sfondo-bolle, value ef-path-sfondo-bolle-buf 
+           modify ef-path-sfondo-bolle, value ef-path-sfondo-bolle-buf.
+                                                     
+           move tcl-abi to abi-codice-abi-x.
+           move tcl-cab to abi-codice-cab-x.
+           read abi no lock
+                invalid 
+                move spaces to abi-banca1
+                               abi-banca2
+           end-read
+           initialize lab-banca-buf
+           inspect abi-banca1 replacing trailing 
+                              spaces by low-value
+           string abi-banca1  delimited low-value
+                  " "         delimited size
+                  abi-banca2  delimited size
+                  into lab-banca-buf
+           end-string
+           display lab-banca.
+         
+           move tcl-iban to ef-iban-buf.
+           display ef-iban.
+           move tcl-abi to ef-abi-buf.
+           display ef-abi.
+           move tcl-cab to ef-cab-buf.
+           display ef-cab     
            .
       * <TOTEM:END>
 
@@ -3257,6 +3811,46 @@
               move opnsav-filename to ef-path-sfondo-bolle-buf
               display ef-path-sfondo-bolle
            end-if 
+           .
+      * <TOTEM:END>
+       ef-iban-BeforeProcedure.
+      * <TOTEM:PARA. ef-iban-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       ef-abi-BeforeProcedure.
+      * <TOTEM:PARA. ef-abi-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           move 1 to StatusHelp.
+           perform STATUS-HELP 
+           .
+      * <TOTEM:END>
+       ef-cab-BeforeProcedure.
+      * <TOTEM:PARA. ef-cab-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           move 1 to StatusHelp.
+           perform STATUS-HELP 
+           .
+      * <TOTEM:END>
+       ef-iban-AfterProcedure.
+      * <TOTEM:PARA. ef-iban-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       ef-abi-AfterProcedure.
+      * <TOTEM:PARA. ef-abi-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           move 0 to StatusHelp.
+           perform STATUS-HELP. 
+           perform CONTROLLO-BANCA 
+           .
+      * <TOTEM:END>
+       ef-cab-AfterProcedure.
+      * <TOTEM:PARA. ef-cab-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           move 0 to StatusHelp.
+           perform STATUS-HELP.
+           perform CONTROLLO-BANCA 
            .
       * <TOTEM:END>
 

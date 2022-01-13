@@ -75,4 +75,10 @@
                        88 tcl-edi-auto-no VALUE IS "N" " ". 
                    15 tcl-stampante-m  PIC  X(100).
       *(( XFD NAME = tcl-filler_1 ))
-                   15 FILLER           PIC  X(248).
+                   15 tcl-iban         PIC  X(27).
+      *(( XFD NAME = tcl-filler_1_1 ))
+                   15 tcl-abi          PIC  x(5).
+      *(( XFD NAME = tcl-filler_1_2 ))
+                   15 tcl-cab          PIC  x(5).
+      *(( XFD NAME = tcl-filler_1_1_1 ))
+                   15 FILLER           PIC  X(211).

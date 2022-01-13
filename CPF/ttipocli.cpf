@@ -2,6 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+Adesk-andre=169.254.54.220
 
 
 [PROGRAM_CONTENT]
@@ -10,7 +11,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=PAS004P-Ev-Before-Program
 AFTER_PROGRAM=I-O-BLOCCO
-PROGRAM_UNIQUE_CODE=TOTEM-7E5C17134536-734-1253031800
+PROGRAM_UNIQUE_CODE=TOTEM-7E61D133352-584-1743114857
 
 {{@DESCRIPTION:
 
@@ -1451,6 +1452,65 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM140_WK
 
 @}}
+[FDITEM141_WK]
+m_strName=ef-iban-buf
+m_strRawPic=X(27)
+m_strPic=X(27)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM141_WK
+
+@}}
+[FDITEM142_WK]
+m_strName=ef-cab-buf
+m_strRawPic=x(5)
+m_strPic=x(5)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM142_WK
+
+@}}
+[FDITEM143_WK]
+m_strName=ef-abi-buf
+m_strRawPic=x(5)
+m_strPic=x(5)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM143_WK
+
+@}}
+[FDITEM144_WK]
+m_strName=lab-banca-buf
+m_strRawPic=X(100)
+m_strPic=X(100)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM144_WK
+
+@}}
+[FDITEM145_WK]
+m_strName=STATUS-ABI
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM145_WK
+
+@}}
+[FDITEM146_WK]
+m_strName=Valid-STATUS-ABI
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM146_WK
+
+@}}
 
 
 [LINKAGE_SECTION]
@@ -2220,6 +2280,179 @@ Begin Screen Form1
       Width in Cells    = TRUE
       Link To           = pb-path-pdf-LinkTo
    End
+   Begin Entry-Field ef-iban
+      SCREEN-COL        = 26,67
+      SCREEN-LINE       = 50,31
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-iban
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 26,67
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Enable Variable   = mod
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 20
+      ID Variable       = AUTO-ID
+      Justification     = Unaligned
+      Line              = 50,31
+      Lines             = 1,54
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 27
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 45,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 11
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Value Picture     = X(27)
+      Value Variable    = ef-iban-buf
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = ef-iban-BeforeProcedure
+      After Procedure   = ef-iban-AfterProcedure
+   End
+   Begin Entry-Field ef-abi
+      SCREEN-COL        = 83,33
+      SCREEN-LINE       = 50,23
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-abi
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 83,33
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Enable Variable   = mod
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 21
+      ID Variable       = AUTO-ID
+      Justification     = Unaligned
+      Line              = 50,23
+      Lines             = 1,54
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 5
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 8,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 12
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Value Picture     = x(5)
+      Value Variable    = ef-abi-buf
+      Visible           = NONE
+      Width in Cells    = TRUE
+      My Property       = "CONTROLLO=;ZOOM="
+      Before Procedure  = ef-abi-BeforeProcedure
+      After Procedure   = ef-abi-AfterProcedure
+   End
+   Begin Entry-Field ef-cab
+      SCREEN-COL        = 101,67
+      SCREEN-LINE       = 50,23
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-cab
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 101,67
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Enable Variable   = mod
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 22
+      ID Variable       = AUTO-ID
+      Justification     = Unaligned
+      Line              = 50,23
+      Lines             = 1,54
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 5
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 8,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 13
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Value Picture     = x(5)
+      Value Variable    = ef-cab-buf
+      Visible           = NONE
+      Width in Cells    = TRUE
+      My Property       = "CONTROLLO=;ZOOM="
+      Before Procedure  = ef-cab-BeforeProcedure
+      After Procedure   = ef-cab-AfterProcedure
+   End
    Begin Label Form1-La-1b
       SCREEN-COL        = 89,17
       SCREEN-LINE       = 39,62
@@ -2238,7 +2471,7 @@ Begin Screen Form1
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 20
+      ID                = 23
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 39,62
@@ -2248,8 +2481,145 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 23,00
       Size Unit         = Default
-      Tab Order         = 11
+      Tab Order         = 14
       Title             = "Stampante master associata"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-1aaa
+      SCREEN-COL        = 3,00
+      SCREEN-LINE       = 50,23
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-1aaa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 3,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 24
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 50,23
+      Lines             = 1,00
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 22,00
+      Size Unit         = Default
+      Tab Order         = 15
+      Title             = "Codice IBAN"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-1aaaa
+      SCREEN-COL        = 76,33
+      SCREEN-LINE       = 50,23
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-1aaaa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 76,33
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 25
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 50,23
+      Lines             = 1,00
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 4,00
+      Size Unit         = Default
+      Tab Order         = 16
+      Title             = "ABI"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-1aaaaa
+      SCREEN-COL        = 94,67
+      SCREEN-LINE       = 50,23
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-1aaaaa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 94,67
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 26
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 50,23
+      Lines             = 1,00
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 4,00
+      Size Unit         = Default
+      Tab Order         = 17
+      Title             = "CAB"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label lab-banca
+      SCREEN-COL        = 116,33
+      SCREEN-LINE       = 50,23
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lab-banca
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 5
+      Column            = 116,33
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 26
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 50,23
+      Lines             = 1,54
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 65,00
+      Size Unit         = Default
+      Tab Order         = 18
+      Title Picture     = X(100)
+      Title Variable    = lab-banca-buf
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -2265,7 +2635,7 @@ Begin Screen Form1
       Handle Variable   = Form1-Tb-1-Handle
       Help ID           = 0
       Lines             = 2,69
-      Tab Order         = 12
+      Tab Order         = 19
       Begin Push-Button TOOL-ESCI
          SCREEN-COL        = 1,00
          SCREEN-LINE       = 1,08
@@ -2704,7 +3074,7 @@ Begin Screen Form1
       Font              = Default Font
       Grip              = TRUE
       Handle Variable   = Form1-St-1-Handle
-      Tab Order         = 13
+      Tab Order         = 20
    End
 End
 
@@ -3539,7 +3909,43 @@ BEGIN-DATA
    BASETYPE          = 3
    PARAGRAPH         = CERCA
 BEGIN-TEXT
-           continue.
+           evaluate control-id
+           when 78-ID-ef-abi
+           when 78-ID-ef-cab
+                move "ABI"   to como-file              
+                inquire ef-abi,     value in abi-codice-abi-x
+                inquire ef-cab,     value in abi-codice-cab-x
+                call "zoom-gt"   using como-file, record-abi
+                                giving stato-zoom
+                end-call
+                cancel "zoom-gt"
+                if stato-zoom = 0
+                   move abi-codice-abi-x to ef-abi-buf
+                   move abi-codice-cab-x to ef-cab-buf
+                   display ef-abi ef-cab
+
+                   move spaces to lab-banca-buf
+                   move ef-abi-buf to abi-codice-abi-x
+                   move ef-cab-buf to abi-codice-cab-x
+                   if abi-codice not = spaces  
+                      read abi no lock
+                           invalid move spaces to abi-banca1
+                                                  abi-banca2
+                                   set trovato to false
+                      end-read
+                      initialize lab-banca-buf
+                      inspect abi-banca1 replacing trailing 
+                                         spaces by low-value
+                      string abi-banca1  delimited low-value
+                             " "         delimited size
+                             abi-banca2  delimited size
+                             into lab-banca-buf
+                      end-string
+                   end-if
+                   display lab-banca
+
+                end-if
+           end-evaluate.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -3846,6 +4252,34 @@ BEGIN-TEXT
               move riga    to event-data-2
               move colonna to event-data-1
            end-if.
+
+      ***---
+       CONTROLLO-BANCA.                             
+           inquire ef-abi, value in abi-codice-abi-x
+           inquire ef-cab, value in abi-codice-cab-x
+           if abi-codice-abi-x = spaces and abi-codice-cab-x = spaces
+              move spaces to lab-banca-buf
+           else                      
+              read abi no lock
+                   invalid 
+                   move spaces to abi-banca1
+                                  abi-banca2
+                   set trovato to false
+                   set errori to true
+                   display message "Coordinate bancarie non valide"
+                             title tit-err
+                              icon 2
+              end-read
+              initialize lab-banca-buf
+              inspect abi-banca1 replacing trailing 
+                                 spaces by low-value
+              string abi-banca1  delimited low-value
+                     " "         delimited size
+                     abi-banca2  delimited size
+                     into lab-banca-buf
+              end-string
+           end-if.
+           display lab-banca.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -3946,6 +4380,10 @@ BEGIN-TEXT
                              modify ef-mail-comm,  value ef-mail-comm-buf
                              move tcl-path-sfondo-bolle to ef-path-sfondo-bolle-buf
                              modify ef-path-sfondo-bolle,  value ef-path-sfondo-bolle-buf
+                             move tcl-iban to ef-iban-buf
+                             move tcl-abi  to ef-abi-buf
+                             move tcl-cab  to ef-cab-buf
+                             display ef-iban ef-abi ef-cab
                           end-if
                      end-read                                           
                   end-perform
@@ -4002,6 +4440,9 @@ BEGIN-TEXT
            modify ef-mail-comm,  enabled mod.
            modify ef-path-sfondo-bolle,  enabled mod.
            modify pb-path-pdf,   enabled mod.
+           modify ef-iban,   enabled mod.
+           modify ef-abi,   enabled mod.
+           modify ef-cab,   enabled mod.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -4047,6 +4488,7 @@ BEGIN-TEXT
            copy "abilita-toolbar.cpy".
            copy "color-custom.cpy".   
            copy "cerca-testo.cpy".
+           copy "status.cpy".
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -4120,11 +4562,18 @@ BEGIN-TEXT
               end-if
            end-if.
 
+           if tutto-ok
+              perform CONTROLLO-BANCA
+           end-if.
+
            if tutto-ok                               
               move cbo-stampante-buf to tcl-stampante
               move cbo-stampante-m-buf to tcl-stampante-m
               move ef-mail-comm-buf  to tcl-mail-comm
               move ef-path-sfondo-bolle-buf   to tcl-path-sfondo-bolle
+              move ef-iban-buf to tcl-iban
+              move ef-abi-buf to tcl-abi
+              move ef-cab-buf to tcl-cab
               perform VALORIZZA-DATI-COMUNI
               write tcl-rec invalid rewrite tcl-rec end-write
 
@@ -4170,7 +4619,7 @@ BEGIN-TEXT
                     set event-action to event-action-fail
                  end-if
               end-if
-           end-if.
+           end-if.      
 
       * VALORIZZO L'OLD DELLA RIGA SU CUI SONO ANDATO
            move event-data-2 to riga.
@@ -4180,8 +4629,8 @@ BEGIN-TEXT
       * COLORAZIONE RIGA IN GRID
            perform COLORE-RIGA.
 
-           perform GRID-HELP.
-
+           perform GRID-HELP.  
+                                  
            move tcl-stampante       to cbo-stampante-buf.
            modify cbo-stampante, value cbo-stampante-buf.
            inquire cbo-stampante, value cbo-stampante-buf.
@@ -4205,6 +4654,30 @@ BEGIN-TEXT
 
            move tcl-path-sfondo-bolle       to ef-path-sfondo-bolle-buf.
            modify ef-path-sfondo-bolle, value ef-path-sfondo-bolle-buf.
+                                                     
+           move tcl-abi to abi-codice-abi-x.
+           move tcl-cab to abi-codice-cab-x.
+           read abi no lock
+                invalid 
+                move spaces to abi-banca1
+                               abi-banca2
+           end-read
+           initialize lab-banca-buf
+           inspect abi-banca1 replacing trailing 
+                              spaces by low-value
+           string abi-banca1  delimited low-value
+                  " "         delimited size
+                  abi-banca2  delimited size
+                  into lab-banca-buf
+           end-string
+           display lab-banca.
+         
+           move tcl-iban to ef-iban-buf.
+           display ef-iban.
+           move tcl-abi to ef-abi-buf.
+           display ef-abi.
+           move tcl-cab to ef-cab-buf.
+           display ef-cab.    
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -4617,14 +5090,14 @@ BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = Form1-Ef-1-BeforeProcedure
 BEGIN-TEXT
-      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>> 
 END-TEXT
 END-DATA
 BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = Form1-Ef-1-AfterProcedure
 BEGIN-TEXT
-      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>    
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -4648,6 +5121,58 @@ BEGIN-TEXT
               move opnsav-filename to ef-path-sfondo-bolle-buf
               display ef-path-sfondo-bolle
            end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-iban-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-abi-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>   
+           move 1 to StatusHelp.
+           perform STATUS-HELP.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-cab-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>   
+           move 1 to StatusHelp.
+           perform STATUS-HELP.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-iban-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-abi-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>  
+           move 0 to StatusHelp.
+           perform STATUS-HELP. 
+           perform CONTROLLO-BANCA.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-cab-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>> 
+           move 0 to StatusHelp.
+           perform STATUS-HELP.
+           perform CONTROLLO-BANCA.
 END-TEXT
 END-DATA
 
@@ -4731,10 +5256,12 @@ PROP_DOCU_RULER_EBL=0
 PROP_DOCU_GRID_EBL=0
 PROP_DOCU_GRID=20
 PROP_DOCU_ALIGN=0
-REL_SYM_SIZE=10
-REL_SYM_INFO_L=1
+REL_SYM_SIZE=16
+REL_SYM_INFO_L=2
 REL_SYM_INFO_X0=2301
 REL_SYM_INFO_Y0=2015988803
+REL_SYM_INFO_X1=2301
+REL_SYM_INFO_Y1=1526775118
 
 [DRAW_BASESYMBOL_2301_2015988803]
 OBJ_NAME=2301
@@ -4751,6 +5278,54 @@ LEFT=16
 TOP=16
 RIGHT=416
 BOTTOM=238
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1526775118]
+OBJ_NAME=2301
+OBJ_ID=1526775118
+KIND=1
+{{@LABEL_2301_1526775118
+ABI
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=616
+TOP=566
+RIGHT=1016
+BOTTOM=788
 PROP_OBJ_TYPE=
 PROP_OBJ_TYPE2=
 PROP_FILL_PT=0
@@ -4819,6 +5394,37 @@ DSN_INFO_END_VALUE=
 
 @}}
 DSN_INFO_PRIMARY=1
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1526775118]
+OBJ_NAME=0
+OBJ_ID=1526775118
+REL_M_OBJ_ID=0
+ENTITY=ABI
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=ABI-CODICE
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1526775118
+
+@}}
+DSN_INFO_PRIMARY=0
 DSN_INFO_OPEN=1
 DSN_INFO_CLOSE=1
 DSN_INFO_EXCLUSIVE=0

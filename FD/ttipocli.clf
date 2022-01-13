@@ -2,10 +2,11 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+Adesk-andre=169.254.54.220
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E5C1D163838-107-2189132091
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E61D133351-338-462531404
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -677,14 +678,47 @@ m_bFixed=1
 
 @}}
 [FDITEM70_]
-m_strName=FILLER
-m_strRawPic=X(248)
-m_strPic=X(248)
+m_strName=tcl-iban
+m_strRawPic=X(27)
+m_strPic=X(27)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=tcl-filler_1
 {{@DataItem_m_strDescriptionFDITEM70_
+
+@}}
+[FDITEM71_]
+m_strName=tcl-abi
+m_strRawPic=x(5)
+m_strPic=x(5)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=tcl-filler_1_1
+{{@DataItem_m_strDescriptionFDITEM71_
+
+@}}
+[FDITEM72_]
+m_strName=tcl-cab
+m_strRawPic=x(5)
+m_strPic=x(5)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=tcl-filler_1_2
+{{@DataItem_m_strDescriptionFDITEM72_
+
+@}}
+[FDITEM73_]
+m_strName=FILLER
+m_strRawPic=X(211)
+m_strPic=X(211)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=tcl-filler_1_1_1
+{{@DataItem_m_strDescriptionFDITEM73_
 
 @}}
 [CStoAcucobolSL_]

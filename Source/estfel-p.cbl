@@ -27,6 +27,7 @@
            copy "tnazioni.sl".
            copy "recapiti.sl".
            copy "edi-clides.sl".
+           copy "ttipocli.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -50,7 +51,8 @@
            copy "eordini.fd". 
            copy "tnazioni.fd".        
            copy "recapiti.fd".  
-           copy "edi-clides.fd".
+           copy "edi-clides.fd". 
+           copy "ttipocli.fd".
 
        WORKING-STORAGE SECTION.      
        copy "varsca".
@@ -77,6 +79,7 @@
        77  status-tnazioni       pic xx.
        77  status-recapiti       pic xx.
        77  status-edi-clides     pic xx.
+       77  status-ttipocli       pic xx.
        77  cod-pag               pic x(3).
        77  data-doc              pic 9(8).
        77  num-doc               pic 9(8).
@@ -208,7 +211,8 @@
            eordini
            tnazioni
            recapiti
-           edi-clides.
+           edi-clides
+           ttipocli.
 
            if errori goback end-if.
 
@@ -288,6 +292,8 @@
                          initialize des-rec
                          move cli-nazione to des-nazione
                     end-read
+                    move cli-tipo to tcl-codice
+                    read ttipocli
                     move cli-codice to rec-codice
                     read recapiti no lock
                          invalid initialize rec-rec
@@ -364,7 +370,9 @@
                     end-read
                     read destini no lock
                          invalid initialize des-rec
-                    end-read
+                    end-read    
+                    move cli-tipo to tcl-codice
+                    read ttipocli
                     if cli-nazione(1:2) = "IT"
                        move cli-codice to cli-codice-G2
                        read CLI no lock
@@ -2528,7 +2536,7 @@
                 into line-riga
               write line-riga          
               move scad-importo(1:8) to como-numero
-              perform EDIT-NUMERO
+              perform EDIT-NUMERO  
               initialize line-riga
               string 78-spazi 
                      78-spazi   
@@ -2540,7 +2548,46 @@
                      scad-importo(9:2)
                      "</ImportoPagamento>"
                 into line-riga
-              write line-riga          
+              write line-riga 
+              if tcl-iban not = spaces
+                 inspect tcl-iban replacing trailing spaces by low-value
+                 initialize line-riga
+                 string 78-spazi 
+                        78-spazi   
+                        78-spazi
+                        78-spazi
+                        "<IBAN>"
+                        tcl-iban delimited low-value
+                        "</IBAN>"
+                   into line-riga
+                 write line-riga          
+              end-if
+              if tcl-abi not = spaces
+                 inspect tcl-abi replacing trailing spaces by low-value
+                 initialize line-riga
+                 string 78-spazi 
+                        78-spazi   
+                        78-spazi
+                        78-spazi
+                        "<ABI>"
+                        tcl-abi delimited low-value
+                        "</ABI>"
+                   into line-riga
+                 write line-riga          
+              end-if
+              if tcl-abi not = spaces
+                 inspect tcl-abi replacing trailing spaces by low-value
+                 initialize line-riga
+                 string 78-spazi 
+                        78-spazi   
+                        78-spazi
+                        78-spazi
+                        "<CAB>"
+                        tcl-abi delimited low-value
+                        "</CAB>"
+                   into line-riga
+                 write line-riga          
+              end-if
               initialize line-riga
               string 78-spazi 
                      78-spazi   
@@ -2548,6 +2595,7 @@
                      "</DettaglioPagamento>"
                 into line-riga
               write line-riga
+
            end-perform.               
            initialize line-riga. 
            string 78-spazi 
@@ -2755,7 +2803,8 @@
            eordini
            tnazioni
            recapiti
-           edi-clides.
+           edi-clides
+           ttipocli.
 
       ***---
        EXIT-PGM.                                                        
