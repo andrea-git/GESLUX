@@ -2561,33 +2561,7 @@
                         "</IBAN>"
                    into line-riga
                  write line-riga          
-              end-if
-              if tcl-abi not = spaces
-                 inspect tcl-abi replacing trailing spaces by low-value
-                 initialize line-riga
-                 string 78-spazi 
-                        78-spazi   
-                        78-spazi
-                        78-spazi
-                        "<ABI>"
-                        tcl-abi delimited low-value
-                        "</ABI>"
-                   into line-riga
-                 write line-riga          
-              end-if
-              if tcl-abi not = spaces
-                 inspect tcl-abi replacing trailing spaces by low-value
-                 initialize line-riga
-                 string 78-spazi 
-                        78-spazi   
-                        78-spazi
-                        78-spazi
-                        "<CAB>"
-                        tcl-abi delimited low-value
-                        "</CAB>"
-                   into line-riga
-                 write line-riga          
-              end-if
+              end-if         
               initialize line-riga
               string 78-spazi 
                      78-spazi   
