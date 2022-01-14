@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 13 dicembre 2021 18:24:17.
+       DATE-WRITTEN.        venerdì 14 gennaio 2022 13:07:40.
        REMARKS.
       *{TOTEM}END
 
@@ -4238,7 +4238,7 @@
            LINES 1,33 ,
            SIZE 8,00 ,
            COLOR IS clr-destino,
-           ID IS 119,
+           ID IS 29,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Provincia",
@@ -4253,7 +4253,7 @@
            LINES 1,33 ,
            SIZE 5,00 ,
            COLOR IS clr-destino,
-           ID IS 119,
+           ID IS 30,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "CAP",
@@ -20146,7 +20146,10 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
 
            if errori
               perform CANCELLA-COLORE
-           else                  
+           else  
+
+              inquire ef-prov-d value in des-prov
+              inquire ef-cap-d  value in des-cap                  
 
               if old-des-prov not = des-prov or
                  old-des-cap  not = des-cap  
@@ -20159,12 +20162,15 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
 
                  set emto-destino-valido  to true
 
-                 if ecd-prg-destino not = 0
-                    read edi-clides no lock
-                    move ef-cap-d-buf  to ecd-cap-d
-                    move ef-prov-d-buf to ecd-prov-d
-                    rewrite ecd-rec                
-                 end-if
+                 inquire ef-cli, value in ecd-cli-codice
+                 inquire ef-des, value in ecd-prg-destino
+                 read edi-clides no lock
+                      invalid continue
+                  not invalid
+                      move ef-cap-d-buf  to ecd-cap-d
+                      move ef-prov-d-buf to ecd-prov-d
+                      rewrite ecd-rec                
+                 end-read
 
                  move des-prov to old-des-prov
                  move des-cap  to old-des-cap

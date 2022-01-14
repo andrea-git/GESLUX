@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E5CD163959-322-287068268
+PROGRAM_UNIQUE_CODE=TOTEM-7E61E112427-489-292452896
 
 {{@DESCRIPTION:
 
@@ -13935,7 +13935,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 119
+      ID                = 29
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 5,40
@@ -13969,7 +13969,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 119
+      ID                = 30
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 5,40
@@ -19058,7 +19058,10 @@ BEGIN-TEXT
 
            if errori
               perform CANCELLA-COLORE
-           else                  
+           else  
+
+              inquire ef-prov-d value in des-prov
+              inquire ef-cap-d  value in des-cap                  
 
               if old-des-prov not = des-prov or
                  old-des-cap  not = des-cap  
@@ -19071,12 +19074,15 @@ BEGIN-TEXT
 
                  set emto-destino-valido  to true
 
-                 if ecd-prg-destino not = 0
-                    read edi-clides no lock
-                    move ef-cap-d-buf  to ecd-cap-d
-                    move ef-prov-d-buf to ecd-prov-d
-                    rewrite ecd-rec                
-                 end-if
+                 inquire ef-cli, value in ecd-cli-codice
+                 inquire ef-des, value in ecd-prg-destino
+                 read edi-clides no lock
+                      invalid continue
+                  not invalid
+                      move ef-cap-d-buf  to ecd-cap-d
+                      move ef-prov-d-buf to ecd-prov-d
+                      rewrite ecd-rec                
+                 end-read
 
                  move des-prov to old-des-prov
                  move des-cap  to old-des-cap
