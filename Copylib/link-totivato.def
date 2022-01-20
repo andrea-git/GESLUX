@@ -1,0 +1,9 @@
+      *
+       01 link-ti-linkage.
+           03 link-ti-tipodoc             pic 99.
+              88 link-ti-tipodoc-fattura value 1.
+           03 link-ti-chiave.
+              05 link-ti-anno     PIC 9(4).
+              05 link-ti-numero   PIC 9(8).
+           03 link-ti-tot-doc  pic 9(13)v99.
+           03 filler           PIC  x(200).

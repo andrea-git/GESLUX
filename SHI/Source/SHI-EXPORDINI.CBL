@@ -99,6 +99,7 @@
        WORKING-STORAGE SECTION.
        copy "exp-ws.def".
        copy "exparticoli.def".
+       copy "link-totivato.def".
 
        77  como-mag             pic x(3).
        78  titolo               value "Export Vettori".
@@ -136,6 +137,9 @@
        77  wstampa6             pic x(256).
        77  path-tmp-tordini-exp pic x(256).
        77  path-riepilogo-c     pic x(256).
+       01  tot-doc.
+           03 tot-doc-int pic 9(13).
+           03 tot-doc-dec pic 99.
 
        77  primo-numero         pic 9(8) value 0.
        77  ultimo-numero        pic 9(8) value 0.
@@ -1196,8 +1200,20 @@
            else
               move "3691"          to HUSCTES_UDF4
            end-if.
-
-           move space              to HUSCTES_UDF5
+                                                      
+           if tor-contrassegno-si
+              perform CALCOLA-TOTALE-IVATO
+              move link-ti-tot-doc    to tot-doc
+              string tot-doc-int delimited size
+                     ","         delimited size
+                     tot-doc-dec delimited size
+                 into HUSCTES_UDF5 
+              end-string
+              inspect HUSCTES_UDF5 replacing leading x"30" by x"20"
+              call "C$JUSTIFY" using HUSCTES_UDF5, "L"
+           else
+              move "0,00" to HUSCTES_UDF5
+           end-if.
            move tca-caus-trasporto to HUSCTES_UDF6
            move space              to HUSCTES_UDF7
            move space              to HUSCTES_UDF8
@@ -1650,6 +1666,13 @@
                     end-if
                  end-perform
            end-start.
+
+      ***---
+       CALCOLA-TOTALE-IVATO.         
+           move tor-chiave to link-ti-chiave.
+           call   "totivato" using link-ti-linkage.
+           cancel "totivato".
+
 
       ***---
            COPY "exp-procedure.cpy".
