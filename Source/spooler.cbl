@@ -767,6 +767,16 @@
                 move 16,5            to    winprint-col-start
                 call "WIN$PRINTER"   using winprint-set-page-column, 
                                            winprint-column
+                                    giving return-code      
+           when 3,5                 
+                call "WIN$PRINTER"  using winprint-set-data-columns,
+                                     | 8, 8,  30,  5,  5
+                                          57
+                                   giving return-code 
+                                   
+                move 12,4                to winprint-col-start
+                call "WIN$PRINTER"   using winprint-set-page-column, 
+                                           winprint-column
                                     giving return-code
 
            when 4      

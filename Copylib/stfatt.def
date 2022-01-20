@@ -132,8 +132,12 @@
            03 st-tor-num-fattura     pic z(8).
            03 st-tor-data-fattura    pic x(8).
            03 st-tco-descrizione     pic x(27).
-           03 st-cli-abi             pic X(5).
-           03 st-cli-cab             pic X(5).
+      *     03 st-cli-abi             pic X(5).
+      *     03 st-cli-cab             pic X(5).
+
+         02 st-riga-int-banca. |usato per iban e per banca
+           03 st-int-banca           pic x(7).
+           03 st-banca               pic x(55).
 
          02 st-riga-int-2.
            03 st-tor-num-ord-cli     pic x(12).

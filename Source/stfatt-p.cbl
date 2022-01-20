@@ -23,6 +23,7 @@
            copy "tcaumag.sl".
            copy "CLI.sl".  
            copy "tsetinvio.sl".
+           copy "ttipocli.sl".
            copy "lineseq.sl". 
            COPY "lineseq.sl"
                 REPLACING ==lineseq== BY ==lineseq1==,
@@ -59,8 +60,9 @@
            copy "tcaumag.fd".
            copy "CLI.fd".     
            copy "tsetinvio.fd".
+           copy "ttipocli.fd".
            copy "lineseq.fd".
-           COPY "lineseq.fd"
+           COPY "lineseq.fd"   
                 REPLACING ==lineseq== BY ==lineseq1==,
                           ==STATUS-lineseq== BY ==STATUS-lineseq1==.
        FD  logfile.
@@ -103,8 +105,9 @@
        77  status-csvInput  pic xx.
        77  status-lineseq   pic xx.       
        77  status-lineseq1  pic xx.
-       77  status-logfile   pic xx.
+       77  status-logfile   pic xx.   
        77  status-tsetinvio pic xx.
+       77  status-ttipocli  pic xx.
        77  como-riga        pic x(200).
        77  path-logfile     pic x(200).
        77  path-log         pic x(200).
@@ -614,7 +617,7 @@
            open input clienti   destini  tvettori CLI
                       articoli  rordini  recapiti
                       tcodpag   tivaese  tordini
-                      tnotacr   rnotacr  tcaumag tparamge.
+                      tnotacr   rnotacr  tcaumag tparamge ttipocli.
       
       ***---
        ELABORAZIONE.
@@ -1461,7 +1464,7 @@ LUBEXX        end-if
        CLOSE-FILES.
            close tordini  clienti destini CLI
                  tvettori rordini recapiti
-                 articoli tcodpag tivaese tcaumag tparamge.
+                 articoli tcodpag tivaese tcaumag tparamge ttipocli.
 
       ***---
        OPEN-LOGFILE.

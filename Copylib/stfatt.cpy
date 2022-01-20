@@ -217,6 +217,10 @@
            move tor-cod-cli  to rec-codice, cli-codice.
            set  cli-tipo-C   to true.
            read clienti no   lock invalid continue end-read.
+           move cli-tipo to tcl-codice.
+           read ttipocli no lock 
+                invalid initialize tcl-banca tcl-iban
+           end-read.
            if cli-dich-esp   not = spaces or
               cli-num-reg    not = spaces or
               cli-data-dich  not = 0      or
@@ -351,12 +355,33 @@
                    into st-tco-descrizione
            end-string.
 
-           move cli-abi               to st-cli-abi. 
-           move cli-cab               to st-cli-cab.
+      *     move cli-abi               to st-cli-abi. 
+      *     move cli-cab               to st-cli-cab.
            move st-riga-int-1         to spl-riga-stampa.
            move 3                     to spl-tipo-colonna.
            add spl-passo              to spl-riga.
            perform SCRIVI.
+
+           
+           subtract 0,2 from spl-riga.     
+           move CourierNew6       to spl-hfont. 
+           move "Banca: "         to st-int-banca.
+           move tcl-banca         to st-banca. 
+           move st-riga-int-banca to spl-riga-stampa.
+           move 3,5               to spl-tipo-colonna.
+           perform SCRIVI.            
+
+           move CourierNew6       to spl-hfont. 
+           move "IBAN : "         to st-int-banca.
+           move tcl-iban          to st-banca. 
+           move st-riga-int-banca to spl-riga-stampa.
+           move 3,5               to spl-tipo-colonna.
+           add 0,3                to spl-riga.
+           perform SCRIVI.            
+
+           subtract 0,1 from spl-riga.
+
+           move CourierNew11 to spl-hfont. 
 
            move 0,95 to spl-passo.
 
