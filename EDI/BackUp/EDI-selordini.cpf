@@ -2,12 +2,13 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
+DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E61E112427-489-292452896
+PROGRAM_UNIQUE_CODE=TOTEM-7E6119112713-70-970311622
 
 {{@DESCRIPTION:
 
@@ -11576,7 +11577,7 @@ Begin Screen Form1
       Link To           = chk-ritira-LinkTo
    End
    Begin Data.Check-Box chk-prenot
-      SCREEN-COL        = 38,57
+      SCREEN-COL        = 37,14
       SCREEN-LINE       = 30,40
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -11589,7 +11590,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 38,57
+      Column            = 37,14
       Copy Resource     = TRUE
       Csize             = 0
       Csize Unit        = Default
@@ -11624,7 +11625,7 @@ Begin Screen Form1
       After Procedure   = Screen2-DaCb-3-AfterProcedure
    End
    Begin Data.Check-Box chk-saldi-banco
-      SCREEN-COL        = 58,14
+      SCREEN-COL        = 55,29
       SCREEN-LINE       = 30,40
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -11637,7 +11638,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 58,14
+      Column            = 55,29
       Copy Resource     = TRUE
       Csize             = 0
       Csize Unit        = Default
@@ -11672,7 +11673,7 @@ Begin Screen Form1
       After Procedure   = Screen2-DaCb-4-AfterProcedure
    End
    Begin Data.Check-Box chk-saldi-promo
-      SCREEN-COL        = 78,57
+      SCREEN-COL        = 73,57
       SCREEN-LINE       = 30,40
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -11685,7 +11686,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 78,57
+      Column            = 73,57
       Copy Resource     = TRUE
       Csize             = 0
       Csize Unit        = Default
@@ -11720,7 +11721,7 @@ Begin Screen Form1
       After Procedure   = Screen2-DaCb-5-AfterProcedure
    End
    Begin Data.Check-Box chk-ev-immediata
-      SCREEN-COL        = 106,86
+      SCREEN-COL        = 99,00
       SCREEN-LINE       = 30,40
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -11733,7 +11734,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 106,86
+      Column            = 99,00
       Copy Resource     = TRUE
       Csize             = 0
       Csize Unit        = Default
@@ -11760,6 +11761,54 @@ Begin Screen Form1
       Size              = 2,57
       Size Unit         = Default
       Tab Order         = 23
+      Termination Value = 0
+      Value             = 0:FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = Screen2-DaCb-5-BeforeProcedure
+      After Procedure   = Screen2-DaCb-5-AfterProcedure
+   End
+   Begin Data.Check-Box chk-contrassegno
+      SCREEN-COL        = 120,43
+      SCREEN-LINE       = 30,40
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = chk-contrassegno
+      Bitmap Frame      = FALSE
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Check Off Value   = "N"
+      Check On Value    = "S"
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 120,43
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = MOD
+      Exception Value   = 0
+      Field Variable    = emto-contrassegno
+      File              = EDI-mtordini
+      Flat              = TRUE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 160
+      ID Variable       = AUTO-ID
+      Left Text         = FALSE
+      Line              = 30,40
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Tab            = FALSE
+      Notify            = FALSE
+      Occurs            = 0
+      Self Act          = TRUE
+      Size              = 2,57
+      Size Unit         = Default
+      Tab Order         = 24
       Termination Value = 0
       Value             = 0:FALSE
       Visible           = NONE
@@ -11861,7 +11910,7 @@ Begin Screen Form1
       Row Headings      = TRUE
       Size              = 144,71
       Size Unit         = Default
-      Tab Order         = 24
+      Tab Order         = 25
       Tiled Headings    = TRUE
       Use Tab           = FALSE
       Virtual Width     = 143
@@ -11918,7 +11967,7 @@ Begin Screen Form1
       Size in Pixels    = 40
       Size Unit         = Default
       Style             = Other
-      Tab Order         = 25
+      Tab Order         = 26
       Termination Value = 0
       Title             = "&Elimina riga"
       Visible           = NONE
@@ -11966,7 +12015,7 @@ Begin Screen Form1
       Size in Pixels    = 40
       Size Unit         = Default
       Style             = Other
-      Tab Order         = 26
+      Tab Order         = 27
       Termination Value = 0
       Title             = "&Elimina riga"
       Visible           = NONE
@@ -12003,7 +12052,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 27
+      Tab Order         = 28
       Title             = "Anno"
       Transparent       = TRUE
       Visible           = NONE
@@ -12037,7 +12086,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 28
+      Tab Order         = 29
       Title             = "Numero"
       Transparent       = TRUE
       Visible           = NONE
@@ -12076,7 +12125,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 6,00
       Size Unit         = Default
-      Tab Order         = 29
+      Tab Order         = 30
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -12114,7 +12163,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 9,00
       Size Unit         = Default
-      Tab Order         = 30
+      Tab Order         = 31
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -12147,7 +12196,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 31
+      Tab Order         = 32
       Title             = "Cliente"
       Transparent       = FALSE
       Visible           = NONE
@@ -12181,7 +12230,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 7,00
       Size Unit         = Default
-      Tab Order         = 32
+      Tab Order         = 33
       Title             = "Destino"
       Transparent       = FALSE
       Visible           = NONE
@@ -12214,7 +12263,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 33
+      Tab Order         = 34
       Title             = "N.Ord. Cli."
       Transparent       = FALSE
       Visible           = NONE
@@ -12247,7 +12296,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 4,00
       Size Unit         = Default
-      Tab Order         = 34
+      Tab Order         = 35
       Title             = "del"
       Transparent       = FALSE
       Visible           = NONE
@@ -12280,7 +12329,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 35
+      Tab Order         = 36
       Title             = "Data pass."
       Transparent       = FALSE
       Visible           = NONE
@@ -12314,7 +12363,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 36
+      Tab Order         = 37
       Title             = "Agente"
       Transparent       = FALSE
       Visible           = NONE
@@ -12348,7 +12397,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 37
+      Tab Order         = 38
       Title             = "Pagamento"
       Transparent       = FALSE
       Visible           = NONE
@@ -12382,7 +12431,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 38
+      Tab Order         = 39
       Title             = "Iva esente"
       Transparent       = FALSE
       Visible           = NONE
@@ -12416,7 +12465,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 39
+      Tab Order         = 40
       Title             = "Vettore"
       Transparent       = FALSE
       Visible           = NONE
@@ -12449,7 +12498,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 40
+      Tab Order         = 41
       Title             = "Consegna"
       Transparent       = FALSE
       Visible           = NONE
@@ -12482,7 +12531,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 6,00
       Size Unit         = Default
-      Tab Order         = 41
+      Tab Order         = 42
       Title             = "Data"
       Transparent       = FALSE
       Visible           = NONE
@@ -12515,7 +12564,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 42
+      Tab Order         = 43
       Title             = "Note 2"
       Transparent       = FALSE
       Visible           = NONE
@@ -12548,7 +12597,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 43
+      Tab Order         = 44
       Title             = "Note 3"
       Transparent       = FALSE
       Visible           = NONE
@@ -12581,7 +12630,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 44
+      Tab Order         = 45
       Title             = "Note 4"
       Transparent       = FALSE
       Visible           = NONE
@@ -12614,7 +12663,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 45
+      Tab Order         = 46
       Title             = "Note"
       Transparent       = FALSE
       Visible           = NONE
@@ -12647,7 +12696,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 50,00
       Size Unit         = Default
-      Tab Order         = 46
+      Tab Order         = 47
       Title Variable    = lab-cliente-buf
       Transparent       = TRUE
       Visible           = NONE
@@ -12680,7 +12729,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 58,00
       Size Unit         = Default
-      Tab Order         = 47
+      Tab Order         = 48
       Title Variable    = lab-destino-buf
       Transparent       = TRUE
       Visible           = NONE
@@ -12713,7 +12762,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 50,00
       Size Unit         = Default
-      Tab Order         = 48
+      Tab Order         = 49
       Title Variable    = lab-agente-buf
       Transparent       = TRUE
       Visible           = NONE
@@ -12746,7 +12795,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 50,00
       Size Unit         = Default
-      Tab Order         = 49
+      Tab Order         = 50
       Title Variable    = lab-pagamento-buf
       Transparent       = TRUE
       Visible           = NONE
@@ -12779,7 +12828,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 50,00
       Size Unit         = Default
-      Tab Order         = 50
+      Tab Order         = 51
       Title Variable    = lab-iva-buf
       Transparent       = TRUE
       Visible           = NONE
@@ -12802,7 +12851,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 160
+      ID                = 161
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 22,80
@@ -12812,7 +12861,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 50,00
       Size Unit         = Default
-      Tab Order         = 51
+      Tab Order         = 52
       Title Variable    = lab-vettore-buf
       Transparent       = TRUE
       Visible           = NONE
@@ -12833,7 +12882,7 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 161
+      ID                = 162
       Kind              = Horizontal
       Line              = 32,20
       Line Styles       = Solid
@@ -12842,7 +12891,7 @@ Begin Screen Form1
       Size (Lines)      = 153,43
       Size (Lines) in Pixels = 1074
       Size (Lines) Unit = Default
-      Tab Order         = 52
+      Tab Order         = 53
       Visible           = NONE
       Width             = 1
       Width in Cells    = TRUE
@@ -12866,7 +12915,7 @@ Begin Screen Form1
       Font Variable     = Arial10B-Occidentale
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 162
+      ID                = 163
       Justification     = Center
       Label Offset      = 20
       Line              = 1,56
@@ -12876,7 +12925,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 14,00
       Size Unit         = Default
-      Tab Order         = 53
+      Tab Order         = 54
       Title Picture     = x(15)
       Title Variable    = lab-stato-buf
       Transparent       = FALSE
@@ -12900,7 +12949,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 163
+      ID                = 164
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 30,40
@@ -12910,14 +12959,14 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,50
       Size Unit         = Default
-      Tab Order         = 54
+      Tab Order         = 55
       Title             = "Ritira in LBX"
       Transparent       = FALSE
       Visible           = NONE
       Width in Cells    = TRUE
    End
    Begin Label Screen2-La-5aa
-      SCREEN-COL        = 21,57
+      SCREEN-COL        = 20,14
       SCREEN-LINE       = 30,40
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -12925,40 +12974,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 1
-      Column            = 21,57
-      Csize             = 0
-      Csize Unit        = Default
-      Destroy Type      = Automatic
-      Enable            = NONE
-      Font              = Default Font
-      Height in Cells   = TRUE
-      Help ID           = 0
-      ID                = 164
-      Justification     = Unaligned
-      Label Offset      = 20
-      Line              = 30,40
-      Lines             = 1,31
-      Lines Unit        = Default
-      No Key Letter     = FALSE
-      Occurs            = 0
-      Size              = 15,63
-      Size Unit         = Default
-      Tab Order         = 55
-      Title             = "Prenotazione q.tà"
-      Transparent       = FALSE
-      Visible           = NONE
-      Width in Cells    = TRUE
-   End
-   Begin Label Screen2-La-5ab
-      SCREEN-COL        = 46,14
-      SCREEN-LINE       = 30,40
-      LOCK-CONTROL      = TRUE
-      LEVEL             = 5
-      (Name)            = Screen2-La-5ab
-      Clines            = 0
-      Clines Unit       = Default
-      Color             = 1
-      Column            = 46,14
+      Column            = 20,14
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -12970,28 +12986,28 @@ Begin Screen Form1
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 30,40
-      Lines             = 1,33
+      Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 10,00
+      Size              = 15,63
       Size Unit         = Default
       Tab Order         = 56
-      Title             = "Saldi banco"
+      Title             = "Prenotazione q.tà"
       Transparent       = FALSE
       Visible           = NONE
       Width in Cells    = TRUE
    End
-   Begin Label Screen2-La-5aba
-      SCREEN-COL        = 66,57
+   Begin Label Screen2-La-5ab
+      SCREEN-COL        = 43,29
       SCREEN-LINE       = 30,40
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
-      (Name)            = Screen2-La-5aba
+      (Name)            = Screen2-La-5ab
       Clines            = 0
       Clines Unit       = Default
       Color             = 1
-      Column            = 66,57
+      Column            = 43,29
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -13010,6 +13026,39 @@ Begin Screen Form1
       Size              = 10,00
       Size Unit         = Default
       Tab Order         = 57
+      Title             = "Saldi banco"
+      Transparent       = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Screen2-La-5aba
+      SCREEN-COL        = 61,57
+      SCREEN-LINE       = 30,40
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-La-5aba
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 1
+      Column            = 61,57
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 167
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 30,40
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 10,00
+      Size Unit         = Default
+      Tab Order         = 58
       Title             = "Saldi promo"
       Transparent       = FALSE
       Visible           = NONE
@@ -13030,7 +13079,7 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 167
+      ID                = 168
       Kind              = Horizontal
       Line              = 3,20
       Line Styles       = Solid
@@ -13039,7 +13088,7 @@ Begin Screen Form1
       Size (Lines)      = 153,43
       Size (Lines) in Pixels = 1074
       Size (Lines) Unit = Default
-      Tab Order         = 58
+      Tab Order         = 59
       Visible           = NONE
       Width             = 1
       Width in Cells    = TRUE
@@ -13075,7 +13124,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 14,63
       Size Unit         = Default
-      Tab Order         = 59
+      Tab Order         = 60
       Title             = "CUSTOM CONTROL"
       Transparent       = TRUE
       Visible           = NONE
@@ -13121,7 +13170,7 @@ Begin Screen Form1
       Size in Pixels    = 40
       Size Unit         = Default
       Style             = Other
-      Tab Order         = 60
+      Tab Order         = 61
       Termination Value = 0
       Title             = "CAMBIA ARTICOLO"
       Visible           = NONE
@@ -13155,7 +13204,7 @@ Begin Screen Form1
       Size (Lines)      = 153,43
       Size (Lines) in Pixels = 1074
       Size (Lines) Unit = Default
-      Tab Order         = 61
+      Tab Order         = 62
       Visible           = NONE
       Width             = 1
       Width in Cells    = TRUE
@@ -13184,7 +13233,7 @@ Begin Screen Form1
       Size (Lines)      = 153,43
       Size (Lines) in Pixels = 1074
       Size (Lines) Unit = Default
-      Tab Order         = 62
+      Tab Order         = 63
       Visible           = NONE
       Width             = 1
       Width in Cells    = TRUE
@@ -13221,7 +13270,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 19,00
       Size Unit         = Default
-      Tab Order         = 63
+      Tab Order         = 64
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -13258,7 +13307,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 50,00
       Size Unit         = Default
-      Tab Order         = 64
+      Tab Order         = 65
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -13295,7 +13344,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 70,00
       Size Unit         = Default
-      Tab Order         = 65
+      Tab Order         = 66
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -13332,7 +13381,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 55,00
       Size Unit         = Default
-      Tab Order         = 66
+      Tab Order         = 67
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -13369,7 +13418,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 5,00
       Size Unit         = Default
-      Tab Order         = 67
+      Tab Order         = 68
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -13406,7 +13455,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 5,00
       Size Unit         = Default
-      Tab Order         = 68
+      Tab Order         = 69
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -13443,7 +13492,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 19,00
       Size Unit         = Default
-      Tab Order         = 69
+      Tab Order         = 70
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -13480,7 +13529,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 50,00
       Size Unit         = Default
-      Tab Order         = 70
+      Tab Order         = 71
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -13517,7 +13566,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 70,00
       Size Unit         = Default
-      Tab Order         = 71
+      Tab Order         = 72
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -13554,7 +13603,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 55,00
       Size Unit         = Default
-      Tab Order         = 72
+      Tab Order         = 73
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -13591,7 +13640,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 5,00
       Size Unit         = Default
-      Tab Order         = 73
+      Tab Order         = 74
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -13628,7 +13677,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 5,00
       Size Unit         = Default
-      Tab Order         = 74
+      Tab Order         = 75
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -13657,7 +13706,7 @@ Begin Screen Form1
       Size (Lines)      = 153,43
       Size (Lines) in Pixels = 1074
       Size (Lines) Unit = Default
-      Tab Order         = 75
+      Tab Order         = 76
       Visible           = NONE
       Width             = 1
       Width in Cells    = TRUE
@@ -13706,7 +13755,7 @@ Begin Screen Form1
       Size              = 127,00
       Size Unit         = Default
       Style             = Vscroll Bar
-      Tab Order         = 76
+      Tab Order         = 77
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -13744,7 +13793,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 77
+      Tab Order         = 78
       Title             = "Note EDI"
       Transparent       = FALSE
       Visible           = NONE
@@ -13777,14 +13826,14 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 78
+      Tab Order         = 79
       Title             = "Evadi dal"
       Transparent       = FALSE
       Visible           = NONE
       Width in Cells    = TRUE
    End
    Begin Label Screen2-La-8aa
-      SCREEN-COL        = 120,86
+      SCREEN-COL        = 126,57
       SCREEN-LINE       = 30,40
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -13792,7 +13841,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 5
-      Column            = 120,86
+      Column            = 126,57
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -13810,14 +13859,14 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 11,00
       Size Unit         = Default
-      Tab Order         = 79
+      Tab Order         = 80
       Title             = "Totale ordine"
       Transparent       = FALSE
       Visible           = NONE
       Width in Cells    = TRUE
    End
    Begin Label lab-tot
-      SCREEN-COL        = 131,29
+      SCREEN-COL        = 137,00
       SCREEN-LINE       = 30,40
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -13825,7 +13874,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 5
-      Column            = 131,29
+      Column            = 137,00
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -13843,7 +13892,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 12,00
       Size Unit         = Default
-      Tab Order         = 80
+      Tab Order         = 81
       Title             = "99.999.999,99"
       Title Picture     = zz.zzz.zz9,99
       Title Variable    = lab-tot-buf
@@ -13852,7 +13901,7 @@ Begin Screen Form1
       Width in Cells    = TRUE
    End
    Begin Label lab-tota
-      SCREEN-COL        = 144,14
+      SCREEN-COL        = 149,86
       SCREEN-LINE       = 30,40
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -13860,7 +13909,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 5
-      Column            = 144,14
+      Column            = 149,86
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -13878,14 +13927,14 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 2,00
       Size Unit         = Default
-      Tab Order         = 81
+      Tab Order         = 82
       Title             = "€"
       Transparent       = FALSE
       Visible           = NONE
       Width in Cells    = TRUE
    End
    Begin Label Screen2-La-5abaa
-      SCREEN-COL        = 88,43
+      SCREEN-COL        = 80,57
       SCREEN-LINE       = 30,40
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -13893,7 +13942,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 1
-      Column            = 88,43
+      Column            = 80,57
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -13911,7 +13960,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 82
+      Tab Order         = 83
       Title             = "Evasione immediata"
       Transparent       = FALSE
       Visible           = NONE
@@ -13945,7 +13994,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 8,00
       Size Unit         = Default
-      Tab Order         = 83
+      Tab Order         = 84
       Title             = "Provincia"
       Transparent       = FALSE
       Visible           = NONE
@@ -13979,8 +14028,41 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 5,00
       Size Unit         = Default
-      Tab Order         = 84
+      Tab Order         = 85
       Title             = "CAP"
+      Transparent       = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Screen2-La-5abaaa
+      SCREEN-COL        = 106,14
+      SCREEN-LINE       = 30,40
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-La-5abaaa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 1
+      Column            = 106,14
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 31
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 30,40
+      Lines             = 1,33
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 13,00
+      Size Unit         = Default
+      Tab Order         = 86
+      Title             = "Contrassegno"
       Transparent       = FALSE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -13996,7 +14078,7 @@ Begin Screen Form1
       Handle Variable   = Form1-Tb-1-Handle
       Help ID           = 0
       Lines             = 3,07
-      Tab Order         = 85
+      Tab Order         = 87
       Begin Push-Button TOOL-ESCIa
          SCREEN-COL        = 1,00
          SCREEN-LINE       = 1,00
@@ -15232,8 +15314,11 @@ BEGIN-TEXT
                    88 OLD-emto-inversione-imposte-no VALUE IS 0. 
                15 OLD-emto-ev-immediata      PIC  9.
                    88 OLD-emto-ev-immediata-si VALUE IS 1. 
-                   88 OLD-emto-ev-immediata-no VALUE IS 0. 
-               15 FILLER           PIC  x(174).
+                   88 OLD-emto-ev-immediata-no VALUE IS 0.  
+               15 OLD-emto-contrassegno      PIC  x.
+                   88 OLD-emto-contrassegno-si VALUE IS "S". 
+                   88 OLD-emto-contrassegno-no VALUE IS "N", " ". 
+               15 FILLER           PIC  x(173).
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -18977,6 +19062,11 @@ BEGIN-TEXT
               set NoSalvato to true
               move 78-ID-chk-ev-immediata to store-id
            end-if.
+           if emto-contrassegno not = OLD-emto-contrassegno and
+              SiSalvato 
+              set NoSalvato to true
+              move 78-ID-chk-contrassegno to store-id
+           end-if.
          
            set tutto-ok to true.
 
@@ -19523,6 +19613,7 @@ LABLAB                   end-if
                          set mto-attivo to true  
 
                          move emto-ev-immediata to mto-immediato
+                         move emto-contrassegno to mto-contrassegno
                       
                          move emto-chiave to mto-ordine-EDI
                       

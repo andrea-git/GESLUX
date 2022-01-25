@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evasione.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 29 settembre 2021 13:46:02.
+       DATE-WRITTEN.        lunedì 24 gennaio 2022 14:55:54.
        REMARKS.
       *{TOTEM}END
 
@@ -467,6 +467,7 @@
        77 tordforn-tof-k-stato-SPLITBUF  PIC X(14).
        77 tordforn-k-fornitore-SPLITBUF  PIC X(24).
        77 tordforn-tof-k-data-SPLITBUF  PIC X(21).
+       77 tordforn-tof-k-consegna-SPLITBUF  PIC X(21).
        77 rordforn-rof-k-articolo-SPLITBUF  PIC X(24).
        77 rordforn-rof-k-art-mag-SPLITBUF  PIC X(27).
        77 tmp-eva-k-prog-SPLITBUF  PIC X(11).
@@ -2271,6 +2272,14 @@
            tordforn-tof-k-data-SPLITBUF(9:12)
            .
 
+       tordforn-tof-k-consegna-MERGE-SPLITBUF.
+           INITIALIZE tordforn-tof-k-consegna-SPLITBUF
+           MOVE tof-data-consegna OF tordforn(1:8) TO 
+           tordforn-tof-k-consegna-SPLITBUF(1:8)
+           MOVE tof-chiave OF tordforn(1:12) TO 
+           tordforn-tof-k-consegna-SPLITBUF(9:12)
+           .
+
        DataSet1-tordforn-INITSTART.
            EVALUATE DataSet1-KEYIS
            WHEN 1
@@ -2375,6 +2384,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT 
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -2409,6 +2419,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -2443,6 +2454,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE

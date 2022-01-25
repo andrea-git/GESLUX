@@ -2,7 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E5B213328-488-130242455
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E6119112712-298-1209410724
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -2579,13 +2579,41 @@ m_strTrue=0
 
 @}}
 [FDITEM261_]
-m_strName=FILLER
-m_strRawPic=x(174)
-m_strPic=x(174)
+m_strName=emto-contrassegno
+m_strRawPic=x
+m_strPic=x
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM261_
+L'inversione viene impostata solo per clienti tradizionali, quindi conservo il valore nel campo 60 ma poi uso questo
+@}}
+[FDITEM262_]
+m_strName=emto-contrassegno-no
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="N" , " "
+{{@DataItem_m_strDescriptionFDITEM262_
+
+@}}
+[FDITEM263_]
+m_strName=emto-contrassegno-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM263_
+
+@}}
+[FDITEM264_]
+m_strName=FILLER
+m_strRawPic=x(173)
+m_strPic=x(173)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM264_
 
 @}}
 [CStoAcucobolSL_]

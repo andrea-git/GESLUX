@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 14 gennaio 2022 13:07:40.
+       DATE-WRITTEN.        martedì 25 gennaio 2022 12:30:41.
        REMARKS.
       *{TOTEM}END
 
@@ -866,6 +866,8 @@
               05 chk-saldi-promo-BUF PIC 9 VALUE ZERO.
       * Data.Check-Box
               05 chk-ev-immediata-BUF PIC 9 VALUE ZERO.
+      * Data.Check-Box
+              05 chk-contrassegno-BUF PIC 9 VALUE ZERO.
       * Data.Label
               05 lab-anno-BUF PIC 9(4).
       * Data.Label
@@ -1520,8 +1522,11 @@
                    88 OLD-emto-inversione-imposte-no VALUE IS 0. 
                15 OLD-emto-ev-immediata      PIC  9.
                    88 OLD-emto-ev-immediata-si VALUE IS 1. 
-                   88 OLD-emto-ev-immediata-no VALUE IS 0. 
-               15 FILLER           PIC  x(174).
+                   88 OLD-emto-ev-immediata-no VALUE IS 0.  
+               15 OLD-emto-contrassegno      PIC  x.
+                   88 OLD-emto-contrassegno-si VALUE IS "S". 
+                   88 OLD-emto-contrassegno-no VALUE IS "N", " ". 
+               15 FILLER           PIC  x(173).
       *{TOTEM}END
 
       *{TOTEM}ID-LOGICI
@@ -1557,7 +1562,8 @@
        78  78-ID-chk-saldi-banco VALUE 5021.
        78  78-ID-chk-saldi-promo VALUE 5022.
        78  78-ID-chk-ev-immediata VALUE 5023.
-       78  78-ID-Form1-Gd-1 VALUE 5024.
+       78  78-ID-chk-contrassegno VALUE 5024.
+       78  78-ID-Form1-Gd-1 VALUE 5025.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -3210,7 +3216,7 @@
        05
            chk-prenot, 
            Check-Box, 
-           COL 38,57, 
+           COL 37,14, 
            LINE 30,40,
            LINES 1,31 ,
            SIZE 2,50 ,
@@ -3227,7 +3233,7 @@
        05
            chk-saldi-banco, 
            Check-Box, 
-           COL 58,14, 
+           COL 55,29, 
            LINE 30,40,
            LINES 1,31 ,
            SIZE 2,50 ,
@@ -3244,7 +3250,7 @@
        05
            chk-saldi-promo, 
            Check-Box, 
-           COL 78,57, 
+           COL 73,57, 
            LINE 30,40,
            LINES 1,33 ,
            SIZE 2,57 ,
@@ -3261,7 +3267,7 @@
        05
            chk-ev-immediata, 
            Check-Box, 
-           COL 106,86, 
+           COL 99,00, 
            LINE 30,40,
            LINES 1,33 ,
            SIZE 2,57 ,
@@ -3272,6 +3278,23 @@
            WIDTH-IN-CELLS,
            SELF-ACT,
            VALUE chk-ev-immediata-BUF,
+           BEFORE PROCEDURE Screen2-DaCb-5-BeforeProcedure, 
+            .
+      * CHECK BOX
+       05
+           chk-contrassegno, 
+           Check-Box, 
+           COL 120,43, 
+           LINE 30,40,
+           LINES 1,33 ,
+           SIZE 2,57 ,
+           ENABLED MOD,
+           FLAT,
+           ID IS 78-ID-chk-contrassegno,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           SELF-ACT,
+           VALUE chk-contrassegno-BUF,
            BEFORE PROCEDURE Screen2-DaCb-5-BeforeProcedure, 
             .
       * GRID
@@ -3736,7 +3759,7 @@
            LINES 1,31 ,
            SIZE 50,00 ,
            COLOR IS 5,
-           ID IS 160,
+           ID IS 161,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3750,7 +3773,7 @@
            COL 1,00, 
            LINE 32,20,
            SIZE 153,43 ,
-           ID IS 161,
+           ID IS 162,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            WIDTH 1,
@@ -3766,7 +3789,7 @@
            SIZE 14,00 ,
            COLOR IS col-lab-stato,
            FONT IS Arial10B-Occidentale,
-           ID IS 162,
+           ID IS 163,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            CENTER,
@@ -3782,7 +3805,7 @@
            LINES 1,31 ,
            SIZE 10,50 ,
            COLOR IS 1,
-           ID IS 163,
+           ID IS 164,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Ritira in LBX",
@@ -3792,12 +3815,12 @@
        05
            Screen2-La-5aa, 
            Label, 
-           COL 21,57, 
+           COL 20,14, 
            LINE 30,40,
            LINES 1,31 ,
            SIZE 15,63 ,
            COLOR IS 1,
-           ID IS 164,
+           ID IS 165,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Prenotazione q.tà",
@@ -3807,12 +3830,12 @@
        05
            Screen2-La-5ab, 
            Label, 
-           COL 46,14, 
+           COL 43,29, 
            LINE 30,40,
            LINES 1,33 ,
            SIZE 10,00 ,
            COLOR IS 1,
-           ID IS 165,
+           ID IS 166,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Saldi banco",
@@ -3822,12 +3845,12 @@
        05
            Screen2-La-5aba, 
            Label, 
-           COL 66,57, 
+           COL 61,57, 
            LINE 30,40,
            LINES 1,33 ,
            SIZE 10,00 ,
            COLOR IS 1,
-           ID IS 166,
+           ID IS 167,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Saldi promo",
@@ -3840,7 +3863,7 @@
            COL 1,00, 
            LINE 3,20,
            SIZE 153,43 ,
-           ID IS 167,
+           ID IS 168,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            WIDTH 1,
@@ -4171,7 +4194,7 @@
        05
            Screen2-La-8aa, 
            Label, 
-           COL 120,86, 
+           COL 126,57, 
            LINE 30,40,
            LINES 1,33 ,
            SIZE 11,00 ,
@@ -4186,7 +4209,7 @@
        05
            lab-tot, 
            Label, 
-           COL 131,29, 
+           COL 137,00, 
            LINE 30,40,
            LINES 1,33 ,
            SIZE 12,00 ,
@@ -4202,7 +4225,7 @@
        05
            lab-tota, 
            Label, 
-           COL 144,14, 
+           COL 149,86, 
            LINE 30,40,
            LINES 1,33 ,
            SIZE 2,00 ,
@@ -4218,7 +4241,7 @@
        05
            Screen2-La-5abaa, 
            Label, 
-           COL 88,43, 
+           COL 80,57, 
            LINE 30,40,
            LINES 1,33 ,
            SIZE 17,00 ,
@@ -4257,6 +4280,21 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "CAP",
+           .
+
+      * LABEL
+       05
+           Screen2-La-5abaaa, 
+           Label, 
+           COL 106,14, 
+           LINE 30,40,
+           LINES 1,33 ,
+           SIZE 13,00 ,
+           COLOR IS 1,
+           ID IS 31,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE "Contrassegno",
            .
 
       * TOOLBAR
@@ -15637,6 +15675,8 @@
               MOVE 0 TO emto-saldi-promo
       * DB_CHECK BOX
               MOVE 0 TO emto-ev-immediata
+      * DB_CHECK BOX
+              MOVE "N" TO emto-contrassegno
            MOVE ALL X'9' TO Form1-KEYISTMP1
            MOVE ALL X'9' TO Form1-PKEYTMP
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, SetDefault>
@@ -16173,6 +16213,12 @@
               ELSE
                  MOVE 0 TO emto-ev-immediata
               END-IF
+      * DB_CHECK BOX : chk-contrassegno
+              IF chk-contrassegno-BUF = 1
+                 MOVE "S" TO emto-contrassegno
+              ELSE
+                 MOVE "N" TO emto-contrassegno
+              END-IF
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterBufToFld>
            move ef-data-buf to como-data.
            perform DATE-TO-FILE.
@@ -16262,6 +16308,12 @@
                  MOVE 1 TO chk-ev-immediata-BUF
               ELSE
                  MOVE 0 TO chk-ev-immediata-BUF
+              END-IF
+      * DB_CHECK BOX : chk-contrassegno
+              IF emto-contrassegno = "S"
+                 MOVE 1 TO chk-contrassegno-BUF
+              ELSE
+                 MOVE 0 TO chk-contrassegno-BUF
               END-IF
       * DB_LABEL : lab-anno
               MOVE emto-anno  TO lab-anno-BUF
@@ -17052,6 +17104,7 @@
            When 5021 PERFORM Screen2-DaCb-4-AfterProcedure
            When 5022 PERFORM Screen2-DaCb-5-AfterProcedure
            When 5023 PERFORM Screen2-DaCb-5-AfterProcedure
+           When 5024 PERFORM Screen2-DaCb-5-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -17104,28 +17157,28 @@
        Form1-Gd-1-Event-Proc.
            EVALUATE Event-Type ALSO Event-Control-Id ALSO
                                     Event-Window-Handle
-           WHEN Msg-Begin-Drag ALSO 5024 ALSO
+           WHEN Msg-Begin-Drag ALSO 5025 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5024 ALSO
+           WHEN Msg-Begin-Entry ALSO 5025 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-Begin-Entry
-           WHEN Msg-Cancel-Entry ALSO 5024 ALSO
+           WHEN Msg-Cancel-Entry ALSO 5025 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-Cancel-Entry
-           WHEN Msg-End-Drag ALSO 5024 ALSO
+           WHEN Msg-End-Drag ALSO 5025 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-End-Drag
-           WHEN Msg-Finish-Entry ALSO 5024 ALSO
+           WHEN Msg-Finish-Entry ALSO 5025 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-Finish-Entry
-           WHEN Msg-Goto-Cell ALSO 5024 ALSO
+           WHEN Msg-Goto-Cell ALSO 5025 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5024 ALSO
+           WHEN Msg-Goto-Cell-Drag ALSO 5025 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5024 ALSO
+           WHEN Msg-Goto-Cell-Mouse ALSO 5025 ALSO
                     Form1-handle 
               PERFORM Form1-Gd-1-Ev-Msg-Goto-Cell-Mouse
            END-EVALUATE
@@ -20066,6 +20119,11 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
               set NoSalvato to true
               move 78-ID-chk-ev-immediata to store-id
            end-if.
+           if emto-contrassegno not = OLD-emto-contrassegno and
+              SiSalvato 
+              set NoSalvato to true
+              move 78-ID-chk-contrassegno to store-id
+           end-if.
          
            set tutto-ok to true.
 
@@ -20627,6 +20685,7 @@ LABLAB                   end-if
                          set mto-attivo to true  
 
                          move emto-ev-immediata to mto-immediato
+                         move emto-contrassegno to mto-contrassegno
                       
                          move emto-chiave to mto-ordine-EDI
                       
