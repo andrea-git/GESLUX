@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-listini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 13 gennaio 2022 15:38:21.
+       DATE-WRITTEN.        giovedì 27 gennaio 2022 20:50:15.
        REMARKS.
       *{TOTEM}END
 
@@ -5955,10 +5955,10 @@
            display ef-data-i.
 
            move 0 to ef-art-i-buf.
-           move spaces to ef-cod-art-cli-i-buf.
+           move spaces to ef-cod-art-cli-i-buf lab-art-i-buf.
            move 0 to ef-prz-i-buf.
 
-           display ef-art-i ef-cod-art-cli-i ef-prz-i.
+           display ef-art-i ef-cod-art-cli-i ef-prz-i lab-art-i.
 
            .
       * <TOTEM:END>
@@ -7773,10 +7773,35 @@
               if errori exit perform end-if
            end-perform.
 
-           if tutto-ok                           
+           if tutto-ok            
+                            
+              move ef-gdo-buf    to lst-gdo of listini1
+              move ef-data-i-buf to como-data
+              perform DATE-TO-FILE
+              move como-data     to lst-data     of listini1
+              move ef-art-i-buf  to art-codice
+              move art-codice    to lst-articolo of listini1
+              
+           
+              start listini1 key < lst-k-articolo of listini1
+                    invalid continue
+                not invalid
+                    read listini1 previous 
+                    if lst-gdo      of listini1 not = ef-gdo-buf or
+                       lst-articolo of listini1 not = art-codice
+                       initialize lst-prg-chiave of listini1
+                                  replacing numeric data by zeroes
+                                       alphanumeric data by spaces
+                    end-if
+              end-start
+
               initialize lst-rec of listini
                          replacing numeric data by zeroes
-                              alphanumeric data by spaces
+                              alphanumeric data by spaces   
+
+              move lst-prg-chiave of listini1 
+                to lst-prg-chiave of listini
+
               move ef-gdo-buf    to lst-gdo of listini
               move ef-data-i-buf to como-data
               perform DATE-TO-FILE
@@ -7804,7 +7829,8 @@
                 not invalid
                     move 27 to key-status    
                     set ricarica to true
-              end-write
+              end-write           
+
            end-if             
            .
       * <TOTEM:END>

@@ -2,13 +2,12 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
-DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E61D143532-825-189628648
+PROGRAM_UNIQUE_CODE=TOTEM-7E611B19344-807-2329524348
 
 {{@DESCRIPTION:
 
@@ -5858,10 +5857,10 @@ BEGIN-TEXT
            display ef-data-i.
 
            move 0 to ef-art-i-buf.
-           move spaces to ef-cod-art-cli-i-buf.
+           move spaces to ef-cod-art-cli-i-buf lab-art-i-buf.
            move 0 to ef-prz-i-buf.
 
-           display ef-art-i ef-cod-art-cli-i ef-prz-i.
+           display ef-art-i ef-cod-art-cli-i ef-prz-i lab-art-i.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -7598,10 +7597,35 @@ BEGIN-TEXT
               if errori exit perform end-if
            end-perform.
 
-           if tutto-ok                           
+           if tutto-ok            
+                            
+              move ef-gdo-buf    to lst-gdo of listini1
+              move ef-data-i-buf to como-data
+              perform DATE-TO-FILE
+              move como-data     to lst-data     of listini1
+              move ef-art-i-buf  to art-codice
+              move art-codice    to lst-articolo of listini1
+              
+           
+              start listini1 key < lst-k-articolo of listini1
+                    invalid continue
+                not invalid
+                    read listini1 previous 
+                    if lst-gdo      of listini1 not = ef-gdo-buf or
+                       lst-articolo of listini1 not = art-codice
+                       initialize lst-prg-chiave of listini1
+                                  replacing numeric data by zeroes
+                                       alphanumeric data by spaces
+                    end-if
+              end-start
+
               initialize lst-rec of listini
                          replacing numeric data by zeroes
-                              alphanumeric data by spaces
+                              alphanumeric data by spaces   
+
+              move lst-prg-chiave of listini1 
+                to lst-prg-chiave of listini
+
               move ef-gdo-buf    to lst-gdo of listini
               move ef-data-i-buf to como-data
               perform DATE-TO-FILE
@@ -7628,7 +7652,8 @@ BEGIN-TEXT
                 not invalid
                     move 27 to key-status    
                     set ricarica to true
-              end-write
+              end-write           
+
            end-if.            
 END-TEXT
 END-DATA
