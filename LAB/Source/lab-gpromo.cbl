@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-gpromo.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 9 ottobre 2020 16:45:25.
+       DATE-WRITTEN.        giovedì 27 gennaio 2022 10:43:32.
        REMARKS.
       *{TOTEM}END
 
@@ -419,7 +419,7 @@
       * Data.Entry-Field
               05 ef-sett-BUF PIC zz9.
       * Data.Entry-Field
-              05 ef-nomea-BUF PIC x(35).
+              05 ef-nomea-BUF PIC X(35).
       * Data.Label
               05 lab-nome-BUF PIC X(50).
 
@@ -443,7 +443,7 @@
        77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-lineseq1-BUF     PIC X(1000).
        77 TMP-DataSet1-blister-BUF     PIC X(2967).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-tsetinvio-BUF     PIC X(1023).
        77 TMP-DataSet1-tscorte-BUF     PIC X(205).
        77 TMP-DataSet1-tmarche-BUF     PIC X(217).
@@ -8377,6 +8377,9 @@
                                 if des-codice not = cli-codice 
                                    exit perform 
                                 end-if
+                                if des-bloccato or des-disattivo 
+                                   exit perform cycle
+                                end-if
 
                                 set  trovato to true
                                 move cli-gdo to save-gdo
@@ -8470,6 +8473,9 @@
                                  move "** NON TROVATO **" to 
            des-indirizzo
                     end-read
+                    if des-bloccato or des-disattivo
+                       exit perform cycle
+                    end-if
 
                     move cli-ragsoc-1  to col-ragsoc
                     move des-ragsoc-1  to col-destino

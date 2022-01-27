@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E5C17134420-983-476022753
+PROGRAM_UNIQUE_CODE=TOTEM-7E611B94132-533-1222123260
 
 {{@DESCRIPTION:
 
@@ -3724,8 +3724,8 @@ Begin Screen Form1
       Enable            = NONE
       Enable Variable   = mod
       Field Edited (Style) = 0
-      Field Edited Format = x(35)
-      Field Picture     = x(35)
+      Field Edited Format = X(35)
+      Field Picture     = X(35)
       Field Variable    = tpr-note of tpromo
       File              = tpromo
       Font              = Small Font
@@ -7688,6 +7688,9 @@ BEGIN-TEXT
                                 if des-codice not = cli-codice 
                                    exit perform 
                                 end-if
+                                if des-bloccato or des-disattivo 
+                                   exit perform cycle
+                                end-if
 
                                 set  trovato to true
                                 move cli-gdo to save-gdo
@@ -7773,6 +7776,9 @@ BEGIN-TEXT
                          invalid move "** NON TROVATO **" to des-localita
                                  move "** NON TROVATO **" to des-indirizzo
                     end-read
+                    if des-bloccato or des-disattivo
+                       exit perform cycle
+                    end-if
 
                     move cli-ragsoc-1  to col-ragsoc
                     move des-ragsoc-1  to col-destino
