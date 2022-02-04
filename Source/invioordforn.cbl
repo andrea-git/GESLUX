@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          invioordforn.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 13 dicembre 2016 17:14:06.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        giovedì 3 febbraio 2022 09:30:52.
        REMARKS.
       *{TOTEM}END
 
@@ -85,7 +85,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -303,7 +303,7 @@
        77 Screen2-MULKEY-TMPBUF   PIC X(556).
        77 STATUS-form3-FLAG-REFRESH PIC  9.
           88 form3-FLAG-REFRESH  VALUE 1 FALSE 0. 
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-tordforn-BUF     PIC X(556).
@@ -312,8 +312,8 @@
        77 TMP-DataSet1-timballi-BUF     PIC X(210).
        77 TMP-DataSet1-timbalqta-BUF     PIC X(167).
        77 TMP-DataSet1-nordforn-BUF     PIC X(381).
-       77 TMP-DataSet1-lineseq-BUF     PIC X(900).
-       77 TMP-DataSet1-lineseq1-BUF     PIC X(900).
+       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
+       77 TMP-DataSet1-lineseq1-BUF     PIC X(1000).
        77 TMP-DataSet1-rlistini-BUF     PIC X(448).
        77 TMP-DataSet1-art-ordforn-BUF     PIC X(302).
        77 TMP-DataSet1-destinif-BUF     PIC X(1322).
@@ -427,10 +427,12 @@
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
        77 clienti-cli-K4-SPLITBUF  PIC X(8).
        77 articoli-art-k1-SPLITBUF  PIC X(51).
+       77 articoli-art-k-frn-SPLITBUF  PIC X(16).
        77 tordforn-tof-k-causale-SPLITBUF  PIC X(17).
        77 tordforn-tof-k-stato-SPLITBUF  PIC X(14).
        77 tordforn-k-fornitore-SPLITBUF  PIC X(24).
        77 tordforn-tof-k-data-SPLITBUF  PIC X(21).
+       77 tordforn-tof-k-consegna-SPLITBUF  PIC X(21).
        77 rordforn-rof-k-articolo-SPLITBUF  PIC X(24).
        77 rordforn-rof-k-art-mag-SPLITBUF  PIC X(27).
        77 tcaumag-k-mag-SPLITBUF  PIC X(5).
@@ -2357,6 +2359,12 @@
            articoli-art-k1-SPLITBUF(1:50)
            .
 
+       articoli-art-k-frn-MERGE-SPLITBUF.
+           INITIALIZE articoli-art-k-frn-SPLITBUF
+           MOVE art-cod-art-frn OF articoli(1:15) TO 
+           articoli-art-k-frn-SPLITBUF(1:15)
+           .
+
        DataSet1-articoli-INITSTART.
            IF DataSet1-articoli-KEY-Asc
               MOVE Low-Value TO art-chiave OF articoli
@@ -2419,6 +2427,7 @@
               KEY art-chiave OF articoli
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT 
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -2447,6 +2456,7 @@
               END-IF
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -2475,6 +2485,7 @@
               END-IF
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -2697,6 +2708,14 @@
            tordforn-tof-k-data-SPLITBUF(9:12)
            .
 
+       tordforn-tof-k-consegna-MERGE-SPLITBUF.
+           INITIALIZE tordforn-tof-k-consegna-SPLITBUF
+           MOVE tof-data-consegna OF tordforn(1:8) TO 
+           tordforn-tof-k-consegna-SPLITBUF(1:8)
+           MOVE tof-chiave OF tordforn(1:12) TO 
+           tordforn-tof-k-consegna-SPLITBUF(9:12)
+           .
+
        DataSet1-tordforn-INITSTART.
            EVALUATE DataSet1-KEYIS
            WHEN 1
@@ -2801,6 +2820,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT 
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -2835,6 +2855,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -2869,6 +2890,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -6975,8 +6997,8 @@
                    rof-imponib-merce +
                    rof-imp-consumo   +
                    rof-imp-cou-cobat +
-                   rof-add-piombo    +
-                   rof-costi-aggiuntivi.
+                   rof-add-piombo    |+
+                   |rof-costi-aggiuntivi.
                
            multiply rof-qta-ord by como-prz-finale giving 
            como-prz-finale

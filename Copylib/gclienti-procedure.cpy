@@ -796,7 +796,7 @@ LUBEXX     if tcl-codice not = save-ttipocli-privato
                            title = tit-err
                            icon mb-warning-icon
                 else
-                   if ef-prov-buf = "EE"
+                   if ef-prov-buf = "EE" or spaces
                       set trovato to true
                    else
                       move "anacap" to nome-file
@@ -1366,7 +1366,7 @@ LUBEXX          end-if
                               title = tit-err
                               icon mb-warning-icon
                    else
-                      if ef-prov-d-buf = "EE"
+                      if ef-prov-d-buf = "EE" or spaces
                          set trovato to true
                       else
                          move "anacap" to nome-file
@@ -3343,7 +3343,7 @@ LUBEXX     if tutto-ok perform SALVA-RIGA end-if.
                         until riga > tot-righe                      
                  inquire form1-gd-1(riga, 6), cell-data in col-prov
                  inquire form1-gd-1(riga, 4), cell-data in col-cap
-                 if col-prov not = "EE"
+                 if col-prov not = "EE" or spaces
                     move col-cap to anc-cap
                     read anacap no lock
                          invalid

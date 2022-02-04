@@ -1724,6 +1724,7 @@
            move emro-02D13-LIN-CODFORTU to NumericEdi.
            perform TRATTA-NUMERICO.
            move como-numero        to emro-cod-articolo.
+                                             
 
            if como-numero = 0  and 
               RecuperaArticolo and 
@@ -1849,7 +1850,8 @@
               rewrite emto-rec
            else
               if not emro-articolo-non-valido
-                 perform ASSEGNA-PROGRESSIVO
+                 perform ASSEGNA-PROGRESSIVO 
+
                  if emro-progressivo-non-attivo  or
                     emro-progressivo-non-trovato or
                     emro-progressivo-non-forzato
@@ -1925,7 +1927,7 @@
               end-if
 
            end-if.
-
+                                                    
            if emro-qta-EDI not = 0
               if emro-qta-EDI not = emro-qta-GESLUX and not 
                  emro-si-blister
@@ -2161,8 +2163,14 @@
                        compute emro-qta-GESLUX = como-div * imq-qta-imb
                   
                     end-if
-                 else   
-                    compute emro-qta-GESLUX = qta-ord-EDI * qta-imb-edi
+                 else                                     
+                    if emro-qta-GESLUX < imq-qta-imb 
+                       set emro-qtac-adattata to true
+                       move imq-qta-imb to emro-qta-GESLUX
+                    else
+                       compute emro-qta-GESLUX = 
+                               qta-ord-EDI * qta-imb-edi
+                    end-if
                  end-if
               end-if
               perform VALORIZZA-PROGRESSIVO
