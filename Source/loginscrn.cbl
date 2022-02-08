@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          loginscrn IS INITIAL PROGRAM.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 8 settembre 2021 17:06:38.
+       DATE-WRITTEN.        martedì 8 febbraio 2022 09:26:02.
        REMARKS.
       *{TOTEM}END
 
@@ -31,6 +31,7 @@
            COPY "tconvanno.sl".
            COPY "pass.sl".
            COPY "STO-tordini.sl".
+           COPY "tparamge.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -39,6 +40,7 @@
            COPY "tconvanno.fd".
            COPY "pass.fd".
            COPY "STO-tordini.fd".
+           COPY "tparamge.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -147,6 +149,8 @@
            88 Valid-STATUS-sto-tordini VALUE IS "00" THRU "09". 
        77 tit-storico      PIC  X(20)
                   VALUE IS "Storico fino al 2014".
+       77 STATUS-tparamge  PIC  X(2).
+           88 Valid-STATUS-tparamge VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -168,6 +172,7 @@
        77 TMP-DataSet1-tconvanno-BUF     PIC X(163).
        77 TMP-DataSet1-pass-BUF     PIC X(1000).
        77 TMP-DataSet1-STO-tordini-BUF     PIC X(3938).
+       77 TMP-DataSet1-tparamge-BUF     PIC X(815).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -193,6 +198,11 @@
        77 DataSet1-STO-tordini-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-STO-tordini-KEY-Asc  VALUE "A".
           88 DataSet1-STO-tordini-KEY-Desc VALUE "D".
+       77 DataSet1-tparamge-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tparamge-LOCK  VALUE "Y".
+       77 DataSet1-tparamge-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tparamge-KEY-Asc  VALUE "A".
+          88 DataSet1-tparamge-KEY-Desc VALUE "D".
 
        77 STO-tordini-k-causale-SPLITBUF  PIC X(17).
        77 STO-tordini-k1-SPLITBUF  PIC X(23).
@@ -674,6 +684,7 @@
       *    PERFORM OPEN-pass
       *    STO-tordini OPEN MODE IS FALSE
       *    PERFORM OPEN-STO-tordini
+           PERFORM OPEN-tparamge
       *    After Open
            .
 
@@ -732,6 +743,18 @@
       * <TOTEM:END>
            .
 
+       OPEN-tparamge.
+      * <TOTEM:EPT. INIT:loginscrn, FD:tparamge, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT tparamge
+           IF NOT Valid-STATUS-tparamge
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:loginscrn, FD:tparamge, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-USER
@@ -740,6 +763,7 @@
       *    PERFORM CLOSE-pass
       *    STO-tordini CLOSE MODE IS FALSE
       *    PERFORM CLOSE-STO-tordini
+           PERFORM CLOSE-tparamge
       *    After Close
            .
 
@@ -763,6 +787,12 @@
        CLOSE-STO-tordini.
       * <TOTEM:EPT. INIT:loginscrn, FD:STO-tordini, BeforeClose>
       * <TOTEM:END>
+           .
+
+       CLOSE-tparamge.
+      * <TOTEM:EPT. INIT:loginscrn, FD:tparamge, BeforeClose>
+      * <TOTEM:END>
+           CLOSE tparamge
            .
 
        DataSet1-USER-INITSTART.
@@ -1624,11 +1654,166 @@
       * <TOTEM:END>
            .
 
+       DataSet1-tparamge-INITSTART.
+           IF DataSet1-tparamge-KEY-Asc
+              MOVE Low-Value TO tge-chiave
+           ELSE
+              MOVE High-Value TO tge-chiave
+           END-IF
+           .
+
+       DataSet1-tparamge-INITEND.
+           IF DataSet1-tparamge-KEY-Asc
+              MOVE High-Value TO tge-chiave
+           ELSE
+              MOVE Low-Value TO tge-chiave
+           END-IF
+           .
+
+      * tparamge
+       DataSet1-tparamge-START.
+           IF DataSet1-tparamge-KEY-Asc
+              START tparamge KEY >= tge-chiave
+           ELSE
+              START tparamge KEY <= tge-chiave
+           END-IF
+           .
+
+       DataSet1-tparamge-START-NOTGREATER.
+           IF DataSet1-tparamge-KEY-Asc
+              START tparamge KEY <= tge-chiave
+           ELSE
+              START tparamge KEY >= tge-chiave
+           END-IF
+           .
+
+       DataSet1-tparamge-START-GREATER.
+           IF DataSet1-tparamge-KEY-Asc
+              START tparamge KEY > tge-chiave
+           ELSE
+              START tparamge KEY < tge-chiave
+           END-IF
+           .
+
+       DataSet1-tparamge-START-LESS.
+           IF DataSet1-tparamge-KEY-Asc
+              START tparamge KEY < tge-chiave
+           ELSE
+              START tparamge KEY > tge-chiave
+           END-IF
+           .
+
+       DataSet1-tparamge-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-tparamge-LOCK
+              READ tparamge WITH LOCK 
+              KEY tge-chiave
+           ELSE
+              READ tparamge WITH NO LOCK 
+              KEY tge-chiave
+           END-IF
+           MOVE STATUS-tparamge TO TOTEM-ERR-STAT 
+           MOVE "tparamge" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tparamge-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-tparamge-KEY-Asc
+              IF DataSet1-tparamge-LOCK
+                 READ tparamge NEXT WITH LOCK
+              ELSE
+                 READ tparamge NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tparamge-LOCK
+                 READ tparamge PREVIOUS WITH LOCK
+              ELSE
+                 READ tparamge PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tparamge TO TOTEM-ERR-STAT
+           MOVE "tparamge" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tparamge-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-tparamge-KEY-Asc
+              IF DataSet1-tparamge-LOCK
+                 READ tparamge PREVIOUS WITH LOCK
+              ELSE
+                 READ tparamge PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tparamge-LOCK
+                 READ tparamge NEXT WITH LOCK
+              ELSE
+                 READ tparamge NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tparamge TO TOTEM-ERR-STAT
+           MOVE "tparamge" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tparamge-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-tparamge TO TOTEM-ERR-STAT
+           MOVE "tparamge" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tparamge-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-tparamge TO TOTEM-ERR-STAT
+           MOVE "tparamge" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tparamge-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-tparamge TO TOTEM-ERR-STAT
+           MOVE "tparamge" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE user-rec OF USER
            INITIALIZE cnv-rec OF tconvanno
            INITIALIZE pass-rec OF pass
            INITIALIZE STO-tor-rec OF STO-tordini
+           INITIALIZE tge-rec OF tparamge
            .
 
 
@@ -1659,6 +1844,14 @@
       * FD's Initialize Paragraph
        DataSet1-STO-tordini-INITREC.
            INITIALIZE STO-tor-rec OF STO-tordini
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-tparamge-INITREC.
+           INITIALIZE tge-rec OF tparamge
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -1746,6 +1939,11 @@
                  modify chk-storico, visible true, title tit-storico
               end-if    
            end-if.
+
+           move spaces to tge-chiave.
+           read tparamge.
+           move tge-anno to ef-anno-buf.
+           display ef-anno.
 
            .
       * <TOTEM:END>
