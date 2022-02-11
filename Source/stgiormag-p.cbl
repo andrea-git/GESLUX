@@ -52,7 +52,7 @@
        77  counter-edit          pic z(10).
        77  LastIdx               pic 9(5) value 0.
 
-       01  occurs-articoli       occurs 20000 indexed by art-idx.
+       01  occurs-articoli       occurs 90000 indexed by art-idx.
          05 el-articolo          pic 9(6).
          05 el-qta               pic s9(6).
 
@@ -406,7 +406,7 @@
                     if not record-ok
                        add 1 to LastIdx
                        move LastIdx to art-idx
-                    end-if
+                    end-if                 
                     move gio-art to el-articolo(art-idx)
                     add  gio-qta to el-qta(art-idx)
                  end-if

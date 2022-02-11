@@ -114,14 +114,13 @@
 
        77  como-numero          pic 9(8).
 
-
        01  riga-ordine.
            05 ro-num          PIC  x(6).
            05 ro-clides       PIC  x(40).
            05 filler          PIC  x.
            05 ro-localita     PIC  x(100).
            05 filler          PIC  x.
-           05 ro-ord-cli      PIC  x(10).
+           05 ro-ord-cli      PIC  x(30).
            05 ro-data-ord     PIC  x(10).
            05 ro-stato        PIC  x(10).
            05 ro-nr-e         PIC  x(8).
@@ -144,8 +143,7 @@
            05 ra-nr-f     PIC  x(8).
            05 ra-data-f   PIC  x(8).
            05 ra-vet      PIC  x(3).
-           05 ra-esito    PIC  x(30).
-
+           05 ra-esito    PIC  x(30).  
 
        77  Arial14BI     handle of font.
        77  Arial10b      handle of font.
@@ -154,7 +152,6 @@
        77  arial5B       handle of font.
        77  arial5        handle of font.
        77  arial6        handle of font.
-
 
        77  MaxRighe           pic 99,99.
 
@@ -644,12 +641,10 @@
            move sol-data-cons of tmp-sol      to ro-data-b
            move sol-stato of tmp-sol          to ro-stato
 
-
            if sol-blocco-si of tmp-sol
               move "SI"   to ro-nr-e
            end-if.
-
-
+           
            add  0,40    to spl-riga.
 
            move 1               to SPL-PEN-WITH
@@ -661,9 +656,11 @@
            add 0,4  to spl-riga giving spl-riga-fine
            call "spooler" using spooler-link. 
 
+           add 0,05 to spl-riga
+
            move 1       to spl-tipo-colonna
       *     add  0,40    to spl-riga.
-           move Arial10b to spl-hfont
+           move Arial7b to spl-hfont
 
            set spl-stringa   to true.
            move riga-ordine  to spl-riga-stampa.
@@ -1297,6 +1294,7 @@ colore*     set spl-nero   to true
            destroy arial5B.
            destroy arial5.
            destroy arial6.
+           destroy arial7b.
 
       *     call "W$BITMAP" using wbitmap-destroy, bloccato-REG-bmp.
       *     call "W$BITMAP" using wbitmap-destroy, bloccato-LAV-bmp.

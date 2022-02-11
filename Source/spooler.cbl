@@ -5522,8 +5522,8 @@ OMAGGI*   03 st-qta-oma             pic zz.zzz.zzz.
            evaluate spl-tipo-colonna
            when 1
                 call "WIN$PRINTER"  using winprint-set-data-columns,
-                                    7,  47, 48, 148, 149, 159, 169, 179,
-                                        187, , 203
+                                    7,  47, 48, 148, 149, 179, 189, 199,
+                                        207, , 223
                                    giving return-code
 
       *     move "Master"     to ro-num
@@ -5553,14 +5553,14 @@ OMAGGI*   03 st-qta-oma             pic zz.zzz.zzz.
                                    giving return-code
       *     divisorio
                 move wprtalign-left  to winprint-col-alignment
-                move 19,8              to winprint-col-start
+                move 16,8              to winprint-col-start
                 call "WIN$PRINTER"  using winprint-set-page-column, 
                                           winprint-column
                                    giving return-code
 
       *     move "Nr. Ord"    to ro-ord-cli
-                move wprtalign-center  to winprint-col-alignment
-                move 19,9              to winprint-col-start
+                move wprtalign-right   to winprint-col-alignment
+                move 16,9              to winprint-col-start
                 call "WIN$PRINTER"  using winprint-set-page-column, 
                                           winprint-column
                                    giving return-code
