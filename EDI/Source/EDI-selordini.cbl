@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 25 gennaio 2022 12:30:41.
+       DATE-WRITTEN.        martedì 15 febbraio 2022 16:36:07.
        REMARKS.
       *{TOTEM}END
 
@@ -3326,7 +3326,7 @@
            WIDTH-IN-CELLS,
            ROW-HEADINGS,
            TILED-HEADINGS,
-           VIRTUAL-WIDTH 143,
+           VIRTUAL-WIDTH 142,
            VPADDING 40,
            VSCROLL,
            EVENT PROCEDURE Form1-Gd-1-Event-Proc,
@@ -15208,7 +15208,7 @@
 
                     move prg-chiave to HiddenKey
                     set hid-emro-progressivo-valido to true
-                    modify form1-gd-1(riga, 78-col-art), 
+                    modify form1-gd-1(riga, 1), 
                            hidden-data gruppo-hidden
                     modify form1-gd-1(riga, 78-col-imb), 
                            cell-data prg-tipo-imballo
@@ -20315,7 +20315,7 @@ PATCH       bitmap-number = BitmapNumSave.
               move col-num     to emro-riga
               read edi-mrordini
                    invalid                                    
-                   inquire form1-gd-1(riga, 78-col-art),        
+                   inquire form1-gd-1(riga, 1),        
                            hidden-data in gruppo-hidden
                    move hid-prg-cod-articolo to art-codice         
                    initialize emro-dati emro-dati-import
@@ -20453,7 +20453,7 @@ PATCH         |Nel caso in cui passi un prezzo da bloccare
                               region-color = 480.
            modify  form1-gd-1(event-data-2), row-font = Arial10B.       
               
-           inquire form1-gd-1(event-data-2, 78-col-num), 
+           inquire form1-gd-1(event-data-2, 1), 
                    hidden-data in gruppo-hidden.
 
            move 0 to StatusHelp.
@@ -21716,7 +21716,7 @@ LUBEXX                      read clienti no lock invalid continue
                    if bli-attivo
                       set hid-emro-progressivo-valido to true
                       set hid-emro-articolo-valido    to true
-                      modify form1-gd-1(riga, 78-col-art),
+                      modify form1-gd-1(riga, 1),
                              hidden-data gruppo-hidden
                       set hid-emro-progressivo-valido to true
                       perform STATO-RIGA
@@ -22603,7 +22603,7 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
               set hid-emro-attivo             to true
               set hid-emro-bloccato-prezzo-no to true
               set hid-emro-progressivo-valido to true
-              modify form1-gd-1(event-data-2, 78-col-num), 
+              modify form1-gd-1(event-data-2, 1), 
                      hidden-data gruppo-hidden
               modify form1-gd-1(event-data-2, 78-col-num), 
                      cell-data col-num

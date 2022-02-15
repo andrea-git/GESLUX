@@ -1206,9 +1206,9 @@
                           divide disponibilita by QtaImballiOrdine
                                  giving imballi
                               remainder resto
-                          if resto not = 0
-                             add 1 to imballi
-                          end-if
+      *                    if resto not = 0
+      *                       add 1 to imballi
+      *                    end-if
                        else
                           if como-articolo = ultimo-disponibile and 
                              idx > 1
@@ -1228,7 +1228,6 @@
                              move art-imballo-standard to imq-codice
                              read timbalqta no lock
                              if disponibilita >= imq-qta-imb
-                                compute qta = qta - disponibilita
                                 perform APPLICA-SOSTITUZIONE
                                 set sostituzione to true
                              end-if

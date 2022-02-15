@@ -2,13 +2,12 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
-DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E6119112713-70-970311622
+PROGRAM_UNIQUE_CODE=TOTEM-7E62F15355-841-2612828459
 
 {{@DESCRIPTION:
 
@@ -11913,7 +11912,7 @@ Begin Screen Form1
       Tab Order         = 25
       Tiled Headings    = TRUE
       Use Tab           = FALSE
-      Virtual Width     = 143
+      Virtual Width     = 142
       Visible           = NONE
       Vpadding          = 40
       Vscroll           = TRUE
@@ -15984,7 +15983,7 @@ BEGIN-TEXT
 
                     move prg-chiave to HiddenKey
                     set hid-emro-progressivo-valido to true
-                    modify form1-gd-1(riga, 78-col-art), 
+                    modify form1-gd-1(riga, 1), 
                            hidden-data gruppo-hidden
                     modify form1-gd-1(riga, 78-col-imb), 
                            cell-data prg-tipo-imballo
@@ -19259,7 +19258,7 @@ PATCH       bitmap-number = BitmapNumSave.
               move col-num     to emro-riga
               read edi-mrordini
                    invalid                                    
-                   inquire form1-gd-1(riga, 78-col-art),        
+                   inquire form1-gd-1(riga, 1),        
                            hidden-data in gruppo-hidden
                    move hid-prg-cod-articolo to art-codice         
                    initialize emro-dati emro-dati-import
@@ -19397,7 +19396,7 @@ BEGIN-TEXT
                               start-x = 1,            x = 1,
                               region-color = 480.
            modify  form1-gd-1(event-data-2), row-font = Arial10B.          
-           inquire form1-gd-1(event-data-2, 78-col-num), 
+           inquire form1-gd-1(event-data-2, 1), 
                    hidden-data in gruppo-hidden.
 
            move 0 to StatusHelp.
@@ -20710,7 +20709,7 @@ BEGIN-TEXT
                    if bli-attivo
                       set hid-emro-progressivo-valido to true
                       set hid-emro-articolo-valido    to true
-                      modify form1-gd-1(riga, 78-col-art),
+                      modify form1-gd-1(riga, 1),
                              hidden-data gruppo-hidden
                       set hid-emro-progressivo-valido to true
                       perform STATO-RIGA
@@ -21656,7 +21655,7 @@ BEGIN-TEXT
               set hid-emro-attivo             to true
               set hid-emro-bloccato-prezzo-no to true
               set hid-emro-progressivo-valido to true
-              modify form1-gd-1(event-data-2, 78-col-num), 
+              modify form1-gd-1(event-data-2, 1), 
                      hidden-data gruppo-hidden
               modify form1-gd-1(event-data-2, 78-col-num), 
                      cell-data col-num
