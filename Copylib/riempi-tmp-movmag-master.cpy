@@ -73,33 +73,29 @@ LUBEXX     end-if.
                  inquire ef-des,  value des-prog
                  inquire ef-gdo,  value ef-gdo-buf
                  inquire ef-tipo, value tcl-codice
-
-LUBEXX           if cli-codice not = 0
-LUBEXX              if cli-codice  not = mto-cod-cli
-LUBEXX                 exit perform
-LUBEXX              end-if
-LUBEXX              if des-prog not = 0
-LUBEXX                 if des-prog not = mto-prg-destino
-LUBEXX                    exit perform
-LUBEXX                 end-if
-LUBEXX              end-if
-LUBEXX           end-if                   
-
-                 if mto-data-ordine > como-data-to
-                    exit perform
-                 end-if
                  
                  if mto-data-creazione < como-data-from
+                    exit perform cycle
+                 end-if   
+                 
+                 if mto-data-ordine < como-data-from
                     exit perform cycle
                  end-if   
 
                  if cli-codice    not = 0
                     if cli-codice not = mto-cod-cli
-                       exit perform cycle
+                       exit perform
                     end-if
                     if des-prog not = 0 and
                        des-prog not = mto-prg-destino
                        exit perform cycle
+                    end-if                        
+                    if mto-data-ordine > como-data-to
+                       exit perform cycle
+                    end-if
+                 else
+                    if mto-data-ordine > como-data-to
+                       exit perform
                     end-if
                  end-if
 
