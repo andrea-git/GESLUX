@@ -8,7 +8,7 @@ MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ordine-Ev-Before-Program
 AFTER_PROGRAM=ordine-Ev-After-Program
 BEFORE_OPEN=ordine-Ev-Before-DSD-Open
-PROGRAM_UNIQUE_CODE=TOTEM-7E5A1471331-815-917110812
+PROGRAM_UNIQUE_CODE=TOTEM-7E61D141542-109-125526093
 
 {{@DESCRIPTION:
 
@@ -14369,7 +14369,7 @@ Begin Screen Form1
             Destroy Type      = Automatic
             Enable            = NONE
             Enable Variable   = mod-campi
-            Exception Value   = 0
+            Exception Value   = 1010
             Field Variable    = mto-contrassegno
             File              = mtordini
             Flat              = TRUE
@@ -14397,6 +14397,7 @@ Begin Screen Form1
             My Property       = "CONTOLLO-OLD="
             Before Procedure  = chk-urgente-BeforeProcedure
             After Procedure   = chk-urgente-AfterProcedure
+            Link To           = chk-contrassegno-LinkTo
          End
          Begin Data.Check-Box chk-saldi-promo
             SCREEN-COL        = 142,17
@@ -14533,7 +14534,7 @@ Begin Screen Form1
             Destroy Type      = Automatic
             Enable            = NONE
             Enable Variable   = mod-campi
-            Exception Value   = 0
+            Exception Value   = 1011
             Field Variable    = mto-urgente
             File              = mtordini
             Flat              = TRUE
@@ -14561,6 +14562,7 @@ Begin Screen Form1
             My Property       = "CONTOLLO-OLD="
             Before Procedure  = chk-urgente-BeforeProcedure
             After Procedure   = chk-urgente-AfterProcedure
+            Link To           = chk-urgente-LinkTo
          End
          Begin Data.Check-Box chk-immediato
             SCREEN-COL        = 142,17
@@ -21578,6 +21580,20 @@ BEGIN-TEXT
            else
               close rordini
            end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = chk-contrassegno-LinkTo
+BEGIN-TEXT
+           modify chk-contrassegno, value = chk-contrassegno-buf.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = chk-urgente-LinkTo
+BEGIN-TEXT
+           modify chk-urgente, value = chk-urgente-buf.
 END-TEXT
 END-DATA
 

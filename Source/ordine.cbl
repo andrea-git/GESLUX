@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordine.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 20 ottobre 2021 09:16:49.
+       DATE-WRITTEN.        venerdì 18 febbraio 2022 14:50:16.
        REMARKS.
       *{TOTEM}END
 
@@ -811,6 +811,7 @@
        77 tordforn-tof-k-stato-SPLITBUF  PIC X(14).
        77 tordforn-k-fornitore-SPLITBUF  PIC X(24).
        77 tordforn-tof-k-data-SPLITBUF  PIC X(21).
+       77 tordforn-tof-k-consegna-SPLITBUF  PIC X(21).
        77 rordforn-rof-k-articolo-SPLITBUF  PIC X(24).
        77 rordforn-rof-k-art-mag-SPLITBUF  PIC X(27).
       * FOR SPLIT KEY BUFFER
@@ -1405,6 +1406,7 @@
            LINES 1,31 ,
            SIZE 2,67 ,
            ENABLED mod-campi,
+           EXCEPTION-VALUE 1010
            FLAT,
            ID IS 78-ID-chk-contrassegno,                
            HEIGHT-IN-CELLS,
@@ -1464,6 +1466,7 @@
            LINES 1,31 ,
            SIZE 2,67 ,
            ENABLED mod-campi,
+           EXCEPTION-VALUE 1011
            FLAT,
            ID IS 78-ID-chk-urgente,                
            HEIGHT-IN-CELLS,
@@ -12000,6 +12003,14 @@
            tordforn-tof-k-data-SPLITBUF(9:12)
            .
 
+       tordforn-tof-k-consegna-MERGE-SPLITBUF.
+           INITIALIZE tordforn-tof-k-consegna-SPLITBUF
+           MOVE tof-data-consegna OF tordforn(1:8) TO 
+           tordforn-tof-k-consegna-SPLITBUF(1:8)
+           MOVE tof-chiave OF tordforn(1:12) TO 
+           tordforn-tof-k-consegna-SPLITBUF(9:12)
+           .
+
        DataSet1-tordforn-INITSTART.
            IF DataSet1-tordforn-KEY-Asc
               MOVE Low-Value TO tof-chiave
@@ -12065,6 +12076,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT 
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -12096,6 +12108,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -12127,6 +12140,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -13738,8 +13752,12 @@
                  PERFORM chk-prenot-LinkTo
               WHEN Key-Status = 1007
                  PERFORM chk-saldi-banco-LinkTo
+              WHEN Key-Status = 1010
+                 PERFORM chk-contrassegno-LinkTo
               WHEN Key-Status = 1008
                  PERFORM chk-saldi-promo-LinkTo
+              WHEN Key-Status = 1011
+                 PERFORM chk-urgente-LinkTo
               WHEN Key-Status = 1004
                  PERFORM pb-blister-LinkTo
               WHEN Key-Status = 1003
@@ -18091,6 +18109,16 @@ LABLAB     end-if
            else
               close rordini
            end-if 
+           .
+      * <TOTEM:END>
+       chk-contrassegno-LinkTo.
+      * <TOTEM:PARA. chk-contrassegno-LinkTo>
+           modify chk-contrassegno, value = chk-contrassegno-buf 
+           .
+      * <TOTEM:END>
+       chk-urgente-LinkTo.
+      * <TOTEM:PARA. chk-urgente-LinkTo>
+           modify chk-urgente, value = chk-urgente-buf 
            .
       * <TOTEM:END>
 
