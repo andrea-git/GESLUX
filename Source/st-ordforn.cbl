@@ -141,7 +141,11 @@
            05 rt-stof-prz-finale      pic X(30).
            05 rt-stof-prz-tot-finale  pic X(30).
 
-
+       77  como-path   pic x(2000).
+       77  como-idx    pic 9(5).
+       77  como-chars  pic 9(5).
+       77  como-num-x  pic x(8).
+       77  como-num-n  pic 9(8).
        77  como-pic-z5 pic z(5).
        77  como-pic-z7 pic z(7).
        77  como-pic-z8 pic z(8).
@@ -3766,7 +3770,38 @@ quii       call "spooler"       using spooler-link.
            cancel "settaPDF2".
 
            if settaPDF-OK
-              move settaPDF-nome-file to stof-path-pdf
+
+              |Controllo che il numero contenuto nel nome del file
+              |corrisponde con quello stampato
+              move 0 to como-chars como-idx
+              move settaPDF-nome-file to como-path
+              inspect como-path replacing trailing spaces by low-value
+              inspect como-path tallying como-chars 
+                      for characters before low-value
+              perform varying como-idx from como-chars by -1 
+                        until como-idx = 1
+                 if como-path(como-idx:1) = "\"
+                    exit perform
+                 end-if
+              end-perform
+              move 0 to como-chars
+              perform until 1 = 2
+                 add 1 to como-idx
+                 if como-path(como-idx:1) = "_"
+                    exit perform
+                 end-if
+                 add 1 to como-chars
+                 move como-path(como-idx:1) to como-num-x(como-chars:1)
+              end-perform
+              call "C$JUSTIFY" using como-num-x, "R"
+              inspect como-num-x replacing leading x"20" by x"30"
+              move como-num-x to como-num-n
+              if como-num-n not = stof-tof-numero
+                 move spaces to stof-path-pdf
+                 move 0      to stof-tof-numero
+              else
+                 move settaPDF-nome-file to stof-path-pdf
+              end-if
            end-if.
 
       ********---

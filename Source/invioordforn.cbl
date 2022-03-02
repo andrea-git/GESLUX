@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          invioordforn.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 3 febbraio 2022 09:30:52.
+       DATE-WRITTEN.        mercoledì 2 marzo 2022 22:55:12.
        REMARKS.
       *{TOTEM}END
 
@@ -6314,10 +6314,19 @@
       *****     call "W$MOUSE" using set-mouse-shape, arrow-pointer
 
            if errori
-              display message box "Invio non riuscito."
-                           x"0D0A""L'ordine non sarà aggiornato"
-                           x"0d0A"line-riga of lineseq1
-                       title titolo
+              if stof-tof-numero = 0  
+                 display message box "Invio non riuscito."
+                              x"0d0a""L'ordine non corrisponde a quello 
+      -    "stampato."
+                              x"0d0a""Riprovare o contattare assistenza"
+                              x"0d0a"line-riga of lineseq1
+                          title titolo
+              else
+                 display message box "Invio non riuscito."
+                              x"0d0a""L'ordine non sarà aggiornato"
+                              x"0d0a"line-riga of lineseq1
+                          title titolo
+              end-if
            else
               display message box "Invio riuscito."
                        title titolo

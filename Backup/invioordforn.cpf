@@ -2,12 +2,13 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
+DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=bprepb-Ev-Before-Program
 AFTER_PROGRAM=accetordforn-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E62381439-924-229734327
+PROGRAM_UNIQUE_CODE=TOTEM-7E63221138-390-1565215777
 
 {{@DESCRIPTION:
 
@@ -4456,10 +4457,18 @@ BEGIN-TEXT
       *****     call "W$MOUSE" using set-mouse-shape, arrow-pointer
 
            if errori
-              display message box "Invio non riuscito."
-                           x"0D0A""L'ordine non sarà aggiornato"
-                           x"0d0A"line-riga of lineseq1
-                       title titolo
+              if stof-tof-numero = 0  
+                 display message box "Invio non riuscito."
+                              x"0d0a""L'ordine non corrisponde a quello stampato."
+                              x"0d0a""Riprovare o contattare assistenza"
+                              x"0d0a"line-riga of lineseq1
+                          title titolo
+              else
+                 display message box "Invio non riuscito."
+                              x"0d0a""L'ordine non sarà aggiornato"
+                              x"0d0a"line-riga of lineseq1
+                          title titolo
+              end-if
            else
               display message box "Invio riuscito."
                        title titolo
